@@ -105,7 +105,7 @@ export namespace RB {
     class EncoderError extends GLib.Error {
         static $gtype: GObject.GType<EncoderError>;
 
-        // Static fields of RB.EncoderError
+        // Static fields
 
         static FORMAT_UNSUPPORTED: number;
         static INTERNAL_ERROR: number;
@@ -114,12 +114,12 @@ export namespace RB {
         static DESTINATION_READ_ONLY: number;
         static DESTINATION_EXISTS: number;
 
-        // Constructors of RB.EncoderError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of RB.EncoderError
+        // Static methods
 
         static quark(): GLib.Quark;
     }
@@ -431,7 +431,7 @@ export namespace RB {
     class MetadataErrorType extends GLib.Error {
         static $gtype: GObject.GType<MetadataErrorType>;
 
-        // Static fields of RB.MetadataErrorType
+        // Static fields
 
         static IO_ERROR: number;
         static MISSING_PLUGINS: number;
@@ -441,12 +441,12 @@ export namespace RB {
         static INTERNAL_ERROR: number;
         static EMPTY_FILE: number;
 
-        // Constructors of RB.MetadataErrorType
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of RB.MetadataErrorType
+        // Static methods
 
         static quark(): GLib.Quark;
     }
@@ -497,7 +497,7 @@ export namespace RB {
     class PlayerError extends GLib.Error {
         static $gtype: GObject.GType<PlayerError>;
 
-        // Static fields of RB.PlayerError
+        // Static fields
 
         /**
          * Audio playback not available
@@ -516,12 +516,12 @@ export namespace RB {
          */
         static NOT_FOUND: number;
 
-        // Constructors of RB.PlayerError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of RB.PlayerError
+        // Static methods
 
         static quark(): GLib.Quark;
     }
@@ -583,14 +583,14 @@ export namespace RB {
     class PodcastParseError extends GLib.Error {
         static $gtype: GObject.GType<PodcastParseError>;
 
-        // Static fields of RB.PodcastParseError
+        // Static fields
 
         static FILE_INFO: number;
         static MIME_TYPE: number;
         static XML_PARSE: number;
         static NO_ITEMS: number;
 
-        // Constructors of RB.PodcastParseError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
@@ -826,7 +826,7 @@ export namespace RB {
     class ShellErrorType extends GLib.Error {
         static $gtype: GObject.GType<ShellErrorType>;
 
-        // Static fields of RB.ShellErrorType
+        // Static fields
 
         static NO_SUCH_URI: number;
         static NO_SUCH_PROPERTY: number;
@@ -834,12 +834,12 @@ export namespace RB {
         static INVALID_PROPERTY_TYPE: number;
         static NO_SOURCE_FOR_URI: number;
 
-        // Constructors of RB.ShellErrorType
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of RB.ShellErrorType
+        // Static methods
 
         /**
          * Returns the #GQuark used for #RBShell errors
@@ -850,7 +850,7 @@ export namespace RB {
     class ShellPlayerError extends GLib.Error {
         static $gtype: GObject.GType<ShellPlayerError>;
 
-        // Static fields of RB.ShellPlayerError
+        // Static fields
 
         static PLAYLIST_PARSE_FAILED: number;
         static END_OF_PLAYLIST: number;
@@ -858,12 +858,12 @@ export namespace RB {
         static NOT_SEEKABLE: number;
         static POSITION_NOT_AVAILABLE: number;
 
-        // Constructors of RB.ShellPlayerError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of RB.ShellPlayerError
+        // Static methods
 
         static quark(): GLib.Quark;
     }
@@ -1762,11 +1762,11 @@ export namespace RB {
     class Application extends Gtk.Application implements Gio.ActionGroup, Gio.ActionMap {
         static $gtype: GObject.GType<Application>;
 
-        // Own properties of RB.Application
+        // Properties
 
         get shell(): Shell;
 
-        // Constructors of RB.Application
+        // Constructors
 
         constructor(properties?: Partial<Application.ConstructorProps>, ...args: any[]);
 
@@ -1774,7 +1774,7 @@ export namespace RB {
 
         static ['new'](): Application;
 
-        // Own methods of RB.Application
+        // Methods
 
         /**
          * Attempts to activate an accelerator registered using #rb_application_add_accelerator.
@@ -2258,7 +2258,7 @@ export namespace RB {
     class AsyncCopy extends GObject.Object {
         static $gtype: GObject.GType<AsyncCopy>;
 
-        // Constructors of RB.AsyncCopy
+        // Constructors
 
         constructor(properties?: Partial<AsyncCopy.ConstructorProps>, ...args: any[]);
 
@@ -2266,7 +2266,7 @@ export namespace RB {
 
         static ['new'](): AsyncCopy;
 
-        // Own methods of RB.AsyncCopy
+        // Methods
 
         /**
          * Cancels the loading operation, ensuring that the callback
@@ -2302,7 +2302,7 @@ export namespace RB {
     class AutoPlaylistSource extends PlaylistSource implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<AutoPlaylistSource>;
 
-        // Constructors of RB.AutoPlaylistSource
+        // Constructors
 
         constructor(properties?: Partial<AutoPlaylistSource.ConstructorProps>, ...args: any[]);
 
@@ -2736,18 +2736,18 @@ export namespace RB {
     abstract class BrowserSource extends Source implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<BrowserSource>;
 
-        // Own properties of RB.BrowserSource
+        // Properties
 
         get populate(): boolean;
         set populate(val: boolean);
 
-        // Constructors of RB.BrowserSource
+        // Constructors
 
         constructor(properties?: Partial<BrowserSource.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of RB.BrowserSource
+        // Virtual methods
 
         /**
          * This is a virtual method that should be implemented by subclasses.  It returns %TRUE
@@ -2757,7 +2757,7 @@ export namespace RB {
         vfunc_pack_content(content: Gtk.Widget): void;
         vfunc_show_entry_popup(): void;
 
-        // Own methods of RB.BrowserSource
+        // Methods
 
         /**
          * This is a virtual method that should be implemented by subclasses.  It returns %TRUE
@@ -3185,12 +3185,12 @@ export namespace RB {
     class ButtonBar extends Gtk.Grid implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<ButtonBar>;
 
-        // Own properties of RB.ButtonBar
+        // Properties
 
         get model(): Gio.MenuModel;
         get target(): GObject.Object;
 
-        // Constructors of RB.ButtonBar
+        // Constructors
 
         constructor(properties?: Partial<ButtonBar.ConstructorProps>, ...args: any[]);
 
@@ -3201,7 +3201,7 @@ export namespace RB {
 
         static ['new'](...args: never[]): any;
 
-        // Own methods of RB.ButtonBar
+        // Methods
 
         /**
          * Adds accelerators for the buttons in `bar` to the accelerator
@@ -3650,7 +3650,7 @@ export namespace RB {
     class CellRendererPixbuf extends Gtk.CellRendererPixbuf {
         static $gtype: GObject.GType<CellRendererPixbuf>;
 
-        // Constructors of RB.CellRendererPixbuf
+        // Constructors
 
         constructor(properties?: Partial<CellRendererPixbuf.ConstructorProps>, ...args: any[]);
 
@@ -3658,7 +3658,7 @@ export namespace RB {
 
         static ['new'](): CellRendererPixbuf;
 
-        // Own signals of RB.CellRendererPixbuf
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -3667,7 +3667,7 @@ export namespace RB {
         connect_after(signal: 'pixbuf-clicked', callback: (_source: this, path: string) => void): number;
         emit(signal: 'pixbuf-clicked', path: string): void;
 
-        // Own virtual methods of RB.CellRendererPixbuf
+        // Virtual methods
 
         vfunc_pixbuf_clicked(path: Gtk.TreePath): void;
     }
@@ -3689,7 +3689,7 @@ export namespace RB {
     class CellRendererRating extends Gtk.CellRenderer {
         static $gtype: GObject.GType<CellRendererRating>;
 
-        // Own properties of RB.CellRendererRating
+        // Properties
 
         /**
          * The rating displayed by the renderer, as a floating point value
@@ -3698,7 +3698,7 @@ export namespace RB {
         get rating(): number;
         set rating(val: number);
 
-        // Constructors of RB.CellRendererRating
+        // Constructors
 
         constructor(properties?: Partial<CellRendererRating.ConstructorProps>, ...args: any[]);
 
@@ -3706,7 +3706,7 @@ export namespace RB {
 
         static ['new'](): CellRendererRating;
 
-        // Own signals of RB.CellRendererRating
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -3715,7 +3715,7 @@ export namespace RB {
         connect_after(signal: 'rated', callback: (_source: this, score: string, path: number) => void): number;
         emit(signal: 'rated', score: string, path: number): void;
 
-        // Own virtual methods of RB.CellRendererRating
+        // Virtual methods
 
         vfunc_rated(path: string, rating: number): void;
     }
@@ -3729,7 +3729,7 @@ export namespace RB {
     class ChunkLoader extends GObject.Object {
         static $gtype: GObject.GType<ChunkLoader>;
 
-        // Constructors of RB.ChunkLoader
+        // Constructors
 
         constructor(properties?: Partial<ChunkLoader.ConstructorProps>, ...args: any[]);
 
@@ -3737,7 +3737,7 @@ export namespace RB {
 
         static ['new'](): ChunkLoader;
 
-        // Own methods of RB.ChunkLoader
+        // Methods
 
         /**
          * Cancels the loading operation, ensuring that the callback
@@ -3801,7 +3801,7 @@ export namespace RB {
     abstract class DisplayPage extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<DisplayPage>;
 
-        // Own properties of RB.DisplayPage
+        // Properties
 
         /**
          * Icon to display in the page tree
@@ -3836,13 +3836,13 @@ export namespace RB {
         get visibility(): boolean;
         set visibility(val: boolean);
 
-        // Constructors of RB.DisplayPage
+        // Constructors
 
         constructor(properties?: Partial<DisplayPage.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of RB.DisplayPage
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -3854,7 +3854,7 @@ export namespace RB {
         connect_after(signal: 'status-changed', callback: (_source: this) => void): number;
         emit(signal: 'status-changed'): void;
 
-        // Own virtual methods of RB.DisplayPage
+        // Virtual methods
 
         /**
          * Called when the page is activated (double clicked, etc.) in the page tree.
@@ -3905,7 +3905,7 @@ export namespace RB {
         vfunc_selected(): void;
         vfunc_status_changed(): void;
 
-        // Own methods of RB.DisplayPage
+        // Methods
 
         /**
          * Called when the page is activated (double clicked, etc.) in the page tree.
@@ -4401,7 +4401,7 @@ export namespace RB {
     class DisplayPageGroup extends DisplayPage implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<DisplayPageGroup>;
 
-        // Own properties of RB.DisplayPageGroup
+        // Properties
 
         /**
          * Page group category that the group falls into
@@ -4413,7 +4413,7 @@ export namespace RB {
         get id(): string;
         get loaded(): boolean;
 
-        // Constructors of RB.DisplayPageGroup
+        // Constructors
 
         constructor(properties?: Partial<DisplayPageGroup.ConstructorProps>, ...args: any[]);
 
@@ -4429,7 +4429,7 @@ export namespace RB {
 
         static ['new'](...args: never[]): any;
 
-        // Own static methods of RB.DisplayPageGroup
+        // Static methods
 
         /**
          * Registers core page groups.
@@ -4869,7 +4869,7 @@ export namespace RB {
     class DisplayPageModel extends Gtk.TreeModelFilter implements Gtk.TreeDragSource, Gtk.TreeModel {
         static $gtype: GObject.GType<DisplayPageModel>;
 
-        // Constructors of RB.DisplayPageModel
+        // Constructors
 
         constructor(properties?: Partial<DisplayPageModel.ConstructorProps>, ...args: any[]);
 
@@ -4877,7 +4877,7 @@ export namespace RB {
 
         static ['new'](): DisplayPageModel;
 
-        // Own signals of RB.DisplayPageModel
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -4901,12 +4901,12 @@ export namespace RB {
         ): number;
         emit(signal: 'page-inserted', page: DisplayPage, iter: Gtk.TreeIter): void;
 
-        // Own virtual methods of RB.DisplayPageModel
+        // Virtual methods
 
         vfunc_drop_received(target: DisplayPage, pos: Gtk.TreeViewDropPosition, data: Gtk.SelectionData): void;
         vfunc_page_inserted(page: DisplayPage, iter: Gtk.TreeIter): void;
 
-        // Own methods of RB.DisplayPageModel
+        // Methods
 
         /**
          * Adds a page to the model, either below a specified page (if it's a source or
@@ -5833,7 +5833,7 @@ export namespace RB {
     class DisplayPageTree extends Gtk.Grid implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<DisplayPageTree>;
 
-        // Own properties of RB.DisplayPageTree
+        // Properties
 
         /**
          * The #GtkTreeModel for the display page tree
@@ -5844,7 +5844,7 @@ export namespace RB {
          */
         get shell(): Shell;
 
-        // Constructors of RB.DisplayPageTree
+        // Constructors
 
         constructor(properties?: Partial<DisplayPageTree.ConstructorProps>, ...args: any[]);
 
@@ -5855,7 +5855,7 @@ export namespace RB {
 
         static ['new'](...args: never[]): any;
 
-        // Own signals of RB.DisplayPageTree
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -5870,12 +5870,12 @@ export namespace RB {
         connect_after(signal: 'selected', callback: (_source: this, page: GObject.Object) => void): number;
         emit(signal: 'selected', page: GObject.Object): void;
 
-        // Own virtual methods of RB.DisplayPageTree
+        // Virtual methods
 
         vfunc_drop_received(page: DisplayPage, data: Gtk.SelectionData): void;
         vfunc_selected(page: DisplayPage): void;
 
-        // Own methods of RB.DisplayPageTree
+        // Methods
 
         /**
          * Initiates editing of the name of the specified source.  The row for the source
@@ -6335,17 +6335,17 @@ export namespace RB {
     class EncoderFactory extends GObject.Object {
         static $gtype: GObject.GType<EncoderFactory>;
 
-        // Own fields of RB.EncoderFactory
+        // Fields
 
         obj: GObject.Object;
 
-        // Constructors of RB.EncoderFactory
+        // Constructors
 
         constructor(properties?: Partial<EncoderFactory.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of RB.EncoderFactory
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -6366,14 +6366,14 @@ export namespace RB {
         ): number;
         emit(signal: 'prepare-source', uri: string, source: GObject.Object): void;
 
-        // Own static methods of RB.EncoderFactory
+        // Static methods
 
         /**
          * Returns the #RBEncoderFactory instance.
          */
         static get(): EncoderFactory;
 
-        // Own virtual methods of RB.EncoderFactory
+        // Virtual methods
 
         vfunc_prepare_sink(uri: string, sink: GObject.Object): void;
         vfunc_prepare_source(uri: string, source: GObject.Object): void;
@@ -6437,7 +6437,7 @@ export namespace RB {
     class EntryView extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<EntryView>;
 
-        // Own properties of RB.EntryView
+        // Properties
 
         /**
          * #RhythmDB instance
@@ -6505,7 +6505,7 @@ export namespace RB {
         get visibleColumns(): string[];
         set visibleColumns(val: string[]);
 
-        // Constructors of RB.EntryView
+        // Constructors
 
         constructor(properties?: Partial<EntryView.ConstructorProps>, ...args: any[]);
 
@@ -6521,7 +6521,7 @@ export namespace RB {
 
         static ['new'](...args: never[]): any;
 
-        // Own signals of RB.EntryView
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -6551,7 +6551,7 @@ export namespace RB {
         connect_after(signal: 'show-popup', callback: (_source: this, over_entry: boolean) => void): number;
         emit(signal: 'show-popup', over_entry: boolean): void;
 
-        // Own static methods of RB.EntryView
+        // Static methods
 
         /**
          * Returns a sample string for use in columns displaying times
@@ -6560,7 +6560,7 @@ export namespace RB {
          */
         static get_time_date_column_sample(): string;
 
-        // Own virtual methods of RB.EntryView
+        // Virtual methods
 
         vfunc_entries_replaced(): void;
         vfunc_entry_activated(entry: RhythmDBEntry): void;
@@ -6570,7 +6570,7 @@ export namespace RB {
         vfunc_selection_changed(): void;
         vfunc_show_popup(over_entry: boolean): void;
 
-        // Own methods of RB.EntryView
+        // Methods
 
         /**
          * Appends a predefined column type to the set of columns already present
@@ -7195,14 +7195,14 @@ export namespace RB {
     class ExtDB extends GObject.Object {
         static $gtype: GObject.GType<ExtDB>;
 
-        // Own properties of RB.ExtDB
+        // Properties
 
         /**
          * Name of the metadata store.  Used to locate instances.
          */
         get name(): string;
 
-        // Constructors of RB.ExtDB
+        // Constructors
 
         constructor(properties?: Partial<ExtDB.ConstructorProps>, ...args: any[]);
 
@@ -7210,7 +7210,7 @@ export namespace RB {
 
         static ['new'](name: string): ExtDB;
 
-        // Own signals of RB.ExtDB
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -7237,14 +7237,14 @@ export namespace RB {
         connect_after(signal: 'store', callback: (_source: this, data: GObject.Value) => any | null): number;
         emit(signal: 'store', data: GObject.Value | any): void;
 
-        // Own virtual methods of RB.ExtDB
+        // Virtual methods
 
         vfunc_added(key: ExtDBKey, filename: string, data: GObject.Value | any): void;
         vfunc_load(data: GObject.Value | any): unknown;
         vfunc_request(key: ExtDBKey, last_time: number): boolean;
         vfunc_store(data: GObject.Value | any): unknown;
 
-        // Own methods of RB.ExtDB
+        // Methods
 
         /**
          * Deletes the item stored in the metadata store under the specified storage key.
@@ -7321,7 +7321,7 @@ export namespace RB {
     class FadingImage extends Gtk.Widget implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<FadingImage>;
 
-        // Own properties of RB.FadingImage
+        // Properties
 
         /**
          * Name of an icon to display when no image is available.
@@ -7336,13 +7336,13 @@ export namespace RB {
          */
         get useTooltip(): boolean;
 
-        // Constructors of RB.FadingImage
+        // Constructors
 
         constructor(properties?: Partial<FadingImage.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of RB.FadingImage
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -7354,7 +7354,7 @@ export namespace RB {
         connect_after(signal: 'uri-dropped', callback: (_source: this, uri: string) => void): number;
         emit(signal: 'uri-dropped', uri: string): void;
 
-        // Own methods of RB.FadingImage
+        // Methods
 
         /**
          * Sets the next image to be displayed.
@@ -7964,7 +7964,7 @@ export namespace RB {
     class History extends GObject.Object {
         static $gtype: GObject.GType<History>;
 
-        // Own properties of RB.History
+        // Properties
 
         /**
          * Maximum number of entries to store in the history.  If 0, no limit is applied.
@@ -7987,7 +7987,7 @@ export namespace RB {
         get truncateOnPlay(): boolean;
         set truncateOnPlay(val: boolean);
 
-        // Constructors of RB.History
+        // Constructors
 
         constructor(properties?: Partial<History.ConstructorProps>, ...args: any[]);
 
@@ -7995,7 +7995,7 @@ export namespace RB {
 
         static ['new'](truncate_on_play: boolean, destroyer: GLib.Func): History;
 
-        // Own methods of RB.History
+        // Methods
 
         /**
          * Adds a new entry to the end of the history list.
@@ -8133,7 +8133,7 @@ export namespace RB {
     class LibraryBrowser extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<LibraryBrowser>;
 
-        // Own properties of RB.LibraryBrowser
+        // Properties
 
         /**
          * The set of browsers to display.
@@ -8194,7 +8194,7 @@ export namespace RB {
          */
         get outputModel(): RhythmDBQueryModel;
 
-        // Constructors of RB.LibraryBrowser
+        // Constructors
 
         constructor(properties?: Partial<LibraryBrowser.ConstructorProps>, ...args: any[]);
 
@@ -8205,7 +8205,7 @@ export namespace RB {
 
         static ['new'](...args: never[]): any;
 
-        // Own methods of RB.LibraryBrowser
+        // Methods
 
         /**
          * Constructs a #RhythmDBQuery from the current selections in the browser.
@@ -8685,7 +8685,7 @@ export namespace RB {
     class ListModel extends GObject.Object {
         static $gtype: GObject.GType<ListModel>;
 
-        // Constructors of RB.ListModel
+        // Constructors
 
         constructor(properties?: Partial<ListModel.ConstructorProps>, ...args: any[]);
 
@@ -8693,7 +8693,7 @@ export namespace RB {
 
         static ['new'](item_type: GObject.GType): ListModel;
 
-        // Own signals of RB.ListModel
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -8708,7 +8708,7 @@ export namespace RB {
         ): number;
         emit(signal: 'items-changed', object: number, p0: number, p1: number): void;
 
-        // Own methods of RB.ListModel
+        // Methods
 
         /**
          * Appends `item` to the list.
@@ -8778,14 +8778,14 @@ export namespace RB {
     class MediaPlayerEntryType extends RhythmDBEntryType {
         static $gtype: GObject.GType<MediaPlayerEntryType>;
 
-        // Own properties of RB.MediaPlayerEntryType
+        // Properties
 
         get key_prefix(): string;
         get keyPrefix(): string;
         get uri_prefix(): string;
         get uriPrefix(): string;
 
-        // Constructors of RB.MediaPlayerEntryType
+        // Constructors
 
         constructor(properties?: Partial<MediaPlayerEntryType.ConstructorProps>, ...args: any[]);
 
@@ -8811,7 +8811,7 @@ export namespace RB {
     class MediaPlayerSource extends BrowserSource implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<MediaPlayerSource>;
 
-        // Own properties of RB.MediaPlayerSource
+        // Properties
 
         /**
          * The #GSettings instance holding encoding settings for this device
@@ -8835,13 +8835,13 @@ export namespace RB {
         set encodingTarget(val: GstPbutils.EncodingTarget);
         get serial(): string;
 
-        // Constructors of RB.MediaPlayerSource
+        // Constructors
 
         constructor(properties?: Partial<MediaPlayerSource.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of RB.MediaPlayerSource
+        // Virtual methods
 
         vfunc_delete_entries(entries: RhythmDBEntry[], callback?: Gio.AsyncReadyCallback<this> | null): void;
         vfunc_get_capacity(): number;
@@ -8850,7 +8850,7 @@ export namespace RB {
         vfunc_remove_playlists(): void;
         vfunc_show_properties(info_box: Gtk.Widget, notebook: Gtk.Widget): void;
 
-        // Own methods of RB.MediaPlayerSource
+        // Methods
 
         delete_entries(entries: RhythmDBEntry[], callback?: Gio.AsyncReadyCallback<this> | null): void;
         get_capacity(): number;
@@ -9273,7 +9273,7 @@ export namespace RB {
     class MetaData extends GObject.Object {
         static $gtype: GObject.GType<MetaData>;
 
-        // Constructors of RB.MetaData
+        // Constructors
 
         constructor(properties?: Partial<MetaData.ConstructorProps>, ...args: any[]);
 
@@ -9281,7 +9281,7 @@ export namespace RB {
 
         static ['new'](): MetaData;
 
-        // Own static methods of RB.MetaData
+        // Static methods
 
         /**
          * Returns the name of a metadata field.
@@ -9294,7 +9294,7 @@ export namespace RB {
          */
         static get_field_type(field: MetaDataField): GObject.GType;
 
-        // Own methods of RB.MetaData
+        // Methods
 
         /**
          * Checks if the metadata writer is capable of updating file metadata
@@ -9390,7 +9390,7 @@ export namespace RB {
     class PlayOrder extends GObject.Object {
         static $gtype: GObject.GType<PlayOrder>;
 
-        // Own properties of RB.PlayOrder
+        // Properties
 
         /**
          * The #RBShellPlayer instance
@@ -9407,13 +9407,13 @@ export namespace RB {
         get playingEntry(): RhythmDBEntry;
         set playingEntry(val: RhythmDBEntry);
 
-        // Constructors of RB.PlayOrder
+        // Constructors
 
         constructor(properties?: Partial<PlayOrder.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of RB.PlayOrder
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -9428,7 +9428,7 @@ export namespace RB {
         ): number;
         emit(signal: 'have-next-previous-changed', have_next: boolean, have_previous: boolean): void;
 
-        // Own virtual methods of RB.PlayOrder
+        // Virtual methods
 
         vfunc_db_changed(new_db: RhythmDB): void;
         vfunc_db_entry_deleted(entry: RhythmDBEntry): void;
@@ -9473,7 +9473,7 @@ export namespace RB {
          */
         vfunc_query_model_changed(): void;
 
-        // Own methods of RB.PlayOrder
+        // Methods
 
         /**
          * Only for use by #RBPlayOrder subclasses.
@@ -9597,7 +9597,7 @@ export namespace RB {
     class PlaylistManager extends GObject.Object {
         static $gtype: GObject.GType<PlaylistManager>;
 
-        // Own properties of RB.PlaylistManager
+        // Properties
 
         get playlists_file(): string;
         set playlists_file(val: string);
@@ -9608,7 +9608,7 @@ export namespace RB {
         get source(): Source;
         set source(val: Source);
 
-        // Constructors of RB.PlaylistManager
+        // Constructors
 
         constructor(properties?: Partial<PlaylistManager.ConstructorProps>, ...args: any[]);
 
@@ -9616,7 +9616,7 @@ export namespace RB {
 
         static ['new'](shell: Shell, playlists_file: string): PlaylistManager;
 
-        // Own signals of RB.PlaylistManager
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -9634,18 +9634,18 @@ export namespace RB {
         connect_after(signal: 'playlist-created', callback: (_source: this, source: GObject.Object) => void): number;
         emit(signal: 'playlist-created', source: GObject.Object): void;
 
-        // Own static methods of RB.PlaylistManager
+        // Static methods
 
         static error_quark(): GLib.Quark;
 
-        // Own virtual methods of RB.PlaylistManager
+        // Virtual methods
 
         vfunc_load_finish(): void;
         vfunc_load_start(): void;
         vfunc_playlist_added(source: Source): void;
         vfunc_playlist_created(source: Source): void;
 
-        // Own methods of RB.PlaylistManager
+        // Methods
 
         /**
          * Adds an entry to the specified playlist.
@@ -9764,7 +9764,7 @@ export namespace RB {
     abstract class PlaylistSource extends Source implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<PlaylistSource>;
 
-        // Own properties of RB.PlaylistSource
+        // Properties
 
         /**
          * The #RhythmDB instance
@@ -9786,7 +9786,7 @@ export namespace RB {
          */
         get isLocal(): boolean;
 
-        // Constructors of RB.PlaylistSource
+        // Constructors
 
         constructor(properties?: Partial<PlaylistSource.ConstructorProps>, ...args: any[]);
 
@@ -9794,7 +9794,7 @@ export namespace RB {
 
         static new_from_xml(shell: Shell, node: libxml2.NodePtr): PlaylistSource;
 
-        // Own virtual methods of RB.PlaylistSource
+        // Virtual methods
 
         /**
          * Marks the playlist dirty.  This generally means that the playlist
@@ -9805,7 +9805,7 @@ export namespace RB {
         vfunc_save_contents_to_xml(node: libxml2.NodePtr): void;
         vfunc_show_entry_view_popup(view: EntryView, over_entry: boolean): void;
 
-        // Own methods of RB.PlaylistSource
+        // Methods
 
         /**
          * Adds a URI to the playlist's entry map.  This is useful when the
@@ -10299,13 +10299,13 @@ export namespace RB {
     class PodcastManager extends GObject.Object {
         static $gtype: GObject.GType<PodcastManager>;
 
-        // Own properties of RB.PodcastManager
+        // Properties
 
         get db(): RhythmDB;
         set db(val: RhythmDB);
         get updating(): boolean;
 
-        // Constructors of RB.PodcastManager
+        // Constructors
 
         constructor(properties?: Partial<PodcastManager.ConstructorProps>, ...args: any[]);
 
@@ -10313,7 +10313,7 @@ export namespace RB {
 
         static ['new'](db: RhythmDB): PodcastManager;
 
-        // Own signals of RB.PodcastManager
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -10340,7 +10340,7 @@ export namespace RB {
         connect_after(signal: 'start-download', callback: (_source: this, object: RhythmDBEntry) => void): number;
         emit(signal: 'start-download', object: RhythmDBEntry): void;
 
-        // Own static methods of RB.PodcastManager
+        // Static methods
 
         static add_post(
             db: RhythmDB,
@@ -10360,7 +10360,7 @@ export namespace RB {
         ): RhythmDBEntry;
         static entry_downloaded(entry: RhythmDBEntry): boolean;
 
-        // Own methods of RB.PodcastManager
+        // Methods
 
         add_parsed_feed(feed: PodcastChannel): void;
         add_search(search_type: GObject.GType): void;
@@ -10402,13 +10402,13 @@ export namespace RB {
     class PodcastSearch extends GObject.Object {
         static $gtype: GObject.GType<PodcastSearch>;
 
-        // Constructors of RB.PodcastSearch
+        // Constructors
 
         constructor(properties?: Partial<PodcastSearch.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of RB.PodcastSearch
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -10420,12 +10420,12 @@ export namespace RB {
         connect_after(signal: 'result', callback: (_source: this, object: any | null) => void): number;
         emit(signal: 'result', object?: any | null): void;
 
-        // Own virtual methods of RB.PodcastSearch
+        // Virtual methods
 
         vfunc_cancel(): void;
         vfunc_start(text: string, max_results: number): void;
 
-        // Own methods of RB.PodcastSearch
+        // Methods
 
         cancel(): void;
         finished(successful: boolean): void;
@@ -10442,7 +10442,7 @@ export namespace RB {
     class PodcastSearchITunes extends PodcastSearch {
         static $gtype: GObject.GType<PodcastSearchITunes>;
 
-        // Constructors of RB.PodcastSearchITunes
+        // Constructors
 
         constructor(properties?: Partial<PodcastSearchITunes.ConstructorProps>, ...args: any[]);
 
@@ -10490,7 +10490,7 @@ export namespace RB {
     class PropertyView extends Gtk.ScrolledWindow implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<PropertyView>;
 
-        // Own properties of RB.PropertyView
+        // Properties
 
         /**
          * #RhythmDB instance
@@ -10519,7 +10519,7 @@ export namespace RB {
          */
         get title(): string;
 
-        // Constructors of RB.PropertyView
+        // Constructors
 
         constructor(properties?: Partial<PropertyView.ConstructorProps>, ...args: any[]);
 
@@ -10530,7 +10530,7 @@ export namespace RB {
 
         static ['new'](...args: never[]): any;
 
-        // Own signals of RB.PropertyView
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -10551,14 +10551,14 @@ export namespace RB {
         connect_after(signal: 'show-popup', callback: (_source: this) => void): number;
         emit(signal: 'show-popup'): void;
 
-        // Own virtual methods of RB.PropertyView
+        // Virtual methods
 
         vfunc_property_activated(name: string): void;
         vfunc_property_selected(name: string): void;
         vfunc_selection_reset(): void;
         vfunc_show_popup(): void;
 
-        // Own methods of RB.PropertyView
+        // Methods
 
         /**
          * Appends a custom created column to the view.
@@ -11047,7 +11047,7 @@ export namespace RB {
     class Rating extends Gtk.Widget implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<Rating>;
 
-        // Own properties of RB.Rating
+        // Properties
 
         /**
          * The rating displayed in the widget, as a floating point value
@@ -11056,7 +11056,7 @@ export namespace RB {
         get rating(): number;
         set rating(val: number);
 
-        // Constructors of RB.Rating
+        // Constructors
 
         constructor(properties?: Partial<Rating.ConstructorProps>, ...args: any[]);
 
@@ -11064,7 +11064,7 @@ export namespace RB {
 
         static ['new'](): Rating;
 
-        // Own signals of RB.Rating
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -11079,7 +11079,7 @@ export namespace RB {
         connect_after(signal: 'set-rating', callback: (_source: this, score: number) => void): number;
         emit(signal: 'set-rating', score: number): void;
 
-        // Own virtual methods of RB.Rating
+        // Virtual methods
 
         vfunc_adjust_rating(adjust: number): boolean;
         vfunc_rated(score: number): void;
@@ -11694,7 +11694,7 @@ export namespace RB {
     class RemovableMediaManager extends GObject.Object {
         static $gtype: GObject.GType<RemovableMediaManager>;
 
-        // Own properties of RB.RemovableMediaManager
+        // Properties
 
         /**
          * This is set to TRUE when the removable media manager has scanned
@@ -11708,7 +11708,7 @@ export namespace RB {
          */
         get shell(): Shell;
 
-        // Constructors of RB.RemovableMediaManager
+        // Constructors
 
         constructor(properties?: Partial<RemovableMediaManager.ConstructorProps>, ...args: any[]);
 
@@ -11716,7 +11716,7 @@ export namespace RB {
 
         static ['new'](shell: Shell): RemovableMediaManager;
 
-        // Own signals of RB.RemovableMediaManager
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -11743,11 +11743,11 @@ export namespace RB {
         connect_after(signal: 'medium-added', callback: (_source: this, source: GObject.Object) => void): number;
         emit(signal: 'medium-added', source: GObject.Object): void;
 
-        // Own virtual methods of RB.RemovableMediaManager
+        // Virtual methods
 
         vfunc_medium_added(source: Source): void;
 
-        // Own methods of RB.RemovableMediaManager
+        // Methods
 
         /**
          * Determines whether the specified device looks like an Android device.
@@ -11848,7 +11848,7 @@ export namespace RB {
     abstract class RhythmDB extends GObject.Object {
         static $gtype: GObject.GType<RhythmDB>;
 
-        // Own properties of RB.RhythmDB
+        // Properties
 
         /**
          * If %TRUE, no metadata changes will be written back to media fies.
@@ -11876,13 +11876,13 @@ export namespace RB {
         get noUpdate(): boolean;
         set noUpdate(val: boolean);
 
-        // Constructors of RB.RhythmDB
+        // Constructors
 
         constructor(properties?: Partial<RhythmDB.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of RB.RhythmDB
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -11968,7 +11968,7 @@ export namespace RB {
         connect_after(signal: 'save-error', callback: (_source: this, uri: string, error: any | null) => void): number;
         emit(signal: 'save-error', uri: string, error?: any | null): void;
 
-        // Own static methods of RB.RhythmDB
+        // Static methods
 
         /**
          * Creates a string containing the "status" information about a list of tracks.
@@ -12020,7 +12020,7 @@ export namespace RB {
          */
         static query_free(query: RhythmDBQuery): void;
 
-        // Own virtual methods of RB.RhythmDB
+        // Virtual methods
 
         vfunc_entry_added(entry: RhythmDBEntry): void;
         vfunc_entry_deleted(entry: RhythmDBEntry): void;
@@ -12052,7 +12052,7 @@ export namespace RB {
         vfunc_save_complete(): void;
         vfunc_save_error(uri: string, error: GLib.Error): void;
 
-        // Own methods of RB.RhythmDB
+        // Methods
 
         /**
          * Adds the file(s) pointed to by `uri` to the database, as entries of type
@@ -12437,7 +12437,7 @@ export namespace RB {
     class RhythmDBEntryType extends GObject.Object {
         static $gtype: GObject.GType<RhythmDBEntryType>;
 
-        // Own properties of RB.RhythmDBEntryType
+        // Properties
 
         /**
          * Metadata cache name.  For entry types created by a plugin, should match the plugin name.
@@ -12482,13 +12482,13 @@ export namespace RB {
          */
         get typeDataSize(): number;
 
-        // Constructors of RB.RhythmDBEntryType
+        // Constructors
 
         constructor(properties?: Partial<RhythmDBEntryType.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of RB.RhythmDBEntryType
+        // Virtual methods
 
         vfunc_cache_key_to_uri(key: string): string;
         vfunc_can_sync_metadata(entry: RhythmDBEntry): boolean;
@@ -12498,7 +12498,7 @@ export namespace RB {
         vfunc_update_availability(entry: RhythmDBEntry, avail: RhythmDBEntryAvailability): void;
         vfunc_uri_to_cache_key(uri: string): string;
 
-        // Own methods of RB.RhythmDBEntryType
+        // Methods
 
         /**
          * Fetches metadata for a URI (not an entry yet, at this point) from a cache, if possible.
@@ -12552,7 +12552,7 @@ export namespace RB {
     class RhythmDBImportJob extends GObject.Object implements TaskProgress {
         static $gtype: GObject.GType<RhythmDBImportJob>;
 
-        // Own properties of RB.RhythmDBImportJob
+        // Properties
 
         get db(): RhythmDB;
         get entry_type(): RhythmDBEntryType;
@@ -12562,7 +12562,7 @@ export namespace RB {
         get ignore_type(): RhythmDBEntryType;
         get ignoreType(): RhythmDBEntryType;
 
-        // Constructors of RB.RhythmDBImportJob
+        // Constructors
 
         constructor(properties?: Partial<RhythmDBImportJob.ConstructorProps>, ...args: any[]);
 
@@ -12575,7 +12575,7 @@ export namespace RB {
             error_type: RhythmDBEntryType,
         ): RhythmDBImportJob;
 
-        // Own signals of RB.RhythmDBImportJob
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -12596,14 +12596,14 @@ export namespace RB {
         ): number;
         emit(signal: 'status-changed', total: number, imported: number): void;
 
-        // Own virtual methods of RB.RhythmDBImportJob
+        // Virtual methods
 
         vfunc_complete(total: number): void;
         vfunc_entry_added(entry: RhythmDBEntry): void;
         vfunc_scan_complete(total: number): void;
         vfunc_status_changed(total: number, imported: number): void;
 
-        // Own methods of RB.RhythmDBImportJob
+        // Methods
 
         /**
          * Adds a URI to import.  All files under the specified
@@ -13108,7 +13108,7 @@ export namespace RB {
     class RhythmDBPropertyModel extends GObject.Object implements Gtk.TreeModel {
         static $gtype: GObject.GType<RhythmDBPropertyModel>;
 
-        // Own properties of RB.RhythmDBPropertyModel
+        // Properties
 
         /**
          * The #RhythmDB object the model is associated with.
@@ -13129,7 +13129,7 @@ export namespace RB {
         get queryModel(): RhythmDBQueryModel;
         set queryModel(val: RhythmDBQueryModel);
 
-        // Constructors of RB.RhythmDBPropertyModel
+        // Constructors
 
         constructor(properties?: Partial<RhythmDBPropertyModel.ConstructorProps>, ...args: any[]);
 
@@ -13137,7 +13137,7 @@ export namespace RB {
 
         static ['new'](db: RhythmDB, propid: RhythmDBPropType): RhythmDBPropertyModel;
 
-        // Own signals of RB.RhythmDBPropertyModel
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -13146,11 +13146,11 @@ export namespace RB {
         connect_after(signal: 'pre-row-deletion', callback: (_source: this) => void): number;
         emit(signal: 'pre-row-deletion'): void;
 
-        // Own virtual methods of RB.RhythmDBPropertyModel
+        // Virtual methods
 
         vfunc_pre_row_deletion(): void;
 
-        // Own methods of RB.RhythmDBPropertyModel
+        // Methods
 
         /**
          * Enables drag and drop from a specified #GtkTreeView that is
@@ -14028,7 +14028,7 @@ export namespace RB {
     class RhythmDBQueryModel extends GObject.Object implements Gtk.TreeModel, RhythmDBQueryResults {
         static $gtype: GObject.GType<RhythmDBQueryModel>;
 
-        // Own properties of RB.RhythmDBQueryModel
+        // Properties
 
         get base_model(): RhythmDBQueryModel;
         set base_model(val: RhythmDBQueryModel);
@@ -14062,7 +14062,7 @@ export namespace RB {
         get sortReverse(): boolean;
         set sortReverse(val: boolean);
 
-        // Constructors of RB.RhythmDBQueryModel
+        // Constructors
 
         constructor(properties?: Partial<RhythmDBQueryModel.ConstructorProps>, ...args: any[]);
 
@@ -14076,7 +14076,7 @@ export namespace RB {
             show_hidden: boolean,
         ): RhythmDBQueryModel;
 
-        // Own signals of RB.RhythmDBQueryModel
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -14127,7 +14127,7 @@ export namespace RB {
         connect_after(signal: 'post-entry-delete', callback: (_source: this, entry: RhythmDBEntry) => void): number;
         emit(signal: 'post-entry-delete', entry: RhythmDBEntry): void;
 
-        // Own static methods of RB.RhythmDBQueryModel
+        // Static methods
 
         /**
          * Sort function for sorting by album.  Sorts by album, then
@@ -14227,7 +14227,7 @@ export namespace RB {
          */
         static ulong_sort_func(a: RhythmDBEntry, b: RhythmDBEntry, data?: any | null): number;
 
-        // Own virtual methods of RB.RhythmDBQueryModel
+        // Virtual methods
 
         vfunc_complete(): void;
         vfunc_entry_prop_changed(
@@ -14241,7 +14241,7 @@ export namespace RB {
         vfunc_non_entry_dropped(uri: string, position: number): void;
         vfunc_post_entry_delete(entry: RhythmDBEntry): void;
 
-        // Own methods of RB.RhythmDBQueryModel
+        // Methods
 
         /**
          * Adds an entry to the query model at the specified position.  Does not check
@@ -15206,7 +15206,7 @@ export namespace RB {
     class RhythmDBQueryResultList extends GObject.Object implements RhythmDBQueryResults {
         static $gtype: GObject.GType<RhythmDBQueryResultList>;
 
-        // Constructors of RB.RhythmDBQueryResultList
+        // Constructors
 
         constructor(properties?: Partial<RhythmDBQueryResultList.ConstructorProps>, ...args: any[]);
 
@@ -15214,7 +15214,7 @@ export namespace RB {
 
         static ['new'](): RhythmDBQueryResultList;
 
-        // Own signals of RB.RhythmDBQueryResultList
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -15223,11 +15223,11 @@ export namespace RB {
         connect_after(signal: 'complete', callback: (_source: this) => void): number;
         emit(signal: 'complete'): void;
 
-        // Own virtual methods of RB.RhythmDBQueryResultList
+        // Virtual methods
 
         vfunc_complete(): void;
 
-        // Own methods of RB.RhythmDBQueryResultList
+        // Methods
 
         /**
          * Returns the results from the query.
@@ -15698,7 +15698,7 @@ export namespace RB {
     class SearchEntry extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<SearchEntry>;
 
-        // Own properties of RB.SearchEntry
+        // Properties
 
         /**
          * If TRUE, show a button and only emit the 'search' signal when
@@ -15721,7 +15721,7 @@ export namespace RB {
          */
         get hasPopup(): boolean;
 
-        // Constructors of RB.SearchEntry
+        // Constructors
 
         constructor(properties?: Partial<SearchEntry.ConstructorProps>, ...args: any[]);
 
@@ -15732,7 +15732,7 @@ export namespace RB {
 
         static ['new'](...args: never[]): any;
 
-        // Own signals of RB.SearchEntry
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -15747,13 +15747,13 @@ export namespace RB {
         connect_after(signal: 'show-popup', callback: (_source: this) => void): number;
         emit(signal: 'show-popup'): void;
 
-        // Own virtual methods of RB.SearchEntry
+        // Virtual methods
 
         vfunc_activate(text: string): void;
         vfunc_search(text: string): void;
         vfunc_show_popup(): void;
 
-        // Own methods of RB.SearchEntry
+        // Methods
 
         /**
          * Clears the search entry text.  The 'search' signal will
@@ -16226,7 +16226,7 @@ export namespace RB {
     class SegmentedBar extends Gtk.Widget implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<SegmentedBar>;
 
-        // Own properties of RB.SegmentedBar
+        // Properties
 
         /**
          * Height of the segmented bar
@@ -16263,7 +16263,7 @@ export namespace RB {
         get showReflection(): boolean;
         set showReflection(val: boolean);
 
-        // Constructors of RB.SegmentedBar
+        // Constructors
 
         constructor(properties?: Partial<SegmentedBar.ConstructorProps>, ...args: any[]);
 
@@ -16271,7 +16271,7 @@ export namespace RB {
 
         static ['new'](): SegmentedBar;
 
-        // Own methods of RB.SegmentedBar
+        // Methods
 
         add_segment(title: string, percent: number, red: number, green: number, blue: number, alpha: number): number;
         add_segment_default_color(title: string, percent: number): number;
@@ -16929,7 +16929,7 @@ export namespace RB {
     class Shell extends GObject.Object {
         static $gtype: GObject.GType<Shell>;
 
-        // Own properties of RB.Shell
+        // Properties
 
         /**
          * A #GtkAccelGroup instance to use for additional accelerator keys
@@ -17074,13 +17074,13 @@ export namespace RB {
          */
         get window(): Gtk.Window;
 
-        // Constructors of RB.Shell
+        // Constructors
 
         constructor(properties?: Partial<Shell.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of RB.Shell
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -17140,7 +17140,7 @@ export namespace RB {
         ): number;
         emit(signal: 'visibility-changing', initial: boolean, visible: boolean): void;
 
-        // Own virtual methods of RB.Shell
+        // Virtual methods
 
         vfunc_create_song_info(song_info: SongInfo, multi: boolean): void;
         vfunc_database_load_complete(): void;
@@ -17148,7 +17148,7 @@ export namespace RB {
         vfunc_visibility_changed(visible: boolean): void;
         vfunc_visibility_changing(initial: boolean, visible: boolean): boolean;
 
-        // Own methods of RB.Shell
+        // Methods
 
         activate_source(source: Source, play: number): boolean;
         /**
@@ -17337,7 +17337,7 @@ export namespace RB {
     class ShellPlayer extends GObject.Object {
         static $gtype: GObject.GType<ShellPlayer>;
 
-        // Own properties of RB.ShellPlayer
+        // Properties
 
         /**
          * The #RhythmDB
@@ -17419,7 +17419,7 @@ export namespace RB {
         get volume(): number;
         set volume(val: number);
 
-        // Constructors of RB.ShellPlayer
+        // Constructors
 
         constructor(properties?: Partial<ShellPlayer.ConstructorProps>, ...args: any[]);
 
@@ -17427,7 +17427,7 @@ export namespace RB {
 
         static ['new'](db: RhythmDB): ShellPlayer;
 
-        // Own signals of RB.ShellPlayer
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -17481,7 +17481,7 @@ export namespace RB {
         connect_after(signal: 'window-title-changed', callback: (_source: this, title: string) => void): number;
         emit(signal: 'window-title-changed', title: string): void;
 
-        // Own virtual methods of RB.ShellPlayer
+        // Virtual methods
 
         vfunc_elapsed_changed(elapsed: number): void;
         vfunc_elapsed_nano_changed(elapsed: number): void;
@@ -17497,7 +17497,7 @@ export namespace RB {
         vfunc_playing_uri_changed(uri: string): void;
         vfunc_window_title_changed(window_title: string): void;
 
-        // Own methods of RB.ShellPlayer
+        // Methods
 
         /**
          * Adds a new play order to the set of available play orders.
@@ -17686,7 +17686,7 @@ export namespace RB {
     class ShellPreferences extends Gtk.Dialog implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<ShellPreferences>;
 
-        // Constructors of RB.ShellPreferences
+        // Constructors
 
         constructor(properties?: Partial<ShellPreferences.ConstructorProps>, ...args: any[]);
 
@@ -17697,7 +17697,7 @@ export namespace RB {
 
         static ['new'](...args: never[]): any;
 
-        // Own methods of RB.ShellPreferences
+        // Methods
 
         /**
          * Adds a widget to the preferences window.  See #gtk_box_pack_start for
@@ -18155,7 +18155,7 @@ export namespace RB {
     class SongInfo extends Gtk.Dialog implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<SongInfo>;
 
-        // Own properties of RB.SongInfo
+        // Properties
 
         /**
          * The #RhythmDBEntry that is currently being displayed.  Will be NULL for
@@ -18196,7 +18196,7 @@ export namespace RB {
          */
         get source(): Source;
 
-        // Constructors of RB.SongInfo
+        // Constructors
 
         constructor(properties?: Partial<SongInfo.ConstructorProps>, ...args: any[]);
 
@@ -18207,7 +18207,7 @@ export namespace RB {
 
         static ['new'](...args: never[]): any;
 
-        // Own signals of RB.SongInfo
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -18219,12 +18219,12 @@ export namespace RB {
         connect_after(signal: 'pre-metadata-change', callback: (_source: this, entry: RhythmDBEntry) => void): number;
         emit(signal: 'pre-metadata-change', entry: RhythmDBEntry): void;
 
-        // Own virtual methods of RB.SongInfo
+        // Virtual methods
 
         vfunc_post_metadata_change(entry: RhythmDBEntry): void;
         vfunc_pre_metadata_change(entry: RhythmDBEntry): void;
 
-        // Own methods of RB.SongInfo
+        // Methods
 
         /**
          * Adds a new page to the song properties window.  Should be called
@@ -18685,7 +18685,7 @@ export namespace RB {
     abstract class Source extends DisplayPage implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<Source>;
 
-        // Own properties of RB.Source
+        // Properties
 
         /**
          * The unfiltered query model for the source, containing all entries in the source.
@@ -18798,13 +18798,13 @@ export namespace RB {
          */
         get toolbarMenu(): Gio.MenuModel;
 
-        // Constructors of RB.Source
+        // Constructors
 
         constructor(properties?: Partial<Source.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of RB.Source
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -18819,7 +18819,7 @@ export namespace RB {
         connect_after(signal: 'reset-filters', callback: (_source: this) => void): number;
         emit(signal: 'reset-filters'): void;
 
-        // Own virtual methods of RB.Source
+        // Virtual methods
 
         /**
          * Adds the currently selected entries to the end of the
@@ -18967,7 +18967,7 @@ export namespace RB {
          */
         vfunc_want_uri(uri: string): number;
 
-        // Own methods of RB.Source
+        // Methods
 
         /**
          * Adds the currently selected entries to the end of the
@@ -19608,13 +19608,13 @@ export namespace RB {
     class SourceSearch extends GObject.Object {
         static $gtype: GObject.GType<SourceSearch>;
 
-        // Constructors of RB.SourceSearch
+        // Constructors
 
         constructor(properties?: Partial<SourceSearch.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of RB.SourceSearch
+        // Static methods
 
         /**
          * Adds a registered search instance to a search menu.
@@ -19630,7 +19630,7 @@ export namespace RB {
          */
         static get_by_name(name: string): SourceSearch;
 
-        // Own virtual methods of RB.SourceSearch
+        // Virtual methods
 
         /**
          * Creates a #RhythmDBQuery from the user's search text.
@@ -19651,7 +19651,7 @@ export namespace RB {
          */
         vfunc_is_subset(current: string, next: string): boolean;
 
-        // Own methods of RB.SourceSearch
+        // Methods
 
         /**
          * Creates a #RhythmDBQuery from the user's search text.
@@ -19694,16 +19694,16 @@ export namespace RB {
     class SourceSearchBasic extends SourceSearch {
         static $gtype: GObject.GType<SourceSearchBasic>;
 
-        // Own properties of RB.SourceSearchBasic
+        // Properties
 
         get description(): string;
         get prop(): number;
 
-        // Own fields of RB.SourceSearchBasic
+        // Fields
 
         search_prop: RhythmDBPropType;
 
-        // Constructors of RB.SourceSearchBasic
+        // Constructors
 
         constructor(properties?: Partial<SourceSearchBasic.ConstructorProps>, ...args: any[]);
 
@@ -19711,7 +19711,7 @@ export namespace RB {
 
         static ['new'](prop: RhythmDBPropType, description: string): SourceSearchBasic;
 
-        // Own static methods of RB.SourceSearchBasic
+        // Static methods
 
         /**
          * Adds an item to `menu` that will select a search based on the specified
@@ -19760,7 +19760,7 @@ export namespace RB {
     class SourceToolbar extends Gtk.Grid implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<SourceToolbar>;
 
-        // Own properties of RB.SourceToolbar
+        // Properties
 
         /**
          * The #GtkAccelGroup to add accelerators to
@@ -19775,7 +19775,7 @@ export namespace RB {
          */
         get page(): DisplayPage;
 
-        // Constructors of RB.SourceToolbar
+        // Constructors
 
         constructor(properties?: Partial<SourceToolbar.ConstructorProps>, ...args: any[]);
 
@@ -19786,7 +19786,7 @@ export namespace RB {
 
         static ['new'](...args: never[]): any;
 
-        // Own methods of RB.SourceToolbar
+        // Methods
 
         /**
          * Adds a search entry with no search type menu.
@@ -20237,7 +20237,7 @@ export namespace RB {
     class StaticPlaylistSource extends PlaylistSource implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<StaticPlaylistSource>;
 
-        // Constructors of RB.StaticPlaylistSource
+        // Constructors
 
         constructor(properties?: Partial<StaticPlaylistSource.ConstructorProps>, ...args: any[]);
 
@@ -20259,7 +20259,7 @@ export namespace RB {
 
         static new_from_xml(...args: never[]): any;
 
-        // Own methods of RB.StaticPlaylistSource
+        // Methods
 
         /**
          * Adds the specified entry to the playlist.
@@ -20721,13 +20721,13 @@ export namespace RB {
     class StreamingSource extends Source implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<StreamingSource>;
 
-        // Constructors of RB.StreamingSource
+        // Constructors
 
         constructor(properties?: Partial<StreamingSource.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of RB.StreamingSource
+        // Methods
 
         /**
          * Provides status text and progress fraction suitable for use in
@@ -21165,7 +21165,7 @@ export namespace RB {
     class StringValueMap extends GObject.Object {
         static $gtype: GObject.GType<StringValueMap>;
 
-        // Constructors of RB.StringValueMap
+        // Constructors
 
         constructor(properties?: Partial<StringValueMap.ConstructorProps>, ...args: any[]);
 
@@ -21173,7 +21173,7 @@ export namespace RB {
 
         static ['new'](): StringValueMap;
 
-        // Own methods of RB.StringValueMap
+        // Methods
 
         /**
          * Locates and copies the value associated with the key.
@@ -21227,11 +21227,11 @@ export namespace RB {
     class TaskList extends GObject.Object {
         static $gtype: GObject.GType<TaskList>;
 
-        // Own properties of RB.TaskList
+        // Properties
 
         get model(): ListModel;
 
-        // Constructors of RB.TaskList
+        // Constructors
 
         constructor(properties?: Partial<TaskList.ConstructorProps>, ...args: any[]);
 
@@ -21239,7 +21239,7 @@ export namespace RB {
 
         static ['new'](): TaskList;
 
-        // Own methods of RB.TaskList
+        // Methods
 
         add_task(task: TaskProgress): void;
         /**
@@ -21265,13 +21265,13 @@ export namespace RB {
     class TaskProgressSimple extends GObject.Object implements TaskProgress {
         static $gtype: GObject.GType<TaskProgressSimple>;
 
-        // Constructors of RB.TaskProgressSimple
+        // Constructors
 
         constructor(properties?: Partial<TaskProgressSimple.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of RB.TaskProgressSimple
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -21280,7 +21280,7 @@ export namespace RB {
         connect_after(signal: 'cancel-task', callback: (_source: this) => void): number;
         emit(signal: 'cancel-task'): void;
 
-        // Own static methods of RB.TaskProgressSimple
+        // Static methods
 
         /**
          * Creates a new simple task progress object.
@@ -21783,7 +21783,7 @@ export namespace RB {
     class TrackTransferBatch extends GObject.Object implements TaskProgress {
         static $gtype: GObject.GType<TrackTransferBatch>;
 
-        // Own properties of RB.TrackTransferBatch
+        // Properties
 
         /**
          * The RBSource to which the tracks are being transferred.
@@ -21842,7 +21842,7 @@ export namespace RB {
          */
         get totalEntries(): number;
 
-        // Constructors of RB.TrackTransferBatch
+        // Constructors
 
         constructor(properties?: Partial<TrackTransferBatch.ConstructorProps>, ...args: any[]);
 
@@ -21856,7 +21856,7 @@ export namespace RB {
             queue: GObject.Object,
         ): TrackTransferBatch;
 
-        // Own signals of RB.TrackTransferBatch
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -21988,7 +21988,7 @@ export namespace RB {
         ): number;
         emit(signal: 'track-started', entry: RhythmDBEntry, dest: string): void;
 
-        // Own virtual methods of RB.TrackTransferBatch
+        // Virtual methods
 
         vfunc_cancelled(): void;
         vfunc_complete(): void;
@@ -22013,7 +22013,7 @@ export namespace RB {
         vfunc_track_progress(entry: RhythmDBEntry, dest: string, done: number, total: number, fraction: number): void;
         vfunc_track_started(entry: RhythmDBEntry, dest: string): void;
 
-        // Own methods of RB.TrackTransferBatch
+        // Methods
 
         /**
          * Adds an entry to be transferred.
@@ -22486,7 +22486,7 @@ export namespace RB {
     class TrackTransferQueue extends GObject.Object {
         static $gtype: GObject.GType<TrackTransferQueue>;
 
-        // Own properties of RB.TrackTransferQueue
+        // Properties
 
         /**
          * The current #RBTrackTransferBatch being processed
@@ -22497,7 +22497,7 @@ export namespace RB {
          */
         get shell(): Shell;
 
-        // Constructors of RB.TrackTransferQueue
+        // Constructors
 
         constructor(properties?: Partial<TrackTransferQueue.ConstructorProps>, ...args: any[]);
 
@@ -22505,7 +22505,7 @@ export namespace RB {
 
         static ['new'](shell: Shell): TrackTransferQueue;
 
-        // Own signals of RB.TrackTransferQueue
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -22529,11 +22529,11 @@ export namespace RB {
         ): number;
         emit(signal: 'transfer-progress', done: number, total: number, fraction: number, time_left: number): void;
 
-        // Own virtual methods of RB.TrackTransferQueue
+        // Virtual methods
 
         vfunc_transfer_progress(done: number, total: number, fraction: number, time_left: number): void;
 
-        // Own methods of RB.TrackTransferQueue
+        // Methods
 
         /**
          * Removes a transfer batch from the queue.  If an entry from the
@@ -22585,14 +22585,14 @@ export namespace RB {
     class URIDialog extends Gtk.Dialog implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<URIDialog>;
 
-        // Own properties of RB.URIDialog
+        // Properties
 
         /**
          * The label displayed in the dialog.
          */
         get label(): string;
 
-        // Constructors of RB.URIDialog
+        // Constructors
 
         constructor(properties?: Partial<URIDialog.ConstructorProps>, ...args: any[]);
 
@@ -22603,7 +22603,7 @@ export namespace RB {
 
         static ['new'](...args: never[]): any;
 
-        // Own signals of RB.URIDialog
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -22612,7 +22612,7 @@ export namespace RB {
         connect_after(signal: 'location-added', callback: (_source: this, uri: string) => void): number;
         emit(signal: 'location-added', uri: string): void;
 
-        // Own virtual methods of RB.URIDialog
+        // Virtual methods
 
         vfunc_location_added(uri: string): void;
 
@@ -23023,7 +23023,7 @@ export namespace RB {
     abstract class ApplicationPrivate {
         static $gtype: GObject.GType<ApplicationPrivate>;
 
-        // Constructors of RB.ApplicationPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -23032,7 +23032,7 @@ export namespace RB {
     abstract class AsyncCopyPrivate {
         static $gtype: GObject.GType<AsyncCopyPrivate>;
 
-        // Constructors of RB.AsyncCopyPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -23042,7 +23042,7 @@ export namespace RB {
     abstract class BrowserSourcePrivate {
         static $gtype: GObject.GType<BrowserSourcePrivate>;
 
-        // Constructors of RB.BrowserSourcePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -23051,7 +23051,7 @@ export namespace RB {
     abstract class ButtonBarPrivate {
         static $gtype: GObject.GType<ButtonBarPrivate>;
 
-        // Constructors of RB.ButtonBarPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -23061,7 +23061,7 @@ export namespace RB {
     abstract class CellRendererRatingClassPrivate {
         static $gtype: GObject.GType<CellRendererRatingClassPrivate>;
 
-        // Constructors of RB.CellRendererRatingClassPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -23069,7 +23069,7 @@ export namespace RB {
     abstract class CellRendererRatingPrivate {
         static $gtype: GObject.GType<CellRendererRatingPrivate>;
 
-        // Constructors of RB.CellRendererRatingPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -23078,7 +23078,7 @@ export namespace RB {
     abstract class ChunkLoaderPrivate {
         static $gtype: GObject.GType<ChunkLoaderPrivate>;
 
-        // Constructors of RB.ChunkLoaderPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -23089,7 +23089,7 @@ export namespace RB {
     abstract class DisplayPageGroupPrivate {
         static $gtype: GObject.GType<DisplayPageGroupPrivate>;
 
-        // Constructors of RB.DisplayPageGroupPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -23098,7 +23098,7 @@ export namespace RB {
     abstract class DisplayPagePrivate {
         static $gtype: GObject.GType<DisplayPagePrivate>;
 
-        // Constructors of RB.DisplayPagePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -23107,7 +23107,7 @@ export namespace RB {
     abstract class DisplayPageTreePrivate {
         static $gtype: GObject.GType<DisplayPageTreePrivate>;
 
-        // Constructors of RB.DisplayPageTreePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -23118,7 +23118,7 @@ export namespace RB {
     abstract class EntryViewPrivate {
         static $gtype: GObject.GType<EntryViewPrivate>;
 
-        // Constructors of RB.EntryViewPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -23127,11 +23127,11 @@ export namespace RB {
     abstract class ExtDBKey {
         static $gtype: GObject.GType<ExtDBKey>;
 
-        // Constructors of RB.ExtDBKey
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own static methods of RB.ExtDBKey
+        // Static methods
 
         /**
          * Creates a new metadata lookup key with a single field.
@@ -23148,7 +23148,7 @@ export namespace RB {
          */
         static create_storage(field: string, value: string): ExtDBKey;
 
-        // Own methods of RB.ExtDBKey
+        // Methods
 
         /**
          * Adds a field to the key, or an additional value to an existing field.
@@ -23234,7 +23234,7 @@ export namespace RB {
     abstract class ExtDBPrivate {
         static $gtype: GObject.GType<ExtDBPrivate>;
 
-        // Constructors of RB.ExtDBPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -23243,7 +23243,7 @@ export namespace RB {
     abstract class FadingImagePrivate {
         static $gtype: GObject.GType<FadingImagePrivate>;
 
-        // Constructors of RB.FadingImagePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -23252,7 +23252,7 @@ export namespace RB {
     abstract class HistoryPrivate {
         static $gtype: GObject.GType<HistoryPrivate>;
 
-        // Constructors of RB.HistoryPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -23262,7 +23262,7 @@ export namespace RB {
     abstract class ListModelPrivate {
         static $gtype: GObject.GType<ListModelPrivate>;
 
-        // Constructors of RB.ListModelPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -23273,7 +23273,7 @@ export namespace RB {
     abstract class MetaDataPrivate {
         static $gtype: GObject.GType<MetaDataPrivate>;
 
-        // Constructors of RB.MetaDataPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -23282,7 +23282,7 @@ export namespace RB {
     abstract class PlayOrderPrivate {
         static $gtype: GObject.GType<PlayOrderPrivate>;
 
-        // Constructors of RB.PlayOrderPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -23294,7 +23294,7 @@ export namespace RB {
     abstract class PlaylistManagerPrivate {
         static $gtype: GObject.GType<PlaylistManagerPrivate>;
 
-        // Constructors of RB.PlaylistManagerPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -23303,7 +23303,7 @@ export namespace RB {
     abstract class PlaylistSourcePrivate {
         static $gtype: GObject.GType<PlaylistSourcePrivate>;
 
-        // Constructors of RB.PlaylistSourcePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -23311,7 +23311,7 @@ export namespace RB {
     class PodcastChannel {
         static $gtype: GObject.GType<PodcastChannel>;
 
-        // Own fields of RB.PodcastChannel
+        // Fields
 
         refcount: number;
         url: string;
@@ -23328,7 +23328,7 @@ export namespace RB {
         num_posts: number;
         status: PodcastParseStatus;
 
-        // Constructors of RB.PodcastChannel
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -23336,7 +23336,7 @@ export namespace RB {
     class PodcastItem {
         static $gtype: GObject.GType<PodcastItem>;
 
-        // Own fields of RB.PodcastItem
+        // Fields
 
         title: string;
         url: string;
@@ -23347,7 +23347,7 @@ export namespace RB {
         duration: number;
         filesize: number;
 
-        // Constructors of RB.PodcastItem
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -23368,7 +23368,7 @@ export namespace RB {
     abstract class PodcastManagerPrivate {
         static $gtype: GObject.GType<PodcastManagerPrivate>;
 
-        // Constructors of RB.PodcastManagerPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -23377,7 +23377,7 @@ export namespace RB {
     abstract class Profiler {
         static $gtype: GObject.GType<Profiler>;
 
-        // Constructors of RB.Profiler
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -23386,7 +23386,7 @@ export namespace RB {
     abstract class PropertyViewPrivate {
         static $gtype: GObject.GType<PropertyViewPrivate>;
 
-        // Constructors of RB.PropertyViewPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -23395,7 +23395,7 @@ export namespace RB {
     abstract class RatingPrivate {
         static $gtype: GObject.GType<RatingPrivate>;
 
-        // Constructors of RB.RatingPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -23403,14 +23403,14 @@ export namespace RB {
     class RefString {
         static $gtype: GObject.GType<RefString>;
 
-        // Constructors of RB.RefString
+        // Constructors
 
         constructor(init: string);
         _init(...args: any[]): void;
 
         static ['new'](init: string): RefString;
 
-        // Own static methods of RB.RefString
+        // Static methods
 
         /**
          * Key equality function suitable for use with #GHashTable.
@@ -23442,7 +23442,7 @@ export namespace RB {
          */
         static system_shutdown(): void;
 
-        // Own methods of RB.RefString
+        // Methods
 
         /**
          * Returns the actual string for a #RBRefString.
@@ -23484,7 +23484,7 @@ export namespace RB {
     class RhythmDBEntry {
         static $gtype: GObject.GType<RhythmDBEntry>;
 
-        // Constructors of RB.RhythmDBEntry
+        // Constructors
 
         constructor(db: RhythmDB, type: RhythmDBEntryType, uri: string);
         _init(...args: any[]): void;
@@ -23493,7 +23493,7 @@ export namespace RB {
 
         static ['new'](db: RhythmDB, type: RhythmDBEntryType, uri: string): RhythmDBEntry;
 
-        // Own methods of RB.RhythmDBEntry
+        // Methods
 
         /**
          * Applies a set of metadata properties to `entry`.  The metadata should be in the
@@ -23626,11 +23626,11 @@ export namespace RB {
     class RhythmDBEntryChange {
         static $gtype: GObject.GType<RhythmDBEntryChange>;
 
-        // Own fields of RB.RhythmDBEntryChange
+        // Fields
 
         prop: RhythmDBPropType;
 
-        // Constructors of RB.RhythmDBEntryChange
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -23639,7 +23639,7 @@ export namespace RB {
     abstract class RhythmDBEntryTypePrivate {
         static $gtype: GObject.GType<RhythmDBEntryTypePrivate>;
 
-        // Constructors of RB.RhythmDBEntryTypePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -23648,7 +23648,7 @@ export namespace RB {
     abstract class RhythmDBImportJobPrivate {
         static $gtype: GObject.GType<RhythmDBImportJobPrivate>;
 
-        // Constructors of RB.RhythmDBImportJobPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -23656,7 +23656,7 @@ export namespace RB {
     abstract class RhythmDBPrivate {
         static $gtype: GObject.GType<RhythmDBPrivate>;
 
-        // Constructors of RB.RhythmDBPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -23665,7 +23665,7 @@ export namespace RB {
     abstract class RhythmDBPropertyModelPrivate {
         static $gtype: GObject.GType<RhythmDBPropertyModelPrivate>;
 
-        // Constructors of RB.RhythmDBPropertyModelPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -23673,13 +23673,13 @@ export namespace RB {
     class RhythmDBQueryData {
         static $gtype: GObject.GType<RhythmDBQueryData>;
 
-        // Own fields of RB.RhythmDBQueryData
+        // Fields
 
         type: number;
         propid: number;
         subquery: RhythmDBQuery;
 
-        // Constructors of RB.RhythmDBQueryData
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -23688,7 +23688,7 @@ export namespace RB {
     abstract class RhythmDBQueryModelPrivate {
         static $gtype: GObject.GType<RhythmDBQueryModelPrivate>;
 
-        // Constructors of RB.RhythmDBQueryModelPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -23697,7 +23697,7 @@ export namespace RB {
     abstract class RhythmDBQueryResultListPrivate {
         static $gtype: GObject.GType<RhythmDBQueryResultListPrivate>;
 
-        // Constructors of RB.RhythmDBQueryResultListPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -23707,7 +23707,7 @@ export namespace RB {
     abstract class SearchEntryPrivate {
         static $gtype: GObject.GType<SearchEntryPrivate>;
 
-        // Constructors of RB.SearchEntryPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -23716,7 +23716,7 @@ export namespace RB {
     abstract class SegmentedBarPrivate {
         static $gtype: GObject.GType<SegmentedBarPrivate>;
 
-        // Constructors of RB.SegmentedBarPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -23726,7 +23726,7 @@ export namespace RB {
     abstract class ShellPlayerPrivate {
         static $gtype: GObject.GType<ShellPlayerPrivate>;
 
-        // Constructors of RB.ShellPlayerPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -23735,7 +23735,7 @@ export namespace RB {
     abstract class ShellPreferencesPrivate {
         static $gtype: GObject.GType<ShellPreferencesPrivate>;
 
-        // Constructors of RB.ShellPreferencesPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -23743,7 +23743,7 @@ export namespace RB {
     abstract class ShellPrivate {
         static $gtype: GObject.GType<ShellPrivate>;
 
-        // Constructors of RB.ShellPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -23752,7 +23752,7 @@ export namespace RB {
     abstract class SongInfoPrivate {
         static $gtype: GObject.GType<SongInfoPrivate>;
 
-        // Constructors of RB.SongInfoPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -23761,7 +23761,7 @@ export namespace RB {
     abstract class SourcePrivate {
         static $gtype: GObject.GType<SourcePrivate>;
 
-        // Constructors of RB.SourcePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -23772,7 +23772,7 @@ export namespace RB {
     abstract class SourceToolbarPrivate {
         static $gtype: GObject.GType<SourceToolbarPrivate>;
 
-        // Constructors of RB.SourceToolbarPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -23782,7 +23782,7 @@ export namespace RB {
     abstract class StreamingSourcePrivate {
         static $gtype: GObject.GType<StreamingSourcePrivate>;
 
-        // Constructors of RB.StreamingSourcePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -23791,7 +23791,7 @@ export namespace RB {
     abstract class StringValueMapPrivate {
         static $gtype: GObject.GType<StringValueMapPrivate>;
 
-        // Constructors of RB.StringValueMapPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -23800,7 +23800,7 @@ export namespace RB {
     abstract class TaskListPrivate {
         static $gtype: GObject.GType<TaskListPrivate>;
 
-        // Constructors of RB.TaskListPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -23810,7 +23810,7 @@ export namespace RB {
     abstract class TaskProgressSimplePrivate {
         static $gtype: GObject.GType<TaskProgressSimplePrivate>;
 
-        // Constructors of RB.TaskProgressSimplePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -23819,7 +23819,7 @@ export namespace RB {
     abstract class TrackTransferBatchPrivate {
         static $gtype: GObject.GType<TrackTransferBatchPrivate>;
 
-        // Constructors of RB.TrackTransferBatchPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -23828,7 +23828,7 @@ export namespace RB {
     abstract class TrackTransferQueuePrivate {
         static $gtype: GObject.GType<TrackTransferQueuePrivate>;
 
-        // Constructors of RB.TrackTransferQueuePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -23838,7 +23838,7 @@ export namespace RB {
     abstract class URIDialogPrivate {
         static $gtype: GObject.GType<URIDialogPrivate>;
 
-        // Constructors of RB.URIDialogPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -23870,7 +23870,7 @@ export namespace RB {
         want_uri(source: Source, uri: string): number;
     }
     interface DeviceSource extends GObject.Object {
-        // Own methods of RB.DeviceSource
+        // Methods
 
         can_eject(): boolean;
         /**
@@ -23890,7 +23890,7 @@ export namespace RB {
          */
         set_display_details(): void;
 
-        // Own virtual methods of RB.DeviceSource
+        // Virtual methods
 
         vfunc_can_eject(): boolean;
         /**
@@ -23917,7 +23917,7 @@ export namespace RB {
         ['new'](): Encoder;
     }
     interface Encoder extends GObject.Object {
-        // Own methods of RB.Encoder
+        // Methods
 
         /**
          * Attempts to cancel any in progress encoding.  The encoder should
@@ -23944,7 +23944,7 @@ export namespace RB {
          */
         get_missing_plugins(profile: GstPbutils.EncodingProfile): [boolean, string, string];
 
-        // Own virtual methods of RB.Encoder
+        // Virtual methods
 
         /**
          * Attempts to cancel any in progress encoding.  The encoder should
@@ -24004,7 +24004,7 @@ export namespace RB {
         ['new'](want_crossfade: boolean): Player;
     }
     interface Player extends GObject.Object {
-        // Own methods of RB.Player
+        // Methods
 
         /**
          * If a URI is specified, this will close the stream corresponding
@@ -24104,7 +24104,7 @@ export namespace RB {
          */
         set_volume(volume: number): void;
 
-        // Own virtual methods of RB.Player
+        // Virtual methods
 
         vfunc_buffering(stream_data: any | null, progress: number): void;
         /**
@@ -24219,7 +24219,7 @@ export namespace RB {
         prototype: PlayerGstFilter;
     }
     interface PlayerGstFilter extends GObject.Object {
-        // Own methods of RB.PlayerGstFilter
+        // Methods
 
         /**
          * Adds a new filter to the playback pipeline.  The filter may not be
@@ -24238,7 +24238,7 @@ export namespace RB {
          */
         remove_filter(element: Gst.Element): boolean;
 
-        // Own virtual methods of RB.PlayerGstFilter
+        // Virtual methods
 
         /**
          * Adds a new filter to the playback pipeline.  The filter may not be
@@ -24271,7 +24271,7 @@ export namespace RB {
         prototype: PlayerGstTee;
     }
     interface PlayerGstTee extends GObject.Object {
-        // Own methods of RB.PlayerGstTee
+        // Methods
 
         /**
          * Adds a new sink to the playback pipeline.  The sink may not be
@@ -24290,7 +24290,7 @@ export namespace RB {
          */
         remove_tee(element: Gst.Element): boolean;
 
-        // Own virtual methods of RB.PlayerGstTee
+        // Virtual methods
 
         /**
          * Adds a new sink to the playback pipeline.  The sink may not be
@@ -24323,7 +24323,7 @@ export namespace RB {
         prototype: RhythmDBQueryResults;
     }
     interface RhythmDBQueryResults extends GObject.Object {
-        // Own methods of RB.RhythmDBQueryResults
+        // Methods
 
         /**
          * Provides a new set of query results.  References must be taken on the
@@ -24340,7 +24340,7 @@ export namespace RB {
          */
         query_complete(): void;
 
-        // Own virtual methods of RB.RhythmDBQueryResults
+        // Virtual methods
 
         /**
          * Provides a new set of query results.  References must be taken on the
@@ -24384,7 +24384,7 @@ export namespace RB {
         prototype: TaskProgress;
     }
     interface TaskProgress extends GObject.Object {
-        // Own properties of RB.TaskProgress
+        // Properties
 
         get task_cancellable(): boolean;
         set task_cancellable(val: boolean);
@@ -24411,11 +24411,11 @@ export namespace RB {
         get taskProgress(): number;
         set taskProgress(val: number);
 
-        // Own methods of RB.TaskProgress
+        // Methods
 
         cancel(): void;
 
-        // Own virtual methods of RB.TaskProgress
+        // Virtual methods
 
         vfunc_cancel(): void;
     }
@@ -24436,14 +24436,14 @@ export namespace RB {
         prototype: TransferTarget;
     }
     interface TransferTarget extends GObject.Object {
-        // Own properties of RB.TransferTarget
+        // Properties
 
         get encoding_target(): GstPbutils.EncodingTarget;
         set encoding_target(val: GstPbutils.EncodingTarget);
         get encodingTarget(): GstPbutils.EncodingTarget;
         set encodingTarget(val: GstPbutils.EncodingTarget);
 
-        // Own methods of RB.TransferTarget
+        // Methods
 
         /**
          * Constructs a URI to use as the destination for a transfer or transcoding
@@ -24546,7 +24546,7 @@ export namespace RB {
          */
         transfer(settings: Gio.Settings, entries: RhythmDBEntry[], defer: boolean): TrackTransferBatch;
 
-        // Own virtual methods of RB.TransferTarget
+        // Virtual methods
 
         /**
          * Constructs a URI to use as the destination for a transfer or transcoding

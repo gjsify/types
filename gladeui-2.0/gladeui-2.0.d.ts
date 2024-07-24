@@ -922,12 +922,12 @@ export namespace Gladeui {
     class AdaptorChooser extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<AdaptorChooser>;
 
-        // Own properties of Gladeui.AdaptorChooser
+        // Properties
 
         get project(): Project;
         set project(val: Project);
 
-        // Constructors of Gladeui.AdaptorChooser
+        // Constructors
 
         constructor(properties?: Partial<AdaptorChooser.ConstructorProps>, ...args: any[]);
 
@@ -935,7 +935,7 @@ export namespace Gladeui {
 
         static ['new'](): AdaptorChooser;
 
-        // Own methods of Gladeui.AdaptorChooser
+        // Methods
 
         get_project(): Project;
         set_project(project: Project): void;
@@ -1383,7 +1383,7 @@ export namespace Gladeui {
     class App extends GObject.Object {
         static $gtype: GObject.GType<App>;
 
-        // Constructors of Gladeui.App
+        // Constructors
 
         constructor(properties?: Partial<App.ConstructorProps>, ...args: any[]);
 
@@ -1391,7 +1391,7 @@ export namespace Gladeui {
 
         static ['new'](): App;
 
-        // Own signals of Gladeui.App
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -1424,7 +1424,7 @@ export namespace Gladeui {
         ): number;
         emit(signal: 'widget-adaptor-registered', adaptor: GObject.Object): void;
 
-        // Own static methods of Gladeui.App
+        // Static methods
 
         static add_project(project: Project): void;
         /**
@@ -1521,18 +1521,18 @@ export namespace Gladeui {
     class BaseEditor extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<BaseEditor>;
 
-        // Own properties of Gladeui.BaseEditor
+        // Properties
 
         // This accessor conflicts with a property or field in a parent class or interface.
         container: GObject.Object | any;
 
-        // Constructors of Gladeui.BaseEditor
+        // Constructors
 
         constructor(properties?: Partial<BaseEditor.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of Gladeui.BaseEditor
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -1580,7 +1580,7 @@ export namespace Gladeui {
         ): number;
         emit(signal: 'move-child', gparent: GObject.Object, gchild: GObject.Object): void;
 
-        // Own virtual methods of Gladeui.BaseEditor
+        // Virtual methods
 
         vfunc_change_type(gchild: Widget, type: GObject.GType): boolean;
         vfunc_child_selected(gchild: Widget): void;
@@ -1588,7 +1588,7 @@ export namespace Gladeui {
         vfunc_get_display_name(gchild: Widget): string;
         vfunc_move_child(gparent: Widget, gchild: Widget): boolean;
 
-        // Own methods of Gladeui.BaseEditor
+        // Methods
 
         /**
          * Add `gchild` name and type property to `editor`
@@ -2063,14 +2063,14 @@ export namespace Gladeui {
     class CellRendererIcon extends Gtk.CellRendererPixbuf {
         static $gtype: GObject.GType<CellRendererIcon>;
 
-        // Own properties of Gladeui.CellRendererIcon
+        // Properties
 
         get activatable(): boolean;
         set activatable(val: boolean);
         get active(): boolean;
         set active(val: boolean);
 
-        // Constructors of Gladeui.CellRendererIcon
+        // Constructors
 
         constructor(properties?: Partial<CellRendererIcon.ConstructorProps>, ...args: any[]);
 
@@ -2078,7 +2078,7 @@ export namespace Gladeui {
 
         static ['new'](): CellRendererIcon;
 
-        // Own signals of Gladeui.CellRendererIcon
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -2087,13 +2087,13 @@ export namespace Gladeui {
         connect_after(signal: 'activate', callback: (_source: this, object: string) => void): number;
         emit(signal: 'activate', object: string): void;
 
-        // Own virtual methods of Gladeui.CellRendererIcon
+        // Virtual methods
 
         vfunc_activate(path: string): void;
         // Conflicted with Gtk.CellRenderer.vfunc_activate
         vfunc_activate(...args: never[]): any;
 
-        // Own methods of Gladeui.CellRendererIcon
+        // Methods
 
         get_activatable(): boolean;
         get_active(): boolean;
@@ -2113,12 +2113,12 @@ export namespace Gladeui {
     class Clipboard extends GObject.Object {
         static $gtype: GObject.GType<Clipboard>;
 
-        // Own properties of Gladeui.Clipboard
+        // Properties
 
         get has_selection(): boolean;
         get hasSelection(): boolean;
 
-        // Constructors of Gladeui.Clipboard
+        // Constructors
 
         constructor(properties?: Partial<Clipboard.ConstructorProps>, ...args: any[]);
 
@@ -2126,7 +2126,7 @@ export namespace Gladeui {
 
         static ['new'](): Clipboard;
 
-        // Own methods of Gladeui.Clipboard
+        // Methods
 
         /**
          * Adds `widgets` to `clipboard`.
@@ -2151,13 +2151,13 @@ export namespace Gladeui {
     class Command extends GObject.Object {
         static $gtype: GObject.GType<Command>;
 
-        // Constructors of Gladeui.Command
+        // Constructors
 
         constructor(properties?: Partial<Command.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of Gladeui.Command
+        // Static methods
 
         /**
          * Performs an add command on all widgets in `widgets` to `parent,` possibly
@@ -2311,7 +2311,7 @@ export namespace Gladeui {
          */
         static unlock_widget(widget: Widget): void;
 
-        // Own virtual methods of Gladeui.Command
+        // Virtual methods
 
         /**
          * Merges `other` into `command,` so that `command` now
@@ -2334,7 +2334,7 @@ export namespace Gladeui {
          */
         vfunc_unifies(other: Command): boolean;
 
-        // Own methods of Gladeui.Command
+        // Methods
 
         /**
          * Merges `other` into `command,` so that `command` now
@@ -2378,11 +2378,11 @@ export namespace Gladeui {
     class DesignView extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<DesignView>;
 
-        // Own properties of Gladeui.DesignView
+        // Properties
 
         get project(): Project;
 
-        // Constructors of Gladeui.DesignView
+        // Constructors
 
         constructor(properties?: Partial<DesignView.ConstructorProps>, ...args: any[]);
 
@@ -2393,11 +2393,11 @@ export namespace Gladeui {
 
         static ['new'](...args: never[]): any;
 
-        // Own static methods of Gladeui.DesignView
+        // Static methods
 
         static get_from_project(project: Project): DesignView | null;
 
-        // Own methods of Gladeui.DesignView
+        // Methods
 
         get_project(): Project;
 
@@ -2835,7 +2835,7 @@ export namespace Gladeui {
     class EPropBool extends EditorProperty implements Atk.ImplementorIface, Editable, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<EPropBool>;
 
-        // Constructors of Gladeui.EPropBool
+        // Constructors
 
         constructor(properties?: Partial<EPropBool.ConstructorProps>, ...args: any[]);
 
@@ -6825,7 +6825,7 @@ export namespace Gladeui {
     class EPropCheck extends EditorProperty implements Atk.ImplementorIface, Editable, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<EPropCheck>;
 
-        // Constructors of Gladeui.EPropCheck
+        // Constructors
 
         constructor(properties?: Partial<EPropCheck.ConstructorProps>, ...args: any[]);
 
@@ -10815,7 +10815,7 @@ export namespace Gladeui {
     class EPropColor extends EditorProperty implements Atk.ImplementorIface, Editable, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<EPropColor>;
 
-        // Constructors of Gladeui.EPropColor
+        // Constructors
 
         constructor(properties?: Partial<EPropColor.ConstructorProps>, ...args: any[]);
 
@@ -14805,7 +14805,7 @@ export namespace Gladeui {
     class EPropEnum extends EditorProperty implements Atk.ImplementorIface, Editable, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<EPropEnum>;
 
-        // Constructors of Gladeui.EPropEnum
+        // Constructors
 
         constructor(properties?: Partial<EPropEnum.ConstructorProps>, ...args: any[]);
 
@@ -18795,7 +18795,7 @@ export namespace Gladeui {
     class EPropFlags extends EditorProperty implements Atk.ImplementorIface, Editable, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<EPropFlags>;
 
-        // Constructors of Gladeui.EPropFlags
+        // Constructors
 
         constructor(properties?: Partial<EPropFlags.ConstructorProps>, ...args: any[]);
 
@@ -22788,7 +22788,7 @@ export namespace Gladeui {
     {
         static $gtype: GObject.GType<EPropNamedIcon>;
 
-        // Constructors of Gladeui.EPropNamedIcon
+        // Constructors
 
         constructor(properties?: Partial<EPropNamedIcon.ConstructorProps>, ...args: any[]);
 
@@ -26778,7 +26778,7 @@ export namespace Gladeui {
     class EPropNumeric extends EditorProperty implements Atk.ImplementorIface, Editable, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<EPropNumeric>;
 
-        // Constructors of Gladeui.EPropNumeric
+        // Constructors
 
         constructor(properties?: Partial<EPropNumeric.ConstructorProps>, ...args: any[]);
 
@@ -30768,7 +30768,7 @@ export namespace Gladeui {
     class EPropObject extends EditorProperty implements Atk.ImplementorIface, Editable, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<EPropObject>;
 
-        // Constructors of Gladeui.EPropObject
+        // Constructors
 
         constructor(properties?: Partial<EPropObject.ConstructorProps>, ...args: any[]);
 
@@ -34758,7 +34758,7 @@ export namespace Gladeui {
     class EPropObjects extends EditorProperty implements Atk.ImplementorIface, Editable, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<EPropObjects>;
 
-        // Constructors of Gladeui.EPropObjects
+        // Constructors
 
         constructor(properties?: Partial<EPropObjects.ConstructorProps>, ...args: any[]);
 
@@ -38748,7 +38748,7 @@ export namespace Gladeui {
     class EPropText extends EditorProperty implements Atk.ImplementorIface, Editable, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<EPropText>;
 
-        // Constructors of Gladeui.EPropText
+        // Constructors
 
         constructor(properties?: Partial<EPropText.ConstructorProps>, ...args: any[]);
 
@@ -42738,7 +42738,7 @@ export namespace Gladeui {
     class EPropUnichar extends EditorProperty implements Atk.ImplementorIface, Editable, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<EPropUnichar>;
 
-        // Constructors of Gladeui.EPropUnichar
+        // Constructors
 
         constructor(properties?: Partial<EPropUnichar.ConstructorProps>, ...args: any[]);
 
@@ -46739,7 +46739,7 @@ export namespace Gladeui {
     class Editor extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<Editor>;
 
-        // Own properties of Gladeui.Editor
+        // Properties
 
         get class_field(): string;
         get classField(): string;
@@ -46758,7 +46758,7 @@ export namespace Gladeui {
         // This accessor conflicts with a property or field in a parent class or interface.
         widget: Widget | any;
 
-        // Constructors of Gladeui.Editor
+        // Constructors
 
         constructor(properties?: Partial<Editor.ConstructorProps>, ...args: any[]);
 
@@ -46766,7 +46766,7 @@ export namespace Gladeui {
 
         static ['new'](): Editor;
 
-        // Own static methods of Gladeui.Editor
+        // Static methods
 
         /**
          * This convenience function creates a new dialog window to edit `widget`
@@ -46777,7 +46777,7 @@ export namespace Gladeui {
         static query_dialog(widget: Widget): boolean;
         static reset_dialog_run(parent: Gtk.Widget, gwidget: Widget): void;
 
-        // Own methods of Gladeui.Editor
+        // Methods
 
         hide_class_field(): void;
         hide_info(): void;
@@ -47240,7 +47240,7 @@ export namespace Gladeui {
     class EditorProperty extends Gtk.Box implements Atk.ImplementorIface, Editable, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<EditorProperty>;
 
-        // Own properties of Gladeui.EditorProperty
+        // Properties
 
         get custom_text(): string;
         set custom_text(val: string);
@@ -47257,13 +47257,13 @@ export namespace Gladeui {
         get useCommand(): boolean;
         set useCommand(val: boolean);
 
-        // Constructors of Gladeui.EditorProperty
+        // Constructors
 
         constructor(properties?: Partial<EditorProperty.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of Gladeui.EditorProperty
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -47275,7 +47275,7 @@ export namespace Gladeui {
         connect_after(signal: 'value-changed', callback: (_source: this, arg1: Property) => void): number;
         emit(signal: 'value-changed', arg1: Property): void;
 
-        // Own static methods of Gladeui.EditorProperty
+        // Static methods
 
         /**
          * Runs a dialog and updates the provided values.
@@ -47302,7 +47302,7 @@ export namespace Gladeui {
         ): boolean;
         static show_resource_dialog(project: Project, parent: Gtk.Widget, filename: string): boolean;
 
-        // Own virtual methods of Gladeui.EditorProperty
+        // Virtual methods
 
         vfunc_changed(property: Property): any | null;
         /**
@@ -47320,7 +47320,7 @@ export namespace Gladeui {
         // Conflicted with Gladeui.Editable.vfunc_load
         vfunc_load(...args: never[]): any;
 
-        // Own methods of Gladeui.EditorProperty
+        // Methods
 
         /**
          * Commits `value` to the property currently being edited by `eprop`.
@@ -51331,7 +51331,7 @@ export namespace Gladeui {
     class EditorSkeleton extends Gtk.Box implements Atk.ImplementorIface, Editable, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<EditorSkeleton>;
 
-        // Constructors of Gladeui.EditorSkeleton
+        // Constructors
 
         constructor(properties?: Partial<EditorSkeleton.ConstructorProps>, ...args: any[]);
 
@@ -51339,7 +51339,7 @@ export namespace Gladeui {
 
         static ['new'](): EditorSkeleton;
 
-        // Own methods of Gladeui.EditorSkeleton
+        // Methods
 
         add_editor(editor: Editable): void;
 
@@ -55339,12 +55339,12 @@ export namespace Gladeui {
     class EditorTable extends Gtk.Grid implements Atk.ImplementorIface, Editable, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<EditorTable>;
 
-        // Own properties of Gladeui.EditorTable
+        // Properties
 
         set page_type(val: EditorPageType);
         set pageType(val: EditorPageType);
 
-        // Constructors of Gladeui.EditorTable
+        // Constructors
 
         constructor(properties?: Partial<EditorTable.ConstructorProps>, ...args: any[]);
 
@@ -59362,12 +59362,12 @@ export namespace Gladeui {
     class Inspector extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<Inspector>;
 
-        // Own properties of Gladeui.Inspector
+        // Properties
 
         get project(): Project;
         set project(val: Project);
 
-        // Constructors of Gladeui.Inspector
+        // Constructors
 
         constructor(properties?: Partial<Inspector.ConstructorProps>, ...args: any[]);
 
@@ -59377,7 +59377,7 @@ export namespace Gladeui {
 
         static new_with_project(project: Project): Inspector;
 
-        // Own signals of Gladeui.Inspector
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -59389,12 +59389,12 @@ export namespace Gladeui {
         connect_after(signal: 'selection-changed', callback: (_source: this) => void): number;
         emit(signal: 'selection-changed'): void;
 
-        // Own virtual methods of Gladeui.Inspector
+        // Virtual methods
 
         vfunc_item_activated(): void;
         vfunc_selection_changed(): void;
 
-        // Own methods of Gladeui.Inspector
+        // Methods
 
         /**
          * Note that the method does not ref the returned #GladeProject.
@@ -59855,13 +59855,13 @@ export namespace Gladeui {
     class NamedIconChooserDialog extends Gtk.Dialog implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<NamedIconChooserDialog>;
 
-        // Constructors of Gladeui.NamedIconChooserDialog
+        // Constructors
 
         constructor(properties?: Partial<NamedIconChooserDialog.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of Gladeui.NamedIconChooserDialog
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -59873,12 +59873,12 @@ export namespace Gladeui {
         connect_after(signal: 'selection-changed', callback: (_source: this) => void): number;
         emit(signal: 'selection-changed'): void;
 
-        // Own virtual methods of Gladeui.NamedIconChooserDialog
+        // Virtual methods
 
         vfunc_icon_activated(): void;
         vfunc_selection_changed(): void;
 
-        // Own methods of Gladeui.NamedIconChooserDialog
+        // Methods
 
         get_context(): string;
         get_icon_name(): string;
@@ -60319,7 +60319,7 @@ export namespace Gladeui {
     class Palette extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<Palette>;
 
-        // Own properties of Gladeui.Palette
+        // Properties
 
         get item_appearance(): ItemAppearance;
         set item_appearance(val: ItemAppearance);
@@ -60336,7 +60336,7 @@ export namespace Gladeui {
         get useSmallItemIcons(): boolean;
         set useSmallItemIcons(val: boolean);
 
-        // Constructors of Gladeui.Palette
+        // Constructors
 
         constructor(properties?: Partial<Palette.ConstructorProps>, ...args: any[]);
 
@@ -60344,7 +60344,7 @@ export namespace Gladeui {
 
         static ['new'](): Palette;
 
-        // Own signals of Gladeui.Palette
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -60353,11 +60353,11 @@ export namespace Gladeui {
         connect_after(signal: 'refresh', callback: (_source: this) => void): number;
         emit(signal: 'refresh'): void;
 
-        // Own virtual methods of Gladeui.Palette
+        // Virtual methods
 
         vfunc_refresh(): void;
 
-        // Own methods of Gladeui.Palette
+        // Methods
 
         get_item_appearance(): ItemAppearance;
         get_project(): Project;
@@ -60814,11 +60814,11 @@ export namespace Gladeui {
     class Placeholder extends Gtk.Widget implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable {
         static $gtype: GObject.GType<Placeholder>;
 
-        // Own fields of Gladeui.Placeholder
+        // Fields
 
         widget: Gtk.Widget;
 
-        // Constructors of Gladeui.Placeholder
+        // Constructors
 
         constructor(properties?: Partial<Placeholder.ConstructorProps>, ...args: any[]);
 
@@ -60826,7 +60826,7 @@ export namespace Gladeui {
 
         static ['new'](): Placeholder;
 
-        // Own methods of Gladeui.Placeholder
+        // Methods
 
         get_parent(): Widget | null;
         // Conflicted with Gtk.Widget.get_parent
@@ -61605,7 +61605,7 @@ export namespace Gladeui {
     class Project extends GObject.Object implements Gtk.TreeDragSource, Gtk.TreeModel {
         static $gtype: GObject.GType<Project>;
 
-        // Own properties of Gladeui.Project
+        // Properties
 
         get add_item(): WidgetAdaptor;
         get addItem(): WidgetAdaptor;
@@ -61634,7 +61634,7 @@ export namespace Gladeui {
         get translationDomain(): string;
         set translationDomain(val: string);
 
-        // Constructors of Gladeui.Project
+        // Constructors
 
         constructor(properties?: Partial<Project.ConstructorProps>, ...args: any[]);
 
@@ -61642,7 +61642,7 @@ export namespace Gladeui {
 
         static ['new'](): Project;
 
-        // Own signals of Gladeui.Project
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -61729,7 +61729,7 @@ export namespace Gladeui {
         ): number;
         emit(signal: 'widget-visibility-changed', widget: Widget, visible: boolean): void;
 
-        // Own static methods of Gladeui.Project
+        // Static methods
 
         /**
          * Opens a project at the given path.
@@ -61739,7 +61739,7 @@ export namespace Gladeui {
         static verify_property(property: Property): void;
         static verify_signal(widget: Widget, signal: Signal): void;
 
-        // Own virtual methods of Gladeui.Project
+        // Virtual methods
 
         /**
          * Adds an object to the project.
@@ -61785,7 +61785,7 @@ export namespace Gladeui {
         vfunc_undo(): void;
         vfunc_widget_name_changed(widget: Widget): void;
 
-        // Own methods of Gladeui.Project
+        // Methods
 
         /**
          * Adds an object to the project.
@@ -62915,7 +62915,7 @@ export namespace Gladeui {
     class Property extends GObject.Object {
         static $gtype: GObject.GType<Property>;
 
-        // Own properties of Gladeui.Property
+        // Properties
 
         get class(): any;
         get enabled(): boolean;
@@ -62938,7 +62938,7 @@ export namespace Gladeui {
         set sensitive(val: boolean);
         get state(): number;
 
-        // Constructors of Gladeui.Property
+        // Constructors
 
         constructor(properties?: Partial<Property.ConstructorProps>, ...args: any[]);
 
@@ -62946,7 +62946,7 @@ export namespace Gladeui {
 
         static ['new'](def: PropertyDef, widget: Widget, value: GObject.Value | any): Property;
 
-        // Own signals of Gladeui.Property
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -62967,13 +62967,13 @@ export namespace Gladeui {
         ): number;
         emit(signal: 'value-changed', object?: any | null, p0?: any | null): void;
 
-        // Own static methods of Gladeui.Property
+        // Static methods
 
         static pop_superuser(): void;
         static push_superuser(): void;
         static superuser(): boolean;
 
-        // Own virtual methods of Gladeui.Property
+        // Virtual methods
 
         vfunc_dup(widget: Widget): Property;
         vfunc_equals_value(value: GObject.Value | any): boolean;
@@ -62998,7 +62998,7 @@ export namespace Gladeui {
         vfunc_tooltip_changed(tooltip: string, insensitive_tooltip: string, support_warning: string): void;
         vfunc_value_changed(old_value: GObject.Value | any, new_value: GObject.Value | any): void;
 
-        // Own methods of Gladeui.Property
+        // Methods
 
         /**
          * Adds `object` to the object list in `property`.
@@ -63127,7 +63127,7 @@ export namespace Gladeui {
     class PropertyLabel extends Gtk.EventBox implements Atk.ImplementorIface, Editable, Gtk.Buildable {
         static $gtype: GObject.GType<PropertyLabel>;
 
-        // Own properties of Gladeui.PropertyLabel
+        // Properties
 
         get append_colon(): boolean;
         set append_colon(val: boolean);
@@ -63150,7 +63150,7 @@ export namespace Gladeui {
         get propertyName(): string;
         set propertyName(val: string);
 
-        // Constructors of Gladeui.PropertyLabel
+        // Constructors
 
         constructor(properties?: Partial<PropertyLabel.ConstructorProps>, ...args: any[]);
 
@@ -63158,7 +63158,7 @@ export namespace Gladeui {
 
         static ['new'](): PropertyLabel;
 
-        // Own methods of Gladeui.PropertyLabel
+        // Methods
 
         get_append_colon(): boolean;
         get_custom_text(): string;
@@ -67175,7 +67175,7 @@ export namespace Gladeui {
     class PropertyShell extends Gtk.Box implements Atk.ImplementorIface, Editable, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<PropertyShell>;
 
-        // Own properties of Gladeui.PropertyShell
+        // Properties
 
         get custom_text(): string;
         set custom_text(val: string);
@@ -67198,7 +67198,7 @@ export namespace Gladeui {
         get useCommand(): boolean;
         set useCommand(val: boolean);
 
-        // Constructors of Gladeui.PropertyShell
+        // Constructors
 
         constructor(properties?: Partial<PropertyShell.ConstructorProps>, ...args: any[]);
 
@@ -67206,7 +67206,7 @@ export namespace Gladeui {
 
         static ['new'](): PropertyShell;
 
-        // Own signals of Gladeui.PropertyShell
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -67218,7 +67218,7 @@ export namespace Gladeui {
         connect_after(signal: 'pre-commit', callback: (_source: this, arg1: any | null) => void): number;
         emit(signal: 'pre-commit', arg1?: any | null): void;
 
-        // Own methods of Gladeui.PropertyShell
+        // Methods
 
         get_custom_text(): string;
         get_disable_check(): boolean;
@@ -71228,7 +71228,7 @@ export namespace Gladeui {
     class Signal extends GObject.Object {
         static $gtype: GObject.GType<Signal>;
 
-        // Own properties of Gladeui.Signal
+        // Properties
 
         get after(): boolean;
         set after(val: boolean);
@@ -71246,11 +71246,11 @@ export namespace Gladeui {
         get userdata(): string;
         set userdata(val: string);
 
-        // Own fields of Gladeui.Signal
+        // Fields
 
         object: GObject.Object;
 
-        // Constructors of Gladeui.Signal
+        // Constructors
 
         constructor(properties?: Partial<Signal.ConstructorProps>, ...args: any[]);
 
@@ -71258,7 +71258,7 @@ export namespace Gladeui {
 
         static ['new'](sig_def: SignalDef, handler: string, userdata: string, after: boolean, swapped: boolean): Signal;
 
-        // Own static methods of Gladeui.Signal
+        // Static methods
 
         /**
          * Reads and creates a ner #GladeSignal based on `node`
@@ -71267,7 +71267,7 @@ export namespace Gladeui {
          */
         static read(node: XmlNode, adaptor: WidgetAdaptor): Signal;
 
-        // Own methods of Gladeui.Signal
+        // Methods
 
         clone(): Signal;
         equal(sig2: Signal): boolean;
@@ -71373,14 +71373,14 @@ export namespace Gladeui {
     class SignalEditor extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<SignalEditor>;
 
-        // Own properties of Gladeui.SignalEditor
+        // Properties
 
         get glade_widget(): Gtk.TreeModel;
         set glade_widget(val: Gtk.TreeModel);
         get gladeWidget(): Gtk.TreeModel;
         set gladeWidget(val: Gtk.TreeModel);
 
-        // Constructors of Gladeui.SignalEditor
+        // Constructors
 
         constructor(properties?: Partial<SignalEditor.ConstructorProps>, ...args: any[]);
 
@@ -71388,7 +71388,7 @@ export namespace Gladeui {
 
         static ['new'](): SignalEditor;
 
-        // Own signals of Gladeui.SignalEditor
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -71403,7 +71403,7 @@ export namespace Gladeui {
         connect_after(signal: 'signal-activated', callback: (_source: this, signal: Signal) => void): number;
         emit($signal: 'signal-activated', signal: Signal): void;
 
-        // Own methods of Gladeui.SignalEditor
+        // Methods
 
         /**
          * If drag and drop support is enabled, the user will be able to drag signal handler
@@ -71856,18 +71856,18 @@ export namespace Gladeui {
     class SignalModel extends GObject.Object implements Gtk.TreeDragSource, Gtk.TreeModel {
         static $gtype: GObject.GType<SignalModel>;
 
-        // Own properties of Gladeui.SignalModel
+        // Properties
 
         set signals(val: any);
         set widget(val: Widget);
 
-        // Constructors of Gladeui.SignalModel
+        // Constructors
 
         constructor(properties?: Partial<SignalModel.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of Gladeui.SignalModel
+        // Static methods
 
         /**
          * Creates a new #GladeSignalModel object to show and edit the
@@ -72796,7 +72796,7 @@ export namespace Gladeui {
     class Widget extends GObject.InitiallyUnowned {
         static $gtype: GObject.GType<Widget>;
 
-        // Own properties of Gladeui.Widget
+        // Properties
 
         get adaptor(): WidgetAdaptor;
         get anarchist(): boolean;
@@ -72831,13 +72831,13 @@ export namespace Gladeui {
         set toplevelWidth(val: number);
         get visible(): boolean;
 
-        // Constructors of Gladeui.Widget
+        // Constructors
 
         constructor(properties?: Partial<Widget.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of Gladeui.Widget
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -72864,7 +72864,7 @@ export namespace Gladeui {
         connect_after(signal: 'support-changed', callback: (_source: this) => void): number;
         emit(signal: 'support-changed'): void;
 
-        // Own static methods of Gladeui.Widget
+        // Static methods
 
         /**
          * Currently only motion and button events are handled (see GLADE_WIDGET_IS_EVENT)
@@ -72908,7 +72908,7 @@ export namespace Gladeui {
          */
         static superuser(): boolean;
 
-        // Own virtual methods of Gladeui.Widget
+        // Virtual methods
 
         /**
          * Adds `child` to `parent` in a generic way for this #GladeWidget parent.
@@ -72943,7 +72943,7 @@ export namespace Gladeui {
         vfunc_remove_signal_handler(signal_handler: Signal): void;
         vfunc_replace_child(old_object: GObject.Object, new_object: GObject.Object): void;
 
-        // Own methods of Gladeui.Widget
+        // Methods
 
         /**
          * A convenience function to create a #GladeWidget of the prescribed type
@@ -73452,7 +73452,7 @@ export namespace Gladeui {
     class WidgetAction extends GObject.Object {
         static $gtype: GObject.GType<WidgetAction>;
 
-        // Own properties of Gladeui.WidgetAction
+        // Properties
 
         set definition(val: any);
         get sensitive(): boolean;
@@ -73460,13 +73460,13 @@ export namespace Gladeui {
         get visible(): boolean;
         set visible(val: boolean);
 
-        // Constructors of Gladeui.WidgetAction
+        // Constructors
 
         constructor(properties?: Partial<WidgetAction.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Gladeui.WidgetAction
+        // Methods
 
         get_children(): WidgetActionDef[];
         get_def(): WidgetActionDef;
@@ -73503,7 +73503,7 @@ export namespace Gladeui {
     class WidgetAdaptor extends GObject.Object {
         static $gtype: GObject.GType<WidgetAdaptor>;
 
-        // Own properties of Gladeui.WidgetAdaptor
+        // Properties
 
         get book(): string;
         get catalog(): string;
@@ -73521,13 +73521,13 @@ export namespace Gladeui {
         set title(val: string);
         get type(): GObject.GType;
 
-        // Constructors of Gladeui.WidgetAdaptor
+        // Constructors
 
         constructor(properties?: Partial<WidgetAdaptor.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of Gladeui.WidgetAdaptor
+        // Static methods
 
         /**
          * Dynamically creates a subclass of #GladeWidgetAdaptor and subclasses
@@ -73546,7 +73546,7 @@ export namespace Gladeui {
          */
         static list_adaptors(): WidgetAdaptor[];
 
-        // Own virtual methods of Gladeui.WidgetAdaptor
+        // Virtual methods
 
         /**
          * An adaptor function to be called on widget actions.
@@ -73773,7 +73773,7 @@ export namespace Gladeui {
          */
         vfunc_write_widget_after(widget: Widget, context: XmlContext, node: XmlNode): void;
 
-        // Own methods of Gladeui.WidgetAdaptor
+        // Methods
 
         /**
          * An adaptor function to be called on widget actions.
@@ -74134,11 +74134,11 @@ export namespace Gladeui {
     abstract class Catalog {
         static $gtype: GObject.GType<Catalog>;
 
-        // Constructors of Gladeui.Catalog
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own static methods of Gladeui.Catalog
+        // Static methods
 
         /**
          * Adds a new path to the list of path to look catalogs for.
@@ -74165,7 +74165,7 @@ export namespace Gladeui {
          */
         static remove_path(path?: string | null): void;
 
-        // Own methods of Gladeui.Catalog
+        // Methods
 
         get_adaptors(): WidgetAdaptor[];
         get_book(): string;
@@ -74190,11 +74190,11 @@ export namespace Gladeui {
     class CommandSetPropData {
         static $gtype: GObject.GType<CommandSetPropData>;
 
-        // Own fields of Gladeui.CommandSetPropData
+        // Fields
 
         property: Property;
 
-        // Constructors of Gladeui.CommandSetPropData
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -74202,7 +74202,7 @@ export namespace Gladeui {
     class Cursor {
         static $gtype: GObject.GType<Cursor>;
 
-        // Own fields of Gladeui.Cursor
+        // Fields
 
         selector: Gdk.Cursor;
         add_widget: Gdk.Cursor;
@@ -74217,11 +74217,11 @@ export namespace Gladeui {
         drag: Gdk.Cursor;
         add_widget_pixbuf: GdkPixbuf.Pixbuf;
 
-        // Constructors of Gladeui.Cursor
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own static methods of Gladeui.Cursor
+        // Static methods
 
         static get_add_widget_pixbuf(): GdkPixbuf.Pixbuf;
         /**
@@ -74247,11 +74247,11 @@ export namespace Gladeui {
     abstract class IDAllocator {
         static $gtype: GObject.GType<IDAllocator>;
 
-        // Constructors of Gladeui.IDAllocator
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of Gladeui.IDAllocator
+        // Methods
 
         /**
          * TODO: write me
@@ -74273,11 +74273,11 @@ export namespace Gladeui {
     abstract class NameContext {
         static $gtype: GObject.GType<NameContext>;
 
-        // Constructors of Gladeui.NameContext
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of Gladeui.NameContext
+        // Methods
 
         add_name(name: string): boolean;
         destroy(): void;
@@ -74292,7 +74292,7 @@ export namespace Gladeui {
     abstract class PalettePrivate {
         static $gtype: GObject.GType<PalettePrivate>;
 
-        // Constructors of Gladeui.PalettePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -74300,11 +74300,11 @@ export namespace Gladeui {
     abstract class ParamSpecObjects {
         static $gtype: GObject.GType<ParamSpecObjects>;
 
-        // Constructors of Gladeui.ParamSpecObjects
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of Gladeui.ParamSpecObjects
+        // Methods
 
         get_type(): GObject.GType;
         set_type(type: GObject.GType): void;
@@ -74314,7 +74314,7 @@ export namespace Gladeui {
     abstract class PlaceholderPrivate {
         static $gtype: GObject.GType<PlaceholderPrivate>;
 
-        // Constructors of Gladeui.PlaceholderPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -74323,7 +74323,7 @@ export namespace Gladeui {
     abstract class ProjectPrivate {
         static $gtype: GObject.GType<ProjectPrivate>;
 
-        // Constructors of Gladeui.ProjectPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -74332,7 +74332,7 @@ export namespace Gladeui {
     class PropertyDef {
         static $gtype: GObject.GType<PropertyDef>;
 
-        // Constructors of Gladeui.PropertyDef
+        // Constructors
 
         constructor(adaptor: WidgetAdaptor, id: string);
         _init(...args: any[]): void;
@@ -74343,7 +74343,7 @@ export namespace Gladeui {
 
         static new_from_spec_full(adaptor: WidgetAdaptor, spec: GObject.ParamSpec, need_handle: boolean): PropertyDef;
 
-        // Own static methods of Gladeui.PropertyDef
+        // Static methods
 
         static get_default_from_spec(spec: GObject.ParamSpec): unknown;
         static make_flags_from_string(type: GObject.GType, string: string): number;
@@ -74370,7 +74370,7 @@ export namespace Gladeui {
             domain: string,
         ): [boolean, PropertyDef | null];
 
-        // Own methods of Gladeui.PropertyDef
+        // Methods
 
         atk(): boolean;
         clone(): PropertyDef;
@@ -74444,7 +74444,7 @@ export namespace Gladeui {
     abstract class PropertyLabelPrivate {
         static $gtype: GObject.GType<PropertyLabelPrivate>;
 
-        // Constructors of Gladeui.PropertyLabelPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -74452,7 +74452,7 @@ export namespace Gladeui {
     abstract class PropertyPrivate {
         static $gtype: GObject.GType<PropertyPrivate>;
 
-        // Constructors of Gladeui.PropertyPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -74461,7 +74461,7 @@ export namespace Gladeui {
     abstract class PropertyShellPrivate {
         static $gtype: GObject.GType<PropertyShellPrivate>;
 
-        // Constructors of Gladeui.PropertyShellPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -74470,14 +74470,14 @@ export namespace Gladeui {
     class SignalDef {
         static $gtype: GObject.GType<SignalDef>;
 
-        // Constructors of Gladeui.SignalDef
+        // Constructors
 
         constructor(adaptor: WidgetAdaptor, for_type: GObject.GType, signal_id: number);
         _init(...args: any[]): void;
 
         static ['new'](adaptor: WidgetAdaptor, for_type: GObject.GType, signal_id: number): SignalDef;
 
-        // Own methods of Gladeui.SignalDef
+        // Methods
 
         /**
          * Clones a #GladeSignalDef
@@ -74553,7 +74553,7 @@ export namespace Gladeui {
     abstract class SignalModelPrivate {
         static $gtype: GObject.GType<SignalModelPrivate>;
 
-        // Constructors of Gladeui.SignalModelPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -74561,7 +74561,7 @@ export namespace Gladeui {
     abstract class SignalPrivate {
         static $gtype: GObject.GType<SignalPrivate>;
 
-        // Constructors of Gladeui.SignalPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -74569,12 +74569,12 @@ export namespace Gladeui {
     class TargetableVersion {
         static $gtype: GObject.GType<TargetableVersion>;
 
-        // Own fields of Gladeui.TargetableVersion
+        // Fields
 
         major: number;
         minor: number;
 
-        // Constructors of Gladeui.TargetableVersion
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -74589,7 +74589,7 @@ export namespace Gladeui {
     class WidgetActionDef {
         static $gtype: GObject.GType<WidgetActionDef>;
 
-        // Own fields of Gladeui.WidgetActionDef
+        // Fields
 
         id: string;
         path: string;
@@ -74598,7 +74598,7 @@ export namespace Gladeui {
         important: boolean;
         actions: any[];
 
-        // Constructors of Gladeui.WidgetActionDef
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -74613,7 +74613,7 @@ export namespace Gladeui {
 
         static ['new'](path: string): WidgetActionDef;
 
-        // Own methods of Gladeui.WidgetActionDef
+        // Methods
 
         clone(): WidgetActionDef;
         /**
@@ -74628,7 +74628,7 @@ export namespace Gladeui {
     abstract class WidgetActionPrivate {
         static $gtype: GObject.GType<WidgetActionPrivate>;
 
-        // Constructors of Gladeui.WidgetActionPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -74638,11 +74638,11 @@ export namespace Gladeui {
     abstract class WidgetGroup {
         static $gtype: GObject.GType<WidgetGroup>;
 
-        // Constructors of Gladeui.WidgetGroup
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of Gladeui.WidgetGroup
+        // Methods
 
         get_adaptors(): WidgetAdaptor[];
         get_expanded(): boolean;
@@ -74653,7 +74653,7 @@ export namespace Gladeui {
     abstract class WidgetPrivate {
         static $gtype: GObject.GType<WidgetPrivate>;
 
-        // Constructors of Gladeui.WidgetPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -74661,7 +74661,7 @@ export namespace Gladeui {
     class XmlContext {
         static $gtype: GObject.GType<XmlContext>;
 
-        // Constructors of Gladeui.XmlContext
+        // Constructors
 
         constructor(doc: XmlDoc, name_space?: string | null);
         _init(...args: any[]): void;
@@ -74670,7 +74670,7 @@ export namespace Gladeui {
 
         static new_from_path(full_path: string, nspace?: string | null, root_name?: string | null): XmlContext;
 
-        // Own methods of Gladeui.XmlContext
+        // Methods
 
         copy(): XmlContext;
         /**
@@ -74687,14 +74687,14 @@ export namespace Gladeui {
     class XmlDoc {
         static $gtype: GObject.GType<XmlDoc>;
 
-        // Constructors of Gladeui.XmlDoc
+        // Constructors
 
         constructor(properties?: Partial<{}>);
         _init(...args: any[]): void;
 
         static ['new'](): XmlDoc;
 
-        // Own methods of Gladeui.XmlDoc
+        // Methods
 
         get_root(): XmlNode;
         new_comment(comment: string): XmlNode;
@@ -74714,7 +74714,7 @@ export namespace Gladeui {
     class XmlNode {
         static $gtype: GObject.GType<XmlNode>;
 
-        // Constructors of Gladeui.XmlNode
+        // Constructors
 
         constructor(context: XmlContext, name: string);
         _init(...args: any[]): void;
@@ -74723,7 +74723,7 @@ export namespace Gladeui {
 
         static new_comment(context: XmlContext, comment: string): XmlNode;
 
-        // Own methods of Gladeui.XmlNode
+        // Methods
 
         add_next_sibling(new_node: XmlNode): XmlNode;
         add_prev_sibling(new_node: XmlNode): XmlNode;
@@ -74768,7 +74768,7 @@ export namespace Gladeui {
         prototype: Editable;
     }
     interface Editable extends Gtk.Widget {
-        // Own methods of Gladeui.Editable
+        // Methods
 
         block(): void;
         /**
@@ -74790,7 +74790,7 @@ export namespace Gladeui {
         set_show_name(show_name: boolean): void;
         unblock(): void;
 
-        // Own virtual methods of Gladeui.Editable
+        // Virtual methods
 
         /**
          * Loads `widget` property values into `editable`

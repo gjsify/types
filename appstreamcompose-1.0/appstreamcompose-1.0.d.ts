@@ -26,7 +26,7 @@ export namespace AppStreamCompose {
     class CanvasError extends GLib.Error {
         static $gtype: GObject.GType<CanvasError>;
 
-        // Static fields of AppStreamCompose.CanvasError
+        // Static fields
 
         /**
          * Generic failure.
@@ -45,12 +45,12 @@ export namespace AppStreamCompose {
          */
         static UNSUPPORTED: number;
 
-        // Constructors of AppStreamCompose.CanvasError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of AppStreamCompose.CanvasError
+        // Static methods
 
         static quark(): GLib.Quark;
     }
@@ -61,19 +61,19 @@ export namespace AppStreamCompose {
     class ComposeError extends GLib.Error {
         static $gtype: GObject.GType<ComposeError>;
 
-        // Static fields of AppStreamCompose.ComposeError
+        // Static fields
 
         /**
          * Generic failure.
          */
         static FAILED: number;
 
-        // Constructors of AppStreamCompose.ComposeError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of AppStreamCompose.ComposeError
+        // Static methods
 
         static quark(): GLib.Quark;
     }
@@ -113,7 +113,7 @@ export namespace AppStreamCompose {
     class ImageError extends GLib.Error {
         static $gtype: GObject.GType<ImageError>;
 
-        // Static fields of AppStreamCompose.ImageError
+        // Static fields
 
         /**
          * Generic failure.
@@ -124,12 +124,12 @@ export namespace AppStreamCompose {
          */
         static UNSUPPORTED: number;
 
-        // Constructors of AppStreamCompose.ImageError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of AppStreamCompose.ImageError
+        // Static methods
 
         static quark(): GLib.Quark;
     }
@@ -405,7 +405,7 @@ export namespace AppStreamCompose {
     class Canvas extends GObject.Object {
         static $gtype: GObject.GType<Canvas>;
 
-        // Constructors of AppStreamCompose.Canvas
+        // Constructors
 
         constructor(properties?: Partial<Canvas.ConstructorProps>, ...args: any[]);
 
@@ -413,7 +413,7 @@ export namespace AppStreamCompose {
 
         static ['new'](width: number, height: number): Canvas;
 
-        // Own methods of AppStreamCompose.Canvas
+        // Methods
 
         /**
          * Gets the canvas height.
@@ -444,7 +444,7 @@ export namespace AppStreamCompose {
     class Compose extends GObject.Object {
         static $gtype: GObject.GType<Compose>;
 
-        // Constructors of AppStreamCompose.Compose
+        // Constructors
 
         constructor(properties?: Partial<Compose.ConstructorProps>, ...args: any[]);
 
@@ -452,7 +452,7 @@ export namespace AppStreamCompose {
 
         static ['new'](): Compose;
 
-        // Own methods of AppStreamCompose.Compose
+        // Methods
 
         /**
          * Adds a component ID to the allowlist. If the list is not empty, only
@@ -679,7 +679,7 @@ export namespace AppStreamCompose {
     class DirectoryUnit extends Unit {
         static $gtype: GObject.GType<DirectoryUnit>;
 
-        // Constructors of AppStreamCompose.DirectoryUnit
+        // Constructors
 
         constructor(properties?: Partial<DirectoryUnit.ConstructorProps>, ...args: any[]);
 
@@ -690,7 +690,7 @@ export namespace AppStreamCompose {
 
         static ['new'](...args: never[]): any;
 
-        // Own methods of AppStreamCompose.DirectoryUnit
+        // Methods
 
         /**
          * Get the root directory path for this unit.
@@ -712,7 +712,7 @@ export namespace AppStreamCompose {
     class Hint extends GObject.Object {
         static $gtype: GObject.GType<Hint>;
 
-        // Constructors of AppStreamCompose.Hint
+        // Constructors
 
         constructor(properties?: Partial<Hint.ConstructorProps>, ...args: any[]);
 
@@ -722,7 +722,7 @@ export namespace AppStreamCompose {
 
         static new_for_tag(tag: string): Hint;
 
-        // Own methods of AppStreamCompose.Hint
+        // Methods
 
         /**
          * Add a replacement variable for the explanation text.
@@ -787,7 +787,7 @@ export namespace AppStreamCompose {
     class IconPolicy extends GObject.Object {
         static $gtype: GObject.GType<IconPolicy>;
 
-        // Constructors of AppStreamCompose.IconPolicy
+        // Constructors
 
         constructor(properties?: Partial<IconPolicy.ConstructorProps>, ...args: any[]);
 
@@ -795,7 +795,7 @@ export namespace AppStreamCompose {
 
         static ['new'](): IconPolicy;
 
-        // Own methods of AppStreamCompose.IconPolicy
+        // Methods
 
         /**
          * Sets a designated state for an icon of the given size.
@@ -815,7 +815,7 @@ export namespace AppStreamCompose {
     class Image extends GObject.Object {
         static $gtype: GObject.GType<Image>;
 
-        // Constructors of AppStreamCompose.Image
+        // Constructors
 
         constructor(properties?: Partial<Image.ConstructorProps>, ...args: any[]);
 
@@ -833,7 +833,7 @@ export namespace AppStreamCompose {
 
         static new_from_file(fname: string, dest_size: number, flags: ImageLoadFlags): Image;
 
-        // Own static methods of AppStreamCompose.Image
+        // Static methods
 
         /**
          * Get a set of image format names we can currently read
@@ -841,7 +841,7 @@ export namespace AppStreamCompose {
          */
         static supported_format_names(): GLib.HashTable<any, any>;
 
-        // Own methods of AppStreamCompose.Image
+        // Methods
 
         /**
          * Gets the image height.
@@ -922,7 +922,7 @@ export namespace AppStreamCompose {
     class Result extends GObject.Object {
         static $gtype: GObject.GType<Result>;
 
-        // Constructors of AppStreamCompose.Result
+        // Constructors
 
         constructor(properties?: Partial<Result.ConstructorProps>, ...args: any[]);
 
@@ -930,7 +930,7 @@ export namespace AppStreamCompose {
 
         static ['new'](): Result;
 
-        // Own methods of AppStreamCompose.Result
+        // Methods
 
         /**
          * Add component to the results set.
@@ -1088,7 +1088,7 @@ export namespace AppStreamCompose {
     class Unit extends GObject.Object {
         static $gtype: GObject.GType<Unit>;
 
-        // Constructors of AppStreamCompose.Unit
+        // Constructors
 
         constructor(properties?: Partial<Unit.ConstructorProps>, ...args: any[]);
 
@@ -1096,7 +1096,7 @@ export namespace AppStreamCompose {
 
         static ['new'](): Unit;
 
-        // Own virtual methods of AppStreamCompose.Unit
+        // Virtual methods
 
         /**
          * Close this unit, possibly freeing its resources. Calls to read_data() or
@@ -1123,7 +1123,7 @@ export namespace AppStreamCompose {
          */
         vfunc_read_data(filename: string): GLib.Bytes;
 
-        // Own methods of AppStreamCompose.Unit
+        // Methods
 
         /**
          * Add a path to the list of relevant directories.
@@ -1222,12 +1222,12 @@ export namespace AppStreamCompose {
     class IconPolicyIter {
         static $gtype: GObject.GType<IconPolicyIter>;
 
-        // Constructors of AppStreamCompose.IconPolicyIter
+        // Constructors
 
         constructor(properties?: Partial<{}>);
         _init(...args: any[]): void;
 
-        // Own methods of AppStreamCompose.IconPolicyIter
+        // Methods
 
         /**
          * Initializes a policy iterator for the policy entry list and associates it

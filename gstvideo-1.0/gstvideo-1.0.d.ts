@@ -1706,7 +1706,7 @@ export namespace GstVideo {
     class VideoOrientationMethod {
         static $gtype: GObject.GType<VideoOrientationMethod>;
 
-        // Static fields of GstVideo.VideoOrientationMethod
+        // Static fields
 
         /**
          * Identity (no rotation)
@@ -1749,7 +1749,7 @@ export namespace GstVideo {
          */
         static CUSTOM: number;
 
-        // Constructors of GstVideo.VideoOrientationMethod
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4428,19 +4428,19 @@ export namespace GstVideo {
     class ColorBalanceChannel extends GObject.Object {
         static $gtype: GObject.GType<ColorBalanceChannel>;
 
-        // Own fields of GstVideo.ColorBalanceChannel
+        // Fields
 
         label: string;
         min_value: number;
         max_value: number;
 
-        // Constructors of GstVideo.ColorBalanceChannel
+        // Constructors
 
         constructor(properties?: Partial<ColorBalanceChannel.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of GstVideo.ColorBalanceChannel
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -4449,7 +4449,7 @@ export namespace GstVideo {
         connect_after(signal: 'value-changed', callback: (_source: this, value: number) => void): number;
         emit(signal: 'value-changed', value: number): void;
 
-        // Own virtual methods of GstVideo.ColorBalanceChannel
+        // Virtual methods
 
         vfunc_value_changed(value: number): void;
     }
@@ -4477,7 +4477,7 @@ export namespace GstVideo {
     abstract class VideoAggregator extends GstBase.Aggregator {
         static $gtype: GObject.GType<VideoAggregator>;
 
-        // Own properties of GstVideo.VideoAggregator
+        // Properties
 
         /**
          * Causes the element to aggregate on a timeout even when no live source is
@@ -4494,24 +4494,24 @@ export namespace GstVideo {
          */
         get forceLive(): boolean;
 
-        // Own fields of GstVideo.VideoAggregator
+        // Fields
 
         aggregator: GstBase.Aggregator;
 
-        // Constructors of GstVideo.VideoAggregator
+        // Constructors
 
         constructor(properties?: Partial<VideoAggregator.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of GstVideo.VideoAggregator
+        // Virtual methods
 
         vfunc_aggregate_frames(outbuffer: Gst.Buffer): Gst.FlowReturn;
         vfunc_create_output_buffer(outbuffer: Gst.Buffer): Gst.FlowReturn;
         vfunc_find_best_format(downstream_caps: Gst.Caps, best_info: VideoInfo): boolean;
         vfunc_update_caps(caps: Gst.Caps): Gst.Caps;
 
-        // Own methods of GstVideo.VideoAggregator
+        // Methods
 
         /**
          * The returned #GstTaskPool is used internally for performing parallel
@@ -4541,24 +4541,24 @@ export namespace GstVideo {
     class VideoAggregatorConvertPad extends VideoAggregatorPad {
         static $gtype: GObject.GType<VideoAggregatorConvertPad>;
 
-        // Own properties of GstVideo.VideoAggregatorConvertPad
+        // Properties
 
         get converter_config(): Gst.Structure;
         set converter_config(val: Gst.Structure);
         get converterConfig(): Gst.Structure;
         set converterConfig(val: Gst.Structure);
 
-        // Constructors of GstVideo.VideoAggregatorConvertPad
+        // Constructors
 
         constructor(properties?: Partial<VideoAggregatorConvertPad.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of GstVideo.VideoAggregatorConvertPad
+        // Virtual methods
 
         vfunc_create_conversion_info(agg: VideoAggregator, conversion_info: VideoInfo): void;
 
-        // Own methods of GstVideo.VideoAggregatorConvertPad
+        // Methods
 
         /**
          * Requests the pad to check and update the converter before the next usage to
@@ -4582,7 +4582,7 @@ export namespace GstVideo {
     class VideoAggregatorPad extends GstBase.AggregatorPad {
         static $gtype: GObject.GType<VideoAggregatorPad>;
 
-        // Own properties of GstVideo.VideoAggregatorPad
+        // Properties
 
         get max_last_buffer_repeat(): number;
         set max_last_buffer_repeat(val: number);
@@ -4595,13 +4595,13 @@ export namespace GstVideo {
         get zorder(): number;
         set zorder(val: number);
 
-        // Constructors of GstVideo.VideoAggregatorPad
+        // Constructors
 
         constructor(properties?: Partial<VideoAggregatorPad.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of GstVideo.VideoAggregatorPad
+        // Virtual methods
 
         vfunc_clean_frame(videoaggregator: VideoAggregator, prepared_frame: VideoFrame): void;
         vfunc_prepare_frame(videoaggregator: VideoAggregator, buffer: Gst.Buffer, prepared_frame: VideoFrame): boolean;
@@ -4628,7 +4628,7 @@ export namespace GstVideo {
         ): void;
         vfunc_update_conversion_info(): void;
 
-        // Own methods of GstVideo.VideoAggregatorPad
+        // Methods
 
         /**
          * Returns the currently queued buffer that is going to be used
@@ -4684,7 +4684,7 @@ export namespace GstVideo {
     class VideoAggregatorParallelConvertPad extends VideoAggregatorConvertPad {
         static $gtype: GObject.GType<VideoAggregatorParallelConvertPad>;
 
-        // Constructors of GstVideo.VideoAggregatorParallelConvertPad
+        // Constructors
 
         constructor(properties?: Partial<VideoAggregatorParallelConvertPad.ConstructorProps>, ...args: any[]);
 
@@ -4700,11 +4700,11 @@ export namespace GstVideo {
     class VideoBufferPool extends Gst.BufferPool {
         static $gtype: GObject.GType<VideoBufferPool>;
 
-        // Own fields of GstVideo.VideoBufferPool
+        // Fields
 
         bufferpool: Gst.BufferPool;
 
-        // Constructors of GstVideo.VideoBufferPool
+        // Constructors
 
         constructor(properties?: Partial<VideoBufferPool.ConstructorProps>, ...args: any[]);
 
@@ -4854,7 +4854,7 @@ export namespace GstVideo {
     abstract class VideoDecoder extends Gst.Element {
         static $gtype: GObject.GType<VideoDecoder>;
 
-        // Own properties of GstVideo.VideoDecoder
+        // Properties
 
         /**
          * GstVideoDecoderRequestSyncPointFlags to use for the automatically
@@ -4935,13 +4935,13 @@ export namespace GstVideo {
         get qos(): boolean;
         set qos(val: boolean);
 
-        // Constructors of GstVideo.VideoDecoder
+        // Constructors
 
         constructor(properties?: Partial<VideoDecoder.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of GstVideo.VideoDecoder
+        // Virtual methods
 
         vfunc_close(): boolean;
         vfunc_decide_allocation(query: Gst.Query): boolean;
@@ -4970,7 +4970,7 @@ export namespace GstVideo {
         vfunc_stop(): boolean;
         vfunc_transform_meta(frame: VideoCodecFrame, meta: Gst.Meta): boolean;
 
-        // Own methods of GstVideo.VideoDecoder
+        // Methods
 
         /**
          * Removes next `n_bytes` of input data and adds it to currently parsed frame.
@@ -5411,7 +5411,7 @@ export namespace GstVideo {
     abstract class VideoEncoder extends Gst.Element implements Gst.Preset {
         static $gtype: GObject.GType<VideoEncoder>;
 
-        // Own properties of GstVideo.VideoEncoder
+        // Properties
 
         /**
          * Minimum interval between force-keyunit requests in nanoseconds. See
@@ -5428,13 +5428,13 @@ export namespace GstVideo {
         get qos(): boolean;
         set qos(val: boolean);
 
-        // Constructors of GstVideo.VideoEncoder
+        // Constructors
 
         constructor(properties?: Partial<VideoEncoder.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of GstVideo.VideoEncoder
+        // Virtual methods
 
         vfunc_close(): boolean;
         vfunc_decide_allocation(query: Gst.Query): boolean;
@@ -5461,7 +5461,7 @@ export namespace GstVideo {
         vfunc_stop(): boolean;
         vfunc_transform_meta(frame: VideoCodecFrame, meta: Gst.Meta): boolean;
 
-        // Own methods of GstVideo.VideoEncoder
+        // Methods
 
         /**
          * Helper function that allocates a buffer to hold an encoded video frame
@@ -6181,18 +6181,18 @@ export namespace GstVideo {
     abstract class VideoFilter extends GstBase.BaseTransform {
         static $gtype: GObject.GType<VideoFilter>;
 
-        // Own fields of GstVideo.VideoFilter
+        // Fields
 
         element: GstBase.BaseTransform;
         negotiated: boolean;
 
-        // Constructors of GstVideo.VideoFilter
+        // Constructors
 
         constructor(properties?: Partial<VideoFilter.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of GstVideo.VideoFilter
+        // Virtual methods
 
         vfunc_set_info(incaps: Gst.Caps, in_info: VideoInfo, outcaps: Gst.Caps, out_info: VideoInfo): boolean;
         vfunc_transform_frame(inframe: VideoFrame, outframe: VideoFrame): Gst.FlowReturn;
@@ -6205,7 +6205,7 @@ export namespace GstVideo {
     class VideoMultiviewFlagsSet extends Gst.FlagSet {
         static $gtype: GObject.GType<VideoMultiviewFlagsSet>;
 
-        // Constructors of GstVideo.VideoMultiviewFlagsSet
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -6229,7 +6229,7 @@ export namespace GstVideo {
     class VideoSink extends GstBase.BaseSink {
         static $gtype: GObject.GType<VideoSink>;
 
-        // Own properties of GstVideo.VideoSink
+        // Properties
 
         /**
          * Whether to show video frames during preroll. If set to %FALSE, video
@@ -6244,23 +6244,23 @@ export namespace GstVideo {
         get showPrerollFrame(): boolean;
         set showPrerollFrame(val: boolean);
 
-        // Own fields of GstVideo.VideoSink
+        // Fields
 
         element: GstBase.BaseSink;
         width: number;
         height: number;
 
-        // Constructors of GstVideo.VideoSink
+        // Constructors
 
         constructor(properties?: Partial<VideoSink.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of GstVideo.VideoSink
+        // Static methods
 
         static center_rect(src: VideoRectangle, dst: VideoRectangle, scaling: boolean): VideoRectangle;
 
-        // Own virtual methods of GstVideo.VideoSink
+        // Virtual methods
 
         /**
          * Notifies the subclass of changed #GstVideoInfo.
@@ -6293,17 +6293,17 @@ export namespace GstVideo {
     class VideoAFDMeta {
         static $gtype: GObject.GType<VideoAFDMeta>;
 
-        // Own fields of GstVideo.VideoAFDMeta
+        // Fields
 
         field: number;
         spec: VideoAFDSpec;
         afd: VideoAFDValue;
 
-        // Constructors of GstVideo.VideoAFDMeta
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own static methods of GstVideo.VideoAFDMeta
+        // Static methods
 
         static get_info(): Gst.MetaInfo;
     }
@@ -6323,19 +6323,19 @@ export namespace GstVideo {
     class VideoAffineTransformationMeta {
         static $gtype: GObject.GType<VideoAffineTransformationMeta>;
 
-        // Own fields of GstVideo.VideoAffineTransformationMeta
+        // Fields
 
         matrix: number[];
 
-        // Constructors of GstVideo.VideoAffineTransformationMeta
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own static methods of GstVideo.VideoAffineTransformationMeta
+        // Static methods
 
         static get_info(): Gst.MetaInfo;
 
-        // Own methods of GstVideo.VideoAffineTransformationMeta
+        // Methods
 
         /**
          * Apply a transformation using the given 4x4 transformation matrix.
@@ -6350,7 +6350,7 @@ export namespace GstVideo {
     abstract class VideoAggregatorConvertPadPrivate {
         static $gtype: GObject.GType<VideoAggregatorConvertPadPrivate>;
 
-        // Constructors of GstVideo.VideoAggregatorConvertPadPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -6359,7 +6359,7 @@ export namespace GstVideo {
     abstract class VideoAggregatorPadPrivate {
         static $gtype: GObject.GType<VideoAggregatorPadPrivate>;
 
-        // Constructors of GstVideo.VideoAggregatorPadPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -6368,7 +6368,7 @@ export namespace GstVideo {
     abstract class VideoAggregatorPrivate {
         static $gtype: GObject.GType<VideoAggregatorPrivate>;
 
-        // Constructors of GstVideo.VideoAggregatorPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -6381,7 +6381,7 @@ export namespace GstVideo {
     class VideoAlignment {
         static $gtype: GObject.GType<VideoAlignment>;
 
-        // Own fields of GstVideo.VideoAlignment
+        // Fields
 
         padding_top: number;
         padding_bottom: number;
@@ -6389,7 +6389,7 @@ export namespace GstVideo {
         padding_right: number;
         stride_align: number[];
 
-        // Constructors of GstVideo.VideoAlignment
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -6402,7 +6402,7 @@ export namespace GstVideo {
         );
         _init(...args: any[]): void;
 
-        // Own methods of GstVideo.VideoAlignment
+        // Methods
 
         /**
          * Set `align` to its default values with no padding and no alignment.
@@ -6419,14 +6419,14 @@ export namespace GstVideo {
     class VideoAncillary {
         static $gtype: GObject.GType<VideoAncillary>;
 
-        // Own fields of GstVideo.VideoAncillary
+        // Fields
 
         DID: number;
         SDID_block_number: number;
         data_count: number;
         data: Uint8Array;
 
-        // Constructors of GstVideo.VideoAncillary
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -6456,18 +6456,18 @@ export namespace GstVideo {
     class VideoBarMeta {
         static $gtype: GObject.GType<VideoBarMeta>;
 
-        // Own fields of GstVideo.VideoBarMeta
+        // Fields
 
         field: number;
         is_letterbox: boolean;
         bar_data1: number;
         bar_data2: number;
 
-        // Constructors of GstVideo.VideoBarMeta
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own static methods of GstVideo.VideoBarMeta
+        // Static methods
 
         static get_info(): Gst.MetaInfo;
     }
@@ -6476,7 +6476,7 @@ export namespace GstVideo {
     abstract class VideoBufferPoolPrivate {
         static $gtype: GObject.GType<VideoBufferPoolPrivate>;
 
-        // Constructors of GstVideo.VideoBufferPoolPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -6487,17 +6487,17 @@ export namespace GstVideo {
     class VideoCaptionMeta {
         static $gtype: GObject.GType<VideoCaptionMeta>;
 
-        // Own fields of GstVideo.VideoCaptionMeta
+        // Fields
 
         caption_type: VideoCaptionType;
         data: Uint8Array;
         size: number;
 
-        // Constructors of GstVideo.VideoCaptionMeta
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own static methods of GstVideo.VideoCaptionMeta
+        // Static methods
 
         static get_info(): Gst.MetaInfo;
     }
@@ -6505,11 +6505,11 @@ export namespace GstVideo {
     abstract class VideoChromaResample {
         static $gtype: GObject.GType<VideoChromaResample>;
 
-        // Constructors of GstVideo.VideoChromaResample
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of GstVideo.VideoChromaResample
+        // Methods
 
         /**
          * Free `resample`
@@ -6533,11 +6533,11 @@ export namespace GstVideo {
     class VideoCodecAlphaMeta {
         static $gtype: GObject.GType<VideoCodecAlphaMeta>;
 
-        // Constructors of GstVideo.VideoCodecAlphaMeta
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own static methods of GstVideo.VideoCodecAlphaMeta
+        // Static methods
 
         static get_info(): Gst.MetaInfo;
     }
@@ -6549,7 +6549,7 @@ export namespace GstVideo {
     class VideoCodecFrame {
         static $gtype: GObject.GType<VideoCodecFrame>;
 
-        // Own fields of GstVideo.VideoCodecFrame
+        // Fields
 
         system_frame_number: number;
         dts: Gst.ClockTime;
@@ -6558,11 +6558,11 @@ export namespace GstVideo {
         distance_from_sync: number;
         deadline: Gst.ClockTime;
 
-        // Constructors of GstVideo.VideoCodecFrame
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of GstVideo.VideoCodecFrame
+        // Methods
 
         /**
          * Gets private data set on the frame by the subclass via
@@ -6605,16 +6605,16 @@ export namespace GstVideo {
     class VideoCodecState {
         static $gtype: GObject.GType<VideoCodecState>;
 
-        // Own fields of GstVideo.VideoCodecState
+        // Fields
 
         mastering_display_info: VideoMasteringDisplayInfo;
         content_light_level: VideoContentLightLevel;
 
-        // Constructors of GstVideo.VideoCodecState
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of GstVideo.VideoCodecState
+        // Methods
 
         /**
          * Increases the refcount of the given state by one.
@@ -6636,7 +6636,7 @@ export namespace GstVideo {
     class VideoColorPrimariesInfo {
         static $gtype: GObject.GType<VideoColorPrimariesInfo>;
 
-        // Own fields of GstVideo.VideoColorPrimariesInfo
+        // Fields
 
         primaries: VideoColorPrimaries;
         Wx: number;
@@ -6648,7 +6648,7 @@ export namespace GstVideo {
         Bx: number;
         By: number;
 
-        // Constructors of GstVideo.VideoColorPrimariesInfo
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -6659,18 +6659,18 @@ export namespace GstVideo {
     class VideoColorimetry {
         static $gtype: GObject.GType<VideoColorimetry>;
 
-        // Own fields of GstVideo.VideoColorimetry
+        // Fields
 
         range: VideoColorRange;
         matrix: VideoColorMatrix;
         transfer: VideoTransferFunction;
         primaries: VideoColorPrimaries;
 
-        // Constructors of GstVideo.VideoColorimetry
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of GstVideo.VideoColorimetry
+        // Methods
 
         /**
          * Parse the colorimetry string and update `cinfo` with the parsed
@@ -6713,12 +6713,12 @@ export namespace GstVideo {
     class VideoContentLightLevel {
         static $gtype: GObject.GType<VideoContentLightLevel>;
 
-        // Own fields of GstVideo.VideoContentLightLevel
+        // Fields
 
         max_content_light_level: number;
         max_frame_average_light_level: number;
 
-        // Constructors of GstVideo.VideoContentLightLevel
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -6728,7 +6728,7 @@ export namespace GstVideo {
         );
         _init(...args: any[]): void;
 
-        // Own methods of GstVideo.VideoContentLightLevel
+        // Methods
 
         /**
          * Parse `caps` and update `linfo`
@@ -6769,11 +6769,11 @@ export namespace GstVideo {
     abstract class VideoConverter {
         static $gtype: GObject.GType<VideoConverter>;
 
-        // Constructors of GstVideo.VideoConverter
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of GstVideo.VideoConverter
+        // Methods
 
         /**
          * Convert the pixels of `src` into `dest` using `convert`.
@@ -6830,18 +6830,18 @@ export namespace GstVideo {
     class VideoCropMeta {
         static $gtype: GObject.GType<VideoCropMeta>;
 
-        // Own fields of GstVideo.VideoCropMeta
+        // Fields
 
         x: number;
         y: number;
         width: number;
         height: number;
 
-        // Constructors of GstVideo.VideoCropMeta
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own static methods of GstVideo.VideoCropMeta
+        // Static methods
 
         static get_info(): Gst.MetaInfo;
     }
@@ -6850,7 +6850,7 @@ export namespace GstVideo {
     abstract class VideoDecoderPrivate {
         static $gtype: GObject.GType<VideoDecoderPrivate>;
 
-        // Constructors of GstVideo.VideoDecoderPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -6863,11 +6863,11 @@ export namespace GstVideo {
     abstract class VideoDither {
         static $gtype: GObject.GType<VideoDither>;
 
-        // Constructors of GstVideo.VideoDither
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of GstVideo.VideoDither
+        // Methods
 
         /**
          * Free `dither`
@@ -6889,7 +6889,7 @@ export namespace GstVideo {
     abstract class VideoEncoderPrivate {
         static $gtype: GObject.GType<VideoEncoderPrivate>;
 
-        // Constructors of GstVideo.VideoEncoderPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -6901,7 +6901,7 @@ export namespace GstVideo {
     class VideoFormatInfo {
         static $gtype: GObject.GType<VideoFormatInfo>;
 
-        // Own fields of GstVideo.VideoFormatInfo
+        // Fields
 
         format: VideoFormat;
         name: string;
@@ -6926,11 +6926,11 @@ export namespace GstVideo {
         tile_hs: number;
         tile_info: VideoTileInfo[];
 
-        // Constructors of GstVideo.VideoFormatInfo
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of GstVideo.VideoFormatInfo
+        // Methods
 
         /**
          * Fill `components` with the number of all the components packed in plane `p`
@@ -6955,18 +6955,18 @@ export namespace GstVideo {
     class VideoFrame {
         static $gtype: GObject.GType<VideoFrame>;
 
-        // Own fields of GstVideo.VideoFrame
+        // Fields
 
         flags: VideoFrameFlags;
         meta: any;
         id: number;
         data: any[];
 
-        // Constructors of GstVideo.VideoFrame
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own static methods of GstVideo.VideoFrame
+        // Static methods
 
         /**
          * Use `info` and `buffer` to fill in the values of `frame`. `frame` is usually
@@ -7035,7 +7035,7 @@ export namespace GstVideo {
          */
         static map_id(info: VideoInfo, buffer: Gst.Buffer, id: number, flags: Gst.MapFlags): [boolean, VideoFrame];
 
-        // Own methods of GstVideo.VideoFrame
+        // Methods
 
         /**
          * Copy the contents from `src` to `dest`.
@@ -7071,21 +7071,21 @@ export namespace GstVideo {
     class VideoGLTextureUploadMeta {
         static $gtype: GObject.GType<VideoGLTextureUploadMeta>;
 
-        // Own fields of GstVideo.VideoGLTextureUploadMeta
+        // Fields
 
         texture_orientation: VideoGLTextureOrientation;
         n_textures: number;
         texture_type: VideoGLTextureType[];
 
-        // Constructors of GstVideo.VideoGLTextureUploadMeta
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own static methods of GstVideo.VideoGLTextureUploadMeta
+        // Static methods
 
         static get_info(): Gst.MetaInfo;
 
-        // Own methods of GstVideo.VideoGLTextureUploadMeta
+        // Methods
 
         /**
          * Uploads the buffer which owns the meta to a specific texture ID.
@@ -7106,7 +7106,7 @@ export namespace GstVideo {
     class VideoInfo {
         static $gtype: GObject.GType<VideoInfo>;
 
-        // Own fields of GstVideo.VideoInfo
+        // Fields
 
         interlace_mode: VideoInterlaceMode;
         flags: VideoFlags;
@@ -7122,7 +7122,7 @@ export namespace GstVideo {
         offset: number[];
         stride: number[];
 
-        // Constructors of GstVideo.VideoInfo
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -7148,7 +7148,7 @@ export namespace GstVideo {
 
         static new_from_caps(caps: Gst.Caps): VideoInfo;
 
-        // Own static methods of GstVideo.VideoInfo
+        // Static methods
 
         /**
          * Parse `caps` and update `info`.
@@ -7160,7 +7160,7 @@ export namespace GstVideo {
          */
         static init(): VideoInfo;
 
-        // Own methods of GstVideo.VideoInfo
+        // Methods
 
         /**
          * Adjust the offset and stride fields in `info` so that the padding and
@@ -7250,12 +7250,12 @@ export namespace GstVideo {
     class VideoInfoDmaDrm {
         static $gtype: GObject.GType<VideoInfoDmaDrm>;
 
-        // Own fields of GstVideo.VideoInfoDmaDrm
+        // Fields
 
         drm_fourcc: number;
         drm_modifier: number;
 
-        // Constructors of GstVideo.VideoInfoDmaDrm
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -7270,7 +7270,7 @@ export namespace GstVideo {
 
         static new_from_caps(caps: Gst.Caps): VideoInfoDmaDrm;
 
-        // Own static methods of GstVideo.VideoInfoDmaDrm
+        // Static methods
 
         /**
          * Parse `caps` and update `info`. Please note that the `caps` should be
@@ -7291,7 +7291,7 @@ export namespace GstVideo {
          */
         static init(): VideoInfoDmaDrm;
 
-        // Own methods of GstVideo.VideoInfoDmaDrm
+        // Methods
 
         /**
          * Free a #GstVideoInfoDmaDrm structure previously allocated with
@@ -7315,14 +7315,14 @@ export namespace GstVideo {
     class VideoMasteringDisplayInfo {
         static $gtype: GObject.GType<VideoMasteringDisplayInfo>;
 
-        // Own fields of GstVideo.VideoMasteringDisplayInfo
+        // Fields
 
         display_primaries: VideoMasteringDisplayInfoCoordinates[];
         white_point: VideoMasteringDisplayInfoCoordinates;
         max_display_mastering_luminance: number;
         min_display_mastering_luminance: number;
 
-        // Constructors of GstVideo.VideoMasteringDisplayInfo
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -7334,7 +7334,7 @@ export namespace GstVideo {
         );
         _init(...args: any[]): void;
 
-        // Own static methods of GstVideo.VideoMasteringDisplayInfo
+        // Static methods
 
         /**
          * Extract #GstVideoMasteringDisplayInfo from `mastering`
@@ -7342,7 +7342,7 @@ export namespace GstVideo {
          */
         static from_string(mastering: string): [boolean, VideoMasteringDisplayInfo];
 
-        // Own methods of GstVideo.VideoMasteringDisplayInfo
+        // Methods
 
         /**
          * Set string representation of `minfo` to `caps`
@@ -7380,12 +7380,12 @@ export namespace GstVideo {
     class VideoMasteringDisplayInfoCoordinates {
         static $gtype: GObject.GType<VideoMasteringDisplayInfoCoordinates>;
 
-        // Own fields of GstVideo.VideoMasteringDisplayInfoCoordinates
+        // Fields
 
         x: number;
         y: number;
 
-        // Constructors of GstVideo.VideoMasteringDisplayInfoCoordinates
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -7417,7 +7417,7 @@ export namespace GstVideo {
     class VideoMeta {
         static $gtype: GObject.GType<VideoMeta>;
 
-        // Own fields of GstVideo.VideoMeta
+        // Fields
 
         flags: VideoFrameFlags;
         format: VideoFormat;
@@ -7429,15 +7429,15 @@ export namespace GstVideo {
         stride: number[];
         alignment: VideoAlignment;
 
-        // Constructors of GstVideo.VideoMeta
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own static methods of GstVideo.VideoMeta
+        // Static methods
 
         static get_info(): Gst.MetaInfo;
 
-        // Own methods of GstVideo.VideoMeta
+        // Methods
 
         /**
          * Compute the padded height of each plane from `meta` (padded size
@@ -7487,11 +7487,11 @@ export namespace GstVideo {
     class VideoMetaTransform {
         static $gtype: GObject.GType<VideoMetaTransform>;
 
-        // Constructors of GstVideo.VideoMetaTransform
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own static methods of GstVideo.VideoMetaTransform
+        // Static methods
 
         /**
          * Get the #GQuark for the "gst-video-scale" metadata transform operation.
@@ -7527,14 +7527,14 @@ export namespace GstVideo {
     class VideoOverlayComposition {
         static $gtype: GObject.GType<VideoOverlayComposition>;
 
-        // Constructors of GstVideo.VideoOverlayComposition
+        // Constructors
 
         constructor(rectangle?: VideoOverlayRectangle | null);
         _init(...args: any[]): void;
 
         static ['new'](rectangle?: VideoOverlayRectangle | null): VideoOverlayComposition;
 
-        // Own methods of GstVideo.VideoOverlayComposition
+        // Methods
 
         /**
          * Adds an overlay rectangle to an existing overlay composition object. This
@@ -7597,11 +7597,11 @@ export namespace GstVideo {
     class VideoOverlayCompositionMeta {
         static $gtype: GObject.GType<VideoOverlayCompositionMeta>;
 
-        // Constructors of GstVideo.VideoOverlayCompositionMeta
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own static methods of GstVideo.VideoOverlayCompositionMeta
+        // Static methods
 
         static get_info(): Gst.MetaInfo;
     }
@@ -7614,7 +7614,7 @@ export namespace GstVideo {
     class VideoOverlayRectangle {
         static $gtype: GObject.GType<VideoOverlayRectangle>;
 
-        // Constructors of GstVideo.VideoOverlayRectangle
+        // Constructors
 
         constructor(
             pixels: Gst.Buffer,
@@ -7635,7 +7635,7 @@ export namespace GstVideo {
             flags: VideoOverlayFormatFlags,
         ): VideoOverlayRectangle;
 
-        // Own methods of GstVideo.VideoOverlayRectangle
+        // Methods
 
         /**
          * Makes a copy of `rectangle,` so that it is possible to modify it
@@ -7749,14 +7749,14 @@ export namespace GstVideo {
     class VideoRectangle {
         static $gtype: GObject.GType<VideoRectangle>;
 
-        // Own fields of GstVideo.VideoRectangle
+        // Fields
 
         x: number;
         y: number;
         w: number;
         h: number;
 
-        // Constructors of GstVideo.VideoRectangle
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -7775,7 +7775,7 @@ export namespace GstVideo {
     class VideoRegionOfInterestMeta {
         static $gtype: GObject.GType<VideoRegionOfInterestMeta>;
 
-        // Own fields of GstVideo.VideoRegionOfInterestMeta
+        // Fields
 
         roi_type: GLib.Quark;
         id: number;
@@ -7786,15 +7786,15 @@ export namespace GstVideo {
         h: number;
         params: any[];
 
-        // Constructors of GstVideo.VideoRegionOfInterestMeta
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own static methods of GstVideo.VideoRegionOfInterestMeta
+        // Static methods
 
         static get_info(): Gst.MetaInfo;
 
-        // Own methods of GstVideo.VideoRegionOfInterestMeta
+        // Methods
 
         /**
          * Attach element-specific parameters to `meta` meant to be used by downstream
@@ -7825,7 +7825,7 @@ export namespace GstVideo {
     class VideoResampler {
         static $gtype: GObject.GType<VideoResampler>;
 
-        // Own fields of GstVideo.VideoResampler
+        // Fields
 
         in_size: number;
         out_size: number;
@@ -7836,7 +7836,7 @@ export namespace GstVideo {
         n_taps: number;
         taps: number;
 
-        // Constructors of GstVideo.VideoResampler
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -7852,7 +7852,7 @@ export namespace GstVideo {
         );
         _init(...args: any[]): void;
 
-        // Own methods of GstVideo.VideoResampler
+        // Methods
 
         /**
          * Clear a previously initialized #GstVideoResampler `resampler`.
@@ -7876,17 +7876,17 @@ export namespace GstVideo {
     class VideoSEIUserDataUnregisteredMeta {
         static $gtype: GObject.GType<VideoSEIUserDataUnregisteredMeta>;
 
-        // Own fields of GstVideo.VideoSEIUserDataUnregisteredMeta
+        // Fields
 
         uuid: Uint8Array;
         data: number;
         size: number;
 
-        // Constructors of GstVideo.VideoSEIUserDataUnregisteredMeta
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own static methods of GstVideo.VideoSEIUserDataUnregisteredMeta
+        // Static methods
 
         static get_info(): Gst.MetaInfo;
     }
@@ -7898,11 +7898,11 @@ export namespace GstVideo {
     abstract class VideoScaler {
         static $gtype: GObject.GType<VideoScaler>;
 
-        // Constructors of GstVideo.VideoScaler
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of GstVideo.VideoScaler
+        // Methods
 
         /**
          * Scale a rectangle of pixels in `src` with `src_stride` to `dest` with
@@ -7988,7 +7988,7 @@ export namespace GstVideo {
     abstract class VideoSinkPrivate {
         static $gtype: GObject.GType<VideoSinkPrivate>;
 
-        // Constructors of GstVideo.VideoSinkPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -8000,14 +8000,14 @@ export namespace GstVideo {
     class VideoTileInfo {
         static $gtype: GObject.GType<VideoTileInfo>;
 
-        // Own fields of GstVideo.VideoTileInfo
+        // Fields
 
         width: number;
         height: number;
         stride: number;
         size: number;
 
-        // Constructors of GstVideo.VideoTileInfo
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -8033,7 +8033,7 @@ export namespace GstVideo {
     class VideoTimeCode {
         static $gtype: GObject.GType<VideoTimeCode>;
 
-        // Own fields of GstVideo.VideoTimeCode
+        // Fields
 
         hours: number;
         minutes: number;
@@ -8041,7 +8041,7 @@ export namespace GstVideo {
         frames: number;
         field_count: number;
 
-        // Constructors of GstVideo.VideoTimeCode
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -8087,7 +8087,7 @@ export namespace GstVideo {
 
         static new_from_string(tc_str: string): VideoTimeCode;
 
-        // Own methods of GstVideo.VideoTimeCode
+        // Methods
 
         /**
          * Adds or subtracts `frames` amount of frames to `tc`. tc needs to
@@ -8213,13 +8213,13 @@ export namespace GstVideo {
     class VideoTimeCodeConfig {
         static $gtype: GObject.GType<VideoTimeCodeConfig>;
 
-        // Own fields of GstVideo.VideoTimeCodeConfig
+        // Fields
 
         fps_n: number;
         fps_d: number;
         flags: VideoTimeCodeFlags;
 
-        // Constructors of GstVideo.VideoTimeCodeConfig
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -8231,14 +8231,14 @@ export namespace GstVideo {
     class VideoTimeCodeInterval {
         static $gtype: GObject.GType<VideoTimeCodeInterval>;
 
-        // Own fields of GstVideo.VideoTimeCodeInterval
+        // Fields
 
         hours: number;
         minutes: number;
         seconds: number;
         frames: number;
 
-        // Constructors of GstVideo.VideoTimeCodeInterval
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -8254,7 +8254,7 @@ export namespace GstVideo {
 
         static new_from_string(tc_inter_str: string): VideoTimeCodeInterval;
 
-        // Own methods of GstVideo.VideoTimeCodeInterval
+        // Methods
 
         /**
          * Initializes `tc` with empty/zero/NULL values.
@@ -8284,15 +8284,15 @@ export namespace GstVideo {
     class VideoTimeCodeMeta {
         static $gtype: GObject.GType<VideoTimeCodeMeta>;
 
-        // Own fields of GstVideo.VideoTimeCodeMeta
+        // Fields
 
         tc: VideoTimeCode;
 
-        // Constructors of GstVideo.VideoTimeCodeMeta
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own static methods of GstVideo.VideoTimeCodeMeta
+        // Static methods
 
         static get_info(): Gst.MetaInfo;
     }
@@ -8304,14 +8304,14 @@ export namespace GstVideo {
     class VideoVBIEncoder {
         static $gtype: GObject.GType<VideoVBIEncoder>;
 
-        // Constructors of GstVideo.VideoVBIEncoder
+        // Constructors
 
         constructor(format: VideoFormat, pixel_width: number);
         _init(...args: any[]): void;
 
         static ['new'](format: VideoFormat, pixel_width: number): VideoVBIEncoder;
 
-        // Own methods of GstVideo.VideoVBIEncoder
+        // Methods
 
         /**
          * Stores Video Ancillary data, according to SMPTE-291M specification.
@@ -8340,14 +8340,14 @@ export namespace GstVideo {
     class VideoVBIParser {
         static $gtype: GObject.GType<VideoVBIParser>;
 
-        // Constructors of GstVideo.VideoVBIParser
+        // Constructors
 
         constructor(format: VideoFormat, pixel_width: number);
         _init(...args: any[]): void;
 
         static ['new'](format: VideoFormat, pixel_width: number): VideoVBIParser;
 
-        // Own methods of GstVideo.VideoVBIParser
+        // Methods
 
         /**
          * Provide a new line of data to the `parser`. Call gst_video_vbi_parser_get_ancillary()
@@ -8378,7 +8378,7 @@ export namespace GstVideo {
         prototype: ColorBalance;
     }
     interface ColorBalance extends GObject.Object {
-        // Own methods of GstVideo.ColorBalance
+        // Methods
 
         /**
          * Get the #GstColorBalanceType of this implementation.
@@ -8422,7 +8422,7 @@ export namespace GstVideo {
          */
         value_changed(channel: ColorBalanceChannel, value: number): void;
 
-        // Own virtual methods of GstVideo.ColorBalance
+        // Virtual methods
 
         /**
          * Get the #GstColorBalanceType of this implementation.
@@ -8758,7 +8758,7 @@ export namespace GstVideo {
         query_set_commandsv(query: Gst.Query, cmds: NavigationCommand[]): void;
     }
     interface Navigation extends GObject.Object {
-        // Own methods of GstVideo.Navigation
+        // Methods
 
         /**
          * Sends the indicated command to the navigation interface.
@@ -8795,7 +8795,7 @@ export namespace GstVideo {
          */
         send_mouse_scroll_event(x: number, y: number, delta_x: number, delta_y: number): void;
 
-        // Own virtual methods of GstVideo.Navigation
+        // Virtual methods
 
         /**
          * sending a navigation event.
@@ -8825,7 +8825,7 @@ export namespace GstVideo {
         prototype: VideoDirection;
     }
     interface VideoDirection extends GObject.Object {
-        // Own properties of GstVideo.VideoDirection
+        // Properties
 
         get video_direction(): VideoOrientationMethod;
         set video_direction(val: VideoOrientationMethod);
@@ -8853,7 +8853,7 @@ export namespace GstVideo {
         from_tag(taglist: Gst.TagList): [boolean, VideoOrientationMethod];
     }
     interface VideoOrientation extends GObject.Object {
-        // Own methods of GstVideo.VideoOrientation
+        // Methods
 
         /**
          * Get the horizontal centering offset from the given object.
@@ -8900,7 +8900,7 @@ export namespace GstVideo {
          */
         set_vflip(flip: boolean): boolean;
 
-        // Own virtual methods of GstVideo.VideoOrientation
+        // Virtual methods
 
         /**
          * Get the horizontal centering offset from the given object.
@@ -8980,7 +8980,7 @@ export namespace GstVideo {
         ): boolean;
     }
     interface VideoOverlay extends GObject.Object {
-        // Own methods of GstVideo.VideoOverlay
+        // Methods
 
         /**
          * Tell an overlay that it has been exposed. This will redraw the current frame
@@ -9039,7 +9039,7 @@ export namespace GstVideo {
          */
         set_window_handle(handle: never): void;
 
-        // Own virtual methods of GstVideo.VideoOverlay
+        // Virtual methods
 
         /**
          * Tell an overlay that it has been exposed. This will redraw the current frame

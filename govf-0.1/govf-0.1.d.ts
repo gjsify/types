@@ -37,7 +37,7 @@ export namespace Govf {
     class Disk extends GObject.Object {
         static $gtype: GObject.GType<Disk>;
 
-        // Constructors of Govf.Disk
+        // Constructors
 
         constructor(properties?: Partial<Disk.ConstructorProps>, ...args: any[]);
 
@@ -45,7 +45,7 @@ export namespace Govf {
 
         static ['new'](): Disk;
 
-        // Own methods of Govf.Disk
+        // Methods
 
         /**
          * Returns the disk's capacity.
@@ -98,7 +98,7 @@ export namespace Govf {
     class Package extends GObject.Object {
         static $gtype: GObject.GType<Package>;
 
-        // Constructors of Govf.Package
+        // Constructors
 
         constructor(properties?: Partial<Package.ConstructorProps>, ...args: any[]);
 
@@ -106,11 +106,11 @@ export namespace Govf {
 
         static ['new'](): Package;
 
-        // Own static methods of Govf.Package
+        // Static methods
 
         static error_quark(): GLib.Quark;
 
-        // Own methods of Govf.Package
+        // Methods
 
         /**
          * Extracts a disk...

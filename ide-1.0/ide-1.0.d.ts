@@ -76,16 +76,16 @@ export namespace Ide {
     class DeviceError extends GLib.Error {
         static $gtype: GObject.GType<DeviceError>;
 
-        // Static fields of Ide.DeviceError
+        // Static fields
 
         static DEVICE: number;
 
-        // Constructors of Ide.DeviceError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of Ide.DeviceError
+        // Static methods
 
         static quark(): GLib.Quark;
     }
@@ -105,16 +105,16 @@ export namespace Ide {
     class DoapError extends GLib.Error {
         static $gtype: GObject.GType<DoapError>;
 
-        // Static fields of Ide.DoapError
+        // Static fields
 
         static FORMAT: number;
 
-        // Constructors of Ide.DoapError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of Ide.DoapError
+        // Static methods
 
         static quark(): GLib.Quark;
     }
@@ -162,16 +162,16 @@ export namespace Ide {
     class RuntimeError extends GLib.Error {
         static $gtype: GObject.GType<RuntimeError>;
 
-        // Static fields of Ide.RuntimeError
+        // Static fields
 
         static RUNTIME: number;
 
-        // Constructors of Ide.RuntimeError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of Ide.RuntimeError
+        // Static methods
 
         static quark(): GLib.Quark;
     }
@@ -536,7 +536,7 @@ export namespace Ide {
     class UriError extends GLib.Error {
         static $gtype: GObject.GType<UriError>;
 
-        // Static fields of Ide.UriError
+        // Static fields
 
         static MISC: number;
         static BAD_SCHEME: number;
@@ -549,7 +549,7 @@ export namespace Ide {
         static BAD_QUERY: number;
         static BAD_FRAGMENT: number;
 
-        // Constructors of Ide.UriError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
@@ -992,7 +992,7 @@ export namespace Ide {
     class Application extends Dazzle.Application implements Gio.ActionGroup, Gio.ActionMap {
         static $gtype: GObject.GType<Application>;
 
-        // Constructors of Ide.Application
+        // Constructors
 
         constructor(properties?: Partial<Application.ConstructorProps>, ...args: any[]);
 
@@ -1000,7 +1000,7 @@ export namespace Ide {
 
         static ['new'](): Application;
 
-        // Own static methods of Ide.Application
+        // Static methods
 
         /**
          * This function returns the thread-id of the main thread for the applicaiton.
@@ -1009,7 +1009,7 @@ export namespace Ide {
          */
         static get_main_thread(): GLib.Thread;
 
-        // Own methods of Ide.Application
+        // Methods
 
         add_reaper(reaper: Dazzle.DirectoryReaper): void;
         get_keybindings_mode(): string;
@@ -1473,7 +1473,7 @@ export namespace Ide {
     class BackForwardItem extends Object {
         static $gtype: GObject.GType<BackForwardItem>;
 
-        // Own properties of Ide.BackForwardItem
+        // Properties
 
         get mark(): Gtk.TextMark;
         set mark(val: Gtk.TextMark);
@@ -1488,7 +1488,7 @@ export namespace Ide {
          */
         get uri(): Uri;
 
-        // Constructors of Ide.BackForwardItem
+        // Constructors
 
         constructor(properties?: Partial<BackForwardItem.ConstructorProps>, ...args: any[]);
 
@@ -1496,7 +1496,7 @@ export namespace Ide {
 
         static ['new'](context: Context, uri: Uri, mark: Gtk.TextMark): BackForwardItem;
 
-        // Own methods of Ide.BackForwardItem
+        // Methods
 
         chain(other: BackForwardItem): boolean;
         /**
@@ -1533,7 +1533,7 @@ export namespace Ide {
     class BackForwardList extends Object {
         static $gtype: GObject.GType<BackForwardList>;
 
-        // Own properties of Ide.BackForwardList
+        // Properties
 
         get can_go_backward(): boolean;
         get canGoBackward(): boolean;
@@ -1542,13 +1542,13 @@ export namespace Ide {
         get current_item(): BackForwardItem;
         get currentItem(): BackForwardItem;
 
-        // Constructors of Ide.BackForwardList
+        // Constructors
 
         constructor(properties?: Partial<BackForwardList.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of Ide.BackForwardList
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -1557,7 +1557,7 @@ export namespace Ide {
         connect_after(signal: 'navigate-to', callback: (_source: this, object: BackForwardItem) => void): number;
         emit(signal: 'navigate-to', object: BackForwardItem): void;
 
-        // Own methods of Ide.BackForwardList
+        // Methods
 
         /**
          * Branches `self` into a newly created #IdeBackForwardList.
@@ -1632,7 +1632,7 @@ export namespace Ide {
     class Buffer extends GtkSource.Buffer {
         static $gtype: GObject.GType<Buffer>;
 
-        // Own properties of Ide.Buffer
+        // Properties
 
         get busy(): boolean;
         get changed_on_volume(): boolean;
@@ -1655,13 +1655,13 @@ export namespace Ide {
         get title(): string;
         set title(val: string);
 
-        // Constructors of Ide.Buffer
+        // Constructors
 
         constructor(properties?: Partial<Buffer.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of Ide.Buffer
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -1685,11 +1685,11 @@ export namespace Ide {
         connect_after(signal: 'symbol-resolver-loaded', callback: (_source: this) => void): number;
         emit(signal: 'symbol-resolver-loaded'): void;
 
-        // Own virtual methods of Ide.Buffer
+        // Virtual methods
 
         vfunc_cursor_moved(location: Gtk.TextIter): void;
 
-        // Own methods of Ide.Buffer
+        // Methods
 
         /**
          * Update the #IdeBuffer:read-only property and the corresponding
@@ -1883,17 +1883,17 @@ export namespace Ide {
     class BufferChangeMonitor extends Object {
         static $gtype: GObject.GType<BufferChangeMonitor>;
 
-        // Own properties of Ide.BufferChangeMonitor
+        // Properties
 
         set buffer(val: Buffer);
 
-        // Constructors of Ide.BufferChangeMonitor
+        // Constructors
 
         constructor(properties?: Partial<BufferChangeMonitor.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of Ide.BufferChangeMonitor
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -1902,13 +1902,13 @@ export namespace Ide {
         connect_after(signal: 'changed', callback: (_source: this) => void): number;
         emit(signal: 'changed'): void;
 
-        // Own virtual methods of Ide.BufferChangeMonitor
+        // Virtual methods
 
         vfunc_get_change(iter: Gtk.TextIter): BufferLineChange;
         vfunc_reload(): void;
         vfunc_set_buffer(buffer: Buffer): void;
 
-        // Own methods of Ide.BufferChangeMonitor
+        // Methods
 
         emit_changed(): void;
         get_change(iter: Gtk.TextIter): BufferLineChange;
@@ -1969,7 +1969,7 @@ export namespace Ide {
     class BufferManager<A extends GObject.Object = GObject.Object> extends Object implements Gio.ListModel<A> {
         static $gtype: GObject.GType<BufferManager>;
 
-        // Own properties of Ide.BufferManager
+        // Properties
 
         get auto_save(): boolean;
         set auto_save(val: boolean);
@@ -1988,13 +1988,13 @@ export namespace Ide {
         get minimumWordSize(): number;
         set minimumWordSize(val: number);
 
-        // Constructors of Ide.BufferManager
+        // Constructors
 
         constructor(properties?: Partial<BufferManager.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of Ide.BufferManager
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -2030,7 +2030,7 @@ export namespace Ide {
         connect_after(signal: 'save-buffer', callback: (_source: this, buffer: Buffer) => void): number;
         emit(signal: 'save-buffer', buffer: Buffer): void;
 
-        // Own methods of Ide.BufferManager
+        // Methods
 
         /**
          * Asynchronously requests that all of `edits` are applied to the buffers
@@ -2696,7 +2696,7 @@ export namespace Ide {
     class BuildManager extends Object implements Gio.ActionGroup, Gio.Initable {
         static $gtype: GObject.GType<BuildManager>;
 
-        // Own properties of Ide.BuildManager
+        // Properties
 
         /**
          * The "busy" property indicates if there is currently a build
@@ -2769,13 +2769,13 @@ export namespace Ide {
          */
         get runningTime(): number;
 
-        // Constructors of Ide.BuildManager
+        // Constructors
 
         constructor(properties?: Partial<BuildManager.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of Ide.BuildManager
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -2790,7 +2790,7 @@ export namespace Ide {
         connect_after(signal: 'build-started', callback: (_source: this, pipeline: BuildPipeline) => void): number;
         emit(signal: 'build-started', pipeline: BuildPipeline): void;
 
-        // Own methods of Ide.BuildManager
+        // Methods
 
         /**
          * This function will cancel any in-flight builds.
@@ -3859,7 +3859,7 @@ export namespace Ide {
     class BuildPipeline extends Object implements Gio.Initable {
         static $gtype: GObject.GType<BuildPipeline>;
 
-        // Own properties of Ide.BuildPipeline
+        // Properties
 
         /**
          * Gets the "busy" property. If %TRUE, the pipeline is busy executing.
@@ -3876,13 +3876,13 @@ export namespace Ide {
          */
         get phase(): BuildPhase;
 
-        // Constructors of Ide.BuildPipeline
+        // Constructors
 
         constructor(properties?: Partial<BuildPipeline.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of Ide.BuildPipeline
+        // Signals
 
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -3893,7 +3893,7 @@ export namespace Ide {
         connect_after(signal: 'started', callback: (_source: this, phase: BuildPhase) => void): number;
         emit(signal: 'started', phase: BuildPhase): void;
 
-        // Own methods of Ide.BuildPipeline
+        // Methods
 
         /**
          * This can be used to add a regex that will extract errors from
@@ -4583,7 +4583,7 @@ export namespace Ide {
     class BuildStage extends Object {
         static $gtype: GObject.GType<BuildStage>;
 
-        // Own properties of Ide.BuildStage
+        // Properties
 
         /**
          * Most build systems will preserve stderr for the processes they call, such
@@ -4662,13 +4662,13 @@ export namespace Ide {
         get transient(): boolean;
         set transient(val: boolean);
 
-        // Constructors of Ide.BuildStage
+        // Constructors
 
         constructor(properties?: Partial<BuildStage.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of Ide.BuildStage
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -4689,7 +4689,7 @@ export namespace Ide {
         connect_after(signal: 'reap', callback: (_source: this, reaper: Dazzle.DirectoryReaper) => void): number;
         emit(signal: 'reap', reaper: Dazzle.DirectoryReaper): void;
 
-        // Own virtual methods of Ide.BuildStage
+        // Virtual methods
 
         vfunc_chain(next: BuildStage): boolean;
         vfunc_clean_async(
@@ -4708,7 +4708,7 @@ export namespace Ide {
         vfunc_query(pipeline: BuildPipeline, cancellable?: Gio.Cancellable | null): void;
         vfunc_reap(reaper: Dazzle.DirectoryReaper): void;
 
-        // Own methods of Ide.BuildStage
+        // Methods
 
         chain(next: BuildStage): boolean;
         clean_async(
@@ -4775,7 +4775,7 @@ export namespace Ide {
     class BuildStageLauncher extends BuildStage {
         static $gtype: GObject.GType<BuildStageLauncher>;
 
-        // Own properties of Ide.BuildStageLauncher
+        // Properties
 
         get clean_launcher(): SubprocessLauncher;
         set clean_launcher(val: SubprocessLauncher);
@@ -4788,7 +4788,7 @@ export namespace Ide {
         get launcher(): SubprocessLauncher;
         set launcher(val: SubprocessLauncher);
 
-        // Constructors of Ide.BuildStageLauncher
+        // Constructors
 
         constructor(properties?: Partial<BuildStageLauncher.ConstructorProps>, ...args: any[]);
 
@@ -4796,7 +4796,7 @@ export namespace Ide {
 
         static ['new'](context: Context, launcher?: SubprocessLauncher | null): BuildStageLauncher;
 
-        // Own methods of Ide.BuildStageLauncher
+        // Methods
 
         get_clean_launcher(): SubprocessLauncher | null;
         /**
@@ -4828,7 +4828,7 @@ export namespace Ide {
     class BuildStageMkdirs extends BuildStage {
         static $gtype: GObject.GType<BuildStageMkdirs>;
 
-        // Constructors of Ide.BuildStageMkdirs
+        // Constructors
 
         constructor(properties?: Partial<BuildStageMkdirs.ConstructorProps>, ...args: any[]);
 
@@ -4836,7 +4836,7 @@ export namespace Ide {
 
         static ['new'](context: Context): BuildStageMkdirs;
 
-        // Own methods of Ide.BuildStageMkdirs
+        // Methods
 
         add_path(path: string, with_parents: boolean, mode: number): void;
     }
@@ -4854,7 +4854,7 @@ export namespace Ide {
     class BuildStageTransfer extends BuildStage {
         static $gtype: GObject.GType<BuildStageTransfer>;
 
-        // Own properties of Ide.BuildStageTransfer
+        // Properties
 
         get disable_when_metered(): boolean;
         set disable_when_metered(val: boolean);
@@ -4862,7 +4862,7 @@ export namespace Ide {
         set disableWhenMetered(val: boolean);
         get transfer(): Transfer;
 
-        // Constructors of Ide.BuildStageTransfer
+        // Constructors
 
         constructor(properties?: Partial<BuildStageTransfer.ConstructorProps>, ...args: any[]);
 
@@ -4883,20 +4883,20 @@ export namespace Ide {
     class BuildconfigConfiguration extends Configuration {
         static $gtype: GObject.GType<BuildconfigConfiguration>;
 
-        // Own properties of Ide.BuildconfigConfiguration
+        // Properties
 
         get postbuild(): string[];
         set postbuild(val: string[]);
         get prebuild(): string[];
         set prebuild(val: string[]);
 
-        // Constructors of Ide.BuildconfigConfiguration
+        // Constructors
 
         constructor(properties?: Partial<BuildconfigConfiguration.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Ide.BuildconfigConfiguration
+        // Methods
 
         get_postbuild(): string[];
         get_prebuild(): string[];
@@ -4913,13 +4913,13 @@ export namespace Ide {
     class BuildconfigConfigurationProvider extends GObject.Object implements ConfigurationProvider {
         static $gtype: GObject.GType<BuildconfigConfigurationProvider>;
 
-        // Constructors of Ide.BuildconfigConfigurationProvider
+        // Constructors
 
         constructor(properties?: Partial<BuildconfigConfigurationProvider.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Ide.BuildconfigConfigurationProvider
+        // Methods
 
         track_config(config: BuildconfigConfiguration): void;
 
@@ -5353,7 +5353,7 @@ export namespace Ide {
     abstract class CompletionItem extends GObject.Object {
         static $gtype: GObject.GType<CompletionItem>;
 
-        // Constructors of Ide.CompletionItem
+        // Constructors
 
         constructor(properties?: Partial<CompletionItem.ConstructorProps>, ...args: any[]);
 
@@ -5361,7 +5361,7 @@ export namespace Ide {
 
         static ['new'](): CompletionItem;
 
-        // Own static methods of Ide.CompletionItem
+        // Static methods
 
         static fuzzy_highlight(haystack: string, casefold_query: string): string;
         /**
@@ -5376,11 +5376,11 @@ export namespace Ide {
          */
         static fuzzy_match(haystack: string, casefold_needle: string): [boolean, number];
 
-        // Own virtual methods of Ide.CompletionItem
+        // Virtual methods
 
         vfunc_match(query: string, casefold: string): boolean;
 
-        // Own methods of Ide.CompletionItem
+        // Methods
 
         match(query: string, casefold: string): boolean;
         set_priority(priority: number): void;
@@ -5397,11 +5397,11 @@ export namespace Ide {
     class CompletionResults extends GObject.Object {
         static $gtype: GObject.GType<CompletionResults>;
 
-        // Own properties of Ide.CompletionResults
+        // Properties
 
         get query(): string;
 
-        // Constructors of Ide.CompletionResults
+        // Constructors
 
         constructor(properties?: Partial<CompletionResults.ConstructorProps>, ...args: any[]);
 
@@ -5409,11 +5409,11 @@ export namespace Ide {
 
         static ['new'](query: string): CompletionResults;
 
-        // Own virtual methods of Ide.CompletionResults
+        // Virtual methods
 
         vfunc_compare(left: CompletionItem, right: CompletionItem): number;
 
-        // Own methods of Ide.CompletionResults
+        // Methods
 
         get_query(): string;
         get_size(): number;
@@ -5434,7 +5434,7 @@ export namespace Ide {
     class CompletionWords extends GtkSource.CompletionWords implements GtkSource.CompletionProvider {
         static $gtype: GObject.GType<CompletionWords>;
 
-        // Constructors of Ide.CompletionWords
+        // Constructors
 
         constructor(properties?: Partial<CompletionWords.ConstructorProps>, ...args: any[]);
 
@@ -6119,7 +6119,7 @@ export namespace Ide {
     class Configuration extends Object {
         static $gtype: GObject.GType<Configuration>;
 
-        // Own properties of Ide.Configuration
+        // Properties
 
         get app_id(): string;
         set app_id(val: string);
@@ -6165,7 +6165,7 @@ export namespace Ide {
         get runtimeId(): string;
         set runtimeId(val: string);
 
-        // Constructors of Ide.Configuration
+        // Constructors
 
         constructor(properties?: Partial<Configuration.ConstructorProps>, ...args: any[]);
 
@@ -6173,7 +6173,7 @@ export namespace Ide {
 
         static ['new'](context: Context, id: string, device_id: string, runtime_id: string): Configuration;
 
-        // Own signals of Ide.Configuration
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -6182,7 +6182,7 @@ export namespace Ide {
         connect_after(signal: 'changed', callback: (_source: this) => void): number;
         emit(signal: 'changed'): void;
 
-        // Own virtual methods of Ide.Configuration
+        // Virtual methods
 
         /**
          * Gets the device for the configuration.
@@ -6197,7 +6197,7 @@ export namespace Ide {
         vfunc_supports_device(device: Device): boolean;
         vfunc_supports_runtime(runtime: Runtime): boolean;
 
-        // Own methods of Ide.Configuration
+        // Methods
 
         /**
          * Copies the configuration into a new configuration.
@@ -6327,20 +6327,20 @@ export namespace Ide {
     {
         static $gtype: GObject.GType<ConfigurationManager>;
 
-        // Own properties of Ide.ConfigurationManager
+        // Properties
 
         get current(): Configuration;
         set current(val: Configuration);
         get current_display_name(): string;
         get currentDisplayName(): string;
 
-        // Constructors of Ide.ConfigurationManager
+        // Constructors
 
         constructor(properties?: Partial<ConfigurationManager.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of Ide.ConfigurationManager
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -6349,7 +6349,7 @@ export namespace Ide {
         connect_after(signal: 'invalidate', callback: (_source: this) => void): number;
         emit(signal: 'invalidate'): void;
 
-        // Own methods of Ide.ConfigurationManager
+        // Methods
 
         add(configuration: Configuration): void;
         /**
@@ -7024,7 +7024,7 @@ export namespace Ide {
     class Context extends GObject.Object implements Gio.AsyncInitable<Context> {
         static $gtype: GObject.GType<Context>;
 
-        // Own properties of Ide.Context
+        // Properties
 
         get back_forward_list(): BackForwardList;
         get backForwardList(): BackForwardList;
@@ -7055,7 +7055,7 @@ export namespace Ide {
         get unsavedFiles(): UnsavedFiles;
         get vcs(): Vcs;
 
-        // Constructors of Ide.Context
+        // Constructors
 
         constructor(properties?: Partial<Context.ConstructorProps>, ...args: any[]);
 
@@ -7066,7 +7066,7 @@ export namespace Ide {
 
         static new_finish(...args: never[]): any;
 
-        // Own signals of Ide.Context
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -7075,7 +7075,7 @@ export namespace Ide {
         connect_after(signal: 'loaded', callback: (_source: this) => void): number;
         emit(signal: 'loaded'): void;
 
-        // Own static methods of Ide.Context
+        // Static methods
 
         static new_async(
             project_file: Gio.File,
@@ -7083,7 +7083,7 @@ export namespace Ide {
             callback?: Gio.AsyncReadyCallback<Context> | null,
         ): void;
 
-        // Own methods of Ide.Context
+        // Methods
 
         /**
          * Retrieves the global back forward list for the #IdeContext.
@@ -7789,20 +7789,20 @@ export namespace Ide {
     class Cursor extends GObject.Object {
         static $gtype: GObject.GType<Cursor>;
 
-        // Own properties of Ide.Cursor
+        // Properties
 
         get ide_source_view(): SourceView;
         set ide_source_view(val: SourceView);
         get ideSourceView(): SourceView;
         set ideSourceView(val: SourceView);
 
-        // Constructors of Ide.Cursor
+        // Constructors
 
         constructor(properties?: Partial<Cursor.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Ide.Cursor
+        // Methods
 
         add_cursor(type: number): void;
         insert_text(text: string, len: number): void;
@@ -7825,7 +7825,7 @@ export namespace Ide {
     abstract class Device extends Object {
         static $gtype: GObject.GType<Device>;
 
-        // Own properties of Ide.Device
+        // Properties
 
         get display_name(): string;
         set display_name(val: string);
@@ -7836,13 +7836,13 @@ export namespace Ide {
         get system_type(): string;
         get systemType(): string;
 
-        // Constructors of Ide.Device
+        // Constructors
 
         constructor(properties?: Partial<Device.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of Ide.Device
+        // Virtual methods
 
         /**
          * This is the description of the system we are building for. Commonly, this
@@ -7854,7 +7854,7 @@ export namespace Ide {
         vfunc_get_system_type(): string;
         vfunc_prepare_configuration(configuration: Configuration): void;
 
-        // Own methods of Ide.Device
+        // Methods
 
         /**
          * This function returns the name of the device. If no name has been set, then
@@ -7908,17 +7908,17 @@ export namespace Ide {
     class DeviceManager<A extends GObject.Object = GObject.Object> extends Object implements Gio.ListModel<A> {
         static $gtype: GObject.GType<DeviceManager>;
 
-        // Own properties of Ide.DeviceManager
+        // Properties
 
         get settled(): boolean;
 
-        // Constructors of Ide.DeviceManager
+        // Constructors
 
         constructor(properties?: Partial<DeviceManager.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of Ide.DeviceManager
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -7939,7 +7939,7 @@ export namespace Ide {
         ): number;
         emit(signal: 'device-removed', object: DeviceProvider, p0: Device): void;
 
-        // Own methods of Ide.DeviceManager
+        // Methods
 
         add_provider(provider: DeviceProvider): void;
         /**
@@ -8470,17 +8470,17 @@ export namespace Ide {
     class DiagnosticsManager extends Object implements Gio.Initable {
         static $gtype: GObject.GType<DiagnosticsManager>;
 
-        // Own properties of Ide.DiagnosticsManager
+        // Properties
 
         get busy(): boolean;
 
-        // Constructors of Ide.DiagnosticsManager
+        // Constructors
 
         constructor(properties?: Partial<DiagnosticsManager.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of Ide.DiagnosticsManager
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -8489,7 +8489,7 @@ export namespace Ide {
         connect_after(signal: 'changed', callback: (_source: this) => void): number;
         emit(signal: 'changed'): void;
 
-        // Own methods of Ide.DiagnosticsManager
+        // Methods
 
         /**
          * Gets if the diagnostics manager is currently executing a diagnosis.
@@ -9013,12 +9013,12 @@ export namespace Ide {
     class DirectoryBuildSystem extends Object implements Gio.AsyncInitable<DirectoryBuildSystem>, BuildSystem {
         static $gtype: GObject.GType<DirectoryBuildSystem>;
 
-        // Own properties of Ide.DirectoryBuildSystem
+        // Properties
 
         get project_file(): Gio.File;
         get projectFile(): Gio.File;
 
-        // Constructors of Ide.DirectoryBuildSystem
+        // Constructors
 
         constructor(properties?: Partial<DirectoryBuildSystem.ConstructorProps>, ...args: any[]);
 
@@ -9616,7 +9616,7 @@ export namespace Ide {
     class DirectoryVcs extends Object implements Gio.AsyncInitable<DirectoryVcs>, Vcs {
         static $gtype: GObject.GType<DirectoryVcs>;
 
-        // Constructors of Ide.DirectoryVcs
+        // Constructors
 
         constructor(properties?: Partial<DirectoryVcs.ConstructorProps>, ...args: any[]);
 
@@ -10246,7 +10246,7 @@ export namespace Ide {
     class Doap extends GObject.Object {
         static $gtype: GObject.GType<Doap>;
 
-        // Own properties of Ide.Doap
+        // Properties
 
         get bug_database(): string;
         set bug_database(val: string);
@@ -10269,7 +10269,7 @@ export namespace Ide {
         get shortdesc(): string;
         set shortdesc(val: string);
 
-        // Constructors of Ide.Doap
+        // Constructors
 
         constructor(properties?: Partial<Doap.ConstructorProps>, ...args: any[]);
 
@@ -10277,7 +10277,7 @@ export namespace Ide {
 
         static ['new'](): Doap;
 
-        // Own methods of Ide.Doap
+        // Methods
 
         get_bug_database(): string;
         get_category(): string;
@@ -10304,14 +10304,14 @@ export namespace Ide {
     class DoapPerson extends GObject.Object {
         static $gtype: GObject.GType<DoapPerson>;
 
-        // Own properties of Ide.DoapPerson
+        // Properties
 
         get email(): string;
         set email(val: string);
         get name(): string;
         set name(val: string);
 
-        // Constructors of Ide.DoapPerson
+        // Constructors
 
         constructor(properties?: Partial<DoapPerson.ConstructorProps>, ...args: any[]);
 
@@ -10319,7 +10319,7 @@ export namespace Ide {
 
         static ['new'](): DoapPerson;
 
-        // Own methods of Ide.DoapPerson
+        // Methods
 
         get_email(): string;
         get_name(): string;
@@ -10358,18 +10358,18 @@ export namespace Ide {
     {
         static $gtype: GObject.GType<EditorPerspective>;
 
-        // Own properties of Ide.EditorPerspective
+        // Properties
 
         get active_view(): Gtk.Widget;
         get activeView(): Gtk.Widget;
 
-        // Constructors of Ide.EditorPerspective
+        // Constructors
 
         constructor(properties?: Partial<EditorPerspective.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of Ide.EditorPerspective
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -10381,7 +10381,7 @@ export namespace Ide {
         connect_after(signal: 'view-removed', callback: (_source: this, object: Gtk.Widget) => void): number;
         emit(signal: 'view-removed', object: Gtk.Widget): void;
 
-        // Own methods of Ide.EditorPerspective
+        // Methods
 
         focus_buffer_in_current_stack(buffer: Buffer): void;
         focus_location(location: SourceLocation): void;
@@ -14981,17 +14981,17 @@ export namespace Ide {
     class EditorView extends LayoutView implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<EditorView>;
 
-        // Own properties of Ide.EditorView
+        // Properties
 
         get document(): Buffer;
 
-        // Constructors of Ide.EditorView
+        // Constructors
 
         constructor(properties?: Partial<EditorView.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of Ide.EditorView
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -15000,7 +15000,7 @@ export namespace Ide {
         connect_after(signal: 'request-documentation', callback: (_source: this, object: string) => void): number;
         emit(signal: 'request-documentation', object: string): void;
 
-        // Own methods of Ide.EditorView
+        // Methods
 
         get_active_source_view(): SourceView;
         get_document(): Buffer;
@@ -15425,7 +15425,7 @@ export namespace Ide {
     class Environment<A extends GObject.Object = GObject.Object> extends GObject.Object implements Gio.ListModel<A> {
         static $gtype: GObject.GType<Environment>;
 
-        // Constructors of Ide.Environment
+        // Constructors
 
         constructor(properties?: Partial<Environment.ConstructorProps>, ...args: any[]);
 
@@ -15433,7 +15433,7 @@ export namespace Ide {
 
         static ['new'](): Environment;
 
-        // Own signals of Ide.Environment
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -15442,7 +15442,7 @@ export namespace Ide {
         connect_after(signal: 'changed', callback: (_source: this) => void): number;
         emit(signal: 'changed'): void;
 
-        // Own methods of Ide.Environment
+        // Methods
 
         append(variable: EnvironmentVariable): void;
         /**
@@ -15969,14 +15969,14 @@ export namespace Ide {
     class EnvironmentVariable extends GObject.Object {
         static $gtype: GObject.GType<EnvironmentVariable>;
 
-        // Own properties of Ide.EnvironmentVariable
+        // Properties
 
         get key(): string;
         set key(val: string);
         get value(): string;
         set value(val: string);
 
-        // Constructors of Ide.EnvironmentVariable
+        // Constructors
 
         constructor(properties?: Partial<EnvironmentVariable.ConstructorProps>, ...args: any[]);
 
@@ -15984,7 +15984,7 @@ export namespace Ide {
 
         static ['new'](key: string, value: string): EnvironmentVariable;
 
-        // Own methods of Ide.EnvironmentVariable
+        // Methods
 
         get_key(): string;
         get_value(): string;
@@ -16008,7 +16008,7 @@ export namespace Ide {
     class ExtensionAdapter extends Object {
         static $gtype: GObject.GType<ExtensionAdapter>;
 
-        // Own properties of Ide.ExtensionAdapter
+        // Properties
 
         get engine(): Peas.Engine;
         get extension(): GObject.Object;
@@ -16019,7 +16019,7 @@ export namespace Ide {
         get value(): string;
         set value(val: string);
 
-        // Constructors of Ide.ExtensionAdapter
+        // Constructors
 
         constructor(properties?: Partial<ExtensionAdapter.ConstructorProps>, ...args: any[]);
 
@@ -16033,7 +16033,7 @@ export namespace Ide {
             value?: string | null,
         ): ExtensionAdapter;
 
-        // Own methods of Ide.ExtensionAdapter
+        // Methods
 
         /**
          * Gets the #IdeExtensionAdapter:engine property.
@@ -16077,7 +16077,7 @@ export namespace Ide {
     class ExtensionSetAdapter extends Object {
         static $gtype: GObject.GType<ExtensionSetAdapter>;
 
-        // Own properties of Ide.ExtensionSetAdapter
+        // Properties
 
         get engine(): Peas.Engine;
         get interface_type(): GObject.GType;
@@ -16087,7 +16087,7 @@ export namespace Ide {
         get value(): string;
         set value(val: string);
 
-        // Constructors of Ide.ExtensionSetAdapter
+        // Constructors
 
         constructor(properties?: Partial<ExtensionSetAdapter.ConstructorProps>, ...args: any[]);
 
@@ -16101,7 +16101,7 @@ export namespace Ide {
             value: string,
         ): ExtensionSetAdapter;
 
-        // Own signals of Ide.ExtensionSetAdapter
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -16125,7 +16125,7 @@ export namespace Ide {
         ): number;
         emit(signal: 'extension-removed', object: Peas.PluginInfo, p0: GObject.Object): void;
 
-        // Own methods of Ide.ExtensionSetAdapter
+        // Methods
 
         /**
          * Calls `foreach_func` for every extension loaded by the extension set.
@@ -16162,7 +16162,7 @@ export namespace Ide {
     class File extends Object {
         static $gtype: GObject.GType<File>;
 
-        // Own properties of Ide.File
+        // Properties
 
         get file(): Gio.File;
         get is_temporary(): boolean;
@@ -16172,7 +16172,7 @@ export namespace Ide {
         get temporary_id(): number;
         get temporaryId(): number;
 
-        // Constructors of Ide.File
+        // Constructors
 
         constructor(properties?: Partial<File.ConstructorProps>, ...args: any[]);
 
@@ -16182,7 +16182,7 @@ export namespace Ide {
 
         static new_for_path(context: Context, path: string): File;
 
-        // Own methods of Ide.File
+        // Methods
 
         compare(b: File): number;
         equal(other: File): boolean;
@@ -16278,7 +16278,7 @@ export namespace Ide {
     class FileSettings extends Object {
         static $gtype: GObject.GType<FileSettings>;
 
-        // Own properties of Ide.FileSettings
+        // Properties
 
         get encoding(): string;
         set encoding(val: string);
@@ -16362,7 +16362,7 @@ export namespace Ide {
         get trimTrailingWhitespaceSet(): boolean;
         set trimTrailingWhitespaceSet(val: boolean);
 
-        // Constructors of Ide.FileSettings
+        // Constructors
 
         constructor(properties?: Partial<FileSettings.ConstructorProps>, ...args: any[]);
 
@@ -16370,7 +16370,7 @@ export namespace Ide {
 
         static ['new'](file: File): FileSettings;
 
-        // Own methods of Ide.FileSettings
+        // Methods
 
         /**
          * Retrieves the underlying file that `self` refers to.
@@ -16414,7 +16414,7 @@ export namespace Ide {
     class FormatterOptions extends GObject.Object {
         static $gtype: GObject.GType<FormatterOptions>;
 
-        // Own properties of Ide.FormatterOptions
+        // Properties
 
         get insert_spaces(): boolean;
         set insert_spaces(val: boolean);
@@ -16425,7 +16425,7 @@ export namespace Ide {
         get tabWidth(): number;
         set tabWidth(val: number);
 
-        // Constructors of Ide.FormatterOptions
+        // Constructors
 
         constructor(properties?: Partial<FormatterOptions.ConstructorProps>, ...args: any[]);
 
@@ -16433,7 +16433,7 @@ export namespace Ide {
 
         static ['new'](): FormatterOptions;
 
-        // Own methods of Ide.FormatterOptions
+        // Methods
 
         get_insert_spaces(): boolean;
         get_tab_width(): number;
@@ -16453,12 +16453,12 @@ export namespace Ide {
     class HighlightEngine extends Object {
         static $gtype: GObject.GType<HighlightEngine>;
 
-        // Own properties of Ide.HighlightEngine
+        // Properties
 
         get buffer(): Buffer;
         get highlighter(): Highlighter;
 
-        // Constructors of Ide.HighlightEngine
+        // Constructors
 
         constructor(properties?: Partial<HighlightEngine.ConstructorProps>, ...args: any[]);
 
@@ -16466,7 +16466,7 @@ export namespace Ide {
 
         static ['new'](buffer: Buffer): HighlightEngine;
 
-        // Own methods of Ide.HighlightEngine
+        // Methods
 
         clear(): void;
         /**
@@ -16528,12 +16528,12 @@ export namespace Ide {
     class LangservClient extends Object {
         static $gtype: GObject.GType<LangservClient>;
 
-        // Own properties of Ide.LangservClient
+        // Properties
 
         get io_stream(): Gio.IOStream;
         get ioStream(): Gio.IOStream;
 
-        // Constructors of Ide.LangservClient
+        // Constructors
 
         constructor(properties?: Partial<LangservClient.ConstructorProps>, ...args: any[]);
 
@@ -16541,7 +16541,7 @@ export namespace Ide {
 
         static ['new'](context: Context, io_stream: Gio.IOStream): LangservClient;
 
-        // Own signals of Ide.LangservClient
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -16565,13 +16565,13 @@ export namespace Ide {
         connect_after(signal: 'supports-language', callback: (_source: this, object: string) => boolean): number;
         emit(signal: 'supports-language', object: string): void;
 
-        // Own virtual methods of Ide.LangservClient
+        // Virtual methods
 
         vfunc_notification(method: string, params: GLib.Variant): void;
         vfunc_published_diagnostics(file: Gio.File, diagnostics: Diagnostics): void;
         vfunc_supports_language(language_id: string): boolean;
 
-        // Own methods of Ide.LangservClient
+        // Methods
 
         add_language(language_id: string): void;
         /**
@@ -16634,18 +16634,18 @@ export namespace Ide {
     {
         static $gtype: GObject.GType<LangservCompletionProvider>;
 
-        // Own properties of Ide.LangservCompletionProvider
+        // Properties
 
         get client(): LangservClient;
         set client(val: LangservClient);
 
-        // Constructors of Ide.LangservCompletionProvider
+        // Constructors
 
         constructor(properties?: Partial<LangservCompletionProvider.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Ide.LangservCompletionProvider
+        // Methods
 
         /**
          * Gets the client for the completion provider.
@@ -17307,18 +17307,18 @@ export namespace Ide {
     abstract class LangservDiagnosticProvider extends Object implements DiagnosticProvider {
         static $gtype: GObject.GType<LangservDiagnosticProvider>;
 
-        // Own properties of Ide.LangservDiagnosticProvider
+        // Properties
 
         get client(): LangservClient;
         set client(val: LangservClient);
 
-        // Constructors of Ide.LangservDiagnosticProvider
+        // Constructors
 
         constructor(properties?: Partial<LangservDiagnosticProvider.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Ide.LangservDiagnosticProvider
+        // Methods
 
         /**
          * Gets the client used by diagnostic provider.
@@ -17400,18 +17400,18 @@ export namespace Ide {
     class LangservFormatter extends Object implements Formatter {
         static $gtype: GObject.GType<LangservFormatter>;
 
-        // Own properties of Ide.LangservFormatter
+        // Properties
 
         get client(): LangservClient;
         set client(val: LangservClient);
 
-        // Constructors of Ide.LangservFormatter
+        // Constructors
 
         constructor(properties?: Partial<LangservFormatter.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Ide.LangservFormatter
+        // Methods
 
         /**
          * Gets the client to use for the formatter.
@@ -17868,18 +17868,18 @@ export namespace Ide {
     class LangservHighlighter extends Object implements Highlighter {
         static $gtype: GObject.GType<LangservHighlighter>;
 
-        // Own properties of Ide.LangservHighlighter
+        // Properties
 
         get client(): LangservClient;
         set client(val: LangservClient);
 
-        // Constructors of Ide.LangservHighlighter
+        // Constructors
 
         constructor(properties?: Partial<LangservHighlighter.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Ide.LangservHighlighter
+        // Methods
 
         get_client(): LangservClient | null;
         set_client(client: LangservClient): void;
@@ -17959,19 +17959,19 @@ export namespace Ide {
     abstract class LangservRenameProvider extends Object implements RenameProvider {
         static $gtype: GObject.GType<LangservRenameProvider>;
 
-        // Own properties of Ide.LangservRenameProvider
+        // Properties
 
         set buffer(val: Buffer);
         get client(): LangservClient;
         set client(val: LangservClient);
 
-        // Constructors of Ide.LangservRenameProvider
+        // Constructors
 
         constructor(properties?: Partial<LangservRenameProvider.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Ide.LangservRenameProvider
+        // Methods
 
         get_client(): LangservClient | null;
         set_client(client: LangservClient): void;
@@ -18072,7 +18072,7 @@ export namespace Ide {
     class LangservSymbolNode extends SymbolNode {
         static $gtype: GObject.GType<LangservSymbolNode>;
 
-        // Constructors of Ide.LangservSymbolNode
+        // Constructors
 
         constructor(properties?: Partial<LangservSymbolNode.ConstructorProps>, ...args: any[]);
 
@@ -18089,7 +18089,7 @@ export namespace Ide {
             end_column: number,
         ): LangservSymbolNode;
 
-        // Own methods of Ide.LangservSymbolNode
+        // Methods
 
         get_parent_name(): string;
         is_parent_of(other: LangservSymbolNode): boolean;
@@ -18106,18 +18106,18 @@ export namespace Ide {
     abstract class LangservSymbolResolver extends Object implements SymbolResolver {
         static $gtype: GObject.GType<LangservSymbolResolver>;
 
-        // Own properties of Ide.LangservSymbolResolver
+        // Properties
 
         get client(): LangservClient;
         set client(val: LangservClient);
 
-        // Constructors of Ide.LangservSymbolResolver
+        // Constructors
 
         constructor(properties?: Partial<LangservSymbolResolver.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Ide.LangservSymbolResolver
+        // Methods
 
         /**
          * Gets the client used by the symbol resolver.
@@ -18270,7 +18270,7 @@ export namespace Ide {
     class LangservSymbolTree extends GObject.Object implements SymbolTree {
         static $gtype: GObject.GType<LangservSymbolTree>;
 
-        // Constructors of Ide.LangservSymbolTree
+        // Constructors
 
         constructor(properties?: Partial<LangservSymbolTree.ConstructorProps>, ...args: any[]);
 
@@ -18724,18 +18724,18 @@ export namespace Ide {
     class Layout extends Dazzle.DockBin implements Atk.ImplementorIface, Dazzle.Dock, Dazzle.DockItem, Gtk.Buildable {
         static $gtype: GObject.GType<Layout>;
 
-        // Own properties of Ide.Layout
+        // Properties
 
         get active_view(): Gtk.Widget;
         get activeView(): Gtk.Widget;
 
-        // Constructors of Ide.Layout
+        // Constructors
 
         constructor(properties?: Partial<Layout.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Ide.Layout
+        // Methods
 
         get_active_view(): Gtk.Widget | null;
 
@@ -23170,7 +23170,7 @@ export namespace Ide {
     class LayoutGrid extends Gtk.Bin implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<LayoutGrid>;
 
-        // Constructors of Ide.LayoutGrid
+        // Constructors
 
         constructor(properties?: Partial<LayoutGrid.ConstructorProps>, ...args: any[]);
 
@@ -23178,7 +23178,7 @@ export namespace Ide {
 
         static ['new'](): LayoutGrid;
 
-        // Own signals of Ide.LayoutGrid
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -23187,7 +23187,7 @@ export namespace Ide {
         connect_after(signal: 'empty', callback: (_source: this) => void): number;
         emit(signal: 'empty'): void;
 
-        // Own methods of Ide.LayoutGrid
+        // Methods
 
         add_stack_after(stack: LayoutStack): LayoutStack;
         add_stack_before(stack: LayoutStack): LayoutStack;
@@ -23626,7 +23626,7 @@ export namespace Ide {
     class LayoutPane extends Dazzle.DockBinEdge implements Atk.ImplementorIface, Dazzle.DockItem, Gtk.Buildable {
         static $gtype: GObject.GType<LayoutPane>;
 
-        // Constructors of Ide.LayoutPane
+        // Constructors
 
         constructor(properties?: Partial<LayoutPane.ConstructorProps>, ...args: any[]);
 
@@ -27729,14 +27729,14 @@ export namespace Ide {
     class LayoutStack extends Gtk.Bin implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<LayoutStack>;
 
-        // Own properties of Ide.LayoutStack
+        // Properties
 
         get active_view(): LayoutView;
         set active_view(val: LayoutView);
         get activeView(): LayoutView;
         set activeView(val: LayoutView);
 
-        // Constructors of Ide.LayoutStack
+        // Constructors
 
         constructor(properties?: Partial<LayoutStack.ConstructorProps>, ...args: any[]);
 
@@ -27744,7 +27744,7 @@ export namespace Ide {
 
         static ['new'](): LayoutStack;
 
-        // Own signals of Ide.LayoutStack
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -27762,7 +27762,7 @@ export namespace Ide {
         ): number;
         emit(signal: 'split', view: LayoutView, split_type: number, file: Gio.File): void;
 
-        // Own methods of Ide.LayoutStack
+        // Methods
 
         add_control(control: Gtk.Widget, priority: number): void;
         foreach_view(callback: Gtk.Callback): void;
@@ -28193,7 +28193,7 @@ export namespace Ide {
     class LayoutView extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<LayoutView>;
 
-        // Own properties of Ide.LayoutView
+        // Properties
 
         get can_split(): boolean;
         get canSplit(): boolean;
@@ -28202,13 +28202,13 @@ export namespace Ide {
         get specialTitle(): string;
         get title(): string;
 
-        // Constructors of Ide.LayoutView
+        // Constructors
 
         constructor(properties?: Partial<LayoutView.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of Ide.LayoutView
+        // Virtual methods
 
         vfunc_agree_to_close(): boolean;
         /**
@@ -28240,7 +28240,7 @@ export namespace Ide {
          */
         vfunc_set_split_view(split_view: boolean): void;
 
-        // Own methods of Ide.LayoutView
+        // Methods
 
         agree_to_close(): boolean;
         /**
@@ -28704,7 +28704,7 @@ export namespace Ide {
     class LocalDevice extends Device {
         static $gtype: GObject.GType<LocalDevice>;
 
-        // Constructors of Ide.LocalDevice
+        // Constructors
 
         constructor(properties?: Partial<LocalDevice.ConstructorProps>, ...args: any[]);
 
@@ -28728,11 +28728,11 @@ export namespace Ide {
     class Object extends GObject.Object {
         static $gtype: GObject.GType<Object>;
 
-        // Own properties of Ide.Object
+        // Properties
 
         get context(): Context;
 
-        // Constructors of Ide.Object
+        // Constructors
 
         constructor(properties?: Partial<Object.ConstructorProps>, ...args: any[]);
 
@@ -28740,7 +28740,7 @@ export namespace Ide {
 
         static new_finish(result: Gio.AsyncResult): Object;
 
-        // Own signals of Ide.Object
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -28749,11 +28749,11 @@ export namespace Ide {
         connect_after(signal: 'destroy', callback: (_source: this) => void): number;
         emit(signal: 'destroy'): void;
 
-        // Own static methods of Ide.Object
+        // Static methods
 
         static notify_in_main(instance: any | null, pspec: GObject.ParamSpec): void;
 
-        // Own virtual methods of Ide.Object
+        // Virtual methods
 
         vfunc_destroy(): void;
         /**
@@ -28762,7 +28762,7 @@ export namespace Ide {
         vfunc_get_context(): Context;
         vfunc_set_context(context: Context): void;
 
-        // Own methods of Ide.Object
+        // Methods
 
         /**
          * Fetches the #IdeObject:context property.
@@ -28803,7 +28803,7 @@ export namespace Ide {
     class OmniBar extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<OmniBar>;
 
-        // Constructors of Ide.OmniBar
+        // Constructors
 
         constructor(properties?: Partial<OmniBar.ConstructorProps>, ...args: any[]);
 
@@ -29256,18 +29256,18 @@ export namespace Ide {
     class OmniSearchDisplay extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<OmniSearchDisplay>;
 
-        // Own properties of Ide.OmniSearchDisplay
+        // Properties
 
         get context(): SearchContext;
         set context(val: SearchContext);
 
-        // Constructors of Ide.OmniSearchDisplay
+        // Constructors
 
         constructor(properties?: Partial<OmniSearchDisplay.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of Ide.OmniSearchDisplay
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -29279,7 +29279,7 @@ export namespace Ide {
         connect_after(signal: 'result-activated', callback: (_source: this, object: SearchResult) => void): number;
         emit(signal: 'result-activated', object: SearchResult): void;
 
-        // Own methods of Ide.OmniSearchDisplay
+        // Methods
 
         get_context(): SearchContext;
         get_count(): number;
@@ -29738,7 +29738,7 @@ export namespace Ide {
     {
         static $gtype: GObject.GType<OmniSearchEntry>;
 
-        // Constructors of Ide.OmniSearchEntry
+        // Constructors
 
         constructor(properties?: Partial<OmniSearchEntry.ConstructorProps>, ...args: any[]);
 
@@ -29746,7 +29746,7 @@ export namespace Ide {
 
         static ['new'](): OmniSearchEntry;
 
-        // Own signals of Ide.OmniSearchEntry
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -29761,7 +29761,7 @@ export namespace Ide {
         connect_after(signal: 'move-previous-result', callback: (_source: this) => void): number;
         emit(signal: 'move-previous-result'): void;
 
-        // Own methods of Ide.OmniSearchEntry
+        // Methods
 
         /**
          * Gets the search engine to use with the current workbench.
@@ -33977,17 +33977,17 @@ export namespace Ide {
     class OmniSearchGroup extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<OmniSearchGroup>;
 
-        // Own properties of Ide.OmniSearchGroup
+        // Properties
 
         get provider(): SearchProvider;
 
-        // Constructors of Ide.OmniSearchGroup
+        // Constructors
 
         constructor(properties?: Partial<OmniSearchGroup.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of Ide.OmniSearchGroup
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -34005,7 +34005,7 @@ export namespace Ide {
         connect_after(signal: 'result-selected', callback: (_source: this, object: SearchResult) => void): number;
         emit(signal: 'result-selected', object: SearchResult): void;
 
-        // Own methods of Ide.OmniSearchGroup
+        // Methods
 
         activate(): boolean;
         add_result(result: SearchResult): void;
@@ -34457,20 +34457,20 @@ export namespace Ide {
     class OmniSearchRow extends Gtk.ListBoxRow implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<OmniSearchRow>;
 
-        // Own properties of Ide.OmniSearchRow
+        // Properties
 
         set icon_name(val: string);
         set iconName(val: string);
         get result(): SearchResult;
         set result(val: SearchResult);
 
-        // Constructors of Ide.OmniSearchRow
+        // Constructors
 
         constructor(properties?: Partial<OmniSearchRow.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Ide.OmniSearchRow
+        // Methods
 
         get_result(): SearchResult;
         set_result(result: SearchResult): void;
@@ -34889,11 +34889,11 @@ export namespace Ide {
     class PkconTransfer extends Transfer {
         static $gtype: GObject.GType<PkconTransfer>;
 
-        // Own properties of Ide.PkconTransfer
+        // Properties
 
         get packages(): string[];
 
-        // Constructors of Ide.PkconTransfer
+        // Constructors
 
         constructor(properties?: Partial<PkconTransfer.ConstructorProps>, ...args: any[]);
 
@@ -34919,7 +34919,7 @@ export namespace Ide {
     {
         static $gtype: GObject.GType<PreferencesPerspective>;
 
-        // Constructors of Ide.PreferencesPerspective
+        // Constructors
 
         constructor(properties?: Partial<PreferencesPerspective.ConstructorProps>, ...args: any[]);
 
@@ -35651,7 +35651,7 @@ export namespace Ide {
     class Progress extends GObject.Object {
         static $gtype: GObject.GType<Progress>;
 
-        // Own properties of Ide.Progress
+        // Properties
 
         get completed(): boolean;
         get fraction(): number;
@@ -35659,7 +35659,7 @@ export namespace Ide {
         get message(): string;
         set message(val: string);
 
-        // Constructors of Ide.Progress
+        // Constructors
 
         constructor(properties?: Partial<Progress.ConstructorProps>, ...args: any[]);
 
@@ -35667,7 +35667,7 @@ export namespace Ide {
 
         static ['new'](): Progress;
 
-        // Own static methods of Ide.Progress
+        // Static methods
 
         /**
          * This function is a #GFileProgressCallback helper that will update the
@@ -35687,7 +35687,7 @@ export namespace Ide {
             user_data?: any | null,
         ): void;
 
-        // Own methods of Ide.Progress
+        // Methods
 
         get_fraction(): number;
         get_message(): string;
@@ -35718,19 +35718,19 @@ export namespace Ide {
     class Project extends Object {
         static $gtype: GObject.GType<Project>;
 
-        // Own properties of Ide.Project
+        // Properties
 
         get id(): string;
         get name(): string;
         get root(): ProjectItem;
 
-        // Constructors of Ide.Project
+        // Constructors
 
         constructor(properties?: Partial<Project.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of Ide.Project
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -35745,7 +35745,7 @@ export namespace Ide {
         connect_after(signal: 'file-trashed', callback: (_source: this, object: Gio.File) => void): number;
         emit(signal: 'file-trashed', object: Gio.File): void;
 
-        // Own methods of Ide.Project
+        // Methods
 
         add_file(file: ProjectFile): void;
         /**
@@ -35818,14 +35818,14 @@ export namespace Ide {
     class ProjectEdit extends GObject.Object {
         static $gtype: GObject.GType<ProjectEdit>;
 
-        // Own properties of Ide.ProjectEdit
+        // Properties
 
         get range(): SourceRange;
         set range(val: SourceRange);
         get replacement(): string;
         set replacement(val: string);
 
-        // Constructors of Ide.ProjectEdit
+        // Constructors
 
         constructor(properties?: Partial<ProjectEdit.ConstructorProps>, ...args: any[]);
 
@@ -35833,7 +35833,7 @@ export namespace Ide {
 
         static ['new'](): ProjectEdit;
 
-        // Own methods of Ide.ProjectEdit
+        // Methods
 
         /**
          * Returns the range for the edit.
@@ -35862,7 +35862,7 @@ export namespace Ide {
     class ProjectFile extends ProjectItem {
         static $gtype: GObject.GType<ProjectFile>;
 
-        // Own properties of Ide.ProjectFile
+        // Properties
 
         get file(): Gio.File;
         set file(val: Gio.File);
@@ -35876,13 +35876,13 @@ export namespace Ide {
         get path(): string;
         set path(val: string);
 
-        // Constructors of Ide.ProjectFile
+        // Constructors
 
         constructor(properties?: Partial<ProjectFile.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Ide.ProjectFile
+        // Methods
 
         /**
          * Retrieves the underlying #GFile represented by `file`.
@@ -35909,13 +35909,13 @@ export namespace Ide {
     class ProjectFiles extends ProjectItem {
         static $gtype: GObject.GType<ProjectFiles>;
 
-        // Constructors of Ide.ProjectFiles
+        // Constructors
 
         constructor(properties?: Partial<ProjectFiles.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Ide.ProjectFiles
+        // Methods
 
         add_file(file: ProjectFile): void;
         /**
@@ -35961,7 +35961,7 @@ export namespace Ide {
     class ProjectInfo extends GObject.Object {
         static $gtype: GObject.GType<ProjectInfo>;
 
-        // Own properties of Ide.ProjectInfo
+        // Properties
 
         get build_system_name(): string;
         set build_system_name(val: string);
@@ -35990,13 +35990,13 @@ export namespace Ide {
         get priority(): number;
         set priority(val: number);
 
-        // Constructors of Ide.ProjectInfo
+        // Constructors
 
         constructor(properties?: Partial<ProjectInfo.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Ide.ProjectInfo
+        // Methods
 
         compare(info2: ProjectInfo): number;
         get_build_system_name(): string;
@@ -36040,18 +36040,18 @@ export namespace Ide {
     class ProjectItem extends Object {
         static $gtype: GObject.GType<ProjectItem>;
 
-        // Own properties of Ide.ProjectItem
+        // Properties
 
         get parent(): ProjectItem;
         set parent(val: ProjectItem);
 
-        // Constructors of Ide.ProjectItem
+        // Constructors
 
         constructor(properties?: Partial<ProjectItem.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Ide.ProjectItem
+        // Methods
 
         append(child: ProjectItem): void;
         /**
@@ -36079,7 +36079,7 @@ export namespace Ide {
     class RecentProjects<A extends GObject.Object = GObject.Object> extends GObject.Object implements Gio.ListModel<A> {
         static $gtype: GObject.GType<RecentProjects>;
 
-        // Constructors of Ide.RecentProjects
+        // Constructors
 
         constructor(properties?: Partial<RecentProjects.ConstructorProps>, ...args: any[]);
 
@@ -36087,7 +36087,7 @@ export namespace Ide {
 
         static ['new'](): RecentProjects;
 
-        // Own methods of Ide.RecentProjects
+        // Methods
 
         discover_async(
             recent_only: boolean,
@@ -36617,7 +36617,7 @@ export namespace Ide {
     class RunButton extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<RunButton>;
 
-        // Constructors of Ide.RunButton
+        // Constructors
 
         constructor(properties?: Partial<RunButton.ConstructorProps>, ...args: any[]);
 
@@ -37072,7 +37072,7 @@ export namespace Ide {
     class RunManager extends Object implements Gio.ActionGroup, Gio.Initable {
         static $gtype: GObject.GType<RunManager>;
 
-        // Own properties of Ide.RunManager
+        // Properties
 
         get build_target(): BuildTarget;
         set build_target(val: BuildTarget);
@@ -37081,13 +37081,13 @@ export namespace Ide {
         get busy(): boolean;
         get handler(): string;
 
-        // Constructors of Ide.RunManager
+        // Constructors
 
         constructor(properties?: Partial<RunManager.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of Ide.RunManager
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -37099,7 +37099,7 @@ export namespace Ide {
         connect_after(signal: 'stopped', callback: (_source: this) => void): number;
         emit(signal: 'stopped'): void;
 
-        // Own methods of Ide.RunManager
+        // Methods
 
         add_handler(id: string, title: string, icon_name: string, accel: string, run_handler: RunHandler): void;
         cancel(): void;
@@ -38084,7 +38084,7 @@ export namespace Ide {
     class Runner extends Object {
         static $gtype: GObject.GType<Runner>;
 
-        // Own properties of Ide.Runner
+        // Properties
 
         get argv(): string[];
         set argv(val: string[]);
@@ -38114,7 +38114,7 @@ export namespace Ide {
         get runOnHost(): boolean;
         set runOnHost(val: boolean);
 
-        // Constructors of Ide.Runner
+        // Constructors
 
         constructor(properties?: Partial<Runner.ConstructorProps>, ...args: any[]);
 
@@ -38122,7 +38122,7 @@ export namespace Ide {
 
         static ['new'](context: Context): Runner;
 
-        // Own signals of Ide.Runner
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -38134,7 +38134,7 @@ export namespace Ide {
         connect_after(signal: 'spawned', callback: (_source: this, object: string) => void): number;
         emit(signal: 'spawned', object: string): void;
 
-        // Own virtual methods of Ide.Runner
+        // Virtual methods
 
         vfunc_fixup_launcher(launcher: SubprocessLauncher): void;
         vfunc_force_quit(): void;
@@ -38151,7 +38151,7 @@ export namespace Ide {
         vfunc_run_finish(result: Gio.AsyncResult): boolean;
         vfunc_set_tty(tty_fd: number): void;
 
-        // Own methods of Ide.Runner
+        // Methods
 
         append_argv(param: string): void;
         force_quit(): void;
@@ -38209,7 +38209,7 @@ export namespace Ide {
     class Runtime extends Object {
         static $gtype: GObject.GType<Runtime>;
 
-        // Own properties of Ide.Runtime
+        // Properties
 
         get display_name(): string;
         set display_name(val: string);
@@ -38218,7 +38218,7 @@ export namespace Ide {
         get id(): string;
         set id(val: string);
 
-        // Constructors of Ide.Runtime
+        // Constructors
 
         constructor(properties?: Partial<Runtime.ConstructorProps>, ...args: any[]);
 
@@ -38226,7 +38226,7 @@ export namespace Ide {
 
         static ['new'](context: Context, id: string, title: string): Runtime;
 
-        // Own virtual methods of Ide.Runtime
+        // Virtual methods
 
         vfunc_contains_program_in_path(program: string, cancellable?: Gio.Cancellable | null): boolean;
         /**
@@ -38253,7 +38253,7 @@ export namespace Ide {
          */
         vfunc_translate_file(file: Gio.File): Gio.File;
 
-        // Own methods of Ide.Runtime
+        // Methods
 
         contains_program_in_path(program: string, cancellable?: Gio.Cancellable | null): boolean;
         /**
@@ -38303,13 +38303,13 @@ export namespace Ide {
     {
         static $gtype: GObject.GType<RuntimeManager>;
 
-        // Constructors of Ide.RuntimeManager
+        // Constructors
 
         constructor(properties?: Partial<RuntimeManager.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Ide.RuntimeManager
+        // Methods
 
         add(runtime: Runtime): void;
         /**
@@ -38948,13 +38948,13 @@ export namespace Ide {
     class SearchContext extends Object {
         static $gtype: GObject.GType<SearchContext>;
 
-        // Constructors of Ide.SearchContext
+        // Constructors
 
         constructor(properties?: Partial<SearchContext.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of Ide.SearchContext
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -38987,7 +38987,7 @@ export namespace Ide {
         ): number;
         emit(signal: 'result-removed', object: SearchProvider, p0: SearchResult): void;
 
-        // Own methods of Ide.SearchContext
+        // Methods
 
         add_result(provider: SearchProvider, result: SearchResult): void;
         cancel(): void;
@@ -39012,13 +39012,13 @@ export namespace Ide {
     class SearchEngine extends Object {
         static $gtype: GObject.GType<SearchEngine>;
 
-        // Constructors of Ide.SearchEngine
+        // Constructors
 
         constructor(properties?: Partial<SearchEngine.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Ide.SearchEngine
+        // Methods
 
         /**
          * Begins a query against the requested search providers.
@@ -39044,7 +39044,7 @@ export namespace Ide {
     class SearchResult extends Object {
         static $gtype: GObject.GType<SearchResult>;
 
-        // Own properties of Ide.SearchResult
+        // Properties
 
         get provider(): SearchProvider;
         set provider(val: SearchProvider);
@@ -39052,7 +39052,7 @@ export namespace Ide {
         get subtitle(): string;
         get title(): string;
 
-        // Constructors of Ide.SearchResult
+        // Constructors
 
         constructor(properties?: Partial<SearchResult.ConstructorProps>, ...args: any[]);
 
@@ -39060,11 +39060,11 @@ export namespace Ide {
 
         static ['new'](provider: SearchProvider, title: string, subtitle: string, score: number): SearchResult;
 
-        // Own virtual methods of Ide.SearchResult
+        // Virtual methods
 
         vfunc_activate(): void;
 
-        // Own methods of Ide.SearchResult
+        // Methods
 
         activate(): void;
         compare(b: SearchResult): number;
@@ -39109,7 +39109,7 @@ export namespace Ide {
     class Settings extends Object {
         static $gtype: GObject.GType<Settings>;
 
-        // Own properties of Ide.Settings
+        // Properties
 
         get ignore_project_settings(): boolean;
         get ignoreProjectSettings(): boolean;
@@ -39118,13 +39118,13 @@ export namespace Ide {
         get schema_id(): string;
         get schemaId(): string;
 
-        // Constructors of Ide.Settings
+        // Constructors
 
         constructor(properties?: Partial<Settings.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of Ide.Settings
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -39133,7 +39133,7 @@ export namespace Ide {
         connect_after(signal: 'changed', callback: (_source: this, object: string) => void): number;
         emit(signal: 'changed', object: string): void;
 
-        // Own methods of Ide.Settings
+        // Methods
 
         bind(key: string, object: any | null, property: string, flags: Gio.SettingsBindFlags): void;
         /**
@@ -39199,13 +39199,13 @@ export namespace Ide {
     class SourceMap extends GtkSource.Map implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable {
         static $gtype: GObject.GType<SourceMap>;
 
-        // Constructors of Ide.SourceMap
+        // Constructors
 
         constructor(properties?: Partial<SourceMap.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of Ide.SourceMap
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -39642,7 +39642,7 @@ export namespace Ide {
     class SourceSnippet extends GObject.Object {
         static $gtype: GObject.GType<SourceSnippet>;
 
-        // Own properties of Ide.SourceSnippet
+        // Properties
 
         get buffer(): Gtk.TextBuffer;
         get description(): string;
@@ -39662,7 +39662,7 @@ export namespace Ide {
         get trigger(): string;
         set trigger(val: string);
 
-        // Constructors of Ide.SourceSnippet
+        // Constructors
 
         constructor(properties?: Partial<SourceSnippet.ConstructorProps>, ...args: any[]);
 
@@ -39670,7 +39670,7 @@ export namespace Ide {
 
         static ['new'](trigger: string, language: string): SourceSnippet;
 
-        // Own methods of Ide.SourceSnippet
+        // Methods
 
         add_chunk(chunk: SourceSnippetChunk): void;
         copy(): SourceSnippet;
@@ -39708,7 +39708,7 @@ export namespace Ide {
     class SourceSnippetChunk extends GObject.Object {
         static $gtype: GObject.GType<SourceSnippetChunk>;
 
-        // Own properties of Ide.SourceSnippetChunk
+        // Properties
 
         get context(): SourceSnippetContext;
         set context(val: SourceSnippetContext);
@@ -39725,7 +39725,7 @@ export namespace Ide {
         get textSet(): boolean;
         set textSet(val: boolean);
 
-        // Constructors of Ide.SourceSnippetChunk
+        // Constructors
 
         constructor(properties?: Partial<SourceSnippetChunk.ConstructorProps>, ...args: any[]);
 
@@ -39733,7 +39733,7 @@ export namespace Ide {
 
         static ['new'](): SourceSnippetChunk;
 
-        // Own methods of Ide.SourceSnippetChunk
+        // Methods
 
         /**
          * Copies the source snippet.
@@ -39780,7 +39780,7 @@ export namespace Ide {
     class SourceSnippetContext extends GObject.Object {
         static $gtype: GObject.GType<SourceSnippetContext>;
 
-        // Constructors of Ide.SourceSnippetContext
+        // Constructors
 
         constructor(properties?: Partial<SourceSnippetContext.ConstructorProps>, ...args: any[]);
 
@@ -39788,7 +39788,7 @@ export namespace Ide {
 
         static ['new'](): SourceSnippetContext;
 
-        // Own signals of Ide.SourceSnippetContext
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -39797,7 +39797,7 @@ export namespace Ide {
         connect_after(signal: 'changed', callback: (_source: this) => void): number;
         emit(signal: 'changed'): void;
 
-        // Own methods of Ide.SourceSnippetContext
+        // Methods
 
         add_shared_variable(key: string, value: string): void;
         add_variable(key: string, value: string): void;
@@ -39820,7 +39820,7 @@ export namespace Ide {
     class SourceSnippets extends GObject.Object {
         static $gtype: GObject.GType<SourceSnippets>;
 
-        // Constructors of Ide.SourceSnippets
+        // Constructors
 
         constructor(properties?: Partial<SourceSnippets.ConstructorProps>, ...args: any[]);
 
@@ -39828,7 +39828,7 @@ export namespace Ide {
 
         static ['new'](): SourceSnippets;
 
-        // Own methods of Ide.SourceSnippets
+        // Methods
 
         add(snippet: SourceSnippet): void;
         clear(): void;
@@ -39846,13 +39846,13 @@ export namespace Ide {
     class SourceSnippetsManager extends GObject.Object {
         static $gtype: GObject.GType<SourceSnippetsManager>;
 
-        // Constructors of Ide.SourceSnippetsManager
+        // Constructors
 
         constructor(properties?: Partial<SourceSnippetsManager.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Ide.SourceSnippetsManager
+        // Methods
 
         /**
          * Gets the snippets for a given source language.
@@ -40141,7 +40141,7 @@ export namespace Ide {
     class SourceView extends GtkSource.View implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable {
         static $gtype: GObject.GType<SourceView>;
 
-        // Own properties of Ide.SourceView
+        // Properties
 
         get back_forward_list(): BackForwardList;
         set back_forward_list(val: BackForwardList);
@@ -40231,13 +40231,13 @@ export namespace Ide {
         get spellChecking(): boolean;
         set spellChecking(val: boolean);
 
-        // Constructors of Ide.SourceView
+        // Constructors
 
         constructor(properties?: Partial<SourceView.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of Ide.SourceView
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -40471,7 +40471,7 @@ export namespace Ide {
         connect_after(signal: 'swap-selection-bounds', callback: (_source: this) => void): number;
         emit(signal: 'swap-selection-bounds'): void;
 
-        // Own virtual methods of Ide.SourceView
+        // Virtual methods
 
         vfunc_add_cursor(type: number): void;
         vfunc_append_to_count(digit: number): void;
@@ -40536,7 +40536,7 @@ export namespace Ide {
         vfunc_sort(ignore_case: boolean, reverse: boolean): void;
         vfunc_swap_selection_bounds(): void;
 
-        // Own methods of Ide.SourceView
+        // Methods
 
         clear_search(): void;
         clear_snippets(): void;
@@ -41400,17 +41400,17 @@ export namespace Ide {
     class SourceViewMode extends Gtk.Widget implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<SourceViewMode>;
 
-        // Own properties of Ide.SourceViewMode
+        // Properties
 
         get name(): string;
 
-        // Constructors of Ide.SourceViewMode
+        // Constructors
 
         constructor(properties?: Partial<SourceViewMode.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of Ide.SourceViewMode
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -41707,7 +41707,7 @@ export namespace Ide {
         connect_after(signal: 'undo', callback: (_source: this) => void): number;
         emit(signal: 'undo'): void;
 
-        // Own methods of Ide.SourceViewMode
+        // Methods
 
         get_block_cursor(): boolean;
         get_default_mode(): string;
@@ -42306,7 +42306,7 @@ export namespace Ide {
     class SubprocessLauncher extends GObject.Object {
         static $gtype: GObject.GType<SubprocessLauncher>;
 
-        // Own properties of Ide.SubprocessLauncher
+        // Properties
 
         get clean_env(): boolean;
         set clean_env(val: boolean);
@@ -42323,7 +42323,7 @@ export namespace Ide {
         get runOnHost(): boolean;
         set runOnHost(val: boolean);
 
-        // Constructors of Ide.SubprocessLauncher
+        // Constructors
 
         constructor(properties?: Partial<SubprocessLauncher.ConstructorProps>, ...args: any[]);
 
@@ -42331,7 +42331,7 @@ export namespace Ide {
 
         static ['new'](flags: Gio.SubprocessFlags): SubprocessLauncher;
 
-        // Own virtual methods of Ide.SubprocessLauncher
+        // Virtual methods
 
         /**
          * Synchronously spawn a process using the internal state.
@@ -42339,7 +42339,7 @@ export namespace Ide {
          */
         vfunc_spawn(cancellable?: Gio.Cancellable | null): Subprocess;
 
-        // Own methods of Ide.SubprocessLauncher
+        // Methods
 
         get_argv(): string[];
         get_clear_env(): boolean;
@@ -42417,7 +42417,7 @@ export namespace Ide {
     class SubprocessSupervisor extends GObject.Object {
         static $gtype: GObject.GType<SubprocessSupervisor>;
 
-        // Constructors of Ide.SubprocessSupervisor
+        // Constructors
 
         constructor(properties?: Partial<SubprocessSupervisor.ConstructorProps>, ...args: any[]);
 
@@ -42425,7 +42425,7 @@ export namespace Ide {
 
         static ['new'](): SubprocessSupervisor;
 
-        // Own signals of Ide.SubprocessSupervisor
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -42440,11 +42440,11 @@ export namespace Ide {
         connect_after(signal: 'unsupervise', callback: (_source: this, object: SubprocessLauncher) => boolean): number;
         emit(signal: 'unsupervise', object: SubprocessLauncher): void;
 
-        // Own virtual methods of Ide.SubprocessSupervisor
+        // Virtual methods
 
         vfunc_spawned(subprocess: Subprocess): void;
 
-        // Own methods of Ide.SubprocessSupervisor
+        // Methods
 
         get_launcher(): SubprocessLauncher | null;
         /**
@@ -42475,7 +42475,7 @@ export namespace Ide {
     class SymbolNode extends Object {
         static $gtype: GObject.GType<SymbolNode>;
 
-        // Own properties of Ide.SymbolNode
+        // Properties
 
         get flags(): SymbolFlags;
         set flags(val: SymbolFlags);
@@ -42488,13 +42488,13 @@ export namespace Ide {
         get useMarkup(): boolean;
         set useMarkup(val: boolean);
 
-        // Constructors of Ide.SymbolNode
+        // Constructors
 
         constructor(properties?: Partial<SymbolNode.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of Ide.SymbolNode
+        // Virtual methods
 
         vfunc_get_location_async(
             cancellable?: Gio.Cancellable | null,
@@ -42506,7 +42506,7 @@ export namespace Ide {
          */
         vfunc_get_location_finish(result: Gio.AsyncResult): SourceLocation | null;
 
-        // Own methods of Ide.SymbolNode
+        // Methods
 
         get_flags(): SymbolFlags;
         get_kind(): SymbolKind;
@@ -42532,7 +42532,7 @@ export namespace Ide {
     abstract class TemplateBase extends GObject.Object {
         static $gtype: GObject.GType<TemplateBase>;
 
-        // Own properties of Ide.TemplateBase
+        // Properties
 
         /**
          * The #IdeTemplateBase:locator property contains the #TmplTemplateLocator
@@ -42543,13 +42543,13 @@ export namespace Ide {
         get locator(): Template.TemplateLocator;
         set locator(val: Template.TemplateLocator);
 
-        // Constructors of Ide.TemplateBase
+        // Constructors
 
         constructor(properties?: Partial<TemplateBase.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Ide.TemplateBase
+        // Methods
 
         add_path(path: string, destination: Gio.File, scope: Template.Scope, mode: number): void;
         add_resource(resource_path: string, destination: Gio.File, scope: Template.Scope, mode: number): void;
@@ -42581,7 +42581,7 @@ export namespace Ide {
     class Transfer extends GObject.Object {
         static $gtype: GObject.GType<Transfer>;
 
-        // Own properties of Ide.Transfer
+        // Properties
 
         get active(): boolean;
         get completed(): boolean;
@@ -42596,22 +42596,22 @@ export namespace Ide {
         get title(): string;
         set title(val: string);
 
-        // Constructors of Ide.Transfer
+        // Constructors
 
         constructor(properties?: Partial<Transfer.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of Ide.Transfer
+        // Static methods
 
         static error_quark(): GLib.Quark;
 
-        // Own virtual methods of Ide.Transfer
+        // Virtual methods
 
         vfunc_execute_async(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): void;
         vfunc_execute_finish(result: Gio.AsyncResult): boolean;
 
-        // Own methods of Ide.Transfer
+        // Methods
 
         cancel(): void;
         execute_async(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): void;
@@ -42647,11 +42647,11 @@ export namespace Ide {
     {
         static $gtype: GObject.GType<TransferButton>;
 
-        // Own properties of Ide.TransferButton
+        // Properties
 
         get transfer(): Transfer;
 
-        // Constructors of Ide.TransferButton
+        // Constructors
 
         constructor(properties?: Partial<TransferButton.ConstructorProps>, ...args: any[]);
 
@@ -46621,7 +46621,7 @@ export namespace Ide {
     class TransferManager<A extends GObject.Object = GObject.Object> extends Object implements Gio.ListModel<A> {
         static $gtype: GObject.GType<TransferManager>;
 
-        // Own properties of Ide.TransferManager
+        // Properties
 
         /**
          * If there are transfers active, this will be set.
@@ -46637,13 +46637,13 @@ export namespace Ide {
          */
         get progress(): number;
 
-        // Constructors of Ide.TransferManager
+        // Constructors
 
         constructor(properties?: Partial<TransferManager.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of Ide.TransferManager
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -46664,7 +46664,7 @@ export namespace Ide {
         ): number;
         emit(signal: 'transfer-failed', transfer: Transfer, reason: GLib.Error): void;
 
-        // Own methods of Ide.TransferManager
+        // Methods
 
         cancel_all(): void;
         /**
@@ -47210,18 +47210,18 @@ export namespace Ide {
     class TransferRow extends Gtk.ListBoxRow implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<TransferRow>;
 
-        // Own properties of Ide.TransferRow
+        // Properties
 
         get transfer(): Transfer;
         set transfer(val: Transfer);
 
-        // Constructors of Ide.TransferRow
+        // Constructors
 
         constructor(properties?: Partial<TransferRow.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of Ide.TransferRow
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -47230,7 +47230,7 @@ export namespace Ide {
         connect_after(signal: 'cancelled', callback: (_source: this) => void): number;
         emit(signal: 'cancelled'): void;
 
-        // Own methods of Ide.TransferRow
+        // Methods
 
         get_transfer(): Transfer | null;
         set_transfer(transfer: Transfer): void;
@@ -47655,7 +47655,7 @@ export namespace Ide {
     {
         static $gtype: GObject.GType<TransfersButton>;
 
-        // Constructors of Ide.TransfersButton
+        // Constructors
 
         constructor(properties?: Partial<TransfersButton.ConstructorProps>, ...args: any[]);
 
@@ -51611,12 +51611,12 @@ export namespace Ide {
     class TransfersProgressIcon extends Gtk.DrawingArea implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<TransfersProgressIcon>;
 
-        // Own properties of Ide.TransfersProgressIcon
+        // Properties
 
         get progress(): number;
         set progress(val: number);
 
-        // Constructors of Ide.TransfersProgressIcon
+        // Constructors
 
         constructor(properties?: Partial<TransfersProgressIcon.ConstructorProps>, ...args: any[]);
 
@@ -51624,7 +51624,7 @@ export namespace Ide {
 
         static ['new'](): TransfersProgressIcon;
 
-        // Own methods of Ide.TransfersProgressIcon
+        // Methods
 
         get_progress(): number;
         set_progress(progress: number): void;
@@ -52041,13 +52041,13 @@ export namespace Ide {
     class UnsavedFiles extends Object {
         static $gtype: GObject.GType<UnsavedFiles>;
 
-        // Constructors of Ide.UnsavedFiles
+        // Constructors
 
         constructor(properties?: Partial<UnsavedFiles.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Ide.UnsavedFiles
+        // Methods
 
         clear(): void;
         contains(file: Gio.File): boolean;
@@ -52118,7 +52118,7 @@ export namespace Ide {
     {
         static $gtype: GObject.GType<Workbench>;
 
-        // Own properties of Ide.Workbench
+        // Properties
 
         /**
          * The #IdeWorkbench:context property contains the #IdeContext for the loaded
@@ -52177,13 +52177,13 @@ export namespace Ide {
         get visiblePerspectiveName(): string;
         set visiblePerspectiveName(val: string);
 
-        // Constructors of Ide.Workbench
+        // Constructors
 
         constructor(properties?: Partial<Workbench.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of Ide.Workbench
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -52201,7 +52201,7 @@ export namespace Ide {
         connect_after(signal: 'unload', callback: (_source: this, object: Context) => void): number;
         emit(signal: 'unload', object: Context): void;
 
-        // Own methods of Ide.Workbench
+        // Methods
 
         add_perspective(perspective: Perspective): void;
         close(): void;
@@ -53256,7 +53256,7 @@ export namespace Ide {
     class WorkbenchHeaderBar extends Gtk.HeaderBar implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<WorkbenchHeaderBar>;
 
-        // Constructors of Ide.WorkbenchHeaderBar
+        // Constructors
 
         constructor(properties?: Partial<WorkbenchHeaderBar.ConstructorProps>, ...args: any[]);
 
@@ -53264,7 +53264,7 @@ export namespace Ide {
 
         static ['new'](): WorkbenchHeaderBar;
 
-        // Own methods of Ide.WorkbenchHeaderBar
+        // Methods
 
         focus_search(): void;
         get_omni_bar(): OmniBar;
@@ -53691,7 +53691,7 @@ export namespace Ide {
     class WorkbenchMessage extends Gtk.InfoBar implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<WorkbenchMessage>;
 
-        // Own properties of Ide.WorkbenchMessage
+        // Properties
 
         get id(): string;
         set id(val: string);
@@ -53700,7 +53700,7 @@ export namespace Ide {
         get title(): string;
         set title(val: string);
 
-        // Constructors of Ide.WorkbenchMessage
+        // Constructors
 
         constructor(properties?: Partial<WorkbenchMessage.ConstructorProps>, ...args: any[]);
 
@@ -53708,7 +53708,7 @@ export namespace Ide {
 
         static ['new'](): WorkbenchMessage;
 
-        // Own methods of Ide.WorkbenchMessage
+        // Methods
 
         add_action(label: string, action_name: string): void;
         get_id(): string;
@@ -54132,7 +54132,7 @@ export namespace Ide {
     abstract class BuildCommand {
         static $gtype: GObject.GType<BuildCommand>;
 
-        // Constructors of Ide.BuildCommand
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -54140,7 +54140,7 @@ export namespace Ide {
     abstract class BuildCommandQueue {
         static $gtype: GObject.GType<BuildCommandQueue>;
 
-        // Constructors of Ide.BuildCommandQueue
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -54151,7 +54151,7 @@ export namespace Ide {
     abstract class BuildResult {
         static $gtype: GObject.GType<BuildResult>;
 
-        // Constructors of Ide.BuildResult
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -54168,7 +54168,7 @@ export namespace Ide {
     abstract class Builder {
         static $gtype: GObject.GType<Builder>;
 
-        // Constructors of Ide.Builder
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -54188,14 +54188,14 @@ export namespace Ide {
     class Diagnostic {
         static $gtype: GObject.GType<Diagnostic>;
 
-        // Constructors of Ide.Diagnostic
+        // Constructors
 
         constructor(severity: DiagnosticSeverity, text: string, location: SourceLocation);
         _init(...args: any[]): void;
 
         static ['new'](severity: DiagnosticSeverity, text: string, location: SourceLocation): Diagnostic;
 
-        // Own methods of Ide.Diagnostic
+        // Methods
 
         /**
          * Adds the range to the diagnostic. This allows diagnostic tools to highlight
@@ -54265,14 +54265,14 @@ export namespace Ide {
     class Diagnostics {
         static $gtype: GObject.GType<Diagnostics>;
 
-        // Constructors of Ide.Diagnostics
+        // Constructors
 
         constructor(ar?: Diagnostic[] | null);
         _init(...args: any[]): void;
 
         static ['new'](ar?: Diagnostic[] | null): Diagnostics;
 
-        // Own methods of Ide.Diagnostics
+        // Methods
 
         add(diagnostic: Diagnostic): void;
         /**
@@ -54307,7 +54307,7 @@ export namespace Ide {
     abstract class EditorFrame {
         static $gtype: GObject.GType<EditorFrame>;
 
-        // Constructors of Ide.EditorFrame
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -54324,11 +54324,11 @@ export namespace Ide {
     class Fixit {
         static $gtype: GObject.GType<Fixit>;
 
-        // Constructors of Ide.Fixit
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of Ide.Fixit
+        // Methods
 
         apply(): void;
         /**
@@ -54353,14 +54353,14 @@ export namespace Ide {
     class HighlightIndex {
         static $gtype: GObject.GType<HighlightIndex>;
 
-        // Constructors of Ide.HighlightIndex
+        // Constructors
 
         constructor(properties?: Partial<{}>);
         _init(...args: any[]): void;
 
         static ['new'](): HighlightIndex;
 
-        // Own methods of Ide.HighlightIndex
+        // Methods
 
         dump(): void;
         insert(word: string, tag?: any | null): void;
@@ -54396,13 +54396,13 @@ export namespace Ide {
     class LineReader {
         static $gtype: GObject.GType<LineReader>;
 
-        // Own fields of Ide.LineReader
+        // Fields
 
         contents: string;
         length: number;
         pos: number;
 
-        // Constructors of Ide.LineReader
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -54413,7 +54413,7 @@ export namespace Ide {
         );
         _init(...args: any[]): void;
 
-        // Own methods of Ide.LineReader
+        // Methods
 
         init(contents: string, length: number): void;
         /**
@@ -54444,14 +54444,14 @@ export namespace Ide {
     class PatternSpec {
         static $gtype: GObject.GType<PatternSpec>;
 
-        // Constructors of Ide.PatternSpec
+        // Constructors
 
         constructor(keywords: string);
         _init(...args: any[]): void;
 
         static ['new'](keywords: string): PatternSpec;
 
-        // Own methods of Ide.PatternSpec
+        // Methods
 
         get_text(): string;
         match(haystack: string): boolean;
@@ -54484,7 +54484,7 @@ export namespace Ide {
     abstract class Script {
         static $gtype: GObject.GType<Script>;
 
-        // Constructors of Ide.Script
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -54492,7 +54492,7 @@ export namespace Ide {
     abstract class ScriptManager {
         static $gtype: GObject.GType<ScriptManager>;
 
-        // Constructors of Ide.ScriptManager
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -54503,18 +54503,18 @@ export namespace Ide {
     class SearchReducer {
         static $gtype: GObject.GType<SearchReducer>;
 
-        // Own fields of Ide.SearchReducer
+        // Fields
 
         context: SearchContext;
         provider: SearchProvider;
         max_results: number;
         count: number;
 
-        // Constructors of Ide.SearchReducer
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of Ide.SearchReducer
+        // Methods
 
         accepts(score: number): boolean;
         destroy(): void;
@@ -54528,14 +54528,14 @@ export namespace Ide {
     class SourceLocation {
         static $gtype: GObject.GType<SourceLocation>;
 
-        // Constructors of Ide.SourceLocation
+        // Constructors
 
         constructor(file: File, line: number, line_offset: number, offset: number);
         _init(...args: any[]): void;
 
         static ['new'](file: File, line: number, line_offset: number, offset: number): SourceLocation;
 
-        // Own methods of Ide.SourceLocation
+        // Methods
 
         compare(b: SourceLocation): number;
         /**
@@ -54576,14 +54576,14 @@ export namespace Ide {
     class SourceRange {
         static $gtype: GObject.GType<SourceRange>;
 
-        // Constructors of Ide.SourceRange
+        // Constructors
 
         constructor(begin: SourceLocation, end: SourceLocation);
         _init(...args: any[]): void;
 
         static ['new'](begin: SourceLocation, end: SourceLocation): SourceRange;
 
-        // Own methods of Ide.SourceRange
+        // Methods
 
         /**
          * Gets the beginning of the source range.
@@ -54620,7 +54620,7 @@ export namespace Ide {
     class Symbol {
         static $gtype: GObject.GType<Symbol>;
 
-        // Constructors of Ide.Symbol
+        // Constructors
 
         constructor(
             name: string,
@@ -54641,7 +54641,7 @@ export namespace Ide {
             canonical_location?: SourceLocation | null,
         ): Symbol;
 
-        // Own methods of Ide.Symbol
+        // Methods
 
         /**
          * Gets the location of the symbols "implementation". In C/C++ languages, you can have multiple
@@ -54679,11 +54679,11 @@ export namespace Ide {
     abstract class ThreadPool {
         static $gtype: GObject.GType<ThreadPool>;
 
-        // Constructors of Ide.ThreadPool
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own static methods of Ide.ThreadPool
+        // Static methods
 
         /**
          * Runs the callback on the thread pool thread.
@@ -54710,11 +54710,11 @@ export namespace Ide {
     class UnsavedFile {
         static $gtype: GObject.GType<UnsavedFile>;
 
-        // Constructors of Ide.UnsavedFile
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of Ide.UnsavedFile
+        // Methods
 
         /**
          * Gets the contents of the unsaved file.
@@ -54740,7 +54740,7 @@ export namespace Ide {
     class Uri {
         static $gtype: GObject.GType<Uri>;
 
-        // Constructors of Ide.Uri
+        // Constructors
 
         constructor(uri_string: string, flags: UriParseFlags);
         _init(...args: any[]): void;
@@ -54749,7 +54749,7 @@ export namespace Ide {
 
         static new_from_file(file: Gio.File): Uri;
 
-        // Own static methods of Ide.Uri
+        // Static methods
 
         static build(
             scheme: string,
@@ -54808,7 +54808,7 @@ export namespace Ide {
          */
         static split(uri_string: string, strict: boolean): [string, string, string, string, string, string, string];
 
-        // Own methods of Ide.Uri
+        // Methods
 
         /**
          * Copies `uri`
@@ -54974,18 +54974,18 @@ export namespace Ide {
     class VcsUri {
         static $gtype: GObject.GType<VcsUri>;
 
-        // Constructors of Ide.VcsUri
+        // Constructors
 
         constructor(uri: string);
         _init(...args: any[]): void;
 
         static ['new'](uri: string): VcsUri;
 
-        // Own static methods of Ide.VcsUri
+        // Static methods
 
         static is_valid(uri_string: string): boolean;
 
-        // Own methods of Ide.VcsUri
+        // Methods
 
         get_host(): string;
         get_path(): string;
@@ -55018,7 +55018,7 @@ export namespace Ide {
         prototype: ApplicationAddin;
     }
     interface ApplicationAddin extends GObject.Object {
-        // Own methods of Ide.ApplicationAddin
+        // Methods
 
         /**
          * This interface method is called when the application is started or
@@ -55038,7 +55038,7 @@ export namespace Ide {
          */
         unload(application: Application): void;
 
-        // Own virtual methods of Ide.ApplicationAddin
+        // Virtual methods
 
         /**
          * This interface method is called when the application is started or
@@ -55072,7 +55072,7 @@ export namespace Ide {
         prototype: ApplicationTool;
     }
     interface ApplicationTool extends GObject.Object {
-        // Own methods of Ide.ApplicationTool
+        // Methods
 
         /**
          * Asynchronously runs an application tool. This is typically done on the
@@ -55088,7 +55088,7 @@ export namespace Ide {
         ): void;
         run_finish(result: Gio.AsyncResult): number;
 
-        // Own virtual methods of Ide.ApplicationTool
+        // Virtual methods
 
         /**
          * Asynchronously runs an application tool. This is typically done on the
@@ -55118,7 +55118,7 @@ export namespace Ide {
         prototype: BuildPipelineAddin;
     }
     interface BuildPipelineAddin extends Object {
-        // Own methods of Ide.BuildPipelineAddin
+        // Methods
 
         load(pipeline: BuildPipeline): void;
         /**
@@ -55136,7 +55136,7 @@ export namespace Ide {
         track(stage_id: number): void;
         unload(pipeline: BuildPipeline): void;
 
-        // Own virtual methods of Ide.BuildPipelineAddin
+        // Virtual methods
 
         vfunc_load(pipeline: BuildPipeline): void;
         vfunc_unload(pipeline: BuildPipeline): void;
@@ -55186,13 +55186,13 @@ export namespace Ide {
         new_finish(...args: never[]): any;
     }
     interface BuildSystem extends Object {
-        // Own properties of Ide.BuildSystem
+        // Properties
 
         get context(): Context;
         get project_file(): Gio.File;
         get projectFile(): Gio.File;
 
-        // Own methods of Ide.BuildSystem
+        // Methods
 
         get_build_flags_async(
             file: File,
@@ -55210,7 +55210,7 @@ export namespace Ide {
         get_id(): string;
         get_priority(): number;
 
-        // Own virtual methods of Ide.BuildSystem
+        // Virtual methods
 
         vfunc_get_build_flags_async(
             file: File,
@@ -55242,7 +55242,7 @@ export namespace Ide {
         prototype: BuildSystemDiscovery;
     }
     interface BuildSystemDiscovery extends GObject.Object {
-        // Own methods of Ide.BuildSystemDiscovery
+        // Methods
 
         /**
          * This virtual method can be used to try to discover the build system to use for
@@ -55255,7 +55255,7 @@ export namespace Ide {
          */
         discover(project_file: Gio.File, cancellable: Gio.Cancellable | null): [string, number];
 
-        // Own virtual methods of Ide.BuildSystemDiscovery
+        // Virtual methods
 
         /**
          * This virtual method can be used to try to discover the build system to use for
@@ -55281,12 +55281,12 @@ export namespace Ide {
         prototype: BuildTarget;
     }
     interface BuildTarget extends Object {
-        // Own methods of Ide.BuildTarget
+        // Methods
 
         get_install_directory(): Gio.File | null;
         get_name(): string | null;
 
-        // Own virtual methods of Ide.BuildTarget
+        // Virtual methods
 
         vfunc_get_install_directory(): Gio.File | null;
         vfunc_get_name(): string | null;
@@ -55309,11 +55309,11 @@ export namespace Ide {
         context_in_comment_or_string(context: GtkSource.CompletionContext): boolean;
     }
     interface CompletionProvider extends GtkSource.CompletionProvider {
-        // Own methods of Ide.CompletionProvider
+        // Methods
 
         load(context: Context): void;
 
-        // Own virtual methods of Ide.CompletionProvider
+        // Virtual methods
 
         vfunc_load(context: Context): void;
     }
@@ -55331,7 +55331,7 @@ export namespace Ide {
         prototype: ConfigurationProvider;
     }
     interface ConfigurationProvider extends GObject.Object {
-        // Own methods of Ide.ConfigurationProvider
+        // Methods
 
         load_async(
             manager: ConfigurationManager,
@@ -55343,7 +55343,7 @@ export namespace Ide {
         save_finish(result: Gio.AsyncResult): boolean;
         unload(manager: ConfigurationManager): void;
 
-        // Own virtual methods of Ide.ConfigurationProvider
+        // Virtual methods
 
         vfunc_load_async(
             manager: ConfigurationManager,
@@ -55372,12 +55372,12 @@ export namespace Ide {
         prototype: DeviceProvider;
     }
     interface DeviceProvider extends Object {
-        // Own properties of Ide.DeviceProvider
+        // Properties
 
         set context(val: Context);
         get settled(): boolean;
 
-        // Own methods of Ide.DeviceProvider
+        // Methods
 
         emit_device_added(device: Device): void;
         emit_device_removed(device: Device): void;
@@ -55388,7 +55388,7 @@ export namespace Ide {
         get_devices(): Device[];
         get_settled(): boolean;
 
-        // Own virtual methods of Ide.DeviceProvider
+        // Virtual methods
 
         /**
          * Retrieves a list of devices currently managed by `provider`.
@@ -55410,7 +55410,7 @@ export namespace Ide {
         prototype: DiagnosticProvider;
     }
     interface DiagnosticProvider extends Object {
-        // Own methods of Ide.DiagnosticProvider
+        // Methods
 
         diagnose_async(
             file: File,
@@ -55427,7 +55427,7 @@ export namespace Ide {
         emit_invalidated(): void;
         load(): void;
 
-        // Own virtual methods of Ide.DiagnosticProvider
+        // Virtual methods
 
         vfunc_diagnose_async(
             file: File,
@@ -55456,7 +55456,7 @@ export namespace Ide {
         prototype: EditorViewAddin;
     }
     interface EditorViewAddin extends GObject.Object {
-        // Own virtual methods of Ide.EditorViewAddin
+        // Virtual methods
 
         vfunc_language_changed(language_id: string): void;
         vfunc_load(view: EditorView): void;
@@ -55478,7 +55478,7 @@ export namespace Ide {
         prototype: Formatter;
     }
     interface Formatter extends GObject.Object {
-        // Own methods of Ide.Formatter
+        // Methods
 
         format_async(
             buffer: Buffer,
@@ -55498,7 +55498,7 @@ export namespace Ide {
         format_range_finish(result: Gio.AsyncResult): boolean;
         load(): void;
 
-        // Own virtual methods of Ide.Formatter
+        // Virtual methods
 
         vfunc_format_async(
             buffer: Buffer,
@@ -55535,12 +55535,12 @@ export namespace Ide {
         prototype: GenesisAddin;
     }
     interface GenesisAddin extends GObject.Object {
-        // Own properties of Ide.GenesisAddin
+        // Properties
 
         get is_ready(): boolean;
         get isReady(): boolean;
 
-        // Own methods of Ide.GenesisAddin
+        // Methods
 
         get_icon_name(): string;
         get_label(): string;
@@ -55551,7 +55551,7 @@ export namespace Ide {
         run_async(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): void;
         run_finish(result: Gio.AsyncResult): boolean;
 
-        // Own virtual methods of Ide.GenesisAddin
+        // Virtual methods
 
         vfunc_get_icon_name(): string;
         vfunc_get_label(): string;
@@ -55578,11 +55578,11 @@ export namespace Ide {
         prototype: Highlighter;
     }
     interface Highlighter extends Object {
-        // Own properties of Ide.Highlighter
+        // Properties
 
         set context(val: Context);
 
-        // Own methods of Ide.Highlighter
+        // Methods
 
         load(): void;
         /**
@@ -55598,7 +55598,7 @@ export namespace Ide {
          */
         update(callback: HighlightCallback, range_begin: Gtk.TextIter, range_end: Gtk.TextIter): Gtk.TextIter;
 
-        // Own virtual methods of Ide.Highlighter
+        // Virtual methods
 
         vfunc_load(): void;
         vfunc_set_engine(engine: HighlightEngine): void;
@@ -55629,7 +55629,7 @@ export namespace Ide {
         prototype: Indenter;
     }
     interface Indenter extends Object {
-        // Own methods of Ide.Indenter
+        // Methods
 
         /**
          * This function performs an indentation for the key press activated by `event`.
@@ -55659,7 +55659,7 @@ export namespace Ide {
          */
         is_trigger(event: Gdk.EventKey): boolean;
 
-        // Own virtual methods of Ide.Indenter
+        // Virtual methods
 
         /**
          * This function performs an indentation for the key press activated by `event`.
@@ -55701,7 +55701,7 @@ export namespace Ide {
         prototype: LayoutStackAddin;
     }
     interface LayoutStackAddin extends GObject.Object {
-        // Own methods of Ide.LayoutStackAddin
+        // Methods
 
         /**
          * This function should be implemented by #IdeLayoutStackAddin plugins
@@ -55730,7 +55730,7 @@ export namespace Ide {
          */
         unload(stack: LayoutStack): void;
 
-        // Own virtual methods of Ide.LayoutStackAddin
+        // Virtual methods
 
         /**
          * This function should be implemented by #IdeLayoutStackAddin plugins
@@ -55773,7 +55773,7 @@ export namespace Ide {
         prototype: Perspective;
     }
     interface Perspective extends GObject.Object {
-        // Own methods of Ide.Perspective
+        // Methods
 
         /**
          * This interface method is called when the workbench would like to shutdown.
@@ -55860,7 +55860,7 @@ export namespace Ide {
          */
         views_foreach(callback: Gtk.Callback): void;
 
-        // Own virtual methods of Ide.Perspective
+        // Virtual methods
 
         /**
          * This interface method is called when the workbench would like to shutdown.
@@ -55953,7 +55953,7 @@ export namespace Ide {
         prototype: PreferencesAddin;
     }
     interface PreferencesAddin extends GObject.Object {
-        // Own methods of Ide.PreferencesAddin
+        // Methods
 
         /**
          * This interface method is called when a preferences addin is initialized. It could be
@@ -55973,7 +55973,7 @@ export namespace Ide {
          */
         unload(preferences: Dazzle.Preferences): void;
 
-        // Own virtual methods of Ide.PreferencesAddin
+        // Virtual methods
 
         /**
          * This interface method is called when a preferences addin is initialized. It could be
@@ -56007,13 +56007,13 @@ export namespace Ide {
         prototype: ProjectMiner;
     }
     interface ProjectMiner extends GObject.Object {
-        // Own methods of Ide.ProjectMiner
+        // Methods
 
         emit_discovered(project_info: ProjectInfo): void;
         mine_async(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): void;
         mine_finish(result: Gio.AsyncResult): boolean;
 
-        // Own virtual methods of Ide.ProjectMiner
+        // Virtual methods
 
         vfunc_discovered(project_info: ProjectInfo): void;
         vfunc_mine_async(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): void;
@@ -56033,7 +56033,7 @@ export namespace Ide {
         prototype: ProjectTemplate;
     }
     interface ProjectTemplate extends GObject.Object {
-        // Own methods of Ide.ProjectTemplate
+        // Methods
 
         /**
          * Asynchronously requests expansion of the template.
@@ -56068,7 +56068,7 @@ export namespace Ide {
          */
         get_widget(): Gtk.Widget;
 
-        // Own virtual methods of Ide.ProjectTemplate
+        // Virtual methods
 
         /**
          * Asynchronously requests expansion of the template.
@@ -56117,11 +56117,11 @@ export namespace Ide {
         prototype: RenameProvider;
     }
     interface RenameProvider extends Object {
-        // Own properties of Ide.RenameProvider
+        // Properties
 
         set buffer(val: Buffer);
 
-        // Own methods of Ide.RenameProvider
+        // Methods
 
         load(): void;
         /**
@@ -56150,7 +56150,7 @@ export namespace Ide {
          */
         rename_finish(result: Gio.AsyncResult): [boolean, ProjectEdit[] | null];
 
-        // Own virtual methods of Ide.RenameProvider
+        // Virtual methods
 
         vfunc_load(): void;
         /**
@@ -56192,7 +56192,7 @@ export namespace Ide {
         prototype: RunnerAddin;
     }
     interface RunnerAddin extends GObject.Object {
-        // Own methods of Ide.RunnerAddin
+        // Methods
 
         load(runner: Runner): void;
         posthook_async(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): void;
@@ -56201,7 +56201,7 @@ export namespace Ide {
         prehook_finish(result: Gio.AsyncResult): boolean;
         unload(runner: Runner): void;
 
-        // Own virtual methods of Ide.RunnerAddin
+        // Virtual methods
 
         vfunc_load(runner: Runner): void;
         vfunc_posthook_async(
@@ -56227,7 +56227,7 @@ export namespace Ide {
         prototype: RuntimeProvider;
     }
     interface RuntimeProvider extends GObject.Object {
-        // Own methods of Ide.RuntimeProvider
+        // Methods
 
         can_install(runtime_id: string): boolean;
         install_async(
@@ -56239,7 +56239,7 @@ export namespace Ide {
         load(manager: RuntimeManager): void;
         unload(manager: RuntimeManager): void;
 
-        // Own virtual methods of Ide.RuntimeProvider
+        // Virtual methods
 
         vfunc_can_install(runtime_id: string): boolean;
         vfunc_install_async(
@@ -56265,7 +56265,7 @@ export namespace Ide {
         prototype: SearchProvider;
     }
     interface SearchProvider extends Object {
-        // Own methods of Ide.SearchProvider
+        // Methods
 
         activate(row: Gtk.Widget, result: SearchResult): void;
         /**
@@ -56284,7 +56284,7 @@ export namespace Ide {
             cancellable?: Gio.Cancellable | null,
         ): void;
 
-        // Own virtual methods of Ide.SearchProvider
+        // Virtual methods
 
         vfunc_activate(row: Gtk.Widget, result: SearchResult): void;
         /**
@@ -56316,13 +56316,13 @@ export namespace Ide {
         prototype: Service;
     }
     interface Service extends Object {
-        // Own methods of Ide.Service
+        // Methods
 
         get_name(): string;
         start(): void;
         stop(): void;
 
-        // Own virtual methods of Ide.Service
+        // Virtual methods
 
         vfunc_context_loaded(): void;
         vfunc_get_name(): string;
@@ -56343,7 +56343,7 @@ export namespace Ide {
         prototype: Subprocess;
     }
     interface Subprocess extends GObject.Object {
-        // Own methods of Ide.Subprocess
+        // Methods
 
         check_exit_status(): boolean;
         communicate(
@@ -56408,7 +56408,7 @@ export namespace Ide {
         wait_check_finish(result: Gio.AsyncResult): boolean;
         wait_finish(result: Gio.AsyncResult): boolean;
 
-        // Own virtual methods of Ide.Subprocess
+        // Virtual methods
 
         vfunc_communicate(
             stdin_buf: GLib.Bytes | Uint8Array,
@@ -56484,7 +56484,7 @@ export namespace Ide {
         prototype: SymbolResolver;
     }
     interface SymbolResolver extends Object {
-        // Own methods of Ide.SymbolResolver
+        // Methods
 
         find_references_async(
             location: SourceLocation,
@@ -56538,7 +56538,7 @@ export namespace Ide {
          */
         lookup_symbol_finish(result: Gio.AsyncResult): Symbol | null;
 
-        // Own virtual methods of Ide.SymbolResolver
+        // Virtual methods
 
         vfunc_find_references_async(
             location: SourceLocation,
@@ -56603,7 +56603,7 @@ export namespace Ide {
         prototype: SymbolTree;
     }
     interface SymbolTree extends GObject.Object {
-        // Own methods of Ide.SymbolTree
+        // Methods
 
         /**
          * Get the number of children of `node`. If `node` is NULL, the root node
@@ -56620,7 +56620,7 @@ export namespace Ide {
          */
         get_nth_child(node: SymbolNode | null, nth: number): SymbolNode | null;
 
-        // Own virtual methods of Ide.SymbolTree
+        // Virtual methods
 
         /**
          * Get the number of children of `node`. If `node` is NULL, the root node
@@ -56649,7 +56649,7 @@ export namespace Ide {
         prototype: TagsBuilder;
     }
     interface TagsBuilder extends GObject.Object {
-        // Own methods of Ide.TagsBuilder
+        // Methods
 
         build_async(
             directory_or_file: Gio.File,
@@ -56659,7 +56659,7 @@ export namespace Ide {
         ): void;
         build_finish(result: Gio.AsyncResult): boolean;
 
-        // Own virtual methods of Ide.TagsBuilder
+        // Virtual methods
 
         vfunc_build_async(
             directory_or_file: Gio.File,
@@ -56683,7 +56683,7 @@ export namespace Ide {
         prototype: TemplateProvider;
     }
     interface TemplateProvider extends GObject.Object {
-        // Own methods of Ide.TemplateProvider
+        // Methods
 
         /**
          * Gets a list of templates for this provider.
@@ -56694,7 +56694,7 @@ export namespace Ide {
          */
         get_project_templates(): ProjectTemplate[];
 
-        // Own virtual methods of Ide.TemplateProvider
+        // Virtual methods
 
         /**
          * Gets a list of templates for this provider.
@@ -56738,7 +56738,7 @@ export namespace Ide {
         register_ignored(pattern: string): void;
     }
     interface Vcs extends Object {
-        // Own properties of Ide.Vcs
+        // Properties
 
         get branch_name(): string;
         get branchName(): string;
@@ -56746,7 +56746,7 @@ export namespace Ide {
         get working_directory(): Gio.File;
         get workingDirectory(): Gio.File;
 
-        // Own methods of Ide.Vcs
+        // Methods
 
         emit_changed(): void;
         /**
@@ -56776,7 +56776,7 @@ export namespace Ide {
         get_working_directory(): Gio.File;
         is_ignored(file: Gio.File): boolean;
 
-        // Own virtual methods of Ide.Vcs
+        // Virtual methods
 
         vfunc_changed(): void;
         /**
@@ -56816,12 +56816,12 @@ export namespace Ide {
         prototype: VcsConfig;
     }
     interface VcsConfig extends GObject.Object {
-        // Own methods of Ide.VcsConfig
+        // Methods
 
         get_config(type: VcsConfigType, value: GObject.Value | any): void;
         set_config(type: VcsConfigType, value: GObject.Value | any): void;
 
-        // Own virtual methods of Ide.VcsConfig
+        // Virtual methods
 
         vfunc_get_config(type: VcsConfigType, value: GObject.Value | any): void;
         vfunc_set_config(type: VcsConfigType, value: GObject.Value | any): void;
@@ -56840,7 +56840,7 @@ export namespace Ide {
         prototype: VcsInitializer;
     }
     interface VcsInitializer extends GObject.Object {
-        // Own methods of Ide.VcsInitializer
+        // Methods
 
         get_title(): string;
         initialize_async(
@@ -56850,7 +56850,7 @@ export namespace Ide {
         ): void;
         initialize_finish(result: Gio.AsyncResult): boolean;
 
-        // Own virtual methods of Ide.VcsInitializer
+        // Virtual methods
 
         vfunc_get_title(): string;
         vfunc_initialize_async(
@@ -56874,7 +56874,7 @@ export namespace Ide {
         prototype: WorkbenchAddin;
     }
     interface WorkbenchAddin extends GObject.Object {
-        // Own methods of Ide.WorkbenchAddin
+        // Methods
 
         /**
          * This interface method indicates if the workbench addin can load the content
@@ -56931,7 +56931,7 @@ export namespace Ide {
          */
         unload(workbench: Workbench): void;
 
-        // Own virtual methods of Ide.WorkbenchAddin
+        // Virtual methods
 
         /**
          * This interface method indicates if the workbench addin can load the content
@@ -57000,7 +57000,7 @@ export namespace Ide {
         prototype: Worker;
     }
     interface Worker extends GObject.Object {
-        // Own methods of Ide.Worker
+        // Methods
 
         /**
          * Creates a new proxy to be connected to the subprocess peer on the other
@@ -57011,7 +57011,7 @@ export namespace Ide {
         create_proxy(connection: Gio.DBusConnection): Gio.DBusProxy;
         register_service(connection: Gio.DBusConnection): void;
 
-        // Own virtual methods of Ide.Worker
+        // Virtual methods
 
         /**
          * Creates a new proxy to be connected to the subprocess peer on the other

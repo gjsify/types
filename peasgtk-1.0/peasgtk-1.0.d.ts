@@ -49,7 +49,7 @@ export namespace PeasGtk {
     class PluginManager extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<PluginManager>;
 
-        // Own properties of PeasGtk.PluginManager
+        // Properties
 
         /**
          * The [class`Peas`.Engine] this manager is attached to.
@@ -60,11 +60,11 @@ export namespace PeasGtk {
          */
         get view(): PluginManagerView;
 
-        // Own fields of PeasGtk.PluginManager
+        // Fields
 
         box: Gtk.Box;
 
-        // Constructors of PeasGtk.PluginManager
+        // Constructors
 
         constructor(properties?: Partial<PluginManager.ConstructorProps>, ...args: any[]);
 
@@ -75,7 +75,7 @@ export namespace PeasGtk {
 
         static ['new'](...args: never[]): any;
 
-        // Own methods of PeasGtk.PluginManager
+        // Methods
 
         /**
          * Returns the [class`PluginManagerView]` of `pm`.
@@ -530,7 +530,7 @@ export namespace PeasGtk {
     class PluginManagerView extends Gtk.TreeView implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable {
         static $gtype: GObject.GType<PluginManagerView>;
 
-        // Own properties of PeasGtk.PluginManagerView
+        // Properties
 
         get engine(): Peas.Engine;
         /**
@@ -544,7 +544,7 @@ export namespace PeasGtk {
         get showBuiltin(): boolean;
         set showBuiltin(val: boolean);
 
-        // Constructors of PeasGtk.PluginManagerView
+        // Constructors
 
         constructor(properties?: Partial<PluginManagerView.ConstructorProps>, ...args: any[]);
 
@@ -555,7 +555,7 @@ export namespace PeasGtk {
 
         static ['new'](...args: never[]): any;
 
-        // Own signals of PeasGtk.PluginManagerView
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -564,11 +564,11 @@ export namespace PeasGtk {
         connect_after(signal: 'populate-popup', callback: (_source: this, menu: Gtk.Menu) => void): number;
         emit(signal: 'populate-popup', menu: Gtk.Menu): void;
 
-        // Own virtual methods of PeasGtk.PluginManagerView
+        // Virtual methods
 
         vfunc_populate_popup(menu: Gtk.Menu): void;
 
-        // Own methods of PeasGtk.PluginManagerView
+        // Methods
 
         /**
          * Returns the currently selected plugin, or %NULL if a plugin is not selected.
@@ -1098,7 +1098,7 @@ export namespace PeasGtk {
     abstract class PluginManagerPrivate {
         static $gtype: GObject.GType<PluginManagerPrivate>;
 
-        // Constructors of PeasGtk.PluginManagerPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1107,7 +1107,7 @@ export namespace PeasGtk {
     abstract class PluginManagerViewPrivate {
         static $gtype: GObject.GType<PluginManagerViewPrivate>;
 
-        // Constructors of PeasGtk.PluginManagerViewPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1123,7 +1123,7 @@ export namespace PeasGtk {
         prototype: Configurable;
     }
     interface Configurable extends GObject.Object {
-        // Own methods of PeasGtk.Configurable
+        // Methods
 
         /**
          * Creates the configure widget for the plugin.
@@ -1141,7 +1141,7 @@ export namespace PeasGtk {
          */
         create_configure_widget(): Gtk.Widget;
 
-        // Own virtual methods of PeasGtk.Configurable
+        // Virtual methods
 
         /**
          * Creates the configure widget for the plugin.

@@ -46,7 +46,7 @@ export namespace Bump {
     class AsyncPriorityQueue extends Gee.PriorityQueue {
         static $gtype: GObject.GType<AsyncPriorityQueue>;
 
-        // Own properties of Bump.AsyncPriorityQueue
+        // Properties
 
         get g_type(): GObject.GType;
         get gType(): GObject.GType;
@@ -59,7 +59,7 @@ export namespace Bump {
         get waitingThreads(): number;
         set waitingThreads(val: number);
 
-        // Constructors of Bump.AsyncPriorityQueue
+        // Constructors
 
         constructor(properties?: Partial<AsyncPriorityQueue.ConstructorProps>, ...args: any[]);
 
@@ -74,7 +74,7 @@ export namespace Bump {
 
         static ['new'](...args: never[]): any;
 
-        // Own signals of Bump.AsyncPriorityQueue
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -83,7 +83,7 @@ export namespace Bump {
         connect_after(signal: 'consumer-shortage', callback: (_source: this) => void): number;
         emit(signal: 'consumer-shortage'): void;
 
-        // Own methods of Bump.AsyncPriorityQueue
+        // Methods
 
         poll_timed(wait: GLib.TimeSpan): any;
         peek_timed(wait: GLib.TimeSpan): any;
@@ -111,7 +111,7 @@ export namespace Bump {
     class Claim extends GObject.Object implements Gio.Initable, Gio.AsyncInitable<Claim> {
         static $gtype: GObject.GType<Claim>;
 
-        // Own properties of Bump.Claim
+        // Properties
 
         get active(): boolean;
         get time_acquired(): number;
@@ -125,7 +125,7 @@ export namespace Bump {
         get duration_held(): GLib.TimeSpan;
         get durationHeld(): GLib.TimeSpan;
 
-        // Constructors of Bump.Claim
+        // Constructors
 
         constructor(properties?: Partial<Claim.ConstructorProps>, ...args: any[]);
 
@@ -133,7 +133,7 @@ export namespace Bump {
 
         static ['new'](): Claim;
 
-        // Own virtual methods of Bump.Claim
+        // Virtual methods
 
         vfunc_release(): void;
         vfunc_init(cancellable: Gio.Cancellable): boolean;
@@ -148,7 +148,7 @@ export namespace Bump {
         vfunc_init_async(...args: never[]): any;
         vfunc_init_finish(_res_: Gio.AsyncResult): boolean;
 
-        // Own methods of Bump.Claim
+        // Methods
 
         release(): void;
         init(cancellable: Gio.Cancellable): boolean;
@@ -606,7 +606,7 @@ export namespace Bump {
     class Event extends GObject.Object {
         static $gtype: GObject.GType<Event>;
 
-        // Own properties of Bump.Event
+        // Properties
 
         get t_type(): GObject.GType;
         get tType(): GObject.GType;
@@ -620,7 +620,7 @@ export namespace Bump {
         get triggered(): boolean;
         set triggered(val: boolean);
 
-        // Constructors of Bump.Event
+        // Constructors
 
         constructor(properties?: Partial<Event.ConstructorProps>, ...args: any[]);
 
@@ -628,7 +628,7 @@ export namespace Bump {
 
         static ['new'](t_type: GObject.GType, t_dup_func: GObject.BoxedCopyFunc, auto_reset: boolean): Event;
 
-        // Own methods of Bump.Event
+        // Methods
 
         reset(): void;
         trigger(value: any): void;
@@ -683,7 +683,7 @@ export namespace Bump {
     abstract class Factory extends GObject.Object {
         static $gtype: GObject.GType<Factory>;
 
-        // Own properties of Bump.Factory
+        // Properties
 
         get g_type(): GObject.GType;
         get gType(): GObject.GType;
@@ -692,13 +692,13 @@ export namespace Bump {
         get g_destroy_func(): GLib.DestroyNotify;
         get gDestroyFunc(): GLib.DestroyNotify;
 
-        // Constructors of Bump.Factory
+        // Constructors
 
         constructor(properties?: Partial<Factory.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of Bump.Factory
+        // Virtual methods
 
         vfunc_create(priority: number, cancellable: Gio.Cancellable): any;
         vfunc_create_async(
@@ -727,7 +727,7 @@ export namespace Bump {
         ): void;
         vfunc_acquire_background_finish(_res_: Gio.AsyncResult): any;
 
-        // Own methods of Bump.Factory
+        // Methods
 
         create(priority: number, cancellable: Gio.Cancellable): any;
         create_async(priority: number, cancellable: Gio.Cancellable, _callback_: Gio.AsyncReadyCallback<this>): void;
@@ -771,7 +771,7 @@ export namespace Bump {
     class Lazy extends Factory {
         static $gtype: GObject.GType<Lazy>;
 
-        // Own properties of Bump.Lazy
+        // Properties
 
         get t_type(): GObject.GType;
         get tType(): GObject.GType;
@@ -784,7 +784,7 @@ export namespace Bump {
         get is_initialized(): boolean;
         get isInitialized(): boolean;
 
-        // Constructors of Bump.Lazy
+        // Constructors
 
         constructor(properties?: Partial<Lazy.ConstructorProps>, ...args: any[]);
 
@@ -792,7 +792,7 @@ export namespace Bump {
 
         static ['new'](t_type: GObject.GType, t_dup_func: GObject.BoxedCopyFunc): Lazy;
 
-        // Own methods of Bump.Lazy
+        // Methods
 
         get_pool(): TaskQueue;
         get_value(): any;
@@ -817,7 +817,7 @@ export namespace Bump {
     class ResourceClaim extends Claim {
         static $gtype: GObject.GType<ResourceClaim>;
 
-        // Own properties of Bump.ResourceClaim
+        // Properties
 
         get t_type(): GObject.GType;
         get tType(): GObject.GType;
@@ -828,7 +828,7 @@ export namespace Bump {
         get pool(): ResourcePool;
         get resource(): any;
 
-        // Constructors of Bump.ResourceClaim
+        // Constructors
 
         constructor(properties?: Partial<ResourceClaim.ConstructorProps>, ...args: any[]);
 
@@ -839,7 +839,7 @@ export namespace Bump {
 
         static ['new'](...args: never[]): any;
 
-        // Own methods of Bump.ResourceClaim
+        // Methods
 
         get_pool(): ResourcePool;
         get_resource(): any;
@@ -882,7 +882,7 @@ export namespace Bump {
     class ResourcePool extends Factory {
         static $gtype: GObject.GType<ResourcePool>;
 
-        // Own properties of Bump.ResourcePool
+        // Properties
 
         get t_type(): GObject.GType;
         get tType(): GObject.GType;
@@ -906,7 +906,7 @@ export namespace Bump {
         get activeResources(): number;
         get pool(): TaskQueue;
 
-        // Constructors of Bump.ResourcePool
+        // Constructors
 
         constructor(properties?: Partial<ResourcePool.ConstructorProps>, ...args: any[]);
 
@@ -914,11 +914,11 @@ export namespace Bump {
 
         static ['new'](t_type: GObject.GType, t_dup_func: GObject.BoxedCopyFunc, max_resources: number): ResourcePool;
 
-        // Own virtual methods of Bump.ResourcePool
+        // Virtual methods
 
         vfunc_release(resource: any): void;
 
-        // Own methods of Bump.ResourcePool
+        // Methods
 
         release(resource: any): void;
         execute(
@@ -976,7 +976,7 @@ export namespace Bump {
     class Semaphore extends TaskQueue {
         static $gtype: GObject.GType<Semaphore>;
 
-        // Own properties of Bump.Semaphore
+        // Properties
 
         get max_claims(): number;
         get maxClaims(): number;
@@ -984,7 +984,7 @@ export namespace Bump {
         set claims(val: number);
         get pool(): TaskQueue;
 
-        // Constructors of Bump.Semaphore
+        // Constructors
 
         constructor(properties?: Partial<Semaphore.ConstructorProps>, ...args: any[]);
 
@@ -995,7 +995,7 @@ export namespace Bump {
 
         static ['new'](...args: never[]): any;
 
-        // Own virtual methods of Bump.Semaphore
+        // Virtual methods
 
         vfunc_claim(priority: number, cancellable: Gio.Cancellable): SemaphoreClaim;
         vfunc_claim_async(
@@ -1005,7 +1005,7 @@ export namespace Bump {
         ): void;
         vfunc_claim_finish(_res_: Gio.AsyncResult): SemaphoreClaim;
 
-        // Own methods of Bump.Semaphore
+        // Methods
 
         unlock(): void;
         lock(priority: number, cancellable: Gio.Cancellable): void;
@@ -1030,17 +1030,17 @@ export namespace Bump {
     class SemaphoreClaim extends Claim {
         static $gtype: GObject.GType<SemaphoreClaim>;
 
-        // Own properties of Bump.SemaphoreClaim
+        // Properties
 
         get semaphore(): Semaphore;
 
-        // Constructors of Bump.SemaphoreClaim
+        // Constructors
 
         constructor(properties?: Partial<SemaphoreClaim.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Bump.SemaphoreClaim
+        // Methods
 
         get_semaphore(): Semaphore;
     }
@@ -1057,7 +1057,7 @@ export namespace Bump {
     class TaskQueue extends GObject.Object implements Queue, Threading {
         static $gtype: GObject.GType<TaskQueue>;
 
-        // Constructors of Bump.TaskQueue
+        // Constructors
 
         constructor(properties?: Partial<TaskQueue.ConstructorProps>, ...args: any[]);
 
@@ -1065,11 +1065,11 @@ export namespace Bump {
 
         static ['new'](): TaskQueue;
 
-        // Own static methods of Bump.TaskQueue
+        // Static methods
 
         static get_global(): TaskQueue;
 
-        // Own virtual methods of Bump.TaskQueue
+        // Virtual methods
 
         vfunc_spawn(max: number): number;
         vfunc_add(task: GLib.SourceFunc, priority: number, cancellable: Gio.Cancellable): void;
@@ -1104,7 +1104,7 @@ export namespace Bump {
             _res_: Gio.AsyncResult,
         ): any;
 
-        // Own methods of Bump.TaskQueue
+        // Methods
 
         spawn(max: number): number;
         add(task: GLib.SourceFunc, priority: number, cancellable: Gio.Cancellable): void;
@@ -1559,7 +1559,7 @@ export namespace Bump {
     abstract class AsyncPriorityQueuePrivate {
         static $gtype: GObject.GType<AsyncPriorityQueuePrivate>;
 
-        // Constructors of Bump.AsyncPriorityQueuePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1568,7 +1568,7 @@ export namespace Bump {
     abstract class ClaimPrivate {
         static $gtype: GObject.GType<ClaimPrivate>;
 
-        // Constructors of Bump.ClaimPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1577,7 +1577,7 @@ export namespace Bump {
     abstract class EventPrivate {
         static $gtype: GObject.GType<EventPrivate>;
 
-        // Constructors of Bump.EventPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1586,7 +1586,7 @@ export namespace Bump {
     abstract class FactoryPrivate {
         static $gtype: GObject.GType<FactoryPrivate>;
 
-        // Constructors of Bump.FactoryPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1595,7 +1595,7 @@ export namespace Bump {
     abstract class LazyPrivate {
         static $gtype: GObject.GType<LazyPrivate>;
 
-        // Constructors of Bump.LazyPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1604,7 +1604,7 @@ export namespace Bump {
     abstract class ResourceClaimPrivate {
         static $gtype: GObject.GType<ResourceClaimPrivate>;
 
-        // Constructors of Bump.ResourceClaimPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1613,7 +1613,7 @@ export namespace Bump {
     abstract class ResourcePoolPrivate {
         static $gtype: GObject.GType<ResourcePoolPrivate>;
 
-        // Constructors of Bump.ResourcePoolPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1622,7 +1622,7 @@ export namespace Bump {
     abstract class SemaphorePrivate {
         static $gtype: GObject.GType<SemaphorePrivate>;
 
-        // Constructors of Bump.SemaphorePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1631,7 +1631,7 @@ export namespace Bump {
     abstract class SemaphoreClaimPrivate {
         static $gtype: GObject.GType<SemaphoreClaimPrivate>;
 
-        // Constructors of Bump.SemaphoreClaimPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1640,7 +1640,7 @@ export namespace Bump {
     abstract class TaskQueuePrivate {
         static $gtype: GObject.GType<TaskQueuePrivate>;
 
-        // Constructors of Bump.TaskQueuePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1660,16 +1660,16 @@ export namespace Bump {
         prototype: Queue;
     }
     interface Queue extends GObject.Object {
-        // Own properties of Bump.Queue
+        // Properties
 
         get length(): number;
 
-        // Own methods of Bump.Queue
+        // Methods
 
         process(wait: GLib.TimeSpan): boolean;
         get_length(): number;
 
-        // Own virtual methods of Bump.Queue
+        // Virtual methods
 
         vfunc_process(wait: GLib.TimeSpan): boolean;
         vfunc_get_length(): number;
@@ -1688,7 +1688,7 @@ export namespace Bump {
         prototype: Threading;
     }
     interface Threading extends GObject.Object {
-        // Own methods of Bump.Threading
+        // Methods
 
         get_max_threads(): number;
         set_max_threads(value: number): void;
@@ -1700,7 +1700,7 @@ export namespace Bump {
         run_task(func: GLib.SourceFunc): boolean;
         spawn(max_new_threads: number): number;
 
-        // Own virtual methods of Bump.Threading
+        // Virtual methods
 
         vfunc_spawn(max_new_threads: number): number;
     }

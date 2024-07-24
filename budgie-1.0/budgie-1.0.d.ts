@@ -156,7 +156,7 @@ export namespace Budgie {
     class Applet extends Gtk.EventBox implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<Applet>;
 
-        // Own properties of Budgie.Applet
+        // Properties
 
         /**
          * The GSettings schema path prefix for this applet
@@ -239,7 +239,7 @@ export namespace Budgie {
         get supportedActions(): PanelAction;
         set supportedActions(val: PanelAction);
 
-        // Constructors of Budgie.Applet
+        // Constructors
 
         constructor(properties?: Partial<Applet.ConstructorProps>, ...args: any[]);
 
@@ -247,7 +247,7 @@ export namespace Budgie {
 
         static ['new'](): Applet;
 
-        // Own signals of Budgie.Applet
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -268,7 +268,7 @@ export namespace Budgie {
         ): number;
         emit(signal: 'panel-size-changed', panel_size: number, icon_size: number, small_icon_size: number): void;
 
-        // Own virtual methods of Budgie.Applet
+        // Virtual methods
 
         /**
          * For applets that need to expose settings, they should both override the
@@ -355,7 +355,7 @@ export namespace Budgie {
          */
         vfunc_update_popovers(manager?: PopoverManager | null): void;
 
-        // Own methods of Budgie.Applet
+        // Methods
 
         /**
          * If your #BudgiePlugin implementation passes the UUID to your BudgieApplet
@@ -899,7 +899,7 @@ export namespace Budgie {
     class AppletInfo extends GObject.Object {
         static $gtype: GObject.GType<AppletInfo>;
 
-        // Own properties of Budgie.AppletInfo
+        // Properties
 
         get alignment(): string;
         set alignment(val: string);
@@ -918,7 +918,7 @@ export namespace Budgie {
         get uuid(): string;
         set uuid(val: string);
 
-        // Constructors of Budgie.AppletInfo
+        // Constructors
 
         constructor(properties?: Partial<AppletInfo.ConstructorProps>, ...args: any[]);
 
@@ -952,7 +952,7 @@ export namespace Budgie {
     class Popover extends Gtk.Window implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<Popover>;
 
-        // Own properties of Budgie.Popover
+        // Properties
 
         /**
          * Control the behavior used to place the popover on screen.
@@ -969,7 +969,7 @@ export namespace Budgie {
         get relativeTo(): Gtk.Widget;
         set relativeTo(val: Gtk.Widget);
 
-        // Constructors of Budgie.Popover
+        // Constructors
 
         constructor(properties?: Partial<Popover.ConstructorProps>, ...args: any[]);
 
@@ -980,7 +980,7 @@ export namespace Budgie {
 
         static ['new'](...args: never[]): any;
 
-        // Own signals of Budgie.Popover
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -989,14 +989,14 @@ export namespace Budgie {
         connect_after(signal: 'closed', callback: (_source: this) => void): number;
         emit(signal: 'closed'): void;
 
-        // Own virtual methods of Budgie.Popover
+        // Virtual methods
 
         /**
          * Virtual closed signal
          */
         vfunc_closed(): void;
 
-        // Own methods of Budgie.Popover
+        // Methods
 
         /**
          * Retrieve the currently active positioning policy for this popover
@@ -1421,7 +1421,7 @@ export namespace Budgie {
     class PopoverManager extends GObject.Object {
         static $gtype: GObject.GType<PopoverManager>;
 
-        // Constructors of Budgie.PopoverManager
+        // Constructors
 
         constructor(properties?: Partial<PopoverManager.ConstructorProps>, ...args: any[]);
 
@@ -1429,7 +1429,7 @@ export namespace Budgie {
 
         static ['new'](): PopoverManager;
 
-        // Own methods of Budgie.PopoverManager
+        // Methods
 
         /**
          * Register a new popover with it's relative-to widget within the popover management
@@ -1460,7 +1460,7 @@ export namespace Budgie {
     abstract class AppletInfoPrivate {
         static $gtype: GObject.GType<AppletInfoPrivate>;
 
-        // Constructors of Budgie.AppletInfoPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1468,7 +1468,7 @@ export namespace Budgie {
     abstract class AppletPrivate {
         static $gtype: GObject.GType<AppletPrivate>;
 
-        // Constructors of Budgie.AppletPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1479,7 +1479,7 @@ export namespace Budgie {
     abstract class PopoverManagerPrivate {
         static $gtype: GObject.GType<PopoverManagerPrivate>;
 
-        // Constructors of Budgie.PopoverManagerPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1487,7 +1487,7 @@ export namespace Budgie {
     abstract class PopoverPrivate {
         static $gtype: GObject.GType<PopoverPrivate>;
 
-        // Constructors of Budgie.PopoverPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1503,11 +1503,11 @@ export namespace Budgie {
         prototype: Plugin;
     }
     interface Plugin extends GObject.Object {
-        // Own methods of Budgie.Plugin
+        // Methods
 
         get_panel_widget(uuid: string): Applet;
 
-        // Own virtual methods of Budgie.Plugin
+        // Virtual methods
 
         vfunc_get_panel_widget(uuid: string): Applet;
     }

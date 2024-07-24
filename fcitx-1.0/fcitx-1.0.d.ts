@@ -77,11 +77,11 @@ export namespace Fcitx {
     class Client extends GObject.Object {
         static $gtype: GObject.GType<Client>;
 
-        // Own properties of Fcitx.Client
+        // Properties
 
         set connection(val: Connection);
 
-        // Constructors of Fcitx.Client
+        // Constructors
 
         constructor(properties?: Partial<Client.ConstructorProps>, ...args: any[]);
 
@@ -91,7 +91,7 @@ export namespace Fcitx {
 
         static new_with_connection(connection: Connection): Client;
 
-        // Own signals of Fcitx.Client
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -172,7 +172,7 @@ export namespace Fcitx {
         ): number;
         emit(signal: 'update-formatted-preedit', preedit: PreeditItem[], cursor: number): void;
 
-        // Own methods of Fcitx.Client
+        // Methods
 
         /**
          * tell fcitx inactivate current ic
@@ -275,7 +275,7 @@ export namespace Fcitx {
     class Connection extends GObject.Object {
         static $gtype: GObject.GType<Connection>;
 
-        // Constructors of Fcitx.Connection
+        // Constructors
 
         constructor(properties?: Partial<Connection.ConstructorProps>, ...args: any[]);
 
@@ -283,7 +283,7 @@ export namespace Fcitx {
 
         static ['new'](): Connection;
 
-        // Own signals of Fcitx.Connection
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -295,7 +295,7 @@ export namespace Fcitx {
         connect_after(signal: 'disconnected', callback: (_source: this) => void): number;
         emit(signal: 'disconnected'): void;
 
-        // Own methods of Fcitx.Connection
+        // Methods
 
         /**
          * Return the current #GDBusConnection
@@ -334,7 +334,7 @@ export namespace Fcitx {
     class InputMethod extends Gio.DBusProxy implements Gio.AsyncInitable<InputMethod>, Gio.DBusInterface, Gio.Initable {
         static $gtype: GObject.GType<InputMethod>;
 
-        // Own properties of Fcitx.InputMethod
+        // Properties
 
         /**
          * The current IM.
@@ -347,7 +347,7 @@ export namespace Fcitx {
         get currentIm(): string;
         set currentIm(val: string);
 
-        // Constructors of Fcitx.InputMethod
+        // Constructors
 
         constructor(properties?: Partial<InputMethod.ConstructorProps>, ...args: any[]);
 
@@ -363,7 +363,7 @@ export namespace Fcitx {
 
         static ['new'](...args: never[]): any;
 
-        // Own signals of Fcitx.InputMethod
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -372,7 +372,7 @@ export namespace Fcitx {
         connect_after(signal: 'imlist-changed', callback: (_source: this) => void): number;
         emit(signal: 'imlist-changed'): void;
 
-        // Own methods of Fcitx.InputMethod
+        // Methods
 
         /**
          * Activate fcitx
@@ -1101,7 +1101,7 @@ export namespace Fcitx {
     class Kbd extends Gio.DBusProxy implements Gio.AsyncInitable<Kbd>, Gio.DBusInterface, Gio.Initable {
         static $gtype: GObject.GType<Kbd>;
 
-        // Constructors of Fcitx.Kbd
+        // Constructors
 
         constructor(properties?: Partial<Kbd.ConstructorProps>, ...args: any[]);
 
@@ -1117,7 +1117,7 @@ export namespace Fcitx {
 
         static ['new'](...args: never[]): any;
 
-        // Own methods of Fcitx.Kbd
+        // Methods
 
         /**
          * Get a layout binding with input method
@@ -1783,7 +1783,7 @@ export namespace Fcitx {
     abstract class ClientPrivate {
         static $gtype: GObject.GType<ClientPrivate>;
 
-        // Constructors of Fcitx.ClientPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1792,7 +1792,7 @@ export namespace Fcitx {
     abstract class ConnectionPrivate {
         static $gtype: GObject.GType<ConnectionPrivate>;
 
-        // Constructors of Fcitx.ConnectionPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1803,14 +1803,14 @@ export namespace Fcitx {
     class IMItem {
         static $gtype: GObject.GType<IMItem>;
 
-        // Own fields of Fcitx.IMItem
+        // Fields
 
         name: string;
         unique_name: string;
         langcode: string;
         enable: boolean;
 
-        // Constructors of Fcitx.IMItem
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -1830,14 +1830,14 @@ export namespace Fcitx {
     class LayoutItem {
         static $gtype: GObject.GType<LayoutItem>;
 
-        // Own fields of Fcitx.LayoutItem
+        // Fields
 
         layout: string;
         variant: string;
         name: string;
         langcode: string;
 
-        // Constructors of Fcitx.LayoutItem
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -1853,12 +1853,12 @@ export namespace Fcitx {
     class PreeditItem {
         static $gtype: GObject.GType<PreeditItem>;
 
-        // Own fields of Fcitx.PreeditItem
+        // Fields
 
         string: string;
         type: number;
 
-        // Constructors of Fcitx.PreeditItem
+        // Constructors
 
         constructor(
             properties?: Partial<{

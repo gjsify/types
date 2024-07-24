@@ -72,13 +72,13 @@ export namespace Gdm {
     {
         static $gtype: GObject.GType<ChooserProxy>;
 
-        // Constructors of Gdm.ChooserProxy
+        // Constructors
 
         constructor(properties?: Partial<ChooserProxy.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of Gdm.ChooserProxy
+        // Static methods
 
         static ['new'](
             connection: Gio.DBusConnection,
@@ -763,7 +763,7 @@ export namespace Gdm {
     class ChooserSkeleton extends Gio.DBusInterfaceSkeleton implements Chooser, Gio.DBusInterface {
         static $gtype: GObject.GType<ChooserSkeleton>;
 
-        // Constructors of Gdm.ChooserSkeleton
+        // Constructors
 
         constructor(properties?: Partial<ChooserSkeleton.ConstructorProps>, ...args: any[]);
 
@@ -1229,7 +1229,7 @@ export namespace Gdm {
     class Client extends GObject.Object {
         static $gtype: GObject.GType<Client>;
 
-        // Constructors of Gdm.Client
+        // Constructors
 
         constructor(properties?: Partial<Client.ConstructorProps>, ...args: any[]);
 
@@ -1237,11 +1237,11 @@ export namespace Gdm {
 
         static ['new'](): Client;
 
-        // Own static methods of Gdm.Client
+        // Static methods
 
         static error_quark(): GLib.Quark;
 
-        // Own methods of Gdm.Client
+        // Methods
 
         /**
          * Gets a #GdmChooser object that can be used to
@@ -1390,13 +1390,13 @@ export namespace Gdm {
     {
         static $gtype: GObject.GType<GreeterProxy>;
 
-        // Constructors of Gdm.GreeterProxy
+        // Constructors
 
         constructor(properties?: Partial<GreeterProxy.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of Gdm.GreeterProxy
+        // Static methods
 
         static ['new'](
             connection: Gio.DBusConnection,
@@ -2147,7 +2147,7 @@ export namespace Gdm {
     class GreeterSkeleton extends Gio.DBusInterfaceSkeleton implements Greeter, Gio.DBusInterface {
         static $gtype: GObject.GType<GreeterSkeleton>;
 
-        // Constructors of Gdm.GreeterSkeleton
+        // Constructors
 
         constructor(properties?: Partial<GreeterSkeleton.ConstructorProps>, ...args: any[]);
 
@@ -2687,13 +2687,13 @@ export namespace Gdm {
     {
         static $gtype: GObject.GType<ManagerProxy>;
 
-        // Constructors of Gdm.ManagerProxy
+        // Constructors
 
         constructor(properties?: Partial<ManagerProxy.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of Gdm.ManagerProxy
+        // Static methods
 
         static ['new'](
             connection: Gio.DBusConnection,
@@ -3408,7 +3408,7 @@ export namespace Gdm {
     class ManagerSkeleton extends Gio.DBusInterfaceSkeleton implements Manager, Gio.DBusInterface {
         static $gtype: GObject.GType<ManagerSkeleton>;
 
-        // Constructors of Gdm.ManagerSkeleton
+        // Constructors
 
         constructor(properties?: Partial<ManagerSkeleton.ConstructorProps>, ...args: any[]);
 
@@ -3912,13 +3912,13 @@ export namespace Gdm {
     {
         static $gtype: GObject.GType<RemoteGreeterProxy>;
 
-        // Constructors of Gdm.RemoteGreeterProxy
+        // Constructors
 
         constructor(properties?: Partial<RemoteGreeterProxy.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of Gdm.RemoteGreeterProxy
+        // Static methods
 
         static ['new'](
             connection: Gio.DBusConnection,
@@ -4594,7 +4594,7 @@ export namespace Gdm {
     class RemoteGreeterSkeleton extends Gio.DBusInterfaceSkeleton implements RemoteGreeter, Gio.DBusInterface {
         static $gtype: GObject.GType<RemoteGreeterSkeleton>;
 
-        // Constructors of Gdm.RemoteGreeterSkeleton
+        // Constructors
 
         constructor(properties?: Partial<RemoteGreeterSkeleton.ConstructorProps>, ...args: any[]);
 
@@ -5063,13 +5063,13 @@ export namespace Gdm {
     {
         static $gtype: GObject.GType<UserVerifierChoiceListProxy>;
 
-        // Constructors of Gdm.UserVerifierChoiceListProxy
+        // Constructors
 
         constructor(properties?: Partial<UserVerifierChoiceListProxy.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of Gdm.UserVerifierChoiceListProxy
+        // Static methods
 
         static ['new'](
             connection: Gio.DBusConnection,
@@ -5763,7 +5763,7 @@ export namespace Gdm {
     {
         static $gtype: GObject.GType<UserVerifierChoiceListSkeleton>;
 
-        // Constructors of Gdm.UserVerifierChoiceListSkeleton
+        // Constructors
 
         constructor(properties?: Partial<UserVerifierChoiceListSkeleton.ConstructorProps>, ...args: any[]);
 
@@ -6243,13 +6243,13 @@ export namespace Gdm {
     {
         static $gtype: GObject.GType<UserVerifierProxy>;
 
-        // Constructors of Gdm.UserVerifierProxy
+        // Constructors
 
         constructor(properties?: Partial<UserVerifierProxy.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of Gdm.UserVerifierProxy
+        // Static methods
 
         static ['new'](
             connection: Gio.DBusConnection,
@@ -7001,7 +7001,7 @@ export namespace Gdm {
     class UserVerifierSkeleton extends Gio.DBusInterfaceSkeleton implements UserVerifier, Gio.DBusInterface {
         static $gtype: GObject.GType<UserVerifierSkeleton>;
 
-        // Constructors of Gdm.UserVerifierSkeleton
+        // Constructors
 
         constructor(properties?: Partial<UserVerifierSkeleton.ConstructorProps>, ...args: any[]);
 
@@ -7542,13 +7542,13 @@ export namespace Gdm {
     {
         static $gtype: GObject.GType<WorkerManagerProxy>;
 
-        // Constructors of Gdm.WorkerManagerProxy
+        // Constructors
 
         constructor(properties?: Partial<WorkerManagerProxy.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of Gdm.WorkerManagerProxy
+        // Static methods
 
         static ['new'](
             connection: Gio.DBusConnection,
@@ -8308,7 +8308,7 @@ export namespace Gdm {
     class WorkerManagerSkeleton extends Gio.DBusInterfaceSkeleton implements WorkerManager, Gio.DBusInterface {
         static $gtype: GObject.GType<WorkerManagerSkeleton>;
 
-        // Constructors of Gdm.WorkerManagerSkeleton
+        // Constructors
 
         constructor(properties?: Partial<WorkerManagerSkeleton.ConstructorProps>, ...args: any[]);
 
@@ -8845,7 +8845,7 @@ export namespace Gdm {
     abstract class ChooserProxyPrivate {
         static $gtype: GObject.GType<ChooserProxyPrivate>;
 
-        // Constructors of Gdm.ChooserProxyPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -8854,7 +8854,7 @@ export namespace Gdm {
     abstract class ChooserSkeletonPrivate {
         static $gtype: GObject.GType<ChooserSkeletonPrivate>;
 
-        // Constructors of Gdm.ChooserSkeletonPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -8865,7 +8865,7 @@ export namespace Gdm {
     abstract class GreeterProxyPrivate {
         static $gtype: GObject.GType<GreeterProxyPrivate>;
 
-        // Constructors of Gdm.GreeterProxyPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -8874,7 +8874,7 @@ export namespace Gdm {
     abstract class GreeterSkeletonPrivate {
         static $gtype: GObject.GType<GreeterSkeletonPrivate>;
 
-        // Constructors of Gdm.GreeterSkeletonPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -8884,7 +8884,7 @@ export namespace Gdm {
     abstract class ManagerProxyPrivate {
         static $gtype: GObject.GType<ManagerProxyPrivate>;
 
-        // Constructors of Gdm.ManagerProxyPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -8893,7 +8893,7 @@ export namespace Gdm {
     abstract class ManagerSkeletonPrivate {
         static $gtype: GObject.GType<ManagerSkeletonPrivate>;
 
-        // Constructors of Gdm.ManagerSkeletonPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -8903,7 +8903,7 @@ export namespace Gdm {
     abstract class RemoteGreeterProxyPrivate {
         static $gtype: GObject.GType<RemoteGreeterProxyPrivate>;
 
-        // Constructors of Gdm.RemoteGreeterProxyPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -8912,7 +8912,7 @@ export namespace Gdm {
     abstract class RemoteGreeterSkeletonPrivate {
         static $gtype: GObject.GType<RemoteGreeterSkeletonPrivate>;
 
-        // Constructors of Gdm.RemoteGreeterSkeletonPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -8922,7 +8922,7 @@ export namespace Gdm {
     abstract class UserVerifierChoiceListProxyPrivate {
         static $gtype: GObject.GType<UserVerifierChoiceListProxyPrivate>;
 
-        // Constructors of Gdm.UserVerifierChoiceListProxyPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -8931,7 +8931,7 @@ export namespace Gdm {
     abstract class UserVerifierChoiceListSkeletonPrivate {
         static $gtype: GObject.GType<UserVerifierChoiceListSkeletonPrivate>;
 
-        // Constructors of Gdm.UserVerifierChoiceListSkeletonPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -8941,7 +8941,7 @@ export namespace Gdm {
     abstract class UserVerifierProxyPrivate {
         static $gtype: GObject.GType<UserVerifierProxyPrivate>;
 
-        // Constructors of Gdm.UserVerifierProxyPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -8950,7 +8950,7 @@ export namespace Gdm {
     abstract class UserVerifierSkeletonPrivate {
         static $gtype: GObject.GType<UserVerifierSkeletonPrivate>;
 
-        // Constructors of Gdm.UserVerifierSkeletonPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -8960,7 +8960,7 @@ export namespace Gdm {
     abstract class WorkerManagerProxyPrivate {
         static $gtype: GObject.GType<WorkerManagerProxyPrivate>;
 
-        // Constructors of Gdm.WorkerManagerProxyPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -8969,7 +8969,7 @@ export namespace Gdm {
     abstract class WorkerManagerSkeletonPrivate {
         static $gtype: GObject.GType<WorkerManagerSkeletonPrivate>;
 
-        // Constructors of Gdm.WorkerManagerSkeletonPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -8988,7 +8988,7 @@ export namespace Gdm {
         override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
     }
     interface Chooser extends GObject.Object {
-        // Own methods of Gdm.Chooser
+        // Methods
 
         call_disconnect(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): void;
         call_disconnect_finish(res: Gio.AsyncResult): boolean;
@@ -9003,7 +9003,7 @@ export namespace Gdm {
         complete_disconnect(invocation: Gio.DBusMethodInvocation): void;
         complete_select_hostname(invocation: Gio.DBusMethodInvocation): void;
 
-        // Own virtual methods of Gdm.Chooser
+        // Virtual methods
 
         vfunc_handle_disconnect(invocation: Gio.DBusMethodInvocation): boolean;
         vfunc_handle_select_hostname(invocation: Gio.DBusMethodInvocation, arg_hostname: string): boolean;
@@ -9025,7 +9025,7 @@ export namespace Gdm {
         override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
     }
     interface Greeter extends GObject.Object {
-        // Own methods of Gdm.Greeter
+        // Methods
 
         call_begin_auto_login(
             arg_username: string,
@@ -9093,7 +9093,7 @@ export namespace Gdm {
         emit_session_opened(arg_service_name: string): void;
         emit_timed_login_requested(arg_username: string, arg_delay: number): void;
 
-        // Own virtual methods of Gdm.Greeter
+        // Virtual methods
 
         vfunc_default_language_name_changed(arg_language_name: string): void;
         vfunc_default_session_name_changed(arg_session_name: string): void;
@@ -9130,12 +9130,12 @@ export namespace Gdm {
         override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
     }
     interface Manager extends GObject.Object {
-        // Own properties of Gdm.Manager
+        // Properties
 
         get version(): string;
         set version(val: string);
 
-        // Own methods of Gdm.Manager
+        // Methods
 
         call_open_reauthentication_channel(
             arg_username: string,
@@ -9173,7 +9173,7 @@ export namespace Gdm {
         get_version(): string;
         set_version(value: string): void;
 
-        // Own virtual methods of Gdm.Manager
+        // Virtual methods
 
         vfunc_get_version(): string;
         vfunc_handle_open_reauthentication_channel(invocation: Gio.DBusMethodInvocation, arg_username: string): boolean;
@@ -9198,14 +9198,14 @@ export namespace Gdm {
         override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
     }
     interface RemoteGreeter extends GObject.Object {
-        // Own methods of Gdm.RemoteGreeter
+        // Methods
 
         call_disconnect(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): void;
         call_disconnect_finish(res: Gio.AsyncResult): boolean;
         call_disconnect_sync(cancellable?: Gio.Cancellable | null): boolean;
         complete_disconnect(invocation: Gio.DBusMethodInvocation): void;
 
-        // Own virtual methods of Gdm.RemoteGreeter
+        // Virtual methods
 
         vfunc_handle_disconnect(invocation: Gio.DBusMethodInvocation): boolean;
     }
@@ -9226,7 +9226,7 @@ export namespace Gdm {
         override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
     }
     interface UserVerifier extends GObject.Object {
-        // Own methods of Gdm.UserVerifier
+        // Methods
 
         call_answer_query(
             arg_service_name: string,
@@ -9286,7 +9286,7 @@ export namespace Gdm {
         emit_verification_complete(arg_service_name: string): void;
         emit_verification_failed(arg_service_name: string): void;
 
-        // Own virtual methods of Gdm.UserVerifier
+        // Virtual methods
 
         vfunc_conversation_started(arg_service_name: string): void;
         vfunc_conversation_stopped(arg_service_name: string): void;
@@ -9330,7 +9330,7 @@ export namespace Gdm {
         override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
     }
     interface UserVerifierChoiceList extends GObject.Object {
-        // Own methods of Gdm.UserVerifierChoiceList
+        // Methods
 
         call_select_choice(
             arg_service_name: string,
@@ -9347,7 +9347,7 @@ export namespace Gdm {
         complete_select_choice(invocation: Gio.DBusMethodInvocation): void;
         emit_choice_query(arg_service_name: string, arg_prompt_message: string, arg_list: GLib.Variant): void;
 
-        // Own virtual methods of Gdm.UserVerifierChoiceList
+        // Virtual methods
 
         vfunc_choice_query(arg_service_name: string, arg_prompt_message: string, arg_list: GLib.Variant): void;
         vfunc_handle_select_choice(
@@ -9373,7 +9373,7 @@ export namespace Gdm {
         override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
     }
     interface WorkerManager extends GObject.Object {
-        // Own methods of Gdm.WorkerManager
+        // Methods
 
         call_choice_list_query(
             arg_service_name: string,
@@ -9442,7 +9442,7 @@ export namespace Gdm {
         complete_problem(invocation: Gio.DBusMethodInvocation): void;
         complete_secret_info_query(invocation: Gio.DBusMethodInvocation, answer: string): void;
 
-        // Own virtual methods of Gdm.WorkerManager
+        // Virtual methods
 
         vfunc_handle_choice_list_query(
             invocation: Gio.DBusMethodInvocation,

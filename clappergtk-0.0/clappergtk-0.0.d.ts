@@ -126,7 +126,7 @@ export namespace ClapperGtk {
     class Billboard extends Container implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
         static $gtype: GObject.GType<Billboard>;
 
-        // Constructors of ClapperGtk.Billboard
+        // Constructors
 
         constructor(properties?: Partial<Billboard.ConstructorProps>, ...args: any[]);
 
@@ -134,7 +134,7 @@ export namespace ClapperGtk {
 
         static ['new'](): Billboard;
 
-        // Own methods of ClapperGtk.Billboard
+        // Methods
 
         /**
          * Temporarily displays current speed value on the
@@ -624,7 +624,7 @@ export namespace ClapperGtk {
     class Container extends Gtk.Widget implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
         static $gtype: GObject.GType<Container>;
 
-        // Own properties of ClapperGtk.Container
+        // Properties
 
         /**
          * Adaptive height threshold that triggers [signal`ClapperGtk`.Container::adapt] signal.
@@ -667,7 +667,7 @@ export namespace ClapperGtk {
         get widthTarget(): number;
         set widthTarget(val: number);
 
-        // Constructors of ClapperGtk.Container
+        // Constructors
 
         constructor(properties?: Partial<Container.ConstructorProps>, ...args: any[]);
 
@@ -675,7 +675,7 @@ export namespace ClapperGtk {
 
         static ['new'](): Container;
 
-        // Own signals of ClapperGtk.Container
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -684,7 +684,7 @@ export namespace ClapperGtk {
         connect_after(signal: 'adapt', callback: (_source: this, adapt: boolean) => void): number;
         emit(signal: 'adapt', adapt: boolean): void;
 
-        // Own methods of ClapperGtk.Container
+        // Methods
 
         /**
          * Get a `container` adaptive height threshold.
@@ -1455,7 +1455,7 @@ export namespace ClapperGtk {
     class ExtraMenuButton extends Gtk.Widget implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
         static $gtype: GObject.GType<ExtraMenuButton>;
 
-        // Own properties of ClapperGtk.ExtraMenuButton
+        // Properties
 
         /**
          * Visibility of open subtitles option inside popover.
@@ -1488,7 +1488,7 @@ export namespace ClapperGtk {
         get volumeVisible(): boolean;
         set volumeVisible(val: boolean);
 
-        // Constructors of ClapperGtk.ExtraMenuButton
+        // Constructors
 
         constructor(properties?: Partial<ExtraMenuButton.ConstructorProps>, ...args: any[]);
 
@@ -1496,7 +1496,7 @@ export namespace ClapperGtk {
 
         static ['new'](): ExtraMenuButton;
 
-        // Own signals of ClapperGtk.ExtraMenuButton
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -1505,7 +1505,7 @@ export namespace ClapperGtk {
         connect_after(signal: 'open-subtitles', callback: (_source: this, item: Clapper.MediaItem) => void): number;
         emit(signal: 'open-subtitles', item: Clapper.MediaItem): void;
 
-        // Own methods of ClapperGtk.ExtraMenuButton
+        // Methods
 
         /**
          * Get whether an option to open external subtitle stream inside popover is visible.
@@ -2254,7 +2254,7 @@ export namespace ClapperGtk {
     class LeadContainer extends Container implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
         static $gtype: GObject.GType<LeadContainer>;
 
-        // Own properties of ClapperGtk.LeadContainer
+        // Properties
 
         /**
          * Mask of actions that container blocks from being triggered on video.
@@ -2272,7 +2272,7 @@ export namespace ClapperGtk {
         get leading(): boolean;
         set leading(val: boolean);
 
-        // Constructors of ClapperGtk.LeadContainer
+        // Constructors
 
         constructor(properties?: Partial<LeadContainer.ConstructorProps>, ...args: any[]);
 
@@ -2280,7 +2280,7 @@ export namespace ClapperGtk {
 
         static ['new'](): LeadContainer;
 
-        // Own methods of ClapperGtk.LeadContainer
+        // Methods
 
         /**
          * Get `actions` that were set for this `lead_container` to block.
@@ -2730,7 +2730,7 @@ export namespace ClapperGtk {
     {
         static $gtype: GObject.GType<NextItemButton>;
 
-        // Constructors of ClapperGtk.NextItemButton
+        // Constructors
 
         constructor(properties?: Partial<NextItemButton.ConstructorProps>, ...args: any[]);
 
@@ -5687,7 +5687,7 @@ export namespace ClapperGtk {
     {
         static $gtype: GObject.GType<PreviousItemButton>;
 
-        // Constructors of ClapperGtk.PreviousItemButton
+        // Constructors
 
         constructor(properties?: Partial<PreviousItemButton.ConstructorProps>, ...args: any[]);
 
@@ -8645,7 +8645,7 @@ export namespace ClapperGtk {
     class SeekBar extends Gtk.Widget implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
         static $gtype: GObject.GType<SeekBar>;
 
-        // Own properties of ClapperGtk.SeekBar
+        // Properties
 
         /**
          * Reveal state of the position and duration labels.
@@ -8668,7 +8668,7 @@ export namespace ClapperGtk {
         get seekMethod(): Clapper.PlayerSeekMethod;
         set seekMethod(val: Clapper.PlayerSeekMethod);
 
-        // Constructors of ClapperGtk.SeekBar
+        // Constructors
 
         constructor(properties?: Partial<SeekBar.ConstructorProps>, ...args: any[]);
 
@@ -8676,7 +8676,7 @@ export namespace ClapperGtk {
 
         static ['new'](): SeekBar;
 
-        // Own methods of ClapperGtk.SeekBar
+        // Methods
 
         /**
          * Get whether the position and duration labels are going to be revealed.
@@ -9409,7 +9409,7 @@ export namespace ClapperGtk {
     class SimpleControls extends Container implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
         static $gtype: GObject.GType<SimpleControls>;
 
-        // Own properties of ClapperGtk.SimpleControls
+        // Properties
 
         /**
          * Access to extra menu button within controls.
@@ -9435,7 +9435,7 @@ export namespace ClapperGtk {
         get seekMethod(): Clapper.PlayerSeekMethod;
         set seekMethod(val: Clapper.PlayerSeekMethod);
 
-        // Constructors of ClapperGtk.SimpleControls
+        // Constructors
 
         constructor(properties?: Partial<SimpleControls.ConstructorProps>, ...args: any[]);
 
@@ -9443,7 +9443,7 @@ export namespace ClapperGtk {
 
         static ['new'](): SimpleControls;
 
-        // Own methods of ClapperGtk.SimpleControls
+        // Methods
 
         /**
          * Get [class`ClapperGtk`.ExtraMenuButton] that resides within `controls`.
@@ -9907,7 +9907,7 @@ export namespace ClapperGtk {
     class TitleHeader extends LeadContainer implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
         static $gtype: GObject.GType<TitleHeader>;
 
-        // Own properties of ClapperGtk.TitleHeader
+        // Properties
 
         /**
          * Currently displayed title.
@@ -9928,7 +9928,7 @@ export namespace ClapperGtk {
         get fallbackToUri(): boolean;
         set fallbackToUri(val: boolean);
 
-        // Constructors of ClapperGtk.TitleHeader
+        // Constructors
 
         constructor(properties?: Partial<TitleHeader.ConstructorProps>, ...args: any[]);
 
@@ -9936,7 +9936,7 @@ export namespace ClapperGtk {
 
         static ['new'](): TitleHeader;
 
-        // Own methods of ClapperGtk.TitleHeader
+        // Methods
 
         /**
          * Get currently displayed title by `header`.
@@ -10391,7 +10391,7 @@ export namespace ClapperGtk {
     class TitleLabel extends Gtk.Widget implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
         static $gtype: GObject.GType<TitleLabel>;
 
-        // Own properties of ClapperGtk.TitleLabel
+        // Properties
 
         /**
          * Currently displayed title.
@@ -10422,7 +10422,7 @@ export namespace ClapperGtk {
         get mediaItem(): Clapper.MediaItem;
         set mediaItem(val: Clapper.MediaItem);
 
-        // Constructors of ClapperGtk.TitleLabel
+        // Constructors
 
         constructor(properties?: Partial<TitleLabel.ConstructorProps>, ...args: any[]);
 
@@ -10430,7 +10430,7 @@ export namespace ClapperGtk {
 
         static ['new'](): TitleLabel;
 
-        // Own methods of ClapperGtk.TitleLabel
+        // Methods
 
         /**
          * Get currently displayed title by `label`.
@@ -11162,7 +11162,7 @@ export namespace ClapperGtk {
     {
         static $gtype: GObject.GType<ToggleFullscreenButton>;
 
-        // Constructors of ClapperGtk.ToggleFullscreenButton
+        // Constructors
 
         constructor(properties?: Partial<ToggleFullscreenButton.ConstructorProps>, ...args: any[]);
 
@@ -14119,7 +14119,7 @@ export namespace ClapperGtk {
     {
         static $gtype: GObject.GType<TogglePlayButton>;
 
-        // Constructors of ClapperGtk.TogglePlayButton
+        // Constructors
 
         constructor(properties?: Partial<TogglePlayButton.ConstructorProps>, ...args: any[]);
 
@@ -17160,7 +17160,7 @@ export namespace ClapperGtk {
     class Video extends Gtk.Widget implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
         static $gtype: GObject.GType<Video>;
 
-        // Own properties of ClapperGtk.Video
+        // Properties
 
         /**
          * Try to automatically inhibit session when video is playing.
@@ -17199,7 +17199,7 @@ export namespace ClapperGtk {
          */
         get touchFadeDelay(): number;
 
-        // Constructors of ClapperGtk.Video
+        // Constructors
 
         constructor(properties?: Partial<Video.ConstructorProps>, ...args: any[]);
 
@@ -17207,7 +17207,7 @@ export namespace ClapperGtk {
 
         static ['new'](): Video;
 
-        // Own signals of ClapperGtk.Video
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -17219,7 +17219,7 @@ export namespace ClapperGtk {
         connect_after(signal: 'toggle-fullscreen', callback: (_source: this) => void): number;
         emit(signal: 'toggle-fullscreen'): void;
 
-        // Own methods of ClapperGtk.Video
+        // Methods
 
         /**
          * Similiar as clapper_gtk_video_add_overlay() but will also automatically

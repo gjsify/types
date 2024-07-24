@@ -853,7 +853,7 @@ export namespace AgsGui {
     class Cartesian extends Gtk.Widget implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
         static $gtype: GObject.GType<Cartesian>;
 
-        // Own properties of AgsGui.Cartesian
+        // Properties
 
         /**
          * The center of lines
@@ -1351,12 +1351,12 @@ export namespace AgsGui {
         get yUnitY0(): number;
         set yUnitY0(val: number);
 
-        // Own fields of AgsGui.Cartesian
+        // Fields
 
         widget: Gtk.Widget;
         flags: CartesianFlags;
 
-        // Constructors of AgsGui.Cartesian
+        // Constructors
 
         constructor(properties?: Partial<Cartesian.ConstructorProps>, ...args: any[]);
 
@@ -1364,7 +1364,7 @@ export namespace AgsGui {
 
         static ['new'](): Cartesian;
 
-        // Own static methods of AgsGui.Cartesian
+        // Static methods
 
         /**
          * Perform linear step conversion.
@@ -1417,7 +1417,7 @@ export namespace AgsGui {
          */
         static linear_y_small_scale_func(value: number, data?: any | null): number;
 
-        // Own methods of AgsGui.Cartesian
+        // Methods
 
         /**
          * Add `plot` to `cartesian`.
@@ -2561,7 +2561,7 @@ export namespace AgsGui {
     class Dial extends Gtk.Widget implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
         static $gtype: GObject.GType<Dial>;
 
-        // Own properties of AgsGui.Dial
+        // Properties
 
         /**
          * The adjustment storing current value and boundaries.
@@ -2644,7 +2644,7 @@ export namespace AgsGui {
         get scalePrecision(): number;
         set scalePrecision(val: number);
 
-        // Own fields of AgsGui.Dial
+        // Fields
 
         widget: Gtk.Widget;
         flags: DialFlags;
@@ -2656,7 +2656,7 @@ export namespace AgsGui {
         current_x: number;
         current_y: number;
 
-        // Constructors of AgsGui.Dial
+        // Constructors
 
         constructor(properties?: Partial<Dial.ConstructorProps>, ...args: any[]);
 
@@ -2664,7 +2664,7 @@ export namespace AgsGui {
 
         static ['new'](): Dial;
 
-        // Own signals of AgsGui.Dial
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -2673,14 +2673,14 @@ export namespace AgsGui {
         connect_after(signal: 'value-changed', callback: (_source: this) => void): number;
         emit(signal: 'value-changed'): void;
 
-        // Own virtual methods of AgsGui.Dial
+        // Virtual methods
 
         /**
          * draws the widget
          */
         vfunc_value_changed(): void;
 
-        // Own methods of AgsGui.Dial
+        // Methods
 
         /**
          * Get adjustment of `dial`.
@@ -3482,7 +3482,7 @@ export namespace AgsGui {
     class Expander extends Gtk.Box implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget, Gtk.Orientable {
         static $gtype: GObject.GType<Expander>;
 
-        // Own fields of AgsGui.Expander
+        // Fields
 
         box: Gtk.Box;
         flags: ExpanderFlags;
@@ -3490,7 +3490,7 @@ export namespace AgsGui {
         grid: Gtk.Grid;
         children: any[];
 
-        // Constructors of AgsGui.Expander
+        // Constructors
 
         constructor(properties?: Partial<Expander.ConstructorProps>, ...args: any[]);
 
@@ -3498,7 +3498,7 @@ export namespace AgsGui {
 
         static ['new'](): Expander;
 
-        // Own methods of AgsGui.Expander
+        // Methods
 
         /**
          * Adds a #GtkWidget to #AgsExpander
@@ -3955,14 +3955,14 @@ export namespace AgsGui {
     class ExpanderSet extends Gtk.Grid implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget, Gtk.Orientable {
         static $gtype: GObject.GType<ExpanderSet>;
 
-        // Own fields of AgsGui.ExpanderSet
+        // Fields
 
         grid: Gtk.Grid;
         flags: ExpanderSetFlags;
         ghost: any[];
         location: any[];
 
-        // Constructors of AgsGui.ExpanderSet
+        // Constructors
 
         constructor(properties?: Partial<ExpanderSet.ConstructorProps>, ...args: any[]);
 
@@ -3970,7 +3970,7 @@ export namespace AgsGui {
 
         static ['new'](): ExpanderSet;
 
-        // Own methods of AgsGui.ExpanderSet
+        // Methods
 
         /**
          * Adds a #GtkWidget to #AgsExpanderSet
@@ -4441,21 +4441,21 @@ export namespace AgsGui {
     {
         static $gtype: GObject.GType<FileDialog>;
 
-        // Own properties of AgsGui.FileDialog
+        // Properties
 
         get file_widget(): any;
         set file_widget(val: any);
         get fileWidget(): any;
         set fileWidget(val: any);
 
-        // Own fields of AgsGui.FileDialog
+        // Fields
 
         window: Gtk.Window;
         flags: number;
         vbox: Gtk.Box;
         activate_button: Gtk.Button;
 
-        // Constructors of AgsGui.FileDialog
+        // Constructors
 
         constructor(properties?: Partial<FileDialog.ConstructorProps>, ...args: any[]);
 
@@ -4466,7 +4466,7 @@ export namespace AgsGui {
 
         static ['new'](...args: never[]): any;
 
-        // Own signals of AgsGui.FileDialog
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -4475,7 +4475,7 @@ export namespace AgsGui {
         connect_after(signal: 'response', callback: (_source: this, object: number) => void): number;
         emit(signal: 'response', object: number): void;
 
-        // Own virtual methods of AgsGui.FileDialog
+        // Virtual methods
 
         /**
          * Response `file_dialog` due to user action.
@@ -4483,7 +4483,7 @@ export namespace AgsGui {
          */
         vfunc_response(response_id: number): void;
 
-        // Own methods of AgsGui.FileDialog
+        // Methods
 
         /**
          * Response `file_dialog` due to user action.
@@ -7378,7 +7378,7 @@ export namespace AgsGui {
     class FileWidget extends Gtk.Box implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget, Gtk.Orientable {
         static $gtype: GObject.GType<FileWidget>;
 
-        // Own properties of AgsGui.FileWidget
+        // Properties
 
         /**
          * The app generic path.
@@ -7471,7 +7471,7 @@ export namespace AgsGui {
         get recentlyUsedFilename(): string;
         set recentlyUsedFilename(val: string);
 
-        // Own fields of AgsGui.FileWidget
+        // Fields
 
         box: Gtk.Box;
         flags: number;
@@ -7504,7 +7504,7 @@ export namespace AgsGui {
         preview: Gtk.Widget;
         file_filter_drop_down: Gtk.DropDown;
 
-        // Constructors of AgsGui.FileWidget
+        // Constructors
 
         constructor(properties?: Partial<FileWidget.ConstructorProps>, ...args: any[]);
 
@@ -7512,7 +7512,7 @@ export namespace AgsGui {
 
         static ['new'](): FileWidget;
 
-        // Own signals of AgsGui.FileWidget
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -7524,7 +7524,7 @@ export namespace AgsGui {
         connect_after(signal: 'refresh', callback: (_source: this) => void): number;
         emit(signal: 'refresh'): void;
 
-        // Own virtual methods of AgsGui.FileWidget
+        // Virtual methods
 
         /**
          * Create directory `dir_path`.
@@ -7536,7 +7536,7 @@ export namespace AgsGui {
          */
         vfunc_refresh(): void;
 
-        // Own methods of AgsGui.FileWidget
+        // Methods
 
         /**
          * Add `bookmark_location` to bookmark with `button_text`.
@@ -8188,7 +8188,7 @@ export namespace AgsGui {
     class IconLink extends Gtk.Box implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget, Gtk.Orientable {
         static $gtype: GObject.GType<IconLink>;
 
-        // Own properties of AgsGui.IconLink
+        // Properties
 
         /**
          * The assigned action.
@@ -8196,7 +8196,7 @@ export namespace AgsGui {
         get action(): string;
         set action(val: string);
 
-        // Own fields of AgsGui.IconLink
+        // Fields
 
         box: Gtk.Box;
         flags: number;
@@ -8206,7 +8206,7 @@ export namespace AgsGui {
         context_popover: Gtk.PopoverMenu;
         context_popup: Gio.Menu;
 
-        // Constructors of AgsGui.IconLink
+        // Constructors
 
         constructor(properties?: Partial<IconLink.ConstructorProps>, ...args: any[]);
 
@@ -8217,7 +8217,7 @@ export namespace AgsGui {
 
         static ['new'](...args: never[]): any;
 
-        // Own signals of AgsGui.IconLink
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -8232,7 +8232,7 @@ export namespace AgsGui {
         connect_after(signal: 'delete-event', callback: (_source: this) => void): number;
         emit(signal: 'delete-event'): void;
 
-        // Own virtual methods of AgsGui.IconLink
+        // Virtual methods
 
         /**
          * Emits ::clicked event.
@@ -8243,7 +8243,7 @@ export namespace AgsGui {
          */
         vfunc_delete_event(): void;
 
-        // Own methods of AgsGui.IconLink
+        // Methods
 
         /**
          * Emits ::clicked event.
@@ -8744,7 +8744,7 @@ export namespace AgsGui {
     class Indicator extends Gtk.Widget implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget, Gtk.Orientable {
         static $gtype: GObject.GType<Indicator>;
 
-        // Own properties of AgsGui.Indicator
+        // Properties
 
         /**
          * The adjustment giving indicator value.
@@ -8792,12 +8792,12 @@ export namespace AgsGui {
         get segmentWidth(): number;
         set segmentWidth(val: number);
 
-        // Own fields of AgsGui.Indicator
+        // Fields
 
         widget: Gtk.Widget;
         orientation: Gtk.Orientation;
 
-        // Constructors of AgsGui.Indicator
+        // Constructors
 
         constructor(properties?: Partial<Indicator.ConstructorProps>, ...args: any[]);
 
@@ -8805,7 +8805,7 @@ export namespace AgsGui {
 
         static ['new'](orientation: Gtk.Orientation, segment_width: number, segment_height: number): Indicator;
 
-        // Own methods of AgsGui.Indicator
+        // Methods
 
         /**
          * Get adjustment.
@@ -9574,7 +9574,7 @@ export namespace AgsGui {
     {
         static $gtype: GObject.GType<InputDialog>;
 
-        // Own fields of AgsGui.InputDialog
+        // Fields
 
         window: Gtk.Window;
         flags: number;
@@ -9588,7 +9588,7 @@ export namespace AgsGui {
         cancel: Gtk.Button;
         message: Gtk.Label;
 
-        // Constructors of AgsGui.InputDialog
+        // Constructors
 
         constructor(properties?: Partial<InputDialog.ConstructorProps>, ...args: any[]);
 
@@ -9599,7 +9599,7 @@ export namespace AgsGui {
 
         static ['new'](...args: never[]): any;
 
-        // Own signals of AgsGui.InputDialog
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -9608,7 +9608,7 @@ export namespace AgsGui {
         connect_after(signal: 'response', callback: (_source: this, response: number) => void): number;
         emit(signal: 'response', response: number): void;
 
-        // Own virtual methods of AgsGui.InputDialog
+        // Virtual methods
 
         /**
          * Emit signal  AgsInputDialog::response().
@@ -9616,7 +9616,7 @@ export namespace AgsGui {
          */
         vfunc_response(response: number): void;
 
-        // Own methods of AgsGui.InputDialog
+        // Methods
 
         /**
          * The #GtkEntry to get input from.
@@ -12527,7 +12527,7 @@ export namespace AgsGui {
     class Led extends Gtk.Widget implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
         static $gtype: GObject.GType<Led>;
 
-        // Own properties of AgsGui.Led
+        // Properties
 
         /**
          * The led's segment height.
@@ -12550,12 +12550,12 @@ export namespace AgsGui {
         get segmentWidth(): number;
         set segmentWidth(val: number);
 
-        // Own fields of AgsGui.Led
+        // Fields
 
         widget: Gtk.Widget;
         active: boolean;
 
-        // Constructors of AgsGui.Led
+        // Constructors
 
         constructor(properties?: Partial<Led.ConstructorProps>, ...args: any[]);
 
@@ -12563,7 +12563,7 @@ export namespace AgsGui {
 
         static ['new'](segment_width: number, segment_height: number): Led;
 
-        // Own methods of AgsGui.Led
+        // Methods
 
         /**
          * Get segment height.
@@ -13298,7 +13298,7 @@ export namespace AgsGui {
     class LedArray extends Gtk.Box implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget, Gtk.Orientable {
         static $gtype: GObject.GType<LedArray>;
 
-        // Own properties of AgsGui.LedArray
+        // Properties
 
         /**
          * The count of leds available.
@@ -13331,12 +13331,12 @@ export namespace AgsGui {
         get segmentWidth(): number;
         set segmentWidth(val: number);
 
-        // Own fields of AgsGui.LedArray
+        // Fields
 
         box: Gtk.Box;
         led: Led;
 
-        // Constructors of AgsGui.LedArray
+        // Constructors
 
         constructor(properties?: Partial<LedArray.ConstructorProps>, ...args: any[]);
 
@@ -13352,7 +13352,7 @@ export namespace AgsGui {
 
         static ['new'](...args: never[]): any;
 
-        // Own methods of AgsGui.LedArray
+        // Methods
 
         /**
          * Get led count of `led_array`.
@@ -13842,7 +13842,7 @@ export namespace AgsGui {
     class Level extends Gtk.Widget implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget, Gtk.Orientable {
         static $gtype: GObject.GType<Level>;
 
-        // Own properties of AgsGui.Level
+        // Properties
 
         /**
          * The data format.
@@ -13880,7 +13880,7 @@ export namespace AgsGui {
         get upper(): number;
         set upper(val: number);
 
-        // Own fields of AgsGui.Level
+        // Fields
 
         widget: Gtk.Widget;
         flags: number;
@@ -13893,7 +13893,7 @@ export namespace AgsGui {
         audio_channel: number;
         audio_channel_count: number;
 
-        // Constructors of AgsGui.Level
+        // Constructors
 
         constructor(properties?: Partial<Level.ConstructorProps>, ...args: any[]);
 
@@ -13901,7 +13901,7 @@ export namespace AgsGui {
 
         static ['new'](orientation: Gtk.Orientation, width_request: number, height_request: number): Level;
 
-        // Own signals of AgsGui.Level
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -13910,7 +13910,7 @@ export namespace AgsGui {
         connect_after(signal: 'value-changed', callback: (_source: this, normalized_volume: number) => void): number;
         emit(signal: 'value-changed', normalized_volume: number): void;
 
-        // Own virtual methods of AgsGui.Level
+        // Virtual methods
 
         /**
          * Emits ::value-changed event.
@@ -13918,7 +13918,7 @@ export namespace AgsGui {
          */
         vfunc_value_changed(normalized_volume: number): void;
 
-        // Own methods of AgsGui.Level
+        // Methods
 
         /**
          * Get lower of `level`.
@@ -14681,12 +14681,12 @@ export namespace AgsGui {
     class LevelBox extends Gtk.Box implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget, Gtk.Orientable {
         static $gtype: GObject.GType<LevelBox>;
 
-        // Own fields of AgsGui.LevelBox
+        // Fields
 
         box: Gtk.Box;
         level: any[];
 
-        // Constructors of AgsGui.LevelBox
+        // Constructors
 
         constructor(properties?: Partial<LevelBox.ConstructorProps>, ...args: any[]);
 
@@ -14694,7 +14694,7 @@ export namespace AgsGui {
 
         static ['new'](orientation: Gtk.Orientation): LevelBox;
 
-        // Own signals of AgsGui.LevelBox
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -14718,7 +14718,7 @@ export namespace AgsGui {
         ): number;
         emit(signal: 'child-width-request', level: GObject.Object, width_request: number): void;
 
-        // Own virtual methods of AgsGui.LevelBox
+        // Virtual methods
 
         /**
          * Notify about child level height request.
@@ -14733,7 +14733,7 @@ export namespace AgsGui {
          */
         vfunc_child_width_request(level: Gtk.Widget, width_request: number): void;
 
-        // Own methods of AgsGui.LevelBox
+        // Methods
 
         /**
          * Add `level` to `level_box`.
@@ -15202,7 +15202,7 @@ export namespace AgsGui {
     class Notebook extends Gtk.Box implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget, Gtk.Orientable {
         static $gtype: GObject.GType<Notebook>;
 
-        // Own properties of AgsGui.Notebook
+        // Properties
 
         /**
          * The tab's height.
@@ -15225,7 +15225,7 @@ export namespace AgsGui {
         get tabWidth(): number;
         set tabWidth(val: number);
 
-        // Own fields of AgsGui.Notebook
+        // Fields
 
         box: Gtk.Box;
         navigation: Gtk.Box;
@@ -15235,7 +15235,7 @@ export namespace AgsGui {
         tab_box: Gtk.Box;
         tab: any[];
 
-        // Constructors of AgsGui.Notebook
+        // Constructors
 
         constructor(properties?: Partial<Notebook.ConstructorProps>, ...args: any[]);
 
@@ -15243,7 +15243,7 @@ export namespace AgsGui {
 
         static ['new'](): Notebook;
 
-        // Own methods of AgsGui.Notebook
+        // Methods
 
         /**
          * Add `tab` to `notebook`.
@@ -15732,7 +15732,7 @@ export namespace AgsGui {
     class Piano extends Gtk.Widget implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget, Gtk.Orientable {
         static $gtype: GObject.GType<Piano>;
 
-        // Own properties of AgsGui.Piano
+        // Properties
 
         /**
          * The base key code.
@@ -15785,7 +15785,7 @@ export namespace AgsGui {
         get keyWidth(): number;
         set keyWidth(val: number);
 
-        // Own fields of AgsGui.Piano
+        // Fields
 
         widget: Gtk.Widget;
         flags: PianoFlags;
@@ -15797,7 +15797,7 @@ export namespace AgsGui {
         active_key: number;
         active_key_count: number;
 
-        // Constructors of AgsGui.Piano
+        // Constructors
 
         constructor(properties?: Partial<Piano.ConstructorProps>, ...args: any[]);
 
@@ -15805,7 +15805,7 @@ export namespace AgsGui {
 
         static ['new'](orientation: Gtk.Orientation, key_width: number, key_height: number): Piano;
 
-        // Own signals of AgsGui.Piano
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -15823,7 +15823,7 @@ export namespace AgsGui {
         ): number;
         emit(signal: 'key-released', note: string, key_code: number): void;
 
-        // Own static methods of AgsGui.Piano
+        // Static methods
 
         /**
          * Get note from key code.
@@ -15831,7 +15831,7 @@ export namespace AgsGui {
          */
         static key_code_to_note(key_code: number): string;
 
-        // Own virtual methods of AgsGui.Piano
+        // Virtual methods
 
         /**
          * Emits ::key-clicked event.
@@ -15852,7 +15852,7 @@ export namespace AgsGui {
          */
         vfunc_key_released(note: string, key_code: number): void;
 
-        // Own methods of AgsGui.Piano
+        // Methods
 
         /**
          * Get active keys.
@@ -16657,7 +16657,7 @@ export namespace AgsGui {
     class Ruler extends Gtk.Widget implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget, Gtk.Orientable {
         static $gtype: GObject.GType<Ruler>;
 
-        // Own properties of AgsGui.Ruler
+        // Properties
 
         /**
          * The adjustment.
@@ -16720,12 +16720,12 @@ export namespace AgsGui {
         get step(): number;
         set step(val: number);
 
-        // Own fields of AgsGui.Ruler
+        // Fields
 
         widget: Gtk.Widget;
         orientation: Gtk.Orientation;
 
-        // Constructors of AgsGui.Ruler
+        // Constructors
 
         constructor(properties?: Partial<Ruler.ConstructorProps>, ...args: any[]);
 
@@ -16739,7 +16739,7 @@ export namespace AgsGui {
             scale_precision: number,
         ): Ruler;
 
-        // Own methods of AgsGui.Ruler
+        // Methods
 
         /**
          * Get adjustment of `ruler`.
@@ -17540,7 +17540,7 @@ export namespace AgsGui {
     class Scale extends Gtk.Widget implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget, Gtk.Orientable {
         static $gtype: GObject.GType<Scale>;
 
-        // Own properties of AgsGui.Scale
+        // Properties
 
         /**
          * The scale's control name.
@@ -17573,7 +17573,7 @@ export namespace AgsGui {
         get upper(): number;
         set upper(val: number);
 
-        // Own fields of AgsGui.Scale
+        // Fields
 
         widget: Gtk.Widget;
         flags: ScaleFlags;
@@ -17587,7 +17587,7 @@ export namespace AgsGui {
         scale_point: string;
         scale_value: number;
 
-        // Constructors of AgsGui.Scale
+        // Constructors
 
         constructor(properties?: Partial<Scale.ConstructorProps>, ...args: any[]);
 
@@ -17595,7 +17595,7 @@ export namespace AgsGui {
 
         static ['new'](orientation: Gtk.Orientation, width_request: number, height_request: number): Scale;
 
-        // Own signals of AgsGui.Scale
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -17604,7 +17604,7 @@ export namespace AgsGui {
         connect_after(signal: 'value-changed', callback: (_source: this, default_value: number) => void): number;
         emit(signal: 'value-changed', default_value: number): void;
 
-        // Own virtual methods of AgsGui.Scale
+        // Virtual methods
 
         /**
          * Emits ::value-changed event.
@@ -17612,7 +17612,7 @@ export namespace AgsGui {
          */
         vfunc_value_changed(default_value: number): void;
 
-        // Own methods of AgsGui.Scale
+        // Methods
 
         /**
          * Get scale height of `scale`.
@@ -18375,12 +18375,12 @@ export namespace AgsGui {
     class ScaleBox extends Gtk.Box implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget, Gtk.Orientable {
         static $gtype: GObject.GType<ScaleBox>;
 
-        // Own fields of AgsGui.ScaleBox
+        // Fields
 
         box: Gtk.Box;
         scale: any[];
 
-        // Constructors of AgsGui.ScaleBox
+        // Constructors
 
         constructor(properties?: Partial<ScaleBox.ConstructorProps>, ...args: any[]);
 
@@ -18388,7 +18388,7 @@ export namespace AgsGui {
 
         static ['new'](orientation: Gtk.Orientation): ScaleBox;
 
-        // Own signals of AgsGui.ScaleBox
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -18412,7 +18412,7 @@ export namespace AgsGui {
         ): number;
         emit(signal: 'child-width-request', scale: GObject.Object, width_request: number): void;
 
-        // Own virtual methods of AgsGui.ScaleBox
+        // Virtual methods
 
         /**
          * Notify about child scale height request.
@@ -18427,7 +18427,7 @@ export namespace AgsGui {
          */
         vfunc_child_width_request(scale: Gtk.Widget, width_request: number): void;
 
-        // Own methods of AgsGui.ScaleBox
+        // Methods
 
         /**
          * Add `scale` to `scale_box`.
@@ -18894,13 +18894,13 @@ export namespace AgsGui {
     {
         static $gtype: GObject.GType<ScrolledLevelBox>;
 
-        // Own fields of AgsGui.ScrolledLevelBox
+        // Fields
 
         grid: Gtk.Grid;
         scrolled_window: Gtk.ScrolledWindow;
         level_box: Gtk.Box;
 
-        // Constructors of AgsGui.ScrolledLevelBox
+        // Constructors
 
         constructor(properties?: Partial<ScrolledLevelBox.ConstructorProps>, ...args: any[]);
 
@@ -18908,7 +18908,7 @@ export namespace AgsGui {
 
         static ['new'](): ScrolledLevelBox;
 
-        // Own methods of AgsGui.ScrolledLevelBox
+        // Methods
 
         /**
          * Get level box of `scrolled_level_box`.
@@ -19358,13 +19358,13 @@ export namespace AgsGui {
     {
         static $gtype: GObject.GType<ScrolledPiano>;
 
-        // Own fields of AgsGui.ScrolledPiano
+        // Fields
 
         grid: Gtk.Grid;
         scrolled_window: Gtk.ScrolledWindow;
         piano: Piano;
 
-        // Constructors of AgsGui.ScrolledPiano
+        // Constructors
 
         constructor(properties?: Partial<ScrolledPiano.ConstructorProps>, ...args: any[]);
 
@@ -19372,7 +19372,7 @@ export namespace AgsGui {
 
         static ['new'](): ScrolledPiano;
 
-        // Own methods of AgsGui.ScrolledPiano
+        // Methods
 
         /**
          * Get piano of `scrolled_piano`.
@@ -19822,13 +19822,13 @@ export namespace AgsGui {
     {
         static $gtype: GObject.GType<ScrolledScaleBox>;
 
-        // Own fields of AgsGui.ScrolledScaleBox
+        // Fields
 
         grid: Gtk.Grid;
         scrolled_window: Gtk.ScrolledWindow;
         scale_box: Gtk.Box;
 
-        // Constructors of AgsGui.ScrolledScaleBox
+        // Constructors
 
         constructor(properties?: Partial<ScrolledScaleBox.ConstructorProps>, ...args: any[]);
 
@@ -19836,7 +19836,7 @@ export namespace AgsGui {
 
         static ['new'](): ScrolledScaleBox;
 
-        // Own methods of AgsGui.ScrolledScaleBox
+        // Methods
 
         /**
          * Get scrolled_window of `scrolled_scale_box`.
@@ -20291,7 +20291,7 @@ export namespace AgsGui {
     class Tempo extends Gtk.Widget implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget, Gtk.Orientable {
         static $gtype: GObject.GType<Tempo>;
 
-        // Own properties of AgsGui.Tempo
+        // Properties
 
         /**
          * The tempo's control name.
@@ -20324,7 +20324,7 @@ export namespace AgsGui {
         get upper(): number;
         set upper(val: number);
 
-        // Own fields of AgsGui.Tempo
+        // Fields
 
         widget: Gtk.Widget;
         orientation: Gtk.Orientation;
@@ -20337,7 +20337,7 @@ export namespace AgsGui {
         tempo_point: string;
         tempo_value: number;
 
-        // Constructors of AgsGui.Tempo
+        // Constructors
 
         constructor(properties?: Partial<Tempo.ConstructorProps>, ...args: any[]);
 
@@ -20345,7 +20345,7 @@ export namespace AgsGui {
 
         static ['new'](orientation: Gtk.Orientation, width_request: number, height_request: number): Tempo;
 
-        // Own signals of AgsGui.Tempo
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -20354,7 +20354,7 @@ export namespace AgsGui {
         connect_after(signal: 'value-changed', callback: (_source: this, default_value: number) => void): number;
         emit(signal: 'value-changed', default_value: number): void;
 
-        // Own virtual methods of AgsGui.Tempo
+        // Virtual methods
 
         /**
          * Emits ::value-changed event.
@@ -20362,7 +20362,7 @@ export namespace AgsGui {
          */
         vfunc_value_changed(default_value: number): void;
 
-        // Own methods of AgsGui.Tempo
+        // Methods
 
         /**
          * Get tempo height of `tempo`.
@@ -21106,7 +21106,7 @@ export namespace AgsGui {
     class ExpanderChild {
         static $gtype: GObject.GType<ExpanderChild>;
 
-        // Own fields of AgsGui.ExpanderChild
+        // Fields
 
         child: Gtk.Widget;
         x: number;
@@ -21114,11 +21114,11 @@ export namespace AgsGui {
         width: number;
         height: number;
 
-        // Constructors of AgsGui.ExpanderChild
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own static methods of AgsGui.ExpanderChild
+        // Static methods
 
         /**
          * Allocate #AgsExpanderChild-struct.
@@ -21139,7 +21139,7 @@ export namespace AgsGui {
     class ExpanderSetChild {
         static $gtype: GObject.GType<ExpanderSetChild>;
 
-        // Own fields of AgsGui.ExpanderSetChild
+        // Fields
 
         child: Gtk.Widget;
         x: number;
@@ -21147,11 +21147,11 @@ export namespace AgsGui {
         width: number;
         height: number;
 
-        // Constructors of AgsGui.ExpanderSetChild
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own static methods of AgsGui.ExpanderSetChild
+        // Static methods
 
         /**
          * Allocate #AgsExpanderSetChild-struct.
@@ -21183,7 +21183,7 @@ export namespace AgsGui {
     class Plot {
         static $gtype: GObject.GType<Plot>;
 
-        // Own fields of AgsGui.Plot
+        // Fields
 
         fill_flags: PlotFillFlags;
         n_points: number;
@@ -21197,11 +21197,11 @@ export namespace AgsGui {
         n_pixmaps: number;
         pixmap: number;
 
-        // Constructors of AgsGui.Plot
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own static methods of AgsGui.Plot
+        // Static methods
 
         /**
          * Allocate #AgsPlot-struct.

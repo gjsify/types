@@ -21,12 +21,12 @@ export namespace Gee {
     class FutureError extends GLib.Error {
         static $gtype: GObject.GType<FutureError>;
 
-        // Static fields of Gee.FutureError
+        // Static fields
 
         static ABANDON_PROMISE: number;
         static EXCEPTION: number;
 
-        // Constructors of Gee.FutureError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
@@ -187,7 +187,7 @@ export namespace Gee {
     abstract class AbstractBidirList extends AbstractList implements BidirList {
         static $gtype: GObject.GType<AbstractBidirList>;
 
-        // Own properties of Gee.AbstractBidirList
+        // Properties
 
         get g_type(): GObject.GType;
         get gType(): GObject.GType;
@@ -198,13 +198,13 @@ export namespace Gee {
         get read_only_view(): BidirList;
         get readOnlyView(): BidirList;
 
-        // Constructors of Gee.AbstractBidirList
+        // Constructors
 
         constructor(properties?: Partial<AbstractBidirList.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of Gee.AbstractBidirList
+        // Virtual methods
 
         vfunc_bidir_list_iterator(): BidirListIterator;
         vfunc_reserved0(): void;
@@ -219,7 +219,7 @@ export namespace Gee {
         vfunc_reserved9(): void;
         vfunc_get_read_only_view(): BidirList;
 
-        // Own methods of Gee.AbstractBidirList
+        // Methods
 
         bidir_list_iterator(): BidirListIterator;
         reserved0(): void;
@@ -279,7 +279,7 @@ export namespace Gee {
     abstract class AbstractBidirSortedSet extends AbstractSortedSet implements BidirSortedSet {
         static $gtype: GObject.GType<AbstractBidirSortedSet>;
 
-        // Own properties of Gee.AbstractBidirSortedSet
+        // Properties
 
         get g_type(): GObject.GType;
         get gType(): GObject.GType;
@@ -290,13 +290,13 @@ export namespace Gee {
         get read_only_view(): BidirSortedSet;
         get readOnlyView(): BidirSortedSet;
 
-        // Constructors of Gee.AbstractBidirSortedSet
+        // Constructors
 
         constructor(properties?: Partial<AbstractBidirSortedSet.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of Gee.AbstractBidirSortedSet
+        // Virtual methods
 
         vfunc_bidir_iterator(): BidirIterator;
         vfunc_reserved0(): void;
@@ -311,7 +311,7 @@ export namespace Gee {
         vfunc_reserved9(): void;
         vfunc_get_read_only_view(): BidirSortedSet;
 
-        // Own methods of Gee.AbstractBidirSortedSet
+        // Methods
 
         bidir_iterator(): BidirIterator;
         reserved0(): void;
@@ -373,7 +373,7 @@ export namespace Gee {
     abstract class AbstractBidirSortedMap extends AbstractSortedMap implements BidirSortedMap {
         static $gtype: GObject.GType<AbstractBidirSortedMap>;
 
-        // Own properties of Gee.AbstractBidirSortedMap
+        // Properties
 
         get k_type(): GObject.GType;
         get kType(): GObject.GType;
@@ -392,13 +392,13 @@ export namespace Gee {
         // This accessor conflicts with another accessor's type in a parent class or interface.
         get readOnlyView(): BidirSortedMap | any;
 
-        // Constructors of Gee.AbstractBidirSortedMap
+        // Constructors
 
         constructor(properties?: Partial<AbstractBidirSortedMap.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of Gee.AbstractBidirSortedMap
+        // Virtual methods
 
         vfunc_bidir_map_iterator(): BidirMapIterator;
         vfunc_reserved0(): void;
@@ -413,7 +413,7 @@ export namespace Gee {
         vfunc_reserved9(): void;
         vfunc_get_read_only_view(): BidirSortedMap;
 
-        // Own methods of Gee.AbstractBidirSortedMap
+        // Methods
 
         bidir_map_iterator(): BidirMapIterator;
         reserved0(): void;
@@ -472,7 +472,7 @@ export namespace Gee {
     abstract class AbstractCollection extends GObject.Object implements Traversable, Iterable, Collection {
         static $gtype: GObject.GType<AbstractCollection>;
 
-        // Own properties of Gee.AbstractCollection
+        // Properties
 
         get g_type(): GObject.GType;
         get gType(): GObject.GType;
@@ -486,13 +486,13 @@ export namespace Gee {
         get read_only_view(): Collection;
         get readOnlyView(): Collection;
 
-        // Constructors of Gee.AbstractCollection
+        // Constructors
 
         constructor(properties?: Partial<AbstractCollection.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of Gee.AbstractCollection
+        // Virtual methods
 
         vfunc_contains(item: any): boolean;
         vfunc_add(item: any): boolean;
@@ -514,7 +514,7 @@ export namespace Gee {
         vfunc_get_read_only(): boolean;
         vfunc_get_read_only_view(): Collection;
 
-        // Own methods of Gee.AbstractCollection
+        // Methods
 
         contains(item: any): boolean;
         add(item: any): boolean;
@@ -1011,7 +1011,7 @@ export namespace Gee {
     abstract class AbstractList extends AbstractCollection implements List {
         static $gtype: GObject.GType<AbstractList>;
 
-        // Own properties of Gee.AbstractList
+        // Properties
 
         get g_type(): GObject.GType;
         get gType(): GObject.GType;
@@ -1022,13 +1022,13 @@ export namespace Gee {
         get read_only_view(): List;
         get readOnlyView(): List;
 
-        // Constructors of Gee.AbstractList
+        // Constructors
 
         constructor(properties?: Partial<AbstractList.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of Gee.AbstractList
+        // Virtual methods
 
         vfunc_list_iterator(): ListIterator;
         vfunc_get(index: number): any;
@@ -1049,7 +1049,7 @@ export namespace Gee {
         vfunc_reserved9(): void;
         vfunc_get_read_only_view(): List;
 
-        // Own methods of Gee.AbstractList
+        // Methods
 
         list_iterator(): ListIterator;
         get(index: number): any;
@@ -1160,7 +1160,7 @@ export namespace Gee {
     abstract class AbstractMap extends GObject.Object implements Traversable, Iterable, Map {
         static $gtype: GObject.GType<AbstractMap>;
 
-        // Own properties of Gee.AbstractMap
+        // Properties
 
         get k_type(): GObject.GType;
         get kType(): GObject.GType;
@@ -1183,13 +1183,13 @@ export namespace Gee {
         get read_only_view(): Map;
         get readOnlyView(): Map;
 
-        // Constructors of Gee.AbstractMap
+        // Constructors
 
         constructor(properties?: Partial<AbstractMap.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of Gee.AbstractMap
+        // Virtual methods
 
         vfunc_has_key(key: any): boolean;
         vfunc_has(key: any, value: any): boolean;
@@ -1217,7 +1217,7 @@ export namespace Gee {
         vfunc_get_entries(): Set;
         vfunc_get_read_only_view(): Map;
 
-        // Own methods of Gee.AbstractMap
+        // Methods
 
         has_key(key: any): boolean;
         has(key: any, value: any): boolean;
@@ -1715,7 +1715,7 @@ export namespace Gee {
     abstract class AbstractMultiMap extends GObject.Object implements MultiMap {
         static $gtype: GObject.GType<AbstractMultiMap>;
 
-        // Own properties of Gee.AbstractMultiMap
+        // Properties
 
         get k_type(): GObject.GType;
         get kType(): GObject.GType;
@@ -1730,13 +1730,13 @@ export namespace Gee {
         get v_destroy_func(): GLib.DestroyNotify;
         get vDestroyFunc(): GLib.DestroyNotify;
 
-        // Constructors of Gee.AbstractMultiMap
+        // Constructors
 
         constructor(properties?: Partial<AbstractMultiMap.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of Gee.AbstractMultiMap
+        // Virtual methods
 
         vfunc_create_value_storage(): Collection;
         vfunc_create_multi_key_set(): MultiSet;
@@ -1752,7 +1752,7 @@ export namespace Gee {
         vfunc_reserved8(): void;
         vfunc_get_read_only_view(): MultiMap;
 
-        // Own methods of Gee.AbstractMultiMap
+        // Methods
 
         create_value_storage(): Collection;
         create_multi_key_set(): MultiSet;
@@ -2219,7 +2219,7 @@ export namespace Gee {
     abstract class AbstractMultiSet extends AbstractCollection implements MultiSet {
         static $gtype: GObject.GType<AbstractMultiSet>;
 
-        // Own properties of Gee.AbstractMultiSet
+        // Properties
 
         get g_type(): GObject.GType;
         get gType(): GObject.GType;
@@ -2228,13 +2228,13 @@ export namespace Gee {
         get g_destroy_func(): GLib.DestroyNotify;
         get gDestroyFunc(): GLib.DestroyNotify;
 
-        // Constructors of Gee.AbstractMultiSet
+        // Constructors
 
         constructor(properties?: Partial<AbstractMultiSet.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of Gee.AbstractMultiSet
+        // Virtual methods
 
         vfunc_reserved0(): void;
         vfunc_reserved1(): void;
@@ -2247,7 +2247,7 @@ export namespace Gee {
         vfunc_reserved8(): void;
         vfunc_get_read_only_view(): MultiSet;
 
-        // Own methods of Gee.AbstractMultiSet
+        // Methods
 
         reserved0(): void;
         reserved1(): void;
@@ -2331,7 +2331,7 @@ export namespace Gee {
     abstract class AbstractQueue extends AbstractCollection implements Queue {
         static $gtype: GObject.GType<AbstractQueue>;
 
-        // Own properties of Gee.AbstractQueue
+        // Properties
 
         get g_type(): GObject.GType;
         get gType(): GObject.GType;
@@ -2345,13 +2345,13 @@ export namespace Gee {
         get is_full(): boolean;
         get isFull(): boolean;
 
-        // Constructors of Gee.AbstractQueue
+        // Constructors
 
         constructor(properties?: Partial<AbstractQueue.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of Gee.AbstractQueue
+        // Virtual methods
 
         vfunc_peek(): any | null;
         vfunc_poll(): any | null;
@@ -2369,7 +2369,7 @@ export namespace Gee {
         vfunc_get_remaining_capacity(): number;
         vfunc_get_is_full(): boolean;
 
-        // Own methods of Gee.AbstractQueue
+        // Methods
 
         peek(): any | null;
         poll(): any | null;
@@ -2459,7 +2459,7 @@ export namespace Gee {
     abstract class AbstractSet extends AbstractCollection implements Set {
         static $gtype: GObject.GType<AbstractSet>;
 
-        // Own properties of Gee.AbstractSet
+        // Properties
 
         get g_type(): GObject.GType;
         get gType(): GObject.GType;
@@ -2470,13 +2470,13 @@ export namespace Gee {
         get read_only_view(): Set;
         get readOnlyView(): Set;
 
-        // Constructors of Gee.AbstractSet
+        // Constructors
 
         constructor(properties?: Partial<AbstractSet.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of Gee.AbstractSet
+        // Virtual methods
 
         vfunc_reserved0(): void;
         vfunc_reserved1(): void;
@@ -2490,7 +2490,7 @@ export namespace Gee {
         vfunc_reserved9(): void;
         vfunc_get_read_only_view(): Set;
 
-        // Own methods of Gee.AbstractSet
+        // Methods
 
         reserved0(): void;
         reserved1(): void;
@@ -2578,7 +2578,7 @@ export namespace Gee {
     abstract class AbstractSortedMap extends AbstractMap implements SortedMap {
         static $gtype: GObject.GType<AbstractSortedMap>;
 
-        // Own properties of Gee.AbstractSortedMap
+        // Properties
 
         get k_type(): GObject.GType;
         get kType(): GObject.GType;
@@ -2599,13 +2599,13 @@ export namespace Gee {
         get readOnlyView(): AbstractSortedMap;
         get read_only_view(): AbstractSortedMap;
 
-        // Constructors of Gee.AbstractSortedMap
+        // Constructors
 
         constructor(properties?: Partial<AbstractSortedMap.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of Gee.AbstractSortedMap
+        // Virtual methods
 
         vfunc_head_map(before: any): SortedMap;
         vfunc_tail_map(after: any): SortedMap;
@@ -2623,7 +2623,7 @@ export namespace Gee {
         vfunc_get_ascending_keys(): SortedSet;
         vfunc_get_ascending_entries(): SortedSet;
 
-        // Own methods of Gee.AbstractSortedMap
+        // Methods
 
         head_map(before: any): SortedMap;
         tail_map(after: any): SortedMap;
@@ -2712,7 +2712,7 @@ export namespace Gee {
     abstract class AbstractSortedSet extends AbstractSet implements SortedSet {
         static $gtype: GObject.GType<AbstractSortedSet>;
 
-        // Own properties of Gee.AbstractSortedSet
+        // Properties
 
         get g_type(): GObject.GType;
         get gType(): GObject.GType;
@@ -2723,13 +2723,13 @@ export namespace Gee {
         get read_only_view(): SortedSet;
         get readOnlyView(): SortedSet;
 
-        // Constructors of Gee.AbstractSortedSet
+        // Constructors
 
         constructor(properties?: Partial<AbstractSortedSet.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of Gee.AbstractSortedSet
+        // Virtual methods
 
         vfunc_first(): any;
         vfunc_last(): any;
@@ -2753,7 +2753,7 @@ export namespace Gee {
         vfunc_reserved9(): void;
         vfunc_get_read_only_view(): SortedSet;
 
-        // Own methods of Gee.AbstractSortedSet
+        // Methods
 
         first(): any;
         last(): any;
@@ -2794,7 +2794,7 @@ export namespace Gee {
     class ArrayList extends AbstractBidirList {
         static $gtype: GObject.GType<ArrayList>;
 
-        // Own properties of Gee.ArrayList
+        // Properties
 
         get g_type(): GObject.GType;
         get gType(): GObject.GType;
@@ -2803,7 +2803,7 @@ export namespace Gee {
         get g_destroy_func(): GLib.DestroyNotify;
         get gDestroyFunc(): GLib.DestroyNotify;
 
-        // Constructors of Gee.ArrayList
+        // Constructors
 
         constructor(properties?: Partial<ArrayList.ConstructorProps>, ...args: any[]);
 
@@ -2822,7 +2822,7 @@ export namespace Gee {
             equal_func?: EqualDataFunc | null,
         ): ArrayList;
 
-        // Own methods of Gee.ArrayList
+        // Methods
 
         add_all(collection: Collection): boolean;
         get_equal_func(): [EqualDataFunc, any];
@@ -2846,7 +2846,7 @@ export namespace Gee {
     class ArrayQueue extends AbstractQueue implements Deque {
         static $gtype: GObject.GType<ArrayQueue>;
 
-        // Own properties of Gee.ArrayQueue
+        // Properties
 
         get g_type(): GObject.GType;
         get gType(): GObject.GType;
@@ -2857,7 +2857,7 @@ export namespace Gee {
         get is_empty(): boolean;
         get isEmpty(): boolean;
 
-        // Constructors of Gee.ArrayQueue
+        // Constructors
 
         constructor(properties?: Partial<ArrayQueue.ConstructorProps>, ...args: any[]);
 
@@ -2869,7 +2869,7 @@ export namespace Gee {
             equal_func?: EqualDataFunc | null,
         ): ArrayQueue;
 
-        // Own methods of Gee.ArrayQueue
+        // Methods
 
         get_equal_func(): [EqualDataFunc, any];
         get_is_empty(): boolean;
@@ -2932,7 +2932,7 @@ export namespace Gee {
     class ConcurrentList extends AbstractList {
         static $gtype: GObject.GType<ConcurrentList>;
 
-        // Own properties of Gee.ConcurrentList
+        // Properties
 
         get g_type(): GObject.GType;
         get gType(): GObject.GType;
@@ -2943,7 +2943,7 @@ export namespace Gee {
         get is_empty(): boolean;
         get isEmpty(): boolean;
 
-        // Constructors of Gee.ConcurrentList
+        // Constructors
 
         constructor(properties?: Partial<ConcurrentList.ConstructorProps>, ...args: any[]);
 
@@ -2955,7 +2955,7 @@ export namespace Gee {
             equal_func?: EqualDataFunc | null,
         ): ConcurrentList;
 
-        // Own methods of Gee.ConcurrentList
+        // Methods
 
         get_equal_func(): [EqualDataFunc, any];
         get_is_empty(): boolean;
@@ -2977,7 +2977,7 @@ export namespace Gee {
     class ConcurrentSet extends AbstractSortedSet {
         static $gtype: GObject.GType<ConcurrentSet>;
 
-        // Own properties of Gee.ConcurrentSet
+        // Properties
 
         get g_type(): GObject.GType;
         get gType(): GObject.GType;
@@ -2986,7 +2986,7 @@ export namespace Gee {
         get g_destroy_func(): GLib.DestroyNotify;
         get gDestroyFunc(): GLib.DestroyNotify;
 
-        // Constructors of Gee.ConcurrentSet
+        // Constructors
 
         constructor(properties?: Partial<ConcurrentSet.ConstructorProps>, ...args: any[]);
 
@@ -3021,7 +3021,7 @@ export namespace Gee {
     class HashMap extends AbstractMap {
         static $gtype: GObject.GType<HashMap>;
 
-        // Own properties of Gee.HashMap
+        // Properties
 
         get k_type(): GObject.GType;
         get kType(): GObject.GType;
@@ -3036,7 +3036,7 @@ export namespace Gee {
         get v_destroy_func(): GLib.DestroyNotify;
         get vDestroyFunc(): GLib.DestroyNotify;
 
-        // Constructors of Gee.HashMap
+        // Constructors
 
         constructor(properties?: Partial<HashMap.ConstructorProps>, ...args: any[]);
 
@@ -3052,7 +3052,7 @@ export namespace Gee {
             value_equal_func?: EqualDataFunc | null,
         ): HashMap;
 
-        // Own methods of Gee.HashMap
+        // Methods
 
         get_key_hash_func(): [HashDataFunc, any];
         get_key_equal_func(): [EqualDataFunc, any];
@@ -3081,7 +3081,7 @@ export namespace Gee {
     class HashMultiMap extends AbstractMultiMap {
         static $gtype: GObject.GType<HashMultiMap>;
 
-        // Own properties of Gee.HashMultiMap
+        // Properties
 
         get k_type(): GObject.GType;
         get kType(): GObject.GType;
@@ -3096,7 +3096,7 @@ export namespace Gee {
         get v_destroy_func(): GLib.DestroyNotify;
         get vDestroyFunc(): GLib.DestroyNotify;
 
-        // Constructors of Gee.HashMultiMap
+        // Constructors
 
         constructor(properties?: Partial<HashMultiMap.ConstructorProps>, ...args: any[]);
 
@@ -3113,7 +3113,7 @@ export namespace Gee {
             value_equal_func?: EqualDataFunc | null,
         ): HashMultiMap;
 
-        // Own methods of Gee.HashMultiMap
+        // Methods
 
         get_key_hash_func(): [HashDataFunc, any];
         get_key_equal_func(): [EqualDataFunc, any];
@@ -3137,7 +3137,7 @@ export namespace Gee {
     class HashMultiSet extends AbstractMultiSet {
         static $gtype: GObject.GType<HashMultiSet>;
 
-        // Own properties of Gee.HashMultiSet
+        // Properties
 
         get g_type(): GObject.GType;
         get gType(): GObject.GType;
@@ -3146,7 +3146,7 @@ export namespace Gee {
         get g_destroy_func(): GLib.DestroyNotify;
         get gDestroyFunc(): GLib.DestroyNotify;
 
-        // Constructors of Gee.HashMultiSet
+        // Constructors
 
         constructor(properties?: Partial<HashMultiSet.ConstructorProps>, ...args: any[]);
 
@@ -3166,7 +3166,7 @@ export namespace Gee {
             equal_func?: EqualDataFunc | null,
         ): HashMultiSet;
 
-        // Own methods of Gee.HashMultiSet
+        // Methods
 
         get_hash_func(): [HashDataFunc, any];
         get_equal_func(): [EqualDataFunc, any];
@@ -3188,7 +3188,7 @@ export namespace Gee {
     class HashSet extends AbstractSet {
         static $gtype: GObject.GType<HashSet>;
 
-        // Own properties of Gee.HashSet
+        // Properties
 
         get g_type(): GObject.GType;
         get gType(): GObject.GType;
@@ -3197,7 +3197,7 @@ export namespace Gee {
         get g_destroy_func(): GLib.DestroyNotify;
         get gDestroyFunc(): GLib.DestroyNotify;
 
-        // Constructors of Gee.HashSet
+        // Constructors
 
         constructor(properties?: Partial<HashSet.ConstructorProps>, ...args: any[]);
 
@@ -3210,7 +3210,7 @@ export namespace Gee {
             equal_func?: EqualDataFunc | null,
         ): HashSet;
 
-        // Own methods of Gee.HashSet
+        // Methods
 
         get_hash_func(): [HashDataFunc, any];
         get_equal_func(): [EqualDataFunc, any];
@@ -3219,11 +3219,11 @@ export namespace Gee {
     class Lazy {
         static $gtype: GObject.GType<Lazy>;
 
-        // Own fields of Gee.Lazy
+        // Fields
 
         ref_count: number;
 
-        // Constructors of Gee.Lazy
+        // Constructors
 
         _init(...args: any[]): void;
 
@@ -3231,7 +3231,7 @@ export namespace Gee {
 
         static from_value(g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc, item: any): Lazy;
 
-        // Own methods of Gee.Lazy
+        // Methods
 
         ['eval'](): void;
         get(): any;
@@ -3260,7 +3260,7 @@ export namespace Gee {
     class LinkedList extends AbstractBidirList implements Queue, Deque {
         static $gtype: GObject.GType<LinkedList>;
 
-        // Own properties of Gee.LinkedList
+        // Properties
 
         get g_type(): GObject.GType;
         get gType(): GObject.GType;
@@ -3271,7 +3271,7 @@ export namespace Gee {
         get readOnlyView(): LinkedList;
         get read_only_view(): LinkedList;
 
-        // Constructors of Gee.LinkedList
+        // Constructors
 
         constructor(properties?: Partial<LinkedList.ConstructorProps>, ...args: any[]);
 
@@ -3283,7 +3283,7 @@ export namespace Gee {
             equal_func?: EqualDataFunc | null,
         ): LinkedList;
 
-        // Own methods of Gee.LinkedList
+        // Methods
 
         first(): any;
         last(): any;
@@ -3345,7 +3345,7 @@ export namespace Gee {
     class PriorityQueue extends AbstractQueue {
         static $gtype: GObject.GType<PriorityQueue>;
 
-        // Own properties of Gee.PriorityQueue
+        // Properties
 
         get g_type(): GObject.GType;
         get gType(): GObject.GType;
@@ -3354,7 +3354,7 @@ export namespace Gee {
         get g_destroy_func(): GLib.DestroyNotify;
         get gDestroyFunc(): GLib.DestroyNotify;
 
-        // Constructors of Gee.PriorityQueue
+        // Constructors
 
         constructor(properties?: Partial<PriorityQueue.ConstructorProps>, ...args: any[]);
 
@@ -3366,7 +3366,7 @@ export namespace Gee {
             compare_func?: GLib.CompareDataFunc | null,
         ): PriorityQueue;
 
-        // Own methods of Gee.PriorityQueue
+        // Methods
 
         offer(element: any): boolean;
         drain(recipient: Collection, amount: number): number;
@@ -3376,17 +3376,17 @@ export namespace Gee {
     class Promise {
         static $gtype: GObject.GType<Promise>;
 
-        // Own fields of Gee.Promise
+        // Fields
 
         ref_count: number;
 
-        // Constructors of Gee.Promise
+        // Constructors
 
         _init(...args: any[]): void;
 
         static ['new'](g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc): Promise;
 
-        // Own methods of Gee.Promise
+        // Methods
 
         set_value(value: any): void;
         set_exception(exception: GLib.Error): void;
@@ -3415,7 +3415,7 @@ export namespace Gee {
     class TreeMap extends AbstractBidirSortedMap {
         static $gtype: GObject.GType<TreeMap>;
 
-        // Own properties of Gee.TreeMap
+        // Properties
 
         get k_type(): GObject.GType;
         get kType(): GObject.GType;
@@ -3430,7 +3430,7 @@ export namespace Gee {
         get v_destroy_func(): GLib.DestroyNotify;
         get vDestroyFunc(): GLib.DestroyNotify;
 
-        // Constructors of Gee.TreeMap
+        // Constructors
 
         constructor(properties?: Partial<TreeMap.ConstructorProps>, ...args: any[]);
 
@@ -3445,7 +3445,7 @@ export namespace Gee {
             value_equal_func?: EqualDataFunc | null,
         ): TreeMap;
 
-        // Own methods of Gee.TreeMap
+        // Methods
 
         get_key_compare_func(): [GLib.CompareDataFunc, any];
         get_value_equal_func(): [EqualDataFunc, any];
@@ -3473,7 +3473,7 @@ export namespace Gee {
     class TreeMultiMap extends AbstractMultiMap {
         static $gtype: GObject.GType<TreeMultiMap>;
 
-        // Own properties of Gee.TreeMultiMap
+        // Properties
 
         get k_type(): GObject.GType;
         get kType(): GObject.GType;
@@ -3488,7 +3488,7 @@ export namespace Gee {
         get v_destroy_func(): GLib.DestroyNotify;
         get vDestroyFunc(): GLib.DestroyNotify;
 
-        // Constructors of Gee.TreeMultiMap
+        // Constructors
 
         constructor(properties?: Partial<TreeMultiMap.ConstructorProps>, ...args: any[]);
 
@@ -3503,7 +3503,7 @@ export namespace Gee {
             value_compare_func?: GLib.CompareDataFunc | null,
         ): TreeMultiMap;
 
-        // Own methods of Gee.TreeMultiMap
+        // Methods
 
         get_key_compare_func(): [GLib.CompareDataFunc, any];
         get_value_compare_func(): [GLib.CompareDataFunc, any];
@@ -3525,7 +3525,7 @@ export namespace Gee {
     class TreeMultiSet extends AbstractMultiSet {
         static $gtype: GObject.GType<TreeMultiSet>;
 
-        // Own properties of Gee.TreeMultiSet
+        // Properties
 
         get g_type(): GObject.GType;
         get gType(): GObject.GType;
@@ -3534,7 +3534,7 @@ export namespace Gee {
         get g_destroy_func(): GLib.DestroyNotify;
         get gDestroyFunc(): GLib.DestroyNotify;
 
-        // Constructors of Gee.TreeMultiSet
+        // Constructors
 
         constructor(properties?: Partial<TreeMultiSet.ConstructorProps>, ...args: any[]);
 
@@ -3546,7 +3546,7 @@ export namespace Gee {
             compare_func?: GLib.CompareDataFunc | null,
         ): TreeMultiSet;
 
-        // Own methods of Gee.TreeMultiSet
+        // Methods
 
         get_compare_func(): [GLib.CompareDataFunc, any];
     }
@@ -3567,7 +3567,7 @@ export namespace Gee {
     class TreeSet extends AbstractBidirSortedSet {
         static $gtype: GObject.GType<TreeSet>;
 
-        // Own properties of Gee.TreeSet
+        // Properties
 
         get g_type(): GObject.GType;
         get gType(): GObject.GType;
@@ -3576,7 +3576,7 @@ export namespace Gee {
         get g_destroy_func(): GLib.DestroyNotify;
         get gDestroyFunc(): GLib.DestroyNotify;
 
-        // Constructors of Gee.TreeSet
+        // Constructors
 
         constructor(properties?: Partial<TreeSet.ConstructorProps>, ...args: any[]);
 
@@ -3588,7 +3588,7 @@ export namespace Gee {
             compare_func?: GLib.CompareDataFunc | null,
         ): TreeSet;
 
-        // Own methods of Gee.TreeSet
+        // Methods
 
         get_compare_func(): [GLib.CompareDataFunc, any];
     }
@@ -3614,7 +3614,7 @@ export namespace Gee {
     class UnrolledLinkedList extends AbstractBidirList implements Queue, Deque {
         static $gtype: GObject.GType<UnrolledLinkedList>;
 
-        // Own properties of Gee.UnrolledLinkedList
+        // Properties
 
         get g_type(): GObject.GType;
         get gType(): GObject.GType;
@@ -3625,7 +3625,7 @@ export namespace Gee {
         get readOnlyView(): UnrolledLinkedList;
         get read_only_view(): UnrolledLinkedList;
 
-        // Constructors of Gee.UnrolledLinkedList
+        // Constructors
 
         constructor(properties?: Partial<UnrolledLinkedList.ConstructorProps>, ...args: any[]);
 
@@ -3637,7 +3637,7 @@ export namespace Gee {
             equal_func?: EqualDataFunc | null,
         ): UnrolledLinkedList;
 
-        // Own methods of Gee.UnrolledLinkedList
+        // Methods
 
         get_equal_func(): [EqualDataFunc, any];
 
@@ -3707,7 +3707,7 @@ export namespace Gee {
     abstract class MapEntry extends GObject.Object {
         static $gtype: GObject.GType<MapEntry>;
 
-        // Own properties of Gee.MapEntry
+        // Properties
 
         get k_type(): GObject.GType;
         get kType(): GObject.GType;
@@ -3727,20 +3727,20 @@ export namespace Gee {
         get read_only(): boolean;
         get readOnly(): boolean;
 
-        // Constructors of Gee.MapEntry
+        // Constructors
 
         constructor(properties?: Partial<MapEntry.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of Gee.MapEntry
+        // Virtual methods
 
         vfunc_get_key(): any;
         vfunc_get_value(): any;
         vfunc_set_value(value: any): void;
         vfunc_get_read_only(): boolean;
 
-        // Own methods of Gee.MapEntry
+        // Methods
 
         get_key(): any;
         get_value(): any;
@@ -3752,7 +3752,7 @@ export namespace Gee {
     abstract class AbstractBidirListPrivate {
         static $gtype: GObject.GType<AbstractBidirListPrivate>;
 
-        // Constructors of Gee.AbstractBidirListPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3761,7 +3761,7 @@ export namespace Gee {
     abstract class AbstractBidirSortedSetPrivate {
         static $gtype: GObject.GType<AbstractBidirSortedSetPrivate>;
 
-        // Constructors of Gee.AbstractBidirSortedSetPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3770,7 +3770,7 @@ export namespace Gee {
     abstract class AbstractBidirSortedMapPrivate {
         static $gtype: GObject.GType<AbstractBidirSortedMapPrivate>;
 
-        // Constructors of Gee.AbstractBidirSortedMapPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3779,7 +3779,7 @@ export namespace Gee {
     abstract class AbstractCollectionPrivate {
         static $gtype: GObject.GType<AbstractCollectionPrivate>;
 
-        // Constructors of Gee.AbstractCollectionPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3788,7 +3788,7 @@ export namespace Gee {
     abstract class AbstractListPrivate {
         static $gtype: GObject.GType<AbstractListPrivate>;
 
-        // Constructors of Gee.AbstractListPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3797,7 +3797,7 @@ export namespace Gee {
     abstract class AbstractMapPrivate {
         static $gtype: GObject.GType<AbstractMapPrivate>;
 
-        // Constructors of Gee.AbstractMapPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3806,7 +3806,7 @@ export namespace Gee {
     abstract class AbstractMultiMapPrivate {
         static $gtype: GObject.GType<AbstractMultiMapPrivate>;
 
-        // Constructors of Gee.AbstractMultiMapPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3815,7 +3815,7 @@ export namespace Gee {
     abstract class AbstractMultiSetPrivate {
         static $gtype: GObject.GType<AbstractMultiSetPrivate>;
 
-        // Constructors of Gee.AbstractMultiSetPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3824,7 +3824,7 @@ export namespace Gee {
     abstract class AbstractQueuePrivate {
         static $gtype: GObject.GType<AbstractQueuePrivate>;
 
-        // Constructors of Gee.AbstractQueuePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3833,7 +3833,7 @@ export namespace Gee {
     abstract class AbstractSetPrivate {
         static $gtype: GObject.GType<AbstractSetPrivate>;
 
-        // Constructors of Gee.AbstractSetPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3842,7 +3842,7 @@ export namespace Gee {
     abstract class AbstractSortedMapPrivate {
         static $gtype: GObject.GType<AbstractSortedMapPrivate>;
 
-        // Constructors of Gee.AbstractSortedMapPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3851,7 +3851,7 @@ export namespace Gee {
     abstract class AbstractSortedSetPrivate {
         static $gtype: GObject.GType<AbstractSortedSetPrivate>;
 
-        // Constructors of Gee.AbstractSortedSetPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3860,7 +3860,7 @@ export namespace Gee {
     abstract class ArrayListPrivate {
         static $gtype: GObject.GType<ArrayListPrivate>;
 
-        // Constructors of Gee.ArrayListPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3869,7 +3869,7 @@ export namespace Gee {
     abstract class ArrayQueuePrivate {
         static $gtype: GObject.GType<ArrayQueuePrivate>;
 
-        // Constructors of Gee.ArrayQueuePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3878,7 +3878,7 @@ export namespace Gee {
     abstract class ConcurrentListPrivate {
         static $gtype: GObject.GType<ConcurrentListPrivate>;
 
-        // Constructors of Gee.ConcurrentListPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3887,7 +3887,7 @@ export namespace Gee {
     abstract class ConcurrentSetPrivate {
         static $gtype: GObject.GType<ConcurrentSetPrivate>;
 
-        // Constructors of Gee.ConcurrentSetPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3896,7 +3896,7 @@ export namespace Gee {
     abstract class HashMapPrivate {
         static $gtype: GObject.GType<HashMapPrivate>;
 
-        // Constructors of Gee.HashMapPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3905,7 +3905,7 @@ export namespace Gee {
     abstract class HashMultiMapPrivate {
         static $gtype: GObject.GType<HashMultiMapPrivate>;
 
-        // Constructors of Gee.HashMultiMapPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3914,7 +3914,7 @@ export namespace Gee {
     abstract class HashMultiSetPrivate {
         static $gtype: GObject.GType<HashMultiSetPrivate>;
 
-        // Constructors of Gee.HashMultiSetPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3923,7 +3923,7 @@ export namespace Gee {
     abstract class HashSetPrivate {
         static $gtype: GObject.GType<HashSetPrivate>;
 
-        // Constructors of Gee.HashSetPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3931,14 +3931,14 @@ export namespace Gee {
     class HazardPointer {
         static $gtype: GObject.GType<HazardPointer>;
 
-        // Constructors of Gee.HazardPointer
+        // Constructors
 
         constructor(g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc, ptr?: any | null);
         _init(...args: any[]): void;
 
         static ['new'](g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc, ptr?: any | null): HazardPointer;
 
-        // Own static methods of Gee.HazardPointer
+        // Static methods
 
         static get_hazard_pointer(
             g_type: GObject.GType,
@@ -3990,7 +3990,7 @@ export namespace Gee {
         static set_thread_exit_policy(policy: HazardPointerPolicy): void;
         static set_release_policy(policy: HazardPointerReleasePolicy): boolean;
 
-        // Own methods of Gee.HazardPointer
+        // Methods
 
         get(other_thread: boolean): any;
         release(): void;
@@ -3999,14 +3999,14 @@ export namespace Gee {
     class HazardPointerContext {
         static $gtype: GObject.GType<HazardPointerContext>;
 
-        // Constructors of Gee.HazardPointerContext
+        // Constructors
 
         constructor(policy?: HazardPointerPolicy | null);
         _init(...args: any[]): void;
 
         static ['new'](policy?: HazardPointerPolicy | null): HazardPointerContext;
 
-        // Own methods of Gee.HazardPointerContext
+        // Methods
 
         try_free(): void;
         free_all(): void;
@@ -4018,7 +4018,7 @@ export namespace Gee {
     abstract class LazyPrivate {
         static $gtype: GObject.GType<LazyPrivate>;
 
-        // Constructors of Gee.LazyPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4027,7 +4027,7 @@ export namespace Gee {
     abstract class LinkedListPrivate {
         static $gtype: GObject.GType<LinkedListPrivate>;
 
-        // Constructors of Gee.LinkedListPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4036,7 +4036,7 @@ export namespace Gee {
     abstract class PriorityQueuePrivate {
         static $gtype: GObject.GType<PriorityQueuePrivate>;
 
-        // Constructors of Gee.PriorityQueuePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4045,7 +4045,7 @@ export namespace Gee {
     abstract class PromisePrivate {
         static $gtype: GObject.GType<PromisePrivate>;
 
-        // Constructors of Gee.PromisePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4054,7 +4054,7 @@ export namespace Gee {
     abstract class TreeMapPrivate {
         static $gtype: GObject.GType<TreeMapPrivate>;
 
-        // Constructors of Gee.TreeMapPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4063,7 +4063,7 @@ export namespace Gee {
     abstract class TreeMultiMapPrivate {
         static $gtype: GObject.GType<TreeMultiMapPrivate>;
 
-        // Constructors of Gee.TreeMultiMapPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4072,7 +4072,7 @@ export namespace Gee {
     abstract class TreeMultiSetPrivate {
         static $gtype: GObject.GType<TreeMultiSetPrivate>;
 
-        // Constructors of Gee.TreeMultiSetPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4081,7 +4081,7 @@ export namespace Gee {
     abstract class TreeSetPrivate {
         static $gtype: GObject.GType<TreeSetPrivate>;
 
-        // Constructors of Gee.TreeSetPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4090,7 +4090,7 @@ export namespace Gee {
     abstract class UnrolledLinkedListPrivate {
         static $gtype: GObject.GType<UnrolledLinkedListPrivate>;
 
-        // Constructors of Gee.UnrolledLinkedListPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4115,7 +4115,7 @@ export namespace Gee {
     abstract class MapEntryPrivate {
         static $gtype: GObject.GType<MapEntryPrivate>;
 
-        // Constructors of Gee.MapEntryPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4139,14 +4139,14 @@ export namespace Gee {
         prototype: BidirIterator;
     }
     interface BidirIterator extends Iterator {
-        // Own methods of Gee.BidirIterator
+        // Methods
 
         previous(): boolean;
         has_previous(): boolean;
         first(): boolean;
         last(): boolean;
 
-        // Own virtual methods of Gee.BidirIterator
+        // Virtual methods
 
         vfunc_previous(): boolean;
         vfunc_has_previous(): boolean;
@@ -4170,17 +4170,17 @@ export namespace Gee {
         prototype: BidirList;
     }
     interface BidirList extends List {
-        // Own properties of Gee.BidirList
+        // Properties
 
         get read_only_view(): BidirList;
         get readOnlyView(): BidirList;
 
-        // Own methods of Gee.BidirList
+        // Methods
 
         bidir_list_iterator(): BidirListIterator;
         get_read_only_view(): BidirList;
 
-        // Own virtual methods of Gee.BidirList
+        // Virtual methods
 
         vfunc_bidir_list_iterator(): BidirListIterator;
         vfunc_get_read_only_view(): BidirList;
@@ -4199,11 +4199,11 @@ export namespace Gee {
         prototype: BidirListIterator;
     }
     interface BidirListIterator extends BidirIterator {
-        // Own methods of Gee.BidirListIterator
+        // Methods
 
         insert(item: any): void;
 
-        // Own virtual methods of Gee.BidirListIterator
+        // Virtual methods
 
         vfunc_insert(item: any): void;
     }
@@ -4221,14 +4221,14 @@ export namespace Gee {
         prototype: BidirMapIterator;
     }
     interface BidirMapIterator extends MapIterator {
-        // Own methods of Gee.BidirMapIterator
+        // Methods
 
         previous(): boolean;
         has_previous(): boolean;
         first(): boolean;
         last(): boolean;
 
-        // Own virtual methods of Gee.BidirMapIterator
+        // Virtual methods
 
         vfunc_previous(): boolean;
         vfunc_has_previous(): boolean;
@@ -4254,17 +4254,17 @@ export namespace Gee {
         empty(g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc): BidirSortedSet;
     }
     interface BidirSortedSet extends SortedSet {
-        // Own properties of Gee.BidirSortedSet
+        // Properties
 
         get read_only_view(): BidirSortedSet;
         get readOnlyView(): BidirSortedSet;
 
-        // Own methods of Gee.BidirSortedSet
+        // Methods
 
         bidir_iterator(): BidirIterator;
         get_read_only_view(): BidirSortedSet;
 
-        // Own virtual methods of Gee.BidirSortedSet
+        // Virtual methods
 
         vfunc_bidir_iterator(): BidirIterator;
         vfunc_get_read_only_view(): BidirSortedSet;
@@ -4293,17 +4293,17 @@ export namespace Gee {
         ): BidirSortedMap;
     }
     interface BidirSortedMap extends SortedMap {
-        // Own properties of Gee.BidirSortedMap
+        // Properties
 
         get read_only_view(): BidirSortedMap;
         get readOnlyView(): BidirSortedMap;
 
-        // Own methods of Gee.BidirSortedMap
+        // Methods
 
         bidir_map_iterator(): BidirMapIterator;
         get_read_only_view(): BidirSortedMap;
 
-        // Own virtual methods of Gee.BidirSortedMap
+        // Virtual methods
 
         vfunc_bidir_map_iterator(): BidirMapIterator;
         vfunc_get_read_only_view(): BidirSortedMap;
@@ -4330,7 +4330,7 @@ export namespace Gee {
         empty(g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc): Collection;
     }
     interface Collection extends Iterable {
-        // Own properties of Gee.Collection
+        // Properties
 
         get size(): number;
         get read_only(): boolean;
@@ -4338,7 +4338,7 @@ export namespace Gee {
         get read_only_view(): Collection;
         get readOnlyView(): Collection;
 
-        // Own methods of Gee.Collection
+        // Methods
 
         contains(item: any): boolean;
         add(item: any): boolean;
@@ -4360,7 +4360,7 @@ export namespace Gee {
         get_read_only(): boolean;
         get_read_only_view(): Collection;
 
-        // Own virtual methods of Gee.Collection
+        // Virtual methods
 
         vfunc_contains(item: any): boolean;
         vfunc_add(item: any): boolean;
@@ -4396,11 +4396,11 @@ export namespace Gee {
         prototype: Comparable;
     }
     interface Comparable extends GObject.Object {
-        // Own methods of Gee.Comparable
+        // Methods
 
         compare_to(object: any): number;
 
-        // Own virtual methods of Gee.Comparable
+        // Virtual methods
 
         vfunc_compare_to(object: any): number;
     }
@@ -4418,7 +4418,7 @@ export namespace Gee {
         prototype: Deque;
     }
     interface Deque extends Queue {
-        // Own methods of Gee.Deque
+        // Methods
 
         offer_head(element: any): boolean;
         peek_head(): any | null;
@@ -4429,7 +4429,7 @@ export namespace Gee {
         poll_tail(): any | null;
         drain_tail(recipient: Collection, amount: number): number;
 
-        // Own virtual methods of Gee.Deque
+        // Virtual methods
 
         vfunc_offer_head(element: any): boolean;
         vfunc_peek_head(): any | null;
@@ -4497,12 +4497,12 @@ export namespace Gee {
         prototype: Future;
     }
     interface Future extends GObject.Object {
-        // Own properties of Gee.Future
+        // Properties
 
         get ready(): boolean;
         get exception(): GLib.Error;
 
-        // Own methods of Gee.Future
+        // Methods
 
         wait(): any;
         wait_until(end_time: number): [boolean, any];
@@ -4524,7 +4524,7 @@ export namespace Gee {
         get_ready(): boolean;
         get_exception(): GLib.Error | null;
 
-        // Own virtual methods of Gee.Future
+        // Virtual methods
 
         vfunc_wait(): any;
         vfunc_wait_until(end_time: number): [boolean, any];
@@ -4564,12 +4564,12 @@ export namespace Gee {
         prototype: Hashable;
     }
     interface Hashable extends GObject.Object {
-        // Own methods of Gee.Hashable
+        // Methods
 
         hash(): number;
         equal_to(object: any): boolean;
 
-        // Own virtual methods of Gee.Hashable
+        // Virtual methods
 
         vfunc_hash(): number;
         vfunc_equal_to(object: any): boolean;
@@ -4588,11 +4588,11 @@ export namespace Gee {
         prototype: Iterable;
     }
     interface Iterable extends GObject.Object {
-        // Own methods of Gee.Iterable
+        // Methods
 
         iterator(): Iterator;
 
-        // Own virtual methods of Gee.Iterable
+        // Virtual methods
 
         vfunc_iterator(): Iterator;
     }
@@ -4622,13 +4622,13 @@ export namespace Gee {
         concat(g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc, iters: Iterator): Iterator;
     }
     interface Iterator extends GObject.Object {
-        // Own properties of Gee.Iterator
+        // Properties
 
         get valid(): boolean;
         get read_only(): boolean;
         get readOnly(): boolean;
 
-        // Own methods of Gee.Iterator
+        // Methods
 
         next(): boolean;
         has_next(): boolean;
@@ -4637,7 +4637,7 @@ export namespace Gee {
         get_valid(): boolean;
         get_read_only(): boolean;
 
-        // Own virtual methods of Gee.Iterator
+        // Virtual methods
 
         vfunc_next(): boolean;
         vfunc_has_next(): boolean;
@@ -4665,12 +4665,12 @@ export namespace Gee {
         empty(g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc): List;
     }
     interface List extends Collection {
-        // Own properties of Gee.List
+        // Properties
 
         get read_only_view(): List;
         get readOnlyView(): List;
 
-        // Own methods of Gee.List
+        // Methods
 
         list_iterator(): ListIterator;
         get(index: number): any;
@@ -4687,7 +4687,7 @@ export namespace Gee {
         sort(compare_func?: GLib.CompareDataFunc | null): void;
         get_read_only_view(): List;
 
-        // Own virtual methods of Gee.List
+        // Virtual methods
 
         vfunc_list_iterator(): ListIterator;
         vfunc_get(index: number): any;
@@ -4716,7 +4716,7 @@ export namespace Gee {
         prototype: ListIterator;
     }
     interface ListIterator extends Iterator {
-        // Own methods of Gee.ListIterator
+        // Methods
 
         set(item: any): void;
         // Conflicted with GObject.Object.set
@@ -4724,7 +4724,7 @@ export namespace Gee {
         add(item: any): void;
         index(): number;
 
-        // Own virtual methods of Gee.ListIterator
+        // Virtual methods
 
         vfunc_set(item: any): void;
         vfunc_add(item: any): void;
@@ -4760,7 +4760,7 @@ export namespace Gee {
         ): Map;
     }
     interface Map extends GObject.Object {
-        // Own properties of Gee.Map
+        // Properties
 
         get size(): number;
         get read_only(): boolean;
@@ -4771,7 +4771,7 @@ export namespace Gee {
         get read_only_view(): Map;
         get readOnlyView(): Map;
 
-        // Own methods of Gee.Map
+        // Methods
 
         has_key(key: any): boolean;
         contains(key: any): boolean;
@@ -4799,7 +4799,7 @@ export namespace Gee {
         get_key_type(): GObject.GType;
         get_value_type(): GObject.GType;
 
-        // Own virtual methods of Gee.Map
+        // Virtual methods
 
         vfunc_has_key(key: any): boolean;
         vfunc_has(key: any, value: any): boolean;
@@ -4838,14 +4838,14 @@ export namespace Gee {
         prototype: MapIterator;
     }
     interface MapIterator extends GObject.Object {
-        // Own properties of Gee.MapIterator
+        // Properties
 
         get valid(): boolean;
         get mutable(): boolean;
         get read_only(): boolean;
         get readOnly(): boolean;
 
-        // Own methods of Gee.MapIterator
+        // Methods
 
         next(): boolean;
         has_next(): boolean;
@@ -4859,7 +4859,7 @@ export namespace Gee {
         get_mutable(): boolean;
         get_read_only(): boolean;
 
-        // Own virtual methods of Gee.MapIterator
+        // Virtual methods
 
         vfunc_next(): boolean;
         vfunc_has_next(): boolean;
@@ -4891,13 +4891,13 @@ export namespace Gee {
         prototype: MultiMap;
     }
     interface MultiMap extends GObject.Object {
-        // Own properties of Gee.MultiMap
+        // Properties
 
         get size(): number;
         get read_only(): boolean;
         get readOnly(): boolean;
 
-        // Own methods of Gee.MultiMap
+        // Methods
 
         get_keys(): Set;
         get_all_keys(): MultiSet;
@@ -4917,7 +4917,7 @@ export namespace Gee {
         get_value_type(): GObject.GType;
         get_read_only_view(): MultiMap;
 
-        // Own virtual methods of Gee.MultiMap
+        // Virtual methods
 
         vfunc_get_keys(): Set;
         vfunc_get_all_keys(): MultiSet;
@@ -4949,12 +4949,12 @@ export namespace Gee {
         empty(g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc): Set;
     }
     interface MultiSet extends Collection {
-        // Own methods of Gee.MultiSet
+        // Methods
 
         count(item: any): number;
         get_read_only_view(): MultiSet;
 
-        // Own virtual methods of Gee.MultiSet
+        // Virtual methods
 
         vfunc_count(item: any): number;
         vfunc_get_read_only_view(): MultiSet;
@@ -4979,7 +4979,7 @@ export namespace Gee {
         prototype: Queue;
     }
     interface Queue extends Collection {
-        // Own properties of Gee.Queue
+        // Properties
 
         get capacity(): number;
         get remaining_capacity(): number;
@@ -4987,7 +4987,7 @@ export namespace Gee {
         get is_full(): boolean;
         get isFull(): boolean;
 
-        // Own methods of Gee.Queue
+        // Methods
 
         offer(element: any): boolean;
         peek(): any | null;
@@ -4997,7 +4997,7 @@ export namespace Gee {
         get_remaining_capacity(): number;
         get_is_full(): boolean;
 
-        // Own virtual methods of Gee.Queue
+        // Virtual methods
 
         vfunc_offer(element: any): boolean;
         vfunc_peek(): any | null;
@@ -5026,16 +5026,16 @@ export namespace Gee {
         empty(g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc): Set;
     }
     interface Set extends Collection {
-        // Own properties of Gee.Set
+        // Properties
 
         get read_only_view(): Set;
         get readOnlyView(): Set;
 
-        // Own methods of Gee.Set
+        // Methods
 
         get_read_only_view(): Set;
 
-        // Own virtual methods of Gee.Set
+        // Virtual methods
 
         vfunc_get_read_only_view(): Set;
     }
@@ -5067,7 +5067,7 @@ export namespace Gee {
         ): Map;
     }
     interface SortedMap extends Map {
-        // Own properties of Gee.SortedMap
+        // Properties
 
         get ascending_keys(): SortedSet;
         get ascendingKeys(): SortedSet;
@@ -5076,7 +5076,7 @@ export namespace Gee {
         get read_only_view(): SortedMap;
         get readOnlyView(): SortedMap;
 
-        // Own methods of Gee.SortedMap
+        // Methods
 
         head_map(before: any): SortedMap;
         tail_map(after: any): SortedMap;
@@ -5085,7 +5085,7 @@ export namespace Gee {
         get_ascending_entries(): SortedSet;
         get_read_only_view(): SortedMap;
 
-        // Own virtual methods of Gee.SortedMap
+        // Virtual methods
 
         vfunc_head_map(before: any): SortedMap;
         vfunc_tail_map(after: any): SortedMap;
@@ -5113,12 +5113,12 @@ export namespace Gee {
         empty(g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc): SortedSet;
     }
     interface SortedSet extends Set {
-        // Own properties of Gee.SortedSet
+        // Properties
 
         get read_only_view(): SortedSet;
         get readOnlyView(): SortedSet;
 
-        // Own methods of Gee.SortedSet
+        // Methods
 
         first(): any;
         last(): any;
@@ -5132,7 +5132,7 @@ export namespace Gee {
         sub_set(from: any, to: any): SortedSet;
         get_read_only_view(): SortedSet;
 
-        // Own virtual methods of Gee.SortedSet
+        // Virtual methods
 
         vfunc_first(): any;
         vfunc_last(): any;
@@ -5160,7 +5160,7 @@ export namespace Gee {
         prototype: Traversable;
     }
     interface Traversable extends GObject.Object {
-        // Own methods of Gee.Traversable
+        // Methods
 
         foreach(f: ForallFunc): boolean;
         stream(a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, f: StreamFunc): Iterator;
@@ -5179,7 +5179,7 @@ export namespace Gee {
         order_by(compare?: GLib.CompareDataFunc | null): Iterator;
         get_element_type(): GObject.GType;
 
-        // Own virtual methods of Gee.Traversable
+        // Virtual methods
 
         vfunc_foreach(f: ForallFunc): boolean;
         vfunc_stream(a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, f: StreamFunc): Iterator;

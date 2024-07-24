@@ -98,7 +98,7 @@ export namespace Geoclue {
     {
         static $gtype: GObject.GType<ClientProxy>;
 
-        // Constructors of Geoclue.ClientProxy
+        // Constructors
 
         constructor(properties?: Partial<ClientProxy.ConstructorProps>, ...args: any[]);
 
@@ -133,7 +133,7 @@ export namespace Geoclue {
 
         static new_sync(...args: never[]): any;
 
-        // Own static methods of Geoclue.ClientProxy
+        // Static methods
 
         /**
          * A utility function to create a #GClueClientProxy without having to deal with
@@ -1067,7 +1067,7 @@ export namespace Geoclue {
     class ClientSkeleton extends Gio.DBusInterfaceSkeleton implements Client, Gio.DBusInterface {
         static $gtype: GObject.GType<ClientSkeleton>;
 
-        // Constructors of Geoclue.ClientSkeleton
+        // Constructors
 
         constructor(properties?: Partial<ClientSkeleton.ConstructorProps>, ...args: any[]);
 
@@ -1675,7 +1675,7 @@ export namespace Geoclue {
     {
         static $gtype: GObject.GType<LocationProxy>;
 
-        // Constructors of Geoclue.LocationProxy
+        // Constructors
 
         constructor(properties?: Partial<LocationProxy.ConstructorProps>, ...args: any[]);
 
@@ -1710,7 +1710,7 @@ export namespace Geoclue {
 
         static new_sync(...args: never[]): any;
 
-        // Own static methods of Geoclue.LocationProxy
+        // Static methods
 
         /**
          * Asynchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-GeoClue2-Location.top_of_page">org.freedesktop.GeoClue2.Location</link>. See g_dbus_proxy_new() for more details.
@@ -2470,7 +2470,7 @@ export namespace Geoclue {
     class LocationSkeleton extends Gio.DBusInterfaceSkeleton implements Location, Gio.DBusInterface {
         static $gtype: GObject.GType<LocationSkeleton>;
 
-        // Constructors of Geoclue.LocationSkeleton
+        // Constructors
 
         constructor(properties?: Partial<LocationSkeleton.ConstructorProps>, ...args: any[]);
 
@@ -2993,7 +2993,7 @@ export namespace Geoclue {
     {
         static $gtype: GObject.GType<ManagerProxy>;
 
-        // Constructors of Geoclue.ManagerProxy
+        // Constructors
 
         constructor(properties?: Partial<ManagerProxy.ConstructorProps>, ...args: any[]);
 
@@ -3028,7 +3028,7 @@ export namespace Geoclue {
 
         static new_sync(...args: never[]): any;
 
-        // Own static methods of Geoclue.ManagerProxy
+        // Static methods
 
         /**
          * Asynchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-GeoClue2-Manager.top_of_page">org.freedesktop.GeoClue2.Manager</link>. See g_dbus_proxy_new() for more details.
@@ -3902,7 +3902,7 @@ export namespace Geoclue {
     class ManagerSkeleton extends Gio.DBusInterfaceSkeleton implements Manager, Gio.DBusInterface {
         static $gtype: GObject.GType<ManagerSkeleton>;
 
-        // Constructors of Geoclue.ManagerSkeleton
+        // Constructors
 
         constructor(properties?: Partial<ManagerSkeleton.ConstructorProps>, ...args: any[]);
 
@@ -4539,7 +4539,7 @@ export namespace Geoclue {
     class Simple extends GObject.Object implements Gio.AsyncInitable<Simple> {
         static $gtype: GObject.GType<Simple>;
 
-        // Own properties of Geoclue.Simple
+        // Properties
 
         /**
          * The requested maximum accuracy level.
@@ -4599,7 +4599,7 @@ export namespace Geoclue {
          */
         get timeThreshold(): number;
 
-        // Constructors of Geoclue.Simple
+        // Constructors
 
         constructor(properties?: Partial<Simple.ConstructorProps>, ...args: any[]);
 
@@ -4626,7 +4626,7 @@ export namespace Geoclue {
             cancellable?: Gio.Cancellable | null,
         ): Simple;
 
-        // Own static methods of Geoclue.Simple
+        // Static methods
 
         /**
          * Asynchronously creates a #GClueSimple instance. Use
@@ -4667,7 +4667,7 @@ export namespace Geoclue {
             callback?: Gio.AsyncReadyCallback<Simple> | null,
         ): void;
 
-        // Own methods of Geoclue.Simple
+        // Methods
 
         /**
          * Gets the client proxy, or %NULL if `simple` is not using a client proxy (i-e
@@ -5201,7 +5201,7 @@ export namespace Geoclue {
     abstract class ClientProxyPrivate {
         static $gtype: GObject.GType<ClientProxyPrivate>;
 
-        // Constructors of Geoclue.ClientProxyPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5210,7 +5210,7 @@ export namespace Geoclue {
     abstract class ClientSkeletonPrivate {
         static $gtype: GObject.GType<ClientSkeletonPrivate>;
 
-        // Constructors of Geoclue.ClientSkeletonPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5220,7 +5220,7 @@ export namespace Geoclue {
     abstract class LocationProxyPrivate {
         static $gtype: GObject.GType<LocationProxyPrivate>;
 
-        // Constructors of Geoclue.LocationProxyPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5229,7 +5229,7 @@ export namespace Geoclue {
     abstract class LocationSkeletonPrivate {
         static $gtype: GObject.GType<LocationSkeletonPrivate>;
 
-        // Constructors of Geoclue.LocationSkeletonPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5239,7 +5239,7 @@ export namespace Geoclue {
     abstract class ManagerProxyPrivate {
         static $gtype: GObject.GType<ManagerProxyPrivate>;
 
-        // Constructors of Geoclue.ManagerProxyPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5248,7 +5248,7 @@ export namespace Geoclue {
     abstract class ManagerSkeletonPrivate {
         static $gtype: GObject.GType<ManagerSkeletonPrivate>;
 
-        // Constructors of Geoclue.ManagerSkeletonPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5257,7 +5257,7 @@ export namespace Geoclue {
     abstract class SimplePrivate {
         static $gtype: GObject.GType<SimplePrivate>;
 
-        // Constructors of Geoclue.SimplePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5296,7 +5296,7 @@ export namespace Geoclue {
         override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
     }
     interface Client extends GObject.Object {
-        // Own properties of Geoclue.Client
+        // Properties
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-GeoClue2-Client.Active">"Active"</link>.
@@ -5369,7 +5369,7 @@ export namespace Geoclue {
         get timeThreshold(): number;
         set timeThreshold(val: number);
 
-        // Own methods of Geoclue.Client
+        // Methods
 
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-GeoClue2-Client.Start">Start()</link> D-Bus method on `proxy`.
@@ -5440,7 +5440,7 @@ export namespace Geoclue {
          */
         emit_location_updated(arg_old: string, arg_new: string): void;
 
-        // Own virtual methods of Geoclue.Client
+        // Virtual methods
 
         vfunc_handle_start(invocation: Gio.DBusMethodInvocation): boolean;
         vfunc_handle_stop(invocation: Gio.DBusMethodInvocation): boolean;
@@ -5481,7 +5481,7 @@ export namespace Geoclue {
         override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
     }
     interface Location extends GObject.Object {
-        // Own properties of Geoclue.Location
+        // Properties
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-GeoClue2-Location.Accuracy">"Accuracy"</link>.
@@ -5571,7 +5571,7 @@ export namespace Geoclue {
         override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
     }
     interface Manager extends GObject.Object {
-        // Own properties of Geoclue.Manager
+        // Properties
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-GeoClue2-Manager.AvailableAccuracyLevel">"AvailableAccuracyLevel"</link>.
@@ -5602,7 +5602,7 @@ export namespace Geoclue {
         get inUse(): boolean;
         set inUse(val: boolean);
 
-        // Own methods of Geoclue.Manager
+        // Methods
 
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-GeoClue2-Manager.AddAgent">AddAgent()</link> D-Bus method on `proxy`.
@@ -5743,7 +5743,7 @@ export namespace Geoclue {
          */
         complete_get_client(invocation: Gio.DBusMethodInvocation, client: string): void;
 
-        // Own virtual methods of Geoclue.Manager
+        // Virtual methods
 
         vfunc_handle_add_agent(invocation: Gio.DBusMethodInvocation, arg_id: string): boolean;
         vfunc_handle_create_client(invocation: Gio.DBusMethodInvocation): boolean;

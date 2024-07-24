@@ -63,11 +63,11 @@ export namespace GLibUnix {
     class Pipe {
         static $gtype: GObject.GType<Pipe>;
 
-        // Own fields of GLibUnix.Pipe
+        // Fields
 
         fds: number[];
 
-        // Constructors of GLibUnix.Pipe
+        // Constructors
 
         constructor(
             properties?: Partial<{

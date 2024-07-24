@@ -294,7 +294,7 @@ export namespace PangoCairo {
         prototype: Font;
     }
     interface Font extends Pango.Font {
-        // Own methods of PangoCairo.Font
+        // Methods
 
         /**
          * Gets the `cairo_scaled_font_t` used by `font`.
@@ -367,7 +367,7 @@ export namespace PangoCairo {
         new_for_font_type(fonttype: cairo.FontType): Pango.FontMap | null;
     }
     interface FontMap extends Pango.FontMap {
-        // Own methods of PangoCairo.FontMap
+        // Methods
 
         /**
          * Gets the type of Cairo font backend that `fontmap` uses.

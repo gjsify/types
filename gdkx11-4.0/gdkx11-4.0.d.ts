@@ -109,7 +109,7 @@ export namespace GdkX11 {
     class X11AppLaunchContext extends Gdk.AppLaunchContext {
         static $gtype: GObject.GType<X11AppLaunchContext>;
 
-        // Constructors of GdkX11.X11AppLaunchContext
+        // Constructors
 
         constructor(properties?: Partial<X11AppLaunchContext.ConstructorProps>, ...args: any[]);
 
@@ -130,14 +130,14 @@ export namespace GdkX11 {
     class X11DeviceManagerXI2 extends GObject.Object {
         static $gtype: GObject.GType<X11DeviceManagerXI2>;
 
-        // Own properties of GdkX11.X11DeviceManagerXI2
+        // Properties
 
         get display(): Gdk.Display;
         get major(): number;
         get minor(): number;
         get opcode(): number;
 
-        // Constructors of GdkX11.X11DeviceManagerXI2
+        // Constructors
 
         constructor(properties?: Partial<X11DeviceManagerXI2.ConstructorProps>, ...args: any[]);
 
@@ -156,12 +156,12 @@ export namespace GdkX11 {
     class X11DeviceXI2 extends Gdk.Device {
         static $gtype: GObject.GType<X11DeviceXI2>;
 
-        // Own properties of GdkX11.X11DeviceXI2
+        // Properties
 
         get device_id(): number;
         get deviceId(): number;
 
-        // Constructors of GdkX11.X11DeviceXI2
+        // Constructors
 
         constructor(properties?: Partial<X11DeviceXI2.ConstructorProps>, ...args: any[]);
 
@@ -183,13 +183,13 @@ export namespace GdkX11 {
     class X11Display extends Gdk.Display {
         static $gtype: GObject.GType<X11Display>;
 
-        // Constructors of GdkX11.X11Display
+        // Constructors
 
         constructor(properties?: Partial<X11Display.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of GdkX11.X11Display
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -198,7 +198,7 @@ export namespace GdkX11 {
         connect_after(signal: 'xevent', callback: (_source: this, xevent: any | null) => boolean): number;
         emit(signal: 'xevent', xevent?: any | null): void;
 
-        // Own static methods of GdkX11.X11Display
+        // Static methods
 
         /**
          * Tries to open a new display to the X server given by
@@ -217,7 +217,7 @@ export namespace GdkX11 {
          */
         static set_program_class(display: Gdk.Display, program_class: string): void;
 
-        // Own methods of GdkX11.X11Display
+        // Methods
 
         /**
          * Pops the error trap pushed by gdk_x11_display_error_trap_push().
@@ -427,7 +427,7 @@ export namespace GdkX11 {
     class X11Drag extends Gdk.Drag {
         static $gtype: GObject.GType<X11Drag>;
 
-        // Constructors of GdkX11.X11Drag
+        // Constructors
 
         constructor(properties?: Partial<X11Drag.ConstructorProps>, ...args: any[]);
 
@@ -443,7 +443,7 @@ export namespace GdkX11 {
     abstract class X11GLContext extends Gdk.GLContext {
         static $gtype: GObject.GType<X11GLContext>;
 
-        // Constructors of GdkX11.X11GLContext
+        // Constructors
 
         constructor(properties?: Partial<X11GLContext.ConstructorProps>, ...args: any[]);
 
@@ -459,13 +459,13 @@ export namespace GdkX11 {
     class X11Monitor extends Gdk.Monitor {
         static $gtype: GObject.GType<X11Monitor>;
 
-        // Constructors of GdkX11.X11Monitor
+        // Constructors
 
         constructor(properties?: Partial<X11Monitor.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of GdkX11.X11Monitor
+        // Methods
 
         /**
          * Returns the XID of the Output corresponding to `monitor`.
@@ -497,13 +497,13 @@ export namespace GdkX11 {
     class X11Screen extends GObject.Object {
         static $gtype: GObject.GType<X11Screen>;
 
-        // Constructors of GdkX11.X11Screen
+        // Constructors
 
         constructor(properties?: Partial<X11Screen.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of GdkX11.X11Screen
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -512,7 +512,7 @@ export namespace GdkX11 {
         connect_after(signal: 'window-manager-changed', callback: (_source: this) => void): number;
         emit(signal: 'window-manager-changed'): void;
 
-        // Own methods of GdkX11.X11Screen
+        // Methods
 
         /**
          * Returns the current workspace for `screen` when running under a
@@ -581,13 +581,13 @@ export namespace GdkX11 {
     class X11Surface extends Gdk.Surface {
         static $gtype: GObject.GType<X11Surface>;
 
-        // Constructors of GdkX11.X11Surface
+        // Constructors
 
         constructor(properties?: Partial<X11Surface.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of GdkX11.X11Surface
+        // Static methods
 
         /**
          * Looks up the `GdkSurface` that wraps the given native window handle.
@@ -596,7 +596,7 @@ export namespace GdkX11 {
          */
         static lookup_for_display(display: X11Display, window: xlib.Window): X11Surface;
 
-        // Own methods of GdkX11.X11Surface
+        // Methods
 
         /**
          * Gets the number of the workspace `surface` is on.

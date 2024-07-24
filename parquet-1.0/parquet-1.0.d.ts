@@ -48,12 +48,12 @@ export namespace Parquet {
     class ArrowFileReader extends GObject.Object {
         static $gtype: GObject.GType<ArrowFileReader>;
 
-        // Own properties of Parquet.ArrowFileReader
+        // Properties
 
         set arrow_file_reader(val: any);
         set arrowFileReader(val: any);
 
-        // Constructors of Parquet.ArrowFileReader
+        // Constructors
 
         constructor(properties?: Partial<ArrowFileReader.ConstructorProps>, ...args: any[]);
 
@@ -63,7 +63,7 @@ export namespace Parquet {
 
         static new_path(path: string): ArrowFileReader;
 
-        // Own methods of Parquet.ArrowFileReader
+        // Methods
 
         get_n_row_groups(): number;
         get_schema(): Arrow.Schema | null;
@@ -85,12 +85,12 @@ export namespace Parquet {
     class ArrowFileWriter extends GObject.Object {
         static $gtype: GObject.GType<ArrowFileWriter>;
 
-        // Own properties of Parquet.ArrowFileWriter
+        // Properties
 
         set arrow_file_writer(val: any);
         set arrowFileWriter(val: any);
 
-        // Constructors of Parquet.ArrowFileWriter
+        // Constructors
 
         constructor(properties?: Partial<ArrowFileWriter.ConstructorProps>, ...args: any[]);
 
@@ -108,7 +108,7 @@ export namespace Parquet {
             writer_properties?: WriterProperties | null,
         ): ArrowFileWriter;
 
-        // Own methods of Parquet.ArrowFileWriter
+        // Methods
 
         close(): boolean;
         write_table(table: Arrow.Table, chunk_size: number): boolean;
@@ -123,7 +123,7 @@ export namespace Parquet {
     class WriterProperties extends GObject.Object {
         static $gtype: GObject.GType<WriterProperties>;
 
-        // Constructors of Parquet.WriterProperties
+        // Constructors
 
         constructor(properties?: Partial<WriterProperties.ConstructorProps>, ...args: any[]);
 
@@ -131,7 +131,7 @@ export namespace Parquet {
 
         static ['new'](): WriterProperties;
 
-        // Own methods of Parquet.WriterProperties
+        // Methods
 
         disable_dictionary(path?: string | null): void;
         enable_dictionary(path?: string | null): void;

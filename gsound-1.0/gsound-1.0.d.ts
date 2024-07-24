@@ -21,7 +21,7 @@ export namespace GSound {
     class Error extends GLib.Error {
         static $gtype: GObject.GType<Error>;
 
-        // Static fields of GSound.Error
+        // Static fields
 
         static NOTSUPPORTED: number;
         static INVALID: number;
@@ -42,7 +42,7 @@ export namespace GSound {
         static FORKED: number;
         static DISCONNECTED: number;
 
-        // Constructors of GSound.Error
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
@@ -347,7 +347,7 @@ export namespace GSound {
     class Context extends GObject.Object implements Gio.Initable {
         static $gtype: GObject.GType<Context>;
 
-        // Constructors of GSound.Context
+        // Constructors
 
         constructor(properties?: Partial<Context.ConstructorProps>, ...args: any[]);
 
@@ -355,7 +355,7 @@ export namespace GSound {
 
         static ['new'](cancellable?: Gio.Cancellable | null): Context;
 
-        // Own methods of GSound.Context
+        // Methods
 
         /**
          * Requests that a sound be cached on the server. See [#caching][gsound-GSound-Context#caching].

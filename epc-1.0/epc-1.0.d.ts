@@ -150,7 +150,7 @@ export namespace Epc {
     class Consumer extends GObject.Object {
         static $gtype: GObject.GType<Consumer>;
 
-        // Own properties of Epc.Consumer
+        // Properties
 
         get application(): string;
         get domain(): string;
@@ -165,7 +165,7 @@ export namespace Epc {
         get username(): string;
         set username(val: string);
 
-        // Constructors of Epc.Consumer
+        // Constructors
 
         constructor(properties?: Partial<Consumer.ConstructorProps>, ...args: any[]);
 
@@ -177,7 +177,7 @@ export namespace Epc {
 
         static new_for_name_full(name: string, application: string, domain: string): Consumer;
 
-        // Own signals of Epc.Consumer
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -195,12 +195,12 @@ export namespace Epc {
         ): number;
         emit(signal: 'publisher-resolved', object: Protocol, p0: string, p1: number): void;
 
-        // Own virtual methods of Epc.Consumer
+        // Virtual methods
 
         vfunc_authenticate(realm: string): void;
         vfunc_publisher_resolved(protocol: Protocol, hostname: string, port: number): void;
 
-        // Own methods of Epc.Consumer
+        // Methods
 
         get_password(): string;
         get_protocol(): Protocol;
@@ -229,7 +229,7 @@ export namespace Epc {
     class Dispatcher extends GObject.Object {
         static $gtype: GObject.GType<Dispatcher>;
 
-        // Own properties of Epc.Dispatcher
+        // Properties
 
         get collision_handling(): CollisionHandling;
         set collision_handling(val: CollisionHandling);
@@ -240,7 +240,7 @@ export namespace Epc {
         get name(): string;
         set name(val: string);
 
-        // Constructors of Epc.Dispatcher
+        // Constructors
 
         constructor(properties?: Partial<Dispatcher.ConstructorProps>, ...args: any[]);
 
@@ -248,7 +248,7 @@ export namespace Epc {
 
         static ['new'](name: string): Dispatcher;
 
-        // Own methods of Epc.Dispatcher
+        // Methods
 
         add_service_subtype(type: string, subtype: string): void;
         get_collision_handling(): CollisionHandling;
@@ -292,7 +292,7 @@ export namespace Epc {
     class Publisher extends GObject.Object {
         static $gtype: GObject.GType<Publisher>;
 
-        // Own properties of Epc.Publisher
+        // Properties
 
         get application(): string;
         set application(val: string);
@@ -331,7 +331,7 @@ export namespace Epc {
         get serviceName(): string;
         set serviceName(val: string);
 
-        // Constructors of Epc.Publisher
+        // Constructors
 
         constructor(properties?: Partial<Publisher.ConstructorProps>, ...args: any[]);
 
@@ -339,11 +339,11 @@ export namespace Epc {
 
         static ['new'](name: string, application: string, domain: string): Publisher;
 
-        // Own static methods of Epc.Publisher
+        // Static methods
 
         static expand_name(name: string): string;
 
-        // Own methods of Epc.Publisher
+        // Methods
 
         add(key: string, data: any, length: number): void;
         add_bookmark(key: string, label: string): void;
@@ -408,7 +408,7 @@ export namespace Epc {
     class ServiceMonitor extends GObject.Object {
         static $gtype: GObject.GType<ServiceMonitor>;
 
-        // Own properties of Epc.ServiceMonitor
+        // Properties
 
         get application(): string;
         get domain(): string;
@@ -419,7 +419,7 @@ export namespace Epc {
         get skipOurOwn(): boolean;
         set skipOurOwn(val: boolean);
 
-        // Constructors of Epc.ServiceMonitor
+        // Constructors
 
         constructor(properties?: Partial<ServiceMonitor.ConstructorProps>, ...args: any[]);
 
@@ -427,7 +427,7 @@ export namespace Epc {
 
         static new_for_types_strv(domain: string, types: string): ServiceMonitor;
 
-        // Own signals of Epc.ServiceMonitor
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -445,13 +445,13 @@ export namespace Epc {
         connect_after(signal: 'service-removed', callback: (_source: this, object: string, p0: string) => void): number;
         emit(signal: 'service-removed', object: string, p0: string): void;
 
-        // Own virtual methods of Epc.ServiceMonitor
+        // Virtual methods
 
         vfunc_scanning_done(type: string): void;
         vfunc_service_found(name: string, info: ServiceInfo): void;
         vfunc_service_removed(name: string, type: string): void;
 
-        // Own methods of Epc.ServiceMonitor
+        // Methods
 
         get_skip_our_own(): boolean;
         set_skip_our_own(setting: boolean): void;
@@ -460,11 +460,11 @@ export namespace Epc {
     abstract class AuthContext {
         static $gtype: GObject.GType<AuthContext>;
 
-        // Constructors of Epc.AuthContext
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of Epc.AuthContext
+        // Methods
 
         check_password(password: string): boolean;
         get_key(): string;
@@ -475,7 +475,7 @@ export namespace Epc {
     abstract class ConsumerPrivate {
         static $gtype: GObject.GType<ConsumerPrivate>;
 
-        // Constructors of Epc.ConsumerPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -483,7 +483,7 @@ export namespace Epc {
     class Contents {
         static $gtype: GObject.GType<Contents>;
 
-        // Constructors of Epc.Contents
+        // Constructors
 
         constructor(type: string, data: any, length: number);
         _init(...args: any[]): void;
@@ -494,7 +494,7 @@ export namespace Epc {
 
         static stream_new(type: string, callback: ContentsReadFunc): Contents;
 
-        // Own methods of Epc.Contents
+        // Methods
 
         get_mime_type(): string;
         is_stream(): boolean;
@@ -506,7 +506,7 @@ export namespace Epc {
     abstract class DispatcherPrivate {
         static $gtype: GObject.GType<DispatcherPrivate>;
 
-        // Constructors of Epc.DispatcherPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -515,7 +515,7 @@ export namespace Epc {
     abstract class PublisherPrivate {
         static $gtype: GObject.GType<PublisherPrivate>;
 
-        // Constructors of Epc.PublisherPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -523,12 +523,12 @@ export namespace Epc {
     class ServiceInfo {
         static $gtype: GObject.GType<ServiceInfo>;
 
-        // Constructors of Epc.ServiceInfo
+        // Constructors
 
         constructor(type: string, host: string, port: number, details: unknown);
         _init(...args: any[]): void;
 
-        // Own methods of Epc.ServiceInfo
+        // Methods
 
         get_address_family(): AddressFamily;
         get_detail(name: string): string;
@@ -544,7 +544,7 @@ export namespace Epc {
     abstract class ServiceMonitorPrivate {
         static $gtype: GObject.GType<ServiceMonitorPrivate>;
 
-        // Constructors of Epc.ServiceMonitorPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -558,7 +558,7 @@ export namespace Epc {
     class ShellProgressHooks {
         static $gtype: GObject.GType<ShellProgressHooks>;
 
-        // Constructors of Epc.ShellProgressHooks
+        // Constructors
 
         constructor(properties?: Partial<{}>);
         _init(...args: any[]): void;

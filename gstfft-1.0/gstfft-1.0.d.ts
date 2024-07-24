@@ -89,11 +89,11 @@ export namespace GstFft {
     abstract class FFTF32 {
         static $gtype: GObject.GType<FFTF32>;
 
-        // Constructors of GstFft.FFTF32
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of GstFft.FFTF32
+        // Methods
 
         /**
          * This performs the FFT on `timedata` and puts the result in `freqdata`.
@@ -137,12 +137,12 @@ export namespace GstFft {
     class FFTF32Complex {
         static $gtype: GObject.GType<FFTF32Complex>;
 
-        // Own fields of GstFft.FFTF32Complex
+        // Fields
 
         r: number;
         i: number;
 
-        // Constructors of GstFft.FFTF32Complex
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -183,11 +183,11 @@ export namespace GstFft {
     abstract class FFTF64 {
         static $gtype: GObject.GType<FFTF64>;
 
-        // Constructors of GstFft.FFTF64
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of GstFft.FFTF64
+        // Methods
 
         /**
          * This performs the FFT on `timedata` and puts the result in `freqdata`.
@@ -231,12 +231,12 @@ export namespace GstFft {
     class FFTF64Complex {
         static $gtype: GObject.GType<FFTF64Complex>;
 
-        // Own fields of GstFft.FFTF64Complex
+        // Fields
 
         r: number;
         i: number;
 
-        // Constructors of GstFft.FFTF64Complex
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -277,11 +277,11 @@ export namespace GstFft {
     abstract class FFTS16 {
         static $gtype: GObject.GType<FFTS16>;
 
-        // Constructors of GstFft.FFTS16
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of GstFft.FFTS16
+        // Methods
 
         /**
          * This performs the FFT on `timedata` and puts the result in `freqdata`.
@@ -325,12 +325,12 @@ export namespace GstFft {
     class FFTS16Complex {
         static $gtype: GObject.GType<FFTS16Complex>;
 
-        // Own fields of GstFft.FFTS16Complex
+        // Fields
 
         r: number;
         i: number;
 
-        // Constructors of GstFft.FFTS16Complex
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -371,11 +371,11 @@ export namespace GstFft {
     abstract class FFTS32 {
         static $gtype: GObject.GType<FFTS32>;
 
-        // Constructors of GstFft.FFTS32
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of GstFft.FFTS32
+        // Methods
 
         /**
          * This performs the FFT on `timedata` and puts the result in `freqdata`.
@@ -419,12 +419,12 @@ export namespace GstFft {
     class FFTS32Complex {
         static $gtype: GObject.GType<FFTS32Complex>;
 
-        // Own fields of GstFft.FFTS32Complex
+        // Fields
 
         r: number;
         i: number;
 
-        // Constructors of GstFft.FFTS32Complex
+        // Constructors
 
         constructor(
             properties?: Partial<{

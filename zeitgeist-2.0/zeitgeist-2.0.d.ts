@@ -82,7 +82,7 @@ export namespace Zeitgeist {
     class EngineError extends GLib.Error {
         static $gtype: GObject.GType<EngineError>;
 
-        // Static fields of Zeitgeist.EngineError
+        // Static fields
 
         static BACKUP_FAILED: number;
         static DATABASE_BUSY: number;
@@ -95,7 +95,7 @@ export namespace Zeitgeist {
         static INVALID_EVENT: number;
         static INVALID_KEY: number;
 
-        // Constructors of Zeitgeist.EngineError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
@@ -104,13 +104,13 @@ export namespace Zeitgeist {
     class DataModelError extends GLib.Error {
         static $gtype: GObject.GType<DataModelError>;
 
-        // Static fields of Zeitgeist.DataModelError
+        // Static fields
 
         static INVALID_SIGNATURE: number;
         static NULL_EVENT: number;
         static TOO_MANY_RESULTS: number;
 
-        // Constructors of Zeitgeist.DataModelError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
@@ -287,7 +287,7 @@ export namespace Zeitgeist {
     class DataSourceRegistry extends QueuedProxyWrapper {
         static $gtype: GObject.GType<DataSourceRegistry>;
 
-        // Constructors of Zeitgeist.DataSourceRegistry
+        // Constructors
 
         constructor(properties?: Partial<DataSourceRegistry.ConstructorProps>, ...args: any[]);
 
@@ -295,7 +295,7 @@ export namespace Zeitgeist {
 
         static ['new'](): DataSourceRegistry;
 
-        // Own signals of Zeitgeist.DataSourceRegistry
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -319,7 +319,7 @@ export namespace Zeitgeist {
         connect_after(signal: 'source-registered', callback: (_source: this, data_source: DataSource) => void): number;
         emit(signal: 'source-registered', data_source: DataSource): void;
 
-        // Own methods of Zeitgeist.DataSourceRegistry
+        // Methods
 
         get_data_sources(cancellable?: Gio.Cancellable | null, _callback_?: Gio.AsyncReadyCallback<this> | null): void;
         get_data_sources_finish(_res_: Gio.AsyncResult): DataSource[];
@@ -353,7 +353,7 @@ export namespace Zeitgeist {
     class Index extends QueuedProxyWrapper {
         static $gtype: GObject.GType<Index>;
 
-        // Constructors of Zeitgeist.Index
+        // Constructors
 
         constructor(properties?: Partial<Index.ConstructorProps>, ...args: any[]);
 
@@ -361,7 +361,7 @@ export namespace Zeitgeist {
 
         static ['new'](): Index;
 
-        // Own methods of Zeitgeist.Index
+        // Methods
 
         search(
             query: string,
@@ -397,7 +397,7 @@ export namespace Zeitgeist {
     class Log extends QueuedProxyWrapper {
         static $gtype: GObject.GType<Log>;
 
-        // Constructors of Zeitgeist.Log
+        // Constructors
 
         constructor(properties?: Partial<Log.ConstructorProps>, ...args: any[]);
 
@@ -405,11 +405,11 @@ export namespace Zeitgeist {
 
         static ['new'](): Log;
 
-        // Own static methods of Zeitgeist.Log
+        // Static methods
 
         static get_default(): Log;
 
-        // Own methods of Zeitgeist.Log
+        // Methods
 
         insert_event(
             event: Event,
@@ -501,7 +501,7 @@ export namespace Zeitgeist {
     class Monitor extends GObject.Object implements RemoteMonitor {
         static $gtype: GObject.GType<Monitor>;
 
-        // Own properties of Zeitgeist.Monitor
+        // Properties
 
         get time_range(): TimeRange;
         set time_range(val: TimeRange);
@@ -512,7 +512,7 @@ export namespace Zeitgeist {
         get eventTemplates(): Event[];
         set eventTemplates(val: Event[]);
 
-        // Constructors of Zeitgeist.Monitor
+        // Constructors
 
         constructor(properties?: Partial<Monitor.ConstructorProps>, ...args: any[]);
 
@@ -520,7 +520,7 @@ export namespace Zeitgeist {
 
         static ['new'](time_range: TimeRange, event_templates: Event[]): Monitor;
 
-        // Own signals of Zeitgeist.Monitor
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -544,7 +544,7 @@ export namespace Zeitgeist {
         ): number;
         emit(signal: 'events-deleted', time_range: TimeRange, event_ids: number[]): void;
 
-        // Own methods of Zeitgeist.Monitor
+        // Methods
 
         get_templates(): Event[];
         get_path(): never;
@@ -994,7 +994,7 @@ export namespace Zeitgeist {
     abstract class QueuedProxyWrapper extends GObject.Object {
         static $gtype: GObject.GType<QueuedProxyWrapper>;
 
-        // Own properties of Zeitgeist.QueuedProxyWrapper
+        // Properties
 
         get proxy_created(): boolean;
         set proxy_created(val: boolean);
@@ -1005,18 +1005,18 @@ export namespace Zeitgeist {
         get isConnected(): boolean;
         set isConnected(val: boolean);
 
-        // Constructors of Zeitgeist.QueuedProxyWrapper
+        // Constructors
 
         constructor(properties?: Partial<QueuedProxyWrapper.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of Zeitgeist.QueuedProxyWrapper
+        // Virtual methods
 
         vfunc_on_connection_established(): void;
         vfunc_on_connection_lost(): void;
 
-        // Own methods of Zeitgeist.QueuedProxyWrapper
+        // Methods
 
         proxy_acquired(proxy: GObject.Object): void;
         proxy_unavailable(err: Gio.IOErrorEnum): void;
@@ -1033,17 +1033,17 @@ export namespace Zeitgeist {
     class QueuedProxyWrapperQueuedMethod {
         static $gtype: GObject.GType<QueuedProxyWrapperQueuedMethod>;
 
-        // Own fields of Zeitgeist.QueuedProxyWrapperQueuedMethod
+        // Fields
 
         ref_count: number;
 
-        // Constructors of Zeitgeist.QueuedProxyWrapperQueuedMethod
+        // Constructors
 
         _init(...args: any[]): void;
 
         static ['new'](callback: GLib.SourceFunc): QueuedProxyWrapperQueuedMethod;
 
-        // Own methods of Zeitgeist.QueuedProxyWrapperQueuedMethod
+        // Methods
 
         get_queued_method(): [GLib.SourceFunc, any];
     }
@@ -1067,7 +1067,7 @@ export namespace Zeitgeist {
     class DataSource extends GObject.Object {
         static $gtype: GObject.GType<DataSource>;
 
-        // Own properties of Zeitgeist.DataSource
+        // Properties
 
         get unique_id(): string;
         set unique_id(val: string);
@@ -1088,7 +1088,7 @@ export namespace Zeitgeist {
         get timestamp(): number;
         set timestamp(val: number);
 
-        // Constructors of Zeitgeist.DataSource
+        // Constructors
 
         constructor(properties?: Partial<DataSource.ConstructorProps>, ...args: any[]);
 
@@ -1100,7 +1100,7 @@ export namespace Zeitgeist {
 
         static from_variant(variant: GLib.Variant, reset_running: boolean): DataSource;
 
-        // Own methods of Zeitgeist.DataSource
+        // Methods
 
         to_variant(): GLib.Variant;
         get_unique_id(): string;
@@ -1137,7 +1137,7 @@ export namespace Zeitgeist {
     class Event extends GObject.Object {
         static $gtype: GObject.GType<Event>;
 
-        // Own properties of Zeitgeist.Event
+        // Properties
 
         get id(): number;
         set id(val: number);
@@ -1156,7 +1156,7 @@ export namespace Zeitgeist {
         get payload(): GLib.ByteArray;
         set payload(val: GLib.ByteArray);
 
-        // Constructors of Zeitgeist.Event
+        // Constructors
 
         constructor(properties?: Partial<Event.ConstructorProps>, ...args: any[]);
 
@@ -1166,7 +1166,7 @@ export namespace Zeitgeist {
 
         static ['new'](): Event;
 
-        // Own methods of Zeitgeist.Event
+        // Methods
 
         get_subject(index: number): Subject;
         num_subjects(): number;
@@ -1215,7 +1215,7 @@ export namespace Zeitgeist {
     class Subject extends GObject.Object {
         static $gtype: GObject.GType<Subject>;
 
-        // Own properties of Zeitgeist.Subject
+        // Properties
 
         get uri(): string;
         set uri(val: string);
@@ -1240,7 +1240,7 @@ export namespace Zeitgeist {
         get manifestation(): string;
         set manifestation(val: string);
 
-        // Constructors of Zeitgeist.Subject
+        // Constructors
 
         constructor(properties?: Partial<Subject.ConstructorProps>, ...args: any[]);
 
@@ -1272,7 +1272,7 @@ export namespace Zeitgeist {
 
         static ['new'](): Subject;
 
-        // Own methods of Zeitgeist.Subject
+        // Methods
 
         to_variant(): GLib.Variant;
         matches_template(template_subject: Subject): boolean;
@@ -1308,14 +1308,14 @@ export namespace Zeitgeist {
     class TimeRange extends GObject.Object {
         static $gtype: GObject.GType<TimeRange>;
 
-        // Own properties of Zeitgeist.TimeRange
+        // Properties
 
         get start(): number;
         set start(val: number);
         get end(): number;
         set end(val: number);
 
-        // Constructors of Zeitgeist.TimeRange
+        // Constructors
 
         constructor(properties?: Partial<TimeRange.ConstructorProps>, ...args: any[]);
 
@@ -1331,7 +1331,7 @@ export namespace Zeitgeist {
 
         static from_variant(variant: GLib.Variant): TimeRange;
 
-        // Own methods of Zeitgeist.TimeRange
+        // Methods
 
         to_variant(): GLib.Variant;
         intersect(time_range: TimeRange): TimeRange | null;
@@ -1348,7 +1348,7 @@ export namespace Zeitgeist {
     class SimpleResultSet extends GObject.Object implements ResultSet {
         static $gtype: GObject.GType<SimpleResultSet>;
 
-        // Constructors of Zeitgeist.SimpleResultSet
+        // Constructors
 
         constructor(properties?: Partial<SimpleResultSet.ConstructorProps>, ...args: any[]);
 
@@ -1778,7 +1778,7 @@ export namespace Zeitgeist {
     abstract class DataSourceRegistryPrivate {
         static $gtype: GObject.GType<DataSourceRegistryPrivate>;
 
-        // Constructors of Zeitgeist.DataSourceRegistryPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1787,7 +1787,7 @@ export namespace Zeitgeist {
     abstract class IndexPrivate {
         static $gtype: GObject.GType<IndexPrivate>;
 
-        // Constructors of Zeitgeist.IndexPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1796,7 +1796,7 @@ export namespace Zeitgeist {
     abstract class LogPrivate {
         static $gtype: GObject.GType<LogPrivate>;
 
-        // Constructors of Zeitgeist.LogPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1805,7 +1805,7 @@ export namespace Zeitgeist {
     abstract class MonitorPrivate {
         static $gtype: GObject.GType<MonitorPrivate>;
 
-        // Constructors of Zeitgeist.MonitorPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1814,7 +1814,7 @@ export namespace Zeitgeist {
     abstract class QueuedProxyWrapperPrivate {
         static $gtype: GObject.GType<QueuedProxyWrapperPrivate>;
 
-        // Constructors of Zeitgeist.QueuedProxyWrapperPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1823,7 +1823,7 @@ export namespace Zeitgeist {
     abstract class QueuedProxyWrapperQueuedMethodPrivate {
         static $gtype: GObject.GType<QueuedProxyWrapperQueuedMethodPrivate>;
 
-        // Constructors of Zeitgeist.QueuedProxyWrapperQueuedMethodPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1832,7 +1832,7 @@ export namespace Zeitgeist {
     abstract class DataSourcePrivate {
         static $gtype: GObject.GType<DataSourcePrivate>;
 
-        // Constructors of Zeitgeist.DataSourcePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1841,7 +1841,7 @@ export namespace Zeitgeist {
     abstract class EventPrivate {
         static $gtype: GObject.GType<EventPrivate>;
 
-        // Constructors of Zeitgeist.EventPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1850,7 +1850,7 @@ export namespace Zeitgeist {
     abstract class SubjectPrivate {
         static $gtype: GObject.GType<SubjectPrivate>;
 
-        // Constructors of Zeitgeist.SubjectPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1859,7 +1859,7 @@ export namespace Zeitgeist {
     abstract class TimeRangePrivate {
         static $gtype: GObject.GType<TimeRangePrivate>;
 
-        // Constructors of Zeitgeist.TimeRangePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1868,7 +1868,7 @@ export namespace Zeitgeist {
     abstract class SimpleResultSetPrivate {
         static $gtype: GObject.GType<SimpleResultSetPrivate>;
 
-        // Constructors of Zeitgeist.SimpleResultSetPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1883,13 +1883,13 @@ export namespace Zeitgeist {
     class VersionStruct {
         static $gtype: GObject.GType<VersionStruct>;
 
-        // Own fields of Zeitgeist.VersionStruct
+        // Fields
 
         major: number;
         minor: number;
         micro: number;
 
-        // Constructors of Zeitgeist.VersionStruct
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -1912,7 +1912,7 @@ export namespace Zeitgeist {
         prototype: RemoteRegistry;
     }
     interface RemoteRegistry extends GObject.Object {
-        // Own methods of Zeitgeist.RemoteRegistry
+        // Methods
 
         get_data_sources(cancellable?: Gio.Cancellable | null, _callback_?: Gio.AsyncReadyCallback<this> | null): void;
         get_data_sources_finish(_res_: Gio.AsyncResult): GLib.Variant;
@@ -1940,7 +1940,7 @@ export namespace Zeitgeist {
         ): void;
         get_data_source_from_id_finish(_res_: Gio.AsyncResult): GLib.Variant;
 
-        // Own virtual methods of Zeitgeist.RemoteRegistry
+        // Virtual methods
 
         vfunc_get_data_sources(
             cancellable?: Gio.Cancellable | null,
@@ -1985,7 +1985,7 @@ export namespace Zeitgeist {
         prototype: RemoteLog;
     }
     interface RemoteLog extends GObject.Object {
-        // Own methods of Zeitgeist.RemoteLog
+        // Methods
 
         delete_events(
             event_ids: number[],
@@ -2062,7 +2062,7 @@ export namespace Zeitgeist {
         get_version(): VersionStruct;
         get_datapath(): string;
 
-        // Own virtual methods of Zeitgeist.RemoteLog
+        // Virtual methods
 
         vfunc_delete_events(
             event_ids: number[],
@@ -2153,7 +2153,7 @@ export namespace Zeitgeist {
         prototype: RemoteMonitor;
     }
     interface RemoteMonitor extends GObject.Object {
-        // Own methods of Zeitgeist.RemoteMonitor
+        // Methods
 
         notify_insert(
             time_range: GLib.Variant,
@@ -2168,7 +2168,7 @@ export namespace Zeitgeist {
         ): void;
         notify_delete_finish(_res_: Gio.AsyncResult): void;
 
-        // Own virtual methods of Zeitgeist.RemoteMonitor
+        // Virtual methods
 
         vfunc_notify_insert(
             time_range: GLib.Variant,
@@ -2197,7 +2197,7 @@ export namespace Zeitgeist {
         prototype: RemoteSimpleIndexer;
     }
     interface RemoteSimpleIndexer extends GObject.Object {
-        // Own methods of Zeitgeist.RemoteSimpleIndexer
+        // Methods
 
         search(
             query_string: string,
@@ -2223,7 +2223,7 @@ export namespace Zeitgeist {
         ): void;
         search_with_relevancies_finish(_res_: Gio.AsyncResult): [GLib.Variant, number[], number];
 
-        // Own virtual methods of Zeitgeist.RemoteSimpleIndexer
+        // Virtual methods
 
         vfunc_search(
             query_string: string,
@@ -2263,11 +2263,11 @@ export namespace Zeitgeist {
         prototype: NetworkManagerDBus;
     }
     interface NetworkManagerDBus extends GObject.Object {
-        // Own methods of Zeitgeist.NetworkManagerDBus
+        // Methods
 
         state(): number;
 
-        // Own virtual methods of Zeitgeist.NetworkManagerDBus
+        // Virtual methods
 
         vfunc_state(): number;
     }
@@ -2285,11 +2285,11 @@ export namespace Zeitgeist {
         prototype: ConnmanManagerDBus;
     }
     interface ConnmanManagerDBus extends GObject.Object {
-        // Own methods of Zeitgeist.ConnmanManagerDBus
+        // Methods
 
         get_state(): string;
 
-        // Own virtual methods of Zeitgeist.ConnmanManagerDBus
+        // Virtual methods
 
         vfunc_get_state(): string;
     }
@@ -2307,7 +2307,7 @@ export namespace Zeitgeist {
         prototype: ResultSet;
     }
     interface ResultSet extends GObject.Object {
-        // Own methods of Zeitgeist.ResultSet
+        // Methods
 
         size(): number;
         estimated_matches(): number;
@@ -2317,7 +2317,7 @@ export namespace Zeitgeist {
         reset(): void;
         iterator(): ResultSet;
 
-        // Own virtual methods of Zeitgeist.ResultSet
+        // Virtual methods
 
         vfunc_size(): number;
         vfunc_estimated_matches(): number;

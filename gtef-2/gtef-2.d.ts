@@ -48,7 +48,7 @@ export namespace Gtef {
     class FileLoaderError extends GLib.Error {
         static $gtype: GObject.GType<FileLoaderError>;
 
-        // Static fields of Gtef.FileLoaderError
+        // Static fields
 
         /**
          * The file is too big.
@@ -60,12 +60,12 @@ export namespace Gtef {
          */
         static ENCODING_AUTO_DETECTION_FAILED: number;
 
-        // Constructors of Gtef.FileLoaderError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of Gtef.FileLoaderError
+        // Static methods
 
         static quark(): GLib.Quark;
     }
@@ -76,7 +76,7 @@ export namespace Gtef {
     class FileSaverError extends GLib.Error {
         static $gtype: GObject.GType<FileSaverError>;
 
-        // Static fields of Gtef.FileSaverError
+        // Static fields
 
         /**
          * The buffer contains invalid
@@ -89,12 +89,12 @@ export namespace Gtef {
          */
         static EXTERNALLY_MODIFIED: number;
 
-        // Constructors of Gtef.FileSaverError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of Gtef.FileSaverError
+        // Static methods
 
         static quark(): GLib.Quark;
     }
@@ -321,17 +321,17 @@ export namespace Gtef {
     class ActionInfoCentralStore extends GObject.Object {
         static $gtype: GObject.GType<ActionInfoCentralStore>;
 
-        // Constructors of Gtef.ActionInfoCentralStore
+        // Constructors
 
         constructor(properties?: Partial<ActionInfoCentralStore.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of Gtef.ActionInfoCentralStore
+        // Static methods
 
         static get_instance(): ActionInfoCentralStore;
 
-        // Own methods of Gtef.ActionInfoCentralStore
+        // Methods
 
         lookup(action_name: string): ActionInfo;
     }
@@ -347,7 +347,7 @@ export namespace Gtef {
     class ActionInfoStore extends GObject.Object {
         static $gtype: GObject.GType<ActionInfoStore>;
 
-        // Own properties of Gtef.ActionInfoStore
+        // Properties
 
         /**
          * The associated #GtkApplication. #GtefActionInfoStore has a weak
@@ -355,7 +355,7 @@ export namespace Gtef {
          */
         get application(): Gtk.Application;
 
-        // Constructors of Gtef.ActionInfoStore
+        // Constructors
 
         constructor(properties?: Partial<ActionInfoStore.ConstructorProps>, ...args: any[]);
 
@@ -363,7 +363,7 @@ export namespace Gtef {
 
         static ['new'](application?: Gtk.Application | null): ActionInfoStore;
 
-        // Own methods of Gtef.ActionInfoStore
+        // Methods
 
         /**
          * Inserts `info` into `store` and into the #GtefActionInfoCentralStore. Both the
@@ -427,20 +427,20 @@ export namespace Gtef {
     class Application extends GObject.Object {
         static $gtype: GObject.GType<Application>;
 
-        // Own properties of Gtef.Application
+        // Properties
 
         /**
          * The #GtkApplication.
          */
         get application(): Gtk.Application;
 
-        // Constructors of Gtef.Application
+        // Constructors
 
         constructor(properties?: Partial<Application.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of Gtef.Application
+        // Static methods
 
         /**
          * Convenience function that calls g_application_get_default() followed by
@@ -455,7 +455,7 @@ export namespace Gtef {
          */
         static get_from_gtk_application(gtk_app: Gtk.Application): Application;
 
-        // Own methods of Gtef.Application
+        // Methods
 
         /**
          * Returns an initially empty #GtefActionInfoStore reserved for the
@@ -486,7 +486,7 @@ export namespace Gtef {
     class ApplicationWindow extends GObject.Object {
         static $gtype: GObject.GType<ApplicationWindow>;
 
-        // Own properties of Gtef.ApplicationWindow
+        // Properties
 
         /**
          * The #GtkApplicationWindow.
@@ -502,13 +502,13 @@ export namespace Gtef {
         get statusbar(): Gtk.Statusbar;
         set statusbar(val: Gtk.Statusbar);
 
-        // Constructors of Gtef.ApplicationWindow
+        // Constructors
 
         constructor(properties?: Partial<ApplicationWindow.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of Gtef.ApplicationWindow
+        // Static methods
 
         /**
          * Returns the #GtefApplicationWindow of `gtk_window`. The returned object is
@@ -517,7 +517,7 @@ export namespace Gtef {
          */
         static get_from_gtk_application_window(gtk_window: Gtk.ApplicationWindow): ApplicationWindow;
 
-        // Own methods of Gtef.ApplicationWindow
+        // Methods
 
         /**
          * Connect to the #GtefMenuShell::menu-item-selected and
@@ -590,7 +590,7 @@ export namespace Gtef {
     class Buffer extends GtkSource.Buffer {
         static $gtype: GObject.GType<Buffer>;
 
-        // Own properties of Gtef.Buffer
+        // Properties
 
         /**
          * The #GtkSourceBuffer:style-scheme ID, as a string. This property is
@@ -619,7 +619,7 @@ export namespace Gtef {
          */
         get gtefTitle(): string;
 
-        // Constructors of Gtef.Buffer
+        // Constructors
 
         constructor(properties?: Partial<Buffer.ConstructorProps>, ...args: any[]);
 
@@ -627,7 +627,7 @@ export namespace Gtef {
 
         static ['new'](): Buffer;
 
-        // Own signals of Gtef.Buffer
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -636,11 +636,11 @@ export namespace Gtef {
         connect_after(signal: 'gtef-cursor-moved', callback: (_source: this) => void): number;
         emit(signal: 'gtef-cursor-moved'): void;
 
-        // Own virtual methods of Gtef.Buffer
+        // Virtual methods
 
         vfunc_gtef_cursor_moved(): void;
 
-        // Own methods of Gtef.Buffer
+        // Methods
 
         /**
          * Returns the #GtefFile of `buffer`. The returned object is guaranteed to be the
@@ -702,7 +702,7 @@ export namespace Gtef {
     class File extends GObject.Object {
         static $gtype: GObject.GType<File>;
 
-        // Own properties of Gtef.File
+        // Properties
 
         /**
          * The compression type.
@@ -749,7 +749,7 @@ export namespace Gtef {
          */
         get shortName(): string;
 
-        // Constructors of Gtef.File
+        // Constructors
 
         constructor(properties?: Partial<File.ConstructorProps>, ...args: any[]);
 
@@ -757,7 +757,7 @@ export namespace Gtef {
 
         static ['new'](): File;
 
-        // Own methods of Gtef.File
+        // Methods
 
         /**
          * Checks synchronously the file on disk, to know whether the file is externally
@@ -847,7 +847,7 @@ export namespace Gtef {
     class FileLoader extends GObject.Object {
         static $gtype: GObject.GType<FileLoader>;
 
-        // Own properties of Gtef.FileLoader
+        // Properties
 
         /**
          * The #GtefBuffer to load the content into. The #GtefFileLoader object
@@ -903,7 +903,7 @@ export namespace Gtef {
         get maxSize(): number;
         set maxSize(val: number);
 
-        // Constructors of Gtef.FileLoader
+        // Constructors
 
         constructor(properties?: Partial<FileLoader.ConstructorProps>, ...args: any[]);
 
@@ -911,7 +911,7 @@ export namespace Gtef {
 
         static ['new'](buffer: Buffer, file: File): FileLoader;
 
-        // Own methods of Gtef.FileLoader
+        // Methods
 
         get_buffer(): Buffer | null;
         get_chunk_size(): number;
@@ -958,14 +958,14 @@ export namespace Gtef {
     class FileMetadata extends GObject.Object {
         static $gtype: GObject.GType<FileMetadata>;
 
-        // Own properties of Gtef.FileMetadata
+        // Properties
 
         /**
          * The #GtefFile that the metadata belong to.
          */
         get file(): File;
 
-        // Constructors of Gtef.FileMetadata
+        // Constructors
 
         constructor(properties?: Partial<FileMetadata.ConstructorProps>, ...args: any[]);
 
@@ -973,7 +973,7 @@ export namespace Gtef {
 
         static ['new'](file: File): FileMetadata;
 
-        // Own methods of Gtef.FileMetadata
+        // Methods
 
         /**
          * Gets the value of a metadata stored in the `metadata` object memory.
@@ -1086,7 +1086,7 @@ export namespace Gtef {
     class FileSaver extends GObject.Object {
         static $gtype: GObject.GType<FileSaver>;
 
-        // Own properties of Gtef.FileSaver
+        // Properties
 
         /**
          * The #GtefBuffer to save. The #GtefFileSaver object has a weak
@@ -1134,11 +1134,11 @@ export namespace Gtef {
         get newlineType(): GtkSource.NewlineType;
         set newlineType(val: GtkSource.NewlineType);
 
-        // Own fields of Gtef.FileSaver
+        // Fields
 
         object: GObject.Object;
 
-        // Constructors of Gtef.FileSaver
+        // Constructors
 
         constructor(properties?: Partial<FileSaver.ConstructorProps>, ...args: any[]);
 
@@ -1148,7 +1148,7 @@ export namespace Gtef {
 
         static new_with_target(buffer: Buffer, file: File, target_location: Gio.File): FileSaver;
 
-        // Own methods of Gtef.FileSaver
+        // Methods
 
         get_buffer(): Buffer;
         get_compression_type(): CompressionType;
@@ -1219,7 +1219,7 @@ export namespace Gtef {
     class FoldRegion extends GObject.Object {
         static $gtype: GObject.GType<FoldRegion>;
 
-        // Own properties of Gtef.FoldRegion
+        // Properties
 
         /**
          * The #GtkTextBuffer where the fold region is applied. The
@@ -1232,7 +1232,7 @@ export namespace Gtef {
         get folded(): boolean;
         set folded(val: boolean);
 
-        // Constructors of Gtef.FoldRegion
+        // Constructors
 
         constructor(properties?: Partial<FoldRegion.ConstructorProps>, ...args: any[]);
 
@@ -1240,7 +1240,7 @@ export namespace Gtef {
 
         static ['new'](buffer: Gtk.TextBuffer, start: Gtk.TextIter, end: Gtk.TextIter): FoldRegion;
 
-        // Own methods of Gtef.FoldRegion
+        // Methods
 
         /**
          * Obtains iterators pointing to the start and end of the #GtefFoldRegion.
@@ -1271,7 +1271,7 @@ export namespace Gtef {
     class GutterRendererFolds extends GtkSource.GutterRenderer {
         static $gtype: GObject.GType<GutterRendererFolds>;
 
-        // Constructors of Gtef.GutterRendererFolds
+        // Constructors
 
         constructor(properties?: Partial<GutterRendererFolds.ConstructorProps>, ...args: any[]);
 
@@ -1279,7 +1279,7 @@ export namespace Gtef {
 
         static ['new'](): GutterRendererFolds;
 
-        // Own methods of Gtef.GutterRendererFolds
+        // Methods
 
         /**
          * Sets the folding state of the next cell to be drawn.
@@ -1304,7 +1304,7 @@ export namespace Gtef {
     class InfoBar extends Gtk.InfoBar implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<InfoBar>;
 
-        // Constructors of Gtef.InfoBar
+        // Constructors
 
         constructor(properties?: Partial<InfoBar.ConstructorProps>, ...args: any[]);
 
@@ -1314,7 +1314,7 @@ export namespace Gtef {
 
         static new_simple(msg_type: Gtk.MessageType, primary_msg: string, secondary_msg?: string | null): InfoBar;
 
-        // Own static methods of Gtef.InfoBar
+        // Static methods
 
         /**
          * Utility function to create a #GtkLabel suitable for a #GtkInfoBar. The
@@ -1323,7 +1323,7 @@ export namespace Gtef {
          */
         static create_label(): Gtk.Label;
 
-        // Own methods of Gtef.InfoBar
+        // Methods
 
         /**
          * Calls gtk_info_bar_set_show_close_button(), and additionnally closes the
@@ -1786,7 +1786,7 @@ export namespace Gtef {
     class MenuShell extends GObject.Object {
         static $gtype: GObject.GType<MenuShell>;
 
-        // Own properties of Gtef.MenuShell
+        // Properties
 
         /**
          * The #GtkMenuShell.
@@ -1797,13 +1797,13 @@ export namespace Gtef {
          */
         get menuShell(): Gtk.MenuShell;
 
-        // Constructors of Gtef.MenuShell
+        // Constructors
 
         constructor(properties?: Partial<MenuShell.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of Gtef.MenuShell
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -1818,7 +1818,7 @@ export namespace Gtef {
         connect_after(signal: 'menu-item-selected', callback: (_source: this, menu_item: Gtk.MenuItem) => void): number;
         emit(signal: 'menu-item-selected', menu_item: Gtk.MenuItem): void;
 
-        // Own static methods of Gtef.MenuShell
+        // Static methods
 
         /**
          * Returns the #GtefMenuShell of `gtk_menu_shell`. The returned object is
@@ -1827,12 +1827,12 @@ export namespace Gtef {
          */
         static get_from_gtk_menu_shell(gtk_menu_shell: Gtk.MenuShell): MenuShell;
 
-        // Own virtual methods of Gtef.MenuShell
+        // Virtual methods
 
         vfunc_menu_item_deselected(menu_item: Gtk.MenuItem): void;
         vfunc_menu_item_selected(menu_item: Gtk.MenuItem): void;
 
-        // Own methods of Gtef.MenuShell
+        // Methods
 
         get_menu_shell(): Gtk.MenuShell;
     }
@@ -1850,7 +1850,7 @@ export namespace Gtef {
     class Tab extends Gtk.Grid implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<Tab>;
 
-        // Constructors of Gtef.Tab
+        // Constructors
 
         constructor(properties?: Partial<Tab.ConstructorProps>, ...args: any[]);
 
@@ -1861,7 +1861,7 @@ export namespace Gtef {
 
         static ['new'](...args: never[]): any;
 
-        // Own methods of Gtef.Tab
+        // Methods
 
         /**
          * Attaches `info_bar` to `tab,` above the main widget.
@@ -2306,7 +2306,7 @@ export namespace Gtef {
     class View extends GtkSource.View implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable {
         static $gtype: GObject.GType<View>;
 
-        // Constructors of Gtef.View
+        // Constructors
 
         constructor(properties?: Partial<View.ConstructorProps>, ...args: any[]);
 
@@ -2314,7 +2314,7 @@ export namespace Gtef {
 
         static ['new'](): View;
 
-        // Own methods of Gtef.View
+        // Methods
 
         /**
          * Copies the clipboard.
@@ -2773,7 +2773,7 @@ export namespace Gtef {
     class ActionInfo {
         static $gtype: GObject.GType<ActionInfo>;
 
-        // Constructors of Gtef.ActionInfo
+        // Constructors
 
         constructor(properties?: Partial<{}>);
         _init(...args: any[]): void;
@@ -2782,7 +2782,7 @@ export namespace Gtef {
 
         static new_from_entry(info_entry: ActionInfoEntry, translation_domain?: string | null): ActionInfo;
 
-        // Own methods of Gtef.ActionInfo
+        // Methods
 
         copy(): ActionInfo;
         /**
@@ -2828,7 +2828,7 @@ export namespace Gtef {
     abstract class ActionInfoCentralStorePrivate {
         static $gtype: GObject.GType<ActionInfoCentralStorePrivate>;
 
-        // Constructors of Gtef.ActionInfoCentralStorePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2844,7 +2844,7 @@ export namespace Gtef {
     class ActionInfoEntry {
         static $gtype: GObject.GType<ActionInfoEntry>;
 
-        // Own fields of Gtef.ActionInfoEntry
+        // Fields
 
         action_name: string;
         icon_name: string;
@@ -2852,7 +2852,7 @@ export namespace Gtef {
         accel: string;
         tooltip: string;
 
-        // Constructors of Gtef.ActionInfoEntry
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -2870,7 +2870,7 @@ export namespace Gtef {
     abstract class ActionInfoStorePrivate {
         static $gtype: GObject.GType<ActionInfoStorePrivate>;
 
-        // Constructors of Gtef.ActionInfoStorePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2879,7 +2879,7 @@ export namespace Gtef {
     abstract class ApplicationPrivate {
         static $gtype: GObject.GType<ApplicationPrivate>;
 
-        // Constructors of Gtef.ApplicationPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2888,7 +2888,7 @@ export namespace Gtef {
     abstract class ApplicationWindowPrivate {
         static $gtype: GObject.GType<ApplicationWindowPrivate>;
 
-        // Constructors of Gtef.ApplicationWindowPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2897,7 +2897,7 @@ export namespace Gtef {
     class Encoding {
         static $gtype: GObject.GType<Encoding>;
 
-        // Constructors of Gtef.Encoding
+        // Constructors
 
         constructor(properties?: Partial<{}>);
         _init(...args: any[]): void;
@@ -2908,7 +2908,7 @@ export namespace Gtef {
 
         static new_utf8(): Encoding;
 
-        // Own static methods of Gtef.Encoding
+        // Static methods
 
         /**
          * Gets a list of all encodings known by #GtefEncoding.
@@ -2924,7 +2924,7 @@ export namespace Gtef {
          */
         static get_default_candidates(): Encoding[];
 
-        // Own methods of Gtef.Encoding
+        // Methods
 
         copy(): Encoding;
         equals(enc2?: Encoding | null): boolean;
@@ -2955,7 +2955,7 @@ export namespace Gtef {
     abstract class FileSaverPrivate {
         static $gtype: GObject.GType<FileSaverPrivate>;
 
-        // Constructors of Gtef.FileSaverPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2967,7 +2967,7 @@ export namespace Gtef {
     abstract class MenuShellPrivate {
         static $gtype: GObject.GType<MenuShellPrivate>;
 
-        // Constructors of Gtef.MenuShellPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }

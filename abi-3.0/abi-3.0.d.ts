@@ -74,11 +74,11 @@ export namespace Abi {
     class Table extends Gtk.Button implements Atk.ImplementorIface, Gtk.Actionable, Gtk.Activatable, Gtk.Buildable {
         static $gtype: GObject.GType<Table>;
 
-        // Own fields of Abi.Table
+        // Fields
 
         button: Gtk.Button;
 
-        // Constructors of Abi.Table
+        // Constructors
 
         constructor(properties?: Partial<Table.ConstructorProps>, ...args: any[]);
 
@@ -86,7 +86,7 @@ export namespace Abi {
 
         static ['new'](): Table;
 
-        // Own signals of Abi.Table
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -95,11 +95,11 @@ export namespace Abi {
         connect_after(signal: 'selected', callback: (_source: this, object: number, p0: number) => void): number;
         emit(signal: 'selected', object: number, p0: number): void;
 
-        // Own virtual methods of Abi.Table
+        // Virtual methods
 
         vfunc_selected(rows: number, cols: number): void;
 
-        // Own methods of Abi.Table
+        // Methods
 
         get_label(): Gtk.Widget;
         // Conflicted with Gtk.Button.get_label
@@ -4434,7 +4434,7 @@ export namespace Abi {
     class Widget extends Gtk.Bin implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<Widget>;
 
-        // Own properties of Abi.Widget
+        // Properties
 
         get content(): string;
         get content_length(): number;
@@ -4471,14 +4471,14 @@ export namespace Abi {
         get viewWebLayout(): boolean;
         set viewWebLayout(val: boolean);
 
-        // Own fields of Abi.Widget
+        // Fields
 
         bin: Gtk.Bin;
 
         // @ts-expect-error This property conflicts with an accessor in a parent class or interface.
         child: Gtk.Widget;
 
-        // Constructors of Abi.Widget
+        // Constructors
 
         constructor(properties?: Partial<Widget.ConstructorProps>, ...args: any[]);
 
@@ -4488,7 +4488,7 @@ export namespace Abi {
 
         static new_with_file(file: string): Widget;
 
-        // Own signals of Abi.Widget
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -4587,7 +4587,7 @@ export namespace Abi {
         connect_after(signal: 'zoom', callback: (_source: this, object: number) => void): number;
         emit(signal: 'zoom', object: number): void;
 
-        // Own static methods of Abi.Widget
+        // Static methods
 
         static get_property(
             object: GObject.Object,
@@ -4602,7 +4602,7 @@ export namespace Abi {
             pspec: GObject.ParamSpec,
         ): void;
 
-        // Own virtual methods of Abi.Widget
+        // Virtual methods
 
         vfunc_align_center(): boolean;
         vfunc_align_justify(): boolean;
@@ -4767,7 +4767,7 @@ export namespace Abi {
         vfunc_zoom_whole(): boolean;
         vfunc_zoom_width(): boolean;
 
-        // Own methods of Abi.Widget
+        // Methods
 
         align_center(): boolean;
         align_justify(): boolean;
@@ -5362,7 +5362,7 @@ export namespace Abi {
     abstract class PrivData {
         static $gtype: GObject.GType<PrivData>;
 
-        // Constructors of Abi.PrivData
+        // Constructors
 
         _init(...args: any[]): void;
     }

@@ -100,18 +100,18 @@ export namespace EvinceDocument {
     class DocumentError extends GLib.Error {
         static $gtype: GObject.GType<DocumentError>;
 
-        // Static fields of EvinceDocument.DocumentError
+        // Static fields
 
         static INVALID: number;
         static UNSUPPORTED_CONTENT: number;
         static ENCRYPTED: number;
 
-        // Constructors of EvinceDocument.DocumentError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of EvinceDocument.DocumentError
+        // Static methods
 
         static quark(): GLib.Quark;
     }
@@ -486,7 +486,7 @@ export namespace EvinceDocument {
     abstract class Annotation extends GObject.Object {
         static $gtype: GObject.GType<Annotation>;
 
-        // Own properties of EvinceDocument.Annotation
+        // Properties
 
         /**
          * The area of the page where the annotation is placed.
@@ -513,13 +513,13 @@ export namespace EvinceDocument {
         get rgba(): Gdk.RGBA;
         set rgba(val: Gdk.RGBA);
 
-        // Constructors of EvinceDocument.Annotation
+        // Constructors
 
         constructor(properties?: Partial<Annotation.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of EvinceDocument.Annotation
+        // Methods
 
         /**
          * Compare `annot` and `other`.
@@ -647,12 +647,12 @@ export namespace EvinceDocument {
     class AnnotationAttachment extends Annotation implements AnnotationMarkup {
         static $gtype: GObject.GType<AnnotationAttachment>;
 
-        // Own properties of EvinceDocument.AnnotationAttachment
+        // Properties
 
         get attachment(): Attachment;
         set attachment(val: Attachment);
 
-        // Constructors of EvinceDocument.AnnotationAttachment
+        // Constructors
 
         constructor(properties?: Partial<AnnotationAttachment.ConstructorProps>, ...args: any[]);
 
@@ -660,7 +660,7 @@ export namespace EvinceDocument {
 
         static ['new'](page: Page, attachment: Attachment): AnnotationAttachment;
 
-        // Own methods of EvinceDocument.AnnotationAttachment
+        // Methods
 
         get_attachment(): Attachment;
         set_attachment(attachment: Attachment): boolean;
@@ -847,7 +847,7 @@ export namespace EvinceDocument {
     class AnnotationText extends Annotation implements AnnotationMarkup {
         static $gtype: GObject.GType<AnnotationText>;
 
-        // Own properties of EvinceDocument.AnnotationText
+        // Properties
 
         get icon(): AnnotationTextIcon;
         set icon(val: AnnotationTextIcon);
@@ -856,7 +856,7 @@ export namespace EvinceDocument {
         get isOpen(): boolean;
         set isOpen(val: boolean);
 
-        // Constructors of EvinceDocument.AnnotationText
+        // Constructors
 
         constructor(properties?: Partial<AnnotationText.ConstructorProps>, ...args: any[]);
 
@@ -864,7 +864,7 @@ export namespace EvinceDocument {
 
         static ['new'](page: Page): AnnotationText;
 
-        // Own methods of EvinceDocument.AnnotationText
+        // Methods
 
         get_icon(): AnnotationTextIcon;
         get_is_open(): boolean;
@@ -1051,12 +1051,12 @@ export namespace EvinceDocument {
     class AnnotationTextMarkup extends Annotation implements AnnotationMarkup {
         static $gtype: GObject.GType<AnnotationTextMarkup>;
 
-        // Own properties of EvinceDocument.AnnotationTextMarkup
+        // Properties
 
         get type(): AnnotationTextMarkupType;
         set type(val: AnnotationTextMarkupType);
 
-        // Constructors of EvinceDocument.AnnotationTextMarkup
+        // Constructors
 
         constructor(properties?: Partial<AnnotationTextMarkup.ConstructorProps>, ...args: any[]);
 
@@ -1070,7 +1070,7 @@ export namespace EvinceDocument {
 
         static underline_new(page: Page): AnnotationTextMarkup;
 
-        // Own methods of EvinceDocument.AnnotationTextMarkup
+        // Methods
 
         get_markup_type(): AnnotationTextMarkupType;
         set_markup_type(markup_type: AnnotationTextMarkupType): boolean;
@@ -1260,7 +1260,7 @@ export namespace EvinceDocument {
     class Attachment extends GObject.Object {
         static $gtype: GObject.GType<Attachment>;
 
-        // Own properties of EvinceDocument.Attachment
+        // Properties
 
         set ctime(val: number);
         set data(val: any);
@@ -1269,11 +1269,11 @@ export namespace EvinceDocument {
         set name(val: string);
         set size(val: number);
 
-        // Own fields of EvinceDocument.Attachment
+        // Fields
 
         base_instance: GObject.Object;
 
-        // Constructors of EvinceDocument.Attachment
+        // Constructors
 
         constructor(properties?: Partial<Attachment.ConstructorProps>, ...args: any[]);
 
@@ -1288,11 +1288,11 @@ export namespace EvinceDocument {
             data?: any | null,
         ): Attachment;
 
-        // Own static methods of EvinceDocument.Attachment
+        // Static methods
 
         static error_quark(): GLib.Quark;
 
-        // Own methods of EvinceDocument.Attachment
+        // Methods
 
         get_creation_date(): GLib.Time;
         get_description(): string;
@@ -1314,22 +1314,22 @@ export namespace EvinceDocument {
     abstract class Document extends GObject.Object {
         static $gtype: GObject.GType<Document>;
 
-        // Own properties of EvinceDocument.Document
+        // Properties
 
         get modified(): boolean;
         set modified(val: boolean);
 
-        // Own fields of EvinceDocument.Document
+        // Fields
 
         base: GObject.Object;
 
-        // Constructors of EvinceDocument.Document
+        // Constructors
 
         constructor(properties?: Partial<Document.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of EvinceDocument.Document
+        // Static methods
 
         static doc_mutex_lock(): void;
         static doc_mutex_trylock(): boolean;
@@ -1495,7 +1495,7 @@ export namespace EvinceDocument {
             dest_rotation: number,
         ): cairo.Surface;
 
-        // Own virtual methods of EvinceDocument.Document
+        // Virtual methods
 
         vfunc_get_backend_info(info: DocumentBackendInfo): boolean;
         /**
@@ -1563,7 +1563,7 @@ export namespace EvinceDocument {
         vfunc_save(uri: string): boolean;
         vfunc_support_synctex(): boolean;
 
-        // Own methods of EvinceDocument.Document
+        // Methods
 
         check_dimensions(): boolean;
         find_page_by_label(page_label: string, page_index: number): boolean;
@@ -1683,7 +1683,7 @@ export namespace EvinceDocument {
     abstract class FormField extends GObject.Object {
         static $gtype: GObject.GType<FormField>;
 
-        // Own fields of EvinceDocument.FormField
+        // Fields
 
         id: number;
         is_read_only: boolean;
@@ -1692,7 +1692,7 @@ export namespace EvinceDocument {
         page: Page;
         changed: boolean;
 
-        // Constructors of EvinceDocument.FormField
+        // Constructors
 
         constructor(properties?: Partial<FormField.ConstructorProps>, ...args: any[]);
 
@@ -1708,12 +1708,12 @@ export namespace EvinceDocument {
     class FormFieldButton extends FormField {
         static $gtype: GObject.GType<FormFieldButton>;
 
-        // Own fields of EvinceDocument.FormFieldButton
+        // Fields
 
         type: FormFieldButtonType;
         state: boolean;
 
-        // Constructors of EvinceDocument.FormFieldButton
+        // Constructors
 
         constructor(properties?: Partial<FormFieldButton.ConstructorProps>, ...args: any[]);
 
@@ -1731,7 +1731,7 @@ export namespace EvinceDocument {
     class FormFieldChoice extends FormField {
         static $gtype: GObject.GType<FormFieldChoice>;
 
-        // Own fields of EvinceDocument.FormFieldChoice
+        // Fields
 
         type: FormFieldChoiceType;
         multi_select: boolean;
@@ -1741,7 +1741,7 @@ export namespace EvinceDocument {
         selected_items: any[];
         text: string;
 
-        // Constructors of EvinceDocument.FormFieldChoice
+        // Constructors
 
         constructor(properties?: Partial<FormFieldChoice.ConstructorProps>, ...args: any[]);
 
@@ -1759,7 +1759,7 @@ export namespace EvinceDocument {
     class FormFieldSignature extends FormField {
         static $gtype: GObject.GType<FormFieldSignature>;
 
-        // Constructors of EvinceDocument.FormFieldSignature
+        // Constructors
 
         constructor(properties?: Partial<FormFieldSignature.ConstructorProps>, ...args: any[]);
 
@@ -1777,7 +1777,7 @@ export namespace EvinceDocument {
     class FormFieldText extends FormField {
         static $gtype: GObject.GType<FormFieldText>;
 
-        // Own fields of EvinceDocument.FormFieldText
+        // Fields
 
         type: FormFieldTextType;
         do_spell_check: boolean;
@@ -1788,7 +1788,7 @@ export namespace EvinceDocument {
         max_len: number;
         text: string;
 
-        // Constructors of EvinceDocument.FormFieldText
+        // Constructors
 
         constructor(properties?: Partial<FormFieldText.ConstructorProps>, ...args: any[]);
 
@@ -1806,11 +1806,11 @@ export namespace EvinceDocument {
     class Image extends GObject.Object {
         static $gtype: GObject.GType<Image>;
 
-        // Own fields of EvinceDocument.Image
+        // Fields
 
         base_instance: GObject.Object;
 
-        // Constructors of EvinceDocument.Image
+        // Constructors
 
         constructor(properties?: Partial<Image.ConstructorProps>, ...args: any[]);
 
@@ -1820,7 +1820,7 @@ export namespace EvinceDocument {
 
         static new_from_pixbuf(pixbuf: GdkPixbuf.Pixbuf): Image;
 
-        // Own methods of EvinceDocument.Image
+        // Methods
 
         get_id(): number;
         get_page(): number;
@@ -1838,11 +1838,11 @@ export namespace EvinceDocument {
     class Layer extends GObject.Object {
         static $gtype: GObject.GType<Layer>;
 
-        // Own fields of EvinceDocument.Layer
+        // Fields
 
         base_instance: GObject.Object;
 
-        // Constructors of EvinceDocument.Layer
+        // Constructors
 
         constructor(properties?: Partial<Layer.ConstructorProps>, ...args: any[]);
 
@@ -1850,7 +1850,7 @@ export namespace EvinceDocument {
 
         static ['new'](is_parent: boolean, rb_group: number): Layer;
 
-        // Own methods of EvinceDocument.Layer
+        // Methods
 
         get_rb_group(): number;
         is_parent(): boolean;
@@ -1868,12 +1868,12 @@ export namespace EvinceDocument {
     class Link extends GObject.Object {
         static $gtype: GObject.GType<Link>;
 
-        // Own properties of EvinceDocument.Link
+        // Properties
 
         get action(): LinkAction;
         get title(): string;
 
-        // Constructors of EvinceDocument.Link
+        // Constructors
 
         constructor(properties?: Partial<Link.ConstructorProps>, ...args: any[]);
 
@@ -1881,7 +1881,7 @@ export namespace EvinceDocument {
 
         static ['new'](title: string, action: LinkAction): Link;
 
-        // Own methods of EvinceDocument.Link
+        // Methods
 
         get_action(): LinkAction;
         get_title(): string;
@@ -1913,7 +1913,7 @@ export namespace EvinceDocument {
     class LinkAction extends GObject.Object {
         static $gtype: GObject.GType<LinkAction>;
 
-        // Own properties of EvinceDocument.LinkAction
+        // Properties
 
         get dest(): LinkDest;
         get exclude_reset_fields(): boolean;
@@ -1932,7 +1932,7 @@ export namespace EvinceDocument {
         get type(): LinkActionType;
         get uri(): string;
 
-        // Constructors of EvinceDocument.LinkAction
+        // Constructors
 
         constructor(properties?: Partial<LinkAction.ConstructorProps>, ...args: any[]);
 
@@ -1952,7 +1952,7 @@ export namespace EvinceDocument {
 
         static new_reset_form(fields: string[], exclude_fields: boolean): LinkAction;
 
-        // Own methods of EvinceDocument.LinkAction
+        // Methods
 
         /**
          * Checks whether `a` and `b` are equal.
@@ -1994,7 +1994,7 @@ export namespace EvinceDocument {
     class LinkDest extends GObject.Object {
         static $gtype: GObject.GType<LinkDest>;
 
-        // Own properties of EvinceDocument.LinkDest
+        // Properties
 
         get bottom(): number;
         get change(): number;
@@ -2008,7 +2008,7 @@ export namespace EvinceDocument {
         get type(): LinkDestType;
         get zoom(): number;
 
-        // Constructors of EvinceDocument.LinkDest
+        // Constructors
 
         constructor(properties?: Partial<LinkDest.ConstructorProps>, ...args: any[]);
 
@@ -2038,7 +2038,7 @@ export namespace EvinceDocument {
             change_zoom: boolean,
         ): LinkDest;
 
-        // Own methods of EvinceDocument.LinkDest
+        // Methods
 
         /**
          * Checks whether `a` and `b` are equal.
@@ -2066,11 +2066,11 @@ export namespace EvinceDocument {
     class Media extends GObject.Object {
         static $gtype: GObject.GType<Media>;
 
-        // Own fields of EvinceDocument.Media
+        // Fields
 
         base_instance: GObject.Object;
 
-        // Constructors of EvinceDocument.Media
+        // Constructors
 
         constructor(properties?: Partial<Media.ConstructorProps>, ...args: any[]);
 
@@ -2078,7 +2078,7 @@ export namespace EvinceDocument {
 
         static new_for_uri(page: Page, uri: string): Media;
 
-        // Own methods of EvinceDocument.Media
+        // Methods
 
         get_page_index(): number;
         get_show_controls(): boolean;
@@ -2095,14 +2095,14 @@ export namespace EvinceDocument {
     class Page extends GObject.Object {
         static $gtype: GObject.GType<Page>;
 
-        // Own fields of EvinceDocument.Page
+        // Fields
 
         base_instance: GObject.Object;
         index: number;
         backend_page: BackendPage;
         backend_destroy_func: BackendPageDestroyFunc;
 
-        // Constructors of EvinceDocument.Page
+        // Constructors
 
         constructor(properties?: Partial<Page.ConstructorProps>, ...args: any[]);
 
@@ -2120,7 +2120,7 @@ export namespace EvinceDocument {
     class RenderContext extends GObject.Object {
         static $gtype: GObject.GType<RenderContext>;
 
-        // Own fields of EvinceDocument.RenderContext
+        // Fields
 
         page: Page;
         rotation: number;
@@ -2128,7 +2128,7 @@ export namespace EvinceDocument {
         target_width: number;
         target_height: number;
 
-        // Constructors of EvinceDocument.RenderContext
+        // Constructors
 
         constructor(properties?: Partial<RenderContext.ConstructorProps>, ...args: any[]);
 
@@ -2136,7 +2136,7 @@ export namespace EvinceDocument {
 
         static ['new'](page: Page, rotation: number, scale: number): RenderContext;
 
-        // Own methods of EvinceDocument.RenderContext
+        // Methods
 
         compute_scaled_size(
             width_points: number,
@@ -2176,7 +2176,7 @@ export namespace EvinceDocument {
     class TransitionEffect extends GObject.Object {
         static $gtype: GObject.GType<TransitionEffect>;
 
-        // Own properties of EvinceDocument.TransitionEffect
+        // Properties
 
         get alignment(): TransitionEffectAlignment;
         set alignment(val: TransitionEffectAlignment);
@@ -2197,7 +2197,7 @@ export namespace EvinceDocument {
         get type(): TransitionEffectType;
         set type(val: TransitionEffectType);
 
-        // Constructors of EvinceDocument.TransitionEffect
+        // Constructors
 
         constructor(properties?: Partial<TransitionEffect.ConstructorProps>, ...args: any[]);
 
@@ -2216,12 +2216,12 @@ export namespace EvinceDocument {
     class DocumentBackendInfo {
         static $gtype: GObject.GType<DocumentBackendInfo>;
 
-        // Own fields of EvinceDocument.DocumentBackendInfo
+        // Fields
 
         name: string;
         version: string;
 
-        // Constructors of EvinceDocument.DocumentBackendInfo
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -2240,7 +2240,7 @@ export namespace EvinceDocument {
     class DocumentInfo {
         static $gtype: GObject.GType<DocumentInfo>;
 
-        // Own fields of EvinceDocument.DocumentInfo
+        // Fields
 
         title: string;
         format: string;
@@ -2264,7 +2264,7 @@ export namespace EvinceDocument {
         contains_js: DocumentContainsJS;
         fields_mask: number;
 
-        // Constructors of EvinceDocument.DocumentInfo
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -2294,7 +2294,7 @@ export namespace EvinceDocument {
 
         static ['new'](): DocumentInfo;
 
-        // Own methods of EvinceDocument.DocumentInfo
+        // Methods
 
         copy(): DocumentInfo;
         /**
@@ -2312,13 +2312,13 @@ export namespace EvinceDocument {
     class DocumentLicense {
         static $gtype: GObject.GType<DocumentLicense>;
 
-        // Own fields of EvinceDocument.DocumentLicense
+        // Fields
 
         text: string;
         uri: string;
         web_statement: string;
 
-        // Constructors of EvinceDocument.DocumentLicense
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -2331,7 +2331,7 @@ export namespace EvinceDocument {
 
         static ['new'](): DocumentLicense;
 
-        // Own methods of EvinceDocument.DocumentLicense
+        // Methods
 
         copy(): DocumentLicense;
         /**
@@ -2349,7 +2349,7 @@ export namespace EvinceDocument {
     abstract class DocumentPrivate {
         static $gtype: GObject.GType<DocumentPrivate>;
 
-        // Constructors of EvinceDocument.DocumentPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2360,7 +2360,7 @@ export namespace EvinceDocument {
     class FileExporterContext {
         static $gtype: GObject.GType<FileExporterContext>;
 
-        // Own fields of EvinceDocument.FileExporterContext
+        // Fields
 
         format: FileExporterFormat;
         filename: string;
@@ -2371,7 +2371,7 @@ export namespace EvinceDocument {
         duplex: boolean;
         pages_per_sheet: number;
 
-        // Constructors of EvinceDocument.FileExporterContext
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2380,7 +2380,7 @@ export namespace EvinceDocument {
     class FindRectangle {
         static $gtype: GObject.GType<FindRectangle>;
 
-        // Own fields of EvinceDocument.FindRectangle
+        // Fields
 
         x1: number;
         y1: number;
@@ -2389,7 +2389,7 @@ export namespace EvinceDocument {
         next_line: boolean;
         after_hyphen: boolean;
 
-        // Constructors of EvinceDocument.FindRectangle
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -2405,7 +2405,7 @@ export namespace EvinceDocument {
 
         static ['new'](): FindRectangle;
 
-        // Own methods of EvinceDocument.FindRectangle
+        // Methods
 
         copy(): FindRectangle;
         free(): void;
@@ -2420,7 +2420,7 @@ export namespace EvinceDocument {
     abstract class ImagePrivate {
         static $gtype: GObject.GType<ImagePrivate>;
 
-        // Constructors of EvinceDocument.ImagePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2429,7 +2429,7 @@ export namespace EvinceDocument {
     abstract class LayerPrivate {
         static $gtype: GObject.GType<LayerPrivate>;
 
-        // Constructors of EvinceDocument.LayerPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2438,7 +2438,7 @@ export namespace EvinceDocument {
     abstract class LinkActionPrivate {
         static $gtype: GObject.GType<LinkActionPrivate>;
 
-        // Constructors of EvinceDocument.LinkActionPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2448,7 +2448,7 @@ export namespace EvinceDocument {
     abstract class LinkDestPrivate {
         static $gtype: GObject.GType<LinkDestPrivate>;
 
-        // Constructors of EvinceDocument.LinkDestPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2456,7 +2456,7 @@ export namespace EvinceDocument {
     abstract class LinkPrivate {
         static $gtype: GObject.GType<LinkPrivate>;
 
-        // Constructors of EvinceDocument.LinkPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2464,12 +2464,12 @@ export namespace EvinceDocument {
     class Mapping {
         static $gtype: GObject.GType<Mapping>;
 
-        // Own fields of EvinceDocument.Mapping
+        // Fields
 
         area: Rectangle;
         data: any;
 
-        // Constructors of EvinceDocument.Mapping
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -2483,14 +2483,14 @@ export namespace EvinceDocument {
     class MappingList {
         static $gtype: GObject.GType<MappingList>;
 
-        // Constructors of EvinceDocument.MappingList
+        // Constructors
 
         constructor(page: number, list: Mapping[]);
         _init(...args: any[]): void;
 
         static ['new'](page: number, list: Mapping[]): MappingList;
 
-        // Own methods of EvinceDocument.MappingList
+        // Methods
 
         find(data?: any | null): Mapping;
         find_custom(data: any | null, func: GLib.CompareFunc): Mapping;
@@ -2509,7 +2509,7 @@ export namespace EvinceDocument {
     abstract class MediaPrivate {
         static $gtype: GObject.GType<MediaPrivate>;
 
-        // Constructors of EvinceDocument.MediaPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2518,12 +2518,12 @@ export namespace EvinceDocument {
     class Point {
         static $gtype: GObject.GType<Point>;
 
-        // Own fields of EvinceDocument.Point
+        // Fields
 
         x: number;
         y: number;
 
-        // Constructors of EvinceDocument.Point
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -2537,14 +2537,14 @@ export namespace EvinceDocument {
     class Rectangle {
         static $gtype: GObject.GType<Rectangle>;
 
-        // Own fields of EvinceDocument.Rectangle
+        // Fields
 
         x1: number;
         y1: number;
         x2: number;
         y2: number;
 
-        // Constructors of EvinceDocument.Rectangle
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -2558,7 +2558,7 @@ export namespace EvinceDocument {
 
         static ['new'](): Rectangle;
 
-        // Own methods of EvinceDocument.Rectangle
+        // Methods
 
         copy(): Rectangle;
         free(): void;
@@ -2569,13 +2569,13 @@ export namespace EvinceDocument {
     class SourceLink {
         static $gtype: GObject.GType<SourceLink>;
 
-        // Own fields of EvinceDocument.SourceLink
+        // Fields
 
         filename: string;
         line: number;
         col: number;
 
-        // Constructors of EvinceDocument.SourceLink
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -2588,7 +2588,7 @@ export namespace EvinceDocument {
 
         static ['new'](filename: string, line: number, col: number): SourceLink;
 
-        // Own methods of EvinceDocument.SourceLink
+        // Methods
 
         copy(): SourceLink;
         free(): void;
@@ -2598,12 +2598,12 @@ export namespace EvinceDocument {
     class TypeInfo {
         static $gtype: GObject.GType<TypeInfo>;
 
-        // Own fields of EvinceDocument.TypeInfo
+        // Fields
 
         desc: string;
         mime_types: string;
 
-        // Constructors of EvinceDocument.TypeInfo
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -2635,7 +2635,7 @@ export namespace EvinceDocument {
         prototype: AnnotationMarkup;
     }
     interface AnnotationMarkup extends Annotation {
-        // Own properties of EvinceDocument.AnnotationMarkup
+        // Properties
 
         get can_have_popup(): boolean;
         set can_have_popup(val: boolean);
@@ -2656,7 +2656,7 @@ export namespace EvinceDocument {
         get rectangle(): Rectangle;
         set rectangle(val: Rectangle);
 
-        // Own methods of EvinceDocument.AnnotationMarkup
+        // Methods
 
         get_label(): string;
         get_opacity(): number;
@@ -2682,11 +2682,11 @@ export namespace EvinceDocument {
         prototype: AsyncRenderer;
     }
     interface AsyncRenderer extends GObject.Object {
-        // Own methods of EvinceDocument.AsyncRenderer
+        // Methods
 
         render_pixbuf(page: number, scale: number, rotation: number): void;
 
-        // Own virtual methods of EvinceDocument.AsyncRenderer
+        // Virtual methods
 
         vfunc_render_finished(pixbuf: GdkPixbuf.Pixbuf): void;
         vfunc_render_pixbuf(page: number, scale: number, rotation: number): void;
@@ -2705,7 +2705,7 @@ export namespace EvinceDocument {
         prototype: DocumentAnnotations;
     }
     interface DocumentAnnotations extends GObject.Object {
-        // Own methods of EvinceDocument.DocumentAnnotations
+        // Methods
 
         add_annotation(annot: Annotation, rect: Rectangle): void;
         can_add_annotation(): boolean;
@@ -2716,7 +2716,7 @@ export namespace EvinceDocument {
         remove_annotation(annot: Annotation): void;
         save_annotation(annot: Annotation, mask: AnnotationsSaveMask): void;
 
-        // Own virtual methods of EvinceDocument.DocumentAnnotations
+        // Virtual methods
 
         vfunc_add_annotation(annot: Annotation, rect: Rectangle): void;
         vfunc_document_is_modified(): boolean;
@@ -2739,12 +2739,12 @@ export namespace EvinceDocument {
         prototype: DocumentAttachments;
     }
     interface DocumentAttachments extends GObject.Object {
-        // Own methods of EvinceDocument.DocumentAttachments
+        // Methods
 
         get_attachments(): Attachment[];
         has_attachments(): boolean;
 
-        // Own virtual methods of EvinceDocument.DocumentAttachments
+        // Virtual methods
 
         vfunc_get_attachments(): Attachment[];
         vfunc_has_attachments(): boolean;
@@ -2763,14 +2763,14 @@ export namespace EvinceDocument {
         prototype: DocumentFind;
     }
     interface DocumentFind extends GObject.Object {
-        // Own methods of EvinceDocument.DocumentFind
+        // Methods
 
         find_text(page: Page, text: string, case_sensitive: boolean): Rectangle[];
         find_text_extended(page: Page, text: string, options: FindOptions): FindRectangle[];
         find_text_with_options(page: Page, text: string, options: FindOptions): Rectangle[];
         get_supported_options(): FindOptions;
 
-        // Own virtual methods of EvinceDocument.DocumentFind
+        // Virtual methods
 
         vfunc_find_text(page: Page, text: string, case_sensitive: boolean): Rectangle[];
         vfunc_find_text_extended(page: Page, text: string, options: FindOptions): FindRectangle[];
@@ -2791,14 +2791,14 @@ export namespace EvinceDocument {
         prototype: DocumentFonts;
     }
     interface DocumentFonts extends GObject.Object {
-        // Own methods of EvinceDocument.DocumentFonts
+        // Methods
 
         fill_model(model: Gtk.TreeModel): void;
         get_fonts_summary(): string;
         get_progress(): number;
         scan(n_pages: number): boolean;
 
-        // Own virtual methods of EvinceDocument.DocumentFonts
+        // Virtual methods
 
         vfunc_fill_model(model: Gtk.TreeModel): void;
         vfunc_get_fonts_summary(): string;
@@ -2819,7 +2819,7 @@ export namespace EvinceDocument {
         prototype: DocumentForms;
     }
     interface DocumentForms extends GObject.Object {
-        // Own methods of EvinceDocument.DocumentForms
+        // Methods
 
         document_is_modified(): boolean;
         form_field_button_get_state(field: FormField): boolean;
@@ -2837,7 +2837,7 @@ export namespace EvinceDocument {
         get_form_fields(page: Page): MappingList;
         reset_form(action: LinkAction): void;
 
-        // Own virtual methods of EvinceDocument.DocumentForms
+        // Virtual methods
 
         vfunc_document_is_modified(): boolean;
         vfunc_form_field_button_get_state(field: FormField): boolean;
@@ -2869,12 +2869,12 @@ export namespace EvinceDocument {
         prototype: DocumentImages;
     }
     interface DocumentImages extends GObject.Object {
-        // Own methods of EvinceDocument.DocumentImages
+        // Methods
 
         get_image(image: Image): GdkPixbuf.Pixbuf;
         get_image_mapping(page: Page): MappingList;
 
-        // Own virtual methods of EvinceDocument.DocumentImages
+        // Virtual methods
 
         vfunc_get_image(image: Image): GdkPixbuf.Pixbuf;
         vfunc_get_image_mapping(page: Page): MappingList;
@@ -2893,7 +2893,7 @@ export namespace EvinceDocument {
         prototype: DocumentLayers;
     }
     interface DocumentLayers extends GObject.Object {
-        // Own methods of EvinceDocument.DocumentLayers
+        // Methods
 
         get_layers(): Gtk.TreeModel;
         has_layers(): boolean;
@@ -2901,7 +2901,7 @@ export namespace EvinceDocument {
         layer_is_visible(layer: Layer): boolean;
         show_layer(layer: Layer): void;
 
-        // Own virtual methods of EvinceDocument.DocumentLayers
+        // Virtual methods
 
         vfunc_get_layers(): Gtk.TreeModel;
         vfunc_has_layers(): boolean;
@@ -2923,7 +2923,7 @@ export namespace EvinceDocument {
         prototype: DocumentLinks;
     }
     interface DocumentLinks extends GObject.Object {
-        // Own methods of EvinceDocument.DocumentLinks
+        // Methods
 
         find_link_dest(link_name: string): LinkDest;
         find_link_page(link_name: string): number;
@@ -2935,7 +2935,7 @@ export namespace EvinceDocument {
         get_links_model(): Gtk.TreeModel;
         has_document_links(): boolean;
 
-        // Own virtual methods of EvinceDocument.DocumentLinks
+        // Virtual methods
 
         vfunc_find_link_dest(link_name: string): LinkDest;
         vfunc_find_link_page(link_name: string): number;
@@ -2957,11 +2957,11 @@ export namespace EvinceDocument {
         prototype: DocumentMedia;
     }
     interface DocumentMedia extends GObject.Object {
-        // Own methods of EvinceDocument.DocumentMedia
+        // Methods
 
         get_media_mapping(page: Page): MappingList;
 
-        // Own virtual methods of EvinceDocument.DocumentMedia
+        // Virtual methods
 
         vfunc_get_media_mapping(page: Page): MappingList;
     }
@@ -2979,11 +2979,11 @@ export namespace EvinceDocument {
         prototype: DocumentPrint;
     }
     interface DocumentPrint extends GObject.Object {
-        // Own methods of EvinceDocument.DocumentPrint
+        // Methods
 
         print_page(page: Page, cr: cairo.Context): void;
 
-        // Own virtual methods of EvinceDocument.DocumentPrint
+        // Virtual methods
 
         vfunc_print_page(page: Page, cr: cairo.Context): void;
     }
@@ -3001,12 +3001,12 @@ export namespace EvinceDocument {
         prototype: DocumentSecurity;
     }
     interface DocumentSecurity extends GObject.Object {
-        // Own methods of EvinceDocument.DocumentSecurity
+        // Methods
 
         has_document_security(): boolean;
         set_password(password: string): void;
 
-        // Own virtual methods of EvinceDocument.DocumentSecurity
+        // Virtual methods
 
         vfunc_has_document_security(): boolean;
         vfunc_set_password(password: string): void;
@@ -3025,7 +3025,7 @@ export namespace EvinceDocument {
         prototype: DocumentText;
     }
     interface DocumentText extends GObject.Object {
-        // Own methods of EvinceDocument.DocumentText
+        // Methods
 
         get_text(page: Page): string;
         /**
@@ -3037,7 +3037,7 @@ export namespace EvinceDocument {
         get_text_layout(page: Page, areas: Rectangle, n_areas: number): boolean;
         get_text_mapping(page: Page): cairo.Region;
 
-        // Own virtual methods of EvinceDocument.DocumentText
+        // Virtual methods
 
         vfunc_get_text(page: Page): string;
         /**
@@ -3062,12 +3062,12 @@ export namespace EvinceDocument {
         prototype: DocumentTransition;
     }
     interface DocumentTransition extends GObject.Object {
-        // Own methods of EvinceDocument.DocumentTransition
+        // Methods
 
         get_effect(page: number): TransitionEffect;
         get_page_duration(page: number): number;
 
-        // Own virtual methods of EvinceDocument.DocumentTransition
+        // Virtual methods
 
         vfunc_get_effect(page: number): TransitionEffect;
         vfunc_get_page_duration(page: number): number;
@@ -3086,7 +3086,7 @@ export namespace EvinceDocument {
         prototype: FileExporter;
     }
     interface FileExporter extends GObject.Object {
-        // Own methods of EvinceDocument.FileExporter
+        // Methods
 
         begin(fc: FileExporterContext): void;
         begin_page(): void;
@@ -3095,7 +3095,7 @@ export namespace EvinceDocument {
         end_page(): void;
         get_capabilities(): FileExporterCapabilities;
 
-        // Own virtual methods of EvinceDocument.FileExporter
+        // Virtual methods
 
         vfunc_begin(fc: FileExporterContext): void;
         vfunc_begin_page(): void;
@@ -3118,7 +3118,7 @@ export namespace EvinceDocument {
         prototype: Selection;
     }
     interface Selection extends GObject.Object {
-        // Own methods of EvinceDocument.Selection
+        // Methods
 
         get_selected_text(page: Page, style: SelectionStyle, points: Rectangle): string;
         get_selection_region(rc: RenderContext, style: SelectionStyle, points: Rectangle): cairo.Region;
@@ -3132,7 +3132,7 @@ export namespace EvinceDocument {
             base: Gdk.Color,
         ): void;
 
-        // Own virtual methods of EvinceDocument.Selection
+        // Virtual methods
 
         vfunc_get_selected_text(page: Page, style: SelectionStyle, points: Rectangle): string;
         vfunc_get_selection_region(rc: RenderContext, style: SelectionStyle, points: Rectangle): cairo.Region;

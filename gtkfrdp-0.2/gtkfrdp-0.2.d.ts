@@ -124,7 +124,7 @@ export namespace GtkFrdp {
     class Display extends Gtk.DrawingArea implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<Display>;
 
-        // Own properties of GtkFrdp.Display
+        // Properties
 
         get allow_resize(): boolean;
         set allow_resize(val: boolean);
@@ -143,7 +143,7 @@ export namespace GtkFrdp {
         get username(): string;
         set username(val: string);
 
-        // Constructors of GtkFrdp.Display
+        // Constructors
 
         constructor(properties?: Partial<Display.ConstructorProps>, ...args: any[]);
 
@@ -151,7 +151,7 @@ export namespace GtkFrdp {
 
         static ['new'](): Display;
 
-        // Own signals of GtkFrdp.Display
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -253,11 +253,11 @@ export namespace GtkFrdp {
             p5: number,
         ): void;
 
-        // Own virtual methods of GtkFrdp.Display
+        // Virtual methods
 
         vfunc_authenticate(username: string, password: string, domain: string): boolean;
 
-        // Own methods of GtkFrdp.Display
+        // Methods
 
         authenticate(username: string, password: string, domain: string): boolean;
         authenticate_finish(username: string, password: string, domain: string): void;
@@ -753,7 +753,7 @@ export namespace GtkFrdp {
     class Session extends GObject.Object {
         static $gtype: GObject.GType<Session>;
 
-        // Own properties of GtkFrdp.Session
+        // Properties
 
         get display(): Gtk.Widget;
         set display(val: Gtk.Widget);
@@ -774,7 +774,7 @@ export namespace GtkFrdp {
         get username(): string;
         set username(val: string);
 
-        // Constructors of GtkFrdp.Session
+        // Constructors
 
         constructor(properties?: Partial<Session.ConstructorProps>, ...args: any[]);
 
@@ -782,7 +782,7 @@ export namespace GtkFrdp {
 
         static ['new'](display: Display): Session;
 
-        // Own signals of GtkFrdp.Session
+        // Signals
 
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -795,7 +795,7 @@ export namespace GtkFrdp {
         connect_after(signal: 'rdp-error', callback: (_source: this, object: string) => void): number;
         emit(signal: 'rdp-error', object: string): void;
 
-        // Own methods of GtkFrdp.Session
+        // Methods
 
         close(): void;
         connect(
@@ -817,7 +817,7 @@ export namespace GtkFrdp {
     abstract class DisplayPrivate {
         static $gtype: GObject.GType<DisplayPrivate>;
 
-        // Constructors of GtkFrdp.DisplayPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -826,7 +826,7 @@ export namespace GtkFrdp {
     abstract class SessionPrivate {
         static $gtype: GObject.GType<SessionPrivate>;
 
-        // Constructors of GtkFrdp.SessionPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }

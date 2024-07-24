@@ -188,7 +188,7 @@ export namespace GstNet {
     class NetClientClock extends Gst.SystemClock {
         static $gtype: GObject.GType<NetClientClock>;
 
-        // Own properties of GstNet.NetClientClock
+        // Properties
 
         get address(): string;
         set address(val: string);
@@ -213,11 +213,11 @@ export namespace GstNet {
         get roundTripLimit(): number;
         set roundTripLimit(val: number);
 
-        // Own fields of GstNet.NetClientClock
+        // Fields
 
         clock: Gst.SystemClock;
 
-        // Constructors of GstNet.NetClientClock
+        // Constructors
 
         constructor(properties?: Partial<NetClientClock.ConstructorProps>, ...args: any[]);
 
@@ -258,7 +258,7 @@ export namespace GstNet {
     class NetTimeProvider extends Gst.Object implements Gio.Initable {
         static $gtype: GObject.GType<NetTimeProvider>;
 
-        // Own properties of GstNet.NetTimeProvider
+        // Properties
 
         get active(): boolean;
         set active(val: boolean);
@@ -270,7 +270,7 @@ export namespace GstNet {
         get qosDscp(): number;
         set qosDscp(val: number);
 
-        // Constructors of GstNet.NetTimeProvider
+        // Constructors
 
         constructor(properties?: Partial<NetTimeProvider.ConstructorProps>, ...args: any[]);
 
@@ -777,11 +777,11 @@ export namespace GstNet {
     class NtpClock extends NetClientClock {
         static $gtype: GObject.GType<NtpClock>;
 
-        // Own fields of GstNet.NtpClock
+        // Fields
 
         clock: Gst.SystemClock;
 
-        // Constructors of GstNet.NtpClock
+        // Constructors
 
         constructor(properties?: Partial<NtpClock.ConstructorProps>, ...args: any[]);
 
@@ -835,7 +835,7 @@ export namespace GstNet {
     class PtpClock extends Gst.SystemClock {
         static $gtype: GObject.GType<PtpClock>;
 
-        // Own properties of GstNet.PtpClock
+        // Properties
 
         get domain(): number;
         get grandmaster_clock_id(): number;
@@ -845,11 +845,11 @@ export namespace GstNet {
         get master_clock_id(): number;
         get masterClockId(): number;
 
-        // Own fields of GstNet.PtpClock
+        // Fields
 
         clock: Gst.SystemClock;
 
-        // Constructors of GstNet.PtpClock
+        // Constructors
 
         constructor(properties?: Partial<PtpClock.ConstructorProps>, ...args: any[]);
 
@@ -866,15 +866,15 @@ export namespace GstNet {
     class NetAddressMeta {
         static $gtype: GObject.GType<NetAddressMeta>;
 
-        // Own fields of GstNet.NetAddressMeta
+        // Fields
 
         addr: Gio.SocketAddress;
 
-        // Constructors of GstNet.NetAddressMeta
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own static methods of GstNet.NetAddressMeta
+        // Static methods
 
         static get_info(): Gst.MetaInfo;
     }
@@ -883,7 +883,7 @@ export namespace GstNet {
     abstract class NetClientClockPrivate {
         static $gtype: GObject.GType<NetClientClockPrivate>;
 
-        // Constructors of GstNet.NetClientClockPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -898,15 +898,15 @@ export namespace GstNet {
     class NetControlMessageMeta {
         static $gtype: GObject.GType<NetControlMessageMeta>;
 
-        // Own fields of GstNet.NetControlMessageMeta
+        // Fields
 
         message: Gio.SocketControlMessage;
 
-        // Constructors of GstNet.NetControlMessageMeta
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own static methods of GstNet.NetControlMessageMeta
+        // Static methods
 
         static get_info(): Gst.MetaInfo;
     }
@@ -918,12 +918,12 @@ export namespace GstNet {
     class NetTimePacket {
         static $gtype: GObject.GType<NetTimePacket>;
 
-        // Own fields of GstNet.NetTimePacket
+        // Fields
 
         local_time: Gst.ClockTime;
         remote_time: Gst.ClockTime;
 
-        // Constructors of GstNet.NetTimePacket
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -935,7 +935,7 @@ export namespace GstNet {
 
         static ['new'](buffer?: Uint8Array | null): NetTimePacket;
 
-        // Own static methods of GstNet.NetTimePacket
+        // Static methods
 
         /**
          * Receives a #GstNetTimePacket over a socket. Handles interrupted system
@@ -944,7 +944,7 @@ export namespace GstNet {
          */
         static receive(socket: Gio.Socket): [NetTimePacket, Gio.SocketAddress | null];
 
-        // Own methods of GstNet.NetTimePacket
+        // Methods
 
         /**
          * Make a copy of `packet`.
@@ -980,7 +980,7 @@ export namespace GstNet {
     abstract class NetTimeProviderPrivate {
         static $gtype: GObject.GType<NetTimeProviderPrivate>;
 
-        // Constructors of GstNet.NetTimeProviderPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -990,7 +990,7 @@ export namespace GstNet {
     abstract class PtpClockPrivate {
         static $gtype: GObject.GType<PtpClockPrivate>;
 
-        // Constructors of GstNet.PtpClockPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }

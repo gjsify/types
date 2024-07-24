@@ -46,18 +46,18 @@ export namespace GjsDBus {
     class Implementation extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface {
         static $gtype: GObject.GType<Implementation>;
 
-        // Own properties of GjsDBus.Implementation
+        // Properties
 
         set g_interface_info(val: Gio.DBusInterfaceInfo);
         set gInterfaceInfo(val: Gio.DBusInterfaceInfo);
 
-        // Constructors of GjsDBus.Implementation
+        // Constructors
 
         constructor(properties?: Partial<Implementation.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of GjsDBus.Implementation
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -84,7 +84,7 @@ export namespace GjsDBus {
         ): number;
         emit(signal: 'handle-property-set', object: string, p0: GLib.Variant): void;
 
-        // Own methods of GjsDBus.Implementation
+        // Methods
 
         /**
          * Queue a PropertyChanged signal for emission, or update the one queued
@@ -542,7 +542,7 @@ export namespace GjsDBus {
     abstract class ImplementationPrivate {
         static $gtype: GObject.GType<ImplementationPrivate>;
 
-        // Constructors of GjsDBus.ImplementationPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }

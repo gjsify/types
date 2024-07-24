@@ -170,7 +170,7 @@ export namespace EvinceView {
     class DocumentModel extends GObject.Object {
         static $gtype: GObject.GType<DocumentModel>;
 
-        // Own properties of EvinceView.DocumentModel
+        // Properties
 
         get continuous(): boolean;
         set continuous(val: boolean);
@@ -215,7 +215,7 @@ export namespace EvinceView {
         get sizingMode(): SizingMode;
         set sizingMode(val: SizingMode);
 
-        // Constructors of EvinceView.DocumentModel
+        // Constructors
 
         constructor(properties?: Partial<DocumentModel.ConstructorProps>, ...args: any[]);
 
@@ -225,7 +225,7 @@ export namespace EvinceView {
 
         static new_with_document(document: EvinceDocument.Document): DocumentModel;
 
-        // Own signals of EvinceView.DocumentModel
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -234,7 +234,7 @@ export namespace EvinceView {
         connect_after(signal: 'page-changed', callback: (_source: this, object: number, p0: number) => void): number;
         emit(signal: 'page-changed', object: number, p0: number): void;
 
-        // Own methods of EvinceView.DocumentModel
+        // Methods
 
         get_continuous(): boolean;
         /**
@@ -299,7 +299,7 @@ export namespace EvinceView {
     abstract class Job extends GObject.Object {
         static $gtype: GObject.GType<Job>;
 
-        // Own fields of EvinceView.Job
+        // Fields
 
         document: EvinceDocument.Document;
         run_mode: JobRunMode;
@@ -310,13 +310,13 @@ export namespace EvinceView {
         idle_finished_id: number;
         idle_cancelled_id: number;
 
-        // Constructors of EvinceView.Job
+        // Constructors
 
         constructor(properties?: Partial<Job.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of EvinceView.Job
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -328,7 +328,7 @@ export namespace EvinceView {
         connect_after(signal: 'finished', callback: (_source: this) => void): number;
         emit(signal: 'finished'): void;
 
-        // Own static methods of EvinceView.Job
+        // Static methods
 
         static scheduler_get_running_thread_job(): Job;
         /**
@@ -337,13 +337,13 @@ export namespace EvinceView {
          */
         static scheduler_wait(): void;
 
-        // Own virtual methods of EvinceView.Job
+        // Virtual methods
 
         vfunc_cancelled(): void;
         vfunc_finished(): void;
         vfunc_run(): boolean;
 
-        // Own methods of EvinceView.Job
+        // Methods
 
         cancel(): void;
         failed(error: GLib.Error): void;
@@ -366,11 +366,11 @@ export namespace EvinceView {
     class JobAnnots extends Job {
         static $gtype: GObject.GType<JobAnnots>;
 
-        // Own fields of EvinceView.JobAnnots
+        // Fields
 
         annots: any[];
 
-        // Constructors of EvinceView.JobAnnots
+        // Constructors
 
         constructor(properties?: Partial<JobAnnots.ConstructorProps>, ...args: any[]);
 
@@ -388,11 +388,11 @@ export namespace EvinceView {
     class JobAttachments extends Job {
         static $gtype: GObject.GType<JobAttachments>;
 
-        // Own fields of EvinceView.JobAttachments
+        // Fields
 
         attachments: any[];
 
-        // Constructors of EvinceView.JobAttachments
+        // Constructors
 
         constructor(properties?: Partial<JobAttachments.ConstructorProps>, ...args: any[]);
 
@@ -410,12 +410,12 @@ export namespace EvinceView {
     class JobExport extends Job {
         static $gtype: GObject.GType<JobExport>;
 
-        // Own fields of EvinceView.JobExport
+        // Fields
 
         page: number;
         rc: EvinceDocument.RenderContext;
 
-        // Constructors of EvinceView.JobExport
+        // Constructors
 
         constructor(properties?: Partial<JobExport.ConstructorProps>, ...args: any[]);
 
@@ -423,7 +423,7 @@ export namespace EvinceView {
 
         static ['new'](document: EvinceDocument.Document): JobExport;
 
-        // Own methods of EvinceView.JobExport
+        // Methods
 
         set_page(page: number): void;
     }
@@ -443,7 +443,7 @@ export namespace EvinceView {
     class JobFind extends Job {
         static $gtype: GObject.GType<JobFind>;
 
-        // Own fields of EvinceView.JobFind
+        // Fields
 
         start_page: number;
         current_page: number;
@@ -453,7 +453,7 @@ export namespace EvinceView {
         case_sensitive: boolean;
         options: EvinceDocument.FindOptions;
 
-        // Constructors of EvinceView.JobFind
+        // Constructors
 
         constructor(properties?: Partial<JobFind.ConstructorProps>, ...args: any[]);
 
@@ -467,7 +467,7 @@ export namespace EvinceView {
             case_sensitive: boolean,
         ): JobFind;
 
-        // Own signals of EvinceView.JobFind
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -476,11 +476,11 @@ export namespace EvinceView {
         connect_after(signal: 'updated', callback: (_source: this, object: number) => void): number;
         emit(signal: 'updated', object: number): void;
 
-        // Own virtual methods of EvinceView.JobFind
+        // Virtual methods
 
         vfunc_updated(page: number): void;
 
-        // Own methods of EvinceView.JobFind
+        // Methods
 
         /**
          * This is similar to ev_job_find_get_n_results() but it takes
@@ -511,11 +511,11 @@ export namespace EvinceView {
     class JobFonts extends Job {
         static $gtype: GObject.GType<JobFonts>;
 
-        // Own fields of EvinceView.JobFonts
+        // Fields
 
         scan_completed: boolean;
 
-        // Constructors of EvinceView.JobFonts
+        // Constructors
 
         constructor(properties?: Partial<JobFonts.ConstructorProps>, ...args: any[]);
 
@@ -523,7 +523,7 @@ export namespace EvinceView {
 
         static ['new'](document: EvinceDocument.Document): JobFonts;
 
-        // Own signals of EvinceView.JobFonts
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -532,7 +532,7 @@ export namespace EvinceView {
         connect_after(signal: 'updated', callback: (_source: this, object: number) => void): number;
         emit(signal: 'updated', object: number): void;
 
-        // Own virtual methods of EvinceView.JobFonts
+        // Virtual methods
 
         vfunc_updated(progress: number): void;
     }
@@ -546,11 +546,11 @@ export namespace EvinceView {
     class JobLayers extends Job {
         static $gtype: GObject.GType<JobLayers>;
 
-        // Own fields of EvinceView.JobLayers
+        // Fields
 
         model: Gtk.TreeModel;
 
-        // Constructors of EvinceView.JobLayers
+        // Constructors
 
         constructor(properties?: Partial<JobLayers.ConstructorProps>, ...args: any[]);
 
@@ -568,11 +568,11 @@ export namespace EvinceView {
     class JobLinks extends Job {
         static $gtype: GObject.GType<JobLinks>;
 
-        // Own fields of EvinceView.JobLinks
+        // Fields
 
         model: Gtk.TreeModel;
 
-        // Constructors of EvinceView.JobLinks
+        // Constructors
 
         constructor(properties?: Partial<JobLinks.ConstructorProps>, ...args: any[]);
 
@@ -580,7 +580,7 @@ export namespace EvinceView {
 
         static ['new'](document: EvinceDocument.Document): JobLinks;
 
-        // Own methods of EvinceView.JobLinks
+        // Methods
 
         /**
          * Get a #GtkTreeModel loaded with the links
@@ -598,12 +598,12 @@ export namespace EvinceView {
     class JobLoad extends Job {
         static $gtype: GObject.GType<JobLoad>;
 
-        // Own fields of EvinceView.JobLoad
+        // Fields
 
         uri: string;
         password: string;
 
-        // Constructors of EvinceView.JobLoad
+        // Constructors
 
         constructor(properties?: Partial<JobLoad.ConstructorProps>, ...args: any[]);
 
@@ -611,7 +611,7 @@ export namespace EvinceView {
 
         static ['new'](uri: string): JobLoad;
 
-        // Own methods of EvinceView.JobLoad
+        // Methods
 
         set_password(password: string): void;
         set_uri(uri: string): void;
@@ -630,14 +630,14 @@ export namespace EvinceView {
     class JobLoadFd extends Job {
         static $gtype: GObject.GType<JobLoadFd>;
 
-        // Own fields of EvinceView.JobLoadFd
+        // Fields
 
         mime_type: string;
         password: string;
         fd: number;
         flags: EvinceDocument.DocumentLoadFlags;
 
-        // Constructors of EvinceView.JobLoadFd
+        // Constructors
 
         constructor(properties?: Partial<JobLoadFd.ConstructorProps>, ...args: any[]);
 
@@ -647,7 +647,7 @@ export namespace EvinceView {
 
         static new_take(fd: number, mime_type: string, flags: EvinceDocument.DocumentLoadFlags): JobLoadFd;
 
-        // Own methods of EvinceView.JobLoadFd
+        // Methods
 
         /**
          * Sets `fd` as the file descriptor in `job`. If duplicating `fd` fails,
@@ -680,13 +680,13 @@ export namespace EvinceView {
     class JobLoadGFile extends Job {
         static $gtype: GObject.GType<JobLoadGFile>;
 
-        // Own fields of EvinceView.JobLoadGFile
+        // Fields
 
         password: string;
         gfile: Gio.File;
         flags: EvinceDocument.DocumentLoadFlags;
 
-        // Constructors of EvinceView.JobLoadGFile
+        // Constructors
 
         constructor(properties?: Partial<JobLoadGFile.ConstructorProps>, ...args: any[]);
 
@@ -694,7 +694,7 @@ export namespace EvinceView {
 
         static ['new'](gfile: Gio.File, flags: EvinceDocument.DocumentLoadFlags): JobLoadGFile;
 
-        // Own methods of EvinceView.JobLoadGFile
+        // Methods
 
         set_gfile(gfile: Gio.File): void;
         set_load_flags(flags: EvinceDocument.DocumentLoadFlags): void;
@@ -713,13 +713,13 @@ export namespace EvinceView {
     class JobLoadStream extends Job {
         static $gtype: GObject.GType<JobLoadStream>;
 
-        // Own fields of EvinceView.JobLoadStream
+        // Fields
 
         password: string;
         stream: Gio.InputStream;
         flags: EvinceDocument.DocumentLoadFlags;
 
-        // Constructors of EvinceView.JobLoadStream
+        // Constructors
 
         constructor(properties?: Partial<JobLoadStream.ConstructorProps>, ...args: any[]);
 
@@ -727,7 +727,7 @@ export namespace EvinceView {
 
         static ['new'](stream: Gio.InputStream, flags: EvinceDocument.DocumentLoadFlags): JobLoadStream;
 
-        // Own methods of EvinceView.JobLoadStream
+        // Methods
 
         set_load_flags(flags: EvinceDocument.DocumentLoadFlags): void;
         set_mime_type(mime_type: string): void;
@@ -744,7 +744,7 @@ export namespace EvinceView {
     class JobPageData extends Job {
         static $gtype: GObject.GType<JobPageData>;
 
-        // Own fields of EvinceView.JobPageData
+        // Fields
 
         page: number;
         flags: JobPageDataFlags;
@@ -754,7 +754,7 @@ export namespace EvinceView {
         text_log_attrs: Pango.LogAttr;
         text_log_attrs_length: number;
 
-        // Constructors of EvinceView.JobPageData
+        // Constructors
 
         constructor(properties?: Partial<JobPageData.ConstructorProps>, ...args: any[]);
 
@@ -772,11 +772,11 @@ export namespace EvinceView {
     class JobPrint extends Job {
         static $gtype: GObject.GType<JobPrint>;
 
-        // Own fields of EvinceView.JobPrint
+        // Fields
 
         page: number;
 
-        // Constructors of EvinceView.JobPrint
+        // Constructors
 
         constructor(properties?: Partial<JobPrint.ConstructorProps>, ...args: any[]);
 
@@ -784,7 +784,7 @@ export namespace EvinceView {
 
         static ['new'](document: EvinceDocument.Document): JobPrint;
 
-        // Own methods of EvinceView.JobPrint
+        // Methods
 
         set_cairo(cr: cairo.Context): void;
         set_page(page: number): void;
@@ -799,7 +799,7 @@ export namespace EvinceView {
     class JobRender extends Job {
         static $gtype: GObject.GType<JobRender>;
 
-        // Own fields of EvinceView.JobRender
+        // Fields
 
         page: number;
         rotation: number;
@@ -813,7 +813,7 @@ export namespace EvinceView {
         base: Gdk.Color;
         text: Gdk.Color;
 
-        // Constructors of EvinceView.JobRender
+        // Constructors
 
         constructor(properties?: Partial<JobRender.ConstructorProps>, ...args: any[]);
 
@@ -828,7 +828,7 @@ export namespace EvinceView {
             height: number,
         ): JobRender;
 
-        // Own methods of EvinceView.JobRender
+        // Methods
 
         set_selection_info(
             selection_points: EvinceDocument.Rectangle,
@@ -847,12 +847,12 @@ export namespace EvinceView {
     class JobSave extends Job {
         static $gtype: GObject.GType<JobSave>;
 
-        // Own fields of EvinceView.JobSave
+        // Fields
 
         uri: string;
         document_uri: string;
 
-        // Constructors of EvinceView.JobSave
+        // Constructors
 
         constructor(properties?: Partial<JobSave.ConstructorProps>, ...args: any[]);
 
@@ -870,7 +870,7 @@ export namespace EvinceView {
     class JobThumbnail extends Job {
         static $gtype: GObject.GType<JobThumbnail>;
 
-        // Own fields of EvinceView.JobThumbnail
+        // Fields
 
         page: number;
         rotation: number;
@@ -881,7 +881,7 @@ export namespace EvinceView {
         has_frame: boolean;
         format: JobThumbnailFormat;
 
-        // Constructors of EvinceView.JobThumbnail
+        // Constructors
 
         constructor(properties?: Partial<JobThumbnail.ConstructorProps>, ...args: any[]);
 
@@ -897,7 +897,7 @@ export namespace EvinceView {
             target_height: number,
         ): JobThumbnail;
 
-        // Own methods of EvinceView.JobThumbnail
+        // Methods
 
         set_has_frame(has_frame: boolean): void;
         /**
@@ -932,11 +932,11 @@ export namespace EvinceView {
     abstract class PrintOperation extends GObject.Object {
         static $gtype: GObject.GType<PrintOperation>;
 
-        // Own properties of EvinceView.PrintOperation
+        // Properties
 
         set document(val: EvinceDocument.Document);
 
-        // Constructors of EvinceView.PrintOperation
+        // Constructors
 
         constructor(properties?: Partial<PrintOperation.ConstructorProps>, ...args: any[]);
 
@@ -944,7 +944,7 @@ export namespace EvinceView {
 
         static ['new'](document: EvinceDocument.Document): PrintOperation;
 
-        // Own signals of EvinceView.PrintOperation
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -959,11 +959,11 @@ export namespace EvinceView {
         connect_after(signal: 'status-changed', callback: (_source: this) => void): number;
         emit(signal: 'status-changed'): void;
 
-        // Own static methods of EvinceView.PrintOperation
+        // Static methods
 
         static exists_for_document(document: EvinceDocument.Document): boolean;
 
-        // Own methods of EvinceView.PrintOperation
+        // Methods
 
         cancel(): void;
         get_default_page_setup(): Gtk.PageSetup;
@@ -1059,7 +1059,7 @@ export namespace EvinceView {
     class View extends Gtk.Container implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable {
         static $gtype: GObject.GType<View>;
 
-        // Own properties of EvinceView.View
+        // Properties
 
         get can_zoom_in(): boolean;
         get canZoomIn(): boolean;
@@ -1074,7 +1074,7 @@ export namespace EvinceView {
          */
         get isLoading(): boolean;
 
-        // Constructors of EvinceView.View
+        // Constructors
 
         constructor(properties?: Partial<View.ConstructorProps>, ...args: any[]);
 
@@ -1082,7 +1082,7 @@ export namespace EvinceView {
 
         static ['new'](): View;
 
-        // Own signals of EvinceView.View
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -1157,7 +1157,7 @@ export namespace EvinceView {
         ): number;
         emit(signal: 'sync-source', object: EvinceDocument.SourceLink): void;
 
-        // Own methods of EvinceView.View
+        // Methods
 
         /**
          * Adds a Text Markup annotation (defaulting to a 'highlight' one) to
@@ -1776,7 +1776,7 @@ export namespace EvinceView {
     class ViewPresentation extends Gtk.Widget implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<ViewPresentation>;
 
-        // Own properties of EvinceView.ViewPresentation
+        // Properties
 
         get current_page(): number;
         set current_page(val: number);
@@ -1788,7 +1788,7 @@ export namespace EvinceView {
         get rotation(): number;
         set rotation(val: number);
 
-        // Constructors of EvinceView.ViewPresentation
+        // Constructors
 
         constructor(properties?: Partial<ViewPresentation.ConstructorProps>, ...args: any[]);
 
@@ -1801,7 +1801,7 @@ export namespace EvinceView {
             inverted_colors: boolean,
         ): ViewPresentation;
 
-        // Own signals of EvinceView.ViewPresentation
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -1816,7 +1816,7 @@ export namespace EvinceView {
         connect_after(signal: 'finished', callback: (_source: this) => void): number;
         emit(signal: 'finished'): void;
 
-        // Own methods of EvinceView.ViewPresentation
+        // Methods
 
         get_current_page(): number;
         get_rotation(): number;

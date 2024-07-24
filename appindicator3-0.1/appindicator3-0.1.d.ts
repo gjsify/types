@@ -189,7 +189,7 @@ export namespace AppIndicator3 {
     class Indicator extends GObject.Object {
         static $gtype: GObject.GType<Indicator>;
 
-        // Own properties of AppIndicator3.Indicator
+        // Properties
 
         /**
          * If the indicator sets it's status to %APP_INDICATOR_STATUS_ATTENTION
@@ -333,7 +333,7 @@ export namespace AppIndicator3 {
         get title(): string;
         set title(val: string);
 
-        // Constructors of AppIndicator3.Indicator
+        // Constructors
 
         constructor(properties?: Partial<Indicator.ConstructorProps>, ...args: any[]);
 
@@ -348,7 +348,7 @@ export namespace AppIndicator3 {
             icon_theme_path: string,
         ): Indicator;
 
-        // Own signals of AppIndicator3.Indicator
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -381,7 +381,7 @@ export namespace AppIndicator3 {
         ): number;
         emit(signal: 'scroll-event', arg1: number, arg2: Gdk.ScrollDirection): void;
 
-        // Own virtual methods of AppIndicator3.Indicator
+        // Virtual methods
 
         vfunc_connection_changed(connected: boolean): void;
         vfunc_new_attention_icon(): void;
@@ -392,7 +392,7 @@ export namespace AppIndicator3 {
         vfunc_scroll_event(delta: number, direction: Gdk.ScrollDirection): void;
         vfunc_unfallback(status_icon: Gtk.StatusIcon): void;
 
-        // Own methods of AppIndicator3.Indicator
+        // Methods
 
         /**
          * This function allows for building the Application Indicator menu
@@ -573,7 +573,7 @@ export namespace AppIndicator3 {
     abstract class IndicatorPrivate {
         static $gtype: GObject.GType<IndicatorPrivate>;
 
-        // Constructors of AppIndicator3.IndicatorPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }

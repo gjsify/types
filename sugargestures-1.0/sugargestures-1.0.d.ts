@@ -94,19 +94,19 @@ export namespace SugarGestures {
     abstract class EventController extends GObject.Object {
         static $gtype: GObject.GType<EventController>;
 
-        // Own properties of SugarGestures.EventController
+        // Properties
 
         get state(): EventControllerState;
         get widget(): Gtk.Widget;
         set widget(val: Gtk.Widget);
 
-        // Constructors of SugarGestures.EventController
+        // Constructors
 
         constructor(properties?: Partial<EventController.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of SugarGestures.EventController
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -121,7 +121,7 @@ export namespace SugarGestures {
         connect_after(signal: 'updated', callback: (_source: this) => void): number;
         emit(signal: 'updated'): void;
 
-        // Own virtual methods of SugarGestures.EventController
+        // Virtual methods
 
         vfunc_began(): void;
         vfunc_ended(): void;
@@ -130,7 +130,7 @@ export namespace SugarGestures {
         vfunc_reset(): void;
         vfunc_updated(): void;
 
-        // Own methods of SugarGestures.EventController
+        // Methods
 
         attach(widget: Gtk.Widget, flags: EventControllerFlags): boolean;
         detach(widget: Gtk.Widget): boolean;
@@ -158,7 +158,7 @@ export namespace SugarGestures {
     class LongPressController extends EventController {
         static $gtype: GObject.GType<LongPressController>;
 
-        // Own properties of SugarGestures.LongPressController
+        // Properties
 
         get threshold(): number;
         set threshold(val: number);
@@ -167,7 +167,7 @@ export namespace SugarGestures {
         get triggerDelay(): number;
         set triggerDelay(val: number);
 
-        // Constructors of SugarGestures.LongPressController
+        // Constructors
 
         constructor(properties?: Partial<LongPressController.ConstructorProps>, ...args: any[]);
 
@@ -175,7 +175,7 @@ export namespace SugarGestures {
 
         static ['new'](): LongPressController;
 
-        // Own signals of SugarGestures.LongPressController
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -184,7 +184,7 @@ export namespace SugarGestures {
         connect_after(signal: 'pressed', callback: (_source: this, object: number, p0: number) => void): number;
         emit(signal: 'pressed', object: number, p0: number): void;
 
-        // Own virtual methods of SugarGestures.LongPressController
+        // Virtual methods
 
         vfunc_pressed(x: number, y: number): void;
     }
@@ -204,11 +204,11 @@ export namespace SugarGestures {
     class RotateController extends TouchController {
         static $gtype: GObject.GType<RotateController>;
 
-        // Own fields of SugarGestures.RotateController
+        // Fields
 
         priv: RotateControllerPrivate;
 
-        // Constructors of SugarGestures.RotateController
+        // Constructors
 
         constructor(properties?: Partial<RotateController.ConstructorProps>, ...args: any[]);
 
@@ -216,7 +216,7 @@ export namespace SugarGestures {
 
         static ['new'](): RotateController;
 
-        // Own signals of SugarGestures.RotateController
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -228,11 +228,11 @@ export namespace SugarGestures {
         ): number;
         emit(signal: 'angle-changed', angle: number, angle_delta: number): void;
 
-        // Own virtual methods of SugarGestures.RotateController
+        // Virtual methods
 
         vfunc_angle_changed(angle: number, delta: number): void;
 
-        // Own methods of SugarGestures.RotateController
+        // Methods
 
         /**
          * If `controller` is on state %SUGAR_EVENT_CONTROLLER_STATE_RECOGNIZED,
@@ -260,11 +260,11 @@ export namespace SugarGestures {
     class SwipeController extends EventController {
         static $gtype: GObject.GType<SwipeController>;
 
-        // Own properties of SugarGestures.SwipeController
+        // Properties
 
         get directions(): SwipeDirectionFlags;
 
-        // Constructors of SugarGestures.SwipeController
+        // Constructors
 
         constructor(properties?: Partial<SwipeController.ConstructorProps>, ...args: any[]);
 
@@ -272,7 +272,7 @@ export namespace SugarGestures {
 
         static ['new'](directions: SwipeDirectionFlags): SwipeController;
 
-        // Own signals of SugarGestures.SwipeController
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -281,7 +281,7 @@ export namespace SugarGestures {
         connect_after(signal: 'swipe-ended', callback: (_source: this, object: SwipeDirection) => void): number;
         emit(signal: 'swipe-ended', object: SwipeDirection): void;
 
-        // Own virtual methods of SugarGestures.SwipeController
+        // Virtual methods
 
         vfunc_swipe_ended(direction: SwipeDirection): void;
     }
@@ -300,7 +300,7 @@ export namespace SugarGestures {
     abstract class TouchController extends EventController {
         static $gtype: GObject.GType<TouchController>;
 
-        // Own properties of SugarGestures.TouchController
+        // Properties
 
         get max_touches(): number;
         set max_touches(val: number);
@@ -311,13 +311,13 @@ export namespace SugarGestures {
         get minTouches(): number;
         set minTouches(val: number);
 
-        // Constructors of SugarGestures.TouchController
+        // Constructors
 
         constructor(properties?: Partial<TouchController.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of SugarGestures.TouchController
+        // Methods
 
         /**
          * If a gesture is ongoing, this function returns the center of
@@ -359,11 +359,11 @@ export namespace SugarGestures {
     class ZoomController extends TouchController {
         static $gtype: GObject.GType<ZoomController>;
 
-        // Own fields of SugarGestures.ZoomController
+        // Fields
 
         priv: ZoomControllerPrivate;
 
-        // Constructors of SugarGestures.ZoomController
+        // Constructors
 
         constructor(properties?: Partial<ZoomController.ConstructorProps>, ...args: any[]);
 
@@ -371,7 +371,7 @@ export namespace SugarGestures {
 
         static ['new'](): ZoomController;
 
-        // Own signals of SugarGestures.ZoomController
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -380,11 +380,11 @@ export namespace SugarGestures {
         connect_after(signal: 'scale-changed', callback: (_source: this, scale: number) => void): number;
         emit(signal: 'scale-changed', scale: number): void;
 
-        // Own virtual methods of SugarGestures.ZoomController
+        // Virtual methods
 
         vfunc_scale_changed(scale: number): void;
 
-        // Own methods of SugarGestures.ZoomController
+        // Methods
 
         /**
          * If `controller` is on state %SUGAR_EVENT_CONTROLLER_STATE_RECOGNIZED,
@@ -400,11 +400,11 @@ export namespace SugarGestures {
     class EventControllerPrivate {
         static $gtype: GObject.GType<EventControllerPrivate>;
 
-        // Own fields of SugarGestures.EventControllerPrivate
+        // Fields
 
         widget: Gtk.Widget;
 
-        // Constructors of SugarGestures.EventControllerPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -413,7 +413,7 @@ export namespace SugarGestures {
     class LongPressControllerPrivate {
         static $gtype: GObject.GType<LongPressControllerPrivate>;
 
-        // Own fields of SugarGestures.LongPressControllerPrivate
+        // Fields
 
         device: Gdk.Device;
         start_time: number;
@@ -427,7 +427,7 @@ export namespace SugarGestures {
         cancelled: number;
         triggered: number;
 
-        // Constructors of SugarGestures.LongPressControllerPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -436,11 +436,11 @@ export namespace SugarGestures {
     class RotateControllerPrivate {
         static $gtype: GObject.GType<RotateControllerPrivate>;
 
-        // Own fields of SugarGestures.RotateControllerPrivate
+        // Fields
 
         initial_angle: number;
 
-        // Constructors of SugarGestures.RotateControllerPrivate
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -454,7 +454,7 @@ export namespace SugarGestures {
     class SwipeControllerPrivate {
         static $gtype: GObject.GType<SwipeControllerPrivate>;
 
-        // Own fields of SugarGestures.SwipeControllerPrivate
+        // Fields
 
         device: Gdk.Device;
         event_data: any[];
@@ -462,7 +462,7 @@ export namespace SugarGestures {
         swiped: number;
         directions: number;
 
-        // Constructors of SugarGestures.SwipeControllerPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -471,12 +471,12 @@ export namespace SugarGestures {
     class TouchControllerPrivate {
         static $gtype: GObject.GType<TouchControllerPrivate>;
 
-        // Own fields of SugarGestures.TouchControllerPrivate
+        // Fields
 
         min_touches: number;
         max_touches: number;
 
-        // Constructors of SugarGestures.TouchControllerPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -485,11 +485,11 @@ export namespace SugarGestures {
     class ZoomControllerPrivate {
         static $gtype: GObject.GType<ZoomControllerPrivate>;
 
-        // Own fields of SugarGestures.ZoomControllerPrivate
+        // Fields
 
         initial_distance: number;
 
-        // Constructors of SugarGestures.ZoomControllerPrivate
+        // Constructors
 
         constructor(
             properties?: Partial<{

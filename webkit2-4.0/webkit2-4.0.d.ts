@@ -442,7 +442,7 @@ export namespace WebKit2 {
     class DownloadError extends GLib.Error {
         static $gtype: GObject.GType<DownloadError>;
 
-        // Static fields of WebKit2.DownloadError
+        // Static fields
 
         /**
          * Download failure due to network error
@@ -457,12 +457,12 @@ export namespace WebKit2 {
          */
         static DESTINATION: number;
 
-        // Constructors of WebKit2.DownloadError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of WebKit2.DownloadError
+        // Static methods
 
         /**
          * Gets the quark for the domain of download errors.
@@ -476,7 +476,7 @@ export namespace WebKit2 {
     class FaviconDatabaseError extends GLib.Error {
         static $gtype: GObject.GType<FaviconDatabaseError>;
 
-        // Static fields of WebKit2.FaviconDatabaseError
+        // Static fields
 
         /**
          * The #WebKitFaviconDatabase is closed
@@ -491,12 +491,12 @@ export namespace WebKit2 {
          */
         static FAVICON_UNKNOWN: number;
 
-        // Constructors of WebKit2.FaviconDatabaseError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of WebKit2.FaviconDatabaseError
+        // Static methods
 
         /**
          * Gets the quark for the domain of favicon database errors.
@@ -669,7 +669,7 @@ export namespace WebKit2 {
     class JavascriptError extends GLib.Error {
         static $gtype: GObject.GType<JavascriptError>;
 
-        // Static fields of WebKit2.JavascriptError
+        // Static fields
 
         /**
          * An exception was raised in JavaScript execution
@@ -684,12 +684,12 @@ export namespace WebKit2 {
          */
         static INVALID_RESULT: number;
 
-        // Constructors of WebKit2.JavascriptError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of WebKit2.JavascriptError
+        // Static methods
 
         /**
          * Gets the quark for the domain of JavaScript errors.
@@ -804,7 +804,7 @@ export namespace WebKit2 {
     class NetworkError extends GLib.Error {
         static $gtype: GObject.GType<NetworkError>;
 
-        // Static fields of WebKit2.NetworkError
+        // Static fields
 
         /**
          * Generic load failure
@@ -827,12 +827,12 @@ export namespace WebKit2 {
          */
         static FILE_DOES_NOT_EXIST: number;
 
-        // Constructors of WebKit2.NetworkError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of WebKit2.NetworkError
+        // Static methods
 
         /**
          * Gets the quark for the domain of networking errors.
@@ -896,7 +896,7 @@ export namespace WebKit2 {
     class PluginError extends GLib.Error {
         static $gtype: GObject.GType<PluginError>;
 
-        // Static fields of WebKit2.PluginError
+        // Static fields
 
         /**
          * Generic plugin load failure. Deprecated 2.32
@@ -923,12 +923,12 @@ export namespace WebKit2 {
          */
         static WILL_HANDLE_LOAD: number;
 
-        // Constructors of WebKit2.PluginError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of WebKit2.PluginError
+        // Static methods
 
         /**
          * Gets the quark for the domain of plug-in errors.
@@ -988,7 +988,7 @@ export namespace WebKit2 {
     class PolicyError extends GLib.Error {
         static $gtype: GObject.GType<PolicyError>;
 
-        // Static fields of WebKit2.PolicyError
+        // Static fields
 
         /**
          * Generic load failure due to policy error
@@ -1011,12 +1011,12 @@ export namespace WebKit2 {
          */
         static CANNOT_USE_RESTRICTED_PORT: number;
 
-        // Constructors of WebKit2.PolicyError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of WebKit2.PolicyError
+        // Static methods
 
         /**
          * Gets the quark for the domain of policy errors.
@@ -1030,7 +1030,7 @@ export namespace WebKit2 {
     class PrintError extends GLib.Error {
         static $gtype: GObject.GType<PrintError>;
 
-        // Static fields of WebKit2.PrintError
+        // Static fields
 
         /**
          * Unspecified error during a print operation
@@ -1045,12 +1045,12 @@ export namespace WebKit2 {
          */
         static INVALID_PAGE_RANGE: number;
 
-        // Constructors of WebKit2.PrintError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of WebKit2.PrintError
+        // Static methods
 
         /**
          * Gets the quark for the domain of printing errors.
@@ -1168,19 +1168,19 @@ export namespace WebKit2 {
     class SnapshotError extends GLib.Error {
         static $gtype: GObject.GType<SnapshotError>;
 
-        // Static fields of WebKit2.SnapshotError
+        // Static fields
 
         /**
          * An error occurred when creating a webpage snapshot.
          */
         static CREATE: number;
 
-        // Constructors of WebKit2.SnapshotError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of WebKit2.SnapshotError
+        // Static methods
 
         /**
          * Gets the quark for the domain of page snapshot errors.
@@ -1242,7 +1242,7 @@ export namespace WebKit2 {
     class UserContentFilterError extends GLib.Error {
         static $gtype: GObject.GType<UserContentFilterError>;
 
-        // Static fields of WebKit2.UserContentFilterError
+        // Static fields
 
         /**
          * The JSON source for a content filter is invalid.
@@ -1253,12 +1253,12 @@ export namespace WebKit2 {
          */
         static NOT_FOUND: number;
 
-        // Constructors of WebKit2.UserContentFilterError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of WebKit2.UserContentFilterError
+        // Static methods
 
         /**
          * Gets the quark for the domain of user content filter errors.
@@ -1297,19 +1297,19 @@ export namespace WebKit2 {
     class UserMessageError extends GLib.Error {
         static $gtype: GObject.GType<UserMessageError>;
 
-        // Static fields of WebKit2.UserMessageError
+        // Static fields
 
         /**
          * The message was not handled by the receiver.
          */
         static MESSAGE: number;
 
-        // Constructors of WebKit2.UserMessageError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of WebKit2.UserMessageError
+        // Static methods
 
         /**
          * Gets the quark for the domain of user message errors.
@@ -1926,13 +1926,13 @@ export namespace WebKit2 {
     class AuthenticationRequest extends GObject.Object {
         static $gtype: GObject.GType<AuthenticationRequest>;
 
-        // Constructors of WebKit2.AuthenticationRequest
+        // Constructors
 
         constructor(properties?: Partial<AuthenticationRequest.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of WebKit2.AuthenticationRequest
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -1944,7 +1944,7 @@ export namespace WebKit2 {
         connect_after(signal: 'cancelled', callback: (_source: this) => void): number;
         emit(signal: 'cancelled'): void;
 
-        // Own methods of WebKit2.AuthenticationRequest
+        // Methods
 
         /**
          * Authenticate the #WebKitAuthenticationRequest.
@@ -2079,20 +2079,20 @@ export namespace WebKit2 {
     class AutomationSession extends GObject.Object {
         static $gtype: GObject.GType<AutomationSession>;
 
-        // Own properties of WebKit2.AutomationSession
+        // Properties
 
         /**
          * The session unique identifier.
          */
         get id(): string;
 
-        // Constructors of WebKit2.AutomationSession
+        // Constructors
 
         constructor(properties?: Partial<AutomationSession.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of WebKit2.AutomationSession
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -2101,7 +2101,7 @@ export namespace WebKit2 {
         connect_after(signal: 'create-web-view', callback: (_source: this) => WebView): number;
         emit(signal: 'create-web-view'): void;
 
-        // Own methods of WebKit2.AutomationSession
+        // Methods
 
         /**
          * Get the the previously set #WebKitAutomationSession.
@@ -2161,13 +2161,13 @@ export namespace WebKit2 {
     class BackForwardList extends GObject.Object {
         static $gtype: GObject.GType<BackForwardList>;
 
-        // Constructors of WebKit2.BackForwardList
+        // Constructors
 
         constructor(properties?: Partial<BackForwardList.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of WebKit2.BackForwardList
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -2182,7 +2182,7 @@ export namespace WebKit2 {
         ): number;
         emit(signal: 'changed', item_added?: BackForwardListItem | null, items_removed?: any | null): void;
 
-        // Own methods of WebKit2.BackForwardList
+        // Methods
 
         /**
          * Returns the item that precedes the current item.
@@ -2249,13 +2249,13 @@ export namespace WebKit2 {
     class BackForwardListItem extends GObject.InitiallyUnowned {
         static $gtype: GObject.GType<BackForwardListItem>;
 
-        // Constructors of WebKit2.BackForwardListItem
+        // Constructors
 
         constructor(properties?: Partial<BackForwardListItem.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of WebKit2.BackForwardListItem
+        // Methods
 
         /**
          * Obtain the original URI of the item.
@@ -2299,7 +2299,7 @@ export namespace WebKit2 {
     class ClipboardPermissionRequest extends GObject.Object implements PermissionRequest {
         static $gtype: GObject.GType<ClipboardPermissionRequest>;
 
-        // Constructors of WebKit2.ClipboardPermissionRequest
+        // Constructors
 
         constructor(properties?: Partial<ClipboardPermissionRequest.ConstructorProps>, ...args: any[]);
 
@@ -2758,7 +2758,7 @@ export namespace WebKit2 {
     class ColorChooserRequest extends GObject.Object {
         static $gtype: GObject.GType<ColorChooserRequest>;
 
-        // Own properties of WebKit2.ColorChooserRequest
+        // Properties
 
         /**
          * The #GdkRGBA color of the request
@@ -2766,13 +2766,13 @@ export namespace WebKit2 {
         get rgba(): Gdk.RGBA;
         set rgba(val: Gdk.RGBA);
 
-        // Constructors of WebKit2.ColorChooserRequest
+        // Constructors
 
         constructor(properties?: Partial<ColorChooserRequest.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of WebKit2.ColorChooserRequest
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -2781,7 +2781,7 @@ export namespace WebKit2 {
         connect_after(signal: 'finished', callback: (_source: this) => void): number;
         emit(signal: 'finished'): void;
 
-        // Own methods of WebKit2.ColorChooserRequest
+        // Methods
 
         /**
          * Cancels `request` and the input element changes to use the initial color.
@@ -2841,7 +2841,7 @@ export namespace WebKit2 {
     class ContextMenu extends GObject.Object {
         static $gtype: GObject.GType<ContextMenu>;
 
-        // Constructors of WebKit2.ContextMenu
+        // Constructors
 
         constructor(properties?: Partial<ContextMenu.ConstructorProps>, ...args: any[]);
 
@@ -2851,7 +2851,7 @@ export namespace WebKit2 {
 
         static new_with_items(items: ContextMenuItem[]): ContextMenu;
 
-        // Own methods of WebKit2.ContextMenu
+        // Methods
 
         /**
          * Adds `item` at the end of the `menu`.
@@ -2978,7 +2978,7 @@ export namespace WebKit2 {
     class ContextMenuItem extends GObject.InitiallyUnowned {
         static $gtype: GObject.GType<ContextMenuItem>;
 
-        // Constructors of WebKit2.ContextMenuItem
+        // Constructors
 
         constructor(properties?: Partial<ContextMenuItem.ConstructorProps>, ...args: any[]);
 
@@ -2996,7 +2996,7 @@ export namespace WebKit2 {
 
         static new_with_submenu(label: string, submenu: ContextMenu): ContextMenuItem;
 
-        // Own methods of WebKit2.ContextMenuItem
+        // Methods
 
         /**
          * Gets the action associated to `item` as a #GtkAction.
@@ -3062,13 +3062,13 @@ export namespace WebKit2 {
     class CookieManager extends GObject.Object {
         static $gtype: GObject.GType<CookieManager>;
 
-        // Constructors of WebKit2.CookieManager
+        // Constructors
 
         constructor(properties?: Partial<CookieManager.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of WebKit2.CookieManager
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -3077,7 +3077,7 @@ export namespace WebKit2 {
         connect_after(signal: 'changed', callback: (_source: this) => void): number;
         emit(signal: 'changed'): void;
 
-        // Own methods of WebKit2.CookieManager
+        // Methods
 
         /**
          * Asynchronously add a #SoupCookie to the underlying storage.
@@ -3279,7 +3279,7 @@ export namespace WebKit2 {
     class DeviceInfoPermissionRequest extends GObject.Object implements PermissionRequest {
         static $gtype: GObject.GType<DeviceInfoPermissionRequest>;
 
-        // Constructors of WebKit2.DeviceInfoPermissionRequest
+        // Constructors
 
         constructor(properties?: Partial<DeviceInfoPermissionRequest.ConstructorProps>, ...args: any[]);
 
@@ -3751,7 +3751,7 @@ export namespace WebKit2 {
     class Download extends GObject.Object {
         static $gtype: GObject.GType<Download>;
 
-        // Own properties of WebKit2.Download
+        // Properties
 
         /**
          * Whether or not the download is allowed to overwrite an existing file on
@@ -3794,13 +3794,13 @@ export namespace WebKit2 {
          */
         get response(): URIResponse;
 
-        // Constructors of WebKit2.Download
+        // Constructors
 
         constructor(properties?: Partial<Download.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of WebKit2.Download
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -3824,11 +3824,11 @@ export namespace WebKit2 {
         connect_after(signal: 'received-data', callback: (_source: this, data_length: number) => void): number;
         emit(signal: 'received-data', data_length: number): void;
 
-        // Own virtual methods of WebKit2.Download
+        // Virtual methods
 
         vfunc_decide_destination(suggested_filename: string): boolean;
 
-        // Own methods of WebKit2.Download
+        // Methods
 
         /**
          * Cancels the download.
@@ -3956,7 +3956,7 @@ export namespace WebKit2 {
     class EditorState extends GObject.Object {
         static $gtype: GObject.GType<EditorState>;
 
-        // Own properties of WebKit2.EditorState
+        // Properties
 
         /**
          * Bitmask of #WebKitEditorTypingAttributes flags.
@@ -3969,13 +3969,13 @@ export namespace WebKit2 {
          */
         get typingAttributes(): number;
 
-        // Constructors of WebKit2.EditorState
+        // Constructors
 
         constructor(properties?: Partial<EditorState.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of WebKit2.EditorState
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -3984,7 +3984,7 @@ export namespace WebKit2 {
         connect_after(signal: 'changed', callback: (_source: this) => void): number;
         emit(signal: 'changed'): void;
 
-        // Own methods of WebKit2.EditorState
+        // Methods
 
         /**
          * Gets the typing attributes at the current cursor position.
@@ -4051,13 +4051,13 @@ export namespace WebKit2 {
     class FaviconDatabase extends GObject.Object {
         static $gtype: GObject.GType<FaviconDatabase>;
 
-        // Constructors of WebKit2.FaviconDatabase
+        // Constructors
 
         constructor(properties?: Partial<FaviconDatabase.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of WebKit2.FaviconDatabase
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -4072,7 +4072,7 @@ export namespace WebKit2 {
         ): number;
         emit(signal: 'favicon-changed', page_uri: string, favicon_uri: string): void;
 
-        // Own methods of WebKit2.FaviconDatabase
+        // Methods
 
         /**
          * Clears all icons from the database.
@@ -4148,7 +4148,7 @@ export namespace WebKit2 {
     class FileChooserRequest extends GObject.Object {
         static $gtype: GObject.GType<FileChooserRequest>;
 
-        // Own properties of WebKit2.FileChooserRequest
+        // Properties
 
         /**
          * The filter currently associated with the request. See
@@ -4195,13 +4195,13 @@ export namespace WebKit2 {
          */
         get selectedFiles(): string[];
 
-        // Constructors of WebKit2.FileChooserRequest
+        // Constructors
 
         constructor(properties?: Partial<FileChooserRequest.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of WebKit2.FileChooserRequest
+        // Methods
 
         /**
          * Ask WebKit to cancel the request.
@@ -4314,7 +4314,7 @@ export namespace WebKit2 {
     class FindController extends GObject.Object {
         static $gtype: GObject.GType<FindController>;
 
-        // Own properties of WebKit2.FindController
+        // Properties
 
         /**
          * The maximum number of matches to report for a given search.
@@ -4341,13 +4341,13 @@ export namespace WebKit2 {
          */
         get webView(): WebView;
 
-        // Constructors of WebKit2.FindController
+        // Constructors
 
         constructor(properties?: Partial<FindController.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of WebKit2.FindController
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -4362,7 +4362,7 @@ export namespace WebKit2 {
         connect_after(signal: 'found-text', callback: (_source: this, match_count: number) => void): number;
         emit(signal: 'found-text', match_count: number): void;
 
-        // Own methods of WebKit2.FindController
+        // Methods
 
         /**
          * Counts the number of matches for `search_text`.
@@ -4486,13 +4486,13 @@ export namespace WebKit2 {
     class FormSubmissionRequest extends GObject.Object {
         static $gtype: GObject.GType<FormSubmissionRequest>;
 
-        // Constructors of WebKit2.FormSubmissionRequest
+        // Constructors
 
         constructor(properties?: Partial<FormSubmissionRequest.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of WebKit2.FormSubmissionRequest
+        // Methods
 
         /**
          * Get the values of the text fields contained in the form associated to `request`.
@@ -4554,7 +4554,7 @@ export namespace WebKit2 {
     class GeolocationManager extends GObject.Object {
         static $gtype: GObject.GType<GeolocationManager>;
 
-        // Own properties of WebKit2.GeolocationManager
+        // Properties
 
         /**
          * Whether high accuracy is enabled. This is a read-only property that will be
@@ -4569,13 +4569,13 @@ export namespace WebKit2 {
          */
         get enableHighAccuracy(): boolean;
 
-        // Constructors of WebKit2.GeolocationManager
+        // Constructors
 
         constructor(properties?: Partial<GeolocationManager.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of WebKit2.GeolocationManager
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -4587,7 +4587,7 @@ export namespace WebKit2 {
         connect_after(signal: 'stop', callback: (_source: this) => void): number;
         emit(signal: 'stop'): void;
 
-        // Own methods of WebKit2.GeolocationManager
+        // Methods
 
         /**
          * Notify `manager` that determining the position failed.
@@ -4641,7 +4641,7 @@ export namespace WebKit2 {
     class GeolocationPermissionRequest extends GObject.Object implements PermissionRequest {
         static $gtype: GObject.GType<GeolocationPermissionRequest>;
 
-        // Constructors of WebKit2.GeolocationPermissionRequest
+        // Constructors
 
         constructor(properties?: Partial<GeolocationPermissionRequest.ConstructorProps>, ...args: any[]);
 
@@ -5109,7 +5109,7 @@ export namespace WebKit2 {
     class HitTestResult extends GObject.Object {
         static $gtype: GObject.GType<HitTestResult>;
 
-        // Own properties of WebKit2.HitTestResult
+        // Properties
 
         /**
          * Bitmask of #WebKitHitTestResultContext flags representing
@@ -5167,13 +5167,13 @@ export namespace WebKit2 {
          */
         get mediaUri(): string;
 
-        // Constructors of WebKit2.HitTestResult
+        // Constructors
 
         constructor(properties?: Partial<HitTestResult.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of WebKit2.HitTestResult
+        // Methods
 
         /**
          * Gets whether %WEBKIT_HIT_TEST_RESULT_CONTEXT_EDITABLE flag is present in
@@ -5291,7 +5291,7 @@ export namespace WebKit2 {
     abstract class InputMethodContext extends GObject.Object {
         static $gtype: GObject.GType<InputMethodContext>;
 
-        // Own properties of WebKit2.InputMethodContext
+        // Properties
 
         /**
          * The #WebKitInputHints of the input associated with this context.
@@ -5314,13 +5314,13 @@ export namespace WebKit2 {
         get inputPurpose(): InputPurpose;
         set inputPurpose(val: InputPurpose);
 
-        // Constructors of WebKit2.InputMethodContext
+        // Constructors
 
         constructor(properties?: Partial<InputMethodContext.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of WebKit2.InputMethodContext
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -5347,7 +5347,7 @@ export namespace WebKit2 {
         connect_after(signal: 'preedit-started', callback: (_source: this) => void): number;
         emit(signal: 'preedit-started'): void;
 
-        // Own virtual methods of WebKit2.InputMethodContext
+        // Virtual methods
 
         vfunc_committed(text: string): void;
         vfunc_delete_surrounding(offset: number, n_chars: number): void;
@@ -5407,7 +5407,7 @@ export namespace WebKit2 {
          */
         vfunc_set_enable_preedit(enabled: boolean): void;
 
-        // Own methods of WebKit2.InputMethodContext
+        // Methods
 
         /**
          * Allow `key_event` to be handled by the input method.
@@ -5499,13 +5499,13 @@ export namespace WebKit2 {
     class InstallMissingMediaPluginsPermissionRequest extends GObject.Object implements PermissionRequest {
         static $gtype: GObject.GType<InstallMissingMediaPluginsPermissionRequest>;
 
-        // Constructors of WebKit2.InstallMissingMediaPluginsPermissionRequest
+        // Constructors
 
         constructor(properties?: Partial<InstallMissingMediaPluginsPermissionRequest.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of WebKit2.InstallMissingMediaPluginsPermissionRequest
+        // Methods
 
         /**
          * This function returns an empty string.
@@ -5954,7 +5954,7 @@ export namespace WebKit2 {
     class MediaKeySystemPermissionRequest extends GObject.Object implements PermissionRequest {
         static $gtype: GObject.GType<MediaKeySystemPermissionRequest>;
 
-        // Constructors of WebKit2.MediaKeySystemPermissionRequest
+        // Constructors
 
         constructor(properties?: Partial<MediaKeySystemPermissionRequest.ConstructorProps>, ...args: any[]);
 
@@ -6406,7 +6406,7 @@ export namespace WebKit2 {
     class NavigationPolicyDecision extends PolicyDecision {
         static $gtype: GObject.GType<NavigationPolicyDecision>;
 
-        // Own properties of WebKit2.NavigationPolicyDecision
+        // Properties
 
         /**
          * If this navigation request targets a new frame, this property contains
@@ -6472,13 +6472,13 @@ export namespace WebKit2 {
          */
         get request(): URIRequest;
 
-        // Constructors of WebKit2.NavigationPolicyDecision
+        // Constructors
 
         constructor(properties?: Partial<NavigationPolicyDecision.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of WebKit2.NavigationPolicyDecision
+        // Methods
 
         /**
          * Gets the value of the #WebKitNavigationPolicyDecision:frame-name property.
@@ -6539,7 +6539,7 @@ export namespace WebKit2 {
     class Notification extends GObject.Object {
         static $gtype: GObject.GType<Notification>;
 
-        // Own properties of WebKit2.Notification
+        // Properties
 
         /**
          * The body for the notification.
@@ -6558,13 +6558,13 @@ export namespace WebKit2 {
          */
         get title(): string;
 
-        // Constructors of WebKit2.Notification
+        // Constructors
 
         constructor(properties?: Partial<Notification.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of WebKit2.Notification
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -6576,7 +6576,7 @@ export namespace WebKit2 {
         connect_after(signal: 'closed', callback: (_source: this) => void): number;
         emit(signal: 'closed'): void;
 
-        // Own methods of WebKit2.Notification
+        // Methods
 
         /**
          * Tells WebKit the notification has been clicked.
@@ -6630,7 +6630,7 @@ export namespace WebKit2 {
     class NotificationPermissionRequest extends GObject.Object implements PermissionRequest {
         static $gtype: GObject.GType<NotificationPermissionRequest>;
 
-        // Constructors of WebKit2.NotificationPermissionRequest
+        // Constructors
 
         constructor(properties?: Partial<NotificationPermissionRequest.ConstructorProps>, ...args: any[]);
 
@@ -7077,13 +7077,13 @@ export namespace WebKit2 {
     class OptionMenu extends GObject.Object {
         static $gtype: GObject.GType<OptionMenu>;
 
-        // Constructors of WebKit2.OptionMenu
+        // Constructors
 
         constructor(properties?: Partial<OptionMenu.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of WebKit2.OptionMenu
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -7092,7 +7092,7 @@ export namespace WebKit2 {
         connect_after(signal: 'close', callback: (_source: this) => void): number;
         emit(signal: 'close'): void;
 
-        // Own methods of WebKit2.OptionMenu
+        // Methods
 
         /**
          * Activates the #WebKitOptionMenuItem at `index` in `menu`.
@@ -7163,13 +7163,13 @@ export namespace WebKit2 {
     class Plugin extends GObject.Object {
         static $gtype: GObject.GType<Plugin>;
 
-        // Constructors of WebKit2.Plugin
+        // Constructors
 
         constructor(properties?: Partial<Plugin.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of WebKit2.Plugin
+        // Methods
 
         /**
          * Obtain the plugin description.
@@ -7215,7 +7215,7 @@ export namespace WebKit2 {
     class PointerLockPermissionRequest extends GObject.Object implements PermissionRequest {
         static $gtype: GObject.GType<PointerLockPermissionRequest>;
 
-        // Constructors of WebKit2.PointerLockPermissionRequest
+        // Constructors
 
         constructor(properties?: Partial<PointerLockPermissionRequest.ConstructorProps>, ...args: any[]);
 
@@ -7662,13 +7662,13 @@ export namespace WebKit2 {
     abstract class PolicyDecision extends GObject.Object {
         static $gtype: GObject.GType<PolicyDecision>;
 
-        // Constructors of WebKit2.PolicyDecision
+        // Constructors
 
         constructor(properties?: Partial<PolicyDecision.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of WebKit2.PolicyDecision
+        // Methods
 
         /**
          * Spawn a download from this decision.
@@ -7738,7 +7738,7 @@ export namespace WebKit2 {
     class PrintCustomWidget extends GObject.Object {
         static $gtype: GObject.GType<PrintCustomWidget>;
 
-        // Own properties of WebKit2.PrintCustomWidget
+        // Properties
 
         /**
          * The title of the custom widget.
@@ -7749,7 +7749,7 @@ export namespace WebKit2 {
          */
         get widget(): Gtk.Widget;
 
-        // Constructors of WebKit2.PrintCustomWidget
+        // Constructors
 
         constructor(properties?: Partial<PrintCustomWidget.ConstructorProps>, ...args: any[]);
 
@@ -7757,7 +7757,7 @@ export namespace WebKit2 {
 
         static ['new'](widget: Gtk.Widget, title: string): PrintCustomWidget;
 
-        // Own signals of WebKit2.PrintCustomWidget
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -7775,12 +7775,12 @@ export namespace WebKit2 {
         ): number;
         emit(signal: 'update', page_setup: Gtk.PageSetup, print_settings: Gtk.PrintSettings): void;
 
-        // Own virtual methods of WebKit2.PrintCustomWidget
+        // Virtual methods
 
         vfunc_apply(widget: Gtk.Widget): void;
         vfunc_update(widget: Gtk.Widget, page_setup: Gtk.PageSetup, print_settings: Gtk.PrintSettings): void;
 
-        // Own methods of WebKit2.PrintCustomWidget
+        // Methods
 
         /**
          * Return the value of #WebKitPrintCustomWidget:title property.
@@ -7841,7 +7841,7 @@ export namespace WebKit2 {
     class PrintOperation extends GObject.Object {
         static $gtype: GObject.GType<PrintOperation>;
 
-        // Own properties of WebKit2.PrintOperation
+        // Properties
 
         /**
          * The initial #GtkPageSetup for the print operation.
@@ -7872,7 +7872,7 @@ export namespace WebKit2 {
          */
         get webView(): WebView;
 
-        // Constructors of WebKit2.PrintOperation
+        // Constructors
 
         constructor(properties?: Partial<PrintOperation.ConstructorProps>, ...args: any[]);
 
@@ -7880,7 +7880,7 @@ export namespace WebKit2 {
 
         static ['new'](web_view: WebView): PrintOperation;
 
-        // Own signals of WebKit2.PrintOperation
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -7895,7 +7895,7 @@ export namespace WebKit2 {
         connect_after(signal: 'finished', callback: (_source: this) => void): number;
         emit(signal: 'finished'): void;
 
-        // Own methods of WebKit2.PrintOperation
+        // Methods
 
         /**
          * Return the current page setup of `print_operation`.
@@ -7986,7 +7986,7 @@ export namespace WebKit2 {
     class ResponsePolicyDecision extends PolicyDecision {
         static $gtype: GObject.GType<ResponsePolicyDecision>;
 
-        // Own properties of WebKit2.ResponsePolicyDecision
+        // Properties
 
         /**
          * This property contains the #WebKitURIRequest associated with this
@@ -7999,13 +7999,13 @@ export namespace WebKit2 {
          */
         get response(): URIResponse;
 
-        // Constructors of WebKit2.ResponsePolicyDecision
+        // Constructors
 
         constructor(properties?: Partial<ResponsePolicyDecision.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of WebKit2.ResponsePolicyDecision
+        // Methods
 
         /**
          * Return the #WebKitURIRequest associated with the response decision.
@@ -8056,13 +8056,13 @@ export namespace WebKit2 {
     class SecurityManager extends GObject.Object {
         static $gtype: GObject.GType<SecurityManager>;
 
-        // Constructors of WebKit2.SecurityManager
+        // Constructors
 
         constructor(properties?: Partial<SecurityManager.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of WebKit2.SecurityManager
+        // Methods
 
         /**
          * Register `scheme` as a CORS (Cross-origin resource sharing) enabled scheme.
@@ -8309,7 +8309,7 @@ export namespace WebKit2 {
     class Settings extends GObject.Object {
         static $gtype: GObject.GType<Settings>;
 
-        // Own properties of WebKit2.Settings
+        // Properties
 
         /**
          * Whether file access is allowed from file URLs. By default, when
@@ -9178,7 +9178,7 @@ export namespace WebKit2 {
         get zoomTextOnly(): boolean;
         set zoomTextOnly(val: boolean);
 
-        // Constructors of WebKit2.Settings
+        // Constructors
 
         constructor(properties?: Partial<Settings.ConstructorProps>, ...args: any[]);
 
@@ -9186,7 +9186,7 @@ export namespace WebKit2 {
 
         static ['new'](): Settings;
 
-        // Own static methods of WebKit2.Settings
+        // Static methods
 
         /**
          * Convert `points` to the equivalent value in pixels.
@@ -9240,7 +9240,7 @@ export namespace WebKit2 {
          */
         static get_experimental_features(): FeatureList;
 
-        // Own methods of WebKit2.Settings
+        // Methods
 
         /**
          * Get the #WebKitSettings:allow-file-access-from-file-urls property.
@@ -9906,7 +9906,7 @@ export namespace WebKit2 {
     class URIRequest extends GObject.Object {
         static $gtype: GObject.GType<URIRequest>;
 
-        // Own properties of WebKit2.URIRequest
+        // Properties
 
         /**
          * The URI to which the request will be made.
@@ -9914,7 +9914,7 @@ export namespace WebKit2 {
         get uri(): string;
         set uri(val: string);
 
-        // Constructors of WebKit2.URIRequest
+        // Constructors
 
         constructor(properties?: Partial<URIRequest.ConstructorProps>, ...args: any[]);
 
@@ -9922,7 +9922,7 @@ export namespace WebKit2 {
 
         static ['new'](uri: string): URIRequest;
 
-        // Own methods of WebKit2.URIRequest
+        // Methods
 
         /**
          * Get the HTTP headers of a #WebKitURIRequest as a #SoupMessageHeaders.
@@ -9974,7 +9974,7 @@ export namespace WebKit2 {
     class URIResponse extends GObject.Object {
         static $gtype: GObject.GType<URIResponse>;
 
-        // Own properties of WebKit2.URIResponse
+        // Properties
 
         /**
          * The expected content length of the response.
@@ -10021,13 +10021,13 @@ export namespace WebKit2 {
          */
         get uri(): string;
 
-        // Constructors of WebKit2.URIResponse
+        // Constructors
 
         constructor(properties?: Partial<URIResponse.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of WebKit2.URIResponse
+        // Methods
 
         /**
          * Get the expected content length of the #WebKitURIResponse.
@@ -10093,13 +10093,13 @@ export namespace WebKit2 {
     class URISchemeRequest extends GObject.Object {
         static $gtype: GObject.GType<URISchemeRequest>;
 
-        // Constructors of WebKit2.URISchemeRequest
+        // Constructors
 
         constructor(properties?: Partial<URISchemeRequest.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of WebKit2.URISchemeRequest
+        // Methods
 
         /**
          * Finish a #WebKitURISchemeRequest by setting the contents of the request and its mime type.
@@ -10182,7 +10182,7 @@ export namespace WebKit2 {
     class URISchemeResponse extends GObject.Object {
         static $gtype: GObject.GType<URISchemeResponse>;
 
-        // Own properties of WebKit2.URISchemeResponse
+        // Properties
 
         /**
          * The input stream to read from.
@@ -10197,7 +10197,7 @@ export namespace WebKit2 {
          */
         set streamLength(val: number);
 
-        // Constructors of WebKit2.URISchemeResponse
+        // Constructors
 
         constructor(properties?: Partial<URISchemeResponse.ConstructorProps>, ...args: any[]);
 
@@ -10205,7 +10205,7 @@ export namespace WebKit2 {
 
         static ['new'](input_stream: Gio.InputStream, stream_length: number): URISchemeResponse;
 
-        // Own methods of WebKit2.URISchemeResponse
+        // Methods
 
         /**
          * Sets the content type for the `response`
@@ -10257,7 +10257,7 @@ export namespace WebKit2 {
     class UserContentFilterStore extends GObject.Object {
         static $gtype: GObject.GType<UserContentFilterStore>;
 
-        // Own properties of WebKit2.UserContentFilterStore
+        // Properties
 
         /**
          * The directory used for filter storage. This path is used as the base
@@ -10265,7 +10265,7 @@ export namespace WebKit2 {
          */
         get path(): string;
 
-        // Constructors of WebKit2.UserContentFilterStore
+        // Constructors
 
         constructor(properties?: Partial<UserContentFilterStore.ConstructorProps>, ...args: any[]);
 
@@ -10273,7 +10273,7 @@ export namespace WebKit2 {
 
         static ['new'](storage_path: string): UserContentFilterStore;
 
-        // Own methods of WebKit2.UserContentFilterStore
+        // Methods
 
         /**
          * Asynchronously retrieve a list of the identifiers for all the stored filters.
@@ -10439,7 +10439,7 @@ export namespace WebKit2 {
     class UserContentManager extends GObject.Object {
         static $gtype: GObject.GType<UserContentManager>;
 
-        // Constructors of WebKit2.UserContentManager
+        // Constructors
 
         constructor(properties?: Partial<UserContentManager.ConstructorProps>, ...args: any[]);
 
@@ -10447,7 +10447,7 @@ export namespace WebKit2 {
 
         static ['new'](): UserContentManager;
 
-        // Own signals of WebKit2.UserContentManager
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -10472,7 +10472,7 @@ export namespace WebKit2 {
             reply: ScriptMessageReply,
         ): void;
 
-        // Own methods of WebKit2.UserContentManager
+        // Methods
 
         /**
          * Adds a #WebKitUserContentFilter to the given #WebKitUserContentManager.
@@ -10655,7 +10655,7 @@ export namespace WebKit2 {
     class UserMediaPermissionRequest extends GObject.Object implements PermissionRequest {
         static $gtype: GObject.GType<UserMediaPermissionRequest>;
 
-        // Own properties of WebKit2.UserMediaPermissionRequest
+        // Properties
 
         /**
          * Whether the media device to which the permission was requested has a microphone or not.
@@ -10674,7 +10674,7 @@ export namespace WebKit2 {
          */
         get isForVideoDevice(): boolean;
 
-        // Constructors of WebKit2.UserMediaPermissionRequest
+        // Constructors
 
         constructor(properties?: Partial<UserMediaPermissionRequest.ConstructorProps>, ...args: any[]);
 
@@ -11123,7 +11123,7 @@ export namespace WebKit2 {
     class UserMessage extends GObject.InitiallyUnowned {
         static $gtype: GObject.GType<UserMessage>;
 
-        // Own properties of WebKit2.UserMessage
+        // Properties
 
         /**
          * The UNIX file descriptors of the user message.
@@ -11144,7 +11144,7 @@ export namespace WebKit2 {
          */
         get parameters(): GLib.Variant;
 
-        // Constructors of WebKit2.UserMessage
+        // Constructors
 
         constructor(properties?: Partial<UserMessage.ConstructorProps>, ...args: any[]);
 
@@ -11158,7 +11158,7 @@ export namespace WebKit2 {
             fd_list?: Gio.UnixFDList | null,
         ): UserMessage;
 
-        // Own methods of WebKit2.UserMessage
+        // Methods
 
         /**
          * Get the `message` list of file descritpor.
@@ -11257,7 +11257,7 @@ export namespace WebKit2 {
     class WebContext extends GObject.Object {
         static $gtype: GObject.GType<WebContext>;
 
-        // Own properties of WebKit2.WebContext
+        // Properties
 
         /**
          * The directory where local storage data will be saved.
@@ -11344,7 +11344,7 @@ export namespace WebKit2 {
          */
         get websiteDataManager(): WebsiteDataManager;
 
-        // Constructors of WebKit2.WebContext
+        // Constructors
 
         constructor(properties?: Partial<WebContext.ConstructorProps>, ...args: any[]);
 
@@ -11356,7 +11356,7 @@ export namespace WebKit2 {
 
         static new_with_website_data_manager(manager: WebsiteDataManager): WebContext;
 
-        // Own signals of WebKit2.WebContext
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -11383,14 +11383,14 @@ export namespace WebKit2 {
         ): number;
         emit(signal: 'user-message-received', message: UserMessage): void;
 
-        // Own static methods of WebKit2.WebContext
+        // Static methods
 
         /**
          * Gets the default web context.
          */
         static get_default(): WebContext;
 
-        // Own virtual methods of WebKit2.WebContext
+        // Virtual methods
 
         vfunc_automation_started(session: AutomationSession): void;
         vfunc_download_started(download: Download): void;
@@ -11398,7 +11398,7 @@ export namespace WebKit2 {
         vfunc_initialize_web_extensions(): void;
         vfunc_user_message_received(message: UserMessage): boolean;
 
-        // Own methods of WebKit2.WebContext
+        // Methods
 
         /**
          * Adds a path to be mounted in the sandbox.
@@ -11893,7 +11893,7 @@ export namespace WebKit2 {
     class WebInspector extends GObject.Object {
         static $gtype: GObject.GType<WebInspector>;
 
-        // Own properties of WebKit2.WebInspector
+        // Properties
 
         /**
          * The height that the inspector view should have when it is attached.
@@ -11922,13 +11922,13 @@ export namespace WebKit2 {
          */
         get inspectedUri(): string;
 
-        // Constructors of WebKit2.WebInspector
+        // Constructors
 
         constructor(properties?: Partial<WebInspector.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of WebKit2.WebInspector
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -11949,7 +11949,7 @@ export namespace WebKit2 {
         connect_after(signal: 'open-window', callback: (_source: this) => boolean): number;
         emit(signal: 'open-window'): void;
 
-        // Own methods of WebKit2.WebInspector
+        // Methods
 
         /**
          * Request `inspector` to be attached.
@@ -12061,7 +12061,7 @@ export namespace WebKit2 {
     class WebResource extends GObject.Object {
         static $gtype: GObject.GType<WebResource>;
 
-        // Own properties of WebKit2.WebResource
+        // Properties
 
         /**
          * The #WebKitURIResponse associated with this resource.
@@ -12073,13 +12073,13 @@ export namespace WebKit2 {
          */
         get uri(): string;
 
-        // Constructors of WebKit2.WebResource
+        // Constructors
 
         constructor(properties?: Partial<WebResource.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of WebKit2.WebResource
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -12112,7 +12112,7 @@ export namespace WebKit2 {
         ): number;
         emit(signal: 'sent-request', request: URIRequest, redirected_response: URIResponse): void;
 
-        // Own methods of WebKit2.WebResource
+        // Methods
 
         /**
          * Asynchronously get the raw data for `resource`.
@@ -12355,7 +12355,7 @@ export namespace WebKit2 {
     class WebView extends WebViewBase implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<WebView>;
 
-        // Own properties of WebKit2.WebView
+        // Properties
 
         /**
          * The #WebKitAutomationBrowsingContextPresentation of #WebKitWebView. This should only be used when
@@ -12703,7 +12703,7 @@ export namespace WebKit2 {
         get zoomLevel(): number;
         set zoomLevel(val: number);
 
-        // Constructors of WebKit2.WebView
+        // Constructors
 
         constructor(properties?: Partial<WebView.ConstructorProps>, ...args: any[]);
 
@@ -12719,7 +12719,7 @@ export namespace WebKit2 {
 
         static new_with_user_content_manager(user_content_manager: UserContentManager): WebView;
 
-        // Own signals of WebKit2.WebView
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -12918,7 +12918,7 @@ export namespace WebKit2 {
         ): number;
         emit(signal: 'web-process-terminated', reason: WebProcessTerminationReason): void;
 
-        // Own virtual methods of WebKit2.WebView
+        // Virtual methods
 
         vfunc_authenticate(request: AuthenticationRequest): boolean;
         vfunc_close(): void;
@@ -12952,7 +12952,7 @@ export namespace WebKit2 {
         vfunc_web_process_crashed(): boolean;
         vfunc_web_process_terminated(reason: WebProcessTerminationReason): void;
 
-        // Own methods of WebKit2.WebView
+        // Methods
 
         /**
          * Asynchronously call `body` with `arguments` in the script world with name `world_name` of the main frame current context in `web_view`.
@@ -14417,7 +14417,7 @@ export namespace WebKit2 {
     class WebViewBase extends Gtk.Container implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<WebViewBase>;
 
-        // Constructors of WebKit2.WebViewBase
+        // Constructors
 
         constructor(properties?: Partial<WebViewBase.ConstructorProps>, ...args: any[]);
 
@@ -14844,13 +14844,13 @@ export namespace WebKit2 {
     class WebsiteDataAccessPermissionRequest extends GObject.Object implements PermissionRequest {
         static $gtype: GObject.GType<WebsiteDataAccessPermissionRequest>;
 
-        // Constructors of WebKit2.WebsiteDataAccessPermissionRequest
+        // Constructors
 
         constructor(properties?: Partial<WebsiteDataAccessPermissionRequest.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of WebKit2.WebsiteDataAccessPermissionRequest
+        // Methods
 
         /**
          * Get the current domain being browsed.
@@ -15336,7 +15336,7 @@ export namespace WebKit2 {
     class WebsiteDataManager extends GObject.Object {
         static $gtype: GObject.GType<WebsiteDataManager>;
 
-        // Own properties of WebKit2.WebsiteDataManager
+        // Properties
 
         /**
          * The base directory for caches. If %NULL, a default location will be used.
@@ -15469,7 +15469,7 @@ export namespace WebKit2 {
          */
         get websqlDirectory(): string;
 
-        // Constructors of WebKit2.WebsiteDataManager
+        // Constructors
 
         constructor(properties?: Partial<WebsiteDataManager.ConstructorProps>, ...args: any[]);
 
@@ -15477,7 +15477,7 @@ export namespace WebKit2 {
 
         static new_ephemeral(): WebsiteDataManager;
 
-        // Own static methods of WebKit2.WebsiteDataManager
+        // Static methods
 
         /**
          * Sets `settings` as the #WebKitMemoryPressureSettings.
@@ -15497,7 +15497,7 @@ export namespace WebKit2 {
          */
         static set_memory_pressure_settings(settings: MemoryPressureSettings): void;
 
-        // Own methods of WebKit2.WebsiteDataManager
+        // Methods
 
         /**
          * Asynchronously clear the website data of the given `types` modified in the past `timespan`.
@@ -15724,14 +15724,14 @@ export namespace WebKit2 {
     class WebsitePolicies extends GObject.Object {
         static $gtype: GObject.GType<WebsitePolicies>;
 
-        // Own properties of WebKit2.WebsitePolicies
+        // Properties
 
         /**
          * The #WebKitAutoplayPolicy of #WebKitWebsitePolicies.
          */
         get autoplay(): AutoplayPolicy;
 
-        // Constructors of WebKit2.WebsitePolicies
+        // Constructors
 
         constructor(properties?: Partial<WebsitePolicies.ConstructorProps>, ...args: any[]);
 
@@ -15739,7 +15739,7 @@ export namespace WebKit2 {
 
         static ['new'](): WebsitePolicies;
 
-        // Own methods of WebKit2.WebsitePolicies
+        // Methods
 
         /**
          * Get the #WebKitWebsitePolicies:autoplay property.
@@ -15827,7 +15827,7 @@ export namespace WebKit2 {
     class WindowProperties extends GObject.Object {
         static $gtype: GObject.GType<WindowProperties>;
 
-        // Own properties of WebKit2.WindowProperties
+        // Properties
 
         /**
          * Whether window will be displayed fullscreen.
@@ -15882,13 +15882,13 @@ export namespace WebKit2 {
          */
         get toolbarVisible(): boolean;
 
-        // Constructors of WebKit2.WindowProperties
+        // Constructors
 
         constructor(properties?: Partial<WindowProperties.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of WebKit2.WindowProperties
+        // Methods
 
         /**
          * Get whether the window should be shown in fullscreen state or not.
@@ -15937,14 +15937,14 @@ export namespace WebKit2 {
     class ApplicationInfo {
         static $gtype: GObject.GType<ApplicationInfo>;
 
-        // Constructors of WebKit2.ApplicationInfo
+        // Constructors
 
         constructor(properties?: Partial<{}>);
         _init(...args: any[]): void;
 
         static ['new'](): ApplicationInfo;
 
-        // Own methods of WebKit2.ApplicationInfo
+        // Methods
 
         /**
          * Get the name of the application.
@@ -16001,7 +16001,7 @@ export namespace WebKit2 {
     abstract class AuthenticationRequestPrivate {
         static $gtype: GObject.GType<AuthenticationRequestPrivate>;
 
-        // Constructors of WebKit2.AuthenticationRequestPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -16010,7 +16010,7 @@ export namespace WebKit2 {
     abstract class AutomationSessionPrivate {
         static $gtype: GObject.GType<AutomationSessionPrivate>;
 
-        // Constructors of WebKit2.AutomationSessionPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -16020,7 +16020,7 @@ export namespace WebKit2 {
     abstract class BackForwardListItemPrivate {
         static $gtype: GObject.GType<BackForwardListItemPrivate>;
 
-        // Constructors of WebKit2.BackForwardListItemPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -16028,7 +16028,7 @@ export namespace WebKit2 {
     abstract class BackForwardListPrivate {
         static $gtype: GObject.GType<BackForwardListPrivate>;
 
-        // Constructors of WebKit2.BackForwardListPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -16037,7 +16037,7 @@ export namespace WebKit2 {
     abstract class ClipboardPermissionRequestPrivate {
         static $gtype: GObject.GType<ClipboardPermissionRequestPrivate>;
 
-        // Constructors of WebKit2.ClipboardPermissionRequestPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -16046,7 +16046,7 @@ export namespace WebKit2 {
     abstract class ColorChooserRequestPrivate {
         static $gtype: GObject.GType<ColorChooserRequestPrivate>;
 
-        // Constructors of WebKit2.ColorChooserRequestPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -16056,7 +16056,7 @@ export namespace WebKit2 {
     abstract class ContextMenuItemPrivate {
         static $gtype: GObject.GType<ContextMenuItemPrivate>;
 
-        // Constructors of WebKit2.ContextMenuItemPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -16064,7 +16064,7 @@ export namespace WebKit2 {
     abstract class ContextMenuPrivate {
         static $gtype: GObject.GType<ContextMenuPrivate>;
 
-        // Constructors of WebKit2.ContextMenuPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -16073,7 +16073,7 @@ export namespace WebKit2 {
     abstract class CookieManagerPrivate {
         static $gtype: GObject.GType<CookieManagerPrivate>;
 
-        // Constructors of WebKit2.CookieManagerPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -16084,7 +16084,7 @@ export namespace WebKit2 {
     class Credential {
         static $gtype: GObject.GType<Credential>;
 
-        // Constructors of WebKit2.Credential
+        // Constructors
 
         constructor(username: string, password: string, persistence: CredentialPersistence);
         _init(...args: any[]): void;
@@ -16098,7 +16098,7 @@ export namespace WebKit2 {
 
         static new_for_certificate_pin(pin: string, persistence: CredentialPersistence): Credential;
 
-        // Own methods of WebKit2.Credential
+        // Methods
 
         /**
          * Make a copy of the #WebKitCredential.
@@ -16140,7 +16140,7 @@ export namespace WebKit2 {
     abstract class DeviceInfoPermissionRequestPrivate {
         static $gtype: GObject.GType<DeviceInfoPermissionRequestPrivate>;
 
-        // Constructors of WebKit2.DeviceInfoPermissionRequestPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -16149,7 +16149,7 @@ export namespace WebKit2 {
     abstract class DownloadPrivate {
         static $gtype: GObject.GType<DownloadPrivate>;
 
-        // Constructors of WebKit2.DownloadPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -16158,7 +16158,7 @@ export namespace WebKit2 {
     abstract class EditorStatePrivate {
         static $gtype: GObject.GType<EditorStatePrivate>;
 
-        // Constructors of WebKit2.EditorStatePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -16167,7 +16167,7 @@ export namespace WebKit2 {
     abstract class FaviconDatabasePrivate {
         static $gtype: GObject.GType<FaviconDatabasePrivate>;
 
-        // Constructors of WebKit2.FaviconDatabasePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -16210,11 +16210,11 @@ export namespace WebKit2 {
     abstract class Feature {
         static $gtype: GObject.GType<Feature>;
 
-        // Constructors of WebKit2.Feature
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of WebKit2.Feature
+        // Methods
 
         /**
          * Gets the category of the feature.
@@ -16308,11 +16308,11 @@ export namespace WebKit2 {
     abstract class FeatureList {
         static $gtype: GObject.GType<FeatureList>;
 
-        // Constructors of WebKit2.FeatureList
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of WebKit2.FeatureList
+        // Methods
 
         /**
          * Gets a feature given its index.
@@ -16346,7 +16346,7 @@ export namespace WebKit2 {
     abstract class FileChooserRequestPrivate {
         static $gtype: GObject.GType<FileChooserRequestPrivate>;
 
-        // Constructors of WebKit2.FileChooserRequestPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -16355,7 +16355,7 @@ export namespace WebKit2 {
     abstract class FindControllerPrivate {
         static $gtype: GObject.GType<FindControllerPrivate>;
 
-        // Constructors of WebKit2.FindControllerPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -16364,7 +16364,7 @@ export namespace WebKit2 {
     abstract class FormSubmissionRequestPrivate {
         static $gtype: GObject.GType<FormSubmissionRequestPrivate>;
 
-        // Constructors of WebKit2.FormSubmissionRequestPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -16373,7 +16373,7 @@ export namespace WebKit2 {
     abstract class GeolocationManagerPrivate {
         static $gtype: GObject.GType<GeolocationManagerPrivate>;
 
-        // Constructors of WebKit2.GeolocationManagerPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -16382,7 +16382,7 @@ export namespace WebKit2 {
     abstract class GeolocationPermissionRequestPrivate {
         static $gtype: GObject.GType<GeolocationPermissionRequestPrivate>;
 
-        // Constructors of WebKit2.GeolocationPermissionRequestPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -16396,14 +16396,14 @@ export namespace WebKit2 {
     class GeolocationPosition {
         static $gtype: GObject.GType<GeolocationPosition>;
 
-        // Constructors of WebKit2.GeolocationPosition
+        // Constructors
 
         constructor(latitude: number, longitude: number, accuracy: number);
         _init(...args: any[]): void;
 
         static ['new'](latitude: number, longitude: number, accuracy: number): GeolocationPosition;
 
-        // Own methods of WebKit2.GeolocationPosition
+        // Methods
 
         /**
          * Make a copy of the #WebKitGeolocationPosition.
@@ -16450,7 +16450,7 @@ export namespace WebKit2 {
     abstract class HitTestResultPrivate {
         static $gtype: GObject.GType<HitTestResultPrivate>;
 
-        // Constructors of WebKit2.HitTestResultPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -16461,11 +16461,11 @@ export namespace WebKit2 {
     abstract class ITPFirstParty {
         static $gtype: GObject.GType<ITPFirstParty>;
 
-        // Constructors of WebKit2.ITPFirstParty
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of WebKit2.ITPFirstParty
+        // Methods
 
         /**
          * Get the domain name of `itp_first_party`.
@@ -16511,11 +16511,11 @@ export namespace WebKit2 {
     abstract class ITPThirdParty {
         static $gtype: GObject.GType<ITPThirdParty>;
 
-        // Constructors of WebKit2.ITPThirdParty
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of WebKit2.ITPThirdParty
+        // Methods
 
         /**
          * Get the domain name of `itp_third_party`.
@@ -16548,7 +16548,7 @@ export namespace WebKit2 {
     abstract class InputMethodContextPrivate {
         static $gtype: GObject.GType<InputMethodContextPrivate>;
 
-        // Constructors of WebKit2.InputMethodContextPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -16559,14 +16559,14 @@ export namespace WebKit2 {
     class InputMethodUnderline {
         static $gtype: GObject.GType<InputMethodUnderline>;
 
-        // Constructors of WebKit2.InputMethodUnderline
+        // Constructors
 
         constructor(start_offset: number, end_offset: number);
         _init(...args: any[]): void;
 
         static ['new'](start_offset: number, end_offset: number): InputMethodUnderline;
 
-        // Own methods of WebKit2.InputMethodUnderline
+        // Methods
 
         /**
          * Make a copy of the #WebKitInputMethodUnderline.
@@ -16591,7 +16591,7 @@ export namespace WebKit2 {
     abstract class InstallMissingMediaPluginsPermissionRequestPrivate {
         static $gtype: GObject.GType<InstallMissingMediaPluginsPermissionRequestPrivate>;
 
-        // Constructors of WebKit2.InstallMissingMediaPluginsPermissionRequestPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -16602,11 +16602,11 @@ export namespace WebKit2 {
     abstract class JavascriptResult {
         static $gtype: GObject.GType<JavascriptResult>;
 
-        // Constructors of WebKit2.JavascriptResult
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of WebKit2.JavascriptResult
+        // Methods
 
         /**
          * Get the #JSCValue of `js_result`.
@@ -16635,7 +16635,7 @@ export namespace WebKit2 {
     abstract class MediaKeySystemPermissionRequestPrivate {
         static $gtype: GObject.GType<MediaKeySystemPermissionRequestPrivate>;
 
-        // Constructors of WebKit2.MediaKeySystemPermissionRequestPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -16665,14 +16665,14 @@ export namespace WebKit2 {
     class MemoryPressureSettings {
         static $gtype: GObject.GType<MemoryPressureSettings>;
 
-        // Constructors of WebKit2.MemoryPressureSettings
+        // Constructors
 
         constructor(properties?: Partial<{}>);
         _init(...args: any[]): void;
 
         static ['new'](): MemoryPressureSettings;
 
-        // Own methods of WebKit2.MemoryPressureSettings
+        // Methods
 
         /**
          * Make a copy of `settings`.
@@ -16765,11 +16765,11 @@ export namespace WebKit2 {
     abstract class MimeInfo {
         static $gtype: GObject.GType<MimeInfo>;
 
-        // Constructors of WebKit2.MimeInfo
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of WebKit2.MimeInfo
+        // Methods
 
         /**
          * Gets the description of the MIME type.
@@ -16809,11 +16809,11 @@ export namespace WebKit2 {
     abstract class NavigationAction {
         static $gtype: GObject.GType<NavigationAction>;
 
-        // Constructors of WebKit2.NavigationAction
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of WebKit2.NavigationAction
+        // Methods
 
         /**
          * Make a copy of `navigation`.
@@ -16879,7 +16879,7 @@ export namespace WebKit2 {
     abstract class NavigationPolicyDecisionPrivate {
         static $gtype: GObject.GType<NavigationPolicyDecisionPrivate>;
 
-        // Constructors of WebKit2.NavigationPolicyDecisionPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -16894,14 +16894,14 @@ export namespace WebKit2 {
     class NetworkProxySettings {
         static $gtype: GObject.GType<NetworkProxySettings>;
 
-        // Constructors of WebKit2.NetworkProxySettings
+        // Constructors
 
         constructor(default_proxy_uri?: string | null, ignore_hosts?: string[] | null);
         _init(...args: any[]): void;
 
         static ['new'](default_proxy_uri?: string | null, ignore_hosts?: string[] | null): NetworkProxySettings;
 
-        // Own methods of WebKit2.NetworkProxySettings
+        // Methods
 
         /**
          * Adds a URI-scheme-specific proxy.
@@ -16929,7 +16929,7 @@ export namespace WebKit2 {
     abstract class NotificationPermissionRequestPrivate {
         static $gtype: GObject.GType<NotificationPermissionRequestPrivate>;
 
-        // Constructors of WebKit2.NotificationPermissionRequestPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -16937,7 +16937,7 @@ export namespace WebKit2 {
     abstract class NotificationPrivate {
         static $gtype: GObject.GType<NotificationPrivate>;
 
-        // Constructors of WebKit2.NotificationPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -16954,11 +16954,11 @@ export namespace WebKit2 {
     abstract class OptionMenuItem {
         static $gtype: GObject.GType<OptionMenuItem>;
 
-        // Constructors of WebKit2.OptionMenuItem
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of WebKit2.OptionMenuItem
+        // Methods
 
         /**
          * Make a copy of the #WebKitOptionMenuItem.
@@ -17004,7 +17004,7 @@ export namespace WebKit2 {
     abstract class OptionMenuPrivate {
         static $gtype: GObject.GType<OptionMenuPrivate>;
 
-        // Constructors of WebKit2.OptionMenuPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -17025,11 +17025,11 @@ export namespace WebKit2 {
     abstract class PermissionStateQuery {
         static $gtype: GObject.GType<PermissionStateQuery>;
 
-        // Constructors of WebKit2.PermissionStateQuery
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of WebKit2.PermissionStateQuery
+        // Methods
 
         /**
          * Notify the web-engine of the selected permission state for the given query. This function should
@@ -17067,7 +17067,7 @@ export namespace WebKit2 {
     abstract class PluginPrivate {
         static $gtype: GObject.GType<PluginPrivate>;
 
-        // Constructors of WebKit2.PluginPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -17076,7 +17076,7 @@ export namespace WebKit2 {
     abstract class PointerLockPermissionRequestPrivate {
         static $gtype: GObject.GType<PointerLockPermissionRequestPrivate>;
 
-        // Constructors of WebKit2.PointerLockPermissionRequestPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -17085,7 +17085,7 @@ export namespace WebKit2 {
     abstract class PolicyDecisionPrivate {
         static $gtype: GObject.GType<PolicyDecisionPrivate>;
 
-        // Constructors of WebKit2.PolicyDecisionPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -17094,7 +17094,7 @@ export namespace WebKit2 {
     abstract class PrintCustomWidgetPrivate {
         static $gtype: GObject.GType<PrintCustomWidgetPrivate>;
 
-        // Constructors of WebKit2.PrintCustomWidgetPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -17103,7 +17103,7 @@ export namespace WebKit2 {
     abstract class PrintOperationPrivate {
         static $gtype: GObject.GType<PrintOperationPrivate>;
 
-        // Constructors of WebKit2.PrintOperationPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -17112,7 +17112,7 @@ export namespace WebKit2 {
     abstract class ResponsePolicyDecisionPrivate {
         static $gtype: GObject.GType<ResponsePolicyDecisionPrivate>;
 
-        // Constructors of WebKit2.ResponsePolicyDecisionPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -17123,11 +17123,11 @@ export namespace WebKit2 {
     abstract class ScriptDialog {
         static $gtype: GObject.GType<ScriptDialog>;
 
-        // Constructors of WebKit2.ScriptDialog
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of WebKit2.ScriptDialog
+        // Methods
 
         /**
          * Close `dialog`.
@@ -17207,11 +17207,11 @@ export namespace WebKit2 {
     abstract class ScriptMessageReply {
         static $gtype: GObject.GType<ScriptMessageReply>;
 
-        // Constructors of WebKit2.ScriptMessageReply
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of WebKit2.ScriptMessageReply
+        // Methods
 
         /**
          * Atomically increments the reference count of `script_message_reply` by one.
@@ -17244,7 +17244,7 @@ export namespace WebKit2 {
     abstract class SecurityManagerPrivate {
         static $gtype: GObject.GType<SecurityManagerPrivate>;
 
-        // Constructors of WebKit2.SecurityManagerPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -17264,7 +17264,7 @@ export namespace WebKit2 {
     class SecurityOrigin {
         static $gtype: GObject.GType<SecurityOrigin>;
 
-        // Constructors of WebKit2.SecurityOrigin
+        // Constructors
 
         constructor(protocol: string, host: string, port: number);
         _init(...args: any[]): void;
@@ -17273,7 +17273,7 @@ export namespace WebKit2 {
 
         static new_for_uri(uri: string): SecurityOrigin;
 
-        // Own methods of WebKit2.SecurityOrigin
+        // Methods
 
         /**
          * Gets the hostname of `origin`.
@@ -17338,7 +17338,7 @@ export namespace WebKit2 {
     abstract class SettingsPrivate {
         static $gtype: GObject.GType<SettingsPrivate>;
 
-        // Constructors of WebKit2.SettingsPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -17347,7 +17347,7 @@ export namespace WebKit2 {
     abstract class URIRequestPrivate {
         static $gtype: GObject.GType<URIRequestPrivate>;
 
-        // Constructors of WebKit2.URIRequestPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -17356,7 +17356,7 @@ export namespace WebKit2 {
     abstract class URIResponsePrivate {
         static $gtype: GObject.GType<URIResponsePrivate>;
 
-        // Constructors of WebKit2.URIResponsePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -17365,7 +17365,7 @@ export namespace WebKit2 {
     abstract class URISchemeRequestPrivate {
         static $gtype: GObject.GType<URISchemeRequestPrivate>;
 
-        // Constructors of WebKit2.URISchemeRequestPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -17374,7 +17374,7 @@ export namespace WebKit2 {
     abstract class URISchemeResponsePrivate {
         static $gtype: GObject.GType<URISchemeResponsePrivate>;
 
-        // Constructors of WebKit2.URISchemeResponsePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -17385,11 +17385,11 @@ export namespace WebKit2 {
     abstract class UserContentFilter {
         static $gtype: GObject.GType<UserContentFilter>;
 
-        // Constructors of WebKit2.UserContentFilter
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of WebKit2.UserContentFilter
+        // Methods
 
         /**
          * Obtain the identifier previously used to save the `user_content_filter`.
@@ -17420,7 +17420,7 @@ export namespace WebKit2 {
     abstract class UserContentFilterStorePrivate {
         static $gtype: GObject.GType<UserContentFilterStorePrivate>;
 
-        // Constructors of WebKit2.UserContentFilterStorePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -17429,7 +17429,7 @@ export namespace WebKit2 {
     abstract class UserContentManagerPrivate {
         static $gtype: GObject.GType<UserContentManagerPrivate>;
 
-        // Constructors of WebKit2.UserContentManagerPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -17438,7 +17438,7 @@ export namespace WebKit2 {
     abstract class UserMediaPermissionRequestPrivate {
         static $gtype: GObject.GType<UserMediaPermissionRequestPrivate>;
 
-        // Constructors of WebKit2.UserMediaPermissionRequestPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -17447,7 +17447,7 @@ export namespace WebKit2 {
     abstract class UserMessagePrivate {
         static $gtype: GObject.GType<UserMessagePrivate>;
 
-        // Constructors of WebKit2.UserMessagePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -17458,7 +17458,7 @@ export namespace WebKit2 {
     class UserScript {
         static $gtype: GObject.GType<UserScript>;
 
-        // Constructors of WebKit2.UserScript
+        // Constructors
 
         constructor(
             source: string,
@@ -17486,7 +17486,7 @@ export namespace WebKit2 {
             block_list?: string[] | null,
         ): UserScript;
 
-        // Own methods of WebKit2.UserScript
+        // Methods
 
         /**
          * Atomically increments the reference count of `user_script` by one.
@@ -17511,7 +17511,7 @@ export namespace WebKit2 {
     class UserStyleSheet {
         static $gtype: GObject.GType<UserStyleSheet>;
 
-        // Constructors of WebKit2.UserStyleSheet
+        // Constructors
 
         constructor(
             source: string,
@@ -17539,7 +17539,7 @@ export namespace WebKit2 {
             block_list?: string[] | null,
         ): UserStyleSheet;
 
-        // Own methods of WebKit2.UserStyleSheet
+        // Methods
 
         /**
          * Atomically increments the reference count of `user_style_sheet` by one.
@@ -17562,7 +17562,7 @@ export namespace WebKit2 {
     abstract class WebContextPrivate {
         static $gtype: GObject.GType<WebContextPrivate>;
 
-        // Constructors of WebKit2.WebContextPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -17571,7 +17571,7 @@ export namespace WebKit2 {
     abstract class WebInspectorPrivate {
         static $gtype: GObject.GType<WebInspectorPrivate>;
 
-        // Constructors of WebKit2.WebInspectorPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -17580,7 +17580,7 @@ export namespace WebKit2 {
     abstract class WebResourcePrivate {
         static $gtype: GObject.GType<WebResourcePrivate>;
 
-        // Constructors of WebKit2.WebResourcePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -17589,7 +17589,7 @@ export namespace WebKit2 {
     abstract class WebViewBasePrivate {
         static $gtype: GObject.GType<WebViewBasePrivate>;
 
-        // Constructors of WebKit2.WebViewBasePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -17598,7 +17598,7 @@ export namespace WebKit2 {
     abstract class WebViewPrivate {
         static $gtype: GObject.GType<WebViewPrivate>;
 
-        // Constructors of WebKit2.WebViewPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -17609,14 +17609,14 @@ export namespace WebKit2 {
     class WebViewSessionState {
         static $gtype: GObject.GType<WebViewSessionState>;
 
-        // Constructors of WebKit2.WebViewSessionState
+        // Constructors
 
         constructor(data: GLib.Bytes | Uint8Array);
         _init(...args: any[]): void;
 
         static ['new'](data: GLib.Bytes | Uint8Array): WebViewSessionState;
 
-        // Own methods of WebKit2.WebViewSessionState
+        // Methods
 
         /**
          * Atomically increments the reference count of `state` by one.
@@ -17661,11 +17661,11 @@ export namespace WebKit2 {
     abstract class WebsiteData {
         static $gtype: GObject.GType<WebsiteData>;
 
-        // Constructors of WebKit2.WebsiteData
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of WebKit2.WebsiteData
+        // Methods
 
         /**
          * Gets the name of #WebKitWebsiteData.
@@ -17714,7 +17714,7 @@ export namespace WebKit2 {
     abstract class WebsiteDataAccessPermissionRequestPrivate {
         static $gtype: GObject.GType<WebsiteDataAccessPermissionRequestPrivate>;
 
-        // Constructors of WebKit2.WebsiteDataAccessPermissionRequestPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -17723,7 +17723,7 @@ export namespace WebKit2 {
     abstract class WebsiteDataManagerPrivate {
         static $gtype: GObject.GType<WebsiteDataManagerPrivate>;
 
-        // Constructors of WebKit2.WebsiteDataManagerPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -17732,7 +17732,7 @@ export namespace WebKit2 {
     abstract class WebsitePoliciesPrivate {
         static $gtype: GObject.GType<WebsitePoliciesPrivate>;
 
-        // Constructors of WebKit2.WebsitePoliciesPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -17741,7 +17741,7 @@ export namespace WebKit2 {
     abstract class WindowPropertiesPrivate {
         static $gtype: GObject.GType<WindowPropertiesPrivate>;
 
-        // Constructors of WebKit2.WindowPropertiesPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -17757,7 +17757,7 @@ export namespace WebKit2 {
         prototype: PermissionRequest;
     }
     interface PermissionRequest extends GObject.Object {
-        // Own methods of WebKit2.PermissionRequest
+        // Methods
 
         /**
          * Allow the action which triggered this request.
@@ -17768,7 +17768,7 @@ export namespace WebKit2 {
          */
         deny(): void;
 
-        // Own virtual methods of WebKit2.PermissionRequest
+        // Virtual methods
 
         /**
          * Allow the action which triggered this request.

@@ -57,19 +57,19 @@ export namespace GData {
     class DocumentsServiceError extends GLib.Error {
         static $gtype: GObject.GType<DocumentsServiceError>;
 
-        // Static fields of GData.DocumentsServiceError
+        // Static fields
 
         /**
          * the content type of a provided file was invalid
          */
         static TYPE: number;
 
-        // Constructors of GData.DocumentsServiceError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of GData.DocumentsServiceError
+        // Static methods
 
         static quark(): GLib.Quark;
     }
@@ -187,7 +187,7 @@ export namespace GData {
     class ParserError extends GLib.Error {
         static $gtype: GObject.GType<ParserError>;
 
-        // Static fields of GData.ParserError
+        // Static fields
 
         /**
          * Error parsing the XML or JSON syntax itself
@@ -198,12 +198,12 @@ export namespace GData {
          */
         static EMPTY_DOCUMENT: number;
 
-        // Constructors of GData.ParserError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of GData.ParserError
+        // Static methods
 
         static quark(): GLib.Quark;
     }
@@ -237,7 +237,7 @@ export namespace GData {
     class ServiceError extends GLib.Error {
         static $gtype: GObject.GType<ServiceError>;
 
-        // Static fields of GData.ServiceError
+        // Static fields
 
         /**
          * The service is unavailable due to maintenance or other reasons (e.g. network errors at the server end)
@@ -292,12 +292,12 @@ export namespace GData {
          */
         static API_QUOTA_EXCEEDED: number;
 
-        // Constructors of GData.ServiceError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of GData.ServiceError
+        // Static methods
 
         static quark(): GLib.Quark;
     }
@@ -396,7 +396,7 @@ export namespace GData {
     class YouTubeServiceError extends GLib.Error {
         static $gtype: GObject.GType<YouTubeServiceError>;
 
-        // Static fields of GData.YouTubeServiceError
+        // Static fields
 
         /**
          * the API request quota for this developer account has been exceeded
@@ -413,12 +413,12 @@ export namespace GData {
          */
         static CHANNEL_REQUIRED: number;
 
-        // Constructors of GData.YouTubeServiceError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of GData.YouTubeServiceError
+        // Static methods
 
         static quark(): GLib.Quark;
     }
@@ -1453,7 +1453,7 @@ export namespace GData {
     class APPCategories extends Parsable {
         static $gtype: GObject.GType<APPCategories>;
 
-        // Own properties of GData.APPCategories
+        // Properties
 
         /**
          * Whether entries may use categories not in this category list.
@@ -1468,13 +1468,13 @@ export namespace GData {
          */
         get isFixed(): boolean;
 
-        // Constructors of GData.APPCategories
+        // Constructors
 
         constructor(properties?: Partial<APPCategories.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of GData.APPCategories
+        // Methods
 
         /**
          * Returns a list of the categories in this category list.
@@ -1503,7 +1503,7 @@ export namespace GData {
     class AccessRule extends Entry {
         static $gtype: GObject.GType<AccessRule>;
 
-        // Own properties of GData.AccessRule
+        // Properties
 
         /**
          * The last time the access rule was edited. If the rule has not been edited yet, the content indicates the time it was created.
@@ -1552,7 +1552,7 @@ export namespace GData {
         get scopeValue(): string;
         set scopeValue(val: string);
 
-        // Constructors of GData.AccessRule
+        // Constructors
 
         constructor(properties?: Partial<AccessRule.ConstructorProps>, ...args: any[]);
 
@@ -1563,7 +1563,7 @@ export namespace GData {
 
         static ['new'](...args: never[]): any;
 
-        // Own methods of GData.AccessRule
+        // Methods
 
         /**
          * Gets the #GDataAccessRule:edited property. If the property is unset, <code class="literal">-1</code> will be returned.
@@ -1623,7 +1623,7 @@ export namespace GData {
     class Author extends Parsable implements Comparable {
         static $gtype: GObject.GType<Author>;
 
-        // Own properties of GData.Author
+        // Properties
 
         /**
          * An e-mail address associated with the person.
@@ -1658,7 +1658,7 @@ export namespace GData {
         get uri(): string;
         set uri(val: string);
 
-        // Constructors of GData.Author
+        // Constructors
 
         constructor(properties?: Partial<Author.ConstructorProps>, ...args: any[]);
 
@@ -1666,7 +1666,7 @@ export namespace GData {
 
         static ['new'](name: string, uri?: string | null, email_address?: string | null): Author;
 
-        // Own methods of GData.Author
+        // Methods
 
         /**
          * Gets the #GDataAuthor:email-address property. If the e-mail address is non-%NULL, it will be non-empty.
@@ -2135,7 +2135,7 @@ export namespace GData {
     class AuthorizationDomain extends GObject.Object {
         static $gtype: GObject.GType<AuthorizationDomain>;
 
-        // Own properties of GData.AuthorizationDomain
+        // Properties
 
         /**
          * A URI detailing the scope of the authorization domain, as enumerated in the
@@ -2153,13 +2153,13 @@ export namespace GData {
          */
         get serviceName(): string;
 
-        // Constructors of GData.AuthorizationDomain
+        // Constructors
 
         constructor(properties?: Partial<AuthorizationDomain.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of GData.AuthorizationDomain
+        // Methods
 
         /**
          * Returns a URI detailing the scope of the authorization domain. See #GDataAuthorizationDomain:scope for more details.
@@ -2191,7 +2191,7 @@ export namespace GData {
     class BatchOperation extends GObject.Object {
         static $gtype: GObject.GType<BatchOperation>;
 
-        // Own properties of GData.BatchOperation
+        // Properties
 
         /**
          * The authorization domain for the batch operation, against which the #GDataService:authorizer for the #GDataBatchOperation:service should be
@@ -2222,13 +2222,13 @@ export namespace GData {
          */
         get service(): Service;
 
-        // Constructors of GData.BatchOperation
+        // Constructors
 
         constructor(properties?: Partial<BatchOperation.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of GData.BatchOperation
+        // Methods
 
         /**
          * Add an entry to the #GDataBatchOperation, to be deleted on the server when the operation is run. `entry` is reffed by the function, so may be freed
@@ -2355,7 +2355,7 @@ export namespace GData {
     class CalendarAccessRule extends AccessRule {
         static $gtype: GObject.GType<CalendarAccessRule>;
 
-        // Constructors of GData.CalendarAccessRule
+        // Constructors
 
         constructor(properties?: Partial<CalendarAccessRule.ConstructorProps>, ...args: any[]);
 
@@ -2388,7 +2388,7 @@ export namespace GData {
     class CalendarCalendar extends Entry implements AccessHandler {
         static $gtype: GObject.GType<CalendarCalendar>;
 
-        // Own properties of GData.CalendarCalendar
+        // Properties
 
         /**
          * Indicates the access level the current user has to the calendar. For example: %GDATA_CALENDAR_ACCESS_ROLE_READ or
@@ -2436,7 +2436,7 @@ export namespace GData {
         get timezone(): string;
         set timezone(val: string);
 
-        // Constructors of GData.CalendarCalendar
+        // Constructors
 
         constructor(properties?: Partial<CalendarCalendar.ConstructorProps>, ...args: any[]);
 
@@ -2444,7 +2444,7 @@ export namespace GData {
 
         static ['new'](id?: string | null): CalendarCalendar;
 
-        // Own methods of GData.CalendarCalendar
+        // Methods
 
         /**
          * Gets the #GDataCalendarCalendar:access-level property.
@@ -2804,7 +2804,7 @@ export namespace GData {
     class CalendarEvent extends Entry {
         static $gtype: GObject.GType<CalendarEvent>;
 
-        // Own properties of GData.CalendarEvent
+        // Properties
 
         /**
          * Indicates whether anyone can invite themselves to the event, by adding themselves to the attendee list.
@@ -2942,7 +2942,7 @@ export namespace GData {
         get visibility(): string;
         set visibility(val: string);
 
-        // Constructors of GData.CalendarEvent
+        // Constructors
 
         constructor(properties?: Partial<CalendarEvent.ConstructorProps>, ...args: any[]);
 
@@ -2950,7 +2950,7 @@ export namespace GData {
 
         static ['new'](id?: string | null): CalendarEvent;
 
-        // Own methods of GData.CalendarEvent
+        // Methods
 
         /**
          * Adds the person `who` to the event as a guest (attendee, organiser, performer, etc.), and increments its reference count.
@@ -3155,7 +3155,7 @@ export namespace GData {
     class CalendarFeed extends Feed {
         static $gtype: GObject.GType<CalendarFeed>;
 
-        // Constructors of GData.CalendarFeed
+        // Constructors
 
         constructor(properties?: Partial<CalendarFeed.ConstructorProps>, ...args: any[]);
 
@@ -3190,7 +3190,7 @@ export namespace GData {
     class CalendarQuery extends Query {
         static $gtype: GObject.GType<CalendarQuery>;
 
-        // Own properties of GData.CalendarQuery
+        // Properties
 
         /**
          * A shortcut to request all events scheduled for the future. Overrides the
@@ -3296,7 +3296,7 @@ export namespace GData {
         get timezone(): string;
         set timezone(val: string);
 
-        // Constructors of GData.CalendarQuery
+        // Constructors
 
         constructor(properties?: Partial<CalendarQuery.ConstructorProps>, ...args: any[]);
 
@@ -3306,7 +3306,7 @@ export namespace GData {
 
         static new_with_limits(q: string | null, start_min: number, start_max: number): CalendarQuery;
 
-        // Own methods of GData.CalendarQuery
+        // Methods
 
         /**
          * Gets the #GDataCalendarQuery:future-events property.
@@ -3409,7 +3409,7 @@ export namespace GData {
     class CalendarService extends Service implements Batchable {
         static $gtype: GObject.GType<CalendarService>;
 
-        // Constructors of GData.CalendarService
+        // Constructors
 
         constructor(properties?: Partial<CalendarService.ConstructorProps>, ...args: any[]);
 
@@ -3417,7 +3417,7 @@ export namespace GData {
 
         static ['new'](authorizer?: Authorizer | null): CalendarService;
 
-        // Own static methods of GData.CalendarService
+        // Static methods
 
         /**
          * The primary #GDataAuthorizationDomain for interacting with Google Calendar. This will not normally need to be used, as it's used internally
@@ -3428,7 +3428,7 @@ export namespace GData {
          */
         static get_primary_authorization_domain(): AuthorizationDomain;
 
-        // Own methods of GData.CalendarService
+        // Methods
 
         /**
          * Inserts `event` by uploading it to the online calendar service, adding it to
@@ -3992,7 +3992,7 @@ export namespace GData {
     class Category extends Parsable implements Comparable {
         static $gtype: GObject.GType<Category>;
 
-        // Own properties of GData.Category
+        // Properties
 
         /**
          * A human-readable label for display in end-user applications.
@@ -4022,7 +4022,7 @@ export namespace GData {
         get term(): string;
         set term(val: string);
 
-        // Constructors of GData.Category
+        // Constructors
 
         constructor(properties?: Partial<Category.ConstructorProps>, ...args: any[]);
 
@@ -4030,7 +4030,7 @@ export namespace GData {
 
         static ['new'](term: string, scheme?: string | null, label?: string | null): Category;
 
-        // Own methods of GData.Category
+        // Methods
 
         /**
          * Gets the #GDataCategory:label property.
@@ -4495,7 +4495,7 @@ export namespace GData {
     abstract class Comment extends Entry {
         static $gtype: GObject.GType<Comment>;
 
-        // Constructors of GData.Comment
+        // Constructors
 
         constructor(properties?: Partial<Comment.ConstructorProps>, ...args: any[]);
 
@@ -4515,7 +4515,7 @@ export namespace GData {
     class DocumentsAccessRule extends AccessRule {
         static $gtype: GObject.GType<DocumentsAccessRule>;
 
-        // Constructors of GData.DocumentsAccessRule
+        // Constructors
 
         constructor(properties?: Partial<DocumentsAccessRule.ConstructorProps>, ...args: any[]);
 
@@ -4539,7 +4539,7 @@ export namespace GData {
     class DocumentsDocument extends DocumentsEntry implements AccessHandler {
         static $gtype: GObject.GType<DocumentsDocument>;
 
-        // Constructors of GData.DocumentsDocument
+        // Constructors
 
         constructor(properties?: Partial<DocumentsDocument.ConstructorProps>, ...args: any[]);
 
@@ -4547,7 +4547,7 @@ export namespace GData {
 
         static ['new'](id?: string | null): DocumentsDocument;
 
-        // Own methods of GData.DocumentsDocument
+        // Methods
 
         /**
          * Downloads and returns the document file represented by the #GDataDocumentsDocument. If the document doesn't exist, %NULL is returned, but no error
@@ -4939,7 +4939,7 @@ export namespace GData {
     class DocumentsDrawing extends DocumentsDocument implements AccessHandler {
         static $gtype: GObject.GType<DocumentsDrawing>;
 
-        // Constructors of GData.DocumentsDrawing
+        // Constructors
 
         constructor(properties?: Partial<DocumentsDrawing.ConstructorProps>, ...args: any[]);
 
@@ -5184,20 +5184,20 @@ export namespace GData {
     class DocumentsDrive extends Entry {
         static $gtype: GObject.GType<DocumentsDrive>;
 
-        // Own properties of GData.DocumentsDrive
+        // Properties
 
         /**
          * The human-readable name of this shared drive.
          */
         get name(): string;
 
-        // Constructors of GData.DocumentsDrive
+        // Constructors
 
         constructor(properties?: Partial<DocumentsDrive.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of GData.DocumentsDrive
+        // Methods
 
         /**
          * Returns the human-readable name of this shared drive.
@@ -5215,7 +5215,7 @@ export namespace GData {
     class DocumentsDriveQuery extends Query {
         static $gtype: GObject.GType<DocumentsDriveQuery>;
 
-        // Constructors of GData.DocumentsDriveQuery
+        // Constructors
 
         constructor(properties?: Partial<DocumentsDriveQuery.ConstructorProps>, ...args: any[]);
 
@@ -5255,7 +5255,7 @@ export namespace GData {
     abstract class DocumentsEntry extends Entry implements AccessHandler {
         static $gtype: GObject.GType<DocumentsEntry>;
 
-        // Own properties of GData.DocumentsEntry
+        // Properties
 
         /**
          * Indicates whether the current user can edit this file.
@@ -5368,13 +5368,13 @@ export namespace GData {
         get writersCanInvite(): boolean;
         set writersCanInvite(val: boolean);
 
-        // Constructors of GData.DocumentsEntry
+        // Constructors
 
         constructor(properties?: Partial<DocumentsEntry.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of GData.DocumentsEntry
+        // Methods
 
         /**
          * Inserts/updates `property` on "properties" list in `self`. Since, a GDataDocumentsProperty is uniquely identified by #GDataDocumentsProperty:key and #GDataDocumentsProperty:visibility, if no such property exists in the "properties" list, then a `property` will be appended to the list after incrementing the reference count.
@@ -5749,7 +5749,7 @@ export namespace GData {
     class DocumentsFeed extends Feed {
         static $gtype: GObject.GType<DocumentsFeed>;
 
-        // Constructors of GData.DocumentsFeed
+        // Constructors
 
         constructor(properties?: Partial<DocumentsFeed.ConstructorProps>, ...args: any[]);
 
@@ -5768,7 +5768,7 @@ export namespace GData {
     class DocumentsFolder extends DocumentsEntry implements AccessHandler {
         static $gtype: GObject.GType<DocumentsFolder>;
 
-        // Constructors of GData.DocumentsFolder
+        // Constructors
 
         constructor(properties?: Partial<DocumentsFolder.ConstructorProps>, ...args: any[]);
 
@@ -6082,7 +6082,7 @@ export namespace GData {
     class DocumentsMetadata extends Parsable {
         static $gtype: GObject.GType<DocumentsMetadata>;
 
-        // Own properties of GData.DocumentsMetadata
+        // Properties
 
         /**
          * The user quota limit across all services. Measured in bytes.
@@ -6101,13 +6101,13 @@ export namespace GData {
          */
         get quotaUsed(): number;
 
-        // Constructors of GData.DocumentsMetadata
+        // Constructors
 
         constructor(properties?: Partial<DocumentsMetadata.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of GData.DocumentsMetadata
+        // Methods
 
         /**
          * Gets the #GDataDocumentsMetadata:quota-total property.
@@ -6133,7 +6133,7 @@ export namespace GData {
     class DocumentsPdf extends DocumentsDocument implements AccessHandler {
         static $gtype: GObject.GType<DocumentsPdf>;
 
-        // Constructors of GData.DocumentsPdf
+        // Constructors
 
         constructor(properties?: Partial<DocumentsPdf.ConstructorProps>, ...args: any[]);
 
@@ -6379,7 +6379,7 @@ export namespace GData {
     class DocumentsPresentation extends DocumentsDocument implements AccessHandler {
         static $gtype: GObject.GType<DocumentsPresentation>;
 
-        // Constructors of GData.DocumentsPresentation
+        // Constructors
 
         constructor(properties?: Partial<DocumentsPresentation.ConstructorProps>, ...args: any[]);
 
@@ -6630,7 +6630,7 @@ export namespace GData {
     class DocumentsProperty extends Parsable implements Comparable {
         static $gtype: GObject.GType<DocumentsProperty>;
 
-        // Own properties of GData.DocumentsProperty
+        // Properties
 
         /**
          * ETag of the property.
@@ -6663,7 +6663,7 @@ export namespace GData {
         get visibility(): string;
         set visibility(val: string);
 
-        // Constructors of GData.DocumentsProperty
+        // Constructors
 
         constructor(properties?: Partial<DocumentsProperty.ConstructorProps>, ...args: any[]);
 
@@ -6671,7 +6671,7 @@ export namespace GData {
 
         static ['new'](key: string): DocumentsProperty;
 
-        // Own methods of GData.DocumentsProperty
+        // Methods
 
         /**
          * Returns the ETag of the property.
@@ -7148,7 +7148,7 @@ export namespace GData {
     class DocumentsQuery extends Query {
         static $gtype: GObject.GType<DocumentsQuery>;
 
-        // Own properties of GData.DocumentsQuery
+        // Properties
 
         /**
          * Specifies whether the query should search for an exact title match for the #GDataDocumentsQuery:title parameter.
@@ -7197,7 +7197,7 @@ export namespace GData {
         get title(): string;
         set title(val: string);
 
-        // Constructors of GData.DocumentsQuery
+        // Constructors
 
         constructor(properties?: Partial<DocumentsQuery.ConstructorProps>, ...args: any[]);
 
@@ -7207,7 +7207,7 @@ export namespace GData {
 
         static new_with_limits(q: string | null, start_index: number, max_results: number): DocumentsQuery;
 
-        // Own methods of GData.DocumentsQuery
+        // Methods
 
         /**
          * Add `email_address` as a #GDataGDEmailAddress to the list of collaborators whose edited documents will be queried.
@@ -7283,7 +7283,7 @@ export namespace GData {
     class DocumentsService extends Service implements Batchable {
         static $gtype: GObject.GType<DocumentsService>;
 
-        // Constructors of GData.DocumentsService
+        // Constructors
 
         constructor(properties?: Partial<DocumentsService.ConstructorProps>, ...args: any[]);
 
@@ -7291,7 +7291,7 @@ export namespace GData {
 
         static ['new'](authorizer?: Authorizer | null): DocumentsService;
 
-        // Own static methods of GData.DocumentsService
+        // Static methods
 
         /**
          * The primary #GDataAuthorizationDomain for interacting with Google Documents. This will not normally need to be used, as it's used internally
@@ -7318,7 +7318,7 @@ export namespace GData {
          */
         static get_upload_uri(folder?: DocumentsFolder | null): string;
 
-        // Own methods of GData.DocumentsService
+        // Methods
 
         /**
          * Add the given `entry` to the specified `folder,` and return an updated #GDataDocumentsEntry for `entry`. If the `entry` is already in another folder,
@@ -8092,7 +8092,7 @@ export namespace GData {
     class DocumentsSpreadsheet extends DocumentsDocument implements AccessHandler {
         static $gtype: GObject.GType<DocumentsSpreadsheet>;
 
-        // Constructors of GData.DocumentsSpreadsheet
+        // Constructors
 
         constructor(properties?: Partial<DocumentsSpreadsheet.ConstructorProps>, ...args: any[]);
 
@@ -8100,7 +8100,7 @@ export namespace GData {
 
         static ['new'](id?: string | null): DocumentsSpreadsheet;
 
-        // Own methods of GData.DocumentsSpreadsheet
+        // Methods
 
         /**
          * Builds and returns the download URI for the given #GDataDocumentsSpreadsheet in the desired format. Note that directly downloading
@@ -8357,7 +8357,7 @@ export namespace GData {
     class DocumentsText extends DocumentsDocument implements AccessHandler {
         static $gtype: GObject.GType<DocumentsText>;
 
-        // Constructors of GData.DocumentsText
+        // Constructors
 
         constructor(properties?: Partial<DocumentsText.ConstructorProps>, ...args: any[]);
 
@@ -8606,7 +8606,7 @@ export namespace GData {
     class DocumentsUploadQuery extends GObject.Object {
         static $gtype: GObject.GType<DocumentsUploadQuery>;
 
-        // Own properties of GData.DocumentsUploadQuery
+        // Properties
 
         /**
          * %TRUE to automatically convert the uploaded document into a standard format (such as a text document, spreadsheet, presentation, etc.).
@@ -8628,7 +8628,7 @@ export namespace GData {
         get folder(): DocumentsFolder;
         set folder(val: DocumentsFolder);
 
-        // Constructors of GData.DocumentsUploadQuery
+        // Constructors
 
         constructor(properties?: Partial<DocumentsUploadQuery.ConstructorProps>, ...args: any[]);
 
@@ -8636,7 +8636,7 @@ export namespace GData {
 
         static ['new'](): DocumentsUploadQuery;
 
-        // Own methods of GData.DocumentsUploadQuery
+        // Methods
 
         /**
          * Builds an upload URI suitable for passing to gdata_upload_stream_new_resumable() in order to upload a document to Google Documents as described in
@@ -8691,7 +8691,7 @@ export namespace GData {
     class DownloadStream extends Gio.InputStream implements Gio.Seekable {
         static $gtype: GObject.GType<DownloadStream>;
 
-        // Own properties of GData.DownloadStream
+        // Properties
 
         /**
          * The authorization domain for the download, against which the #GDataService:authorizer for the #GDataDownloadStream:service should be
@@ -8764,7 +8764,7 @@ export namespace GData {
          */
         get service(): Service;
 
-        // Constructors of GData.DownloadStream
+        // Constructors
 
         constructor(properties?: Partial<DownloadStream.ConstructorProps>, ...args: any[]);
 
@@ -8777,7 +8777,7 @@ export namespace GData {
             cancellable?: Gio.Cancellable | null,
         ): DownloadStream;
 
-        // Own methods of GData.DownloadStream
+        // Methods
 
         /**
          * Gets the authorization domain used to authorize the download, as passed to gdata_download_stream_new(). It may be %NULL if authorization is not
@@ -9340,7 +9340,7 @@ export namespace GData {
     class Entry extends Parsable {
         static $gtype: GObject.GType<Entry>;
 
-        // Own properties of GData.Entry
+        // Properties
 
         /**
          * The content of the entry. This is mutually exclusive with #GDataEntry:content.
@@ -9431,7 +9431,7 @@ export namespace GData {
          */
         get updated(): number;
 
-        // Constructors of GData.Entry
+        // Constructors
 
         constructor(properties?: Partial<Entry.ConstructorProps>, ...args: any[]);
 
@@ -9439,7 +9439,7 @@ export namespace GData {
 
         static ['new'](id?: string | null): Entry;
 
-        // Own methods of GData.Entry
+        // Methods
 
         /**
          * Adds `author` to the list of authors in the given #GDataEntry and increments its reference count.
@@ -9606,7 +9606,7 @@ export namespace GData {
     class Feed extends Parsable {
         static $gtype: GObject.GType<Feed>;
 
-        // Own properties of GData.Feed
+        // Properties
 
         /**
          * The unique ETag for this version of the feed. See the
@@ -9740,13 +9740,13 @@ export namespace GData {
          */
         get updated(): number;
 
-        // Constructors of GData.Feed
+        // Constructors
 
         constructor(properties?: Partial<Feed.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of GData.Feed
+        // Methods
 
         /**
          * Returns a list of the authors listed in this feed.
@@ -9871,7 +9871,7 @@ export namespace GData {
     class GContactCalendar extends Parsable implements Comparable {
         static $gtype: GObject.GType<GContactCalendar>;
 
-        // Own properties of GData.GContactCalendar
+        // Properties
 
         /**
          * Indicates which calendar out of a group is primary.
@@ -9924,7 +9924,7 @@ export namespace GData {
         get uri(): string;
         set uri(val: string);
 
-        // Constructors of GData.GContactCalendar
+        // Constructors
 
         constructor(properties?: Partial<GContactCalendar.ConstructorProps>, ...args: any[]);
 
@@ -9937,7 +9937,7 @@ export namespace GData {
             is_primary: boolean,
         ): GContactCalendar;
 
-        // Own methods of GData.GContactCalendar
+        // Methods
 
         /**
          * Gets the #GDataGContactCalendar:label property.
@@ -10415,7 +10415,7 @@ export namespace GData {
     class GContactEvent extends Parsable {
         static $gtype: GObject.GType<GContactEvent>;
 
-        // Own properties of GData.GContactEvent
+        // Properties
 
         /**
          * The date of the event.
@@ -10453,7 +10453,7 @@ export namespace GData {
         get relationType(): string;
         set relationType(val: string);
 
-        // Constructors of GData.GContactEvent
+        // Constructors
 
         constructor(properties?: Partial<GContactEvent.ConstructorProps>, ...args: any[]);
 
@@ -10461,7 +10461,7 @@ export namespace GData {
 
         static ['new'](date: GLib.Date, relation_type?: string | null, label?: string | null): GContactEvent;
 
-        // Own methods of GData.GContactEvent
+        // Methods
 
         /**
          * Gets the #GDataGContactEvent:date property.
@@ -10518,7 +10518,7 @@ export namespace GData {
     class GContactExternalID extends Parsable implements Comparable {
         static $gtype: GObject.GType<GContactExternalID>;
 
-        // Own properties of GData.GContactExternalID
+        // Properties
 
         /**
          * A free-form string that identifies the type of external ID. It is mutually exclusive with #GDataGContactExternalID:relation-type.
@@ -10555,7 +10555,7 @@ export namespace GData {
         get value(): string;
         set value(val: string);
 
-        // Constructors of GData.GContactExternalID
+        // Constructors
 
         constructor(properties?: Partial<GContactExternalID.ConstructorProps>, ...args: any[]);
 
@@ -10563,7 +10563,7 @@ export namespace GData {
 
         static ['new'](value: string, relation_type?: string | null, label?: string | null): GContactExternalID;
 
-        // Own methods of GData.GContactExternalID
+        // Methods
 
         /**
          * Gets the #GDataGContactExternalID:label property.
@@ -11035,7 +11035,7 @@ export namespace GData {
     class GContactJot extends Parsable {
         static $gtype: GObject.GType<GContactJot>;
 
-        // Own properties of GData.GContactJot
+        // Properties
 
         /**
          * The content of the jot.
@@ -11062,7 +11062,7 @@ export namespace GData {
         get relationType(): string;
         set relationType(val: string);
 
-        // Constructors of GData.GContactJot
+        // Constructors
 
         constructor(properties?: Partial<GContactJot.ConstructorProps>, ...args: any[]);
 
@@ -11070,7 +11070,7 @@ export namespace GData {
 
         static ['new'](content: string, relation_type: string): GContactJot;
 
-        // Own methods of GData.GContactJot
+        // Methods
 
         /**
          * Gets the #GDataGContactJot:content property.
@@ -11110,7 +11110,7 @@ export namespace GData {
     class GContactLanguage extends Parsable implements Comparable {
         static $gtype: GObject.GType<GContactLanguage>;
 
-        // Own properties of GData.GContactLanguage
+        // Properties
 
         /**
          * A code identifying the language, conforming to the IETF BCP 47 specification. It is mutually exclusive with #GDataGContactLanguage:label.
@@ -11129,7 +11129,7 @@ export namespace GData {
         get label(): string;
         set label(val: string);
 
-        // Constructors of GData.GContactLanguage
+        // Constructors
 
         constructor(properties?: Partial<GContactLanguage.ConstructorProps>, ...args: any[]);
 
@@ -11137,7 +11137,7 @@ export namespace GData {
 
         static ['new'](code?: string | null, label?: string | null): GContactLanguage;
 
-        // Own methods of GData.GContactLanguage
+        // Methods
 
         /**
          * Gets the #GDataGContactLanguage:code property.
@@ -11599,7 +11599,7 @@ export namespace GData {
     class GContactRelation extends Parsable {
         static $gtype: GObject.GType<GContactRelation>;
 
-        // Own properties of GData.GContactRelation
+        // Properties
 
         /**
          * A free-form string that identifies the type of relation. It is mutually exclusive with #GDataGContactRelation:relation-type.
@@ -11636,7 +11636,7 @@ export namespace GData {
         get relationType(): string;
         set relationType(val: string);
 
-        // Constructors of GData.GContactRelation
+        // Constructors
 
         constructor(properties?: Partial<GContactRelation.ConstructorProps>, ...args: any[]);
 
@@ -11644,7 +11644,7 @@ export namespace GData {
 
         static ['new'](name: string, relation_type?: string | null, label?: string | null): GContactRelation;
 
-        // Own methods of GData.GContactRelation
+        // Methods
 
         /**
          * Gets the #GDataGContactRelation:label property.
@@ -11704,7 +11704,7 @@ export namespace GData {
     class GContactWebsite extends Parsable implements Comparable {
         static $gtype: GObject.GType<GContactWebsite>;
 
-        // Own properties of GData.GContactWebsite
+        // Properties
 
         /**
          * Indicates which website out of a group is primary.
@@ -11758,7 +11758,7 @@ export namespace GData {
         get uri(): string;
         set uri(val: string);
 
-        // Constructors of GData.GContactWebsite
+        // Constructors
 
         constructor(properties?: Partial<GContactWebsite.ConstructorProps>, ...args: any[]);
 
@@ -11766,7 +11766,7 @@ export namespace GData {
 
         static ['new'](uri: string, relation_type: string, label: string | null, is_primary: boolean): GContactWebsite;
 
-        // Own methods of GData.GContactWebsite
+        // Methods
 
         /**
          * Gets the #GDataGContactWebsite:label property.
@@ -12248,7 +12248,7 @@ export namespace GData {
     class GDEmailAddress extends Parsable implements Comparable {
         static $gtype: GObject.GType<GDEmailAddress>;
 
-        // Own properties of GData.GDEmailAddress
+        // Properties
 
         /**
          * The e-mail address itself.
@@ -12315,7 +12315,7 @@ export namespace GData {
         get relationType(): string;
         set relationType(val: string);
 
-        // Constructors of GData.GDEmailAddress
+        // Constructors
 
         constructor(properties?: Partial<GDEmailAddress.ConstructorProps>, ...args: any[]);
 
@@ -12328,7 +12328,7 @@ export namespace GData {
             is_primary: boolean,
         ): GDEmailAddress;
 
-        // Own methods of GData.GDEmailAddress
+        // Methods
 
         /**
          * Gets the #GDataGDEmailAddress:address property.
@@ -12818,7 +12818,7 @@ export namespace GData {
     class GDIMAddress extends Parsable implements Comparable {
         static $gtype: GObject.GType<GDIMAddress>;
 
-        // Own properties of GData.GDIMAddress
+        // Properties
 
         /**
          * The IM address itself.
@@ -12877,7 +12877,7 @@ export namespace GData {
         get relationType(): string;
         set relationType(val: string);
 
-        // Constructors of GData.GDIMAddress
+        // Constructors
 
         constructor(properties?: Partial<GDIMAddress.ConstructorProps>, ...args: any[]);
 
@@ -12891,7 +12891,7 @@ export namespace GData {
             is_primary: boolean,
         ): GDIMAddress;
 
-        // Own methods of GData.GDIMAddress
+        // Methods
 
         /**
          * Gets the #GDataGDIMAddress:address property.
@@ -13382,7 +13382,7 @@ export namespace GData {
     class GDName extends Parsable implements Comparable {
         static $gtype: GObject.GType<GDName>;
 
-        // Own properties of GData.GDName
+        // Properties
 
         /**
          * An additional name for the person (e.g. a middle name).
@@ -13467,7 +13467,7 @@ export namespace GData {
         get suffix(): string;
         set suffix(val: string);
 
-        // Constructors of GData.GDName
+        // Constructors
 
         constructor(properties?: Partial<GDName.ConstructorProps>, ...args: any[]);
 
@@ -13475,7 +13475,7 @@ export namespace GData {
 
         static ['new'](given_name?: string | null, family_name?: string | null): GDName;
 
-        // Own methods of GData.GDName
+        // Methods
 
         /**
          * Gets the #GDataGDName:additional-name property.
@@ -13979,7 +13979,7 @@ export namespace GData {
     class GDOrganization extends Parsable implements Comparable {
         static $gtype: GObject.GType<GDOrganization>;
 
-        // Own properties of GData.GDOrganization
+        // Properties
 
         /**
          * Specifies a department within the organization.
@@ -14079,7 +14079,7 @@ export namespace GData {
         get title(): string;
         set title(val: string);
 
-        // Constructors of GData.GDOrganization
+        // Constructors
 
         constructor(properties?: Partial<GDOrganization.ConstructorProps>, ...args: any[]);
 
@@ -14093,7 +14093,7 @@ export namespace GData {
             is_primary: boolean,
         ): GDOrganization;
 
-        // Own methods of GData.GDOrganization
+        // Methods
 
         /**
          * Gets the #GDataGDOrganization:department property.
@@ -14633,7 +14633,7 @@ export namespace GData {
     class GDPhoneNumber extends Parsable implements Comparable {
         static $gtype: GObject.GType<GDPhoneNumber>;
 
-        // Own properties of GData.GDPhoneNumber
+        // Properties
 
         /**
          * Indicates which phone number out of a group is primary.
@@ -14692,7 +14692,7 @@ export namespace GData {
         get uri(): string;
         set uri(val: string);
 
-        // Constructors of GData.GDPhoneNumber
+        // Constructors
 
         constructor(properties?: Partial<GDPhoneNumber.ConstructorProps>, ...args: any[]);
 
@@ -14706,7 +14706,7 @@ export namespace GData {
             is_primary: boolean,
         ): GDPhoneNumber;
 
-        // Own methods of GData.GDPhoneNumber
+        // Methods
 
         /**
          * Gets the #GDataGDPhoneNumber:label property.
@@ -15212,7 +15212,7 @@ export namespace GData {
     class GDPostalAddress extends Parsable implements Comparable {
         static $gtype: GObject.GType<GDPostalAddress>;
 
-        // Own properties of GData.GDPostalAddress
+        // Properties
 
         /**
          * The postal address itself, formatted and unstructured. It is preferred to use the other, structured properties rather than this one.
@@ -15405,7 +15405,7 @@ export namespace GData {
         get usage(): string;
         set usage(val: string);
 
-        // Constructors of GData.GDPostalAddress
+        // Constructors
 
         constructor(properties?: Partial<GDPostalAddress.ConstructorProps>, ...args: any[]);
 
@@ -15413,7 +15413,7 @@ export namespace GData {
 
         static ['new'](relation_type: string | null, label: string | null, is_primary: boolean): GDPostalAddress;
 
-        // Own methods of GData.GDPostalAddress
+        // Methods
 
         /**
          * Gets the #GDataGDPostalAddress:address property.
@@ -16042,7 +16042,7 @@ export namespace GData {
     class GDReminder extends Parsable implements Comparable {
         static $gtype: GObject.GType<GDReminder>;
 
-        // Own properties of GData.GDReminder
+        // Properties
 
         /**
          * Absolute time at which the reminder should be issued.
@@ -16099,7 +16099,7 @@ export namespace GData {
         get relativeTime(): number;
         set relativeTime(val: number);
 
-        // Constructors of GData.GDReminder
+        // Constructors
 
         constructor(properties?: Partial<GDReminder.ConstructorProps>, ...args: any[]);
 
@@ -16107,7 +16107,7 @@ export namespace GData {
 
         static ['new'](method: string | null, absolute_time: number, relative_time: number): GDReminder;
 
-        // Own methods of GData.GDReminder
+        // Methods
 
         /**
          * Gets the #GDataGDReminder:absolute-time property. If the property is unset, <code class="literal">-1</code> will be returned.
@@ -16583,7 +16583,7 @@ export namespace GData {
     class GDWhen extends Parsable implements Comparable {
         static $gtype: GObject.GType<GDWhen>;
 
-        // Own properties of GData.GDWhen
+        // Properties
 
         /**
          * The title of a person within the when.
@@ -16652,7 +16652,7 @@ export namespace GData {
         get valueString(): string;
         set valueString(val: string);
 
-        // Constructors of GData.GDWhen
+        // Constructors
 
         constructor(properties?: Partial<GDWhen.ConstructorProps>, ...args: any[]);
 
@@ -16660,7 +16660,7 @@ export namespace GData {
 
         static ['new'](start_time: number, end_time: number, is_date: boolean): GDWhen;
 
-        // Own methods of GData.GDWhen
+        // Methods
 
         /**
          * Adds a reminder to the #GDataGDWhen's list of reminders and increments its reference count.
@@ -17150,7 +17150,7 @@ export namespace GData {
     class GDWhere extends Parsable implements Comparable {
         static $gtype: GObject.GType<GDWhere>;
 
-        // Own properties of GData.GDWhere
+        // Properties
 
         /**
          * Specifies a user-readable label to distinguish this location from others.
@@ -17195,7 +17195,7 @@ export namespace GData {
         get valueString(): string;
         set valueString(val: string);
 
-        // Constructors of GData.GDWhere
+        // Constructors
 
         constructor(properties?: Partial<GDWhere.ConstructorProps>, ...args: any[]);
 
@@ -17203,7 +17203,7 @@ export namespace GData {
 
         static ['new'](relation_type?: string | null, value_string?: string | null, label?: string | null): GDWhere;
 
-        // Own methods of GData.GDWhere
+        // Methods
 
         /**
          * Gets the #GDataGDWhere:label property.
@@ -17677,7 +17677,7 @@ export namespace GData {
     class GDWho extends Parsable implements Comparable {
         static $gtype: GObject.GType<GDWho>;
 
-        // Own properties of GData.GDWho
+        // Properties
 
         /**
          * The e-mail address of the person represented by the #GDataGDWho.
@@ -17730,7 +17730,7 @@ export namespace GData {
         get valueString(): string;
         set valueString(val: string);
 
-        // Constructors of GData.GDWho
+        // Constructors
 
         constructor(properties?: Partial<GDWho.ConstructorProps>, ...args: any[]);
 
@@ -17742,7 +17742,7 @@ export namespace GData {
             email_address?: string | null,
         ): GDWho;
 
-        // Own methods of GData.GDWho
+        // Methods
 
         /**
          * Gets the #GDataGDWho:email-address property.
@@ -18213,7 +18213,7 @@ export namespace GData {
     class Generator extends Parsable implements Comparable {
         static $gtype: GObject.GType<Generator>;
 
-        // Own properties of GData.Generator
+        // Properties
 
         /**
          * A human-readable name for the generating agent.
@@ -18240,13 +18240,13 @@ export namespace GData {
          */
         get version(): string;
 
-        // Constructors of GData.Generator
+        // Constructors
 
         constructor(properties?: Partial<Generator.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of GData.Generator
+        // Methods
 
         /**
          * Gets the #GDataGenerator:name property. The name will be %NULL or non-empty.
@@ -18695,7 +18695,7 @@ export namespace GData {
     class GoaAuthorizer extends GObject.Object implements Authorizer {
         static $gtype: GObject.GType<GoaAuthorizer>;
 
-        // Own properties of GData.GoaAuthorizer
+        // Properties
 
         /**
          * The GOA account providing authentication. This should have all the necessary services enabled on it.
@@ -18706,7 +18706,7 @@ export namespace GData {
          */
         get goaObject(): Goa.Object;
 
-        // Constructors of GData.GoaAuthorizer
+        // Constructors
 
         constructor(properties?: Partial<GoaAuthorizer.ConstructorProps>, ...args: any[]);
 
@@ -18714,7 +18714,7 @@ export namespace GData {
 
         static ['new'](goa_object: Goa.Object): GoaAuthorizer;
 
-        // Own methods of GData.GoaAuthorizer
+        // Methods
 
         /**
          * The GOA account providing authentication. This is the same as #GDataGoaAuthorizer:goa-object.
@@ -19317,7 +19317,7 @@ export namespace GData {
     class Link extends Parsable implements Comparable {
         static $gtype: GObject.GType<Link>;
 
-        // Own properties of GData.Link
+        // Properties
 
         /**
          * An advisory media type: it is a hint about the type of the representation that is expected to be returned when the value
@@ -19386,7 +19386,7 @@ export namespace GData {
         get uri(): string;
         set uri(val: string);
 
-        // Constructors of GData.Link
+        // Constructors
 
         constructor(properties?: Partial<Link.ConstructorProps>, ...args: any[]);
 
@@ -19394,7 +19394,7 @@ export namespace GData {
 
         static ['new'](uri: string, relation_type?: string | null): Link;
 
-        // Own methods of GData.Link
+        // Methods
 
         /**
          * Gets the #GDataLink:content-type property. If the content type is non-%NULL, it will be non-empty.
@@ -19907,7 +19907,7 @@ export namespace GData {
     class MediaCategory extends Parsable {
         static $gtype: GObject.GType<MediaCategory>;
 
-        // Own properties of GData.MediaCategory
+        // Properties
 
         /**
          * The category name.
@@ -19931,7 +19931,7 @@ export namespace GData {
         get scheme(): string;
         set scheme(val: string);
 
-        // Constructors of GData.MediaCategory
+        // Constructors
 
         constructor(properties?: Partial<MediaCategory.ConstructorProps>, ...args: any[]);
 
@@ -19939,7 +19939,7 @@ export namespace GData {
 
         static ['new'](category: string, scheme?: string | null, label?: string | null): MediaCategory;
 
-        // Own methods of GData.MediaCategory
+        // Methods
 
         /**
          * Gets the #GDataMediaCategory:category property.
@@ -20001,7 +20001,7 @@ export namespace GData {
     class MediaContent extends Parsable {
         static $gtype: GObject.GType<MediaContent>;
 
-        // Own properties of GData.MediaContent
+        // Properties
 
         /**
          * The standard MIME type of the object.
@@ -20071,13 +20071,13 @@ export namespace GData {
          */
         get width(): number;
 
-        // Constructors of GData.MediaContent
+        // Constructors
 
         constructor(properties?: Partial<MediaContent.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of GData.MediaContent
+        // Methods
 
         /**
          * Downloads and returns a #GDataDownloadStream allowing the content represented by `self` to be read.
@@ -20152,7 +20152,7 @@ export namespace GData {
     class MediaCredit extends Parsable {
         static $gtype: GObject.GType<MediaCredit>;
 
-        // Own properties of GData.MediaCredit
+        // Properties
 
         /**
          * The credited entity's name.
@@ -20173,13 +20173,13 @@ export namespace GData {
          */
         get scheme(): string;
 
-        // Constructors of GData.MediaCredit
+        // Constructors
 
         constructor(properties?: Partial<MediaCredit.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of GData.MediaCredit
+        // Methods
 
         /**
          * Gets the #GDataMediaCredit:credit property.
@@ -20215,7 +20215,7 @@ export namespace GData {
     class MediaThumbnail extends Parsable {
         static $gtype: GObject.GType<MediaThumbnail>;
 
-        // Own properties of GData.MediaThumbnail
+        // Properties
 
         /**
          * The height of the thumbnail, in pixels.
@@ -20242,13 +20242,13 @@ export namespace GData {
          */
         get width(): number;
 
-        // Constructors of GData.MediaThumbnail
+        // Constructors
 
         constructor(properties?: Partial<MediaThumbnail.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of GData.MediaThumbnail
+        // Methods
 
         /**
          * Downloads and returns a #GDataDownloadStream allowing the thumbnail data represented by `self` to be read.
@@ -20312,7 +20312,7 @@ export namespace GData {
     class OAuth2Authorizer extends GObject.Object implements Authorizer {
         static $gtype: GObject.GType<OAuth2Authorizer>;
 
-        // Own properties of GData.OAuth2Authorizer
+        // Properties
 
         /**
          * A client ID for your application (see the
@@ -20471,7 +20471,7 @@ export namespace GData {
         get timeout(): number;
         set timeout(val: number);
 
-        // Constructors of GData.OAuth2Authorizer
+        // Constructors
 
         constructor(properties?: Partial<OAuth2Authorizer.ConstructorProps>, ...args: any[]);
 
@@ -20491,7 +20491,7 @@ export namespace GData {
             authorization_domains: AuthorizationDomain[],
         ): OAuth2Authorizer;
 
-        // Own methods of GData.OAuth2Authorizer
+        // Methods
 
         /**
          * Build an authentication URI to open in the user’s web browser (or an embedded
@@ -21221,7 +21221,7 @@ export namespace GData {
     abstract class Parsable extends GObject.Object {
         static $gtype: GObject.GType<Parsable>;
 
-        // Own properties of GData.Parsable
+        // Properties
 
         /**
          * Specifies whether the object was constructed by parsing XML or manually.
@@ -21232,7 +21232,7 @@ export namespace GData {
          */
         get constructedFromXml(): boolean;
 
-        // Constructors of GData.Parsable
+        // Constructors
 
         constructor(properties?: Partial<Parsable.ConstructorProps>, ...args: any[]);
 
@@ -21242,7 +21242,7 @@ export namespace GData {
 
         static new_from_xml(parsable_type: GObject.GType, xml: string, length: number): Parsable;
 
-        // Own virtual methods of GData.Parsable
+        // Virtual methods
 
         vfunc_get_json(builder: Json.Builder): void;
         vfunc_get_namespaces(namespaces: { [key: string]: any } | GLib.HashTable<any, any>): void;
@@ -21254,7 +21254,7 @@ export namespace GData {
         vfunc_pre_get_xml(xml_string: GLib.String): void;
         vfunc_pre_parse_xml(doc: libxml2.Doc, root_node: libxml2.Node): boolean;
 
-        // Own methods of GData.Parsable
+        // Methods
 
         /**
          * Returns the content type upon which the #GDataParsable is built. For example, `application/atom+xml` or `application/json`.
@@ -21309,7 +21309,7 @@ export namespace GData {
     class PicasaWebAlbum extends Entry {
         static $gtype: GObject.GType<PicasaWebAlbum>;
 
-        // Own properties of GData.PicasaWebAlbum
+        // Properties
 
         /**
          * The ID of the album. This is a substring of the ID returned by gdata_entry_get_id() for #GDataPicasaWebAlbums; for example,
@@ -21465,7 +21465,7 @@ export namespace GData {
         get visibility(): PicasaWebVisibility;
         set visibility(val: PicasaWebVisibility);
 
-        // Constructors of GData.PicasaWebAlbum
+        // Constructors
 
         constructor(properties?: Partial<PicasaWebAlbum.ConstructorProps>, ...args: any[]);
 
@@ -21473,7 +21473,7 @@ export namespace GData {
 
         static ['new'](id?: string | null): PicasaWebAlbum;
 
-        // Own methods of GData.PicasaWebAlbum
+        // Methods
 
         /**
          * Gets the #GDataPicasaWebAlbum:bytes-used property. It will return <code class="literal">-1</code> if the current authenticated
@@ -21608,7 +21608,7 @@ export namespace GData {
     class PicasaWebComment extends Comment {
         static $gtype: GObject.GType<PicasaWebComment>;
 
-        // Constructors of GData.PicasaWebComment
+        // Constructors
 
         constructor(properties?: Partial<PicasaWebComment.ConstructorProps>, ...args: any[]);
 
@@ -21632,7 +21632,7 @@ export namespace GData {
     class PicasaWebFeed extends Feed {
         static $gtype: GObject.GType<PicasaWebFeed>;
 
-        // Constructors of GData.PicasaWebFeed
+        // Constructors
 
         constructor(properties?: Partial<PicasaWebFeed.ConstructorProps>, ...args: any[]);
 
@@ -21686,7 +21686,7 @@ export namespace GData {
     class PicasaWebFile extends Entry implements Commentable {
         static $gtype: GObject.GType<PicasaWebFile>;
 
-        // Own properties of GData.PicasaWebFile
+        // Properties
 
         /**
          * The ID for the file's album. This is in the same form as returned by gdata_picasaweb_album_get_id().
@@ -21938,7 +21938,7 @@ export namespace GData {
          */
         get width(): number;
 
-        // Constructors of GData.PicasaWebFile
+        // Constructors
 
         constructor(properties?: Partial<PicasaWebFile.ConstructorProps>, ...args: any[]);
 
@@ -21946,7 +21946,7 @@ export namespace GData {
 
         static ['new'](id?: string | null): PicasaWebFile;
 
-        // Own methods of GData.PicasaWebFile
+        // Methods
 
         /**
          * Gets the #GDataPicasaWebFile:album-id property. This is in the same form as returned by gdata_picasaweb_album_get_id().
@@ -22504,7 +22504,7 @@ export namespace GData {
     class PicasaWebQuery extends Query {
         static $gtype: GObject.GType<PicasaWebQuery>;
 
-        // Own properties of GData.PicasaWebQuery
+        // Properties
 
         /**
          * A comma-separated list of image sizes (width in pixels) to return. Only certain sizes are allowed, and whether the image should be
@@ -22556,7 +22556,7 @@ export namespace GData {
         get visibility(): number;
         set visibility(val: number);
 
-        // Constructors of GData.PicasaWebQuery
+        // Constructors
 
         constructor(properties?: Partial<PicasaWebQuery.ConstructorProps>, ...args: any[]);
 
@@ -22566,7 +22566,7 @@ export namespace GData {
 
         static new_with_limits(q: string | null, start_index: number, max_results: number): PicasaWebQuery;
 
-        // Own methods of GData.PicasaWebQuery
+        // Methods
 
         /**
          * Gets the latitudes and longitudes of a bounding box, inside which all the results must lie.
@@ -22656,7 +22656,7 @@ export namespace GData {
     class PicasaWebService extends Service {
         static $gtype: GObject.GType<PicasaWebService>;
 
-        // Constructors of GData.PicasaWebService
+        // Constructors
 
         constructor(properties?: Partial<PicasaWebService.ConstructorProps>, ...args: any[]);
 
@@ -22664,7 +22664,7 @@ export namespace GData {
 
         static ['new'](authorizer?: Authorizer | null): PicasaWebService;
 
-        // Own static methods of GData.PicasaWebService
+        // Static methods
 
         /**
          * The primary #GDataAuthorizationDomain for interacting with PicasaWeb. This will not normally need to be used, as it's used internally
@@ -22675,7 +22675,7 @@ export namespace GData {
          */
         static get_primary_authorization_domain(): AuthorizationDomain;
 
-        // Own methods of GData.PicasaWebService
+        // Methods
 
         /**
          * Finish off a file upload operation started by gdata_picasaweb_service_upload_file(), parsing the result and returning the new #GDataPicasaWebFile.
@@ -22881,7 +22881,7 @@ export namespace GData {
     class PicasaWebUser extends Entry {
         static $gtype: GObject.GType<PicasaWebUser>;
 
-        // Own properties of GData.PicasaWebUser
+        // Properties
 
         /**
          * The maximum number of photos allowed in an album.
@@ -22946,13 +22946,13 @@ export namespace GData {
          */
         get user(): string;
 
-        // Constructors of GData.PicasaWebUser
+        // Constructors
 
         constructor(properties?: Partial<PicasaWebUser.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of GData.PicasaWebUser
+        // Methods
 
         /**
          * Gets the #GDataPicasaWebUser:max-photos-per-album property.  Note that
@@ -23023,7 +23023,7 @@ export namespace GData {
     class Query extends GObject.Object {
         static $gtype: GObject.GType<Query>;
 
-        // Own properties of GData.Query
+        // Properties
 
         /**
          * An entry author. The service returns entries where the author name and/or e-mail address match your query string.
@@ -23167,7 +23167,7 @@ export namespace GData {
         get updatedMin(): number;
         set updatedMin(val: number);
 
-        // Constructors of GData.Query
+        // Constructors
 
         constructor(properties?: Partial<Query.ConstructorProps>, ...args: any[]);
 
@@ -23177,11 +23177,11 @@ export namespace GData {
 
         static new_with_limits(q: string | null, start_index: number, max_results: number): Query;
 
-        // Own virtual methods of GData.Query
+        // Virtual methods
 
         vfunc_get_query_uri(feed_uri: string, query_uri: GLib.String, params_started: boolean): void;
 
-        // Own methods of GData.Query
+        // Methods
 
         /**
          * Gets the #GDataQuery:author property.
@@ -23355,7 +23355,7 @@ export namespace GData {
     class Service extends GObject.Object {
         static $gtype: GObject.GType<Service>;
 
-        // Own properties of GData.Service
+        // Properties
 
         /**
          * An object which implements #GDataAuthorizer. This should have previously been authenticated authorized against this service type (and
@@ -23405,13 +23405,13 @@ export namespace GData {
         get timeout(): number;
         set timeout(val: number);
 
-        // Constructors of GData.Service
+        // Constructors
 
         constructor(properties?: Partial<Service.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of GData.Service
+        // Static methods
 
         /**
          * Retrieves the full list of #GDataAuthorizationDomains which relate to the specified `service_type`. All the
@@ -23423,7 +23423,7 @@ export namespace GData {
          */
         static get_authorization_domains(service_type: GObject.GType): AuthorizationDomain[];
 
-        // Own virtual methods of GData.Service
+        // Virtual methods
 
         vfunc_append_query_headers(domain: AuthorizationDomain, message: Soup.Message): void;
         vfunc_parse_error_response(
@@ -23434,7 +23434,7 @@ export namespace GData {
             length: number,
         ): void;
 
-        // Own methods of GData.Service
+        // Methods
 
         /**
          * Deletes `entry` from the server. For more information about the concept of deleting entries, see the
@@ -23791,7 +23791,7 @@ export namespace GData {
     class TasksQuery extends Query {
         static $gtype: GObject.GType<TasksQuery>;
 
-        // Own properties of GData.TasksQuery
+        // Properties
 
         /**
          * Upper bound for a task's completion date (as a RFC 3339 timestamp) to filter by. Optional.
@@ -23872,7 +23872,7 @@ export namespace GData {
         get showHidden(): boolean;
         set showHidden(val: boolean);
 
-        // Constructors of GData.TasksQuery
+        // Constructors
 
         constructor(properties?: Partial<TasksQuery.ConstructorProps>, ...args: any[]);
 
@@ -23880,7 +23880,7 @@ export namespace GData {
 
         static ['new'](q?: string | null): TasksQuery;
 
-        // Own methods of GData.TasksQuery
+        // Methods
 
         /**
          * Gets the #GDataTasksQuery:completed-max property. If the property is unset, <code class="literal">-1</code> will be returned.
@@ -23978,7 +23978,7 @@ export namespace GData {
     class TasksService extends Service {
         static $gtype: GObject.GType<TasksService>;
 
-        // Constructors of GData.TasksService
+        // Constructors
 
         constructor(properties?: Partial<TasksService.ConstructorProps>, ...args: any[]);
 
@@ -23986,7 +23986,7 @@ export namespace GData {
 
         static ['new'](authorizer?: Authorizer | null): TasksService;
 
-        // Own static methods of GData.TasksService
+        // Static methods
 
         /**
          * The primary #GDataAuthorizationDomain for interacting with Google Tasks. This will not normally need to be used, as it's used internally
@@ -23997,7 +23997,7 @@ export namespace GData {
          */
         static get_primary_authorization_domain(): AuthorizationDomain;
 
-        // Own methods of GData.TasksService
+        // Methods
 
         /**
          * Delete `task` from online tasks service.
@@ -24263,7 +24263,7 @@ export namespace GData {
     class TasksTask extends Entry {
         static $gtype: GObject.GType<TasksTask>;
 
-        // Own properties of GData.TasksTask
+        // Properties
 
         /**
          * Completion date of the task (as a RFC 3339 timestamp; seconds since
@@ -24334,7 +24334,7 @@ export namespace GData {
         get status(): string;
         set status(val: string);
 
-        // Constructors of GData.TasksTask
+        // Constructors
 
         constructor(properties?: Partial<TasksTask.ConstructorProps>, ...args: any[]);
 
@@ -24342,7 +24342,7 @@ export namespace GData {
 
         static ['new'](id?: string | null): TasksTask;
 
-        // Own methods of GData.TasksTask
+        // Methods
 
         /**
          * Gets the #GDataTasksTask:completed property. If the property is unset, <code class="literal">-1</code> will be returned.
@@ -24431,7 +24431,7 @@ export namespace GData {
     class TasksTasklist extends Entry {
         static $gtype: GObject.GType<TasksTasklist>;
 
-        // Constructors of GData.TasksTasklist
+        // Constructors
 
         constructor(properties?: Partial<TasksTasklist.ConstructorProps>, ...args: any[]);
 
@@ -24466,7 +24466,7 @@ export namespace GData {
     class UploadStream extends Gio.OutputStream {
         static $gtype: GObject.GType<UploadStream>;
 
-        // Own properties of GData.UploadStream
+        // Properties
 
         /**
          * The authorization domain for the upload, against which the #GDataService:authorizer for the #GDataDownloadStream:service should be
@@ -24537,7 +24537,7 @@ export namespace GData {
          */
         get uploadUri(): string;
 
-        // Constructors of GData.UploadStream
+        // Constructors
 
         constructor(properties?: Partial<UploadStream.ConstructorProps>, ...args: any[]);
 
@@ -24566,7 +24566,7 @@ export namespace GData {
             cancellable?: Gio.Cancellable | null,
         ): UploadStream;
 
-        // Own methods of GData.UploadStream
+        // Methods
 
         /**
          * Gets the authorization domain used to authorize the upload, as passed to gdata_upload_stream_new(). It may be %NULL if authorization is not
@@ -24650,7 +24650,7 @@ export namespace GData {
     class YouTubeCategory extends Category implements Comparable {
         static $gtype: GObject.GType<YouTubeCategory>;
 
-        // Own properties of GData.YouTubeCategory
+        // Properties
 
         /**
          * Whether new videos can be added to the category.
@@ -24669,13 +24669,13 @@ export namespace GData {
          */
         get isDeprecated(): boolean;
 
-        // Constructors of GData.YouTubeCategory
+        // Constructors
 
         constructor(properties?: Partial<YouTubeCategory.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of GData.YouTubeCategory
+        // Methods
 
         /**
          * Returns whether the category is browsable in the given `region`. The list of supported region IDs is
@@ -25116,7 +25116,7 @@ export namespace GData {
     class YouTubeComment extends Comment {
         static $gtype: GObject.GType<YouTubeComment>;
 
-        // Own properties of GData.YouTubeComment
+        // Properties
 
         /**
          * The URI of the parent comment to this one, or %NULL if this comment is a top-level comment.
@@ -25133,7 +25133,7 @@ export namespace GData {
         get parentCommentUri(): string;
         set parentCommentUri(val: string);
 
-        // Constructors of GData.YouTubeComment
+        // Constructors
 
         constructor(properties?: Partial<YouTubeComment.ConstructorProps>, ...args: any[]);
 
@@ -25144,7 +25144,7 @@ export namespace GData {
 
         static ['new'](...args: never[]): any;
 
-        // Own methods of GData.YouTubeComment
+        // Methods
 
         /**
          * Gets the #GDataYouTubeComment:parent-comment-uri property.
@@ -25177,7 +25177,7 @@ export namespace GData {
     class YouTubeFeed extends Feed {
         static $gtype: GObject.GType<YouTubeFeed>;
 
-        // Constructors of GData.YouTubeFeed
+        // Constructors
 
         constructor(properties?: Partial<YouTubeFeed.ConstructorProps>, ...args: any[]);
 
@@ -25208,7 +25208,7 @@ export namespace GData {
     class YouTubeQuery extends Query {
         static $gtype: GObject.GType<YouTubeQuery>;
 
-        // Own properties of GData.YouTubeQuery
+        // Properties
 
         /**
          * Restricts the search to videos uploaded within the specified time period. To retrieve videos irrespective of their
@@ -25326,7 +25326,7 @@ export namespace GData {
         get safeSearch(): YouTubeSafeSearch;
         set safeSearch(val: YouTubeSafeSearch);
 
-        // Constructors of GData.YouTubeQuery
+        // Constructors
 
         constructor(properties?: Partial<YouTubeQuery.ConstructorProps>, ...args: any[]);
 
@@ -25334,7 +25334,7 @@ export namespace GData {
 
         static ['new'](q?: string | null): YouTubeQuery;
 
-        // Own methods of GData.YouTubeQuery
+        // Methods
 
         /**
          * Gets the #GDataYouTubeQuery:age property.
@@ -25422,7 +25422,7 @@ export namespace GData {
     class YouTubeService extends Service implements Batchable {
         static $gtype: GObject.GType<YouTubeService>;
 
-        // Own properties of GData.YouTubeService
+        // Properties
 
         /**
          * The developer key your application has registered with the YouTube API. For more information, see the <ulink type="http"
@@ -25443,7 +25443,7 @@ export namespace GData {
          */
         get developerKey(): string;
 
-        // Constructors of GData.YouTubeService
+        // Constructors
 
         constructor(properties?: Partial<YouTubeService.ConstructorProps>, ...args: any[]);
 
@@ -25451,7 +25451,7 @@ export namespace GData {
 
         static ['new'](developer_key: string, authorizer?: Authorizer | null): YouTubeService;
 
-        // Own static methods of GData.YouTubeService
+        // Static methods
 
         /**
          * The primary #GDataAuthorizationDomain for interacting with YouTube. This will not normally need to be used, as it's used internally
@@ -25462,7 +25462,7 @@ export namespace GData {
          */
         static get_primary_authorization_domain(): AuthorizationDomain;
 
-        // Own methods of GData.YouTubeService
+        // Methods
 
         /**
          * Finish off a video upload operation started by gdata_youtube_service_upload_video(), parsing the result and returning the new #GDataYouTubeVideo.
@@ -26071,7 +26071,7 @@ export namespace GData {
     class YouTubeState extends Parsable {
         static $gtype: GObject.GType<YouTubeState>;
 
-        // Own properties of GData.YouTubeState
+        // Properties
 
         /**
          * A URI for a YouTube Help Center page that may help the developer or the video owner to diagnose
@@ -26118,13 +26118,13 @@ export namespace GData {
          */
         get reasonCode(): string;
 
-        // Constructors of GData.YouTubeState
+        // Constructors
 
         constructor(properties?: Partial<YouTubeState.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of GData.YouTubeState
+        // Methods
 
         /**
          * Gets the #GDataYouTubeState:help-uri property.
@@ -26189,7 +26189,7 @@ export namespace GData {
     class YouTubeVideo extends Entry implements Commentable {
         static $gtype: GObject.GType<YouTubeVideo>;
 
-        // Own properties of GData.YouTubeVideo
+        // Properties
 
         /**
          * The aspect ratio of the video. A %NULL value means the aspect ratio is unknown (it could still be a widescreen video). A value of
@@ -26384,7 +26384,7 @@ export namespace GData {
          */
         get viewCount(): number;
 
-        // Constructors of GData.YouTubeVideo
+        // Constructors
 
         constructor(properties?: Partial<YouTubeVideo.ConstructorProps>, ...args: any[]);
 
@@ -26392,7 +26392,7 @@ export namespace GData {
 
         static ['new'](id?: string | null): YouTubeVideo;
 
-        // Own static methods of GData.YouTubeVideo
+        // Static methods
 
         /**
          * Extracts a video ID from a YouTube video player URI. The video ID is in the same form as returned by
@@ -26412,7 +26412,7 @@ export namespace GData {
          */
         static get_video_id_from_uri(video_uri: string): string;
 
-        // Own methods of GData.YouTubeVideo
+        // Methods
 
         /**
          * Gets the permission associated with the given `action` on the #GDataYouTubeVideo. If the given `action`
@@ -26937,7 +26937,7 @@ export namespace GData {
     abstract class APPCategoriesPrivate {
         static $gtype: GObject.GType<APPCategoriesPrivate>;
 
-        // Constructors of GData.APPCategoriesPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -26947,7 +26947,7 @@ export namespace GData {
     abstract class AccessRulePrivate {
         static $gtype: GObject.GType<AccessRulePrivate>;
 
-        // Constructors of GData.AccessRulePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -26956,7 +26956,7 @@ export namespace GData {
     abstract class AuthorPrivate {
         static $gtype: GObject.GType<AuthorPrivate>;
 
-        // Constructors of GData.AuthorPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -26965,7 +26965,7 @@ export namespace GData {
     abstract class AuthorizationDomainPrivate {
         static $gtype: GObject.GType<AuthorizationDomainPrivate>;
 
-        // Constructors of GData.AuthorizationDomainPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -26975,7 +26975,7 @@ export namespace GData {
     abstract class BatchOperationPrivate {
         static $gtype: GObject.GType<BatchOperationPrivate>;
 
-        // Constructors of GData.BatchOperationPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -26986,7 +26986,7 @@ export namespace GData {
     abstract class CalendarCalendarPrivate {
         static $gtype: GObject.GType<CalendarCalendarPrivate>;
 
-        // Constructors of GData.CalendarCalendarPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -26995,7 +26995,7 @@ export namespace GData {
     abstract class CalendarEventPrivate {
         static $gtype: GObject.GType<CalendarEventPrivate>;
 
-        // Constructors of GData.CalendarEventPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -27004,7 +27004,7 @@ export namespace GData {
     abstract class CalendarFeedPrivate {
         static $gtype: GObject.GType<CalendarFeedPrivate>;
 
-        // Constructors of GData.CalendarFeedPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -27013,7 +27013,7 @@ export namespace GData {
     abstract class CalendarQueryPrivate {
         static $gtype: GObject.GType<CalendarQueryPrivate>;
 
-        // Constructors of GData.CalendarQueryPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -27022,7 +27022,7 @@ export namespace GData {
     abstract class CalendarServicePrivate {
         static $gtype: GObject.GType<CalendarServicePrivate>;
 
-        // Constructors of GData.CalendarServicePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -27031,7 +27031,7 @@ export namespace GData {
     abstract class CategoryPrivate {
         static $gtype: GObject.GType<CategoryPrivate>;
 
-        // Constructors of GData.CategoryPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -27043,13 +27043,13 @@ export namespace GData {
     class Color {
         static $gtype: GObject.GType<Color>;
 
-        // Own fields of GData.Color
+        // Fields
 
         red: number;
         green: number;
         blue: number;
 
-        // Constructors of GData.Color
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -27060,7 +27060,7 @@ export namespace GData {
         );
         _init(...args: any[]): void;
 
-        // Own static methods of GData.Color
+        // Static methods
 
         /**
          * Parses `hexadecimal` and returns a #GDataColor describing it in `color`.
@@ -27072,7 +27072,7 @@ export namespace GData {
          */
         static from_hexadecimal(hexadecimal: string): [boolean, Color];
 
-        // Own methods of GData.Color
+        // Methods
 
         /**
          * Returns a string describing `color` in hexadecimal form; in the form <literal>#<replaceable>rr</replaceable><replaceable>gg</replaceable>
@@ -27087,7 +27087,7 @@ export namespace GData {
     abstract class CommentPrivate {
         static $gtype: GObject.GType<CommentPrivate>;
 
-        // Constructors of GData.CommentPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -27099,7 +27099,7 @@ export namespace GData {
     abstract class DocumentsDocumentPrivate {
         static $gtype: GObject.GType<DocumentsDocumentPrivate>;
 
-        // Constructors of GData.DocumentsDocumentPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -27108,7 +27108,7 @@ export namespace GData {
     abstract class DocumentsDrawingPrivate {
         static $gtype: GObject.GType<DocumentsDrawingPrivate>;
 
-        // Constructors of GData.DocumentsDrawingPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -27119,7 +27119,7 @@ export namespace GData {
     abstract class DocumentsEntryPrivate {
         static $gtype: GObject.GType<DocumentsEntryPrivate>;
 
-        // Constructors of GData.DocumentsEntryPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -27128,7 +27128,7 @@ export namespace GData {
     abstract class DocumentsFeedPrivate {
         static $gtype: GObject.GType<DocumentsFeedPrivate>;
 
-        // Constructors of GData.DocumentsFeedPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -27137,7 +27137,7 @@ export namespace GData {
     abstract class DocumentsFolderPrivate {
         static $gtype: GObject.GType<DocumentsFolderPrivate>;
 
-        // Constructors of GData.DocumentsFolderPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -27146,7 +27146,7 @@ export namespace GData {
     abstract class DocumentsMetadataPrivate {
         static $gtype: GObject.GType<DocumentsMetadataPrivate>;
 
-        // Constructors of GData.DocumentsMetadataPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -27155,7 +27155,7 @@ export namespace GData {
     abstract class DocumentsPdfPrivate {
         static $gtype: GObject.GType<DocumentsPdfPrivate>;
 
-        // Constructors of GData.DocumentsPdfPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -27164,7 +27164,7 @@ export namespace GData {
     abstract class DocumentsPresentationPrivate {
         static $gtype: GObject.GType<DocumentsPresentationPrivate>;
 
-        // Constructors of GData.DocumentsPresentationPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -27173,7 +27173,7 @@ export namespace GData {
     abstract class DocumentsPropertyPrivate {
         static $gtype: GObject.GType<DocumentsPropertyPrivate>;
 
-        // Constructors of GData.DocumentsPropertyPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -27182,7 +27182,7 @@ export namespace GData {
     abstract class DocumentsQueryPrivate {
         static $gtype: GObject.GType<DocumentsQueryPrivate>;
 
-        // Constructors of GData.DocumentsQueryPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -27191,7 +27191,7 @@ export namespace GData {
     abstract class DocumentsServicePrivate {
         static $gtype: GObject.GType<DocumentsServicePrivate>;
 
-        // Constructors of GData.DocumentsServicePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -27200,7 +27200,7 @@ export namespace GData {
     abstract class DocumentsSpreadsheetPrivate {
         static $gtype: GObject.GType<DocumentsSpreadsheetPrivate>;
 
-        // Constructors of GData.DocumentsSpreadsheetPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -27209,7 +27209,7 @@ export namespace GData {
     abstract class DocumentsTextPrivate {
         static $gtype: GObject.GType<DocumentsTextPrivate>;
 
-        // Constructors of GData.DocumentsTextPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -27218,7 +27218,7 @@ export namespace GData {
     abstract class DocumentsUploadQueryPrivate {
         static $gtype: GObject.GType<DocumentsUploadQueryPrivate>;
 
-        // Constructors of GData.DocumentsUploadQueryPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -27227,7 +27227,7 @@ export namespace GData {
     abstract class DownloadStreamPrivate {
         static $gtype: GObject.GType<DownloadStreamPrivate>;
 
-        // Constructors of GData.DownloadStreamPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -27236,7 +27236,7 @@ export namespace GData {
     abstract class EntryPrivate {
         static $gtype: GObject.GType<EntryPrivate>;
 
-        // Constructors of GData.EntryPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -27245,7 +27245,7 @@ export namespace GData {
     abstract class FeedPrivate {
         static $gtype: GObject.GType<FeedPrivate>;
 
-        // Constructors of GData.FeedPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -27254,7 +27254,7 @@ export namespace GData {
     abstract class GContactCalendarPrivate {
         static $gtype: GObject.GType<GContactCalendarPrivate>;
 
-        // Constructors of GData.GContactCalendarPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -27263,7 +27263,7 @@ export namespace GData {
     abstract class GContactEventPrivate {
         static $gtype: GObject.GType<GContactEventPrivate>;
 
-        // Constructors of GData.GContactEventPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -27272,7 +27272,7 @@ export namespace GData {
     abstract class GContactExternalIDPrivate {
         static $gtype: GObject.GType<GContactExternalIDPrivate>;
 
-        // Constructors of GData.GContactExternalIDPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -27281,7 +27281,7 @@ export namespace GData {
     abstract class GContactJotPrivate {
         static $gtype: GObject.GType<GContactJotPrivate>;
 
-        // Constructors of GData.GContactJotPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -27290,7 +27290,7 @@ export namespace GData {
     abstract class GContactLanguagePrivate {
         static $gtype: GObject.GType<GContactLanguagePrivate>;
 
-        // Constructors of GData.GContactLanguagePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -27299,7 +27299,7 @@ export namespace GData {
     abstract class GContactRelationPrivate {
         static $gtype: GObject.GType<GContactRelationPrivate>;
 
-        // Constructors of GData.GContactRelationPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -27308,7 +27308,7 @@ export namespace GData {
     abstract class GContactWebsitePrivate {
         static $gtype: GObject.GType<GContactWebsitePrivate>;
 
-        // Constructors of GData.GContactWebsitePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -27317,7 +27317,7 @@ export namespace GData {
     abstract class GDEmailAddressPrivate {
         static $gtype: GObject.GType<GDEmailAddressPrivate>;
 
-        // Constructors of GData.GDEmailAddressPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -27326,7 +27326,7 @@ export namespace GData {
     abstract class GDIMAddressPrivate {
         static $gtype: GObject.GType<GDIMAddressPrivate>;
 
-        // Constructors of GData.GDIMAddressPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -27335,7 +27335,7 @@ export namespace GData {
     abstract class GDNamePrivate {
         static $gtype: GObject.GType<GDNamePrivate>;
 
-        // Constructors of GData.GDNamePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -27344,7 +27344,7 @@ export namespace GData {
     abstract class GDOrganizationPrivate {
         static $gtype: GObject.GType<GDOrganizationPrivate>;
 
-        // Constructors of GData.GDOrganizationPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -27353,7 +27353,7 @@ export namespace GData {
     abstract class GDPhoneNumberPrivate {
         static $gtype: GObject.GType<GDPhoneNumberPrivate>;
 
-        // Constructors of GData.GDPhoneNumberPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -27362,7 +27362,7 @@ export namespace GData {
     abstract class GDPostalAddressPrivate {
         static $gtype: GObject.GType<GDPostalAddressPrivate>;
 
-        // Constructors of GData.GDPostalAddressPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -27371,7 +27371,7 @@ export namespace GData {
     abstract class GDReminderPrivate {
         static $gtype: GObject.GType<GDReminderPrivate>;
 
-        // Constructors of GData.GDReminderPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -27380,7 +27380,7 @@ export namespace GData {
     abstract class GDWhenPrivate {
         static $gtype: GObject.GType<GDWhenPrivate>;
 
-        // Constructors of GData.GDWhenPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -27389,7 +27389,7 @@ export namespace GData {
     abstract class GDWherePrivate {
         static $gtype: GObject.GType<GDWherePrivate>;
 
-        // Constructors of GData.GDWherePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -27398,7 +27398,7 @@ export namespace GData {
     abstract class GDWhoPrivate {
         static $gtype: GObject.GType<GDWhoPrivate>;
 
-        // Constructors of GData.GDWhoPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -27407,7 +27407,7 @@ export namespace GData {
     abstract class GeneratorPrivate {
         static $gtype: GObject.GType<GeneratorPrivate>;
 
-        // Constructors of GData.GeneratorPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -27416,7 +27416,7 @@ export namespace GData {
     abstract class GoaAuthorizerPrivate {
         static $gtype: GObject.GType<GoaAuthorizerPrivate>;
 
-        // Constructors of GData.GoaAuthorizerPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -27425,7 +27425,7 @@ export namespace GData {
     abstract class LinkPrivate {
         static $gtype: GObject.GType<LinkPrivate>;
 
-        // Constructors of GData.LinkPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -27434,7 +27434,7 @@ export namespace GData {
     abstract class MediaCategoryPrivate {
         static $gtype: GObject.GType<MediaCategoryPrivate>;
 
-        // Constructors of GData.MediaCategoryPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -27443,7 +27443,7 @@ export namespace GData {
     abstract class MediaContentPrivate {
         static $gtype: GObject.GType<MediaContentPrivate>;
 
-        // Constructors of GData.MediaContentPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -27452,7 +27452,7 @@ export namespace GData {
     abstract class MediaCreditPrivate {
         static $gtype: GObject.GType<MediaCreditPrivate>;
 
-        // Constructors of GData.MediaCreditPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -27461,7 +27461,7 @@ export namespace GData {
     abstract class MediaThumbnailPrivate {
         static $gtype: GObject.GType<MediaThumbnailPrivate>;
 
-        // Constructors of GData.MediaThumbnailPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -27470,7 +27470,7 @@ export namespace GData {
     abstract class OAuth2AuthorizerPrivate {
         static $gtype: GObject.GType<OAuth2AuthorizerPrivate>;
 
-        // Constructors of GData.OAuth2AuthorizerPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -27479,7 +27479,7 @@ export namespace GData {
     abstract class ParsablePrivate {
         static $gtype: GObject.GType<ParsablePrivate>;
 
-        // Constructors of GData.ParsablePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -27488,7 +27488,7 @@ export namespace GData {
     abstract class PicasaWebAlbumPrivate {
         static $gtype: GObject.GType<PicasaWebAlbumPrivate>;
 
-        // Constructors of GData.PicasaWebAlbumPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -27497,7 +27497,7 @@ export namespace GData {
     abstract class PicasaWebCommentPrivate {
         static $gtype: GObject.GType<PicasaWebCommentPrivate>;
 
-        // Constructors of GData.PicasaWebCommentPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -27507,7 +27507,7 @@ export namespace GData {
     abstract class PicasaWebFilePrivate {
         static $gtype: GObject.GType<PicasaWebFilePrivate>;
 
-        // Constructors of GData.PicasaWebFilePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -27516,7 +27516,7 @@ export namespace GData {
     abstract class PicasaWebQueryPrivate {
         static $gtype: GObject.GType<PicasaWebQueryPrivate>;
 
-        // Constructors of GData.PicasaWebQueryPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -27526,7 +27526,7 @@ export namespace GData {
     abstract class PicasaWebUserPrivate {
         static $gtype: GObject.GType<PicasaWebUserPrivate>;
 
-        // Constructors of GData.PicasaWebUserPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -27535,7 +27535,7 @@ export namespace GData {
     abstract class QueryPrivate {
         static $gtype: GObject.GType<QueryPrivate>;
 
-        // Constructors of GData.QueryPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -27544,7 +27544,7 @@ export namespace GData {
     abstract class ServicePrivate {
         static $gtype: GObject.GType<ServicePrivate>;
 
-        // Constructors of GData.ServicePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -27553,7 +27553,7 @@ export namespace GData {
     abstract class TasksQueryPrivate {
         static $gtype: GObject.GType<TasksQueryPrivate>;
 
-        // Constructors of GData.TasksQueryPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -27563,7 +27563,7 @@ export namespace GData {
     abstract class TasksTaskPrivate {
         static $gtype: GObject.GType<TasksTaskPrivate>;
 
-        // Constructors of GData.TasksTaskPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -27573,7 +27573,7 @@ export namespace GData {
     abstract class UploadStreamPrivate {
         static $gtype: GObject.GType<UploadStreamPrivate>;
 
-        // Constructors of GData.UploadStreamPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -27582,7 +27582,7 @@ export namespace GData {
     abstract class YouTubeCategoryPrivate {
         static $gtype: GObject.GType<YouTubeCategoryPrivate>;
 
-        // Constructors of GData.YouTubeCategoryPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -27591,7 +27591,7 @@ export namespace GData {
     abstract class YouTubeCommentPrivate {
         static $gtype: GObject.GType<YouTubeCommentPrivate>;
 
-        // Constructors of GData.YouTubeCommentPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -27600,7 +27600,7 @@ export namespace GData {
     abstract class YouTubeFeedPrivate {
         static $gtype: GObject.GType<YouTubeFeedPrivate>;
 
-        // Constructors of GData.YouTubeFeedPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -27609,7 +27609,7 @@ export namespace GData {
     abstract class YouTubeQueryPrivate {
         static $gtype: GObject.GType<YouTubeQueryPrivate>;
 
-        // Constructors of GData.YouTubeQueryPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -27618,7 +27618,7 @@ export namespace GData {
     abstract class YouTubeServicePrivate {
         static $gtype: GObject.GType<YouTubeServicePrivate>;
 
-        // Constructors of GData.YouTubeServicePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -27627,7 +27627,7 @@ export namespace GData {
     abstract class YouTubeStatePrivate {
         static $gtype: GObject.GType<YouTubeStatePrivate>;
 
-        // Constructors of GData.YouTubeStatePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -27636,7 +27636,7 @@ export namespace GData {
     abstract class YouTubeVideoPrivate {
         static $gtype: GObject.GType<YouTubeVideoPrivate>;
 
-        // Constructors of GData.YouTubeVideoPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -27652,7 +27652,7 @@ export namespace GData {
         prototype: AccessHandler;
     }
     interface AccessHandler extends Entry {
-        // Own methods of GData.AccessHandler
+        // Methods
 
         /**
          * Retrieves a #GDataFeed containing all the access rules which apply to the given #GDataAccessHandler. Only the owner of a #GDataAccessHandler may
@@ -27698,7 +27698,7 @@ export namespace GData {
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): void;
 
-        // Own virtual methods of GData.AccessHandler
+        // Virtual methods
 
         /**
          * Retrieves a #GDataFeed containing all the access rules which apply to the given #GDataAccessHandler. Only the owner of a #GDataAccessHandler may
@@ -27735,7 +27735,7 @@ export namespace GData {
         prototype: Authorizer;
     }
     interface Authorizer extends GObject.Object {
-        // Own methods of GData.Authorizer
+        // Methods
 
         /**
          * Returns whether the #GDataAuthorizer instance believes it's currently authorized to access the given `domain`. Note that this will not perform any
@@ -27825,7 +27825,7 @@ export namespace GData {
          */
         refresh_authorization_finish(async_result: Gio.AsyncResult): boolean;
 
-        // Own virtual methods of GData.Authorizer
+        // Virtual methods
 
         /**
          * Returns whether the #GDataAuthorizer instance believes it's currently authorized to access the given `domain`. Note that this will not perform any
@@ -27926,7 +27926,7 @@ export namespace GData {
         prototype: Batchable;
     }
     interface Batchable extends Service {
-        // Own methods of GData.Batchable
+        // Methods
 
         /**
          * Creates a new #GDataBatchOperation for the given #GDataBatchable service, and with the given `feed_uri`. `feed_uri` is normally the %GDATA_LINK_BATCH
@@ -27953,7 +27953,7 @@ export namespace GData {
         prototype: Commentable;
     }
     interface Commentable extends Entry {
-        // Own methods of GData.Commentable
+        // Methods
 
         /**
          * Deletes `comment` from the #GDataCommentable.
@@ -28074,7 +28074,7 @@ export namespace GData {
          */
         query_comments_finish(result: Gio.AsyncResult): Feed | null;
 
-        // Own virtual methods of GData.Commentable
+        // Virtual methods
 
         vfunc_get_insert_comment_uri(comment: Comment): string;
         vfunc_get_query_comments_uri(): string;
@@ -28094,7 +28094,7 @@ export namespace GData {
         prototype: Comparable;
     }
     interface Comparable extends GObject.Object {
-        // Own methods of GData.Comparable
+        // Methods
 
         /**
          * Compares the two objects, returning <code class="literal">-1</code> if `self` is "less than" `other` by some metric, <code class="literal">0</code>
@@ -28109,7 +28109,7 @@ export namespace GData {
          */
         compare(other?: Comparable | null): number;
 
-        // Own virtual methods of GData.Comparable
+        // Virtual methods
 
         vfunc_compare_with(other: Comparable): number;
     }

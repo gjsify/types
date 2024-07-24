@@ -22,13 +22,13 @@ export namespace Gpseq {
     class ChannelError extends GLib.Error {
         static $gtype: GObject.GType<ChannelError>;
 
-        // Static fields of Gpseq.ChannelError
+        // Static fields
 
         static CLOSED: number;
         static TIMEOUT: number;
         static TRY_FAILED: number;
 
-        // Constructors of Gpseq.ChannelError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
@@ -37,11 +37,11 @@ export namespace Gpseq {
     class MapError extends GLib.Error {
         static $gtype: GObject.GType<MapError>;
 
-        // Static fields of Gpseq.MapError
+        // Static fields
 
         static DUPLICATE_KEY: number;
 
-        // Constructors of Gpseq.MapError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
@@ -50,11 +50,11 @@ export namespace Gpseq {
     class OptionalError extends GLib.Error {
         static $gtype: GObject.GType<OptionalError>;
 
-        // Static fields of Gpseq.OptionalError
+        // Static fields
 
         static NOT_PRESENT: number;
 
-        // Constructors of Gpseq.OptionalError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
@@ -327,7 +327,7 @@ export namespace Gpseq {
     class ArraySpliterator extends GObject.Object implements Spliterator {
         static $gtype: GObject.GType<ArraySpliterator>;
 
-        // Own properties of Gpseq.ArraySpliterator
+        // Properties
 
         get g_type(): GObject.GType;
         get gType(): GObject.GType;
@@ -336,7 +336,7 @@ export namespace Gpseq {
         get g_destroy_func(): GLib.DestroyNotify;
         get gDestroyFunc(): GLib.DestroyNotify;
 
-        // Constructors of Gpseq.ArraySpliterator
+        // Constructors
 
         constructor(properties?: Partial<ArraySpliterator.ConstructorProps>, ...args: any[]);
 
@@ -802,7 +802,7 @@ export namespace Gpseq {
     abstract class ForkJoinTask extends GObject.Object implements Task {
         static $gtype: GObject.GType<ForkJoinTask>;
 
-        // Own properties of Gpseq.ForkJoinTask
+        // Properties
 
         get g_type(): GObject.GType;
         get gType(): GObject.GType;
@@ -826,17 +826,17 @@ export namespace Gpseq {
         get is_cancelled(): boolean;
         get isCancelled(): boolean;
 
-        // Constructors of Gpseq.ForkJoinTask
+        // Constructors
 
         constructor(properties?: Partial<ForkJoinTask.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of Gpseq.ForkJoinTask
+        // Virtual methods
 
         vfunc_compute(): void;
 
-        // Own methods of Gpseq.ForkJoinTask
+        // Methods
 
         get_parent(): ForkJoinTask;
         get_root(): ForkJoinTask;
@@ -1266,17 +1266,17 @@ export namespace Gpseq {
     class ForkJoinTaskSharedResult {
         static $gtype: GObject.GType<ForkJoinTaskSharedResult>;
 
-        // Own fields of Gpseq.ForkJoinTaskSharedResult
+        // Fields
 
         ref_count: number;
 
-        // Constructors of Gpseq.ForkJoinTaskSharedResult
+        // Constructors
 
         _init(...args: any[]): void;
 
         static ['new'](g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc): ForkJoinTaskSharedResult;
 
-        // Own methods of Gpseq.ForkJoinTaskSharedResult
+        // Methods
 
         get_ready(): boolean;
         get_value(): any;
@@ -1302,7 +1302,7 @@ export namespace Gpseq {
     class FuncTask extends GObject.Object implements Task {
         static $gtype: GObject.GType<FuncTask>;
 
-        // Own properties of Gpseq.FuncTask
+        // Properties
 
         get g_type(): GObject.GType;
         get gType(): GObject.GType;
@@ -1311,7 +1311,7 @@ export namespace Gpseq {
         get g_destroy_func(): GLib.DestroyNotify;
         get gDestroyFunc(): GLib.DestroyNotify;
 
-        // Constructors of Gpseq.FuncTask
+        // Constructors
 
         constructor(properties?: Partial<FuncTask.ConstructorProps>, ...args: any[]);
 
@@ -1750,7 +1750,7 @@ export namespace Gpseq {
     abstract class Future extends GObject.Object implements Gee.Hashable, Result {
         static $gtype: GObject.GType<Future>;
 
-        // Own properties of Gpseq.Future
+        // Properties
 
         get g_type(): GObject.GType;
         get gType(): GObject.GType;
@@ -1760,26 +1760,26 @@ export namespace Gpseq {
         get gDestroyFunc(): GLib.DestroyNotify;
         get ready(): boolean;
 
-        // Constructors of Gpseq.Future
+        // Constructors
 
         constructor(properties?: Partial<Future.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of Gpseq.Future
+        // Static methods
 
         static of(g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc, value: any): Future;
         static err(g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc, exception: GLib.Error): Future;
         static done(g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc, result: Result): Future;
 
-        // Own virtual methods of Gpseq.Future
+        // Virtual methods
 
         vfunc_get_ready(): boolean;
         vfunc_wait(): any;
         vfunc_wait_until(end_time: number): [boolean, any];
         vfunc_transform(a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, func: Result.TransformFunc): Result;
 
-        // Own methods of Gpseq.Future
+        // Methods
 
         get_ready(): boolean;
         wait(): any;
@@ -2245,7 +2245,7 @@ export namespace Gpseq {
     class GenericArraySpliterator extends GObject.Object implements Spliterator {
         static $gtype: GObject.GType<GenericArraySpliterator>;
 
-        // Own properties of Gpseq.GenericArraySpliterator
+        // Properties
 
         get g_type(): GObject.GType;
         get gType(): GObject.GType;
@@ -2254,7 +2254,7 @@ export namespace Gpseq {
         get g_destroy_func(): GLib.DestroyNotify;
         get gDestroyFunc(): GLib.DestroyNotify;
 
-        // Constructors of Gpseq.GenericArraySpliterator
+        // Constructors
 
         constructor(properties?: Partial<GenericArraySpliterator.ConstructorProps>, ...args: any[]);
 
@@ -2706,7 +2706,7 @@ export namespace Gpseq {
     class IteratorSpliterator extends GObject.Object implements Spliterator {
         static $gtype: GObject.GType<IteratorSpliterator>;
 
-        // Own properties of Gpseq.IteratorSpliterator
+        // Properties
 
         get g_type(): GObject.GType;
         get gType(): GObject.GType;
@@ -2715,7 +2715,7 @@ export namespace Gpseq {
         get g_destroy_func(): GLib.DestroyNotify;
         get gDestroyFunc(): GLib.DestroyNotify;
 
-        // Constructors of Gpseq.IteratorSpliterator
+        // Constructors
 
         constructor(properties?: Partial<IteratorSpliterator.ConstructorProps>, ...args: any[]);
 
@@ -3173,7 +3173,7 @@ export namespace Gpseq {
     class ListSpliterator extends GObject.Object implements Spliterator {
         static $gtype: GObject.GType<ListSpliterator>;
 
-        // Own properties of Gpseq.ListSpliterator
+        // Properties
 
         get g_type(): GObject.GType;
         get gType(): GObject.GType;
@@ -3182,7 +3182,7 @@ export namespace Gpseq {
         get g_destroy_func(): GLib.DestroyNotify;
         get gDestroyFunc(): GLib.DestroyNotify;
 
-        // Constructors of Gpseq.ListSpliterator
+        // Constructors
 
         constructor(properties?: Partial<ListSpliterator.ConstructorProps>, ...args: any[]);
 
@@ -3639,7 +3639,7 @@ export namespace Gpseq {
     class Optional extends GObject.Object {
         static $gtype: GObject.GType<Optional>;
 
-        // Own properties of Gpseq.Optional
+        // Properties
 
         get g_type(): GObject.GType;
         get gType(): GObject.GType;
@@ -3653,7 +3653,7 @@ export namespace Gpseq {
         get is_present(): boolean;
         get isPresent(): boolean;
 
-        // Constructors of Gpseq.Optional
+        // Constructors
 
         constructor(properties?: Partial<Optional.ConstructorProps>, ...args: any[]);
 
@@ -3665,7 +3665,7 @@ export namespace Gpseq {
 
         static ['new'](g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc): Optional;
 
-        // Own methods of Gpseq.Optional
+        // Methods
 
         get_value_type(): GObject.GType;
         get_value(): any;
@@ -3683,17 +3683,17 @@ export namespace Gpseq {
     class Promise {
         static $gtype: GObject.GType<Promise>;
 
-        // Own fields of Gpseq.Promise
+        // Fields
 
         ref_count: number;
 
-        // Constructors of Gpseq.Promise
+        // Constructors
 
         _init(...args: any[]): void;
 
         static ['new'](g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc): Promise;
 
-        // Own methods of Gpseq.Promise
+        // Methods
 
         get_future(): Future;
         set_value(value: any): void;
@@ -3724,7 +3724,7 @@ export namespace Gpseq {
     class Seq extends GObject.Object {
         static $gtype: GObject.GType<Seq>;
 
-        // Own properties of Gpseq.Seq
+        // Properties
 
         get g_type(): GObject.GType;
         get gType(): GObject.GType;
@@ -3741,7 +3741,7 @@ export namespace Gpseq {
         get is_parallel(): boolean;
         get isParallel(): boolean;
 
-        // Constructors of Gpseq.Seq
+        // Constructors
 
         constructor(properties?: Partial<Seq.ConstructorProps>, ...args: any[]);
 
@@ -3754,7 +3754,7 @@ export namespace Gpseq {
             env: TaskEnv,
         ): Seq;
 
-        // Own static methods of Gpseq.Seq
+        // Static methods
 
         static of_array(g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc, array: any[], env: TaskEnv): Seq;
         static of_owned_array(
@@ -3806,7 +3806,7 @@ export namespace Gpseq {
         ): Seq;
         static empty(g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc): Seq;
 
-        // Own methods of Gpseq.Seq
+        // Methods
 
         get_element_type(): GObject.GType;
         get_task_env(): TaskEnv;
@@ -3912,7 +3912,7 @@ export namespace Gpseq {
     abstract class SpliteratorTask extends ForkJoinTask {
         static $gtype: GObject.GType<SpliteratorTask>;
 
-        // Own properties of Gpseq.SpliteratorTask
+        // Properties
 
         get r_type(): GObject.GType;
         get rType(): GObject.GType;
@@ -3938,20 +3938,20 @@ export namespace Gpseq {
         get empty_result(): any;
         get emptyResult(): any;
 
-        // Constructors of Gpseq.SpliteratorTask
+        // Constructors
 
         constructor(properties?: Partial<SpliteratorTask.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of Gpseq.SpliteratorTask
+        // Virtual methods
 
         vfunc_get_empty_result(): any;
         vfunc_leaf_compute(): any;
         vfunc_merge_results(left: any, right: any): any;
         vfunc_make_child(spliterator: Spliterator): SpliteratorTask;
 
-        // Own methods of Gpseq.SpliteratorTask
+        // Methods
 
         get_spliterator(): Spliterator;
         get_left_child(): SpliteratorTask;
@@ -3985,7 +3985,7 @@ export namespace Gpseq {
     class SubArray extends GObject.Object implements Gee.Traversable, Gee.Iterable {
         static $gtype: GObject.GType<SubArray>;
 
-        // Own properties of Gpseq.SubArray
+        // Properties
 
         get g_type(): GObject.GType;
         get gType(): GObject.GType;
@@ -3995,7 +3995,7 @@ export namespace Gpseq {
         get gDestroyFunc(): GLib.DestroyNotify;
         get size(): number;
 
-        // Constructors of Gpseq.SubArray
+        // Constructors
 
         constructor(properties?: Partial<SubArray.ConstructorProps>, ...args: any[]);
 
@@ -4011,7 +4011,7 @@ export namespace Gpseq {
             stop: number,
         ): SubArray;
 
-        // Own methods of Gpseq.SubArray
+        // Methods
 
         get_data(): any[];
         // Conflicted with GObject.Object.get_data
@@ -4472,7 +4472,7 @@ export namespace Gpseq {
     class SubArraySpliterator extends GObject.Object implements Spliterator {
         static $gtype: GObject.GType<SubArraySpliterator>;
 
-        // Own properties of Gpseq.SubArraySpliterator
+        // Properties
 
         get g_type(): GObject.GType;
         get gType(): GObject.GType;
@@ -4481,7 +4481,7 @@ export namespace Gpseq {
         get g_destroy_func(): GLib.DestroyNotify;
         get gDestroyFunc(): GLib.DestroyNotify;
 
-        // Constructors of Gpseq.SubArraySpliterator
+        // Constructors
 
         constructor(properties?: Partial<SubArraySpliterator.ConstructorProps>, ...args: any[]);
 
@@ -4933,7 +4933,7 @@ export namespace Gpseq {
     class SupplierSpliterator extends GObject.Object implements Spliterator {
         static $gtype: GObject.GType<SupplierSpliterator>;
 
-        // Own properties of Gpseq.SupplierSpliterator
+        // Properties
 
         get g_type(): GObject.GType;
         get gType(): GObject.GType;
@@ -4942,7 +4942,7 @@ export namespace Gpseq {
         get g_destroy_func(): GLib.DestroyNotify;
         get gDestroyFunc(): GLib.DestroyNotify;
 
-        // Constructors of Gpseq.SupplierSpliterator
+        // Constructors
 
         constructor(properties?: Partial<SupplierSpliterator.ConstructorProps>, ...args: any[]);
 
@@ -5387,17 +5387,17 @@ export namespace Gpseq {
     abstract class TaskEnv extends GObject.Object {
         static $gtype: GObject.GType<TaskEnv>;
 
-        // Own properties of Gpseq.TaskEnv
+        // Properties
 
         get executor(): Executor;
 
-        // Constructors of Gpseq.TaskEnv
+        // Constructors
 
         constructor(properties?: Partial<TaskEnv.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of Gpseq.TaskEnv
+        // Static methods
 
         static get_default_task_env(): TaskEnv;
         static set_default_task_env(task_env: TaskEnv): void;
@@ -5406,13 +5406,13 @@ export namespace Gpseq {
         static pop(): void;
         static apply(task_env: TaskEnv, func: VoidFunc): void;
 
-        // Own virtual methods of Gpseq.TaskEnv
+        // Virtual methods
 
         vfunc_get_executor(): Executor;
         vfunc_resolve_threshold(elements: number, threads: number): number;
         vfunc_resolve_max_depth(elements: number, threads: number): number;
 
-        // Own methods of Gpseq.TaskEnv
+        // Methods
 
         get_executor(): Executor;
         resolve_threshold(elements: number, threads: number): number;
@@ -5428,7 +5428,7 @@ export namespace Gpseq {
     class WaitGroup extends GObject.Object {
         static $gtype: GObject.GType<WaitGroup>;
 
-        // Constructors of Gpseq.WaitGroup
+        // Constructors
 
         constructor(properties?: Partial<WaitGroup.ConstructorProps>, ...args: any[]);
 
@@ -5436,7 +5436,7 @@ export namespace Gpseq {
 
         static ['new'](): WaitGroup;
 
-        // Own methods of Gpseq.WaitGroup
+        // Methods
 
         add(delta: number): void;
         done(): void;
@@ -5467,7 +5467,7 @@ export namespace Gpseq {
     class WorkerPool extends GObject.Object implements Executor {
         static $gtype: GObject.GType<WorkerPool>;
 
-        // Own properties of Gpseq.WorkerPool
+        // Properties
 
         get max_threads(): number;
         set max_threads(val: number);
@@ -5483,7 +5483,7 @@ export namespace Gpseq {
         get is_terminating_started(): boolean;
         get isTerminatingStarted(): boolean;
 
-        // Constructors of Gpseq.WorkerPool
+        // Constructors
 
         constructor(properties?: Partial<WorkerPool.ConstructorProps>, ...args: any[]);
 
@@ -5493,11 +5493,11 @@ export namespace Gpseq {
 
         static ['new'](parallels: number, factory: ThreadFactory): WorkerPool;
 
-        // Own static methods of Gpseq.WorkerPool
+        // Static methods
 
         static get_default_factory(): ThreadFactory;
 
-        // Own methods of Gpseq.WorkerPool
+        // Methods
 
         get_max_threads(): number;
         set_max_threads(value: number): void;
@@ -5940,7 +5940,7 @@ export namespace Gpseq {
     class WorkerThread extends GObject.Object {
         static $gtype: GObject.GType<WorkerThread>;
 
-        // Own properties of Gpseq.WorkerThread
+        // Properties
 
         get thread(): GLib.Thread;
         get pool(): WorkerPool;
@@ -5952,7 +5952,7 @@ export namespace Gpseq {
         get is_alive(): boolean;
         get isAlive(): boolean;
 
-        // Constructors of Gpseq.WorkerThread
+        // Constructors
 
         constructor(properties?: Partial<WorkerThread.ConstructorProps>, ...args: any[]);
 
@@ -5960,12 +5960,12 @@ export namespace Gpseq {
 
         static ['new'](pool: WorkerPool): WorkerThread;
 
-        // Own static methods of Gpseq.WorkerThread
+        // Static methods
 
         static get_by(thread: GLib.Thread): WorkerThread;
         static self(): WorkerThread;
 
-        // Own methods of Gpseq.WorkerThread
+        // Methods
 
         get_thread(): GLib.Thread;
         get_pool(): WorkerPool;
@@ -5997,7 +5997,7 @@ export namespace Gpseq {
     class Wrapper extends GObject.Object {
         static $gtype: GObject.GType<Wrapper>;
 
-        // Own properties of Gpseq.Wrapper
+        // Properties
 
         get g_type(): GObject.GType;
         get gType(): GObject.GType;
@@ -6009,7 +6009,7 @@ export namespace Gpseq {
         get value_type(): GObject.GType;
         get valueType(): GObject.GType;
 
-        // Constructors of Gpseq.Wrapper
+        // Constructors
 
         constructor(properties?: Partial<Wrapper.ConstructorProps>, ...args: any[]);
 
@@ -6017,7 +6017,7 @@ export namespace Gpseq {
 
         static ['new'](g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc, value: any): Wrapper;
 
-        // Own methods of Gpseq.Wrapper
+        // Methods
 
         get_value(): any;
         get_value_type(): GObject.GType;
@@ -6027,7 +6027,7 @@ export namespace Gpseq {
     abstract class ArraySpliteratorPrivate {
         static $gtype: GObject.GType<ArraySpliteratorPrivate>;
 
-        // Constructors of Gpseq.ArraySpliteratorPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -6036,7 +6036,7 @@ export namespace Gpseq {
     abstract class ForkJoinTaskPrivate {
         static $gtype: GObject.GType<ForkJoinTaskPrivate>;
 
-        // Constructors of Gpseq.ForkJoinTaskPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -6045,7 +6045,7 @@ export namespace Gpseq {
     abstract class ForkJoinTaskSharedResultPrivate {
         static $gtype: GObject.GType<ForkJoinTaskSharedResultPrivate>;
 
-        // Constructors of Gpseq.ForkJoinTaskSharedResultPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -6054,7 +6054,7 @@ export namespace Gpseq {
     abstract class FuncTaskPrivate {
         static $gtype: GObject.GType<FuncTaskPrivate>;
 
-        // Constructors of Gpseq.FuncTaskPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -6063,7 +6063,7 @@ export namespace Gpseq {
     abstract class FuturePrivate {
         static $gtype: GObject.GType<FuturePrivate>;
 
-        // Constructors of Gpseq.FuturePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -6072,7 +6072,7 @@ export namespace Gpseq {
     abstract class GenericArraySpliteratorPrivate {
         static $gtype: GObject.GType<GenericArraySpliteratorPrivate>;
 
-        // Constructors of Gpseq.GenericArraySpliteratorPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -6081,7 +6081,7 @@ export namespace Gpseq {
     abstract class IteratorSpliteratorPrivate {
         static $gtype: GObject.GType<IteratorSpliteratorPrivate>;
 
-        // Constructors of Gpseq.IteratorSpliteratorPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -6090,7 +6090,7 @@ export namespace Gpseq {
     abstract class ListSpliteratorPrivate {
         static $gtype: GObject.GType<ListSpliteratorPrivate>;
 
-        // Constructors of Gpseq.ListSpliteratorPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -6099,7 +6099,7 @@ export namespace Gpseq {
     abstract class OptionalPrivate {
         static $gtype: GObject.GType<OptionalPrivate>;
 
-        // Constructors of Gpseq.OptionalPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -6108,7 +6108,7 @@ export namespace Gpseq {
     abstract class PromisePrivate {
         static $gtype: GObject.GType<PromisePrivate>;
 
-        // Constructors of Gpseq.PromisePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -6117,7 +6117,7 @@ export namespace Gpseq {
     abstract class SeqPrivate {
         static $gtype: GObject.GType<SeqPrivate>;
 
-        // Constructors of Gpseq.SeqPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -6126,7 +6126,7 @@ export namespace Gpseq {
     abstract class SpliteratorTaskPrivate {
         static $gtype: GObject.GType<SpliteratorTaskPrivate>;
 
-        // Constructors of Gpseq.SpliteratorTaskPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -6135,7 +6135,7 @@ export namespace Gpseq {
     abstract class SubArrayPrivate {
         static $gtype: GObject.GType<SubArrayPrivate>;
 
-        // Constructors of Gpseq.SubArrayPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -6144,7 +6144,7 @@ export namespace Gpseq {
     abstract class SubArraySpliteratorPrivate {
         static $gtype: GObject.GType<SubArraySpliteratorPrivate>;
 
-        // Constructors of Gpseq.SubArraySpliteratorPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -6153,7 +6153,7 @@ export namespace Gpseq {
     abstract class SupplierSpliteratorPrivate {
         static $gtype: GObject.GType<SupplierSpliteratorPrivate>;
 
-        // Constructors of Gpseq.SupplierSpliteratorPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -6162,7 +6162,7 @@ export namespace Gpseq {
     abstract class TaskEnvPrivate {
         static $gtype: GObject.GType<TaskEnvPrivate>;
 
-        // Constructors of Gpseq.TaskEnvPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -6171,7 +6171,7 @@ export namespace Gpseq {
     abstract class WaitGroupPrivate {
         static $gtype: GObject.GType<WaitGroupPrivate>;
 
-        // Constructors of Gpseq.WaitGroupPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -6180,7 +6180,7 @@ export namespace Gpseq {
     abstract class WorkerPoolPrivate {
         static $gtype: GObject.GType<WorkerPoolPrivate>;
 
-        // Constructors of Gpseq.WorkerPoolPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -6189,7 +6189,7 @@ export namespace Gpseq {
     abstract class WorkerThreadPrivate {
         static $gtype: GObject.GType<WorkerThreadPrivate>;
 
-        // Constructors of Gpseq.WorkerThreadPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -6198,7 +6198,7 @@ export namespace Gpseq {
     abstract class WrapperPrivate {
         static $gtype: GObject.GType<WrapperPrivate>;
 
-        // Constructors of Gpseq.WrapperPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -6217,7 +6217,7 @@ export namespace Gpseq {
     class CacheLinePad {
         static $gtype: GObject.GType<CacheLinePad>;
 
-        // Constructors of Gpseq.CacheLinePad
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -6253,12 +6253,12 @@ export namespace Gpseq {
         prototype: ChannelBase;
     }
     interface ChannelBase extends GObject.Object {
-        // Own properties of Gpseq.ChannelBase
+        // Properties
 
         get capacity(): Optional;
         get length(): number;
 
-        // Own methods of Gpseq.ChannelBase
+        // Methods
 
         get_capacity(): Optional;
         get_length(): number;
@@ -6266,7 +6266,7 @@ export namespace Gpseq {
         get_is_empty(): boolean;
         close(): void;
 
-        // Own virtual methods of Gpseq.ChannelBase
+        // Virtual methods
 
         vfunc_get_capacity(): Optional;
         vfunc_get_length(): number;
@@ -6290,11 +6290,11 @@ export namespace Gpseq {
         prototype: Collector;
     }
     interface Collector extends GObject.Object {
-        // Own properties of Gpseq.Collector
+        // Properties
 
         get features(): CollectorFeatures;
 
-        // Own methods of Gpseq.Collector
+        // Methods
 
         get_features(): CollectorFeatures;
         create_accumulator(): any;
@@ -6302,7 +6302,7 @@ export namespace Gpseq {
         combine(a: any, b: any): any;
         finish(a: any): any;
 
-        // Own virtual methods of Gpseq.Collector
+        // Virtual methods
 
         vfunc_get_features(): CollectorFeatures;
         vfunc_create_accumulator(): any;
@@ -6326,16 +6326,16 @@ export namespace Gpseq {
         prototype: Executor;
     }
     interface Executor extends GObject.Object {
-        // Own properties of Gpseq.Executor
+        // Properties
 
         get parallels(): number;
 
-        // Own methods of Gpseq.Executor
+        // Methods
 
         submit(task: Task): void;
         get_parallels(): number;
 
-        // Own virtual methods of Gpseq.Executor
+        // Virtual methods
 
         vfunc_submit(task: Task): void;
         vfunc_get_parallels(): number;
@@ -6354,13 +6354,13 @@ export namespace Gpseq {
         prototype: Receiver;
     }
     interface Receiver extends ChannelBase {
-        // Own methods of Gpseq.Receiver
+        // Methods
 
         recv(): Result;
         recv_until(end_time: number): Result;
         try_recv(): Result;
 
-        // Own virtual methods of Gpseq.Receiver
+        // Virtual methods
 
         vfunc_recv(): Result;
         vfunc_recv_until(end_time: number): Result;
@@ -6435,7 +6435,7 @@ export namespace Gpseq {
         err(g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc, exception: GLib.Error): Result;
     }
     interface Result extends Gee.Hashable {
-        // Own methods of Gpseq.Result
+        // Methods
 
         get_value_type(): GObject.GType;
         get_value(): any;
@@ -6460,7 +6460,7 @@ export namespace Gpseq {
         then(func: GLib.Func): Result;
         and_then(func: Func): Result;
 
-        // Own virtual methods of Gpseq.Result
+        // Virtual methods
 
         vfunc_future(): Future;
         vfunc_get(): any;
@@ -6493,13 +6493,13 @@ export namespace Gpseq {
         prototype: Sender;
     }
     interface Sender extends ChannelBase {
-        // Own methods of Gpseq.Sender
+        // Methods
 
         send(data: any): Result;
         send_until(data: any, end_time: number): Result;
         try_send(data: any): Result;
 
-        // Own virtual methods of Gpseq.Sender
+        // Virtual methods
 
         vfunc_send(data: any): Result;
         vfunc_send_until(data: any, end_time: number): Result;
@@ -6526,14 +6526,14 @@ export namespace Gpseq {
         empty(g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc): Spliterator;
     }
     interface Spliterator extends GObject.Object {
-        // Own properties of Gpseq.Spliterator
+        // Properties
 
         get estimated_size(): number;
         get estimatedSize(): number;
         get is_size_known(): boolean;
         get isSizeKnown(): boolean;
 
-        // Own methods of Gpseq.Spliterator
+        // Methods
 
         get_element_type(): GObject.GType;
         try_split(): Spliterator;
@@ -6543,7 +6543,7 @@ export namespace Gpseq {
         each(f: Func): void;
         each_chunk(f: EachChunkFunc): boolean;
 
-        // Own virtual methods of Gpseq.Spliterator
+        // Virtual methods
 
         vfunc_try_split(): Spliterator;
         vfunc_try_advance(consumer: Func): boolean;
@@ -6568,11 +6568,11 @@ export namespace Gpseq {
         from_func(g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc, func: SupplyFunc): Supplier;
     }
     interface Supplier extends GObject.Object {
-        // Own methods of Gpseq.Supplier
+        // Methods
 
         supply(): any;
 
-        // Own virtual methods of Gpseq.Supplier
+        // Virtual methods
 
         vfunc_supply(): any;
     }
@@ -6592,17 +6592,17 @@ export namespace Gpseq {
         prototype: Task;
     }
     interface Task extends GObject.Object {
-        // Own properties of Gpseq.Task
+        // Properties
 
         get future(): Future;
 
-        // Own methods of Gpseq.Task
+        // Methods
 
         get_future(): Future;
         compute(): void;
         invoke(): void;
 
-        // Own virtual methods of Gpseq.Task
+        // Virtual methods
 
         vfunc_get_future(): Future;
         vfunc_compute(): void;
@@ -6621,11 +6621,11 @@ export namespace Gpseq {
         prototype: ThreadFactory;
     }
     interface ThreadFactory extends GObject.Object {
-        // Own methods of Gpseq.ThreadFactory
+        // Methods
 
         create_thread(pool: WorkerPool): WorkerThread;
 
-        // Own virtual methods of Gpseq.ThreadFactory
+        // Virtual methods
 
         vfunc_create_thread(pool: WorkerPool): WorkerThread;
     }

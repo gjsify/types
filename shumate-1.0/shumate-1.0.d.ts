@@ -34,19 +34,19 @@ export namespace Shumate {
     class FileCacheError extends GLib.Error {
         static $gtype: GObject.GType<FileCacheError>;
 
-        // Static fields of Shumate.FileCacheError
+        // Static fields
 
         /**
          * An unspecified error occurred during the operation.
          */
         static FAILED: number;
 
-        // Constructors of Shumate.FileCacheError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of Shumate.FileCacheError
+        // Static methods
 
         /**
          * Gets the #ShumateFileCache error quark.
@@ -148,7 +148,7 @@ export namespace Shumate {
     class StyleError extends GLib.Error {
         static $gtype: GObject.GType<StyleError>;
 
-        // Static fields of Shumate.StyleError
+        // Static fields
 
         /**
          * An unspecified error occurred during the operation.
@@ -175,12 +175,12 @@ export namespace Shumate {
          */
         static UNSUPPORTED: number;
 
-        // Constructors of Shumate.StyleError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of Shumate.StyleError
+        // Static methods
 
         static quark(): GLib.Quark;
     }
@@ -191,7 +191,7 @@ export namespace Shumate {
     class TileDownloaderError extends GLib.Error {
         static $gtype: GObject.GType<TileDownloaderError>;
 
-        // Static fields of Shumate.TileDownloaderError
+        // Static fields
 
         /**
          * An unspecified error occurred during the operation.
@@ -214,12 +214,12 @@ export namespace Shumate {
          */
         static OFFLINE: number;
 
-        // Constructors of Shumate.TileDownloaderError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of Shumate.TileDownloaderError
+        // Static methods
 
         /**
          * Gets the #ShumateTileDownloader error quark.
@@ -369,7 +369,7 @@ export namespace Shumate {
     class Compass extends Gtk.Widget implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
         static $gtype: GObject.GType<Compass>;
 
-        // Own properties of Shumate.Compass
+        // Properties
 
         /**
          * The viewport to use.
@@ -377,7 +377,7 @@ export namespace Shumate {
         get viewport(): Viewport;
         set viewport(val: Viewport);
 
-        // Constructors of Shumate.Compass
+        // Constructors
 
         constructor(properties?: Partial<Compass.ConstructorProps>, ...args: any[]);
 
@@ -385,7 +385,7 @@ export namespace Shumate {
 
         static ['new'](viewport?: Viewport | null): Compass;
 
-        // Own methods of Shumate.Compass
+        // Methods
 
         /**
          * Gets the viewport used by the compass.
@@ -1091,7 +1091,7 @@ export namespace Shumate {
     class Coordinate extends GObject.InitiallyUnowned implements Location {
         static $gtype: GObject.GType<Coordinate>;
 
-        // Constructors of Shumate.Coordinate
+        // Constructors
 
         constructor(properties?: Partial<Coordinate.ConstructorProps>, ...args: any[]);
 
@@ -1579,7 +1579,7 @@ export namespace Shumate {
     abstract class DataSource extends GObject.Object {
         static $gtype: GObject.GType<DataSource>;
 
-        // Own properties of Shumate.DataSource
+        // Properties
 
         /**
          * The maximum zoom level
@@ -1602,13 +1602,13 @@ export namespace Shumate {
         get minZoomLevel(): number;
         set minZoomLevel(val: number);
 
-        // Constructors of Shumate.DataSource
+        // Constructors
 
         constructor(properties?: Partial<DataSource.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of Shumate.DataSource
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -1623,7 +1623,7 @@ export namespace Shumate {
         ): number;
         emit(signal: 'received-data', x: number, y: number, zoom_level: number, bytes: GLib.Bytes | Uint8Array): void;
 
-        // Own virtual methods of Shumate.DataSource
+        // Virtual methods
 
         /**
          * Gets the data for the tile at the given coordinates.
@@ -1665,7 +1665,7 @@ export namespace Shumate {
             cancellable?: Gio.Cancellable | null,
         ): DataSourceRequest;
 
-        // Own methods of Shumate.DataSource
+        // Methods
 
         /**
          * Gets the data source's maximum zoom level.
@@ -1767,7 +1767,7 @@ export namespace Shumate {
     class DataSourceRequest extends GObject.Object {
         static $gtype: GObject.GType<DataSourceRequest>;
 
-        // Own properties of Shumate.DataSourceRequest
+        // Properties
 
         /**
          * %TRUE if the request has been completed, otherwise %FALSE. A completed
@@ -1801,7 +1801,7 @@ export namespace Shumate {
          */
         get zoomLevel(): number;
 
-        // Constructors of Shumate.DataSourceRequest
+        // Constructors
 
         constructor(properties?: Partial<DataSourceRequest.ConstructorProps>, ...args: any[]);
 
@@ -1809,7 +1809,7 @@ export namespace Shumate {
 
         static ['new'](x: number, y: number, zoom_level: number): DataSourceRequest;
 
-        // Own methods of Shumate.DataSourceRequest
+        // Methods
 
         /**
          * Marks the request as complete. No more data or errors may be emitted.
@@ -1904,7 +1904,7 @@ export namespace Shumate {
     class FileCache extends GObject.Object {
         static $gtype: GObject.GType<FileCache>;
 
-        // Own properties of Shumate.FileCache
+        // Properties
 
         /**
          * The directory where the tile database is stored.
@@ -1939,7 +1939,7 @@ export namespace Shumate {
         get sizeLimit(): number;
         set sizeLimit(val: number);
 
-        // Constructors of Shumate.FileCache
+        // Constructors
 
         constructor(properties?: Partial<FileCache.ConstructorProps>, ...args: any[]);
 
@@ -1947,7 +1947,7 @@ export namespace Shumate {
 
         static new_full(size_limit: number, cache_key: string, cache_dir?: string | null): FileCache;
 
-        // Own methods of Shumate.FileCache
+        // Methods
 
         /**
          * Gets the directory where the cache database is stored.
@@ -2072,17 +2072,17 @@ export namespace Shumate {
     abstract class Layer extends Gtk.Widget implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
         static $gtype: GObject.GType<Layer>;
 
-        // Own properties of Shumate.Layer
+        // Properties
 
         get viewport(): Viewport;
 
-        // Constructors of Shumate.Layer
+        // Constructors
 
         constructor(properties?: Partial<Layer.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of Shumate.Layer
+        // Virtual methods
 
         /**
          * Returns a string to show in the debug overlay, which can be
@@ -2090,7 +2090,7 @@ export namespace Shumate {
          */
         vfunc_get_debug_text(): string | null;
 
-        // Own methods of Shumate.Layer
+        // Methods
 
         /**
          * Gets the #ShumateViewport used by this layer.
@@ -2799,7 +2799,7 @@ export namespace Shumate {
     class License extends Gtk.Widget implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
         static $gtype: GObject.GType<License>;
 
-        // Own properties of Shumate.License
+        // Properties
 
         /**
          * Sets additional text to be displayed in the license area.  The map's
@@ -2821,7 +2821,7 @@ export namespace Shumate {
         get xalign(): number;
         set xalign(val: number);
 
-        // Constructors of Shumate.License
+        // Constructors
 
         constructor(properties?: Partial<License.ConstructorProps>, ...args: any[]);
 
@@ -2829,7 +2829,7 @@ export namespace Shumate {
 
         static ['new'](): License;
 
-        // Own methods of Shumate.License
+        // Methods
 
         append_map_source(map_source: MapSource): void;
         /**
@@ -3580,7 +3580,7 @@ export namespace Shumate {
     class Map extends Gtk.Widget implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
         static $gtype: GObject.GType<Map>;
 
-        // Own properties of Shumate.Map
+        // Properties
 
         /**
          * Animate zoom change when zooming in/out.
@@ -3631,7 +3631,7 @@ export namespace Shumate {
         get zoomOnDoubleClick(): boolean;
         set zoomOnDoubleClick(val: boolean);
 
-        // Constructors of Shumate.Map
+        // Constructors
 
         constructor(properties?: Partial<Map.ConstructorProps>, ...args: any[]);
 
@@ -3641,7 +3641,7 @@ export namespace Shumate {
 
         static new_simple(): Map;
 
-        // Own signals of Shumate.Map
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -3650,7 +3650,7 @@ export namespace Shumate {
         connect_after(signal: 'animation-completed', callback: (_source: this) => void): number;
         emit(signal: 'animation-completed'): void;
 
-        // Own methods of Shumate.Map
+        // Methods
 
         /**
          * Adds a new layer to the view
@@ -4477,12 +4477,12 @@ export namespace Shumate {
     class MapLayer extends Layer implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
         static $gtype: GObject.GType<MapLayer>;
 
-        // Own properties of Shumate.MapLayer
+        // Properties
 
         get map_source(): MapSource;
         get mapSource(): MapSource;
 
-        // Constructors of Shumate.MapLayer
+        // Constructors
 
         constructor(properties?: Partial<MapLayer.ConstructorProps>, ...args: any[]);
 
@@ -4490,7 +4490,7 @@ export namespace Shumate {
 
         static ['new'](map_source: MapSource, viewport: Viewport): MapLayer;
 
-        // Own signals of Shumate.MapLayer
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -4932,7 +4932,7 @@ export namespace Shumate {
     abstract class MapSource extends GObject.Object {
         static $gtype: GObject.GType<MapSource>;
 
-        // Own properties of Shumate.MapSource
+        // Properties
 
         /**
          * The id of the map source
@@ -4995,13 +4995,13 @@ export namespace Shumate {
         get tileSize(): number;
         set tileSize(val: number);
 
-        // Constructors of Shumate.MapSource
+        // Constructors
 
         constructor(properties?: Partial<MapSource.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of Shumate.MapSource
+        // Virtual methods
 
         /**
          * Asynchronous version of shumate_map_source_fill_tile().
@@ -5021,7 +5021,7 @@ export namespace Shumate {
          */
         vfunc_fill_tile_finish(result: Gio.AsyncResult): boolean;
 
-        // Own methods of Shumate.MapSource
+        // Methods
 
         /**
          * Asynchronous version of shumate_map_source_fill_tile().
@@ -5206,7 +5206,7 @@ export namespace Shumate {
     {
         static $gtype: GObject.GType<MapSourceRegistry>;
 
-        // Constructors of Shumate.MapSourceRegistry
+        // Constructors
 
         constructor(properties?: Partial<MapSourceRegistry.ConstructorProps>, ...args: any[]);
 
@@ -5216,7 +5216,7 @@ export namespace Shumate {
 
         static new_with_defaults(): MapSourceRegistry;
 
-        // Own methods of Shumate.MapSourceRegistry
+        // Methods
 
         /**
          * Adds the #ShumateMapSource to the #ShumateMapSourceRegistry
@@ -5768,7 +5768,7 @@ export namespace Shumate {
     class Marker extends Gtk.Widget implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget, Location {
         static $gtype: GObject.GType<Marker>;
 
-        // Own properties of Shumate.Marker
+        // Properties
 
         /**
          * The child widget of the marker
@@ -5781,7 +5781,7 @@ export namespace Shumate {
         get selectable(): boolean;
         set selectable(val: boolean);
 
-        // Constructors of Shumate.Marker
+        // Constructors
 
         constructor(properties?: Partial<Marker.ConstructorProps>, ...args: any[]);
 
@@ -5789,7 +5789,7 @@ export namespace Shumate {
 
         static ['new'](): Marker;
 
-        // Own methods of Shumate.Marker
+        // Methods
 
         animate_in(): void;
         animate_in_with_delay(delay: number): void;
@@ -6584,7 +6584,7 @@ export namespace Shumate {
     class MarkerLayer extends Layer implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
         static $gtype: GObject.GType<MarkerLayer>;
 
-        // Own properties of Shumate.MarkerLayer
+        // Properties
 
         /**
          * Determines the type of selection that will be performed.
@@ -6597,7 +6597,7 @@ export namespace Shumate {
         get selectionMode(): Gtk.SelectionMode;
         set selectionMode(val: Gtk.SelectionMode);
 
-        // Constructors of Shumate.MarkerLayer
+        // Constructors
 
         constructor(properties?: Partial<MarkerLayer.ConstructorProps>, ...args: any[]);
 
@@ -6607,7 +6607,7 @@ export namespace Shumate {
 
         static new_full(viewport: Viewport, mode: Gtk.SelectionMode): MarkerLayer;
 
-        // Own signals of Shumate.MarkerLayer
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -6619,7 +6619,7 @@ export namespace Shumate {
         connect_after(signal: 'marker-unselected', callback: (_source: this, marker: Marker) => void): number;
         emit(signal: 'marker-unselected', marker: Marker): void;
 
-        // Own methods of Shumate.MarkerLayer
+        // Methods
 
         /**
          * Adds the marker to the layer.
@@ -7126,7 +7126,7 @@ export namespace Shumate {
     class PathLayer extends Layer implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
         static $gtype: GObject.GType<PathLayer>;
 
-        // Own properties of Shumate.PathLayer
+        // Properties
 
         /**
          * The shape is a closed path
@@ -7194,7 +7194,7 @@ export namespace Shumate {
         get strokeWidth(): number;
         set strokeWidth(val: number);
 
-        // Constructors of Shumate.PathLayer
+        // Constructors
 
         constructor(properties?: Partial<PathLayer.ConstructorProps>, ...args: any[]);
 
@@ -7202,7 +7202,7 @@ export namespace Shumate {
 
         static ['new'](viewport: Viewport): PathLayer;
 
-        // Own methods of Shumate.PathLayer
+        // Methods
 
         /**
          * Adds a [iface`Location]` object to the layer.
@@ -7747,7 +7747,7 @@ export namespace Shumate {
     class Point extends Marker implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget, Location {
         static $gtype: GObject.GType<Point>;
 
-        // Constructors of Shumate.Point
+        // Constructors
 
         constructor(properties?: Partial<Point.ConstructorProps>, ...args: any[]);
 
@@ -8222,7 +8222,7 @@ export namespace Shumate {
     class RasterRenderer extends MapSource {
         static $gtype: GObject.GType<RasterRenderer>;
 
-        // Own properties of Shumate.RasterRenderer
+        // Properties
 
         /**
          * The data source that provides image tiles to display. In most cases,
@@ -8235,7 +8235,7 @@ export namespace Shumate {
          */
         get dataSource(): DataSource;
 
-        // Constructors of Shumate.RasterRenderer
+        // Constructors
 
         constructor(properties?: Partial<RasterRenderer.ConstructorProps>, ...args: any[]);
 
@@ -8301,7 +8301,7 @@ export namespace Shumate {
     class Scale extends Gtk.Widget implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
         static $gtype: GObject.GType<Scale>;
 
-        // Own properties of Shumate.Scale
+        // Properties
 
         /**
          * The size of the map scale on screen in pixels.
@@ -8324,7 +8324,7 @@ export namespace Shumate {
         get viewport(): Viewport;
         set viewport(val: Viewport);
 
-        // Constructors of Shumate.Scale
+        // Constructors
 
         constructor(properties?: Partial<Scale.ConstructorProps>, ...args: any[]);
 
@@ -8332,7 +8332,7 @@ export namespace Shumate {
 
         static ['new'](viewport?: Viewport | null): Scale;
 
-        // Own methods of Shumate.Scale
+        // Methods
 
         /**
          * Gets the maximum scale width.
@@ -9082,7 +9082,7 @@ export namespace Shumate {
     class SimpleMap extends Gtk.Widget implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
         static $gtype: GObject.GType<SimpleMap>;
 
-        // Own properties of Shumate.SimpleMap
+        // Properties
 
         get compass(): Compass;
         get license(): License;
@@ -9099,7 +9099,7 @@ export namespace Shumate {
         set showZoomButtons(val: boolean);
         get viewport(): Viewport;
 
-        // Constructors of Shumate.SimpleMap
+        // Constructors
 
         constructor(properties?: Partial<SimpleMap.ConstructorProps>, ...args: any[]);
 
@@ -9107,7 +9107,7 @@ export namespace Shumate {
 
         static ['new'](): SimpleMap;
 
-        // Own signals of Shumate.SimpleMap
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -9116,7 +9116,7 @@ export namespace Shumate {
         connect_after(signal: 'symbol-clicked', callback: (_source: this, event: SymbolEvent) => void): number;
         emit(signal: 'symbol-clicked', event: SymbolEvent): void;
 
-        // Own methods of Shumate.SimpleMap
+        // Methods
 
         /**
          * Adds a map layer as an overlay on top of the base map.
@@ -9884,7 +9884,7 @@ export namespace Shumate {
     class SymbolEvent extends GObject.Object implements Location {
         static $gtype: GObject.GType<SymbolEvent>;
 
-        // Own properties of Shumate.SymbolEvent
+        // Properties
 
         /**
          * The ID of the feature that this event pertains to, as it was given in the
@@ -9909,13 +9909,13 @@ export namespace Shumate {
          */
         get sourceLayer(): string;
 
-        // Constructors of Shumate.SymbolEvent
+        // Constructors
 
         constructor(properties?: Partial<SymbolEvent.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Shumate.SymbolEvent
+        // Methods
 
         /**
          * Gets the feature ID as specified in the data source. The meaning of the
@@ -10437,7 +10437,7 @@ export namespace Shumate {
     class Tile extends GObject.Object {
         static $gtype: GObject.GType<Tile>;
 
-        // Own properties of Shumate.Tile
+        // Properties
 
         /**
          * Specifies whether the tile should fade in when loading
@@ -10495,7 +10495,7 @@ export namespace Shumate {
         get zoomLevel(): number;
         set zoomLevel(val: number);
 
-        // Constructors of Shumate.Tile
+        // Constructors
 
         constructor(properties?: Partial<Tile.ConstructorProps>, ...args: any[]);
 
@@ -10505,7 +10505,7 @@ export namespace Shumate {
 
         static new_full(x: number, y: number, size: number, zoom_level: number): Tile;
 
-        // Own methods of Shumate.Tile
+        // Methods
 
         /**
          * Checks whether the tile should fade in.
@@ -10607,7 +10607,7 @@ export namespace Shumate {
     class TileDownloader extends DataSource {
         static $gtype: GObject.GType<TileDownloader>;
 
-        // Own properties of Shumate.TileDownloader
+        // Properties
 
         /**
          * A template for construting the URL to download a tile from.
@@ -10632,7 +10632,7 @@ export namespace Shumate {
          */
         get urlTemplate(): string;
 
-        // Constructors of Shumate.TileDownloader
+        // Constructors
 
         constructor(properties?: Partial<TileDownloader.ConstructorProps>, ...args: any[]);
 
@@ -10659,7 +10659,7 @@ export namespace Shumate {
     class VectorReader extends GObject.Object {
         static $gtype: GObject.GType<VectorReader>;
 
-        // Constructors of Shumate.VectorReader
+        // Constructors
 
         constructor(properties?: Partial<VectorReader.ConstructorProps>, ...args: any[]);
 
@@ -10667,7 +10667,7 @@ export namespace Shumate {
 
         static ['new'](bytes: GLib.Bytes | Uint8Array): VectorReader;
 
-        // Own methods of Shumate.VectorReader
+        // Methods
 
         /**
          * Creates a new [class`VectorReaderIter]` for `self`.
@@ -10711,17 +10711,17 @@ export namespace Shumate {
     class VectorReaderIter extends GObject.Object {
         static $gtype: GObject.GType<VectorReaderIter>;
 
-        // Own properties of Shumate.VectorReaderIter
+        // Properties
 
         get reader(): VectorReader;
 
-        // Constructors of Shumate.VectorReaderIter
+        // Constructors
 
         constructor(properties?: Partial<VectorReaderIter.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Shumate.VectorReaderIter
+        // Methods
 
         /**
          * Determines whether the current feature contains the given point.
@@ -10863,7 +10863,7 @@ export namespace Shumate {
     class VectorRenderer extends MapSource implements Gio.Initable {
         static $gtype: GObject.GType<VectorRenderer>;
 
-        // Own properties of Shumate.VectorRenderer
+        // Properties
 
         /**
          * The sprite sheet used to render icons and textures.
@@ -10890,7 +10890,7 @@ export namespace Shumate {
          */
         get styleJson(): string;
 
-        // Constructors of Shumate.VectorRenderer
+        // Constructors
 
         constructor(properties?: Partial<VectorRenderer.ConstructorProps>, ...args: any[]);
 
@@ -10898,7 +10898,7 @@ export namespace Shumate {
 
         static ['new'](id: string, style_json: string): VectorRenderer;
 
-        // Own static methods of Shumate.VectorRenderer
+        // Static methods
 
         /**
          * Checks whether libshumate was compiled with vector tile support. If it was
@@ -10906,7 +10906,7 @@ export namespace Shumate {
          */
         static is_supported(): boolean;
 
-        // Own methods of Shumate.VectorRenderer
+        // Methods
 
         /**
          * Gets the sprite sheet used to render icons and textures.
@@ -11461,7 +11461,7 @@ export namespace Shumate {
     class VectorSprite extends GObject.Object implements Gdk.Paintable, Gtk.SymbolicPaintable {
         static $gtype: GObject.GType<VectorSprite>;
 
-        // Own properties of Shumate.VectorSprite
+        // Properties
 
         /**
          * The height at which the sprite should be drawn, in pixels.
@@ -11496,7 +11496,7 @@ export namespace Shumate {
          */
         get width(): number;
 
-        // Constructors of Shumate.VectorSprite
+        // Constructors
 
         constructor(properties?: Partial<VectorSprite.ConstructorProps>, ...args: any[]);
 
@@ -11512,7 +11512,7 @@ export namespace Shumate {
             source_rect?: Gdk.Rectangle | null,
         ): VectorSprite;
 
-        // Own methods of Shumate.VectorSprite
+        // Methods
 
         /**
          * Gets the height at which the sprite should be drawn.
@@ -12210,7 +12210,7 @@ export namespace Shumate {
     class VectorSpriteSheet extends GObject.Object {
         static $gtype: GObject.GType<VectorSpriteSheet>;
 
-        // Constructors of Shumate.VectorSpriteSheet
+        // Constructors
 
         constructor(properties?: Partial<VectorSpriteSheet.ConstructorProps>, ...args: any[]);
 
@@ -12218,7 +12218,7 @@ export namespace Shumate {
 
         static ['new'](): VectorSpriteSheet;
 
-        // Own methods of Shumate.VectorSpriteSheet
+        // Methods
 
         /**
          * Adds a page to the spritesheet.
@@ -12295,7 +12295,7 @@ export namespace Shumate {
     class Viewport extends GObject.Object implements Location {
         static $gtype: GObject.GType<Viewport>;
 
-        // Own properties of Shumate.Viewport
+        // Properties
 
         /**
          * The highest allowed level of zoom of the content.
@@ -12343,7 +12343,7 @@ export namespace Shumate {
         get zoomLevel(): number;
         set zoomLevel(val: number);
 
-        // Constructors of Shumate.Viewport
+        // Constructors
 
         constructor(properties?: Partial<Viewport.ConstructorProps>, ...args: any[]);
 
@@ -12351,7 +12351,7 @@ export namespace Shumate {
 
         static ['new'](): Viewport;
 
-        // Own methods of Shumate.Viewport
+        // Methods
 
         /**
          * Get the maximal zoom level
@@ -12916,7 +12916,7 @@ export namespace Shumate {
         prototype: Location;
     }
     interface Location extends GObject.Object {
-        // Own properties of Shumate.Location
+        // Properties
 
         /**
          * The latitude coordonate in degrees
@@ -12929,7 +12929,7 @@ export namespace Shumate {
         get longitude(): number;
         set longitude(val: number);
 
-        // Own methods of Shumate.Location
+        // Methods
 
         /**
          * Calculates the distance in meters between two locations.
@@ -12958,7 +12958,7 @@ export namespace Shumate {
          */
         set_location(latitude: number, longitude: number): void;
 
-        // Own virtual methods of Shumate.Location
+        // Virtual methods
 
         /**
          * Gets the latitude coordinate in degrees.

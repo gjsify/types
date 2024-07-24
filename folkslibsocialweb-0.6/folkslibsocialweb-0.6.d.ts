@@ -49,12 +49,12 @@ export namespace FolksLibsocialweb {
     {
         static $gtype: GObject.GType<Persona>;
 
-        // Own properties of FolksLibsocialweb.Persona
+        // Properties
 
         get lsw_contact(): SocialWebClient.Contact;
         get lswContact(): SocialWebClient.Contact;
 
-        // Constructors of FolksLibsocialweb.Persona
+        // Constructors
 
         constructor(properties?: Partial<Persona.ConstructorProps>, ...args: any[]);
 
@@ -62,11 +62,11 @@ export namespace FolksLibsocialweb {
 
         static ['new'](store: PersonaStore, contact: SocialWebClient.Contact): Persona;
 
-        // Own static methods of FolksLibsocialweb.Persona
+        // Static methods
 
         static get_contact_id(contact: SocialWebClient.Contact): string;
 
-        // Own methods of FolksLibsocialweb.Persona
+        // Methods
 
         update(contact: SocialWebClient.Contact): void;
         get_lsw_contact(): SocialWebClient.Contact;
@@ -581,11 +581,11 @@ export namespace FolksLibsocialweb {
     class PersonaStore extends Folks.PersonaStore {
         static $gtype: GObject.GType<PersonaStore>;
 
-        // Own properties of FolksLibsocialweb.PersonaStore
+        // Properties
 
         get service(): SocialWebClient.ClientService;
 
-        // Constructors of FolksLibsocialweb.PersonaStore
+        // Constructors
 
         constructor(properties?: Partial<PersonaStore.ConstructorProps>, ...args: any[]);
 
@@ -593,7 +593,7 @@ export namespace FolksLibsocialweb {
 
         static ['new'](service: SocialWebClient.ClientService): PersonaStore;
 
-        // Own methods of FolksLibsocialweb.PersonaStore
+        // Methods
 
         get_service(): SocialWebClient.ClientService;
     }
@@ -602,7 +602,7 @@ export namespace FolksLibsocialweb {
     abstract class PersonaPrivate {
         static $gtype: GObject.GType<PersonaPrivate>;
 
-        // Constructors of FolksLibsocialweb.PersonaPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -611,7 +611,7 @@ export namespace FolksLibsocialweb {
     abstract class PersonaStorePrivate {
         static $gtype: GObject.GType<PersonaStorePrivate>;
 
-        // Constructors of FolksLibsocialweb.PersonaStorePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }

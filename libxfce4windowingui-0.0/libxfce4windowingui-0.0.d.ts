@@ -82,7 +82,7 @@ export namespace Libxfce4windowingui {
     class WindowActionMenu extends Gtk.Menu implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<WindowActionMenu>;
 
-        // Own properties of Libxfce4windowingui.WindowActionMenu
+        // Properties
 
         /**
          * The #XfwWindow instance used to create the action menu.
@@ -90,7 +90,7 @@ export namespace Libxfce4windowingui {
         // This accessor conflicts with another accessor's type in a parent class or interface.
         get window(): Libxfce4windowing.Window | any;
 
-        // Constructors of Libxfce4windowingui.WindowActionMenu
+        // Constructors
 
         constructor(properties?: Partial<WindowActionMenu.ConstructorProps>, ...args: any[]);
 
@@ -508,7 +508,7 @@ export namespace Libxfce4windowingui {
     abstract class WindowActionMenuPrivate {
         static $gtype: GObject.GType<WindowActionMenuPrivate>;
 
-        // Constructors of Libxfce4windowingui.WindowActionMenuPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }

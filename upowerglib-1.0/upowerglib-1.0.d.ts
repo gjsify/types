@@ -179,7 +179,7 @@ export namespace UPowerGlib {
     class Client extends GObject.Object {
         static $gtype: GObject.GType<Client>;
 
-        // Own properties of UPowerGlib.Client
+        // Properties
 
         /**
          * The daemon version.
@@ -214,7 +214,7 @@ export namespace UPowerGlib {
          */
         get onBattery(): boolean;
 
-        // Constructors of UPowerGlib.Client
+        // Constructors
 
         constructor(properties?: Partial<Client.ConstructorProps>, ...args: any[]);
 
@@ -222,7 +222,7 @@ export namespace UPowerGlib {
 
         static ['new'](): Client;
 
-        // Own signals of UPowerGlib.Client
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -234,12 +234,12 @@ export namespace UPowerGlib {
         connect_after(signal: 'device-removed', callback: (_source: this, object_path: string) => void): number;
         emit(signal: 'device-removed', object_path: string): void;
 
-        // Own virtual methods of UPowerGlib.Client
+        // Virtual methods
 
         vfunc_device_added(device: Device): void;
         vfunc_device_removed(object_path: string): void;
 
-        // Own methods of UPowerGlib.Client
+        // Methods
 
         /**
          * Gets a string representing the configured critical action,
@@ -299,7 +299,7 @@ export namespace UPowerGlib {
     {
         static $gtype: GObject.GType<ClientGlueProxy>;
 
-        // Constructors of UPowerGlib.ClientGlueProxy
+        // Constructors
 
         constructor(properties?: Partial<ClientGlueProxy.ConstructorProps>, ...args: any[]);
 
@@ -334,7 +334,7 @@ export namespace UPowerGlib {
 
         static new_sync(...args: never[]): any;
 
-        // Own static methods of UPowerGlib.ClientGlueProxy
+        // Static methods
 
         /**
          * Asynchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-UPower.top_of_page">org.freedesktop.UPower</link>. See g_dbus_proxy_new() for more details.
@@ -1214,7 +1214,7 @@ export namespace UPowerGlib {
     class ClientGlueSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, ClientGlue {
         static $gtype: GObject.GType<ClientGlueSkeleton>;
 
-        // Constructors of UPowerGlib.ClientGlueSkeleton
+        // Constructors
 
         constructor(properties?: Partial<ClientGlueSkeleton.ConstructorProps>, ...args: any[]);
 
@@ -1890,7 +1890,7 @@ export namespace UPowerGlib {
     class Device extends GObject.Object {
         static $gtype: GObject.GType<Device>;
 
-        // Own properties of UPowerGlib.Device
+        // Properties
 
         /**
          * The percentage capacity of the device where 100% means the device has
@@ -2115,7 +2115,7 @@ export namespace UPowerGlib {
         get warningLevel(): number;
         set warningLevel(val: number);
 
-        // Constructors of UPowerGlib.Device
+        // Constructors
 
         constructor(properties?: Partial<Device.ConstructorProps>, ...args: any[]);
 
@@ -2123,7 +2123,7 @@ export namespace UPowerGlib {
 
         static ['new'](): Device;
 
-        // Own static methods of UPowerGlib.Device
+        // Static methods
 
         /**
          * Converts a string to a #UpDeviceKind.
@@ -2166,7 +2166,7 @@ export namespace UPowerGlib {
          */
         static technology_to_string(technology_enum: DeviceTechnology): string;
 
-        // Own methods of UPowerGlib.Device
+        // Methods
 
         /**
          * Gets the device history.
@@ -2235,7 +2235,7 @@ export namespace UPowerGlib {
     {
         static $gtype: GObject.GType<DeviceGlueProxy>;
 
-        // Constructors of UPowerGlib.DeviceGlueProxy
+        // Constructors
 
         constructor(properties?: Partial<DeviceGlueProxy.ConstructorProps>, ...args: any[]);
 
@@ -2270,7 +2270,7 @@ export namespace UPowerGlib {
 
         static new_sync(...args: never[]): any;
 
-        // Own static methods of UPowerGlib.DeviceGlueProxy
+        // Static methods
 
         /**
          * Asynchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-UPower-Device.top_of_page">org.freedesktop.UPower.Device</link>. See g_dbus_proxy_new() for more details.
@@ -3401,7 +3401,7 @@ export namespace UPowerGlib {
     class DeviceGlueSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, DeviceGlue {
         static $gtype: GObject.GType<DeviceGlueSkeleton>;
 
-        // Constructors of UPowerGlib.DeviceGlueSkeleton
+        // Constructors
 
         constructor(properties?: Partial<DeviceGlueSkeleton.ConstructorProps>, ...args: any[]);
 
@@ -4288,7 +4288,7 @@ export namespace UPowerGlib {
     class HistoryItem extends GObject.Object {
         static $gtype: GObject.GType<HistoryItem>;
 
-        // Own properties of UPowerGlib.HistoryItem
+        // Properties
 
         get state(): number;
         set state(val: number);
@@ -4297,7 +4297,7 @@ export namespace UPowerGlib {
         get value(): number;
         set value(val: number);
 
-        // Constructors of UPowerGlib.HistoryItem
+        // Constructors
 
         constructor(properties?: Partial<HistoryItem.ConstructorProps>, ...args: any[]);
 
@@ -4305,7 +4305,7 @@ export namespace UPowerGlib {
 
         static ['new'](): HistoryItem;
 
-        // Own methods of UPowerGlib.HistoryItem
+        // Methods
 
         /**
          * Gets the item state.
@@ -4361,14 +4361,14 @@ export namespace UPowerGlib {
     class StatsItem extends GObject.Object {
         static $gtype: GObject.GType<StatsItem>;
 
-        // Own properties of UPowerGlib.StatsItem
+        // Properties
 
         get accuracy(): number;
         set accuracy(val: number);
         get value(): number;
         set value(val: number);
 
-        // Constructors of UPowerGlib.StatsItem
+        // Constructors
 
         constructor(properties?: Partial<StatsItem.ConstructorProps>, ...args: any[]);
 
@@ -4376,7 +4376,7 @@ export namespace UPowerGlib {
 
         static ['new'](): StatsItem;
 
-        // Own methods of UPowerGlib.StatsItem
+        // Methods
 
         /**
          * Gets the item accuracy.
@@ -4415,7 +4415,7 @@ export namespace UPowerGlib {
     class WakeupItem extends GObject.Object {
         static $gtype: GObject.GType<WakeupItem>;
 
-        // Own properties of UPowerGlib.WakeupItem
+        // Properties
 
         get cmdline(): string;
         set cmdline(val: string);
@@ -4432,7 +4432,7 @@ export namespace UPowerGlib {
         get value(): number;
         set value(val: number);
 
-        // Constructors of UPowerGlib.WakeupItem
+        // Constructors
 
         constructor(properties?: Partial<WakeupItem.ConstructorProps>, ...args: any[]);
 
@@ -4440,7 +4440,7 @@ export namespace UPowerGlib {
 
         static ['new'](): WakeupItem;
 
-        // Own methods of UPowerGlib.WakeupItem
+        // Methods
 
         /**
          * Gets the item cmdline.
@@ -4523,7 +4523,7 @@ export namespace UPowerGlib {
     class Wakeups extends GObject.Object {
         static $gtype: GObject.GType<Wakeups>;
 
-        // Constructors of UPowerGlib.Wakeups
+        // Constructors
 
         constructor(properties?: Partial<Wakeups.ConstructorProps>, ...args: any[]);
 
@@ -4531,7 +4531,7 @@ export namespace UPowerGlib {
 
         static ['new'](): Wakeups;
 
-        // Own signals of UPowerGlib.Wakeups
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -4543,12 +4543,12 @@ export namespace UPowerGlib {
         connect_after(signal: 'total-changed', callback: (_source: this, object: number) => void): number;
         emit(signal: 'total-changed', object: number): void;
 
-        // Own virtual methods of UPowerGlib.Wakeups
+        // Virtual methods
 
         vfunc_data_changed(): void;
         vfunc_total_changed(value: number): void;
 
-        // Own methods of UPowerGlib.Wakeups
+        // Methods
 
         /**
          * Gets the wakeups data from the daemon.
@@ -4595,7 +4595,7 @@ export namespace UPowerGlib {
     {
         static $gtype: GObject.GType<WakeupsGlueProxy>;
 
-        // Constructors of UPowerGlib.WakeupsGlueProxy
+        // Constructors
 
         constructor(properties?: Partial<WakeupsGlueProxy.ConstructorProps>, ...args: any[]);
 
@@ -4630,7 +4630,7 @@ export namespace UPowerGlib {
 
         static new_sync(...args: never[]): any;
 
-        // Own static methods of UPowerGlib.WakeupsGlueProxy
+        // Static methods
 
         /**
          * Asynchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-UPower-Wakeups.top_of_page">org.freedesktop.UPower.Wakeups</link>. See g_dbus_proxy_new() for more details.
@@ -5425,7 +5425,7 @@ export namespace UPowerGlib {
     class WakeupsGlueSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, WakeupsGlue {
         static $gtype: GObject.GType<WakeupsGlueSkeleton>;
 
-        // Constructors of UPowerGlib.WakeupsGlueSkeleton
+        // Constructors
 
         constructor(properties?: Partial<WakeupsGlueSkeleton.ConstructorProps>, ...args: any[]);
 
@@ -5969,7 +5969,7 @@ export namespace UPowerGlib {
     abstract class ClientGlueProxyPrivate {
         static $gtype: GObject.GType<ClientGlueProxyPrivate>;
 
-        // Constructors of UPowerGlib.ClientGlueProxyPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5978,7 +5978,7 @@ export namespace UPowerGlib {
     abstract class ClientGlueSkeletonPrivate {
         static $gtype: GObject.GType<ClientGlueSkeletonPrivate>;
 
-        // Constructors of UPowerGlib.ClientGlueSkeletonPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5989,7 +5989,7 @@ export namespace UPowerGlib {
     abstract class ClientPrivate {
         static $gtype: GObject.GType<ClientPrivate>;
 
-        // Constructors of UPowerGlib.ClientPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -6000,7 +6000,7 @@ export namespace UPowerGlib {
     abstract class DeviceGlueProxyPrivate {
         static $gtype: GObject.GType<DeviceGlueProxyPrivate>;
 
-        // Constructors of UPowerGlib.DeviceGlueProxyPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -6009,7 +6009,7 @@ export namespace UPowerGlib {
     abstract class DeviceGlueSkeletonPrivate {
         static $gtype: GObject.GType<DeviceGlueSkeletonPrivate>;
 
-        // Constructors of UPowerGlib.DeviceGlueSkeletonPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -6020,7 +6020,7 @@ export namespace UPowerGlib {
     abstract class DevicePrivate {
         static $gtype: GObject.GType<DevicePrivate>;
 
-        // Constructors of UPowerGlib.DevicePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -6029,7 +6029,7 @@ export namespace UPowerGlib {
     abstract class HistoryItemPrivate {
         static $gtype: GObject.GType<HistoryItemPrivate>;
 
-        // Constructors of UPowerGlib.HistoryItemPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -6038,7 +6038,7 @@ export namespace UPowerGlib {
     abstract class StatsItemPrivate {
         static $gtype: GObject.GType<StatsItemPrivate>;
 
-        // Constructors of UPowerGlib.StatsItemPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -6047,7 +6047,7 @@ export namespace UPowerGlib {
     abstract class WakeupItemPrivate {
         static $gtype: GObject.GType<WakeupItemPrivate>;
 
-        // Constructors of UPowerGlib.WakeupItemPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -6058,7 +6058,7 @@ export namespace UPowerGlib {
     abstract class WakeupsGlueProxyPrivate {
         static $gtype: GObject.GType<WakeupsGlueProxyPrivate>;
 
-        // Constructors of UPowerGlib.WakeupsGlueProxyPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -6067,7 +6067,7 @@ export namespace UPowerGlib {
     abstract class WakeupsGlueSkeletonPrivate {
         static $gtype: GObject.GType<WakeupsGlueSkeletonPrivate>;
 
-        // Constructors of UPowerGlib.WakeupsGlueSkeletonPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -6075,7 +6075,7 @@ export namespace UPowerGlib {
     abstract class WakeupsPrivate {
         static $gtype: GObject.GType<WakeupsPrivate>;
 
-        // Constructors of UPowerGlib.WakeupsPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -6112,7 +6112,7 @@ export namespace UPowerGlib {
         override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
     }
     interface ClientGlue extends GObject.Object {
-        // Own properties of UPowerGlib.ClientGlue
+        // Properties
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower.DaemonVersion">"DaemonVersion"</link>.
@@ -6171,7 +6171,7 @@ export namespace UPowerGlib {
         get onBattery(): boolean;
         set onBattery(val: boolean);
 
-        // Own methods of UPowerGlib.ClientGlue
+        // Methods
 
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UPower.EnumerateDevices">EnumerateDevices()</link> D-Bus method on `proxy`.
@@ -6289,7 +6289,7 @@ export namespace UPowerGlib {
          */
         emit_device_removed(arg_device: string): void;
 
-        // Own virtual methods of UPowerGlib.ClientGlue
+        // Virtual methods
 
         vfunc_device_added(arg_device: string): void;
         vfunc_device_removed(arg_device: string): void;
@@ -6367,7 +6367,7 @@ export namespace UPowerGlib {
         override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
     }
     interface DeviceGlue extends GObject.Object {
-        // Own properties of UPowerGlib.DeviceGlue
+        // Properties
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.Capacity">"Capacity"</link>.
@@ -6671,7 +6671,7 @@ export namespace UPowerGlib {
         get warningLevel(): number;
         set warningLevel(val: number);
 
-        // Own methods of UPowerGlib.DeviceGlue
+        // Methods
 
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UPower-Device.GetHistory">GetHistory()</link> D-Bus method on `proxy`.
@@ -6792,7 +6792,7 @@ export namespace UPowerGlib {
          */
         complete_refresh(invocation: Gio.DBusMethodInvocation): void;
 
-        // Own virtual methods of UPowerGlib.DeviceGlue
+        // Virtual methods
 
         vfunc_handle_get_history(
             invocation: Gio.DBusMethodInvocation,
@@ -6832,7 +6832,7 @@ export namespace UPowerGlib {
         override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
     }
     interface WakeupsGlue extends GObject.Object {
-        // Own properties of UPowerGlib.WakeupsGlue
+        // Properties
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Wakeups.HasCapability">"HasCapability"</link>.
@@ -6849,7 +6849,7 @@ export namespace UPowerGlib {
         get hasCapability(): boolean;
         set hasCapability(val: boolean);
 
-        // Own methods of UPowerGlib.WakeupsGlue
+        // Methods
 
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UPower-Wakeups.GetData">GetData()</link> D-Bus method on `proxy`.
@@ -6925,7 +6925,7 @@ export namespace UPowerGlib {
          */
         emit_total_changed(arg_value: number): void;
 
-        // Own virtual methods of UPowerGlib.WakeupsGlue
+        // Virtual methods
 
         vfunc_data_changed(): void;
         vfunc_handle_get_data(invocation: Gio.DBusMethodInvocation): boolean;

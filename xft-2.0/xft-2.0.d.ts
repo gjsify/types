@@ -20,7 +20,7 @@ export namespace xft {
     class Color {
         static $gtype: GObject.GType<Color>;
 
-        // Constructors of xft.Color
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -28,7 +28,7 @@ export namespace xft {
     class Draw {
         static $gtype: GObject.GType<Draw>;
 
-        // Constructors of xft.Draw
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -36,7 +36,7 @@ export namespace xft {
     class Font {
         static $gtype: GObject.GType<Font>;
 
-        // Constructors of xft.Font
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -44,7 +44,7 @@ export namespace xft {
     class GlyphSpec {
         static $gtype: GObject.GType<GlyphSpec>;
 
-        // Constructors of xft.GlyphSpec
+        // Constructors
 
         _init(...args: any[]): void;
     }

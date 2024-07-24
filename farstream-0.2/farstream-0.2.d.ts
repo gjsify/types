@@ -91,7 +91,7 @@ export namespace Farstream {
     class DTMFEvent {
         static $gtype: GObject.GType<DTMFEvent>;
 
-        // Static fields of Farstream.DTMFEvent
+        // Static fields
 
         static '0': number;
         static '1': number;
@@ -110,7 +110,7 @@ export namespace Farstream {
         static C: number;
         static D: number;
 
-        // Constructors of Farstream.DTMFEvent
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -144,7 +144,7 @@ export namespace Farstream {
     class Error extends GLib.Error {
         static $gtype: GObject.GType<Error>;
 
-        // Static fields of Farstream.Error
+        // Static fields
 
         /**
          * Error constructing some of the sub-elements, this
@@ -207,12 +207,12 @@ export namespace Farstream {
          */
         static ALREADY_EXISTS: number;
 
-        // Constructors of Farstream.Error
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of Farstream.Error
+        // Static methods
 
         static quark(): GLib.Quark;
     }
@@ -525,13 +525,13 @@ export namespace Farstream {
     abstract class Conference extends Gst.Bin implements Gst.ChildProxy {
         static $gtype: GObject.GType<Conference>;
 
-        // Constructors of Farstream.Conference
+        // Constructors
 
         constructor(properties?: Partial<Conference.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of Farstream.Conference
+        // Virtual methods
 
         /**
          * Create a new Farstream Participant for the type of the given conference.
@@ -543,7 +543,7 @@ export namespace Farstream {
          */
         vfunc_new_session(media_type: MediaType): Session;
 
-        // Own methods of Farstream.Conference
+        // Methods
 
         /**
          * Create a new Farstream Participant for the type of the given conference.
@@ -1076,7 +1076,7 @@ export namespace Farstream {
     class ElementAddedNotifier extends GObject.Object {
         static $gtype: GObject.GType<ElementAddedNotifier>;
 
-        // Constructors of Farstream.ElementAddedNotifier
+        // Constructors
 
         constructor(properties?: Partial<ElementAddedNotifier.ConstructorProps>, ...args: any[]);
 
@@ -1084,7 +1084,7 @@ export namespace Farstream {
 
         static ['new'](): ElementAddedNotifier;
 
-        // Own signals of Farstream.ElementAddedNotifier
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -1096,7 +1096,7 @@ export namespace Farstream {
         ): number;
         emit(signal: 'element-added', bin: Gst.Bin, element: Gst.Element): void;
 
-        // Own methods of Farstream.ElementAddedNotifier
+        // Methods
 
         /**
          * Add a #GstBin to on which the #FsElementAddedNotifier::element-added signal
@@ -1153,7 +1153,7 @@ export namespace Farstream {
     abstract class Participant extends GObject.Object {
         static $gtype: GObject.GType<Participant>;
 
-        // Constructors of Farstream.Participant
+        // Constructors
 
         constructor(properties?: Partial<Participant.ConstructorProps>, ...args: any[]);
 
@@ -1172,13 +1172,13 @@ export namespace Farstream {
     class Plugin extends GObject.TypeModule implements GObject.TypePlugin {
         static $gtype: GObject.GType<Plugin>;
 
-        // Constructors of Farstream.Plugin
+        // Constructors
 
         constructor(properties?: Partial<Plugin.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of Farstream.Plugin
+        // Static methods
 
         /**
          * Gets the list of all available plugins of a certain type
@@ -1664,7 +1664,7 @@ export namespace Farstream {
     abstract class Session extends GObject.Object {
         static $gtype: GObject.GType<Session>;
 
-        // Own properties of Farstream.Session
+        // Properties
 
         /**
          * These are the #GstCaps that can be fed into the session,
@@ -1836,13 +1836,13 @@ export namespace Farstream {
         get tos(): number;
         set tos(val: number);
 
-        // Constructors of Farstream.Session
+        // Constructors
 
         constructor(properties?: Partial<Session.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of Farstream.Session
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -1857,7 +1857,7 @@ export namespace Farstream {
         ): number;
         emit(signal: 'error', object: GObject.Object, error_no: Error, error_msg: string): void;
 
-        // Own virtual methods of Farstream.Session
+        // Virtual methods
 
         /**
          * Some codec updates need to be reliably transmitted to the other side
@@ -1956,7 +1956,7 @@ export namespace Farstream {
          */
         vfunc_stop_telephony_event(): boolean;
 
-        // Own methods of Farstream.Session
+        // Methods
 
         /**
          * Some codec updates need to be reliably transmitted to the other side
@@ -2145,7 +2145,7 @@ export namespace Farstream {
     abstract class Stream extends GObject.Object {
         static $gtype: GObject.GType<Stream>;
 
-        // Own properties of Farstream.Stream
+        // Properties
 
         /**
          * This is the list of codecs that have been received by this stream.
@@ -2223,13 +2223,13 @@ export namespace Farstream {
          */
         get session(): Session;
 
-        // Constructors of Farstream.Stream
+        // Constructors
 
         constructor(properties?: Partial<Stream.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of Farstream.Stream
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -2241,7 +2241,7 @@ export namespace Farstream {
         connect_after(signal: 'src-pad-added', callback: (_source: this, pad: Gst.Pad, codec: Codec) => void): number;
         emit(signal: 'src-pad-added', pad: Gst.Pad, codec: Codec): void;
 
-        // Own virtual methods of Farstream.Stream
+        // Virtual methods
 
         /**
          * This function is used to add data identifiers that allow the
@@ -2301,7 +2301,7 @@ export namespace Farstream {
          */
         vfunc_set_transmitter(transmitter: string, stream_transmitter_parameters?: GObject.Parameter[] | null): boolean;
 
-        // Own methods of Farstream.Stream
+        // Methods
 
         /**
          * This function is used to add data identifiers that allow the
@@ -2493,7 +2493,7 @@ export namespace Farstream {
     abstract class StreamTransmitter extends GObject.Object {
         static $gtype: GObject.GType<StreamTransmitter>;
 
-        // Own properties of Farstream.StreamTransmitter
+        // Properties
 
         /**
          * This tells the stream transmitter to associate incoming data with this
@@ -2513,13 +2513,13 @@ export namespace Farstream {
         get sending(): boolean;
         set sending(val: boolean);
 
-        // Constructors of Farstream.StreamTransmitter
+        // Constructors
 
         constructor(properties?: Partial<StreamTransmitter.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of Farstream.StreamTransmitter
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -2564,7 +2564,7 @@ export namespace Farstream {
         ): number;
         emit(signal: 'state-changed', component: number, state: StreamState): void;
 
-        // Own virtual methods of Farstream.StreamTransmitter
+        // Virtual methods
 
         /**
          * This function is used to add remote candidates to the transmitter
@@ -2590,7 +2590,7 @@ export namespace Farstream {
          */
         vfunc_stop(): void;
 
-        // Own methods of Farstream.StreamTransmitter
+        // Methods
 
         /**
          * This function is used to add remote candidates to the transmitter
@@ -2654,7 +2654,7 @@ export namespace Farstream {
     abstract class Transmitter extends GObject.Object {
         static $gtype: GObject.GType<Transmitter>;
 
-        // Own properties of Farstream.Transmitter
+        // Properties
 
         /**
          * The number of components to create
@@ -2712,7 +2712,7 @@ export namespace Farstream {
         get tos(): number;
         set tos(val: number);
 
-        // Constructors of Farstream.Transmitter
+        // Constructors
 
         constructor(properties?: Partial<Transmitter.ConstructorProps>, ...args: any[]);
 
@@ -2720,7 +2720,7 @@ export namespace Farstream {
 
         static ['new'](type: string, components: number, tos: number): Transmitter;
 
-        // Own signals of Farstream.Transmitter
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -2729,14 +2729,14 @@ export namespace Farstream {
         connect_after(signal: 'error', callback: (_source: this, errorno: Error, error_msg: string) => void): number;
         emit(signal: 'error', errorno: Error, error_msg: string): void;
 
-        // Own static methods of Farstream.Transmitter
+        // Static methods
 
         /**
          * Get the list of all available transmitters
          */
         static list_available(): string[];
 
-        // Own virtual methods of Farstream.Transmitter
+        // Virtual methods
 
         /**
          * This function returns the GObject type for the stream transmitter.
@@ -2757,7 +2757,7 @@ export namespace Farstream {
             parameters: GObject.Parameter,
         ): StreamTransmitter;
 
-        // Own methods of Farstream.Transmitter
+        // Methods
 
         /**
          * This function emit the "error" signal on a #FsTransmitter, it should
@@ -2794,7 +2794,7 @@ export namespace Farstream {
     class Candidate {
         static $gtype: GObject.GType<Candidate>;
 
-        // Own fields of Farstream.Candidate
+        // Fields
 
         foundation: string;
         component_id: number;
@@ -2809,7 +2809,7 @@ export namespace Farstream {
         password: string;
         ttl: number;
 
-        // Constructors of Farstream.Candidate
+        // Constructors
 
         constructor(
             foundation: string,
@@ -2845,7 +2845,7 @@ export namespace Farstream {
             ttl: number,
         ): Candidate;
 
-        // Own methods of Farstream.Candidate
+        // Methods
 
         /**
          * Copies a #FsCandidate and its contents.
@@ -2860,7 +2860,7 @@ export namespace Farstream {
     class Codec {
         static $gtype: GObject.GType<Codec>;
 
-        // Own fields of Farstream.Codec
+        // Fields
 
         id: number;
         encoding_name: string;
@@ -2871,14 +2871,14 @@ export namespace Farstream {
         optional_params: CodecParameter[];
         feedback_params: FeedbackParameter[];
 
-        // Constructors of Farstream.Codec
+        // Constructors
 
         constructor(id: number, encoding_name: string, media_type: MediaType, clock_rate: number);
         _init(...args: any[]): void;
 
         static ['new'](id: number, encoding_name: string, media_type: MediaType, clock_rate: number): Codec;
 
-        // Own methods of Farstream.Codec
+        // Methods
 
         /**
          * This function adds an new feedback parameter to a #FsCodec
@@ -2954,12 +2954,12 @@ export namespace Farstream {
     class CodecParameter {
         static $gtype: GObject.GType<CodecParameter>;
 
-        // Own fields of Farstream.CodecParameter
+        // Fields
 
         name: string;
         value: string;
 
-        // Constructors of Farstream.CodecParameter
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -2969,7 +2969,7 @@ export namespace Farstream {
         );
         _init(...args: any[]): void;
 
-        // Own methods of Farstream.CodecParameter
+        // Methods
 
         /**
          * Makes a copy of a #FsCodecParameter
@@ -2987,7 +2987,7 @@ export namespace Farstream {
     abstract class ElementAddedNotifierPrivate {
         static $gtype: GObject.GType<ElementAddedNotifierPrivate>;
 
-        // Constructors of Farstream.ElementAddedNotifierPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2998,13 +2998,13 @@ export namespace Farstream {
     class FeedbackParameter {
         static $gtype: GObject.GType<FeedbackParameter>;
 
-        // Own fields of Farstream.FeedbackParameter
+        // Fields
 
         type: string;
         subtype: string;
         extra_params: string;
 
-        // Constructors of Farstream.FeedbackParameter
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -3015,7 +3015,7 @@ export namespace Farstream {
         );
         _init(...args: any[]): void;
 
-        // Own methods of Farstream.FeedbackParameter
+        // Methods
 
         /**
          * Makes a copy of a #FsFeedbackParameter
@@ -3032,7 +3032,7 @@ export namespace Farstream {
     abstract class ParticipantPrivate {
         static $gtype: GObject.GType<ParticipantPrivate>;
 
-        // Constructors of Farstream.ParticipantPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3041,7 +3041,7 @@ export namespace Farstream {
     abstract class PluginPrivate {
         static $gtype: GObject.GType<PluginPrivate>;
 
-        // Constructors of Farstream.PluginPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3053,20 +3053,20 @@ export namespace Farstream {
     class RtpHeaderExtension {
         static $gtype: GObject.GType<RtpHeaderExtension>;
 
-        // Own fields of Farstream.RtpHeaderExtension
+        // Fields
 
         id: number;
         direction: StreamDirection;
         uri: string;
 
-        // Constructors of Farstream.RtpHeaderExtension
+        // Constructors
 
         constructor(id: number, direction: StreamDirection, uri: string);
         _init(...args: any[]): void;
 
         static ['new'](id: number, direction: StreamDirection, uri: string): RtpHeaderExtension;
 
-        // Own methods of Farstream.RtpHeaderExtension
+        // Methods
 
         /**
          * Compares two #FsRtpHeaderExtension structures
@@ -3080,7 +3080,7 @@ export namespace Farstream {
     abstract class SessionPrivate {
         static $gtype: GObject.GType<SessionPrivate>;
 
-        // Constructors of Farstream.SessionPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3089,7 +3089,7 @@ export namespace Farstream {
     abstract class StreamPrivate {
         static $gtype: GObject.GType<StreamPrivate>;
 
-        // Constructors of Farstream.StreamPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3098,7 +3098,7 @@ export namespace Farstream {
     abstract class StreamTransmitterPrivate {
         static $gtype: GObject.GType<StreamTransmitterPrivate>;
 
-        // Constructors of Farstream.StreamTransmitterPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3107,7 +3107,7 @@ export namespace Farstream {
     abstract class TransmitterPrivate {
         static $gtype: GObject.GType<TransmitterPrivate>;
 
-        // Constructors of Farstream.TransmitterPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }

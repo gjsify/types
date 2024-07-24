@@ -135,7 +135,7 @@ export namespace GstWebRTC {
     class WebRTCError extends GLib.Error {
         static $gtype: GObject.GType<WebRTCError>;
 
-        // Static fields of GstWebRTC.WebRTCError
+        // Static fields
 
         /**
          * data-channel-failure
@@ -182,12 +182,12 @@ export namespace GstWebRTC {
          */
         static TYPE_ERROR: number;
 
-        // Constructors of GstWebRTC.WebRTCError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of GstWebRTC.WebRTCError
+        // Static methods
 
         static quark(): GLib.Quark;
     }
@@ -630,7 +630,7 @@ export namespace GstWebRTC {
     class WebRTCDTLSTransport extends Gst.Object {
         static $gtype: GObject.GType<WebRTCDTLSTransport>;
 
-        // Own properties of GstWebRTC.WebRTCDTLSTransport
+        // Properties
 
         get certificate(): string;
         set certificate(val: string);
@@ -643,7 +643,7 @@ export namespace GstWebRTC {
         get state(): WebRTCDTLSTransportState;
         get transport(): WebRTCICETransport;
 
-        // Constructors of GstWebRTC.WebRTCDTLSTransport
+        // Constructors
 
         constructor(properties?: Partial<WebRTCDTLSTransport.ConstructorProps>, ...args: any[]);
 
@@ -714,7 +714,7 @@ export namespace GstWebRTC {
     abstract class WebRTCDataChannel extends GObject.Object {
         static $gtype: GObject.GType<WebRTCDataChannel>;
 
-        // Own properties of GstWebRTC.WebRTCDataChannel
+        // Properties
 
         get buffered_amount(): number;
         get bufferedAmount(): number;
@@ -735,13 +735,13 @@ export namespace GstWebRTC {
         get ready_state(): WebRTCDataChannelState;
         get readyState(): WebRTCDataChannelState;
 
-        // Constructors of GstWebRTC.WebRTCDataChannel
+        // Constructors
 
         constructor(properties?: Partial<WebRTCDataChannel.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of GstWebRTC.WebRTCDataChannel
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -774,7 +774,7 @@ export namespace GstWebRTC {
         connect_after(signal: 'send-string', callback: (_source: this, data: string | null) => void): number;
         emit(signal: 'send-string', data?: string | null): void;
 
-        // Own methods of GstWebRTC.WebRTCDataChannel
+        // Methods
 
         /**
          * Close the `channel`.
@@ -824,7 +824,7 @@ export namespace GstWebRTC {
     abstract class WebRTCICE extends Gst.Object {
         static $gtype: GObject.GType<WebRTCICE>;
 
-        // Own properties of GstWebRTC.WebRTCICE
+        // Properties
 
         /**
          * Maximum port for local rtp port range.
@@ -851,18 +851,18 @@ export namespace GstWebRTC {
         get minRtpPort(): number;
         set minRtpPort(val: number);
 
-        // Own fields of GstWebRTC.WebRTCICE
+        // Fields
 
         ice_gathering_state: WebRTCICEGatheringState;
         ice_connection_state: WebRTCICEConnectionState;
 
-        // Constructors of GstWebRTC.WebRTCICE
+        // Constructors
 
         constructor(properties?: Partial<WebRTCICE.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of GstWebRTC.WebRTCICE
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -871,7 +871,7 @@ export namespace GstWebRTC {
         connect_after(signal: 'add-local-ip-address', callback: (_source: this, address: string) => boolean): number;
         emit(signal: 'add-local-ip-address', address: string): void;
 
-        // Own virtual methods of GstWebRTC.WebRTCICE
+        // Virtual methods
 
         vfunc_add_candidate(stream: WebRTCICEStream, candidate: string, promise?: Gst.Promise | null): void;
         vfunc_add_stream(session_id: number): WebRTCICEStream | null;
@@ -902,7 +902,7 @@ export namespace GstWebRTC {
         vfunc_set_tos(stream: WebRTCICEStream, tos: number): void;
         vfunc_set_turn_server(uri?: string | null): void;
 
-        // Own methods of GstWebRTC.WebRTCICE
+        // Methods
 
         add_candidate(stream: WebRTCICEStream, candidate: string, promise?: Gst.Promise | null): void;
         add_stream(session_id: number): WebRTCICEStream | null;
@@ -943,23 +943,23 @@ export namespace GstWebRTC {
     abstract class WebRTCICEStream extends Gst.Object {
         static $gtype: GObject.GType<WebRTCICEStream>;
 
-        // Own properties of GstWebRTC.WebRTCICEStream
+        // Properties
 
         get stream_id(): number;
         get streamId(): number;
 
-        // Constructors of GstWebRTC.WebRTCICEStream
+        // Constructors
 
         constructor(properties?: Partial<WebRTCICEStream.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of GstWebRTC.WebRTCICEStream
+        // Virtual methods
 
         vfunc_find_transport(component: WebRTCICEComponent): WebRTCICETransport | null;
         vfunc_gather_candidates(): boolean;
 
-        // Own methods of GstWebRTC.WebRTCICEStream
+        // Methods
 
         find_transport(component: WebRTCICEComponent): WebRTCICETransport | null;
         gather_candidates(): boolean;
@@ -989,26 +989,26 @@ export namespace GstWebRTC {
     abstract class WebRTCICETransport extends Gst.Object {
         static $gtype: GObject.GType<WebRTCICETransport>;
 
-        // Own properties of GstWebRTC.WebRTCICETransport
+        // Properties
 
         get component(): WebRTCICEComponent;
         get gathering_state(): WebRTCICEGatheringState;
         get gatheringState(): WebRTCICEGatheringState;
         get state(): WebRTCICEConnectionState;
 
-        // Own fields of GstWebRTC.WebRTCICETransport
+        // Fields
 
         role: WebRTCICERole;
         src: Gst.Element;
         sink: Gst.Element;
 
-        // Constructors of GstWebRTC.WebRTCICETransport
+        // Constructors
 
         constructor(properties?: Partial<WebRTCICETransport.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of GstWebRTC.WebRTCICETransport
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -1020,11 +1020,11 @@ export namespace GstWebRTC {
         connect_after(signal: 'on-selected-candidate-pair-change', callback: (_source: this) => void): number;
         emit(signal: 'on-selected-candidate-pair-change'): void;
 
-        // Own virtual methods of GstWebRTC.WebRTCICETransport
+        // Virtual methods
 
         vfunc_gather_candidates(): boolean;
 
-        // Own methods of GstWebRTC.WebRTCICETransport
+        // Methods
 
         connection_state_change(new_state: WebRTCICEConnectionState): void;
         gathering_state_change(new_state: WebRTCICEGatheringState): void;
@@ -1048,14 +1048,14 @@ export namespace GstWebRTC {
     class WebRTCRTPReceiver extends Gst.Object {
         static $gtype: GObject.GType<WebRTCRTPReceiver>;
 
-        // Own properties of GstWebRTC.WebRTCRTPReceiver
+        // Properties
 
         /**
          * The DTLS transport for this receiver
          */
         get transport(): WebRTCDTLSTransport;
 
-        // Constructors of GstWebRTC.WebRTCRTPReceiver
+        // Constructors
 
         constructor(properties?: Partial<WebRTCRTPReceiver.ConstructorProps>, ...args: any[]);
 
@@ -1079,7 +1079,7 @@ export namespace GstWebRTC {
     class WebRTCRTPSender extends Gst.Object {
         static $gtype: GObject.GType<WebRTCRTPSender>;
 
-        // Own properties of GstWebRTC.WebRTCRTPSender
+        // Properties
 
         /**
          * The priority from which to set the DSCP field on packets
@@ -1091,13 +1091,13 @@ export namespace GstWebRTC {
          */
         get transport(): WebRTCDTLSTransport;
 
-        // Constructors of GstWebRTC.WebRTCRTPSender
+        // Constructors
 
         constructor(properties?: Partial<WebRTCRTPSender.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of GstWebRTC.WebRTCRTPSender
+        // Methods
 
         /**
          * Sets the content of the IPv4 Type of Service (ToS), also known as DSCP
@@ -1131,7 +1131,7 @@ export namespace GstWebRTC {
     abstract class WebRTCRTPTransceiver extends Gst.Object {
         static $gtype: GObject.GType<WebRTCRTPTransceiver>;
 
-        // Own properties of GstWebRTC.WebRTCRTPTransceiver
+        // Properties
 
         /**
          * Caps representing the codec preferences.
@@ -1179,7 +1179,7 @@ export namespace GstWebRTC {
         get receiver(): WebRTCRTPReceiver;
         get sender(): WebRTCRTPSender;
 
-        // Constructors of GstWebRTC.WebRTCRTPTransceiver
+        // Constructors
 
         constructor(properties?: Partial<WebRTCRTPTransceiver.ConstructorProps>, ...args: any[]);
 
@@ -1202,7 +1202,7 @@ export namespace GstWebRTC {
     abstract class WebRTCSCTPTransport extends Gst.Object {
         static $gtype: GObject.GType<WebRTCSCTPTransport>;
 
-        // Own properties of GstWebRTC.WebRTCSCTPTransport
+        // Properties
 
         get max_channels(): number;
         get maxChannels(): number;
@@ -1211,7 +1211,7 @@ export namespace GstWebRTC {
         get state(): WebRTCSCTPTransportState;
         get transport(): WebRTCDTLSTransport;
 
-        // Constructors of GstWebRTC.WebRTCSCTPTransport
+        // Constructors
 
         constructor(properties?: Partial<WebRTCSCTPTransport.ConstructorProps>, ...args: any[]);
 
@@ -1223,7 +1223,7 @@ export namespace GstWebRTC {
     class WebRTCICECandidateStats {
         static $gtype: GObject.GType<WebRTCICECandidateStats>;
 
-        // Own fields of GstWebRTC.WebRTCICECandidateStats
+        // Fields
 
         ipaddr: string;
         port: number;
@@ -1234,7 +1234,7 @@ export namespace GstWebRTC {
         prio: number;
         url: string;
 
-        // Constructors of GstWebRTC.WebRTCICECandidateStats
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -1251,7 +1251,7 @@ export namespace GstWebRTC {
         );
         _init(...args: any[]): void;
 
-        // Own methods of GstWebRTC.WebRTCICECandidateStats
+        // Methods
 
         copy(): WebRTCICECandidateStats;
         /**
@@ -1273,19 +1273,19 @@ export namespace GstWebRTC {
     class WebRTCSessionDescription {
         static $gtype: GObject.GType<WebRTCSessionDescription>;
 
-        // Own fields of GstWebRTC.WebRTCSessionDescription
+        // Fields
 
         type: WebRTCSDPType;
         sdp: GstSdp.SDPMessage;
 
-        // Constructors of GstWebRTC.WebRTCSessionDescription
+        // Constructors
 
         constructor(type: WebRTCSDPType, sdp: GstSdp.SDPMessage);
         _init(...args: any[]): void;
 
         static ['new'](type: WebRTCSDPType, sdp: GstSdp.SDPMessage): WebRTCSessionDescription;
 
-        // Own methods of GstWebRTC.WebRTCSessionDescription
+        // Methods
 
         copy(): WebRTCSessionDescription;
         /**

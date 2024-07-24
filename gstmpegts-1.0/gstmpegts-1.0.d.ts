@@ -760,7 +760,7 @@ export namespace GstMpegts {
     class SatelliteRolloff {
         static $gtype: GObject.GType<SatelliteRolloff>;
 
-        // Static fields of GstMpegts.SatelliteRolloff
+        // Static fields
 
         static '35': number;
         static '20': number;
@@ -768,7 +768,7 @@ export namespace GstMpegts {
         static RESERVED: number;
         static AUTO: number;
 
-        // Constructors of GstMpegts.SatelliteRolloff
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1536,7 +1536,7 @@ export namespace GstMpegts {
     class TerrestrialHierarchy {
         static $gtype: GObject.GType<TerrestrialHierarchy>;
 
-        // Static fields of GstMpegts.TerrestrialHierarchy
+        // Static fields
 
         static NONE: number;
         static '1': number;
@@ -1544,7 +1544,7 @@ export namespace GstMpegts {
         static '4': number;
         static AUTO: number;
 
-        // Constructors of GstMpegts.TerrestrialHierarchy
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1805,7 +1805,7 @@ export namespace GstMpegts {
     class RegistrationId {
         static $gtype: GObject.GType<RegistrationId>;
 
-        // Static fields of GstMpegts.RegistrationId
+        // Static fields
 
         /**
          * Undefined registration id
@@ -1882,7 +1882,7 @@ export namespace GstMpegts {
          */
         static OTHER_HEVC: number;
 
-        // Constructors of GstMpegts.RegistrationId
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1893,13 +1893,13 @@ export namespace GstMpegts {
     class AtscEIT {
         static $gtype: GObject.GType<AtscEIT>;
 
-        // Own fields of GstMpegts.AtscEIT
+        // Fields
 
         source_id: number;
         protocol_version: number;
         events: AtscEITEvent[];
 
-        // Constructors of GstMpegts.AtscEIT
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -1917,7 +1917,7 @@ export namespace GstMpegts {
     class AtscEITEvent {
         static $gtype: GObject.GType<AtscEITEvent>;
 
-        // Own fields of GstMpegts.AtscEITEvent
+        // Fields
 
         event_id: number;
         start_time: number;
@@ -1926,7 +1926,7 @@ export namespace GstMpegts {
         titles: AtscMultString[];
         descriptors: Descriptor[];
 
-        // Constructors of GstMpegts.AtscEITEvent
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -1947,14 +1947,14 @@ export namespace GstMpegts {
     class AtscETT {
         static $gtype: GObject.GType<AtscETT>;
 
-        // Own fields of GstMpegts.AtscETT
+        // Fields
 
         ett_table_id_extension: number;
         protocol_version: number;
         etm_id: number;
         messages: AtscMultString[];
 
-        // Constructors of GstMpegts.AtscETT
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -1973,14 +1973,14 @@ export namespace GstMpegts {
     class AtscMGT {
         static $gtype: GObject.GType<AtscMGT>;
 
-        // Own fields of GstMpegts.AtscMGT
+        // Fields
 
         protocol_version: number;
         tables_defined: number;
         tables: AtscMGTTable[];
         descriptors: Descriptor[];
 
-        // Constructors of GstMpegts.AtscMGT
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -2001,7 +2001,7 @@ export namespace GstMpegts {
     class AtscMGTTable {
         static $gtype: GObject.GType<AtscMGTTable>;
 
-        // Own fields of GstMpegts.AtscMGTTable
+        // Fields
 
         table_type: number;
         pid: number;
@@ -2009,7 +2009,7 @@ export namespace GstMpegts {
         number_bytes: number;
         descriptors: Descriptor[];
 
-        // Constructors of GstMpegts.AtscMGTTable
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -2026,12 +2026,12 @@ export namespace GstMpegts {
     class AtscMultString {
         static $gtype: GObject.GType<AtscMultString>;
 
-        // Own fields of GstMpegts.AtscMultString
+        // Fields
 
         iso_639_langcode: number[];
         segments: AtscStringSegment[];
 
-        // Constructors of GstMpegts.AtscMultString
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -2048,7 +2048,7 @@ export namespace GstMpegts {
     class AtscRRT {
         static $gtype: GObject.GType<AtscRRT>;
 
-        // Own fields of GstMpegts.AtscRRT
+        // Fields
 
         protocol_version: number;
         names: AtscMultString[];
@@ -2056,7 +2056,7 @@ export namespace GstMpegts {
         dimensions: AtscRRTDimension[];
         descriptors: any[];
 
-        // Constructors of GstMpegts.AtscRRT
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -2075,14 +2075,14 @@ export namespace GstMpegts {
     class AtscRRTDimension {
         static $gtype: GObject.GType<AtscRRTDimension>;
 
-        // Own fields of GstMpegts.AtscRRTDimension
+        // Fields
 
         names: AtscMultString[];
         graduated_scale: boolean;
         values_defined: number;
         values: AtscRRTDimensionValue[];
 
-        // Constructors of GstMpegts.AtscRRTDimension
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -2100,12 +2100,12 @@ export namespace GstMpegts {
     class AtscRRTDimensionValue {
         static $gtype: GObject.GType<AtscRRTDimensionValue>;
 
-        // Own fields of GstMpegts.AtscRRTDimensionValue
+        // Fields
 
         abbrev_ratings: AtscMultString[];
         ratings: AtscMultString[];
 
-        // Constructors of GstMpegts.AtscRRTDimensionValue
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -2124,7 +2124,7 @@ export namespace GstMpegts {
     class AtscSTT {
         static $gtype: GObject.GType<AtscSTT>;
 
-        // Own fields of GstMpegts.AtscSTT
+        // Fields
 
         protocol_version: number;
         system_time: number;
@@ -2134,7 +2134,7 @@ export namespace GstMpegts {
         ds_hour: number;
         descriptors: Descriptor[];
 
-        // Constructors of GstMpegts.AtscSTT
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -2151,7 +2151,7 @@ export namespace GstMpegts {
 
         static ['new'](): AtscSTT;
 
-        // Own methods of GstMpegts.AtscSTT
+        // Methods
 
         get_datetime_utc(): Gst.DateTime;
     }
@@ -2162,7 +2162,7 @@ export namespace GstMpegts {
     class AtscStringSegment {
         static $gtype: GObject.GType<AtscStringSegment>;
 
-        // Own fields of GstMpegts.AtscStringSegment
+        // Fields
 
         compression_type: number;
         mode: number;
@@ -2170,7 +2170,7 @@ export namespace GstMpegts {
         compressed_data: number;
         cached_string: string;
 
-        // Constructors of GstMpegts.AtscStringSegment
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -2183,7 +2183,7 @@ export namespace GstMpegts {
         );
         _init(...args: any[]): void;
 
-        // Own methods of GstMpegts.AtscStringSegment
+        // Methods
 
         get_string(): string;
         set_string(string: string, compression_type: number, mode: number): boolean;
@@ -2197,14 +2197,14 @@ export namespace GstMpegts {
     class AtscVCT {
         static $gtype: GObject.GType<AtscVCT>;
 
-        // Own fields of GstMpegts.AtscVCT
+        // Fields
 
         transport_stream_id: number;
         protocol_version: number;
         sources: AtscVCTSource[];
         descriptors: Descriptor[];
 
-        // Constructors of GstMpegts.AtscVCT
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -2223,7 +2223,7 @@ export namespace GstMpegts {
     class AtscVCTSource {
         static $gtype: GObject.GType<AtscVCTSource>;
 
-        // Own fields of GstMpegts.AtscVCTSource
+        // Fields
 
         short_name: string;
         major_channel_number: number;
@@ -2242,7 +2242,7 @@ export namespace GstMpegts {
         source_id: number;
         descriptors: Descriptor[];
 
-        // Constructors of GstMpegts.AtscVCTSource
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -2273,7 +2273,7 @@ export namespace GstMpegts {
     class AudioPreselectionDescriptor {
         static $gtype: GObject.GType<AudioPreselectionDescriptor>;
 
-        // Own fields of GstMpegts.AudioPreselectionDescriptor
+        // Fields
 
         preselection_id: number;
         audio_rendering_indication: number;
@@ -2288,7 +2288,7 @@ export namespace GstMpegts {
         language_code: string;
         message_id: number;
 
-        // Constructors of GstMpegts.AudioPreselectionDescriptor
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -2315,12 +2315,12 @@ export namespace GstMpegts {
     class BAT {
         static $gtype: GObject.GType<BAT>;
 
-        // Own fields of GstMpegts.BAT
+        // Fields
 
         descriptors: Descriptor[];
         streams: BATStream[];
 
-        // Constructors of GstMpegts.BAT
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -2334,13 +2334,13 @@ export namespace GstMpegts {
     class BATStream {
         static $gtype: GObject.GType<BATStream>;
 
-        // Own fields of GstMpegts.BATStream
+        // Fields
 
         transport_stream_id: number;
         original_network_id: number;
         descriptors: any[];
 
-        // Constructors of GstMpegts.BATStream
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -2358,7 +2358,7 @@ export namespace GstMpegts {
     class CableDeliverySystemDescriptor {
         static $gtype: GObject.GType<CableDeliverySystemDescriptor>;
 
-        // Own fields of GstMpegts.CableDeliverySystemDescriptor
+        // Fields
 
         frequency: number;
         outer_fec: CableOuterFECScheme;
@@ -2366,11 +2366,11 @@ export namespace GstMpegts {
         symbol_rate: number;
         fec_inner: DVBCodeRate;
 
-        // Constructors of GstMpegts.CableDeliverySystemDescriptor
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of GstMpegts.CableDeliverySystemDescriptor
+        // Methods
 
         free(): void;
     }
@@ -2378,7 +2378,7 @@ export namespace GstMpegts {
     class ComponentDescriptor {
         static $gtype: GObject.GType<ComponentDescriptor>;
 
-        // Own fields of GstMpegts.ComponentDescriptor
+        // Fields
 
         stream_content: number;
         component_type: number;
@@ -2386,7 +2386,7 @@ export namespace GstMpegts {
         language_code: string;
         text: string;
 
-        // Constructors of GstMpegts.ComponentDescriptor
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -2403,13 +2403,13 @@ export namespace GstMpegts {
     class Content {
         static $gtype: GObject.GType<Content>;
 
-        // Own fields of GstMpegts.Content
+        // Fields
 
         content_nibble_1: ContentNibbleHi;
         content_nibble_2: number;
         user_byte: number;
 
-        // Constructors of GstMpegts.Content
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2417,7 +2417,7 @@ export namespace GstMpegts {
     class DVBLinkageDescriptor {
         static $gtype: GObject.GType<DVBLinkageDescriptor>;
 
-        // Own fields of GstMpegts.DVBLinkageDescriptor
+        // Fields
 
         transport_stream_id: number;
         original_network_id: number;
@@ -2426,11 +2426,11 @@ export namespace GstMpegts {
         private_data_length: number;
         private_data_bytes: number;
 
-        // Constructors of GstMpegts.DVBLinkageDescriptor
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of GstMpegts.DVBLinkageDescriptor
+        // Methods
 
         free(): void;
         get_event(): DVBLinkageEvent;
@@ -2441,13 +2441,13 @@ export namespace GstMpegts {
     class DVBLinkageEvent {
         static $gtype: GObject.GType<DVBLinkageEvent>;
 
-        // Own fields of GstMpegts.DVBLinkageEvent
+        // Fields
 
         target_event_id: number;
         target_listed: boolean;
         event_simulcast: boolean;
 
-        // Constructors of GstMpegts.DVBLinkageEvent
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -2462,7 +2462,7 @@ export namespace GstMpegts {
     class DVBLinkageExtendedEvent {
         static $gtype: GObject.GType<DVBLinkageExtendedEvent>;
 
-        // Own fields of GstMpegts.DVBLinkageExtendedEvent
+        // Fields
 
         target_event_id: number;
         target_listed: boolean;
@@ -2476,7 +2476,7 @@ export namespace GstMpegts {
         target_original_network_id: number;
         target_service_id: number;
 
-        // Constructors of GstMpegts.DVBLinkageExtendedEvent
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -2499,14 +2499,14 @@ export namespace GstMpegts {
     class DVBLinkageMobileHandOver {
         static $gtype: GObject.GType<DVBLinkageMobileHandOver>;
 
-        // Own fields of GstMpegts.DVBLinkageMobileHandOver
+        // Fields
 
         hand_over_type: DVBLinkageHandOverType;
         origin_type: boolean;
         network_id: number;
         initial_service_id: number;
 
-        // Constructors of GstMpegts.DVBLinkageMobileHandOver
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2514,12 +2514,12 @@ export namespace GstMpegts {
     class DVBParentalRatingItem {
         static $gtype: GObject.GType<DVBParentalRatingItem>;
 
-        // Own fields of GstMpegts.DVBParentalRatingItem
+        // Fields
 
         country_code: string;
         rating: number;
 
-        // Constructors of GstMpegts.DVBParentalRatingItem
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -2533,12 +2533,12 @@ export namespace GstMpegts {
     class DVBServiceListItem {
         static $gtype: GObject.GType<DVBServiceListItem>;
 
-        // Own fields of GstMpegts.DVBServiceListItem
+        // Fields
 
         service_id: number;
         type: DVBServiceType;
 
-        // Constructors of GstMpegts.DVBServiceListItem
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2546,7 +2546,7 @@ export namespace GstMpegts {
     class DataBroadcastDescriptor {
         static $gtype: GObject.GType<DataBroadcastDescriptor>;
 
-        // Own fields of GstMpegts.DataBroadcastDescriptor
+        // Fields
 
         data_broadcast_id: number;
         component_tag: number;
@@ -2555,7 +2555,7 @@ export namespace GstMpegts {
         language_code: string;
         text: string;
 
-        // Constructors of GstMpegts.DataBroadcastDescriptor
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -2569,7 +2569,7 @@ export namespace GstMpegts {
         );
         _init(...args: any[]): void;
 
-        // Own methods of GstMpegts.DataBroadcastDescriptor
+        // Methods
 
         free(): void;
     }
@@ -2583,14 +2583,14 @@ export namespace GstMpegts {
     class Descriptor {
         static $gtype: GObject.GType<Descriptor>;
 
-        // Own fields of GstMpegts.Descriptor
+        // Fields
 
         tag: number;
         tag_extension: number;
         length: number;
         data: number;
 
-        // Constructors of GstMpegts.Descriptor
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -2602,7 +2602,7 @@ export namespace GstMpegts {
         );
         _init(...args: any[]): void;
 
-        // Own static methods of GstMpegts.Descriptor
+        // Static methods
 
         /**
          * Creates a #GstMpegtsDescriptor with custom `tag` and `data`
@@ -2653,7 +2653,7 @@ export namespace GstMpegts {
         static parse_audio_preselection_dump(source: AudioPreselectionDescriptor): void;
         static parse_audio_preselection_free(source: AudioPreselectionDescriptor): void;
 
-        // Own methods of GstMpegts.Descriptor
+        // Methods
 
         /**
          * Frees `desc`
@@ -2879,12 +2879,12 @@ export namespace GstMpegts {
     class DvbMultilingualBouquetNameItem {
         static $gtype: GObject.GType<DvbMultilingualBouquetNameItem>;
 
-        // Own fields of GstMpegts.DvbMultilingualBouquetNameItem
+        // Fields
 
         language_code: string;
         bouquet_name: string;
 
-        // Constructors of GstMpegts.DvbMultilingualBouquetNameItem
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -2898,12 +2898,12 @@ export namespace GstMpegts {
     class DvbMultilingualComponentItem {
         static $gtype: GObject.GType<DvbMultilingualComponentItem>;
 
-        // Own fields of GstMpegts.DvbMultilingualComponentItem
+        // Fields
 
         language_code: string;
         description: string;
 
-        // Constructors of GstMpegts.DvbMultilingualComponentItem
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -2920,12 +2920,12 @@ export namespace GstMpegts {
     class DvbMultilingualNetworkNameItem {
         static $gtype: GObject.GType<DvbMultilingualNetworkNameItem>;
 
-        // Own fields of GstMpegts.DvbMultilingualNetworkNameItem
+        // Fields
 
         language_code: string;
         network_name: string;
 
-        // Constructors of GstMpegts.DvbMultilingualNetworkNameItem
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -2942,13 +2942,13 @@ export namespace GstMpegts {
     class DvbMultilingualServiceNameItem {
         static $gtype: GObject.GType<DvbMultilingualServiceNameItem>;
 
-        // Own fields of GstMpegts.DvbMultilingualServiceNameItem
+        // Fields
 
         language_code: string;
         provider_name: string;
         service_name: string;
 
-        // Constructors of GstMpegts.DvbMultilingualServiceNameItem
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -2966,7 +2966,7 @@ export namespace GstMpegts {
     class EIT {
         static $gtype: GObject.GType<EIT>;
 
-        // Own fields of GstMpegts.EIT
+        // Fields
 
         transport_stream_id: number;
         original_network_id: number;
@@ -2975,7 +2975,7 @@ export namespace GstMpegts {
         actual_stream: boolean;
         present_following: boolean;
 
-        // Constructors of GstMpegts.EIT
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2986,7 +2986,7 @@ export namespace GstMpegts {
     class EITEvent {
         static $gtype: GObject.GType<EITEvent>;
 
-        // Own fields of GstMpegts.EITEvent
+        // Fields
 
         event_id: number;
         duration: number;
@@ -2994,7 +2994,7 @@ export namespace GstMpegts {
         free_CA_mode: boolean;
         descriptors: Descriptor[];
 
-        // Constructors of GstMpegts.EITEvent
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3005,7 +3005,7 @@ export namespace GstMpegts {
     class ExtendedEventDescriptor {
         static $gtype: GObject.GType<ExtendedEventDescriptor>;
 
-        // Own fields of GstMpegts.ExtendedEventDescriptor
+        // Fields
 
         descriptor_number: number;
         last_descriptor_number: number;
@@ -3013,7 +3013,7 @@ export namespace GstMpegts {
         items: ExtendedEventItem[];
         text: string;
 
-        // Constructors of GstMpegts.ExtendedEventDescriptor
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -3026,7 +3026,7 @@ export namespace GstMpegts {
         );
         _init(...args: any[]): void;
 
-        // Own methods of GstMpegts.ExtendedEventDescriptor
+        // Methods
 
         free(): void;
     }
@@ -3034,12 +3034,12 @@ export namespace GstMpegts {
     class ExtendedEventItem {
         static $gtype: GObject.GType<ExtendedEventItem>;
 
-        // Own fields of GstMpegts.ExtendedEventItem
+        // Fields
 
         item_description: string;
         item: string;
 
-        // Constructors of GstMpegts.ExtendedEventItem
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -3053,17 +3053,17 @@ export namespace GstMpegts {
     class ISO639LanguageDescriptor {
         static $gtype: GObject.GType<ISO639LanguageDescriptor>;
 
-        // Own fields of GstMpegts.ISO639LanguageDescriptor
+        // Fields
 
         nb_language: number;
         language: string[];
         audio_type: Iso639AudioType[];
 
-        // Constructors of GstMpegts.ISO639LanguageDescriptor
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of GstMpegts.ISO639LanguageDescriptor
+        // Methods
 
         descriptor_free(): void;
     }
@@ -3071,13 +3071,13 @@ export namespace GstMpegts {
     class LogicalChannel {
         static $gtype: GObject.GType<LogicalChannel>;
 
-        // Own fields of GstMpegts.LogicalChannel
+        // Fields
 
         service_id: number;
         visible_service: boolean;
         logical_channel_number: number;
 
-        // Constructors of GstMpegts.LogicalChannel
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -3092,12 +3092,12 @@ export namespace GstMpegts {
     class LogicalChannelDescriptor {
         static $gtype: GObject.GType<LogicalChannelDescriptor>;
 
-        // Own fields of GstMpegts.LogicalChannelDescriptor
+        // Fields
 
         nb_channels: number;
         channels: LogicalChannel[];
 
-        // Constructors of GstMpegts.LogicalChannelDescriptor
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -3119,7 +3119,7 @@ export namespace GstMpegts {
     class MetadataDescriptor {
         static $gtype: GObject.GType<MetadataDescriptor>;
 
-        // Own fields of GstMpegts.MetadataDescriptor
+        // Fields
 
         metadata_application_format: number;
         metadata_format: MetadataFormat;
@@ -3128,7 +3128,7 @@ export namespace GstMpegts {
         decoder_config_flags: number;
         dsm_cc_flag: boolean;
 
-        // Constructors of GstMpegts.MetadataDescriptor
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3139,14 +3139,14 @@ export namespace GstMpegts {
     class NIT {
         static $gtype: GObject.GType<NIT>;
 
-        // Own fields of GstMpegts.NIT
+        // Fields
 
         actual_network: boolean;
         network_id: number;
         descriptors: Descriptor[];
         streams: NITStream[];
 
-        // Constructors of GstMpegts.NIT
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -3164,13 +3164,13 @@ export namespace GstMpegts {
     class NITStream {
         static $gtype: GObject.GType<NITStream>;
 
-        // Own fields of GstMpegts.NITStream
+        // Fields
 
         transport_stream_id: number;
         original_network_id: number;
         descriptors: Descriptor[];
 
-        // Constructors of GstMpegts.NITStream
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -3194,16 +3194,16 @@ export namespace GstMpegts {
     class PESMetadataMeta {
         static $gtype: GObject.GType<PESMetadataMeta>;
 
-        // Own fields of GstMpegts.PESMetadataMeta
+        // Fields
 
         metadata_service_id: number;
         flags: number;
 
-        // Constructors of GstMpegts.PESMetadataMeta
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own static methods of GstMpegts.PESMetadataMeta
+        // Static methods
 
         /**
          * Gets the global #GstMetaInfo describing the #GstMpegtsPESMetadataMeta meta.
@@ -3221,14 +3221,14 @@ export namespace GstMpegts {
     class PMT {
         static $gtype: GObject.GType<PMT>;
 
-        // Own fields of GstMpegts.PMT
+        // Fields
 
         pcr_pid: number;
         program_number: number;
         descriptors: Descriptor[];
         streams: PMTStream[];
 
-        // Constructors of GstMpegts.PMT
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -3249,13 +3249,13 @@ export namespace GstMpegts {
     class PMTStream {
         static $gtype: GObject.GType<PMTStream>;
 
-        // Own fields of GstMpegts.PMTStream
+        // Fields
 
         stream_type: number;
         pid: number;
         descriptors: Descriptor[];
 
-        // Constructors of GstMpegts.PMTStream
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -3275,12 +3275,12 @@ export namespace GstMpegts {
     class PatProgram {
         static $gtype: GObject.GType<PatProgram>;
 
-        // Own fields of GstMpegts.PatProgram
+        // Fields
 
         program_number: number;
         network_or_program_map_PID: number;
 
-        // Constructors of GstMpegts.PatProgram
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -3296,7 +3296,7 @@ export namespace GstMpegts {
     class SCTESIT {
         static $gtype: GObject.GType<SCTESIT>;
 
-        // Own fields of GstMpegts.SCTESIT
+        // Fields
 
         encrypted_packet: boolean;
         encryption_algorithm: number;
@@ -3312,7 +3312,7 @@ export namespace GstMpegts {
         fully_parsed: boolean;
         is_running_time: boolean;
 
-        // Constructors of GstMpegts.SCTESIT
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -3342,14 +3342,14 @@ export namespace GstMpegts {
     class SCTESpliceComponent {
         static $gtype: GObject.GType<SCTESpliceComponent>;
 
-        // Own fields of GstMpegts.SCTESpliceComponent
+        // Fields
 
         tag: number;
         splice_time_specified: boolean;
         splice_time: number;
         utc_splice_time: number;
 
-        // Constructors of GstMpegts.SCTESpliceComponent
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -3367,7 +3367,7 @@ export namespace GstMpegts {
     class SCTESpliceEvent {
         static $gtype: GObject.GType<SCTESpliceEvent>;
 
-        // Own fields of GstMpegts.SCTESpliceEvent
+        // Fields
 
         insert_event: boolean;
         splice_event_id: number;
@@ -3386,7 +3386,7 @@ export namespace GstMpegts {
         avail_num: number;
         avails_expected: number;
 
-        // Constructors of GstMpegts.SCTESpliceEvent
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -3419,13 +3419,13 @@ export namespace GstMpegts {
     class SDT {
         static $gtype: GObject.GType<SDT>;
 
-        // Own fields of GstMpegts.SDT
+        // Fields
 
         original_network_id: number;
         actual_ts: boolean;
         transport_stream_id: number;
 
-        // Constructors of GstMpegts.SDT
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -3443,7 +3443,7 @@ export namespace GstMpegts {
     class SDTService {
         static $gtype: GObject.GType<SDTService>;
 
-        // Own fields of GstMpegts.SDTService
+        // Fields
 
         service_id: number;
         EIT_schedule_flag: boolean;
@@ -3452,7 +3452,7 @@ export namespace GstMpegts {
         free_CA_mode: boolean;
         descriptors: Descriptor[];
 
-        // Constructors of GstMpegts.SDTService
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -3475,11 +3475,11 @@ export namespace GstMpegts {
     class SIT {
         static $gtype: GObject.GType<SIT>;
 
-        // Own fields of GstMpegts.SIT
+        // Fields
 
         descriptors: Descriptor[];
 
-        // Constructors of GstMpegts.SIT
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3490,13 +3490,13 @@ export namespace GstMpegts {
     class SITService {
         static $gtype: GObject.GType<SITService>;
 
-        // Own fields of GstMpegts.SITService
+        // Fields
 
         service_id: number;
         running_status: RunningStatus;
         descriptors: Descriptor[];
 
-        // Constructors of GstMpegts.SITService
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3507,7 +3507,7 @@ export namespace GstMpegts {
     class SatelliteDeliverySystemDescriptor {
         static $gtype: GObject.GType<SatelliteDeliverySystemDescriptor>;
 
-        // Own fields of GstMpegts.SatelliteDeliverySystemDescriptor
+        // Fields
 
         frequency: number;
         orbital_position: number;
@@ -3519,7 +3519,7 @@ export namespace GstMpegts {
         symbol_rate: number;
         fec_inner: DVBCodeRate;
 
-        // Constructors of GstMpegts.SatelliteDeliverySystemDescriptor
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3573,7 +3573,7 @@ export namespace GstMpegts {
     class Section {
         static $gtype: GObject.GType<Section>;
 
-        // Own fields of GstMpegts.Section
+        // Fields
 
         section_type: SectionType;
         pid: number;
@@ -3585,14 +3585,14 @@ export namespace GstMpegts {
         last_section_number: number;
         crc: number;
 
-        // Constructors of GstMpegts.Section
+        // Constructors
 
         constructor(pid: number, data: Uint8Array | string);
         _init(...args: any[]): void;
 
         static ['new'](pid: number, data: Uint8Array | string): Section;
 
-        // Own static methods of GstMpegts.Section
+        // Static methods
 
         static from_atsc_mgt(mgt: AtscMGT): Section;
         static from_atsc_rrt(rrt: AtscRRT): Section;
@@ -3626,7 +3626,7 @@ export namespace GstMpegts {
          */
         static from_sdt(sdt: SDT): Section;
 
-        // Own methods of GstMpegts.Section
+        // Methods
 
         /**
          * Returns the #GstMpegtsAtscVCT contained in the `section`
@@ -3757,13 +3757,13 @@ export namespace GstMpegts {
     class T2DeliverySystemCell {
         static $gtype: GObject.GType<T2DeliverySystemCell>;
 
-        // Own fields of GstMpegts.T2DeliverySystemCell
+        // Fields
 
         cell_id: number;
         centre_frequencies: number[];
         sub_cells: T2DeliverySystemCellExtension[];
 
-        // Constructors of GstMpegts.T2DeliverySystemCell
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -3778,12 +3778,12 @@ export namespace GstMpegts {
     class T2DeliverySystemCellExtension {
         static $gtype: GObject.GType<T2DeliverySystemCellExtension>;
 
-        // Own fields of GstMpegts.T2DeliverySystemCellExtension
+        // Fields
 
         cell_id_extension: number;
         transposer_frequency: number;
 
-        // Constructors of GstMpegts.T2DeliverySystemCellExtension
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -3800,7 +3800,7 @@ export namespace GstMpegts {
     class T2DeliverySystemDescriptor {
         static $gtype: GObject.GType<T2DeliverySystemDescriptor>;
 
-        // Own fields of GstMpegts.T2DeliverySystemDescriptor
+        // Fields
 
         plp_id: number;
         t2_system_id: number;
@@ -3812,11 +3812,11 @@ export namespace GstMpegts {
         tfs: boolean;
         cells: T2DeliverySystemCell[];
 
-        // Constructors of GstMpegts.T2DeliverySystemDescriptor
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of GstMpegts.T2DeliverySystemDescriptor
+        // Methods
 
         free(): void;
     }
@@ -3827,11 +3827,11 @@ export namespace GstMpegts {
     class TOT {
         static $gtype: GObject.GType<TOT>;
 
-        // Own fields of GstMpegts.TOT
+        // Fields
 
         descriptors: Descriptor[];
 
-        // Constructors of GstMpegts.TOT
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3842,7 +3842,7 @@ export namespace GstMpegts {
     class TerrestrialDeliverySystemDescriptor {
         static $gtype: GObject.GType<TerrestrialDeliverySystemDescriptor>;
 
-        // Own fields of GstMpegts.TerrestrialDeliverySystemDescriptor
+        // Fields
 
         frequency: number;
         bandwidth: number;
@@ -3857,7 +3857,7 @@ export namespace GstMpegts {
         transmission_mode: TerrestrialTransmissionMode;
         other_frequency: boolean;
 
-        // Constructors of GstMpegts.TerrestrialDeliverySystemDescriptor
+        // Constructors
 
         _init(...args: any[]): void;
     }

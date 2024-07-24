@@ -137,14 +137,14 @@ export namespace GstAllocators {
     class DRMDumbAllocator extends Gst.Allocator {
         static $gtype: GObject.GType<DRMDumbAllocator>;
 
-        // Own properties of GstAllocators.DRMDumbAllocator
+        // Properties
 
         get drm_device_path(): string;
         get drmDevicePath(): string;
         get drm_fd(): number;
         get drmFd(): number;
 
-        // Constructors of GstAllocators.DRMDumbAllocator
+        // Constructors
 
         constructor(properties?: Partial<DRMDumbAllocator.ConstructorProps>, ...args: any[]);
 
@@ -154,7 +154,7 @@ export namespace GstAllocators {
 
         static new_with_fd(drm_fd: number): DRMDumbAllocator;
 
-        // Own methods of GstAllocators.DRMDumbAllocator
+        // Methods
 
         /**
          * Allocated a DRM buffer object for the specific `drm_fourcc,` `width` and
@@ -188,7 +188,7 @@ export namespace GstAllocators {
     class DmaBufAllocator extends FdAllocator {
         static $gtype: GObject.GType<DmaBufAllocator>;
 
-        // Constructors of GstAllocators.DmaBufAllocator
+        // Constructors
 
         constructor(properties?: Partial<DmaBufAllocator.ConstructorProps>, ...args: any[]);
 
@@ -196,7 +196,7 @@ export namespace GstAllocators {
 
         static ['new'](): DmaBufAllocator;
 
-        // Own static methods of GstAllocators.DmaBufAllocator
+        // Static methods
 
         /**
          * Return a %GstMemory that wraps a dmabuf file descriptor.
@@ -232,7 +232,7 @@ export namespace GstAllocators {
     class FdAllocator extends Gst.Allocator {
         static $gtype: GObject.GType<FdAllocator>;
 
-        // Constructors of GstAllocators.FdAllocator
+        // Constructors
 
         constructor(properties?: Partial<FdAllocator.ConstructorProps>, ...args: any[]);
 
@@ -240,7 +240,7 @@ export namespace GstAllocators {
 
         static ['new'](): FdAllocator;
 
-        // Own static methods of GstAllocators.FdAllocator
+        // Static methods
 
         /**
          * Return a %GstMemory that wraps a generic file descriptor.
@@ -267,7 +267,7 @@ export namespace GstAllocators {
         prototype: PhysMemoryAllocator;
     }
     interface PhysMemoryAllocator extends Gst.Allocator {
-        // Own virtual methods of GstAllocators.PhysMemoryAllocator
+        // Virtual methods
 
         vfunc_get_phys_addr(mem: Gst.Memory): never;
     }

@@ -32,14 +32,14 @@ export namespace Mtk {
     class Rectangle {
         static $gtype: GObject.GType<Rectangle>;
 
-        // Own fields of Mtk.Rectangle
+        // Fields
 
         x: number;
         y: number;
         width: number;
         height: number;
 
-        // Constructors of Mtk.Rectangle
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -53,11 +53,11 @@ export namespace Mtk {
 
         static ['new'](x: number, y: number, width: number, height: number): Rectangle;
 
-        // Own static methods of Mtk.Rectangle
+        // Static methods
 
         static from_graphene_rect(rect: Graphene.Rect, rounding_strategy: RoundingStrategy): Rectangle;
 
-        // Own methods of Mtk.Rectangle
+        // Methods
 
         area(): number;
         contains_rect(inner_rect: Rectangle): boolean;

@@ -355,7 +355,7 @@ export namespace GnomeAutoar {
     class Compressor extends GObject.Object {
         static $gtype: GObject.GType<Compressor>;
 
-        // Own properties of GnomeAutoar.Compressor
+        // Properties
 
         get completed_files(): number;
         get completedFiles(): number;
@@ -380,7 +380,7 @@ export namespace GnomeAutoar {
         get source_files(): any;
         get sourceFiles(): any;
 
-        // Constructors of GnomeAutoar.Compressor
+        // Constructors
 
         constructor(properties?: Partial<Compressor.ConstructorProps>, ...args: any[]);
 
@@ -394,7 +394,7 @@ export namespace GnomeAutoar {
             create_top_level_directory: boolean,
         ): Compressor;
 
-        // Own signals of GnomeAutoar.Compressor
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -421,14 +421,14 @@ export namespace GnomeAutoar {
         ): number;
         emit(signal: 'progress', completed_size: number, completed_files: number): void;
 
-        // Own static methods of GnomeAutoar.Compressor
+        // Static methods
 
         /**
          * Gets the #AutoarCompressor Error Quark.
          */
         static quark(): GLib.Quark;
 
-        // Own methods of GnomeAutoar.Compressor
+        // Methods
 
         /**
          * Gets the number of files has been read
@@ -597,7 +597,7 @@ export namespace GnomeAutoar {
     class Extractor extends GObject.Object {
         static $gtype: GObject.GType<Extractor>;
 
-        // Own properties of GnomeAutoar.Extractor
+        // Properties
 
         get completed_files(): number;
         get completedFiles(): number;
@@ -624,7 +624,7 @@ export namespace GnomeAutoar {
         get total_size(): number;
         get totalSize(): number;
 
-        // Constructors of GnomeAutoar.Extractor
+        // Constructors
 
         constructor(properties?: Partial<Extractor.ConstructorProps>, ...args: any[]);
 
@@ -632,7 +632,7 @@ export namespace GnomeAutoar {
 
         static ['new'](source_file: Gio.File, output_file: Gio.File): Extractor;
 
-        // Own signals of GnomeAutoar.Extractor
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -677,14 +677,14 @@ export namespace GnomeAutoar {
         connect_after(signal: 'scanned', callback: (_source: this, files: number) => void): number;
         emit(signal: 'scanned', files: number): void;
 
-        // Own static methods of GnomeAutoar.Extractor
+        // Static methods
 
         /**
          * Gets the #AutoarExtractor Error Quark.
          */
         static quark(): GLib.Quark;
 
-        // Own methods of GnomeAutoar.Extractor
+        // Methods
 
         /**
          * Gets the number of files has been written to disk.

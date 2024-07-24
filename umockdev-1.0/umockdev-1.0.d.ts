@@ -19,12 +19,12 @@ export namespace UMockdev {
     class Error extends GLib.Error {
         static $gtype: GObject.GType<Error>;
 
-        // Static fields of UMockdev.Error
+        // Static fields
 
         static PARSE: number;
         static VALUE: number;
 
-        // Constructors of UMockdev.Error
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
@@ -40,7 +40,7 @@ export namespace UMockdev {
     class Testbed extends GObject.Object {
         static $gtype: GObject.GType<Testbed>;
 
-        // Constructors of UMockdev.Testbed
+        // Constructors
 
         constructor(properties?: Partial<Testbed.ConstructorProps>, ...args: any[]);
 
@@ -48,7 +48,7 @@ export namespace UMockdev {
 
         static ['new'](): Testbed;
 
-        // Own methods of UMockdev.Testbed
+        // Methods
 
         get_root_dir(): string;
         get_sys_dir(): string;
@@ -98,19 +98,19 @@ export namespace UMockdev {
     class IoctlData extends GObject.Object {
         static $gtype: GObject.GType<IoctlData>;
 
-        // Own fields of UMockdev.IoctlData
+        // Fields
 
         data: Uint8Array;
         data_length1: number;
         client_addr: number;
 
-        // Constructors of UMockdev.IoctlData
+        // Constructors
 
         constructor(properties?: Partial<IoctlData.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of UMockdev.IoctlData
+        // Methods
 
         compat_ref(): IoctlData | null;
         compat_unref(): void;
@@ -135,20 +135,20 @@ export namespace UMockdev {
     class IoctlClient extends GObject.Object {
         static $gtype: GObject.GType<IoctlClient>;
 
-        // Own properties of UMockdev.IoctlClient
+        // Properties
 
         get devnode(): string;
         get request(): number;
         get arg(): IoctlData;
         get connected(): boolean;
 
-        // Constructors of UMockdev.IoctlClient
+        // Constructors
 
         constructor(properties?: Partial<IoctlClient.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of UMockdev.IoctlClient
+        // Methods
 
         get_devnode(): string;
         get_request(): number;
@@ -178,7 +178,7 @@ export namespace UMockdev {
     class IoctlBase extends GObject.Object {
         static $gtype: GObject.GType<IoctlBase>;
 
-        // Constructors of UMockdev.IoctlBase
+        // Constructors
 
         constructor(properties?: Partial<IoctlBase.ConstructorProps>, ...args: any[]);
 
@@ -186,7 +186,7 @@ export namespace UMockdev {
 
         static ['new'](): IoctlBase;
 
-        // Own signals of UMockdev.IoctlBase
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -198,7 +198,7 @@ export namespace UMockdev {
         connect_after(signal: 'client-vanished', callback: (_source: this, client: IoctlClient) => void): number;
         emit(signal: 'client-vanished', client: IoctlClient): void;
 
-        // Own virtual methods of UMockdev.IoctlBase
+        // Virtual methods
 
         vfunc_handle_ioctl(client: IoctlClient): boolean;
         vfunc_handle_read(client: IoctlClient): boolean;
@@ -206,7 +206,7 @@ export namespace UMockdev {
         vfunc_client_connected(client: IoctlClient): void;
         vfunc_client_vanished(client: IoctlClient): void;
 
-        // Own methods of UMockdev.IoctlBase
+        // Methods
 
         handle_ioctl(client: IoctlClient): boolean;
         handle_read(client: IoctlClient): boolean;
@@ -217,7 +217,7 @@ export namespace UMockdev {
     abstract class TestbedPrivate {
         static $gtype: GObject.GType<TestbedPrivate>;
 
-        // Constructors of UMockdev.TestbedPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -226,7 +226,7 @@ export namespace UMockdev {
     abstract class IoctlDataPrivate {
         static $gtype: GObject.GType<IoctlDataPrivate>;
 
-        // Constructors of UMockdev.IoctlDataPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -235,7 +235,7 @@ export namespace UMockdev {
     abstract class IoctlClientPrivate {
         static $gtype: GObject.GType<IoctlClientPrivate>;
 
-        // Constructors of UMockdev.IoctlClientPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -244,7 +244,7 @@ export namespace UMockdev {
     abstract class IoctlBasePrivate {
         static $gtype: GObject.GType<IoctlBasePrivate>;
 
-        // Constructors of UMockdev.IoctlBasePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }

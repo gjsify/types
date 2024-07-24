@@ -321,7 +321,7 @@ export namespace WebKitWebProcessExtension {
     class ContextMenu extends GObject.Object {
         static $gtype: GObject.GType<ContextMenu>;
 
-        // Constructors of WebKitWebProcessExtension.ContextMenu
+        // Constructors
 
         constructor(properties?: Partial<ContextMenu.ConstructorProps>, ...args: any[]);
 
@@ -331,7 +331,7 @@ export namespace WebKitWebProcessExtension {
 
         static new_with_items(items: ContextMenuItem[]): ContextMenu;
 
-        // Own methods of WebKitWebProcessExtension.ContextMenu
+        // Methods
 
         /**
          * Adds `item` at the end of the `menu`.
@@ -458,7 +458,7 @@ export namespace WebKitWebProcessExtension {
     class ContextMenuItem extends GObject.InitiallyUnowned {
         static $gtype: GObject.GType<ContextMenuItem>;
 
-        // Constructors of WebKitWebProcessExtension.ContextMenuItem
+        // Constructors
 
         constructor(properties?: Partial<ContextMenuItem.ConstructorProps>, ...args: any[]);
 
@@ -474,7 +474,7 @@ export namespace WebKitWebProcessExtension {
 
         static new_with_submenu(label: string, submenu: ContextMenu): ContextMenuItem;
 
-        // Own methods of WebKitWebProcessExtension.ContextMenuItem
+        // Methods
 
         /**
          * Gets the action associated to `item` as a #GAction.
@@ -526,13 +526,13 @@ export namespace WebKitWebProcessExtension {
     class Frame extends GObject.Object {
         static $gtype: GObject.GType<Frame>;
 
-        // Constructors of WebKitWebProcessExtension.Frame
+        // Constructors
 
         constructor(properties?: Partial<Frame.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of WebKitWebProcessExtension.Frame
+        // Methods
 
         /**
          * Gets the process-unique identifier of this #WebKitFrame. No other
@@ -608,7 +608,7 @@ export namespace WebKitWebProcessExtension {
     class HitTestResult extends GObject.Object {
         static $gtype: GObject.GType<HitTestResult>;
 
-        // Own properties of WebKitWebProcessExtension.HitTestResult
+        // Properties
 
         /**
          * Bitmask of #WebKitHitTestResultContext flags representing
@@ -666,13 +666,13 @@ export namespace WebKitWebProcessExtension {
          */
         get mediaUri(): string;
 
-        // Constructors of WebKitWebProcessExtension.HitTestResult
+        // Constructors
 
         constructor(properties?: Partial<HitTestResult.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of WebKitWebProcessExtension.HitTestResult
+        // Methods
 
         /**
          * Gets whether %WEBKIT_HIT_TEST_RESULT_CONTEXT_EDITABLE flag is present in
@@ -757,7 +757,7 @@ export namespace WebKitWebProcessExtension {
     class ScriptWorld extends GObject.Object {
         static $gtype: GObject.GType<ScriptWorld>;
 
-        // Constructors of WebKitWebProcessExtension.ScriptWorld
+        // Constructors
 
         constructor(properties?: Partial<ScriptWorld.ConstructorProps>, ...args: any[]);
 
@@ -767,7 +767,7 @@ export namespace WebKitWebProcessExtension {
 
         static new_with_name(name: string): ScriptWorld;
 
-        // Own signals of WebKitWebProcessExtension.ScriptWorld
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -782,7 +782,7 @@ export namespace WebKitWebProcessExtension {
         ): number;
         emit(signal: 'window-object-cleared', page: WebPage, frame: Frame): void;
 
-        // Own static methods of WebKitWebProcessExtension.ScriptWorld
+        // Static methods
 
         /**
          * Get the default #WebKitScriptWorld. This is the normal script world
@@ -792,7 +792,7 @@ export namespace WebKitWebProcessExtension {
          */
         static get_default(): ScriptWorld;
 
-        // Own methods of WebKitWebProcessExtension.ScriptWorld
+        // Methods
 
         /**
          * Get the name of a #WebKitScriptWorld.
@@ -819,7 +819,7 @@ export namespace WebKitWebProcessExtension {
     class URIRequest extends GObject.Object {
         static $gtype: GObject.GType<URIRequest>;
 
-        // Own properties of WebKitWebProcessExtension.URIRequest
+        // Properties
 
         /**
          * The URI to which the request will be made.
@@ -827,7 +827,7 @@ export namespace WebKitWebProcessExtension {
         get uri(): string;
         set uri(val: string);
 
-        // Constructors of WebKitWebProcessExtension.URIRequest
+        // Constructors
 
         constructor(properties?: Partial<URIRequest.ConstructorProps>, ...args: any[]);
 
@@ -835,7 +835,7 @@ export namespace WebKitWebProcessExtension {
 
         static ['new'](uri: string): URIRequest;
 
-        // Own methods of WebKitWebProcessExtension.URIRequest
+        // Methods
 
         /**
          * Get the HTTP headers of a #WebKitURIRequest as a #SoupMessageHeaders.
@@ -887,7 +887,7 @@ export namespace WebKitWebProcessExtension {
     class URIResponse extends GObject.Object {
         static $gtype: GObject.GType<URIResponse>;
 
-        // Own properties of WebKitWebProcessExtension.URIResponse
+        // Properties
 
         /**
          * The expected content length of the response.
@@ -934,13 +934,13 @@ export namespace WebKitWebProcessExtension {
          */
         get uri(): string;
 
-        // Constructors of WebKitWebProcessExtension.URIResponse
+        // Constructors
 
         constructor(properties?: Partial<URIResponse.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of WebKitWebProcessExtension.URIResponse
+        // Methods
 
         /**
          * Get the expected content length of the #WebKitURIResponse.
@@ -1009,7 +1009,7 @@ export namespace WebKitWebProcessExtension {
     class UserMessage extends GObject.InitiallyUnowned {
         static $gtype: GObject.GType<UserMessage>;
 
-        // Own properties of WebKitWebProcessExtension.UserMessage
+        // Properties
 
         /**
          * The UNIX file descriptors of the user message.
@@ -1030,7 +1030,7 @@ export namespace WebKitWebProcessExtension {
          */
         get parameters(): GLib.Variant;
 
-        // Constructors of WebKitWebProcessExtension.UserMessage
+        // Constructors
 
         constructor(properties?: Partial<UserMessage.ConstructorProps>, ...args: any[]);
 
@@ -1044,14 +1044,14 @@ export namespace WebKitWebProcessExtension {
             fd_list?: Gio.UnixFDList | null,
         ): UserMessage;
 
-        // Own static methods of WebKitWebProcessExtension.UserMessage
+        // Static methods
 
         /**
          * Gets the quark for the domain of user message errors.
          */
         static error_quark(): GLib.Quark;
 
-        // Own methods of WebKitWebProcessExtension.UserMessage
+        // Methods
 
         /**
          * Get the `message` list of file descritpor.
@@ -1101,13 +1101,13 @@ export namespace WebKitWebProcessExtension {
     class WebEditor extends GObject.Object {
         static $gtype: GObject.GType<WebEditor>;
 
-        // Constructors of WebKitWebProcessExtension.WebEditor
+        // Constructors
 
         constructor(properties?: Partial<WebEditor.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of WebKitWebProcessExtension.WebEditor
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -1116,7 +1116,7 @@ export namespace WebKitWebProcessExtension {
         connect_after(signal: 'selection-changed', callback: (_source: this) => void): number;
         emit(signal: 'selection-changed'): void;
 
-        // Own methods of WebKitWebProcessExtension.WebEditor
+        // Methods
 
         /**
          * Gets the #WebKitWebPage that is associated with the #WebKitWebEditor.
@@ -1151,13 +1151,13 @@ export namespace WebKitWebProcessExtension {
     class WebFormManager extends GObject.Object {
         static $gtype: GObject.GType<WebFormManager>;
 
-        // Constructors of WebKitWebProcessExtension.WebFormManager
+        // Constructors
 
         constructor(properties?: Partial<WebFormManager.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of WebKitWebProcessExtension.WebFormManager
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -1195,7 +1195,7 @@ export namespace WebKitWebProcessExtension {
         ): number;
         emit(signal: 'will-submit-form', form: JavaScriptCore.Value, source_frame: Frame, target_frame: Frame): void;
 
-        // Own static methods of WebKitWebProcessExtension.WebFormManager
+        // Static methods
 
         /**
          * Set the value of an HTML input element as if it had been edited by
@@ -1232,13 +1232,13 @@ export namespace WebKitWebProcessExtension {
     class WebHitTestResult extends GObject.Object {
         static $gtype: GObject.GType<WebHitTestResult>;
 
-        // Constructors of WebKitWebProcessExtension.WebHitTestResult
+        // Constructors
 
         constructor(properties?: Partial<WebHitTestResult.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of WebKitWebProcessExtension.WebHitTestResult
+        // Methods
 
         /**
          * Check whether there is an editable element at the hit test position.
@@ -1358,20 +1358,20 @@ export namespace WebKitWebProcessExtension {
     class WebPage extends GObject.Object {
         static $gtype: GObject.GType<WebPage>;
 
-        // Own properties of WebKitWebProcessExtension.WebPage
+        // Properties
 
         /**
          * The current active URI of the #WebKitWebPage.
          */
         get uri(): string;
 
-        // Constructors of WebKitWebProcessExtension.WebPage
+        // Constructors
 
         constructor(properties?: Partial<WebPage.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of WebKitWebProcessExtension.WebPage
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -1404,7 +1404,7 @@ export namespace WebKitWebProcessExtension {
         ): number;
         emit(signal: 'user-message-received', message: UserMessage): void;
 
-        // Own methods of WebKitWebProcessExtension.WebPage
+        // Methods
 
         /**
          * Gets the #WebKitWebEditor of a #WebKitWebPage.
@@ -1550,13 +1550,13 @@ export namespace WebKitWebProcessExtension {
     class WebProcessExtension extends GObject.Object {
         static $gtype: GObject.GType<WebProcessExtension>;
 
-        // Constructors of WebKitWebProcessExtension.WebProcessExtension
+        // Constructors
 
         constructor(properties?: Partial<WebProcessExtension.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of WebKitWebProcessExtension.WebProcessExtension
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -1568,7 +1568,7 @@ export namespace WebKitWebProcessExtension {
         connect_after(signal: 'user-message-received', callback: (_source: this, message: UserMessage) => void): number;
         emit(signal: 'user-message-received', message: UserMessage): void;
 
-        // Own methods of WebKitWebProcessExtension.WebProcessExtension
+        // Methods
 
         /**
          * Get the web page of the given `page_id`.

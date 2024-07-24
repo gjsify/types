@@ -18,7 +18,7 @@ export namespace xrandr {
     class ScreenSize {
         static $gtype: GObject.GType<ScreenSize>;
 
-        // Constructors of xrandr.ScreenSize
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -26,7 +26,7 @@ export namespace xrandr {
     class ScreenChangeNotifyEvent {
         static $gtype: GObject.GType<ScreenChangeNotifyEvent>;
 
-        // Constructors of xrandr.ScreenChangeNotifyEvent
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -34,7 +34,7 @@ export namespace xrandr {
     class NotifyEvent {
         static $gtype: GObject.GType<NotifyEvent>;
 
-        // Constructors of xrandr.NotifyEvent
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -42,7 +42,7 @@ export namespace xrandr {
     class ScreenResources {
         static $gtype: GObject.GType<ScreenResources>;
 
-        // Constructors of xrandr.ScreenResources
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -50,7 +50,7 @@ export namespace xrandr {
     class OutputChangeNotifyEvent {
         static $gtype: GObject.GType<OutputChangeNotifyEvent>;
 
-        // Constructors of xrandr.OutputChangeNotifyEvent
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -58,7 +58,7 @@ export namespace xrandr {
     class CrtcChangeNotifyEvent {
         static $gtype: GObject.GType<CrtcChangeNotifyEvent>;
 
-        // Constructors of xrandr.CrtcChangeNotifyEvent
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -66,7 +66,7 @@ export namespace xrandr {
     class OutputPropertyNotifyEvent {
         static $gtype: GObject.GType<OutputPropertyNotifyEvent>;
 
-        // Constructors of xrandr.OutputPropertyNotifyEvent
+        // Constructors
 
         _init(...args: any[]): void;
     }

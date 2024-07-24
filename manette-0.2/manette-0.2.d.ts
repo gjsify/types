@@ -88,13 +88,13 @@ export namespace Manette {
     class Device extends GObject.Object {
         static $gtype: GObject.GType<Device>;
 
-        // Constructors of Manette.Device
+        // Constructors
 
         constructor(properties?: Partial<Device.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of Manette.Device
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -118,7 +118,7 @@ export namespace Manette {
         connect_after(signal: 'hat-axis-event', callback: (_source: this, event: Event) => void): number;
         emit(signal: 'hat-axis-event', event: Event): void;
 
-        // Own methods of Manette.Device
+        // Methods
 
         /**
          * Gets the device's name.
@@ -185,7 +185,7 @@ export namespace Manette {
     class Monitor extends GObject.Object {
         static $gtype: GObject.GType<Monitor>;
 
-        // Constructors of Manette.Monitor
+        // Constructors
 
         constructor(properties?: Partial<Monitor.ConstructorProps>, ...args: any[]);
 
@@ -193,7 +193,7 @@ export namespace Manette {
 
         static ['new'](): Monitor;
 
-        // Own signals of Manette.Monitor
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -205,7 +205,7 @@ export namespace Manette {
         connect_after(signal: 'device-disconnected', callback: (_source: this, device: Device) => void): number;
         emit(signal: 'device-disconnected', device: Device): void;
 
-        // Own methods of Manette.Monitor
+        // Methods
 
         /**
          * Creates a new #ManetteMonitorIter iterating on `self`.
@@ -219,11 +219,11 @@ export namespace Manette {
     abstract class MonitorIter {
         static $gtype: GObject.GType<MonitorIter>;
 
-        // Constructors of Manette.MonitorIter
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of Manette.MonitorIter
+        // Methods
 
         /**
          * Gets the next device from the device monitor iterator.
@@ -235,11 +235,11 @@ export namespace Manette {
     class Event {
         static $gtype: GObject.GType<Event>;
 
-        // Constructors of Manette.Event
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of Manette.Event
+        // Methods
 
         /**
          * Gets the axis of `self,` if any.

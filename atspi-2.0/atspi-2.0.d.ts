@@ -2385,7 +2385,7 @@ export namespace Atspi {
     {
         static $gtype: GObject.GType<Accessible>;
 
-        // Own fields of Atspi.Accessible
+        // Fields
 
         accessible_parent: Accessible;
         children: any[];
@@ -2396,13 +2396,13 @@ export namespace Atspi {
         states: StateSet;
         cached_properties: number;
 
-        // Constructors of Atspi.Accessible
+        // Constructors
 
         constructor(properties?: Partial<Accessible.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of Atspi.Accessible
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -2414,12 +2414,12 @@ export namespace Atspi {
         connect_after(signal: 'region-changed', callback: (_source: this, arg1: number, arg2: number) => void): number;
         emit(signal: 'region-changed', arg1: number, arg2: number): void;
 
-        // Own virtual methods of Atspi.Accessible
+        // Virtual methods
 
         vfunc_mode_changed(enabled: boolean): void;
         vfunc_region_changed(current_offset: number, last_offset: number): void;
 
-        // Own methods of Atspi.Accessible
+        // Methods
 
         /**
          * Clears the cached information for the given accessible and all of its
@@ -4048,7 +4048,7 @@ export namespace Atspi {
     class Application extends GObject.Object {
         static $gtype: GObject.GType<Application>;
 
-        // Own fields of Atspi.Application
+        // Fields
 
         bus_name: string;
         root: any;
@@ -4058,7 +4058,7 @@ export namespace Atspi {
         atspi_version: string;
         time_added: any;
 
-        // Constructors of Atspi.Application
+        // Constructors
 
         constructor(properties?: Partial<Application.ConstructorProps>, ...args: any[]);
 
@@ -4074,7 +4074,7 @@ export namespace Atspi {
     class Device extends GObject.Object {
         static $gtype: GObject.GType<Device>;
 
-        // Constructors of Atspi.Device
+        // Constructors
 
         constructor(properties?: Partial<Device.ConstructorProps>, ...args: any[]);
 
@@ -4082,7 +4082,7 @@ export namespace Atspi {
 
         static ['new'](): Device;
 
-        // Own virtual methods of Atspi.Device
+        // Virtual methods
 
         vfunc_add_key_grab(kd: KeyDefinition): boolean;
         /**
@@ -4144,7 +4144,7 @@ export namespace Atspi {
          */
         vfunc_unmap_modifier(keycode: number): void;
 
-        // Own methods of Atspi.Device
+        // Methods
 
         add_key_grab(kd: KeyDefinition, callback?: KeyCallback | null): number;
         /**
@@ -4227,7 +4227,7 @@ export namespace Atspi {
     class DeviceLegacy extends Device {
         static $gtype: GObject.GType<DeviceLegacy>;
 
-        // Constructors of Atspi.DeviceLegacy
+        // Constructors
 
         constructor(properties?: Partial<DeviceLegacy.ConstructorProps>, ...args: any[]);
 
@@ -4245,12 +4245,12 @@ export namespace Atspi {
     class DeviceListener extends GObject.Object {
         static $gtype: GObject.GType<DeviceListener>;
 
-        // Own fields of Atspi.DeviceListener
+        // Fields
 
         id: number;
         callbacks: any[];
 
-        // Constructors of Atspi.DeviceListener
+        // Constructors
 
         constructor(properties?: Partial<DeviceListener.ConstructorProps>, ...args: any[]);
 
@@ -4258,11 +4258,11 @@ export namespace Atspi {
 
         static ['new'](callback: DeviceListenerCB): DeviceListener;
 
-        // Own virtual methods of Atspi.DeviceListener
+        // Virtual methods
 
         vfunc_device_event(event: DeviceEvent): boolean;
 
-        // Own methods of Atspi.DeviceListener
+        // Methods
 
         /**
          * Adds an in-process callback function to an existing #AtspiDeviceListener.
@@ -4286,7 +4286,7 @@ export namespace Atspi {
     class DeviceX11 extends Device {
         static $gtype: GObject.GType<DeviceX11>;
 
-        // Constructors of Atspi.DeviceX11
+        // Constructors
 
         constructor(properties?: Partial<DeviceX11.ConstructorProps>, ...args: any[]);
 
@@ -4313,13 +4313,13 @@ export namespace Atspi {
     class EventListener extends GObject.Object {
         static $gtype: GObject.GType<EventListener>;
 
-        // Own fields of Atspi.EventListener
+        // Fields
 
         callback: EventListenerCB;
         user_data: any;
         cb_destroyed: GLib.DestroyNotify;
 
-        // Constructors of Atspi.EventListener
+        // Constructors
 
         constructor(properties?: Partial<EventListener.ConstructorProps>, ...args: any[]);
 
@@ -4327,7 +4327,7 @@ export namespace Atspi {
 
         static ['new'](callback: EventListenerCB): EventListener;
 
-        // Own static methods of Atspi.EventListener
+        // Static methods
 
         /**
          * Deregisters an #AtspiEventListenerCB from the registry, for a specific
@@ -4349,7 +4349,7 @@ export namespace Atspi {
             app?: Accessible | null,
         ): boolean;
 
-        // Own methods of Atspi.EventListener
+        // Methods
 
         /**
          * Deregisters an #AtspiEventListener from the registry, for a specific
@@ -4484,13 +4484,13 @@ export namespace Atspi {
     class Hyperlink extends Object {
         static $gtype: GObject.GType<Hyperlink>;
 
-        // Constructors of Atspi.Hyperlink
+        // Constructors
 
         constructor(properties?: Partial<Hyperlink.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Atspi.Hyperlink
+        // Methods
 
         /**
          * Gets the ending character offset of the text range associated with
@@ -4551,7 +4551,7 @@ export namespace Atspi {
     class MatchRule extends GObject.Object {
         static $gtype: GObject.GType<MatchRule>;
 
-        // Own fields of Atspi.MatchRule
+        // Fields
 
         states: StateSet;
         statematchtype: CollectionMatchType;
@@ -4562,7 +4562,7 @@ export namespace Atspi {
         rolematchtype: CollectionMatchType;
         invert: boolean;
 
-        // Constructors of Atspi.MatchRule
+        // Constructors
 
         constructor(properties?: Partial<MatchRule.ConstructorProps>, ...args: any[]);
 
@@ -4590,12 +4590,12 @@ export namespace Atspi {
     class Object extends GObject.Object {
         static $gtype: GObject.GType<Object>;
 
-        // Own fields of Atspi.Object
+        // Fields
 
         app: Application;
         path: string;
 
-        // Constructors of Atspi.Object
+        // Constructors
 
         constructor(properties?: Partial<Object.ConstructorProps>, ...args: any[]);
 
@@ -4619,18 +4619,18 @@ export namespace Atspi {
     class Relation extends GObject.Object {
         static $gtype: GObject.GType<Relation>;
 
-        // Own fields of Atspi.Relation
+        // Fields
 
         relation_type: RelationType;
         targets: any[];
 
-        // Constructors of Atspi.Relation
+        // Constructors
 
         constructor(properties?: Partial<Relation.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Atspi.Relation
+        // Methods
 
         /**
          * Gets the number of objects which this relationship has as its
@@ -4665,12 +4665,12 @@ export namespace Atspi {
     class StateSet extends GObject.Object {
         static $gtype: GObject.GType<StateSet>;
 
-        // Own fields of Atspi.StateSet
+        // Fields
 
         accessible: any;
         states: number;
 
-        // Constructors of Atspi.StateSet
+        // Constructors
 
         constructor(properties?: Partial<StateSet.ConstructorProps>, ...args: any[]);
 
@@ -4678,7 +4678,7 @@ export namespace Atspi {
 
         static ['new'](states: StateType[]): StateSet;
 
-        // Own methods of Atspi.StateSet
+        // Methods
 
         /**
          * Adds a particular #AtspiState to an #AtspiStateSet (i.e. sets the
@@ -4735,7 +4735,7 @@ export namespace Atspi {
     abstract class AccessiblePrivate {
         static $gtype: GObject.GType<AccessiblePrivate>;
 
-        // Constructors of Atspi.AccessiblePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4745,7 +4745,7 @@ export namespace Atspi {
     class DeviceEvent {
         static $gtype: GObject.GType<DeviceEvent>;
 
-        // Own fields of Atspi.DeviceEvent
+        // Fields
 
         type: EventType;
         id: number;
@@ -4755,7 +4755,7 @@ export namespace Atspi {
         event_string: string;
         is_text: boolean;
 
-        // Constructors of Atspi.DeviceEvent
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4766,7 +4766,7 @@ export namespace Atspi {
     class Event {
         static $gtype: GObject.GType<Event>;
 
-        // Own fields of Atspi.Event
+        // Fields
 
         type: string;
         source: Accessible;
@@ -4774,11 +4774,11 @@ export namespace Atspi {
         detail2: number;
         sender: Accessible;
 
-        // Constructors of Atspi.Event
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own static methods of Atspi.Event
+        // Static methods
 
         /**
          * Starts/enters the main event loop for the AT-SPI services.
@@ -4798,13 +4798,13 @@ export namespace Atspi {
     class EventListenerMode {
         static $gtype: GObject.GType<EventListenerMode>;
 
-        // Own fields of Atspi.EventListenerMode
+        // Fields
 
         synchronous: boolean;
         preemptive: boolean;
         global: boolean;
 
-        // Constructors of Atspi.EventListenerMode
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -4820,14 +4820,14 @@ export namespace Atspi {
     class KeyDefinition {
         static $gtype: GObject.GType<KeyDefinition>;
 
-        // Own fields of Atspi.KeyDefinition
+        // Fields
 
         keycode: number;
         keysym: number;
         keystring: string;
         modifiers: number;
 
-        // Constructors of Atspi.KeyDefinition
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -4847,14 +4847,14 @@ export namespace Atspi {
     class KeySet {
         static $gtype: GObject.GType<KeySet>;
 
-        // Own fields of Atspi.KeySet
+        // Fields
 
         keysyms: number;
         keycodes: number;
         keystrings: string;
         len: number;
 
-        // Constructors of Atspi.KeySet
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -4872,12 +4872,12 @@ export namespace Atspi {
     class Point {
         static $gtype: GObject.GType<Point>;
 
-        // Own fields of Atspi.Point
+        // Fields
 
         x: number;
         y: number;
 
-        // Constructors of Atspi.Point
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -4887,7 +4887,7 @@ export namespace Atspi {
         );
         _init(...args: any[]): void;
 
-        // Own methods of Atspi.Point
+        // Methods
 
         copy(): Point;
     }
@@ -4895,12 +4895,12 @@ export namespace Atspi {
     class Range {
         static $gtype: GObject.GType<Range>;
 
-        // Own fields of Atspi.Range
+        // Fields
 
         start_offset: number;
         end_offset: number;
 
-        // Constructors of Atspi.Range
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -4910,7 +4910,7 @@ export namespace Atspi {
         );
         _init(...args: any[]): void;
 
-        // Own methods of Atspi.Range
+        // Methods
 
         /**
          * Gets a copy of an #AtspiRange object.
@@ -4922,14 +4922,14 @@ export namespace Atspi {
     class Rect {
         static $gtype: GObject.GType<Rect>;
 
-        // Own fields of Atspi.Rect
+        // Fields
 
         x: number;
         y: number;
         width: number;
         height: number;
 
-        // Constructors of Atspi.Rect
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -4941,7 +4941,7 @@ export namespace Atspi {
         );
         _init(...args: any[]): void;
 
-        // Own methods of Atspi.Rect
+        // Methods
 
         copy(): Rect;
     }
@@ -4951,13 +4951,13 @@ export namespace Atspi {
     class TextRange {
         static $gtype: GObject.GType<TextRange>;
 
-        // Own fields of Atspi.TextRange
+        // Fields
 
         start_offset: number;
         end_offset: number;
         content: string;
 
-        // Constructors of Atspi.TextRange
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -4993,7 +4993,7 @@ export namespace Atspi {
     class TextSelection {
         static $gtype: GObject.GType<TextSelection>;
 
-        // Own fields of Atspi.TextSelection
+        // Fields
 
         start_object: Accessible;
         start_offset: number;
@@ -5001,7 +5001,7 @@ export namespace Atspi {
         end_offset: number;
         start_is_active: boolean;
 
-        // Constructors of Atspi.TextSelection
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5017,7 +5017,7 @@ export namespace Atspi {
         prototype: Action;
     }
     interface Action extends GObject.Object {
-        // Own methods of Atspi.Action
+        // Methods
 
         /**
          * Invoke the action indicated by #index.
@@ -5106,7 +5106,7 @@ export namespace Atspi {
         prototype: Collection;
     }
     interface Collection extends GObject.Object {
-        // Own methods of Atspi.Collection
+        // Methods
 
         get_active_descendant(): Accessible;
         /**
@@ -5179,7 +5179,7 @@ export namespace Atspi {
         prototype: Component;
     }
     interface Component extends GObject.Object {
-        // Own methods of Atspi.Component
+        // Methods
 
         /**
          * Queries whether a given #AtspiComponent contains a particular point.
@@ -5299,7 +5299,7 @@ export namespace Atspi {
         prototype: Document;
     }
     interface Document extends GObject.Object {
-        // Own methods of Atspi.Document
+        // Methods
 
         /**
          * Gets the value of a single attribute, if specified for the document as a whole.
@@ -5371,7 +5371,7 @@ export namespace Atspi {
         prototype: EditableText;
     }
     interface EditableText extends GObject.Object {
-        // Own methods of Atspi.EditableText
+        // Methods
 
         /**
          * Copies text from an #AtspiEditableText object into the system clipboard.
@@ -5443,7 +5443,7 @@ export namespace Atspi {
         prototype: Hypertext;
     }
     interface Hypertext extends GObject.Object {
-        // Own methods of Atspi.Hypertext
+        // Methods
 
         /**
          * Gets the #AtspiHyperlink object at a specified index.
@@ -5479,7 +5479,7 @@ export namespace Atspi {
         prototype: Image;
     }
     interface Image extends GObject.Object {
-        // Own methods of Atspi.Image
+        // Methods
 
         /**
          * Gets the description of the image displayed in an #AtspiImage object.
@@ -5531,7 +5531,7 @@ export namespace Atspi {
         prototype: Selection;
     }
     interface Selection extends GObject.Object {
-        // Own methods of Atspi.Selection
+        // Methods
 
         /**
          * Clears the current selection, removing all selected children from the
@@ -5616,7 +5616,7 @@ export namespace Atspi {
         prototype: Table;
     }
     interface Table extends GObject.Object {
-        // Own methods of Atspi.Table
+        // Methods
 
         /**
          * Selects the specified column, adding it to the current column selection.
@@ -5845,7 +5845,7 @@ export namespace Atspi {
         prototype: TableCell;
     }
     interface TableCell extends GObject.Object {
-        // Own methods of Atspi.TableCell
+        // Methods
 
         /**
          * Returns the column headers as an array of cell accessibles.
@@ -5903,7 +5903,7 @@ export namespace Atspi {
         prototype: Text;
     }
     interface Text extends GObject.Object {
-        // Own methods of Atspi.Text
+        // Methods
 
         /**
          * Selects some text (adds a text selection) in an #AtspiText object.
@@ -6166,7 +6166,7 @@ export namespace Atspi {
         prototype: Value;
     }
     interface Value extends GObject.Object {
-        // Own methods of Atspi.Value
+        // Methods
 
         /**
          * Gets the current value for an #AtspiValue.

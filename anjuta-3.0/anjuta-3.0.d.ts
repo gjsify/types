@@ -72,19 +72,19 @@ export namespace Anjuta {
     class ConvertError extends GLib.Error {
         static $gtype: GObject.GType<ConvertError>;
 
-        // Static fields of Anjuta.ConvertError
+        // Static fields
 
         /**
          * The charset couldn't be autodetected
          */
         static FAILED: number;
 
-        // Constructors of Anjuta.ConvertError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of Anjuta.ConvertError
+        // Static methods
 
         static quark(): GLib.Quark;
     }
@@ -104,7 +104,7 @@ export namespace Anjuta {
     class PluginDescriptionParseError extends GLib.Error {
         static $gtype: GObject.GType<PluginDescriptionParseError>;
 
-        // Static fields of Anjuta.PluginDescriptionParseError
+        // Static fields
 
         /**
          * Syntax of plugin file is invalid
@@ -119,12 +119,12 @@ export namespace Anjuta {
          */
         static CHARS: number;
 
-        // Constructors of Anjuta.PluginDescriptionParseError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of Anjuta.PluginDescriptionParseError
+        // Static methods
 
         static quark(): GLib.Quark;
     }
@@ -132,7 +132,7 @@ export namespace Anjuta {
     class PluginManagerError extends GLib.Error {
         static $gtype: GObject.GType<PluginManagerError>;
 
-        // Static fields of Anjuta.PluginManagerError
+        // Static fields
 
         /**
          * The factory for the plugin couldn't be found
@@ -143,12 +143,12 @@ export namespace Anjuta {
          */
         static ERROR_UNKNOWN: number;
 
-        // Constructors of Anjuta.PluginManagerError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of Anjuta.PluginManagerError
+        // Static methods
 
         static quark(): GLib.Quark;
     }
@@ -159,7 +159,7 @@ export namespace Anjuta {
     class ProfileError extends GLib.Error {
         static $gtype: GObject.GType<ProfileError>;
 
-        // Static fields of Anjuta.ProfileError
+        // Static fields
 
         /**
          * Fail to read xml plugins list file.
@@ -171,12 +171,12 @@ export namespace Anjuta {
         static URI_WRITE_FAILED: number;
         static PLUGIN_MISSING: number;
 
-        // Constructors of Anjuta.ProfileError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of Anjuta.ProfileError
+        // Static methods
 
         static quark(): GLib.Quark;
     }
@@ -215,16 +215,16 @@ export namespace Anjuta {
     class ShellError extends GLib.Error {
         static $gtype: GObject.GType<ShellError>;
 
-        // Static fields of Anjuta.ShellError
+        // Static fields
 
         static EXIST: number;
 
-        // Constructors of Anjuta.ShellError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of Anjuta.ShellError
+        // Static methods
 
         static quark(): GLib.Quark;
     }
@@ -631,13 +631,13 @@ export namespace Anjuta {
     class AsyncCommand extends Command {
         static $gtype: GObject.GType<AsyncCommand>;
 
-        // Constructors of Anjuta.AsyncCommand
+        // Constructors
 
         constructor(properties?: Partial<AsyncCommand.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of Anjuta.AsyncCommand
+        // Static methods
 
         static get_error_message(command: Command): string;
         /**
@@ -647,7 +647,7 @@ export namespace Anjuta {
          */
         static set_error_message(command: Command, error_message: string): void;
 
-        // Own methods of Anjuta.AsyncCommand
+        // Methods
 
         /**
          * Locks the command's built-in mutex.
@@ -674,7 +674,7 @@ export namespace Anjuta {
     class AsyncNotify extends GObject.Object {
         static $gtype: GObject.GType<AsyncNotify>;
 
-        // Constructors of Anjuta.AsyncNotify
+        // Constructors
 
         constructor(properties?: Partial<AsyncNotify.ConstructorProps>, ...args: any[]);
 
@@ -682,7 +682,7 @@ export namespace Anjuta {
 
         static ['new'](): AsyncNotify;
 
-        // Own signals of Anjuta.AsyncNotify
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -691,11 +691,11 @@ export namespace Anjuta {
         connect_after(signal: 'finished', callback: (_source: this) => void): number;
         emit(signal: 'finished'): void;
 
-        // Own virtual methods of Anjuta.AsyncNotify
+        // Virtual methods
 
         vfunc_finished(): void;
 
-        // Own methods of Anjuta.AsyncNotify
+        // Methods
 
         /**
          * Gets the error set on `self`.
@@ -726,7 +726,7 @@ export namespace Anjuta {
     class Autogen extends GObject.Object {
         static $gtype: GObject.GType<Autogen>;
 
-        // Constructors of Anjuta.Autogen
+        // Constructors
 
         constructor(properties?: Partial<Autogen.ConstructorProps>, ...args: any[]);
 
@@ -734,7 +734,7 @@ export namespace Anjuta {
 
         static ['new'](): Autogen;
 
-        // Own methods of Anjuta.Autogen
+        // Methods
 
         /**
          * Remove all library pathes.
@@ -820,7 +820,7 @@ export namespace Anjuta {
     class CModule extends GObject.TypeModule implements GObject.TypePlugin {
         static $gtype: GObject.GType<CModule>;
 
-        // Constructors of Anjuta.CModule
+        // Constructors
 
         constructor(properties?: Partial<CModule.ConstructorProps>, ...args: any[]);
 
@@ -828,7 +828,7 @@ export namespace Anjuta {
 
         static ['new'](path: string, name: string): CModule;
 
-        // Own methods of Anjuta.CModule
+        // Methods
 
         /**
          * Receives the error that occured when the module was loaded
@@ -1284,7 +1284,7 @@ export namespace Anjuta {
     class CPluginFactory extends GObject.Object {
         static $gtype: GObject.GType<CPluginFactory>;
 
-        // Constructors of Anjuta.CPluginFactory
+        // Constructors
 
         constructor(properties?: Partial<CPluginFactory.ConstructorProps>, ...args: any[]);
 
@@ -1292,7 +1292,7 @@ export namespace Anjuta {
 
         static ['new'](): CPluginFactory;
 
-        // Own methods of Anjuta.CPluginFactory
+        // Methods
 
         /**
          * Delete a #AnjutaCPluginFactory object.
@@ -1312,19 +1312,19 @@ export namespace Anjuta {
     class CellRendererCaptionedImage extends Gtk.CellRenderer {
         static $gtype: GObject.GType<CellRendererCaptionedImage>;
 
-        // Own properties of Anjuta.CellRendererCaptionedImage
+        // Properties
 
         get pixbuf(): GdkPixbuf.Pixbuf;
         set pixbuf(val: GdkPixbuf.Pixbuf);
         get text(): string;
         set text(val: string);
 
-        // Own fields of Anjuta.CellRendererCaptionedImage
+        // Fields
 
         image: Gtk.CellRenderer;
         caption: Gtk.CellRenderer;
 
-        // Constructors of Anjuta.CellRendererCaptionedImage
+        // Constructors
 
         constructor(properties?: Partial<CellRendererCaptionedImage.ConstructorProps>, ...args: any[]);
 
@@ -1344,11 +1344,11 @@ export namespace Anjuta {
     class CellRendererDiff extends Gtk.CellRenderer {
         static $gtype: GObject.GType<CellRendererDiff>;
 
-        // Own properties of Anjuta.CellRendererDiff
+        // Properties
 
         set diff(val: string);
 
-        // Constructors of Anjuta.CellRendererDiff
+        // Constructors
 
         constructor(properties?: Partial<CellRendererDiff.ConstructorProps>, ...args: any[]);
 
@@ -1356,7 +1356,7 @@ export namespace Anjuta {
 
         static ['new'](): CellRendererDiff;
 
-        // Own methods of Anjuta.CellRendererDiff
+        // Methods
 
         set_diff(diff: string): void;
     }
@@ -1378,7 +1378,7 @@ export namespace Anjuta {
     {
         static $gtype: GObject.GType<CloseButton>;
 
-        // Constructors of Anjuta.CloseButton
+        // Constructors
 
         constructor(properties?: Partial<CloseButton.ConstructorProps>, ...args: any[]);
 
@@ -5567,7 +5567,7 @@ export namespace Anjuta {
     class ColumnTextView extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<ColumnTextView>;
 
-        // Constructors of Anjuta.ColumnTextView
+        // Constructors
 
         constructor(properties?: Partial<ColumnTextView.ConstructorProps>, ...args: any[]);
 
@@ -5575,7 +5575,7 @@ export namespace Anjuta {
 
         static ['new'](): ColumnTextView;
 
-        // Own methods of Anjuta.ColumnTextView
+        // Methods
 
         get_text(): string;
 
@@ -6026,13 +6026,13 @@ export namespace Anjuta {
     class Command extends GObject.Object {
         static $gtype: GObject.GType<Command>;
 
-        // Constructors of Anjuta.Command
+        // Constructors
 
         constructor(properties?: Partial<Command.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of Anjuta.Command
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -6050,7 +6050,7 @@ export namespace Anjuta {
         connect_after(signal: 'progress', callback: (_source: this, progress: number) => void): number;
         emit(signal: 'progress', progress: number): void;
 
-        // Own virtual methods of Anjuta.Command
+        // Virtual methods
 
         /**
          * Cancels a running command.
@@ -6111,7 +6111,7 @@ export namespace Anjuta {
          */
         vfunc_stop_automatic_monitor(): void;
 
-        // Own methods of Anjuta.Command
+        // Methods
 
         /**
          * Cancels a running command.
@@ -6186,12 +6186,12 @@ export namespace Anjuta {
     class CommandBar extends Gtk.Notebook implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<CommandBar>;
 
-        // Own properties of Anjuta.CommandBar
+        // Properties
 
         get max_text_width(): number;
         get maxTextWidth(): number;
 
-        // Constructors of Anjuta.CommandBar
+        // Constructors
 
         constructor(properties?: Partial<CommandBar.ConstructorProps>, ...args: any[]);
 
@@ -6199,7 +6199,7 @@ export namespace Anjuta {
 
         static ['new'](): CommandBar;
 
-        // Own methods of Anjuta.CommandBar
+        // Methods
 
         /**
          * Adds a group of entries to an AnjutaCommandBar.
@@ -6638,7 +6638,7 @@ export namespace Anjuta {
     class CommandQueue extends GObject.Object {
         static $gtype: GObject.GType<CommandQueue>;
 
-        // Constructors of Anjuta.CommandQueue
+        // Constructors
 
         constructor(properties?: Partial<CommandQueue.ConstructorProps>, ...args: any[]);
 
@@ -6646,7 +6646,7 @@ export namespace Anjuta {
 
         static ['new'](mode: CommandQueueExecuteMode): CommandQueue;
 
-        // Own signals of Anjuta.CommandQueue
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -6655,11 +6655,11 @@ export namespace Anjuta {
         connect_after(signal: 'finished', callback: (_source: this) => void): number;
         emit(signal: 'finished'): void;
 
-        // Own virtual methods of Anjuta.CommandQueue
+        // Virtual methods
 
         vfunc_finished(): void;
 
-        // Own methods of Anjuta.CommandQueue
+        // Methods
 
         /**
          * Adds a command to the Queue and starts it if there are no other commands
@@ -6682,20 +6682,20 @@ export namespace Anjuta {
     class Completion extends GObject.Object {
         static $gtype: GObject.GType<Completion>;
 
-        // Own properties of Anjuta.Completion
+        // Properties
 
         get case_sensitive(): boolean;
         set case_sensitive(val: boolean);
         get caseSensitive(): boolean;
         set caseSensitive(val: boolean);
 
-        // Constructors of Anjuta.Completion
+        // Constructors
 
         constructor(properties?: Partial<Completion.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Anjuta.Completion
+        // Methods
 
         /**
          * Add an item to the completion.
@@ -6723,7 +6723,7 @@ export namespace Anjuta {
     class Dock extends Gdl.Dock implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<Dock>;
 
-        // Constructors of Anjuta.Dock
+        // Constructors
 
         constructor(properties?: Partial<Dock.ConstructorProps>, ...args: any[]);
 
@@ -6731,7 +6731,7 @@ export namespace Anjuta {
 
         static ['new'](): Dock;
 
-        // Own methods of Anjuta.Dock
+        // Methods
 
         /**
          * Adds a pane, with optional #AnjutaCommandBar entries, to an AnjutaDock. This
@@ -7252,18 +7252,18 @@ export namespace Anjuta {
     abstract class DockPane extends GObject.Object {
         static $gtype: GObject.GType<DockPane>;
 
-        // Own properties of Anjuta.DockPane
+        // Properties
 
         get plugin(): Plugin;
         set plugin(val: Plugin);
 
-        // Constructors of Anjuta.DockPane
+        // Constructors
 
         constructor(properties?: Partial<DockPane.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of Anjuta.DockPane
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -7275,7 +7275,7 @@ export namespace Anjuta {
         connect_after(signal: 'single-selection-changed', callback: (_source: this) => void): number;
         emit(signal: 'single-selection-changed'): void;
 
-        // Own virtual methods of Anjuta.DockPane
+        // Virtual methods
 
         vfunc_multiple_selection_changed(): void;
         /**
@@ -7285,7 +7285,7 @@ export namespace Anjuta {
         vfunc_refresh(): void;
         vfunc_single_selection_changed(): void;
 
-        // Own methods of Anjuta.DockPane
+        // Methods
 
         /**
          * Emits the multiple-selection-changed signal.
@@ -7316,7 +7316,7 @@ export namespace Anjuta {
     class DropEntry extends Entry implements Atk.ImplementorIface, Gtk.Buildable, Gtk.CellEditable, Gtk.Editable {
         static $gtype: GObject.GType<DropEntry>;
 
-        // Constructors of Anjuta.DropEntry
+        // Constructors
 
         constructor(properties?: Partial<DropEntry.ConstructorProps>, ...args: any[]);
 
@@ -11269,14 +11269,14 @@ export namespace Anjuta {
     class Entry extends Gtk.Entry implements Atk.ImplementorIface, Gtk.Buildable, Gtk.CellEditable, Gtk.Editable {
         static $gtype: GObject.GType<Entry>;
 
-        // Own properties of Anjuta.Entry
+        // Properties
 
         get help_text(): string;
         set help_text(val: string);
         get helpText(): string;
         set helpText(val: string);
 
-        // Constructors of Anjuta.Entry
+        // Constructors
 
         constructor(properties?: Partial<Entry.ConstructorProps>, ...args: any[]);
 
@@ -11284,7 +11284,7 @@ export namespace Anjuta {
 
         static ['new'](): Entry;
 
-        // Own methods of Anjuta.Entry
+        // Methods
 
         dup_text(): string;
         get_text(): string;
@@ -15495,7 +15495,7 @@ export namespace Anjuta {
     class EnvironmentEditor extends Gtk.Bin implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<EnvironmentEditor>;
 
-        // Constructors of Anjuta.EnvironmentEditor
+        // Constructors
 
         constructor(properties?: Partial<EnvironmentEditor.ConstructorProps>, ...args: any[]);
 
@@ -15503,7 +15503,7 @@ export namespace Anjuta {
 
         static ['new'](): EnvironmentEditor;
 
-        // Own signals of Anjuta.EnvironmentEditor
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -15512,11 +15512,11 @@ export namespace Anjuta {
         connect_after(signal: 'changed', callback: (_source: this) => void): number;
         emit(signal: 'changed'): void;
 
-        // Own virtual methods of Anjuta.EnvironmentEditor
+        // Virtual methods
 
         vfunc_changed(): void;
 
-        // Own methods of Anjuta.EnvironmentEditor
+        // Methods
 
         reset(): void;
         set_variable(variable: string): void;
@@ -15944,14 +15944,14 @@ export namespace Anjuta {
     {
         static $gtype: GObject.GType<FileDropEntry>;
 
-        // Own properties of Anjuta.FileDropEntry
+        // Properties
 
         get relative_path(): string;
         set relative_path(val: string);
         get relativePath(): string;
         set relativePath(val: string);
 
-        // Constructors of Anjuta.FileDropEntry
+        // Constructors
 
         constructor(properties?: Partial<FileDropEntry.ConstructorProps>, ...args: any[]);
 
@@ -15959,7 +15959,7 @@ export namespace Anjuta {
 
         static ['new'](): FileDropEntry;
 
-        // Own methods of Anjuta.FileDropEntry
+        // Methods
 
         set_relative_path(path: string): void;
 
@@ -19909,7 +19909,7 @@ export namespace Anjuta {
     class FileList extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<FileList>;
 
-        // Own properties of Anjuta.FileList
+        // Properties
 
         get relative_path(): string;
         set relative_path(val: string);
@@ -19920,7 +19920,7 @@ export namespace Anjuta {
         get showAddButton(): boolean;
         set showAddButton(val: boolean);
 
-        // Constructors of Anjuta.FileList
+        // Constructors
 
         constructor(properties?: Partial<FileList.ConstructorProps>, ...args: any[]);
 
@@ -19928,7 +19928,7 @@ export namespace Anjuta {
 
         static ['new'](): FileList;
 
-        // Own methods of Anjuta.FileList
+        // Methods
 
         clear(): void;
         set_relative_path(path: string): void;
@@ -20362,13 +20362,13 @@ export namespace Anjuta {
     class LanguageProvider extends GObject.Object {
         static $gtype: GObject.GType<LanguageProvider>;
 
-        // Constructors of Anjuta.LanguageProvider
+        // Constructors
 
         constructor(properties?: Partial<LanguageProvider.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Anjuta.LanguageProvider
+        // Methods
 
         /**
          * Complete the function name
@@ -20433,7 +20433,7 @@ export namespace Anjuta {
     class Launcher extends GObject.Object {
         static $gtype: GObject.GType<Launcher>;
 
-        // Constructors of Anjuta.Launcher
+        // Constructors
 
         constructor(properties?: Partial<Launcher.ConstructorProps>, ...args: any[]);
 
@@ -20441,7 +20441,7 @@ export namespace Anjuta {
 
         static ['new'](): Launcher;
 
-        // Own signals of Anjuta.Launcher
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -20459,12 +20459,12 @@ export namespace Anjuta {
         ): number;
         emit(signal: 'child-exited', child_pid: number, status: number, time: number): void;
 
-        // Own virtual methods of Anjuta.Launcher
+        // Virtual methods
 
         vfunc_busy(busy_flag: boolean): void;
         vfunc_child_exited(child_pid: number, exit_status: number, time_taken_in_seconds: number): void;
 
-        // Own methods of Anjuta.Launcher
+        // Methods
 
         /**
          * Gets the Process ID of the child being executed.
@@ -20561,7 +20561,7 @@ export namespace Anjuta {
     class PkgConfigChooser extends Gtk.TreeView implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable {
         static $gtype: GObject.GType<PkgConfigChooser>;
 
-        // Constructors of Anjuta.PkgConfigChooser
+        // Constructors
 
         constructor(properties?: Partial<PkgConfigChooser.ConstructorProps>, ...args: any[]);
 
@@ -20569,7 +20569,7 @@ export namespace Anjuta {
 
         static ['new'](): PkgConfigChooser;
 
-        // Own signals of Anjuta.PkgConfigChooser
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -20581,12 +20581,12 @@ export namespace Anjuta {
         connect_after(signal: 'package-deactivated', callback: (_source: this, _package: string) => void): number;
         emit(signal: 'package-deactivated', _package: string): void;
 
-        // Own virtual methods of Anjuta.PkgConfigChooser
+        // Virtual methods
 
         vfunc_package_activated(_package: string): void;
         vfunc_package_deactivated(_package: string): void;
 
-        // Own methods of Anjuta.PkgConfigChooser
+        // Methods
 
         get_selected_package(): string;
         show_active_column(show_column: boolean): void;
@@ -21106,14 +21106,14 @@ export namespace Anjuta {
     class PkgScanner extends AsyncCommand {
         static $gtype: GObject.GType<PkgScanner>;
 
-        // Own properties of Anjuta.PkgScanner
+        // Properties
 
         get package(): string;
         set package(val: string);
         get version(): string;
         set version(val: string);
 
-        // Constructors of Anjuta.PkgScanner
+        // Constructors
 
         constructor(properties?: Partial<PkgScanner.ConstructorProps>, ...args: any[]);
 
@@ -21121,7 +21121,7 @@ export namespace Anjuta {
 
         static ['new'](_package: string, version: string): PkgScanner;
 
-        // Own methods of Anjuta.PkgScanner
+        // Methods
 
         get_package(): string;
         get_version(): string;
@@ -21148,7 +21148,7 @@ export namespace Anjuta {
     class Plugin extends GObject.Object {
         static $gtype: GObject.GType<Plugin>;
 
-        // Own properties of Anjuta.Plugin
+        // Properties
 
         /**
          * The #AnjutaShell object associated with this plugin
@@ -21156,13 +21156,13 @@ export namespace Anjuta {
         get shell(): Shell;
         set shell(val: Shell);
 
-        // Constructors of Anjuta.Plugin
+        // Constructors
 
         constructor(properties?: Partial<Plugin.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of Anjuta.Plugin
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -21174,7 +21174,7 @@ export namespace Anjuta {
         connect_after(signal: 'deactivated', callback: (_source: this) => void): number;
         emit(signal: 'deactivated'): void;
 
-        // Own virtual methods of Anjuta.Plugin
+        // Virtual methods
 
         /**
          * Activates the plugin by calling activate() virtual method. All plugins
@@ -21193,7 +21193,7 @@ export namespace Anjuta {
         vfunc_deactivate(): boolean;
         vfunc_deactivated(): void;
 
-        // Own methods of Anjuta.Plugin
+        // Methods
 
         /**
          * Activates the plugin by calling activate() virtual method. All plugins
@@ -21269,7 +21269,7 @@ export namespace Anjuta {
     class PluginHandle extends GObject.Object {
         static $gtype: GObject.GType<PluginHandle>;
 
-        // Own properties of Anjuta.PluginHandle
+        // Properties
 
         get about(): string;
         get can_load(): boolean;
@@ -21295,7 +21295,7 @@ export namespace Anjuta {
         get user_activatable(): boolean;
         get userActivatable(): boolean;
 
-        // Constructors of Anjuta.PluginHandle
+        // Constructors
 
         constructor(properties?: Partial<PluginHandle.ConstructorProps>, ...args: any[]);
 
@@ -21303,7 +21303,7 @@ export namespace Anjuta {
 
         static ['new'](plugin_desc_path: string): PluginHandle;
 
-        // Own methods of Anjuta.PluginHandle
+        // Methods
 
         get_about(): string;
         get_can_load(): boolean;
@@ -21352,7 +21352,7 @@ export namespace Anjuta {
     class PluginManager extends GObject.Object {
         static $gtype: GObject.GType<PluginManager>;
 
-        // Own properties of Anjuta.PluginManager
+        // Properties
 
         get activated_plugins(): any;
         get activatedPlugins(): any;
@@ -21364,13 +21364,13 @@ export namespace Anjuta {
         get status(): Status;
         set status(val: Status);
 
-        // Constructors of Anjuta.PluginManager
+        // Constructors
 
         constructor(properties?: Partial<PluginManager.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of Anjuta.PluginManager
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -21391,12 +21391,12 @@ export namespace Anjuta {
         ): number;
         emit(signal: 'plugin-deactivated', object: any | null, p0: Plugin): void;
 
-        // Own virtual methods of Anjuta.PluginManager
+        // Virtual methods
 
         vfunc_plugin_activated(handle: PluginHandle, plugin: GObject.Object): void;
         vfunc_plugin_deactivated(handle: PluginHandle, plugin: GObject.Object): void;
 
-        // Own methods of Anjuta.PluginManager
+        // Methods
 
         /**
          * Get the list of plugins loaded when there is a choice between several
@@ -21459,7 +21459,7 @@ export namespace Anjuta {
     class Preferences extends GObject.Object {
         static $gtype: GObject.GType<Preferences>;
 
-        // Constructors of Anjuta.Preferences
+        // Constructors
 
         constructor(properties?: Partial<Preferences.ConstructorProps>, ...args: any[]);
 
@@ -21467,7 +21467,7 @@ export namespace Anjuta {
 
         static ['new'](plugin_manager: PluginManager, common_schema_id: string): Preferences;
 
-        // Own methods of Anjuta.Preferences
+        // Methods
 
         add_from_builder(
             builder: Gtk.Builder,
@@ -21515,7 +21515,7 @@ export namespace Anjuta {
     class PreferencesDialog extends Gtk.Dialog implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<PreferencesDialog>;
 
-        // Constructors of Anjuta.PreferencesDialog
+        // Constructors
 
         constructor(properties?: Partial<PreferencesDialog.ConstructorProps>, ...args: any[]);
 
@@ -21523,7 +21523,7 @@ export namespace Anjuta {
 
         static ['new'](): PreferencesDialog;
 
-        // Own methods of Anjuta.PreferencesDialog
+        // Methods
 
         /**
          * Adds a widget page in preferences dialog. Name and icon appears
@@ -21984,7 +21984,7 @@ export namespace Anjuta {
     class Profile extends GObject.Object {
         static $gtype: GObject.GType<Profile>;
 
-        // Own properties of Anjuta.Profile
+        // Properties
 
         get plugin_manager(): PluginManager;
         set plugin_manager(val: PluginManager);
@@ -21999,7 +21999,7 @@ export namespace Anjuta {
         get syncFile(): Gio.File;
         set syncFile(val: Gio.File);
 
-        // Constructors of Anjuta.Profile
+        // Constructors
 
         constructor(properties?: Partial<Profile.ConstructorProps>, ...args: any[]);
 
@@ -22007,7 +22007,7 @@ export namespace Anjuta {
 
         static ['new'](name: string, plugin_manager: PluginManager): Profile;
 
-        // Own signals of Anjuta.Profile
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -22028,7 +22028,7 @@ export namespace Anjuta {
         connect_after(signal: 'scoped', callback: (_source: this) => void): number;
         emit(signal: 'scoped'): void;
 
-        // Own virtual methods of Anjuta.Profile
+        // Virtual methods
 
         vfunc_changed(): void;
         vfunc_descoped(): void;
@@ -22036,7 +22036,7 @@ export namespace Anjuta {
         vfunc_plugin_removed(plugin: PluginHandle): void;
         vfunc_scoped(): void;
 
-        // Own methods of Anjuta.Profile
+        // Methods
 
         /**
          * Add one plugin into the profile plugin list.
@@ -22113,14 +22113,14 @@ export namespace Anjuta {
     class ProfileManager extends GObject.Object {
         static $gtype: GObject.GType<ProfileManager>;
 
-        // Own properties of Anjuta.ProfileManager
+        // Properties
 
         get plugin_manager(): PluginManager;
         set plugin_manager(val: PluginManager);
         get pluginManager(): PluginManager;
         set pluginManager(val: PluginManager);
 
-        // Constructors of Anjuta.ProfileManager
+        // Constructors
 
         constructor(properties?: Partial<ProfileManager.ConstructorProps>, ...args: any[]);
 
@@ -22128,7 +22128,7 @@ export namespace Anjuta {
 
         static ['new'](plugin_manager: PluginManager): ProfileManager;
 
-        // Own signals of Anjuta.ProfileManager
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -22140,12 +22140,12 @@ export namespace Anjuta {
         connect_after(signal: 'profile-pushed', callback: (_source: this, profile: Profile) => void): number;
         emit(signal: 'profile-pushed', profile: Profile): void;
 
-        // Own virtual methods of Anjuta.ProfileManager
+        // Virtual methods
 
         vfunc_profile_popped(profile: Profile): void;
         vfunc_profile_pushed(profile: Profile): void;
 
-        // Own methods of Anjuta.ProfileManager
+        // Methods
 
         /**
          * Close the #AnjutaProfileManager causing "descoped" to be emitted and
@@ -22220,7 +22220,7 @@ export namespace Anjuta {
     class ProjectNode extends GObject.InitiallyUnowned {
         static $gtype: GObject.GType<ProjectNode>;
 
-        // Own properties of Anjuta.ProjectNode
+        // Properties
 
         get file(): Gio.File;
         set file(val: Gio.File);
@@ -22231,13 +22231,13 @@ export namespace Anjuta {
         get type(): ProjectNodeType;
         set type(val: ProjectNodeType);
 
-        // Constructors of Anjuta.ProjectNode
+        // Constructors
 
         constructor(properties?: Partial<ProjectNode.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of Anjuta.ProjectNode
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -22249,7 +22249,7 @@ export namespace Anjuta {
         connect_after(signal: 'updated', callback: (_source: this, object: any | null, p0: GLib.Error) => void): number;
         emit(signal: 'updated', object: any | null, p0: GLib.Error): void;
 
-        // Own methods of Anjuta.ProjectNode
+        // Methods
 
         append(node: ProjectNode): ProjectNode;
         check(): void;
@@ -22303,7 +22303,7 @@ export namespace Anjuta {
     class SavePrompt extends Gtk.MessageDialog implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<SavePrompt>;
 
-        // Constructors of Anjuta.SavePrompt
+        // Constructors
 
         constructor(properties?: Partial<SavePrompt.ConstructorProps>, ...args: any[]);
 
@@ -22314,7 +22314,7 @@ export namespace Anjuta {
 
         static ['new'](...args: never[]): any;
 
-        // Own methods of Anjuta.SavePrompt
+        // Methods
 
         get_items_count(): number;
 
@@ -22733,12 +22733,12 @@ export namespace Anjuta {
     class Serializer extends GObject.Object {
         static $gtype: GObject.GType<Serializer>;
 
-        // Own properties of Anjuta.Serializer
+        // Properties
 
         get filepath(): string;
         get mode(): SerializerMode;
 
-        // Constructors of Anjuta.Serializer
+        // Constructors
 
         constructor(properties?: Partial<Serializer.ConstructorProps>, ...args: any[]);
 
@@ -22746,7 +22746,7 @@ export namespace Anjuta {
 
         static ['new'](filepath: string, mode: SerializerMode): Serializer;
 
-        // Own methods of Anjuta.Serializer
+        // Methods
 
         read_float(name: string, value: number): boolean;
         read_int(name: string, value: number): boolean;
@@ -22765,7 +22765,7 @@ export namespace Anjuta {
     class Session extends GObject.Object {
         static $gtype: GObject.GType<Session>;
 
-        // Constructors of Anjuta.Session
+        // Constructors
 
         constructor(properties?: Partial<Session.ConstructorProps>, ...args: any[]);
 
@@ -22773,7 +22773,7 @@ export namespace Anjuta {
 
         static ['new'](session_directory: string): Session;
 
-        // Own methods of Anjuta.Session
+        // Methods
 
         /**
          * Clears the session.
@@ -22884,7 +22884,7 @@ export namespace Anjuta {
     class Status extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<Status>;
 
-        // Constructors of Anjuta.Status
+        // Constructors
 
         constructor(properties?: Partial<Status.ConstructorProps>, ...args: any[]);
 
@@ -22892,7 +22892,7 @@ export namespace Anjuta {
 
         static ['new'](): Status;
 
-        // Own signals of Anjuta.Status
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -22901,11 +22901,11 @@ export namespace Anjuta {
         connect_after(signal: 'busy', callback: (_source: this, object: boolean) => void): number;
         emit(signal: 'busy', object: boolean): void;
 
-        // Own virtual methods of Anjuta.Status
+        // Virtual methods
 
         vfunc_busy(state: boolean): void;
 
-        // Own methods of Anjuta.Status
+        // Methods
 
         add_widget(widget: Gtk.Widget): void;
         busy_pop(): void;
@@ -23351,7 +23351,7 @@ export namespace Anjuta {
     class SyncCommand extends Command {
         static $gtype: GObject.GType<SyncCommand>;
 
-        // Constructors of Anjuta.SyncCommand
+        // Constructors
 
         constructor(properties?: Partial<SyncCommand.ConstructorProps>, ...args: any[]);
 
@@ -23372,11 +23372,11 @@ export namespace Anjuta {
     class Tabber extends Gtk.Container implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<Tabber>;
 
-        // Own properties of Anjuta.Tabber
+        // Properties
 
         set notebook(val: GObject.Object);
 
-        // Constructors of Anjuta.Tabber
+        // Constructors
 
         constructor(properties?: Partial<Tabber.ConstructorProps>, ...args: any[]);
 
@@ -23384,7 +23384,7 @@ export namespace Anjuta {
 
         static ['new'](notebook: Gtk.Notebook): Tabber;
 
-        // Own methods of Anjuta.Tabber
+        // Methods
 
         /**
          * Append a tab to the AnjutaTabber widget
@@ -23809,7 +23809,7 @@ export namespace Anjuta {
     class TokenFile extends GObject.Object {
         static $gtype: GObject.GType<TokenFile>;
 
-        // Constructors of Anjuta.TokenFile
+        // Constructors
 
         constructor(properties?: Partial<TokenFile.ConstructorProps>, ...args: any[]);
 
@@ -23817,7 +23817,7 @@ export namespace Anjuta {
 
         static ['new'](file: Gio.File): TokenFile;
 
-        // Own methods of Anjuta.TokenFile
+        // Methods
 
         free(): void;
         get_token_location(location: TokenFileLocation, token: Token): boolean;
@@ -23876,12 +23876,12 @@ export namespace Anjuta {
     {
         static $gtype: GObject.GType<TreeComboBox>;
 
-        // Own properties of Anjuta.TreeComboBox
+        // Properties
 
         get model(): Gtk.TreeModel;
         set model(val: Gtk.TreeModel);
 
-        // Constructors of Anjuta.TreeComboBox
+        // Constructors
 
         constructor(properties?: Partial<TreeComboBox.ConstructorProps>, ...args: any[]);
 
@@ -23889,7 +23889,7 @@ export namespace Anjuta {
 
         static ['new'](): TreeComboBox;
 
-        // Own signals of Anjuta.TreeComboBox
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -23904,11 +23904,11 @@ export namespace Anjuta {
         connect_after(signal: 'popup', callback: (_source: this) => void): number;
         emit(signal: 'popup'): void;
 
-        // Own virtual methods of Anjuta.TreeComboBox
+        // Virtual methods
 
         vfunc_changed(): void;
 
-        // Own methods of Anjuta.TreeComboBox
+        // Methods
 
         get_active_iter(iter: Gtk.TreeIter): boolean;
         set_active(index: number): void;
@@ -28008,7 +28008,7 @@ export namespace Anjuta {
     class UI extends Gtk.UIManager implements Gtk.Buildable {
         static $gtype: GObject.GType<UI>;
 
-        // Constructors of Anjuta.UI
+        // Constructors
 
         constructor(properties?: Partial<UI.ConstructorProps>, ...args: any[]);
 
@@ -28016,12 +28016,12 @@ export namespace Anjuta {
 
         static ['new'](): UI;
 
-        // Own static methods of Anjuta.UI
+        // Static methods
 
         static load_accels(filename: string): void;
         static save_accels(filename: string): void;
 
-        // Own methods of Anjuta.UI
+        // Methods
 
         /**
          * Activates the action `action_name` in the #GtkActionGroup `action_group`.
@@ -28755,7 +28755,7 @@ export namespace Anjuta {
     class VcsStatusTreeView extends Gtk.TreeView implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable {
         static $gtype: GObject.GType<VcsStatusTreeView>;
 
-        // Own properties of Anjuta.VcsStatusTreeView
+        // Properties
 
         get conflicted_selectable(): boolean;
         get conflictedSelectable(): boolean;
@@ -28766,7 +28766,7 @@ export namespace Anjuta {
         get status_codes(): VcsStatus;
         get statusCodes(): VcsStatus;
 
-        // Constructors of Anjuta.VcsStatusTreeView
+        // Constructors
 
         constructor(properties?: Partial<VcsStatusTreeView.ConstructorProps>, ...args: any[]);
 
@@ -28774,7 +28774,7 @@ export namespace Anjuta {
 
         static ['new'](): VcsStatusTreeView;
 
-        // Own methods of Anjuta.VcsStatusTreeView
+        // Methods
 
         add(path: string, status: VcsStatus, selected: boolean): void;
         // Conflicted with Gtk.Container.add
@@ -29289,7 +29289,7 @@ export namespace Anjuta {
     abstract class AsyncCommandPriv {
         static $gtype: GObject.GType<AsyncCommandPriv>;
 
-        // Constructors of Anjuta.AsyncCommandPriv
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -29298,7 +29298,7 @@ export namespace Anjuta {
     abstract class AsyncNotifyPriv {
         static $gtype: GObject.GType<AsyncNotifyPriv>;
 
-        // Constructors of Anjuta.AsyncNotifyPriv
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -29311,7 +29311,7 @@ export namespace Anjuta {
     abstract class CellRendererDiffPrivate {
         static $gtype: GObject.GType<CellRendererDiffPrivate>;
 
-        // Constructors of Anjuta.CellRendererDiffPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -29320,7 +29320,7 @@ export namespace Anjuta {
     abstract class CloseButtonClassPrivate {
         static $gtype: GObject.GType<CloseButtonClassPrivate>;
 
-        // Constructors of Anjuta.CloseButtonClassPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -29329,7 +29329,7 @@ export namespace Anjuta {
     abstract class ColumnTextViewPriv {
         static $gtype: GObject.GType<ColumnTextViewPriv>;
 
-        // Constructors of Anjuta.ColumnTextViewPriv
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -29342,7 +29342,7 @@ export namespace Anjuta {
     class CommandBarEntry {
         static $gtype: GObject.GType<CommandBarEntry>;
 
-        // Own fields of Anjuta.CommandBarEntry
+        // Fields
 
         type: CommandBarEntryType;
         action_name: string;
@@ -29351,7 +29351,7 @@ export namespace Anjuta {
         stock_icon: string;
         callback: GObject.Callback;
 
-        // Constructors of Anjuta.CommandBarEntry
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -29359,7 +29359,7 @@ export namespace Anjuta {
     abstract class CommandBarPriv {
         static $gtype: GObject.GType<CommandBarPriv>;
 
-        // Constructors of Anjuta.CommandBarPriv
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -29368,7 +29368,7 @@ export namespace Anjuta {
     abstract class CommandPriv {
         static $gtype: GObject.GType<CommandPriv>;
 
-        // Constructors of Anjuta.CommandPriv
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -29377,7 +29377,7 @@ export namespace Anjuta {
     abstract class CommandQueuePriv {
         static $gtype: GObject.GType<CommandQueuePriv>;
 
-        // Constructors of Anjuta.CommandQueuePriv
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -29386,7 +29386,7 @@ export namespace Anjuta {
     abstract class CompletionPrivate {
         static $gtype: GObject.GType<CompletionPrivate>;
 
-        // Constructors of Anjuta.CompletionPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -29396,7 +29396,7 @@ export namespace Anjuta {
     abstract class DockPanePriv {
         static $gtype: GObject.GType<DockPanePriv>;
 
-        // Constructors of Anjuta.DockPanePriv
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -29404,7 +29404,7 @@ export namespace Anjuta {
     abstract class DockPriv {
         static $gtype: GObject.GType<DockPriv>;
 
-        // Constructors of Anjuta.DockPriv
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -29413,18 +29413,18 @@ export namespace Anjuta {
     abstract class Encoding {
         static $gtype: GObject.GType<Encoding>;
 
-        // Constructors of Anjuta.Encoding
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own static methods of Anjuta.Encoding
+        // Static methods
 
         static get_current(): Encoding;
         static get_from_charset(charset: string): Encoding;
         static get_from_index(index: number): Encoding;
         static get_utf8(): Encoding;
 
-        // Own methods of Anjuta.Encoding
+        // Methods
 
         /**
          * Makes a copy of the given encoding.
@@ -29446,7 +29446,7 @@ export namespace Anjuta {
     abstract class EntryPriv {
         static $gtype: GObject.GType<EntryPriv>;
 
-        // Constructors of Anjuta.EntryPriv
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -29456,7 +29456,7 @@ export namespace Anjuta {
     abstract class FileDropEntryPriv {
         static $gtype: GObject.GType<FileDropEntryPriv>;
 
-        // Constructors of Anjuta.FileDropEntryPriv
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -29465,7 +29465,7 @@ export namespace Anjuta {
     abstract class FileListPriv {
         static $gtype: GObject.GType<FileListPriv>;
 
-        // Constructors of Anjuta.FileListPriv
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -29473,14 +29473,14 @@ export namespace Anjuta {
     class LanguageProposalData {
         static $gtype: GObject.GType<LanguageProposalData>;
 
-        // Own fields of Anjuta.LanguageProposalData
+        // Fields
 
         name: string;
         info: string;
         is_func: boolean;
         has_para: boolean;
 
-        // Constructors of Anjuta.LanguageProposalData
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -29495,7 +29495,7 @@ export namespace Anjuta {
 
         static ['new'](name: string): LanguageProposalData;
 
-        // Own methods of Anjuta.LanguageProposalData
+        // Methods
 
         /**
          * Free the given proposal data
@@ -29507,7 +29507,7 @@ export namespace Anjuta {
     abstract class LanguageProviderPriv {
         static $gtype: GObject.GType<LanguageProviderPriv>;
 
-        // Constructors of Anjuta.LanguageProviderPriv
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -29516,7 +29516,7 @@ export namespace Anjuta {
     abstract class LauncherPriv {
         static $gtype: GObject.GType<LauncherPriv>;
 
-        // Constructors of Anjuta.LauncherPriv
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -29525,7 +29525,7 @@ export namespace Anjuta {
     abstract class PkgConfigChooserPrivate {
         static $gtype: GObject.GType<PkgConfigChooserPrivate>;
 
-        // Constructors of Anjuta.PkgConfigChooserPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -29534,7 +29534,7 @@ export namespace Anjuta {
     abstract class PkgScannerPrivate {
         static $gtype: GObject.GType<PkgScannerPrivate>;
 
-        // Constructors of Anjuta.PkgScannerPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -29543,7 +29543,7 @@ export namespace Anjuta {
     class PluginDescription {
         static $gtype: GObject.GType<PluginDescription>;
 
-        // Constructors of Anjuta.PluginDescription
+        // Constructors
 
         constructor(filename: string);
         _init(...args: any[]): void;
@@ -29552,7 +29552,7 @@ export namespace Anjuta {
 
         static new_from_string(data: string): PluginDescription;
 
-        // Own methods of Anjuta.PluginDescription
+        // Methods
 
         copy(): PluginDescription;
         /**
@@ -29628,7 +29628,7 @@ export namespace Anjuta {
     abstract class PluginHandlePriv {
         static $gtype: GObject.GType<PluginHandlePriv>;
 
-        // Constructors of Anjuta.PluginHandlePriv
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -29637,7 +29637,7 @@ export namespace Anjuta {
     abstract class PluginManagerPriv {
         static $gtype: GObject.GType<PluginManagerPriv>;
 
-        // Constructors of Anjuta.PluginManagerPriv
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -29645,7 +29645,7 @@ export namespace Anjuta {
     abstract class PluginPrivate {
         static $gtype: GObject.GType<PluginPrivate>;
 
-        // Constructors of Anjuta.PluginPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -29655,7 +29655,7 @@ export namespace Anjuta {
     abstract class PreferencesDialogPrivate {
         static $gtype: GObject.GType<PreferencesDialogPrivate>;
 
-        // Constructors of Anjuta.PreferencesDialogPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -29663,7 +29663,7 @@ export namespace Anjuta {
     abstract class PreferencesPriv {
         static $gtype: GObject.GType<PreferencesPriv>;
 
-        // Constructors of Anjuta.PreferencesPriv
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -29673,7 +29673,7 @@ export namespace Anjuta {
     abstract class ProfileManagerPriv {
         static $gtype: GObject.GType<ProfileManagerPriv>;
 
-        // Constructors of Anjuta.ProfileManagerPriv
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -29681,7 +29681,7 @@ export namespace Anjuta {
     abstract class ProfilePriv {
         static $gtype: GObject.GType<ProfilePriv>;
 
-        // Constructors of Anjuta.ProfilePriv
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -29690,18 +29690,18 @@ export namespace Anjuta {
     class ProjectNodeInfo {
         static $gtype: GObject.GType<ProjectNodeInfo>;
 
-        // Own fields of Anjuta.ProjectNodeInfo
+        // Fields
 
         mime_type: string;
 
-        // Constructors of Anjuta.ProjectNodeInfo
+        // Constructors
 
         constructor(type: ProjectNodeType, name: string, mime_type: string);
         _init(...args: any[]): void;
 
         static ['new'](type: ProjectNodeType, name: string, mime_type: string): ProjectNodeInfo;
 
-        // Own methods of Anjuta.ProjectNodeInfo
+        // Methods
 
         copy(): ProjectNodeInfo;
         free(): void;
@@ -29714,20 +29714,20 @@ export namespace Anjuta {
     class ProjectProperty {
         static $gtype: GObject.GType<ProjectProperty>;
 
-        // Own fields of Anjuta.ProjectProperty
+        // Fields
 
         name: string;
         value: string;
         user_data: any;
 
-        // Constructors of Anjuta.ProjectProperty
+        // Constructors
 
         constructor(value: string, name?: string | null, user_data?: any | null);
         _init(...args: any[]): void;
 
         static ['new'](value: string, name?: string | null, user_data?: any | null): ProjectProperty;
 
-        // Own methods of Anjuta.ProjectProperty
+        // Methods
 
         copy(): ProjectProperty;
         free(): void;
@@ -29736,7 +29736,7 @@ export namespace Anjuta {
     class ProjectPropertyInfo {
         static $gtype: GObject.GType<ProjectPropertyInfo>;
 
-        // Own fields of Anjuta.ProjectPropertyInfo
+        // Fields
 
         id: string;
         name: string;
@@ -29745,7 +29745,7 @@ export namespace Anjuta {
         description: string;
         user_data: any;
 
-        // Constructors of Anjuta.ProjectPropertyInfo
+        // Constructors
 
         constructor(
             id: string,
@@ -29768,7 +29768,7 @@ export namespace Anjuta {
             user_data?: any | null,
         ): ProjectPropertyInfo;
 
-        // Own methods of Anjuta.ProjectPropertyInfo
+        // Methods
 
         copy(): ProjectPropertyInfo;
         free(): void;
@@ -29777,7 +29777,7 @@ export namespace Anjuta {
     abstract class Property {
         static $gtype: GObject.GType<Property>;
 
-        // Constructors of Anjuta.Property
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -29786,7 +29786,7 @@ export namespace Anjuta {
     abstract class SavePromptPrivate {
         static $gtype: GObject.GType<SavePromptPrivate>;
 
-        // Constructors of Anjuta.SavePromptPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -29795,7 +29795,7 @@ export namespace Anjuta {
     abstract class SerializerPrivate {
         static $gtype: GObject.GType<SerializerPrivate>;
 
-        // Constructors of Anjuta.SerializerPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -29804,7 +29804,7 @@ export namespace Anjuta {
     abstract class SessionPriv {
         static $gtype: GObject.GType<SessionPriv>;
 
-        // Constructors of Anjuta.SessionPriv
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -29814,7 +29814,7 @@ export namespace Anjuta {
     abstract class StatusPriv {
         static $gtype: GObject.GType<StatusPriv>;
 
-        // Constructors of Anjuta.StatusPriv
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -29824,7 +29824,7 @@ export namespace Anjuta {
     abstract class TabberPriv {
         static $gtype: GObject.GType<TabberPriv>;
 
-        // Constructors of Anjuta.TabberPriv
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -29832,11 +29832,11 @@ export namespace Anjuta {
     abstract class Token {
         static $gtype: GObject.GType<Token>;
 
-        // Constructors of Anjuta.Token
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of Anjuta.Token
+        // Methods
 
         check(): boolean;
         clear_flags(flags: number): void;
@@ -29861,13 +29861,13 @@ export namespace Anjuta {
     class TokenFileLocation {
         static $gtype: GObject.GType<TokenFileLocation>;
 
-        // Own fields of Anjuta.TokenFileLocation
+        // Fields
 
         filename: string;
         line: number;
         column: number;
 
-        // Constructors of Anjuta.TokenFileLocation
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -29882,11 +29882,11 @@ export namespace Anjuta {
     abstract class TokenStream {
         static $gtype: GObject.GType<TokenStream>;
 
-        // Constructors of Anjuta.TokenStream
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of Anjuta.TokenStream
+        // Methods
 
         /**
          * Append an already existing token in the output stream.
@@ -29931,11 +29931,11 @@ export namespace Anjuta {
     abstract class TokenStyle {
         static $gtype: GObject.GType<TokenStyle>;
 
-        // Constructors of Anjuta.TokenStyle
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of Anjuta.TokenStyle
+        // Methods
 
         format(list: Token): void;
         free(): void;
@@ -29946,7 +29946,7 @@ export namespace Anjuta {
     abstract class TreeComboBoxPrivate {
         static $gtype: GObject.GType<TreeComboBoxPrivate>;
 
-        // Constructors of Anjuta.TreeComboBoxPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -29955,7 +29955,7 @@ export namespace Anjuta {
     abstract class UIPrivate {
         static $gtype: GObject.GType<UIPrivate>;
 
-        // Constructors of Anjuta.UIPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -29963,12 +29963,12 @@ export namespace Anjuta {
     class UtilStringMap {
         static $gtype: GObject.GType<UtilStringMap>;
 
-        // Own fields of Anjuta.UtilStringMap
+        // Fields
 
         type: number;
         name: string;
 
-        // Constructors of Anjuta.UtilStringMap
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -29983,7 +29983,7 @@ export namespace Anjuta {
     abstract class VcsStatusTreeViewPriv {
         static $gtype: GObject.GType<VcsStatusTreeViewPriv>;
 
-        // Constructors of Anjuta.VcsStatusTreeViewPriv
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -29999,7 +29999,7 @@ export namespace Anjuta {
         prototype: Shell;
     }
     interface Shell extends GObject.Object {
-        // Own methods of Anjuta.Shell
+        // Methods
 
         /**
          * Sets a value in the shell with the given name. Any previous value will
@@ -30185,7 +30185,7 @@ export namespace Anjuta {
          */
         unmaximize(): void;
 
-        // Own virtual methods of Anjuta.Shell
+        // Virtual methods
 
         /**
          * Sets a value in the shell with the given name. Any previous value will

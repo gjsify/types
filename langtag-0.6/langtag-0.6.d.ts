@@ -154,7 +154,7 @@ export namespace LangTag {
     class DbVal {
         static $gtype: GObject.GType<DbVal>;
 
-        // Constructors of LangTag.DbVal
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -166,14 +166,14 @@ export namespace LangTag {
     class Error {
         static $gtype: GObject.GType<Error>;
 
-        // Constructors of LangTag.Error
+        // Constructors
 
         constructor(properties?: Partial<{}>);
         _init(...args: any[]): void;
 
         static ['new'](): Error;
 
-        // Own methods of LangTag.Error
+        // Methods
 
         /**
          * Clean up all of the errors in `error`.
@@ -211,11 +211,11 @@ export namespace LangTag {
     abstract class ExtModule {
         static $gtype: GObject.GType<ExtModule>;
 
-        // Constructors of LangTag.ExtModule
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of LangTag.ExtModule
+        // Methods
 
         /**
          * Increases the reference count of `module`.
@@ -236,11 +236,11 @@ export namespace LangTag {
     class ExtModuleData {
         static $gtype: GObject.GType<ExtModuleData>;
 
-        // Own fields of LangTag.ExtModuleData
+        // Fields
 
         dummy: Pointer[];
 
-        // Constructors of LangTag.ExtModuleData
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -251,7 +251,7 @@ export namespace LangTag {
 
         static ['new'](size: number, finalizer: DestroyFunc): ExtModuleData;
 
-        // Own methods of LangTag.ExtModuleData
+        // Methods
 
         /**
          * Increases the reference count of `data`.
@@ -273,7 +273,7 @@ export namespace LangTag {
     class ExtModuleFuncs {
         static $gtype: GObject.GType<ExtModuleFuncs>;
 
-        // Own fields of LangTag.ExtModuleFuncs
+        // Fields
 
         get_singleton: ExtModuleSingletonFunc;
         create_data: ExtModuleDataNewFunc;
@@ -282,7 +282,7 @@ export namespace LangTag {
         get_tag: ExtModuleGetTagFunc;
         validate_tag: ExtModuleValidateFunc;
 
-        // Constructors of LangTag.ExtModuleFuncs
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -294,11 +294,11 @@ export namespace LangTag {
     abstract class Extension {
         static $gtype: GObject.GType<Extension>;
 
-        // Constructors of LangTag.Extension
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of LangTag.Extension
+        // Methods
 
         /**
          * Compare if `v1` and `v2` is the same object or not.
@@ -340,11 +340,11 @@ export namespace LangTag {
     abstract class Extlang {
         static $gtype: GObject.GType<Extlang>;
 
-        // Constructors of LangTag.Extlang
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of LangTag.Extlang
+        // Methods
 
         /**
          * Compares if `v1` and `v2` is the same object or not.
@@ -405,14 +405,14 @@ export namespace LangTag {
     class ExtlangDb {
         static $gtype: GObject.GType<ExtlangDb>;
 
-        // Constructors of LangTag.ExtlangDb
+        // Constructors
 
         constructor(properties?: Partial<{}>);
         _init(...args: any[]): void;
 
         static ['new'](): ExtlangDb;
 
-        // Own methods of LangTag.ExtlangDb
+        // Methods
 
         /**
          * Lookup `LtExtlang` if `subtag` is valid and registered into the database.
@@ -439,11 +439,11 @@ export namespace LangTag {
     abstract class Grandfathered {
         static $gtype: GObject.GType<Grandfathered>;
 
-        // Constructors of LangTag.Grandfathered
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of LangTag.Grandfathered
+        // Methods
 
         /**
          * Compare if `v1` and `v2` is the same object or not.
@@ -496,14 +496,14 @@ export namespace LangTag {
     class GrandfatheredDb {
         static $gtype: GObject.GType<GrandfatheredDb>;
 
-        // Constructors of LangTag.GrandfatheredDb
+        // Constructors
 
         constructor(properties?: Partial<{}>);
         _init(...args: any[]): void;
 
         static ['new'](): GrandfatheredDb;
 
-        // Own methods of LangTag.GrandfatheredDb
+        // Methods
 
         /**
          * Lookup `LtGrandfathered` if `tag` is valid and registered into the database.
@@ -530,11 +530,11 @@ export namespace LangTag {
     abstract class Iter {
         static $gtype: GObject.GType<Iter>;
 
-        // Constructors of LangTag.Iter
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own static methods of LangTag.Iter
+        // Static methods
 
         /**
          * Initialize the iterator with `tmpl` object. this function has to be called
@@ -557,7 +557,7 @@ export namespace LangTag {
          */
         static init(tmpl: IterTmpl): Iter;
 
-        // Own methods of LangTag.Iter
+        // Methods
 
         /**
          * Finalize the iterator and free its memory.
@@ -591,7 +591,7 @@ export namespace LangTag {
     abstract class IterTmpl {
         static $gtype: GObject.GType<IterTmpl>;
 
-        // Constructors of LangTag.IterTmpl
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -603,11 +603,11 @@ export namespace LangTag {
     abstract class Lang {
         static $gtype: GObject.GType<Lang>;
 
-        // Constructors of LangTag.Lang
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of LangTag.Lang
+        // Methods
 
         /**
          * Compare if `v1` and `v2` is the same object or not.
@@ -679,14 +679,14 @@ export namespace LangTag {
     class LangDb {
         static $gtype: GObject.GType<LangDb>;
 
-        // Constructors of LangTag.LangDb
+        // Constructors
 
         constructor(properties?: Partial<{}>);
         _init(...args: any[]): void;
 
         static ['new'](): LangDb;
 
-        // Own methods of LangTag.LangDb
+        // Methods
 
         /**
          * Lookup `LtLang` if `subtag` is valid and registered into the database.
@@ -713,14 +713,14 @@ export namespace LangTag {
     class List {
         static $gtype: GObject.GType<List>;
 
-        // Constructors of LangTag.List
+        // Constructors
 
         constructor(properties?: Partial<{}>);
         _init(...args: any[]): void;
 
         static ['new'](): List;
 
-        // Own static methods of LangTag.List
+        // Static methods
 
         /**
          * Frees all of the memory used by a #LtList.
@@ -728,7 +728,7 @@ export namespace LangTag {
          */
         static free(data: Pointer): void;
 
-        // Own methods of LangTag.List
+        // Methods
 
         /**
          * Adds a new element on to the end of the list.
@@ -848,11 +848,11 @@ export namespace LangTag {
     abstract class Redundant {
         static $gtype: GObject.GType<Redundant>;
 
-        // Constructors of LangTag.Redundant
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of LangTag.Redundant
+        // Methods
 
         /**
          * Compare if `v1` and `v2` is the same object or not.
@@ -905,14 +905,14 @@ export namespace LangTag {
     class RedundantDb {
         static $gtype: GObject.GType<RedundantDb>;
 
-        // Constructors of LangTag.RedundantDb
+        // Constructors
 
         constructor(properties?: Partial<{}>);
         _init(...args: any[]): void;
 
         static ['new'](): RedundantDb;
 
-        // Own methods of LangTag.RedundantDb
+        // Methods
 
         /**
          * Lookup `LtRedundant` if `tag` is valid and registered into the database.
@@ -939,11 +939,11 @@ export namespace LangTag {
     abstract class Region {
         static $gtype: GObject.GType<Region>;
 
-        // Constructors of LangTag.Region
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of LangTag.Region
+        // Methods
 
         /**
          * Compare if `v1` and `v2` is the same object or not.
@@ -996,14 +996,14 @@ export namespace LangTag {
     class RegionDb {
         static $gtype: GObject.GType<RegionDb>;
 
-        // Constructors of LangTag.RegionDb
+        // Constructors
 
         constructor(properties?: Partial<{}>);
         _init(...args: any[]): void;
 
         static ['new'](): RegionDb;
 
-        // Own methods of LangTag.RegionDb
+        // Methods
 
         /**
          * Lookup `LtRegion` if `language_or_code` is valid and registered into
@@ -1031,14 +1031,14 @@ export namespace LangTag {
     class RelationDb {
         static $gtype: GObject.GType<RelationDb>;
 
-        // Constructors of LangTag.RelationDb
+        // Constructors
 
         constructor(properties?: Partial<{}>);
         _init(...args: any[]): void;
 
         static ['new'](): RelationDb;
 
-        // Own methods of LangTag.RelationDb
+        // Methods
 
         /**
          * Look up the languages corresponding to the script `script`.
@@ -1071,11 +1071,11 @@ export namespace LangTag {
     abstract class Script {
         static $gtype: GObject.GType<Script>;
 
-        // Constructors of LangTag.Script
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of LangTag.Script
+        // Methods
 
         /**
          * Compare if `v1` and `v2` is the same object or not.
@@ -1121,14 +1121,14 @@ export namespace LangTag {
     class ScriptDb {
         static $gtype: GObject.GType<ScriptDb>;
 
-        // Constructors of LangTag.ScriptDb
+        // Constructors
 
         constructor(properties?: Partial<{}>);
         _init(...args: any[]): void;
 
         static ['new'](): ScriptDb;
 
-        // Own methods of LangTag.ScriptDb
+        // Methods
 
         /**
          * Lookup `LtScript` if `subtag` is valid and registered into the database.
@@ -1155,14 +1155,14 @@ export namespace LangTag {
     class String {
         static $gtype: GObject.GType<String>;
 
-        // Constructors of LangTag.String
+        // Constructors
 
         constructor(string: string);
         _init(...args: any[]): void;
 
         static ['new'](string: string): String;
 
-        // Own methods of LangTag.String
+        // Methods
 
         /**
          * Adds a string onto the end of a #LtString, expanding
@@ -1236,14 +1236,14 @@ export namespace LangTag {
     class Tag {
         static $gtype: GObject.GType<Tag>;
 
-        // Constructors of LangTag.Tag
+        // Constructors
 
         constructor(properties?: Partial<{}>);
         _init(...args: any[]): void;
 
         static ['new'](): Tag;
 
-        // Own static methods of LangTag.Tag
+        // Static methods
 
         /**
          * Convert current locale to the language tag.
@@ -1257,7 +1257,7 @@ export namespace LangTag {
          */
         static convert_from_locale_string(locale: string, error?: Error | null): Tag;
 
-        // Own methods of LangTag.Tag
+        // Methods
 
         /**
          * Canonicalize the language tag according to various information of subtags.
@@ -1401,11 +1401,11 @@ export namespace LangTag {
     abstract class Variant {
         static $gtype: GObject.GType<Variant>;
 
-        // Constructors of LangTag.Variant
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of LangTag.Variant
+        // Methods
 
         /**
          * Compare if `v1` and `v2` is the same object or not.
@@ -1466,14 +1466,14 @@ export namespace LangTag {
     class VariantDb {
         static $gtype: GObject.GType<VariantDb>;
 
-        // Constructors of LangTag.VariantDb
+        // Constructors
 
         constructor(properties?: Partial<{}>);
         _init(...args: any[]): void;
 
         static ['new'](): VariantDb;
 
-        // Own methods of LangTag.VariantDb
+        // Methods
 
         /**
          * Lookup `LtVariant` if `subtag` is valid and registered into the database.

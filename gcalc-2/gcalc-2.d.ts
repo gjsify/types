@@ -31,11 +31,11 @@ export namespace GCalc {
     class AssigError extends GLib.Error {
         static $gtype: GObject.GType<AssigError>;
 
-        // Static fields of GCalc.AssigError
+        // Static fields
 
         static INVALID_STRUCTURE_ERROR: number;
 
-        // Constructors of GCalc.AssigError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
@@ -44,12 +44,12 @@ export namespace GCalc {
     class FunctionError extends GLib.Error {
         static $gtype: GObject.GType<FunctionError>;
 
-        // Static fields of GCalc.FunctionError
+        // Static fields
 
         static INVALID_PARAMETERS_ERROR: number;
         static INVOCATION_ERROR: number;
 
-        // Constructors of GCalc.FunctionError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
@@ -58,12 +58,12 @@ export namespace GCalc {
     class GroupError extends GLib.Error {
         static $gtype: GObject.GType<GroupError>;
 
-        // Static fields of GCalc.GroupError
+        // Static fields
 
         static INVALID_POLYNOMIAL: number;
         static INVALID_INTERNAL_TERM: number;
 
-        // Constructors of GCalc.GroupError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
@@ -72,12 +72,12 @@ export namespace GCalc {
     class TermError extends GLib.Error {
         static $gtype: GObject.GType<TermError>;
 
-        // Static fields of GCalc.TermError
+        // Static fields
 
         static INVALID_OPERATOR: number;
         static EVALUATION_FAIL: number;
 
-        // Constructors of GCalc.TermError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
@@ -86,13 +86,13 @@ export namespace GCalc {
     class VariableError extends GLib.Error {
         static $gtype: GObject.GType<VariableError>;
 
-        // Static fields of GCalc.VariableError
+        // Static fields
 
         static INVALID_PARENT: number;
         static INVALID_EXPRESSION_DEFINITION: number;
         static EVALUATION_FAIL: number;
 
-        // Constructors of GCalc.VariableError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
@@ -101,12 +101,12 @@ export namespace GCalc {
     class ParserError extends GLib.Error {
         static $gtype: GObject.GType<ParserError>;
 
-        // Static fields of GCalc.ParserError
+        // Static fields
 
         static INVALID_TOKEN_ERROR: number;
         static INVALID_EXPRESSION_ERROR: number;
 
-        // Constructors of GCalc.ParserError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
@@ -115,11 +115,11 @@ export namespace GCalc {
     class SolverError extends GLib.Error {
         static $gtype: GObject.GType<SolverError>;
 
-        // Static fields of GCalc.SolverError
+        // Static fields
 
         static EXPRESSION_ERROR: number;
 
-        // Constructors of GCalc.SolverError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
@@ -196,7 +196,7 @@ export namespace GCalc {
     class Assign extends Expression implements MathOperator, MathBinaryOperator, MathAssign {
         static $gtype: GObject.GType<Assign>;
 
-        // Constructors of GCalc.Assign
+        // Constructors
 
         constructor(properties?: Partial<Assign.ConstructorProps>, ...args: any[]);
 
@@ -617,7 +617,7 @@ export namespace GCalc {
     class Calculator extends GObject.Object {
         static $gtype: GObject.GType<Calculator>;
 
-        // Constructors of GCalc.Calculator
+        // Constructors
 
         constructor(properties?: Partial<Calculator.ConstructorProps>, ...args: any[]);
 
@@ -625,7 +625,7 @@ export namespace GCalc {
 
         static ['new'](): Calculator;
 
-        // Own static methods of GCalc.Calculator
+        // Static methods
 
         static add(c1: MathConstant, c2: MathConstant): MathConstant;
         static subtract(c1: MathConstant, c2: MathConstant): MathConstant;
@@ -668,7 +668,7 @@ export namespace GCalc {
     {
         static $gtype: GObject.GType<Constant>;
 
-        // Constructors of GCalc.Constant
+        // Constructors
 
         constructor(properties?: Partial<Constant.ConstructorProps>, ...args: any[]);
 
@@ -1130,7 +1130,7 @@ export namespace GCalc {
     class Division extends Expression implements MathOperator, MathBinaryOperator, MathDivision {
         static $gtype: GObject.GType<Division>;
 
-        // Constructors of GCalc.Division
+        // Constructors
 
         constructor(properties?: Partial<Division.ConstructorProps>, ...args: any[]);
 
@@ -1550,7 +1550,7 @@ export namespace GCalc {
     class Equation extends Expression implements MathEquation {
         static $gtype: GObject.GType<Equation>;
 
-        // Constructors of GCalc.Equation
+        // Constructors
 
         constructor(properties?: Partial<Equation.ConstructorProps>, ...args: any[]);
 
@@ -1975,7 +1975,7 @@ export namespace GCalc {
     class EquationManager extends GObject.Object implements MathEquationManager {
         static $gtype: GObject.GType<EquationManager>;
 
-        // Constructors of GCalc.EquationManager
+        // Constructors
 
         constructor(properties?: Partial<EquationManager.ConstructorProps>, ...args: any[]);
 
@@ -2408,7 +2408,7 @@ export namespace GCalc {
     class ErrorResult extends GObject.Object implements MathResult, MathErrorResult {
         static $gtype: GObject.GType<ErrorResult>;
 
-        // Constructors of GCalc.ErrorResult
+        // Constructors
 
         constructor(properties?: Partial<ErrorResult.ConstructorProps>, ...args: any[]);
 
@@ -2838,7 +2838,7 @@ export namespace GCalc {
     class Expression extends GObject.Object implements MathExpression {
         static $gtype: GObject.GType<Expression>;
 
-        // Constructors of GCalc.Expression
+        // Constructors
 
         constructor(properties?: Partial<Expression.ConstructorProps>, ...args: any[]);
 
@@ -2846,12 +2846,12 @@ export namespace GCalc {
 
         static ['new'](): Expression;
 
-        // Own virtual methods of GCalc.Expression
+        // Virtual methods
 
         vfunc_to_string(): string;
         vfunc_solve(): MathResult;
 
-        // Own methods of GCalc.Expression
+        // Methods
 
         to_string(): string;
         solve(): MathResult;
@@ -3279,7 +3279,7 @@ export namespace GCalc {
     class ErrorExpression extends Expression {
         static $gtype: GObject.GType<ErrorExpression>;
 
-        // Constructors of GCalc.ErrorExpression
+        // Constructors
 
         constructor(properties?: Partial<ErrorExpression.ConstructorProps>, ...args: any[]);
 
@@ -3304,12 +3304,12 @@ export namespace GCalc {
     {
         static $gtype: GObject.GType<ExpressionContainer>;
 
-        // Own properties of GCalc.ExpressionContainer
+        // Properties
 
         get parent(): MathExpression;
         set parent(val: MathExpression);
 
-        // Constructors of GCalc.ExpressionContainer
+        // Constructors
 
         constructor(properties?: Partial<ExpressionContainer.ConstructorProps>, ...args: any[]);
 
@@ -3317,7 +3317,7 @@ export namespace GCalc {
 
         static ['new'](): ExpressionContainer;
 
-        // Own methods of GCalc.ExpressionContainer
+        // Methods
 
         get_object<T = GObject.Object>(position: number): T;
         find(exp: MathExpression): MathExpression | null;
@@ -3835,12 +3835,12 @@ export namespace GCalc {
     class ExpressionHashMap extends Gee.HashMap {
         static $gtype: GObject.GType<ExpressionHashMap>;
 
-        // Own properties of GCalc.ExpressionHashMap
+        // Properties
 
         get parent(): MathExpression;
         set parent(val: MathExpression);
 
-        // Constructors of GCalc.ExpressionHashMap
+        // Constructors
 
         constructor(properties?: Partial<ExpressionHashMap.ConstructorProps>, ...args: any[]);
 
@@ -3848,7 +3848,7 @@ export namespace GCalc {
 
         static ['new'](): ExpressionHashMap;
 
-        // Own methods of GCalc.ExpressionHashMap
+        // Methods
 
         add(exp: MathExpression): void;
         remove(exp: MathExpression): void;
@@ -3871,7 +3871,7 @@ export namespace GCalc {
     class Function extends Expression implements MathFunction, Hashable {
         static $gtype: GObject.GType<Function>;
 
-        // Constructors of GCalc.Function
+        // Constructors
 
         constructor(properties?: Partial<Function.ConstructorProps>, ...args: any[]);
 
@@ -3881,11 +3881,11 @@ export namespace GCalc {
 
         static ['new'](): Function;
 
-        // Own virtual methods of GCalc.Function
+        // Virtual methods
 
         vfunc_evaluate(): MathExpression;
 
-        // Own methods of GCalc.Function
+        // Methods
 
         evaluate(): MathExpression;
 
@@ -4331,7 +4331,7 @@ export namespace GCalc {
     class FunctionAcos extends Function {
         static $gtype: GObject.GType<FunctionAcos>;
 
-        // Constructors of GCalc.FunctionAcos
+        // Constructors
 
         constructor(properties?: Partial<FunctionAcos.ConstructorProps>, ...args: any[]);
 
@@ -4349,7 +4349,7 @@ export namespace GCalc {
     class FunctionAcosh extends Function {
         static $gtype: GObject.GType<FunctionAcosh>;
 
-        // Constructors of GCalc.FunctionAcosh
+        // Constructors
 
         constructor(properties?: Partial<FunctionAcosh.ConstructorProps>, ...args: any[]);
 
@@ -4367,7 +4367,7 @@ export namespace GCalc {
     class FunctionAsin extends Function {
         static $gtype: GObject.GType<FunctionAsin>;
 
-        // Constructors of GCalc.FunctionAsin
+        // Constructors
 
         constructor(properties?: Partial<FunctionAsin.ConstructorProps>, ...args: any[]);
 
@@ -4385,7 +4385,7 @@ export namespace GCalc {
     class FunctionAsinh extends Function {
         static $gtype: GObject.GType<FunctionAsinh>;
 
-        // Constructors of GCalc.FunctionAsinh
+        // Constructors
 
         constructor(properties?: Partial<FunctionAsinh.ConstructorProps>, ...args: any[]);
 
@@ -4403,7 +4403,7 @@ export namespace GCalc {
     class FunctionAtan extends Function {
         static $gtype: GObject.GType<FunctionAtan>;
 
-        // Constructors of GCalc.FunctionAtan
+        // Constructors
 
         constructor(properties?: Partial<FunctionAtan.ConstructorProps>, ...args: any[]);
 
@@ -4421,7 +4421,7 @@ export namespace GCalc {
     class FunctionAtanh extends Function {
         static $gtype: GObject.GType<FunctionAtanh>;
 
-        // Constructors of GCalc.FunctionAtanh
+        // Constructors
 
         constructor(properties?: Partial<FunctionAtanh.ConstructorProps>, ...args: any[]);
 
@@ -4439,7 +4439,7 @@ export namespace GCalc {
     class FunctionCos extends Function {
         static $gtype: GObject.GType<FunctionCos>;
 
-        // Constructors of GCalc.FunctionCos
+        // Constructors
 
         constructor(properties?: Partial<FunctionCos.ConstructorProps>, ...args: any[]);
 
@@ -4457,7 +4457,7 @@ export namespace GCalc {
     class FunctionCosh extends Function {
         static $gtype: GObject.GType<FunctionCosh>;
 
-        // Constructors of GCalc.FunctionCosh
+        // Constructors
 
         constructor(properties?: Partial<FunctionCosh.ConstructorProps>, ...args: any[]);
 
@@ -4475,7 +4475,7 @@ export namespace GCalc {
     class FunctionExp extends Function {
         static $gtype: GObject.GType<FunctionExp>;
 
-        // Constructors of GCalc.FunctionExp
+        // Constructors
 
         constructor(properties?: Partial<FunctionExp.ConstructorProps>, ...args: any[]);
 
@@ -4493,7 +4493,7 @@ export namespace GCalc {
     class FunctionLog extends Function {
         static $gtype: GObject.GType<FunctionLog>;
 
-        // Constructors of GCalc.FunctionLog
+        // Constructors
 
         constructor(properties?: Partial<FunctionLog.ConstructorProps>, ...args: any[]);
 
@@ -4511,7 +4511,7 @@ export namespace GCalc {
     class FunctionSin extends Function {
         static $gtype: GObject.GType<FunctionSin>;
 
-        // Constructors of GCalc.FunctionSin
+        // Constructors
 
         constructor(properties?: Partial<FunctionSin.ConstructorProps>, ...args: any[]);
 
@@ -4529,7 +4529,7 @@ export namespace GCalc {
     class FunctionSinh extends Function {
         static $gtype: GObject.GType<FunctionSinh>;
 
-        // Constructors of GCalc.FunctionSinh
+        // Constructors
 
         constructor(properties?: Partial<FunctionSinh.ConstructorProps>, ...args: any[]);
 
@@ -4547,7 +4547,7 @@ export namespace GCalc {
     class FunctionSqrt extends Function {
         static $gtype: GObject.GType<FunctionSqrt>;
 
-        // Constructors of GCalc.FunctionSqrt
+        // Constructors
 
         constructor(properties?: Partial<FunctionSqrt.ConstructorProps>, ...args: any[]);
 
@@ -4565,7 +4565,7 @@ export namespace GCalc {
     class FunctionTan extends Function {
         static $gtype: GObject.GType<FunctionTan>;
 
-        // Constructors of GCalc.FunctionTan
+        // Constructors
 
         constructor(properties?: Partial<FunctionTan.ConstructorProps>, ...args: any[]);
 
@@ -4583,7 +4583,7 @@ export namespace GCalc {
     class FunctionTanh extends Function {
         static $gtype: GObject.GType<FunctionTanh>;
 
-        // Constructors of GCalc.FunctionTanh
+        // Constructors
 
         constructor(properties?: Partial<FunctionTanh.ConstructorProps>, ...args: any[]);
 
@@ -4601,7 +4601,7 @@ export namespace GCalc {
     class Group extends Expression implements MathGroup {
         static $gtype: GObject.GType<Group>;
 
-        // Constructors of GCalc.Group
+        // Constructors
 
         constructor(properties?: Partial<Group.ConstructorProps>, ...args: any[]);
 
@@ -5041,7 +5041,7 @@ export namespace GCalc {
     class Minus extends Expression implements MathOperator, MathBinaryOperator, MathMinus {
         static $gtype: GObject.GType<Minus>;
 
-        // Constructors of GCalc.Minus
+        // Constructors
 
         constructor(properties?: Partial<Minus.ConstructorProps>, ...args: any[]);
 
@@ -5465,7 +5465,7 @@ export namespace GCalc {
     class Multiply extends Expression implements MathOperator, MathBinaryOperator, MathMultiply {
         static $gtype: GObject.GType<Multiply>;
 
-        // Constructors of GCalc.Multiply
+        // Constructors
 
         constructor(properties?: Partial<Multiply.ConstructorProps>, ...args: any[]);
 
@@ -5885,7 +5885,7 @@ export namespace GCalc {
     class Parameter extends Variable implements MathParameter {
         static $gtype: GObject.GType<Parameter>;
 
-        // Constructors of GCalc.Parameter
+        // Constructors
 
         constructor(properties?: Partial<Parameter.ConstructorProps>, ...args: any[]);
 
@@ -6320,7 +6320,7 @@ export namespace GCalc {
     class Parser extends GObject.Object {
         static $gtype: GObject.GType<Parser>;
 
-        // Constructors of GCalc.Parser
+        // Constructors
 
         constructor(properties?: Partial<Parser.ConstructorProps>, ...args: any[]);
 
@@ -6328,7 +6328,7 @@ export namespace GCalc {
 
         static ['new'](): Parser;
 
-        // Own methods of GCalc.Parser
+        // Methods
 
         parse(str: string, eqman: MathEquationManager): void;
         read_token(): ParserTokenType;
@@ -6348,7 +6348,7 @@ export namespace GCalc {
     class Plus extends Expression implements MathOperator, MathBinaryOperator, MathPlus {
         static $gtype: GObject.GType<Plus>;
 
-        // Constructors of GCalc.Plus
+        // Constructors
 
         constructor(properties?: Partial<Plus.ConstructorProps>, ...args: any[]);
 
@@ -6768,7 +6768,7 @@ export namespace GCalc {
     class Polynomial extends Expression implements MathPolynomial {
         static $gtype: GObject.GType<Polynomial>;
 
-        // Constructors of GCalc.Polynomial
+        // Constructors
 
         constructor(properties?: Partial<Polynomial.ConstructorProps>, ...args: any[]);
 
@@ -7193,7 +7193,7 @@ export namespace GCalc {
     class Pow extends Expression implements MathOperator, MathPow {
         static $gtype: GObject.GType<Pow>;
 
-        // Constructors of GCalc.Pow
+        // Constructors
 
         constructor(properties?: Partial<Pow.ConstructorProps>, ...args: any[]);
 
@@ -7613,7 +7613,7 @@ export namespace GCalc {
     class Result extends GObject.Object implements MathResult {
         static $gtype: GObject.GType<Result>;
 
-        // Constructors of GCalc.Result
+        // Constructors
 
         constructor(properties?: Partial<Result.ConstructorProps>, ...args: any[]);
 
@@ -8043,14 +8043,14 @@ export namespace GCalc {
     class Solver extends GObject.Object {
         static $gtype: GObject.GType<Solver>;
 
-        // Own properties of GCalc.Solver
+        // Properties
 
         get equation_manager(): MathEquationManager;
         set equation_manager(val: MathEquationManager);
         get equationManager(): MathEquationManager;
         set equationManager(val: MathEquationManager);
 
-        // Constructors of GCalc.Solver
+        // Constructors
 
         constructor(properties?: Partial<Solver.ConstructorProps>, ...args: any[]);
 
@@ -8058,7 +8058,7 @@ export namespace GCalc {
 
         static ['new'](): Solver;
 
-        // Own methods of GCalc.Solver
+        // Methods
 
         add_expression(exp: string): void;
         solve(str: string): MathResult;
@@ -8075,7 +8075,7 @@ export namespace GCalc {
     class Term extends Expression implements MathTerm {
         static $gtype: GObject.GType<Term>;
 
-        // Constructors of GCalc.Term
+        // Constructors
 
         constructor(properties?: Partial<Term.ConstructorProps>, ...args: any[]);
 
@@ -8499,7 +8499,7 @@ export namespace GCalc {
     class UnitConverter extends GObject.Object {
         static $gtype: GObject.GType<UnitConverter>;
 
-        // Constructors of GCalc.UnitConverter
+        // Constructors
 
         constructor(properties?: Partial<UnitConverter.ConstructorProps>, ...args: any[]);
 
@@ -8507,7 +8507,7 @@ export namespace GCalc {
 
         static ['new'](): UnitConverter;
 
-        // Own static methods of GCalc.UnitConverter
+        // Static methods
 
         static angle(c: MathConstant, ori: AngleUnit, dst: AngleUnit): MathConstant;
     }
@@ -8524,7 +8524,7 @@ export namespace GCalc {
     class Variable extends Expression implements MathVariable, Hashable {
         static $gtype: GObject.GType<Variable>;
 
-        // Constructors of GCalc.Variable
+        // Constructors
 
         constructor(properties?: Partial<Variable.ConstructorProps>, ...args: any[]);
 
@@ -8963,7 +8963,7 @@ export namespace GCalc {
     abstract class AssignPrivate {
         static $gtype: GObject.GType<AssignPrivate>;
 
-        // Constructors of GCalc.AssignPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -8972,7 +8972,7 @@ export namespace GCalc {
     abstract class CalculatorPrivate {
         static $gtype: GObject.GType<CalculatorPrivate>;
 
-        // Constructors of GCalc.CalculatorPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -8981,7 +8981,7 @@ export namespace GCalc {
     abstract class ConstantPrivate {
         static $gtype: GObject.GType<ConstantPrivate>;
 
-        // Constructors of GCalc.ConstantPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -8990,7 +8990,7 @@ export namespace GCalc {
     abstract class DivisionPrivate {
         static $gtype: GObject.GType<DivisionPrivate>;
 
-        // Constructors of GCalc.DivisionPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -8999,7 +8999,7 @@ export namespace GCalc {
     abstract class EquationPrivate {
         static $gtype: GObject.GType<EquationPrivate>;
 
-        // Constructors of GCalc.EquationPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -9008,7 +9008,7 @@ export namespace GCalc {
     abstract class EquationManagerPrivate {
         static $gtype: GObject.GType<EquationManagerPrivate>;
 
-        // Constructors of GCalc.EquationManagerPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -9017,7 +9017,7 @@ export namespace GCalc {
     abstract class ErrorResultPrivate {
         static $gtype: GObject.GType<ErrorResultPrivate>;
 
-        // Constructors of GCalc.ErrorResultPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -9026,7 +9026,7 @@ export namespace GCalc {
     abstract class ExpressionPrivate {
         static $gtype: GObject.GType<ExpressionPrivate>;
 
-        // Constructors of GCalc.ExpressionPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -9035,7 +9035,7 @@ export namespace GCalc {
     abstract class ErrorExpressionPrivate {
         static $gtype: GObject.GType<ErrorExpressionPrivate>;
 
-        // Constructors of GCalc.ErrorExpressionPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -9044,7 +9044,7 @@ export namespace GCalc {
     abstract class ExpressionContainerPrivate {
         static $gtype: GObject.GType<ExpressionContainerPrivate>;
 
-        // Constructors of GCalc.ExpressionContainerPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -9053,7 +9053,7 @@ export namespace GCalc {
     abstract class ExpressionHashMapPrivate {
         static $gtype: GObject.GType<ExpressionHashMapPrivate>;
 
-        // Constructors of GCalc.ExpressionHashMapPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -9062,7 +9062,7 @@ export namespace GCalc {
     abstract class FunctionPrivate {
         static $gtype: GObject.GType<FunctionPrivate>;
 
-        // Constructors of GCalc.FunctionPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -9071,7 +9071,7 @@ export namespace GCalc {
     abstract class FunctionAcosPrivate {
         static $gtype: GObject.GType<FunctionAcosPrivate>;
 
-        // Constructors of GCalc.FunctionAcosPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -9080,7 +9080,7 @@ export namespace GCalc {
     abstract class FunctionAcoshPrivate {
         static $gtype: GObject.GType<FunctionAcoshPrivate>;
 
-        // Constructors of GCalc.FunctionAcoshPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -9089,7 +9089,7 @@ export namespace GCalc {
     abstract class FunctionAsinPrivate {
         static $gtype: GObject.GType<FunctionAsinPrivate>;
 
-        // Constructors of GCalc.FunctionAsinPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -9098,7 +9098,7 @@ export namespace GCalc {
     abstract class FunctionAsinhPrivate {
         static $gtype: GObject.GType<FunctionAsinhPrivate>;
 
-        // Constructors of GCalc.FunctionAsinhPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -9107,7 +9107,7 @@ export namespace GCalc {
     abstract class FunctionAtanPrivate {
         static $gtype: GObject.GType<FunctionAtanPrivate>;
 
-        // Constructors of GCalc.FunctionAtanPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -9116,7 +9116,7 @@ export namespace GCalc {
     abstract class FunctionAtanhPrivate {
         static $gtype: GObject.GType<FunctionAtanhPrivate>;
 
-        // Constructors of GCalc.FunctionAtanhPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -9125,7 +9125,7 @@ export namespace GCalc {
     abstract class FunctionCosPrivate {
         static $gtype: GObject.GType<FunctionCosPrivate>;
 
-        // Constructors of GCalc.FunctionCosPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -9134,7 +9134,7 @@ export namespace GCalc {
     abstract class FunctionCoshPrivate {
         static $gtype: GObject.GType<FunctionCoshPrivate>;
 
-        // Constructors of GCalc.FunctionCoshPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -9143,7 +9143,7 @@ export namespace GCalc {
     abstract class FunctionExpPrivate {
         static $gtype: GObject.GType<FunctionExpPrivate>;
 
-        // Constructors of GCalc.FunctionExpPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -9152,7 +9152,7 @@ export namespace GCalc {
     abstract class FunctionLogPrivate {
         static $gtype: GObject.GType<FunctionLogPrivate>;
 
-        // Constructors of GCalc.FunctionLogPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -9161,7 +9161,7 @@ export namespace GCalc {
     abstract class FunctionSinPrivate {
         static $gtype: GObject.GType<FunctionSinPrivate>;
 
-        // Constructors of GCalc.FunctionSinPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -9170,7 +9170,7 @@ export namespace GCalc {
     abstract class FunctionSinhPrivate {
         static $gtype: GObject.GType<FunctionSinhPrivate>;
 
-        // Constructors of GCalc.FunctionSinhPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -9179,7 +9179,7 @@ export namespace GCalc {
     abstract class FunctionSqrtPrivate {
         static $gtype: GObject.GType<FunctionSqrtPrivate>;
 
-        // Constructors of GCalc.FunctionSqrtPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -9188,7 +9188,7 @@ export namespace GCalc {
     abstract class FunctionTanPrivate {
         static $gtype: GObject.GType<FunctionTanPrivate>;
 
-        // Constructors of GCalc.FunctionTanPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -9197,7 +9197,7 @@ export namespace GCalc {
     abstract class FunctionTanhPrivate {
         static $gtype: GObject.GType<FunctionTanhPrivate>;
 
-        // Constructors of GCalc.FunctionTanhPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -9206,7 +9206,7 @@ export namespace GCalc {
     abstract class GroupPrivate {
         static $gtype: GObject.GType<GroupPrivate>;
 
-        // Constructors of GCalc.GroupPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -9215,7 +9215,7 @@ export namespace GCalc {
     abstract class MinusPrivate {
         static $gtype: GObject.GType<MinusPrivate>;
 
-        // Constructors of GCalc.MinusPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -9224,7 +9224,7 @@ export namespace GCalc {
     abstract class MultiplyPrivate {
         static $gtype: GObject.GType<MultiplyPrivate>;
 
-        // Constructors of GCalc.MultiplyPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -9233,7 +9233,7 @@ export namespace GCalc {
     abstract class ParameterPrivate {
         static $gtype: GObject.GType<ParameterPrivate>;
 
-        // Constructors of GCalc.ParameterPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -9242,7 +9242,7 @@ export namespace GCalc {
     abstract class ParserPrivate {
         static $gtype: GObject.GType<ParserPrivate>;
 
-        // Constructors of GCalc.ParserPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -9251,7 +9251,7 @@ export namespace GCalc {
     abstract class PlusPrivate {
         static $gtype: GObject.GType<PlusPrivate>;
 
-        // Constructors of GCalc.PlusPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -9260,7 +9260,7 @@ export namespace GCalc {
     abstract class PolynomialPrivate {
         static $gtype: GObject.GType<PolynomialPrivate>;
 
-        // Constructors of GCalc.PolynomialPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -9269,7 +9269,7 @@ export namespace GCalc {
     abstract class PowPrivate {
         static $gtype: GObject.GType<PowPrivate>;
 
-        // Constructors of GCalc.PowPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -9278,7 +9278,7 @@ export namespace GCalc {
     abstract class ResultPrivate {
         static $gtype: GObject.GType<ResultPrivate>;
 
-        // Constructors of GCalc.ResultPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -9287,7 +9287,7 @@ export namespace GCalc {
     abstract class SolverPrivate {
         static $gtype: GObject.GType<SolverPrivate>;
 
-        // Constructors of GCalc.SolverPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -9296,7 +9296,7 @@ export namespace GCalc {
     abstract class TermPrivate {
         static $gtype: GObject.GType<TermPrivate>;
 
-        // Constructors of GCalc.TermPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -9305,7 +9305,7 @@ export namespace GCalc {
     abstract class UnitConverterPrivate {
         static $gtype: GObject.GType<UnitConverterPrivate>;
 
-        // Constructors of GCalc.UnitConverterPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -9314,7 +9314,7 @@ export namespace GCalc {
     abstract class VariablePrivate {
         static $gtype: GObject.GType<VariablePrivate>;
 
-        // Constructors of GCalc.VariablePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -9354,11 +9354,11 @@ export namespace GCalc {
         prototype: Hashable;
     }
     interface Hashable extends GObject.Object {
-        // Own methods of GCalc.Hashable
+        // Methods
 
         hash(): number;
 
-        // Own virtual methods of GCalc.Hashable
+        // Virtual methods
 
         vfunc_hash(): number;
     }
@@ -9376,7 +9376,7 @@ export namespace GCalc {
         prototype: MathAssign;
     }
     interface MathAssign extends GObject.Object {
-        // Own methods of GCalc.MathAssign
+        // Methods
 
         evaluate(): MathExpression;
     }
@@ -9408,7 +9408,7 @@ export namespace GCalc {
         prototype: MathConstant;
     }
     interface MathConstant extends GObject.Object {
-        // Own methods of GCalc.MathConstant
+        // Methods
 
         add(c: MathConstant): MathConstant;
         subtract(c: MathConstant): MathConstant;
@@ -9417,7 +9417,7 @@ export namespace GCalc {
         neg(): MathConstant;
         pow(c: MathConstant): MathConstant;
 
-        // Own virtual methods of GCalc.MathConstant
+        // Virtual methods
 
         vfunc_add(c: MathConstant): MathConstant;
         vfunc_subtract(c: MathConstant): MathConstant;
@@ -9440,13 +9440,13 @@ export namespace GCalc {
         prototype: MathConstantComplex;
     }
     interface MathConstantComplex extends GObject.Object {
-        // Own methods of GCalc.MathConstantComplex
+        // Methods
 
         real(): number;
         imag(): number;
         zero(): void;
 
-        // Own virtual methods of GCalc.MathConstantComplex
+        // Virtual methods
 
         vfunc_real(): number;
         vfunc_imag(): number;
@@ -9466,11 +9466,11 @@ export namespace GCalc {
         prototype: MathConstantNumber;
     }
     interface MathConstantNumber extends GObject.Object {
-        // Own methods of GCalc.MathConstantNumber
+        // Methods
 
         value(): number;
 
-        // Own virtual methods of GCalc.MathConstantNumber
+        // Virtual methods
 
         vfunc_value(): number;
     }
@@ -9488,14 +9488,14 @@ export namespace GCalc {
         prototype: MathConstantVector;
     }
     interface MathConstantVector extends GObject.Object {
-        // Own methods of GCalc.MathConstantVector
+        // Methods
 
         mag(): MathConstant;
         ang(): MathConstant;
         x(): MathConstant;
         y(): MathConstant;
 
-        // Own virtual methods of GCalc.MathConstantVector
+        // Virtual methods
 
         vfunc_mag(): MathConstant;
         vfunc_ang(): MathConstant;
@@ -9532,15 +9532,15 @@ export namespace GCalc {
         prototype: MathEquation;
     }
     interface MathEquation extends GObject.Object {
-        // Own properties of GCalc.MathEquation
+        // Properties
 
         get variables(): ExpressionHashMap;
 
-        // Own methods of GCalc.MathEquation
+        // Methods
 
         get_variables(): ExpressionHashMap;
 
-        // Own virtual methods of GCalc.MathEquation
+        // Virtual methods
 
         vfunc_get_variables(): ExpressionHashMap;
     }
@@ -9561,18 +9561,18 @@ export namespace GCalc {
         prototype: MathEquationManager;
     }
     interface MathEquationManager extends GObject.Object {
-        // Own properties of GCalc.MathEquationManager
+        // Properties
 
         get equations(): ExpressionContainer;
         get functions(): ExpressionContainer;
 
-        // Own methods of GCalc.MathEquationManager
+        // Methods
 
         find_variable(name: string): MathVariable;
         get_equations(): ExpressionContainer;
         get_functions(): ExpressionContainer;
 
-        // Own virtual methods of GCalc.MathEquationManager
+        // Virtual methods
 
         vfunc_find_variable(name: string): MathVariable;
         vfunc_get_equations(): ExpressionContainer;
@@ -9594,15 +9594,15 @@ export namespace GCalc {
         prototype: MathErrorResult;
     }
     interface MathErrorResult extends GObject.Object {
-        // Own properties of GCalc.MathErrorResult
+        // Properties
 
         get message(): string;
 
-        // Own methods of GCalc.MathErrorResult
+        // Methods
 
         get_message(): string;
 
-        // Own virtual methods of GCalc.MathErrorResult
+        // Virtual methods
 
         vfunc_get_message(): string;
     }
@@ -9623,13 +9623,13 @@ export namespace GCalc {
         prototype: MathExpression;
     }
     interface MathExpression extends GObject.Object {
-        // Own properties of GCalc.MathExpression
+        // Properties
 
         get parent(): MathExpression;
         set parent(val: MathExpression);
         get expressions(): ExpressionContainer;
 
-        // Own methods of GCalc.MathExpression
+        // Methods
 
         to_string(): string;
         solve(): MathResult;
@@ -9637,7 +9637,7 @@ export namespace GCalc {
         set_parent(value: MathExpression): void;
         get_expressions(): ExpressionContainer;
 
-        // Own virtual methods of GCalc.MathExpression
+        // Virtual methods
 
         vfunc_to_string(): string;
         vfunc_solve(): MathResult;
@@ -9666,7 +9666,7 @@ export namespace GCalc {
         prototype: MathFunction;
     }
     interface MathFunction extends GObject.Object {
-        // Own properties of GCalc.MathFunction
+        // Properties
 
         get param_types(): ExpressionContainer;
         get paramTypes(): ExpressionContainer;
@@ -9679,7 +9679,7 @@ export namespace GCalc {
         get closed(): boolean;
         set closed(val: boolean);
 
-        // Own methods of GCalc.MathFunction
+        // Methods
 
         evaluate(): MathExpression;
         verify_params(): boolean;
@@ -9691,7 +9691,7 @@ export namespace GCalc {
         get_closed(): boolean;
         set_closed(value: boolean): void;
 
-        // Own virtual methods of GCalc.MathFunction
+        // Virtual methods
 
         vfunc_evaluate(): MathExpression;
         vfunc_verify_params(): boolean;
@@ -9720,14 +9720,14 @@ export namespace GCalc {
         prototype: MathGroup;
     }
     interface MathGroup extends GObject.Object {
-        // Own properties of GCalc.MathGroup
+        // Properties
 
         get level(): MathGroupLevel;
         set level(val: MathGroupLevel);
         get closed(): boolean;
         set closed(val: boolean);
 
-        // Own methods of GCalc.MathGroup
+        // Methods
 
         evaluate(): MathExpression;
         get_level(): MathGroupLevel;
@@ -9735,7 +9735,7 @@ export namespace GCalc {
         get_closed(): boolean;
         set_closed(value: boolean): void;
 
-        // Own virtual methods of GCalc.MathGroup
+        // Virtual methods
 
         vfunc_evaluate(): MathExpression;
         vfunc_get_level(): MathGroupLevel;
@@ -9799,12 +9799,12 @@ export namespace GCalc {
         prototype: MathParameter;
     }
     interface MathParameter extends GObject.Object {
-        // Own methods of GCalc.MathParameter
+        // Methods
 
         set_value(val?: GObject.Value | null): void;
         get_value(): GObject.Value | null;
 
-        // Own virtual methods of GCalc.MathParameter
+        // Virtual methods
 
         vfunc_set_value(val?: GObject.Value | null): void;
         vfunc_get_value(): GObject.Value | null;
@@ -9837,11 +9837,11 @@ export namespace GCalc {
         prototype: MathPolynomial;
     }
     interface MathPolynomial extends GObject.Object {
-        // Own methods of GCalc.MathPolynomial
+        // Methods
 
         evaluate(): MathExpression;
 
-        // Own virtual methods of GCalc.MathPolynomial
+        // Virtual methods
 
         vfunc_evaluate(): MathExpression;
     }
@@ -9875,16 +9875,16 @@ export namespace GCalc {
         prototype: MathResult;
     }
     interface MathResult extends GObject.Object {
-        // Own properties of GCalc.MathResult
+        // Properties
 
         get expression(): MathExpression;
 
-        // Own methods of GCalc.MathResult
+        // Methods
 
         to_string(): string;
         get_expression(): MathExpression;
 
-        // Own virtual methods of GCalc.MathResult
+        // Virtual methods
 
         vfunc_to_string(): string;
         vfunc_get_expression(): MathExpression;
@@ -9905,12 +9905,12 @@ export namespace GCalc {
         evaluate_constants(c1: MathConstant, c2: MathConstant, op: MathOperator): MathExpression;
     }
     interface MathTerm extends GObject.Object {
-        // Own methods of GCalc.MathTerm
+        // Methods
 
         add(t: MathTerm): MathExpression;
         evaluate(): MathExpression;
 
-        // Own virtual methods of GCalc.MathTerm
+        // Virtual methods
 
         vfunc_add(t: MathTerm): MathExpression;
         vfunc_evaluate(): MathExpression;
@@ -9933,7 +9933,7 @@ export namespace GCalc {
         prototype: MathVariable;
     }
     interface MathVariable extends GObject.Object {
-        // Own properties of GCalc.MathVariable
+        // Properties
 
         get name(): string;
         set name(val: string);
@@ -9942,7 +9942,7 @@ export namespace GCalc {
         get bind(): MathVariable;
         set bind(val: MathVariable);
 
-        // Own methods of GCalc.MathVariable
+        // Methods
 
         evaluate(): MathExpression;
         get_name(): string;
@@ -9953,7 +9953,7 @@ export namespace GCalc {
         set_bind(value: MathVariable): void;
         get_binded(): boolean;
 
-        // Own virtual methods of GCalc.MathVariable
+        // Virtual methods
 
         vfunc_evaluate(): MathExpression;
         vfunc_get_name(): string;

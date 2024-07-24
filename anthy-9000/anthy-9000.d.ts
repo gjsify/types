@@ -61,7 +61,7 @@ export namespace Anthy {
     class GContext extends GObject.InitiallyUnowned {
         static $gtype: GObject.GType<GContext>;
 
-        // Constructors of Anthy.GContext
+        // Constructors
 
         constructor(properties?: Partial<GContext.ConstructorProps>, ...args: any[]);
 
@@ -69,7 +69,7 @@ export namespace Anthy {
 
         static ['new'](): GContext;
 
-        // Own methods of Anthy.GContext
+        // Methods
 
         /**
          * Commit a prediction string with `ntg_seg` .
@@ -147,7 +147,7 @@ export namespace Anthy {
     abstract class GContextPrivate {
         static $gtype: GObject.GType<GContextPrivate>;
 
-        // Constructors of Anthy.GContextPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -155,7 +155,7 @@ export namespace Anthy {
     abstract class anthy_context_t {
         static $gtype: GObject.GType<anthy_context_t>;
 
-        // Constructors of Anthy.anthy_context_t
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -163,11 +163,11 @@ export namespace Anthy {
     class anthy_conv_stat {
         static $gtype: GObject.GType<anthy_conv_stat>;
 
-        // Own fields of Anthy.anthy_conv_stat
+        // Fields
 
         nr_segment: number;
 
-        // Constructors of Anthy.anthy_conv_stat
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -180,11 +180,11 @@ export namespace Anthy {
     class anthy_prediction_stat {
         static $gtype: GObject.GType<anthy_prediction_stat>;
 
-        // Own fields of Anthy.anthy_prediction_stat
+        // Fields
 
         nr_prediction: number;
 
-        // Constructors of Anthy.anthy_prediction_stat
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -197,12 +197,12 @@ export namespace Anthy {
     class anthy_segment_stat {
         static $gtype: GObject.GType<anthy_segment_stat>;
 
-        // Own fields of Anthy.anthy_segment_stat
+        // Fields
 
         nr_candidate: number;
         seg_len: number;
 
-        // Constructors of Anthy.anthy_segment_stat
+        // Constructors
 
         constructor(
             properties?: Partial<{

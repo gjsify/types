@@ -28,7 +28,7 @@ export namespace GUPnP {
     class ControlError extends GLib.Error {
         static $gtype: GObject.GType<ControlError>;
 
-        // Static fields of GUPnP.ControlError
+        // Static fields
 
         /**
          * The action name was invalid.
@@ -47,12 +47,12 @@ export namespace GUPnP {
          */
         static ACTION_FAILED: number;
 
-        // Constructors of GUPnP.ControlError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of GUPnP.ControlError
+        // Static methods
 
         static quark(): GLib.Quark;
     }
@@ -64,7 +64,7 @@ export namespace GUPnP {
     class EventingError extends GLib.Error {
         static $gtype: GObject.GType<EventingError>;
 
-        // Static fields of GUPnP.EventingError
+        // Static fields
 
         /**
          * The subscription attempt failed.
@@ -79,12 +79,12 @@ export namespace GUPnP {
          */
         static NOTIFY_FAILED: number;
 
-        // Constructors of GUPnP.EventingError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of GUPnP.EventingError
+        // Static methods
 
         static quark(): GLib.Quark;
     }
@@ -92,7 +92,7 @@ export namespace GUPnP {
     class RootdeviceError extends GLib.Error {
         static $gtype: GObject.GType<RootdeviceError>;
 
-        // Static fields of GUPnP.RootdeviceError
+        // Static fields
 
         static NO_CONTEXT: number;
         static NO_DESCRIPTION_PATH: number;
@@ -100,12 +100,12 @@ export namespace GUPnP {
         static NO_NETWORK: number;
         static FAIL: number;
 
-        // Constructors of GUPnP.RootdeviceError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of GUPnP.RootdeviceError
+        // Static methods
 
         static quark(): GLib.Quark;
     }
@@ -117,7 +117,7 @@ export namespace GUPnP {
     class ServerError extends GLib.Error {
         static $gtype: GObject.GType<ServerError>;
 
-        // Static fields of GUPnP.ServerError
+        // Static fields
 
         /**
          * Internal server error.
@@ -144,12 +144,12 @@ export namespace GUPnP {
          */
         static OTHER: number;
 
-        // Constructors of GUPnP.ServerError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of GUPnP.ServerError
+        // Static methods
 
         static quark(): GLib.Quark;
     }
@@ -182,7 +182,7 @@ export namespace GUPnP {
     class XMLError extends GLib.Error {
         static $gtype: GObject.GType<XMLError>;
 
-        // Static fields of GUPnP.XMLError
+        // Static fields
 
         /**
          * Generic XML parsing error.
@@ -205,12 +205,12 @@ export namespace GUPnP {
          */
         static OTHER: number;
 
-        // Constructors of GUPnP.XMLError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of GUPnP.XMLError
+        // Static methods
 
         static quark(): GLib.Quark;
     }
@@ -333,7 +333,7 @@ export namespace GUPnP {
     class Context extends GSSDP.Client implements Gio.Initable {
         static $gtype: GObject.GType<Context>;
 
-        // Own properties of GUPnP.Context
+        // Properties
 
         /**
          * An access control list.
@@ -379,7 +379,7 @@ export namespace GUPnP {
          */
         get subscriptionTimeout(): number;
 
-        // Constructors of GUPnP.Context
+        // Constructors
 
         constructor(properties?: Partial<Context.ConstructorProps>, ...args: any[]);
 
@@ -390,7 +390,7 @@ export namespace GUPnP {
 
         static ['new'](...args: never[]): any;
 
-        // Own methods of GUPnP.Context
+        // Methods
 
         /**
          * Add a #SoupServerCallback to the #GUPnPContext<!-- -->'s #SoupServer.
@@ -1003,7 +1003,7 @@ export namespace GUPnP {
     class ContextFilter extends GObject.Object {
         static $gtype: GObject.GType<ContextFilter>;
 
-        // Own properties of GUPnP.ContextFilter
+        // Properties
 
         /**
          * Whether this context filter is active or not.
@@ -1015,13 +1015,13 @@ export namespace GUPnP {
          */
         get entries(): string[];
 
-        // Constructors of GUPnP.ContextFilter
+        // Constructors
 
         constructor(properties?: Partial<ContextFilter.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of GUPnP.ContextFilter
+        // Methods
 
         /**
          * Add `entry` in the list of valid criteria used by `context_filter` to
@@ -1108,7 +1108,7 @@ export namespace GUPnP {
     abstract class ContextManager extends GObject.Object {
         static $gtype: GObject.GType<ContextManager>;
 
-        // Own properties of GUPnP.ContextManager
+        // Properties
 
         /**
          * The context filter to use.
@@ -1140,13 +1140,13 @@ export namespace GUPnP {
          */
         get udaVersion(): GSSDP.UDAVersion;
 
-        // Constructors of GUPnP.ContextManager
+        // Constructors
 
         constructor(properties?: Partial<ContextManager.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of GUPnP.ContextManager
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -1158,7 +1158,7 @@ export namespace GUPnP {
         connect_after(signal: 'context-unavailable', callback: (_source: this, context: Context) => void): number;
         emit(signal: 'context-unavailable', context: Context): void;
 
-        // Own static methods of GUPnP.ContextManager
+        // Static methods
 
         /**
          * Factory-method to create a new #GUPnPContextManager. The final type of the
@@ -1181,7 +1181,7 @@ export namespace GUPnP {
          */
         static create_full(uda_version: GSSDP.UDAVersion, family: Gio.SocketFamily, port: number): ContextManager;
 
-        // Own methods of GUPnP.ContextManager
+        // Methods
 
         /**
          * Get the #GUPnPContextFilter associated with `manager`.
@@ -1267,7 +1267,7 @@ export namespace GUPnP {
     class ControlPoint extends GSSDP.ResourceBrowser {
         static $gtype: GObject.GType<ControlPoint>;
 
-        // Own properties of GUPnP.ControlPoint
+        // Properties
 
         /**
          * The resource factory to use. Set to NULL for default factory.
@@ -1278,7 +1278,7 @@ export namespace GUPnP {
          */
         get resourceFactory(): ResourceFactory;
 
-        // Constructors of GUPnP.ControlPoint
+        // Constructors
 
         constructor(properties?: Partial<ControlPoint.ConstructorProps>, ...args: any[]);
 
@@ -1288,7 +1288,7 @@ export namespace GUPnP {
 
         static new_full(context: Context, factory: ResourceFactory, target: string): ControlPoint;
 
-        // Own signals of GUPnP.ControlPoint
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -1315,14 +1315,14 @@ export namespace GUPnP {
         ): number;
         emit(signal: 'service-proxy-unavailable', proxy: ServiceProxy): void;
 
-        // Own virtual methods of GUPnP.ControlPoint
+        // Virtual methods
 
         vfunc_device_proxy_available(proxy: DeviceProxy): void;
         vfunc_device_proxy_unavailable(proxy: DeviceProxy): void;
         vfunc_service_proxy_available(proxy: ServiceProxy): void;
         vfunc_service_proxy_unavailable(proxy: ServiceProxy): void;
 
-        // Own methods of GUPnP.ControlPoint
+        // Methods
 
         /**
          * Get the #GUPnPControlPoint associated with `control_point`.
@@ -1360,7 +1360,7 @@ export namespace GUPnP {
     class Device extends DeviceInfo {
         static $gtype: GObject.GType<Device>;
 
-        // Own properties of GUPnP.Device
+        // Properties
 
         /**
          * The containing #GUPnPRootDevice, or NULL if this is the root
@@ -1373,7 +1373,7 @@ export namespace GUPnP {
          */
         get rootDevice(): RootDevice;
 
-        // Constructors of GUPnP.Device
+        // Constructors
 
         constructor(properties?: Partial<Device.ConstructorProps>, ...args: any[]);
 
@@ -1401,7 +1401,7 @@ export namespace GUPnP {
     abstract class DeviceInfo extends GObject.Object {
         static $gtype: GObject.GType<DeviceInfo>;
 
-        // Own properties of GUPnP.DeviceInfo
+        // Properties
 
         /**
          * The #GUPnPContext to use.
@@ -1452,13 +1452,13 @@ export namespace GUPnP {
         get urlBase(): Soup.URI;
         set urlBase(val: Soup.URI);
 
-        // Constructors of GUPnP.DeviceInfo
+        // Constructors
 
         constructor(properties?: Partial<DeviceInfo.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of GUPnP.DeviceInfo
+        // Methods
 
         /**
          * Get the associated #GUPnPContext.
@@ -1653,7 +1653,7 @@ export namespace GUPnP {
     class DeviceProxy extends DeviceInfo {
         static $gtype: GObject.GType<DeviceProxy>;
 
-        // Constructors of GUPnP.DeviceProxy
+        // Constructors
 
         constructor(properties?: Partial<DeviceProxy.ConstructorProps>, ...args: any[]);
 
@@ -1669,7 +1669,7 @@ export namespace GUPnP {
     class ResourceFactory extends GObject.Object {
         static $gtype: GObject.GType<ResourceFactory>;
 
-        // Constructors of GUPnP.ResourceFactory
+        // Constructors
 
         constructor(properties?: Partial<ResourceFactory.ConstructorProps>, ...args: any[]);
 
@@ -1677,14 +1677,14 @@ export namespace GUPnP {
 
         static ['new'](): ResourceFactory;
 
-        // Own static methods of GUPnP.ResourceFactory
+        // Static methods
 
         /**
          * Get the default singleton #GUPnPResourceFactory object.
          */
         static get_default(): ResourceFactory;
 
-        // Own methods of GUPnP.ResourceFactory
+        // Methods
 
         /**
          * Registers the GType `type` for the proxy of resource of UPnP type `upnp_type`.
@@ -1745,7 +1745,7 @@ export namespace GUPnP {
     class RootDevice extends Device implements Gio.Initable {
         static $gtype: GObject.GType<RootDevice>;
 
-        // Own properties of GUPnP.RootDevice
+        // Properties
 
         /**
          * TRUE if this device is available.
@@ -1779,7 +1779,7 @@ export namespace GUPnP {
          */
         get descriptionPath(): string;
 
-        // Constructors of GUPnP.RootDevice
+        // Constructors
 
         constructor(properties?: Partial<RootDevice.ConstructorProps>, ...args: any[]);
 
@@ -1795,7 +1795,7 @@ export namespace GUPnP {
             description_dir: string,
         ): RootDevice;
 
-        // Own methods of GUPnP.RootDevice
+        // Methods
 
         /**
          * Get whether or not `root_device` is available (announcing its presence).
@@ -2349,7 +2349,7 @@ export namespace GUPnP {
     class Service extends ServiceInfo {
         static $gtype: GObject.GType<Service>;
 
-        // Own properties of GUPnP.Service
+        // Properties
 
         /**
          * The containing #GUPnPRootDevice.
@@ -2360,13 +2360,13 @@ export namespace GUPnP {
          */
         get rootDevice(): RootDevice;
 
-        // Constructors of GUPnP.Service
+        // Constructors
 
         constructor(properties?: Partial<Service.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of GUPnP.Service
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -2393,12 +2393,12 @@ export namespace GUPnP {
         ): number;
         emit(signal: 'query-variable', variable: string, value: GObject.Value | any): void;
 
-        // Own virtual methods of GUPnP.Service
+        // Virtual methods
 
         vfunc_action_invoked(action: ServiceAction): void;
         vfunc_query_variable(variable: string, value: GObject.Value | any): void;
 
-        // Own methods of GUPnP.Service
+        // Methods
 
         /**
          * Causes new notifications to be queued up until gupnp_service_thaw_notify()
@@ -2464,7 +2464,7 @@ export namespace GUPnP {
     abstract class ServiceInfo extends GObject.Object {
         static $gtype: GObject.GType<ServiceInfo>;
 
-        // Own properties of GUPnP.ServiceInfo
+        // Properties
 
         /**
          * The #GUPnPContext to use.
@@ -2503,13 +2503,13 @@ export namespace GUPnP {
          */
         get urlBase(): Soup.URI;
 
-        // Constructors of GUPnP.ServiceInfo
+        // Constructors
 
         constructor(properties?: Partial<ServiceInfo.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of GUPnP.ServiceInfo
+        // Methods
 
         /**
          * Get the #GUPnPContext associated with `info`.
@@ -2608,20 +2608,20 @@ export namespace GUPnP {
     class ServiceIntrospection extends GObject.Object {
         static $gtype: GObject.GType<ServiceIntrospection>;
 
-        // Own properties of GUPnP.ServiceIntrospection
+        // Properties
 
         /**
          * The scpd of the device description file.
          */
         set scpd(val: any);
 
-        // Constructors of GUPnP.ServiceIntrospection
+        // Constructors
 
         constructor(properties?: Partial<ServiceIntrospection.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of GUPnP.ServiceIntrospection
+        // Methods
 
         /**
          * Returns the action by the name `action_name` in this service.
@@ -2676,7 +2676,7 @@ export namespace GUPnP {
     class ServiceProxy extends ServiceInfo {
         static $gtype: GObject.GType<ServiceProxy>;
 
-        // Own properties of GUPnP.ServiceProxy
+        // Properties
 
         /**
          * Whether we are subscribed to this service.
@@ -2684,13 +2684,13 @@ export namespace GUPnP {
         get subscribed(): boolean;
         set subscribed(val: boolean);
 
-        // Constructors of GUPnP.ServiceProxy
+        // Constructors
 
         constructor(properties?: Partial<ServiceProxy.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of GUPnP.ServiceProxy
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -2699,11 +2699,11 @@ export namespace GUPnP {
         connect_after(signal: 'subscription-lost', callback: (_source: this, error: GLib.Error) => void): number;
         emit(signal: 'subscription-lost', error: GLib.Error): void;
 
-        // Own virtual methods of GUPnP.ServiceProxy
+        // Virtual methods
 
         vfunc_subscription_lost(reason: GLib.Error): void;
 
-        // Own methods of GUPnP.ServiceProxy
+        // Methods
 
         /**
          * Sets up `callback` to be called whenever a change notification for
@@ -2876,7 +2876,7 @@ export namespace GUPnP {
     class XMLDoc extends GObject.Object {
         static $gtype: GObject.GType<XMLDoc>;
 
-        // Constructors of GUPnP.XMLDoc
+        // Constructors
 
         constructor(properties?: Partial<XMLDoc.ConstructorProps>, ...args: any[]);
 
@@ -2886,7 +2886,7 @@ export namespace GUPnP {
 
         static new_from_path(path: string): XMLDoc;
 
-        // Own methods of GUPnP.XMLDoc
+        // Methods
 
         get_doc(): libxml2.Doc;
     }
@@ -2907,11 +2907,11 @@ export namespace GUPnP {
     class ServiceAction {
         static $gtype: GObject.GType<ServiceAction>;
 
-        // Constructors of GUPnP.ServiceAction
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of GUPnP.ServiceAction
+        // Methods
 
         /**
          * Get the number of IN arguments from the `action` and return it.
@@ -2985,14 +2985,14 @@ export namespace GUPnP {
     class ServiceActionArgInfo {
         static $gtype: GObject.GType<ServiceActionArgInfo>;
 
-        // Own fields of GUPnP.ServiceActionArgInfo
+        // Fields
 
         name: string;
         direction: ServiceActionArgDirection;
         related_state_variable: string;
         retval: boolean;
 
-        // Constructors of GUPnP.ServiceActionArgInfo
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3003,11 +3003,11 @@ export namespace GUPnP {
     class ServiceActionInfo {
         static $gtype: GObject.GType<ServiceActionInfo>;
 
-        // Own fields of GUPnP.ServiceActionInfo
+        // Fields
 
         name: string;
 
-        // Constructors of GUPnP.ServiceActionInfo
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3021,7 +3021,7 @@ export namespace GUPnP {
     class ServiceProxyAction {
         static $gtype: GObject.GType<ServiceProxyAction>;
 
-        // Constructors of GUPnP.ServiceProxyAction
+        // Constructors
 
         constructor(action: string, ___: any[]);
         _init(...args: any[]): void;
@@ -3032,7 +3032,7 @@ export namespace GUPnP {
             in_values: (GObject.Value | any)[],
         ): ServiceProxyAction;
 
-        // Own methods of GUPnP.ServiceProxyAction
+        // Methods
 
         /**
          * See gupnp_service_proxy_action_get_result(); this version takes a #GHashTable for
@@ -3165,7 +3165,7 @@ export namespace GUPnP {
     class ServiceStateVariableInfo {
         static $gtype: GObject.GType<ServiceStateVariableInfo>;
 
-        // Own fields of GUPnP.ServiceStateVariableInfo
+        // Fields
 
         name: string;
         send_events: boolean;
@@ -3173,7 +3173,7 @@ export namespace GUPnP {
         type: GObject.GType;
         allowed_values: string[];
 
-        // Constructors of GUPnP.ServiceStateVariableInfo
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3190,7 +3190,7 @@ export namespace GUPnP {
         prototype: Acl;
     }
     interface Acl extends GObject.Object {
-        // Own methods of GUPnP.Acl
+        // Methods
 
         /**
          * Check whether gupnp_acl_is_allowed_async() is supported.
@@ -3238,7 +3238,7 @@ export namespace GUPnP {
         ): void;
         is_allowed_finish(res: Gio.AsyncResult): boolean;
 
-        // Own virtual methods of GUPnP.Acl
+        // Virtual methods
 
         /**
          * Check whether gupnp_acl_is_allowed_async() is supported.

@@ -64,14 +64,14 @@ export namespace Gepub {
     class Doc extends GObject.Object implements Gio.Initable {
         static $gtype: GObject.GType<Doc>;
 
-        // Own properties of Gepub.Doc
+        // Properties
 
         get file(): Gio.File;
         get page(): number;
         set page(val: number);
         get path(): string;
 
-        // Constructors of Gepub.Doc
+        // Constructors
 
         constructor(properties?: Partial<Doc.ConstructorProps>, ...args: any[]);
 
@@ -79,7 +79,7 @@ export namespace Gepub {
 
         static ['new'](path: string): Doc;
 
-        // Own methods of Gepub.Doc
+        // Methods
 
         get_cover(): string;
         get_current(): GLib.Bytes;
@@ -605,12 +605,12 @@ export namespace Gepub {
     class Widget extends WebKit2.WebView implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<Widget>;
 
-        // Own properties of Gepub.Widget
+        // Properties
 
         get doc(): Doc;
         set doc(val: Doc);
 
-        // Constructors of Gepub.Widget
+        // Constructors
 
         constructor(properties?: Partial<Widget.ConstructorProps>, ...args: any[]);
 
@@ -618,7 +618,7 @@ export namespace Gepub {
 
         static ['new'](): Widget;
 
-        // Own methods of Gepub.Widget
+        // Methods
 
         get_doc(): Doc;
         /**

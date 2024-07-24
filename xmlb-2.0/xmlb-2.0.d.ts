@@ -476,7 +476,7 @@ export namespace Xmlb {
     class Builder extends GObject.Object {
         static $gtype: GObject.GType<Builder>;
 
-        // Constructors of Xmlb.Builder
+        // Constructors
 
         constructor(properties?: Partial<Builder.ConstructorProps>, ...args: any[]);
 
@@ -484,7 +484,7 @@ export namespace Xmlb {
 
         static ['new'](): Builder;
 
-        // Own methods of Xmlb.Builder
+        // Methods
 
         /**
          * Adds a function that will get run on every #XbBuilderNode compile creates
@@ -561,7 +561,7 @@ export namespace Xmlb {
     class BuilderFixup extends GObject.Object {
         static $gtype: GObject.GType<BuilderFixup>;
 
-        // Constructors of Xmlb.BuilderFixup
+        // Constructors
 
         constructor(properties?: Partial<BuilderFixup.ConstructorProps>, ...args: any[]);
 
@@ -569,7 +569,7 @@ export namespace Xmlb {
 
         static ['new'](id: string, func: BuilderFixupFunc): BuilderFixup;
 
-        // Own methods of Xmlb.BuilderFixup
+        // Methods
 
         /**
          * Gets the maximum depth used for this fixup, if each node is being visited.
@@ -596,7 +596,7 @@ export namespace Xmlb {
     class BuilderNode extends GObject.Object {
         static $gtype: GObject.GType<BuilderNode>;
 
-        // Constructors of Xmlb.BuilderNode
+        // Constructors
 
         constructor(properties?: Partial<BuilderNode.ConstructorProps>, ...args: any[]);
 
@@ -604,7 +604,7 @@ export namespace Xmlb {
 
         static ['new'](element: string): BuilderNode;
 
-        // Own methods of Xmlb.BuilderNode
+        // Methods
 
         /**
          * Adds a child builder node.
@@ -792,7 +792,7 @@ export namespace Xmlb {
     class BuilderSource extends GObject.Object {
         static $gtype: GObject.GType<BuilderSource>;
 
-        // Constructors of Xmlb.BuilderSource
+        // Constructors
 
         constructor(properties?: Partial<BuilderSource.ConstructorProps>, ...args: any[]);
 
@@ -800,7 +800,7 @@ export namespace Xmlb {
 
         static ['new'](): BuilderSource;
 
-        // Own methods of Xmlb.BuilderSource
+        // Methods
 
         /**
          * Adds a function that will get run on every #XbBuilderNode compile creates
@@ -852,13 +852,13 @@ export namespace Xmlb {
     class BuilderSourceCtx extends GObject.Object {
         static $gtype: GObject.GType<BuilderSourceCtx>;
 
-        // Constructors of Xmlb.BuilderSourceCtx
+        // Constructors
 
         constructor(properties?: Partial<BuilderSourceCtx.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Xmlb.BuilderSourceCtx
+        // Methods
 
         /**
          * Returns the data currently being processed.
@@ -891,7 +891,7 @@ export namespace Xmlb {
     class Machine extends GObject.Object {
         static $gtype: GObject.GType<Machine>;
 
-        // Constructors of Xmlb.Machine
+        // Constructors
 
         constructor(properties?: Partial<Machine.ConstructorProps>, ...args: any[]);
 
@@ -899,7 +899,7 @@ export namespace Xmlb {
 
         static ['new'](): Machine;
 
-        // Own methods of Xmlb.Machine
+        // Methods
 
         /**
          * Adds a new function to the virtual machine. Registered functions can then be
@@ -1070,13 +1070,13 @@ export namespace Xmlb {
     class Node extends GObject.Object {
         static $gtype: GObject.GType<Node>;
 
-        // Constructors of Xmlb.Node
+        // Constructors
 
         constructor(properties?: Partial<Node.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Xmlb.Node
+        // Methods
 
         /**
          * Exports the node back to XML.
@@ -1328,7 +1328,7 @@ export namespace Xmlb {
     class Query extends GObject.Object {
         static $gtype: GObject.GType<Query>;
 
-        // Constructors of Xmlb.Query
+        // Constructors
 
         constructor(properties?: Partial<Query.ConstructorProps>, ...args: any[]);
 
@@ -1338,7 +1338,7 @@ export namespace Xmlb {
 
         static new_full(silo: Silo, xpath: string, flags: QueryFlags): Query;
 
-        // Own methods of Xmlb.Query
+        // Methods
 
         /**
          * Assigns a string to a bound value specified using `?`.
@@ -1395,7 +1395,7 @@ export namespace Xmlb {
     class Silo extends GObject.Object {
         static $gtype: GObject.GType<Silo>;
 
-        // Own properties of Xmlb.Silo
+        // Properties
 
         /**
          * Whether to cache all #XbNode instances ever constructed in a single
@@ -1439,7 +1439,7 @@ export namespace Xmlb {
         set guid(val: string);
         get valid(): boolean;
 
-        // Constructors of Xmlb.Silo
+        // Constructors
 
         constructor(properties?: Partial<Silo.ConstructorProps>, ...args: any[]);
 
@@ -1449,7 +1449,7 @@ export namespace Xmlb {
 
         static new_from_xml(xml: string): Silo;
 
-        // Own methods of Xmlb.Silo
+        // Methods
 
         /**
          * Exports the silo back to XML.
@@ -1668,12 +1668,12 @@ export namespace Xmlb {
     class NodeAttrIter {
         static $gtype: GObject.GType<NodeAttrIter>;
 
-        // Constructors of Xmlb.NodeAttrIter
+        // Constructors
 
         constructor(properties?: Partial<{}>);
         _init(...args: any[]): void;
 
-        // Own methods of Xmlb.NodeAttrIter
+        // Methods
 
         /**
          * Initializes a name/value pair iterator for the node attributes
@@ -1711,12 +1711,12 @@ export namespace Xmlb {
     class NodeChildIter {
         static $gtype: GObject.GType<NodeChildIter>;
 
-        // Constructors of Xmlb.NodeChildIter
+        // Constructors
 
         constructor(properties?: Partial<{}>);
         _init(...args: any[]): void;
 
-        // Own methods of Xmlb.NodeChildIter
+        // Methods
 
         /**
          * Initializes a child iterator for the node's children and associates
@@ -1751,11 +1751,11 @@ export namespace Xmlb {
     abstract class Opcode {
         static $gtype: GObject.GType<Opcode>;
 
-        // Constructors of Xmlb.Opcode
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own static methods of Xmlb.Opcode
+        // Static methods
 
         /**
          * Converts a string to an opcode kind.
@@ -1768,7 +1768,7 @@ export namespace Xmlb {
          */
         static kind_to_string(kind: OpcodeKind): string;
 
-        // Own methods of Xmlb.Opcode
+        // Methods
 
         /**
          * Checks if the opcode can be compared using the string value.
@@ -1842,12 +1842,12 @@ export namespace Xmlb {
     class QueryContext {
         static $gtype: GObject.GType<QueryContext>;
 
-        // Constructors of Xmlb.QueryContext
+        // Constructors
 
         constructor(properties?: Partial<{}>);
         _init(...args: any[]): void;
 
-        // Own methods of Xmlb.QueryContext
+        // Methods
 
         /**
          * Clear an #XbQueryContext, freeing any allocated memory it points to.
@@ -1909,11 +1909,11 @@ export namespace Xmlb {
     abstract class Stack {
         static $gtype: GObject.GType<Stack>;
 
-        // Constructors of Xmlb.Stack
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of Xmlb.Stack
+        // Methods
 
         /**
          * Pops an opcode off the stack.
@@ -1941,12 +1941,12 @@ export namespace Xmlb {
     class ValueBindings {
         static $gtype: GObject.GType<ValueBindings>;
 
-        // Constructors of Xmlb.ValueBindings
+        // Constructors
 
         constructor(properties?: Partial<{}>);
         _init(...args: any[]): void;
 
-        // Own methods of Xmlb.ValueBindings
+        // Methods
 
         /**
          * Bind `str` to `idx` in the value bindings.

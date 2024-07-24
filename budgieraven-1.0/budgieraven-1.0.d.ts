@@ -47,7 +47,7 @@ export namespace BudgieRaven {
     class RavenWidget extends Gtk.Bin implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<RavenWidget>;
 
-        // Constructors of BudgieRaven.RavenWidget
+        // Constructors
 
         constructor(properties?: Partial<RavenWidget.ConstructorProps>, ...args: any[]);
 
@@ -55,7 +55,7 @@ export namespace BudgieRaven {
 
         static ['new'](): RavenWidget;
 
-        // Own signals of BudgieRaven.RavenWidget
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -64,11 +64,11 @@ export namespace BudgieRaven {
         connect_after(signal: 'raven-expanded', callback: (_source: this, object: boolean) => void): number;
         emit(signal: 'raven-expanded', object: boolean): void;
 
-        // Own virtual methods of BudgieRaven.RavenWidget
+        // Virtual methods
 
         vfunc_build_settings_ui(): Gtk.Widget;
 
-        // Own methods of BudgieRaven.RavenWidget
+        // Methods
 
         build_settings_ui(): Gtk.Widget;
         get_instance_settings(): Gio.Settings;
@@ -483,13 +483,13 @@ export namespace BudgieRaven {
     class RavenWidgetPrivate {
         static $gtype: GObject.GType<RavenWidgetPrivate>;
 
-        // Own fields of BudgieRaven.RavenWidgetPrivate
+        // Fields
 
         initialized: boolean;
         uuid: string;
         instance_settings: Gio.Settings;
 
-        // Constructors of BudgieRaven.RavenWidgetPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -505,12 +505,12 @@ export namespace BudgieRaven {
         prototype: RavenPlugin;
     }
     interface RavenPlugin extends GObject.Object {
-        // Own methods of BudgieRaven.RavenPlugin
+        // Methods
 
         new_widget_instance(uuid: string, settings?: Gio.Settings | null): RavenWidget;
         supports_settings(): boolean;
 
-        // Own virtual methods of BudgieRaven.RavenPlugin
+        // Virtual methods
 
         vfunc_new_widget_instance(uuid: string, settings?: Gio.Settings | null): RavenWidget;
         vfunc_supports_settings(): boolean;

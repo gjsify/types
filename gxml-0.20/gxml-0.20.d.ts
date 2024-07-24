@@ -92,7 +92,7 @@ export namespace GXml {
     class CssSelectorError extends GLib.Error {
         static $gtype: GObject.GType<CssSelectorError>;
 
-        // Static fields of GXml.CssSelectorError
+        // Static fields
 
         static NULL: number;
         static EOF: number;
@@ -102,7 +102,7 @@ export namespace GXml {
         static IDENTIFIER: number;
         static COMBINER: number;
 
-        // Constructors of GXml.CssSelectorError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
@@ -111,12 +111,12 @@ export namespace GXml {
     class DomDocumentError extends GLib.Error {
         static $gtype: GObject.GType<DomDocumentError>;
 
-        // Static fields of GXml.DomDocumentError
+        // Static fields
 
         static FILE_NOT_FOUND_ERROR: number;
         static INVALID_DOCUMENT_ERROR: number;
 
-        // Constructors of GXml.DomDocumentError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
@@ -125,7 +125,7 @@ export namespace GXml {
     class DomError extends GLib.Error {
         static $gtype: GObject.GType<DomError>;
 
-        // Static fields of GXml.DomError
+        // Static fields
 
         static INDEX_SIZE_ERROR: number;
         static DOMSTRING_SIZE_ERROR: number;
@@ -153,7 +153,7 @@ export namespace GXml {
         static INVALID_NODE_TYPE_ERROR: number;
         static DATA_CLONE_ERROR: number;
 
-        // Constructors of GXml.DomError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
@@ -162,12 +162,12 @@ export namespace GXml {
     class EnumerationError extends GLib.Error {
         static $gtype: GObject.GType<EnumerationError>;
 
-        // Static fields of GXml.EnumerationError
+        // Static fields
 
         static INVALID_VALUE: number;
         static INVALID_TEXT: number;
 
-        // Constructors of GXml.EnumerationError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
@@ -176,11 +176,11 @@ export namespace GXml {
     class IXsdSchemaError extends GLib.Error {
         static $gtype: GObject.GType<IXsdSchemaError>;
 
-        // Static fields of GXml.IXsdSchemaError
+        // Static fields
 
         static INVALIDATION_ERROR: number;
 
-        // Constructors of GXml.IXsdSchemaError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
@@ -189,13 +189,13 @@ export namespace GXml {
     class ParserError extends GLib.Error {
         static $gtype: GObject.GType<ParserError>;
 
-        // Static fields of GXml.ParserError
+        // Static fields
 
         static INVALID_DATA_ERROR: number;
         static INVALID_FILE_ERROR: number;
         static INVALID_STREAM_ERROR: number;
 
-        // Constructors of GXml.ParserError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
@@ -204,13 +204,13 @@ export namespace GXml {
     class Error extends GLib.Error {
         static $gtype: GObject.GType<Error>;
 
-        // Static fields of GXml.Error
+        // Static fields
 
         static NOT_SUPPORTED: number;
         static PARSER: number;
         static WRITER: number;
 
-        // Constructors of GXml.Error
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
@@ -219,7 +219,7 @@ export namespace GXml {
     class XPathError extends GLib.Error {
         static $gtype: GObject.GType<XPathError>;
 
-        // Static fields of GXml.XPathError
+        // Static fields
 
         static EXPRESSION_OK: number;
         static NUMBER_ERROR: number;
@@ -245,7 +245,7 @@ export namespace GXml {
         static INVALID_CHAR_ERROR: number;
         static INVALID_CTXT: number;
 
-        // Constructors of GXml.XPathError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
@@ -254,11 +254,11 @@ export namespace GXml {
     class XPathObjectError extends GLib.Error {
         static $gtype: GObject.GType<XPathObjectError>;
 
-        // Static fields of GXml.XPathObjectError
+        // Static fields
 
         static INVALID_NAMESPACE_ERROR: number;
 
-        // Constructors of GXml.XPathObjectError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
@@ -353,7 +353,7 @@ export namespace GXml {
     class ArrayList extends BaseCollection implements List {
         static $gtype: GObject.GType<ArrayList>;
 
-        // Constructors of GXml.ArrayList
+        // Constructors
 
         constructor(properties?: Partial<ArrayList.ConstructorProps>, ...args: any[]);
 
@@ -776,16 +776,16 @@ export namespace GXml {
     class Attr extends Node implements DomAttr {
         static $gtype: GObject.GType<Attr>;
 
-        // Own properties of GXml.Attr
+        // Properties
 
         get is_referenced(): boolean;
         get isReferenced(): boolean;
 
-        // Own fields of GXml.Attr
+        // Fields
 
         prop: Property;
 
-        // Constructors of GXml.Attr
+        // Constructors
 
         constructor(properties?: Partial<Attr.ConstructorProps>, ...args: any[]);
 
@@ -806,7 +806,7 @@ export namespace GXml {
 
         static reference(element: DomElement, name: string): Attr;
 
-        // Own methods of GXml.Attr
+        // Methods
 
         get_is_referenced(): boolean;
 
@@ -1250,18 +1250,18 @@ export namespace GXml {
     abstract class BaseCollection extends GObject.Object implements Gee.Traversable, Gee.Iterable, Collection {
         static $gtype: GObject.GType<BaseCollection>;
 
-        // Constructors of GXml.BaseCollection
+        // Constructors
 
         constructor(properties?: Partial<BaseCollection.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of GXml.BaseCollection
+        // Virtual methods
 
         vfunc_validate_append(index: number, element: DomElement): boolean;
         vfunc_clear(): void;
 
-        // Own methods of GXml.BaseCollection
+        // Methods
 
         initialize_element(e: Element): void;
         validate_append(index: number, element: DomElement): boolean;
@@ -1755,7 +1755,7 @@ export namespace GXml {
     class CssSelector extends GObject.Object {
         static $gtype: GObject.GType<CssSelector>;
 
-        // Own properties of GXml.CssSelector
+        // Properties
 
         get selector_type(): CssSelectorType;
         set selector_type(val: CssSelectorType);
@@ -1768,7 +1768,7 @@ export namespace GXml {
         get combiner(): CssCombiner;
         set combiner(val: CssCombiner);
 
-        // Constructors of GXml.CssSelector
+        // Constructors
 
         constructor(properties?: Partial<CssSelector.ConstructorProps>, ...args: any[]);
 
@@ -1778,7 +1778,7 @@ export namespace GXml {
 
         static with_value(t: CssSelectorType, name: string, value: string): CssSelector;
 
-        // Own methods of GXml.CssSelector
+        // Methods
 
         get_selector_type(): CssSelectorType;
         set_selector_type(value: CssSelectorType): void;
@@ -1804,7 +1804,7 @@ export namespace GXml {
     class CssElementSelector extends CssSelector {
         static $gtype: GObject.GType<CssElementSelector>;
 
-        // Own properties of GXml.CssElementSelector
+        // Properties
 
         get prefixed(): boolean;
         get prefix(): string;
@@ -1814,7 +1814,7 @@ export namespace GXml {
         get localName(): string;
         set localName(val: string);
 
-        // Constructors of GXml.CssElementSelector
+        // Constructors
 
         constructor(properties?: Partial<CssElementSelector.ConstructorProps>, ...args: any[]);
 
@@ -1825,7 +1825,7 @@ export namespace GXml {
 
         static ['new'](...args: never[]): any;
 
-        // Own methods of GXml.CssElementSelector
+        // Methods
 
         get_prefixed(): boolean;
         get_prefix(): string | null;
@@ -1847,7 +1847,7 @@ export namespace GXml {
     class CssAttributeSelector extends CssSelector {
         static $gtype: GObject.GType<CssAttributeSelector>;
 
-        // Own properties of GXml.CssAttributeSelector
+        // Properties
 
         get prefix(): string;
         set prefix(val: string);
@@ -1856,7 +1856,7 @@ export namespace GXml {
         get localName(): string;
         set localName(val: string);
 
-        // Constructors of GXml.CssAttributeSelector
+        // Constructors
 
         constructor(properties?: Partial<CssAttributeSelector.ConstructorProps>, ...args: any[]);
 
@@ -1867,7 +1867,7 @@ export namespace GXml {
 
         static ['new'](...args: never[]): any;
 
-        // Own methods of GXml.CssAttributeSelector
+        // Methods
 
         get_prefix(): string | null;
         set_prefix(value?: string | null): void;
@@ -1886,11 +1886,11 @@ export namespace GXml {
     class CssNotSelector extends CssSelector {
         static $gtype: GObject.GType<CssNotSelector>;
 
-        // Own properties of GXml.CssNotSelector
+        // Properties
 
         get selectors(): Gee.List;
 
-        // Constructors of GXml.CssNotSelector
+        // Constructors
 
         constructor(properties?: Partial<CssNotSelector.ConstructorProps>, ...args: any[]);
 
@@ -1898,7 +1898,7 @@ export namespace GXml {
 
         static ['new'](): CssNotSelector;
 
-        // Own methods of GXml.CssNotSelector
+        // Methods
 
         get_selectors(): Gee.List;
     }
@@ -1914,11 +1914,11 @@ export namespace GXml {
     class CssSelectorParser extends GObject.Object {
         static $gtype: GObject.GType<CssSelectorParser>;
 
-        // Own properties of GXml.CssSelectorParser
+        // Properties
 
         get selectors(): Gee.List;
 
-        // Constructors of GXml.CssSelectorParser
+        // Constructors
 
         constructor(properties?: Partial<CssSelectorParser.ConstructorProps>, ...args: any[]);
 
@@ -1926,7 +1926,7 @@ export namespace GXml {
 
         static ['new'](): CssSelectorParser;
 
-        // Own methods of GXml.CssSelectorParser
+        // Methods
 
         parse(selectors: string): void;
         get_selectors(): Gee.List;
@@ -1948,7 +1948,7 @@ export namespace GXml {
     class Document extends Node implements DomParentNode, DomNonElementParentNode, DomDocument, DomXMLDocument {
         static $gtype: GObject.GType<Document>;
 
-        // Constructors of GXml.Document
+        // Constructors
 
         constructor(properties?: Partial<Document.ConstructorProps>, ...args: any[]);
 
@@ -1966,7 +1966,7 @@ export namespace GXml {
 
         static from_string(str: string): Document;
 
-        // Own methods of GXml.Document
+        // Methods
 
         search_root_element_property(): Element;
 
@@ -2567,7 +2567,7 @@ export namespace GXml {
     class Implementation extends GObject.Object implements DomImplementation {
         static $gtype: GObject.GType<Implementation>;
 
-        // Constructors of GXml.Implementation
+        // Constructors
 
         constructor(properties?: Partial<Implementation.ConstructorProps>, ...args: any[]);
 
@@ -3006,7 +3006,7 @@ export namespace GXml {
     class DocumentType extends Node implements DomChildNode, DomDocumentType {
         static $gtype: GObject.GType<DocumentType>;
 
-        // Constructors of GXml.DocumentType
+        // Constructors
 
         constructor(properties?: Partial<DocumentType.ConstructorProps>, ...args: any[]);
 
@@ -3457,7 +3457,7 @@ export namespace GXml {
     class DocumentFragment extends Node implements DomParentNode, DomNonElementParentNode, DomDocumentFragment {
         static $gtype: GObject.GType<DocumentFragment>;
 
-        // Constructors of GXml.DocumentFragment
+        // Constructors
 
         constructor(properties?: Partial<DocumentFragment.ConstructorProps>, ...args: any[]);
 
@@ -3905,7 +3905,7 @@ export namespace GXml {
     class DomNodeFilter extends GObject.Object {
         static $gtype: GObject.GType<DomNodeFilter>;
 
-        // Constructors of GXml.DomNodeFilter
+        // Constructors
 
         constructor(properties?: Partial<DomNodeFilter.ConstructorProps>, ...args: any[]);
 
@@ -3923,7 +3923,7 @@ export namespace GXml {
     class DomElementList extends Gee.ArrayList implements DomHTMLCollection {
         static $gtype: GObject.GType<DomElementList>;
 
-        // Constructors of GXml.DomElementList
+        // Constructors
 
         constructor(properties?: Partial<DomElementList.ConstructorProps>, ...args: any[]);
 
@@ -4362,14 +4362,14 @@ export namespace GXml {
     class DomEventInit extends GObject.Object {
         static $gtype: GObject.GType<DomEventInit>;
 
-        // Own properties of GXml.DomEventInit
+        // Properties
 
         get bubbles(): boolean;
         set bubbles(val: boolean);
         get cancelable(): boolean;
         set cancelable(val: boolean);
 
-        // Constructors of GXml.DomEventInit
+        // Constructors
 
         constructor(properties?: Partial<DomEventInit.ConstructorProps>, ...args: any[]);
 
@@ -4377,7 +4377,7 @@ export namespace GXml {
 
         static ['new'](): DomEventInit;
 
-        // Own methods of GXml.DomEventInit
+        // Methods
 
         get_bubbles(): boolean;
         set_bubbles(value: boolean): void;
@@ -4396,12 +4396,12 @@ export namespace GXml {
     class DomCustomEventInit extends DomEventInit {
         static $gtype: GObject.GType<DomCustomEventInit>;
 
-        // Own properties of GXml.DomCustomEventInit
+        // Properties
 
         get detail(): GObject.Value;
         set detail(val: GObject.Value);
 
-        // Constructors of GXml.DomCustomEventInit
+        // Constructors
 
         constructor(properties?: Partial<DomCustomEventInit.ConstructorProps>, ...args: any[]);
 
@@ -4409,7 +4409,7 @@ export namespace GXml {
 
         static ['new'](): DomCustomEventInit;
 
-        // Own methods of GXml.DomCustomEventInit
+        // Methods
 
         get_detail(): unknown;
         set_detail(value: GObject.Value | any): void;
@@ -4426,12 +4426,12 @@ export namespace GXml {
     class DomTimeStamp extends GObject.Object {
         static $gtype: GObject.GType<DomTimeStamp>;
 
-        // Own properties of GXml.DomTimeStamp
+        // Properties
 
         get time(): GLib.DateTime;
         set time(val: GLib.DateTime);
 
-        // Constructors of GXml.DomTimeStamp
+        // Constructors
 
         constructor(properties?: Partial<DomTimeStamp.ConstructorProps>, ...args: any[]);
 
@@ -4439,7 +4439,7 @@ export namespace GXml {
 
         static ['new'](): DomTimeStamp;
 
-        // Own methods of GXml.DomTimeStamp
+        // Methods
 
         get_time(): GLib.DateTime;
         set_time(value: GLib.DateTime): void;
@@ -4468,7 +4468,7 @@ export namespace GXml {
     class DomMutationObserverInit extends GObject.Object {
         static $gtype: GObject.GType<DomMutationObserverInit>;
 
-        // Own properties of GXml.DomMutationObserverInit
+        // Properties
 
         get child_list(): boolean;
         set child_list(val: boolean);
@@ -4495,7 +4495,7 @@ export namespace GXml {
         get attributeFilter(): Gee.List;
         set attributeFilter(val: Gee.List);
 
-        // Constructors of GXml.DomMutationObserverInit
+        // Constructors
 
         constructor(properties?: Partial<DomMutationObserverInit.ConstructorProps>, ...args: any[]);
 
@@ -4503,7 +4503,7 @@ export namespace GXml {
 
         static ['new'](): DomMutationObserverInit;
 
-        // Own methods of GXml.DomMutationObserverInit
+        // Methods
 
         get_child_list(): boolean;
         set_child_list(value: boolean): void;
@@ -4530,7 +4530,7 @@ export namespace GXml {
     class DomErrorName extends GObject.Object {
         static $gtype: GObject.GType<DomErrorName>;
 
-        // Constructors of GXml.DomErrorName
+        // Constructors
 
         constructor(properties?: Partial<DomErrorName.ConstructorProps>, ...args: any[]);
 
@@ -4538,7 +4538,7 @@ export namespace GXml {
 
         static ['new'](): DomErrorName;
 
-        // Own methods of GXml.DomErrorName
+        // Methods
 
         get_name(error_code: number): string;
         get_code(error_name: string): number;
@@ -4565,7 +4565,7 @@ export namespace GXml {
     class Element extends Node implements DomChildNode, DomNonDocumentTypeChildNode, DomParentNode, DomElement, Object {
         static $gtype: GObject.GType<Element>;
 
-        // Own properties of GXml.Element
+        // Properties
 
         get parse_children(): boolean;
         set parse_children(val: boolean);
@@ -4578,7 +4578,7 @@ export namespace GXml {
         get readBuffer(): Gio.MemoryOutputStream;
         set readBuffer(val: Gio.MemoryOutputStream);
 
-        // Constructors of GXml.Element
+        // Constructors
 
         constructor(properties?: Partial<Element.ConstructorProps>, ...args: any[]);
 
@@ -4586,7 +4586,7 @@ export namespace GXml {
 
         static ['new'](): Element;
 
-        // Own methods of GXml.Element
+        // Methods
 
         lookup_prefix(nspace?: string | null): string | null;
         lookup_namespace_uri(prefix?: string | null): string | null;
@@ -5252,7 +5252,7 @@ export namespace GXml {
     class ElementAttributes extends Gee.HashMap implements DomNamedNodeMap {
         static $gtype: GObject.GType<ElementAttributes>;
 
-        // Constructors of GXml.ElementAttributes
+        // Constructors
 
         constructor(properties?: Partial<ElementAttributes.ConstructorProps>, ...args: any[]);
 
@@ -5263,7 +5263,7 @@ export namespace GXml {
 
         static ['new'](...args: never[]): any;
 
-        // Own methods of GXml.ElementAttributes
+        // Methods
 
         add_reference(name: string): void;
 
@@ -5694,17 +5694,17 @@ export namespace GXml {
     class Enumeration {
         static $gtype: GObject.GType<Enumeration>;
 
-        // Own fields of GXml.Enumeration
+        // Fields
 
         ref_count: number;
 
-        // Constructors of GXml.Enumeration
+        // Constructors
 
         _init(...args: any[]): void;
 
         static ['new'](): Enumeration;
 
-        // Own static methods of GXml.Enumeration
+        // Static methods
 
         static get_nick(enumeration: GObject.GType, val: number): string;
         static get_nick_camelcase(enumeration: GObject.GType, val: number): string;
@@ -5724,7 +5724,7 @@ export namespace GXml {
     class Event extends GObject.Object implements DomEvent {
         static $gtype: GObject.GType<Event>;
 
-        // Constructors of GXml.Event
+        // Constructors
 
         constructor(properties?: Partial<Event.ConstructorProps>, ...args: any[]);
 
@@ -6189,11 +6189,11 @@ export namespace GXml {
     class CustomEvent extends Event {
         static $gtype: GObject.GType<CustomEvent>;
 
-        // Own properties of GXml.CustomEvent
+        // Properties
 
         get detail(): GObject.Value;
 
-        // Constructors of GXml.CustomEvent
+        // Constructors
 
         constructor(properties?: Partial<CustomEvent.ConstructorProps>, ...args: any[]);
 
@@ -6201,7 +6201,7 @@ export namespace GXml {
 
         static ['new'](): CustomEvent;
 
-        // Own methods of GXml.CustomEvent
+        // Methods
 
         get_detail(): unknown;
         init_custom_event(type: string, bubbles: boolean, cancelable: boolean, detail?: GObject.Value | null): void;
@@ -6216,7 +6216,7 @@ export namespace GXml {
     class HashMap extends BaseCollection implements Map {
         static $gtype: GObject.GType<HashMap>;
 
-        // Constructors of GXml.HashMap
+        // Constructors
 
         constructor(properties?: Partial<HashMap.ConstructorProps>, ...args: any[]);
 
@@ -6224,7 +6224,7 @@ export namespace GXml {
 
         static ['new'](): HashMap;
 
-        // Own methods of GXml.HashMap
+        // Methods
 
         initialize_element_with_key(element: Element, items_type: GObject.GType, attribute_key: string): void;
         initialize_with_key(items_type: GObject.GType, attribute_key: string): void;
@@ -6661,7 +6661,7 @@ export namespace GXml {
     class HashPairedMap extends BaseCollection implements PairedMap {
         static $gtype: GObject.GType<HashPairedMap>;
 
-        // Constructors of GXml.HashPairedMap
+        // Constructors
 
         constructor(properties?: Partial<HashPairedMap.ConstructorProps>, ...args: any[]);
 
@@ -6669,7 +6669,7 @@ export namespace GXml {
 
         static ['new'](): HashPairedMap;
 
-        // Own methods of GXml.HashPairedMap
+        // Methods
 
         initialize_element_with_keys(
             element: Element,
@@ -7128,7 +7128,7 @@ export namespace GXml {
     class HashThreeMap extends BaseCollection implements ThreeMap {
         static $gtype: GObject.GType<HashThreeMap>;
 
-        // Constructors of GXml.HashThreeMap
+        // Constructors
 
         constructor(properties?: Partial<HashThreeMap.ConstructorProps>, ...args: any[]);
 
@@ -7136,7 +7136,7 @@ export namespace GXml {
 
         static ['new'](): HashThreeMap;
 
-        // Own methods of GXml.HashThreeMap
+        // Methods
 
         initialize_element_with_keys(
             element: Element,
@@ -7610,7 +7610,7 @@ export namespace GXml {
     class HTMLCollection extends Gee.ArrayList implements DomHTMLCollection {
         static $gtype: GObject.GType<HTMLCollection>;
 
-        // Constructors of GXml.HTMLCollection
+        // Constructors
 
         constructor(properties?: Partial<HTMLCollection.ConstructorProps>, ...args: any[]);
 
@@ -8048,12 +8048,12 @@ export namespace GXml {
     class HtmlDocument extends Document {
         static $gtype: GObject.GType<HtmlDocument>;
 
-        // Own properties of GXml.HtmlDocument
+        // Properties
 
         get html(): DomElement;
         set html(val: DomElement);
 
-        // Constructors of GXml.HtmlDocument
+        // Constructors
 
         constructor(properties?: Partial<HtmlDocument.ConstructorProps>, ...args: any[]);
 
@@ -8061,7 +8061,7 @@ export namespace GXml {
 
         static ['new'](): HtmlDocument;
 
-        // Own methods of GXml.HtmlDocument
+        // Methods
 
         get_html(): DomElement;
         set_html(value: DomElement): void;
@@ -8076,7 +8076,7 @@ export namespace GXml {
     class HtmlElement extends Element {
         static $gtype: GObject.GType<HtmlElement>;
 
-        // Constructors of GXml.HtmlElement
+        // Constructors
 
         constructor(properties?: Partial<HtmlElement.ConstructorProps>, ...args: any[]);
 
@@ -8094,7 +8094,7 @@ export namespace GXml {
     class LXPathObject extends GObject.Object implements XPathObject {
         static $gtype: GObject.GType<LXPathObject>;
 
-        // Constructors of GXml.LXPathObject
+        // Constructors
 
         constructor(properties?: Partial<LXPathObject.ConstructorProps>, ...args: any[]);
 
@@ -8538,7 +8538,7 @@ export namespace GXml {
     class Node extends GObject.Object implements DomEventTarget, DomNode {
         static $gtype: GObject.GType<Node>;
 
-        // Constructors of GXml.Node
+        // Constructors
 
         constructor(properties?: Partial<Node.ConstructorProps>, ...args: any[]);
 
@@ -9054,7 +9054,7 @@ export namespace GXml {
     class NodeList extends Gee.ArrayList implements DomNodeList {
         static $gtype: GObject.GType<NodeList>;
 
-        // Constructors of GXml.NodeList
+        // Constructors
 
         constructor(properties?: Partial<NodeList.ConstructorProps>, ...args: any[]);
 
@@ -9483,7 +9483,7 @@ export namespace GXml {
     class NodeIterator extends GObject.Object implements DomNodeIterator {
         static $gtype: GObject.GType<NodeIterator>;
 
-        // Constructors of GXml.NodeIterator
+        // Constructors
 
         constructor(properties?: Partial<NodeIterator.ConstructorProps>, ...args: any[]);
 
@@ -9928,24 +9928,24 @@ export namespace GXml {
     abstract class BaseProperty extends GObject.Object implements Property {
         static $gtype: GObject.GType<BaseProperty>;
 
-        // Own properties of GXml.BaseProperty
+        // Properties
 
         get value(): string;
         set value(val: string);
 
-        // Constructors of GXml.BaseProperty
+        // Constructors
 
         constructor(properties?: Partial<BaseProperty.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of GXml.BaseProperty
+        // Virtual methods
 
         vfunc_get_value(): string | null;
         vfunc_set_value(value?: string | null): void;
         vfunc_validate_value(val?: string | null): boolean;
 
-        // Own methods of GXml.BaseProperty
+        // Methods
 
         get_value(): string | null;
         set_value(value?: string | null): void;
@@ -10363,7 +10363,7 @@ export namespace GXml {
     class String extends BaseProperty {
         static $gtype: GObject.GType<String>;
 
-        // Constructors of GXml.String
+        // Constructors
 
         constructor(properties?: Partial<String.ConstructorProps>, ...args: any[]);
 
@@ -10383,7 +10383,7 @@ export namespace GXml {
     class ArrayString extends BaseProperty {
         static $gtype: GObject.GType<ArrayString>;
 
-        // Constructors of GXml.ArrayString
+        // Constructors
 
         constructor(properties?: Partial<ArrayString.ConstructorProps>, ...args: any[]);
 
@@ -10391,7 +10391,7 @@ export namespace GXml {
 
         static ['new'](): ArrayString;
 
-        // Own methods of GXml.ArrayString
+        // Methods
 
         get_values(): string[];
         initialize_strings(strs: string[]): void;
@@ -10413,7 +10413,7 @@ export namespace GXml {
     class XsdArrayString extends ArrayString {
         static $gtype: GObject.GType<XsdArrayString>;
 
-        // Own properties of GXml.XsdArrayString
+        // Properties
 
         get simple_type(): string;
         set simple_type(val: string);
@@ -10422,7 +10422,7 @@ export namespace GXml {
         get source(): Gio.File;
         set source(val: Gio.File);
 
-        // Constructors of GXml.XsdArrayString
+        // Constructors
 
         constructor(properties?: Partial<XsdArrayString.ConstructorProps>, ...args: any[]);
 
@@ -10430,7 +10430,7 @@ export namespace GXml {
 
         static ['new'](): XsdArrayString;
 
-        // Own methods of GXml.XsdArrayString
+        // Methods
 
         get_simple_type(): string;
         set_simple_type(value: string): void;
@@ -10450,12 +10450,12 @@ export namespace GXml {
     class Double extends BaseProperty {
         static $gtype: GObject.GType<Double>;
 
-        // Own properties of GXml.Double
+        // Properties
 
         get decimals(): number;
         set decimals(val: number);
 
-        // Constructors of GXml.Double
+        // Constructors
 
         constructor(properties?: Partial<Double.ConstructorProps>, ...args: any[]);
 
@@ -10463,7 +10463,7 @@ export namespace GXml {
 
         static ['new'](): Double;
 
-        // Own methods of GXml.Double
+        // Methods
 
         get_decimals(): number;
         set_decimals(value: number): void;
@@ -10480,7 +10480,7 @@ export namespace GXml {
     class Float extends Double {
         static $gtype: GObject.GType<Float>;
 
-        // Constructors of GXml.Float
+        // Constructors
 
         constructor(properties?: Partial<Float.ConstructorProps>, ...args: any[]);
 
@@ -10488,7 +10488,7 @@ export namespace GXml {
 
         static ['new'](): Float;
 
-        // Own methods of GXml.Float
+        // Methods
 
         get_float(): number;
         set_float(value: number): void;
@@ -10503,7 +10503,7 @@ export namespace GXml {
     class Int extends BaseProperty {
         static $gtype: GObject.GType<Int>;
 
-        // Constructors of GXml.Int
+        // Constructors
 
         constructor(properties?: Partial<Int.ConstructorProps>, ...args: any[]);
 
@@ -10511,7 +10511,7 @@ export namespace GXml {
 
         static ['new'](): Int;
 
-        // Own methods of GXml.Int
+        // Methods
 
         get_integer(): number;
         set_integer(value: number): void;
@@ -10526,7 +10526,7 @@ export namespace GXml {
     class Boolean extends BaseProperty {
         static $gtype: GObject.GType<Boolean>;
 
-        // Constructors of GXml.Boolean
+        // Constructors
 
         constructor(properties?: Partial<Boolean.ConstructorProps>, ...args: any[]);
 
@@ -10534,7 +10534,7 @@ export namespace GXml {
 
         static ['new'](): Boolean;
 
-        // Own methods of GXml.Boolean
+        // Methods
 
         get_boolean(): boolean;
         set_boolean(value: boolean): void;
@@ -10558,7 +10558,7 @@ export namespace GXml {
     class Enum extends BaseProperty {
         static $gtype: GObject.GType<Enum>;
 
-        // Own properties of GXml.Enum
+        // Properties
 
         get use_nick(): boolean;
         set use_nick(val: boolean);
@@ -10577,7 +10577,7 @@ export namespace GXml {
         get enumType(): GObject.GType;
         set enumType(val: GObject.GType);
 
-        // Constructors of GXml.Enum
+        // Constructors
 
         constructor(properties?: Partial<Enum.ConstructorProps>, ...args: any[]);
 
@@ -10585,7 +10585,7 @@ export namespace GXml {
 
         static ['new'](): Enum;
 
-        // Own methods of GXml.Enum
+        // Methods
 
         get_use_nick(): boolean;
         set_use_nick(value: boolean): void;
@@ -10610,7 +10610,7 @@ export namespace GXml {
     class Date extends BaseProperty {
         static $gtype: GObject.GType<Date>;
 
-        // Constructors of GXml.Date
+        // Constructors
 
         constructor(properties?: Partial<Date.ConstructorProps>, ...args: any[]);
 
@@ -10618,7 +10618,7 @@ export namespace GXml {
 
         static ['new'](): Date;
 
-        // Own methods of GXml.Date
+        // Methods
 
         get_date(): GLib.Date;
         set_date(date: GLib.Date): void;
@@ -10635,12 +10635,12 @@ export namespace GXml {
     class DateTime extends BaseProperty {
         static $gtype: GObject.GType<DateTime>;
 
-        // Own properties of GXml.DateTime
+        // Properties
 
         get format(): string;
         set format(val: string);
 
-        // Constructors of GXml.DateTime
+        // Constructors
 
         constructor(properties?: Partial<DateTime.ConstructorProps>, ...args: any[]);
 
@@ -10648,7 +10648,7 @@ export namespace GXml {
 
         static ['new'](): DateTime;
 
-        // Own methods of GXml.DateTime
+        // Methods
 
         get_format(): string;
         set_format(value: string): void;
@@ -10665,7 +10665,7 @@ export namespace GXml {
     class Range extends GObject.Object implements DomRange {
         static $gtype: GObject.GType<Range>;
 
-        // Constructors of GXml.Range
+        // Constructors
 
         constructor(properties?: Partial<Range.ConstructorProps>, ...args: any[]);
 
@@ -11152,7 +11152,7 @@ export namespace GXml {
     class SettableTokenList extends TokenList implements DomSettableTokenList {
         static $gtype: GObject.GType<SettableTokenList>;
 
-        // Constructors of GXml.SettableTokenList
+        // Constructors
 
         constructor(properties?: Partial<SettableTokenList.ConstructorProps>, ...args: any[]);
 
@@ -11585,7 +11585,7 @@ export namespace GXml {
     class StringRef extends GObject.Object implements Property {
         static $gtype: GObject.GType<StringRef>;
 
-        // Constructors of GXml.StringRef
+        // Constructors
 
         constructor(properties?: Partial<StringRef.ConstructorProps>, ...args: any[]);
 
@@ -12019,7 +12019,7 @@ export namespace GXml {
     class CharacterData extends Node implements DomNonDocumentTypeChildNode, DomChildNode, DomCharacterData {
         static $gtype: GObject.GType<CharacterData>;
 
-        // Constructors of GXml.CharacterData
+        // Constructors
 
         constructor(properties?: Partial<CharacterData.ConstructorProps>, ...args: any[]);
 
@@ -12450,7 +12450,7 @@ export namespace GXml {
     class Text extends CharacterData implements DomText {
         static $gtype: GObject.GType<Text>;
 
-        // Constructors of GXml.Text
+        // Constructors
 
         constructor(properties?: Partial<Text.ConstructorProps>, ...args: any[]);
 
@@ -12499,7 +12499,7 @@ export namespace GXml {
     class ProcessingInstruction extends CharacterData implements DomProcessingInstruction {
         static $gtype: GObject.GType<ProcessingInstruction>;
 
-        // Constructors of GXml.ProcessingInstruction
+        // Constructors
 
         constructor(properties?: Partial<ProcessingInstruction.ConstructorProps>, ...args: any[]);
 
@@ -12547,7 +12547,7 @@ export namespace GXml {
     class Comment extends CharacterData implements DomComment {
         static $gtype: GObject.GType<Comment>;
 
-        // Constructors of GXml.Comment
+        // Constructors
 
         constructor(properties?: Partial<Comment.ConstructorProps>, ...args: any[]);
 
@@ -12592,7 +12592,7 @@ export namespace GXml {
     class TokenList extends Gee.ArrayList implements DomTokenList {
         static $gtype: GObject.GType<TokenList>;
 
-        // Constructors of GXml.TokenList
+        // Constructors
 
         constructor(properties?: Partial<TokenList.ConstructorProps>, ...args: any[]);
 
@@ -12603,7 +12603,7 @@ export namespace GXml {
 
         static ['new'](...args: never[]): any;
 
-        // Own methods of GXml.TokenList
+        // Methods
 
         update(): void;
 
@@ -13050,7 +13050,7 @@ export namespace GXml {
     class TreeWalker extends GObject.Object implements DomTreeWalker {
         static $gtype: GObject.GType<TreeWalker>;
 
-        // Constructors of GXml.TreeWalker
+        // Constructors
 
         constructor(properties?: Partial<TreeWalker.ConstructorProps>, ...args: any[]);
 
@@ -13497,7 +13497,7 @@ export namespace GXml {
     class XAttribute extends XNode implements DomAttr {
         static $gtype: GObject.GType<XAttribute>;
 
-        // Constructors of GXml.XAttribute
+        // Constructors
 
         constructor(properties?: Partial<XAttribute.ConstructorProps>, ...args: any[]);
 
@@ -13943,12 +13943,12 @@ export namespace GXml {
     class XCharacterData extends XNonDocumentChildNode implements DomCharacterData {
         static $gtype: GObject.GType<XCharacterData>;
 
-        // Own properties of GXml.XCharacterData
+        // Properties
 
         get str(): string;
         set str(val: string);
 
-        // Constructors of GXml.XCharacterData
+        // Constructors
 
         constructor(properties?: Partial<XCharacterData.ConstructorProps>, ...args: any[]);
 
@@ -13956,7 +13956,7 @@ export namespace GXml {
 
         static ['new'](): XCharacterData;
 
-        // Own methods of GXml.XCharacterData
+        // Methods
 
         get_str(): string;
         set_str(value: string): void;
@@ -14374,7 +14374,7 @@ export namespace GXml {
     class XChildNode extends XNode implements DomChildNode {
         static $gtype: GObject.GType<XChildNode>;
 
-        // Constructors of GXml.XChildNode
+        // Constructors
 
         constructor(properties?: Partial<XChildNode.ConstructorProps>, ...args: any[]);
 
@@ -14796,7 +14796,7 @@ export namespace GXml {
     class XNonDocumentChildNode extends XChildNode implements DomNonDocumentTypeChildNode {
         static $gtype: GObject.GType<XNonDocumentChildNode>;
 
-        // Constructors of GXml.XNonDocumentChildNode
+        // Constructors
 
         constructor(properties?: Partial<XNonDocumentChildNode.ConstructorProps>, ...args: any[]);
 
@@ -15226,7 +15226,7 @@ export namespace GXml {
     class XComment extends XCharacterData implements DomComment {
         static $gtype: GObject.GType<XComment>;
 
-        // Constructors of GXml.XComment
+        // Constructors
 
         constructor(properties?: Partial<XComment.ConstructorProps>, ...args: any[]);
 
@@ -15289,7 +15289,7 @@ export namespace GXml {
     {
         static $gtype: GObject.GType<XDocument>;
 
-        // Own properties of GXml.XDocument
+        // Properties
 
         get indent(): boolean;
         set indent(val: boolean);
@@ -15307,11 +15307,11 @@ export namespace GXml {
         set file(val: Gio.File);
         get root(): DomNode;
 
-        // Own fields of GXml.XDocument
+        // Fields
 
         doc: any | null;
 
-        // Constructors of GXml.XDocument
+        // Constructors
 
         constructor(properties?: Partial<XDocument.ConstructorProps>, ...args: any[]);
 
@@ -15331,12 +15331,12 @@ export namespace GXml {
 
         static from_doc(doc: libxml2.Doc): XDocument;
 
-        // Own virtual methods of GXml.XDocument
+        // Virtual methods
 
         vfunc_save(cancellable?: Gio.Cancellable | null): boolean;
         vfunc_save_as(f: Gio.File, cancellable?: Gio.Cancellable | null): boolean;
 
-        // Own methods of GXml.XDocument
+        // Methods
 
         get_indent(): boolean;
         set_indent(value: boolean): void;
@@ -15960,12 +15960,12 @@ export namespace GXml {
     class XElement extends XNonDocumentChildNode implements DomParentNode, DomElement, XPathContext {
         static $gtype: GObject.GType<XElement>;
 
-        // Own properties of GXml.XElement
+        // Properties
 
         get content(): string;
         set content(val: string);
 
-        // Constructors of GXml.XElement
+        // Constructors
 
         constructor(properties?: Partial<XElement.ConstructorProps>, ...args: any[]);
 
@@ -15976,7 +15976,7 @@ export namespace GXml {
 
         static ['new'](...args: never[]): any;
 
-        // Own methods of GXml.XElement
+        // Methods
 
         set_attr(aname: string, avalue: string): void;
         get_attr(name: string): DomNode | null;
@@ -16593,7 +16593,7 @@ export namespace GXml {
     class XHashMapAttr extends Gee.AbstractMap implements DomNamedNodeMap {
         static $gtype: GObject.GType<XHashMapAttr>;
 
-        // Constructors of GXml.XHashMapAttr
+        // Constructors
 
         constructor(properties?: Partial<XHashMapAttr.ConstructorProps>, ...args: any[]);
 
@@ -17034,7 +17034,7 @@ export namespace GXml {
     class XHashMapAttrEntry extends Gee.MapEntry {
         static $gtype: GObject.GType<XHashMapAttrEntry>;
 
-        // Constructors of GXml.XHashMapAttrEntry
+        // Constructors
 
         constructor(properties?: Partial<XHashMapAttrEntry.ConstructorProps>, ...args: any[]);
 
@@ -17052,7 +17052,7 @@ export namespace GXml {
     class XHashMapAttrIterator extends GObject.Object implements Gee.MapIterator {
         static $gtype: GObject.GType<XHashMapAttrIterator>;
 
-        // Constructors of GXml.XHashMapAttrIterator
+        // Constructors
 
         constructor(properties?: Partial<XHashMapAttrIterator.ConstructorProps>, ...args: any[]);
 
@@ -17500,7 +17500,7 @@ export namespace GXml {
     class XHtmlDocument extends XDocument implements DomHtmlDocument {
         static $gtype: GObject.GType<XHtmlDocument>;
 
-        // Constructors of GXml.XHtmlDocument
+        // Constructors
 
         constructor(properties?: Partial<XHtmlDocument.ConstructorProps>, ...args: any[]);
 
@@ -17520,7 +17520,7 @@ export namespace GXml {
 
         static ['new'](): XHtmlDocument;
 
-        // Own static methods of GXml.XHtmlDocument
+        // Static methods
 
         static get_default_options(): number;
 
@@ -17945,7 +17945,7 @@ export namespace GXml {
     class XListChildren extends Gee.AbstractBidirList implements DomNodeList, DomHTMLCollection {
         static $gtype: GObject.GType<XListChildren>;
 
-        // Constructors of GXml.XListChildren
+        // Constructors
 
         constructor(properties?: Partial<XListChildren.ConstructorProps>, ...args: any[]);
 
@@ -18397,7 +18397,7 @@ export namespace GXml {
     {
         static $gtype: GObject.GType<XListChildrenIterator>;
 
-        // Constructors of GXml.XListChildrenIterator
+        // Constructors
 
         constructor(properties?: Partial<XListChildrenIterator.ConstructorProps>, ...args: any[]);
 
@@ -18896,7 +18896,7 @@ export namespace GXml {
     abstract class XNode extends GObject.Object implements DomEventTarget, DomNode {
         static $gtype: GObject.GType<XNode>;
 
-        // Own properties of GXml.XNode
+        // Properties
 
         get attrs(): Gee.Map;
         get children_nodes(): Gee.BidirList;
@@ -18909,21 +18909,21 @@ export namespace GXml {
         get value(): string;
         set value(val: string);
 
-        // Own fields of GXml.XNode
+        // Fields
 
         owned_node: boolean;
 
-        // Constructors of GXml.XNode
+        // Constructors
 
         constructor(properties?: Partial<XNode.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of GXml.XNode
+        // Static methods
 
         static to_gnode(doc: XDocument, node: any | null, take_node: boolean): DomNode;
 
-        // Own virtual methods of GXml.XNode
+        // Virtual methods
 
         vfunc_set_namespace(uri: string, prefix?: string | null): boolean;
         vfunc_get_attrs(): Gee.Map;
@@ -18936,7 +18936,7 @@ export namespace GXml {
         vfunc_set_value(value: string): void;
         vfunc_to_string(): string;
 
-        // Own methods of GXml.XNode
+        // Methods
 
         set_namespace(uri: string, prefix?: string | null): boolean;
         get_attrs(): Gee.Map;
@@ -19459,7 +19459,7 @@ export namespace GXml {
     class XParser extends GObject.Object implements Parser {
         static $gtype: GObject.GType<XParser>;
 
-        // Constructors of GXml.XParser
+        // Constructors
 
         constructor(properties?: Partial<XParser.ConstructorProps>, ...args: any[]);
 
@@ -19467,7 +19467,7 @@ export namespace GXml {
 
         static ['new'](node: DomNode): XParser;
 
-        // Own methods of GXml.XParser
+        // Methods
 
         read_node(node: DomNode): void;
         read_child_nodes_stream_async(istream: Gio.InputStream, _callback_?: Gio.AsyncReadyCallback<this> | null): void;
@@ -19989,12 +19989,12 @@ export namespace GXml {
     class XProcessingInstruction extends XCharacterData implements DomProcessingInstruction {
         static $gtype: GObject.GType<XProcessingInstruction>;
 
-        // Own properties of GXml.XProcessingInstruction
+        // Properties
 
         get data(): string;
         set data(val: string);
 
-        // Constructors of GXml.XProcessingInstruction
+        // Constructors
 
         constructor(properties?: Partial<XProcessingInstruction.ConstructorProps>, ...args: any[]);
 
@@ -20005,7 +20005,7 @@ export namespace GXml {
 
         static ['new'](...args: never[]): any;
 
-        // Own methods of GXml.XProcessingInstruction
+        // Methods
 
         get_data(): string;
         // Conflicted with GObject.Object.get_data
@@ -20050,7 +20050,7 @@ export namespace GXml {
     class XsdSchema extends Element {
         static $gtype: GObject.GType<XsdSchema>;
 
-        // Own properties of GXml.XsdSchema
+        // Properties
 
         get element_definitions(): XsdListElements;
         set element_definitions(val: XsdListElements);
@@ -20065,7 +20065,7 @@ export namespace GXml {
         get complexTypeDefinitions(): XsdListComplexTypes;
         set complexTypeDefinitions(val: XsdListComplexTypes);
 
-        // Constructors of GXml.XsdSchema
+        // Constructors
 
         constructor(properties?: Partial<XsdSchema.ConstructorProps>, ...args: any[]);
 
@@ -20073,7 +20073,7 @@ export namespace GXml {
 
         static ['new'](): XsdSchema;
 
-        // Own methods of GXml.XsdSchema
+        // Methods
 
         get_element_definitions(): XsdListElements;
         set_element_definitions(value: XsdListElements): void;
@@ -20099,7 +20099,7 @@ export namespace GXml {
     class XsdSimpleType extends Element {
         static $gtype: GObject.GType<XsdSimpleType>;
 
-        // Own properties of GXml.XsdSimpleType
+        // Properties
 
         get final(): string;
         set final(val: string);
@@ -20114,7 +20114,7 @@ export namespace GXml {
         get restriction(): XsdTypeRestriction;
         set restriction(val: XsdTypeRestriction);
 
-        // Constructors of GXml.XsdSimpleType
+        // Constructors
 
         constructor(properties?: Partial<XsdSimpleType.ConstructorProps>, ...args: any[]);
 
@@ -20122,7 +20122,7 @@ export namespace GXml {
 
         static ['new'](): XsdSimpleType;
 
-        // Own methods of GXml.XsdSimpleType
+        // Methods
 
         get_final(): string;
         set_final(value: string): void;
@@ -20149,12 +20149,12 @@ export namespace GXml {
     class XsdTypeDefinition extends Element {
         static $gtype: GObject.GType<XsdTypeDefinition>;
 
-        // Own properties of GXml.XsdTypeDefinition
+        // Properties
 
         get annotation(): XsdAnnotation;
         set annotation(val: XsdAnnotation);
 
-        // Constructors of GXml.XsdTypeDefinition
+        // Constructors
 
         constructor(properties?: Partial<XsdTypeDefinition.ConstructorProps>, ...args: any[]);
 
@@ -20162,7 +20162,7 @@ export namespace GXml {
 
         static ['new'](): XsdTypeDefinition;
 
-        // Own methods of GXml.XsdTypeDefinition
+        // Methods
 
         get_annotation(): XsdAnnotation;
         set_annotation(value: XsdAnnotation): void;
@@ -20177,7 +20177,7 @@ export namespace GXml {
     class XsdTypeList extends XsdTypeDefinition {
         static $gtype: GObject.GType<XsdTypeList>;
 
-        // Constructors of GXml.XsdTypeList
+        // Constructors
 
         constructor(properties?: Partial<XsdTypeList.ConstructorProps>, ...args: any[]);
 
@@ -20195,7 +20195,7 @@ export namespace GXml {
     class XsdTypeUnion extends XsdTypeDefinition {
         static $gtype: GObject.GType<XsdTypeUnion>;
 
-        // Constructors of GXml.XsdTypeUnion
+        // Constructors
 
         constructor(properties?: Partial<XsdTypeUnion.ConstructorProps>, ...args: any[]);
 
@@ -20220,7 +20220,7 @@ export namespace GXml {
     class XsdTypeRestriction extends XsdTypeDefinition {
         static $gtype: GObject.GType<XsdTypeRestriction>;
 
-        // Own properties of GXml.XsdTypeRestriction
+        // Properties
 
         get base(): string;
         set base(val: string);
@@ -20235,7 +20235,7 @@ export namespace GXml {
         get whiteSpaces(): XsdListTypeRestrictionWhiteSpaces;
         set whiteSpaces(val: XsdListTypeRestrictionWhiteSpaces);
 
-        // Constructors of GXml.XsdTypeRestriction
+        // Constructors
 
         constructor(properties?: Partial<XsdTypeRestriction.ConstructorProps>, ...args: any[]);
 
@@ -20243,7 +20243,7 @@ export namespace GXml {
 
         static ['new'](): XsdTypeRestriction;
 
-        // Own methods of GXml.XsdTypeRestriction
+        // Methods
 
         get_base(): string;
         set_base(value: string): void;
@@ -20266,12 +20266,12 @@ export namespace GXml {
     class XsdTypeRestrictionDef extends Element {
         static $gtype: GObject.GType<XsdTypeRestrictionDef>;
 
-        // Own properties of GXml.XsdTypeRestrictionDef
+        // Properties
 
         get annotation(): XsdAnnotation;
         set annotation(val: XsdAnnotation);
 
-        // Constructors of GXml.XsdTypeRestrictionDef
+        // Constructors
 
         constructor(properties?: Partial<XsdTypeRestrictionDef.ConstructorProps>, ...args: any[]);
 
@@ -20279,7 +20279,7 @@ export namespace GXml {
 
         static ['new'](): XsdTypeRestrictionDef;
 
-        // Own methods of GXml.XsdTypeRestrictionDef
+        // Methods
 
         get_annotation(): XsdAnnotation;
         set_annotation(value: XsdAnnotation): void;
@@ -20294,7 +20294,7 @@ export namespace GXml {
     class XsdTypeRestrictionMinExclusive extends XsdTypeRestrictionDef {
         static $gtype: GObject.GType<XsdTypeRestrictionMinExclusive>;
 
-        // Constructors of GXml.XsdTypeRestrictionMinExclusive
+        // Constructors
 
         constructor(properties?: Partial<XsdTypeRestrictionMinExclusive.ConstructorProps>, ...args: any[]);
 
@@ -20312,7 +20312,7 @@ export namespace GXml {
     class XsdTypeRestrictionMinInclusive extends XsdTypeRestrictionDef {
         static $gtype: GObject.GType<XsdTypeRestrictionMinInclusive>;
 
-        // Constructors of GXml.XsdTypeRestrictionMinInclusive
+        // Constructors
 
         constructor(properties?: Partial<XsdTypeRestrictionMinInclusive.ConstructorProps>, ...args: any[]);
 
@@ -20330,7 +20330,7 @@ export namespace GXml {
     class XsdTypeRestrictionMaxExclusive extends XsdTypeRestrictionDef {
         static $gtype: GObject.GType<XsdTypeRestrictionMaxExclusive>;
 
-        // Constructors of GXml.XsdTypeRestrictionMaxExclusive
+        // Constructors
 
         constructor(properties?: Partial<XsdTypeRestrictionMaxExclusive.ConstructorProps>, ...args: any[]);
 
@@ -20348,7 +20348,7 @@ export namespace GXml {
     class XsdTypeRestrictionMaxInclusive extends XsdTypeRestrictionDef {
         static $gtype: GObject.GType<XsdTypeRestrictionMaxInclusive>;
 
-        // Constructors of GXml.XsdTypeRestrictionMaxInclusive
+        // Constructors
 
         constructor(properties?: Partial<XsdTypeRestrictionMaxInclusive.ConstructorProps>, ...args: any[]);
 
@@ -20366,7 +20366,7 @@ export namespace GXml {
     class XsdTypeRestrictionTotalDigits extends XsdTypeRestrictionDef {
         static $gtype: GObject.GType<XsdTypeRestrictionTotalDigits>;
 
-        // Constructors of GXml.XsdTypeRestrictionTotalDigits
+        // Constructors
 
         constructor(properties?: Partial<XsdTypeRestrictionTotalDigits.ConstructorProps>, ...args: any[]);
 
@@ -20384,7 +20384,7 @@ export namespace GXml {
     class XsdTypeRestrictionFractionDigits extends XsdTypeRestrictionDef {
         static $gtype: GObject.GType<XsdTypeRestrictionFractionDigits>;
 
-        // Constructors of GXml.XsdTypeRestrictionFractionDigits
+        // Constructors
 
         constructor(properties?: Partial<XsdTypeRestrictionFractionDigits.ConstructorProps>, ...args: any[]);
 
@@ -20402,7 +20402,7 @@ export namespace GXml {
     class XsdTypeRestrictionLength extends XsdTypeRestrictionDef {
         static $gtype: GObject.GType<XsdTypeRestrictionLength>;
 
-        // Constructors of GXml.XsdTypeRestrictionLength
+        // Constructors
 
         constructor(properties?: Partial<XsdTypeRestrictionLength.ConstructorProps>, ...args: any[]);
 
@@ -20420,7 +20420,7 @@ export namespace GXml {
     class XsdTypeRestrictionMinLength extends XsdTypeRestrictionDef {
         static $gtype: GObject.GType<XsdTypeRestrictionMinLength>;
 
-        // Constructors of GXml.XsdTypeRestrictionMinLength
+        // Constructors
 
         constructor(properties?: Partial<XsdTypeRestrictionMinLength.ConstructorProps>, ...args: any[]);
 
@@ -20438,7 +20438,7 @@ export namespace GXml {
     class XsdTypeRestrictionMaxLength extends XsdTypeRestrictionDef {
         static $gtype: GObject.GType<XsdTypeRestrictionMaxLength>;
 
-        // Constructors of GXml.XsdTypeRestrictionMaxLength
+        // Constructors
 
         constructor(properties?: Partial<XsdTypeRestrictionMaxLength.ConstructorProps>, ...args: any[]);
 
@@ -20458,12 +20458,12 @@ export namespace GXml {
     class XsdTypeRestrictionEnumeration extends XsdTypeRestrictionDef {
         static $gtype: GObject.GType<XsdTypeRestrictionEnumeration>;
 
-        // Own properties of GXml.XsdTypeRestrictionEnumeration
+        // Properties
 
         get value(): string;
         set value(val: string);
 
-        // Constructors of GXml.XsdTypeRestrictionEnumeration
+        // Constructors
 
         constructor(properties?: Partial<XsdTypeRestrictionEnumeration.ConstructorProps>, ...args: any[]);
 
@@ -20471,7 +20471,7 @@ export namespace GXml {
 
         static ['new'](): XsdTypeRestrictionEnumeration;
 
-        // Own methods of GXml.XsdTypeRestrictionEnumeration
+        // Methods
 
         get_value(): string;
         set_value(value: string): void;
@@ -20489,14 +20489,14 @@ export namespace GXml {
     class XsdTypeRestrictionWhiteSpace extends XsdTypeRestrictionDef {
         static $gtype: GObject.GType<XsdTypeRestrictionWhiteSpace>;
 
-        // Own properties of GXml.XsdTypeRestrictionWhiteSpace
+        // Properties
 
         get fixed(): XsdTypeRestrictionWhiteSpaceFixed;
         set fixed(val: XsdTypeRestrictionWhiteSpaceFixed);
         get value(): string;
         set value(val: string);
 
-        // Constructors of GXml.XsdTypeRestrictionWhiteSpace
+        // Constructors
 
         constructor(properties?: Partial<XsdTypeRestrictionWhiteSpace.ConstructorProps>, ...args: any[]);
 
@@ -20504,7 +20504,7 @@ export namespace GXml {
 
         static ['new'](): XsdTypeRestrictionWhiteSpace;
 
-        // Own methods of GXml.XsdTypeRestrictionWhiteSpace
+        // Methods
 
         get_fixed(): XsdTypeRestrictionWhiteSpaceFixed;
         set_fixed(value: XsdTypeRestrictionWhiteSpaceFixed): void;
@@ -20521,7 +20521,7 @@ export namespace GXml {
     class XsdTypeRestrictionWhiteSpaceFixed extends Boolean {
         static $gtype: GObject.GType<XsdTypeRestrictionWhiteSpaceFixed>;
 
-        // Constructors of GXml.XsdTypeRestrictionWhiteSpaceFixed
+        // Constructors
 
         constructor(properties?: Partial<XsdTypeRestrictionWhiteSpaceFixed.ConstructorProps>, ...args: any[]);
 
@@ -20539,7 +20539,7 @@ export namespace GXml {
     class XsdTypeRestrictionPattern extends XsdTypeRestrictionDef {
         static $gtype: GObject.GType<XsdTypeRestrictionPattern>;
 
-        // Constructors of GXml.XsdTypeRestrictionPattern
+        // Constructors
 
         constructor(properties?: Partial<XsdTypeRestrictionPattern.ConstructorProps>, ...args: any[]);
 
@@ -20557,7 +20557,7 @@ export namespace GXml {
     class XsdTypeRestrictionAssertion extends XsdTypeRestrictionDef {
         static $gtype: GObject.GType<XsdTypeRestrictionAssertion>;
 
-        // Constructors of GXml.XsdTypeRestrictionAssertion
+        // Constructors
 
         constructor(properties?: Partial<XsdTypeRestrictionAssertion.ConstructorProps>, ...args: any[]);
 
@@ -20575,7 +20575,7 @@ export namespace GXml {
     class XsdTypeRestrictionExplicitTimezone extends XsdTypeRestrictionDef {
         static $gtype: GObject.GType<XsdTypeRestrictionExplicitTimezone>;
 
-        // Constructors of GXml.XsdTypeRestrictionExplicitTimezone
+        // Constructors
 
         constructor(properties?: Partial<XsdTypeRestrictionExplicitTimezone.ConstructorProps>, ...args: any[]);
 
@@ -20607,7 +20607,7 @@ export namespace GXml {
     class XsdComplexType extends XsdBaseType {
         static $gtype: GObject.GType<XsdComplexType>;
 
-        // Own properties of GXml.XsdComplexType
+        // Properties
 
         get abstract(): boolean;
         set abstract(val: boolean);
@@ -20632,7 +20632,7 @@ export namespace GXml {
         get group_attributes(): XsdList;
         get groupAttributes(): XsdList;
 
-        // Constructors of GXml.XsdComplexType
+        // Constructors
 
         constructor(properties?: Partial<XsdComplexType.ConstructorProps>, ...args: any[]);
 
@@ -20640,7 +20640,7 @@ export namespace GXml {
 
         static ['new'](): XsdComplexType;
 
-        // Own methods of GXml.XsdComplexType
+        // Methods
 
         get_abstract(): boolean;
         set_abstract(value: boolean): void;
@@ -20671,12 +20671,12 @@ export namespace GXml {
     class XsdExtension extends Element {
         static $gtype: GObject.GType<XsdExtension>;
 
-        // Own properties of GXml.XsdExtension
+        // Properties
 
         get base(): string;
         set base(val: string);
 
-        // Constructors of GXml.XsdExtension
+        // Constructors
 
         constructor(properties?: Partial<XsdExtension.ConstructorProps>, ...args: any[]);
 
@@ -20684,7 +20684,7 @@ export namespace GXml {
 
         static ['new'](): XsdExtension;
 
-        // Own methods of GXml.XsdExtension
+        // Methods
 
         get_base(): string;
         set_base(value: string): void;
@@ -20724,7 +20724,7 @@ export namespace GXml {
     class XsdElement extends Element {
         static $gtype: GObject.GType<XsdElement>;
 
-        // Own properties of GXml.XsdElement
+        // Properties
 
         get abstract(): boolean;
         set abstract(val: boolean);
@@ -20775,7 +20775,7 @@ export namespace GXml {
         get complexType(): XsdComplexType;
         set complexType(val: XsdComplexType);
 
-        // Constructors of GXml.XsdElement
+        // Constructors
 
         constructor(properties?: Partial<XsdElement.ConstructorProps>, ...args: any[]);
 
@@ -20783,7 +20783,7 @@ export namespace GXml {
 
         static ['new'](): XsdElement;
 
-        // Own methods of GXml.XsdElement
+        // Methods
 
         get_abstract(): boolean;
         set_abstract(value: boolean): void;
@@ -20830,7 +20830,7 @@ export namespace GXml {
     class XsdAnnotation extends Element {
         static $gtype: GObject.GType<XsdAnnotation>;
 
-        // Constructors of GXml.XsdAnnotation
+        // Constructors
 
         constructor(properties?: Partial<XsdAnnotation.ConstructorProps>, ...args: any[]);
 
@@ -20850,12 +20850,12 @@ export namespace GXml {
     class XsdBaseType extends Element {
         static $gtype: GObject.GType<XsdBaseType>;
 
-        // Own properties of GXml.XsdBaseType
+        // Properties
 
         get anotation(): XsdAnnotation;
         set anotation(val: XsdAnnotation);
 
-        // Constructors of GXml.XsdBaseType
+        // Constructors
 
         constructor(properties?: Partial<XsdBaseType.ConstructorProps>, ...args: any[]);
 
@@ -20863,7 +20863,7 @@ export namespace GXml {
 
         static ['new'](): XsdBaseType;
 
-        // Own methods of GXml.XsdBaseType
+        // Methods
 
         get_anotation(): XsdAnnotation;
         set_anotation(value: XsdAnnotation): void;
@@ -20880,12 +20880,12 @@ export namespace GXml {
     class XsdBaseContent extends Element {
         static $gtype: GObject.GType<XsdBaseContent>;
 
-        // Own properties of GXml.XsdBaseContent
+        // Properties
 
         get anotation(): XsdAnnotation;
         set anotation(val: XsdAnnotation);
 
-        // Constructors of GXml.XsdBaseContent
+        // Constructors
 
         constructor(properties?: Partial<XsdBaseContent.ConstructorProps>, ...args: any[]);
 
@@ -20893,7 +20893,7 @@ export namespace GXml {
 
         static ['new'](): XsdBaseContent;
 
-        // Own methods of GXml.XsdBaseContent
+        // Methods
 
         get_anotation(): XsdAnnotation;
         set_anotation(value: XsdAnnotation): void;
@@ -20908,7 +20908,7 @@ export namespace GXml {
     class XsdSimpleContent extends XsdBaseContent {
         static $gtype: GObject.GType<XsdSimpleContent>;
 
-        // Constructors of GXml.XsdSimpleContent
+        // Constructors
 
         constructor(properties?: Partial<XsdSimpleContent.ConstructorProps>, ...args: any[]);
 
@@ -20926,7 +20926,7 @@ export namespace GXml {
     class XsdComplexContent extends XsdBaseContent {
         static $gtype: GObject.GType<XsdComplexContent>;
 
-        // Constructors of GXml.XsdComplexContent
+        // Constructors
 
         constructor(properties?: Partial<XsdComplexContent.ConstructorProps>, ...args: any[]);
 
@@ -20944,7 +20944,7 @@ export namespace GXml {
     class XsdOpenContent extends XsdBaseContent {
         static $gtype: GObject.GType<XsdOpenContent>;
 
-        // Constructors of GXml.XsdOpenContent
+        // Constructors
 
         constructor(properties?: Partial<XsdOpenContent.ConstructorProps>, ...args: any[]);
 
@@ -20964,12 +20964,12 @@ export namespace GXml {
     class XsdBaseAttribute extends Element {
         static $gtype: GObject.GType<XsdBaseAttribute>;
 
-        // Own properties of GXml.XsdBaseAttribute
+        // Properties
 
         get anotation(): XsdAnnotation;
         set anotation(val: XsdAnnotation);
 
-        // Constructors of GXml.XsdBaseAttribute
+        // Constructors
 
         constructor(properties?: Partial<XsdBaseAttribute.ConstructorProps>, ...args: any[]);
 
@@ -20977,7 +20977,7 @@ export namespace GXml {
 
         static ['new'](): XsdBaseAttribute;
 
-        // Own methods of GXml.XsdBaseAttribute
+        // Methods
 
         get_anotation(): XsdAnnotation;
         set_anotation(value: XsdAnnotation): void;
@@ -20992,7 +20992,7 @@ export namespace GXml {
     class XsdAttribute extends XsdBaseAttribute {
         static $gtype: GObject.GType<XsdAttribute>;
 
-        // Constructors of GXml.XsdAttribute
+        // Constructors
 
         constructor(properties?: Partial<XsdAttribute.ConstructorProps>, ...args: any[]);
 
@@ -21010,7 +21010,7 @@ export namespace GXml {
     class XsdAttributeGroup extends XsdBaseAttribute {
         static $gtype: GObject.GType<XsdAttributeGroup>;
 
-        // Constructors of GXml.XsdAttributeGroup
+        // Constructors
 
         constructor(properties?: Partial<XsdAttributeGroup.ConstructorProps>, ...args: any[]);
 
@@ -21030,11 +21030,11 @@ export namespace GXml {
     class XsdList extends ArrayList {
         static $gtype: GObject.GType<XsdList>;
 
-        // Own properties of GXml.XsdList
+        // Properties
 
         get length(): number;
 
-        // Constructors of GXml.XsdList
+        // Constructors
 
         constructor(properties?: Partial<XsdList.ConstructorProps>, ...args: any[]);
 
@@ -21042,7 +21042,7 @@ export namespace GXml {
 
         static ['new'](): XsdList;
 
-        // Own methods of GXml.XsdList
+        // Methods
 
         get_length(): number;
         remove(index: number): void;
@@ -21058,7 +21058,7 @@ export namespace GXml {
     class XsdListElements extends XsdList {
         static $gtype: GObject.GType<XsdListElements>;
 
-        // Constructors of GXml.XsdListElements
+        // Constructors
 
         constructor(properties?: Partial<XsdListElements.ConstructorProps>, ...args: any[]);
 
@@ -21076,7 +21076,7 @@ export namespace GXml {
     class XsdListSimpleTypes extends XsdList {
         static $gtype: GObject.GType<XsdListSimpleTypes>;
 
-        // Constructors of GXml.XsdListSimpleTypes
+        // Constructors
 
         constructor(properties?: Partial<XsdListSimpleTypes.ConstructorProps>, ...args: any[]);
 
@@ -21094,7 +21094,7 @@ export namespace GXml {
     class XsdListComplexTypes extends XsdList {
         static $gtype: GObject.GType<XsdListComplexTypes>;
 
-        // Constructors of GXml.XsdListComplexTypes
+        // Constructors
 
         constructor(properties?: Partial<XsdListComplexTypes.ConstructorProps>, ...args: any[]);
 
@@ -21112,7 +21112,7 @@ export namespace GXml {
     class XsdListTypeRestrictionEnumerations extends XsdList {
         static $gtype: GObject.GType<XsdListTypeRestrictionEnumerations>;
 
-        // Constructors of GXml.XsdListTypeRestrictionEnumerations
+        // Constructors
 
         constructor(properties?: Partial<XsdListTypeRestrictionEnumerations.ConstructorProps>, ...args: any[]);
 
@@ -21130,7 +21130,7 @@ export namespace GXml {
     class XsdListTypeRestrictionWhiteSpaces extends XsdList {
         static $gtype: GObject.GType<XsdListTypeRestrictionWhiteSpaces>;
 
-        // Constructors of GXml.XsdListTypeRestrictionWhiteSpaces
+        // Constructors
 
         constructor(properties?: Partial<XsdListTypeRestrictionWhiteSpaces.ConstructorProps>, ...args: any[]);
 
@@ -21148,7 +21148,7 @@ export namespace GXml {
     class XText extends XCharacterData implements DomText {
         static $gtype: GObject.GType<XText>;
 
-        // Constructors of GXml.XText
+        // Constructors
 
         constructor(properties?: Partial<XText.ConstructorProps>, ...args: any[]);
 
@@ -21192,7 +21192,7 @@ export namespace GXml {
     abstract class ArrayListPrivate {
         static $gtype: GObject.GType<ArrayListPrivate>;
 
-        // Constructors of GXml.ArrayListPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -21201,7 +21201,7 @@ export namespace GXml {
     abstract class AttrPrivate {
         static $gtype: GObject.GType<AttrPrivate>;
 
-        // Constructors of GXml.AttrPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -21210,7 +21210,7 @@ export namespace GXml {
     abstract class BaseCollectionPrivate {
         static $gtype: GObject.GType<BaseCollectionPrivate>;
 
-        // Constructors of GXml.BaseCollectionPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -21219,7 +21219,7 @@ export namespace GXml {
     abstract class CssSelectorPrivate {
         static $gtype: GObject.GType<CssSelectorPrivate>;
 
-        // Constructors of GXml.CssSelectorPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -21228,7 +21228,7 @@ export namespace GXml {
     abstract class CssElementSelectorPrivate {
         static $gtype: GObject.GType<CssElementSelectorPrivate>;
 
-        // Constructors of GXml.CssElementSelectorPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -21237,7 +21237,7 @@ export namespace GXml {
     abstract class CssAttributeSelectorPrivate {
         static $gtype: GObject.GType<CssAttributeSelectorPrivate>;
 
-        // Constructors of GXml.CssAttributeSelectorPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -21246,7 +21246,7 @@ export namespace GXml {
     abstract class CssNotSelectorPrivate {
         static $gtype: GObject.GType<CssNotSelectorPrivate>;
 
-        // Constructors of GXml.CssNotSelectorPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -21255,7 +21255,7 @@ export namespace GXml {
     abstract class CssSelectorParserPrivate {
         static $gtype: GObject.GType<CssSelectorParserPrivate>;
 
-        // Constructors of GXml.CssSelectorParserPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -21264,7 +21264,7 @@ export namespace GXml {
     abstract class DocumentPrivate {
         static $gtype: GObject.GType<DocumentPrivate>;
 
-        // Constructors of GXml.DocumentPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -21273,7 +21273,7 @@ export namespace GXml {
     abstract class ImplementationPrivate {
         static $gtype: GObject.GType<ImplementationPrivate>;
 
-        // Constructors of GXml.ImplementationPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -21282,7 +21282,7 @@ export namespace GXml {
     abstract class DocumentTypePrivate {
         static $gtype: GObject.GType<DocumentTypePrivate>;
 
-        // Constructors of GXml.DocumentTypePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -21291,7 +21291,7 @@ export namespace GXml {
     abstract class DocumentFragmentPrivate {
         static $gtype: GObject.GType<DocumentFragmentPrivate>;
 
-        // Constructors of GXml.DocumentFragmentPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -21300,7 +21300,7 @@ export namespace GXml {
     abstract class DomNodeFilterPrivate {
         static $gtype: GObject.GType<DomNodeFilterPrivate>;
 
-        // Constructors of GXml.DomNodeFilterPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -21309,7 +21309,7 @@ export namespace GXml {
     abstract class DomElementListPrivate {
         static $gtype: GObject.GType<DomElementListPrivate>;
 
-        // Constructors of GXml.DomElementListPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -21318,7 +21318,7 @@ export namespace GXml {
     abstract class DomEventInitPrivate {
         static $gtype: GObject.GType<DomEventInitPrivate>;
 
-        // Constructors of GXml.DomEventInitPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -21327,7 +21327,7 @@ export namespace GXml {
     abstract class DomCustomEventInitPrivate {
         static $gtype: GObject.GType<DomCustomEventInitPrivate>;
 
-        // Constructors of GXml.DomCustomEventInitPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -21336,7 +21336,7 @@ export namespace GXml {
     abstract class DomTimeStampPrivate {
         static $gtype: GObject.GType<DomTimeStampPrivate>;
 
-        // Constructors of GXml.DomTimeStampPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -21345,7 +21345,7 @@ export namespace GXml {
     abstract class DomMutationObserverInitPrivate {
         static $gtype: GObject.GType<DomMutationObserverInitPrivate>;
 
-        // Constructors of GXml.DomMutationObserverInitPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -21354,7 +21354,7 @@ export namespace GXml {
     abstract class DomErrorNamePrivate {
         static $gtype: GObject.GType<DomErrorNamePrivate>;
 
-        // Constructors of GXml.DomErrorNamePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -21363,7 +21363,7 @@ export namespace GXml {
     abstract class ElementPrivate {
         static $gtype: GObject.GType<ElementPrivate>;
 
-        // Constructors of GXml.ElementPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -21372,7 +21372,7 @@ export namespace GXml {
     abstract class ElementAttributesPrivate {
         static $gtype: GObject.GType<ElementAttributesPrivate>;
 
-        // Constructors of GXml.ElementAttributesPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -21381,7 +21381,7 @@ export namespace GXml {
     abstract class EnumerationPrivate {
         static $gtype: GObject.GType<EnumerationPrivate>;
 
-        // Constructors of GXml.EnumerationPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -21390,7 +21390,7 @@ export namespace GXml {
     abstract class EventPrivate {
         static $gtype: GObject.GType<EventPrivate>;
 
-        // Constructors of GXml.EventPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -21399,7 +21399,7 @@ export namespace GXml {
     abstract class CustomEventPrivate {
         static $gtype: GObject.GType<CustomEventPrivate>;
 
-        // Constructors of GXml.CustomEventPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -21408,7 +21408,7 @@ export namespace GXml {
     abstract class HashMapPrivate {
         static $gtype: GObject.GType<HashMapPrivate>;
 
-        // Constructors of GXml.HashMapPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -21417,7 +21417,7 @@ export namespace GXml {
     abstract class HashPairedMapPrivate {
         static $gtype: GObject.GType<HashPairedMapPrivate>;
 
-        // Constructors of GXml.HashPairedMapPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -21426,7 +21426,7 @@ export namespace GXml {
     abstract class HashThreeMapPrivate {
         static $gtype: GObject.GType<HashThreeMapPrivate>;
 
-        // Constructors of GXml.HashThreeMapPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -21435,7 +21435,7 @@ export namespace GXml {
     abstract class HTMLCollectionPrivate {
         static $gtype: GObject.GType<HTMLCollectionPrivate>;
 
-        // Constructors of GXml.HTMLCollectionPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -21444,7 +21444,7 @@ export namespace GXml {
     abstract class HtmlDocumentPrivate {
         static $gtype: GObject.GType<HtmlDocumentPrivate>;
 
-        // Constructors of GXml.HtmlDocumentPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -21453,7 +21453,7 @@ export namespace GXml {
     abstract class HtmlElementPrivate {
         static $gtype: GObject.GType<HtmlElementPrivate>;
 
-        // Constructors of GXml.HtmlElementPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -21462,7 +21462,7 @@ export namespace GXml {
     abstract class LXPathObjectPrivate {
         static $gtype: GObject.GType<LXPathObjectPrivate>;
 
-        // Constructors of GXml.LXPathObjectPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -21471,7 +21471,7 @@ export namespace GXml {
     abstract class NodePrivate {
         static $gtype: GObject.GType<NodePrivate>;
 
-        // Constructors of GXml.NodePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -21480,7 +21480,7 @@ export namespace GXml {
     abstract class NodeListPrivate {
         static $gtype: GObject.GType<NodeListPrivate>;
 
-        // Constructors of GXml.NodeListPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -21489,7 +21489,7 @@ export namespace GXml {
     abstract class NodeIteratorPrivate {
         static $gtype: GObject.GType<NodeIteratorPrivate>;
 
-        // Constructors of GXml.NodeIteratorPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -21498,7 +21498,7 @@ export namespace GXml {
     abstract class BasePropertyPrivate {
         static $gtype: GObject.GType<BasePropertyPrivate>;
 
-        // Constructors of GXml.BasePropertyPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -21507,7 +21507,7 @@ export namespace GXml {
     abstract class StringPrivate {
         static $gtype: GObject.GType<StringPrivate>;
 
-        // Constructors of GXml.StringPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -21516,7 +21516,7 @@ export namespace GXml {
     abstract class ArrayStringPrivate {
         static $gtype: GObject.GType<ArrayStringPrivate>;
 
-        // Constructors of GXml.ArrayStringPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -21525,7 +21525,7 @@ export namespace GXml {
     abstract class XsdArrayStringPrivate {
         static $gtype: GObject.GType<XsdArrayStringPrivate>;
 
-        // Constructors of GXml.XsdArrayStringPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -21534,7 +21534,7 @@ export namespace GXml {
     abstract class DoublePrivate {
         static $gtype: GObject.GType<DoublePrivate>;
 
-        // Constructors of GXml.DoublePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -21543,7 +21543,7 @@ export namespace GXml {
     abstract class FloatPrivate {
         static $gtype: GObject.GType<FloatPrivate>;
 
-        // Constructors of GXml.FloatPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -21552,7 +21552,7 @@ export namespace GXml {
     abstract class IntPrivate {
         static $gtype: GObject.GType<IntPrivate>;
 
-        // Constructors of GXml.IntPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -21561,7 +21561,7 @@ export namespace GXml {
     abstract class BooleanPrivate {
         static $gtype: GObject.GType<BooleanPrivate>;
 
-        // Constructors of GXml.BooleanPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -21570,7 +21570,7 @@ export namespace GXml {
     abstract class EnumPrivate {
         static $gtype: GObject.GType<EnumPrivate>;
 
-        // Constructors of GXml.EnumPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -21579,7 +21579,7 @@ export namespace GXml {
     abstract class DatePrivate {
         static $gtype: GObject.GType<DatePrivate>;
 
-        // Constructors of GXml.DatePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -21588,7 +21588,7 @@ export namespace GXml {
     abstract class DateTimePrivate {
         static $gtype: GObject.GType<DateTimePrivate>;
 
-        // Constructors of GXml.DateTimePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -21597,7 +21597,7 @@ export namespace GXml {
     abstract class RangePrivate {
         static $gtype: GObject.GType<RangePrivate>;
 
-        // Constructors of GXml.RangePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -21606,7 +21606,7 @@ export namespace GXml {
     abstract class SettableTokenListPrivate {
         static $gtype: GObject.GType<SettableTokenListPrivate>;
 
-        // Constructors of GXml.SettableTokenListPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -21615,7 +21615,7 @@ export namespace GXml {
     abstract class StringRefPrivate {
         static $gtype: GObject.GType<StringRefPrivate>;
 
-        // Constructors of GXml.StringRefPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -21624,7 +21624,7 @@ export namespace GXml {
     abstract class CharacterDataPrivate {
         static $gtype: GObject.GType<CharacterDataPrivate>;
 
-        // Constructors of GXml.CharacterDataPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -21633,7 +21633,7 @@ export namespace GXml {
     abstract class TextPrivate {
         static $gtype: GObject.GType<TextPrivate>;
 
-        // Constructors of GXml.TextPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -21642,7 +21642,7 @@ export namespace GXml {
     abstract class ProcessingInstructionPrivate {
         static $gtype: GObject.GType<ProcessingInstructionPrivate>;
 
-        // Constructors of GXml.ProcessingInstructionPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -21651,7 +21651,7 @@ export namespace GXml {
     abstract class CommentPrivate {
         static $gtype: GObject.GType<CommentPrivate>;
 
-        // Constructors of GXml.CommentPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -21660,7 +21660,7 @@ export namespace GXml {
     abstract class TokenListPrivate {
         static $gtype: GObject.GType<TokenListPrivate>;
 
-        // Constructors of GXml.TokenListPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -21669,7 +21669,7 @@ export namespace GXml {
     abstract class TreeWalkerPrivate {
         static $gtype: GObject.GType<TreeWalkerPrivate>;
 
-        // Constructors of GXml.TreeWalkerPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -21678,7 +21678,7 @@ export namespace GXml {
     abstract class XAttributePrivate {
         static $gtype: GObject.GType<XAttributePrivate>;
 
-        // Constructors of GXml.XAttributePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -21687,7 +21687,7 @@ export namespace GXml {
     abstract class XCharacterDataPrivate {
         static $gtype: GObject.GType<XCharacterDataPrivate>;
 
-        // Constructors of GXml.XCharacterDataPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -21696,7 +21696,7 @@ export namespace GXml {
     abstract class XChildNodePrivate {
         static $gtype: GObject.GType<XChildNodePrivate>;
 
-        // Constructors of GXml.XChildNodePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -21705,7 +21705,7 @@ export namespace GXml {
     abstract class XNonDocumentChildNodePrivate {
         static $gtype: GObject.GType<XNonDocumentChildNodePrivate>;
 
-        // Constructors of GXml.XNonDocumentChildNodePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -21714,7 +21714,7 @@ export namespace GXml {
     abstract class XCommentPrivate {
         static $gtype: GObject.GType<XCommentPrivate>;
 
-        // Constructors of GXml.XCommentPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -21723,7 +21723,7 @@ export namespace GXml {
     abstract class XDocumentPrivate {
         static $gtype: GObject.GType<XDocumentPrivate>;
 
-        // Constructors of GXml.XDocumentPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -21732,7 +21732,7 @@ export namespace GXml {
     abstract class XElementPrivate {
         static $gtype: GObject.GType<XElementPrivate>;
 
-        // Constructors of GXml.XElementPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -21741,7 +21741,7 @@ export namespace GXml {
     abstract class XHashMapAttrPrivate {
         static $gtype: GObject.GType<XHashMapAttrPrivate>;
 
-        // Constructors of GXml.XHashMapAttrPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -21750,7 +21750,7 @@ export namespace GXml {
     abstract class XHashMapAttrEntryPrivate {
         static $gtype: GObject.GType<XHashMapAttrEntryPrivate>;
 
-        // Constructors of GXml.XHashMapAttrEntryPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -21759,7 +21759,7 @@ export namespace GXml {
     abstract class XHashMapAttrIteratorPrivate {
         static $gtype: GObject.GType<XHashMapAttrIteratorPrivate>;
 
-        // Constructors of GXml.XHashMapAttrIteratorPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -21768,7 +21768,7 @@ export namespace GXml {
     abstract class XHtmlDocumentPrivate {
         static $gtype: GObject.GType<XHtmlDocumentPrivate>;
 
-        // Constructors of GXml.XHtmlDocumentPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -21777,7 +21777,7 @@ export namespace GXml {
     abstract class XListChildrenPrivate {
         static $gtype: GObject.GType<XListChildrenPrivate>;
 
-        // Constructors of GXml.XListChildrenPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -21786,7 +21786,7 @@ export namespace GXml {
     abstract class XListChildrenIteratorPrivate {
         static $gtype: GObject.GType<XListChildrenIteratorPrivate>;
 
-        // Constructors of GXml.XListChildrenIteratorPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -21795,7 +21795,7 @@ export namespace GXml {
     abstract class XNodePrivate {
         static $gtype: GObject.GType<XNodePrivate>;
 
-        // Constructors of GXml.XNodePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -21804,7 +21804,7 @@ export namespace GXml {
     abstract class XParserPrivate {
         static $gtype: GObject.GType<XParserPrivate>;
 
-        // Constructors of GXml.XParserPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -21813,7 +21813,7 @@ export namespace GXml {
     abstract class XProcessingInstructionPrivate {
         static $gtype: GObject.GType<XProcessingInstructionPrivate>;
 
-        // Constructors of GXml.XProcessingInstructionPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -21822,7 +21822,7 @@ export namespace GXml {
     abstract class XsdSchemaPrivate {
         static $gtype: GObject.GType<XsdSchemaPrivate>;
 
-        // Constructors of GXml.XsdSchemaPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -21831,7 +21831,7 @@ export namespace GXml {
     abstract class XsdSimpleTypePrivate {
         static $gtype: GObject.GType<XsdSimpleTypePrivate>;
 
-        // Constructors of GXml.XsdSimpleTypePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -21840,7 +21840,7 @@ export namespace GXml {
     abstract class XsdTypeDefinitionPrivate {
         static $gtype: GObject.GType<XsdTypeDefinitionPrivate>;
 
-        // Constructors of GXml.XsdTypeDefinitionPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -21849,7 +21849,7 @@ export namespace GXml {
     abstract class XsdTypeListPrivate {
         static $gtype: GObject.GType<XsdTypeListPrivate>;
 
-        // Constructors of GXml.XsdTypeListPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -21858,7 +21858,7 @@ export namespace GXml {
     abstract class XsdTypeUnionPrivate {
         static $gtype: GObject.GType<XsdTypeUnionPrivate>;
 
-        // Constructors of GXml.XsdTypeUnionPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -21867,7 +21867,7 @@ export namespace GXml {
     abstract class XsdTypeRestrictionPrivate {
         static $gtype: GObject.GType<XsdTypeRestrictionPrivate>;
 
-        // Constructors of GXml.XsdTypeRestrictionPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -21876,7 +21876,7 @@ export namespace GXml {
     abstract class XsdTypeRestrictionDefPrivate {
         static $gtype: GObject.GType<XsdTypeRestrictionDefPrivate>;
 
-        // Constructors of GXml.XsdTypeRestrictionDefPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -21885,7 +21885,7 @@ export namespace GXml {
     abstract class XsdTypeRestrictionMinExclusivePrivate {
         static $gtype: GObject.GType<XsdTypeRestrictionMinExclusivePrivate>;
 
-        // Constructors of GXml.XsdTypeRestrictionMinExclusivePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -21894,7 +21894,7 @@ export namespace GXml {
     abstract class XsdTypeRestrictionMinInclusivePrivate {
         static $gtype: GObject.GType<XsdTypeRestrictionMinInclusivePrivate>;
 
-        // Constructors of GXml.XsdTypeRestrictionMinInclusivePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -21903,7 +21903,7 @@ export namespace GXml {
     abstract class XsdTypeRestrictionMaxExclusivePrivate {
         static $gtype: GObject.GType<XsdTypeRestrictionMaxExclusivePrivate>;
 
-        // Constructors of GXml.XsdTypeRestrictionMaxExclusivePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -21912,7 +21912,7 @@ export namespace GXml {
     abstract class XsdTypeRestrictionMaxInclusivePrivate {
         static $gtype: GObject.GType<XsdTypeRestrictionMaxInclusivePrivate>;
 
-        // Constructors of GXml.XsdTypeRestrictionMaxInclusivePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -21921,7 +21921,7 @@ export namespace GXml {
     abstract class XsdTypeRestrictionTotalDigitsPrivate {
         static $gtype: GObject.GType<XsdTypeRestrictionTotalDigitsPrivate>;
 
-        // Constructors of GXml.XsdTypeRestrictionTotalDigitsPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -21930,7 +21930,7 @@ export namespace GXml {
     abstract class XsdTypeRestrictionFractionDigitsPrivate {
         static $gtype: GObject.GType<XsdTypeRestrictionFractionDigitsPrivate>;
 
-        // Constructors of GXml.XsdTypeRestrictionFractionDigitsPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -21939,7 +21939,7 @@ export namespace GXml {
     abstract class XsdTypeRestrictionLengthPrivate {
         static $gtype: GObject.GType<XsdTypeRestrictionLengthPrivate>;
 
-        // Constructors of GXml.XsdTypeRestrictionLengthPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -21948,7 +21948,7 @@ export namespace GXml {
     abstract class XsdTypeRestrictionMinLengthPrivate {
         static $gtype: GObject.GType<XsdTypeRestrictionMinLengthPrivate>;
 
-        // Constructors of GXml.XsdTypeRestrictionMinLengthPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -21957,7 +21957,7 @@ export namespace GXml {
     abstract class XsdTypeRestrictionMaxLengthPrivate {
         static $gtype: GObject.GType<XsdTypeRestrictionMaxLengthPrivate>;
 
-        // Constructors of GXml.XsdTypeRestrictionMaxLengthPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -21966,7 +21966,7 @@ export namespace GXml {
     abstract class XsdTypeRestrictionEnumerationPrivate {
         static $gtype: GObject.GType<XsdTypeRestrictionEnumerationPrivate>;
 
-        // Constructors of GXml.XsdTypeRestrictionEnumerationPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -21975,7 +21975,7 @@ export namespace GXml {
     abstract class XsdTypeRestrictionWhiteSpacePrivate {
         static $gtype: GObject.GType<XsdTypeRestrictionWhiteSpacePrivate>;
 
-        // Constructors of GXml.XsdTypeRestrictionWhiteSpacePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -21984,7 +21984,7 @@ export namespace GXml {
     abstract class XsdTypeRestrictionWhiteSpaceFixedPrivate {
         static $gtype: GObject.GType<XsdTypeRestrictionWhiteSpaceFixedPrivate>;
 
-        // Constructors of GXml.XsdTypeRestrictionWhiteSpaceFixedPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -21993,7 +21993,7 @@ export namespace GXml {
     abstract class XsdTypeRestrictionPatternPrivate {
         static $gtype: GObject.GType<XsdTypeRestrictionPatternPrivate>;
 
-        // Constructors of GXml.XsdTypeRestrictionPatternPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -22002,7 +22002,7 @@ export namespace GXml {
     abstract class XsdTypeRestrictionAssertionPrivate {
         static $gtype: GObject.GType<XsdTypeRestrictionAssertionPrivate>;
 
-        // Constructors of GXml.XsdTypeRestrictionAssertionPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -22011,7 +22011,7 @@ export namespace GXml {
     abstract class XsdTypeRestrictionExplicitTimezonePrivate {
         static $gtype: GObject.GType<XsdTypeRestrictionExplicitTimezonePrivate>;
 
-        // Constructors of GXml.XsdTypeRestrictionExplicitTimezonePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -22020,7 +22020,7 @@ export namespace GXml {
     abstract class XsdComplexTypePrivate {
         static $gtype: GObject.GType<XsdComplexTypePrivate>;
 
-        // Constructors of GXml.XsdComplexTypePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -22029,7 +22029,7 @@ export namespace GXml {
     abstract class XsdExtensionPrivate {
         static $gtype: GObject.GType<XsdExtensionPrivate>;
 
-        // Constructors of GXml.XsdExtensionPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -22038,7 +22038,7 @@ export namespace GXml {
     abstract class XsdElementPrivate {
         static $gtype: GObject.GType<XsdElementPrivate>;
 
-        // Constructors of GXml.XsdElementPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -22047,7 +22047,7 @@ export namespace GXml {
     abstract class XsdAnnotationPrivate {
         static $gtype: GObject.GType<XsdAnnotationPrivate>;
 
-        // Constructors of GXml.XsdAnnotationPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -22056,7 +22056,7 @@ export namespace GXml {
     abstract class XsdBaseTypePrivate {
         static $gtype: GObject.GType<XsdBaseTypePrivate>;
 
-        // Constructors of GXml.XsdBaseTypePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -22065,7 +22065,7 @@ export namespace GXml {
     abstract class XsdBaseContentPrivate {
         static $gtype: GObject.GType<XsdBaseContentPrivate>;
 
-        // Constructors of GXml.XsdBaseContentPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -22074,7 +22074,7 @@ export namespace GXml {
     abstract class XsdSimpleContentPrivate {
         static $gtype: GObject.GType<XsdSimpleContentPrivate>;
 
-        // Constructors of GXml.XsdSimpleContentPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -22083,7 +22083,7 @@ export namespace GXml {
     abstract class XsdComplexContentPrivate {
         static $gtype: GObject.GType<XsdComplexContentPrivate>;
 
-        // Constructors of GXml.XsdComplexContentPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -22092,7 +22092,7 @@ export namespace GXml {
     abstract class XsdOpenContentPrivate {
         static $gtype: GObject.GType<XsdOpenContentPrivate>;
 
-        // Constructors of GXml.XsdOpenContentPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -22101,7 +22101,7 @@ export namespace GXml {
     abstract class XsdBaseAttributePrivate {
         static $gtype: GObject.GType<XsdBaseAttributePrivate>;
 
-        // Constructors of GXml.XsdBaseAttributePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -22110,7 +22110,7 @@ export namespace GXml {
     abstract class XsdAttributePrivate {
         static $gtype: GObject.GType<XsdAttributePrivate>;
 
-        // Constructors of GXml.XsdAttributePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -22119,7 +22119,7 @@ export namespace GXml {
     abstract class XsdAttributeGroupPrivate {
         static $gtype: GObject.GType<XsdAttributeGroupPrivate>;
 
-        // Constructors of GXml.XsdAttributeGroupPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -22128,7 +22128,7 @@ export namespace GXml {
     abstract class XsdListPrivate {
         static $gtype: GObject.GType<XsdListPrivate>;
 
-        // Constructors of GXml.XsdListPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -22137,7 +22137,7 @@ export namespace GXml {
     abstract class XsdListElementsPrivate {
         static $gtype: GObject.GType<XsdListElementsPrivate>;
 
-        // Constructors of GXml.XsdListElementsPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -22146,7 +22146,7 @@ export namespace GXml {
     abstract class XsdListSimpleTypesPrivate {
         static $gtype: GObject.GType<XsdListSimpleTypesPrivate>;
 
-        // Constructors of GXml.XsdListSimpleTypesPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -22155,7 +22155,7 @@ export namespace GXml {
     abstract class XsdListComplexTypesPrivate {
         static $gtype: GObject.GType<XsdListComplexTypesPrivate>;
 
-        // Constructors of GXml.XsdListComplexTypesPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -22164,7 +22164,7 @@ export namespace GXml {
     abstract class XsdListTypeRestrictionEnumerationsPrivate {
         static $gtype: GObject.GType<XsdListTypeRestrictionEnumerationsPrivate>;
 
-        // Constructors of GXml.XsdListTypeRestrictionEnumerationsPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -22173,7 +22173,7 @@ export namespace GXml {
     abstract class XsdListTypeRestrictionWhiteSpacesPrivate {
         static $gtype: GObject.GType<XsdListTypeRestrictionWhiteSpacesPrivate>;
 
-        // Constructors of GXml.XsdListTypeRestrictionWhiteSpacesPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -22182,7 +22182,7 @@ export namespace GXml {
     abstract class XTextPrivate {
         static $gtype: GObject.GType<XTextPrivate>;
 
-        // Constructors of GXml.XTextPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -22292,7 +22292,7 @@ export namespace GXml {
         prototype: Collection;
     }
     interface Collection extends GObject.Object {
-        // Own properties of GXml.Collection
+        // Properties
 
         get nodes_index(): GLib.Queue;
         get nodesIndex(): GLib.Queue;
@@ -22305,7 +22305,7 @@ export namespace GXml {
         get itemsType(): GObject.GType;
         set itemsType(val: GObject.GType);
 
-        // Own methods of GXml.Collection
+        // Methods
 
         get_nodes_index(): GLib.Queue;
         get_element(): DomElement;
@@ -22322,7 +22322,7 @@ export namespace GXml {
         validate_append(index: number, element: DomElement): boolean;
         clear(): void;
 
-        // Own virtual methods of GXml.Collection
+        // Virtual methods
 
         vfunc_get_nodes_index(): GLib.Queue;
         vfunc_get_element(): DomElement;
@@ -22367,11 +22367,11 @@ export namespace GXml {
         prototype: MappeableElement;
     }
     interface MappeableElement extends GObject.Object {
-        // Own methods of GXml.MappeableElement
+        // Methods
 
         get_map_key(): string;
 
-        // Own virtual methods of GXml.MappeableElement
+        // Virtual methods
 
         vfunc_get_map_key(): string;
     }
@@ -22394,7 +22394,7 @@ export namespace GXml {
         prototype: Map;
     }
     interface Map extends GObject.Object {
-        // Own properties of GXml.Map
+        // Properties
 
         get attribute_key(): string;
         set attribute_key(val: string);
@@ -22403,7 +22403,7 @@ export namespace GXml {
         get keys_set(): Gee.Set;
         get keysSet(): Gee.Set;
 
-        // Own methods of GXml.Map
+        // Methods
 
         get_attribute_key(): string;
         set_attribute_key(value: string): void;
@@ -22411,7 +22411,7 @@ export namespace GXml {
         has_key(key: string): boolean;
         get_keys_set(): Gee.Set;
 
-        // Own virtual methods of GXml.Map
+        // Virtual methods
 
         vfunc_get_attribute_key(): string;
         vfunc_set_attribute_key(value: string): void;
@@ -22433,12 +22433,12 @@ export namespace GXml {
         prototype: MappeableElementPairKey;
     }
     interface MappeableElementPairKey extends GObject.Object {
-        // Own methods of GXml.MappeableElementPairKey
+        // Methods
 
         get_map_primary_key(): string;
         get_map_secondary_key(): string;
 
-        // Own virtual methods of GXml.MappeableElementPairKey
+        // Virtual methods
 
         vfunc_get_map_primary_key(): string;
         vfunc_get_map_secondary_key(): string;
@@ -22464,7 +22464,7 @@ export namespace GXml {
         prototype: PairedMap;
     }
     interface PairedMap extends GObject.Object {
-        // Own properties of GXml.PairedMap
+        // Properties
 
         get attribute_primary_key(): string;
         set attribute_primary_key(val: string);
@@ -22477,7 +22477,7 @@ export namespace GXml {
         get primary_keys_set(): Gee.Set;
         get primaryKeysSet(): Gee.Set;
 
-        // Own methods of GXml.PairedMap
+        // Methods
 
         get_attribute_primary_key(): string;
         set_attribute_primary_key(value: string): void;
@@ -22489,7 +22489,7 @@ export namespace GXml {
         has_secondary_key(pkey: string, key: string): boolean;
         secondary_keys_set(pkey: string): Gee.Set;
 
-        // Own virtual methods of GXml.PairedMap
+        // Virtual methods
 
         vfunc_get_attribute_primary_key(): string;
         vfunc_set_attribute_primary_key(value: string): void;
@@ -22515,13 +22515,13 @@ export namespace GXml {
         prototype: MappeableElementThreeKey;
     }
     interface MappeableElementThreeKey extends GObject.Object {
-        // Own methods of GXml.MappeableElementThreeKey
+        // Methods
 
         get_map_pkey(): string;
         get_map_skey(): string;
         get_map_tkey(): string;
 
-        // Own virtual methods of GXml.MappeableElementThreeKey
+        // Virtual methods
 
         vfunc_get_map_pkey(): string;
         vfunc_get_map_skey(): string;
@@ -22550,7 +22550,7 @@ export namespace GXml {
         prototype: ThreeMap;
     }
     interface ThreeMap extends GObject.Object {
-        // Own properties of GXml.ThreeMap
+        // Properties
 
         get attribute_primary_key(): string;
         set attribute_primary_key(val: string);
@@ -22567,7 +22567,7 @@ export namespace GXml {
         get primary_keys_set(): Gee.Set;
         get primaryKeysSet(): Gee.Set;
 
-        // Own methods of GXml.ThreeMap
+        // Methods
 
         get_attribute_primary_key(): string;
         set_attribute_primary_key(value: string): void;
@@ -22583,7 +22583,7 @@ export namespace GXml {
         secondary_keys_set(pkey: string): Gee.Set;
         third_keys_set(pkey: string, skey: string): Gee.Set;
 
-        // Own virtual methods of GXml.ThreeMap
+        // Virtual methods
 
         vfunc_get_attribute_primary_key(): string;
         vfunc_set_attribute_primary_key(value: string): void;
@@ -22624,11 +22624,11 @@ export namespace GXml {
         ): void;
     }
     interface CollectionParent extends GObject.Object {
-        // Own methods of GXml.CollectionParent
+        // Methods
 
         get_types(): GLib.HashTable<string, GObject.GType>;
 
-        // Own virtual methods of GXml.CollectionParent
+        // Virtual methods
 
         vfunc_get_types(): GLib.HashTable<string, GObject.GType>;
     }
@@ -22654,7 +22654,7 @@ export namespace GXml {
         prototype: DomAttr;
     }
     interface DomAttr extends GObject.Object {
-        // Own properties of GXml.DomAttr
+        // Properties
 
         get namespace_uri(): string;
         get namespaceUri(): string;
@@ -22665,7 +22665,7 @@ export namespace GXml {
         get value(): string;
         set value(val: string);
 
-        // Own methods of GXml.DomAttr
+        // Methods
 
         get_namespace_uri(): string | null;
         get_prefix(): string | null;
@@ -22675,7 +22675,7 @@ export namespace GXml {
         set_value(value: string): void;
         get_specified(): boolean;
 
-        // Own virtual methods of GXml.DomAttr
+        // Virtual methods
 
         vfunc_get_namespace_uri(): string | null;
         vfunc_get_prefix(): string | null;
@@ -22701,12 +22701,12 @@ export namespace GXml {
         prototype: DomCharacterData;
     }
     interface DomCharacterData extends GObject.Object {
-        // Own properties of GXml.DomCharacterData
+        // Properties
 
         get data(): string;
         set data(val: string);
 
-        // Own methods of GXml.DomCharacterData
+        // Methods
 
         get_data(): string;
         // Conflicted with GObject.Object.get_data
@@ -22719,7 +22719,7 @@ export namespace GXml {
         delete_data(offset: number, count: number): void;
         replace_data(offset: number, count: number, data: string): void;
 
-        // Own virtual methods of GXml.DomCharacterData
+        // Virtual methods
 
         vfunc_get_data(): string;
         vfunc_set_data(value: string): void;
@@ -22744,12 +22744,12 @@ export namespace GXml {
         prototype: DomText;
     }
     interface DomText extends DomCharacterData {
-        // Own methods of GXml.DomText
+        // Methods
 
         split_text(offset: number): DomText;
         get_whole_text(): string;
 
-        // Own virtual methods of GXml.DomText
+        // Virtual methods
 
         vfunc_split_text(offset: number): DomText;
         vfunc_get_whole_text(): string;
@@ -22770,15 +22770,15 @@ export namespace GXml {
         prototype: DomProcessingInstruction;
     }
     interface DomProcessingInstruction extends DomCharacterData {
-        // Own properties of GXml.DomProcessingInstruction
+        // Properties
 
         get target(): string;
 
-        // Own methods of GXml.DomProcessingInstruction
+        // Methods
 
         get_target(): string;
 
-        // Own virtual methods of GXml.DomProcessingInstruction
+        // Virtual methods
 
         vfunc_get_target(): string;
     }
@@ -22810,11 +22810,11 @@ export namespace GXml {
         prototype: DomNonElementParentNode;
     }
     interface DomNonElementParentNode extends GObject.Object {
-        // Own methods of GXml.DomNonElementParentNode
+        // Methods
 
         get_element_by_id(element_id: string): DomElement | null;
 
-        // Own virtual methods of GXml.DomNonElementParentNode
+        // Virtual methods
 
         vfunc_get_element_by_id(element_id: string): DomElement | null;
     }
@@ -22840,7 +22840,7 @@ export namespace GXml {
         prototype: DomParentNode;
     }
     interface DomParentNode extends GObject.Object {
-        // Own properties of GXml.DomParentNode
+        // Properties
 
         get children(): DomHTMLCollection;
         get first_element_child(): DomElement;
@@ -22850,7 +22850,7 @@ export namespace GXml {
         get child_element_count(): number;
         get childElementCount(): number;
 
-        // Own methods of GXml.DomParentNode
+        // Methods
 
         get_children(): DomHTMLCollection;
         get_first_element_child(): DomElement | null;
@@ -22860,7 +22860,7 @@ export namespace GXml {
         query_selector_all(selectors: string): DomNodeList;
         get_elements_by_property_value(property: string, value: string): DomElementList;
 
-        // Own virtual methods of GXml.DomParentNode
+        // Virtual methods
 
         vfunc_get_children(): DomHTMLCollection;
         vfunc_get_first_element_child(): DomElement | null;
@@ -22889,19 +22889,19 @@ export namespace GXml {
         prototype: DomNonDocumentTypeChildNode;
     }
     interface DomNonDocumentTypeChildNode extends GObject.Object {
-        // Own properties of GXml.DomNonDocumentTypeChildNode
+        // Properties
 
         get previous_element_sibling(): DomElement;
         get previousElementSibling(): DomElement;
         get next_element_sibling(): DomElement;
         get nextElementSibling(): DomElement;
 
-        // Own methods of GXml.DomNonDocumentTypeChildNode
+        // Methods
 
         get_previous_element_sibling(): DomElement | null;
         get_next_element_sibling(): DomElement | null;
 
-        // Own virtual methods of GXml.DomNonDocumentTypeChildNode
+        // Virtual methods
 
         vfunc_get_previous_element_sibling(): DomElement | null;
         vfunc_get_next_element_sibling(): DomElement | null;
@@ -22920,11 +22920,11 @@ export namespace GXml {
         prototype: DomChildNode;
     }
     interface DomChildNode extends GObject.Object {
-        // Own methods of GXml.DomChildNode
+        // Methods
 
         remove(): void;
 
-        // Own virtual methods of GXml.DomChildNode
+        // Virtual methods
 
         vfunc_remove(): void;
     }
@@ -22944,16 +22944,16 @@ export namespace GXml {
         prototype: DomNodeList;
     }
     interface DomNodeList extends GObject.Object {
-        // Own properties of GXml.DomNodeList
+        // Properties
 
         get length(): number;
 
-        // Own methods of GXml.DomNodeList
+        // Methods
 
         item(index: number): DomNode | null;
         get_length(): number;
 
-        // Own virtual methods of GXml.DomNodeList
+        // Virtual methods
 
         vfunc_item(index: number): DomNode | null;
         vfunc_get_length(): number;
@@ -22972,7 +22972,7 @@ export namespace GXml {
         prototype: DomHTMLCollection;
     }
     interface DomHTMLCollection extends GObject.Object {
-        // Own methods of GXml.DomHTMLCollection
+        // Methods
 
         get_element(index: number): DomElement | null;
         to_array(): DomElement[];
@@ -22980,7 +22980,7 @@ export namespace GXml {
         item(index: number): DomElement | null;
         named_item(name: string): DomElement | null;
 
-        // Own virtual methods of GXml.DomHTMLCollection
+        // Virtual methods
 
         vfunc_get_element(index: number): DomElement | null;
         vfunc_to_array(): DomElement[];
@@ -23010,7 +23010,7 @@ export namespace GXml {
         prototype: DomNodeIterator;
     }
     interface DomNodeIterator extends GObject.Object {
-        // Own properties of GXml.DomNodeIterator
+        // Properties
 
         get root(): DomNode;
         get reference_node(): DomNode;
@@ -23020,7 +23020,7 @@ export namespace GXml {
         get what_to_show(): number;
         get whatToShow(): number;
 
-        // Own methods of GXml.DomNodeIterator
+        // Methods
 
         get_root(): DomNode;
         get_reference_node(): DomNode;
@@ -23030,7 +23030,7 @@ export namespace GXml {
         previous_node(): DomNode | null;
         detach(): void;
 
-        // Own virtual methods of GXml.DomNodeIterator
+        // Virtual methods
 
         vfunc_get_root(): DomNode;
         vfunc_get_reference_node(): DomNode;
@@ -23060,7 +23060,7 @@ export namespace GXml {
         prototype: DomTreeWalker;
     }
     interface DomTreeWalker extends GObject.Object {
-        // Own properties of GXml.DomTreeWalker
+        // Properties
 
         get root(): DomNode;
         get what_to_show(): number;
@@ -23068,7 +23068,7 @@ export namespace GXml {
         get current_node(): DomNode;
         get currentNode(): DomNode;
 
-        // Own methods of GXml.DomTreeWalker
+        // Methods
 
         get_root(): DomNode;
         get_what_to_show(): number;
@@ -23081,7 +23081,7 @@ export namespace GXml {
         previous_node(): DomNode | null;
         next_node(): DomNode | null;
 
-        // Own virtual methods of GXml.DomTreeWalker
+        // Virtual methods
 
         vfunc_get_root(): DomNode;
         vfunc_get_what_to_show(): number;
@@ -23110,11 +23110,11 @@ export namespace GXml {
         prototype: DomNamedNodeMap;
     }
     interface DomNamedNodeMap extends GObject.Object {
-        // Own properties of GXml.DomNamedNodeMap
+        // Properties
 
         get length(): number;
 
-        // Own methods of GXml.DomNamedNodeMap
+        // Methods
 
         get_length(): number;
         item(index: number): DomNode | null;
@@ -23125,7 +23125,7 @@ export namespace GXml {
         get_named_item_ns(namespace_uri: string, local_name: string): DomNode | null;
         set_named_item_ns(node: DomNode): DomNode | null;
 
-        // Own virtual methods of GXml.DomNamedNodeMap
+        // Virtual methods
 
         vfunc_get_length(): number;
         vfunc_item(index: number): DomNode | null;
@@ -23152,11 +23152,11 @@ export namespace GXml {
         prototype: DomTokenList;
     }
     interface DomTokenList extends GObject.Object {
-        // Own properties of GXml.DomTokenList
+        // Properties
 
         get length(): number;
 
-        // Own methods of GXml.DomTokenList
+        // Methods
 
         get_length(): number;
         item(index: number): string | null;
@@ -23166,7 +23166,7 @@ export namespace GXml {
         toggle(token: string, force: boolean, _auto_: boolean): boolean;
         to_string(): string;
 
-        // Own virtual methods of GXml.DomTokenList
+        // Virtual methods
 
         vfunc_get_length(): number;
         vfunc_item(index: number): string | null;
@@ -23192,17 +23192,17 @@ export namespace GXml {
         prototype: DomSettableTokenList;
     }
     interface DomSettableTokenList extends GObject.Object {
-        // Own properties of GXml.DomSettableTokenList
+        // Properties
 
         get value(): string;
         set value(val: string);
 
-        // Own methods of GXml.DomSettableTokenList
+        // Methods
 
         get_value(): string;
         set_value(value: string): void;
 
-        // Own virtual methods of GXml.DomSettableTokenList
+        // Virtual methods
 
         vfunc_get_value(): string;
         vfunc_set_value(value: string): void;
@@ -23236,7 +23236,7 @@ export namespace GXml {
         prototype: DomDocument;
     }
     interface DomDocument extends GObject.Object {
-        // Own properties of GXml.DomDocument
+        // Properties
 
         get implementation(): DomImplementation;
         get url(): string;
@@ -23253,7 +23253,7 @@ export namespace GXml {
         get document_element(): DomElement;
         get documentElement(): DomElement;
 
-        // Own methods of GXml.DomDocument
+        // Methods
 
         get_implementation(): DomImplementation;
         get_url(): string;
@@ -23329,7 +23329,7 @@ export namespace GXml {
         get_xml_parser(): Parser;
         set_xml_parser(parser: Parser): void;
 
-        // Own virtual methods of GXml.DomDocument
+        // Virtual methods
 
         vfunc_get_implementation(): DomImplementation;
         vfunc_get_url(): string;
@@ -23433,7 +23433,7 @@ export namespace GXml {
         prototype: DomImplementation;
     }
     interface DomImplementation extends GObject.Object {
-        // Own methods of GXml.DomImplementation
+        // Methods
 
         create_document_type(qualified_name: string, public_id: string, system_id: string): DomDocumentType;
         create_document(
@@ -23444,7 +23444,7 @@ export namespace GXml {
         create_html_document(title: string): DomDocument;
         has_feature(): boolean;
 
-        // Own virtual methods of GXml.DomImplementation
+        // Virtual methods
 
         vfunc_create_document_type(qualified_name: string, public_id: string, system_id: string): DomDocumentType;
         vfunc_create_document(
@@ -23489,7 +23489,7 @@ export namespace GXml {
         prototype: DomDocumentType;
     }
     interface DomDocumentType extends GObject.Object {
-        // Own properties of GXml.DomDocumentType
+        // Properties
 
         get name(): string;
         get public_id(): string;
@@ -23497,13 +23497,13 @@ export namespace GXml {
         get system_id(): string;
         get systemId(): string;
 
-        // Own methods of GXml.DomDocumentType
+        // Methods
 
         get_name(): string;
         get_public_id(): string;
         get_system_id(): string;
 
-        // Own virtual methods of GXml.DomDocumentType
+        // Virtual methods
 
         vfunc_get_name(): string;
         vfunc_get_public_id(): string;
@@ -23523,13 +23523,13 @@ export namespace GXml {
         prototype: DomHtmlDocument;
     }
     interface DomHtmlDocument extends GObject.Object {
-        // Own methods of GXml.DomHtmlDocument
+        // Methods
 
         read_from_string(str: string): void;
         read_from_string_tolerant(str: string): void;
         to_html(): string;
 
-        // Own virtual methods of GXml.DomHtmlDocument
+        // Virtual methods
 
         vfunc_read_from_string(str: string): void;
         vfunc_read_from_string_tolerant(str: string): void;
@@ -23563,7 +23563,7 @@ export namespace GXml {
         prototype: DomElement;
     }
     interface DomElement extends GObject.Object {
-        // Own properties of GXml.DomElement
+        // Properties
 
         get namespace_uri(): string;
         get namespaceUri(): string;
@@ -23582,7 +23582,7 @@ export namespace GXml {
         get classList(): DomTokenList;
         get attributes(): DomNamedNodeMap;
 
-        // Own methods of GXml.DomElement
+        // Methods
 
         get_namespace_uri(): string | null;
         get_prefix(): string | null;
@@ -23661,7 +23661,7 @@ export namespace GXml {
         ): void;
         create_stream_finish(_res_: Gio.AsyncResult): Gio.InputStream;
 
-        // Own virtual methods of GXml.DomElement
+        // Virtual methods
 
         vfunc_get_namespace_uri(): string | null;
         vfunc_get_prefix(): string | null;
@@ -23754,13 +23754,13 @@ export namespace GXml {
         prototype: DomEventTarget;
     }
     interface DomEventTarget extends GObject.Object {
-        // Own methods of GXml.DomEventTarget
+        // Methods
 
         add_event_listener(type: string, callback: DomEventListener | null, capture: boolean): void;
         remove_event_listener(type: string, callback: DomEventListener | null, capture: boolean): void;
         dispatch_event(event: DomEvent): boolean;
 
-        // Own virtual methods of GXml.DomEventTarget
+        // Virtual methods
 
         vfunc_add_event_listener(type: string, callback: DomEventListener | null, capture: boolean): void;
         vfunc_remove_event_listener(type: string, callback: DomEventListener | null, capture: boolean): void;
@@ -23780,11 +23780,11 @@ export namespace GXml {
         prototype: DomEventListener;
     }
     interface DomEventListener extends GObject.Object {
-        // Own methods of GXml.DomEventListener
+        // Methods
 
         handle_event(event: DomEvent): void;
 
-        // Own virtual methods of GXml.DomEventListener
+        // Virtual methods
 
         vfunc_handle_event(event: DomEvent): void;
     }
@@ -23818,7 +23818,7 @@ export namespace GXml {
         prototype: DomEvent;
     }
     interface DomEvent extends GObject.Object {
-        // Own properties of GXml.DomEvent
+        // Properties
 
         get etype(): string;
         get event_target(): DomEventTarget;
@@ -23836,7 +23836,7 @@ export namespace GXml {
         get event_phase(): DomEventPhase;
         get eventPhase(): DomEventPhase;
 
-        // Own methods of GXml.DomEvent
+        // Methods
 
         get_etype(): string;
         get_event_target(): DomEventTarget | null;
@@ -23852,7 +23852,7 @@ export namespace GXml {
         prevent_default(): void;
         init_event(type: string, bubbles: boolean, cancelable: boolean): void;
 
-        // Own virtual methods of GXml.DomEvent
+        // Virtual methods
 
         vfunc_get_etype(): string;
         vfunc_get_event_target(): DomEventTarget | null;
@@ -23884,16 +23884,16 @@ export namespace GXml {
         prototype: DomCustomEvent;
     }
     interface DomCustomEvent extends GObject.Object {
-        // Own properties of GXml.DomCustomEvent
+        // Properties
 
         get detail(): GObject.Value;
 
-        // Own methods of GXml.DomCustomEvent
+        // Methods
 
         get_detail(): unknown;
         init_custom_event(type: string, bubbles: boolean, cancelable: boolean, detail: GObject.Value | any): void;
 
-        // Own virtual methods of GXml.DomCustomEvent
+        // Virtual methods
 
         vfunc_get_detail(): unknown;
         vfunc_init_custom_event(type: string, bubbles: boolean, cancelable: boolean, detail: GObject.Value | any): void;
@@ -23912,13 +23912,13 @@ export namespace GXml {
         prototype: DomMutationObserver;
     }
     interface DomMutationObserver extends GObject.Object {
-        // Own methods of GXml.DomMutationObserver
+        // Methods
 
         observe(target: Node, options: DomMutationObserverInit): void;
         disconnect(): void;
         take_records(): Gee.List;
 
-        // Own virtual methods of GXml.DomMutationObserver
+        // Virtual methods
 
         vfunc_observe(target: Node, options: DomMutationObserverInit): void;
         vfunc_disconnect(): void;
@@ -23955,7 +23955,7 @@ export namespace GXml {
         prototype: DomMutationRecord;
     }
     interface DomMutationRecord extends GObject.Object {
-        // Own properties of GXml.DomMutationRecord
+        // Properties
 
         get mtype(): string;
         get target(): DomNode;
@@ -23978,7 +23978,7 @@ export namespace GXml {
         get old_value(): string;
         get oldValue(): string;
 
-        // Own methods of GXml.DomMutationRecord
+        // Methods
 
         get_mtype(): string;
         get_target(): DomNode;
@@ -23992,7 +23992,7 @@ export namespace GXml {
         get_attribute_namespace(): string | null;
         get_old_value(): string | null;
 
-        // Own virtual methods of GXml.DomMutationRecord
+        // Virtual methods
 
         vfunc_get_mtype(): string;
         vfunc_get_target(): DomNode;
@@ -24049,7 +24049,7 @@ export namespace GXml {
         copy(doc: DomDocument, node: DomNode, source: DomNode, deep: boolean): boolean;
     }
     interface DomNode extends GObject.Object {
-        // Own properties of GXml.DomNode
+        // Properties
 
         get node_type(): DomNodeNodeType;
         get nodeType(): DomNodeNodeType;
@@ -24084,7 +24084,7 @@ export namespace GXml {
         get textContent(): string;
         set textContent(val: string);
 
-        // Own methods of GXml.DomNode
+        // Methods
 
         get_node_type(): DomNodeNodeType;
         get_node_name(): string;
@@ -24115,7 +24115,7 @@ export namespace GXml {
         replace_child(node: DomNode, child: DomNode): DomNode;
         remove_child(child: DomNode): DomNode;
 
-        // Own virtual methods of GXml.DomNode
+        // Virtual methods
 
         vfunc_get_node_type(): DomNodeNodeType;
         vfunc_get_node_name(): string;
@@ -24172,7 +24172,7 @@ export namespace GXml {
         prototype: DomRange;
     }
     interface DomRange extends GObject.Object {
-        // Own properties of GXml.DomRange
+        // Properties
 
         get start_container(): DomNode;
         get startContainer(): DomNode;
@@ -24186,7 +24186,7 @@ export namespace GXml {
         get common_ancestor_container(): DomNode;
         get commonAncestorContainer(): DomNode;
 
-        // Own methods of GXml.DomRange
+        // Methods
 
         get_start_container(): DomNode;
         get_start_offset(): number;
@@ -24216,7 +24216,7 @@ export namespace GXml {
         intersects_node(node: DomNode): boolean;
         to_string(): string;
 
-        // Own virtual methods of GXml.DomRange
+        // Virtual methods
 
         vfunc_get_start_container(): DomNode;
         vfunc_get_start_offset(): number;
@@ -24267,7 +24267,7 @@ export namespace GXml {
         prototype: IXsdSchema;
     }
     interface IXsdSchema extends GObject.Object {
-        // Own properties of GXml.IXsdSchema
+        // Properties
 
         get element_definitions(): IXsdListElements;
         set element_definitions(val: IXsdListElements);
@@ -24282,7 +24282,7 @@ export namespace GXml {
         get complexTypeDefinitions(): IXsdListComplexTypes;
         set complexTypeDefinitions(val: IXsdListComplexTypes);
 
-        // Own methods of GXml.IXsdSchema
+        // Methods
 
         get_element_definitions(): IXsdListElements;
         set_element_definitions(value: IXsdListElements): void;
@@ -24291,7 +24291,7 @@ export namespace GXml {
         get_complex_type_definitions(): IXsdListComplexTypes;
         set_complex_type_definitions(value: IXsdListComplexTypes): void;
 
-        // Own virtual methods of GXml.IXsdSchema
+        // Virtual methods
 
         vfunc_get_element_definitions(): IXsdListElements;
         vfunc_set_element_definitions(value: IXsdListElements): void;
@@ -24316,17 +24316,17 @@ export namespace GXml {
         prototype: IXsdBaseType;
     }
     interface IXsdBaseType extends GObject.Object {
-        // Own properties of GXml.IXsdBaseType
+        // Properties
 
         get anotation(): IXsdAnnotation;
         set anotation(val: IXsdAnnotation);
 
-        // Own methods of GXml.IXsdBaseType
+        // Methods
 
         get_anotation(): IXsdAnnotation;
         set_anotation(value: IXsdAnnotation): void;
 
-        // Own virtual methods of GXml.IXsdBaseType
+        // Virtual methods
 
         vfunc_get_anotation(): IXsdAnnotation;
         vfunc_set_anotation(value: IXsdAnnotation): void;
@@ -24353,7 +24353,7 @@ export namespace GXml {
         prototype: IXsdSimpleType;
     }
     interface IXsdSimpleType extends GObject.Object {
-        // Own properties of GXml.IXsdSimpleType
+        // Properties
 
         get 'final'(): string;
         set 'final'(val: string);
@@ -24370,7 +24370,7 @@ export namespace GXml {
         get restriction(): IXsdTypeRestriction;
         set restriction(val: IXsdTypeRestriction);
 
-        // Own methods of GXml.IXsdSimpleType
+        // Methods
 
         get_final(): string;
         set_final(value: string): void;
@@ -24387,7 +24387,7 @@ export namespace GXml {
         get_restriction(): IXsdTypeRestriction;
         set_restriction(value: IXsdTypeRestriction): void;
 
-        // Own virtual methods of GXml.IXsdSimpleType
+        // Virtual methods
 
         vfunc_get_final(): string;
         vfunc_set_final(value: string): void;
@@ -24440,7 +24440,7 @@ export namespace GXml {
         prototype: IXsdTypeRestriction;
     }
     interface IXsdTypeRestriction extends GObject.Object {
-        // Own properties of GXml.IXsdTypeRestriction
+        // Properties
 
         get base(): string;
         set base(val: string);
@@ -24457,7 +24457,7 @@ export namespace GXml {
         get whiteSpaces(): IXsdListTypeRestrictionWhiteSpaces;
         set whiteSpaces(val: IXsdListTypeRestrictionWhiteSpaces);
 
-        // Own methods of GXml.IXsdTypeRestriction
+        // Methods
 
         get_base(): string;
         set_base(value: string): void;
@@ -24470,7 +24470,7 @@ export namespace GXml {
         get_white_spaces(): IXsdListTypeRestrictionWhiteSpaces;
         set_white_spaces(value: IXsdListTypeRestrictionWhiteSpaces): void;
 
-        // Own virtual methods of GXml.IXsdTypeRestriction
+        // Virtual methods
 
         vfunc_get_base(): string;
         vfunc_set_base(value: string): void;
@@ -24527,17 +24527,17 @@ export namespace GXml {
         prototype: IXsdTypeRestrictionDef;
     }
     interface IXsdTypeRestrictionDef extends GObject.Object {
-        // Own properties of GXml.IXsdTypeRestrictionDef
+        // Properties
 
         get annotation(): IXsdAnnotation;
         set annotation(val: IXsdAnnotation);
 
-        // Own methods of GXml.IXsdTypeRestrictionDef
+        // Methods
 
         get_annotation(): IXsdAnnotation;
         set_annotation(value: IXsdAnnotation): void;
 
-        // Own virtual methods of GXml.IXsdTypeRestrictionDef
+        // Virtual methods
 
         vfunc_get_annotation(): IXsdAnnotation;
         vfunc_set_annotation(value: IXsdAnnotation): void;
@@ -24685,21 +24685,21 @@ export namespace GXml {
         prototype: IXsdTypeRestrictionEnumeration;
     }
     interface IXsdTypeRestrictionEnumeration extends GObject.Object {
-        // Own properties of GXml.IXsdTypeRestrictionEnumeration
+        // Properties
 
         get id(): string;
         set id(val: string);
         get value(): string;
         set value(val: string);
 
-        // Own methods of GXml.IXsdTypeRestrictionEnumeration
+        // Methods
 
         get_id(): string;
         set_id(value: string): void;
         get_value(): string;
         set_value(value: string): void;
 
-        // Own virtual methods of GXml.IXsdTypeRestrictionEnumeration
+        // Virtual methods
 
         vfunc_get_id(): string;
         vfunc_set_id(value: string): void;
@@ -24724,7 +24724,7 @@ export namespace GXml {
         prototype: IXsdTypeRestrictionWhiteSpace;
     }
     interface IXsdTypeRestrictionWhiteSpace extends GObject.Object {
-        // Own properties of GXml.IXsdTypeRestrictionWhiteSpace
+        // Properties
 
         get fixed(): boolean;
         set fixed(val: boolean);
@@ -24733,7 +24733,7 @@ export namespace GXml {
         get value(): string;
         set value(val: string);
 
-        // Own methods of GXml.IXsdTypeRestrictionWhiteSpace
+        // Methods
 
         get_fixed(): boolean;
         set_fixed(value: boolean): void;
@@ -24742,7 +24742,7 @@ export namespace GXml {
         get_value(): string;
         set_value(value: string): void;
 
-        // Own virtual methods of GXml.IXsdTypeRestrictionWhiteSpace
+        // Virtual methods
 
         vfunc_get_fixed(): boolean;
         vfunc_set_fixed(value: boolean): void;
@@ -24821,7 +24821,7 @@ export namespace GXml {
         prototype: IXsdComplexType;
     }
     interface IXsdComplexType extends GObject.Object {
-        // Own properties of GXml.IXsdComplexType
+        // Properties
 
         get 'abstract'(): boolean;
         set 'abstract'(val: boolean);
@@ -24846,7 +24846,7 @@ export namespace GXml {
         get group_attributes(): IXsdListAttributesGroup;
         get groupAttributes(): IXsdListAttributesGroup;
 
-        // Own methods of GXml.IXsdComplexType
+        // Methods
 
         get_abstract(): boolean;
         set_abstract(value: boolean): void;
@@ -24865,7 +24865,7 @@ export namespace GXml {
         get_type_attributes(): IXsdListAttributes;
         get_group_attributes(): IXsdListAttributesGroup;
 
-        // Own virtual methods of GXml.IXsdComplexType
+        // Virtual methods
 
         vfunc_get_abstract(): boolean;
         vfunc_set_abstract(value: boolean): void;
@@ -24900,17 +24900,17 @@ export namespace GXml {
         prototype: IXsdExtension;
     }
     interface IXsdExtension extends GObject.Object {
-        // Own properties of GXml.IXsdExtension
+        // Properties
 
         get base(): string;
         set base(val: string);
 
-        // Own methods of GXml.IXsdExtension
+        // Methods
 
         get_base(): string;
         set_base(value: string): void;
 
-        // Own virtual methods of GXml.IXsdExtension
+        // Virtual methods
 
         vfunc_get_base(): string;
         vfunc_set_base(value: string): void;
@@ -24953,7 +24953,7 @@ export namespace GXml {
         prototype: IXsdElement;
     }
     interface IXsdElement extends GObject.Object {
-        // Own properties of GXml.IXsdElement
+        // Properties
 
         get 'abstract'(): boolean;
         set 'abstract'(val: boolean);
@@ -25002,7 +25002,7 @@ export namespace GXml {
         get complexType(): IXsdComplexType;
         set complexType(val: IXsdComplexType);
 
-        // Own methods of GXml.IXsdElement
+        // Methods
 
         get_abstract(): boolean;
         set_abstract(value: boolean): void;
@@ -25041,7 +25041,7 @@ export namespace GXml {
         get_complex_type(): IXsdComplexType;
         set_complex_type(value: IXsdComplexType): void;
 
-        // Own virtual methods of GXml.IXsdElement
+        // Virtual methods
 
         vfunc_get_abstract(): boolean;
         vfunc_set_abstract(value: boolean): void;
@@ -25110,17 +25110,17 @@ export namespace GXml {
         prototype: IXsdBaseContent;
     }
     interface IXsdBaseContent extends GObject.Object {
-        // Own properties of GXml.IXsdBaseContent
+        // Properties
 
         get anotation(): IXsdAnnotation;
         set anotation(val: IXsdAnnotation);
 
-        // Own methods of GXml.IXsdBaseContent
+        // Methods
 
         get_anotation(): IXsdAnnotation;
         set_anotation(value: IXsdAnnotation): void;
 
-        // Own virtual methods of GXml.IXsdBaseContent
+        // Virtual methods
 
         vfunc_get_anotation(): IXsdAnnotation;
         vfunc_set_anotation(value: IXsdAnnotation): void;
@@ -25183,17 +25183,17 @@ export namespace GXml {
         prototype: IXsdBaseAttribute;
     }
     interface IXsdBaseAttribute extends GObject.Object {
-        // Own properties of GXml.IXsdBaseAttribute
+        // Properties
 
         get anotation(): IXsdAnnotation;
         set anotation(val: IXsdAnnotation);
 
-        // Own methods of GXml.IXsdBaseAttribute
+        // Methods
 
         get_anotation(): IXsdAnnotation;
         set_anotation(value: IXsdAnnotation): void;
 
-        // Own virtual methods of GXml.IXsdBaseAttribute
+        // Virtual methods
 
         vfunc_get_anotation(): IXsdAnnotation;
         vfunc_set_anotation(value: IXsdAnnotation): void;
@@ -25247,7 +25247,7 @@ export namespace GXml {
         prototype: IXsdList;
     }
     interface IXsdList extends GObject.Object {
-        // Own properties of GXml.IXsdList
+        // Properties
 
         get element(): DomElement;
         set element(val: DomElement);
@@ -25261,7 +25261,7 @@ export namespace GXml {
         set itemsName(val: GObject.GType);
         get length(): number;
 
-        // Own methods of GXml.IXsdList
+        // Methods
 
         get_element(): DomElement;
         set_element(value: DomElement): void;
@@ -25275,7 +25275,7 @@ export namespace GXml {
         remove(index: number): void;
         index_of(element: DomElement): number;
 
-        // Own virtual methods of GXml.IXsdList
+        // Virtual methods
 
         vfunc_get_element(): DomElement;
         vfunc_set_element(value: DomElement): void;
@@ -25401,7 +25401,7 @@ export namespace GXml {
         prototype: Object;
     }
     interface Object extends GObject.Object {
-        // Own methods of GXml.Object
+        // Methods
 
         get_properties_list(): GObject.ParamSpec[];
         find_property_name(nick: string): GObject.ParamSpec | null;
@@ -25417,7 +25417,7 @@ export namespace GXml {
         set_instance_property(name: string): boolean;
         clean_property_elements(name: string): void;
 
-        // Own virtual methods of GXml.Object
+        // Virtual methods
 
         vfunc_get_properties_list(): GObject.ParamSpec[];
         vfunc_find_property_name(nick: string): GObject.ParamSpec | null;
@@ -25453,7 +25453,7 @@ export namespace GXml {
         prototype: Parser;
     }
     interface Parser extends GObject.Object {
-        // Own properties of GXml.Parser
+        // Properties
 
         get backup(): boolean;
         set backup(val: boolean);
@@ -25464,7 +25464,7 @@ export namespace GXml {
         get node(): DomNode;
         get types(): GLib.HashTable<GObject.GType, GLib.HashTable>;
 
-        // Own methods of GXml.Parser
+        // Methods
 
         get_backup(): boolean;
         set_backup(value: boolean): void;
@@ -25513,7 +25513,7 @@ export namespace GXml {
         create_element(parent: DomNode): DomElement | null;
         read_element(element: DomElement): void;
 
-        // Own virtual methods of GXml.Parser
+        // Virtual methods
 
         vfunc_get_backup(): boolean;
         vfunc_set_backup(value: boolean): void;
@@ -25578,18 +25578,18 @@ export namespace GXml {
         prototype: Property;
     }
     interface Property extends GObject.Object {
-        // Own properties of GXml.Property
+        // Properties
 
         get value(): string;
         set value(val: string);
 
-        // Own methods of GXml.Property
+        // Methods
 
         get_value(): string | null;
         set_value(value?: string | null): void;
         validate_value(val?: string | null): boolean;
 
-        // Own virtual methods of GXml.Property
+        // Virtual methods
 
         vfunc_get_value(): string | null;
         vfunc_set_value(value?: string | null): void;
@@ -25609,11 +25609,11 @@ export namespace GXml {
         prototype: XPathContext;
     }
     interface XPathContext extends GObject.Object {
-        // Own methods of GXml.XPathContext
+        // Methods
 
         evaluate(expression: string, resolver?: Gee.Map | null): XPathObject;
 
-        // Own virtual methods of GXml.XPathContext
+        // Virtual methods
 
         vfunc_evaluate(expression: string, resolver?: Gee.Map | null): XPathObject;
     }
@@ -25641,7 +25641,7 @@ export namespace GXml {
         prototype: XPathObject;
     }
     interface XPathObject extends GObject.Object {
-        // Own properties of GXml.XPathObject
+        // Properties
 
         get object_type(): XPathObjectType;
         get objectType(): XPathObjectType;
@@ -25653,7 +25653,7 @@ export namespace GXml {
         get numberValue(): number;
         get nodeset(): DomHTMLCollection;
 
-        // Own methods of GXml.XPathObject
+        // Methods
 
         get_object_type(): XPathObjectType;
         get_boolean_value(): boolean;
@@ -25661,7 +25661,7 @@ export namespace GXml {
         get_number_value(): number;
         get_nodeset(): DomHTMLCollection;
 
-        // Own virtual methods of GXml.XPathObject
+        // Virtual methods
 
         vfunc_get_object_type(): XPathObjectType;
         vfunc_get_boolean_value(): boolean;

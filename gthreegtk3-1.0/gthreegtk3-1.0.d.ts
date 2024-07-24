@@ -45,7 +45,7 @@ export namespace GthreeGtk3 {
     class Area extends Gtk.GLArea implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<Area>;
 
-        // Own properties of GthreeGtk3.Area
+        // Properties
 
         get camera(): Gthree.Camera;
         set camera(val: Gthree.Camera);
@@ -54,7 +54,7 @@ export namespace GthreeGtk3 {
         get scene(): Gthree.Scene;
         set scene(val: Gthree.Scene);
 
-        // Constructors of GthreeGtk3.Area
+        // Constructors
 
         constructor(properties?: Partial<Area.ConstructorProps>, ...args: any[]);
 
@@ -65,7 +65,7 @@ export namespace GthreeGtk3 {
 
         static ['new'](...args: never[]): any;
 
-        // Own methods of GthreeGtk3.Area
+        // Methods
 
         set_camera(camera: Gthree.Camera): void;
         set_scene(scene: Gthree.Scene): void;

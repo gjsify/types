@@ -45,7 +45,7 @@ export namespace RestExtras {
     class FlickrProxy extends Rest.Proxy {
         static $gtype: GObject.GType<FlickrProxy>;
 
-        // Own properties of RestExtras.FlickrProxy
+        // Properties
 
         get api_key(): string;
         get apiKey(): string;
@@ -54,7 +54,7 @@ export namespace RestExtras {
         get token(): string;
         set token(val: string);
 
-        // Constructors of RestExtras.FlickrProxy
+        // Constructors
 
         constructor(properties?: Partial<FlickrProxy.ConstructorProps>, ...args: any[]);
 
@@ -67,7 +67,7 @@ export namespace RestExtras {
 
         static new_with_token(api_key: string, shared_secret: string, token: string): FlickrProxy;
 
-        // Own static methods of RestExtras.FlickrProxy
+        // Static methods
 
         /**
          * Examines the Flickr response and if it not a successful reply, set `error` and
@@ -76,7 +76,7 @@ export namespace RestExtras {
          */
         static is_successful(root: Rest.XmlNode): boolean;
 
-        // Own methods of RestExtras.FlickrProxy
+        // Methods
 
         build_login_url(frob: string, perms: string): string;
         /**
@@ -134,7 +134,7 @@ export namespace RestExtras {
     class FlickrProxyCall extends Rest.ProxyCall {
         static $gtype: GObject.GType<FlickrProxyCall>;
 
-        // Own properties of RestExtras.FlickrProxyCall
+        // Properties
 
         /**
          * Set if the call should be sent to the photo upload endpoint and not the
@@ -143,7 +143,7 @@ export namespace RestExtras {
         // This accessor conflicts with a property or field in a parent class or interface.
         upload: boolean | any;
 
-        // Constructors of RestExtras.FlickrProxyCall
+        // Constructors
 
         constructor(properties?: Partial<FlickrProxyCall.ConstructorProps>, ...args: any[]);
 
@@ -165,7 +165,7 @@ export namespace RestExtras {
     class LastfmProxy extends Rest.Proxy {
         static $gtype: GObject.GType<LastfmProxy>;
 
-        // Own properties of RestExtras.LastfmProxy
+        // Properties
 
         get api_key(): string;
         get apiKey(): string;
@@ -175,7 +175,7 @@ export namespace RestExtras {
         get sessionKey(): string;
         set sessionKey(val: string);
 
-        // Constructors of RestExtras.LastfmProxy
+        // Constructors
 
         constructor(properties?: Partial<LastfmProxy.ConstructorProps>, ...args: any[]);
 
@@ -188,7 +188,7 @@ export namespace RestExtras {
 
         static new_with_session(api_key: string, secret: string, session_key: string): LastfmProxy;
 
-        // Own static methods of RestExtras.LastfmProxy
+        // Static methods
 
         /**
          * Examines the Lastfm response and if it not a successful reply, set `error` and
@@ -197,7 +197,7 @@ export namespace RestExtras {
          */
         static is_successful(root: Rest.XmlNode): boolean;
 
-        // Own methods of RestExtras.LastfmProxy
+        // Methods
 
         build_login_url(token: string): string;
         /**
@@ -235,7 +235,7 @@ export namespace RestExtras {
     class LastfmProxyCall extends Rest.ProxyCall {
         static $gtype: GObject.GType<LastfmProxyCall>;
 
-        // Constructors of RestExtras.LastfmProxyCall
+        // Constructors
 
         constructor(properties?: Partial<LastfmProxyCall.ConstructorProps>, ...args: any[]);
 
@@ -256,7 +256,7 @@ export namespace RestExtras {
     class YoutubeProxy extends Rest.Proxy {
         static $gtype: GObject.GType<YoutubeProxy>;
 
-        // Own properties of RestExtras.YoutubeProxy
+        // Properties
 
         get developer_key(): string;
         get developerKey(): string;
@@ -265,7 +265,7 @@ export namespace RestExtras {
         get userAuth(): string;
         set userAuth(val: string);
 
-        // Constructors of RestExtras.YoutubeProxy
+        // Constructors
 
         constructor(properties?: Partial<YoutubeProxy.ConstructorProps>, ...args: any[]);
 
@@ -275,7 +275,7 @@ export namespace RestExtras {
 
         static new_with_auth(developer_key: string, user_auth: string): YoutubeProxy;
 
-        // Own methods of RestExtras.YoutubeProxy
+        // Methods
 
         set_user_auth(user_auth: string): void;
         /**

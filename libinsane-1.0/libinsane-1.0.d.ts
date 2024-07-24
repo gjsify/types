@@ -37,7 +37,7 @@ export namespace Libinsane {
     class Error extends GLib.Error {
         static $gtype: GObject.GType<Error>;
 
-        // Static fields of Libinsane.Error
+        // Static fields
 
         static OK: number;
         static CANCELLED: number;
@@ -55,7 +55,7 @@ export namespace Libinsane {
         static INTERNAL_UNKNOWN_ERROR: number;
         static OFFLINE: number;
 
-        // Constructors of Libinsane.Error
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
@@ -162,7 +162,7 @@ export namespace Libinsane {
     class Api extends GObject.Object {
         static $gtype: GObject.GType<Api>;
 
-        // Constructors of Libinsane.Api
+        // Constructors
 
         constructor(properties?: Partial<Api.ConstructorProps>, ...args: any[]);
 
@@ -172,11 +172,11 @@ export namespace Libinsane {
 
         static new_safebet(): Api;
 
-        // Own static methods of Libinsane.Api
+        // Static methods
 
         static get_version(): string;
 
-        // Own methods of Libinsane.Api
+        // Methods
 
         cleanup(): void;
         get_device(dev_id: string): Item;
@@ -192,13 +192,13 @@ export namespace Libinsane {
     class DeviceDescriptor extends GObject.Object {
         static $gtype: GObject.GType<DeviceDescriptor>;
 
-        // Constructors of Libinsane.DeviceDescriptor
+        // Constructors
 
         constructor(properties?: Partial<DeviceDescriptor.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Libinsane.DeviceDescriptor
+        // Methods
 
         get_dev_id(): string;
         get_dev_model(): string;
@@ -220,13 +220,13 @@ export namespace Libinsane {
     class Item extends GObject.Object {
         static $gtype: GObject.GType<Item>;
 
-        // Constructors of Libinsane.Item
+        // Constructors
 
         constructor(properties?: Partial<Item.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Libinsane.Item
+        // Methods
 
         close(): void;
         /**
@@ -253,13 +253,13 @@ export namespace Libinsane {
     class OptionDescriptor extends GObject.Object {
         static $gtype: GObject.GType<OptionDescriptor>;
 
-        // Constructors of Libinsane.OptionDescriptor
+        // Constructors
 
         constructor(properties?: Partial<OptionDescriptor.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Libinsane.OptionDescriptor
+        // Methods
 
         get_capabilities(): Capability;
         /**
@@ -288,13 +288,13 @@ export namespace Libinsane {
     class ScanParameters extends GObject.Object {
         static $gtype: GObject.GType<ScanParameters>;
 
-        // Constructors of Libinsane.ScanParameters
+        // Constructors
 
         constructor(properties?: Partial<ScanParameters.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Libinsane.ScanParameters
+        // Methods
 
         get_format(): ImgFormat;
         get_height(): number;
@@ -311,13 +311,13 @@ export namespace Libinsane {
     class ScanSession extends GObject.Object {
         static $gtype: GObject.GType<ScanSession>;
 
-        // Constructors of Libinsane.ScanSession
+        // Constructors
 
         constructor(properties?: Partial<ScanSession.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Libinsane.ScanSession
+        // Methods
 
         cancel(): void;
         end_of_feed(): boolean;
@@ -337,7 +337,7 @@ export namespace Libinsane {
     abstract class ApiPrivate {
         static $gtype: GObject.GType<ApiPrivate>;
 
-        // Constructors of Libinsane.ApiPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -346,7 +346,7 @@ export namespace Libinsane {
     abstract class DeviceDescriptorPrivate {
         static $gtype: GObject.GType<DeviceDescriptorPrivate>;
 
-        // Constructors of Libinsane.DeviceDescriptorPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -355,7 +355,7 @@ export namespace Libinsane {
     abstract class ItemPrivate {
         static $gtype: GObject.GType<ItemPrivate>;
 
-        // Constructors of Libinsane.ItemPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -365,7 +365,7 @@ export namespace Libinsane {
     abstract class OptionDescriptorPrivate {
         static $gtype: GObject.GType<OptionDescriptorPrivate>;
 
-        // Constructors of Libinsane.OptionDescriptorPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -374,7 +374,7 @@ export namespace Libinsane {
     abstract class ScanParametersPrivate {
         static $gtype: GObject.GType<ScanParametersPrivate>;
 
-        // Constructors of Libinsane.ScanParametersPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -383,7 +383,7 @@ export namespace Libinsane {
     abstract class ScanSessionPrivate {
         static $gtype: GObject.GType<ScanSessionPrivate>;
 
-        // Constructors of Libinsane.ScanSessionPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -399,11 +399,11 @@ export namespace Libinsane {
         prototype: Logger;
     }
     interface Logger extends GObject.Object {
-        // Own methods of Libinsane.Logger
+        // Methods
 
         log(lvl: LogLevel, msg: string): void;
 
-        // Own virtual methods of Libinsane.Logger
+        // Virtual methods
 
         vfunc_log(lvl: LogLevel, msg: string): void;
     }

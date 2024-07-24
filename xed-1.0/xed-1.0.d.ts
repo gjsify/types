@@ -307,19 +307,19 @@ export namespace Xed {
     class App extends Gtk.Application implements Gio.ActionGroup, Gio.ActionMap {
         static $gtype: GObject.GType<App>;
 
-        // Constructors of Xed.App
+        // Constructors
 
         constructor(properties?: Partial<App.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of Xed.App
+        // Virtual methods
 
         vfunc_help_link_id(name: string, link_id: string): string;
         vfunc_set_window_title(window: Window, title: string): void;
         vfunc_show_help(parent: Gtk.Window, name: string, link_id: string): boolean;
 
-        // Own methods of Xed.App
+        // Methods
 
         /**
          * Create a new #XedWindow part of `app`.
@@ -791,7 +791,7 @@ export namespace Xed {
     class Document extends GtkSource.Buffer {
         static $gtype: GObject.GType<Document>;
 
-        // Own properties of Xed.Document
+        // Properties
 
         /**
          * The documents content type.
@@ -841,7 +841,7 @@ export namespace Xed {
          */
         get useGvfsMetadata(): boolean;
 
-        // Constructors of Xed.Document
+        // Constructors
 
         constructor(properties?: Partial<Document.ConstructorProps>, ...args: any[]);
 
@@ -849,7 +849,7 @@ export namespace Xed {
 
         static ['new'](): Document;
 
-        // Own signals of Xed.Document
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -870,7 +870,7 @@ export namespace Xed {
         connect_after(signal: 'saved', callback: (_source: this) => void): number;
         emit(signal: 'saved'): void;
 
-        // Own virtual methods of Xed.Document
+        // Virtual methods
 
         vfunc_cursor_moved(): void;
         vfunc_load(): void;
@@ -878,7 +878,7 @@ export namespace Xed {
         vfunc_save(): void;
         vfunc_saved(): void;
 
-        // Own methods of Xed.Document
+        // Methods
 
         get_content_type(): string;
         get_deleted(): boolean;
@@ -956,14 +956,14 @@ export namespace Xed {
     {
         static $gtype: GObject.GType<EncodingsComboBox>;
 
-        // Own properties of Xed.EncodingsComboBox
+        // Properties
 
         get save_mode(): boolean;
         set save_mode(val: boolean);
         get saveMode(): boolean;
         set saveMode(val: boolean);
 
-        // Constructors of Xed.EncodingsComboBox
+        // Constructors
 
         constructor(properties?: Partial<EncodingsComboBox.ConstructorProps>, ...args: any[]);
 
@@ -974,7 +974,7 @@ export namespace Xed {
 
         static ['new'](...args: never[]): any;
 
-        // Own methods of Xed.EncodingsComboBox
+        // Methods
 
         get_selected_encoding(): GtkSource.Encoding;
         /**
@@ -5133,13 +5133,13 @@ export namespace Xed {
     {
         static $gtype: GObject.GType<FileChooserDialog>;
 
-        // Constructors of Xed.FileChooserDialog
+        // Constructors
 
         constructor(properties?: Partial<FileChooserDialog.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Xed.FileChooserDialog
+        // Methods
 
         get_encoding(): GtkSource.Encoding;
         get_newline_type(): GtkSource.NewlineType;
@@ -6225,7 +6225,7 @@ export namespace Xed {
     class Message extends GObject.Object {
         static $gtype: GObject.GType<Message>;
 
-        // Own properties of Xed.Message
+        // Properties
 
         /**
          * The messages method.
@@ -6235,13 +6235,13 @@ export namespace Xed {
         get objectPath(): string;
         get type(): MessageType;
 
-        // Constructors of Xed.Message
+        // Constructors
 
         constructor(properties?: Partial<Message.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Xed.Message
+        // Methods
 
         /**
          * Get the type of a message argument.
@@ -6313,7 +6313,7 @@ export namespace Xed {
     class MessageBus extends GObject.Object {
         static $gtype: GObject.GType<MessageBus>;
 
-        // Constructors of Xed.MessageBus
+        // Constructors
 
         constructor(properties?: Partial<MessageBus.ConstructorProps>, ...args: any[]);
 
@@ -6321,7 +6321,7 @@ export namespace Xed {
 
         static ['new'](): MessageBus;
 
-        // Own signals of Xed.MessageBus
+        // Signals
 
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -6332,20 +6332,20 @@ export namespace Xed {
         connect_after(signal: 'unregistered', callback: (_source: this, message_type: MessageType) => void): number;
         emit(signal: 'unregistered', message_type: MessageType): void;
 
-        // Own static methods of Xed.MessageBus
+        // Static methods
 
         /**
          * Get the default application #XedMessageBus.
          */
         static get_default(): MessageBus;
 
-        // Own virtual methods of Xed.MessageBus
+        // Virtual methods
 
         vfunc_dispatch(message: Message): void;
         vfunc_registered(message_type: MessageType): void;
         vfunc_unregistered(message_type: MessageType): void;
 
-        // Own methods of Xed.MessageBus
+        // Methods
 
         /**
          * Blocks evoking the callback specified by `id`. Unblock the callback by
@@ -6487,11 +6487,11 @@ export namespace Xed {
     class Notebook extends Gtk.Notebook implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<Notebook>;
 
-        // Own fields of Xed.Notebook
+        // Fields
 
         notebook: Gtk.Notebook;
 
-        // Constructors of Xed.Notebook
+        // Constructors
 
         constructor(properties?: Partial<Notebook.ConstructorProps>, ...args: any[]);
 
@@ -6499,7 +6499,7 @@ export namespace Xed {
 
         static ['new'](): Notebook;
 
-        // Own signals of Xed.Notebook
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -6520,7 +6520,7 @@ export namespace Xed {
         connect_after(signal: 'tabs-reordered', callback: (_source: this) => void): number;
         emit(signal: 'tabs-reordered'): void;
 
-        // Own virtual methods of Xed.Notebook
+        // Virtual methods
 
         vfunc_tab_added(tab: Tab): void;
         vfunc_tab_close_request(tab: Tab): void;
@@ -6528,7 +6528,7 @@ export namespace Xed {
         vfunc_tab_removed(tab: Tab): void;
         vfunc_tabs_reordered(): void;
 
-        // Own methods of Xed.Notebook
+        // Methods
 
         /**
          * Adds the specified `tab` to the `nb`.
@@ -7036,11 +7036,11 @@ export namespace Xed {
     class Panel extends Gtk.Bin implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<Panel>;
 
-        // Own properties of Xed.Panel
+        // Properties
 
         get orientation(): Gtk.Orientation;
 
-        // Constructors of Xed.Panel
+        // Constructors
 
         constructor(properties?: Partial<Panel.ConstructorProps>, ...args: any[]);
 
@@ -7048,7 +7048,7 @@ export namespace Xed {
 
         static ['new'](orientation: Gtk.Orientation): Panel;
 
-        // Own signals of Xed.Panel
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -7066,14 +7066,14 @@ export namespace Xed {
         connect_after(signal: 'item-removed', callback: (_source: this, object: Gtk.Widget) => void): number;
         emit(signal: 'item-removed', object: Gtk.Widget): void;
 
-        // Own virtual methods of Xed.Panel
+        // Virtual methods
 
         vfunc_close(): void;
         vfunc_focus_document(): void;
         vfunc_item_added(item: Gtk.Widget): void;
         vfunc_item_removed(item: Gtk.Widget): void;
 
-        // Own methods of Xed.Panel
+        // Methods
 
         /**
          * Switches to the page that contains `item`.
@@ -7531,12 +7531,12 @@ export namespace Xed {
     class ProgressInfoBar extends Gtk.InfoBar implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<ProgressInfoBar>;
 
-        // Own properties of Xed.ProgressInfoBar
+        // Properties
 
         set has_cancel_button(val: boolean);
         set hasCancelButton(val: boolean);
 
-        // Constructors of Xed.ProgressInfoBar
+        // Constructors
 
         constructor(properties?: Partial<ProgressInfoBar.ConstructorProps>, ...args: any[]);
 
@@ -7547,7 +7547,7 @@ export namespace Xed {
 
         static ['new'](...args: never[]): any;
 
-        // Own methods of Xed.ProgressInfoBar
+        // Methods
 
         pulse(): void;
         set_fraction(fraction: number): void;
@@ -7971,12 +7971,12 @@ export namespace Xed {
     class Searchbar extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<Searchbar>;
 
-        // Own fields of Xed.Searchbar
+        // Fields
 
         // @ts-expect-error This property conflicts with an accessor in a parent class or interface.
         window: Window;
 
-        // Constructors of Xed.Searchbar
+        // Constructors
 
         constructor(properties?: Partial<Searchbar.ConstructorProps>, ...args: any[]);
 
@@ -7987,11 +7987,11 @@ export namespace Xed {
 
         static ['new'](...args: never[]): any;
 
-        // Own virtual methods of Xed.Searchbar
+        // Virtual methods
 
         vfunc_show_replace(): boolean;
 
-        // Own methods of Xed.Searchbar
+        // Methods
 
         find_again(backward: boolean): void;
         get_backwards(): boolean;
@@ -8443,7 +8443,7 @@ export namespace Xed {
     class Statusbar extends Gtk.Statusbar implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<Statusbar>;
 
-        // Constructors of Xed.Statusbar
+        // Constructors
 
         constructor(properties?: Partial<Statusbar.ConstructorProps>, ...args: any[]);
 
@@ -8451,7 +8451,7 @@ export namespace Xed {
 
         static ['new'](): Statusbar;
 
-        // Own methods of Xed.Statusbar
+        // Methods
 
         clear_overwrite(): void;
         set_cursor_position(line: number, col: number): void;
@@ -8886,7 +8886,7 @@ export namespace Xed {
     class Tab extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<Tab>;
 
-        // Own properties of Xed.Tab
+        // Properties
 
         get autosave(): boolean;
         set autosave(val: boolean);
@@ -8899,17 +8899,17 @@ export namespace Xed {
         get name(): string;
         get state(): TabState;
 
-        // Own fields of Xed.Tab
+        // Fields
 
         vbox: Gtk.Box;
 
-        // Constructors of Xed.Tab
+        // Constructors
 
         constructor(properties?: Partial<Tab.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of Xed.Tab
+        // Static methods
 
         /**
          * Gets the #XedTab associated with `doc`.
@@ -8917,7 +8917,7 @@ export namespace Xed {
          */
         static get_from_document(doc: Document): Tab;
 
-        // Own methods of Xed.Tab
+        // Methods
 
         /**
          * Gets the current state for the autosave feature
@@ -9398,11 +9398,11 @@ export namespace Xed {
     class View extends GtkSource.View implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable {
         static $gtype: GObject.GType<View>;
 
-        // Own fields of Xed.View
+        // Fields
 
         view: GtkSource.View;
 
-        // Constructors of Xed.View
+        // Constructors
 
         constructor(properties?: Partial<View.ConstructorProps>, ...args: any[]);
 
@@ -9413,7 +9413,7 @@ export namespace Xed {
 
         static ['new'](...args: never[]): any;
 
-        // Own signals of Xed.View
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -9422,11 +9422,11 @@ export namespace Xed {
         connect_after(signal: 'drop-uris', callback: (_source: this, object: string[]) => void): number;
         emit(signal: 'drop-uris', object: string[]): void;
 
-        // Own virtual methods of Xed.View
+        // Virtual methods
 
         vfunc_drop_uris(uri_list: string): void;
 
-        // Own methods of Xed.View
+        // Methods
 
         copy_clipboard(): void;
         cut_clipboard(): void;
@@ -9908,22 +9908,22 @@ export namespace Xed {
     {
         static $gtype: GObject.GType<Window>;
 
-        // Own properties of Xed.Window
+        // Properties
 
         get state(): WindowState;
 
-        // Own fields of Xed.Window
+        // Fields
 
         // @ts-expect-error This property conflicts with an accessor in a parent class or interface.
         window: Gtk.ApplicationWindow;
 
-        // Constructors of Xed.Window
+        // Constructors
 
         constructor(properties?: Partial<Window.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of Xed.Window
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -9944,7 +9944,7 @@ export namespace Xed {
         connect_after(signal: 'tabs-reordered', callback: (_source: this) => void): number;
         emit(signal: 'tabs-reordered'): void;
 
-        // Own virtual methods of Xed.Window
+        // Virtual methods
 
         vfunc_active_tab_changed(tab: Tab): void;
         vfunc_active_tab_state_changed(): void;
@@ -9952,7 +9952,7 @@ export namespace Xed {
         vfunc_tab_removed(tab: Tab): void;
         vfunc_tabs_reordered(): void;
 
-        // Own methods of Xed.Window
+        // Methods
 
         /**
          * Closes all opened tabs.
@@ -11057,7 +11057,7 @@ export namespace Xed {
     abstract class AppPrivate {
         static $gtype: GObject.GType<AppPrivate>;
 
-        // Constructors of Xed.AppPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -11067,7 +11067,7 @@ export namespace Xed {
     abstract class EncodingsComboBoxPrivate {
         static $gtype: GObject.GType<EncodingsComboBoxPrivate>;
 
-        // Constructors of Xed.EncodingsComboBoxPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -11076,7 +11076,7 @@ export namespace Xed {
     abstract class FileChooserDialogPrivate {
         static $gtype: GObject.GType<FileChooserDialogPrivate>;
 
-        // Constructors of Xed.FileChooserDialogPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -11085,7 +11085,7 @@ export namespace Xed {
     abstract class MessageBusPrivate {
         static $gtype: GObject.GType<MessageBusPrivate>;
 
-        // Constructors of Xed.MessageBusPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -11094,7 +11094,7 @@ export namespace Xed {
     abstract class MessagePrivate {
         static $gtype: GObject.GType<MessagePrivate>;
 
-        // Constructors of Xed.MessagePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -11102,12 +11102,12 @@ export namespace Xed {
     class MessageType {
         static $gtype: GObject.GType<MessageType>;
 
-        // Constructors of Xed.MessageType
+        // Constructors
 
         constructor(object_path: string | null, method: string | null, num_optional: number, ___: any[]);
         _init(...args: any[]): void;
 
-        // Own static methods of Xed.MessageType
+        // Static methods
 
         /**
          * Get the string identifier for `method` at `object_path`.
@@ -11126,7 +11126,7 @@ export namespace Xed {
          */
         static is_valid_object_path(object_path?: string | null): boolean;
 
-        // Own methods of Xed.MessageType
+        // Methods
 
         /**
          * Calls `func` for each argument in the message type.
@@ -11165,7 +11165,7 @@ export namespace Xed {
     abstract class NotebookPrivate {
         static $gtype: GObject.GType<NotebookPrivate>;
 
-        // Constructors of Xed.NotebookPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -11174,7 +11174,7 @@ export namespace Xed {
     abstract class PanelPrivate {
         static $gtype: GObject.GType<PanelPrivate>;
 
-        // Constructors of Xed.PanelPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -11183,7 +11183,7 @@ export namespace Xed {
     abstract class ProgressInfoBarPrivate {
         static $gtype: GObject.GType<ProgressInfoBarPrivate>;
 
-        // Constructors of Xed.ProgressInfoBarPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -11192,7 +11192,7 @@ export namespace Xed {
     abstract class SearchbarPrivate {
         static $gtype: GObject.GType<SearchbarPrivate>;
 
-        // Constructors of Xed.SearchbarPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -11201,7 +11201,7 @@ export namespace Xed {
     abstract class StatusbarPrivate {
         static $gtype: GObject.GType<StatusbarPrivate>;
 
-        // Constructors of Xed.StatusbarPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -11210,7 +11210,7 @@ export namespace Xed {
     abstract class TabPrivate {
         static $gtype: GObject.GType<TabPrivate>;
 
-        // Constructors of Xed.TabPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -11220,7 +11220,7 @@ export namespace Xed {
     abstract class ViewPrivate {
         static $gtype: GObject.GType<ViewPrivate>;
 
-        // Constructors of Xed.ViewPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -11230,7 +11230,7 @@ export namespace Xed {
     abstract class WindowPrivate {
         static $gtype: GObject.GType<WindowPrivate>;
 
-        // Constructors of Xed.WindowPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -11248,7 +11248,7 @@ export namespace Xed {
         prototype: AppActivatable;
     }
     interface AppActivatable extends GObject.Object {
-        // Own properties of Xed.AppActivatable
+        // Properties
 
         /**
          * The app property contains the xed app for this
@@ -11256,7 +11256,7 @@ export namespace Xed {
          */
         get app(): App;
 
-        // Own methods of Xed.AppActivatable
+        // Methods
 
         /**
          * Activates the extension on the application.
@@ -11267,7 +11267,7 @@ export namespace Xed {
          */
         deactivate(): void;
 
-        // Own virtual methods of Xed.AppActivatable
+        // Virtual methods
 
         /**
          * Activates the extension on the application.
@@ -11294,7 +11294,7 @@ export namespace Xed {
         prototype: ViewActivatable;
     }
     interface ViewActivatable extends GObject.Object {
-        // Own properties of Xed.ViewActivatable
+        // Properties
 
         /**
          * The window property contains the xed window for this
@@ -11302,7 +11302,7 @@ export namespace Xed {
          */
         get view(): View;
 
-        // Own methods of Xed.ViewActivatable
+        // Methods
 
         /**
          * Activates the extension on the window property.
@@ -11313,7 +11313,7 @@ export namespace Xed {
          */
         deactivate(): void;
 
-        // Own virtual methods of Xed.ViewActivatable
+        // Virtual methods
 
         /**
          * Activates the extension on the window property.
@@ -11340,7 +11340,7 @@ export namespace Xed {
         prototype: WindowActivatable;
     }
     interface WindowActivatable extends GObject.Object {
-        // Own properties of Xed.WindowActivatable
+        // Properties
 
         /**
          * The window property contains the xed window for this
@@ -11348,7 +11348,7 @@ export namespace Xed {
          */
         get window(): Window;
 
-        // Own methods of Xed.WindowActivatable
+        // Methods
 
         /**
          * Activates the extension on the window property.
@@ -11364,7 +11364,7 @@ export namespace Xed {
          */
         update_state(): void;
 
-        // Own virtual methods of Xed.WindowActivatable
+        // Virtual methods
 
         /**
          * Activates the extension on the window property.

@@ -53,7 +53,7 @@ export namespace GtkChamplain {
     class Embed extends Gtk.Alignment implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<Embed>;
 
-        // Own properties of GtkChamplain.Embed
+        // Properties
 
         /**
          * The #ChamplainView to embed in the Gtk+ widget.
@@ -64,11 +64,11 @@ export namespace GtkChamplain {
          */
         get champlainView(): Champlain.View;
 
-        // Own fields of GtkChamplain.Embed
+        // Fields
 
         bin: Gtk.Alignment;
 
-        // Constructors of GtkChamplain.Embed
+        // Constructors
 
         constructor(properties?: Partial<Embed.ConstructorProps>, ...args: any[]);
 
@@ -76,7 +76,7 @@ export namespace GtkChamplain {
 
         static ['new'](): Embed;
 
-        // Own methods of GtkChamplain.Embed
+        // Methods
 
         /**
          * Gets a #ChamplainView from the #GtkChamplainEmbed object.
@@ -493,7 +493,7 @@ export namespace GtkChamplain {
     abstract class EmbedPrivate {
         static $gtype: GObject.GType<EmbedPrivate>;
 
-        // Constructors of GtkChamplain.EmbedPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }

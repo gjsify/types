@@ -1145,14 +1145,14 @@ export namespace Gcr {
     class CertificateChain extends GObject.Object {
         static $gtype: GObject.GType<CertificateChain>;
 
-        // Own properties of Gcr.CertificateChain
+        // Properties
 
         /**
          * The length of the certificate chain.
          */
         get length(): number;
 
-        // Constructors of Gcr.CertificateChain
+        // Constructors
 
         constructor(properties?: Partial<CertificateChain.ConstructorProps>, ...args: any[]);
 
@@ -1160,7 +1160,7 @@ export namespace Gcr {
 
         static ['new'](): CertificateChain;
 
-        // Own methods of Gcr.CertificateChain
+        // Methods
 
         /**
          * Add `certificate` to the chain. The order of certificates in the chain are
@@ -1321,19 +1321,19 @@ export namespace Gcr {
     class CertificateField extends GObject.Object {
         static $gtype: GObject.GType<CertificateField>;
 
-        // Own properties of Gcr.CertificateField
+        // Properties
 
         get label(): string;
         get section(): CertificateSection;
         get value(): GObject.Value;
 
-        // Constructors of Gcr.CertificateField
+        // Constructors
 
         constructor(properties?: Partial<CertificateField.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Gcr.CertificateField
+        // Methods
 
         /**
          * Get the display label of the field.
@@ -1381,7 +1381,7 @@ export namespace Gcr {
     class CertificateRequest extends GObject.Object {
         static $gtype: GObject.GType<CertificateRequest>;
 
-        // Own properties of Gcr.CertificateRequest
+        // Properties
 
         /**
          * The private key that this certificate request is for.
@@ -1392,13 +1392,13 @@ export namespace Gcr {
          */
         get privateKey(): Gck.Object;
 
-        // Constructors of Gcr.CertificateRequest
+        // Constructors
 
         constructor(properties?: Partial<CertificateRequest.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of Gcr.CertificateRequest
+        // Static methods
 
         /**
          * Check whether [class`CertificateRequest]` is capable of creating a request
@@ -1432,7 +1432,7 @@ export namespace Gcr {
          */
         static prepare(format: CertificateRequestFormat, private_key: Gck.Object): CertificateRequest;
 
-        // Own methods of Gcr.CertificateRequest
+        // Methods
 
         /**
          * Complete and sign a certificate request, so that it can be encoded
@@ -1501,18 +1501,18 @@ export namespace Gcr {
     class CertificateSection extends GObject.Object {
         static $gtype: GObject.GType<CertificateSection>;
 
-        // Own properties of Gcr.CertificateSection
+        // Properties
 
         get fields(): Gio.ListModel;
         get label(): string;
 
-        // Constructors of Gcr.CertificateSection
+        // Constructors
 
         constructor(properties?: Partial<CertificateSection.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Gcr.CertificateSection
+        // Methods
 
         /**
          * Get the list of all the fields in this section.
@@ -1573,7 +1573,7 @@ export namespace Gcr {
     class Parser extends GObject.Object {
         static $gtype: GObject.GType<Parser>;
 
-        // Own properties of Gcr.Parser
+        // Properties
 
         /**
          * Get the attributes that make up the currently parsed item. This is
@@ -1606,7 +1606,7 @@ export namespace Gcr {
          */
         get parsedLabel(): string;
 
-        // Constructors of Gcr.Parser
+        // Constructors
 
         constructor(properties?: Partial<Parser.ConstructorProps>, ...args: any[]);
 
@@ -1614,7 +1614,7 @@ export namespace Gcr {
 
         static ['new'](): Parser;
 
-        // Own signals of Gcr.Parser
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -1626,7 +1626,7 @@ export namespace Gcr {
         connect_after(signal: 'parsed', callback: (_source: this) => void): number;
         emit(signal: 'parsed'): void;
 
-        // Own virtual methods of Gcr.Parser
+        // Virtual methods
 
         /**
          * The default handler for the authenticate signal.
@@ -1638,7 +1638,7 @@ export namespace Gcr {
          */
         vfunc_parsed(): void;
 
-        // Own methods of Gcr.Parser
+        // Methods
 
         /**
          * Add a password to the set of passwords to try when parsing locked or encrypted
@@ -1789,20 +1789,20 @@ export namespace Gcr {
     class Pkcs11Certificate extends Gck.Object implements Certificate {
         static $gtype: GObject.GType<Pkcs11Certificate>;
 
-        // Own properties of Gcr.Pkcs11Certificate
+        // Properties
 
         /**
          * Automatically loaded attributes for this certificate.
          */
         get attributes(): Gck.Attributes;
 
-        // Constructors of Gcr.Pkcs11Certificate
+        // Constructors
 
         constructor(properties?: Partial<Pkcs11Certificate.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of Gcr.Pkcs11Certificate
+        // Static methods
 
         /**
          * Lookup a the issuer of a `certificate` in the PKCS#11 storage. The
@@ -1881,7 +1881,7 @@ export namespace Gcr {
          */
         static new_from_uri_finish(result: Gio.AsyncResult): Certificate | null;
 
-        // Own methods of Gcr.Pkcs11Certificate
+        // Methods
 
         /**
          * Access the automatically loaded attributes for this certificate.
@@ -2542,7 +2542,7 @@ export namespace Gcr {
     class SecretExchange extends GObject.Object {
         static $gtype: GObject.GType<SecretExchange>;
 
-        // Own properties of Gcr.SecretExchange
+        // Properties
 
         /**
          * The protocol being used for the exchange.
@@ -2553,7 +2553,7 @@ export namespace Gcr {
          */
         get protocol(): string;
 
-        // Constructors of Gcr.SecretExchange
+        // Constructors
 
         constructor(properties?: Partial<SecretExchange.ConstructorProps>, ...args: any[]);
 
@@ -2561,12 +2561,12 @@ export namespace Gcr {
 
         static ['new'](protocol?: string | null): SecretExchange;
 
-        // Own virtual methods of Gcr.SecretExchange
+        // Virtual methods
 
         vfunc_derive_transport_key(peer: number, n_peer: number): boolean;
         vfunc_generate_exchange_key(scheme: string, public_key: number, n_public_key: number): boolean;
 
-        // Own methods of Gcr.SecretExchange
+        // Methods
 
         /**
          * Begin the secret exchange. The resulting string should be sent to the other
@@ -2636,7 +2636,7 @@ export namespace Gcr {
     class SimpleCertificate extends GObject.Object implements Certificate {
         static $gtype: GObject.GType<SimpleCertificate>;
 
-        // Constructors of Gcr.SimpleCertificate
+        // Constructors
 
         constructor(properties?: Partial<SimpleCertificate.ConstructorProps>, ...args: any[]);
 
@@ -3273,14 +3273,14 @@ export namespace Gcr {
     class SshAskpass extends GObject.Object {
         static $gtype: GObject.GType<SshAskpass>;
 
-        // Own properties of Gcr.SshAskpass
+        // Properties
 
         /**
          * The interaction used to prompt for passwords.
          */
         get interaction(): Gio.TlsInteraction;
 
-        // Constructors of Gcr.SshAskpass
+        // Constructors
 
         constructor(properties?: Partial<SshAskpass.ConstructorProps>, ...args: any[]);
 
@@ -3288,7 +3288,7 @@ export namespace Gcr {
 
         static ['new'](interaction: Gio.TlsInteraction): SshAskpass;
 
-        // Own static methods of Gcr.SshAskpass
+        // Static methods
 
         /**
          * Use this function as a callback setup function passed to g_spawn_sync(),
@@ -3297,7 +3297,7 @@ export namespace Gcr {
          */
         static child_setup(askpass?: any | null): void;
 
-        // Own methods of Gcr.SshAskpass
+        // Methods
 
         /**
          * Get the interaction associated with this object.
@@ -3339,7 +3339,7 @@ export namespace Gcr {
     class SystemPrompt extends GObject.Object implements Prompt, Gio.AsyncInitable<SystemPrompt>, Gio.Initable {
         static $gtype: GObject.GType<SystemPrompt>;
 
-        // Own properties of Gcr.SystemPrompt
+        // Properties
 
         /**
          * The DBus bus name of the prompter to use for prompting, or %NULL
@@ -3372,13 +3372,13 @@ export namespace Gcr {
          */
         set timeoutSeconds(val: number);
 
-        // Constructors of Gcr.SystemPrompt
+        // Constructors
 
         constructor(properties?: Partial<SystemPrompt.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of Gcr.SystemPrompt
+        // Static methods
 
         static error_get_domain(): GLib.Quark;
         /**
@@ -3458,7 +3458,7 @@ export namespace Gcr {
             callback?: Gio.AsyncReadyCallback<SystemPrompt> | null,
         ): void;
 
-        // Own methods of Gcr.SystemPrompt
+        // Methods
 
         /**
          * Close this prompt. After calling this function, no further prompts will
@@ -4625,7 +4625,7 @@ export namespace Gcr {
     class SystemPrompter extends GObject.Object {
         static $gtype: GObject.GType<SystemPrompter>;
 
-        // Own properties of Gcr.SystemPrompter
+        // Properties
 
         /**
          * The #GType for prompts created by this prompter. This must be a
@@ -4642,7 +4642,7 @@ export namespace Gcr {
          */
         get prompting(): boolean;
 
-        // Constructors of Gcr.SystemPrompter
+        // Constructors
 
         constructor(properties?: Partial<SystemPrompter.ConstructorProps>, ...args: any[]);
 
@@ -4650,7 +4650,7 @@ export namespace Gcr {
 
         static ['new'](mode: SystemPrompterMode, prompt_type: GObject.GType): SystemPrompter;
 
-        // Own signals of Gcr.SystemPrompter
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -4659,7 +4659,7 @@ export namespace Gcr {
         connect_after(signal: 'new-prompt', callback: (_source: this) => Prompt): number;
         emit(signal: 'new-prompt'): void;
 
-        // Own methods of Gcr.SystemPrompter
+        // Methods
 
         /**
          * Get the mode for this prompter.
@@ -4706,7 +4706,7 @@ export namespace Gcr {
     abstract class CertificateChainPrivate {
         static $gtype: GObject.GType<CertificateChainPrivate>;
 
-        // Constructors of Gcr.CertificateChainPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4723,11 +4723,11 @@ export namespace Gcr {
     abstract class Parsed {
         static $gtype: GObject.GType<Parsed>;
 
-        // Constructors of Gcr.Parsed
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own static methods of Gcr.Parsed
+        // Static methods
 
         /**
          * Unreferences a parsed item which was referenced with gcr_parsed_ref()
@@ -4735,7 +4735,7 @@ export namespace Gcr {
          */
         static unref(parsed?: any | null): void;
 
-        // Own methods of Gcr.Parsed
+        // Methods
 
         /**
          * Get the attributes which make up the parsed item.
@@ -4784,7 +4784,7 @@ export namespace Gcr {
     abstract class ParserPrivate {
         static $gtype: GObject.GType<ParserPrivate>;
 
-        // Constructors of Gcr.ParserPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4793,7 +4793,7 @@ export namespace Gcr {
     abstract class Pkcs11CertificatePrivate {
         static $gtype: GObject.GType<Pkcs11CertificatePrivate>;
 
-        // Constructors of Gcr.Pkcs11CertificatePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4803,7 +4803,7 @@ export namespace Gcr {
     abstract class SecretExchangePrivate {
         static $gtype: GObject.GType<SecretExchangePrivate>;
 
-        // Constructors of Gcr.SecretExchangePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4812,7 +4812,7 @@ export namespace Gcr {
     abstract class SimpleCertificatePrivate {
         static $gtype: GObject.GType<SimpleCertificatePrivate>;
 
-        // Constructors of Gcr.SimpleCertificatePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4822,7 +4822,7 @@ export namespace Gcr {
     abstract class SystemPromptPrivate {
         static $gtype: GObject.GType<SystemPromptPrivate>;
 
-        // Constructors of Gcr.SystemPromptPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4831,7 +4831,7 @@ export namespace Gcr {
     abstract class SystemPrompterPrivate {
         static $gtype: GObject.GType<SystemPrompterPrivate>;
 
-        // Constructors of Gcr.SystemPrompterPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4856,7 +4856,7 @@ export namespace Gcr {
         prototype: Certificate;
     }
     interface Certificate extends GObject.Object {
-        // Own properties of Gcr.Certificate
+        // Properties
 
         /**
          * A readable description for this certificate
@@ -4885,7 +4885,7 @@ export namespace Gcr {
         get subject_name(): string;
         get subjectName(): string;
 
-        // Own methods of Gcr.Certificate
+        // Methods
 
         /**
          * Get the basic constraints for the certificate if present. If %FALSE is
@@ -5067,7 +5067,7 @@ export namespace Gcr {
          */
         mixin_emit_notify(): void;
 
-        // Own virtual methods of Gcr.Certificate
+        // Virtual methods
 
         /**
          * Gets the raw DER data for an X.509 certificate.
@@ -5088,7 +5088,7 @@ export namespace Gcr {
         prototype: ImportInteraction;
     }
     interface ImportInteraction extends Gio.TlsInteraction {
-        // Own methods of Gcr.ImportInteraction
+        // Methods
 
         /**
          * Supplement attributes before import. This means prompting the user for
@@ -5138,7 +5138,7 @@ export namespace Gcr {
          */
         supplement_prep(builder: Gck.Builder): void;
 
-        // Own virtual methods of Gcr.ImportInteraction
+        // Virtual methods
 
         /**
          * Supplement attributes before import. This means prompting the user for
@@ -5233,7 +5233,7 @@ export namespace Gcr {
         register_well_known(): void;
     }
     interface Importer extends GObject.Object {
-        // Own properties of Gcr.Importer
+        // Properties
 
         /**
          * The interaction for the importer.
@@ -5249,7 +5249,7 @@ export namespace Gcr {
          */
         get uri(): string;
 
-        // Own methods of Gcr.Importer
+        // Methods
 
         /**
          * Get the interaction used to prompt the user when needed by this
@@ -5287,7 +5287,7 @@ export namespace Gcr {
          */
         set_interaction(interaction: Gio.TlsInteraction): void;
 
-        // Own virtual methods of Gcr.Importer
+        // Virtual methods
 
         /**
          * Import the queued items in the importer. This function returns immediately
@@ -5344,7 +5344,7 @@ export namespace Gcr {
         prototype: Prompt;
     }
     interface Prompt extends GObject.Object {
-        // Own properties of Gcr.Prompt
+        // Properties
 
         /**
          * The string handle of the caller's window.
@@ -5498,7 +5498,7 @@ export namespace Gcr {
         get warning(): string;
         set warning(val: string);
 
-        // Own methods of Gcr.Prompt
+        // Methods
 
         /**
          * Closes the prompt so that in can no longer be used to prompt. The various
@@ -5800,7 +5800,7 @@ export namespace Gcr {
          */
         set_warning(warning?: string | null): void;
 
-        // Own virtual methods of Gcr.Prompt
+        // Virtual methods
 
         /**
          * close a prompt

@@ -172,7 +172,7 @@ export namespace Vte {
     class PtyError extends GLib.Error {
         static $gtype: GObject.GType<PtyError>;
 
-        // Static fields of Vte.PtyError
+        // Static fields
 
         /**
          * Obsolete. Deprecated: 0.42
@@ -183,12 +183,12 @@ export namespace Vte {
          */
         static PTY98_FAILED: number;
 
-        // Constructors of Vte.PtyError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of Vte.PtyError
+        // Static methods
 
         /**
          * Error domain for VTE PTY errors. Errors in this domain will be from the #VtePtyError
@@ -204,7 +204,7 @@ export namespace Vte {
     class RegexError extends GLib.Error {
         static $gtype: GObject.GType<RegexError>;
 
-        // Static fields of Vte.RegexError
+        // Static fields
 
         /**
          * The PCRE2 library was built without
@@ -217,12 +217,12 @@ export namespace Vte {
          */
         static NOT_SUPPORTED: number;
 
-        // Constructors of Vte.RegexError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of Vte.RegexError
+        // Static methods
 
         static quark(): GLib.Quark;
     }
@@ -483,7 +483,7 @@ export namespace Vte {
     class Pty extends GObject.Object implements Gio.Initable {
         static $gtype: GObject.GType<Pty>;
 
-        // Own properties of Vte.Pty
+        // Properties
 
         /**
          * The file descriptor of the PTY master.
@@ -494,7 +494,7 @@ export namespace Vte {
          */
         get flags(): PtyFlags;
 
-        // Constructors of Vte.Pty
+        // Constructors
 
         constructor(properties?: Partial<Pty.ConstructorProps>, ...args: any[]);
 
@@ -504,7 +504,7 @@ export namespace Vte {
 
         static new_sync(flags: PtyFlags, cancellable?: Gio.Cancellable | null): Pty;
 
-        // Own methods of Vte.Pty
+        // Methods
 
         child_setup(): void;
         /**
@@ -1339,7 +1339,7 @@ export namespace Vte {
     class Terminal extends Gtk.Widget implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable {
         static $gtype: GObject.GType<Terminal>;
 
-        // Own properties of Vte.Terminal
+        // Properties
 
         /**
          * Controls whether or not the terminal will attempt to draw bold text,
@@ -1824,11 +1824,11 @@ export namespace Vte {
         get yfill(): boolean;
         set yfill(val: boolean);
 
-        // Own fields of Vte.Terminal
+        // Fields
 
         widget: Gtk.Widget;
 
-        // Constructors of Vte.Terminal
+        // Constructors
 
         constructor(properties?: Partial<Terminal.ConstructorProps>, ...args: any[]);
 
@@ -1836,7 +1836,7 @@ export namespace Vte {
 
         static ['new'](): Terminal;
 
-        // Own signals of Vte.Terminal
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -1968,7 +1968,7 @@ export namespace Vte {
         connect_after(signal: 'window-title-changed', callback: (_source: this) => void): number;
         emit(signal: 'window-title-changed'): void;
 
-        // Own virtual methods of Vte.Terminal
+        // Virtual methods
 
         vfunc_bell(): void;
         vfunc_char_size_changed(char_width: number, char_height: number): void;
@@ -2009,7 +2009,7 @@ export namespace Vte {
         vfunc_text_scrolled(delta: number): void;
         vfunc_window_title_changed(): void;
 
-        // Own methods of Vte.Terminal
+        // Methods
 
         /**
          * Places the selected text in the terminal in the #GDK_SELECTION_CLIPBOARD
@@ -3726,7 +3726,7 @@ export namespace Vte {
     class CharAttributes {
         static $gtype: GObject.GType<CharAttributes>;
 
-        // Constructors of Vte.CharAttributes
+        // Constructors
 
         constructor(properties?: Partial<{}>);
         _init(...args: any[]): void;
@@ -3738,11 +3738,11 @@ export namespace Vte {
     abstract class EventContext {
         static $gtype: GObject.GType<EventContext>;
 
-        // Constructors of Vte.EventContext
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of Vte.EventContext
+        // Methods
 
         get_event(): Gdk.Event;
     }
@@ -3751,7 +3751,7 @@ export namespace Vte {
     class Regex {
         static $gtype: GObject.GType<Regex>;
 
-        // Constructors of Vte.Regex
+        // Constructors
 
         constructor(pattern: string, pattern_length: number, flags: number);
         _init(...args: any[]): void;
@@ -3764,7 +3764,7 @@ export namespace Vte {
 
         static new_for_search_full(pattern: string, pattern_length: number, flags: number, extra_flags: number): Regex;
 
-        // Own methods of Vte.Regex
+        // Methods
 
         /**
          * If the platform supports JITing, JIT compiles `regex`.
@@ -3797,7 +3797,7 @@ export namespace Vte {
     abstract class TerminalClassPrivate {
         static $gtype: GObject.GType<TerminalClassPrivate>;
 
-        // Constructors of Vte.TerminalClassPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }

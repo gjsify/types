@@ -954,13 +954,13 @@ export namespace GstRtsp {
     class RTSPAuthCredential {
         static $gtype: GObject.GType<RTSPAuthCredential>;
 
-        // Own fields of GstRtsp.RTSPAuthCredential
+        // Fields
 
         scheme: RTSPAuthMethod;
         params: RTSPAuthParam;
         authorization: string;
 
-        // Constructors of GstRtsp.RTSPAuthCredential
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -971,12 +971,12 @@ export namespace GstRtsp {
     class RTSPAuthParam {
         static $gtype: GObject.GType<RTSPAuthParam>;
 
-        // Own fields of GstRtsp.RTSPAuthParam
+        // Fields
 
         name: string;
         value: string;
 
-        // Constructors of GstRtsp.RTSPAuthParam
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -986,7 +986,7 @@ export namespace GstRtsp {
         );
         _init(...args: any[]): void;
 
-        // Own methods of GstRtsp.RTSPAuthParam
+        // Methods
 
         copy(): RTSPAuthParam;
         free(): void;
@@ -999,11 +999,11 @@ export namespace GstRtsp {
     abstract class RTSPConnection {
         static $gtype: GObject.GType<RTSPConnection>;
 
-        // Constructors of GstRtsp.RTSPConnection
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own static methods of GstRtsp.RTSPConnection
+        // Static methods
 
         /**
          * Accept a new connection on `socket` and create a new #GstRTSPConnection for
@@ -1037,7 +1037,7 @@ export namespace GstRtsp {
             initial_buffer: string,
         ): [RTSPResult, RTSPConnection | null];
 
-        // Own methods of GstRtsp.RTSPConnection
+        // Methods
 
         /**
          * Clear the list of authentication directives stored in `conn`.
@@ -1475,15 +1475,15 @@ export namespace GstRtsp {
     class RTSPMessage {
         static $gtype: GObject.GType<RTSPMessage>;
 
-        // Own fields of GstRtsp.RTSPMessage
+        // Fields
 
         type: RTSPMsgType;
 
-        // Constructors of GstRtsp.RTSPMessage
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of GstRtsp.RTSPMessage
+        // Methods
 
         /**
          * Add a header with key `field` and `value` to `msg`. This function takes a copy
@@ -1724,12 +1724,12 @@ export namespace GstRtsp {
     class RTSPRange {
         static $gtype: GObject.GType<RTSPRange>;
 
-        // Own fields of GstRtsp.RTSPRange
+        // Fields
 
         min: number;
         max: number;
 
-        // Constructors of GstRtsp.RTSPRange
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -1739,7 +1739,7 @@ export namespace GstRtsp {
         );
         _init(...args: any[]): void;
 
-        // Own static methods of GstRtsp.RTSPRange
+        // Static methods
 
         /**
          * Converts the range in-place between different types of units.
@@ -1783,12 +1783,12 @@ export namespace GstRtsp {
     class RTSPTime {
         static $gtype: GObject.GType<RTSPTime>;
 
-        // Own fields of GstRtsp.RTSPTime
+        // Fields
 
         type: RTSPTimeType;
         seconds: number;
 
-        // Constructors of GstRtsp.RTSPTime
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1799,14 +1799,14 @@ export namespace GstRtsp {
     class RTSPTime2 {
         static $gtype: GObject.GType<RTSPTime2>;
 
-        // Own fields of GstRtsp.RTSPTime2
+        // Fields
 
         frames: number;
         year: number;
         month: number;
         day: number;
 
-        // Constructors of GstRtsp.RTSPTime2
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -1825,13 +1825,13 @@ export namespace GstRtsp {
     class RTSPTimeRange {
         static $gtype: GObject.GType<RTSPTimeRange>;
 
-        // Own fields of GstRtsp.RTSPTimeRange
+        // Fields
 
         unit: RTSPRangeUnit;
         min2: RTSPTime2;
         max2: RTSPTime2;
 
-        // Constructors of GstRtsp.RTSPTimeRange
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1842,7 +1842,7 @@ export namespace GstRtsp {
     class RTSPTransport {
         static $gtype: GObject.GType<RTSPTransport>;
 
-        // Own fields of GstRtsp.RTSPTransport
+        // Fields
 
         trans: RTSPTransMode;
         profile: RTSPProfile;
@@ -1860,11 +1860,11 @@ export namespace GstRtsp {
         server_port: RTSPRange;
         ssrc: number;
 
-        // Constructors of GstRtsp.RTSPTransport
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own static methods of GstRtsp.RTSPTransport
+        // Static methods
 
         /**
          * Get the #GstElement that can handle the buffers transported over `trans`.
@@ -1899,7 +1899,7 @@ export namespace GstRtsp {
          */
         static parse(str: string): [RTSPResult, RTSPTransport];
 
-        // Own methods of GstRtsp.RTSPTransport
+        // Methods
 
         /**
          * Convert `transport` into a string that can be used to signal the transport in
@@ -1926,7 +1926,7 @@ export namespace GstRtsp {
     class RTSPUrl {
         static $gtype: GObject.GType<RTSPUrl>;
 
-        // Own fields of GstRtsp.RTSPUrl
+        // Fields
 
         transports: RTSPLowerTrans;
         family: RTSPFamily;
@@ -1937,11 +1937,11 @@ export namespace GstRtsp {
         abspath: string;
         query: string;
 
-        // Constructors of GstRtsp.RTSPUrl
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own static methods of GstRtsp.RTSPUrl
+        // Static methods
 
         /**
          * Parse the RTSP `urlstr` into a newly allocated #GstRTSPUrl. Free after usage
@@ -1950,7 +1950,7 @@ export namespace GstRtsp {
          */
         static parse(urlstr: string): [RTSPResult, RTSPUrl | null];
 
-        // Own methods of GstRtsp.RTSPUrl
+        // Methods
 
         /**
          * Make a copy of `url`.
@@ -2008,11 +2008,11 @@ export namespace GstRtsp {
     abstract class RTSPWatch {
         static $gtype: GObject.GType<RTSPWatch>;
 
-        // Constructors of GstRtsp.RTSPWatch
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of GstRtsp.RTSPWatch
+        // Methods
 
         /**
          * Adds a #GstRTSPWatch to a context so that it will be executed within that context.
@@ -2130,7 +2130,7 @@ export namespace GstRtsp {
     class RTSPWatchFuncs {
         static $gtype: GObject.GType<RTSPWatchFuncs>;
 
-        // Constructors of GstRtsp.RTSPWatchFuncs
+        // Constructors
 
         constructor(properties?: Partial<{}>);
         _init(...args: any[]): void;
@@ -2147,7 +2147,7 @@ export namespace GstRtsp {
         prototype: RTSPExtension;
     }
     interface RTSPExtension extends GObject.Object {
-        // Own methods of GstRtsp.RTSPExtension
+        // Methods
 
         after_send(req: RTSPMessage, resp: RTSPMessage): RTSPResult;
         before_send(req: RTSPMessage): RTSPResult;
@@ -2160,7 +2160,7 @@ export namespace GstRtsp {
         setup_media(media: GstSdp.SDPMedia): RTSPResult;
         stream_select(url: RTSPUrl): RTSPResult;
 
-        // Own virtual methods of GstRtsp.RTSPExtension
+        // Virtual methods
 
         vfunc_after_send(req: RTSPMessage, resp: RTSPMessage): RTSPResult;
         vfunc_before_send(req: RTSPMessage): RTSPResult;

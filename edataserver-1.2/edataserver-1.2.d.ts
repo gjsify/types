@@ -129,7 +129,7 @@ export namespace EDataServer {
     class CollatorError extends GLib.Error {
         static $gtype: GObject.GType<CollatorError>;
 
-        // Static fields of EDataServer.CollatorError
+        // Static fields
 
         /**
          * An error occured trying to open a collator and access collation data.
@@ -144,7 +144,7 @@ export namespace EDataServer {
          */
         static INVALID_LOCALE: number;
 
-        // Constructors of EDataServer.CollatorError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
@@ -2693,7 +2693,7 @@ export namespace EDataServer {
     abstract class Client extends GObject.Object {
         static $gtype: GObject.GType<Client>;
 
-        // Own properties of EDataServer.Client
+        // Properties
 
         /**
          * The capabilities of this client
@@ -2727,13 +2727,13 @@ export namespace EDataServer {
          */
         get source(): Source;
 
-        // Constructors of EDataServer.Client
+        // Constructors
 
         constructor(properties?: Partial<Client.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of EDataServer.Client
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -2757,7 +2757,7 @@ export namespace EDataServer {
         connect_after(signal: 'opened', callback: (_source: this, object: GLib.Error) => void): number;
         emit(signal: 'opened', object: GLib.Error): void;
 
-        // Own static methods of EDataServer.Client
+        // Static methods
 
         static error_create(code: ClientError, custom_msg?: string | null): GLib.Error;
         static error_quark(): GLib.Quark;
@@ -2829,7 +2829,7 @@ export namespace EDataServer {
             fail_when_none_matched: boolean,
         ): [boolean, GLib.Error];
 
-        // Own virtual methods of EDataServer.Client
+        // Virtual methods
 
         vfunc_backend_died(): void;
         vfunc_backend_error(error_msg: string): void;
@@ -3001,7 +3001,7 @@ export namespace EDataServer {
          */
         vfunc_unwrap_dbus_error(dbus_error: GLib.Error): void;
 
-        // Own methods of EDataServer.Client
+        // Methods
 
         /**
          * Cancels all pending operations started on `client`.
@@ -3314,17 +3314,17 @@ export namespace EDataServer {
     abstract class Extension extends GObject.Object {
         static $gtype: GObject.GType<Extension>;
 
-        // Own properties of EDataServer.Extension
+        // Properties
 
         get extensible(): Extensible;
 
-        // Constructors of EDataServer.Extension
+        // Constructors
 
         constructor(properties?: Partial<Extension.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of EDataServer.Extension
+        // Methods
 
         /**
          * Returns the object that `extension` extends.
@@ -3346,7 +3346,7 @@ export namespace EDataServer {
     class GDataSession extends SoupSession {
         static $gtype: GObject.GType<GDataSession>;
 
-        // Constructors of EDataServer.GDataSession
+        // Constructors
 
         constructor(properties?: Partial<GDataSession.ConstructorProps>, ...args: any[]);
 
@@ -3357,7 +3357,7 @@ export namespace EDataServer {
 
         static ['new'](...args: never[]): any;
 
-        // Own methods of EDataServer.GDataSession
+        // Methods
 
         /**
          * Deletes a task list `tasklist_id`.
@@ -3545,14 +3545,14 @@ export namespace EDataServer {
     class Module extends GObject.TypeModule implements GObject.TypePlugin {
         static $gtype: GObject.GType<Module>;
 
-        // Own properties of EDataServer.Module
+        // Properties
 
         /**
          * The filename of the module.
          */
         get filename(): string;
 
-        // Constructors of EDataServer.Module
+        // Constructors
 
         constructor(properties?: Partial<Module.ConstructorProps>, ...args: any[]);
 
@@ -3560,7 +3560,7 @@ export namespace EDataServer {
 
         static ['new'](filename: string): Module;
 
-        // Own static methods of EDataServer.Module
+        // Static methods
 
         /**
          * Loads all the modules in the specified directory into memory.  If
@@ -3591,7 +3591,7 @@ export namespace EDataServer {
          */
         static load_file(filename: string): Module;
 
-        // Own methods of EDataServer.Module
+        // Methods
 
         /**
          * Returns the filename of the shared library for `module`.  The
@@ -4058,7 +4058,7 @@ export namespace EDataServer {
     class NetworkMonitor extends GObject.Object implements Gio.Initable, Gio.NetworkMonitor {
         static $gtype: GObject.GType<NetworkMonitor>;
 
-        // Own properties of EDataServer.NetworkMonitor
+        // Properties
 
         /**
          * The GIO name of the underlying #GNetworkMonitor to use.
@@ -4071,13 +4071,13 @@ export namespace EDataServer {
         get gioName(): string;
         set gioName(val: string);
 
-        // Constructors of EDataServer.NetworkMonitor
+        // Constructors
 
         constructor(properties?: Partial<NetworkMonitor.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of EDataServer.NetworkMonitor
+        // Static methods
 
         /**
          * Gets the default #ENetworkMonitor. The caller should not unref the returned instance.
@@ -4085,7 +4085,7 @@ export namespace EDataServer {
          */
         static get_default(): Gio.NetworkMonitor;
 
-        // Own methods of EDataServer.NetworkMonitor
+        // Methods
 
         /**
          * Get currently set GIO name for the network availability checks.
@@ -4842,7 +4842,7 @@ export namespace EDataServer {
     abstract class OAuth2ServiceBase extends Extension {
         static $gtype: GObject.GType<OAuth2ServiceBase>;
 
-        // Constructors of EDataServer.OAuth2ServiceBase
+        // Constructors
 
         constructor(properties?: Partial<OAuth2ServiceBase.ConstructorProps>, ...args: any[]);
 
@@ -4858,7 +4858,7 @@ export namespace EDataServer {
     class OAuth2ServiceGoogle extends OAuth2ServiceBase implements OAuth2Service {
         static $gtype: GObject.GType<OAuth2ServiceGoogle>;
 
-        // Constructors of EDataServer.OAuth2ServiceGoogle
+        // Constructors
 
         constructor(properties?: Partial<OAuth2ServiceGoogle.ConstructorProps>, ...args: any[]);
 
@@ -5714,7 +5714,7 @@ export namespace EDataServer {
     class OAuth2ServiceOutlook extends OAuth2ServiceBase implements OAuth2Service {
         static $gtype: GObject.GType<OAuth2ServiceOutlook>;
 
-        // Constructors of EDataServer.OAuth2ServiceOutlook
+        // Constructors
 
         constructor(properties?: Partial<OAuth2ServiceOutlook.ConstructorProps>, ...args: any[]);
 
@@ -6570,7 +6570,7 @@ export namespace EDataServer {
     class OAuth2ServiceYahoo extends OAuth2ServiceBase implements OAuth2Service {
         static $gtype: GObject.GType<OAuth2ServiceYahoo>;
 
-        // Constructors of EDataServer.OAuth2ServiceYahoo
+        // Constructors
 
         constructor(properties?: Partial<OAuth2ServiceYahoo.ConstructorProps>, ...args: any[]);
 
@@ -7430,7 +7430,7 @@ export namespace EDataServer {
     class OAuth2Services extends GObject.Object implements Extensible {
         static $gtype: GObject.GType<OAuth2Services>;
 
-        // Constructors of EDataServer.OAuth2Services
+        // Constructors
 
         constructor(properties?: Partial<OAuth2Services.ConstructorProps>, ...args: any[]);
 
@@ -7438,7 +7438,7 @@ export namespace EDataServer {
 
         static ['new'](): OAuth2Services;
 
-        // Own static methods of EDataServer.OAuth2Services
+        // Static methods
 
         /**
          * This is the same as e_oauth2_services_is_oauth2_alias(), except
@@ -7451,7 +7451,7 @@ export namespace EDataServer {
         static is_oauth2_alias_static(auth_method?: string | null): boolean;
         static is_supported(): boolean;
 
-        // Own methods of EDataServer.OAuth2Services
+        // Methods
 
         /**
          * Adds the `service` to the list of known OAuth2 services into `services`.
@@ -7937,13 +7937,13 @@ export namespace EDataServer {
     class SoupAuthBearer extends Soup.Auth {
         static $gtype: GObject.GType<SoupAuthBearer>;
 
-        // Constructors of EDataServer.SoupAuthBearer
+        // Constructors
 
         constructor(properties?: Partial<SoupAuthBearer.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of EDataServer.SoupAuthBearer
+        // Methods
 
         is_expired(): boolean;
         /**
@@ -7977,7 +7977,7 @@ export namespace EDataServer {
     class SoupSession extends Soup.Session {
         static $gtype: GObject.GType<SoupSession>;
 
-        // Own properties of EDataServer.SoupSession
+        // Properties
 
         /**
          * The #ENamedParameters containing login credentials.
@@ -8007,7 +8007,7 @@ export namespace EDataServer {
          */
         get source(): Source;
 
-        // Constructors of EDataServer.SoupSession
+        // Constructors
 
         constructor(properties?: Partial<SoupSession.ConstructorProps>, ...args: any[]);
 
@@ -8018,7 +8018,7 @@ export namespace EDataServer {
 
         static ['new'](...args: never[]): any;
 
-        // Own static methods of EDataServer.SoupSession
+        // Static methods
 
         static error_quark(): GLib.Quark;
         /**
@@ -8099,7 +8099,7 @@ export namespace EDataServer {
          */
         static util_status_to_string(status_code: number, reason_phrase?: string | null): string;
 
-        // Own methods of EDataServer.SoupSession
+        // Methods
 
         /**
          * Checks result of the `message` and sets the `error` if it failed.
@@ -8333,7 +8333,7 @@ export namespace EDataServer {
     class Source extends GObject.Object implements Gio.Initable, Gio.ProxyResolver {
         static $gtype: GObject.GType<Source>;
 
-        // Own properties of EDataServer.Source
+        // Properties
 
         get connection_status(): SourceConnectionStatus;
         get connectionStatus(): SourceConnectionStatus;
@@ -8355,7 +8355,7 @@ export namespace EDataServer {
         get uid(): string;
         get writable(): boolean;
 
-        // Constructors of EDataServer.Source
+        // Constructors
 
         constructor(properties?: Partial<Source.ConstructorProps>, ...args: any[]);
 
@@ -8365,7 +8365,7 @@ export namespace EDataServer {
 
         static new_with_uid(uid: string, main_context?: GLib.MainContext | null): Source;
 
-        // Own signals of EDataServer.Source
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -8404,7 +8404,7 @@ export namespace EDataServer {
             error: GLib.Error,
         ): void;
 
-        // Own static methods of EDataServer.Source
+        // Static methods
 
         /**
          * Converts a #GParamSpec name (e.g. "foo-bar" or "foo_bar")
@@ -8416,7 +8416,7 @@ export namespace EDataServer {
          */
         static parameter_to_key(param_name: string): string;
 
-        // Own virtual methods of EDataServer.Source
+        // Virtual methods
 
         vfunc_authenticate(credentials: NamedParameters): void;
         /**
@@ -8602,7 +8602,7 @@ export namespace EDataServer {
          */
         vfunc_write_sync(cancellable?: Gio.Cancellable | null): boolean;
 
-        // Own methods of EDataServer.Source
+        // Methods
 
         /**
          * This function essentially glues together `source` and `serivce` so their
@@ -10098,18 +10098,18 @@ export namespace EDataServer {
     class SourceAddressBook extends SourceBackend {
         static $gtype: GObject.GType<SourceAddressBook>;
 
-        // Own properties of EDataServer.SourceAddressBook
+        // Properties
 
         get order(): number;
         set order(val: number);
 
-        // Constructors of EDataServer.SourceAddressBook
+        // Constructors
 
         constructor(properties?: Partial<SourceAddressBook.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of EDataServer.SourceAddressBook
+        // Methods
 
         get_order(): number;
         /**
@@ -10139,7 +10139,7 @@ export namespace EDataServer {
     class SourceAlarms extends SourceExtension {
         static $gtype: GObject.GType<SourceAlarms>;
 
-        // Own properties of EDataServer.SourceAlarms
+        // Properties
 
         get for_every_event(): boolean;
         set for_every_event(val: boolean);
@@ -10154,13 +10154,13 @@ export namespace EDataServer {
         get lastNotified(): string;
         set lastNotified(val: string);
 
-        // Constructors of EDataServer.SourceAlarms
+        // Constructors
 
         constructor(properties?: Partial<SourceAlarms.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of EDataServer.SourceAlarms
+        // Methods
 
         /**
          * Thread-safe variation of e_source_alarms_get_last_notified().
@@ -10257,7 +10257,7 @@ export namespace EDataServer {
     class SourceAuthentication extends SourceExtension {
         static $gtype: GObject.GType<SourceAuthentication>;
 
-        // Own properties of EDataServer.SourceAuthentication
+        // Properties
 
         get connectable(): Gio.SocketConnectable;
         get credential_name(): string;
@@ -10285,13 +10285,13 @@ export namespace EDataServer {
         get user(): string;
         set user(val: string);
 
-        // Constructors of EDataServer.SourceAuthentication
+        // Constructors
 
         constructor(properties?: Partial<SourceAuthentication.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of EDataServer.SourceAuthentication
+        // Methods
 
         /**
          * Thread-safe variation of e_source_authentication_get_credential_name().
@@ -10483,20 +10483,20 @@ export namespace EDataServer {
     class SourceAutocomplete extends SourceExtension {
         static $gtype: GObject.GType<SourceAutocomplete>;
 
-        // Own properties of EDataServer.SourceAutocomplete
+        // Properties
 
         get include_me(): boolean;
         set include_me(val: boolean);
         get includeMe(): boolean;
         set includeMe(val: boolean);
 
-        // Constructors of EDataServer.SourceAutocomplete
+        // Constructors
 
         constructor(properties?: Partial<SourceAutocomplete.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of EDataServer.SourceAutocomplete
+        // Methods
 
         /**
          * Returns whether the address book described by the #ESource to which
@@ -10529,18 +10529,18 @@ export namespace EDataServer {
     class SourceAutoconfig extends SourceExtension {
         static $gtype: GObject.GType<SourceAutoconfig>;
 
-        // Own properties of EDataServer.SourceAutoconfig
+        // Properties
 
         get revision(): string;
         set revision(val: string);
 
-        // Constructors of EDataServer.SourceAutoconfig
+        // Constructors
 
         constructor(properties?: Partial<SourceAutoconfig.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of EDataServer.SourceAutoconfig
+        // Methods
 
         /**
          * Thread-safe variation of e_source_autoconfig_get_revision().
@@ -10595,20 +10595,20 @@ export namespace EDataServer {
     abstract class SourceBackend extends SourceExtension {
         static $gtype: GObject.GType<SourceBackend>;
 
-        // Own properties of EDataServer.SourceBackend
+        // Properties
 
         get backend_name(): string;
         set backend_name(val: string);
         get backendName(): string;
         set backendName(val: string);
 
-        // Constructors of EDataServer.SourceBackend
+        // Constructors
 
         constructor(properties?: Partial<SourceBackend.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of EDataServer.SourceBackend
+        // Methods
 
         /**
          * Thread-safe variation of e_source_backend_get_backend_name().
@@ -10647,7 +10647,7 @@ export namespace EDataServer {
     class SourceCalendar extends SourceSelectable {
         static $gtype: GObject.GType<SourceCalendar>;
 
-        // Constructors of EDataServer.SourceCalendar
+        // Constructors
 
         constructor(properties?: Partial<SourceCalendar.ConstructorProps>, ...args: any[]);
 
@@ -10669,17 +10669,17 @@ export namespace EDataServer {
     abstract class SourceCamel extends SourceExtension {
         static $gtype: GObject.GType<SourceCamel>;
 
-        // Own properties of EDataServer.SourceCamel
+        // Properties
 
         get settings(): Camel.Settings;
 
-        // Constructors of EDataServer.SourceCamel
+        // Constructors
 
         constructor(properties?: Partial<SourceCamel.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of EDataServer.SourceCamel
+        // Static methods
 
         /**
          * Generates a custom #ESourceCamel subtype for `protocol`.  Instances of the
@@ -10724,7 +10724,7 @@ export namespace EDataServer {
          */
         static register_types(): void;
 
-        // Own methods of EDataServer.SourceCamel
+        // Methods
 
         /**
          * Returns `extension'`s #ESourceCamel:settings instance, pre-configured
@@ -10766,7 +10766,7 @@ export namespace EDataServer {
     class SourceCollection extends SourceBackend {
         static $gtype: GObject.GType<SourceCollection>;
 
-        // Own properties of EDataServer.SourceCollection
+        // Properties
 
         get allow_sources_rename(): boolean;
         set allow_sources_rename(val: boolean);
@@ -10795,13 +10795,13 @@ export namespace EDataServer {
         get mailEnabled(): boolean;
         set mailEnabled(val: boolean);
 
-        // Constructors of EDataServer.SourceCollection
+        // Constructors
 
         constructor(properties?: Partial<SourceCollection.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of EDataServer.SourceCollection
+        // Methods
 
         /**
          * Thread-safe variation of e_source_collection_get_calendar_url().
@@ -10965,20 +10965,20 @@ export namespace EDataServer {
     class SourceContacts extends SourceExtension {
         static $gtype: GObject.GType<SourceContacts>;
 
-        // Own properties of EDataServer.SourceContacts
+        // Properties
 
         get include_me(): boolean;
         set include_me(val: boolean);
         get includeMe(): boolean;
         set includeMe(val: boolean);
 
-        // Constructors of EDataServer.SourceContacts
+        // Constructors
 
         constructor(properties?: Partial<SourceContacts.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of EDataServer.SourceContacts
+        // Methods
 
         get_include_me(): boolean;
         set_include_me(include_me: boolean): void;
@@ -10999,14 +10999,14 @@ export namespace EDataServer {
     class SourceCredentialsProvider extends GObject.Object implements Extensible {
         static $gtype: GObject.GType<SourceCredentialsProvider>;
 
-        // Own properties of EDataServer.SourceCredentialsProvider
+        // Properties
 
         /**
          * The Source Registry object, which can be either #ESourceregistry or #ESourceRegistryServer.
          */
         get registry(): GObject.Object;
 
-        // Constructors of EDataServer.SourceCredentialsProvider
+        // Constructors
 
         constructor(properties?: Partial<SourceCredentialsProvider.ConstructorProps>, ...args: any[]);
 
@@ -11014,7 +11014,7 @@ export namespace EDataServer {
 
         static ['new'](registry: SourceRegistry): SourceCredentialsProvider;
 
-        // Own virtual methods of EDataServer.SourceCredentialsProvider
+        // Virtual methods
 
         /**
          * Returns referenced #ESource with the given `uid,` or %NULL, when it could not be found.
@@ -11022,7 +11022,7 @@ export namespace EDataServer {
          */
         vfunc_ref_source(uid: string): Source | null;
 
-        // Own methods of EDataServer.SourceCredentialsProvider
+        // Methods
 
         /**
          * Returns whether a credentials prompt can be shown for the `source`.
@@ -11626,13 +11626,13 @@ export namespace EDataServer {
     abstract class SourceCredentialsProviderImpl extends Extension {
         static $gtype: GObject.GType<SourceCredentialsProviderImpl>;
 
-        // Constructors of EDataServer.SourceCredentialsProviderImpl
+        // Constructors
 
         constructor(properties?: Partial<SourceCredentialsProviderImpl.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of EDataServer.SourceCredentialsProviderImpl
+        // Virtual methods
 
         /**
          * Returns whether the `provider_impl` can process credentials for the `source`.
@@ -11688,7 +11688,7 @@ export namespace EDataServer {
             cancellable?: Gio.Cancellable | null,
         ): boolean;
 
-        // Own methods of EDataServer.SourceCredentialsProviderImpl
+        // Methods
 
         /**
          * Returns whether the `provider_impl` can process credentials for the `source`.
@@ -11768,7 +11768,7 @@ export namespace EDataServer {
     class SourceCredentialsProviderImplOAuth2 extends SourceCredentialsProviderImpl {
         static $gtype: GObject.GType<SourceCredentialsProviderImplOAuth2>;
 
-        // Constructors of EDataServer.SourceCredentialsProviderImplOAuth2
+        // Constructors
 
         constructor(properties?: Partial<SourceCredentialsProviderImplOAuth2.ConstructorProps>, ...args: any[]);
 
@@ -11787,7 +11787,7 @@ export namespace EDataServer {
     class SourceCredentialsProviderImplPassword extends SourceCredentialsProviderImpl {
         static $gtype: GObject.GType<SourceCredentialsProviderImplPassword>;
 
-        // Constructors of EDataServer.SourceCredentialsProviderImplPassword
+        // Constructors
 
         constructor(properties?: Partial<SourceCredentialsProviderImplPassword.ConstructorProps>, ...args: any[]);
 
@@ -11809,17 +11809,17 @@ export namespace EDataServer {
     abstract class SourceExtension extends GObject.Object {
         static $gtype: GObject.GType<SourceExtension>;
 
-        // Own properties of EDataServer.SourceExtension
+        // Properties
 
         get source(): Source;
 
-        // Constructors of EDataServer.SourceExtension
+        // Constructors
 
         constructor(properties?: Partial<SourceExtension.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of EDataServer.SourceExtension
+        // Methods
 
         /**
          * Returns the #ESource instance to which `extension` belongs.
@@ -11871,7 +11871,7 @@ export namespace EDataServer {
     class SourceGoa extends SourceExtension {
         static $gtype: GObject.GType<SourceGoa>;
 
-        // Own properties of EDataServer.SourceGoa
+        // Properties
 
         get account_id(): string;
         set account_id(val: string);
@@ -11890,13 +11890,13 @@ export namespace EDataServer {
         get name(): string;
         set name(val: string);
 
-        // Constructors of EDataServer.SourceGoa
+        // Constructors
 
         constructor(properties?: Partial<SourceGoa.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of EDataServer.SourceGoa
+        // Methods
 
         /**
          * Thread-safe variation of e_source_goa_get_account_id().
@@ -12043,7 +12043,7 @@ export namespace EDataServer {
     class SourceLDAP extends SourceExtension {
         static $gtype: GObject.GType<SourceLDAP>;
 
-        // Own properties of EDataServer.SourceLDAP
+        // Properties
 
         get authentication(): SourceLDAPAuthentication;
         set authentication(val: SourceLDAPAuthentication);
@@ -12064,13 +12064,13 @@ export namespace EDataServer {
         get security(): SourceLDAPSecurity;
         set security(val: SourceLDAPSecurity);
 
-        // Constructors of EDataServer.SourceLDAP
+        // Constructors
 
         constructor(properties?: Partial<SourceLDAP.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of EDataServer.SourceLDAP
+        // Methods
 
         dup_filter(): string;
         dup_root_dn(): string;
@@ -12105,7 +12105,7 @@ export namespace EDataServer {
     class SourceLocal extends SourceExtension {
         static $gtype: GObject.GType<SourceLocal>;
 
-        // Own properties of EDataServer.SourceLocal
+        // Properties
 
         get custom_file(): Gio.File;
         set custom_file(val: Gio.File);
@@ -12118,13 +12118,13 @@ export namespace EDataServer {
         get writable(): boolean;
         set writable(val: boolean);
 
-        // Constructors of EDataServer.SourceLocal
+        // Constructors
 
         constructor(properties?: Partial<SourceLocal.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of EDataServer.SourceLocal
+        // Methods
 
         /**
          * A thread safe variant to get a custom file being set on the `extension`.
@@ -12197,20 +12197,20 @@ export namespace EDataServer {
     class SourceMDN extends SourceExtension {
         static $gtype: GObject.GType<SourceMDN>;
 
-        // Own properties of EDataServer.SourceMDN
+        // Properties
 
         get response_policy(): MdnResponsePolicy;
         set response_policy(val: MdnResponsePolicy);
         get responsePolicy(): MdnResponsePolicy;
         set responsePolicy(val: MdnResponsePolicy);
 
-        // Constructors of EDataServer.SourceMDN
+        // Constructors
 
         constructor(properties?: Partial<SourceMDN.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of EDataServer.SourceMDN
+        // Methods
 
         /**
          * Returns the policy for this mail account on responding to Message
@@ -12251,7 +12251,7 @@ export namespace EDataServer {
     class SourceMailAccount extends SourceBackend {
         static $gtype: GObject.GType<SourceMailAccount>;
 
-        // Own properties of EDataServer.SourceMailAccount
+        // Properties
 
         get archive_folder(): string;
         set archive_folder(val: string);
@@ -12276,13 +12276,13 @@ export namespace EDataServer {
         get needsInitialSetup(): boolean;
         set needsInitialSetup(val: boolean);
 
-        // Constructors of EDataServer.SourceMailAccount
+        // Constructors
 
         constructor(properties?: Partial<SourceMailAccount.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of EDataServer.SourceMailAccount
+        // Methods
 
         /**
          * Thread-safe variation of e_source_mail_account_get_archive_folder().
@@ -12397,7 +12397,7 @@ export namespace EDataServer {
     class SourceMailComposition extends SourceExtension {
         static $gtype: GObject.GType<SourceMailComposition>;
 
-        // Own properties of EDataServer.SourceMailComposition
+        // Properties
 
         get bcc(): string[];
         set bcc(val: string[]);
@@ -12430,13 +12430,13 @@ export namespace EDataServer {
         get topSignature(): ThreeState;
         set topSignature(val: ThreeState);
 
-        // Constructors of EDataServer.SourceMailComposition
+        // Constructors
 
         constructor(properties?: Partial<SourceMailComposition.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of EDataServer.SourceMailComposition
+        // Methods
 
         /**
          * Thread-safe variation of e_source_mail_composition_get_bcc().
@@ -12637,7 +12637,7 @@ export namespace EDataServer {
     class SourceMailIdentity extends SourceExtension {
         static $gtype: GObject.GType<SourceMailIdentity>;
 
-        // Own properties of EDataServer.SourceMailIdentity
+        // Properties
 
         get address(): string;
         set address(val: string);
@@ -12656,13 +12656,13 @@ export namespace EDataServer {
         get signatureUid(): string;
         set signatureUid(val: string);
 
-        // Constructors of EDataServer.SourceMailIdentity
+        // Constructors
 
         constructor(properties?: Partial<SourceMailIdentity.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of EDataServer.SourceMailIdentity
+        // Methods
 
         /**
          * Thread-safe variation of e_source_mail_identity_get_address().
@@ -12839,7 +12839,7 @@ export namespace EDataServer {
     class SourceMailSignature extends SourceExtension {
         static $gtype: GObject.GType<SourceMailSignature>;
 
-        // Own properties of EDataServer.SourceMailSignature
+        // Properties
 
         get file(): Gio.File;
         get mime_type(): string;
@@ -12847,13 +12847,13 @@ export namespace EDataServer {
         get mimeType(): string;
         set mimeType(val: string);
 
-        // Constructors of EDataServer.SourceMailSignature
+        // Constructors
 
         constructor(properties?: Partial<SourceMailSignature.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of EDataServer.SourceMailSignature
+        // Methods
 
         /**
          * Thread-safe variation of e_source_mail_signature_get_mime_type().
@@ -12918,7 +12918,7 @@ export namespace EDataServer {
     class SourceMailSubmission extends SourceExtension {
         static $gtype: GObject.GType<SourceMailSubmission>;
 
-        // Own properties of EDataServer.SourceMailSubmission
+        // Properties
 
         get replies_to_origin_folder(): boolean;
         set replies_to_origin_folder(val: boolean);
@@ -12937,13 +12937,13 @@ export namespace EDataServer {
         get useSentFolder(): boolean;
         set useSentFolder(val: boolean);
 
-        // Constructors of EDataServer.SourceMailSubmission
+        // Constructors
 
         constructor(properties?: Partial<SourceMailSubmission.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of EDataServer.SourceMailSubmission
+        // Methods
 
         /**
          * Thread-safe variation of e_source_mail_submission_get_sent_folder().
@@ -13022,7 +13022,7 @@ export namespace EDataServer {
     class SourceMailTransport extends SourceBackend {
         static $gtype: GObject.GType<SourceMailTransport>;
 
-        // Constructors of EDataServer.SourceMailTransport
+        // Constructors
 
         constructor(properties?: Partial<SourceMailTransport.ConstructorProps>, ...args: any[]);
 
@@ -13042,7 +13042,7 @@ export namespace EDataServer {
     class SourceMemoList extends SourceSelectable {
         static $gtype: GObject.GType<SourceMemoList>;
 
-        // Constructors of EDataServer.SourceMemoList
+        // Constructors
 
         constructor(properties?: Partial<SourceMemoList.ConstructorProps>, ...args: any[]);
 
@@ -13065,20 +13065,20 @@ export namespace EDataServer {
     class SourceOffline extends SourceExtension {
         static $gtype: GObject.GType<SourceOffline>;
 
-        // Own properties of EDataServer.SourceOffline
+        // Properties
 
         get stay_synchronized(): boolean;
         set stay_synchronized(val: boolean);
         get staySynchronized(): boolean;
         set staySynchronized(val: boolean);
 
-        // Constructors of EDataServer.SourceOffline
+        // Constructors
 
         constructor(properties?: Partial<SourceOffline.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of EDataServer.SourceOffline
+        // Methods
 
         /**
          * Returns whether data from a remote server should be cached locally
@@ -13132,7 +13132,7 @@ export namespace EDataServer {
     class SourceOpenPGP extends SourceExtension {
         static $gtype: GObject.GType<SourceOpenPGP>;
 
-        // Own properties of EDataServer.SourceOpenPGP
+        // Properties
 
         get always_trust(): boolean;
         set always_trust(val: boolean);
@@ -13179,13 +13179,13 @@ export namespace EDataServer {
         get signingAlgorithm(): string;
         set signingAlgorithm(val: string);
 
-        // Constructors of EDataServer.SourceOpenPGP
+        // Constructors
 
         constructor(properties?: Partial<SourceOpenPGP.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of EDataServer.SourceOpenPGP
+        // Methods
 
         /**
          * Thread-safe variation of e_source_openpgp_get_key_id().
@@ -13380,7 +13380,7 @@ export namespace EDataServer {
     class SourceProxy extends SourceExtension {
         static $gtype: GObject.GType<SourceProxy>;
 
-        // Own properties of EDataServer.SourceProxy
+        // Properties
 
         get autoconfig_url(): string;
         set autoconfig_url(val: string);
@@ -13437,13 +13437,13 @@ export namespace EDataServer {
         get socksPort(): number;
         set socksPort(val: number);
 
-        // Constructors of EDataServer.SourceProxy
+        // Constructors
 
         constructor(properties?: Partial<SourceProxy.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of EDataServer.SourceProxy
+        // Methods
 
         /**
          * Thread-safe variation of e_source_proxy_get_autoconfig_url().
@@ -13721,7 +13721,7 @@ export namespace EDataServer {
     class SourceRefresh extends SourceExtension {
         static $gtype: GObject.GType<SourceRefresh>;
 
-        // Own properties of EDataServer.SourceRefresh
+        // Properties
 
         get enabled(): boolean;
         set enabled(val: boolean);
@@ -13734,13 +13734,13 @@ export namespace EDataServer {
         get intervalMinutes(): number;
         set intervalMinutes(val: number);
 
-        // Constructors of EDataServer.SourceRefresh
+        // Constructors
 
         constructor(properties?: Partial<SourceRefresh.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of EDataServer.SourceRefresh
+        // Methods
 
         /**
          * Returns whether to periodically fetch updates from a remote server.
@@ -13855,7 +13855,7 @@ export namespace EDataServer {
     class SourceRegistry extends GObject.Object implements Gio.AsyncInitable<SourceRegistry>, Gio.Initable {
         static $gtype: GObject.GType<SourceRegistry>;
 
-        // Own properties of EDataServer.SourceRegistry
+        // Properties
 
         /**
          * The default address book #ESource.
@@ -13918,7 +13918,7 @@ export namespace EDataServer {
         get defaultTaskList(): Source;
         set defaultTaskList(val: Source);
 
-        // Constructors of EDataServer.SourceRegistry
+        // Constructors
 
         constructor(properties?: Partial<SourceRegistry.ConstructorProps>, ...args: any[]);
 
@@ -13931,7 +13931,7 @@ export namespace EDataServer {
 
         static new_sync(cancellable?: Gio.Cancellable | null): SourceRegistry;
 
-        // Own signals of EDataServer.SourceRegistry
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -13982,7 +13982,7 @@ export namespace EDataServer {
         connect_after(signal: 'source-removed', callback: (_source: this, source: Source) => void): number;
         emit(signal: 'source-removed', source: Source): void;
 
-        // Own static methods of EDataServer.SourceRegistry
+        // Static methods
 
         static debug_enabled(): boolean;
         /**
@@ -14008,7 +14008,7 @@ export namespace EDataServer {
             callback?: Gio.AsyncReadyCallback<SourceRegistry> | null,
         ): void;
 
-        // Own virtual methods of EDataServer.SourceRegistry
+        // Virtual methods
 
         vfunc_credentials_required(
             source: Source,
@@ -14023,7 +14023,7 @@ export namespace EDataServer {
         vfunc_source_enabled(source: Source): void;
         vfunc_source_removed(source: Source): void;
 
-        // Own methods of EDataServer.SourceRegistry
+        // Methods
 
         /**
          * Determines whether `source` is "effectively" enabled by examining its
@@ -15119,7 +15119,7 @@ export namespace EDataServer {
     class SourceRegistryWatcher extends GObject.Object {
         static $gtype: GObject.GType<SourceRegistryWatcher>;
 
-        // Own properties of EDataServer.SourceRegistryWatcher
+        // Properties
 
         /**
          * Optional extension name, to consider sources with only.
@@ -15140,7 +15140,7 @@ export namespace EDataServer {
          */
         get registry(): SourceRegistry;
 
-        // Constructors of EDataServer.SourceRegistryWatcher
+        // Constructors
 
         constructor(properties?: Partial<SourceRegistryWatcher.ConstructorProps>, ...args: any[]);
 
@@ -15148,7 +15148,7 @@ export namespace EDataServer {
 
         static ['new'](registry: SourceRegistry, extension_name?: string | null): SourceRegistryWatcher;
 
-        // Own signals of EDataServer.SourceRegistryWatcher
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -15163,13 +15163,13 @@ export namespace EDataServer {
         connect_after(signal: 'filter', callback: (_source: this, source: Source) => boolean): number;
         emit(signal: 'filter', source: Source): void;
 
-        // Own virtual methods of EDataServer.SourceRegistryWatcher
+        // Virtual methods
 
         vfunc_appeared(source: Source): void;
         vfunc_disappeared(source: Source): void;
         vfunc_filter(source: Source): boolean;
 
-        // Own methods of EDataServer.SourceRegistryWatcher
+        // Methods
 
         get_extension_name(): string | null;
         /**
@@ -15200,18 +15200,18 @@ export namespace EDataServer {
     class SourceResource extends SourceExtension {
         static $gtype: GObject.GType<SourceResource>;
 
-        // Own properties of EDataServer.SourceResource
+        // Properties
 
         get identity(): string;
         set identity(val: string);
 
-        // Constructors of EDataServer.SourceResource
+        // Constructors
 
         constructor(properties?: Partial<SourceResource.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of EDataServer.SourceResource
+        // Methods
 
         /**
          * Thread-safe variation of e_source_resource_get_identity().
@@ -15254,18 +15254,18 @@ export namespace EDataServer {
     class SourceRevisionGuards extends SourceExtension {
         static $gtype: GObject.GType<SourceRevisionGuards>;
 
-        // Own properties of EDataServer.SourceRevisionGuards
+        // Properties
 
         get enabled(): boolean;
         set enabled(val: boolean);
 
-        // Constructors of EDataServer.SourceRevisionGuards
+        // Constructors
 
         constructor(properties?: Partial<SourceRevisionGuards.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of EDataServer.SourceRevisionGuards
+        // Methods
 
         /**
          * Checks whether revision guards for the given #ESource are enabled.
@@ -15307,7 +15307,7 @@ export namespace EDataServer {
     class SourceSMIME extends SourceExtension {
         static $gtype: GObject.GType<SourceSMIME>;
 
-        // Own properties of EDataServer.SourceSMIME
+        // Properties
 
         get encrypt_by_default(): boolean;
         set encrypt_by_default(val: boolean);
@@ -15334,13 +15334,13 @@ export namespace EDataServer {
         get signingCertificate(): string;
         set signingCertificate(val: string);
 
-        // Constructors of EDataServer.SourceSMIME
+        // Constructors
 
         constructor(properties?: Partial<SourceSMIME.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of EDataServer.SourceSMIME
+        // Methods
 
         /**
          * Thread-safe variation of e_source_smime_get_encryption_certificate().
@@ -15458,20 +15458,20 @@ export namespace EDataServer {
     class SourceSecurity extends SourceExtension {
         static $gtype: GObject.GType<SourceSecurity>;
 
-        // Own properties of EDataServer.SourceSecurity
+        // Properties
 
         get method(): string;
         set method(val: string);
         get secure(): boolean;
         set secure(val: boolean);
 
-        // Constructors of EDataServer.SourceSecurity
+        // Constructors
 
         constructor(properties?: Partial<SourceSecurity.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of EDataServer.SourceSecurity
+        // Methods
 
         /**
          * Thread-safe variation of e_source_security_get_method().
@@ -15536,7 +15536,7 @@ export namespace EDataServer {
     abstract class SourceSelectable extends SourceBackend {
         static $gtype: GObject.GType<SourceSelectable>;
 
-        // Own properties of EDataServer.SourceSelectable
+        // Properties
 
         get color(): string;
         set color(val: string);
@@ -15545,13 +15545,13 @@ export namespace EDataServer {
         get selected(): boolean;
         set selected(val: boolean);
 
-        // Constructors of EDataServer.SourceSelectable
+        // Constructors
 
         constructor(properties?: Partial<SourceSelectable.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of EDataServer.SourceSelectable
+        // Methods
 
         /**
          * Thread-safe variation of e_source_selectable_get_color().
@@ -15619,7 +15619,7 @@ export namespace EDataServer {
     class SourceTaskList extends SourceSelectable {
         static $gtype: GObject.GType<SourceTaskList>;
 
-        // Constructors of EDataServer.SourceTaskList
+        // Constructors
 
         constructor(properties?: Partial<SourceTaskList.ConstructorProps>, ...args: any[]);
 
@@ -15642,20 +15642,20 @@ export namespace EDataServer {
     class SourceUoa extends SourceExtension {
         static $gtype: GObject.GType<SourceUoa>;
 
-        // Own properties of EDataServer.SourceUoa
+        // Properties
 
         get account_id(): number;
         set account_id(val: number);
         get accountId(): number;
         set accountId(val: number);
 
-        // Constructors of EDataServer.SourceUoa
+        // Constructors
 
         constructor(properties?: Partial<SourceUoa.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of EDataServer.SourceUoa
+        // Methods
 
         /**
          * Returns the numeric identifier of the Ubuntu Online Account associated
@@ -15683,20 +15683,20 @@ export namespace EDataServer {
     class SourceWeather extends SourceExtension {
         static $gtype: GObject.GType<SourceWeather>;
 
-        // Own properties of EDataServer.SourceWeather
+        // Properties
 
         get location(): string;
         set location(val: string);
         get units(): SourceWeatherUnits;
         set units(val: SourceWeatherUnits);
 
-        // Constructors of EDataServer.SourceWeather
+        // Constructors
 
         constructor(properties?: Partial<SourceWeather.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of EDataServer.SourceWeather
+        // Methods
 
         dup_location(): string;
         get_location(): string;
@@ -15721,20 +15721,20 @@ export namespace EDataServer {
     class SourceWebDAVNotes extends SourceExtension {
         static $gtype: GObject.GType<SourceWebDAVNotes>;
 
-        // Own properties of EDataServer.SourceWebDAVNotes
+        // Properties
 
         get default_ext(): string;
         set default_ext(val: string);
         get defaultExt(): string;
         set defaultExt(val: string);
 
-        // Constructors of EDataServer.SourceWebDAVNotes
+        // Constructors
 
         constructor(properties?: Partial<SourceWebDAVNotes.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of EDataServer.SourceWebDAVNotes
+        // Methods
 
         /**
          * Thread-safe variation of e_source_webdav_notes_get_default_ext().
@@ -15791,7 +15791,7 @@ export namespace EDataServer {
     class SourceWebdav extends SourceExtension {
         static $gtype: GObject.GType<SourceWebdav>;
 
-        // Own properties of EDataServer.SourceWebdav
+        // Properties
 
         get avoid_ifmatch(): boolean;
         set avoid_ifmatch(val: boolean);
@@ -15828,13 +15828,13 @@ export namespace EDataServer {
         get uri(): GLib.Uri;
         set uri(val: GLib.Uri);
 
-        // Constructors of EDataServer.SourceWebdav
+        // Constructors
 
         constructor(properties?: Partial<SourceWebdav.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of EDataServer.SourceWebdav
+        // Methods
 
         /**
          * Thread-safe variation of e_source_webdav_get_color().
@@ -16099,7 +16099,7 @@ export namespace EDataServer {
     class WebDAVSession extends SoupSession {
         static $gtype: GObject.GType<WebDAVSession>;
 
-        // Constructors of EDataServer.WebDAVSession
+        // Constructors
 
         constructor(properties?: Partial<WebDAVSession.ConstructorProps>, ...args: any[]);
 
@@ -16110,7 +16110,7 @@ export namespace EDataServer {
 
         static ['new'](...args: never[]): any;
 
-        // Own static methods of EDataServer.WebDAVSession
+        // Static methods
 
         /**
          * Frees `privileges` returned by e_webdav_session_get_supported_privilege_set_sync().
@@ -16138,7 +16138,7 @@ export namespace EDataServer {
          */
         static util_maybe_dequote(text: string): [string, string];
 
-        // Own methods of EDataServer.WebDAVSession
+        // Methods
 
         /**
          * Issues ACL request on the provided `uri,` or, in case it's %NULL, on the URI
@@ -16928,7 +16928,7 @@ export namespace EDataServer {
     class XmlDocument extends GObject.Object {
         static $gtype: GObject.GType<XmlDocument>;
 
-        // Constructors of EDataServer.XmlDocument
+        // Constructors
 
         constructor(properties?: Partial<XmlDocument.ConstructorProps>, ...args: any[]);
 
@@ -16936,7 +16936,7 @@ export namespace EDataServer {
 
         static ['new'](ns_href: string | null, root_element: string): XmlDocument;
 
-        // Own methods of EDataServer.XmlDocument
+        // Methods
 
         /**
          * Adds a new attribute to the current element.
@@ -17095,7 +17095,7 @@ export namespace EDataServer {
     abstract class AsyncClosure {
         static $gtype: GObject.GType<AsyncClosure>;
 
-        // Constructors of EDataServer.AsyncClosure
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -17104,7 +17104,7 @@ export namespace EDataServer {
     class ClientErrorsList {
         static $gtype: GObject.GType<ClientErrorsList>;
 
-        // Constructors of EDataServer.ClientErrorsList
+        // Constructors
 
         constructor(properties?: Partial<{}>);
         _init(...args: any[]): void;
@@ -17113,7 +17113,7 @@ export namespace EDataServer {
     abstract class ClientPrivate {
         static $gtype: GObject.GType<ClientPrivate>;
 
-        // Constructors of EDataServer.ClientPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -17125,7 +17125,7 @@ export namespace EDataServer {
     class Collator {
         static $gtype: GObject.GType<Collator>;
 
-        // Constructors of EDataServer.Collator
+        // Constructors
 
         constructor(locale: string);
         _init(...args: any[]): void;
@@ -17134,11 +17134,11 @@ export namespace EDataServer {
 
         static new_interpret_country(locale: string): Collator;
 
-        // Own static methods of EDataServer.Collator
+        // Static methods
 
         static error_quark(): GLib.Quark;
 
-        // Own methods of EDataServer.Collator
+        // Methods
 
         /**
          * Compares `str_a` with `str_b,` the order of strings is determined by the parameters of `collator`.
@@ -17210,7 +17210,7 @@ export namespace EDataServer {
     abstract class ExtensionPrivate {
         static $gtype: GObject.GType<ExtensionPrivate>;
 
-        // Constructors of EDataServer.ExtensionPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -17222,7 +17222,7 @@ export namespace EDataServer {
     abstract class Flag {
         static $gtype: GObject.GType<Flag>;
 
-        // Constructors of EDataServer.Flag
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -17230,13 +17230,13 @@ export namespace EDataServer {
     class FreeFormExpSymbol {
         static $gtype: GObject.GType<FreeFormExpSymbol>;
 
-        // Own fields of EDataServer.FreeFormExpSymbol
+        // Fields
 
         names: string;
         hint: string;
         build_sexp: FreeFormExpBuildSexpFunc;
 
-        // Constructors of EDataServer.FreeFormExpSymbol
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -17244,14 +17244,14 @@ export namespace EDataServer {
     class GDataQuery {
         static $gtype: GObject.GType<GDataQuery>;
 
-        // Constructors of EDataServer.GDataQuery
+        // Constructors
 
         constructor(properties?: Partial<{}>);
         _init(...args: any[]): void;
 
         static ['new'](): GDataQuery;
 
-        // Own methods of EDataServer.GDataQuery
+        // Methods
 
         /**
          * Gets current value of the completed max property, as a Unix
@@ -17412,7 +17412,7 @@ export namespace EDataServer {
     abstract class GDataSessionPrivate {
         static $gtype: GObject.GType<GDataSessionPrivate>;
 
-        // Constructors of EDataServer.GDataSessionPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -17420,7 +17420,7 @@ export namespace EDataServer {
     abstract class MemChunk {
         static $gtype: GObject.GType<MemChunk>;
 
-        // Constructors of EDataServer.MemChunk
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -17429,7 +17429,7 @@ export namespace EDataServer {
     abstract class ModulePrivate {
         static $gtype: GObject.GType<ModulePrivate>;
 
-        // Constructors of EDataServer.ModulePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -17437,7 +17437,7 @@ export namespace EDataServer {
     class NamedParameters {
         static $gtype: GObject.GType<NamedParameters>;
 
-        // Constructors of EDataServer.NamedParameters
+        // Constructors
 
         constructor(properties?: Partial<{}>);
         _init(...args: any[]): void;
@@ -17448,7 +17448,7 @@ export namespace EDataServer {
 
         static new_strv(strv: string): NamedParameters;
 
-        // Own methods of EDataServer.NamedParameters
+        // Methods
 
         /**
          * Makes content of the `parameters` the same as `from`.
@@ -17522,7 +17522,7 @@ export namespace EDataServer {
     abstract class NetworkMonitorPrivate {
         static $gtype: GObject.GType<NetworkMonitorPrivate>;
 
-        // Constructors of EDataServer.NetworkMonitorPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -17536,7 +17536,7 @@ export namespace EDataServer {
     abstract class OAuth2ServicesPrivate {
         static $gtype: GObject.GType<OAuth2ServicesPrivate>;
 
-        // Constructors of EDataServer.OAuth2ServicesPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -17548,11 +17548,11 @@ export namespace EDataServer {
     abstract class OperationPool {
         static $gtype: GObject.GType<OperationPool>;
 
-        // Constructors of EDataServer.OperationPool
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of EDataServer.OperationPool
+        // Methods
 
         /**
          * Frees previously created `pool`.
@@ -17582,7 +17582,7 @@ export namespace EDataServer {
     abstract class SoupAuthBearerPrivate {
         static $gtype: GObject.GType<SoupAuthBearerPrivate>;
 
-        // Constructors of EDataServer.SoupAuthBearerPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -17591,7 +17591,7 @@ export namespace EDataServer {
     abstract class SoupSessionPrivate {
         static $gtype: GObject.GType<SoupSessionPrivate>;
 
-        // Constructors of EDataServer.SoupSessionPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -17600,7 +17600,7 @@ export namespace EDataServer {
     abstract class SourceAddressBookPrivate {
         static $gtype: GObject.GType<SourceAddressBookPrivate>;
 
-        // Constructors of EDataServer.SourceAddressBookPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -17609,7 +17609,7 @@ export namespace EDataServer {
     abstract class SourceAlarmsPrivate {
         static $gtype: GObject.GType<SourceAlarmsPrivate>;
 
-        // Constructors of EDataServer.SourceAlarmsPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -17618,7 +17618,7 @@ export namespace EDataServer {
     abstract class SourceAuthenticationPrivate {
         static $gtype: GObject.GType<SourceAuthenticationPrivate>;
 
-        // Constructors of EDataServer.SourceAuthenticationPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -17627,7 +17627,7 @@ export namespace EDataServer {
     abstract class SourceAutocompletePrivate {
         static $gtype: GObject.GType<SourceAutocompletePrivate>;
 
-        // Constructors of EDataServer.SourceAutocompletePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -17636,7 +17636,7 @@ export namespace EDataServer {
     abstract class SourceAutoconfigPrivate {
         static $gtype: GObject.GType<SourceAutoconfigPrivate>;
 
-        // Constructors of EDataServer.SourceAutoconfigPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -17645,7 +17645,7 @@ export namespace EDataServer {
     abstract class SourceBackendPrivate {
         static $gtype: GObject.GType<SourceBackendPrivate>;
 
-        // Constructors of EDataServer.SourceBackendPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -17654,7 +17654,7 @@ export namespace EDataServer {
     abstract class SourceCalendarPrivate {
         static $gtype: GObject.GType<SourceCalendarPrivate>;
 
-        // Constructors of EDataServer.SourceCalendarPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -17663,7 +17663,7 @@ export namespace EDataServer {
     abstract class SourceCamelPrivate {
         static $gtype: GObject.GType<SourceCamelPrivate>;
 
-        // Constructors of EDataServer.SourceCamelPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -17673,7 +17673,7 @@ export namespace EDataServer {
     abstract class SourceCollectionPrivate {
         static $gtype: GObject.GType<SourceCollectionPrivate>;
 
-        // Constructors of EDataServer.SourceCollectionPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -17682,7 +17682,7 @@ export namespace EDataServer {
     abstract class SourceContactsPrivate {
         static $gtype: GObject.GType<SourceContactsPrivate>;
 
-        // Constructors of EDataServer.SourceContactsPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -17693,7 +17693,7 @@ export namespace EDataServer {
     abstract class SourceCredentialsProviderImplOAuth2Private {
         static $gtype: GObject.GType<SourceCredentialsProviderImplOAuth2Private>;
 
-        // Constructors of EDataServer.SourceCredentialsProviderImplOAuth2Private
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -17702,7 +17702,7 @@ export namespace EDataServer {
     abstract class SourceCredentialsProviderImplPasswordPrivate {
         static $gtype: GObject.GType<SourceCredentialsProviderImplPasswordPrivate>;
 
-        // Constructors of EDataServer.SourceCredentialsProviderImplPasswordPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -17710,7 +17710,7 @@ export namespace EDataServer {
     abstract class SourceCredentialsProviderImplPrivate {
         static $gtype: GObject.GType<SourceCredentialsProviderImplPrivate>;
 
-        // Constructors of EDataServer.SourceCredentialsProviderImplPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -17718,7 +17718,7 @@ export namespace EDataServer {
     abstract class SourceCredentialsProviderPrivate {
         static $gtype: GObject.GType<SourceCredentialsProviderPrivate>;
 
-        // Constructors of EDataServer.SourceCredentialsProviderPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -17727,7 +17727,7 @@ export namespace EDataServer {
     abstract class SourceExtensionPrivate {
         static $gtype: GObject.GType<SourceExtensionPrivate>;
 
-        // Constructors of EDataServer.SourceExtensionPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -17736,7 +17736,7 @@ export namespace EDataServer {
     abstract class SourceGoaPrivate {
         static $gtype: GObject.GType<SourceGoaPrivate>;
 
-        // Constructors of EDataServer.SourceGoaPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -17745,7 +17745,7 @@ export namespace EDataServer {
     abstract class SourceLDAPPrivate {
         static $gtype: GObject.GType<SourceLDAPPrivate>;
 
-        // Constructors of EDataServer.SourceLDAPPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -17754,7 +17754,7 @@ export namespace EDataServer {
     abstract class SourceLocalPrivate {
         static $gtype: GObject.GType<SourceLocalPrivate>;
 
-        // Constructors of EDataServer.SourceLocalPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -17763,7 +17763,7 @@ export namespace EDataServer {
     abstract class SourceMDNPrivate {
         static $gtype: GObject.GType<SourceMDNPrivate>;
 
-        // Constructors of EDataServer.SourceMDNPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -17772,7 +17772,7 @@ export namespace EDataServer {
     abstract class SourceMailAccountPrivate {
         static $gtype: GObject.GType<SourceMailAccountPrivate>;
 
-        // Constructors of EDataServer.SourceMailAccountPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -17781,7 +17781,7 @@ export namespace EDataServer {
     abstract class SourceMailCompositionPrivate {
         static $gtype: GObject.GType<SourceMailCompositionPrivate>;
 
-        // Constructors of EDataServer.SourceMailCompositionPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -17790,7 +17790,7 @@ export namespace EDataServer {
     abstract class SourceMailIdentityPrivate {
         static $gtype: GObject.GType<SourceMailIdentityPrivate>;
 
-        // Constructors of EDataServer.SourceMailIdentityPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -17799,7 +17799,7 @@ export namespace EDataServer {
     abstract class SourceMailSignaturePrivate {
         static $gtype: GObject.GType<SourceMailSignaturePrivate>;
 
-        // Constructors of EDataServer.SourceMailSignaturePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -17808,7 +17808,7 @@ export namespace EDataServer {
     abstract class SourceMailSubmissionPrivate {
         static $gtype: GObject.GType<SourceMailSubmissionPrivate>;
 
-        // Constructors of EDataServer.SourceMailSubmissionPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -17817,7 +17817,7 @@ export namespace EDataServer {
     abstract class SourceMailTransportPrivate {
         static $gtype: GObject.GType<SourceMailTransportPrivate>;
 
-        // Constructors of EDataServer.SourceMailTransportPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -17826,7 +17826,7 @@ export namespace EDataServer {
     abstract class SourceMemoListPrivate {
         static $gtype: GObject.GType<SourceMemoListPrivate>;
 
-        // Constructors of EDataServer.SourceMemoListPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -17835,7 +17835,7 @@ export namespace EDataServer {
     abstract class SourceOfflinePrivate {
         static $gtype: GObject.GType<SourceOfflinePrivate>;
 
-        // Constructors of EDataServer.SourceOfflinePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -17844,7 +17844,7 @@ export namespace EDataServer {
     abstract class SourceOpenPGPPrivate {
         static $gtype: GObject.GType<SourceOpenPGPPrivate>;
 
-        // Constructors of EDataServer.SourceOpenPGPPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -17852,7 +17852,7 @@ export namespace EDataServer {
     abstract class SourcePrivate {
         static $gtype: GObject.GType<SourcePrivate>;
 
-        // Constructors of EDataServer.SourcePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -17861,7 +17861,7 @@ export namespace EDataServer {
     abstract class SourceProxyPrivate {
         static $gtype: GObject.GType<SourceProxyPrivate>;
 
-        // Constructors of EDataServer.SourceProxyPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -17870,7 +17870,7 @@ export namespace EDataServer {
     abstract class SourceRefreshPrivate {
         static $gtype: GObject.GType<SourceRefreshPrivate>;
 
-        // Constructors of EDataServer.SourceRefreshPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -17879,7 +17879,7 @@ export namespace EDataServer {
     abstract class SourceRegistryPrivate {
         static $gtype: GObject.GType<SourceRegistryPrivate>;
 
-        // Constructors of EDataServer.SourceRegistryPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -17888,7 +17888,7 @@ export namespace EDataServer {
     abstract class SourceRegistryWatcherPrivate {
         static $gtype: GObject.GType<SourceRegistryWatcherPrivate>;
 
-        // Constructors of EDataServer.SourceRegistryWatcherPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -17897,7 +17897,7 @@ export namespace EDataServer {
     abstract class SourceResourcePrivate {
         static $gtype: GObject.GType<SourceResourcePrivate>;
 
-        // Constructors of EDataServer.SourceResourcePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -17906,7 +17906,7 @@ export namespace EDataServer {
     abstract class SourceRevisionGuardsPrivate {
         static $gtype: GObject.GType<SourceRevisionGuardsPrivate>;
 
-        // Constructors of EDataServer.SourceRevisionGuardsPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -17915,7 +17915,7 @@ export namespace EDataServer {
     abstract class SourceSMIMEPrivate {
         static $gtype: GObject.GType<SourceSMIMEPrivate>;
 
-        // Constructors of EDataServer.SourceSMIMEPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -17924,7 +17924,7 @@ export namespace EDataServer {
     abstract class SourceSecurityPrivate {
         static $gtype: GObject.GType<SourceSecurityPrivate>;
 
-        // Constructors of EDataServer.SourceSecurityPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -17933,7 +17933,7 @@ export namespace EDataServer {
     abstract class SourceSelectablePrivate {
         static $gtype: GObject.GType<SourceSelectablePrivate>;
 
-        // Constructors of EDataServer.SourceSelectablePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -17942,7 +17942,7 @@ export namespace EDataServer {
     abstract class SourceTaskListPrivate {
         static $gtype: GObject.GType<SourceTaskListPrivate>;
 
-        // Constructors of EDataServer.SourceTaskListPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -17951,7 +17951,7 @@ export namespace EDataServer {
     abstract class SourceUoaPrivate {
         static $gtype: GObject.GType<SourceUoaPrivate>;
 
-        // Constructors of EDataServer.SourceUoaPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -17960,7 +17960,7 @@ export namespace EDataServer {
     abstract class SourceWeatherPrivate {
         static $gtype: GObject.GType<SourceWeatherPrivate>;
 
-        // Constructors of EDataServer.SourceWeatherPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -17969,7 +17969,7 @@ export namespace EDataServer {
     abstract class SourceWebDAVNotesPrivate {
         static $gtype: GObject.GType<SourceWebDAVNotesPrivate>;
 
-        // Constructors of EDataServer.SourceWebDAVNotesPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -17978,7 +17978,7 @@ export namespace EDataServer {
     abstract class SourceWebdavPrivate {
         static $gtype: GObject.GType<SourceWebdavPrivate>;
 
-        // Constructors of EDataServer.SourceWebdavPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -17986,7 +17986,7 @@ export namespace EDataServer {
     class WebDAVAccessControlEntry {
         static $gtype: GObject.GType<WebDAVAccessControlEntry>;
 
-        // Own fields of EDataServer.WebDAVAccessControlEntry
+        // Fields
 
         principal_kind: WebDAVACEPrincipalKind;
         principal_href: string;
@@ -17994,7 +17994,7 @@ export namespace EDataServer {
         inherited_href: string;
         privileges: any[];
 
-        // Constructors of EDataServer.WebDAVAccessControlEntry
+        // Constructors
 
         constructor(
             principal_kind: WebDAVACEPrincipalKind,
@@ -18011,7 +18011,7 @@ export namespace EDataServer {
             inherited_href?: string | null,
         ): WebDAVAccessControlEntry;
 
-        // Own static methods of EDataServer.WebDAVAccessControlEntry
+        // Static methods
 
         /**
          * Frees an #EWebDAVAccessControlEntry previously created with e_webdav_access_control_entry_new()
@@ -18020,7 +18020,7 @@ export namespace EDataServer {
          */
         static free(ptr?: any | null): void;
 
-        // Own methods of EDataServer.WebDAVAccessControlEntry
+        // Methods
 
         /**
          * Appends a new `privilege` to the list of privileges for the `ace`.
@@ -18036,7 +18036,7 @@ export namespace EDataServer {
     class WebDAVDiscoveredSource {
         static $gtype: GObject.GType<WebDAVDiscoveredSource>;
 
-        // Own fields of EDataServer.WebDAVDiscoveredSource
+        // Fields
 
         href: string;
         supports: number;
@@ -18045,7 +18045,7 @@ export namespace EDataServer {
         color: string;
         order: number;
 
-        // Constructors of EDataServer.WebDAVDiscoveredSource
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -18059,7 +18059,7 @@ export namespace EDataServer {
         );
         _init(...args: any[]): void;
 
-        // Own methods of EDataServer.WebDAVDiscoveredSource
+        // Methods
 
         /**
          * Copies the given EWebDAVDiscoveredSource.
@@ -18075,7 +18075,7 @@ export namespace EDataServer {
     class WebDAVPrivilege {
         static $gtype: GObject.GType<WebDAVPrivilege>;
 
-        // Own fields of EDataServer.WebDAVPrivilege
+        // Fields
 
         ns_uri: string;
         name: string;
@@ -18083,7 +18083,7 @@ export namespace EDataServer {
         kind: WebDAVPrivilegeKind;
         hint: WebDAVPrivilegeHint;
 
-        // Constructors of EDataServer.WebDAVPrivilege
+        // Constructors
 
         constructor(
             ns_uri: string | null,
@@ -18102,7 +18102,7 @@ export namespace EDataServer {
             hint: WebDAVPrivilegeHint,
         ): WebDAVPrivilege;
 
-        // Own static methods of EDataServer.WebDAVPrivilege
+        // Static methods
 
         /**
          * Frees an #EWebDAVPrivilege previously created with e_webdav_privilege_new()
@@ -18111,7 +18111,7 @@ export namespace EDataServer {
          */
         static free(ptr?: any | null): void;
 
-        // Own methods of EDataServer.WebDAVPrivilege
+        // Methods
 
         copy(): WebDAVPrivilege | null;
     }
@@ -18119,14 +18119,14 @@ export namespace EDataServer {
     class WebDAVPropertyChange {
         static $gtype: GObject.GType<WebDAVPropertyChange>;
 
-        // Own fields of EDataServer.WebDAVPropertyChange
+        // Fields
 
         kind: WebDAVPropertyChangeKind;
         ns_uri: string;
         name: string;
         value: string;
 
-        // Constructors of EDataServer.WebDAVPropertyChange
+        // Constructors
 
         constructor(ns_uri: string, name: string);
         _init(...args: any[]): void;
@@ -18135,7 +18135,7 @@ export namespace EDataServer {
 
         static new_set(ns_uri: string, name: string, value?: string | null): WebDAVPropertyChange;
 
-        // Own static methods of EDataServer.WebDAVPropertyChange
+        // Static methods
 
         /**
          * Frees an #EWebDAVPropertyChange previously created with e_webdav_property_change_new_set(),
@@ -18145,7 +18145,7 @@ export namespace EDataServer {
          */
         static free(ptr?: any | null): void;
 
-        // Own methods of EDataServer.WebDAVPropertyChange
+        // Methods
 
         copy(): WebDAVPropertyChange | null;
     }
@@ -18153,7 +18153,7 @@ export namespace EDataServer {
     class WebDAVResource {
         static $gtype: GObject.GType<WebDAVResource>;
 
-        // Own fields of EDataServer.WebDAVResource
+        // Fields
 
         kind: WebDAVResourceKind;
         supports: number;
@@ -18168,7 +18168,7 @@ export namespace EDataServer {
         color: string;
         order: number;
 
-        // Constructors of EDataServer.WebDAVResource
+        // Constructors
 
         constructor(
             kind: WebDAVResourceKind,
@@ -18201,7 +18201,7 @@ export namespace EDataServer {
             order: number,
         ): WebDAVResource;
 
-        // Own static methods of EDataServer.WebDAVResource
+        // Static methods
 
         /**
          * Frees an #EWebDAVResource previously created with e_webdav_resource_new()
@@ -18210,7 +18210,7 @@ export namespace EDataServer {
          */
         static free(ptr?: any | null): void;
 
-        // Own methods of EDataServer.WebDAVResource
+        // Methods
 
         copy(): WebDAVResource | null;
     }
@@ -18219,7 +18219,7 @@ export namespace EDataServer {
     abstract class WebDAVSessionPrivate {
         static $gtype: GObject.GType<WebDAVSessionPrivate>;
 
-        // Constructors of EDataServer.WebDAVSessionPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -18228,7 +18228,7 @@ export namespace EDataServer {
     abstract class XmlDocumentPrivate {
         static $gtype: GObject.GType<XmlDocumentPrivate>;
 
-        // Constructors of EDataServer.XmlDocumentPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -18239,7 +18239,7 @@ export namespace EDataServer {
     abstract class XmlHash {
         static $gtype: GObject.GType<XmlHash>;
 
-        // Constructors of EDataServer.XmlHash
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -18255,7 +18255,7 @@ export namespace EDataServer {
         prototype: Extensible;
     }
     interface Extensible extends GObject.Object {
-        // Own methods of EDataServer.Extensible
+        // Methods
 
         /**
          * Returns a list of #EExtension objects bound to `extensible` whose
@@ -18351,7 +18351,7 @@ export namespace EDataServer {
         ): void;
     }
     interface OAuth2Service extends GObject.Object {
-        // Own methods of EDataServer.OAuth2Service
+        // Methods
 
         /**
          * Checks whether the `service` can be used with the given `source`.
@@ -18604,7 +18604,7 @@ export namespace EDataServer {
             cancellable?: Gio.Cancellable | null,
         ): boolean;
 
-        // Own virtual methods of EDataServer.OAuth2Service
+        // Virtual methods
 
         /**
          * Checks whether the `service` can be used with the given `source`.

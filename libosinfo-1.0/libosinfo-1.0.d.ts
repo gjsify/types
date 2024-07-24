@@ -53,19 +53,19 @@ export namespace Libosinfo {
     class Error extends GLib.Error {
         static $gtype: GObject.GType<Error>;
 
-        // Static fields of Libosinfo.Error
+        // Static fields
 
         /**
          * Generic Osinfo error;
          */
         static GENERIC: number;
 
-        // Constructors of Libosinfo.Error
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of Libosinfo.Error
+        // Static methods
 
         /**
          * Gets a #GQuark representing the string "libosinfo"
@@ -122,7 +122,7 @@ export namespace Libosinfo {
     class MediaError extends GLib.Error {
         static $gtype: GObject.GType<MediaError>;
 
-        // Static fields of Libosinfo.MediaError
+        // Static fields
 
         /**
          * No descriptors.
@@ -150,12 +150,12 @@ export namespace Libosinfo {
          */
         static NO_DIRECTORY_RECORD_EXTENT: number;
 
-        // Constructors of Libosinfo.MediaError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of Libosinfo.MediaError
+        // Static methods
 
         static quark(): GLib.Quark;
     }
@@ -234,7 +234,7 @@ export namespace Libosinfo {
     class TreeError extends GLib.Error {
         static $gtype: GObject.GType<TreeError>;
 
-        // Static fields of Libosinfo.TreeError
+        // Static fields
 
         /**
          * No treeinfo found;
@@ -245,12 +245,12 @@ export namespace Libosinfo {
          */
         static NOT_SUPPORTED_PROTOCOL: number;
 
-        // Constructors of Libosinfo.TreeError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of Libosinfo.TreeError
+        // Static methods
 
         /**
          * Gets a #GQuark representing the string "osinfo-tree-error"
@@ -472,7 +472,7 @@ export namespace Libosinfo {
     class AvatarFormat extends Entity {
         static $gtype: GObject.GType<AvatarFormat>;
 
-        // Own properties of Libosinfo.AvatarFormat
+        // Properties
 
         /**
          * Whether alpha channel is supported in the avatar.
@@ -495,7 +495,7 @@ export namespace Libosinfo {
          */
         get width(): number;
 
-        // Constructors of Libosinfo.AvatarFormat
+        // Constructors
 
         constructor(properties?: Partial<AvatarFormat.ConstructorProps>, ...args: any[]);
 
@@ -503,7 +503,7 @@ export namespace Libosinfo {
 
         static ['new'](): AvatarFormat;
 
-        // Own methods of Libosinfo.AvatarFormat
+        // Methods
 
         get_alpha(): boolean;
         get_height(): number;
@@ -520,7 +520,7 @@ export namespace Libosinfo {
     class Datamap extends Entity {
         static $gtype: GObject.GType<Datamap>;
 
-        // Constructors of Libosinfo.Datamap
+        // Constructors
 
         constructor(properties?: Partial<Datamap.ConstructorProps>, ...args: any[]);
 
@@ -528,7 +528,7 @@ export namespace Libosinfo {
 
         static ['new'](id: string): Datamap;
 
-        // Own methods of Libosinfo.Datamap
+        // Methods
 
         /**
          * Adds the input value and the output value associated to it to
@@ -558,7 +558,7 @@ export namespace Libosinfo {
     class DatamapList extends List {
         static $gtype: GObject.GType<DatamapList>;
 
-        // Constructors of Libosinfo.DatamapList
+        // Constructors
 
         constructor(properties?: Partial<DatamapList.ConstructorProps>, ...args: any[]);
 
@@ -576,7 +576,7 @@ export namespace Libosinfo {
     class Db extends GObject.Object {
         static $gtype: GObject.GType<Db>;
 
-        // Constructors of Libosinfo.Db
+        // Constructors
 
         constructor(properties?: Partial<Db.ConstructorProps>, ...args: any[]);
 
@@ -584,7 +584,7 @@ export namespace Libosinfo {
 
         static ['new'](): Db;
 
-        // Own methods of Libosinfo.Db
+        // Methods
 
         add_datamap(datamap: Datamap): void;
         add_deployment(deployment: Deployment): void;
@@ -735,7 +735,7 @@ export namespace Libosinfo {
     class Deployment extends Entity {
         static $gtype: GObject.GType<Deployment>;
 
-        // Own properties of Libosinfo.Deployment
+        // Properties
 
         /**
          * The operating system to be deployed
@@ -746,7 +746,7 @@ export namespace Libosinfo {
          */
         get platform(): Platform;
 
-        // Constructors of Libosinfo.Deployment
+        // Constructors
 
         constructor(properties?: Partial<Deployment.ConstructorProps>, ...args: any[]);
 
@@ -754,7 +754,7 @@ export namespace Libosinfo {
 
         static ['new'](id: string, os: Os, platform: Platform): Deployment;
 
-        // Own methods of Libosinfo.Deployment
+        // Methods
 
         /**
          * Associate a device with a deployment. The returned #OsinfoDeviceLink
@@ -811,7 +811,7 @@ export namespace Libosinfo {
     class DeploymentList extends List {
         static $gtype: GObject.GType<DeploymentList>;
 
-        // Constructors of Libosinfo.DeploymentList
+        // Constructors
 
         constructor(properties?: Partial<DeploymentList.ConstructorProps>, ...args: any[]);
 
@@ -819,7 +819,7 @@ export namespace Libosinfo {
 
         static ['new'](): DeploymentList;
 
-        // Own methods of Libosinfo.DeploymentList
+        // Methods
 
         /**
          * Construct a new deployment list that is filled with deployments
@@ -859,7 +859,7 @@ export namespace Libosinfo {
     class Device extends Entity {
         static $gtype: GObject.GType<Device>;
 
-        // Constructors of Libosinfo.Device
+        // Constructors
 
         constructor(properties?: Partial<Device.ConstructorProps>, ...args: any[]);
 
@@ -867,7 +867,7 @@ export namespace Libosinfo {
 
         static ['new'](id: string): Device;
 
-        // Own methods of Libosinfo.Device
+        // Methods
 
         get_bus_type(): string;
         get_class(): string;
@@ -888,13 +888,13 @@ export namespace Libosinfo {
     class DeviceDriver extends Entity {
         static $gtype: GObject.GType<DeviceDriver>;
 
-        // Constructors of Libosinfo.DeviceDriver
+        // Constructors
 
         constructor(properties?: Partial<DeviceDriver.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Libosinfo.DeviceDriver
+        // Methods
 
         /**
          * Retrieves the target hardware architecture of `driver`.
@@ -937,7 +937,7 @@ export namespace Libosinfo {
     class DeviceDriverList extends List {
         static $gtype: GObject.GType<DeviceDriverList>;
 
-        // Constructors of Libosinfo.DeviceDriverList
+        // Constructors
 
         constructor(properties?: Partial<DeviceDriverList.ConstructorProps>, ...args: any[]);
 
@@ -957,14 +957,14 @@ export namespace Libosinfo {
     class DeviceLink extends Entity {
         static $gtype: GObject.GType<DeviceLink>;
 
-        // Own properties of Libosinfo.DeviceLink
+        // Properties
 
         /**
          * The target of the device link.
          */
         get target(): Device;
 
-        // Constructors of Libosinfo.DeviceLink
+        // Constructors
 
         constructor(properties?: Partial<DeviceLink.ConstructorProps>, ...args: any[]);
 
@@ -972,7 +972,7 @@ export namespace Libosinfo {
 
         static ['new'](target: Device): DeviceLink;
 
-        // Own methods of Libosinfo.DeviceLink
+        // Methods
 
         get_driver(): string;
         /**
@@ -994,7 +994,7 @@ export namespace Libosinfo {
     class DeviceLinkFilter extends Filter {
         static $gtype: GObject.GType<DeviceLinkFilter>;
 
-        // Own properties of Libosinfo.DeviceLinkFilter
+        // Properties
 
         /**
          * The operating system to be deployed
@@ -1005,7 +1005,7 @@ export namespace Libosinfo {
          */
         get targetFilter(): Filter;
 
-        // Constructors of Libosinfo.DeviceLinkFilter
+        // Constructors
 
         constructor(properties?: Partial<DeviceLinkFilter.ConstructorProps>, ...args: any[]);
 
@@ -1016,7 +1016,7 @@ export namespace Libosinfo {
 
         static ['new'](...args: never[]): any;
 
-        // Own methods of Libosinfo.DeviceLinkFilter
+        // Methods
 
         /**
          * Retrieve the filter used to match against the target of
@@ -1035,7 +1035,7 @@ export namespace Libosinfo {
     class DeviceLinkList extends List {
         static $gtype: GObject.GType<DeviceLinkList>;
 
-        // Constructors of Libosinfo.DeviceLinkList
+        // Constructors
 
         constructor(properties?: Partial<DeviceLinkList.ConstructorProps>, ...args: any[]);
 
@@ -1043,7 +1043,7 @@ export namespace Libosinfo {
 
         static ['new'](): DeviceLinkList;
 
-        // Own methods of Libosinfo.DeviceLinkList
+        // Methods
 
         /**
          * Get all devices matching a given filter
@@ -1089,7 +1089,7 @@ export namespace Libosinfo {
     class DeviceList extends List {
         static $gtype: GObject.GType<DeviceList>;
 
-        // Constructors of Libosinfo.DeviceList
+        // Constructors
 
         constructor(properties?: Partial<DeviceList.ConstructorProps>, ...args: any[]);
 
@@ -1097,7 +1097,7 @@ export namespace Libosinfo {
 
         static ['new'](): DeviceList;
 
-        // Own methods of Libosinfo.DeviceList
+        // Methods
 
         /**
          * Construct a new device list that is filled with devices
@@ -1139,7 +1139,7 @@ export namespace Libosinfo {
     abstract class Entity extends GObject.Object {
         static $gtype: GObject.GType<Entity>;
 
-        // Own properties of Libosinfo.Entity
+        // Properties
 
         /**
          * The unique identifier for the entity The format of identifiers
@@ -1150,13 +1150,13 @@ export namespace Libosinfo {
         get id(): string;
         set id(val: string);
 
-        // Constructors of Libosinfo.Entity
+        // Constructors
 
         constructor(properties?: Partial<Entity.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Libosinfo.Entity
+        // Methods
 
         /**
          * Adds a new parameter against the entity. A key can have multiple
@@ -1289,7 +1289,7 @@ export namespace Libosinfo {
     class Filter extends GObject.Object {
         static $gtype: GObject.GType<Filter>;
 
-        // Constructors of Libosinfo.Filter
+        // Constructors
 
         constructor(properties?: Partial<Filter.ConstructorProps>, ...args: any[]);
 
@@ -1297,7 +1297,7 @@ export namespace Libosinfo {
 
         static ['new'](): Filter;
 
-        // Own virtual methods of Libosinfo.Filter
+        // Virtual methods
 
         /**
          * Determine of an entity matches a filter
@@ -1305,7 +1305,7 @@ export namespace Libosinfo {
          */
         vfunc_matches(entity: Entity): boolean;
 
-        // Own methods of Libosinfo.Filter
+        // Methods
 
         /**
          * Adds a constraint that requires the entity to have
@@ -1358,7 +1358,7 @@ export namespace Libosinfo {
     class Firmware extends Entity {
         static $gtype: GObject.GType<Firmware>;
 
-        // Own properties of Libosinfo.Firmware
+        // Properties
 
         /**
          * The target hardware architecture of this firmware.
@@ -1368,7 +1368,7 @@ export namespace Libosinfo {
         get type(): string;
         set type(val: string);
 
-        // Constructors of Libosinfo.Firmware
+        // Constructors
 
         constructor(properties?: Partial<Firmware.ConstructorProps>, ...args: any[]);
 
@@ -1376,7 +1376,7 @@ export namespace Libosinfo {
 
         static ['new'](id: string, architecture: string, type: string): Firmware;
 
-        // Own methods of Libosinfo.Firmware
+        // Methods
 
         /**
          * Retrieves the target hardware architecture of the OS `firmware` provides.
@@ -1404,7 +1404,7 @@ export namespace Libosinfo {
     class FirmwareList extends List {
         static $gtype: GObject.GType<FirmwareList>;
 
-        // Constructors of Libosinfo.FirmwareList
+        // Constructors
 
         constructor(properties?: Partial<FirmwareList.ConstructorProps>, ...args: any[]);
 
@@ -1428,7 +1428,7 @@ export namespace Libosinfo {
     class Image extends Entity {
         static $gtype: GObject.GType<Image>;
 
-        // Own properties of Libosinfo.Image
+        // Properties
 
         /**
          * The target hardware architecture of this image.
@@ -1456,7 +1456,7 @@ export namespace Libosinfo {
         get url(): string;
         set url(val: string);
 
-        // Constructors of Libosinfo.Image
+        // Constructors
 
         constructor(properties?: Partial<Image.ConstructorProps>, ...args: any[]);
 
@@ -1464,7 +1464,7 @@ export namespace Libosinfo {
 
         static ['new'](id: string, architecture: string, format: string): Image;
 
-        // Own methods of Libosinfo.Image
+        // Methods
 
         /**
          * Retrieves the target hardware architecture of the OS `image` provides.
@@ -1508,7 +1508,7 @@ export namespace Libosinfo {
     class ImageList extends List {
         static $gtype: GObject.GType<ImageList>;
 
-        // Constructors of Libosinfo.ImageList
+        // Constructors
 
         constructor(properties?: Partial<ImageList.ConstructorProps>, ...args: any[]);
 
@@ -1526,7 +1526,7 @@ export namespace Libosinfo {
     class InstallConfig extends Entity {
         static $gtype: GObject.GType<InstallConfig>;
 
-        // Constructors of Libosinfo.InstallConfig
+        // Constructors
 
         constructor(properties?: Partial<InstallConfig.ConstructorProps>, ...args: any[]);
 
@@ -1534,7 +1534,7 @@ export namespace Libosinfo {
 
         static ['new'](id: string): InstallConfig;
 
-        // Own methods of Libosinfo.InstallConfig
+        // Methods
 
         get_admin_password(): string;
         get_avatar_disk(): string;
@@ -1776,7 +1776,7 @@ export namespace Libosinfo {
     class InstallConfigParam extends Entity {
         static $gtype: GObject.GType<InstallConfigParam>;
 
-        // Own properties of Libosinfo.InstallConfigParam
+        // Properties
 
         /**
          * The name of the configuration parameter.
@@ -1799,7 +1799,7 @@ export namespace Libosinfo {
         get valueMap(): Datamap;
         set valueMap(val: Datamap);
 
-        // Constructors of Libosinfo.InstallConfigParam
+        // Constructors
 
         constructor(properties?: Partial<InstallConfigParam.ConstructorProps>, ...args: any[]);
 
@@ -1807,7 +1807,7 @@ export namespace Libosinfo {
 
         static ['new'](name: string): InstallConfigParam;
 
-        // Own methods of Libosinfo.InstallConfigParam
+        // Methods
 
         get_name(): string;
         get_policy(): InstallConfigParamPolicy;
@@ -1832,7 +1832,7 @@ export namespace Libosinfo {
     class InstallConfigParamList extends List {
         static $gtype: GObject.GType<InstallConfigParamList>;
 
-        // Constructors of Libosinfo.InstallConfigParamList
+        // Constructors
 
         constructor(properties?: Partial<InstallConfigParamList.ConstructorProps>, ...args: any[]);
 
@@ -1866,7 +1866,7 @@ export namespace Libosinfo {
     class InstallScript extends Entity {
         static $gtype: GObject.GType<InstallScript>;
 
-        // Own properties of Libosinfo.InstallScript
+        // Properties
 
         get avatar_format(): AvatarFormat;
         get avatarFormat(): AvatarFormat;
@@ -1886,7 +1886,7 @@ export namespace Libosinfo {
         get template_uri(): string;
         get templateUri(): string;
 
-        // Constructors of Libosinfo.InstallScript
+        // Constructors
 
         constructor(properties?: Partial<InstallScript.ConstructorProps>, ...args: any[]);
 
@@ -1898,7 +1898,7 @@ export namespace Libosinfo {
 
         static new_uri(id: string, profile: string, templateUri: string): InstallScript;
 
-        // Own methods of Libosinfo.InstallScript
+        // Methods
 
         /**
          * Creates an install script.
@@ -2281,7 +2281,7 @@ export namespace Libosinfo {
     class InstallScriptList extends List {
         static $gtype: GObject.GType<InstallScriptList>;
 
-        // Constructors of Libosinfo.InstallScriptList
+        // Constructors
 
         constructor(properties?: Partial<InstallScriptList.ConstructorProps>, ...args: any[]);
 
@@ -2289,7 +2289,7 @@ export namespace Libosinfo {
 
         static ['new'](): InstallScriptList;
 
-        // Own methods of Libosinfo.InstallScriptList
+        // Methods
 
         /**
          * Construct a new install_script list that is filled with install_scripts
@@ -2332,7 +2332,7 @@ export namespace Libosinfo {
     abstract class List extends GObject.Object {
         static $gtype: GObject.GType<List>;
 
-        // Own properties of Libosinfo.List
+        // Properties
 
         /**
          * The specialization of the list. The list will be
@@ -2347,13 +2347,13 @@ export namespace Libosinfo {
          */
         get elementType(): GObject.GType;
 
-        // Constructors of Libosinfo.List
+        // Constructors
 
         constructor(properties?: Partial<List.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Libosinfo.List
+        // Methods
 
         /**
          * Adds a new entity to the list.
@@ -2463,7 +2463,7 @@ export namespace Libosinfo {
     class Loader extends GObject.Object {
         static $gtype: GObject.GType<Loader>;
 
-        // Constructors of Libosinfo.Loader
+        // Constructors
 
         constructor(properties?: Partial<Loader.ConstructorProps>, ...args: any[]);
 
@@ -2471,7 +2471,7 @@ export namespace Libosinfo {
 
         static ['new'](): Loader;
 
-        // Own methods of Libosinfo.Loader
+        // Methods
 
         /**
          * Retrieves the database being populated
@@ -2545,7 +2545,7 @@ export namespace Libosinfo {
     class Media extends Entity {
         static $gtype: GObject.GType<Media>;
 
-        // Own properties of Libosinfo.Media
+        // Properties
 
         /**
          * Expected application ID (regular expression) for ISO9660 image/device.
@@ -2720,7 +2720,7 @@ export namespace Libosinfo {
         get volumeSize(): number;
         set volumeSize(val: number);
 
-        // Constructors of Libosinfo.Media
+        // Constructors
 
         constructor(properties?: Partial<Media.ConstructorProps>, ...args: any[]);
 
@@ -2728,7 +2728,7 @@ export namespace Libosinfo {
 
         static ['new'](id: string, architecture: string): Media;
 
-        // Own static methods of Libosinfo.Media
+        // Static methods
 
         /**
          * Creates a new #OsinfoMedia for installation media at `location`. The `location`
@@ -2794,7 +2794,7 @@ export namespace Libosinfo {
          */
         static create_from_location_with_flags_finish(res: Gio.AsyncResult): Media;
 
-        // Own methods of Libosinfo.Media
+        // Methods
 
         /**
          * Adds an `script` to the specified `media`
@@ -2939,7 +2939,7 @@ export namespace Libosinfo {
     class MediaList extends List {
         static $gtype: GObject.GType<MediaList>;
 
-        // Constructors of Libosinfo.MediaList
+        // Constructors
 
         constructor(properties?: Partial<MediaList.ConstructorProps>, ...args: any[]);
 
@@ -2947,7 +2947,7 @@ export namespace Libosinfo {
 
         static ['new'](): MediaList;
 
-        // Own methods of Libosinfo.MediaList
+        // Methods
 
         /**
          * Construct a new media list that is filled with medias
@@ -2994,7 +2994,7 @@ export namespace Libosinfo {
     class Os extends Product {
         static $gtype: GObject.GType<Os>;
 
-        // Own properties of Libosinfo.Os
+        // Properties
 
         /**
          * The username to be passed to the cloud-init program.
@@ -3025,7 +3025,7 @@ export namespace Libosinfo {
          */
         get kernelUrlArgument(): string;
 
-        // Constructors of Libosinfo.Os
+        // Constructors
 
         constructor(properties?: Partial<Os.ConstructorProps>, ...args: any[]);
 
@@ -3033,7 +3033,7 @@ export namespace Libosinfo {
 
         static ['new'](id: string): Os;
 
-        // Own methods of Libosinfo.Os
+        // Methods
 
         /**
          * Associated a device with an operating system.  The
@@ -3242,7 +3242,7 @@ export namespace Libosinfo {
     class OsList extends ProductList {
         static $gtype: GObject.GType<OsList>;
 
-        // Constructors of Libosinfo.OsList
+        // Constructors
 
         constructor(properties?: Partial<OsList.ConstructorProps>, ...args: any[]);
 
@@ -3250,7 +3250,7 @@ export namespace Libosinfo {
 
         static ['new'](): OsList;
 
-        // Own methods of Libosinfo.OsList
+        // Methods
 
         /**
          * Construct a new os list that is filled with oss
@@ -3292,7 +3292,7 @@ export namespace Libosinfo {
     class OsVariant extends Entity {
         static $gtype: GObject.GType<OsVariant>;
 
-        // Own properties of Libosinfo.OsVariant
+        // Properties
 
         /**
          * The name to this variant.
@@ -3300,7 +3300,7 @@ export namespace Libosinfo {
         get name(): string;
         set name(val: string);
 
-        // Constructors of Libosinfo.OsVariant
+        // Constructors
 
         constructor(properties?: Partial<OsVariant.ConstructorProps>, ...args: any[]);
 
@@ -3308,7 +3308,7 @@ export namespace Libosinfo {
 
         static ['new'](id: string): OsVariant;
 
-        // Own methods of Libosinfo.OsVariant
+        // Methods
 
         /**
          * The name of the `variant`
@@ -3326,7 +3326,7 @@ export namespace Libosinfo {
     class OsVariantList extends List {
         static $gtype: GObject.GType<OsVariantList>;
 
-        // Constructors of Libosinfo.OsVariantList
+        // Constructors
 
         constructor(properties?: Partial<OsVariantList.ConstructorProps>, ...args: any[]);
 
@@ -3344,7 +3344,7 @@ export namespace Libosinfo {
     class Platform extends Product {
         static $gtype: GObject.GType<Platform>;
 
-        // Constructors of Libosinfo.Platform
+        // Constructors
 
         constructor(properties?: Partial<Platform.ConstructorProps>, ...args: any[]);
 
@@ -3352,7 +3352,7 @@ export namespace Libosinfo {
 
         static ['new'](id: string): Platform;
 
-        // Own methods of Libosinfo.Platform
+        // Methods
 
         /**
          * Associate a device with a platform. The returned #OsinfoDeviceLink
@@ -3394,7 +3394,7 @@ export namespace Libosinfo {
     class PlatformList extends ProductList {
         static $gtype: GObject.GType<PlatformList>;
 
-        // Constructors of Libosinfo.PlatformList
+        // Constructors
 
         constructor(properties?: Partial<PlatformList.ConstructorProps>, ...args: any[]);
 
@@ -3402,7 +3402,7 @@ export namespace Libosinfo {
 
         static ['new'](): PlatformList;
 
-        // Own methods of Libosinfo.PlatformList
+        // Methods
 
         /**
          * Construct a new platform list that is filled with platforms
@@ -3450,7 +3450,7 @@ export namespace Libosinfo {
     abstract class Product extends Entity {
         static $gtype: GObject.GType<Product>;
 
-        // Own properties of Libosinfo.Product
+        // Properties
 
         /**
          * The codename of this product.
@@ -3481,13 +3481,13 @@ export namespace Libosinfo {
          */
         get version(): string;
 
-        // Constructors of Libosinfo.Product
+        // Constructors
 
         constructor(properties?: Partial<Product.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Libosinfo.Product
+        // Methods
 
         /**
          * Add an association between two products
@@ -3528,7 +3528,7 @@ export namespace Libosinfo {
     class ProductFilter extends Filter {
         static $gtype: GObject.GType<ProductFilter>;
 
-        // Constructors of Libosinfo.ProductFilter
+        // Constructors
 
         constructor(properties?: Partial<ProductFilter.ConstructorProps>, ...args: any[]);
 
@@ -3536,7 +3536,7 @@ export namespace Libosinfo {
 
         static ['new'](): ProductFilter;
 
-        // Own methods of Libosinfo.ProductFilter
+        // Methods
 
         /**
          * Adds a constraint that matches products which
@@ -3576,7 +3576,7 @@ export namespace Libosinfo {
     class ProductList extends List {
         static $gtype: GObject.GType<ProductList>;
 
-        // Constructors of Libosinfo.ProductList
+        // Constructors
 
         constructor(properties?: Partial<ProductList.ConstructorProps>, ...args: any[]);
 
@@ -3584,7 +3584,7 @@ export namespace Libosinfo {
 
         static ['new'](): ProductList;
 
-        // Own methods of Libosinfo.ProductList
+        // Methods
 
         /**
          * Construct a new os list that is filled with oss
@@ -3631,7 +3631,7 @@ export namespace Libosinfo {
     class Resources extends Entity {
         static $gtype: GObject.GType<Resources>;
 
-        // Own properties of Libosinfo.Resources
+        // Properties
 
         /**
          * The target hardware architecture to which these resources applies.
@@ -3663,7 +3663,7 @@ export namespace Libosinfo {
         get storage(): number;
         set storage(val: number);
 
-        // Constructors of Libosinfo.Resources
+        // Constructors
 
         constructor(properties?: Partial<Resources.ConstructorProps>, ...args: any[]);
 
@@ -3671,7 +3671,7 @@ export namespace Libosinfo {
 
         static ['new'](id: string, architecture: string): Resources;
 
-        // Own methods of Libosinfo.Resources
+        // Methods
 
         /**
          * Retrieves the target hardware architecture to which `resources` applies. Some
@@ -3735,7 +3735,7 @@ export namespace Libosinfo {
     class ResourcesList extends List {
         static $gtype: GObject.GType<ResourcesList>;
 
-        // Constructors of Libosinfo.ResourcesList
+        // Constructors
 
         constructor(properties?: Partial<ResourcesList.ConstructorProps>, ...args: any[]);
 
@@ -3743,7 +3743,7 @@ export namespace Libosinfo {
 
         static ['new'](): ResourcesList;
 
-        // Own methods of Libosinfo.ResourcesList
+        // Methods
 
         /**
          * Construct a new resources list that is filled with resources instances
@@ -3803,7 +3803,7 @@ export namespace Libosinfo {
     class Tree extends Entity {
         static $gtype: GObject.GType<Tree>;
 
-        // Own properties of Libosinfo.Tree
+        // Properties
 
         /**
          * The target hardware architecture of this tree.
@@ -3904,7 +3904,7 @@ export namespace Libosinfo {
         get url(): string;
         set url(val: string);
 
-        // Constructors of Libosinfo.Tree
+        // Constructors
 
         constructor(properties?: Partial<Tree.ConstructorProps>, ...args: any[]);
 
@@ -3912,7 +3912,7 @@ export namespace Libosinfo {
 
         static ['new'](id: string, architecture: string): Tree;
 
-        // Own static methods of Libosinfo.Tree
+        // Static methods
 
         /**
          * Creates a new #OsinfoTree for installation tree at `location`. The `location`
@@ -3949,7 +3949,7 @@ export namespace Libosinfo {
          */
         static create_from_treeinfo(treeinfo: string, location: string): Tree;
 
-        // Own methods of Libosinfo.Tree
+        // Methods
 
         /**
          * Retrieves the target hardware architecture of the OS `tree` provides.
@@ -4044,7 +4044,7 @@ export namespace Libosinfo {
     class TreeList extends List {
         static $gtype: GObject.GType<TreeList>;
 
-        // Constructors of Libosinfo.TreeList
+        // Constructors
 
         constructor(properties?: Partial<TreeList.ConstructorProps>, ...args: any[]);
 
@@ -4052,7 +4052,7 @@ export namespace Libosinfo {
 
         static ['new'](): TreeList;
 
-        // Own methods of Libosinfo.TreeList
+        // Methods
 
         /**
          * Construct a new tree list that is filled with trees
@@ -4087,7 +4087,7 @@ export namespace Libosinfo {
     abstract class AvatarFormatPrivate {
         static $gtype: GObject.GType<AvatarFormatPrivate>;
 
-        // Constructors of Libosinfo.AvatarFormatPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4097,7 +4097,7 @@ export namespace Libosinfo {
     abstract class DatamapListPrivate {
         static $gtype: GObject.GType<DatamapListPrivate>;
 
-        // Constructors of Libosinfo.DatamapListPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4105,7 +4105,7 @@ export namespace Libosinfo {
     abstract class DatamapPrivate {
         static $gtype: GObject.GType<DatamapPrivate>;
 
-        // Constructors of Libosinfo.DatamapPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4114,7 +4114,7 @@ export namespace Libosinfo {
     abstract class DbPrivate {
         static $gtype: GObject.GType<DbPrivate>;
 
-        // Constructors of Libosinfo.DbPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4124,7 +4124,7 @@ export namespace Libosinfo {
     abstract class DeploymentListPrivate {
         static $gtype: GObject.GType<DeploymentListPrivate>;
 
-        // Constructors of Libosinfo.DeploymentListPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4132,7 +4132,7 @@ export namespace Libosinfo {
     abstract class DeploymentPrivate {
         static $gtype: GObject.GType<DeploymentPrivate>;
 
-        // Constructors of Libosinfo.DeploymentPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4143,7 +4143,7 @@ export namespace Libosinfo {
     abstract class DeviceDriverListPrivate {
         static $gtype: GObject.GType<DeviceDriverListPrivate>;
 
-        // Constructors of Libosinfo.DeviceDriverListPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4151,7 +4151,7 @@ export namespace Libosinfo {
     abstract class DeviceDriverPrivate {
         static $gtype: GObject.GType<DeviceDriverPrivate>;
 
-        // Constructors of Libosinfo.DeviceDriverPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4161,7 +4161,7 @@ export namespace Libosinfo {
     abstract class DeviceLinkFilterPrivate {
         static $gtype: GObject.GType<DeviceLinkFilterPrivate>;
 
-        // Constructors of Libosinfo.DeviceLinkFilterPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4170,7 +4170,7 @@ export namespace Libosinfo {
     abstract class DeviceLinkListPrivate {
         static $gtype: GObject.GType<DeviceLinkListPrivate>;
 
-        // Constructors of Libosinfo.DeviceLinkListPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4178,7 +4178,7 @@ export namespace Libosinfo {
     abstract class DeviceLinkPrivate {
         static $gtype: GObject.GType<DeviceLinkPrivate>;
 
-        // Constructors of Libosinfo.DeviceLinkPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4187,7 +4187,7 @@ export namespace Libosinfo {
     abstract class DeviceListPrivate {
         static $gtype: GObject.GType<DeviceListPrivate>;
 
-        // Constructors of Libosinfo.DeviceListPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4195,7 +4195,7 @@ export namespace Libosinfo {
     abstract class DevicePrivate {
         static $gtype: GObject.GType<DevicePrivate>;
 
-        // Constructors of Libosinfo.DevicePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4204,7 +4204,7 @@ export namespace Libosinfo {
     abstract class EntityPrivate {
         static $gtype: GObject.GType<EntityPrivate>;
 
-        // Constructors of Libosinfo.EntityPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4213,7 +4213,7 @@ export namespace Libosinfo {
     abstract class FilterPrivate {
         static $gtype: GObject.GType<FilterPrivate>;
 
-        // Constructors of Libosinfo.FilterPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4223,7 +4223,7 @@ export namespace Libosinfo {
     abstract class FirmwareListPrivate {
         static $gtype: GObject.GType<FirmwareListPrivate>;
 
-        // Constructors of Libosinfo.FirmwareListPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4231,7 +4231,7 @@ export namespace Libosinfo {
     abstract class FirmwarePrivate {
         static $gtype: GObject.GType<FirmwarePrivate>;
 
-        // Constructors of Libosinfo.FirmwarePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4241,7 +4241,7 @@ export namespace Libosinfo {
     abstract class ImageListPrivate {
         static $gtype: GObject.GType<ImageListPrivate>;
 
-        // Constructors of Libosinfo.ImageListPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4249,7 +4249,7 @@ export namespace Libosinfo {
     abstract class ImagePrivate {
         static $gtype: GObject.GType<ImagePrivate>;
 
-        // Constructors of Libosinfo.ImagePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4260,7 +4260,7 @@ export namespace Libosinfo {
     abstract class InstallConfigParamListPrivate {
         static $gtype: GObject.GType<InstallConfigParamListPrivate>;
 
-        // Constructors of Libosinfo.InstallConfigParamListPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4268,7 +4268,7 @@ export namespace Libosinfo {
     abstract class InstallConfigParamPrivate {
         static $gtype: GObject.GType<InstallConfigParamPrivate>;
 
-        // Constructors of Libosinfo.InstallConfigParamPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4276,7 +4276,7 @@ export namespace Libosinfo {
     abstract class InstallConfigPrivate {
         static $gtype: GObject.GType<InstallConfigPrivate>;
 
-        // Constructors of Libosinfo.InstallConfigPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4286,7 +4286,7 @@ export namespace Libosinfo {
     abstract class InstallScriptListPrivate {
         static $gtype: GObject.GType<InstallScriptListPrivate>;
 
-        // Constructors of Libosinfo.InstallScriptListPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4294,7 +4294,7 @@ export namespace Libosinfo {
     abstract class InstallScriptPrivate {
         static $gtype: GObject.GType<InstallScriptPrivate>;
 
-        // Constructors of Libosinfo.InstallScriptPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4303,7 +4303,7 @@ export namespace Libosinfo {
     abstract class ListPrivate {
         static $gtype: GObject.GType<ListPrivate>;
 
-        // Constructors of Libosinfo.ListPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4312,7 +4312,7 @@ export namespace Libosinfo {
     abstract class LoaderPrivate {
         static $gtype: GObject.GType<LoaderPrivate>;
 
-        // Constructors of Libosinfo.LoaderPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4322,7 +4322,7 @@ export namespace Libosinfo {
     abstract class MediaListPrivate {
         static $gtype: GObject.GType<MediaListPrivate>;
 
-        // Constructors of Libosinfo.MediaListPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4330,7 +4330,7 @@ export namespace Libosinfo {
     abstract class MediaPrivate {
         static $gtype: GObject.GType<MediaPrivate>;
 
-        // Constructors of Libosinfo.MediaPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4340,7 +4340,7 @@ export namespace Libosinfo {
     abstract class OsListPrivate {
         static $gtype: GObject.GType<OsListPrivate>;
 
-        // Constructors of Libosinfo.OsListPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4348,7 +4348,7 @@ export namespace Libosinfo {
     abstract class OsPrivate {
         static $gtype: GObject.GType<OsPrivate>;
 
-        // Constructors of Libosinfo.OsPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4358,7 +4358,7 @@ export namespace Libosinfo {
     abstract class OsVariantListPrivate {
         static $gtype: GObject.GType<OsVariantListPrivate>;
 
-        // Constructors of Libosinfo.OsVariantListPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4366,7 +4366,7 @@ export namespace Libosinfo {
     abstract class OsVariantPrivate {
         static $gtype: GObject.GType<OsVariantPrivate>;
 
-        // Constructors of Libosinfo.OsVariantPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4376,7 +4376,7 @@ export namespace Libosinfo {
     abstract class PlatformListPrivate {
         static $gtype: GObject.GType<PlatformListPrivate>;
 
-        // Constructors of Libosinfo.PlatformListPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4384,7 +4384,7 @@ export namespace Libosinfo {
     abstract class PlatformPrivate {
         static $gtype: GObject.GType<PlatformPrivate>;
 
-        // Constructors of Libosinfo.PlatformPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4394,7 +4394,7 @@ export namespace Libosinfo {
     abstract class ProductFilterPrivate {
         static $gtype: GObject.GType<ProductFilterPrivate>;
 
-        // Constructors of Libosinfo.ProductFilterPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4403,7 +4403,7 @@ export namespace Libosinfo {
     abstract class ProductListPrivate {
         static $gtype: GObject.GType<ProductListPrivate>;
 
-        // Constructors of Libosinfo.ProductListPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4411,7 +4411,7 @@ export namespace Libosinfo {
     abstract class ProductPrivate {
         static $gtype: GObject.GType<ProductPrivate>;
 
-        // Constructors of Libosinfo.ProductPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4421,7 +4421,7 @@ export namespace Libosinfo {
     abstract class ResourcesListPrivate {
         static $gtype: GObject.GType<ResourcesListPrivate>;
 
-        // Constructors of Libosinfo.ResourcesListPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4429,7 +4429,7 @@ export namespace Libosinfo {
     abstract class ResourcesPrivate {
         static $gtype: GObject.GType<ResourcesPrivate>;
 
-        // Constructors of Libosinfo.ResourcesPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4439,7 +4439,7 @@ export namespace Libosinfo {
     abstract class TreeListPrivate {
         static $gtype: GObject.GType<TreeListPrivate>;
 
-        // Constructors of Libosinfo.TreeListPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4447,7 +4447,7 @@ export namespace Libosinfo {
     abstract class TreePrivate {
         static $gtype: GObject.GType<TreePrivate>;
 
-        // Constructors of Libosinfo.TreePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }

@@ -22,7 +22,7 @@ export namespace GSSDP {
     class Error extends GLib.Error {
         static $gtype: GObject.GType<Error>;
 
-        // Static fields of GSSDP.Error
+        // Static fields
 
         /**
          * GSSDP could not find a valid IP address of a
@@ -34,7 +34,7 @@ export namespace GSSDP {
          */
         static FAILED: number;
 
-        // Constructors of GSSDP.Error
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
@@ -72,7 +72,7 @@ export namespace GSSDP {
     class Client extends GObject.Object implements Gio.Initable {
         static $gtype: GObject.GType<Client>;
 
-        // Own properties of GSSDP.Client
+        // Properties
 
         /**
          * Whether this client is active or not (passive). When active
@@ -141,7 +141,7 @@ export namespace GSSDP {
          */
         get socketTtl(): number;
 
-        // Constructors of GSSDP.Client
+        // Constructors
 
         constructor(properties?: Partial<Client.ConstructorProps>, ...args: any[]);
 
@@ -151,7 +151,7 @@ export namespace GSSDP {
 
         static new_with_port(iface: string | null, msearch_port: number): Client;
 
-        // Own signals of GSSDP.Client
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -184,7 +184,7 @@ export namespace GSSDP {
             headers: Soup.MessageHeaders,
         ): void;
 
-        // Own methods of GSSDP.Client
+        // Methods
 
         add_cache_entry(ip_address: string, user_agent: string): void;
         /**
@@ -747,7 +747,7 @@ export namespace GSSDP {
     class ResourceBrowser extends GObject.Object {
         static $gtype: GObject.GType<ResourceBrowser>;
 
-        // Own properties of GSSDP.ResourceBrowser
+        // Properties
 
         /**
          * Whether this browser is active or not.
@@ -770,7 +770,7 @@ export namespace GSSDP {
         get target(): string;
         set target(val: string);
 
-        // Constructors of GSSDP.ResourceBrowser
+        // Constructors
 
         constructor(properties?: Partial<ResourceBrowser.ConstructorProps>, ...args: any[]);
 
@@ -778,7 +778,7 @@ export namespace GSSDP {
 
         static ['new'](client: Client, target: string): ResourceBrowser;
 
-        // Own signals of GSSDP.ResourceBrowser
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -796,11 +796,11 @@ export namespace GSSDP {
         connect_after(signal: 'resource-unavailable', callback: (_source: this, usn: string) => void): number;
         emit(signal: 'resource-unavailable', usn: string): void;
 
-        // Own virtual methods of GSSDP.ResourceBrowser
+        // Virtual methods
 
         vfunc_resource_unavailable(usn: string): void;
 
-        // Own methods of GSSDP.ResourceBrowser
+        // Methods
 
         get_active(): boolean;
         get_client(): Client;
@@ -845,7 +845,7 @@ export namespace GSSDP {
     class ResourceGroup extends GObject.Object {
         static $gtype: GObject.GType<ResourceGroup>;
 
-        // Own properties of GSSDP.ResourceGroup
+        // Properties
 
         /**
          * Whether this group of resources is available or not.
@@ -879,7 +879,7 @@ export namespace GSSDP {
         get messageDelay(): number;
         set messageDelay(val: number);
 
-        // Constructors of GSSDP.ResourceGroup
+        // Constructors
 
         constructor(properties?: Partial<ResourceGroup.ConstructorProps>, ...args: any[]);
 
@@ -887,7 +887,7 @@ export namespace GSSDP {
 
         static ['new'](client: Client): ResourceGroup;
 
-        // Own methods of GSSDP.ResourceGroup
+        // Methods
 
         /**
          * Adds a resource with target `target,` USN `usn,` and locations `locations`
@@ -939,7 +939,7 @@ export namespace GSSDP {
     abstract class ClientPrivate {
         static $gtype: GObject.GType<ClientPrivate>;
 
-        // Constructors of GSSDP.ClientPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -948,7 +948,7 @@ export namespace GSSDP {
     abstract class ResourceBrowserPrivate {
         static $gtype: GObject.GType<ResourceBrowserPrivate>;
 
-        // Constructors of GSSDP.ResourceBrowserPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -957,7 +957,7 @@ export namespace GSSDP {
     abstract class ResourceGroupPrivate {
         static $gtype: GObject.GType<ResourceGroupPrivate>;
 
-        // Constructors of GSSDP.ResourceGroupPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }

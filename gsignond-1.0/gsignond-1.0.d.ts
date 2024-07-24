@@ -24,7 +24,7 @@ export namespace GSignond {
     class Error extends GLib.Error {
         static $gtype: GObject.GType<Error>;
 
-        // Static fields of GSignond.Error
+        // Static fields
 
         /**
          * No error
@@ -187,7 +187,7 @@ export namespace GSignond {
          */
         static USER_ERR: number;
 
-        // Constructors of GSignond.Error
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
@@ -433,17 +433,17 @@ export namespace GSignond {
     class AccessControlManager extends GObject.Object {
         static $gtype: GObject.GType<AccessControlManager>;
 
-        // Own properties of GSignond.AccessControlManager
+        // Properties
 
         get config(): Config;
 
-        // Constructors of GSignond.AccessControlManager
+        // Constructors
 
         constructor(properties?: Partial<AccessControlManager.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of GSignond.AccessControlManager
+        // Virtual methods
 
         /**
          * Checks if the specified peer is allowed to set the specified access
@@ -512,7 +512,7 @@ export namespace GSignond {
             peer_app_ctx: string,
         ): void;
 
-        // Own methods of GSignond.AccessControlManager
+        // Methods
 
         /**
          * Checks if the specified peer is allowed to set the specified access
@@ -598,7 +598,7 @@ export namespace GSignond {
     class Config extends GObject.Object {
         static $gtype: GObject.GType<Config>;
 
-        // Constructors of GSignond.Config
+        // Constructors
 
         constructor(properties?: Partial<Config.ConstructorProps>, ...args: any[]);
 
@@ -606,7 +606,7 @@ export namespace GSignond {
 
         static ['new'](): Config;
 
-        // Own methods of GSignond.Config
+        // Methods
 
         /**
          * Get an integer configuration value.
@@ -646,7 +646,7 @@ export namespace GSignond {
     class Credentials extends GObject.Object {
         static $gtype: GObject.GType<Credentials>;
 
-        // Constructors of GSignond.Credentials
+        // Constructors
 
         constructor(properties?: Partial<Credentials.ConstructorProps>, ...args: any[]);
 
@@ -654,7 +654,7 @@ export namespace GSignond {
 
         static ['new'](): Credentials;
 
-        // Own methods of GSignond.Credentials
+        // Methods
 
         /**
          * Compares elements of two GSignondCredentials object for equality.
@@ -719,7 +719,7 @@ export namespace GSignond {
     class Dictionary extends GObject.Object {
         static $gtype: GObject.GType<Dictionary>;
 
-        // Constructors of GSignond.Dictionary
+        // Constructors
 
         constructor(properties?: Partial<Dictionary.ConstructorProps>, ...args: any[]);
 
@@ -729,7 +729,7 @@ export namespace GSignond {
 
         static new_from_variant(variant: GLib.Variant): Dictionary;
 
-        // Own methods of GSignond.Dictionary
+        // Methods
 
         /**
          * Checks if the `dict` contains `key`.
@@ -883,13 +883,13 @@ export namespace GSignond {
     class Extension extends GObject.Object {
         static $gtype: GObject.GType<Extension>;
 
-        // Constructors of GSignond.Extension
+        // Constructors
 
         constructor(properties?: Partial<Extension.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of GSignond.Extension
+        // Virtual methods
 
         /**
          * Factory method to get a singleton access control manager object. See
@@ -912,7 +912,7 @@ export namespace GSignond {
          */
         vfunc_get_storage_manager(config: Config): StorageManager;
 
-        // Own methods of GSignond.Extension
+        // Methods
 
         /**
          * Factory method to get a singleton access control manager object. See
@@ -962,17 +962,17 @@ export namespace GSignond {
     class SecretStorage extends GObject.Object {
         static $gtype: GObject.GType<SecretStorage>;
 
-        // Own properties of GSignond.SecretStorage
+        // Properties
 
         get config(): Config;
 
-        // Constructors of GSignond.SecretStorage
+        // Constructors
 
         constructor(properties?: Partial<SecretStorage.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of GSignond.SecretStorage
+        // Virtual methods
 
         /**
          * Checks whether the given credentials match what is stored in the database.
@@ -1040,7 +1040,7 @@ export namespace GSignond {
          */
         vfunc_update_data(id: number, method: number, data: Dictionary): boolean;
 
-        // Own methods of GSignond.SecretStorage
+        // Methods
 
         /**
          * Checks whether the given credentials match what is stored in the database.
@@ -1133,7 +1133,7 @@ export namespace GSignond {
     class SessionData extends Dictionary {
         static $gtype: GObject.GType<SessionData>;
 
-        // Constructors of GSignond.SessionData
+        // Constructors
 
         constructor(properties?: Partial<SessionData.ConstructorProps>, ...args: any[]);
 
@@ -1143,7 +1143,7 @@ export namespace GSignond {
 
         static new_from_variant(variant: GLib.Variant): SessionData;
 
-        // Own methods of GSignond.SessionData
+        // Methods
 
         /**
          * Creates a copy of the dictionary session data.
@@ -1275,7 +1275,7 @@ export namespace GSignond {
     class SignonuiData extends Dictionary {
         static $gtype: GObject.GType<SignonuiData>;
 
-        // Constructors of GSignond.SignonuiData
+        // Constructors
 
         constructor(properties?: Partial<SignonuiData.ConstructorProps>, ...args: any[]);
 
@@ -1285,7 +1285,7 @@ export namespace GSignond {
 
         static new_from_variant(variant: GLib.Variant): SignonuiData;
 
-        // Own methods of GSignond.SignonuiData
+        // Methods
 
         /**
          * Creates a copy of the dictionary session data.
@@ -1517,21 +1517,21 @@ export namespace GSignond {
     class StorageManager extends GObject.Object {
         static $gtype: GObject.GType<StorageManager>;
 
-        // Own properties of GSignond.StorageManager
+        // Properties
 
         get config(): Config;
 
-        // Own fields of GSignond.StorageManager
+        // Fields
 
         location: string;
 
-        // Constructors of GSignond.StorageManager
+        // Constructors
 
         constructor(properties?: Partial<StorageManager.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of GSignond.StorageManager
+        // Virtual methods
 
         /**
          * Destroys all the encryption keys and wipes the storage. gsignond_wipe_directory()
@@ -1566,7 +1566,7 @@ export namespace GSignond {
          */
         vfunc_unmount_filesystem(): boolean;
 
-        // Own methods of GSignond.StorageManager
+        // Methods
 
         /**
          * Destroys all the encryption keys and wipes the storage. gsignond_wipe_directory()
@@ -1612,7 +1612,7 @@ export namespace GSignond {
     abstract class AccessControlManagerPrivate {
         static $gtype: GObject.GType<AccessControlManagerPrivate>;
 
-        // Constructors of GSignond.AccessControlManagerPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1626,7 +1626,7 @@ export namespace GSignond {
     abstract class SecretStoragePrivate {
         static $gtype: GObject.GType<SecretStoragePrivate>;
 
-        // Constructors of GSignond.SecretStoragePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1634,12 +1634,12 @@ export namespace GSignond {
     class SecurityContext {
         static $gtype: GObject.GType<SecurityContext>;
 
-        // Own fields of GSignond.SecurityContext
+        // Fields
 
         sys_ctx: string;
         app_ctx: string;
 
-        // Constructors of GSignond.SecurityContext
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -1653,7 +1653,7 @@ export namespace GSignond {
 
         static new_from_values(system_context: string, application_context: string): SecurityContext;
 
-        // Own static methods of GSignond.SecurityContext
+        // Static methods
 
         /**
          * Builds a #GSignondSecurityContext item from a GVariant of type "(ss)".
@@ -1661,7 +1661,7 @@ export namespace GSignond {
          */
         static from_variant(variant: GLib.Variant): SecurityContext;
 
-        // Own methods of GSignond.SecurityContext
+        // Methods
 
         /**
          * Check if `test` is covered by `reference`.
@@ -1727,7 +1727,7 @@ export namespace GSignond {
     abstract class StorageManagerPrivate {
         static $gtype: GObject.GType<StorageManagerPrivate>;
 
-        // Constructors of GSignond.StorageManagerPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1746,7 +1746,7 @@ export namespace GSignond {
         prototype: Plugin;
     }
     interface Plugin extends GObject.Object {
-        // Own properties of GSignond.Plugin
+        // Properties
 
         /**
          * This property holds a list of authentication mechanisms that the plugin
@@ -1760,7 +1760,7 @@ export namespace GSignond {
          */
         get type(): string;
 
-        // Own methods of GSignond.Plugin
+        // Methods
 
         /**
          * This method cancels an ongoing authentication session. The plugin implementations
@@ -1837,7 +1837,7 @@ export namespace GSignond {
          */
         user_action_required(ui_data: SignonuiData): void;
 
-        // Own virtual methods of GSignond.Plugin
+        // Virtual methods
 
         /**
          * This method cancels an ongoing authentication session. The plugin implementations

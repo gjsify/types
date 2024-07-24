@@ -422,14 +422,14 @@ export namespace Graphene {
     class Box {
         static $gtype: GObject.GType<Box>;
 
-        // Constructors of Graphene.Box
+        // Constructors
 
         constructor(properties?: Partial<{}>);
         _init(...args: any[]): void;
 
         static alloc(): Box;
 
-        // Own static methods of Graphene.Box
+        // Static methods
 
         /**
          * A degenerate #graphene_box_t that can only be expanded.
@@ -471,7 +471,7 @@ export namespace Graphene {
          */
         static zero(): Box;
 
-        // Own methods of Graphene.Box
+        // Methods
 
         /**
          * Checks whether the #graphene_box_t `a` contains the given
@@ -625,14 +625,14 @@ export namespace Graphene {
     class Euler {
         static $gtype: GObject.GType<Euler>;
 
-        // Constructors of Graphene.Euler
+        // Constructors
 
         constructor(properties?: Partial<{}>);
         _init(...args: any[]): void;
 
         static alloc(): Euler;
 
-        // Own methods of Graphene.Euler
+        // Methods
 
         /**
          * Checks if two #graphene_euler_t are equal.
@@ -812,14 +812,14 @@ export namespace Graphene {
     class Frustum {
         static $gtype: GObject.GType<Frustum>;
 
-        // Constructors of Graphene.Frustum
+        // Constructors
 
         constructor(properties?: Partial<{}>);
         _init(...args: any[]): void;
 
         static alloc(): Frustum;
 
-        // Own methods of Graphene.Frustum
+        // Methods
 
         /**
          * Checks whether a point is inside the volume defined by the given
@@ -892,14 +892,14 @@ export namespace Graphene {
     class Matrix {
         static $gtype: GObject.GType<Matrix>;
 
-        // Constructors of Graphene.Matrix
+        // Constructors
 
         constructor(properties?: Partial<{}>);
         _init(...args: any[]): void;
 
         static alloc(): Matrix;
 
-        // Own methods of Graphene.Matrix
+        // Methods
 
         /**
          * Decomposes a transformation matrix into its component transformations.
@@ -1453,14 +1453,14 @@ export namespace Graphene {
     class Plane {
         static $gtype: GObject.GType<Plane>;
 
-        // Constructors of Graphene.Plane
+        // Constructors
 
         constructor(properties?: Partial<{}>);
         _init(...args: any[]): void;
 
         static alloc(): Plane;
 
-        // Own methods of Graphene.Plane
+        // Methods
 
         /**
          * Computes the distance of `point` from a #graphene_plane_t.
@@ -1562,12 +1562,12 @@ export namespace Graphene {
     class Point {
         static $gtype: GObject.GType<Point>;
 
-        // Own fields of Graphene.Point
+        // Fields
 
         x: number;
         y: number;
 
-        // Constructors of Graphene.Point
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -1579,14 +1579,14 @@ export namespace Graphene {
 
         static alloc(): Point;
 
-        // Own static methods of Graphene.Point
+        // Static methods
 
         /**
          * Returns a point fixed at (0, 0).
          */
         static zero(): Point;
 
-        // Own methods of Graphene.Point
+        // Methods
 
         /**
          * Computes the distance between `a` and `b`.
@@ -1664,13 +1664,13 @@ export namespace Graphene {
     class Point3D {
         static $gtype: GObject.GType<Point3D>;
 
-        // Own fields of Graphene.Point3D
+        // Fields
 
         x: number;
         y: number;
         z: number;
 
-        // Constructors of Graphene.Point3D
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -1683,14 +1683,14 @@ export namespace Graphene {
 
         static alloc(): Point3D;
 
-        // Own static methods of Graphene.Point3D
+        // Static methods
 
         /**
          * Retrieves a constant point with all three coordinates set to 0.
          */
         static zero(): Point3D;
 
-        // Own methods of Graphene.Point3D
+        // Methods
 
         /**
          * Computes the cross product of the two given #graphene_point3d_t.
@@ -1800,14 +1800,14 @@ export namespace Graphene {
     class Quad {
         static $gtype: GObject.GType<Quad>;
 
-        // Constructors of Graphene.Quad
+        // Constructors
 
         constructor(properties?: Partial<{}>);
         _init(...args: any[]): void;
 
         static alloc(): Quad;
 
-        // Own methods of Graphene.Quad
+        // Methods
 
         /**
          * Computes the bounding rectangle of `q` and places it into `r`.
@@ -1862,14 +1862,14 @@ export namespace Graphene {
     class Quaternion {
         static $gtype: GObject.GType<Quaternion>;
 
-        // Constructors of Graphene.Quaternion
+        // Constructors
 
         constructor(properties?: Partial<{}>);
         _init(...args: any[]): void;
 
         static alloc(): Quaternion;
 
-        // Own methods of Graphene.Quaternion
+        // Methods
 
         /**
          * Adds two #graphene_quaternion_t `a` and `b`.
@@ -2029,14 +2029,14 @@ export namespace Graphene {
     class Ray {
         static $gtype: GObject.GType<Ray>;
 
-        // Constructors of Graphene.Ray
+        // Constructors
 
         constructor(properties?: Partial<{}>);
         _init(...args: any[]): void;
 
         static alloc(): Ray;
 
-        // Own methods of Graphene.Ray
+        // Methods
 
         /**
          * Checks whether the two given #graphene_ray_t are equal.
@@ -2177,12 +2177,12 @@ export namespace Graphene {
     class Rect {
         static $gtype: GObject.GType<Rect>;
 
-        // Own fields of Graphene.Rect
+        // Fields
 
         origin: Point;
         size: Size;
 
-        // Constructors of Graphene.Rect
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -2192,7 +2192,7 @@ export namespace Graphene {
         );
         _init(...args: any[]): void;
 
-        // Own static methods of Graphene.Rect
+        // Static methods
 
         /**
          * Allocates a new #graphene_rect_t.
@@ -2206,7 +2206,7 @@ export namespace Graphene {
          */
         static zero(): Rect;
 
-        // Own methods of Graphene.Rect
+        // Methods
 
         /**
          * Checks whether a #graphene_rect_t contains the given coordinates.
@@ -2465,7 +2465,7 @@ export namespace Graphene {
     class Simd4F {
         static $gtype: GObject.GType<Simd4F>;
 
-        // Constructors of Graphene.Simd4F
+        // Constructors
 
         constructor(properties?: Partial<{}>);
         _init(...args: any[]): void;
@@ -2474,7 +2474,7 @@ export namespace Graphene {
     class Simd4X4F {
         static $gtype: GObject.GType<Simd4X4F>;
 
-        // Constructors of Graphene.Simd4X4F
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2485,12 +2485,12 @@ export namespace Graphene {
     class Size {
         static $gtype: GObject.GType<Size>;
 
-        // Own fields of Graphene.Size
+        // Fields
 
         width: number;
         height: number;
 
-        // Constructors of Graphene.Size
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -2502,7 +2502,7 @@ export namespace Graphene {
 
         static alloc(): Size;
 
-        // Own static methods of Graphene.Size
+        // Static methods
 
         /**
          * A constant pointer to a zero #graphene_size_t, useful for
@@ -2510,7 +2510,7 @@ export namespace Graphene {
          */
         static zero(): Size;
 
-        // Own methods of Graphene.Size
+        // Methods
 
         /**
          * Checks whether the two give #graphene_size_t are equal.
@@ -2556,14 +2556,14 @@ export namespace Graphene {
     class Sphere {
         static $gtype: GObject.GType<Sphere>;
 
-        // Constructors of Graphene.Sphere
+        // Constructors
 
         constructor(properties?: Partial<{}>);
         _init(...args: any[]): void;
 
         static alloc(): Sphere;
 
-        // Own methods of Graphene.Sphere
+        // Methods
 
         /**
          * Checks whether the given `point` is contained in the volume
@@ -2650,14 +2650,14 @@ export namespace Graphene {
     class Triangle {
         static $gtype: GObject.GType<Triangle>;
 
-        // Constructors of Graphene.Triangle
+        // Constructors
 
         constructor(properties?: Partial<{}>);
         _init(...args: any[]): void;
 
         static alloc(): Triangle;
 
-        // Own methods of Graphene.Triangle
+        // Methods
 
         /**
          * Checks whether the given triangle `t` contains the point `p`.
@@ -2786,14 +2786,14 @@ export namespace Graphene {
     class Vec2 {
         static $gtype: GObject.GType<Vec2>;
 
-        // Constructors of Graphene.Vec2
+        // Constructors
 
         constructor(properties?: Partial<{}>);
         _init(...args: any[]): void;
 
         static alloc(): Vec2;
 
-        // Own static methods of Graphene.Vec2
+        // Static methods
 
         /**
          * Retrieves a constant vector with (1, 1) components.
@@ -2812,7 +2812,7 @@ export namespace Graphene {
          */
         static zero(): Vec2;
 
-        // Own methods of Graphene.Vec2
+        // Methods
 
         /**
          * Adds each component of the two passed vectors and places
@@ -2946,14 +2946,14 @@ export namespace Graphene {
     class Vec3 {
         static $gtype: GObject.GType<Vec3>;
 
-        // Constructors of Graphene.Vec3
+        // Constructors
 
         constructor(properties?: Partial<{}>);
         _init(...args: any[]): void;
 
         static alloc(): Vec3;
 
-        // Own static methods of Graphene.Vec3
+        // Static methods
 
         /**
          * Provides a constant pointer to a vector with three components,
@@ -2981,7 +2981,7 @@ export namespace Graphene {
          */
         static zero(): Vec3;
 
-        // Own methods of Graphene.Vec3
+        // Methods
 
         /**
          * Adds each component of the two given vectors.
@@ -3151,14 +3151,14 @@ export namespace Graphene {
     class Vec4 {
         static $gtype: GObject.GType<Vec4>;
 
-        // Constructors of Graphene.Vec4
+        // Constructors
 
         constructor(properties?: Partial<{}>);
         _init(...args: any[]): void;
 
         static alloc(): Vec4;
 
-        // Own static methods of Graphene.Vec4
+        // Static methods
 
         /**
          * Retrieves a pointer to a #graphene_vec4_t with all its
@@ -3191,7 +3191,7 @@ export namespace Graphene {
          */
         static zero(): Vec4;
 
-        // Own methods of Graphene.Vec4
+        // Methods
 
         /**
          * Adds each component of the two given vectors.

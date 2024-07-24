@@ -718,16 +718,16 @@ export namespace Gegl {
     class AudioFragment extends GObject.Object {
         static $gtype: GObject.GType<AudioFragment>;
 
-        // Own properties of Gegl.AudioFragment
+        // Properties
 
         get string(): string;
         set string(val: string);
 
-        // Own fields of Gegl.AudioFragment
+        // Fields
 
         data: number[];
 
-        // Constructors of Gegl.AudioFragment
+        // Constructors
 
         constructor(properties?: Partial<AudioFragment.ConstructorProps>, ...args: any[]);
 
@@ -740,7 +740,7 @@ export namespace Gegl {
             max_samples: number,
         ): AudioFragment;
 
-        // Own methods of Gegl.AudioFragment
+        // Methods
 
         get_channel_layout(): number;
         get_channels(): number;
@@ -799,7 +799,7 @@ export namespace Gegl {
     class Buffer extends TileHandler {
         static $gtype: GObject.GType<Buffer>;
 
-        // Own properties of Gegl.Buffer
+        // Properties
 
         get abyss_height(): number;
         get abyssHeight(): number;
@@ -834,7 +834,7 @@ export namespace Gegl {
         get y(): number;
         set y(val: number);
 
-        // Constructors of Gegl.Buffer
+        // Constructors
 
         constructor(properties?: Partial<Buffer.ConstructorProps>, ...args: any[]);
 
@@ -844,7 +844,7 @@ export namespace Gegl {
 
         static new_for_backend(extent: Rectangle, backend: TileBackend): Buffer;
 
-        // Own signals of Gegl.Buffer
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -853,7 +853,7 @@ export namespace Gegl {
         connect_after(signal: 'changed', callback: (_source: this, object: Rectangle) => void): number;
         emit(signal: 'changed', object: Rectangle): void;
 
-        // Own static methods of Gegl.Buffer
+        // Static methods
 
         /**
          * Loads an existing GeglBuffer from disk, if it has previously been saved with
@@ -891,7 +891,7 @@ export namespace Gegl {
          */
         static swap_remove_file(path: string): void;
 
-        // Own methods of Gegl.Buffer
+        // Methods
 
         /**
          * Add a new tile handler in the existing chain of tile handler of a GeglBuffer.
@@ -1080,12 +1080,12 @@ export namespace Gegl {
     class Color extends GObject.Object {
         static $gtype: GObject.GType<Color>;
 
-        // Own properties of Gegl.Color
+        // Properties
 
         get string(): string;
         set string(val: string);
 
-        // Constructors of Gegl.Color
+        // Constructors
 
         constructor(properties?: Partial<Color.ConstructorProps>, ...args: any[]);
 
@@ -1093,7 +1093,7 @@ export namespace Gegl {
 
         static ['new'](string: string): Color;
 
-        // Own methods of Gegl.Color
+        // Methods
 
         /**
          * Creates a copy of `color`.
@@ -1207,7 +1207,7 @@ export namespace Gegl {
     class Config extends GObject.Object {
         static $gtype: GObject.GType<Config>;
 
-        // Own properties of Gegl.Config
+        // Properties
 
         get application_license(): string;
         set application_license(val: string);
@@ -1252,7 +1252,7 @@ export namespace Gegl {
         get useOpencl(): boolean;
         set useOpencl(val: boolean);
 
-        // Constructors of Gegl.Config
+        // Constructors
 
         constructor(properties?: Partial<Config.ConstructorProps>, ...args: any[]);
 
@@ -1268,7 +1268,7 @@ export namespace Gegl {
     class Curve extends GObject.Object {
         static $gtype: GObject.GType<Curve>;
 
-        // Constructors of Gegl.Curve
+        // Constructors
 
         constructor(properties?: Partial<Curve.ConstructorProps>, ...args: any[]);
 
@@ -1278,7 +1278,7 @@ export namespace Gegl {
 
         static new_default(): Curve;
 
-        // Own methods of Gegl.Curve
+        // Methods
 
         /**
          * Add a point to the curve at `x` `y` (replacing the value exactly for `x` if it
@@ -1333,7 +1333,7 @@ export namespace Gegl {
     class MetadataHash extends MetadataStore implements Metadata {
         static $gtype: GObject.GType<MetadataHash>;
 
-        // Constructors of Gegl.MetadataHash
+        // Constructors
 
         constructor(properties?: Partial<MetadataHash.ConstructorProps>, ...args: any[]);
 
@@ -1934,7 +1934,7 @@ export namespace Gegl {
     abstract class MetadataStore extends GObject.Object implements Metadata {
         static $gtype: GObject.GType<MetadataStore>;
 
-        // Own properties of Gegl.MetadataStore
+        // Properties
 
         /**
          * Name of image creator.
@@ -2029,13 +2029,13 @@ export namespace Gegl {
         get warning(): string;
         set warning(val: string);
 
-        // Constructors of Gegl.MetadataStore
+        // Constructors
 
         constructor(properties?: Partial<MetadataStore.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of Gegl.MetadataStore
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -2077,7 +2077,7 @@ export namespace Gegl {
         ): number;
         emit(signal: 'unmapped', file_module: string, local_name: string): void;
 
-        // Own virtual methods of Gegl.MetadataStore
+        // Virtual methods
 
         vfunc__declare(pspec: GObject.ParamSpec, shadow: boolean): void;
         vfunc__get_value(name: string): unknown;
@@ -2098,7 +2098,7 @@ export namespace Gegl {
          */
         vfunc_set_value(name: string, value: GObject.Value | any): void;
 
-        // Own methods of Gegl.MetadataStore
+        // Methods
 
         /**
          * Declare a metadata value using a #GParamSpec.
@@ -2862,7 +2862,7 @@ export namespace Gegl {
     class Node extends GObject.Object {
         static $gtype: GObject.GType<Node>;
 
-        // Own properties of Gegl.Node
+        // Properties
 
         get cache_policy(): CachePolicy;
         set cache_policy(val: CachePolicy);
@@ -2887,7 +2887,7 @@ export namespace Gegl {
         get useOpencl(): boolean;
         set useOpencl(val: boolean);
 
-        // Constructors of Gegl.Node
+        // Constructors
 
         constructor(properties?: Partial<Node.ConstructorProps>, ...args: any[]);
 
@@ -2901,7 +2901,7 @@ export namespace Gegl {
 
         static new_from_xml(xmldata: string, path_root: string): Node;
 
-        // Own signals of Gegl.Node
+        // Signals
 
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -2912,7 +2912,7 @@ export namespace Gegl {
         connect_after(signal: 'progress', callback: (_source: this, object: number) => void): number;
         emit(signal: 'progress', object: number): void;
 
-        // Own methods of Gegl.Node
+        // Methods
 
         /**
          * Make the GeglNode `graph,` take a reference on child. This reference
@@ -3145,13 +3145,13 @@ export namespace Gegl {
     class Operation extends GObject.Object {
         static $gtype: GObject.GType<Operation>;
 
-        // Constructors of Gegl.Operation
+        // Constructors
 
         constructor(properties?: Partial<Operation.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of Gegl.Operation
+        // Static methods
 
         static find_property(operation_type: string, property_name: string): GObject.ParamSpec;
         // Conflicted with GObject.Object.find_property
@@ -3181,7 +3181,7 @@ export namespace Gegl {
     class Path extends GObject.Object {
         static $gtype: GObject.GType<Path>;
 
-        // Constructors of Gegl.Path
+        // Constructors
 
         constructor(properties?: Partial<Path.ConstructorProps>, ...args: any[]);
 
@@ -3191,7 +3191,7 @@ export namespace Gegl {
 
         static new_from_string(instructions: string): Path;
 
-        // Own signals of Gegl.Path
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -3200,7 +3200,7 @@ export namespace Gegl {
         connect_after(signal: 'changed', callback: (_source: this, object: any | null) => void): number;
         emit(signal: 'changed', object?: any | null): void;
 
-        // Own static methods of Gegl.Path
+        // Static methods
 
         /**
          * Adds a new type to the path system, FIXME this should probably
@@ -3212,7 +3212,7 @@ export namespace Gegl {
          */
         static add_type(type: number, items: number, description: string): void;
 
-        // Own methods of Gegl.Path
+        // Methods
 
         /**
          * Compute the coordinates of the path at the `position` (length measured from
@@ -3349,7 +3349,7 @@ export namespace Gegl {
     class Processor extends GObject.Object {
         static $gtype: GObject.GType<Processor>;
 
-        // Own properties of Gegl.Processor
+        // Properties
 
         get chunksize(): number;
         set node(val: Node);
@@ -3358,13 +3358,13 @@ export namespace Gegl {
         get rectangle(): any;
         set rectangle(val: any);
 
-        // Constructors of Gegl.Processor
+        // Constructors
 
         constructor(properties?: Partial<Processor.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Gegl.Processor
+        // Methods
 
         /**
          * Returns the (cache) buffer the processor is rendering into, another way of
@@ -3448,7 +3448,7 @@ export namespace Gegl {
     class Stats extends GObject.Object {
         static $gtype: GObject.GType<Stats>;
 
-        // Own properties of Gegl.Stats
+        // Properties
 
         get active_threads(): number;
         get activeThreads(): number;
@@ -3493,7 +3493,7 @@ export namespace Gegl {
         get zoom_total(): number;
         get zoomTotal(): number;
 
-        // Constructors of Gegl.Stats
+        // Constructors
 
         constructor(properties?: Partial<Stats.ConstructorProps>, ...args: any[]);
 
@@ -3521,7 +3521,7 @@ export namespace Gegl {
     class TileBackend extends TileSource {
         static $gtype: GObject.GType<TileBackend>;
 
-        // Own properties of Gegl.TileBackend
+        // Properties
 
         get flush_on_destroy(): boolean;
         set flush_on_destroy(val: boolean);
@@ -3537,13 +3537,13 @@ export namespace Gegl {
         get tile_width(): number;
         get tileWidth(): number;
 
-        // Constructors of Gegl.TileBackend
+        // Constructors
 
         constructor(properties?: Partial<TileBackend.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of Gegl.TileBackend
+        // Static methods
 
         /**
          * Delete a swap file from disk. This must be used by tile backends which may
@@ -3555,7 +3555,7 @@ export namespace Gegl {
          */
         static unlink_swap(path: string): void;
 
-        // Own methods of Gegl.TileBackend
+        // Methods
 
         get_flush_on_destroy(): boolean;
         get_tile_height(): number;
@@ -3592,18 +3592,18 @@ export namespace Gegl {
     class TileHandler extends TileSource {
         static $gtype: GObject.GType<TileHandler>;
 
-        // Own properties of Gegl.TileHandler
+        // Properties
 
         get source(): GObject.Object;
         set source(val: GObject.Object);
 
-        // Constructors of Gegl.TileHandler
+        // Constructors
 
         constructor(properties?: Partial<TileHandler.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Gegl.TileHandler
+        // Methods
 
         damage_rect(rect: Rectangle): void;
         damage_tile(x: number, y: number, z: number, damage: number): void;
@@ -3621,12 +3621,12 @@ export namespace Gegl {
     class TileSource extends GObject.Object {
         static $gtype: GObject.GType<TileSource>;
 
-        // Own fields of Gegl.TileSource
+        // Fields
 
         command: TileSourceCommand;
         padding: any[];
 
-        // Constructors of Gegl.TileSource
+        // Constructors
 
         constructor(properties?: Partial<TileSource.ConstructorProps>, ...args: any[]);
 
@@ -3637,7 +3637,7 @@ export namespace Gegl {
     abstract class AudioFragmentPrivate {
         static $gtype: GObject.GType<AudioFragmentPrivate>;
 
-        // Constructors of Gegl.AudioFragmentPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3645,12 +3645,12 @@ export namespace Gegl {
     class BufferIterator {
         static $gtype: GObject.GType<BufferIterator>;
 
-        // Own fields of Gegl.BufferIterator
+        // Fields
 
         length: number;
         items: BufferIteratorItem[];
 
-        // Constructors of Gegl.BufferIterator
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3658,12 +3658,12 @@ export namespace Gegl {
     class BufferIteratorItem {
         static $gtype: GObject.GType<BufferIteratorItem>;
 
-        // Own fields of Gegl.BufferIteratorItem
+        // Fields
 
         data: any;
         roi: Rectangle;
 
-        // Constructors of Gegl.BufferIteratorItem
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -3677,7 +3677,7 @@ export namespace Gegl {
     abstract class BufferIteratorPriv {
         static $gtype: GObject.GType<BufferIteratorPriv>;
 
-        // Constructors of Gegl.BufferIteratorPriv
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3685,11 +3685,11 @@ export namespace Gegl {
     class BufferMatrix2 {
         static $gtype: GObject.GType<BufferMatrix2>;
 
-        // Own fields of Gegl.BufferMatrix2
+        // Fields
 
         coeff: number[];
 
-        // Constructors of Gegl.BufferMatrix2
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -3698,7 +3698,7 @@ export namespace Gegl {
         );
         _init(...args: any[]): void;
 
-        // Own methods of Gegl.BufferMatrix2
+        // Methods
 
         determinant(): number;
         is_identity(): boolean;
@@ -3709,7 +3709,7 @@ export namespace Gegl {
     abstract class ColorPrivate {
         static $gtype: GObject.GType<ColorPrivate>;
 
-        // Constructors of Gegl.ColorPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3718,7 +3718,7 @@ export namespace Gegl {
     class Lookup {
         static $gtype: GObject.GType<Lookup>;
 
-        // Own fields of Gegl.Lookup
+        // Fields
 
         'function': LookupFunction;
         data: any;
@@ -3730,7 +3730,7 @@ export namespace Gegl {
         bitmask: number[];
         table: number[];
 
-        // Constructors of Gegl.Lookup
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3738,11 +3738,11 @@ export namespace Gegl {
     class Matrix3 {
         static $gtype: GObject.GType<Matrix3>;
 
-        // Own fields of Gegl.Matrix3
+        // Fields
 
         coeff: number[];
 
-        // Constructors of Gegl.Matrix3
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -3753,7 +3753,7 @@ export namespace Gegl {
 
         static ['new'](): Matrix3;
 
-        // Own methods of Gegl.Matrix3
+        // Methods
 
         /**
          * Returns a copy of `src`.
@@ -3859,7 +3859,7 @@ export namespace Gegl {
     class MetadataIter {
         static $gtype: GObject.GType<MetadataIter>;
 
-        // Constructors of Gegl.MetadataIter
+        // Constructors
 
         constructor(properties?: Partial<{}>);
         _init(...args: any[]): void;
@@ -3873,13 +3873,13 @@ export namespace Gegl {
     class MetadataMap {
         static $gtype: GObject.GType<MetadataMap>;
 
-        // Own fields of Gegl.MetadataMap
+        // Fields
 
         local_name: string;
         name: string;
         transform: GObject.ValueTransform;
 
-        // Constructors of Gegl.MetadataMap
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3888,7 +3888,7 @@ export namespace Gegl {
     abstract class OperationContext {
         static $gtype: GObject.GType<OperationContext>;
 
-        // Constructors of Gegl.OperationContext
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3896,7 +3896,7 @@ export namespace Gegl {
     class ParamSpecDouble {
         static $gtype: GObject.GType<ParamSpecDouble>;
 
-        // Own fields of Gegl.ParamSpecDouble
+        // Fields
 
         ui_minimum: number;
         ui_maximum: number;
@@ -3905,11 +3905,11 @@ export namespace Gegl {
         ui_step_big: number;
         ui_digits: number;
 
-        // Constructors of Gegl.ParamSpecDouble
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of Gegl.ParamSpecDouble
+        // Methods
 
         set_digits(digits: number): void;
         set_steps(small_step: number, big_step: number): void;
@@ -3918,15 +3918,15 @@ export namespace Gegl {
     class ParamSpecEnum {
         static $gtype: GObject.GType<ParamSpecEnum>;
 
-        // Own fields of Gegl.ParamSpecEnum
+        // Fields
 
         excluded_values: any[];
 
-        // Constructors of Gegl.ParamSpecEnum
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of Gegl.ParamSpecEnum
+        // Methods
 
         exclude_value(value: number): void;
     }
@@ -3934,12 +3934,12 @@ export namespace Gegl {
     class ParamSpecFilePath {
         static $gtype: GObject.GType<ParamSpecFilePath>;
 
-        // Own fields of Gegl.ParamSpecFilePath
+        // Fields
 
         no_validate: number;
         null_ok: number;
 
-        // Constructors of Gegl.ParamSpecFilePath
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3947,7 +3947,7 @@ export namespace Gegl {
     class ParamSpecFormat {
         static $gtype: GObject.GType<ParamSpecFormat>;
 
-        // Constructors of Gegl.ParamSpecFormat
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3955,7 +3955,7 @@ export namespace Gegl {
     class ParamSpecInt {
         static $gtype: GObject.GType<ParamSpecInt>;
 
-        // Own fields of Gegl.ParamSpecInt
+        // Fields
 
         ui_minimum: number;
         ui_maximum: number;
@@ -3963,11 +3963,11 @@ export namespace Gegl {
         ui_step_small: number;
         ui_step_big: number;
 
-        // Constructors of Gegl.ParamSpecInt
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of Gegl.ParamSpecInt
+        // Methods
 
         set_steps(small_step: number, big_step: number): void;
     }
@@ -3975,12 +3975,12 @@ export namespace Gegl {
     class ParamSpecSeed {
         static $gtype: GObject.GType<ParamSpecSeed>;
 
-        // Own fields of Gegl.ParamSpecSeed
+        // Fields
 
         ui_minimum: number;
         ui_maximum: number;
 
-        // Constructors of Gegl.ParamSpecSeed
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3988,12 +3988,12 @@ export namespace Gegl {
     class ParamSpecString {
         static $gtype: GObject.GType<ParamSpecString>;
 
-        // Own fields of Gegl.ParamSpecString
+        // Fields
 
         no_validate: number;
         null_ok: number;
 
-        // Constructors of Gegl.ParamSpecString
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4001,12 +4001,12 @@ export namespace Gegl {
     class ParamSpecUri {
         static $gtype: GObject.GType<ParamSpecUri>;
 
-        // Own fields of Gegl.ParamSpecUri
+        // Fields
 
         no_validate: number;
         null_ok: number;
 
-        // Constructors of Gegl.ParamSpecUri
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4015,12 +4015,12 @@ export namespace Gegl {
     class PathItem {
         static $gtype: GObject.GType<PathItem>;
 
-        // Own fields of Gegl.PathItem
+        // Fields
 
         type: number;
         point: PathPoint[];
 
-        // Constructors of Gegl.PathItem
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -4034,12 +4034,12 @@ export namespace Gegl {
     class PathList {
         static $gtype: GObject.GType<PathList>;
 
-        // Own fields of Gegl.PathList
+        // Fields
 
         next: any;
         d: PathItem;
 
-        // Constructors of Gegl.PathList
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -4053,12 +4053,12 @@ export namespace Gegl {
     class PathPoint {
         static $gtype: GObject.GType<PathPoint>;
 
-        // Own fields of Gegl.PathPoint
+        // Fields
 
         x: number;
         y: number;
 
-        // Constructors of Gegl.PathPoint
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -4072,7 +4072,7 @@ export namespace Gegl {
     class Random {
         static $gtype: GObject.GType<Random>;
 
-        // Constructors of Gegl.Random
+        // Constructors
 
         constructor(properties?: Partial<{}>);
         _init(...args: any[]): void;
@@ -4081,7 +4081,7 @@ export namespace Gegl {
 
         static new_with_seed(seed: number): Random;
 
-        // Own methods of Gegl.Random
+        // Methods
 
         /**
          * Return a new copy of an existing GeglRandom
@@ -4142,14 +4142,14 @@ export namespace Gegl {
     class Rectangle {
         static $gtype: GObject.GType<Rectangle>;
 
-        // Own fields of Gegl.Rectangle
+        // Fields
 
         x: number;
         y: number;
         width: number;
         height: number;
 
-        // Constructors of Gegl.Rectangle
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -4163,14 +4163,14 @@ export namespace Gegl {
 
         static ['new'](x: number, y: number, width: number, height: number): Rectangle;
 
-        // Own static methods of Gegl.Rectangle
+        // Static methods
 
         /**
          * Returns a GeglRectangle that represents an infininte plane.
          */
         static infinite_plane(): Rectangle;
 
-        // Own methods of Gegl.Rectangle
+        // Methods
 
         /**
          * Aligns `rectangle` to a regular tile grid, of which `tile` is a representative
@@ -4329,11 +4329,11 @@ export namespace Gegl {
     abstract class Sampler {
         static $gtype: GObject.GType<Sampler>;
 
-        // Constructors of Gegl.Sampler
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of Gegl.Sampler
+        // Methods
 
         /**
          * Perform a sampling with the provided `sampler`.
@@ -4350,7 +4350,7 @@ export namespace Gegl {
     abstract class Tile {
         static $gtype: GObject.GType<Tile>;
 
-        // Constructors of Gegl.Tile
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4359,7 +4359,7 @@ export namespace Gegl {
     abstract class TileBackendPrivate {
         static $gtype: GObject.GType<TileBackendPrivate>;
 
-        // Constructors of Gegl.TileBackendPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4367,14 +4367,14 @@ export namespace Gegl {
     class TileCopyParams {
         static $gtype: GObject.GType<TileCopyParams>;
 
-        // Own fields of Gegl.TileCopyParams
+        // Fields
 
         dst_buffer: Buffer;
         dst_x: number;
         dst_y: number;
         dst_z: number;
 
-        // Constructors of Gegl.TileCopyParams
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4383,7 +4383,7 @@ export namespace Gegl {
     abstract class TileHandlerPrivate {
         static $gtype: GObject.GType<TileHandlerPrivate>;
 
-        // Constructors of Gegl.TileHandlerPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4400,7 +4400,7 @@ export namespace Gegl {
         prototype: Metadata;
     }
     interface Metadata extends GObject.Object {
-        // Own methods of Gegl.Metadata
+        // Methods
 
         /**
          * Retrieve resolution from the application image metadata.  Intended for use
@@ -4478,7 +4478,7 @@ export namespace Gegl {
          */
         unregister_map(): void;
 
-        // Own virtual methods of Gegl.Metadata
+        // Virtual methods
 
         /**
          * Retrieve resolution from the application image metadata.  Intended for use

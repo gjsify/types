@@ -127,7 +127,7 @@ export namespace Panel {
     class ActionMuxer extends GObject.Object implements Gio.ActionGroup {
         static $gtype: GObject.GType<ActionMuxer>;
 
-        // Constructors of Panel.ActionMuxer
+        // Constructors
 
         constructor(properties?: Partial<ActionMuxer.ConstructorProps>, ...args: any[]);
 
@@ -135,7 +135,7 @@ export namespace Panel {
 
         static ['new'](): ActionMuxer;
 
-        // Own methods of Panel.ActionMuxer
+        // Methods
 
         /**
          * Locates the #GActionGroup inserted as `prefix`.
@@ -1011,7 +1011,7 @@ export namespace Panel {
     class Application extends Adw.Application implements Gio.ActionGroup, Gio.ActionMap {
         static $gtype: GObject.GType<Application>;
 
-        // Constructors of Panel.Application
+        // Constructors
 
         constructor(properties?: Partial<Application.ConstructorProps>, ...args: any[]);
 
@@ -1494,7 +1494,7 @@ export namespace Panel {
     class Dock extends Gtk.Widget implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
         static $gtype: GObject.GType<Dock>;
 
-        // Own properties of Panel.Dock
+        // Properties
 
         get bottom_height(): number;
         set bottom_height(val: number);
@@ -1537,7 +1537,7 @@ export namespace Panel {
         get topHeight(): number;
         set topHeight(val: number);
 
-        // Constructors of Panel.Dock
+        // Constructors
 
         constructor(properties?: Partial<Dock.ConstructorProps>, ...args: any[]);
 
@@ -1545,7 +1545,7 @@ export namespace Panel {
 
         static ['new'](): Dock;
 
-        // Own signals of Panel.Dock
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -1563,12 +1563,12 @@ export namespace Panel {
         connect_after(signal: 'panel-drag-end', callback: (_source: this, panel: Widget) => void): number;
         emit(signal: 'panel-drag-end', panel: Widget): void;
 
-        // Own virtual methods of Panel.Dock
+        // Virtual methods
 
         vfunc_panel_drag_begin(widget: Widget): void;
         vfunc_panel_drag_end(widget: Widget): void;
 
-        // Own methods of Panel.Dock
+        // Methods
 
         /**
          * Invokes a callback for each frame in the dock.
@@ -2403,13 +2403,13 @@ export namespace Panel {
     {
         static $gtype: GObject.GType<DocumentWorkspace>;
 
-        // Own properties of Panel.DocumentWorkspace
+        // Properties
 
         get dock(): Dock;
         get grid(): Grid;
         get statusbar(): Statusbar;
 
-        // Constructors of Panel.DocumentWorkspace
+        // Constructors
 
         constructor(properties?: Partial<DocumentWorkspace.ConstructorProps>, ...args: any[]);
 
@@ -2417,7 +2417,7 @@ export namespace Panel {
 
         static ['new'](): DocumentWorkspace;
 
-        // Own signals of Panel.DocumentWorkspace
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -2432,7 +2432,7 @@ export namespace Panel {
         connect_after(signal: 'create-frame', callback: (_source: this, position: Position) => Frame): number;
         emit(signal: 'create-frame', position: Position): void;
 
-        // Own virtual methods of Panel.DocumentWorkspace
+        // Virtual methods
 
         /**
          * Requests the workspace add `widget` to the dock at `position`.
@@ -2441,7 +2441,7 @@ export namespace Panel {
          */
         vfunc_add_widget(widget: Widget, position?: Position | null): boolean;
 
-        // Own methods of Panel.DocumentWorkspace
+        // Methods
 
         /**
          * Requests the workspace add `widget` to the dock at `position`.
@@ -5330,7 +5330,7 @@ export namespace Panel {
     class Frame extends Gtk.Widget implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget, Gtk.Orientable {
         static $gtype: GObject.GType<Frame>;
 
-        // Own properties of Panel.Frame
+        // Properties
 
         get closeable(): boolean;
         get empty(): boolean;
@@ -5341,7 +5341,7 @@ export namespace Panel {
         get visibleChild(): Widget;
         set visibleChild(val: Widget);
 
-        // Constructors of Panel.Frame
+        // Constructors
 
         constructor(properties?: Partial<Frame.ConstructorProps>, ...args: any[]);
 
@@ -5349,7 +5349,7 @@ export namespace Panel {
 
         static ['new'](): Frame;
 
-        // Own signals of Panel.Frame
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -5361,12 +5361,12 @@ export namespace Panel {
         connect_after(signal: 'page-closed', callback: (_source: this, widget: Widget) => void): number;
         emit(signal: 'page-closed', widget: Widget): void;
 
-        // Own virtual methods of Panel.Frame
+        // Virtual methods
 
         vfunc_adopt_widget(widget: Widget): boolean;
         vfunc_page_closed(widget: Widget): void;
 
-        // Own methods of Panel.Frame
+        // Methods
 
         /**
          * Adds a widget to the frame.
@@ -6188,7 +6188,7 @@ export namespace Panel {
     {
         static $gtype: GObject.GType<FrameHeaderBar>;
 
-        // Own properties of Panel.FrameHeaderBar
+        // Properties
 
         /**
          * Whether to show the icon or not.
@@ -6201,7 +6201,7 @@ export namespace Panel {
         get showIcon(): boolean;
         set showIcon(val: boolean);
 
-        // Constructors of Panel.FrameHeaderBar
+        // Constructors
 
         constructor(properties?: Partial<FrameHeaderBar.ConstructorProps>, ...args: any[]);
 
@@ -6209,7 +6209,7 @@ export namespace Panel {
 
         static ['new'](): FrameHeaderBar;
 
-        // Own methods of Panel.FrameHeaderBar
+        // Methods
 
         /**
          * Gets the menu popover attached to this menubar.
@@ -9406,7 +9406,7 @@ export namespace Panel {
     {
         static $gtype: GObject.GType<FrameSwitcher>;
 
-        // Constructors of Panel.FrameSwitcher
+        // Constructors
 
         constructor(properties?: Partial<FrameSwitcher.ConstructorProps>, ...args: any[]);
 
@@ -12608,7 +12608,7 @@ export namespace Panel {
     class FrameTabBar extends Gtk.Widget implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget, FrameHeader {
         static $gtype: GObject.GType<FrameTabBar>;
 
-        // Own properties of Panel.FrameTabBar
+        // Properties
 
         /**
          * Whether the tabs automatically hide.
@@ -12631,7 +12631,7 @@ export namespace Panel {
         get inverted(): boolean;
         set inverted(val: boolean);
 
-        // Constructors of Panel.FrameTabBar
+        // Constructors
 
         constructor(properties?: Partial<FrameTabBar.ConstructorProps>, ...args: any[]);
 
@@ -12639,7 +12639,7 @@ export namespace Panel {
 
         static ['new'](): FrameTabBar;
 
-        // Own methods of Panel.FrameTabBar
+        // Methods
 
         /**
          * Gets whether the tabs automatically hide.
@@ -15839,17 +15839,17 @@ export namespace Panel {
     class GSettingsActionGroup extends GObject.Object implements Gio.ActionGroup {
         static $gtype: GObject.GType<GSettingsActionGroup>;
 
-        // Own properties of Panel.GSettingsActionGroup
+        // Properties
 
         get settings(): Gio.Settings;
 
-        // Constructors of Panel.GSettingsActionGroup
+        // Constructors
 
         constructor(properties?: Partial<GSettingsActionGroup.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of Panel.GSettingsActionGroup
+        // Static methods
 
         /**
          * Creates a new #GActionGroup that exports `settings`.
@@ -16725,7 +16725,7 @@ export namespace Panel {
     class Grid extends Gtk.Widget implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
         static $gtype: GObject.GType<Grid>;
 
-        // Constructors of Panel.Grid
+        // Constructors
 
         constructor(properties?: Partial<Grid.ConstructorProps>, ...args: any[]);
 
@@ -16733,7 +16733,7 @@ export namespace Panel {
 
         static ['new'](): Grid;
 
-        // Own signals of Panel.Grid
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -16742,7 +16742,7 @@ export namespace Panel {
         connect_after(signal: 'create-frame', callback: (_source: this) => Frame): number;
         emit(signal: 'create-frame'): void;
 
-        // Own methods of Panel.Grid
+        // Methods
 
         /**
          * Add a #PanelWidget to the grid.
@@ -17481,7 +17481,7 @@ export namespace Panel {
     class GridColumn extends Gtk.Widget implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
         static $gtype: GObject.GType<GridColumn>;
 
-        // Constructors of Panel.GridColumn
+        // Constructors
 
         constructor(properties?: Partial<GridColumn.ConstructorProps>, ...args: any[]);
 
@@ -17489,7 +17489,7 @@ export namespace Panel {
 
         static ['new'](): GridColumn;
 
-        // Own methods of Panel.GridColumn
+        // Methods
 
         /**
          * Invokes a callback for each frame in the grid column.
@@ -18199,13 +18199,13 @@ export namespace Panel {
     class Inhibitor extends GObject.Object {
         static $gtype: GObject.GType<Inhibitor>;
 
-        // Constructors of Panel.Inhibitor
+        // Constructors
 
         constructor(properties?: Partial<Inhibitor.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Panel.Inhibitor
+        // Methods
 
         uninhibit(): void;
     }
@@ -18229,13 +18229,13 @@ export namespace Panel {
     class LayeredSettings extends GObject.Object {
         static $gtype: GObject.GType<LayeredSettings>;
 
-        // Own properties of Panel.LayeredSettings
+        // Properties
 
         get path(): string;
         get schema_id(): string;
         get schemaId(): string;
 
-        // Constructors of Panel.LayeredSettings
+        // Constructors
 
         constructor(properties?: Partial<LayeredSettings.ConstructorProps>, ...args: any[]);
 
@@ -18243,7 +18243,7 @@ export namespace Panel {
 
         static ['new'](schema_id: string, path: string): LayeredSettings;
 
-        // Own signals of Panel.LayeredSettings
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -18252,7 +18252,7 @@ export namespace Panel {
         connect_after(signal: 'changed', callback: (_source: this, object: string) => void): number;
         emit(signal: 'changed', object: string): void;
 
-        // Own methods of Panel.LayeredSettings
+        // Methods
 
         append(settings: Gio.Settings): void;
         bind(key: string, object: any | null, property: string, flags: Gio.SettingsBindFlags): void;
@@ -18338,7 +18338,7 @@ export namespace Panel {
     class MenuManager extends GObject.Object {
         static $gtype: GObject.GType<MenuManager>;
 
-        // Constructors of Panel.MenuManager
+        // Constructors
 
         constructor(properties?: Partial<MenuManager.ConstructorProps>, ...args: any[]);
 
@@ -18346,7 +18346,7 @@ export namespace Panel {
 
         static ['new'](): MenuManager;
 
-        // Own methods of Panel.MenuManager
+        // Methods
 
         add_filename(filename: string): number;
         add_resource(resource: string): number;
@@ -18428,7 +18428,7 @@ export namespace Panel {
     class OmniBar extends Gtk.Widget implements Gtk.Accessible, Gtk.Actionable, Gtk.Buildable, Gtk.ConstraintTarget {
         static $gtype: GObject.GType<OmniBar>;
 
-        // Own properties of Panel.OmniBar
+        // Properties
 
         /**
          * The tooltip for the action.
@@ -18471,7 +18471,7 @@ export namespace Panel {
         get progress(): number;
         set progress(val: number);
 
-        // Constructors of Panel.OmniBar
+        // Constructors
 
         constructor(properties?: Partial<OmniBar.ConstructorProps>, ...args: any[]);
 
@@ -18479,7 +18479,7 @@ export namespace Panel {
 
         static ['new'](): OmniBar;
 
-        // Own methods of Panel.OmniBar
+        // Methods
 
         /**
          * Add a widget at the start of the container, ordered by priority.
@@ -21754,7 +21754,7 @@ export namespace Panel {
     class Paned extends Gtk.Widget implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget, Gtk.Orientable {
         static $gtype: GObject.GType<Paned>;
 
-        // Constructors of Panel.Paned
+        // Constructors
 
         constructor(properties?: Partial<Paned.ConstructorProps>, ...args: any[]);
 
@@ -21762,7 +21762,7 @@ export namespace Panel {
 
         static ['new'](): Paned;
 
-        // Own methods of Panel.Paned
+        // Methods
 
         /**
          * Append a widget in the paned.
@@ -22527,7 +22527,7 @@ export namespace Panel {
     class Position extends GObject.Object {
         static $gtype: GObject.GType<Position>;
 
-        // Own properties of Panel.Position
+        // Properties
 
         /**
          * The area.
@@ -22572,7 +22572,7 @@ export namespace Panel {
         get rowSet(): boolean;
         set rowSet(val: boolean);
 
-        // Constructors of Panel.Position
+        // Constructors
 
         constructor(properties?: Partial<Position.ConstructorProps>, ...args: any[]);
 
@@ -22582,7 +22582,7 @@ export namespace Panel {
 
         static new_from_variant(variant: GLib.Variant): Position;
 
-        // Own methods of Panel.Position
+        // Methods
 
         /**
          * Compares two #PanelPosition.
@@ -22666,7 +22666,7 @@ export namespace Panel {
     class SaveDelegate extends GObject.Object {
         static $gtype: GObject.GType<SaveDelegate>;
 
-        // Own properties of Panel.SaveDelegate
+        // Properties
 
         /**
          * The "icon" property contains a #GIcon that describes the save
@@ -22731,7 +22731,7 @@ export namespace Panel {
         get title(): string;
         set title(val: string);
 
-        // Constructors of Panel.SaveDelegate
+        // Constructors
 
         constructor(properties?: Partial<SaveDelegate.ConstructorProps>, ...args: any[]);
 
@@ -22739,7 +22739,7 @@ export namespace Panel {
 
         static ['new'](): SaveDelegate;
 
-        // Own signals of Panel.SaveDelegate
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -22754,7 +22754,7 @@ export namespace Panel {
         connect_after(signal: 'save', callback: (_source: this, task: Gio.Task) => boolean): number;
         emit(signal: 'save', task: Gio.Task): void;
 
-        // Own virtual methods of Panel.SaveDelegate
+        // Virtual methods
 
         vfunc_close(): void;
         vfunc_discard(): void;
@@ -22762,7 +22762,7 @@ export namespace Panel {
         vfunc_save_async(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): void;
         vfunc_save_finish(result: Gio.AsyncResult): boolean;
 
-        // Own methods of Panel.SaveDelegate
+        // Methods
 
         close(): void;
         discard(): void;
@@ -22836,7 +22836,7 @@ export namespace Panel {
     {
         static $gtype: GObject.GType<SaveDialog>;
 
-        // Own properties of Panel.SaveDialog
+        // Properties
 
         /**
          * This property requests that the widget close after saving.
@@ -22849,7 +22849,7 @@ export namespace Panel {
         get closeAfterSave(): boolean;
         set closeAfterSave(val: boolean);
 
-        // Constructors of Panel.SaveDialog
+        // Constructors
 
         constructor(properties?: Partial<SaveDialog.ConstructorProps>, ...args: any[]);
 
@@ -22857,7 +22857,7 @@ export namespace Panel {
 
         static ['new'](): SaveDialog;
 
-        // Own methods of Panel.SaveDialog
+        // Methods
 
         add_delegate(delegate: SaveDelegate): void;
         get_close_after_save(): boolean;
@@ -25690,7 +25690,7 @@ export namespace Panel {
     class Session extends GObject.Object {
         static $gtype: GObject.GType<Session>;
 
-        // Constructors of Panel.Session
+        // Constructors
 
         constructor(properties?: Partial<Session.ConstructorProps>, ...args: any[]);
 
@@ -25700,7 +25700,7 @@ export namespace Panel {
 
         static new_from_variant(variant: GLib.Variant): Session;
 
-        // Own methods of Panel.Session
+        // Methods
 
         append(item: SessionItem): void;
         /**
@@ -25749,7 +25749,7 @@ export namespace Panel {
     class SessionItem extends GObject.Object {
         static $gtype: GObject.GType<SessionItem>;
 
-        // Own properties of Panel.SessionItem
+        // Properties
 
         get id(): string;
         set id(val: string);
@@ -25766,7 +25766,7 @@ export namespace Panel {
         get workspace(): string;
         set workspace(val: string);
 
-        // Constructors of Panel.SessionItem
+        // Constructors
 
         constructor(properties?: Partial<SessionItem.ConstructorProps>, ...args: any[]);
 
@@ -25774,7 +25774,7 @@ export namespace Panel {
 
         static ['new'](): SessionItem;
 
-        // Own methods of Panel.SessionItem
+        // Methods
 
         /**
          * Gets the id for the session item, if any.
@@ -25899,7 +25899,7 @@ export namespace Panel {
     class Settings extends GObject.Object implements Gio.ActionGroup {
         static $gtype: GObject.GType<Settings>;
 
-        // Own properties of Panel.Settings
+        // Properties
 
         /**
          * The "identifier" property is used to make unique paths.
@@ -25917,7 +25917,7 @@ export namespace Panel {
         get schema_id_prefix(): string;
         get schemaIdPrefix(): string;
 
-        // Constructors of Panel.Settings
+        // Constructors
 
         constructor(properties?: Partial<Settings.ConstructorProps>, ...args: any[]);
 
@@ -25935,7 +25935,7 @@ export namespace Panel {
 
         static new_with_path(identifier: string, schema_id: string, path: string): Settings;
 
-        // Own signals of Panel.Settings
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -25944,7 +25944,7 @@ export namespace Panel {
         connect_after(signal: 'changed', callback: (_source: this, object: string) => void): number;
         emit(signal: 'changed', object: string): void;
 
-        // Own static methods of Panel.Settings
+        // Static methods
 
         static resolve_schema_path(
             schema_id_prefix: string,
@@ -25954,7 +25954,7 @@ export namespace Panel {
             path_suffix: string,
         ): string;
 
-        // Own methods of Panel.Settings
+        // Methods
 
         bind(key: string, object: any | null, property: string, flags: Gio.SettingsBindFlags): void;
         /**
@@ -26856,7 +26856,7 @@ export namespace Panel {
     class Statusbar extends Gtk.Widget implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
         static $gtype: GObject.GType<Statusbar>;
 
-        // Constructors of Panel.Statusbar
+        // Constructors
 
         constructor(properties?: Partial<Statusbar.ConstructorProps>, ...args: any[]);
 
@@ -26864,7 +26864,7 @@ export namespace Panel {
 
         static ['new'](): Statusbar;
 
-        // Own methods of Panel.Statusbar
+        // Methods
 
         /**
          * Adds a widget into the prefix with `priority`. The higher the
@@ -27595,7 +27595,7 @@ export namespace Panel {
     class ThemeSelector extends Gtk.Widget implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
         static $gtype: GObject.GType<ThemeSelector>;
 
-        // Own properties of Panel.ThemeSelector
+        // Properties
 
         /**
          * The name of the action activated on activation.
@@ -27608,7 +27608,7 @@ export namespace Panel {
         get actionName(): string;
         set actionName(val: string);
 
-        // Constructors of Panel.ThemeSelector
+        // Constructors
 
         constructor(properties?: Partial<ThemeSelector.ConstructorProps>, ...args: any[]);
 
@@ -27616,7 +27616,7 @@ export namespace Panel {
 
         static ['new'](): ThemeSelector;
 
-        // Own methods of Panel.ThemeSelector
+        // Methods
 
         /**
          * Gets the name of the action that will be activated.
@@ -28338,7 +28338,7 @@ export namespace Panel {
     class ToggleButton extends Gtk.Widget implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
         static $gtype: GObject.GType<ToggleButton>;
 
-        // Own properties of Panel.ToggleButton
+        // Properties
 
         /**
          * The area this button will reveal.
@@ -28350,7 +28350,7 @@ export namespace Panel {
         get dock(): Dock;
         set dock(val: Dock);
 
-        // Constructors of Panel.ToggleButton
+        // Constructors
 
         constructor(properties?: Partial<ToggleButton.ConstructorProps>, ...args: any[]);
 
@@ -29086,7 +29086,7 @@ export namespace Panel {
     class Widget extends Gtk.Widget implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
         static $gtype: GObject.GType<Widget>;
 
-        // Own properties of Panel.Widget
+        // Properties
 
         get busy(): boolean;
         get can_maximize(): boolean;
@@ -29158,7 +29158,7 @@ export namespace Panel {
         get tooltip(): string;
         set tooltip(val: string);
 
-        // Constructors of Panel.Widget
+        // Constructors
 
         constructor(properties?: Partial<Widget.ConstructorProps>, ...args: any[]);
 
@@ -29166,7 +29166,7 @@ export namespace Panel {
 
         static ['new'](): Widget;
 
-        // Own signals of Panel.Widget
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -29178,7 +29178,7 @@ export namespace Panel {
         connect_after(signal: 'presented', callback: (_source: this) => void): number;
         emit(signal: 'presented'): void;
 
-        // Own static methods of Panel.Widget
+        // Static methods
 
         static install_action(
             action_name: string,
@@ -29187,7 +29187,7 @@ export namespace Panel {
         ): void;
         static install_property_action(action_name: string, property_name: string): void;
 
-        // Own virtual methods of Panel.Widget
+        // Virtual methods
 
         /**
          * Discovers the widget that should be focused as the default widget
@@ -29199,7 +29199,7 @@ export namespace Panel {
         vfunc_get_default_focus(): Gtk.Widget | null;
         vfunc_presented(): void;
 
-        // Own methods of Panel.Widget
+        // Methods
 
         action_set_enabled(action_name: string, enabled: boolean): void;
         close(): void;
@@ -30048,7 +30048,7 @@ export namespace Panel {
     class Workbench extends Gtk.WindowGroup {
         static $gtype: GObject.GType<Workbench>;
 
-        // Own properties of Panel.Workbench
+        // Properties
 
         /**
          * The "id" of the workbench.
@@ -30059,7 +30059,7 @@ export namespace Panel {
         get id(): string;
         set id(val: string);
 
-        // Constructors of Panel.Workbench
+        // Constructors
 
         constructor(properties?: Partial<Workbench.ConstructorProps>, ...args: any[]);
 
@@ -30067,7 +30067,7 @@ export namespace Panel {
 
         static ['new'](): Workbench;
 
-        // Own signals of Panel.Workbench
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -30076,7 +30076,7 @@ export namespace Panel {
         connect_after(signal: 'activate', callback: (_source: this) => void): number;
         emit(signal: 'activate'): void;
 
-        // Own static methods of Panel.Workbench
+        // Static methods
 
         /**
          * Finds the workbench that contains `widget`.
@@ -30086,13 +30086,13 @@ export namespace Panel {
         static install_action(action_name: string, parameter_type: string | null, activate: ActionActivateFunc): void;
         static install_property_action(action_name: string, property_name: string): void;
 
-        // Own virtual methods of Panel.Workbench
+        // Virtual methods
 
         vfunc_activate(): void;
         vfunc_unload_async(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): void;
         vfunc_unload_finish(result: Gio.AsyncResult): boolean;
 
-        // Own methods of Panel.Workbench
+        // Methods
 
         action_set_enabled(action_name: string, enabled: boolean): void;
         activate(): void;
@@ -30145,7 +30145,7 @@ export namespace Panel {
     {
         static $gtype: GObject.GType<Workspace>;
 
-        // Own properties of Panel.Workspace
+        // Properties
 
         /**
          * The "id" of the workspace.
@@ -30156,13 +30156,13 @@ export namespace Panel {
         get id(): string;
         set id(val: string);
 
-        // Constructors of Panel.Workspace
+        // Constructors
 
         constructor(properties?: Partial<Workspace.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of Panel.Workspace
+        // Static methods
 
         /**
          * Finds the workspace that contains `widget`.
@@ -30174,7 +30174,7 @@ export namespace Panel {
         static install_action(...args: never[]): any;
         static install_property_action(action_name: string, property_name: string): void;
 
-        // Own methods of Panel.Workspace
+        // Methods
 
         action_set_enabled(action_name: string, enabled: boolean): void;
         get_id(): string;
@@ -33012,7 +33012,7 @@ export namespace Panel {
     abstract class Action {
         static $gtype: GObject.GType<Action>;
 
-        // Constructors of Panel.Action
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -33059,7 +33059,7 @@ export namespace Panel {
         prototype: FrameHeader;
     }
     interface FrameHeader extends Gtk.Widget {
-        // Own properties of Panel.FrameHeader
+        // Properties
 
         /**
          * The frame the header is attached to, or %NULL.
@@ -33067,7 +33067,7 @@ export namespace Panel {
         get frame(): Frame;
         set frame(val: Frame);
 
-        // Own methods of Panel.FrameHeader
+        // Methods
 
         /**
          * Add a widget into a the prefix area with a priority. The highest
@@ -33105,7 +33105,7 @@ export namespace Panel {
          */
         set_frame(frame?: Frame | null): void;
 
-        // Own virtual methods of Panel.FrameHeader
+        // Virtual methods
 
         /**
          * Add a widget into a the prefix area with a priority. The highest

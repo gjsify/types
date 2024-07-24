@@ -270,7 +270,7 @@ export namespace Totem {
     class Object extends Gtk.Application implements Gio.ActionGroup, Gio.ActionMap {
         static $gtype: GObject.GType<Object>;
 
-        // Own properties of Totem.Object
+        // Properties
 
         /**
          * The content-type of the current stream.
@@ -333,13 +333,13 @@ export namespace Totem {
          */
         get streamLength(): number;
 
-        // Constructors of Totem.Object
+        // Constructors
 
         constructor(properties?: Partial<Object.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of Totem.Object
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -369,7 +369,7 @@ export namespace Totem {
         ): number;
         emit(signal: 'metadata-updated', artist: string, title: string, album: string, track_number: number): void;
 
-        // Own static methods of Totem.Object
+        // Static methods
 
         /**
          * Get the full list of file content types which Totem supports playing.
@@ -380,7 +380,7 @@ export namespace Totem {
          */
         static get_supported_uri_schemes(): string[];
 
-        // Own methods of Totem.Object
+        // Methods
 
         /**
          * Add `uri` to the playlist and play it immediately.

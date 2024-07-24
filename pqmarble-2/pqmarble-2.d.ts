@@ -42,18 +42,18 @@ export namespace PQMarble {
     abstract class Settings extends GObject.Object {
         static $gtype: GObject.GType<Settings>;
 
-        // Own properties of PQMarble.Settings
+        // Properties
 
         get schema(): Gio.Settings;
         set schema(val: Gio.Settings);
 
-        // Constructors of PQMarble.Settings
+        // Constructors
 
         constructor(properties?: Partial<Settings.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of PQMarble.Settings
+        // Methods
 
         get_schema(): Gio.Settings;
         set_schema(value: Gio.Settings): void;
@@ -63,7 +63,7 @@ export namespace PQMarble {
     abstract class SettingsPrivate {
         static $gtype: GObject.GType<SettingsPrivate>;
 
-        // Constructors of PQMarble.SettingsPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }

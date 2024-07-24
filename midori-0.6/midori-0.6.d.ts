@@ -64,7 +64,7 @@ export namespace Midori {
     class DatabaseError extends GLib.Error {
         static $gtype: GObject.GType<DatabaseError>;
 
-        // Static fields of Midori.DatabaseError
+        // Static fields
 
         static OPEN: number;
         static NAMING: number;
@@ -73,7 +73,7 @@ export namespace Midori {
         static COMPILE: number;
         static TYPE: number;
 
-        // Constructors of Midori.DatabaseError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
@@ -95,14 +95,14 @@ export namespace Midori {
     class App extends Gtk.Application {
         static $gtype: GObject.GType<App>;
 
-        // Own properties of Midori.App
+        // Properties
 
         get exec_path(): Gio.File;
         set exec_path(val: Gio.File);
         get execPath(): Gio.File;
         set execPath(val: Gio.File);
 
-        // Constructors of Midori.App
+        // Constructors
 
         constructor(properties?: Partial<App.ConstructorProps>, ...args: any[]);
 
@@ -110,7 +110,7 @@ export namespace Midori {
 
         static ['new'](): App;
 
-        // Own methods of Midori.App
+        // Methods
 
         get_exec_path(): Gio.File | null;
         set_exec_path(value?: Gio.File | null): void;
@@ -143,7 +143,7 @@ export namespace Midori {
     class Browser extends Gtk.ApplicationWindow {
         static $gtype: GObject.GType<Browser>;
 
-        // Own properties of Midori.Browser
+        // Properties
 
         get web_context(): WebKit2.WebContext;
         set web_context(val: WebKit2.WebContext);
@@ -168,13 +168,13 @@ export namespace Midori {
         get isLocked(): boolean;
         set isLocked(val: boolean);
 
-        // Own fields of Midori.Browser
+        // Fields
 
         tabs: Gtk.Stack;
         overlay: Gtk.Overlay;
         statusbar: Statusbar;
 
-        // Constructors of Midori.Browser
+        // Constructors
 
         constructor(properties?: Partial<Browser.ConstructorProps>, ...args: any[]);
 
@@ -187,7 +187,7 @@ export namespace Midori {
 
         static incognito(app: App): Browser;
 
-        // Own signals of Midori.Browser
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -196,7 +196,7 @@ export namespace Midori {
         connect_after(signal: 'default-tab', callback: (_source: this) => boolean): number;
         emit(signal: 'default-tab'): void;
 
-        // Own methods of Midori.Browser
+        // Methods
 
         add_button(button: Gtk.Button): void;
         add_panel(widget: Gtk.Widget): void;
@@ -226,7 +226,7 @@ export namespace Midori {
     class ClearPrivateData extends Gtk.Dialog {
         static $gtype: GObject.GType<ClearPrivateData>;
 
-        // Constructors of Midori.ClearPrivateData
+        // Constructors
 
         constructor(properties?: Partial<ClearPrivateData.ConstructorProps>, ...args: any[]);
 
@@ -249,12 +249,12 @@ export namespace Midori {
     class SuggestionItem extends DatabaseItem {
         static $gtype: GObject.GType<SuggestionItem>;
 
-        // Own properties of Midori.SuggestionItem
+        // Properties
 
         get search(): string;
         set search(val: string);
 
-        // Constructors of Midori.SuggestionItem
+        // Constructors
 
         constructor(properties?: Partial<SuggestionItem.ConstructorProps>, ...args: any[]);
 
@@ -262,7 +262,7 @@ export namespace Midori {
 
         static for_input(uri: string, title?: string | null): SuggestionItem;
 
-        // Own methods of Midori.SuggestionItem
+        // Methods
 
         get_search(): string | null;
         set_search(value?: string | null): void;
@@ -282,14 +282,14 @@ export namespace Midori {
     class Completion<A extends GObject.Object = GObject.Object> extends GObject.Object implements Gio.ListModel<A> {
         static $gtype: GObject.GType<Completion>;
 
-        // Own properties of Midori.Completion
+        // Properties
 
         get incognito(): boolean;
         set incognito(val: boolean);
         get key(): string;
         set key(val: string);
 
-        // Constructors of Midori.Completion
+        // Constructors
 
         constructor(properties?: Partial<Completion.ConstructorProps>, ...args: any[]);
 
@@ -297,7 +297,7 @@ export namespace Midori {
 
         static ['new'](incognito: boolean): Completion;
 
-        // Own methods of Midori.Completion
+        // Methods
 
         add(model: Gio.ListModel): void;
         get_incognito(): boolean;
@@ -814,14 +814,14 @@ export namespace Midori {
     class DatabaseStatement extends GObject.Object implements Gio.Initable {
         static $gtype: GObject.GType<DatabaseStatement>;
 
-        // Own properties of Midori.DatabaseStatement
+        // Properties
 
         get database(): Database;
         set database(val: Database);
         get query(): string;
         set query(val: string);
 
-        // Constructors of Midori.DatabaseStatement
+        // Constructors
 
         constructor(properties?: Partial<DatabaseStatement.ConstructorProps>, ...args: any[]);
 
@@ -829,11 +829,11 @@ export namespace Midori {
 
         static ['new'](database: Database, query: string): DatabaseStatement;
 
-        // Own virtual methods of Midori.DatabaseStatement
+        // Virtual methods
 
         vfunc_init(cancellable?: Gio.Cancellable | null): boolean;
 
-        // Own methods of Midori.DatabaseStatement
+        // Methods
 
         init(cancellable?: Gio.Cancellable | null): boolean;
         exec(): boolean;
@@ -1265,7 +1265,7 @@ export namespace Midori {
     class DatabaseItem extends GObject.Object {
         static $gtype: GObject.GType<DatabaseItem>;
 
-        // Own properties of Midori.DatabaseItem
+        // Properties
 
         get database(): Database;
         set database(val: Database);
@@ -1278,7 +1278,7 @@ export namespace Midori {
         get date(): number;
         set date(val: number);
 
-        // Constructors of Midori.DatabaseItem
+        // Constructors
 
         constructor(properties?: Partial<DatabaseItem.ConstructorProps>, ...args: any[]);
 
@@ -1286,7 +1286,7 @@ export namespace Midori {
 
         static ['new'](uri: string, title: string | null, date: number): DatabaseItem;
 
-        // Own methods of Midori.DatabaseItem
+        // Methods
 
         ['delete'](_callback_?: Gio.AsyncReadyCallback<this> | null): void;
         delete_finish(_res_: Gio.AsyncResult): boolean;
@@ -1328,7 +1328,7 @@ export namespace Midori {
     {
         static $gtype: GObject.GType<Database>;
 
-        // Own properties of Midori.Database
+        // Properties
 
         get table(): string;
         set table(val: string);
@@ -1346,11 +1346,11 @@ export namespace Midori {
         get lastRowId(): number;
         get errmsg(): string;
 
-        // Own fields of Midori.Database
+        // Fields
 
         db: any;
 
-        // Constructors of Midori.Database
+        // Constructors
 
         constructor(properties?: Partial<Database.ConstructorProps>, ...args: any[]);
 
@@ -1358,7 +1358,7 @@ export namespace Midori {
 
         static ['new'](path: string): Database;
 
-        // Own virtual methods of Midori.Database
+        // Virtual methods
 
         vfunc_init(cancellable?: Gio.Cancellable | null): boolean;
         vfunc_delete(item: DatabaseItem, _callback_?: Gio.AsyncReadyCallback<this> | null): void;
@@ -1379,7 +1379,7 @@ export namespace Midori {
         vfunc_clear(timespan: GLib.TimeSpan, _callback_?: Gio.AsyncReadyCallback<this> | null): void;
         vfunc_clear_finish(_res_: Gio.AsyncResult): boolean;
 
-        // Own methods of Midori.Database
+        // Methods
 
         init(cancellable?: Gio.Cancellable | null): boolean;
         exists(path: string): boolean;
@@ -1931,13 +1931,13 @@ export namespace Midori {
     class DownloadButton extends Gtk.Button {
         static $gtype: GObject.GType<DownloadButton>;
 
-        // Own fields of Midori.DownloadButton
+        // Fields
 
         popover: Gtk.Popover;
         clear: Gtk.Button;
         listbox: Gtk.ListBox;
 
-        // Constructors of Midori.DownloadButton
+        // Constructors
 
         constructor(properties?: Partial<DownloadButton.ConstructorProps>, ...args: any[]);
 
@@ -1945,7 +1945,7 @@ export namespace Midori {
 
         static ['new'](): DownloadButton;
 
-        // Own signals of Midori.DownloadButton
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -1954,11 +1954,11 @@ export namespace Midori {
         connect_after(signal: 'show-downloads', callback: (_source: this) => void): number;
         emit(signal: 'show-downloads'): void;
 
-        // Own virtual methods of Midori.DownloadButton
+        // Virtual methods
 
         vfunc_show_downloads(): void;
 
-        // Own methods of Midori.DownloadButton
+        // Methods
 
         create_row(item: GObject.Object): Gtk.Widget;
     }
@@ -1988,7 +1988,7 @@ export namespace Midori {
     class DownloadItem extends GObject.Object {
         static $gtype: GObject.GType<DownloadItem>;
 
-        // Own properties of Midori.DownloadItem
+        // Properties
 
         get content_type(): string;
         get contentType(): string;
@@ -2006,11 +2006,11 @@ export namespace Midori {
         get error(): string;
         set error(val: string);
 
-        // Own fields of Midori.DownloadItem
+        // Fields
 
         mime_type: string | null;
 
-        // Constructors of Midori.DownloadItem
+        // Constructors
 
         constructor(properties?: Partial<DownloadItem.ConstructorProps>, ...args: any[]);
 
@@ -2020,7 +2020,7 @@ export namespace Midori {
 
         static with_download(download: WebKit2.Download): DownloadItem;
 
-        // Own signals of Midori.DownloadItem
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -2029,7 +2029,7 @@ export namespace Midori {
         connect_after(signal: 'finished', callback: (_source: this) => void): number;
         emit(signal: 'finished'): void;
 
-        // Own methods of Midori.DownloadItem
+        // Methods
 
         cancel(): void;
         get_content_type(): string;
@@ -2059,12 +2059,12 @@ export namespace Midori {
     class DownloadRow extends Gtk.ListBoxRow {
         static $gtype: GObject.GType<DownloadRow>;
 
-        // Own properties of Midori.DownloadRow
+        // Properties
 
         get item(): DownloadItem;
         set item(val: DownloadItem);
 
-        // Own fields of Midori.DownloadRow
+        // Fields
 
         icon: Gtk.Image;
         filename: Gtk.Label;
@@ -2074,7 +2074,7 @@ export namespace Midori {
         error: Gtk.Image;
         status: Gtk.Label;
 
-        // Constructors of Midori.DownloadRow
+        // Constructors
 
         constructor(properties?: Partial<DownloadRow.ConstructorProps>, ...args: any[]);
 
@@ -2085,7 +2085,7 @@ export namespace Midori {
 
         static ['new'](...args: never[]): any;
 
-        // Own methods of Midori.DownloadRow
+        // Methods
 
         get_item(): DownloadItem;
         set_item(value: DownloadItem): void;
@@ -2103,13 +2103,13 @@ export namespace Midori {
     class Favicon extends Gtk.Image {
         static $gtype: GObject.GType<Favicon>;
 
-        // Own properties of Midori.Favicon
+        // Properties
 
         set surface(val: cairo.Surface);
         get uri(): string;
         set uri(val: string);
 
-        // Constructors of Midori.Favicon
+        // Constructors
 
         constructor(properties?: Partial<Favicon.ConstructorProps>, ...args: any[]);
 
@@ -2117,7 +2117,7 @@ export namespace Midori {
 
         static ['new'](): Favicon;
 
-        // Own methods of Midori.Favicon
+        // Methods
 
         set_surface(value?: cairo.Surface | null): void;
         get_uri(): string | null;
@@ -2133,13 +2133,13 @@ export namespace Midori {
     class HistoryDatabase<A extends GObject.Object = GObject.Object> extends Database<A> {
         static $gtype: GObject.GType<HistoryDatabase>;
 
-        // Constructors of Midori.HistoryDatabase
+        // Constructors
 
         constructor(properties?: Partial<HistoryDatabase.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of Midori.HistoryDatabase
+        // Static methods
 
         static get_default(incognito: boolean): HistoryDatabase;
     }
@@ -2153,7 +2153,7 @@ export namespace Midori {
     class Navigationbar extends Gtk.ActionBar {
         static $gtype: GObject.GType<Navigationbar>;
 
-        // Own fields of Midori.Navigationbar
+        // Fields
 
         actionbox: Gtk.Box;
         go_back: Gtk.Button;
@@ -2164,7 +2164,7 @@ export namespace Midori {
         urlbar: Urlbar;
         restore: Gtk.Button;
 
-        // Constructors of Midori.Navigationbar
+        // Constructors
 
         constructor(properties?: Partial<Navigationbar.ConstructorProps>, ...args: any[]);
 
@@ -2182,7 +2182,7 @@ export namespace Midori {
     class NetworkCheck extends Gtk.ActionBar {
         static $gtype: GObject.GType<NetworkCheck>;
 
-        // Constructors of Midori.NetworkCheck
+        // Constructors
 
         constructor(properties?: Partial<NetworkCheck.ConstructorProps>, ...args: any[]);
 
@@ -2203,20 +2203,20 @@ export namespace Midori {
     class Plugins extends Peas.Engine implements Loggable {
         static $gtype: GObject.GType<Plugins>;
 
-        // Own properties of Midori.Plugins
+        // Properties
 
         get builtin_path(): string;
         set builtin_path(val: string);
         get builtinPath(): string;
         set builtinPath(val: string);
 
-        // Constructors of Midori.Plugins
+        // Constructors
 
         constructor(properties?: Partial<Plugins.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Midori.Plugins
+        // Methods
 
         plug(
             t_type: GObject.GType,
@@ -2645,7 +2645,7 @@ export namespace Midori {
     class LabelWidget extends Gtk.Box {
         static $gtype: GObject.GType<LabelWidget>;
 
-        // Own properties of Midori.LabelWidget
+        // Properties
 
         get title(): string;
         set title(val: string);
@@ -2654,7 +2654,7 @@ export namespace Midori {
         // This accessor conflicts with a property or field in a parent class or interface.
         widget: Gtk.Widget | any;
 
-        // Constructors of Midori.LabelWidget
+        // Constructors
 
         constructor(properties?: Partial<LabelWidget.ConstructorProps>, ...args: any[]);
 
@@ -2665,7 +2665,7 @@ export namespace Midori {
 
         static ['new'](...args: never[]): any;
 
-        // Own methods of Midori.LabelWidget
+        // Methods
 
         get_title(): string | null;
         set_title(value?: string | null): void;
@@ -2684,7 +2684,7 @@ export namespace Midori {
     class Preferences extends Gtk.Dialog {
         static $gtype: GObject.GType<Preferences>;
 
-        // Constructors of Midori.Preferences
+        // Constructors
 
         constructor(properties?: Partial<Preferences.ConstructorProps>, ...args: any[]);
 
@@ -2695,7 +2695,7 @@ export namespace Midori {
 
         static ['new'](...args: never[]): any;
 
-        // Own methods of Midori.Preferences
+        // Methods
 
         add(label: string, widget: Gtk.Widget): void;
         // Conflicted with Gtk.Container.add
@@ -2743,7 +2743,7 @@ export namespace Midori {
     class CoreSettings extends Settings {
         static $gtype: GObject.GType<CoreSettings>;
 
-        // Own properties of Midori.CoreSettings
+        // Properties
 
         get last_window_width(): number;
         set last_window_width(val: number);
@@ -2808,17 +2808,17 @@ export namespace Midori {
         get maximumHistoryAge(): number;
         set maximumHistoryAge(val: number);
 
-        // Constructors of Midori.CoreSettings
+        // Constructors
 
         constructor(properties?: Partial<CoreSettings.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of Midori.CoreSettings
+        // Static methods
 
         static get_default(): CoreSettings;
 
-        // Own methods of Midori.CoreSettings
+        // Methods
 
         get_plugin_enabled(plugin: string): boolean;
         set_plugin_enabled(plugin: string, enabled: boolean): void;
@@ -2868,12 +2868,12 @@ export namespace Midori {
     class Settings extends GObject.Object {
         static $gtype: GObject.GType<Settings>;
 
-        // Own properties of Midori.Settings
+        // Properties
 
         get filename(): string;
         set filename(val: string);
 
-        // Constructors of Midori.Settings
+        // Constructors
 
         constructor(properties?: Partial<Settings.ConstructorProps>, ...args: any[]);
 
@@ -2881,7 +2881,7 @@ export namespace Midori {
 
         static ['new'](): Settings;
 
-        // Own methods of Midori.Settings
+        // Methods
 
         set_boolean(group: string, key: string, value: boolean, _default_: boolean): void;
         get_boolean(group: string, key: string, _default_: boolean): boolean;
@@ -2902,16 +2902,16 @@ export namespace Midori {
     class Statusbar extends Gtk.Statusbar {
         static $gtype: GObject.GType<Statusbar>;
 
-        // Own properties of Midori.Statusbar
+        // Properties
 
         get label(): string;
         set label(val: string);
 
-        // Own fields of Midori.Statusbar
+        // Fields
 
         has_children: boolean;
 
-        // Constructors of Midori.Statusbar
+        // Constructors
 
         constructor(properties?: Partial<Statusbar.ConstructorProps>, ...args: any[]);
 
@@ -2919,7 +2919,7 @@ export namespace Midori {
 
         static ['new'](): Statusbar;
 
-        // Own methods of Midori.Statusbar
+        // Methods
 
         get_label(): string | null;
         set_label(value?: string | null): void;
@@ -2939,7 +2939,7 @@ export namespace Midori {
     class SuggestionRow extends Gtk.ListBoxRow {
         static $gtype: GObject.GType<SuggestionRow>;
 
-        // Own properties of Midori.SuggestionRow
+        // Properties
 
         get item(): DatabaseItem;
         set item(val: DatabaseItem);
@@ -2950,7 +2950,7 @@ export namespace Midori {
         get key(): string;
         set key(val: string);
 
-        // Constructors of Midori.SuggestionRow
+        // Constructors
 
         constructor(properties?: Partial<SuggestionRow.ConstructorProps>, ...args: any[]);
 
@@ -2961,7 +2961,7 @@ export namespace Midori {
 
         static ['new'](...args: never[]): any;
 
-        // Own methods of Midori.SuggestionRow
+        // Methods
 
         get_item(): DatabaseItem;
         set_item(value: DatabaseItem): void;
@@ -2986,7 +2986,7 @@ export namespace Midori {
     class Switcher extends Gtk.Box {
         static $gtype: GObject.GType<Switcher>;
 
-        // Own properties of Midori.Switcher
+        // Properties
 
         get stack(): Gtk.Stack;
         set stack(val: Gtk.Stack);
@@ -2995,7 +2995,7 @@ export namespace Midori {
         get showCloseButtons(): boolean;
         set showCloseButtons(val: boolean);
 
-        // Constructors of Midori.Switcher
+        // Constructors
 
         constructor(properties?: Partial<Switcher.ConstructorProps>, ...args: any[]);
 
@@ -3003,7 +3003,7 @@ export namespace Midori {
 
         static ['new'](): Switcher;
 
-        // Own methods of Midori.Switcher
+        // Methods
 
         get_stack(): Gtk.Stack | null;
         set_stack(value?: Gtk.Stack | null): void;
@@ -3037,7 +3037,7 @@ export namespace Midori {
     class Tab extends WebKit2.WebView {
         static $gtype: GObject.GType<Tab>;
 
-        // Own properties of Midori.Tab
+        // Properties
 
         get id(): string;
         get progress(): number;
@@ -3071,11 +3071,11 @@ export namespace Midori {
         get linkUri(): string;
         set linkUri(val: string);
 
-        // Own fields of Midori.Tab
+        // Fields
 
         popover: Gtk.Popover;
 
-        // Constructors of Midori.Tab
+        // Constructors
 
         constructor(properties?: Partial<Tab.ConstructorProps>, ...args: any[]);
 
@@ -3091,7 +3091,7 @@ export namespace Midori {
 
         static ['new'](...args: never[]): any;
 
-        // Own methods of Midori.Tab
+        // Methods
 
         get_id(): string;
         get_progress(): number;
@@ -3138,7 +3138,7 @@ export namespace Midori {
     class Tally extends Gtk.EventBox {
         static $gtype: GObject.GType<Tally>;
 
-        // Own properties of Midori.Tally
+        // Properties
 
         get tab(): Tab;
         set tab(val: Tab);
@@ -3153,7 +3153,7 @@ export namespace Midori {
         get active(): boolean;
         set active(val: boolean);
 
-        // Constructors of Midori.Tally
+        // Constructors
 
         constructor(properties?: Partial<Tally.ConstructorProps>, ...args: any[]);
 
@@ -3164,7 +3164,7 @@ export namespace Midori {
 
         static ['new'](...args: never[]): any;
 
-        // Own signals of Midori.Tally
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -3173,7 +3173,7 @@ export namespace Midori {
         connect_after(signal: 'clicked', callback: (_source: this) => void): number;
         emit(signal: 'clicked'): void;
 
-        // Own methods of Midori.Tally
+        // Methods
 
         get_tab(): Tab;
         set_tab(value: Tab): void;
@@ -3202,7 +3202,7 @@ export namespace Midori {
     class Urlbar extends Gtk.Entry {
         static $gtype: GObject.GType<Urlbar>;
 
-        // Own properties of Midori.Urlbar
+        // Properties
 
         get key(): string;
         set key(val: string);
@@ -3215,7 +3215,7 @@ export namespace Midori {
         get secure(): boolean;
         set secure(val: boolean);
 
-        // Constructors of Midori.Urlbar
+        // Constructors
 
         constructor(properties?: Partial<Urlbar.ConstructorProps>, ...args: any[]);
 
@@ -3223,7 +3223,7 @@ export namespace Midori {
 
         static ['new'](): Urlbar;
 
-        // Own methods of Midori.Urlbar
+        // Methods
 
         create_row(item: GObject.Object): Gtk.Widget;
         popdown(): void;
@@ -3243,7 +3243,7 @@ export namespace Midori {
     abstract class AppPrivate {
         static $gtype: GObject.GType<AppPrivate>;
 
-        // Constructors of Midori.AppPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3252,7 +3252,7 @@ export namespace Midori {
     abstract class BrowserPrivate {
         static $gtype: GObject.GType<BrowserPrivate>;
 
-        // Constructors of Midori.BrowserPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3261,7 +3261,7 @@ export namespace Midori {
     abstract class ClearPrivateDataPrivate {
         static $gtype: GObject.GType<ClearPrivateDataPrivate>;
 
-        // Constructors of Midori.ClearPrivateDataPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3270,7 +3270,7 @@ export namespace Midori {
     abstract class SuggestionItemPrivate {
         static $gtype: GObject.GType<SuggestionItemPrivate>;
 
-        // Constructors of Midori.SuggestionItemPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3279,7 +3279,7 @@ export namespace Midori {
     abstract class CompletionPrivate {
         static $gtype: GObject.GType<CompletionPrivate>;
 
-        // Constructors of Midori.CompletionPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3288,7 +3288,7 @@ export namespace Midori {
     abstract class DatabaseStatementPrivate {
         static $gtype: GObject.GType<DatabaseStatementPrivate>;
 
-        // Constructors of Midori.DatabaseStatementPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3297,7 +3297,7 @@ export namespace Midori {
     abstract class DatabaseItemPrivate {
         static $gtype: GObject.GType<DatabaseItemPrivate>;
 
-        // Constructors of Midori.DatabaseItemPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3306,7 +3306,7 @@ export namespace Midori {
     abstract class DatabasePrivate {
         static $gtype: GObject.GType<DatabasePrivate>;
 
-        // Constructors of Midori.DatabasePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3315,7 +3315,7 @@ export namespace Midori {
     abstract class DownloadButtonPrivate {
         static $gtype: GObject.GType<DownloadButtonPrivate>;
 
-        // Constructors of Midori.DownloadButtonPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3324,7 +3324,7 @@ export namespace Midori {
     abstract class DownloadItemPrivate {
         static $gtype: GObject.GType<DownloadItemPrivate>;
 
-        // Constructors of Midori.DownloadItemPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3333,7 +3333,7 @@ export namespace Midori {
     abstract class DownloadRowPrivate {
         static $gtype: GObject.GType<DownloadRowPrivate>;
 
-        // Constructors of Midori.DownloadRowPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3342,7 +3342,7 @@ export namespace Midori {
     abstract class FaviconPrivate {
         static $gtype: GObject.GType<FaviconPrivate>;
 
-        // Constructors of Midori.FaviconPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3351,7 +3351,7 @@ export namespace Midori {
     abstract class HistoryDatabasePrivate {
         static $gtype: GObject.GType<HistoryDatabasePrivate>;
 
-        // Constructors of Midori.HistoryDatabasePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3360,7 +3360,7 @@ export namespace Midori {
     abstract class NavigationbarPrivate {
         static $gtype: GObject.GType<NavigationbarPrivate>;
 
-        // Constructors of Midori.NavigationbarPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3369,7 +3369,7 @@ export namespace Midori {
     abstract class NetworkCheckPrivate {
         static $gtype: GObject.GType<NetworkCheckPrivate>;
 
-        // Constructors of Midori.NetworkCheckPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3378,7 +3378,7 @@ export namespace Midori {
     abstract class PluginsPrivate {
         static $gtype: GObject.GType<PluginsPrivate>;
 
-        // Constructors of Midori.PluginsPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3387,7 +3387,7 @@ export namespace Midori {
     abstract class LabelWidgetPrivate {
         static $gtype: GObject.GType<LabelWidgetPrivate>;
 
-        // Constructors of Midori.LabelWidgetPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3396,7 +3396,7 @@ export namespace Midori {
     abstract class PreferencesPrivate {
         static $gtype: GObject.GType<PreferencesPrivate>;
 
-        // Constructors of Midori.PreferencesPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3405,7 +3405,7 @@ export namespace Midori {
     abstract class CoreSettingsPrivate {
         static $gtype: GObject.GType<CoreSettingsPrivate>;
 
-        // Constructors of Midori.CoreSettingsPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3414,7 +3414,7 @@ export namespace Midori {
     abstract class SettingsPrivate {
         static $gtype: GObject.GType<SettingsPrivate>;
 
-        // Constructors of Midori.SettingsPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3423,7 +3423,7 @@ export namespace Midori {
     abstract class StatusbarPrivate {
         static $gtype: GObject.GType<StatusbarPrivate>;
 
-        // Constructors of Midori.StatusbarPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3432,7 +3432,7 @@ export namespace Midori {
     abstract class SuggestionRowPrivate {
         static $gtype: GObject.GType<SuggestionRowPrivate>;
 
-        // Constructors of Midori.SuggestionRowPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3441,7 +3441,7 @@ export namespace Midori {
     abstract class SwitcherPrivate {
         static $gtype: GObject.GType<SwitcherPrivate>;
 
-        // Constructors of Midori.SwitcherPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3450,7 +3450,7 @@ export namespace Midori {
     abstract class TabPrivate {
         static $gtype: GObject.GType<TabPrivate>;
 
-        // Constructors of Midori.TabPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3459,7 +3459,7 @@ export namespace Midori {
     abstract class TallyPrivate {
         static $gtype: GObject.GType<TallyPrivate>;
 
-        // Constructors of Midori.TallyPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3468,7 +3468,7 @@ export namespace Midori {
     abstract class UrlbarPrivate {
         static $gtype: GObject.GType<UrlbarPrivate>;
 
-        // Constructors of Midori.UrlbarPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3493,18 +3493,18 @@ export namespace Midori {
         prototype: AppActivatable;
     }
     interface AppActivatable extends Peas.ExtensionBase {
-        // Own properties of Midori.AppActivatable
+        // Properties
 
         get app(): App;
         set app(val: App);
 
-        // Own methods of Midori.AppActivatable
+        // Methods
 
         activate(): void;
         get_app(): App;
         set_app(value: App): void;
 
-        // Own virtual methods of Midori.AppActivatable
+        // Virtual methods
 
         vfunc_activate(): void;
         vfunc_get_app(): App;
@@ -3526,18 +3526,18 @@ export namespace Midori {
         prototype: BrowserActivatable;
     }
     interface BrowserActivatable extends GObject.Object {
-        // Own properties of Midori.BrowserActivatable
+        // Properties
 
         get browser(): Browser;
         set browser(val: Browser);
 
-        // Own methods of Midori.BrowserActivatable
+        // Methods
 
         activate(): void;
         get_browser(): Browser;
         set_browser(value: Browser): void;
 
-        // Own virtual methods of Midori.BrowserActivatable
+        // Virtual methods
 
         vfunc_activate(): void;
         vfunc_get_browser(): Browser;
@@ -3559,12 +3559,12 @@ export namespace Midori {
         prototype: ClearPrivateDataActivatable;
     }
     interface ClearPrivateDataActivatable extends GObject.Object {
-        // Own properties of Midori.ClearPrivateDataActivatable
+        // Properties
 
         get box(): Gtk.Box;
         set box(val: Gtk.Box);
 
-        // Own methods of Midori.ClearPrivateDataActivatable
+        // Methods
 
         activate(): void;
         clear(timespan: GLib.TimeSpan, _callback_?: Gio.AsyncReadyCallback<this> | null): void;
@@ -3572,7 +3572,7 @@ export namespace Midori {
         get_box(): Gtk.Box;
         set_box(value: Gtk.Box): void;
 
-        // Own virtual methods of Midori.ClearPrivateDataActivatable
+        // Virtual methods
 
         vfunc_activate(): void;
         vfunc_clear(timespan: GLib.TimeSpan, _callback_?: Gio.AsyncReadyCallback<this> | null): void;
@@ -3596,18 +3596,18 @@ export namespace Midori {
         prototype: CompletionActivatable;
     }
     interface CompletionActivatable extends Peas.ExtensionBase {
-        // Own properties of Midori.CompletionActivatable
+        // Properties
 
         get completion(): Completion;
         set completion(val: Completion);
 
-        // Own methods of Midori.CompletionActivatable
+        // Methods
 
         activate(): void;
         get_completion(): Completion;
         set_completion(value: Completion): void;
 
-        // Own virtual methods of Midori.CompletionActivatable
+        // Virtual methods
 
         vfunc_activate(): void;
         vfunc_get_completion(): Completion;
@@ -3627,7 +3627,7 @@ export namespace Midori {
         prototype: Loggable;
     }
     interface Loggable extends GObject.Object {
-        // Own methods of Midori.Loggable
+        // Methods
 
         get_domain(): string;
         get_logging(): boolean;
@@ -3648,18 +3648,18 @@ export namespace Midori {
         prototype: PreferencesActivatable;
     }
     interface PreferencesActivatable extends GObject.Object {
-        // Own properties of Midori.PreferencesActivatable
+        // Properties
 
         get preferences(): Preferences;
         set preferences(val: Preferences);
 
-        // Own methods of Midori.PreferencesActivatable
+        // Methods
 
         activate(): void;
         get_preferences(): Preferences;
         set_preferences(value: Preferences): void;
 
-        // Own virtual methods of Midori.PreferencesActivatable
+        // Virtual methods
 
         vfunc_activate(): void;
         vfunc_get_preferences(): Preferences;
@@ -3681,18 +3681,18 @@ export namespace Midori {
         prototype: TabActivatable;
     }
     interface TabActivatable extends Peas.ExtensionBase {
-        // Own properties of Midori.TabActivatable
+        // Properties
 
         get tab(): Tab;
         set tab(val: Tab);
 
-        // Own methods of Midori.TabActivatable
+        // Methods
 
         activate(): void;
         get_tab(): Tab;
         set_tab(value: Tab): void;
 
-        // Own virtual methods of Midori.TabActivatable
+        // Virtual methods
 
         vfunc_activate(): void;
         vfunc_get_tab(): Tab;

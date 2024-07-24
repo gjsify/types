@@ -86,7 +86,7 @@ export namespace Modulemd {
     class Error extends GLib.Error {
         static $gtype: GObject.GType<Error>;
 
-        // Static fields of Modulemd.Error
+        // Static fields
 
         /**
          * Represents an error encountered while upgrading the
@@ -131,7 +131,7 @@ export namespace Modulemd {
          */
         static MISSING_REQUIRED: number;
 
-        // Constructors of Modulemd.Error
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
@@ -270,7 +270,7 @@ export namespace Modulemd {
     class YamlError extends GLib.Error {
         static $gtype: GObject.GType<YamlError>;
 
-        // Static fields of Modulemd.YamlError
+        // Static fields
 
         /**
          * Represents an error encountered while opening a
@@ -316,7 +316,7 @@ export namespace Modulemd {
         static INCONSISTENT: number;
         static UNKNOWN_ATTR: number;
 
-        // Constructors of Modulemd.YamlError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
@@ -435,7 +435,7 @@ export namespace Modulemd {
     class BuildConfig extends GObject.Object {
         static $gtype: GObject.GType<BuildConfig>;
 
-        // Constructors of Modulemd.BuildConfig
+        // Constructors
 
         constructor(properties?: Partial<BuildConfig.ConstructorProps>, ...args: any[]);
 
@@ -443,7 +443,7 @@ export namespace Modulemd {
 
         static ['new'](): BuildConfig;
 
-        // Own methods of Modulemd.BuildConfig
+        // Methods
 
         /**
          * Add a build-time dependency for this module.
@@ -536,14 +536,14 @@ export namespace Modulemd {
     class Buildopts extends GObject.Object {
         static $gtype: GObject.GType<Buildopts>;
 
-        // Own properties of Modulemd.Buildopts
+        // Properties
 
         get rpm_macros(): string;
         set rpm_macros(val: string);
         get rpmMacros(): string;
         set rpmMacros(val: string);
 
-        // Constructors of Modulemd.Buildopts
+        // Constructors
 
         constructor(properties?: Partial<Buildopts.ConstructorProps>, ...args: any[]);
 
@@ -551,7 +551,7 @@ export namespace Modulemd {
 
         static ['new'](): Buildopts;
 
-        // Own methods of Modulemd.Buildopts
+        // Methods
 
         /**
          * Restrict the list of architectures for which to build this module. It may be
@@ -602,7 +602,7 @@ export namespace Modulemd {
     abstract class Component extends GObject.Object {
         static $gtype: GObject.GType<Component>;
 
-        // Own properties of Modulemd.Component
+        // Properties
 
         get buildonly(): boolean;
         set buildonly(val: boolean);
@@ -612,13 +612,13 @@ export namespace Modulemd {
         get rationale(): string;
         set rationale(val: string);
 
-        // Constructors of Modulemd.Component
+        // Constructors
 
         constructor(properties?: Partial<Component.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of Modulemd.Component
+        // Virtual methods
 
         vfunc_copy(key?: string | null): Component;
         vfunc_equals(self_2: Component): boolean;
@@ -631,7 +631,7 @@ export namespace Modulemd {
          */
         vfunc_validate(): boolean;
 
-        // Own methods of Modulemd.Component
+        // Methods
 
         /**
          * Add a build dependency of this component.
@@ -675,14 +675,14 @@ export namespace Modulemd {
     class ComponentModule extends Component {
         static $gtype: GObject.GType<ComponentModule>;
 
-        // Own properties of Modulemd.ComponentModule
+        // Properties
 
         // This accessor conflicts with a property or field in a parent class or interface.
         ref: string | any;
         get repository(): string;
         set repository(val: string);
 
-        // Constructors of Modulemd.ComponentModule
+        // Constructors
 
         constructor(properties?: Partial<ComponentModule.ConstructorProps>, ...args: any[]);
 
@@ -690,7 +690,7 @@ export namespace Modulemd {
 
         static ['new'](key: string): ComponentModule;
 
-        // Own methods of Modulemd.ComponentModule
+        // Methods
 
         get_ref(): string;
         get_repository(): string;
@@ -714,7 +714,7 @@ export namespace Modulemd {
     class ComponentRpm extends Component {
         static $gtype: GObject.GType<ComponentRpm>;
 
-        // Own properties of Modulemd.ComponentRpm
+        // Properties
 
         get buildroot(): boolean;
         set buildroot(val: boolean);
@@ -729,7 +729,7 @@ export namespace Modulemd {
         get srpmBuildroot(): boolean;
         set srpmBuildroot(val: boolean);
 
-        // Constructors of Modulemd.ComponentRpm
+        // Constructors
 
         constructor(properties?: Partial<ComponentRpm.ConstructorProps>, ...args: any[]);
 
@@ -737,7 +737,7 @@ export namespace Modulemd {
 
         static ['new'](key: string): ComponentRpm;
 
-        // Own methods of Modulemd.ComponentRpm
+        // Methods
 
         /**
          * Add an architecture on which this RPM will be multilib. It may be called
@@ -797,13 +797,13 @@ export namespace Modulemd {
     abstract class Defaults extends GObject.Object {
         static $gtype: GObject.GType<Defaults>;
 
-        // Own properties of Modulemd.Defaults
+        // Properties
 
         get mdversion(): number;
         get module_name(): string;
         get moduleName(): string;
 
-        // Constructors of Modulemd.Defaults
+        // Constructors
 
         constructor(properties?: Partial<Defaults.ConstructorProps>, ...args: any[]);
 
@@ -811,14 +811,14 @@ export namespace Modulemd {
 
         static ['new'](version: number, module_name: string): Defaults;
 
-        // Own virtual methods of Modulemd.Defaults
+        // Virtual methods
 
         vfunc_copy(): Defaults;
         vfunc_equals(self_2: Defaults): boolean;
         vfunc_get_mdversion(): number;
         vfunc_validate(): boolean;
 
-        // Own methods of Modulemd.Defaults
+        // Methods
 
         copy(): Defaults;
         equals(self_2: Defaults): boolean;
@@ -839,7 +839,7 @@ export namespace Modulemd {
     class DefaultsV1 extends Defaults {
         static $gtype: GObject.GType<DefaultsV1>;
 
-        // Constructors of Modulemd.DefaultsV1
+        // Constructors
 
         constructor(properties?: Partial<DefaultsV1.ConstructorProps>, ...args: any[]);
 
@@ -850,7 +850,7 @@ export namespace Modulemd {
 
         static ['new'](...args: never[]): any;
 
-        // Own methods of Modulemd.DefaultsV1
+        // Methods
 
         /**
          * Add a profile that will be installed for this stream if none are explicitly
@@ -895,7 +895,7 @@ export namespace Modulemd {
     class Dependencies extends GObject.Object {
         static $gtype: GObject.GType<Dependencies>;
 
-        // Constructors of Modulemd.Dependencies
+        // Constructors
 
         constructor(properties?: Partial<Dependencies.ConstructorProps>, ...args: any[]);
 
@@ -903,7 +903,7 @@ export namespace Modulemd {
 
         static ['new'](): Dependencies;
 
-        // Own methods of Modulemd.Dependencies
+        // Methods
 
         /**
          * Add a single stream of a module that is required to build another dependent
@@ -970,18 +970,18 @@ export namespace Modulemd {
     class Module extends GObject.Object {
         static $gtype: GObject.GType<Module>;
 
-        // Own properties of Modulemd.Module
+        // Properties
 
         get module_name(): string;
         get moduleName(): string;
 
-        // Constructors of Modulemd.Module
+        // Constructors
 
         constructor(properties?: Partial<Module.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Modulemd.Module
+        // Methods
 
         /**
          * Iterates through all #ModulemdModuleStream entries in this
@@ -1054,7 +1054,7 @@ export namespace Modulemd {
     class ModuleIndex extends GObject.Object {
         static $gtype: GObject.GType<ModuleIndex>;
 
-        // Constructors of Modulemd.ModuleIndex
+        // Constructors
 
         constructor(properties?: Partial<ModuleIndex.ConstructorProps>, ...args: any[]);
 
@@ -1062,7 +1062,7 @@ export namespace Modulemd {
 
         static ['new'](): ModuleIndex;
 
-        // Own methods of Modulemd.ModuleIndex
+        // Methods
 
         add_defaults(defaults: Defaults): boolean;
         /**
@@ -1175,7 +1175,7 @@ export namespace Modulemd {
     class ModuleIndexMerger extends GObject.Object {
         static $gtype: GObject.GType<ModuleIndexMerger>;
 
-        // Constructors of Modulemd.ModuleIndexMerger
+        // Constructors
 
         constructor(properties?: Partial<ModuleIndexMerger.ConstructorProps>, ...args: any[]);
 
@@ -1183,7 +1183,7 @@ export namespace Modulemd {
 
         static ['new'](): ModuleIndexMerger;
 
-        // Own methods of Modulemd.ModuleIndexMerger
+        // Methods
 
         /**
          * Enqueues a #ModulemdModuleIndex representing the parsed metadata from a
@@ -1243,7 +1243,7 @@ export namespace Modulemd {
     abstract class ModuleStream extends GObject.Object {
         static $gtype: GObject.GType<ModuleStream>;
 
-        // Own properties of Modulemd.ModuleStream
+        // Properties
 
         get arch(): string;
         set arch(val: string);
@@ -1257,7 +1257,7 @@ export namespace Modulemd {
         get version(): number;
         set version(val: number);
 
-        // Constructors of Modulemd.ModuleStream
+        // Constructors
 
         constructor(properties?: Partial<ModuleStream.ConstructorProps>, ...args: any[]);
 
@@ -1265,7 +1265,7 @@ export namespace Modulemd {
 
         static ['new'](mdversion: number, module_name?: string | null, module_stream?: string | null): ModuleStream;
 
-        // Own static methods of Modulemd.ModuleStream
+        // Static methods
 
         /**
          * Create a #ModulemdModuleStream object from a YAML file.
@@ -1308,7 +1308,7 @@ export namespace Modulemd {
             module_stream?: string | null,
         ): ModuleStream;
 
-        // Own virtual methods of Modulemd.ModuleStream
+        // Virtual methods
 
         vfunc_build_depends_on_stream(module_name: string, stream_name: string): boolean;
         /**
@@ -1332,7 +1332,7 @@ export namespace Modulemd {
          */
         vfunc_validate(): boolean;
 
-        // Own methods of Modulemd.ModuleStream
+        // Methods
 
         build_depends_on_stream(module_name: string, stream_name: string): boolean;
         /**
@@ -1405,7 +1405,7 @@ export namespace Modulemd {
     class ModuleStreamV1 extends ModuleStream {
         static $gtype: GObject.GType<ModuleStreamV1>;
 
-        // Own properties of Modulemd.ModuleStreamV1
+        // Properties
 
         get arch(): string;
         set arch(val: string);
@@ -1418,7 +1418,7 @@ export namespace Modulemd {
         get tracker(): string;
         set tracker(val: string);
 
-        // Constructors of Modulemd.ModuleStreamV1
+        // Constructors
 
         constructor(properties?: Partial<ModuleStreamV1.ConstructorProps>, ...args: any[]);
 
@@ -1429,7 +1429,7 @@ export namespace Modulemd {
 
         static ['new'](...args: never[]): any;
 
-        // Own methods of Modulemd.ModuleStreamV1
+        // Methods
 
         /**
          * Add a build-time dependency for this module.
@@ -1635,7 +1635,7 @@ export namespace Modulemd {
     class ModuleStreamV2 extends ModuleStream {
         static $gtype: GObject.GType<ModuleStreamV2>;
 
-        // Own properties of Modulemd.ModuleStreamV2
+        // Properties
 
         get arch(): string;
         set arch(val: string);
@@ -1652,7 +1652,7 @@ export namespace Modulemd {
         get tracker(): string;
         set tracker(val: string);
 
-        // Constructors of Modulemd.ModuleStreamV2
+        // Constructors
 
         constructor(properties?: Partial<ModuleStreamV2.ConstructorProps>, ...args: any[]);
 
@@ -1663,7 +1663,7 @@ export namespace Modulemd {
 
         static ['new'](...args: never[]): any;
 
-        // Own methods of Modulemd.ModuleStreamV2
+        // Methods
 
         /**
          * Add a component definition to the module.
@@ -1888,7 +1888,7 @@ export namespace Modulemd {
     class Obsoletes extends GObject.Object {
         static $gtype: GObject.GType<Obsoletes>;
 
-        // Own properties of Modulemd.Obsoletes
+        // Properties
 
         get eol_date(): number;
         set eol_date(val: number);
@@ -1919,7 +1919,7 @@ export namespace Modulemd {
         get overridePrevious(): boolean;
         set overridePrevious(val: boolean);
 
-        // Constructors of Modulemd.Obsoletes
+        // Constructors
 
         constructor(properties?: Partial<Obsoletes.ConstructorProps>, ...args: any[]);
 
@@ -1933,7 +1933,7 @@ export namespace Modulemd {
             message: string,
         ): Obsoletes;
 
-        // Own methods of Modulemd.Obsoletes
+        // Methods
 
         /**
          * Create a copy of this #ModulemdObsoletes object.
@@ -1982,7 +1982,7 @@ export namespace Modulemd {
     class PackagerV3 extends GObject.Object {
         static $gtype: GObject.GType<PackagerV3>;
 
-        // Constructors of Modulemd.PackagerV3
+        // Constructors
 
         constructor(properties?: Partial<PackagerV3.ConstructorProps>, ...args: any[]);
 
@@ -1990,7 +1990,7 @@ export namespace Modulemd {
 
         static ['new'](): PackagerV3;
 
-        // Own methods of Modulemd.PackagerV3
+        // Methods
 
         add_build_config(buildconfig: BuildConfig): void;
         /**
@@ -2160,11 +2160,11 @@ export namespace Modulemd {
     class Profile extends GObject.Object {
         static $gtype: GObject.GType<Profile>;
 
-        // Own properties of Modulemd.Profile
+        // Properties
 
         get name(): string;
 
-        // Constructors of Modulemd.Profile
+        // Constructors
 
         constructor(properties?: Partial<Profile.ConstructorProps>, ...args: any[]);
 
@@ -2172,7 +2172,7 @@ export namespace Modulemd {
 
         static ['new'](name: string): Profile;
 
-        // Own methods of Modulemd.Profile
+        // Methods
 
         add_rpm(rpm: string): void;
         /**
@@ -2221,7 +2221,7 @@ export namespace Modulemd {
     class RpmMapEntry extends GObject.Object {
         static $gtype: GObject.GType<RpmMapEntry>;
 
-        // Own properties of Modulemd.RpmMapEntry
+        // Properties
 
         get arch(): string;
         set arch(val: string);
@@ -2235,7 +2235,7 @@ export namespace Modulemd {
         get version(): string;
         set version(val: string);
 
-        // Constructors of Modulemd.RpmMapEntry
+        // Constructors
 
         constructor(properties?: Partial<RpmMapEntry.ConstructorProps>, ...args: any[]);
 
@@ -2243,7 +2243,7 @@ export namespace Modulemd {
 
         static ['new'](name: string, epoch: number, version: string, release: string, arch: string): RpmMapEntry;
 
-        // Own methods of Modulemd.RpmMapEntry
+        // Methods
 
         copy(): RpmMapEntry;
         equals(other: RpmMapEntry): boolean;
@@ -2272,11 +2272,11 @@ export namespace Modulemd {
     class ServiceLevel extends GObject.Object {
         static $gtype: GObject.GType<ServiceLevel>;
 
-        // Own properties of Modulemd.ServiceLevel
+        // Properties
 
         get name(): string;
 
-        // Constructors of Modulemd.ServiceLevel
+        // Constructors
 
         constructor(properties?: Partial<ServiceLevel.ConstructorProps>, ...args: any[]);
 
@@ -2284,7 +2284,7 @@ export namespace Modulemd {
 
         static ['new'](name: string): ServiceLevel;
 
-        // Own methods of Modulemd.ServiceLevel
+        // Methods
 
         /**
          * Create a copy of this #ModulemdServiceLevel object.
@@ -2321,13 +2321,13 @@ export namespace Modulemd {
     class SubdocumentInfo extends GObject.Object {
         static $gtype: GObject.GType<SubdocumentInfo>;
 
-        // Constructors of Modulemd.SubdocumentInfo
+        // Constructors
 
         constructor(properties?: Partial<SubdocumentInfo.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Modulemd.SubdocumentInfo
+        // Methods
 
         get_gerror(): GLib.Error;
         get_yaml(): string;
@@ -2349,7 +2349,7 @@ export namespace Modulemd {
     class Translation extends GObject.Object {
         static $gtype: GObject.GType<Translation>;
 
-        // Own properties of Modulemd.Translation
+        // Properties
 
         get modified(): number;
         set modified(val: number);
@@ -2359,7 +2359,7 @@ export namespace Modulemd {
         get moduleStream(): string;
         get version(): number;
 
-        // Constructors of Modulemd.Translation
+        // Constructors
 
         constructor(properties?: Partial<Translation.ConstructorProps>, ...args: any[]);
 
@@ -2367,7 +2367,7 @@ export namespace Modulemd {
 
         static ['new'](version: number, module_name: string, module_stream: string, modified: number): Translation;
 
-        // Own methods of Modulemd.Translation
+        // Methods
 
         /**
          * Create a copy of this #ModulemdTranslation object.
@@ -2400,7 +2400,7 @@ export namespace Modulemd {
     class TranslationEntry extends GObject.Object {
         static $gtype: GObject.GType<TranslationEntry>;
 
-        // Own properties of Modulemd.TranslationEntry
+        // Properties
 
         get description(): string;
         set description(val: string);
@@ -2408,7 +2408,7 @@ export namespace Modulemd {
         get summary(): string;
         set summary(val: string);
 
-        // Constructors of Modulemd.TranslationEntry
+        // Constructors
 
         constructor(properties?: Partial<TranslationEntry.ConstructorProps>, ...args: any[]);
 
@@ -2416,7 +2416,7 @@ export namespace Modulemd {
 
         static ['new'](locale: string): TranslationEntry;
 
-        // Own methods of Modulemd.TranslationEntry
+        // Methods
 
         /**
          * Create a copy of this #ModulemdTranslationEntry object.

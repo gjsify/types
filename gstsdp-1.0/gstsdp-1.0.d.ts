@@ -558,7 +558,7 @@ export namespace GstSdp {
     abstract class MIKEYDecryptInfo {
         static $gtype: GObject.GType<MIKEYDecryptInfo>;
 
-        // Constructors of GstSdp.MIKEYDecryptInfo
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -566,7 +566,7 @@ export namespace GstSdp {
     abstract class MIKEYEncryptInfo {
         static $gtype: GObject.GType<MIKEYEncryptInfo>;
 
-        // Constructors of GstSdp.MIKEYEncryptInfo
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -577,13 +577,13 @@ export namespace GstSdp {
     class MIKEYMapSRTP {
         static $gtype: GObject.GType<MIKEYMapSRTP>;
 
-        // Own fields of GstSdp.MIKEYMapSRTP
+        // Fields
 
         policy: number;
         ssrc: number;
         roc: number;
 
-        // Constructors of GstSdp.MIKEYMapSRTP
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -601,7 +601,7 @@ export namespace GstSdp {
     class MIKEYMessage {
         static $gtype: GObject.GType<MIKEYMessage>;
 
-        // Own fields of GstSdp.MIKEYMessage
+        // Fields
 
         version: number;
         type: MIKEYType;
@@ -612,7 +612,7 @@ export namespace GstSdp {
         map_info: any[];
         payloads: any[];
 
-        // Constructors of GstSdp.MIKEYMessage
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -636,7 +636,7 @@ export namespace GstSdp {
 
         static new_from_data(data: Uint8Array | string, info: MIKEYDecryptInfo): MIKEYMessage;
 
-        // Own methods of GstSdp.MIKEYMessage
+        // Methods
 
         /**
          * Add a Crypto policy for SRTP to `msg`.
@@ -790,19 +790,19 @@ export namespace GstSdp {
     class MIKEYPayload {
         static $gtype: GObject.GType<MIKEYPayload>;
 
-        // Own fields of GstSdp.MIKEYPayload
+        // Fields
 
         type: MIKEYPayloadType;
         len: number;
 
-        // Constructors of GstSdp.MIKEYPayload
+        // Constructors
 
         constructor(type: MIKEYPayloadType);
         _init(...args: any[]): void;
 
         static ['new'](type: MIKEYPayloadType): MIKEYPayload;
 
-        // Own methods of GstSdp.MIKEYPayload
+        // Methods
 
         /**
          * Add a new sub payload to `payload`.
@@ -929,13 +929,13 @@ export namespace GstSdp {
     class MIKEYPayloadKEMAC {
         static $gtype: GObject.GType<MIKEYPayloadKEMAC>;
 
-        // Own fields of GstSdp.MIKEYPayloadKEMAC
+        // Fields
 
         enc_alg: MIKEYEncAlg;
         mac_alg: MIKEYMacAlg;
         subpayloads: any[];
 
-        // Constructors of GstSdp.MIKEYPayloadKEMAC
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -947,7 +947,7 @@ export namespace GstSdp {
     class MIKEYPayloadKeyData {
         static $gtype: GObject.GType<MIKEYPayloadKeyData>;
 
-        // Own fields of GstSdp.MIKEYPayloadKeyData
+        // Fields
 
         key_type: MIKEYKeyDataType;
         key_len: number;
@@ -958,7 +958,7 @@ export namespace GstSdp {
         kv_len: Uint8Array;
         kv_data: Uint8Array;
 
-        // Constructors of GstSdp.MIKEYPayloadKeyData
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -972,13 +972,13 @@ export namespace GstSdp {
     class MIKEYPayloadPKE {
         static $gtype: GObject.GType<MIKEYPayloadPKE>;
 
-        // Own fields of GstSdp.MIKEYPayloadPKE
+        // Fields
 
         C: MIKEYCacheType;
         data_len: number;
         data: number;
 
-        // Constructors of GstSdp.MIKEYPayloadPKE
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -989,12 +989,12 @@ export namespace GstSdp {
     class MIKEYPayloadRAND {
         static $gtype: GObject.GType<MIKEYPayloadRAND>;
 
-        // Own fields of GstSdp.MIKEYPayloadRAND
+        // Fields
 
         len: number;
         rand: number;
 
-        // Constructors of GstSdp.MIKEYPayloadRAND
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1006,13 +1006,13 @@ export namespace GstSdp {
     class MIKEYPayloadSP {
         static $gtype: GObject.GType<MIKEYPayloadSP>;
 
-        // Own fields of GstSdp.MIKEYPayloadSP
+        // Fields
 
         policy: number;
         proto: MIKEYSecProto;
         params: any[];
 
-        // Constructors of GstSdp.MIKEYPayloadSP
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1023,13 +1023,13 @@ export namespace GstSdp {
     class MIKEYPayloadSPParam {
         static $gtype: GObject.GType<MIKEYPayloadSPParam>;
 
-        // Own fields of GstSdp.MIKEYPayloadSPParam
+        // Fields
 
         type: number;
         len: number;
         val: number;
 
-        // Constructors of GstSdp.MIKEYPayloadSPParam
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -1047,12 +1047,12 @@ export namespace GstSdp {
     class MIKEYPayloadT {
         static $gtype: GObject.GType<MIKEYPayloadT>;
 
-        // Own fields of GstSdp.MIKEYPayloadT
+        // Fields
 
         type: MIKEYTSType;
         ts_value: number;
 
-        // Constructors of GstSdp.MIKEYPayloadT
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1063,12 +1063,12 @@ export namespace GstSdp {
     class SDPAttribute {
         static $gtype: GObject.GType<SDPAttribute>;
 
-        // Own fields of GstSdp.SDPAttribute
+        // Fields
 
         key: string;
         value: string;
 
-        // Constructors of GstSdp.SDPAttribute
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -1078,7 +1078,7 @@ export namespace GstSdp {
         );
         _init(...args: any[]): void;
 
-        // Own methods of GstSdp.SDPAttribute
+        // Methods
 
         /**
          * Clear the attribute.
@@ -1101,12 +1101,12 @@ export namespace GstSdp {
     class SDPBandwidth {
         static $gtype: GObject.GType<SDPBandwidth>;
 
-        // Own fields of GstSdp.SDPBandwidth
+        // Fields
 
         bwtype: string;
         bandwidth: number;
 
-        // Constructors of GstSdp.SDPBandwidth
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -1116,7 +1116,7 @@ export namespace GstSdp {
         );
         _init(...args: any[]): void;
 
-        // Own methods of GstSdp.SDPBandwidth
+        // Methods
 
         /**
          * Reset the bandwidth information in `bw`.
@@ -1138,7 +1138,7 @@ export namespace GstSdp {
     class SDPConnection {
         static $gtype: GObject.GType<SDPConnection>;
 
-        // Own fields of GstSdp.SDPConnection
+        // Fields
 
         nettype: string;
         addrtype: string;
@@ -1146,7 +1146,7 @@ export namespace GstSdp {
         ttl: number;
         addr_number: number;
 
-        // Constructors of GstSdp.SDPConnection
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -1159,7 +1159,7 @@ export namespace GstSdp {
         );
         _init(...args: any[]): void;
 
-        // Own methods of GstSdp.SDPConnection
+        // Methods
 
         /**
          * Clear the connection.
@@ -1185,12 +1185,12 @@ export namespace GstSdp {
     class SDPKey {
         static $gtype: GObject.GType<SDPKey>;
 
-        // Own fields of GstSdp.SDPKey
+        // Fields
 
         type: string;
         data: string;
 
-        // Constructors of GstSdp.SDPKey
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -1207,7 +1207,7 @@ export namespace GstSdp {
     class SDPMedia {
         static $gtype: GObject.GType<SDPMedia>;
 
-        // Own fields of GstSdp.SDPMedia
+        // Fields
 
         media: string;
         port: number;
@@ -1220,7 +1220,7 @@ export namespace GstSdp {
         key: SDPKey;
         attributes: any[];
 
-        // Constructors of GstSdp.SDPMedia
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -1238,7 +1238,7 @@ export namespace GstSdp {
         );
         _init(...args: any[]): void;
 
-        // Own static methods of GstSdp.SDPMedia
+        // Static methods
 
         /**
          * Initialize `media` so that its contents are as if it was freshly allocated
@@ -1269,7 +1269,7 @@ export namespace GstSdp {
          */
         static set_media_from_caps(caps: Gst.Caps): [SDPResult, SDPMedia];
 
-        // Own methods of GstSdp.SDPMedia
+        // Methods
 
         /**
          * Add the attribute with `key` and `value` to `media`.
@@ -1564,7 +1564,7 @@ export namespace GstSdp {
     class SDPMessage {
         static $gtype: GObject.GType<SDPMessage>;
 
-        // Own fields of GstSdp.SDPMessage
+        // Fields
 
         version: string;
         origin: SDPOrigin;
@@ -1581,7 +1581,7 @@ export namespace GstSdp {
         attributes: any[];
         medias: any[];
 
-        // Constructors of GstSdp.SDPMessage
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -1603,7 +1603,7 @@ export namespace GstSdp {
         );
         _init(...args: any[]): void;
 
-        // Own static methods of GstSdp.SDPMessage
+        // Static methods
 
         /**
          * Creates a uri from `msg` with the given `scheme`. The uri has the format:
@@ -1655,7 +1655,7 @@ export namespace GstSdp {
          */
         static parse_uri(uri: string, msg: SDPMessage): SDPResult;
 
-        // Own methods of GstSdp.SDPMessage
+        // Methods
 
         /**
          * Add the attribute with `key` and `value` to `msg`.
@@ -2078,7 +2078,7 @@ export namespace GstSdp {
     class SDPOrigin {
         static $gtype: GObject.GType<SDPOrigin>;
 
-        // Own fields of GstSdp.SDPOrigin
+        // Fields
 
         username: string;
         sess_id: string;
@@ -2087,7 +2087,7 @@ export namespace GstSdp {
         addrtype: string;
         addr: string;
 
-        // Constructors of GstSdp.SDPOrigin
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -2109,13 +2109,13 @@ export namespace GstSdp {
     class SDPTime {
         static $gtype: GObject.GType<SDPTime>;
 
-        // Own fields of GstSdp.SDPTime
+        // Fields
 
         start: string;
         stop: string;
         repeat: any[];
 
-        // Constructors of GstSdp.SDPTime
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -2126,7 +2126,7 @@ export namespace GstSdp {
         );
         _init(...args: any[]): void;
 
-        // Own methods of GstSdp.SDPTime
+        // Methods
 
         /**
          * Reset the time information in `t`.
@@ -2151,12 +2151,12 @@ export namespace GstSdp {
     class SDPZone {
         static $gtype: GObject.GType<SDPZone>;
 
-        // Own fields of GstSdp.SDPZone
+        // Fields
 
         time: string;
         typed_time: string;
 
-        // Constructors of GstSdp.SDPZone
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -2166,7 +2166,7 @@ export namespace GstSdp {
         );
         _init(...args: any[]): void;
 
-        // Own methods of GstSdp.SDPZone
+        // Methods
 
         /**
          * Reset the zone information in `zone`.

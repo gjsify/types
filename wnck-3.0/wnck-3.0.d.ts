@@ -597,12 +597,12 @@ export namespace Wnck {
     class ActionMenu extends Gtk.Menu implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<ActionMenu>;
 
-        // Own properties of Wnck.ActionMenu
+        // Properties
 
         // This accessor conflicts with another accessor's type in a parent class or interface.
         get window(): any | any;
 
-        // Constructors of Wnck.ActionMenu
+        // Constructors
 
         constructor(properties?: Partial<ActionMenu.ConstructorProps>, ...args: any[]);
 
@@ -1039,13 +1039,13 @@ export namespace Wnck {
     class Application extends GObject.Object {
         static $gtype: GObject.GType<Application>;
 
-        // Constructors of Wnck.Application
+        // Constructors
 
         constructor(properties?: Partial<Application.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of Wnck.Application
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -1057,7 +1057,7 @@ export namespace Wnck {
         connect_after(signal: 'name-changed', callback: (_source: this) => void): number;
         emit(signal: 'name-changed'): void;
 
-        // Own static methods of Wnck.Application
+        // Static methods
 
         /**
          * Gets the #WnckApplication corresponding to the group leader with `xwindow`
@@ -1066,12 +1066,12 @@ export namespace Wnck {
          */
         static get(xwindow: number): Application;
 
-        // Own virtual methods of Wnck.Application
+        // Virtual methods
 
         vfunc_icon_changed(): void;
         vfunc_name_changed(): void;
 
-        // Own methods of Wnck.Application
+        // Methods
 
         /**
          * Gets the icon to be used for `app`. If no icon is set for `app,` a
@@ -1160,13 +1160,13 @@ export namespace Wnck {
     class ClassGroup extends GObject.Object {
         static $gtype: GObject.GType<ClassGroup>;
 
-        // Constructors of Wnck.ClassGroup
+        // Constructors
 
         constructor(properties?: Partial<ClassGroup.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of Wnck.ClassGroup
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -1178,7 +1178,7 @@ export namespace Wnck {
         connect_after(signal: 'name-changed', callback: (_source: this) => void): number;
         emit(signal: 'name-changed'): void;
 
-        // Own static methods of Wnck.ClassGroup
+        // Static methods
 
         /**
          * Gets the #WnckClassGroup corresponding to `id`.
@@ -1186,12 +1186,12 @@ export namespace Wnck {
          */
         static get(id: string): ClassGroup;
 
-        // Own virtual methods of Wnck.ClassGroup
+        // Virtual methods
 
         vfunc_icon_changed(): void;
         vfunc_name_changed(): void;
 
-        // Own methods of Wnck.ClassGroup
+        // Methods
 
         /**
          * Gets the icon to be used for `class_group`. Since there is no way to
@@ -1250,14 +1250,14 @@ export namespace Wnck {
     class Handle extends GObject.Object {
         static $gtype: GObject.GType<Handle>;
 
-        // Own properties of Wnck.Handle
+        // Properties
 
         get client_type(): ClientType;
         set client_type(val: ClientType);
         get clientType(): ClientType;
         set clientType(val: ClientType);
 
-        // Constructors of Wnck.Handle
+        // Constructors
 
         constructor(properties?: Partial<Handle.ConstructorProps>, ...args: any[]);
 
@@ -1265,7 +1265,7 @@ export namespace Wnck {
 
         static ['new'](client_type: ClientType): Handle;
 
-        // Own methods of Wnck.Handle
+        // Methods
 
         /**
          * Gets the #WnckApplication corresponding to the group leader with `xwindow`
@@ -1340,7 +1340,7 @@ export namespace Wnck {
     {
         static $gtype: GObject.GType<ImageMenuItem>;
 
-        // Constructors of Wnck.ImageMenuItem
+        // Constructors
 
         constructor(properties?: Partial<ImageMenuItem.ConstructorProps>, ...args: any[]);
 
@@ -1350,7 +1350,7 @@ export namespace Wnck {
 
         static new_with_label(label: string): ImageMenuItem;
 
-        // Own methods of Wnck.ImageMenuItem
+        // Methods
 
         make_label_bold(): void;
         make_label_normal(): void;
@@ -5547,11 +5547,11 @@ export namespace Wnck {
     class Pager extends Gtk.Widget implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<Pager>;
 
-        // Own properties of Wnck.Pager
+        // Properties
 
         get handle(): Handle;
 
-        // Constructors of Wnck.Pager
+        // Constructors
 
         constructor(properties?: Partial<Pager.ConstructorProps>, ...args: any[]);
 
@@ -5561,7 +5561,7 @@ export namespace Wnck {
 
         static new_with_handle(handle: Handle): Pager;
 
-        // Own methods of Wnck.Pager
+        // Methods
 
         get_wrap_on_scroll(): boolean;
         /**
@@ -6289,13 +6289,13 @@ export namespace Wnck {
     class Screen extends GObject.Object {
         static $gtype: GObject.GType<Screen>;
 
-        // Constructors of Wnck.Screen
+        // Constructors
 
         constructor(properties?: Partial<Screen.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of Wnck.Screen
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -6358,7 +6358,7 @@ export namespace Wnck {
         connect_after(signal: 'workspace-destroyed', callback: (_source: this, space: Workspace) => void): number;
         emit(signal: 'workspace-destroyed', space: Workspace): void;
 
-        // Own static methods of Wnck.Screen
+        // Static methods
 
         /**
          * Frees the content of `layout`. This does not free `layout` itself, so you
@@ -6385,7 +6385,7 @@ export namespace Wnck {
          */
         static get_for_root(root_window_id: number): Screen;
 
-        // Own virtual methods of Wnck.Screen
+        // Virtual methods
 
         vfunc_active_window_changed(previous_window: Window): void;
         vfunc_active_workspace_changed(previous_workspace: Workspace): void;
@@ -6403,7 +6403,7 @@ export namespace Wnck {
         vfunc_workspace_created(space: Workspace): void;
         vfunc_workspace_destroyed(space: Workspace): void;
 
-        // Own methods of Wnck.Screen
+        // Methods
 
         /**
          * Calculates the layout of #WnckWorkspace, with additional information like
@@ -6595,11 +6595,11 @@ export namespace Wnck {
     class Selector extends Gtk.MenuBar implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<Selector>;
 
-        // Own properties of Wnck.Selector
+        // Properties
 
         get handle(): Handle;
 
-        // Constructors of Wnck.Selector
+        // Constructors
 
         constructor(properties?: Partial<Selector.ConstructorProps>, ...args: any[]);
 
@@ -7042,7 +7042,7 @@ export namespace Wnck {
     class Tasklist extends Gtk.Container implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<Tasklist>;
 
-        // Own properties of Wnck.Tasklist
+        // Properties
 
         get handle(): Handle;
         get tooltips_enabled(): boolean;
@@ -7050,7 +7050,7 @@ export namespace Wnck {
         get tooltipsEnabled(): boolean;
         set tooltipsEnabled(val: boolean);
 
-        // Constructors of Wnck.Tasklist
+        // Constructors
 
         constructor(properties?: Partial<Tasklist.ConstructorProps>, ...args: any[]);
 
@@ -7060,7 +7060,7 @@ export namespace Wnck {
 
         static new_with_handle(handle: Handle): Tasklist;
 
-        // Own signals of Wnck.Tasklist
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -7072,7 +7072,7 @@ export namespace Wnck {
         connect_after(signal: 'task-leave-notify', callback: (_source: this, windows: any | null) => void): number;
         emit(signal: 'task-leave-notify', windows?: any | null): void;
 
-        // Own methods of Wnck.Tasklist
+        // Methods
 
         /**
          * Gets the scroll behavior of the `tasklist`.
@@ -7613,13 +7613,13 @@ export namespace Wnck {
     class Window extends GObject.Object {
         static $gtype: GObject.GType<Window>;
 
-        // Constructors of Wnck.Window
+        // Constructors
 
         constructor(properties?: Partial<Window.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of Wnck.Window
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -7664,7 +7664,7 @@ export namespace Wnck {
         connect_after(signal: 'workspace-changed', callback: (_source: this) => void): number;
         emit(signal: 'workspace-changed'): void;
 
-        // Own static methods of Wnck.Window
+        // Static methods
 
         /**
          * Gets a preexisting #WnckWindow for the X window `xwindow`. This will not
@@ -7674,7 +7674,7 @@ export namespace Wnck {
          */
         static get(xwindow: number): Window;
 
-        // Own virtual methods of Wnck.Window
+        // Virtual methods
 
         vfunc_actions_changed(changed_mask: WindowActions, new_actions: WindowActions): void;
         vfunc_class_changed(): void;
@@ -7686,7 +7686,7 @@ export namespace Wnck {
         vfunc_type_changed(): void;
         vfunc_workspace_changed(): void;
 
-        // Own methods of Wnck.Window
+        // Methods
 
         /**
          * Asks the window manager to make `window` the active window. The
@@ -8245,13 +8245,13 @@ export namespace Wnck {
     class Workspace extends GObject.Object {
         static $gtype: GObject.GType<Workspace>;
 
-        // Constructors of Wnck.Workspace
+        // Constructors
 
         constructor(properties?: Partial<Workspace.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of Wnck.Workspace
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -8260,11 +8260,11 @@ export namespace Wnck {
         connect_after(signal: 'name-changed', callback: (_source: this) => void): number;
         emit(signal: 'name-changed'): void;
 
-        // Own virtual methods of Wnck.Workspace
+        // Virtual methods
 
         vfunc_name_changed(): void;
 
-        // Own methods of Wnck.Workspace
+        // Methods
 
         /**
          * Asks the window manager to make `space` the active workspace. The window
@@ -8351,7 +8351,7 @@ export namespace Wnck {
     abstract class ActionMenuPrivate {
         static $gtype: GObject.GType<ActionMenuPrivate>;
 
-        // Constructors of Wnck.ActionMenuPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -8360,7 +8360,7 @@ export namespace Wnck {
     abstract class ApplicationPrivate {
         static $gtype: GObject.GType<ApplicationPrivate>;
 
-        // Constructors of Wnck.ApplicationPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -8369,7 +8369,7 @@ export namespace Wnck {
     abstract class ClassGroupPrivate {
         static $gtype: GObject.GType<ClassGroupPrivate>;
 
-        // Constructors of Wnck.ClassGroupPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -8378,7 +8378,7 @@ export namespace Wnck {
     abstract class IconCache {
         static $gtype: GObject.GType<IconCache>;
 
-        // Constructors of Wnck.IconCache
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -8388,7 +8388,7 @@ export namespace Wnck {
     abstract class PagerPrivate {
         static $gtype: GObject.GType<PagerPrivate>;
 
-        // Constructors of Wnck.PagerPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -8401,7 +8401,7 @@ export namespace Wnck {
     class ResourceUsage {
         static $gtype: GObject.GType<ResourceUsage>;
 
-        // Own fields of Wnck.ResourceUsage
+        // Fields
 
         total_bytes_estimate: number;
         pixmap_bytes: number;
@@ -8416,7 +8416,7 @@ export namespace Wnck {
         n_cursors: number;
         n_other: number;
 
-        // Constructors of Wnck.ResourceUsage
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -8441,7 +8441,7 @@ export namespace Wnck {
     abstract class ScreenPrivate {
         static $gtype: GObject.GType<ScreenPrivate>;
 
-        // Constructors of Wnck.ScreenPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -8450,7 +8450,7 @@ export namespace Wnck {
     abstract class SelectorPrivate {
         static $gtype: GObject.GType<SelectorPrivate>;
 
-        // Constructors of Wnck.SelectorPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -8459,7 +8459,7 @@ export namespace Wnck {
     abstract class TasklistPrivate {
         static $gtype: GObject.GType<TasklistPrivate>;
 
-        // Constructors of Wnck.TasklistPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -8468,7 +8468,7 @@ export namespace Wnck {
     abstract class WindowPrivate {
         static $gtype: GObject.GType<WindowPrivate>;
 
-        // Constructors of Wnck.WindowPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -8482,7 +8482,7 @@ export namespace Wnck {
     class WorkspaceLayout {
         static $gtype: GObject.GType<WorkspaceLayout>;
 
-        // Own fields of Wnck.WorkspaceLayout
+        // Fields
 
         rows: number;
         cols: number;
@@ -8491,7 +8491,7 @@ export namespace Wnck {
         current_row: number;
         current_col: number;
 
-        // Constructors of Wnck.WorkspaceLayout
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -8509,7 +8509,7 @@ export namespace Wnck {
     abstract class WorkspacePrivate {
         static $gtype: GObject.GType<WorkspacePrivate>;
 
-        // Constructors of Wnck.WorkspacePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }

@@ -189,14 +189,14 @@ export namespace Hex {
     class Document extends GObject.Object {
         static $gtype: GObject.GType<Document>;
 
-        // Own properties of Hex.Document
+        // Properties
 
         get buffer(): Buffer;
         set buffer(val: Buffer);
         get file(): Gio.File;
         set file(val: Gio.File);
 
-        // Constructors of Hex.Document
+        // Constructors
 
         constructor(properties?: Partial<Document.ConstructorProps>, ...args: any[]);
 
@@ -206,7 +206,7 @@ export namespace Hex {
 
         static new_from_file(file: Gio.File): Document;
 
-        // Own signals of Hex.Document
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -242,7 +242,7 @@ export namespace Hex {
         connect_after(signal: 'undo-stack-forget', callback: (_source: this) => void): number;
         emit(signal: 'undo-stack-forget'): void;
 
-        // Own methods of Hex.Document
+        // Methods
 
         /**
          * Determine whether a redo operation is possible.
@@ -625,7 +625,7 @@ export namespace Hex {
     class Widget extends Gtk.Widget implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
         static $gtype: GObject.GType<Widget>;
 
-        // Own properties of Hex.Widget
+        // Properties
 
         /**
          * `HexDocument` affiliated with and owned by the `HexWidget`.
@@ -642,7 +642,7 @@ export namespace Hex {
         get fadeZeroes(): boolean;
         set fadeZeroes(val: boolean);
 
-        // Constructors of Hex.Widget
+        // Constructors
 
         constructor(properties?: Partial<Widget.ConstructorProps>, ...args: any[]);
 
@@ -650,7 +650,7 @@ export namespace Hex {
 
         static ['new'](owner: Document): Widget;
 
-        // Own signals of Hex.Widget
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -674,7 +674,7 @@ export namespace Hex {
         connect_after(signal: 'paste-clipboard', callback: (_source: this) => void): number;
         emit(signal: 'paste-clipboard'): void;
 
-        // Own methods of Hex.Widget
+        // Methods
 
         /**
          * Add a mark for a `HexWidget` object at the specified absolute `start` and
@@ -1564,7 +1564,7 @@ export namespace Hex {
     class WidgetMark extends GObject.Object {
         static $gtype: GObject.GType<WidgetMark>;
 
-        // Own properties of Hex.WidgetMark
+        // Properties
 
         /**
          * The custom color of the `HexWidgetMark`, if applicable.
@@ -1585,13 +1585,13 @@ export namespace Hex {
          */
         get haveCustomColor(): boolean;
 
-        // Constructors of Hex.WidgetMark
+        // Constructors
 
         constructor(properties?: Partial<WidgetMark.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Hex.WidgetMark
+        // Methods
 
         /**
          * Obtains the custom color associated with a `HexWidgetMark` object, if
@@ -1623,7 +1623,7 @@ export namespace Hex {
     class ChangeData {
         static $gtype: GObject.GType<ChangeData>;
 
-        // Own fields of Hex.ChangeData
+        // Fields
 
         start: number;
         end: number;
@@ -1634,7 +1634,7 @@ export namespace Hex {
         v_string: string;
         v_byte: number;
 
-        // Constructors of Hex.ChangeData
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1647,7 +1647,7 @@ export namespace Hex {
     class DocumentFindData {
         static $gtype: GObject.GType<DocumentFindData>;
 
-        // Own fields of Hex.DocumentFindData
+        // Fields
 
         found: boolean;
         start: number;
@@ -1659,7 +1659,7 @@ export namespace Hex {
         found_msg: string;
         not_found_msg: string;
 
-        // Constructors of Hex.DocumentFindData
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -1678,7 +1678,7 @@ export namespace Hex {
 
         static ['new'](): DocumentFindData;
 
-        // Own methods of Hex.DocumentFindData
+        // Methods
 
         /**
          * Copy a [struct`Hex`.DocumentFindData] structure. This function is likely
@@ -1695,7 +1695,7 @@ export namespace Hex {
     abstract class WidgetAutoHighlight {
         static $gtype: GObject.GType<WidgetAutoHighlight>;
 
-        // Constructors of Hex.WidgetAutoHighlight
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1745,7 +1745,7 @@ export namespace Hex {
         util_new(plugin?: string | null, file?: Gio.File | null): Buffer;
     }
     interface Buffer extends GObject.Object {
-        // Own properties of Hex.Buffer
+        // Properties
 
         /**
          * This property is the file (as #GFile) being utilized by the buffer.
@@ -1753,7 +1753,7 @@ export namespace Hex {
         get file(): Gio.File;
         set file(val: Gio.File);
 
-        // Own methods of Hex.Buffer
+        // Methods
 
         /**
          * Get a single byte at a particular offset within the buffer.
@@ -1851,7 +1851,7 @@ export namespace Hex {
          */
         write_to_file_finish(result: Gio.AsyncResult): boolean;
 
-        // Own virtual methods of Hex.Buffer
+        // Virtual methods
 
         /**
          * Get a single byte at a particular offset within the buffer.

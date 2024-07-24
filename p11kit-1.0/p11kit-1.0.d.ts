@@ -159,11 +159,11 @@ export namespace P11Kit {
     abstract class Pin {
         static $gtype: GObject.GType<Pin>;
 
-        // Constructors of P11Kit.Pin
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of P11Kit.Pin
+        // Methods
 
         /**
          * Get the length of the PIN value from a P11KitPin.
@@ -195,11 +195,11 @@ export namespace P11Kit {
     abstract class Uri {
         static $gtype: GObject.GType<Uri>;
 
-        // Constructors of P11Kit.Uri
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own static methods of P11Kit.Uri
+        // Static methods
 
         /**
          * Lookup a message for the uri error code. These codes are the P11_KIT_URI_XXX
@@ -227,7 +227,7 @@ export namespace P11Kit {
          */
         static parse(string: string, uri_type: UriType, uri: Uri): number;
 
-        // Own methods of P11Kit.Uri
+        // Methods
 
         /**
          * Get the unrecognized flag for this URI.

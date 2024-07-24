@@ -49,19 +49,19 @@ export namespace GstClapper {
     class ClapperError extends GLib.Error {
         static $gtype: GObject.GType<ClapperError>;
 
-        // Static fields of GstClapper.ClapperError
+        // Static fields
 
         /**
          * generic error.
          */
         static FAILED: number;
 
-        // Constructors of GstClapper.ClapperError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of GstClapper.ClapperError
+        // Static methods
 
         /**
          * Gets a string representing the given error.
@@ -257,7 +257,7 @@ export namespace GstClapper {
     class Clapper extends Gst.Object {
         static $gtype: GObject.GType<Clapper>;
 
-        // Own properties of GstClapper.Clapper
+        // Properties
 
         get audio_video_offset(): number;
         set audio_video_offset(val: number);
@@ -311,7 +311,7 @@ export namespace GstClapper {
         get volume(): number;
         set volume(val: number);
 
-        // Constructors of GstClapper.Clapper
+        // Constructors
 
         constructor(properties?: Partial<Clapper.ConstructorProps>, ...args: any[]);
 
@@ -323,7 +323,7 @@ export namespace GstClapper {
             mpris?: ClapperMpris | null,
         ): Clapper;
 
-        // Own signals of GstClapper.Clapper
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -374,7 +374,7 @@ export namespace GstClapper {
         connect_after(signal: 'warning', callback: (_source: this, object: GLib.Error) => void): number;
         emit(signal: 'warning', object: GLib.Error): void;
 
-        // Own static methods of GstClapper.Clapper
+        // Static methods
 
         /**
          * Automatically initializes GStreamer library if this was not done by the user yet
@@ -393,7 +393,7 @@ export namespace GstClapper {
         static visualizations_free(viss: ClapperVisualization): void;
         static visualizations_get(): ClapperVisualization[];
 
-        // Own methods of GstClapper.Clapper
+        // Methods
 
         /**
          * Retrieve the current value of audio-video-offset property
@@ -620,13 +620,13 @@ export namespace GstClapper {
     class ClapperAudioInfo extends ClapperStreamInfo {
         static $gtype: GObject.GType<ClapperAudioInfo>;
 
-        // Constructors of GstClapper.ClapperAudioInfo
+        // Constructors
 
         constructor(properties?: Partial<ClapperAudioInfo.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of GstClapper.ClapperAudioInfo
+        // Methods
 
         get_bitrate(): number;
         get_channels(): number;
@@ -647,18 +647,18 @@ export namespace GstClapper {
     class ClapperGMainContextSignalDispatcher extends GObject.Object implements ClapperSignalDispatcher {
         static $gtype: GObject.GType<ClapperGMainContextSignalDispatcher>;
 
-        // Own properties of GstClapper.ClapperGMainContextSignalDispatcher
+        // Properties
 
         get application_context(): GLib.MainContext;
         get applicationContext(): GLib.MainContext;
 
-        // Constructors of GstClapper.ClapperGMainContextSignalDispatcher
+        // Constructors
 
         constructor(properties?: Partial<ClapperGMainContextSignalDispatcher.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of GstClapper.ClapperGMainContextSignalDispatcher
+        // Static methods
 
         /**
          * Creates a new GstClapperSignalDispatcher that uses `application_context,`
@@ -1086,12 +1086,12 @@ export namespace GstClapper {
     class ClapperGtk4Plugin extends GObject.Object {
         static $gtype: GObject.GType<ClapperGtk4Plugin>;
 
-        // Own properties of GstClapper.ClapperGtk4Plugin
+        // Properties
 
         get video_sink(): Gst.Element;
         get videoSink(): Gst.Element;
 
-        // Constructors of GstClapper.ClapperGtk4Plugin
+        // Constructors
 
         constructor(properties?: Partial<ClapperGtk4Plugin.ConstructorProps>, ...args: any[]);
 
@@ -1112,13 +1112,13 @@ export namespace GstClapper {
     class ClapperMediaInfo extends GObject.Object {
         static $gtype: GObject.GType<ClapperMediaInfo>;
 
-        // Constructors of GstClapper.ClapperMediaInfo
+        // Constructors
 
         constructor(properties?: Partial<ClapperMediaInfo.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of GstClapper.ClapperMediaInfo
+        // Methods
 
         get_audio_streams(): ClapperAudioInfo[];
         get_container_format(): string;
@@ -1164,7 +1164,7 @@ export namespace GstClapper {
     class ClapperMpris extends GObject.Object {
         static $gtype: GObject.GType<ClapperMpris>;
 
-        // Own properties of GstClapper.ClapperMpris
+        // Properties
 
         get default_art_url(): string;
         get defaultArtUrl(): string;
@@ -1178,7 +1178,7 @@ export namespace GstClapper {
         get volume(): number;
         set volume(val: number);
 
-        // Constructors of GstClapper.ClapperMpris
+        // Constructors
 
         constructor(properties?: Partial<ClapperMpris.ConstructorProps>, ...args: any[]);
 
@@ -1207,13 +1207,13 @@ export namespace GstClapper {
     abstract class ClapperStreamInfo extends GObject.Object {
         static $gtype: GObject.GType<ClapperStreamInfo>;
 
-        // Constructors of GstClapper.ClapperStreamInfo
+        // Constructors
 
         constructor(properties?: Partial<ClapperStreamInfo.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of GstClapper.ClapperStreamInfo
+        // Methods
 
         get_caps(): Gst.Caps;
         /**
@@ -1247,13 +1247,13 @@ export namespace GstClapper {
     class ClapperSubtitleInfo extends ClapperStreamInfo {
         static $gtype: GObject.GType<ClapperSubtitleInfo>;
 
-        // Constructors of GstClapper.ClapperSubtitleInfo
+        // Constructors
 
         constructor(properties?: Partial<ClapperSubtitleInfo.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of GstClapper.ClapperSubtitleInfo
+        // Methods
 
         get_language(): string;
         get_title(): string;
@@ -1271,13 +1271,13 @@ export namespace GstClapper {
     class ClapperVideoInfo extends ClapperStreamInfo {
         static $gtype: GObject.GType<ClapperVideoInfo>;
 
-        // Constructors of GstClapper.ClapperVideoInfo
+        // Constructors
 
         constructor(properties?: Partial<ClapperVideoInfo.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of GstClapper.ClapperVideoInfo
+        // Methods
 
         get_bitrate(): number;
         get_framerate(): [number, number];
@@ -1304,7 +1304,7 @@ export namespace GstClapper {
     class ClapperVideoOverlayVideoRenderer extends GObject.Object implements ClapperVideoRenderer {
         static $gtype: GObject.GType<ClapperVideoOverlayVideoRenderer>;
 
-        // Own properties of GstClapper.ClapperVideoOverlayVideoRenderer
+        // Properties
 
         get video_sink(): Gst.Element;
         set video_sink(val: Gst.Element);
@@ -1315,18 +1315,18 @@ export namespace GstClapper {
         get windowHandle(): any;
         set windowHandle(val: any);
 
-        // Constructors of GstClapper.ClapperVideoOverlayVideoRenderer
+        // Constructors
 
         constructor(properties?: Partial<ClapperVideoOverlayVideoRenderer.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of GstClapper.ClapperVideoOverlayVideoRenderer
+        // Static methods
 
         static ['new'](window_handle?: any | null): ClapperVideoRenderer;
         static new_with_sink(window_handle: any | null, video_sink: Gst.Element): ClapperVideoRenderer;
 
-        // Own methods of GstClapper.ClapperVideoOverlayVideoRenderer
+        // Methods
 
         /**
          * Tell an overlay that it has been exposed. This will redraw the current frame
@@ -1784,12 +1784,12 @@ export namespace GstClapper {
     class ClapperVisualization {
         static $gtype: GObject.GType<ClapperVisualization>;
 
-        // Own fields of GstClapper.ClapperVisualization
+        // Fields
 
         name: string;
         description: string;
 
-        // Constructors of GstClapper.ClapperVisualization
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -1799,7 +1799,7 @@ export namespace GstClapper {
         );
         _init(...args: any[]): void;
 
-        // Own methods of GstClapper.ClapperVisualization
+        // Methods
 
         /**
          * Makes a copy of the #GstClapperVisualization. The result must be
@@ -1824,7 +1824,7 @@ export namespace GstClapper {
         prototype: ClapperSignalDispatcher;
     }
     interface ClapperSignalDispatcher extends GObject.Object {
-        // Own virtual methods of GstClapper.ClapperSignalDispatcher
+        // Virtual methods
 
         vfunc_dispatch(clapper: Clapper, emitter: ClapperSignalDispatcherFunc): void;
     }

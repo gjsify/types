@@ -134,13 +134,13 @@ export namespace PangoOT {
     class Info extends GObject.Object {
         static $gtype: GObject.GType<Info>;
 
-        // Constructors of PangoOT.Info
+        // Constructors
 
         constructor(properties?: Partial<Info.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of PangoOT.Info
+        // Static methods
 
         /**
          * Returns the `PangoOTInfo` structure for the given FreeType font face.
@@ -148,7 +148,7 @@ export namespace PangoOT {
          */
         static get(face: freetype2.Face): Info;
 
-        // Own methods of PangoOT.Info
+        // Methods
 
         /**
          * Finds the index of a feature.
@@ -253,7 +253,7 @@ export namespace PangoOT {
     class Ruleset extends GObject.Object {
         static $gtype: GObject.GType<Ruleset>;
 
-        // Constructors of PangoOT.Ruleset
+        // Constructors
 
         constructor(properties?: Partial<Ruleset.ConstructorProps>, ...args: any[]);
 
@@ -265,7 +265,7 @@ export namespace PangoOT {
 
         static new_from_description(info: Info, desc: RulesetDescription): Ruleset;
 
-        // Own static methods of PangoOT.Ruleset
+        // Static methods
 
         /**
          * Returns a ruleset for the given OpenType info and ruleset
@@ -282,7 +282,7 @@ export namespace PangoOT {
          */
         static get_for_description(info: Info, desc: RulesetDescription): Ruleset;
 
-        // Own methods of PangoOT.Ruleset
+        // Methods
 
         /**
          * Adds a feature to the ruleset.
@@ -338,14 +338,14 @@ export namespace PangoOT {
     class Buffer {
         static $gtype: GObject.GType<Buffer>;
 
-        // Constructors of PangoOT.Buffer
+        // Constructors
 
         constructor(font: PangoFc.Font);
         _init(...args: any[]): void;
 
         static ['new'](font: PangoFc.Font): Buffer;
 
-        // Own methods of PangoOT.Buffer
+        // Methods
 
         /**
          * Appends a glyph to a `PangoOTBuffer`, with `properties` identifying which
@@ -408,12 +408,12 @@ export namespace PangoOT {
     class FeatureMap {
         static $gtype: GObject.GType<FeatureMap>;
 
-        // Own fields of PangoOT.FeatureMap
+        // Fields
 
         feature_name: number[];
         property_bit: number;
 
-        // Constructors of PangoOT.FeatureMap
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -432,7 +432,7 @@ export namespace PangoOT {
     class Glyph {
         static $gtype: GObject.GType<Glyph>;
 
-        // Own fields of PangoOT.Glyph
+        // Fields
 
         glyph: number;
         properties: number;
@@ -441,7 +441,7 @@ export namespace PangoOT {
         ligID: number;
         internal: number;
 
-        // Constructors of PangoOT.Glyph
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -467,7 +467,7 @@ export namespace PangoOT {
     class RulesetDescription {
         static $gtype: GObject.GType<RulesetDescription>;
 
-        // Own fields of PangoOT.RulesetDescription
+        // Fields
 
         script: Pango.Script;
         static_gsub_features: FeatureMap;
@@ -477,11 +477,11 @@ export namespace PangoOT {
         other_features: FeatureMap;
         n_other_features: number;
 
-        // Constructors of PangoOT.RulesetDescription
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of PangoOT.RulesetDescription
+        // Methods
 
         /**
          * Creates a copy of `desc,` which should be freed with

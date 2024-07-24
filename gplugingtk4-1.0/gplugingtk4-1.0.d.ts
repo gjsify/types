@@ -112,7 +112,7 @@ export namespace GPluginGtk4 {
     class PluginPage extends Gtk.Box implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget, Gtk.Orientable {
         static $gtype: GObject.GType<PluginPage>;
 
-        // Own properties of GPluginGtk4.PluginPage
+        // Properties
 
         /**
          * The [iface`GPlugin`.Plugin] whose info should be displayed.
@@ -130,7 +130,7 @@ export namespace GPluginGtk4 {
         get settingsBackend(): Gio.SettingsBackend;
         set settingsBackend(val: Gio.SettingsBackend);
 
-        // Constructors of GPluginGtk4.PluginPage
+        // Constructors
 
         constructor(properties?: Partial<PluginPage.ConstructorProps>, ...args: any[]);
 
@@ -138,7 +138,7 @@ export namespace GPluginGtk4 {
 
         static ['new'](): PluginPage;
 
-        // Own signals of GPluginGtk4.PluginPage
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -147,7 +147,7 @@ export namespace GPluginGtk4 {
         connect_after(signal: 'plugin-state-set', callback: (_source: this, enabled: boolean) => void): number;
         emit(signal: 'plugin-state-set', enabled: boolean): void;
 
-        // Own methods of GPluginGtk4.PluginPage
+        // Methods
 
         /**
          * Gets the [iface`GPlugin`.Plugin] that's being displayed.
@@ -630,7 +630,7 @@ export namespace GPluginGtk4 {
     {
         static $gtype: GObject.GType<PluginRow>;
 
-        // Own properties of GPluginGtk4.PluginRow
+        // Properties
 
         /**
          * The [iface`GPlugin`.Plugin] whose info should be displayed.
@@ -638,7 +638,7 @@ export namespace GPluginGtk4 {
         get plugin(): GObject.Object;
         set plugin(val: GObject.Object);
 
-        // Constructors of GPluginGtk4.PluginRow
+        // Constructors
 
         constructor(properties?: Partial<PluginRow.ConstructorProps>, ...args: any[]);
 
@@ -646,7 +646,7 @@ export namespace GPluginGtk4 {
 
         static ['new'](): PluginRow;
 
-        // Own signals of GPluginGtk4.PluginRow
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -655,7 +655,7 @@ export namespace GPluginGtk4 {
         connect_after(signal: 'plugin-state-set', callback: (_source: this, enabled: boolean) => void): number;
         emit(signal: 'plugin-state-set', enabled: boolean): void;
 
-        // Own methods of GPluginGtk4.PluginRow
+        // Methods
 
         /**
          * Returns the [iface`GPlugin`.Plugin] that's being displayed.
@@ -3632,7 +3632,7 @@ export namespace GPluginGtk4 {
     {
         static $gtype: GObject.GType<PluginSettingsList>;
 
-        // Own properties of GPluginGtk4.PluginSettingsList
+        // Properties
 
         /**
          * The [class`Gio`.Settings] to display.
@@ -3640,7 +3640,7 @@ export namespace GPluginGtk4 {
         get settings(): Gio.Settings;
         set settings(val: Gio.Settings);
 
-        // Constructors of GPluginGtk4.PluginSettingsList
+        // Constructors
 
         constructor(properties?: Partial<PluginSettingsList.ConstructorProps>, ...args: any[]);
 
@@ -3648,7 +3648,7 @@ export namespace GPluginGtk4 {
 
         static ['new'](): PluginSettingsList;
 
-        // Own methods of GPluginGtk4.PluginSettingsList
+        // Methods
 
         /**
          * Returns the plugin settings that are being displayed.
@@ -4107,7 +4107,7 @@ export namespace GPluginGtk4 {
     class View extends Gtk.Box implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget, Gtk.Orientable {
         static $gtype: GObject.GType<View>;
 
-        // Own properties of GPluginGtk4.View
+        // Properties
 
         /**
          * The plugin manager to display.
@@ -4135,7 +4135,7 @@ export namespace GPluginGtk4 {
         get showInternal(): boolean;
         set showInternal(val: boolean);
 
-        // Constructors of GPluginGtk4.View
+        // Constructors
 
         constructor(properties?: Partial<View.ConstructorProps>, ...args: any[]);
 
@@ -4143,7 +4143,7 @@ export namespace GPluginGtk4 {
 
         static ['new'](): View;
 
-        // Own methods of GPluginGtk4.View
+        // Methods
 
         /**
          * Returns the plugin manager that is being displayed.

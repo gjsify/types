@@ -396,7 +396,7 @@ export namespace EBackend {
     abstract class Backend extends GObject.Object {
         static $gtype: GObject.GType<Backend>;
 
-        // Own properties of EBackend.Backend
+        // Properties
 
         get connectable(): Gio.SocketConnectable;
         set connectable(val: Gio.SocketConnectable);
@@ -408,13 +408,13 @@ export namespace EBackend {
         get user_prompter(): UserPrompter;
         get userPrompter(): UserPrompter;
 
-        // Constructors of EBackend.Backend
+        // Constructors
 
         constructor(properties?: Partial<Backend.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of EBackend.Backend
+        // Virtual methods
 
         /**
          * Authenticate synchronously
@@ -448,7 +448,7 @@ export namespace EBackend {
          */
         vfunc_prepare_shutdown(): void;
 
-        // Own methods of EBackend.Backend
+        // Methods
 
         /**
          * Asynchronously calls the e_backend_credentials_required_sync() on the `backend,`
@@ -694,13 +694,13 @@ export namespace EBackend {
     abstract class BackendFactory extends EDataServer.Extension {
         static $gtype: GObject.GType<BackendFactory>;
 
-        // Constructors of EBackend.BackendFactory
+        // Constructors
 
         constructor(properties?: Partial<BackendFactory.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of EBackend.BackendFactory
+        // Virtual methods
 
         /**
          * Returns a hash key which uniquely identifies `factory`.
@@ -716,7 +716,7 @@ export namespace EBackend {
          */
         vfunc_new_backend(source: EDataServer.Source): Backend;
 
-        // Own methods of EBackend.BackendFactory
+        // Methods
 
         /**
          * Returns a hash key which uniquely identifies `factory`.
@@ -782,13 +782,13 @@ export namespace EBackend {
     abstract class Cache extends GObject.Object {
         static $gtype: GObject.GType<Cache>;
 
-        // Constructors of EBackend.Cache
+        // Constructors
 
         constructor(properties?: Partial<Cache.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of EBackend.Cache
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -842,7 +842,7 @@ export namespace EBackend {
         connect_after(signal: 'revision-changed', callback: (_source: this) => void): number;
         emit(signal: 'revision-changed'): void;
 
-        // Own static methods of EBackend.Cache
+        // Static methods
 
         static error_quark(): GLib.Quark;
         /**
@@ -851,7 +851,7 @@ export namespace EBackend {
          */
         static sqlite_stmt_free(stmt: string): void;
 
-        // Own virtual methods of EBackend.Cache
+        // Virtual methods
 
         vfunc_before_put(
             uid: string,
@@ -880,7 +880,7 @@ export namespace EBackend {
         vfunc_remove_locked(uid: string, cancellable?: Gio.Cancellable | null): boolean;
         vfunc_revision_changed(): void;
 
-        // Own methods of EBackend.Cache
+        // Methods
 
         /**
          * Instructs the `cache` to change its revision. In case the revision
@@ -1212,7 +1212,7 @@ export namespace EBackend {
     class CacheKeys extends GObject.Object {
         static $gtype: GObject.GType<CacheKeys>;
 
-        // Own properties of EBackend.CacheKeys
+        // Properties
 
         /**
          * The #ECache being used for this keys table.
@@ -1243,7 +1243,7 @@ export namespace EBackend {
          */
         get valueColumnName(): string;
 
-        // Constructors of EBackend.CacheKeys
+        // Constructors
 
         constructor(properties?: Partial<CacheKeys.ConstructorProps>, ...args: any[]);
 
@@ -1251,7 +1251,7 @@ export namespace EBackend {
 
         static ['new'](cache: Cache, table_name: string, key_column_name: string, value_column_name: string): CacheKeys;
 
-        // Own signals of EBackend.CacheKeys
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -1260,11 +1260,11 @@ export namespace EBackend {
         connect_after(signal: 'changed', callback: (_source: this) => void): number;
         emit(signal: 'changed'): void;
 
-        // Own virtual methods of EBackend.CacheKeys
+        // Virtual methods
 
         vfunc_changed(): void;
 
-        // Own methods of EBackend.CacheKeys
+        // Methods
 
         /**
          * Counts how many keys the `self` stores and set it to the `out_n_stored`.
@@ -1367,17 +1367,17 @@ export namespace EBackend {
     class CacheReaper extends EDataServer.Extension implements EDataServer.Extensible {
         static $gtype: GObject.GType<CacheReaper>;
 
-        // Constructors of EBackend.CacheReaper
+        // Constructors
 
         constructor(properties?: Partial<CacheReaper.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of EBackend.CacheReaper
+        // Static methods
 
         static type_register(type_module: GObject.TypeModule): void;
 
-        // Own methods of EBackend.CacheReaper
+        // Methods
 
         /**
          * Let's the `cache_reaper` know about a private directory named `name,`
@@ -1852,19 +1852,19 @@ export namespace EBackend {
     class CollectionBackend extends Backend {
         static $gtype: GObject.GType<CollectionBackend>;
 
-        // Own properties of EBackend.CollectionBackend
+        // Properties
 
         get proxy_resolver(): Gio.ProxyResolver;
         get proxyResolver(): Gio.ProxyResolver;
         get server(): SourceRegistryServer;
 
-        // Constructors of EBackend.CollectionBackend
+        // Constructors
 
         constructor(properties?: Partial<CollectionBackend.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of EBackend.CollectionBackend
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -1879,7 +1879,7 @@ export namespace EBackend {
         ): number;
         emit(signal: 'child-removed', child_source: ServerSideSource): void;
 
-        // Own virtual methods of EBackend.CollectionBackend
+        // Virtual methods
 
         vfunc_child_added(child_source: EDataServer.Source): void;
         vfunc_child_removed(child_source: EDataServer.Source): void;
@@ -1992,7 +1992,7 @@ export namespace EBackend {
         vfunc_dup_resource_id(child_source: EDataServer.Source): string | null;
         vfunc_populate(): void;
 
-        // Own methods of EBackend.CollectionBackend
+        // Methods
 
         /**
          * Authenticates all enabled children sources with the given `crendetials`.
@@ -2282,13 +2282,13 @@ export namespace EBackend {
     class CollectionBackendFactory extends BackendFactory {
         static $gtype: GObject.GType<CollectionBackendFactory>;
 
-        // Constructors of EBackend.CollectionBackendFactory
+        // Constructors
 
         constructor(properties?: Partial<CollectionBackendFactory.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of EBackend.CollectionBackendFactory
+        // Virtual methods
 
         /**
          * Convenience function to populate a set of #ESource instances with mail
@@ -2306,7 +2306,7 @@ export namespace EBackend {
             mail_transport_source: EDataServer.Source,
         ): void;
 
-        // Own methods of EBackend.CollectionBackendFactory
+        // Methods
 
         /**
          * Convenience function to populate a set of #ESource instances with mail
@@ -2360,13 +2360,13 @@ export namespace EBackend {
     abstract class DBusServer extends GObject.Object implements EDataServer.Extensible {
         static $gtype: GObject.GType<DBusServer>;
 
-        // Constructors of EBackend.DBusServer
+        // Constructors
 
         constructor(properties?: Partial<DBusServer.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of EBackend.DBusServer
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -2396,7 +2396,7 @@ export namespace EBackend {
         connect_after(signal: 'run-server', callback: (_source: this) => DBusServerExitCode): number;
         emit(signal: 'run-server'): void;
 
-        // Own virtual methods of EBackend.DBusServer
+        // Virtual methods
 
         vfunc_bus_acquired(connection: Gio.DBusConnection): void;
         vfunc_bus_name_acquired(connection: Gio.DBusConnection): void;
@@ -2404,7 +2404,7 @@ export namespace EBackend {
         vfunc_quit_server(code: DBusServerExitCode): void;
         vfunc_run_server(): DBusServerExitCode;
 
-        // Own methods of EBackend.DBusServer
+        // Methods
 
         /**
          * Increases the use count of `server`.
@@ -2900,7 +2900,7 @@ export namespace EBackend {
     class DataFactory extends DBusServer implements EDataServer.Extensible, Gio.Initable {
         static $gtype: GObject.GType<DataFactory>;
 
-        // Own properties of EBackend.DataFactory
+        // Properties
 
         get backend_per_process(): number;
         get backendPerProcess(): number;
@@ -2908,13 +2908,13 @@ export namespace EBackend {
         get reload_supported(): boolean;
         get reloadSupported(): boolean;
 
-        // Constructors of EBackend.DataFactory
+        // Constructors
 
         constructor(properties?: Partial<DataFactory.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of EBackend.DataFactory
+        // Virtual methods
 
         vfunc_complete_open(
             invocation: Gio.DBusMethodInvocation,
@@ -2937,7 +2937,7 @@ export namespace EBackend {
             cancellable?: Gio.Cancellable | null,
         ): string;
 
-        // Own methods of EBackend.DataFactory
+        // Methods
 
         backend_closed(backend: Backend): void;
         backend_closed_by_sender(backend: Backend, sender: string): void;
@@ -3539,14 +3539,14 @@ export namespace EBackend {
     class FileCache extends GObject.Object {
         static $gtype: GObject.GType<FileCache>;
 
-        // Own properties of EBackend.FileCache
+        // Properties
 
         /**
          * The filename of the cache.
          */
         get filename(): string;
 
-        // Constructors of EBackend.FileCache
+        // Constructors
 
         constructor(properties?: Partial<FileCache.ConstructorProps>, ...args: any[]);
 
@@ -3554,7 +3554,7 @@ export namespace EBackend {
 
         static ['new'](filename: string): FileCache;
 
-        // Own methods of EBackend.FileCache
+        // Methods
 
         /**
          * Adds a new `key` / `value` entry to `cache`.  If an object corresponding
@@ -3654,7 +3654,7 @@ export namespace EBackend {
     class ServerSideSource extends EDataServer.Source implements Gio.Initable, Gio.ProxyResolver {
         static $gtype: GObject.GType<ServerSideSource>;
 
-        // Own properties of EBackend.ServerSideSource
+        // Properties
 
         get exported(): boolean;
         get file(): Gio.File;
@@ -3680,7 +3680,7 @@ export namespace EBackend {
         get writeDirectory(): string;
         set writeDirectory(val: string);
 
-        // Constructors of EBackend.ServerSideSource
+        // Constructors
 
         constructor(properties?: Partial<ServerSideSource.ConstructorProps>, ...args: any[]);
 
@@ -3693,7 +3693,7 @@ export namespace EBackend {
 
         static new_memory_only(server: SourceRegistryServer, uid?: string | null): ServerSideSource;
 
-        // Own static methods of EBackend.ServerSideSource
+        // Static methods
 
         /**
          * Returns the directory where user-specific data source files are stored.
@@ -3719,7 +3719,7 @@ export namespace EBackend {
          */
         static uid_from_file(file: Gio.File): string | null;
 
-        // Own methods of EBackend.ServerSideSource
+        // Methods
 
         /**
          * Returns whether `source` has been exported over D-Bus.
@@ -4463,7 +4463,7 @@ export namespace EBackend {
     {
         static $gtype: GObject.GType<ServerSideSourceCredentialsProvider>;
 
-        // Constructors of EBackend.ServerSideSourceCredentialsProvider
+        // Constructors
 
         constructor(properties?: Partial<ServerSideSourceCredentialsProvider.ConstructorProps>, ...args: any[]);
 
@@ -4940,7 +4940,7 @@ export namespace EBackend {
     class SourceRegistryServer extends DataFactory implements OAuth2Support, EDataServer.Extensible, Gio.Initable {
         static $gtype: GObject.GType<SourceRegistryServer>;
 
-        // Constructors of EBackend.SourceRegistryServer
+        // Constructors
 
         constructor(properties?: Partial<SourceRegistryServer.ConstructorProps>, ...args: any[]);
 
@@ -4948,7 +4948,7 @@ export namespace EBackend {
 
         static ['new'](): SourceRegistryServer;
 
-        // Own signals of EBackend.SourceRegistryServer
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -4978,7 +4978,7 @@ export namespace EBackend {
         ): number;
         emit(signal: 'tweak-key-file', key_file: GLib.KeyFile, uid: string): void;
 
-        // Own virtual methods of EBackend.SourceRegistryServer
+        // Virtual methods
 
         vfunc_files_loaded(): void;
         /**
@@ -4991,7 +4991,7 @@ export namespace EBackend {
         vfunc_source_removed(source: EDataServer.Source): void;
         vfunc_tweak_key_file(key_file: GLib.KeyFile, uid: string): boolean;
 
-        // Own methods of EBackend.SourceRegistryServer
+        // Methods
 
         /**
          * Adds `source` to `server`.
@@ -5726,17 +5726,17 @@ export namespace EBackend {
     class SubprocessFactory extends GObject.Object implements Gio.Initable {
         static $gtype: GObject.GType<SubprocessFactory>;
 
-        // Own properties of EBackend.SubprocessFactory
+        // Properties
 
         get registry(): EDataServer.SourceRegistry;
 
-        // Constructors of EBackend.SubprocessFactory
+        // Constructors
 
         constructor(properties?: Partial<SubprocessFactory.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of EBackend.SubprocessFactory
+        // Static methods
 
         /**
          * Returns a new and unique object path for a D-Bus interface based
@@ -5744,7 +5744,7 @@ export namespace EBackend {
          */
         static construct_path(): string;
 
-        // Own virtual methods of EBackend.SubprocessFactory
+        // Virtual methods
 
         vfunc_backend_closed(backend: Backend): void;
         vfunc_backend_created(backend: Backend): void;
@@ -5755,7 +5755,7 @@ export namespace EBackend {
             cancellable?: Gio.Cancellable | null,
         ): string;
 
-        // Own methods of EBackend.SubprocessFactory
+        // Methods
 
         /**
          * Calls e_backend_prepare_shutdown() for the list of used backends.
@@ -6322,7 +6322,7 @@ export namespace EBackend {
     class UserPrompter extends GObject.Object {
         static $gtype: GObject.GType<UserPrompter>;
 
-        // Constructors of EBackend.UserPrompter
+        // Constructors
 
         constructor(properties?: Partial<UserPrompter.ConstructorProps>, ...args: any[]);
 
@@ -6330,7 +6330,7 @@ export namespace EBackend {
 
         static ['new'](): UserPrompter;
 
-        // Own methods of EBackend.UserPrompter
+        // Methods
 
         /**
          * Asynchronously prompt a user for a decision on an extension-provided dialog.
@@ -6493,7 +6493,7 @@ export namespace EBackend {
     class UserPrompterServer extends DBusServer implements EDataServer.Extensible {
         static $gtype: GObject.GType<UserPrompterServer>;
 
-        // Constructors of EBackend.UserPrompterServer
+        // Constructors
 
         constructor(properties?: Partial<UserPrompterServer.ConstructorProps>, ...args: any[]);
 
@@ -6501,7 +6501,7 @@ export namespace EBackend {
 
         static ['new'](): UserPrompterServer;
 
-        // Own signals of EBackend.UserPrompterServer
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -6543,7 +6543,7 @@ export namespace EBackend {
             button_captions?: string[] | null,
         ): void;
 
-        // Own methods of EBackend.UserPrompterServer
+        // Methods
 
         /**
          * Registers `extension` as a provider of `dialog_name` dialog. The names
@@ -7010,13 +7010,13 @@ export namespace EBackend {
     abstract class UserPrompterServerExtension extends EDataServer.Extension {
         static $gtype: GObject.GType<UserPrompterServerExtension>;
 
-        // Constructors of EBackend.UserPrompterServerExtension
+        // Constructors
 
         constructor(properties?: Partial<UserPrompterServerExtension.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of EBackend.UserPrompterServerExtension
+        // Virtual methods
 
         /**
          * Instructs extension to show dialog `dialog_name`. If it cannot be found,
@@ -7038,7 +7038,7 @@ export namespace EBackend {
          */
         vfunc_prompt(prompt_id: number, dialog_name: string, parameters?: EDataServer.NamedParameters | null): boolean;
 
-        // Own methods of EBackend.UserPrompterServerExtension
+        // Methods
 
         /**
          * Instructs extension to show dialog `dialog_name`. If it cannot be found,
@@ -7086,13 +7086,13 @@ export namespace EBackend {
     class WebDAVCollectionBackend extends CollectionBackend {
         static $gtype: GObject.GType<WebDAVCollectionBackend>;
 
-        // Constructors of EBackend.WebDAVCollectionBackend
+        // Constructors
 
         constructor(properties?: Partial<WebDAVCollectionBackend.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of EBackend.WebDAVCollectionBackend
+        // Virtual methods
 
         /**
          * Verifies that the `source` is expected here and returns its resource ID,
@@ -7105,7 +7105,7 @@ export namespace EBackend {
         vfunc_get_resource_id(source: EDataServer.Source): string | null;
         vfunc_is_custom_source(source: EDataServer.Source): boolean;
 
-        // Own methods of EBackend.WebDAVCollectionBackend
+        // Methods
 
         /**
          * This function is usually called in EBackend::authenticate_sync() implementation
@@ -7144,7 +7144,7 @@ export namespace EBackend {
     abstract class BackendFactoryPrivate {
         static $gtype: GObject.GType<BackendFactoryPrivate>;
 
-        // Constructors of EBackend.BackendFactoryPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -7152,7 +7152,7 @@ export namespace EBackend {
     abstract class BackendPrivate {
         static $gtype: GObject.GType<BackendPrivate>;
 
-        // Constructors of EBackend.BackendPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -7161,13 +7161,13 @@ export namespace EBackend {
     class CacheColumnInfo {
         static $gtype: GObject.GType<CacheColumnInfo>;
 
-        // Own fields of EBackend.CacheColumnInfo
+        // Fields
 
         name: string;
         type: string;
         index_name: string;
 
-        // Constructors of EBackend.CacheColumnInfo
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -7180,7 +7180,7 @@ export namespace EBackend {
 
         static ['new'](name: string, type: string, index_name?: string | null): CacheColumnInfo;
 
-        // Own static methods of EBackend.CacheColumnInfo
+        // Static methods
 
         /**
          * Frees the `info` structure, previously allocated with e_cache_column_info_new()
@@ -7189,7 +7189,7 @@ export namespace EBackend {
          */
         static free(info?: any | null): void;
 
-        // Own methods of EBackend.CacheColumnInfo
+        // Methods
 
         copy(): CacheColumnInfo | null;
     }
@@ -7197,14 +7197,14 @@ export namespace EBackend {
     class CacheColumnValues {
         static $gtype: GObject.GType<CacheColumnValues>;
 
-        // Constructors of EBackend.CacheColumnValues
+        // Constructors
 
         constructor(properties?: Partial<{}>);
         _init(...args: any[]): void;
 
         static ['new'](): CacheColumnValues;
 
-        // Own methods of EBackend.CacheColumnValues
+        // Methods
 
         contains(name: string): boolean;
         copy(): CacheColumnValues;
@@ -7273,7 +7273,7 @@ export namespace EBackend {
     abstract class CacheKeysPrivate {
         static $gtype: GObject.GType<CacheKeysPrivate>;
 
-        // Constructors of EBackend.CacheKeysPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -7284,14 +7284,14 @@ export namespace EBackend {
     class CacheOfflineChange {
         static $gtype: GObject.GType<CacheOfflineChange>;
 
-        // Own fields of EBackend.CacheOfflineChange
+        // Fields
 
         uid: string;
         revision: string;
         object: string;
         state: OfflineState;
 
-        // Constructors of EBackend.CacheOfflineChange
+        // Constructors
 
         constructor(uid: string, revision: string | null, object: string | null, state: OfflineState);
         _init(...args: any[]): void;
@@ -7303,7 +7303,7 @@ export namespace EBackend {
             state: OfflineState,
         ): CacheOfflineChange;
 
-        // Own static methods of EBackend.CacheOfflineChange
+        // Static methods
 
         /**
          * Frees the `change` structure, previously allocated with e_cache_offline_change_new()
@@ -7312,7 +7312,7 @@ export namespace EBackend {
          */
         static free(change?: any | null): void;
 
-        // Own methods of EBackend.CacheOfflineChange
+        // Methods
 
         copy(): CacheOfflineChange | null;
     }
@@ -7320,7 +7320,7 @@ export namespace EBackend {
     abstract class CachePrivate {
         static $gtype: GObject.GType<CachePrivate>;
 
-        // Constructors of EBackend.CachePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -7331,7 +7331,7 @@ export namespace EBackend {
     abstract class CollectionBackendFactoryPrivate {
         static $gtype: GObject.GType<CollectionBackendFactoryPrivate>;
 
-        // Constructors of EBackend.CollectionBackendFactoryPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -7339,7 +7339,7 @@ export namespace EBackend {
     abstract class CollectionBackendPrivate {
         static $gtype: GObject.GType<CollectionBackendPrivate>;
 
-        // Constructors of EBackend.CollectionBackendPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -7348,7 +7348,7 @@ export namespace EBackend {
     abstract class DBusServerPrivate {
         static $gtype: GObject.GType<DBusServerPrivate>;
 
-        // Constructors of EBackend.DBusServerPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -7357,7 +7357,7 @@ export namespace EBackend {
     abstract class DataFactoryPrivate {
         static $gtype: GObject.GType<DataFactoryPrivate>;
 
-        // Constructors of EBackend.DataFactoryPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -7366,7 +7366,7 @@ export namespace EBackend {
     abstract class FileCachePrivate {
         static $gtype: GObject.GType<FileCachePrivate>;
 
-        // Constructors of EBackend.FileCachePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -7377,7 +7377,7 @@ export namespace EBackend {
     abstract class ServerSideSourceCredentialsProviderPrivate {
         static $gtype: GObject.GType<ServerSideSourceCredentialsProviderPrivate>;
 
-        // Constructors of EBackend.ServerSideSourceCredentialsProviderPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -7385,7 +7385,7 @@ export namespace EBackend {
     abstract class ServerSideSourcePrivate {
         static $gtype: GObject.GType<ServerSideSourcePrivate>;
 
-        // Constructors of EBackend.ServerSideSourcePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -7394,7 +7394,7 @@ export namespace EBackend {
     abstract class SourceRegistryServerPrivate {
         static $gtype: GObject.GType<SourceRegistryServerPrivate>;
 
-        // Constructors of EBackend.SourceRegistryServerPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -7403,7 +7403,7 @@ export namespace EBackend {
     abstract class SubprocessFactoryPrivate {
         static $gtype: GObject.GType<SubprocessFactoryPrivate>;
 
-        // Constructors of EBackend.SubprocessFactoryPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -7412,7 +7412,7 @@ export namespace EBackend {
     abstract class UserPrompterPrivate {
         static $gtype: GObject.GType<UserPrompterPrivate>;
 
-        // Constructors of EBackend.UserPrompterPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -7422,7 +7422,7 @@ export namespace EBackend {
     abstract class UserPrompterServerExtensionPrivate {
         static $gtype: GObject.GType<UserPrompterServerExtensionPrivate>;
 
-        // Constructors of EBackend.UserPrompterServerExtensionPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -7430,7 +7430,7 @@ export namespace EBackend {
     abstract class UserPrompterServerPrivate {
         static $gtype: GObject.GType<UserPrompterServerPrivate>;
 
-        // Constructors of EBackend.UserPrompterServerPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -7439,7 +7439,7 @@ export namespace EBackend {
     abstract class WebDAVCollectionBackendPrivate {
         static $gtype: GObject.GType<WebDAVCollectionBackendPrivate>;
 
-        // Constructors of EBackend.WebDAVCollectionBackendPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -7455,7 +7455,7 @@ export namespace EBackend {
         prototype: OAuth2Support;
     }
     interface OAuth2Support extends GObject.Object {
-        // Own methods of EBackend.OAuth2Support
+        // Methods
 
         /**
          * Asynchronously obtains the OAuth 2.0 access token for `source` along
@@ -7497,7 +7497,7 @@ export namespace EBackend {
             cancellable: Gio.Cancellable | null,
         ): [boolean, string, number];
 
-        // Own virtual methods of EBackend.OAuth2Support
+        // Virtual methods
 
         /**
          * Asynchronously obtains the OAuth 2.0 access token for `source` along

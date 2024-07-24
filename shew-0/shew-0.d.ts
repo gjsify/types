@@ -39,11 +39,11 @@ export namespace Shew {
     class ExternalWindow extends GObject.Object {
         static $gtype: GObject.GType<ExternalWindow>;
 
-        // Own properties of Shew.ExternalWindow
+        // Properties
 
         get display(): Gdk.Display;
 
-        // Constructors of Shew.ExternalWindow
+        // Constructors
 
         constructor(properties?: Partial<ExternalWindow.ConstructorProps>, ...args: any[]);
 
@@ -51,11 +51,11 @@ export namespace Shew {
 
         static new_from_handle(handle_str: string): ExternalWindow;
 
-        // Own virtual methods of Shew.ExternalWindow
+        // Virtual methods
 
         vfunc_set_parent_of(child_surface: Gdk.Surface): void;
 
-        // Own methods of Shew.ExternalWindow
+        // Methods
 
         get_display(): Gdk.Display;
         set_parent_of(child_surface: Gdk.Surface): void;
@@ -72,11 +72,11 @@ export namespace Shew {
     class WindowExporter extends GObject.Object {
         static $gtype: GObject.GType<WindowExporter>;
 
-        // Own properties of Shew.WindowExporter
+        // Properties
 
         get window(): Gtk.Window;
 
-        // Constructors of Shew.WindowExporter
+        // Constructors
 
         constructor(properties?: Partial<WindowExporter.ConstructorProps>, ...args: any[]);
 
@@ -84,7 +84,7 @@ export namespace Shew {
 
         static ['new'](window: Gtk.Window): WindowExporter;
 
-        // Own methods of Shew.WindowExporter
+        // Methods
 
         ['export'](callback?: Gio.AsyncReadyCallback<this> | null): void;
         export_finish(result: Gio.AsyncResult): string;

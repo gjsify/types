@@ -39,12 +39,12 @@ export namespace GCi {
     class EntryController extends GObject.Object {
         static $gtype: GObject.GType<EntryController>;
 
-        // Own properties of GCi.EntryController
+        // Properties
 
         get entry(): Gtk.Entry;
         set entry(val: Gtk.Entry);
 
-        // Constructors of GCi.EntryController
+        // Constructors
 
         constructor(properties?: Partial<EntryController.ConstructorProps>, ...args: any[]);
 
@@ -54,7 +54,7 @@ export namespace GCi {
 
         static ['new'](): EntryController;
 
-        // Own methods of GCi.EntryController
+        // Methods
 
         get_entry(): Gtk.Entry;
         set_entry(value: Gtk.Entry): void;
@@ -64,7 +64,7 @@ export namespace GCi {
     abstract class EntryControllerPrivate {
         static $gtype: GObject.GType<EntryControllerPrivate>;
 
-        // Constructors of GCi.EntryControllerPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }

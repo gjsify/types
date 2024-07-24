@@ -34,7 +34,7 @@ export namespace GstGLWayland {
     class GLDisplayWayland extends GstGL.GLDisplay {
         static $gtype: GObject.GType<GLDisplayWayland>;
 
-        // Own fields of GstGLWayland.GLDisplayWayland
+        // Fields
 
         display: any;
         registry: any;
@@ -42,7 +42,7 @@ export namespace GstGLWayland {
         subcompositor: any;
         shell: any;
 
-        // Constructors of GstGLWayland.GLDisplayWayland
+        // Constructors
 
         constructor(properties?: Partial<GLDisplayWayland.ConstructorProps>, ...args: any[]);
 

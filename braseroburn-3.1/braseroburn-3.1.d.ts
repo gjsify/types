@@ -353,7 +353,7 @@ export namespace BraseroBurn {
     class Burn extends GObject.Object {
         static $gtype: GObject.GType<Burn>;
 
-        // Constructors of BraseroBurn.Burn
+        // Constructors
 
         constructor(properties?: Partial<Burn.ConstructorProps>, ...args: any[]);
 
@@ -361,7 +361,7 @@ export namespace BraseroBurn {
 
         static ['new'](): Burn;
 
-        // Own signals of BraseroBurn.Burn
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -427,7 +427,7 @@ export namespace BraseroBurn {
         connect_after(signal: 'warn-rewritable', callback: (_source: this) => number): number;
         emit(signal: 'warn-rewritable'): void;
 
-        // Own static methods of BraseroBurn.Burn
+        // Static methods
 
         static library_can_checksum(): boolean;
         static library_get_option_group(): GLib.OptionGroup;
@@ -436,7 +436,7 @@ export namespace BraseroBurn {
         static library_stop(): void;
         static quark(): GLib.Quark;
 
-        // Own virtual methods of BraseroBurn.Burn
+        // Virtual methods
 
         vfunc_action_changed(action: BurnAction): void;
         vfunc_ask_disable_joliet(): BurnResult;
@@ -450,7 +450,7 @@ export namespace BraseroBurn {
         vfunc_warn_previous_session_loss(): BurnResult;
         vfunc_warn_rewritable(): BurnResult;
 
-        // Own methods of BraseroBurn.Burn
+        // Methods
 
         /**
          * Blanks a medium according to the parameters
@@ -507,7 +507,7 @@ export namespace BraseroBurn {
     class BurnDialog extends Gtk.Dialog implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<BurnDialog>;
 
-        // Constructors of BraseroBurn.BurnDialog
+        // Constructors
 
         constructor(properties?: Partial<BurnDialog.ConstructorProps>, ...args: any[]);
 
@@ -515,7 +515,7 @@ export namespace BraseroBurn {
 
         static ['new'](): BurnDialog;
 
-        // Own methods of BraseroBurn.BurnDialog
+        // Methods
 
         /**
          * Cancel the ongoing operation run by `dialog;` if `force_cancellation` is FALSE then it can
@@ -958,11 +958,11 @@ export namespace BraseroBurn {
     class BurnOptions extends Gtk.Dialog implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<BurnOptions>;
 
-        // Own properties of BraseroBurn.BurnOptions
+        // Properties
 
         get session(): BurnSession;
 
-        // Constructors of BraseroBurn.BurnOptions
+        // Constructors
 
         constructor(properties?: Partial<BurnOptions.ConstructorProps>, ...args: any[]);
 
@@ -973,7 +973,7 @@ export namespace BraseroBurn {
 
         static ['new'](...args: never[]): any;
 
-        // Own methods of BraseroBurn.BurnOptions
+        // Methods
 
         /**
          * Adds some new options to be displayed in the dialog.
@@ -1419,7 +1419,7 @@ export namespace BraseroBurn {
     class BurnSession extends GObject.Object {
         static $gtype: GObject.GType<BurnSession>;
 
-        // Own properties of BraseroBurn.BurnSession
+        // Properties
 
         get flags(): number;
         set flags(val: number);
@@ -1428,7 +1428,7 @@ export namespace BraseroBurn {
         get tmpdir(): string;
         set tmpdir(val: string);
 
-        // Constructors of BraseroBurn.BurnSession
+        // Constructors
 
         constructor(properties?: Partial<BurnSession.ConstructorProps>, ...args: any[]);
 
@@ -1436,7 +1436,7 @@ export namespace BraseroBurn {
 
         static ['new'](): BurnSession;
 
-        // Own signals of BraseroBurn.BurnSession
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -1463,7 +1463,7 @@ export namespace BraseroBurn {
         ): number;
         emit(signal: 'track-removed', track: Track, former_position: number): void;
 
-        // Own virtual methods of BraseroBurn.BurnSession
+        // Virtual methods
 
         /**
          * When the contents of `session` should be written to a
@@ -1481,7 +1481,7 @@ export namespace BraseroBurn {
         vfunc_track_changed(track: Track): void;
         vfunc_track_removed(track: Track, former_position: number): void;
 
-        // Own methods of BraseroBurn.BurnSession
+        // Methods
 
         /**
          * Merges the current flags set in `session` with `flags`.
@@ -1741,7 +1741,7 @@ export namespace BraseroBurn {
     class SessionCfg extends SessionSpan {
         static $gtype: GObject.GType<SessionCfg>;
 
-        // Constructors of BraseroBurn.SessionCfg
+        // Constructors
 
         constructor(properties?: Partial<SessionCfg.ConstructorProps>, ...args: any[]);
 
@@ -1749,7 +1749,7 @@ export namespace BraseroBurn {
 
         static ['new'](): SessionCfg;
 
-        // Own signals of BraseroBurn.SessionCfg
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -1761,7 +1761,7 @@ export namespace BraseroBurn {
         connect_after(signal: 'wrong-extension', callback: (_source: this) => boolean): number;
         emit(signal: 'wrong-extension'): void;
 
-        // Own methods of BraseroBurn.SessionCfg
+        // Methods
 
         /**
          * Adds all flags from `flags` that are supported.
@@ -1817,7 +1817,7 @@ export namespace BraseroBurn {
     class SessionSpan extends BurnSession {
         static $gtype: GObject.GType<SessionSpan>;
 
-        // Constructors of BraseroBurn.SessionSpan
+        // Constructors
 
         constructor(properties?: Partial<SessionSpan.ConstructorProps>, ...args: any[]);
 
@@ -1825,7 +1825,7 @@ export namespace BraseroBurn {
 
         static ['new'](): SessionSpan;
 
-        // Own methods of BraseroBurn.SessionSpan
+        // Methods
 
         /**
          * Checks whether some data were not included during calls to brasero_session_span_next ().
@@ -1877,7 +1877,7 @@ export namespace BraseroBurn {
     class Status extends GObject.Object {
         static $gtype: GObject.GType<Status>;
 
-        // Constructors of BraseroBurn.Status
+        // Constructors
 
         constructor(properties?: Partial<Status.ConstructorProps>, ...args: any[]);
 
@@ -1885,7 +1885,7 @@ export namespace BraseroBurn {
 
         static ['new'](): Status;
 
-        // Own methods of BraseroBurn.Status
+        // Methods
 
         /**
          * If brasero_status_get_result () returned BRASERO_BURN_NOT_READY,
@@ -1951,7 +1951,7 @@ export namespace BraseroBurn {
     class SumDialog extends ToolDialog implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<SumDialog>;
 
-        // Constructors of BraseroBurn.SumDialog
+        // Constructors
 
         constructor(properties?: Partial<SumDialog.ConstructorProps>, ...args: any[]);
 
@@ -2374,20 +2374,20 @@ export namespace BraseroBurn {
     class ToolDialog extends Gtk.Dialog implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<ToolDialog>;
 
-        // Constructors of BraseroBurn.ToolDialog
+        // Constructors
 
         constructor(properties?: Partial<ToolDialog.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of BraseroBurn.ToolDialog
+        // Virtual methods
 
         /**
          * Cancels any ongoing operation.
          */
         vfunc_cancel(): boolean;
 
-        // Own methods of BraseroBurn.ToolDialog
+        // Methods
 
         /**
          * Cancels any ongoing operation.
@@ -2813,13 +2813,13 @@ export namespace BraseroBurn {
     class Track extends GObject.Object {
         static $gtype: GObject.GType<Track>;
 
-        // Constructors of BraseroBurn.Track
+        // Constructors
 
         constructor(properties?: Partial<Track.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of BraseroBurn.Track
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -2828,7 +2828,7 @@ export namespace BraseroBurn {
         connect_after(signal: 'changed', callback: (_source: this) => void): number;
         emit(signal: 'changed'): void;
 
-        // Own virtual methods of BraseroBurn.Track
+        // Virtual methods
 
         /**
          * Used internally in #BraseroTrack implementations to
@@ -2848,7 +2848,7 @@ export namespace BraseroBurn {
         vfunc_get_status(status: Status): BurnResult;
         vfunc_get_type(type: TrackType): BurnResult;
 
-        // Own methods of BraseroBurn.Track
+        // Methods
 
         /**
          * Used internally in #BraseroTrack implementations to
@@ -2959,7 +2959,7 @@ export namespace BraseroBurn {
     class TrackData extends Track {
         static $gtype: GObject.GType<TrackData>;
 
-        // Constructors of BraseroBurn.TrackData
+        // Constructors
 
         constructor(properties?: Partial<TrackData.ConstructorProps>, ...args: any[]);
 
@@ -2967,7 +2967,7 @@ export namespace BraseroBurn {
 
         static ['new'](): TrackData;
 
-        // Own virtual methods of BraseroBurn.TrackData
+        // Virtual methods
 
         /**
          * Adds one or more parameters determining the file system type
@@ -3004,7 +3004,7 @@ export namespace BraseroBurn {
          */
         vfunc_set_source(grafts: GraftPt[], unreadable?: string[] | null): BurnResult;
 
-        // Own methods of BraseroBurn.TrackData
+        // Methods
 
         /**
          * Adds one or more parameters determining the file system type
@@ -3161,7 +3161,7 @@ export namespace BraseroBurn {
     {
         static $gtype: GObject.GType<TrackDataCfg>;
 
-        // Constructors of BraseroBurn.TrackDataCfg
+        // Constructors
 
         constructor(properties?: Partial<TrackDataCfg.ConstructorProps>, ...args: any[]);
 
@@ -3169,7 +3169,7 @@ export namespace BraseroBurn {
 
         static ['new'](): TrackDataCfg;
 
-        // Own signals of BraseroBurn.TrackDataCfg
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -3226,7 +3226,7 @@ export namespace BraseroBurn {
         ): number;
         emit(signal: 'unreadable-uri', object: any | null, p0: string): void;
 
-        // Own methods of BraseroBurn.TrackDataCfg
+        // Methods
 
         /**
          * Add a new file (with `uri` as URI) under a directory (`parent)`.
@@ -4360,7 +4360,7 @@ export namespace BraseroBurn {
     class TrackDisc extends Track {
         static $gtype: GObject.GType<TrackDisc>;
 
-        // Constructors of BraseroBurn.TrackDisc
+        // Constructors
 
         constructor(properties?: Partial<TrackDisc.ConstructorProps>, ...args: any[]);
 
@@ -4368,7 +4368,7 @@ export namespace BraseroBurn {
 
         static ['new'](): TrackDisc;
 
-        // Own methods of BraseroBurn.TrackDisc
+        // Methods
 
         /**
          * Gets the track number which will be used
@@ -4394,7 +4394,7 @@ export namespace BraseroBurn {
     class TrackImage extends Track {
         static $gtype: GObject.GType<TrackImage>;
 
-        // Constructors of BraseroBurn.TrackImage
+        // Constructors
 
         constructor(properties?: Partial<TrackImage.ConstructorProps>, ...args: any[]);
 
@@ -4402,7 +4402,7 @@ export namespace BraseroBurn {
 
         static ['new'](): TrackImage;
 
-        // Own virtual methods of BraseroBurn.TrackImage
+        // Virtual methods
 
         /**
          * Sets the image size (in sectors).
@@ -4418,7 +4418,7 @@ export namespace BraseroBurn {
          */
         vfunc_set_source(image: string, toc: string, format: ImageFormat): BurnResult;
 
-        // Own methods of BraseroBurn.TrackImage
+        // Methods
 
         /**
          * This function returns the format of the
@@ -4473,7 +4473,7 @@ export namespace BraseroBurn {
     class TrackImageCfg extends TrackImage {
         static $gtype: GObject.GType<TrackImageCfg>;
 
-        // Constructors of BraseroBurn.TrackImageCfg
+        // Constructors
 
         constructor(properties?: Partial<TrackImageCfg.ConstructorProps>, ...args: any[]);
 
@@ -4481,7 +4481,7 @@ export namespace BraseroBurn {
 
         static ['new'](): TrackImageCfg;
 
-        // Own methods of BraseroBurn.TrackImageCfg
+        // Methods
 
         /**
          * This function allows to prevents the identification of the format of the image.
@@ -4515,7 +4515,7 @@ export namespace BraseroBurn {
     class TrackStream extends Track {
         static $gtype: GObject.GType<TrackStream>;
 
-        // Constructors of BraseroBurn.TrackStream
+        // Constructors
 
         constructor(properties?: Partial<TrackStream.ConstructorProps>, ...args: any[]);
 
@@ -4523,7 +4523,7 @@ export namespace BraseroBurn {
 
         static ['new'](): TrackStream;
 
-        // Own virtual methods of BraseroBurn.TrackStream
+        // Virtual methods
 
         /**
          * Sets the boundaries of the stream (where it starts, ends in the file;
@@ -4547,7 +4547,7 @@ export namespace BraseroBurn {
          */
         vfunc_set_source(uri: string): BurnResult;
 
-        // Own methods of BraseroBurn.TrackStream
+        // Methods
 
         /**
          * This function returns end time in the stream (in nano seconds).
@@ -4621,7 +4621,7 @@ export namespace BraseroBurn {
     class TrackStreamCfg extends TrackStream {
         static $gtype: GObject.GType<TrackStreamCfg>;
 
-        // Constructors of BraseroBurn.TrackStreamCfg
+        // Constructors
 
         constructor(properties?: Partial<TrackStreamCfg.ConstructorProps>, ...args: any[]);
 
@@ -4642,12 +4642,12 @@ export namespace BraseroBurn {
     class GraftPt {
         static $gtype: GObject.GType<GraftPt>;
 
-        // Own fields of BraseroBurn.GraftPt
+        // Fields
 
         uri: string;
         path: string;
 
-        // Constructors of BraseroBurn.GraftPt
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -4674,11 +4674,11 @@ export namespace BraseroBurn {
     abstract class TrackType {
         static $gtype: GObject.GType<TrackType>;
 
-        // Constructors of BraseroBurn.TrackType
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of BraseroBurn.TrackType
+        // Methods
 
         /**
          * Returns TRUE if `type_A` and `type_B` represents

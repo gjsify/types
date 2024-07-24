@@ -232,7 +232,7 @@ export namespace CryptUI {
     class KeyChooser {
         static $gtype: GObject.GType<KeyChooser>;
 
-        // Constructors of CryptUI.KeyChooser
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -240,7 +240,7 @@ export namespace CryptUI {
     class KeyChooserClass {
         static $gtype: GObject.GType<KeyChooserClass>;
 
-        // Constructors of CryptUI.KeyChooserClass
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -248,7 +248,7 @@ export namespace CryptUI {
     abstract class KeyChooserPriv {
         static $gtype: GObject.GType<KeyChooserPriv>;
 
-        // Constructors of CryptUI.KeyChooserPriv
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -256,7 +256,7 @@ export namespace CryptUI {
     class KeyStore {
         static $gtype: GObject.GType<KeyStore>;
 
-        // Constructors of CryptUI.KeyStore
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -264,7 +264,7 @@ export namespace CryptUI {
     class KeyStoreClass {
         static $gtype: GObject.GType<KeyStoreClass>;
 
-        // Constructors of CryptUI.KeyStoreClass
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -272,7 +272,7 @@ export namespace CryptUI {
     abstract class KeyStorePriv {
         static $gtype: GObject.GType<KeyStorePriv>;
 
-        // Constructors of CryptUI.KeyStorePriv
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -280,7 +280,7 @@ export namespace CryptUI {
     class Keyset {
         static $gtype: GObject.GType<Keyset>;
 
-        // Constructors of CryptUI.Keyset
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -288,7 +288,7 @@ export namespace CryptUI {
     class KeysetClass {
         static $gtype: GObject.GType<KeysetClass>;
 
-        // Constructors of CryptUI.KeysetClass
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -296,7 +296,7 @@ export namespace CryptUI {
     abstract class KeysetPrivate {
         static $gtype: GObject.GType<KeysetPrivate>;
 
-        // Constructors of CryptUI.KeysetPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }

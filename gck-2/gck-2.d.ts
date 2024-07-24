@@ -49,7 +49,7 @@ export namespace Gck {
     class Error extends GLib.Error {
         static $gtype: GObject.GType<Error>;
 
-        // Static fields of Gck.Error
+        // Static fields
 
         /**
          * a result code that signifies there was a problem
@@ -57,12 +57,12 @@ export namespace Gck {
          */
         static PROBLEM: number;
 
-        // Constructors of Gck.Error
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of Gck.Error
+        // Static methods
 
         static quark(): GLib.Quark;
     }
@@ -73,7 +73,7 @@ export namespace Gck {
     class UriError extends GLib.Error {
         static $gtype: GObject.GType<UriError>;
 
-        // Static fields of Gck.UriError
+        // Static fields
 
         /**
          * invalid URI scheme
@@ -96,12 +96,12 @@ export namespace Gck {
          */
         static NOT_FOUND: number;
 
-        // Constructors of Gck.UriError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of Gck.UriError
+        // Static methods
 
         static quark(): GLib.Quark;
     }
@@ -380,7 +380,7 @@ export namespace Gck {
     class Enumerator extends GObject.Object {
         static $gtype: GObject.GType<Enumerator>;
 
-        // Own properties of Gck.Enumerator
+        // Properties
 
         /**
          * Chained enumerator, which will be enumerated when this enumerator
@@ -396,13 +396,13 @@ export namespace Gck {
         get interaction(): Gio.TlsInteraction;
         set interaction(val: Gio.TlsInteraction);
 
-        // Constructors of Gck.Enumerator
+        // Constructors
 
         constructor(properties?: Partial<Enumerator.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Gck.Enumerator
+        // Methods
 
         /**
          * Get the enumerator that will be run after all objects from this one
@@ -509,7 +509,7 @@ export namespace Gck {
     class Module extends GObject.Object {
         static $gtype: GObject.GType<Module>;
 
-        // Own properties of Gck.Module
+        // Properties
 
         /**
          * The raw PKCS&num;11 function list for the module.
@@ -525,13 +525,13 @@ export namespace Gck {
          */
         get path(): string;
 
-        // Constructors of Gck.Module
+        // Constructors
 
         constructor(properties?: Partial<Module.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of Gck.Module
+        // Static methods
 
         /**
          * Load and initialize a PKCS#11 module represented by a GckModule object.
@@ -557,12 +557,12 @@ export namespace Gck {
          */
         static initialize_finish(result: Gio.AsyncResult): Module | null;
 
-        // Own virtual methods of Gck.Module
+        // Virtual methods
 
         vfunc_authenticate_object(object: Object, label: string, password: string): boolean;
         vfunc_authenticate_slot(slot: Slot, label: string, password: string): boolean;
 
-        // Own methods of Gck.Module
+        // Methods
 
         /**
          * Checks equality of two modules. Two GckModule objects can point to the same
@@ -622,7 +622,7 @@ export namespace Gck {
     class Object extends GObject.Object {
         static $gtype: GObject.GType<Object>;
 
-        // Own properties of Gck.Object
+        // Properties
 
         /**
          * The raw PKCS11 handle for this object.
@@ -641,7 +641,7 @@ export namespace Gck {
          */
         get session(): Session;
 
-        // Constructors of Gck.Object
+        // Constructors
 
         constructor(properties?: Partial<Object.ConstructorProps>, ...args: any[]);
 
@@ -649,7 +649,7 @@ export namespace Gck {
 
         static from_handle(session: Session, object_handle: number): Object;
 
-        // Own methods of Gck.Object
+        // Methods
 
         /**
          * Lookup attributes in the cache, or retrieve them from the object if necessary.
@@ -940,7 +940,7 @@ export namespace Gck {
     class Password extends Gio.TlsPassword {
         static $gtype: GObject.GType<Password>;
 
-        // Own properties of Gck.Password
+        // Properties
 
         /**
          * The PKCS#11 key that the password is being requested for. If this
@@ -957,13 +957,13 @@ export namespace Gck {
          */
         get token(): Slot;
 
-        // Constructors of Gck.Password
+        // Constructors
 
         constructor(properties?: Partial<Password.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Gck.Password
+        // Methods
 
         /**
          * If the password request is to unlock a PKCS#11 key, then this is the
@@ -1018,7 +1018,7 @@ export namespace Gck {
     class Session extends GObject.Object implements Gio.AsyncInitable<Session>, Gio.Initable {
         static $gtype: GObject.GType<Session>;
 
-        // Own properties of Gck.Session
+        // Properties
 
         /**
          * Raw PKCS#11 application data used to open the PKCS#11 session.
@@ -1060,13 +1060,13 @@ export namespace Gck {
          */
         get slot(): Slot;
 
-        // Constructors of Gck.Session
+        // Constructors
 
         constructor(properties?: Partial<Session.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of Gck.Session
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -1075,7 +1075,7 @@ export namespace Gck {
         connect_after(signal: 'discard-handle', callback: (_source: this, handle: number) => boolean): number;
         emit(signal: 'discard-handle', handle: number): void;
 
-        // Own static methods of Gck.Session
+        // Static methods
 
         /**
          * Initialize a session object from a raw PKCS#11 session handle.
@@ -1121,7 +1121,7 @@ export namespace Gck {
          */
         static open_finish(result: Gio.AsyncResult): Session;
 
-        // Own methods of Gck.Session
+        // Methods
 
         /**
          * Create a new PKCS#11 object. This call may block for an
@@ -2457,7 +2457,7 @@ export namespace Gck {
     class Slot extends GObject.Object {
         static $gtype: GObject.GType<Slot>;
 
-        // Own properties of Gck.Slot
+        // Properties
 
         /**
          * The raw CK_SLOT_ID handle of this slot.
@@ -2468,13 +2468,13 @@ export namespace Gck {
          */
         get module(): Module;
 
-        // Constructors of Gck.Slot
+        // Constructors
 
         constructor(properties?: Partial<Slot.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of Gck.Slot
+        // Static methods
 
         /**
          * Create a new GckSlot object for a raw PKCS#11 handle.
@@ -2483,7 +2483,7 @@ export namespace Gck {
          */
         static from_handle(module: Module, slot_id: number): Slot;
 
-        // Own methods of Gck.Slot
+        // Methods
 
         /**
          * Setup an enumerator for listing matching objects on the slot.
@@ -2605,13 +2605,13 @@ export namespace Gck {
     class Attribute {
         static $gtype: GObject.GType<Attribute>;
 
-        // Own fields of Gck.Attribute
+        // Fields
 
         type: number;
         value: Uint8Array;
         length: number;
 
-        // Constructors of Gck.Attribute
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -2636,7 +2636,7 @@ export namespace Gck {
 
         static new_ulong(attr_type: number, value: number): Attribute;
 
-        // Own methods of Gck.Attribute
+        // Methods
 
         /**
          * Clear allocated memory held by a #GckAttribute.
@@ -2749,14 +2749,14 @@ export namespace Gck {
     class Attributes {
         static $gtype: GObject.GType<Attributes>;
 
-        // Constructors of Gck.Attributes
+        // Constructors
 
         constructor(properties?: Partial<{}>);
         _init(...args: any[]): void;
 
         static ['new'](): Attributes;
 
-        // Own methods of Gck.Attributes
+        // Methods
 
         /**
          * Get attribute at the specified index in the attribute array.
@@ -2858,14 +2858,14 @@ export namespace Gck {
     class Builder {
         static $gtype: GObject.GType<Builder>;
 
-        // Constructors of Gck.Builder
+        // Constructors
 
         constructor(properties?: Partial<{}>);
         _init(...args: any[]): void;
 
         static ['new'](flags: BuilderFlags): Builder;
 
-        // Own methods of Gck.Builder
+        // Methods
 
         /**
          * Add all the `attrs` attributes to the builder. The attributes are added
@@ -3173,13 +3173,13 @@ export namespace Gck {
     class Mechanism {
         static $gtype: GObject.GType<Mechanism>;
 
-        // Own fields of Gck.Mechanism
+        // Fields
 
         type: number;
         parameter: any;
         n_parameter: number;
 
-        // Constructors of Gck.Mechanism
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -3202,13 +3202,13 @@ export namespace Gck {
     class MechanismInfo {
         static $gtype: GObject.GType<MechanismInfo>;
 
-        // Own fields of Gck.MechanismInfo
+        // Fields
 
         min_key_size: number;
         max_key_size: number;
         flags: number;
 
-        // Constructors of Gck.MechanismInfo
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -3219,7 +3219,7 @@ export namespace Gck {
         );
         _init(...args: any[]): void;
 
-        // Own methods of Gck.MechanismInfo
+        // Methods
 
         /**
          * Make a copy of the mechanism info.
@@ -3244,7 +3244,7 @@ export namespace Gck {
     class ModuleInfo {
         static $gtype: GObject.GType<ModuleInfo>;
 
-        // Own fields of Gck.ModuleInfo
+        // Fields
 
         pkcs11_version_major: number;
         pkcs11_version_minor: number;
@@ -3254,7 +3254,7 @@ export namespace Gck {
         library_version_major: number;
         library_version_minor: number;
 
-        // Constructors of Gck.ModuleInfo
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -3269,7 +3269,7 @@ export namespace Gck {
         );
         _init(...args: any[]): void;
 
-        // Own methods of Gck.ModuleInfo
+        // Methods
 
         /**
          * Make a copy of the module info.
@@ -3294,14 +3294,14 @@ export namespace Gck {
     class SessionInfo {
         static $gtype: GObject.GType<SessionInfo>;
 
-        // Own fields of Gck.SessionInfo
+        // Fields
 
         slot_id: number;
         state: number;
         flags: number;
         device_error: number;
 
-        // Constructors of Gck.SessionInfo
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -3313,7 +3313,7 @@ export namespace Gck {
         );
         _init(...args: any[]): void;
 
-        // Own methods of Gck.SessionInfo
+        // Methods
 
         /**
          * Make a new copy of a session info structure.
@@ -3339,7 +3339,7 @@ export namespace Gck {
     class SlotInfo {
         static $gtype: GObject.GType<SlotInfo>;
 
-        // Own fields of Gck.SlotInfo
+        // Fields
 
         slot_description: string;
         manufacturer_id: string;
@@ -3349,7 +3349,7 @@ export namespace Gck {
         firmware_version_major: number;
         firmware_version_minor: number;
 
-        // Constructors of Gck.SlotInfo
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -3364,7 +3364,7 @@ export namespace Gck {
         );
         _init(...args: any[]): void;
 
-        // Own methods of Gck.SlotInfo
+        // Methods
 
         /**
          * Make a copy of the slot info.
@@ -3389,7 +3389,7 @@ export namespace Gck {
     class TokenInfo {
         static $gtype: GObject.GType<TokenInfo>;
 
-        // Own fields of Gck.TokenInfo
+        // Fields
 
         label: string;
         manufacturer_id: string;
@@ -3411,11 +3411,11 @@ export namespace Gck {
         firmware_version_major: number;
         firmware_version_minor: number;
 
-        // Constructors of Gck.TokenInfo
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of Gck.TokenInfo
+        // Methods
 
         /**
          * Make a copy of the token info.
@@ -3439,12 +3439,12 @@ export namespace Gck {
     class UriData {
         static $gtype: GObject.GType<UriData>;
 
-        // Own fields of Gck.UriData
+        // Fields
 
         any_unrecognized: boolean;
         module_info: ModuleInfo;
 
-        // Constructors of Gck.UriData
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -3455,7 +3455,7 @@ export namespace Gck {
 
         static ['new'](): UriData;
 
-        // Own static methods of Gck.UriData
+        // Static methods
 
         /**
          * Parse a PKCS#11 URI for use in a given context.
@@ -3468,7 +3468,7 @@ export namespace Gck {
          */
         static parse(string: string, flags: UriFlags): UriData;
 
-        // Own methods of Gck.UriData
+        // Methods
 
         /**
          * Build a PKCS#11 URI. The various parts relevant to the flags
@@ -3501,7 +3501,7 @@ export namespace Gck {
         prototype: ObjectCache;
     }
     interface ObjectCache extends Object {
-        // Own properties of Gck.ObjectCache
+        // Properties
 
         /**
          * The attributes cached on this object.
@@ -3509,7 +3509,7 @@ export namespace Gck {
         get attributes(): Attributes;
         set attributes(val: Attributes);
 
-        // Own methods of Gck.ObjectCache
+        // Methods
 
         /**
          * Adds the attributes to the set cached on this object. If an attribute is
@@ -3556,7 +3556,7 @@ export namespace Gck {
          */
         update_finish(result: Gio.AsyncResult): boolean;
 
-        // Own virtual methods of Gck.ObjectCache
+        // Virtual methods
 
         /**
          * Adds the attributes to the set cached on this object. If an attribute is

@@ -37,11 +37,11 @@ export namespace FolksEds {
     class PersonaStore extends Folks.PersonaStore {
         static $gtype: GObject.GType<PersonaStore>;
 
-        // Own properties of FolksEds.PersonaStore
+        // Properties
 
         get source(): EDataServer.Source;
 
-        // Constructors of FolksEds.PersonaStore
+        // Constructors
 
         constructor(properties?: Partial<PersonaStore.ConstructorProps>, ...args: any[]);
 
@@ -51,14 +51,14 @@ export namespace FolksEds {
 
         static with_source_registry(r: EDataServer.SourceRegistry, s: EDataServer.Source): PersonaStore;
 
-        // Own static methods of FolksEds.PersonaStore
+        // Static methods
 
         static create_address_book(id: string, _callback_?: Gio.AsyncReadyCallback<PersonaStore> | null): void;
         static create_address_book_finish(_res_: Gio.AsyncResult): void;
         static remove_address_book(store: PersonaStore, _callback_?: Gio.AsyncReadyCallback<PersonaStore> | null): void;
         static remove_address_book_finish(_res_: Gio.AsyncResult): void;
 
-        // Own methods of FolksEds.PersonaStore
+        // Methods
 
         get_source(): EDataServer.Source;
     }
@@ -120,7 +120,7 @@ export namespace FolksEds {
     {
         static $gtype: GObject.GType<Persona>;
 
-        // Own properties of FolksEds.Persona
+        // Properties
 
         get contact(): EBookContacts.Contact;
         get contact_id(): string;
@@ -134,7 +134,7 @@ export namespace FolksEds {
         get inGooglePersonalGroup(): boolean;
         set inGooglePersonalGroup(val: boolean);
 
-        // Constructors of FolksEds.Persona
+        // Constructors
 
         constructor(properties?: Partial<Persona.ConstructorProps>, ...args: any[]);
 
@@ -142,7 +142,7 @@ export namespace FolksEds {
 
         static ['new'](store: PersonaStore, contact: EBookContacts.Contact): Persona;
 
-        // Own methods of FolksEds.Persona
+        // Methods
 
         change_system_groups(system_groups: Gee.Set, _callback_?: Gio.AsyncReadyCallback<this> | null): void;
         change_system_groups_finish(_res_: Gio.AsyncResult): void;
@@ -861,7 +861,7 @@ export namespace FolksEds {
     abstract class PersonaStorePrivate {
         static $gtype: GObject.GType<PersonaStorePrivate>;
 
-        // Constructors of FolksEds.PersonaStorePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -870,7 +870,7 @@ export namespace FolksEds {
     abstract class PersonaPrivate {
         static $gtype: GObject.GType<PersonaPrivate>;
 
-        // Constructors of FolksEds.PersonaPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }

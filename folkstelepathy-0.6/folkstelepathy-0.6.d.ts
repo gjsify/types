@@ -32,11 +32,11 @@ export namespace FolksTelepathy {
     class PersonaStore extends Folks.PersonaStore {
         static $gtype: GObject.GType<PersonaStore>;
 
-        // Own properties of FolksTelepathy.PersonaStore
+        // Properties
 
         get account(): TelepathyGLib.Account;
 
-        // Constructors of FolksTelepathy.PersonaStore
+        // Constructors
 
         constructor(properties?: Partial<PersonaStore.ConstructorProps>, ...args: any[]);
 
@@ -44,12 +44,12 @@ export namespace FolksTelepathy {
 
         static ['new'](account: TelepathyGLib.Account): PersonaStore;
 
-        // Own static methods of FolksTelepathy.PersonaStore
+        // Static methods
 
         static list_persona_stores(): Gee.Map;
         static dup_for_account(account: TelepathyGLib.Account): PersonaStore;
 
-        // Own methods of FolksTelepathy.PersonaStore
+        // Methods
 
         get_account(): TelepathyGLib.Account;
     }
@@ -95,7 +95,7 @@ export namespace FolksTelepathy {
     {
         static $gtype: GObject.GType<Persona>;
 
-        // Own properties of FolksTelepathy.Persona
+        // Properties
 
         get is_in_contact_list(): boolean;
         set is_in_contact_list(val: boolean);
@@ -103,7 +103,7 @@ export namespace FolksTelepathy {
         set isInContactList(val: boolean);
         get contact(): TelepathyGLib.Contact;
 
-        // Constructors of FolksTelepathy.Persona
+        // Constructors
 
         constructor(properties?: Partial<Persona.ConstructorProps>, ...args: any[]);
 
@@ -111,11 +111,11 @@ export namespace FolksTelepathy {
 
         static ['new'](contact: TelepathyGLib.Contact, store: PersonaStore): Persona;
 
-        // Own static methods of FolksTelepathy.Persona
+        // Static methods
 
         static dup_for_contact(contact: TelepathyGLib.Contact): Persona;
 
-        // Own methods of FolksTelepathy.Persona
+        // Methods
 
         get_is_in_contact_list(): boolean;
         set_is_in_contact_list(value: boolean): void;
@@ -727,7 +727,7 @@ export namespace FolksTelepathy {
     abstract class PersonaStorePrivate {
         static $gtype: GObject.GType<PersonaStorePrivate>;
 
-        // Constructors of FolksTelepathy.PersonaStorePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -736,7 +736,7 @@ export namespace FolksTelepathy {
     abstract class PersonaPrivate {
         static $gtype: GObject.GType<PersonaPrivate>;
 
-        // Constructors of FolksTelepathy.PersonaPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }

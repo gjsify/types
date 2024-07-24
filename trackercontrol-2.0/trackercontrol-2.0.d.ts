@@ -82,14 +82,14 @@ export namespace TrackerControl {
     class MinerManager extends GObject.Object implements Gio.Initable {
         static $gtype: GObject.GType<MinerManager>;
 
-        // Own properties of TrackerControl.MinerManager
+        // Properties
 
         get auto_start(): boolean;
         get autoStart(): boolean;
         get domain_ontology(): string;
         get domainOntology(): string;
 
-        // Constructors of TrackerControl.MinerManager
+        // Constructors
 
         constructor(properties?: Partial<MinerManager.ConstructorProps>, ...args: any[]);
 
@@ -99,7 +99,7 @@ export namespace TrackerControl {
 
         static new_full(auto_start: boolean): MinerManager;
 
-        // Own signals of TrackerControl.MinerManager
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -126,11 +126,11 @@ export namespace TrackerControl {
         connect_after(signal: 'miner-resumed', callback: (_source: this, miner: string) => void): number;
         emit(signal: 'miner-resumed', miner: string): void;
 
-        // Own static methods of TrackerControl.MinerManager
+        // Static methods
 
         static error_quark(): GLib.Quark;
 
-        // Own virtual methods of TrackerControl.MinerManager
+        // Virtual methods
 
         vfunc_miner_activated(miner_name: string): void;
         vfunc_miner_deactivated(miner_name: string): void;
@@ -138,7 +138,7 @@ export namespace TrackerControl {
         vfunc_miner_progress(miner_name: string, status: string, progress: number): void;
         vfunc_miner_resumed(miner_name: string): void;
 
-        // Own methods of TrackerControl.MinerManager
+        // Methods
 
         /**
          * Returns a list of references for all available miners. Available

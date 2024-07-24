@@ -67,18 +67,18 @@ export namespace AtrilDocument {
     class DocumentError extends GLib.Error {
         static $gtype: GObject.GType<DocumentError>;
 
-        // Static fields of AtrilDocument.DocumentError
+        // Static fields
 
         static INVALID: number;
         static UNSUPPORTED_CONTENT: number;
         static ENCRYPTED: number;
 
-        // Constructors of AtrilDocument.DocumentError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of AtrilDocument.DocumentError
+        // Static methods
 
         static quark(): GLib.Quark;
     }
@@ -420,7 +420,7 @@ export namespace AtrilDocument {
     abstract class Annotation extends GObject.Object {
         static $gtype: GObject.GType<Annotation>;
 
-        // Own properties of AtrilDocument.Annotation
+        // Properties
 
         /**
          * The colour of the annotation as a #GdkColor.
@@ -440,13 +440,13 @@ export namespace AtrilDocument {
         get rgba(): Gdk.RGBA;
         set rgba(val: Gdk.RGBA);
 
-        // Constructors of AtrilDocument.Annotation
+        // Constructors
 
         constructor(properties?: Partial<Annotation.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of AtrilDocument.Annotation
+        // Methods
 
         /**
          * Compare `annot` and `other`.
@@ -555,12 +555,12 @@ export namespace AtrilDocument {
     class AnnotationAttachment extends Annotation implements AnnotationMarkup {
         static $gtype: GObject.GType<AnnotationAttachment>;
 
-        // Own properties of AtrilDocument.AnnotationAttachment
+        // Properties
 
         get attachment(): Attachment;
         set attachment(val: Attachment);
 
-        // Constructors of AtrilDocument.AnnotationAttachment
+        // Constructors
 
         constructor(properties?: Partial<AnnotationAttachment.ConstructorProps>, ...args: any[]);
 
@@ -568,7 +568,7 @@ export namespace AtrilDocument {
 
         static ['new'](page: Page, attachment: Attachment): AnnotationAttachment;
 
-        // Own methods of AtrilDocument.AnnotationAttachment
+        // Methods
 
         get_attachment(): Attachment;
         set_attachment(attachment: Attachment): boolean;
@@ -725,7 +725,7 @@ export namespace AtrilDocument {
     class AnnotationText extends Annotation implements AnnotationMarkup {
         static $gtype: GObject.GType<AnnotationText>;
 
-        // Own properties of AtrilDocument.AnnotationText
+        // Properties
 
         get icon(): AnnotationTextIcon;
         set icon(val: AnnotationTextIcon);
@@ -734,7 +734,7 @@ export namespace AtrilDocument {
         get isOpen(): boolean;
         set isOpen(val: boolean);
 
-        // Constructors of AtrilDocument.AnnotationText
+        // Constructors
 
         constructor(properties?: Partial<AnnotationText.ConstructorProps>, ...args: any[]);
 
@@ -742,7 +742,7 @@ export namespace AtrilDocument {
 
         static ['new'](page: Page): AnnotationText;
 
-        // Own methods of AtrilDocument.AnnotationText
+        // Methods
 
         get_icon(): AnnotationTextIcon;
         get_is_open(): boolean;
@@ -904,7 +904,7 @@ export namespace AtrilDocument {
     class Attachment extends GObject.Object {
         static $gtype: GObject.GType<Attachment>;
 
-        // Own properties of AtrilDocument.Attachment
+        // Properties
 
         set ctime(val: number);
         set data(val: any);
@@ -913,11 +913,11 @@ export namespace AtrilDocument {
         set name(val: string);
         set size(val: number);
 
-        // Own fields of AtrilDocument.Attachment
+        // Fields
 
         base_instance: GObject.Object;
 
-        // Constructors of AtrilDocument.Attachment
+        // Constructors
 
         constructor(properties?: Partial<Attachment.ConstructorProps>, ...args: any[]);
 
@@ -932,11 +932,11 @@ export namespace AtrilDocument {
             data?: any | null,
         ): Attachment;
 
-        // Own static methods of AtrilDocument.Attachment
+        // Static methods
 
         static error_quark(): GLib.Quark;
 
-        // Own methods of AtrilDocument.Attachment
+        // Methods
 
         get_creation_date(): number;
         get_description(): string;
@@ -956,19 +956,19 @@ export namespace AtrilDocument {
     abstract class Document extends GObject.Object {
         static $gtype: GObject.GType<Document>;
 
-        // Own fields of AtrilDocument.Document
+        // Fields
 
         base: GObject.Object;
         iswebdocument: boolean;
         synctex_version: string;
 
-        // Constructors of AtrilDocument.Document
+        // Constructors
 
         constructor(properties?: Partial<Document.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of AtrilDocument.Document
+        // Static methods
 
         static doc_mutex_lock(): void;
         static doc_mutex_trylock(): boolean;
@@ -1027,7 +1027,7 @@ export namespace AtrilDocument {
             dest_rotation: number,
         ): cairo.Surface;
 
-        // Own virtual methods of AtrilDocument.Document
+        // Virtual methods
 
         vfunc_check_add_night_sheet(): void;
         vfunc_get_backend_info(info: DocumentBackendInfo): boolean;
@@ -1056,7 +1056,7 @@ export namespace AtrilDocument {
         vfunc_support_synctex(): boolean;
         vfunc_toggle_night_mode(night: boolean): void;
 
-        // Own methods of AtrilDocument.Document
+        // Methods
 
         check_add_night_sheet(): void;
         check_dimensions(): boolean;
@@ -1116,7 +1116,7 @@ export namespace AtrilDocument {
     abstract class FormField extends GObject.Object {
         static $gtype: GObject.GType<FormField>;
 
-        // Own fields of AtrilDocument.FormField
+        // Fields
 
         id: number;
         is_read_only: boolean;
@@ -1125,7 +1125,7 @@ export namespace AtrilDocument {
         page: Page;
         changed: boolean;
 
-        // Constructors of AtrilDocument.FormField
+        // Constructors
 
         constructor(properties?: Partial<FormField.ConstructorProps>, ...args: any[]);
 
@@ -1141,13 +1141,13 @@ export namespace AtrilDocument {
     class FormFieldButton extends FormField {
         static $gtype: GObject.GType<FormFieldButton>;
 
-        // Own fields of AtrilDocument.FormFieldButton
+        // Fields
 
         partent: FormField;
         type: FormFieldButtonType;
         state: boolean;
 
-        // Constructors of AtrilDocument.FormFieldButton
+        // Constructors
 
         constructor(properties?: Partial<FormFieldButton.ConstructorProps>, ...args: any[]);
 
@@ -1165,7 +1165,7 @@ export namespace AtrilDocument {
     class FormFieldChoice extends FormField {
         static $gtype: GObject.GType<FormFieldChoice>;
 
-        // Own fields of AtrilDocument.FormFieldChoice
+        // Fields
 
         partent: FormField;
         type: FormFieldChoiceType;
@@ -1176,7 +1176,7 @@ export namespace AtrilDocument {
         selected_items: any[];
         text: string;
 
-        // Constructors of AtrilDocument.FormFieldChoice
+        // Constructors
 
         constructor(properties?: Partial<FormFieldChoice.ConstructorProps>, ...args: any[]);
 
@@ -1194,11 +1194,11 @@ export namespace AtrilDocument {
     class FormFieldSignature extends FormField {
         static $gtype: GObject.GType<FormFieldSignature>;
 
-        // Own fields of AtrilDocument.FormFieldSignature
+        // Fields
 
         partent: FormField;
 
-        // Constructors of AtrilDocument.FormFieldSignature
+        // Constructors
 
         constructor(properties?: Partial<FormFieldSignature.ConstructorProps>, ...args: any[]);
 
@@ -1216,7 +1216,7 @@ export namespace AtrilDocument {
     class FormFieldText extends FormField {
         static $gtype: GObject.GType<FormFieldText>;
 
-        // Own fields of AtrilDocument.FormFieldText
+        // Fields
 
         partent: FormField;
         type: FormFieldTextType;
@@ -1228,7 +1228,7 @@ export namespace AtrilDocument {
         max_len: number;
         text: string;
 
-        // Constructors of AtrilDocument.FormFieldText
+        // Constructors
 
         constructor(properties?: Partial<FormFieldText.ConstructorProps>, ...args: any[]);
 
@@ -1246,11 +1246,11 @@ export namespace AtrilDocument {
     class Image extends GObject.Object {
         static $gtype: GObject.GType<Image>;
 
-        // Own fields of AtrilDocument.Image
+        // Fields
 
         base_instance: GObject.Object;
 
-        // Constructors of AtrilDocument.Image
+        // Constructors
 
         constructor(properties?: Partial<Image.ConstructorProps>, ...args: any[]);
 
@@ -1260,7 +1260,7 @@ export namespace AtrilDocument {
 
         static new_from_pixbuf(pixbuf: GdkPixbuf.Pixbuf): Image;
 
-        // Own methods of AtrilDocument.Image
+        // Methods
 
         get_id(): number;
         get_page(): number;
@@ -1277,11 +1277,11 @@ export namespace AtrilDocument {
     class Layer extends GObject.Object {
         static $gtype: GObject.GType<Layer>;
 
-        // Own fields of AtrilDocument.Layer
+        // Fields
 
         base_instance: GObject.Object;
 
-        // Constructors of AtrilDocument.Layer
+        // Constructors
 
         constructor(properties?: Partial<Layer.ConstructorProps>, ...args: any[]);
 
@@ -1289,7 +1289,7 @@ export namespace AtrilDocument {
 
         static ['new'](is_parent: boolean, rb_group: number): Layer;
 
-        // Own methods of AtrilDocument.Layer
+        // Methods
 
         get_rb_group(): number;
         is_parent(): boolean;
@@ -1307,12 +1307,12 @@ export namespace AtrilDocument {
     class Link extends GObject.Object {
         static $gtype: GObject.GType<Link>;
 
-        // Own properties of AtrilDocument.Link
+        // Properties
 
         get action(): any;
         get title(): string;
 
-        // Constructors of AtrilDocument.Link
+        // Constructors
 
         constructor(properties?: Partial<Link.ConstructorProps>, ...args: any[]);
 
@@ -1320,7 +1320,7 @@ export namespace AtrilDocument {
 
         static ['new'](title: string, action: LinkAction): Link;
 
-        // Own methods of AtrilDocument.Link
+        // Methods
 
         get_title(): string;
     }
@@ -1347,7 +1347,7 @@ export namespace AtrilDocument {
     class LinkAction extends GObject.Object {
         static $gtype: GObject.GType<LinkAction>;
 
-        // Own properties of AtrilDocument.LinkAction
+        // Properties
 
         get dest(): any;
         get filename(): string;
@@ -1362,7 +1362,7 @@ export namespace AtrilDocument {
         get type(): LinkActionType;
         get uri(): string;
 
-        // Constructors of AtrilDocument.LinkAction
+        // Constructors
 
         constructor(properties?: Partial<LinkAction.ConstructorProps>, ...args: any[]);
 
@@ -1378,7 +1378,7 @@ export namespace AtrilDocument {
 
         static new_remote(dest: LinkDest, filename: string): LinkAction;
 
-        // Own methods of AtrilDocument.LinkAction
+        // Methods
 
         get_action_type(): LinkActionType;
         get_filename(): string;
@@ -1408,7 +1408,7 @@ export namespace AtrilDocument {
     class LinkDest extends GObject.Object {
         static $gtype: GObject.GType<LinkDest>;
 
-        // Own properties of AtrilDocument.LinkDest
+        // Properties
 
         get bottom(): number;
         get change(): number;
@@ -1422,7 +1422,7 @@ export namespace AtrilDocument {
         get type(): LinkDestType;
         get zoom(): number;
 
-        // Constructors of AtrilDocument.LinkDest
+        // Constructors
 
         constructor(properties?: Partial<LinkDest.ConstructorProps>, ...args: any[]);
 
@@ -1454,7 +1454,7 @@ export namespace AtrilDocument {
             change_zoom: boolean,
         ): LinkDest;
 
-        // Own methods of AtrilDocument.LinkDest
+        // Methods
 
         get_bottom(): number;
         get_dest_type(): LinkDestType;
@@ -1476,14 +1476,14 @@ export namespace AtrilDocument {
     class Page extends GObject.Object {
         static $gtype: GObject.GType<Page>;
 
-        // Own fields of AtrilDocument.Page
+        // Fields
 
         base_instance: GObject.Object;
         index: number;
         backend_page: BackendPage;
         backend_destroy_func: BackendPageDestroyFunc;
 
-        // Constructors of AtrilDocument.Page
+        // Constructors
 
         constructor(properties?: Partial<Page.ConstructorProps>, ...args: any[]);
 
@@ -1501,13 +1501,13 @@ export namespace AtrilDocument {
     class RenderContext extends GObject.Object {
         static $gtype: GObject.GType<RenderContext>;
 
-        // Own fields of AtrilDocument.RenderContext
+        // Fields
 
         page: Page;
         rotation: number;
         scale: number;
 
-        // Constructors of AtrilDocument.RenderContext
+        // Constructors
 
         constructor(properties?: Partial<RenderContext.ConstructorProps>, ...args: any[]);
 
@@ -1515,7 +1515,7 @@ export namespace AtrilDocument {
 
         static ['new'](page: Page, rotation: number, scale: number): RenderContext;
 
-        // Own methods of AtrilDocument.RenderContext
+        // Methods
 
         set_page(page: Page): void;
         set_rotation(rotation: number): void;
@@ -1539,7 +1539,7 @@ export namespace AtrilDocument {
     class TransitionEffect extends GObject.Object {
         static $gtype: GObject.GType<TransitionEffect>;
 
-        // Own properties of AtrilDocument.TransitionEffect
+        // Properties
 
         get alignment(): TransitionEffectAlignment;
         set alignment(val: TransitionEffectAlignment);
@@ -1556,7 +1556,7 @@ export namespace AtrilDocument {
         get type(): TransitionEffectType;
         set type(val: TransitionEffectType);
 
-        // Constructors of AtrilDocument.TransitionEffect
+        // Constructors
 
         constructor(properties?: Partial<TransitionEffect.ConstructorProps>, ...args: any[]);
 
@@ -1572,7 +1572,7 @@ export namespace AtrilDocument {
     abstract class AttachmentPrivate {
         static $gtype: GObject.GType<AttachmentPrivate>;
 
-        // Constructors of AtrilDocument.AttachmentPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1582,12 +1582,12 @@ export namespace AtrilDocument {
     class DocumentBackendInfo {
         static $gtype: GObject.GType<DocumentBackendInfo>;
 
-        // Own fields of AtrilDocument.DocumentBackendInfo
+        // Fields
 
         name: string;
         version: string;
 
-        // Constructors of AtrilDocument.DocumentBackendInfo
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -1606,7 +1606,7 @@ export namespace AtrilDocument {
     class DocumentInfo {
         static $gtype: GObject.GType<DocumentInfo>;
 
-        // Own fields of AtrilDocument.DocumentInfo
+        // Fields
 
         title: string;
         format: string;
@@ -1629,11 +1629,11 @@ export namespace AtrilDocument {
         license: DocumentLicense;
         fields_mask: number;
 
-        // Constructors of AtrilDocument.DocumentInfo
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of AtrilDocument.DocumentInfo
+        // Methods
 
         copy(): DocumentInfo;
         free(): void;
@@ -1643,13 +1643,13 @@ export namespace AtrilDocument {
     class DocumentLicense {
         static $gtype: GObject.GType<DocumentLicense>;
 
-        // Own fields of AtrilDocument.DocumentLicense
+        // Fields
 
         text: string;
         uri: string;
         web_statement: string;
 
-        // Constructors of AtrilDocument.DocumentLicense
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -1662,7 +1662,7 @@ export namespace AtrilDocument {
 
         static ['new'](): DocumentLicense;
 
-        // Own methods of AtrilDocument.DocumentLicense
+        // Methods
 
         copy(): DocumentLicense;
         free(): void;
@@ -1676,7 +1676,7 @@ export namespace AtrilDocument {
     abstract class DocumentPrivate {
         static $gtype: GObject.GType<DocumentPrivate>;
 
-        // Constructors of AtrilDocument.DocumentPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1688,7 +1688,7 @@ export namespace AtrilDocument {
     class FileExporterContext {
         static $gtype: GObject.GType<FileExporterContext>;
 
-        // Own fields of AtrilDocument.FileExporterContext
+        // Fields
 
         format: FileExporterFormat;
         filename: string;
@@ -1699,7 +1699,7 @@ export namespace AtrilDocument {
         duplex: boolean;
         pages_per_sheet: number;
 
-        // Constructors of AtrilDocument.FileExporterContext
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1714,7 +1714,7 @@ export namespace AtrilDocument {
     abstract class ImagePrivate {
         static $gtype: GObject.GType<ImagePrivate>;
 
-        // Constructors of AtrilDocument.ImagePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1723,7 +1723,7 @@ export namespace AtrilDocument {
     abstract class LayerPrivate {
         static $gtype: GObject.GType<LayerPrivate>;
 
-        // Constructors of AtrilDocument.LayerPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1732,7 +1732,7 @@ export namespace AtrilDocument {
     abstract class LinkActionPrivate {
         static $gtype: GObject.GType<LinkActionPrivate>;
 
-        // Constructors of AtrilDocument.LinkActionPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1742,7 +1742,7 @@ export namespace AtrilDocument {
     abstract class LinkDestPrivate {
         static $gtype: GObject.GType<LinkDestPrivate>;
 
-        // Constructors of AtrilDocument.LinkDestPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1750,7 +1750,7 @@ export namespace AtrilDocument {
     abstract class LinkPrivate {
         static $gtype: GObject.GType<LinkPrivate>;
 
-        // Constructors of AtrilDocument.LinkPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1758,12 +1758,12 @@ export namespace AtrilDocument {
     class Mapping {
         static $gtype: GObject.GType<Mapping>;
 
-        // Own fields of AtrilDocument.Mapping
+        // Fields
 
         area: Rectangle;
         data: any;
 
-        // Constructors of AtrilDocument.Mapping
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -1777,14 +1777,14 @@ export namespace AtrilDocument {
     class MappingList {
         static $gtype: GObject.GType<MappingList>;
 
-        // Constructors of AtrilDocument.MappingList
+        // Constructors
 
         constructor(page: number, list: Mapping[]);
         _init(...args: any[]): void;
 
         static ['new'](page: number, list: Mapping[]): MappingList;
 
-        // Own methods of AtrilDocument.MappingList
+        // Methods
 
         find(data?: any | null): Mapping;
         find_custom(data: any | null, func: GLib.CompareFunc): Mapping;
@@ -1803,12 +1803,12 @@ export namespace AtrilDocument {
     class Point {
         static $gtype: GObject.GType<Point>;
 
-        // Own fields of AtrilDocument.Point
+        // Fields
 
         x: number;
         y: number;
 
-        // Constructors of AtrilDocument.Point
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -1822,14 +1822,14 @@ export namespace AtrilDocument {
     class Rectangle {
         static $gtype: GObject.GType<Rectangle>;
 
-        // Own fields of AtrilDocument.Rectangle
+        // Fields
 
         x1: number;
         y1: number;
         x2: number;
         y2: number;
 
-        // Constructors of AtrilDocument.Rectangle
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -1843,7 +1843,7 @@ export namespace AtrilDocument {
 
         static ['new'](): Rectangle;
 
-        // Own methods of AtrilDocument.Rectangle
+        // Methods
 
         copy(): Rectangle;
         free(): void;
@@ -1854,13 +1854,13 @@ export namespace AtrilDocument {
     class SourceLink {
         static $gtype: GObject.GType<SourceLink>;
 
-        // Own fields of AtrilDocument.SourceLink
+        // Fields
 
         filename: string;
         line: number;
         col: number;
 
-        // Constructors of AtrilDocument.SourceLink
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -1873,7 +1873,7 @@ export namespace AtrilDocument {
 
         static ['new'](filename: string, line: number, col: number): SourceLink;
 
-        // Own methods of AtrilDocument.SourceLink
+        // Methods
 
         copy(): SourceLink;
         free(): void;
@@ -1883,12 +1883,12 @@ export namespace AtrilDocument {
     class TypeInfo {
         static $gtype: GObject.GType<TypeInfo>;
 
-        // Own fields of AtrilDocument.TypeInfo
+        // Fields
 
         desc: string;
         mime_types: string;
 
-        // Constructors of AtrilDocument.TypeInfo
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -1918,7 +1918,7 @@ export namespace AtrilDocument {
         prototype: AnnotationMarkup;
     }
     interface AnnotationMarkup extends Annotation {
-        // Own properties of AtrilDocument.AnnotationMarkup
+        // Properties
 
         get has_popup(): boolean;
         set has_popup(val: boolean);
@@ -1935,7 +1935,7 @@ export namespace AtrilDocument {
         get rectangle(): Rectangle;
         set rectangle(val: Rectangle);
 
-        // Own methods of AtrilDocument.AnnotationMarkup
+        // Methods
 
         get_label(): string;
         get_opacity(): number;
@@ -1961,11 +1961,11 @@ export namespace AtrilDocument {
         prototype: AsyncRenderer;
     }
     interface AsyncRenderer extends GObject.Object {
-        // Own methods of AtrilDocument.AsyncRenderer
+        // Methods
 
         render_pixbuf(page: number, scale: number, rotation: number): void;
 
-        // Own virtual methods of AtrilDocument.AsyncRenderer
+        // Virtual methods
 
         vfunc_render_finished(pixbuf: GdkPixbuf.Pixbuf): void;
         vfunc_render_pixbuf(page: number, scale: number, rotation: number): void;
@@ -1984,7 +1984,7 @@ export namespace AtrilDocument {
         prototype: DocumentAnnotations;
     }
     interface DocumentAnnotations extends GObject.Object {
-        // Own methods of AtrilDocument.DocumentAnnotations
+        // Methods
 
         add_annotation(annot: Annotation, rect: Rectangle): void;
         can_add_annotation(): boolean;
@@ -1994,7 +1994,7 @@ export namespace AtrilDocument {
         remove_annotation(annot: Annotation): void;
         save_annotation(annot: Annotation, mask: AnnotationsSaveMask): void;
 
-        // Own virtual methods of AtrilDocument.DocumentAnnotations
+        // Virtual methods
 
         vfunc_add_annotation(annot: Annotation, rect: Rectangle): void;
         vfunc_document_is_modified(): boolean;
@@ -2016,12 +2016,12 @@ export namespace AtrilDocument {
         prototype: DocumentAttachments;
     }
     interface DocumentAttachments extends GObject.Object {
-        // Own methods of AtrilDocument.DocumentAttachments
+        // Methods
 
         get_attachments(): Attachment[];
         has_attachments(): boolean;
 
-        // Own virtual methods of AtrilDocument.DocumentAttachments
+        // Virtual methods
 
         vfunc_get_attachments(): Attachment[];
         vfunc_has_attachments(): boolean;
@@ -2040,12 +2040,12 @@ export namespace AtrilDocument {
         prototype: DocumentFind;
     }
     interface DocumentFind extends GObject.Object {
-        // Own methods of AtrilDocument.DocumentFind
+        // Methods
 
         check_for_hits(page: Page, text: string, case_sensitive: boolean): number;
         find_text(page: Page, text: string, case_sensitive: boolean): Rectangle[];
 
-        // Own virtual methods of AtrilDocument.DocumentFind
+        // Virtual methods
 
         vfunc_check_for_hits(page: Page, text: string, case_sensitive: boolean): number;
         vfunc_find_text(page: Page, text: string, case_sensitive: boolean): Rectangle[];
@@ -2064,13 +2064,13 @@ export namespace AtrilDocument {
         prototype: DocumentFonts;
     }
     interface DocumentFonts extends GObject.Object {
-        // Own methods of AtrilDocument.DocumentFonts
+        // Methods
 
         fill_model(model: Gtk.TreeModel): void;
         get_progress(): number;
         scan(n_pages: number): boolean;
 
-        // Own virtual methods of AtrilDocument.DocumentFonts
+        // Virtual methods
 
         vfunc_fill_model(model: Gtk.TreeModel): void;
         vfunc_get_progress(): number;
@@ -2090,7 +2090,7 @@ export namespace AtrilDocument {
         prototype: DocumentForms;
     }
     interface DocumentForms extends GObject.Object {
-        // Own methods of AtrilDocument.DocumentForms
+        // Methods
 
         document_is_modified(): boolean;
         form_field_button_get_state(field: FormField): boolean;
@@ -2107,7 +2107,7 @@ export namespace AtrilDocument {
         form_field_text_set_text(field: FormField, text: string): void;
         get_form_fields(page: Page): MappingList;
 
-        // Own virtual methods of AtrilDocument.DocumentForms
+        // Virtual methods
 
         vfunc_document_is_modified(): boolean;
         vfunc_form_field_button_get_state(field: FormField): boolean;
@@ -2138,12 +2138,12 @@ export namespace AtrilDocument {
         prototype: DocumentImages;
     }
     interface DocumentImages extends GObject.Object {
-        // Own methods of AtrilDocument.DocumentImages
+        // Methods
 
         get_image(image: Image): GdkPixbuf.Pixbuf;
         get_image_mapping(page: Page): MappingList;
 
-        // Own virtual methods of AtrilDocument.DocumentImages
+        // Virtual methods
 
         vfunc_get_image(image: Image): GdkPixbuf.Pixbuf;
         vfunc_get_image_mapping(page: Page): MappingList;
@@ -2162,7 +2162,7 @@ export namespace AtrilDocument {
         prototype: DocumentLayers;
     }
     interface DocumentLayers extends GObject.Object {
-        // Own methods of AtrilDocument.DocumentLayers
+        // Methods
 
         get_layers(): Gtk.TreeModel;
         has_layers(): boolean;
@@ -2170,7 +2170,7 @@ export namespace AtrilDocument {
         layer_is_visible(layer: Layer): boolean;
         show_layer(layer: Layer): void;
 
-        // Own virtual methods of AtrilDocument.DocumentLayers
+        // Virtual methods
 
         vfunc_get_layers(): Gtk.TreeModel;
         vfunc_has_layers(): boolean;
@@ -2192,7 +2192,7 @@ export namespace AtrilDocument {
         prototype: DocumentLinks;
     }
     interface DocumentLinks extends GObject.Object {
-        // Own methods of AtrilDocument.DocumentLinks
+        // Methods
 
         find_link_dest(link_name: string): LinkDest;
         find_link_page(link_name: string): number;
@@ -2204,7 +2204,7 @@ export namespace AtrilDocument {
         get_links_model(): Gtk.TreeModel;
         has_document_links(): boolean;
 
-        // Own virtual methods of AtrilDocument.DocumentLinks
+        // Virtual methods
 
         vfunc_find_link_dest(link_name: string): LinkDest;
         vfunc_find_link_page(link_name: string): number;
@@ -2226,11 +2226,11 @@ export namespace AtrilDocument {
         prototype: DocumentPrint;
     }
     interface DocumentPrint extends GObject.Object {
-        // Own methods of AtrilDocument.DocumentPrint
+        // Methods
 
         print_page(page: Page, cr: cairo.Context): void;
 
-        // Own virtual methods of AtrilDocument.DocumentPrint
+        // Virtual methods
 
         vfunc_print_page(page: Page, cr: cairo.Context): void;
     }
@@ -2248,12 +2248,12 @@ export namespace AtrilDocument {
         prototype: DocumentSecurity;
     }
     interface DocumentSecurity extends GObject.Object {
-        // Own methods of AtrilDocument.DocumentSecurity
+        // Methods
 
         has_document_security(): boolean;
         set_password(password: string): void;
 
-        // Own virtual methods of AtrilDocument.DocumentSecurity
+        // Virtual methods
 
         vfunc_has_document_security(): boolean;
         vfunc_set_password(password: string): void;
@@ -2272,14 +2272,14 @@ export namespace AtrilDocument {
         prototype: DocumentText;
     }
     interface DocumentText extends GObject.Object {
-        // Own methods of AtrilDocument.DocumentText
+        // Methods
 
         get_text(page: Page): string;
         get_text_attrs(page: Page): Pango.AttrList;
         get_text_layout(page: Page, areas: Rectangle, n_areas: number): boolean;
         get_text_mapping(page: Page): cairo.Region;
 
-        // Own virtual methods of AtrilDocument.DocumentText
+        // Virtual methods
 
         vfunc_get_text(page: Page): string;
         vfunc_get_text_attrs(page: Page): Pango.AttrList;
@@ -2300,11 +2300,11 @@ export namespace AtrilDocument {
         prototype: DocumentThumbnails;
     }
     interface DocumentThumbnails extends GObject.Object {
-        // Own methods of AtrilDocument.DocumentThumbnails
+        // Methods
 
         get_dimensions(rc: RenderContext, width: number, height: number): void;
 
-        // Own virtual methods of AtrilDocument.DocumentThumbnails
+        // Virtual methods
 
         vfunc_get_dimensions(rc: RenderContext, width: number, height: number): void;
     }
@@ -2322,12 +2322,12 @@ export namespace AtrilDocument {
         prototype: DocumentTransition;
     }
     interface DocumentTransition extends GObject.Object {
-        // Own methods of AtrilDocument.DocumentTransition
+        // Methods
 
         get_effect(page: number): TransitionEffect;
         get_page_duration(page: number): number;
 
-        // Own virtual methods of AtrilDocument.DocumentTransition
+        // Virtual methods
 
         vfunc_get_effect(page: number): TransitionEffect;
         vfunc_get_page_duration(page: number): number;
@@ -2346,7 +2346,7 @@ export namespace AtrilDocument {
         prototype: FileExporter;
     }
     interface FileExporter extends GObject.Object {
-        // Own methods of AtrilDocument.FileExporter
+        // Methods
 
         begin(fc: FileExporterContext): void;
         begin_page(): void;
@@ -2355,7 +2355,7 @@ export namespace AtrilDocument {
         end_page(): void;
         get_capabilities(): FileExporterCapabilities;
 
-        // Own virtual methods of AtrilDocument.FileExporter
+        // Virtual methods
 
         vfunc_begin(fc: FileExporterContext): void;
         vfunc_begin_page(): void;
@@ -2378,7 +2378,7 @@ export namespace AtrilDocument {
         prototype: Selection;
     }
     interface Selection extends GObject.Object {
-        // Own methods of AtrilDocument.Selection
+        // Methods
 
         get_selected_text(page: Page, style: SelectionStyle, points: Rectangle): string;
         get_selection_region(rc: RenderContext, style: SelectionStyle, points: Rectangle): cairo.Region;
@@ -2392,7 +2392,7 @@ export namespace AtrilDocument {
             base: Gdk.Color,
         ): void;
 
-        // Own virtual methods of AtrilDocument.Selection
+        // Virtual methods
 
         vfunc_get_selected_text(page: Page, style: SelectionStyle, points: Rectangle): string;
         vfunc_get_selection_region(rc: RenderContext, style: SelectionStyle, points: Rectangle): cairo.Region;

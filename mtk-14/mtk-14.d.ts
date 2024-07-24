@@ -46,14 +46,14 @@ export namespace Mtk {
     class Rectangle {
         static $gtype: GObject.GType<Rectangle>;
 
-        // Own fields of Mtk.Rectangle
+        // Fields
 
         x: number;
         y: number;
         width: number;
         height: number;
 
-        // Constructors of Mtk.Rectangle
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -67,11 +67,11 @@ export namespace Mtk {
 
         static ['new'](x: number, y: number, width: number, height: number): Rectangle;
 
-        // Own static methods of Mtk.Rectangle
+        // Static methods
 
         static from_graphene_rect(rect: Graphene.Rect, rounding_strategy: RoundingStrategy): Rectangle;
 
-        // Own methods of Mtk.Rectangle
+        // Methods
 
         area(): number;
         contains_rect(inner_rect: Rectangle): boolean;
@@ -123,17 +123,17 @@ export namespace Mtk {
     abstract class Region {
         static $gtype: GObject.GType<Region>;
 
-        // Constructors of Mtk.Region
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own static methods of Mtk.Region
+        // Static methods
 
         static create(): Region;
         static create_rectangle(rect: Rectangle): Region;
         static create_rectangles(rects: Rectangle, n_rects: number): Region;
 
-        // Own methods of Mtk.Region
+        // Methods
 
         apply_matrix_transform_expand(transform: Graphene.Matrix): Region;
         contains_point(x: number, y: number): boolean;
@@ -164,15 +164,15 @@ export namespace Mtk {
     class RegionBuilder {
         static $gtype: GObject.GType<RegionBuilder>;
 
-        // Own fields of Mtk.RegionBuilder
+        // Fields
 
         n_levels: number;
 
-        // Constructors of Mtk.RegionBuilder
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of Mtk.RegionBuilder
+        // Methods
 
         add_rectangle(x: number, y: number, width: number, height: number): void;
         finish(): Region;
@@ -199,18 +199,18 @@ export namespace Mtk {
     class RegionIterator {
         static $gtype: GObject.GType<RegionIterator>;
 
-        // Own fields of Mtk.RegionIterator
+        // Fields
 
         rectangle: Rectangle;
         line_start: boolean;
         line_end: boolean;
         i: number;
 
-        // Constructors of Mtk.RegionIterator
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of Mtk.RegionIterator
+        // Methods
 
         at_end(): boolean;
         init(region: Region): void;

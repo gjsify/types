@@ -773,7 +773,7 @@ export namespace AppStreamGlib {
     class InfError extends GLib.Error {
         static $gtype: GObject.GType<InfError>;
 
-        // Static fields of AppStreamGlib.InfError
+        // Static fields
 
         /**
          * Generic failure
@@ -788,7 +788,7 @@ export namespace AppStreamGlib {
          */
         static NOT_FOUND: number;
 
-        // Constructors of AppStreamGlib.InfError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
@@ -911,7 +911,7 @@ export namespace AppStreamGlib {
     class NodeError extends GLib.Error {
         static $gtype: GObject.GType<NodeError>;
 
-        // Static fields of AppStreamGlib.NodeError
+        // Static fields
 
         /**
          * Generic failure
@@ -926,7 +926,7 @@ export namespace AppStreamGlib {
          */
         static NO_SUPPORT: number;
 
-        // Constructors of AppStreamGlib.NodeError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
@@ -1846,7 +1846,7 @@ export namespace AppStreamGlib {
     class UtilsError extends GLib.Error {
         static $gtype: GObject.GType<UtilsError>;
 
-        // Static fields of AppStreamGlib.UtilsError
+        // Static fields
 
         /**
          * Generic failure
@@ -1857,7 +1857,7 @@ export namespace AppStreamGlib {
          */
         static INVALID_TYPE: number;
 
-        // Constructors of AppStreamGlib.UtilsError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
@@ -3076,7 +3076,7 @@ export namespace AppStreamGlib {
     class Agreement extends GObject.Object {
         static $gtype: GObject.GType<Agreement>;
 
-        // Constructors of AppStreamGlib.Agreement
+        // Constructors
 
         constructor(properties?: Partial<Agreement.ConstructorProps>, ...args: any[]);
 
@@ -3084,7 +3084,7 @@ export namespace AppStreamGlib {
 
         static ['new'](): Agreement;
 
-        // Own static methods of AppStreamGlib.Agreement
+        // Static methods
 
         /**
          * Converts the text representation to an enumerated value.
@@ -3097,7 +3097,7 @@ export namespace AppStreamGlib {
          */
         static kind_to_string(value: AgreementKind): string;
 
-        // Own methods of AppStreamGlib.Agreement
+        // Methods
 
         add_section(agreement_section: AgreementSection): void;
         /**
@@ -3141,7 +3141,7 @@ export namespace AppStreamGlib {
     class AgreementSection extends GObject.Object {
         static $gtype: GObject.GType<AgreementSection>;
 
-        // Constructors of AppStreamGlib.AgreementSection
+        // Constructors
 
         constructor(properties?: Partial<AgreementSection.ConstructorProps>, ...args: any[]);
 
@@ -3149,7 +3149,7 @@ export namespace AppStreamGlib {
 
         static ['new'](): AgreementSection;
 
-        // Own methods of AppStreamGlib.AgreementSection
+        // Methods
 
         /**
          * Gets the agreement section desc.
@@ -3196,7 +3196,7 @@ export namespace AppStreamGlib {
     class App extends GObject.Object {
         static $gtype: GObject.GType<App>;
 
-        // Constructors of AppStreamGlib.App
+        // Constructors
 
         constructor(properties?: Partial<App.ConstructorProps>, ...args: any[]);
 
@@ -3204,7 +3204,7 @@ export namespace AppStreamGlib {
 
         static ['new'](): App;
 
-        // Own static methods of AppStreamGlib.App
+        // Static methods
 
         static error_quark(): GLib.Quark;
         /**
@@ -3258,7 +3258,7 @@ export namespace AppStreamGlib {
          */
         static state_to_string(state: AppState): string;
 
-        // Own methods of AppStreamGlib.App
+        // Methods
 
         /**
          * Adds a addon to an application.
@@ -4081,7 +4081,7 @@ export namespace AppStreamGlib {
     class Bundle extends GObject.Object {
         static $gtype: GObject.GType<Bundle>;
 
-        // Constructors of AppStreamGlib.Bundle
+        // Constructors
 
         constructor(properties?: Partial<Bundle.ConstructorProps>, ...args: any[]);
 
@@ -4089,7 +4089,7 @@ export namespace AppStreamGlib {
 
         static ['new'](): Bundle;
 
-        // Own static methods of AppStreamGlib.Bundle
+        // Static methods
 
         /**
          * Converts the text representation to an enumerated value.
@@ -4102,7 +4102,7 @@ export namespace AppStreamGlib {
          */
         static kind_to_string(kind: BundleKind): string;
 
-        // Own methods of AppStreamGlib.Bundle
+        // Methods
 
         /**
          * Gets the ID for this bundle.
@@ -4155,7 +4155,7 @@ export namespace AppStreamGlib {
     class Checksum extends GObject.Object {
         static $gtype: GObject.GType<Checksum>;
 
-        // Constructors of AppStreamGlib.Checksum
+        // Constructors
 
         constructor(properties?: Partial<Checksum.ConstructorProps>, ...args: any[]);
 
@@ -4163,7 +4163,7 @@ export namespace AppStreamGlib {
 
         static ['new'](): Checksum;
 
-        // Own static methods of AppStreamGlib.Checksum
+        // Static methods
 
         /**
          * Converts the text representation to an enumerated value.
@@ -4176,7 +4176,7 @@ export namespace AppStreamGlib {
          */
         static target_to_string(target: ChecksumTarget): string;
 
-        // Own methods of AppStreamGlib.Checksum
+        // Methods
 
         /**
          * Gets the full qualified URL for the checksum, usually pointing at some mirror.
@@ -4229,7 +4229,7 @@ export namespace AppStreamGlib {
     class ContentRating extends GObject.Object {
         static $gtype: GObject.GType<ContentRating>;
 
-        // Constructors of AppStreamGlib.ContentRating
+        // Constructors
 
         constructor(properties?: Partial<ContentRating.ConstructorProps>, ...args: any[]);
 
@@ -4237,7 +4237,7 @@ export namespace AppStreamGlib {
 
         static ['new'](): ContentRating;
 
-        // Own static methods of AppStreamGlib.ContentRating
+        // Static methods
 
         /**
          * Gets the highest #AsContentRatingValue which is allowed to be seen by the
@@ -4318,7 +4318,7 @@ export namespace AppStreamGlib {
          */
         static value_to_string(value: ContentRatingValue): string;
 
-        // Own methods of AppStreamGlib.ContentRating
+        // Methods
 
         /**
          * Adds an attribute value to the content rating.
@@ -4374,7 +4374,7 @@ export namespace AppStreamGlib {
     class Format extends GObject.Object {
         static $gtype: GObject.GType<Format>;
 
-        // Constructors of AppStreamGlib.Format
+        // Constructors
 
         constructor(properties?: Partial<Format.ConstructorProps>, ...args: any[]);
 
@@ -4382,7 +4382,7 @@ export namespace AppStreamGlib {
 
         static ['new'](): Format;
 
-        // Own static methods of AppStreamGlib.Format
+        // Static methods
 
         /**
          * Guesses the source kind based from the filename.
@@ -4396,7 +4396,7 @@ export namespace AppStreamGlib {
         static kind_from_string(kind: string): FormatKind;
         static kind_to_string(kind: FormatKind): string;
 
-        // Own methods of AppStreamGlib.Format
+        // Methods
 
         /**
          * Checks if two formats are the same.
@@ -4435,7 +4435,7 @@ export namespace AppStreamGlib {
     class Icon extends GObject.Object {
         static $gtype: GObject.GType<Icon>;
 
-        // Constructors of AppStreamGlib.Icon
+        // Constructors
 
         constructor(properties?: Partial<Icon.ConstructorProps>, ...args: any[]);
 
@@ -4443,7 +4443,7 @@ export namespace AppStreamGlib {
 
         static ['new'](): Icon;
 
-        // Own static methods of AppStreamGlib.Icon
+        // Static methods
 
         static error_quark(): GLib.Quark;
         /**
@@ -4457,7 +4457,7 @@ export namespace AppStreamGlib {
          */
         static kind_to_string(icon_kind: IconKind): string;
 
-        // Own methods of AppStreamGlib.Icon
+        // Methods
 
         /**
          * Converts the icon from one kind to another.
@@ -4574,7 +4574,7 @@ export namespace AppStreamGlib {
     class Image extends GObject.Object {
         static $gtype: GObject.GType<Image>;
 
-        // Constructors of AppStreamGlib.Image
+        // Constructors
 
         constructor(properties?: Partial<Image.ConstructorProps>, ...args: any[]);
 
@@ -4582,7 +4582,7 @@ export namespace AppStreamGlib {
 
         static ['new'](): Image;
 
-        // Own static methods of AppStreamGlib.Image
+        // Static methods
 
         /**
          * Converts the text representation to an enumerated value.
@@ -4595,7 +4595,7 @@ export namespace AppStreamGlib {
          */
         static kind_to_string(kind: ImageKind): string;
 
-        // Own methods of AppStreamGlib.Image
+        // Methods
 
         /**
          * Checks if two images are the same.
@@ -4724,7 +4724,7 @@ export namespace AppStreamGlib {
     class Launchable extends GObject.Object {
         static $gtype: GObject.GType<Launchable>;
 
-        // Constructors of AppStreamGlib.Launchable
+        // Constructors
 
         constructor(properties?: Partial<Launchable.ConstructorProps>, ...args: any[]);
 
@@ -4732,7 +4732,7 @@ export namespace AppStreamGlib {
 
         static ['new'](): Launchable;
 
-        // Own static methods of AppStreamGlib.Launchable
+        // Static methods
 
         /**
          * Converts the text representation to an enumerated value.
@@ -4745,7 +4745,7 @@ export namespace AppStreamGlib {
          */
         static kind_to_string(kind: LaunchableKind): string;
 
-        // Own methods of AppStreamGlib.Launchable
+        // Methods
 
         /**
          * Gets the launchable kind.
@@ -4778,7 +4778,7 @@ export namespace AppStreamGlib {
     class Problem extends GObject.Object {
         static $gtype: GObject.GType<Problem>;
 
-        // Constructors of AppStreamGlib.Problem
+        // Constructors
 
         constructor(properties?: Partial<Problem.ConstructorProps>, ...args: any[]);
 
@@ -4786,7 +4786,7 @@ export namespace AppStreamGlib {
 
         static ['new'](): Problem;
 
-        // Own static methods of AppStreamGlib.Problem
+        // Static methods
 
         /**
          * Converts the enumerated value to an text representation.
@@ -4794,7 +4794,7 @@ export namespace AppStreamGlib {
          */
         static kind_to_string(kind: ProblemKind): string;
 
-        // Own methods of AppStreamGlib.Problem
+        // Methods
 
         /**
          * Gets the problem kind.
@@ -4837,7 +4837,7 @@ export namespace AppStreamGlib {
     class Provide extends GObject.Object {
         static $gtype: GObject.GType<Provide>;
 
-        // Constructors of AppStreamGlib.Provide
+        // Constructors
 
         constructor(properties?: Partial<Provide.ConstructorProps>, ...args: any[]);
 
@@ -4845,7 +4845,7 @@ export namespace AppStreamGlib {
 
         static ['new'](): Provide;
 
-        // Own static methods of AppStreamGlib.Provide
+        // Static methods
 
         /**
          * Converts the text representation to an enumerated value.
@@ -4858,7 +4858,7 @@ export namespace AppStreamGlib {
          */
         static kind_to_string(kind: ProvideKind): string;
 
-        // Own methods of AppStreamGlib.Provide
+        // Methods
 
         /**
          * Gets the provide kind.
@@ -4891,7 +4891,7 @@ export namespace AppStreamGlib {
     class Release extends GObject.Object {
         static $gtype: GObject.GType<Release>;
 
-        // Constructors of AppStreamGlib.Release
+        // Constructors
 
         constructor(properties?: Partial<Release.ConstructorProps>, ...args: any[]);
 
@@ -4899,7 +4899,7 @@ export namespace AppStreamGlib {
 
         static ['new'](): Release;
 
-        // Own static methods of AppStreamGlib.Release
+        // Static methods
 
         /**
          * Converts the text representation to an enumerated value.
@@ -4922,7 +4922,7 @@ export namespace AppStreamGlib {
          */
         static state_to_string(state: ReleaseState): string;
 
-        // Own methods of AppStreamGlib.Release
+        // Methods
 
         /**
          * Adds a release checksum.
@@ -5088,7 +5088,7 @@ export namespace AppStreamGlib {
     class Require extends GObject.Object {
         static $gtype: GObject.GType<Require>;
 
-        // Constructors of AppStreamGlib.Require
+        // Constructors
 
         constructor(properties?: Partial<Require.ConstructorProps>, ...args: any[]);
 
@@ -5096,7 +5096,7 @@ export namespace AppStreamGlib {
 
         static ['new'](): Require;
 
-        // Own static methods of AppStreamGlib.Require
+        // Static methods
 
         /**
          * Converts the text representation to an enumerated value.
@@ -5119,7 +5119,7 @@ export namespace AppStreamGlib {
          */
         static kind_to_string(kind: RequireKind): string;
 
-        // Own methods of AppStreamGlib.Require
+        // Methods
 
         /**
          * Checks if two requires are the same.
@@ -5197,7 +5197,7 @@ export namespace AppStreamGlib {
     class Review extends GObject.Object {
         static $gtype: GObject.GType<Review>;
 
-        // Own properties of AppStreamGlib.Review
+        // Properties
 
         get date(): Review;
         set date(val: Review);
@@ -5224,7 +5224,7 @@ export namespace AppStreamGlib {
         get version(): string;
         set version(val: string);
 
-        // Constructors of AppStreamGlib.Review
+        // Constructors
 
         constructor(properties?: Partial<Review.ConstructorProps>, ...args: any[]);
 
@@ -5232,7 +5232,7 @@ export namespace AppStreamGlib {
 
         static ['new'](): Review;
 
-        // Own methods of AppStreamGlib.Review
+        // Methods
 
         /**
          * Adds flags to an existing review without replacing the other flags.
@@ -5386,7 +5386,7 @@ export namespace AppStreamGlib {
     class Screenshot extends GObject.Object {
         static $gtype: GObject.GType<Screenshot>;
 
-        // Constructors of AppStreamGlib.Screenshot
+        // Constructors
 
         constructor(properties?: Partial<Screenshot.ConstructorProps>, ...args: any[]);
 
@@ -5394,7 +5394,7 @@ export namespace AppStreamGlib {
 
         static ['new'](): Screenshot;
 
-        // Own static methods of AppStreamGlib.Screenshot
+        // Static methods
 
         /**
          * Converts the text representation to an enumerated value.
@@ -5407,7 +5407,7 @@ export namespace AppStreamGlib {
          */
         static kind_to_string(kind: ScreenshotKind): string;
 
-        // Own methods of AppStreamGlib.Screenshot
+        // Methods
 
         /**
          * Adds an image to the screenshot.
@@ -5519,7 +5519,7 @@ export namespace AppStreamGlib {
     class Store extends GObject.Object {
         static $gtype: GObject.GType<Store>;
 
-        // Constructors of AppStreamGlib.Store
+        // Constructors
 
         constructor(properties?: Partial<Store.ConstructorProps>, ...args: any[]);
 
@@ -5527,7 +5527,7 @@ export namespace AppStreamGlib {
 
         static ['new'](): Store;
 
-        // Own signals of AppStreamGlib.Store
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -5545,18 +5545,18 @@ export namespace AppStreamGlib {
         connect_after(signal: 'changed', callback: (_source: this) => void): number;
         emit(signal: 'changed'): void;
 
-        // Own static methods of AppStreamGlib.Store
+        // Static methods
 
         static error_quark(): GLib.Quark;
 
-        // Own virtual methods of AppStreamGlib.Store
+        // Virtual methods
 
         vfunc_app_added(app: App): void;
         vfunc_app_changed(app: App): void;
         vfunc_app_removed(app: App): void;
         vfunc_changed(): void;
 
-        // Own methods of AppStreamGlib.Store
+        // Methods
 
         /**
          * Adds an application to the store. If a lower priority application has already
@@ -5941,7 +5941,7 @@ export namespace AppStreamGlib {
     class Suggest extends GObject.Object {
         static $gtype: GObject.GType<Suggest>;
 
-        // Constructors of AppStreamGlib.Suggest
+        // Constructors
 
         constructor(properties?: Partial<Suggest.ConstructorProps>, ...args: any[]);
 
@@ -5949,7 +5949,7 @@ export namespace AppStreamGlib {
 
         static ['new'](): Suggest;
 
-        // Own static methods of AppStreamGlib.Suggest
+        // Static methods
 
         /**
          * Converts the text representation to an enumerated value.
@@ -5962,7 +5962,7 @@ export namespace AppStreamGlib {
          */
         static kind_to_string(kind: SuggestKind): string;
 
-        // Own methods of AppStreamGlib.Suggest
+        // Methods
 
         /**
          * Add a the suggest application ID.
@@ -5995,7 +5995,7 @@ export namespace AppStreamGlib {
     class Translation extends GObject.Object {
         static $gtype: GObject.GType<Translation>;
 
-        // Constructors of AppStreamGlib.Translation
+        // Constructors
 
         constructor(properties?: Partial<Translation.ConstructorProps>, ...args: any[]);
 
@@ -6003,7 +6003,7 @@ export namespace AppStreamGlib {
 
         static ['new'](): Translation;
 
-        // Own static methods of AppStreamGlib.Translation
+        // Static methods
 
         /**
          * Converts the text representation to an enumerated value.
@@ -6016,7 +6016,7 @@ export namespace AppStreamGlib {
          */
         static kind_to_string(kind: TranslationKind): string;
 
-        // Own methods of AppStreamGlib.Translation
+        // Methods
 
         /**
          * Gets the ID for this translation.

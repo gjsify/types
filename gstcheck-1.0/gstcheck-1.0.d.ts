@@ -471,7 +471,7 @@ export namespace GstCheck {
     class TestClock extends Gst.Clock {
         static $gtype: GObject.GType<TestClock>;
 
-        // Own properties of GstCheck.TestClock
+        // Properties
 
         get clock_type(): Gst.ClockType;
         set clock_type(val: Gst.ClockType);
@@ -494,7 +494,7 @@ export namespace GstCheck {
          */
         get startTime(): number;
 
-        // Constructors of GstCheck.TestClock
+        // Constructors
 
         constructor(properties?: Partial<TestClock.ConstructorProps>, ...args: any[]);
 
@@ -504,7 +504,7 @@ export namespace GstCheck {
 
         static new_with_start_time(start_time: Gst.ClockTime): TestClock;
 
-        // Own static methods of GstCheck.TestClock
+        // Static methods
 
         /**
          * Finds the latest time inside the list.
@@ -514,7 +514,7 @@ export namespace GstCheck {
          */
         static id_list_get_latest_time(pending_list?: Gst.ClockID[] | null): Gst.ClockTime;
 
-        // Own methods of GstCheck.TestClock
+        // Methods
 
         /**
          * Advances the time of the `test_clock` by the amount given by `delta`. The
@@ -636,13 +636,13 @@ export namespace GstCheck {
     class CheckABIStruct {
         static $gtype: GObject.GType<CheckABIStruct>;
 
-        // Own fields of GstCheck.CheckABIStruct
+        // Fields
 
         name: string;
         size: number;
         abi_size: number;
 
-        // Constructors of GstCheck.CheckABIStruct
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -661,7 +661,7 @@ export namespace GstCheck {
     abstract class CheckLogFilter {
         static $gtype: GObject.GType<CheckLogFilter>;
 
-        // Constructors of GstCheck.CheckLogFilter
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -769,17 +769,17 @@ export namespace GstCheck {
     class Harness {
         static $gtype: GObject.GType<Harness>;
 
-        // Own fields of GstCheck.Harness
+        // Fields
 
         element: Gst.Element;
         srcpad: Gst.Pad;
         sinkpad: Gst.Pad;
 
-        // Constructors of GstCheck.Harness
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own static methods of GstCheck.Harness
+        // Static methods
 
         /**
          * Stop the running #GstHarnessThread
@@ -789,7 +789,7 @@ export namespace GstCheck {
          */
         static stress_thread_stop(t: HarnessThread): number;
 
-        // Own methods of GstCheck.Harness
+        // Methods
 
         /**
          * Links the specified #GstPad the `GstHarness` srcpad.
@@ -1340,7 +1340,7 @@ export namespace GstCheck {
     abstract class HarnessPrivate {
         static $gtype: GObject.GType<HarnessPrivate>;
 
-        // Constructors of GstCheck.HarnessPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1351,7 +1351,7 @@ export namespace GstCheck {
     abstract class HarnessThread {
         static $gtype: GObject.GType<HarnessThread>;
 
-        // Constructors of GstCheck.HarnessThread
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1362,7 +1362,7 @@ export namespace GstCheck {
     abstract class StreamConsistency {
         static $gtype: GObject.GType<StreamConsistency>;
 
-        // Constructors of GstCheck.StreamConsistency
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1371,7 +1371,7 @@ export namespace GstCheck {
     abstract class TestClockPrivate {
         static $gtype: GObject.GType<TestClockPrivate>;
 
-        // Constructors of GstCheck.TestClockPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }

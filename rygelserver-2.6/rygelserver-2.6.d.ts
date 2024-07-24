@@ -59,11 +59,11 @@ export namespace RygelServer {
     class WritableContainerError extends GLib.Error {
         static $gtype: GObject.GType<WritableContainerError>;
 
-        // Static fields of RygelServer.WritableContainerError
+        // Static fields
 
         static NOT_IMPLEMENTED: number;
 
-        // Constructors of RygelServer.WritableContainerError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
@@ -72,11 +72,11 @@ export namespace RygelServer {
     class MediaEngineError extends GLib.Error {
         static $gtype: GObject.GType<MediaEngineError>;
 
-        // Static fields of RygelServer.MediaEngineError
+        // Static fields
 
         static NOT_FOUND: number;
 
-        // Constructors of RygelServer.MediaEngineError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
@@ -85,13 +85,13 @@ export namespace RygelServer {
     class HTTPSeekRequestError extends GLib.Error {
         static $gtype: GObject.GType<HTTPSeekRequestError>;
 
-        // Static fields of RygelServer.HTTPSeekRequestError
+        // Static fields
 
         static INVALID_RANGE: number;
         static BAD_REQUEST: number;
         static OUT_OF_RANGE: number;
 
-        // Constructors of RygelServer.HTTPSeekRequestError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
@@ -100,13 +100,13 @@ export namespace RygelServer {
     class DataSourceError extends GLib.Error {
         static $gtype: GObject.GType<DataSourceError>;
 
-        // Static fields of RygelServer.DataSourceError
+        // Static fields
 
         static GENERAL: number;
         static SEEK_FAILED: number;
         static PLAYSPEED_FAILED: number;
 
-        // Constructors of RygelServer.DataSourceError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
@@ -115,14 +115,14 @@ export namespace RygelServer {
     class HTTPRequestError extends GLib.Error {
         static $gtype: GObject.GType<HTTPRequestError>;
 
-        // Static fields of RygelServer.HTTPRequestError
+        // Static fields
 
         static UNACCEPTABLE: number;
         static BAD_REQUEST: number;
         static NOT_FOUND: number;
         static INTERNAL_SERVER_ERROR: number;
 
-        // Constructors of RygelServer.HTTPRequestError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
@@ -131,12 +131,12 @@ export namespace RygelServer {
     class PlaySpeedError extends GLib.Error {
         static $gtype: GObject.GType<PlaySpeedError>;
 
-        // Static fields of RygelServer.PlaySpeedError
+        // Static fields
 
         static INVALID_SPEED_FORMAT: number;
         static SPEED_NOT_PRESENT: number;
 
-        // Constructors of RygelServer.PlaySpeedError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
@@ -160,7 +160,7 @@ export namespace RygelServer {
     class AudioItem extends MediaFileItem {
         static $gtype: GObject.GType<AudioItem>;
 
-        // Own properties of RygelServer.AudioItem
+        // Properties
 
         get duration(): number;
         set duration(val: number);
@@ -179,7 +179,7 @@ export namespace RygelServer {
         get album(): string;
         set album(val: string);
 
-        // Constructors of RygelServer.AudioItem
+        // Constructors
 
         constructor(properties?: Partial<AudioItem.ConstructorProps>, ...args: any[]);
 
@@ -187,7 +187,7 @@ export namespace RygelServer {
 
         static ['new'](id: string, parent: MediaContainer, title: string, upnp_class: string): AudioItem;
 
-        // Own methods of RygelServer.AudioItem
+        // Methods
 
         get_duration(): number;
         set_duration(value: number): void;
@@ -212,7 +212,7 @@ export namespace RygelServer {
     class ImageItem extends MediaFileItem implements VisualItem {
         static $gtype: GObject.GType<ImageItem>;
 
-        // Constructors of RygelServer.ImageItem
+        // Constructors
 
         constructor(properties?: Partial<ImageItem.ConstructorProps>, ...args: any[]);
 
@@ -287,7 +287,7 @@ export namespace RygelServer {
     class LogicalExpression extends SearchExpression {
         static $gtype: GObject.GType<LogicalExpression>;
 
-        // Constructors of RygelServer.LogicalExpression
+        // Constructors
 
         _init(...args: any[]): void;
 
@@ -303,17 +303,17 @@ export namespace RygelServer {
     class MediaArtStore extends GObject.Object {
         static $gtype: GObject.GType<MediaArtStore>;
 
-        // Constructors of RygelServer.MediaArtStore
+        // Constructors
 
         constructor(properties?: Partial<MediaArtStore.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of RygelServer.MediaArtStore
+        // Static methods
 
         static get_default(): MediaArtStore | null;
 
-        // Own methods of RygelServer.MediaArtStore
+        // Methods
 
         lookup_media_art(item: MusicItem): Thumbnail | null;
         add(item: MusicItem, file: Gio.File, data: Uint8Array | string, mime: string): void;
@@ -329,7 +329,7 @@ export namespace RygelServer {
     class MediaObjects extends Gee.ArrayList {
         static $gtype: GObject.GType<MediaObjects>;
 
-        // Constructors of RygelServer.MediaObjects
+        // Constructors
 
         constructor(properties?: Partial<MediaObjects.ConstructorProps>, ...args: any[]);
 
@@ -337,7 +337,7 @@ export namespace RygelServer {
 
         static ['new'](): MediaObjects;
 
-        // Own methods of RygelServer.MediaObjects
+        // Methods
 
         sort_by_criteria(sort_criteria: string): void;
     }
@@ -356,7 +356,7 @@ export namespace RygelServer {
     class MusicItem extends AudioItem {
         static $gtype: GObject.GType<MusicItem>;
 
-        // Own properties of RygelServer.MusicItem
+        // Properties
 
         get track_number(): number;
         set track_number(val: number);
@@ -367,7 +367,7 @@ export namespace RygelServer {
         get albumArt(): Thumbnail;
         set albumArt(val: Thumbnail);
 
-        // Constructors of RygelServer.MusicItem
+        // Constructors
 
         constructor(properties?: Partial<MusicItem.ConstructorProps>, ...args: any[]);
 
@@ -375,7 +375,7 @@ export namespace RygelServer {
 
         static ['new'](id: string, parent: MediaContainer, title: string, upnp_class: string): MusicItem;
 
-        // Own methods of RygelServer.MusicItem
+        // Methods
 
         lookup_album_art(): void;
         get_track_number(): number;
@@ -393,7 +393,7 @@ export namespace RygelServer {
     class PhotoItem extends ImageItem {
         static $gtype: GObject.GType<PhotoItem>;
 
-        // Constructors of RygelServer.PhotoItem
+        // Constructors
 
         constructor(properties?: Partial<PhotoItem.ConstructorProps>, ...args: any[]);
 
@@ -405,13 +405,13 @@ export namespace RygelServer {
     class RelationalExpression extends SearchExpression {
         static $gtype: GObject.GType<RelationalExpression>;
 
-        // Constructors of RygelServer.RelationalExpression
+        // Constructors
 
         _init(...args: any[]): void;
 
         static ['new'](): RelationalExpression;
 
-        // Own methods of RygelServer.RelationalExpression
+        // Methods
 
         compare_string(str?: string | null): boolean;
         compare_int(integer: number): boolean;
@@ -427,11 +427,11 @@ export namespace RygelServer {
     class SimpleContainer extends MediaContainer implements SearchableContainer {
         static $gtype: GObject.GType<SimpleContainer>;
 
-        // Own fields of RygelServer.SimpleContainer
+        // Fields
 
         children: MediaObjects;
 
-        // Constructors of RygelServer.SimpleContainer
+        // Constructors
 
         constructor(properties?: Partial<SimpleContainer.ConstructorProps>, ...args: any[]);
 
@@ -441,7 +441,7 @@ export namespace RygelServer {
 
         static root(title: string): SimpleContainer;
 
-        // Own methods of RygelServer.SimpleContainer
+        // Methods
 
         add_child_item(child: MediaItem): void;
         get_all_children(): MediaObjects;
@@ -549,7 +549,7 @@ export namespace RygelServer {
     class Subtitle {
         static $gtype: GObject.GType<Subtitle>;
 
-        // Own fields of RygelServer.Subtitle
+        // Fields
 
         ref_count: number;
         uri: string;
@@ -558,17 +558,17 @@ export namespace RygelServer {
         file_extension: string;
         size: number;
 
-        // Constructors of RygelServer.Subtitle
+        // Constructors
 
         _init(...args: any[]): void;
 
         static ['new'](mime_type: string, caption_type: string, file_extension: string): Subtitle;
 
-        // Own virtual methods of RygelServer.Subtitle
+        // Virtual methods
 
         vfunc_get_resource(protocol: string, index: number): MediaResource;
 
-        // Own methods of RygelServer.Subtitle
+        // Methods
 
         get_resource(protocol: string, index: number): MediaResource;
     }
@@ -576,11 +576,11 @@ export namespace RygelServer {
     class Thumbnail extends RygelCore.IconInfo {
         static $gtype: GObject.GType<Thumbnail>;
 
-        // Own fields of RygelServer.Thumbnail
+        // Fields
 
         dlna_profile: string;
 
-        // Constructors of RygelServer.Thumbnail
+        // Constructors
 
         _init(...args: any[]): void;
 
@@ -589,11 +589,11 @@ export namespace RygelServer {
 
         static ['new'](...args: never[]): any;
 
-        // Own virtual methods of RygelServer.Thumbnail
+        // Virtual methods
 
         vfunc_get_resource(protocol: string, index: number): MediaResource;
 
-        // Own methods of RygelServer.Thumbnail
+        // Methods
 
         get_resource(protocol: string, index: number): MediaResource;
     }
@@ -610,14 +610,14 @@ export namespace RygelServer {
     class VideoItem extends AudioItem implements VisualItem {
         static $gtype: GObject.GType<VideoItem>;
 
-        // Own properties of RygelServer.VideoItem
+        // Properties
 
         get author(): string;
         set author(val: string);
         get subtitles(): Gee.ArrayList;
         set subtitles(val: Gee.ArrayList);
 
-        // Constructors of RygelServer.VideoItem
+        // Constructors
 
         constructor(properties?: Partial<VideoItem.ConstructorProps>, ...args: any[]);
 
@@ -625,11 +625,11 @@ export namespace RygelServer {
 
         static ['new'](id: string, parent: MediaContainer, title: string, upnp_class: string): VideoItem;
 
-        // Own virtual methods of RygelServer.VideoItem
+        // Virtual methods
 
         vfunc_add_subtitle_resources(http_server: HTTPServer): void;
 
-        // Own methods of RygelServer.VideoItem
+        // Methods
 
         add_subtitle_resources(http_server: HTTPServer): void;
         get_author(): string;
@@ -736,7 +736,7 @@ export namespace RygelServer {
     abstract class MediaContainer extends MediaObject {
         static $gtype: GObject.GType<MediaContainer>;
 
-        // Own properties of RygelServer.MediaContainer
+        // Properties
 
         get child_count(): number;
         set child_count(val: number);
@@ -757,19 +757,19 @@ export namespace RygelServer {
         get sortCriteria(): string;
         set sortCriteria(val: string);
 
-        // Own fields of RygelServer.MediaContainer
+        // Fields
 
         update_id: number;
         storage_used: number;
         total_deleted_child_count: number;
 
-        // Constructors of RygelServer.MediaContainer
+        // Constructors
 
         constructor(properties?: Partial<MediaContainer.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of RygelServer.MediaContainer
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -811,11 +811,11 @@ export namespace RygelServer {
         ): number;
         emit(signal: 'sub-tree-updates-finished', sub_tree_root: MediaObject): void;
 
-        // Own static methods of RygelServer.MediaContainer
+        // Static methods
 
         static equal_func(a: MediaContainer, b: MediaContainer): boolean;
 
-        // Own virtual methods of RygelServer.MediaContainer
+        // Virtual methods
 
         vfunc_get_children(
             offset: number,
@@ -832,7 +832,7 @@ export namespace RygelServer {
         ): void;
         vfunc_find_object_finish(_res_: Gio.AsyncResult): MediaObject | null;
 
-        // Own methods of RygelServer.MediaContainer
+        // Methods
 
         get_children(
             offset: number,
@@ -871,18 +871,18 @@ export namespace RygelServer {
     abstract class MediaItem extends MediaObject {
         static $gtype: GObject.GType<MediaItem>;
 
-        // Own properties of RygelServer.MediaItem
+        // Properties
 
         get description(): string;
         set description(val: string);
 
-        // Constructors of RygelServer.MediaItem
+        // Constructors
 
         constructor(properties?: Partial<MediaItem.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of RygelServer.MediaItem
+        // Methods
 
         get_description(): string;
         set_description(value: string): void;
@@ -905,7 +905,7 @@ export namespace RygelServer {
     abstract class MediaFileItem extends MediaItem {
         static $gtype: GObject.GType<MediaFileItem>;
 
-        // Own properties of RygelServer.MediaFileItem
+        // Properties
 
         get mime_type(): string;
         set mime_type(val: string);
@@ -922,17 +922,17 @@ export namespace RygelServer {
         get placeHolder(): boolean;
         set placeHolder(val: boolean);
 
-        // Own fields of RygelServer.MediaFileItem
+        // Fields
 
         rygel_media_file_item_mime_to_ext: Gee.HashMap;
 
-        // Constructors of RygelServer.MediaFileItem
+        // Constructors
 
         constructor(properties?: Partial<MediaFileItem.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of RygelServer.MediaFileItem
+        // Virtual methods
 
         vfunc_get_primary_resource(): MediaResource;
         vfunc_get_extension(): string;
@@ -940,7 +940,7 @@ export namespace RygelServer {
         vfunc_add_engine_resources_finish(_res_: Gio.AsyncResult): void;
         vfunc_add_additional_resources(server: HTTPServer): void;
 
-        // Own methods of RygelServer.MediaFileItem
+        // Methods
 
         get_primary_resource(): MediaResource;
         get_extension(): string;
@@ -986,7 +986,7 @@ export namespace RygelServer {
     abstract class MediaObject extends GObject.Object {
         static $gtype: GObject.GType<MediaObject>;
 
-        // Own properties of RygelServer.MediaObject
+        // Properties
 
         get id(): string;
         set id(val: string);
@@ -1023,24 +1023,24 @@ export namespace RygelServer {
         get ocm_flags(): GUPnPAV.OCMFlags;
         get ocmFlags(): GUPnPAV.OCMFlags;
 
-        // Own fields of RygelServer.MediaObject
+        // Fields
 
         parent_ptr: MediaContainer;
 
-        // Constructors of RygelServer.MediaObject
+        // Constructors
 
         constructor(properties?: Partial<MediaObject.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of RygelServer.MediaObject
+        // Static methods
 
         static apply_replacements(
             replacement_pairs: { [key: string]: any } | GLib.HashTable<string, string>,
             source_string?: string | null,
         ): string | null;
 
-        // Own virtual methods of RygelServer.MediaObject
+        // Virtual methods
 
         vfunc_add_uri(uri: string): void;
         vfunc_serialize(serializer: Serializer, http_server: HTTPServer): GUPnPAV.DIDLLiteObject | null;
@@ -1049,7 +1049,7 @@ export namespace RygelServer {
         vfunc_compare_by_property(media_object: MediaObject, property: string): number;
         vfunc_get_ocm_flags(): GUPnPAV.OCMFlags;
 
-        // Own methods of RygelServer.MediaObject
+        // Methods
 
         get_uris(): Gee.List;
         get_primary_uri(): string | null;
@@ -1135,7 +1135,7 @@ export namespace RygelServer {
     class MediaResource extends GObject.Object {
         static $gtype: GObject.GType<MediaResource>;
 
-        // Own properties of RygelServer.MediaResource
+        // Properties
 
         get uri(): string;
         set uri(val: string);
@@ -1200,12 +1200,12 @@ export namespace RygelServer {
         get dlnaOperation(): GUPnPAV.DLNAOperation;
         set dlnaOperation(val: GUPnPAV.DLNAOperation);
 
-        // Own fields of RygelServer.MediaResource
+        // Fields
 
         play_speeds: string[];
         play_speeds_length1: number;
 
-        // Constructors of RygelServer.MediaResource
+        // Constructors
 
         constructor(properties?: Partial<MediaResource.ConstructorProps>, ...args: any[]);
 
@@ -1217,7 +1217,7 @@ export namespace RygelServer {
 
         static from_didl_lite_resource(name: string, didl_resource: GUPnPAV.DIDLLiteResource): MediaResource;
 
-        // Own methods of RygelServer.MediaResource
+        // Methods
 
         dup(): MediaResource;
         get_name(): string;
@@ -1303,7 +1303,7 @@ export namespace RygelServer {
     abstract class MediaServerPlugin extends RygelCore.Plugin {
         static $gtype: GObject.GType<MediaServerPlugin>;
 
-        // Own properties of RygelServer.MediaServerPlugin
+        // Properties
 
         get root_container(): MediaContainer;
         get rootContainer(): MediaContainer;
@@ -1318,17 +1318,17 @@ export namespace RygelServer {
         get supportedProfiles(): RygelCore.DLNAProfile[];
         set supportedProfiles(val: RygelCore.DLNAProfile[]);
 
-        // Constructors of RygelServer.MediaServerPlugin
+        // Constructors
 
         constructor(properties?: Partial<MediaServerPlugin.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of RygelServer.MediaServerPlugin
+        // Virtual methods
 
         vfunc_get_search_caps(): string;
 
-        // Own methods of RygelServer.MediaServerPlugin
+        // Methods
 
         get_root_container(): MediaContainer;
         get_search_caps(): string;
@@ -1341,23 +1341,23 @@ export namespace RygelServer {
     abstract class SearchExpression {
         static $gtype: GObject.GType<SearchExpression>;
 
-        // Own fields of RygelServer.SearchExpression
+        // Fields
 
         ref_count: number;
         op: any | null;
         operand1: any | null;
         operand2: any | null;
 
-        // Constructors of RygelServer.SearchExpression
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of RygelServer.SearchExpression
+        // Virtual methods
 
         vfunc_satisfied_by(media_object: MediaObject): boolean;
         vfunc_to_string(): string;
 
-        // Own methods of RygelServer.SearchExpression
+        // Methods
 
         satisfied_by(media_object: MediaObject): boolean;
         to_string(): string;
@@ -1375,12 +1375,12 @@ export namespace RygelServer {
     class MediaServer extends RygelCore.MediaDevice {
         static $gtype: GObject.GType<MediaServer>;
 
-        // Own properties of RygelServer.MediaServer
+        // Properties
 
         get root_container(): MediaContainer;
         get rootContainer(): MediaContainer;
 
-        // Constructors of RygelServer.MediaServer
+        // Constructors
 
         constructor(properties?: Partial<MediaServer.ConstructorProps>, ...args: any[]);
 
@@ -1408,13 +1408,13 @@ export namespace RygelServer {
     abstract class MediaEngine extends GObject.Object {
         static $gtype: GObject.GType<MediaEngine>;
 
-        // Constructors of RygelServer.MediaEngine
+        // Constructors
 
         constructor(properties?: Partial<MediaEngine.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of RygelServer.MediaEngine
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -1423,12 +1423,12 @@ export namespace RygelServer {
         connect_after(signal: 'resource-changed', callback: (_source: this, media_object_uri: string) => void): number;
         emit(signal: 'resource-changed', media_object_uri: string): void;
 
-        // Own static methods of RygelServer.MediaEngine
+        // Static methods
 
         static init(): void;
         static get_default(): MediaEngine;
 
-        // Own virtual methods of RygelServer.MediaEngine
+        // Virtual methods
 
         vfunc_get_dlna_profiles(): RygelCore.DLNAProfile[];
         vfunc_get_resources_for_item(item: MediaObject, _callback_?: Gio.AsyncReadyCallback<this> | null): void;
@@ -1441,7 +1441,7 @@ export namespace RygelServer {
         vfunc_create_data_source_for_uri(uri: string): DataSource | null;
         vfunc_get_internal_protocol_schemes(): string[];
 
-        // Own methods of RygelServer.MediaEngine
+        // Methods
 
         get_dlna_profiles(): RygelCore.DLNAProfile[];
         get_resources_for_item(item: MediaObject, _callback_?: Gio.AsyncReadyCallback<this> | null): void;
@@ -1464,7 +1464,7 @@ export namespace RygelServer {
     abstract class HTTPSeekRequest extends GObject.Object {
         static $gtype: GObject.GType<HTTPSeekRequest>;
 
-        // Constructors of RygelServer.HTTPSeekRequest
+        // Constructors
 
         constructor(properties?: Partial<HTTPSeekRequest.ConstructorProps>, ...args: any[]);
 
@@ -1480,7 +1480,7 @@ export namespace RygelServer {
     class PlaylistItem extends MediaFileItem {
         static $gtype: GObject.GType<PlaylistItem>;
 
-        // Constructors of RygelServer.PlaylistItem
+        // Constructors
 
         constructor(properties?: Partial<PlaylistItem.ConstructorProps>, ...args: any[]);
 
@@ -1498,7 +1498,7 @@ export namespace RygelServer {
     class ContentDirectory extends GUPnP.Service {
         static $gtype: GObject.GType<ContentDirectory>;
 
-        // Own fields of RygelServer.ContentDirectory
+        // Fields
 
         feature_list: string;
         http_server: HTTPServer;
@@ -1506,7 +1506,7 @@ export namespace RygelServer {
         cancellable: Gio.Cancellable;
         system_update_id: number;
 
-        // Constructors of RygelServer.ContentDirectory
+        // Constructors
 
         constructor(properties?: Partial<ContentDirectory.ConstructorProps>, ...args: any[]);
 
@@ -1533,7 +1533,7 @@ export namespace RygelServer {
     class HTTPByteSeekRequest extends HTTPSeekRequest {
         static $gtype: GObject.GType<HTTPByteSeekRequest>;
 
-        // Own properties of RygelServer.HTTPByteSeekRequest
+        // Properties
 
         get start_byte(): number;
         set start_byte(val: number);
@@ -1552,7 +1552,7 @@ export namespace RygelServer {
         get totalSize(): number;
         set totalSize(val: number);
 
-        // Constructors of RygelServer.HTTPByteSeekRequest
+        // Constructors
 
         constructor(properties?: Partial<HTTPByteSeekRequest.ConstructorProps>, ...args: any[]);
 
@@ -1560,12 +1560,12 @@ export namespace RygelServer {
 
         static ['new'](msg: Soup.Message, handler: HTTPGetHandler): HTTPByteSeekRequest;
 
-        // Own static methods of RygelServer.HTTPByteSeekRequest
+        // Static methods
 
         static supported(message: Soup.Message, handler: HTTPGetHandler): boolean;
         static requested(msg: Soup.Message): boolean;
 
-        // Own methods of RygelServer.HTTPByteSeekRequest
+        // Methods
 
         get_start_byte(): number;
         set_start_byte(value: number): void;
@@ -1594,7 +1594,7 @@ export namespace RygelServer {
     class HTTPByteSeekResponse extends HTTPResponseElement {
         static $gtype: GObject.GType<HTTPByteSeekResponse>;
 
-        // Own properties of RygelServer.HTTPByteSeekResponse
+        // Properties
 
         get start_byte(): number;
         set start_byte(val: number);
@@ -1613,7 +1613,7 @@ export namespace RygelServer {
         get totalSize(): number;
         set totalSize(val: number);
 
-        // Constructors of RygelServer.HTTPByteSeekResponse
+        // Constructors
 
         constructor(properties?: Partial<HTTPByteSeekResponse.ConstructorProps>, ...args: any[]);
 
@@ -1623,7 +1623,7 @@ export namespace RygelServer {
 
         static from_request(request: HTTPByteSeekRequest): HTTPByteSeekResponse;
 
-        // Own methods of RygelServer.HTTPByteSeekResponse
+        // Methods
 
         get_start_byte(): number;
         set_start_byte(value: number): void;
@@ -1645,18 +1645,18 @@ export namespace RygelServer {
     abstract class HTTPGetHandler extends GObject.Object {
         static $gtype: GObject.GType<HTTPGetHandler>;
 
-        // Own properties of RygelServer.HTTPGetHandler
+        // Properties
 
         get cancellable(): Gio.Cancellable;
         set cancellable(val: Gio.Cancellable);
 
-        // Constructors of RygelServer.HTTPGetHandler
+        // Constructors
 
         constructor(properties?: Partial<HTTPGetHandler.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of RygelServer.HTTPGetHandler
+        // Virtual methods
 
         vfunc_add_response_headers(request: HTTPGet): void;
         vfunc_get_default_transfer_mode(): string;
@@ -1668,7 +1668,7 @@ export namespace RygelServer {
         vfunc_supports_playspeed(): boolean;
         vfunc_render_body(request: HTTPGet): HTTPResponse;
 
-        // Own methods of RygelServer.HTTPGetHandler
+        // Methods
 
         add_response_headers(request: HTTPGet): void;
         get_default_transfer_mode(): string;
@@ -1692,13 +1692,13 @@ export namespace RygelServer {
     class HTTPGet extends HTTPRequest {
         static $gtype: GObject.GType<HTTPGet>;
 
-        // Own fields of RygelServer.HTTPGet
+        // Fields
 
         seek: HTTPSeekRequest;
         speed_request: PlaySpeedRequest;
         handler: HTTPGetHandler;
 
-        // Constructors of RygelServer.HTTPGet
+        // Constructors
 
         constructor(properties?: Partial<HTTPGet.ConstructorProps>, ...args: any[]);
 
@@ -1728,7 +1728,7 @@ export namespace RygelServer {
     class HTTPItemURI extends GObject.Object {
         static $gtype: GObject.GType<HTTPItemURI>;
 
-        // Own properties of RygelServer.HTTPItemURI
+        // Properties
 
         get item_id(): string;
         set item_id(val: string);
@@ -1753,11 +1753,11 @@ export namespace RygelServer {
         get extension(): string;
         set extension(val: string);
 
-        // Own fields of RygelServer.HTTPItemURI
+        // Fields
 
         rygel_http_item_uri_mime_to_ext: Gee.HashMap;
 
-        // Constructors of RygelServer.HTTPItemURI
+        // Constructors
 
         constructor(properties?: Partial<HTTPItemURI.ConstructorProps>, ...args: any[]);
 
@@ -1773,7 +1773,7 @@ export namespace RygelServer {
 
         static from_string(uri: string, http_server: HTTPServer): HTTPItemURI;
 
-        // Own methods of RygelServer.HTTPItemURI
+        // Methods
 
         to_string(): string;
         get_item_id(): string;
@@ -1799,7 +1799,7 @@ export namespace RygelServer {
     abstract class HTTPRequest extends GObject.Object implements RygelCore.StateMachine {
         static $gtype: GObject.GType<HTTPRequest>;
 
-        // Own fields of RygelServer.HTTPRequest
+        // Fields
 
         http_server: HTTPServer;
         server: Soup.Server;
@@ -1808,20 +1808,20 @@ export namespace RygelServer {
         object: MediaObject;
         hack: never;
 
-        // Constructors of RygelServer.HTTPRequest
+        // Constructors
 
         constructor(properties?: Partial<HTTPRequest.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of RygelServer.HTTPRequest
+        // Virtual methods
 
         vfunc_handle(_callback_?: Gio.AsyncReadyCallback<this> | null): void;
         vfunc_handle_finish(_res_: Gio.AsyncResult): void;
         vfunc_find_item(_callback_?: Gio.AsyncReadyCallback<this> | null): void;
         vfunc_find_item_finish(_res_: Gio.AsyncResult): void;
 
-        // Own methods of RygelServer.HTTPRequest
+        // Methods
 
         handle(_callback_?: Gio.AsyncReadyCallback<this> | null): void;
         handle_finish(_res_: Gio.AsyncResult): void;
@@ -2257,19 +2257,19 @@ export namespace RygelServer {
     class HTTPResponse extends GObject.Object implements RygelCore.StateMachine {
         static $gtype: GObject.GType<HTTPResponse>;
 
-        // Own properties of RygelServer.HTTPResponse
+        // Properties
 
         get server(): Soup.Server;
         set server(val: Soup.Server);
         get priority(): number;
 
-        // Own fields of RygelServer.HTTPResponse
+        // Fields
 
         msg: Soup.Message;
         seek: HTTPSeekRequest;
         speed: PlaySpeedRequest;
 
-        // Constructors of RygelServer.HTTPResponse
+        // Constructors
 
         constructor(properties?: Partial<HTTPResponse.ConstructorProps>, ...args: any[]);
 
@@ -2277,11 +2277,11 @@ export namespace RygelServer {
 
         static ['new'](request: HTTPGet, request_handler: HTTPGetHandler, src: DataSource): HTTPResponse;
 
-        // Own virtual methods of RygelServer.HTTPResponse
+        // Virtual methods
 
         vfunc_end(aborted: boolean, status: number): void;
 
-        // Own methods of RygelServer.HTTPResponse
+        // Methods
 
         preroll(): Gee.List | null;
         end(aborted: boolean, status: number): void;
@@ -2712,18 +2712,18 @@ export namespace RygelServer {
     abstract class HTTPResponseElement extends GObject.Object {
         static $gtype: GObject.GType<HTTPResponseElement>;
 
-        // Constructors of RygelServer.HTTPResponseElement
+        // Constructors
 
         constructor(properties?: Partial<HTTPResponseElement.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of RygelServer.HTTPResponseElement
+        // Virtual methods
 
         vfunc_add_response_headers(request: HTTPRequest): void;
         vfunc_to_string(): string;
 
-        // Own methods of RygelServer.HTTPResponseElement
+        // Methods
 
         add_response_headers(request: HTTPRequest): void;
         to_string(): string;
@@ -2743,7 +2743,7 @@ export namespace RygelServer {
     class HTTPServer extends GObject.Object implements RygelCore.StateMachine {
         static $gtype: GObject.GType<HTTPServer>;
 
-        // Own properties of RygelServer.HTTPServer
+        // Properties
 
         get path_root(): string;
         set path_root(val: string);
@@ -2754,12 +2754,12 @@ export namespace RygelServer {
         get serverName(): string;
         set serverName(val: string);
 
-        // Own fields of RygelServer.HTTPServer
+        // Fields
 
         root_container: MediaContainer;
         context: GUPnP.Context;
 
-        // Constructors of RygelServer.HTTPServer
+        // Constructors
 
         constructor(properties?: Partial<HTTPServer.ConstructorProps>, ...args: any[]);
 
@@ -2767,12 +2767,12 @@ export namespace RygelServer {
 
         static ['new'](content_dir: ContentDirectory, name: string): HTTPServer;
 
-        // Own virtual methods of RygelServer.HTTPServer
+        // Virtual methods
 
         vfunc_get_protocol(): string;
         vfunc_get_protocol_info(): Gee.ArrayList;
 
-        // Own methods of RygelServer.HTTPServer
+        // Methods
 
         set_resource_delivery_options(res: MediaResource): void;
         need_proxy(uri: string): boolean;
@@ -3208,25 +3208,25 @@ export namespace RygelServer {
     class HTTPTimeSeekRequest extends HTTPSeekRequest {
         static $gtype: GObject.GType<HTTPTimeSeekRequest>;
 
-        // Own fields of RygelServer.HTTPTimeSeekRequest
+        // Fields
 
         start_time: number;
         end_time: number;
         range_duration: number;
         total_duration: number;
 
-        // Constructors of RygelServer.HTTPTimeSeekRequest
+        // Constructors
 
         constructor(properties?: Partial<HTTPTimeSeekRequest.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of RygelServer.HTTPTimeSeekRequest
+        // Static methods
 
         static supported(message: Soup.Message, handler: HTTPGetHandler): boolean;
         static requested(message: Soup.Message): boolean;
 
-        // Own methods of RygelServer.HTTPTimeSeekRequest
+        // Methods
 
         to_string(): string;
     }
@@ -3257,7 +3257,7 @@ export namespace RygelServer {
     class HTTPTimeSeekResponse extends HTTPResponseElement {
         static $gtype: GObject.GType<HTTPTimeSeekResponse>;
 
-        // Own properties of RygelServer.HTTPTimeSeekResponse
+        // Properties
 
         get start_time(): number;
         set start_time(val: number);
@@ -3292,7 +3292,7 @@ export namespace RygelServer {
         get totalSize(): number;
         set totalSize(val: number);
 
-        // Constructors of RygelServer.HTTPTimeSeekResponse
+        // Constructors
 
         constructor(properties?: Partial<HTTPTimeSeekResponse.ConstructorProps>, ...args: any[]);
 
@@ -3321,7 +3321,7 @@ export namespace RygelServer {
 
         static from_request(time_seek_request: HTTPTimeSeekRequest, total_duration: number): HTTPTimeSeekResponse;
 
-        // Own methods of RygelServer.HTTPTimeSeekResponse
+        // Methods
 
         get_start_time(): number;
         get_end_time(): number;
@@ -3345,12 +3345,12 @@ export namespace RygelServer {
     class Serializer extends GObject.Object {
         static $gtype: GObject.GType<Serializer>;
 
-        // Own properties of RygelServer.Serializer
+        // Properties
 
         get serializer_type(): SerializerType;
         get serializerType(): SerializerType;
 
-        // Constructors of RygelServer.Serializer
+        // Constructors
 
         constructor(properties?: Partial<Serializer.ConstructorProps>, ...args: any[]);
 
@@ -3358,7 +3358,7 @@ export namespace RygelServer {
 
         static ['new'](type: SerializerType): Serializer;
 
-        // Own methods of RygelServer.Serializer
+        // Methods
 
         add_item(): GUPnPAV.DIDLLiteItem | null;
         add_container(): GUPnPAV.DIDLLiteContainer | null;
@@ -3369,13 +3369,13 @@ export namespace RygelServer {
     class PlaySpeed {
         static $gtype: GObject.GType<PlaySpeed>;
 
-        // Own fields of RygelServer.PlaySpeed
+        // Fields
 
         ref_count: number;
         numerator: number;
         denominator: number;
 
-        // Constructors of RygelServer.PlaySpeed
+        // Constructors
 
         _init(...args: any[]): void;
 
@@ -3383,7 +3383,7 @@ export namespace RygelServer {
 
         static from_string(speed: string): PlaySpeed;
 
-        // Own methods of RygelServer.PlaySpeed
+        // Methods
 
         equals(that: PlaySpeed): boolean;
         is_positive(): boolean;
@@ -3404,12 +3404,12 @@ export namespace RygelServer {
     class PlaySpeedRequest extends GObject.Object {
         static $gtype: GObject.GType<PlaySpeedRequest>;
 
-        // Own properties of RygelServer.PlaySpeedRequest
+        // Properties
 
         get speed(): PlaySpeed;
         set speed(val: PlaySpeed);
 
-        // Constructors of RygelServer.PlaySpeedRequest
+        // Constructors
 
         constructor(properties?: Partial<PlaySpeedRequest.ConstructorProps>, ...args: any[]);
 
@@ -3419,11 +3419,11 @@ export namespace RygelServer {
 
         static from_string(speed: string): PlaySpeedRequest;
 
-        // Own static methods of RygelServer.PlaySpeedRequest
+        // Static methods
 
         static supported(request: HTTPGet): boolean;
 
-        // Own methods of RygelServer.PlaySpeedRequest
+        // Methods
 
         equals(that: PlaySpeedRequest): boolean;
         get_speed(): PlaySpeed;
@@ -3438,11 +3438,11 @@ export namespace RygelServer {
     class PlaySpeedResponse extends HTTPResponseElement {
         static $gtype: GObject.GType<PlaySpeedResponse>;
 
-        // Own fields of RygelServer.PlaySpeedResponse
+        // Fields
 
         framerate: number;
 
-        // Constructors of RygelServer.PlaySpeedResponse
+        // Constructors
 
         constructor(properties?: Partial<PlaySpeedResponse.ConstructorProps>, ...args: any[]);
 
@@ -3454,7 +3454,7 @@ export namespace RygelServer {
 
         static from_string(speed: string, framerate: number): PlaySpeedResponse;
 
-        // Own methods of RygelServer.PlaySpeedResponse
+        // Methods
 
         equals(that: PlaySpeedRequest): boolean;
     }
@@ -3477,7 +3477,7 @@ export namespace RygelServer {
     class DTCPCleartextRequest extends HTTPSeekRequest {
         static $gtype: GObject.GType<DTCPCleartextRequest>;
 
-        // Own properties of RygelServer.DTCPCleartextRequest
+        // Properties
 
         get start_byte(): number;
         set start_byte(val: number);
@@ -3496,7 +3496,7 @@ export namespace RygelServer {
         get totalSize(): number;
         set totalSize(val: number);
 
-        // Constructors of RygelServer.DTCPCleartextRequest
+        // Constructors
 
         constructor(properties?: Partial<DTCPCleartextRequest.ConstructorProps>, ...args: any[]);
 
@@ -3504,12 +3504,12 @@ export namespace RygelServer {
 
         static ['new'](message: Soup.Message, handler: HTTPGetHandler): DTCPCleartextRequest;
 
-        // Own static methods of RygelServer.DTCPCleartextRequest
+        // Static methods
 
         static supported(message: Soup.Message, handler: HTTPGetHandler): boolean;
         static requested(message: Soup.Message): boolean;
 
-        // Own methods of RygelServer.DTCPCleartextRequest
+        // Methods
 
         get_start_byte(): number;
         get_end_byte(): number;
@@ -3537,7 +3537,7 @@ export namespace RygelServer {
     class DTCPCleartextResponse extends HTTPResponseElement {
         static $gtype: GObject.GType<DTCPCleartextResponse>;
 
-        // Own properties of RygelServer.DTCPCleartextResponse
+        // Properties
 
         get start_byte(): number;
         set start_byte(val: number);
@@ -3560,7 +3560,7 @@ export namespace RygelServer {
         get encryptedLength(): number;
         set encryptedLength(val: number);
 
-        // Constructors of RygelServer.DTCPCleartextResponse
+        // Constructors
 
         constructor(properties?: Partial<DTCPCleartextResponse.ConstructorProps>, ...args: any[]);
 
@@ -3575,7 +3575,7 @@ export namespace RygelServer {
 
         static from_request(request: DTCPCleartextRequest, encrypted_length: number): DTCPCleartextResponse;
 
-        // Own methods of RygelServer.DTCPCleartextResponse
+        // Methods
 
         get_start_byte(): number;
         get_end_byte(): number;
@@ -3594,13 +3594,13 @@ export namespace RygelServer {
     class DLNAAvailableSeekRangeRequest extends HTTPSeekRequest {
         static $gtype: GObject.GType<DLNAAvailableSeekRangeRequest>;
 
-        // Constructors of RygelServer.DLNAAvailableSeekRangeRequest
+        // Constructors
 
         constructor(properties?: Partial<DLNAAvailableSeekRangeRequest.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of RygelServer.DLNAAvailableSeekRangeRequest
+        // Static methods
 
         static supported(message: Soup.Message, handler: HTTPGetHandler): boolean;
         static requested(message: Soup.Message): boolean;
@@ -3627,7 +3627,7 @@ export namespace RygelServer {
     class DLNAAvailableSeekRangeResponse extends HTTPResponseElement {
         static $gtype: GObject.GType<DLNAAvailableSeekRangeResponse>;
 
-        // Own properties of RygelServer.DLNAAvailableSeekRangeResponse
+        // Properties
 
         get mode(): number;
         set mode(val: number);
@@ -3652,7 +3652,7 @@ export namespace RygelServer {
         get rangeLength(): number;
         set rangeLength(val: number);
 
-        // Constructors of RygelServer.DLNAAvailableSeekRangeResponse
+        // Constructors
 
         constructor(properties?: Partial<DLNAAvailableSeekRangeResponse.ConstructorProps>, ...args: any[]);
 
@@ -3668,7 +3668,7 @@ export namespace RygelServer {
 
         static time_only(mode: number, start_time: number, end_time: number): DLNAAvailableSeekRangeResponse;
 
-        // Own methods of RygelServer.DLNAAvailableSeekRangeResponse
+        // Methods
 
         get_mode(): number;
         get_start_time(): number;
@@ -3682,7 +3682,7 @@ export namespace RygelServer {
     abstract class AudioItemPrivate {
         static $gtype: GObject.GType<AudioItemPrivate>;
 
-        // Constructors of RygelServer.AudioItemPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3691,7 +3691,7 @@ export namespace RygelServer {
     abstract class ImageItemPrivate {
         static $gtype: GObject.GType<ImageItemPrivate>;
 
-        // Constructors of RygelServer.ImageItemPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3700,7 +3700,7 @@ export namespace RygelServer {
     abstract class LogicalExpressionPrivate {
         static $gtype: GObject.GType<LogicalExpressionPrivate>;
 
-        // Constructors of RygelServer.LogicalExpressionPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3709,7 +3709,7 @@ export namespace RygelServer {
     abstract class MediaArtStorePrivate {
         static $gtype: GObject.GType<MediaArtStorePrivate>;
 
-        // Constructors of RygelServer.MediaArtStorePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3718,7 +3718,7 @@ export namespace RygelServer {
     abstract class MediaObjectsPrivate {
         static $gtype: GObject.GType<MediaObjectsPrivate>;
 
-        // Constructors of RygelServer.MediaObjectsPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3727,7 +3727,7 @@ export namespace RygelServer {
     abstract class MusicItemPrivate {
         static $gtype: GObject.GType<MusicItemPrivate>;
 
-        // Constructors of RygelServer.MusicItemPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3736,7 +3736,7 @@ export namespace RygelServer {
     abstract class PhotoItemPrivate {
         static $gtype: GObject.GType<PhotoItemPrivate>;
 
-        // Constructors of RygelServer.PhotoItemPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3745,7 +3745,7 @@ export namespace RygelServer {
     abstract class RelationalExpressionPrivate {
         static $gtype: GObject.GType<RelationalExpressionPrivate>;
 
-        // Constructors of RygelServer.RelationalExpressionPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3754,7 +3754,7 @@ export namespace RygelServer {
     abstract class SimpleContainerPrivate {
         static $gtype: GObject.GType<SimpleContainerPrivate>;
 
-        // Constructors of RygelServer.SimpleContainerPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3763,7 +3763,7 @@ export namespace RygelServer {
     abstract class SubtitlePrivate {
         static $gtype: GObject.GType<SubtitlePrivate>;
 
-        // Constructors of RygelServer.SubtitlePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3772,7 +3772,7 @@ export namespace RygelServer {
     abstract class ThumbnailPrivate {
         static $gtype: GObject.GType<ThumbnailPrivate>;
 
-        // Constructors of RygelServer.ThumbnailPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3781,7 +3781,7 @@ export namespace RygelServer {
     abstract class VideoItemPrivate {
         static $gtype: GObject.GType<VideoItemPrivate>;
 
-        // Constructors of RygelServer.VideoItemPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3790,7 +3790,7 @@ export namespace RygelServer {
     abstract class MediaContainerPrivate {
         static $gtype: GObject.GType<MediaContainerPrivate>;
 
-        // Constructors of RygelServer.MediaContainerPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3799,7 +3799,7 @@ export namespace RygelServer {
     abstract class MediaItemPrivate {
         static $gtype: GObject.GType<MediaItemPrivate>;
 
-        // Constructors of RygelServer.MediaItemPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3808,7 +3808,7 @@ export namespace RygelServer {
     abstract class MediaFileItemPrivate {
         static $gtype: GObject.GType<MediaFileItemPrivate>;
 
-        // Constructors of RygelServer.MediaFileItemPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3817,7 +3817,7 @@ export namespace RygelServer {
     abstract class MediaObjectPrivate {
         static $gtype: GObject.GType<MediaObjectPrivate>;
 
-        // Constructors of RygelServer.MediaObjectPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3826,7 +3826,7 @@ export namespace RygelServer {
     abstract class MediaResourcePrivate {
         static $gtype: GObject.GType<MediaResourcePrivate>;
 
-        // Constructors of RygelServer.MediaResourcePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3835,7 +3835,7 @@ export namespace RygelServer {
     abstract class MediaServerPluginPrivate {
         static $gtype: GObject.GType<MediaServerPluginPrivate>;
 
-        // Constructors of RygelServer.MediaServerPluginPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3844,7 +3844,7 @@ export namespace RygelServer {
     abstract class SearchExpressionPrivate {
         static $gtype: GObject.GType<SearchExpressionPrivate>;
 
-        // Constructors of RygelServer.SearchExpressionPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3853,7 +3853,7 @@ export namespace RygelServer {
     abstract class MediaServerPrivate {
         static $gtype: GObject.GType<MediaServerPrivate>;
 
-        // Constructors of RygelServer.MediaServerPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3862,7 +3862,7 @@ export namespace RygelServer {
     abstract class MediaEnginePrivate {
         static $gtype: GObject.GType<MediaEnginePrivate>;
 
-        // Constructors of RygelServer.MediaEnginePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3871,7 +3871,7 @@ export namespace RygelServer {
     abstract class HTTPSeekRequestPrivate {
         static $gtype: GObject.GType<HTTPSeekRequestPrivate>;
 
-        // Constructors of RygelServer.HTTPSeekRequestPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3880,7 +3880,7 @@ export namespace RygelServer {
     abstract class PlaylistItemPrivate {
         static $gtype: GObject.GType<PlaylistItemPrivate>;
 
-        // Constructors of RygelServer.PlaylistItemPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3889,7 +3889,7 @@ export namespace RygelServer {
     abstract class ContentDirectoryPrivate {
         static $gtype: GObject.GType<ContentDirectoryPrivate>;
 
-        // Constructors of RygelServer.ContentDirectoryPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3898,7 +3898,7 @@ export namespace RygelServer {
     abstract class HTTPByteSeekRequestPrivate {
         static $gtype: GObject.GType<HTTPByteSeekRequestPrivate>;
 
-        // Constructors of RygelServer.HTTPByteSeekRequestPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3907,7 +3907,7 @@ export namespace RygelServer {
     abstract class HTTPByteSeekResponsePrivate {
         static $gtype: GObject.GType<HTTPByteSeekResponsePrivate>;
 
-        // Constructors of RygelServer.HTTPByteSeekResponsePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3916,7 +3916,7 @@ export namespace RygelServer {
     abstract class HTTPGetHandlerPrivate {
         static $gtype: GObject.GType<HTTPGetHandlerPrivate>;
 
-        // Constructors of RygelServer.HTTPGetHandlerPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3925,7 +3925,7 @@ export namespace RygelServer {
     abstract class HTTPGetPrivate {
         static $gtype: GObject.GType<HTTPGetPrivate>;
 
-        // Constructors of RygelServer.HTTPGetPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3934,7 +3934,7 @@ export namespace RygelServer {
     abstract class HTTPItemURIPrivate {
         static $gtype: GObject.GType<HTTPItemURIPrivate>;
 
-        // Constructors of RygelServer.HTTPItemURIPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3943,7 +3943,7 @@ export namespace RygelServer {
     abstract class HTTPRequestPrivate {
         static $gtype: GObject.GType<HTTPRequestPrivate>;
 
-        // Constructors of RygelServer.HTTPRequestPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3952,7 +3952,7 @@ export namespace RygelServer {
     abstract class HTTPResponsePrivate {
         static $gtype: GObject.GType<HTTPResponsePrivate>;
 
-        // Constructors of RygelServer.HTTPResponsePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3961,7 +3961,7 @@ export namespace RygelServer {
     abstract class HTTPResponseElementPrivate {
         static $gtype: GObject.GType<HTTPResponseElementPrivate>;
 
-        // Constructors of RygelServer.HTTPResponseElementPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3970,7 +3970,7 @@ export namespace RygelServer {
     abstract class HTTPServerPrivate {
         static $gtype: GObject.GType<HTTPServerPrivate>;
 
-        // Constructors of RygelServer.HTTPServerPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3979,7 +3979,7 @@ export namespace RygelServer {
     abstract class HTTPTimeSeekRequestPrivate {
         static $gtype: GObject.GType<HTTPTimeSeekRequestPrivate>;
 
-        // Constructors of RygelServer.HTTPTimeSeekRequestPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3988,7 +3988,7 @@ export namespace RygelServer {
     abstract class HTTPTimeSeekResponsePrivate {
         static $gtype: GObject.GType<HTTPTimeSeekResponsePrivate>;
 
-        // Constructors of RygelServer.HTTPTimeSeekResponsePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3997,7 +3997,7 @@ export namespace RygelServer {
     abstract class SerializerPrivate {
         static $gtype: GObject.GType<SerializerPrivate>;
 
-        // Constructors of RygelServer.SerializerPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4006,7 +4006,7 @@ export namespace RygelServer {
     abstract class PlaySpeedPrivate {
         static $gtype: GObject.GType<PlaySpeedPrivate>;
 
-        // Constructors of RygelServer.PlaySpeedPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4015,7 +4015,7 @@ export namespace RygelServer {
     abstract class PlaySpeedRequestPrivate {
         static $gtype: GObject.GType<PlaySpeedRequestPrivate>;
 
-        // Constructors of RygelServer.PlaySpeedRequestPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4024,7 +4024,7 @@ export namespace RygelServer {
     abstract class PlaySpeedResponsePrivate {
         static $gtype: GObject.GType<PlaySpeedResponsePrivate>;
 
-        // Constructors of RygelServer.PlaySpeedResponsePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4033,7 +4033,7 @@ export namespace RygelServer {
     abstract class DTCPCleartextRequestPrivate {
         static $gtype: GObject.GType<DTCPCleartextRequestPrivate>;
 
-        // Constructors of RygelServer.DTCPCleartextRequestPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4042,7 +4042,7 @@ export namespace RygelServer {
     abstract class DTCPCleartextResponsePrivate {
         static $gtype: GObject.GType<DTCPCleartextResponsePrivate>;
 
-        // Constructors of RygelServer.DTCPCleartextResponsePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4051,7 +4051,7 @@ export namespace RygelServer {
     abstract class DLNAAvailableSeekRangeRequestPrivate {
         static $gtype: GObject.GType<DLNAAvailableSeekRangeRequestPrivate>;
 
-        // Constructors of RygelServer.DLNAAvailableSeekRangeRequestPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4060,7 +4060,7 @@ export namespace RygelServer {
     abstract class DLNAAvailableSeekRangeResponsePrivate {
         static $gtype: GObject.GType<DLNAAvailableSeekRangeResponsePrivate>;
 
-        // Constructors of RygelServer.DLNAAvailableSeekRangeResponsePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4086,14 +4086,14 @@ export namespace RygelServer {
         prototype: SearchableContainer;
     }
     interface SearchableContainer extends MediaContainer {
-        // Own properties of RygelServer.SearchableContainer
+        // Properties
 
         get search_classes(): Gee.ArrayList;
         set search_classes(val: Gee.ArrayList);
         get searchClasses(): Gee.ArrayList;
         set searchClasses(val: Gee.ArrayList);
 
-        // Own methods of RygelServer.SearchableContainer
+        // Methods
 
         search(
             expression: SearchExpression | null,
@@ -4122,7 +4122,7 @@ export namespace RygelServer {
         get_search_classes(): Gee.ArrayList;
         set_search_classes(value: Gee.ArrayList): void;
 
-        // Own virtual methods of RygelServer.SearchableContainer
+        // Virtual methods
 
         vfunc_search(
             expression: SearchExpression | null,
@@ -4150,7 +4150,7 @@ export namespace RygelServer {
         prototype: TrackableContainer;
     }
     interface TrackableContainer extends MediaContainer {
-        // Own methods of RygelServer.TrackableContainer
+        // Methods
 
         clear(_callback_?: Gio.AsyncReadyCallback<this> | null): void;
         clear_finish(_res_: Gio.AsyncResult): void;
@@ -4166,7 +4166,7 @@ export namespace RygelServer {
         set_service_reset_token(token: string): void;
         get_system_update_id(): number;
 
-        // Own virtual methods of RygelServer.TrackableContainer
+        // Virtual methods
 
         vfunc_add_child(object: MediaObject, _callback_?: Gio.AsyncReadyCallback<this> | null): void;
         vfunc_add_child_finish(_res_: Gio.AsyncResult): void;
@@ -4190,7 +4190,7 @@ export namespace RygelServer {
         prototype: TrackableItem;
     }
     interface TrackableItem extends MediaItem {
-        // Own methods of RygelServer.TrackableItem
+        // Methods
 
         changed(): void;
     }
@@ -4214,7 +4214,7 @@ export namespace RygelServer {
         prototype: VisualItem;
     }
     interface VisualItem extends MediaFileItem {
-        // Own properties of RygelServer.VisualItem
+        // Properties
 
         get width(): number;
         set width(val: number);
@@ -4227,7 +4227,7 @@ export namespace RygelServer {
         get thumbnails(): Gee.ArrayList;
         set thumbnails(val: Gee.ArrayList);
 
-        // Own methods of RygelServer.VisualItem
+        // Methods
 
         get_width(): number;
         set_width(value: number): void;
@@ -4238,7 +4238,7 @@ export namespace RygelServer {
         get_thumbnails(): Gee.ArrayList;
         set_thumbnails(value: Gee.ArrayList): void;
 
-        // Own virtual methods of RygelServer.VisualItem
+        // Virtual methods
 
         vfunc_get_width(): number;
         vfunc_set_width(value: number): void;
@@ -4266,14 +4266,14 @@ export namespace RygelServer {
         prototype: WritableContainer;
     }
     interface WritableContainer extends MediaContainer {
-        // Own properties of RygelServer.WritableContainer
+        // Properties
 
         get create_classes(): Gee.ArrayList;
         set create_classes(val: Gee.ArrayList);
         get createClasses(): Gee.ArrayList;
         set createClasses(val: Gee.ArrayList);
 
-        // Own methods of RygelServer.WritableContainer
+        // Methods
 
         can_create(upnp_class: string): boolean;
         add_item(
@@ -4309,7 +4309,7 @@ export namespace RygelServer {
         get_create_classes(): Gee.ArrayList;
         set_create_classes(value: Gee.ArrayList): void;
 
-        // Own virtual methods of RygelServer.WritableContainer
+        // Virtual methods
 
         vfunc_add_item(
             item: MediaFileItem,
@@ -4358,7 +4358,7 @@ export namespace RygelServer {
         prototype: DataSource;
     }
     interface DataSource extends GObject.Object {
-        // Own methods of RygelServer.DataSource
+        // Methods
 
         preroll(seek?: HTTPSeekRequest | null, playspeed?: PlaySpeedRequest | null): Gee.List | null;
         start(): void;
@@ -4366,7 +4366,7 @@ export namespace RygelServer {
         thaw(): void;
         stop(): void;
 
-        // Own virtual methods of RygelServer.DataSource
+        // Virtual methods
 
         vfunc_preroll(seek?: HTTPSeekRequest | null, playspeed?: PlaySpeedRequest | null): Gee.List | null;
         vfunc_start(): void;
@@ -4388,12 +4388,12 @@ export namespace RygelServer {
         prototype: UpdatableObject;
     }
     interface UpdatableObject extends MediaObject {
-        // Own methods of RygelServer.UpdatableObject
+        // Methods
 
         commit(_callback_?: Gio.AsyncReadyCallback<this> | null): void;
         commit_finish(_res_: Gio.AsyncResult): void;
 
-        // Own virtual methods of RygelServer.UpdatableObject
+        // Virtual methods
 
         vfunc_commit(_callback_?: Gio.AsyncReadyCallback<this> | null): void;
         vfunc_commit_finish(_res_: Gio.AsyncResult): void;

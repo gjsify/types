@@ -980,7 +980,7 @@ export namespace GstPbutils {
     abstract class AudioVisualizer extends Gst.Element {
         static $gtype: GObject.GType<AudioVisualizer>;
 
-        // Own properties of GstPbutils.AudioVisualizer
+        // Properties
 
         get shade_amount(): number;
         set shade_amount(val: number);
@@ -989,17 +989,17 @@ export namespace GstPbutils {
         get shader(): AudioVisualizerShader;
         set shader(val: AudioVisualizerShader);
 
-        // Own fields of GstPbutils.AudioVisualizer
+        // Fields
 
         req_spf: number;
 
-        // Constructors of GstPbutils.AudioVisualizer
+        // Constructors
 
         constructor(properties?: Partial<AudioVisualizer.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of GstPbutils.AudioVisualizer
+        // Virtual methods
 
         vfunc_decide_allocation(query: Gst.Query): boolean;
         vfunc_render(audio: Gst.Buffer, video: GstVideo.VideoFrame): boolean;
@@ -1059,7 +1059,7 @@ export namespace GstPbutils {
     class Discoverer extends GObject.Object {
         static $gtype: GObject.GType<Discoverer>;
 
-        // Own properties of GstPbutils.Discoverer
+        // Properties
 
         /**
          * The duration (in nanoseconds) after which the discovery of an individual
@@ -1075,7 +1075,7 @@ export namespace GstPbutils {
         get useCache(): boolean;
         set useCache(val: boolean);
 
-        // Constructors of GstPbutils.Discoverer
+        // Constructors
 
         constructor(properties?: Partial<Discoverer.ConstructorProps>, ...args: any[]);
 
@@ -1083,7 +1083,7 @@ export namespace GstPbutils {
 
         static ['new'](timeout: Gst.ClockTime): Discoverer;
 
-        // Own signals of GstPbutils.Discoverer
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -1116,7 +1116,7 @@ export namespace GstPbutils {
         connect_after(signal: 'starting', callback: (_source: this) => void): number;
         emit(signal: 'starting'): void;
 
-        // Own virtual methods of GstPbutils.Discoverer
+        // Virtual methods
 
         vfunc_discovered(info: DiscovererInfo, err: GLib.Error): void;
         vfunc_finished(): void;
@@ -1128,7 +1128,7 @@ export namespace GstPbutils {
         vfunc_source_setup(source: Gst.Element): void;
         vfunc_starting(): void;
 
-        // Own methods of GstPbutils.Discoverer
+        // Methods
 
         /**
          * Synchronously discovers the given `uri`.
@@ -1175,13 +1175,13 @@ export namespace GstPbutils {
     class DiscovererAudioInfo extends DiscovererStreamInfo {
         static $gtype: GObject.GType<DiscovererAudioInfo>;
 
-        // Constructors of GstPbutils.DiscovererAudioInfo
+        // Constructors
 
         constructor(properties?: Partial<DiscovererAudioInfo.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of GstPbutils.DiscovererAudioInfo
+        // Methods
 
         get_bitrate(): number;
         get_channel_mask(): number;
@@ -1204,13 +1204,13 @@ export namespace GstPbutils {
     class DiscovererContainerInfo extends DiscovererStreamInfo {
         static $gtype: GObject.GType<DiscovererContainerInfo>;
 
-        // Constructors of GstPbutils.DiscovererContainerInfo
+        // Constructors
 
         constructor(properties?: Partial<DiscovererContainerInfo.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of GstPbutils.DiscovererContainerInfo
+        // Methods
 
         get_streams(): DiscovererStreamInfo[];
         get_tags(): Gst.TagList | null;
@@ -1228,13 +1228,13 @@ export namespace GstPbutils {
     class DiscovererInfo extends GObject.Object {
         static $gtype: GObject.GType<DiscovererInfo>;
 
-        // Constructors of GstPbutils.DiscovererInfo
+        // Constructors
 
         constructor(properties?: Partial<DiscovererInfo.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of GstPbutils.DiscovererInfo
+        // Static methods
 
         /**
          * Parses a #GVariant as produced by gst_discoverer_info_to_variant()
@@ -1243,7 +1243,7 @@ export namespace GstPbutils {
          */
         static from_variant(variant: GLib.Variant): DiscovererInfo;
 
-        // Own methods of GstPbutils.DiscovererInfo
+        // Methods
 
         copy(): DiscovererInfo;
         /**
@@ -1326,13 +1326,13 @@ export namespace GstPbutils {
     class DiscovererStreamInfo extends GObject.Object {
         static $gtype: GObject.GType<DiscovererStreamInfo>;
 
-        // Constructors of GstPbutils.DiscovererStreamInfo
+        // Constructors
 
         constructor(properties?: Partial<DiscovererStreamInfo.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of GstPbutils.DiscovererStreamInfo
+        // Static methods
 
         /**
          * Decrements the reference count of all contained #GstDiscovererStreamInfo
@@ -1341,7 +1341,7 @@ export namespace GstPbutils {
          */
         static list_free(infos: DiscovererStreamInfo[]): void;
 
-        // Own methods of GstPbutils.DiscovererStreamInfo
+        // Methods
 
         get_caps(): Gst.Caps | null;
         get_misc(): Gst.Structure | null;
@@ -1367,13 +1367,13 @@ export namespace GstPbutils {
     class DiscovererSubtitleInfo extends DiscovererStreamInfo {
         static $gtype: GObject.GType<DiscovererSubtitleInfo>;
 
-        // Constructors of GstPbutils.DiscovererSubtitleInfo
+        // Constructors
 
         constructor(properties?: Partial<DiscovererSubtitleInfo.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of GstPbutils.DiscovererSubtitleInfo
+        // Methods
 
         get_language(): string | null;
     }
@@ -1390,13 +1390,13 @@ export namespace GstPbutils {
     class DiscovererVideoInfo extends DiscovererStreamInfo {
         static $gtype: GObject.GType<DiscovererVideoInfo>;
 
-        // Constructors of GstPbutils.DiscovererVideoInfo
+        // Constructors
 
         constructor(properties?: Partial<DiscovererVideoInfo.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of GstPbutils.DiscovererVideoInfo
+        // Methods
 
         get_bitrate(): number;
         get_depth(): number;
@@ -1423,7 +1423,7 @@ export namespace GstPbutils {
     class EncodingAudioProfile extends EncodingProfile {
         static $gtype: GObject.GType<EncodingAudioProfile>;
 
-        // Constructors of GstPbutils.EncodingAudioProfile
+        // Constructors
 
         constructor(properties?: Partial<EncodingAudioProfile.ConstructorProps>, ...args: any[]);
 
@@ -1449,7 +1449,7 @@ export namespace GstPbutils {
     class EncodingContainerProfile extends EncodingProfile {
         static $gtype: GObject.GType<EncodingContainerProfile>;
 
-        // Constructors of GstPbutils.EncodingContainerProfile
+        // Constructors
 
         constructor(properties?: Partial<EncodingContainerProfile.ConstructorProps>, ...args: any[]);
 
@@ -1462,7 +1462,7 @@ export namespace GstPbutils {
             preset?: string | null,
         ): EncodingContainerProfile;
 
-        // Own methods of GstPbutils.EncodingContainerProfile
+        // Methods
 
         /**
          * Add a #GstEncodingProfile to the list of profiles handled by `container`.
@@ -1501,7 +1501,7 @@ export namespace GstPbutils {
     class EncodingProfile extends GObject.Object {
         static $gtype: GObject.GType<EncodingProfile>;
 
-        // Own properties of GstPbutils.EncodingProfile
+        // Properties
 
         /**
          * A #GstStructure defining the properties to be set to the element
@@ -1532,13 +1532,13 @@ export namespace GstPbutils {
         get restrictionCaps(): Gst.Caps;
         set restrictionCaps(val: Gst.Caps);
 
-        // Constructors of GstPbutils.EncodingProfile
+        // Constructors
 
         constructor(properties?: Partial<EncodingProfile.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of GstPbutils.EncodingProfile
+        // Static methods
 
         /**
          * Find the #GstEncodingProfile with the specified name and category.
@@ -1555,7 +1555,7 @@ export namespace GstPbutils {
          */
         static from_discoverer(info: DiscovererInfo): EncodingProfile | null;
 
-        // Own methods of GstPbutils.EncodingProfile
+        // Methods
 
         /**
          * Makes a deep copy of `self`
@@ -1689,7 +1689,7 @@ export namespace GstPbutils {
     class EncodingTarget extends GObject.Object {
         static $gtype: GObject.GType<EncodingTarget>;
 
-        // Constructors of GstPbutils.EncodingTarget
+        // Constructors
 
         constructor(properties?: Partial<EncodingTarget.ConstructorProps>, ...args: any[]);
 
@@ -1702,7 +1702,7 @@ export namespace GstPbutils {
             profiles: EncodingProfile[],
         ): EncodingTarget;
 
-        // Own static methods of GstPbutils.EncodingTarget
+        // Static methods
 
         /**
          * Searches for the #GstEncodingTarget with the given name, loads it
@@ -1720,7 +1720,7 @@ export namespace GstPbutils {
          */
         static load_from_file(filepath: string): EncodingTarget;
 
-        // Own methods of GstPbutils.EncodingTarget
+        // Methods
 
         /**
          * Adds the given `profile` to the `target`. Each added profile must have
@@ -1764,7 +1764,7 @@ export namespace GstPbutils {
     class EncodingVideoProfile extends EncodingProfile {
         static $gtype: GObject.GType<EncodingVideoProfile>;
 
-        // Constructors of GstPbutils.EncodingVideoProfile
+        // Constructors
 
         constructor(properties?: Partial<EncodingVideoProfile.ConstructorProps>, ...args: any[]);
 
@@ -1777,7 +1777,7 @@ export namespace GstPbutils {
             presence: number,
         ): EncodingVideoProfile;
 
-        // Own methods of GstPbutils.EncodingVideoProfile
+        // Methods
 
         /**
          * Get the pass number if this is part of a multi-pass profile.
@@ -1811,7 +1811,7 @@ export namespace GstPbutils {
     abstract class AudioVisualizerPrivate {
         static $gtype: GObject.GType<AudioVisualizerPrivate>;
 
-        // Constructors of GstPbutils.AudioVisualizerPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1820,7 +1820,7 @@ export namespace GstPbutils {
     abstract class DiscovererPrivate {
         static $gtype: GObject.GType<DiscovererPrivate>;
 
-        // Constructors of GstPbutils.DiscovererPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1836,14 +1836,14 @@ export namespace GstPbutils {
     class InstallPluginsContext {
         static $gtype: GObject.GType<InstallPluginsContext>;
 
-        // Constructors of GstPbutils.InstallPluginsContext
+        // Constructors
 
         constructor(properties?: Partial<{}>);
         _init(...args: any[]): void;
 
         static ['new'](): InstallPluginsContext;
 
-        // Own methods of GstPbutils.InstallPluginsContext
+        // Methods
 
         /**
          * Copies a #GstInstallPluginsContext.

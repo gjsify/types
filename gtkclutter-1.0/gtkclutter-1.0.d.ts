@@ -94,7 +94,7 @@ export namespace GtkClutter {
     {
         static $gtype: GObject.GType<Actor>;
 
-        // Own properties of GtkClutter.Actor
+        // Properties
 
         /**
          * The #GtkWidget to be embedded into the #GtkClutterActor
@@ -102,7 +102,7 @@ export namespace GtkClutter {
         get contents(): Gtk.Widget;
         set contents(val: Gtk.Widget);
 
-        // Constructors of GtkClutter.Actor
+        // Constructors
 
         constructor(properties?: Partial<Actor.ConstructorProps>, ...args: any[]);
 
@@ -112,7 +112,7 @@ export namespace GtkClutter {
 
         static new_with_contents(contents: Gtk.Widget): Actor;
 
-        // Own methods of GtkClutter.Actor
+        // Methods
 
         /**
          * Retrieves the child of the #GtkBin used to hold the contents of `actor`.
@@ -1001,7 +1001,7 @@ export namespace GtkClutter {
     class Embed extends Gtk.Container implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<Embed>;
 
-        // Own properties of GtkClutter.Embed
+        // Properties
 
         /**
          * Whether to use the reported size of the LayoutManager on the stage as the widget size.
@@ -1016,7 +1016,7 @@ export namespace GtkClutter {
         get useLayoutSize(): boolean;
         set useLayoutSize(val: boolean);
 
-        // Constructors of GtkClutter.Embed
+        // Constructors
 
         constructor(properties?: Partial<Embed.ConstructorProps>, ...args: any[]);
 
@@ -1024,7 +1024,7 @@ export namespace GtkClutter {
 
         static ['new'](): Embed;
 
-        // Own methods of GtkClutter.Embed
+        // Methods
 
         /**
          * Retrieves the #ClutterStage from `embed`. The returned stage can be
@@ -1479,7 +1479,7 @@ export namespace GtkClutter {
     {
         static $gtype: GObject.GType<Texture>;
 
-        // Constructors of GtkClutter.Texture
+        // Constructors
 
         constructor(properties?: Partial<Texture.ConstructorProps>, ...args: any[]);
 
@@ -1487,11 +1487,11 @@ export namespace GtkClutter {
 
         static ['new'](): Texture;
 
-        // Own static methods of GtkClutter.Texture
+        // Static methods
 
         static error_quark(): GLib.Quark;
 
-        // Own methods of GtkClutter.Texture
+        // Methods
 
         /**
          * Sets the contents of `texture` using the `icon_name` from the
@@ -1939,7 +1939,7 @@ export namespace GtkClutter {
     class Window extends Gtk.Window implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<Window>;
 
-        // Constructors of GtkClutter.Window
+        // Constructors
 
         constructor(properties?: Partial<Window.ConstructorProps>, ...args: any[]);
 
@@ -1947,7 +1947,7 @@ export namespace GtkClutter {
 
         static ['new'](): Window;
 
-        // Own methods of GtkClutter.Window
+        // Methods
 
         /**
          * Retrieves the #ClutterStage that this window is embedding
@@ -2364,7 +2364,7 @@ export namespace GtkClutter {
     abstract class ActorPrivate {
         static $gtype: GObject.GType<ActorPrivate>;
 
-        // Constructors of GtkClutter.ActorPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2373,7 +2373,7 @@ export namespace GtkClutter {
     abstract class EmbedPrivate {
         static $gtype: GObject.GType<EmbedPrivate>;
 
-        // Constructors of GtkClutter.EmbedPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2383,7 +2383,7 @@ export namespace GtkClutter {
     abstract class WindowPrivate {
         static $gtype: GObject.GType<WindowPrivate>;
 
-        // Constructors of GtkClutter.WindowPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }

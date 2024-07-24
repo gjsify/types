@@ -720,7 +720,7 @@ export namespace Nice {
     class Agent extends GObject.Object {
         static $gtype: GObject.GType<Agent>;
 
-        // Own properties of Nice.Agent
+        // Properties
 
         /**
          * This property defines whether receive/send over a TCP or pseudo-TCP, in
@@ -1192,7 +1192,7 @@ export namespace Nice {
         get upnpTimeout(): number;
         set upnpTimeout(val: number);
 
-        // Constructors of Nice.Agent
+        // Constructors
 
         constructor(properties?: Partial<Agent.ConstructorProps>, ...args: any[]);
 
@@ -1204,7 +1204,7 @@ export namespace Nice {
 
         static new_reliable(ctx: GLib.MainContext, compat: Compatibility): Agent;
 
-        // Own signals of Nice.Agent
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -1324,7 +1324,7 @@ export namespace Nice {
         connect_after(signal: 'streams-removed', callback: (_source: this, stream_ids: number[]) => void): number;
         emit(signal: 'streams-removed', stream_ids: number[]): void;
 
-        // Own methods of Nice.Agent
+        // Methods
 
         /**
          * Add a local address from which to derive local host candidates for
@@ -2054,7 +2054,7 @@ export namespace Nice {
     class PseudoTcpSocket extends GObject.Object {
         static $gtype: GObject.GType<PseudoTcpSocket>;
 
-        // Own properties of Nice.PseudoTcpSocket
+        // Properties
 
         get ack_delay(): number;
         set ack_delay(val: number);
@@ -2099,7 +2099,7 @@ export namespace Nice {
          */
         get supportFinAck(): boolean;
 
-        // Constructors of Nice.PseudoTcpSocket
+        // Constructors
 
         constructor(properties?: Partial<PseudoTcpSocket.ConstructorProps>, ...args: any[]);
 
@@ -2107,7 +2107,7 @@ export namespace Nice {
 
         static ['new'](conversation: number, callbacks: PseudoTcpCallbacks): PseudoTcpSocket;
 
-        // Own methods of Nice.PseudoTcpSocket
+        // Methods
 
         /**
          * Returns if there is space in the send buffer to send any data.
@@ -2292,11 +2292,11 @@ export namespace Nice {
     class Address {
         static $gtype: GObject.GType<Address>;
 
-        // Constructors of Nice.Address
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of Nice.Address
+        // Methods
 
         /**
          * Fills the sockaddr structure `sin` with the address contained in `addr`
@@ -2407,7 +2407,7 @@ export namespace Nice {
     class Candidate {
         static $gtype: GObject.GType<Candidate>;
 
-        // Own fields of Nice.Candidate
+        // Fields
 
         type: CandidateType;
         transport: CandidateTransport;
@@ -2418,14 +2418,14 @@ export namespace Nice {
         username: string;
         password: string;
 
-        // Constructors of Nice.Candidate
+        // Constructors
 
         constructor(type: CandidateType);
         _init(...args: any[]): void;
 
         static ['new'](type: CandidateType): Candidate;
 
-        // Own static methods of Nice.Candidate
+        // Static methods
 
         /**
          * Useful for debugging functions, just returns a static string with the
@@ -2440,7 +2440,7 @@ export namespace Nice {
          */
         static type_to_string(type: CandidateType): string;
 
-        // Own methods of Nice.Candidate
+        // Methods
 
         /**
          * Makes a copy of a #NiceCandidate
@@ -2478,13 +2478,13 @@ export namespace Nice {
     class InputMessage {
         static $gtype: GObject.GType<InputMessage>;
 
-        // Own fields of Nice.InputMessage
+        // Fields
 
         buffers: Gio.InputVector[];
         n_buffers: number;
         length: number;
 
-        // Constructors of Nice.InputMessage
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2507,12 +2507,12 @@ export namespace Nice {
     class OutputMessage {
         static $gtype: GObject.GType<OutputMessage>;
 
-        // Own fields of Nice.OutputMessage
+        // Fields
 
         buffers: Gio.OutputVector[];
         n_buffers: number;
 
-        // Constructors of Nice.OutputMessage
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -2531,11 +2531,11 @@ export namespace Nice {
     class PseudoTcpCallbacks {
         static $gtype: GObject.GType<PseudoTcpCallbacks>;
 
-        // Own fields of Nice.PseudoTcpCallbacks
+        // Fields
 
         user_data: any;
 
-        // Constructors of Nice.PseudoTcpCallbacks
+        // Constructors
 
         constructor(
             properties?: Partial<{

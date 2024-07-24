@@ -41,20 +41,20 @@ export namespace Translit {
     class Transliterator extends GObject.Object {
         static $gtype: GObject.GType<Transliterator>;
 
-        // Own properties of Translit.Transliterator
+        // Properties
 
         /**
          * The transliteration which #TranslitTransliterator supports
          */
         get name(): string;
 
-        // Constructors of Translit.Transliterator
+        // Constructors
 
         constructor(properties?: Partial<Transliterator.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of Translit.Transliterator
+        // Static methods
 
         /**
          * Get a transliterator instance whose name is `name`.
@@ -63,11 +63,11 @@ export namespace Translit {
          */
         static get(backend: string, name: string): Transliterator;
 
-        // Own virtual methods of Translit.Transliterator
+        // Virtual methods
 
         vfunc_transliterate(input: string): [string, number];
 
-        // Own methods of Translit.Transliterator
+        // Methods
 
         transliterate(input: string): [string, number];
     }
@@ -76,7 +76,7 @@ export namespace Translit {
     abstract class TransliteratorPrivate {
         static $gtype: GObject.GType<TransliteratorPrivate>;
 
-        // Constructors of Translit.TransliteratorPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }

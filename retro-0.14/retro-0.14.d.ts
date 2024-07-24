@@ -470,13 +470,13 @@ export namespace Retro {
     class ControllerIterator extends GObject.Object {
         static $gtype: GObject.GType<ControllerIterator>;
 
-        // Constructors of Retro.ControllerIterator
+        // Constructors
 
         constructor(properties?: Partial<ControllerIterator.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Retro.ControllerIterator
+        // Methods
 
         /**
          * Fetch the next #RetroController and the port number it is plugged into.
@@ -539,7 +539,7 @@ export namespace Retro {
     class Core extends GObject.Object {
         static $gtype: GObject.GType<Core>;
 
-        // Own properties of Retro.Core
+        // Properties
 
         /**
          * The Libretro API version implement by the core.
@@ -625,7 +625,7 @@ export namespace Retro {
         get systemDirectory(): string;
         set systemDirectory(val: string);
 
-        // Constructors of Retro.Core
+        // Constructors
 
         constructor(properties?: Partial<Core.ConstructorProps>, ...args: any[]);
 
@@ -633,7 +633,7 @@ export namespace Retro {
 
         static ['new'](filename: string): Core;
 
-        // Own signals of Retro.Core
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -669,7 +669,7 @@ export namespace Retro {
         connect_after(signal: 'video-output', callback: (_source: this, pixdata: Pixdata) => void): number;
         emit(signal: 'video-output', pixdata: Pixdata): void;
 
-        // Own methods of Retro.Core
+        // Methods
 
         /**
          * This initializes `self,` loads its available options and loads the medias. You
@@ -849,7 +849,7 @@ export namespace Retro {
     class CoreDescriptor extends GObject.Object {
         static $gtype: GObject.GType<CoreDescriptor>;
 
-        // Constructors of Retro.CoreDescriptor
+        // Constructors
 
         constructor(properties?: Partial<CoreDescriptor.ConstructorProps>, ...args: any[]);
 
@@ -857,7 +857,7 @@ export namespace Retro {
 
         static ['new'](filename: string): CoreDescriptor;
 
-        // Own methods of Retro.CoreDescriptor
+        // Methods
 
         /**
          * Gets the MD5 fingerprint of the firmware file, or %NULL.
@@ -990,7 +990,7 @@ export namespace Retro {
     class CoreView extends Gtk.EventBox implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<CoreView>;
 
-        // Own properties of Retro.CoreView
+        // Properties
 
         get can_grab_pointer(): boolean;
         set can_grab_pointer(val: boolean);
@@ -1001,7 +1001,7 @@ export namespace Retro {
         get snapPointerToBorders(): boolean;
         set snapPointerToBorders(val: boolean);
 
-        // Constructors of Retro.CoreView
+        // Constructors
 
         constructor(properties?: Partial<CoreView.ConstructorProps>, ...args: any[]);
 
@@ -1009,7 +1009,7 @@ export namespace Retro {
 
         static ['new'](): CoreView;
 
-        // Own methods of Retro.CoreView
+        // Methods
 
         /**
          * Creates a new #RetroController exposing `self` as the specified controller
@@ -1516,7 +1516,7 @@ export namespace Retro {
     class KeyJoypadMapping extends GObject.Object {
         static $gtype: GObject.GType<KeyJoypadMapping>;
 
-        // Constructors of Retro.KeyJoypadMapping
+        // Constructors
 
         constructor(properties?: Partial<KeyJoypadMapping.ConstructorProps>, ...args: any[]);
 
@@ -1526,7 +1526,7 @@ export namespace Retro {
 
         static new_default(): KeyJoypadMapping;
 
-        // Own methods of Retro.KeyJoypadMapping
+        // Methods
 
         /**
          * Gets the mapping key code for the joypad button id.
@@ -1555,7 +1555,7 @@ export namespace Retro {
     class MainLoop extends GObject.Object {
         static $gtype: GObject.GType<MainLoop>;
 
-        // Own properties of Retro.MainLoop
+        // Properties
 
         get core(): Core;
         set core(val: Core);
@@ -1564,7 +1564,7 @@ export namespace Retro {
         get speedRate(): number;
         set speedRate(val: number);
 
-        // Constructors of Retro.MainLoop
+        // Constructors
 
         constructor(properties?: Partial<MainLoop.ConstructorProps>, ...args: any[]);
 
@@ -1572,7 +1572,7 @@ export namespace Retro {
 
         static ['new'](core: Core): MainLoop;
 
-        // Own methods of Retro.MainLoop
+        // Methods
 
         /**
          * Gets the core handled by `self`.
@@ -1617,7 +1617,7 @@ export namespace Retro {
     class ModuleIterator extends GObject.Object {
         static $gtype: GObject.GType<ModuleIterator>;
 
-        // Constructors of Retro.ModuleIterator
+        // Constructors
 
         constructor(properties?: Partial<ModuleIterator.ConstructorProps>, ...args: any[]);
 
@@ -1625,7 +1625,7 @@ export namespace Retro {
 
         static ['new'](lookup_paths: string[], recursive: boolean): ModuleIterator;
 
-        // Own methods of Retro.ModuleIterator
+        // Methods
 
         /**
          * Gets the last #RetroCoreDescriptor fetched by retro_module_iterator_next(),
@@ -1649,7 +1649,7 @@ export namespace Retro {
     class ModuleQuery extends GObject.Object {
         static $gtype: GObject.GType<ModuleQuery>;
 
-        // Constructors of Retro.ModuleQuery
+        // Constructors
 
         constructor(properties?: Partial<ModuleQuery.ConstructorProps>, ...args: any[]);
 
@@ -1657,7 +1657,7 @@ export namespace Retro {
 
         static ['new'](recursive: boolean): ModuleQuery;
 
-        // Own methods of Retro.ModuleQuery
+        // Methods
 
         /**
          * Creates a new #RetroModuleIterator.
@@ -1681,13 +1681,13 @@ export namespace Retro {
     class Option extends GObject.Object {
         static $gtype: GObject.GType<Option>;
 
-        // Constructors of Retro.Option
+        // Constructors
 
         constructor(properties?: Partial<Option.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of Retro.Option
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -1696,7 +1696,7 @@ export namespace Retro {
         connect_after(signal: 'value-changed', callback: (_source: this) => void): number;
         emit(signal: 'value-changed'): void;
 
-        // Own methods of Retro.Option
+        // Methods
 
         /**
          * Gets the description of `self`.
@@ -1735,13 +1735,13 @@ export namespace Retro {
     class OptionIterator extends GObject.Object {
         static $gtype: GObject.GType<OptionIterator>;
 
-        // Constructors of Retro.OptionIterator
+        // Constructors
 
         constructor(properties?: Partial<OptionIterator.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Retro.OptionIterator
+        // Methods
 
         /**
          * Fetch the next #RetroOption and its key.
@@ -1764,11 +1764,11 @@ export namespace Retro {
     class Pixdata {
         static $gtype: GObject.GType<Pixdata>;
 
-        // Constructors of Retro.Pixdata
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of Retro.Pixdata
+        // Methods
 
         /**
          * Copies `self` into a new #RetroPixdata.
@@ -1809,14 +1809,14 @@ export namespace Retro {
     class Input {
         static $gtype: GObject.GType<Input>;
 
-        // Constructors of Retro.Input
+        // Constructors
 
         constructor(properties?: Partial<{}>);
         _init(...args: any[]): void;
 
         static ['new'](): Input;
 
-        // Own methods of Retro.Input
+        // Methods
 
         /**
          * Copies `self` into a new #RetroInput.
@@ -1870,7 +1870,7 @@ export namespace Retro {
         prototype: Controller;
     }
     interface Controller extends GObject.Object {
-        // Own methods of Retro.Controller
+        // Methods
 
         /**
          * Gets a flag representing the capabilities of `self`. Each bit index matches
@@ -1910,7 +1910,7 @@ export namespace Retro {
          */
         set_rumble_state(effect: RumbleEffect, strength: number): boolean;
 
-        // Own virtual methods of Retro.Controller
+        // Virtual methods
 
         /**
          * Gets a flag representing the capabilities of `self`. Each bit index matches

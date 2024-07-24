@@ -25,7 +25,7 @@ export namespace Dee {
     class ICUError extends GLib.Error {
         static $gtype: GObject.GType<ICUError>;
 
-        // Static fields of Dee.ICUError
+        // Static fields
 
         /**
          * Error parsing a transliteration rule
@@ -41,7 +41,7 @@ export namespace Dee {
          */
         static UNKNOWN: number;
 
-        // Constructors of Dee.ICUError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
@@ -317,7 +317,7 @@ export namespace Dee {
     class Analyzer extends GObject.Object {
         static $gtype: GObject.GType<Analyzer>;
 
-        // Constructors of Dee.Analyzer
+        // Constructors
 
         constructor(properties?: Partial<Analyzer.ConstructorProps>, ...args: any[]);
 
@@ -325,7 +325,7 @@ export namespace Dee {
 
         static ['new'](): Analyzer;
 
-        // Own static methods of Dee.Analyzer
+        // Static methods
 
         /**
          * A #GCompareDataFunc using a #DeeAnalyzer to compare the keys. This is just
@@ -336,7 +336,7 @@ export namespace Dee {
          */
         static collate_cmp_func(key1: string, key2: string, analyzer?: any | null): number;
 
-        // Own virtual methods of Dee.Analyzer
+        // Virtual methods
 
         /**
          * Register a #DeeTermFilterFunc to be called whenever dee_analyzer_analyze()
@@ -394,7 +394,7 @@ export namespace Dee {
          */
         vfunc_tokenize(data: string, terms_out: TermList): void;
 
-        // Own methods of Dee.Analyzer
+        // Methods
 
         /**
          * Register a #DeeTermFilterFunc to be called whenever dee_analyzer_analyze()
@@ -467,12 +467,12 @@ export namespace Dee {
     class Client extends Peer {
         static $gtype: GObject.GType<Client>;
 
-        // Own properties of Dee.Client
+        // Properties
 
         get bus_address(): string;
         get busAddress(): string;
 
-        // Constructors of Dee.Client
+        // Constructors
 
         constructor(properties?: Partial<Client.ConstructorProps>, ...args: any[]);
 
@@ -495,7 +495,7 @@ export namespace Dee {
     class FileResourceManager extends GObject.Object implements ResourceManager {
         static $gtype: GObject.GType<FileResourceManager>;
 
-        // Own properties of Dee.FileResourceManager
+        // Properties
 
         /**
          * Property holding the primary path used to store and load resources
@@ -506,7 +506,7 @@ export namespace Dee {
          */
         get primaryPath(): string;
 
-        // Constructors of Dee.FileResourceManager
+        // Constructors
 
         constructor(properties?: Partial<FileResourceManager.ConstructorProps>, ...args: any[]);
 
@@ -514,7 +514,7 @@ export namespace Dee {
 
         static ['new'](primary_path: string): FileResourceManager;
 
-        // Own methods of Dee.FileResourceManager
+        // Methods
 
         /**
          * Add a path to the set of paths searched for resources. The manager will
@@ -1008,7 +1008,7 @@ export namespace Dee {
     class FilterModel extends ProxyModel implements Model, Serializable {
         static $gtype: GObject.GType<FilterModel>;
 
-        // Own properties of Dee.FilterModel
+        // Properties
 
         /**
          * Property holding the #DeeFilter used to filter the model
@@ -1016,7 +1016,7 @@ export namespace Dee {
          */
         get filter(): Filter;
 
-        // Constructors of Dee.FilterModel
+        // Constructors
 
         constructor(properties?: Partial<FilterModel.ConstructorProps>, ...args: any[]);
 
@@ -1024,7 +1024,7 @@ export namespace Dee {
 
         static ['new'](orig_model: Model, filter: Filter): FilterModel;
 
-        // Own methods of Dee.FilterModel
+        // Methods
 
         /**
          * Includes `iter` from the back end model in the filtered model, appending
@@ -1500,7 +1500,7 @@ export namespace Dee {
     class GListResultSet extends GObject.Object implements ResultSet {
         static $gtype: GObject.GType<GListResultSet>;
 
-        // Constructors of Dee.GListResultSet
+        // Constructors
 
         constructor(properties?: Partial<GListResultSet.ConstructorProps>, ...args: any[]);
 
@@ -2004,7 +2004,7 @@ export namespace Dee {
     class HashIndex extends Index {
         static $gtype: GObject.GType<HashIndex>;
 
-        // Constructors of Dee.HashIndex
+        // Constructors
 
         constructor(properties?: Partial<HashIndex.ConstructorProps>, ...args: any[]);
 
@@ -2030,7 +2030,7 @@ export namespace Dee {
     abstract class Index extends GObject.Object {
         static $gtype: GObject.GType<Index>;
 
-        // Own properties of Dee.Index
+        // Properties
 
         /**
          * The #DeeAnalyzer used to analyze terms extracted by the model reader
@@ -2045,13 +2045,13 @@ export namespace Dee {
          */
         set reader(val: ModelReader);
 
-        // Constructors of Dee.Index
+        // Constructors
 
         constructor(properties?: Partial<Index.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of Dee.Index
+        // Virtual methods
 
         /**
          * Iterate over an index optionally starting from some given term. Note that
@@ -2082,7 +2082,7 @@ export namespace Dee {
         vfunc_get_supported_term_match_flags(): number;
         vfunc_lookup(term: string, flags: TermMatchFlag): ResultSet;
 
-        // Own methods of Dee.Index
+        // Methods
 
         /**
          * Iterate over an index optionally starting from some given term. Note that
@@ -2184,7 +2184,7 @@ export namespace Dee {
     class Peer extends GObject.Object {
         static $gtype: GObject.GType<Peer>;
 
-        // Own properties of Dee.Peer
+        // Properties
 
         get swarm_leader(): string;
         get swarmLeader(): string;
@@ -2195,7 +2195,7 @@ export namespace Dee {
         get swarm_owner(): boolean;
         get swarmOwner(): boolean;
 
-        // Constructors of Dee.Peer
+        // Constructors
 
         constructor(properties?: Partial<Peer.ConstructorProps>, ...args: any[]);
 
@@ -2203,7 +2203,7 @@ export namespace Dee {
 
         static ['new'](swarm_name: string): Peer;
 
-        // Own signals of Dee.Peer
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -2227,7 +2227,7 @@ export namespace Dee {
         connect_after(signal: 'peer-lost', callback: (_source: this, name: string) => void): number;
         emit(signal: 'peer-lost', name: string): void;
 
-        // Own virtual methods of Dee.Peer
+        // Virtual methods
 
         vfunc_connection_acquired(connection: Gio.DBusConnection): void;
         vfunc_connection_closed(connection: Gio.DBusConnection): void;
@@ -2248,7 +2248,7 @@ export namespace Dee {
         vfunc_peer_found(name: string): void;
         vfunc_peer_lost(name: string): void;
 
-        // Own methods of Dee.Peer
+        // Methods
 
         /**
          * Gets list of #GDBusConnection instances used by this #DeePeer instance.
@@ -2306,7 +2306,7 @@ export namespace Dee {
     class ProxyModel extends SerializableModel implements Model, Serializable {
         static $gtype: GObject.GType<ProxyModel>;
 
-        // Own properties of Dee.ProxyModel
+        // Properties
 
         /**
          * The backend model used by this proxy model.
@@ -2345,7 +2345,7 @@ export namespace Dee {
          */
         get proxySignals(): boolean;
 
-        // Constructors of Dee.ProxyModel
+        // Constructors
 
         constructor(properties?: Partial<ProxyModel.ConstructorProps>, ...args: any[]);
 
@@ -3419,7 +3419,7 @@ export namespace Dee {
     class SequenceModel extends SerializableModel implements Model, Serializable {
         static $gtype: GObject.GType<SequenceModel>;
 
-        // Constructors of Dee.SequenceModel
+        // Constructors
 
         constructor(properties?: Partial<SequenceModel.ConstructorProps>, ...args: any[]);
 
@@ -4495,13 +4495,13 @@ export namespace Dee {
     abstract class SerializableModel extends GObject.Object implements Model, Serializable {
         static $gtype: GObject.GType<SerializableModel>;
 
-        // Constructors of Dee.SerializableModel
+        // Constructors
 
         constructor(properties?: Partial<SerializableModel.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Dee.SerializableModel
+        // Methods
 
         get_seqnum(): number;
         /**
@@ -5580,14 +5580,14 @@ export namespace Dee {
     class Server extends Peer {
         static $gtype: GObject.GType<Server>;
 
-        // Own properties of Dee.Server
+        // Properties
 
         get bus_address(): string;
         get busAddress(): string;
         get same_user_only(): boolean;
         get sameUserOnly(): boolean;
 
-        // Constructors of Dee.Server
+        // Constructors
 
         constructor(properties?: Partial<Server.ConstructorProps>, ...args: any[]);
 
@@ -5597,7 +5597,7 @@ export namespace Dee {
 
         static new_for_address(swarm_name: string, bus_address: string): Server;
 
-        // Own static methods of Dee.Server
+        // Static methods
 
         /**
          * Helper method which creates bus address string for the given name, which
@@ -5607,7 +5607,7 @@ export namespace Dee {
          */
         static bus_address_for_name(name: string, include_username: boolean): string;
 
-        // Own methods of Dee.Server
+        // Methods
 
         /**
          * Gets a D-Bus address string that can be used by clients to connect to server.
@@ -5649,7 +5649,7 @@ export namespace Dee {
     class SharedModel extends ProxyModel implements Model, Serializable {
         static $gtype: GObject.GType<SharedModel>;
 
-        // Own properties of Dee.SharedModel
+        // Properties
 
         /**
          * Enumeration defining behavior of this model when trying to write to it.
@@ -5709,7 +5709,7 @@ export namespace Dee {
          */
         get synchronized(): boolean;
 
-        // Constructors of Dee.SharedModel
+        // Constructors
 
         constructor(properties?: Partial<SharedModel.ConstructorProps>, ...args: any[]);
 
@@ -5721,7 +5721,7 @@ export namespace Dee {
 
         static new_with_back_end(name: string, back_end: Model): SharedModel;
 
-        // Own signals of Dee.SharedModel
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -5745,7 +5745,7 @@ export namespace Dee {
         ): number;
         emit(signal: 'end-transaction', begin_seqnum: number, end_seqnum: number): void;
 
-        // Own methods of Dee.SharedModel
+        // Methods
 
         /**
          * Expert: All changes to `self` that has not yet been propagated to the peer
@@ -6230,13 +6230,13 @@ export namespace Dee {
     class TermList extends GObject.Object {
         static $gtype: GObject.GType<TermList>;
 
-        // Constructors of Dee.TermList
+        // Constructors
 
         constructor(properties?: Partial<TermList.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of Dee.TermList
+        // Virtual methods
 
         /**
          * Add a term to the termlist. Note that it is possible to add a term multiple
@@ -6279,7 +6279,7 @@ export namespace Dee {
         vfunc_get_term(n: number): string;
         vfunc_num_terms(): number;
 
-        // Own methods of Dee.TermList
+        // Methods
 
         /**
          * Add a term to the termlist. Note that it is possible to add a term multiple
@@ -6340,7 +6340,7 @@ export namespace Dee {
     class TextAnalyzer extends Analyzer {
         static $gtype: GObject.GType<TextAnalyzer>;
 
-        // Constructors of Dee.TextAnalyzer
+        // Constructors
 
         constructor(properties?: Partial<TextAnalyzer.ConstructorProps>, ...args: any[]);
 
@@ -6367,11 +6367,11 @@ export namespace Dee {
     class Transaction extends SerializableModel implements Model, Serializable {
         static $gtype: GObject.GType<Transaction>;
 
-        // Own properties of Dee.Transaction
+        // Properties
 
         get target(): Model;
 
-        // Constructors of Dee.Transaction
+        // Constructors
 
         constructor(properties?: Partial<Transaction.ConstructorProps>, ...args: any[]);
 
@@ -6379,11 +6379,11 @@ export namespace Dee {
 
         static ['new'](target: Model): Transaction;
 
-        // Own static methods of Dee.Transaction
+        // Static methods
 
         static error_quark(): GLib.Quark;
 
-        // Own methods of Dee.Transaction
+        // Methods
 
         /**
          * Apply a transaction to its target model. After this call the transaction
@@ -7469,7 +7469,7 @@ export namespace Dee {
     class TreeIndex extends Index {
         static $gtype: GObject.GType<TreeIndex>;
 
-        // Constructors of Dee.TreeIndex
+        // Constructors
 
         constructor(properties?: Partial<TreeIndex.ConstructorProps>, ...args: any[]);
 
@@ -7485,7 +7485,7 @@ export namespace Dee {
     abstract class AnalyzerPrivate {
         static $gtype: GObject.GType<AnalyzerPrivate>;
 
-        // Constructors of Dee.AnalyzerPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -7497,7 +7497,7 @@ export namespace Dee {
     abstract class ClientPrivate {
         static $gtype: GObject.GType<ClientPrivate>;
 
-        // Constructors of Dee.ClientPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -7509,17 +7509,17 @@ export namespace Dee {
     class Filter {
         static $gtype: GObject.GType<Filter>;
 
-        // Own fields of Dee.Filter
+        // Fields
 
         map_func: FilterMapFunc;
         map_notify: FilterMapNotify;
         userdata: any;
 
-        // Constructors of Dee.Filter
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own static methods of Dee.Filter
+        // Static methods
 
         /**
          * Create a new #DeeFilter with the given parameters. This call will zero
@@ -7583,7 +7583,7 @@ export namespace Dee {
          */
         static new_sort(cmp_row: CompareRowFunc, cmp_destroy: GLib.DestroyNotify | null): Filter;
 
-        // Own methods of Dee.Filter
+        // Methods
 
         /**
          * Call the #GDestroyNotify function on the userdata pointer of a #DeeFilter
@@ -7619,7 +7619,7 @@ export namespace Dee {
     abstract class FilterModelPrivate {
         static $gtype: GObject.GType<FilterModelPrivate>;
 
-        // Constructors of Dee.FilterModelPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -7629,7 +7629,7 @@ export namespace Dee {
     abstract class HashIndexPrivate {
         static $gtype: GObject.GType<HashIndexPrivate>;
 
-        // Constructors of Dee.HashIndexPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -7637,11 +7637,11 @@ export namespace Dee {
     abstract class ICUTermFilter {
         static $gtype: GObject.GType<ICUTermFilter>;
 
-        // Constructors of Dee.ICUTermFilter
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of Dee.ICUTermFilter
+        // Methods
 
         /**
          * Apply a #DeeICUTermFilter on a piece of UTF-8 text.
@@ -7662,7 +7662,7 @@ export namespace Dee {
     abstract class IndexPrivate {
         static $gtype: GObject.GType<IndexPrivate>;
 
-        // Constructors of Dee.IndexPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -7675,7 +7675,7 @@ export namespace Dee {
     class ModelIter {
         static $gtype: GObject.GType<ModelIter>;
 
-        // Constructors of Dee.ModelIter
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -7687,16 +7687,16 @@ export namespace Dee {
     class ModelReader {
         static $gtype: GObject.GType<ModelReader>;
 
-        // Own fields of Dee.ModelReader
+        // Fields
 
         reader_func: ModelReaderFunc;
         userdata: any;
 
-        // Constructors of Dee.ModelReader
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own static methods of Dee.ModelReader
+        // Static methods
 
         /**
          * Create a new #DeeModelReader with the given parameters. This call will zero
@@ -7721,7 +7721,7 @@ export namespace Dee {
          */
         static new_for_uint32_column(column: number): ModelReader;
 
-        // Own methods of Dee.ModelReader
+        // Methods
 
         /**
          * Release resources associated with `reader,` but does not free the
@@ -7751,7 +7751,7 @@ export namespace Dee {
     abstract class ModelTag {
         static $gtype: GObject.GType<ModelTag>;
 
-        // Constructors of Dee.ModelTag
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -7763,7 +7763,7 @@ export namespace Dee {
     abstract class PeerPrivate {
         static $gtype: GObject.GType<PeerPrivate>;
 
-        // Constructors of Dee.PeerPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -7775,7 +7775,7 @@ export namespace Dee {
     abstract class ProxyModelPrivate {
         static $gtype: GObject.GType<ProxyModelPrivate>;
 
-        // Constructors of Dee.ProxyModelPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -7789,7 +7789,7 @@ export namespace Dee {
     abstract class SequenceModelPrivate {
         static $gtype: GObject.GType<SequenceModelPrivate>;
 
-        // Constructors of Dee.SequenceModelPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -7802,7 +7802,7 @@ export namespace Dee {
     abstract class SerializableModelPrivate {
         static $gtype: GObject.GType<SerializableModelPrivate>;
 
-        // Constructors of Dee.SerializableModelPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -7814,7 +7814,7 @@ export namespace Dee {
     abstract class ServerPrivate {
         static $gtype: GObject.GType<ServerPrivate>;
 
-        // Constructors of Dee.ServerPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -7826,7 +7826,7 @@ export namespace Dee {
     abstract class SharedModelPrivate {
         static $gtype: GObject.GType<SharedModelPrivate>;
 
-        // Constructors of Dee.SharedModelPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -7838,7 +7838,7 @@ export namespace Dee {
     abstract class TermListPrivate {
         static $gtype: GObject.GType<TermListPrivate>;
 
-        // Constructors of Dee.TermListPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -7847,7 +7847,7 @@ export namespace Dee {
     abstract class TextAnalyzerPrivate {
         static $gtype: GObject.GType<TextAnalyzerPrivate>;
 
-        // Constructors of Dee.TextAnalyzerPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -7859,7 +7859,7 @@ export namespace Dee {
     abstract class TransactionPrivate {
         static $gtype: GObject.GType<TransactionPrivate>;
 
-        // Constructors of Dee.TransactionPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -7868,7 +7868,7 @@ export namespace Dee {
     abstract class TreeIndexPrivate {
         static $gtype: GObject.GType<TreeIndexPrivate>;
 
-        // Constructors of Dee.TreeIndexPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -7884,7 +7884,7 @@ export namespace Dee {
         prototype: Model;
     }
     interface Model extends GObject.Object {
-        // Own methods of Dee.Model
+        // Methods
 
         /**
          * Like dee_model_append() but intended for language bindings or
@@ -8222,7 +8222,7 @@ export namespace Dee {
          */
         set_value(iter: ModelIter, column: number, value: GLib.Variant): void;
 
-        // Own virtual methods of Dee.Model
+        // Virtual methods
 
         /**
          * Like dee_model_append() but intended for language bindings or
@@ -8531,7 +8531,7 @@ export namespace Dee {
         get_default(): ResourceManager;
     }
     interface ResourceManager extends GObject.Object {
-        // Own methods of Dee.ResourceManager
+        // Methods
 
         /**
          * Load a resource from persistent storage. The loaded resource will be of the
@@ -8564,7 +8564,7 @@ export namespace Dee {
          */
         store(resource: Serializable, resource_name: string): boolean;
 
-        // Own virtual methods of Dee.ResourceManager
+        // Virtual methods
 
         /**
          * Load a resource from persistent storage. The loaded resource will be of the
@@ -8609,7 +8609,7 @@ export namespace Dee {
         prototype: ResultSet;
     }
     interface ResultSet extends GObject.Object {
-        // Own methods of Dee.ResultSet
+        // Methods
 
         /**
          * Get the model associated with a result set
@@ -8656,7 +8656,7 @@ export namespace Dee {
          */
         tell(): number;
 
-        // Own virtual methods of Dee.ResultSet
+        // Virtual methods
 
         /**
          * Get the model associated with a result set
@@ -8743,7 +8743,7 @@ export namespace Dee {
         parse_external<T = GObject.Object>(data: GLib.Variant): T;
     }
     interface Serializable extends GObject.Object {
-        // Own methods of Dee.Serializable
+        // Methods
 
         /**
          * Build an externalized form of `self` which can be used together with
@@ -8766,7 +8766,7 @@ export namespace Dee {
          */
         serialize(): GLib.Variant;
 
-        // Own virtual methods of Dee.Serializable
+        // Virtual methods
 
         /**
          * Build a clean serialized representation of `self`. The signature of the

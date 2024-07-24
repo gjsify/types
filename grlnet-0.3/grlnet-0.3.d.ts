@@ -91,7 +91,7 @@ export namespace GrlNet {
     class Wc extends GObject.Object {
         static $gtype: GObject.GType<Wc>;
 
-        // Own properties of GrlNet.Wc
+        // Properties
 
         get cache(): boolean;
         set cache(val: boolean);
@@ -108,7 +108,7 @@ export namespace GrlNet {
         get userAgent(): string;
         set userAgent(val: string);
 
-        // Constructors of GrlNet.Wc
+        // Constructors
 
         constructor(properties?: Partial<Wc.ConstructorProps>, ...args: any[]);
 
@@ -116,11 +116,11 @@ export namespace GrlNet {
 
         static ['new'](): Wc;
 
-        // Own static methods of GrlNet.Wc
+        // Static methods
 
         static error_quark(): GLib.Quark;
 
-        // Own methods of GrlNet.Wc
+        // Methods
 
         /**
          * This method will flush all the pending request in the queue.
@@ -198,7 +198,7 @@ export namespace GrlNet {
     abstract class WcPrivate {
         static $gtype: GObject.GType<WcPrivate>;
 
-        // Constructors of GrlNet.WcPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }

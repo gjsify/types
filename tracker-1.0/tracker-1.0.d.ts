@@ -74,14 +74,14 @@ export namespace Tracker {
     class SparqlBuilder extends GObject.Object {
         static $gtype: GObject.GType<SparqlBuilder>;
 
-        // Own properties of Tracker.SparqlBuilder
+        // Properties
 
         get result(): string;
         get length(): number;
         set length(val: number);
         get state(): SparqlBuilderState;
 
-        // Constructors of Tracker.SparqlBuilder
+        // Constructors
 
         constructor(properties?: Partial<SparqlBuilder.ConstructorProps>, ...args: any[]);
 
@@ -93,7 +93,7 @@ export namespace Tracker {
 
         static ['new'](): SparqlBuilder;
 
-        // Own methods of Tracker.SparqlBuilder
+        // Methods
 
         insert_open(graph: string): void;
         insert_silent_open(graph: string): void;
@@ -136,13 +136,13 @@ export namespace Tracker {
     abstract class SparqlConnection extends GObject.Object {
         static $gtype: GObject.GType<SparqlConnection>;
 
-        // Constructors of Tracker.SparqlConnection
+        // Constructors
 
         constructor(properties?: Partial<SparqlConnection.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of Tracker.SparqlConnection
+        // Static methods
 
         static get_async(cancellable: Gio.Cancellable, _callback_: Gio.AsyncReadyCallback<SparqlConnection>): void;
         static get_finish(_res_: Gio.AsyncResult): SparqlConnection;
@@ -155,7 +155,7 @@ export namespace Tracker {
         static get_direct(cancellable: Gio.Cancellable): SparqlConnection;
         static remote_new(uri_base: string): SparqlConnection;
 
-        // Own virtual methods of Tracker.SparqlConnection
+        // Virtual methods
 
         vfunc_query(sparql: string, cancellable: Gio.Cancellable): SparqlCursor;
         vfunc_query_async(sparql: string, cancellable: Gio.Cancellable, _callback_: Gio.AsyncReadyCallback<this>): void;
@@ -190,7 +190,7 @@ export namespace Tracker {
         vfunc_statistics_async(cancellable: Gio.Cancellable, _callback_: Gio.AsyncReadyCallback<this>): void;
         vfunc_statistics_finish(_res_: Gio.AsyncResult): SparqlCursor;
 
-        // Own methods of Tracker.SparqlConnection
+        // Methods
 
         query(sparql: string, cancellable: Gio.Cancellable): SparqlCursor;
         query_async(sparql: string, cancellable: Gio.Cancellable, _callback_: Gio.AsyncReadyCallback<this>): void;
@@ -239,20 +239,20 @@ export namespace Tracker {
     abstract class SparqlCursor extends GObject.Object {
         static $gtype: GObject.GType<SparqlCursor>;
 
-        // Own properties of Tracker.SparqlCursor
+        // Properties
 
         get connection(): SparqlConnection;
         set connection(val: SparqlConnection);
         get n_columns(): number;
         get nColumns(): number;
 
-        // Constructors of Tracker.SparqlCursor
+        // Constructors
 
         constructor(properties?: Partial<SparqlCursor.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of Tracker.SparqlCursor
+        // Virtual methods
 
         vfunc_get_value_type(column: number): SparqlValueType;
         vfunc_get_variable_name(column: number): string;
@@ -268,7 +268,7 @@ export namespace Tracker {
         vfunc_is_bound(column: number): boolean;
         vfunc_get_n_columns(): number;
 
-        // Own methods of Tracker.SparqlCursor
+        // Methods
 
         get_value_type(column: number): SparqlValueType;
         get_variable_name(column: number): string;
@@ -291,7 +291,7 @@ export namespace Tracker {
     abstract class SparqlBuilderPrivate {
         static $gtype: GObject.GType<SparqlBuilderPrivate>;
 
-        // Constructors of Tracker.SparqlBuilderPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -300,7 +300,7 @@ export namespace Tracker {
     abstract class SparqlConnectionPrivate {
         static $gtype: GObject.GType<SparqlConnectionPrivate>;
 
-        // Constructors of Tracker.SparqlConnectionPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -309,7 +309,7 @@ export namespace Tracker {
     abstract class SparqlCursorPrivate {
         static $gtype: GObject.GType<SparqlCursorPrivate>;
 
-        // Constructors of Tracker.SparqlCursorPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -317,7 +317,7 @@ export namespace Tracker {
     class SparqlError extends GLib.Error {
         static $gtype: GObject.GType<SparqlError>;
 
-        // Static fields of Tracker.SparqlError
+        // Static fields
 
         static PARSE: number;
         static UNKNOWN_CLASS: number;
@@ -328,7 +328,7 @@ export namespace Tracker {
         static INTERNAL: number;
         static UNSUPPORTED: number;
 
-        // Constructors of Tracker.SparqlError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;

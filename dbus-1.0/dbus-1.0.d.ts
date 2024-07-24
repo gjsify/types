@@ -27,7 +27,7 @@ export namespace DBus {
     class Connection {
         static $gtype: GObject.GType<Connection>;
 
-        // Constructors of DBus.Connection
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -35,7 +35,7 @@ export namespace DBus {
     class Error {
         static $gtype: GObject.GType<Error>;
 
-        // Constructors of DBus.Error
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -43,7 +43,7 @@ export namespace DBus {
     class Message {
         static $gtype: GObject.GType<Message>;
 
-        // Constructors of DBus.Message
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -51,7 +51,7 @@ export namespace DBus {
     class MessageIter {
         static $gtype: GObject.GType<MessageIter>;
 
-        // Constructors of DBus.MessageIter
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -59,7 +59,7 @@ export namespace DBus {
     class PendingCall {
         static $gtype: GObject.GType<PendingCall>;
 
-        // Constructors of DBus.PendingCall
+        // Constructors
 
         _init(...args: any[]): void;
     }

@@ -21,7 +21,7 @@ export namespace GLib {
     class BookmarkFileError extends Error {
         static $gtype: GObject.GType<BookmarkFileError>;
 
-        // Static fields of GLib.BookmarkFileError
+        // Static fields
 
         /**
          * URI was ill-formed
@@ -58,7 +58,7 @@ export namespace GLib {
          */
         static FILE_NOT_FOUND: number;
 
-        // Constructors of GLib.BookmarkFileError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
@@ -111,7 +111,7 @@ export namespace GLib {
     class ConvertError extends Error {
         static $gtype: GObject.GType<ConvertError>;
 
-        // Static fields of GLib.ConvertError
+        // Static fields
 
         /**
          * Conversion between the requested character
@@ -151,7 +151,7 @@ export namespace GLib {
          */
         static EMBEDDED_NUL: number;
 
-        // Constructors of GLib.ConvertError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
@@ -362,7 +362,7 @@ export namespace GLib {
     class FileError extends Error {
         static $gtype: GObject.GType<FileError>;
 
-        // Static fields of GLib.FileError
+        // Static fields
 
         /**
          * Operation not permitted; only the owner of
@@ -507,7 +507,7 @@ export namespace GLib {
          */
         static FAILED: number;
 
-        // Constructors of GLib.FileError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
@@ -519,7 +519,7 @@ export namespace GLib {
     class IOChannelError extends Error {
         static $gtype: GObject.GType<IOChannelError>;
 
-        // Static fields of GLib.IOChannelError
+        // Static fields
 
         /**
          * File too large.
@@ -558,7 +558,7 @@ export namespace GLib {
          */
         static FAILED: number;
 
-        // Constructors of GLib.IOChannelError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
@@ -630,7 +630,7 @@ export namespace GLib {
     class KeyFileError extends Error {
         static $gtype: GObject.GType<KeyFileError>;
 
-        // Static fields of GLib.KeyFileError
+        // Static fields
 
         /**
          * the text being parsed was in
@@ -658,7 +658,7 @@ export namespace GLib {
          */
         static INVALID_VALUE: number;
 
-        // Constructors of GLib.KeyFileError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
@@ -701,7 +701,7 @@ export namespace GLib {
     class MarkupError extends Error {
         static $gtype: GObject.GType<MarkupError>;
 
-        // Static fields of GLib.MarkupError
+        // Static fields
 
         /**
          * text being parsed was not valid UTF-8
@@ -736,7 +736,7 @@ export namespace GLib {
          */
         static MISSING_ATTRIBUTE: number;
 
-        // Constructors of GLib.MarkupError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
@@ -808,7 +808,7 @@ export namespace GLib {
     class NumberParserError extends Error {
         static $gtype: GObject.GType<NumberParserError>;
 
-        // Static fields of GLib.NumberParserError
+        // Static fields
 
         /**
          * string was not a valid number
@@ -819,7 +819,7 @@ export namespace GLib {
          */
         static OUT_OF_BOUNDS: number;
 
-        // Constructors of GLib.NumberParserError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
@@ -922,7 +922,7 @@ export namespace GLib {
     class OptionError extends Error {
         static $gtype: GObject.GType<OptionError>;
 
-        // Static fields of GLib.OptionError
+        // Static fields
 
         /**
          * An option was not known to the parser.
@@ -939,7 +939,7 @@ export namespace GLib {
          */
         static FAILED: number;
 
-        // Constructors of GLib.OptionError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
@@ -951,7 +951,7 @@ export namespace GLib {
     class RegexError extends Error {
         static $gtype: GObject.GType<RegexError>;
 
-        // Static fields of GLib.RegexError
+        // Static fields
 
         /**
          * Compilation of the regular expression failed.
@@ -1225,7 +1225,7 @@ export namespace GLib {
          */
         static CHARACTER_VALUE_TOO_LARGE: number;
 
-        // Constructors of GLib.RegexError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
@@ -1264,7 +1264,7 @@ export namespace GLib {
     class ShellError extends Error {
         static $gtype: GObject.GType<ShellError>;
 
-        // Static fields of GLib.ShellError
+        // Static fields
 
         /**
          * Mismatched or otherwise mangled quoting.
@@ -1279,7 +1279,7 @@ export namespace GLib {
          */
         static FAILED: number;
 
-        // Constructors of GLib.ShellError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
@@ -1303,7 +1303,7 @@ export namespace GLib {
     class SpawnError extends Error {
         static $gtype: GObject.GType<SpawnError>;
 
-        // Static fields of GLib.SpawnError
+        // Static fields
 
         /**
          * Fork failed due to lack of memory.
@@ -1391,7 +1391,7 @@ export namespace GLib {
          */
         static FAILED: number;
 
-        // Constructors of GLib.SpawnError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
@@ -1484,7 +1484,7 @@ export namespace GLib {
     class ThreadError extends Error {
         static $gtype: GObject.GType<ThreadError>;
 
-        // Static fields of GLib.ThreadError
+        // Static fields
 
         /**
          * a thread couldn't be created due to resource
@@ -1492,7 +1492,7 @@ export namespace GLib {
          */
         static THREAD_ERROR_AGAIN: number;
 
-        // Constructors of GLib.ThreadError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
@@ -2797,7 +2797,7 @@ export namespace GLib {
     class UriError extends Error {
         static $gtype: GObject.GType<UriError>;
 
-        // Static fields of GLib.UriError
+        // Static fields
 
         /**
          * Generic error if no more specific error is available.
@@ -2841,7 +2841,7 @@ export namespace GLib {
          */
         static BAD_FRAGMENT: number;
 
-        // Constructors of GLib.UriError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
@@ -3001,7 +3001,7 @@ export namespace GLib {
     class VariantParseError extends Error {
         static $gtype: GObject.GType<VariantParseError>;
 
-        // Static fields of GLib.VariantParseError
+        // Static fields
 
         /**
          * generic error (unused)
@@ -3080,7 +3080,7 @@ export namespace GLib {
          */
         static RECURSION: number;
 
-        // Constructors of GLib.VariantParseError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
@@ -13837,11 +13837,11 @@ export namespace GLib {
     abstract class Allocator {
         static $gtype: GObject.GType<Allocator>;
 
-        // Constructors of GLib.Allocator
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of GLib.Allocator
+        // Methods
 
         free(): void;
     }
@@ -13852,12 +13852,12 @@ export namespace GLib {
     class Array {
         static $gtype: GObject.GType<Array>;
 
-        // Own fields of GLib.Array
+        // Fields
 
         data: string;
         len: number;
 
-        // Constructors of GLib.Array
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -13876,11 +13876,11 @@ export namespace GLib {
     abstract class AsyncQueue {
         static $gtype: GObject.GType<AsyncQueue>;
 
-        // Constructors of GLib.AsyncQueue
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of GLib.AsyncQueue
+        // Methods
 
         /**
          * Returns the length of the queue.
@@ -14190,18 +14190,18 @@ export namespace GLib {
     class BookmarkFile {
         static $gtype: GObject.GType<BookmarkFile>;
 
-        // Constructors of GLib.BookmarkFile
+        // Constructors
 
         constructor(properties?: Partial<{}>);
         _init(...args: any[]): void;
 
         static ['new'](): BookmarkFile;
 
-        // Own static methods of GLib.BookmarkFile
+        // Static methods
 
         static error_quark(): Quark;
 
-        // Own methods of GLib.BookmarkFile
+        // Methods
 
         /**
          * Adds the application with `name` and `exec` to the list of
@@ -14745,12 +14745,12 @@ export namespace GLib {
     class ByteArray {
         static $gtype: GObject.GType<ByteArray>;
 
-        // Own fields of GLib.ByteArray
+        // Fields
 
         data: number;
         len: number;
 
-        // Constructors of GLib.ByteArray
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -14760,7 +14760,7 @@ export namespace GLib {
         );
         _init(...args: any[]): void;
 
-        // Own static methods of GLib.ByteArray
+        // Static methods
 
         /**
          * Adds the given bytes to the end of the #GByteArray.
@@ -14927,7 +14927,7 @@ export namespace GLib {
     class Bytes {
         static $gtype: GObject.GType<Bytes>;
 
-        // Constructors of GLib.Bytes
+        // Constructors
 
         constructor(data?: Uint8Array | null);
         _init(...args: any[]): void;
@@ -14936,7 +14936,7 @@ export namespace GLib {
 
         static new_take(data?: Uint8Array | null): Bytes;
 
-        // Own methods of GLib.Bytes
+        // Methods
 
         /**
          * Compares the two #GBytes values.
@@ -15084,11 +15084,11 @@ export namespace GLib {
     abstract class Cache {
         static $gtype: GObject.GType<Cache>;
 
-        // Constructors of GLib.Cache
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of GLib.Cache
+        // Methods
 
         /**
          * Frees the memory allocated for the #GCache.
@@ -15155,14 +15155,14 @@ export namespace GLib {
     class Checksum {
         static $gtype: GObject.GType<Checksum>;
 
-        // Constructors of GLib.Checksum
+        // Constructors
 
         constructor(checksum_type: ChecksumType);
         _init(...args: any[]): void;
 
         static ['new'](checksum_type: ChecksumType): Checksum;
 
-        // Own static methods of GLib.Checksum
+        // Static methods
 
         /**
          * Gets the length in bytes of digests of type `checksum_type`
@@ -15170,7 +15170,7 @@ export namespace GLib {
          */
         static type_get_length(checksum_type: ChecksumType): number;
 
-        // Own methods of GLib.Checksum
+        // Methods
 
         /**
          * Copies a #GChecksum. If `checksum` has been closed, by calling
@@ -15232,7 +15232,7 @@ export namespace GLib {
     class Completion {
         static $gtype: GObject.GType<Completion>;
 
-        // Own fields of GLib.Completion
+        // Fields
 
         items: any[];
         func: CompletionFunc;
@@ -15240,11 +15240,11 @@ export namespace GLib {
         cache: any[];
         strncmp_func: CompletionStrncmpFunc;
 
-        // Constructors of GLib.Completion
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of GLib.Completion
+        // Methods
 
         /**
          * Removes all items from the #GCompletion. The items are not freed, so if the
@@ -15345,12 +15345,12 @@ export namespace GLib {
     class Cond {
         static $gtype: GObject.GType<Cond>;
 
-        // Constructors of GLib.Cond
+        // Constructors
 
         constructor(properties?: Partial<{}>);
         _init(...args: any[]): void;
 
-        // Own methods of GLib.Cond
+        // Methods
 
         /**
          * If threads are waiting for `cond,` all of them are unblocked.
@@ -15474,7 +15474,7 @@ export namespace GLib {
     abstract class Data {
         static $gtype: GObject.GType<Data>;
 
-        // Constructors of GLib.Data
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -15523,7 +15523,7 @@ export namespace GLib {
     class Date {
         static $gtype: GObject.GType<Date>;
 
-        // Own fields of GLib.Date
+        // Fields
 
         julian_days: number;
         julian: number;
@@ -15532,7 +15532,7 @@ export namespace GLib {
         month: number;
         year: number;
 
-        // Constructors of GLib.Date
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -15552,7 +15552,7 @@ export namespace GLib {
 
         static new_julian(julian_day: number): Date;
 
-        // Own static methods of GLib.Date
+        // Static methods
 
         /**
          * Returns the number of days in a month, taking leap
@@ -15653,7 +15653,7 @@ export namespace GLib {
          */
         static valid_year(year: DateYear): boolean;
 
-        // Own methods of GLib.Date
+        // Methods
 
         /**
          * Increments a date some number of days.
@@ -15944,7 +15944,7 @@ export namespace GLib {
     class DateTime {
         static $gtype: GObject.GType<DateTime>;
 
-        // Constructors of GLib.DateTime
+        // Constructors
 
         constructor(properties?: Partial<{}>);
         _init(...args: any[]): void;
@@ -15997,7 +15997,7 @@ export namespace GLib {
             seconds: number,
         ): DateTime;
 
-        // Own methods of GLib.DateTime
+        // Methods
 
         /**
          * Creates a copy of `datetime` and adds the specified timespan to the copy.
@@ -16479,12 +16479,12 @@ export namespace GLib {
     class DebugKey {
         static $gtype: GObject.GType<DebugKey>;
 
-        // Own fields of GLib.DebugKey
+        // Fields
 
         key: string;
         value: number;
 
-        // Constructors of GLib.DebugKey
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -16501,14 +16501,14 @@ export namespace GLib {
     class Dir {
         static $gtype: GObject.GType<Dir>;
 
-        // Constructors of GLib.Dir
+        // Constructors
 
         constructor(path: string, flags: number);
         _init(...args: any[]): void;
 
         static open(path: string, flags: number): Dir;
 
-        // Own static methods of GLib.Dir
+        // Static methods
 
         /**
          * Creates a subdirectory in the preferred directory for temporary
@@ -16526,7 +16526,7 @@ export namespace GLib {
          */
         static make_tmp(tmpl?: string | null): string;
 
-        // Own methods of GLib.Dir
+        // Methods
 
         /**
          * Closes the directory immediately and decrements the reference count.
@@ -16589,13 +16589,13 @@ export namespace GLib {
     class Error {
         static $gtype: GObject.GType<Error>;
 
-        // Own fields of GLib.Error
+        // Fields
 
         domain: Quark;
         code: number;
         message: string;
 
-        // Constructors of GLib.Error
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -16608,7 +16608,7 @@ export namespace GLib {
 
         static new_literal(domain: { new (...args: any[]): Error } | Quark, code: number, message: string): Error;
 
-        // Own static methods of GLib.Error
+        // Static methods
 
         /**
          * This function registers an extended #GError domain.
@@ -16659,7 +16659,7 @@ export namespace GLib {
             error_type_clear: ErrorClearFunc,
         ): Quark;
 
-        // Own methods of GLib.Error
+        // Methods
 
         /**
          * Makes a copy of `error`.
@@ -16698,7 +16698,7 @@ export namespace GLib {
 
         [key: string]: B;
 
-        // Own static methods of GLib.HashTable
+        // Static methods
 
         /**
          * This is a convenience function for using a #GHashTable as a set.  It
@@ -16967,12 +16967,12 @@ export namespace GLib {
     class HashTableIter {
         static $gtype: GObject.GType<HashTableIter>;
 
-        // Constructors of GLib.HashTableIter
+        // Constructors
 
         constructor(properties?: Partial<{}>);
         _init(...args: any[]): void;
 
-        // Own methods of GLib.HashTableIter
+        // Methods
 
         /**
          * Returns the #GHashTable associated with `iter`.
@@ -17055,14 +17055,14 @@ export namespace GLib {
     class Hmac {
         static $gtype: GObject.GType<Hmac>;
 
-        // Constructors of GLib.Hmac
+        // Constructors
 
         constructor(digest_type: ChecksumType, key: number, key_len: number);
         _init(...args: any[]): void;
 
         static ['new'](digest_type: ChecksumType, key: number, key_len: number): Hmac;
 
-        // Own methods of GLib.Hmac
+        // Methods
 
         copy(): Hmac;
         get_digest(buffer: number, digest_len: number): void;
@@ -17078,7 +17078,7 @@ export namespace GLib {
     class Hook {
         static $gtype: GObject.GType<Hook>;
 
-        // Own fields of GLib.Hook
+        // Fields
 
         data: any;
         ref_count: number;
@@ -17087,11 +17087,11 @@ export namespace GLib {
         func: any;
         destroy: DestroyNotify;
 
-        // Constructors of GLib.Hook
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own static methods of GLib.Hook
+        // Static methods
 
         /**
          * Removes one #GHook from a #GHookList, marking it
@@ -17136,7 +17136,7 @@ export namespace GLib {
          */
         static unref(hook_list: HookList, hook: Hook): void;
 
-        // Own methods of GLib.Hook
+        // Methods
 
         /**
          * Compares the ids of two #GHook elements, returning a negative value
@@ -17153,7 +17153,7 @@ export namespace GLib {
     class HookList {
         static $gtype: GObject.GType<HookList>;
 
-        // Own fields of GLib.HookList
+        // Fields
 
         seq_id: number;
         hook_size: number;
@@ -17162,11 +17162,11 @@ export namespace GLib {
         finalize_hook: HookFinalizeFunc;
         dummy: any[];
 
-        // Constructors of GLib.HookList
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of GLib.HookList
+        // Methods
 
         /**
          * Removes all the #GHook elements from a #GHookList.
@@ -17245,7 +17245,7 @@ export namespace GLib {
     class IOChannel {
         static $gtype: GObject.GType<IOChannel>;
 
-        // Constructors of GLib.IOChannel
+        // Constructors
 
         constructor(filename: string, mode: string);
         _init(...args: any[]): void;
@@ -17254,7 +17254,7 @@ export namespace GLib {
 
         static unix_new(fd: number): IOChannel;
 
-        // Own static methods of GLib.IOChannel
+        // Static methods
 
         /**
          * Converts an `errno` error number to a #GIOChannelError.
@@ -17263,7 +17263,7 @@ export namespace GLib {
         static error_from_errno(en: number): IOChannelError;
         static error_quark(): Quark;
 
-        // Own methods of GLib.IOChannel
+        // Methods
 
         /**
          * Close an IO channel. Any pending data to be written will be
@@ -17541,7 +17541,7 @@ export namespace GLib {
     class IOFuncs {
         static $gtype: GObject.GType<IOFuncs>;
 
-        // Constructors of GLib.IOFuncs
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -17682,18 +17682,18 @@ export namespace GLib {
     class KeyFile {
         static $gtype: GObject.GType<KeyFile>;
 
-        // Constructors of GLib.KeyFile
+        // Constructors
 
         constructor(properties?: Partial<{}>);
         _init(...args: any[]): void;
 
         static ['new'](): KeyFile;
 
-        // Own static methods of GLib.KeyFile
+        // Static methods
 
         static error_quark(): Quark;
 
-        // Own methods of GLib.KeyFile
+        // Methods
 
         /**
          * Returns the value associated with `key` under `group_name` as a
@@ -18183,13 +18183,13 @@ export namespace GLib {
     class List {
         static $gtype: GObject.GType<List>;
 
-        // Own fields of GLib.List
+        // Fields
 
         data: any;
         next: any[];
         prev: any[];
 
-        // Constructors of GLib.List
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -18198,7 +18198,7 @@ export namespace GLib {
         );
         _init(...args: any[]): void;
 
-        // Own static methods of GLib.List
+        // Static methods
 
         static pop_allocator(): void;
         static push_allocator(allocator: Allocator): void;
@@ -18216,13 +18216,13 @@ export namespace GLib {
     class LogField {
         static $gtype: GObject.GType<LogField>;
 
-        // Own fields of GLib.LogField
+        // Fields
 
         key: string;
         value: any;
         length: number;
 
-        // Constructors of GLib.LogField
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -18241,7 +18241,7 @@ export namespace GLib {
     class MainContext {
         static $gtype: GObject.GType<MainContext>;
 
-        // Constructors of GLib.MainContext
+        // Constructors
 
         constructor(properties?: Partial<{}>);
         _init(...args: any[]): void;
@@ -18250,7 +18250,7 @@ export namespace GLib {
 
         static new_with_flags(flags: MainContextFlags): MainContext;
 
-        // Own static methods of GLib.MainContext
+        // Static methods
 
         /**
          * Returns the global-default main context. This is the main context
@@ -18283,7 +18283,7 @@ export namespace GLib {
          */
         static ref_thread_default(): MainContext;
 
-        // Own methods of GLib.MainContext
+        // Methods
 
         /**
          * Tries to become the owner of the specified context.
@@ -18563,14 +18563,14 @@ export namespace GLib {
     class MainLoop {
         static $gtype: GObject.GType<MainLoop>;
 
-        // Constructors of GLib.MainLoop
+        // Constructors
 
         constructor(context: MainContext | null, is_running: boolean);
         _init(...args: any[]): void;
 
         static ['new'](context: MainContext | null, is_running: boolean): MainLoop;
 
-        // Own methods of GLib.MainLoop
+        // Methods
 
         /**
          * Returns the #GMainContext of `loop`.
@@ -18622,7 +18622,7 @@ export namespace GLib {
     class MappedFile {
         static $gtype: GObject.GType<MappedFile>;
 
-        // Constructors of GLib.MappedFile
+        // Constructors
 
         constructor(filename: string, writable: boolean);
         _init(...args: any[]): void;
@@ -18631,7 +18631,7 @@ export namespace GLib {
 
         static new_from_fd(fd: number, writable: boolean): MappedFile;
 
-        // Own methods of GLib.MappedFile
+        // Methods
 
         /**
          * This call existed before #GMappedFile had refcounting and is currently
@@ -18687,14 +18687,14 @@ export namespace GLib {
     class MarkupParseContext {
         static $gtype: GObject.GType<MarkupParseContext>;
 
-        // Constructors of GLib.MarkupParseContext
+        // Constructors
 
         constructor(parser: MarkupParser, flags: MarkupParseFlags, user_data?: any | null);
         _init(...args: any[]): void;
 
         static ['new'](parser: MarkupParser, flags: MarkupParseFlags, user_data?: any | null): MarkupParseContext;
 
-        // Own methods of GLib.MarkupParseContext
+        // Methods
 
         /**
          * Signals to the #GMarkupParseContext that all data has been
@@ -18934,7 +18934,7 @@ export namespace GLib {
     class MarkupParser {
         static $gtype: GObject.GType<MarkupParser>;
 
-        // Constructors of GLib.MarkupParser
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -18946,11 +18946,11 @@ export namespace GLib {
     abstract class MatchInfo {
         static $gtype: GObject.GType<MatchInfo>;
 
-        // Constructors of GLib.MatchInfo
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of GLib.MatchInfo
+        // Methods
 
         /**
          * Returns a new string containing the text in `string_to_expand` with
@@ -19154,15 +19154,15 @@ export namespace GLib {
     abstract class MemChunk {
         static $gtype: GObject.GType<MemChunk>;
 
-        // Constructors of GLib.MemChunk
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own static methods of GLib.MemChunk
+        // Static methods
 
         static info(): void;
 
-        // Own methods of GLib.MemChunk
+        // Methods
 
         alloc(): any | null;
         alloc0(): any | null;
@@ -19183,7 +19183,7 @@ export namespace GLib {
     class MemVTable {
         static $gtype: GObject.GType<MemVTable>;
 
-        // Constructors of GLib.MemVTable
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -19194,20 +19194,20 @@ export namespace GLib {
     class Node {
         static $gtype: GObject.GType<Node>;
 
-        // Own fields of GLib.Node
+        // Fields
 
         data: any;
 
-        // Constructors of GLib.Node
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own static methods of GLib.Node
+        // Static methods
 
         static pop_allocator(): void;
         static push_allocator(allocator: Allocator): void;
 
-        // Own methods of GLib.Node
+        // Methods
 
         /**
          * Gets the position of the first child of a #GNode
@@ -19303,16 +19303,16 @@ export namespace GLib {
     class Once {
         static $gtype: GObject.GType<Once>;
 
-        // Own fields of GLib.Once
+        // Fields
 
         status: OnceStatus;
         retval: any;
 
-        // Constructors of GLib.Once
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own static methods of GLib.Once
+        // Static methods
 
         /**
          * Function to be called when starting a critical initialization
@@ -19403,11 +19403,11 @@ export namespace GLib {
     abstract class OptionContext {
         static $gtype: GObject.GType<OptionContext>;
 
-        // Constructors of GLib.OptionContext
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of GLib.OptionContext
+        // Methods
 
         /**
          * Adds a #GOptionGroup to the `context,` so that parsing with `context`
@@ -19631,7 +19631,7 @@ export namespace GLib {
     class OptionEntry {
         static $gtype: GObject.GType<OptionEntry>;
 
-        // Own fields of GLib.OptionEntry
+        // Fields
 
         long_name: string;
         short_name: number;
@@ -19641,7 +19641,7 @@ export namespace GLib {
         description: string;
         arg_description: string;
 
-        // Constructors of GLib.OptionEntry
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -19658,7 +19658,7 @@ export namespace GLib {
     class OptionGroup {
         static $gtype: GObject.GType<OptionGroup>;
 
-        // Constructors of GLib.OptionGroup
+        // Constructors
 
         constructor(
             name: string,
@@ -19677,7 +19677,7 @@ export namespace GLib {
             destroy?: DestroyNotify | null,
         ): OptionGroup;
 
-        // Own methods of GLib.OptionGroup
+        // Methods
 
         /**
          * Adds the options specified in `entries` to `group`.
@@ -19754,12 +19754,12 @@ export namespace GLib {
     class PathBuf {
         static $gtype: GObject.GType<PathBuf>;
 
-        // Constructors of GLib.PathBuf
+        // Constructors
 
         constructor(properties?: Partial<{}>);
         _init(...args: any[]): void;
 
-        // Own static methods of GLib.PathBuf
+        // Static methods
 
         /**
          * Compares two path buffers for equality and returns `TRUE`
@@ -19776,7 +19776,7 @@ export namespace GLib {
          */
         static equal(v1: any, v2: any): boolean;
 
-        // Own methods of GLib.PathBuf
+        // Methods
 
         /**
          * Clears the contents of the path buffer.
@@ -19964,14 +19964,14 @@ export namespace GLib {
     class PatternSpec {
         static $gtype: GObject.GType<PatternSpec>;
 
-        // Constructors of GLib.PatternSpec
+        // Constructors
 
         constructor(pattern: string);
         _init(...args: any[]): void;
 
         static ['new'](pattern: string): PatternSpec;
 
-        // Own methods of GLib.PatternSpec
+        // Methods
 
         /**
          * Copies `pspec` in a new #GPatternSpec.
@@ -20030,13 +20030,13 @@ export namespace GLib {
     class PollFD {
         static $gtype: GObject.GType<PollFD>;
 
-        // Own fields of GLib.PollFD
+        // Fields
 
         fd: number;
         events: number;
         revents: number;
 
-        // Constructors of GLib.PollFD
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -20070,11 +20070,11 @@ export namespace GLib {
     class Private {
         static $gtype: GObject.GType<Private>;
 
-        // Constructors of GLib.Private
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of GLib.Private
+        // Methods
 
         /**
          * Returns the current value of the thread local variable `key`.
@@ -20112,12 +20112,12 @@ export namespace GLib {
     class PtrArray {
         static $gtype: GObject.GType<PtrArray>;
 
-        // Own fields of GLib.PtrArray
+        // Fields
 
         pdata: any;
         len: number;
 
-        // Constructors of GLib.PtrArray
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -20135,13 +20135,13 @@ export namespace GLib {
     class Queue {
         static $gtype: GObject.GType<Queue>;
 
-        // Own fields of GLib.Queue
+        // Fields
 
         head: any[];
         tail: any[];
         length: number;
 
-        // Constructors of GLib.Queue
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -20150,7 +20150,7 @@ export namespace GLib {
         );
         _init(...args: any[]): void;
 
-        // Own methods of GLib.Queue
+        // Methods
 
         /**
          * Removes all the elements in `queue`. If queue elements contain
@@ -20359,12 +20359,12 @@ export namespace GLib {
     class RWLock {
         static $gtype: GObject.GType<RWLock>;
 
-        // Constructors of GLib.RWLock
+        // Constructors
 
         constructor(properties?: Partial<{}>);
         _init(...args: any[]): void;
 
-        // Own methods of GLib.RWLock
+        // Methods
 
         /**
          * Frees the resources allocated to a lock with g_rw_lock_init().
@@ -20470,7 +20470,7 @@ export namespace GLib {
     class Rand {
         static $gtype: GObject.GType<Rand>;
 
-        // Constructors of GLib.Rand
+        // Constructors
 
         constructor(properties?: Partial<{}>);
         _init(...args: any[]): void;
@@ -20481,7 +20481,7 @@ export namespace GLib {
 
         static new_with_seed_array(seed: number, seed_length: number): Rand;
 
-        // Own methods of GLib.Rand
+        // Methods
 
         /**
          * Copies a #GRand into a new one with the same exact state as before.
@@ -20556,12 +20556,12 @@ export namespace GLib {
     class RecMutex {
         static $gtype: GObject.GType<RecMutex>;
 
-        // Constructors of GLib.RecMutex
+        // Constructors
 
         constructor(properties?: Partial<{}>);
         _init(...args: any[]): void;
 
-        // Own methods of GLib.RecMutex
+        // Methods
 
         /**
          * Frees the resources allocated to a recursive mutex with
@@ -20690,14 +20690,14 @@ export namespace GLib {
     class Regex {
         static $gtype: GObject.GType<Regex>;
 
-        // Constructors of GLib.Regex
+        // Constructors
 
         constructor(pattern: string, compile_options: RegexCompileFlags, match_options: RegexMatchFlags);
         _init(...args: any[]): void;
 
         static ['new'](pattern: string, compile_options: RegexCompileFlags, match_options: RegexMatchFlags): Regex;
 
-        // Own static methods of GLib.Regex
+        // Static methods
 
         /**
          * Checks whether `replacement` is a valid replacement string
@@ -20797,7 +20797,7 @@ export namespace GLib {
             match_options: RegexMatchFlags,
         ): string[];
 
-        // Own methods of GLib.Regex
+        // Methods
 
         /**
          * Returns the number of capturing subpatterns in the pattern.
@@ -21258,11 +21258,11 @@ export namespace GLib {
     abstract class Relation {
         static $gtype: GObject.GType<Relation>;
 
-        // Constructors of GLib.Relation
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of GLib.Relation
+        // Methods
 
         /**
          * Returns the number of tuples in a #GRelation that have the given
@@ -21300,12 +21300,12 @@ export namespace GLib {
     class SList {
         static $gtype: GObject.GType<SList>;
 
-        // Own fields of GLib.SList
+        // Fields
 
         data: any;
         next: any[];
 
-        // Constructors of GLib.SList
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -21314,7 +21314,7 @@ export namespace GLib {
         );
         _init(...args: any[]): void;
 
-        // Own static methods of GLib.SList
+        // Static methods
 
         static pop_allocator(): void;
         static push_allocator(allocator: Allocator): void;
@@ -21339,7 +21339,7 @@ export namespace GLib {
     class Scanner {
         static $gtype: GObject.GType<Scanner>;
 
-        // Own fields of GLib.Scanner
+        // Fields
 
         user_data: any;
         max_parse_errors: number;
@@ -21356,11 +21356,11 @@ export namespace GLib {
         next_position: number;
         msg_handler: ScannerMsgFunc;
 
-        // Constructors of GLib.Scanner
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of GLib.Scanner
+        // Methods
 
         /**
          * Returns the current line in the input stream (counting
@@ -21510,7 +21510,7 @@ export namespace GLib {
     class ScannerConfig {
         static $gtype: GObject.GType<ScannerConfig>;
 
-        // Own fields of GLib.ScannerConfig
+        // Fields
 
         cset_skip_characters: string;
         cset_identifier_first: string;
@@ -21539,7 +21539,7 @@ export namespace GLib {
         scope_0_fallback: number;
         store_int64: number;
 
-        // Constructors of GLib.ScannerConfig
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -21581,11 +21581,11 @@ export namespace GLib {
     abstract class Sequence {
         static $gtype: GObject.GType<Sequence>;
 
-        // Constructors of GLib.Sequence
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own static methods of GLib.Sequence
+        // Static methods
 
         /**
          * Calls `func` for each item in the range (`begin,` `end)` passing
@@ -21704,7 +21704,7 @@ export namespace GLib {
          */
         static swap(a: SequenceIter, b: SequenceIter): void;
 
-        // Own methods of GLib.Sequence
+        // Methods
 
         /**
          * Adds a new item to the end of `seq`.
@@ -21902,11 +21902,11 @@ export namespace GLib {
     abstract class SequenceIter {
         static $gtype: GObject.GType<SequenceIter>;
 
-        // Constructors of GLib.SequenceIter
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of GLib.SequenceIter
+        // Methods
 
         /**
          * Returns a negative number if `a` comes before `b,` 0 if they are equal,
@@ -21967,14 +21967,14 @@ export namespace GLib {
     class Source {
         static $gtype: GObject.GType<Source>;
 
-        // Constructors of GLib.Source
+        // Constructors
 
         constructor(source_funcs: SourceFuncs, struct_size: number);
         _init(...args: any[]): void;
 
         static ['new'](source_funcs: SourceFuncs, struct_size: number): Source;
 
-        // Own static methods of GLib.Source
+        // Static methods
 
         /**
          * Removes the source with the given ID from the default main context. You must
@@ -22036,7 +22036,7 @@ export namespace GLib {
          */
         static set_name_by_id(tag: number, name: string): void;
 
-        // Own methods of GLib.Source
+        // Methods
 
         /**
          * Adds `child_source` to `source` as a "polled" source; when `source` is
@@ -22478,7 +22478,7 @@ export namespace GLib {
     class SourceCallbackFuncs {
         static $gtype: GObject.GType<SourceCallbackFuncs>;
 
-        // Constructors of GLib.SourceCallbackFuncs
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -22508,7 +22508,7 @@ export namespace GLib {
     class SourceFuncs {
         static $gtype: GObject.GType<SourceFuncs>;
 
-        // Constructors of GLib.SourceFuncs
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -22516,7 +22516,7 @@ export namespace GLib {
     abstract class SourcePrivate {
         static $gtype: GObject.GType<SourcePrivate>;
 
-        // Constructors of GLib.SourcePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -22530,7 +22530,7 @@ export namespace GLib {
     abstract class StatBuf {
         static $gtype: GObject.GType<StatBuf>;
 
-        // Constructors of GLib.StatBuf
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -22550,13 +22550,13 @@ export namespace GLib {
     class String {
         static $gtype: GObject.GType<String>;
 
-        // Own fields of GLib.String
+        // Fields
 
         str: string;
         len: number;
         allocated_len: number;
 
-        // Constructors of GLib.String
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -22575,7 +22575,7 @@ export namespace GLib {
 
         static sized_new(dfl_size: number): String;
 
-        // Own methods of GLib.String
+        // Methods
 
         /**
          * Adds a string onto the end of a #GString, expanding
@@ -22857,11 +22857,11 @@ export namespace GLib {
     abstract class StringChunk {
         static $gtype: GObject.GType<StringChunk>;
 
-        // Constructors of GLib.StringChunk
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of GLib.StringChunk
+        // Methods
 
         /**
          * Frees all strings contained within the #GStringChunk.
@@ -22941,14 +22941,14 @@ export namespace GLib {
     class StrvBuilder {
         static $gtype: GObject.GType<StrvBuilder>;
 
-        // Constructors of GLib.StrvBuilder
+        // Constructors
 
         constructor(properties?: Partial<{}>);
         _init(...args: any[]): void;
 
         static ['new'](): StrvBuilder;
 
-        // Own methods of GLib.StrvBuilder
+        // Methods
 
         /**
          * Add a string to the end of the array.
@@ -23000,11 +23000,11 @@ export namespace GLib {
     abstract class TestCase {
         static $gtype: GObject.GType<TestCase>;
 
-        // Constructors of GLib.TestCase
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of GLib.TestCase
+        // Methods
 
         /**
          * Free the `test_case`.
@@ -23015,7 +23015,7 @@ export namespace GLib {
     class TestConfig {
         static $gtype: GObject.GType<TestConfig>;
 
-        // Own fields of GLib.TestConfig
+        // Fields
 
         test_initialized: boolean;
         test_quick: boolean;
@@ -23024,7 +23024,7 @@ export namespace GLib {
         test_quiet: boolean;
         test_undefined: boolean;
 
-        // Constructors of GLib.TestConfig
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -23042,12 +23042,12 @@ export namespace GLib {
     class TestLogBuffer {
         static $gtype: GObject.GType<TestLogBuffer>;
 
-        // Constructors of GLib.TestLogBuffer
+        // Constructors
 
         constructor(properties?: Partial<{}>);
         _init(...args: any[]): void;
 
-        // Own methods of GLib.TestLogBuffer
+        // Methods
 
         /**
          * Internal function for gtester to free test log messages, no ABI guarantees provided.
@@ -23064,18 +23064,18 @@ export namespace GLib {
     class TestLogMsg {
         static $gtype: GObject.GType<TestLogMsg>;
 
-        // Own fields of GLib.TestLogMsg
+        // Fields
 
         log_type: TestLogType;
         n_strings: number;
         strings: string;
         n_nums: number;
 
-        // Constructors of GLib.TestLogMsg
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of GLib.TestLogMsg
+        // Methods
 
         /**
          * Internal function for gtester to free test log messages, no ABI guarantees provided.
@@ -23089,11 +23089,11 @@ export namespace GLib {
     abstract class TestSuite {
         static $gtype: GObject.GType<TestSuite>;
 
-        // Constructors of GLib.TestSuite
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of GLib.TestSuite
+        // Methods
 
         /**
          * Adds `test_case` to `suite`.
@@ -23129,7 +23129,7 @@ export namespace GLib {
     class Thread {
         static $gtype: GObject.GType<Thread>;
 
-        // Constructors of GLib.Thread
+        // Constructors
 
         constructor(name: string | null, func: ThreadFunc);
         _init(...args: any[]): void;
@@ -23138,7 +23138,7 @@ export namespace GLib {
 
         static try_new(name: string | null, func: ThreadFunc): Thread;
 
-        // Own static methods of GLib.Thread
+        // Static methods
 
         static error_quark(): Quark;
         /**
@@ -23178,7 +23178,7 @@ export namespace GLib {
          */
         static ['yield'](): void;
 
-        // Own methods of GLib.Thread
+        // Methods
 
         /**
          * Waits until `thread` finishes, i.e. the function `func,` as
@@ -23247,17 +23247,17 @@ export namespace GLib {
     class ThreadPool {
         static $gtype: GObject.GType<ThreadPool>;
 
-        // Own fields of GLib.ThreadPool
+        // Fields
 
         func: Func;
         user_data: any;
         exclusive: boolean;
 
-        // Constructors of GLib.ThreadPool
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own static methods of GLib.ThreadPool
+        // Static methods
 
         /**
          * This function will return the maximum `interval` that a
@@ -23305,7 +23305,7 @@ export namespace GLib {
          */
         static stop_unused_threads(): void;
 
-        // Own methods of GLib.ThreadPool
+        // Methods
 
         /**
          * Frees all resources allocated for `pool`.
@@ -23409,12 +23409,12 @@ export namespace GLib {
     class TimeVal {
         static $gtype: GObject.GType<TimeVal>;
 
-        // Own fields of GLib.TimeVal
+        // Fields
 
         tv_sec: number;
         tv_usec: number;
 
-        // Constructors of GLib.TimeVal
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -23424,7 +23424,7 @@ export namespace GLib {
         );
         _init(...args: any[]): void;
 
-        // Own static methods of GLib.TimeVal
+        // Static methods
 
         /**
          * Converts a string containing an ISO 8601 encoded date and time
@@ -23450,7 +23450,7 @@ export namespace GLib {
          */
         static from_iso8601(iso_date: string): [boolean, TimeVal];
 
-        // Own methods of GLib.TimeVal
+        // Methods
 
         /**
          * Adds the given number of microseconds to `time_`. `microseconds` can
@@ -23531,7 +23531,7 @@ export namespace GLib {
     class TimeZone {
         static $gtype: GObject.GType<TimeZone>;
 
-        // Constructors of GLib.TimeZone
+        // Constructors
 
         constructor(properties?: Partial<{}>);
         _init(...args: any[]): void;
@@ -23546,7 +23546,7 @@ export namespace GLib {
 
         static new_utc(): TimeZone;
 
-        // Own methods of GLib.TimeZone
+        // Methods
 
         /**
          * Finds an interval within `tz` that corresponds to the given `time_,`
@@ -23656,11 +23656,11 @@ export namespace GLib {
     abstract class Timer {
         static $gtype: GObject.GType<Timer>;
 
-        // Constructors of GLib.Timer
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of GLib.Timer
+        // Methods
 
         /**
          * Resumes a timer that has previously been stopped with
@@ -23726,11 +23726,11 @@ export namespace GLib {
     class TrashStack {
         static $gtype: GObject.GType<TrashStack>;
 
-        // Constructors of GLib.TrashStack
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own static methods of GLib.TrashStack
+        // Static methods
 
         /**
          * Returns the height of a #GTrashStack.
@@ -23767,14 +23767,14 @@ export namespace GLib {
     class Tree {
         static $gtype: GObject.GType<Tree>;
 
-        // Constructors of GLib.Tree
+        // Constructors
 
         constructor(key_compare_func: CompareFunc);
         _init(...args: any[]): void;
 
         static new_full(key_compare_func: CompareDataFunc): Tree;
 
-        // Own methods of GLib.Tree
+        // Methods
 
         /**
          * Removes all keys and values from the #GTree and decreases its
@@ -24019,11 +24019,11 @@ export namespace GLib {
     abstract class TreeNode {
         static $gtype: GObject.GType<TreeNode>;
 
-        // Constructors of GLib.TreeNode
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of GLib.TreeNode
+        // Methods
 
         /**
          * Gets the key stored at a particular tree node.
@@ -24058,11 +24058,11 @@ export namespace GLib {
     class Tuples {
         static $gtype: GObject.GType<Tuples>;
 
-        // Own fields of GLib.Tuples
+        // Fields
 
         len: number;
 
-        // Constructors of GLib.Tuples
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -24071,7 +24071,7 @@ export namespace GLib {
         );
         _init(...args: any[]): void;
 
-        // Own methods of GLib.Tuples
+        // Methods
 
         /**
          * Frees the records which were returned by g_relation_select(). This
@@ -24099,11 +24099,11 @@ export namespace GLib {
     class UnixPipe {
         static $gtype: GObject.GType<UnixPipe>;
 
-        // Own fields of GLib.UnixPipe
+        // Fields
 
         fds: number[];
 
-        // Constructors of GLib.UnixPipe
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -24279,11 +24279,11 @@ export namespace GLib {
     abstract class Uri {
         static $gtype: GObject.GType<Uri>;
 
-        // Constructors of GLib.Uri
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own static methods of GLib.Uri
+        // Static methods
 
         /**
          * Creates a new #GUri from the given components according to `flags`.
@@ -24648,7 +24648,7 @@ export namespace GLib {
          */
         static unescape_string(escaped_string: string, illegal_characters?: string | null): string | null;
 
-        // Own methods of GLib.Uri
+        // Methods
 
         /**
          * Gets `uri'`s authentication parameters, which may contain
@@ -24781,12 +24781,12 @@ export namespace GLib {
     class UriParamsIter {
         static $gtype: GObject.GType<UriParamsIter>;
 
-        // Constructors of GLib.UriParamsIter
+        // Constructors
 
         constructor(properties?: Partial<{}>);
         _init(...args: any[]): void;
 
-        // Own methods of GLib.UriParamsIter
+        // Methods
 
         /**
          * Initializes an attribute/value pair iterator.
@@ -25094,7 +25094,7 @@ export namespace GLib {
     class Variant<A extends string = any> {
         static $gtype: GObject.GType<Variant>;
 
-        // Constructors of GLib.Variant
+        // Constructors
 
         constructor(sig: A, value: any);
         _init(...args: any[]): void;
@@ -25163,7 +25163,7 @@ export namespace GLib {
 
         static new_variant(value: Variant): Variant;
 
-        // Own static methods of GLib.Variant
+        // Static methods
 
         /**
          * Determines if a given string is a valid D-Bus object path.  You
@@ -25274,7 +25274,7 @@ export namespace GLib {
          */
         static parser_get_error_quark(): Quark;
 
-        // Own methods of GLib.Variant
+        // Methods
 
         /**
          * Performs a byteswapping operation on the contents of `value`.  The
@@ -25935,14 +25935,14 @@ export namespace GLib {
     class VariantBuilder {
         static $gtype: GObject.GType<VariantBuilder>;
 
-        // Constructors of GLib.VariantBuilder
+        // Constructors
 
         constructor(type: VariantType);
         _init(...args: any[]): void;
 
         static ['new'](type: VariantType): VariantBuilder;
 
-        // Own methods of GLib.VariantBuilder
+        // Methods
 
         /**
          * Adds `value` to `builder`.
@@ -26148,14 +26148,14 @@ export namespace GLib {
     class VariantDict {
         static $gtype: GObject.GType<VariantDict>;
 
-        // Constructors of GLib.VariantDict
+        // Constructors
 
         constructor(from_asv?: Variant | null);
         _init(...args: any[]): void;
 
         static ['new'](from_asv?: Variant | null): VariantDict;
 
-        // Own methods of GLib.VariantDict
+        // Methods
 
         /**
          * Releases all memory associated with a #GVariantDict without freeing
@@ -26399,7 +26399,7 @@ export namespace GLib {
     class VariantType<A extends string = any> {
         static $gtype: GObject.GType<VariantType>;
 
-        // Constructors of GLib.VariantType
+        // Constructors
 
         constructor(type_string: string);
         _init(...args: any[]): void;
@@ -26414,7 +26414,7 @@ export namespace GLib {
 
         static new_tuple(items: VariantType[]): VariantType;
 
-        // Own static methods of GLib.VariantType
+        // Static methods
 
         static checked_(type_string: string): VariantType;
         static string_get_depth_(type_string: string): number;
@@ -26444,7 +26444,7 @@ export namespace GLib {
          */
         static string_scan(string: string, limit: string | null): [boolean, string];
 
-        // Own methods of GLib.VariantType
+        // Methods
 
         /**
          * Makes a copy of a #GVariantType.  It is appropriate to call
@@ -26669,11 +26669,11 @@ export namespace GLib {
     class DoubleIEEE754 {
         static $gtype: GObject.GType<DoubleIEEE754>;
 
-        // Own fields of GLib.DoubleIEEE754
+        // Fields
 
         v_double: number;
 
-        // Constructors of GLib.DoubleIEEE754
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -26686,11 +26686,11 @@ export namespace GLib {
     class FloatIEEE754 {
         static $gtype: GObject.GType<FloatIEEE754>;
 
-        // Own fields of GLib.FloatIEEE754
+        // Fields
 
         v_float: number;
 
-        // Constructors of GLib.FloatIEEE754
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -26753,12 +26753,12 @@ export namespace GLib {
     class Mutex {
         static $gtype: GObject.GType<Mutex>;
 
-        // Constructors of GLib.Mutex
+        // Constructors
 
         constructor(properties?: Partial<{}>);
         _init(...args: any[]): void;
 
-        // Own methods of GLib.Mutex
+        // Methods
 
         /**
          * Frees the resources allocated to a mutex with g_mutex_init().
@@ -26838,7 +26838,7 @@ export namespace GLib {
     class TokenValue {
         static $gtype: GObject.GType<TokenValue>;
 
-        // Own fields of GLib.TokenValue
+        // Fields
 
         v_symbol: any;
         v_identifier: string;
@@ -26853,7 +26853,7 @@ export namespace GLib {
         v_char: number;
         v_error: number;
 
-        // Constructors of GLib.TokenValue
+        // Constructors
 
         constructor(
             properties?: Partial<{

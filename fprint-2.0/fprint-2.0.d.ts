@@ -27,7 +27,7 @@ export namespace FPrint {
     class DeviceError extends GLib.Error {
         static $gtype: GObject.GType<DeviceError>;
 
-        // Static fields of FPrint.DeviceError
+        // Static fields
 
         /**
          * A general error occurred.
@@ -80,12 +80,12 @@ export namespace FPrint {
          */
         static TOO_HOT: number;
 
-        // Constructors of FPrint.DeviceError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of FPrint.DeviceError
+        // Static methods
 
         static quark(): GLib.Quark;
     }
@@ -347,7 +347,7 @@ export namespace FPrint {
     class Context extends GObject.Object {
         static $gtype: GObject.GType<Context>;
 
-        // Constructors of FPrint.Context
+        // Constructors
 
         constructor(properties?: Partial<Context.ConstructorProps>, ...args: any[]);
 
@@ -355,7 +355,7 @@ export namespace FPrint {
 
         static ['new'](): Context;
 
-        // Own signals of FPrint.Context
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -367,12 +367,12 @@ export namespace FPrint {
         connect_after(signal: 'device-removed', callback: (_source: this, device: Device) => void): number;
         emit(signal: 'device-removed', device: Device): void;
 
-        // Own virtual methods of FPrint.Context
+        // Virtual methods
 
         vfunc_device_added(device: Device): void;
         vfunc_device_removed(device: Device): void;
 
-        // Own methods of FPrint.Context
+        // Methods
 
         /**
          * Enumerate all devices. You should call this function exactly once
@@ -426,7 +426,7 @@ export namespace FPrint {
     abstract class Device extends GObject.Object implements Gio.AsyncInitable<Device> {
         static $gtype: GObject.GType<Device>;
 
-        // Own properties of FPrint.Device
+        // Properties
 
         get device_id(): string;
         get deviceId(): string;
@@ -452,13 +452,13 @@ export namespace FPrint {
         get scanType(): ScanType;
         get temperature(): Temperature;
 
-        // Constructors of FPrint.Device
+        // Constructors
 
         constructor(properties?: Partial<Device.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of FPrint.Device
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -467,7 +467,7 @@ export namespace FPrint {
         connect_after(signal: 'removed', callback: (_source: this) => void): number;
         emit(signal: 'removed'): void;
 
-        // Own methods of FPrint.Device
+        // Methods
 
         /**
          * Start an asynchronous operation to capture an image. The callback will
@@ -1364,12 +1364,12 @@ export namespace FPrint {
     class Image extends GObject.Object {
         static $gtype: GObject.GType<Image>;
 
-        // Own properties of FPrint.Image
+        // Properties
 
         get height(): number;
         get width(): number;
 
-        // Constructors of FPrint.Image
+        // Constructors
 
         constructor(properties?: Partial<Image.ConstructorProps>, ...args: any[]);
 
@@ -1377,7 +1377,7 @@ export namespace FPrint {
 
         static ['new'](width: number, height: number): Image;
 
-        // Own methods of FPrint.Image
+        // Methods
 
         /**
          * Detects the minutiae found in an image.
@@ -1446,13 +1446,13 @@ export namespace FPrint {
     abstract class ImageDevice extends Device implements Gio.AsyncInitable<ImageDevice> {
         static $gtype: GObject.GType<ImageDevice>;
 
-        // Constructors of FPrint.ImageDevice
+        // Constructors
 
         constructor(properties?: Partial<ImageDevice.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of FPrint.ImageDevice
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -2007,7 +2007,7 @@ export namespace FPrint {
     class Print extends GObject.InitiallyUnowned {
         static $gtype: GObject.GType<Print>;
 
-        // Own properties of FPrint.Print
+        // Properties
 
         get description(): string;
         set description(val: string);
@@ -2034,7 +2034,7 @@ export namespace FPrint {
         get username(): string;
         set username(val: string);
 
-        // Constructors of FPrint.Print
+        // Constructors
 
         constructor(properties?: Partial<Print.ConstructorProps>, ...args: any[]);
 
@@ -2042,7 +2042,7 @@ export namespace FPrint {
 
         static ['new'](device: Device): Print;
 
-        // Own static methods of FPrint.Print
+        // Static methods
 
         /**
          * Deserialize a print definition from permanent storage.
@@ -2050,7 +2050,7 @@ export namespace FPrint {
          */
         static deserialize(data: Uint8Array | string): Print;
 
-        // Own methods of FPrint.Print
+        // Methods
 
         /**
          * Tests whether the prints is compatible with the given device.
@@ -2141,11 +2141,11 @@ export namespace FPrint {
     abstract class Minutia {
         static $gtype: GObject.GType<Minutia>;
 
-        // Constructors of FPrint.Minutia
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of FPrint.Minutia
+        // Methods
 
         /**
          * Returns the coordinates of the found minutia. This is only useful for

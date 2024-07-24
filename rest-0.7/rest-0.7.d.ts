@@ -70,19 +70,19 @@ export namespace Rest {
     class ProxyCallError extends GLib.Error {
         static $gtype: GObject.GType<ProxyCallError>;
 
-        // Static fields of Rest.ProxyCallError
+        // Static fields
 
         /**
          * the method call failed
          */
         static FAILED: number;
 
-        // Constructors of Rest.ProxyCallError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of Rest.ProxyCallError
+        // Static methods
 
         static quark(): GLib.Quark;
     }
@@ -93,7 +93,7 @@ export namespace Rest {
     class ProxyError extends GLib.Error {
         static $gtype: GObject.GType<ProxyError>;
 
-        // Static fields of Rest.ProxyError
+        // Static fields
 
         /**
          * Cancelled
@@ -248,12 +248,12 @@ export namespace Rest {
          */
         static HTTP_HTTP_VERSION_NOT_SUPPORTED: number;
 
-        // Constructors of Rest.ProxyError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of Rest.ProxyError
+        // Static methods
 
         static quark(): GLib.Quark;
     }
@@ -299,7 +299,7 @@ export namespace Rest {
     class OAuth2Proxy extends Proxy {
         static $gtype: GObject.GType<OAuth2Proxy>;
 
-        // Own properties of Rest.OAuth2Proxy
+        // Properties
 
         get access_token(): string;
         set access_token(val: string);
@@ -310,7 +310,7 @@ export namespace Rest {
         get client_id(): string;
         get clientId(): string;
 
-        // Constructors of Rest.OAuth2Proxy
+        // Constructors
 
         constructor(properties?: Partial<OAuth2Proxy.ConstructorProps>, ...args: any[]);
 
@@ -334,7 +334,7 @@ export namespace Rest {
             binding_required: boolean,
         ): OAuth2Proxy;
 
-        // Own static methods of Rest.OAuth2Proxy
+        // Static methods
 
         /**
          * A utility function to extract the access token from the url that results from
@@ -343,7 +343,7 @@ export namespace Rest {
          */
         static extract_access_token(url: string): string;
 
-        // Own methods of Rest.OAuth2Proxy
+        // Methods
 
         /**
          * Builds a url at which the user can log in to the specified OAuth2-based web
@@ -398,7 +398,7 @@ export namespace Rest {
     class OAuth2ProxyCall extends ProxyCall {
         static $gtype: GObject.GType<OAuth2ProxyCall>;
 
-        // Constructors of Rest.OAuth2ProxyCall
+        // Constructors
 
         constructor(properties?: Partial<OAuth2ProxyCall.ConstructorProps>, ...args: any[]);
 
@@ -429,7 +429,7 @@ export namespace Rest {
     class OAuthProxy extends Proxy {
         static $gtype: GObject.GType<OAuthProxy>;
 
-        // Own properties of Rest.OAuthProxy
+        // Properties
 
         get consumer_key(): string;
         get consumerKey(): string;
@@ -450,7 +450,7 @@ export namespace Rest {
         get tokenSecret(): string;
         set tokenSecret(val: string);
 
-        // Constructors of Rest.OAuthProxy
+        // Constructors
 
         constructor(properties?: Partial<OAuthProxy.ConstructorProps>, ...args: any[]);
 
@@ -475,7 +475,7 @@ export namespace Rest {
             binding_required: boolean,
         ): OAuthProxy;
 
-        // Own methods of Rest.OAuthProxy
+        // Methods
 
         /**
          * Perform the Access Token phase of OAuth, invoking `function` (defaulting to
@@ -628,13 +628,13 @@ export namespace Rest {
     class OAuthProxyCall extends ProxyCall {
         static $gtype: GObject.GType<OAuthProxyCall>;
 
-        // Constructors of Rest.OAuthProxyCall
+        // Constructors
 
         constructor(properties?: Partial<OAuthProxyCall.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Rest.OAuthProxyCall
+        // Methods
 
         parse_token_reponse(): void;
         parse_token_response(): void;
@@ -673,7 +673,7 @@ export namespace Rest {
     class Proxy extends GObject.Object {
         static $gtype: GObject.GType<Proxy>;
 
-        // Own properties of Rest.Proxy
+        // Properties
 
         get binding_required(): boolean;
         set binding_required(val: boolean);
@@ -702,7 +702,7 @@ export namespace Rest {
         get username(): string;
         set username(val: string);
 
-        // Constructors of Rest.Proxy
+        // Constructors
 
         constructor(properties?: Partial<Proxy.ConstructorProps>, ...args: any[]);
 
@@ -717,7 +717,7 @@ export namespace Rest {
             password: string,
         ): Proxy;
 
-        // Own signals of Rest.Proxy
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -732,7 +732,7 @@ export namespace Rest {
         ): number;
         emit(signal: 'authenticate', auth: ProxyAuth, retrying: boolean): void;
 
-        // Own virtual methods of Rest.Proxy
+        // Virtual methods
 
         vfunc_authenticate(auth: ProxyAuth, retrying: boolean): boolean;
         /**
@@ -741,7 +741,7 @@ export namespace Rest {
          */
         vfunc_new_call(): ProxyCall;
 
-        // Own methods of Rest.Proxy
+        // Methods
 
         /**
          * This method can be used to add specific features to the #SoupSession objects
@@ -783,13 +783,13 @@ export namespace Rest {
     class ProxyAuth extends GObject.Object {
         static $gtype: GObject.GType<ProxyAuth>;
 
-        // Constructors of Rest.ProxyAuth
+        // Constructors
 
         constructor(properties?: Partial<ProxyAuth.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Rest.ProxyAuth
+        // Methods
 
         /**
          * Cancel the authentication process
@@ -825,17 +825,17 @@ export namespace Rest {
     class ProxyCall extends GObject.Object {
         static $gtype: GObject.GType<ProxyCall>;
 
-        // Own properties of Rest.ProxyCall
+        // Properties
 
         get proxy(): Proxy;
 
-        // Constructors of Rest.ProxyCall
+        // Constructors
 
         constructor(properties?: Partial<ProxyCall.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of Rest.ProxyCall
+        // Virtual methods
 
         vfunc_prepare(): boolean;
         /**
@@ -844,7 +844,7 @@ export namespace Rest {
          */
         vfunc_serialize_params(): [boolean, string, string, number];
 
-        // Own methods of Rest.ProxyCall
+        // Methods
 
         /**
          * Add a header called `header` with the value `value` to the call.  If a
@@ -983,7 +983,7 @@ export namespace Rest {
     class XmlParser extends GObject.Object {
         static $gtype: GObject.GType<XmlParser>;
 
-        // Constructors of Rest.XmlParser
+        // Constructors
 
         constructor(properties?: Partial<XmlParser.ConstructorProps>, ...args: any[]);
 
@@ -991,7 +991,7 @@ export namespace Rest {
 
         static ['new'](): XmlParser;
 
-        // Own methods of Rest.XmlParser
+        // Methods
 
         /**
          * Parse the XML in `data,` and return a new #RestXmlNode.  If `data` is invalid
@@ -1008,7 +1008,7 @@ export namespace Rest {
     abstract class OAuth2ProxyPrivate {
         static $gtype: GObject.GType<OAuth2ProxyPrivate>;
 
-        // Constructors of Rest.OAuth2ProxyPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1018,7 +1018,7 @@ export namespace Rest {
     class Param {
         static $gtype: GObject.GType<Param>;
 
-        // Constructors of Rest.Param
+        // Constructors
 
         constructor(name: string, use: MemoryUse, data: Uint8Array | string, content_type: string, filename: string);
         _init(...args: any[]): void;
@@ -1042,7 +1042,7 @@ export namespace Rest {
             owner_dnotify?: GLib.DestroyNotify | null,
         ): Param;
 
-        // Own methods of Rest.Param
+        // Methods
 
         /**
          * Get the content of `param`.  The content should be treated as read-only and
@@ -1091,11 +1091,11 @@ export namespace Rest {
     abstract class Params {
         static $gtype: GObject.GType<Params>;
 
-        // Constructors of Rest.Params
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of Rest.Params
+        // Methods
 
         /**
          * Add `param` to `params`.
@@ -1137,11 +1137,11 @@ export namespace Rest {
     abstract class ParamsIter {
         static $gtype: GObject.GType<ParamsIter>;
 
-        // Constructors of Rest.ParamsIter
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of Rest.ParamsIter
+        // Methods
 
         /**
          * Initialize a parameter iterator over `params`. Modifying `params` after calling
@@ -1176,7 +1176,7 @@ export namespace Rest {
     abstract class ProxyAuthPrivate {
         static $gtype: GObject.GType<ProxyAuthPrivate>;
 
-        // Constructors of Rest.ProxyAuthPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1185,7 +1185,7 @@ export namespace Rest {
     abstract class ProxyCallPrivate {
         static $gtype: GObject.GType<ProxyCallPrivate>;
 
-        // Constructors of Rest.ProxyCallPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1194,16 +1194,16 @@ export namespace Rest {
     class XmlNode {
         static $gtype: GObject.GType<XmlNode>;
 
-        // Own fields of Rest.XmlNode
+        // Fields
 
         name: string;
         content: string;
 
-        // Constructors of Rest.XmlNode
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of Rest.XmlNode
+        // Methods
 
         /**
          * Adds attribute to the given node.

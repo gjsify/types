@@ -103,7 +103,7 @@ export namespace TelepathyLogger {
     class CallEvent extends Event {
         static $gtype: GObject.GType<CallEvent>;
 
-        // Own properties of TelepathyLogger.CallEvent
+        // Properties
 
         get detailed_end_reason(): string;
         get detailedEndReason(): string;
@@ -113,13 +113,13 @@ export namespace TelepathyLogger {
         get end_reason(): number;
         get endReason(): number;
 
-        // Constructors of TelepathyLogger.CallEvent
+        // Constructors
 
         constructor(properties?: Partial<CallEvent.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of TelepathyLogger.CallEvent
+        // Methods
 
         get_detailed_end_reason(): string;
         get_duration(): GLib.TimeSpan;
@@ -145,7 +145,7 @@ export namespace TelepathyLogger {
     class Entity extends GObject.Object {
         static $gtype: GObject.GType<Entity>;
 
-        // Own properties of TelepathyLogger.Entity
+        // Properties
 
         /**
          * The entity's alias
@@ -168,7 +168,7 @@ export namespace TelepathyLogger {
          */
         get type(): number;
 
-        // Constructors of TelepathyLogger.Entity
+        // Constructors
 
         constructor(properties?: Partial<Entity.ConstructorProps>, ...args: any[]);
 
@@ -180,7 +180,7 @@ export namespace TelepathyLogger {
 
         static new_from_tp_contact(contact: TelepathyGLib.Contact, type: EntityType): Entity;
 
-        // Own methods of TelepathyLogger.Entity
+        // Methods
 
         get_alias(): string;
         get_avatar_token(): string;
@@ -209,7 +209,7 @@ export namespace TelepathyLogger {
     abstract class Event extends GObject.Object {
         static $gtype: GObject.GType<Event>;
 
-        // Own properties of TelepathyLogger.Event
+        // Properties
 
         get account(): TelepathyGLib.Account;
         get account_path(): string;
@@ -220,13 +220,13 @@ export namespace TelepathyLogger {
         get sender(): Entity;
         get timestamp(): number;
 
-        // Constructors of TelepathyLogger.Event
+        // Constructors
 
         constructor(properties?: Partial<Event.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of TelepathyLogger.Event
+        // Methods
 
         /**
          * Checks if two instances of TplEvent represent the same data
@@ -261,22 +261,22 @@ export namespace TelepathyLogger {
     class LogManager extends GObject.Object {
         static $gtype: GObject.GType<LogManager>;
 
-        // Own fields of TelepathyLogger.LogManager
+        // Fields
 
         priv: any;
 
-        // Constructors of TelepathyLogger.LogManager
+        // Constructors
 
         constructor(properties?: Partial<LogManager.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of TelepathyLogger.LogManager
+        // Static methods
 
         static dup_singleton(): LogManager;
         static errors_quark(): GLib.Quark;
 
-        // Own methods of TelepathyLogger.LogManager
+        // Methods
 
         /**
          * Disables logging of events for given entity. By default logging is enabled
@@ -411,19 +411,19 @@ export namespace TelepathyLogger {
     class LogWalker extends GObject.Object {
         static $gtype: GObject.GType<LogWalker>;
 
-        // Own properties of TelepathyLogger.LogWalker
+        // Properties
 
         get filter(): any;
         get filter_data(): any;
         get filterData(): any;
 
-        // Constructors of TelepathyLogger.LogWalker
+        // Constructors
 
         constructor(properties?: Partial<LogWalker.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of TelepathyLogger.LogWalker
+        // Methods
 
         /**
          * Walk the logs to retrieve the next most recent `num_event` events.
@@ -477,7 +477,7 @@ export namespace TelepathyLogger {
     class TextEvent extends Event {
         static $gtype: GObject.GType<TextEvent>;
 
-        // Own properties of TelepathyLogger.TextEvent
+        // Properties
 
         get edit_timestamp(): number;
         get editTimestamp(): number;
@@ -489,13 +489,13 @@ export namespace TelepathyLogger {
         get supersedes_token(): string;
         get supersedesToken(): string;
 
-        // Constructors of TelepathyLogger.TextEvent
+        // Constructors
 
         constructor(properties?: Partial<TextEvent.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of TelepathyLogger.TextEvent
+        // Methods
 
         get_edit_timestamp(): number;
         get_message(): string;
@@ -509,7 +509,7 @@ export namespace TelepathyLogger {
     abstract class CallEventPriv {
         static $gtype: GObject.GType<CallEventPriv>;
 
-        // Constructors of TelepathyLogger.CallEventPriv
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -517,7 +517,7 @@ export namespace TelepathyLogger {
     abstract class EntityPriv {
         static $gtype: GObject.GType<EntityPriv>;
 
-        // Constructors of TelepathyLogger.EntityPriv
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -526,7 +526,7 @@ export namespace TelepathyLogger {
     abstract class EventPriv {
         static $gtype: GObject.GType<EventPriv>;
 
-        // Constructors of TelepathyLogger.EventPriv
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -538,13 +538,13 @@ export namespace TelepathyLogger {
     class LogSearchHit {
         static $gtype: GObject.GType<LogSearchHit>;
 
-        // Own fields of TelepathyLogger.LogSearchHit
+        // Fields
 
         account: TelepathyGLib.Account;
         target: Entity;
         date: GLib.Date;
 
-        // Constructors of TelepathyLogger.LogSearchHit
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -553,7 +553,7 @@ export namespace TelepathyLogger {
     abstract class LogWalkerPriv {
         static $gtype: GObject.GType<LogWalkerPriv>;
 
-        // Constructors of TelepathyLogger.LogWalkerPriv
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -562,7 +562,7 @@ export namespace TelepathyLogger {
     abstract class TextEventPriv {
         static $gtype: GObject.GType<TextEventPriv>;
 
-        // Constructors of TelepathyLogger.TextEventPriv
+        // Constructors
 
         _init(...args: any[]): void;
     }

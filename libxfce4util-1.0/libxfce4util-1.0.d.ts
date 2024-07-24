@@ -528,7 +528,7 @@ export namespace Libxfce4util {
     class Kiosk extends GObject.Object {
         static $gtype: GObject.GType<Kiosk>;
 
-        // Constructors of Libxfce4util.Kiosk
+        // Constructors
 
         constructor(properties?: Partial<Kiosk.ConstructorProps>, ...args: any[]);
 
@@ -536,7 +536,7 @@ export namespace Libxfce4util {
 
         static ['new'](module: string): Kiosk;
 
-        // Own methods of Libxfce4util.Kiosk
+        // Methods
 
         /**
          * Frees the `kiosk` object.
@@ -556,11 +556,11 @@ export namespace Libxfce4util {
     abstract class Rc {
         static $gtype: GObject.GType<Rc>;
 
-        // Constructors of Libxfce4util.Rc
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own static methods of Libxfce4util.Rc
+        // Static methods
 
         /**
          * If `readonly` is %TRUE parsing is generally faster, because only untranslated
@@ -592,7 +592,7 @@ export namespace Libxfce4util {
          */
         static simple_open(filename: string, readonly: boolean): Rc;
 
-        // Own methods of Libxfce4util.Rc
+        // Methods
 
         /**
          * Destructs `rc`.

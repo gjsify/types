@@ -63,12 +63,12 @@ export namespace ColordGtk {
     class SampleWidget extends Gtk.DrawingArea implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<SampleWidget>;
 
-        // Own properties of ColordGtk.SampleWidget
+        // Properties
 
         get color(): Colord.ColorRGB;
         set color(val: Colord.ColorRGB);
 
-        // Constructors of ColordGtk.SampleWidget
+        // Constructors
 
         constructor(properties?: Partial<SampleWidget.ConstructorProps>, ...args: any[]);
 
@@ -76,7 +76,7 @@ export namespace ColordGtk {
 
         static ['new'](): SampleWidget;
 
-        // Own methods of ColordGtk.SampleWidget
+        // Methods
 
         /**
          * Sets the color for the sample widget
@@ -499,7 +499,7 @@ export namespace ColordGtk {
     class SampleWindow extends Gtk.Window implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<SampleWindow>;
 
-        // Constructors of ColordGtk.SampleWindow
+        // Constructors
 
         constructor(properties?: Partial<SampleWindow.ConstructorProps>, ...args: any[]);
 
@@ -507,7 +507,7 @@ export namespace ColordGtk {
 
         static ['new'](): SampleWindow;
 
-        // Own methods of ColordGtk.SampleWindow
+        // Methods
 
         /**
          * Sets the window to a specific color.
@@ -940,11 +940,11 @@ export namespace ColordGtk {
     class Window extends GObject.Object {
         static $gtype: GObject.GType<Window>;
 
-        // Own properties of ColordGtk.Window
+        // Properties
 
         get Profile(): string;
 
-        // Constructors of ColordGtk.Window
+        // Constructors
 
         constructor(properties?: Partial<Window.ConstructorProps>, ...args: any[]);
 
@@ -952,7 +952,7 @@ export namespace ColordGtk {
 
         static ['new'](): Window;
 
-        // Own signals of ColordGtk.Window
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -961,15 +961,15 @@ export namespace ColordGtk {
         connect_after(signal: 'changed', callback: (_source: this, object: Colord.Profile) => void): number;
         emit(signal: 'changed', object: Colord.Profile): void;
 
-        // Own static methods of ColordGtk.Window
+        // Static methods
 
         static error_quark(): GLib.Quark;
 
-        // Own virtual methods of ColordGtk.Window
+        // Virtual methods
 
         vfunc_changed(profile: Colord.Profile): void;
 
-        // Own methods of ColordGtk.Window
+        // Methods
 
         /**
          * Gets the color profile to use for this widget.
@@ -1017,7 +1017,7 @@ export namespace ColordGtk {
     abstract class SampleWidgetPrivate {
         static $gtype: GObject.GType<SampleWidgetPrivate>;
 
-        // Constructors of ColordGtk.SampleWidgetPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1029,7 +1029,7 @@ export namespace ColordGtk {
     abstract class SampleWindowPrivate {
         static $gtype: GObject.GType<SampleWindowPrivate>;
 
-        // Constructors of ColordGtk.SampleWindowPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1041,7 +1041,7 @@ export namespace ColordGtk {
     abstract class WindowPrivate {
         static $gtype: GObject.GType<WindowPrivate>;
 
-        // Constructors of ColordGtk.WindowPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }

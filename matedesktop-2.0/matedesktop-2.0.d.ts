@@ -52,7 +52,7 @@ export namespace MateDesktop {
     class DesktopItemError extends GLib.Error {
         static $gtype: GObject.GType<DesktopItemError>;
 
-        // Static fields of MateDesktop.DesktopItemError
+        // Static fields
 
         static NO_FILENAME: number;
         static UNKNOWN_ENCODING: number;
@@ -63,7 +63,7 @@ export namespace MateDesktop {
         static NOT_LAUNCHABLE: number;
         static INVALID_TYPE: number;
 
-        // Constructors of MateDesktop.DesktopItemError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
@@ -106,7 +106,7 @@ export namespace MateDesktop {
     class RRError extends GLib.Error {
         static $gtype: GObject.GType<RRError>;
 
-        // Static fields of MateDesktop.RRError
+        // Static fields
 
         static UNKNOWN: number;
         static NO_RANDR_EXTENSION: number;
@@ -115,7 +115,7 @@ export namespace MateDesktop {
         static CRTC_ASSIGNMENT: number;
         static NO_MATCHING_CONFIG: number;
 
-        // Constructors of MateDesktop.RRError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
@@ -382,7 +382,7 @@ export namespace MateDesktop {
     class BG extends GObject.Object {
         static $gtype: GObject.GType<BG>;
 
-        // Constructors of MateDesktop.BG
+        // Constructors
 
         constructor(properties?: Partial<BG.ConstructorProps>, ...args: any[]);
 
@@ -390,7 +390,7 @@ export namespace MateDesktop {
 
         static ['new'](): BG;
 
-        // Own signals of MateDesktop.BG
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -402,7 +402,7 @@ export namespace MateDesktop {
         connect_after(signal: 'transitioned', callback: (_source: this) => void): number;
         emit(signal: 'transitioned'): void;
 
-        // Own static methods of MateDesktop.BG
+        // Static methods
 
         /**
          * This function queries the _XROOTPMAP_ID property from
@@ -434,7 +434,7 @@ export namespace MateDesktop {
          */
         static set_surface_as_root_with_crossfade(screen: Gdk.Screen, surface: cairo.Surface): BGCrossfade;
 
-        // Own methods of MateDesktop.BG
+        // Methods
 
         changes_with_time(): boolean;
         /**
@@ -534,7 +534,7 @@ export namespace MateDesktop {
     class BGCrossfade extends GObject.Object {
         static $gtype: GObject.GType<BGCrossfade>;
 
-        // Own properties of MateDesktop.BGCrossfade
+        // Properties
 
         /**
          * When a crossfade is running, this is height of the fading
@@ -547,11 +547,11 @@ export namespace MateDesktop {
          */
         get width(): number;
 
-        // Own fields of MateDesktop.BGCrossfade
+        // Fields
 
         parent_object: GObject.Object;
 
-        // Constructors of MateDesktop.BGCrossfade
+        // Constructors
 
         constructor(properties?: Partial<BGCrossfade.ConstructorProps>, ...args: any[]);
 
@@ -559,7 +559,7 @@ export namespace MateDesktop {
 
         static ['new'](width: number, height: number): BGCrossfade;
 
-        // Own signals of MateDesktop.BGCrossfade
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -568,11 +568,11 @@ export namespace MateDesktop {
         connect_after(signal: 'finished', callback: (_source: this, window: GObject.Object) => void): number;
         emit(signal: 'finished', window: GObject.Object): void;
 
-        // Own virtual methods of MateDesktop.BGCrossfade
+        // Virtual methods
 
         vfunc_finished(window: Gdk.Window): void;
 
-        // Own methods of MateDesktop.BGCrossfade
+        // Methods
 
         /**
          * This function reveals whether or not `fade` is currently
@@ -655,7 +655,7 @@ export namespace MateDesktop {
     class ColorSelection extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<ColorSelection>;
 
-        // Own properties of MateDesktop.ColorSelection
+        // Properties
 
         get current_alpha(): number;
         set current_alpha(val: number);
@@ -676,7 +676,7 @@ export namespace MateDesktop {
         get hex_string(): string;
         get hexString(): string;
 
-        // Constructors of MateDesktop.ColorSelection
+        // Constructors
 
         constructor(properties?: Partial<ColorSelection.ConstructorProps>, ...args: any[]);
 
@@ -684,7 +684,7 @@ export namespace MateDesktop {
 
         static ['new'](): ColorSelection;
 
-        // Own signals of MateDesktop.ColorSelection
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -693,7 +693,7 @@ export namespace MateDesktop {
         connect_after(signal: 'color-changed', callback: (_source: this) => void): number;
         emit(signal: 'color-changed'): void;
 
-        // Own static methods of MateDesktop.ColorSelection
+        // Static methods
 
         /**
          * Parses a color palette string; the string is a colon-separated
@@ -707,11 +707,11 @@ export namespace MateDesktop {
          */
         static palette_to_string(colors: Gdk.RGBA[]): string;
 
-        // Own virtual methods of MateDesktop.ColorSelection
+        // Virtual methods
 
         vfunc_color_changed(): void;
 
-        // Own methods of MateDesktop.ColorSelection
+        // Methods
 
         /**
          * Sets `color` to be the current color in the MateColorSelection widget.
@@ -1235,7 +1235,7 @@ export namespace MateDesktop {
     class ColorSelectionDialog extends Gtk.Dialog implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<ColorSelectionDialog>;
 
-        // Own properties of MateDesktop.ColorSelectionDialog
+        // Properties
 
         get cancel_button(): Gtk.Widget;
         get cancelButton(): Gtk.Widget;
@@ -1246,11 +1246,11 @@ export namespace MateDesktop {
         get ok_button(): Gtk.Widget;
         get okButton(): Gtk.Widget;
 
-        // Own fields of MateDesktop.ColorSelectionDialog
+        // Fields
 
         colorsel: Gtk.Widget;
 
-        // Constructors of MateDesktop.ColorSelectionDialog
+        // Constructors
 
         constructor(properties?: Partial<ColorSelectionDialog.ConstructorProps>, ...args: any[]);
 
@@ -1261,7 +1261,7 @@ export namespace MateDesktop {
 
         static ['new'](...args: never[]): any;
 
-        // Own methods of MateDesktop.ColorSelectionDialog
+        // Methods
 
         /**
          * Retrieves the #MateColorSelection widget embedded in the dialog.
@@ -1681,7 +1681,7 @@ export namespace MateDesktop {
     class DesktopThumbnailFactory extends GObject.Object {
         static $gtype: GObject.GType<DesktopThumbnailFactory>;
 
-        // Constructors of MateDesktop.DesktopThumbnailFactory
+        // Constructors
 
         constructor(properties?: Partial<DesktopThumbnailFactory.ConstructorProps>, ...args: any[]);
 
@@ -1689,7 +1689,7 @@ export namespace MateDesktop {
 
         static ['new'](size: DesktopThumbnailSize): DesktopThumbnailFactory;
 
-        // Own methods of MateDesktop.DesktopThumbnailFactory
+        // Methods
 
         /**
          * Returns TRUE if this MateDesktopThumbnailFactory can (at least try) to thumbnail
@@ -1775,7 +1775,7 @@ export namespace MateDesktop {
     class HSV extends Gtk.Widget implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<HSV>;
 
-        // Constructors of MateDesktop.HSV
+        // Constructors
 
         constructor(properties?: Partial<HSV.ConstructorProps>, ...args: any[]);
 
@@ -1783,7 +1783,7 @@ export namespace MateDesktop {
 
         static ['new'](): HSV;
 
-        // Own signals of MateDesktop.HSV
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -1795,12 +1795,12 @@ export namespace MateDesktop {
         connect_after(signal: 'move', callback: (_source: this, object: Gtk.DirectionType) => void): number;
         emit(signal: 'move', object: Gtk.DirectionType): void;
 
-        // Own virtual methods of MateDesktop.HSV
+        // Virtual methods
 
         vfunc_changed(): void;
         vfunc_move(type: Gtk.DirectionType): void;
 
-        // Own methods of MateDesktop.HSV
+        // Methods
 
         /**
          * Queries the current color in an HSV color selector.
@@ -2432,7 +2432,7 @@ export namespace MateDesktop {
     {
         static $gtype: GObject.GType<ImageMenuItem>;
 
-        // Own properties of MateDesktop.ImageMenuItem
+        // Properties
 
         /**
          * Child widget to appear next to the menu text.
@@ -2440,11 +2440,11 @@ export namespace MateDesktop {
         get image(): Gtk.Widget;
         set image(val: Gtk.Widget);
 
-        // Own fields of MateDesktop.ImageMenuItem
+        // Fields
 
         menu_item: Gtk.MenuItem;
 
-        // Constructors of MateDesktop.ImageMenuItem
+        // Constructors
 
         constructor(properties?: Partial<ImageMenuItem.ConstructorProps>, ...args: any[]);
 
@@ -2456,7 +2456,7 @@ export namespace MateDesktop {
 
         static new_with_mnemonic(label: string): ImageMenuItem;
 
-        // Own methods of MateDesktop.ImageMenuItem
+        // Methods
 
         /**
          * Gets the widget that is currently set as the image of `image_menu_item`.
@@ -6655,11 +6655,11 @@ export namespace MateDesktop {
     class RRConfig extends GObject.Object {
         static $gtype: GObject.GType<RRConfig>;
 
-        // Own properties of MateDesktop.RRConfig
+        // Properties
 
         set screen(val: RRScreen);
 
-        // Constructors of MateDesktop.RRConfig
+        // Constructors
 
         constructor(properties?: Partial<RRConfig.ConstructorProps>, ...args: any[]);
 
@@ -6669,13 +6669,13 @@ export namespace MateDesktop {
 
         static new_stored(screen: RRScreen): RRConfig;
 
-        // Own static methods of MateDesktop.RRConfig
+        // Static methods
 
         static apply_from_filename_with_time(screen: RRScreen, filename: string, timestamp: number): boolean;
         static get_backup_filename(): string;
         static get_intended_filename(): string;
 
-        // Own methods of MateDesktop.RRConfig
+        // Methods
 
         applicable(screen: RRScreen): boolean;
         apply_with_time(screen: RRScreen, timestamp: number): boolean;
@@ -6702,11 +6702,11 @@ export namespace MateDesktop {
     class RRLabeler extends GObject.Object {
         static $gtype: GObject.GType<RRLabeler>;
 
-        // Own properties of MateDesktop.RRLabeler
+        // Properties
 
         set config(val: RRConfig);
 
-        // Constructors of MateDesktop.RRLabeler
+        // Constructors
 
         constructor(properties?: Partial<RRLabeler.ConstructorProps>, ...args: any[]);
 
@@ -6714,7 +6714,7 @@ export namespace MateDesktop {
 
         static ['new'](config: RRConfig): RRLabeler;
 
-        // Own methods of MateDesktop.RRLabeler
+        // Methods
 
         /**
          * Get the color used for the label on a given output (monitor).
@@ -6736,13 +6736,13 @@ export namespace MateDesktop {
     class RROutputInfo extends GObject.Object {
         static $gtype: GObject.GType<RROutputInfo>;
 
-        // Constructors of MateDesktop.RROutputInfo
+        // Constructors
 
         constructor(properties?: Partial<RROutputInfo.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of MateDesktop.RROutputInfo
+        // Methods
 
         get_aspect_ratio(): number;
         get_display_name(): string;
@@ -6790,12 +6790,12 @@ export namespace MateDesktop {
     class RRScreen extends GObject.Object implements Gio.Initable {
         static $gtype: GObject.GType<RRScreen>;
 
-        // Own properties of MateDesktop.RRScreen
+        // Properties
 
         get gdk_screen(): Gdk.Screen;
         get gdkScreen(): Gdk.Screen;
 
-        // Constructors of MateDesktop.RRScreen
+        // Constructors
 
         constructor(properties?: Partial<RRScreen.ConstructorProps>, ...args: any[]);
 
@@ -6803,7 +6803,7 @@ export namespace MateDesktop {
 
         static ['new'](screen: Gdk.Screen): RRScreen;
 
-        // Own signals of MateDesktop.RRScreen
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -6812,7 +6812,7 @@ export namespace MateDesktop {
         connect_after(signal: 'changed', callback: (_source: this) => void): number;
         emit(signal: 'changed'): void;
 
-        // Own methods of MateDesktop.RRScreen
+        // Methods
 
         get_crtc_by_id(id: number): RRCrtc;
         get_output_by_id(id: number): RROutput;
@@ -7347,7 +7347,7 @@ export namespace MateDesktop {
     abstract class BGCrossfadePrivate {
         static $gtype: GObject.GType<BGCrossfadePrivate>;
 
-        // Constructors of MateDesktop.BGCrossfadePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -7357,7 +7357,7 @@ export namespace MateDesktop {
     abstract class ColorSelectionPrivate {
         static $gtype: GObject.GType<ColorSelectionPrivate>;
 
-        // Constructors of MateDesktop.ColorSelectionPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -7365,7 +7365,7 @@ export namespace MateDesktop {
     class DesktopItem {
         static $gtype: GObject.GType<DesktopItem>;
 
-        // Constructors of MateDesktop.DesktopItem
+        // Constructors
 
         constructor(properties?: Partial<{}>);
         _init(...args: any[]): void;
@@ -7380,12 +7380,12 @@ export namespace MateDesktop {
 
         static new_from_uri(uri: string, flags: DesktopItemLoadFlags): DesktopItem;
 
-        // Own static methods of MateDesktop.DesktopItem
+        // Static methods
 
         static error_quark(): GLib.Quark;
         static find_icon(icon_theme: Gtk.IconTheme, icon: string, desired_size: number, flags: number): string;
 
-        // Own methods of MateDesktop.DesktopItem
+        // Methods
 
         attr_exists(attr: string): boolean;
         clear_localestring(attr: string): void;
@@ -7421,7 +7421,7 @@ export namespace MateDesktop {
     abstract class DesktopThumbnailFactoryPrivate {
         static $gtype: GObject.GType<DesktopThumbnailFactoryPrivate>;
 
-        // Constructors of MateDesktop.DesktopThumbnailFactoryPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -7430,7 +7430,7 @@ export namespace MateDesktop {
     abstract class HSVPrivate {
         static $gtype: GObject.GType<HSVPrivate>;
 
-        // Constructors of MateDesktop.HSVPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -7439,7 +7439,7 @@ export namespace MateDesktop {
     abstract class ImageMenuItemPrivate {
         static $gtype: GObject.GType<ImageMenuItemPrivate>;
 
-        // Constructors of MateDesktop.ImageMenuItemPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -7448,7 +7448,7 @@ export namespace MateDesktop {
     abstract class RRConfigPrivate {
         static $gtype: GObject.GType<RRConfigPrivate>;
 
-        // Constructors of MateDesktop.RRConfigPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -7456,11 +7456,11 @@ export namespace MateDesktop {
     abstract class RRCrtc {
         static $gtype: GObject.GType<RRCrtc>;
 
-        // Constructors of MateDesktop.RRCrtc
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of MateDesktop.RRCrtc
+        // Methods
 
         can_drive_output(output: RROutput): boolean;
         get_current_mode(): RRMode;
@@ -7494,7 +7494,7 @@ export namespace MateDesktop {
     abstract class RRLabelerPrivate {
         static $gtype: GObject.GType<RRLabelerPrivate>;
 
-        // Constructors of MateDesktop.RRLabelerPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -7502,11 +7502,11 @@ export namespace MateDesktop {
     abstract class RRMode {
         static $gtype: GObject.GType<RRMode>;
 
-        // Constructors of MateDesktop.RRMode
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of MateDesktop.RRMode
+        // Methods
 
         get_freq(): number;
         get_height(): number;
@@ -7517,11 +7517,11 @@ export namespace MateDesktop {
     abstract class RROutput {
         static $gtype: GObject.GType<RROutput>;
 
-        // Constructors of MateDesktop.RROutput
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of MateDesktop.RROutput
+        // Methods
 
         can_clone(clone: RROutput): boolean;
         get_connector_type(): string;
@@ -7547,7 +7547,7 @@ export namespace MateDesktop {
     abstract class RROutputInfoPrivate {
         static $gtype: GObject.GType<RROutputInfoPrivate>;
 
-        // Constructors of MateDesktop.RROutputInfoPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -7556,7 +7556,7 @@ export namespace MateDesktop {
     abstract class RRScreenPrivate {
         static $gtype: GObject.GType<RRScreenPrivate>;
 
-        // Constructors of MateDesktop.RRScreenPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }

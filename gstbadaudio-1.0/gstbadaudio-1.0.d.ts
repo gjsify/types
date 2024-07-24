@@ -224,7 +224,7 @@ export namespace GstBadAudio {
     abstract class NonstreamAudioDecoder extends Gst.Element {
         static $gtype: GObject.GType<NonstreamAudioDecoder>;
 
-        // Own properties of GstBadAudio.NonstreamAudioDecoder
+        // Properties
 
         get current_subsong(): number;
         set current_subsong(val: number);
@@ -235,7 +235,7 @@ export namespace GstBadAudio {
         get numLoops(): number;
         set numLoops(val: number);
 
-        // Own fields of GstBadAudio.NonstreamAudioDecoder
+        // Fields
 
         element: Gst.Element;
         sinkpad: Gst.Pad;
@@ -250,13 +250,13 @@ export namespace GstBadAudio {
         discont: boolean;
         allocator: Gst.Allocator;
 
-        // Constructors of GstBadAudio.NonstreamAudioDecoder
+        // Constructors
 
         constructor(properties?: Partial<NonstreamAudioDecoder.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of GstBadAudio.NonstreamAudioDecoder
+        // Virtual methods
 
         /**
          * Optional.
@@ -460,7 +460,7 @@ export namespace GstBadAudio {
          */
         vfunc_tell(): Gst.ClockTime;
 
-        // Own methods of GstBadAudio.NonstreamAudioDecoder
+        // Methods
 
         /**
          * Allocates an output buffer with the internally configured buffer pool.
@@ -572,7 +572,7 @@ export namespace GstBadAudio {
     class PlanarAudioAdapter extends GObject.Object {
         static $gtype: GObject.GType<PlanarAudioAdapter>;
 
-        // Constructors of GstBadAudio.PlanarAudioAdapter
+        // Constructors
 
         constructor(properties?: Partial<PlanarAudioAdapter.ConstructorProps>, ...args: any[]);
 
@@ -580,7 +580,7 @@ export namespace GstBadAudio {
 
         static ['new'](): PlanarAudioAdapter;
 
-        // Own methods of GstBadAudio.PlanarAudioAdapter
+        // Methods
 
         /**
          * Gets the maximum amount of samples available, that is it returns the maximum

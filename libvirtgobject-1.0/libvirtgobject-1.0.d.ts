@@ -412,12 +412,12 @@ export namespace LibvirtGObject {
     class Connection extends GObject.Object {
         static $gtype: GObject.GType<Connection>;
 
-        // Own properties of LibvirtGObject.Connection
+        // Properties
 
         get handle(): ConnectionHandle;
         get uri(): string;
 
-        // Constructors of LibvirtGObject.Connection
+        // Constructors
 
         constructor(properties?: Partial<Connection.ConstructorProps>, ...args: any[]);
 
@@ -425,7 +425,7 @@ export namespace LibvirtGObject {
 
         static ['new'](uri: string): Connection;
 
-        // Own signals of LibvirtGObject.Connection
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -443,14 +443,14 @@ export namespace LibvirtGObject {
         connect_after(signal: 'domain-removed', callback: (_source: this, object: Domain) => void): number;
         emit(signal: 'domain-removed', object: Domain): void;
 
-        // Own virtual methods of LibvirtGObject.Connection
+        // Virtual methods
 
         vfunc_connection_closed(): void;
         vfunc_connection_opened(): void;
         vfunc_domain_added(dom: Domain): void;
         vfunc_domain_removed(dom: Domain): void;
 
-        // Own methods of LibvirtGObject.Connection
+        // Methods
 
         close(): void;
         /**
@@ -685,18 +685,18 @@ export namespace LibvirtGObject {
     class Domain extends GObject.Object {
         static $gtype: GObject.GType<Domain>;
 
-        // Own properties of LibvirtGObject.Domain
+        // Properties
 
         get handle(): DomainHandle;
         get persistent(): boolean;
 
-        // Constructors of LibvirtGObject.Domain
+        // Constructors
 
         constructor(properties?: Partial<Domain.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of LibvirtGObject.Domain
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -720,7 +720,7 @@ export namespace LibvirtGObject {
         connect_after(signal: 'updated', callback: (_source: this) => void): number;
         emit(signal: 'updated'): void;
 
-        // Own virtual methods of LibvirtGObject.Domain
+        // Virtual methods
 
         vfunc_pmsuspended(): void;
         vfunc_resumed(): void;
@@ -729,7 +729,7 @@ export namespace LibvirtGObject {
         vfunc_suspended(): void;
         vfunc_updated(): void;
 
-        // Own methods of LibvirtGObject.Domain
+        // Methods
 
         create_snapshot(custom_conf: LibvirtGConfig.DomainSnapshot | null, flags: number): DomainSnapshot;
         create_snapshot_async(
@@ -959,18 +959,18 @@ export namespace LibvirtGObject {
     abstract class DomainDevice extends GObject.Object {
         static $gtype: GObject.GType<DomainDevice>;
 
-        // Own properties of LibvirtGObject.DomainDevice
+        // Properties
 
         get config(): LibvirtGConfig.DomainDevice;
         get domain(): Domain;
 
-        // Constructors of LibvirtGObject.DomainDevice
+        // Constructors
 
         constructor(properties?: Partial<DomainDevice.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of LibvirtGObject.DomainDevice
+        // Methods
 
         get_config(): LibvirtGConfig.DomainDevice;
         get_domain(): Domain;
@@ -985,13 +985,13 @@ export namespace LibvirtGObject {
     class DomainDisk extends DomainDevice {
         static $gtype: GObject.GType<DomainDisk>;
 
-        // Constructors of LibvirtGObject.DomainDisk
+        // Constructors
 
         constructor(properties?: Partial<DomainDisk.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of LibvirtGObject.DomainDisk
+        // Methods
 
         /**
          * This function returns network disk stats. Individual fields
@@ -1018,13 +1018,13 @@ export namespace LibvirtGObject {
     class DomainInterface extends DomainDevice {
         static $gtype: GObject.GType<DomainInterface>;
 
-        // Constructors of LibvirtGObject.DomainInterface
+        // Constructors
 
         constructor(properties?: Partial<DomainInterface.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of LibvirtGObject.DomainInterface
+        // Methods
 
         /**
          * This function returns network interface stats. Individual fields
@@ -1046,17 +1046,17 @@ export namespace LibvirtGObject {
     class DomainSnapshot extends GObject.Object {
         static $gtype: GObject.GType<DomainSnapshot>;
 
-        // Own properties of LibvirtGObject.DomainSnapshot
+        // Properties
 
         get handle(): DomainSnapshotHandle;
 
-        // Constructors of LibvirtGObject.DomainSnapshot
+        // Constructors
 
         constructor(properties?: Partial<DomainSnapshot.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of LibvirtGObject.DomainSnapshot
+        // Methods
 
         ['delete'](flags: number): boolean;
         delete_async(
@@ -1095,17 +1095,17 @@ export namespace LibvirtGObject {
     class Interface extends GObject.Object {
         static $gtype: GObject.GType<Interface>;
 
-        // Own properties of LibvirtGObject.Interface
+        // Properties
 
         get handle(): InterfaceHandle;
 
-        // Constructors of LibvirtGObject.Interface
+        // Constructors
 
         constructor(properties?: Partial<Interface.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of LibvirtGObject.Interface
+        // Methods
 
         get_config(flags: number): LibvirtGConfig.Interface;
         get_mac(): string;
@@ -1131,7 +1131,7 @@ export namespace LibvirtGObject {
     class Manager extends GObject.Object {
         static $gtype: GObject.GType<Manager>;
 
-        // Constructors of LibvirtGObject.Manager
+        // Constructors
 
         constructor(properties?: Partial<Manager.ConstructorProps>, ...args: any[]);
 
@@ -1139,7 +1139,7 @@ export namespace LibvirtGObject {
 
         static ['new'](): Manager;
 
-        // Own signals of LibvirtGObject.Manager
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -1151,12 +1151,12 @@ export namespace LibvirtGObject {
         connect_after(signal: 'connection-removed', callback: (_source: this, object: Connection) => void): number;
         emit(signal: 'connection-removed', object: Connection): void;
 
-        // Own virtual methods of LibvirtGObject.Manager
+        // Virtual methods
 
         vfunc_connection_added(conn: Connection): void;
         vfunc_connection_removed(conn: Connection): void;
 
-        // Own methods of LibvirtGObject.Manager
+        // Methods
 
         add_connection(conn: Connection): void;
         find_connection_by_uri(uri: string): Connection | null;
@@ -1175,22 +1175,22 @@ export namespace LibvirtGObject {
     class Network extends GObject.Object {
         static $gtype: GObject.GType<Network>;
 
-        // Own properties of LibvirtGObject.Network
+        // Properties
 
         get handle(): NetworkHandle;
 
-        // Constructors of LibvirtGObject.Network
+        // Constructors
 
         constructor(properties?: Partial<Network.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of LibvirtGObject.Network
+        // Virtual methods
 
         vfunc_started(): void;
         vfunc_stopped(): void;
 
-        // Own methods of LibvirtGObject.Network
+        // Methods
 
         get_config(flags: number): LibvirtGConfig.Network;
         /**
@@ -1218,17 +1218,17 @@ export namespace LibvirtGObject {
     class NetworkDHCPLease extends GObject.Object {
         static $gtype: GObject.GType<NetworkDHCPLease>;
 
-        // Own properties of LibvirtGObject.NetworkDHCPLease
+        // Properties
 
         get handle(): any;
 
-        // Constructors of LibvirtGObject.NetworkDHCPLease
+        // Constructors
 
         constructor(properties?: Partial<NetworkDHCPLease.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of LibvirtGObject.NetworkDHCPLease
+        // Methods
 
         get_client_id(): string;
         get_expiry_time(): number;
@@ -1252,17 +1252,17 @@ export namespace LibvirtGObject {
     class NetworkFilter extends GObject.Object {
         static $gtype: GObject.GType<NetworkFilter>;
 
-        // Own properties of LibvirtGObject.NetworkFilter
+        // Properties
 
         get handle(): NetworkFilterHandle;
 
-        // Constructors of LibvirtGObject.NetworkFilter
+        // Constructors
 
         constructor(properties?: Partial<NetworkFilter.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of LibvirtGObject.NetworkFilter
+        // Methods
 
         get_config(flags: number): LibvirtGConfig.NetworkFilter;
         get_name(): string;
@@ -1280,17 +1280,17 @@ export namespace LibvirtGObject {
     class NodeDevice extends GObject.Object {
         static $gtype: GObject.GType<NodeDevice>;
 
-        // Own properties of LibvirtGObject.NodeDevice
+        // Properties
 
         get handle(): NodeDeviceHandle;
 
-        // Constructors of LibvirtGObject.NodeDevice
+        // Constructors
 
         constructor(properties?: Partial<NodeDevice.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of LibvirtGObject.NodeDevice
+        // Methods
 
         get_config(flags: number): LibvirtGConfig.NodeDevice;
         get_name(): string;
@@ -1307,17 +1307,17 @@ export namespace LibvirtGObject {
     class Secret extends GObject.Object {
         static $gtype: GObject.GType<Secret>;
 
-        // Own properties of LibvirtGObject.Secret
+        // Properties
 
         get handle(): SecretHandle;
 
-        // Constructors of LibvirtGObject.Secret
+        // Constructors
 
         constructor(properties?: Partial<Secret.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of LibvirtGObject.Secret
+        // Methods
 
         get_config(flags: number): LibvirtGConfig.Secret;
         get_name(): string;
@@ -1335,17 +1335,17 @@ export namespace LibvirtGObject {
     class StoragePool extends GObject.Object {
         static $gtype: GObject.GType<StoragePool>;
 
-        // Own properties of LibvirtGObject.StoragePool
+        // Properties
 
         get handle(): StoragePoolHandle;
 
-        // Constructors of LibvirtGObject.StoragePool
+        // Constructors
 
         constructor(properties?: Partial<StoragePool.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of LibvirtGObject.StoragePool
+        // Methods
 
         build(flags: number): boolean;
         build_async(
@@ -1407,18 +1407,18 @@ export namespace LibvirtGObject {
     class StorageVol extends GObject.Object {
         static $gtype: GObject.GType<StorageVol>;
 
-        // Own properties of LibvirtGObject.StorageVol
+        // Properties
 
         get handle(): StorageVolHandle;
         get pool(): StoragePool;
 
-        // Constructors of LibvirtGObject.StorageVol
+        // Constructors
 
         constructor(properties?: Partial<StorageVol.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of LibvirtGObject.StorageVol
+        // Methods
 
         /**
          * Deletes the storage volume `vol`.
@@ -1452,17 +1452,17 @@ export namespace LibvirtGObject {
     class Stream extends Gio.IOStream {
         static $gtype: GObject.GType<Stream>;
 
-        // Own properties of LibvirtGObject.Stream
+        // Properties
 
         get handle(): StreamHandle;
 
-        // Constructors of LibvirtGObject.Stream
+        // Constructors
 
         constructor(properties?: Partial<Stream.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of LibvirtGObject.Stream
+        // Methods
 
         /**
          * Adds a watch for `stream` to the mainloop
@@ -1527,7 +1527,7 @@ export namespace LibvirtGObject {
     abstract class ConnectionPrivate {
         static $gtype: GObject.GType<ConnectionPrivate>;
 
-        // Constructors of LibvirtGObject.ConnectionPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1537,7 +1537,7 @@ export namespace LibvirtGObject {
     abstract class DomainDevicePrivate {
         static $gtype: GObject.GType<DomainDevicePrivate>;
 
-        // Constructors of LibvirtGObject.DomainDevicePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1546,7 +1546,7 @@ export namespace LibvirtGObject {
     abstract class DomainDiskPrivate {
         static $gtype: GObject.GType<DomainDiskPrivate>;
 
-        // Constructors of LibvirtGObject.DomainDiskPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1554,7 +1554,7 @@ export namespace LibvirtGObject {
     class DomainDiskStats {
         static $gtype: GObject.GType<DomainDiskStats>;
 
-        // Own fields of LibvirtGObject.DomainDiskStats
+        // Fields
 
         rd_req: number;
         rd_bytes: number;
@@ -1562,7 +1562,7 @@ export namespace LibvirtGObject {
         wr_bytes: number;
         errs: number;
 
-        // Constructors of LibvirtGObject.DomainDiskStats
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -1579,7 +1579,7 @@ export namespace LibvirtGObject {
     class DomainInfo {
         static $gtype: GObject.GType<DomainInfo>;
 
-        // Own fields of LibvirtGObject.DomainInfo
+        // Fields
 
         state: DomainState;
         maxMem: number;
@@ -1587,7 +1587,7 @@ export namespace LibvirtGObject {
         nrVirtCpu: number;
         cpuTime: number;
 
-        // Constructors of LibvirtGObject.DomainInfo
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1596,7 +1596,7 @@ export namespace LibvirtGObject {
     abstract class DomainInterfacePrivate {
         static $gtype: GObject.GType<DomainInterfacePrivate>;
 
-        // Constructors of LibvirtGObject.DomainInterfacePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1604,7 +1604,7 @@ export namespace LibvirtGObject {
     class DomainInterfaceStats {
         static $gtype: GObject.GType<DomainInterfaceStats>;
 
-        // Own fields of LibvirtGObject.DomainInterfaceStats
+        // Fields
 
         rx_bytes: number;
         rx_packets: number;
@@ -1615,7 +1615,7 @@ export namespace LibvirtGObject {
         tx_errs: number;
         tx_drop: number;
 
-        // Constructors of LibvirtGObject.DomainInterfaceStats
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -1635,7 +1635,7 @@ export namespace LibvirtGObject {
     abstract class DomainPrivate {
         static $gtype: GObject.GType<DomainPrivate>;
 
-        // Constructors of LibvirtGObject.DomainPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1644,7 +1644,7 @@ export namespace LibvirtGObject {
     abstract class DomainSnapshotPrivate {
         static $gtype: GObject.GType<DomainSnapshotPrivate>;
 
-        // Constructors of LibvirtGObject.DomainSnapshotPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1653,7 +1653,7 @@ export namespace LibvirtGObject {
     abstract class InterfacePrivate {
         static $gtype: GObject.GType<InterfacePrivate>;
 
-        // Constructors of LibvirtGObject.InterfacePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1662,7 +1662,7 @@ export namespace LibvirtGObject {
     abstract class ManagerPrivate {
         static $gtype: GObject.GType<ManagerPrivate>;
 
-        // Constructors of LibvirtGObject.ManagerPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1672,7 +1672,7 @@ export namespace LibvirtGObject {
     abstract class NetworkDHCPLeasePrivate {
         static $gtype: GObject.GType<NetworkDHCPLeasePrivate>;
 
-        // Constructors of LibvirtGObject.NetworkDHCPLeasePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1681,7 +1681,7 @@ export namespace LibvirtGObject {
     abstract class NetworkFilterPrivate {
         static $gtype: GObject.GType<NetworkFilterPrivate>;
 
-        // Constructors of LibvirtGObject.NetworkFilterPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1689,7 +1689,7 @@ export namespace LibvirtGObject {
     abstract class NetworkPrivate {
         static $gtype: GObject.GType<NetworkPrivate>;
 
-        // Constructors of LibvirtGObject.NetworkPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1698,7 +1698,7 @@ export namespace LibvirtGObject {
     abstract class NodeDevicePrivate {
         static $gtype: GObject.GType<NodeDevicePrivate>;
 
-        // Constructors of LibvirtGObject.NodeDevicePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1706,7 +1706,7 @@ export namespace LibvirtGObject {
     class NodeInfo {
         static $gtype: GObject.GType<NodeInfo>;
 
-        // Own fields of LibvirtGObject.NodeInfo
+        // Fields
 
         model: number[];
         memory: number;
@@ -1717,7 +1717,7 @@ export namespace LibvirtGObject {
         cores: number;
         threads: number;
 
-        // Constructors of LibvirtGObject.NodeInfo
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -1738,7 +1738,7 @@ export namespace LibvirtGObject {
     abstract class SecretPrivate {
         static $gtype: GObject.GType<SecretPrivate>;
 
-        // Constructors of LibvirtGObject.SecretPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1747,14 +1747,14 @@ export namespace LibvirtGObject {
     class StoragePoolInfo {
         static $gtype: GObject.GType<StoragePoolInfo>;
 
-        // Own fields of LibvirtGObject.StoragePoolInfo
+        // Fields
 
         state: StoragePoolState;
         capacity: number;
         allocation: number;
         available: number;
 
-        // Constructors of LibvirtGObject.StoragePoolInfo
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1762,7 +1762,7 @@ export namespace LibvirtGObject {
     abstract class StoragePoolPrivate {
         static $gtype: GObject.GType<StoragePoolPrivate>;
 
-        // Constructors of LibvirtGObject.StoragePoolPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1771,13 +1771,13 @@ export namespace LibvirtGObject {
     class StorageVolInfo {
         static $gtype: GObject.GType<StorageVolInfo>;
 
-        // Own fields of LibvirtGObject.StorageVolInfo
+        // Fields
 
         type: StorageVolType;
         capacity: number;
         allocation: number;
 
-        // Constructors of LibvirtGObject.StorageVolInfo
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1785,7 +1785,7 @@ export namespace LibvirtGObject {
     abstract class StorageVolPrivate {
         static $gtype: GObject.GType<StorageVolPrivate>;
 
-        // Constructors of LibvirtGObject.StorageVolPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1794,7 +1794,7 @@ export namespace LibvirtGObject {
     abstract class StreamPrivate {
         static $gtype: GObject.GType<StreamPrivate>;
 
-        // Constructors of LibvirtGObject.StreamPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }

@@ -24,7 +24,7 @@ export namespace LightDM {
     class GreeterError extends GLib.Error {
         static $gtype: GObject.GType<GreeterError>;
 
-        // Static fields of LightDM.GreeterError
+        // Static fields
 
         /**
          * error communicating with daemon.
@@ -47,12 +47,12 @@ export namespace LightDM {
          */
         static INVALID_USER: number;
 
-        // Constructors of LightDM.GreeterError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of LightDM.GreeterError
+        // Static methods
 
         static quark(): GLib.Quark;
     }
@@ -285,7 +285,7 @@ export namespace LightDM {
     class Greeter extends GObject.Object {
         static $gtype: GObject.GType<Greeter>;
 
-        // Own properties of LightDM.Greeter
+        // Properties
 
         get authentication_user(): string;
         get authenticationUser(): string;
@@ -318,7 +318,7 @@ export namespace LightDM {
         get show_remote_login_hint(): boolean;
         get showRemoteLoginHint(): boolean;
 
-        // Constructors of LightDM.Greeter
+        // Constructors
 
         constructor(properties?: Partial<Greeter.ConstructorProps>, ...args: any[]);
 
@@ -326,7 +326,7 @@ export namespace LightDM {
 
         static ['new'](): Greeter;
 
-        // Own signals of LightDM.Greeter
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -353,7 +353,7 @@ export namespace LightDM {
         connect_after(signal: 'show-prompt', callback: (_source: this, text: string, type: PromptType) => void): number;
         emit(signal: 'show-prompt', text: string, type: PromptType): void;
 
-        // Own virtual methods of LightDM.Greeter
+        // Virtual methods
 
         vfunc_authentication_complete(): void;
         vfunc_autologin_timer_expired(): void;
@@ -362,7 +362,7 @@ export namespace LightDM {
         vfunc_show_message(text: string, type: MessageType): void;
         vfunc_show_prompt(text: string, type: PromptType): void;
 
-        // Own methods of LightDM.Greeter
+        // Methods
 
         /**
          * Starts the authentication procedure for a user.
@@ -618,19 +618,19 @@ export namespace LightDM {
     class Language extends GObject.Object {
         static $gtype: GObject.GType<Language>;
 
-        // Own properties of LightDM.Language
+        // Properties
 
         get code(): string;
         get name(): string;
         get territory(): string;
 
-        // Constructors of LightDM.Language
+        // Constructors
 
         constructor(properties?: Partial<Language.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of LightDM.Language
+        // Methods
 
         /**
          * Get the code of a language (e.g. "de_DE.UTF-8")
@@ -673,20 +673,20 @@ export namespace LightDM {
     class Layout extends GObject.Object {
         static $gtype: GObject.GType<Layout>;
 
-        // Own properties of LightDM.Layout
+        // Properties
 
         get description(): string;
         get name(): string;
         get short_description(): string;
         get shortDescription(): string;
 
-        // Constructors of LightDM.Layout
+        // Constructors
 
         constructor(properties?: Partial<Layout.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of LightDM.Layout
+        // Methods
 
         /**
          * Get the long description of a layout.
@@ -722,19 +722,19 @@ export namespace LightDM {
     class Session extends GObject.Object {
         static $gtype: GObject.GType<Session>;
 
-        // Own properties of LightDM.Session
+        // Properties
 
         get comment(): string;
         get key(): string;
         get name(): string;
 
-        // Constructors of LightDM.Session
+        // Constructors
 
         constructor(properties?: Partial<Session.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of LightDM.Session
+        // Methods
 
         /**
          * Get the comment for a session
@@ -798,7 +798,7 @@ export namespace LightDM {
     class User extends GObject.Object {
         static $gtype: GObject.GType<User>;
 
-        // Own properties of LightDM.User
+        // Properties
 
         get background(): string;
         get display_name(): string;
@@ -821,13 +821,13 @@ export namespace LightDM {
         get session(): string;
         get uid(): number;
 
-        // Constructors of LightDM.User
+        // Constructors
 
         constructor(properties?: Partial<User.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of LightDM.User
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -836,11 +836,11 @@ export namespace LightDM {
         connect_after(signal: 'changed', callback: (_source: this) => void): number;
         emit(signal: 'changed'): void;
 
-        // Own virtual methods of LightDM.User
+        // Virtual methods
 
         vfunc_changed(): void;
 
-        // Own methods of LightDM.User
+        // Methods
 
         /**
          * Get the background file path for a user.
@@ -945,19 +945,19 @@ export namespace LightDM {
     class UserList extends GObject.Object {
         static $gtype: GObject.GType<UserList>;
 
-        // Own properties of LightDM.UserList
+        // Properties
 
         get length(): number;
         get num_users(): number;
         get numUsers(): number;
 
-        // Constructors of LightDM.UserList
+        // Constructors
 
         constructor(properties?: Partial<UserList.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of LightDM.UserList
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -972,20 +972,20 @@ export namespace LightDM {
         connect_after(signal: 'user-removed', callback: (_source: this, user: User) => void): number;
         emit(signal: 'user-removed', user: User): void;
 
-        // Own static methods of LightDM.UserList
+        // Static methods
 
         /**
          * Get the user list.
          */
         static get_instance(): UserList;
 
-        // Own virtual methods of LightDM.UserList
+        // Virtual methods
 
         vfunc_user_added(user: User): void;
         vfunc_user_changed(user: User): void;
         vfunc_user_removed(user: User): void;
 
-        // Own methods of LightDM.UserList
+        // Methods
 
         get_length(): number;
         /**

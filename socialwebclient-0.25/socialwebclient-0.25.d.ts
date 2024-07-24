@@ -51,7 +51,7 @@ export namespace SocialWebClient {
     class Client extends GObject.Object {
         static $gtype: GObject.GType<Client>;
 
-        // Constructors of SocialWebClient.Client
+        // Constructors
 
         constructor(properties?: Partial<Client.ConstructorProps>, ...args: any[]);
 
@@ -59,7 +59,7 @@ export namespace SocialWebClient {
 
         static ['new'](): Client;
 
-        // Own signals of SocialWebClient.Client
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -68,7 +68,7 @@ export namespace SocialWebClient {
         connect_after(signal: 'online-changed', callback: (_source: this, object: boolean) => void): number;
         emit(signal: 'online-changed', object: boolean): void;
 
-        // Own methods of SocialWebClient.Client
+        // Methods
 
         get_service(service_name: string): ClientService;
         get_services(cb: ClientGetServicesCallback): void;
@@ -101,18 +101,18 @@ export namespace SocialWebClient {
     class ClientContactView extends GObject.Object {
         static $gtype: GObject.GType<ClientContactView>;
 
-        // Own properties of SocialWebClient.ClientContactView
+        // Properties
 
         get object_path(): string;
         get objectPath(): string;
 
-        // Constructors of SocialWebClient.ClientContactView
+        // Constructors
 
         constructor(properties?: Partial<ClientContactView.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of SocialWebClient.ClientContactView
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -127,7 +127,7 @@ export namespace SocialWebClient {
         connect_after(signal: 'contacts-removed', callback: (_source: this, contacts: Contact[]) => void): number;
         emit(signal: 'contacts-removed', contacts: Contact[]): void;
 
-        // Own methods of SocialWebClient.ClientContactView
+        // Methods
 
         close(): void;
         refresh(): void;
@@ -161,18 +161,18 @@ export namespace SocialWebClient {
     class ClientItemView extends GObject.Object {
         static $gtype: GObject.GType<ClientItemView>;
 
-        // Own properties of SocialWebClient.ClientItemView
+        // Properties
 
         get object_path(): string;
         get objectPath(): string;
 
-        // Constructors of SocialWebClient.ClientItemView
+        // Constructors
 
         constructor(properties?: Partial<ClientItemView.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of SocialWebClient.ClientItemView
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -187,7 +187,7 @@ export namespace SocialWebClient {
         connect_after(signal: 'items-removed', callback: (_source: this, items: Item[]) => void): number;
         emit(signal: 'items-removed', items: Item[]): void;
 
-        // Own methods of SocialWebClient.ClientItemView
+        // Methods
 
         close(): void;
         refresh(): void;
@@ -204,7 +204,7 @@ export namespace SocialWebClient {
     class ClientLastfm extends GObject.Object {
         static $gtype: GObject.GType<ClientLastfm>;
 
-        // Constructors of SocialWebClient.ClientLastfm
+        // Constructors
 
         constructor(properties?: Partial<ClientLastfm.ConstructorProps>, ...args: any[]);
 
@@ -212,7 +212,7 @@ export namespace SocialWebClient {
 
         static ['new'](): ClientLastfm;
 
-        // Own methods of SocialWebClient.ClientLastfm
+        // Methods
 
         now_playing(
             artist: string,
@@ -262,13 +262,13 @@ export namespace SocialWebClient {
     class ClientService extends GObject.Object {
         static $gtype: GObject.GType<ClientService>;
 
-        // Constructors of SocialWebClient.ClientService
+        // Constructors
 
         constructor(properties?: Partial<ClientService.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of SocialWebClient.ClientService
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -286,18 +286,18 @@ export namespace SocialWebClient {
         connect_after(signal: 'user-changed', callback: (_source: this) => void): number;
         emit(signal: 'user-changed'): void;
 
-        // Own static methods of SocialWebClient.ClientService
+        // Static methods
 
         static has_cap(caps: string[], cap: string): boolean;
 
-        // Own virtual methods of SocialWebClient.ClientService
+        // Virtual methods
 
         vfunc_avatar_retrieved(path: string): void;
         vfunc_capabilities_changed(caps: string): void;
         vfunc_status_updated(success: boolean): void;
         vfunc_user_changed(): void;
 
-        // Own methods of SocialWebClient.ClientService
+        // Methods
 
         banishable_hide_item(uid: string): void;
         contacts_query_open_view(
@@ -334,14 +334,14 @@ export namespace SocialWebClient {
     class Contact {
         static $gtype: GObject.GType<Contact>;
 
-        // Own fields of SocialWebClient.Contact
+        // Fields
 
         refcount: number;
         service: string;
         uuid: string;
         date: GLib.TimeVal;
 
-        // Constructors of SocialWebClient.Contact
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -355,7 +355,7 @@ export namespace SocialWebClient {
 
         static ['new'](): Contact;
 
-        // Own methods of SocialWebClient.Contact
+        // Methods
 
         free(): void;
         get_value(key: string): string;
@@ -369,14 +369,14 @@ export namespace SocialWebClient {
     class Item {
         static $gtype: GObject.GType<Item>;
 
-        // Own fields of SocialWebClient.Item
+        // Fields
 
         refcount: number;
         service: string;
         uuid: string;
         date: GLib.TimeVal;
 
-        // Constructors of SocialWebClient.Item
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -390,7 +390,7 @@ export namespace SocialWebClient {
 
         static ['new'](): Item;
 
-        // Own methods of SocialWebClient.Item
+        // Methods
 
         free(): void;
         get_value(key: string): string;

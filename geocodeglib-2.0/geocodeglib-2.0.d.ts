@@ -26,7 +26,7 @@ export namespace GeocodeGlib {
     class Error extends GLib.Error {
         static $gtype: GObject.GType<Error>;
 
-        // Static fields of GeocodeGlib.Error
+        // Static fields
 
         /**
          * An error occured parsing the response from the web service.
@@ -49,12 +49,12 @@ export namespace GeocodeGlib {
          */
         static INTERNAL_SERVER: number;
 
-        // Constructors of GeocodeGlib.Error
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of GeocodeGlib.Error
+        // Static methods
 
         /**
          * Gets the geocode-glib error quark.
@@ -325,7 +325,7 @@ export namespace GeocodeGlib {
     class BoundingBox extends GObject.Object {
         static $gtype: GObject.GType<BoundingBox>;
 
-        // Own properties of GeocodeGlib.BoundingBox
+        // Properties
 
         /**
          * Bottom coordinate.
@@ -344,7 +344,7 @@ export namespace GeocodeGlib {
          */
         get top(): number;
 
-        // Constructors of GeocodeGlib.BoundingBox
+        // Constructors
 
         constructor(properties?: Partial<BoundingBox.ConstructorProps>, ...args: any[]);
 
@@ -352,7 +352,7 @@ export namespace GeocodeGlib {
 
         static ['new'](top: number, bottom: number, left: number, right: number): BoundingBox;
 
-        // Own methods of GeocodeGlib.BoundingBox
+        // Methods
 
         /**
          * Compare two #GeocodeBoundingBox instances for equality. This compares all
@@ -403,7 +403,7 @@ export namespace GeocodeGlib {
     class Forward extends GObject.Object {
         static $gtype: GObject.GType<Forward>;
 
-        // Own properties of GeocodeGlib.Forward
+        // Properties
 
         /**
          * The number of requested results to a search query.
@@ -438,7 +438,7 @@ export namespace GeocodeGlib {
         get searchArea(): BoundingBox;
         set searchArea(val: BoundingBox);
 
-        // Constructors of GeocodeGlib.Forward
+        // Constructors
 
         constructor(properties?: Partial<Forward.ConstructorProps>, ...args: any[]);
 
@@ -448,7 +448,7 @@ export namespace GeocodeGlib {
 
         static new_for_string(str: string): Forward;
 
-        // Own methods of GeocodeGlib.Forward
+        // Methods
 
         /**
          * Gets the number of requested results for searches.
@@ -536,7 +536,7 @@ export namespace GeocodeGlib {
     class Location extends GObject.Object {
         static $gtype: GObject.GType<Location>;
 
-        // Own properties of GeocodeGlib.Location
+        // Properties
 
         /**
          * The accuracy of this location in meters.
@@ -577,7 +577,7 @@ export namespace GeocodeGlib {
          */
         get timestamp(): number;
 
-        // Constructors of GeocodeGlib.Location
+        // Constructors
 
         constructor(properties?: Partial<Location.ConstructorProps>, ...args: any[]);
 
@@ -592,7 +592,7 @@ export namespace GeocodeGlib {
             description: string,
         ): Location;
 
-        // Own methods of GeocodeGlib.Location
+        // Methods
 
         /**
          * Compare two #GeocodeLocation instances for equality. This compares all fields
@@ -698,7 +698,7 @@ export namespace GeocodeGlib {
     class MockBackend extends GObject.Object implements Backend {
         static $gtype: GObject.GType<MockBackend>;
 
-        // Constructors of GeocodeGlib.MockBackend
+        // Constructors
 
         constructor(properties?: Partial<MockBackend.ConstructorProps>, ...args: any[]);
 
@@ -706,7 +706,7 @@ export namespace GeocodeGlib {
 
         static ['new'](): MockBackend;
 
-        // Own methods of GeocodeGlib.MockBackend
+        // Methods
 
         /**
          * Add a query and corresponding result (or error) to the mock backend, meaning
@@ -1386,7 +1386,7 @@ export namespace GeocodeGlib {
     class Nominatim extends GObject.Object implements Backend {
         static $gtype: GObject.GType<Nominatim>;
 
-        // Own properties of GeocodeGlib.Nominatim
+        // Properties
 
         /**
          * The base URL of the Nominatim service, for example
@@ -1441,7 +1441,7 @@ export namespace GeocodeGlib {
         get userAgent(): string;
         set userAgent(val: string);
 
-        // Constructors of GeocodeGlib.Nominatim
+        // Constructors
 
         constructor(properties?: Partial<Nominatim.ConstructorProps>, ...args: any[]);
 
@@ -1449,7 +1449,7 @@ export namespace GeocodeGlib {
 
         static ['new'](base_url: string, maintainer_email_address: string): Nominatim;
 
-        // Own static methods of GeocodeGlib.Nominatim
+        // Static methods
 
         /**
          * Gets a reference to the default Nominatim server on nominatim.gnome.org.
@@ -1458,7 +1458,7 @@ export namespace GeocodeGlib {
          */
         static get_gnome(): Nominatim;
 
-        // Own virtual methods of GeocodeGlib.Nominatim
+        // Virtual methods
 
         vfunc_query(uri: string, cancellable?: Gio.Cancellable | null): string;
         vfunc_query_async(
@@ -2101,7 +2101,7 @@ export namespace GeocodeGlib {
     class Place extends GObject.Object {
         static $gtype: GObject.GType<Place>;
 
-        // Own properties of GeocodeGlib.Place
+        // Properties
 
         /**
          * The local administrative area.
@@ -2236,7 +2236,7 @@ export namespace GeocodeGlib {
         get town(): string;
         set town(val: string);
 
-        // Constructors of GeocodeGlib.Place
+        // Constructors
 
         constructor(properties?: Partial<Place.ConstructorProps>, ...args: any[]);
 
@@ -2246,7 +2246,7 @@ export namespace GeocodeGlib {
 
         static new_with_location(name: string, place_type: PlaceType, location: Location): Place;
 
-        // Own methods of GeocodeGlib.Place
+        // Methods
 
         /**
          * Compare two #GeocodePlace instances for equality. This compares all fields
@@ -2444,7 +2444,7 @@ export namespace GeocodeGlib {
     class Reverse extends GObject.Object {
         static $gtype: GObject.GType<Reverse>;
 
-        // Constructors of GeocodeGlib.Reverse
+        // Constructors
 
         constructor(properties?: Partial<Reverse.ConstructorProps>, ...args: any[]);
 
@@ -2452,7 +2452,7 @@ export namespace GeocodeGlib {
 
         static new_for_location(location: Location): Reverse;
 
-        // Own methods of GeocodeGlib.Reverse
+        // Methods
 
         /**
          * Gets the result of a reverse geocoding
@@ -2497,7 +2497,7 @@ export namespace GeocodeGlib {
     abstract class BoundingBoxPrivate {
         static $gtype: GObject.GType<BoundingBoxPrivate>;
 
-        // Constructors of GeocodeGlib.BoundingBoxPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2506,7 +2506,7 @@ export namespace GeocodeGlib {
     abstract class ForwardPrivate {
         static $gtype: GObject.GType<ForwardPrivate>;
 
-        // Constructors of GeocodeGlib.ForwardPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2515,7 +2515,7 @@ export namespace GeocodeGlib {
     abstract class LocationPrivate {
         static $gtype: GObject.GType<LocationPrivate>;
 
-        // Constructors of GeocodeGlib.LocationPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2533,13 +2533,13 @@ export namespace GeocodeGlib {
     class MockBackendQuery {
         static $gtype: GObject.GType<MockBackendQuery>;
 
-        // Own fields of GeocodeGlib.MockBackendQuery
+        // Fields
 
         is_forward: boolean;
         results: Place[];
         error: GLib.Error;
 
-        // Constructors of GeocodeGlib.MockBackendQuery
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2549,7 +2549,7 @@ export namespace GeocodeGlib {
     abstract class PlacePrivate {
         static $gtype: GObject.GType<PlacePrivate>;
 
-        // Constructors of GeocodeGlib.PlacePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2558,7 +2558,7 @@ export namespace GeocodeGlib {
     abstract class ReversePrivate {
         static $gtype: GObject.GType<ReversePrivate>;
 
-        // Constructors of GeocodeGlib.ReversePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2574,7 +2574,7 @@ export namespace GeocodeGlib {
         prototype: Backend;
     }
     interface Backend extends GObject.Object {
-        // Own methods of GeocodeGlib.Backend
+        // Methods
 
         /**
          * Gets the result of a forward geocoding query using the `backend`.
@@ -2674,7 +2674,7 @@ export namespace GeocodeGlib {
          */
         reverse_resolve_finish(result: Gio.AsyncResult): Place[];
 
-        // Own virtual methods of GeocodeGlib.Backend
+        // Virtual methods
 
         /**
          * Gets the result of a forward geocoding query using the `backend`.

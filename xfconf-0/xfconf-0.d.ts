@@ -24,7 +24,7 @@ export namespace Xfconf {
     class Error extends GLib.Error {
         static $gtype: GObject.GType<Error>;
 
-        // Static fields of Xfconf.Error
+        // Static fields
 
         /**
          * An unknown error occurred
@@ -67,12 +67,12 @@ export namespace Xfconf {
          */
         static INVALIDCHANNEL: number;
 
-        // Constructors of Xfconf.Error
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of Xfconf.Error
+        // Static methods
 
         static quark(): GLib.Quark;
     }
@@ -261,7 +261,7 @@ export namespace Xfconf {
     class Channel extends GObject.Object {
         static $gtype: GObject.GType<Channel>;
 
-        // Own properties of Xfconf.Channel
+        // Properties
 
         /**
          * The string identifier used for this channel.
@@ -294,7 +294,7 @@ export namespace Xfconf {
          */
         get propertyBase(): string;
 
-        // Constructors of Xfconf.Channel
+        // Constructors
 
         constructor(properties?: Partial<Channel.ConstructorProps>, ...args: any[]);
 
@@ -304,7 +304,7 @@ export namespace Xfconf {
 
         static new_with_property_base(channel_name: string, property_base: string): Channel;
 
-        // Own signals of Xfconf.Channel
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -319,7 +319,7 @@ export namespace Xfconf {
         ): number;
         emit(signal: 'property-changed', property: string, value: GObject.Value | any): void;
 
-        // Own static methods of Xfconf.Channel
+        // Static methods
 
         /**
          * Either creates a new channel, or fetches a singleton object for
@@ -331,7 +331,7 @@ export namespace Xfconf {
          */
         static get(channel_name: string): Channel;
 
-        // Own methods of Xfconf.Channel
+        // Methods
 
         /**
          * Gets an array property on `channel` and returns it as
@@ -587,7 +587,7 @@ export namespace Xfconf {
     class Int16 {
         static $gtype: GObject.GType<Int16>;
 
-        // Constructors of Xfconf.Int16
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -595,7 +595,7 @@ export namespace Xfconf {
     class Uint16 {
         static $gtype: GObject.GType<Uint16>;
 
-        // Constructors of Xfconf.Uint16
+        // Constructors
 
         _init(...args: any[]): void;
     }

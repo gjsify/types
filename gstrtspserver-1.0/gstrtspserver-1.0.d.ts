@@ -408,7 +408,7 @@ export namespace GstRtspServer {
     class RTSPAddressPool extends GObject.Object {
         static $gtype: GObject.GType<RTSPAddressPool>;
 
-        // Constructors of GstRtspServer.RTSPAddressPool
+        // Constructors
 
         constructor(properties?: Partial<RTSPAddressPool.ConstructorProps>, ...args: any[]);
 
@@ -416,7 +416,7 @@ export namespace GstRtspServer {
 
         static ['new'](): RTSPAddressPool;
 
-        // Own methods of GstRtspServer.RTSPAddressPool
+        // Methods
 
         /**
          * Take an address and ports from `pool`. `flags` can be used to control the
@@ -499,7 +499,7 @@ export namespace GstRtspServer {
     class RTSPAuth extends GObject.Object {
         static $gtype: GObject.GType<RTSPAuth>;
 
-        // Constructors of GstRtspServer.RTSPAuth
+        // Constructors
 
         constructor(properties?: Partial<RTSPAuth.ConstructorProps>, ...args: any[]);
 
@@ -507,7 +507,7 @@ export namespace GstRtspServer {
 
         static ['new'](): RTSPAuth;
 
-        // Own signals of GstRtspServer.RTSPAuth
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -537,7 +537,7 @@ export namespace GstRtspServer {
             errors: Gio.TlsCertificateFlags,
         ): void;
 
-        // Own static methods of GstRtspServer.RTSPAuth
+        // Static methods
 
         /**
          * Check if `check` is allowed in the current context.
@@ -551,7 +551,7 @@ export namespace GstRtspServer {
          */
         static make_basic(user: string, pass: string): string;
 
-        // Own virtual methods of GstRtspServer.RTSPAuth
+        // Virtual methods
 
         vfunc_accept_certificate(
             connection: Gio.TlsConnection,
@@ -562,7 +562,7 @@ export namespace GstRtspServer {
         vfunc_check(ctx: RTSPContext, check: string): boolean;
         vfunc_generate_authenticate_header(ctx: RTSPContext): void;
 
-        // Own methods of GstRtspServer.RTSPAuth
+        // Methods
 
         /**
          * Add a basic token for the default authentication algorithm that
@@ -789,7 +789,7 @@ export namespace GstRtspServer {
     class RTSPClient extends GObject.Object {
         static $gtype: GObject.GType<RTSPClient>;
 
-        // Own properties of GstRtspServer.RTSPClient
+        // Properties
 
         get drop_backlog(): boolean;
         set drop_backlog(val: boolean);
@@ -808,7 +808,7 @@ export namespace GstRtspServer {
         get sessionPool(): RTSPSessionPool;
         set sessionPool(val: RTSPSessionPool);
 
-        // Constructors of GstRtspServer.RTSPClient
+        // Constructors
 
         constructor(properties?: Partial<RTSPClient.ConstructorProps>, ...args: any[]);
 
@@ -816,7 +816,7 @@ export namespace GstRtspServer {
 
         static ['new'](): RTSPClient;
 
-        // Own signals of GstRtspServer.RTSPClient
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -969,7 +969,7 @@ export namespace GstRtspServer {
         connect_after(signal: 'teardown-request', callback: (_source: this, ctx: RTSPContext) => void): number;
         emit(signal: 'teardown-request', ctx: RTSPContext): void;
 
-        // Own virtual methods of GstRtspServer.RTSPClient
+        // Virtual methods
 
         /**
          * Called before sending error response to give the application the
@@ -1021,7 +1021,7 @@ export namespace GstRtspServer {
         vfunc_teardown_request(ctx: RTSPContext): void;
         vfunc_tunnel_http_response(request: GstRtsp.RTSPMessage, response: GstRtsp.RTSPMessage): void;
 
-        // Own methods of GstRtspServer.RTSPClient
+        // Methods
 
         /**
          * Attaches `client` to `context`. When the mainloop for `context` is run, the
@@ -1250,7 +1250,7 @@ export namespace GstRtspServer {
     class RTSPMedia extends GObject.Object {
         static $gtype: GObject.GType<RTSPMedia>;
 
-        // Own properties of GstRtspServer.RTSPMedia
+        // Properties
 
         get bind_mcast_address(): boolean;
         set bind_mcast_address(val: boolean);
@@ -1302,7 +1302,7 @@ export namespace GstRtspServer {
         get transportMode(): RTSPTransportMode;
         set transportMode(val: RTSPTransportMode);
 
-        // Constructors of GstRtspServer.RTSPMedia
+        // Constructors
 
         constructor(properties?: Partial<RTSPMedia.ConstructorProps>, ...args: any[]);
 
@@ -1310,7 +1310,7 @@ export namespace GstRtspServer {
 
         static ['new'](element: Gst.Element): RTSPMedia;
 
-        // Own signals of GstRtspServer.RTSPMedia
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -1337,7 +1337,7 @@ export namespace GstRtspServer {
         connect_after(signal: 'unprepared', callback: (_source: this) => void): number;
         emit(signal: 'unprepared'): void;
 
-        // Own virtual methods of GstRtspServer.RTSPMedia
+        // Virtual methods
 
         vfunc_convert_range(range: GstRtsp.RTSPTimeRange, unit: GstRtsp.RTSPRangeUnit): boolean;
         vfunc_handle_message(message: Gst.Message): boolean;
@@ -1392,7 +1392,7 @@ export namespace GstRtspServer {
          */
         vfunc_unsuspend(): boolean;
 
-        // Own methods of GstRtspServer.RTSPMedia
+        // Methods
 
         /**
          * Check if the pipeline for `media` can be shared between multiple clients.
@@ -1898,7 +1898,7 @@ export namespace GstRtspServer {
     class RTSPMediaFactory extends GObject.Object {
         static $gtype: GObject.GType<RTSPMediaFactory>;
 
-        // Own properties of GstRtspServer.RTSPMediaFactory
+        // Properties
 
         get bind_mcast_address(): boolean;
         set bind_mcast_address(val: boolean);
@@ -1955,7 +1955,7 @@ export namespace GstRtspServer {
         get transportMode(): RTSPTransportMode;
         set transportMode(val: RTSPTransportMode);
 
-        // Constructors of GstRtspServer.RTSPMediaFactory
+        // Constructors
 
         constructor(properties?: Partial<RTSPMediaFactory.ConstructorProps>, ...args: any[]);
 
@@ -1963,7 +1963,7 @@ export namespace GstRtspServer {
 
         static ['new'](): RTSPMediaFactory;
 
-        // Own signals of GstRtspServer.RTSPMediaFactory
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -1975,7 +1975,7 @@ export namespace GstRtspServer {
         connect_after(signal: 'media-constructed', callback: (_source: this, object: RTSPMedia) => void): number;
         emit(signal: 'media-constructed', object: RTSPMedia): void;
 
-        // Own virtual methods of GstRtspServer.RTSPMediaFactory
+        // Virtual methods
 
         vfunc_configure(media: RTSPMedia): void;
         /**
@@ -2007,7 +2007,7 @@ export namespace GstRtspServer {
         vfunc_media_configure(media: RTSPMedia): void;
         vfunc_media_constructed(media: RTSPMedia): void;
 
-        // Own methods of GstRtspServer.RTSPMediaFactory
+        // Methods
 
         /**
          * A convenience wrapper around gst_rtsp_permissions_add_role_from_structure().
@@ -2293,7 +2293,7 @@ export namespace GstRtspServer {
     class RTSPMediaFactoryURI extends RTSPMediaFactory {
         static $gtype: GObject.GType<RTSPMediaFactoryURI>;
 
-        // Own properties of GstRtspServer.RTSPMediaFactoryURI
+        // Properties
 
         get uri(): string;
         set uri(val: string);
@@ -2302,7 +2302,7 @@ export namespace GstRtspServer {
         get useGstpay(): boolean;
         set useGstpay(val: boolean);
 
-        // Constructors of GstRtspServer.RTSPMediaFactoryURI
+        // Constructors
 
         constructor(properties?: Partial<RTSPMediaFactoryURI.ConstructorProps>, ...args: any[]);
 
@@ -2310,7 +2310,7 @@ export namespace GstRtspServer {
 
         static ['new'](): RTSPMediaFactoryURI;
 
-        // Own methods of GstRtspServer.RTSPMediaFactoryURI
+        // Methods
 
         /**
          * Get the URI that will provide media for this factory.
@@ -2336,7 +2336,7 @@ export namespace GstRtspServer {
     class RTSPMountPoints extends GObject.Object {
         static $gtype: GObject.GType<RTSPMountPoints>;
 
-        // Constructors of GstRtspServer.RTSPMountPoints
+        // Constructors
 
         constructor(properties?: Partial<RTSPMountPoints.ConstructorProps>, ...args: any[]);
 
@@ -2344,7 +2344,7 @@ export namespace GstRtspServer {
 
         static ['new'](): RTSPMountPoints;
 
-        // Own virtual methods of GstRtspServer.RTSPMountPoints
+        // Virtual methods
 
         /**
          * Make a path string from `url`.
@@ -2352,7 +2352,7 @@ export namespace GstRtspServer {
          */
         vfunc_make_path(url: GstRtsp.RTSPUrl): string | null;
 
-        // Own methods of GstRtspServer.RTSPMountPoints
+        // Methods
 
         /**
          * Attach `factory` to the mount point `path` in `mounts`.
@@ -2397,7 +2397,7 @@ export namespace GstRtspServer {
     class RTSPOnvifClient extends RTSPClient {
         static $gtype: GObject.GType<RTSPOnvifClient>;
 
-        // Constructors of GstRtspServer.RTSPOnvifClient
+        // Constructors
 
         constructor(properties?: Partial<RTSPOnvifClient.ConstructorProps>, ...args: any[]);
 
@@ -2415,13 +2415,13 @@ export namespace GstRtspServer {
     class RTSPOnvifMedia extends RTSPMedia {
         static $gtype: GObject.GType<RTSPOnvifMedia>;
 
-        // Constructors of GstRtspServer.RTSPOnvifMedia
+        // Constructors
 
         constructor(properties?: Partial<RTSPOnvifMedia.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of GstRtspServer.RTSPOnvifMedia
+        // Methods
 
         /**
          * Find the ONVIF backchannel depayloader element. It should be named
@@ -2456,7 +2456,7 @@ export namespace GstRtspServer {
     class RTSPOnvifMediaFactory extends RTSPMediaFactory {
         static $gtype: GObject.GType<RTSPOnvifMediaFactory>;
 
-        // Constructors of GstRtspServer.RTSPOnvifMediaFactory
+        // Constructors
 
         constructor(properties?: Partial<RTSPOnvifMediaFactory.ConstructorProps>, ...args: any[]);
 
@@ -2464,7 +2464,7 @@ export namespace GstRtspServer {
 
         static ['new'](): RTSPOnvifMediaFactory;
 
-        // Own static methods of GstRtspServer.RTSPOnvifMediaFactory
+        // Static methods
 
         /**
          * Checks whether the client request requires backchannel.
@@ -2473,14 +2473,14 @@ export namespace GstRtspServer {
          */
         static requires_backchannel(factory: RTSPMediaFactory, ctx: RTSPContext): boolean;
 
-        // Own virtual methods of GstRtspServer.RTSPOnvifMediaFactory
+        // Virtual methods
 
         /**
          * Returns %TRUE if an ONVIF backchannel is supported by the media factory.
          */
         vfunc_has_backchannel_support(): boolean;
 
-        // Own methods of GstRtspServer.RTSPOnvifMediaFactory
+        // Methods
 
         /**
          * Get the configured/supported bandwidth of the ONVIF backchannel pipeline in
@@ -2542,7 +2542,7 @@ export namespace GstRtspServer {
     class RTSPOnvifServer extends RTSPServer {
         static $gtype: GObject.GType<RTSPOnvifServer>;
 
-        // Constructors of GstRtspServer.RTSPOnvifServer
+        // Constructors
 
         constructor(properties?: Partial<RTSPOnvifServer.ConstructorProps>, ...args: any[]);
 
@@ -2582,7 +2582,7 @@ export namespace GstRtspServer {
     class RTSPServer extends GObject.Object {
         static $gtype: GObject.GType<RTSPServer>;
 
-        // Own properties of GstRtspServer.RTSPServer
+        // Properties
 
         get address(): string;
         set address(val: string);
@@ -2605,7 +2605,7 @@ export namespace GstRtspServer {
         get sessionPool(): RTSPSessionPool;
         set sessionPool(val: RTSPSessionPool);
 
-        // Constructors of GstRtspServer.RTSPServer
+        // Constructors
 
         constructor(properties?: Partial<RTSPServer.ConstructorProps>, ...args: any[]);
 
@@ -2613,7 +2613,7 @@ export namespace GstRtspServer {
 
         static ['new'](): RTSPServer;
 
-        // Own signals of GstRtspServer.RTSPServer
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -2622,7 +2622,7 @@ export namespace GstRtspServer {
         connect_after(signal: 'client-connected', callback: (_source: this, object: RTSPClient) => void): number;
         emit(signal: 'client-connected', object: RTSPClient): void;
 
-        // Own static methods of GstRtspServer.RTSPServer
+        // Static methods
 
         /**
          * A default #GSocketSourceFunc that creates a new #GstRTSPClient to accept and handle a
@@ -2633,11 +2633,11 @@ export namespace GstRtspServer {
          */
         static io_func(socket: Gio.Socket, condition: GLib.IOCondition, server: RTSPServer): boolean;
 
-        // Own virtual methods of GstRtspServer.RTSPServer
+        // Virtual methods
 
         vfunc_client_connected(client: RTSPClient): void;
 
-        // Own methods of GstRtspServer.RTSPServer
+        // Methods
 
         /**
          * Attaches `server` to `context`. When the mainloop for `context` is run, the
@@ -2830,7 +2830,7 @@ export namespace GstRtspServer {
     class RTSPSession extends GObject.Object {
         static $gtype: GObject.GType<RTSPSession>;
 
-        // Own properties of GstRtspServer.RTSPSession
+        // Properties
 
         get extra_timeout(): number;
         set extra_timeout(val: number);
@@ -2844,7 +2844,7 @@ export namespace GstRtspServer {
         get timeoutAlwaysVisible(): boolean;
         set timeoutAlwaysVisible(val: boolean);
 
-        // Constructors of GstRtspServer.RTSPSession
+        // Constructors
 
         constructor(properties?: Partial<RTSPSession.ConstructorProps>, ...args: any[]);
 
@@ -2852,7 +2852,7 @@ export namespace GstRtspServer {
 
         static ['new'](sessionid: string): RTSPSession;
 
-        // Own methods of GstRtspServer.RTSPSession
+        // Methods
 
         /**
          * Allow `session` to expire. This method must be called an equal
@@ -2975,7 +2975,7 @@ export namespace GstRtspServer {
     class RTSPSessionMedia extends GObject.Object {
         static $gtype: GObject.GType<RTSPSessionMedia>;
 
-        // Constructors of GstRtspServer.RTSPSessionMedia
+        // Constructors
 
         constructor(properties?: Partial<RTSPSessionMedia.ConstructorProps>, ...args: any[]);
 
@@ -2983,7 +2983,7 @@ export namespace GstRtspServer {
 
         static ['new'](path: string, media: RTSPMedia): RTSPSessionMedia;
 
-        // Own methods of GstRtspServer.RTSPSessionMedia
+        // Methods
 
         /**
          * Fill `range` with the next available min and max channels for
@@ -3072,14 +3072,14 @@ export namespace GstRtspServer {
     class RTSPSessionPool extends GObject.Object {
         static $gtype: GObject.GType<RTSPSessionPool>;
 
-        // Own properties of GstRtspServer.RTSPSessionPool
+        // Properties
 
         get max_sessions(): number;
         set max_sessions(val: number);
         get maxSessions(): number;
         set maxSessions(val: number);
 
-        // Constructors of GstRtspServer.RTSPSessionPool
+        // Constructors
 
         constructor(properties?: Partial<RTSPSessionPool.ConstructorProps>, ...args: any[]);
 
@@ -3087,7 +3087,7 @@ export namespace GstRtspServer {
 
         static ['new'](): RTSPSessionPool;
 
-        // Own signals of GstRtspServer.RTSPSessionPool
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -3096,12 +3096,12 @@ export namespace GstRtspServer {
         connect_after(signal: 'session-removed', callback: (_source: this, object: RTSPSession) => void): number;
         emit(signal: 'session-removed', object: RTSPSession): void;
 
-        // Own virtual methods of GstRtspServer.RTSPSessionPool
+        // Virtual methods
 
         vfunc_create_session_id(): string;
         vfunc_session_removed(session: RTSPSession): void;
 
-        // Own methods of GstRtspServer.RTSPSessionPool
+        // Methods
 
         /**
          * Inspect all the sessions in `pool` and remove the sessions that are inactive
@@ -3201,7 +3201,7 @@ export namespace GstRtspServer {
     class RTSPStream extends GObject.Object {
         static $gtype: GObject.GType<RTSPStream>;
 
-        // Own properties of GstRtspServer.RTSPStream
+        // Properties
 
         get control(): string;
         set control(val: string);
@@ -3210,7 +3210,7 @@ export namespace GstRtspServer {
         get protocols(): GstRtsp.RTSPLowerTrans;
         set protocols(val: GstRtsp.RTSPLowerTrans);
 
-        // Constructors of GstRtspServer.RTSPStream
+        // Constructors
 
         constructor(properties?: Partial<RTSPStream.ConstructorProps>, ...args: any[]);
 
@@ -3218,7 +3218,7 @@ export namespace GstRtspServer {
 
         static ['new'](idx: number, payloader: Gst.Element, pad: Gst.Pad): RTSPStream;
 
-        // Own signals of GstRtspServer.RTSPStream
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -3233,7 +3233,7 @@ export namespace GstRtspServer {
         connect_after(signal: 'new-rtp-rtcp-decoder', callback: (_source: this, object: Gst.Element) => void): number;
         emit(signal: 'new-rtp-rtcp-decoder', object: Gst.Element): void;
 
-        // Own methods of GstRtspServer.RTSPStream
+        // Methods
 
         /**
          * Add multicast client address to stream. At this point, the sockets that
@@ -3763,7 +3763,7 @@ export namespace GstRtspServer {
     class RTSPStreamTransport extends GObject.Object {
         static $gtype: GObject.GType<RTSPStreamTransport>;
 
-        // Constructors of GstRtspServer.RTSPStreamTransport
+        // Constructors
 
         constructor(properties?: Partial<RTSPStreamTransport.ConstructorProps>, ...args: any[]);
 
@@ -3771,7 +3771,7 @@ export namespace GstRtspServer {
 
         static ['new'](stream: RTSPStream, tr: GstRtsp.RTSPTransport): RTSPStreamTransport;
 
-        // Own methods of GstRtspServer.RTSPStreamTransport
+        // Methods
 
         /**
          * Get the RTP-Info string for `trans` and `start_time`.
@@ -3916,14 +3916,14 @@ export namespace GstRtspServer {
     class RTSPThreadPool extends GObject.Object {
         static $gtype: GObject.GType<RTSPThreadPool>;
 
-        // Own properties of GstRtspServer.RTSPThreadPool
+        // Properties
 
         get max_threads(): number;
         set max_threads(val: number);
         get maxThreads(): number;
         set maxThreads(val: number);
 
-        // Constructors of GstRtspServer.RTSPThreadPool
+        // Constructors
 
         constructor(properties?: Partial<RTSPThreadPool.ConstructorProps>, ...args: any[]);
 
@@ -3931,7 +3931,7 @@ export namespace GstRtspServer {
 
         static ['new'](): RTSPThreadPool;
 
-        // Own static methods of GstRtspServer.RTSPThreadPool
+        // Static methods
 
         /**
          * Wait for all tasks to be stopped and free all allocated resources. This is
@@ -3940,7 +3940,7 @@ export namespace GstRtspServer {
          */
         static cleanup(): void;
 
-        // Own virtual methods of GstRtspServer.RTSPThreadPool
+        // Virtual methods
 
         vfunc_configure_thread(thread: RTSPThread, ctx: RTSPContext): void;
         /**
@@ -3952,7 +3952,7 @@ export namespace GstRtspServer {
         vfunc_thread_enter(thread: RTSPThread): void;
         vfunc_thread_leave(thread: RTSPThread): void;
 
-        // Own methods of GstRtspServer.RTSPThreadPool
+        // Methods
 
         /**
          * Get the maximum number of threads used for client connections.
@@ -3982,7 +3982,7 @@ export namespace GstRtspServer {
     class RTSPAddress {
         static $gtype: GObject.GType<RTSPAddress>;
 
-        // Own fields of GstRtspServer.RTSPAddress
+        // Fields
 
         pool: RTSPAddressPool;
         address: string;
@@ -3990,11 +3990,11 @@ export namespace GstRtspServer {
         n_ports: number;
         ttl: number;
 
-        // Constructors of GstRtspServer.RTSPAddress
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of GstRtspServer.RTSPAddress
+        // Methods
 
         /**
          * Make a copy of `addr`.
@@ -4012,7 +4012,7 @@ export namespace GstRtspServer {
     abstract class RTSPAddressPoolPrivate {
         static $gtype: GObject.GType<RTSPAddressPoolPrivate>;
 
-        // Constructors of GstRtspServer.RTSPAddressPoolPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4021,7 +4021,7 @@ export namespace GstRtspServer {
     abstract class RTSPAuthPrivate {
         static $gtype: GObject.GType<RTSPAuthPrivate>;
 
-        // Constructors of GstRtspServer.RTSPAuthPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4030,7 +4030,7 @@ export namespace GstRtspServer {
     abstract class RTSPClientPrivate {
         static $gtype: GObject.GType<RTSPClientPrivate>;
 
-        // Constructors of GstRtspServer.RTSPClientPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4041,7 +4041,7 @@ export namespace GstRtspServer {
     class RTSPContext {
         static $gtype: GObject.GType<RTSPContext>;
 
-        // Own fields of GstRtspServer.RTSPContext
+        // Fields
 
         server: RTSPServer;
         client: RTSPClient;
@@ -4054,11 +4054,11 @@ export namespace GstRtspServer {
         stream: RTSPStream;
         trans: RTSPStreamTransport;
 
-        // Constructors of GstRtspServer.RTSPContext
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of GstRtspServer.RTSPContext
+        // Methods
 
         /**
          * Pops `ctx` off the context stack (verifying that `ctx`
@@ -4082,7 +4082,7 @@ export namespace GstRtspServer {
     abstract class RTSPMediaFactoryPrivate {
         static $gtype: GObject.GType<RTSPMediaFactoryPrivate>;
 
-        // Constructors of GstRtspServer.RTSPMediaFactoryPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4091,7 +4091,7 @@ export namespace GstRtspServer {
     abstract class RTSPMediaFactoryURIPrivate {
         static $gtype: GObject.GType<RTSPMediaFactoryURIPrivate>;
 
-        // Constructors of GstRtspServer.RTSPMediaFactoryURIPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4099,7 +4099,7 @@ export namespace GstRtspServer {
     abstract class RTSPMediaPrivate {
         static $gtype: GObject.GType<RTSPMediaPrivate>;
 
-        // Constructors of GstRtspServer.RTSPMediaPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4108,7 +4108,7 @@ export namespace GstRtspServer {
     abstract class RTSPMountPointsPrivate {
         static $gtype: GObject.GType<RTSPMountPointsPrivate>;
 
-        // Constructors of GstRtspServer.RTSPMountPointsPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4119,7 +4119,7 @@ export namespace GstRtspServer {
     abstract class RTSPOnvifMediaFactoryPrivate {
         static $gtype: GObject.GType<RTSPOnvifMediaFactoryPrivate>;
 
-        // Constructors of GstRtspServer.RTSPOnvifMediaFactoryPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4127,7 +4127,7 @@ export namespace GstRtspServer {
     abstract class RTSPOnvifMediaPrivate {
         static $gtype: GObject.GType<RTSPOnvifMediaPrivate>;
 
-        // Constructors of GstRtspServer.RTSPOnvifMediaPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4140,7 +4140,7 @@ export namespace GstRtspServer {
     class RTSPPermissions {
         static $gtype: GObject.GType<RTSPPermissions>;
 
-        // Constructors of GstRtspServer.RTSPPermissions
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -4151,7 +4151,7 @@ export namespace GstRtspServer {
 
         static ['new'](): RTSPPermissions;
 
-        // Own methods of GstRtspServer.RTSPPermissions
+        // Methods
 
         /**
          * Add a new `permission` for `role` to `permissions` with the access in `allowed`.
@@ -4201,7 +4201,7 @@ export namespace GstRtspServer {
     abstract class RTSPServerPrivate {
         static $gtype: GObject.GType<RTSPServerPrivate>;
 
-        // Constructors of GstRtspServer.RTSPServerPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4211,7 +4211,7 @@ export namespace GstRtspServer {
     abstract class RTSPSessionMediaPrivate {
         static $gtype: GObject.GType<RTSPSessionMediaPrivate>;
 
-        // Constructors of GstRtspServer.RTSPSessionMediaPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4220,7 +4220,7 @@ export namespace GstRtspServer {
     abstract class RTSPSessionPoolPrivate {
         static $gtype: GObject.GType<RTSPSessionPoolPrivate>;
 
-        // Constructors of GstRtspServer.RTSPSessionPoolPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4228,7 +4228,7 @@ export namespace GstRtspServer {
     abstract class RTSPSessionPrivate {
         static $gtype: GObject.GType<RTSPSessionPrivate>;
 
-        // Constructors of GstRtspServer.RTSPSessionPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4237,7 +4237,7 @@ export namespace GstRtspServer {
     abstract class RTSPStreamPrivate {
         static $gtype: GObject.GType<RTSPStreamPrivate>;
 
-        // Constructors of GstRtspServer.RTSPStreamPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4246,7 +4246,7 @@ export namespace GstRtspServer {
     abstract class RTSPStreamTransportPrivate {
         static $gtype: GObject.GType<RTSPStreamTransportPrivate>;
 
-        // Constructors of GstRtspServer.RTSPStreamTransportPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4257,18 +4257,18 @@ export namespace GstRtspServer {
     class RTSPThread {
         static $gtype: GObject.GType<RTSPThread>;
 
-        // Own fields of GstRtspServer.RTSPThread
+        // Fields
 
         type: RTSPThreadType;
 
-        // Constructors of GstRtspServer.RTSPThread
+        // Constructors
 
         constructor(type: RTSPThreadType);
         _init(...args: any[]): void;
 
         static ['new'](type: RTSPThreadType): RTSPThread;
 
-        // Own methods of GstRtspServer.RTSPThread
+        // Methods
 
         /**
          * Reuse the mainloop of `thread`
@@ -4286,7 +4286,7 @@ export namespace GstRtspServer {
     abstract class RTSPThreadPoolPrivate {
         static $gtype: GObject.GType<RTSPThreadPoolPrivate>;
 
-        // Constructors of GstRtspServer.RTSPThreadPoolPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4298,7 +4298,7 @@ export namespace GstRtspServer {
     class RTSPToken {
         static $gtype: GObject.GType<RTSPToken>;
 
-        // Constructors of GstRtspServer.RTSPToken
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -4309,7 +4309,7 @@ export namespace GstRtspServer {
 
         static ['new'](): RTSPToken;
 
-        // Own methods of GstRtspServer.RTSPToken
+        // Methods
 
         /**
          * Get the string value of `field` in `token`.
@@ -4350,12 +4350,12 @@ export namespace GstRtspServer {
     class SDPInfo {
         static $gtype: GObject.GType<SDPInfo>;
 
-        // Own fields of GstRtspServer.SDPInfo
+        // Fields
 
         is_ipv6: boolean;
         server_ip: string;
 
-        // Constructors of GstRtspServer.SDPInfo
+        // Constructors
 
         constructor(
             properties?: Partial<{

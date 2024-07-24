@@ -817,7 +817,7 @@ export namespace Libxfce4ui {
     class FilenameInput extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<FilenameInput>;
 
-        // Own properties of Libxfce4ui.FilenameInput
+        // Properties
 
         /**
          * The maximum permitted length of a filename. A value of -1
@@ -842,13 +842,13 @@ export namespace Libxfce4ui {
          */
         set originalFilename(val: string);
 
-        // Constructors of Libxfce4ui.FilenameInput
+        // Constructors
 
         constructor(properties?: Partial<FilenameInput.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of Libxfce4ui.FilenameInput
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -860,7 +860,7 @@ export namespace Libxfce4ui {
         connect_after(signal: 'text-valid', callback: (_source: this) => void): number;
         emit(signal: 'text-valid'): void;
 
-        // Own static methods of Libxfce4ui.FilenameInput
+        // Static methods
 
         /**
          * A convenience function to be connected as a callback for the  "text-invalid" signal
@@ -877,7 +877,7 @@ export namespace Libxfce4ui {
          */
         static sensitise_widget(widget: Gtk.Widget): void;
 
-        // Own methods of Libxfce4ui.FilenameInput
+        // Methods
 
         /**
          * Forces a check of the current input text even when it has not changed.
@@ -1367,7 +1367,7 @@ export namespace Libxfce4ui {
     class SMClient extends GObject.Object {
         static $gtype: GObject.GType<SMClient>;
 
-        // Own properties of Libxfce4ui.SMClient
+        // Properties
 
         set argc(val: number);
         set argv(val: string[]);
@@ -1393,7 +1393,7 @@ export namespace Libxfce4ui {
         set restartStyle(val: SMClientRestartStyle);
         get resumed(): boolean;
 
-        // Constructors of Libxfce4ui.SMClient
+        // Constructors
 
         constructor(properties?: Partial<SMClient.ConstructorProps>, ...args: any[]);
 
@@ -1417,7 +1417,7 @@ export namespace Libxfce4ui {
             priority: number,
         ): SMClient;
 
-        // Own signals of Libxfce4ui.SMClient
+        // Signals
 
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -1432,7 +1432,7 @@ export namespace Libxfce4ui {
         connect_after(signal: 'save-state-extended', callback: (_source: this) => void): number;
         emit(signal: 'save-state-extended'): void;
 
-        // Own static methods of Libxfce4ui.SMClient
+        // Static methods
 
         /**
          * Gets the XfceSmClient Error Quark.
@@ -1464,7 +1464,7 @@ export namespace Libxfce4ui {
          */
         static get_option_group(argc: number, argv: string): GLib.OptionGroup;
 
-        // Own methods of Libxfce4ui.SMClient
+        // Methods
 
         /**
          * Attempts to connect to the session manager.
@@ -1630,7 +1630,7 @@ export namespace Libxfce4ui {
     class Screensaver extends GObject.Object {
         static $gtype: GObject.GType<Screensaver>;
 
-        // Own properties of Libxfce4ui.Screensaver
+        // Properties
 
         get heartbeat_command(): string;
         set heartbeat_command(val: string);
@@ -1645,7 +1645,7 @@ export namespace Libxfce4ui {
         get lockOnSleep(): boolean;
         set lockOnSleep(val: boolean);
 
-        // Constructors of Libxfce4ui.Screensaver
+        // Constructors
 
         constructor(properties?: Partial<Screensaver.ConstructorProps>, ...args: any[]);
 
@@ -1653,7 +1653,7 @@ export namespace Libxfce4ui {
 
         static ['new'](): Screensaver;
 
-        // Own methods of Libxfce4ui.Screensaver
+        // Methods
 
         /**
          * Calling this function with `inhibit` as %TRUE will prevent the user's
@@ -1691,7 +1691,7 @@ export namespace Libxfce4ui {
     class TitledDialog extends Gtk.Dialog implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<TitledDialog>;
 
-        // Own properties of Libxfce4ui.TitledDialog
+        // Properties
 
         /**
          * The subtitle displayed below the main dialog title.
@@ -1699,7 +1699,7 @@ export namespace Libxfce4ui {
         get subtitle(): string;
         set subtitle(val: string);
 
-        // Constructors of Libxfce4ui.TitledDialog
+        // Constructors
 
         constructor(properties?: Partial<TitledDialog.ConstructorProps>, ...args: any[]);
 
@@ -1707,7 +1707,7 @@ export namespace Libxfce4ui {
 
         static ['new'](): TitledDialog;
 
-        // Own methods of Libxfce4ui.TitledDialog
+        // Methods
 
         /**
          * This function is a replacement for #gtk_dialog_add_action_widget and assumes that
@@ -2181,7 +2181,7 @@ export namespace Libxfce4ui {
     class GtkActionEntry {
         static $gtype: GObject.GType<GtkActionEntry>;
 
-        // Own fields of Libxfce4ui.GtkActionEntry
+        // Fields
 
         id: number;
         accel_path: string;
@@ -2192,7 +2192,7 @@ export namespace Libxfce4ui {
         menu_item_icon_name: string;
         callback: GObject.Callback;
 
-        // Constructors of Libxfce4ui.GtkActionEntry
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2202,7 +2202,7 @@ export namespace Libxfce4ui {
     abstract class TitledDialogPrivate {
         static $gtype: GObject.GType<TitledDialogPrivate>;
 
-        // Constructors of Libxfce4ui.TitledDialogPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }

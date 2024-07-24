@@ -334,21 +334,21 @@ export namespace Pluma {
     class App extends GObject.Object {
         static $gtype: GObject.GType<App>;
 
-        // Own properties of Pluma.App
+        // Properties
 
         get lockdown(): LockdownMask;
 
-        // Own fields of Pluma.App
+        // Fields
 
         object: GObject.Object;
 
-        // Constructors of Pluma.App
+        // Constructors
 
         constructor(properties?: Partial<App.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of Pluma.App
+        // Static methods
 
         /**
          * Returns the #PlumaApp object. This object is a singleton and
@@ -356,7 +356,7 @@ export namespace Pluma {
          */
         static get_default(): App;
 
-        // Own methods of Pluma.App
+        // Methods
 
         /**
          * Create a new #PlumaWindow part of `app`.
@@ -451,7 +451,7 @@ export namespace Pluma {
     class Document extends GtkSource.Buffer {
         static $gtype: GObject.GType<Document>;
 
-        // Own properties of Pluma.Document
+        // Properties
 
         get can_search_again(): boolean;
         get canSearchAgain(): boolean;
@@ -484,11 +484,11 @@ export namespace Pluma {
         set shortname(val: string);
         get uri(): string;
 
-        // Own fields of Pluma.Document
+        // Fields
 
         buffer: GtkSource.Buffer;
 
-        // Constructors of Pluma.Document
+        // Constructors
 
         constructor(properties?: Partial<Document.ConstructorProps>, ...args: any[]);
 
@@ -496,7 +496,7 @@ export namespace Pluma {
 
         static ['new'](): Document;
 
-        // Own signals of Pluma.Document
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -544,11 +544,11 @@ export namespace Pluma {
         ): number;
         emit(signal: 'search-highlight-updated', object: Gtk.TextIter, p0: Gtk.TextIter): void;
 
-        // Own static methods of Pluma.Document
+        // Static methods
 
         static error_quark(): GLib.Quark;
 
-        // Own virtual methods of Pluma.Document
+        // Virtual methods
 
         vfunc_cursor_moved(): void;
         /**
@@ -566,7 +566,7 @@ export namespace Pluma {
         vfunc_saving(size: number, total_size: number): void;
         vfunc_search_highlight_updated(start: Gtk.TextIter, end: Gtk.TextIter): void;
 
-        // Own methods of Pluma.Document
+        // Methods
 
         get_can_search_again(): boolean;
         get_content_type(): string;
@@ -675,14 +675,14 @@ export namespace Pluma {
     {
         static $gtype: GObject.GType<EncodingsComboBox>;
 
-        // Own properties of Pluma.EncodingsComboBox
+        // Properties
 
         get save_mode(): boolean;
         set save_mode(val: boolean);
         get saveMode(): boolean;
         set saveMode(val: boolean);
 
-        // Constructors of Pluma.EncodingsComboBox
+        // Constructors
 
         constructor(properties?: Partial<EncodingsComboBox.ConstructorProps>, ...args: any[]);
 
@@ -693,7 +693,7 @@ export namespace Pluma {
 
         static ['new'](...args: never[]): any;
 
-        // Own methods of Pluma.EncodingsComboBox
+        // Methods
 
         get_selected_encoding(): Encoding;
         set_selected_encoding(encoding?: Encoding | null): void;
@@ -4846,7 +4846,7 @@ export namespace Pluma {
     class Message extends GObject.Object {
         static $gtype: GObject.GType<Message>;
 
-        // Own properties of Pluma.Message
+        // Properties
 
         /**
          * The messages method.
@@ -4856,13 +4856,13 @@ export namespace Pluma {
         get objectPath(): string;
         get type(): MessageType;
 
-        // Constructors of Pluma.Message
+        // Constructors
 
         constructor(properties?: Partial<Message.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Pluma.Message
+        // Methods
 
         /**
          * Get the type of a message argument.
@@ -4934,7 +4934,7 @@ export namespace Pluma {
     class MessageBus extends GObject.Object {
         static $gtype: GObject.GType<MessageBus>;
 
-        // Constructors of Pluma.MessageBus
+        // Constructors
 
         constructor(properties?: Partial<MessageBus.ConstructorProps>, ...args: any[]);
 
@@ -4942,7 +4942,7 @@ export namespace Pluma {
 
         static ['new'](): MessageBus;
 
-        // Own signals of Pluma.MessageBus
+        // Signals
 
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -4953,20 +4953,20 @@ export namespace Pluma {
         connect_after(signal: 'unregistered', callback: (_source: this, message_type: MessageType) => void): number;
         emit(signal: 'unregistered', message_type: MessageType): void;
 
-        // Own static methods of Pluma.MessageBus
+        // Static methods
 
         /**
          * Get the default application #PlumaMessageBus.
          */
         static get_default(): MessageBus;
 
-        // Own virtual methods of Pluma.MessageBus
+        // Virtual methods
 
         vfunc_dispatch(message: Message): void;
         vfunc_registered(message_type: MessageType): void;
         vfunc_unregistered(message_type: MessageType): void;
 
-        // Own methods of Pluma.MessageBus
+        // Methods
 
         /**
          * Blocks evoking the callback specified by `id`. Unblock the callback by
@@ -5108,11 +5108,11 @@ export namespace Pluma {
     class Notebook extends Gtk.Notebook implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<Notebook>;
 
-        // Own fields of Pluma.Notebook
+        // Fields
 
         notebook: Gtk.Notebook;
 
-        // Constructors of Pluma.Notebook
+        // Constructors
 
         constructor(properties?: Partial<Notebook.ConstructorProps>, ...args: any[]);
 
@@ -5120,7 +5120,7 @@ export namespace Pluma {
 
         static ['new'](): Notebook;
 
-        // Own signals of Pluma.Notebook
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -5141,7 +5141,7 @@ export namespace Pluma {
         connect_after(signal: 'tabs-reordered', callback: (_source: this) => void): number;
         emit(signal: 'tabs-reordered'): void;
 
-        // Own virtual methods of Pluma.Notebook
+        // Virtual methods
 
         vfunc_tab_added(tab: Tab): void;
         vfunc_tab_close_request(tab: Tab): void;
@@ -5149,7 +5149,7 @@ export namespace Pluma {
         vfunc_tab_removed(tab: Tab): void;
         vfunc_tabs_reordered(): void;
 
-        // Own methods of Pluma.Notebook
+        // Methods
 
         /**
          * Adds the specified `tab` to the `nb`.
@@ -5644,16 +5644,16 @@ export namespace Pluma {
     class Panel extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<Panel>;
 
-        // Own properties of Pluma.Panel
+        // Properties
 
         get panel_orientation(): Gtk.Orientation;
         get panelOrientation(): Gtk.Orientation;
 
-        // Own fields of Pluma.Panel
+        // Fields
 
         vbox: Gtk.Box;
 
-        // Constructors of Pluma.Panel
+        // Constructors
 
         constructor(properties?: Partial<Panel.ConstructorProps>, ...args: any[]);
 
@@ -5661,7 +5661,7 @@ export namespace Pluma {
 
         static ['new'](orientation: Gtk.Orientation): Panel;
 
-        // Own signals of Pluma.Panel
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -5679,14 +5679,14 @@ export namespace Pluma {
         connect_after(signal: 'item-removed', callback: (_source: this, object: Gtk.Widget) => void): number;
         emit(signal: 'item-removed', object: Gtk.Widget): void;
 
-        // Own virtual methods of Pluma.Panel
+        // Virtual methods
 
         vfunc_close(): void;
         vfunc_focus_document(): void;
         vfunc_item_added(item: Gtk.Widget): void;
         vfunc_item_removed(item: Gtk.Widget): void;
 
-        // Own methods of Pluma.Panel
+        // Methods
 
         /**
          * Switches to the page that contains `item`.
@@ -6163,12 +6163,12 @@ export namespace Pluma {
     class ProgressMessageArea extends Gtk.InfoBar implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<ProgressMessageArea>;
 
-        // Own properties of Pluma.ProgressMessageArea
+        // Properties
 
         set has_cancel_button(val: boolean);
         set hasCancelButton(val: boolean);
 
-        // Constructors of Pluma.ProgressMessageArea
+        // Constructors
 
         constructor(properties?: Partial<ProgressMessageArea.ConstructorProps>, ...args: any[]);
 
@@ -6179,7 +6179,7 @@ export namespace Pluma {
 
         static ['new'](...args: never[]): any;
 
-        // Own methods of Pluma.ProgressMessageArea
+        // Methods
 
         pulse(): void;
         set_fraction(fraction: number): void;
@@ -6610,12 +6610,12 @@ export namespace Pluma {
     class StatusComboBox extends Gtk.EventBox implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<StatusComboBox>;
 
-        // Own properties of Pluma.StatusComboBox
+        // Properties
 
         get label(): string;
         set label(val: string);
 
-        // Constructors of Pluma.StatusComboBox
+        // Constructors
 
         constructor(properties?: Partial<StatusComboBox.ConstructorProps>, ...args: any[]);
 
@@ -6626,7 +6626,7 @@ export namespace Pluma {
 
         static ['new'](...args: never[]): any;
 
-        // Own signals of Pluma.StatusComboBox
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -6635,11 +6635,11 @@ export namespace Pluma {
         connect_after(signal: 'changed', callback: (_source: this, object: Gtk.MenuItem) => void): number;
         emit(signal: 'changed', object: Gtk.MenuItem): void;
 
-        // Own virtual methods of Pluma.StatusComboBox
+        // Virtual methods
 
         vfunc_changed(item: Gtk.MenuItem): void;
 
-        // Own methods of Pluma.StatusComboBox
+        // Methods
 
         add_item(item: Gtk.MenuItem, text?: string | null): void;
         get_item_text(item: Gtk.MenuItem): string;
@@ -7066,7 +7066,7 @@ export namespace Pluma {
     class Statusbar extends Gtk.Statusbar implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<Statusbar>;
 
-        // Constructors of Pluma.Statusbar
+        // Constructors
 
         constructor(properties?: Partial<Statusbar.ConstructorProps>, ...args: any[]);
 
@@ -7074,7 +7074,7 @@ export namespace Pluma {
 
         static ['new'](): Statusbar;
 
-        // Own methods of Pluma.Statusbar
+        // Methods
 
         clear_overwrite(): void;
         set_cursor_position(line: number, col: number): void;
@@ -7507,7 +7507,7 @@ export namespace Pluma {
     class Tab extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<Tab>;
 
-        // Own properties of Pluma.Tab
+        // Properties
 
         get autosave(): boolean;
         set autosave(val: boolean);
@@ -7518,17 +7518,17 @@ export namespace Pluma {
         get name(): string;
         get state(): TabState;
 
-        // Own fields of Pluma.Tab
+        // Fields
 
         vbox: Gtk.Box;
 
-        // Constructors of Pluma.Tab
+        // Constructors
 
         constructor(properties?: Partial<Tab.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of Pluma.Tab
+        // Static methods
 
         /**
          * Gets the #PlumaTab associated with `doc`.
@@ -7536,7 +7536,7 @@ export namespace Pluma {
          */
         static get_from_document(doc: Document): Tab;
 
-        // Own methods of Pluma.Tab
+        // Methods
 
         /**
          * Gets the current state for the autosave feature
@@ -8032,11 +8032,11 @@ export namespace Pluma {
     class View extends GtkSource.View implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable {
         static $gtype: GObject.GType<View>;
 
-        // Own fields of Pluma.View
+        // Fields
 
         view: GtkSource.View;
 
-        // Constructors of Pluma.View
+        // Constructors
 
         constructor(properties?: Partial<View.ConstructorProps>, ...args: any[]);
 
@@ -8047,7 +8047,7 @@ export namespace Pluma {
 
         static ['new'](...args: never[]): any;
 
-        // Own signals of Pluma.View
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -8065,14 +8065,14 @@ export namespace Pluma {
         connect_after(signal: 'start-interactive-search', callback: (_source: this) => boolean): number;
         emit(signal: 'start-interactive-search'): void;
 
-        // Own virtual methods of Pluma.View
+        // Virtual methods
 
         vfunc_drop_uris(uri_list: string): void;
         vfunc_reset_searched_text(): boolean;
         vfunc_start_interactive_goto_line(): boolean;
         vfunc_start_interactive_search(): boolean;
 
-        // Own methods of Pluma.View
+        // Methods
 
         copy_clipboard(): void;
         cut_clipboard(): void;
@@ -8541,22 +8541,22 @@ export namespace Pluma {
     class Window extends Gtk.Window implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<Window>;
 
-        // Own properties of Pluma.Window
+        // Properties
 
         get state(): WindowState;
 
-        // Own fields of Pluma.Window
+        // Fields
 
         // @ts-expect-error This property conflicts with an accessor in a parent class or interface.
         window: Gtk.Window;
 
-        // Constructors of Pluma.Window
+        // Constructors
 
         constructor(properties?: Partial<Window.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of Pluma.Window
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -8577,7 +8577,7 @@ export namespace Pluma {
         connect_after(signal: 'tabs-reordered', callback: (_source: this) => void): number;
         emit(signal: 'tabs-reordered'): void;
 
-        // Own virtual methods of Pluma.Window
+        // Virtual methods
 
         vfunc_active_tab_changed(tab: Tab): void;
         vfunc_active_tab_state_changed(): void;
@@ -8585,7 +8585,7 @@ export namespace Pluma {
         vfunc_tab_removed(tab: Tab): void;
         vfunc_tabs_reordered(): void;
 
-        // Own methods of Pluma.Window
+        // Methods
 
         /**
          * Closes all opened tabs.
@@ -9110,7 +9110,7 @@ export namespace Pluma {
     abstract class AppPrivate {
         static $gtype: GObject.GType<AppPrivate>;
 
-        // Constructors of Pluma.AppPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -9119,7 +9119,7 @@ export namespace Pluma {
     abstract class DocumentPrivate {
         static $gtype: GObject.GType<DocumentPrivate>;
 
-        // Constructors of Pluma.DocumentPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -9127,18 +9127,18 @@ export namespace Pluma {
     abstract class Encoding {
         static $gtype: GObject.GType<Encoding>;
 
-        // Constructors of Pluma.Encoding
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own static methods of Pluma.Encoding
+        // Static methods
 
         static get_current(): Encoding;
         static get_from_charset(charset: string): Encoding;
         static get_from_index(index: number): Encoding;
         static get_utf8(): Encoding;
 
-        // Own methods of Pluma.Encoding
+        // Methods
 
         copy(): Encoding;
         free(): void;
@@ -9151,7 +9151,7 @@ export namespace Pluma {
     abstract class EncodingsComboBoxPrivate {
         static $gtype: GObject.GType<EncodingsComboBoxPrivate>;
 
-        // Constructors of Pluma.EncodingsComboBoxPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -9160,7 +9160,7 @@ export namespace Pluma {
     abstract class MessageBusPrivate {
         static $gtype: GObject.GType<MessageBusPrivate>;
 
-        // Constructors of Pluma.MessageBusPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -9169,7 +9169,7 @@ export namespace Pluma {
     abstract class MessagePrivate {
         static $gtype: GObject.GType<MessagePrivate>;
 
-        // Constructors of Pluma.MessagePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -9177,12 +9177,12 @@ export namespace Pluma {
     class MessageType {
         static $gtype: GObject.GType<MessageType>;
 
-        // Constructors of Pluma.MessageType
+        // Constructors
 
         constructor(object_path: string | null, method: string | null, num_optional: number, ___: any[]);
         _init(...args: any[]): void;
 
-        // Own static methods of Pluma.MessageType
+        // Static methods
 
         /**
          * Get the string identifier for `method` at `object_path`.
@@ -9201,7 +9201,7 @@ export namespace Pluma {
          */
         static is_valid_object_path(object_path?: string | null): boolean;
 
-        // Own methods of Pluma.MessageType
+        // Methods
 
         /**
          * Calls `func` for each argument in the message type.
@@ -9240,7 +9240,7 @@ export namespace Pluma {
     abstract class NotebookPrivate {
         static $gtype: GObject.GType<NotebookPrivate>;
 
-        // Constructors of Pluma.NotebookPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -9249,7 +9249,7 @@ export namespace Pluma {
     abstract class PanelPrivate {
         static $gtype: GObject.GType<PanelPrivate>;
 
-        // Constructors of Pluma.PanelPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -9258,7 +9258,7 @@ export namespace Pluma {
     abstract class ProgressMessageAreaPrivate {
         static $gtype: GObject.GType<ProgressMessageAreaPrivate>;
 
-        // Constructors of Pluma.ProgressMessageAreaPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -9267,7 +9267,7 @@ export namespace Pluma {
     abstract class StatusComboBoxPrivate {
         static $gtype: GObject.GType<StatusComboBoxPrivate>;
 
-        // Constructors of Pluma.StatusComboBoxPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -9276,7 +9276,7 @@ export namespace Pluma {
     abstract class StatusbarPrivate {
         static $gtype: GObject.GType<StatusbarPrivate>;
 
-        // Constructors of Pluma.StatusbarPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -9285,7 +9285,7 @@ export namespace Pluma {
     abstract class TabPrivate {
         static $gtype: GObject.GType<TabPrivate>;
 
-        // Constructors of Pluma.TabPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -9295,7 +9295,7 @@ export namespace Pluma {
     abstract class ViewPrivate {
         static $gtype: GObject.GType<ViewPrivate>;
 
-        // Constructors of Pluma.ViewPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -9305,7 +9305,7 @@ export namespace Pluma {
     abstract class WindowPrivate {
         static $gtype: GObject.GType<WindowPrivate>;
 
-        // Constructors of Pluma.WindowPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -9323,7 +9323,7 @@ export namespace Pluma {
         prototype: AppActivatable;
     }
     interface AppActivatable extends GObject.Object {
-        // Own properties of Pluma.AppActivatable
+        // Properties
 
         /**
          * The app property contains the pluma app for this
@@ -9331,7 +9331,7 @@ export namespace Pluma {
          */
         get app(): App;
 
-        // Own methods of Pluma.AppActivatable
+        // Methods
 
         /**
          * Activates the extension on the application.
@@ -9342,7 +9342,7 @@ export namespace Pluma {
          */
         deactivate(): void;
 
-        // Own virtual methods of Pluma.AppActivatable
+        // Virtual methods
 
         /**
          * Activates the extension on the application.
@@ -9369,7 +9369,7 @@ export namespace Pluma {
         prototype: ViewActivatable;
     }
     interface ViewActivatable extends GObject.Object {
-        // Own properties of Pluma.ViewActivatable
+        // Properties
 
         /**
          * The window property contains the pluma window for this
@@ -9377,7 +9377,7 @@ export namespace Pluma {
          */
         get view(): View;
 
-        // Own methods of Pluma.ViewActivatable
+        // Methods
 
         /**
          * Activates the extension on the window property.
@@ -9388,7 +9388,7 @@ export namespace Pluma {
          */
         deactivate(): void;
 
-        // Own virtual methods of Pluma.ViewActivatable
+        // Virtual methods
 
         /**
          * Activates the extension on the window property.
@@ -9415,7 +9415,7 @@ export namespace Pluma {
         prototype: WindowActivatable;
     }
     interface WindowActivatable extends GObject.Object {
-        // Own properties of Pluma.WindowActivatable
+        // Properties
 
         /**
          * The window property contains the pluma window for this
@@ -9423,7 +9423,7 @@ export namespace Pluma {
          */
         get window(): Window;
 
-        // Own methods of Pluma.WindowActivatable
+        // Methods
 
         /**
          * Activates the extension on the window property.
@@ -9439,7 +9439,7 @@ export namespace Pluma {
          */
         update_state(): void;
 
-        // Own virtual methods of Pluma.WindowActivatable
+        // Virtual methods
 
         /**
          * Activates the extension on the window property.

@@ -76,7 +76,7 @@ export namespace Passim {
     class Client extends GObject.Object {
         static $gtype: GObject.GType<Client>;
 
-        // Constructors of Passim.Client
+        // Constructors
 
         constructor(properties?: Partial<Client.ConstructorProps>, ...args: any[]);
 
@@ -84,7 +84,7 @@ export namespace Passim {
 
         static ['new'](): Client;
 
-        // Own methods of Passim.Client
+        // Methods
 
         /**
          * Gets the carbon saving from using this project.
@@ -152,7 +152,7 @@ export namespace Passim {
     class Item extends GObject.Object {
         static $gtype: GObject.GType<Item>;
 
-        // Constructors of Passim.Item
+        // Constructors
 
         constructor(properties?: Partial<Item.ConstructorProps>, ...args: any[]);
 
@@ -160,7 +160,7 @@ export namespace Passim {
 
         static ['new'](): Item;
 
-        // Own static methods of Passim.Item
+        // Static methods
 
         /**
          * Converts a string to an enumerated item flag.
@@ -178,7 +178,7 @@ export namespace Passim {
          */
         static from_variant(value: GLib.Variant): Item;
 
-        // Own methods of Passim.Item
+        // Methods
 
         /**
          * Adds a specific item flag to the item.

@@ -80,7 +80,7 @@ export namespace Gepub {
     class Archive extends GObject.Object {
         static $gtype: GObject.GType<Archive>;
 
-        // Constructors of Gepub.Archive
+        // Constructors
 
         constructor(properties?: Partial<Archive.ConstructorProps>, ...args: any[]);
 
@@ -88,7 +88,7 @@ export namespace Gepub {
 
         static ['new'](path: string): Archive;
 
-        // Own methods of Gepub.Archive
+        // Methods
 
         get_root_file(): string;
         list_files(): string[];
@@ -107,13 +107,13 @@ export namespace Gepub {
     class Doc extends GObject.Object implements Gio.Initable {
         static $gtype: GObject.GType<Doc>;
 
-        // Own properties of Gepub.Doc
+        // Properties
 
         get chapter(): number;
         set chapter(val: number);
         get path(): string;
 
-        // Constructors of Gepub.Doc
+        // Constructors
 
         constructor(properties?: Partial<Doc.ConstructorProps>, ...args: any[]);
 
@@ -121,7 +121,7 @@ export namespace Gepub {
 
         static ['new'](path: string): Doc;
 
-        // Own methods of Gepub.Doc
+        // Methods
 
         get_chapter(): number;
         get_content(): GLib.Bytes;
@@ -663,7 +663,7 @@ export namespace Gepub {
     class TextChunk extends GObject.Object {
         static $gtype: GObject.GType<TextChunk>;
 
-        // Constructors of Gepub.TextChunk
+        // Constructors
 
         constructor(properties?: Partial<TextChunk.ConstructorProps>, ...args: any[]);
 
@@ -671,7 +671,7 @@ export namespace Gepub {
 
         static ['new'](type: TextChunkType, text: string): TextChunk;
 
-        // Own methods of Gepub.TextChunk
+        // Methods
 
         text(): string;
         type(): TextChunkType;
@@ -697,7 +697,7 @@ export namespace Gepub {
     class Widget extends WebKit2.WebView implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<Widget>;
 
-        // Own properties of Gepub.Widget
+        // Properties
 
         get chapter(): number;
         set chapter(val: number);
@@ -711,7 +711,7 @@ export namespace Gepub {
         get paginate(): boolean;
         set paginate(val: boolean);
 
-        // Constructors of Gepub.Widget
+        // Constructors
 
         constructor(properties?: Partial<Widget.ConstructorProps>, ...args: any[]);
 
@@ -719,7 +719,7 @@ export namespace Gepub {
 
         static ['new'](): Widget;
 
-        // Own methods of Gepub.Widget
+        // Methods
 
         chapter_next(): boolean;
         chapter_prev(): boolean;
@@ -1201,13 +1201,13 @@ export namespace Gepub {
     class NavPoint {
         static $gtype: GObject.GType<NavPoint>;
 
-        // Own fields of Gepub.NavPoint
+        // Fields
 
         label: string;
         content: string;
         playorder: number;
 
-        // Constructors of Gepub.NavPoint
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -1222,12 +1222,12 @@ export namespace Gepub {
     class Resource {
         static $gtype: GObject.GType<Resource>;
 
-        // Own fields of Gepub.Resource
+        // Fields
 
         mime: string;
         uri: string;
 
-        // Constructors of Gepub.Resource
+        // Constructors
 
         constructor(
             properties?: Partial<{

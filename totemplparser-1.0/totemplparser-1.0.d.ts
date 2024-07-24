@@ -25,7 +25,7 @@ export namespace TotemPlParser {
     class ParserError extends GLib.Error {
         static $gtype: GObject.GType<ParserError>;
 
-        // Static fields of TotemPlParser.ParserError
+        // Static fields
 
         /**
          * Error attempting to open a disc device when no disc is present
@@ -40,12 +40,12 @@ export namespace TotemPlParser {
          */
         static EMPTY_PLAYLIST: number;
 
-        // Constructors of TotemPlParser.ParserError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of TotemPlParser.ParserError
+        // Static methods
 
         static quark(): GLib.Quark;
     }
@@ -294,7 +294,7 @@ export namespace TotemPlParser {
     class Parser extends GObject.Object {
         static $gtype: GObject.GType<Parser>;
 
-        // Own properties of TotemPlParser.Parser
+        // Properties
 
         /**
          * If %TRUE, the parser will output debug information.
@@ -328,7 +328,7 @@ export namespace TotemPlParser {
         get recurse(): boolean;
         set recurse(val: boolean);
 
-        // Constructors of TotemPlParser.Parser
+        // Constructors
 
         constructor(properties?: Partial<Parser.ConstructorProps>, ...args: any[]);
 
@@ -336,7 +336,7 @@ export namespace TotemPlParser {
 
         static ['new'](): Parser;
 
-        // Own signals of TotemPlParser.Parser
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -371,7 +371,7 @@ export namespace TotemPlParser {
             metadata: { [key: string]: any } | GLib.HashTable<string, string>,
         ): void;
 
-        // Own static methods of TotemPlParser.Parser
+        // Static methods
 
         /**
          * Checks if the first `len` bytes of `data` can be parsed.
@@ -413,13 +413,13 @@ export namespace TotemPlParser {
          */
         static parse_duration(duration: string, debug: boolean): number;
 
-        // Own virtual methods of TotemPlParser.Parser
+        // Virtual methods
 
         vfunc_entry_parsed(uri: string, metadata: { [key: string]: any } | GLib.HashTable<any, any>): void;
         vfunc_playlist_ended(uri: string): void;
         vfunc_playlist_started(uri: string, metadata: { [key: string]: any } | GLib.HashTable<any, any>): void;
 
-        // Own methods of TotemPlParser.Parser
+        // Methods
 
         /**
          * Adds a glob to the list of mimetypes to ignore, so that
@@ -578,7 +578,7 @@ export namespace TotemPlParser {
     class Playlist extends GObject.Object {
         static $gtype: GObject.GType<Playlist>;
 
-        // Constructors of TotemPlParser.Playlist
+        // Constructors
 
         constructor(properties?: Partial<Playlist.ConstructorProps>, ...args: any[]);
 
@@ -586,7 +586,7 @@ export namespace TotemPlParser {
 
         static ['new'](): Playlist;
 
-        // Own methods of TotemPlParser.Playlist
+        // Methods
 
         /**
          * Appends a new empty element to `playlist,` and modifies `iter` so
@@ -661,7 +661,7 @@ export namespace TotemPlParser {
     abstract class ParserPrivate {
         static $gtype: GObject.GType<ParserPrivate>;
 
-        // Constructors of TotemPlParser.ParserPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -673,7 +673,7 @@ export namespace TotemPlParser {
     class PlaylistIter {
         static $gtype: GObject.GType<PlaylistIter>;
 
-        // Constructors of TotemPlParser.PlaylistIter
+        // Constructors
 
         constructor(properties?: Partial<{}>);
         _init(...args: any[]): void;

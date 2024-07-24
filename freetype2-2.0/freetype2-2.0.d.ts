@@ -18,7 +18,7 @@ export namespace freetype2 {
     class Bitmap {
         static $gtype: GObject.GType<Bitmap>;
 
-        // Constructors of freetype2.Bitmap
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -26,7 +26,7 @@ export namespace freetype2 {
     class Face {
         static $gtype: GObject.GType<Face>;
 
-        // Constructors of freetype2.Face
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -34,7 +34,7 @@ export namespace freetype2 {
     class Library {
         static $gtype: GObject.GType<Library>;
 
-        // Constructors of freetype2.Library
+        // Constructors
 
         _init(...args: any[]): void;
     }

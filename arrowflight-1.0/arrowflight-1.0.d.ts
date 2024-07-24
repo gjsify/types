@@ -28,7 +28,7 @@ export namespace ArrowFlight {
     class CallOptions extends GObject.Object {
         static $gtype: GObject.GType<CallOptions>;
 
-        // Constructors of ArrowFlight.CallOptions
+        // Constructors
 
         constructor(properties?: Partial<CallOptions.ConstructorProps>, ...args: any[]);
 
@@ -48,11 +48,11 @@ export namespace ArrowFlight {
     class Client extends GObject.Object {
         static $gtype: GObject.GType<Client>;
 
-        // Own properties of ArrowFlight.Client
+        // Properties
 
         set client(val: any);
 
-        // Constructors of ArrowFlight.Client
+        // Constructors
 
         constructor(properties?: Partial<Client.ConstructorProps>, ...args: any[]);
 
@@ -60,7 +60,7 @@ export namespace ArrowFlight {
 
         static ['new'](location: Location, options?: ClientOptions | null): Client;
 
-        // Own methods of ArrowFlight.Client
+        // Methods
 
         do_get(ticket: Ticket, options?: CallOptions | null): StreamReader | null;
         list_flights(criteria?: Criteria | null, options?: CallOptions | null): Info[] | null;
@@ -75,7 +75,7 @@ export namespace ArrowFlight {
     class ClientOptions extends GObject.Object {
         static $gtype: GObject.GType<ClientOptions>;
 
-        // Constructors of ArrowFlight.ClientOptions
+        // Constructors
 
         constructor(properties?: Partial<ClientOptions.ConstructorProps>, ...args: any[]);
 
@@ -93,7 +93,7 @@ export namespace ArrowFlight {
     class CommandDescriptor extends Descriptor {
         static $gtype: GObject.GType<CommandDescriptor>;
 
-        // Constructors of ArrowFlight.CommandDescriptor
+        // Constructors
 
         constructor(properties?: Partial<CommandDescriptor.ConstructorProps>, ...args: any[]);
 
@@ -101,7 +101,7 @@ export namespace ArrowFlight {
 
         static ['new'](command: string): CommandDescriptor;
 
-        // Own methods of ArrowFlight.CommandDescriptor
+        // Methods
 
         get_command(): string;
     }
@@ -117,7 +117,7 @@ export namespace ArrowFlight {
     class Criteria extends GObject.Object {
         static $gtype: GObject.GType<Criteria>;
 
-        // Own properties of ArrowFlight.Criteria
+        // Properties
 
         /**
          * Opaque criteria expression, dependent on server implementation.
@@ -125,7 +125,7 @@ export namespace ArrowFlight {
         get expression(): GLib.Bytes;
         set expression(val: GLib.Bytes);
 
-        // Constructors of ArrowFlight.Criteria
+        // Constructors
 
         constructor(properties?: Partial<Criteria.ConstructorProps>, ...args: any[]);
 
@@ -145,11 +145,11 @@ export namespace ArrowFlight {
     class DataStream extends GObject.Object {
         static $gtype: GObject.GType<DataStream>;
 
-        // Own properties of ArrowFlight.DataStream
+        // Properties
 
         set stream(val: any);
 
-        // Constructors of ArrowFlight.DataStream
+        // Constructors
 
         constructor(properties?: Partial<DataStream.ConstructorProps>, ...args: any[]);
 
@@ -167,17 +167,17 @@ export namespace ArrowFlight {
     abstract class Descriptor extends GObject.Object {
         static $gtype: GObject.GType<Descriptor>;
 
-        // Own properties of ArrowFlight.Descriptor
+        // Properties
 
         set descriptor(val: any);
 
-        // Constructors of ArrowFlight.Descriptor
+        // Constructors
 
         constructor(properties?: Partial<Descriptor.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of ArrowFlight.Descriptor
+        // Methods
 
         equal(other_descriptor: Descriptor): boolean;
         to_string(): string;
@@ -194,14 +194,14 @@ export namespace ArrowFlight {
     class Endpoint extends GObject.Object {
         static $gtype: GObject.GType<Endpoint>;
 
-        // Own properties of ArrowFlight.Endpoint
+        // Properties
 
         /**
          * Opaque ticket identify; use with DoGet RPC.
          */
         get ticket(): Ticket;
 
-        // Constructors of ArrowFlight.Endpoint
+        // Constructors
 
         constructor(properties?: Partial<Endpoint.ConstructorProps>, ...args: any[]);
 
@@ -209,7 +209,7 @@ export namespace ArrowFlight {
 
         static ['new'](ticket: Ticket, locations: Location[]): Endpoint;
 
-        // Own methods of ArrowFlight.Endpoint
+        // Methods
 
         equal(other_endpoint: Endpoint): boolean;
         get_locations(): Location[] | null;
@@ -226,11 +226,11 @@ export namespace ArrowFlight {
     class Info extends GObject.Object {
         static $gtype: GObject.GType<Info>;
 
-        // Own properties of ArrowFlight.Info
+        // Properties
 
         set info(val: any);
 
-        // Constructors of ArrowFlight.Info
+        // Constructors
 
         constructor(properties?: Partial<Info.ConstructorProps>, ...args: any[]);
 
@@ -244,7 +244,7 @@ export namespace ArrowFlight {
             total_bytes: number,
         ): Info;
 
-        // Own methods of ArrowFlight.Info
+        // Methods
 
         equal(other_info: Info): boolean;
         get_descriptor(): Descriptor;
@@ -263,7 +263,7 @@ export namespace ArrowFlight {
     class Location extends GObject.Object {
         static $gtype: GObject.GType<Location>;
 
-        // Constructors of ArrowFlight.Location
+        // Constructors
 
         constructor(properties?: Partial<Location.ConstructorProps>, ...args: any[]);
 
@@ -271,7 +271,7 @@ export namespace ArrowFlight {
 
         static ['new'](uri: string): Location;
 
-        // Own methods of ArrowFlight.Location
+        // Methods
 
         equal(other_location: Location): boolean;
         get_scheme(): string;
@@ -287,7 +287,7 @@ export namespace ArrowFlight {
     class PathDescriptor extends Descriptor {
         static $gtype: GObject.GType<PathDescriptor>;
 
-        // Constructors of ArrowFlight.PathDescriptor
+        // Constructors
 
         constructor(properties?: Partial<PathDescriptor.ConstructorProps>, ...args: any[]);
 
@@ -295,7 +295,7 @@ export namespace ArrowFlight {
 
         static ['new'](paths: string[]): PathDescriptor;
 
-        // Own methods of ArrowFlight.PathDescriptor
+        // Methods
 
         get_paths(): string[] | null;
     }
@@ -311,17 +311,17 @@ export namespace ArrowFlight {
     class RecordBatchReader extends GObject.Object {
         static $gtype: GObject.GType<RecordBatchReader>;
 
-        // Own properties of ArrowFlight.RecordBatchReader
+        // Properties
 
         set reader(val: any);
 
-        // Constructors of ArrowFlight.RecordBatchReader
+        // Constructors
 
         constructor(properties?: Partial<RecordBatchReader.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of ArrowFlight.RecordBatchReader
+        // Methods
 
         read_all(): Arrow.Table;
         read_next(): StreamChunk;
@@ -338,14 +338,14 @@ export namespace ArrowFlight {
     class RecordBatchStream extends DataStream {
         static $gtype: GObject.GType<RecordBatchStream>;
 
-        // Own properties of ArrowFlight.RecordBatchStream
+        // Properties
 
         /**
          * The reader that produces record batches.
          */
         get reader(): Arrow.RecordBatchReader;
 
-        // Constructors of ArrowFlight.RecordBatchStream
+        // Constructors
 
         constructor(properties?: Partial<RecordBatchStream.ConstructorProps>, ...args: any[]);
 
@@ -363,18 +363,18 @@ export namespace ArrowFlight {
     abstract class Server extends GObject.Object {
         static $gtype: GObject.GType<Server>;
 
-        // Constructors of ArrowFlight.Server
+        // Constructors
 
         constructor(properties?: Partial<Server.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of ArrowFlight.Server
+        // Virtual methods
 
         vfunc_do_get(context: ServerCallContext, ticket: Ticket): DataStream;
         vfunc_list_flights(context: ServerCallContext, criteria?: Criteria | null): Info[];
 
-        // Own methods of ArrowFlight.Server
+        // Methods
 
         do_get(context: ServerCallContext, ticket: Ticket): DataStream;
         get_port(): number;
@@ -401,12 +401,12 @@ export namespace ArrowFlight {
     class ServerCallContext extends GObject.Object {
         static $gtype: GObject.GType<ServerCallContext>;
 
-        // Own properties of ArrowFlight.ServerCallContext
+        // Properties
 
         set call_context(val: any);
         set callContext(val: any);
 
-        // Constructors of ArrowFlight.ServerCallContext
+        // Constructors
 
         constructor(properties?: Partial<ServerCallContext.ConstructorProps>, ...args: any[]);
 
@@ -424,11 +424,11 @@ export namespace ArrowFlight {
     class ServerOptions extends GObject.Object {
         static $gtype: GObject.GType<ServerOptions>;
 
-        // Own properties of ArrowFlight.ServerOptions
+        // Properties
 
         get location(): Location;
 
-        // Constructors of ArrowFlight.ServerOptions
+        // Constructors
 
         constructor(properties?: Partial<ServerOptions.ConstructorProps>, ...args: any[]);
 
@@ -448,17 +448,17 @@ export namespace ArrowFlight {
     class StreamChunk extends GObject.Object {
         static $gtype: GObject.GType<StreamChunk>;
 
-        // Own properties of ArrowFlight.StreamChunk
+        // Properties
 
         set chunk(val: any);
 
-        // Constructors of ArrowFlight.StreamChunk
+        // Constructors
 
         constructor(properties?: Partial<StreamChunk.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of ArrowFlight.StreamChunk
+        // Methods
 
         get_data(): Arrow.RecordBatch;
         // Conflicted with GObject.Object.get_data
@@ -475,7 +475,7 @@ export namespace ArrowFlight {
     class StreamReader extends RecordBatchReader {
         static $gtype: GObject.GType<StreamReader>;
 
-        // Constructors of ArrowFlight.StreamReader
+        // Constructors
 
         constructor(properties?: Partial<StreamReader.ConstructorProps>, ...args: any[]);
 
@@ -493,7 +493,7 @@ export namespace ArrowFlight {
     class Ticket extends GObject.Object {
         static $gtype: GObject.GType<Ticket>;
 
-        // Own properties of ArrowFlight.Ticket
+        // Properties
 
         /**
          * Opaque identifier or credential to use when requesting a data
@@ -502,7 +502,7 @@ export namespace ArrowFlight {
         get data(): GLib.Bytes;
         set data(val: GLib.Bytes);
 
-        // Constructors of ArrowFlight.Ticket
+        // Constructors
 
         constructor(properties?: Partial<Ticket.ConstructorProps>, ...args: any[]);
 
@@ -510,7 +510,7 @@ export namespace ArrowFlight {
 
         static ['new'](data: GLib.Bytes | Uint8Array): Ticket;
 
-        // Own methods of ArrowFlight.Ticket
+        // Methods
 
         equal(other_ticket: Ticket): boolean;
     }

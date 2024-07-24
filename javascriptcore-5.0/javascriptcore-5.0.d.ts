@@ -436,7 +436,7 @@ export namespace JavaScriptCore {
     class Class extends GObject.Object {
         static $gtype: GObject.GType<Class>;
 
-        // Own properties of JavaScriptCore.Class
+        // Properties
 
         /**
          * The #JSCContext in which the class was registered.
@@ -451,13 +451,13 @@ export namespace JavaScriptCore {
          */
         get parent(): Class;
 
-        // Constructors of JavaScriptCore.Class
+        // Constructors
 
         constructor(properties?: Partial<Class.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of JavaScriptCore.Class
+        // Methods
 
         /**
          * Add a constructor to `jsc_class`. If `name` is %NULL, the class name will be used. When <function>new</function>
@@ -608,7 +608,7 @@ export namespace JavaScriptCore {
     class Context extends GObject.Object {
         static $gtype: GObject.GType<Context>;
 
-        // Own properties of JavaScriptCore.Context
+        // Properties
 
         /**
          * The #JSCVirtualMachine in which the context was created.
@@ -619,7 +619,7 @@ export namespace JavaScriptCore {
          */
         get virtualMachine(): VirtualMachine;
 
-        // Constructors of JavaScriptCore.Context
+        // Constructors
 
         constructor(properties?: Partial<Context.ConstructorProps>, ...args: any[]);
 
@@ -629,7 +629,7 @@ export namespace JavaScriptCore {
 
         static new_with_virtual_machine(vm: VirtualMachine): Context;
 
-        // Own static methods of JavaScriptCore.Context
+        // Static methods
 
         /**
          * Get the #JSCContext that is currently executing a function. This should only be
@@ -637,7 +637,7 @@ export namespace JavaScriptCore {
          */
         static get_current(): Context | null;
 
-        // Own methods of JavaScriptCore.Context
+        // Methods
 
         /**
          * Check the given `code` in `context` for syntax errors. The `line_number` is the starting line number in `uri;`
@@ -798,7 +798,7 @@ export namespace JavaScriptCore {
     class Exception extends GObject.Object {
         static $gtype: GObject.GType<Exception>;
 
-        // Constructors of JavaScriptCore.Exception
+        // Constructors
 
         constructor(properties?: Partial<Exception.ConstructorProps>, ...args: any[]);
 
@@ -808,7 +808,7 @@ export namespace JavaScriptCore {
 
         static new_with_name(context: Context, name: string, message: string): Exception;
 
-        // Own methods of JavaScriptCore.Exception
+        // Methods
 
         /**
          * Get a string with the exception backtrace.
@@ -868,14 +868,14 @@ export namespace JavaScriptCore {
     class Value extends GObject.Object {
         static $gtype: GObject.GType<Value>;
 
-        // Own properties of JavaScriptCore.Value
+        // Properties
 
         /**
          * The #JSCContext in which the value was created.
          */
         get context(): Context;
 
-        // Constructors of JavaScriptCore.Value
+        // Constructors
 
         constructor(properties?: Partial<Value.ConstructorProps>, ...args: any[]);
 
@@ -928,7 +928,7 @@ export namespace JavaScriptCore {
 
         static new_undefined(context: Context): Value;
 
-        // Own methods of JavaScriptCore.Value
+        // Methods
 
         /**
          * Gets a pointer to memory that contains the array buffer data.
@@ -1267,7 +1267,7 @@ export namespace JavaScriptCore {
     class VirtualMachine extends GObject.Object {
         static $gtype: GObject.GType<VirtualMachine>;
 
-        // Constructors of JavaScriptCore.VirtualMachine
+        // Constructors
 
         constructor(properties?: Partial<VirtualMachine.ConstructorProps>, ...args: any[]);
 
@@ -1298,14 +1298,14 @@ export namespace JavaScriptCore {
     class WeakValue extends GObject.Object {
         static $gtype: GObject.GType<WeakValue>;
 
-        // Own properties of JavaScriptCore.WeakValue
+        // Properties
 
         /**
          * The #JSCValue referencing the JavaScript value.
          */
         set value(val: Value);
 
-        // Constructors of JavaScriptCore.WeakValue
+        // Constructors
 
         constructor(properties?: Partial<WeakValue.ConstructorProps>, ...args: any[]);
 
@@ -1313,7 +1313,7 @@ export namespace JavaScriptCore {
 
         static ['new'](value: Value): WeakValue;
 
-        // Own signals of JavaScriptCore.WeakValue
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -1322,7 +1322,7 @@ export namespace JavaScriptCore {
         connect_after(signal: 'cleared', callback: (_source: this) => void): number;
         emit(signal: 'cleared'): void;
 
-        // Own methods of JavaScriptCore.WeakValue
+        // Methods
 
         /**
          * Get a #JSCValue referencing the JavaScript value of `weak_value`.
@@ -1340,7 +1340,7 @@ export namespace JavaScriptCore {
     class ClassVTable {
         static $gtype: GObject.GType<ClassVTable>;
 
-        // Own fields of JavaScriptCore.ClassVTable
+        // Fields
 
         get_property: ClassGetPropertyFunction;
         set_property: ClassSetPropertyFunction;
@@ -1348,7 +1348,7 @@ export namespace JavaScriptCore {
         delete_property: ClassDeletePropertyFunction;
         enumerate_properties: ClassEnumeratePropertiesFunction;
 
-        // Constructors of JavaScriptCore.ClassVTable
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1357,7 +1357,7 @@ export namespace JavaScriptCore {
     abstract class ContextPrivate {
         static $gtype: GObject.GType<ContextPrivate>;
 
-        // Constructors of JavaScriptCore.ContextPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1366,7 +1366,7 @@ export namespace JavaScriptCore {
     abstract class ExceptionPrivate {
         static $gtype: GObject.GType<ExceptionPrivate>;
 
-        // Constructors of JavaScriptCore.ExceptionPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1375,7 +1375,7 @@ export namespace JavaScriptCore {
     abstract class ValuePrivate {
         static $gtype: GObject.GType<ValuePrivate>;
 
-        // Constructors of JavaScriptCore.ValuePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1384,7 +1384,7 @@ export namespace JavaScriptCore {
     abstract class VirtualMachinePrivate {
         static $gtype: GObject.GType<VirtualMachinePrivate>;
 
-        // Constructors of JavaScriptCore.VirtualMachinePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1393,7 +1393,7 @@ export namespace JavaScriptCore {
     abstract class WeakValuePrivate {
         static $gtype: GObject.GType<WeakValuePrivate>;
 
-        // Constructors of JavaScriptCore.WeakValuePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }

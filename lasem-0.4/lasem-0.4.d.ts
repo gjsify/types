@@ -122,18 +122,18 @@ export namespace Lasem {
     abstract class DomCharacterData extends DomNode {
         static $gtype: GObject.GType<DomCharacterData>;
 
-        // Own fields of Lasem.DomCharacterData
+        // Fields
 
         node: DomNode;
         data: string;
 
-        // Constructors of Lasem.DomCharacterData
+        // Constructors
 
         constructor(properties?: Partial<DomCharacterData.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Lasem.DomCharacterData
+        // Methods
 
         get_data(): string;
         // Conflicted with GObject.Object.get_data
@@ -150,12 +150,12 @@ export namespace Lasem {
     abstract class DomDocument extends DomNode {
         static $gtype: GObject.GType<DomDocument>;
 
-        // Own fields of Lasem.DomDocument
+        // Fields
 
         node: DomNode;
         url: string;
 
-        // Constructors of Lasem.DomDocument
+        // Constructors
 
         constructor(properties?: Partial<DomDocument.ConstructorProps>, ...args: any[]);
 
@@ -167,14 +167,14 @@ export namespace Lasem {
 
         static new_from_url(url: string): DomDocument;
 
-        // Own virtual methods of Lasem.DomDocument
+        // Virtual methods
 
         vfunc_create_element(tag_name: string): DomElement;
         vfunc_create_text_node(data: string): DomText;
         vfunc_create_view(): DomView;
         vfunc_get_document_element(): DomElement;
 
-        // Own methods of Lasem.DomDocument
+        // Methods
 
         /**
          * Append a chunk of xml tree to an existing document. The resulting nodes will be appended to
@@ -211,11 +211,11 @@ export namespace Lasem {
     abstract class DomDocumentFragment extends DomNode {
         static $gtype: GObject.GType<DomDocumentFragment>;
 
-        // Own fields of Lasem.DomDocumentFragment
+        // Fields
 
         node: DomNode;
 
-        // Constructors of Lasem.DomDocumentFragment
+        // Constructors
 
         constructor(properties?: Partial<DomDocumentFragment.ConstructorProps>, ...args: any[]);
 
@@ -233,17 +233,17 @@ export namespace Lasem {
     abstract class DomElement extends DomNode {
         static $gtype: GObject.GType<DomElement>;
 
-        // Own fields of Lasem.DomElement
+        // Fields
 
         node: DomNode;
 
-        // Constructors of Lasem.DomElement
+        // Constructors
 
         constructor(properties?: Partial<DomElement.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of Lasem.DomElement
+        // Virtual methods
 
         vfunc_get_attribute(name: string): string;
         vfunc_get_serialized_attributes(): string;
@@ -254,7 +254,7 @@ export namespace Lasem {
          */
         vfunc_set_attribute(name: string, attribute_value: string): void;
 
-        // Own methods of Lasem.DomElement
+        // Methods
 
         get_attribute(name: string): string;
         get_tag_name(): string;
@@ -275,22 +275,22 @@ export namespace Lasem {
     abstract class DomNamedNodeMap extends GObject.Object {
         static $gtype: GObject.GType<DomNamedNodeMap>;
 
-        // Own fields of Lasem.DomNamedNodeMap
+        // Fields
 
         object: GObject.Object;
 
-        // Constructors of Lasem.DomNamedNodeMap
+        // Constructors
 
         constructor(properties?: Partial<DomNamedNodeMap.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of Lasem.DomNamedNodeMap
+        // Virtual methods
 
         vfunc_get_item(index: number): DomNode;
         vfunc_get_length(): number;
 
-        // Own methods of Lasem.DomNamedNodeMap
+        // Methods
 
         get_item(index: number): DomNode;
         get_length(): number;
@@ -308,7 +308,7 @@ export namespace Lasem {
     abstract class DomNode extends GObject.Object {
         static $gtype: GObject.GType<DomNode>;
 
-        // Own fields of Lasem.DomNode
+        // Fields
 
         object: GObject.Object;
         next_sibling: DomNode;
@@ -317,13 +317,13 @@ export namespace Lasem {
         first_child: DomNode;
         last_child: DomNode;
 
-        // Constructors of Lasem.DomNode
+        // Constructors
 
         constructor(properties?: Partial<DomNode.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of Lasem.DomNode
+        // Virtual methods
 
         vfunc_can_append_child(new_child: DomNode): boolean;
         vfunc_changed(): void;
@@ -342,7 +342,7 @@ export namespace Lasem {
         vfunc_set_node_value(new_value: string): void;
         vfunc_write_to_stream(stream: Gio.OutputStream): void;
 
-        // Own methods of Lasem.DomNode
+        // Methods
 
         /**
          * Adds the node `new_child` to the end of the list of children of this node.
@@ -408,22 +408,22 @@ export namespace Lasem {
     abstract class DomNodeList extends GObject.Object {
         static $gtype: GObject.GType<DomNodeList>;
 
-        // Own fields of Lasem.DomNodeList
+        // Fields
 
         object: GObject.Object;
 
-        // Constructors of Lasem.DomNodeList
+        // Constructors
 
         constructor(properties?: Partial<DomNodeList.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of Lasem.DomNodeList
+        // Virtual methods
 
         vfunc_get_item(index: number): DomNode;
         vfunc_get_length(): number;
 
-        // Own methods of Lasem.DomNodeList
+        // Methods
 
         get_item(index: number): DomNode;
         get_length(): number;
@@ -438,11 +438,11 @@ export namespace Lasem {
     class DomText extends DomCharacterData {
         static $gtype: GObject.GType<DomText>;
 
-        // Own fields of Lasem.DomText
+        // Fields
 
         character_data: DomCharacterData;
 
-        // Constructors of Lasem.DomText
+        // Constructors
 
         constructor(properties?: Partial<DomText.ConstructorProps>, ...args: any[]);
 
@@ -460,7 +460,7 @@ export namespace Lasem {
     abstract class DomView extends GObject.Object {
         static $gtype: GObject.GType<DomView>;
 
-        // Own fields of Lasem.DomView
+        // Fields
 
         object: GObject.Object;
         document: DomDocument;
@@ -470,13 +470,13 @@ export namespace Lasem {
         resolution_ppi: number;
         viewport_pt: Box;
 
-        // Constructors of Lasem.DomView
+        // Constructors
 
         constructor(properties?: Partial<DomView.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of Lasem.DomView
+        // Virtual methods
 
         vfunc_measure(width: number, height: number, baseline: number): void;
         vfunc_render(): void;
@@ -487,7 +487,7 @@ export namespace Lasem {
          */
         vfunc_set_debug(feature: string, enable: boolean): void;
 
-        // Own methods of Lasem.DomView
+        // Methods
 
         get_resolution(): number;
         /**
@@ -544,11 +544,11 @@ export namespace Lasem {
     class Attribute {
         static $gtype: GObject.GType<Attribute>;
 
-        // Own fields of Lasem.Attribute
+        // Fields
 
         value: string;
 
-        // Constructors of Lasem.Attribute
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -557,7 +557,7 @@ export namespace Lasem {
         );
         _init(...args: any[]): void;
 
-        // Own methods of Lasem.Attribute
+        // Methods
 
         is_defined(): boolean;
     }
@@ -565,14 +565,14 @@ export namespace Lasem {
     class AttributeInfos {
         static $gtype: GObject.GType<AttributeInfos>;
 
-        // Own fields of Lasem.AttributeInfos
+        // Fields
 
         name: string;
         attribute_offset: number;
         trait_class: TraitClass;
         trait_default: any;
 
-        // Constructors of Lasem.AttributeInfos
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -587,14 +587,14 @@ export namespace Lasem {
     class AttributeManager {
         static $gtype: GObject.GType<AttributeManager>;
 
-        // Constructors of Lasem.AttributeManager
+        // Constructors
 
         constructor(n_attributes: number, attribute_infos: AttributeInfos);
         _init(...args: any[]): void;
 
         static ['new'](n_attributes: number, attribute_infos: AttributeInfos): AttributeManager;
 
-        // Own methods of Lasem.AttributeManager
+        // Methods
 
         add_attributes(n_attributes: number, attribute_infos: AttributeInfos): void;
         clean_attributes(instance?: any | null): void;
@@ -609,14 +609,14 @@ export namespace Lasem {
     class Box {
         static $gtype: GObject.GType<Box>;
 
-        // Own fields of Lasem.Box
+        // Fields
 
         x: number;
         y: number;
         width: number;
         height: number;
 
-        // Constructors of Lasem.Box
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -632,7 +632,7 @@ export namespace Lasem {
     abstract class DebugCategory {
         static $gtype: GObject.GType<DebugCategory>;
 
-        // Constructors of Lasem.DebugCategory
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -649,14 +649,14 @@ export namespace Lasem {
     class Extents {
         static $gtype: GObject.GType<Extents>;
 
-        // Own fields of Lasem.Extents
+        // Fields
 
         x1: number;
         y1: number;
         x2: number;
         y2: number;
 
-        // Constructors of Lasem.Extents
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -672,13 +672,13 @@ export namespace Lasem {
     class Property {
         static $gtype: GObject.GType<Property>;
 
-        // Own fields of Lasem.Property
+        // Fields
 
         id: number;
         flags: number;
         value: string;
 
-        // Constructors of Lasem.Property
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -693,16 +693,16 @@ export namespace Lasem {
     class PropertyBag {
         static $gtype: GObject.GType<PropertyBag>;
 
-        // Own fields of Lasem.PropertyBag
+        // Fields
 
         properties: any[];
 
-        // Constructors of Lasem.PropertyBag
+        // Constructors
 
         constructor(properties?: Partial<{}>);
         _init(...args: any[]): void;
 
-        // Own methods of Lasem.PropertyBag
+        // Methods
 
         init(): void;
     }
@@ -710,14 +710,14 @@ export namespace Lasem {
     class PropertyInfos {
         static $gtype: GObject.GType<PropertyInfos>;
 
-        // Own fields of Lasem.PropertyInfos
+        // Fields
 
         name: string;
         id: number;
         trait_class: TraitClass;
         trait_default: string;
 
-        // Constructors of Lasem.PropertyInfos
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -732,14 +732,14 @@ export namespace Lasem {
     class PropertyManager {
         static $gtype: GObject.GType<PropertyManager>;
 
-        // Constructors of Lasem.PropertyManager
+        // Constructors
 
         constructor(n_properties: number, property_infos: PropertyInfos);
         _init(...args: any[]): void;
 
         static ['new'](n_properties: number, property_infos: PropertyInfos): PropertyManager;
 
-        // Own methods of Lasem.PropertyManager
+        // Methods
 
         apply_property_bag(property_bag: PropertyBag, style?: any | null, parent_style?: any | null): void;
         clean_properties(property_bag: PropertyBag): void;
@@ -754,11 +754,11 @@ export namespace Lasem {
     class TraitClass {
         static $gtype: GObject.GType<TraitClass>;
 
-        // Own fields of Lasem.TraitClass
+        // Fields
 
         size: number;
 
-        // Constructors of Lasem.TraitClass
+        // Constructors
 
         constructor(
             properties?: Partial<{

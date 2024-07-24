@@ -724,7 +724,7 @@ export namespace Xdp {
     class Portal extends GObject.Object implements Gio.Initable {
         static $gtype: GObject.GType<Portal>;
 
-        // Constructors of Xdp.Portal
+        // Constructors
 
         constructor(properties?: Partial<Portal.ConstructorProps>, ...args: any[]);
 
@@ -734,7 +734,7 @@ export namespace Xdp {
 
         static ['new'](): Portal;
 
-        // Own signals of Xdp.Portal
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -848,7 +848,7 @@ export namespace Xdp {
             error_message: string,
         ): void;
 
-        // Own static methods of Xdp.Portal
+        // Static methods
 
         /**
          * Detects if running inside of a Flatpak or WebKit sandbox.
@@ -872,7 +872,7 @@ export namespace Xdp {
          */
         static running_under_snap(): boolean;
 
-        // Own methods of Xdp.Portal
+        // Methods
 
         /**
          * Request access to a camera.
@@ -2355,13 +2355,13 @@ export namespace Xdp {
     class Session extends GObject.Object {
         static $gtype: GObject.GType<Session>;
 
-        // Constructors of Xdp.Session
+        // Constructors
 
         constructor(properties?: Partial<Session.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of Xdp.Session
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -2370,7 +2370,7 @@ export namespace Xdp {
         connect_after(signal: 'closed', callback: (_source: this) => void): number;
         emit(signal: 'closed'): void;
 
-        // Own methods of Xdp.Session
+        // Methods
 
         /**
          * Closes the session.
@@ -2591,11 +2591,11 @@ export namespace Xdp {
     abstract class Parent {
         static $gtype: GObject.GType<Parent>;
 
-        // Constructors of Xdp.Parent
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of Xdp.Parent
+        // Methods
 
         /**
          * Copies `source` into a new [struct`Parent]`.

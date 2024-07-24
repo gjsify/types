@@ -187,7 +187,7 @@ export namespace Notify {
     class Notification extends GObject.Object {
         static $gtype: GObject.GType<Notification>;
 
-        // Own properties of Notify.Notification
+        // Properties
 
         /**
          * The name of the application for the notification.
@@ -237,7 +237,7 @@ export namespace Notify {
         get summary(): string;
         set summary(val: string);
 
-        // Constructors of Notify.Notification
+        // Constructors
 
         constructor(properties?: Partial<Notification.ConstructorProps>, ...args: any[]);
 
@@ -245,7 +245,7 @@ export namespace Notify {
 
         static ['new'](summary: string, body?: string | null, icon?: string | null): Notification;
 
-        // Own signals of Notify.Notification
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -254,11 +254,11 @@ export namespace Notify {
         connect_after(signal: 'closed', callback: (_source: this) => void): number;
         emit(signal: 'closed'): void;
 
-        // Own virtual methods of Notify.Notification
+        // Virtual methods
 
         vfunc_closed(): void;
 
-        // Own methods of Notify.Notification
+        // Methods
 
         /**
          * Adds an action to a notification.
@@ -414,7 +414,7 @@ export namespace Notify {
     abstract class NotificationPrivate {
         static $gtype: GObject.GType<NotificationPrivate>;
 
-        // Constructors of Notify.NotificationPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }

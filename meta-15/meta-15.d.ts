@@ -1917,18 +1917,18 @@ export namespace Meta {
     abstract class Backend extends GObject.Object implements Gio.Initable {
         static $gtype: GObject.GType<Backend>;
 
-        // Own properties of Meta.Backend
+        // Properties
 
         get capabilities(): BackendCapabilities;
         get context(): Context;
 
-        // Constructors of Meta.Backend
+        // Constructors
 
         constructor(properties?: Partial<Backend.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of Meta.Backend
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -1955,7 +1955,7 @@ export namespace Meta {
         connect_after(signal: 'prepare-shutdown', callback: (_source: this) => void): number;
         emit(signal: 'prepare-shutdown'): void;
 
-        // Own methods of Meta.Backend
+        // Methods
 
         freeze_keyboard(timestamp: number): void;
         get_capabilities(): BackendCapabilities;
@@ -2492,12 +2492,12 @@ export namespace Meta {
     class Background extends GObject.Object {
         static $gtype: GObject.GType<Background>;
 
-        // Own properties of Meta.Background
+        // Properties
 
         get meta_display(): Display;
         get metaDisplay(): Display;
 
-        // Constructors of Meta.Background
+        // Constructors
 
         constructor(properties?: Partial<Background.ConstructorProps>, ...args: any[]);
 
@@ -2505,7 +2505,7 @@ export namespace Meta {
 
         static ['new'](display: Display): Background;
 
-        // Own signals of Meta.Background
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -2514,11 +2514,11 @@ export namespace Meta {
         connect_after(signal: 'changed', callback: (_source: this) => void): number;
         emit(signal: 'changed'): void;
 
-        // Own static methods of Meta.Background
+        // Static methods
 
         static refresh_all(): void;
 
-        // Own methods of Meta.Background
+        // Methods
 
         set_blend(file1: Gio.File, file2: Gio.File, blend_factor: number, style: GDesktopEnums.BackgroundStyle): void;
         set_color(color: Cogl.Color): void;
@@ -2539,7 +2539,7 @@ export namespace Meta {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends Clutter.Actor.ConstructorProps,
+            extends Clutter.Actor.ConstructorProps<Clutter.LayoutManager, BackgroundContent>,
                 Atk.ImplementorIface.ConstructorProps,
                 Clutter.Animatable.ConstructorProps {
             meta_display: Display;
@@ -2554,16 +2554,19 @@ export namespace Meta {
      * By integrating with [class`Meta`.WindowGroup] we can avoid painting parts of
      * the background that are obscured by other windows.
      */
-    class BackgroundActor extends Clutter.Actor implements Atk.ImplementorIface, Clutter.Animatable {
+    class BackgroundActor
+        extends Clutter.Actor<Clutter.LayoutManager, BackgroundContent>
+        implements Atk.ImplementorIface, Clutter.Animatable
+    {
         static $gtype: GObject.GType<BackgroundActor>;
 
-        // Own properties of Meta.BackgroundActor
+        // Properties
 
         get meta_display(): Display;
         get metaDisplay(): Display;
         get monitor(): number;
 
-        // Constructors of Meta.BackgroundActor
+        // Constructors
 
         constructor(properties?: Partial<BackgroundActor.ConstructorProps>, ...args: any[]);
 
@@ -3127,7 +3130,7 @@ export namespace Meta {
     class BackgroundContent extends GObject.Object implements Clutter.Content {
         static $gtype: GObject.GType<BackgroundContent>;
 
-        // Own properties of Meta.BackgroundContent
+        // Properties
 
         get background(): Background;
         set background(val: Background);
@@ -3157,13 +3160,13 @@ export namespace Meta {
         get vignetteSharpness(): number;
         set vignetteSharpness(val: number);
 
-        // Constructors of Meta.BackgroundContent
+        // Constructors
 
         constructor(properties?: Partial<BackgroundContent.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of Meta.BackgroundContent
+        // Static methods
 
         /**
          * Creates a new actor to draw the background for the given monitor.
@@ -3172,7 +3175,7 @@ export namespace Meta {
          */
         static ['new'](display: Display, monitor: number): Clutter.Content;
 
-        // Own methods of Meta.BackgroundContent
+        // Methods
 
         set_background(background: Background): void;
         set_gradient(enabled: boolean, height: number, tone_start: number): void;
@@ -3682,7 +3685,7 @@ export namespace Meta {
     class BackgroundGroup extends Clutter.Actor implements Atk.ImplementorIface, Clutter.Animatable {
         static $gtype: GObject.GType<BackgroundGroup>;
 
-        // Constructors of Meta.BackgroundGroup
+        // Constructors
 
         constructor(properties?: Partial<BackgroundGroup.ConstructorProps>, ...args: any[]);
 
@@ -4186,13 +4189,13 @@ export namespace Meta {
     class BackgroundImage extends GObject.Object {
         static $gtype: GObject.GType<BackgroundImage>;
 
-        // Constructors of Meta.BackgroundImage
+        // Constructors
 
         constructor(properties?: Partial<BackgroundImage.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of Meta.BackgroundImage
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -4201,7 +4204,7 @@ export namespace Meta {
         connect_after(signal: 'loaded', callback: (_source: this) => void): number;
         emit(signal: 'loaded'): void;
 
-        // Own methods of Meta.BackgroundImage
+        // Methods
 
         /**
          * This function is a convenience function for checking for success,
@@ -4229,17 +4232,17 @@ export namespace Meta {
     class BackgroundImageCache extends GObject.Object {
         static $gtype: GObject.GType<BackgroundImageCache>;
 
-        // Constructors of Meta.BackgroundImageCache
+        // Constructors
 
         constructor(properties?: Partial<BackgroundImageCache.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of Meta.BackgroundImageCache
+        // Static methods
 
         static get_default(): BackgroundImageCache;
 
-        // Own methods of Meta.BackgroundImageCache
+        // Methods
 
         /**
          * Loads an image to use as a background, or returns a reference to an
@@ -4292,7 +4295,7 @@ export namespace Meta {
     class Barrier extends GObject.Object implements Gio.Initable {
         static $gtype: GObject.GType<Barrier>;
 
-        // Own properties of Meta.Barrier
+        // Properties
 
         get backend(): Backend;
         get directions(): BarrierDirection;
@@ -4302,7 +4305,7 @@ export namespace Meta {
         get y1(): number;
         get y2(): number;
 
-        // Constructors of Meta.Barrier
+        // Constructors
 
         constructor(properties?: Partial<Barrier.ConstructorProps>, ...args: any[]);
 
@@ -4318,7 +4321,7 @@ export namespace Meta {
             flags: BarrierFlags,
         ): Barrier;
 
-        // Own signals of Meta.Barrier
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -4330,7 +4333,7 @@ export namespace Meta {
         connect_after(signal: 'left', callback: (_source: this, event: BarrierEvent) => void): number;
         emit(signal: 'left', event: BarrierEvent): void;
 
-        // Own methods of Meta.Barrier
+        // Methods
 
         destroy(): void;
         is_active(): boolean;
@@ -4890,18 +4893,18 @@ export namespace Meta {
     abstract class Compositor extends GObject.Object {
         static $gtype: GObject.GType<Compositor>;
 
-        // Own properties of Meta.Compositor
+        // Properties
 
         get backend(): Backend;
         get display(): Display;
 
-        // Constructors of Meta.Compositor
+        // Constructors
 
         constructor(properties?: Partial<Compositor.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Meta.Compositor
+        // Methods
 
         get_feedback_group(): Clutter.Actor;
         get_laters(): Laters;
@@ -4930,7 +4933,7 @@ export namespace Meta {
     class Context extends GObject.Object {
         static $gtype: GObject.GType<Context>;
 
-        // Own properties of Meta.Context
+        // Properties
 
         get name(): string;
         get unsafe_mode(): boolean;
@@ -4938,13 +4941,13 @@ export namespace Meta {
         get unsafeMode(): boolean;
         set unsafeMode(val: boolean);
 
-        // Constructors of Meta.Context
+        // Constructors
 
         constructor(properties?: Partial<Context.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of Meta.Context
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -4956,7 +4959,7 @@ export namespace Meta {
         connect_after(signal: 'started', callback: (_source: this) => void): number;
         emit(signal: 'started'): void;
 
-        // Own methods of Meta.Context
+        // Methods
 
         /**
          * See g_option_context_add_main_entries() for more details.
@@ -5030,17 +5033,17 @@ export namespace Meta {
     class CursorTracker extends GObject.Object {
         static $gtype: GObject.GType<CursorTracker>;
 
-        // Own properties of Meta.CursorTracker
+        // Properties
 
         get backend(): Backend;
 
-        // Constructors of Meta.CursorTracker
+        // Constructors
 
         constructor(properties?: Partial<CursorTracker.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of Meta.CursorTracker
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -5055,7 +5058,7 @@ export namespace Meta {
         connect_after(signal: 'visibility-changed', callback: (_source: this) => void): number;
         emit(signal: 'visibility-changed'): void;
 
-        // Own static methods of Meta.CursorTracker
+        // Static methods
 
         /**
          * Retrieves the cursor tracker object for `display`.
@@ -5063,7 +5066,7 @@ export namespace Meta {
          */
         static get_for_display(display: Display): CursorTracker;
 
-        // Own methods of Meta.CursorTracker
+        // Methods
 
         /**
          * Get the hotspot of the current cursor sprite.
@@ -5234,20 +5237,20 @@ export namespace Meta {
     class Display extends GObject.Object {
         static $gtype: GObject.GType<Display>;
 
-        // Own properties of Meta.Display
+        // Properties
 
         get compositor_modifiers(): Clutter.ModifierType;
         get compositorModifiers(): Clutter.ModifierType;
         get focus_window(): Window;
         get focusWindow(): Window;
 
-        // Constructors of Meta.Display
+        // Constructors
 
         constructor(properties?: Partial<Display.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of Meta.Display
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -5415,7 +5418,7 @@ export namespace Meta {
         connect_after(signal: 'x11-display-setup', callback: (_source: this) => void): number;
         emit(signal: 'x11-display-setup'): void;
 
-        // Own methods of Meta.Display
+        // Methods
 
         /**
          * Add a keybinding at runtime. The key `name` in `schema` needs to be of
@@ -5632,13 +5635,13 @@ export namespace Meta {
     class Dnd extends GObject.Object {
         static $gtype: GObject.GType<Dnd>;
 
-        // Constructors of Meta.Dnd
+        // Constructors
 
         constructor(properties?: Partial<Dnd.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of Meta.Dnd
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -5671,20 +5674,20 @@ export namespace Meta {
     class IdleMonitor extends GObject.Object {
         static $gtype: GObject.GType<IdleMonitor>;
 
-        // Own properties of Meta.IdleMonitor
+        // Properties
 
         /**
          * The device to listen to idletime on.
          */
         get device(): Clutter.InputDevice;
 
-        // Constructors of Meta.IdleMonitor
+        // Constructors
 
         constructor(properties?: Partial<IdleMonitor.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Meta.IdleMonitor
+        // Methods
 
         add_idle_watch(interval_msec: number, callback?: IdleMonitorWatchFunc | null): number;
         add_user_active_watch(callback?: IdleMonitorWatchFunc | null): number;
@@ -5707,13 +5710,13 @@ export namespace Meta {
     class Laters extends GObject.Object {
         static $gtype: GObject.GType<Laters>;
 
-        // Constructors of Meta.Laters
+        // Constructors
 
         constructor(properties?: Partial<Laters.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Meta.Laters
+        // Methods
 
         /**
          * Sets up a callback  to be called at some later time. `when` determines the
@@ -5747,7 +5750,7 @@ export namespace Meta {
     class LaunchContext extends Gio.AppLaunchContext {
         static $gtype: GObject.GType<LaunchContext>;
 
-        // Own properties of Meta.LaunchContext
+        // Properties
 
         get display(): Display;
         get timestamp(): number;
@@ -5755,13 +5758,13 @@ export namespace Meta {
         get workspace(): Workspace;
         set workspace(val: Workspace);
 
-        // Constructors of Meta.LaunchContext
+        // Constructors
 
         constructor(properties?: Partial<LaunchContext.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Meta.LaunchContext
+        // Methods
 
         set_timestamp(timestamp: number): void;
         set_workspace(workspace: Workspace): void;
@@ -5819,7 +5822,7 @@ export namespace Meta {
     class MonitorManager extends GObject.Object {
         static $gtype: GObject.GType<MonitorManager>;
 
-        // Own properties of Meta.MonitorManager
+        // Properties
 
         get backend(): Backend;
         get experimental_hdr(): string;
@@ -5833,13 +5836,13 @@ export namespace Meta {
         get panel_orientation_managed(): boolean;
         get panelOrientationManaged(): boolean;
 
-        // Constructors of Meta.MonitorManager
+        // Constructors
 
         constructor(properties?: Partial<MonitorManager.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of Meta.MonitorManager
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -5872,7 +5875,7 @@ export namespace Meta {
         ): number;
         emit(signal: 'power-save-mode-changed', object: PowerSaveChangeReason): void;
 
-        // Own methods of Meta.MonitorManager
+        // Methods
 
         can_switch_config(): boolean;
         get_display_configuration_timeout(): number;
@@ -5913,7 +5916,7 @@ export namespace Meta {
     class MultiTexture extends GObject.Object {
         static $gtype: GObject.GType<MultiTexture>;
 
-        // Constructors of Meta.MultiTexture
+        // Constructors
 
         constructor(properties?: Partial<MultiTexture.ConstructorProps>, ...args: any[]);
 
@@ -5923,7 +5926,7 @@ export namespace Meta {
 
         static new_simple(plane: Cogl.Texture): MultiTexture;
 
-        // Own methods of Meta.MultiTexture
+        // Methods
 
         /**
          * Returns the #MetaMultiTextureFormat that is used by this texture.
@@ -5985,17 +5988,17 @@ export namespace Meta {
     abstract class Plugin extends GObject.Object {
         static $gtype: GObject.GType<Plugin>;
 
-        // Constructors of Meta.Plugin
+        // Constructors
 
         constructor(properties?: Partial<Plugin.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of Meta.Plugin
+        // Static methods
 
         static manager_set_plugin_type(gtype: GObject.GType): void;
 
-        // Own virtual methods of Meta.Plugin
+        // Virtual methods
 
         vfunc_confirm_display_change(): void;
         /**
@@ -6093,7 +6096,7 @@ export namespace Meta {
          */
         vfunc_xevent_filter(event: xlib.XEvent): boolean;
 
-        // Own methods of Meta.Plugin
+        // Methods
 
         complete_display_change(ok: boolean): void;
         destroy_completed(actor: WindowActor): void;
@@ -6125,13 +6128,13 @@ export namespace Meta {
     class RemoteAccessController extends GObject.Object {
         static $gtype: GObject.GType<RemoteAccessController>;
 
-        // Constructors of Meta.RemoteAccessController
+        // Constructors
 
         constructor(properties?: Partial<RemoteAccessController.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of Meta.RemoteAccessController
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -6140,7 +6143,7 @@ export namespace Meta {
         connect_after(signal: 'new-handle', callback: (_source: this, object: RemoteAccessHandle) => void): number;
         emit(signal: 'new-handle', object: RemoteAccessHandle): void;
 
-        // Own methods of Meta.RemoteAccessController
+        // Methods
 
         /**
          * Inhibits remote access sessions from being created and running. Any active
@@ -6173,18 +6176,18 @@ export namespace Meta {
     class RemoteAccessHandle extends GObject.Object {
         static $gtype: GObject.GType<RemoteAccessHandle>;
 
-        // Own properties of Meta.RemoteAccessHandle
+        // Properties
 
         get is_recording(): boolean;
         get isRecording(): boolean;
 
-        // Constructors of Meta.RemoteAccessHandle
+        // Constructors
 
         constructor(properties?: Partial<RemoteAccessHandle.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of Meta.RemoteAccessHandle
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -6193,14 +6196,14 @@ export namespace Meta {
         connect_after(signal: 'stopped', callback: (_source: this) => void): number;
         emit(signal: 'stopped'): void;
 
-        // Own virtual methods of Meta.RemoteAccessHandle
+        // Virtual methods
 
         /**
          * Stop the associated remote access session.
          */
         vfunc_stop(): void;
 
-        // Own methods of Meta.RemoteAccessHandle
+        // Methods
 
         get_disable_animations(): boolean;
         /**
@@ -6224,7 +6227,7 @@ export namespace Meta {
     class Selection extends GObject.Object {
         static $gtype: GObject.GType<Selection>;
 
-        // Constructors of Meta.Selection
+        // Constructors
 
         constructor(properties?: Partial<Selection.ConstructorProps>, ...args: any[]);
 
@@ -6232,7 +6235,7 @@ export namespace Meta {
 
         static ['new'](display: Display): Selection;
 
-        // Own signals of Meta.Selection
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -6247,7 +6250,7 @@ export namespace Meta {
         ): number;
         emit(signal: 'owner-changed', object: number, p0: SelectionSource): void;
 
-        // Own methods of Meta.Selection
+        // Methods
 
         /**
          * Returns the list of supported mimetypes for the given selection type.
@@ -6314,13 +6317,13 @@ export namespace Meta {
     class SelectionSource extends GObject.Object {
         static $gtype: GObject.GType<SelectionSource>;
 
-        // Constructors of Meta.SelectionSource
+        // Constructors
 
         constructor(properties?: Partial<SelectionSource.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of Meta.SelectionSource
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -6332,7 +6335,7 @@ export namespace Meta {
         connect_after(signal: 'deactivated', callback: (_source: this) => void): number;
         emit(signal: 'deactivated'): void;
 
-        // Own virtual methods of Meta.SelectionSource
+        // Virtual methods
 
         vfunc_activated(): void;
         vfunc_deactivated(): void;
@@ -6351,7 +6354,7 @@ export namespace Meta {
          */
         vfunc_read_finish(result: Gio.AsyncResult): Gio.InputStream;
 
-        // Own methods of Meta.SelectionSource
+        // Methods
 
         /**
          * Returns the list of supported mimetypes.
@@ -6385,7 +6388,7 @@ export namespace Meta {
     class SelectionSourceMemory extends SelectionSource {
         static $gtype: GObject.GType<SelectionSourceMemory>;
 
-        // Constructors of Meta.SelectionSourceMemory
+        // Constructors
 
         constructor(properties?: Partial<SelectionSourceMemory.ConstructorProps>, ...args: any[]);
 
@@ -6415,7 +6418,7 @@ export namespace Meta {
     class ShadowFactory extends GObject.Object {
         static $gtype: GObject.GType<ShadowFactory>;
 
-        // Constructors of Meta.ShadowFactory
+        // Constructors
 
         constructor(properties?: Partial<ShadowFactory.ConstructorProps>, ...args: any[]);
 
@@ -6423,7 +6426,7 @@ export namespace Meta {
 
         static ['new'](): ShadowFactory;
 
-        // Own signals of Meta.ShadowFactory
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -6432,11 +6435,11 @@ export namespace Meta {
         connect_after(signal: 'changed', callback: (_source: this) => void): number;
         emit(signal: 'changed'): void;
 
-        // Own static methods of Meta.ShadowFactory
+        // Static methods
 
         static get_default(): ShadowFactory;
 
-        // Own methods of Meta.ShadowFactory
+        // Methods
 
         /**
          * Gets the shadow parameters for a particular class of shadows
@@ -6502,20 +6505,20 @@ export namespace Meta {
     class ShapedTexture extends GObject.Object implements Clutter.Content {
         static $gtype: GObject.GType<ShapedTexture>;
 
-        // Own properties of Meta.ShapedTexture
+        // Properties
 
         get clutter_context(): Clutter.Context;
         get clutterContext(): Clutter.Context;
         get color_state(): Clutter.ColorState;
         get colorState(): Clutter.ColorState;
 
-        // Constructors of Meta.ShapedTexture
+        // Constructors
 
         constructor(properties?: Partial<ShapedTexture.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of Meta.ShapedTexture
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -6524,7 +6527,7 @@ export namespace Meta {
         connect_after(signal: 'size-changed', callback: (_source: this) => void): number;
         emit(signal: 'size-changed'): void;
 
-        // Own methods of Meta.ShapedTexture
+        // Methods
 
         /**
          * Flattens the two layers of the shaped texture into one ARGB32
@@ -7019,13 +7022,13 @@ export namespace Meta {
     class SoundPlayer extends GObject.Object {
         static $gtype: GObject.GType<SoundPlayer>;
 
-        // Constructors of Meta.SoundPlayer
+        // Constructors
 
         constructor(properties?: Partial<SoundPlayer.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Meta.SoundPlayer
+        // Methods
 
         /**
          * Plays a sound from a file.
@@ -7055,7 +7058,7 @@ export namespace Meta {
     class Stage extends Clutter.Stage implements Atk.ImplementorIface, Clutter.Animatable {
         static $gtype: GObject.GType<Stage>;
 
-        // Constructors of Meta.Stage
+        // Constructors
 
         constructor(properties?: Partial<Stage.ConstructorProps>, ...args: any[]);
 
@@ -7481,17 +7484,17 @@ export namespace Meta {
     class StartupNotification extends GObject.Object {
         static $gtype: GObject.GType<StartupNotification>;
 
-        // Own properties of Meta.StartupNotification
+        // Properties
 
         get display(): Display;
 
-        // Constructors of Meta.StartupNotification
+        // Constructors
 
         constructor(properties?: Partial<StartupNotification.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of Meta.StartupNotification
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -7500,7 +7503,7 @@ export namespace Meta {
         connect_after(signal: 'changed', callback: (_source: this, object: StartupSequence) => void): number;
         emit(signal: 'changed', object: StartupSequence): void;
 
-        // Own methods of Meta.StartupNotification
+        // Methods
 
         /**
          * Creates an app launch context.
@@ -7544,7 +7547,7 @@ export namespace Meta {
     class StartupSequence extends GObject.Object {
         static $gtype: GObject.GType<StartupSequence>;
 
-        // Own properties of Meta.StartupSequence
+        // Properties
 
         get application_id(): string;
         get applicationId(): string;
@@ -7557,13 +7560,13 @@ export namespace Meta {
         get wmclass(): string;
         get workspace(): number;
 
-        // Constructors of Meta.StartupSequence
+        // Constructors
 
         constructor(properties?: Partial<StartupSequence.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of Meta.StartupSequence
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -7575,7 +7578,7 @@ export namespace Meta {
         connect_after(signal: 'timeout', callback: (_source: this) => void): number;
         emit(signal: 'timeout'): void;
 
-        // Own methods of Meta.StartupSequence
+        // Methods
 
         complete(): void;
         /**
@@ -7619,7 +7622,7 @@ export namespace Meta {
     class WaylandClient extends GObject.Object {
         static $gtype: GObject.GType<WaylandClient>;
 
-        // Constructors of Meta.WaylandClient
+        // Constructors
 
         constructor(properties?: Partial<WaylandClient.ConstructorProps>, ...args: any[]);
 
@@ -7627,7 +7630,7 @@ export namespace Meta {
 
         static ['new'](context: Context, launcher: Gio.SubprocessLauncher): WaylandClient;
 
-        // Own signals of Meta.WaylandClient
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -7636,7 +7639,7 @@ export namespace Meta {
         connect_after(signal: 'client-destroyed', callback: (_source: this) => void): number;
         emit(signal: 'client-destroyed'): void;
 
-        // Own methods of Meta.WaylandClient
+        // Methods
 
         hide_from_window_list(window: Window): void;
         /**
@@ -7682,13 +7685,13 @@ export namespace Meta {
     class WaylandCompositor extends GObject.Object {
         static $gtype: GObject.GType<WaylandCompositor>;
 
-        // Constructors of Meta.WaylandCompositor
+        // Constructors
 
         constructor(properties?: Partial<WaylandCompositor.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of Meta.WaylandCompositor
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -7697,7 +7700,7 @@ export namespace Meta {
         connect_after(signal: 'prepare-shutdown', callback: (_source: this) => void): number;
         emit(signal: 'prepare-shutdown'): void;
 
-        // Own methods of Meta.WaylandCompositor
+        // Methods
 
         get_wayland_display(): any | null;
     }
@@ -7747,17 +7750,17 @@ export namespace Meta {
     class WaylandSurface extends GObject.Object {
         static $gtype: GObject.GType<WaylandSurface>;
 
-        // Own properties of Meta.WaylandSurface
+        // Properties
 
         get window(): Window;
 
-        // Constructors of Meta.WaylandSurface
+        // Constructors
 
         constructor(properties?: Partial<WaylandSurface.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of Meta.WaylandSurface
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -7787,7 +7790,7 @@ export namespace Meta {
         connect_after(signal: 'unmapped', callback: (_source: this) => void): number;
         emit(signal: 'unmapped'): void;
 
-        // Own methods of Meta.WaylandSurface
+        // Methods
 
         /**
          * Get the #MetaWindow associated with this wayland surface.
@@ -7922,7 +7925,7 @@ export namespace Meta {
     abstract class Window extends GObject.Object implements Gio.Initable {
         static $gtype: GObject.GType<Window>;
 
-        // Own properties of Meta.Window
+        // Properties
 
         get above(): boolean;
         get appears_focused(): boolean;
@@ -7969,13 +7972,13 @@ export namespace Meta {
         get wm_class(): string;
         get wmClass(): string;
 
-        // Constructors of Meta.Window
+        // Constructors
 
         constructor(properties?: Partial<Window.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of Meta.Window
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -8008,7 +8011,7 @@ export namespace Meta {
         connect_after(signal: 'workspace-changed', callback: (_source: this) => void): number;
         emit(signal: 'workspace-changed'): void;
 
-        // Own methods of Meta.Window
+        // Methods
 
         activate(current_time: number): void;
         activate_with_workspace(current_time: number, workspace: Workspace): void;
@@ -8882,18 +8885,18 @@ export namespace Meta {
     abstract class WindowActor extends Clutter.Actor implements Atk.ImplementorIface, Clutter.Animatable {
         static $gtype: GObject.GType<WindowActor>;
 
-        // Own properties of Meta.WindowActor
+        // Properties
 
         get meta_window(): Window;
         get metaWindow(): Window;
 
-        // Constructors of Meta.WindowActor
+        // Constructors
 
         constructor(properties?: Partial<WindowActor.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of Meta.WindowActor
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -8911,7 +8914,7 @@ export namespace Meta {
         connect_after(signal: 'thawed', callback: (_source: this) => void): number;
         emit(signal: 'thawed'): void;
 
-        // Own methods of Meta.WindowActor
+        // Methods
 
         /**
          * Freezes the #MetaWindowActor, which inhibits updates and geometry
@@ -9441,7 +9444,7 @@ export namespace Meta {
     class WindowGroup extends Clutter.Actor implements Atk.ImplementorIface, Clutter.Animatable {
         static $gtype: GObject.GType<WindowGroup>;
 
-        // Constructors of Meta.WindowGroup
+        // Constructors
 
         constructor(properties?: Partial<WindowGroup.ConstructorProps>, ...args: any[]);
 
@@ -9959,7 +9962,7 @@ export namespace Meta {
     class Workspace extends GObject.Object {
         static $gtype: GObject.GType<Workspace>;
 
-        // Own properties of Meta.Workspace
+        // Properties
 
         get active(): boolean;
         get n_windows(): number;
@@ -9967,13 +9970,13 @@ export namespace Meta {
         get workspace_index(): number;
         get workspaceIndex(): number;
 
-        // Constructors of Meta.Workspace
+        // Constructors
 
         constructor(properties?: Partial<Workspace.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of Meta.Workspace
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -9985,7 +9988,7 @@ export namespace Meta {
         connect_after(signal: 'window-removed', callback: (_source: this, object: Window) => void): number;
         emit(signal: 'window-removed', object: Window): void;
 
-        // Own methods of Meta.Workspace
+        // Methods
 
         activate(timestamp: number): void;
         /**
@@ -10086,7 +10089,7 @@ export namespace Meta {
     class WorkspaceManager extends GObject.Object {
         static $gtype: GObject.GType<WorkspaceManager>;
 
-        // Own properties of Meta.WorkspaceManager
+        // Properties
 
         get layout_columns(): number;
         get layoutColumns(): number;
@@ -10095,13 +10098,13 @@ export namespace Meta {
         get n_workspaces(): number;
         get nWorkspaces(): number;
 
-        // Constructors of Meta.WorkspaceManager
+        // Constructors
 
         constructor(properties?: Partial<WorkspaceManager.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of Meta.WorkspaceManager
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -10131,7 +10134,7 @@ export namespace Meta {
         connect_after(signal: 'workspaces-reordered', callback: (_source: this) => void): number;
         emit(signal: 'workspaces-reordered'): void;
 
-        // Own methods of Meta.WorkspaceManager
+        // Methods
 
         /**
          * Append a new workspace to the workspace manager and (optionally) switch to that
@@ -10196,13 +10199,13 @@ export namespace Meta {
     class X11Display extends GObject.Object {
         static $gtype: GObject.GType<X11Display>;
 
-        // Constructors of Meta.X11Display
+        // Constructors
 
         constructor(properties?: Partial<X11Display.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Meta.X11Display
+        // Methods
 
         lookup_xwindow(window: Window): xlib.Window;
         redirect_windows(display: Display): void;
@@ -10219,7 +10222,7 @@ export namespace Meta {
     class BarrierEvent {
         static $gtype: GObject.GType<BarrierEvent>;
 
-        // Own fields of Meta.BarrierEvent
+        // Fields
 
         event_id: number;
         dt: number;
@@ -10231,7 +10234,7 @@ export namespace Meta {
         released: boolean;
         grabbed: boolean;
 
-        // Constructors of Meta.BarrierEvent
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -10252,14 +10255,14 @@ export namespace Meta {
     class ButtonLayout {
         static $gtype: GObject.GType<ButtonLayout>;
 
-        // Own fields of Meta.ButtonLayout
+        // Fields
 
         left_buttons: ButtonFunction[];
         left_buttons_has_spacer: boolean[];
         right_buttons: ButtonFunction[];
         right_buttons_has_spacer: boolean[];
 
-        // Constructors of Meta.ButtonLayout
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -10273,13 +10276,13 @@ export namespace Meta {
     class Edge {
         static $gtype: GObject.GType<Edge>;
 
-        // Own fields of Meta.Edge
+        // Fields
 
         rect: Mtk.Rectangle;
         side_type: Side;
         edge_type: EdgeType;
 
-        // Constructors of Meta.Edge
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -10287,14 +10290,14 @@ export namespace Meta {
     class FrameBorder {
         static $gtype: GObject.GType<FrameBorder>;
 
-        // Own fields of Meta.FrameBorder
+        // Fields
 
         left: number;
         right: number;
         top: number;
         bottom: number;
 
-        // Constructors of Meta.FrameBorder
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -10310,13 +10313,13 @@ export namespace Meta {
     class FrameBorders {
         static $gtype: GObject.GType<FrameBorders>;
 
-        // Own fields of Meta.FrameBorders
+        // Fields
 
         visible: FrameBorder;
         invisible: FrameBorder;
         total: FrameBorder;
 
-        // Constructors of Meta.FrameBorders
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -10327,7 +10330,7 @@ export namespace Meta {
         );
         _init(...args: any[]): void;
 
-        // Own methods of Meta.FrameBorders
+        // Methods
 
         clear(): void;
     }
@@ -10337,11 +10340,11 @@ export namespace Meta {
     abstract class KeyBinding {
         static $gtype: GObject.GType<KeyBinding>;
 
-        // Constructors of Meta.KeyBinding
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of Meta.KeyBinding
+        // Methods
 
         get_mask(): number;
         get_modifiers(): Clutter.ModifierType;
@@ -10358,7 +10361,7 @@ export namespace Meta {
     class PluginInfo {
         static $gtype: GObject.GType<PluginInfo>;
 
-        // Own fields of Meta.PluginInfo
+        // Fields
 
         name: string;
         version: string;
@@ -10366,7 +10369,7 @@ export namespace Meta {
         license: string;
         description: string;
 
-        // Constructors of Meta.PluginInfo
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -10388,11 +10391,11 @@ export namespace Meta {
     abstract class Settings {
         static $gtype: GObject.GType<Settings>;
 
-        // Constructors of Meta.Settings
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of Meta.Settings
+        // Methods
 
         get_font_dpi(): number;
         get_ui_scaling_factor(): number;
@@ -10408,11 +10411,11 @@ export namespace Meta {
     abstract class Shadow {
         static $gtype: GObject.GType<Shadow>;
 
-        // Constructors of Meta.Shadow
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of Meta.Shadow
+        // Methods
 
         /**
          * Computes the bounds of the pixels that will be affected by
@@ -10466,7 +10469,7 @@ export namespace Meta {
     class ShadowParams {
         static $gtype: GObject.GType<ShadowParams>;
 
-        // Own fields of Meta.ShadowParams
+        // Fields
 
         radius: number;
         top_fade: number;
@@ -10474,7 +10477,7 @@ export namespace Meta {
         y_offset: number;
         opacity: number;
 
-        // Constructors of Meta.ShadowParams
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -10496,12 +10499,12 @@ export namespace Meta {
     class Strut {
         static $gtype: GObject.GType<Strut>;
 
-        // Own fields of Meta.Strut
+        // Fields
 
         rect: Mtk.Rectangle;
         side: Side;
 
-        // Constructors of Meta.Strut
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -10525,14 +10528,14 @@ export namespace Meta {
     class WindowShape {
         static $gtype: GObject.GType<WindowShape>;
 
-        // Constructors of Meta.WindowShape
+        // Constructors
 
         constructor(region: Mtk.Region);
         _init(...args: any[]): void;
 
         static ['new'](region: Mtk.Region): WindowShape;
 
-        // Own methods of Meta.WindowShape
+        // Methods
 
         equal(shape_b: WindowShape): boolean;
         get_borders(border_top: number, border_right: number, border_bottom: number, border_left: number): void;
@@ -10565,11 +10568,11 @@ export namespace Meta {
         prototype: CloseDialog;
     }
     interface CloseDialog extends GObject.Object {
-        // Own properties of Meta.CloseDialog
+        // Properties
 
         get window(): Window;
 
-        // Own methods of Meta.CloseDialog
+        // Methods
 
         /**
          * Call whenever `dialog` should receive keyboard focus,
@@ -10596,7 +10599,7 @@ export namespace Meta {
          */
         show(): void;
 
-        // Own virtual methods of Meta.CloseDialog
+        // Virtual methods
 
         /**
          * Call whenever `dialog` should receive keyboard focus,
@@ -10628,11 +10631,11 @@ export namespace Meta {
         prototype: InhibitShortcutsDialog;
     }
     interface InhibitShortcutsDialog extends GObject.Object {
-        // Own properties of Meta.InhibitShortcutsDialog
+        // Properties
 
         get window(): Window;
 
-        // Own methods of Meta.InhibitShortcutsDialog
+        // Methods
 
         /**
          * Hides the inhibit shortcuts dialog.
@@ -10649,7 +10652,7 @@ export namespace Meta {
          */
         show(): void;
 
-        // Own virtual methods of Meta.InhibitShortcutsDialog
+        // Virtual methods
 
         /**
          * Hides the inhibit shortcuts dialog.

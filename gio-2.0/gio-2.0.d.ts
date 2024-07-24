@@ -163,7 +163,7 @@ export namespace Gio {
     class DBusError extends GLib.Error {
         static $gtype: GObject.GType<DBusError>;
 
-        // Static fields of Gio.DBusError
+        // Static fields
 
         /**
          * A generic error; "something went wrong" - see the error message for
@@ -356,12 +356,12 @@ export namespace Gio {
          */
         static PROPERTY_READ_ONLY: number;
 
-        // Constructors of Gio.DBusError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of Gio.DBusError
+        // Static methods
 
         /**
          * Creates a D-Bus error name to use for `error`. If `error` matches
@@ -994,7 +994,7 @@ export namespace Gio {
     class IOErrorEnum extends GLib.Error {
         static $gtype: GObject.GType<IOErrorEnum>;
 
-        // Static fields of Gio.IOErrorEnum
+        // Static fields
 
         /**
          * Generic error condition for when an operation fails
@@ -1210,7 +1210,7 @@ export namespace Gio {
          */
         static DESTINATION_UNSET: number;
 
-        // Constructors of Gio.IOErrorEnum
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
@@ -1469,7 +1469,7 @@ export namespace Gio {
     class ResolverError extends GLib.Error {
         static $gtype: GObject.GType<ResolverError>;
 
-        // Static fields of Gio.ResolverError
+        // Static fields
 
         /**
          * the requested name/address/service was not
@@ -1486,12 +1486,12 @@ export namespace Gio {
          */
         static INTERNAL: number;
 
-        // Constructors of Gio.ResolverError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of Gio.ResolverError
+        // Static methods
 
         /**
          * Gets the #GResolver Error Quark.
@@ -1597,7 +1597,7 @@ export namespace Gio {
     class ResourceError extends GLib.Error {
         static $gtype: GObject.GType<ResourceError>;
 
-        // Static fields of Gio.ResourceError
+        // Static fields
 
         /**
          * no file was found at the requested path
@@ -1608,12 +1608,12 @@ export namespace Gio {
          */
         static INTERNAL: number;
 
-        // Constructors of Gio.ResourceError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of Gio.ResourceError
+        // Static methods
 
         /**
          * Gets the #GResource Error Quark.
@@ -1884,7 +1884,7 @@ export namespace Gio {
     class TlsChannelBindingError extends GLib.Error {
         static $gtype: GObject.GType<TlsChannelBindingError>;
 
-        // Static fields of Gio.TlsChannelBindingError
+        // Static fields
 
         /**
          * Either entire binding
@@ -1918,12 +1918,12 @@ export namespace Gio {
          */
         static GENERAL_ERROR: number;
 
-        // Constructors of Gio.TlsChannelBindingError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of Gio.TlsChannelBindingError
+        // Static methods
 
         /**
          * Gets the TLS channel binding error quark.
@@ -1998,7 +1998,7 @@ export namespace Gio {
     class TlsError extends GLib.Error {
         static $gtype: GObject.GType<TlsError>;
 
-        // Static fields of Gio.TlsError
+        // Static fields
 
         /**
          * No TLS provider is available
@@ -2047,12 +2047,12 @@ export namespace Gio {
          */
         static BAD_CERTIFICATE_PASSWORD: number;
 
-        // Constructors of Gio.TlsError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of Gio.TlsError
+        // Static methods
 
         /**
          * Gets the TLS error quark.
@@ -6890,13 +6890,13 @@ export namespace Gio {
     class AppInfoMonitor extends GObject.Object {
         static $gtype: GObject.GType<AppInfoMonitor>;
 
-        // Constructors of Gio.AppInfoMonitor
+        // Constructors
 
         constructor(properties?: Partial<AppInfoMonitor.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of Gio.AppInfoMonitor
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -6905,7 +6905,7 @@ export namespace Gio {
         connect_after(signal: 'changed', callback: (_source: this) => void): number;
         emit(signal: 'changed'): void;
 
-        // Own static methods of Gio.AppInfoMonitor
+        // Static methods
 
         /**
          * Gets the #GAppInfoMonitor for the current thread-default main
@@ -6953,7 +6953,7 @@ export namespace Gio {
     class AppLaunchContext extends GObject.Object {
         static $gtype: GObject.GType<AppLaunchContext>;
 
-        // Constructors of Gio.AppLaunchContext
+        // Constructors
 
         constructor(properties?: Partial<AppLaunchContext.ConstructorProps>, ...args: any[]);
 
@@ -6961,7 +6961,7 @@ export namespace Gio {
 
         static ['new'](): AppLaunchContext;
 
-        // Own signals of Gio.AppLaunchContext
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -6988,7 +6988,7 @@ export namespace Gio {
         ): number;
         emit(signal: 'launched', info: AppInfo, platform_data: GLib.Variant): void;
 
-        // Own virtual methods of Gio.AppLaunchContext
+        // Virtual methods
 
         /**
          * Gets the display string for the `context`. This is used to ensure new
@@ -7025,7 +7025,7 @@ export namespace Gio {
         vfunc_launch_started(info: AppInfo, platform_data: GLib.Variant): void;
         vfunc_launched(info: AppInfo, platform_data: GLib.Variant): void;
 
-        // Own methods of Gio.AppLaunchContext
+        // Methods
 
         /**
          * Gets the display string for the `context`. This is used to ensure new
@@ -7268,7 +7268,7 @@ export namespace Gio {
     class Application extends GObject.Object implements ActionGroup, ActionMap {
         static $gtype: GObject.GType<Application>;
 
-        // Own properties of Gio.Application
+        // Properties
 
         /**
          * The group of actions that the application exports.
@@ -7345,7 +7345,7 @@ export namespace Gio {
         get version(): string;
         set version(val: string);
 
-        // Constructors of Gio.Application
+        // Constructors
 
         constructor(properties?: Partial<Application.ConstructorProps>, ...args: any[]);
 
@@ -7353,7 +7353,7 @@ export namespace Gio {
 
         static ['new'](application_id: string | null, flags: ApplicationFlags): Application;
 
-        // Own signals of Gio.Application
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -7389,7 +7389,7 @@ export namespace Gio {
         connect_after(signal: 'startup', callback: (_source: this) => void): number;
         emit(signal: 'startup'): void;
 
-        // Own static methods of Gio.Application
+        // Static methods
 
         /**
          * Returns the default #GApplication instance for this process.
@@ -7451,7 +7451,7 @@ export namespace Gio {
          */
         static id_is_valid(application_id: string): boolean;
 
-        // Own virtual methods of Gio.Application
+        // Virtual methods
 
         /**
          * Activates the application.
@@ -7574,7 +7574,7 @@ export namespace Gio {
          */
         vfunc_startup(): void;
 
-        // Own methods of Gio.Application
+        // Methods
 
         /**
          * Activates the application.
@@ -9339,7 +9339,7 @@ export namespace Gio {
     class ApplicationCommandLine extends GObject.Object {
         static $gtype: GObject.GType<ApplicationCommandLine>;
 
-        // Own properties of Gio.ApplicationCommandLine
+        // Properties
 
         /**
          * The commandline that caused this [signal`Gio`.Application::command-line]
@@ -9367,13 +9367,13 @@ export namespace Gio {
          */
         set platformData(val: GLib.Variant);
 
-        // Constructors of Gio.ApplicationCommandLine
+        // Constructors
 
         constructor(properties?: Partial<ApplicationCommandLine.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of Gio.ApplicationCommandLine
+        // Virtual methods
 
         /**
          * Signals that command line processing is completed.
@@ -9425,7 +9425,7 @@ export namespace Gio {
          */
         vfunc_printerr_literal(message: string): void;
 
-        // Own methods of Gio.ApplicationCommandLine
+        // Methods
 
         /**
          * Creates a #GFile corresponding to a filename that was given as part
@@ -9649,7 +9649,7 @@ export namespace Gio {
     class BufferedInputStream extends FilterInputStream implements Seekable {
         static $gtype: GObject.GType<BufferedInputStream>;
 
-        // Own properties of Gio.BufferedInputStream
+        // Properties
 
         /**
          * The size of the backend buffer, in bytes.
@@ -9662,7 +9662,7 @@ export namespace Gio {
         get bufferSize(): number;
         set bufferSize(val: number);
 
-        // Constructors of Gio.BufferedInputStream
+        // Constructors
 
         constructor(properties?: Partial<BufferedInputStream.ConstructorProps>, ...args: any[]);
 
@@ -9672,7 +9672,7 @@ export namespace Gio {
 
         static new_sized(base_stream: InputStream, size: number): BufferedInputStream;
 
-        // Own virtual methods of Gio.BufferedInputStream
+        // Virtual methods
 
         /**
          * Tries to read `count` bytes from the stream into the buffer.
@@ -9727,7 +9727,7 @@ export namespace Gio {
          */
         vfunc_fill_finish(result: AsyncResult): number;
 
-        // Own methods of Gio.BufferedInputStream
+        // Methods
 
         /**
          * Tries to read `count` bytes from the stream into the buffer.
@@ -10365,7 +10365,7 @@ export namespace Gio {
     class BufferedOutputStream extends FilterOutputStream implements Seekable {
         static $gtype: GObject.GType<BufferedOutputStream>;
 
-        // Own properties of Gio.BufferedOutputStream
+        // Properties
 
         /**
          * Whether the buffer should automatically grow.
@@ -10388,7 +10388,7 @@ export namespace Gio {
         get bufferSize(): number;
         set bufferSize(val: number);
 
-        // Constructors of Gio.BufferedOutputStream
+        // Constructors
 
         constructor(properties?: Partial<BufferedOutputStream.ConstructorProps>, ...args: any[]);
 
@@ -10398,7 +10398,7 @@ export namespace Gio {
 
         static new_sized(base_stream: OutputStream, size: number): BufferedOutputStream;
 
-        // Own methods of Gio.BufferedOutputStream
+        // Methods
 
         /**
          * Checks if the buffer automatically grows as data is added.
@@ -10944,14 +10944,14 @@ export namespace Gio {
     class BytesIcon extends GObject.Object implements Icon, LoadableIcon {
         static $gtype: GObject.GType<BytesIcon>;
 
-        // Own properties of Gio.BytesIcon
+        // Properties
 
         /**
          * The bytes containing the icon.
          */
         get bytes(): GLib.Bytes;
 
-        // Constructors of Gio.BytesIcon
+        // Constructors
 
         constructor(properties?: Partial<BytesIcon.ConstructorProps>, ...args: any[]);
 
@@ -10959,7 +10959,7 @@ export namespace Gio {
 
         static ['new'](bytes: GLib.Bytes | Uint8Array): BytesIcon;
 
-        // Own methods of Gio.BytesIcon
+        // Methods
 
         /**
          * Gets the #GBytes associated with the given `icon`.
@@ -11502,7 +11502,7 @@ export namespace Gio {
     class Cancellable extends GObject.Object {
         static $gtype: GObject.GType<Cancellable>;
 
-        // Constructors of Gio.Cancellable
+        // Constructors
 
         constructor(properties?: Partial<Cancellable.ConstructorProps>, ...args: any[]);
 
@@ -11510,25 +11510,25 @@ export namespace Gio {
 
         static ['new'](): Cancellable;
 
-        // Own signals of Gio.Cancellable
+        // Signals
 
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
         connect_after(signal: 'cancelled', callback: (_source: this) => void): number;
         emit(signal: 'cancelled'): void;
 
-        // Own static methods of Gio.Cancellable
+        // Static methods
 
         /**
          * Gets the top cancellable from the stack.
          */
         static get_current(): Cancellable | null;
 
-        // Own virtual methods of Gio.Cancellable
+        // Virtual methods
 
         vfunc_cancelled(): void;
 
-        // Own methods of Gio.Cancellable
+        // Methods
 
         /**
          * Will set `cancellable` to cancelled, and will emit the
@@ -11723,7 +11723,7 @@ export namespace Gio {
     class CharsetConverter extends GObject.Object implements Converter, Initable {
         static $gtype: GObject.GType<CharsetConverter>;
 
-        // Own properties of Gio.CharsetConverter
+        // Properties
 
         /**
          * The character encoding to convert from.
@@ -11752,7 +11752,7 @@ export namespace Gio {
         get useFallback(): boolean;
         set useFallback(val: boolean);
 
-        // Constructors of Gio.CharsetConverter
+        // Constructors
 
         constructor(properties?: Partial<CharsetConverter.ConstructorProps>, ...args: any[]);
 
@@ -11760,7 +11760,7 @@ export namespace Gio {
 
         static ['new'](to_charset: string, from_charset: string): CharsetConverter;
 
-        // Own methods of Gio.CharsetConverter
+        // Methods
 
         /**
          * Gets the number of fallbacks that `converter` has applied so far.
@@ -12481,14 +12481,14 @@ export namespace Gio {
     class ConverterInputStream extends FilterInputStream implements PollableInputStream {
         static $gtype: GObject.GType<ConverterInputStream>;
 
-        // Own properties of Gio.ConverterInputStream
+        // Properties
 
         /**
          * The converter object.
          */
         get converter(): Converter;
 
-        // Constructors of Gio.ConverterInputStream
+        // Constructors
 
         constructor(properties?: Partial<ConverterInputStream.ConstructorProps>, ...args: any[]);
 
@@ -12496,7 +12496,7 @@ export namespace Gio {
 
         static ['new'](base_stream: InputStream, converter: Converter): ConverterInputStream;
 
-        // Own methods of Gio.ConverterInputStream
+        // Methods
 
         /**
          * Gets the #GConverter that is used by `converter_stream`.
@@ -13092,14 +13092,14 @@ export namespace Gio {
     class ConverterOutputStream extends FilterOutputStream implements PollableOutputStream {
         static $gtype: GObject.GType<ConverterOutputStream>;
 
-        // Own properties of Gio.ConverterOutputStream
+        // Properties
 
         /**
          * The converter object.
          */
         get converter(): Converter;
 
-        // Constructors of Gio.ConverterOutputStream
+        // Constructors
 
         constructor(properties?: Partial<ConverterOutputStream.ConstructorProps>, ...args: any[]);
 
@@ -13107,7 +13107,7 @@ export namespace Gio {
 
         static ['new'](base_stream: OutputStream, converter: Converter): ConverterOutputStream;
 
-        // Own methods of Gio.ConverterOutputStream
+        // Methods
 
         /**
          * Gets the #GConverter that is used by `converter_stream`.
@@ -14088,7 +14088,7 @@ export namespace Gio {
     class Credentials extends GObject.Object {
         static $gtype: GObject.GType<Credentials>;
 
-        // Constructors of Gio.Credentials
+        // Constructors
 
         constructor(properties?: Partial<Credentials.ConstructorProps>, ...args: any[]);
 
@@ -14096,7 +14096,7 @@ export namespace Gio {
 
         static ['new'](): Credentials;
 
-        // Own methods of Gio.Credentials
+        // Methods
 
         /**
          * Tries to get the UNIX process identifier from `credentials`. This
@@ -14178,13 +14178,13 @@ export namespace Gio {
     class DBusActionGroup extends GObject.Object implements ActionGroup, RemoteActionGroup {
         static $gtype: GObject.GType<DBusActionGroup>;
 
-        // Constructors of Gio.DBusActionGroup
+        // Constructors
 
         constructor(properties?: Partial<DBusActionGroup.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of Gio.DBusActionGroup
+        // Static methods
 
         /**
          * Obtains a #GDBusActionGroup for the action group which is exported at
@@ -15199,7 +15199,7 @@ export namespace Gio {
     class DBusAuthObserver extends GObject.Object {
         static $gtype: GObject.GType<DBusAuthObserver>;
 
-        // Constructors of Gio.DBusAuthObserver
+        // Constructors
 
         constructor(properties?: Partial<DBusAuthObserver.ConstructorProps>, ...args: any[]);
 
@@ -15207,7 +15207,7 @@ export namespace Gio {
 
         static ['new'](): DBusAuthObserver;
 
-        // Own signals of Gio.DBusAuthObserver
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -15225,7 +15225,7 @@ export namespace Gio {
         ): number;
         emit(signal: 'authorize-authenticated-peer', stream: IOStream, credentials?: Credentials | null): void;
 
-        // Own methods of Gio.DBusAuthObserver
+        // Methods
 
         /**
          * Emits the #GDBusAuthObserver::allow-mechanism signal on `observer`.
@@ -15327,7 +15327,7 @@ export namespace Gio {
     class DBusConnection extends GObject.Object implements AsyncInitable<DBusConnection>, Initable {
         static $gtype: GObject.GType<DBusConnection>;
 
-        // Own properties of Gio.DBusConnection
+        // Properties
 
         /**
          * A D-Bus address specifying potential endpoints that can be used
@@ -15422,7 +15422,7 @@ export namespace Gio {
          */
         get uniqueName(): string;
 
-        // Constructors of Gio.DBusConnection
+        // Constructors
 
         constructor(properties?: Partial<DBusConnection.ConstructorProps>, ...args: any[]);
 
@@ -15450,7 +15450,7 @@ export namespace Gio {
             cancellable?: Cancellable | null,
         ): DBusConnection;
 
-        // Own signals of Gio.DBusConnection
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -15465,7 +15465,7 @@ export namespace Gio {
         ): number;
         emit(signal: 'closed', remote_peer_vanished: boolean, error?: GLib.Error | null): void;
 
-        // Own static methods of Gio.DBusConnection
+        // Static methods
 
         /**
          * Asynchronously sets up a D-Bus connection for exchanging D-Bus messages
@@ -15540,7 +15540,7 @@ export namespace Gio {
             callback?: AsyncReadyCallback<DBusConnection> | null,
         ): void;
 
-        // Own methods of Gio.DBusConnection
+        // Methods
 
         /**
          * Adds a message filter. Filters are handlers that are run on all
@@ -17045,7 +17045,7 @@ export namespace Gio {
     abstract class DBusInterfaceSkeleton extends GObject.Object implements DBusInterface {
         static $gtype: GObject.GType<DBusInterfaceSkeleton>;
 
-        // Own properties of Gio.DBusInterfaceSkeleton
+        // Properties
 
         /**
          * Flags from the #GDBusInterfaceSkeletonFlags enumeration.
@@ -17058,13 +17058,13 @@ export namespace Gio {
         get gFlags(): DBusInterfaceSkeletonFlags;
         set gFlags(val: DBusInterfaceSkeletonFlags);
 
-        // Constructors of Gio.DBusInterfaceSkeleton
+        // Constructors
 
         constructor(properties?: Partial<DBusInterfaceSkeleton.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of Gio.DBusInterfaceSkeleton
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -17079,7 +17079,7 @@ export namespace Gio {
         ): number;
         emit(signal: 'g-authorize-method', invocation: DBusMethodInvocation): void;
 
-        // Own virtual methods of Gio.DBusInterfaceSkeleton
+        // Virtual methods
 
         /**
          * If `interface_` has outstanding changes, request for these changes to be
@@ -17113,7 +17113,7 @@ export namespace Gio {
          */
         vfunc_get_vtable(): DBusInterfaceVTable;
 
-        // Own methods of Gio.DBusInterfaceSkeleton
+        // Methods
 
         /**
          * Exports `interface_` at `object_path` on `connection`.
@@ -17645,13 +17645,13 @@ export namespace Gio {
     class DBusMenuModel extends MenuModel {
         static $gtype: GObject.GType<DBusMenuModel>;
 
-        // Constructors of Gio.DBusMenuModel
+        // Constructors
 
         constructor(properties?: Partial<DBusMenuModel.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of Gio.DBusMenuModel
+        // Static methods
 
         /**
          * Obtains a #GDBusMenuModel for the menu model which is exported
@@ -17684,11 +17684,11 @@ export namespace Gio {
     class DBusMessage extends GObject.Object {
         static $gtype: GObject.GType<DBusMessage>;
 
-        // Own properties of Gio.DBusMessage
+        // Properties
 
         get locked(): boolean;
 
-        // Constructors of Gio.DBusMessage
+        // Constructors
 
         constructor(properties?: Partial<DBusMessage.ConstructorProps>, ...args: any[]);
 
@@ -17707,7 +17707,7 @@ export namespace Gio {
 
         static new_signal(path: string, interface_: string, signal: string): DBusMessage;
 
-        // Own static methods of Gio.DBusMessage
+        // Static methods
 
         /**
          * Utility function to calculate how many bytes are needed to
@@ -17716,7 +17716,7 @@ export namespace Gio {
          */
         static bytes_needed(blob: Uint8Array | string): number;
 
-        // Own methods of Gio.DBusMessage
+        // Methods
 
         /**
          * Copies `message`. The copy is a deep copy and the returned
@@ -18038,13 +18038,13 @@ export namespace Gio {
     class DBusMethodInvocation extends GObject.Object {
         static $gtype: GObject.GType<DBusMethodInvocation>;
 
-        // Constructors of Gio.DBusMethodInvocation
+        // Constructors
 
         constructor(properties?: Partial<DBusMethodInvocation.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Gio.DBusMethodInvocation
+        // Methods
 
         /**
          * Gets the #GDBusConnection the method was invoked on.
@@ -18335,7 +18335,7 @@ export namespace Gio {
     {
         static $gtype: GObject.GType<DBusObjectManagerClient>;
 
-        // Own properties of Gio.DBusObjectManagerClient
+        // Properties
 
         /**
          * If this property is not %G_BUS_TYPE_NONE, then
@@ -18410,7 +18410,7 @@ export namespace Gio {
          */
         get objectPath(): string;
 
-        // Constructors of Gio.DBusObjectManagerClient
+        // Constructors
 
         constructor(properties?: Partial<DBusObjectManagerClient.ConstructorProps>, ...args: any[]);
 
@@ -18443,7 +18443,7 @@ export namespace Gio {
             cancellable?: Cancellable | null,
         ): DBusObjectManagerClient;
 
-        // Own signals of Gio.DBusObjectManagerClient
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -18506,7 +18506,7 @@ export namespace Gio {
             parameters: GLib.Variant,
         ): void;
 
-        // Own static methods of Gio.DBusObjectManagerClient
+        // Static methods
 
         /**
          * Asynchronously creates a new #GDBusObjectManagerClient object.
@@ -18566,7 +18566,7 @@ export namespace Gio {
             callback?: AsyncReadyCallback<DBusObjectManagerClient> | null,
         ): void;
 
-        // Own virtual methods of Gio.DBusObjectManagerClient
+        // Virtual methods
 
         /**
          * Signal class handler for the #GDBusObjectManagerClient::interface-proxy-properties-changed signal.
@@ -18597,7 +18597,7 @@ export namespace Gio {
             parameters: GLib.Variant,
         ): void;
 
-        // Own methods of Gio.DBusObjectManagerClient
+        // Methods
 
         /**
          * Gets the #GDBusConnection used by `manager`.
@@ -19326,7 +19326,7 @@ export namespace Gio {
     class DBusObjectManagerServer extends GObject.Object implements DBusObjectManager {
         static $gtype: GObject.GType<DBusObjectManagerServer>;
 
-        // Own properties of Gio.DBusObjectManagerServer
+        // Properties
 
         /**
          * The #GDBusConnection to export objects on.
@@ -19342,7 +19342,7 @@ export namespace Gio {
          */
         get objectPath(): string;
 
-        // Constructors of Gio.DBusObjectManagerServer
+        // Constructors
 
         constructor(properties?: Partial<DBusObjectManagerServer.ConstructorProps>, ...args: any[]);
 
@@ -19350,7 +19350,7 @@ export namespace Gio {
 
         static ['new'](object_path: string): DBusObjectManagerServer;
 
-        // Own methods of Gio.DBusObjectManagerServer
+        // Methods
 
         /**
          * Exports `object` on `manager`.
@@ -19891,7 +19891,7 @@ export namespace Gio {
     class DBusObjectProxy extends GObject.Object implements DBusObject {
         static $gtype: GObject.GType<DBusObjectProxy>;
 
-        // Own properties of Gio.DBusObjectProxy
+        // Properties
 
         /**
          * The connection of the proxy.
@@ -19910,7 +19910,7 @@ export namespace Gio {
          */
         get gObjectPath(): string;
 
-        // Constructors of Gio.DBusObjectProxy
+        // Constructors
 
         constructor(properties?: Partial<DBusObjectProxy.ConstructorProps>, ...args: any[]);
 
@@ -19918,7 +19918,7 @@ export namespace Gio {
 
         static ['new'](connection: DBusConnection, object_path: string): DBusObjectProxy;
 
-        // Own methods of Gio.DBusObjectProxy
+        // Methods
 
         /**
          * Gets the connection that `proxy` is for.
@@ -20395,7 +20395,7 @@ export namespace Gio {
     class DBusObjectSkeleton extends GObject.Object implements DBusObject {
         static $gtype: GObject.GType<DBusObjectSkeleton>;
 
-        // Own properties of Gio.DBusObjectSkeleton
+        // Properties
 
         /**
          * The object path where the object is exported.
@@ -20408,7 +20408,7 @@ export namespace Gio {
         get gObjectPath(): string;
         set gObjectPath(val: string);
 
-        // Constructors of Gio.DBusObjectSkeleton
+        // Constructors
 
         constructor(properties?: Partial<DBusObjectSkeleton.ConstructorProps>, ...args: any[]);
 
@@ -20416,7 +20416,7 @@ export namespace Gio {
 
         static ['new'](object_path: string): DBusObjectSkeleton;
 
-        // Own signals of Gio.DBusObjectSkeleton
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -20431,7 +20431,7 @@ export namespace Gio {
         ): number;
         emit(signal: 'authorize-method', _interface: DBusInterfaceSkeleton, invocation: DBusMethodInvocation): void;
 
-        // Own virtual methods of Gio.DBusObjectSkeleton
+        // Virtual methods
 
         /**
          * Signal class handler for the #GDBusObjectSkeleton::authorize-method signal.
@@ -20440,7 +20440,7 @@ export namespace Gio {
          */
         vfunc_authorize_method(interface_: DBusInterfaceSkeleton, invocation: DBusMethodInvocation): boolean;
 
-        // Own methods of Gio.DBusObjectSkeleton
+        // Methods
 
         /**
          * Adds `interface_` to `object`.
@@ -21014,7 +21014,7 @@ export namespace Gio {
 
         [key: string]: any;
 
-        // Own properties of Gio.DBusProxy
+        // Properties
 
         /**
          * If this property is not %G_BUS_TYPE_NONE, then
@@ -21163,7 +21163,7 @@ export namespace Gio {
          */
         get gObjectPath(): string;
 
-        // Constructors of Gio.DBusProxy
+        // Constructors
 
         constructor(properties?: Partial<DBusProxy.ConstructorProps>, ...args: any[]);
 
@@ -21196,7 +21196,7 @@ export namespace Gio {
             cancellable?: Cancellable | null,
         ): DBusProxy;
 
-        // Own signals of Gio.DBusProxy
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -21230,7 +21230,7 @@ export namespace Gio {
         ): number;
         emit(signal: 'g-signal', sender_name: string | null, signal_name: string, parameters: GLib.Variant): void;
 
-        // Own static methods of Gio.DBusProxy
+        // Static methods
 
         /**
          * Creates a proxy for accessing `interface_name` on the remote object
@@ -21313,7 +21313,7 @@ export namespace Gio {
             flags?: DBusProxyFlags,
         ) => T & DBusProxy;
 
-        // Own virtual methods of Gio.DBusProxy
+        // Virtual methods
 
         /**
          * Signal class handler for the #GDBusProxy::g-properties-changed signal.
@@ -21329,7 +21329,7 @@ export namespace Gio {
          */
         vfunc_g_signal(sender_name: string, signal_name: string, parameters: GLib.Variant): void;
 
-        // Own methods of Gio.DBusProxy
+        // Methods
 
         /**
          * Asynchronously invokes the `method_name` method on `proxy`.
@@ -22303,7 +22303,7 @@ export namespace Gio {
     class DBusServer extends GObject.Object implements Initable {
         static $gtype: GObject.GType<DBusServer>;
 
-        // Own properties of Gio.DBusServer
+        // Properties
 
         /**
          * Whether the server is currently active.
@@ -22340,7 +22340,7 @@ export namespace Gio {
          */
         get guid(): string;
 
-        // Constructors of Gio.DBusServer
+        // Constructors
 
         constructor(properties?: Partial<DBusServer.ConstructorProps>, ...args: any[]);
 
@@ -22354,7 +22354,7 @@ export namespace Gio {
             cancellable?: Cancellable | null,
         ): DBusServer;
 
-        // Own signals of Gio.DBusServer
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -22366,7 +22366,7 @@ export namespace Gio {
         ): number;
         emit(signal: 'new-connection', connection: DBusConnection): void;
 
-        // Own methods of Gio.DBusServer
+        // Methods
 
         /**
          * Gets a
@@ -22907,7 +22907,7 @@ export namespace Gio {
     class DataInputStream extends BufferedInputStream implements Seekable {
         static $gtype: GObject.GType<DataInputStream>;
 
-        // Own properties of Gio.DataInputStream
+        // Properties
 
         /**
          * The :byte-order property determines the byte ordering that
@@ -22936,7 +22936,7 @@ export namespace Gio {
         get newlineType(): DataStreamNewlineType;
         set newlineType(val: DataStreamNewlineType);
 
-        // Constructors of Gio.DataInputStream
+        // Constructors
 
         constructor(properties?: Partial<DataInputStream.ConstructorProps>, ...args: any[]);
 
@@ -22944,7 +22944,7 @@ export namespace Gio {
 
         static ['new'](base_stream: InputStream): DataInputStream;
 
-        // Own methods of Gio.DataInputStream
+        // Methods
 
         /**
          * Gets the byte order for the data input stream.
@@ -23731,7 +23731,7 @@ export namespace Gio {
     class DataOutputStream extends FilterOutputStream implements Seekable {
         static $gtype: GObject.GType<DataOutputStream>;
 
-        // Own properties of Gio.DataOutputStream
+        // Properties
 
         /**
          * Determines the byte ordering that is used when writing
@@ -23746,7 +23746,7 @@ export namespace Gio {
         get byteOrder(): DataStreamByteOrder;
         set byteOrder(val: DataStreamByteOrder);
 
-        // Constructors of Gio.DataOutputStream
+        // Constructors
 
         constructor(properties?: Partial<DataOutputStream.ConstructorProps>, ...args: any[]);
 
@@ -23754,7 +23754,7 @@ export namespace Gio {
 
         static ['new'](base_stream: OutputStream): DataOutputStream;
 
-        // Own methods of Gio.DataOutputStream
+        // Methods
 
         /**
          * Gets the byte order for the stream.
@@ -24457,7 +24457,7 @@ export namespace Gio {
     class DebugControllerDBus extends GObject.Object implements DebugController, Initable {
         static $gtype: GObject.GType<DebugControllerDBus>;
 
-        // Own properties of Gio.DebugControllerDBus
+        // Properties
 
         /**
          * The D-Bus connection to expose the debugging interface on.
@@ -24468,7 +24468,7 @@ export namespace Gio {
          */
         get connection(): DBusConnection;
 
-        // Constructors of Gio.DebugControllerDBus
+        // Constructors
 
         constructor(properties?: Partial<DebugControllerDBus.ConstructorProps>, ...args: any[]);
 
@@ -24476,7 +24476,7 @@ export namespace Gio {
 
         static ['new'](connection: DBusConnection, cancellable?: Cancellable | null): DebugControllerDBus;
 
-        // Own signals of Gio.DebugControllerDBus
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -24488,7 +24488,7 @@ export namespace Gio {
         ): number;
         emit(signal: 'authorize', invocation: DBusMethodInvocation): void;
 
-        // Own virtual methods of Gio.DebugControllerDBus
+        // Virtual methods
 
         /**
          * Default handler for the #GDebugControllerDBus::authorize signal.
@@ -24496,7 +24496,7 @@ export namespace Gio {
          */
         vfunc_authorize(invocation: DBusMethodInvocation): boolean;
 
-        // Own methods of Gio.DebugControllerDBus
+        // Methods
 
         /**
          * Stop the debug controller, unregistering its object from the bus.
@@ -25049,14 +25049,14 @@ export namespace Gio {
     class DesktopAppInfo extends GObject.Object implements AppInfo {
         static $gtype: GObject.GType<DesktopAppInfo>;
 
-        // Own properties of Gio.DesktopAppInfo
+        // Properties
 
         /**
          * The origin filename of this #GDesktopAppInfo
          */
         get filename(): string;
 
-        // Constructors of Gio.DesktopAppInfo
+        // Constructors
 
         constructor(properties?: Partial<DesktopAppInfo.ConstructorProps>, ...args: any[]);
 
@@ -25068,7 +25068,7 @@ export namespace Gio {
 
         static new_from_keyfile(key_file: GLib.KeyFile): DesktopAppInfo;
 
-        // Own static methods of Gio.DesktopAppInfo
+        // Static methods
 
         /**
          * Gets all applications that implement `interface`.
@@ -25109,7 +25109,7 @@ export namespace Gio {
          */
         static set_desktop_env(desktop_env: string): void;
 
-        // Own methods of Gio.DesktopAppInfo
+        // Methods
 
         /**
          * Gets the user-visible display name of the "additional application
@@ -26135,7 +26135,7 @@ export namespace Gio {
     class Emblem extends GObject.Object implements Icon {
         static $gtype: GObject.GType<Emblem>;
 
-        // Own properties of Gio.Emblem
+        // Properties
 
         /**
          * The actual icon of the emblem.
@@ -26146,7 +26146,7 @@ export namespace Gio {
          */
         get origin(): EmblemOrigin;
 
-        // Constructors of Gio.Emblem
+        // Constructors
 
         constructor(properties?: Partial<Emblem.ConstructorProps>, ...args: any[]);
 
@@ -26156,7 +26156,7 @@ export namespace Gio {
 
         static new_with_origin(icon: Icon, origin: EmblemOrigin): Emblem;
 
-        // Own methods of Gio.Emblem
+        // Methods
 
         /**
          * Gives back the icon from `emblem`.
@@ -26653,14 +26653,14 @@ export namespace Gio {
     class EmblemedIcon extends GObject.Object implements Icon {
         static $gtype: GObject.GType<EmblemedIcon>;
 
-        // Own properties of Gio.EmblemedIcon
+        // Properties
 
         /**
          * The [iface`Gio`.Icon] to attach emblems to.
          */
         get gicon(): Icon;
 
-        // Constructors of Gio.EmblemedIcon
+        // Constructors
 
         constructor(properties?: Partial<EmblemedIcon.ConstructorProps>, ...args: any[]);
 
@@ -26668,7 +26668,7 @@ export namespace Gio {
 
         static ['new'](icon: Icon, emblem?: Emblem | null): EmblemedIcon;
 
-        // Own methods of Gio.EmblemedIcon
+        // Methods
 
         /**
          * Adds `emblem` to the #GList of #GEmblems.
@@ -27194,20 +27194,20 @@ export namespace Gio {
     class FileEnumerator extends GObject.Object {
         static $gtype: GObject.GType<FileEnumerator>;
 
-        // Own properties of Gio.FileEnumerator
+        // Properties
 
         /**
          * The container that is being enumerated.
          */
         set container(val: File);
 
-        // Constructors of Gio.FileEnumerator
+        // Constructors
 
         constructor(properties?: Partial<FileEnumerator.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of Gio.FileEnumerator
+        // Virtual methods
 
         /**
          * Asynchronously closes the file enumerator.
@@ -27339,7 +27339,7 @@ export namespace Gio {
          */
         vfunc_next_files_finish(result: AsyncResult): FileInfo[];
 
-        // Own methods of Gio.FileEnumerator
+        // Methods
 
         /**
          * Releases all resources used by this enumerator, making the
@@ -27599,13 +27599,13 @@ export namespace Gio {
     class FileIOStream extends IOStream implements Seekable {
         static $gtype: GObject.GType<FileIOStream>;
 
-        // Constructors of Gio.FileIOStream
+        // Constructors
 
         constructor(properties?: Partial<FileIOStream.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of Gio.FileIOStream
+        // Virtual methods
 
         vfunc_can_seek(): boolean;
         vfunc_can_truncate(): boolean;
@@ -27665,7 +27665,7 @@ export namespace Gio {
         vfunc_tell(): number;
         vfunc_truncate_fn(size: number, cancellable?: Cancellable | null): boolean;
 
-        // Own methods of Gio.FileIOStream
+        // Methods
 
         /**
          * Gets the entity tag for the file when it has been written.
@@ -28198,14 +28198,14 @@ export namespace Gio {
     class FileIcon extends GObject.Object implements Icon, LoadableIcon {
         static $gtype: GObject.GType<FileIcon>;
 
-        // Own properties of Gio.FileIcon
+        // Properties
 
         /**
          * The file containing the icon.
          */
         get file(): File;
 
-        // Constructors of Gio.FileIcon
+        // Constructors
 
         constructor(properties?: Partial<FileIcon.ConstructorProps>, ...args: any[]);
 
@@ -28213,7 +28213,7 @@ export namespace Gio {
 
         static ['new'](file: File): FileIcon;
 
-        // Own methods of Gio.FileIcon
+        // Methods
 
         /**
          * Gets the #GFile associated with the given `icon`.
@@ -28781,7 +28781,7 @@ export namespace Gio {
     class FileInfo extends GObject.Object {
         static $gtype: GObject.GType<FileInfo>;
 
-        // Constructors of Gio.FileInfo
+        // Constructors
 
         constructor(properties?: Partial<FileInfo.ConstructorProps>, ...args: any[]);
 
@@ -28789,7 +28789,7 @@ export namespace Gio {
 
         static ['new'](): FileInfo;
 
-        // Own methods of Gio.FileInfo
+        // Methods
 
         /**
          * Clears the status information from `info`.
@@ -29344,13 +29344,13 @@ export namespace Gio {
     class FileInputStream extends InputStream implements Seekable {
         static $gtype: GObject.GType<FileInputStream>;
 
-        // Constructors of Gio.FileInputStream
+        // Constructors
 
         constructor(properties?: Partial<FileInputStream.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of Gio.FileInputStream
+        // Virtual methods
 
         vfunc_can_seek(): boolean;
         /**
@@ -29394,7 +29394,7 @@ export namespace Gio {
         vfunc_seek(offset: number, type: GLib.SeekType, cancellable?: Cancellable | null): boolean;
         vfunc_tell(): number;
 
-        // Own methods of Gio.FileInputStream
+        // Methods
 
         /**
          * Queries a file input stream the given `attributes`. This function blocks
@@ -29945,7 +29945,7 @@ export namespace Gio {
     abstract class FileMonitor extends GObject.Object {
         static $gtype: GObject.GType<FileMonitor>;
 
-        // Own properties of Gio.FileMonitor
+        // Properties
 
         /**
          * Whether the monitor has been cancelled.
@@ -29962,13 +29962,13 @@ export namespace Gio {
         get rateLimit(): number;
         set rateLimit(val: number);
 
-        // Constructors of Gio.FileMonitor
+        // Constructors
 
         constructor(properties?: Partial<FileMonitor.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of Gio.FileMonitor
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -29983,7 +29983,7 @@ export namespace Gio {
         ): number;
         emit(signal: 'changed', file: File, other_file: File | null, event_type: FileMonitorEvent): void;
 
-        // Own virtual methods of Gio.FileMonitor
+        // Virtual methods
 
         /**
          * Cancels a file monitor.
@@ -29991,7 +29991,7 @@ export namespace Gio {
         vfunc_cancel(): boolean;
         vfunc_changed(file: File, other_file: File, event_type: FileMonitorEvent): void;
 
-        // Own methods of Gio.FileMonitor
+        // Methods
 
         /**
          * Cancels a file monitor.
@@ -30049,13 +30049,13 @@ export namespace Gio {
     class FileOutputStream extends OutputStream implements Seekable {
         static $gtype: GObject.GType<FileOutputStream>;
 
-        // Constructors of Gio.FileOutputStream
+        // Constructors
 
         constructor(properties?: Partial<FileOutputStream.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of Gio.FileOutputStream
+        // Virtual methods
 
         vfunc_can_seek(): boolean;
         vfunc_can_truncate(): boolean;
@@ -30115,7 +30115,7 @@ export namespace Gio {
         vfunc_tell(): number;
         vfunc_truncate_fn(size: number, cancellable?: Cancellable | null): boolean;
 
-        // Own methods of Gio.FileOutputStream
+        // Methods
 
         /**
          * Gets the entity tag for the file when it has been written.
@@ -30648,7 +30648,7 @@ export namespace Gio {
     class FilenameCompleter extends GObject.Object {
         static $gtype: GObject.GType<FilenameCompleter>;
 
-        // Constructors of Gio.FilenameCompleter
+        // Constructors
 
         constructor(properties?: Partial<FilenameCompleter.ConstructorProps>, ...args: any[]);
 
@@ -30656,7 +30656,7 @@ export namespace Gio {
 
         static ['new'](): FilenameCompleter;
 
-        // Own signals of Gio.FilenameCompleter
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -30665,11 +30665,11 @@ export namespace Gio {
         connect_after(signal: 'got-completion-data', callback: (_source: this) => void): number;
         emit(signal: 'got-completion-data'): void;
 
-        // Own virtual methods of Gio.FilenameCompleter
+        // Virtual methods
 
         vfunc_got_completion_data(): void;
 
-        // Own methods of Gio.FilenameCompleter
+        // Methods
 
         /**
          * Obtains a completion for `initial_text` from `completer`.
@@ -30711,7 +30711,7 @@ export namespace Gio {
     abstract class FilterInputStream extends InputStream {
         static $gtype: GObject.GType<FilterInputStream>;
 
-        // Own properties of Gio.FilterInputStream
+        // Properties
 
         /**
          * The underlying base stream on which the I/O ops will be done.
@@ -30732,13 +30732,13 @@ export namespace Gio {
         get closeBaseStream(): boolean;
         set closeBaseStream(val: boolean);
 
-        // Constructors of Gio.FilterInputStream
+        // Constructors
 
         constructor(properties?: Partial<FilterInputStream.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Gio.FilterInputStream
+        // Methods
 
         /**
          * Gets the base stream for the filter stream.
@@ -30778,7 +30778,7 @@ export namespace Gio {
     abstract class FilterOutputStream extends OutputStream {
         static $gtype: GObject.GType<FilterOutputStream>;
 
-        // Own properties of Gio.FilterOutputStream
+        // Properties
 
         get base_stream(): OutputStream;
         get baseStream(): OutputStream;
@@ -30791,13 +30791,13 @@ export namespace Gio {
          */
         get closeBaseStream(): boolean;
 
-        // Constructors of Gio.FilterOutputStream
+        // Constructors
 
         constructor(properties?: Partial<FilterOutputStream.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Gio.FilterOutputStream
+        // Methods
 
         /**
          * Gets the base stream for the filter stream.
@@ -30831,7 +30831,7 @@ export namespace Gio {
     class IOModule extends GObject.TypeModule implements GObject.TypePlugin {
         static $gtype: GObject.GType<IOModule>;
 
-        // Constructors of Gio.IOModule
+        // Constructors
 
         constructor(properties?: Partial<IOModule.ConstructorProps>, ...args: any[]);
 
@@ -30839,7 +30839,7 @@ export namespace Gio {
 
         static ['new'](filename: string): IOModule;
 
-        // Own static methods of Gio.IOModule
+        // Static methods
 
         /**
          * Optional API for GIO modules to implement.
@@ -31380,7 +31380,7 @@ export namespace Gio {
     abstract class IOStream extends GObject.Object {
         static $gtype: GObject.GType<IOStream>;
 
-        // Own properties of Gio.IOStream
+        // Properties
 
         /**
          * Whether the stream is closed.
@@ -31403,13 +31403,13 @@ export namespace Gio {
          */
         get outputStream(): OutputStream;
 
-        // Constructors of Gio.IOStream
+        // Constructors
 
         constructor(properties?: Partial<IOStream.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of Gio.IOStream
+        // Static methods
 
         /**
          * Finishes an asynchronous io stream splice operation.
@@ -31417,7 +31417,7 @@ export namespace Gio {
          */
         static splice_finish(result: AsyncResult): boolean;
 
-        // Own virtual methods of Gio.IOStream
+        // Virtual methods
 
         /**
          * Requests an asynchronous close of the stream, releasing resources
@@ -31456,7 +31456,7 @@ export namespace Gio {
          */
         vfunc_get_output_stream(): OutputStream;
 
-        // Own methods of Gio.IOStream
+        // Methods
 
         /**
          * Clears the pending flag on `stream`.
@@ -31622,7 +31622,7 @@ export namespace Gio {
     class InetAddress extends GObject.Object {
         static $gtype: GObject.GType<InetAddress>;
 
-        // Own properties of Gio.InetAddress
+        // Properties
 
         /**
          * The raw address data.
@@ -31733,7 +31733,7 @@ export namespace Gio {
          */
         get isSiteLocal(): boolean;
 
-        // Constructors of Gio.InetAddress
+        // Constructors
 
         constructor(properties?: Partial<InetAddress.ConstructorProps>, ...args: any[]);
 
@@ -31747,14 +31747,14 @@ export namespace Gio {
 
         static new_loopback(family: SocketFamily): InetAddress;
 
-        // Own virtual methods of Gio.InetAddress
+        // Virtual methods
 
         /**
          * Converts `address` to string form.
          */
         vfunc_to_string(): string;
 
-        // Own methods of Gio.InetAddress
+        // Methods
 
         /**
          * Checks if two #GInetAddress instances are equal, e.g. the same address.
@@ -31854,7 +31854,7 @@ export namespace Gio {
     class InetAddressMask extends GObject.Object implements Initable {
         static $gtype: GObject.GType<InetAddressMask>;
 
-        // Own properties of Gio.InetAddressMask
+        // Properties
 
         /**
          * The base address.
@@ -31871,7 +31871,7 @@ export namespace Gio {
         get length(): number;
         set length(val: number);
 
-        // Constructors of Gio.InetAddressMask
+        // Constructors
 
         constructor(properties?: Partial<InetAddressMask.ConstructorProps>, ...args: any[]);
 
@@ -31881,7 +31881,7 @@ export namespace Gio {
 
         static new_from_string(mask_string: string): InetAddressMask;
 
-        // Own methods of Gio.InetAddressMask
+        // Methods
 
         /**
          * Tests if `mask` and `mask2` are the same mask.
@@ -32426,7 +32426,7 @@ export namespace Gio {
     class InetSocketAddress extends SocketAddress implements SocketConnectable {
         static $gtype: GObject.GType<InetSocketAddress>;
 
-        // Own properties of Gio.InetSocketAddress
+        // Properties
 
         /**
          * The address.
@@ -32449,7 +32449,7 @@ export namespace Gio {
          */
         get scopeId(): number;
 
-        // Constructors of Gio.InetSocketAddress
+        // Constructors
 
         constructor(properties?: Partial<InetSocketAddress.ConstructorProps>, ...args: any[]);
 
@@ -32459,7 +32459,7 @@ export namespace Gio {
 
         static new_from_string(address: string, port: number): InetSocketAddress;
 
-        // Own methods of Gio.InetSocketAddress
+        // Methods
 
         /**
          * Gets `address'`s #GInetAddress.
@@ -32962,13 +32962,13 @@ export namespace Gio {
     abstract class InputStream extends GObject.Object {
         static $gtype: GObject.GType<InputStream>;
 
-        // Constructors of Gio.InputStream
+        // Constructors
 
         constructor(properties?: Partial<InputStream.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of Gio.InputStream
+        // Virtual methods
 
         /**
          * Requests an asynchronous closes of the stream, releasing resources related to it.
@@ -33095,7 +33095,7 @@ export namespace Gio {
          */
         vfunc_skip_finish(result: AsyncResult): number;
 
-        // Own methods of Gio.InputStream
+        // Methods
 
         /**
          * Clears the pending flag on `stream`.
@@ -33448,7 +33448,7 @@ export namespace Gio {
     class ListStore<A extends GObject.Object = GObject.Object> extends GObject.Object implements ListModel<A> {
         static $gtype: GObject.GType<ListStore>;
 
-        // Own properties of Gio.ListStore
+        // Properties
 
         /**
          * The type of items contained in this list store. Items must be
@@ -33469,11 +33469,11 @@ export namespace Gio {
          */
         get nItems(): number;
 
-        // Own fields of Gio.ListStore
+        // Fields
 
         [Symbol.iterator]: () => IterableIterator<A>;
 
-        // Constructors of Gio.ListStore
+        // Constructors
 
         constructor(properties?: Partial<ListStore.ConstructorProps>, ...args: any[]);
 
@@ -33481,7 +33481,7 @@ export namespace Gio {
 
         static ['new'](item_type: GObject.GType): ListStore;
 
-        // Own methods of Gio.ListStore
+        // Methods
 
         /**
          * Appends `item` to `store`. `item` must be of type #GListStore:item-type.
@@ -34111,7 +34111,7 @@ export namespace Gio {
     class MemoryInputStream extends InputStream implements PollableInputStream, Seekable {
         static $gtype: GObject.GType<MemoryInputStream>;
 
-        // Constructors of Gio.MemoryInputStream
+        // Constructors
 
         constructor(properties?: Partial<MemoryInputStream.ConstructorProps>, ...args: any[]);
 
@@ -34123,7 +34123,7 @@ export namespace Gio {
 
         static new_from_data(data: Uint8Array | string, destroy?: GLib.DestroyNotify | null): MemoryInputStream;
 
-        // Own methods of Gio.MemoryInputStream
+        // Methods
 
         /**
          * Appends `bytes` to data that can be read from the input stream.
@@ -35230,7 +35230,7 @@ export namespace Gio {
     class MemoryOutputStream extends OutputStream implements PollableOutputStream, Seekable {
         static $gtype: GObject.GType<MemoryOutputStream>;
 
-        // Own properties of Gio.MemoryOutputStream
+        // Properties
 
         /**
          * Pointer to buffer where data will be written.
@@ -35249,7 +35249,7 @@ export namespace Gio {
          */
         get size(): number;
 
-        // Constructors of Gio.MemoryOutputStream
+        // Constructors
 
         constructor(properties?: Partial<MemoryOutputStream.ConstructorProps>, ...args: any[]);
 
@@ -35257,7 +35257,7 @@ export namespace Gio {
 
         static new_resizable(): MemoryOutputStream;
 
-        // Own methods of Gio.MemoryOutputStream
+        // Methods
 
         /**
          * Gets any loaded data from the `ostream`.
@@ -36741,7 +36741,7 @@ export namespace Gio {
     class Menu extends MenuModel {
         static $gtype: GObject.GType<Menu>;
 
-        // Constructors of Gio.Menu
+        // Constructors
 
         constructor(properties?: Partial<Menu.ConstructorProps>, ...args: any[]);
 
@@ -36749,7 +36749,7 @@ export namespace Gio {
 
         static ['new'](): Menu;
 
-        // Own methods of Gio.Menu
+        // Methods
 
         /**
          * Convenience function for appending a normal menu item to the end of
@@ -36906,13 +36906,13 @@ export namespace Gio {
     abstract class MenuAttributeIter extends GObject.Object {
         static $gtype: GObject.GType<MenuAttributeIter>;
 
-        // Constructors of Gio.MenuAttributeIter
+        // Constructors
 
         constructor(properties?: Partial<MenuAttributeIter.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of Gio.MenuAttributeIter
+        // Virtual methods
 
         /**
          * This function combines g_menu_attribute_iter_next() with
@@ -36933,7 +36933,7 @@ export namespace Gio {
          */
         vfunc_get_next(): [boolean, string, GLib.Variant | null];
 
-        // Own methods of Gio.MenuAttributeIter
+        // Methods
 
         /**
          * Gets the name of the attribute at the current iterator position, as
@@ -36997,7 +36997,7 @@ export namespace Gio {
     class MenuItem extends GObject.Object {
         static $gtype: GObject.GType<MenuItem>;
 
-        // Constructors of Gio.MenuItem
+        // Constructors
 
         constructor(properties?: Partial<MenuItem.ConstructorProps>, ...args: any[]);
 
@@ -37011,7 +37011,7 @@ export namespace Gio {
 
         static new_submenu(label: string | null, submenu: MenuModel): MenuItem;
 
-        // Own methods of Gio.MenuItem
+        // Methods
 
         /**
          * Queries the named `attribute` on `menu_item`.
@@ -37186,13 +37186,13 @@ export namespace Gio {
     abstract class MenuLinkIter extends GObject.Object {
         static $gtype: GObject.GType<MenuLinkIter>;
 
-        // Constructors of Gio.MenuLinkIter
+        // Constructors
 
         constructor(properties?: Partial<MenuLinkIter.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of Gio.MenuLinkIter
+        // Virtual methods
 
         /**
          * This function combines g_menu_link_iter_next() with
@@ -37212,7 +37212,7 @@ export namespace Gio {
          */
         vfunc_get_next(): [boolean, string, MenuModel | null];
 
-        // Own methods of Gio.MenuLinkIter
+        // Methods
 
         /**
          * Gets the name of the link at the current iterator position.
@@ -37391,13 +37391,13 @@ export namespace Gio {
     abstract class MenuModel extends GObject.Object {
         static $gtype: GObject.GType<MenuModel>;
 
-        // Constructors of Gio.MenuModel
+        // Constructors
 
         constructor(properties?: Partial<MenuModel.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of Gio.MenuModel
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -37412,7 +37412,7 @@ export namespace Gio {
         ): number;
         emit(signal: 'items-changed', position: number, removed: number, added: number): void;
 
-        // Own virtual methods of Gio.MenuModel
+        // Virtual methods
 
         /**
          * Queries the item at position `item_index` in `model` for the attribute
@@ -37483,7 +37483,7 @@ export namespace Gio {
          */
         vfunc_iterate_item_links(item_index: number): MenuLinkIter;
 
-        // Own methods of Gio.MenuModel
+        // Methods
 
         /**
          * Queries the item at position `item_index` in `model` for the attribute
@@ -37644,7 +37644,7 @@ export namespace Gio {
     class MountOperation extends GObject.Object {
         static $gtype: GObject.GType<MountOperation>;
 
-        // Own properties of Gio.MountOperation
+        // Properties
 
         /**
          * Whether to use an anonymous user when authenticating.
@@ -37721,7 +37721,7 @@ export namespace Gio {
         get username(): string;
         set username(val: string);
 
-        // Constructors of Gio.MountOperation
+        // Constructors
 
         constructor(properties?: Partial<MountOperation.ConstructorProps>, ...args: any[]);
 
@@ -37729,7 +37729,7 @@ export namespace Gio {
 
         static ['new'](): MountOperation;
 
-        // Own signals of Gio.MountOperation
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -37792,7 +37792,7 @@ export namespace Gio {
         ): number;
         emit(signal: 'show-unmount-progress', message: string, time_left: number, bytes_left: number): void;
 
-        // Own virtual methods of Gio.MountOperation
+        // Virtual methods
 
         vfunc_aborted(): void;
         vfunc_ask_password(
@@ -37821,7 +37821,7 @@ export namespace Gio {
         vfunc_show_processes(message: string, processes: GLib.Pid[], choices: string[]): void;
         vfunc_show_unmount_progress(message: string, time_left: number, bytes_left: number): void;
 
-        // Own methods of Gio.MountOperation
+        // Methods
 
         /**
          * Check to see whether the mount operation is being used
@@ -37938,7 +37938,7 @@ export namespace Gio {
     class NativeSocketAddress extends SocketAddress implements SocketConnectable {
         static $gtype: GObject.GType<NativeSocketAddress>;
 
-        // Constructors of Gio.NativeSocketAddress
+        // Constructors
 
         constructor(properties?: Partial<NativeSocketAddress.ConstructorProps>, ...args: any[]);
 
@@ -38409,7 +38409,7 @@ export namespace Gio {
     abstract class NativeVolumeMonitor extends VolumeMonitor {
         static $gtype: GObject.GType<NativeVolumeMonitor>;
 
-        // Constructors of Gio.NativeVolumeMonitor
+        // Constructors
 
         constructor(properties?: Partial<NativeVolumeMonitor.ConstructorProps>, ...args: any[]);
 
@@ -38441,7 +38441,7 @@ export namespace Gio {
     class NetworkAddress extends GObject.Object implements SocketConnectable {
         static $gtype: GObject.GType<NetworkAddress>;
 
-        // Own properties of Gio.NetworkAddress
+        // Properties
 
         /**
          * Hostname to resolve.
@@ -38456,7 +38456,7 @@ export namespace Gio {
          */
         get scheme(): string;
 
-        // Constructors of Gio.NetworkAddress
+        // Constructors
 
         constructor(properties?: Partial<NetworkAddress.ConstructorProps>, ...args: any[]);
 
@@ -38466,7 +38466,7 @@ export namespace Gio {
 
         static new_loopback(port: number): NetworkAddress;
 
-        // Own static methods of Gio.NetworkAddress
+        // Static methods
 
         /**
          * Creates a new #GSocketConnectable for connecting to the given
@@ -38506,7 +38506,7 @@ export namespace Gio {
          */
         static parse_uri(uri: string, default_port: number): NetworkAddress;
 
-        // Own methods of Gio.NetworkAddress
+        // Methods
 
         /**
          * Gets `addr'`s hostname. This might be either UTF-8 or ASCII-encoded,
@@ -39004,7 +39004,7 @@ export namespace Gio {
     class NetworkService extends GObject.Object implements SocketConnectable {
         static $gtype: GObject.GType<NetworkService>;
 
-        // Own properties of Gio.NetworkService
+        // Properties
 
         /**
          * Network domain, for example `example.com`.
@@ -39024,7 +39024,7 @@ export namespace Gio {
          */
         get service(): string;
 
-        // Constructors of Gio.NetworkService
+        // Constructors
 
         constructor(properties?: Partial<NetworkService.ConstructorProps>, ...args: any[]);
 
@@ -39032,7 +39032,7 @@ export namespace Gio {
 
         static ['new'](service: string, protocol: string, domain: string): NetworkService;
 
-        // Own methods of Gio.NetworkService
+        // Methods
 
         /**
          * Gets the domain that `srv` serves. This might be either UTF-8 or
@@ -39573,7 +39573,7 @@ export namespace Gio {
     class Notification extends GObject.Object {
         static $gtype: GObject.GType<Notification>;
 
-        // Constructors of Gio.Notification
+        // Constructors
 
         constructor(properties?: Partial<Notification.ConstructorProps>, ...args: any[]);
 
@@ -39581,7 +39581,7 @@ export namespace Gio {
 
         static ['new'](title: string): Notification;
 
-        // Own methods of Gio.Notification
+        // Methods
 
         /**
          * Adds a button to `notification` that activates the action in
@@ -39702,13 +39702,13 @@ export namespace Gio {
     abstract class OutputStream extends GObject.Object {
         static $gtype: GObject.GType<OutputStream>;
 
-        // Constructors of Gio.OutputStream
+        // Constructors
 
         constructor(properties?: Partial<OutputStream.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of Gio.OutputStream
+        // Virtual methods
 
         /**
          * Requests an asynchronous close of the stream, releasing resources
@@ -39957,7 +39957,7 @@ export namespace Gio {
          */
         vfunc_writev_fn(vectors: OutputVector[], cancellable?: Cancellable | null): [boolean, number];
 
-        // Own methods of Gio.OutputStream
+        // Methods
 
         /**
          * Clears the pending flag on `stream`.
@@ -40496,7 +40496,7 @@ export namespace Gio {
     abstract class Permission extends GObject.Object {
         static $gtype: GObject.GType<Permission>;
 
-        // Own properties of Gio.Permission
+        // Properties
 
         /**
          * %TRUE if the caller currently has permission to perform the action that
@@ -40524,13 +40524,13 @@ export namespace Gio {
          */
         get canRelease(): boolean;
 
-        // Constructors of Gio.Permission
+        // Constructors
 
         constructor(properties?: Partial<Permission.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of Gio.Permission
+        // Virtual methods
 
         /**
          * Attempts to acquire the permission represented by `permission`.
@@ -40607,7 +40607,7 @@ export namespace Gio {
          */
         vfunc_release_finish(result: AsyncResult): boolean;
 
-        // Own methods of Gio.Permission
+        // Methods
 
         /**
          * Attempts to acquire the permission represented by `permission`.
@@ -40797,7 +40797,7 @@ export namespace Gio {
     class PropertyAction extends GObject.Object implements Action {
         static $gtype: GObject.GType<PropertyAction>;
 
-        // Own properties of Gio.PropertyAction
+        // Properties
 
         /**
          * If `action` is currently enabled.
@@ -40866,7 +40866,7 @@ export namespace Gio {
          */
         get stateType(): GLib.VariantType;
 
-        // Constructors of Gio.PropertyAction
+        // Constructors
 
         constructor(properties?: Partial<PropertyAction.ConstructorProps>, ...args: any[]);
 
@@ -41494,7 +41494,7 @@ export namespace Gio {
     class ProxyAddress extends InetSocketAddress implements SocketConnectable {
         static $gtype: GObject.GType<ProxyAddress>;
 
-        // Own properties of Gio.ProxyAddress
+        // Properties
 
         /**
          * The proxy destination hostname.
@@ -41540,7 +41540,7 @@ export namespace Gio {
          */
         get username(): string;
 
-        // Constructors of Gio.ProxyAddress
+        // Constructors
 
         constructor(properties?: Partial<ProxyAddress.ConstructorProps>, ...args: any[]);
 
@@ -41559,7 +41559,7 @@ export namespace Gio {
 
         static ['new'](...args: never[]): any;
 
-        // Own methods of Gio.ProxyAddress
+        // Methods
 
         /**
          * Gets `proxy'`s destination hostname; that is, the name of the host
@@ -42033,7 +42033,7 @@ export namespace Gio {
     class ProxyAddressEnumerator extends SocketAddressEnumerator {
         static $gtype: GObject.GType<ProxyAddressEnumerator>;
 
-        // Own properties of Gio.ProxyAddressEnumerator
+        // Properties
 
         /**
          * The connectable being enumerated.
@@ -42064,7 +42064,7 @@ export namespace Gio {
          */
         get uri(): string;
 
-        // Constructors of Gio.ProxyAddressEnumerator
+        // Constructors
 
         constructor(properties?: Partial<ProxyAddressEnumerator.ConstructorProps>, ...args: any[]);
 
@@ -42109,7 +42109,7 @@ export namespace Gio {
     abstract class Resolver extends GObject.Object {
         static $gtype: GObject.GType<Resolver>;
 
-        // Own properties of Gio.Resolver
+        // Properties
 
         /**
          * The timeout applied to all resolver lookups, in milliseconds.
@@ -42126,13 +42126,13 @@ export namespace Gio {
         get timeout(): number;
         set timeout(val: number);
 
-        // Constructors of Gio.Resolver
+        // Constructors
 
         constructor(properties?: Partial<Resolver.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of Gio.Resolver
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -42141,7 +42141,7 @@ export namespace Gio {
         connect_after(signal: 'reload', callback: (_source: this) => void): number;
         emit(signal: 'reload'): void;
 
-        // Own static methods of Gio.Resolver
+        // Static methods
 
         /**
          * Gets the default #GResolver. You should unref it when you are done
@@ -42150,7 +42150,7 @@ export namespace Gio {
          */
         static get_default(): Resolver;
 
-        // Own virtual methods of Gio.Resolver
+        // Virtual methods
 
         /**
          * Synchronously reverse-resolves `address` to determine its
@@ -42345,7 +42345,7 @@ export namespace Gio {
         vfunc_lookup_service_finish(result: AsyncResult): SrvTarget[];
         vfunc_reload(): void;
 
-        // Own methods of Gio.Resolver
+        // Methods
 
         /**
          * Get the timeout applied to all resolver lookups. See #GResolver:timeout.
@@ -42949,7 +42949,7 @@ export namespace Gio {
     class Settings extends GObject.Object {
         static $gtype: GObject.GType<Settings>;
 
-        // Own properties of Gio.Settings
+        // Properties
 
         /**
          * The name of the context that the settings are stored in.
@@ -43022,14 +43022,14 @@ export namespace Gio {
          */
         get settingsSchema(): SettingsSchema;
 
-        // Own fields of Gio.Settings
+        // Fields
 
         _realInit: (...args: any[]) => any;
         _realMethods: typeof Settings.prototype;
         _keys: string[];
         _children: string[];
 
-        // Constructors of Gio.Settings
+        // Constructors
 
         constructor(properties?: Partial<Settings.ConstructorProps>, ...args: any[]);
 
@@ -43045,7 +43045,7 @@ export namespace Gio {
 
         static new_with_path(schema_id: string, path: string): Settings;
 
-        // Own signals of Gio.Settings
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -43063,7 +43063,7 @@ export namespace Gio {
         connect_after(signal: 'writable-changed', callback: (_source: this, key: string) => void): number;
         emit(signal: 'writable-changed', key: string): void;
 
-        // Own static methods of Gio.Settings
+        // Static methods
 
         /**
          * Deprecated.
@@ -43097,14 +43097,14 @@ export namespace Gio {
          */
         static unbind(object: GObject.Object, property: string): void;
 
-        // Own virtual methods of Gio.Settings
+        // Virtual methods
 
         vfunc_change_event(keys: GLib.Quark, n_keys: number): boolean;
         vfunc_changed(key: string): void;
         vfunc_writable_change_event(key: GLib.Quark): boolean;
         vfunc_writable_changed(key: string): void;
 
-        // Own methods of Gio.Settings
+        // Methods
 
         /**
          * Applies any changes that have been made to the settings.  This
@@ -43667,13 +43667,13 @@ export namespace Gio {
     abstract class SettingsBackend extends GObject.Object {
         static $gtype: GObject.GType<SettingsBackend>;
 
-        // Constructors of Gio.SettingsBackend
+        // Constructors
 
         constructor(properties?: Partial<SettingsBackend.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of Gio.SettingsBackend
+        // Static methods
 
         /**
          * Calculate the longest common prefix of all keys in a tree and write
@@ -43695,7 +43695,7 @@ export namespace Gio {
          */
         static get_default(): SettingsBackend;
 
-        // Own virtual methods of Gio.SettingsBackend
+        // Virtual methods
 
         /**
          * virtual method to get if a key is writable
@@ -43749,7 +43749,7 @@ export namespace Gio {
          */
         vfunc_write_tree(tree: GLib.Tree, origin_tag?: any | null): boolean;
 
-        // Own methods of Gio.SettingsBackend
+        // Methods
 
         /**
          * Signals that a single key has possibly changed.  Backend
@@ -43890,7 +43890,7 @@ export namespace Gio {
     class SimpleAction extends GObject.Object implements Action {
         static $gtype: GObject.GType<SimpleAction>;
 
-        // Own properties of Gio.SimpleAction
+        // Properties
 
         /**
          * If `action` is currently enabled.
@@ -43931,7 +43931,7 @@ export namespace Gio {
          */
         get stateType(): GLib.VariantType;
 
-        // Constructors of Gio.SimpleAction
+        // Constructors
 
         constructor(properties?: Partial<SimpleAction.ConstructorProps>, ...args: any[]);
 
@@ -43941,7 +43941,7 @@ export namespace Gio {
 
         static new_stateful(name: string, parameter_type: GLib.VariantType | null, state: GLib.Variant): SimpleAction;
 
-        // Own signals of Gio.SimpleAction
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -43953,7 +43953,7 @@ export namespace Gio {
         connect_after(signal: 'change-state', callback: (_source: this, value: GLib.Variant | null) => void): number;
         emit(signal: 'change-state', value?: GLib.Variant | null): void;
 
-        // Own methods of Gio.SimpleAction
+        // Methods
 
         /**
          * Sets the action as enabled or not.
@@ -44603,7 +44603,7 @@ export namespace Gio {
     class SimpleActionGroup extends GObject.Object implements ActionGroup, ActionMap {
         static $gtype: GObject.GType<SimpleActionGroup>;
 
-        // Constructors of Gio.SimpleActionGroup
+        // Constructors
 
         constructor(properties?: Partial<SimpleActionGroup.ConstructorProps>, ...args: any[]);
 
@@ -44611,7 +44611,7 @@ export namespace Gio {
 
         static ['new'](): SimpleActionGroup;
 
-        // Own methods of Gio.SimpleActionGroup
+        // Methods
 
         /**
          * A convenience function for creating multiple #GSimpleAction instances
@@ -45789,7 +45789,7 @@ export namespace Gio {
     class SimpleAsyncResult extends GObject.Object implements AsyncResult {
         static $gtype: GObject.GType<SimpleAsyncResult>;
 
-        // Constructors of Gio.SimpleAsyncResult
+        // Constructors
 
         constructor(properties?: Partial<SimpleAsyncResult.ConstructorProps>, ...args: any[]);
 
@@ -45807,7 +45807,7 @@ export namespace Gio {
             error: GLib.Error,
         ): SimpleAsyncResult;
 
-        // Own static methods of Gio.SimpleAsyncResult
+        // Static methods
 
         /**
          * Ensures that the data passed to the _finish function of an async
@@ -45828,7 +45828,7 @@ export namespace Gio {
          */
         static is_valid(result: AsyncResult, source?: GObject.Object | null, source_tag?: any | null): boolean;
 
-        // Own methods of Gio.SimpleAsyncResult
+        // Methods
 
         /**
          * Completes an asynchronous I/O job immediately. Must be called in
@@ -46389,7 +46389,7 @@ export namespace Gio {
     class SimpleIOStream extends IOStream {
         static $gtype: GObject.GType<SimpleIOStream>;
 
-        // Own properties of Gio.SimpleIOStream
+        // Properties
 
         /**
          * The [class`Gio`.InputStream] to read from.
@@ -46408,7 +46408,7 @@ export namespace Gio {
          */
         get outputStream(): OutputStream;
 
-        // Constructors of Gio.SimpleIOStream
+        // Constructors
 
         constructor(properties?: Partial<SimpleIOStream.ConstructorProps>, ...args: any[]);
 
@@ -46434,7 +46434,7 @@ export namespace Gio {
     class SimplePermission extends Permission {
         static $gtype: GObject.GType<SimplePermission>;
 
-        // Constructors of Gio.SimplePermission
+        // Constructors
 
         constructor(properties?: Partial<SimplePermission.ConstructorProps>, ...args: any[]);
 
@@ -46467,7 +46467,7 @@ export namespace Gio {
     class SimpleProxyResolver extends GObject.Object implements ProxyResolver {
         static $gtype: GObject.GType<SimpleProxyResolver>;
 
-        // Own properties of Gio.SimpleProxyResolver
+        // Properties
 
         /**
          * The default proxy URI that will be used for any URI that doesn't
@@ -46568,13 +46568,13 @@ export namespace Gio {
         get ignoreHosts(): string[];
         set ignoreHosts(val: string[]);
 
-        // Constructors of Gio.SimpleProxyResolver
+        // Constructors
 
         constructor(properties?: Partial<SimpleProxyResolver.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of Gio.SimpleProxyResolver
+        // Static methods
 
         /**
          * Creates a new #GSimpleProxyResolver. See
@@ -46586,7 +46586,7 @@ export namespace Gio {
          */
         static ['new'](default_proxy?: string | null, ignore_hosts?: string[] | null): ProxyResolver;
 
-        // Own methods of Gio.SimpleProxyResolver
+        // Methods
 
         /**
          * Sets the default proxy on `resolver,` to be used for any URIs that
@@ -47217,7 +47217,7 @@ export namespace Gio {
     class Socket extends GObject.Object implements DatagramBased, Initable {
         static $gtype: GObject.GType<Socket>;
 
-        // Own properties of Gio.Socket
+        // Properties
 
         /**
          * Whether I/O on this socket is blocking.
@@ -47307,7 +47307,7 @@ export namespace Gio {
          */
         get type(): SocketType;
 
-        // Constructors of Gio.Socket
+        // Constructors
 
         constructor(properties?: Partial<Socket.ConstructorProps>, ...args: any[]);
 
@@ -47317,7 +47317,7 @@ export namespace Gio {
 
         static new_from_fd(fd: number): Socket;
 
-        // Own methods of Gio.Socket
+        // Methods
 
         /**
          * Accept incoming connections on a connection-based socket. This removes
@@ -48991,14 +48991,14 @@ export namespace Gio {
     abstract class SocketAddress extends GObject.Object implements SocketConnectable {
         static $gtype: GObject.GType<SocketAddress>;
 
-        // Own properties of Gio.SocketAddress
+        // Properties
 
         /**
          * The family of the socket address.
          */
         get family(): SocketFamily;
 
-        // Constructors of Gio.SocketAddress
+        // Constructors
 
         constructor(properties?: Partial<SocketAddress.ConstructorProps>, ...args: any[]);
 
@@ -49006,7 +49006,7 @@ export namespace Gio {
 
         static new_from_native(_native: any, len: number): SocketAddress;
 
-        // Own virtual methods of Gio.SocketAddress
+        // Virtual methods
 
         /**
          * Gets the socket family type of `address`.
@@ -49030,7 +49030,7 @@ export namespace Gio {
          */
         vfunc_to_native(dest: any | null, destlen: number): boolean;
 
-        // Own methods of Gio.SocketAddress
+        // Methods
 
         /**
          * Gets the socket family type of `address`.
@@ -49537,13 +49537,13 @@ export namespace Gio {
     abstract class SocketAddressEnumerator extends GObject.Object {
         static $gtype: GObject.GType<SocketAddressEnumerator>;
 
-        // Constructors of Gio.SocketAddressEnumerator
+        // Constructors
 
         constructor(properties?: Partial<SocketAddressEnumerator.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of Gio.SocketAddressEnumerator
+        // Virtual methods
 
         /**
          * Retrieves the next #GSocketAddress from `enumerator`. Note that this
@@ -49581,7 +49581,7 @@ export namespace Gio {
          */
         vfunc_next_finish(result: AsyncResult): SocketAddress | null;
 
-        // Own methods of Gio.SocketAddressEnumerator
+        // Methods
 
         /**
          * Retrieves the next #GSocketAddress from `enumerator`. Note that this
@@ -49666,7 +49666,7 @@ export namespace Gio {
     class SocketClient extends GObject.Object {
         static $gtype: GObject.GType<SocketClient>;
 
-        // Own properties of Gio.SocketClient
+        // Properties
 
         /**
          * Enable proxy support.
@@ -49764,7 +49764,7 @@ export namespace Gio {
         get type(): SocketType;
         set type(val: SocketType);
 
-        // Constructors of Gio.SocketClient
+        // Constructors
 
         constructor(properties?: Partial<SocketClient.ConstructorProps>, ...args: any[]);
 
@@ -49772,7 +49772,7 @@ export namespace Gio {
 
         static ['new'](): SocketClient;
 
-        // Own signals of Gio.SocketClient
+        // Signals
 
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -49792,11 +49792,11 @@ export namespace Gio {
             connection?: IOStream | null,
         ): void;
 
-        // Own virtual methods of Gio.SocketClient
+        // Virtual methods
 
         vfunc_event(event: SocketClientEvent, connectable: SocketConnectable, connection: IOStream): void;
 
-        // Own methods of Gio.SocketClient
+        // Methods
 
         /**
          * Enable proxy protocols to be handled by the application. When the
@@ -50232,20 +50232,20 @@ export namespace Gio {
     class SocketConnection extends IOStream {
         static $gtype: GObject.GType<SocketConnection>;
 
-        // Own properties of Gio.SocketConnection
+        // Properties
 
         /**
          * The underlying [class`Gio`.Socket].
          */
         get socket(): Socket;
 
-        // Constructors of Gio.SocketConnection
+        // Constructors
 
         constructor(properties?: Partial<SocketConnection.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of Gio.SocketConnection
+        // Static methods
 
         /**
          * Looks up the #GType to be used when creating socket connections on
@@ -50274,7 +50274,7 @@ export namespace Gio {
             protocol: number,
         ): void;
 
-        // Own methods of Gio.SocketConnection
+        // Methods
 
         /**
          * Connect `connection` to the specified remote address.
@@ -50373,13 +50373,13 @@ export namespace Gio {
     abstract class SocketControlMessage extends GObject.Object {
         static $gtype: GObject.GType<SocketControlMessage>;
 
-        // Constructors of Gio.SocketControlMessage
+        // Constructors
 
         constructor(properties?: Partial<SocketControlMessage.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of Gio.SocketControlMessage
+        // Static methods
 
         /**
          * Tries to deserialize a socket control message of a given
@@ -50395,7 +50395,7 @@ export namespace Gio {
          */
         static deserialize(level: number, type: number, data: Uint8Array | string): SocketControlMessage | null;
 
-        // Own virtual methods of Gio.SocketControlMessage
+        // Virtual methods
 
         /**
          * Returns the "level" (i.e. the originating protocol) of the control message.
@@ -50422,7 +50422,7 @@ export namespace Gio {
          */
         vfunc_serialize(data: any): void;
 
-        // Own methods of Gio.SocketControlMessage
+        // Methods
 
         /**
          * Returns the "level" (i.e. the originating protocol) of the control message.
@@ -50489,7 +50489,7 @@ export namespace Gio {
     class SocketListener extends GObject.Object {
         static $gtype: GObject.GType<SocketListener>;
 
-        // Own properties of Gio.SocketListener
+        // Properties
 
         /**
          * The number of outstanding connections in the listen queue.
@@ -50502,7 +50502,7 @@ export namespace Gio {
         get listenBacklog(): number;
         set listenBacklog(val: number);
 
-        // Constructors of Gio.SocketListener
+        // Constructors
 
         constructor(properties?: Partial<SocketListener.ConstructorProps>, ...args: any[]);
 
@@ -50510,7 +50510,7 @@ export namespace Gio {
 
         static ['new'](): SocketListener;
 
-        // Own signals of Gio.SocketListener
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -50522,7 +50522,7 @@ export namespace Gio {
         ): number;
         emit(signal: 'event', event: SocketListenerEvent, socket: Socket): void;
 
-        // Own virtual methods of Gio.SocketListener
+        // Virtual methods
 
         /**
          * virtual method called when the set of socket listened to changes
@@ -50530,7 +50530,7 @@ export namespace Gio {
         vfunc_changed(): void;
         vfunc_event(event: SocketListenerEvent, socket: Socket): void;
 
-        // Own methods of Gio.SocketListener
+        // Methods
 
         /**
          * Blocks waiting for a client to connect to any of the sockets added
@@ -50747,7 +50747,7 @@ export namespace Gio {
     class SocketService extends SocketListener {
         static $gtype: GObject.GType<SocketService>;
 
-        // Own properties of Gio.SocketService
+        // Properties
 
         /**
          * Whether the service is currently accepting connections.
@@ -50755,7 +50755,7 @@ export namespace Gio {
         get active(): boolean;
         set active(val: boolean);
 
-        // Constructors of Gio.SocketService
+        // Constructors
 
         constructor(properties?: Partial<SocketService.ConstructorProps>, ...args: any[]);
 
@@ -50763,7 +50763,7 @@ export namespace Gio {
 
         static ['new'](): SocketService;
 
-        // Own signals of Gio.SocketService
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -50778,7 +50778,7 @@ export namespace Gio {
         ): number;
         emit(signal: 'incoming', connection: SocketConnection, source_object?: GObject.Object | null): void;
 
-        // Own virtual methods of Gio.SocketService
+        // Virtual methods
 
         /**
          * signal emitted when new connections are accepted
@@ -50787,7 +50787,7 @@ export namespace Gio {
          */
         vfunc_incoming(connection: SocketConnection, source_object: GObject.Object): boolean;
 
-        // Own methods of Gio.SocketService
+        // Methods
 
         /**
          * Check whether the service is active or not. An active
@@ -50898,7 +50898,7 @@ export namespace Gio {
     class Subprocess extends GObject.Object implements Initable {
         static $gtype: GObject.GType<Subprocess>;
 
-        // Own properties of Gio.Subprocess
+        // Properties
 
         /**
          * Argument vector.
@@ -50909,7 +50909,7 @@ export namespace Gio {
          */
         set flags(val: SubprocessFlags);
 
-        // Constructors of Gio.Subprocess
+        // Constructors
 
         constructor(properties?: Partial<Subprocess.ConstructorProps>, ...args: any[]);
 
@@ -50917,7 +50917,7 @@ export namespace Gio {
 
         static ['new'](argv: string[], flags: SubprocessFlags): Subprocess;
 
-        // Own methods of Gio.Subprocess
+        // Methods
 
         /**
          * Communicate with the subprocess until it terminates, and all input
@@ -51699,14 +51699,14 @@ export namespace Gio {
     class SubprocessLauncher extends GObject.Object {
         static $gtype: GObject.GType<SubprocessLauncher>;
 
-        // Own properties of Gio.SubprocessLauncher
+        // Properties
 
         /**
          * [flags`Gio`.SubprocessFlags] for launched processes.
          */
         set flags(val: SubprocessFlags);
 
-        // Constructors of Gio.SubprocessLauncher
+        // Constructors
 
         constructor(properties?: Partial<SubprocessLauncher.ConstructorProps>, ...args: any[]);
 
@@ -51714,7 +51714,7 @@ export namespace Gio {
 
         static ['new'](flags: SubprocessFlags): SubprocessLauncher;
 
-        // Own methods of Gio.SubprocessLauncher
+        // Methods
 
         /**
          * Closes all the file descriptors previously passed to the object with
@@ -52478,7 +52478,7 @@ export namespace Gio {
     class Task extends GObject.Object implements AsyncResult {
         static $gtype: GObject.GType<Task>;
 
-        // Own properties of Gio.Task
+        // Properties
 
         /**
          * Whether the task has completed, meaning its callback (if set) has been
@@ -52502,7 +52502,7 @@ export namespace Gio {
          */
         get completed(): boolean;
 
-        // Constructors of Gio.Task
+        // Constructors
 
         constructor(properties?: Partial<Task.ConstructorProps>, ...args: any[]);
 
@@ -52514,7 +52514,7 @@ export namespace Gio {
             callback?: AsyncReadyCallback | null,
         ): Task;
 
-        // Own static methods of Gio.Task
+        // Static methods
 
         /**
          * Checks that `result` is a #GTask, and that `source_object` is its
@@ -52545,7 +52545,7 @@ export namespace Gio {
             error: GLib.Error,
         ): void;
 
-        // Own methods of Gio.Task
+        // Methods
 
         /**
          * Gets `task'`s #GCancellable
@@ -53353,7 +53353,7 @@ export namespace Gio {
     class TcpConnection extends SocketConnection {
         static $gtype: GObject.GType<TcpConnection>;
 
-        // Own properties of Gio.TcpConnection
+        // Properties
 
         /**
          * Whether [method`Gio`.IOStream.close] does a graceful disconnect.
@@ -53366,13 +53366,13 @@ export namespace Gio {
         get gracefulDisconnect(): boolean;
         set gracefulDisconnect(val: boolean);
 
-        // Constructors of Gio.TcpConnection
+        // Constructors
 
         constructor(properties?: Partial<TcpConnection.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Gio.TcpConnection
+        // Methods
 
         /**
          * Checks if graceful disconnects are used. See
@@ -53415,7 +53415,7 @@ export namespace Gio {
     class TcpWrapperConnection extends TcpConnection {
         static $gtype: GObject.GType<TcpWrapperConnection>;
 
-        // Own properties of Gio.TcpWrapperConnection
+        // Properties
 
         /**
          * The wrapped [class`Gio`.IOStream].
@@ -53426,7 +53426,7 @@ export namespace Gio {
          */
         get baseIoStream(): IOStream;
 
-        // Constructors of Gio.TcpWrapperConnection
+        // Constructors
 
         constructor(properties?: Partial<TcpWrapperConnection.ConstructorProps>, ...args: any[]);
 
@@ -53434,7 +53434,7 @@ export namespace Gio {
 
         static ['new'](base_io_stream: IOStream, socket: Socket): TcpWrapperConnection;
 
-        // Own methods of Gio.TcpWrapperConnection
+        // Methods
 
         /**
          * Gets `conn'`s base #GIOStream
@@ -53535,14 +53535,14 @@ export namespace Gio {
     class TestDBus extends GObject.Object {
         static $gtype: GObject.GType<TestDBus>;
 
-        // Own properties of Gio.TestDBus
+        // Properties
 
         /**
          * #GTestDBusFlags specifying the behaviour of the D-Bus session.
          */
         get flags(): TestDBusFlags;
 
-        // Constructors of Gio.TestDBus
+        // Constructors
 
         constructor(properties?: Partial<TestDBus.ConstructorProps>, ...args: any[]);
 
@@ -53550,7 +53550,7 @@ export namespace Gio {
 
         static ['new'](flags: TestDBusFlags): TestDBus;
 
-        // Own static methods of Gio.TestDBus
+        // Static methods
 
         /**
          * Unset DISPLAY and DBUS_SESSION_BUS_ADDRESS env variables to ensure the test
@@ -53562,7 +53562,7 @@ export namespace Gio {
          */
         static unset(): void;
 
-        // Own methods of Gio.TestDBus
+        // Methods
 
         /**
          * Add a path where dbus-daemon will look up .service files. This can't be
@@ -53637,7 +53637,7 @@ export namespace Gio {
     class ThemedIcon extends GObject.Object implements Icon {
         static $gtype: GObject.GType<ThemedIcon>;
 
-        // Own properties of Gio.ThemedIcon
+        // Properties
 
         /**
          * The icon name.
@@ -53688,7 +53688,7 @@ export namespace Gio {
          */
         get useDefaultFallbacks(): boolean;
 
-        // Constructors of Gio.ThemedIcon
+        // Constructors
 
         constructor(properties?: Partial<ThemedIcon.ConstructorProps>, ...args: any[]);
 
@@ -53700,7 +53700,7 @@ export namespace Gio {
 
         static new_with_default_fallbacks(iconname: string): ThemedIcon;
 
-        // Own methods of Gio.ThemedIcon
+        // Methods
 
         /**
          * Append a name to the list of icons from within `icon`.
@@ -54202,7 +54202,7 @@ export namespace Gio {
     class ThreadedResolver extends Resolver {
         static $gtype: GObject.GType<ThreadedResolver>;
 
-        // Constructors of Gio.ThreadedResolver
+        // Constructors
 
         constructor(properties?: Partial<ThreadedResolver.ConstructorProps>, ...args: any[]);
 
@@ -54245,7 +54245,7 @@ export namespace Gio {
     class ThreadedSocketService extends SocketService {
         static $gtype: GObject.GType<ThreadedSocketService>;
 
-        // Own properties of Gio.ThreadedSocketService
+        // Properties
 
         /**
          * The maximum number of threads handling clients for this service.
@@ -54256,7 +54256,7 @@ export namespace Gio {
          */
         get maxThreads(): number;
 
-        // Constructors of Gio.ThreadedSocketService
+        // Constructors
 
         constructor(properties?: Partial<ThreadedSocketService.ConstructorProps>, ...args: any[]);
 
@@ -54267,7 +54267,7 @@ export namespace Gio {
 
         static ['new'](...args: never[]): any;
 
-        // Own signals of Gio.ThreadedSocketService
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -54282,7 +54282,7 @@ export namespace Gio {
         ): number;
         emit(signal: 'run', connection: SocketConnection, source_object?: GObject.Object | null): void;
 
-        // Own virtual methods of Gio.ThreadedSocketService
+        // Virtual methods
 
         vfunc_run(connection: SocketConnection, source_object: GObject.Object): boolean;
     }
@@ -54331,7 +54331,7 @@ export namespace Gio {
     abstract class TlsCertificate extends GObject.Object {
         static $gtype: GObject.GType<TlsCertificate>;
 
-        // Own properties of Gio.TlsCertificate
+        // Properties
 
         /**
          * The DER (binary) encoded representation of the certificate.
@@ -54555,7 +54555,7 @@ export namespace Gio {
          */
         get subjectName(): string;
 
-        // Constructors of Gio.TlsCertificate
+        // Constructors
 
         constructor(properties?: Partial<TlsCertificate.ConstructorProps>, ...args: any[]);
 
@@ -54573,7 +54573,7 @@ export namespace Gio {
 
         static new_from_pkcs12(data: Uint8Array | string, password?: string | null): TlsCertificate;
 
-        // Own static methods of Gio.TlsCertificate
+        // Static methods
 
         /**
          * Creates one or more #GTlsCertificates from the PEM-encoded
@@ -54585,7 +54585,7 @@ export namespace Gio {
          */
         static list_new_from_file(file: string): TlsCertificate[];
 
-        // Own virtual methods of Gio.TlsCertificate
+        // Virtual methods
 
         /**
          * This verifies `cert` and returns a set of #GTlsCertificateFlags
@@ -54626,7 +54626,7 @@ export namespace Gio {
          */
         vfunc_verify(identity?: SocketConnectable | null, trusted_ca?: TlsCertificate | null): TlsCertificateFlags;
 
-        // Own methods of Gio.TlsCertificate
+        // Methods
 
         /**
          * Gets the value of #GTlsCertificate:dns-names.
@@ -54762,7 +54762,7 @@ export namespace Gio {
     abstract class TlsConnection extends IOStream {
         static $gtype: GObject.GType<TlsConnection>;
 
-        // Own properties of Gio.TlsConnection
+        // Properties
 
         /**
          * The list of application-layer protocols that the connection
@@ -54944,13 +54944,13 @@ export namespace Gio {
         get useSystemCertdb(): boolean;
         set useSystemCertdb(val: boolean);
 
-        // Constructors of Gio.TlsConnection
+        // Constructors
 
         constructor(properties?: Partial<TlsConnection.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of Gio.TlsConnection
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -54965,7 +54965,7 @@ export namespace Gio {
         ): number;
         emit(signal: 'accept-certificate', peer_cert: TlsCertificate, errors: TlsCertificateFlags): void;
 
-        // Own virtual methods of Gio.TlsConnection
+        // Virtual methods
 
         /**
          * Check whether to accept a certificate.
@@ -55043,7 +55043,7 @@ export namespace Gio {
          */
         vfunc_handshake_finish(result: AsyncResult): boolean;
 
-        // Own methods of Gio.TlsConnection
+        // Methods
 
         /**
          * Used by #GTlsConnection implementations to emit the
@@ -55344,13 +55344,13 @@ export namespace Gio {
     abstract class TlsDatabase extends GObject.Object {
         static $gtype: GObject.GType<TlsDatabase>;
 
-        // Constructors of Gio.TlsDatabase
+        // Constructors
 
         constructor(properties?: Partial<TlsDatabase.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of Gio.TlsDatabase
+        // Virtual methods
 
         /**
          * Create a handle string for the certificate. The database will only be able
@@ -55622,7 +55622,7 @@ export namespace Gio {
          */
         vfunc_verify_chain_finish(result: AsyncResult): TlsCertificateFlags;
 
-        // Own methods of Gio.TlsDatabase
+        // Methods
 
         /**
          * Create a handle string for the certificate. The database will only be able
@@ -55935,13 +55935,13 @@ export namespace Gio {
     class TlsInteraction extends GObject.Object {
         static $gtype: GObject.GType<TlsInteraction>;
 
-        // Constructors of Gio.TlsInteraction
+        // Constructors
 
         constructor(properties?: Partial<TlsInteraction.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of Gio.TlsInteraction
+        // Virtual methods
 
         /**
          * Run synchronous interaction to ask the user for a password. In general,
@@ -56060,7 +56060,7 @@ export namespace Gio {
          */
         vfunc_request_certificate_finish(result: AsyncResult): TlsInteractionResult;
 
-        // Own methods of Gio.TlsInteraction
+        // Methods
 
         /**
          * Run synchronous interaction to ask the user for a password. In general,
@@ -56257,7 +56257,7 @@ export namespace Gio {
     class TlsPassword extends GObject.Object {
         static $gtype: GObject.GType<TlsPassword>;
 
-        // Own properties of Gio.TlsPassword
+        // Properties
 
         /**
          * Description of what the password is for.
@@ -56275,7 +56275,7 @@ export namespace Gio {
         get warning(): string;
         set warning(val: string);
 
-        // Constructors of Gio.TlsPassword
+        // Constructors
 
         constructor(properties?: Partial<TlsPassword.ConstructorProps>, ...args: any[]);
 
@@ -56283,7 +56283,7 @@ export namespace Gio {
 
         static ['new'](flags: TlsPasswordFlags, description: string): TlsPassword;
 
-        // Own virtual methods of Gio.TlsPassword
+        // Virtual methods
 
         /**
          * virtual method for g_tls_password_get_warning() if no
@@ -56313,7 +56313,7 @@ export namespace Gio {
          */
         vfunc_set_value(value: Uint8Array | string, destroy?: GLib.DestroyNotify | null): void;
 
-        // Own methods of Gio.TlsPassword
+        // Methods
 
         /**
          * Get a description string about what the password will be used for.
@@ -56408,13 +56408,13 @@ export namespace Gio {
     class UnixConnection extends SocketConnection {
         static $gtype: GObject.GType<UnixConnection>;
 
-        // Constructors of Gio.UnixConnection
+        // Constructors
 
         constructor(properties?: Partial<UnixConnection.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Gio.UnixConnection
+        // Methods
 
         /**
          * Receives credentials from the sending end of the connection.  The
@@ -56560,14 +56560,14 @@ export namespace Gio {
     class UnixCredentialsMessage extends SocketControlMessage {
         static $gtype: GObject.GType<UnixCredentialsMessage>;
 
-        // Own properties of Gio.UnixCredentialsMessage
+        // Properties
 
         /**
          * The credentials stored in the message.
          */
         get credentials(): Credentials;
 
-        // Constructors of Gio.UnixCredentialsMessage
+        // Constructors
 
         constructor(properties?: Partial<UnixCredentialsMessage.ConstructorProps>, ...args: any[]);
 
@@ -56577,14 +56577,14 @@ export namespace Gio {
 
         static new_with_credentials(credentials: Credentials): UnixCredentialsMessage;
 
-        // Own static methods of Gio.UnixCredentialsMessage
+        // Static methods
 
         /**
          * Checks if passing #GCredentials on a #GSocket is supported on this platform.
          */
         static is_supported(): boolean;
 
-        // Own methods of Gio.UnixCredentialsMessage
+        // Methods
 
         /**
          * Gets the credentials stored in `message`.
@@ -56618,7 +56618,7 @@ export namespace Gio {
     class UnixFDList extends GObject.Object {
         static $gtype: GObject.GType<UnixFDList>;
 
-        // Constructors of Gio.UnixFDList
+        // Constructors
 
         constructor(properties?: Partial<UnixFDList.ConstructorProps>, ...args: any[]);
 
@@ -56628,7 +56628,7 @@ export namespace Gio {
 
         static new_from_array(fds: number[]): UnixFDList;
 
-        // Own methods of Gio.UnixFDList
+        // Methods
 
         /**
          * Adds a file descriptor to `list`.
@@ -56738,7 +56738,7 @@ export namespace Gio {
     class UnixFDMessage extends SocketControlMessage {
         static $gtype: GObject.GType<UnixFDMessage>;
 
-        // Own properties of Gio.UnixFDMessage
+        // Properties
 
         /**
          * The [class`Gio`.UnixFDList] object to send with the message.
@@ -56749,7 +56749,7 @@ export namespace Gio {
          */
         get fdList(): UnixFDList;
 
-        // Constructors of Gio.UnixFDMessage
+        // Constructors
 
         constructor(properties?: Partial<UnixFDMessage.ConstructorProps>, ...args: any[]);
 
@@ -56759,7 +56759,7 @@ export namespace Gio {
 
         static new_with_fd_list(fd_list: UnixFDList): UnixFDMessage;
 
-        // Own methods of Gio.UnixFDMessage
+        // Methods
 
         /**
          * Adds a file descriptor to `message`.
@@ -56831,7 +56831,7 @@ export namespace Gio {
     class UnixInputStream extends InputStream implements FileDescriptorBased, PollableInputStream {
         static $gtype: GObject.GType<UnixInputStream>;
 
-        // Own properties of Gio.UnixInputStream
+        // Properties
 
         /**
          * Whether to close the file descriptor when the stream is closed.
@@ -56848,7 +56848,7 @@ export namespace Gio {
          */
         get fd(): number;
 
-        // Constructors of Gio.UnixInputStream
+        // Constructors
 
         constructor(properties?: Partial<UnixInputStream.ConstructorProps>, ...args: any[]);
 
@@ -56856,7 +56856,7 @@ export namespace Gio {
 
         static ['new'](fd: number, close_fd: boolean): UnixInputStream;
 
-        // Own methods of Gio.UnixInputStream
+        // Methods
 
         /**
          * Returns whether the file descriptor of `stream` will be
@@ -57872,7 +57872,7 @@ export namespace Gio {
     class UnixMountMonitor extends GObject.Object {
         static $gtype: GObject.GType<UnixMountMonitor>;
 
-        // Constructors of Gio.UnixMountMonitor
+        // Constructors
 
         constructor(properties?: Partial<UnixMountMonitor.ConstructorProps>, ...args: any[]);
 
@@ -57880,7 +57880,7 @@ export namespace Gio {
 
         static ['new'](): UnixMountMonitor;
 
-        // Own signals of Gio.UnixMountMonitor
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -57892,7 +57892,7 @@ export namespace Gio {
         connect_after(signal: 'mounts-changed', callback: (_source: this) => void): number;
         emit(signal: 'mounts-changed'): void;
 
-        // Own static methods of Gio.UnixMountMonitor
+        // Static methods
 
         /**
          * Gets the #GUnixMountMonitor for the current thread-default main
@@ -57907,7 +57907,7 @@ export namespace Gio {
          */
         static get(): UnixMountMonitor;
 
-        // Own methods of Gio.UnixMountMonitor
+        // Methods
 
         /**
          * This function does nothing.
@@ -57949,7 +57949,7 @@ export namespace Gio {
     class UnixOutputStream extends OutputStream implements FileDescriptorBased, PollableOutputStream {
         static $gtype: GObject.GType<UnixOutputStream>;
 
-        // Own properties of Gio.UnixOutputStream
+        // Properties
 
         /**
          * Whether to close the file descriptor when the stream is closed.
@@ -57966,7 +57966,7 @@ export namespace Gio {
          */
         get fd(): number;
 
-        // Constructors of Gio.UnixOutputStream
+        // Constructors
 
         constructor(properties?: Partial<UnixOutputStream.ConstructorProps>, ...args: any[]);
 
@@ -57974,7 +57974,7 @@ export namespace Gio {
 
         static ['new'](fd: number, close_fd: boolean): UnixOutputStream;
 
-        // Own methods of Gio.UnixOutputStream
+        // Methods
 
         /**
          * Returns whether the file descriptor of `stream` will be
@@ -59362,7 +59362,7 @@ export namespace Gio {
     class UnixSocketAddress extends SocketAddress implements SocketConnectable {
         static $gtype: GObject.GType<UnixSocketAddress>;
 
-        // Own properties of Gio.UnixSocketAddress
+        // Properties
 
         /**
          * Whether or not this is an abstract address
@@ -59389,7 +59389,7 @@ export namespace Gio {
          */
         get pathAsArray(): Uint8Array;
 
-        // Constructors of Gio.UnixSocketAddress
+        // Constructors
 
         constructor(properties?: Partial<UnixSocketAddress.ConstructorProps>, ...args: any[]);
 
@@ -59401,14 +59401,14 @@ export namespace Gio {
 
         static new_with_type(path: number[], type: UnixSocketAddressType): UnixSocketAddress;
 
-        // Own static methods of Gio.UnixSocketAddress
+        // Static methods
 
         /**
          * Checks if abstract UNIX domain socket names are supported.
          */
         static abstract_names_supported(): boolean;
 
-        // Own methods of Gio.UnixSocketAddress
+        // Methods
 
         /**
          * Gets `address'`s type.
@@ -59904,13 +59904,13 @@ export namespace Gio {
     class Vfs extends GObject.Object {
         static $gtype: GObject.GType<Vfs>;
 
-        // Constructors of Gio.Vfs
+        // Constructors
 
         constructor(properties?: Partial<Vfs.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of Gio.Vfs
+        // Static methods
 
         /**
          * Gets the default #GVfs for the system.
@@ -59921,7 +59921,7 @@ export namespace Gio {
          */
         static get_local(): Vfs;
 
-        // Own virtual methods of Gio.Vfs
+        // Virtual methods
 
         vfunc_add_writable_namespaces(list: FileAttributeInfoList): void;
         /**
@@ -59970,7 +59970,7 @@ export namespace Gio {
          */
         vfunc_parse_name(parse_name: string): File;
 
-        // Own methods of Gio.Vfs
+        // Methods
 
         /**
          * Gets a #GFile for `path`.
@@ -60122,13 +60122,13 @@ export namespace Gio {
     class VolumeMonitor extends GObject.Object {
         static $gtype: GObject.GType<VolumeMonitor>;
 
-        // Constructors of Gio.VolumeMonitor
+        // Constructors
 
         constructor(properties?: Partial<VolumeMonitor.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of Gio.VolumeMonitor
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -60170,7 +60170,7 @@ export namespace Gio {
         connect_after(signal: 'volume-removed', callback: (_source: this, volume: Volume) => void): number;
         emit(signal: 'volume-removed', volume: Volume): void;
 
-        // Own static methods of Gio.VolumeMonitor
+        // Static methods
 
         /**
          * This function should be called by any #GVolumeMonitor
@@ -60209,7 +60209,7 @@ export namespace Gio {
          */
         static get(): VolumeMonitor;
 
-        // Own virtual methods of Gio.VolumeMonitor
+        // Virtual methods
 
         vfunc_drive_changed(drive: Drive): void;
         vfunc_drive_connected(drive: Drive): void;
@@ -60255,7 +60255,7 @@ export namespace Gio {
         vfunc_volume_changed(volume: Volume): void;
         vfunc_volume_removed(volume: Volume): void;
 
-        // Own methods of Gio.VolumeMonitor
+        // Methods
 
         /**
          * Gets a list of drives connected to the system.
@@ -60313,7 +60313,7 @@ export namespace Gio {
     class ZlibCompressor extends GObject.Object implements Converter {
         static $gtype: GObject.GType<ZlibCompressor>;
 
-        // Own properties of Gio.ZlibCompressor
+        // Properties
 
         /**
          * If set to a non-%NULL #GFileInfo object, and #GZlibCompressor:format is
@@ -60339,7 +60339,7 @@ export namespace Gio {
          */
         get level(): number;
 
-        // Constructors of Gio.ZlibCompressor
+        // Constructors
 
         constructor(properties?: Partial<ZlibCompressor.ConstructorProps>, ...args: any[]);
 
@@ -60347,7 +60347,7 @@ export namespace Gio {
 
         static ['new'](format: ZlibCompressorFormat, level: number): ZlibCompressor;
 
-        // Own methods of Gio.ZlibCompressor
+        // Methods
 
         /**
          * Returns the #GZlibCompressor:file-info property.
@@ -60984,7 +60984,7 @@ export namespace Gio {
     class ZlibDecompressor extends GObject.Object implements Converter {
         static $gtype: GObject.GType<ZlibDecompressor>;
 
-        // Own properties of Gio.ZlibDecompressor
+        // Properties
 
         /**
          * A #GFileInfo containing the information found in the GZIP header
@@ -61005,7 +61005,7 @@ export namespace Gio {
          */
         get format(): ZlibCompressorFormat;
 
-        // Constructors of Gio.ZlibDecompressor
+        // Constructors
 
         constructor(properties?: Partial<ZlibDecompressor.ConstructorProps>, ...args: any[]);
 
@@ -61013,7 +61013,7 @@ export namespace Gio {
 
         static ['new'](format: ZlibCompressorFormat): ZlibDecompressor;
 
-        // Own methods of Gio.ZlibDecompressor
+        // Methods
 
         /**
          * Retrieves the #GFileInfo constructed from the GZIP header data
@@ -61640,13 +61640,13 @@ export namespace Gio {
     class ActionEntry {
         static $gtype: GObject.GType<ActionEntry>;
 
-        // Own fields of Gio.ActionEntry
+        // Fields
 
         name: string;
         parameter_type: string;
         state: string;
 
-        // Constructors of Gio.ActionEntry
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -61666,7 +61666,7 @@ export namespace Gio {
     abstract class AppLaunchContextPrivate {
         static $gtype: GObject.GType<AppLaunchContextPrivate>;
 
-        // Constructors of Gio.AppLaunchContextPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -61676,7 +61676,7 @@ export namespace Gio {
     abstract class ApplicationCommandLinePrivate {
         static $gtype: GObject.GType<ApplicationCommandLinePrivate>;
 
-        // Constructors of Gio.ApplicationCommandLinePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -61684,7 +61684,7 @@ export namespace Gio {
     abstract class ApplicationPrivate {
         static $gtype: GObject.GType<ApplicationPrivate>;
 
-        // Constructors of Gio.ApplicationPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -61695,7 +61695,7 @@ export namespace Gio {
     abstract class BufferedInputStreamPrivate {
         static $gtype: GObject.GType<BufferedInputStreamPrivate>;
 
-        // Constructors of Gio.BufferedInputStreamPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -61704,7 +61704,7 @@ export namespace Gio {
     abstract class BufferedOutputStreamPrivate {
         static $gtype: GObject.GType<BufferedOutputStreamPrivate>;
 
-        // Constructors of Gio.BufferedOutputStreamPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -61713,7 +61713,7 @@ export namespace Gio {
     abstract class CancellablePrivate {
         static $gtype: GObject.GType<CancellablePrivate>;
 
-        // Constructors of Gio.CancellablePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -61724,7 +61724,7 @@ export namespace Gio {
     abstract class ConverterInputStreamPrivate {
         static $gtype: GObject.GType<ConverterInputStreamPrivate>;
 
-        // Constructors of Gio.ConverterInputStreamPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -61733,7 +61733,7 @@ export namespace Gio {
     abstract class ConverterOutputStreamPrivate {
         static $gtype: GObject.GType<ConverterOutputStreamPrivate>;
 
-        // Constructors of Gio.ConverterOutputStreamPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -61745,14 +61745,14 @@ export namespace Gio {
     class DBusAnnotationInfo {
         static $gtype: GObject.GType<DBusAnnotationInfo>;
 
-        // Own fields of Gio.DBusAnnotationInfo
+        // Fields
 
         ref_count: number;
         key: string;
         value: string;
         annotations: DBusAnnotationInfo[];
 
-        // Constructors of Gio.DBusAnnotationInfo
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -61764,7 +61764,7 @@ export namespace Gio {
         );
         _init(...args: any[]): void;
 
-        // Own static methods of Gio.DBusAnnotationInfo
+        // Static methods
 
         /**
          * Looks up the value of an annotation.
@@ -61775,7 +61775,7 @@ export namespace Gio {
          */
         static lookup(annotations: DBusAnnotationInfo[] | null, name: string): string | null;
 
-        // Own methods of Gio.DBusAnnotationInfo
+        // Methods
 
         /**
          * If `info` is statically allocated does nothing. Otherwise increases
@@ -61797,14 +61797,14 @@ export namespace Gio {
     class DBusArgInfo {
         static $gtype: GObject.GType<DBusArgInfo>;
 
-        // Own fields of Gio.DBusArgInfo
+        // Fields
 
         ref_count: number;
         name: string;
         signature: string;
         annotations: DBusAnnotationInfo[];
 
-        // Constructors of Gio.DBusArgInfo
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -61816,7 +61816,7 @@ export namespace Gio {
         );
         _init(...args: any[]): void;
 
-        // Own methods of Gio.DBusArgInfo
+        // Methods
 
         /**
          * If `info` is statically allocated does nothing. Otherwise increases
@@ -61838,12 +61838,12 @@ export namespace Gio {
     class DBusErrorEntry {
         static $gtype: GObject.GType<DBusErrorEntry>;
 
-        // Own fields of Gio.DBusErrorEntry
+        // Fields
 
         error_code: number;
         dbus_error_name: string;
 
-        // Constructors of Gio.DBusErrorEntry
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -61861,7 +61861,7 @@ export namespace Gio {
     class DBusInterfaceInfo {
         static $gtype: GObject.GType<DBusInterfaceInfo>;
 
-        // Own fields of Gio.DBusInterfaceInfo
+        // Fields
 
         ref_count: number;
         name: string;
@@ -61869,13 +61869,13 @@ export namespace Gio {
         signals: DBusSignalInfo[];
         annotations: DBusAnnotationInfo[];
 
-        // Constructors of Gio.DBusInterfaceInfo
+        // Constructors
 
         _init(...args: any[]): void;
 
         static new_for_xml(info: string): DBusInterfaceInfo;
 
-        // Own methods of Gio.DBusInterfaceInfo
+        // Methods
 
         /**
          * Builds a lookup-cache to speed up
@@ -61952,7 +61952,7 @@ export namespace Gio {
     abstract class DBusInterfaceSkeletonPrivate {
         static $gtype: GObject.GType<DBusInterfaceSkeletonPrivate>;
 
-        // Constructors of Gio.DBusInterfaceSkeletonPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -62003,13 +62003,13 @@ export namespace Gio {
     class DBusInterfaceVTable {
         static $gtype: GObject.GType<DBusInterfaceVTable>;
 
-        // Own fields of Gio.DBusInterfaceVTable
+        // Fields
 
         method_call: DBusInterfaceMethodCallFunc;
         get_property: DBusInterfaceGetPropertyFunc;
         set_property: DBusInterfaceSetPropertyFunc;
 
-        // Constructors of Gio.DBusInterfaceVTable
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -62020,7 +62020,7 @@ export namespace Gio {
     class DBusMethodInfo {
         static $gtype: GObject.GType<DBusMethodInfo>;
 
-        // Own fields of Gio.DBusMethodInfo
+        // Fields
 
         ref_count: number;
         name: string;
@@ -62028,7 +62028,7 @@ export namespace Gio {
         out_args: DBusArgInfo[];
         annotations: DBusAnnotationInfo[];
 
-        // Constructors of Gio.DBusMethodInfo
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -62041,7 +62041,7 @@ export namespace Gio {
         );
         _init(...args: any[]): void;
 
-        // Own methods of Gio.DBusMethodInfo
+        // Methods
 
         /**
          * If `info` is statically allocated does nothing. Otherwise increases
@@ -62063,13 +62063,13 @@ export namespace Gio {
     class DBusNodeInfo {
         static $gtype: GObject.GType<DBusNodeInfo>;
 
-        // Own fields of Gio.DBusNodeInfo
+        // Fields
 
         ref_count: number;
         path: string;
         annotations: DBusAnnotationInfo[];
 
-        // Constructors of Gio.DBusNodeInfo
+        // Constructors
 
         constructor(xml_data: string);
         _init(...args: any[]): void;
@@ -62078,7 +62078,7 @@ export namespace Gio {
 
         static new_for_xml(info: string): DBusNodeInfo;
 
-        // Own methods of Gio.DBusNodeInfo
+        // Methods
 
         /**
          * Appends an XML representation of `info` (and its children) to `string_builder`.
@@ -62116,7 +62116,7 @@ export namespace Gio {
     abstract class DBusObjectManagerClientPrivate {
         static $gtype: GObject.GType<DBusObjectManagerClientPrivate>;
 
-        // Constructors of Gio.DBusObjectManagerClientPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -62126,7 +62126,7 @@ export namespace Gio {
     abstract class DBusObjectManagerServerPrivate {
         static $gtype: GObject.GType<DBusObjectManagerServerPrivate>;
 
-        // Constructors of Gio.DBusObjectManagerServerPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -62135,7 +62135,7 @@ export namespace Gio {
     abstract class DBusObjectProxyPrivate {
         static $gtype: GObject.GType<DBusObjectProxyPrivate>;
 
-        // Constructors of Gio.DBusObjectProxyPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -62144,7 +62144,7 @@ export namespace Gio {
     abstract class DBusObjectSkeletonPrivate {
         static $gtype: GObject.GType<DBusObjectSkeletonPrivate>;
 
-        // Constructors of Gio.DBusObjectSkeletonPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -62155,7 +62155,7 @@ export namespace Gio {
     class DBusPropertyInfo {
         static $gtype: GObject.GType<DBusPropertyInfo>;
 
-        // Own fields of Gio.DBusPropertyInfo
+        // Fields
 
         ref_count: number;
         name: string;
@@ -62163,11 +62163,11 @@ export namespace Gio {
         flags: DBusPropertyInfoFlags;
         annotations: DBusAnnotationInfo[];
 
-        // Constructors of Gio.DBusPropertyInfo
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of Gio.DBusPropertyInfo
+        // Methods
 
         /**
          * If `info` is statically allocated does nothing. Otherwise increases
@@ -62187,7 +62187,7 @@ export namespace Gio {
     abstract class DBusProxyPrivate {
         static $gtype: GObject.GType<DBusProxyPrivate>;
 
-        // Constructors of Gio.DBusProxyPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -62198,14 +62198,14 @@ export namespace Gio {
     class DBusSignalInfo {
         static $gtype: GObject.GType<DBusSignalInfo>;
 
-        // Own fields of Gio.DBusSignalInfo
+        // Fields
 
         ref_count: number;
         name: string;
         args: DBusArgInfo[];
         annotations: DBusAnnotationInfo[];
 
-        // Constructors of Gio.DBusSignalInfo
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -62217,7 +62217,7 @@ export namespace Gio {
         );
         _init(...args: any[]): void;
 
-        // Own methods of Gio.DBusSignalInfo
+        // Methods
 
         /**
          * If `info` is statically allocated does nothing. Otherwise increases
@@ -62239,13 +62239,13 @@ export namespace Gio {
     class DBusSubtreeVTable {
         static $gtype: GObject.GType<DBusSubtreeVTable>;
 
-        // Own fields of Gio.DBusSubtreeVTable
+        // Fields
 
         enumerate: DBusSubtreeEnumerateFunc;
         introspect: DBusSubtreeIntrospectFunc;
         dispatch: DBusSubtreeDispatchFunc;
 
-        // Constructors of Gio.DBusSubtreeVTable
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -62254,7 +62254,7 @@ export namespace Gio {
     abstract class DataInputStreamPrivate {
         static $gtype: GObject.GType<DataInputStreamPrivate>;
 
-        // Constructors of Gio.DataInputStreamPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -62263,7 +62263,7 @@ export namespace Gio {
     abstract class DataOutputStreamPrivate {
         static $gtype: GObject.GType<DataOutputStreamPrivate>;
 
-        // Constructors of Gio.DataOutputStreamPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -62282,7 +62282,7 @@ export namespace Gio {
     abstract class EmblemedIconPrivate {
         static $gtype: GObject.GType<EmblemedIconPrivate>;
 
-        // Constructors of Gio.EmblemedIconPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -62293,13 +62293,13 @@ export namespace Gio {
     class FileAttributeInfo {
         static $gtype: GObject.GType<FileAttributeInfo>;
 
-        // Own fields of Gio.FileAttributeInfo
+        // Fields
 
         name: string;
         type: FileAttributeType;
         flags: FileAttributeInfoFlags;
 
-        // Constructors of Gio.FileAttributeInfo
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -62311,11 +62311,11 @@ export namespace Gio {
     class FileAttributeInfoList {
         static $gtype: GObject.GType<FileAttributeInfoList>;
 
-        // Own fields of Gio.FileAttributeInfoList
+        // Fields
 
         n_infos: number;
 
-        // Constructors of Gio.FileAttributeInfoList
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -62326,7 +62326,7 @@ export namespace Gio {
 
         static ['new'](): FileAttributeInfoList;
 
-        // Own methods of Gio.FileAttributeInfoList
+        // Methods
 
         /**
          * Adds a new attribute with `name` to the `list,` setting
@@ -62365,14 +62365,14 @@ export namespace Gio {
     class FileAttributeMatcher {
         static $gtype: GObject.GType<FileAttributeMatcher>;
 
-        // Constructors of Gio.FileAttributeMatcher
+        // Constructors
 
         constructor(attributes: string);
         _init(...args: any[]): void;
 
         static ['new'](attributes: string): FileAttributeMatcher;
 
-        // Own methods of Gio.FileAttributeMatcher
+        // Methods
 
         /**
          * Checks if the matcher will match all of the keys in a given namespace.
@@ -62443,7 +62443,7 @@ export namespace Gio {
     abstract class FileEnumeratorPrivate {
         static $gtype: GObject.GType<FileEnumeratorPrivate>;
 
-        // Constructors of Gio.FileEnumeratorPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -62452,7 +62452,7 @@ export namespace Gio {
     abstract class FileIOStreamPrivate {
         static $gtype: GObject.GType<FileIOStreamPrivate>;
 
-        // Constructors of Gio.FileIOStreamPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -62464,7 +62464,7 @@ export namespace Gio {
     abstract class FileInputStreamPrivate {
         static $gtype: GObject.GType<FileInputStreamPrivate>;
 
-        // Constructors of Gio.FileInputStreamPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -62473,7 +62473,7 @@ export namespace Gio {
     abstract class FileMonitorPrivate {
         static $gtype: GObject.GType<FileMonitorPrivate>;
 
-        // Constructors of Gio.FileMonitorPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -62482,7 +62482,7 @@ export namespace Gio {
     abstract class FileOutputStreamPrivate {
         static $gtype: GObject.GType<FileOutputStreamPrivate>;
 
-        // Constructors of Gio.FileOutputStreamPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -62497,11 +62497,11 @@ export namespace Gio {
     abstract class IOExtension {
         static $gtype: GObject.GType<IOExtension>;
 
-        // Constructors of Gio.IOExtension
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of Gio.IOExtension
+        // Methods
 
         /**
          * Gets the name under which `extension` was registered.
@@ -62579,11 +62579,11 @@ export namespace Gio {
     abstract class IOExtensionPoint {
         static $gtype: GObject.GType<IOExtensionPoint>;
 
-        // Constructors of Gio.IOExtensionPoint
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own static methods of Gio.IOExtensionPoint
+        // Static methods
 
         /**
          * Registers `type` as extension for the extension point with name
@@ -62613,7 +62613,7 @@ export namespace Gio {
          */
         static register(name: string): IOExtensionPoint;
 
-        // Own methods of Gio.IOExtensionPoint
+        // Methods
 
         /**
          * Finds a #GIOExtension for an extension point by name.
@@ -62651,11 +62651,11 @@ export namespace Gio {
     abstract class IOModuleScope {
         static $gtype: GObject.GType<IOModuleScope>;
 
-        // Constructors of Gio.IOModuleScope
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of Gio.IOModuleScope
+        // Methods
 
         /**
          * Block modules with the given `basename` from being loaded when
@@ -62676,11 +62676,11 @@ export namespace Gio {
     abstract class IOSchedulerJob {
         static $gtype: GObject.GType<IOSchedulerJob>;
 
-        // Constructors of Gio.IOSchedulerJob
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of Gio.IOSchedulerJob
+        // Methods
 
         /**
          * Used from an I/O job to send a callback to be run in the thread
@@ -62710,7 +62710,7 @@ export namespace Gio {
     abstract class IOStreamAdapter {
         static $gtype: GObject.GType<IOStreamAdapter>;
 
-        // Constructors of Gio.IOStreamAdapter
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -62719,7 +62719,7 @@ export namespace Gio {
     abstract class IOStreamPrivate {
         static $gtype: GObject.GType<IOStreamPrivate>;
 
-        // Constructors of Gio.IOStreamPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -62730,7 +62730,7 @@ export namespace Gio {
     abstract class InetAddressMaskPrivate {
         static $gtype: GObject.GType<InetAddressMaskPrivate>;
 
-        // Constructors of Gio.InetAddressMaskPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -62738,7 +62738,7 @@ export namespace Gio {
     abstract class InetAddressPrivate {
         static $gtype: GObject.GType<InetAddressPrivate>;
 
-        // Constructors of Gio.InetAddressPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -62747,7 +62747,7 @@ export namespace Gio {
     abstract class InetSocketAddressPrivate {
         static $gtype: GObject.GType<InetSocketAddressPrivate>;
 
-        // Constructors of Gio.InetSocketAddressPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -62777,7 +62777,7 @@ export namespace Gio {
     class InputMessage {
         static $gtype: GObject.GType<InputMessage>;
 
-        // Own fields of Gio.InputMessage
+        // Fields
 
         address: SocketAddress;
         vectors: InputVector[];
@@ -62787,7 +62787,7 @@ export namespace Gio {
         control_messages: SocketControlMessage[];
         num_control_messages: number;
 
-        // Constructors of Gio.InputMessage
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -62796,7 +62796,7 @@ export namespace Gio {
     abstract class InputStreamPrivate {
         static $gtype: GObject.GType<InputStreamPrivate>;
 
-        // Constructors of Gio.InputStreamPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -62810,12 +62810,12 @@ export namespace Gio {
     class InputVector {
         static $gtype: GObject.GType<InputVector>;
 
-        // Own fields of Gio.InputVector
+        // Fields
 
         buffer: any;
         size: number;
 
-        // Constructors of Gio.InputVector
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -62833,7 +62833,7 @@ export namespace Gio {
     abstract class MemoryInputStreamPrivate {
         static $gtype: GObject.GType<MemoryInputStreamPrivate>;
 
-        // Constructors of Gio.MemoryInputStreamPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -62843,7 +62843,7 @@ export namespace Gio {
     abstract class MemoryOutputStreamPrivate {
         static $gtype: GObject.GType<MemoryOutputStreamPrivate>;
 
-        // Constructors of Gio.MemoryOutputStreamPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -62852,7 +62852,7 @@ export namespace Gio {
     abstract class MenuAttributeIterPrivate {
         static $gtype: GObject.GType<MenuAttributeIterPrivate>;
 
-        // Constructors of Gio.MenuAttributeIterPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -62861,7 +62861,7 @@ export namespace Gio {
     abstract class MenuLinkIterPrivate {
         static $gtype: GObject.GType<MenuLinkIterPrivate>;
 
-        // Constructors of Gio.MenuLinkIterPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -62870,7 +62870,7 @@ export namespace Gio {
     abstract class MenuModelPrivate {
         static $gtype: GObject.GType<MenuModelPrivate>;
 
-        // Constructors of Gio.MenuModelPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -62880,7 +62880,7 @@ export namespace Gio {
     abstract class MountOperationPrivate {
         static $gtype: GObject.GType<MountOperationPrivate>;
 
-        // Constructors of Gio.MountOperationPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -62889,7 +62889,7 @@ export namespace Gio {
     abstract class NativeSocketAddressPrivate {
         static $gtype: GObject.GType<NativeSocketAddressPrivate>;
 
-        // Constructors of Gio.NativeSocketAddressPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -62899,7 +62899,7 @@ export namespace Gio {
     abstract class NetworkAddressPrivate {
         static $gtype: GObject.GType<NetworkAddressPrivate>;
 
-        // Constructors of Gio.NetworkAddressPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -62909,7 +62909,7 @@ export namespace Gio {
     abstract class NetworkServicePrivate {
         static $gtype: GObject.GType<NetworkServicePrivate>;
 
-        // Constructors of Gio.NetworkServicePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -62926,7 +62926,7 @@ export namespace Gio {
     class OutputMessage {
         static $gtype: GObject.GType<OutputMessage>;
 
-        // Own fields of Gio.OutputMessage
+        // Fields
 
         address: SocketAddress;
         vectors: OutputVector;
@@ -62935,7 +62935,7 @@ export namespace Gio {
         control_messages: SocketControlMessage[];
         num_control_messages: number;
 
-        // Constructors of Gio.OutputMessage
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -62944,7 +62944,7 @@ export namespace Gio {
     abstract class OutputStreamPrivate {
         static $gtype: GObject.GType<OutputStreamPrivate>;
 
-        // Constructors of Gio.OutputStreamPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -62958,12 +62958,12 @@ export namespace Gio {
     class OutputVector {
         static $gtype: GObject.GType<OutputVector>;
 
-        // Own fields of Gio.OutputVector
+        // Fields
 
         buffer: any;
         size: number;
 
-        // Constructors of Gio.OutputVector
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -62978,7 +62978,7 @@ export namespace Gio {
     abstract class PermissionPrivate {
         static $gtype: GObject.GType<PermissionPrivate>;
 
-        // Constructors of Gio.PermissionPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -62991,7 +62991,7 @@ export namespace Gio {
     abstract class ProxyAddressEnumeratorPrivate {
         static $gtype: GObject.GType<ProxyAddressEnumeratorPrivate>;
 
-        // Constructors of Gio.ProxyAddressEnumeratorPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -62999,7 +62999,7 @@ export namespace Gio {
     abstract class ProxyAddressPrivate {
         static $gtype: GObject.GType<ProxyAddressPrivate>;
 
-        // Constructors of Gio.ProxyAddressPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -63011,7 +63011,7 @@ export namespace Gio {
     abstract class ResolverPrivate {
         static $gtype: GObject.GType<ResolverPrivate>;
 
-        // Constructors of Gio.ResolverPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -63182,14 +63182,14 @@ export namespace Gio {
     class Resource {
         static $gtype: GObject.GType<Resource>;
 
-        // Constructors of Gio.Resource
+        // Constructors
 
         constructor(data: GLib.Bytes | Uint8Array);
         _init(...args: any[]): void;
 
         static new_from_data(data: GLib.Bytes | Uint8Array): Resource;
 
-        // Own static methods of Gio.Resource
+        // Static methods
 
         /**
          * Loads a binary resource bundle and creates a #GResource representation of it, allowing
@@ -63206,7 +63206,7 @@ export namespace Gio {
          */
         static load(filename: string): Resource;
 
-        // Own methods of Gio.Resource
+        // Methods
 
         /**
          * Registers the resource with the process-global set of resources.
@@ -63292,7 +63292,7 @@ export namespace Gio {
     abstract class SettingsBackendPrivate {
         static $gtype: GObject.GType<SettingsBackendPrivate>;
 
-        // Constructors of Gio.SettingsBackendPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -63301,7 +63301,7 @@ export namespace Gio {
     abstract class SettingsPrivate {
         static $gtype: GObject.GType<SettingsPrivate>;
 
-        // Constructors of Gio.SettingsPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -63401,15 +63401,15 @@ export namespace Gio {
     abstract class SettingsSchema {
         static $gtype: GObject.GType<SettingsSchema>;
 
-        // Own fields of Gio.SettingsSchema
+        // Fields
 
         _realGetKey: typeof SettingsSchema.prototype.get_key;
 
-        // Constructors of Gio.SettingsSchema
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of Gio.SettingsSchema
+        // Methods
 
         /**
          * Get the ID of `schema`.
@@ -63479,11 +63479,11 @@ export namespace Gio {
     abstract class SettingsSchemaKey {
         static $gtype: GObject.GType<SettingsSchemaKey>;
 
-        // Constructors of Gio.SettingsSchemaKey
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of Gio.SettingsSchemaKey
+        // Methods
 
         /**
          * Gets the default value for `key`.
@@ -63605,7 +63605,7 @@ export namespace Gio {
     class SettingsSchemaSource {
         static $gtype: GObject.GType<SettingsSchemaSource>;
 
-        // Constructors of Gio.SettingsSchemaSource
+        // Constructors
 
         constructor(directory: string, parent: SettingsSchemaSource | null, trusted: boolean);
         _init(...args: any[]): void;
@@ -63616,7 +63616,7 @@ export namespace Gio {
             trusted: boolean,
         ): SettingsSchemaSource;
 
-        // Own static methods of Gio.SettingsSchemaSource
+        // Static methods
 
         /**
          * Gets the default system schema source.
@@ -63635,7 +63635,7 @@ export namespace Gio {
          */
         static get_default(): SettingsSchemaSource | null;
 
-        // Own methods of Gio.SettingsSchemaSource
+        // Methods
 
         /**
          * Lists the schemas in a given source.
@@ -63684,7 +63684,7 @@ export namespace Gio {
     abstract class SimpleActionGroupPrivate {
         static $gtype: GObject.GType<SimpleActionGroupPrivate>;
 
-        // Constructors of Gio.SimpleActionGroupPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -63694,7 +63694,7 @@ export namespace Gio {
     abstract class SimpleProxyResolverPrivate {
         static $gtype: GObject.GType<SimpleProxyResolverPrivate>;
 
-        // Constructors of Gio.SimpleProxyResolverPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -63706,7 +63706,7 @@ export namespace Gio {
     abstract class SocketClientPrivate {
         static $gtype: GObject.GType<SocketClientPrivate>;
 
-        // Constructors of Gio.SocketClientPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -63716,7 +63716,7 @@ export namespace Gio {
     abstract class SocketConnectionPrivate {
         static $gtype: GObject.GType<SocketConnectionPrivate>;
 
-        // Constructors of Gio.SocketConnectionPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -63725,7 +63725,7 @@ export namespace Gio {
     abstract class SocketControlMessagePrivate {
         static $gtype: GObject.GType<SocketControlMessagePrivate>;
 
-        // Constructors of Gio.SocketControlMessagePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -63734,7 +63734,7 @@ export namespace Gio {
     abstract class SocketListenerPrivate {
         static $gtype: GObject.GType<SocketListenerPrivate>;
 
-        // Constructors of Gio.SocketListenerPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -63742,7 +63742,7 @@ export namespace Gio {
     abstract class SocketPrivate {
         static $gtype: GObject.GType<SocketPrivate>;
 
-        // Constructors of Gio.SocketPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -63751,7 +63751,7 @@ export namespace Gio {
     abstract class SocketServicePrivate {
         static $gtype: GObject.GType<SocketServicePrivate>;
 
-        // Constructors of Gio.SocketServicePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -63777,14 +63777,14 @@ export namespace Gio {
     class SrvTarget {
         static $gtype: GObject.GType<SrvTarget>;
 
-        // Constructors of Gio.SrvTarget
+        // Constructors
 
         constructor(hostname: string, port: number, priority: number, weight: number);
         _init(...args: any[]): void;
 
         static ['new'](hostname: string, port: number, priority: number, weight: number): SrvTarget;
 
-        // Own methods of Gio.SrvTarget
+        // Methods
 
         /**
          * Copies `target`
@@ -63831,11 +63831,11 @@ export namespace Gio {
     class StaticResource {
         static $gtype: GObject.GType<StaticResource>;
 
-        // Constructors of Gio.StaticResource
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of Gio.StaticResource
+        // Methods
 
         /**
          * Finalized a GResource initialized by g_static_resource_init().
@@ -63870,7 +63870,7 @@ export namespace Gio {
     abstract class TcpConnectionPrivate {
         static $gtype: GObject.GType<TcpConnectionPrivate>;
 
-        // Constructors of Gio.TcpConnectionPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -63879,7 +63879,7 @@ export namespace Gio {
     abstract class TcpWrapperConnectionPrivate {
         static $gtype: GObject.GType<TcpWrapperConnectionPrivate>;
 
-        // Constructors of Gio.TcpWrapperConnectionPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -63890,7 +63890,7 @@ export namespace Gio {
     abstract class ThreadedSocketServicePrivate {
         static $gtype: GObject.GType<ThreadedSocketServicePrivate>;
 
-        // Constructors of Gio.ThreadedSocketServicePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -63900,7 +63900,7 @@ export namespace Gio {
     abstract class TlsCertificatePrivate {
         static $gtype: GObject.GType<TlsCertificatePrivate>;
 
-        // Constructors of Gio.TlsCertificatePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -63910,7 +63910,7 @@ export namespace Gio {
     abstract class TlsConnectionPrivate {
         static $gtype: GObject.GType<TlsConnectionPrivate>;
 
-        // Constructors of Gio.TlsConnectionPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -63919,7 +63919,7 @@ export namespace Gio {
     abstract class TlsDatabasePrivate {
         static $gtype: GObject.GType<TlsDatabasePrivate>;
 
-        // Constructors of Gio.TlsDatabasePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -63929,7 +63929,7 @@ export namespace Gio {
     abstract class TlsInteractionPrivate {
         static $gtype: GObject.GType<TlsInteractionPrivate>;
 
-        // Constructors of Gio.TlsInteractionPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -63938,7 +63938,7 @@ export namespace Gio {
     abstract class TlsPasswordPrivate {
         static $gtype: GObject.GType<TlsPasswordPrivate>;
 
-        // Constructors of Gio.TlsPasswordPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -63948,7 +63948,7 @@ export namespace Gio {
     abstract class UnixConnectionPrivate {
         static $gtype: GObject.GType<UnixConnectionPrivate>;
 
-        // Constructors of Gio.UnixConnectionPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -63957,7 +63957,7 @@ export namespace Gio {
     abstract class UnixCredentialsMessagePrivate {
         static $gtype: GObject.GType<UnixCredentialsMessagePrivate>;
 
-        // Constructors of Gio.UnixCredentialsMessagePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -63966,7 +63966,7 @@ export namespace Gio {
     abstract class UnixFDListPrivate {
         static $gtype: GObject.GType<UnixFDListPrivate>;
 
-        // Constructors of Gio.UnixFDListPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -63975,7 +63975,7 @@ export namespace Gio {
     abstract class UnixFDMessagePrivate {
         static $gtype: GObject.GType<UnixFDMessagePrivate>;
 
-        // Constructors of Gio.UnixFDMessagePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -63984,7 +63984,7 @@ export namespace Gio {
     abstract class UnixInputStreamPrivate {
         static $gtype: GObject.GType<UnixInputStreamPrivate>;
 
-        // Constructors of Gio.UnixInputStreamPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -63996,7 +63996,7 @@ export namespace Gio {
     abstract class UnixMountEntry {
         static $gtype: GObject.GType<UnixMountEntry>;
 
-        // Constructors of Gio.UnixMountEntry
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -64009,11 +64009,11 @@ export namespace Gio {
     abstract class UnixMountPoint {
         static $gtype: GObject.GType<UnixMountPoint>;
 
-        // Constructors of Gio.UnixMountPoint
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own static methods of Gio.UnixMountPoint
+        // Static methods
 
         /**
          * Gets a #GUnixMountPoint for a given mount path. If `time_read` is set, it
@@ -64026,7 +64026,7 @@ export namespace Gio {
          */
         static at(mount_path: string): [UnixMountPoint | null, number];
 
-        // Own methods of Gio.UnixMountPoint
+        // Methods
 
         /**
          * Compares two unix mount points.
@@ -64105,7 +64105,7 @@ export namespace Gio {
     abstract class UnixOutputStreamPrivate {
         static $gtype: GObject.GType<UnixOutputStreamPrivate>;
 
-        // Constructors of Gio.UnixOutputStreamPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -64114,7 +64114,7 @@ export namespace Gio {
     abstract class UnixSocketAddressPrivate {
         static $gtype: GObject.GType<UnixSocketAddressPrivate>;
 
-        // Constructors of Gio.UnixSocketAddressPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -64204,7 +64204,7 @@ export namespace Gio {
         print_detailed_name(action_name: string, target_value?: GLib.Variant | null): string;
     }
     interface Action extends GObject.Object {
-        // Own properties of Gio.Action
+        // Properties
 
         /**
          * If `action` is currently enabled.
@@ -64245,7 +64245,7 @@ export namespace Gio {
          */
         get stateType(): GLib.VariantType;
 
-        // Own methods of Gio.Action
+        // Methods
 
         /**
          * Activates the action.
@@ -64348,7 +64348,7 @@ export namespace Gio {
          */
         get_state_type(): GLib.VariantType | null;
 
-        // Own virtual methods of Gio.Action
+        // Virtual methods
 
         /**
          * Activates the action.
@@ -64459,7 +64459,7 @@ export namespace Gio {
         prototype: ActionGroup;
     }
     interface ActionGroup extends GObject.Object {
-        // Own methods of Gio.ActionGroup
+        // Methods
 
         /**
          * Emits the #GActionGroup::action-added signal on `action_group`.
@@ -64687,7 +64687,7 @@ export namespace Gio {
             GLib.Variant | null,
         ];
 
-        // Own virtual methods of Gio.ActionGroup
+        // Virtual methods
 
         /**
          * Emits the #GActionGroup::action-added signal on `action_group`.
@@ -64921,7 +64921,7 @@ export namespace Gio {
         prototype: ActionMap;
     }
     interface ActionMap extends GObject.Object {
-        // Own methods of Gio.ActionMap
+        // Methods
 
         /**
          * Adds an action to the `action_map`.
@@ -65021,7 +65021,7 @@ export namespace Gio {
          */
         remove_action_entries(entries: ActionEntry[]): void;
 
-        // Own virtual methods of Gio.ActionMap
+        // Virtual methods
 
         /**
          * Adds an action to the `action_map`.
@@ -65222,7 +65222,7 @@ export namespace Gio {
         reset_type_associations(content_type: string): void;
     }
     interface AppInfo extends GObject.Object {
-        // Own methods of Gio.AppInfo
+        // Methods
 
         /**
          * Adds a content type to the application information to indicate the
@@ -65442,7 +65442,7 @@ export namespace Gio {
          */
         supports_uris(): boolean;
 
-        // Own virtual methods of Gio.AppInfo
+        // Virtual methods
 
         /**
          * Adds a content type to the application information to indicate the
@@ -65675,7 +65675,7 @@ export namespace Gio {
         ): void;
     }
     interface AsyncInitable<A extends GObject.Object = GObject.Object> extends GObject.Object {
-        // Own methods of Gio.AsyncInitable
+        // Methods
 
         /**
          * Starts asynchronous initialization of the object implementing the
@@ -65738,7 +65738,7 @@ export namespace Gio {
          */
         new_finish(res: AsyncResult): A;
 
-        // Own virtual methods of Gio.AsyncInitable
+        // Virtual methods
 
         /**
          * Starts asynchronous initialization of the object implementing the
@@ -65807,7 +65807,7 @@ export namespace Gio {
         prototype: AsyncResult;
     }
     interface AsyncResult extends GObject.Object {
-        // Own methods of Gio.AsyncResult
+        // Methods
 
         /**
          * Gets the source object from a #GAsyncResult.
@@ -65841,7 +65841,7 @@ export namespace Gio {
          */
         legacy_propagate_error(): boolean;
 
-        // Own virtual methods of Gio.AsyncResult
+        // Virtual methods
 
         /**
          * Gets the source object from a #GAsyncResult.
@@ -65872,7 +65872,7 @@ export namespace Gio {
         prototype: Converter;
     }
     interface Converter extends GObject.Object {
-        // Own methods of Gio.Converter
+        // Methods
 
         /**
          * This is the main operation used when converting data. It is to be called
@@ -65974,7 +65974,7 @@ export namespace Gio {
          */
         reset(): void;
 
-        // Own virtual methods of Gio.Converter
+        // Virtual methods
 
         /**
          * This is the main operation used when converting data. It is to be called
@@ -66089,7 +66089,7 @@ export namespace Gio {
         prototype: DBusInterface;
     }
     interface DBusInterface extends GObject.Object {
-        // Own methods of Gio.DBusInterface
+        // Methods
 
         /**
          * Gets the #GDBusObject that `interface_` belongs to, if any.
@@ -66110,7 +66110,7 @@ export namespace Gio {
          */
         set_object(object?: DBusObject | null): void;
 
-        // Own virtual methods of Gio.DBusInterface
+        // Virtual methods
 
         /**
          * Gets the #GDBusObject that `interface_` belongs to, if any.
@@ -66143,7 +66143,7 @@ export namespace Gio {
         prototype: DBusObject;
     }
     interface DBusObject extends GObject.Object {
-        // Own methods of Gio.DBusObject
+        // Methods
 
         /**
          * Gets the D-Bus interface with name `interface_name` associated with
@@ -66163,7 +66163,7 @@ export namespace Gio {
          */
         get_object_path(): string;
 
-        // Own virtual methods of Gio.DBusObject
+        // Virtual methods
 
         /**
          * Gets the D-Bus interface with name `interface_name` associated with
@@ -66204,7 +66204,7 @@ export namespace Gio {
         prototype: DBusObjectManager;
     }
     interface DBusObjectManager extends GObject.Object {
-        // Own methods of Gio.DBusObjectManager
+        // Methods
 
         /**
          * Gets the interface proxy for `interface_name` at `object_path,` if
@@ -66231,7 +66231,7 @@ export namespace Gio {
          */
         get_objects(): DBusObject[];
 
-        // Own virtual methods of Gio.DBusObjectManager
+        // Virtual methods
 
         /**
          * Gets the interface proxy for `interface_name` at `object_path,` if
@@ -66290,7 +66290,7 @@ export namespace Gio {
         prototype: DatagramBased;
     }
     interface DatagramBased extends GObject.Object {
-        // Own methods of Gio.DatagramBased
+        // Methods
 
         /**
          * Checks on the readiness of `datagram_based` to perform operations. The
@@ -66484,7 +66484,7 @@ export namespace Gio {
             cancellable?: Cancellable | null,
         ): number;
 
-        // Own virtual methods of Gio.DatagramBased
+        // Virtual methods
 
         /**
          * Checks on the readiness of `datagram_based` to perform operations. The
@@ -66690,7 +66690,7 @@ export namespace Gio {
         prototype: DebugController;
     }
     interface DebugController extends Initable {
-        // Own properties of Gio.DebugController
+        // Properties
 
         /**
          * %TRUE if debug output should be exposed (for example by forwarding it to
@@ -66705,7 +66705,7 @@ export namespace Gio {
         get debugEnabled(): boolean;
         set debugEnabled(val: boolean);
 
-        // Own methods of Gio.DebugController
+        // Methods
 
         /**
          * Get the value of #GDebugController:debug-enabled.
@@ -66732,7 +66732,7 @@ export namespace Gio {
         prototype: DesktopAppInfoLookup;
     }
     interface DesktopAppInfoLookup extends GObject.Object {
-        // Own methods of Gio.DesktopAppInfoLookup
+        // Methods
 
         /**
          * Gets the default application for launching applications
@@ -66748,7 +66748,7 @@ export namespace Gio {
          */
         get_default_for_uri_scheme(uri_scheme: string): AppInfo | null;
 
-        // Own virtual methods of Gio.DesktopAppInfoLookup
+        // Virtual methods
 
         /**
          * Gets the default application for launching applications
@@ -66777,7 +66777,7 @@ export namespace Gio {
         prototype: Drive;
     }
     interface Drive extends GObject.Object {
-        // Own methods of Gio.Drive
+        // Methods
 
         /**
          * Checks if a drive can be ejected.
@@ -66986,7 +66986,7 @@ export namespace Gio {
          */
         stop_finish(result: AsyncResult): boolean;
 
-        // Own virtual methods of Gio.Drive
+        // Virtual methods
 
         /**
          * Checks if a drive can be ejected.
@@ -67217,7 +67217,7 @@ export namespace Gio {
         ['new'](base_socket: DatagramBased, server_identity?: SocketConnectable | null): DtlsClientConnection;
     }
     interface DtlsClientConnection extends DatagramBased {
-        // Own properties of Gio.DtlsClientConnection
+        // Properties
 
         /**
          * A list of the distinguished names of the Certificate Authorities
@@ -67316,7 +67316,7 @@ export namespace Gio {
         get validationFlags(): TlsCertificateFlags;
         set validationFlags(val: TlsCertificateFlags);
 
-        // Own methods of Gio.DtlsClientConnection
+        // Methods
 
         /**
          * Gets the list of distinguished names of the Certificate Authorities
@@ -67399,7 +67399,7 @@ export namespace Gio {
         prototype: DtlsConnection;
     }
     interface DtlsConnection extends DatagramBased {
-        // Own properties of Gio.DtlsConnection
+        // Properties
 
         /**
          * The list of application-layer protocols that the connection
@@ -67561,7 +67561,7 @@ export namespace Gio {
         get requireCloseNotify(): boolean;
         set requireCloseNotify(val: boolean);
 
-        // Own methods of Gio.DtlsConnection
+        // Methods
 
         /**
          * Close the DTLS connection. This is equivalent to calling
@@ -67904,7 +67904,7 @@ export namespace Gio {
          */
         shutdown_finish(result: AsyncResult): boolean;
 
-        // Own virtual methods of Gio.DtlsConnection
+        // Virtual methods
 
         /**
          * Check whether to accept a certificate.
@@ -68059,7 +68059,7 @@ export namespace Gio {
         ['new'](base_socket: DatagramBased, certificate?: TlsCertificate | null): DtlsServerConnection;
     }
     interface DtlsServerConnection extends DatagramBased {
-        // Own properties of Gio.DtlsServerConnection
+        // Properties
 
         /**
          * The #GTlsAuthenticationMode for the server. This can be changed
@@ -68218,7 +68218,7 @@ export namespace Gio {
         parse_name(parse_name: string): File;
     }
     interface File extends GObject.Object {
-        // Own methods of Gio.File
+        // Methods
 
         /**
          * Gets an output stream for appending data to the file.
@@ -70300,7 +70300,7 @@ export namespace Gio {
             callback: AsyncReadyCallback,
         ): void;
 
-        // Own virtual methods of Gio.File
+        // Virtual methods
 
         /**
          * Gets an output stream for appending data to the file.
@@ -71847,7 +71847,7 @@ export namespace Gio {
         prototype: FileDescriptorBased;
     }
     interface FileDescriptorBased extends GObject.Object {
-        // Own methods of Gio.FileDescriptorBased
+        // Methods
 
         /**
          * Gets the underlying file descriptor.
@@ -71855,7 +71855,7 @@ export namespace Gio {
          */
         get_fd(): number;
 
-        // Own virtual methods of Gio.FileDescriptorBased
+        // Virtual methods
 
         /**
          * Gets the underlying file descriptor.
@@ -71892,7 +71892,7 @@ export namespace Gio {
         new_for_string(str: string): Icon;
     }
     interface Icon extends GObject.Object {
-        // Own methods of Gio.Icon
+        // Methods
 
         /**
          * Checks if two icons are equal.
@@ -71935,7 +71935,7 @@ export namespace Gio {
          */
         to_string(): string | null;
 
-        // Own virtual methods of Gio.Icon
+        // Virtual methods
 
         /**
          * Checks if two icons are equal.
@@ -71989,7 +71989,7 @@ export namespace Gio {
         newv(...args: never[]): any;
     }
     interface Initable extends GObject.Object {
-        // Own methods of Gio.Initable
+        // Methods
 
         /**
          * Initializes the object implementing the interface.
@@ -72035,7 +72035,7 @@ export namespace Gio {
          */
         init(cancellable?: Cancellable | null): boolean;
 
-        // Own virtual methods of Gio.Initable
+        // Virtual methods
 
         /**
          * Initializes the object implementing the interface.
@@ -72094,7 +72094,7 @@ export namespace Gio {
         prototype: ListModel;
     }
     interface ListModel<A extends GObject.Object = GObject.Object> extends GObject.Object {
-        // Own methods of Gio.ListModel
+        // Methods
 
         /**
          * Gets the type of the items in `list`.
@@ -72161,7 +72161,7 @@ export namespace Gio {
          */
         items_changed(position: number, removed: number, added: number): void;
 
-        // Own virtual methods of Gio.ListModel
+        // Virtual methods
 
         /**
          * Get the item at `position`. If `position` is greater than the number of
@@ -72208,7 +72208,7 @@ export namespace Gio {
         prototype: LoadableIcon;
     }
     interface LoadableIcon extends Icon {
-        // Own methods of Gio.LoadableIcon
+        // Methods
 
         /**
          * Loads a loadable icon. For the asynchronous version of this function,
@@ -72234,7 +72234,7 @@ export namespace Gio {
          */
         load_finish(res: AsyncResult): [InputStream, string];
 
-        // Own virtual methods of Gio.LoadableIcon
+        // Virtual methods
 
         /**
          * Loads a loadable icon. For the asynchronous version of this function,
@@ -72281,7 +72281,7 @@ export namespace Gio {
         dup_default(): MemoryMonitor;
     }
     interface MemoryMonitor extends Initable {
-        // Own virtual methods of Gio.MemoryMonitor
+        // Virtual methods
 
         /**
          * the virtual function pointer for the
@@ -72304,7 +72304,7 @@ export namespace Gio {
         prototype: Mount;
     }
     interface Mount extends GObject.Object {
-        // Own methods of Gio.Mount
+        // Methods
 
         /**
          * Checks if `mount` can be ejected.
@@ -72569,7 +72569,7 @@ export namespace Gio {
          */
         unshadow(): void;
 
-        // Own virtual methods of Gio.Mount
+        // Virtual methods
 
         /**
          * Checks if `mount` can be ejected.
@@ -72812,7 +72812,7 @@ export namespace Gio {
         get_default(): NetworkMonitor;
     }
     interface NetworkMonitor extends Initable {
-        // Own properties of Gio.NetworkMonitor
+        // Properties
 
         /**
          * More detailed information about the host's network connectivity.
@@ -72909,7 +72909,7 @@ export namespace Gio {
          */
         get networkMetered(): boolean;
 
-        // Own methods of Gio.NetworkMonitor
+        // Methods
 
         /**
          * Attempts to determine whether or not the host pointed to by
@@ -72998,7 +72998,7 @@ export namespace Gio {
          */
         get_network_metered(): boolean;
 
-        // Own virtual methods of Gio.NetworkMonitor
+        // Virtual methods
 
         /**
          * Attempts to determine whether or not the host pointed to by
@@ -73068,7 +73068,7 @@ export namespace Gio {
         prototype: PollableInputStream;
     }
     interface PollableInputStream extends InputStream {
-        // Own methods of Gio.PollableInputStream
+        // Methods
 
         /**
          * Checks if `stream` is actually pollable. Some classes may implement
@@ -73132,7 +73132,7 @@ export namespace Gio {
          */
         read_nonblocking(cancellable?: Cancellable | null): [number, Uint8Array];
 
-        // Own virtual methods of Gio.PollableInputStream
+        // Virtual methods
 
         /**
          * Checks if `stream` is actually pollable. Some classes may implement
@@ -73205,7 +73205,7 @@ export namespace Gio {
         prototype: PollableOutputStream;
     }
     interface PollableOutputStream extends OutputStream {
-        // Own methods of Gio.PollableOutputStream
+        // Methods
 
         /**
          * Checks if `stream` is actually pollable. Some classes may implement
@@ -73299,7 +73299,7 @@ export namespace Gio {
          */
         writev_nonblocking(vectors: OutputVector[], cancellable?: Cancellable | null): [PollableReturn, number];
 
-        // Own virtual methods of Gio.PollableOutputStream
+        // Virtual methods
 
         /**
          * Checks if `stream` is actually pollable. Some classes may implement
@@ -73408,7 +73408,7 @@ export namespace Gio {
         dup_default(): PowerProfileMonitor;
     }
     interface PowerProfileMonitor extends Initable {
-        // Own properties of Gio.PowerProfileMonitor
+        // Properties
 
         /**
          * Whether “Power Saver” mode is enabled on the system.
@@ -73419,7 +73419,7 @@ export namespace Gio {
          */
         get powerSaverEnabled(): boolean;
 
-        // Own methods of Gio.PowerProfileMonitor
+        // Methods
 
         /**
          * Gets whether the system is in “Power Saver” mode.
@@ -73452,7 +73452,7 @@ export namespace Gio {
         get_default_for_protocol(protocol: string): Proxy | null;
     }
     interface Proxy extends GObject.Object {
-        // Own methods of Gio.Proxy
+        // Methods
 
         /**
          * Given `connection` to communicate with a proxy (eg, a
@@ -73497,7 +73497,7 @@ export namespace Gio {
          */
         supports_hostname(): boolean;
 
-        // Own virtual methods of Gio.Proxy
+        // Virtual methods
 
         /**
          * Given `connection` to communicate with a proxy (eg, a
@@ -73557,7 +73557,7 @@ export namespace Gio {
         get_default(): ProxyResolver;
     }
     interface ProxyResolver extends GObject.Object {
-        // Own methods of Gio.ProxyResolver
+        // Methods
 
         /**
          * Checks if `resolver` can be used on this system. (This is used
@@ -73604,7 +73604,7 @@ export namespace Gio {
          */
         lookup_finish(result: AsyncResult): string[];
 
-        // Own virtual methods of Gio.ProxyResolver
+        // Virtual methods
 
         /**
          * Checks if `resolver` can be used on this system. (This is used
@@ -73666,7 +73666,7 @@ export namespace Gio {
         prototype: RemoteActionGroup;
     }
     interface RemoteActionGroup extends ActionGroup {
-        // Own methods of Gio.RemoteActionGroup
+        // Methods
 
         /**
          * Activates the remote action.
@@ -73699,7 +73699,7 @@ export namespace Gio {
          */
         change_action_state_full(action_name: string, value: GLib.Variant, platform_data: GLib.Variant): void;
 
-        // Own virtual methods of Gio.RemoteActionGroup
+        // Virtual methods
 
         /**
          * Activates the remote action.
@@ -73750,7 +73750,7 @@ export namespace Gio {
         prototype: Seekable;
     }
     interface Seekable extends GObject.Object {
-        // Own methods of Gio.Seekable
+        // Methods
 
         /**
          * Tests if the stream supports the #GSeekableIface.
@@ -73805,7 +73805,7 @@ export namespace Gio {
          */
         truncate(offset: number, cancellable?: Cancellable | null): boolean;
 
-        // Own virtual methods of Gio.Seekable
+        // Virtual methods
 
         /**
          * Tests if the stream supports the #GSeekableIface.
@@ -73869,7 +73869,7 @@ export namespace Gio {
         prototype: SocketConnectable;
     }
     interface SocketConnectable extends GObject.Object {
-        // Own methods of Gio.SocketConnectable
+        // Methods
 
         /**
          * Creates a #GSocketAddressEnumerator for `connectable`.
@@ -73899,7 +73899,7 @@ export namespace Gio {
          */
         to_string(): string;
 
-        // Own virtual methods of Gio.SocketConnectable
+        // Virtual methods
 
         /**
          * Creates a #GSocketAddressEnumerator for `connectable`.
@@ -73945,7 +73945,7 @@ export namespace Gio {
         get_default(): TlsBackend;
     }
     interface TlsBackend extends GObject.Object {
-        // Own methods of Gio.TlsBackend
+        // Methods
 
         /**
          * Gets the #GType of `backend'`s #GTlsCertificate implementation.
@@ -74007,7 +74007,7 @@ export namespace Gio {
          */
         supports_tls(): boolean;
 
-        // Own virtual methods of Gio.TlsBackend
+        // Virtual methods
 
         /**
          * Gets the default #GTlsDatabase used to verify TLS connections.
@@ -74060,7 +74060,7 @@ export namespace Gio {
         ['new'](base_io_stream: IOStream, server_identity?: SocketConnectable | null): TlsClientConnection;
     }
     interface TlsClientConnection extends TlsConnection {
-        // Own properties of Gio.TlsClientConnection
+        // Properties
 
         /**
          * A list of the distinguished names of the Certificate Authorities
@@ -74171,7 +74171,7 @@ export namespace Gio {
         get validationFlags(): TlsCertificateFlags;
         set validationFlags(val: TlsCertificateFlags);
 
-        // Own methods of Gio.TlsClientConnection
+        // Methods
 
         /**
          * Possibly copies session state from one connection to another, for use
@@ -74270,7 +74270,7 @@ export namespace Gio {
          */
         set_validation_flags(flags: TlsCertificateFlags): void;
 
-        // Own virtual methods of Gio.TlsClientConnection
+        // Virtual methods
 
         /**
          * Possibly copies session state from one connection to another, for use
@@ -74330,7 +74330,7 @@ export namespace Gio {
         ['new'](anchors: string): TlsFileDatabase;
     }
     interface TlsFileDatabase extends TlsDatabase {
-        // Own properties of Gio.TlsFileDatabase
+        // Properties
 
         /**
          * The path to a file containing PEM encoded certificate authority
@@ -74370,7 +74370,7 @@ export namespace Gio {
         ['new'](base_io_stream: IOStream, certificate?: TlsCertificate | null): TlsServerConnection;
     }
     interface TlsServerConnection extends TlsConnection {
-        // Own properties of Gio.TlsServerConnection
+        // Properties
 
         /**
          * The #GTlsAuthenticationMode for the server. This can be changed
@@ -74401,7 +74401,7 @@ export namespace Gio {
         prototype: Volume;
     }
     interface Volume extends GObject.Object {
-        // Own methods of Gio.Volume
+        // Methods
 
         /**
          * Checks if a volume can be ejected.
@@ -74574,7 +74574,7 @@ export namespace Gio {
          */
         should_automount(): boolean;
 
-        // Own virtual methods of Gio.Volume
+        // Virtual methods
 
         /**
          * Checks if a volume can be ejected.
@@ -74896,15 +74896,15 @@ export namespace Gio {
     class DBusExportedObject {
         static $gtype: GObject.GType<DBusExportedObject>;
 
-        // Constructors of Gio.DBusExportedObject
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own static methods of Gio.DBusExportedObject
+        // Static methods
 
         static wrapJSObject(info: string, obj: any): DBusExportedObject;
 
-        // Own methods of Gio.DBusExportedObject
+        // Methods
 
         get_info(): DBusInterfaceInfo;
         get_connection(): DBusConnection;

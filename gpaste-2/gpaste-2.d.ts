@@ -369,7 +369,7 @@ export namespace GPaste {
     class Client extends Gio.DBusProxy implements Gio.AsyncInitable<Client>, Gio.DBusInterface, Gio.Initable {
         static $gtype: GObject.GType<Client>;
 
-        // Constructors of GPaste.Client
+        // Constructors
 
         constructor(properties?: Partial<Client.ConstructorProps>, ...args: any[]);
 
@@ -382,7 +382,7 @@ export namespace GPaste {
 
         static new_sync(): Client;
 
-        // Own signals of GPaste.Client
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -412,7 +412,7 @@ export namespace GPaste {
         ): number;
         emit(signal: 'update', action: UpdateAction, target: UpdateTarget, index: number): void;
 
-        // Own static methods of GPaste.Client
+        // Static methods
 
         /**
          * Create a new instance of #GPasteClient
@@ -422,7 +422,7 @@ export namespace GPaste {
         // Conflicted with Gio.DBusProxy.new
         static ['new'](...args: never[]): any;
 
-        // Own methods of GPaste.Client
+        // Methods
 
         /**
          * Display the about dialog
@@ -1609,7 +1609,7 @@ export namespace GPaste {
     class ClientItem extends GObject.Object {
         static $gtype: GObject.GType<ClientItem>;
 
-        // Constructors of GPaste.ClientItem
+        // Constructors
 
         constructor(properties?: Partial<ClientItem.ConstructorProps>, ...args: any[]);
 
@@ -1617,7 +1617,7 @@ export namespace GPaste {
 
         static ['new'](uuid: string, value: string): ClientItem;
 
-        // Own methods of GPaste.ClientItem
+        // Methods
 
         /**
          * Returns the uuid of the item
@@ -1651,7 +1651,7 @@ export namespace GPaste {
     {
         static $gtype: GObject.GType<GnomeShellClient>;
 
-        // Constructors of GPaste.GnomeShellClient
+        // Constructors
 
         constructor(properties?: Partial<GnomeShellClient.ConstructorProps>, ...args: any[]);
 
@@ -1664,7 +1664,7 @@ export namespace GPaste {
 
         static new_sync(): GnomeShellClient;
 
-        // Own signals of GPaste.GnomeShellClient
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -1673,7 +1673,7 @@ export namespace GPaste {
         connect_after(signal: 'accelerator-activated', callback: (_source: this, id: number) => void): number;
         emit(signal: 'accelerator-activated', id: number): void;
 
-        // Own static methods of GPaste.GnomeShellClient
+        // Static methods
 
         /**
          * Create a new instance of #GPasteGnomeShellClient
@@ -1683,7 +1683,7 @@ export namespace GPaste {
         // Conflicted with Gio.DBusProxy.new
         static ['new'](...args: never[]): any;
 
-        // Own methods of GPaste.GnomeShellClient
+        // Methods
 
         /**
          * Grab a keybinding
@@ -2398,7 +2398,7 @@ export namespace GPaste {
     {
         static $gtype: GObject.GType<ScreensaverClient>;
 
-        // Constructors of GPaste.ScreensaverClient
+        // Constructors
 
         constructor(properties?: Partial<ScreensaverClient.ConstructorProps>, ...args: any[]);
 
@@ -2411,7 +2411,7 @@ export namespace GPaste {
 
         static new_sync(): ScreensaverClient;
 
-        // Own signals of GPaste.ScreensaverClient
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -2420,7 +2420,7 @@ export namespace GPaste {
         connect_after(signal: 'active-changed', callback: (_source: this, active: boolean) => void): number;
         emit(signal: 'active-changed', active: boolean): void;
 
-        // Own static methods of GPaste.ScreensaverClient
+        // Static methods
 
         /**
          * Create a new instance of #GPasteScreensaverClient
@@ -3089,7 +3089,7 @@ export namespace GPaste {
     class Settings extends GObject.Object {
         static $gtype: GObject.GType<Settings>;
 
-        // Constructors of GPaste.Settings
+        // Constructors
 
         constructor(properties?: Partial<Settings.ConstructorProps>, ...args: any[]);
 
@@ -3097,7 +3097,7 @@ export namespace GPaste {
 
         static ['new'](): Settings;
 
-        // Own signals of GPaste.Settings
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -3112,7 +3112,7 @@ export namespace GPaste {
         connect_after(signal: 'track', callback: (_source: this, tracking_state: boolean) => void): number;
         emit(signal: 'track', tracking_state: boolean): void;
 
-        // Own methods of GPaste.Settings
+        // Methods
 
         /**
          * Get the "close-on-select" setting
@@ -3495,13 +3495,13 @@ export namespace GPaste {
     class GnomeShellAccelerator {
         static $gtype: GObject.GType<GnomeShellAccelerator>;
 
-        // Own fields of GPaste.GnomeShellAccelerator
+        // Fields
 
         accelerator: string;
         mode_flags: MetaKeyBindingFlags;
         grab_flags: GnomeShellActionMode;
 
-        // Constructors of GPaste.GnomeShellAccelerator
+        // Constructors
 
         _init(...args: any[]): void;
     }

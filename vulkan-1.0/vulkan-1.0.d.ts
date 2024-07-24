@@ -18,7 +18,7 @@ export namespace Vulkan {
     class Flags {
         static $gtype: GObject.GType<Flags>;
 
-        // Constructors of Vulkan.Flags
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -26,7 +26,7 @@ export namespace Vulkan {
     class Bool32 {
         static $gtype: GObject.GType<Bool32>;
 
-        // Constructors of Vulkan.Bool32
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -34,7 +34,7 @@ export namespace Vulkan {
     class DeviceSize {
         static $gtype: GObject.GType<DeviceSize>;
 
-        // Constructors of Vulkan.DeviceSize
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -42,7 +42,7 @@ export namespace Vulkan {
     class SampleMask {
         static $gtype: GObject.GType<SampleMask>;
 
-        // Constructors of Vulkan.SampleMask
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -50,7 +50,7 @@ export namespace Vulkan {
     class Instance {
         static $gtype: GObject.GType<Instance>;
 
-        // Constructors of Vulkan.Instance
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -58,7 +58,7 @@ export namespace Vulkan {
     class PhysicalDevice {
         static $gtype: GObject.GType<PhysicalDevice>;
 
-        // Constructors of Vulkan.PhysicalDevice
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -66,7 +66,7 @@ export namespace Vulkan {
     class Device {
         static $gtype: GObject.GType<Device>;
 
-        // Constructors of Vulkan.Device
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -74,7 +74,7 @@ export namespace Vulkan {
     class Queue {
         static $gtype: GObject.GType<Queue>;
 
-        // Constructors of Vulkan.Queue
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -82,7 +82,7 @@ export namespace Vulkan {
     class Semaphore {
         static $gtype: GObject.GType<Semaphore>;
 
-        // Constructors of Vulkan.Semaphore
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -90,7 +90,7 @@ export namespace Vulkan {
     class CommandBuffer {
         static $gtype: GObject.GType<CommandBuffer>;
 
-        // Constructors of Vulkan.CommandBuffer
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -98,7 +98,7 @@ export namespace Vulkan {
     class Fence {
         static $gtype: GObject.GType<Fence>;
 
-        // Constructors of Vulkan.Fence
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -106,7 +106,7 @@ export namespace Vulkan {
     class DeviceMemory {
         static $gtype: GObject.GType<DeviceMemory>;
 
-        // Constructors of Vulkan.DeviceMemory
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -114,7 +114,7 @@ export namespace Vulkan {
     class Buffer {
         static $gtype: GObject.GType<Buffer>;
 
-        // Constructors of Vulkan.Buffer
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -122,7 +122,7 @@ export namespace Vulkan {
     class Image {
         static $gtype: GObject.GType<Image>;
 
-        // Constructors of Vulkan.Image
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -130,7 +130,7 @@ export namespace Vulkan {
     class Event {
         static $gtype: GObject.GType<Event>;
 
-        // Constructors of Vulkan.Event
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -138,7 +138,7 @@ export namespace Vulkan {
     class QueryPool {
         static $gtype: GObject.GType<QueryPool>;
 
-        // Constructors of Vulkan.QueryPool
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -146,7 +146,7 @@ export namespace Vulkan {
     class BufferView {
         static $gtype: GObject.GType<BufferView>;
 
-        // Constructors of Vulkan.BufferView
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -154,7 +154,7 @@ export namespace Vulkan {
     class ImageView {
         static $gtype: GObject.GType<ImageView>;
 
-        // Constructors of Vulkan.ImageView
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -162,7 +162,7 @@ export namespace Vulkan {
     class ShaderModule {
         static $gtype: GObject.GType<ShaderModule>;
 
-        // Constructors of Vulkan.ShaderModule
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -170,7 +170,7 @@ export namespace Vulkan {
     class PipelineCache {
         static $gtype: GObject.GType<PipelineCache>;
 
-        // Constructors of Vulkan.PipelineCache
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -178,7 +178,7 @@ export namespace Vulkan {
     class PipelineLayout {
         static $gtype: GObject.GType<PipelineLayout>;
 
-        // Constructors of Vulkan.PipelineLayout
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -186,7 +186,7 @@ export namespace Vulkan {
     class RenderPass {
         static $gtype: GObject.GType<RenderPass>;
 
-        // Constructors of Vulkan.RenderPass
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -194,7 +194,7 @@ export namespace Vulkan {
     class Pipeline {
         static $gtype: GObject.GType<Pipeline>;
 
-        // Constructors of Vulkan.Pipeline
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -202,7 +202,7 @@ export namespace Vulkan {
     class DescriptorSetLayout {
         static $gtype: GObject.GType<DescriptorSetLayout>;
 
-        // Constructors of Vulkan.DescriptorSetLayout
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -210,7 +210,7 @@ export namespace Vulkan {
     class Sampler {
         static $gtype: GObject.GType<Sampler>;
 
-        // Constructors of Vulkan.Sampler
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -218,7 +218,7 @@ export namespace Vulkan {
     class DescriptorPool {
         static $gtype: GObject.GType<DescriptorPool>;
 
-        // Constructors of Vulkan.DescriptorPool
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -226,7 +226,7 @@ export namespace Vulkan {
     class DescriptorSet {
         static $gtype: GObject.GType<DescriptorSet>;
 
-        // Constructors of Vulkan.DescriptorSet
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -234,7 +234,7 @@ export namespace Vulkan {
     class Framebuffer {
         static $gtype: GObject.GType<Framebuffer>;
 
-        // Constructors of Vulkan.Framebuffer
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -242,7 +242,7 @@ export namespace Vulkan {
     class CommandPool {
         static $gtype: GObject.GType<CommandPool>;
 
-        // Constructors of Vulkan.CommandPool
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -250,7 +250,7 @@ export namespace Vulkan {
     class PipelineCacheHeaderVersion {
         static $gtype: GObject.GType<PipelineCacheHeaderVersion>;
 
-        // Constructors of Vulkan.PipelineCacheHeaderVersion
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -258,7 +258,7 @@ export namespace Vulkan {
     class Result {
         static $gtype: GObject.GType<Result>;
 
-        // Constructors of Vulkan.Result
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -266,7 +266,7 @@ export namespace Vulkan {
     class StructureType {
         static $gtype: GObject.GType<StructureType>;
 
-        // Constructors of Vulkan.StructureType
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -274,7 +274,7 @@ export namespace Vulkan {
     class SystemAllocationScope {
         static $gtype: GObject.GType<SystemAllocationScope>;
 
-        // Constructors of Vulkan.SystemAllocationScope
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -282,7 +282,7 @@ export namespace Vulkan {
     class InternalAllocationType {
         static $gtype: GObject.GType<InternalAllocationType>;
 
-        // Constructors of Vulkan.InternalAllocationType
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -290,7 +290,7 @@ export namespace Vulkan {
     class Format {
         static $gtype: GObject.GType<Format>;
 
-        // Constructors of Vulkan.Format
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -298,7 +298,7 @@ export namespace Vulkan {
     class ImageType {
         static $gtype: GObject.GType<ImageType>;
 
-        // Constructors of Vulkan.ImageType
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -306,7 +306,7 @@ export namespace Vulkan {
     class ImageTiling {
         static $gtype: GObject.GType<ImageTiling>;
 
-        // Constructors of Vulkan.ImageTiling
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -314,7 +314,7 @@ export namespace Vulkan {
     class PhysicalDeviceType {
         static $gtype: GObject.GType<PhysicalDeviceType>;
 
-        // Constructors of Vulkan.PhysicalDeviceType
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -322,7 +322,7 @@ export namespace Vulkan {
     class QueryType {
         static $gtype: GObject.GType<QueryType>;
 
-        // Constructors of Vulkan.QueryType
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -330,7 +330,7 @@ export namespace Vulkan {
     class SharingMode {
         static $gtype: GObject.GType<SharingMode>;
 
-        // Constructors of Vulkan.SharingMode
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -338,7 +338,7 @@ export namespace Vulkan {
     class ImageLayout {
         static $gtype: GObject.GType<ImageLayout>;
 
-        // Constructors of Vulkan.ImageLayout
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -346,7 +346,7 @@ export namespace Vulkan {
     class ImageViewType {
         static $gtype: GObject.GType<ImageViewType>;
 
-        // Constructors of Vulkan.ImageViewType
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -354,7 +354,7 @@ export namespace Vulkan {
     class ComponentSwizzle {
         static $gtype: GObject.GType<ComponentSwizzle>;
 
-        // Constructors of Vulkan.ComponentSwizzle
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -362,7 +362,7 @@ export namespace Vulkan {
     class VertexInputRate {
         static $gtype: GObject.GType<VertexInputRate>;
 
-        // Constructors of Vulkan.VertexInputRate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -370,7 +370,7 @@ export namespace Vulkan {
     class PrimitiveTopology {
         static $gtype: GObject.GType<PrimitiveTopology>;
 
-        // Constructors of Vulkan.PrimitiveTopology
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -378,7 +378,7 @@ export namespace Vulkan {
     class PolygonMode {
         static $gtype: GObject.GType<PolygonMode>;
 
-        // Constructors of Vulkan.PolygonMode
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -386,7 +386,7 @@ export namespace Vulkan {
     class FrontFace {
         static $gtype: GObject.GType<FrontFace>;
 
-        // Constructors of Vulkan.FrontFace
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -394,7 +394,7 @@ export namespace Vulkan {
     class CompareOp {
         static $gtype: GObject.GType<CompareOp>;
 
-        // Constructors of Vulkan.CompareOp
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -402,7 +402,7 @@ export namespace Vulkan {
     class StencilOp {
         static $gtype: GObject.GType<StencilOp>;
 
-        // Constructors of Vulkan.StencilOp
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -410,7 +410,7 @@ export namespace Vulkan {
     class LogicOp {
         static $gtype: GObject.GType<LogicOp>;
 
-        // Constructors of Vulkan.LogicOp
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -418,7 +418,7 @@ export namespace Vulkan {
     class BlendFactor {
         static $gtype: GObject.GType<BlendFactor>;
 
-        // Constructors of Vulkan.BlendFactor
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -426,7 +426,7 @@ export namespace Vulkan {
     class BlendOp {
         static $gtype: GObject.GType<BlendOp>;
 
-        // Constructors of Vulkan.BlendOp
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -434,7 +434,7 @@ export namespace Vulkan {
     class DynamicState {
         static $gtype: GObject.GType<DynamicState>;
 
-        // Constructors of Vulkan.DynamicState
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -442,7 +442,7 @@ export namespace Vulkan {
     class Filter {
         static $gtype: GObject.GType<Filter>;
 
-        // Constructors of Vulkan.Filter
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -450,7 +450,7 @@ export namespace Vulkan {
     class SamplerMipmapMode {
         static $gtype: GObject.GType<SamplerMipmapMode>;
 
-        // Constructors of Vulkan.SamplerMipmapMode
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -458,7 +458,7 @@ export namespace Vulkan {
     class SamplerAddressMode {
         static $gtype: GObject.GType<SamplerAddressMode>;
 
-        // Constructors of Vulkan.SamplerAddressMode
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -466,7 +466,7 @@ export namespace Vulkan {
     class BorderColor {
         static $gtype: GObject.GType<BorderColor>;
 
-        // Constructors of Vulkan.BorderColor
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -474,7 +474,7 @@ export namespace Vulkan {
     class DescriptorType {
         static $gtype: GObject.GType<DescriptorType>;
 
-        // Constructors of Vulkan.DescriptorType
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -482,7 +482,7 @@ export namespace Vulkan {
     class AttachmentLoadOp {
         static $gtype: GObject.GType<AttachmentLoadOp>;
 
-        // Constructors of Vulkan.AttachmentLoadOp
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -490,7 +490,7 @@ export namespace Vulkan {
     class AttachmentStoreOp {
         static $gtype: GObject.GType<AttachmentStoreOp>;
 
-        // Constructors of Vulkan.AttachmentStoreOp
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -498,7 +498,7 @@ export namespace Vulkan {
     class PipelineBindPoint {
         static $gtype: GObject.GType<PipelineBindPoint>;
 
-        // Constructors of Vulkan.PipelineBindPoint
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -506,7 +506,7 @@ export namespace Vulkan {
     class CommandBufferLevel {
         static $gtype: GObject.GType<CommandBufferLevel>;
 
-        // Constructors of Vulkan.CommandBufferLevel
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -514,7 +514,7 @@ export namespace Vulkan {
     class IndexType {
         static $gtype: GObject.GType<IndexType>;
 
-        // Constructors of Vulkan.IndexType
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -522,7 +522,7 @@ export namespace Vulkan {
     class SubpassContents {
         static $gtype: GObject.GType<SubpassContents>;
 
-        // Constructors of Vulkan.SubpassContents
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -530,7 +530,7 @@ export namespace Vulkan {
     class ObjectType {
         static $gtype: GObject.GType<ObjectType>;
 
-        // Constructors of Vulkan.ObjectType
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -538,7 +538,7 @@ export namespace Vulkan {
     class VendorId {
         static $gtype: GObject.GType<VendorId>;
 
-        // Constructors of Vulkan.VendorId
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -546,7 +546,7 @@ export namespace Vulkan {
     class InstanceCreateFlags {
         static $gtype: GObject.GType<InstanceCreateFlags>;
 
-        // Constructors of Vulkan.InstanceCreateFlags
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -554,7 +554,7 @@ export namespace Vulkan {
     class FormatFeatureFlagBits {
         static $gtype: GObject.GType<FormatFeatureFlagBits>;
 
-        // Constructors of Vulkan.FormatFeatureFlagBits
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -562,7 +562,7 @@ export namespace Vulkan {
     class FormatFeatureFlags {
         static $gtype: GObject.GType<FormatFeatureFlags>;
 
-        // Constructors of Vulkan.FormatFeatureFlags
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -570,7 +570,7 @@ export namespace Vulkan {
     class ImageUsageFlagBits {
         static $gtype: GObject.GType<ImageUsageFlagBits>;
 
-        // Constructors of Vulkan.ImageUsageFlagBits
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -578,7 +578,7 @@ export namespace Vulkan {
     class ImageUsageFlags {
         static $gtype: GObject.GType<ImageUsageFlags>;
 
-        // Constructors of Vulkan.ImageUsageFlags
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -586,7 +586,7 @@ export namespace Vulkan {
     class ImageCreateFlagBits {
         static $gtype: GObject.GType<ImageCreateFlagBits>;
 
-        // Constructors of Vulkan.ImageCreateFlagBits
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -594,7 +594,7 @@ export namespace Vulkan {
     class ImageCreateFlags {
         static $gtype: GObject.GType<ImageCreateFlags>;
 
-        // Constructors of Vulkan.ImageCreateFlags
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -602,7 +602,7 @@ export namespace Vulkan {
     class SampleCountFlagBits {
         static $gtype: GObject.GType<SampleCountFlagBits>;
 
-        // Constructors of Vulkan.SampleCountFlagBits
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -610,7 +610,7 @@ export namespace Vulkan {
     class SampleCountFlags {
         static $gtype: GObject.GType<SampleCountFlags>;
 
-        // Constructors of Vulkan.SampleCountFlags
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -618,7 +618,7 @@ export namespace Vulkan {
     class QueueFlagBits {
         static $gtype: GObject.GType<QueueFlagBits>;
 
-        // Constructors of Vulkan.QueueFlagBits
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -626,7 +626,7 @@ export namespace Vulkan {
     class QueueFlags {
         static $gtype: GObject.GType<QueueFlags>;
 
-        // Constructors of Vulkan.QueueFlags
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -634,7 +634,7 @@ export namespace Vulkan {
     class MemoryPropertyFlagBits {
         static $gtype: GObject.GType<MemoryPropertyFlagBits>;
 
-        // Constructors of Vulkan.MemoryPropertyFlagBits
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -642,7 +642,7 @@ export namespace Vulkan {
     class MemoryPropertyFlags {
         static $gtype: GObject.GType<MemoryPropertyFlags>;
 
-        // Constructors of Vulkan.MemoryPropertyFlags
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -650,7 +650,7 @@ export namespace Vulkan {
     class MemoryHeapFlagBits {
         static $gtype: GObject.GType<MemoryHeapFlagBits>;
 
-        // Constructors of Vulkan.MemoryHeapFlagBits
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -658,7 +658,7 @@ export namespace Vulkan {
     class MemoryHeapFlags {
         static $gtype: GObject.GType<MemoryHeapFlags>;
 
-        // Constructors of Vulkan.MemoryHeapFlags
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -666,7 +666,7 @@ export namespace Vulkan {
     class DeviceCreateFlags {
         static $gtype: GObject.GType<DeviceCreateFlags>;
 
-        // Constructors of Vulkan.DeviceCreateFlags
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -674,7 +674,7 @@ export namespace Vulkan {
     class DeviceQueueCreateFlagBits {
         static $gtype: GObject.GType<DeviceQueueCreateFlagBits>;
 
-        // Constructors of Vulkan.DeviceQueueCreateFlagBits
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -682,7 +682,7 @@ export namespace Vulkan {
     class DeviceQueueCreateFlags {
         static $gtype: GObject.GType<DeviceQueueCreateFlags>;
 
-        // Constructors of Vulkan.DeviceQueueCreateFlags
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -690,7 +690,7 @@ export namespace Vulkan {
     class PipelineStageFlagBits {
         static $gtype: GObject.GType<PipelineStageFlagBits>;
 
-        // Constructors of Vulkan.PipelineStageFlagBits
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -698,7 +698,7 @@ export namespace Vulkan {
     class PipelineStageFlags {
         static $gtype: GObject.GType<PipelineStageFlags>;
 
-        // Constructors of Vulkan.PipelineStageFlags
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -706,7 +706,7 @@ export namespace Vulkan {
     class MemoryMapFlags {
         static $gtype: GObject.GType<MemoryMapFlags>;
 
-        // Constructors of Vulkan.MemoryMapFlags
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -714,7 +714,7 @@ export namespace Vulkan {
     class ImageAspectFlagBits {
         static $gtype: GObject.GType<ImageAspectFlagBits>;
 
-        // Constructors of Vulkan.ImageAspectFlagBits
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -722,7 +722,7 @@ export namespace Vulkan {
     class ImageAspectFlags {
         static $gtype: GObject.GType<ImageAspectFlags>;
 
-        // Constructors of Vulkan.ImageAspectFlags
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -730,7 +730,7 @@ export namespace Vulkan {
     class SparseImageFormatFlagBits {
         static $gtype: GObject.GType<SparseImageFormatFlagBits>;
 
-        // Constructors of Vulkan.SparseImageFormatFlagBits
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -738,7 +738,7 @@ export namespace Vulkan {
     class SparseImageFormatFlags {
         static $gtype: GObject.GType<SparseImageFormatFlags>;
 
-        // Constructors of Vulkan.SparseImageFormatFlags
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -746,7 +746,7 @@ export namespace Vulkan {
     class SparseMemoryBindFlagBits {
         static $gtype: GObject.GType<SparseMemoryBindFlagBits>;
 
-        // Constructors of Vulkan.SparseMemoryBindFlagBits
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -754,7 +754,7 @@ export namespace Vulkan {
     class SparseMemoryBindFlags {
         static $gtype: GObject.GType<SparseMemoryBindFlags>;
 
-        // Constructors of Vulkan.SparseMemoryBindFlags
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -762,7 +762,7 @@ export namespace Vulkan {
     class FenceCreateFlagBits {
         static $gtype: GObject.GType<FenceCreateFlagBits>;
 
-        // Constructors of Vulkan.FenceCreateFlagBits
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -770,7 +770,7 @@ export namespace Vulkan {
     class FenceCreateFlags {
         static $gtype: GObject.GType<FenceCreateFlags>;
 
-        // Constructors of Vulkan.FenceCreateFlags
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -778,7 +778,7 @@ export namespace Vulkan {
     class SemaphoreCreateFlags {
         static $gtype: GObject.GType<SemaphoreCreateFlags>;
 
-        // Constructors of Vulkan.SemaphoreCreateFlags
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -786,7 +786,7 @@ export namespace Vulkan {
     class EventCreateFlags {
         static $gtype: GObject.GType<EventCreateFlags>;
 
-        // Constructors of Vulkan.EventCreateFlags
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -794,7 +794,7 @@ export namespace Vulkan {
     class QueryPoolCreateFlags {
         static $gtype: GObject.GType<QueryPoolCreateFlags>;
 
-        // Constructors of Vulkan.QueryPoolCreateFlags
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -802,7 +802,7 @@ export namespace Vulkan {
     class QueryPipelineStatisticFlagBits {
         static $gtype: GObject.GType<QueryPipelineStatisticFlagBits>;
 
-        // Constructors of Vulkan.QueryPipelineStatisticFlagBits
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -810,7 +810,7 @@ export namespace Vulkan {
     class QueryPipelineStatisticFlags {
         static $gtype: GObject.GType<QueryPipelineStatisticFlags>;
 
-        // Constructors of Vulkan.QueryPipelineStatisticFlags
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -818,7 +818,7 @@ export namespace Vulkan {
     class QueryResultFlagBits {
         static $gtype: GObject.GType<QueryResultFlagBits>;
 
-        // Constructors of Vulkan.QueryResultFlagBits
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -826,7 +826,7 @@ export namespace Vulkan {
     class QueryResultFlags {
         static $gtype: GObject.GType<QueryResultFlags>;
 
-        // Constructors of Vulkan.QueryResultFlags
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -834,7 +834,7 @@ export namespace Vulkan {
     class BufferCreateFlagBits {
         static $gtype: GObject.GType<BufferCreateFlagBits>;
 
-        // Constructors of Vulkan.BufferCreateFlagBits
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -842,7 +842,7 @@ export namespace Vulkan {
     class BufferCreateFlags {
         static $gtype: GObject.GType<BufferCreateFlags>;
 
-        // Constructors of Vulkan.BufferCreateFlags
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -850,7 +850,7 @@ export namespace Vulkan {
     class BufferUsageFlagBits {
         static $gtype: GObject.GType<BufferUsageFlagBits>;
 
-        // Constructors of Vulkan.BufferUsageFlagBits
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -858,7 +858,7 @@ export namespace Vulkan {
     class BufferUsageFlags {
         static $gtype: GObject.GType<BufferUsageFlags>;
 
-        // Constructors of Vulkan.BufferUsageFlags
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -866,7 +866,7 @@ export namespace Vulkan {
     class BufferViewCreateFlags {
         static $gtype: GObject.GType<BufferViewCreateFlags>;
 
-        // Constructors of Vulkan.BufferViewCreateFlags
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -874,7 +874,7 @@ export namespace Vulkan {
     class ImageViewCreateFlagBits {
         static $gtype: GObject.GType<ImageViewCreateFlagBits>;
 
-        // Constructors of Vulkan.ImageViewCreateFlagBits
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -882,7 +882,7 @@ export namespace Vulkan {
     class ImageViewCreateFlags {
         static $gtype: GObject.GType<ImageViewCreateFlags>;
 
-        // Constructors of Vulkan.ImageViewCreateFlags
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -890,7 +890,7 @@ export namespace Vulkan {
     class ShaderModuleCreateFlags {
         static $gtype: GObject.GType<ShaderModuleCreateFlags>;
 
-        // Constructors of Vulkan.ShaderModuleCreateFlags
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -898,7 +898,7 @@ export namespace Vulkan {
     class PipelineCacheCreateFlags {
         static $gtype: GObject.GType<PipelineCacheCreateFlags>;
 
-        // Constructors of Vulkan.PipelineCacheCreateFlags
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -906,7 +906,7 @@ export namespace Vulkan {
     class PipelineCreateFlagBits {
         static $gtype: GObject.GType<PipelineCreateFlagBits>;
 
-        // Constructors of Vulkan.PipelineCreateFlagBits
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -914,7 +914,7 @@ export namespace Vulkan {
     class PipelineCreateFlags {
         static $gtype: GObject.GType<PipelineCreateFlags>;
 
-        // Constructors of Vulkan.PipelineCreateFlags
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -922,7 +922,7 @@ export namespace Vulkan {
     class PipelineShaderStageCreateFlags {
         static $gtype: GObject.GType<PipelineShaderStageCreateFlags>;
 
-        // Constructors of Vulkan.PipelineShaderStageCreateFlags
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -930,7 +930,7 @@ export namespace Vulkan {
     class ShaderStageFlagBits {
         static $gtype: GObject.GType<ShaderStageFlagBits>;
 
-        // Constructors of Vulkan.ShaderStageFlagBits
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -938,7 +938,7 @@ export namespace Vulkan {
     class PipelineVertexInputStateCreateFlags {
         static $gtype: GObject.GType<PipelineVertexInputStateCreateFlags>;
 
-        // Constructors of Vulkan.PipelineVertexInputStateCreateFlags
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -946,7 +946,7 @@ export namespace Vulkan {
     class PipelineInputAssemblyStateCreateFlags {
         static $gtype: GObject.GType<PipelineInputAssemblyStateCreateFlags>;
 
-        // Constructors of Vulkan.PipelineInputAssemblyStateCreateFlags
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -954,7 +954,7 @@ export namespace Vulkan {
     class PipelineTessellationStateCreateFlags {
         static $gtype: GObject.GType<PipelineTessellationStateCreateFlags>;
 
-        // Constructors of Vulkan.PipelineTessellationStateCreateFlags
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -962,7 +962,7 @@ export namespace Vulkan {
     class PipelineViewportStateCreateFlags {
         static $gtype: GObject.GType<PipelineViewportStateCreateFlags>;
 
-        // Constructors of Vulkan.PipelineViewportStateCreateFlags
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -970,7 +970,7 @@ export namespace Vulkan {
     class PipelineRasterizationStateCreateFlags {
         static $gtype: GObject.GType<PipelineRasterizationStateCreateFlags>;
 
-        // Constructors of Vulkan.PipelineRasterizationStateCreateFlags
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -978,7 +978,7 @@ export namespace Vulkan {
     class CullModeFlagBits {
         static $gtype: GObject.GType<CullModeFlagBits>;
 
-        // Constructors of Vulkan.CullModeFlagBits
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -986,7 +986,7 @@ export namespace Vulkan {
     class CullModeFlags {
         static $gtype: GObject.GType<CullModeFlags>;
 
-        // Constructors of Vulkan.CullModeFlags
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -994,7 +994,7 @@ export namespace Vulkan {
     class PipelineMultisampleStateCreateFlags {
         static $gtype: GObject.GType<PipelineMultisampleStateCreateFlags>;
 
-        // Constructors of Vulkan.PipelineMultisampleStateCreateFlags
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1002,7 +1002,7 @@ export namespace Vulkan {
     class PipelineDepthStencilStateCreateFlags {
         static $gtype: GObject.GType<PipelineDepthStencilStateCreateFlags>;
 
-        // Constructors of Vulkan.PipelineDepthStencilStateCreateFlags
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1010,7 +1010,7 @@ export namespace Vulkan {
     class PipelineColorBlendStateCreateFlags {
         static $gtype: GObject.GType<PipelineColorBlendStateCreateFlags>;
 
-        // Constructors of Vulkan.PipelineColorBlendStateCreateFlags
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1018,7 +1018,7 @@ export namespace Vulkan {
     class ColorComponentFlagBits {
         static $gtype: GObject.GType<ColorComponentFlagBits>;
 
-        // Constructors of Vulkan.ColorComponentFlagBits
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1026,7 +1026,7 @@ export namespace Vulkan {
     class ColorComponentFlags {
         static $gtype: GObject.GType<ColorComponentFlags>;
 
-        // Constructors of Vulkan.ColorComponentFlags
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1034,7 +1034,7 @@ export namespace Vulkan {
     class PipelineDynamicStateCreateFlags {
         static $gtype: GObject.GType<PipelineDynamicStateCreateFlags>;
 
-        // Constructors of Vulkan.PipelineDynamicStateCreateFlags
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1042,7 +1042,7 @@ export namespace Vulkan {
     class PipelineLayoutCreateFlags {
         static $gtype: GObject.GType<PipelineLayoutCreateFlags>;
 
-        // Constructors of Vulkan.PipelineLayoutCreateFlags
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1050,7 +1050,7 @@ export namespace Vulkan {
     class ShaderStageFlags {
         static $gtype: GObject.GType<ShaderStageFlags>;
 
-        // Constructors of Vulkan.ShaderStageFlags
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1058,7 +1058,7 @@ export namespace Vulkan {
     class SamplerCreateFlagBits {
         static $gtype: GObject.GType<SamplerCreateFlagBits>;
 
-        // Constructors of Vulkan.SamplerCreateFlagBits
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1066,7 +1066,7 @@ export namespace Vulkan {
     class SamplerCreateFlags {
         static $gtype: GObject.GType<SamplerCreateFlags>;
 
-        // Constructors of Vulkan.SamplerCreateFlags
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1074,7 +1074,7 @@ export namespace Vulkan {
     class DescriptorSetLayoutCreateFlagBits {
         static $gtype: GObject.GType<DescriptorSetLayoutCreateFlagBits>;
 
-        // Constructors of Vulkan.DescriptorSetLayoutCreateFlagBits
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1082,7 +1082,7 @@ export namespace Vulkan {
     class DescriptorSetLayoutCreateFlags {
         static $gtype: GObject.GType<DescriptorSetLayoutCreateFlags>;
 
-        // Constructors of Vulkan.DescriptorSetLayoutCreateFlags
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1090,7 +1090,7 @@ export namespace Vulkan {
     class DescriptorPoolCreateFlagBits {
         static $gtype: GObject.GType<DescriptorPoolCreateFlagBits>;
 
-        // Constructors of Vulkan.DescriptorPoolCreateFlagBits
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1098,7 +1098,7 @@ export namespace Vulkan {
     class DescriptorPoolCreateFlags {
         static $gtype: GObject.GType<DescriptorPoolCreateFlags>;
 
-        // Constructors of Vulkan.DescriptorPoolCreateFlags
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1106,7 +1106,7 @@ export namespace Vulkan {
     class DescriptorPoolResetFlags {
         static $gtype: GObject.GType<DescriptorPoolResetFlags>;
 
-        // Constructors of Vulkan.DescriptorPoolResetFlags
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1114,7 +1114,7 @@ export namespace Vulkan {
     class FramebufferCreateFlags {
         static $gtype: GObject.GType<FramebufferCreateFlags>;
 
-        // Constructors of Vulkan.FramebufferCreateFlags
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1122,7 +1122,7 @@ export namespace Vulkan {
     class RenderPassCreateFlags {
         static $gtype: GObject.GType<RenderPassCreateFlags>;
 
-        // Constructors of Vulkan.RenderPassCreateFlags
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1130,7 +1130,7 @@ export namespace Vulkan {
     class AttachmentDescriptionFlagBits {
         static $gtype: GObject.GType<AttachmentDescriptionFlagBits>;
 
-        // Constructors of Vulkan.AttachmentDescriptionFlagBits
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1138,7 +1138,7 @@ export namespace Vulkan {
     class AttachmentDescriptionFlags {
         static $gtype: GObject.GType<AttachmentDescriptionFlags>;
 
-        // Constructors of Vulkan.AttachmentDescriptionFlags
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1146,7 +1146,7 @@ export namespace Vulkan {
     class SubpassDescriptionFlagBits {
         static $gtype: GObject.GType<SubpassDescriptionFlagBits>;
 
-        // Constructors of Vulkan.SubpassDescriptionFlagBits
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1154,7 +1154,7 @@ export namespace Vulkan {
     class SubpassDescriptionFlags {
         static $gtype: GObject.GType<SubpassDescriptionFlags>;
 
-        // Constructors of Vulkan.SubpassDescriptionFlags
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1162,7 +1162,7 @@ export namespace Vulkan {
     class AccessFlagBits {
         static $gtype: GObject.GType<AccessFlagBits>;
 
-        // Constructors of Vulkan.AccessFlagBits
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1170,7 +1170,7 @@ export namespace Vulkan {
     class AccessFlags {
         static $gtype: GObject.GType<AccessFlags>;
 
-        // Constructors of Vulkan.AccessFlags
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1178,7 +1178,7 @@ export namespace Vulkan {
     class DependencyFlagBits {
         static $gtype: GObject.GType<DependencyFlagBits>;
 
-        // Constructors of Vulkan.DependencyFlagBits
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1186,7 +1186,7 @@ export namespace Vulkan {
     class DependencyFlags {
         static $gtype: GObject.GType<DependencyFlags>;
 
-        // Constructors of Vulkan.DependencyFlags
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1194,7 +1194,7 @@ export namespace Vulkan {
     class CommandPoolCreateFlagBits {
         static $gtype: GObject.GType<CommandPoolCreateFlagBits>;
 
-        // Constructors of Vulkan.CommandPoolCreateFlagBits
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1202,7 +1202,7 @@ export namespace Vulkan {
     class CommandPoolCreateFlags {
         static $gtype: GObject.GType<CommandPoolCreateFlags>;
 
-        // Constructors of Vulkan.CommandPoolCreateFlags
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1210,7 +1210,7 @@ export namespace Vulkan {
     class CommandPoolResetFlagBits {
         static $gtype: GObject.GType<CommandPoolResetFlagBits>;
 
-        // Constructors of Vulkan.CommandPoolResetFlagBits
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1218,7 +1218,7 @@ export namespace Vulkan {
     class CommandPoolResetFlags {
         static $gtype: GObject.GType<CommandPoolResetFlags>;
 
-        // Constructors of Vulkan.CommandPoolResetFlags
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1226,7 +1226,7 @@ export namespace Vulkan {
     class CommandBufferUsageFlagBits {
         static $gtype: GObject.GType<CommandBufferUsageFlagBits>;
 
-        // Constructors of Vulkan.CommandBufferUsageFlagBits
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1234,7 +1234,7 @@ export namespace Vulkan {
     class CommandBufferUsageFlags {
         static $gtype: GObject.GType<CommandBufferUsageFlags>;
 
-        // Constructors of Vulkan.CommandBufferUsageFlags
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1242,7 +1242,7 @@ export namespace Vulkan {
     class QueryControlFlagBits {
         static $gtype: GObject.GType<QueryControlFlagBits>;
 
-        // Constructors of Vulkan.QueryControlFlagBits
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1250,7 +1250,7 @@ export namespace Vulkan {
     class QueryControlFlags {
         static $gtype: GObject.GType<QueryControlFlags>;
 
-        // Constructors of Vulkan.QueryControlFlags
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1258,7 +1258,7 @@ export namespace Vulkan {
     class CommandBufferResetFlagBits {
         static $gtype: GObject.GType<CommandBufferResetFlagBits>;
 
-        // Constructors of Vulkan.CommandBufferResetFlagBits
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1266,7 +1266,7 @@ export namespace Vulkan {
     class CommandBufferResetFlags {
         static $gtype: GObject.GType<CommandBufferResetFlags>;
 
-        // Constructors of Vulkan.CommandBufferResetFlags
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1274,7 +1274,7 @@ export namespace Vulkan {
     class StencilFaceFlagBits {
         static $gtype: GObject.GType<StencilFaceFlagBits>;
 
-        // Constructors of Vulkan.StencilFaceFlagBits
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1282,7 +1282,7 @@ export namespace Vulkan {
     class StencilFaceFlags {
         static $gtype: GObject.GType<StencilFaceFlags>;
 
-        // Constructors of Vulkan.StencilFaceFlags
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1290,7 +1290,7 @@ export namespace Vulkan {
     class ApplicationInfo {
         static $gtype: GObject.GType<ApplicationInfo>;
 
-        // Constructors of Vulkan.ApplicationInfo
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1298,7 +1298,7 @@ export namespace Vulkan {
     class InstanceCreateInfo {
         static $gtype: GObject.GType<InstanceCreateInfo>;
 
-        // Constructors of Vulkan.InstanceCreateInfo
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1306,7 +1306,7 @@ export namespace Vulkan {
     class AllocationCallbacks {
         static $gtype: GObject.GType<AllocationCallbacks>;
 
-        // Constructors of Vulkan.AllocationCallbacks
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1314,7 +1314,7 @@ export namespace Vulkan {
     class PhysicalDeviceFeatures {
         static $gtype: GObject.GType<PhysicalDeviceFeatures>;
 
-        // Constructors of Vulkan.PhysicalDeviceFeatures
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1322,7 +1322,7 @@ export namespace Vulkan {
     class FormatProperties {
         static $gtype: GObject.GType<FormatProperties>;
 
-        // Constructors of Vulkan.FormatProperties
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1330,7 +1330,7 @@ export namespace Vulkan {
     class Extent3D {
         static $gtype: GObject.GType<Extent3D>;
 
-        // Constructors of Vulkan.Extent3D
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1338,7 +1338,7 @@ export namespace Vulkan {
     class ImageFormatProperties {
         static $gtype: GObject.GType<ImageFormatProperties>;
 
-        // Constructors of Vulkan.ImageFormatProperties
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1346,7 +1346,7 @@ export namespace Vulkan {
     class PhysicalDeviceLimits {
         static $gtype: GObject.GType<PhysicalDeviceLimits>;
 
-        // Constructors of Vulkan.PhysicalDeviceLimits
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1354,7 +1354,7 @@ export namespace Vulkan {
     class PhysicalDeviceSparseProperties {
         static $gtype: GObject.GType<PhysicalDeviceSparseProperties>;
 
-        // Constructors of Vulkan.PhysicalDeviceSparseProperties
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1362,7 +1362,7 @@ export namespace Vulkan {
     class PhysicalDeviceProperties {
         static $gtype: GObject.GType<PhysicalDeviceProperties>;
 
-        // Constructors of Vulkan.PhysicalDeviceProperties
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1370,7 +1370,7 @@ export namespace Vulkan {
     class QueueFamilyProperties {
         static $gtype: GObject.GType<QueueFamilyProperties>;
 
-        // Constructors of Vulkan.QueueFamilyProperties
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1378,7 +1378,7 @@ export namespace Vulkan {
     class MemoryType {
         static $gtype: GObject.GType<MemoryType>;
 
-        // Constructors of Vulkan.MemoryType
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1386,7 +1386,7 @@ export namespace Vulkan {
     class MemoryHeap {
         static $gtype: GObject.GType<MemoryHeap>;
 
-        // Constructors of Vulkan.MemoryHeap
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1394,7 +1394,7 @@ export namespace Vulkan {
     class PhysicalDeviceMemoryProperties {
         static $gtype: GObject.GType<PhysicalDeviceMemoryProperties>;
 
-        // Constructors of Vulkan.PhysicalDeviceMemoryProperties
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1402,7 +1402,7 @@ export namespace Vulkan {
     class DeviceQueueCreateInfo {
         static $gtype: GObject.GType<DeviceQueueCreateInfo>;
 
-        // Constructors of Vulkan.DeviceQueueCreateInfo
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1410,7 +1410,7 @@ export namespace Vulkan {
     class DeviceCreateInfo {
         static $gtype: GObject.GType<DeviceCreateInfo>;
 
-        // Constructors of Vulkan.DeviceCreateInfo
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1418,7 +1418,7 @@ export namespace Vulkan {
     class ExtensionProperties {
         static $gtype: GObject.GType<ExtensionProperties>;
 
-        // Constructors of Vulkan.ExtensionProperties
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1426,7 +1426,7 @@ export namespace Vulkan {
     class LayerProperties {
         static $gtype: GObject.GType<LayerProperties>;
 
-        // Constructors of Vulkan.LayerProperties
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1434,7 +1434,7 @@ export namespace Vulkan {
     class SubmitInfo {
         static $gtype: GObject.GType<SubmitInfo>;
 
-        // Constructors of Vulkan.SubmitInfo
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1442,7 +1442,7 @@ export namespace Vulkan {
     class MemoryAllocateInfo {
         static $gtype: GObject.GType<MemoryAllocateInfo>;
 
-        // Constructors of Vulkan.MemoryAllocateInfo
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1450,7 +1450,7 @@ export namespace Vulkan {
     class MappedMemoryRange {
         static $gtype: GObject.GType<MappedMemoryRange>;
 
-        // Constructors of Vulkan.MappedMemoryRange
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1458,7 +1458,7 @@ export namespace Vulkan {
     class MemoryRequirements {
         static $gtype: GObject.GType<MemoryRequirements>;
 
-        // Constructors of Vulkan.MemoryRequirements
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1466,7 +1466,7 @@ export namespace Vulkan {
     class SparseImageFormatProperties {
         static $gtype: GObject.GType<SparseImageFormatProperties>;
 
-        // Constructors of Vulkan.SparseImageFormatProperties
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1474,7 +1474,7 @@ export namespace Vulkan {
     class SparseImageMemoryRequirements {
         static $gtype: GObject.GType<SparseImageMemoryRequirements>;
 
-        // Constructors of Vulkan.SparseImageMemoryRequirements
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1482,7 +1482,7 @@ export namespace Vulkan {
     class SparseMemoryBind {
         static $gtype: GObject.GType<SparseMemoryBind>;
 
-        // Constructors of Vulkan.SparseMemoryBind
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1490,7 +1490,7 @@ export namespace Vulkan {
     class SparseBufferMemoryBindInfo {
         static $gtype: GObject.GType<SparseBufferMemoryBindInfo>;
 
-        // Constructors of Vulkan.SparseBufferMemoryBindInfo
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1498,7 +1498,7 @@ export namespace Vulkan {
     class SparseImageOpaqueMemoryBindInfo {
         static $gtype: GObject.GType<SparseImageOpaqueMemoryBindInfo>;
 
-        // Constructors of Vulkan.SparseImageOpaqueMemoryBindInfo
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1506,7 +1506,7 @@ export namespace Vulkan {
     class ImageSubresource {
         static $gtype: GObject.GType<ImageSubresource>;
 
-        // Constructors of Vulkan.ImageSubresource
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1514,7 +1514,7 @@ export namespace Vulkan {
     class Offset3D {
         static $gtype: GObject.GType<Offset3D>;
 
-        // Constructors of Vulkan.Offset3D
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1522,7 +1522,7 @@ export namespace Vulkan {
     class SparseImageMemoryBind {
         static $gtype: GObject.GType<SparseImageMemoryBind>;
 
-        // Constructors of Vulkan.SparseImageMemoryBind
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1530,7 +1530,7 @@ export namespace Vulkan {
     class SparseImageMemoryBindInfo {
         static $gtype: GObject.GType<SparseImageMemoryBindInfo>;
 
-        // Constructors of Vulkan.SparseImageMemoryBindInfo
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1538,7 +1538,7 @@ export namespace Vulkan {
     class BindSparseInfo {
         static $gtype: GObject.GType<BindSparseInfo>;
 
-        // Constructors of Vulkan.BindSparseInfo
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1546,7 +1546,7 @@ export namespace Vulkan {
     class FenceCreateInfo {
         static $gtype: GObject.GType<FenceCreateInfo>;
 
-        // Constructors of Vulkan.FenceCreateInfo
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1554,7 +1554,7 @@ export namespace Vulkan {
     class SemaphoreCreateInfo {
         static $gtype: GObject.GType<SemaphoreCreateInfo>;
 
-        // Constructors of Vulkan.SemaphoreCreateInfo
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1562,7 +1562,7 @@ export namespace Vulkan {
     class EventCreateInfo {
         static $gtype: GObject.GType<EventCreateInfo>;
 
-        // Constructors of Vulkan.EventCreateInfo
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1570,7 +1570,7 @@ export namespace Vulkan {
     class QueryPoolCreateInfo {
         static $gtype: GObject.GType<QueryPoolCreateInfo>;
 
-        // Constructors of Vulkan.QueryPoolCreateInfo
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1578,7 +1578,7 @@ export namespace Vulkan {
     class BufferCreateInfo {
         static $gtype: GObject.GType<BufferCreateInfo>;
 
-        // Constructors of Vulkan.BufferCreateInfo
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1586,7 +1586,7 @@ export namespace Vulkan {
     class BufferViewCreateInfo {
         static $gtype: GObject.GType<BufferViewCreateInfo>;
 
-        // Constructors of Vulkan.BufferViewCreateInfo
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1594,7 +1594,7 @@ export namespace Vulkan {
     class ImageCreateInfo {
         static $gtype: GObject.GType<ImageCreateInfo>;
 
-        // Constructors of Vulkan.ImageCreateInfo
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1602,7 +1602,7 @@ export namespace Vulkan {
     class SubresourceLayout {
         static $gtype: GObject.GType<SubresourceLayout>;
 
-        // Constructors of Vulkan.SubresourceLayout
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1610,7 +1610,7 @@ export namespace Vulkan {
     class ComponentMapping {
         static $gtype: GObject.GType<ComponentMapping>;
 
-        // Constructors of Vulkan.ComponentMapping
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1618,7 +1618,7 @@ export namespace Vulkan {
     class ImageSubresourceRange {
         static $gtype: GObject.GType<ImageSubresourceRange>;
 
-        // Constructors of Vulkan.ImageSubresourceRange
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1626,7 +1626,7 @@ export namespace Vulkan {
     class ImageViewCreateInfo {
         static $gtype: GObject.GType<ImageViewCreateInfo>;
 
-        // Constructors of Vulkan.ImageViewCreateInfo
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1634,7 +1634,7 @@ export namespace Vulkan {
     class ShaderModuleCreateInfo {
         static $gtype: GObject.GType<ShaderModuleCreateInfo>;
 
-        // Constructors of Vulkan.ShaderModuleCreateInfo
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1642,7 +1642,7 @@ export namespace Vulkan {
     class PipelineCacheCreateInfo {
         static $gtype: GObject.GType<PipelineCacheCreateInfo>;
 
-        // Constructors of Vulkan.PipelineCacheCreateInfo
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1650,7 +1650,7 @@ export namespace Vulkan {
     class SpecializationMapEntry {
         static $gtype: GObject.GType<SpecializationMapEntry>;
 
-        // Constructors of Vulkan.SpecializationMapEntry
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1658,7 +1658,7 @@ export namespace Vulkan {
     class SpecializationInfo {
         static $gtype: GObject.GType<SpecializationInfo>;
 
-        // Constructors of Vulkan.SpecializationInfo
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1666,7 +1666,7 @@ export namespace Vulkan {
     class PipelineShaderStageCreateInfo {
         static $gtype: GObject.GType<PipelineShaderStageCreateInfo>;
 
-        // Constructors of Vulkan.PipelineShaderStageCreateInfo
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1674,7 +1674,7 @@ export namespace Vulkan {
     class VertexInputBindingDescription {
         static $gtype: GObject.GType<VertexInputBindingDescription>;
 
-        // Constructors of Vulkan.VertexInputBindingDescription
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1682,7 +1682,7 @@ export namespace Vulkan {
     class VertexInputAttributeDescription {
         static $gtype: GObject.GType<VertexInputAttributeDescription>;
 
-        // Constructors of Vulkan.VertexInputAttributeDescription
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1690,7 +1690,7 @@ export namespace Vulkan {
     class PipelineVertexInputStateCreateInfo {
         static $gtype: GObject.GType<PipelineVertexInputStateCreateInfo>;
 
-        // Constructors of Vulkan.PipelineVertexInputStateCreateInfo
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1698,7 +1698,7 @@ export namespace Vulkan {
     class PipelineInputAssemblyStateCreateInfo {
         static $gtype: GObject.GType<PipelineInputAssemblyStateCreateInfo>;
 
-        // Constructors of Vulkan.PipelineInputAssemblyStateCreateInfo
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1706,7 +1706,7 @@ export namespace Vulkan {
     class PipelineTessellationStateCreateInfo {
         static $gtype: GObject.GType<PipelineTessellationStateCreateInfo>;
 
-        // Constructors of Vulkan.PipelineTessellationStateCreateInfo
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1714,7 +1714,7 @@ export namespace Vulkan {
     class Viewport {
         static $gtype: GObject.GType<Viewport>;
 
-        // Constructors of Vulkan.Viewport
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1722,7 +1722,7 @@ export namespace Vulkan {
     class Offset2D {
         static $gtype: GObject.GType<Offset2D>;
 
-        // Constructors of Vulkan.Offset2D
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1730,7 +1730,7 @@ export namespace Vulkan {
     class Extent2D {
         static $gtype: GObject.GType<Extent2D>;
 
-        // Constructors of Vulkan.Extent2D
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1738,7 +1738,7 @@ export namespace Vulkan {
     class Rect2D {
         static $gtype: GObject.GType<Rect2D>;
 
-        // Constructors of Vulkan.Rect2D
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1746,7 +1746,7 @@ export namespace Vulkan {
     class PipelineViewportStateCreateInfo {
         static $gtype: GObject.GType<PipelineViewportStateCreateInfo>;
 
-        // Constructors of Vulkan.PipelineViewportStateCreateInfo
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1754,7 +1754,7 @@ export namespace Vulkan {
     class PipelineRasterizationStateCreateInfo {
         static $gtype: GObject.GType<PipelineRasterizationStateCreateInfo>;
 
-        // Constructors of Vulkan.PipelineRasterizationStateCreateInfo
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1762,7 +1762,7 @@ export namespace Vulkan {
     class PipelineMultisampleStateCreateInfo {
         static $gtype: GObject.GType<PipelineMultisampleStateCreateInfo>;
 
-        // Constructors of Vulkan.PipelineMultisampleStateCreateInfo
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1770,7 +1770,7 @@ export namespace Vulkan {
     class StencilOpState {
         static $gtype: GObject.GType<StencilOpState>;
 
-        // Constructors of Vulkan.StencilOpState
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1778,7 +1778,7 @@ export namespace Vulkan {
     class PipelineDepthStencilStateCreateInfo {
         static $gtype: GObject.GType<PipelineDepthStencilStateCreateInfo>;
 
-        // Constructors of Vulkan.PipelineDepthStencilStateCreateInfo
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1786,7 +1786,7 @@ export namespace Vulkan {
     class PipelineColorBlendAttachmentState {
         static $gtype: GObject.GType<PipelineColorBlendAttachmentState>;
 
-        // Constructors of Vulkan.PipelineColorBlendAttachmentState
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1794,7 +1794,7 @@ export namespace Vulkan {
     class PipelineColorBlendStateCreateInfo {
         static $gtype: GObject.GType<PipelineColorBlendStateCreateInfo>;
 
-        // Constructors of Vulkan.PipelineColorBlendStateCreateInfo
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1802,7 +1802,7 @@ export namespace Vulkan {
     class PipelineDynamicStateCreateInfo {
         static $gtype: GObject.GType<PipelineDynamicStateCreateInfo>;
 
-        // Constructors of Vulkan.PipelineDynamicStateCreateInfo
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1810,7 +1810,7 @@ export namespace Vulkan {
     class GraphicsPipelineCreateInfo {
         static $gtype: GObject.GType<GraphicsPipelineCreateInfo>;
 
-        // Constructors of Vulkan.GraphicsPipelineCreateInfo
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1818,7 +1818,7 @@ export namespace Vulkan {
     class ComputePipelineCreateInfo {
         static $gtype: GObject.GType<ComputePipelineCreateInfo>;
 
-        // Constructors of Vulkan.ComputePipelineCreateInfo
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1826,7 +1826,7 @@ export namespace Vulkan {
     class PushConstantRange {
         static $gtype: GObject.GType<PushConstantRange>;
 
-        // Constructors of Vulkan.PushConstantRange
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1834,7 +1834,7 @@ export namespace Vulkan {
     class PipelineLayoutCreateInfo {
         static $gtype: GObject.GType<PipelineLayoutCreateInfo>;
 
-        // Constructors of Vulkan.PipelineLayoutCreateInfo
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1842,7 +1842,7 @@ export namespace Vulkan {
     class SamplerCreateInfo {
         static $gtype: GObject.GType<SamplerCreateInfo>;
 
-        // Constructors of Vulkan.SamplerCreateInfo
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1850,7 +1850,7 @@ export namespace Vulkan {
     class DescriptorSetLayoutBinding {
         static $gtype: GObject.GType<DescriptorSetLayoutBinding>;
 
-        // Constructors of Vulkan.DescriptorSetLayoutBinding
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1858,7 +1858,7 @@ export namespace Vulkan {
     class DescriptorSetLayoutCreateInfo {
         static $gtype: GObject.GType<DescriptorSetLayoutCreateInfo>;
 
-        // Constructors of Vulkan.DescriptorSetLayoutCreateInfo
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1866,7 +1866,7 @@ export namespace Vulkan {
     class DescriptorPoolSize {
         static $gtype: GObject.GType<DescriptorPoolSize>;
 
-        // Constructors of Vulkan.DescriptorPoolSize
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1874,7 +1874,7 @@ export namespace Vulkan {
     class DescriptorPoolCreateInfo {
         static $gtype: GObject.GType<DescriptorPoolCreateInfo>;
 
-        // Constructors of Vulkan.DescriptorPoolCreateInfo
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1882,7 +1882,7 @@ export namespace Vulkan {
     class DescriptorSetAllocateInfo {
         static $gtype: GObject.GType<DescriptorSetAllocateInfo>;
 
-        // Constructors of Vulkan.DescriptorSetAllocateInfo
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1890,7 +1890,7 @@ export namespace Vulkan {
     class DescriptorImageInfo {
         static $gtype: GObject.GType<DescriptorImageInfo>;
 
-        // Constructors of Vulkan.DescriptorImageInfo
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1898,7 +1898,7 @@ export namespace Vulkan {
     class DescriptorBufferInfo {
         static $gtype: GObject.GType<DescriptorBufferInfo>;
 
-        // Constructors of Vulkan.DescriptorBufferInfo
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1906,7 +1906,7 @@ export namespace Vulkan {
     class WriteDescriptorSet {
         static $gtype: GObject.GType<WriteDescriptorSet>;
 
-        // Constructors of Vulkan.WriteDescriptorSet
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1914,7 +1914,7 @@ export namespace Vulkan {
     class CopyDescriptorSet {
         static $gtype: GObject.GType<CopyDescriptorSet>;
 
-        // Constructors of Vulkan.CopyDescriptorSet
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1922,7 +1922,7 @@ export namespace Vulkan {
     class FramebufferCreateInfo {
         static $gtype: GObject.GType<FramebufferCreateInfo>;
 
-        // Constructors of Vulkan.FramebufferCreateInfo
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1930,7 +1930,7 @@ export namespace Vulkan {
     class AttachmentDescription {
         static $gtype: GObject.GType<AttachmentDescription>;
 
-        // Constructors of Vulkan.AttachmentDescription
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1938,7 +1938,7 @@ export namespace Vulkan {
     class AttachmentReference {
         static $gtype: GObject.GType<AttachmentReference>;
 
-        // Constructors of Vulkan.AttachmentReference
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1946,7 +1946,7 @@ export namespace Vulkan {
     class SubpassDescription {
         static $gtype: GObject.GType<SubpassDescription>;
 
-        // Constructors of Vulkan.SubpassDescription
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1954,7 +1954,7 @@ export namespace Vulkan {
     class SubpassDependency {
         static $gtype: GObject.GType<SubpassDependency>;
 
-        // Constructors of Vulkan.SubpassDependency
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1962,7 +1962,7 @@ export namespace Vulkan {
     class RenderPassCreateInfo {
         static $gtype: GObject.GType<RenderPassCreateInfo>;
 
-        // Constructors of Vulkan.RenderPassCreateInfo
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1970,7 +1970,7 @@ export namespace Vulkan {
     class CommandPoolCreateInfo {
         static $gtype: GObject.GType<CommandPoolCreateInfo>;
 
-        // Constructors of Vulkan.CommandPoolCreateInfo
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1978,7 +1978,7 @@ export namespace Vulkan {
     class CommandBufferAllocateInfo {
         static $gtype: GObject.GType<CommandBufferAllocateInfo>;
 
-        // Constructors of Vulkan.CommandBufferAllocateInfo
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1986,7 +1986,7 @@ export namespace Vulkan {
     class CommandBufferInheritanceInfo {
         static $gtype: GObject.GType<CommandBufferInheritanceInfo>;
 
-        // Constructors of Vulkan.CommandBufferInheritanceInfo
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1994,7 +1994,7 @@ export namespace Vulkan {
     class CommandBufferBeginInfo {
         static $gtype: GObject.GType<CommandBufferBeginInfo>;
 
-        // Constructors of Vulkan.CommandBufferBeginInfo
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2002,7 +2002,7 @@ export namespace Vulkan {
     class BufferCopy {
         static $gtype: GObject.GType<BufferCopy>;
 
-        // Constructors of Vulkan.BufferCopy
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2010,7 +2010,7 @@ export namespace Vulkan {
     class ImageSubresourceLayers {
         static $gtype: GObject.GType<ImageSubresourceLayers>;
 
-        // Constructors of Vulkan.ImageSubresourceLayers
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2018,7 +2018,7 @@ export namespace Vulkan {
     class ImageCopy {
         static $gtype: GObject.GType<ImageCopy>;
 
-        // Constructors of Vulkan.ImageCopy
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2026,7 +2026,7 @@ export namespace Vulkan {
     class ImageBlit {
         static $gtype: GObject.GType<ImageBlit>;
 
-        // Constructors of Vulkan.ImageBlit
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2034,7 +2034,7 @@ export namespace Vulkan {
     class BufferImageCopy {
         static $gtype: GObject.GType<BufferImageCopy>;
 
-        // Constructors of Vulkan.BufferImageCopy
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2042,7 +2042,7 @@ export namespace Vulkan {
     class ClearColorValue {
         static $gtype: GObject.GType<ClearColorValue>;
 
-        // Constructors of Vulkan.ClearColorValue
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2050,7 +2050,7 @@ export namespace Vulkan {
     class ClearDepthStencilValue {
         static $gtype: GObject.GType<ClearDepthStencilValue>;
 
-        // Constructors of Vulkan.ClearDepthStencilValue
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2058,7 +2058,7 @@ export namespace Vulkan {
     class ClearValue {
         static $gtype: GObject.GType<ClearValue>;
 
-        // Constructors of Vulkan.ClearValue
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2066,7 +2066,7 @@ export namespace Vulkan {
     class ClearAttachment {
         static $gtype: GObject.GType<ClearAttachment>;
 
-        // Constructors of Vulkan.ClearAttachment
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2074,7 +2074,7 @@ export namespace Vulkan {
     class ClearRect {
         static $gtype: GObject.GType<ClearRect>;
 
-        // Constructors of Vulkan.ClearRect
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2082,7 +2082,7 @@ export namespace Vulkan {
     class ImageResolve {
         static $gtype: GObject.GType<ImageResolve>;
 
-        // Constructors of Vulkan.ImageResolve
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2090,7 +2090,7 @@ export namespace Vulkan {
     class MemoryBarrier {
         static $gtype: GObject.GType<MemoryBarrier>;
 
-        // Constructors of Vulkan.MemoryBarrier
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2098,7 +2098,7 @@ export namespace Vulkan {
     class BufferMemoryBarrier {
         static $gtype: GObject.GType<BufferMemoryBarrier>;
 
-        // Constructors of Vulkan.BufferMemoryBarrier
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2106,7 +2106,7 @@ export namespace Vulkan {
     class ImageMemoryBarrier {
         static $gtype: GObject.GType<ImageMemoryBarrier>;
 
-        // Constructors of Vulkan.ImageMemoryBarrier
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2114,7 +2114,7 @@ export namespace Vulkan {
     class RenderPassBeginInfo {
         static $gtype: GObject.GType<RenderPassBeginInfo>;
 
-        // Constructors of Vulkan.RenderPassBeginInfo
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2122,7 +2122,7 @@ export namespace Vulkan {
     class DispatchIndirectCommand {
         static $gtype: GObject.GType<DispatchIndirectCommand>;
 
-        // Constructors of Vulkan.DispatchIndirectCommand
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2130,7 +2130,7 @@ export namespace Vulkan {
     class DrawIndexedIndirectCommand {
         static $gtype: GObject.GType<DrawIndexedIndirectCommand>;
 
-        // Constructors of Vulkan.DrawIndexedIndirectCommand
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2138,7 +2138,7 @@ export namespace Vulkan {
     class DrawIndirectCommand {
         static $gtype: GObject.GType<DrawIndirectCommand>;
 
-        // Constructors of Vulkan.DrawIndirectCommand
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2146,7 +2146,7 @@ export namespace Vulkan {
     class BaseOutStructure {
         static $gtype: GObject.GType<BaseOutStructure>;
 
-        // Constructors of Vulkan.BaseOutStructure
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2154,7 +2154,7 @@ export namespace Vulkan {
     class BaseInStructure {
         static $gtype: GObject.GType<BaseInStructure>;
 
-        // Constructors of Vulkan.BaseInStructure
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2162,7 +2162,7 @@ export namespace Vulkan {
     class SamplerYcbcrConversion {
         static $gtype: GObject.GType<SamplerYcbcrConversion>;
 
-        // Constructors of Vulkan.SamplerYcbcrConversion
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2170,7 +2170,7 @@ export namespace Vulkan {
     class DescriptorUpdateTemplate {
         static $gtype: GObject.GType<DescriptorUpdateTemplate>;
 
-        // Constructors of Vulkan.DescriptorUpdateTemplate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2178,7 +2178,7 @@ export namespace Vulkan {
     class PointClippingBehavior {
         static $gtype: GObject.GType<PointClippingBehavior>;
 
-        // Constructors of Vulkan.PointClippingBehavior
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2186,7 +2186,7 @@ export namespace Vulkan {
     class TessellationDomainOrigin {
         static $gtype: GObject.GType<TessellationDomainOrigin>;
 
-        // Constructors of Vulkan.TessellationDomainOrigin
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2194,7 +2194,7 @@ export namespace Vulkan {
     class SamplerYcbcrModelConversion {
         static $gtype: GObject.GType<SamplerYcbcrModelConversion>;
 
-        // Constructors of Vulkan.SamplerYcbcrModelConversion
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2202,7 +2202,7 @@ export namespace Vulkan {
     class SamplerYcbcrRange {
         static $gtype: GObject.GType<SamplerYcbcrRange>;
 
-        // Constructors of Vulkan.SamplerYcbcrRange
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2210,7 +2210,7 @@ export namespace Vulkan {
     class ChromaLocation {
         static $gtype: GObject.GType<ChromaLocation>;
 
-        // Constructors of Vulkan.ChromaLocation
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2218,7 +2218,7 @@ export namespace Vulkan {
     class DescriptorUpdateTemplateType {
         static $gtype: GObject.GType<DescriptorUpdateTemplateType>;
 
-        // Constructors of Vulkan.DescriptorUpdateTemplateType
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2226,7 +2226,7 @@ export namespace Vulkan {
     class SubgroupFeatureFlagBits {
         static $gtype: GObject.GType<SubgroupFeatureFlagBits>;
 
-        // Constructors of Vulkan.SubgroupFeatureFlagBits
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2234,7 +2234,7 @@ export namespace Vulkan {
     class SubgroupFeatureFlags {
         static $gtype: GObject.GType<SubgroupFeatureFlags>;
 
-        // Constructors of Vulkan.SubgroupFeatureFlags
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2242,7 +2242,7 @@ export namespace Vulkan {
     class PeerMemoryFeatureFlagBits {
         static $gtype: GObject.GType<PeerMemoryFeatureFlagBits>;
 
-        // Constructors of Vulkan.PeerMemoryFeatureFlagBits
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2250,7 +2250,7 @@ export namespace Vulkan {
     class PeerMemoryFeatureFlags {
         static $gtype: GObject.GType<PeerMemoryFeatureFlags>;
 
-        // Constructors of Vulkan.PeerMemoryFeatureFlags
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2258,7 +2258,7 @@ export namespace Vulkan {
     class MemoryAllocateFlagBits {
         static $gtype: GObject.GType<MemoryAllocateFlagBits>;
 
-        // Constructors of Vulkan.MemoryAllocateFlagBits
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2266,7 +2266,7 @@ export namespace Vulkan {
     class MemoryAllocateFlags {
         static $gtype: GObject.GType<MemoryAllocateFlags>;
 
-        // Constructors of Vulkan.MemoryAllocateFlags
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2274,7 +2274,7 @@ export namespace Vulkan {
     class CommandPoolTrimFlags {
         static $gtype: GObject.GType<CommandPoolTrimFlags>;
 
-        // Constructors of Vulkan.CommandPoolTrimFlags
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2282,7 +2282,7 @@ export namespace Vulkan {
     class DescriptorUpdateTemplateCreateFlags {
         static $gtype: GObject.GType<DescriptorUpdateTemplateCreateFlags>;
 
-        // Constructors of Vulkan.DescriptorUpdateTemplateCreateFlags
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2290,7 +2290,7 @@ export namespace Vulkan {
     class ExternalMemoryHandleTypeFlagBits {
         static $gtype: GObject.GType<ExternalMemoryHandleTypeFlagBits>;
 
-        // Constructors of Vulkan.ExternalMemoryHandleTypeFlagBits
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2298,7 +2298,7 @@ export namespace Vulkan {
     class ExternalMemoryHandleTypeFlags {
         static $gtype: GObject.GType<ExternalMemoryHandleTypeFlags>;
 
-        // Constructors of Vulkan.ExternalMemoryHandleTypeFlags
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2306,7 +2306,7 @@ export namespace Vulkan {
     class ExternalMemoryFeatureFlagBits {
         static $gtype: GObject.GType<ExternalMemoryFeatureFlagBits>;
 
-        // Constructors of Vulkan.ExternalMemoryFeatureFlagBits
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2314,7 +2314,7 @@ export namespace Vulkan {
     class ExternalMemoryFeatureFlags {
         static $gtype: GObject.GType<ExternalMemoryFeatureFlags>;
 
-        // Constructors of Vulkan.ExternalMemoryFeatureFlags
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2322,7 +2322,7 @@ export namespace Vulkan {
     class ExternalFenceHandleTypeFlagBits {
         static $gtype: GObject.GType<ExternalFenceHandleTypeFlagBits>;
 
-        // Constructors of Vulkan.ExternalFenceHandleTypeFlagBits
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2330,7 +2330,7 @@ export namespace Vulkan {
     class ExternalFenceHandleTypeFlags {
         static $gtype: GObject.GType<ExternalFenceHandleTypeFlags>;
 
-        // Constructors of Vulkan.ExternalFenceHandleTypeFlags
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2338,7 +2338,7 @@ export namespace Vulkan {
     class ExternalFenceFeatureFlagBits {
         static $gtype: GObject.GType<ExternalFenceFeatureFlagBits>;
 
-        // Constructors of Vulkan.ExternalFenceFeatureFlagBits
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2346,7 +2346,7 @@ export namespace Vulkan {
     class ExternalFenceFeatureFlags {
         static $gtype: GObject.GType<ExternalFenceFeatureFlags>;
 
-        // Constructors of Vulkan.ExternalFenceFeatureFlags
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2354,7 +2354,7 @@ export namespace Vulkan {
     class FenceImportFlagBits {
         static $gtype: GObject.GType<FenceImportFlagBits>;
 
-        // Constructors of Vulkan.FenceImportFlagBits
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2362,7 +2362,7 @@ export namespace Vulkan {
     class FenceImportFlags {
         static $gtype: GObject.GType<FenceImportFlags>;
 
-        // Constructors of Vulkan.FenceImportFlags
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2370,7 +2370,7 @@ export namespace Vulkan {
     class SemaphoreImportFlagBits {
         static $gtype: GObject.GType<SemaphoreImportFlagBits>;
 
-        // Constructors of Vulkan.SemaphoreImportFlagBits
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2378,7 +2378,7 @@ export namespace Vulkan {
     class SemaphoreImportFlags {
         static $gtype: GObject.GType<SemaphoreImportFlags>;
 
-        // Constructors of Vulkan.SemaphoreImportFlags
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2386,7 +2386,7 @@ export namespace Vulkan {
     class ExternalSemaphoreHandleTypeFlagBits {
         static $gtype: GObject.GType<ExternalSemaphoreHandleTypeFlagBits>;
 
-        // Constructors of Vulkan.ExternalSemaphoreHandleTypeFlagBits
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2394,7 +2394,7 @@ export namespace Vulkan {
     class ExternalSemaphoreHandleTypeFlags {
         static $gtype: GObject.GType<ExternalSemaphoreHandleTypeFlags>;
 
-        // Constructors of Vulkan.ExternalSemaphoreHandleTypeFlags
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2402,7 +2402,7 @@ export namespace Vulkan {
     class ExternalSemaphoreFeatureFlagBits {
         static $gtype: GObject.GType<ExternalSemaphoreFeatureFlagBits>;
 
-        // Constructors of Vulkan.ExternalSemaphoreFeatureFlagBits
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2410,7 +2410,7 @@ export namespace Vulkan {
     class ExternalSemaphoreFeatureFlags {
         static $gtype: GObject.GType<ExternalSemaphoreFeatureFlags>;
 
-        // Constructors of Vulkan.ExternalSemaphoreFeatureFlags
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2418,7 +2418,7 @@ export namespace Vulkan {
     class PhysicalDeviceSubgroupProperties {
         static $gtype: GObject.GType<PhysicalDeviceSubgroupProperties>;
 
-        // Constructors of Vulkan.PhysicalDeviceSubgroupProperties
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2426,7 +2426,7 @@ export namespace Vulkan {
     class BindBufferMemoryInfo {
         static $gtype: GObject.GType<BindBufferMemoryInfo>;
 
-        // Constructors of Vulkan.BindBufferMemoryInfo
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2434,7 +2434,7 @@ export namespace Vulkan {
     class BindImageMemoryInfo {
         static $gtype: GObject.GType<BindImageMemoryInfo>;
 
-        // Constructors of Vulkan.BindImageMemoryInfo
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2442,7 +2442,7 @@ export namespace Vulkan {
     class PhysicalDevice16BitStorageFeatures {
         static $gtype: GObject.GType<PhysicalDevice16BitStorageFeatures>;
 
-        // Constructors of Vulkan.PhysicalDevice16BitStorageFeatures
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2450,7 +2450,7 @@ export namespace Vulkan {
     class MemoryDedicatedRequirements {
         static $gtype: GObject.GType<MemoryDedicatedRequirements>;
 
-        // Constructors of Vulkan.MemoryDedicatedRequirements
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2458,7 +2458,7 @@ export namespace Vulkan {
     class MemoryDedicatedAllocateInfo {
         static $gtype: GObject.GType<MemoryDedicatedAllocateInfo>;
 
-        // Constructors of Vulkan.MemoryDedicatedAllocateInfo
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2466,7 +2466,7 @@ export namespace Vulkan {
     class MemoryAllocateFlagsInfo {
         static $gtype: GObject.GType<MemoryAllocateFlagsInfo>;
 
-        // Constructors of Vulkan.MemoryAllocateFlagsInfo
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2474,7 +2474,7 @@ export namespace Vulkan {
     class DeviceGroupRenderPassBeginInfo {
         static $gtype: GObject.GType<DeviceGroupRenderPassBeginInfo>;
 
-        // Constructors of Vulkan.DeviceGroupRenderPassBeginInfo
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2482,7 +2482,7 @@ export namespace Vulkan {
     class DeviceGroupCommandBufferBeginInfo {
         static $gtype: GObject.GType<DeviceGroupCommandBufferBeginInfo>;
 
-        // Constructors of Vulkan.DeviceGroupCommandBufferBeginInfo
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2490,7 +2490,7 @@ export namespace Vulkan {
     class DeviceGroupSubmitInfo {
         static $gtype: GObject.GType<DeviceGroupSubmitInfo>;
 
-        // Constructors of Vulkan.DeviceGroupSubmitInfo
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2498,7 +2498,7 @@ export namespace Vulkan {
     class DeviceGroupBindSparseInfo {
         static $gtype: GObject.GType<DeviceGroupBindSparseInfo>;
 
-        // Constructors of Vulkan.DeviceGroupBindSparseInfo
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2506,7 +2506,7 @@ export namespace Vulkan {
     class BindBufferMemoryDeviceGroupInfo {
         static $gtype: GObject.GType<BindBufferMemoryDeviceGroupInfo>;
 
-        // Constructors of Vulkan.BindBufferMemoryDeviceGroupInfo
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2514,7 +2514,7 @@ export namespace Vulkan {
     class BindImageMemoryDeviceGroupInfo {
         static $gtype: GObject.GType<BindImageMemoryDeviceGroupInfo>;
 
-        // Constructors of Vulkan.BindImageMemoryDeviceGroupInfo
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2522,7 +2522,7 @@ export namespace Vulkan {
     class PhysicalDeviceGroupProperties {
         static $gtype: GObject.GType<PhysicalDeviceGroupProperties>;
 
-        // Constructors of Vulkan.PhysicalDeviceGroupProperties
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2530,7 +2530,7 @@ export namespace Vulkan {
     class DeviceGroupDeviceCreateInfo {
         static $gtype: GObject.GType<DeviceGroupDeviceCreateInfo>;
 
-        // Constructors of Vulkan.DeviceGroupDeviceCreateInfo
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2538,7 +2538,7 @@ export namespace Vulkan {
     class BufferMemoryRequirementsInfo2 {
         static $gtype: GObject.GType<BufferMemoryRequirementsInfo2>;
 
-        // Constructors of Vulkan.BufferMemoryRequirementsInfo2
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2546,7 +2546,7 @@ export namespace Vulkan {
     class ImageMemoryRequirementsInfo2 {
         static $gtype: GObject.GType<ImageMemoryRequirementsInfo2>;
 
-        // Constructors of Vulkan.ImageMemoryRequirementsInfo2
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2554,7 +2554,7 @@ export namespace Vulkan {
     class ImageSparseMemoryRequirementsInfo2 {
         static $gtype: GObject.GType<ImageSparseMemoryRequirementsInfo2>;
 
-        // Constructors of Vulkan.ImageSparseMemoryRequirementsInfo2
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2562,7 +2562,7 @@ export namespace Vulkan {
     class MemoryRequirements2 {
         static $gtype: GObject.GType<MemoryRequirements2>;
 
-        // Constructors of Vulkan.MemoryRequirements2
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2570,7 +2570,7 @@ export namespace Vulkan {
     class MemoryRequirements2KHR {
         static $gtype: GObject.GType<MemoryRequirements2KHR>;
 
-        // Constructors of Vulkan.MemoryRequirements2KHR
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2578,7 +2578,7 @@ export namespace Vulkan {
     class SparseImageMemoryRequirements2 {
         static $gtype: GObject.GType<SparseImageMemoryRequirements2>;
 
-        // Constructors of Vulkan.SparseImageMemoryRequirements2
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2586,7 +2586,7 @@ export namespace Vulkan {
     class PhysicalDeviceFeatures2 {
         static $gtype: GObject.GType<PhysicalDeviceFeatures2>;
 
-        // Constructors of Vulkan.PhysicalDeviceFeatures2
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2594,7 +2594,7 @@ export namespace Vulkan {
     class PhysicalDeviceProperties2 {
         static $gtype: GObject.GType<PhysicalDeviceProperties2>;
 
-        // Constructors of Vulkan.PhysicalDeviceProperties2
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2602,7 +2602,7 @@ export namespace Vulkan {
     class FormatProperties2 {
         static $gtype: GObject.GType<FormatProperties2>;
 
-        // Constructors of Vulkan.FormatProperties2
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2610,7 +2610,7 @@ export namespace Vulkan {
     class ImageFormatProperties2 {
         static $gtype: GObject.GType<ImageFormatProperties2>;
 
-        // Constructors of Vulkan.ImageFormatProperties2
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2618,7 +2618,7 @@ export namespace Vulkan {
     class PhysicalDeviceImageFormatInfo2 {
         static $gtype: GObject.GType<PhysicalDeviceImageFormatInfo2>;
 
-        // Constructors of Vulkan.PhysicalDeviceImageFormatInfo2
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2626,7 +2626,7 @@ export namespace Vulkan {
     class QueueFamilyProperties2 {
         static $gtype: GObject.GType<QueueFamilyProperties2>;
 
-        // Constructors of Vulkan.QueueFamilyProperties2
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2634,7 +2634,7 @@ export namespace Vulkan {
     class PhysicalDeviceMemoryProperties2 {
         static $gtype: GObject.GType<PhysicalDeviceMemoryProperties2>;
 
-        // Constructors of Vulkan.PhysicalDeviceMemoryProperties2
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2642,7 +2642,7 @@ export namespace Vulkan {
     class SparseImageFormatProperties2 {
         static $gtype: GObject.GType<SparseImageFormatProperties2>;
 
-        // Constructors of Vulkan.SparseImageFormatProperties2
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2650,7 +2650,7 @@ export namespace Vulkan {
     class PhysicalDeviceSparseImageFormatInfo2 {
         static $gtype: GObject.GType<PhysicalDeviceSparseImageFormatInfo2>;
 
-        // Constructors of Vulkan.PhysicalDeviceSparseImageFormatInfo2
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2658,7 +2658,7 @@ export namespace Vulkan {
     class PhysicalDevicePointClippingProperties {
         static $gtype: GObject.GType<PhysicalDevicePointClippingProperties>;
 
-        // Constructors of Vulkan.PhysicalDevicePointClippingProperties
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2666,7 +2666,7 @@ export namespace Vulkan {
     class InputAttachmentAspectReference {
         static $gtype: GObject.GType<InputAttachmentAspectReference>;
 
-        // Constructors of Vulkan.InputAttachmentAspectReference
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2674,7 +2674,7 @@ export namespace Vulkan {
     class RenderPassInputAttachmentAspectCreateInfo {
         static $gtype: GObject.GType<RenderPassInputAttachmentAspectCreateInfo>;
 
-        // Constructors of Vulkan.RenderPassInputAttachmentAspectCreateInfo
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2682,7 +2682,7 @@ export namespace Vulkan {
     class ImageViewUsageCreateInfo {
         static $gtype: GObject.GType<ImageViewUsageCreateInfo>;
 
-        // Constructors of Vulkan.ImageViewUsageCreateInfo
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2690,7 +2690,7 @@ export namespace Vulkan {
     class PipelineTessellationDomainOriginStateCreateInfo {
         static $gtype: GObject.GType<PipelineTessellationDomainOriginStateCreateInfo>;
 
-        // Constructors of Vulkan.PipelineTessellationDomainOriginStateCreateInfo
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2698,7 +2698,7 @@ export namespace Vulkan {
     class RenderPassMultiviewCreateInfo {
         static $gtype: GObject.GType<RenderPassMultiviewCreateInfo>;
 
-        // Constructors of Vulkan.RenderPassMultiviewCreateInfo
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2706,7 +2706,7 @@ export namespace Vulkan {
     class PhysicalDeviceMultiviewFeatures {
         static $gtype: GObject.GType<PhysicalDeviceMultiviewFeatures>;
 
-        // Constructors of Vulkan.PhysicalDeviceMultiviewFeatures
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2714,7 +2714,7 @@ export namespace Vulkan {
     class PhysicalDeviceMultiviewProperties {
         static $gtype: GObject.GType<PhysicalDeviceMultiviewProperties>;
 
-        // Constructors of Vulkan.PhysicalDeviceMultiviewProperties
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2722,7 +2722,7 @@ export namespace Vulkan {
     class PhysicalDeviceVariablePointersFeatures {
         static $gtype: GObject.GType<PhysicalDeviceVariablePointersFeatures>;
 
-        // Constructors of Vulkan.PhysicalDeviceVariablePointersFeatures
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2730,7 +2730,7 @@ export namespace Vulkan {
     class PhysicalDeviceVariablePointerFeatures {
         static $gtype: GObject.GType<PhysicalDeviceVariablePointerFeatures>;
 
-        // Constructors of Vulkan.PhysicalDeviceVariablePointerFeatures
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2738,7 +2738,7 @@ export namespace Vulkan {
     class PhysicalDeviceProtectedMemoryFeatures {
         static $gtype: GObject.GType<PhysicalDeviceProtectedMemoryFeatures>;
 
-        // Constructors of Vulkan.PhysicalDeviceProtectedMemoryFeatures
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2746,7 +2746,7 @@ export namespace Vulkan {
     class PhysicalDeviceProtectedMemoryProperties {
         static $gtype: GObject.GType<PhysicalDeviceProtectedMemoryProperties>;
 
-        // Constructors of Vulkan.PhysicalDeviceProtectedMemoryProperties
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2754,7 +2754,7 @@ export namespace Vulkan {
     class DeviceQueueInfo2 {
         static $gtype: GObject.GType<DeviceQueueInfo2>;
 
-        // Constructors of Vulkan.DeviceQueueInfo2
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2762,7 +2762,7 @@ export namespace Vulkan {
     class ProtectedSubmitInfo {
         static $gtype: GObject.GType<ProtectedSubmitInfo>;
 
-        // Constructors of Vulkan.ProtectedSubmitInfo
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2770,7 +2770,7 @@ export namespace Vulkan {
     class SamplerYcbcrConversionCreateInfo {
         static $gtype: GObject.GType<SamplerYcbcrConversionCreateInfo>;
 
-        // Constructors of Vulkan.SamplerYcbcrConversionCreateInfo
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2778,7 +2778,7 @@ export namespace Vulkan {
     class SamplerYcbcrConversionInfo {
         static $gtype: GObject.GType<SamplerYcbcrConversionInfo>;
 
-        // Constructors of Vulkan.SamplerYcbcrConversionInfo
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2786,7 +2786,7 @@ export namespace Vulkan {
     class BindImagePlaneMemoryInfo {
         static $gtype: GObject.GType<BindImagePlaneMemoryInfo>;
 
-        // Constructors of Vulkan.BindImagePlaneMemoryInfo
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2794,7 +2794,7 @@ export namespace Vulkan {
     class ImagePlaneMemoryRequirementsInfo {
         static $gtype: GObject.GType<ImagePlaneMemoryRequirementsInfo>;
 
-        // Constructors of Vulkan.ImagePlaneMemoryRequirementsInfo
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2802,7 +2802,7 @@ export namespace Vulkan {
     class PhysicalDeviceSamplerYcbcrConversionFeatures {
         static $gtype: GObject.GType<PhysicalDeviceSamplerYcbcrConversionFeatures>;
 
-        // Constructors of Vulkan.PhysicalDeviceSamplerYcbcrConversionFeatures
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2810,7 +2810,7 @@ export namespace Vulkan {
     class SamplerYcbcrConversionImageFormatProperties {
         static $gtype: GObject.GType<SamplerYcbcrConversionImageFormatProperties>;
 
-        // Constructors of Vulkan.SamplerYcbcrConversionImageFormatProperties
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2818,7 +2818,7 @@ export namespace Vulkan {
     class DescriptorUpdateTemplateEntry {
         static $gtype: GObject.GType<DescriptorUpdateTemplateEntry>;
 
-        // Constructors of Vulkan.DescriptorUpdateTemplateEntry
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2826,7 +2826,7 @@ export namespace Vulkan {
     class DescriptorUpdateTemplateCreateInfo {
         static $gtype: GObject.GType<DescriptorUpdateTemplateCreateInfo>;
 
-        // Constructors of Vulkan.DescriptorUpdateTemplateCreateInfo
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2834,7 +2834,7 @@ export namespace Vulkan {
     class ExternalMemoryProperties {
         static $gtype: GObject.GType<ExternalMemoryProperties>;
 
-        // Constructors of Vulkan.ExternalMemoryProperties
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2842,7 +2842,7 @@ export namespace Vulkan {
     class PhysicalDeviceExternalImageFormatInfo {
         static $gtype: GObject.GType<PhysicalDeviceExternalImageFormatInfo>;
 
-        // Constructors of Vulkan.PhysicalDeviceExternalImageFormatInfo
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2850,7 +2850,7 @@ export namespace Vulkan {
     class ExternalImageFormatProperties {
         static $gtype: GObject.GType<ExternalImageFormatProperties>;
 
-        // Constructors of Vulkan.ExternalImageFormatProperties
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2858,7 +2858,7 @@ export namespace Vulkan {
     class PhysicalDeviceExternalBufferInfo {
         static $gtype: GObject.GType<PhysicalDeviceExternalBufferInfo>;
 
-        // Constructors of Vulkan.PhysicalDeviceExternalBufferInfo
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2866,7 +2866,7 @@ export namespace Vulkan {
     class ExternalBufferProperties {
         static $gtype: GObject.GType<ExternalBufferProperties>;
 
-        // Constructors of Vulkan.ExternalBufferProperties
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2874,7 +2874,7 @@ export namespace Vulkan {
     class PhysicalDeviceIDProperties {
         static $gtype: GObject.GType<PhysicalDeviceIDProperties>;
 
-        // Constructors of Vulkan.PhysicalDeviceIDProperties
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2882,7 +2882,7 @@ export namespace Vulkan {
     class ExternalMemoryImageCreateInfo {
         static $gtype: GObject.GType<ExternalMemoryImageCreateInfo>;
 
-        // Constructors of Vulkan.ExternalMemoryImageCreateInfo
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2890,7 +2890,7 @@ export namespace Vulkan {
     class ExternalMemoryBufferCreateInfo {
         static $gtype: GObject.GType<ExternalMemoryBufferCreateInfo>;
 
-        // Constructors of Vulkan.ExternalMemoryBufferCreateInfo
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2898,7 +2898,7 @@ export namespace Vulkan {
     class ExportMemoryAllocateInfo {
         static $gtype: GObject.GType<ExportMemoryAllocateInfo>;
 
-        // Constructors of Vulkan.ExportMemoryAllocateInfo
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2906,7 +2906,7 @@ export namespace Vulkan {
     class PhysicalDeviceExternalFenceInfo {
         static $gtype: GObject.GType<PhysicalDeviceExternalFenceInfo>;
 
-        // Constructors of Vulkan.PhysicalDeviceExternalFenceInfo
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2914,7 +2914,7 @@ export namespace Vulkan {
     class ExternalFenceProperties {
         static $gtype: GObject.GType<ExternalFenceProperties>;
 
-        // Constructors of Vulkan.ExternalFenceProperties
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2922,7 +2922,7 @@ export namespace Vulkan {
     class ExportFenceCreateInfo {
         static $gtype: GObject.GType<ExportFenceCreateInfo>;
 
-        // Constructors of Vulkan.ExportFenceCreateInfo
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2930,7 +2930,7 @@ export namespace Vulkan {
     class ExportSemaphoreCreateInfo {
         static $gtype: GObject.GType<ExportSemaphoreCreateInfo>;
 
-        // Constructors of Vulkan.ExportSemaphoreCreateInfo
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2938,7 +2938,7 @@ export namespace Vulkan {
     class PhysicalDeviceExternalSemaphoreInfo {
         static $gtype: GObject.GType<PhysicalDeviceExternalSemaphoreInfo>;
 
-        // Constructors of Vulkan.PhysicalDeviceExternalSemaphoreInfo
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2946,7 +2946,7 @@ export namespace Vulkan {
     class ExternalSemaphoreProperties {
         static $gtype: GObject.GType<ExternalSemaphoreProperties>;
 
-        // Constructors of Vulkan.ExternalSemaphoreProperties
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2954,7 +2954,7 @@ export namespace Vulkan {
     class PhysicalDeviceMaintenance3Properties {
         static $gtype: GObject.GType<PhysicalDeviceMaintenance3Properties>;
 
-        // Constructors of Vulkan.PhysicalDeviceMaintenance3Properties
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2962,7 +2962,7 @@ export namespace Vulkan {
     class DescriptorSetLayoutSupport {
         static $gtype: GObject.GType<DescriptorSetLayoutSupport>;
 
-        // Constructors of Vulkan.DescriptorSetLayoutSupport
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2970,7 +2970,7 @@ export namespace Vulkan {
     class PhysicalDeviceShaderDrawParametersFeatures {
         static $gtype: GObject.GType<PhysicalDeviceShaderDrawParametersFeatures>;
 
-        // Constructors of Vulkan.PhysicalDeviceShaderDrawParametersFeatures
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2978,7 +2978,7 @@ export namespace Vulkan {
     class PhysicalDeviceShaderDrawParameterFeatures {
         static $gtype: GObject.GType<PhysicalDeviceShaderDrawParameterFeatures>;
 
-        // Constructors of Vulkan.PhysicalDeviceShaderDrawParameterFeatures
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2986,7 +2986,7 @@ export namespace Vulkan {
     class SurfaceKHR {
         static $gtype: GObject.GType<SurfaceKHR>;
 
-        // Constructors of Vulkan.SurfaceKHR
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2994,7 +2994,7 @@ export namespace Vulkan {
     class ColorSpaceKHR {
         static $gtype: GObject.GType<ColorSpaceKHR>;
 
-        // Constructors of Vulkan.ColorSpaceKHR
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3002,7 +3002,7 @@ export namespace Vulkan {
     class PresentModeKHR {
         static $gtype: GObject.GType<PresentModeKHR>;
 
-        // Constructors of Vulkan.PresentModeKHR
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3010,7 +3010,7 @@ export namespace Vulkan {
     class SurfaceTransformFlagBitsKHR {
         static $gtype: GObject.GType<SurfaceTransformFlagBitsKHR>;
 
-        // Constructors of Vulkan.SurfaceTransformFlagBitsKHR
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3018,7 +3018,7 @@ export namespace Vulkan {
     class SurfaceTransformFlagsKHR {
         static $gtype: GObject.GType<SurfaceTransformFlagsKHR>;
 
-        // Constructors of Vulkan.SurfaceTransformFlagsKHR
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3026,7 +3026,7 @@ export namespace Vulkan {
     class CompositeAlphaFlagBitsKHR {
         static $gtype: GObject.GType<CompositeAlphaFlagBitsKHR>;
 
-        // Constructors of Vulkan.CompositeAlphaFlagBitsKHR
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3034,7 +3034,7 @@ export namespace Vulkan {
     class CompositeAlphaFlagsKHR {
         static $gtype: GObject.GType<CompositeAlphaFlagsKHR>;
 
-        // Constructors of Vulkan.CompositeAlphaFlagsKHR
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3042,7 +3042,7 @@ export namespace Vulkan {
     class SurfaceCapabilitiesKHR {
         static $gtype: GObject.GType<SurfaceCapabilitiesKHR>;
 
-        // Constructors of Vulkan.SurfaceCapabilitiesKHR
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3050,7 +3050,7 @@ export namespace Vulkan {
     class SurfaceFormatKHR {
         static $gtype: GObject.GType<SurfaceFormatKHR>;
 
-        // Constructors of Vulkan.SurfaceFormatKHR
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3058,7 +3058,7 @@ export namespace Vulkan {
     class SwapchainKHR {
         static $gtype: GObject.GType<SwapchainKHR>;
 
-        // Constructors of Vulkan.SwapchainKHR
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3066,7 +3066,7 @@ export namespace Vulkan {
     class SwapchainCreateFlagBitsKHR {
         static $gtype: GObject.GType<SwapchainCreateFlagBitsKHR>;
 
-        // Constructors of Vulkan.SwapchainCreateFlagBitsKHR
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3074,7 +3074,7 @@ export namespace Vulkan {
     class SwapchainCreateFlagsKHR {
         static $gtype: GObject.GType<SwapchainCreateFlagsKHR>;
 
-        // Constructors of Vulkan.SwapchainCreateFlagsKHR
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3082,7 +3082,7 @@ export namespace Vulkan {
     class DeviceGroupPresentModeFlagBitsKHR {
         static $gtype: GObject.GType<DeviceGroupPresentModeFlagBitsKHR>;
 
-        // Constructors of Vulkan.DeviceGroupPresentModeFlagBitsKHR
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3090,7 +3090,7 @@ export namespace Vulkan {
     class DeviceGroupPresentModeFlagsKHR {
         static $gtype: GObject.GType<DeviceGroupPresentModeFlagsKHR>;
 
-        // Constructors of Vulkan.DeviceGroupPresentModeFlagsKHR
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3098,7 +3098,7 @@ export namespace Vulkan {
     class SwapchainCreateInfoKHR {
         static $gtype: GObject.GType<SwapchainCreateInfoKHR>;
 
-        // Constructors of Vulkan.SwapchainCreateInfoKHR
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3106,7 +3106,7 @@ export namespace Vulkan {
     class PresentInfoKHR {
         static $gtype: GObject.GType<PresentInfoKHR>;
 
-        // Constructors of Vulkan.PresentInfoKHR
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3114,7 +3114,7 @@ export namespace Vulkan {
     class ImageSwapchainCreateInfoKHR {
         static $gtype: GObject.GType<ImageSwapchainCreateInfoKHR>;
 
-        // Constructors of Vulkan.ImageSwapchainCreateInfoKHR
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3122,7 +3122,7 @@ export namespace Vulkan {
     class BindImageMemorySwapchainInfoKHR {
         static $gtype: GObject.GType<BindImageMemorySwapchainInfoKHR>;
 
-        // Constructors of Vulkan.BindImageMemorySwapchainInfoKHR
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3130,7 +3130,7 @@ export namespace Vulkan {
     class AcquireNextImageInfoKHR {
         static $gtype: GObject.GType<AcquireNextImageInfoKHR>;
 
-        // Constructors of Vulkan.AcquireNextImageInfoKHR
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3138,7 +3138,7 @@ export namespace Vulkan {
     class DeviceGroupPresentCapabilitiesKHR {
         static $gtype: GObject.GType<DeviceGroupPresentCapabilitiesKHR>;
 
-        // Constructors of Vulkan.DeviceGroupPresentCapabilitiesKHR
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3146,7 +3146,7 @@ export namespace Vulkan {
     class DeviceGroupPresentInfoKHR {
         static $gtype: GObject.GType<DeviceGroupPresentInfoKHR>;
 
-        // Constructors of Vulkan.DeviceGroupPresentInfoKHR
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3154,7 +3154,7 @@ export namespace Vulkan {
     class DeviceGroupSwapchainCreateInfoKHR {
         static $gtype: GObject.GType<DeviceGroupSwapchainCreateInfoKHR>;
 
-        // Constructors of Vulkan.DeviceGroupSwapchainCreateInfoKHR
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3162,7 +3162,7 @@ export namespace Vulkan {
     class DisplayKHR {
         static $gtype: GObject.GType<DisplayKHR>;
 
-        // Constructors of Vulkan.DisplayKHR
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3170,7 +3170,7 @@ export namespace Vulkan {
     class DisplayModeKHR {
         static $gtype: GObject.GType<DisplayModeKHR>;
 
-        // Constructors of Vulkan.DisplayModeKHR
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3178,7 +3178,7 @@ export namespace Vulkan {
     class DisplayPlaneAlphaFlagBitsKHR {
         static $gtype: GObject.GType<DisplayPlaneAlphaFlagBitsKHR>;
 
-        // Constructors of Vulkan.DisplayPlaneAlphaFlagBitsKHR
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3186,7 +3186,7 @@ export namespace Vulkan {
     class DisplayPlaneAlphaFlagsKHR {
         static $gtype: GObject.GType<DisplayPlaneAlphaFlagsKHR>;
 
-        // Constructors of Vulkan.DisplayPlaneAlphaFlagsKHR
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3194,7 +3194,7 @@ export namespace Vulkan {
     class DisplayModeCreateFlagsKHR {
         static $gtype: GObject.GType<DisplayModeCreateFlagsKHR>;
 
-        // Constructors of Vulkan.DisplayModeCreateFlagsKHR
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3202,7 +3202,7 @@ export namespace Vulkan {
     class DisplaySurfaceCreateFlagsKHR {
         static $gtype: GObject.GType<DisplaySurfaceCreateFlagsKHR>;
 
-        // Constructors of Vulkan.DisplaySurfaceCreateFlagsKHR
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3210,7 +3210,7 @@ export namespace Vulkan {
     class DisplayPropertiesKHR {
         static $gtype: GObject.GType<DisplayPropertiesKHR>;
 
-        // Constructors of Vulkan.DisplayPropertiesKHR
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3218,7 +3218,7 @@ export namespace Vulkan {
     class DisplayModeParametersKHR {
         static $gtype: GObject.GType<DisplayModeParametersKHR>;
 
-        // Constructors of Vulkan.DisplayModeParametersKHR
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3226,7 +3226,7 @@ export namespace Vulkan {
     class DisplayModePropertiesKHR {
         static $gtype: GObject.GType<DisplayModePropertiesKHR>;
 
-        // Constructors of Vulkan.DisplayModePropertiesKHR
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3234,7 +3234,7 @@ export namespace Vulkan {
     class DisplayModeCreateInfoKHR {
         static $gtype: GObject.GType<DisplayModeCreateInfoKHR>;
 
-        // Constructors of Vulkan.DisplayModeCreateInfoKHR
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3242,7 +3242,7 @@ export namespace Vulkan {
     class DisplayPlaneCapabilitiesKHR {
         static $gtype: GObject.GType<DisplayPlaneCapabilitiesKHR>;
 
-        // Constructors of Vulkan.DisplayPlaneCapabilitiesKHR
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3250,7 +3250,7 @@ export namespace Vulkan {
     class DisplayPlanePropertiesKHR {
         static $gtype: GObject.GType<DisplayPlanePropertiesKHR>;
 
-        // Constructors of Vulkan.DisplayPlanePropertiesKHR
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3258,7 +3258,7 @@ export namespace Vulkan {
     class DisplaySurfaceCreateInfoKHR {
         static $gtype: GObject.GType<DisplaySurfaceCreateInfoKHR>;
 
-        // Constructors of Vulkan.DisplaySurfaceCreateInfoKHR
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3266,7 +3266,7 @@ export namespace Vulkan {
     class DisplayPresentInfoKHR {
         static $gtype: GObject.GType<DisplayPresentInfoKHR>;
 
-        // Constructors of Vulkan.DisplayPresentInfoKHR
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3274,7 +3274,7 @@ export namespace Vulkan {
     class RenderPassMultiviewCreateInfoKHR {
         static $gtype: GObject.GType<RenderPassMultiviewCreateInfoKHR>;
 
-        // Constructors of Vulkan.RenderPassMultiviewCreateInfoKHR
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3282,7 +3282,7 @@ export namespace Vulkan {
     class PhysicalDeviceMultiviewFeaturesKHR {
         static $gtype: GObject.GType<PhysicalDeviceMultiviewFeaturesKHR>;
 
-        // Constructors of Vulkan.PhysicalDeviceMultiviewFeaturesKHR
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3290,7 +3290,7 @@ export namespace Vulkan {
     class PhysicalDeviceMultiviewPropertiesKHR {
         static $gtype: GObject.GType<PhysicalDeviceMultiviewPropertiesKHR>;
 
-        // Constructors of Vulkan.PhysicalDeviceMultiviewPropertiesKHR
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3298,7 +3298,7 @@ export namespace Vulkan {
     class PhysicalDeviceFeatures2KHR {
         static $gtype: GObject.GType<PhysicalDeviceFeatures2KHR>;
 
-        // Constructors of Vulkan.PhysicalDeviceFeatures2KHR
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3306,7 +3306,7 @@ export namespace Vulkan {
     class PhysicalDeviceProperties2KHR {
         static $gtype: GObject.GType<PhysicalDeviceProperties2KHR>;
 
-        // Constructors of Vulkan.PhysicalDeviceProperties2KHR
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3314,7 +3314,7 @@ export namespace Vulkan {
     class FormatProperties2KHR {
         static $gtype: GObject.GType<FormatProperties2KHR>;
 
-        // Constructors of Vulkan.FormatProperties2KHR
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3322,7 +3322,7 @@ export namespace Vulkan {
     class ImageFormatProperties2KHR {
         static $gtype: GObject.GType<ImageFormatProperties2KHR>;
 
-        // Constructors of Vulkan.ImageFormatProperties2KHR
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3330,7 +3330,7 @@ export namespace Vulkan {
     class PhysicalDeviceImageFormatInfo2KHR {
         static $gtype: GObject.GType<PhysicalDeviceImageFormatInfo2KHR>;
 
-        // Constructors of Vulkan.PhysicalDeviceImageFormatInfo2KHR
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3338,7 +3338,7 @@ export namespace Vulkan {
     class QueueFamilyProperties2KHR {
         static $gtype: GObject.GType<QueueFamilyProperties2KHR>;
 
-        // Constructors of Vulkan.QueueFamilyProperties2KHR
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3346,7 +3346,7 @@ export namespace Vulkan {
     class PhysicalDeviceMemoryProperties2KHR {
         static $gtype: GObject.GType<PhysicalDeviceMemoryProperties2KHR>;
 
-        // Constructors of Vulkan.PhysicalDeviceMemoryProperties2KHR
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3354,7 +3354,7 @@ export namespace Vulkan {
     class SparseImageFormatProperties2KHR {
         static $gtype: GObject.GType<SparseImageFormatProperties2KHR>;
 
-        // Constructors of Vulkan.SparseImageFormatProperties2KHR
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3362,7 +3362,7 @@ export namespace Vulkan {
     class PhysicalDeviceSparseImageFormatInfo2KHR {
         static $gtype: GObject.GType<PhysicalDeviceSparseImageFormatInfo2KHR>;
 
-        // Constructors of Vulkan.PhysicalDeviceSparseImageFormatInfo2KHR
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3370,7 +3370,7 @@ export namespace Vulkan {
     class PeerMemoryFeatureFlagsKHR {
         static $gtype: GObject.GType<PeerMemoryFeatureFlagsKHR>;
 
-        // Constructors of Vulkan.PeerMemoryFeatureFlagsKHR
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3378,7 +3378,7 @@ export namespace Vulkan {
     class PeerMemoryFeatureFlagBitsKHR {
         static $gtype: GObject.GType<PeerMemoryFeatureFlagBitsKHR>;
 
-        // Constructors of Vulkan.PeerMemoryFeatureFlagBitsKHR
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3386,7 +3386,7 @@ export namespace Vulkan {
     class MemoryAllocateFlagsKHR {
         static $gtype: GObject.GType<MemoryAllocateFlagsKHR>;
 
-        // Constructors of Vulkan.MemoryAllocateFlagsKHR
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3394,7 +3394,7 @@ export namespace Vulkan {
     class MemoryAllocateFlagBitsKHR {
         static $gtype: GObject.GType<MemoryAllocateFlagBitsKHR>;
 
-        // Constructors of Vulkan.MemoryAllocateFlagBitsKHR
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3402,7 +3402,7 @@ export namespace Vulkan {
     class MemoryAllocateFlagsInfoKHR {
         static $gtype: GObject.GType<MemoryAllocateFlagsInfoKHR>;
 
-        // Constructors of Vulkan.MemoryAllocateFlagsInfoKHR
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3410,7 +3410,7 @@ export namespace Vulkan {
     class DeviceGroupRenderPassBeginInfoKHR {
         static $gtype: GObject.GType<DeviceGroupRenderPassBeginInfoKHR>;
 
-        // Constructors of Vulkan.DeviceGroupRenderPassBeginInfoKHR
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3418,7 +3418,7 @@ export namespace Vulkan {
     class DeviceGroupCommandBufferBeginInfoKHR {
         static $gtype: GObject.GType<DeviceGroupCommandBufferBeginInfoKHR>;
 
-        // Constructors of Vulkan.DeviceGroupCommandBufferBeginInfoKHR
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3426,7 +3426,7 @@ export namespace Vulkan {
     class DeviceGroupSubmitInfoKHR {
         static $gtype: GObject.GType<DeviceGroupSubmitInfoKHR>;
 
-        // Constructors of Vulkan.DeviceGroupSubmitInfoKHR
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3434,7 +3434,7 @@ export namespace Vulkan {
     class DeviceGroupBindSparseInfoKHR {
         static $gtype: GObject.GType<DeviceGroupBindSparseInfoKHR>;
 
-        // Constructors of Vulkan.DeviceGroupBindSparseInfoKHR
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3442,7 +3442,7 @@ export namespace Vulkan {
     class BindBufferMemoryDeviceGroupInfoKHR {
         static $gtype: GObject.GType<BindBufferMemoryDeviceGroupInfoKHR>;
 
-        // Constructors of Vulkan.BindBufferMemoryDeviceGroupInfoKHR
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3450,7 +3450,7 @@ export namespace Vulkan {
     class BindImageMemoryDeviceGroupInfoKHR {
         static $gtype: GObject.GType<BindImageMemoryDeviceGroupInfoKHR>;
 
-        // Constructors of Vulkan.BindImageMemoryDeviceGroupInfoKHR
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3458,7 +3458,7 @@ export namespace Vulkan {
     class CommandPoolTrimFlagsKHR {
         static $gtype: GObject.GType<CommandPoolTrimFlagsKHR>;
 
-        // Constructors of Vulkan.CommandPoolTrimFlagsKHR
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3466,7 +3466,7 @@ export namespace Vulkan {
     class PhysicalDeviceGroupPropertiesKHR {
         static $gtype: GObject.GType<PhysicalDeviceGroupPropertiesKHR>;
 
-        // Constructors of Vulkan.PhysicalDeviceGroupPropertiesKHR
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3474,7 +3474,7 @@ export namespace Vulkan {
     class DeviceGroupDeviceCreateInfoKHR {
         static $gtype: GObject.GType<DeviceGroupDeviceCreateInfoKHR>;
 
-        // Constructors of Vulkan.DeviceGroupDeviceCreateInfoKHR
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3482,7 +3482,7 @@ export namespace Vulkan {
     class ExternalMemoryHandleTypeFlagsKHR {
         static $gtype: GObject.GType<ExternalMemoryHandleTypeFlagsKHR>;
 
-        // Constructors of Vulkan.ExternalMemoryHandleTypeFlagsKHR
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3490,7 +3490,7 @@ export namespace Vulkan {
     class ExternalMemoryHandleTypeFlagBitsKHR {
         static $gtype: GObject.GType<ExternalMemoryHandleTypeFlagBitsKHR>;
 
-        // Constructors of Vulkan.ExternalMemoryHandleTypeFlagBitsKHR
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3498,7 +3498,7 @@ export namespace Vulkan {
     class ExternalMemoryFeatureFlagsKHR {
         static $gtype: GObject.GType<ExternalMemoryFeatureFlagsKHR>;
 
-        // Constructors of Vulkan.ExternalMemoryFeatureFlagsKHR
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3506,7 +3506,7 @@ export namespace Vulkan {
     class ExternalMemoryFeatureFlagBitsKHR {
         static $gtype: GObject.GType<ExternalMemoryFeatureFlagBitsKHR>;
 
-        // Constructors of Vulkan.ExternalMemoryFeatureFlagBitsKHR
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3514,7 +3514,7 @@ export namespace Vulkan {
     class ExternalMemoryPropertiesKHR {
         static $gtype: GObject.GType<ExternalMemoryPropertiesKHR>;
 
-        // Constructors of Vulkan.ExternalMemoryPropertiesKHR
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3522,7 +3522,7 @@ export namespace Vulkan {
     class PhysicalDeviceExternalImageFormatInfoKHR {
         static $gtype: GObject.GType<PhysicalDeviceExternalImageFormatInfoKHR>;
 
-        // Constructors of Vulkan.PhysicalDeviceExternalImageFormatInfoKHR
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3530,7 +3530,7 @@ export namespace Vulkan {
     class ExternalImageFormatPropertiesKHR {
         static $gtype: GObject.GType<ExternalImageFormatPropertiesKHR>;
 
-        // Constructors of Vulkan.ExternalImageFormatPropertiesKHR
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3538,7 +3538,7 @@ export namespace Vulkan {
     class PhysicalDeviceExternalBufferInfoKHR {
         static $gtype: GObject.GType<PhysicalDeviceExternalBufferInfoKHR>;
 
-        // Constructors of Vulkan.PhysicalDeviceExternalBufferInfoKHR
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3546,7 +3546,7 @@ export namespace Vulkan {
     class ExternalBufferPropertiesKHR {
         static $gtype: GObject.GType<ExternalBufferPropertiesKHR>;
 
-        // Constructors of Vulkan.ExternalBufferPropertiesKHR
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3554,7 +3554,7 @@ export namespace Vulkan {
     class PhysicalDeviceIDPropertiesKHR {
         static $gtype: GObject.GType<PhysicalDeviceIDPropertiesKHR>;
 
-        // Constructors of Vulkan.PhysicalDeviceIDPropertiesKHR
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3562,7 +3562,7 @@ export namespace Vulkan {
     class ExternalMemoryImageCreateInfoKHR {
         static $gtype: GObject.GType<ExternalMemoryImageCreateInfoKHR>;
 
-        // Constructors of Vulkan.ExternalMemoryImageCreateInfoKHR
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3570,7 +3570,7 @@ export namespace Vulkan {
     class ExternalMemoryBufferCreateInfoKHR {
         static $gtype: GObject.GType<ExternalMemoryBufferCreateInfoKHR>;
 
-        // Constructors of Vulkan.ExternalMemoryBufferCreateInfoKHR
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3578,7 +3578,7 @@ export namespace Vulkan {
     class ExportMemoryAllocateInfoKHR {
         static $gtype: GObject.GType<ExportMemoryAllocateInfoKHR>;
 
-        // Constructors of Vulkan.ExportMemoryAllocateInfoKHR
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3586,7 +3586,7 @@ export namespace Vulkan {
     class ImportMemoryFdInfoKHR {
         static $gtype: GObject.GType<ImportMemoryFdInfoKHR>;
 
-        // Constructors of Vulkan.ImportMemoryFdInfoKHR
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3594,7 +3594,7 @@ export namespace Vulkan {
     class MemoryFdPropertiesKHR {
         static $gtype: GObject.GType<MemoryFdPropertiesKHR>;
 
-        // Constructors of Vulkan.MemoryFdPropertiesKHR
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3602,7 +3602,7 @@ export namespace Vulkan {
     class MemoryGetFdInfoKHR {
         static $gtype: GObject.GType<MemoryGetFdInfoKHR>;
 
-        // Constructors of Vulkan.MemoryGetFdInfoKHR
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3610,7 +3610,7 @@ export namespace Vulkan {
     class ExternalSemaphoreHandleTypeFlagsKHR {
         static $gtype: GObject.GType<ExternalSemaphoreHandleTypeFlagsKHR>;
 
-        // Constructors of Vulkan.ExternalSemaphoreHandleTypeFlagsKHR
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3618,7 +3618,7 @@ export namespace Vulkan {
     class ExternalSemaphoreHandleTypeFlagBitsKHR {
         static $gtype: GObject.GType<ExternalSemaphoreHandleTypeFlagBitsKHR>;
 
-        // Constructors of Vulkan.ExternalSemaphoreHandleTypeFlagBitsKHR
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3626,7 +3626,7 @@ export namespace Vulkan {
     class ExternalSemaphoreFeatureFlagsKHR {
         static $gtype: GObject.GType<ExternalSemaphoreFeatureFlagsKHR>;
 
-        // Constructors of Vulkan.ExternalSemaphoreFeatureFlagsKHR
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3634,7 +3634,7 @@ export namespace Vulkan {
     class ExternalSemaphoreFeatureFlagBitsKHR {
         static $gtype: GObject.GType<ExternalSemaphoreFeatureFlagBitsKHR>;
 
-        // Constructors of Vulkan.ExternalSemaphoreFeatureFlagBitsKHR
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3642,7 +3642,7 @@ export namespace Vulkan {
     class PhysicalDeviceExternalSemaphoreInfoKHR {
         static $gtype: GObject.GType<PhysicalDeviceExternalSemaphoreInfoKHR>;
 
-        // Constructors of Vulkan.PhysicalDeviceExternalSemaphoreInfoKHR
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3650,7 +3650,7 @@ export namespace Vulkan {
     class ExternalSemaphorePropertiesKHR {
         static $gtype: GObject.GType<ExternalSemaphorePropertiesKHR>;
 
-        // Constructors of Vulkan.ExternalSemaphorePropertiesKHR
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3658,7 +3658,7 @@ export namespace Vulkan {
     class SemaphoreImportFlagsKHR {
         static $gtype: GObject.GType<SemaphoreImportFlagsKHR>;
 
-        // Constructors of Vulkan.SemaphoreImportFlagsKHR
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3666,7 +3666,7 @@ export namespace Vulkan {
     class SemaphoreImportFlagBitsKHR {
         static $gtype: GObject.GType<SemaphoreImportFlagBitsKHR>;
 
-        // Constructors of Vulkan.SemaphoreImportFlagBitsKHR
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3674,7 +3674,7 @@ export namespace Vulkan {
     class ExportSemaphoreCreateInfoKHR {
         static $gtype: GObject.GType<ExportSemaphoreCreateInfoKHR>;
 
-        // Constructors of Vulkan.ExportSemaphoreCreateInfoKHR
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3682,7 +3682,7 @@ export namespace Vulkan {
     class ImportSemaphoreFdInfoKHR {
         static $gtype: GObject.GType<ImportSemaphoreFdInfoKHR>;
 
-        // Constructors of Vulkan.ImportSemaphoreFdInfoKHR
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3690,7 +3690,7 @@ export namespace Vulkan {
     class SemaphoreGetFdInfoKHR {
         static $gtype: GObject.GType<SemaphoreGetFdInfoKHR>;
 
-        // Constructors of Vulkan.SemaphoreGetFdInfoKHR
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3698,7 +3698,7 @@ export namespace Vulkan {
     class PhysicalDevicePushDescriptorPropertiesKHR {
         static $gtype: GObject.GType<PhysicalDevicePushDescriptorPropertiesKHR>;
 
-        // Constructors of Vulkan.PhysicalDevicePushDescriptorPropertiesKHR
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3706,7 +3706,7 @@ export namespace Vulkan {
     class PhysicalDeviceFloat16Int8FeaturesKHR {
         static $gtype: GObject.GType<PhysicalDeviceFloat16Int8FeaturesKHR>;
 
-        // Constructors of Vulkan.PhysicalDeviceFloat16Int8FeaturesKHR
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3714,7 +3714,7 @@ export namespace Vulkan {
     class PhysicalDevice16BitStorageFeaturesKHR {
         static $gtype: GObject.GType<PhysicalDevice16BitStorageFeaturesKHR>;
 
-        // Constructors of Vulkan.PhysicalDevice16BitStorageFeaturesKHR
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3722,7 +3722,7 @@ export namespace Vulkan {
     class RectLayerKHR {
         static $gtype: GObject.GType<RectLayerKHR>;
 
-        // Constructors of Vulkan.RectLayerKHR
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3730,7 +3730,7 @@ export namespace Vulkan {
     class PresentRegionKHR {
         static $gtype: GObject.GType<PresentRegionKHR>;
 
-        // Constructors of Vulkan.PresentRegionKHR
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3738,7 +3738,7 @@ export namespace Vulkan {
     class PresentRegionsKHR {
         static $gtype: GObject.GType<PresentRegionsKHR>;
 
-        // Constructors of Vulkan.PresentRegionsKHR
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3746,7 +3746,7 @@ export namespace Vulkan {
     class DescriptorUpdateTemplateKHR {
         static $gtype: GObject.GType<DescriptorUpdateTemplateKHR>;
 
-        // Constructors of Vulkan.DescriptorUpdateTemplateKHR
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3754,7 +3754,7 @@ export namespace Vulkan {
     class DescriptorUpdateTemplateTypeKHR {
         static $gtype: GObject.GType<DescriptorUpdateTemplateTypeKHR>;
 
-        // Constructors of Vulkan.DescriptorUpdateTemplateTypeKHR
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3762,7 +3762,7 @@ export namespace Vulkan {
     class DescriptorUpdateTemplateCreateFlagsKHR {
         static $gtype: GObject.GType<DescriptorUpdateTemplateCreateFlagsKHR>;
 
-        // Constructors of Vulkan.DescriptorUpdateTemplateCreateFlagsKHR
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3770,7 +3770,7 @@ export namespace Vulkan {
     class DescriptorUpdateTemplateEntryKHR {
         static $gtype: GObject.GType<DescriptorUpdateTemplateEntryKHR>;
 
-        // Constructors of Vulkan.DescriptorUpdateTemplateEntryKHR
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3778,7 +3778,7 @@ export namespace Vulkan {
     class DescriptorUpdateTemplateCreateInfoKHR {
         static $gtype: GObject.GType<DescriptorUpdateTemplateCreateInfoKHR>;
 
-        // Constructors of Vulkan.DescriptorUpdateTemplateCreateInfoKHR
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3786,7 +3786,7 @@ export namespace Vulkan {
     class AttachmentDescription2KHR {
         static $gtype: GObject.GType<AttachmentDescription2KHR>;
 
-        // Constructors of Vulkan.AttachmentDescription2KHR
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3794,7 +3794,7 @@ export namespace Vulkan {
     class AttachmentReference2KHR {
         static $gtype: GObject.GType<AttachmentReference2KHR>;
 
-        // Constructors of Vulkan.AttachmentReference2KHR
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3802,7 +3802,7 @@ export namespace Vulkan {
     class SubpassDescription2KHR {
         static $gtype: GObject.GType<SubpassDescription2KHR>;
 
-        // Constructors of Vulkan.SubpassDescription2KHR
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3810,7 +3810,7 @@ export namespace Vulkan {
     class SubpassDependency2KHR {
         static $gtype: GObject.GType<SubpassDependency2KHR>;
 
-        // Constructors of Vulkan.SubpassDependency2KHR
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3818,7 +3818,7 @@ export namespace Vulkan {
     class RenderPassCreateInfo2KHR {
         static $gtype: GObject.GType<RenderPassCreateInfo2KHR>;
 
-        // Constructors of Vulkan.RenderPassCreateInfo2KHR
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3826,7 +3826,7 @@ export namespace Vulkan {
     class SubpassBeginInfoKHR {
         static $gtype: GObject.GType<SubpassBeginInfoKHR>;
 
-        // Constructors of Vulkan.SubpassBeginInfoKHR
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3834,7 +3834,7 @@ export namespace Vulkan {
     class SubpassEndInfoKHR {
         static $gtype: GObject.GType<SubpassEndInfoKHR>;
 
-        // Constructors of Vulkan.SubpassEndInfoKHR
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3842,7 +3842,7 @@ export namespace Vulkan {
     class SharedPresentSurfaceCapabilitiesKHR {
         static $gtype: GObject.GType<SharedPresentSurfaceCapabilitiesKHR>;
 
-        // Constructors of Vulkan.SharedPresentSurfaceCapabilitiesKHR
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3850,7 +3850,7 @@ export namespace Vulkan {
     class ExternalFenceHandleTypeFlagsKHR {
         static $gtype: GObject.GType<ExternalFenceHandleTypeFlagsKHR>;
 
-        // Constructors of Vulkan.ExternalFenceHandleTypeFlagsKHR
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3858,7 +3858,7 @@ export namespace Vulkan {
     class ExternalFenceHandleTypeFlagBitsKHR {
         static $gtype: GObject.GType<ExternalFenceHandleTypeFlagBitsKHR>;
 
-        // Constructors of Vulkan.ExternalFenceHandleTypeFlagBitsKHR
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3866,7 +3866,7 @@ export namespace Vulkan {
     class ExternalFenceFeatureFlagsKHR {
         static $gtype: GObject.GType<ExternalFenceFeatureFlagsKHR>;
 
-        // Constructors of Vulkan.ExternalFenceFeatureFlagsKHR
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3874,7 +3874,7 @@ export namespace Vulkan {
     class ExternalFenceFeatureFlagBitsKHR {
         static $gtype: GObject.GType<ExternalFenceFeatureFlagBitsKHR>;
 
-        // Constructors of Vulkan.ExternalFenceFeatureFlagBitsKHR
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3882,7 +3882,7 @@ export namespace Vulkan {
     class PhysicalDeviceExternalFenceInfoKHR {
         static $gtype: GObject.GType<PhysicalDeviceExternalFenceInfoKHR>;
 
-        // Constructors of Vulkan.PhysicalDeviceExternalFenceInfoKHR
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3890,7 +3890,7 @@ export namespace Vulkan {
     class ExternalFencePropertiesKHR {
         static $gtype: GObject.GType<ExternalFencePropertiesKHR>;
 
-        // Constructors of Vulkan.ExternalFencePropertiesKHR
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3898,7 +3898,7 @@ export namespace Vulkan {
     class FenceImportFlagsKHR {
         static $gtype: GObject.GType<FenceImportFlagsKHR>;
 
-        // Constructors of Vulkan.FenceImportFlagsKHR
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3906,7 +3906,7 @@ export namespace Vulkan {
     class FenceImportFlagBitsKHR {
         static $gtype: GObject.GType<FenceImportFlagBitsKHR>;
 
-        // Constructors of Vulkan.FenceImportFlagBitsKHR
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3914,7 +3914,7 @@ export namespace Vulkan {
     class ExportFenceCreateInfoKHR {
         static $gtype: GObject.GType<ExportFenceCreateInfoKHR>;
 
-        // Constructors of Vulkan.ExportFenceCreateInfoKHR
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3922,7 +3922,7 @@ export namespace Vulkan {
     class ImportFenceFdInfoKHR {
         static $gtype: GObject.GType<ImportFenceFdInfoKHR>;
 
-        // Constructors of Vulkan.ImportFenceFdInfoKHR
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3930,7 +3930,7 @@ export namespace Vulkan {
     class FenceGetFdInfoKHR {
         static $gtype: GObject.GType<FenceGetFdInfoKHR>;
 
-        // Constructors of Vulkan.FenceGetFdInfoKHR
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3938,7 +3938,7 @@ export namespace Vulkan {
     class PointClippingBehaviorKHR {
         static $gtype: GObject.GType<PointClippingBehaviorKHR>;
 
-        // Constructors of Vulkan.PointClippingBehaviorKHR
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3946,7 +3946,7 @@ export namespace Vulkan {
     class TessellationDomainOriginKHR {
         static $gtype: GObject.GType<TessellationDomainOriginKHR>;
 
-        // Constructors of Vulkan.TessellationDomainOriginKHR
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3954,7 +3954,7 @@ export namespace Vulkan {
     class PhysicalDevicePointClippingPropertiesKHR {
         static $gtype: GObject.GType<PhysicalDevicePointClippingPropertiesKHR>;
 
-        // Constructors of Vulkan.PhysicalDevicePointClippingPropertiesKHR
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3962,7 +3962,7 @@ export namespace Vulkan {
     class RenderPassInputAttachmentAspectCreateInfoKHR {
         static $gtype: GObject.GType<RenderPassInputAttachmentAspectCreateInfoKHR>;
 
-        // Constructors of Vulkan.RenderPassInputAttachmentAspectCreateInfoKHR
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3970,7 +3970,7 @@ export namespace Vulkan {
     class InputAttachmentAspectReferenceKHR {
         static $gtype: GObject.GType<InputAttachmentAspectReferenceKHR>;
 
-        // Constructors of Vulkan.InputAttachmentAspectReferenceKHR
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3978,7 +3978,7 @@ export namespace Vulkan {
     class ImageViewUsageCreateInfoKHR {
         static $gtype: GObject.GType<ImageViewUsageCreateInfoKHR>;
 
-        // Constructors of Vulkan.ImageViewUsageCreateInfoKHR
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3986,7 +3986,7 @@ export namespace Vulkan {
     class PipelineTessellationDomainOriginStateCreateInfoKHR {
         static $gtype: GObject.GType<PipelineTessellationDomainOriginStateCreateInfoKHR>;
 
-        // Constructors of Vulkan.PipelineTessellationDomainOriginStateCreateInfoKHR
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3994,7 +3994,7 @@ export namespace Vulkan {
     class PhysicalDeviceSurfaceInfo2KHR {
         static $gtype: GObject.GType<PhysicalDeviceSurfaceInfo2KHR>;
 
-        // Constructors of Vulkan.PhysicalDeviceSurfaceInfo2KHR
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4002,7 +4002,7 @@ export namespace Vulkan {
     class SurfaceCapabilities2KHR {
         static $gtype: GObject.GType<SurfaceCapabilities2KHR>;
 
-        // Constructors of Vulkan.SurfaceCapabilities2KHR
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4010,7 +4010,7 @@ export namespace Vulkan {
     class SurfaceFormat2KHR {
         static $gtype: GObject.GType<SurfaceFormat2KHR>;
 
-        // Constructors of Vulkan.SurfaceFormat2KHR
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4018,7 +4018,7 @@ export namespace Vulkan {
     class PhysicalDeviceVariablePointerFeaturesKHR {
         static $gtype: GObject.GType<PhysicalDeviceVariablePointerFeaturesKHR>;
 
-        // Constructors of Vulkan.PhysicalDeviceVariablePointerFeaturesKHR
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4026,7 +4026,7 @@ export namespace Vulkan {
     class PhysicalDeviceVariablePointersFeaturesKHR {
         static $gtype: GObject.GType<PhysicalDeviceVariablePointersFeaturesKHR>;
 
-        // Constructors of Vulkan.PhysicalDeviceVariablePointersFeaturesKHR
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4034,7 +4034,7 @@ export namespace Vulkan {
     class DisplayProperties2KHR {
         static $gtype: GObject.GType<DisplayProperties2KHR>;
 
-        // Constructors of Vulkan.DisplayProperties2KHR
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4042,7 +4042,7 @@ export namespace Vulkan {
     class DisplayPlaneProperties2KHR {
         static $gtype: GObject.GType<DisplayPlaneProperties2KHR>;
 
-        // Constructors of Vulkan.DisplayPlaneProperties2KHR
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4050,7 +4050,7 @@ export namespace Vulkan {
     class DisplayModeProperties2KHR {
         static $gtype: GObject.GType<DisplayModeProperties2KHR>;
 
-        // Constructors of Vulkan.DisplayModeProperties2KHR
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4058,7 +4058,7 @@ export namespace Vulkan {
     class DisplayPlaneInfo2KHR {
         static $gtype: GObject.GType<DisplayPlaneInfo2KHR>;
 
-        // Constructors of Vulkan.DisplayPlaneInfo2KHR
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4066,7 +4066,7 @@ export namespace Vulkan {
     class DisplayPlaneCapabilities2KHR {
         static $gtype: GObject.GType<DisplayPlaneCapabilities2KHR>;
 
-        // Constructors of Vulkan.DisplayPlaneCapabilities2KHR
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4074,7 +4074,7 @@ export namespace Vulkan {
     class MemoryDedicatedRequirementsKHR {
         static $gtype: GObject.GType<MemoryDedicatedRequirementsKHR>;
 
-        // Constructors of Vulkan.MemoryDedicatedRequirementsKHR
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4082,7 +4082,7 @@ export namespace Vulkan {
     class MemoryDedicatedAllocateInfoKHR {
         static $gtype: GObject.GType<MemoryDedicatedAllocateInfoKHR>;
 
-        // Constructors of Vulkan.MemoryDedicatedAllocateInfoKHR
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4090,7 +4090,7 @@ export namespace Vulkan {
     class BufferMemoryRequirementsInfo2KHR {
         static $gtype: GObject.GType<BufferMemoryRequirementsInfo2KHR>;
 
-        // Constructors of Vulkan.BufferMemoryRequirementsInfo2KHR
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4098,7 +4098,7 @@ export namespace Vulkan {
     class ImageMemoryRequirementsInfo2KHR {
         static $gtype: GObject.GType<ImageMemoryRequirementsInfo2KHR>;
 
-        // Constructors of Vulkan.ImageMemoryRequirementsInfo2KHR
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4106,7 +4106,7 @@ export namespace Vulkan {
     class ImageSparseMemoryRequirementsInfo2KHR {
         static $gtype: GObject.GType<ImageSparseMemoryRequirementsInfo2KHR>;
 
-        // Constructors of Vulkan.ImageSparseMemoryRequirementsInfo2KHR
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4114,7 +4114,7 @@ export namespace Vulkan {
     class SparseImageMemoryRequirements2KHR {
         static $gtype: GObject.GType<SparseImageMemoryRequirements2KHR>;
 
-        // Constructors of Vulkan.SparseImageMemoryRequirements2KHR
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4122,7 +4122,7 @@ export namespace Vulkan {
     class ImageFormatListCreateInfoKHR {
         static $gtype: GObject.GType<ImageFormatListCreateInfoKHR>;
 
-        // Constructors of Vulkan.ImageFormatListCreateInfoKHR
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4130,7 +4130,7 @@ export namespace Vulkan {
     class SamplerYcbcrConversionKHR {
         static $gtype: GObject.GType<SamplerYcbcrConversionKHR>;
 
-        // Constructors of Vulkan.SamplerYcbcrConversionKHR
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4138,7 +4138,7 @@ export namespace Vulkan {
     class SamplerYcbcrModelConversionKHR {
         static $gtype: GObject.GType<SamplerYcbcrModelConversionKHR>;
 
-        // Constructors of Vulkan.SamplerYcbcrModelConversionKHR
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4146,7 +4146,7 @@ export namespace Vulkan {
     class SamplerYcbcrRangeKHR {
         static $gtype: GObject.GType<SamplerYcbcrRangeKHR>;
 
-        // Constructors of Vulkan.SamplerYcbcrRangeKHR
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4154,7 +4154,7 @@ export namespace Vulkan {
     class ChromaLocationKHR {
         static $gtype: GObject.GType<ChromaLocationKHR>;
 
-        // Constructors of Vulkan.ChromaLocationKHR
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4162,7 +4162,7 @@ export namespace Vulkan {
     class SamplerYcbcrConversionCreateInfoKHR {
         static $gtype: GObject.GType<SamplerYcbcrConversionCreateInfoKHR>;
 
-        // Constructors of Vulkan.SamplerYcbcrConversionCreateInfoKHR
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4170,7 +4170,7 @@ export namespace Vulkan {
     class SamplerYcbcrConversionInfoKHR {
         static $gtype: GObject.GType<SamplerYcbcrConversionInfoKHR>;
 
-        // Constructors of Vulkan.SamplerYcbcrConversionInfoKHR
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4178,7 +4178,7 @@ export namespace Vulkan {
     class BindImagePlaneMemoryInfoKHR {
         static $gtype: GObject.GType<BindImagePlaneMemoryInfoKHR>;
 
-        // Constructors of Vulkan.BindImagePlaneMemoryInfoKHR
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4186,7 +4186,7 @@ export namespace Vulkan {
     class ImagePlaneMemoryRequirementsInfoKHR {
         static $gtype: GObject.GType<ImagePlaneMemoryRequirementsInfoKHR>;
 
-        // Constructors of Vulkan.ImagePlaneMemoryRequirementsInfoKHR
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4194,7 +4194,7 @@ export namespace Vulkan {
     class PhysicalDeviceSamplerYcbcrConversionFeaturesKHR {
         static $gtype: GObject.GType<PhysicalDeviceSamplerYcbcrConversionFeaturesKHR>;
 
-        // Constructors of Vulkan.PhysicalDeviceSamplerYcbcrConversionFeaturesKHR
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4202,7 +4202,7 @@ export namespace Vulkan {
     class SamplerYcbcrConversionImageFormatPropertiesKHR {
         static $gtype: GObject.GType<SamplerYcbcrConversionImageFormatPropertiesKHR>;
 
-        // Constructors of Vulkan.SamplerYcbcrConversionImageFormatPropertiesKHR
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4210,7 +4210,7 @@ export namespace Vulkan {
     class BindBufferMemoryInfoKHR {
         static $gtype: GObject.GType<BindBufferMemoryInfoKHR>;
 
-        // Constructors of Vulkan.BindBufferMemoryInfoKHR
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4218,7 +4218,7 @@ export namespace Vulkan {
     class BindImageMemoryInfoKHR {
         static $gtype: GObject.GType<BindImageMemoryInfoKHR>;
 
-        // Constructors of Vulkan.BindImageMemoryInfoKHR
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4226,7 +4226,7 @@ export namespace Vulkan {
     class PhysicalDeviceMaintenance3PropertiesKHR {
         static $gtype: GObject.GType<PhysicalDeviceMaintenance3PropertiesKHR>;
 
-        // Constructors of Vulkan.PhysicalDeviceMaintenance3PropertiesKHR
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4234,7 +4234,7 @@ export namespace Vulkan {
     class DescriptorSetLayoutSupportKHR {
         static $gtype: GObject.GType<DescriptorSetLayoutSupportKHR>;
 
-        // Constructors of Vulkan.DescriptorSetLayoutSupportKHR
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4242,7 +4242,7 @@ export namespace Vulkan {
     class PhysicalDevice8BitStorageFeaturesKHR {
         static $gtype: GObject.GType<PhysicalDevice8BitStorageFeaturesKHR>;
 
-        // Constructors of Vulkan.PhysicalDevice8BitStorageFeaturesKHR
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4250,7 +4250,7 @@ export namespace Vulkan {
     class PhysicalDeviceShaderAtomicInt64FeaturesKHR {
         static $gtype: GObject.GType<PhysicalDeviceShaderAtomicInt64FeaturesKHR>;
 
-        // Constructors of Vulkan.PhysicalDeviceShaderAtomicInt64FeaturesKHR
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4258,7 +4258,7 @@ export namespace Vulkan {
     class DriverIdKHR {
         static $gtype: GObject.GType<DriverIdKHR>;
 
-        // Constructors of Vulkan.DriverIdKHR
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4266,7 +4266,7 @@ export namespace Vulkan {
     class ConformanceVersionKHR {
         static $gtype: GObject.GType<ConformanceVersionKHR>;
 
-        // Constructors of Vulkan.ConformanceVersionKHR
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4274,7 +4274,7 @@ export namespace Vulkan {
     class PhysicalDeviceDriverPropertiesKHR {
         static $gtype: GObject.GType<PhysicalDeviceDriverPropertiesKHR>;
 
-        // Constructors of Vulkan.PhysicalDeviceDriverPropertiesKHR
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4282,7 +4282,7 @@ export namespace Vulkan {
     class PhysicalDeviceFloatControlsPropertiesKHR {
         static $gtype: GObject.GType<PhysicalDeviceFloatControlsPropertiesKHR>;
 
-        // Constructors of Vulkan.PhysicalDeviceFloatControlsPropertiesKHR
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4290,7 +4290,7 @@ export namespace Vulkan {
     class ResolveModeFlagBitsKHR {
         static $gtype: GObject.GType<ResolveModeFlagBitsKHR>;
 
-        // Constructors of Vulkan.ResolveModeFlagBitsKHR
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4298,7 +4298,7 @@ export namespace Vulkan {
     class ResolveModeFlagsKHR {
         static $gtype: GObject.GType<ResolveModeFlagsKHR>;
 
-        // Constructors of Vulkan.ResolveModeFlagsKHR
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4306,7 +4306,7 @@ export namespace Vulkan {
     class SubpassDescriptionDepthStencilResolveKHR {
         static $gtype: GObject.GType<SubpassDescriptionDepthStencilResolveKHR>;
 
-        // Constructors of Vulkan.SubpassDescriptionDepthStencilResolveKHR
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4314,7 +4314,7 @@ export namespace Vulkan {
     class PhysicalDeviceDepthStencilResolvePropertiesKHR {
         static $gtype: GObject.GType<PhysicalDeviceDepthStencilResolvePropertiesKHR>;
 
-        // Constructors of Vulkan.PhysicalDeviceDepthStencilResolvePropertiesKHR
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4322,7 +4322,7 @@ export namespace Vulkan {
     class PhysicalDeviceVulkanMemoryModelFeaturesKHR {
         static $gtype: GObject.GType<PhysicalDeviceVulkanMemoryModelFeaturesKHR>;
 
-        // Constructors of Vulkan.PhysicalDeviceVulkanMemoryModelFeaturesKHR
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4330,7 +4330,7 @@ export namespace Vulkan {
     class SurfaceProtectedCapabilitiesKHR {
         static $gtype: GObject.GType<SurfaceProtectedCapabilitiesKHR>;
 
-        // Constructors of Vulkan.SurfaceProtectedCapabilitiesKHR
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4338,7 +4338,7 @@ export namespace Vulkan {
     class PhysicalDeviceUniformBufferStandardLayoutFeaturesKHR {
         static $gtype: GObject.GType<PhysicalDeviceUniformBufferStandardLayoutFeaturesKHR>;
 
-        // Constructors of Vulkan.PhysicalDeviceUniformBufferStandardLayoutFeaturesKHR
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4346,7 +4346,7 @@ export namespace Vulkan {
     class DebugReportCallbackEXT {
         static $gtype: GObject.GType<DebugReportCallbackEXT>;
 
-        // Constructors of Vulkan.DebugReportCallbackEXT
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4354,7 +4354,7 @@ export namespace Vulkan {
     class DebugReportObjectTypeEXT {
         static $gtype: GObject.GType<DebugReportObjectTypeEXT>;
 
-        // Constructors of Vulkan.DebugReportObjectTypeEXT
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4362,7 +4362,7 @@ export namespace Vulkan {
     class DebugReportFlagBitsEXT {
         static $gtype: GObject.GType<DebugReportFlagBitsEXT>;
 
-        // Constructors of Vulkan.DebugReportFlagBitsEXT
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4370,7 +4370,7 @@ export namespace Vulkan {
     class DebugReportFlagsEXT {
         static $gtype: GObject.GType<DebugReportFlagsEXT>;
 
-        // Constructors of Vulkan.DebugReportFlagsEXT
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4378,7 +4378,7 @@ export namespace Vulkan {
     class DebugReportCallbackCreateInfoEXT {
         static $gtype: GObject.GType<DebugReportCallbackCreateInfoEXT>;
 
-        // Constructors of Vulkan.DebugReportCallbackCreateInfoEXT
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4386,7 +4386,7 @@ export namespace Vulkan {
     class RasterizationOrderAMD {
         static $gtype: GObject.GType<RasterizationOrderAMD>;
 
-        // Constructors of Vulkan.RasterizationOrderAMD
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4394,7 +4394,7 @@ export namespace Vulkan {
     class PipelineRasterizationStateRasterizationOrderAMD {
         static $gtype: GObject.GType<PipelineRasterizationStateRasterizationOrderAMD>;
 
-        // Constructors of Vulkan.PipelineRasterizationStateRasterizationOrderAMD
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4402,7 +4402,7 @@ export namespace Vulkan {
     class DebugMarkerObjectNameInfoEXT {
         static $gtype: GObject.GType<DebugMarkerObjectNameInfoEXT>;
 
-        // Constructors of Vulkan.DebugMarkerObjectNameInfoEXT
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4410,7 +4410,7 @@ export namespace Vulkan {
     class DebugMarkerObjectTagInfoEXT {
         static $gtype: GObject.GType<DebugMarkerObjectTagInfoEXT>;
 
-        // Constructors of Vulkan.DebugMarkerObjectTagInfoEXT
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4418,7 +4418,7 @@ export namespace Vulkan {
     class DebugMarkerMarkerInfoEXT {
         static $gtype: GObject.GType<DebugMarkerMarkerInfoEXT>;
 
-        // Constructors of Vulkan.DebugMarkerMarkerInfoEXT
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4426,7 +4426,7 @@ export namespace Vulkan {
     class DedicatedAllocationImageCreateInfoNV {
         static $gtype: GObject.GType<DedicatedAllocationImageCreateInfoNV>;
 
-        // Constructors of Vulkan.DedicatedAllocationImageCreateInfoNV
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4434,7 +4434,7 @@ export namespace Vulkan {
     class DedicatedAllocationBufferCreateInfoNV {
         static $gtype: GObject.GType<DedicatedAllocationBufferCreateInfoNV>;
 
-        // Constructors of Vulkan.DedicatedAllocationBufferCreateInfoNV
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4442,7 +4442,7 @@ export namespace Vulkan {
     class DedicatedAllocationMemoryAllocateInfoNV {
         static $gtype: GObject.GType<DedicatedAllocationMemoryAllocateInfoNV>;
 
-        // Constructors of Vulkan.DedicatedAllocationMemoryAllocateInfoNV
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4450,7 +4450,7 @@ export namespace Vulkan {
     class PipelineRasterizationStateStreamCreateFlagsEXT {
         static $gtype: GObject.GType<PipelineRasterizationStateStreamCreateFlagsEXT>;
 
-        // Constructors of Vulkan.PipelineRasterizationStateStreamCreateFlagsEXT
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4458,7 +4458,7 @@ export namespace Vulkan {
     class PhysicalDeviceTransformFeedbackFeaturesEXT {
         static $gtype: GObject.GType<PhysicalDeviceTransformFeedbackFeaturesEXT>;
 
-        // Constructors of Vulkan.PhysicalDeviceTransformFeedbackFeaturesEXT
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4466,7 +4466,7 @@ export namespace Vulkan {
     class PhysicalDeviceTransformFeedbackPropertiesEXT {
         static $gtype: GObject.GType<PhysicalDeviceTransformFeedbackPropertiesEXT>;
 
-        // Constructors of Vulkan.PhysicalDeviceTransformFeedbackPropertiesEXT
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4474,7 +4474,7 @@ export namespace Vulkan {
     class PipelineRasterizationStateStreamCreateInfoEXT {
         static $gtype: GObject.GType<PipelineRasterizationStateStreamCreateInfoEXT>;
 
-        // Constructors of Vulkan.PipelineRasterizationStateStreamCreateInfoEXT
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4482,7 +4482,7 @@ export namespace Vulkan {
     class ImageViewHandleInfoNVX {
         static $gtype: GObject.GType<ImageViewHandleInfoNVX>;
 
-        // Constructors of Vulkan.ImageViewHandleInfoNVX
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4490,7 +4490,7 @@ export namespace Vulkan {
     class TextureLODGatherFormatPropertiesAMD {
         static $gtype: GObject.GType<TextureLODGatherFormatPropertiesAMD>;
 
-        // Constructors of Vulkan.TextureLODGatherFormatPropertiesAMD
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4498,7 +4498,7 @@ export namespace Vulkan {
     class ShaderInfoTypeAMD {
         static $gtype: GObject.GType<ShaderInfoTypeAMD>;
 
-        // Constructors of Vulkan.ShaderInfoTypeAMD
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4506,7 +4506,7 @@ export namespace Vulkan {
     class ShaderResourceUsageAMD {
         static $gtype: GObject.GType<ShaderResourceUsageAMD>;
 
-        // Constructors of Vulkan.ShaderResourceUsageAMD
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4514,7 +4514,7 @@ export namespace Vulkan {
     class ShaderStatisticsInfoAMD {
         static $gtype: GObject.GType<ShaderStatisticsInfoAMD>;
 
-        // Constructors of Vulkan.ShaderStatisticsInfoAMD
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4522,7 +4522,7 @@ export namespace Vulkan {
     class PhysicalDeviceCornerSampledImageFeaturesNV {
         static $gtype: GObject.GType<PhysicalDeviceCornerSampledImageFeaturesNV>;
 
-        // Constructors of Vulkan.PhysicalDeviceCornerSampledImageFeaturesNV
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4530,7 +4530,7 @@ export namespace Vulkan {
     class ExternalMemoryHandleTypeFlagBitsNV {
         static $gtype: GObject.GType<ExternalMemoryHandleTypeFlagBitsNV>;
 
-        // Constructors of Vulkan.ExternalMemoryHandleTypeFlagBitsNV
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4538,7 +4538,7 @@ export namespace Vulkan {
     class ExternalMemoryHandleTypeFlagsNV {
         static $gtype: GObject.GType<ExternalMemoryHandleTypeFlagsNV>;
 
-        // Constructors of Vulkan.ExternalMemoryHandleTypeFlagsNV
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4546,7 +4546,7 @@ export namespace Vulkan {
     class ExternalMemoryFeatureFlagBitsNV {
         static $gtype: GObject.GType<ExternalMemoryFeatureFlagBitsNV>;
 
-        // Constructors of Vulkan.ExternalMemoryFeatureFlagBitsNV
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4554,7 +4554,7 @@ export namespace Vulkan {
     class ExternalMemoryFeatureFlagsNV {
         static $gtype: GObject.GType<ExternalMemoryFeatureFlagsNV>;
 
-        // Constructors of Vulkan.ExternalMemoryFeatureFlagsNV
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4562,7 +4562,7 @@ export namespace Vulkan {
     class ExternalImageFormatPropertiesNV {
         static $gtype: GObject.GType<ExternalImageFormatPropertiesNV>;
 
-        // Constructors of Vulkan.ExternalImageFormatPropertiesNV
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4570,7 +4570,7 @@ export namespace Vulkan {
     class ExternalMemoryImageCreateInfoNV {
         static $gtype: GObject.GType<ExternalMemoryImageCreateInfoNV>;
 
-        // Constructors of Vulkan.ExternalMemoryImageCreateInfoNV
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4578,7 +4578,7 @@ export namespace Vulkan {
     class ExportMemoryAllocateInfoNV {
         static $gtype: GObject.GType<ExportMemoryAllocateInfoNV>;
 
-        // Constructors of Vulkan.ExportMemoryAllocateInfoNV
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4586,7 +4586,7 @@ export namespace Vulkan {
     class ValidationCheckEXT {
         static $gtype: GObject.GType<ValidationCheckEXT>;
 
-        // Constructors of Vulkan.ValidationCheckEXT
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4594,7 +4594,7 @@ export namespace Vulkan {
     class ValidationFlagsEXT {
         static $gtype: GObject.GType<ValidationFlagsEXT>;
 
-        // Constructors of Vulkan.ValidationFlagsEXT
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4602,7 +4602,7 @@ export namespace Vulkan {
     class ImageViewASTCDecodeModeEXT {
         static $gtype: GObject.GType<ImageViewASTCDecodeModeEXT>;
 
-        // Constructors of Vulkan.ImageViewASTCDecodeModeEXT
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4610,7 +4610,7 @@ export namespace Vulkan {
     class PhysicalDeviceASTCDecodeFeaturesEXT {
         static $gtype: GObject.GType<PhysicalDeviceASTCDecodeFeaturesEXT>;
 
-        // Constructors of Vulkan.PhysicalDeviceASTCDecodeFeaturesEXT
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4618,7 +4618,7 @@ export namespace Vulkan {
     class ConditionalRenderingFlagBitsEXT {
         static $gtype: GObject.GType<ConditionalRenderingFlagBitsEXT>;
 
-        // Constructors of Vulkan.ConditionalRenderingFlagBitsEXT
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4626,7 +4626,7 @@ export namespace Vulkan {
     class ConditionalRenderingFlagsEXT {
         static $gtype: GObject.GType<ConditionalRenderingFlagsEXT>;
 
-        // Constructors of Vulkan.ConditionalRenderingFlagsEXT
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4634,7 +4634,7 @@ export namespace Vulkan {
     class ConditionalRenderingBeginInfoEXT {
         static $gtype: GObject.GType<ConditionalRenderingBeginInfoEXT>;
 
-        // Constructors of Vulkan.ConditionalRenderingBeginInfoEXT
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4642,7 +4642,7 @@ export namespace Vulkan {
     class PhysicalDeviceConditionalRenderingFeaturesEXT {
         static $gtype: GObject.GType<PhysicalDeviceConditionalRenderingFeaturesEXT>;
 
-        // Constructors of Vulkan.PhysicalDeviceConditionalRenderingFeaturesEXT
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4650,7 +4650,7 @@ export namespace Vulkan {
     class CommandBufferInheritanceConditionalRenderingInfoEXT {
         static $gtype: GObject.GType<CommandBufferInheritanceConditionalRenderingInfoEXT>;
 
-        // Constructors of Vulkan.CommandBufferInheritanceConditionalRenderingInfoEXT
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4658,7 +4658,7 @@ export namespace Vulkan {
     class ObjectTableNVX {
         static $gtype: GObject.GType<ObjectTableNVX>;
 
-        // Constructors of Vulkan.ObjectTableNVX
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4666,7 +4666,7 @@ export namespace Vulkan {
     class IndirectCommandsLayoutNVX {
         static $gtype: GObject.GType<IndirectCommandsLayoutNVX>;
 
-        // Constructors of Vulkan.IndirectCommandsLayoutNVX
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4674,7 +4674,7 @@ export namespace Vulkan {
     class IndirectCommandsTokenTypeNVX {
         static $gtype: GObject.GType<IndirectCommandsTokenTypeNVX>;
 
-        // Constructors of Vulkan.IndirectCommandsTokenTypeNVX
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4682,7 +4682,7 @@ export namespace Vulkan {
     class ObjectEntryTypeNVX {
         static $gtype: GObject.GType<ObjectEntryTypeNVX>;
 
-        // Constructors of Vulkan.ObjectEntryTypeNVX
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4690,7 +4690,7 @@ export namespace Vulkan {
     class IndirectCommandsLayoutUsageFlagBitsNVX {
         static $gtype: GObject.GType<IndirectCommandsLayoutUsageFlagBitsNVX>;
 
-        // Constructors of Vulkan.IndirectCommandsLayoutUsageFlagBitsNVX
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4698,7 +4698,7 @@ export namespace Vulkan {
     class IndirectCommandsLayoutUsageFlagsNVX {
         static $gtype: GObject.GType<IndirectCommandsLayoutUsageFlagsNVX>;
 
-        // Constructors of Vulkan.IndirectCommandsLayoutUsageFlagsNVX
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4706,7 +4706,7 @@ export namespace Vulkan {
     class ObjectEntryUsageFlagBitsNVX {
         static $gtype: GObject.GType<ObjectEntryUsageFlagBitsNVX>;
 
-        // Constructors of Vulkan.ObjectEntryUsageFlagBitsNVX
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4714,7 +4714,7 @@ export namespace Vulkan {
     class ObjectEntryUsageFlagsNVX {
         static $gtype: GObject.GType<ObjectEntryUsageFlagsNVX>;
 
-        // Constructors of Vulkan.ObjectEntryUsageFlagsNVX
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4722,7 +4722,7 @@ export namespace Vulkan {
     class DeviceGeneratedCommandsFeaturesNVX {
         static $gtype: GObject.GType<DeviceGeneratedCommandsFeaturesNVX>;
 
-        // Constructors of Vulkan.DeviceGeneratedCommandsFeaturesNVX
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4730,7 +4730,7 @@ export namespace Vulkan {
     class DeviceGeneratedCommandsLimitsNVX {
         static $gtype: GObject.GType<DeviceGeneratedCommandsLimitsNVX>;
 
-        // Constructors of Vulkan.DeviceGeneratedCommandsLimitsNVX
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4738,7 +4738,7 @@ export namespace Vulkan {
     class IndirectCommandsTokenNVX {
         static $gtype: GObject.GType<IndirectCommandsTokenNVX>;
 
-        // Constructors of Vulkan.IndirectCommandsTokenNVX
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4746,7 +4746,7 @@ export namespace Vulkan {
     class IndirectCommandsLayoutTokenNVX {
         static $gtype: GObject.GType<IndirectCommandsLayoutTokenNVX>;
 
-        // Constructors of Vulkan.IndirectCommandsLayoutTokenNVX
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4754,7 +4754,7 @@ export namespace Vulkan {
     class IndirectCommandsLayoutCreateInfoNVX {
         static $gtype: GObject.GType<IndirectCommandsLayoutCreateInfoNVX>;
 
-        // Constructors of Vulkan.IndirectCommandsLayoutCreateInfoNVX
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4762,7 +4762,7 @@ export namespace Vulkan {
     class CmdProcessCommandsInfoNVX {
         static $gtype: GObject.GType<CmdProcessCommandsInfoNVX>;
 
-        // Constructors of Vulkan.CmdProcessCommandsInfoNVX
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4770,7 +4770,7 @@ export namespace Vulkan {
     class CmdReserveSpaceForCommandsInfoNVX {
         static $gtype: GObject.GType<CmdReserveSpaceForCommandsInfoNVX>;
 
-        // Constructors of Vulkan.CmdReserveSpaceForCommandsInfoNVX
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4778,7 +4778,7 @@ export namespace Vulkan {
     class ObjectTableCreateInfoNVX {
         static $gtype: GObject.GType<ObjectTableCreateInfoNVX>;
 
-        // Constructors of Vulkan.ObjectTableCreateInfoNVX
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4786,7 +4786,7 @@ export namespace Vulkan {
     class ObjectTableEntryNVX {
         static $gtype: GObject.GType<ObjectTableEntryNVX>;
 
-        // Constructors of Vulkan.ObjectTableEntryNVX
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4794,7 +4794,7 @@ export namespace Vulkan {
     class ObjectTablePipelineEntryNVX {
         static $gtype: GObject.GType<ObjectTablePipelineEntryNVX>;
 
-        // Constructors of Vulkan.ObjectTablePipelineEntryNVX
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4802,7 +4802,7 @@ export namespace Vulkan {
     class ObjectTableDescriptorSetEntryNVX {
         static $gtype: GObject.GType<ObjectTableDescriptorSetEntryNVX>;
 
-        // Constructors of Vulkan.ObjectTableDescriptorSetEntryNVX
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4810,7 +4810,7 @@ export namespace Vulkan {
     class ObjectTableVertexBufferEntryNVX {
         static $gtype: GObject.GType<ObjectTableVertexBufferEntryNVX>;
 
-        // Constructors of Vulkan.ObjectTableVertexBufferEntryNVX
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4818,7 +4818,7 @@ export namespace Vulkan {
     class ObjectTableIndexBufferEntryNVX {
         static $gtype: GObject.GType<ObjectTableIndexBufferEntryNVX>;
 
-        // Constructors of Vulkan.ObjectTableIndexBufferEntryNVX
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4826,7 +4826,7 @@ export namespace Vulkan {
     class ObjectTablePushConstantEntryNVX {
         static $gtype: GObject.GType<ObjectTablePushConstantEntryNVX>;
 
-        // Constructors of Vulkan.ObjectTablePushConstantEntryNVX
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4834,7 +4834,7 @@ export namespace Vulkan {
     class ViewportWScalingNV {
         static $gtype: GObject.GType<ViewportWScalingNV>;
 
-        // Constructors of Vulkan.ViewportWScalingNV
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4842,7 +4842,7 @@ export namespace Vulkan {
     class PipelineViewportWScalingStateCreateInfoNV {
         static $gtype: GObject.GType<PipelineViewportWScalingStateCreateInfoNV>;
 
-        // Constructors of Vulkan.PipelineViewportWScalingStateCreateInfoNV
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4850,7 +4850,7 @@ export namespace Vulkan {
     class SurfaceCounterFlagBitsEXT {
         static $gtype: GObject.GType<SurfaceCounterFlagBitsEXT>;
 
-        // Constructors of Vulkan.SurfaceCounterFlagBitsEXT
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4858,7 +4858,7 @@ export namespace Vulkan {
     class SurfaceCounterFlagsEXT {
         static $gtype: GObject.GType<SurfaceCounterFlagsEXT>;
 
-        // Constructors of Vulkan.SurfaceCounterFlagsEXT
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4866,7 +4866,7 @@ export namespace Vulkan {
     class SurfaceCapabilities2EXT {
         static $gtype: GObject.GType<SurfaceCapabilities2EXT>;
 
-        // Constructors of Vulkan.SurfaceCapabilities2EXT
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4874,7 +4874,7 @@ export namespace Vulkan {
     class DisplayPowerStateEXT {
         static $gtype: GObject.GType<DisplayPowerStateEXT>;
 
-        // Constructors of Vulkan.DisplayPowerStateEXT
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4882,7 +4882,7 @@ export namespace Vulkan {
     class DeviceEventTypeEXT {
         static $gtype: GObject.GType<DeviceEventTypeEXT>;
 
-        // Constructors of Vulkan.DeviceEventTypeEXT
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4890,7 +4890,7 @@ export namespace Vulkan {
     class DisplayEventTypeEXT {
         static $gtype: GObject.GType<DisplayEventTypeEXT>;
 
-        // Constructors of Vulkan.DisplayEventTypeEXT
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4898,7 +4898,7 @@ export namespace Vulkan {
     class DisplayPowerInfoEXT {
         static $gtype: GObject.GType<DisplayPowerInfoEXT>;
 
-        // Constructors of Vulkan.DisplayPowerInfoEXT
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4906,7 +4906,7 @@ export namespace Vulkan {
     class DeviceEventInfoEXT {
         static $gtype: GObject.GType<DeviceEventInfoEXT>;
 
-        // Constructors of Vulkan.DeviceEventInfoEXT
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4914,7 +4914,7 @@ export namespace Vulkan {
     class DisplayEventInfoEXT {
         static $gtype: GObject.GType<DisplayEventInfoEXT>;
 
-        // Constructors of Vulkan.DisplayEventInfoEXT
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4922,7 +4922,7 @@ export namespace Vulkan {
     class SwapchainCounterCreateInfoEXT {
         static $gtype: GObject.GType<SwapchainCounterCreateInfoEXT>;
 
-        // Constructors of Vulkan.SwapchainCounterCreateInfoEXT
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4930,7 +4930,7 @@ export namespace Vulkan {
     class RefreshCycleDurationGOOGLE {
         static $gtype: GObject.GType<RefreshCycleDurationGOOGLE>;
 
-        // Constructors of Vulkan.RefreshCycleDurationGOOGLE
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4938,7 +4938,7 @@ export namespace Vulkan {
     class PastPresentationTimingGOOGLE {
         static $gtype: GObject.GType<PastPresentationTimingGOOGLE>;
 
-        // Constructors of Vulkan.PastPresentationTimingGOOGLE
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4946,7 +4946,7 @@ export namespace Vulkan {
     class PresentTimeGOOGLE {
         static $gtype: GObject.GType<PresentTimeGOOGLE>;
 
-        // Constructors of Vulkan.PresentTimeGOOGLE
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4954,7 +4954,7 @@ export namespace Vulkan {
     class PresentTimesInfoGOOGLE {
         static $gtype: GObject.GType<PresentTimesInfoGOOGLE>;
 
-        // Constructors of Vulkan.PresentTimesInfoGOOGLE
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4962,7 +4962,7 @@ export namespace Vulkan {
     class PhysicalDeviceMultiviewPerViewAttributesPropertiesNVX {
         static $gtype: GObject.GType<PhysicalDeviceMultiviewPerViewAttributesPropertiesNVX>;
 
-        // Constructors of Vulkan.PhysicalDeviceMultiviewPerViewAttributesPropertiesNVX
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4970,7 +4970,7 @@ export namespace Vulkan {
     class ViewportCoordinateSwizzleNV {
         static $gtype: GObject.GType<ViewportCoordinateSwizzleNV>;
 
-        // Constructors of Vulkan.ViewportCoordinateSwizzleNV
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4978,7 +4978,7 @@ export namespace Vulkan {
     class PipelineViewportSwizzleStateCreateFlagsNV {
         static $gtype: GObject.GType<PipelineViewportSwizzleStateCreateFlagsNV>;
 
-        // Constructors of Vulkan.PipelineViewportSwizzleStateCreateFlagsNV
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4986,7 +4986,7 @@ export namespace Vulkan {
     class ViewportSwizzleNV {
         static $gtype: GObject.GType<ViewportSwizzleNV>;
 
-        // Constructors of Vulkan.ViewportSwizzleNV
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4994,7 +4994,7 @@ export namespace Vulkan {
     class PipelineViewportSwizzleStateCreateInfoNV {
         static $gtype: GObject.GType<PipelineViewportSwizzleStateCreateInfoNV>;
 
-        // Constructors of Vulkan.PipelineViewportSwizzleStateCreateInfoNV
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5002,7 +5002,7 @@ export namespace Vulkan {
     class DiscardRectangleModeEXT {
         static $gtype: GObject.GType<DiscardRectangleModeEXT>;
 
-        // Constructors of Vulkan.DiscardRectangleModeEXT
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5010,7 +5010,7 @@ export namespace Vulkan {
     class PipelineDiscardRectangleStateCreateFlagsEXT {
         static $gtype: GObject.GType<PipelineDiscardRectangleStateCreateFlagsEXT>;
 
-        // Constructors of Vulkan.PipelineDiscardRectangleStateCreateFlagsEXT
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5018,7 +5018,7 @@ export namespace Vulkan {
     class PhysicalDeviceDiscardRectanglePropertiesEXT {
         static $gtype: GObject.GType<PhysicalDeviceDiscardRectanglePropertiesEXT>;
 
-        // Constructors of Vulkan.PhysicalDeviceDiscardRectanglePropertiesEXT
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5026,7 +5026,7 @@ export namespace Vulkan {
     class PipelineDiscardRectangleStateCreateInfoEXT {
         static $gtype: GObject.GType<PipelineDiscardRectangleStateCreateInfoEXT>;
 
-        // Constructors of Vulkan.PipelineDiscardRectangleStateCreateInfoEXT
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5034,7 +5034,7 @@ export namespace Vulkan {
     class ConservativeRasterizationModeEXT {
         static $gtype: GObject.GType<ConservativeRasterizationModeEXT>;
 
-        // Constructors of Vulkan.ConservativeRasterizationModeEXT
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5042,7 +5042,7 @@ export namespace Vulkan {
     class PipelineRasterizationConservativeStateCreateFlagsEXT {
         static $gtype: GObject.GType<PipelineRasterizationConservativeStateCreateFlagsEXT>;
 
-        // Constructors of Vulkan.PipelineRasterizationConservativeStateCreateFlagsEXT
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5050,7 +5050,7 @@ export namespace Vulkan {
     class PhysicalDeviceConservativeRasterizationPropertiesEXT {
         static $gtype: GObject.GType<PhysicalDeviceConservativeRasterizationPropertiesEXT>;
 
-        // Constructors of Vulkan.PhysicalDeviceConservativeRasterizationPropertiesEXT
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5058,7 +5058,7 @@ export namespace Vulkan {
     class PipelineRasterizationConservativeStateCreateInfoEXT {
         static $gtype: GObject.GType<PipelineRasterizationConservativeStateCreateInfoEXT>;
 
-        // Constructors of Vulkan.PipelineRasterizationConservativeStateCreateInfoEXT
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5066,7 +5066,7 @@ export namespace Vulkan {
     class PipelineRasterizationDepthClipStateCreateFlagsEXT {
         static $gtype: GObject.GType<PipelineRasterizationDepthClipStateCreateFlagsEXT>;
 
-        // Constructors of Vulkan.PipelineRasterizationDepthClipStateCreateFlagsEXT
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5074,7 +5074,7 @@ export namespace Vulkan {
     class PhysicalDeviceDepthClipEnableFeaturesEXT {
         static $gtype: GObject.GType<PhysicalDeviceDepthClipEnableFeaturesEXT>;
 
-        // Constructors of Vulkan.PhysicalDeviceDepthClipEnableFeaturesEXT
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5082,7 +5082,7 @@ export namespace Vulkan {
     class PipelineRasterizationDepthClipStateCreateInfoEXT {
         static $gtype: GObject.GType<PipelineRasterizationDepthClipStateCreateInfoEXT>;
 
-        // Constructors of Vulkan.PipelineRasterizationDepthClipStateCreateInfoEXT
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5090,7 +5090,7 @@ export namespace Vulkan {
     class XYColorEXT {
         static $gtype: GObject.GType<XYColorEXT>;
 
-        // Constructors of Vulkan.XYColorEXT
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5098,7 +5098,7 @@ export namespace Vulkan {
     class HdrMetadataEXT {
         static $gtype: GObject.GType<HdrMetadataEXT>;
 
-        // Constructors of Vulkan.HdrMetadataEXT
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5106,7 +5106,7 @@ export namespace Vulkan {
     class DebugUtilsMessengerEXT {
         static $gtype: GObject.GType<DebugUtilsMessengerEXT>;
 
-        // Constructors of Vulkan.DebugUtilsMessengerEXT
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5114,7 +5114,7 @@ export namespace Vulkan {
     class DebugUtilsMessengerCallbackDataFlagsEXT {
         static $gtype: GObject.GType<DebugUtilsMessengerCallbackDataFlagsEXT>;
 
-        // Constructors of Vulkan.DebugUtilsMessengerCallbackDataFlagsEXT
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5122,7 +5122,7 @@ export namespace Vulkan {
     class DebugUtilsMessengerCreateFlagsEXT {
         static $gtype: GObject.GType<DebugUtilsMessengerCreateFlagsEXT>;
 
-        // Constructors of Vulkan.DebugUtilsMessengerCreateFlagsEXT
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5130,7 +5130,7 @@ export namespace Vulkan {
     class DebugUtilsMessageSeverityFlagBitsEXT {
         static $gtype: GObject.GType<DebugUtilsMessageSeverityFlagBitsEXT>;
 
-        // Constructors of Vulkan.DebugUtilsMessageSeverityFlagBitsEXT
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5138,7 +5138,7 @@ export namespace Vulkan {
     class DebugUtilsMessageSeverityFlagsEXT {
         static $gtype: GObject.GType<DebugUtilsMessageSeverityFlagsEXT>;
 
-        // Constructors of Vulkan.DebugUtilsMessageSeverityFlagsEXT
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5146,7 +5146,7 @@ export namespace Vulkan {
     class DebugUtilsMessageTypeFlagBitsEXT {
         static $gtype: GObject.GType<DebugUtilsMessageTypeFlagBitsEXT>;
 
-        // Constructors of Vulkan.DebugUtilsMessageTypeFlagBitsEXT
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5154,7 +5154,7 @@ export namespace Vulkan {
     class DebugUtilsMessageTypeFlagsEXT {
         static $gtype: GObject.GType<DebugUtilsMessageTypeFlagsEXT>;
 
-        // Constructors of Vulkan.DebugUtilsMessageTypeFlagsEXT
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5162,7 +5162,7 @@ export namespace Vulkan {
     class DebugUtilsObjectNameInfoEXT {
         static $gtype: GObject.GType<DebugUtilsObjectNameInfoEXT>;
 
-        // Constructors of Vulkan.DebugUtilsObjectNameInfoEXT
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5170,7 +5170,7 @@ export namespace Vulkan {
     class DebugUtilsObjectTagInfoEXT {
         static $gtype: GObject.GType<DebugUtilsObjectTagInfoEXT>;
 
-        // Constructors of Vulkan.DebugUtilsObjectTagInfoEXT
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5178,7 +5178,7 @@ export namespace Vulkan {
     class DebugUtilsLabelEXT {
         static $gtype: GObject.GType<DebugUtilsLabelEXT>;
 
-        // Constructors of Vulkan.DebugUtilsLabelEXT
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5186,7 +5186,7 @@ export namespace Vulkan {
     class DebugUtilsMessengerCallbackDataEXT {
         static $gtype: GObject.GType<DebugUtilsMessengerCallbackDataEXT>;
 
-        // Constructors of Vulkan.DebugUtilsMessengerCallbackDataEXT
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5194,7 +5194,7 @@ export namespace Vulkan {
     class DebugUtilsMessengerCreateInfoEXT {
         static $gtype: GObject.GType<DebugUtilsMessengerCreateInfoEXT>;
 
-        // Constructors of Vulkan.DebugUtilsMessengerCreateInfoEXT
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5202,7 +5202,7 @@ export namespace Vulkan {
     class SamplerReductionModeEXT {
         static $gtype: GObject.GType<SamplerReductionModeEXT>;
 
-        // Constructors of Vulkan.SamplerReductionModeEXT
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5210,7 +5210,7 @@ export namespace Vulkan {
     class SamplerReductionModeCreateInfoEXT {
         static $gtype: GObject.GType<SamplerReductionModeCreateInfoEXT>;
 
-        // Constructors of Vulkan.SamplerReductionModeCreateInfoEXT
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5218,7 +5218,7 @@ export namespace Vulkan {
     class PhysicalDeviceSamplerFilterMinmaxPropertiesEXT {
         static $gtype: GObject.GType<PhysicalDeviceSamplerFilterMinmaxPropertiesEXT>;
 
-        // Constructors of Vulkan.PhysicalDeviceSamplerFilterMinmaxPropertiesEXT
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5226,7 +5226,7 @@ export namespace Vulkan {
     class PhysicalDeviceInlineUniformBlockFeaturesEXT {
         static $gtype: GObject.GType<PhysicalDeviceInlineUniformBlockFeaturesEXT>;
 
-        // Constructors of Vulkan.PhysicalDeviceInlineUniformBlockFeaturesEXT
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5234,7 +5234,7 @@ export namespace Vulkan {
     class PhysicalDeviceInlineUniformBlockPropertiesEXT {
         static $gtype: GObject.GType<PhysicalDeviceInlineUniformBlockPropertiesEXT>;
 
-        // Constructors of Vulkan.PhysicalDeviceInlineUniformBlockPropertiesEXT
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5242,7 +5242,7 @@ export namespace Vulkan {
     class WriteDescriptorSetInlineUniformBlockEXT {
         static $gtype: GObject.GType<WriteDescriptorSetInlineUniformBlockEXT>;
 
-        // Constructors of Vulkan.WriteDescriptorSetInlineUniformBlockEXT
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5250,7 +5250,7 @@ export namespace Vulkan {
     class DescriptorPoolInlineUniformBlockCreateInfoEXT {
         static $gtype: GObject.GType<DescriptorPoolInlineUniformBlockCreateInfoEXT>;
 
-        // Constructors of Vulkan.DescriptorPoolInlineUniformBlockCreateInfoEXT
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5258,7 +5258,7 @@ export namespace Vulkan {
     class SampleLocationEXT {
         static $gtype: GObject.GType<SampleLocationEXT>;
 
-        // Constructors of Vulkan.SampleLocationEXT
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5266,7 +5266,7 @@ export namespace Vulkan {
     class SampleLocationsInfoEXT {
         static $gtype: GObject.GType<SampleLocationsInfoEXT>;
 
-        // Constructors of Vulkan.SampleLocationsInfoEXT
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5274,7 +5274,7 @@ export namespace Vulkan {
     class AttachmentSampleLocationsEXT {
         static $gtype: GObject.GType<AttachmentSampleLocationsEXT>;
 
-        // Constructors of Vulkan.AttachmentSampleLocationsEXT
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5282,7 +5282,7 @@ export namespace Vulkan {
     class SubpassSampleLocationsEXT {
         static $gtype: GObject.GType<SubpassSampleLocationsEXT>;
 
-        // Constructors of Vulkan.SubpassSampleLocationsEXT
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5290,7 +5290,7 @@ export namespace Vulkan {
     class RenderPassSampleLocationsBeginInfoEXT {
         static $gtype: GObject.GType<RenderPassSampleLocationsBeginInfoEXT>;
 
-        // Constructors of Vulkan.RenderPassSampleLocationsBeginInfoEXT
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5298,7 +5298,7 @@ export namespace Vulkan {
     class PipelineSampleLocationsStateCreateInfoEXT {
         static $gtype: GObject.GType<PipelineSampleLocationsStateCreateInfoEXT>;
 
-        // Constructors of Vulkan.PipelineSampleLocationsStateCreateInfoEXT
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5306,7 +5306,7 @@ export namespace Vulkan {
     class PhysicalDeviceSampleLocationsPropertiesEXT {
         static $gtype: GObject.GType<PhysicalDeviceSampleLocationsPropertiesEXT>;
 
-        // Constructors of Vulkan.PhysicalDeviceSampleLocationsPropertiesEXT
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5314,7 +5314,7 @@ export namespace Vulkan {
     class MultisamplePropertiesEXT {
         static $gtype: GObject.GType<MultisamplePropertiesEXT>;
 
-        // Constructors of Vulkan.MultisamplePropertiesEXT
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5322,7 +5322,7 @@ export namespace Vulkan {
     class BlendOverlapEXT {
         static $gtype: GObject.GType<BlendOverlapEXT>;
 
-        // Constructors of Vulkan.BlendOverlapEXT
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5330,7 +5330,7 @@ export namespace Vulkan {
     class PhysicalDeviceBlendOperationAdvancedFeaturesEXT {
         static $gtype: GObject.GType<PhysicalDeviceBlendOperationAdvancedFeaturesEXT>;
 
-        // Constructors of Vulkan.PhysicalDeviceBlendOperationAdvancedFeaturesEXT
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5338,7 +5338,7 @@ export namespace Vulkan {
     class PhysicalDeviceBlendOperationAdvancedPropertiesEXT {
         static $gtype: GObject.GType<PhysicalDeviceBlendOperationAdvancedPropertiesEXT>;
 
-        // Constructors of Vulkan.PhysicalDeviceBlendOperationAdvancedPropertiesEXT
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5346,7 +5346,7 @@ export namespace Vulkan {
     class PipelineColorBlendAdvancedStateCreateInfoEXT {
         static $gtype: GObject.GType<PipelineColorBlendAdvancedStateCreateInfoEXT>;
 
-        // Constructors of Vulkan.PipelineColorBlendAdvancedStateCreateInfoEXT
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5354,7 +5354,7 @@ export namespace Vulkan {
     class PipelineCoverageToColorStateCreateFlagsNV {
         static $gtype: GObject.GType<PipelineCoverageToColorStateCreateFlagsNV>;
 
-        // Constructors of Vulkan.PipelineCoverageToColorStateCreateFlagsNV
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5362,7 +5362,7 @@ export namespace Vulkan {
     class PipelineCoverageToColorStateCreateInfoNV {
         static $gtype: GObject.GType<PipelineCoverageToColorStateCreateInfoNV>;
 
-        // Constructors of Vulkan.PipelineCoverageToColorStateCreateInfoNV
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5370,7 +5370,7 @@ export namespace Vulkan {
     class CoverageModulationModeNV {
         static $gtype: GObject.GType<CoverageModulationModeNV>;
 
-        // Constructors of Vulkan.CoverageModulationModeNV
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5378,7 +5378,7 @@ export namespace Vulkan {
     class PipelineCoverageModulationStateCreateFlagsNV {
         static $gtype: GObject.GType<PipelineCoverageModulationStateCreateFlagsNV>;
 
-        // Constructors of Vulkan.PipelineCoverageModulationStateCreateFlagsNV
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5386,7 +5386,7 @@ export namespace Vulkan {
     class PipelineCoverageModulationStateCreateInfoNV {
         static $gtype: GObject.GType<PipelineCoverageModulationStateCreateInfoNV>;
 
-        // Constructors of Vulkan.PipelineCoverageModulationStateCreateInfoNV
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5394,7 +5394,7 @@ export namespace Vulkan {
     class DrmFormatModifierPropertiesEXT {
         static $gtype: GObject.GType<DrmFormatModifierPropertiesEXT>;
 
-        // Constructors of Vulkan.DrmFormatModifierPropertiesEXT
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5402,7 +5402,7 @@ export namespace Vulkan {
     class DrmFormatModifierPropertiesListEXT {
         static $gtype: GObject.GType<DrmFormatModifierPropertiesListEXT>;
 
-        // Constructors of Vulkan.DrmFormatModifierPropertiesListEXT
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5410,7 +5410,7 @@ export namespace Vulkan {
     class PhysicalDeviceImageDrmFormatModifierInfoEXT {
         static $gtype: GObject.GType<PhysicalDeviceImageDrmFormatModifierInfoEXT>;
 
-        // Constructors of Vulkan.PhysicalDeviceImageDrmFormatModifierInfoEXT
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5418,7 +5418,7 @@ export namespace Vulkan {
     class ImageDrmFormatModifierListCreateInfoEXT {
         static $gtype: GObject.GType<ImageDrmFormatModifierListCreateInfoEXT>;
 
-        // Constructors of Vulkan.ImageDrmFormatModifierListCreateInfoEXT
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5426,7 +5426,7 @@ export namespace Vulkan {
     class ImageDrmFormatModifierExplicitCreateInfoEXT {
         static $gtype: GObject.GType<ImageDrmFormatModifierExplicitCreateInfoEXT>;
 
-        // Constructors of Vulkan.ImageDrmFormatModifierExplicitCreateInfoEXT
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5434,7 +5434,7 @@ export namespace Vulkan {
     class ImageDrmFormatModifierPropertiesEXT {
         static $gtype: GObject.GType<ImageDrmFormatModifierPropertiesEXT>;
 
-        // Constructors of Vulkan.ImageDrmFormatModifierPropertiesEXT
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5442,7 +5442,7 @@ export namespace Vulkan {
     class ValidationCacheEXT {
         static $gtype: GObject.GType<ValidationCacheEXT>;
 
-        // Constructors of Vulkan.ValidationCacheEXT
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5450,7 +5450,7 @@ export namespace Vulkan {
     class ValidationCacheHeaderVersionEXT {
         static $gtype: GObject.GType<ValidationCacheHeaderVersionEXT>;
 
-        // Constructors of Vulkan.ValidationCacheHeaderVersionEXT
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5458,7 +5458,7 @@ export namespace Vulkan {
     class ValidationCacheCreateFlagsEXT {
         static $gtype: GObject.GType<ValidationCacheCreateFlagsEXT>;
 
-        // Constructors of Vulkan.ValidationCacheCreateFlagsEXT
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5466,7 +5466,7 @@ export namespace Vulkan {
     class ValidationCacheCreateInfoEXT {
         static $gtype: GObject.GType<ValidationCacheCreateInfoEXT>;
 
-        // Constructors of Vulkan.ValidationCacheCreateInfoEXT
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5474,7 +5474,7 @@ export namespace Vulkan {
     class ShaderModuleValidationCacheCreateInfoEXT {
         static $gtype: GObject.GType<ShaderModuleValidationCacheCreateInfoEXT>;
 
-        // Constructors of Vulkan.ShaderModuleValidationCacheCreateInfoEXT
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5482,7 +5482,7 @@ export namespace Vulkan {
     class DescriptorBindingFlagBitsEXT {
         static $gtype: GObject.GType<DescriptorBindingFlagBitsEXT>;
 
-        // Constructors of Vulkan.DescriptorBindingFlagBitsEXT
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5490,7 +5490,7 @@ export namespace Vulkan {
     class DescriptorBindingFlagsEXT {
         static $gtype: GObject.GType<DescriptorBindingFlagsEXT>;
 
-        // Constructors of Vulkan.DescriptorBindingFlagsEXT
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5498,7 +5498,7 @@ export namespace Vulkan {
     class DescriptorSetLayoutBindingFlagsCreateInfoEXT {
         static $gtype: GObject.GType<DescriptorSetLayoutBindingFlagsCreateInfoEXT>;
 
-        // Constructors of Vulkan.DescriptorSetLayoutBindingFlagsCreateInfoEXT
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5506,7 +5506,7 @@ export namespace Vulkan {
     class PhysicalDeviceDescriptorIndexingFeaturesEXT {
         static $gtype: GObject.GType<PhysicalDeviceDescriptorIndexingFeaturesEXT>;
 
-        // Constructors of Vulkan.PhysicalDeviceDescriptorIndexingFeaturesEXT
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5514,7 +5514,7 @@ export namespace Vulkan {
     class PhysicalDeviceDescriptorIndexingPropertiesEXT {
         static $gtype: GObject.GType<PhysicalDeviceDescriptorIndexingPropertiesEXT>;
 
-        // Constructors of Vulkan.PhysicalDeviceDescriptorIndexingPropertiesEXT
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5522,7 +5522,7 @@ export namespace Vulkan {
     class DescriptorSetVariableDescriptorCountAllocateInfoEXT {
         static $gtype: GObject.GType<DescriptorSetVariableDescriptorCountAllocateInfoEXT>;
 
-        // Constructors of Vulkan.DescriptorSetVariableDescriptorCountAllocateInfoEXT
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5530,7 +5530,7 @@ export namespace Vulkan {
     class DescriptorSetVariableDescriptorCountLayoutSupportEXT {
         static $gtype: GObject.GType<DescriptorSetVariableDescriptorCountLayoutSupportEXT>;
 
-        // Constructors of Vulkan.DescriptorSetVariableDescriptorCountLayoutSupportEXT
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5538,7 +5538,7 @@ export namespace Vulkan {
     class ShadingRatePaletteEntryNV {
         static $gtype: GObject.GType<ShadingRatePaletteEntryNV>;
 
-        // Constructors of Vulkan.ShadingRatePaletteEntryNV
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5546,7 +5546,7 @@ export namespace Vulkan {
     class CoarseSampleOrderTypeNV {
         static $gtype: GObject.GType<CoarseSampleOrderTypeNV>;
 
-        // Constructors of Vulkan.CoarseSampleOrderTypeNV
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5554,7 +5554,7 @@ export namespace Vulkan {
     class ShadingRatePaletteNV {
         static $gtype: GObject.GType<ShadingRatePaletteNV>;
 
-        // Constructors of Vulkan.ShadingRatePaletteNV
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5562,7 +5562,7 @@ export namespace Vulkan {
     class PipelineViewportShadingRateImageStateCreateInfoNV {
         static $gtype: GObject.GType<PipelineViewportShadingRateImageStateCreateInfoNV>;
 
-        // Constructors of Vulkan.PipelineViewportShadingRateImageStateCreateInfoNV
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5570,7 +5570,7 @@ export namespace Vulkan {
     class PhysicalDeviceShadingRateImageFeaturesNV {
         static $gtype: GObject.GType<PhysicalDeviceShadingRateImageFeaturesNV>;
 
-        // Constructors of Vulkan.PhysicalDeviceShadingRateImageFeaturesNV
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5578,7 +5578,7 @@ export namespace Vulkan {
     class PhysicalDeviceShadingRateImagePropertiesNV {
         static $gtype: GObject.GType<PhysicalDeviceShadingRateImagePropertiesNV>;
 
-        // Constructors of Vulkan.PhysicalDeviceShadingRateImagePropertiesNV
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5586,7 +5586,7 @@ export namespace Vulkan {
     class CoarseSampleLocationNV {
         static $gtype: GObject.GType<CoarseSampleLocationNV>;
 
-        // Constructors of Vulkan.CoarseSampleLocationNV
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5594,7 +5594,7 @@ export namespace Vulkan {
     class CoarseSampleOrderCustomNV {
         static $gtype: GObject.GType<CoarseSampleOrderCustomNV>;
 
-        // Constructors of Vulkan.CoarseSampleOrderCustomNV
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5602,7 +5602,7 @@ export namespace Vulkan {
     class PipelineViewportCoarseSampleOrderStateCreateInfoNV {
         static $gtype: GObject.GType<PipelineViewportCoarseSampleOrderStateCreateInfoNV>;
 
-        // Constructors of Vulkan.PipelineViewportCoarseSampleOrderStateCreateInfoNV
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5610,7 +5610,7 @@ export namespace Vulkan {
     class AccelerationStructureNV {
         static $gtype: GObject.GType<AccelerationStructureNV>;
 
-        // Constructors of Vulkan.AccelerationStructureNV
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5618,7 +5618,7 @@ export namespace Vulkan {
     class RayTracingShaderGroupTypeNV {
         static $gtype: GObject.GType<RayTracingShaderGroupTypeNV>;
 
-        // Constructors of Vulkan.RayTracingShaderGroupTypeNV
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5626,7 +5626,7 @@ export namespace Vulkan {
     class GeometryTypeNV {
         static $gtype: GObject.GType<GeometryTypeNV>;
 
-        // Constructors of Vulkan.GeometryTypeNV
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5634,7 +5634,7 @@ export namespace Vulkan {
     class AccelerationStructureTypeNV {
         static $gtype: GObject.GType<AccelerationStructureTypeNV>;
 
-        // Constructors of Vulkan.AccelerationStructureTypeNV
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5642,7 +5642,7 @@ export namespace Vulkan {
     class CopyAccelerationStructureModeNV {
         static $gtype: GObject.GType<CopyAccelerationStructureModeNV>;
 
-        // Constructors of Vulkan.CopyAccelerationStructureModeNV
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5650,7 +5650,7 @@ export namespace Vulkan {
     class AccelerationStructureMemoryRequirementsTypeNV {
         static $gtype: GObject.GType<AccelerationStructureMemoryRequirementsTypeNV>;
 
-        // Constructors of Vulkan.AccelerationStructureMemoryRequirementsTypeNV
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5658,7 +5658,7 @@ export namespace Vulkan {
     class GeometryFlagBitsNV {
         static $gtype: GObject.GType<GeometryFlagBitsNV>;
 
-        // Constructors of Vulkan.GeometryFlagBitsNV
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5666,7 +5666,7 @@ export namespace Vulkan {
     class GeometryFlagsNV {
         static $gtype: GObject.GType<GeometryFlagsNV>;
 
-        // Constructors of Vulkan.GeometryFlagsNV
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5674,7 +5674,7 @@ export namespace Vulkan {
     class GeometryInstanceFlagBitsNV {
         static $gtype: GObject.GType<GeometryInstanceFlagBitsNV>;
 
-        // Constructors of Vulkan.GeometryInstanceFlagBitsNV
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5682,7 +5682,7 @@ export namespace Vulkan {
     class GeometryInstanceFlagsNV {
         static $gtype: GObject.GType<GeometryInstanceFlagsNV>;
 
-        // Constructors of Vulkan.GeometryInstanceFlagsNV
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5690,7 +5690,7 @@ export namespace Vulkan {
     class BuildAccelerationStructureFlagBitsNV {
         static $gtype: GObject.GType<BuildAccelerationStructureFlagBitsNV>;
 
-        // Constructors of Vulkan.BuildAccelerationStructureFlagBitsNV
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5698,7 +5698,7 @@ export namespace Vulkan {
     class BuildAccelerationStructureFlagsNV {
         static $gtype: GObject.GType<BuildAccelerationStructureFlagsNV>;
 
-        // Constructors of Vulkan.BuildAccelerationStructureFlagsNV
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5706,7 +5706,7 @@ export namespace Vulkan {
     class RayTracingShaderGroupCreateInfoNV {
         static $gtype: GObject.GType<RayTracingShaderGroupCreateInfoNV>;
 
-        // Constructors of Vulkan.RayTracingShaderGroupCreateInfoNV
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5714,7 +5714,7 @@ export namespace Vulkan {
     class RayTracingPipelineCreateInfoNV {
         static $gtype: GObject.GType<RayTracingPipelineCreateInfoNV>;
 
-        // Constructors of Vulkan.RayTracingPipelineCreateInfoNV
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5722,7 +5722,7 @@ export namespace Vulkan {
     class GeometryTrianglesNV {
         static $gtype: GObject.GType<GeometryTrianglesNV>;
 
-        // Constructors of Vulkan.GeometryTrianglesNV
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5730,7 +5730,7 @@ export namespace Vulkan {
     class GeometryAABBNV {
         static $gtype: GObject.GType<GeometryAABBNV>;
 
-        // Constructors of Vulkan.GeometryAABBNV
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5738,7 +5738,7 @@ export namespace Vulkan {
     class GeometryDataNV {
         static $gtype: GObject.GType<GeometryDataNV>;
 
-        // Constructors of Vulkan.GeometryDataNV
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5746,7 +5746,7 @@ export namespace Vulkan {
     class GeometryNV {
         static $gtype: GObject.GType<GeometryNV>;
 
-        // Constructors of Vulkan.GeometryNV
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5754,7 +5754,7 @@ export namespace Vulkan {
     class AccelerationStructureInfoNV {
         static $gtype: GObject.GType<AccelerationStructureInfoNV>;
 
-        // Constructors of Vulkan.AccelerationStructureInfoNV
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5762,7 +5762,7 @@ export namespace Vulkan {
     class AccelerationStructureCreateInfoNV {
         static $gtype: GObject.GType<AccelerationStructureCreateInfoNV>;
 
-        // Constructors of Vulkan.AccelerationStructureCreateInfoNV
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5770,7 +5770,7 @@ export namespace Vulkan {
     class BindAccelerationStructureMemoryInfoNV {
         static $gtype: GObject.GType<BindAccelerationStructureMemoryInfoNV>;
 
-        // Constructors of Vulkan.BindAccelerationStructureMemoryInfoNV
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5778,7 +5778,7 @@ export namespace Vulkan {
     class WriteDescriptorSetAccelerationStructureNV {
         static $gtype: GObject.GType<WriteDescriptorSetAccelerationStructureNV>;
 
-        // Constructors of Vulkan.WriteDescriptorSetAccelerationStructureNV
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5786,7 +5786,7 @@ export namespace Vulkan {
     class AccelerationStructureMemoryRequirementsInfoNV {
         static $gtype: GObject.GType<AccelerationStructureMemoryRequirementsInfoNV>;
 
-        // Constructors of Vulkan.AccelerationStructureMemoryRequirementsInfoNV
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5794,7 +5794,7 @@ export namespace Vulkan {
     class PhysicalDeviceRayTracingPropertiesNV {
         static $gtype: GObject.GType<PhysicalDeviceRayTracingPropertiesNV>;
 
-        // Constructors of Vulkan.PhysicalDeviceRayTracingPropertiesNV
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5802,7 +5802,7 @@ export namespace Vulkan {
     class PhysicalDeviceRepresentativeFragmentTestFeaturesNV {
         static $gtype: GObject.GType<PhysicalDeviceRepresentativeFragmentTestFeaturesNV>;
 
-        // Constructors of Vulkan.PhysicalDeviceRepresentativeFragmentTestFeaturesNV
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5810,7 +5810,7 @@ export namespace Vulkan {
     class PipelineRepresentativeFragmentTestStateCreateInfoNV {
         static $gtype: GObject.GType<PipelineRepresentativeFragmentTestStateCreateInfoNV>;
 
-        // Constructors of Vulkan.PipelineRepresentativeFragmentTestStateCreateInfoNV
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5818,7 +5818,7 @@ export namespace Vulkan {
     class PhysicalDeviceImageViewImageFormatInfoEXT {
         static $gtype: GObject.GType<PhysicalDeviceImageViewImageFormatInfoEXT>;
 
-        // Constructors of Vulkan.PhysicalDeviceImageViewImageFormatInfoEXT
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5826,7 +5826,7 @@ export namespace Vulkan {
     class FilterCubicImageViewImageFormatPropertiesEXT {
         static $gtype: GObject.GType<FilterCubicImageViewImageFormatPropertiesEXT>;
 
-        // Constructors of Vulkan.FilterCubicImageViewImageFormatPropertiesEXT
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5834,7 +5834,7 @@ export namespace Vulkan {
     class QueueGlobalPriorityEXT {
         static $gtype: GObject.GType<QueueGlobalPriorityEXT>;
 
-        // Constructors of Vulkan.QueueGlobalPriorityEXT
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5842,7 +5842,7 @@ export namespace Vulkan {
     class DeviceQueueGlobalPriorityCreateInfoEXT {
         static $gtype: GObject.GType<DeviceQueueGlobalPriorityCreateInfoEXT>;
 
-        // Constructors of Vulkan.DeviceQueueGlobalPriorityCreateInfoEXT
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5850,7 +5850,7 @@ export namespace Vulkan {
     class ImportMemoryHostPointerInfoEXT {
         static $gtype: GObject.GType<ImportMemoryHostPointerInfoEXT>;
 
-        // Constructors of Vulkan.ImportMemoryHostPointerInfoEXT
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5858,7 +5858,7 @@ export namespace Vulkan {
     class MemoryHostPointerPropertiesEXT {
         static $gtype: GObject.GType<MemoryHostPointerPropertiesEXT>;
 
-        // Constructors of Vulkan.MemoryHostPointerPropertiesEXT
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5866,7 +5866,7 @@ export namespace Vulkan {
     class PhysicalDeviceExternalMemoryHostPropertiesEXT {
         static $gtype: GObject.GType<PhysicalDeviceExternalMemoryHostPropertiesEXT>;
 
-        // Constructors of Vulkan.PhysicalDeviceExternalMemoryHostPropertiesEXT
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5874,7 +5874,7 @@ export namespace Vulkan {
     class TimeDomainEXT {
         static $gtype: GObject.GType<TimeDomainEXT>;
 
-        // Constructors of Vulkan.TimeDomainEXT
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5882,7 +5882,7 @@ export namespace Vulkan {
     class CalibratedTimestampInfoEXT {
         static $gtype: GObject.GType<CalibratedTimestampInfoEXT>;
 
-        // Constructors of Vulkan.CalibratedTimestampInfoEXT
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5890,7 +5890,7 @@ export namespace Vulkan {
     class PhysicalDeviceShaderCorePropertiesAMD {
         static $gtype: GObject.GType<PhysicalDeviceShaderCorePropertiesAMD>;
 
-        // Constructors of Vulkan.PhysicalDeviceShaderCorePropertiesAMD
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5898,7 +5898,7 @@ export namespace Vulkan {
     class MemoryOverallocationBehaviorAMD {
         static $gtype: GObject.GType<MemoryOverallocationBehaviorAMD>;
 
-        // Constructors of Vulkan.MemoryOverallocationBehaviorAMD
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5906,7 +5906,7 @@ export namespace Vulkan {
     class DeviceMemoryOverallocationCreateInfoAMD {
         static $gtype: GObject.GType<DeviceMemoryOverallocationCreateInfoAMD>;
 
-        // Constructors of Vulkan.DeviceMemoryOverallocationCreateInfoAMD
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5914,7 +5914,7 @@ export namespace Vulkan {
     class PhysicalDeviceVertexAttributeDivisorPropertiesEXT {
         static $gtype: GObject.GType<PhysicalDeviceVertexAttributeDivisorPropertiesEXT>;
 
-        // Constructors of Vulkan.PhysicalDeviceVertexAttributeDivisorPropertiesEXT
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5922,7 +5922,7 @@ export namespace Vulkan {
     class VertexInputBindingDivisorDescriptionEXT {
         static $gtype: GObject.GType<VertexInputBindingDivisorDescriptionEXT>;
 
-        // Constructors of Vulkan.VertexInputBindingDivisorDescriptionEXT
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5930,7 +5930,7 @@ export namespace Vulkan {
     class PipelineVertexInputDivisorStateCreateInfoEXT {
         static $gtype: GObject.GType<PipelineVertexInputDivisorStateCreateInfoEXT>;
 
-        // Constructors of Vulkan.PipelineVertexInputDivisorStateCreateInfoEXT
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5938,7 +5938,7 @@ export namespace Vulkan {
     class PhysicalDeviceVertexAttributeDivisorFeaturesEXT {
         static $gtype: GObject.GType<PhysicalDeviceVertexAttributeDivisorFeaturesEXT>;
 
-        // Constructors of Vulkan.PhysicalDeviceVertexAttributeDivisorFeaturesEXT
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5946,7 +5946,7 @@ export namespace Vulkan {
     class PipelineCreationFeedbackFlagBitsEXT {
         static $gtype: GObject.GType<PipelineCreationFeedbackFlagBitsEXT>;
 
-        // Constructors of Vulkan.PipelineCreationFeedbackFlagBitsEXT
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5954,7 +5954,7 @@ export namespace Vulkan {
     class PipelineCreationFeedbackFlagsEXT {
         static $gtype: GObject.GType<PipelineCreationFeedbackFlagsEXT>;
 
-        // Constructors of Vulkan.PipelineCreationFeedbackFlagsEXT
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5962,7 +5962,7 @@ export namespace Vulkan {
     class PipelineCreationFeedbackEXT {
         static $gtype: GObject.GType<PipelineCreationFeedbackEXT>;
 
-        // Constructors of Vulkan.PipelineCreationFeedbackEXT
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5970,7 +5970,7 @@ export namespace Vulkan {
     class PipelineCreationFeedbackCreateInfoEXT {
         static $gtype: GObject.GType<PipelineCreationFeedbackCreateInfoEXT>;
 
-        // Constructors of Vulkan.PipelineCreationFeedbackCreateInfoEXT
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5978,7 +5978,7 @@ export namespace Vulkan {
     class PhysicalDeviceComputeShaderDerivativesFeaturesNV {
         static $gtype: GObject.GType<PhysicalDeviceComputeShaderDerivativesFeaturesNV>;
 
-        // Constructors of Vulkan.PhysicalDeviceComputeShaderDerivativesFeaturesNV
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5986,7 +5986,7 @@ export namespace Vulkan {
     class PhysicalDeviceMeshShaderFeaturesNV {
         static $gtype: GObject.GType<PhysicalDeviceMeshShaderFeaturesNV>;
 
-        // Constructors of Vulkan.PhysicalDeviceMeshShaderFeaturesNV
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5994,7 +5994,7 @@ export namespace Vulkan {
     class PhysicalDeviceMeshShaderPropertiesNV {
         static $gtype: GObject.GType<PhysicalDeviceMeshShaderPropertiesNV>;
 
-        // Constructors of Vulkan.PhysicalDeviceMeshShaderPropertiesNV
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -6002,7 +6002,7 @@ export namespace Vulkan {
     class DrawMeshTasksIndirectCommandNV {
         static $gtype: GObject.GType<DrawMeshTasksIndirectCommandNV>;
 
-        // Constructors of Vulkan.DrawMeshTasksIndirectCommandNV
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -6010,7 +6010,7 @@ export namespace Vulkan {
     class PhysicalDeviceFragmentShaderBarycentricFeaturesNV {
         static $gtype: GObject.GType<PhysicalDeviceFragmentShaderBarycentricFeaturesNV>;
 
-        // Constructors of Vulkan.PhysicalDeviceFragmentShaderBarycentricFeaturesNV
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -6018,7 +6018,7 @@ export namespace Vulkan {
     class PhysicalDeviceShaderImageFootprintFeaturesNV {
         static $gtype: GObject.GType<PhysicalDeviceShaderImageFootprintFeaturesNV>;
 
-        // Constructors of Vulkan.PhysicalDeviceShaderImageFootprintFeaturesNV
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -6026,7 +6026,7 @@ export namespace Vulkan {
     class PipelineViewportExclusiveScissorStateCreateInfoNV {
         static $gtype: GObject.GType<PipelineViewportExclusiveScissorStateCreateInfoNV>;
 
-        // Constructors of Vulkan.PipelineViewportExclusiveScissorStateCreateInfoNV
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -6034,7 +6034,7 @@ export namespace Vulkan {
     class PhysicalDeviceExclusiveScissorFeaturesNV {
         static $gtype: GObject.GType<PhysicalDeviceExclusiveScissorFeaturesNV>;
 
-        // Constructors of Vulkan.PhysicalDeviceExclusiveScissorFeaturesNV
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -6042,7 +6042,7 @@ export namespace Vulkan {
     class QueueFamilyCheckpointPropertiesNV {
         static $gtype: GObject.GType<QueueFamilyCheckpointPropertiesNV>;
 
-        // Constructors of Vulkan.QueueFamilyCheckpointPropertiesNV
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -6050,7 +6050,7 @@ export namespace Vulkan {
     class CheckpointDataNV {
         static $gtype: GObject.GType<CheckpointDataNV>;
 
-        // Constructors of Vulkan.CheckpointDataNV
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -6058,7 +6058,7 @@ export namespace Vulkan {
     class PhysicalDevicePCIBusInfoPropertiesEXT {
         static $gtype: GObject.GType<PhysicalDevicePCIBusInfoPropertiesEXT>;
 
-        // Constructors of Vulkan.PhysicalDevicePCIBusInfoPropertiesEXT
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -6066,7 +6066,7 @@ export namespace Vulkan {
     class DisplayNativeHdrSurfaceCapabilitiesAMD {
         static $gtype: GObject.GType<DisplayNativeHdrSurfaceCapabilitiesAMD>;
 
-        // Constructors of Vulkan.DisplayNativeHdrSurfaceCapabilitiesAMD
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -6074,7 +6074,7 @@ export namespace Vulkan {
     class SwapchainDisplayNativeHdrCreateInfoAMD {
         static $gtype: GObject.GType<SwapchainDisplayNativeHdrCreateInfoAMD>;
 
-        // Constructors of Vulkan.SwapchainDisplayNativeHdrCreateInfoAMD
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -6082,7 +6082,7 @@ export namespace Vulkan {
     class PhysicalDeviceFragmentDensityMapFeaturesEXT {
         static $gtype: GObject.GType<PhysicalDeviceFragmentDensityMapFeaturesEXT>;
 
-        // Constructors of Vulkan.PhysicalDeviceFragmentDensityMapFeaturesEXT
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -6090,7 +6090,7 @@ export namespace Vulkan {
     class PhysicalDeviceFragmentDensityMapPropertiesEXT {
         static $gtype: GObject.GType<PhysicalDeviceFragmentDensityMapPropertiesEXT>;
 
-        // Constructors of Vulkan.PhysicalDeviceFragmentDensityMapPropertiesEXT
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -6098,7 +6098,7 @@ export namespace Vulkan {
     class RenderPassFragmentDensityMapCreateInfoEXT {
         static $gtype: GObject.GType<RenderPassFragmentDensityMapCreateInfoEXT>;
 
-        // Constructors of Vulkan.RenderPassFragmentDensityMapCreateInfoEXT
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -6106,7 +6106,7 @@ export namespace Vulkan {
     class PhysicalDeviceScalarBlockLayoutFeaturesEXT {
         static $gtype: GObject.GType<PhysicalDeviceScalarBlockLayoutFeaturesEXT>;
 
-        // Constructors of Vulkan.PhysicalDeviceScalarBlockLayoutFeaturesEXT
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -6114,7 +6114,7 @@ export namespace Vulkan {
     class PhysicalDeviceMemoryBudgetPropertiesEXT {
         static $gtype: GObject.GType<PhysicalDeviceMemoryBudgetPropertiesEXT>;
 
-        // Constructors of Vulkan.PhysicalDeviceMemoryBudgetPropertiesEXT
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -6122,7 +6122,7 @@ export namespace Vulkan {
     class PhysicalDeviceMemoryPriorityFeaturesEXT {
         static $gtype: GObject.GType<PhysicalDeviceMemoryPriorityFeaturesEXT>;
 
-        // Constructors of Vulkan.PhysicalDeviceMemoryPriorityFeaturesEXT
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -6130,7 +6130,7 @@ export namespace Vulkan {
     class MemoryPriorityAllocateInfoEXT {
         static $gtype: GObject.GType<MemoryPriorityAllocateInfoEXT>;
 
-        // Constructors of Vulkan.MemoryPriorityAllocateInfoEXT
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -6138,7 +6138,7 @@ export namespace Vulkan {
     class PhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV {
         static $gtype: GObject.GType<PhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV>;
 
-        // Constructors of Vulkan.PhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -6146,7 +6146,7 @@ export namespace Vulkan {
     class DeviceAddress {
         static $gtype: GObject.GType<DeviceAddress>;
 
-        // Constructors of Vulkan.DeviceAddress
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -6154,7 +6154,7 @@ export namespace Vulkan {
     class PhysicalDeviceBufferDeviceAddressFeaturesEXT {
         static $gtype: GObject.GType<PhysicalDeviceBufferDeviceAddressFeaturesEXT>;
 
-        // Constructors of Vulkan.PhysicalDeviceBufferDeviceAddressFeaturesEXT
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -6162,7 +6162,7 @@ export namespace Vulkan {
     class PhysicalDeviceBufferAddressFeaturesEXT {
         static $gtype: GObject.GType<PhysicalDeviceBufferAddressFeaturesEXT>;
 
-        // Constructors of Vulkan.PhysicalDeviceBufferAddressFeaturesEXT
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -6170,7 +6170,7 @@ export namespace Vulkan {
     class BufferDeviceAddressInfoEXT {
         static $gtype: GObject.GType<BufferDeviceAddressInfoEXT>;
 
-        // Constructors of Vulkan.BufferDeviceAddressInfoEXT
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -6178,7 +6178,7 @@ export namespace Vulkan {
     class BufferDeviceAddressCreateInfoEXT {
         static $gtype: GObject.GType<BufferDeviceAddressCreateInfoEXT>;
 
-        // Constructors of Vulkan.BufferDeviceAddressCreateInfoEXT
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -6186,7 +6186,7 @@ export namespace Vulkan {
     class ImageStencilUsageCreateInfoEXT {
         static $gtype: GObject.GType<ImageStencilUsageCreateInfoEXT>;
 
-        // Constructors of Vulkan.ImageStencilUsageCreateInfoEXT
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -6194,7 +6194,7 @@ export namespace Vulkan {
     class ValidationFeatureEnableEXT {
         static $gtype: GObject.GType<ValidationFeatureEnableEXT>;
 
-        // Constructors of Vulkan.ValidationFeatureEnableEXT
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -6202,7 +6202,7 @@ export namespace Vulkan {
     class ValidationFeatureDisableEXT {
         static $gtype: GObject.GType<ValidationFeatureDisableEXT>;
 
-        // Constructors of Vulkan.ValidationFeatureDisableEXT
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -6210,7 +6210,7 @@ export namespace Vulkan {
     class ValidationFeaturesEXT {
         static $gtype: GObject.GType<ValidationFeaturesEXT>;
 
-        // Constructors of Vulkan.ValidationFeaturesEXT
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -6218,7 +6218,7 @@ export namespace Vulkan {
     class ComponentTypeNV {
         static $gtype: GObject.GType<ComponentTypeNV>;
 
-        // Constructors of Vulkan.ComponentTypeNV
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -6226,7 +6226,7 @@ export namespace Vulkan {
     class ScopeNV {
         static $gtype: GObject.GType<ScopeNV>;
 
-        // Constructors of Vulkan.ScopeNV
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -6234,7 +6234,7 @@ export namespace Vulkan {
     class CooperativeMatrixPropertiesNV {
         static $gtype: GObject.GType<CooperativeMatrixPropertiesNV>;
 
-        // Constructors of Vulkan.CooperativeMatrixPropertiesNV
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -6242,7 +6242,7 @@ export namespace Vulkan {
     class PhysicalDeviceCooperativeMatrixFeaturesNV {
         static $gtype: GObject.GType<PhysicalDeviceCooperativeMatrixFeaturesNV>;
 
-        // Constructors of Vulkan.PhysicalDeviceCooperativeMatrixFeaturesNV
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -6250,7 +6250,7 @@ export namespace Vulkan {
     class PhysicalDeviceCooperativeMatrixPropertiesNV {
         static $gtype: GObject.GType<PhysicalDeviceCooperativeMatrixPropertiesNV>;
 
-        // Constructors of Vulkan.PhysicalDeviceCooperativeMatrixPropertiesNV
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -6258,7 +6258,7 @@ export namespace Vulkan {
     class CoverageReductionModeNV {
         static $gtype: GObject.GType<CoverageReductionModeNV>;
 
-        // Constructors of Vulkan.CoverageReductionModeNV
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -6266,7 +6266,7 @@ export namespace Vulkan {
     class PipelineCoverageReductionStateCreateFlagsNV {
         static $gtype: GObject.GType<PipelineCoverageReductionStateCreateFlagsNV>;
 
-        // Constructors of Vulkan.PipelineCoverageReductionStateCreateFlagsNV
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -6274,7 +6274,7 @@ export namespace Vulkan {
     class PhysicalDeviceCoverageReductionModeFeaturesNV {
         static $gtype: GObject.GType<PhysicalDeviceCoverageReductionModeFeaturesNV>;
 
-        // Constructors of Vulkan.PhysicalDeviceCoverageReductionModeFeaturesNV
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -6282,7 +6282,7 @@ export namespace Vulkan {
     class PipelineCoverageReductionStateCreateInfoNV {
         static $gtype: GObject.GType<PipelineCoverageReductionStateCreateInfoNV>;
 
-        // Constructors of Vulkan.PipelineCoverageReductionStateCreateInfoNV
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -6290,7 +6290,7 @@ export namespace Vulkan {
     class FramebufferMixedSamplesCombinationNV {
         static $gtype: GObject.GType<FramebufferMixedSamplesCombinationNV>;
 
-        // Constructors of Vulkan.FramebufferMixedSamplesCombinationNV
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -6298,7 +6298,7 @@ export namespace Vulkan {
     class PhysicalDeviceYcbcrImageArraysFeaturesEXT {
         static $gtype: GObject.GType<PhysicalDeviceYcbcrImageArraysFeaturesEXT>;
 
-        // Constructors of Vulkan.PhysicalDeviceYcbcrImageArraysFeaturesEXT
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -6306,7 +6306,7 @@ export namespace Vulkan {
     class HeadlessSurfaceCreateFlagsEXT {
         static $gtype: GObject.GType<HeadlessSurfaceCreateFlagsEXT>;
 
-        // Constructors of Vulkan.HeadlessSurfaceCreateFlagsEXT
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -6314,7 +6314,7 @@ export namespace Vulkan {
     class HeadlessSurfaceCreateInfoEXT {
         static $gtype: GObject.GType<HeadlessSurfaceCreateInfoEXT>;
 
-        // Constructors of Vulkan.HeadlessSurfaceCreateInfoEXT
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -6322,7 +6322,7 @@ export namespace Vulkan {
     class PhysicalDeviceHostQueryResetFeaturesEXT {
         static $gtype: GObject.GType<PhysicalDeviceHostQueryResetFeaturesEXT>;
 
-        // Constructors of Vulkan.PhysicalDeviceHostQueryResetFeaturesEXT
+        // Constructors
 
         _init(...args: any[]): void;
     }

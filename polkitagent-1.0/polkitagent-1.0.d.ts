@@ -69,13 +69,13 @@ export namespace PolkitAgent {
     abstract class Listener extends GObject.Object {
         static $gtype: GObject.GType<Listener>;
 
-        // Constructors of PolkitAgent.Listener
+        // Constructors
 
         constructor(properties?: Partial<Listener.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of PolkitAgent.Listener
+        // Static methods
 
         /**
          * Unregisters `listener`.
@@ -83,7 +83,7 @@ export namespace PolkitAgent {
          */
         static unregister(registration_handle?: any | null): void;
 
-        // Own virtual methods of PolkitAgent.Listener
+        // Virtual methods
 
         /**
          * Called on a registered authentication agent (see
@@ -129,7 +129,7 @@ export namespace PolkitAgent {
          */
         vfunc_initiate_authentication_finish(res: Gio.AsyncResult): boolean;
 
-        // Own methods of PolkitAgent.Listener
+        // Methods
 
         /**
          * Called on a registered authentication agent (see
@@ -277,7 +277,7 @@ export namespace PolkitAgent {
     class Session extends GObject.Object {
         static $gtype: GObject.GType<Session>;
 
-        // Own properties of PolkitAgent.Session
+        // Properties
 
         /**
          * The cookie obtained from the PolicyKit daemon
@@ -288,7 +288,7 @@ export namespace PolkitAgent {
          */
         get identity(): Polkit.Identity;
 
-        // Constructors of PolkitAgent.Session
+        // Constructors
 
         constructor(properties?: Partial<Session.ConstructorProps>, ...args: any[]);
 
@@ -296,7 +296,7 @@ export namespace PolkitAgent {
 
         static ['new'](identity: Polkit.Identity, cookie: string): Session;
 
-        // Own signals of PolkitAgent.Session
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -314,7 +314,7 @@ export namespace PolkitAgent {
         connect_after(signal: 'show-info', callback: (_source: this, text: string) => void): number;
         emit(signal: 'show-info', text: string): void;
 
-        // Own methods of PolkitAgent.Session
+        // Methods
 
         /**
          * Cancels an authentication session. This will make `session` emit the #PolkitAgentSession::completed
@@ -352,7 +352,7 @@ export namespace PolkitAgent {
     class TextListener extends Listener implements Gio.Initable {
         static $gtype: GObject.GType<TextListener>;
 
-        // Constructors of PolkitAgent.TextListener
+        // Constructors
 
         constructor(properties?: Partial<TextListener.ConstructorProps>, ...args: any[]);
 

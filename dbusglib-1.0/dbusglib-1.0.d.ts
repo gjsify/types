@@ -25,7 +25,7 @@ export namespace DBusGLib {
     class Proxy extends GObject.Object {
         static $gtype: GObject.GType<Proxy>;
 
-        // Constructors of DBusGLib.Proxy
+        // Constructors
 
         constructor(properties?: Partial<Proxy.ConstructorProps>, ...args: any[]);
 
@@ -35,7 +35,7 @@ export namespace DBusGLib {
     class Connection {
         static $gtype: GObject.GType<Connection>;
 
-        // Constructors of DBusGLib.Connection
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -43,7 +43,7 @@ export namespace DBusGLib {
     class MethodInvocation {
         static $gtype: GObject.GType<MethodInvocation>;
 
-        // Constructors of DBusGLib.MethodInvocation
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -51,7 +51,7 @@ export namespace DBusGLib {
     class ProxyClass {
         static $gtype: GObject.GType<ProxyClass>;
 
-        // Constructors of DBusGLib.ProxyClass
+        // Constructors
 
         _init(...args: any[]): void;
     }

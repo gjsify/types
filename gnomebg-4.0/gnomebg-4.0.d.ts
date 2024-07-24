@@ -46,7 +46,7 @@ export namespace GnomeBG {
     class BG extends GObject.Object {
         static $gtype: GObject.GType<BG>;
 
-        // Constructors of GnomeBG.BG
+        // Constructors
 
         constructor(properties?: Partial<BG.ConstructorProps>, ...args: any[]);
 
@@ -54,7 +54,7 @@ export namespace GnomeBG {
 
         static ['new'](): BG;
 
-        // Own signals of GnomeBG.BG
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -66,7 +66,7 @@ export namespace GnomeBG {
         connect_after(signal: 'transitioned', callback: (_source: this) => void): number;
         emit(signal: 'transitioned'): void;
 
-        // Own methods of GnomeBG.BG
+        // Methods
 
         changes_with_time(): boolean;
         /**
@@ -138,7 +138,7 @@ export namespace GnomeBG {
     class BGSlideShow extends GObject.Object {
         static $gtype: GObject.GType<BGSlideShow>;
 
-        // Own properties of GnomeBG.BGSlideShow
+        // Properties
 
         get file(): Gio.File;
         get has_multiple_sizes(): boolean;
@@ -148,11 +148,11 @@ export namespace GnomeBG {
         get total_duration(): number;
         get totalDuration(): number;
 
-        // Own fields of GnomeBG.BGSlideShow
+        // Fields
 
         parent_object: GObject.Object;
 
-        // Constructors of GnomeBG.BGSlideShow
+        // Constructors
 
         constructor(properties?: Partial<BGSlideShow.ConstructorProps>, ...args: any[]);
 
@@ -160,7 +160,7 @@ export namespace GnomeBG {
 
         static ['new'](filename: string): BGSlideShow;
 
-        // Own methods of GnomeBG.BGSlideShow
+        // Methods
 
         /**
          * Returns the current slides progress.
@@ -217,7 +217,7 @@ export namespace GnomeBG {
     abstract class BGSlideShowPrivate {
         static $gtype: GObject.GType<BGSlideShowPrivate>;
 
-        // Constructors of GnomeBG.BGSlideShowPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }

@@ -22,7 +22,7 @@ export namespace GModule {
     class ModuleError extends GLib.Error {
         static $gtype: GObject.GType<ModuleError>;
 
-        // Static fields of GModule.ModuleError
+        // Static fields
 
         /**
          * there was an error loading or opening a module file
@@ -33,7 +33,7 @@ export namespace GModule {
          */
         static CHECK_FAILED: number;
 
-        // Constructors of GModule.ModuleError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
@@ -119,11 +119,11 @@ export namespace GModule {
     abstract class Module {
         static $gtype: GObject.GType<Module>;
 
-        // Constructors of GModule.Module
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own static methods of GModule.Module
+        // Static methods
 
         /**
          * A portable way to build the filename of a module. The platform-specific
@@ -153,7 +153,7 @@ export namespace GModule {
          */
         static supported(): boolean;
 
-        // Own methods of GModule.Module
+        // Methods
 
         /**
          * Closes a module.

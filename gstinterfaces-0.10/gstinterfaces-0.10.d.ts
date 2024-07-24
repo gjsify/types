@@ -489,19 +489,19 @@ export namespace GstInterfaces {
     class ColorBalanceChannel extends GObject.Object {
         static $gtype: GObject.GType<ColorBalanceChannel>;
 
-        // Own fields of GstInterfaces.ColorBalanceChannel
+        // Fields
 
         label: string;
         min_value: number;
         max_value: number;
 
-        // Constructors of GstInterfaces.ColorBalanceChannel
+        // Constructors
 
         constructor(properties?: Partial<ColorBalanceChannel.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of GstInterfaces.ColorBalanceChannel
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -520,11 +520,11 @@ export namespace GstInterfaces {
     class MixerOptions extends MixerTrack {
         static $gtype: GObject.GType<MixerOptions>;
 
-        // Own fields of GstInterfaces.MixerOptions
+        // Fields
 
         values: any[];
 
-        // Constructors of GstInterfaces.MixerOptions
+        // Constructors
 
         constructor(properties?: Partial<MixerOptions.ConstructorProps>, ...args: any[]);
 
@@ -552,7 +552,7 @@ export namespace GstInterfaces {
     class MixerTrack extends GObject.Object {
         static $gtype: GObject.GType<MixerTrack>;
 
-        // Own properties of GstInterfaces.MixerTrack
+        // Properties
 
         get flags(): number;
         get index(): number;
@@ -566,7 +566,7 @@ export namespace GstInterfaces {
         get untranslated_label(): string;
         get untranslatedLabel(): string;
 
-        // Constructors of GstInterfaces.MixerTrack
+        // Constructors
 
         constructor(properties?: Partial<MixerTrack.ConstructorProps>, ...args: any[]);
 
@@ -592,7 +592,7 @@ export namespace GstInterfaces {
     class TunerChannel extends GObject.Object {
         static $gtype: GObject.GType<TunerChannel>;
 
-        // Own fields of GstInterfaces.TunerChannel
+        // Fields
 
         label: string;
         flags: TunerChannelFlags;
@@ -602,13 +602,13 @@ export namespace GstInterfaces {
         min_signal: number;
         max_signal: number;
 
-        // Constructors of GstInterfaces.TunerChannel
+        // Constructors
 
         constructor(properties?: Partial<TunerChannel.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of GstInterfaces.TunerChannel
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -630,11 +630,11 @@ export namespace GstInterfaces {
     class TunerNorm extends GObject.Object {
         static $gtype: GObject.GType<TunerNorm>;
 
-        // Own fields of GstInterfaces.TunerNorm
+        // Fields
 
         label: string;
 
-        // Constructors of GstInterfaces.TunerNorm
+        // Constructors
 
         constructor(properties?: Partial<TunerNorm.ConstructorProps>, ...args: any[]);
 
@@ -645,11 +645,11 @@ export namespace GstInterfaces {
     class ColorBalanceClass {
         static $gtype: GObject.GType<ColorBalanceClass>;
 
-        // Own fields of GstInterfaces.ColorBalanceClass
+        // Fields
 
         balance_type: ColorBalanceType;
 
-        // Constructors of GstInterfaces.ColorBalanceClass
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -657,11 +657,11 @@ export namespace GstInterfaces {
     class MixerClass {
         static $gtype: GObject.GType<MixerClass>;
 
-        // Own fields of GstInterfaces.MixerClass
+        // Fields
 
         mixer_type: MixerType;
 
-        // Constructors of GstInterfaces.MixerClass
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -675,7 +675,7 @@ export namespace GstInterfaces {
     class TunerClass {
         static $gtype: GObject.GType<TunerClass>;
 
-        // Constructors of GstInterfaces.TunerClass
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -688,7 +688,7 @@ export namespace GstInterfaces {
     class XOverlayClass {
         static $gtype: GObject.GType<XOverlayClass>;
 
-        // Constructors of GstInterfaces.XOverlayClass
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -704,7 +704,7 @@ export namespace GstInterfaces {
         prototype: ColorBalance;
     }
     interface ColorBalance extends Gst.Element {
-        // Own methods of GstInterfaces.ColorBalance
+        // Methods
 
         /**
          * Get the #GstColorBalanceType of this implementation.
@@ -760,7 +760,7 @@ export namespace GstInterfaces {
         prototype: Mixer;
     }
     interface Mixer extends Gst.Element {
-        // Own methods of GstInterfaces.Mixer
+        // Methods
 
         /**
          * Get the set of supported flags for this mixer implementation.
@@ -902,7 +902,7 @@ export namespace GstInterfaces {
         prototype: Navigation;
     }
     interface Navigation extends GObject.Object {
-        // Own methods of GstInterfaces.Navigation
+        // Methods
 
         /**
          * Sends the indicated command to the navigation interface.
@@ -923,7 +923,7 @@ export namespace GstInterfaces {
          */
         send_mouse_event(event: string, button: number, x: number, y: number): void;
 
-        // Own virtual methods of GstInterfaces.Navigation
+        // Virtual methods
 
         vfunc_send_event(structure: Gst.Structure): void;
     }
@@ -941,7 +941,7 @@ export namespace GstInterfaces {
         prototype: PropertyProbe;
     }
     interface PropertyProbe extends GObject.Object {
-        // Own methods of GstInterfaces.PropertyProbe
+        // Methods
 
         /**
          * Get a list of properties for which probing is supported.
@@ -1011,7 +1011,7 @@ export namespace GstInterfaces {
          */
         probe_property_name(name: string): void;
 
-        // Own virtual methods of GstInterfaces.PropertyProbe
+        // Virtual methods
 
         /**
          * Get a list of properties for which probing is supported.
@@ -1039,14 +1039,14 @@ export namespace GstInterfaces {
         prototype: StreamVolume;
     }
     interface StreamVolume extends GObject.Object {
-        // Own properties of GstInterfaces.StreamVolume
+        // Properties
 
         get mute(): boolean;
         set mute(val: boolean);
         get volume(): number;
         set volume(val: number);
 
-        // Own methods of GstInterfaces.StreamVolume
+        // Methods
 
         get_mute(): boolean;
         get_volume(format: StreamVolumeFormat): number;
@@ -1067,7 +1067,7 @@ export namespace GstInterfaces {
         prototype: Tuner;
     }
     interface Tuner extends Gst.Element {
-        // Own methods of GstInterfaces.Tuner
+        // Methods
 
         /**
          * Called by elements implementing the #GstTuner interface when the
@@ -1174,7 +1174,7 @@ export namespace GstInterfaces {
         prototype: VideoOrientation;
     }
     interface VideoOrientation extends Gst.Element {
-        // Own methods of GstInterfaces.VideoOrientation
+        // Methods
 
         /**
          * Get the horizontal centering offset from the given object.
@@ -1225,7 +1225,7 @@ export namespace GstInterfaces {
          */
         set_vflip(flip: boolean): boolean;
 
-        // Own virtual methods of GstInterfaces.VideoOrientation
+        // Virtual methods
 
         /**
          * Get the horizontal centering offset from the given object.
@@ -1282,7 +1282,7 @@ export namespace GstInterfaces {
         prototype: XOverlay;
     }
     interface XOverlay extends Gst.Element {
-        // Own methods of GstInterfaces.XOverlay
+        // Methods
 
         /**
          * Tell an overlay that it has been exposed. This will redraw the current frame

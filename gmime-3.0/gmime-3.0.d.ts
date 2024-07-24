@@ -1708,12 +1708,12 @@ export namespace GMime {
     class ApplicationPkcs7Mime extends Part {
         static $gtype: GObject.GType<ApplicationPkcs7Mime>;
 
-        // Own fields of GMime.ApplicationPkcs7Mime
+        // Fields
 
         parent_object: Part;
         smime_type: SecureMimeType;
 
-        // Constructors of GMime.ApplicationPkcs7Mime
+        // Constructors
 
         constructor(properties?: Partial<ApplicationPkcs7Mime.ConstructorProps>, ...args: any[]);
 
@@ -1724,7 +1724,7 @@ export namespace GMime {
 
         static ['new'](...args: never[]): any;
 
-        // Own static methods of GMime.ApplicationPkcs7Mime
+        // Static methods
 
         /**
          * Attempts to encrypt the `entity` MIME part to the public keys of `recipients`
@@ -1742,7 +1742,7 @@ export namespace GMime {
          */
         static sign(entity: Object, userid: string): ApplicationPkcs7Mime | null;
 
-        // Own methods of GMime.ApplicationPkcs7Mime
+        // Methods
 
         /**
          * Attempts to decrypt the encrypted application/pkcs7-mime part.
@@ -1791,13 +1791,13 @@ export namespace GMime {
     class AutocryptHeader extends GObject.Object {
         static $gtype: GObject.GType<AutocryptHeader>;
 
-        // Own fields of GMime.AutocryptHeader
+        // Fields
 
         parent_object: GObject.Object;
         address: InternetAddressMailbox;
         prefer_encrypt: AutocryptPreferEncrypt;
 
-        // Constructors of GMime.AutocryptHeader
+        // Constructors
 
         constructor(properties?: Partial<AutocryptHeader.ConstructorProps>, ...args: any[]);
 
@@ -1807,7 +1807,7 @@ export namespace GMime {
 
         static new_from_string(string: string): AutocryptHeader;
 
-        // Own methods of GMime.AutocryptHeader
+        // Methods
 
         /**
          * If address and type already match between `src` and `dst,` copy
@@ -1913,11 +1913,11 @@ export namespace GMime {
     class AutocryptHeaderList extends GObject.Object {
         static $gtype: GObject.GType<AutocryptHeaderList>;
 
-        // Own fields of GMime.AutocryptHeaderList
+        // Fields
 
         parent_object: GObject.Object;
 
-        // Constructors of GMime.AutocryptHeaderList
+        // Constructors
 
         constructor(properties?: Partial<AutocryptHeaderList.ConstructorProps>, ...args: any[]);
 
@@ -1925,7 +1925,7 @@ export namespace GMime {
 
         static ['new'](): AutocryptHeaderList;
 
-        // Own methods of GMime.AutocryptHeaderList
+        // Methods
 
         /**
          * Adds a the passed #GMimeAutocryptHeader to the list.
@@ -1974,7 +1974,7 @@ export namespace GMime {
     class Certificate extends GObject.Object {
         static $gtype: GObject.GType<Certificate>;
 
-        // Own fields of GMime.Certificate
+        // Fields
 
         parent_object: GObject.Object;
         pubkey_algo: PubKeyAlgo;
@@ -1991,7 +1991,7 @@ export namespace GMime {
         user_id: string;
         id_validity: Validity;
 
-        // Constructors of GMime.Certificate
+        // Constructors
 
         constructor(properties?: Partial<Certificate.ConstructorProps>, ...args: any[]);
 
@@ -1999,7 +1999,7 @@ export namespace GMime {
 
         static ['new'](): Certificate;
 
-        // Own methods of GMime.Certificate
+        // Methods
 
         /**
          * Get the creation date of the certificate's key.
@@ -2180,12 +2180,12 @@ export namespace GMime {
     class CertificateList extends GObject.Object {
         static $gtype: GObject.GType<CertificateList>;
 
-        // Own fields of GMime.CertificateList
+        // Fields
 
         parent_object: GObject.Object;
         array: any[];
 
-        // Constructors of GMime.CertificateList
+        // Constructors
 
         constructor(properties?: Partial<CertificateList.ConstructorProps>, ...args: any[]);
 
@@ -2193,7 +2193,7 @@ export namespace GMime {
 
         static ['new'](): CertificateList;
 
-        // Own methods of GMime.CertificateList
+        // Methods
 
         /**
          * Adds a #GMimeCertificate to the #GMimeCertificateList.
@@ -2270,13 +2270,13 @@ export namespace GMime {
     class ContentDisposition extends GObject.Object {
         static $gtype: GObject.GType<ContentDisposition>;
 
-        // Own fields of GMime.ContentDisposition
+        // Fields
 
         parent_object: GObject.Object;
         disposition: string;
         params: ParamList;
 
-        // Constructors of GMime.ContentDisposition
+        // Constructors
 
         constructor(properties?: Partial<ContentDisposition.ConstructorProps>, ...args: any[]);
 
@@ -2284,7 +2284,7 @@ export namespace GMime {
 
         static ['new'](): ContentDisposition;
 
-        // Own static methods of GMime.ContentDisposition
+        // Static methods
 
         /**
          * Parses the input string into a #GMimeContentDisposition object.
@@ -2293,7 +2293,7 @@ export namespace GMime {
          */
         static parse(options: ParserOptions | null, str: string): ContentDisposition;
 
-        // Own methods of GMime.ContentDisposition
+        // Methods
 
         /**
          * Encodes the Content-Disposition header.
@@ -2353,14 +2353,14 @@ export namespace GMime {
     class ContentType extends GObject.Object {
         static $gtype: GObject.GType<ContentType>;
 
-        // Own fields of GMime.ContentType
+        // Fields
 
         parent_object: GObject.Object;
         type: string;
         subtype: string;
         params: ParamList;
 
-        // Constructors of GMime.ContentType
+        // Constructors
 
         constructor(properties?: Partial<ContentType.ConstructorProps>, ...args: any[]);
 
@@ -2368,7 +2368,7 @@ export namespace GMime {
 
         static ['new'](type: string, subtype: string): ContentType;
 
-        // Own static methods of GMime.ContentType
+        // Static methods
 
         /**
          * Parses the input string into a #GMimeContentType object.
@@ -2377,7 +2377,7 @@ export namespace GMime {
          */
         static parse(options: ParserOptions | null, str: string): ContentType;
 
-        // Own methods of GMime.ContentType
+        // Methods
 
         /**
          * Encodes the Content-Disposition header.
@@ -2453,12 +2453,12 @@ export namespace GMime {
     class CryptoContext extends GObject.Object {
         static $gtype: GObject.GType<CryptoContext>;
 
-        // Own fields of GMime.CryptoContext
+        // Fields
 
         parent_object: GObject.Object;
         request_passwd: PasswordRequestFunc;
 
-        // Constructors of GMime.CryptoContext
+        // Constructors
 
         constructor(properties?: Partial<CryptoContext.ConstructorProps>, ...args: any[]);
 
@@ -2466,7 +2466,7 @@ export namespace GMime {
 
         static ['new'](protocol: string): CryptoContext;
 
-        // Own virtual methods of GMime.CryptoContext
+        // Virtual methods
 
         /**
          * Decrypts the ciphertext input stream and writes the resulting cleartext
@@ -2576,7 +2576,7 @@ export namespace GMime {
             ostream?: Stream | null,
         ): SignatureList | null;
 
-        // Own methods of GMime.CryptoContext
+        // Methods
 
         /**
          * Decrypts the ciphertext input stream and writes the resulting cleartext
@@ -2710,13 +2710,13 @@ export namespace GMime {
     class DataWrapper extends GObject.Object {
         static $gtype: GObject.GType<DataWrapper>;
 
-        // Own fields of GMime.DataWrapper
+        // Fields
 
         parent_object: GObject.Object;
         encoding: ContentEncoding;
         stream: Stream;
 
-        // Constructors of GMime.DataWrapper
+        // Constructors
 
         constructor(properties?: Partial<DataWrapper.ConstructorProps>, ...args: any[]);
 
@@ -2726,7 +2726,7 @@ export namespace GMime {
 
         static new_with_stream(stream: Stream, encoding: ContentEncoding): DataWrapper;
 
-        // Own virtual methods of GMime.DataWrapper
+        // Virtual methods
 
         /**
          * Writes the raw (decoded) data to the output stream.
@@ -2734,7 +2734,7 @@ export namespace GMime {
          */
         vfunc_write_to_stream(stream: Stream): number;
 
-        // Own methods of GMime.DataWrapper
+        // Methods
 
         /**
          * Gets the encoding type of the stream wrapped by `wrapper`.
@@ -2781,7 +2781,7 @@ export namespace GMime {
     class DecryptResult extends GObject.Object {
         static $gtype: GObject.GType<DecryptResult>;
 
-        // Own fields of GMime.DecryptResult
+        // Fields
 
         parent_object: GObject.Object;
         recipients: CertificateList;
@@ -2790,7 +2790,7 @@ export namespace GMime {
         mdc: DigestAlgo;
         session_key: string;
 
-        // Constructors of GMime.DecryptResult
+        // Constructors
 
         constructor(properties?: Partial<DecryptResult.ConstructorProps>, ...args: any[]);
 
@@ -2798,7 +2798,7 @@ export namespace GMime {
 
         static ['new'](): DecryptResult;
 
-        // Own methods of GMime.DecryptResult
+        // Methods
 
         /**
          * Get the cipher algorithm used.
@@ -2864,7 +2864,7 @@ export namespace GMime {
     abstract class Filter extends GObject.Object {
         static $gtype: GObject.GType<Filter>;
 
-        // Own fields of GMime.Filter
+        // Fields
 
         parent_object: GObject.Object;
         priv: any;
@@ -2877,13 +2877,13 @@ export namespace GMime {
         backsize: number;
         backlen: number;
 
-        // Constructors of GMime.Filter
+        // Constructors
 
         constructor(properties?: Partial<Filter.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of GMime.Filter
+        // Virtual methods
 
         /**
          * Completes the filtering.
@@ -2906,7 +2906,7 @@ export namespace GMime {
          */
         vfunc_reset(): void;
 
-        // Own methods of GMime.Filter
+        // Methods
 
         /**
          * Sets number of bytes backed up on the input, new calls replace
@@ -2955,11 +2955,11 @@ export namespace GMime {
     class FilterBasic extends Filter {
         static $gtype: GObject.GType<FilterBasic>;
 
-        // Own fields of GMime.FilterBasic
+        // Fields
 
         parent_object: Filter;
 
-        // Constructors of GMime.FilterBasic
+        // Constructors
 
         constructor(properties?: Partial<FilterBasic.ConstructorProps>, ...args: any[]);
 
@@ -2981,7 +2981,7 @@ export namespace GMime {
     class FilterBest extends Filter {
         static $gtype: GObject.GType<FilterBest>;
 
-        // Own fields of GMime.FilterBest
+        // Fields
 
         parent_object: Filter;
         flags: FilterBestFlags;
@@ -2996,7 +2996,7 @@ export namespace GMime {
         startline: number;
         midline: number;
 
-        // Constructors of GMime.FilterBest
+        // Constructors
 
         constructor(properties?: Partial<FilterBest.ConstructorProps>, ...args: any[]);
 
@@ -3004,7 +3004,7 @@ export namespace GMime {
 
         static ['new'](flags: FilterBestFlags): FilterBest;
 
-        // Own methods of GMime.FilterBest
+        // Methods
 
         /**
          * Calculates the best charset for encoding the content filtered
@@ -3034,14 +3034,14 @@ export namespace GMime {
     class FilterCharset extends Filter {
         static $gtype: GObject.GType<FilterCharset>;
 
-        // Own fields of GMime.FilterCharset
+        // Fields
 
         parent_object: Filter;
         from_charset: string;
         to_charset: string;
         cd: any;
 
-        // Constructors of GMime.FilterCharset
+        // Constructors
 
         constructor(properties?: Partial<FilterCharset.ConstructorProps>, ...args: any[]);
 
@@ -3062,11 +3062,11 @@ export namespace GMime {
     class FilterChecksum extends Filter {
         static $gtype: GObject.GType<FilterChecksum>;
 
-        // Own fields of GMime.FilterChecksum
+        // Fields
 
         parent_object: Filter;
 
-        // Constructors of GMime.FilterChecksum
+        // Constructors
 
         constructor(properties?: Partial<FilterChecksum.ConstructorProps>, ...args: any[]);
 
@@ -3074,7 +3074,7 @@ export namespace GMime {
 
         static ['new'](type: GLib.ChecksumType): FilterChecksum;
 
-        // Own methods of GMime.FilterChecksum
+        // Methods
 
         /**
          * Outputs the checksum digest into `digest`.
@@ -3101,13 +3101,13 @@ export namespace GMime {
     class FilterDos2Unix extends Filter {
         static $gtype: GObject.GType<FilterDos2Unix>;
 
-        // Own fields of GMime.FilterDos2Unix
+        // Fields
 
         parent_object: Filter;
         ensure_newline: boolean;
         pc: number;
 
-        // Constructors of GMime.FilterDos2Unix
+        // Constructors
 
         constructor(properties?: Partial<FilterDos2Unix.ConstructorProps>, ...args: any[]);
 
@@ -3129,13 +3129,13 @@ export namespace GMime {
     class FilterEnriched extends Filter {
         static $gtype: GObject.GType<FilterEnriched>;
 
-        // Own fields of GMime.FilterEnriched
+        // Fields
 
         parent_object: Filter;
         flags: number;
         nofill: number;
 
-        // Constructors of GMime.FilterEnriched
+        // Constructors
 
         constructor(properties?: Partial<FilterEnriched.ConstructorProps>, ...args: any[]);
 
@@ -3156,13 +3156,13 @@ export namespace GMime {
     class FilterFrom extends Filter {
         static $gtype: GObject.GType<FilterFrom>;
 
-        // Own fields of GMime.FilterFrom
+        // Fields
 
         parent_object: Filter;
         mode: FilterFromMode;
         midline: boolean;
 
-        // Constructors of GMime.FilterFrom
+        // Constructors
 
         constructor(properties?: Partial<FilterFrom.ConstructorProps>, ...args: any[]);
 
@@ -3183,14 +3183,14 @@ export namespace GMime {
     class FilterGZip extends Filter {
         static $gtype: GObject.GType<FilterGZip>;
 
-        // Own fields of GMime.FilterGZip
+        // Fields
 
         parent_object: Filter;
         priv: any;
         mode: FilterGZipMode;
         level: number;
 
-        // Constructors of GMime.FilterGZip
+        // Constructors
 
         constructor(properties?: Partial<FilterGZip.ConstructorProps>, ...args: any[]);
 
@@ -3198,7 +3198,7 @@ export namespace GMime {
 
         static ['new'](mode: FilterGZipMode, level: number): FilterGZip;
 
-        // Own methods of GMime.FilterGZip
+        // Methods
 
         /**
          * Gets the comment that was either previously set or retrieved when decoding a gzip stream.
@@ -3234,7 +3234,7 @@ export namespace GMime {
     class FilterHTML extends Filter {
         static $gtype: GObject.GType<FilterHTML>;
 
-        // Own fields of GMime.FilterHTML
+        // Fields
 
         parent_object: Filter;
         scanner: any;
@@ -3244,7 +3244,7 @@ export namespace GMime {
         pre_open: number;
         citation_depth: number;
 
-        // Constructors of GMime.FilterHTML
+        // Constructors
 
         constructor(properties?: Partial<FilterHTML.ConstructorProps>, ...args: any[]);
 
@@ -3265,11 +3265,11 @@ export namespace GMime {
     class FilterOpenPGP extends Filter {
         static $gtype: GObject.GType<FilterOpenPGP>;
 
-        // Own fields of GMime.FilterOpenPGP
+        // Fields
 
         parent_object: Filter;
 
-        // Constructors of GMime.FilterOpenPGP
+        // Constructors
 
         constructor(properties?: Partial<FilterOpenPGP.ConstructorProps>, ...args: any[]);
 
@@ -3277,7 +3277,7 @@ export namespace GMime {
 
         static ['new'](): FilterOpenPGP;
 
-        // Own methods of GMime.FilterOpenPGP
+        // Methods
 
         /**
          * Gets the stream offset of the beginning of the OpenPGP data block, if any have been found.
@@ -3308,12 +3308,12 @@ export namespace GMime {
     class FilterSmtpData extends Filter {
         static $gtype: GObject.GType<FilterSmtpData>;
 
-        // Own fields of GMime.FilterSmtpData
+        // Fields
 
         parent_object: Filter;
         bol: boolean;
 
-        // Constructors of GMime.FilterSmtpData
+        // Constructors
 
         constructor(properties?: Partial<FilterSmtpData.ConstructorProps>, ...args: any[]);
 
@@ -3334,11 +3334,11 @@ export namespace GMime {
     class FilterStrip extends Filter {
         static $gtype: GObject.GType<FilterStrip>;
 
-        // Own fields of GMime.FilterStrip
+        // Fields
 
         parent_object: Filter;
 
-        // Constructors of GMime.FilterStrip
+        // Constructors
 
         constructor(properties?: Partial<FilterStrip.ConstructorProps>, ...args: any[]);
 
@@ -3359,13 +3359,13 @@ export namespace GMime {
     class FilterUnix2Dos extends Filter {
         static $gtype: GObject.GType<FilterUnix2Dos>;
 
-        // Own fields of GMime.FilterUnix2Dos
+        // Fields
 
         parent_object: Filter;
         ensure_newline: boolean;
         pc: number;
 
-        // Constructors of GMime.FilterUnix2Dos
+        // Constructors
 
         constructor(properties?: Partial<FilterUnix2Dos.ConstructorProps>, ...args: any[]);
 
@@ -3388,13 +3388,13 @@ export namespace GMime {
     class FilterWindows extends Filter {
         static $gtype: GObject.GType<FilterWindows>;
 
-        // Own fields of GMime.FilterWindows
+        // Fields
 
         parent_object: Filter;
         is_windows: boolean;
         claimed_charset: string;
 
-        // Constructors of GMime.FilterWindows
+        // Constructors
 
         constructor(properties?: Partial<FilterWindows.ConstructorProps>, ...args: any[]);
 
@@ -3402,7 +3402,7 @@ export namespace GMime {
 
         static ['new'](claimed_charset: string): FilterWindows;
 
-        // Own methods of GMime.FilterWindows
+        // Methods
 
         /**
          * Determines whether or not a Windows-CP125# charset has been
@@ -3429,7 +3429,7 @@ export namespace GMime {
     class FilterYenc extends Filter {
         static $gtype: GObject.GType<FilterYenc>;
 
-        // Own fields of GMime.FilterYenc
+        // Fields
 
         parent_object: Filter;
         encode: boolean;
@@ -3438,7 +3438,7 @@ export namespace GMime {
         pcrc: number;
         crc: number;
 
-        // Constructors of GMime.FilterYenc
+        // Constructors
 
         constructor(properties?: Partial<FilterYenc.ConstructorProps>, ...args: any[]);
 
@@ -3446,7 +3446,7 @@ export namespace GMime {
 
         static ['new'](encode: boolean): FilterYenc;
 
-        // Own methods of GMime.FilterYenc
+        // Methods
 
         /**
          * Get the computed crc or (guint32) -1 on fail.
@@ -3482,7 +3482,7 @@ export namespace GMime {
     class GpgContext extends CryptoContext {
         static $gtype: GObject.GType<GpgContext>;
 
-        // Constructors of GMime.GpgContext
+        // Constructors
 
         constructor(properties?: Partial<GpgContext.ConstructorProps>, ...args: any[]);
 
@@ -3503,13 +3503,13 @@ export namespace GMime {
     class Header extends GObject.Object {
         static $gtype: GObject.GType<Header>;
 
-        // Constructors of GMime.Header
+        // Constructors
 
         constructor(properties?: Partial<Header.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of GMime.Header
+        // Methods
 
         /**
          * Parses the `value` and then re-formats it to conform to the formatting options,
@@ -3636,11 +3636,11 @@ export namespace GMime {
     class HeaderList extends GObject.Object {
         static $gtype: GObject.GType<HeaderList>;
 
-        // Own fields of GMime.HeaderList
+        // Fields
 
         parent_object: GObject.Object;
 
-        // Constructors of GMime.HeaderList
+        // Constructors
 
         constructor(properties?: Partial<HeaderList.ConstructorProps>, ...args: any[]);
 
@@ -3648,7 +3648,7 @@ export namespace GMime {
 
         static ['new'](options?: ParserOptions | null): HeaderList;
 
-        // Own methods of GMime.HeaderList
+        // Methods
 
         /**
          * Appends a header. If `value` is %NULL, a space will be set aside for it
@@ -3750,23 +3750,23 @@ export namespace GMime {
     abstract class InternetAddress extends GObject.Object {
         static $gtype: GObject.GType<InternetAddress>;
 
-        // Own fields of GMime.InternetAddress
+        // Fields
 
         parent_object: GObject.Object;
         charset: string;
         name: string;
 
-        // Constructors of GMime.InternetAddress
+        // Constructors
 
         constructor(properties?: Partial<InternetAddress.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of GMime.InternetAddress
+        // Virtual methods
 
         vfunc_to_string(options: FormatOptions, flags: number, linelen: number, str: GLib.String): void;
 
-        // Own methods of GMime.InternetAddress
+        // Methods
 
         /**
          * Gets the charset to be used when encoding the name of the mailbox or group.
@@ -3812,12 +3812,12 @@ export namespace GMime {
     class InternetAddressGroup extends InternetAddress {
         static $gtype: GObject.GType<InternetAddressGroup>;
 
-        // Own fields of GMime.InternetAddressGroup
+        // Fields
 
         parent_object: InternetAddress;
         members: InternetAddressList;
 
-        // Constructors of GMime.InternetAddressGroup
+        // Constructors
 
         constructor(properties?: Partial<InternetAddressGroup.ConstructorProps>, ...args: any[]);
 
@@ -3825,7 +3825,7 @@ export namespace GMime {
 
         static ['new'](name: string): InternetAddressGroup;
 
-        // Own methods of GMime.InternetAddressGroup
+        // Methods
 
         /**
          * Add a contact to the internet address group.
@@ -3858,12 +3858,12 @@ export namespace GMime {
     class InternetAddressList extends GObject.Object {
         static $gtype: GObject.GType<InternetAddressList>;
 
-        // Own fields of GMime.InternetAddressList
+        // Fields
 
         parent_object: GObject.Object;
         array: any[];
 
-        // Constructors of GMime.InternetAddressList
+        // Constructors
 
         constructor(properties?: Partial<InternetAddressList.ConstructorProps>, ...args: any[]);
 
@@ -3871,7 +3871,7 @@ export namespace GMime {
 
         static ['new'](): InternetAddressList;
 
-        // Own static methods of GMime.InternetAddressList
+        // Static methods
 
         /**
          * Construct a list of internet addresses from the given string.
@@ -3880,7 +3880,7 @@ export namespace GMime {
          */
         static parse(options: ParserOptions | null, str: string): InternetAddressList | null;
 
-        // Own methods of GMime.InternetAddressList
+        // Methods
 
         /**
          * Adds an #InternetAddress to the #InternetAddressList.
@@ -3988,14 +3988,14 @@ export namespace GMime {
     class InternetAddressMailbox extends InternetAddress {
         static $gtype: GObject.GType<InternetAddressMailbox>;
 
-        // Own fields of GMime.InternetAddressMailbox
+        // Fields
 
         parent_object: InternetAddress;
         idn_addr: string;
         addr: string;
         at: number;
 
-        // Constructors of GMime.InternetAddressMailbox
+        // Constructors
 
         constructor(properties?: Partial<InternetAddressMailbox.ConstructorProps>, ...args: any[]);
 
@@ -4003,7 +4003,7 @@ export namespace GMime {
 
         static ['new'](name: string, addr: string): InternetAddressMailbox;
 
-        // Own methods of GMime.InternetAddressMailbox
+        // Methods
 
         /**
          * Gets the addr-spec of the internet address mailbox.
@@ -4034,7 +4034,7 @@ export namespace GMime {
     class Message extends Object {
         static $gtype: GObject.GType<Message>;
 
-        // Own fields of GMime.Message
+        // Fields
 
         parent_object: Object;
         addrlists: InternetAddressList;
@@ -4042,7 +4042,7 @@ export namespace GMime {
         message_id: string;
         subject: string;
 
-        // Constructors of GMime.Message
+        // Constructors
 
         constructor(properties?: Partial<Message.ConstructorProps>, ...args: any[]);
 
@@ -4053,7 +4053,7 @@ export namespace GMime {
 
         static ['new'](...args: never[]): any;
 
-        // Own methods of GMime.Message
+        // Methods
 
         /**
          * Add a mailbox of a chosen type to the MIME message.
@@ -4286,12 +4286,12 @@ export namespace GMime {
     class MessagePart extends Object {
         static $gtype: GObject.GType<MessagePart>;
 
-        // Own fields of GMime.MessagePart
+        // Fields
 
         parent_object: Object;
         message: Message;
 
-        // Constructors of GMime.MessagePart
+        // Constructors
 
         constructor(properties?: Partial<MessagePart.ConstructorProps>, ...args: any[]);
 
@@ -4304,7 +4304,7 @@ export namespace GMime {
 
         static new_with_message(subtype: string, message: Message): MessagePart;
 
-        // Own methods of GMime.MessagePart
+        // Methods
 
         /**
          * Gets the message object on the message part object `part`.
@@ -4330,14 +4330,14 @@ export namespace GMime {
     class MessagePartial extends Part {
         static $gtype: GObject.GType<MessagePartial>;
 
-        // Own fields of GMime.MessagePartial
+        // Fields
 
         parent_object: Part;
         number: number;
         total: number;
         id: string;
 
-        // Constructors of GMime.MessagePartial
+        // Constructors
 
         constructor(properties?: Partial<MessagePartial.ConstructorProps>, ...args: any[]);
 
@@ -4348,7 +4348,7 @@ export namespace GMime {
 
         static ['new'](...args: never[]): any;
 
-        // Own static methods of GMime.MessagePartial
+        // Static methods
 
         /**
          * Reconstructs the GMimeMessage from the given message/partial parts
@@ -4357,7 +4357,7 @@ export namespace GMime {
          */
         static reconstruct_message(partials: MessagePartial[]): Message;
 
-        // Own methods of GMime.MessagePartial
+        // Methods
 
         /**
          * Gets the message/partial id parameter value.
@@ -4389,7 +4389,7 @@ export namespace GMime {
     class Multipart extends Object {
         static $gtype: GObject.GType<Multipart>;
 
-        // Own fields of GMime.Multipart
+        // Fields
 
         parent_object: Object;
         children: any[];
@@ -4397,7 +4397,7 @@ export namespace GMime {
         prologue: string;
         epilogue: string;
 
-        // Constructors of GMime.Multipart
+        // Constructors
 
         constructor(properties?: Partial<Multipart.ConstructorProps>, ...args: any[]);
 
@@ -4407,7 +4407,7 @@ export namespace GMime {
 
         static new_with_subtype(subtype: string): Multipart;
 
-        // Own virtual methods of GMime.Multipart
+        // Virtual methods
 
         /**
          * Appends a mime part to `multipart`.
@@ -4466,7 +4466,7 @@ export namespace GMime {
          */
         vfunc_set_boundary(boundary: string): void;
 
-        // Own methods of GMime.Multipart
+        // Methods
 
         /**
          * Appends a mime part to `multipart`.
@@ -4585,11 +4585,11 @@ export namespace GMime {
     class MultipartEncrypted extends Multipart {
         static $gtype: GObject.GType<MultipartEncrypted>;
 
-        // Own fields of GMime.MultipartEncrypted
+        // Fields
 
         parent_object: Multipart;
 
-        // Constructors of GMime.MultipartEncrypted
+        // Constructors
 
         constructor(properties?: Partial<MultipartEncrypted.ConstructorProps>, ...args: any[]);
 
@@ -4597,7 +4597,7 @@ export namespace GMime {
 
         static ['new'](): MultipartEncrypted;
 
-        // Own static methods of GMime.MultipartEncrypted
+        // Static methods
 
         /**
          * Attempts to encrypt (and conditionally sign) the `entity` MIME part
@@ -4619,7 +4619,7 @@ export namespace GMime {
             recipients: string[],
         ): MultipartEncrypted | null;
 
-        // Own methods of GMime.MultipartEncrypted
+        // Methods
 
         /**
          * Attempts to decrypt the encrypted MIME part contained within the
@@ -4653,11 +4653,11 @@ export namespace GMime {
     class MultipartSigned extends Multipart {
         static $gtype: GObject.GType<MultipartSigned>;
 
-        // Own fields of GMime.MultipartSigned
+        // Fields
 
         parent_object: Multipart;
 
-        // Constructors of GMime.MultipartSigned
+        // Constructors
 
         constructor(properties?: Partial<MultipartSigned.ConstructorProps>, ...args: any[]);
 
@@ -4665,7 +4665,7 @@ export namespace GMime {
 
         static ['new'](): MultipartSigned;
 
-        // Own static methods of GMime.MultipartSigned
+        // Static methods
 
         /**
          * Attempts to sign the `content` MIME part with `userid'`s private key
@@ -4677,7 +4677,7 @@ export namespace GMime {
          */
         static sign(ctx: CryptoContext, entity: Object, userid: string): MultipartSigned | null;
 
-        // Own methods of GMime.MultipartSigned
+        // Methods
 
         /**
          * Attempts to verify the signed MIME part contained within the
@@ -4700,7 +4700,7 @@ export namespace GMime {
     abstract class Object extends GObject.Object {
         static $gtype: GObject.GType<Object>;
 
-        // Own fields of GMime.Object
+        // Fields
 
         parent_object: GObject.Object;
         disposition: ContentDisposition;
@@ -4708,7 +4708,7 @@ export namespace GMime {
         headers: HeaderList;
         content_id: string;
 
-        // Constructors of GMime.Object
+        // Constructors
 
         constructor(properties?: Partial<Object.ConstructorProps>, ...args: any[]);
 
@@ -4718,7 +4718,7 @@ export namespace GMime {
 
         static new_type(options: ParserOptions | null, type: string, subtype: string): Object;
 
-        // Own static methods of GMime.Object
+        // Static methods
 
         /**
          * Registers the object type `object_type` for use with the
@@ -4734,7 +4734,7 @@ export namespace GMime {
         static type_registry_init(): void;
         static type_registry_shutdown(): void;
 
-        // Own virtual methods of GMime.Object
+        // Virtual methods
 
         /**
          * Calculates and sets the most efficient Content-Transfer-Encoding
@@ -4761,7 +4761,7 @@ export namespace GMime {
         vfunc_set_content_type(content_type: ContentType): void;
         vfunc_write_to_stream(options: FormatOptions, content_only: boolean, stream: Stream): number;
 
-        // Own methods of GMime.Object
+        // Methods
 
         /**
          * Appends a new header to the header list.
@@ -4969,7 +4969,7 @@ export namespace GMime {
     class Param extends GObject.Object {
         static $gtype: GObject.GType<Param>;
 
-        // Own fields of GMime.Param
+        // Fields
 
         parent_object: GObject.Object;
         method: ParamEncodingMethod;
@@ -4978,13 +4978,13 @@ export namespace GMime {
         name: string;
         value: string;
 
-        // Constructors of GMime.Param
+        // Constructors
 
         constructor(properties?: Partial<Param.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of GMime.Param
+        // Methods
 
         /**
          * Gets the charset used for encoding the parameter.
@@ -5045,7 +5045,7 @@ export namespace GMime {
     class ParamList extends GObject.Object {
         static $gtype: GObject.GType<ParamList>;
 
-        // Constructors of GMime.ParamList
+        // Constructors
 
         constructor(properties?: Partial<ParamList.ConstructorProps>, ...args: any[]);
 
@@ -5053,7 +5053,7 @@ export namespace GMime {
 
         static ['new'](): ParamList;
 
-        // Own static methods of GMime.ParamList
+        // Static methods
 
         /**
          * Parses the input string into a parameter list.
@@ -5062,7 +5062,7 @@ export namespace GMime {
          */
         static parse(options: ParserOptions, str: string): ParamList;
 
-        // Own methods of GMime.ParamList
+        // Methods
 
         /**
          * Clears the list of parameters.
@@ -5123,12 +5123,12 @@ export namespace GMime {
     class Parser extends GObject.Object {
         static $gtype: GObject.GType<Parser>;
 
-        // Own fields of GMime.Parser
+        // Fields
 
         parent_object: GObject.Object;
         priv: any;
 
-        // Constructors of GMime.Parser
+        // Constructors
 
         constructor(properties?: Partial<Parser.ConstructorProps>, ...args: any[]);
 
@@ -5138,7 +5138,7 @@ export namespace GMime {
 
         static new_with_stream(stream: Stream): Parser;
 
-        // Own methods of GMime.Parser
+        // Methods
 
         /**
          * Constructs a MIME message from `parser`.
@@ -5270,7 +5270,7 @@ export namespace GMime {
     class Part extends Object {
         static $gtype: GObject.GType<Part>;
 
-        // Own fields of GMime.Part
+        // Fields
 
         parent_object: Object;
         encoding: ContentEncoding;
@@ -5280,7 +5280,7 @@ export namespace GMime {
         content_md5: string;
         content: DataWrapper;
 
-        // Constructors of GMime.Part
+        // Constructors
 
         constructor(properties?: Partial<Part.ConstructorProps>, ...args: any[]);
 
@@ -5290,7 +5290,7 @@ export namespace GMime {
 
         static new_with_type(type: string, subtype: string): Part;
 
-        // Own virtual methods of GMime.Part
+        // Virtual methods
 
         /**
          * Sets the content on the mime part.
@@ -5298,7 +5298,7 @@ export namespace GMime {
          */
         vfunc_set_content(content: DataWrapper): void;
 
-        // Own methods of GMime.Part
+        // Methods
 
         /**
          * Calculates the most efficient content encoding for the `mime_part`
@@ -5455,7 +5455,7 @@ export namespace GMime {
     class Pkcs7Context extends CryptoContext {
         static $gtype: GObject.GType<Pkcs7Context>;
 
-        // Constructors of GMime.Pkcs7Context
+        // Constructors
 
         constructor(properties?: Partial<Pkcs7Context.ConstructorProps>, ...args: any[]);
 
@@ -5476,7 +5476,7 @@ export namespace GMime {
     class Signature extends GObject.Object {
         static $gtype: GObject.GType<Signature>;
 
-        // Own fields of GMime.Signature
+        // Fields
 
         parent_object: GObject.Object;
         status: SignatureStatus;
@@ -5484,7 +5484,7 @@ export namespace GMime {
         created: number;
         expires: number;
 
-        // Constructors of GMime.Signature
+        // Constructors
 
         constructor(properties?: Partial<Signature.ConstructorProps>, ...args: any[]);
 
@@ -5492,7 +5492,7 @@ export namespace GMime {
 
         static ['new'](): Signature;
 
-        // Own methods of GMime.Signature
+        // Methods
 
         /**
          * Get the signature's certificate.
@@ -5561,11 +5561,11 @@ export namespace GMime {
     class SignatureList extends GObject.Object {
         static $gtype: GObject.GType<SignatureList>;
 
-        // Own fields of GMime.SignatureList
+        // Fields
 
         parent_object: GObject.Object;
 
-        // Constructors of GMime.SignatureList
+        // Constructors
 
         constructor(properties?: Partial<SignatureList.ConstructorProps>, ...args: any[]);
 
@@ -5573,7 +5573,7 @@ export namespace GMime {
 
         static ['new'](): SignatureList;
 
-        // Own methods of GMime.SignatureList
+        // Methods
 
         /**
          * Adds a #GMimeSignature to the #GMimeSignatureList.
@@ -5650,13 +5650,13 @@ export namespace GMime {
     abstract class Stream extends GObject.Object {
         static $gtype: GObject.GType<Stream>;
 
-        // Constructors of GMime.Stream
+        // Constructors
 
         constructor(properties?: Partial<Stream.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of GMime.Stream
+        // Virtual methods
 
         /**
          * Closes the stream.
@@ -5716,7 +5716,7 @@ export namespace GMime {
          */
         vfunc_write(buf: Uint8Array | string): number;
 
-        // Own methods of GMime.Stream
+        // Methods
 
         /**
          * Reads in at most one less than `max` characters from `stream` and
@@ -5844,7 +5844,7 @@ export namespace GMime {
     class StreamBuffer extends Stream {
         static $gtype: GObject.GType<StreamBuffer>;
 
-        // Own fields of GMime.StreamBuffer
+        // Fields
 
         parent_object: Stream;
         mode: StreamBufferMode;
@@ -5854,7 +5854,7 @@ export namespace GMime {
         bufend: string;
         buflen: number;
 
-        // Constructors of GMime.StreamBuffer
+        // Constructors
 
         constructor(properties?: Partial<StreamBuffer.ConstructorProps>, ...args: any[]);
 
@@ -5875,13 +5875,13 @@ export namespace GMime {
     class StreamCat extends Stream {
         static $gtype: GObject.GType<StreamCat>;
 
-        // Own fields of GMime.StreamCat
+        // Fields
 
         parent_object: Stream;
         sources: any;
         current: any;
 
-        // Constructors of GMime.StreamCat
+        // Constructors
 
         constructor(properties?: Partial<StreamCat.ConstructorProps>, ...args: any[]);
 
@@ -5889,7 +5889,7 @@ export namespace GMime {
 
         static ['new'](): StreamCat;
 
-        // Own methods of GMime.StreamCat
+        // Methods
 
         /**
          * Adds the `source` stream to the `cat`.
@@ -5911,13 +5911,13 @@ export namespace GMime {
     class StreamFile extends Stream {
         static $gtype: GObject.GType<StreamFile>;
 
-        // Own fields of GMime.StreamFile
+        // Fields
 
         parent_object: Stream;
         owner: boolean;
         fp: any;
 
-        // Constructors of GMime.StreamFile
+        // Constructors
 
         constructor(properties?: Partial<StreamFile.ConstructorProps>, ...args: any[]);
 
@@ -5927,7 +5927,7 @@ export namespace GMime {
 
         static new_with_bounds(fp: any | null, start: number, end: number): StreamFile;
 
-        // Own static methods of GMime.StreamFile
+        // Static methods
 
         /**
          * Creates a new #GMimeStreamFile object for the specified `path`.
@@ -5936,7 +5936,7 @@ export namespace GMime {
          */
         static open(path: string, mode: string): Stream;
 
-        // Own methods of GMime.StreamFile
+        // Methods
 
         /**
          * Gets whether or not `stream` owns the backend FILE pointer.
@@ -5965,14 +5965,14 @@ export namespace GMime {
     class StreamFilter extends Stream {
         static $gtype: GObject.GType<StreamFilter>;
 
-        // Own fields of GMime.StreamFilter
+        // Fields
 
         parent_object: Stream;
         priv: any;
         source: Stream;
         owner: boolean;
 
-        // Constructors of GMime.StreamFilter
+        // Constructors
 
         constructor(properties?: Partial<StreamFilter.ConstructorProps>, ...args: any[]);
 
@@ -5980,7 +5980,7 @@ export namespace GMime {
 
         static ['new'](stream: Stream): StreamFilter;
 
-        // Own methods of GMime.StreamFilter
+        // Methods
 
         /**
          * Adds `filter` to `stream`. Filters are applied in the same order in
@@ -6022,7 +6022,7 @@ export namespace GMime {
     class StreamFs extends Stream {
         static $gtype: GObject.GType<StreamFs>;
 
-        // Own fields of GMime.StreamFs
+        // Fields
 
         parent_object: Stream;
         owner: boolean;
@@ -6031,7 +6031,7 @@ export namespace GMime {
         eos: boolean | any;
         fd: number;
 
-        // Constructors of GMime.StreamFs
+        // Constructors
 
         constructor(properties?: Partial<StreamFs.ConstructorProps>, ...args: any[]);
 
@@ -6041,7 +6041,7 @@ export namespace GMime {
 
         static new_with_bounds(fd: number, start: number, end: number): StreamFs;
 
-        // Own static methods of GMime.StreamFs
+        // Static methods
 
         /**
          * Creates a new #GMimeStreamFs object for the specified `path`.
@@ -6051,7 +6051,7 @@ export namespace GMime {
          */
         static open(path: string, flags: number, mode: number): Stream;
 
-        // Own methods of GMime.StreamFs
+        // Methods
 
         /**
          * Gets whether or not `stream` owns the backend file descriptor.
@@ -6080,7 +6080,7 @@ export namespace GMime {
     class StreamGIO extends Stream {
         static $gtype: GObject.GType<StreamGIO>;
 
-        // Own fields of GMime.StreamGIO
+        // Fields
 
         parent_object: Stream;
         ostream: Gio.OutputStream;
@@ -6091,7 +6091,7 @@ export namespace GMime {
         // This field conflicts with a function in a parent class or interface.
         eos: boolean | any;
 
-        // Constructors of GMime.StreamGIO
+        // Constructors
 
         constructor(properties?: Partial<StreamGIO.ConstructorProps>, ...args: any[]);
 
@@ -6101,7 +6101,7 @@ export namespace GMime {
 
         static new_with_bounds(file: Gio.File, start: number, end: number): StreamGIO;
 
-        // Own methods of GMime.StreamGIO
+        // Methods
 
         /**
          * Gets whether or not `stream` owns the backend #GFile.
@@ -6130,13 +6130,13 @@ export namespace GMime {
     class StreamMem extends Stream {
         static $gtype: GObject.GType<StreamMem>;
 
-        // Own fields of GMime.StreamMem
+        // Fields
 
         parent_object: Stream;
         buffer: Uint8Array;
         owner: boolean;
 
-        // Constructors of GMime.StreamMem
+        // Constructors
 
         constructor(properties?: Partial<StreamMem.ConstructorProps>, ...args: any[]);
 
@@ -6148,7 +6148,7 @@ export namespace GMime {
 
         static new_with_byte_array(array: Uint8Array | string): StreamMem;
 
-        // Own methods of GMime.StreamMem
+        // Methods
 
         /**
          * Gets the byte array from the memory stream.
@@ -6190,7 +6190,7 @@ export namespace GMime {
     class StreamMmap extends Stream {
         static $gtype: GObject.GType<StreamMmap>;
 
-        // Own fields of GMime.StreamMmap
+        // Fields
 
         parent_object: Stream;
         owner: boolean;
@@ -6201,7 +6201,7 @@ export namespace GMime {
         map: string;
         maplen: number;
 
-        // Constructors of GMime.StreamMmap
+        // Constructors
 
         constructor(properties?: Partial<StreamMmap.ConstructorProps>, ...args: any[]);
 
@@ -6211,7 +6211,7 @@ export namespace GMime {
 
         static new_with_bounds(fd: number, prot: number, flags: number, start: number, end: number): StreamMmap;
 
-        // Own methods of GMime.StreamMmap
+        // Methods
 
         /**
          * Gets whether or not `stream` owns the backend file descriptor.
@@ -6240,14 +6240,14 @@ export namespace GMime {
     class StreamNull extends Stream {
         static $gtype: GObject.GType<StreamNull>;
 
-        // Own fields of GMime.StreamNull
+        // Fields
 
         parent_object: Stream;
         written: number;
         newlines: number;
         count_newlines: boolean;
 
-        // Constructors of GMime.StreamNull
+        // Constructors
 
         constructor(properties?: Partial<StreamNull.ConstructorProps>, ...args: any[]);
 
@@ -6255,7 +6255,7 @@ export namespace GMime {
 
         static ['new'](): StreamNull;
 
-        // Own methods of GMime.StreamNull
+        // Methods
 
         /**
          * Gets whether or not the stream should keep track of the number of newlines
@@ -6283,7 +6283,7 @@ export namespace GMime {
     class StreamPipe extends Stream {
         static $gtype: GObject.GType<StreamPipe>;
 
-        // Own fields of GMime.StreamPipe
+        // Fields
 
         parent_object: Stream;
         owner: boolean;
@@ -6292,7 +6292,7 @@ export namespace GMime {
         eos: boolean | any;
         fd: number;
 
-        // Constructors of GMime.StreamPipe
+        // Constructors
 
         constructor(properties?: Partial<StreamPipe.ConstructorProps>, ...args: any[]);
 
@@ -6300,7 +6300,7 @@ export namespace GMime {
 
         static ['new'](fd: number): StreamPipe;
 
-        // Own methods of GMime.StreamPipe
+        // Methods
 
         /**
          * Gets whether or not `stream` owns the backend pipe descriptor.
@@ -6329,11 +6329,11 @@ export namespace GMime {
     class TextPart extends Part {
         static $gtype: GObject.GType<TextPart>;
 
-        // Own fields of GMime.TextPart
+        // Fields
 
         parent_object: Part;
 
-        // Constructors of GMime.TextPart
+        // Constructors
 
         constructor(properties?: Partial<TextPart.ConstructorProps>, ...args: any[]);
 
@@ -6343,7 +6343,7 @@ export namespace GMime {
 
         static new_with_subtype(subtype: string): TextPart;
 
-        // Own methods of GMime.TextPart
+        // Methods
 
         /**
          * Gets the value of the charset parameter on the Content-Type header.
@@ -6378,12 +6378,12 @@ export namespace GMime {
     class Charset {
         static $gtype: GObject.GType<Charset>;
 
-        // Own fields of GMime.Charset
+        // Fields
 
         mask: number;
         level: number;
 
-        // Constructors of GMime.Charset
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -6393,7 +6393,7 @@ export namespace GMime {
         );
         _init(...args: any[]): void;
 
-        // Own static methods of GMime.Charset
+        // Static methods
 
         /**
          * Computes the best charset to use to encode this text buffer.
@@ -6455,7 +6455,7 @@ export namespace GMime {
          */
         static name(charset: string): string;
 
-        // Own methods of GMime.Charset
+        // Methods
 
         /**
          * Gets the best charset name based on the charset mask `charset`.
@@ -6496,7 +6496,7 @@ export namespace GMime {
     class Encoding {
         static $gtype: GObject.GType<Encoding>;
 
-        // Own fields of GMime.Encoding
+        // Fields
 
         encoding: ContentEncoding;
         uubuf: Uint8Array;
@@ -6504,11 +6504,11 @@ export namespace GMime {
         save: number;
         state: number;
 
-        // Constructors of GMime.Encoding
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own static methods of GMime.Encoding
+        // Static methods
 
         /**
          * Decodes a chunk of base64 encoded data.
@@ -6624,7 +6624,7 @@ export namespace GMime {
             save: number,
         ): number;
 
-        // Own methods of GMime.Encoding
+        // Methods
 
         /**
          * Completes the incremental encode or decode of the input stream (see
@@ -6695,21 +6695,21 @@ export namespace GMime {
     class FormatOptions {
         static $gtype: GObject.GType<FormatOptions>;
 
-        // Constructors of GMime.FormatOptions
+        // Constructors
 
         constructor(properties?: Partial<{}>);
         _init(...args: any[]): void;
 
         static ['new'](): FormatOptions;
 
-        // Own static methods of GMime.FormatOptions
+        // Static methods
 
         /**
          * Gets the default format options.
          */
         static get_default(): FormatOptions;
 
-        // Own methods of GMime.FormatOptions
+        // Methods
 
         /**
          * Adds the given header to the list of headers that should be hidden.
@@ -6798,7 +6798,7 @@ export namespace GMime {
     class OpenPGPMarker {
         static $gtype: GObject.GType<OpenPGPMarker>;
 
-        // Own fields of GMime.OpenPGPMarker
+        // Fields
 
         marker: string;
         len: number;
@@ -6806,7 +6806,7 @@ export namespace GMime {
         after: OpenPGPState;
         is_end_marker: boolean;
 
-        // Constructors of GMime.OpenPGPMarker
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -6820,21 +6820,21 @@ export namespace GMime {
     class ParserOptions {
         static $gtype: GObject.GType<ParserOptions>;
 
-        // Constructors of GMime.ParserOptions
+        // Constructors
 
         constructor(properties?: Partial<{}>);
         _init(...args: any[]): void;
 
         static ['new'](): ParserOptions;
 
-        // Own static methods of GMime.ParserOptions
+        // Static methods
 
         /**
          * Gets the default parser options.
          */
         static get_default(): ParserOptions;
 
-        // Own methods of GMime.ParserOptions
+        // Methods
 
         /**
          * Clones a #GMimeParserOptions.
@@ -6968,14 +6968,14 @@ export namespace GMime {
     class PartIter {
         static $gtype: GObject.GType<PartIter>;
 
-        // Constructors of GMime.PartIter
+        // Constructors
 
         constructor(toplevel: Object);
         _init(...args: any[]): void;
 
         static ['new'](toplevel: Object): PartIter;
 
-        // Own methods of GMime.PartIter
+        // Methods
 
         /**
          * Clones the `iter,` including its current state.
@@ -7059,11 +7059,11 @@ export namespace GMime {
     class References {
         static $gtype: GObject.GType<References>;
 
-        // Own fields of GMime.References
+        // Fields
 
         array: any[];
 
-        // Constructors of GMime.References
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -7074,7 +7074,7 @@ export namespace GMime {
 
         static ['new'](): References;
 
-        // Own static methods of GMime.References
+        // Static methods
 
         /**
          * Decodes a list of msg-ids as in the References and/or In-Reply-To
@@ -7084,7 +7084,7 @@ export namespace GMime {
          */
         static parse(options: ParserOptions | null, text: string): References;
 
-        // Own methods of GMime.References
+        // Methods
 
         /**
          * Appends a reference to msgid to the list of references.
@@ -7138,12 +7138,12 @@ export namespace GMime {
     class StreamIOVector {
         static $gtype: GObject.GType<StreamIOVector>;
 
-        // Own fields of GMime.StreamIOVector
+        // Fields
 
         data: any;
         len: number;
 
-        // Constructors of GMime.StreamIOVector
+        // Constructors
 
         constructor(
             properties?: Partial<{

@@ -45,19 +45,19 @@ export namespace GstVulkan {
     class VulkanError extends GLib.Error {
         static $gtype: GObject.GType<VulkanError>;
 
-        // Static fields of GstVulkan.VulkanError
+        // Static fields
 
         /**
          * undetermined error
          */
         static FAILED: number;
 
-        // Constructors of GstVulkan.VulkanError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of GstVulkan.VulkanError
+        // Static methods
 
         static quark(): GLib.Quark;
         /**
@@ -179,7 +179,7 @@ export namespace GstVulkan {
     class VulkanWindowError extends GLib.Error {
         static $gtype: GObject.GType<VulkanWindowError>;
 
-        // Static fields of GstVulkan.VulkanWindowError
+        // Static fields
 
         /**
          * failed
@@ -194,12 +194,12 @@ export namespace GstVulkan {
          */
         static RESOURCE_UNAVAILABLE: number;
 
-        // Constructors of GstVulkan.VulkanWindowError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of GstVulkan.VulkanWindowError
+        // Static methods
 
         static quark(): GLib.Quark;
     }
@@ -549,7 +549,7 @@ export namespace GstVulkan {
     class VulkanBufferMemoryAllocator extends Gst.Allocator {
         static $gtype: GObject.GType<VulkanBufferMemoryAllocator>;
 
-        // Constructors of GstVulkan.VulkanBufferMemoryAllocator
+        // Constructors
 
         constructor(properties?: Partial<VulkanBufferMemoryAllocator.ConstructorProps>, ...args: any[]);
 
@@ -568,12 +568,12 @@ export namespace GstVulkan {
     class VulkanBufferPool extends Gst.BufferPool {
         static $gtype: GObject.GType<VulkanBufferPool>;
 
-        // Own fields of GstVulkan.VulkanBufferPool
+        // Fields
 
         bufferpool: Gst.BufferPool;
         device: VulkanDevice;
 
-        // Constructors of GstVulkan.VulkanBufferPool
+        // Constructors
 
         constructor(properties?: Partial<VulkanBufferPool.ConstructorProps>, ...args: any[]);
 
@@ -584,7 +584,7 @@ export namespace GstVulkan {
 
         static ['new'](...args: never[]): any;
 
-        // Own static methods of GstVulkan.VulkanBufferPool
+        // Static methods
 
         /**
          * Sets the `usage` of the buffers to setup.
@@ -608,17 +608,17 @@ export namespace GstVulkan {
     class VulkanCommandPool extends Gst.Object {
         static $gtype: GObject.GType<VulkanCommandPool>;
 
-        // Own fields of GstVulkan.VulkanCommandPool
+        // Fields
 
         queue: VulkanQueue;
 
-        // Constructors of GstVulkan.VulkanCommandPool
+        // Constructors
 
         constructor(properties?: Partial<VulkanCommandPool.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of GstVulkan.VulkanCommandPool
+        // Methods
 
         create(): VulkanCommandBuffer;
         get_queue(): VulkanQueue;
@@ -647,7 +647,7 @@ export namespace GstVulkan {
     class VulkanDecoder extends Gst.Object {
         static $gtype: GObject.GType<VulkanDecoder>;
 
-        // Own fields of GstVulkan.VulkanDecoder
+        // Fields
 
         queue: VulkanQueue;
         codec: number;
@@ -655,13 +655,13 @@ export namespace GstVulkan {
         dedicated_dpb: boolean;
         layered_dpb: boolean;
 
-        // Constructors of GstVulkan.VulkanDecoder
+        // Constructors
 
         constructor(properties?: Partial<VulkanDecoder.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of GstVulkan.VulkanDecoder
+        // Methods
 
         /**
          * Appends slices's `data` bitstream into `pic` internal input buffer.
@@ -761,11 +761,11 @@ export namespace GstVulkan {
     class VulkanDescriptorCache extends VulkanHandlePool {
         static $gtype: GObject.GType<VulkanDescriptorCache>;
 
-        // Own fields of GstVulkan.VulkanDescriptorCache
+        // Fields
 
         pool: VulkanDescriptorPool;
 
-        // Constructors of GstVulkan.VulkanDescriptorCache
+        // Constructors
 
         constructor(properties?: Partial<VulkanDescriptorCache.ConstructorProps>, ...args: any[]);
 
@@ -773,7 +773,7 @@ export namespace GstVulkan {
 
         static ['new'](pool: VulkanDescriptorPool, layouts: VulkanHandle[]): VulkanDescriptorCache;
 
-        // Own methods of GstVulkan.VulkanDescriptorCache
+        // Methods
 
         acquire(): VulkanDescriptorSet;
         // Conflicted with GstVulkan.VulkanHandlePool.acquire
@@ -789,11 +789,11 @@ export namespace GstVulkan {
     class VulkanDescriptorPool extends Gst.Object {
         static $gtype: GObject.GType<VulkanDescriptorPool>;
 
-        // Own fields of GstVulkan.VulkanDescriptorPool
+        // Fields
 
         device: VulkanDevice;
 
-        // Constructors of GstVulkan.VulkanDescriptorPool
+        // Constructors
 
         constructor(properties?: Partial<VulkanDescriptorPool.ConstructorProps>, ...args: any[]);
 
@@ -801,7 +801,7 @@ export namespace GstVulkan {
 
         static new_wrapped(device: VulkanDevice, pool: Vulkan.DescriptorPool, max_sets: number): VulkanDescriptorPool;
 
-        // Own methods of GstVulkan.VulkanDescriptorPool
+        // Methods
 
         create(layouts: VulkanHandle[]): VulkanDescriptorSet;
         get_device(): VulkanDevice;
@@ -821,13 +821,13 @@ export namespace GstVulkan {
     class VulkanDevice extends Gst.Object {
         static $gtype: GObject.GType<VulkanDevice>;
 
-        // Own properties of GstVulkan.VulkanDevice
+        // Properties
 
         get instance(): VulkanInstance;
         get physical_device(): VulkanPhysicalDevice;
         get physicalDevice(): VulkanPhysicalDevice;
 
-        // Constructors of GstVulkan.VulkanDevice
+        // Constructors
 
         constructor(properties?: Partial<VulkanDevice.ConstructorProps>, ...args: any[]);
 
@@ -837,7 +837,7 @@ export namespace GstVulkan {
 
         static new_with_index(instance: VulkanInstance, device_index: number): VulkanDevice;
 
-        // Own static methods of GstVulkan.VulkanDevice
+        // Static methods
 
         /**
          * If a #GstVulkanDevice is requested in `query,` sets `device` as the reply.
@@ -857,7 +857,7 @@ export namespace GstVulkan {
          */
         static run_context_query(element: Gst.Element, device: VulkanDevice): [boolean, VulkanDevice];
 
-        // Own methods of GstVulkan.VulkanDevice
+        // Methods
 
         create_fence(): VulkanFence | null;
         /**
@@ -922,7 +922,7 @@ export namespace GstVulkan {
     class VulkanDisplay extends Gst.Object {
         static $gtype: GObject.GType<VulkanDisplay>;
 
-        // Constructors of GstVulkan.VulkanDisplay
+        // Constructors
 
         constructor(properties?: Partial<VulkanDisplay.ConstructorProps>, ...args: any[]);
 
@@ -932,7 +932,7 @@ export namespace GstVulkan {
 
         static new_with_type(instance: VulkanInstance, type: VulkanDisplayType): VulkanDisplay;
 
-        // Own static methods of GstVulkan.VulkanDisplay
+        // Static methods
 
         /**
          * This function will read the `GST_VULKAN_WINDOW` environment variable for
@@ -960,7 +960,7 @@ export namespace GstVulkan {
          */
         static run_context_query(element: Gst.Element, display: VulkanDisplay): [boolean, VulkanDisplay];
 
-        // Own virtual methods of GstVulkan.VulkanDisplay
+        // Virtual methods
 
         /**
          * create a window
@@ -971,7 +971,7 @@ export namespace GstVulkan {
          */
         vfunc_get_handle(): any | null;
 
-        // Own methods of GstVulkan.VulkanDisplay
+        // Methods
 
         create_window(): VulkanWindow | null;
         /**
@@ -997,7 +997,7 @@ export namespace GstVulkan {
     class VulkanFenceCache extends VulkanHandlePool {
         static $gtype: GObject.GType<VulkanFenceCache>;
 
-        // Constructors of GstVulkan.VulkanFenceCache
+        // Constructors
 
         constructor(properties?: Partial<VulkanFenceCache.ConstructorProps>, ...args: any[]);
 
@@ -1015,14 +1015,14 @@ export namespace GstVulkan {
     class VulkanFullScreenQuad extends Gst.Object {
         static $gtype: GObject.GType<VulkanFullScreenQuad>;
 
-        // Own fields of GstVulkan.VulkanFullScreenQuad
+        // Fields
 
         queue: VulkanQueue;
         descriptor_cache: VulkanDescriptorCache;
         cmd_pool: VulkanCommandPool;
         trash_list: VulkanTrashList;
 
-        // Constructors of GstVulkan.VulkanFullScreenQuad
+        // Constructors
 
         constructor(properties?: Partial<VulkanFullScreenQuad.ConstructorProps>, ...args: any[]);
 
@@ -1030,7 +1030,7 @@ export namespace GstVulkan {
 
         static ['new'](queue: VulkanQueue): VulkanFullScreenQuad;
 
-        // Own methods of GstVulkan.VulkanFullScreenQuad
+        // Methods
 
         /**
          * Helper function for creation and submission of a command buffer that draws
@@ -1102,19 +1102,19 @@ export namespace GstVulkan {
     abstract class VulkanHandlePool extends Gst.Object {
         static $gtype: GObject.GType<VulkanHandlePool>;
 
-        // Own fields of GstVulkan.VulkanHandlePool
+        // Fields
 
         device: VulkanDevice;
         outstanding: any[];
         available: any[];
 
-        // Constructors of GstVulkan.VulkanHandlePool
+        // Constructors
 
         constructor(properties?: Partial<VulkanHandlePool.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of GstVulkan.VulkanHandlePool
+        // Virtual methods
 
         /**
          * acquire a handle for usage
@@ -1135,7 +1135,7 @@ export namespace GstVulkan {
          */
         vfunc_release(handle?: any | null): void;
 
-        // Own methods of GstVulkan.VulkanHandlePool
+        // Methods
 
         acquire(): any | null;
         alloc(): any | null;
@@ -1151,12 +1151,12 @@ export namespace GstVulkan {
     class VulkanImageBufferPool extends Gst.BufferPool {
         static $gtype: GObject.GType<VulkanImageBufferPool>;
 
-        // Own fields of GstVulkan.VulkanImageBufferPool
+        // Fields
 
         bufferpool: Gst.BufferPool;
         device: VulkanDevice;
 
-        // Constructors of GstVulkan.VulkanImageBufferPool
+        // Constructors
 
         constructor(properties?: Partial<VulkanImageBufferPool.ConstructorProps>, ...args: any[]);
 
@@ -1167,7 +1167,7 @@ export namespace GstVulkan {
 
         static ['new'](...args: never[]): any;
 
-        // Own static methods of GstVulkan.VulkanImageBufferPool
+        // Static methods
 
         /**
          * Sets the `usage` and `mem_properties` of the images to setup.
@@ -1205,7 +1205,7 @@ export namespace GstVulkan {
     class VulkanImageMemoryAllocator extends Gst.Allocator {
         static $gtype: GObject.GType<VulkanImageMemoryAllocator>;
 
-        // Constructors of GstVulkan.VulkanImageMemoryAllocator
+        // Constructors
 
         constructor(properties?: Partial<VulkanImageMemoryAllocator.ConstructorProps>, ...args: any[]);
 
@@ -1232,7 +1232,7 @@ export namespace GstVulkan {
     class VulkanInstance extends Gst.Object {
         static $gtype: GObject.GType<VulkanInstance>;
 
-        // Own properties of GstVulkan.VulkanInstance
+        // Properties
 
         get requested_api_major(): number;
         set requested_api_major(val: number);
@@ -1243,11 +1243,11 @@ export namespace GstVulkan {
         get requestedApiMinor(): number;
         set requestedApiMinor(val: number);
 
-        // Own fields of GstVulkan.VulkanInstance
+        // Fields
 
         n_physical_devices: number;
 
-        // Constructors of GstVulkan.VulkanInstance
+        // Constructors
 
         constructor(properties?: Partial<VulkanInstance.ConstructorProps>, ...args: any[]);
 
@@ -1255,7 +1255,7 @@ export namespace GstVulkan {
 
         static ['new'](): VulkanInstance;
 
-        // Own signals of GstVulkan.VulkanInstance
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -1264,7 +1264,7 @@ export namespace GstVulkan {
         connect_after(signal: 'create-device', callback: (_source: this) => VulkanDevice): number;
         emit(signal: 'create-device'): void;
 
-        // Own static methods of GstVulkan.VulkanInstance
+        // Static methods
 
         /**
          * If a #GstVulkanInstance is requested in `query,` sets `instance` as the reply.
@@ -1284,7 +1284,7 @@ export namespace GstVulkan {
          */
         static run_context_query(element: Gst.Element, instance: VulkanInstance): [boolean, VulkanInstance];
 
-        // Own methods of GstVulkan.VulkanInstance
+        // Methods
 
         /**
          * Check if the configured vulkan instance supports the specified version.
@@ -1377,7 +1377,7 @@ export namespace GstVulkan {
     class VulkanMemoryAllocator extends Gst.Allocator {
         static $gtype: GObject.GType<VulkanMemoryAllocator>;
 
-        // Constructors of GstVulkan.VulkanMemoryAllocator
+        // Constructors
 
         constructor(properties?: Partial<VulkanMemoryAllocator.ConstructorProps>, ...args: any[]);
 
@@ -1402,12 +1402,12 @@ export namespace GstVulkan {
     class VulkanOperation extends Gst.Object {
         static $gtype: GObject.GType<VulkanOperation>;
 
-        // Own properties of GstVulkan.VulkanOperation
+        // Properties
 
         get command_pool(): VulkanCommandPool;
         get commandPool(): VulkanCommandPool;
 
-        // Constructors of GstVulkan.VulkanOperation
+        // Constructors
 
         constructor(properties?: Partial<VulkanOperation.ConstructorProps>, ...args: any[]);
 
@@ -1415,7 +1415,7 @@ export namespace GstVulkan {
 
         static ['new'](cmd_pool: VulkanCommandPool): VulkanOperation;
 
-        // Own methods of GstVulkan.VulkanOperation
+        // Methods
 
         /**
          * Add `frame` as an operation dependency by adding the timeline semaphores in
@@ -1556,19 +1556,19 @@ export namespace GstVulkan {
     class VulkanPhysicalDevice extends Gst.Object {
         static $gtype: GObject.GType<VulkanPhysicalDevice>;
 
-        // Own properties of GstVulkan.VulkanPhysicalDevice
+        // Properties
 
         get device_index(): number;
         get deviceIndex(): number;
         get instance(): VulkanInstance;
         get name(): string;
 
-        // Own fields of GstVulkan.VulkanPhysicalDevice
+        // Fields
 
         n_queue_families: number;
         queue_family_ops: VulkanQueueFamilyOps;
 
-        // Constructors of GstVulkan.VulkanPhysicalDevice
+        // Constructors
 
         constructor(properties?: Partial<VulkanPhysicalDevice.ConstructorProps>, ...args: any[]);
 
@@ -1576,11 +1576,11 @@ export namespace GstVulkan {
 
         static ['new'](instance: VulkanInstance, device_index: number): VulkanPhysicalDevice;
 
-        // Own static methods of GstVulkan.VulkanPhysicalDevice
+        // Static methods
 
         static type_to_string(type: Vulkan.PhysicalDeviceType): string;
 
-        // Own methods of GstVulkan.VulkanPhysicalDevice
+        // Methods
 
         /**
          * Retrieves information about a device extension.
@@ -1612,19 +1612,19 @@ export namespace GstVulkan {
     class VulkanQueue extends Gst.Object {
         static $gtype: GObject.GType<VulkanQueue>;
 
-        // Own fields of GstVulkan.VulkanQueue
+        // Fields
 
         device: VulkanDevice;
         family: number;
         index: number;
 
-        // Constructors of GstVulkan.VulkanQueue
+        // Constructors
 
         constructor(properties?: Partial<VulkanQueue.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of GstVulkan.VulkanQueue
+        // Static methods
 
         static flags_to_string(queue_bits: Vulkan.QueueFlags): string;
         /**
@@ -1645,7 +1645,7 @@ export namespace GstVulkan {
          */
         static run_context_query(element: Gst.Element, queue: VulkanQueue): [boolean, VulkanQueue];
 
-        // Own methods of GstVulkan.VulkanQueue
+        // Methods
 
         create_command_pool(): VulkanCommandPool;
         /**
@@ -1682,7 +1682,7 @@ export namespace GstVulkan {
     class VulkanSwapper extends Gst.Object {
         static $gtype: GObject.GType<VulkanSwapper>;
 
-        // Own properties of GstVulkan.VulkanSwapper
+        // Properties
 
         get force_aspect_ratio(): boolean;
         set force_aspect_ratio(val: boolean);
@@ -1693,14 +1693,14 @@ export namespace GstVulkan {
         get pixelAspectRatio(): Gst.Fraction;
         set pixelAspectRatio(val: Gst.Fraction);
 
-        // Own fields of GstVulkan.VulkanSwapper
+        // Fields
 
         device: VulkanDevice;
         window: VulkanWindow;
         queue: VulkanQueue;
         cmd_pool: VulkanCommandPool;
 
-        // Constructors of GstVulkan.VulkanSwapper
+        // Constructors
 
         constructor(properties?: Partial<VulkanSwapper.ConstructorProps>, ...args: any[]);
 
@@ -1708,7 +1708,7 @@ export namespace GstVulkan {
 
         static ['new'](device: VulkanDevice, window: VulkanWindow): VulkanSwapper;
 
-        // Own methods of GstVulkan.VulkanSwapper
+        // Methods
 
         choose_queue(available_queue: VulkanQueue): boolean;
         get_supported_caps(): Gst.Caps;
@@ -1730,7 +1730,7 @@ export namespace GstVulkan {
     class VulkanTrashFenceList extends VulkanTrashList {
         static $gtype: GObject.GType<VulkanTrashFenceList>;
 
-        // Constructors of GstVulkan.VulkanTrashFenceList
+        // Constructors
 
         constructor(properties?: Partial<VulkanTrashFenceList.ConstructorProps>, ...args: any[]);
 
@@ -1748,13 +1748,13 @@ export namespace GstVulkan {
     class VulkanTrashList extends VulkanHandlePool {
         static $gtype: GObject.GType<VulkanTrashList>;
 
-        // Constructors of GstVulkan.VulkanTrashList
+        // Constructors
 
         constructor(properties?: Partial<VulkanTrashList.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of GstVulkan.VulkanTrashList
+        // Virtual methods
 
         /**
          * the #GstVulkanTrashListAdd functions
@@ -1771,7 +1771,7 @@ export namespace GstVulkan {
          */
         vfunc_wait_func(timeout: number): boolean;
 
-        // Own methods of GstVulkan.VulkanTrashList
+        // Methods
 
         acquire(fence: VulkanFence, notify: VulkanTrashNotify): VulkanTrash;
         // Conflicted with GstVulkan.VulkanHandlePool.acquire
@@ -1794,13 +1794,13 @@ export namespace GstVulkan {
     class VulkanVideoFilter extends GstBase.BaseTransform {
         static $gtype: GObject.GType<VulkanVideoFilter>;
 
-        // Own fields of GstVulkan.VulkanVideoFilter
+        // Fields
 
         instance: VulkanInstance;
         device: VulkanDevice;
         queue: VulkanQueue;
 
-        // Constructors of GstVulkan.VulkanVideoFilter
+        // Constructors
 
         constructor(properties?: Partial<VulkanVideoFilter.ConstructorProps>, ...args: any[]);
 
@@ -1844,11 +1844,11 @@ export namespace GstVulkan {
     abstract class VulkanWindow extends Gst.Object {
         static $gtype: GObject.GType<VulkanWindow>;
 
-        // Own properties of GstVulkan.VulkanWindow
+        // Properties
 
         get display(): VulkanDisplay;
 
-        // Constructors of GstVulkan.VulkanWindow
+        // Constructors
 
         constructor(properties?: Partial<VulkanWindow.ConstructorProps>, ...args: any[]);
 
@@ -1856,7 +1856,7 @@ export namespace GstVulkan {
 
         static ['new'](display: VulkanDisplay): VulkanWindow;
 
-        // Own signals of GstVulkan.VulkanWindow
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -1883,7 +1883,7 @@ export namespace GstVulkan {
         connect_after(signal: 'resize', callback: (_source: this, object: number, p0: number) => void): number;
         emit(signal: 'resize', object: number, p0: number): void;
 
-        // Own virtual methods of GstVulkan.VulkanWindow
+        // Virtual methods
 
         /**
          * Attempt to close the window.
@@ -1918,7 +1918,7 @@ export namespace GstVulkan {
          */
         vfunc_set_window_handle(handle: never): void;
 
-        // Own methods of GstVulkan.VulkanWindow
+        // Methods
 
         /**
          * Attempt to close the window.
@@ -1957,7 +1957,7 @@ export namespace GstVulkan {
     class VulkanBarrierBufferInfo {
         static $gtype: GObject.GType<VulkanBarrierBufferInfo>;
 
-        // Constructors of GstVulkan.VulkanBarrierBufferInfo
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1965,7 +1965,7 @@ export namespace GstVulkan {
     class VulkanBarrierImageInfo {
         static $gtype: GObject.GType<VulkanBarrierImageInfo>;
 
-        // Constructors of GstVulkan.VulkanBarrierImageInfo
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1973,7 +1973,7 @@ export namespace GstVulkan {
     class VulkanBarrierMemoryInfo {
         static $gtype: GObject.GType<VulkanBarrierMemoryInfo>;
 
-        // Own fields of GstVulkan.VulkanBarrierMemoryInfo
+        // Fields
 
         type: VulkanBarrierType;
         flags: VulkanBarrierFlags;
@@ -1982,7 +1982,7 @@ export namespace GstVulkan {
         access_flags: number;
         semaphore_value: number;
 
-        // Constructors of GstVulkan.VulkanBarrierMemoryInfo
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1990,15 +1990,15 @@ export namespace GstVulkan {
     class VulkanBufferMemory {
         static $gtype: GObject.GType<VulkanBufferMemory>;
 
-        // Own fields of GstVulkan.VulkanBufferMemory
+        // Fields
 
         device: VulkanDevice;
 
-        // Constructors of GstVulkan.VulkanBufferMemory
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own static methods of GstVulkan.VulkanBufferMemory
+        // Static methods
 
         /**
          * Allocate a new #GstVulkanBufferMemory.
@@ -2051,7 +2051,7 @@ export namespace GstVulkan {
     abstract class VulkanBufferPoolPrivate {
         static $gtype: GObject.GType<VulkanBufferPoolPrivate>;
 
-        // Constructors of GstVulkan.VulkanBufferPoolPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2059,11 +2059,11 @@ export namespace GstVulkan {
     class VulkanCommandBuffer {
         static $gtype: GObject.GType<VulkanCommandBuffer>;
 
-        // Own fields of GstVulkan.VulkanCommandBuffer
+        // Fields
 
         pool: VulkanCommandPool;
 
-        // Constructors of GstVulkan.VulkanCommandBuffer
+        // Constructors
 
         constructor(cmd: Vulkan.CommandBuffer, level: Vulkan.CommandBufferLevel);
         _init(...args: any[]): void;
@@ -2075,7 +2075,7 @@ export namespace GstVulkan {
     abstract class VulkanCommandPoolPrivate {
         static $gtype: GObject.GType<VulkanCommandPoolPrivate>;
 
-        // Constructors of GstVulkan.VulkanCommandPoolPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2087,15 +2087,15 @@ export namespace GstVulkan {
     class VulkanDecoderPicture {
         static $gtype: GObject.GType<VulkanDecoderPicture>;
 
-        // Own fields of GstVulkan.VulkanDecoderPicture
+        // Fields
 
         slice_offs: any[];
 
-        // Constructors of GstVulkan.VulkanDecoderPicture
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of GstVulkan.VulkanDecoderPicture
+        // Methods
 
         /**
          * Releases the internal resource of `pic`.
@@ -2106,7 +2106,7 @@ export namespace GstVulkan {
     abstract class VulkanDecoderPrivate {
         static $gtype: GObject.GType<VulkanDecoderPrivate>;
 
-        // Constructors of GstVulkan.VulkanDecoderPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2115,7 +2115,7 @@ export namespace GstVulkan {
     abstract class VulkanDescriptorCachePrivate {
         static $gtype: GObject.GType<VulkanDescriptorCachePrivate>;
 
-        // Constructors of GstVulkan.VulkanDescriptorCachePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2124,7 +2124,7 @@ export namespace GstVulkan {
     abstract class VulkanDescriptorPoolPrivate {
         static $gtype: GObject.GType<VulkanDescriptorPoolPrivate>;
 
-        // Constructors of GstVulkan.VulkanDescriptorPoolPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2132,13 +2132,13 @@ export namespace GstVulkan {
     class VulkanDescriptorSet {
         static $gtype: GObject.GType<VulkanDescriptorSet>;
 
-        // Own fields of GstVulkan.VulkanDescriptorSet
+        // Fields
 
         pool: VulkanDescriptorPool;
         cache: VulkanDescriptorCache;
         n_layouts: number;
 
-        // Constructors of GstVulkan.VulkanDescriptorSet
+        // Constructors
 
         constructor(pool: VulkanDescriptorPool, set: Vulkan.DescriptorSet, layouts: VulkanHandle[]);
         _init(...args: any[]): void;
@@ -2154,7 +2154,7 @@ export namespace GstVulkan {
     abstract class VulkanDevicePrivate {
         static $gtype: GObject.GType<VulkanDevicePrivate>;
 
-        // Constructors of GstVulkan.VulkanDevicePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2163,7 +2163,7 @@ export namespace GstVulkan {
     abstract class VulkanDisplayPrivate {
         static $gtype: GObject.GType<VulkanDisplayPrivate>;
 
-        // Constructors of GstVulkan.VulkanDisplayPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2171,12 +2171,12 @@ export namespace GstVulkan {
     class VulkanFence {
         static $gtype: GObject.GType<VulkanFence>;
 
-        // Own fields of GstVulkan.VulkanFence
+        // Fields
 
         device: VulkanDevice;
         cache: VulkanFenceCache;
 
-        // Constructors of GstVulkan.VulkanFence
+        // Constructors
 
         constructor(device: VulkanDevice);
         _init(...args: any[]): void;
@@ -2185,7 +2185,7 @@ export namespace GstVulkan {
 
         static new_always_signalled(device: VulkanDevice): VulkanFence;
 
-        // Own methods of GstVulkan.VulkanFence
+        // Methods
 
         is_signaled(): boolean;
         reset(): void;
@@ -2195,7 +2195,7 @@ export namespace GstVulkan {
     class VulkanFormatInfo {
         static $gtype: GObject.GType<VulkanFormatInfo>;
 
-        // Own fields of GstVulkan.VulkanFormatInfo
+        // Fields
 
         name: string;
         scaling: VulkanFormatScaling;
@@ -2211,7 +2211,7 @@ export namespace GstVulkan {
         w_sub: Uint8Array;
         h_sub: Uint8Array;
 
-        // Constructors of GstVulkan.VulkanFormatInfo
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2220,7 +2220,7 @@ export namespace GstVulkan {
     abstract class VulkanFullScreenQuadPrivate {
         static $gtype: GObject.GType<VulkanFullScreenQuadPrivate>;
 
-        // Constructors of GstVulkan.VulkanFullScreenQuadPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2234,7 +2234,7 @@ export namespace GstVulkan {
     class VulkanHandle {
         static $gtype: GObject.GType<VulkanHandle>;
 
-        // Own fields of GstVulkan.VulkanHandle
+        // Fields
 
         device: VulkanDevice;
         type: VulkanHandleType;
@@ -2242,7 +2242,7 @@ export namespace GstVulkan {
         notify: VulkanHandleDestroyNotify;
         user_data: any;
 
-        // Constructors of GstVulkan.VulkanHandle
+        // Constructors
 
         constructor(
             device: VulkanDevice,
@@ -2259,7 +2259,7 @@ export namespace GstVulkan {
             notify: VulkanHandleDestroyNotify,
         ): VulkanHandle;
 
-        // Own static methods of GstVulkan.VulkanHandle
+        // Static methods
 
         static context_query(
             element: Gst.Element,
@@ -2286,7 +2286,7 @@ export namespace GstVulkan {
             instance: VulkanInstance,
         ): [boolean, VulkanDisplay | null, VulkanInstance];
 
-        // Own methods of GstVulkan.VulkanHandle
+        // Methods
 
         /**
          * Frees the descriptor set layout in `handle`
@@ -2330,7 +2330,7 @@ export namespace GstVulkan {
     abstract class VulkanImageBufferPoolPrivate {
         static $gtype: GObject.GType<VulkanImageBufferPoolPrivate>;
 
-        // Constructors of GstVulkan.VulkanImageBufferPoolPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2338,15 +2338,15 @@ export namespace GstVulkan {
     class VulkanImageMemory {
         static $gtype: GObject.GType<VulkanImageMemory>;
 
-        // Own fields of GstVulkan.VulkanImageMemory
+        // Fields
 
         device: VulkanDevice;
 
-        // Constructors of GstVulkan.VulkanImageMemory
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own static methods of GstVulkan.VulkanImageMemory
+        // Static methods
 
         /**
          * Allocated a new #GstVulkanImageMemory.
@@ -2388,7 +2388,7 @@ export namespace GstVulkan {
             user_data?: any | null,
         ): Gst.Memory;
 
-        // Own methods of GstVulkan.VulkanImageMemory
+        // Methods
 
         add_view(view: VulkanImageView): void;
         find_view(find_func: VulkanImageMemoryFindViewFunc): VulkanImageView | null;
@@ -2411,11 +2411,11 @@ export namespace GstVulkan {
     class VulkanImageView {
         static $gtype: GObject.GType<VulkanImageView>;
 
-        // Own fields of GstVulkan.VulkanImageView
+        // Fields
 
         device: VulkanDevice;
 
-        // Constructors of GstVulkan.VulkanImageView
+        // Constructors
 
         constructor(image: VulkanImageMemory, create_info: Vulkan.ImageViewCreateInfo);
         _init(...args: any[]): void;
@@ -2427,7 +2427,7 @@ export namespace GstVulkan {
     abstract class VulkanInstancePrivate {
         static $gtype: GObject.GType<VulkanInstancePrivate>;
 
-        // Constructors of GstVulkan.VulkanInstancePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2435,17 +2435,17 @@ export namespace GstVulkan {
     class VulkanMemory {
         static $gtype: GObject.GType<VulkanMemory>;
 
-        // Own fields of GstVulkan.VulkanMemory
+        // Fields
 
         device: VulkanDevice;
         map_count: number;
         mapping: any;
 
-        // Constructors of GstVulkan.VulkanMemory
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own static methods of GstVulkan.VulkanMemory
+        // Static methods
 
         /**
          * Allocated a new #GstVulkanMemory.
@@ -2481,7 +2481,7 @@ export namespace GstVulkan {
     abstract class VulkanOperationPrivate {
         static $gtype: GObject.GType<VulkanOperationPrivate>;
 
-        // Constructors of GstVulkan.VulkanOperationPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2490,7 +2490,7 @@ export namespace GstVulkan {
     abstract class VulkanPhysicalDevicePrivate {
         static $gtype: GObject.GType<VulkanPhysicalDevicePrivate>;
 
-        // Constructors of GstVulkan.VulkanPhysicalDevicePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2499,12 +2499,12 @@ export namespace GstVulkan {
     class VulkanQueueFamilyOps {
         static $gtype: GObject.GType<VulkanQueueFamilyOps>;
 
-        // Own fields of GstVulkan.VulkanQueueFamilyOps
+        // Fields
 
         video: number;
         query: boolean;
 
-        // Constructors of GstVulkan.VulkanQueueFamilyOps
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -2518,7 +2518,7 @@ export namespace GstVulkan {
     abstract class VulkanQueuePrivate {
         static $gtype: GObject.GType<VulkanQueuePrivate>;
 
-        // Constructors of GstVulkan.VulkanQueuePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2527,7 +2527,7 @@ export namespace GstVulkan {
     abstract class VulkanSwapperPrivate {
         static $gtype: GObject.GType<VulkanSwapperPrivate>;
 
-        // Constructors of GstVulkan.VulkanSwapperPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2535,13 +2535,13 @@ export namespace GstVulkan {
     class VulkanTrash {
         static $gtype: GObject.GType<VulkanTrash>;
 
-        // Own fields of GstVulkan.VulkanTrash
+        // Fields
 
         cache: VulkanTrashList;
         notify: VulkanTrashNotify;
         user_data: any;
 
-        // Constructors of GstVulkan.VulkanTrash
+        // Constructors
 
         constructor(fence: VulkanFence);
         _init(...args: any[]): void;
@@ -2550,7 +2550,7 @@ export namespace GstVulkan {
 
         static new_free_semaphore(fence: VulkanFence, semaphore: Vulkan.Semaphore): VulkanTrash;
 
-        // Own static methods of GstVulkan.VulkanTrash
+        // Static methods
 
         /**
          * A #GstVulkanTrashNotify implementation for unreffing a #GstMiniObject when the
@@ -2573,7 +2573,7 @@ export namespace GstVulkan {
     class VulkanVideoCapabilities {
         static $gtype: GObject.GType<VulkanVideoCapabilities>;
 
-        // Constructors of GstVulkan.VulkanVideoCapabilities
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -2587,7 +2587,7 @@ export namespace GstVulkan {
     class VulkanVideoProfile {
         static $gtype: GObject.GType<VulkanVideoProfile>;
 
-        // Constructors of GstVulkan.VulkanVideoProfile
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -2596,7 +2596,7 @@ export namespace GstVulkan {
         );
         _init(...args: any[]): void;
 
-        // Own methods of GstVulkan.VulkanVideoProfile
+        // Methods
 
         is_equal(b: VulkanVideoProfile): boolean;
     }
@@ -2605,7 +2605,7 @@ export namespace GstVulkan {
     abstract class VulkanWindowPrivate {
         static $gtype: GObject.GType<VulkanWindowPrivate>;
 
-        // Constructors of GstVulkan.VulkanWindowPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2616,7 +2616,7 @@ export namespace GstVulkan {
     class VulkanDecoderParameters {
         static $gtype: GObject.GType<VulkanDecoderParameters>;
 
-        // Constructors of GstVulkan.VulkanDecoderParameters
+        // Constructors
 
         constructor(properties?: Partial<{}>);
         _init(...args: any[]): void;

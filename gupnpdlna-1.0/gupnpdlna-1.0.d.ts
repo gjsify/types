@@ -46,14 +46,14 @@ export namespace GUPnPDLNA {
     class Discoverer extends GstPbutils.Discoverer {
         static $gtype: GObject.GType<Discoverer>;
 
-        // Own properties of GUPnPDLNA.Discoverer
+        // Properties
 
         get extended_mode(): boolean;
         get extendedMode(): boolean;
         get relaxed_mode(): boolean;
         get relaxedMode(): boolean;
 
-        // Constructors of GUPnPDLNA.Discoverer
+        // Constructors
 
         constructor(properties?: Partial<Discoverer.ConstructorProps>, ...args: any[]);
 
@@ -64,7 +64,7 @@ export namespace GUPnPDLNA {
 
         static ['new'](...args: never[]): any;
 
-        // Own signals of GUPnPDLNA.Discoverer
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -73,11 +73,11 @@ export namespace GUPnPDLNA {
         connect_after(signal: 'done', callback: (_source: this, dlna: Information, err: GLib.Error) => void): number;
         emit(signal: 'done', dlna: Information, err: GLib.Error): void;
 
-        // Own virtual methods of GUPnPDLNA.Discoverer
+        // Virtual methods
 
         vfunc_done(dlna: Information, err: GLib.Error): void;
 
-        // Own methods of GUPnPDLNA.Discoverer
+        // Methods
 
         /**
          * Queues `uri` for metadata discovery. When discovery is completed, the
@@ -123,13 +123,13 @@ export namespace GUPnPDLNA {
     class Information extends GObject.Object {
         static $gtype: GObject.GType<Information>;
 
-        // Own properties of GUPnPDLNA.Information
+        // Properties
 
         get info(): GstPbutils.DiscovererInfo;
         get mime(): string;
         get name(): string;
 
-        // Constructors of GUPnPDLNA.Information
+        // Constructors
 
         constructor(properties?: Partial<Information.ConstructorProps>, ...args: any[]);
 
@@ -137,7 +137,7 @@ export namespace GUPnPDLNA {
 
         static ['new'](name: string, mime: string, info: GstPbutils.DiscovererInfo): Information;
 
-        // Own methods of GUPnPDLNA.Information
+        // Methods
 
         get_info(): GstPbutils.DiscovererInfo;
         get_mime(): string;
@@ -163,7 +163,7 @@ export namespace GUPnPDLNA {
     class Profile extends GObject.Object {
         static $gtype: GObject.GType<Profile>;
 
-        // Own properties of GUPnPDLNA.Profile
+        // Properties
 
         get encoding_profile(): GstPbutils.EncodingProfile;
         get encodingProfile(): GstPbutils.EncodingProfile;
@@ -171,13 +171,13 @@ export namespace GUPnPDLNA {
         get mime(): string;
         get name(): string;
 
-        // Constructors of GUPnPDLNA.Profile
+        // Constructors
 
         constructor(properties?: Partial<Profile.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of GUPnPDLNA.Profile
+        // Methods
 
         get_encoding_profile(): GstPbutils.EncodingProfile;
         get_extended(): boolean;

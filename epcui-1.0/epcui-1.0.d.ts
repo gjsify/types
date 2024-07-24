@@ -50,7 +50,7 @@ export namespace EpcUi {
     class PasswordDialog extends Gtk.Dialog implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<PasswordDialog>;
 
-        // Own properties of EpcUi.PasswordDialog
+        // Properties
 
         get anonymous(): boolean;
         set anonymous(val: boolean);
@@ -65,13 +65,13 @@ export namespace EpcUi {
         get username(): string;
         set username(val: string);
 
-        // Constructors of EpcUi.PasswordDialog
+        // Constructors
 
         constructor(properties?: Partial<PasswordDialog.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of EpcUi.PasswordDialog
+        // Methods
 
         attach(consumer: Epc.Consumer): void;
         get_anonymous_allowed(): boolean;
@@ -507,7 +507,7 @@ export namespace EpcUi {
     class ProgressWindow extends Gtk.Window implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<ProgressWindow>;
 
-        // Own properties of EpcUi.ProgressWindow
+        // Properties
 
         get message(): string;
         set message(val: string);
@@ -516,7 +516,7 @@ export namespace EpcUi {
         get title(): string;
         set title(val: string);
 
-        // Constructors of EpcUi.ProgressWindow
+        // Constructors
 
         constructor(properties?: Partial<ProgressWindow.ConstructorProps>, ...args: any[]);
 
@@ -527,11 +527,11 @@ export namespace EpcUi {
 
         static ['new'](...args: never[]): any;
 
-        // Own static methods of EpcUi.ProgressWindow
+        // Static methods
 
         static install(parent: Gtk.Window): void;
 
-        // Own methods of EpcUi.ProgressWindow
+        // Methods
 
         update(progress: number, message: string): void;
 
@@ -942,7 +942,7 @@ export namespace EpcUi {
     abstract class PasswordDialogPrivate {
         static $gtype: GObject.GType<PasswordDialogPrivate>;
 
-        // Constructors of EpcUi.PasswordDialogPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -951,7 +951,7 @@ export namespace EpcUi {
     abstract class ProgressWindowPrivate {
         static $gtype: GObject.GType<ProgressWindowPrivate>;
 
-        // Constructors of EpcUi.ProgressWindowPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }

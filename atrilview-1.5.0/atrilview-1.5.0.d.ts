@@ -140,7 +140,7 @@ export namespace AtrilView {
     class DocumentModel extends GObject.Object {
         static $gtype: GObject.GType<DocumentModel>;
 
-        // Own properties of AtrilView.DocumentModel
+        // Properties
 
         get continuous(): boolean;
         set continuous(val: boolean);
@@ -175,7 +175,7 @@ export namespace AtrilView {
         get sizingMode(): SizingMode;
         set sizingMode(val: SizingMode);
 
-        // Constructors of AtrilView.DocumentModel
+        // Constructors
 
         constructor(properties?: Partial<DocumentModel.ConstructorProps>, ...args: any[]);
 
@@ -185,7 +185,7 @@ export namespace AtrilView {
 
         static new_with_document(document: AtrilDocument.Document): DocumentModel;
 
-        // Own signals of AtrilView.DocumentModel
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -194,7 +194,7 @@ export namespace AtrilView {
         connect_after(signal: 'page-changed', callback: (_source: this, object: number, p0: number) => void): number;
         emit(signal: 'page-changed', object: number, p0: number): void;
 
-        // Own methods of AtrilView.DocumentModel
+        // Methods
 
         get_continuous(): boolean;
         /**
@@ -248,7 +248,7 @@ export namespace AtrilView {
     abstract class Job extends GObject.Object {
         static $gtype: GObject.GType<Job>;
 
-        // Own fields of AtrilView.Job
+        // Fields
 
         document: AtrilDocument.Document;
         run_mode: JobRunMode;
@@ -259,13 +259,13 @@ export namespace AtrilView {
         idle_finished_id: number;
         idle_cancelled_id: number;
 
-        // Constructors of AtrilView.Job
+        // Constructors
 
         constructor(properties?: Partial<Job.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of AtrilView.Job
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -277,17 +277,17 @@ export namespace AtrilView {
         connect_after(signal: 'finished', callback: (_source: this) => void): number;
         emit(signal: 'finished'): void;
 
-        // Own static methods of AtrilView.Job
+        // Static methods
 
         static scheduler_get_running_thread_job(): Job;
 
-        // Own virtual methods of AtrilView.Job
+        // Virtual methods
 
         vfunc_cancelled(): void;
         vfunc_finished(): void;
         vfunc_run(): boolean;
 
-        // Own methods of AtrilView.Job
+        // Methods
 
         cancel(): void;
         failed(error: GLib.Error): void;
@@ -310,11 +310,11 @@ export namespace AtrilView {
     class JobAnnots extends Job {
         static $gtype: GObject.GType<JobAnnots>;
 
-        // Own fields of AtrilView.JobAnnots
+        // Fields
 
         annots: any[];
 
-        // Constructors of AtrilView.JobAnnots
+        // Constructors
 
         constructor(properties?: Partial<JobAnnots.ConstructorProps>, ...args: any[]);
 
@@ -332,11 +332,11 @@ export namespace AtrilView {
     class JobAttachments extends Job {
         static $gtype: GObject.GType<JobAttachments>;
 
-        // Own fields of AtrilView.JobAttachments
+        // Fields
 
         attachments: any[];
 
-        // Constructors of AtrilView.JobAttachments
+        // Constructors
 
         constructor(properties?: Partial<JobAttachments.ConstructorProps>, ...args: any[]);
 
@@ -354,12 +354,12 @@ export namespace AtrilView {
     class JobExport extends Job {
         static $gtype: GObject.GType<JobExport>;
 
-        // Own fields of AtrilView.JobExport
+        // Fields
 
         page: number;
         rc: AtrilDocument.RenderContext;
 
-        // Constructors of AtrilView.JobExport
+        // Constructors
 
         constructor(properties?: Partial<JobExport.ConstructorProps>, ...args: any[]);
 
@@ -367,7 +367,7 @@ export namespace AtrilView {
 
         static ['new'](document: AtrilDocument.Document): JobExport;
 
-        // Own methods of AtrilView.JobExport
+        // Methods
 
         set_page(page: number): void;
     }
@@ -387,7 +387,7 @@ export namespace AtrilView {
     class JobFind extends Job {
         static $gtype: GObject.GType<JobFind>;
 
-        // Own fields of AtrilView.JobFind
+        // Fields
 
         start_page: number;
         current_page: number;
@@ -397,7 +397,7 @@ export namespace AtrilView {
         text: string;
         case_sensitive: boolean;
 
-        // Constructors of AtrilView.JobFind
+        // Constructors
 
         constructor(properties?: Partial<JobFind.ConstructorProps>, ...args: any[]);
 
@@ -411,7 +411,7 @@ export namespace AtrilView {
             case_sensitive: boolean,
         ): JobFind;
 
-        // Own signals of AtrilView.JobFind
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -420,11 +420,11 @@ export namespace AtrilView {
         connect_after(signal: 'updated', callback: (_source: this, object: number) => void): number;
         emit(signal: 'updated', object: number): void;
 
-        // Own virtual methods of AtrilView.JobFind
+        // Virtual methods
 
         vfunc_updated(page: number): void;
 
-        // Own methods of AtrilView.JobFind
+        // Methods
 
         get_n_results(pages: number): number;
         get_progress(): number;
@@ -446,11 +446,11 @@ export namespace AtrilView {
     class JobFonts extends Job {
         static $gtype: GObject.GType<JobFonts>;
 
-        // Own fields of AtrilView.JobFonts
+        // Fields
 
         scan_completed: boolean;
 
-        // Constructors of AtrilView.JobFonts
+        // Constructors
 
         constructor(properties?: Partial<JobFonts.ConstructorProps>, ...args: any[]);
 
@@ -458,7 +458,7 @@ export namespace AtrilView {
 
         static ['new'](document: AtrilDocument.Document): JobFonts;
 
-        // Own signals of AtrilView.JobFonts
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -467,7 +467,7 @@ export namespace AtrilView {
         connect_after(signal: 'updated', callback: (_source: this, object: number) => void): number;
         emit(signal: 'updated', object: number): void;
 
-        // Own virtual methods of AtrilView.JobFonts
+        // Virtual methods
 
         vfunc_updated(progress: number): void;
     }
@@ -481,11 +481,11 @@ export namespace AtrilView {
     class JobLayers extends Job {
         static $gtype: GObject.GType<JobLayers>;
 
-        // Own fields of AtrilView.JobLayers
+        // Fields
 
         model: Gtk.TreeModel;
 
-        // Constructors of AtrilView.JobLayers
+        // Constructors
 
         constructor(properties?: Partial<JobLayers.ConstructorProps>, ...args: any[]);
 
@@ -503,11 +503,11 @@ export namespace AtrilView {
     class JobLinks extends Job {
         static $gtype: GObject.GType<JobLinks>;
 
-        // Own fields of AtrilView.JobLinks
+        // Fields
 
         model: Gtk.TreeModel;
 
-        // Constructors of AtrilView.JobLinks
+        // Constructors
 
         constructor(properties?: Partial<JobLinks.ConstructorProps>, ...args: any[]);
 
@@ -525,12 +525,12 @@ export namespace AtrilView {
     class JobLoad extends Job {
         static $gtype: GObject.GType<JobLoad>;
 
-        // Own fields of AtrilView.JobLoad
+        // Fields
 
         uri: string;
         password: string;
 
-        // Constructors of AtrilView.JobLoad
+        // Constructors
 
         constructor(properties?: Partial<JobLoad.ConstructorProps>, ...args: any[]);
 
@@ -538,7 +538,7 @@ export namespace AtrilView {
 
         static ['new'](uri: string): JobLoad;
 
-        // Own methods of AtrilView.JobLoad
+        // Methods
 
         set_password(password: string): void;
         set_uri(uri: string): void;
@@ -553,7 +553,7 @@ export namespace AtrilView {
     class JobPageData extends Job {
         static $gtype: GObject.GType<JobPageData>;
 
-        // Own fields of AtrilView.JobPageData
+        // Fields
 
         page: number;
         flags: JobPageDataFlags;
@@ -563,7 +563,7 @@ export namespace AtrilView {
         text_log_attrs: Pango.LogAttr;
         text_log_attrs_length: number;
 
-        // Constructors of AtrilView.JobPageData
+        // Constructors
 
         constructor(properties?: Partial<JobPageData.ConstructorProps>, ...args: any[]);
 
@@ -581,11 +581,11 @@ export namespace AtrilView {
     class JobPrint extends Job {
         static $gtype: GObject.GType<JobPrint>;
 
-        // Own fields of AtrilView.JobPrint
+        // Fields
 
         page: number;
 
-        // Constructors of AtrilView.JobPrint
+        // Constructors
 
         constructor(properties?: Partial<JobPrint.ConstructorProps>, ...args: any[]);
 
@@ -593,7 +593,7 @@ export namespace AtrilView {
 
         static ['new'](document: AtrilDocument.Document): JobPrint;
 
-        // Own methods of AtrilView.JobPrint
+        // Methods
 
         set_cairo(cr: cairo.Context): void;
         set_page(page: number): void;
@@ -608,7 +608,7 @@ export namespace AtrilView {
     class JobRender extends Job {
         static $gtype: GObject.GType<JobRender>;
 
-        // Own fields of AtrilView.JobRender
+        // Fields
 
         page: number;
         rotation: number;
@@ -622,7 +622,7 @@ export namespace AtrilView {
         base: Gdk.Color;
         text: Gdk.Color;
 
-        // Constructors of AtrilView.JobRender
+        // Constructors
 
         constructor(properties?: Partial<JobRender.ConstructorProps>, ...args: any[]);
 
@@ -637,7 +637,7 @@ export namespace AtrilView {
             height: number,
         ): JobRender;
 
-        // Own methods of AtrilView.JobRender
+        // Methods
 
         set_selection_info(
             selection_points: AtrilDocument.Rectangle,
@@ -656,12 +656,12 @@ export namespace AtrilView {
     class JobSave extends Job {
         static $gtype: GObject.GType<JobSave>;
 
-        // Own fields of AtrilView.JobSave
+        // Fields
 
         uri: string;
         document_uri: string;
 
-        // Constructors of AtrilView.JobSave
+        // Constructors
 
         constructor(properties?: Partial<JobSave.ConstructorProps>, ...args: any[]);
 
@@ -679,14 +679,14 @@ export namespace AtrilView {
     class JobThumbnail extends Job {
         static $gtype: GObject.GType<JobThumbnail>;
 
-        // Own fields of AtrilView.JobThumbnail
+        // Fields
 
         page: number;
         rotation: number;
         scale: number;
         thumbnail: GdkPixbuf.Pixbuf;
 
-        // Constructors of AtrilView.JobThumbnail
+        // Constructors
 
         constructor(properties?: Partial<JobThumbnail.ConstructorProps>, ...args: any[]);
 
@@ -720,11 +720,11 @@ export namespace AtrilView {
     abstract class PrintOperation extends GObject.Object {
         static $gtype: GObject.GType<PrintOperation>;
 
-        // Own properties of AtrilView.PrintOperation
+        // Properties
 
         set document(val: AtrilDocument.Document);
 
-        // Constructors of AtrilView.PrintOperation
+        // Constructors
 
         constructor(properties?: Partial<PrintOperation.ConstructorProps>, ...args: any[]);
 
@@ -732,7 +732,7 @@ export namespace AtrilView {
 
         static ['new'](document: AtrilDocument.Document): PrintOperation;
 
-        // Own signals of AtrilView.PrintOperation
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -747,11 +747,11 @@ export namespace AtrilView {
         connect_after(signal: 'status-changed', callback: (_source: this) => void): number;
         emit(signal: 'status-changed'): void;
 
-        // Own static methods of AtrilView.PrintOperation
+        // Static methods
 
         static exists_for_document(document: AtrilDocument.Document): boolean;
 
-        // Own methods of AtrilView.PrintOperation
+        // Methods
 
         cancel(): void;
         get_default_page_setup(): Gtk.PageSetup;
@@ -831,12 +831,12 @@ export namespace AtrilView {
     class View extends Gtk.Container implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable {
         static $gtype: GObject.GType<View>;
 
-        // Own properties of AtrilView.View
+        // Properties
 
         get is_loading(): boolean;
         get isLoading(): boolean;
 
-        // Constructors of AtrilView.View
+        // Constructors
 
         constructor(properties?: Partial<View.ConstructorProps>, ...args: any[]);
 
@@ -844,7 +844,7 @@ export namespace AtrilView {
 
         static ['new'](): View;
 
-        // Own signals of AtrilView.View
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -901,7 +901,7 @@ export namespace AtrilView {
         connect_after(signal: 'sync-source', callback: (_source: this, object: any | null) => void): number;
         emit(signal: 'sync-source', object?: any | null): void;
 
-        // Own methods of AtrilView.View
+        // Methods
 
         autoscroll_start(): void;
         autoscroll_stop(): void;
@@ -1490,7 +1490,7 @@ export namespace AtrilView {
     class ViewPresentation extends Gtk.Widget implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<ViewPresentation>;
 
-        // Own properties of AtrilView.ViewPresentation
+        // Properties
 
         set current_page(val: number);
         set currentPage(val: number);
@@ -1500,7 +1500,7 @@ export namespace AtrilView {
         get rotation(): number;
         set rotation(val: number);
 
-        // Constructors of AtrilView.ViewPresentation
+        // Constructors
 
         constructor(properties?: Partial<ViewPresentation.ConstructorProps>, ...args: any[]);
 
@@ -1513,7 +1513,7 @@ export namespace AtrilView {
             inverted_colors: boolean,
         ): ViewPresentation;
 
-        // Own signals of AtrilView.ViewPresentation
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -1528,7 +1528,7 @@ export namespace AtrilView {
         connect_after(signal: 'finished', callback: (_source: this) => void): number;
         emit(signal: 'finished'): void;
 
-        // Own methods of AtrilView.ViewPresentation
+        // Methods
 
         get_current_page(): number;
         get_rotation(): number;
@@ -2127,7 +2127,7 @@ export namespace AtrilView {
     class WebView extends Gtk.Container implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<WebView>;
 
-        // Constructors of AtrilView.WebView
+        // Constructors
 
         constructor(properties?: Partial<WebView.ConstructorProps>, ...args: any[]);
 
@@ -2135,7 +2135,7 @@ export namespace AtrilView {
 
         static ['new'](): WebView;
 
-        // Own methods of AtrilView.WebView
+        // Methods
 
         copy(): void;
         /**
@@ -2583,7 +2583,7 @@ export namespace AtrilView {
     abstract class JobWebThumbnail {
         static $gtype: GObject.GType<JobWebThumbnail>;
 
-        // Constructors of AtrilView.JobWebThumbnail
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2591,7 +2591,7 @@ export namespace AtrilView {
     abstract class JobWebThumbnailClass {
         static $gtype: GObject.GType<JobWebThumbnailClass>;
 
-        // Constructors of AtrilView.JobWebThumbnailClass
+        // Constructors
 
         _init(...args: any[]): void;
     }

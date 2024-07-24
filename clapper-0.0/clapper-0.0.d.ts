@@ -249,7 +249,7 @@ export namespace Clapper {
     class AudioStream extends Stream {
         static $gtype: GObject.GType<AudioStream>;
 
-        // Own properties of Clapper.AudioStream
+        // Properties
 
         /**
          * Stream bitrate.
@@ -296,13 +296,13 @@ export namespace Clapper {
          */
         get sampleRate(): number;
 
-        // Constructors of Clapper.AudioStream
+        // Constructors
 
         constructor(properties?: Partial<AudioStream.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Clapper.AudioStream
+        // Methods
 
         /**
          * Get bitrate of audio `stream`.
@@ -375,7 +375,7 @@ export namespace Clapper {
     class Discoverer extends Feature {
         static $gtype: GObject.GType<Discoverer>;
 
-        // Own properties of Clapper.Discoverer
+        // Properties
 
         /**
          * Discoverer discovery mode.
@@ -388,7 +388,7 @@ export namespace Clapper {
         get discoveryMode(): DiscovererDiscoveryMode;
         set discoveryMode(val: DiscovererDiscoveryMode);
 
-        // Constructors of Clapper.Discoverer
+        // Constructors
 
         constructor(properties?: Partial<Discoverer.ConstructorProps>, ...args: any[]);
 
@@ -396,7 +396,7 @@ export namespace Clapper {
 
         static ['new'](): Discoverer;
 
-        // Own methods of Clapper.Discoverer
+        // Methods
 
         /**
          * Get the [enum`Clapper`.DiscovererDiscoveryMode] of `discoverer`.
@@ -431,13 +431,13 @@ export namespace Clapper {
     class Feature extends Gst.Object {
         static $gtype: GObject.GType<Feature>;
 
-        // Constructors of Clapper.Feature
+        // Constructors
 
         constructor(properties?: Partial<Feature.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of Clapper.Feature
+        // Virtual methods
 
         /**
          * An item in queue got updated. This might be (or not) currently
@@ -582,7 +582,7 @@ export namespace Clapper {
     class Marker extends Gst.Object {
         static $gtype: GObject.GType<Marker>;
 
-        // Own properties of Clapper.Marker
+        // Properties
 
         /**
          * Ending time of marker.
@@ -605,7 +605,7 @@ export namespace Clapper {
          */
         get title(): string;
 
-        // Constructors of Clapper.Marker
+        // Constructors
 
         constructor(properties?: Partial<Marker.ConstructorProps>, ...args: any[]);
 
@@ -613,7 +613,7 @@ export namespace Clapper {
 
         static ['new'](marker_type: MarkerType, title: string | null, start: number, end: number): Marker;
 
-        // Own methods of Clapper.Marker
+        // Methods
 
         /**
          * Get the end position (in seconds) of `marker`.
@@ -661,7 +661,7 @@ export namespace Clapper {
     class MediaItem extends Gst.Object {
         static $gtype: GObject.GType<MediaItem>;
 
-        // Own properties of Clapper.MediaItem
+        // Properties
 
         /**
          * Media container format.
@@ -697,7 +697,7 @@ export namespace Clapper {
          */
         get uri(): string;
 
-        // Constructors of Clapper.MediaItem
+        // Constructors
 
         constructor(properties?: Partial<MediaItem.ConstructorProps>, ...args: any[]);
 
@@ -707,7 +707,7 @@ export namespace Clapper {
 
         static new_from_file(file: Gio.File): MediaItem;
 
-        // Own methods of Clapper.MediaItem
+        // Methods
 
         /**
          * Get media item container format.
@@ -782,7 +782,7 @@ export namespace Clapper {
     class Mpris extends Feature {
         static $gtype: GObject.GType<Mpris>;
 
-        // Own properties of Clapper.Mpris
+        // Properties
 
         /**
          * The basename of an installed .desktop file with the ".desktop" extension stripped.
@@ -837,7 +837,7 @@ export namespace Clapper {
         get queueControllable(): boolean;
         set queueControllable(val: boolean);
 
-        // Constructors of Clapper.Mpris
+        // Constructors
 
         constructor(properties?: Partial<Mpris.ConstructorProps>, ...args: any[]);
 
@@ -845,7 +845,7 @@ export namespace Clapper {
 
         static ['new'](own_name: string, identity: string, desktop_entry?: string | null): Mpris;
 
-        // Own methods of Clapper.Mpris
+        // Methods
 
         /**
          * Get fallback art URL earlier set by user.
@@ -957,7 +957,7 @@ export namespace Clapper {
     class Player extends ThreadedObject {
         static $gtype: GObject.GType<Player>;
 
-        // Own properties of Clapper.Player
+        // Properties
 
         /**
          * Whether audio stream is enabled.
@@ -1136,7 +1136,7 @@ export namespace Clapper {
         get volume(): number;
         set volume(val: number);
 
-        // Constructors of Clapper.Player
+        // Constructors
 
         constructor(properties?: Partial<Player.ConstructorProps>, ...args: any[]);
 
@@ -1144,7 +1144,7 @@ export namespace Clapper {
 
         static ['new'](): Player;
 
-        // Own signals of Clapper.Player
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -1180,7 +1180,7 @@ export namespace Clapper {
         ): number;
         emit(signal: 'warning', error: GLib.Error, debug_info?: string | null): void;
 
-        // Own methods of Clapper.Player
+        // Methods
 
         /**
          * Add another #ClapperFeature to the player.
@@ -1461,7 +1461,7 @@ export namespace Clapper {
     class Queue<A extends GObject.Object = GObject.Object> extends Gst.Object implements Gio.ListModel<A> {
         static $gtype: GObject.GType<Queue>;
 
-        // Own properties of Clapper.Queue
+        // Properties
 
         /**
          * Index of currently selected media item for playback.
@@ -1510,13 +1510,13 @@ export namespace Clapper {
         get progressionMode(): QueueProgressionMode;
         set progressionMode(val: QueueProgressionMode);
 
-        // Constructors of Clapper.Queue
+        // Constructors
 
         constructor(properties?: Partial<Queue.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Clapper.Queue
+        // Methods
 
         /**
          * Add another #ClapperMediaItem to the end of queue.
@@ -2210,7 +2210,7 @@ export namespace Clapper {
     class Server extends Feature {
         static $gtype: GObject.GType<Server>;
 
-        // Own properties of Clapper.Server
+        // Properties
 
         /**
          * Port on which server is currently listening on or 0 if not listening.
@@ -2245,7 +2245,7 @@ export namespace Clapper {
          */
         get running(): boolean;
 
-        // Constructors of Clapper.Server
+        // Constructors
 
         constructor(properties?: Partial<Server.ConstructorProps>, ...args: any[]);
 
@@ -2253,7 +2253,7 @@ export namespace Clapper {
 
         static ['new'](): Server;
 
-        // Own signals of Clapper.Server
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -2262,7 +2262,7 @@ export namespace Clapper {
         connect_after(signal: 'error', callback: (_source: this, error: GLib.Error) => void): number;
         emit(signal: 'error', error: GLib.Error): void;
 
-        // Own methods of Clapper.Server
+        // Methods
 
         /**
          * Get port on which server is currently listening on.
@@ -2338,7 +2338,7 @@ export namespace Clapper {
     class Stream extends Gst.Object {
         static $gtype: GObject.GType<Stream>;
 
-        // Own properties of Clapper.Stream
+        // Properties
 
         /**
          * Type of stream.
@@ -2353,13 +2353,13 @@ export namespace Clapper {
          */
         get title(): string;
 
-        // Constructors of Clapper.Stream
+        // Constructors
 
         constructor(properties?: Partial<Stream.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of Clapper.Stream
+        // Virtual methods
 
         /**
          * This function is called when internal #GstStream gets updated.
@@ -2372,7 +2372,7 @@ export namespace Clapper {
          */
         vfunc_internal_stream_updated(caps?: Gst.Caps | null, tags?: Gst.TagList | null): void;
 
-        // Own methods of Clapper.Stream
+        // Methods
 
         /**
          * Get the #ClapperStreamType of `stream`.
@@ -2407,7 +2407,7 @@ export namespace Clapper {
     class StreamList<A extends GObject.Object = GObject.Object> extends Gst.Object implements Gio.ListModel<A> {
         static $gtype: GObject.GType<StreamList>;
 
-        // Own properties of Clapper.StreamList
+        // Properties
 
         /**
          * Index of currently selected stream.
@@ -2436,13 +2436,13 @@ export namespace Clapper {
          */
         get nStreams(): number;
 
-        // Constructors of Clapper.StreamList
+        // Constructors
 
         constructor(properties?: Partial<StreamList.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Clapper.StreamList
+        // Methods
 
         /**
          * Get index of the currently selected #ClapperStream.
@@ -3000,7 +3000,7 @@ export namespace Clapper {
     class SubtitleStream extends Stream {
         static $gtype: GObject.GType<SubtitleStream>;
 
-        // Own properties of Clapper.SubtitleStream
+        // Properties
 
         /**
          * Stream language code in ISO-639 format.
@@ -3019,13 +3019,13 @@ export namespace Clapper {
          */
         get langName(): string;
 
-        // Constructors of Clapper.SubtitleStream
+        // Constructors
 
         constructor(properties?: Partial<SubtitleStream.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Clapper.SubtitleStream
+        // Methods
 
         /**
          * Get an ISO-639 language code of the `stream`.
@@ -3054,13 +3054,13 @@ export namespace Clapper {
     class ThreadedObject extends Gst.Object {
         static $gtype: GObject.GType<ThreadedObject>;
 
-        // Constructors of Clapper.ThreadedObject
+        // Constructors
 
         constructor(properties?: Partial<ThreadedObject.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of Clapper.ThreadedObject
+        // Virtual methods
 
         /**
          * Called right after thread started.
@@ -3075,7 +3075,7 @@ export namespace Clapper {
          */
         vfunc_thread_stop(): void;
 
-        // Own methods of Clapper.ThreadedObject
+        // Methods
 
         /**
          * Get the #GMainContext of the thread used by this object.
@@ -3104,7 +3104,7 @@ export namespace Clapper {
     class Timeline<A extends GObject.Object = GObject.Object> extends Gst.Object implements Gio.ListModel<A> {
         static $gtype: GObject.GType<Timeline>;
 
-        // Own properties of Clapper.Timeline
+        // Properties
 
         /**
          * Number of markers in the timeline.
@@ -3115,13 +3115,13 @@ export namespace Clapper {
          */
         get nMarkers(): number;
 
-        // Constructors of Clapper.Timeline
+        // Constructors
 
         constructor(properties?: Partial<Timeline.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Clapper.Timeline
+        // Methods
 
         /**
          * Get the #ClapperMarker at index.
@@ -3674,7 +3674,7 @@ export namespace Clapper {
     class VideoStream extends Stream {
         static $gtype: GObject.GType<VideoStream>;
 
-        // Own properties of Clapper.VideoStream
+        // Properties
 
         /**
          * Stream bitrate.
@@ -3705,13 +3705,13 @@ export namespace Clapper {
          */
         get width(): number;
 
-        // Constructors of Clapper.VideoStream
+        // Constructors
 
         constructor(properties?: Partial<VideoStream.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Clapper.VideoStream
+        // Methods
 
         /**
          * Get bitrate of video `stream`.

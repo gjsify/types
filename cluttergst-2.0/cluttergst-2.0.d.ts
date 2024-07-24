@@ -152,7 +152,7 @@ export namespace ClutterGst {
     class VideoSink extends GstBase.BaseSink implements GstVideo.Navigation {
         static $gtype: GObject.GType<VideoSink>;
 
-        // Own properties of ClutterGst.VideoSink
+        // Properties
 
         /**
          * This is the texture the video is decoded into. It can be any
@@ -181,7 +181,7 @@ export namespace ClutterGst {
         get updatePriority(): number;
         set updatePriority(val: number);
 
-        // Constructors of ClutterGst.VideoSink
+        // Constructors
 
         constructor(properties?: Partial<VideoSink.ConstructorProps>, ...args: any[]);
 
@@ -676,14 +676,14 @@ export namespace ClutterGst {
     {
         static $gtype: GObject.GType<VideoTexture>;
 
-        // Own properties of ClutterGst.VideoTexture
+        // Properties
 
         get pixel_aspect_ratio(): Gst.Fraction;
         set pixel_aspect_ratio(val: Gst.Fraction);
         get pixelAspectRatio(): Gst.Fraction;
         set pixelAspectRatio(val: Gst.Fraction);
 
-        // Constructors of ClutterGst.VideoTexture
+        // Constructors
 
         constructor(properties?: Partial<VideoTexture.ConstructorProps>, ...args: any[]);
 
@@ -691,7 +691,7 @@ export namespace ClutterGst {
 
         static ['new'](): VideoTexture;
 
-        // Own methods of ClutterGst.VideoTexture
+        // Methods
 
         /**
          * Get the current audio stream. The number returned in the index of the
@@ -1521,7 +1521,7 @@ export namespace ClutterGst {
     abstract class PlayerIfacePrivate {
         static $gtype: GObject.GType<PlayerIfacePrivate>;
 
-        // Constructors of ClutterGst.PlayerIfacePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1530,7 +1530,7 @@ export namespace ClutterGst {
     abstract class VideoSinkPrivate {
         static $gtype: GObject.GType<VideoSinkPrivate>;
 
-        // Constructors of ClutterGst.VideoSinkPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1539,7 +1539,7 @@ export namespace ClutterGst {
     abstract class VideoTexturePrivate {
         static $gtype: GObject.GType<VideoTexturePrivate>;
 
-        // Constructors of ClutterGst.VideoTexturePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1580,7 +1580,7 @@ export namespace ClutterGst {
         class_init(object_class: typeof GObject.Object): void;
     }
     interface Player extends Clutter.Media {
-        // Own properties of ClutterGst.Player
+        // Properties
 
         /**
          * Index of the current audio stream.
@@ -1639,7 +1639,7 @@ export namespace ClutterGst {
         get userAgent(): string;
         set userAgent(val: string);
 
-        // Own methods of ClutterGst.Player
+        // Methods
 
         /**
          * Frees the resources created by clutter_gst_player_init(). After
@@ -1740,7 +1740,7 @@ export namespace ClutterGst {
          */
         set_user_agent(user_agent: string): void;
 
-        // Own virtual methods of ClutterGst.Player
+        // Virtual methods
 
         vfunc_download_buffering(start: number, stop: number): void;
         /**

@@ -31,11 +31,11 @@ export namespace Plasma {
     class Client extends GObject.Object {
         static $gtype: GObject.GType<Client>;
 
-        // Own properties of Plasma.Client
+        // Properties
 
         set client(val: any);
 
-        // Constructors of Plasma.Client
+        // Constructors
 
         constructor(properties?: Partial<Client.ConstructorProps>, ...args: any[]);
 
@@ -43,7 +43,7 @@ export namespace Plasma {
 
         static ['new'](store_socket_name: string, options?: ClientOptions | null): Client;
 
-        // Own methods of Plasma.Client
+        // Methods
 
         create(id: ObjectID, data_size: number, options?: ClientCreateOptions | null): CreatedObject | null;
         disconnect(): boolean;
@@ -64,14 +64,14 @@ export namespace Plasma {
     class ClientCreateOptions extends GObject.Object {
         static $gtype: GObject.GType<ClientCreateOptions>;
 
-        // Own properties of Plasma.ClientCreateOptions
+        // Properties
 
         get gpu_device(): number;
         set gpu_device(val: number);
         get gpuDevice(): number;
         set gpuDevice(val: number);
 
-        // Constructors of Plasma.ClientCreateOptions
+        // Constructors
 
         constructor(properties?: Partial<ClientCreateOptions.ConstructorProps>, ...args: any[]);
 
@@ -79,7 +79,7 @@ export namespace Plasma {
 
         static ['new'](): ClientCreateOptions;
 
-        // Own methods of Plasma.ClientCreateOptions
+        // Methods
 
         get_metadata(): Uint8Array | null;
         set_metadata(metadata?: Uint8Array | null): void;
@@ -97,14 +97,14 @@ export namespace Plasma {
     class ClientOptions extends GObject.Object {
         static $gtype: GObject.GType<ClientOptions>;
 
-        // Own properties of Plasma.ClientOptions
+        // Properties
 
         get n_retries(): number;
         set n_retries(val: number);
         get nRetries(): number;
         set nRetries(val: number);
 
-        // Constructors of Plasma.ClientOptions
+        // Constructors
 
         constructor(properties?: Partial<ClientOptions.ConstructorProps>, ...args: any[]);
 
@@ -112,7 +112,7 @@ export namespace Plasma {
 
         static ['new'](): ClientOptions;
 
-        // Own methods of Plasma.ClientOptions
+        // Methods
 
         get_n_retries(): number;
         set_n_retries(n_retries: number): void;
@@ -127,13 +127,13 @@ export namespace Plasma {
     class CreatedObject extends Object {
         static $gtype: GObject.GType<CreatedObject>;
 
-        // Constructors of Plasma.CreatedObject
+        // Constructors
 
         constructor(properties?: Partial<CreatedObject.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Plasma.CreatedObject
+        // Methods
 
         /**
          * Aborts the object in the object store. You can't use the aborted
@@ -169,7 +169,7 @@ export namespace Plasma {
     class Object extends GObject.Object {
         static $gtype: GObject.GType<Object>;
 
-        // Own properties of Plasma.Object
+        // Properties
 
         get client(): Client;
         get data(): Arrow.Buffer;
@@ -182,7 +182,7 @@ export namespace Plasma {
         set raw_metadata(val: any);
         set rawMetadata(val: any);
 
-        // Constructors of Plasma.Object
+        // Constructors
 
         constructor(properties?: Partial<Object.ConstructorProps>, ...args: any[]);
 
@@ -198,7 +198,7 @@ export namespace Plasma {
     class ObjectID extends GObject.Object {
         static $gtype: GObject.GType<ObjectID>;
 
-        // Constructors of Plasma.ObjectID
+        // Constructors
 
         constructor(properties?: Partial<ObjectID.ConstructorProps>, ...args: any[]);
 
@@ -206,7 +206,7 @@ export namespace Plasma {
 
         static ['new'](id: Uint8Array | string): ObjectID;
 
-        // Own methods of Plasma.ObjectID
+        // Methods
 
         to_binary(): Uint8Array;
         to_hex(): string;
@@ -221,13 +221,13 @@ export namespace Plasma {
     class ReferredObject extends Object {
         static $gtype: GObject.GType<ReferredObject>;
 
-        // Constructors of Plasma.ReferredObject
+        // Constructors
 
         constructor(properties?: Partial<ReferredObject.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Plasma.ReferredObject
+        // Methods
 
         /**
          * Releases the object explicitly. The object is no longer valid.

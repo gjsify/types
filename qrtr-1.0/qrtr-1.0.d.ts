@@ -101,12 +101,12 @@ export namespace Qrtr {
     class Bus extends GObject.Object implements Gio.AsyncInitable<Bus> {
         static $gtype: GObject.GType<Bus>;
 
-        // Own properties of Qrtr.Bus
+        // Properties
 
         get lookup_timeout(): number;
         get lookupTimeout(): number;
 
-        // Constructors of Qrtr.Bus
+        // Constructors
 
         constructor(properties?: Partial<Bus.ConstructorProps>, ...args: any[]);
 
@@ -117,7 +117,7 @@ export namespace Qrtr {
 
         static new_finish(...args: never[]): any;
 
-        // Own signals of Qrtr.Bus
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -129,7 +129,7 @@ export namespace Qrtr {
         connect_after(signal: 'node-removed', callback: (_source: this, node: number) => void): number;
         emit(signal: 'node-removed', node: number): void;
 
-        // Own static methods of Qrtr.Bus
+        // Static methods
 
         /**
          * Asynchronously creates a #QrtrBus object.
@@ -154,7 +154,7 @@ export namespace Qrtr {
             callback?: Gio.AsyncReadyCallback<Bus> | null,
         ): void;
 
-        // Own methods of Qrtr.Bus
+        // Methods
 
         /**
          * Get the #QrtrNode with node ID `node_id`.
@@ -747,14 +747,14 @@ export namespace Qrtr {
     class Client extends GObject.Object implements Gio.Initable {
         static $gtype: GObject.GType<Client>;
 
-        // Own properties of Qrtr.Client
+        // Properties
 
         get client_node(): Node;
         get clientNode(): Node;
         get client_port(): number;
         get clientPort(): number;
 
-        // Constructors of Qrtr.Client
+        // Constructors
 
         constructor(properties?: Partial<Client.ConstructorProps>, ...args: any[]);
 
@@ -762,7 +762,7 @@ export namespace Qrtr {
 
         static ['new'](node: Node, port: number, cancellable?: Gio.Cancellable | null): Client;
 
-        // Own signals of Qrtr.Client
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -771,7 +771,7 @@ export namespace Qrtr {
         connect_after(signal: 'client-message', callback: (_source: this, message: Uint8Array) => void): number;
         emit(signal: 'client-message', message: Uint8Array | string): void;
 
-        // Own methods of Qrtr.Client
+        // Methods
 
         /**
          * Get the #QrtrNode that this client refers to.
@@ -1316,19 +1316,19 @@ export namespace Qrtr {
     class Node extends GObject.Object {
         static $gtype: GObject.GType<Node>;
 
-        // Own properties of Qrtr.Node
+        // Properties
 
         get bus(): Bus;
         get node_id(): number;
         get nodeId(): number;
 
-        // Constructors of Qrtr.Node
+        // Constructors
 
         constructor(properties?: Partial<Node.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of Qrtr.Node
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -1343,7 +1343,7 @@ export namespace Qrtr {
         connect_after(signal: 'service-removed', callback: (_source: this, service: number) => void): number;
         emit(signal: 'service-removed', service: number): void;
 
-        // Own methods of Qrtr.Node
+        // Methods
 
         add_service_info(service: number, port: number, version: number, instance: number): void;
         /**
@@ -1423,7 +1423,7 @@ export namespace Qrtr {
     abstract class BusPrivate {
         static $gtype: GObject.GType<BusPrivate>;
 
-        // Constructors of Qrtr.BusPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1432,7 +1432,7 @@ export namespace Qrtr {
     abstract class ClientPrivate {
         static $gtype: GObject.GType<ClientPrivate>;
 
-        // Constructors of Qrtr.ClientPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1441,7 +1441,7 @@ export namespace Qrtr {
     abstract class NodePrivate {
         static $gtype: GObject.GType<NodePrivate>;
 
-        // Constructors of Qrtr.NodePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1452,11 +1452,11 @@ export namespace Qrtr {
     abstract class NodeServiceInfo {
         static $gtype: GObject.GType<NodeServiceInfo>;
 
-        // Constructors of Qrtr.NodeServiceInfo
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of Qrtr.NodeServiceInfo
+        // Methods
 
         /**
          * Frees a single #QrtrNodeServiceInfo, as returned by qrtr_node_get_service_info_list().

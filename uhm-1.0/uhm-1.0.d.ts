@@ -63,20 +63,20 @@ export namespace Uhm {
     class Message extends GObject.Object {
         static $gtype: GObject.GType<Message>;
 
-        // Own properties of Uhm.Message
+        // Properties
 
         get method(): string;
         set method(val: string);
         get uri(): GLib.Uri;
         set uri(val: GLib.Uri);
 
-        // Constructors of Uhm.Message
+        // Constructors
 
         constructor(properties?: Partial<Message.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Uhm.Message
+        // Methods
 
         get_http_version(): Soup.HTTPVersion;
         get_method(): string;
@@ -103,7 +103,7 @@ export namespace Uhm {
     class Resolver extends Gio.Resolver {
         static $gtype: GObject.GType<Resolver>;
 
-        // Constructors of Uhm.Resolver
+        // Constructors
 
         constructor(properties?: Partial<Resolver.ConstructorProps>, ...args: any[]);
 
@@ -111,7 +111,7 @@ export namespace Uhm {
 
         static ['new'](): Resolver;
 
-        // Own methods of Uhm.Resolver
+        // Methods
 
         /**
          * Adds a resolution mapping from the host name `hostname` to the IP address `addr`.
@@ -170,7 +170,7 @@ export namespace Uhm {
     class Server extends GObject.Object {
         static $gtype: GObject.GType<Server>;
 
-        // Own properties of Uhm.Server
+        // Properties
 
         /**
          * Address of the local mock server if it's running, or %NULL otherwise. This will be non-%NULL between calls to uhm_server_run() and
@@ -266,7 +266,7 @@ export namespace Uhm {
         get traceDirectory(): Gio.File;
         set traceDirectory(val: Gio.File);
 
-        // Constructors of Uhm.Server
+        // Constructors
 
         constructor(properties?: Partial<Server.ConstructorProps>, ...args: any[]);
 
@@ -274,7 +274,7 @@ export namespace Uhm {
 
         static ['new'](): Server;
 
-        // Own signals of Uhm.Server
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -292,7 +292,7 @@ export namespace Uhm {
         connect_after(signal: 'handle-message', callback: (_source: this, message: Message) => boolean): number;
         emit(signal: 'handle-message', message: Message): void;
 
-        // Own static methods of Uhm.Server
+        // Static methods
 
         static error_quark(): GLib.Quark;
         /**
@@ -329,7 +329,7 @@ export namespace Uhm {
             user_data?: any | null,
         ): void;
 
-        // Own virtual methods of Uhm.Server
+        // Virtual methods
 
         /**
          * Class handler for the #UhmServer::compare-messages signal. Subclasses may implement this to override
@@ -347,7 +347,7 @@ export namespace Uhm {
          */
         vfunc_handle_message(message: Message): boolean;
 
-        // Own methods of Uhm.Server
+        // Methods
 
         /**
          * Remove a #UhmServer:compare-messages filter function installed previously by
@@ -597,7 +597,7 @@ export namespace Uhm {
     abstract class ResolverPrivate {
         static $gtype: GObject.GType<ResolverPrivate>;
 
-        // Constructors of Uhm.ResolverPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -606,7 +606,7 @@ export namespace Uhm {
     abstract class ServerPrivate {
         static $gtype: GObject.GType<ServerPrivate>;
 
-        // Constructors of Uhm.ServerPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }

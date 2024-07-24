@@ -1820,13 +1820,13 @@ export namespace Atk {
     class GObjectAccessible extends Object {
         static $gtype: GObject.GType<GObjectAccessible>;
 
-        // Constructors of Atk.GObjectAccessible
+        // Constructors
 
         constructor(properties?: Partial<GObjectAccessible.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of Atk.GObjectAccessible
+        // Static methods
 
         /**
          * Gets the accessible object for the specified `obj`.
@@ -1834,7 +1834,7 @@ export namespace Atk {
          */
         static for_object(obj: GObject.Object): Object;
 
-        // Own methods of Atk.GObjectAccessible
+        // Methods
 
         /**
          * Gets the GObject for which `obj` is the accessible object.
@@ -1877,7 +1877,7 @@ export namespace Atk {
     class Hyperlink extends GObject.Object implements Action {
         static $gtype: GObject.GType<Hyperlink>;
 
-        // Own properties of Atk.Hyperlink
+        // Properties
 
         get end_index(): number;
         get endIndex(): number;
@@ -1894,13 +1894,13 @@ export namespace Atk {
         get start_index(): number;
         get startIndex(): number;
 
-        // Constructors of Atk.Hyperlink
+        // Constructors
 
         constructor(properties?: Partial<Hyperlink.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of Atk.Hyperlink
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -1909,7 +1909,7 @@ export namespace Atk {
         connect_after(signal: 'link-activated', callback: (_source: this) => void): number;
         emit(signal: 'link-activated'): void;
 
-        // Own virtual methods of Atk.Hyperlink
+        // Virtual methods
 
         /**
          * Gets the index with the hypertext document at which this link ends.
@@ -1954,7 +1954,7 @@ export namespace Atk {
         vfunc_link_activated(): void;
         vfunc_link_state(): number;
 
-        // Own methods of Atk.Hyperlink
+        // Methods
 
         /**
          * Gets the index with the hypertext document at which this link ends.
@@ -2579,20 +2579,20 @@ export namespace Atk {
     class Misc extends GObject.Object {
         static $gtype: GObject.GType<Misc>;
 
-        // Constructors of Atk.Misc
+        // Constructors
 
         constructor(properties?: Partial<Misc.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of Atk.Misc
+        // Static methods
 
         /**
          * Obtain the singleton instance of AtkMisc for this application.
          */
         static get_instance(): Misc;
 
-        // Own virtual methods of Atk.Misc
+        // Virtual methods
 
         /**
          * Take the thread mutex for the GUI toolkit,
@@ -2614,7 +2614,7 @@ export namespace Atk {
          */
         vfunc_threads_leave(): void;
 
-        // Own methods of Atk.Misc
+        // Methods
 
         /**
          * Take the thread mutex for the GUI toolkit,
@@ -2682,7 +2682,7 @@ export namespace Atk {
     {
         static $gtype: GObject.GType<NoOpObject>;
 
-        // Constructors of Atk.NoOpObject
+        // Constructors
 
         constructor(properties?: Partial<NoOpObject.ConstructorProps>, ...args: any[]);
 
@@ -5257,7 +5257,7 @@ export namespace Atk {
     class NoOpObjectFactory extends ObjectFactory {
         static $gtype: GObject.GType<NoOpObjectFactory>;
 
-        // Constructors of Atk.NoOpObjectFactory
+        // Constructors
 
         constructor(properties?: Partial<NoOpObjectFactory.ConstructorProps>, ...args: any[]);
 
@@ -5372,7 +5372,7 @@ export namespace Atk {
     class Object extends GObject.Object {
         static $gtype: GObject.GType<Object>;
 
-        // Own properties of Atk.Object
+        // Properties
 
         get accessible_component_layer(): number;
         get accessibleComponentLayer(): number;
@@ -5473,7 +5473,7 @@ export namespace Atk {
         get accessibleValue(): number;
         set accessibleValue(val: number);
 
-        // Own fields of Atk.Object
+        // Fields
 
         description: string;
         name: string;
@@ -5481,13 +5481,13 @@ export namespace Atk {
         relation_set: RelationSet;
         layer: Layer;
 
-        // Constructors of Atk.Object
+        // Constructors
 
         constructor(properties?: Partial<Object.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of Atk.Object
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -5526,7 +5526,7 @@ export namespace Atk {
         connect_after(signal: 'visible-data-changed', callback: (_source: this) => void): number;
         emit(signal: 'visible-data-changed'): void;
 
-        // Own virtual methods of Atk.Object
+        // Virtual methods
 
         vfunc_active_descendant_changed(child?: any | null): void;
         vfunc_children_changed(change_index: number, changed_child?: any | null): void;
@@ -5640,7 +5640,7 @@ export namespace Atk {
         vfunc_state_change(name: string, state_set: boolean): void;
         vfunc_visible_data_changed(): void;
 
-        // Own methods of Atk.Object
+        // Methods
 
         /**
          * Adds a relationship of the specified type with the specified target.
@@ -5844,13 +5844,13 @@ export namespace Atk {
     class ObjectFactory extends GObject.Object {
         static $gtype: GObject.GType<ObjectFactory>;
 
-        // Constructors of Atk.ObjectFactory
+        // Constructors
 
         constructor(properties?: Partial<ObjectFactory.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of Atk.ObjectFactory
+        // Virtual methods
 
         /**
          * Inform `factory` that it is no longer being used to create
@@ -5861,7 +5861,7 @@ export namespace Atk {
          */
         vfunc_invalidate(): void;
 
-        // Own methods of Atk.ObjectFactory
+        // Methods
 
         /**
          * Provides an #AtkObject that implements an accessibility interface
@@ -5899,7 +5899,7 @@ export namespace Atk {
     class Plug extends Object implements Component {
         static $gtype: GObject.GType<Plug>;
 
-        // Constructors of Atk.Plug
+        // Constructors
 
         constructor(properties?: Partial<Plug.ConstructorProps>, ...args: any[]);
 
@@ -5907,11 +5907,11 @@ export namespace Atk {
 
         static ['new'](): Plug;
 
-        // Own virtual methods of Atk.Plug
+        // Virtual methods
 
         vfunc_get_object_id(): string;
 
-        // Own methods of Atk.Plug
+        // Methods
 
         /**
          * Gets the unique ID of an #AtkPlug object, which can be used to
@@ -6597,13 +6597,13 @@ export namespace Atk {
     class Registry extends GObject.Object {
         static $gtype: GObject.GType<Registry>;
 
-        // Constructors of Atk.Registry
+        // Constructors
 
         constructor(properties?: Partial<Registry.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Atk.Registry
+        // Methods
 
         /**
          * Gets an #AtkObjectFactory appropriate for creating #AtkObjects
@@ -6652,7 +6652,7 @@ export namespace Atk {
     class Relation extends GObject.Object {
         static $gtype: GObject.GType<Relation>;
 
-        // Own properties of Atk.Relation
+        // Properties
 
         get relation_type(): RelationType;
         set relation_type(val: RelationType);
@@ -6661,11 +6661,11 @@ export namespace Atk {
         get target(): GObject.ValueArray;
         set target(val: GObject.ValueArray);
 
-        // Own fields of Atk.Relation
+        // Fields
 
         relationship: RelationType;
 
-        // Constructors of Atk.Relation
+        // Constructors
 
         constructor(properties?: Partial<Relation.ConstructorProps>, ...args: any[]);
 
@@ -6673,7 +6673,7 @@ export namespace Atk {
 
         static ['new'](targets: Object[], relationship: RelationType): Relation;
 
-        // Own methods of Atk.Relation
+        // Methods
 
         /**
          * Adds the specified AtkObject to the target for the relation, if it is
@@ -6721,11 +6721,11 @@ export namespace Atk {
     class RelationSet extends GObject.Object {
         static $gtype: GObject.GType<RelationSet>;
 
-        // Own fields of Atk.RelationSet
+        // Fields
 
         relations: any[];
 
-        // Constructors of Atk.RelationSet
+        // Constructors
 
         constructor(properties?: Partial<RelationSet.ConstructorProps>, ...args: any[]);
 
@@ -6733,7 +6733,7 @@ export namespace Atk {
 
         static ['new'](): RelationSet;
 
-        // Own methods of Atk.RelationSet
+        // Methods
 
         /**
          * Add a new relation to the current relation set if it is not already
@@ -6832,7 +6832,7 @@ export namespace Atk {
     class Socket extends Object implements Component {
         static $gtype: GObject.GType<Socket>;
 
-        // Constructors of Atk.Socket
+        // Constructors
 
         constructor(properties?: Partial<Socket.ConstructorProps>, ...args: any[]);
 
@@ -6840,7 +6840,7 @@ export namespace Atk {
 
         static ['new'](): Socket;
 
-        // Own virtual methods of Atk.Socket
+        // Virtual methods
 
         /**
          * Embeds the children of an #AtkPlug as the children of the
@@ -6857,7 +6857,7 @@ export namespace Atk {
          */
         vfunc_embed(plug_id: string): void;
 
-        // Own methods of Atk.Socket
+        // Methods
 
         /**
          * Embeds the children of an #AtkPlug as the children of the
@@ -7532,7 +7532,7 @@ export namespace Atk {
     class StateSet extends GObject.Object {
         static $gtype: GObject.GType<StateSet>;
 
-        // Constructors of Atk.StateSet
+        // Constructors
 
         constructor(properties?: Partial<StateSet.ConstructorProps>, ...args: any[]);
 
@@ -7540,7 +7540,7 @@ export namespace Atk {
 
         static ['new'](): StateSet;
 
-        // Own methods of Atk.StateSet
+        // Methods
 
         /**
          * Adds the state of the specified type to the state set if it is not already
@@ -7637,7 +7637,7 @@ export namespace Atk {
     class Util extends GObject.Object {
         static $gtype: GObject.GType<Util>;
 
-        // Constructors of Atk.Util
+        // Constructors
 
         constructor(properties?: Partial<Util.ConstructorProps>, ...args: any[]);
 
@@ -7661,12 +7661,12 @@ export namespace Atk {
     class Attribute {
         static $gtype: GObject.GType<Attribute>;
 
-        // Own fields of Atk.Attribute
+        // Fields
 
         name: string;
         value: string;
 
-        // Constructors of Atk.Attribute
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -7676,7 +7676,7 @@ export namespace Atk {
         );
         _init(...args: any[]): void;
 
-        // Own static methods of Atk.Attribute
+        // Static methods
 
         /**
          * Frees the memory used by an #AtkAttributeSet, including all its
@@ -7697,11 +7697,11 @@ export namespace Atk {
     abstract class Implementor {
         static $gtype: GObject.GType<Implementor>;
 
-        // Constructors of Atk.Implementor
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of Atk.Implementor
+        // Methods
 
         /**
          * Gets a reference to an object's #AtkObject implementation, if
@@ -7717,7 +7717,7 @@ export namespace Atk {
     class KeyEventStruct {
         static $gtype: GObject.GType<KeyEventStruct>;
 
-        // Own fields of Atk.KeyEventStruct
+        // Fields
 
         type: number;
         state: number;
@@ -7727,7 +7727,7 @@ export namespace Atk {
         keycode: number;
         timestamp: number;
 
-        // Constructors of Atk.KeyEventStruct
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -7757,11 +7757,11 @@ export namespace Atk {
     class PropertyValues {
         static $gtype: GObject.GType<PropertyValues>;
 
-        // Own fields of Atk.PropertyValues
+        // Fields
 
         property_name: string;
 
-        // Constructors of Atk.PropertyValues
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -7778,14 +7778,14 @@ export namespace Atk {
     class Range {
         static $gtype: GObject.GType<Range>;
 
-        // Constructors of Atk.Range
+        // Constructors
 
         constructor(lower_limit: number, upper_limit: number, description: string);
         _init(...args: any[]): void;
 
         static ['new'](lower_limit: number, upper_limit: number, description: string): Range;
 
-        // Own methods of Atk.Range
+        // Methods
 
         /**
          * Returns a new #AtkRange that is a exact copy of `src`
@@ -7820,14 +7820,14 @@ export namespace Atk {
     class Rectangle {
         static $gtype: GObject.GType<Rectangle>;
 
-        // Own fields of Atk.Rectangle
+        // Fields
 
         x: number;
         y: number;
         width: number;
         height: number;
 
-        // Constructors of Atk.Rectangle
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -7856,14 +7856,14 @@ export namespace Atk {
     class TextRange {
         static $gtype: GObject.GType<TextRange>;
 
-        // Own fields of Atk.TextRange
+        // Fields
 
         bounds: TextRectangle;
         start_offset: number;
         end_offset: number;
         content: string;
 
-        // Constructors of Atk.TextRange
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -7882,14 +7882,14 @@ export namespace Atk {
     class TextRectangle {
         static $gtype: GObject.GType<TextRectangle>;
 
-        // Own fields of Atk.TextRectangle
+        // Fields
 
         x: number;
         y: number;
         width: number;
         height: number;
 
-        // Constructors of Atk.TextRectangle
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -7926,7 +7926,7 @@ export namespace Atk {
     class TextSelection {
         static $gtype: GObject.GType<TextSelection>;
 
-        // Own fields of Atk.TextSelection
+        // Fields
 
         start_object: Object;
         start_offset: number;
@@ -7934,7 +7934,7 @@ export namespace Atk {
         end_offset: number;
         start_is_active: boolean;
 
-        // Constructors of Atk.TextSelection
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -7953,7 +7953,7 @@ export namespace Atk {
         prototype: Action;
     }
     interface Action extends GObject.Object {
-        // Own methods of Atk.Action
+        // Methods
 
         /**
          * Perform the specified action on the object.
@@ -8034,7 +8034,7 @@ export namespace Atk {
          */
         set_description(i: number, desc: string): boolean;
 
-        // Own virtual methods of Atk.Action
+        // Virtual methods
 
         /**
          * Perform the specified action on the object.
@@ -8122,7 +8122,7 @@ export namespace Atk {
         prototype: Component;
     }
     interface Component extends GObject.Object {
-        // Own methods of Atk.Component
+        // Methods
 
         /**
          * Checks whether the specified point is within the extent of the `component`.
@@ -8247,7 +8247,7 @@ export namespace Atk {
          */
         set_size(width: number, height: number): boolean;
 
-        // Own virtual methods of Atk.Component
+        // Virtual methods
 
         vfunc_bounds_changed(bounds: Rectangle): void;
         /**
@@ -8376,7 +8376,7 @@ export namespace Atk {
         prototype: Document;
     }
     interface Document extends GObject.Object {
-        // Own methods of Atk.Document
+        // Methods
 
         /**
          * Retrieves the value of the given `attribute_name` inside `document`.
@@ -8444,7 +8444,7 @@ export namespace Atk {
          */
         set_text_selections(selections: TextSelection[]): boolean;
 
-        // Own virtual methods of Atk.Document
+        // Virtual methods
 
         /**
          * Retrieves the current page number inside `document`.
@@ -8516,7 +8516,7 @@ export namespace Atk {
         prototype: EditableText;
     }
     interface EditableText extends GObject.Object {
-        // Own methods of Atk.EditableText
+        // Methods
 
         /**
          * Copy text from `start_pos` up to, but not including `end_pos`
@@ -8567,7 +8567,7 @@ export namespace Atk {
          */
         set_text_contents(string: string): void;
 
-        // Own virtual methods of Atk.EditableText
+        // Virtual methods
 
         /**
          * Copy text from `start_pos` up to, but not including `end_pos`
@@ -8631,7 +8631,7 @@ export namespace Atk {
         prototype: HyperlinkImpl;
     }
     interface HyperlinkImpl extends GObject.Object {
-        // Own methods of Atk.HyperlinkImpl
+        // Methods
 
         /**
          * Gets the hyperlink associated with this object.
@@ -8639,7 +8639,7 @@ export namespace Atk {
          */
         get_hyperlink(): Hyperlink;
 
-        // Own virtual methods of Atk.HyperlinkImpl
+        // Virtual methods
 
         /**
          * Gets the hyperlink associated with this object.
@@ -8660,7 +8660,7 @@ export namespace Atk {
         prototype: Hypertext;
     }
     interface Hypertext extends GObject.Object {
-        // Own methods of Atk.Hypertext
+        // Methods
 
         /**
          * Gets the link in this hypertext document at index
@@ -8682,7 +8682,7 @@ export namespace Atk {
          */
         get_n_links(): number;
 
-        // Own virtual methods of Atk.Hypertext
+        // Virtual methods
 
         /**
          * Gets the link in this hypertext document at index
@@ -8716,7 +8716,7 @@ export namespace Atk {
         prototype: Image;
     }
     interface Image extends GObject.Object {
-        // Own methods of Atk.Image
+        // Methods
 
         /**
          * Get a textual description of this image.
@@ -8753,7 +8753,7 @@ export namespace Atk {
          */
         set_image_description(description: string): boolean;
 
-        // Own virtual methods of Atk.Image
+        // Virtual methods
 
         /**
          * Get a textual description of this image.
@@ -8815,7 +8815,7 @@ export namespace Atk {
         prototype: Selection;
     }
     interface Selection extends GObject.Object {
-        // Own methods of Atk.Selection
+        // Methods
 
         /**
          * Adds the specified accessible child of the object to the
@@ -8873,7 +8873,7 @@ export namespace Atk {
          */
         select_all_selection(): boolean;
 
-        // Own virtual methods of Atk.Selection
+        // Virtual methods
 
         /**
          * Adds the specified accessible child of the object to the
@@ -8939,7 +8939,7 @@ export namespace Atk {
         prototype: StreamableContent;
     }
     interface StreamableContent extends GObject.Object {
-        // Own methods of Atk.StreamableContent
+        // Methods
 
         /**
          * Gets the character string of the specified mime type. The first mime
@@ -8973,7 +8973,7 @@ export namespace Atk {
          */
         get_uri(mime_type: string): string | null;
 
-        // Own virtual methods of Atk.StreamableContent
+        // Virtual methods
 
         /**
          * Gets the character string of the specified mime type. The first mime
@@ -9017,7 +9017,7 @@ export namespace Atk {
         prototype: Table;
     }
     interface Table extends GObject.Object {
-        // Own methods of Atk.Table
+        // Methods
 
         /**
          * Adds the specified `column` to the selection.
@@ -9202,7 +9202,7 @@ export namespace Atk {
          */
         set_summary(accessible: Object): void;
 
-        // Own virtual methods of Atk.Table
+        // Virtual methods
 
         /**
          * Adds the specified `column` to the selection.
@@ -9385,7 +9385,7 @@ export namespace Atk {
         prototype: TableCell;
     }
     interface TableCell extends Object {
-        // Own methods of Atk.TableCell
+        // Methods
 
         /**
          * Returns the column headers as an array of cell accessibles.
@@ -9427,7 +9427,7 @@ export namespace Atk {
          */
         get_table(): Object;
 
-        // Own virtual methods of Atk.TableCell
+        // Virtual methods
 
         /**
          * Returns the column headers as an array of cell accessibles.
@@ -9484,7 +9484,7 @@ export namespace Atk {
         free_ranges(ranges: TextRange[]): void;
     }
     interface Text extends GObject.Object {
-        // Own methods of Atk.Text
+        // Methods
 
         /**
          * Adds a selection bounded by the specified offsets.
@@ -9733,7 +9733,7 @@ export namespace Atk {
          */
         set_selection(selection_num: number, start_offset: number, end_offset: number): boolean;
 
-        // Own virtual methods of Atk.Text
+        // Virtual methods
 
         /**
          * Adds a selection bounded by the specified offsets.
@@ -9987,7 +9987,7 @@ export namespace Atk {
         prototype: Value;
     }
     interface Value extends GObject.Object {
-        // Own methods of Atk.Value
+        // Methods
 
         /**
          * Gets the value of this object.
@@ -10057,7 +10057,7 @@ export namespace Atk {
          */
         set_value(new_value: number): void;
 
-        // Own virtual methods of Atk.Value
+        // Virtual methods
 
         /**
          * Gets the value of this object.

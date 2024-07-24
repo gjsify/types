@@ -51,7 +51,7 @@ export namespace GFBGraph {
     class Album extends Node implements Connectable {
         static $gtype: GObject.GType<Album>;
 
-        // Own properties of GFBGraph.Album
+        // Properties
 
         /**
          * The number of photos in the album.
@@ -73,7 +73,7 @@ export namespace GFBGraph {
         get name(): string;
         set name(val: string);
 
-        // Constructors of GFBGraph.Album
+        // Constructors
 
         constructor(properties?: Partial<Album.ConstructorProps>, ...args: any[]);
 
@@ -83,7 +83,7 @@ export namespace GFBGraph {
 
         static new_from_id(authorizer: Authorizer, id: string): Album;
 
-        // Own methods of GFBGraph.Album
+        // Methods
 
         get_count(): number;
         get_cover_photo_id(): string;
@@ -246,7 +246,7 @@ export namespace GFBGraph {
     class GoaAuthorizer extends GObject.Object implements Authorizer {
         static $gtype: GObject.GType<GoaAuthorizer>;
 
-        // Constructors of GFBGraph.GoaAuthorizer
+        // Constructors
 
         constructor(properties?: Partial<GoaAuthorizer.ConstructorProps>, ...args: any[]);
 
@@ -718,7 +718,7 @@ export namespace GFBGraph {
     class Node extends GObject.Object {
         static $gtype: GObject.GType<Node>;
 
-        // Own properties of GFBGraph.Node
+        // Properties
 
         get created_time(): string;
         set created_time(val: string);
@@ -739,7 +739,7 @@ export namespace GFBGraph {
         get updatedTime(): string;
         set updatedTime(val: string);
 
-        // Constructors of GFBGraph.Node
+        // Constructors
 
         constructor(properties?: Partial<Node.ConstructorProps>, ...args: any[]);
 
@@ -749,11 +749,11 @@ export namespace GFBGraph {
 
         static new_from_id(authorizer: Authorizer, id: string, node_type: GObject.GType): Node;
 
-        // Own static methods of GFBGraph.Node
+        // Static methods
 
         static error_quark(): GLib.Quark;
 
-        // Own methods of GFBGraph.Node
+        // Methods
 
         /**
          * Appends `connect_node` to `node`. `connect_node` must implement the #GFBGraphConnectable interface
@@ -838,7 +838,7 @@ export namespace GFBGraph {
     class Photo extends Node implements Connectable, Json.Serializable {
         static $gtype: GObject.GType<Photo>;
 
-        // Own properties of GFBGraph.Photo
+        // Properties
 
         /**
          * The default photo height, up to 720px.
@@ -866,7 +866,7 @@ export namespace GFBGraph {
         get width(): number;
         set width(val: number);
 
-        // Constructors of GFBGraph.Photo
+        // Constructors
 
         constructor(properties?: Partial<Photo.ConstructorProps>, ...args: any[]);
 
@@ -876,7 +876,7 @@ export namespace GFBGraph {
 
         static new_from_id(authorizer: Authorizer, id: string): Photo;
 
-        // Own methods of GFBGraph.Photo
+        // Methods
 
         /**
          * Download the default sized photo pointed by `photo,` with a maximum width or height of 720px.
@@ -1610,14 +1610,14 @@ export namespace GFBGraph {
     class SimpleAuthorizer extends GObject.Object implements Authorizer {
         static $gtype: GObject.GType<SimpleAuthorizer>;
 
-        // Own properties of GFBGraph.SimpleAuthorizer
+        // Properties
 
         get access_token(): string;
         set access_token(val: string);
         get accessToken(): string;
         set accessToken(val: string);
 
-        // Constructors of GFBGraph.SimpleAuthorizer
+        // Constructors
 
         constructor(properties?: Partial<SimpleAuthorizer.ConstructorProps>, ...args: any[]);
 
@@ -2087,7 +2087,7 @@ export namespace GFBGraph {
     class User extends Node {
         static $gtype: GObject.GType<User>;
 
-        // Own properties of GFBGraph.User
+        // Properties
 
         /**
          * The email of the user if available
@@ -2100,7 +2100,7 @@ export namespace GFBGraph {
         get name(): string;
         set name(val: string);
 
-        // Constructors of GFBGraph.User
+        // Constructors
 
         constructor(properties?: Partial<User.ConstructorProps>, ...args: any[]);
 
@@ -2110,7 +2110,7 @@ export namespace GFBGraph {
 
         static new_from_id(authorizer: Authorizer, id: string): User;
 
-        // Own static methods of GFBGraph.User
+        // Static methods
 
         /**
          * Retrieve the current user logged using the https://graph.facebook.com/me Graph API function.
@@ -2141,7 +2141,7 @@ export namespace GFBGraph {
          */
         static get_me_async_finish(authorizer: Authorizer, result: Gio.AsyncResult): User;
 
-        // Own methods of GFBGraph.User
+        // Methods
 
         /**
          * Retrieve the albums nodes owned by the `user`. This functions call the function ID/albums.
@@ -2188,7 +2188,7 @@ export namespace GFBGraph {
     abstract class AlbumPrivate {
         static $gtype: GObject.GType<AlbumPrivate>;
 
-        // Constructors of GFBGraph.AlbumPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2199,7 +2199,7 @@ export namespace GFBGraph {
     abstract class GoaAuthorizerPrivate {
         static $gtype: GObject.GType<GoaAuthorizerPrivate>;
 
-        // Constructors of GFBGraph.GoaAuthorizerPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2208,7 +2208,7 @@ export namespace GFBGraph {
     abstract class NodePrivate {
         static $gtype: GObject.GType<NodePrivate>;
 
-        // Constructors of GFBGraph.NodePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2220,13 +2220,13 @@ export namespace GFBGraph {
     class PhotoImage {
         static $gtype: GObject.GType<PhotoImage>;
 
-        // Own fields of GFBGraph.PhotoImage
+        // Fields
 
         width: number;
         height: number;
         source: string;
 
-        // Constructors of GFBGraph.PhotoImage
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -2241,7 +2241,7 @@ export namespace GFBGraph {
     abstract class PhotoPrivate {
         static $gtype: GObject.GType<PhotoPrivate>;
 
-        // Constructors of GFBGraph.PhotoPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2250,7 +2250,7 @@ export namespace GFBGraph {
     abstract class SimpleAuthorizerPrivate {
         static $gtype: GObject.GType<SimpleAuthorizerPrivate>;
 
-        // Constructors of GFBGraph.SimpleAuthorizerPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2259,7 +2259,7 @@ export namespace GFBGraph {
     abstract class UserPrivate {
         static $gtype: GObject.GType<UserPrivate>;
 
-        // Constructors of GFBGraph.UserPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2275,7 +2275,7 @@ export namespace GFBGraph {
         prototype: Authorizer;
     }
     interface Authorizer extends GObject.Object {
-        // Own methods of GFBGraph.Authorizer
+        // Methods
 
         /**
          * Adds the necessary authorization to `call`.
@@ -2302,7 +2302,7 @@ export namespace GFBGraph {
          */
         refresh_authorization(cancellable?: Gio.Cancellable | null): boolean;
 
-        // Own virtual methods of GFBGraph.Authorizer
+        // Virtual methods
 
         /**
          * Adds the necessary authorization to `call`.
@@ -2342,7 +2342,7 @@ export namespace GFBGraph {
         prototype: Connectable;
     }
     interface Connectable extends Node {
-        // Own methods of GFBGraph.Connectable
+        // Methods
 
         /**
          * In most cases, #GFBGraphConnectable implementers can use this function in order to parse
@@ -2384,7 +2384,7 @@ export namespace GFBGraph {
          */
         parse_connected_data(payload: string): Node[];
 
-        // Own virtual methods of GFBGraph.Connectable
+        // Virtual methods
 
         /**
          * Get the params to be inserted in a request to the Facebook Graph API

@@ -69,13 +69,13 @@ export namespace Sushi {
     class CoverArtFetcher extends GObject.Object {
         static $gtype: GObject.GType<CoverArtFetcher>;
 
-        // Own properties of Sushi.CoverArtFetcher
+        // Properties
 
         get cover(): GdkPixbuf.Pixbuf;
         get taglist(): Gst.TagList;
         set taglist(val: Gst.TagList);
 
-        // Constructors of Sushi.CoverArtFetcher
+        // Constructors
 
         constructor(properties?: Partial<CoverArtFetcher.ConstructorProps>, ...args: any[]);
 
@@ -101,7 +101,7 @@ export namespace Sushi {
     class FileLoader extends GObject.Object {
         static $gtype: GObject.GType<FileLoader>;
 
-        // Own properties of Sushi.FileLoader
+        // Properties
 
         get content_type(): string;
         get contentType(): string;
@@ -112,7 +112,7 @@ export namespace Sushi {
         get size(): string;
         get time(): string;
 
-        // Constructors of Sushi.FileLoader
+        // Constructors
 
         constructor(properties?: Partial<FileLoader.ConstructorProps>, ...args: any[]);
 
@@ -120,7 +120,7 @@ export namespace Sushi {
 
         static ['new'](file: Gio.File): FileLoader;
 
-        // Own methods of Sushi.FileLoader
+        // Methods
 
         get_content_type_string(): string;
         get_date_string(): string;
@@ -151,12 +151,12 @@ export namespace Sushi {
     class FontWidget extends Gtk.DrawingArea implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<FontWidget>;
 
-        // Own properties of Sushi.FontWidget
+        // Properties
 
         get uri(): string;
         set uri(val: string);
 
-        // Constructors of Sushi.FontWidget
+        // Constructors
 
         constructor(properties?: Partial<FontWidget.ConstructorProps>, ...args: any[]);
 
@@ -167,7 +167,7 @@ export namespace Sushi {
 
         static ['new'](...args: never[]): any;
 
-        // Own signals of Sushi.FontWidget
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -591,13 +591,13 @@ export namespace Sushi {
     class PdfLoader extends GObject.Object {
         static $gtype: GObject.GType<PdfLoader>;
 
-        // Own properties of Sushi.PdfLoader
+        // Properties
 
         get document(): EvinceDocument.Document;
         get uri(): string;
         set uri(val: string);
 
-        // Constructors of Sushi.PdfLoader
+        // Constructors
 
         constructor(properties?: Partial<PdfLoader.ConstructorProps>, ...args: any[]);
 
@@ -605,7 +605,7 @@ export namespace Sushi {
 
         static ['new'](uri: string): PdfLoader;
 
-        // Own methods of Sushi.PdfLoader
+        // Methods
 
         cleanup_document(): void;
         get_max_page_size(): [number, number];
@@ -627,7 +627,7 @@ export namespace Sushi {
     class SoundPlayer extends GObject.Object {
         static $gtype: GObject.GType<SoundPlayer>;
 
-        // Own properties of Sushi.SoundPlayer
+        // Properties
 
         get duration(): number;
         get playing(): boolean;
@@ -639,7 +639,7 @@ export namespace Sushi {
         get uri(): string;
         set uri(val: string);
 
-        // Constructors of Sushi.SoundPlayer
+        // Constructors
 
         constructor(properties?: Partial<SoundPlayer.ConstructorProps>, ...args: any[]);
 
@@ -663,12 +663,12 @@ export namespace Sushi {
     class TextLoader extends GObject.Object {
         static $gtype: GObject.GType<TextLoader>;
 
-        // Own properties of Sushi.TextLoader
+        // Properties
 
         get uri(): string;
         set uri(val: string);
 
-        // Constructors of Sushi.TextLoader
+        // Constructors
 
         constructor(properties?: Partial<TextLoader.ConstructorProps>, ...args: any[]);
 
@@ -676,7 +676,7 @@ export namespace Sushi {
 
         static ['new'](uri: string): TextLoader;
 
-        // Own signals of Sushi.TextLoader
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -690,7 +690,7 @@ export namespace Sushi {
     abstract class CoverArtFetcherPrivate {
         static $gtype: GObject.GType<CoverArtFetcherPrivate>;
 
-        // Constructors of Sushi.CoverArtFetcherPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -699,7 +699,7 @@ export namespace Sushi {
     abstract class FileLoaderPrivate {
         static $gtype: GObject.GType<FileLoaderPrivate>;
 
-        // Constructors of Sushi.FileLoaderPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -708,7 +708,7 @@ export namespace Sushi {
     abstract class FontWidgetPrivate {
         static $gtype: GObject.GType<FontWidgetPrivate>;
 
-        // Constructors of Sushi.FontWidgetPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -717,7 +717,7 @@ export namespace Sushi {
     abstract class PdfLoaderPrivate {
         static $gtype: GObject.GType<PdfLoaderPrivate>;
 
-        // Constructors of Sushi.PdfLoaderPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -726,7 +726,7 @@ export namespace Sushi {
     abstract class SoundPlayerPrivate {
         static $gtype: GObject.GType<SoundPlayerPrivate>;
 
-        // Constructors of Sushi.SoundPlayerPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -735,7 +735,7 @@ export namespace Sushi {
     abstract class TextLoaderPrivate {
         static $gtype: GObject.GType<TextLoaderPrivate>;
 
-        // Constructors of Sushi.TextLoaderPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }

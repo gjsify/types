@@ -30,7 +30,7 @@ export namespace XApp {
     class IconSize {
         static $gtype: GObject.GType<IconSize>;
 
-        // Static fields of XApp.IconSize
+        // Static fields
 
         static '16': number;
         static '22': number;
@@ -39,7 +39,7 @@ export namespace XApp {
         static '48': number;
         static '96': number;
 
-        // Constructors of XApp.IconSize
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -263,7 +263,7 @@ export namespace XApp {
     class DarkModeManager extends GObject.Object {
         static $gtype: GObject.GType<DarkModeManager>;
 
-        // Constructors of XApp.DarkModeManager
+        // Constructors
 
         constructor(properties?: Partial<DarkModeManager.ConstructorProps>, ...args: any[]);
 
@@ -287,13 +287,13 @@ export namespace XApp {
     class Favorites extends GObject.Object {
         static $gtype: GObject.GType<Favorites>;
 
-        // Constructors of XApp.Favorites
+        // Constructors
 
         constructor(properties?: Partial<Favorites.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of XApp.Favorites
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -302,14 +302,14 @@ export namespace XApp {
         connect_after(signal: 'changed', callback: (_source: this) => void): number;
         emit(signal: 'changed'): void;
 
-        // Own static methods of XApp.Favorites
+        // Static methods
 
         /**
          * Returns the #XAppFavorites instance.
          */
         static get_default(): Favorites;
 
-        // Own methods of XApp.Favorites
+        // Methods
 
         /**
          * Adds a new favorite.  If the uri already exists, this does nothing.
@@ -386,13 +386,13 @@ export namespace XApp {
     class GpuOffloadHelper extends GObject.Object {
         static $gtype: GObject.GType<GpuOffloadHelper>;
 
-        // Constructors of XApp.GpuOffloadHelper
+        // Constructors
 
         constructor(properties?: Partial<GpuOffloadHelper.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of XApp.GpuOffloadHelper
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -401,7 +401,7 @@ export namespace XApp {
         connect_after(signal: 'ready', callback: (_source: this, success: boolean) => void): number;
         emit(signal: 'ready', success: boolean): void;
 
-        // Own static methods of XApp.GpuOffloadHelper
+        // Static methods
 
         /**
          * Creates a new #XAppGpuOffloadHelper instance.
@@ -417,7 +417,7 @@ export namespace XApp {
          */
         static get_sync(): GpuOffloadHelper;
 
-        // Own methods of XApp.GpuOffloadHelper
+        // Methods
 
         /**
          * Returns an #XAppGpuInfo for the default GPU.
@@ -465,7 +465,7 @@ export namespace XApp {
     class GtkWindow extends Gtk.Window implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<GtkWindow>;
 
-        // Constructors of XApp.GtkWindow
+        // Constructors
 
         constructor(properties?: Partial<GtkWindow.ConstructorProps>, ...args: any[]);
 
@@ -473,7 +473,7 @@ export namespace XApp {
 
         static ['new'](type: Gtk.WindowType): GtkWindow;
 
-        // Own methods of XApp.GtkWindow
+        // Methods
 
         /**
          * Sets the icon name hint for a window manager (like muffin) to make
@@ -949,7 +949,7 @@ export namespace XApp {
     {
         static $gtype: GObject.GType<IconChooserButton>;
 
-        // Own properties of XApp.IconChooserButton
+        // Properties
 
         /**
          * The category selected by default.
@@ -974,7 +974,7 @@ export namespace XApp {
         get iconSize(): Gtk.IconSize;
         set iconSize(val: Gtk.IconSize);
 
-        // Constructors of XApp.IconChooserButton
+        // Constructors
 
         constructor(properties?: Partial<IconChooserButton.ConstructorProps>, ...args: any[]);
 
@@ -984,7 +984,7 @@ export namespace XApp {
 
         static new_with_size(icon_size: Gtk.IconSize): IconChooserButton;
 
-        // Own methods of XApp.IconChooserButton
+        // Methods
 
         /**
          * Gets a reference to the icon chooser dialog for the #XAppIconChooserButton.
@@ -5210,7 +5210,7 @@ export namespace XApp {
     class IconChooserDialog extends GtkWindow implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<IconChooserDialog>;
 
-        // Own properties of XApp.IconChooserDialog
+        // Properties
 
         /**
          * Whether to allow paths to be searched and selected or only icon names.
@@ -5247,7 +5247,7 @@ export namespace XApp {
         get iconSize(): IconSize;
         set iconSize(val: IconSize);
 
-        // Constructors of XApp.IconChooserDialog
+        // Constructors
 
         constructor(properties?: Partial<IconChooserDialog.ConstructorProps>, ...args: any[]);
 
@@ -5255,7 +5255,7 @@ export namespace XApp {
 
         static ['new'](): IconChooserDialog;
 
-        // Own signals of XApp.IconChooserDialog
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -5267,7 +5267,7 @@ export namespace XApp {
         connect_after(signal: 'select', callback: (_source: this) => void): number;
         emit(signal: 'select'): void;
 
-        // Own methods of XApp.IconChooserDialog
+        // Methods
 
         /**
          * Allows a button to be added to the #GtkActionBar of the dialog with a custom
@@ -5766,15 +5766,15 @@ export namespace XApp {
     class KbdLayoutController extends GObject.Object {
         static $gtype: GObject.GType<KbdLayoutController>;
 
-        // Own properties of XApp.KbdLayoutController
+        // Properties
 
         get enabled(): boolean;
 
-        // Own fields of XApp.KbdLayoutController
+        // Fields
 
         parent_object: GObject.Object;
 
-        // Constructors of XApp.KbdLayoutController
+        // Constructors
 
         constructor(properties?: Partial<KbdLayoutController.ConstructorProps>, ...args: any[]);
 
@@ -5782,7 +5782,7 @@ export namespace XApp {
 
         static ['new'](): KbdLayoutController;
 
-        // Own signals of XApp.KbdLayoutController
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -5794,7 +5794,7 @@ export namespace XApp {
         connect_after(signal: 'layout-changed', callback: (_source: this, object: number) => void): number;
         emit(signal: 'layout-changed', object: number): void;
 
-        // Own static methods of XApp.KbdLayoutController
+        // Static methods
 
         /**
          * Renders a subscript number in the given work area.  This should
@@ -5816,7 +5816,7 @@ export namespace XApp {
             subscript: number,
         ): void;
 
-        // Own methods of XApp.KbdLayoutController
+        // Methods
 
         /**
          * Returns an array of all full layout names
@@ -5899,7 +5899,7 @@ export namespace XApp {
     class MonitorBlanker extends GObject.Object {
         static $gtype: GObject.GType<MonitorBlanker>;
 
-        // Constructors of XApp.MonitorBlanker
+        // Constructors
 
         constructor(properties?: Partial<MonitorBlanker.ConstructorProps>, ...args: any[]);
 
@@ -5907,7 +5907,7 @@ export namespace XApp {
 
         static ['new'](): MonitorBlanker;
 
-        // Own methods of XApp.MonitorBlanker
+        // Methods
 
         /**
          * Returns whether monitors are currently blanked.
@@ -5946,7 +5946,7 @@ export namespace XApp {
     {
         static $gtype: GObject.GType<ObjectManagerClient>;
 
-        // Constructors of XApp.ObjectManagerClient
+        // Constructors
 
         constructor(properties?: Partial<ObjectManagerClient.ConstructorProps>, ...args: any[]);
 
@@ -5981,7 +5981,7 @@ export namespace XApp {
 
         static new_sync(...args: never[]): any;
 
-        // Own static methods of XApp.ObjectManagerClient
+        // Static methods
 
         /**
          * A #GDBusProxyTypeFunc that maps `interface_name` to the generated #GDBusObjectProxy derived and #GDBusProxy derived types.
@@ -6728,7 +6728,7 @@ export namespace XApp {
     class ObjectProxy extends Gio.DBusObjectProxy implements Gio.DBusObject, Object {
         static $gtype: GObject.GType<ObjectProxy>;
 
-        // Constructors of XApp.ObjectProxy
+        // Constructors
 
         constructor(properties?: Partial<ObjectProxy.ConstructorProps>, ...args: any[]);
 
@@ -7216,7 +7216,7 @@ export namespace XApp {
     class ObjectSkeleton extends Gio.DBusObjectSkeleton implements Gio.DBusObject, Object {
         static $gtype: GObject.GType<ObjectSkeleton>;
 
-        // Constructors of XApp.ObjectSkeleton
+        // Constructors
 
         constructor(properties?: Partial<ObjectSkeleton.ConstructorProps>, ...args: any[]);
 
@@ -7224,7 +7224,7 @@ export namespace XApp {
 
         static ['new'](object_path: string): ObjectSkeleton;
 
-        // Own methods of XApp.ObjectSkeleton
+        // Methods
 
         /**
          * Sets the #XAppStatusIconInterface instance for the D-Bus interface <link linkend="gdbus-interface-org-x-StatusIcon.top_of_page">org.x.StatusIcon</link> on `object`.
@@ -7715,7 +7715,7 @@ export namespace XApp {
     class PreferencesWindow extends Gtk.Window implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<PreferencesWindow>;
 
-        // Constructors of XApp.PreferencesWindow
+        // Constructors
 
         constructor(properties?: Partial<PreferencesWindow.ConstructorProps>, ...args: any[]);
 
@@ -7723,7 +7723,7 @@ export namespace XApp {
 
         static ['new'](): PreferencesWindow;
 
-        // Own signals of XApp.PreferencesWindow
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -7732,11 +7732,11 @@ export namespace XApp {
         connect_after(signal: 'close', callback: (_source: this) => void): number;
         emit(signal: 'close'): void;
 
-        // Own virtual methods of XApp.PreferencesWindow
+        // Virtual methods
 
         vfunc_close(): void;
 
-        // Own methods of XApp.PreferencesWindow
+        // Methods
 
         /**
          * Adds a button to the bottom action bar of the window. Where
@@ -8174,12 +8174,12 @@ export namespace XApp {
     class StackSidebar extends Gtk.Bin implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<StackSidebar>;
 
-        // Own properties of XApp.StackSidebar
+        // Properties
 
         get stack(): Gtk.Stack;
         set stack(val: Gtk.Stack);
 
-        // Constructors of XApp.StackSidebar
+        // Constructors
 
         constructor(properties?: Partial<StackSidebar.ConstructorProps>, ...args: any[]);
 
@@ -8187,7 +8187,7 @@ export namespace XApp {
 
         static ['new'](): StackSidebar;
 
-        // Own methods of XApp.StackSidebar
+        // Methods
 
         /**
          * Retrieves the stack.
@@ -8646,7 +8646,7 @@ export namespace XApp {
     class StatusIcon extends GObject.Object {
         static $gtype: GObject.GType<StatusIcon>;
 
-        // Own properties of XApp.StatusIcon
+        // Properties
 
         /**
          * The icon size that is preferred by icon monitor/host - this is usually a product
@@ -8763,7 +8763,7 @@ export namespace XApp {
         get secondaryMenu(): Gtk.Widget;
         set secondaryMenu(val: Gtk.Widget);
 
-        // Constructors of XApp.StatusIcon
+        // Constructors
 
         constructor(properties?: Partial<StatusIcon.ConstructorProps>, ...args: any[]);
 
@@ -8773,7 +8773,7 @@ export namespace XApp {
 
         static new_with_name(name: string): StatusIcon;
 
-        // Own signals of XApp.StatusIcon
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -8854,14 +8854,14 @@ export namespace XApp {
         connect_after(signal: 'state-changed', callback: (_source: this, new_state: StatusIconState) => void): number;
         emit(signal: 'state-changed', new_state: StatusIconState): void;
 
-        // Own static methods of XApp.StatusIcon
+        // Static methods
 
         /**
          * Looks for the existence of any active #XAppStatusIconMonitors on the bus.
          */
         static any_monitors(): boolean;
 
-        // Own methods of XApp.StatusIcon
+        // Methods
 
         get_icon_size(): number;
         /**
@@ -8972,7 +8972,7 @@ export namespace XApp {
     {
         static $gtype: GObject.GType<StatusIconInterfaceProxy>;
 
-        // Constructors of XApp.StatusIconInterfaceProxy
+        // Constructors
 
         constructor(properties?: Partial<StatusIconInterfaceProxy.ConstructorProps>, ...args: any[]);
 
@@ -9007,7 +9007,7 @@ export namespace XApp {
 
         static new_sync(...args: never[]): any;
 
-        // Own static methods of XApp.StatusIconInterfaceProxy
+        // Static methods
 
         /**
          * Asynchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-x-StatusIcon.top_of_page">org.x.StatusIcon</link>. See g_dbus_proxy_new() for more details.
@@ -9994,7 +9994,7 @@ export namespace XApp {
     {
         static $gtype: GObject.GType<StatusIconInterfaceSkeleton>;
 
-        // Constructors of XApp.StatusIconInterfaceSkeleton
+        // Constructors
 
         constructor(properties?: Partial<StatusIconInterfaceSkeleton.ConstructorProps>, ...args: any[]);
 
@@ -10740,7 +10740,7 @@ export namespace XApp {
     class StatusIconMonitor extends GObject.Object {
         static $gtype: GObject.GType<StatusIconMonitor>;
 
-        // Constructors of XApp.StatusIconMonitor
+        // Constructors
 
         constructor(properties?: Partial<StatusIconMonitor.ConstructorProps>, ...args: any[]);
 
@@ -10748,7 +10748,7 @@ export namespace XApp {
 
         static ['new'](): StatusIconMonitor;
 
-        // Own signals of XApp.StatusIconMonitor
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -10763,7 +10763,7 @@ export namespace XApp {
         ): number;
         emit(signal: 'icon-removed', proxy: StatusIconInterfaceProxy): void;
 
-        // Own methods of XApp.StatusIconMonitor
+        // Methods
 
         /**
          * List known icon proxies.
@@ -10783,7 +10783,7 @@ export namespace XApp {
     class StyleManager extends GObject.Object {
         static $gtype: GObject.GType<StyleManager>;
 
-        // Own properties of XApp.StyleManager
+        // Properties
 
         /**
          * The widget to be styled.
@@ -10791,7 +10791,7 @@ export namespace XApp {
         get widget(): Gtk.Widget;
         set widget(val: Gtk.Widget);
 
-        // Constructors of XApp.StyleManager
+        // Constructors
 
         constructor(properties?: Partial<StyleManager.ConstructorProps>, ...args: any[]);
 
@@ -10799,7 +10799,7 @@ export namespace XApp {
 
         static ['new'](): StyleManager;
 
-        // Own methods of XApp.StyleManager
+        // Methods
 
         /**
          * Gets the #GtkWidget the style manager currently applies styles to.
@@ -10849,7 +10849,7 @@ export namespace XApp {
     {
         static $gtype: GObject.GType<SwitcherooControlProxy>;
 
-        // Constructors of XApp.SwitcherooControlProxy
+        // Constructors
 
         constructor(properties?: Partial<SwitcherooControlProxy.ConstructorProps>, ...args: any[]);
 
@@ -10884,7 +10884,7 @@ export namespace XApp {
 
         static new_sync(...args: never[]): any;
 
-        // Own static methods of XApp.SwitcherooControlProxy
+        // Static methods
 
         /**
          * Asynchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-net-hadess-SwitcherooControl.top_of_page">net.hadess.SwitcherooControl</link>. See g_dbus_proxy_new() for more details.
@@ -11623,7 +11623,7 @@ export namespace XApp {
     class SwitcherooControlSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, SwitcherooControl {
         static $gtype: GObject.GType<SwitcherooControlSkeleton>;
 
-        // Constructors of XApp.SwitcherooControlSkeleton
+        // Constructors
 
         constructor(properties?: Partial<SwitcherooControlSkeleton.ConstructorProps>, ...args: any[]);
 
@@ -12112,13 +12112,13 @@ export namespace XApp {
     class FavoriteInfo {
         static $gtype: GObject.GType<FavoriteInfo>;
 
-        // Own fields of XApp.FavoriteInfo
+        // Fields
 
         uri: string;
         display_name: string;
         cached_mimetype: string;
 
-        // Constructors of XApp.FavoriteInfo
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -12129,7 +12129,7 @@ export namespace XApp {
         );
         _init(...args: any[]): void;
 
-        // Own methods of XApp.FavoriteInfo
+        // Methods
 
         /**
          * Makes an exact copy of an existing #XAppFavoriteInfo.
@@ -12151,14 +12151,14 @@ export namespace XApp {
     class GpuInfo {
         static $gtype: GObject.GType<GpuInfo>;
 
-        // Own fields of XApp.GpuInfo
+        // Fields
 
         id: number;
         is_default: boolean;
         display_name: string;
         env_strv: string[];
 
-        // Constructors of XApp.GpuInfo
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -12170,7 +12170,7 @@ export namespace XApp {
         );
         _init(...args: any[]): void;
 
-        // Own methods of XApp.GpuInfo
+        // Methods
 
         /**
          * Creates a new string in a form intended to prefix a shell command, containing
@@ -12190,7 +12190,7 @@ export namespace XApp {
     abstract class KbdLayoutControllerPrivate {
         static $gtype: GObject.GType<KbdLayoutControllerPrivate>;
 
-        // Constructors of XApp.KbdLayoutControllerPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -12201,7 +12201,7 @@ export namespace XApp {
     abstract class ObjectManagerClientPrivate {
         static $gtype: GObject.GType<ObjectManagerClientPrivate>;
 
-        // Constructors of XApp.ObjectManagerClientPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -12210,7 +12210,7 @@ export namespace XApp {
     abstract class ObjectProxyPrivate {
         static $gtype: GObject.GType<ObjectProxyPrivate>;
 
-        // Constructors of XApp.ObjectProxyPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -12219,7 +12219,7 @@ export namespace XApp {
     abstract class ObjectSkeletonPrivate {
         static $gtype: GObject.GType<ObjectSkeletonPrivate>;
 
-        // Constructors of XApp.ObjectSkeletonPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -12232,7 +12232,7 @@ export namespace XApp {
     abstract class StatusIconInterfaceProxyPrivate {
         static $gtype: GObject.GType<StatusIconInterfaceProxyPrivate>;
 
-        // Constructors of XApp.StatusIconInterfaceProxyPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -12241,7 +12241,7 @@ export namespace XApp {
     abstract class StatusIconInterfaceSkeletonPrivate {
         static $gtype: GObject.GType<StatusIconInterfaceSkeletonPrivate>;
 
-        // Constructors of XApp.StatusIconInterfaceSkeletonPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -12253,7 +12253,7 @@ export namespace XApp {
     abstract class SwitcherooControlProxyPrivate {
         static $gtype: GObject.GType<SwitcherooControlProxyPrivate>;
 
-        // Constructors of XApp.SwitcherooControlProxyPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -12262,7 +12262,7 @@ export namespace XApp {
     abstract class SwitcherooControlSkeletonPrivate {
         static $gtype: GObject.GType<SwitcherooControlSkeletonPrivate>;
 
-        // Constructors of XApp.SwitcherooControlSkeletonPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -12273,20 +12273,20 @@ export namespace XApp {
     class VisibilityGroup {
         static $gtype: GObject.GType<VisibilityGroup>;
 
-        // Own fields of XApp.VisibilityGroup
+        // Fields
 
         widgets: Gtk.Widget[];
         visible: boolean;
         sensitive: boolean;
 
-        // Constructors of XApp.VisibilityGroup
+        // Constructors
 
         constructor(visible: boolean, sensitive: boolean, widgets?: Gtk.Widget[] | null);
         _init(...args: any[]): void;
 
         static ['new'](visible: boolean, sensitive: boolean, widgets?: Gtk.Widget[] | null): VisibilityGroup;
 
-        // Own methods of XApp.VisibilityGroup
+        // Methods
 
         /**
          * Adds widget to the visibility group.
@@ -12352,7 +12352,7 @@ export namespace XApp {
         prototype: Object;
     }
     interface Object extends Gio.DBusObject {
-        // Own properties of XApp.Object
+        // Properties
 
         /**
          * The #XAppStatusIconInterface instance corresponding to the D-Bus interface <link linkend="gdbus-interface-org-x-StatusIcon.top_of_page">org.x.StatusIcon</link>, if any.
@@ -12369,7 +12369,7 @@ export namespace XApp {
         get statusIconInterface(): StatusIconInterface;
         set statusIconInterface(val: StatusIconInterface);
 
-        // Own methods of XApp.Object
+        // Methods
 
         /**
          * Gets the #XAppStatusIconInterface instance for the D-Bus interface <link linkend="gdbus-interface-org-x-StatusIcon.top_of_page">org.x.StatusIcon</link> on `object,` if any.
@@ -12418,7 +12418,7 @@ export namespace XApp {
         override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
     }
     interface StatusIconInterface extends GObject.Object {
-        // Own properties of XApp.StatusIconInterface
+        // Properties
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-x-StatusIcon.IconName">"IconName"</link>.
@@ -12519,7 +12519,7 @@ export namespace XApp {
         get visible(): boolean;
         set visible(val: boolean);
 
-        // Own methods of XApp.StatusIconInterface
+        // Methods
 
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-x-StatusIcon.ButtonPress">ButtonPress()</link> D-Bus method on `proxy`.
@@ -12682,7 +12682,7 @@ export namespace XApp {
          */
         complete_scroll(invocation: Gio.DBusMethodInvocation): void;
 
-        // Own virtual methods of XApp.StatusIconInterface
+        // Virtual methods
 
         vfunc_handle_button_press(
             invocation: Gio.DBusMethodInvocation,
@@ -12739,7 +12739,7 @@ export namespace XApp {
         override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
     }
     interface SwitcherooControl extends GObject.Object {
-        // Own properties of XApp.SwitcherooControl
+        // Properties
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-net-hadess-SwitcherooControl.GPUs">"GPUs"</link>.

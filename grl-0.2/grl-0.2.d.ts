@@ -746,7 +746,7 @@ export namespace Grl {
     class Caps extends GObject.Object {
         static $gtype: GObject.GType<Caps>;
 
-        // Constructors of Grl.Caps
+        // Constructors
 
         constructor(properties?: Partial<Caps.ConstructorProps>, ...args: any[]);
 
@@ -754,7 +754,7 @@ export namespace Grl {
 
         static ['new'](): Caps;
 
-        // Own methods of Grl.Caps
+        // Methods
 
         get_key_filter(): KeyID[];
         get_key_range_filter(): KeyID[];
@@ -796,7 +796,7 @@ export namespace Grl {
     class Config extends GObject.Object {
         static $gtype: GObject.GType<Config>;
 
-        // Constructors of Grl.Config
+        // Constructors
 
         constructor(properties?: Partial<Config.ConstructorProps>, ...args: any[]);
 
@@ -804,7 +804,7 @@ export namespace Grl {
 
         static ['new'](plugin: string, source?: string | null): Config;
 
-        // Own methods of Grl.Config
+        // Methods
 
         get_api_key(): string;
         get_api_key_blob(size: number): number;
@@ -925,7 +925,7 @@ export namespace Grl {
     class Data extends GObject.Object {
         static $gtype: GObject.GType<Data>;
 
-        // Constructors of Grl.Data
+        // Constructors
 
         constructor(properties?: Partial<Data.ConstructorProps>, ...args: any[]);
 
@@ -933,7 +933,7 @@ export namespace Grl {
 
         static ['new'](): Data;
 
-        // Own methods of Grl.Data
+        // Methods
 
         /**
          * Appends a new binary value for `key` in `data`.
@@ -1188,7 +1188,7 @@ export namespace Grl {
     class Media extends Data {
         static $gtype: GObject.GType<Media>;
 
-        // Constructors of Grl.Media
+        // Constructors
 
         constructor(properties?: Partial<Media.ConstructorProps>, ...args: any[]);
 
@@ -1196,7 +1196,7 @@ export namespace Grl {
 
         static ['new'](): Media;
 
-        // Own static methods of Grl.Media
+        // Static methods
 
         /**
          * Unserializes a GrlMedia.
@@ -1204,7 +1204,7 @@ export namespace Grl {
          */
         static unserialize(serial: string): Media;
 
-        // Own methods of Grl.Media
+        // Methods
 
         /**
          * Adds a new author to `media`.
@@ -1496,7 +1496,7 @@ export namespace Grl {
     class MediaAudio extends Media {
         static $gtype: GObject.GType<MediaAudio>;
 
-        // Constructors of Grl.MediaAudio
+        // Constructors
 
         constructor(properties?: Partial<MediaAudio.ConstructorProps>, ...args: any[]);
 
@@ -1504,7 +1504,7 @@ export namespace Grl {
 
         static ['new'](): MediaAudio;
 
-        // Own methods of Grl.MediaAudio
+        // Methods
 
         /**
          * Adds a new artist to `audio`.
@@ -1626,7 +1626,7 @@ export namespace Grl {
     class MediaBox extends Media {
         static $gtype: GObject.GType<MediaBox>;
 
-        // Constructors of Grl.MediaBox
+        // Constructors
 
         constructor(properties?: Partial<MediaBox.ConstructorProps>, ...args: any[]);
 
@@ -1634,7 +1634,7 @@ export namespace Grl {
 
         static ['new'](): MediaBox;
 
-        // Own methods of Grl.MediaBox
+        // Methods
 
         /**
          * Number of children of this box.
@@ -1658,7 +1658,7 @@ export namespace Grl {
     class MediaImage extends Media {
         static $gtype: GObject.GType<MediaImage>;
 
-        // Constructors of Grl.MediaImage
+        // Constructors
 
         constructor(properties?: Partial<MediaImage.ConstructorProps>, ...args: any[]);
 
@@ -1666,7 +1666,7 @@ export namespace Grl {
 
         static ['new'](): MediaImage;
 
-        // Own methods of Grl.MediaImage
+        // Methods
 
         /**
          * Sets all the keys related with the URL of a media resource and adds it to
@@ -1744,7 +1744,7 @@ export namespace Grl {
     class MediaVideo extends Media {
         static $gtype: GObject.GType<MediaVideo>;
 
-        // Constructors of Grl.MediaVideo
+        // Constructors
 
         constructor(properties?: Partial<MediaVideo.ConstructorProps>, ...args: any[]);
 
@@ -1752,7 +1752,7 @@ export namespace Grl {
 
         static ['new'](): MediaVideo;
 
-        // Own methods of Grl.MediaVideo
+        // Methods
 
         /**
          * Adds the director of the movie.
@@ -1886,7 +1886,7 @@ export namespace Grl {
     class OperationOptions extends GObject.Object {
         static $gtype: GObject.GType<OperationOptions>;
 
-        // Constructors of Grl.OperationOptions
+        // Constructors
 
         constructor(properties?: Partial<OperationOptions.ConstructorProps>, ...args: any[]);
 
@@ -1894,7 +1894,7 @@ export namespace Grl {
 
         static ['new'](caps?: Caps | null): OperationOptions;
 
-        // Own methods of Grl.OperationOptions
+        // Methods
 
         copy(): OperationOptions;
         /**
@@ -2010,20 +2010,20 @@ export namespace Grl {
     class Plugin extends GObject.Object {
         static $gtype: GObject.GType<Plugin>;
 
-        // Own properties of Grl.Plugin
+        // Properties
 
         /**
          * `TRUE` if plugin is loaded.
          */
         get loaded(): boolean;
 
-        // Constructors of Grl.Plugin
+        // Constructors
 
         constructor(properties?: Partial<Plugin.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Grl.Plugin
+        // Methods
 
         /**
          * Get the author of the plugin
@@ -2123,13 +2123,13 @@ export namespace Grl {
     class Registry extends GObject.Object {
         static $gtype: GObject.GType<Registry>;
 
-        // Constructors of Grl.Registry
+        // Constructors
 
         constructor(properties?: Partial<Registry.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of Grl.Registry
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -2144,7 +2144,7 @@ export namespace Grl {
         connect_after(signal: 'source-removed', callback: (_source: this, source: Source) => void): number;
         emit(signal: 'source-removed', source: Source): void;
 
-        // Own static methods of Grl.Registry
+        // Static methods
 
         /**
          * As the registry is designed to work as a singleton, this
@@ -2153,7 +2153,7 @@ export namespace Grl {
          */
         static get_default(): Registry;
 
-        // Own methods of Grl.Registry
+        // Methods
 
         /**
          * Add a configuration for a plugin/source.
@@ -2349,7 +2349,7 @@ export namespace Grl {
     class RelatedKeys extends GObject.Object {
         static $gtype: GObject.GType<RelatedKeys>;
 
-        // Constructors of Grl.RelatedKeys
+        // Constructors
 
         constructor(properties?: Partial<RelatedKeys.ConstructorProps>, ...args: any[]);
 
@@ -2357,7 +2357,7 @@ export namespace Grl {
 
         static ['new'](): RelatedKeys;
 
-        // Own methods of Grl.RelatedKeys
+        // Methods
 
         /**
          * Makes a deep copy of `relkeys` and its contents.
@@ -2535,7 +2535,7 @@ export namespace Grl {
     abstract class Source extends GObject.Object {
         static $gtype: GObject.GType<Source>;
 
-        // Own properties of Grl.Source
+        // Properties
 
         /**
          * Transparently split queries with count requests
@@ -2728,13 +2728,13 @@ export namespace Grl {
         get supportedMedia(): MediaType;
         set supportedMedia(val: MediaType);
 
-        // Constructors of Grl.Source
+        // Constructors
 
         constructor(properties?: Partial<Source.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of Grl.Source
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -2764,7 +2764,7 @@ export namespace Grl {
             location_unknown: boolean,
         ): void;
 
-        // Own virtual methods of Grl.Source
+        // Virtual methods
 
         vfunc_browse(bs: SourceBrowseSpec): void;
         vfunc_cancel(operation_id: number): void;
@@ -2832,7 +2832,7 @@ export namespace Grl {
          */
         vfunc_writable_keys(): KeyID[];
 
-        // Own methods of Grl.Source
+        // Methods
 
         /**
          * Browse from media elements through an available list.
@@ -3175,7 +3175,7 @@ export namespace Grl {
     abstract class CapsPrivate {
         static $gtype: GObject.GType<CapsPrivate>;
 
-        // Constructors of Grl.CapsPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3184,7 +3184,7 @@ export namespace Grl {
     abstract class ConfigPrivate {
         static $gtype: GObject.GType<ConfigPrivate>;
 
-        // Constructors of Grl.ConfigPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3193,7 +3193,7 @@ export namespace Grl {
     abstract class DataPrivate {
         static $gtype: GObject.GType<DataPrivate>;
 
-        // Constructors of Grl.DataPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3201,11 +3201,11 @@ export namespace Grl {
     abstract class LogDomain {
         static $gtype: GObject.GType<LogDomain>;
 
-        // Constructors of Grl.LogDomain
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of Grl.LogDomain
+        // Methods
 
         /**
          * Releases `domain`.
@@ -3222,7 +3222,7 @@ export namespace Grl {
     abstract class OperationOptionsPrivate {
         static $gtype: GObject.GType<OperationOptionsPrivate>;
 
-        // Constructors of Grl.OperationOptionsPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3234,11 +3234,11 @@ export namespace Grl {
     class PluginDescriptor {
         static $gtype: GObject.GType<PluginDescriptor>;
 
-        // Own fields of Grl.PluginDescriptor
+        // Fields
 
         plugin_id: string;
 
-        // Constructors of Grl.PluginDescriptor
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3246,7 +3246,7 @@ export namespace Grl {
     abstract class PluginPrivate {
         static $gtype: GObject.GType<PluginPrivate>;
 
-        // Constructors of Grl.PluginPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3254,14 +3254,14 @@ export namespace Grl {
     class RangeValue {
         static $gtype: GObject.GType<RangeValue>;
 
-        // Constructors of Grl.RangeValue
+        // Constructors
 
         constructor(min: GObject.Value | any, max: GObject.Value | any);
         _init(...args: any[]): void;
 
         static ['new'](min: GObject.Value | any, max: GObject.Value | any): RangeValue;
 
-        // Own static methods of Grl.RangeValue
+        // Static methods
 
         static hashtable_insert(
             hash_table: { [key: string]: any } | GLib.HashTable<any, any>,
@@ -3271,7 +3271,7 @@ export namespace Grl {
         ): void;
         static hashtable_new(): GLib.HashTable<any, RangeValue>;
 
-        // Own methods of Grl.RangeValue
+        // Methods
 
         dup(): RangeValue;
         free(): void;
@@ -3281,7 +3281,7 @@ export namespace Grl {
     abstract class RegistryPrivate {
         static $gtype: GObject.GType<RegistryPrivate>;
 
-        // Constructors of Grl.RegistryPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3290,7 +3290,7 @@ export namespace Grl {
     abstract class RelatedKeysPrivate {
         static $gtype: GObject.GType<RelatedKeysPrivate>;
 
-        // Constructors of Grl.RelatedKeysPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3302,7 +3302,7 @@ export namespace Grl {
     class SourceBrowseSpec {
         static $gtype: GObject.GType<SourceBrowseSpec>;
 
-        // Own fields of Grl.SourceBrowseSpec
+        // Fields
 
         source: Source;
         operation_id: number;
@@ -3312,7 +3312,7 @@ export namespace Grl {
         callback: SourceResultCb;
         user_data: any;
 
-        // Constructors of Grl.SourceBrowseSpec
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3325,7 +3325,7 @@ export namespace Grl {
     class SourceMediaFromUriSpec {
         static $gtype: GObject.GType<SourceMediaFromUriSpec>;
 
-        // Own fields of Grl.SourceMediaFromUriSpec
+        // Fields
 
         source: Source;
         operation_id: number;
@@ -3335,7 +3335,7 @@ export namespace Grl {
         callback: SourceResolveCb;
         user_data: any;
 
-        // Constructors of Grl.SourceMediaFromUriSpec
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3343,7 +3343,7 @@ export namespace Grl {
     abstract class SourcePrivate {
         static $gtype: GObject.GType<SourcePrivate>;
 
-        // Constructors of Grl.SourcePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3355,7 +3355,7 @@ export namespace Grl {
     class SourceQuerySpec {
         static $gtype: GObject.GType<SourceQuerySpec>;
 
-        // Own fields of Grl.SourceQuerySpec
+        // Fields
 
         source: Source;
         operation_id: number;
@@ -3365,7 +3365,7 @@ export namespace Grl {
         callback: SourceResultCb;
         user_data: any;
 
-        // Constructors of Grl.SourceQuerySpec
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3377,7 +3377,7 @@ export namespace Grl {
     class SourceRemoveSpec {
         static $gtype: GObject.GType<SourceRemoveSpec>;
 
-        // Own fields of Grl.SourceRemoveSpec
+        // Fields
 
         source: Source;
         media_id: string;
@@ -3385,7 +3385,7 @@ export namespace Grl {
         callback: SourceRemoveCb;
         user_data: any;
 
-        // Constructors of Grl.SourceRemoveSpec
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3397,7 +3397,7 @@ export namespace Grl {
     class SourceResolveSpec {
         static $gtype: GObject.GType<SourceResolveSpec>;
 
-        // Own fields of Grl.SourceResolveSpec
+        // Fields
 
         source: Source;
         operation_id: number;
@@ -3407,7 +3407,7 @@ export namespace Grl {
         callback: SourceResolveCb;
         user_data: any;
 
-        // Constructors of Grl.SourceResolveSpec
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3419,7 +3419,7 @@ export namespace Grl {
     class SourceSearchSpec {
         static $gtype: GObject.GType<SourceSearchSpec>;
 
-        // Own fields of Grl.SourceSearchSpec
+        // Fields
 
         source: Source;
         operation_id: number;
@@ -3429,7 +3429,7 @@ export namespace Grl {
         callback: SourceResultCb;
         user_data: any;
 
-        // Constructors of Grl.SourceSearchSpec
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3441,7 +3441,7 @@ export namespace Grl {
     class SourceStoreMetadataSpec {
         static $gtype: GObject.GType<SourceStoreMetadataSpec>;
 
-        // Own fields of Grl.SourceStoreMetadataSpec
+        // Fields
 
         source: Source;
         media: Media;
@@ -3451,7 +3451,7 @@ export namespace Grl {
         user_data: any;
         failed_keys: any[];
 
-        // Constructors of Grl.SourceStoreMetadataSpec
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3463,14 +3463,14 @@ export namespace Grl {
     class SourceStoreSpec {
         static $gtype: GObject.GType<SourceStoreSpec>;
 
-        // Own fields of Grl.SourceStoreSpec
+        // Fields
 
         source: Source;
         media: Media;
         callback: SourceStoreCb;
         user_data: any;
 
-        // Constructors of Grl.SourceStoreSpec
+        // Constructors
 
         _init(...args: any[]): void;
     }

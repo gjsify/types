@@ -24,7 +24,7 @@ export namespace Signon {
     class Error extends GLib.Error {
         static $gtype: GObject.GType<Error>;
 
-        // Static fields of Signon.Error
+        // Static fields
 
         /**
          * Catch-all for errors not distinguished by another code.
@@ -178,12 +178,12 @@ export namespace Signon {
          */
         static USER_ERROR: number;
 
-        // Constructors of Signon.Error
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of Signon.Error
+        // Static methods
 
         static quark(): GLib.Quark;
     }
@@ -296,7 +296,7 @@ export namespace Signon {
     class AuthService extends GObject.Object {
         static $gtype: GObject.GType<AuthService>;
 
-        // Constructors of Signon.AuthService
+        // Constructors
 
         constructor(properties?: Partial<AuthService.ConstructorProps>, ...args: any[]);
 
@@ -304,7 +304,7 @@ export namespace Signon {
 
         static ['new'](): AuthService;
 
-        // Own methods of Signon.AuthService
+        // Methods
 
         /**
          * Lists all the available mechanisms.
@@ -370,7 +370,7 @@ export namespace Signon {
     class AuthSession extends GObject.Object {
         static $gtype: GObject.GType<AuthSession>;
 
-        // Constructors of Signon.AuthSession
+        // Constructors
 
         constructor(properties?: Partial<AuthSession.ConstructorProps>, ...args: any[]);
 
@@ -378,7 +378,7 @@ export namespace Signon {
 
         static ['new'](id: number, method_name: string): AuthSession;
 
-        // Own signals of Signon.AuthSession
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -390,7 +390,7 @@ export namespace Signon {
         ): number;
         emit(signal: 'state-changed', state: number, message: string): void;
 
-        // Own methods of Signon.AuthSession
+        // Methods
 
         /**
          * Cancel the authentication session.
@@ -447,11 +447,11 @@ export namespace Signon {
     class Identity extends GObject.Object {
         static $gtype: GObject.GType<Identity>;
 
-        // Own properties of Signon.Identity
+        // Properties
 
         get id(): number;
 
-        // Constructors of Signon.Identity
+        // Constructors
 
         constructor(properties?: Partial<Identity.ConstructorProps>, ...args: any[]);
 
@@ -461,7 +461,7 @@ export namespace Signon {
 
         static new_from_db(id: number): Identity;
 
-        // Own signals of Signon.Identity
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -470,7 +470,7 @@ export namespace Signon {
         connect_after(signal: 'signed-out', callback: (_source: this) => void): number;
         emit(signal: 'signed-out'): void;
 
-        // Own methods of Signon.Identity
+        // Methods
 
         /**
          * Creates an authentication session for this identity.
@@ -561,14 +561,14 @@ export namespace Signon {
     class IdentityInfo {
         static $gtype: GObject.GType<IdentityInfo>;
 
-        // Constructors of Signon.IdentityInfo
+        // Constructors
 
         constructor(properties?: Partial<{}>);
         _init(...args: any[]): void;
 
         static ['new'](): IdentityInfo;
 
-        // Own methods of Signon.IdentityInfo
+        // Methods
 
         /**
          * Add an ACL to this identity. This is an helper function.
@@ -680,7 +680,7 @@ export namespace Signon {
     class SecurityContext {
         static $gtype: GObject.GType<SecurityContext>;
 
-        // Constructors of Signon.SecurityContext
+        // Constructors
 
         constructor(properties?: Partial<{}>);
         _init(...args: any[]): void;
@@ -689,7 +689,7 @@ export namespace Signon {
 
         static new_from_values(system_context: string, application_context: string): SecurityContext;
 
-        // Own methods of Signon.SecurityContext
+        // Methods
 
         /**
          * Get a newly-allocated copy of `info`.

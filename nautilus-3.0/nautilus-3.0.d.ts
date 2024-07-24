@@ -88,7 +88,7 @@ export namespace Nautilus {
     class Column extends GObject.Object {
         static $gtype: GObject.GType<Column>;
 
-        // Own properties of Nautilus.Column
+        // Properties
 
         get attribute(): string;
         set attribute(val: string);
@@ -106,7 +106,7 @@ export namespace Nautilus {
         get xalign(): number;
         set xalign(val: number);
 
-        // Constructors of Nautilus.Column
+        // Constructors
 
         constructor(properties?: Partial<Column.ConstructorProps>, ...args: any[]);
 
@@ -124,7 +124,7 @@ export namespace Nautilus {
     class Menu extends GObject.Object {
         static $gtype: GObject.GType<Menu>;
 
-        // Constructors of Nautilus.Menu
+        // Constructors
 
         constructor(properties?: Partial<Menu.ConstructorProps>, ...args: any[]);
 
@@ -132,7 +132,7 @@ export namespace Nautilus {
 
         static ['new'](): Menu;
 
-        // Own methods of Nautilus.Menu
+        // Methods
 
         append_item(item: MenuItem): void;
         get_items(): MenuItem[] | null;
@@ -161,7 +161,7 @@ export namespace Nautilus {
     class MenuItem extends GObject.Object {
         static $gtype: GObject.GType<MenuItem>;
 
-        // Own properties of Nautilus.MenuItem
+        // Properties
 
         get icon(): string;
         set icon(val: string);
@@ -177,7 +177,7 @@ export namespace Nautilus {
         get tip(): string;
         set tip(val: string);
 
-        // Constructors of Nautilus.MenuItem
+        // Constructors
 
         constructor(properties?: Partial<MenuItem.ConstructorProps>, ...args: any[]);
 
@@ -185,7 +185,7 @@ export namespace Nautilus {
 
         static ['new'](name: string, label: string, tip?: string | null, icon?: string | null): MenuItem;
 
-        // Own signals of Nautilus.MenuItem
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -194,18 +194,18 @@ export namespace Nautilus {
         connect_after(signal: 'activate', callback: (_source: this) => void): number;
         emit(signal: 'activate'): void;
 
-        // Own static methods of Nautilus.MenuItem
+        // Static methods
 
         static list_free(item_list: MenuItem[]): void;
 
-        // Own virtual methods of Nautilus.MenuItem
+        // Virtual methods
 
         /**
          * Emits #NautilusMenuItem::activate.
          */
         vfunc_activate(): void;
 
-        // Own methods of Nautilus.MenuItem
+        // Methods
 
         /**
          * Emits #NautilusMenuItem::activate.
@@ -231,7 +231,7 @@ export namespace Nautilus {
     class PropertyPage extends GObject.Object {
         static $gtype: GObject.GType<PropertyPage>;
 
-        // Own properties of Nautilus.PropertyPage
+        // Properties
 
         get label(): Gtk.Widget;
         set label(val: Gtk.Widget);
@@ -239,7 +239,7 @@ export namespace Nautilus {
         get page(): Gtk.Widget;
         set page(val: Gtk.Widget);
 
-        // Constructors of Nautilus.PropertyPage
+        // Constructors
 
         constructor(properties?: Partial<PropertyPage.ConstructorProps>, ...args: any[]);
 
@@ -255,7 +255,7 @@ export namespace Nautilus {
     class ColumnProviderInterface {
         static $gtype: GObject.GType<ColumnProviderInterface>;
 
-        // Constructors of Nautilus.ColumnProviderInterface
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -267,7 +267,7 @@ export namespace Nautilus {
     class InfoProviderInterface {
         static $gtype: GObject.GType<InfoProviderInterface>;
 
-        // Constructors of Nautilus.InfoProviderInterface
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -278,7 +278,7 @@ export namespace Nautilus {
     class LocationWidgetProviderInterface {
         static $gtype: GObject.GType<LocationWidgetProviderInterface>;
 
-        // Constructors of Nautilus.LocationWidgetProviderInterface
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -291,7 +291,7 @@ export namespace Nautilus {
     class MenuProviderInterface {
         static $gtype: GObject.GType<MenuProviderInterface>;
 
-        // Constructors of Nautilus.MenuProviderInterface
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -304,7 +304,7 @@ export namespace Nautilus {
     abstract class OperationHandle {
         static $gtype: GObject.GType<OperationHandle>;
 
-        // Constructors of Nautilus.OperationHandle
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -316,7 +316,7 @@ export namespace Nautilus {
     class PropertyPageProviderInterface {
         static $gtype: GObject.GType<PropertyPageProviderInterface>;
 
-        // Constructors of Nautilus.PropertyPageProviderInterface
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -332,7 +332,7 @@ export namespace Nautilus {
         prototype: ColumnProvider;
     }
     interface ColumnProvider extends GObject.Object {
-        // Own methods of Nautilus.ColumnProvider
+        // Methods
 
         get_columns(): Column[] | null;
     }
@@ -357,7 +357,7 @@ export namespace Nautilus {
         lookup_for_uri(uri: string): FileInfo | null;
     }
     interface FileInfo extends GObject.Object {
-        // Own methods of Nautilus.FileInfo
+        // Methods
 
         add_emblem(emblem_name: string): void;
         add_string_attribute(attribute_name: string, value: string): void;
@@ -384,7 +384,7 @@ export namespace Nautilus {
         is_gone(): boolean;
         is_mime_type(mime_type: string): boolean;
 
-        // Own virtual methods of Nautilus.FileInfo
+        // Virtual methods
 
         vfunc_add_emblem(emblem_name: string): void;
         vfunc_add_string_attribute(attribute_name: string, value: string): void;
@@ -431,7 +431,7 @@ export namespace Nautilus {
         ): void;
     }
     interface InfoProvider extends GObject.Object {
-        // Own methods of Nautilus.InfoProvider
+        // Methods
 
         cancel_update(handle: OperationHandle): void;
         update_file_info(file: FileInfo, update_complete: GObject.Closure, handle: OperationHandle): OperationResult;
@@ -450,7 +450,7 @@ export namespace Nautilus {
         prototype: LocationWidgetProvider;
     }
     interface LocationWidgetProvider extends GObject.Object {
-        // Own methods of Nautilus.LocationWidgetProvider
+        // Methods
 
         get_widget(uri: string, window: Gtk.Widget): Gtk.Widget | null;
     }
@@ -468,7 +468,7 @@ export namespace Nautilus {
         prototype: MenuProvider;
     }
     interface MenuProvider extends GObject.Object {
-        // Own methods of Nautilus.MenuProvider
+        // Methods
 
         /**
          * Emits #NautilusMenuProvider::items-updated.
@@ -491,7 +491,7 @@ export namespace Nautilus {
         prototype: PropertyPageProvider;
     }
     interface PropertyPageProvider extends GObject.Object {
-        // Own methods of Nautilus.PropertyPageProvider
+        // Methods
 
         /**
          * This function is called by Nautilus when it wants property page

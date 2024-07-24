@@ -87,7 +87,7 @@ export namespace Malcontent {
     class ManagerError extends GLib.Error {
         static $gtype: GObject.GType<ManagerError>;
 
-        // Static fields of Malcontent.ManagerError
+        // Static fields
 
         /**
          * Given user ID doesn’t exist
@@ -108,12 +108,12 @@ export namespace Malcontent {
          */
         static DISABLED: number;
 
-        // Constructors of Malcontent.ManagerError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of Malcontent.ManagerError
+        // Static methods
 
         static quark(): GLib.Quark;
     }
@@ -237,7 +237,7 @@ export namespace Malcontent {
     class Manager extends GObject.Object {
         static $gtype: GObject.GType<Manager>;
 
-        // Own properties of Malcontent.Manager
+        // Properties
 
         /**
          * A connection to the system bus, where accounts-service runs. It’s provided
@@ -246,7 +246,7 @@ export namespace Malcontent {
          */
         get connection(): Gio.DBusConnection;
 
-        // Constructors of Malcontent.Manager
+        // Constructors
 
         constructor(properties?: Partial<Manager.ConstructorProps>, ...args: any[]);
 
@@ -254,7 +254,7 @@ export namespace Malcontent {
 
         static ['new'](connection: Gio.DBusConnection): Manager;
 
-        // Own signals of Malcontent.Manager
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -263,7 +263,7 @@ export namespace Malcontent {
         connect_after(signal: 'app-filter-changed', callback: (_source: this, user_id: number) => void): number;
         emit(signal: 'app-filter-changed', user_id: number): void;
 
-        // Own methods of Malcontent.Manager
+        // Methods
 
         /**
          * Synchronous version of mct_manager_get_app_filter_async().
@@ -428,7 +428,7 @@ export namespace Malcontent {
     class AppFilter {
         static $gtype: GObject.GType<AppFilter>;
 
-        // Own fields of Malcontent.AppFilter
+        // Fields
 
         ref_count: number;
         user_id: number;
@@ -437,11 +437,11 @@ export namespace Malcontent {
         allow_user_installation: boolean;
         allow_system_installation: boolean;
 
-        // Constructors of Malcontent.AppFilter
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own static methods of Malcontent.AppFilter
+        // Static methods
 
         /**
          * Deserialize an app filter previously serialized with
@@ -456,7 +456,7 @@ export namespace Malcontent {
         static deserialize(variant: GLib.Variant, user_id: number): AppFilter;
         static error_quark(): GLib.Quark;
 
-        // Own methods of Malcontent.AppFilter
+        // Methods
 
         /**
          * Check whether app filters `a` and `b` are equal.
@@ -587,14 +587,14 @@ export namespace Malcontent {
     class AppFilterBuilder {
         static $gtype: GObject.GType<AppFilterBuilder>;
 
-        // Constructors of Malcontent.AppFilterBuilder
+        // Constructors
 
         constructor(properties?: Partial<{}>);
         _init(...args: any[]): void;
 
         static ['new'](): AppFilterBuilder;
 
-        // Own methods of Malcontent.AppFilterBuilder
+        // Methods
 
         /**
          * Add `content_type` to the blocklist of content types in the filter under
@@ -701,7 +701,7 @@ export namespace Malcontent {
     class SessionLimits {
         static $gtype: GObject.GType<SessionLimits>;
 
-        // Own fields of Malcontent.SessionLimits
+        // Fields
 
         ref_count: number;
         user_id: number;
@@ -709,11 +709,11 @@ export namespace Malcontent {
         daily_start_time: number;
         daily_end_time: number;
 
-        // Constructors of Malcontent.SessionLimits
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own static methods of Malcontent.SessionLimits
+        // Static methods
 
         /**
          * Deserialize a set of session limits previously serialized with
@@ -727,7 +727,7 @@ export namespace Malcontent {
          */
         static deserialize(variant: GLib.Variant, user_id: number): SessionLimits;
 
-        // Own methods of Malcontent.SessionLimits
+        // Methods
 
         /**
          * Check whether the user has time remaining in which they are allowed to use
@@ -787,14 +787,14 @@ export namespace Malcontent {
     class SessionLimitsBuilder {
         static $gtype: GObject.GType<SessionLimitsBuilder>;
 
-        // Constructors of Malcontent.SessionLimitsBuilder
+        // Constructors
 
         constructor(properties?: Partial<{}>);
         _init(...args: any[]): void;
 
         static ['new'](): SessionLimitsBuilder;
 
-        // Own methods of Malcontent.SessionLimitsBuilder
+        // Methods
 
         /**
          * Clear `builder,` freeing any internal state in it. This will not free the

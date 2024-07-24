@@ -91,7 +91,7 @@ export namespace GstBase {
     class GstAdapter extends GObject.Object {
         static $gtype: GObject.GType<GstAdapter>;
 
-        // Own fields of GstBase.GstAdapter
+        // Fields
 
         object: GObject.Object;
         buflist: any[];
@@ -102,7 +102,7 @@ export namespace GstBase {
         assembled_len: number;
         buflist_end: any[];
 
-        // Constructors of GstBase.GstAdapter
+        // Constructors
 
         constructor(properties?: Partial<GstAdapter.ConstructorProps>, ...args: any[]);
 
@@ -110,7 +110,7 @@ export namespace GstBase {
 
         static ['new'](): GstAdapter;
 
-        // Own methods of GstBase.GstAdapter
+        // Methods
 
         clear(): void;
         push(buf: Gst.Buffer): void;
@@ -140,7 +140,7 @@ export namespace GstBase {
     class GstCollectPads extends Gst.Object {
         static $gtype: GObject.GType<GstCollectPads>;
 
-        // Own fields of GstBase.GstCollectPads
+        // Fields
 
         object: Gst.Object;
         data: any[];
@@ -152,7 +152,7 @@ export namespace GstBase {
         eospads: number;
         started: boolean;
 
-        // Constructors of GstBase.GstCollectPads
+        // Constructors
 
         constructor(properties?: Partial<GstCollectPads.ConstructorProps>, ...args: any[]);
 
@@ -160,7 +160,7 @@ export namespace GstBase {
 
         static ['new'](): GstCollectPads;
 
-        // Own methods of GstBase.GstCollectPads
+        // Methods
 
         set_function(func: Gst.CollectPadsFunction, user_data: any): void;
         set_clip_function(clipfunc: Gst.CollectPadsClipFunction, user_data: any): void;
@@ -211,7 +211,7 @@ export namespace GstBase {
     class GstDataQueue extends GObject.Object {
         static $gtype: GObject.GType<GstDataQueue>;
 
-        // Own properties of GstBase.GstDataQueue
+        // Properties
 
         get current_level_bytes(): number;
         get currentLevelBytes(): number;
@@ -220,7 +220,7 @@ export namespace GstBase {
         get current_level_visible(): number;
         get currentLevelVisible(): number;
 
-        // Own fields of GstBase.GstDataQueue
+        // Fields
 
         object: GObject.Object;
         queue: GLib.Queue;
@@ -231,7 +231,7 @@ export namespace GstBase {
         fullcallback: Gst.DataQueueFullCallback;
         emptycallback: Gst.DataQueueEmptyCallback;
 
-        // Constructors of GstBase.GstDataQueue
+        // Constructors
 
         constructor(properties?: Partial<GstDataQueue.ConstructorProps>, ...args: any[]);
 
@@ -245,7 +245,7 @@ export namespace GstBase {
             emptycallback: Gst.DataQueueEmptyCallback,
         ): GstDataQueue;
 
-        // Own signals of GstBase.GstDataQueue
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -257,7 +257,7 @@ export namespace GstBase {
         connect_after(signal: 'full', callback: (_source: this) => void): number;
         emit(signal: 'full'): void;
 
-        // Own methods of GstBase.GstDataQueue
+        // Methods
 
         push(item: Gst.DataQueueItem): boolean;
         pop(item: Gst.DataQueueItem): boolean;
@@ -282,7 +282,7 @@ export namespace GstBase {
     class GstPushSrc extends Src {
         static $gtype: GObject.GType<GstPushSrc>;
 
-        // Constructors of GstBase.GstPushSrc
+        // Constructors
 
         constructor(properties?: Partial<GstPushSrc.ConstructorProps>, ...args: any[]);
 
@@ -318,7 +318,7 @@ export namespace GstBase {
     abstract class Sink extends Gst.Element {
         static $gtype: GObject.GType<Sink>;
 
-        // Own properties of GstBase.Sink
+        // Properties
 
         get async(): boolean;
         set async(val: boolean);
@@ -351,7 +351,7 @@ export namespace GstBase {
         get tsOffset(): number;
         set tsOffset(val: number);
 
-        // Own fields of GstBase.Sink
+        // Fields
 
         element: Gst.Element;
         sinkpad: Gst.Pad;
@@ -374,13 +374,13 @@ export namespace GstBase {
         end_time: Gst.ClockTime;
         flushing: boolean;
 
-        // Constructors of GstBase.Sink
+        // Constructors
 
         constructor(properties?: Partial<Sink.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of GstBase.Sink
+        // Methods
 
         do_preroll(obj: Gst.MiniObject): Gst.FlowReturn;
         wait_preroll(): Gst.FlowReturn;
@@ -426,7 +426,7 @@ export namespace GstBase {
     abstract class Src extends Gst.Element {
         static $gtype: GObject.GType<Src>;
 
-        // Own properties of GstBase.Src
+        // Properties
 
         get blocksize(): never;
         set blocksize(val: never);
@@ -441,7 +441,7 @@ export namespace GstBase {
         get typefind(): boolean;
         set typefind(val: boolean);
 
-        // Own fields of GstBase.Src
+        // Fields
 
         element: Gst.Element;
         srcpad: Gst.Pad;
@@ -457,13 +457,13 @@ export namespace GstBase {
         size: number;
         num_buffers_left: number;
 
-        // Constructors of GstBase.Src
+        // Constructors
 
         constructor(properties?: Partial<Src.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of GstBase.Src
+        // Methods
 
         wait_playing(): Gst.FlowReturn;
         set_live(live: boolean): void;
@@ -491,12 +491,12 @@ export namespace GstBase {
     abstract class Transform extends Gst.Element {
         static $gtype: GObject.GType<Transform>;
 
-        // Own properties of GstBase.Transform
+        // Properties
 
         get qos(): boolean;
         set qos(val: boolean);
 
-        // Own fields of GstBase.Transform
+        // Fields
 
         element: Gst.Element;
         sinkpad: Gst.Pad;
@@ -511,13 +511,13 @@ export namespace GstBase {
         negotiated: boolean;
         have_newsegment: boolean;
 
-        // Constructors of GstBase.Transform
+        // Constructors
 
         constructor(properties?: Partial<Transform.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of GstBase.Transform
+        // Methods
 
         set_passthrough(passthrough: boolean): void;
         is_passthrough(): boolean;
@@ -535,7 +535,7 @@ export namespace GstBase {
     class GstAdapterPrivate {
         static $gtype: GObject.GType<GstAdapterPrivate>;
 
-        // Constructors of GstBase.GstAdapterPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -546,14 +546,14 @@ export namespace GstBase {
     class GstBitReader {
         static $gtype: GObject.GType<GstBitReader>;
 
-        // Own fields of GstBase.GstBitReader
+        // Fields
 
         data: any;
         size: number;
         'byte': number;
         bit: number;
 
-        // Constructors of GstBase.GstBitReader
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -569,7 +569,7 @@ export namespace GstBase {
 
         static new_from_buffer(buffer: Gst.Buffer): GstBitReader;
 
-        // Own methods of GstBase.GstBitReader
+        // Methods
 
         free(): void;
         init(data: number[], size: number): void;
@@ -596,13 +596,13 @@ export namespace GstBase {
     class GstByteReader {
         static $gtype: GObject.GType<GstByteReader>;
 
-        // Own fields of GstBase.GstByteReader
+        // Fields
 
         data: any;
         size: number;
         'byte': number;
 
-        // Constructors of GstBase.GstByteReader
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -617,7 +617,7 @@ export namespace GstBase {
 
         static new_from_buffer(buffer: Gst.Buffer): GstByteReader;
 
-        // Own methods of GstBase.GstByteReader
+        // Methods
 
         free(): void;
         init(data: number[], size: number): void;
@@ -691,13 +691,13 @@ export namespace GstBase {
     class GstByteWriter {
         static $gtype: GObject.GType<GstByteWriter>;
 
-        // Own fields of GstBase.GstByteWriter
+        // Fields
 
         alloc_size: number;
         fixed: boolean;
         owned: boolean;
 
-        // Constructors of GstBase.GstByteWriter
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -717,7 +717,7 @@ export namespace GstBase {
 
         static new_with_buffer(buffer: Gst.Buffer, initialized: boolean): GstByteWriter;
 
-        // Own methods of GstBase.GstByteWriter
+        // Methods
 
         init(): void;
         init_with_size(size: number, fixed: boolean): void;
@@ -766,14 +766,14 @@ export namespace GstBase {
     class GstCollectData {
         static $gtype: GObject.GType<GstCollectData>;
 
-        // Own fields of GstBase.GstCollectData
+        // Fields
 
         collect: Gst.CollectPads;
         pad: Gst.Pad;
         buffer: Gst.Buffer;
         pos: number;
 
-        // Constructors of GstBase.GstCollectData
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -782,7 +782,7 @@ export namespace GstBase {
     class GstCollectPadsPrivate {
         static $gtype: GObject.GType<GstCollectPadsPrivate>;
 
-        // Constructors of GstBase.GstCollectPadsPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -795,7 +795,7 @@ export namespace GstBase {
     class GstDataQueueItem {
         static $gtype: GObject.GType<GstDataQueueItem>;
 
-        // Own fields of GstBase.GstDataQueueItem
+        // Fields
 
         object: Gst.MiniObject;
         size: number;
@@ -803,7 +803,7 @@ export namespace GstBase {
         visible: boolean;
         destroy: GLib.DestroyNotify;
 
-        // Constructors of GstBase.GstDataQueueItem
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -814,13 +814,13 @@ export namespace GstBase {
     class GstDataQueueSize {
         static $gtype: GObject.GType<GstDataQueueSize>;
 
-        // Own fields of GstBase.GstDataQueueSize
+        // Fields
 
         visible: number;
         bytes: number;
         time: number;
 
-        // Constructors of GstBase.GstDataQueueSize
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -837,7 +837,7 @@ export namespace GstBase {
     class SinkPrivate {
         static $gtype: GObject.GType<SinkPrivate>;
 
-        // Constructors of GstBase.SinkPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -846,7 +846,7 @@ export namespace GstBase {
     class SrcPrivate {
         static $gtype: GObject.GType<SrcPrivate>;
 
-        // Constructors of GstBase.SrcPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -855,7 +855,7 @@ export namespace GstBase {
     class TransformPrivate {
         static $gtype: GObject.GType<TransformPrivate>;
 
-        // Constructors of GstBase.TransformPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }

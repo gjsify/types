@@ -228,7 +228,7 @@ export namespace Champlain {
     class Adjustment extends GObject.Object {
         static $gtype: GObject.GType<Adjustment>;
 
-        // Own properties of Champlain.Adjustment
+        // Properties
 
         get lower(): number;
         set lower(val: number);
@@ -241,7 +241,7 @@ export namespace Champlain {
         get value(): number;
         set value(val: number);
 
-        // Constructors of Champlain.Adjustment
+        // Constructors
 
         constructor(properties?: Partial<Adjustment.ConstructorProps>, ...args: any[]);
 
@@ -249,7 +249,7 @@ export namespace Champlain {
 
         static ['new'](value: number, lower: number, upper: number, step_increment: number): Adjustment;
 
-        // Own signals of Champlain.Adjustment
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -258,11 +258,11 @@ export namespace Champlain {
         connect_after(signal: 'changed', callback: (_source: this) => void): number;
         emit(signal: 'changed'): void;
 
-        // Own virtual methods of Champlain.Adjustment
+        // Virtual methods
 
         vfunc_changed(): void;
 
-        // Own methods of Champlain.Adjustment
+        // Methods
 
         clamp(interpolate: boolean, n_frames: number, fps: number): boolean;
         get_value(): number;
@@ -286,7 +286,7 @@ export namespace Champlain {
     class Coordinate extends GObject.InitiallyUnowned implements Location {
         static $gtype: GObject.GType<Coordinate>;
 
-        // Constructors of Champlain.Coordinate
+        // Constructors
 
         constructor(properties?: Partial<Coordinate.ConstructorProps>, ...args: any[]);
 
@@ -763,7 +763,7 @@ export namespace Champlain {
     {
         static $gtype: GObject.GType<CustomMarker>;
 
-        // Constructors of Champlain.CustomMarker
+        // Constructors
 
         constructor(properties?: Partial<CustomMarker.ConstructorProps>, ...args: any[]);
 
@@ -1232,7 +1232,7 @@ export namespace Champlain {
     class ErrorTileRenderer extends Renderer {
         static $gtype: GObject.GType<ErrorTileRenderer>;
 
-        // Own properties of Champlain.ErrorTileRenderer
+        // Properties
 
         /**
          * The size of the rendered tile.
@@ -1245,7 +1245,7 @@ export namespace Champlain {
         get tileSize(): number;
         set tileSize(val: number);
 
-        // Constructors of Champlain.ErrorTileRenderer
+        // Constructors
 
         constructor(properties?: Partial<ErrorTileRenderer.ConstructorProps>, ...args: any[]);
 
@@ -1253,7 +1253,7 @@ export namespace Champlain {
 
         static ['new'](tile_size: number): ErrorTileRenderer;
 
-        // Own methods of Champlain.ErrorTileRenderer
+        // Methods
 
         /**
          * Gets the size of the rendered error tiles.
@@ -1285,7 +1285,7 @@ export namespace Champlain {
     class FileCache extends TileCache {
         static $gtype: GObject.GType<FileCache>;
 
-        // Own properties of Champlain.FileCache
+        // Properties
 
         /**
          * The directory where the tile database is stored.
@@ -1310,7 +1310,7 @@ export namespace Champlain {
         get sizeLimit(): number;
         set sizeLimit(val: number);
 
-        // Constructors of Champlain.FileCache
+        // Constructors
 
         constructor(properties?: Partial<FileCache.ConstructorProps>, ...args: any[]);
 
@@ -1318,7 +1318,7 @@ export namespace Champlain {
 
         static new_full(size_limit: number, cache_dir: string | null, renderer: Renderer): FileCache;
 
-        // Own methods of Champlain.FileCache
+        // Methods
 
         /**
          * Gets the directory where the cache database is stored.
@@ -1359,7 +1359,7 @@ export namespace Champlain {
     class FileTileSource extends TileSource {
         static $gtype: GObject.GType<FileTileSource>;
 
-        // Constructors of Champlain.FileTileSource
+        // Constructors
 
         constructor(properties?: Partial<FileTileSource.ConstructorProps>, ...args: any[]);
 
@@ -1377,7 +1377,7 @@ export namespace Champlain {
             renderer: Renderer,
         ): FileTileSource;
 
-        // Own methods of Champlain.FileTileSource
+        // Methods
 
         /**
          * Loads the OpenStreetMap XML file at the given path.
@@ -1399,7 +1399,7 @@ export namespace Champlain {
     class ImageRenderer extends Renderer {
         static $gtype: GObject.GType<ImageRenderer>;
 
-        // Constructors of Champlain.ImageRenderer
+        // Constructors
 
         constructor(properties?: Partial<ImageRenderer.ConstructorProps>, ...args: any[]);
 
@@ -1437,7 +1437,7 @@ export namespace Champlain {
     {
         static $gtype: GObject.GType<KineticScrollView>;
 
-        // Own properties of Champlain.KineticScrollView
+        // Properties
 
         get decel_rate(): number;
         set decel_rate(val: number);
@@ -1450,7 +1450,7 @@ export namespace Champlain {
         get motionBuffer(): number;
         set motionBuffer(val: number);
 
-        // Constructors of Champlain.KineticScrollView
+        // Constructors
 
         constructor(properties?: Partial<KineticScrollView.ConstructorProps>, ...args: any[]);
 
@@ -1461,7 +1461,7 @@ export namespace Champlain {
 
         static ['new'](...args: never[]): any;
 
-        // Own signals of Champlain.KineticScrollView
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -1470,7 +1470,7 @@ export namespace Champlain {
         connect_after(signal: 'panning-completed', callback: (_source: this) => void): number;
         emit(signal: 'panning-completed'): void;
 
-        // Own methods of Champlain.KineticScrollView
+        // Methods
 
         stop(): void;
 
@@ -2361,7 +2361,7 @@ export namespace Champlain {
     {
         static $gtype: GObject.GType<Label>;
 
-        // Own properties of Champlain.Label
+        // Properties
 
         /**
          * The label's alignment
@@ -2464,7 +2464,7 @@ export namespace Champlain {
         get wrapMode(): Pango.WrapMode;
         set wrapMode(val: Pango.WrapMode);
 
-        // Constructors of Champlain.Label
+        // Constructors
 
         constructor(properties?: Partial<Label.ConstructorProps>, ...args: any[]);
 
@@ -2485,7 +2485,7 @@ export namespace Champlain {
             label_color?: Clutter.Color | null,
         ): Label;
 
-        // Own methods of Champlain.Label
+        // Methods
 
         /**
          * Get the label's text alignment.
@@ -3094,13 +3094,13 @@ export namespace Champlain {
     {
         static $gtype: GObject.GType<Layer>;
 
-        // Constructors of Champlain.Layer
+        // Constructors
 
         constructor(properties?: Partial<Layer.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of Champlain.Layer
+        // Virtual methods
 
         /**
          * Gets the bounding box occupied by the elements inside the layer.
@@ -3116,7 +3116,7 @@ export namespace Champlain {
          */
         vfunc_set_view(view?: View | null): void;
 
-        // Own methods of Champlain.Layer
+        // Methods
 
         /**
          * Gets the bounding box occupied by the elements inside the layer.
@@ -4002,7 +4002,7 @@ export namespace Champlain {
     {
         static $gtype: GObject.GType<License>;
 
-        // Own properties of Champlain.License
+        // Properties
 
         /**
          * The license's alignment
@@ -4024,7 +4024,7 @@ export namespace Champlain {
         get extraText(): string;
         set extraText(val: string);
 
-        // Constructors of Champlain.License
+        // Constructors
 
         constructor(properties?: Partial<License.ConstructorProps>, ...args: any[]);
 
@@ -4032,7 +4032,7 @@ export namespace Champlain {
 
         static ['new'](): License;
 
-        // Own methods of Champlain.License
+        // Methods
 
         /**
          * This method connects to the necessary signals of #ChamplainView to make the
@@ -4927,7 +4927,7 @@ export namespace Champlain {
     abstract class MapSource extends GObject.InitiallyUnowned {
         static $gtype: GObject.GType<MapSource>;
 
-        // Own properties of Champlain.MapSource
+        // Properties
 
         /**
          * Next source in the loading chain.
@@ -4945,13 +4945,13 @@ export namespace Champlain {
         get renderer(): Renderer;
         set renderer(val: Renderer);
 
-        // Constructors of Champlain.MapSource
+        // Constructors
 
         constructor(properties?: Partial<MapSource.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of Champlain.MapSource
+        // Virtual methods
 
         /**
          * Fills the tile with image data (either from cache, network or rendered
@@ -4992,7 +4992,7 @@ export namespace Champlain {
          */
         vfunc_get_tile_size(): number;
 
-        // Own methods of Champlain.MapSource
+        // Methods
 
         /**
          * Fills the tile with image data (either from cache, network or rendered
@@ -5128,7 +5128,7 @@ export namespace Champlain {
     class MapSourceChain extends MapSource {
         static $gtype: GObject.GType<MapSourceChain>;
 
-        // Constructors of Champlain.MapSourceChain
+        // Constructors
 
         constructor(properties?: Partial<MapSourceChain.ConstructorProps>, ...args: any[]);
 
@@ -5136,7 +5136,7 @@ export namespace Champlain {
 
         static ['new'](): MapSourceChain;
 
-        // Own methods of Champlain.MapSourceChain
+        // Methods
 
         /**
          * Pops a map source from the top of the stack from the chain.
@@ -5178,7 +5178,7 @@ export namespace Champlain {
     class MapSourceDesc extends GObject.Object {
         static $gtype: GObject.GType<MapSourceDesc>;
 
-        // Own properties of Champlain.MapSourceDesc
+        // Properties
 
         /**
          * User data passed to the constructor
@@ -5241,13 +5241,13 @@ export namespace Champlain {
          */
         get uriFormat(): string;
 
-        // Constructors of Champlain.MapSourceDesc
+        // Constructors
 
         constructor(properties?: Partial<MapSourceDesc.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Champlain.MapSourceDesc
+        // Methods
 
         /**
          * Gets user data.
@@ -5314,20 +5314,20 @@ export namespace Champlain {
     class MapSourceFactory extends GObject.Object {
         static $gtype: GObject.GType<MapSourceFactory>;
 
-        // Constructors of Champlain.MapSourceFactory
+        // Constructors
 
         constructor(properties?: Partial<MapSourceFactory.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of Champlain.MapSourceFactory
+        // Static methods
 
         /**
          * A method to obtain the singleton object.
          */
         static dup_default(): MapSourceFactory;
 
-        // Own methods of Champlain.MapSourceFactory
+        // Methods
 
         /**
          * Note: The id should not contain any character that can't be in a filename as it
@@ -5414,7 +5414,7 @@ export namespace Champlain {
     {
         static $gtype: GObject.GType<Marker>;
 
-        // Own properties of Champlain.Marker
+        // Properties
 
         /**
          * The draggable state of the marker
@@ -5432,7 +5432,7 @@ export namespace Champlain {
         get selected(): boolean;
         set selected(val: boolean);
 
-        // Constructors of Champlain.Marker
+        // Constructors
 
         constructor(properties?: Partial<Marker.ConstructorProps>, ...args: any[]);
 
@@ -5440,7 +5440,7 @@ export namespace Champlain {
 
         static ['new'](): Marker;
 
-        // Own signals of Champlain.Marker
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -5464,7 +5464,7 @@ export namespace Champlain {
         ): number;
         emit(signal: 'drag-motion', dx: number, dy: number, event: Clutter.Event): void;
 
-        // Own static methods of Champlain.Marker
+        // Static methods
 
         /**
          * Gets the selection color.
@@ -5487,7 +5487,7 @@ export namespace Champlain {
          */
         static set_selection_text_color(color: Clutter.Color): void;
 
-        // Own methods of Champlain.Marker
+        // Methods
 
         /**
          * Animates the marker as if it were falling from the sky onto the map.
@@ -6452,7 +6452,7 @@ export namespace Champlain {
     {
         static $gtype: GObject.GType<MarkerLayer>;
 
-        // Own properties of Champlain.MarkerLayer
+        // Properties
 
         /**
          * Determines the type of selection that will be performed.
@@ -6465,7 +6465,7 @@ export namespace Champlain {
         get selectionMode(): SelectionMode;
         set selectionMode(val: SelectionMode);
 
-        // Constructors of Champlain.MarkerLayer
+        // Constructors
 
         constructor(properties?: Partial<MarkerLayer.ConstructorProps>, ...args: any[]);
 
@@ -6475,7 +6475,7 @@ export namespace Champlain {
 
         static new_full(mode: SelectionMode): MarkerLayer;
 
-        // Own methods of Champlain.MarkerLayer
+        // Methods
 
         /**
          * Adds the marker to the layer.
@@ -6993,7 +6993,7 @@ export namespace Champlain {
     class MemoryCache extends TileCache {
         static $gtype: GObject.GType<MemoryCache>;
 
-        // Own properties of Champlain.MemoryCache
+        // Properties
 
         /**
          * The maximum number of tiles that are stored in the cache.
@@ -7006,7 +7006,7 @@ export namespace Champlain {
         get sizeLimit(): number;
         set sizeLimit(val: number);
 
-        // Constructors of Champlain.MemoryCache
+        // Constructors
 
         constructor(properties?: Partial<MemoryCache.ConstructorProps>, ...args: any[]);
 
@@ -7014,7 +7014,7 @@ export namespace Champlain {
 
         static new_full(size_limit: number, renderer: Renderer): MemoryCache;
 
-        // Own methods of Champlain.MemoryCache
+        // Methods
 
         /**
          * Cleans the contents of the cache.
@@ -7053,7 +7053,7 @@ export namespace Champlain {
     class NetworkBboxTileSource extends TileSource {
         static $gtype: GObject.GType<NetworkBboxTileSource>;
 
-        // Own properties of Champlain.NetworkBboxTileSource
+        // Properties
 
         /**
          * The URI of an OpenStreetMap API server
@@ -7090,7 +7090,7 @@ export namespace Champlain {
          */
         set userAgent(val: string);
 
-        // Constructors of Champlain.NetworkBboxTileSource
+        // Constructors
 
         constructor(properties?: Partial<NetworkBboxTileSource.ConstructorProps>, ...args: any[]);
 
@@ -7108,7 +7108,7 @@ export namespace Champlain {
             renderer: Renderer,
         ): NetworkBboxTileSource;
 
-        // Own methods of Champlain.NetworkBboxTileSource
+        // Methods
 
         /**
          * Gets the URI of the API server.
@@ -7161,7 +7161,7 @@ export namespace Champlain {
     class NetworkTileSource extends TileSource {
         static $gtype: GObject.GType<NetworkTileSource>;
 
-        // Own properties of Champlain.NetworkTileSource
+        // Properties
 
         /**
          * Specifies the max number of allowed simultaneous connections for this tile
@@ -7215,7 +7215,7 @@ export namespace Champlain {
          */
         set userAgent(val: string);
 
-        // Constructors of Champlain.NetworkTileSource
+        // Constructors
 
         constructor(properties?: Partial<NetworkTileSource.ConstructorProps>, ...args: any[]);
 
@@ -7234,7 +7234,7 @@ export namespace Champlain {
             renderer: Renderer,
         ): NetworkTileSource;
 
-        // Own methods of Champlain.NetworkTileSource
+        // Methods
 
         /**
          * Gets the max number of allowed simultaneous connections for this tile
@@ -7307,7 +7307,7 @@ export namespace Champlain {
     class NullTileSource extends TileSource {
         static $gtype: GObject.GType<NullTileSource>;
 
-        // Constructors of Champlain.NullTileSource
+        // Constructors
 
         constructor(properties?: Partial<NullTileSource.ConstructorProps>, ...args: any[]);
 
@@ -7349,7 +7349,7 @@ export namespace Champlain {
     {
         static $gtype: GObject.GType<PathLayer>;
 
-        // Own properties of Champlain.PathLayer
+        // Properties
 
         /**
          * The shape is a closed path
@@ -7402,7 +7402,7 @@ export namespace Champlain {
         get visible(): boolean;
         set visible(val: boolean);
 
-        // Constructors of Champlain.PathLayer
+        // Constructors
 
         constructor(properties?: Partial<PathLayer.ConstructorProps>, ...args: any[]);
 
@@ -7410,7 +7410,7 @@ export namespace Champlain {
 
         static ['new'](): PathLayer;
 
-        // Own methods of Champlain.PathLayer
+        // Methods
 
         /**
          * Adds a #ChamplainLocation object to the layer.
@@ -7985,7 +7985,7 @@ export namespace Champlain {
     {
         static $gtype: GObject.GType<Point>;
 
-        // Own properties of Champlain.Point
+        // Properties
 
         get color(): Clutter.Color;
         set color(val: Clutter.Color);
@@ -7994,7 +7994,7 @@ export namespace Champlain {
         // This accessor conflicts with another accessor's type in a parent class or interface.
         set size(val: number | any);
 
-        // Constructors of Champlain.Point
+        // Constructors
 
         constructor(properties?: Partial<Point.ConstructorProps>, ...args: any[]);
 
@@ -8004,7 +8004,7 @@ export namespace Champlain {
 
         static new_full(size: number, color: Clutter.Color): Point;
 
-        // Own methods of Champlain.Point
+        // Methods
 
         /**
          * Gets the color of the point.
@@ -8511,13 +8511,13 @@ export namespace Champlain {
     class Renderer extends GObject.InitiallyUnowned {
         static $gtype: GObject.GType<Renderer>;
 
-        // Constructors of Champlain.Renderer
+        // Constructors
 
         constructor(properties?: Partial<Renderer.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of Champlain.Renderer
+        // Virtual methods
 
         /**
          * Renders the texture for the provided tile and calls champlain_tile_set_content()
@@ -8533,7 +8533,7 @@ export namespace Champlain {
          */
         vfunc_set_data(data: Uint8Array | string): void;
 
-        // Own methods of Champlain.Renderer
+        // Methods
 
         /**
          * Renders the texture for the provided tile and calls champlain_tile_set_content()
@@ -8577,7 +8577,7 @@ export namespace Champlain {
     {
         static $gtype: GObject.GType<Scale>;
 
-        // Own properties of Champlain.Scale
+        // Properties
 
         /**
          * The size of the map scale on screen in pixels.
@@ -8595,7 +8595,7 @@ export namespace Champlain {
         get unit(): Unit;
         set unit(val: Unit);
 
-        // Constructors of Champlain.Scale
+        // Constructors
 
         constructor(properties?: Partial<Scale.ConstructorProps>, ...args: any[]);
 
@@ -8603,7 +8603,7 @@ export namespace Champlain {
 
         static ['new'](): Scale;
 
-        // Own methods of Champlain.Scale
+        // Methods
 
         /**
          * This method connects to the necessary signals of #ChamplainView to make the
@@ -9519,7 +9519,7 @@ export namespace Champlain {
     {
         static $gtype: GObject.GType<Tile>;
 
-        // Own properties of Champlain.Tile
+        // Properties
 
         /**
          * The #ClutterActor with the specific image content.  When changing this
@@ -9579,7 +9579,7 @@ export namespace Champlain {
         get zoomLevel(): number;
         set zoomLevel(val: number);
 
-        // Constructors of Champlain.Tile
+        // Constructors
 
         constructor(properties?: Partial<Tile.ConstructorProps>, ...args: any[]);
 
@@ -9589,7 +9589,7 @@ export namespace Champlain {
 
         static new_full(x: number, y: number, size: number, zoom_level: number): Tile;
 
-        // Own signals of Champlain.Tile
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -9604,7 +9604,7 @@ export namespace Champlain {
         ): number;
         emit(signal: 'render-complete', data: any | null, size: number, error: boolean): void;
 
-        // Own methods of Champlain.Tile
+        // Methods
 
         /**
          * Displays the tile's content.
@@ -10591,13 +10591,13 @@ export namespace Champlain {
     abstract class TileCache extends MapSource {
         static $gtype: GObject.GType<TileCache>;
 
-        // Constructors of Champlain.TileCache
+        // Constructors
 
         constructor(properties?: Partial<TileCache.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of Champlain.TileCache
+        // Virtual methods
 
         /**
          * When a cache fills a tile and the next source in the chain is a tile cache,
@@ -10623,7 +10623,7 @@ export namespace Champlain {
          */
         vfunc_store_tile(tile: Tile, contents: string, size: number): void;
 
-        // Own methods of Champlain.TileCache
+        // Methods
 
         /**
          * When a cache fills a tile and the next source in the chain is a tile cache,
@@ -10677,7 +10677,7 @@ export namespace Champlain {
     abstract class TileSource extends MapSource {
         static $gtype: GObject.GType<TileSource>;
 
-        // Own properties of Champlain.TileSource
+        // Properties
 
         /**
          * The cache used for tile storage
@@ -10745,13 +10745,13 @@ export namespace Champlain {
         get tileSize(): number;
         set tileSize(val: number);
 
-        // Constructors of Champlain.TileSource
+        // Constructors
 
         constructor(properties?: Partial<TileSource.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Champlain.TileSource
+        // Methods
 
         /**
          * Gets the cache used for storing tiles by this tile source.
@@ -10866,7 +10866,7 @@ export namespace Champlain {
     {
         static $gtype: GObject.GType<View>;
 
-        // Own properties of Champlain.View
+        // Properties
 
         /**
          * Animate zoom change when zooming in/out.
@@ -11032,7 +11032,7 @@ export namespace Champlain {
         get zoomOnDoubleClick(): boolean;
         set zoomOnDoubleClick(val: boolean);
 
-        // Constructors of Champlain.View
+        // Constructors
 
         constructor(properties?: Partial<View.ConstructorProps>, ...args: any[]);
 
@@ -11040,7 +11040,7 @@ export namespace Champlain {
 
         static ['new'](): View;
 
-        // Own signals of Champlain.View
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -11052,7 +11052,7 @@ export namespace Champlain {
         connect_after(signal: 'layer-relocated', callback: (_source: this) => void): number;
         emit(signal: 'layer-relocated'): void;
 
-        // Own methods of Champlain.View
+        // Methods
 
         /**
          * Adds a new layer to the view
@@ -12214,7 +12214,7 @@ export namespace Champlain {
     {
         static $gtype: GObject.GType<Viewport>;
 
-        // Own properties of Champlain.Viewport
+        // Properties
 
         get hadjustment(): Adjustment;
         set hadjustment(val: Adjustment);
@@ -12229,7 +12229,7 @@ export namespace Champlain {
         get yOrigin(): number;
         set yOrigin(val: number);
 
-        // Constructors of Champlain.Viewport
+        // Constructors
 
         constructor(properties?: Partial<Viewport.ConstructorProps>, ...args: any[]);
 
@@ -12237,7 +12237,7 @@ export namespace Champlain {
 
         static ['new'](): Viewport;
 
-        // Own signals of Champlain.Viewport
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -12246,7 +12246,7 @@ export namespace Champlain {
         connect_after(signal: 'relocated', callback: (_source: this) => void): number;
         emit(signal: 'relocated'): void;
 
-        // Own methods of Champlain.Viewport
+        // Methods
 
         get_adjustments(hadjustment: Adjustment, vadjustment: Adjustment): void;
         get_anchor(x: number, y: number): void;
@@ -13105,7 +13105,7 @@ export namespace Champlain {
     abstract class AdjustmentPrivate {
         static $gtype: GObject.GType<AdjustmentPrivate>;
 
-        // Constructors of Champlain.AdjustmentPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -13116,14 +13116,14 @@ export namespace Champlain {
     class BoundingBox {
         static $gtype: GObject.GType<BoundingBox>;
 
-        // Own fields of Champlain.BoundingBox
+        // Fields
 
         left: number;
         top: number;
         right: number;
         bottom: number;
 
-        // Constructors of Champlain.BoundingBox
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -13137,7 +13137,7 @@ export namespace Champlain {
 
         static ['new'](): BoundingBox;
 
-        // Own methods of Champlain.BoundingBox
+        // Methods
 
         /**
          * Sets bbox equal to the bounding box containing both `bbox` and `other`.
@@ -13184,7 +13184,7 @@ export namespace Champlain {
     abstract class CoordinatePrivate {
         static $gtype: GObject.GType<CoordinatePrivate>;
 
-        // Constructors of Champlain.CoordinatePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -13193,7 +13193,7 @@ export namespace Champlain {
     abstract class CustomMarkerPrivate {
         static $gtype: GObject.GType<CustomMarkerPrivate>;
 
-        // Constructors of Champlain.CustomMarkerPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -13202,7 +13202,7 @@ export namespace Champlain {
     abstract class ErrorTileRendererPrivate {
         static $gtype: GObject.GType<ErrorTileRendererPrivate>;
 
-        // Constructors of Champlain.ErrorTileRendererPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -13212,7 +13212,7 @@ export namespace Champlain {
     abstract class FileCachePrivate {
         static $gtype: GObject.GType<FileCachePrivate>;
 
-        // Constructors of Champlain.FileCachePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -13221,7 +13221,7 @@ export namespace Champlain {
     abstract class FileTileSourcePrivate {
         static $gtype: GObject.GType<FileTileSourcePrivate>;
 
-        // Constructors of Champlain.FileTileSourcePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -13230,7 +13230,7 @@ export namespace Champlain {
     abstract class ImageRendererPrivate {
         static $gtype: GObject.GType<ImageRendererPrivate>;
 
-        // Constructors of Champlain.ImageRendererPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -13239,7 +13239,7 @@ export namespace Champlain {
     abstract class KineticScrollViewPrivate {
         static $gtype: GObject.GType<KineticScrollViewPrivate>;
 
-        // Constructors of Champlain.KineticScrollViewPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -13248,7 +13248,7 @@ export namespace Champlain {
     abstract class LabelPrivate {
         static $gtype: GObject.GType<LabelPrivate>;
 
-        // Constructors of Champlain.LabelPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -13258,7 +13258,7 @@ export namespace Champlain {
     abstract class LicensePrivate {
         static $gtype: GObject.GType<LicensePrivate>;
 
-        // Constructors of Champlain.LicensePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -13268,7 +13268,7 @@ export namespace Champlain {
     abstract class MapSourceChainPrivate {
         static $gtype: GObject.GType<MapSourceChainPrivate>;
 
-        // Constructors of Champlain.MapSourceChainPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -13278,7 +13278,7 @@ export namespace Champlain {
     abstract class MapSourceDescPrivate {
         static $gtype: GObject.GType<MapSourceDescPrivate>;
 
-        // Constructors of Champlain.MapSourceDescPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -13287,7 +13287,7 @@ export namespace Champlain {
     abstract class MapSourceFactoryPrivate {
         static $gtype: GObject.GType<MapSourceFactoryPrivate>;
 
-        // Constructors of Champlain.MapSourceFactoryPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -13295,7 +13295,7 @@ export namespace Champlain {
     abstract class MapSourcePrivate {
         static $gtype: GObject.GType<MapSourcePrivate>;
 
-        // Constructors of Champlain.MapSourcePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -13305,7 +13305,7 @@ export namespace Champlain {
     abstract class MarkerLayerPrivate {
         static $gtype: GObject.GType<MarkerLayerPrivate>;
 
-        // Constructors of Champlain.MarkerLayerPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -13313,7 +13313,7 @@ export namespace Champlain {
     abstract class MarkerPrivate {
         static $gtype: GObject.GType<MarkerPrivate>;
 
-        // Constructors of Champlain.MarkerPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -13322,7 +13322,7 @@ export namespace Champlain {
     abstract class MemoryCachePrivate {
         static $gtype: GObject.GType<MemoryCachePrivate>;
 
-        // Constructors of Champlain.MemoryCachePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -13331,7 +13331,7 @@ export namespace Champlain {
     abstract class NetworkBboxTileSourcePrivate {
         static $gtype: GObject.GType<NetworkBboxTileSourcePrivate>;
 
-        // Constructors of Champlain.NetworkBboxTileSourcePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -13340,7 +13340,7 @@ export namespace Champlain {
     abstract class NetworkTileSourcePrivate {
         static $gtype: GObject.GType<NetworkTileSourcePrivate>;
 
-        // Constructors of Champlain.NetworkTileSourcePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -13349,7 +13349,7 @@ export namespace Champlain {
     abstract class NullTileSourcePrivate {
         static $gtype: GObject.GType<NullTileSourcePrivate>;
 
-        // Constructors of Champlain.NullTileSourcePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -13358,7 +13358,7 @@ export namespace Champlain {
     abstract class PathLayerPrivate {
         static $gtype: GObject.GType<PathLayerPrivate>;
 
-        // Constructors of Champlain.PathLayerPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -13367,7 +13367,7 @@ export namespace Champlain {
     abstract class PointPrivate {
         static $gtype: GObject.GType<PointPrivate>;
 
-        // Constructors of Champlain.PointPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -13377,7 +13377,7 @@ export namespace Champlain {
     abstract class ScalePrivate {
         static $gtype: GObject.GType<ScalePrivate>;
 
-        // Constructors of Champlain.ScalePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -13386,7 +13386,7 @@ export namespace Champlain {
     abstract class TileCachePrivate {
         static $gtype: GObject.GType<TileCachePrivate>;
 
-        // Constructors of Champlain.TileCachePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -13395,7 +13395,7 @@ export namespace Champlain {
     abstract class TilePrivate {
         static $gtype: GObject.GType<TilePrivate>;
 
-        // Constructors of Champlain.TilePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -13404,7 +13404,7 @@ export namespace Champlain {
     abstract class TileSourcePrivate {
         static $gtype: GObject.GType<TileSourcePrivate>;
 
-        // Constructors of Champlain.TileSourcePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -13413,7 +13413,7 @@ export namespace Champlain {
     abstract class ViewPrivate {
         static $gtype: GObject.GType<ViewPrivate>;
 
-        // Constructors of Champlain.ViewPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -13422,7 +13422,7 @@ export namespace Champlain {
     abstract class ViewportPrivate {
         static $gtype: GObject.GType<ViewportPrivate>;
 
-        // Constructors of Champlain.ViewportPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -13440,7 +13440,7 @@ export namespace Champlain {
         prototype: Exportable;
     }
     interface Exportable extends GObject.Object {
-        // Own properties of Champlain.Exportable
+        // Properties
 
         /**
          * A #cairo_surface_t representation
@@ -13448,7 +13448,7 @@ export namespace Champlain {
         get surface(): cairo.Surface;
         set surface(val: cairo.Surface);
 
-        // Own methods of Champlain.Exportable
+        // Methods
 
         /**
          * Gets the surface
@@ -13461,7 +13461,7 @@ export namespace Champlain {
          */
         set_surface(surface: cairo.Surface): void;
 
-        // Own virtual methods of Champlain.Exportable
+        // Virtual methods
 
         /**
          * Gets the surface
@@ -13490,7 +13490,7 @@ export namespace Champlain {
         prototype: Location;
     }
     interface Location extends GObject.Object {
-        // Own properties of Champlain.Location
+        // Properties
 
         /**
          * The latitude coordonate
@@ -13503,7 +13503,7 @@ export namespace Champlain {
         get longitude(): number;
         set longitude(val: number);
 
-        // Own methods of Champlain.Location
+        // Methods
 
         /**
          * Gets the latitude coordinate.
@@ -13522,7 +13522,7 @@ export namespace Champlain {
          */
         set_location(latitude: number, longitude: number): void;
 
-        // Own virtual methods of Champlain.Location
+        // Virtual methods
 
         /**
          * Gets the latitude coordinate.

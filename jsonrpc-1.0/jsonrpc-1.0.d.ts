@@ -105,7 +105,7 @@ export namespace Jsonrpc {
     class Client extends GObject.Object {
         static $gtype: GObject.GType<Client>;
 
-        // Own properties of Jsonrpc.Client
+        // Properties
 
         /**
          * The "io-stream" property is the [class`Gio`.IOStream] to use for communicating
@@ -142,7 +142,7 @@ export namespace Jsonrpc {
         get useGvariant(): boolean;
         set useGvariant(val: boolean);
 
-        // Constructors of Jsonrpc.Client
+        // Constructors
 
         constructor(properties?: Partial<Client.ConstructorProps>, ...args: any[]);
 
@@ -150,7 +150,7 @@ export namespace Jsonrpc {
 
         static ['new'](io_stream: Gio.IOStream): Client;
 
-        // Own signals of Jsonrpc.Client
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -177,17 +177,17 @@ export namespace Jsonrpc {
         ): number;
         emit(signal: 'notification', method: string, params?: GLib.Variant | null): void;
 
-        // Own static methods of Jsonrpc.Client
+        // Static methods
 
         static error_quark(): GLib.Quark;
 
-        // Own virtual methods of Jsonrpc.Client
+        // Virtual methods
 
         vfunc_failed(): void;
         vfunc_handle_call(method: string, id: GLib.Variant, params: GLib.Variant): boolean;
         vfunc_notification(method_name: string, params: GLib.Variant): void;
 
-        // Own methods of Jsonrpc.Client
+        // Methods
 
         /**
          * Synchronously calls `method` with `params` on the remote peer.
@@ -401,7 +401,7 @@ export namespace Jsonrpc {
     class InputStream extends Gio.DataInputStream implements Gio.Seekable {
         static $gtype: GObject.GType<InputStream>;
 
-        // Constructors of Jsonrpc.InputStream
+        // Constructors
 
         constructor(properties?: Partial<InputStream.ConstructorProps>, ...args: any[]);
 
@@ -409,7 +409,7 @@ export namespace Jsonrpc {
 
         static ['new'](base_stream: Gio.InputStream): InputStream;
 
-        // Own methods of Jsonrpc.InputStream
+        // Methods
 
         read_message(cancellable: Gio.Cancellable | null, message: GLib.Variant): boolean;
         read_message_async(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): void;
@@ -830,14 +830,14 @@ export namespace Jsonrpc {
     class OutputStream extends Gio.DataOutputStream implements Gio.Seekable {
         static $gtype: GObject.GType<OutputStream>;
 
-        // Own properties of Jsonrpc.OutputStream
+        // Properties
 
         get use_gvariant(): boolean;
         set use_gvariant(val: boolean);
         get useGvariant(): boolean;
         set useGvariant(val: boolean);
 
-        // Constructors of Jsonrpc.OutputStream
+        // Constructors
 
         constructor(properties?: Partial<OutputStream.ConstructorProps>, ...args: any[]);
 
@@ -845,7 +845,7 @@ export namespace Jsonrpc {
 
         static ['new'](base_stream: Gio.OutputStream): OutputStream;
 
-        // Own methods of Jsonrpc.OutputStream
+        // Methods
 
         get_use_gvariant(): boolean;
         set_use_gvariant(use_gvariant: boolean): void;
@@ -1410,7 +1410,7 @@ export namespace Jsonrpc {
     class Server extends GObject.Object {
         static $gtype: GObject.GType<Server>;
 
-        // Constructors of Jsonrpc.Server
+        // Constructors
 
         constructor(properties?: Partial<Server.ConstructorProps>, ...args: any[]);
 
@@ -1418,7 +1418,7 @@ export namespace Jsonrpc {
 
         static ['new'](): Server;
 
-        // Own signals of Jsonrpc.Server
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -1460,14 +1460,14 @@ export namespace Jsonrpc {
         ): number;
         emit(signal: 'notification', client: Client, method: string, id: GLib.Variant): void;
 
-        // Own virtual methods of Jsonrpc.Server
+        // Virtual methods
 
         vfunc_client_accepted(client: Client): void;
         vfunc_client_closed(client: Client): void;
         vfunc_handle_call(client: Client, method: string, id: GLib.Variant, params: GLib.Variant): boolean;
         vfunc_notification(client: Client, method: string, params: GLib.Variant): void;
 
-        // Own methods of Jsonrpc.Server
+        // Methods
 
         /**
          * This function accepts `io_stream` as a new client to the #JsonrpcServer
@@ -1500,11 +1500,11 @@ export namespace Jsonrpc {
     class MessageAny {
         static $gtype: GObject.GType<MessageAny>;
 
-        // Own fields of Jsonrpc.MessageAny
+        // Fields
 
         magic: MessageMagic;
 
-        // Constructors of Jsonrpc.MessageAny
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -1517,12 +1517,12 @@ export namespace Jsonrpc {
     class MessageGetBoolean {
         static $gtype: GObject.GType<MessageGetBoolean>;
 
-        // Own fields of Jsonrpc.MessageGetBoolean
+        // Fields
 
         magic: MessageMagic;
         valptr: boolean;
 
-        // Constructors of Jsonrpc.MessageGetBoolean
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -1536,11 +1536,11 @@ export namespace Jsonrpc {
     class MessageGetDict {
         static $gtype: GObject.GType<MessageGetDict>;
 
-        // Own fields of Jsonrpc.MessageGetDict
+        // Fields
 
         magic: MessageMagic;
 
-        // Constructors of Jsonrpc.MessageGetDict
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1548,12 +1548,12 @@ export namespace Jsonrpc {
     class MessageGetDouble {
         static $gtype: GObject.GType<MessageGetDouble>;
 
-        // Own fields of Jsonrpc.MessageGetDouble
+        // Fields
 
         magic: MessageMagic;
         valptr: number;
 
-        // Constructors of Jsonrpc.MessageGetDouble
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -1567,12 +1567,12 @@ export namespace Jsonrpc {
     class MessageGetInt32 {
         static $gtype: GObject.GType<MessageGetInt32>;
 
-        // Own fields of Jsonrpc.MessageGetInt32
+        // Fields
 
         magic: MessageMagic;
         valptr: number;
 
-        // Constructors of Jsonrpc.MessageGetInt32
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -1586,12 +1586,12 @@ export namespace Jsonrpc {
     class MessageGetInt64 {
         static $gtype: GObject.GType<MessageGetInt64>;
 
-        // Own fields of Jsonrpc.MessageGetInt64
+        // Fields
 
         magic: MessageMagic;
         valptr: number;
 
-        // Constructors of Jsonrpc.MessageGetInt64
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -1605,11 +1605,11 @@ export namespace Jsonrpc {
     class MessageGetIter {
         static $gtype: GObject.GType<MessageGetIter>;
 
-        // Own fields of Jsonrpc.MessageGetIter
+        // Fields
 
         magic: MessageMagic;
 
-        // Constructors of Jsonrpc.MessageGetIter
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1617,12 +1617,12 @@ export namespace Jsonrpc {
     class MessageGetString {
         static $gtype: GObject.GType<MessageGetString>;
 
-        // Own fields of Jsonrpc.MessageGetString
+        // Fields
 
         magic: MessageMagic;
         valptr: string;
 
-        // Constructors of Jsonrpc.MessageGetString
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -1636,12 +1636,12 @@ export namespace Jsonrpc {
     class MessageGetStrv {
         static $gtype: GObject.GType<MessageGetStrv>;
 
-        // Own fields of Jsonrpc.MessageGetStrv
+        // Fields
 
         magic: MessageMagic;
         valptr: string;
 
-        // Constructors of Jsonrpc.MessageGetStrv
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -1655,11 +1655,11 @@ export namespace Jsonrpc {
     class MessageGetVariant {
         static $gtype: GObject.GType<MessageGetVariant>;
 
-        // Own fields of Jsonrpc.MessageGetVariant
+        // Fields
 
         magic: MessageMagic;
 
-        // Constructors of Jsonrpc.MessageGetVariant
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1667,11 +1667,11 @@ export namespace Jsonrpc {
     class MessageMagic {
         static $gtype: GObject.GType<MessageMagic>;
 
-        // Own fields of Jsonrpc.MessageMagic
+        // Fields
 
         bytes: number[];
 
-        // Constructors of Jsonrpc.MessageMagic
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -1684,12 +1684,12 @@ export namespace Jsonrpc {
     class MessagePutBoolean {
         static $gtype: GObject.GType<MessagePutBoolean>;
 
-        // Own fields of Jsonrpc.MessagePutBoolean
+        // Fields
 
         magic: MessageMagic;
         val: boolean;
 
-        // Constructors of Jsonrpc.MessagePutBoolean
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -1703,12 +1703,12 @@ export namespace Jsonrpc {
     class MessagePutDouble {
         static $gtype: GObject.GType<MessagePutDouble>;
 
-        // Own fields of Jsonrpc.MessagePutDouble
+        // Fields
 
         magic: MessageMagic;
         val: number;
 
-        // Constructors of Jsonrpc.MessagePutDouble
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -1722,12 +1722,12 @@ export namespace Jsonrpc {
     class MessagePutInt32 {
         static $gtype: GObject.GType<MessagePutInt32>;
 
-        // Own fields of Jsonrpc.MessagePutInt32
+        // Fields
 
         magic: MessageMagic;
         val: number;
 
-        // Constructors of Jsonrpc.MessagePutInt32
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -1741,12 +1741,12 @@ export namespace Jsonrpc {
     class MessagePutInt64 {
         static $gtype: GObject.GType<MessagePutInt64>;
 
-        // Own fields of Jsonrpc.MessagePutInt64
+        // Fields
 
         magic: MessageMagic;
         val: number;
 
-        // Constructors of Jsonrpc.MessagePutInt64
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -1760,12 +1760,12 @@ export namespace Jsonrpc {
     class MessagePutString {
         static $gtype: GObject.GType<MessagePutString>;
 
-        // Own fields of Jsonrpc.MessagePutString
+        // Fields
 
         magic: MessageMagic;
         val: string;
 
-        // Constructors of Jsonrpc.MessagePutString
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -1779,12 +1779,12 @@ export namespace Jsonrpc {
     class MessagePutStrv {
         static $gtype: GObject.GType<MessagePutStrv>;
 
-        // Own fields of Jsonrpc.MessagePutStrv
+        // Fields
 
         magic: MessageMagic;
         val: string;
 
-        // Constructors of Jsonrpc.MessagePutStrv
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -1798,11 +1798,11 @@ export namespace Jsonrpc {
     class MessagePutVariant {
         static $gtype: GObject.GType<MessagePutVariant>;
 
-        // Own fields of Jsonrpc.MessagePutVariant
+        // Fields
 
         magic: MessageMagic;
 
-        // Constructors of Jsonrpc.MessagePutVariant
+        // Constructors
 
         _init(...args: any[]): void;
     }

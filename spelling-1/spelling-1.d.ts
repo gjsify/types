@@ -42,7 +42,7 @@ export namespace Spelling {
     class Checker extends GObject.Object {
         static $gtype: GObject.GType<Checker>;
 
-        // Own properties of Spelling.Checker
+        // Properties
 
         /**
          * The "language" to use when checking words with the configured
@@ -60,7 +60,7 @@ export namespace Spelling {
          */
         get provider(): Provider;
 
-        // Constructors of Spelling.Checker
+        // Constructors
 
         constructor(properties?: Partial<Checker.ConstructorProps>, ...args: any[]);
 
@@ -68,14 +68,14 @@ export namespace Spelling {
 
         static ['new'](provider: Provider, language: string): Checker;
 
-        // Own static methods of Spelling.Checker
+        // Static methods
 
         /**
          * Gets a default #SpellingChecker using the default provider and language.
          */
         static get_default(): Checker;
 
-        // Own methods of Spelling.Checker
+        // Methods
 
         add_word(word: string): void;
         check_word(word: string, word_len: number): boolean;
@@ -118,17 +118,17 @@ export namespace Spelling {
     abstract class Language extends GObject.Object {
         static $gtype: GObject.GType<Language>;
 
-        // Own properties of Spelling.Language
+        // Properties
 
         get code(): string;
 
-        // Constructors of Spelling.Language
+        // Constructors
 
         constructor(properties?: Partial<Language.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Spelling.Language
+        // Methods
 
         add_word(word: string): void;
         contains_word(word: string, word_len: number): boolean;
@@ -157,19 +157,19 @@ export namespace Spelling {
     class LanguageInfo extends GObject.Object {
         static $gtype: GObject.GType<LanguageInfo>;
 
-        // Own properties of Spelling.LanguageInfo
+        // Properties
 
         get code(): string;
         get group(): string;
         get name(): string;
 
-        // Constructors of Spelling.LanguageInfo
+        // Constructors
 
         constructor(properties?: Partial<LanguageInfo.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Spelling.LanguageInfo
+        // Methods
 
         get_code(): string;
         get_group(): string;
@@ -188,25 +188,25 @@ export namespace Spelling {
     abstract class Provider extends GObject.Object {
         static $gtype: GObject.GType<Provider>;
 
-        // Own properties of Spelling.Provider
+        // Properties
 
         get display_name(): string;
         get displayName(): string;
 
-        // Constructors of Spelling.Provider
+        // Constructors
 
         constructor(properties?: Partial<Provider.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of Spelling.Provider
+        // Static methods
 
         /**
          * Gets the default spell provider.
          */
         static get_default(): Provider;
 
-        // Own methods of Spelling.Provider
+        // Methods
 
         get_default_code(): string;
         get_display_name(): string;
@@ -244,7 +244,7 @@ export namespace Spelling {
     class TextBufferAdapter extends GObject.Object implements Gio.ActionGroup {
         static $gtype: GObject.GType<TextBufferAdapter>;
 
-        // Own properties of Spelling.TextBufferAdapter
+        // Properties
 
         get buffer(): GtkSource.Buffer;
         get checker(): Checker;
@@ -254,7 +254,7 @@ export namespace Spelling {
         get language(): string;
         set language(val: string);
 
-        // Constructors of Spelling.TextBufferAdapter
+        // Constructors
 
         constructor(properties?: Partial<TextBufferAdapter.ConstructorProps>, ...args: any[]);
 
@@ -262,7 +262,7 @@ export namespace Spelling {
 
         static ['new'](buffer: GtkSource.Buffer, checker: Checker): TextBufferAdapter;
 
-        // Own methods of Spelling.TextBufferAdapter
+        // Methods
 
         /**
          * Gets the underlying buffer for the adapter.

@@ -8838,13 +8838,13 @@ export namespace HarfBuzz {
     class aat_layout_feature_selector_info_t {
         static $gtype: GObject.GType<aat_layout_feature_selector_info_t>;
 
-        // Own fields of HarfBuzz.aat_layout_feature_selector_info_t
+        // Fields
 
         name_id: ot_name_id_t;
         enable: aat_layout_feature_selector_t;
         disable: aat_layout_feature_selector_t;
 
-        // Constructors of HarfBuzz.aat_layout_feature_selector_info_t
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -8857,7 +8857,7 @@ export namespace HarfBuzz {
     abstract class blob_t {
         static $gtype: GObject.GType<blob_t>;
 
-        // Constructors of HarfBuzz.blob_t
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -8869,7 +8869,7 @@ export namespace HarfBuzz {
     abstract class buffer_t {
         static $gtype: GObject.GType<buffer_t>;
 
-        // Constructors of HarfBuzz.buffer_t
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -8880,7 +8880,7 @@ export namespace HarfBuzz {
     class color_line_t {
         static $gtype: GObject.GType<color_line_t>;
 
-        // Own fields of HarfBuzz.color_line_t
+        // Fields
 
         data: any;
         get_color_stops: color_line_get_color_stops_func_t;
@@ -8896,7 +8896,7 @@ export namespace HarfBuzz {
         reserved7: any;
         reserved8: any;
 
-        // Constructors of HarfBuzz.color_line_t
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -8915,13 +8915,13 @@ export namespace HarfBuzz {
     class color_stop_t {
         static $gtype: GObject.GType<color_stop_t>;
 
-        // Own fields of HarfBuzz.color_stop_t
+        // Fields
 
         offset: number;
         is_foreground: bool_t;
         color: color_t;
 
-        // Constructors of HarfBuzz.color_stop_t
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -8944,7 +8944,7 @@ export namespace HarfBuzz {
     abstract class draw_funcs_t {
         static $gtype: GObject.GType<draw_funcs_t>;
 
-        // Constructors of HarfBuzz.draw_funcs_t
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -8955,7 +8955,7 @@ export namespace HarfBuzz {
     class draw_state_t {
         static $gtype: GObject.GType<draw_state_t>;
 
-        // Own fields of HarfBuzz.draw_state_t
+        // Fields
 
         path_open: bool_t;
         path_start_x: number;
@@ -8963,7 +8963,7 @@ export namespace HarfBuzz {
         current_x: number;
         current_y: number;
 
-        // Constructors of HarfBuzz.draw_state_t
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -8983,7 +8983,7 @@ export namespace HarfBuzz {
     abstract class face_t {
         static $gtype: GObject.GType<face_t>;
 
-        // Constructors of HarfBuzz.face_t
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -8998,14 +8998,14 @@ export namespace HarfBuzz {
     class feature_t {
         static $gtype: GObject.GType<feature_t>;
 
-        // Own fields of HarfBuzz.feature_t
+        // Fields
 
         tag: tag_t;
         value: number;
         start: number;
         end: number;
 
-        // Constructors of HarfBuzz.feature_t
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -9017,7 +9017,7 @@ export namespace HarfBuzz {
         );
         _init(...args: any[]): void;
 
-        // Own methods of HarfBuzz.feature_t
+        // Methods
 
         /**
          * Converts a #hb_feature_t into a `NULL`-terminated string in the format
@@ -9036,13 +9036,13 @@ export namespace HarfBuzz {
     class font_extents_t {
         static $gtype: GObject.GType<font_extents_t>;
 
-        // Own fields of HarfBuzz.font_extents_t
+        // Fields
 
         ascender: position_t;
         descender: position_t;
         line_gap: position_t;
 
-        // Constructors of HarfBuzz.font_extents_t
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -9067,7 +9067,7 @@ export namespace HarfBuzz {
     abstract class font_funcs_t {
         static $gtype: GObject.GType<font_funcs_t>;
 
-        // Constructors of HarfBuzz.font_funcs_t
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -9078,7 +9078,7 @@ export namespace HarfBuzz {
     abstract class font_t {
         static $gtype: GObject.GType<font_t>;
 
-        // Constructors of HarfBuzz.font_t
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -9091,14 +9091,14 @@ export namespace HarfBuzz {
     class glyph_extents_t {
         static $gtype: GObject.GType<glyph_extents_t>;
 
-        // Own fields of HarfBuzz.glyph_extents_t
+        // Fields
 
         x_bearing: position_t;
         y_bearing: position_t;
         width: position_t;
         height: position_t;
 
-        // Constructors of HarfBuzz.glyph_extents_t
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -9118,12 +9118,12 @@ export namespace HarfBuzz {
     class glyph_info_t {
         static $gtype: GObject.GType<glyph_info_t>;
 
-        // Own fields of HarfBuzz.glyph_info_t
+        // Fields
 
         codepoint: codepoint_t;
         cluster: number;
 
-        // Constructors of HarfBuzz.glyph_info_t
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -9142,14 +9142,14 @@ export namespace HarfBuzz {
     class glyph_position_t {
         static $gtype: GObject.GType<glyph_position_t>;
 
-        // Own fields of HarfBuzz.glyph_position_t
+        // Fields
 
         x_advance: position_t;
         y_advance: position_t;
         x_offset: position_t;
         y_offset: position_t;
 
-        // Constructors of HarfBuzz.glyph_position_t
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -9169,11 +9169,11 @@ export namespace HarfBuzz {
     abstract class language_t {
         static $gtype: GObject.GType<language_t>;
 
-        // Constructors of HarfBuzz.language_t
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of HarfBuzz.language_t
+        // Methods
 
         /**
          * Converts an #hb_language_t to a string.
@@ -9188,7 +9188,7 @@ export namespace HarfBuzz {
     abstract class map_t {
         static $gtype: GObject.GType<map_t>;
 
-        // Constructors of HarfBuzz.map_t
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -9203,12 +9203,12 @@ export namespace HarfBuzz {
     class ot_color_layer_t {
         static $gtype: GObject.GType<ot_color_layer_t>;
 
-        // Own fields of HarfBuzz.ot_color_layer_t
+        // Fields
 
         glyph: codepoint_t;
         color_index: number;
 
-        // Constructors of HarfBuzz.ot_color_layer_t
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -9227,7 +9227,7 @@ export namespace HarfBuzz {
     class ot_math_glyph_part_t {
         static $gtype: GObject.GType<ot_math_glyph_part_t>;
 
-        // Own fields of HarfBuzz.ot_math_glyph_part_t
+        // Fields
 
         glyph: codepoint_t;
         start_connector_length: position_t;
@@ -9235,7 +9235,7 @@ export namespace HarfBuzz {
         full_advance: position_t;
         flags: ot_math_glyph_part_flags_t;
 
-        // Constructors of HarfBuzz.ot_math_glyph_part_t
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -9246,12 +9246,12 @@ export namespace HarfBuzz {
     class ot_math_glyph_variant_t {
         static $gtype: GObject.GType<ot_math_glyph_variant_t>;
 
-        // Own fields of HarfBuzz.ot_math_glyph_variant_t
+        // Fields
 
         glyph: codepoint_t;
         advance: position_t;
 
-        // Constructors of HarfBuzz.ot_math_glyph_variant_t
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -9268,12 +9268,12 @@ export namespace HarfBuzz {
     class ot_math_kern_entry_t {
         static $gtype: GObject.GType<ot_math_kern_entry_t>;
 
-        // Own fields of HarfBuzz.ot_math_kern_entry_t
+        // Fields
 
         max_correction_height: position_t;
         kern_value: position_t;
 
-        // Constructors of HarfBuzz.ot_math_kern_entry_t
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -9290,11 +9290,11 @@ export namespace HarfBuzz {
     class ot_name_entry_t {
         static $gtype: GObject.GType<ot_name_entry_t>;
 
-        // Own fields of HarfBuzz.ot_name_entry_t
+        // Fields
 
         name_id: ot_name_id_t;
 
-        // Constructors of HarfBuzz.ot_name_entry_t
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -9310,7 +9310,7 @@ export namespace HarfBuzz {
     class ot_var_axis_info_t {
         static $gtype: GObject.GType<ot_var_axis_info_t>;
 
-        // Own fields of HarfBuzz.ot_var_axis_info_t
+        // Fields
 
         axis_index: number;
         tag: tag_t;
@@ -9320,7 +9320,7 @@ export namespace HarfBuzz {
         default_value: number;
         max_value: number;
 
-        // Constructors of HarfBuzz.ot_var_axis_info_t
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -9331,7 +9331,7 @@ export namespace HarfBuzz {
     class ot_var_axis_t {
         static $gtype: GObject.GType<ot_var_axis_t>;
 
-        // Own fields of HarfBuzz.ot_var_axis_t
+        // Fields
 
         tag: tag_t;
         name_id: ot_name_id_t;
@@ -9339,7 +9339,7 @@ export namespace HarfBuzz {
         default_value: number;
         max_value: number;
 
-        // Constructors of HarfBuzz.ot_var_axis_t
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -9378,7 +9378,7 @@ export namespace HarfBuzz {
     abstract class paint_funcs_t {
         static $gtype: GObject.GType<paint_funcs_t>;
 
-        // Constructors of HarfBuzz.paint_funcs_t
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -9391,12 +9391,12 @@ export namespace HarfBuzz {
     class segment_properties_t {
         static $gtype: GObject.GType<segment_properties_t>;
 
-        // Own fields of HarfBuzz.segment_properties_t
+        // Fields
 
         direction: direction_t;
         script: script_t;
 
-        // Constructors of HarfBuzz.segment_properties_t
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -9410,7 +9410,7 @@ export namespace HarfBuzz {
     abstract class set_t {
         static $gtype: GObject.GType<set_t>;
 
-        // Constructors of HarfBuzz.set_t
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -9429,7 +9429,7 @@ export namespace HarfBuzz {
     abstract class shape_plan_t {
         static $gtype: GObject.GType<shape_plan_t>;
 
-        // Constructors of HarfBuzz.shape_plan_t
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -9447,7 +9447,7 @@ export namespace HarfBuzz {
     abstract class unicode_funcs_t {
         static $gtype: GObject.GType<unicode_funcs_t>;
 
-        // Constructors of HarfBuzz.unicode_funcs_t
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -9458,7 +9458,7 @@ export namespace HarfBuzz {
     class user_data_key_t {
         static $gtype: GObject.GType<user_data_key_t>;
 
-        // Constructors of HarfBuzz.user_data_key_t
+        // Constructors
 
         constructor(properties?: Partial<{}>);
         _init(...args: any[]): void;
@@ -9472,12 +9472,12 @@ export namespace HarfBuzz {
     class variation_t {
         static $gtype: GObject.GType<variation_t>;
 
-        // Own fields of HarfBuzz.variation_t
+        // Fields
 
         tag: tag_t;
         value: number;
 
-        // Constructors of HarfBuzz.variation_t
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -9487,7 +9487,7 @@ export namespace HarfBuzz {
         );
         _init(...args: any[]): void;
 
-        // Own methods of HarfBuzz.variation_t
+        // Methods
 
         /**
          * Converts an #hb_variation_t into a `NULL`-terminated string in the format
@@ -9500,7 +9500,7 @@ export namespace HarfBuzz {
     class var_int_t {
         static $gtype: GObject.GType<var_int_t>;
 
-        // Own fields of HarfBuzz.var_int_t
+        // Fields
 
         u32: number;
         i32: number;
@@ -9509,7 +9509,7 @@ export namespace HarfBuzz {
         u8: Uint8Array;
         i8: Uint8Array;
 
-        // Constructors of HarfBuzz.var_int_t
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -9527,7 +9527,7 @@ export namespace HarfBuzz {
     class var_num_t {
         static $gtype: GObject.GType<var_num_t>;
 
-        // Own fields of HarfBuzz.var_num_t
+        // Fields
 
         f: number;
         u32: number;
@@ -9537,7 +9537,7 @@ export namespace HarfBuzz {
         u8: Uint8Array;
         i8: Uint8Array;
 
-        // Constructors of HarfBuzz.var_num_t
+        // Constructors
 
         constructor(
             properties?: Partial<{

@@ -21,7 +21,7 @@ export namespace Template {
     class Error extends GLib.Error {
         static $gtype: GObject.GType<Error>;
 
-        // Static fields of Template.Error
+        // Static fields
 
         static INVALID_STATE: number;
         static TEMPLATE_NOT_FOUND: number;
@@ -42,12 +42,12 @@ export namespace Template {
         static NOT_A_VALUE: number;
         static NOT_A_FUNCTION: number;
 
-        // Constructors of Template.Error
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of Template.Error
+        // Static methods
 
         static quark(): GLib.Quark;
     }
@@ -165,12 +165,12 @@ export namespace Template {
     class Template extends GObject.Object {
         static $gtype: GObject.GType<Template>;
 
-        // Own properties of Template.Template
+        // Properties
 
         get locator(): TemplateLocator;
         set locator(val: TemplateLocator);
 
-        // Constructors of Template.Template
+        // Constructors
 
         constructor(properties?: Partial<Template.ConstructorProps>, ...args: any[]);
 
@@ -178,7 +178,7 @@ export namespace Template {
 
         static ['new'](locator?: TemplateLocator | null): Template;
 
-        // Own methods of Template.Template
+        // Methods
 
         /**
          * Expands a template into `stream` using the `scope` provided.
@@ -232,7 +232,7 @@ export namespace Template {
     class TemplateLocator extends GObject.Object {
         static $gtype: GObject.GType<TemplateLocator>;
 
-        // Constructors of Template.TemplateLocator
+        // Constructors
 
         constructor(properties?: Partial<TemplateLocator.ConstructorProps>, ...args: any[]);
 
@@ -240,7 +240,7 @@ export namespace Template {
 
         static ['new'](): TemplateLocator;
 
-        // Own virtual methods of Template.TemplateLocator
+        // Virtual methods
 
         /**
          * This will resolve the relative path using the search paths found within
@@ -249,7 +249,7 @@ export namespace Template {
          */
         vfunc_locate(path: string): Gio.InputStream;
 
-        // Own methods of Template.TemplateLocator
+        // Methods
 
         append_search_path(path: string): void;
         /**
@@ -270,14 +270,14 @@ export namespace Template {
     class Scope {
         static $gtype: GObject.GType<Scope>;
 
-        // Constructors of Template.Scope
+        // Constructors
 
         constructor(properties?: Partial<{}>);
         _init(...args: any[]): void;
 
         static ['new'](): Scope;
 
-        // Own methods of Template.Scope
+        // Methods
 
         /**
          * Gets a string if the symbol `name` is a string.
@@ -388,14 +388,14 @@ export namespace Template {
     class Symbol {
         static $gtype: GObject.GType<Symbol>;
 
-        // Constructors of Template.Symbol
+        // Constructors
 
         constructor(properties?: Partial<{}>);
         _init(...args: any[]): void;
 
         static ['new'](): Symbol;
 
-        // Own methods of Template.Symbol
+        // Methods
 
         assign_boolean(v_bool: boolean): void;
         assign_double(v_double: number): void;
@@ -432,7 +432,7 @@ export namespace Template {
     class Expr {
         static $gtype: GObject.GType<Expr>;
 
-        // Constructors of Template.Expr
+        // Constructors
 
         constructor(properties?: Partial<{}>);
         _init(...args: any[]): void;
@@ -465,11 +465,11 @@ export namespace Template {
 
         static new_user_fn_call(name: string, param: Expr): Expr;
 
-        // Own static methods of Template.Expr
+        // Static methods
 
         static from_string(str: string): Expr;
 
-        // Own methods of Template.Expr
+        // Methods
 
         ['eval'](scope: Scope, return_value: GObject.Value | any): boolean;
         new_anon_call(params: Expr): Expr;

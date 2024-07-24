@@ -19,7 +19,7 @@ export namespace fontconfig {
     class Pattern {
         static $gtype: GObject.GType<Pattern>;
 
-        // Constructors of fontconfig.Pattern
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -27,7 +27,7 @@ export namespace fontconfig {
     class CharSet {
         static $gtype: GObject.GType<CharSet>;
 
-        // Constructors of fontconfig.CharSet
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -35,7 +35,7 @@ export namespace fontconfig {
     class Config {
         static $gtype: GObject.GType<Config>;
 
-        // Constructors of fontconfig.Config
+        // Constructors
 
         _init(...args: any[]): void;
     }

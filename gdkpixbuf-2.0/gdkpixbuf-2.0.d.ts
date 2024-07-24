@@ -159,7 +159,7 @@ export namespace GdkPixbuf {
     class PixbufError extends GLib.Error {
         static $gtype: GObject.GType<PixbufError>;
 
-        // Static fields of GdkPixbuf.PixbufError
+        // Static fields
 
         /**
          * An image file was broken somehow.
@@ -191,12 +191,12 @@ export namespace GdkPixbuf {
          */
         static INCOMPLETE_ANIMATION: number;
 
-        // Constructors of GdkPixbuf.PixbufError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of GdkPixbuf.PixbufError
+        // Static methods
 
         static quark(): GLib.Quark;
     }
@@ -469,7 +469,7 @@ export namespace GdkPixbuf {
     class Pixbuf extends GObject.Object implements Gio.Icon, Gio.LoadableIcon {
         static $gtype: GObject.GType<Pixbuf>;
 
-        // Own properties of GdkPixbuf.Pixbuf
+        // Properties
 
         /**
          * The number of bits per sample.
@@ -532,7 +532,7 @@ export namespace GdkPixbuf {
          */
         get width(): number;
 
-        // Constructors of GdkPixbuf.Pixbuf
+        // Constructors
 
         constructor(properties?: Partial<Pixbuf.ConstructorProps>, ...args: any[]);
 
@@ -603,7 +603,7 @@ export namespace GdkPixbuf {
 
         static new_from_xpm_data(data: string[]): Pixbuf;
 
-        // Own static methods of GdkPixbuf.Pixbuf
+        // Static methods
 
         /**
          * Calculates the rowstride that an image created with those values would
@@ -724,7 +724,7 @@ export namespace GdkPixbuf {
          */
         static save_to_stream_finish(async_result: Gio.AsyncResult): boolean;
 
-        // Own methods of GdkPixbuf.Pixbuf
+        // Methods
 
         /**
          * Takes an existing pixbuf and adds an alpha channel to it.
@@ -1803,7 +1803,7 @@ export namespace GdkPixbuf {
     class PixbufAnimation extends GObject.Object {
         static $gtype: GObject.GType<PixbufAnimation>;
 
-        // Constructors of GdkPixbuf.PixbufAnimation
+        // Constructors
 
         constructor(properties?: Partial<PixbufAnimation.ConstructorProps>, ...args: any[]);
 
@@ -1817,7 +1817,7 @@ export namespace GdkPixbuf {
 
         static new_from_stream_finish(async_result: Gio.AsyncResult): PixbufAnimation;
 
-        // Own static methods of GdkPixbuf.PixbufAnimation
+        // Static methods
 
         /**
          * Creates a new animation by asynchronously loading an image from an input stream.
@@ -1838,7 +1838,7 @@ export namespace GdkPixbuf {
             callback?: Gio.AsyncReadyCallback<PixbufAnimation> | null,
         ): void;
 
-        // Own virtual methods of GdkPixbuf.PixbufAnimation
+        // Virtual methods
 
         /**
          * Get an iterator for displaying an animation.
@@ -1903,7 +1903,7 @@ export namespace GdkPixbuf {
          */
         vfunc_is_static_image(): boolean;
 
-        // Own methods of GdkPixbuf.PixbufAnimation
+        // Methods
 
         /**
          * Queries the height of the bounding box of a pixbuf animation.
@@ -1994,13 +1994,13 @@ export namespace GdkPixbuf {
     class PixbufAnimationIter extends GObject.Object {
         static $gtype: GObject.GType<PixbufAnimationIter>;
 
-        // Constructors of GdkPixbuf.PixbufAnimationIter
+        // Constructors
 
         constructor(properties?: Partial<PixbufAnimationIter.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of GdkPixbuf.PixbufAnimationIter
+        // Virtual methods
 
         /**
          * Possibly advances an animation to a new frame.
@@ -2067,7 +2067,7 @@ export namespace GdkPixbuf {
          */
         vfunc_on_currently_loading_frame(): boolean;
 
-        // Own methods of GdkPixbuf.PixbufAnimationIter
+        // Methods
 
         /**
          * Possibly advances an animation to a new frame.
@@ -2213,7 +2213,7 @@ export namespace GdkPixbuf {
     class PixbufLoader extends GObject.Object {
         static $gtype: GObject.GType<PixbufLoader>;
 
-        // Constructors of GdkPixbuf.PixbufLoader
+        // Constructors
 
         constructor(properties?: Partial<PixbufLoader.ConstructorProps>, ...args: any[]);
 
@@ -2225,7 +2225,7 @@ export namespace GdkPixbuf {
 
         static new_with_type(image_type: string): PixbufLoader;
 
-        // Own signals of GdkPixbuf.PixbufLoader
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -2252,14 +2252,14 @@ export namespace GdkPixbuf {
         ): number;
         emit(signal: 'size-prepared', width: number, height: number): void;
 
-        // Own virtual methods of GdkPixbuf.PixbufLoader
+        // Virtual methods
 
         vfunc_area_prepared(): void;
         vfunc_area_updated(x: number, y: number, width: number, height: number): void;
         vfunc_closed(): void;
         vfunc_size_prepared(width: number, height: number): void;
 
-        // Own methods of GdkPixbuf.PixbufLoader
+        // Methods
 
         /**
          * Informs a pixbuf loader that no further writes with
@@ -2353,7 +2353,7 @@ export namespace GdkPixbuf {
     class PixbufNonAnim extends PixbufAnimation {
         static $gtype: GObject.GType<PixbufNonAnim>;
 
-        // Constructors of GdkPixbuf.PixbufNonAnim
+        // Constructors
 
         constructor(properties?: Partial<PixbufNonAnim.ConstructorProps>, ...args: any[]);
 
@@ -2376,7 +2376,7 @@ export namespace GdkPixbuf {
     class PixbufSimpleAnim extends PixbufAnimation {
         static $gtype: GObject.GType<PixbufSimpleAnim>;
 
-        // Own properties of GdkPixbuf.PixbufSimpleAnim
+        // Properties
 
         /**
          * Whether the animation should loop when it reaches the end.
@@ -2384,7 +2384,7 @@ export namespace GdkPixbuf {
         get loop(): boolean;
         set loop(val: boolean);
 
-        // Constructors of GdkPixbuf.PixbufSimpleAnim
+        // Constructors
 
         constructor(properties?: Partial<PixbufSimpleAnim.ConstructorProps>, ...args: any[]);
 
@@ -2392,7 +2392,7 @@ export namespace GdkPixbuf {
 
         static ['new'](width: number, height: number, rate: number): PixbufSimpleAnim;
 
-        // Own methods of GdkPixbuf.PixbufSimpleAnim
+        // Methods
 
         /**
          * Adds a new frame to `animation`. The `pixbuf` must
@@ -2422,7 +2422,7 @@ export namespace GdkPixbuf {
     class PixbufSimpleAnimIter extends PixbufAnimationIter {
         static $gtype: GObject.GType<PixbufSimpleAnimIter>;
 
-        // Constructors of GdkPixbuf.PixbufSimpleAnimIter
+        // Constructors
 
         constructor(properties?: Partial<PixbufSimpleAnimIter.ConstructorProps>, ...args: any[]);
 
@@ -2441,7 +2441,7 @@ export namespace GdkPixbuf {
     class PixbufFormat {
         static $gtype: GObject.GType<PixbufFormat>;
 
-        // Own fields of GdkPixbuf.PixbufFormat
+        // Fields
 
         name: string;
         signature: PixbufModulePattern;
@@ -2453,7 +2453,7 @@ export namespace GdkPixbuf {
         disabled: boolean;
         license: string;
 
-        // Constructors of GdkPixbuf.PixbufFormat
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -2469,7 +2469,7 @@ export namespace GdkPixbuf {
         );
         _init(...args: any[]): void;
 
-        // Own methods of GdkPixbuf.PixbufFormat
+        // Methods
 
         /**
          * Creates a copy of `format`.
@@ -2604,13 +2604,13 @@ export namespace GdkPixbuf {
     class PixbufModule {
         static $gtype: GObject.GType<PixbufModule>;
 
-        // Own fields of GdkPixbuf.PixbufModule
+        // Fields
 
         module_name: string;
         module_path: string;
         info: PixbufFormat;
 
-        // Constructors of GdkPixbuf.PixbufModule
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2650,13 +2650,13 @@ export namespace GdkPixbuf {
     class PixbufModulePattern {
         static $gtype: GObject.GType<PixbufModulePattern>;
 
-        // Own fields of GdkPixbuf.PixbufModulePattern
+        // Fields
 
         prefix: string;
         mask: string;
         relevance: number;
 
-        // Constructors of GdkPixbuf.PixbufModulePattern
+        // Constructors
 
         constructor(
             properties?: Partial<{

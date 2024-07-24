@@ -106,7 +106,7 @@ export namespace EDataCal {
     class CalBackend extends EBackend.Backend implements ECal.TimezoneCache {
         static $gtype: GObject.GType<CalBackend>;
 
-        // Own properties of EDataCal.CalBackend
+        // Properties
 
         get cache_dir(): string;
         set cache_dir(val: string);
@@ -119,13 +119,13 @@ export namespace EDataCal {
         get writable(): boolean;
         set writable(val: boolean);
 
-        // Constructors of EDataCal.CalBackend
+        // Constructors
 
         constructor(properties?: Partial<CalBackend.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of EDataCal.CalBackend
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -137,7 +137,7 @@ export namespace EDataCal {
         connect_after(signal: 'shutdown', callback: (_source: this) => void): number;
         emit(signal: 'shutdown'): void;
 
-        // Own static methods of EDataCal.CalBackend
+        // Static methods
 
         /**
          * Retrieve the default mail account as stored in Evolution configuration.
@@ -155,7 +155,7 @@ export namespace EDataCal {
         static mail_account_is_valid(registry: EDataServer.SourceRegistry, user: string, name: string): boolean;
         static user_declined(registry: EDataServer.SourceRegistry, icalcomp: ICalGLib.Component): boolean;
 
-        // Own virtual methods of EDataCal.CalBackend
+        // Virtual methods
 
         /**
          * A signal notifying that the backend was closed
@@ -304,7 +304,7 @@ export namespace EDataCal {
          */
         vfunc_shutdown(): void;
 
-        // Own methods of EDataCal.CalBackend
+        // Methods
 
         /**
          * Asynchronously adds the timezone described by `tzobject` to `backend`.
@@ -1566,7 +1566,7 @@ export namespace EDataCal {
     abstract class CalBackendFactory extends EBackend.BackendFactory {
         static $gtype: GObject.GType<CalBackendFactory>;
 
-        // Constructors of EDataCal.CalBackendFactory
+        // Constructors
 
         constructor(properties?: Partial<CalBackendFactory.ConstructorProps>, ...args: any[]);
 
@@ -1582,7 +1582,7 @@ export namespace EDataCal {
     class CalBackendSExp extends GObject.Object {
         static $gtype: GObject.GType<CalBackendSExp>;
 
-        // Constructors of EDataCal.CalBackendSExp
+        // Constructors
 
         constructor(properties?: Partial<CalBackendSExp.ConstructorProps>, ...args: any[]);
 
@@ -1590,7 +1590,7 @@ export namespace EDataCal {
 
         static ['new'](text: string): CalBackendSExp;
 
-        // Own methods of EDataCal.CalBackendSExp
+        // Methods
 
         /**
          * Determines biggest time window given by expressions "occur-in-range" in sexp.
@@ -1642,13 +1642,13 @@ export namespace EDataCal {
     class CalBackendSync extends CalBackend implements ECal.TimezoneCache {
         static $gtype: GObject.GType<CalBackendSync>;
 
-        // Constructors of EDataCal.CalBackendSync
+        // Constructors
 
         constructor(properties?: Partial<CalBackendSync.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of EDataCal.CalBackendSync
+        // Virtual methods
 
         /**
          * Add specified timezone
@@ -1728,7 +1728,7 @@ export namespace EDataCal {
          */
         vfunc_refresh_sync(cal: DataCal, cancellable?: Gio.Cancellable | null): void;
 
-        // Own methods of EDataCal.CalBackendSync
+        // Methods
 
         /**
          * Calls the add_timezone_sync method on the given backend.
@@ -2367,7 +2367,7 @@ export namespace EDataCal {
     class CalCache extends EBackend.Cache implements ECal.TimezoneCache, EDataServer.Extensible {
         static $gtype: GObject.GType<CalCache>;
 
-        // Constructors of EDataCal.CalCache
+        // Constructors
 
         constructor(properties?: Partial<CalCache.ConstructorProps>, ...args: any[]);
 
@@ -2375,7 +2375,7 @@ export namespace EDataCal {
 
         static ['new'](filename: string, cancellable?: Gio.Cancellable | null): CalCache;
 
-        // Own signals of EDataCal.CalCache
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -2393,7 +2393,7 @@ export namespace EDataCal {
         connect_after(signal: 'get-timezone', callback: (_source: this, tzid: string) => ICalGLib.Timezone): number;
         emit(signal: 'get-timezone', tzid: string): void;
 
-        // Own static methods of EDataCal.CalCache
+        // Static methods
 
         /**
          * An #ECalRecurResolveTimezoneCb callback, which can be used
@@ -2409,7 +2409,7 @@ export namespace EDataCal {
             cancellable?: Gio.Cancellable | null,
         ): ICalGLib.Timezone | null;
 
-        // Own virtual methods of EDataCal.CalCache
+        // Virtual methods
 
         /**
          * Returns the `icomp` revision, used to detect changes.
@@ -2419,7 +2419,7 @@ export namespace EDataCal {
          */
         vfunc_dup_component_revision(icomp: ICalGLib.Component): string;
 
-        // Own methods of EDataCal.CalCache
+        // Methods
 
         /**
          * Checkes whether the `cal_cache` contains an object with
@@ -3261,7 +3261,7 @@ export namespace EDataCal {
     abstract class CalMetaBackend extends CalBackendSync implements ECal.TimezoneCache {
         static $gtype: GObject.GType<CalMetaBackend>;
 
-        // Own properties of EDataCal.CalMetaBackend
+        // Properties
 
         /**
          * The #ECalCache being used for this meta backend.
@@ -3269,13 +3269,13 @@ export namespace EDataCal {
         get cache(): CalCache;
         set cache(val: CalCache);
 
-        // Constructors of EDataCal.CalMetaBackend
+        // Constructors
 
         constructor(properties?: Partial<CalMetaBackend.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of EDataCal.CalMetaBackend
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -3287,7 +3287,7 @@ export namespace EDataCal {
         connect_after(signal: 'source-changed', callback: (_source: this) => void): number;
         emit(signal: 'source-changed'): void;
 
-        // Own virtual methods of EDataCal.CalMetaBackend
+        // Virtual methods
 
         /**
          * This is called always before any operation which requires a connection
@@ -3529,7 +3529,7 @@ export namespace EDataCal {
         vfunc_search_sync(expr: string | null, cancellable?: Gio.Cancellable | null): [boolean, string[]];
         vfunc_source_changed(): void;
 
-        // Own methods of EDataCal.CalMetaBackend
+        // Methods
 
         /**
          * This is called always before any operation which requires a connection
@@ -4366,14 +4366,14 @@ export namespace EDataCal {
     class DataCal extends GObject.Object implements Gio.Initable {
         static $gtype: GObject.GType<DataCal>;
 
-        // Own properties of EDataCal.DataCal
+        // Properties
 
         get backend(): CalBackend;
         get connection(): Gio.DBusConnection;
         get object_path(): string;
         get objectPath(): string;
 
-        // Constructors of EDataCal.DataCal
+        // Constructors
 
         constructor(properties?: Partial<DataCal.ConstructorProps>, ...args: any[]);
 
@@ -4381,7 +4381,7 @@ export namespace EDataCal {
 
         static ['new'](backend: CalBackend, connection: Gio.DBusConnection, object_path: string): DataCal;
 
-        // Own methods of EDataCal.DataCal
+        // Methods
 
         /**
          * Returns the #GDBusConnection on which the Calendar D-Bus interface
@@ -5038,7 +5038,7 @@ export namespace EDataCal {
     class DataCalFactory extends EBackend.DataFactory implements EDataServer.Extensible, Gio.Initable {
         static $gtype: GObject.GType<DataCalFactory>;
 
-        // Constructors of EDataCal.DataCalFactory
+        // Constructors
 
         constructor(properties?: Partial<DataCalFactory.ConstructorProps>, ...args: any[]);
 
@@ -5549,7 +5549,7 @@ export namespace EDataCal {
     class DataCalView extends GObject.Object implements Gio.Initable {
         static $gtype: GObject.GType<DataCalView>;
 
-        // Own properties of EDataCal.DataCalView
+        // Properties
 
         get backend(): CalBackend;
         get connection(): Gio.DBusConnection;
@@ -5557,7 +5557,7 @@ export namespace EDataCal {
         get objectPath(): string;
         get sexp(): CalBackendSExp;
 
-        // Constructors of EDataCal.DataCalView
+        // Constructors
 
         constructor(properties?: Partial<DataCalView.ConstructorProps>, ...args: any[]);
 
@@ -5570,7 +5570,7 @@ export namespace EDataCal {
             object_path: string,
         ): DataCalView;
 
-        // Own methods of EDataCal.DataCalView
+        // Methods
 
         /**
          * Compares the given `component` to the regular expression used for the
@@ -6197,7 +6197,7 @@ export namespace EDataCal {
     class IntervalTree extends GObject.Object {
         static $gtype: GObject.GType<IntervalTree>;
 
-        // Constructors of EDataCal.IntervalTree
+        // Constructors
 
         constructor(properties?: Partial<IntervalTree.ConstructorProps>, ...args: any[]);
 
@@ -6205,7 +6205,7 @@ export namespace EDataCal {
 
         static ['new'](): IntervalTree;
 
-        // Own methods of EDataCal.IntervalTree
+        // Methods
 
         destroy(): void;
         dump(): void;
@@ -6223,7 +6223,7 @@ export namespace EDataCal {
     class SubprocessCalFactory extends EBackend.SubprocessFactory implements Gio.Initable {
         static $gtype: GObject.GType<SubprocessCalFactory>;
 
-        // Constructors of EDataCal.SubprocessCalFactory
+        // Constructors
 
         constructor(properties?: Partial<SubprocessCalFactory.ConstructorProps>, ...args: any[]);
 
@@ -6724,7 +6724,7 @@ export namespace EDataCal {
     abstract class CalBackendFactoryPrivate {
         static $gtype: GObject.GType<CalBackendFactoryPrivate>;
 
-        // Constructors of EDataCal.CalBackendFactoryPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -6732,7 +6732,7 @@ export namespace EDataCal {
     abstract class CalBackendPrivate {
         static $gtype: GObject.GType<CalBackendPrivate>;
 
-        // Constructors of EDataCal.CalBackendPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -6741,7 +6741,7 @@ export namespace EDataCal {
     abstract class CalBackendSExpPrivate {
         static $gtype: GObject.GType<CalBackendSExpPrivate>;
 
-        // Constructors of EDataCal.CalBackendSExpPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -6750,7 +6750,7 @@ export namespace EDataCal {
     abstract class CalBackendSyncPrivate {
         static $gtype: GObject.GType<CalBackendSyncPrivate>;
 
-        // Constructors of EDataCal.CalBackendSyncPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -6762,7 +6762,7 @@ export namespace EDataCal {
     class CalCacheOfflineChange {
         static $gtype: GObject.GType<CalCacheOfflineChange>;
 
-        // Own fields of EDataCal.CalCacheOfflineChange
+        // Fields
 
         uid: string;
         rid: string;
@@ -6770,7 +6770,7 @@ export namespace EDataCal {
         object: string;
         state: EBackend.OfflineState;
 
-        // Constructors of EDataCal.CalCacheOfflineChange
+        // Constructors
 
         constructor(
             uid: string,
@@ -6789,7 +6789,7 @@ export namespace EDataCal {
             state: EBackend.OfflineState,
         ): CalCacheOfflineChange;
 
-        // Own static methods of EDataCal.CalCacheOfflineChange
+        // Static methods
 
         /**
          * Frees the `change` structure, previously allocated with e_cal_cache_offline_change_new()
@@ -6798,7 +6798,7 @@ export namespace EDataCal {
          */
         static free(change?: any | null): void;
 
-        // Own methods of EDataCal.CalCacheOfflineChange
+        // Methods
 
         copy(): CalCacheOfflineChange | null;
     }
@@ -6806,7 +6806,7 @@ export namespace EDataCal {
     abstract class CalCachePrivate {
         static $gtype: GObject.GType<CalCachePrivate>;
 
-        // Constructors of EDataCal.CalCachePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -6825,14 +6825,14 @@ export namespace EDataCal {
     class CalCacheSearchData {
         static $gtype: GObject.GType<CalCacheSearchData>;
 
-        // Own fields of EDataCal.CalCacheSearchData
+        // Fields
 
         uid: string;
         rid: string;
         object: string;
         extra: string;
 
-        // Constructors of EDataCal.CalCacheSearchData
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -6846,7 +6846,7 @@ export namespace EDataCal {
 
         static ['new'](uid: string, rid: string | null, object: string, extra?: string | null): CalCacheSearchData;
 
-        // Own static methods of EDataCal.CalCacheSearchData
+        // Static methods
 
         /**
          * Frees the `ptr` structure, previously allocated with e_cal_cache_search_data_new()
@@ -6855,7 +6855,7 @@ export namespace EDataCal {
          */
         static free(ptr?: any | null): void;
 
-        // Own methods of EDataCal.CalCacheSearchData
+        // Methods
 
         copy(): CalCacheSearchData | null;
     }
@@ -6864,14 +6864,14 @@ export namespace EDataCal {
     class CalMetaBackendInfo {
         static $gtype: GObject.GType<CalMetaBackendInfo>;
 
-        // Own fields of EDataCal.CalMetaBackendInfo
+        // Fields
 
         uid: string;
         revision: string;
         object: string;
         extra: string;
 
-        // Constructors of EDataCal.CalMetaBackendInfo
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -6890,7 +6890,7 @@ export namespace EDataCal {
             extra?: string | null,
         ): CalMetaBackendInfo;
 
-        // Own static methods of EDataCal.CalMetaBackendInfo
+        // Static methods
 
         /**
          * Frees the `ptr` structure, previously allocated with e_cal_meta_backend_info_new()
@@ -6899,7 +6899,7 @@ export namespace EDataCal {
          */
         static free(ptr?: any | null): void;
 
-        // Own methods of EDataCal.CalMetaBackendInfo
+        // Methods
 
         copy(): CalMetaBackendInfo;
     }
@@ -6907,7 +6907,7 @@ export namespace EDataCal {
     abstract class CalMetaBackendPrivate {
         static $gtype: GObject.GType<CalMetaBackendPrivate>;
 
-        // Constructors of EDataCal.CalMetaBackendPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -6915,7 +6915,7 @@ export namespace EDataCal {
     class CalQueueTuple {
         static $gtype: GObject.GType<CalQueueTuple>;
 
-        // Own fields of EDataCal.CalQueueTuple
+        // Fields
 
         first: GLib.Queue;
         second: GLib.Queue;
@@ -6924,11 +6924,11 @@ export namespace EDataCal {
         second_free_func: GLib.DestroyNotify;
         third_free_func: GLib.DestroyNotify;
 
-        // Constructors of EDataCal.CalQueueTuple
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of EDataCal.CalQueueTuple
+        // Methods
 
         free(): void;
     }
@@ -6938,7 +6938,7 @@ export namespace EDataCal {
     abstract class DataCalFactoryPrivate {
         static $gtype: GObject.GType<DataCalFactoryPrivate>;
 
-        // Constructors of EDataCal.DataCalFactoryPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -6946,7 +6946,7 @@ export namespace EDataCal {
     abstract class DataCalPrivate {
         static $gtype: GObject.GType<DataCalPrivate>;
 
-        // Constructors of EDataCal.DataCalPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -6955,7 +6955,7 @@ export namespace EDataCal {
     abstract class DataCalViewPrivate {
         static $gtype: GObject.GType<DataCalViewPrivate>;
 
-        // Constructors of EDataCal.DataCalViewPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -6964,7 +6964,7 @@ export namespace EDataCal {
     abstract class IntervalTreePrivate {
         static $gtype: GObject.GType<IntervalTreePrivate>;
 
-        // Constructors of EDataCal.IntervalTreePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -6973,7 +6973,7 @@ export namespace EDataCal {
     abstract class SubprocessCalFactoryPrivate {
         static $gtype: GObject.GType<SubprocessCalFactoryPrivate>;
 
-        // Constructors of EDataCal.SubprocessCalFactoryPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }

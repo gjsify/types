@@ -284,13 +284,13 @@ export namespace Liferea {
     class Application extends Gtk.Application implements Gio.ActionGroup, Gio.ActionMap {
         static $gtype: GObject.GType<Application>;
 
-        // Constructors of Liferea.Application
+        // Constructors
 
         constructor(properties?: Partial<Application.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of Liferea.Application
+        // Static methods
 
         static rebuild_css(): void;
         /**
@@ -726,17 +726,17 @@ export namespace Liferea {
     class Browser extends GObject.Object {
         static $gtype: GObject.GType<Browser>;
 
-        // Own properties of Liferea.Browser
+        // Properties
 
         get renderwidget(): Gtk.Widget;
 
-        // Constructors of Liferea.Browser
+        // Constructors
 
         constructor(properties?: Partial<Browser.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of Liferea.Browser
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -751,7 +751,7 @@ export namespace Liferea {
         connect_after(signal: 'title-changed', callback: (_source: this, object: string) => void): number;
         emit(signal: 'title-changed', object: string): void;
 
-        // Own methods of Liferea.Browser
+        // Methods
 
         /**
          * To be called when HTML view needs to change the text size
@@ -829,13 +829,13 @@ export namespace Liferea {
     class BrowserTabs extends GObject.Object {
         static $gtype: GObject.GType<BrowserTabs>;
 
-        // Own properties of Liferea.BrowserTabs
+        // Properties
 
         get head_lines(): Gtk.Widget;
         get headLines(): Gtk.Widget;
         get notebook(): Gtk.Notebook;
 
-        // Constructors of Liferea.BrowserTabs
+        // Constructors
 
         constructor(properties?: Partial<BrowserTabs.ConstructorProps>, ...args: any[]);
 
@@ -843,7 +843,7 @@ export namespace Liferea {
 
         static add_new(url: string, title: string, activate: boolean): BrowserTabs;
 
-        // Own static methods of Liferea.BrowserTabs
+        // Static methods
 
         /**
          * Requests the tab to change zoom level.
@@ -885,13 +885,13 @@ export namespace Liferea {
     class FeedList extends GObject.Object {
         static $gtype: GObject.GType<FeedList>;
 
-        // Constructors of Liferea.FeedList
+        // Constructors
 
         constructor(properties?: Partial<FeedList.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of Liferea.FeedList
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -906,7 +906,7 @@ export namespace Liferea {
         connect_after(signal: 'node-updated', callback: (_source: this, object: string) => void): number;
         emit(signal: 'node-updated', object: string): void;
 
-        // Own static methods of Liferea.FeedList
+        // Static methods
 
         /**
          * Adds a folder to the feed list without any user interaction.
@@ -942,7 +942,7 @@ export namespace Liferea {
     class Item extends GObject.Object {
         static $gtype: GObject.GType<Item>;
 
-        // Own fields of Liferea.Item
+        // Fields
 
         id: number;
         readStatus: boolean;
@@ -968,13 +968,13 @@ export namespace Liferea {
         remoteReadStatus: boolean;
         remoteFlagStatus: boolean;
 
-        // Constructors of Liferea.Item
+        // Constructors
 
         constructor(properties?: Partial<Item.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Liferea.Item
+        // Methods
 
         get_description(): string;
         get_id(): string;
@@ -997,13 +997,13 @@ export namespace Liferea {
     class ItemList extends GObject.Object {
         static $gtype: GObject.GType<ItemList>;
 
-        // Constructors of Liferea.ItemList
+        // Constructors
 
         constructor(properties?: Partial<ItemList.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of Liferea.ItemList
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -1012,7 +1012,7 @@ export namespace Liferea {
         connect_after(signal: 'item-updated', callback: (_source: this, object: string) => void): number;
         emit(signal: 'item-updated', object: string): void;
 
-        // Own static methods of Liferea.ItemList
+        // Static methods
 
         /**
          * Returns the id of the currently selected item.
@@ -1035,13 +1035,13 @@ export namespace Liferea {
     class ItemListView extends GObject.Object {
         static $gtype: GObject.GType<ItemListView>;
 
-        // Constructors of Liferea.ItemListView
+        // Constructors
 
         constructor(properties?: Partial<ItemListView.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Liferea.ItemListView
+        // Methods
 
         /**
          * Checks whether the given id is in the ItemListView.
@@ -1087,20 +1087,20 @@ export namespace Liferea {
     class ItemView extends GObject.Object {
         static $gtype: GObject.GType<ItemView>;
 
-        // Own properties of Liferea.ItemView
+        // Properties
 
         get html_view(): Browser;
         get htmlView(): Browser;
         get item_list_view(): ItemListView;
         get itemListView(): ItemListView;
 
-        // Constructors of Liferea.ItemView
+        // Constructors
 
         constructor(properties?: Partial<ItemView.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of Liferea.ItemView
+        // Static methods
 
         /**
          * Requests the item view to change zoom level.
@@ -1156,7 +1156,7 @@ export namespace Liferea {
          */
         static update_all_items(): void;
 
-        // Own methods of Liferea.ItemView
+        // Methods
 
         /**
          * Selects and open the next enclosure in the list.
@@ -1183,13 +1183,13 @@ export namespace Liferea {
     class NetworkMonitor extends GObject.Object {
         static $gtype: GObject.GType<NetworkMonitor>;
 
-        // Constructors of Liferea.NetworkMonitor
+        // Constructors
 
         constructor(properties?: Partial<NetworkMonitor.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of Liferea.NetworkMonitor
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -1201,7 +1201,7 @@ export namespace Liferea {
         connect_after(signal: 'proxy-changed', callback: (_source: this) => void): number;
         emit(signal: 'proxy-changed'): void;
 
-        // Own static methods of Liferea.NetworkMonitor
+        // Static methods
 
         /**
          * Queries the online status.
@@ -1237,7 +1237,7 @@ export namespace Liferea {
     class Shell extends GObject.Object {
         static $gtype: GObject.GType<Shell>;
 
-        // Own properties of Liferea.Shell
+        // Properties
 
         get browser_tabs(): BrowserTabs;
         get browserTabs(): BrowserTabs;
@@ -1249,13 +1249,13 @@ export namespace Liferea {
         get item_view(): ItemView;
         get itemView(): ItemView;
 
-        // Constructors of Liferea.Shell
+        // Constructors
 
         constructor(properties?: Partial<Shell.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of Liferea.Shell
+        // Static methods
 
         /**
          * Returns the Liferea main window.
@@ -1300,7 +1300,7 @@ export namespace Liferea {
     abstract class ItemListPrivate {
         static $gtype: GObject.GType<ItemListPrivate>;
 
-        // Constructors of Liferea.ItemListPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1312,7 +1312,7 @@ export namespace Liferea {
     abstract class NetworkMonitorPrivate {
         static $gtype: GObject.GType<NetworkMonitorPrivate>;
 
-        // Constructors of Liferea.NetworkMonitorPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1323,14 +1323,14 @@ export namespace Liferea {
     class encType {
         static $gtype: GObject.GType<encType>;
 
-        // Own fields of Liferea.encType
+        // Fields
 
         mime: string;
         extension: string;
         cmd: string;
         permanent: boolean;
 
-        // Constructors of Liferea.encType
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -1346,7 +1346,7 @@ export namespace Liferea {
     abstract class encTypePtr {
         static $gtype: GObject.GType<encTypePtr>;
 
-        // Constructors of Liferea.encTypePtr
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1354,14 +1354,14 @@ export namespace Liferea {
     class enclosure {
         static $gtype: GObject.GType<enclosure>;
 
-        // Own fields of Liferea.enclosure
+        // Fields
 
         url: string;
         mime: string;
         size: number;
         downloaded: boolean;
 
-        // Constructors of Liferea.enclosure
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -1373,7 +1373,7 @@ export namespace Liferea {
         );
         _init(...args: any[]): void;
 
-        // Own static methods of Liferea.enclosure
+        // Static methods
 
         /**
          * Get MIME type from enclosure string
@@ -1398,7 +1398,7 @@ export namespace Liferea {
     abstract class enclosurePtr {
         static $gtype: GObject.GType<enclosurePtr>;
 
-        // Constructors of Liferea.enclosurePtr
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1406,7 +1406,7 @@ export namespace Liferea {
     abstract class itemPtr {
         static $gtype: GObject.GType<itemPtr>;
 
-        // Constructors of Liferea.itemPtr
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1414,14 +1414,14 @@ export namespace Liferea {
     class itemSet {
         static $gtype: GObject.GType<itemSet>;
 
-        // Own fields of Liferea.itemSet
+        // Fields
 
         rules: any[];
         anyMatch: boolean;
         ids: any[];
         nodeId: string;
 
-        // Constructors of Liferea.itemSet
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -1435,7 +1435,7 @@ export namespace Liferea {
     abstract class itemSetPtr {
         static $gtype: GObject.GType<itemSetPtr>;
 
-        // Constructors of Liferea.itemSetPtr
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1443,7 +1443,7 @@ export namespace Liferea {
     class node {
         static $gtype: GObject.GType<node>;
 
-        // Own fields of Liferea.node
+        // Fields
 
         data: any;
         subscription: any;
@@ -1466,11 +1466,11 @@ export namespace Liferea {
         needsUpdate: boolean;
         needsRecount: boolean;
 
-        // Constructors of Liferea.node
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own static methods of Liferea.node
+        // Static methods
 
         static foreach_child_full(ptr: nodePtr, func: any | null, params: number, user_data?: any | null): void;
         /**
@@ -1482,7 +1482,7 @@ export namespace Liferea {
     abstract class nodePtr {
         static $gtype: GObject.GType<nodePtr>;
 
-        // Constructors of Liferea.nodePtr
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1490,18 +1490,18 @@ export namespace Liferea {
     class nodeSource {
         static $gtype: GObject.GType<nodeSource>;
 
-        // Own fields of Liferea.nodeSource
+        // Fields
 
         actionQueue: GLib.Queue;
         loginState: number;
         authToken: string;
         authFailures: number;
 
-        // Constructors of Liferea.nodeSource
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own static methods of Liferea.nodeSource
+        // Static methods
 
         static item_set_flag(node: nodePtr, item: itemPtr, newState: boolean): void;
     }
@@ -1509,7 +1509,7 @@ export namespace Liferea {
     abstract class nodeSourcePtr {
         static $gtype: GObject.GType<nodeSourcePtr>;
 
-        // Constructors of Liferea.nodeSourcePtr
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1517,13 +1517,13 @@ export namespace Liferea {
     class nodeSourceType {
         static $gtype: GObject.GType<nodeSourceType>;
 
-        // Own fields of Liferea.nodeSourceType
+        // Fields
 
         id: string;
         name: string;
         capabilities: number;
 
-        // Constructors of Liferea.nodeSourceType
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1531,7 +1531,7 @@ export namespace Liferea {
     abstract class nodeSourceTypePtr {
         static $gtype: GObject.GType<nodeSourceTypePtr>;
 
-        // Constructors of Liferea.nodeSourceTypePtr
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1539,14 +1539,14 @@ export namespace Liferea {
     class socialSite {
         static $gtype: GObject.GType<socialSite>;
 
-        // Own fields of Liferea.socialSite
+        // Fields
 
         name: string;
         url: string;
         title: boolean;
         titleFirst: boolean;
 
-        // Constructors of Liferea.socialSite
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -1562,7 +1562,7 @@ export namespace Liferea {
     abstract class socialSitePtr {
         static $gtype: GObject.GType<socialSitePtr>;
 
-        // Constructors of Liferea.socialSitePtr
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1570,7 +1570,7 @@ export namespace Liferea {
     class subscriptionType {
         static $gtype: GObject.GType<subscriptionType>;
 
-        // Constructors of Liferea.subscriptionType
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1578,7 +1578,7 @@ export namespace Liferea {
     abstract class subscriptionTypePtr {
         static $gtype: GObject.GType<subscriptionTypePtr>;
 
-        // Constructors of Liferea.subscriptionTypePtr
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1594,7 +1594,7 @@ export namespace Liferea {
         prototype: AuthActivatable;
     }
     interface AuthActivatable extends GObject.Object {
-        // Own methods of Liferea.AuthActivatable
+        // Methods
 
         /**
          * Activates the extension.
@@ -1621,7 +1621,7 @@ export namespace Liferea {
          */
         store(authId: string, username: string, password: string): void;
 
-        // Own virtual methods of Liferea.AuthActivatable
+        // Virtual methods
 
         /**
          * Activates the extension.
@@ -1662,7 +1662,7 @@ export namespace Liferea {
         prototype: MediaPlayerActivatable;
     }
     interface MediaPlayerActivatable extends GObject.Object {
-        // Own methods of Liferea.MediaPlayerActivatable
+        // Methods
 
         activate(): void;
         deactivate(): void;
@@ -1674,7 +1674,7 @@ export namespace Liferea {
          */
         load(parentWidget: Gtk.Widget, enclosures: string[]): void;
 
-        // Own virtual methods of Liferea.MediaPlayerActivatable
+        // Virtual methods
 
         vfunc_activate(): void;
         vfunc_deactivate(): void;
@@ -1700,12 +1700,12 @@ export namespace Liferea {
         prototype: NodeSourceActivatable;
     }
     interface NodeSourceActivatable extends GObject.Object {
-        // Own methods of Liferea.NodeSourceActivatable
+        // Methods
 
         activate(): void;
         deactivate(): void;
 
-        // Own virtual methods of Liferea.NodeSourceActivatable
+        // Virtual methods
 
         vfunc_activate(): void;
         vfunc_deactivate(): void;
@@ -1726,11 +1726,11 @@ export namespace Liferea {
         prototype: ShellActivatable;
     }
     interface ShellActivatable extends GObject.Object {
-        // Own properties of Liferea.ShellActivatable
+        // Properties
 
         get shell(): Shell;
 
-        // Own methods of Liferea.ShellActivatable
+        // Methods
 
         /**
          * Activates the extension on the shell property.
@@ -1746,7 +1746,7 @@ export namespace Liferea {
          */
         update_state(): void;
 
-        // Own virtual methods of Liferea.ShellActivatable
+        // Virtual methods
 
         /**
          * Activates the extension on the shell property.

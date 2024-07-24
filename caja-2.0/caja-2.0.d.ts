@@ -83,7 +83,7 @@ export namespace Caja {
     class Column extends GObject.Object {
         static $gtype: GObject.GType<Column>;
 
-        // Own properties of Caja.Column
+        // Properties
 
         get attribute(): string;
         set attribute(val: string);
@@ -97,7 +97,7 @@ export namespace Caja {
         get xalign(): number;
         set xalign(val: number);
 
-        // Constructors of Caja.Column
+        // Constructors
 
         constructor(properties?: Partial<Column.ConstructorProps>, ...args: any[]);
 
@@ -115,7 +115,7 @@ export namespace Caja {
     class Menu extends GObject.Object {
         static $gtype: GObject.GType<Menu>;
 
-        // Constructors of Caja.Menu
+        // Constructors
 
         constructor(properties?: Partial<Menu.ConstructorProps>, ...args: any[]);
 
@@ -123,7 +123,7 @@ export namespace Caja {
 
         static ['new'](): Menu;
 
-        // Own methods of Caja.Menu
+        // Methods
 
         append_item(item: MenuItem): void;
         get_items(): MenuItem[];
@@ -152,7 +152,7 @@ export namespace Caja {
     class MenuItem extends GObject.Object {
         static $gtype: GObject.GType<MenuItem>;
 
-        // Own properties of Caja.MenuItem
+        // Properties
 
         get icon(): string;
         set icon(val: string);
@@ -168,7 +168,7 @@ export namespace Caja {
         get tip(): string;
         set tip(val: string);
 
-        // Constructors of Caja.MenuItem
+        // Constructors
 
         constructor(properties?: Partial<MenuItem.ConstructorProps>, ...args: any[]);
 
@@ -176,7 +176,7 @@ export namespace Caja {
 
         static ['new'](name: string, label: string, tip: string, icon: string): MenuItem;
 
-        // Own signals of Caja.MenuItem
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -185,18 +185,18 @@ export namespace Caja {
         connect_after(signal: 'activate', callback: (_source: this) => void): number;
         emit(signal: 'activate'): void;
 
-        // Own static methods of Caja.MenuItem
+        // Static methods
 
         static list_free(item_list: MenuItem[]): void;
 
-        // Own virtual methods of Caja.MenuItem
+        // Virtual methods
 
         /**
          * emits the activate signal.
          */
         vfunc_activate(): void;
 
-        // Own methods of Caja.MenuItem
+        // Methods
 
         /**
          * emits the activate signal.
@@ -222,7 +222,7 @@ export namespace Caja {
     class PropertyPage extends GObject.Object {
         static $gtype: GObject.GType<PropertyPage>;
 
-        // Own properties of Caja.PropertyPage
+        // Properties
 
         get label(): Gtk.Widget;
         set label(val: Gtk.Widget);
@@ -230,7 +230,7 @@ export namespace Caja {
         get page(): Gtk.Widget;
         set page(val: Gtk.Widget);
 
-        // Constructors of Caja.PropertyPage
+        // Constructors
 
         constructor(properties?: Partial<PropertyPage.ConstructorProps>, ...args: any[]);
 
@@ -243,7 +243,7 @@ export namespace Caja {
     abstract class ColumnDetails {
         static $gtype: GObject.GType<ColumnDetails>;
 
-        // Constructors of Caja.ColumnDetails
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -253,7 +253,7 @@ export namespace Caja {
     abstract class File {
         static $gtype: GObject.GType<File>;
 
-        // Constructors of Caja.File
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -266,7 +266,7 @@ export namespace Caja {
     abstract class MenuItemDetails {
         static $gtype: GObject.GType<MenuItemDetails>;
 
-        // Constructors of Caja.MenuItemDetails
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -274,7 +274,7 @@ export namespace Caja {
     abstract class MenuPrivate {
         static $gtype: GObject.GType<MenuPrivate>;
 
-        // Constructors of Caja.MenuPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -288,7 +288,7 @@ export namespace Caja {
     abstract class OperationHandle {
         static $gtype: GObject.GType<OperationHandle>;
 
-        // Constructors of Caja.OperationHandle
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -297,7 +297,7 @@ export namespace Caja {
     abstract class PropertyPageDetails {
         static $gtype: GObject.GType<PropertyPageDetails>;
 
-        // Constructors of Caja.PropertyPageDetails
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -315,11 +315,11 @@ export namespace Caja {
         prototype: ColumnProvider;
     }
     interface ColumnProvider extends GObject.Object {
-        // Own methods of Caja.ColumnProvider
+        // Methods
 
         get_columns(): Column[];
 
-        // Own virtual methods of Caja.ColumnProvider
+        // Virtual methods
 
         vfunc_get_columns(): Column[];
     }
@@ -337,11 +337,11 @@ export namespace Caja {
         prototype: Configurable;
     }
     interface Configurable extends GObject.Object {
-        // Own methods of Caja.Configurable
+        // Methods
 
         run_config(): void;
 
-        // Own virtual methods of Caja.Configurable
+        // Virtual methods
 
         vfunc_run_config(): void;
     }
@@ -366,7 +366,7 @@ export namespace Caja {
         lookup_for_uri(uri: string): FileInfo;
     }
     interface FileInfo extends GObject.Object {
-        // Own methods of Caja.FileInfo
+        // Methods
 
         add_emblem(emblem_name: string): void;
         add_string_attribute(attribute_name: string, value: string): void;
@@ -388,7 +388,7 @@ export namespace Caja {
         is_gone(): boolean;
         is_mime_type(mime_type: string): boolean;
 
-        // Own virtual methods of Caja.FileInfo
+        // Virtual methods
 
         vfunc_add_emblem(emblem_name: string): void;
         vfunc_add_string_attribute(attribute_name: string, value: string): void;
@@ -431,12 +431,12 @@ export namespace Caja {
         ): void;
     }
     interface InfoProvider extends GObject.Object {
-        // Own methods of Caja.InfoProvider
+        // Methods
 
         cancel_update(handle: OperationHandle): void;
         update_file_info(file: FileInfo, update_complete: GObject.Closure, handle: OperationHandle): OperationResult;
 
-        // Own virtual methods of Caja.InfoProvider
+        // Virtual methods
 
         vfunc_cancel_update(handle: OperationHandle): void;
         vfunc_update_file_info(
@@ -459,11 +459,11 @@ export namespace Caja {
         prototype: LocationWidgetProvider;
     }
     interface LocationWidgetProvider extends GObject.Object {
-        // Own methods of Caja.LocationWidgetProvider
+        // Methods
 
         get_widget(uri: string, window: Gtk.Widget): Gtk.Widget;
 
-        // Own virtual methods of Caja.LocationWidgetProvider
+        // Virtual methods
 
         vfunc_get_widget(uri: string, window: Gtk.Widget): Gtk.Widget;
     }
@@ -481,14 +481,14 @@ export namespace Caja {
         prototype: MenuProvider;
     }
     interface MenuProvider extends GObject.Object {
-        // Own methods of Caja.MenuProvider
+        // Methods
 
         emit_items_updated_signal(): void;
         get_background_items(window: Gtk.Widget, current_folder: FileInfo): MenuItem[];
         get_file_items(window: Gtk.Widget, files: FileInfo[]): MenuItem[];
         get_toolbar_items(window: Gtk.Widget, current_folder: FileInfo): MenuItem[];
 
-        // Own virtual methods of Caja.MenuProvider
+        // Virtual methods
 
         vfunc_get_background_items(window: Gtk.Widget, current_folder: FileInfo): MenuItem[];
         vfunc_get_file_items(window: Gtk.Widget, files: FileInfo[]): MenuItem[];
@@ -508,7 +508,7 @@ export namespace Caja {
         prototype: PropertyPageProvider;
     }
     interface PropertyPageProvider extends GObject.Object {
-        // Own methods of Caja.PropertyPageProvider
+        // Methods
 
         /**
          * This function is called by Caja when it wants property page
@@ -521,7 +521,7 @@ export namespace Caja {
          */
         get_pages(files: FileInfo[]): PropertyPage[];
 
-        // Own virtual methods of Caja.PropertyPageProvider
+        // Virtual methods
 
         /**
          * This function is called by Caja when it wants property page
@@ -547,7 +547,7 @@ export namespace Caja {
         prototype: WidgetViewProvider;
     }
     interface WidgetViewProvider extends GObject.Object {
-        // Own methods of Caja.WidgetViewProvider
+        // Methods
 
         /**
          * Add a file of this location into the widget view.
@@ -585,7 +585,7 @@ export namespace Caja {
          */
         supports_uri(uri: string, file_type: Gio.FileType, mime_type: string): boolean;
 
-        // Own virtual methods of Caja.WidgetViewProvider
+        // Virtual methods
 
         /**
          * Add a file of this location into the widget view.

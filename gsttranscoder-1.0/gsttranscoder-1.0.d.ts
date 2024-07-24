@@ -25,19 +25,19 @@ export namespace GstTranscoder {
     class TranscoderError extends GLib.Error {
         static $gtype: GObject.GType<TranscoderError>;
 
-        // Static fields of GstTranscoder.TranscoderError
+        // Static fields
 
         /**
          * generic error.
          */
         static FAILED: number;
 
-        // Constructors of GstTranscoder.TranscoderError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of GstTranscoder.TranscoderError
+        // Static methods
 
         /**
          * Gets a string representing the given error.
@@ -179,7 +179,7 @@ export namespace GstTranscoder {
     class Transcoder extends Gst.Object {
         static $gtype: GObject.GType<Transcoder>;
 
-        // Own properties of GstTranscoder.Transcoder
+        // Properties
 
         /**
          * See #encodebin:avoid-reencoding
@@ -204,7 +204,7 @@ export namespace GstTranscoder {
         get src_uri(): string;
         get srcUri(): string;
 
-        // Constructors of GstTranscoder.Transcoder
+        // Constructors
 
         constructor(properties?: Partial<Transcoder.ConstructorProps>, ...args: any[]);
 
@@ -214,11 +214,11 @@ export namespace GstTranscoder {
 
         static new_full(source_uri: string, dest_uri: string, profile: GstPbutils.EncodingProfile): Transcoder;
 
-        // Own static methods of GstTranscoder.Transcoder
+        // Static methods
 
         static is_transcoder_message(msg: Gst.Message): boolean;
 
-        // Own methods of GstTranscoder.Transcoder
+        // Methods
 
         get_avoid_reencoding(): boolean;
         /**
@@ -340,20 +340,20 @@ export namespace GstTranscoder {
     class TranscoderSignalAdapter extends GObject.Object {
         static $gtype: GObject.GType<TranscoderSignalAdapter>;
 
-        // Own properties of GstTranscoder.TranscoderSignalAdapter
+        // Properties
 
         /**
          * The #GstTranscoder tracked by the adapter.
          */
         get transcoder(): Transcoder;
 
-        // Constructors of GstTranscoder.TranscoderSignalAdapter
+        // Constructors
 
         constructor(properties?: Partial<TranscoderSignalAdapter.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of GstTranscoder.TranscoderSignalAdapter
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -383,7 +383,7 @@ export namespace GstTranscoder {
         ): number;
         emit(signal: 'warning', object: GLib.Error, p0: Gst.Structure): void;
 
-        // Own methods of GstTranscoder.TranscoderSignalAdapter
+        // Methods
 
         get_transcoder(): Transcoder | null;
     }

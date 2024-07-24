@@ -137,19 +137,19 @@ export namespace Mx {
     class ImageError extends GLib.Error {
         static $gtype: GObject.GType<ImageError>;
 
-        // Static fields of Mx.ImageError
+        // Static fields
 
         static BAD_FORMAT: number;
         static NO_ASYNC: number;
         static INTERNAL: number;
         static INVALID_PARAMETER: number;
 
-        // Constructors of Mx.ImageError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of Mx.ImageError
+        // Static methods
 
         static quark(): GLib.Quark;
     }
@@ -317,7 +317,7 @@ export namespace Mx {
     class WindowRotation {
         static $gtype: GObject.GType<WindowRotation>;
 
-        // Static fields of Mx.WindowRotation
+        // Static fields
 
         /**
          * Zero degrees of rotation
@@ -336,7 +336,7 @@ export namespace Mx {
          */
         static '270': number;
 
-        // Constructors of Mx.WindowRotation
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -468,7 +468,7 @@ export namespace Mx {
     class Action extends GObject.InitiallyUnowned implements Gio.Action {
         static $gtype: GObject.GType<Action>;
 
-        // Own properties of Mx.Action
+        // Properties
 
         get active(): boolean;
         set active(val: boolean);
@@ -479,7 +479,7 @@ export namespace Mx {
         get icon(): string;
         set icon(val: string);
 
-        // Constructors of Mx.Action
+        // Constructors
 
         constructor(properties?: Partial<Action.ConstructorProps>, ...args: any[]);
 
@@ -493,7 +493,7 @@ export namespace Mx {
 
         static new_with_parameter(name: string, parameter_type: GLib.VariantType): Action;
 
-        // Own signals of Mx.Action
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -505,11 +505,11 @@ export namespace Mx {
         connect_after(signal: 'activated', callback: (_source: this) => void): number;
         emit(signal: 'activated'): void;
 
-        // Own virtual methods of Mx.Action
+        // Virtual methods
 
         vfunc_activated(): void;
 
-        // Own methods of Mx.Action
+        // Methods
 
         /**
          * Get the value of the active property
@@ -1229,7 +1229,7 @@ export namespace Mx {
     class ActorManager extends GObject.Object {
         static $gtype: GObject.GType<ActorManager>;
 
-        // Own properties of Mx.ActorManager
+        // Properties
 
         get n_operations(): number;
         get nOperations(): number;
@@ -1239,7 +1239,7 @@ export namespace Mx {
         get timeSlice(): number;
         set timeSlice(val: number);
 
-        // Constructors of Mx.ActorManager
+        // Constructors
 
         constructor(properties?: Partial<ActorManager.ConstructorProps>, ...args: any[]);
 
@@ -1247,7 +1247,7 @@ export namespace Mx {
 
         static ['new'](stage: Clutter.Stage): ActorManager;
 
-        // Own signals of Mx.ActorManager
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -1292,7 +1292,7 @@ export namespace Mx {
         ): number;
         emit(signal: 'operation-failed', id: number, error: GLib.Error): void;
 
-        // Own static methods of Mx.ActorManager
+        // Static methods
 
         /**
          * Get the MxActorManager associated with a stage, or creates one if this is the
@@ -1304,7 +1304,7 @@ export namespace Mx {
          */
         static get_for_stage(stage: Clutter.Stage): ActorManager;
 
-        // Own virtual methods of Mx.ActorManager
+        // Virtual methods
 
         vfunc_actor_added(id: number, container: Clutter.Container, actor: Clutter.Actor): void;
         vfunc_actor_created(id: number, actor: Clutter.Actor): void;
@@ -1314,7 +1314,7 @@ export namespace Mx {
         vfunc_operation_completed(id: number): void;
         vfunc_operation_failed(id: number, error: GLib.Error): void;
 
-        // Own methods of Mx.ActorManager
+        // Methods
 
         /**
          * Adds `actor` to `container`. The actor may not be parented immediately,
@@ -1430,7 +1430,7 @@ export namespace Mx {
     class Adjustment extends GObject.Object {
         static $gtype: GObject.GType<Adjustment>;
 
-        // Own properties of Mx.Adjustment
+        // Properties
 
         get clamp_value(): boolean;
         set clamp_value(val: boolean);
@@ -1457,7 +1457,7 @@ export namespace Mx {
         get value(): number;
         set value(val: number);
 
-        // Constructors of Mx.Adjustment
+        // Constructors
 
         constructor(properties?: Partial<Adjustment.ConstructorProps>, ...args: any[]);
 
@@ -1474,7 +1474,7 @@ export namespace Mx {
             page_size: number,
         ): Adjustment;
 
-        // Own signals of Mx.Adjustment
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -1486,12 +1486,12 @@ export namespace Mx {
         connect_after(signal: 'interpolation-completed', callback: (_source: this) => void): number;
         emit(signal: 'interpolation-completed'): void;
 
-        // Own virtual methods of Mx.Adjustment
+        // Virtual methods
 
         vfunc_changed(): void;
         vfunc_interpolation_completed(): void;
 
-        // Own methods of Mx.Adjustment
+        // Methods
 
         /**
          * Get the value of the #MxAdjustment:clamp-value property.
@@ -1648,13 +1648,13 @@ export namespace Mx {
     class Application extends GObject.Object {
         static $gtype: GObject.GType<Application>;
 
-        // Own properties of Mx.Application
+        // Properties
 
         get application_name(): string;
         get applicationName(): string;
         get flags(): number;
 
-        // Constructors of Mx.Application
+        // Constructors
 
         constructor(properties?: Partial<Application.ConstructorProps>, ...args: any[]);
 
@@ -1662,7 +1662,7 @@ export namespace Mx {
 
         static ['new'](argv: string[] | null, name: string, flags: ApplicationFlags): Application;
 
-        // Own signals of Mx.Application
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -1671,7 +1671,7 @@ export namespace Mx {
         connect_after(signal: 'actions-changed', callback: (_source: this) => void): number;
         emit(signal: 'actions-changed'): void;
 
-        // Own virtual methods of Mx.Application
+        // Virtual methods
 
         vfunc_actions_changed(): void;
         /**
@@ -1680,7 +1680,7 @@ export namespace Mx {
         vfunc_create_window(): Window;
         vfunc_raise(): void;
 
-        // Own methods of Mx.Application
+        // Methods
 
         /**
          * Add an action to the application.
@@ -1793,7 +1793,7 @@ export namespace Mx {
     {
         static $gtype: GObject.GType<Bin>;
 
-        // Own properties of Mx.Bin
+        // Properties
 
         /**
          * The child #ClutterActor of the #MxBin container.
@@ -1849,13 +1849,13 @@ export namespace Mx {
         get yFill(): boolean;
         set yFill(val: boolean);
 
-        // Constructors of Mx.Bin
+        // Constructors
 
         constructor(properties?: Partial<Bin.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Mx.Bin
+        // Methods
 
         /**
          * Allocates the child of an #MxBin using the width and height from `box`.
@@ -2523,7 +2523,7 @@ export namespace Mx {
     {
         static $gtype: GObject.GType<BoxLayout>;
 
-        // Own properties of Mx.BoxLayout
+        // Properties
 
         get enable_animations(): boolean;
         set enable_animations(val: boolean);
@@ -2538,7 +2538,7 @@ export namespace Mx {
         get spacing(): number;
         set spacing(val: number);
 
-        // Constructors of Mx.BoxLayout
+        // Constructors
 
         constructor(properties?: Partial<BoxLayout.ConstructorProps>, ...args: any[]);
 
@@ -2546,7 +2546,7 @@ export namespace Mx {
 
         static ['new'](): BoxLayout;
 
-        // Own methods of Mx.BoxLayout
+        // Methods
 
         /**
          * Inserts `actor` at `position` in `box`.
@@ -3279,7 +3279,7 @@ export namespace Mx {
     class BoxLayoutChild extends Clutter.ChildMeta {
         static $gtype: GObject.GType<BoxLayoutChild>;
 
-        // Own properties of Mx.BoxLayoutChild
+        // Properties
 
         get expand(): boolean;
         set expand(val: boolean);
@@ -3300,7 +3300,7 @@ export namespace Mx {
         get yFill(): boolean;
         set yFill(val: boolean);
 
-        // Constructors of Mx.BoxLayoutChild
+        // Constructors
 
         constructor(properties?: Partial<BoxLayoutChild.ConstructorProps>, ...args: any[]);
 
@@ -3352,7 +3352,7 @@ export namespace Mx {
     {
         static $gtype: GObject.GType<Button>;
 
-        // Own properties of Mx.Button
+        // Properties
 
         get action(): Action;
         set action(val: Action);
@@ -3385,7 +3385,7 @@ export namespace Mx {
         get toggled(): boolean;
         set toggled(val: boolean);
 
-        // Constructors of Mx.Button
+        // Constructors
 
         constructor(properties?: Partial<Button.ConstructorProps>, ...args: any[]);
 
@@ -3395,7 +3395,7 @@ export namespace Mx {
 
         static new_with_label(text: string): Button;
 
-        // Own signals of Mx.Button
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -3404,11 +3404,11 @@ export namespace Mx {
         connect_after(signal: 'clicked', callback: (_source: this) => void): number;
         emit(signal: 'clicked'): void;
 
-        // Own virtual methods of Mx.Button
+        // Virtual methods
 
         vfunc_clicked(): void;
 
-        // Own methods of Mx.Button
+        // Methods
 
         /**
          * Retrieves the #MxAction associated with `button`.
@@ -3957,7 +3957,7 @@ export namespace Mx {
     class ButtonGroup extends GObject.InitiallyUnowned {
         static $gtype: GObject.GType<ButtonGroup>;
 
-        // Own properties of Mx.ButtonGroup
+        // Properties
 
         get active_button(): Button;
         set active_button(val: Button);
@@ -3968,7 +3968,7 @@ export namespace Mx {
         get allowNoActive(): boolean;
         set allowNoActive(val: boolean);
 
-        // Constructors of Mx.ButtonGroup
+        // Constructors
 
         constructor(properties?: Partial<ButtonGroup.ConstructorProps>, ...args: any[]);
 
@@ -3976,7 +3976,7 @@ export namespace Mx {
 
         static ['new'](): ButtonGroup;
 
-        // Own methods of Mx.ButtonGroup
+        // Methods
 
         /**
          * Add `button` to the #MxButtonGroup.
@@ -4034,20 +4034,20 @@ export namespace Mx {
     class Clipboard extends GObject.Object {
         static $gtype: GObject.GType<Clipboard>;
 
-        // Constructors of Mx.Clipboard
+        // Constructors
 
         constructor(properties?: Partial<Clipboard.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of Mx.Clipboard
+        // Static methods
 
         /**
          * Get the global #MxClipboard object that represents the clipboard.
          */
         static get_default(): Clipboard;
 
-        // Own methods of Mx.Clipboard
+        // Methods
 
         /**
          * Request the data from the clipboard in text form. `callback` is executed
@@ -4091,7 +4091,7 @@ export namespace Mx {
     {
         static $gtype: GObject.GType<ComboBox>;
 
-        // Own properties of Mx.ComboBox
+        // Properties
 
         get active_icon_name(): string;
         set active_icon_name(val: string);
@@ -4104,7 +4104,7 @@ export namespace Mx {
         get index(): number;
         set index(val: number);
 
-        // Constructors of Mx.ComboBox
+        // Constructors
 
         constructor(properties?: Partial<ComboBox.ConstructorProps>, ...args: any[]);
 
@@ -4112,7 +4112,7 @@ export namespace Mx {
 
         static ['new'](): ComboBox;
 
-        // Own methods of Mx.ComboBox
+        // Methods
 
         /**
          * Append an item to the combo box list
@@ -4782,7 +4782,7 @@ export namespace Mx {
     {
         static $gtype: GObject.GType<DeformBowTie>;
 
-        // Own properties of Mx.DeformBowTie
+        // Properties
 
         get flip_back(): boolean;
         set flip_back(val: boolean);
@@ -4791,7 +4791,7 @@ export namespace Mx {
         get period(): number;
         set period(val: number);
 
-        // Constructors of Mx.DeformBowTie
+        // Constructors
 
         constructor(properties?: Partial<DeformBowTie.ConstructorProps>, ...args: any[]);
 
@@ -4799,7 +4799,7 @@ export namespace Mx {
 
         static ['new'](): DeformBowTie;
 
-        // Own methods of Mx.DeformBowTie
+        // Methods
 
         get_flip_back(): boolean;
         get_period(): number;
@@ -5237,7 +5237,7 @@ export namespace Mx {
     {
         static $gtype: GObject.GType<DeformPageTurn>;
 
-        // Own properties of Mx.DeformPageTurn
+        // Properties
 
         get angle(): number;
         set angle(val: number);
@@ -5246,7 +5246,7 @@ export namespace Mx {
         get radius(): number;
         set radius(val: number);
 
-        // Constructors of Mx.DeformPageTurn
+        // Constructors
 
         constructor(properties?: Partial<DeformPageTurn.ConstructorProps>, ...args: any[]);
 
@@ -5254,7 +5254,7 @@ export namespace Mx {
 
         static ['new'](): DeformPageTurn;
 
-        // Own methods of Mx.DeformPageTurn
+        // Methods
 
         get_angle(): number;
         get_period(): number;
@@ -5697,7 +5697,7 @@ export namespace Mx {
     {
         static $gtype: GObject.GType<DeformTexture>;
 
-        // Own properties of Mx.DeformTexture
+        // Properties
 
         get back(): Clutter.Texture;
         set back(val: Clutter.Texture);
@@ -5712,17 +5712,17 @@ export namespace Mx {
         get tilesY(): number;
         set tilesY(val: number);
 
-        // Constructors of Mx.DeformTexture
+        // Constructors
 
         constructor(properties?: Partial<DeformTexture.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of Mx.DeformTexture
+        // Virtual methods
 
         vfunc_deform(vertex: Cogl.TextureVertex, width: number, height: number): void;
 
-        // Own methods of Mx.DeformTexture
+        // Methods
 
         /**
          * Retrieve the mesh resolution of the texture.
@@ -6334,7 +6334,7 @@ export namespace Mx {
     {
         static $gtype: GObject.GType<DeformWaves>;
 
-        // Own properties of Mx.DeformWaves
+        // Properties
 
         get amplitude(): number;
         set amplitude(val: number);
@@ -6345,7 +6345,7 @@ export namespace Mx {
         get radius(): number;
         set radius(val: number);
 
-        // Constructors of Mx.DeformWaves
+        // Constructors
 
         constructor(properties?: Partial<DeformWaves.ConstructorProps>, ...args: any[]);
 
@@ -6353,7 +6353,7 @@ export namespace Mx {
 
         static ['new'](): DeformWaves;
 
-        // Own methods of Mx.DeformWaves
+        // Methods
 
         get_amplitude(): number;
         get_angle(): number;
@@ -6792,7 +6792,7 @@ export namespace Mx {
     {
         static $gtype: GObject.GType<Dialog>;
 
-        // Constructors of Mx.Dialog
+        // Constructors
 
         constructor(properties?: Partial<Dialog.ConstructorProps>, ...args: any[]);
 
@@ -6800,7 +6800,7 @@ export namespace Mx {
 
         static ['new'](): Dialog;
 
-        // Own methods of Mx.Dialog
+        // Methods
 
         /**
          * Adds an #MxButton that represents `action` to the button area of `dialog`
@@ -7306,7 +7306,7 @@ export namespace Mx {
     {
         static $gtype: GObject.GType<Entry>;
 
-        // Own properties of Mx.Entry
+        // Properties
 
         get clutter_text(): Clutter.Text;
         get clutterText(): Clutter.Text;
@@ -7333,7 +7333,7 @@ export namespace Mx {
         get text(): string;
         set text(val: string);
 
-        // Constructors of Mx.Entry
+        // Constructors
 
         constructor(properties?: Partial<Entry.ConstructorProps>, ...args: any[]);
 
@@ -7343,7 +7343,7 @@ export namespace Mx {
 
         static new_with_text(text: string): Entry;
 
-        // Own signals of Mx.Entry
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -7355,12 +7355,12 @@ export namespace Mx {
         connect_after(signal: 'secondary-icon-clicked', callback: (_source: this) => void): number;
         emit(signal: 'secondary-icon-clicked'): void;
 
-        // Own virtual methods of Mx.Entry
+        // Virtual methods
 
         vfunc_primary_icon_clicked(): void;
         vfunc_secondary_icon_clicked(): void;
 
-        // Own methods of Mx.Entry
+        // Methods
 
         /**
          * Retrieve the internal #ClutterText so that extra parameters can be set
@@ -8038,14 +8038,14 @@ export namespace Mx {
     {
         static $gtype: GObject.GType<Expander>;
 
-        // Own properties of Mx.Expander
+        // Properties
 
         get expanded(): boolean;
         set expanded(val: boolean);
         get label(): string;
         set label(val: string);
 
-        // Constructors of Mx.Expander
+        // Constructors
 
         constructor(properties?: Partial<Expander.ConstructorProps>, ...args: any[]);
 
@@ -8053,7 +8053,7 @@ export namespace Mx {
 
         static ['new'](): Expander;
 
-        // Own signals of Mx.Expander
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -8062,11 +8062,11 @@ export namespace Mx {
         connect_after(signal: 'expand-complete', callback: (_source: this) => void): number;
         emit(signal: 'expand-complete'): void;
 
-        // Own virtual methods of Mx.Expander
+        // Virtual methods
 
         vfunc_expand_complete(): void;
 
-        // Own methods of Mx.Expander
+        // Methods
 
         /**
          * Get the current state of the expander (the value of #MxExpander:expanded)
@@ -8543,7 +8543,7 @@ export namespace Mx {
     class FadeEffect extends Clutter.OffscreenEffect {
         static $gtype: GObject.GType<FadeEffect>;
 
-        // Own properties of Mx.FadeEffect
+        // Properties
 
         get border_bottom(): number;
         set border_bottom(val: number);
@@ -8584,7 +8584,7 @@ export namespace Mx {
         get freezeUpdate(): boolean;
         set freezeUpdate(val: boolean);
 
-        // Constructors of Mx.FadeEffect
+        // Constructors
 
         constructor(properties?: Partial<FadeEffect.ConstructorProps>, ...args: any[]);
 
@@ -8592,7 +8592,7 @@ export namespace Mx {
 
         static ['new'](): FadeEffect;
 
-        // Own methods of Mx.FadeEffect
+        // Methods
 
         /**
          * Retrieves the border values for `effect`.
@@ -8661,7 +8661,7 @@ export namespace Mx {
     {
         static $gtype: GObject.GType<FloatingWidget>;
 
-        // Constructors of Mx.FloatingWidget
+        // Constructors
 
         constructor(properties?: Partial<FloatingWidget.ConstructorProps>, ...args: any[]);
 
@@ -9238,18 +9238,18 @@ export namespace Mx {
     class FocusManager extends GObject.Object {
         static $gtype: GObject.GType<FocusManager>;
 
-        // Own properties of Mx.FocusManager
+        // Properties
 
         get focused(): Clutter.Actor;
         get stage(): Clutter.Stage;
 
-        // Constructors of Mx.FocusManager
+        // Constructors
 
         constructor(properties?: Partial<FocusManager.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of Mx.FocusManager
+        // Static methods
 
         /**
          * Get the MxFocusManager associated with a stage, or create one if none exist
@@ -9258,7 +9258,7 @@ export namespace Mx {
          */
         static get_for_stage(stage: Clutter.Stage): FocusManager;
 
-        // Own methods of Mx.FocusManager
+        // Methods
 
         /**
          * Get the currently focused #MxFocusable
@@ -9318,7 +9318,7 @@ export namespace Mx {
     {
         static $gtype: GObject.GType<Frame>;
 
-        // Constructors of Mx.Frame
+        // Constructors
 
         constructor(properties?: Partial<Frame.ConstructorProps>, ...args: any[]);
 
@@ -9804,7 +9804,7 @@ export namespace Mx {
     {
         static $gtype: GObject.GType<Grid>;
 
-        // Own properties of Mx.Grid
+        // Properties
 
         get child_x_align(): Align;
         set child_x_align(val: Align);
@@ -9841,7 +9841,7 @@ export namespace Mx {
         get rowSpacing(): number;
         set rowSpacing(val: number);
 
-        // Constructors of Mx.Grid
+        // Constructors
 
         constructor(properties?: Partial<Grid.ConstructorProps>, ...args: any[]);
 
@@ -9849,7 +9849,7 @@ export namespace Mx {
 
         static ['new'](): Grid;
 
-        // Own methods of Mx.Grid
+        // Methods
 
         get_child_x_align(): Align;
         get_child_y_align(): Align;
@@ -10496,7 +10496,7 @@ export namespace Mx {
     {
         static $gtype: GObject.GType<Icon>;
 
-        // Own properties of Mx.Icon
+        // Properties
 
         get icon_name(): string;
         set icon_name(val: string);
@@ -10507,7 +10507,7 @@ export namespace Mx {
         get iconSize(): number;
         set iconSize(val: number);
 
-        // Constructors of Mx.Icon
+        // Constructors
 
         constructor(properties?: Partial<Icon.ConstructorProps>, ...args: any[]);
 
@@ -10515,7 +10515,7 @@ export namespace Mx {
 
         static ['new'](): Icon;
 
-        // Own methods of Mx.Icon
+        // Methods
 
         get_icon_name(): string;
         get_icon_size(): number;
@@ -11093,14 +11093,14 @@ export namespace Mx {
     class IconTheme extends GObject.Object {
         static $gtype: GObject.GType<IconTheme>;
 
-        // Own properties of Mx.IconTheme
+        // Properties
 
         get theme_name(): string;
         set theme_name(val: string);
         get themeName(): string;
         set themeName(val: string);
 
-        // Constructors of Mx.IconTheme
+        // Constructors
 
         constructor(properties?: Partial<IconTheme.ConstructorProps>, ...args: any[]);
 
@@ -11108,14 +11108,14 @@ export namespace Mx {
 
         static ['new'](): IconTheme;
 
-        // Own static methods of Mx.IconTheme
+        // Static methods
 
         /**
          * Return the default #MxIconTheme object used by the toolkit.
          */
         static get_default(): IconTheme;
 
-        // Own methods of Mx.IconTheme
+        // Methods
 
         /**
          * Gets the directories the #MxIconTheme will search in to find icons.
@@ -11209,7 +11209,7 @@ export namespace Mx {
     {
         static $gtype: GObject.GType<Image>;
 
-        // Own properties of Mx.Image
+        // Properties
 
         get allow_upscale(): boolean;
         set allow_upscale(val: boolean);
@@ -11240,7 +11240,7 @@ export namespace Mx {
         get transitionDuration(): number;
         set transitionDuration(val: number);
 
-        // Constructors of Mx.Image
+        // Constructors
 
         constructor(properties?: Partial<Image.ConstructorProps>, ...args: any[]);
 
@@ -11248,7 +11248,7 @@ export namespace Mx {
 
         static ['new'](): Image;
 
-        // Own signals of Mx.Image
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -11260,12 +11260,12 @@ export namespace Mx {
         connect_after(signal: 'image-loaded', callback: (_source: this) => void): number;
         emit(signal: 'image-loaded'): void;
 
-        // Own virtual methods of Mx.Image
+        // Virtual methods
 
         vfunc_image_load_error(error: GLib.Error): void;
         vfunc_image_loaded(): void;
 
-        // Own methods of Mx.Image
+        // Methods
 
         /**
          * Sets the value of #MxImage:scale-mode to `scale_mode` and animates the
@@ -12024,7 +12024,7 @@ export namespace Mx {
     {
         static $gtype: GObject.GType<ItemView>;
 
-        // Own properties of Mx.ItemView
+        // Properties
 
         get factory(): GObject.Object;
         set factory(val: GObject.Object);
@@ -12035,7 +12035,7 @@ export namespace Mx {
         get model(): Clutter.Model;
         set model(val: Clutter.Model);
 
-        // Constructors of Mx.ItemView
+        // Constructors
 
         constructor(properties?: Partial<ItemView.ConstructorProps>, ...args: any[]);
 
@@ -12043,7 +12043,7 @@ export namespace Mx {
 
         static ['new'](): ItemView;
 
-        // Own methods of Mx.ItemView
+        // Methods
 
         /**
          * Adds an attribute mapping between the current model and the objects from the
@@ -12594,7 +12594,7 @@ export namespace Mx {
     {
         static $gtype: GObject.GType<KineticScrollView>;
 
-        // Own properties of Mx.KineticScrollView
+        // Properties
 
         get acceleration_factor(): number;
         set acceleration_factor(val: number);
@@ -12630,7 +12630,7 @@ export namespace Mx {
         get useCaptured(): boolean;
         set useCaptured(val: boolean);
 
-        // Constructors of Mx.KineticScrollView
+        // Constructors
 
         constructor(properties?: Partial<KineticScrollView.ConstructorProps>, ...args: any[]);
 
@@ -12638,7 +12638,7 @@ export namespace Mx {
 
         static ['new'](): KineticScrollView;
 
-        // Own methods of Mx.KineticScrollView
+        // Methods
 
         /**
          * Retrieves the initial acceleration factor of the kinetic scroll-view.
@@ -13235,7 +13235,7 @@ export namespace Mx {
     {
         static $gtype: GObject.GType<Label>;
 
-        // Own properties of Mx.Label
+        // Properties
 
         get clutter_text(): Clutter.Text;
         get clutterText(): Clutter.Text;
@@ -13292,7 +13292,7 @@ export namespace Mx {
         // This accessor conflicts with another accessor's type in a parent class or interface.
         set yAlign(val: Align | any);
 
-        // Constructors of Mx.Label
+        // Constructors
 
         constructor(properties?: Partial<Label.ConstructorProps>, ...args: any[]);
 
@@ -13302,7 +13302,7 @@ export namespace Mx {
 
         static new_with_text(text: string): Label;
 
-        // Own methods of Mx.Label
+        // Methods
 
         /**
          * Retrieve the internal #ClutterText so that extra parameters can be set
@@ -13966,7 +13966,7 @@ export namespace Mx {
     {
         static $gtype: GObject.GType<ListView>;
 
-        // Own properties of Mx.ListView
+        // Properties
 
         get factory(): GObject.Object;
         set factory(val: GObject.Object);
@@ -13977,7 +13977,7 @@ export namespace Mx {
         get model(): Clutter.Model;
         set model(val: Clutter.Model);
 
-        // Constructors of Mx.ListView
+        // Constructors
 
         constructor(properties?: Partial<ListView.ConstructorProps>, ...args: any[]);
 
@@ -13985,7 +13985,7 @@ export namespace Mx {
 
         static ['new'](): ListView;
 
-        // Own methods of Mx.ListView
+        // Methods
 
         /**
          * Adds an attribute mapping between the current model and the objects from the
@@ -14516,7 +14516,7 @@ export namespace Mx {
     {
         static $gtype: GObject.GType<Menu>;
 
-        // Constructors of Mx.Menu
+        // Constructors
 
         constructor(properties?: Partial<Menu.ConstructorProps>, ...args: any[]);
 
@@ -14524,7 +14524,7 @@ export namespace Mx {
 
         static ['new'](): Menu;
 
-        // Own signals of Mx.Menu
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -14533,11 +14533,11 @@ export namespace Mx {
         connect_after(signal: 'action-activated', callback: (_source: this, object: Action) => void): number;
         emit(signal: 'action-activated', object: Action): void;
 
-        // Own virtual methods of Mx.Menu
+        // Virtual methods
 
         vfunc_action_activated(action: Action): void;
 
-        // Own methods of Mx.Menu
+        // Methods
 
         /**
          * Append `action` to `menu`.
@@ -15021,7 +15021,7 @@ export namespace Mx {
     {
         static $gtype: GObject.GType<Notebook>;
 
-        // Own properties of Mx.Notebook
+        // Properties
 
         get current_page(): Clutter.Actor;
         set current_page(val: Clutter.Actor);
@@ -15032,7 +15032,7 @@ export namespace Mx {
         get enableGestures(): boolean;
         set enableGestures(val: boolean);
 
-        // Constructors of Mx.Notebook
+        // Constructors
 
         constructor(properties?: Partial<Notebook.ConstructorProps>, ...args: any[]);
 
@@ -15040,7 +15040,7 @@ export namespace Mx {
 
         static ['new'](): Notebook;
 
-        // Own methods of Mx.Notebook
+        // Methods
 
         /**
          * Get the current page
@@ -15665,7 +15665,7 @@ export namespace Mx {
     {
         static $gtype: GObject.GType<Offscreen>;
 
-        // Own properties of Mx.Offscreen
+        // Properties
 
         get accumulation_enabled(): boolean;
         set accumulation_enabled(val: boolean);
@@ -15692,7 +15692,7 @@ export namespace Mx {
         get redirectEnabled(): boolean;
         set redirectEnabled(val: boolean);
 
-        // Constructors of Mx.Offscreen
+        // Constructors
 
         constructor(properties?: Partial<Offscreen.ConstructorProps>, ...args: any[]);
 
@@ -15700,11 +15700,11 @@ export namespace Mx {
 
         static ['new'](): Offscreen;
 
-        // Own virtual methods of Mx.Offscreen
+        // Virtual methods
 
         vfunc_paint_child(): void;
 
-        // Own methods of Mx.Offscreen
+        // Methods
 
         /**
          * Gets the value of the #MxOffscreen:accumulation-enabled property.
@@ -16239,7 +16239,7 @@ export namespace Mx {
     {
         static $gtype: GObject.GType<PathBar>;
 
-        // Own properties of Mx.PathBar
+        // Properties
 
         get clear_on_change(): boolean;
         set clear_on_change(val: boolean);
@@ -16250,7 +16250,7 @@ export namespace Mx {
         get entry(): Entry;
         get level(): number;
 
-        // Constructors of Mx.PathBar
+        // Constructors
 
         constructor(properties?: Partial<PathBar.ConstructorProps>, ...args: any[]);
 
@@ -16258,7 +16258,7 @@ export namespace Mx {
 
         static ['new'](): PathBar;
 
-        // Own methods of Mx.PathBar
+        // Methods
 
         /**
          * Remove all the current buttons
@@ -16909,12 +16909,12 @@ export namespace Mx {
     {
         static $gtype: GObject.GType<ProgressBar>;
 
-        // Own properties of Mx.ProgressBar
+        // Properties
 
         get progress(): number;
         set progress(val: number);
 
-        // Constructors of Mx.ProgressBar
+        // Constructors
 
         constructor(properties?: Partial<ProgressBar.ConstructorProps>, ...args: any[]);
 
@@ -16922,7 +16922,7 @@ export namespace Mx {
 
         static ['new'](): ProgressBar;
 
-        // Own methods of Mx.ProgressBar
+        // Methods
 
         /**
          * Get the progress of the progress bar
@@ -17526,14 +17526,14 @@ export namespace Mx {
     {
         static $gtype: GObject.GType<ScrollBar>;
 
-        // Own properties of Mx.ScrollBar
+        // Properties
 
         get adjustment(): Adjustment;
         set adjustment(val: Adjustment);
         get orientation(): Orientation;
         set orientation(val: Orientation);
 
-        // Constructors of Mx.ScrollBar
+        // Constructors
 
         constructor(properties?: Partial<ScrollBar.ConstructorProps>, ...args: any[]);
 
@@ -17543,7 +17543,7 @@ export namespace Mx {
 
         static new_with_adjustment(adjustment: Adjustment): ScrollBar;
 
-        // Own signals of Mx.ScrollBar
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -17555,12 +17555,12 @@ export namespace Mx {
         connect_after(signal: 'scroll-stop', callback: (_source: this) => void): number;
         emit(signal: 'scroll-stop'): void;
 
-        // Own virtual methods of Mx.ScrollBar
+        // Virtual methods
 
         vfunc_scroll_start(): void;
         vfunc_scroll_stop(): void;
 
-        // Own methods of Mx.ScrollBar
+        // Methods
 
         /**
          * Gets the adjustment object that stores the current position
@@ -18031,7 +18031,7 @@ export namespace Mx {
     {
         static $gtype: GObject.GType<ScrollView>;
 
-        // Own properties of Mx.ScrollView
+        // Properties
 
         get enable_gestures(): boolean;
         set enable_gestures(val: boolean);
@@ -18046,7 +18046,7 @@ export namespace Mx {
         get scrollPolicy(): ScrollPolicy;
         set scrollPolicy(val: ScrollPolicy);
 
-        // Constructors of Mx.ScrollView
+        // Constructors
 
         constructor(properties?: Partial<ScrollView.ConstructorProps>, ...args: any[]);
 
@@ -18054,7 +18054,7 @@ export namespace Mx {
 
         static ['new'](): ScrollView;
 
-        // Own methods of Mx.ScrollView
+        // Methods
 
         /**
          * Ensures that a given region is visible in the ScrollView, with the top-left
@@ -18518,7 +18518,7 @@ export namespace Mx {
     class Settings extends GObject.Object {
         static $gtype: GObject.GType<Settings>;
 
-        // Own properties of Mx.Settings
+        // Properties
 
         get drag_threshold(): number;
         set drag_threshold(val: number);
@@ -18541,13 +18541,13 @@ export namespace Mx {
         get smallScreen(): boolean;
         set smallScreen(val: boolean);
 
-        // Constructors of Mx.Settings
+        // Constructors
 
         constructor(properties?: Partial<Settings.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of Mx.Settings
+        // Static methods
 
         /**
          * Get the global MxSettings object.
@@ -18582,7 +18582,7 @@ export namespace Mx {
     {
         static $gtype: GObject.GType<Slider>;
 
-        // Own properties of Mx.Slider
+        // Properties
 
         get buffer_value(): number;
         set buffer_value(val: number);
@@ -18591,7 +18591,7 @@ export namespace Mx {
         get value(): number;
         set value(val: number);
 
-        // Constructors of Mx.Slider
+        // Constructors
 
         constructor(properties?: Partial<Slider.ConstructorProps>, ...args: any[]);
 
@@ -18599,7 +18599,7 @@ export namespace Mx {
 
         static ['new'](): Slider;
 
-        // Own methods of Mx.Slider
+        // Methods
 
         /**
          * Get the value of the #MxSlider:buffer-value property.
@@ -19231,12 +19231,12 @@ export namespace Mx {
     {
         static $gtype: GObject.GType<Spinner>;
 
-        // Own properties of Mx.Spinner
+        // Properties
 
         get animating(): boolean;
         set animating(val: boolean);
 
-        // Constructors of Mx.Spinner
+        // Constructors
 
         constructor(properties?: Partial<Spinner.ConstructorProps>, ...args: any[]);
 
@@ -19244,7 +19244,7 @@ export namespace Mx {
 
         static ['new'](): Spinner;
 
-        // Own signals of Mx.Spinner
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -19253,11 +19253,11 @@ export namespace Mx {
         connect_after(signal: 'looped', callback: (_source: this) => void): number;
         emit(signal: 'looped'): void;
 
-        // Own virtual methods of Mx.Spinner
+        // Virtual methods
 
         vfunc_looped(): void;
 
-        // Own methods of Mx.Spinner
+        // Methods
 
         /**
          * Determines whether the spinner is animating.
@@ -19849,7 +19849,7 @@ export namespace Mx {
     {
         static $gtype: GObject.GType<Stack>;
 
-        // Constructors of Mx.Stack
+        // Constructors
 
         constructor(properties?: Partial<Stack.ConstructorProps>, ...args: any[]);
 
@@ -19857,7 +19857,7 @@ export namespace Mx {
 
         static ['new'](): Stack;
 
-        // Own methods of Mx.Stack
+        // Methods
 
         /**
          * Get the value of the #MxStackChild:fit property.
@@ -20535,7 +20535,7 @@ export namespace Mx {
     class StackChild extends Clutter.ChildMeta {
         static $gtype: GObject.GType<StackChild>;
 
-        // Own properties of Mx.StackChild
+        // Properties
 
         get crop(): boolean;
         set crop(val: boolean);
@@ -20558,7 +20558,7 @@ export namespace Mx {
         get yFill(): boolean;
         set yFill(val: boolean);
 
-        // Constructors of Mx.StackChild
+        // Constructors
 
         constructor(properties?: Partial<StackChild.ConstructorProps>, ...args: any[]);
 
@@ -20584,7 +20584,7 @@ export namespace Mx {
     class Style extends GObject.Object {
         static $gtype: GObject.GType<Style>;
 
-        // Constructors of Mx.Style
+        // Constructors
 
         constructor(properties?: Partial<Style.ConstructorProps>, ...args: any[]);
 
@@ -20592,7 +20592,7 @@ export namespace Mx {
 
         static ['new'](): Style;
 
-        // Own signals of Mx.Style
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -20601,7 +20601,7 @@ export namespace Mx {
         connect_after(signal: 'changed', callback: (_source: this) => void): number;
         emit(signal: 'changed'): void;
 
-        // Own static methods of Mx.Style
+        // Static methods
 
         /**
          * Return the default MxStyle object. This includes the current theme (if
@@ -20609,11 +20609,11 @@ export namespace Mx {
          */
         static get_default(): Style;
 
-        // Own virtual methods of Mx.Style
+        // Virtual methods
 
         vfunc_changed(): void;
 
-        // Own methods of Mx.Style
+        // Methods
 
         /**
          * Requests the property described in `pspec` for the specified stylable
@@ -20663,7 +20663,7 @@ export namespace Mx {
     {
         static $gtype: GObject.GType<Table>;
 
-        // Own properties of Mx.Table
+        // Properties
 
         get column_count(): number;
         get columnCount(): number;
@@ -20678,7 +20678,7 @@ export namespace Mx {
         get rowSpacing(): number;
         set rowSpacing(val: number);
 
-        // Constructors of Mx.Table
+        // Constructors
 
         constructor(properties?: Partial<Table.ConstructorProps>, ...args: any[]);
 
@@ -20686,7 +20686,7 @@ export namespace Mx {
 
         static ['new'](): Table;
 
-        // Own methods of Mx.Table
+        // Methods
 
         /**
          * Add an actor at the specified row and column
@@ -21469,7 +21469,7 @@ export namespace Mx {
     class TableChild extends Clutter.ChildMeta {
         static $gtype: GObject.GType<TableChild>;
 
-        // Own properties of Mx.TableChild
+        // Properties
 
         get column(): number;
         set column(val: number);
@@ -21508,7 +21508,7 @@ export namespace Mx {
         get yFill(): boolean;
         set yFill(val: boolean);
 
-        // Constructors of Mx.TableChild
+        // Constructors
 
         constructor(properties?: Partial<TableChild.ConstructorProps>, ...args: any[]);
 
@@ -21528,13 +21528,13 @@ export namespace Mx {
     class TextureCache extends GObject.Object {
         static $gtype: GObject.GType<TextureCache>;
 
-        // Constructors of Mx.TextureCache
+        // Constructors
 
         constructor(properties?: Partial<TextureCache.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of Mx.TextureCache
+        // Static methods
 
         /**
          * Returns the default texture cache. This is owned by Mx and should not be
@@ -21542,12 +21542,12 @@ export namespace Mx {
          */
         static get_default(): TextureCache;
 
-        // Own virtual methods of Mx.TextureCache
+        // Virtual methods
 
         vfunc_error_loading(error: GLib.Error): void;
         vfunc_loaded(uri: string, texture: Clutter.Texture): void;
 
-        // Own methods of Mx.TextureCache
+        // Methods
 
         /**
          * Checks whether the given URI/path is contained within the texture
@@ -21667,7 +21667,7 @@ export namespace Mx {
     {
         static $gtype: GObject.GType<TextureFrame>;
 
-        // Own properties of Mx.TextureFrame
+        // Properties
 
         get bottom(): number;
         set bottom(val: number);
@@ -21682,7 +21682,7 @@ export namespace Mx {
         get top(): number;
         set top(val: number);
 
-        // Constructors of Mx.TextureFrame
+        // Constructors
 
         constructor(properties?: Partial<TextureFrame.ConstructorProps>, ...args: any[]);
 
@@ -21699,7 +21699,7 @@ export namespace Mx {
 
         static ['new'](...args: never[]): any;
 
-        // Own methods of Mx.TextureFrame
+        // Methods
 
         /**
          * Retrieve the current slice lines from the specified frame.
@@ -22597,12 +22597,12 @@ export namespace Mx {
     {
         static $gtype: GObject.GType<Toggle>;
 
-        // Own properties of Mx.Toggle
+        // Properties
 
         get active(): boolean;
         set active(val: boolean);
 
-        // Constructors of Mx.Toggle
+        // Constructors
 
         constructor(properties?: Partial<Toggle.ConstructorProps>, ...args: any[]);
 
@@ -22610,7 +22610,7 @@ export namespace Mx {
 
         static ['new'](): Toggle;
 
-        // Own methods of Mx.Toggle
+        // Methods
 
         get_active(): boolean;
         set_active(active: boolean): void;
@@ -23202,14 +23202,14 @@ export namespace Mx {
     {
         static $gtype: GObject.GType<Toolbar>;
 
-        // Own properties of Mx.Toolbar
+        // Properties
 
         get has_close_button(): boolean;
         set has_close_button(val: boolean);
         get hasCloseButton(): boolean;
         set hasCloseButton(val: boolean);
 
-        // Constructors of Mx.Toolbar
+        // Constructors
 
         constructor(properties?: Partial<Toolbar.ConstructorProps>, ...args: any[]);
 
@@ -23217,7 +23217,7 @@ export namespace Mx {
 
         static ['new'](): Toolbar;
 
-        // Own signals of Mx.Toolbar
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -23226,11 +23226,11 @@ export namespace Mx {
         connect_after(signal: 'close-button-clicked', callback: (_source: this) => boolean): number;
         emit(signal: 'close-button-clicked'): void;
 
-        // Own virtual methods of Mx.Toolbar
+        // Virtual methods
 
         vfunc_close_button_clicked(): boolean;
 
-        // Own methods of Mx.Toolbar
+        // Methods
 
         /**
          * Get the value of the #MxToolbar:has-close-button property.
@@ -23698,7 +23698,7 @@ export namespace Mx {
     {
         static $gtype: GObject.GType<Tooltip>;
 
-        // Own properties of Mx.Tooltip
+        // Properties
 
         get text(): string;
         set text(val: string);
@@ -23707,13 +23707,13 @@ export namespace Mx {
         get tipArea(): Clutter.Geometry;
         set tipArea(val: Clutter.Geometry);
 
-        // Constructors of Mx.Tooltip
+        // Constructors
 
         constructor(properties?: Partial<Tooltip.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of Mx.Tooltip
+        // Static methods
 
         /**
          * Browse mode is entered whenever a tooltip is displayed and it is
@@ -23723,7 +23723,7 @@ export namespace Mx {
          */
         static is_in_browse_mode(): boolean;
 
-        // Own methods of Mx.Tooltip
+        // Methods
 
         /**
          * Get the text displayed on the tooltip
@@ -24206,7 +24206,7 @@ export namespace Mx {
     {
         static $gtype: GObject.GType<Viewport>;
 
-        // Own properties of Mx.Viewport
+        // Properties
 
         get sync_adjustments(): boolean;
         set sync_adjustments(val: boolean);
@@ -24225,7 +24225,7 @@ export namespace Mx {
         get zOrigin(): number;
         set zOrigin(val: number);
 
-        // Constructors of Mx.Viewport
+        // Constructors
 
         constructor(properties?: Partial<Viewport.ConstructorProps>, ...args: any[]);
 
@@ -24233,7 +24233,7 @@ export namespace Mx {
 
         static ['new'](): Viewport;
 
-        // Own methods of Mx.Viewport
+        // Methods
 
         get_origin(x: number, y: number, z: number): void;
         get_sync_adjustments(): boolean;
@@ -24727,7 +24727,7 @@ export namespace Mx {
     {
         static $gtype: GObject.GType<Widget>;
 
-        // Own properties of Mx.Widget
+        // Properties
 
         get disabled(): boolean;
         set disabled(val: boolean);
@@ -24751,13 +24751,13 @@ export namespace Mx {
         get tooltipText(): string;
         set tooltipText(val: string);
 
-        // Constructors of Mx.Widget
+        // Constructors
 
         constructor(properties?: Partial<Widget.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of Mx.Widget
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -24772,7 +24772,7 @@ export namespace Mx {
         ): number;
         emit(signal: 'long-press', object: number, p0: number, p1: LongPressAction): void;
 
-        // Own virtual methods of Mx.Widget
+        // Virtual methods
 
         /**
          * Used to implement how a new style instance should be applied in the widget.
@@ -24783,7 +24783,7 @@ export namespace Mx {
         vfunc_long_press(action: LongPressAction, x: number, y: number): boolean;
         vfunc_paint_background(background: Clutter.Actor, color: Clutter.Color): void;
 
-        // Own methods of Mx.Widget
+        // Methods
 
         /**
          * Used to implement how a new style instance should be applied in the widget.
@@ -25918,7 +25918,7 @@ export namespace Mx {
     class Window extends GObject.Object {
         static $gtype: GObject.GType<Window>;
 
-        // Own properties of Mx.Window
+        // Properties
 
         get child(): Clutter.Actor;
         set child(val: Clutter.Actor);
@@ -25955,7 +25955,7 @@ export namespace Mx {
         get window_rotation_timeline(): Clutter.Timeline;
         get windowRotationTimeline(): Clutter.Timeline;
 
-        // Constructors of Mx.Window
+        // Constructors
 
         constructor(properties?: Partial<Window.ConstructorProps>, ...args: any[]);
 
@@ -25965,7 +25965,7 @@ export namespace Mx {
 
         static new_with_clutter_stage(stage: Clutter.Stage): Window;
 
-        // Own signals of Mx.Window
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -25974,7 +25974,7 @@ export namespace Mx {
         connect_after(signal: 'destroy', callback: (_source: this) => void): number;
         emit(signal: 'destroy'): void;
 
-        // Own static methods of Mx.Window
+        // Static methods
 
         /**
          * Gets the #MxWindow parent of the #ClutterStage, if it exists.
@@ -25982,11 +25982,11 @@ export namespace Mx {
          */
         static get_for_stage(stage: Clutter.Stage): Window;
 
-        // Own virtual methods of Mx.Window
+        // Virtual methods
 
         vfunc_destroy(): void;
 
-        // Own methods of Mx.Window
+        // Methods
 
         /**
          * Get the primary child of the window. See mx_window_set_child().
@@ -26143,7 +26143,7 @@ export namespace Mx {
     abstract class ActionPrivate {
         static $gtype: GObject.GType<ActionPrivate>;
 
-        // Constructors of Mx.ActionPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -26152,7 +26152,7 @@ export namespace Mx {
     abstract class ActorManagerPrivate {
         static $gtype: GObject.GType<ActorManagerPrivate>;
 
-        // Constructors of Mx.ActorManagerPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -26161,7 +26161,7 @@ export namespace Mx {
     abstract class AdjustmentPrivate {
         static $gtype: GObject.GType<AdjustmentPrivate>;
 
-        // Constructors of Mx.AdjustmentPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -26170,7 +26170,7 @@ export namespace Mx {
     abstract class ApplicationPrivate {
         static $gtype: GObject.GType<ApplicationPrivate>;
 
-        // Constructors of Mx.ApplicationPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -26179,7 +26179,7 @@ export namespace Mx {
     abstract class BinPrivate {
         static $gtype: GObject.GType<BinPrivate>;
 
-        // Constructors of Mx.BinPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -26187,7 +26187,7 @@ export namespace Mx {
     class BorderImage {
         static $gtype: GObject.GType<BorderImage>;
 
-        // Own fields of Mx.BorderImage
+        // Fields
 
         uri: string;
         top: number;
@@ -26195,7 +26195,7 @@ export namespace Mx {
         bottom: number;
         left: number;
 
-        // Constructors of Mx.BorderImage
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -26208,7 +26208,7 @@ export namespace Mx {
         );
         _init(...args: any[]): void;
 
-        // Own static methods of Mx.BorderImage
+        // Static methods
 
         static set_from_string(value: GObject.Value | any, str: string, filename: string): void;
     }
@@ -26217,7 +26217,7 @@ export namespace Mx {
     abstract class BoxLayoutChildPrivate {
         static $gtype: GObject.GType<BoxLayoutChildPrivate>;
 
-        // Constructors of Mx.BoxLayoutChildPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -26226,7 +26226,7 @@ export namespace Mx {
     abstract class BoxLayoutPrivate {
         static $gtype: GObject.GType<BoxLayoutPrivate>;
 
-        // Constructors of Mx.BoxLayoutPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -26236,7 +26236,7 @@ export namespace Mx {
     abstract class ButtonGroupPrivate {
         static $gtype: GObject.GType<ButtonGroupPrivate>;
 
-        // Constructors of Mx.ButtonGroupPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -26244,7 +26244,7 @@ export namespace Mx {
     abstract class ButtonPrivate {
         static $gtype: GObject.GType<ButtonPrivate>;
 
-        // Constructors of Mx.ButtonPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -26253,7 +26253,7 @@ export namespace Mx {
     abstract class ClipboardPrivate {
         static $gtype: GObject.GType<ClipboardPrivate>;
 
-        // Constructors of Mx.ClipboardPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -26262,7 +26262,7 @@ export namespace Mx {
     abstract class ComboBoxPrivate {
         static $gtype: GObject.GType<ComboBoxPrivate>;
 
-        // Constructors of Mx.ComboBoxPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -26271,7 +26271,7 @@ export namespace Mx {
     abstract class DeformBowTiePrivate {
         static $gtype: GObject.GType<DeformBowTiePrivate>;
 
-        // Constructors of Mx.DeformBowTiePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -26280,7 +26280,7 @@ export namespace Mx {
     abstract class DeformPageTurnPrivate {
         static $gtype: GObject.GType<DeformPageTurnPrivate>;
 
-        // Constructors of Mx.DeformPageTurnPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -26289,7 +26289,7 @@ export namespace Mx {
     abstract class DeformTexturePrivate {
         static $gtype: GObject.GType<DeformTexturePrivate>;
 
-        // Constructors of Mx.DeformTexturePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -26298,7 +26298,7 @@ export namespace Mx {
     abstract class DeformWavesPrivate {
         static $gtype: GObject.GType<DeformWavesPrivate>;
 
-        // Constructors of Mx.DeformWavesPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -26307,7 +26307,7 @@ export namespace Mx {
     abstract class DialogPrivate {
         static $gtype: GObject.GType<DialogPrivate>;
 
-        // Constructors of Mx.DialogPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -26318,7 +26318,7 @@ export namespace Mx {
     abstract class EntryPrivate {
         static $gtype: GObject.GType<EntryPrivate>;
 
-        // Constructors of Mx.EntryPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -26327,7 +26327,7 @@ export namespace Mx {
     abstract class ExpanderPrivate {
         static $gtype: GObject.GType<ExpanderPrivate>;
 
-        // Constructors of Mx.ExpanderPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -26336,7 +26336,7 @@ export namespace Mx {
     abstract class FadeEffectPrivate {
         static $gtype: GObject.GType<FadeEffectPrivate>;
 
-        // Constructors of Mx.FadeEffectPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -26345,7 +26345,7 @@ export namespace Mx {
     abstract class FloatingWidgetPrivate {
         static $gtype: GObject.GType<FloatingWidgetPrivate>;
 
-        // Constructors of Mx.FloatingWidgetPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -26354,7 +26354,7 @@ export namespace Mx {
     abstract class FocusManagerPrivate {
         static $gtype: GObject.GType<FocusManagerPrivate>;
 
-        // Constructors of Mx.FocusManagerPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -26364,7 +26364,7 @@ export namespace Mx {
     abstract class FramePrivate {
         static $gtype: GObject.GType<FramePrivate>;
 
-        // Constructors of Mx.FramePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -26373,7 +26373,7 @@ export namespace Mx {
     abstract class GridPrivate {
         static $gtype: GObject.GType<GridPrivate>;
 
-        // Constructors of Mx.GridPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -26382,7 +26382,7 @@ export namespace Mx {
     abstract class IconPrivate {
         static $gtype: GObject.GType<IconPrivate>;
 
-        // Constructors of Mx.IconPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -26391,7 +26391,7 @@ export namespace Mx {
     abstract class IconThemePrivate {
         static $gtype: GObject.GType<IconThemePrivate>;
 
-        // Constructors of Mx.IconThemePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -26400,7 +26400,7 @@ export namespace Mx {
     abstract class ImagePrivate {
         static $gtype: GObject.GType<ImagePrivate>;
 
-        // Constructors of Mx.ImagePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -26410,7 +26410,7 @@ export namespace Mx {
     abstract class ItemViewPrivate {
         static $gtype: GObject.GType<ItemViewPrivate>;
 
-        // Constructors of Mx.ItemViewPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -26419,7 +26419,7 @@ export namespace Mx {
     abstract class KineticScrollViewPrivate {
         static $gtype: GObject.GType<KineticScrollViewPrivate>;
 
-        // Constructors of Mx.KineticScrollViewPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -26428,7 +26428,7 @@ export namespace Mx {
     abstract class LabelPrivate {
         static $gtype: GObject.GType<LabelPrivate>;
 
-        // Constructors of Mx.LabelPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -26437,7 +26437,7 @@ export namespace Mx {
     abstract class ListViewPrivate {
         static $gtype: GObject.GType<ListViewPrivate>;
 
-        // Constructors of Mx.ListViewPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -26446,7 +26446,7 @@ export namespace Mx {
     abstract class MenuPrivate {
         static $gtype: GObject.GType<MenuPrivate>;
 
-        // Constructors of Mx.MenuPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -26455,7 +26455,7 @@ export namespace Mx {
     abstract class NotebookPrivate {
         static $gtype: GObject.GType<NotebookPrivate>;
 
-        // Constructors of Mx.NotebookPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -26464,7 +26464,7 @@ export namespace Mx {
     abstract class OffscreenPrivate {
         static $gtype: GObject.GType<OffscreenPrivate>;
 
-        // Constructors of Mx.OffscreenPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -26475,14 +26475,14 @@ export namespace Mx {
     class Padding {
         static $gtype: GObject.GType<Padding>;
 
-        // Own fields of Mx.Padding
+        // Fields
 
         top: number;
         right: number;
         bottom: number;
         left: number;
 
-        // Constructors of Mx.Padding
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -26499,7 +26499,7 @@ export namespace Mx {
     abstract class PathBarPrivate {
         static $gtype: GObject.GType<PathBarPrivate>;
 
-        // Constructors of Mx.PathBarPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -26508,7 +26508,7 @@ export namespace Mx {
     abstract class ProgressBarPrivate {
         static $gtype: GObject.GType<ProgressBarPrivate>;
 
-        // Constructors of Mx.ProgressBarPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -26517,7 +26517,7 @@ export namespace Mx {
     abstract class ScrollBarPrivate {
         static $gtype: GObject.GType<ScrollBarPrivate>;
 
-        // Constructors of Mx.ScrollBarPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -26526,7 +26526,7 @@ export namespace Mx {
     abstract class ScrollViewPrivate {
         static $gtype: GObject.GType<ScrollViewPrivate>;
 
-        // Constructors of Mx.ScrollViewPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -26536,7 +26536,7 @@ export namespace Mx {
     abstract class SettingsPrivate {
         static $gtype: GObject.GType<SettingsPrivate>;
 
-        // Constructors of Mx.SettingsPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -26544,7 +26544,7 @@ export namespace Mx {
     abstract class SettingsProvider {
         static $gtype: GObject.GType<SettingsProvider>;
 
-        // Constructors of Mx.SettingsProvider
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -26552,7 +26552,7 @@ export namespace Mx {
     class SettingsProviderIface {
         static $gtype: GObject.GType<SettingsProviderIface>;
 
-        // Constructors of Mx.SettingsProviderIface
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -26561,7 +26561,7 @@ export namespace Mx {
     abstract class SliderPrivate {
         static $gtype: GObject.GType<SliderPrivate>;
 
-        // Constructors of Mx.SliderPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -26570,7 +26570,7 @@ export namespace Mx {
     abstract class SpinnerPrivate {
         static $gtype: GObject.GType<SpinnerPrivate>;
 
-        // Constructors of Mx.SpinnerPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -26579,7 +26579,7 @@ export namespace Mx {
     abstract class StackChildPrivate {
         static $gtype: GObject.GType<StackChildPrivate>;
 
-        // Constructors of Mx.StackChildPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -26588,7 +26588,7 @@ export namespace Mx {
     abstract class StackPrivate {
         static $gtype: GObject.GType<StackPrivate>;
 
-        // Constructors of Mx.StackPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -26598,7 +26598,7 @@ export namespace Mx {
     abstract class StylePrivate {
         static $gtype: GObject.GType<StylePrivate>;
 
-        // Constructors of Mx.StylePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -26608,7 +26608,7 @@ export namespace Mx {
     abstract class TablePrivate {
         static $gtype: GObject.GType<TablePrivate>;
 
-        // Constructors of Mx.TablePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -26618,7 +26618,7 @@ export namespace Mx {
     abstract class TextureFramePrivate {
         static $gtype: GObject.GType<TextureFramePrivate>;
 
-        // Constructors of Mx.TextureFramePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -26627,7 +26627,7 @@ export namespace Mx {
     abstract class TogglePrivate {
         static $gtype: GObject.GType<TogglePrivate>;
 
-        // Constructors of Mx.TogglePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -26636,7 +26636,7 @@ export namespace Mx {
     abstract class ToolbarPrivate {
         static $gtype: GObject.GType<ToolbarPrivate>;
 
-        // Constructors of Mx.ToolbarPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -26645,7 +26645,7 @@ export namespace Mx {
     abstract class TooltipPrivate {
         static $gtype: GObject.GType<TooltipPrivate>;
 
-        // Constructors of Mx.TooltipPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -26654,7 +26654,7 @@ export namespace Mx {
     abstract class ViewportPrivate {
         static $gtype: GObject.GType<ViewportPrivate>;
 
-        // Constructors of Mx.ViewportPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -26663,7 +26663,7 @@ export namespace Mx {
     abstract class WidgetPrivate {
         static $gtype: GObject.GType<WidgetPrivate>;
 
-        // Constructors of Mx.WidgetPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -26672,7 +26672,7 @@ export namespace Mx {
     abstract class WindowPrivate {
         static $gtype: GObject.GType<WindowPrivate>;
 
-        // Constructors of Mx.WindowPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -26696,7 +26696,7 @@ export namespace Mx {
         prototype: Draggable;
     }
     interface Draggable extends Clutter.Actor {
-        // Own properties of Mx.Draggable
+        // Properties
 
         get axis(): DragAxis;
         set axis(val: DragAxis);
@@ -26713,7 +26713,7 @@ export namespace Mx {
         get dragThreshold(): number;
         set dragThreshold(val: number);
 
-        // Own methods of Mx.Draggable
+        // Methods
 
         disable(): void;
         enable(): void;
@@ -26729,7 +26729,7 @@ export namespace Mx {
         set_drag_actor(actor: Clutter.Actor): void;
         set_drag_threshold(threshold: number): void;
 
-        // Own virtual methods of Mx.Draggable
+        // Virtual methods
 
         vfunc_disable(): void;
         vfunc_drag_begin(event_x: number, event_y: number, event_button: number, modifiers: Clutter.ModifierType): void;
@@ -26754,21 +26754,21 @@ export namespace Mx {
         prototype: Droppable;
     }
     interface Droppable extends Clutter.Actor {
-        // Own properties of Mx.Droppable
+        // Properties
 
         get drop_enabled(): boolean;
         set drop_enabled(val: boolean);
         get dropEnabled(): boolean;
         set dropEnabled(val: boolean);
 
-        // Own methods of Mx.Droppable
+        // Methods
 
         accept_drop(draggable: Draggable): boolean;
         disable(): void;
         enable(): void;
         is_enabled(): boolean;
 
-        // Own virtual methods of Mx.Droppable
+        // Virtual methods
 
         vfunc_accept_drop(draggable: Draggable): boolean;
         vfunc_disable(): void;
@@ -26797,7 +26797,7 @@ export namespace Mx {
         prototype: Focusable;
     }
     interface Focusable extends GObject.Object {
-        // Own methods of Mx.Focusable
+        // Methods
 
         /**
          * Accept the focus
@@ -26813,7 +26813,7 @@ export namespace Mx {
          */
         move_focus(direction: FocusDirection, from: Focusable): Focusable;
 
-        // Own virtual methods of Mx.Focusable
+        // Virtual methods
 
         /**
          * Accept the focus
@@ -26841,7 +26841,7 @@ export namespace Mx {
         prototype: ItemFactory;
     }
     interface ItemFactory extends GObject.Object {
-        // Own methods of Mx.ItemFactory
+        // Methods
 
         /**
          * Create an item
@@ -26849,7 +26849,7 @@ export namespace Mx {
          */
         create(): Clutter.Actor;
 
-        // Own virtual methods of Mx.ItemFactory
+        // Virtual methods
 
         /**
          * Create an item
@@ -26875,7 +26875,7 @@ export namespace Mx {
         prototype: Scrollable;
     }
     interface Scrollable extends GObject.Object {
-        // Own properties of Mx.Scrollable
+        // Properties
 
         get horizontal_adjustment(): Adjustment;
         set horizontal_adjustment(val: Adjustment);
@@ -26886,7 +26886,7 @@ export namespace Mx {
         get verticalAdjustment(): Adjustment;
         set verticalAdjustment(val: Adjustment);
 
-        // Own methods of Mx.Scrollable
+        // Methods
 
         /**
          * Gets the adjustment objects that store the offsets of the scrollable widget
@@ -26895,7 +26895,7 @@ export namespace Mx {
         get_adjustments(): [Adjustment | null, Adjustment | null];
         set_adjustments(hadjustment: Adjustment, vadjustment: Adjustment): void;
 
-        // Own virtual methods of Mx.Scrollable
+        // Virtual methods
 
         /**
          * Gets the adjustment objects that store the offsets of the scrollable widget
@@ -26924,7 +26924,7 @@ export namespace Mx {
         prototype: Stylable;
     }
     interface Stylable extends GObject.Object {
-        // Own properties of Mx.Stylable
+        // Properties
 
         get style(): Style;
         set style(val: Style);
@@ -26937,7 +26937,7 @@ export namespace Mx {
         get stylePseudoClass(): string;
         set stylePseudoClass(val: string);
 
-        // Own methods of Mx.Stylable
+        // Methods
 
         apply_clutter_text_attributes(text: Clutter.Text): void;
         connect_change_notifiers(): void;
@@ -27036,7 +27036,7 @@ export namespace Mx {
          */
         style_pseudo_class_remove(remove_class: string): void;
 
-        // Own virtual methods of Mx.Stylable
+        // Virtual methods
 
         /**
          * Retrieves the #MxStyle used by `stylable`. This function does not

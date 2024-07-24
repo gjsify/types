@@ -29,7 +29,7 @@ export namespace Gamerzilla {
     class GamerzillaGobj extends GObject.Object {
         static $gtype: GObject.GType<GamerzillaGobj>;
 
-        // Own properties of Gamerzilla.GamerzillaGobj
+        // Properties
 
         get password(): string;
         set password(val: string);
@@ -38,7 +38,7 @@ export namespace Gamerzilla {
         get username(): string;
         set username(val: string);
 
-        // Constructors of Gamerzilla.GamerzillaGobj
+        // Constructors
 
         constructor(properties?: Partial<GamerzillaGobj.ConstructorProps>, ...args: any[]);
 
@@ -46,7 +46,7 @@ export namespace Gamerzilla {
 
         static ['new'](): GamerzillaGobj;
 
-        // Own methods of Gamerzilla.GamerzillaGobj
+        // Methods
 
         connect(): void;
         connect(...args: never[]): any;
@@ -64,7 +64,7 @@ export namespace Gamerzilla {
     abstract class GamerzillaGobjPrivate {
         static $gtype: GObject.GType<GamerzillaGobjPrivate>;
 
-        // Constructors of Gamerzilla.GamerzillaGobjPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }

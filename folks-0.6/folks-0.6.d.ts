@@ -124,11 +124,11 @@ export namespace Folks {
     class ImDetailsError extends GLib.Error {
         static $gtype: GObject.GType<ImDetailsError>;
 
-        // Static fields of Folks.ImDetailsError
+        // Static fields
 
         static INVALID_IM_ADDRESS: number;
 
-        // Constructors of Folks.ImDetailsError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
@@ -137,7 +137,7 @@ export namespace Folks {
     class IndividualAggregatorError extends GLib.Error {
         static $gtype: GObject.GType<IndividualAggregatorError>;
 
-        // Static fields of Folks.IndividualAggregatorError
+        // Static fields
 
         static ADD_FAILED: number;
         static NO_WRITEABLE_STORE: number;
@@ -145,7 +145,7 @@ export namespace Folks {
         static PROPERTY_NOT_WRITEABLE: number;
         static NO_PRIMARY_STORE: number;
 
-        // Constructors of Folks.IndividualAggregatorError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
@@ -154,7 +154,7 @@ export namespace Folks {
     class PersonaStoreError extends GLib.Error {
         static $gtype: GObject.GType<PersonaStoreError>;
 
-        // Static fields of Folks.PersonaStoreError
+        // Static fields
 
         static INVALID_ARGUMENT: number;
         static CREATE_FAILED: number;
@@ -165,7 +165,7 @@ export namespace Folks {
         static REMOVE_FAILED: number;
         static UNSUPPORTED_ON_NON_USER: number;
 
-        // Constructors of Folks.PersonaStoreError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
@@ -174,14 +174,14 @@ export namespace Folks {
     class PropertyError extends GLib.Error {
         static $gtype: GObject.GType<PropertyError>;
 
-        // Static fields of Folks.PropertyError
+        // Static fields
 
         static NOT_WRITEABLE: number;
         static INVALID_VALUE: number;
         static UNKNOWN_ERROR: number;
         static UNAVAILABLE: number;
 
-        // Constructors of Folks.PropertyError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
@@ -226,7 +226,7 @@ export namespace Folks {
     abstract class AbstractFieldDetails extends GObject.Object {
         static $gtype: GObject.GType<AbstractFieldDetails>;
 
-        // Own properties of Folks.AbstractFieldDetails
+        // Properties
 
         get t_type(): GObject.GType;
         get tType(): GObject.GType;
@@ -243,18 +243,18 @@ export namespace Folks {
         get parameters(): Gee.MultiMap;
         set parameters(val: Gee.MultiMap);
 
-        // Constructors of Folks.AbstractFieldDetails
+        // Constructors
 
         constructor(properties?: Partial<AbstractFieldDetails.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of Folks.AbstractFieldDetails
+        // Static methods
 
         static equal_static(left: AbstractFieldDetails, right: AbstractFieldDetails): boolean;
         static hash_static(value: AbstractFieldDetails): number;
 
-        // Own virtual methods of Folks.AbstractFieldDetails
+        // Virtual methods
 
         vfunc_equal(that: AbstractFieldDetails): boolean;
         vfunc_parameters_equal(that: AbstractFieldDetails): boolean;
@@ -267,7 +267,7 @@ export namespace Folks {
         vfunc_get_parameters(): Gee.MultiMap;
         vfunc_set_parameters(value: Gee.MultiMap): void;
 
-        // Own methods of Folks.AbstractFieldDetails
+        // Methods
 
         get_parameter_values(parameter_name: string): Gee.Collection;
         add_parameter(parameter_name: string, parameter_value: string): void;
@@ -296,17 +296,17 @@ export namespace Folks {
     class AvatarCache extends GObject.Object {
         static $gtype: GObject.GType<AvatarCache>;
 
-        // Constructors of Folks.AvatarCache
+        // Constructors
 
         constructor(properties?: Partial<AvatarCache.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of Folks.AvatarCache
+        // Static methods
 
         static dup(): AvatarCache;
 
-        // Own methods of Folks.AvatarCache
+        // Methods
 
         load_avatar(id: string, _callback_: Gio.AsyncReadyCallback<this>): void;
         load_avatar_finish(_res_: Gio.AsyncResult): Gio.LoadableIcon;
@@ -337,7 +337,7 @@ export namespace Folks {
     class BackendStore extends GObject.Object {
         static $gtype: GObject.GType<BackendStore>;
 
-        // Own properties of Folks.BackendStore
+        // Properties
 
         get enabled_backends(): Gee.Map;
         set enabled_backends(val: Gee.Map);
@@ -348,17 +348,17 @@ export namespace Folks {
         get isPrepared(): boolean;
         set isPrepared(val: boolean);
 
-        // Own fields of Folks.BackendStore
+        // Fields
 
         folks_backend_store_KEY_FILE_GROUP_ALL_OTHERS: string;
 
-        // Constructors of Folks.BackendStore
+        // Constructors
 
         constructor(properties?: Partial<BackendStore.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of Folks.BackendStore
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -367,11 +367,11 @@ export namespace Folks {
         connect_after(signal: 'backend-available', callback: (_source: this, backend: Backend) => void): number;
         emit(signal: 'backend-available', backend: Backend): void;
 
-        // Own static methods of Folks.BackendStore
+        // Static methods
 
         static dup(): BackendStore;
 
-        // Own methods of Folks.BackendStore
+        // Methods
 
         prepare(_callback_: Gio.AsyncReadyCallback<this>): void;
         prepare_finish(_res_: Gio.AsyncResult): void;
@@ -415,7 +415,7 @@ export namespace Folks {
     abstract class Backend extends GObject.Object {
         static $gtype: GObject.GType<Backend>;
 
-        // Own properties of Folks.Backend
+        // Properties
 
         get is_prepared(): boolean;
         get isPrepared(): boolean;
@@ -425,13 +425,13 @@ export namespace Folks {
         get persona_stores(): Gee.Map;
         get personaStores(): Gee.Map;
 
-        // Constructors of Folks.Backend
+        // Constructors
 
         constructor(properties?: Partial<Backend.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of Folks.Backend
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -443,7 +443,7 @@ export namespace Folks {
         connect_after(signal: 'persona-store-removed', callback: (_source: this, store: PersonaStore) => void): number;
         emit(signal: 'persona-store-removed', store: PersonaStore): void;
 
-        // Own virtual methods of Folks.Backend
+        // Virtual methods
 
         vfunc_disable_persona_store(store: PersonaStore): void;
         vfunc_enable_persona_store(store: PersonaStore): void;
@@ -457,7 +457,7 @@ export namespace Folks {
         vfunc_get_name(): string;
         vfunc_get_persona_stores(): Gee.Map;
 
-        // Own methods of Folks.Backend
+        // Methods
 
         disable_persona_store(store: PersonaStore): void;
         enable_persona_store(store: PersonaStore): void;
@@ -492,7 +492,7 @@ export namespace Folks {
     class Debug extends GObject.Object {
         static $gtype: GObject.GType<Debug>;
 
-        // Own properties of Folks.Debug
+        // Properties
 
         get colour_enabled(): boolean;
         set colour_enabled(val: boolean);
@@ -503,13 +503,13 @@ export namespace Folks {
         get debugOutputEnabled(): boolean;
         set debugOutputEnabled(val: boolean);
 
-        // Constructors of Folks.Debug
+        // Constructors
 
         constructor(properties?: Partial<Debug.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of Folks.Debug
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -518,12 +518,12 @@ export namespace Folks {
         connect_after(signal: 'print-status', callback: (_source: this) => void): number;
         emit(signal: 'print-status'): void;
 
-        // Own static methods of Folks.Debug
+        // Static methods
 
         static dup(): Debug;
         static dup_with_flags(debug_flags: string, colour_enabled: boolean): Debug;
 
-        // Own methods of Folks.Debug
+        // Methods
 
         emit_print_status(): void;
         indent(): void;
@@ -543,7 +543,7 @@ export namespace Folks {
     class EmailFieldDetails extends AbstractFieldDetails {
         static $gtype: GObject.GType<EmailFieldDetails>;
 
-        // Constructors of Folks.EmailFieldDetails
+        // Constructors
 
         constructor(properties?: Partial<EmailFieldDetails.ConstructorProps>, ...args: any[]);
 
@@ -561,7 +561,7 @@ export namespace Folks {
     class ExtendedFieldDetails extends AbstractFieldDetails {
         static $gtype: GObject.GType<ExtendedFieldDetails>;
 
-        // Constructors of Folks.ExtendedFieldDetails
+        // Constructors
 
         constructor(properties?: Partial<ExtendedFieldDetails.ConstructorProps>, ...args: any[]);
 
@@ -579,7 +579,7 @@ export namespace Folks {
     class ImFieldDetails extends AbstractFieldDetails {
         static $gtype: GObject.GType<ImFieldDetails>;
 
-        // Constructors of Folks.ImFieldDetails
+        // Constructors
 
         constructor(properties?: Partial<ImFieldDetails.ConstructorProps>, ...args: any[]);
 
@@ -618,7 +618,7 @@ export namespace Folks {
     class IndividualAggregator extends GObject.Object {
         static $gtype: GObject.GType<IndividualAggregator>;
 
-        // Own properties of Folks.IndividualAggregator
+        // Properties
 
         get is_prepared(): boolean;
         get isPrepared(): boolean;
@@ -633,7 +633,7 @@ export namespace Folks {
         get user(): Individual;
         set user(val: Individual);
 
-        // Constructors of Folks.IndividualAggregator
+        // Constructors
 
         constructor(properties?: Partial<IndividualAggregator.ConstructorProps>, ...args: any[]);
 
@@ -643,7 +643,7 @@ export namespace Folks {
 
         static with_backend_store(store: BackendStore): IndividualAggregator;
 
-        // Own signals of Folks.IndividualAggregator
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -688,12 +688,12 @@ export namespace Folks {
         ): number;
         emit(signal: 'individuals-changed-detailed', changes: Gee.MultiMap): void;
 
-        // Own static methods of Folks.IndividualAggregator
+        // Static methods
 
         static dup(): IndividualAggregator;
         static dup_with_backend_store(store: BackendStore): IndividualAggregator;
 
-        // Own methods of Folks.IndividualAggregator
+        // Methods
 
         prepare(_callback_: Gio.AsyncReadyCallback<this>): void;
         prepare_finish(_res_: Gio.AsyncResult): void;
@@ -804,7 +804,7 @@ export namespace Folks {
     {
         static $gtype: GObject.GType<Individual>;
 
-        // Own properties of Folks.Individual
+        // Properties
 
         get trust_level(): TrustLevel;
         set trust_level(val: TrustLevel);
@@ -821,7 +821,7 @@ export namespace Folks {
         get personas(): Gee.Set;
         set personas(val: Gee.Set);
 
-        // Constructors of Folks.Individual
+        // Constructors
 
         constructor(properties?: Partial<Individual.ConstructorProps>, ...args: any[]);
 
@@ -829,7 +829,7 @@ export namespace Folks {
 
         static ['new'](personas: Gee.Set): Individual;
 
-        // Own signals of Folks.Individual
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -847,7 +847,7 @@ export namespace Folks {
         ): number;
         emit(signal: 'personas-changed', added: Gee.Set, removed: Gee.Set): void;
 
-        // Own methods of Folks.Individual
+        // Methods
 
         has_anti_link_with_persona(p: Persona): boolean;
         has_anti_link_with_individual(i: Individual): boolean;
@@ -1569,12 +1569,12 @@ export namespace Folks {
     class Location extends GObject.Object {
         static $gtype: GObject.GType<Location>;
 
-        // Own fields of Folks.Location
+        // Fields
 
         latitude: number;
         longitude: number;
 
-        // Constructors of Folks.Location
+        // Constructors
 
         constructor(properties?: Partial<Location.ConstructorProps>, ...args: any[]);
 
@@ -1582,7 +1582,7 @@ export namespace Folks {
 
         static ['new'](latitude: number, longitude: number): Location;
 
-        // Own methods of Folks.Location
+        // Methods
 
         equal(other: Location): boolean;
         equal_coordinates(latitude: number, longitude: number): boolean;
@@ -1606,7 +1606,7 @@ export namespace Folks {
     class StructuredName extends GObject.Object {
         static $gtype: GObject.GType<StructuredName>;
 
-        // Own properties of Folks.StructuredName
+        // Properties
 
         get family_name(): string;
         set family_name(val: string);
@@ -1625,7 +1625,7 @@ export namespace Folks {
         get suffixes(): string;
         set suffixes(val: string);
 
-        // Constructors of Folks.StructuredName
+        // Constructors
 
         constructor(properties?: Partial<StructuredName.ConstructorProps>, ...args: any[]);
 
@@ -1641,7 +1641,7 @@ export namespace Folks {
 
         static simple(family_name: string, given_name: string): StructuredName;
 
-        // Own methods of Folks.StructuredName
+        // Methods
 
         is_empty(): boolean;
         equal(other: StructuredName): boolean;
@@ -1670,12 +1670,12 @@ export namespace Folks {
     class NoteFieldDetails extends AbstractFieldDetails {
         static $gtype: GObject.GType<NoteFieldDetails>;
 
-        // Own properties of Folks.NoteFieldDetails
+        // Properties
 
         get uid(): string;
         set uid(val: string);
 
-        // Constructors of Folks.NoteFieldDetails
+        // Constructors
 
         constructor(properties?: Partial<NoteFieldDetails.ConstructorProps>, ...args: any[]);
 
@@ -1683,7 +1683,7 @@ export namespace Folks {
 
         static ['new'](value: string, parameters: Gee.MultiMap, uid: string): NoteFieldDetails;
 
-        // Own methods of Folks.NoteFieldDetails
+        // Methods
 
         get_uid(): string;
         set_uid(value: string): void;
@@ -1708,7 +1708,7 @@ export namespace Folks {
     abstract class ObjectCache extends GObject.Object {
         static $gtype: GObject.GType<ObjectCache>;
 
-        // Own properties of Folks.ObjectCache
+        // Properties
 
         get t_type(): GObject.GType;
         get tType(): GObject.GType;
@@ -1720,20 +1720,20 @@ export namespace Folks {
         get typeId(): string;
         get id(): string;
 
-        // Constructors of Folks.ObjectCache
+        // Constructors
 
         constructor(properties?: Partial<ObjectCache.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of Folks.ObjectCache
+        // Virtual methods
 
         vfunc_get_serialised_object_type(object_version: number): GLib.VariantType;
         vfunc_get_serialised_object_version(): number;
         vfunc_serialise_object(object: any): GLib.Variant;
         vfunc_deserialise_object(variant: GLib.Variant, object_version: number): any;
 
-        // Own methods of Folks.ObjectCache
+        // Methods
 
         get_serialised_object_type(object_version: number): GLib.VariantType;
         get_serialised_object_version(): number;
@@ -1797,7 +1797,7 @@ export namespace Folks {
     abstract class PersonaStore extends GObject.Object {
         static $gtype: GObject.GType<PersonaStore>;
 
-        // Own properties of Folks.PersonaStore
+        // Properties
 
         get type_id(): string;
         get typeId(): string;
@@ -1836,13 +1836,13 @@ export namespace Folks {
         get isUserSetDefault(): boolean;
         set isUserSetDefault(val: boolean);
 
-        // Constructors of Folks.PersonaStore
+        // Constructors
 
         constructor(properties?: Partial<PersonaStore.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of Folks.PersonaStore
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -1881,11 +1881,11 @@ export namespace Folks {
         connect_after(signal: 'removed', callback: (_source: this) => void): number;
         emit(signal: 'removed'): void;
 
-        // Own static methods of Folks.PersonaStore
+        // Static methods
 
         static detail_key(detail: PersonaDetail): string;
 
-        // Own virtual methods of Folks.PersonaStore
+        // Virtual methods
 
         vfunc_prepare(_callback_: Gio.AsyncReadyCallback<this>): void;
         vfunc_prepare_finish(_res_: Gio.AsyncResult): void;
@@ -1908,7 +1908,7 @@ export namespace Folks {
         vfunc_get_is_quiescent(): boolean;
         vfunc_get_always_writeable_properties(): string[];
 
-        // Own methods of Folks.PersonaStore
+        // Methods
 
         _emit_personas_changed(
             added: Gee.Set,
@@ -1973,7 +1973,7 @@ export namespace Folks {
     abstract class Persona extends GObject.Object {
         static $gtype: GObject.GType<Persona>;
 
-        // Own properties of Folks.Persona
+        // Properties
 
         get iid(): string;
         get uid(): string;
@@ -1989,24 +1989,24 @@ export namespace Folks {
         get writeable_properties(): string[];
         get writeableProperties(): string[];
 
-        // Constructors of Folks.Persona
+        // Constructors
 
         constructor(properties?: Partial<Persona.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of Folks.Persona
+        // Static methods
 
         static build_uid(backend_name: string, persona_store_id: string, persona_id: string): string;
         static split_uid(uid: string): [string, string, string];
 
-        // Own virtual methods of Folks.Persona
+        // Virtual methods
 
         vfunc_linkable_property_to_links(prop_name: string, callback: Persona.LinkablePropertyCallback): void;
         vfunc_get_linkable_properties(): string[];
         vfunc_get_writeable_properties(): string[];
 
-        // Own methods of Folks.Persona
+        // Methods
 
         linkable_property_to_links(prop_name: string, callback: Persona.LinkablePropertyCallback): void;
         get_iid(): string;
@@ -2028,7 +2028,7 @@ export namespace Folks {
     class PhoneFieldDetails extends AbstractFieldDetails {
         static $gtype: GObject.GType<PhoneFieldDetails>;
 
-        // Constructors of Folks.PhoneFieldDetails
+        // Constructors
 
         constructor(properties?: Partial<PhoneFieldDetails.ConstructorProps>, ...args: any[]);
 
@@ -2036,7 +2036,7 @@ export namespace Folks {
 
         static ['new'](value: string, parameters: Gee.MultiMap): PhoneFieldDetails;
 
-        // Own methods of Folks.PhoneFieldDetails
+        // Methods
 
         get_normalised(): string;
     }
@@ -2063,7 +2063,7 @@ export namespace Folks {
     class PostalAddress extends GObject.Object {
         static $gtype: GObject.GType<PostalAddress>;
 
-        // Own properties of Folks.PostalAddress
+        // Properties
 
         get po_box(): string;
         set po_box(val: string);
@@ -2090,7 +2090,7 @@ export namespace Folks {
         get uid(): string;
         set uid(val: string);
 
-        // Constructors of Folks.PostalAddress
+        // Constructors
 
         constructor(properties?: Partial<PostalAddress.ConstructorProps>, ...args: any[]);
 
@@ -2108,7 +2108,7 @@ export namespace Folks {
             uid: string,
         ): PostalAddress;
 
-        // Own methods of Folks.PostalAddress
+        // Methods
 
         is_empty(): boolean;
         equal(_with: PostalAddress): boolean;
@@ -2142,7 +2142,7 @@ export namespace Folks {
     class PostalAddressFieldDetails extends AbstractFieldDetails {
         static $gtype: GObject.GType<PostalAddressFieldDetails>;
 
-        // Constructors of Folks.PostalAddressFieldDetails
+        // Constructors
 
         constructor(properties?: Partial<PostalAddressFieldDetails.ConstructorProps>, ...args: any[]);
 
@@ -2160,11 +2160,11 @@ export namespace Folks {
     class PotentialMatch extends GObject.Object {
         static $gtype: GObject.GType<PotentialMatch>;
 
-        // Own fields of Folks.PotentialMatch
+        // Fields
 
         folks_potential_match_known_email_aliases: Gee.Set;
 
-        // Constructors of Folks.PotentialMatch
+        // Constructors
 
         constructor(properties?: Partial<PotentialMatch.ConstructorProps>, ...args: any[]);
 
@@ -2172,7 +2172,7 @@ export namespace Folks {
 
         static ['new'](): PotentialMatch;
 
-        // Own methods of Folks.PotentialMatch
+        // Methods
 
         potential_match(a: Individual, b: Individual): MatchResult;
     }
@@ -2189,23 +2189,23 @@ export namespace Folks {
     abstract class Query extends GObject.Object {
         static $gtype: GObject.GType<Query>;
 
-        // Own properties of Folks.Query
+        // Properties
 
         get match_fields(): string[];
         get matchFields(): string[];
 
-        // Constructors of Folks.Query
+        // Constructors
 
         constructor(properties?: Partial<Query.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of Folks.Query
+        // Virtual methods
 
         vfunc_is_match(individual: Individual): number;
         vfunc_get_match_fields(): string[];
 
-        // Own methods of Folks.Query
+        // Methods
 
         is_match(individual: Individual): number;
         get_match_fields(): string[];
@@ -2226,7 +2226,7 @@ export namespace Folks {
     class Role extends GObject.Object {
         static $gtype: GObject.GType<Role>;
 
-        // Own properties of Folks.Role
+        // Properties
 
         get organisation_name(): string;
         set organisation_name(val: string);
@@ -2239,7 +2239,7 @@ export namespace Folks {
         get uid(): string;
         set uid(val: string);
 
-        // Constructors of Folks.Role
+        // Constructors
 
         constructor(properties?: Partial<Role.ConstructorProps>, ...args: any[]);
 
@@ -2247,12 +2247,12 @@ export namespace Folks {
 
         static ['new'](title: string, organisation_name: string, uid: string): Role;
 
-        // Own static methods of Folks.Role
+        // Static methods
 
         static equal(a: Role, b: Role): boolean;
         static hash(r: Role): number;
 
-        // Own methods of Folks.Role
+        // Methods
 
         is_empty(): boolean;
         to_string(): string;
@@ -2275,7 +2275,7 @@ export namespace Folks {
     class RoleFieldDetails extends AbstractFieldDetails {
         static $gtype: GObject.GType<RoleFieldDetails>;
 
-        // Constructors of Folks.RoleFieldDetails
+        // Constructors
 
         constructor(properties?: Partial<RoleFieldDetails.ConstructorProps>, ...args: any[]);
 
@@ -2307,7 +2307,7 @@ export namespace Folks {
     class SearchView extends GObject.Object {
         static $gtype: GObject.GType<SearchView>;
 
-        // Own properties of Folks.SearchView
+        // Properties
 
         get aggregator(): IndividualAggregator;
         get query(): Query;
@@ -2318,7 +2318,7 @@ export namespace Folks {
         get is_quiescent(): boolean;
         get isQuiescent(): boolean;
 
-        // Constructors of Folks.SearchView
+        // Constructors
 
         constructor(properties?: Partial<SearchView.ConstructorProps>, ...args: any[]);
 
@@ -2326,7 +2326,7 @@ export namespace Folks {
 
         static ['new'](aggregator: IndividualAggregator, query: Query): SearchView;
 
-        // Own signals of Folks.SearchView
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -2341,7 +2341,7 @@ export namespace Folks {
         ): number;
         emit(signal: 'individuals-changed-detailed', added: Gee.SortedSet, removed: Gee.SortedSet): void;
 
-        // Own methods of Folks.SearchView
+        // Methods
 
         prepare(_callback_: Gio.AsyncReadyCallback<this>): void;
         prepare_finish(_res_: Gio.AsyncResult): void;
@@ -2371,7 +2371,7 @@ export namespace Folks {
     class SimpleQuery extends Query {
         static $gtype: GObject.GType<SimpleQuery>;
 
-        // Own properties of Folks.SimpleQuery
+        // Properties
 
         get query_string(): string;
         set query_string(val: string);
@@ -2382,7 +2382,7 @@ export namespace Folks {
         get queryLocale(): string;
         set queryLocale(val: string);
 
-        // Constructors of Folks.SimpleQuery
+        // Constructors
 
         constructor(properties?: Partial<SimpleQuery.ConstructorProps>, ...args: any[]);
 
@@ -2390,7 +2390,7 @@ export namespace Folks {
 
         static ['new'](query_string: string, match_fields: string[]): SimpleQuery;
 
-        // Own methods of Folks.SimpleQuery
+        // Methods
 
         get_query_string(): string;
         set_query_string(value: string): void;
@@ -2407,7 +2407,7 @@ export namespace Folks {
     class UrlFieldDetails extends AbstractFieldDetails {
         static $gtype: GObject.GType<UrlFieldDetails>;
 
-        // Constructors of Folks.UrlFieldDetails
+        // Constructors
 
         constructor(properties?: Partial<UrlFieldDetails.ConstructorProps>, ...args: any[]);
 
@@ -2425,7 +2425,7 @@ export namespace Folks {
     class Utils extends GObject.Object {
         static $gtype: GObject.GType<Utils>;
 
-        // Constructors of Folks.Utils
+        // Constructors
 
         constructor(properties?: Partial<Utils.ConstructorProps>, ...args: any[]);
 
@@ -2433,7 +2433,7 @@ export namespace Folks {
 
         static ['new'](): Utils;
 
-        // Own static methods of Folks.Utils
+        // Static methods
 
         static multi_map_str_str_equal(a: Gee.MultiMap, b: Gee.MultiMap): boolean;
         static multi_map_str_afd_equal(a: Gee.MultiMap, b: Gee.MultiMap): boolean;
@@ -2450,7 +2450,7 @@ export namespace Folks {
     class WebServiceFieldDetails extends AbstractFieldDetails {
         static $gtype: GObject.GType<WebServiceFieldDetails>;
 
-        // Constructors of Folks.WebServiceFieldDetails
+        // Constructors
 
         constructor(properties?: Partial<WebServiceFieldDetails.ConstructorProps>, ...args: any[]);
 
@@ -2463,7 +2463,7 @@ export namespace Folks {
     abstract class AbstractFieldDetailsPrivate {
         static $gtype: GObject.GType<AbstractFieldDetailsPrivate>;
 
-        // Constructors of Folks.AbstractFieldDetailsPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2472,7 +2472,7 @@ export namespace Folks {
     abstract class AvatarCachePrivate {
         static $gtype: GObject.GType<AvatarCachePrivate>;
 
-        // Constructors of Folks.AvatarCachePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2481,7 +2481,7 @@ export namespace Folks {
     abstract class BackendStorePrivate {
         static $gtype: GObject.GType<BackendStorePrivate>;
 
-        // Constructors of Folks.BackendStorePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2490,7 +2490,7 @@ export namespace Folks {
     abstract class BackendPrivate {
         static $gtype: GObject.GType<BackendPrivate>;
 
-        // Constructors of Folks.BackendPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2499,7 +2499,7 @@ export namespace Folks {
     abstract class DebugPrivate {
         static $gtype: GObject.GType<DebugPrivate>;
 
-        // Constructors of Folks.DebugPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2508,7 +2508,7 @@ export namespace Folks {
     abstract class EmailFieldDetailsPrivate {
         static $gtype: GObject.GType<EmailFieldDetailsPrivate>;
 
-        // Constructors of Folks.EmailFieldDetailsPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2517,7 +2517,7 @@ export namespace Folks {
     abstract class ExtendedFieldDetailsPrivate {
         static $gtype: GObject.GType<ExtendedFieldDetailsPrivate>;
 
-        // Constructors of Folks.ExtendedFieldDetailsPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2526,7 +2526,7 @@ export namespace Folks {
     abstract class ImFieldDetailsPrivate {
         static $gtype: GObject.GType<ImFieldDetailsPrivate>;
 
-        // Constructors of Folks.ImFieldDetailsPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2535,7 +2535,7 @@ export namespace Folks {
     abstract class IndividualAggregatorPrivate {
         static $gtype: GObject.GType<IndividualAggregatorPrivate>;
 
-        // Constructors of Folks.IndividualAggregatorPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2544,7 +2544,7 @@ export namespace Folks {
     abstract class IndividualPrivate {
         static $gtype: GObject.GType<IndividualPrivate>;
 
-        // Constructors of Folks.IndividualPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2553,7 +2553,7 @@ export namespace Folks {
     abstract class LocationPrivate {
         static $gtype: GObject.GType<LocationPrivate>;
 
-        // Constructors of Folks.LocationPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2562,7 +2562,7 @@ export namespace Folks {
     abstract class StructuredNamePrivate {
         static $gtype: GObject.GType<StructuredNamePrivate>;
 
-        // Constructors of Folks.StructuredNamePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2571,7 +2571,7 @@ export namespace Folks {
     abstract class NoteFieldDetailsPrivate {
         static $gtype: GObject.GType<NoteFieldDetailsPrivate>;
 
-        // Constructors of Folks.NoteFieldDetailsPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2580,7 +2580,7 @@ export namespace Folks {
     abstract class ObjectCachePrivate {
         static $gtype: GObject.GType<ObjectCachePrivate>;
 
-        // Constructors of Folks.ObjectCachePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2589,7 +2589,7 @@ export namespace Folks {
     abstract class PersonaStorePrivate {
         static $gtype: GObject.GType<PersonaStorePrivate>;
 
-        // Constructors of Folks.PersonaStorePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2598,7 +2598,7 @@ export namespace Folks {
     abstract class PersonaPrivate {
         static $gtype: GObject.GType<PersonaPrivate>;
 
-        // Constructors of Folks.PersonaPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2607,7 +2607,7 @@ export namespace Folks {
     abstract class PhoneFieldDetailsPrivate {
         static $gtype: GObject.GType<PhoneFieldDetailsPrivate>;
 
-        // Constructors of Folks.PhoneFieldDetailsPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2616,7 +2616,7 @@ export namespace Folks {
     abstract class PostalAddressPrivate {
         static $gtype: GObject.GType<PostalAddressPrivate>;
 
-        // Constructors of Folks.PostalAddressPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2625,7 +2625,7 @@ export namespace Folks {
     abstract class PostalAddressFieldDetailsPrivate {
         static $gtype: GObject.GType<PostalAddressFieldDetailsPrivate>;
 
-        // Constructors of Folks.PostalAddressFieldDetailsPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2634,7 +2634,7 @@ export namespace Folks {
     abstract class PotentialMatchPrivate {
         static $gtype: GObject.GType<PotentialMatchPrivate>;
 
-        // Constructors of Folks.PotentialMatchPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2643,7 +2643,7 @@ export namespace Folks {
     abstract class QueryPrivate {
         static $gtype: GObject.GType<QueryPrivate>;
 
-        // Constructors of Folks.QueryPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2652,7 +2652,7 @@ export namespace Folks {
     abstract class RolePrivate {
         static $gtype: GObject.GType<RolePrivate>;
 
-        // Constructors of Folks.RolePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2661,7 +2661,7 @@ export namespace Folks {
     abstract class RoleFieldDetailsPrivate {
         static $gtype: GObject.GType<RoleFieldDetailsPrivate>;
 
-        // Constructors of Folks.RoleFieldDetailsPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2670,7 +2670,7 @@ export namespace Folks {
     abstract class SearchViewPrivate {
         static $gtype: GObject.GType<SearchViewPrivate>;
 
-        // Constructors of Folks.SearchViewPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2679,7 +2679,7 @@ export namespace Folks {
     abstract class SimpleQueryPrivate {
         static $gtype: GObject.GType<SimpleQueryPrivate>;
 
-        // Constructors of Folks.SimpleQueryPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2688,7 +2688,7 @@ export namespace Folks {
     abstract class UrlFieldDetailsPrivate {
         static $gtype: GObject.GType<UrlFieldDetailsPrivate>;
 
-        // Constructors of Folks.UrlFieldDetailsPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2697,7 +2697,7 @@ export namespace Folks {
     abstract class UtilsPrivate {
         static $gtype: GObject.GType<UtilsPrivate>;
 
-        // Constructors of Folks.UtilsPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2706,7 +2706,7 @@ export namespace Folks {
     abstract class WebServiceFieldDetailsPrivate {
         static $gtype: GObject.GType<WebServiceFieldDetailsPrivate>;
 
-        // Constructors of Folks.WebServiceFieldDetailsPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2745,19 +2745,19 @@ export namespace Folks {
         prototype: AliasDetails;
     }
     interface AliasDetails extends GObject.Object {
-        // Own properties of Folks.AliasDetails
+        // Properties
 
         get alias(): string;
         set alias(val: string);
 
-        // Own methods of Folks.AliasDetails
+        // Methods
 
         change_alias(alias: string, _callback_: Gio.AsyncReadyCallback<this>): void;
         change_alias_finish(_res_: Gio.AsyncResult): void;
         get_alias(): string;
         set_alias(value: string): void;
 
-        // Own virtual methods of Folks.AliasDetails
+        // Virtual methods
 
         vfunc_change_alias(alias: string, _callback_: Gio.AsyncReadyCallback<this>): void;
         vfunc_change_alias_finish(_res_: Gio.AsyncResult): void;
@@ -2781,14 +2781,14 @@ export namespace Folks {
         prototype: AntiLinkable;
     }
     interface AntiLinkable extends Persona {
-        // Own properties of Folks.AntiLinkable
+        // Properties
 
         get anti_links(): Gee.Set;
         set anti_links(val: Gee.Set);
         get antiLinks(): Gee.Set;
         set antiLinks(val: Gee.Set);
 
-        // Own methods of Folks.AntiLinkable
+        // Methods
 
         change_anti_links(anti_links: Gee.Set, _callback_: Gio.AsyncReadyCallback<this>): void;
         change_anti_links_finish(_res_: Gio.AsyncResult): void;
@@ -2805,7 +2805,7 @@ export namespace Folks {
         get_anti_links(): Gee.Set;
         set_anti_links(value: Gee.Set): void;
 
-        // Own virtual methods of Folks.AntiLinkable
+        // Virtual methods
 
         vfunc_change_anti_links(anti_links: Gee.Set, _callback_: Gio.AsyncReadyCallback<this>): void;
         vfunc_change_anti_links_finish(_res_: Gio.AsyncResult): void;
@@ -2828,19 +2828,19 @@ export namespace Folks {
         prototype: AvatarDetails;
     }
     interface AvatarDetails extends GObject.Object {
-        // Own properties of Folks.AvatarDetails
+        // Properties
 
         get avatar(): Gio.LoadableIcon;
         set avatar(val: Gio.LoadableIcon);
 
-        // Own methods of Folks.AvatarDetails
+        // Methods
 
         change_avatar(avatar: Gio.LoadableIcon, _callback_: Gio.AsyncReadyCallback<this>): void;
         change_avatar_finish(_res_: Gio.AsyncResult): void;
         get_avatar(): Gio.LoadableIcon;
         set_avatar(value: Gio.LoadableIcon): void;
 
-        // Own virtual methods of Folks.AvatarDetails
+        // Virtual methods
 
         vfunc_change_avatar(avatar: Gio.LoadableIcon, _callback_: Gio.AsyncReadyCallback<this>): void;
         vfunc_change_avatar_finish(_res_: Gio.AsyncResult): void;
@@ -2865,7 +2865,7 @@ export namespace Folks {
         prototype: BirthdayDetails;
     }
     interface BirthdayDetails extends GObject.Object {
-        // Own properties of Folks.BirthdayDetails
+        // Properties
 
         get birthday(): GLib.DateTime;
         set birthday(val: GLib.DateTime);
@@ -2874,7 +2874,7 @@ export namespace Folks {
         get calendarEventId(): string;
         set calendarEventId(val: string);
 
-        // Own methods of Folks.BirthdayDetails
+        // Methods
 
         change_birthday(birthday: GLib.DateTime, _callback_: Gio.AsyncReadyCallback<this>): void;
         change_birthday_finish(_res_: Gio.AsyncResult): void;
@@ -2885,7 +2885,7 @@ export namespace Folks {
         get_calendar_event_id(): string;
         set_calendar_event_id(value: string): void;
 
-        // Own virtual methods of Folks.BirthdayDetails
+        // Virtual methods
 
         vfunc_change_birthday(birthday: GLib.DateTime, _callback_: Gio.AsyncReadyCallback<this>): void;
         vfunc_change_birthday_finish(_res_: Gio.AsyncResult): void;
@@ -2913,21 +2913,21 @@ export namespace Folks {
         prototype: EmailDetails;
     }
     interface EmailDetails extends GObject.Object {
-        // Own properties of Folks.EmailDetails
+        // Properties
 
         get email_addresses(): Gee.Set;
         set email_addresses(val: Gee.Set);
         get emailAddresses(): Gee.Set;
         set emailAddresses(val: Gee.Set);
 
-        // Own methods of Folks.EmailDetails
+        // Methods
 
         change_email_addresses(email_addresses: Gee.Set, _callback_: Gio.AsyncReadyCallback<this>): void;
         change_email_addresses_finish(_res_: Gio.AsyncResult): void;
         get_email_addresses(): Gee.Set;
         set_email_addresses(value: Gee.Set): void;
 
-        // Own virtual methods of Folks.EmailDetails
+        // Virtual methods
 
         vfunc_change_email_addresses(email_addresses: Gee.Set, _callback_: Gio.AsyncReadyCallback<this>): void;
         vfunc_change_email_addresses_finish(_res_: Gio.AsyncResult): void;
@@ -2948,7 +2948,7 @@ export namespace Folks {
         prototype: ExtendedInfo;
     }
     interface ExtendedInfo extends GObject.Object {
-        // Own methods of Folks.ExtendedInfo
+        // Methods
 
         get_extended_field(name: string): ExtendedFieldDetails;
         change_extended_field(
@@ -2960,7 +2960,7 @@ export namespace Folks {
         remove_extended_field(name: string, _callback_: Gio.AsyncReadyCallback<this>): void;
         remove_extended_field_finish(_res_: Gio.AsyncResult): void;
 
-        // Own virtual methods of Folks.ExtendedInfo
+        // Virtual methods
 
         vfunc_get_extended_field(name: string): ExtendedFieldDetails;
         vfunc_change_extended_field(
@@ -2989,21 +2989,21 @@ export namespace Folks {
         prototype: FavouriteDetails;
     }
     interface FavouriteDetails extends GObject.Object {
-        // Own properties of Folks.FavouriteDetails
+        // Properties
 
         get is_favourite(): boolean;
         set is_favourite(val: boolean);
         get isFavourite(): boolean;
         set isFavourite(val: boolean);
 
-        // Own methods of Folks.FavouriteDetails
+        // Methods
 
         change_is_favourite(is_favourite: boolean, _callback_: Gio.AsyncReadyCallback<this>): void;
         change_is_favourite_finish(_res_: Gio.AsyncResult): void;
         get_is_favourite(): boolean;
         set_is_favourite(value: boolean): void;
 
-        // Own virtual methods of Folks.FavouriteDetails
+        // Virtual methods
 
         vfunc_change_is_favourite(is_favourite: boolean, _callback_: Gio.AsyncReadyCallback<this>): void;
         vfunc_change_is_favourite_finish(_res_: Gio.AsyncResult): void;
@@ -3026,19 +3026,19 @@ export namespace Folks {
         prototype: GenderDetails;
     }
     interface GenderDetails extends GObject.Object {
-        // Own properties of Folks.GenderDetails
+        // Properties
 
         get gender(): Gender;
         set gender(val: Gender);
 
-        // Own methods of Folks.GenderDetails
+        // Methods
 
         change_gender(gender: Gender, _callback_: Gio.AsyncReadyCallback<this>): void;
         change_gender_finish(_res_: Gio.AsyncResult): void;
         get_gender(): Gender;
         set_gender(value: Gender): void;
 
-        // Own virtual methods of Folks.GenderDetails
+        // Virtual methods
 
         vfunc_change_gender(gender: Gender, _callback_: Gio.AsyncReadyCallback<this>): void;
         vfunc_change_gender_finish(_res_: Gio.AsyncResult): void;
@@ -3061,12 +3061,12 @@ export namespace Folks {
         prototype: GroupDetails;
     }
     interface GroupDetails extends GObject.Object {
-        // Own properties of Folks.GroupDetails
+        // Properties
 
         get groups(): Gee.Set;
         set groups(val: Gee.Set);
 
-        // Own methods of Folks.GroupDetails
+        // Methods
 
         change_group(group: string, is_member: boolean, _callback_: Gio.AsyncReadyCallback<this>): void;
         change_group_finish(_res_: Gio.AsyncResult): void;
@@ -3075,7 +3075,7 @@ export namespace Folks {
         get_groups(): Gee.Set;
         set_groups(value: Gee.Set): void;
 
-        // Own virtual methods of Folks.GroupDetails
+        // Virtual methods
 
         vfunc_change_group(group: string, is_member: boolean, _callback_: Gio.AsyncReadyCallback<this>): void;
         vfunc_change_group_finish(_res_: Gio.AsyncResult): void;
@@ -3103,21 +3103,21 @@ export namespace Folks {
         normalise_im_address(im_address: string, protocol: string): string;
     }
     interface ImDetails extends GObject.Object {
-        // Own properties of Folks.ImDetails
+        // Properties
 
         get im_addresses(): Gee.MultiMap;
         set im_addresses(val: Gee.MultiMap);
         get imAddresses(): Gee.MultiMap;
         set imAddresses(val: Gee.MultiMap);
 
-        // Own methods of Folks.ImDetails
+        // Methods
 
         change_im_addresses(im_addresses: Gee.MultiMap, _callback_: Gio.AsyncReadyCallback<this>): void;
         change_im_addresses_finish(_res_: Gio.AsyncResult): void;
         get_im_addresses(): Gee.MultiMap;
         set_im_addresses(value: Gee.MultiMap): void;
 
-        // Own virtual methods of Folks.ImDetails
+        // Virtual methods
 
         vfunc_change_im_addresses(im_addresses: Gee.MultiMap, _callback_: Gio.AsyncReadyCallback<this>): void;
         vfunc_change_im_addresses_finish(_res_: Gio.AsyncResult): void;
@@ -3147,7 +3147,7 @@ export namespace Folks {
         prototype: InteractionDetails;
     }
     interface InteractionDetails extends GObject.Object {
-        // Own properties of Folks.InteractionDetails
+        // Properties
 
         get im_interaction_count(): number;
         get imInteractionCount(): number;
@@ -3158,14 +3158,14 @@ export namespace Folks {
         get last_call_interaction_datetime(): GLib.DateTime;
         get lastCallInteractionDatetime(): GLib.DateTime;
 
-        // Own methods of Folks.InteractionDetails
+        // Methods
 
         get_im_interaction_count(): number;
         get_last_im_interaction_datetime(): GLib.DateTime;
         get_call_interaction_count(): number;
         get_last_call_interaction_datetime(): GLib.DateTime;
 
-        // Own virtual methods of Folks.InteractionDetails
+        // Virtual methods
 
         vfunc_get_im_interaction_count(): number;
         vfunc_get_last_im_interaction_datetime(): GLib.DateTime;
@@ -3189,21 +3189,21 @@ export namespace Folks {
         prototype: LocalIdDetails;
     }
     interface LocalIdDetails extends GObject.Object {
-        // Own properties of Folks.LocalIdDetails
+        // Properties
 
         get local_ids(): Gee.Set;
         set local_ids(val: Gee.Set);
         get localIds(): Gee.Set;
         set localIds(val: Gee.Set);
 
-        // Own methods of Folks.LocalIdDetails
+        // Methods
 
         change_local_ids(local_ids: Gee.Set, _callback_: Gio.AsyncReadyCallback<this>): void;
         change_local_ids_finish(_res_: Gio.AsyncResult): void;
         get_local_ids(): Gee.Set;
         set_local_ids(value: Gee.Set): void;
 
-        // Own virtual methods of Folks.LocalIdDetails
+        // Virtual methods
 
         vfunc_change_local_ids(local_ids: Gee.Set, _callback_: Gio.AsyncReadyCallback<this>): void;
         vfunc_change_local_ids_finish(_res_: Gio.AsyncResult): void;
@@ -3226,19 +3226,19 @@ export namespace Folks {
         prototype: LocationDetails;
     }
     interface LocationDetails extends GObject.Object {
-        // Own properties of Folks.LocationDetails
+        // Properties
 
         get location(): Location;
         set location(val: Location);
 
-        // Own methods of Folks.LocationDetails
+        // Methods
 
         change_location(location: Location, _callback_: Gio.AsyncReadyCallback<this>): void;
         change_location_finish(_res_: Gio.AsyncResult): void;
         get_location(): Location;
         set_location(value: Location): void;
 
-        // Own virtual methods of Folks.LocationDetails
+        // Virtual methods
 
         vfunc_change_location(location: Location, _callback_: Gio.AsyncReadyCallback<this>): void;
         vfunc_change_location_finish(_res_: Gio.AsyncResult): void;
@@ -3265,7 +3265,7 @@ export namespace Folks {
         prototype: NameDetails;
     }
     interface NameDetails extends GObject.Object {
-        // Own properties of Folks.NameDetails
+        // Properties
 
         get structured_name(): StructuredName;
         set structured_name(val: StructuredName);
@@ -3278,7 +3278,7 @@ export namespace Folks {
         get nickname(): string;
         set nickname(val: string);
 
-        // Own methods of Folks.NameDetails
+        // Methods
 
         change_structured_name(name: StructuredName, _callback_: Gio.AsyncReadyCallback<this>): void;
         change_structured_name_finish(_res_: Gio.AsyncResult): void;
@@ -3293,7 +3293,7 @@ export namespace Folks {
         get_nickname(): string;
         set_nickname(value: string): void;
 
-        // Own virtual methods of Folks.NameDetails
+        // Virtual methods
 
         vfunc_change_structured_name(name: StructuredName, _callback_: Gio.AsyncReadyCallback<this>): void;
         vfunc_change_structured_name_finish(_res_: Gio.AsyncResult): void;
@@ -3324,19 +3324,19 @@ export namespace Folks {
         prototype: NoteDetails;
     }
     interface NoteDetails extends GObject.Object {
-        // Own properties of Folks.NoteDetails
+        // Properties
 
         get notes(): Gee.Set;
         set notes(val: Gee.Set);
 
-        // Own methods of Folks.NoteDetails
+        // Methods
 
         change_notes(notes: Gee.Set, _callback_: Gio.AsyncReadyCallback<this>): void;
         change_notes_finish(_res_: Gio.AsyncResult): void;
         get_notes(): Gee.Set;
         set_notes(value: Gee.Set): void;
 
-        // Own virtual methods of Folks.NoteDetails
+        // Virtual methods
 
         vfunc_change_notes(notes: Gee.Set, _callback_: Gio.AsyncReadyCallback<this>): void;
         vfunc_change_notes_finish(_res_: Gio.AsyncResult): void;
@@ -3360,21 +3360,21 @@ export namespace Folks {
         prototype: PhoneDetails;
     }
     interface PhoneDetails extends GObject.Object {
-        // Own properties of Folks.PhoneDetails
+        // Properties
 
         get phone_numbers(): Gee.Set;
         set phone_numbers(val: Gee.Set);
         get phoneNumbers(): Gee.Set;
         set phoneNumbers(val: Gee.Set);
 
-        // Own methods of Folks.PhoneDetails
+        // Methods
 
         change_phone_numbers(phone_numbers: Gee.Set, _callback_: Gio.AsyncReadyCallback<this>): void;
         change_phone_numbers_finish(_res_: Gio.AsyncResult): void;
         get_phone_numbers(): Gee.Set;
         set_phone_numbers(value: Gee.Set): void;
 
-        // Own virtual methods of Folks.PhoneDetails
+        // Virtual methods
 
         vfunc_change_phone_numbers(phone_numbers: Gee.Set, _callback_: Gio.AsyncReadyCallback<this>): void;
         vfunc_change_phone_numbers_finish(_res_: Gio.AsyncResult): void;
@@ -3398,21 +3398,21 @@ export namespace Folks {
         prototype: PostalAddressDetails;
     }
     interface PostalAddressDetails extends GObject.Object {
-        // Own properties of Folks.PostalAddressDetails
+        // Properties
 
         get postal_addresses(): Gee.Set;
         set postal_addresses(val: Gee.Set);
         get postalAddresses(): Gee.Set;
         set postalAddresses(val: Gee.Set);
 
-        // Own methods of Folks.PostalAddressDetails
+        // Methods
 
         change_postal_addresses(postal_addresses: Gee.Set, _callback_: Gio.AsyncReadyCallback<this>): void;
         change_postal_addresses_finish(_res_: Gio.AsyncResult): void;
         get_postal_addresses(): Gee.Set;
         set_postal_addresses(value: Gee.Set): void;
 
-        // Own virtual methods of Folks.PostalAddressDetails
+        // Virtual methods
 
         vfunc_change_postal_addresses(postal_addresses: Gee.Set, _callback_: Gio.AsyncReadyCallback<this>): void;
         vfunc_change_postal_addresses_finish(_res_: Gio.AsyncResult): void;
@@ -3445,7 +3445,7 @@ export namespace Folks {
         typecmp(type_a: PresenceType, type_b: PresenceType): number;
     }
     interface PresenceDetails extends GObject.Object {
-        // Own properties of Folks.PresenceDetails
+        // Properties
 
         get presence_type(): PresenceType;
         set presence_type(val: PresenceType);
@@ -3464,7 +3464,7 @@ export namespace Folks {
         get presenceStatus(): string;
         set presenceStatus(val: string);
 
-        // Own methods of Folks.PresenceDetails
+        // Methods
 
         is_online(): boolean;
         get_presence_type(): PresenceType;
@@ -3476,7 +3476,7 @@ export namespace Folks {
         get_presence_status(): string;
         set_presence_status(value: string): void;
 
-        // Own virtual methods of Folks.PresenceDetails
+        // Virtual methods
 
         vfunc_get_presence_type(): PresenceType;
         vfunc_set_presence_type(value: PresenceType): void;
@@ -3503,19 +3503,19 @@ export namespace Folks {
         prototype: RoleDetails;
     }
     interface RoleDetails extends GObject.Object {
-        // Own properties of Folks.RoleDetails
+        // Properties
 
         get roles(): Gee.Set;
         set roles(val: Gee.Set);
 
-        // Own methods of Folks.RoleDetails
+        // Methods
 
         change_roles(roles: Gee.Set, _callback_: Gio.AsyncReadyCallback<this>): void;
         change_roles_finish(_res_: Gio.AsyncResult): void;
         get_roles(): Gee.Set;
         set_roles(value: Gee.Set): void;
 
-        // Own virtual methods of Folks.RoleDetails
+        // Virtual methods
 
         vfunc_change_roles(roles: Gee.Set, _callback_: Gio.AsyncReadyCallback<this>): void;
         vfunc_change_roles_finish(_res_: Gio.AsyncResult): void;
@@ -3538,19 +3538,19 @@ export namespace Folks {
         prototype: UrlDetails;
     }
     interface UrlDetails extends GObject.Object {
-        // Own properties of Folks.UrlDetails
+        // Properties
 
         get urls(): Gee.Set;
         set urls(val: Gee.Set);
 
-        // Own methods of Folks.UrlDetails
+        // Methods
 
         change_urls(urls: Gee.Set, _callback_: Gio.AsyncReadyCallback<this>): void;
         change_urls_finish(_res_: Gio.AsyncResult): void;
         get_urls(): Gee.Set;
         set_urls(value: Gee.Set): void;
 
-        // Own virtual methods of Folks.UrlDetails
+        // Virtual methods
 
         vfunc_change_urls(urls: Gee.Set, _callback_: Gio.AsyncReadyCallback<this>): void;
         vfunc_change_urls_finish(_res_: Gio.AsyncResult): void;
@@ -3574,14 +3574,14 @@ export namespace Folks {
         prototype: WebServiceDetails;
     }
     interface WebServiceDetails extends GObject.Object {
-        // Own properties of Folks.WebServiceDetails
+        // Properties
 
         get web_service_addresses(): Gee.MultiMap;
         set web_service_addresses(val: Gee.MultiMap);
         get webServiceAddresses(): Gee.MultiMap;
         set webServiceAddresses(val: Gee.MultiMap);
 
-        // Own methods of Folks.WebServiceDetails
+        // Methods
 
         change_web_service_addresses(
             web_service_addresses: Gee.MultiMap,
@@ -3591,7 +3591,7 @@ export namespace Folks {
         get_web_service_addresses(): Gee.MultiMap;
         set_web_service_addresses(value: Gee.MultiMap): void;
 
-        // Own virtual methods of Folks.WebServiceDetails
+        // Virtual methods
 
         vfunc_change_web_service_addresses(
             web_service_addresses: Gee.MultiMap,

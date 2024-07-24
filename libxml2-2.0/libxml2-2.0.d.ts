@@ -19,7 +19,7 @@ export namespace libxml2 {
     class Node {
         static $gtype: GObject.GType<Node>;
 
-        // Constructors of libxml2.Node
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -27,7 +27,7 @@ export namespace libxml2 {
     class NodePtr {
         static $gtype: GObject.GType<NodePtr>;
 
-        // Constructors of libxml2.NodePtr
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -35,7 +35,7 @@ export namespace libxml2 {
     class Doc {
         static $gtype: GObject.GType<Doc>;
 
-        // Constructors of libxml2.Doc
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -43,7 +43,7 @@ export namespace libxml2 {
     class DocPtr {
         static $gtype: GObject.GType<DocPtr>;
 
-        // Constructors of libxml2.DocPtr
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -51,7 +51,7 @@ export namespace libxml2 {
     class NsPtr {
         static $gtype: GObject.GType<NsPtr>;
 
-        // Constructors of libxml2.NsPtr
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -59,7 +59,7 @@ export namespace libxml2 {
     class Char {
         static $gtype: GObject.GType<Char>;
 
-        // Constructors of libxml2.Char
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -67,7 +67,7 @@ export namespace libxml2 {
     class TextWriter {
         static $gtype: GObject.GType<TextWriter>;
 
-        // Constructors of libxml2.TextWriter
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -75,7 +75,7 @@ export namespace libxml2 {
     class TextReader {
         static $gtype: GObject.GType<TextReader>;
 
-        // Constructors of libxml2.TextReader
+        // Constructors
 
         _init(...args: any[]): void;
     }

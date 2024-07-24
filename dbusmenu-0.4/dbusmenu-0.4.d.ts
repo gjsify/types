@@ -418,7 +418,7 @@ export namespace Dbusmenu {
     class Client extends GObject.Object {
         static $gtype: GObject.GType<Client>;
 
-        // Own properties of Dbusmenu.Client
+        // Properties
 
         get dbus_name(): string;
         get dbusName(): string;
@@ -429,7 +429,7 @@ export namespace Dbusmenu {
         get groupEvents(): boolean;
         set groupEvents(val: boolean);
 
-        // Constructors of Dbusmenu.Client
+        // Constructors
 
         constructor(properties?: Partial<Client.ConstructorProps>, ...args: any[]);
 
@@ -437,7 +437,7 @@ export namespace Dbusmenu {
 
         static ['new'](name: string, object: string): Client;
 
-        // Own signals of Dbusmenu.Client
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -491,7 +491,7 @@ export namespace Dbusmenu {
         connect_after(signal: 'root-changed', callback: (_source: this, arg1: GObject.Object) => void): number;
         emit(signal: 'root-changed', arg1: GObject.Object): void;
 
-        // Own methods of Dbusmenu.Client
+        // Methods
 
         /**
          * This function connects into the type handling of the #DbusmenuClient.
@@ -618,11 +618,11 @@ export namespace Dbusmenu {
     class Menuitem extends GObject.Object {
         static $gtype: GObject.GType<Menuitem>;
 
-        // Own properties of Dbusmenu.Menuitem
+        // Properties
 
         get id(): number;
 
-        // Constructors of Dbusmenu.Menuitem
+        // Constructors
 
         constructor(properties?: Partial<Menuitem.ConstructorProps>, ...args: any[]);
 
@@ -632,7 +632,7 @@ export namespace Dbusmenu {
 
         static new_with_id(id: number): Menuitem;
 
-        // Own signals of Dbusmenu.Menuitem
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -686,7 +686,7 @@ export namespace Dbusmenu {
         connect_after(signal: 'show-to-user', callback: (_source: this, arg1: number) => void): number;
         emit(signal: 'show-to-user', arg1: number): void;
 
-        // Own virtual methods of Dbusmenu.Menuitem
+        // Virtual methods
 
         vfunc_child_added(position: number): void;
         vfunc_child_moved(newpos: number, oldpos: number): void;
@@ -710,7 +710,7 @@ export namespace Dbusmenu {
         vfunc_handle_event(name: string, variant: GLib.Variant, timestamp: number): void;
         vfunc_show_to_user(timestamp: number, cb_data?: any | null): void;
 
-        // Own methods of Dbusmenu.Menuitem
+        // Methods
 
         /**
          * Puts `child` in the list of children for `mi` at the location
@@ -1026,12 +1026,12 @@ export namespace Dbusmenu {
     class MenuitemProxy extends Menuitem {
         static $gtype: GObject.GType<MenuitemProxy>;
 
-        // Own properties of Dbusmenu.MenuitemProxy
+        // Properties
 
         get menu_item(): Menuitem;
         get menuItem(): Menuitem;
 
-        // Constructors of Dbusmenu.MenuitemProxy
+        // Constructors
 
         constructor(properties?: Partial<MenuitemProxy.ConstructorProps>, ...args: any[]);
 
@@ -1042,7 +1042,7 @@ export namespace Dbusmenu {
 
         static ['new'](...args: never[]): any;
 
-        // Own methods of Dbusmenu.MenuitemProxy
+        // Methods
 
         /**
          * Accesses the private variable of which #DbusmenuMenuitem
@@ -1089,7 +1089,7 @@ export namespace Dbusmenu {
     class Server extends GObject.Object {
         static $gtype: GObject.GType<Server>;
 
-        // Own properties of Dbusmenu.Server
+        // Properties
 
         get dbus_object(): string;
         get dbusObject(): string;
@@ -1099,7 +1099,7 @@ export namespace Dbusmenu {
         set rootNode(val: Menuitem);
         get version(): number;
 
-        // Constructors of Dbusmenu.Server
+        // Constructors
 
         constructor(properties?: Partial<Server.ConstructorProps>, ...args: any[]);
 
@@ -1107,7 +1107,7 @@ export namespace Dbusmenu {
 
         static ['new'](object: string): Server;
 
-        // Own signals of Dbusmenu.Server
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -1137,7 +1137,7 @@ export namespace Dbusmenu {
         connect_after(signal: 'layout-updated', callback: (_source: this, arg1: number, arg2: number) => void): number;
         emit(signal: 'layout-updated', arg1: number, arg2: number): void;
 
-        // Own methods of Dbusmenu.Server
+        // Methods
 
         /**
          * Gets the stored and exported icon paths from the server.
@@ -1192,7 +1192,7 @@ export namespace Dbusmenu {
     abstract class ClientPrivate {
         static $gtype: GObject.GType<ClientPrivate>;
 
-        // Constructors of Dbusmenu.ClientPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1206,7 +1206,7 @@ export namespace Dbusmenu {
     abstract class MenuitemPrivate {
         static $gtype: GObject.GType<MenuitemPrivate>;
 
-        // Constructors of Dbusmenu.MenuitemPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1215,7 +1215,7 @@ export namespace Dbusmenu {
     abstract class MenuitemProxyPrivate {
         static $gtype: GObject.GType<MenuitemProxyPrivate>;
 
-        // Constructors of Dbusmenu.MenuitemProxyPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1224,7 +1224,7 @@ export namespace Dbusmenu {
     abstract class ServerPrivate {
         static $gtype: GObject.GType<ServerPrivate>;
 
-        // Constructors of Dbusmenu.ServerPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }

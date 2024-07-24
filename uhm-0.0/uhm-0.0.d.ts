@@ -63,7 +63,7 @@ export namespace Uhm {
     class Resolver extends Gio.Resolver {
         static $gtype: GObject.GType<Resolver>;
 
-        // Constructors of Uhm.Resolver
+        // Constructors
 
         constructor(properties?: Partial<Resolver.ConstructorProps>, ...args: any[]);
 
@@ -71,7 +71,7 @@ export namespace Uhm {
 
         static ['new'](): Resolver;
 
-        // Own methods of Uhm.Resolver
+        // Methods
 
         /**
          * Adds a resolution mapping from the host name `hostname` to the IP address `addr`.
@@ -130,7 +130,7 @@ export namespace Uhm {
     class Server extends GObject.Object {
         static $gtype: GObject.GType<Server>;
 
-        // Own properties of Uhm.Server
+        // Properties
 
         /**
          * Address of the local mock server if it's running, or %NULL otherwise. This will be non-%NULL between calls to uhm_server_run() and
@@ -226,7 +226,7 @@ export namespace Uhm {
         get traceDirectory(): Gio.File;
         set traceDirectory(val: Gio.File);
 
-        // Constructors of Uhm.Server
+        // Constructors
 
         constructor(properties?: Partial<Server.ConstructorProps>, ...args: any[]);
 
@@ -234,7 +234,7 @@ export namespace Uhm {
 
         static ['new'](): Server;
 
-        // Own signals of Uhm.Server
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -273,7 +273,7 @@ export namespace Uhm {
         ): number;
         emit(signal: 'handle-message', message: Soup.Message, client: Soup.ClientContext): void;
 
-        // Own static methods of Uhm.Server
+        // Static methods
 
         static error_quark(): GLib.Quark;
         /**
@@ -310,7 +310,7 @@ export namespace Uhm {
             user_data?: any | null,
         ): void;
 
-        // Own virtual methods of Uhm.Server
+        // Virtual methods
 
         vfunc_compare_messages(
             expected_message: Soup.Message,
@@ -319,7 +319,7 @@ export namespace Uhm {
         ): boolean;
         vfunc_handle_message(message: Soup.Message, client: Soup.ClientContext): boolean;
 
-        // Own methods of Uhm.Server
+        // Methods
 
         /**
          * Remove a #UhmServer:compare-messages filter function installed previously by
@@ -568,7 +568,7 @@ export namespace Uhm {
     abstract class ResolverPrivate {
         static $gtype: GObject.GType<ResolverPrivate>;
 
-        // Constructors of Uhm.ResolverPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -577,7 +577,7 @@ export namespace Uhm {
     abstract class ServerPrivate {
         static $gtype: GObject.GType<ServerPrivate>;
 
-        // Constructors of Uhm.ServerPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }

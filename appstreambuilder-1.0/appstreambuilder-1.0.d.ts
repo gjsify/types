@@ -159,7 +159,7 @@ export namespace AppStreamBuilder {
     class App extends AppStreamGlib.App {
         static $gtype: GObject.GType<App>;
 
-        // Constructors of AppStreamBuilder.App
+        // Constructors
 
         constructor(properties?: Partial<App.ConstructorProps>, ...args: any[]);
 
@@ -170,7 +170,7 @@ export namespace AppStreamBuilder {
 
         static ['new'](...args: never[]): any;
 
-        // Own methods of AppStreamBuilder.App
+        // Methods
 
         /**
          * Gets the package that backs the application.
@@ -204,7 +204,7 @@ export namespace AppStreamBuilder {
     class Context extends GObject.Object {
         static $gtype: GObject.GType<Context>;
 
-        // Constructors of AppStreamBuilder.Context
+        // Constructors
 
         constructor(properties?: Partial<Context.ConstructorProps>, ...args: any[]);
 
@@ -212,7 +212,7 @@ export namespace AppStreamBuilder {
 
         static ['new'](): Context;
 
-        // Own methods of AppStreamBuilder.Context
+        // Methods
 
         /**
          * Adds an application to the context.
@@ -363,7 +363,7 @@ export namespace AppStreamBuilder {
     class Package extends GObject.Object {
         static $gtype: GObject.GType<Package>;
 
-        // Constructors of AppStreamBuilder.Package
+        // Constructors
 
         constructor(properties?: Partial<Package.ConstructorProps>, ...args: any[]);
 
@@ -371,7 +371,7 @@ export namespace AppStreamBuilder {
 
         static ['new'](): Package;
 
-        // Own virtual methods of AppStreamBuilder.Package
+        // Virtual methods
 
         /**
          * Closes a package, which can be re-opened if required.
@@ -401,7 +401,7 @@ export namespace AppStreamBuilder {
          */
         vfunc_open(filename: string): boolean;
 
-        // Own methods of AppStreamBuilder.Package
+        // Methods
 
         /**
          * Add a package dependancy.
@@ -661,7 +661,7 @@ export namespace AppStreamBuilder {
     class Task extends GObject.Object {
         static $gtype: GObject.GType<Task>;
 
-        // Constructors of AppStreamBuilder.Task
+        // Constructors
 
         constructor(properties?: Partial<Task.ConstructorProps>, ...args: any[]);
 
@@ -669,7 +669,7 @@ export namespace AppStreamBuilder {
 
         static ['new'](ctx: Context): Task;
 
-        // Own methods of AppStreamBuilder.Task
+        // Methods
 
         /**
          * Processes the task.

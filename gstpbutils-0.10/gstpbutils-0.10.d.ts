@@ -95,14 +95,14 @@ export namespace GstPbutils {
     class GstInstallPluginsContext {
         static $gtype: GObject.GType<GstInstallPluginsContext>;
 
-        // Constructors of GstPbutils.GstInstallPluginsContext
+        // Constructors
 
         constructor(properties?: Partial<{}>);
         _init(...args: any[]): void;
 
         static ['new'](): GstInstallPluginsContext;
 
-        // Own methods of GstPbutils.GstInstallPluginsContext
+        // Methods
 
         free(): void;
         set_xid(xid: number): void;

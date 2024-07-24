@@ -683,7 +683,7 @@ export namespace GWeather {
     class Info extends GObject.Object {
         static $gtype: GObject.GType<Info>;
 
-        // Own properties of GWeather.Info
+        // Properties
 
         get application_id(): string;
         set application_id(val: string);
@@ -700,7 +700,7 @@ export namespace GWeather {
         get location(): Location;
         set location(val: Location);
 
-        // Constructors of GWeather.Info
+        // Constructors
 
         constructor(properties?: Partial<Info.ConstructorProps>, ...args: any[]);
 
@@ -708,7 +708,7 @@ export namespace GWeather {
 
         static ['new'](location?: Location | null): Info;
 
-        // Own signals of GWeather.Info
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -717,7 +717,7 @@ export namespace GWeather {
         connect_after(signal: 'updated', callback: (_source: this) => void): number;
         emit(signal: 'updated'): void;
 
-        // Own static methods of GWeather.Info
+        // Static methods
 
         /**
          * Ensures that any data cached from the network is stored to disk.
@@ -729,7 +729,7 @@ export namespace GWeather {
          */
         static store_cache(): void;
 
-        // Own methods of GWeather.Info
+        // Methods
 
         abort(): void;
         get_apparent(): string;
@@ -886,7 +886,7 @@ export namespace GWeather {
     {
         static $gtype: GObject.GType<LocationEntry>;
 
-        // Own properties of GWeather.LocationEntry
+        // Properties
 
         get location(): Location;
         set location(val: Location);
@@ -894,7 +894,7 @@ export namespace GWeather {
         get showNamedTimezones(): boolean;
         set top(val: Location);
 
-        // Constructors of GWeather.LocationEntry
+        // Constructors
 
         constructor(properties?: Partial<LocationEntry.ConstructorProps>, ...args: any[]);
 
@@ -905,7 +905,7 @@ export namespace GWeather {
 
         static ['new'](...args: never[]): any;
 
-        // Own methods of GWeather.LocationEntry
+        // Methods
 
         /**
          * Gets the location that was set by a previous call to
@@ -4889,13 +4889,13 @@ export namespace GWeather {
     {
         static $gtype: GObject.GType<TimezoneMenu>;
 
-        // Own properties of GWeather.TimezoneMenu
+        // Properties
 
         set top(val: Location);
         get tzid(): string;
         set tzid(val: string);
 
-        // Constructors of GWeather.TimezoneMenu
+        // Constructors
 
         constructor(properties?: Partial<TimezoneMenu.ConstructorProps>, ...args: any[]);
 
@@ -4906,7 +4906,7 @@ export namespace GWeather {
 
         static ['new'](...args: never[]): any;
 
-        // Own methods of GWeather.TimezoneMenu
+        // Methods
 
         /**
          * Gets `menu'`s timezone id.
@@ -9068,17 +9068,17 @@ export namespace GWeather {
     class Conditions {
         static $gtype: GObject.GType<Conditions>;
 
-        // Own fields of GWeather.Conditions
+        // Fields
 
         significant: boolean;
         phenomenon: ConditionPhenomenon;
         qualifier: ConditionQualifier;
 
-        // Constructors of GWeather.Conditions
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of GWeather.Conditions
+        // Methods
 
         to_string(): string;
         to_string_full(options: FormatOptions): string;
@@ -9094,14 +9094,14 @@ export namespace GWeather {
     class Location {
         static $gtype: GObject.GType<Location>;
 
-        // Constructors of GWeather.Location
+        // Constructors
 
         constructor(name: string, icao: string | null, latitude: number, longitude: number);
         _init(...args: any[]): void;
 
         static new_detached(name: string, icao: string | null, latitude: number, longitude: number): Location;
 
-        // Own static methods of GWeather.Location
+        // Static methods
 
         static detect_nearest_city_finish(result: Gio.AsyncResult): Location;
         /**
@@ -9113,7 +9113,7 @@ export namespace GWeather {
          */
         static get_world(): Location | null;
 
-        // Own methods of GWeather.Location
+        // Methods
 
         /**
          * This call undoes the effect of gweather_location_serialize(), that
@@ -9376,7 +9376,7 @@ export namespace GWeather {
     abstract class LocationEntryPrivate {
         static $gtype: GObject.GType<LocationEntryPrivate>;
 
-        // Constructors of GWeather.LocationEntryPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -9392,11 +9392,11 @@ export namespace GWeather {
     class Timezone {
         static $gtype: GObject.GType<Timezone>;
 
-        // Constructors of GWeather.Timezone
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own static methods of GWeather.Timezone
+        // Static methods
 
         /**
          * Get the #GWeatherTimezone for `tzid`.
@@ -9410,7 +9410,7 @@ export namespace GWeather {
          */
         static get_utc(): Timezone;
 
-        // Own methods of GWeather.Timezone
+        // Methods
 
         /**
          * Gets `zone'`s daylight/summer time offset from UTC, in minutes. Eg,

@@ -126,7 +126,7 @@ export namespace Guestfs {
     class AddDomain extends GObject.Object {
         static $gtype: GObject.GType<AddDomain>;
 
-        // Own properties of Guestfs.AddDomain
+        // Properties
 
         /**
          * A boolean.
@@ -174,7 +174,7 @@ export namespace Guestfs {
         get readonlydisk(): string;
         set readonlydisk(val: string);
 
-        // Constructors of Guestfs.AddDomain
+        // Constructors
 
         constructor(properties?: Partial<AddDomain.ConstructorProps>, ...args: any[]);
 
@@ -208,7 +208,7 @@ export namespace Guestfs {
     class AddDrive extends GObject.Object {
         static $gtype: GObject.GType<AddDrive>;
 
-        // Own properties of Guestfs.AddDrive
+        // Properties
 
         /**
          * A 32-bit integer.
@@ -271,7 +271,7 @@ export namespace Guestfs {
         get username(): string;
         set username(val: string);
 
-        // Constructors of Guestfs.AddDrive
+        // Constructors
 
         constructor(properties?: Partial<AddDrive.ConstructorProps>, ...args: any[]);
 
@@ -296,7 +296,7 @@ export namespace Guestfs {
     class AddDriveScratch extends GObject.Object {
         static $gtype: GObject.GType<AddDriveScratch>;
 
-        // Own properties of Guestfs.AddDriveScratch
+        // Properties
 
         /**
          * A 32-bit integer.
@@ -314,7 +314,7 @@ export namespace Guestfs {
         get name(): string;
         set name(val: string);
 
-        // Constructors of Guestfs.AddDriveScratch
+        // Constructors
 
         constructor(properties?: Partial<AddDriveScratch.ConstructorProps>, ...args: any[]);
 
@@ -343,7 +343,7 @@ export namespace Guestfs {
     class AddLibvirtDom extends GObject.Object {
         static $gtype: GObject.GType<AddLibvirtDom>;
 
-        // Own properties of Guestfs.AddLibvirtDom
+        // Properties
 
         /**
          * A string.
@@ -381,7 +381,7 @@ export namespace Guestfs {
         get readonlydisk(): string;
         set readonlydisk(val: string);
 
-        // Constructors of Guestfs.AddLibvirtDom
+        // Constructors
 
         constructor(properties?: Partial<AddLibvirtDom.ConstructorProps>, ...args: any[]);
 
@@ -404,7 +404,7 @@ export namespace Guestfs {
     class AugTransform extends GObject.Object {
         static $gtype: GObject.GType<AugTransform>;
 
-        // Own properties of Guestfs.AugTransform
+        // Properties
 
         /**
          * A boolean.
@@ -412,7 +412,7 @@ export namespace Guestfs {
         get remove(): Tristate;
         set remove(val: Tristate);
 
-        // Constructors of Guestfs.AugTransform
+        // Constructors
 
         constructor(properties?: Partial<AugTransform.ConstructorProps>, ...args: any[]);
 
@@ -436,7 +436,7 @@ export namespace Guestfs {
     class BTRFSFilesystemDefragment extends GObject.Object {
         static $gtype: GObject.GType<BTRFSFilesystemDefragment>;
 
-        // Own properties of Guestfs.BTRFSFilesystemDefragment
+        // Properties
 
         /**
          * A string.
@@ -449,7 +449,7 @@ export namespace Guestfs {
         get flush(): Tristate;
         set flush(val: Tristate);
 
-        // Constructors of Guestfs.BTRFSFilesystemDefragment
+        // Constructors
 
         constructor(properties?: Partial<BTRFSFilesystemDefragment.ConstructorProps>, ...args: any[]);
 
@@ -472,7 +472,7 @@ export namespace Guestfs {
     class BTRFSFilesystemResize extends GObject.Object {
         static $gtype: GObject.GType<BTRFSFilesystemResize>;
 
-        // Own properties of Guestfs.BTRFSFilesystemResize
+        // Properties
 
         /**
          * A 64-bit integer.
@@ -480,7 +480,7 @@ export namespace Guestfs {
         get size(): number;
         set size(val: number);
 
-        // Constructors of Guestfs.BTRFSFilesystemResize
+        // Constructors
 
         constructor(properties?: Partial<BTRFSFilesystemResize.ConstructorProps>, ...args: any[]);
 
@@ -503,7 +503,7 @@ export namespace Guestfs {
     class BTRFSImage extends GObject.Object {
         static $gtype: GObject.GType<BTRFSImage>;
 
-        // Own properties of Guestfs.BTRFSImage
+        // Properties
 
         /**
          * A 32-bit integer.
@@ -511,7 +511,7 @@ export namespace Guestfs {
         get compresslevel(): number;
         set compresslevel(val: number);
 
-        // Constructors of Guestfs.BTRFSImage
+        // Constructors
 
         constructor(properties?: Partial<BTRFSImage.ConstructorProps>, ...args: any[]);
 
@@ -534,7 +534,7 @@ export namespace Guestfs {
     class BTRFSSubvolumeCreate extends GObject.Object {
         static $gtype: GObject.GType<BTRFSSubvolumeCreate>;
 
-        // Own properties of Guestfs.BTRFSSubvolumeCreate
+        // Properties
 
         /**
          * A string.
@@ -542,7 +542,7 @@ export namespace Guestfs {
         get qgroupid(): string;
         set qgroupid(val: string);
 
-        // Constructors of Guestfs.BTRFSSubvolumeCreate
+        // Constructors
 
         constructor(properties?: Partial<BTRFSSubvolumeCreate.ConstructorProps>, ...args: any[]);
 
@@ -566,7 +566,7 @@ export namespace Guestfs {
     class BTRFSSubvolumeSnapshot extends GObject.Object {
         static $gtype: GObject.GType<BTRFSSubvolumeSnapshot>;
 
-        // Own properties of Guestfs.BTRFSSubvolumeSnapshot
+        // Properties
 
         /**
          * A string.
@@ -579,7 +579,7 @@ export namespace Guestfs {
         get ro(): Tristate;
         set ro(val: Tristate);
 
-        // Constructors of Guestfs.BTRFSSubvolumeSnapshot
+        // Constructors
 
         constructor(properties?: Partial<BTRFSSubvolumeSnapshot.ConstructorProps>, ...args: any[]);
 
@@ -603,7 +603,7 @@ export namespace Guestfs {
     class BtrfsFsck extends GObject.Object {
         static $gtype: GObject.GType<BtrfsFsck>;
 
-        // Own properties of Guestfs.BtrfsFsck
+        // Properties
 
         /**
          * A boolean.
@@ -616,7 +616,7 @@ export namespace Guestfs {
         get superblock(): number;
         set superblock(val: number);
 
-        // Constructors of Guestfs.BtrfsFsck
+        // Constructors
 
         constructor(properties?: Partial<BtrfsFsck.ConstructorProps>, ...args: any[]);
 
@@ -639,7 +639,7 @@ export namespace Guestfs {
     class CompressDeviceOut extends GObject.Object {
         static $gtype: GObject.GType<CompressDeviceOut>;
 
-        // Own properties of Guestfs.CompressDeviceOut
+        // Properties
 
         /**
          * A 32-bit integer.
@@ -647,7 +647,7 @@ export namespace Guestfs {
         get level(): number;
         set level(val: number);
 
-        // Constructors of Guestfs.CompressDeviceOut
+        // Constructors
 
         constructor(properties?: Partial<CompressDeviceOut.ConstructorProps>, ...args: any[]);
 
@@ -670,7 +670,7 @@ export namespace Guestfs {
     class CompressOut extends GObject.Object {
         static $gtype: GObject.GType<CompressOut>;
 
-        // Own properties of Guestfs.CompressOut
+        // Properties
 
         /**
          * A 32-bit integer.
@@ -678,7 +678,7 @@ export namespace Guestfs {
         get level(): number;
         set level(val: number);
 
-        // Constructors of Guestfs.CompressOut
+        // Constructors
 
         constructor(properties?: Partial<CompressOut.ConstructorProps>, ...args: any[]);
 
@@ -704,7 +704,7 @@ export namespace Guestfs {
     class CopyAttributes extends GObject.Object {
         static $gtype: GObject.GType<CopyAttributes>;
 
-        // Own properties of Guestfs.CopyAttributes
+        // Properties
 
         /**
          * A boolean.
@@ -727,7 +727,7 @@ export namespace Guestfs {
         get xattributes(): Tristate;
         set xattributes(val: Tristate);
 
-        // Constructors of Guestfs.CopyAttributes
+        // Constructors
 
         constructor(properties?: Partial<CopyAttributes.ConstructorProps>, ...args: any[]);
 
@@ -754,7 +754,7 @@ export namespace Guestfs {
     class CopyDeviceToDevice extends GObject.Object {
         static $gtype: GObject.GType<CopyDeviceToDevice>;
 
-        // Own properties of Guestfs.CopyDeviceToDevice
+        // Properties
 
         /**
          * A boolean.
@@ -782,7 +782,7 @@ export namespace Guestfs {
         get srcoffset(): number;
         set srcoffset(val: number);
 
-        // Constructors of Guestfs.CopyDeviceToDevice
+        // Constructors
 
         constructor(properties?: Partial<CopyDeviceToDevice.ConstructorProps>, ...args: any[]);
 
@@ -809,7 +809,7 @@ export namespace Guestfs {
     class CopyDeviceToFile extends GObject.Object {
         static $gtype: GObject.GType<CopyDeviceToFile>;
 
-        // Own properties of Guestfs.CopyDeviceToFile
+        // Properties
 
         /**
          * A boolean.
@@ -837,7 +837,7 @@ export namespace Guestfs {
         get srcoffset(): number;
         set srcoffset(val: number);
 
-        // Constructors of Guestfs.CopyDeviceToFile
+        // Constructors
 
         constructor(properties?: Partial<CopyDeviceToFile.ConstructorProps>, ...args: any[]);
 
@@ -864,7 +864,7 @@ export namespace Guestfs {
     class CopyFileToDevice extends GObject.Object {
         static $gtype: GObject.GType<CopyFileToDevice>;
 
-        // Own properties of Guestfs.CopyFileToDevice
+        // Properties
 
         /**
          * A boolean.
@@ -892,7 +892,7 @@ export namespace Guestfs {
         get srcoffset(): number;
         set srcoffset(val: number);
 
-        // Constructors of Guestfs.CopyFileToDevice
+        // Constructors
 
         constructor(properties?: Partial<CopyFileToDevice.ConstructorProps>, ...args: any[]);
 
@@ -919,7 +919,7 @@ export namespace Guestfs {
     class CopyFileToFile extends GObject.Object {
         static $gtype: GObject.GType<CopyFileToFile>;
 
-        // Own properties of Guestfs.CopyFileToFile
+        // Properties
 
         /**
          * A boolean.
@@ -947,7 +947,7 @@ export namespace Guestfs {
         get srcoffset(): number;
         set srcoffset(val: number);
 
-        // Constructors of Guestfs.CopyFileToFile
+        // Constructors
 
         constructor(properties?: Partial<CopyFileToFile.ConstructorProps>, ...args: any[]);
 
@@ -970,7 +970,7 @@ export namespace Guestfs {
     class CpioOut extends GObject.Object {
         static $gtype: GObject.GType<CpioOut>;
 
-        // Own properties of Guestfs.CpioOut
+        // Properties
 
         /**
          * A string.
@@ -978,7 +978,7 @@ export namespace Guestfs {
         get format(): string;
         set format(val: string);
 
-        // Constructors of Guestfs.CpioOut
+        // Constructors
 
         constructor(properties?: Partial<CpioOut.ConstructorProps>, ...args: any[]);
 
@@ -1002,7 +1002,7 @@ export namespace Guestfs {
     class CryptsetupOpen extends GObject.Object {
         static $gtype: GObject.GType<CryptsetupOpen>;
 
-        // Own properties of Guestfs.CryptsetupOpen
+        // Properties
 
         /**
          * A string.
@@ -1015,7 +1015,7 @@ export namespace Guestfs {
         get readonly(): Tristate;
         set readonly(val: Tristate);
 
-        // Constructors of Guestfs.CryptsetupOpen
+        // Constructors
 
         constructor(properties?: Partial<CryptsetupOpen.ConstructorProps>, ...args: any[]);
 
@@ -1042,7 +1042,7 @@ export namespace Guestfs {
     class DiskCreate extends GObject.Object {
         static $gtype: GObject.GType<DiskCreate>;
 
-        // Own properties of Guestfs.DiskCreate
+        // Properties
 
         /**
          * A string.
@@ -1070,7 +1070,7 @@ export namespace Guestfs {
         get preallocation(): string;
         set preallocation(val: string);
 
-        // Constructors of Guestfs.DiskCreate
+        // Constructors
 
         constructor(properties?: Partial<DiskCreate.ConstructorProps>, ...args: any[]);
 
@@ -1093,7 +1093,7 @@ export namespace Guestfs {
     class DownloadBlocks extends GObject.Object {
         static $gtype: GObject.GType<DownloadBlocks>;
 
-        // Own properties of Guestfs.DownloadBlocks
+        // Properties
 
         /**
          * A boolean.
@@ -1101,7 +1101,7 @@ export namespace Guestfs {
         get unallocated(): Tristate;
         set unallocated(val: Tristate);
 
-        // Constructors of Guestfs.DownloadBlocks
+        // Constructors
 
         constructor(properties?: Partial<DownloadBlocks.ConstructorProps>, ...args: any[]);
 
@@ -1125,7 +1125,7 @@ export namespace Guestfs {
     class E2fsck extends GObject.Object {
         static $gtype: GObject.GType<E2fsck>;
 
-        // Own properties of Guestfs.E2fsck
+        // Properties
 
         /**
          * A boolean.
@@ -1138,7 +1138,7 @@ export namespace Guestfs {
         get forceall(): Tristate;
         set forceall(val: Tristate);
 
-        // Constructors of Guestfs.E2fsck
+        // Constructors
 
         constructor(properties?: Partial<E2fsck.ConstructorProps>, ...args: any[]);
 
@@ -1163,7 +1163,7 @@ export namespace Guestfs {
     class Fstrim extends GObject.Object {
         static $gtype: GObject.GType<Fstrim>;
 
-        // Own properties of Guestfs.Fstrim
+        // Properties
 
         /**
          * A 64-bit integer.
@@ -1181,7 +1181,7 @@ export namespace Guestfs {
         get offset(): number;
         set offset(val: number);
 
-        // Constructors of Guestfs.Fstrim
+        // Constructors
 
         constructor(properties?: Partial<Fstrim.ConstructorProps>, ...args: any[]);
 
@@ -1204,7 +1204,7 @@ export namespace Guestfs {
     class GlobExpand extends GObject.Object {
         static $gtype: GObject.GType<GlobExpand>;
 
-        // Own properties of Guestfs.GlobExpand
+        // Properties
 
         /**
          * A boolean.
@@ -1212,7 +1212,7 @@ export namespace Guestfs {
         get directoryslash(): Tristate;
         set directoryslash(val: Tristate);
 
-        // Constructors of Guestfs.GlobExpand
+        // Constructors
 
         constructor(properties?: Partial<GlobExpand.ConstructorProps>, ...args: any[]);
 
@@ -1238,7 +1238,7 @@ export namespace Guestfs {
     class Grep extends GObject.Object {
         static $gtype: GObject.GType<Grep>;
 
-        // Own properties of Guestfs.Grep
+        // Properties
 
         /**
          * A boolean.
@@ -1261,7 +1261,7 @@ export namespace Guestfs {
         get insensitive(): Tristate;
         set insensitive(val: Tristate);
 
-        // Constructors of Guestfs.Grep
+        // Constructors
 
         constructor(properties?: Partial<Grep.ConstructorProps>, ...args: any[]);
 
@@ -1287,7 +1287,7 @@ export namespace Guestfs {
     class HivexOpen extends GObject.Object {
         static $gtype: GObject.GType<HivexOpen>;
 
-        // Own properties of Guestfs.HivexOpen
+        // Properties
 
         /**
          * A boolean.
@@ -1310,7 +1310,7 @@ export namespace Guestfs {
         get write(): Tristate;
         set write(val: Tristate);
 
-        // Constructors of Guestfs.HivexOpen
+        // Constructors
 
         constructor(properties?: Partial<HivexOpen.ConstructorProps>, ...args: any[]);
 
@@ -1334,7 +1334,7 @@ export namespace Guestfs {
     class InspectGetIcon extends GObject.Object {
         static $gtype: GObject.GType<InspectGetIcon>;
 
-        // Own properties of Guestfs.InspectGetIcon
+        // Properties
 
         /**
          * A boolean.
@@ -1347,7 +1347,7 @@ export namespace Guestfs {
         get highquality(): Tristate;
         set highquality(val: Tristate);
 
-        // Constructors of Guestfs.InspectGetIcon
+        // Constructors
 
         constructor(properties?: Partial<InspectGetIcon.ConstructorProps>, ...args: any[]);
 
@@ -1373,7 +1373,7 @@ export namespace Guestfs {
     class InternalTest extends GObject.Object {
         static $gtype: GObject.GType<InternalTest>;
 
-        // Own properties of Guestfs.InternalTest
+        // Properties
 
         /**
          * A boolean.
@@ -1396,7 +1396,7 @@ export namespace Guestfs {
         get ostring(): string;
         set ostring(val: string);
 
-        // Constructors of Guestfs.InternalTest
+        // Constructors
 
         constructor(properties?: Partial<InternalTest.ConstructorProps>, ...args: any[]);
 
@@ -1481,7 +1481,7 @@ export namespace Guestfs {
     class InternalTest63Optargs extends GObject.Object {
         static $gtype: GObject.GType<InternalTest63Optargs>;
 
-        // Own properties of Guestfs.InternalTest63Optargs
+        // Properties
 
         /**
          * A 32-bit integer.
@@ -1799,7 +1799,7 @@ export namespace Guestfs {
         get opt9(): number;
         set opt9(val: number);
 
-        // Constructors of Guestfs.InternalTest63Optargs
+        // Constructors
 
         constructor(properties?: Partial<InternalTest63Optargs.ConstructorProps>, ...args: any[]);
 
@@ -1822,7 +1822,7 @@ export namespace Guestfs {
     class InternalTestOnlyOptargs extends GObject.Object {
         static $gtype: GObject.GType<InternalTestOnlyOptargs>;
 
-        // Own properties of Guestfs.InternalTestOnlyOptargs
+        // Properties
 
         /**
          * A 32-bit integer.
@@ -1830,7 +1830,7 @@ export namespace Guestfs {
         get test(): number;
         set test(val: number);
 
-        // Constructors of Guestfs.InternalTestOnlyOptargs
+        // Constructors
 
         constructor(properties?: Partial<InternalTestOnlyOptargs.ConstructorProps>, ...args: any[]);
 
@@ -1853,7 +1853,7 @@ export namespace Guestfs {
     class IsBlockdev extends GObject.Object {
         static $gtype: GObject.GType<IsBlockdev>;
 
-        // Own properties of Guestfs.IsBlockdev
+        // Properties
 
         /**
          * A boolean.
@@ -1861,7 +1861,7 @@ export namespace Guestfs {
         get followsymlinks(): Tristate;
         set followsymlinks(val: Tristate);
 
-        // Constructors of Guestfs.IsBlockdev
+        // Constructors
 
         constructor(properties?: Partial<IsBlockdev.ConstructorProps>, ...args: any[]);
 
@@ -1884,7 +1884,7 @@ export namespace Guestfs {
     class IsChardev extends GObject.Object {
         static $gtype: GObject.GType<IsChardev>;
 
-        // Own properties of Guestfs.IsChardev
+        // Properties
 
         /**
          * A boolean.
@@ -1892,7 +1892,7 @@ export namespace Guestfs {
         get followsymlinks(): Tristate;
         set followsymlinks(val: Tristate);
 
-        // Constructors of Guestfs.IsChardev
+        // Constructors
 
         constructor(properties?: Partial<IsChardev.ConstructorProps>, ...args: any[]);
 
@@ -1915,7 +1915,7 @@ export namespace Guestfs {
     class IsDir extends GObject.Object {
         static $gtype: GObject.GType<IsDir>;
 
-        // Own properties of Guestfs.IsDir
+        // Properties
 
         /**
          * A boolean.
@@ -1923,7 +1923,7 @@ export namespace Guestfs {
         get followsymlinks(): Tristate;
         set followsymlinks(val: Tristate);
 
-        // Constructors of Guestfs.IsDir
+        // Constructors
 
         constructor(properties?: Partial<IsDir.ConstructorProps>, ...args: any[]);
 
@@ -1946,7 +1946,7 @@ export namespace Guestfs {
     class IsFifo extends GObject.Object {
         static $gtype: GObject.GType<IsFifo>;
 
-        // Own properties of Guestfs.IsFifo
+        // Properties
 
         /**
          * A boolean.
@@ -1954,7 +1954,7 @@ export namespace Guestfs {
         get followsymlinks(): Tristate;
         set followsymlinks(val: Tristate);
 
-        // Constructors of Guestfs.IsFifo
+        // Constructors
 
         constructor(properties?: Partial<IsFifo.ConstructorProps>, ...args: any[]);
 
@@ -1977,7 +1977,7 @@ export namespace Guestfs {
     class IsFile extends GObject.Object {
         static $gtype: GObject.GType<IsFile>;
 
-        // Own properties of Guestfs.IsFile
+        // Properties
 
         /**
          * A boolean.
@@ -1985,7 +1985,7 @@ export namespace Guestfs {
         get followsymlinks(): Tristate;
         set followsymlinks(val: Tristate);
 
-        // Constructors of Guestfs.IsFile
+        // Constructors
 
         constructor(properties?: Partial<IsFile.ConstructorProps>, ...args: any[]);
 
@@ -2008,7 +2008,7 @@ export namespace Guestfs {
     class IsSocket extends GObject.Object {
         static $gtype: GObject.GType<IsSocket>;
 
-        // Own properties of Guestfs.IsSocket
+        // Properties
 
         /**
          * A boolean.
@@ -2016,7 +2016,7 @@ export namespace Guestfs {
         get followsymlinks(): Tristate;
         set followsymlinks(val: Tristate);
 
-        // Constructors of Guestfs.IsSocket
+        // Constructors
 
         constructor(properties?: Partial<IsSocket.ConstructorProps>, ...args: any[]);
 
@@ -2043,7 +2043,7 @@ export namespace Guestfs {
     class MDCreate extends GObject.Object {
         static $gtype: GObject.GType<MDCreate>;
 
-        // Own properties of Guestfs.MDCreate
+        // Properties
 
         /**
          * A 64-bit integer.
@@ -2071,7 +2071,7 @@ export namespace Guestfs {
         get spare(): number;
         set spare(val: number);
 
-        // Constructors of Guestfs.MDCreate
+        // Constructors
 
         constructor(properties?: Partial<MDCreate.ConstructorProps>, ...args: any[]);
 
@@ -2131,7 +2131,7 @@ export namespace Guestfs {
     class Mke2fs extends GObject.Object {
         static $gtype: GObject.GType<Mke2fs>;
 
-        // Own properties of Guestfs.Mke2fs
+        // Properties
 
         /**
          * A 64-bit integer.
@@ -2324,7 +2324,7 @@ export namespace Guestfs {
         get writesbandgrouponly(): Tristate;
         set writesbandgrouponly(val: Tristate);
 
-        // Constructors of Guestfs.Mke2fs
+        // Constructors
 
         constructor(properties?: Partial<Mke2fs.ConstructorProps>, ...args: any[]);
 
@@ -2351,7 +2351,7 @@ export namespace Guestfs {
     class Mkfs extends GObject.Object {
         static $gtype: GObject.GType<Mkfs>;
 
-        // Own properties of Guestfs.Mkfs
+        // Properties
 
         /**
          * A 32-bit integer.
@@ -2379,7 +2379,7 @@ export namespace Guestfs {
         get sectorsize(): number;
         set sectorsize(val: number);
 
-        // Constructors of Guestfs.Mkfs
+        // Constructors
 
         constructor(properties?: Partial<Mkfs.ConstructorProps>, ...args: any[]);
 
@@ -2409,7 +2409,7 @@ export namespace Guestfs {
     class MkfsBtrfs extends GObject.Object {
         static $gtype: GObject.GType<MkfsBtrfs>;
 
-        // Own properties of Guestfs.MkfsBtrfs
+        // Properties
 
         /**
          * A 64-bit integer.
@@ -2452,7 +2452,7 @@ export namespace Guestfs {
         get sectorsize(): number;
         set sectorsize(val: number);
 
-        // Constructors of Guestfs.MkfsBtrfs
+        // Constructors
 
         constructor(properties?: Partial<MkfsBtrfs.ConstructorProps>, ...args: any[]);
 
@@ -2475,7 +2475,7 @@ export namespace Guestfs {
     class Mksquashfs extends GObject.Object {
         static $gtype: GObject.GType<Mksquashfs>;
 
-        // Own properties of Guestfs.Mksquashfs
+        // Properties
 
         /**
          * A string.
@@ -2483,7 +2483,7 @@ export namespace Guestfs {
         get compress(): string;
         set compress(val: string);
 
-        // Constructors of Guestfs.Mksquashfs
+        // Constructors
 
         constructor(properties?: Partial<Mksquashfs.ConstructorProps>, ...args: any[]);
 
@@ -2507,7 +2507,7 @@ export namespace Guestfs {
     class Mkswap extends GObject.Object {
         static $gtype: GObject.GType<Mkswap>;
 
-        // Own properties of Guestfs.Mkswap
+        // Properties
 
         /**
          * A string.
@@ -2520,7 +2520,7 @@ export namespace Guestfs {
         get uuid(): string;
         set uuid(val: string);
 
-        // Constructors of Guestfs.Mkswap
+        // Constructors
 
         constructor(properties?: Partial<Mkswap.ConstructorProps>, ...args: any[]);
 
@@ -2543,7 +2543,7 @@ export namespace Guestfs {
     class Mktemp extends GObject.Object {
         static $gtype: GObject.GType<Mktemp>;
 
-        // Own properties of Guestfs.Mktemp
+        // Properties
 
         /**
          * A string.
@@ -2551,7 +2551,7 @@ export namespace Guestfs {
         get suffix(): string;
         set suffix(val: string);
 
-        // Constructors of Guestfs.Mktemp
+        // Constructors
 
         constructor(properties?: Partial<Mktemp.ConstructorProps>, ...args: any[]);
 
@@ -2574,7 +2574,7 @@ export namespace Guestfs {
     class Mount9P extends GObject.Object {
         static $gtype: GObject.GType<Mount9P>;
 
-        // Own properties of Guestfs.Mount9P
+        // Properties
 
         /**
          * A string.
@@ -2582,7 +2582,7 @@ export namespace Guestfs {
         get options(): string;
         set options(val: string);
 
-        // Constructors of Guestfs.Mount9P
+        // Constructors
 
         constructor(properties?: Partial<Mount9P.ConstructorProps>, ...args: any[]);
 
@@ -2608,7 +2608,7 @@ export namespace Guestfs {
     class MountLocal extends GObject.Object {
         static $gtype: GObject.GType<MountLocal>;
 
-        // Own properties of Guestfs.MountLocal
+        // Properties
 
         /**
          * A 32-bit integer.
@@ -2631,7 +2631,7 @@ export namespace Guestfs {
         get readonly(): Tristate;
         set readonly(val: Tristate);
 
-        // Constructors of Guestfs.MountLocal
+        // Constructors
 
         constructor(properties?: Partial<MountLocal.ConstructorProps>, ...args: any[]);
 
@@ -2655,7 +2655,7 @@ export namespace Guestfs {
     class NTFSResizeOpts extends GObject.Object {
         static $gtype: GObject.GType<NTFSResizeOpts>;
 
-        // Own properties of Guestfs.NTFSResizeOpts
+        // Properties
 
         /**
          * A boolean.
@@ -2668,7 +2668,7 @@ export namespace Guestfs {
         get size(): number;
         set size(val: number);
 
-        // Constructors of Guestfs.NTFSResizeOpts
+        // Constructors
 
         constructor(properties?: Partial<NTFSResizeOpts.ConstructorProps>, ...args: any[]);
 
@@ -2695,7 +2695,7 @@ export namespace Guestfs {
     class NtfscloneOut extends GObject.Object {
         static $gtype: GObject.GType<NtfscloneOut>;
 
-        // Own properties of Guestfs.NtfscloneOut
+        // Properties
 
         /**
          * A boolean.
@@ -2723,7 +2723,7 @@ export namespace Guestfs {
         get rescue(): Tristate;
         set rescue(val: Tristate);
 
-        // Constructors of Guestfs.NtfscloneOut
+        // Constructors
 
         constructor(properties?: Partial<NtfscloneOut.ConstructorProps>, ...args: any[]);
 
@@ -2746,7 +2746,7 @@ export namespace Guestfs {
     class Ntfsfix extends GObject.Object {
         static $gtype: GObject.GType<Ntfsfix>;
 
-        // Own properties of Guestfs.Ntfsfix
+        // Properties
 
         /**
          * A boolean.
@@ -2754,7 +2754,7 @@ export namespace Guestfs {
         get clearbadsectors(): Tristate;
         set clearbadsectors(val: Tristate);
 
-        // Constructors of Guestfs.Ntfsfix
+        // Constructors
 
         constructor(properties?: Partial<Ntfsfix.ConstructorProps>, ...args: any[]);
 
@@ -2777,7 +2777,7 @@ export namespace Guestfs {
     class Remount extends GObject.Object {
         static $gtype: GObject.GType<Remount>;
 
-        // Own properties of Guestfs.Remount
+        // Properties
 
         /**
          * A boolean.
@@ -2785,7 +2785,7 @@ export namespace Guestfs {
         get rw(): Tristate;
         set rw(val: Tristate);
 
-        // Constructors of Guestfs.Remount
+        // Constructors
 
         constructor(properties?: Partial<Remount.ConstructorProps>, ...args: any[]);
 
@@ -2809,7 +2809,7 @@ export namespace Guestfs {
     class Rsync extends GObject.Object {
         static $gtype: GObject.GType<Rsync>;
 
-        // Own properties of Guestfs.Rsync
+        // Properties
 
         /**
          * A boolean.
@@ -2822,7 +2822,7 @@ export namespace Guestfs {
         get deletedest(): Tristate;
         set deletedest(val: Tristate);
 
-        // Constructors of Guestfs.Rsync
+        // Constructors
 
         constructor(properties?: Partial<Rsync.ConstructorProps>, ...args: any[]);
 
@@ -2846,7 +2846,7 @@ export namespace Guestfs {
     class RsyncIn extends GObject.Object {
         static $gtype: GObject.GType<RsyncIn>;
 
-        // Own properties of Guestfs.RsyncIn
+        // Properties
 
         /**
          * A boolean.
@@ -2859,7 +2859,7 @@ export namespace Guestfs {
         get deletedest(): Tristate;
         set deletedest(val: Tristate);
 
-        // Constructors of Guestfs.RsyncIn
+        // Constructors
 
         constructor(properties?: Partial<RsyncIn.ConstructorProps>, ...args: any[]);
 
@@ -2883,7 +2883,7 @@ export namespace Guestfs {
     class RsyncOut extends GObject.Object {
         static $gtype: GObject.GType<RsyncOut>;
 
-        // Own properties of Guestfs.RsyncOut
+        // Properties
 
         /**
          * A boolean.
@@ -2896,7 +2896,7 @@ export namespace Guestfs {
         get deletedest(): Tristate;
         set deletedest(val: Tristate);
 
-        // Constructors of Guestfs.RsyncOut
+        // Constructors
 
         constructor(properties?: Partial<RsyncOut.ConstructorProps>, ...args: any[]);
 
@@ -2919,7 +2919,7 @@ export namespace Guestfs {
     class SelinuxRelabel extends GObject.Object {
         static $gtype: GObject.GType<SelinuxRelabel>;
 
-        // Own properties of Guestfs.SelinuxRelabel
+        // Properties
 
         /**
          * A boolean.
@@ -2927,7 +2927,7 @@ export namespace Guestfs {
         get force(): Tristate;
         set force(val: Tristate);
 
-        // Constructors of Guestfs.SelinuxRelabel
+        // Constructors
 
         constructor(properties?: Partial<SelinuxRelabel.ConstructorProps>, ...args: any[]);
 
@@ -2990,7 +2990,7 @@ export namespace Guestfs {
     class Session extends GObject.Object {
         static $gtype: GObject.GType<Session>;
 
-        // Constructors of Guestfs.Session
+        // Constructors
 
         constructor(properties?: Partial<Session.ConstructorProps>, ...args: any[]);
 
@@ -2998,7 +2998,7 @@ export namespace Guestfs {
 
         static ['new'](): Session;
 
-        // Own signals of Guestfs.Session
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -3034,7 +3034,7 @@ export namespace Guestfs {
         connect_after(signal: 'warning', callback: (_source: this, params: SessionEventParams) => void): number;
         emit(signal: 'warning', params: SessionEventParams): void;
 
-        // Own methods of Guestfs.Session
+        // Methods
 
         /**
          * delete the default POSIX ACL of a directory
@@ -13704,7 +13704,7 @@ export namespace Guestfs {
     class SetE2attrs extends GObject.Object {
         static $gtype: GObject.GType<SetE2attrs>;
 
-        // Own properties of Guestfs.SetE2attrs
+        // Properties
 
         /**
          * A boolean.
@@ -13712,7 +13712,7 @@ export namespace Guestfs {
         get clear(): Tristate;
         set clear(val: Tristate);
 
-        // Constructors of Guestfs.SetE2attrs
+        // Constructors
 
         constructor(properties?: Partial<SetE2attrs.ConstructorProps>, ...args: any[]);
 
@@ -13735,7 +13735,7 @@ export namespace Guestfs {
     class Syslinux extends GObject.Object {
         static $gtype: GObject.GType<Syslinux>;
 
-        // Own properties of Guestfs.Syslinux
+        // Properties
 
         /**
          * A string.
@@ -13743,7 +13743,7 @@ export namespace Guestfs {
         get directory(): string;
         set directory(val: string);
 
-        // Constructors of Guestfs.Syslinux
+        // Constructors
 
         constructor(properties?: Partial<Syslinux.ConstructorProps>, ...args: any[]);
 
@@ -13769,7 +13769,7 @@ export namespace Guestfs {
     class TarIn extends GObject.Object {
         static $gtype: GObject.GType<TarIn>;
 
-        // Own properties of Guestfs.TarIn
+        // Properties
 
         /**
          * A boolean.
@@ -13792,7 +13792,7 @@ export namespace Guestfs {
         get xattrs(): Tristate;
         set xattrs(val: Tristate);
 
-        // Constructors of Guestfs.TarIn
+        // Constructors
 
         constructor(properties?: Partial<TarIn.ConstructorProps>, ...args: any[]);
 
@@ -13819,7 +13819,7 @@ export namespace Guestfs {
     class TarOut extends GObject.Object {
         static $gtype: GObject.GType<TarOut>;
 
-        // Own properties of Guestfs.TarOut
+        // Properties
 
         /**
          * A boolean.
@@ -13847,7 +13847,7 @@ export namespace Guestfs {
         get xattrs(): Tristate;
         set xattrs(val: Tristate);
 
-        // Constructors of Guestfs.TarOut
+        // Constructors
 
         constructor(properties?: Partial<TarOut.ConstructorProps>, ...args: any[]);
 
@@ -13879,7 +13879,7 @@ export namespace Guestfs {
     class Tune2FS extends GObject.Object {
         static $gtype: GObject.GType<Tune2FS>;
 
-        // Own properties of Guestfs.Tune2FS
+        // Properties
 
         /**
          * A string.
@@ -13932,7 +13932,7 @@ export namespace Guestfs {
         get user(): number;
         set user(val: number);
 
-        // Constructors of Guestfs.Tune2FS
+        // Constructors
 
         constructor(properties?: Partial<Tune2FS.ConstructorProps>, ...args: any[]);
 
@@ -13956,7 +13956,7 @@ export namespace Guestfs {
     class Umount extends GObject.Object {
         static $gtype: GObject.GType<Umount>;
 
-        // Own properties of Guestfs.Umount
+        // Properties
 
         /**
          * A boolean.
@@ -13969,7 +13969,7 @@ export namespace Guestfs {
         get lazyunmount(): Tristate;
         set lazyunmount(val: Tristate);
 
-        // Constructors of Guestfs.Umount
+        // Constructors
 
         constructor(properties?: Partial<Umount.ConstructorProps>, ...args: any[]);
 
@@ -13992,7 +13992,7 @@ export namespace Guestfs {
     class UmountLocal extends GObject.Object {
         static $gtype: GObject.GType<UmountLocal>;
 
-        // Own properties of Guestfs.UmountLocal
+        // Properties
 
         /**
          * A boolean.
@@ -14000,7 +14000,7 @@ export namespace Guestfs {
         get retry(): Tristate;
         set retry(val: Tristate);
 
-        // Constructors of Guestfs.UmountLocal
+        // Constructors
 
         constructor(properties?: Partial<UmountLocal.ConstructorProps>, ...args: any[]);
 
@@ -14029,7 +14029,7 @@ export namespace Guestfs {
     class XfsAdmin extends GObject.Object {
         static $gtype: GObject.GType<XfsAdmin>;
 
-        // Own properties of Guestfs.XfsAdmin
+        // Properties
 
         /**
          * A boolean.
@@ -14067,7 +14067,7 @@ export namespace Guestfs {
         get v2log(): Tristate;
         set v2log(val: Tristate);
 
-        // Constructors of Guestfs.XfsAdmin
+        // Constructors
 
         constructor(properties?: Partial<XfsAdmin.ConstructorProps>, ...args: any[]);
 
@@ -14097,7 +14097,7 @@ export namespace Guestfs {
     class XfsGrowfs extends GObject.Object {
         static $gtype: GObject.GType<XfsGrowfs>;
 
-        // Own properties of Guestfs.XfsGrowfs
+        // Properties
 
         /**
          * A boolean.
@@ -14140,7 +14140,7 @@ export namespace Guestfs {
         get rtsize(): number;
         set rtsize(val: number);
 
-        // Constructors of Guestfs.XfsGrowfs
+        // Constructors
 
         constructor(properties?: Partial<XfsGrowfs.ConstructorProps>, ...args: any[]);
 
@@ -14172,7 +14172,7 @@ export namespace Guestfs {
     class XfsRepair extends GObject.Object {
         static $gtype: GObject.GType<XfsRepair>;
 
-        // Own properties of Guestfs.XfsRepair
+        // Properties
 
         /**
          * A 64-bit integer.
@@ -14225,7 +14225,7 @@ export namespace Guestfs {
         get rtdev(): string;
         set rtdev(val: string);
 
-        // Constructors of Guestfs.XfsRepair
+        // Constructors
 
         constructor(properties?: Partial<XfsRepair.ConstructorProps>, ...args: any[]);
 
@@ -14238,7 +14238,7 @@ export namespace Guestfs {
     abstract class AddDomainPrivate {
         static $gtype: GObject.GType<AddDomainPrivate>;
 
-        // Constructors of Guestfs.AddDomainPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -14247,7 +14247,7 @@ export namespace Guestfs {
     abstract class AddDrivePrivate {
         static $gtype: GObject.GType<AddDrivePrivate>;
 
-        // Constructors of Guestfs.AddDrivePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -14256,7 +14256,7 @@ export namespace Guestfs {
     abstract class AddDriveScratchPrivate {
         static $gtype: GObject.GType<AddDriveScratchPrivate>;
 
-        // Constructors of Guestfs.AddDriveScratchPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -14265,7 +14265,7 @@ export namespace Guestfs {
     abstract class AddLibvirtDomPrivate {
         static $gtype: GObject.GType<AddLibvirtDomPrivate>;
 
-        // Constructors of Guestfs.AddLibvirtDomPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -14273,7 +14273,7 @@ export namespace Guestfs {
     class Application {
         static $gtype: GObject.GType<Application>;
 
-        // Own fields of Guestfs.Application
+        // Fields
 
         app_name: string;
         app_display_name: string;
@@ -14288,7 +14288,7 @@ export namespace Guestfs {
         app_summary: string;
         app_description: string;
 
-        // Constructors of Guestfs.Application
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -14312,7 +14312,7 @@ export namespace Guestfs {
     class Application2 {
         static $gtype: GObject.GType<Application2>;
 
-        // Own fields of Guestfs.Application2
+        // Fields
 
         app2_name: string;
         app2_display_name: string;
@@ -14332,7 +14332,7 @@ export namespace Guestfs {
         app2_spare3: string;
         app2_spare4: string;
 
-        // Constructors of Guestfs.Application2
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -14362,7 +14362,7 @@ export namespace Guestfs {
     abstract class AugTransformPrivate {
         static $gtype: GObject.GType<AugTransformPrivate>;
 
-        // Constructors of Guestfs.AugTransformPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -14370,7 +14370,7 @@ export namespace Guestfs {
     class BTRFSBalance {
         static $gtype: GObject.GType<BTRFSBalance>;
 
-        // Own fields of Guestfs.BTRFSBalance
+        // Fields
 
         btrfsbalance_status: string;
         btrfsbalance_total: number;
@@ -14378,7 +14378,7 @@ export namespace Guestfs {
         btrfsbalance_considered: number;
         btrfsbalance_left: number;
 
-        // Constructors of Guestfs.BTRFSBalance
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -14396,7 +14396,7 @@ export namespace Guestfs {
     abstract class BTRFSFilesystemDefragmentPrivate {
         static $gtype: GObject.GType<BTRFSFilesystemDefragmentPrivate>;
 
-        // Constructors of Guestfs.BTRFSFilesystemDefragmentPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -14405,7 +14405,7 @@ export namespace Guestfs {
     abstract class BTRFSFilesystemResizePrivate {
         static $gtype: GObject.GType<BTRFSFilesystemResizePrivate>;
 
-        // Constructors of Guestfs.BTRFSFilesystemResizePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -14414,7 +14414,7 @@ export namespace Guestfs {
     abstract class BTRFSImagePrivate {
         static $gtype: GObject.GType<BTRFSImagePrivate>;
 
-        // Constructors of Guestfs.BTRFSImagePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -14422,13 +14422,13 @@ export namespace Guestfs {
     class BTRFSQgroup {
         static $gtype: GObject.GType<BTRFSQgroup>;
 
-        // Own fields of Guestfs.BTRFSQgroup
+        // Fields
 
         btrfsqgroup_id: string;
         btrfsqgroup_rfer: number;
         btrfsqgroup_excl: number;
 
-        // Constructors of Guestfs.BTRFSQgroup
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -14443,7 +14443,7 @@ export namespace Guestfs {
     class BTRFSScrub {
         static $gtype: GObject.GType<BTRFSScrub>;
 
-        // Own fields of Guestfs.BTRFSScrub
+        // Fields
 
         btrfsscrub_data_extents_scrubbed: number;
         btrfsscrub_tree_extents_scrubbed: number;
@@ -14461,7 +14461,7 @@ export namespace Guestfs {
         btrfsscrub_corrected_errors: number;
         btrfsscrub_last_physical: number;
 
-        // Constructors of Guestfs.BTRFSScrub
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -14488,13 +14488,13 @@ export namespace Guestfs {
     class BTRFSSubvolume {
         static $gtype: GObject.GType<BTRFSSubvolume>;
 
-        // Own fields of Guestfs.BTRFSSubvolume
+        // Fields
 
         btrfssubvolume_id: number;
         btrfssubvolume_top_level_id: number;
         btrfssubvolume_path: string;
 
-        // Constructors of Guestfs.BTRFSSubvolume
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -14510,7 +14510,7 @@ export namespace Guestfs {
     abstract class BTRFSSubvolumeCreatePrivate {
         static $gtype: GObject.GType<BTRFSSubvolumeCreatePrivate>;
 
-        // Constructors of Guestfs.BTRFSSubvolumeCreatePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -14519,7 +14519,7 @@ export namespace Guestfs {
     abstract class BTRFSSubvolumeSnapshotPrivate {
         static $gtype: GObject.GType<BTRFSSubvolumeSnapshotPrivate>;
 
-        // Constructors of Guestfs.BTRFSSubvolumeSnapshotPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -14528,7 +14528,7 @@ export namespace Guestfs {
     abstract class BtrfsFsckPrivate {
         static $gtype: GObject.GType<BtrfsFsckPrivate>;
 
-        // Constructors of Guestfs.BtrfsFsckPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -14537,7 +14537,7 @@ export namespace Guestfs {
     abstract class CompressDeviceOutPrivate {
         static $gtype: GObject.GType<CompressDeviceOutPrivate>;
 
-        // Constructors of Guestfs.CompressDeviceOutPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -14546,7 +14546,7 @@ export namespace Guestfs {
     abstract class CompressOutPrivate {
         static $gtype: GObject.GType<CompressOutPrivate>;
 
-        // Constructors of Guestfs.CompressOutPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -14555,7 +14555,7 @@ export namespace Guestfs {
     abstract class CopyAttributesPrivate {
         static $gtype: GObject.GType<CopyAttributesPrivate>;
 
-        // Constructors of Guestfs.CopyAttributesPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -14564,7 +14564,7 @@ export namespace Guestfs {
     abstract class CopyDeviceToDevicePrivate {
         static $gtype: GObject.GType<CopyDeviceToDevicePrivate>;
 
-        // Constructors of Guestfs.CopyDeviceToDevicePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -14573,7 +14573,7 @@ export namespace Guestfs {
     abstract class CopyDeviceToFilePrivate {
         static $gtype: GObject.GType<CopyDeviceToFilePrivate>;
 
-        // Constructors of Guestfs.CopyDeviceToFilePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -14582,7 +14582,7 @@ export namespace Guestfs {
     abstract class CopyFileToDevicePrivate {
         static $gtype: GObject.GType<CopyFileToDevicePrivate>;
 
-        // Constructors of Guestfs.CopyFileToDevicePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -14591,7 +14591,7 @@ export namespace Guestfs {
     abstract class CopyFileToFilePrivate {
         static $gtype: GObject.GType<CopyFileToFilePrivate>;
 
-        // Constructors of Guestfs.CopyFileToFilePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -14600,7 +14600,7 @@ export namespace Guestfs {
     abstract class CpioOutPrivate {
         static $gtype: GObject.GType<CpioOutPrivate>;
 
-        // Constructors of Guestfs.CpioOutPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -14609,7 +14609,7 @@ export namespace Guestfs {
     abstract class CryptsetupOpenPrivate {
         static $gtype: GObject.GType<CryptsetupOpenPrivate>;
 
-        // Constructors of Guestfs.CryptsetupOpenPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -14617,13 +14617,13 @@ export namespace Guestfs {
     class Dirent {
         static $gtype: GObject.GType<Dirent>;
 
-        // Own fields of Guestfs.Dirent
+        // Fields
 
         ino: number;
         ftyp: number;
         name: string;
 
-        // Constructors of Guestfs.Dirent
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -14639,7 +14639,7 @@ export namespace Guestfs {
     abstract class DiskCreatePrivate {
         static $gtype: GObject.GType<DiskCreatePrivate>;
 
-        // Constructors of Guestfs.DiskCreatePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -14648,7 +14648,7 @@ export namespace Guestfs {
     abstract class DownloadBlocksPrivate {
         static $gtype: GObject.GType<DownloadBlocksPrivate>;
 
-        // Constructors of Guestfs.DownloadBlocksPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -14657,7 +14657,7 @@ export namespace Guestfs {
     abstract class E2fsckPrivate {
         static $gtype: GObject.GType<E2fsckPrivate>;
 
-        // Constructors of Guestfs.E2fsckPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -14666,7 +14666,7 @@ export namespace Guestfs {
     abstract class FstrimPrivate {
         static $gtype: GObject.GType<FstrimPrivate>;
 
-        // Constructors of Guestfs.FstrimPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -14675,7 +14675,7 @@ export namespace Guestfs {
     abstract class GlobExpandPrivate {
         static $gtype: GObject.GType<GlobExpandPrivate>;
 
-        // Constructors of Guestfs.GlobExpandPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -14684,7 +14684,7 @@ export namespace Guestfs {
     abstract class GrepPrivate {
         static $gtype: GObject.GType<GrepPrivate>;
 
-        // Constructors of Guestfs.GrepPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -14692,11 +14692,11 @@ export namespace Guestfs {
     class HivexNode {
         static $gtype: GObject.GType<HivexNode>;
 
-        // Own fields of Guestfs.HivexNode
+        // Fields
 
         hivex_node_h: number;
 
-        // Constructors of Guestfs.HivexNode
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -14710,7 +14710,7 @@ export namespace Guestfs {
     abstract class HivexOpenPrivate {
         static $gtype: GObject.GType<HivexOpenPrivate>;
 
-        // Constructors of Guestfs.HivexOpenPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -14718,11 +14718,11 @@ export namespace Guestfs {
     class HivexValue {
         static $gtype: GObject.GType<HivexValue>;
 
-        // Own fields of Guestfs.HivexValue
+        // Fields
 
         hivex_value_h: number;
 
-        // Constructors of Guestfs.HivexValue
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -14735,14 +14735,14 @@ export namespace Guestfs {
     class INotifyEvent {
         static $gtype: GObject.GType<INotifyEvent>;
 
-        // Own fields of Guestfs.INotifyEvent
+        // Fields
 
         in_wd: number;
         in_mask: number;
         in_cookie: number;
         in_name: string;
 
-        // Constructors of Guestfs.INotifyEvent
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -14758,7 +14758,7 @@ export namespace Guestfs {
     class ISOInfo {
         static $gtype: GObject.GType<ISOInfo>;
 
-        // Own fields of Guestfs.ISOInfo
+        // Fields
 
         iso_system_id: string;
         iso_volume_id: string;
@@ -14778,7 +14778,7 @@ export namespace Guestfs {
         iso_volume_expiration_t: number;
         iso_volume_effective_t: number;
 
-        // Constructors of Guestfs.ISOInfo
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -14808,7 +14808,7 @@ export namespace Guestfs {
     abstract class InspectGetIconPrivate {
         static $gtype: GObject.GType<InspectGetIconPrivate>;
 
-        // Constructors of Guestfs.InspectGetIconPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -14816,12 +14816,12 @@ export namespace Guestfs {
     class IntBool {
         static $gtype: GObject.GType<IntBool>;
 
-        // Own fields of Guestfs.IntBool
+        // Fields
 
         i: number;
         b: number;
 
-        // Constructors of Guestfs.IntBool
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -14836,7 +14836,7 @@ export namespace Guestfs {
     abstract class InternalTest63OptargsPrivate {
         static $gtype: GObject.GType<InternalTest63OptargsPrivate>;
 
-        // Constructors of Guestfs.InternalTest63OptargsPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -14846,7 +14846,7 @@ export namespace Guestfs {
     abstract class InternalTestOnlyOptargsPrivate {
         static $gtype: GObject.GType<InternalTestOnlyOptargsPrivate>;
 
-        // Constructors of Guestfs.InternalTestOnlyOptargsPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -14854,7 +14854,7 @@ export namespace Guestfs {
     abstract class InternalTestPrivate {
         static $gtype: GObject.GType<InternalTestPrivate>;
 
-        // Constructors of Guestfs.InternalTestPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -14863,7 +14863,7 @@ export namespace Guestfs {
     abstract class IsBlockdevPrivate {
         static $gtype: GObject.GType<IsBlockdevPrivate>;
 
-        // Constructors of Guestfs.IsBlockdevPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -14872,7 +14872,7 @@ export namespace Guestfs {
     abstract class IsChardevPrivate {
         static $gtype: GObject.GType<IsChardevPrivate>;
 
-        // Constructors of Guestfs.IsChardevPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -14881,7 +14881,7 @@ export namespace Guestfs {
     abstract class IsDirPrivate {
         static $gtype: GObject.GType<IsDirPrivate>;
 
-        // Constructors of Guestfs.IsDirPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -14890,7 +14890,7 @@ export namespace Guestfs {
     abstract class IsFifoPrivate {
         static $gtype: GObject.GType<IsFifoPrivate>;
 
-        // Constructors of Guestfs.IsFifoPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -14899,7 +14899,7 @@ export namespace Guestfs {
     abstract class IsFilePrivate {
         static $gtype: GObject.GType<IsFilePrivate>;
 
-        // Constructors of Guestfs.IsFilePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -14908,7 +14908,7 @@ export namespace Guestfs {
     abstract class IsSocketPrivate {
         static $gtype: GObject.GType<IsSocketPrivate>;
 
-        // Constructors of Guestfs.IsSocketPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -14916,7 +14916,7 @@ export namespace Guestfs {
     class LV {
         static $gtype: GObject.GType<LV>;
 
-        // Own fields of Guestfs.LV
+        // Fields
 
         lv_name: string;
         lv_uuid: number[];
@@ -14935,7 +14935,7 @@ export namespace Guestfs {
         mirror_log: string;
         modules: string;
 
-        // Constructors of Guestfs.LV
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -14964,7 +14964,7 @@ export namespace Guestfs {
     abstract class MDCreatePrivate {
         static $gtype: GObject.GType<MDCreatePrivate>;
 
-        // Constructors of Guestfs.MDCreatePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -14972,13 +14972,13 @@ export namespace Guestfs {
     class MDStat {
         static $gtype: GObject.GType<MDStat>;
 
-        // Own fields of Guestfs.MDStat
+        // Fields
 
         mdstat_device: string;
         mdstat_index: number;
         mdstat_flags: string;
 
-        // Constructors of Guestfs.MDStat
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -14994,7 +14994,7 @@ export namespace Guestfs {
     abstract class Mke2fsPrivate {
         static $gtype: GObject.GType<Mke2fsPrivate>;
 
-        // Constructors of Guestfs.Mke2fsPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -15003,7 +15003,7 @@ export namespace Guestfs {
     abstract class MkfsBtrfsPrivate {
         static $gtype: GObject.GType<MkfsBtrfsPrivate>;
 
-        // Constructors of Guestfs.MkfsBtrfsPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -15012,7 +15012,7 @@ export namespace Guestfs {
     abstract class MkfsPrivate {
         static $gtype: GObject.GType<MkfsPrivate>;
 
-        // Constructors of Guestfs.MkfsPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -15021,7 +15021,7 @@ export namespace Guestfs {
     abstract class MksquashfsPrivate {
         static $gtype: GObject.GType<MksquashfsPrivate>;
 
-        // Constructors of Guestfs.MksquashfsPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -15030,7 +15030,7 @@ export namespace Guestfs {
     abstract class MkswapPrivate {
         static $gtype: GObject.GType<MkswapPrivate>;
 
-        // Constructors of Guestfs.MkswapPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -15039,7 +15039,7 @@ export namespace Guestfs {
     abstract class MktempPrivate {
         static $gtype: GObject.GType<MktempPrivate>;
 
-        // Constructors of Guestfs.MktempPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -15048,7 +15048,7 @@ export namespace Guestfs {
     abstract class Mount9PPrivate {
         static $gtype: GObject.GType<Mount9PPrivate>;
 
-        // Constructors of Guestfs.Mount9PPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -15057,7 +15057,7 @@ export namespace Guestfs {
     abstract class MountLocalPrivate {
         static $gtype: GObject.GType<MountLocalPrivate>;
 
-        // Constructors of Guestfs.MountLocalPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -15066,7 +15066,7 @@ export namespace Guestfs {
     abstract class NTFSResizeOptsPrivate {
         static $gtype: GObject.GType<NTFSResizeOptsPrivate>;
 
-        // Constructors of Guestfs.NTFSResizeOptsPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -15075,7 +15075,7 @@ export namespace Guestfs {
     abstract class NtfscloneOutPrivate {
         static $gtype: GObject.GType<NtfscloneOutPrivate>;
 
-        // Constructors of Guestfs.NtfscloneOutPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -15084,7 +15084,7 @@ export namespace Guestfs {
     abstract class NtfsfixPrivate {
         static $gtype: GObject.GType<NtfsfixPrivate>;
 
-        // Constructors of Guestfs.NtfsfixPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -15092,7 +15092,7 @@ export namespace Guestfs {
     class PV {
         static $gtype: GObject.GType<PV>;
 
-        // Own fields of Guestfs.PV
+        // Fields
 
         pv_name: string;
         pv_uuid: number[];
@@ -15109,7 +15109,7 @@ export namespace Guestfs {
         pv_mda_count: number;
         pv_mda_free: number;
 
-        // Constructors of Guestfs.PV
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -15135,14 +15135,14 @@ export namespace Guestfs {
     class Partition {
         static $gtype: GObject.GType<Partition>;
 
-        // Own fields of Guestfs.Partition
+        // Fields
 
         part_num: number;
         part_start: number;
         part_end: number;
         part_size: number;
 
-        // Constructors of Guestfs.Partition
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -15159,7 +15159,7 @@ export namespace Guestfs {
     abstract class RemountPrivate {
         static $gtype: GObject.GType<RemountPrivate>;
 
-        // Constructors of Guestfs.RemountPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -15169,7 +15169,7 @@ export namespace Guestfs {
     abstract class RsyncInPrivate {
         static $gtype: GObject.GType<RsyncInPrivate>;
 
-        // Constructors of Guestfs.RsyncInPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -15178,7 +15178,7 @@ export namespace Guestfs {
     abstract class RsyncOutPrivate {
         static $gtype: GObject.GType<RsyncOutPrivate>;
 
-        // Constructors of Guestfs.RsyncOutPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -15186,7 +15186,7 @@ export namespace Guestfs {
     abstract class RsyncPrivate {
         static $gtype: GObject.GType<RsyncPrivate>;
 
-        // Constructors of Guestfs.RsyncPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -15195,7 +15195,7 @@ export namespace Guestfs {
     abstract class SelinuxRelabelPrivate {
         static $gtype: GObject.GType<SelinuxRelabelPrivate>;
 
-        // Constructors of Guestfs.SelinuxRelabelPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -15204,7 +15204,7 @@ export namespace Guestfs {
     class SessionEventParams {
         static $gtype: GObject.GType<SessionEventParams>;
 
-        // Own fields of Guestfs.SessionEventParams
+        // Fields
 
         event: SessionEvent;
         flags: number;
@@ -15212,7 +15212,7 @@ export namespace Guestfs {
         array: number[];
         array_len: number;
 
-        // Constructors of Guestfs.SessionEventParams
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -15220,7 +15220,7 @@ export namespace Guestfs {
     abstract class SessionPrivate {
         static $gtype: GObject.GType<SessionPrivate>;
 
-        // Constructors of Guestfs.SessionPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -15229,7 +15229,7 @@ export namespace Guestfs {
     abstract class SetE2attrsPrivate {
         static $gtype: GObject.GType<SetE2attrsPrivate>;
 
-        // Constructors of Guestfs.SetE2attrsPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -15237,7 +15237,7 @@ export namespace Guestfs {
     class Stat {
         static $gtype: GObject.GType<Stat>;
 
-        // Own fields of Guestfs.Stat
+        // Fields
 
         dev: number;
         ino: number;
@@ -15253,7 +15253,7 @@ export namespace Guestfs {
         mtime: number;
         ctime: number;
 
-        // Constructors of Guestfs.Stat
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -15278,7 +15278,7 @@ export namespace Guestfs {
     class StatNS {
         static $gtype: GObject.GType<StatNS>;
 
-        // Own fields of Guestfs.StatNS
+        // Fields
 
         st_dev: number;
         st_ino: number;
@@ -15303,7 +15303,7 @@ export namespace Guestfs {
         st_spare5: number;
         st_spare6: number;
 
-        // Constructors of Guestfs.StatNS
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -15337,7 +15337,7 @@ export namespace Guestfs {
     class StatVFS {
         static $gtype: GObject.GType<StatVFS>;
 
-        // Own fields of Guestfs.StatVFS
+        // Fields
 
         bsize: number;
         frsize: number;
@@ -15351,7 +15351,7 @@ export namespace Guestfs {
         flag: number;
         namemax: number;
 
-        // Constructors of Guestfs.StatVFS
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -15375,7 +15375,7 @@ export namespace Guestfs {
     abstract class SyslinuxPrivate {
         static $gtype: GObject.GType<SyslinuxPrivate>;
 
-        // Constructors of Guestfs.SyslinuxPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -15383,7 +15383,7 @@ export namespace Guestfs {
     class TSKDirent {
         static $gtype: GObject.GType<TSKDirent>;
 
-        // Own fields of Guestfs.TSKDirent
+        // Fields
 
         tsk_inode: number;
         tsk_type: number;
@@ -15402,7 +15402,7 @@ export namespace Guestfs {
         tsk_link: string;
         tsk_spare1: number;
 
-        // Constructors of Guestfs.TSKDirent
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -15431,7 +15431,7 @@ export namespace Guestfs {
     abstract class TarInPrivate {
         static $gtype: GObject.GType<TarInPrivate>;
 
-        // Constructors of Guestfs.TarInPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -15440,7 +15440,7 @@ export namespace Guestfs {
     abstract class TarOutPrivate {
         static $gtype: GObject.GType<TarOutPrivate>;
 
-        // Constructors of Guestfs.TarOutPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -15449,7 +15449,7 @@ export namespace Guestfs {
     abstract class Tune2FSPrivate {
         static $gtype: GObject.GType<Tune2FSPrivate>;
 
-        // Constructors of Guestfs.Tune2FSPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -15457,14 +15457,14 @@ export namespace Guestfs {
     class UTSName {
         static $gtype: GObject.GType<UTSName>;
 
-        // Own fields of Guestfs.UTSName
+        // Fields
 
         uts_sysname: string;
         uts_release: string;
         uts_version: string;
         uts_machine: string;
 
-        // Constructors of Guestfs.UTSName
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -15482,7 +15482,7 @@ export namespace Guestfs {
     abstract class UmountLocalPrivate {
         static $gtype: GObject.GType<UmountLocalPrivate>;
 
-        // Constructors of Guestfs.UmountLocalPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -15490,7 +15490,7 @@ export namespace Guestfs {
     abstract class UmountPrivate {
         static $gtype: GObject.GType<UmountPrivate>;
 
-        // Constructors of Guestfs.UmountPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -15498,7 +15498,7 @@ export namespace Guestfs {
     class VG {
         static $gtype: GObject.GType<VG>;
 
-        // Own fields of Guestfs.VG
+        // Fields
 
         vg_name: string;
         vg_uuid: number[];
@@ -15520,7 +15520,7 @@ export namespace Guestfs {
         vg_mda_count: number;
         vg_mda_free: number;
 
-        // Constructors of Guestfs.VG
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -15551,14 +15551,14 @@ export namespace Guestfs {
     class Version {
         static $gtype: GObject.GType<Version>;
 
-        // Own fields of Guestfs.Version
+        // Fields
 
         major: number;
         minor: number;
         release: number;
         extra: string;
 
-        // Constructors of Guestfs.Version
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -15574,12 +15574,12 @@ export namespace Guestfs {
     class XAttr {
         static $gtype: GObject.GType<XAttr>;
 
-        // Own fields of Guestfs.XAttr
+        // Fields
 
         attrname: string;
         attrval: Uint8Array;
 
-        // Constructors of Guestfs.XAttr
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -15593,7 +15593,7 @@ export namespace Guestfs {
     class XFSInfo {
         static $gtype: GObject.GType<XFSInfo>;
 
-        // Own fields of Guestfs.XFSInfo
+        // Fields
 
         xfs_mntpoint: string;
         xfs_inodesize: number;
@@ -15621,7 +15621,7 @@ export namespace Guestfs {
         xfs_rtblocks: number;
         xfs_rtextents: number;
 
-        // Constructors of Guestfs.XFSInfo
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -15659,7 +15659,7 @@ export namespace Guestfs {
     abstract class XfsAdminPrivate {
         static $gtype: GObject.GType<XfsAdminPrivate>;
 
-        // Constructors of Guestfs.XfsAdminPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -15668,7 +15668,7 @@ export namespace Guestfs {
     abstract class XfsGrowfsPrivate {
         static $gtype: GObject.GType<XfsGrowfsPrivate>;
 
-        // Constructors of Guestfs.XfsGrowfsPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -15677,7 +15677,7 @@ export namespace Guestfs {
     abstract class XfsRepairPrivate {
         static $gtype: GObject.GType<XfsRepairPrivate>;
 
-        // Constructors of Guestfs.XfsRepairPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -15685,12 +15685,12 @@ export namespace Guestfs {
     class YaraDetection {
         static $gtype: GObject.GType<YaraDetection>;
 
-        // Own fields of Guestfs.YaraDetection
+        // Fields
 
         yara_name: string;
         yara_rule: string;
 
-        // Constructors of Guestfs.YaraDetection
+        // Constructors
 
         constructor(
             properties?: Partial<{

@@ -65,7 +65,7 @@ export namespace MateMenu {
     class Tree extends GObject.Object {
         static $gtype: GObject.GType<Tree>;
 
-        // Own properties of MateMenu.Tree
+        // Properties
 
         /**
          * Flags controlling the content of the menu.
@@ -94,7 +94,7 @@ export namespace MateMenu {
          */
         get menuPath(): string;
 
-        // Constructors of MateMenu.Tree
+        // Constructors
 
         constructor(properties?: Partial<Tree.ConstructorProps>, ...args: any[]);
 
@@ -104,7 +104,7 @@ export namespace MateMenu {
 
         static new_for_path(menu_path: string, flags: TreeFlags): Tree;
 
-        // Own signals of MateMenu.Tree
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -113,12 +113,12 @@ export namespace MateMenu {
         connect_after(signal: 'changed', callback: (_source: this) => void): number;
         emit(signal: 'changed'): void;
 
-        // Own static methods of MateMenu.Tree
+        // Static methods
 
         static item_ref(item?: any | null): any | null;
         static item_unref(item?: any | null): void;
 
-        // Own methods of MateMenu.Tree
+        // Methods
 
         /**
          * This function is only available if the tree has been loaded via
@@ -151,11 +151,11 @@ export namespace MateMenu {
     abstract class TreeAlias {
         static $gtype: GObject.GType<TreeAlias>;
 
-        // Constructors of MateMenu.TreeAlias
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of MateMenu.TreeAlias
+        // Methods
 
         get_aliased_directory(): TreeDirectory;
         get_aliased_entry(): TreeEntry;
@@ -173,11 +173,11 @@ export namespace MateMenu {
     abstract class TreeDirectory {
         static $gtype: GObject.GType<TreeDirectory>;
 
-        // Constructors of MateMenu.TreeDirectory
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of MateMenu.TreeDirectory
+        // Methods
 
         get_comment(): string;
         get_desktop_file_path(): string;
@@ -203,11 +203,11 @@ export namespace MateMenu {
     abstract class TreeEntry {
         static $gtype: GObject.GType<TreeEntry>;
 
-        // Constructors of MateMenu.TreeEntry
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of MateMenu.TreeEntry
+        // Methods
 
         get_app_info(): Gio.DesktopAppInfo;
         get_desktop_file_id(): string;
@@ -226,11 +226,11 @@ export namespace MateMenu {
     abstract class TreeHeader {
         static $gtype: GObject.GType<TreeHeader>;
 
-        // Constructors of MateMenu.TreeHeader
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of MateMenu.TreeHeader
+        // Methods
 
         get_directory(): TreeDirectory;
         get_parent(): TreeDirectory;
@@ -244,11 +244,11 @@ export namespace MateMenu {
     abstract class TreeIter {
         static $gtype: GObject.GType<TreeIter>;
 
-        // Constructors of MateMenu.TreeIter
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of MateMenu.TreeIter
+        // Methods
 
         /**
          * This method may only be called if matemenu_tree_iter_next()
@@ -291,11 +291,11 @@ export namespace MateMenu {
     abstract class TreeSeparator {
         static $gtype: GObject.GType<TreeSeparator>;
 
-        // Constructors of MateMenu.TreeSeparator
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of MateMenu.TreeSeparator
+        // Methods
 
         get_parent(): TreeDirectory;
         /**

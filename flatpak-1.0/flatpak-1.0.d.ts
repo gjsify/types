@@ -24,7 +24,7 @@ export namespace Flatpak {
     class Error extends GLib.Error {
         static $gtype: GObject.GType<Error>;
 
-        // Static fields of Flatpak.Error
+        // Static fields
 
         /**
          * App/runtime/remote is already installed
@@ -135,12 +135,12 @@ export namespace Flatpak {
          */
         static NOT_AUTHORIZED: number;
 
-        // Constructors of Flatpak.Error
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of Flatpak.Error
+        // Static methods
 
         static quark(): GLib.Quark;
     }
@@ -151,7 +151,7 @@ export namespace Flatpak {
     class PortalError extends GLib.Error {
         static $gtype: GObject.GType<PortalError>;
 
-        // Static fields of Flatpak.PortalError
+        // Static fields
 
         /**
          * General portal failure
@@ -182,12 +182,12 @@ export namespace Flatpak {
          */
         static WINDOW_DESTROYED: number;
 
-        // Constructors of Flatpak.PortalError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of Flatpak.PortalError
+        // Static methods
 
         static quark(): GLib.Quark;
     }
@@ -566,14 +566,14 @@ export namespace Flatpak {
     class BundleRef extends Ref {
         static $gtype: GObject.GType<BundleRef>;
 
-        // Own properties of Flatpak.BundleRef
+        // Properties
 
         /**
          * The bundle file that this ref refers to.
          */
         get file(): Gio.File;
 
-        // Constructors of Flatpak.BundleRef
+        // Constructors
 
         constructor(properties?: Partial<BundleRef.ConstructorProps>, ...args: any[]);
 
@@ -581,7 +581,7 @@ export namespace Flatpak {
 
         static ['new'](file: Gio.File): BundleRef;
 
-        // Own methods of Flatpak.BundleRef
+        // Methods
 
         /**
          * Get the compressed appstream for the app/runtime
@@ -630,7 +630,7 @@ export namespace Flatpak {
     class Installation extends GObject.Object {
         static $gtype: GObject.GType<Installation>;
 
-        // Constructors of Flatpak.Installation
+        // Constructors
 
         constructor(properties?: Partial<Installation.ConstructorProps>, ...args: any[]);
 
@@ -644,7 +644,7 @@ export namespace Flatpak {
 
         static new_user(cancellable?: Gio.Cancellable | null): Installation;
 
-        // Own methods of Flatpak.Installation
+        // Methods
 
         /**
          * Adds a new `remote` object to the set of remotes. This is similar
@@ -1459,7 +1459,7 @@ export namespace Flatpak {
     class InstalledRef extends Ref {
         static $gtype: GObject.GType<InstalledRef>;
 
-        // Own properties of Flatpak.InstalledRef
+        // Properties
 
         get appdata_content_rating(): GLib.HashTable<any, any>;
         get appdataContentRating(): GLib.HashTable<any, any>;
@@ -1498,13 +1498,13 @@ export namespace Flatpak {
         get subpaths(): string[];
         set subpaths(val: string[]);
 
-        // Constructors of Flatpak.InstalledRef
+        // Constructors
 
         constructor(properties?: Partial<InstalledRef.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Flatpak.InstalledRef
+        // Methods
 
         /**
          * Returns the content rating field from the appdata. This is a potentially
@@ -1609,20 +1609,20 @@ export namespace Flatpak {
     class Instance extends GObject.Object {
         static $gtype: GObject.GType<Instance>;
 
-        // Constructors of Flatpak.Instance
+        // Constructors
 
         constructor(properties?: Partial<Instance.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of Flatpak.Instance
+        // Static methods
 
         /**
          * Gets FlatpakInstance objects for all running sandboxes in the current session.
          */
         static get_all(): Instance[];
 
-        // Own methods of Flatpak.Instance
+        // Methods
 
         /**
          * Gets the application ID of the application running in the instance.
@@ -1714,7 +1714,7 @@ export namespace Flatpak {
     class Ref extends GObject.Object {
         static $gtype: GObject.GType<Ref>;
 
-        // Own properties of Flatpak.Ref
+        // Properties
 
         get arch(): string;
         get branch(): string;
@@ -1724,13 +1724,13 @@ export namespace Flatpak {
         get kind(): RefKind;
         get name(): string;
 
-        // Constructors of Flatpak.Ref
+        // Constructors
 
         constructor(properties?: Partial<Ref.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of Flatpak.Ref
+        // Static methods
 
         /**
          * Tries to parse a full ref name and return a #FlatpakRef (without a
@@ -1739,7 +1739,7 @@ export namespace Flatpak {
          */
         static parse(ref: string): Ref;
 
-        // Own methods of Flatpak.Ref
+        // Methods
 
         /**
          * Convert an FlatpakRef object into a string representation that
@@ -1802,7 +1802,7 @@ export namespace Flatpak {
     class RelatedRef extends Ref {
         static $gtype: GObject.GType<RelatedRef>;
 
-        // Own properties of Flatpak.RelatedRef
+        // Properties
 
         get should_autoprune(): boolean;
         get shouldAutoprune(): boolean;
@@ -1812,13 +1812,13 @@ export namespace Flatpak {
         get shouldDownload(): boolean;
         get subpaths(): string[];
 
-        // Constructors of Flatpak.RelatedRef
+        // Constructors
 
         constructor(properties?: Partial<RelatedRef.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Flatpak.RelatedRef
+        // Methods
 
         /**
          * Returns the subpaths that should be installed/updated for the ref.
@@ -1840,7 +1840,7 @@ export namespace Flatpak {
     class Remote extends GObject.Object {
         static $gtype: GObject.GType<Remote>;
 
-        // Own properties of Flatpak.Remote
+        // Properties
 
         /**
          * Name of the remote, as used in configuration files and when interfacing
@@ -1859,7 +1859,7 @@ export namespace Flatpak {
          */
         get type(): RemoteType;
 
-        // Constructors of Flatpak.Remote
+        // Constructors
 
         constructor(properties?: Partial<Remote.ConstructorProps>, ...args: any[]);
 
@@ -1869,7 +1869,7 @@ export namespace Flatpak {
 
         static new_from_file(name: string, data: GLib.Bytes | Uint8Array): Remote;
 
-        // Own methods of Flatpak.Remote
+        // Methods
 
         /**
          * Returns the directory where this remote will store locally cached
@@ -2139,7 +2139,7 @@ export namespace Flatpak {
     class RemoteRef extends Ref {
         static $gtype: GObject.GType<RemoteRef>;
 
-        // Own properties of Flatpak.RemoteRef
+        // Properties
 
         get download_size(): number;
         get downloadSize(): number;
@@ -2153,13 +2153,13 @@ export namespace Flatpak {
         get remote_name(): string;
         get remoteName(): string;
 
-        // Constructors of Flatpak.RemoteRef
+        // Constructors
 
         constructor(properties?: Partial<RemoteRef.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Flatpak.RemoteRef
+        // Methods
 
         /**
          * Returns the download size of the ref.
@@ -2262,7 +2262,7 @@ export namespace Flatpak {
     class Transaction extends GObject.Object implements Gio.Initable {
         static $gtype: GObject.GType<Transaction>;
 
-        // Own properties of Flatpak.Transaction
+        // Properties
 
         /**
          * The installation that the transaction operates on.
@@ -2283,7 +2283,7 @@ export namespace Flatpak {
         get noInteraction(): boolean;
         set noInteraction(val: boolean);
 
-        // Constructors of Flatpak.Transaction
+        // Constructors
 
         constructor(properties?: Partial<Transaction.ConstructorProps>, ...args: any[]);
 
@@ -2291,7 +2291,7 @@ export namespace Flatpak {
 
         static new_for_installation(installation: Installation, cancellable?: Gio.Cancellable | null): Transaction;
 
-        // Own signals of Flatpak.Transaction
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -2468,7 +2468,7 @@ export namespace Flatpak {
         ): number;
         emit(signal: 'webflow-start', remote: string, url: string, options: GLib.Variant, id: number): void;
 
-        // Own virtual methods of Flatpak.Transaction
+        // Virtual methods
 
         vfunc_add_new_remote(
             reason: TransactionRemoteReason,
@@ -2515,7 +2515,7 @@ export namespace Flatpak {
         vfunc_webflow_done(options: GLib.Variant, id: number): void;
         vfunc_webflow_start(remote: string, url: string, options: GLib.Variant, id: number): boolean;
 
-        // Own methods of Flatpak.Transaction
+        // Methods
 
         /**
          * Cancel an ongoing webflow authentication request. This can be call
@@ -3349,13 +3349,13 @@ export namespace Flatpak {
     class TransactionOperation extends GObject.Object {
         static $gtype: GObject.GType<TransactionOperation>;
 
-        // Constructors of Flatpak.TransactionOperation
+        // Constructors
 
         constructor(properties?: Partial<TransactionOperation.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Flatpak.TransactionOperation
+        // Methods
 
         /**
          * Gets the path to the bundle.
@@ -3506,13 +3506,13 @@ export namespace Flatpak {
     class TransactionProgress extends GObject.Object {
         static $gtype: GObject.GType<TransactionProgress>;
 
-        // Constructors of Flatpak.TransactionProgress
+        // Constructors
 
         constructor(properties?: Partial<TransactionProgress.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of Flatpak.TransactionProgress
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -3521,7 +3521,7 @@ export namespace Flatpak {
         connect_after(signal: 'changed', callback: (_source: this) => void): number;
         emit(signal: 'changed'): void;
 
-        // Own methods of Flatpak.TransactionProgress
+        // Methods
 
         /**
          * Gets the number of bytes that have been transferred.

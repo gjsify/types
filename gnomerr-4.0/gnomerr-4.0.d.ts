@@ -53,7 +53,7 @@ export namespace GnomeRR {
     class Error extends GLib.Error {
         static $gtype: GObject.GType<Error>;
 
-        // Static fields of GnomeRR.Error
+        // Static fields
 
         static UNKNOWN: number;
         static NO_RANDR_EXTENSION: number;
@@ -63,7 +63,7 @@ export namespace GnomeRR {
         static NO_MATCHING_CONFIG: number;
         static NO_DPMS_EXTENSION: number;
 
-        // Constructors of GnomeRR.Error
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
@@ -100,11 +100,11 @@ export namespace GnomeRR {
     class Config extends GObject.Object {
         static $gtype: GObject.GType<Config>;
 
-        // Own properties of GnomeRR.Config
+        // Properties
 
         set screen(val: Screen);
 
-        // Constructors of GnomeRR.Config
+        // Constructors
 
         constructor(properties?: Partial<Config.ConstructorProps>, ...args: any[]);
 
@@ -112,7 +112,7 @@ export namespace GnomeRR {
 
         static new_current(screen: Screen): Config;
 
-        // Own methods of GnomeRR.Config
+        // Methods
 
         applicable(screen: Screen): boolean;
         apply(screen: Screen): boolean;
@@ -140,13 +140,13 @@ export namespace GnomeRR {
     class OutputInfo extends GObject.Object {
         static $gtype: GObject.GType<OutputInfo>;
 
-        // Constructors of GnomeRR.OutputInfo
+        // Constructors
 
         constructor(properties?: Partial<OutputInfo.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of GnomeRR.OutputInfo
+        // Methods
 
         get_aspect_ratio(): number;
         get_display_name(): string;
@@ -222,7 +222,7 @@ export namespace GnomeRR {
     class Screen extends GObject.Object implements Gio.AsyncInitable<Screen>, Gio.Initable {
         static $gtype: GObject.GType<Screen>;
 
-        // Own properties of GnomeRR.Screen
+        // Properties
 
         get dpms_mode(): DpmsModeType;
         set dpms_mode(val: DpmsModeType);
@@ -231,7 +231,7 @@ export namespace GnomeRR {
         get gdk_display(): Gdk.Display;
         get gdkDisplay(): Gdk.Display;
 
-        // Constructors of GnomeRR.Screen
+        // Constructors
 
         constructor(properties?: Partial<Screen.ConstructorProps>, ...args: any[]);
 
@@ -244,7 +244,7 @@ export namespace GnomeRR {
 
         static new_finish(...args: never[]): any;
 
-        // Own signals of GnomeRR.Screen
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -259,7 +259,7 @@ export namespace GnomeRR {
         connect_after(signal: 'output-disconnected', callback: (_source: this, output: Output) => void): number;
         emit(signal: 'output-disconnected', output: Output): void;
 
-        // Own static methods of GnomeRR.Screen
+        // Static methods
 
         /**
          * Asynchronously creates a new #GnomeRRScreen instance.
@@ -272,13 +272,13 @@ export namespace GnomeRR {
          */
         static new_async(display: Gdk.Display, callback?: Gio.AsyncReadyCallback<Screen> | null): void;
 
-        // Own virtual methods of GnomeRR.Screen
+        // Virtual methods
 
         vfunc_changed(): void;
         vfunc_output_connected(output: Output): void;
         vfunc_output_disconnected(output: Output): void;
 
-        // Own methods of GnomeRR.Screen
+        // Methods
 
         /**
          * Retrieves the CRTC of the screen using the given identifier.
@@ -938,7 +938,7 @@ export namespace GnomeRR {
     class CTM {
         static $gtype: GObject.GType<CTM>;
 
-        // Constructors of GnomeRR.CTM
+        // Constructors
 
         constructor(properties?: Partial<{}>);
         _init(...args: any[]): void;
@@ -948,11 +948,11 @@ export namespace GnomeRR {
     abstract class Crtc {
         static $gtype: GObject.GType<Crtc>;
 
-        // Constructors of GnomeRR.Crtc
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of GnomeRR.Crtc
+        // Methods
 
         can_drive_output(output: Output): boolean;
         get_current_mode(): Mode;
@@ -968,11 +968,11 @@ export namespace GnomeRR {
     abstract class Mode {
         static $gtype: GObject.GType<Mode>;
 
-        // Constructors of GnomeRR.Mode
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of GnomeRR.Mode
+        // Methods
 
         get_freq(): number;
         get_freq_f(): number;
@@ -990,11 +990,11 @@ export namespace GnomeRR {
     abstract class Output {
         static $gtype: GObject.GType<Output>;
 
-        // Constructors of GnomeRR.Output
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of GnomeRR.Output
+        // Methods
 
         /**
          * Checks whether the given output can clone another output.

@@ -108,7 +108,7 @@ export namespace Egg {
     class Animation extends GObject.InitiallyUnowned {
         static $gtype: GObject.GType<Animation>;
 
-        // Own properties of Egg.Animation
+        // Properties
 
         /**
          * The "duration" property is the total number of milliseconds that the
@@ -129,13 +129,13 @@ export namespace Egg {
          */
         set target(val: GObject.Object);
 
-        // Constructors of Egg.Animation
+        // Constructors
 
         constructor(properties?: Partial<Animation.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of Egg.Animation
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -144,11 +144,11 @@ export namespace Egg {
         connect_after(signal: 'tick', callback: (_source: this) => void): number;
         emit(signal: 'tick'): void;
 
-        // Own static methods of Egg.Animation
+        // Static methods
 
         static calculate_duration(monitor: Gdk.Monitor, from_value: number, to_value: number): number;
 
-        // Own methods of Egg.Animation
+        // Methods
 
         /**
          * Adds a new property to the set of properties to be animated during the
@@ -197,7 +197,7 @@ export namespace Egg {
     class BindingGroup extends GObject.Object {
         static $gtype: GObject.GType<BindingGroup>;
 
-        // Own properties of Egg.BindingGroup
+        // Properties
 
         /**
          * The source object used for binding properties.
@@ -205,7 +205,7 @@ export namespace Egg {
         get source(): GObject.Object;
         set source(val: GObject.Object);
 
-        // Constructors of Egg.BindingGroup
+        // Constructors
 
         constructor(properties?: Partial<BindingGroup.ConstructorProps>, ...args: any[]);
 
@@ -213,7 +213,7 @@ export namespace Egg {
 
         static ['new'](): BindingGroup;
 
-        // Own methods of Egg.BindingGroup
+        // Methods
 
         /**
          * Creates a binding between `source_property` on the source object
@@ -313,14 +313,14 @@ export namespace Egg {
     class Box extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<Box>;
 
-        // Own properties of Egg.Box
+        // Properties
 
         get max_width_request(): number;
         set max_width_request(val: number);
         get maxWidthRequest(): number;
         set maxWidthRequest(val: number);
 
-        // Constructors of Egg.Box
+        // Constructors
 
         constructor(properties?: Partial<Box.ConstructorProps>, ...args: any[]);
 
@@ -328,7 +328,7 @@ export namespace Egg {
 
         static ['new'](): Box;
 
-        // Own methods of Egg.Box
+        // Methods
 
         get_max_width_request(): number;
         set_max_width_request(max_width_request: number): void;
@@ -777,14 +777,14 @@ export namespace Egg {
     class CenteringBin extends Gtk.Bin implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<CenteringBin>;
 
-        // Own properties of Egg.CenteringBin
+        // Properties
 
         get max_width_request(): number;
         set max_width_request(val: number);
         get maxWidthRequest(): number;
         set maxWidthRequest(val: number);
 
-        // Constructors of Egg.CenteringBin
+        // Constructors
 
         constructor(properties?: Partial<CenteringBin.ConstructorProps>, ...args: any[]);
 
@@ -1216,7 +1216,7 @@ export namespace Egg {
     class ColumnLayout extends Gtk.Container implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<ColumnLayout>;
 
-        // Own properties of Egg.ColumnLayout
+        // Properties
 
         get column_spacing(): number;
         set column_spacing(val: number);
@@ -1235,7 +1235,7 @@ export namespace Egg {
         get rowSpacing(): number;
         set rowSpacing(val: number);
 
-        // Constructors of Egg.ColumnLayout
+        // Constructors
 
         constructor(properties?: Partial<ColumnLayout.ConstructorProps>, ...args: any[]);
 
@@ -1243,7 +1243,7 @@ export namespace Egg {
 
         static ['new'](): ColumnLayout;
 
-        // Own methods of Egg.ColumnLayout
+        // Methods
 
         get_column_spacing(): number;
         get_column_width(): number;
@@ -1669,7 +1669,7 @@ export namespace Egg {
     class ElasticBin extends Gtk.Bin implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<ElasticBin>;
 
-        // Constructors of Egg.ElasticBin
+        // Constructors
 
         constructor(properties?: Partial<ElasticBin.ConstructorProps>, ...args: any[]);
 
@@ -2100,7 +2100,7 @@ export namespace Egg {
     class EmptyState extends Gtk.Bin implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<EmptyState>;
 
-        // Own properties of Egg.EmptyState
+        // Properties
 
         get icon_name(): string;
         set icon_name(val: string);
@@ -2116,7 +2116,7 @@ export namespace Egg {
         get title(): string;
         set title(val: string);
 
-        // Constructors of Egg.EmptyState
+        // Constructors
 
         constructor(properties?: Partial<EmptyState.ConstructorProps>, ...args: any[]);
 
@@ -2124,7 +2124,7 @@ export namespace Egg {
 
         static ['new'](): EmptyState;
 
-        // Own methods of Egg.EmptyState
+        // Methods
 
         get_icon_name(): string;
         get_subtitle(): string;
@@ -2553,14 +2553,14 @@ export namespace Egg {
     class EntryBox extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<EntryBox>;
 
-        // Own properties of Egg.EntryBox
+        // Properties
 
         get max_width_chars(): number;
         set max_width_chars(val: number);
         get maxWidthChars(): number;
         set maxWidthChars(val: number);
 
-        // Constructors of Egg.EntryBox
+        // Constructors
 
         constructor(properties?: Partial<EntryBox.ConstructorProps>, ...args: any[]);
 
@@ -3015,7 +3015,7 @@ export namespace Egg {
     class FileChooserEntry extends Gtk.Bin implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<FileChooserEntry>;
 
-        // Own properties of Egg.FileChooserEntry
+        // Properties
 
         get action(): Gtk.FileChooserAction;
         set action(val: Gtk.FileChooserAction);
@@ -3046,7 +3046,7 @@ export namespace Egg {
         get title(): string;
         set title(val: string);
 
-        // Constructors of Egg.FileChooserEntry
+        // Constructors
 
         constructor(properties?: Partial<FileChooserEntry.ConstructorProps>, ...args: any[]);
 
@@ -3054,7 +3054,7 @@ export namespace Egg {
 
         static ['new'](title: string, action: Gtk.FileChooserAction): FileChooserEntry;
 
-        // Own methods of Egg.FileChooserEntry
+        // Methods
 
         /**
          * Returns the currently selected file or %NULL if there is no selection.
@@ -3485,7 +3485,7 @@ export namespace Egg {
     class ListBox extends Gtk.ListBox implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<ListBox>;
 
-        // Own properties of Egg.ListBox
+        // Properties
 
         get property_name(): string;
         get propertyName(): string;
@@ -3494,7 +3494,7 @@ export namespace Egg {
         set row_type_name(val: string);
         set rowTypeName(val: string);
 
-        // Constructors of Egg.ListBox
+        // Constructors
 
         constructor(properties?: Partial<ListBox.ConstructorProps>, ...args: any[]);
 
@@ -3505,7 +3505,7 @@ export namespace Egg {
 
         static ['new'](...args: never[]): any;
 
-        // Own methods of Egg.ListBox
+        // Methods
 
         get_model(): Gio.ListModel | null;
         get_property_name(): string;
@@ -3944,7 +3944,7 @@ export namespace Egg {
     class MenuManager extends GObject.Object {
         static $gtype: GObject.GType<MenuManager>;
 
-        // Constructors of Egg.MenuManager
+        // Constructors
 
         constructor(properties?: Partial<MenuManager.ConstructorProps>, ...args: any[]);
 
@@ -3952,7 +3952,7 @@ export namespace Egg {
 
         static ['new'](): MenuManager;
 
-        // Own methods of Egg.MenuManager
+        // Methods
 
         add_filename(filename: string): number;
         add_resource(resource: string): number;
@@ -3974,12 +3974,12 @@ export namespace Egg {
     class PillBox extends Gtk.EventBox implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<PillBox>;
 
-        // Own properties of Egg.PillBox
+        // Properties
 
         get label(): string;
         set label(val: string);
 
-        // Constructors of Egg.PillBox
+        // Constructors
 
         constructor(properties?: Partial<PillBox.ConstructorProps>, ...args: any[]);
 
@@ -3990,7 +3990,7 @@ export namespace Egg {
 
         static ['new'](...args: never[]): any;
 
-        // Own methods of Egg.PillBox
+        // Methods
 
         get_label(): string;
         set_label(label: string): void;
@@ -4414,7 +4414,7 @@ export namespace Egg {
     class PriorityBox extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<PriorityBox>;
 
-        // Constructors of Egg.PriorityBox
+        // Constructors
 
         constructor(properties?: Partial<PriorityBox.ConstructorProps>, ...args: any[]);
 
@@ -4863,7 +4863,7 @@ export namespace Egg {
     {
         static $gtype: GObject.GType<ProgressButton>;
 
-        // Own properties of Egg.ProgressButton
+        // Properties
 
         get progress(): number;
         set progress(val: number);
@@ -4872,7 +4872,7 @@ export namespace Egg {
         get showProgress(): boolean;
         set showProgress(val: boolean);
 
-        // Constructors of Egg.ProgressButton
+        // Constructors
 
         constructor(properties?: Partial<ProgressButton.ConstructorProps>, ...args: any[]);
 
@@ -4880,7 +4880,7 @@ export namespace Egg {
 
         static ['new'](): ProgressButton;
 
-        // Own methods of Egg.ProgressButton
+        // Methods
 
         get_progress(): number;
         get_show_progress(): boolean;
@@ -9080,7 +9080,7 @@ export namespace Egg {
     class RadioBox extends Gtk.Bin implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<RadioBox>;
 
-        // Own properties of Egg.RadioBox
+        // Properties
 
         get active_id(): string;
         set active_id(val: string);
@@ -9093,7 +9093,7 @@ export namespace Egg {
         get showMore(): boolean;
         set showMore(val: boolean);
 
-        // Constructors of Egg.RadioBox
+        // Constructors
 
         constructor(properties?: Partial<RadioBox.ConstructorProps>, ...args: any[]);
 
@@ -9101,7 +9101,7 @@ export namespace Egg {
 
         static ['new'](): RadioBox;
 
-        // Own signals of Egg.RadioBox
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -9110,7 +9110,7 @@ export namespace Egg {
         connect_after(signal: 'changed', callback: (_source: this) => void): number;
         emit(signal: 'changed'): void;
 
-        // Own methods of Egg.RadioBox
+        // Methods
 
         add_item(id: string, text: string): void;
         get_active_id(): string;
@@ -9531,7 +9531,7 @@ export namespace Egg {
     class ScrolledWindow extends Gtk.ScrolledWindow implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<ScrolledWindow>;
 
-        // Constructors of Egg.ScrolledWindow
+        // Constructors
 
         constructor(properties?: Partial<ScrolledWindow.ConstructorProps>, ...args: any[]);
 
@@ -9967,7 +9967,7 @@ export namespace Egg {
     class SearchBar extends Gtk.Bin implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<SearchBar>;
 
-        // Own properties of Egg.SearchBar
+        // Properties
 
         get search_mode_enabled(): boolean;
         set search_mode_enabled(val: boolean);
@@ -9978,7 +9978,7 @@ export namespace Egg {
         get showCloseButton(): boolean;
         set showCloseButton(val: boolean);
 
-        // Constructors of Egg.SearchBar
+        // Constructors
 
         constructor(properties?: Partial<SearchBar.ConstructorProps>, ...args: any[]);
 
@@ -9986,7 +9986,7 @@ export namespace Egg {
 
         static ['new'](): SearchBar;
 
-        // Own signals of Egg.SearchBar
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -9998,7 +9998,7 @@ export namespace Egg {
         connect_after(signal: 'reveal', callback: (_source: this) => void): number;
         emit(signal: 'reveal'): void;
 
-        // Own methods of Egg.SearchBar
+        // Methods
 
         get_entry(): Gtk.SearchEntry;
         get_search_mode_enabled(): boolean;
@@ -10425,7 +10425,7 @@ export namespace Egg {
     class SettingsFlagAction extends GObject.Object implements Gio.Action {
         static $gtype: GObject.GType<SettingsFlagAction>;
 
-        // Own properties of Egg.SettingsFlagAction
+        // Properties
 
         get flag_nick(): string;
         get flagNick(): string;
@@ -10436,13 +10436,13 @@ export namespace Egg {
         get schemaKey(): string;
         set schemaKey(val: string);
 
-        // Constructors of Egg.SettingsFlagAction
+        // Constructors
 
         constructor(properties?: Partial<SettingsFlagAction.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of Egg.SettingsFlagAction
+        // Static methods
 
         /**
          * This creates a new action that can be used to toggle an individual flag in
@@ -11103,13 +11103,13 @@ export namespace Egg {
     class SettingsSandwich extends GObject.Object {
         static $gtype: GObject.GType<SettingsSandwich>;
 
-        // Own properties of Egg.SettingsSandwich
+        // Properties
 
         get path(): string;
         get schema_id(): string;
         get schemaId(): string;
 
-        // Constructors of Egg.SettingsSandwich
+        // Constructors
 
         constructor(properties?: Partial<SettingsSandwich.ConstructorProps>, ...args: any[]);
 
@@ -11117,7 +11117,7 @@ export namespace Egg {
 
         static ['new'](schema_id: string, path: string): SettingsSandwich;
 
-        // Own methods of Egg.SettingsSandwich
+        // Methods
 
         append(settings: Gio.Settings): void;
         bind(key: string, object: any | null, property: string, flags: Gio.SettingsBindFlags): void;
@@ -11199,7 +11199,7 @@ export namespace Egg {
     class SignalGroup extends GObject.Object {
         static $gtype: GObject.GType<SignalGroup>;
 
-        // Own properties of Egg.SignalGroup
+        // Properties
 
         /**
          * The target instance used when connecting signals.
@@ -11215,7 +11215,7 @@ export namespace Egg {
          */
         get targetType(): GObject.GType;
 
-        // Constructors of Egg.SignalGroup
+        // Constructors
 
         constructor(properties?: Partial<SignalGroup.ConstructorProps>, ...args: any[]);
 
@@ -11223,7 +11223,7 @@ export namespace Egg {
 
         static ['new'](target_type: GObject.GType): SignalGroup;
 
-        // Own signals of Egg.SignalGroup
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -11235,7 +11235,7 @@ export namespace Egg {
         connect_after(signal: 'unbind', callback: (_source: this) => void): number;
         emit(signal: 'unbind'): void;
 
-        // Own methods of Egg.SignalGroup
+        // Methods
 
         /**
          * Blocks all signal handlers managed by `self` so they will not
@@ -11318,7 +11318,7 @@ export namespace Egg {
     class SimpleLabel extends Gtk.Widget implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<SimpleLabel>;
 
-        // Own properties of Egg.SimpleLabel
+        // Properties
 
         get label(): string;
         set label(val: string);
@@ -11329,7 +11329,7 @@ export namespace Egg {
         get xalign(): number;
         set xalign(val: number);
 
-        // Constructors of Egg.SimpleLabel
+        // Constructors
 
         constructor(properties?: Partial<SimpleLabel.ConstructorProps>, ...args: any[]);
 
@@ -11337,7 +11337,7 @@ export namespace Egg {
 
         static ['new'](label: string): SimpleLabel;
 
-        // Own methods of Egg.SimpleLabel
+        // Methods
 
         get_label(): string;
         get_width_chars(): number;
@@ -11958,7 +11958,7 @@ export namespace Egg {
     class SimplePopover extends Gtk.Popover implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<SimplePopover>;
 
-        // Own properties of Egg.SimplePopover
+        // Properties
 
         get button_text(): string;
         set button_text(val: string);
@@ -11973,7 +11973,7 @@ export namespace Egg {
         get title(): string;
         set title(val: string);
 
-        // Constructors of Egg.SimplePopover
+        // Constructors
 
         constructor(properties?: Partial<SimplePopover.ConstructorProps>, ...args: any[]);
 
@@ -11981,7 +11981,7 @@ export namespace Egg {
 
         static ['new'](): SimplePopover;
 
-        // Own signals of Egg.SimplePopover
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -12002,13 +12002,13 @@ export namespace Egg {
         ): number;
         emit(signal: 'insert-text', position: number, chars: string, n_chars: number): void;
 
-        // Own virtual methods of Egg.SimplePopover
+        // Virtual methods
 
         vfunc_activate(text: string): void;
         vfunc_changed(): void;
         vfunc_insert_text(position: number, chars: string, n_chars: number): boolean;
 
-        // Own methods of Egg.SimplePopover
+        // Methods
 
         get_button_text(): string;
         get_message(): string;
@@ -12438,12 +12438,12 @@ export namespace Egg {
     class Slider extends Gtk.Container implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<Slider>;
 
-        // Own properties of Egg.Slider
+        // Properties
 
         get position(): SliderPosition;
         set position(val: SliderPosition);
 
-        // Constructors of Egg.Slider
+        // Constructors
 
         constructor(properties?: Partial<Slider.ConstructorProps>, ...args: any[]);
 
@@ -12451,7 +12451,7 @@ export namespace Egg {
 
         static ['new'](): Slider;
 
-        // Own methods of Egg.Slider
+        // Methods
 
         add_slider(widget: Gtk.Widget, position: SliderPosition): void;
         get_position(): SliderPosition;
@@ -12871,12 +12871,12 @@ export namespace Egg {
     class StateMachine extends GObject.Object implements Gtk.Buildable {
         static $gtype: GObject.GType<StateMachine>;
 
-        // Own properties of Egg.StateMachine
+        // Properties
 
         get state(): string;
         set state(val: string);
 
-        // Constructors of Egg.StateMachine
+        // Constructors
 
         constructor(properties?: Partial<StateMachine.ConstructorProps>, ...args: any[]);
 
@@ -12884,7 +12884,7 @@ export namespace Egg {
 
         static ['new'](): StateMachine;
 
-        // Own methods of Egg.StateMachine
+        // Methods
 
         add_binding(
             state: string,
@@ -13527,7 +13527,7 @@ export namespace Egg {
     class Suggestion extends GObject.Object {
         static $gtype: GObject.GType<Suggestion>;
 
-        // Own properties of Egg.Suggestion
+        // Properties
 
         get icon_name(): string;
         set icon_name(val: string);
@@ -13540,7 +13540,7 @@ export namespace Egg {
         get title(): string;
         set title(val: string);
 
-        // Constructors of Egg.Suggestion
+        // Constructors
 
         constructor(properties?: Partial<Suggestion.ConstructorProps>, ...args: any[]);
 
@@ -13548,7 +13548,7 @@ export namespace Egg {
 
         static ['new'](): Suggestion;
 
-        // Own signals of Egg.Suggestion
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -13560,7 +13560,7 @@ export namespace Egg {
         connect_after(signal: 'suggest-suffix', callback: (_source: this, object: string) => string): number;
         emit(signal: 'suggest-suffix', object: string): void;
 
-        // Own virtual methods of Egg.Suggestion
+        // Virtual methods
 
         /**
          * This function is meant to be used to replace the text in the entry with text
@@ -13581,7 +13581,7 @@ export namespace Egg {
          */
         vfunc_suggest_suffix(typed_text: string): string | null;
 
-        // Own methods of Egg.Suggestion
+        // Methods
 
         get_icon_name(): string;
         get_id(): string;
@@ -13656,14 +13656,14 @@ export namespace Egg {
     {
         static $gtype: GObject.GType<SuggestionEntry>;
 
-        // Own properties of Egg.SuggestionEntry
+        // Properties
 
         get model(): Gio.ListModel;
         set model(val: Gio.ListModel);
         get typed_text(): string;
         get typedText(): string;
 
-        // Constructors of Egg.SuggestionEntry
+        // Constructors
 
         constructor(properties?: Partial<SuggestionEntry.ConstructorProps>, ...args: any[]);
 
@@ -13671,7 +13671,7 @@ export namespace Egg {
 
         static ['new'](): SuggestionEntry;
 
-        // Own signals of Egg.SuggestionEntry
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -13692,14 +13692,14 @@ export namespace Egg {
         connect_after(signal: 'suggestion-activated', callback: (_source: this, object: Suggestion) => void): number;
         emit(signal: 'suggestion-activated', object: Suggestion): void;
 
-        // Own virtual methods of Egg.SuggestionEntry
+        // Virtual methods
 
         vfunc_hide_suggestions(): void;
         vfunc_move_suggestion(amount: number): void;
         vfunc_show_suggestions(): void;
         vfunc_suggestion_activated(suggestion: Suggestion): void;
 
-        // Own methods of Egg.SuggestionEntry
+        // Methods
 
         /**
          * Gets the model being visualized.
@@ -17908,12 +17908,12 @@ export namespace Egg {
     class SuggestionEntryBuffer extends Gtk.EntryBuffer {
         static $gtype: GObject.GType<SuggestionEntryBuffer>;
 
-        // Own properties of Egg.SuggestionEntryBuffer
+        // Properties
 
         get suggestion(): Suggestion;
         set suggestion(val: Suggestion);
 
-        // Constructors of Egg.SuggestionEntryBuffer
+        // Constructors
 
         constructor(properties?: Partial<SuggestionEntryBuffer.ConstructorProps>, ...args: any[]);
 
@@ -17921,7 +17921,7 @@ export namespace Egg {
 
         static ['new'](): SuggestionEntryBuffer;
 
-        // Own methods of Egg.SuggestionEntryBuffer
+        // Methods
 
         commit(): void;
         /**
@@ -17966,7 +17966,7 @@ export namespace Egg {
     class SuggestionPopover extends Gtk.Window implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<SuggestionPopover>;
 
-        // Own properties of Egg.SuggestionPopover
+        // Properties
 
         get model(): Suggestion;
         set model(val: Suggestion);
@@ -17977,7 +17977,7 @@ export namespace Egg {
         get selected(): Suggestion;
         set selected(val: Suggestion);
 
-        // Constructors of Egg.SuggestionPopover
+        // Constructors
 
         constructor(properties?: Partial<SuggestionPopover.ConstructorProps>, ...args: any[]);
 
@@ -17985,7 +17985,7 @@ export namespace Egg {
 
         static ['new'](): SuggestionPopover;
 
-        // Own signals of Egg.SuggestionPopover
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -17994,7 +17994,7 @@ export namespace Egg {
         connect_after(signal: 'suggestion-activated', callback: (_source: this, object: Suggestion) => void): number;
         emit(signal: 'suggestion-activated', object: Suggestion): void;
 
-        // Own methods of Egg.SuggestionPopover
+        // Methods
 
         activate_selected(): void;
         /**
@@ -18432,12 +18432,12 @@ export namespace Egg {
     class SuggestionRow extends Gtk.ListBoxRow implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<SuggestionRow>;
 
-        // Own properties of Egg.SuggestionRow
+        // Properties
 
         get suggestion(): Suggestion;
         set suggestion(val: Suggestion);
 
-        // Constructors of Egg.SuggestionRow
+        // Constructors
 
         constructor(properties?: Partial<SuggestionRow.ConstructorProps>, ...args: any[]);
 
@@ -18445,7 +18445,7 @@ export namespace Egg {
 
         static ['new'](): SuggestionRow;
 
-        // Own methods of Egg.SuggestionRow
+        // Methods
 
         /**
          * Gets the suggestion to be displayed.
@@ -18887,7 +18887,7 @@ export namespace Egg {
     class TaskCache extends GObject.Object {
         static $gtype: GObject.GType<TaskCache>;
 
-        // Own properties of Egg.TaskCache
+        // Properties
 
         set key_copy_func(val: any);
         set keyCopyFunc(val: any);
@@ -18922,13 +18922,13 @@ export namespace Egg {
         set value_destroy_func(val: any);
         set valueDestroyFunc(val: any);
 
-        // Constructors of Egg.TaskCache
+        // Constructors
 
         constructor(properties?: Partial<TaskCache.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Egg.TaskCache
+        // Methods
 
         evict(key?: any | null): boolean;
         evict_all(): void;
@@ -18975,7 +18975,7 @@ export namespace Egg {
     class ThreeGrid extends Gtk.Container implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<ThreeGrid>;
 
-        // Own properties of Egg.ThreeGrid
+        // Properties
 
         get column_spacing(): number;
         set column_spacing(val: number);
@@ -18986,7 +18986,7 @@ export namespace Egg {
         get rowSpacing(): number;
         set rowSpacing(val: number);
 
-        // Constructors of Egg.ThreeGrid
+        // Constructors
 
         constructor(properties?: Partial<ThreeGrid.ConstructorProps>, ...args: any[]);
 
@@ -19408,17 +19408,17 @@ export namespace Egg {
     class WidgetActionGroup extends GObject.Object implements Gio.ActionGroup {
         static $gtype: GObject.GType<WidgetActionGroup>;
 
-        // Own properties of Egg.WidgetActionGroup
+        // Properties
 
         get widget(): Gtk.Widget;
 
-        // Constructors of Egg.WidgetActionGroup
+        // Constructors
 
         constructor(properties?: Partial<WidgetActionGroup.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of Egg.WidgetActionGroup
+        // Static methods
 
         /**
          * Helper function to create an #EggWidgetActionGroup and attach
@@ -19429,7 +19429,7 @@ export namespace Egg {
         static attach(widget: Gtk.Widget, group_name: string): void;
         static ['new'](widget: Gtk.Widget): Gio.ActionGroup;
 
-        // Own methods of Egg.WidgetActionGroup
+        // Methods
 
         set_action_enabled(action_name: string, enabled: boolean): void;
 
@@ -20286,14 +20286,14 @@ export namespace Egg {
     class Counter {
         static $gtype: GObject.GType<Counter>;
 
-        // Own fields of Egg.Counter
+        // Fields
 
         values: CounterValue;
         category: string;
         name: string;
         description: string;
 
-        // Constructors of Egg.Counter
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -20304,7 +20304,7 @@ export namespace Egg {
         );
         _init(...args: any[]): void;
 
-        // Own methods of Egg.Counter
+        // Methods
 
         get(): number;
         reset(): void;
@@ -20313,18 +20313,18 @@ export namespace Egg {
     class CounterArena {
         static $gtype: GObject.GType<CounterArena>;
 
-        // Constructors of Egg.CounterArena
+        // Constructors
 
         constructor(pid: GLib.Pid);
         _init(...args: any[]): void;
 
         static new_for_pid(pid: GLib.Pid): CounterArena;
 
-        // Own static methods of Egg.CounterArena
+        // Static methods
 
         static get_default(): CounterArena;
 
-        // Own methods of Egg.CounterArena
+        // Methods
 
         /**
          * Calls `func` for every counter found in `area`.
@@ -20339,12 +20339,12 @@ export namespace Egg {
     class CounterValue {
         static $gtype: GObject.GType<CounterValue>;
 
-        // Own fields of Egg.CounterValue
+        // Fields
 
         value: number;
         padding: number[];
 
-        // Constructors of Egg.CounterValue
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -20410,12 +20410,12 @@ export namespace Egg {
     class Heap {
         static $gtype: GObject.GType<Heap>;
 
-        // Own fields of Egg.Heap
+        // Fields
 
         data: string;
         len: number;
 
-        // Constructors of Egg.Heap
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -20427,7 +20427,7 @@ export namespace Egg {
 
         static ['new'](element_size: number, compare_func: GLib.CompareFunc): Heap;
 
-        // Own methods of Egg.Heap
+        // Methods
 
         extract(result?: any | null): boolean;
         extract_index(index_: number, result?: any | null): boolean;

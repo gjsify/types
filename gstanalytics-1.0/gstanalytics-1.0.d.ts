@@ -116,22 +116,22 @@ export namespace GstAnalytics {
     class ClsMtd {
         static $gtype: GObject.GType<ClsMtd>;
 
-        // Own fields of GstAnalytics.ClsMtd
+        // Fields
 
         id: number;
 
-        // Constructors of GstAnalytics.ClsMtd
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own static methods of GstAnalytics.ClsMtd
+        // Static methods
 
         /**
          * Get an id identifying #GstAnalyticsMtd type.
          */
         static get_mtd_type(): MtdType;
 
-        // Own methods of GstAnalytics.ClsMtd
+        // Methods
 
         get_index_by_quark(quark: GLib.Quark): number;
         get_length(): number;
@@ -151,15 +151,15 @@ export namespace GstAnalytics {
     class Mtd {
         static $gtype: GObject.GType<Mtd>;
 
-        // Own fields of GstAnalytics.Mtd
+        // Fields
 
         id: number;
 
-        // Constructors of GstAnalytics.Mtd
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own static methods of GstAnalytics.Mtd
+        // Static methods
 
         /**
          * Gets the string version of the name of this type of analytics data
@@ -167,7 +167,7 @@ export namespace GstAnalytics {
          */
         static type_get_name(type: MtdType): string;
 
-        // Own methods of GstAnalytics.Mtd
+        // Methods
 
         /**
          * Get instance id
@@ -189,11 +189,11 @@ export namespace GstAnalytics {
     class MtdImpl {
         static $gtype: GObject.GType<MtdImpl>;
 
-        // Own fields of GstAnalytics.MtdImpl
+        // Fields
 
         name: string;
 
-        // Constructors of GstAnalytics.MtdImpl
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -210,22 +210,22 @@ export namespace GstAnalytics {
     class ODMtd {
         static $gtype: GObject.GType<ODMtd>;
 
-        // Own fields of GstAnalytics.ODMtd
+        // Fields
 
         id: number;
 
-        // Constructors of GstAnalytics.ODMtd
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own static methods of GstAnalytics.ODMtd
+        // Static methods
 
         /**
          * Get an id that represent object-detection metadata type
          */
         static get_mtd_type(): MtdType;
 
-        // Own methods of GstAnalytics.ODMtd
+        // Methods
 
         /**
          * Retrieve location confidence level.
@@ -253,11 +253,11 @@ export namespace GstAnalytics {
     abstract class RelationMeta {
         static $gtype: GObject.GType<RelationMeta>;
 
-        // Constructors of GstAnalytics.RelationMeta
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of GstAnalytics.RelationMeta
+        // Methods
 
         /**
          * Add analytic classification metadata to `instance`.
@@ -364,12 +364,12 @@ export namespace GstAnalytics {
     class RelationMetaInitParams {
         static $gtype: GObject.GType<RelationMetaInitParams>;
 
-        // Own fields of GstAnalytics.RelationMetaInitParams
+        // Fields
 
         initial_relation_order: number;
         initial_buf_size: number;
 
-        // Constructors of GstAnalytics.RelationMetaInitParams
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -386,19 +386,19 @@ export namespace GstAnalytics {
     class TrackingMtd {
         static $gtype: GObject.GType<TrackingMtd>;
 
-        // Own fields of GstAnalytics.TrackingMtd
+        // Fields
 
         id: number;
 
-        // Constructors of GstAnalytics.TrackingMtd
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own static methods of GstAnalytics.TrackingMtd
+        // Static methods
 
         static get_mtd_type(): MtdType;
 
-        // Own methods of GstAnalytics.TrackingMtd
+        // Methods
 
         /**
          * Retrieve tracking information.

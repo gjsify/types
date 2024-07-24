@@ -121,7 +121,7 @@ export namespace DbusmenuGtk3 {
     class Client extends Dbusmenu.Client {
         static $gtype: GObject.GType<Client>;
 
-        // Constructors of DbusmenuGtk3.Client
+        // Constructors
 
         constructor(properties?: Partial<Client.ConstructorProps>, ...args: any[]);
 
@@ -129,7 +129,7 @@ export namespace DbusmenuGtk3 {
 
         static ['new'](dbus_name: string, dbus_object: string): Client;
 
-        // Own methods of DbusmenuGtk3.Client
+        // Methods
 
         /**
          * Gets the accel group for this client.
@@ -192,14 +192,14 @@ export namespace DbusmenuGtk3 {
     class Menu extends Gtk.Menu implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<Menu>;
 
-        // Own properties of DbusmenuGtk3.Menu
+        // Properties
 
         get dbus_name(): string;
         get dbusName(): string;
         get dbus_object(): string;
         get dbusObject(): string;
 
-        // Constructors of DbusmenuGtk3.Menu
+        // Constructors
 
         constructor(properties?: Partial<Menu.ConstructorProps>, ...args: any[]);
 
@@ -210,7 +210,7 @@ export namespace DbusmenuGtk3 {
 
         static ['new'](...args: never[]): any;
 
-        // Own methods of DbusmenuGtk3.Menu
+        // Methods
 
         /**
          * An accessor for the client that this menu is using to
@@ -626,7 +626,7 @@ export namespace DbusmenuGtk3 {
     abstract class ClientPrivate {
         static $gtype: GObject.GType<ClientPrivate>;
 
-        // Constructors of DbusmenuGtk3.ClientPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -635,7 +635,7 @@ export namespace DbusmenuGtk3 {
     abstract class MenuPrivate {
         static $gtype: GObject.GType<MenuPrivate>;
 
-        // Constructors of DbusmenuGtk3.MenuPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }

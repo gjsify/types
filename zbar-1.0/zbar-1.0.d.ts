@@ -57,7 +57,7 @@ export namespace ZBar {
     class Gtk extends Gtk__.Widget implements Atk.ImplementorIface, Gtk__.Buildable {
         static $gtype: GObject.GType<Gtk>;
 
-        // Own properties of ZBar.Gtk
+        // Properties
 
         get video_device(): string;
         set video_device(val: string);
@@ -70,11 +70,11 @@ export namespace ZBar {
         get video_opened(): boolean;
         get videoOpened(): boolean;
 
-        // Own fields of ZBar.Gtk
+        // Fields
 
         widget: Gtk__.Widget;
 
-        // Constructors of ZBar.Gtk
+        // Constructors
 
         constructor(properties?: Partial<Gtk.ConstructorProps>, ...args: any[]);
 
@@ -82,7 +82,7 @@ export namespace ZBar {
 
         static ['new'](): Gtk;
 
-        // Own signals of ZBar.Gtk
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -94,7 +94,7 @@ export namespace ZBar {
         connect_after(signal: 'decoded-text', callback: (_source: this, text: string) => void): number;
         emit(signal: 'decoded-text', text: string): void;
 
-        // Own static methods of ZBar.Gtk
+        // Static methods
 
         /**
          * utility function to populate a zbar_image_t from a GdkPixbuf.
@@ -103,12 +103,12 @@ export namespace ZBar {
          */
         static image_from_pixbuf(image: any | null, pixbuf: GdkPixbuf.Pixbuf): boolean;
 
-        // Own virtual methods of ZBar.Gtk
+        // Virtual methods
 
         vfunc_decoded_text(text: string): void;
         vfunc_scan_image(image: GdkPixbuf.Pixbuf): void;
 
-        // Own methods of ZBar.Gtk
+        // Methods
 
         /**
          * retrieve the currently opened video device.

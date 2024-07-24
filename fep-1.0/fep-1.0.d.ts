@@ -123,11 +123,11 @@ export namespace Fep {
     class GClient extends GObject.Object implements Gio.Initable {
         static $gtype: GObject.GType<GClient>;
 
-        // Own properties of Fep.GClient
+        // Properties
 
         get address(): string;
 
-        // Constructors of Fep.GClient
+        // Constructors
 
         constructor(properties?: Partial<GClient.ConstructorProps>, ...args: any[]);
 
@@ -135,7 +135,7 @@ export namespace Fep {
 
         static ['new'](address?: string | null, cancellable?: Gio.Cancellable | null): GClient;
 
-        // Own signals of Fep.GClient
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -156,13 +156,13 @@ export namespace Fep {
         connect_after(signal: 'resized', callback: (_source: this, cols: number, rows: number) => void): number;
         emit(signal: 'resized', cols: number, rows: number): void;
 
-        // Own virtual methods of Fep.GClient
+        // Virtual methods
 
         vfunc_filter_event(event: GEvent): boolean;
         vfunc_filter_key_event(keyval: number, modifiers: number): boolean;
         vfunc_resized(cols: number, rows: number): void;
 
-        // Own methods of Fep.GClient
+        // Methods
 
         /**
          * Dispatch a key event.
@@ -697,14 +697,14 @@ export namespace Fep {
     class GAttribute {
         static $gtype: GObject.GType<GAttribute>;
 
-        // Own fields of Fep.GAttribute
+        // Fields
 
         type: GAttrType;
         value: number;
         start_index: number;
         end_index: number;
 
-        // Constructors of Fep.GAttribute
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -713,7 +713,7 @@ export namespace Fep {
     abstract class GClientPrivate {
         static $gtype: GObject.GType<GClientPrivate>;
 
-        // Constructors of Fep.GClientPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -721,11 +721,11 @@ export namespace Fep {
     class GEventAny {
         static $gtype: GObject.GType<GEventAny>;
 
-        // Own fields of Fep.GEventAny
+        // Fields
 
         type: GEventType;
 
-        // Constructors of Fep.GEventAny
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -733,7 +733,7 @@ export namespace Fep {
     class GEventKey {
         static $gtype: GObject.GType<GEventKey>;
 
-        // Own fields of Fep.GEventKey
+        // Fields
 
         type: GEventType;
         keyval: number;
@@ -741,7 +741,7 @@ export namespace Fep {
         source: string;
         source_length: number;
 
-        // Constructors of Fep.GEventKey
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -749,13 +749,13 @@ export namespace Fep {
     class GEventResize {
         static $gtype: GObject.GType<GEventResize>;
 
-        // Own fields of Fep.GEventResize
+        // Fields
 
         type: GEventType;
         cols: number;
         rows: number;
 
-        // Constructors of Fep.GEventResize
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -767,14 +767,14 @@ export namespace Fep {
     class GEvent {
         static $gtype: GObject.GType<GEvent>;
 
-        // Constructors of Fep.GEvent
+        // Constructors
 
         constructor(type: GEventType);
         _init(...args: any[]): void;
 
         static ['new'](type: GEventType): GEvent;
 
-        // Own methods of Fep.GEvent
+        // Methods
 
         copy(): GEvent;
         free(): void;

@@ -1629,7 +1629,7 @@ export namespace ECal {
     class Client extends EDataServer.Client implements TimezoneCache, Gio.AsyncInitable<Client>, Gio.Initable {
         static $gtype: GObject.GType<Client>;
 
-        // Own properties of ECal.Client
+        // Properties
 
         get default_timezone(): ICalGLib.Timezone;
         set default_timezone(val: ICalGLib.Timezone);
@@ -1638,13 +1638,13 @@ export namespace ECal {
         get source_type(): ClientSourceType;
         get sourceType(): ClientSourceType;
 
-        // Constructors of ECal.Client
+        // Constructors
 
         constructor(properties?: Partial<Client.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of ECal.Client
+        // Signals
 
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -1654,7 +1654,7 @@ export namespace ECal {
         ): number;
         emit(signal: 'free-busy-data', free_busy_ecalcomps: Component[]): void;
 
-        // Own static methods of ECal.Client
+        // Static methods
 
         /**
          * This function cleans up VEVENT, VJOURNAL, VTODO and VTIMEZONE
@@ -1810,7 +1810,7 @@ export namespace ECal {
             cancellable?: Gio.Cancellable | null,
         ): ICalGLib.Timezone | null;
 
-        // Own methods of ECal.Client
+        // Methods
 
         /**
          * Add a VTIMEZONE object to the given calendar client.
@@ -3369,7 +3369,7 @@ export namespace ECal {
     class ClientView extends GObject.Object implements Gio.Initable {
         static $gtype: GObject.GType<ClientView>;
 
-        // Own properties of ECal.ClientView
+        // Properties
 
         /**
          * The ECalClient for the view
@@ -3388,13 +3388,13 @@ export namespace ECal {
          */
         get objectPath(): string;
 
-        // Constructors of ECal.ClientView
+        // Constructors
 
         constructor(properties?: Partial<ClientView.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of ECal.ClientView
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -3421,7 +3421,7 @@ export namespace ECal {
         connect_after(signal: 'progress', callback: (_source: this, object: number, p0: string) => void): number;
         emit(signal: 'progress', object: number, p0: string): void;
 
-        // Own virtual methods of ECal.ClientView
+        // Virtual methods
 
         /**
          * A signal emitted when the backend finished initial view population
@@ -3435,7 +3435,7 @@ export namespace ECal {
          */
         vfunc_progress(percent: number, message: string): void;
 
-        // Own methods of ECal.ClientView
+        // Methods
 
         /**
          * Returns the #GDBusConnection used to create the D-Bus proxy.
@@ -3985,7 +3985,7 @@ export namespace ECal {
     class Component extends GObject.Object {
         static $gtype: GObject.GType<Component>;
 
-        // Constructors of ECal.Component
+        // Constructors
 
         constructor(properties?: Partial<Component.ConstructorProps>, ...args: any[]);
 
@@ -3999,7 +3999,7 @@ export namespace ECal {
 
         static new_vtype(vtype: ComponentVType): Component;
 
-        // Own methods of ECal.Component
+        // Methods
 
         /**
          * Aborts the sequence change needed in the given calendar component,
@@ -4684,7 +4684,7 @@ export namespace ECal {
     class ReminderWatcher extends GObject.Object {
         static $gtype: GObject.GType<ReminderWatcher>;
 
-        // Own properties of ECal.ReminderWatcher
+        // Properties
 
         /**
          * An #ICalTimezone to be used as the default time zone.
@@ -4719,7 +4719,7 @@ export namespace ECal {
         get timersEnabled(): boolean;
         set timersEnabled(val: boolean);
 
-        // Constructors of ECal.ReminderWatcher
+        // Constructors
 
         constructor(properties?: Partial<ReminderWatcher.ConstructorProps>, ...args: any[]);
 
@@ -4727,7 +4727,7 @@ export namespace ECal {
 
         static ['new'](registry: EDataServer.SourceRegistry): ReminderWatcher;
 
-        // Own signals of ECal.ReminderWatcher
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -4766,7 +4766,7 @@ export namespace ECal {
         ): number;
         emit(signal: 'triggered', reminders: ReminderData[], snoozed: boolean): void;
 
-        // Own virtual methods of ECal.ReminderWatcher
+        // Virtual methods
 
         vfunc_cal_client_connect(
             source: EDataServer.Source,
@@ -4779,7 +4779,7 @@ export namespace ECal {
         vfunc_format_time(rd: ReminderData, itt: ICalGLib.Time, inout_buffer: string, buffer_size: number): void;
         vfunc_schedule_timer(at_time: number): void;
 
-        // Own methods of ECal.ReminderWatcher
+        // Methods
 
         /**
          * Returns a new string with a text description of the `rd`. The text format
@@ -4919,7 +4919,7 @@ export namespace ECal {
     abstract class ClientPrivate {
         static $gtype: GObject.GType<ClientPrivate>;
 
-        // Constructors of ECal.ClientPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4930,14 +4930,14 @@ export namespace ECal {
     class ClientTzlookupICalCompData {
         static $gtype: GObject.GType<ClientTzlookupICalCompData>;
 
-        // Constructors of ECal.ClientTzlookupICalCompData
+        // Constructors
 
         constructor(icomp: ICalGLib.Component);
         _init(...args: any[]): void;
 
         static ['new'](icomp: ICalGLib.Component): ClientTzlookupICalCompData;
 
-        // Own methods of ECal.ClientTzlookupICalCompData
+        // Methods
 
         /**
          * Copies given #ECalClientTzlookupICalCompData structure.
@@ -4958,7 +4958,7 @@ export namespace ECal {
     abstract class ClientViewPrivate {
         static $gtype: GObject.GType<ClientViewPrivate>;
 
-        // Constructors of ECal.ClientViewPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4970,7 +4970,7 @@ export namespace ECal {
     class ComponentAlarm {
         static $gtype: GObject.GType<ComponentAlarm>;
 
-        // Constructors of ECal.ComponentAlarm
+        // Constructors
 
         constructor(properties?: Partial<{}>);
         _init(...args: any[]): void;
@@ -4979,7 +4979,7 @@ export namespace ECal {
 
         static new_from_component(component: ICalGLib.Component): ComponentAlarm;
 
-        // Own methods of ECal.ComponentAlarm
+        // Methods
 
         /**
          * Returns a newly allocated copy of `alarm,` which should be freed with
@@ -5124,14 +5124,14 @@ export namespace ECal {
     class ComponentAlarmInstance {
         static $gtype: GObject.GType<ComponentAlarmInstance>;
 
-        // Constructors of ECal.ComponentAlarmInstance
+        // Constructors
 
         constructor(uid: string, instance_time: never, occur_start: never, occur_end: never);
         _init(...args: any[]): void;
 
         static ['new'](uid: string, instance_time: never, occur_start: never, occur_end: never): ComponentAlarmInstance;
 
-        // Own methods of ECal.ComponentAlarmInstance
+        // Methods
 
         /**
          * Returns a newly allocated copy of `instance,` which should be freed with
@@ -5185,7 +5185,7 @@ export namespace ECal {
     class ComponentAlarmRepeat {
         static $gtype: GObject.GType<ComponentAlarmRepeat>;
 
-        // Constructors of ECal.ComponentAlarmRepeat
+        // Constructors
 
         constructor(repetitions: number, interval: ICalGLib.Duration);
         _init(...args: any[]): void;
@@ -5194,7 +5194,7 @@ export namespace ECal {
 
         static new_seconds(repetitions: number, interval_seconds: number): ComponentAlarmRepeat;
 
-        // Own methods of ECal.ComponentAlarmRepeat
+        // Methods
 
         copy(): ComponentAlarmRepeat;
         /**
@@ -5235,7 +5235,7 @@ export namespace ECal {
     class ComponentAlarmTrigger {
         static $gtype: GObject.GType<ComponentAlarmTrigger>;
 
-        // Constructors of ECal.ComponentAlarmTrigger
+        // Constructors
 
         constructor(absolute_time: ICalGLib.Time);
         _init(...args: any[]): void;
@@ -5246,7 +5246,7 @@ export namespace ECal {
 
         static new_relative(kind: ComponentAlarmTriggerKind, duration: ICalGLib.Duration): ComponentAlarmTrigger;
 
-        // Own methods of ECal.ComponentAlarmTrigger
+        // Methods
 
         /**
          * Returns a newly allocated copy of `trigger,` which should be freed with
@@ -5338,14 +5338,14 @@ export namespace ECal {
     class ComponentAlarms {
         static $gtype: GObject.GType<ComponentAlarms>;
 
-        // Constructors of ECal.ComponentAlarms
+        // Constructors
 
         constructor(comp?: Component | null);
         _init(...args: any[]): void;
 
         static ['new'](comp?: Component | null): ComponentAlarms;
 
-        // Own methods of ECal.ComponentAlarms
+        // Methods
 
         /**
          * Add a copy of `instance` into the list of instances. It is added
@@ -5404,7 +5404,7 @@ export namespace ECal {
     class ComponentAttendee {
         static $gtype: GObject.GType<ComponentAttendee>;
 
-        // Constructors of ECal.ComponentAttendee
+        // Constructors
 
         constructor(properties?: Partial<{}>);
         _init(...args: any[]): void;
@@ -5427,7 +5427,7 @@ export namespace ECal {
             language?: string | null,
         ): ComponentAttendee;
 
-        // Own methods of ECal.ComponentAttendee
+        // Methods
 
         /**
          * Returns a newly allocated copy of `attendee,` which should be freed with
@@ -5539,7 +5539,7 @@ export namespace ECal {
     class ComponentDateTime {
         static $gtype: GObject.GType<ComponentDateTime>;
 
-        // Constructors of ECal.ComponentDateTime
+        // Constructors
 
         constructor(value: ICalGLib.Time, tzid?: string | null);
         _init(...args: any[]): void;
@@ -5548,7 +5548,7 @@ export namespace ECal {
 
         static new_take(value: ICalGLib.Time, tzid?: string | null): ComponentDateTime;
 
-        // Own methods of ECal.ComponentDateTime
+        // Methods
 
         /**
          * Creates a new copy of `dt`. The returned structure should be freed
@@ -5610,7 +5610,7 @@ export namespace ECal {
     class ComponentId {
         static $gtype: GObject.GType<ComponentId>;
 
-        // Constructors of ECal.ComponentId
+        // Constructors
 
         constructor(uid: string, rid?: string | null);
         _init(...args: any[]): void;
@@ -5619,7 +5619,7 @@ export namespace ECal {
 
         static new_take(uid: string, rid?: string | null): ComponentId;
 
-        // Own methods of ECal.ComponentId
+        // Methods
 
         /**
          * Returns a newly allocated copy of `id,` which should be freed with
@@ -5660,7 +5660,7 @@ export namespace ECal {
     class ComponentOrganizer {
         static $gtype: GObject.GType<ComponentOrganizer>;
 
-        // Constructors of ECal.ComponentOrganizer
+        // Constructors
 
         constructor(properties?: Partial<{}>);
         _init(...args: any[]): void;
@@ -5676,7 +5676,7 @@ export namespace ECal {
             language?: string | null,
         ): ComponentOrganizer;
 
-        // Own methods of ECal.ComponentOrganizer
+        // Methods
 
         /**
          * Returns a newly allocated copy of `organizer,` which should be freed with
@@ -5741,7 +5741,7 @@ export namespace ECal {
     class ComponentParameterBag {
         static $gtype: GObject.GType<ComponentParameterBag>;
 
-        // Constructors of ECal.ComponentParameterBag
+        // Constructors
 
         constructor(properties?: Partial<{}>);
         _init(...args: any[]): void;
@@ -5750,7 +5750,7 @@ export namespace ECal {
 
         static new_from_property(property: ICalGLib.Property): ComponentParameterBag;
 
-        // Own methods of ECal.ComponentParameterBag
+        // Methods
 
         /**
          * Adds a copy of the `param` into the `bag`.
@@ -5828,7 +5828,7 @@ export namespace ECal {
     class ComponentPeriod {
         static $gtype: GObject.GType<ComponentPeriod>;
 
-        // Constructors of ECal.ComponentPeriod
+        // Constructors
 
         constructor(start: ICalGLib.Time, end?: ICalGLib.Time | null);
         _init(...args: any[]): void;
@@ -5837,7 +5837,7 @@ export namespace ECal {
 
         static new_duration(start: ICalGLib.Time, duration: ICalGLib.Duration): ComponentPeriod;
 
-        // Own methods of ECal.ComponentPeriod
+        // Methods
 
         copy(): ComponentPeriod;
         /**
@@ -5911,7 +5911,7 @@ export namespace ECal {
     abstract class ComponentPrivate {
         static $gtype: GObject.GType<ComponentPrivate>;
 
-        // Constructors of ECal.ComponentPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5923,7 +5923,7 @@ export namespace ECal {
     class ComponentPropertyBag {
         static $gtype: GObject.GType<ComponentPropertyBag>;
 
-        // Constructors of ECal.ComponentPropertyBag
+        // Constructors
 
         constructor(properties?: Partial<{}>);
         _init(...args: any[]): void;
@@ -5932,7 +5932,7 @@ export namespace ECal {
 
         static new_from_component(component: ICalGLib.Component): ComponentPropertyBag;
 
-        // Own methods of ECal.ComponentPropertyBag
+        // Methods
 
         /**
          * Adds a copy of the `prop` into the `bag`.
@@ -6009,14 +6009,14 @@ export namespace ECal {
     class ComponentRange {
         static $gtype: GObject.GType<ComponentRange>;
 
-        // Constructors of ECal.ComponentRange
+        // Constructors
 
         constructor(kind: ComponentRangeKind, datetime: ComponentDateTime);
         _init(...args: any[]): void;
 
         static ['new'](kind: ComponentRangeKind, datetime: ComponentDateTime): ComponentRange;
 
-        // Own methods of ECal.ComponentRange
+        // Methods
 
         copy(): ComponentRange;
         /**
@@ -6046,7 +6046,7 @@ export namespace ECal {
     class ComponentText {
         static $gtype: GObject.GType<ComponentText>;
 
-        // Constructors of ECal.ComponentText
+        // Constructors
 
         constructor(value?: string | null, altrep?: string | null);
         _init(...args: any[]): void;
@@ -6055,7 +6055,7 @@ export namespace ECal {
 
         static new_from_property(property: ICalGLib.Property): ComponentText;
 
-        // Own methods of ECal.ComponentText
+        // Methods
 
         copy(): ComponentText;
         /**
@@ -6096,14 +6096,14 @@ export namespace ECal {
     class ReminderData {
         static $gtype: GObject.GType<ReminderData>;
 
-        // Constructors of ECal.ReminderData
+        // Constructors
 
         constructor(source_uid: string, component: Component, instance: ComponentAlarmInstance);
         _init(...args: any[]): void;
 
         static ['new'](source_uid: string, component: Component, instance: ComponentAlarmInstance): ReminderData;
 
-        // Own methods of ECal.ReminderData
+        // Methods
 
         /**
          * Copies given #EReminderData structure. When the `rd` is %NULL, simply returns %NULL as well.
@@ -6141,7 +6141,7 @@ export namespace ECal {
     abstract class ReminderWatcherPrivate {
         static $gtype: GObject.GType<ReminderWatcherPrivate>;
 
-        // Constructors of ECal.ReminderWatcherPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -6158,7 +6158,7 @@ export namespace ECal {
         prototype: TimezoneCache;
     }
     interface TimezoneCache extends GObject.Object {
-        // Own methods of ECal.TimezoneCache
+        // Methods
 
         /**
          * Adds a copy of `zone` to `cache` and emits an
@@ -6193,7 +6193,7 @@ export namespace ECal {
          */
         list_timezones(): ICalGLib.Timezone[];
 
-        // Own virtual methods of ECal.TimezoneCache
+        // Virtual methods
 
         vfunc_timezone_added(zone: ICalGLib.Timezone): void;
         vfunc_tzcache_add_timezone(zone: ICalGLib.Timezone): void;

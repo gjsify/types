@@ -162,13 +162,13 @@ export namespace PangoXft {
     class Font extends PangoFc.Font {
         static $gtype: GObject.GType<Font>;
 
-        // Constructors of PangoXft.Font
+        // Constructors
 
         constructor(properties?: Partial<Font.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of PangoXft.Font
+        // Methods
 
         /**
          * Gets the glyph index for a given Unicode character
@@ -217,7 +217,7 @@ export namespace PangoXft {
     class FontMap<A extends GObject.Object = GObject.Object> extends PangoFc.FontMap implements Gio.ListModel<A> {
         static $gtype: GObject.GType<FontMap>;
 
-        // Constructors of PangoXft.FontMap
+        // Constructors
 
         constructor(properties?: Partial<FontMap.ConstructorProps>, ...args: any[]);
 
@@ -738,12 +738,12 @@ export namespace PangoXft {
     class Renderer extends Pango.Renderer {
         static $gtype: GObject.GType<Renderer>;
 
-        // Own properties of PangoXft.Renderer
+        // Properties
 
         set display(val: any);
         set screen(val: number);
 
-        // Constructors of PangoXft.Renderer
+        // Constructors
 
         constructor(properties?: Partial<Renderer.ConstructorProps>, ...args: any[]);
 
@@ -751,12 +751,12 @@ export namespace PangoXft {
 
         static ['new'](display: xlib.Display, screen: number): Renderer;
 
-        // Own virtual methods of PangoXft.Renderer
+        // Virtual methods
 
         vfunc_composite_glyphs(xft_font: xft.Font, glyphs: xft.GlyphSpec, n_glyphs: number): void;
         vfunc_composite_trapezoids(part: Pango.RenderPart, trapezoids: xlib.XTrapezoid, n_trapezoids: number): void;
 
-        // Own methods of PangoXft.Renderer
+        // Methods
 
         /**
          * Sets the default foreground color for a XftRenderer.
@@ -775,7 +775,7 @@ export namespace PangoXft {
     abstract class RendererPrivate {
         static $gtype: GObject.GType<RendererPrivate>;
 
-        // Constructors of PangoXft.RendererPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }

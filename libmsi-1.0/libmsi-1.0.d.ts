@@ -29,7 +29,7 @@ export namespace Libmsi {
     class DBError extends GLib.Error {
         static $gtype: GObject.GType<DBError>;
 
-        // Static fields of Libmsi.DBError
+        // Static fields
 
         static SUCCESS: number;
         static INVALIDARG: number;
@@ -65,12 +65,12 @@ export namespace Libmsi {
         static STRINGOVERFLOW: number;
         static BADLOCALIZEATTRIB: number;
 
-        // Constructors of Libmsi.DBError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of Libmsi.DBError
+        // Static methods
 
         static quark(): GLib.Quark;
     }
@@ -115,7 +115,7 @@ export namespace Libmsi {
     class ResultError extends GLib.Error {
         static $gtype: GObject.GType<ResultError>;
 
-        // Static fields of Libmsi.ResultError
+        // Static fields
 
         static SUCCESS: number;
         static ACCESS_DENIED: number;
@@ -137,12 +137,12 @@ export namespace Libmsi {
         static DATATYPE_MISMATCH: number;
         static INVALID_DATATYPE: number;
 
-        // Constructors of Libmsi.ResultError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of Libmsi.ResultError
+        // Static methods
 
         static quark(): GLib.Quark;
     }
@@ -174,13 +174,13 @@ export namespace Libmsi {
     class Database extends GObject.Object {
         static $gtype: GObject.GType<Database>;
 
-        // Own properties of Libmsi.Database
+        // Properties
 
         get flags(): DbFlags;
         get outpath(): string;
         get path(): string;
 
-        // Constructors of Libmsi.Database
+        // Constructors
 
         constructor(properties?: Partial<Database.ConstructorProps>, ...args: any[]);
 
@@ -188,7 +188,7 @@ export namespace Libmsi {
 
         static ['new'](path: string, flags: number, persist?: string | null): Database;
 
-        // Own methods of Libmsi.Database
+        // Methods
 
         /**
          * FIXME
@@ -237,12 +237,12 @@ export namespace Libmsi {
     class Query extends GObject.Object {
         static $gtype: GObject.GType<Query>;
 
-        // Own properties of Libmsi.Query
+        // Properties
 
         get database(): Database;
         get query(): string;
 
-        // Constructors of Libmsi.Query
+        // Constructors
 
         constructor(properties?: Partial<Query.ConstructorProps>, ...args: any[]);
 
@@ -250,7 +250,7 @@ export namespace Libmsi {
 
         static ['new'](database: Database, query: string): Query;
 
-        // Own methods of Libmsi.Query
+        // Methods
 
         /**
          * Release the current result set.
@@ -292,11 +292,11 @@ export namespace Libmsi {
     class Record extends GObject.Object {
         static $gtype: GObject.GType<Record>;
 
-        // Own properties of Libmsi.Record
+        // Properties
 
         get count(): number;
 
-        // Constructors of Libmsi.Record
+        // Constructors
 
         constructor(properties?: Partial<Record.ConstructorProps>, ...args: any[]);
 
@@ -304,7 +304,7 @@ export namespace Libmsi {
 
         static ['new'](count: number): Record;
 
-        // Own methods of Libmsi.Record
+        // Methods
 
         /**
          * Clear record fields.
@@ -378,13 +378,13 @@ export namespace Libmsi {
     class SummaryInfo extends GObject.Object {
         static $gtype: GObject.GType<SummaryInfo>;
 
-        // Own properties of Libmsi.SummaryInfo
+        // Properties
 
         get database(): Database;
         get update_count(): number;
         get updateCount(): number;
 
-        // Constructors of Libmsi.SummaryInfo
+        // Constructors
 
         constructor(properties?: Partial<SummaryInfo.ConstructorProps>, ...args: any[]);
 
@@ -392,7 +392,7 @@ export namespace Libmsi {
 
         static ['new'](database: Database | null, update_count: number): SummaryInfo;
 
-        // Own methods of Libmsi.SummaryInfo
+        // Methods
 
         get_filetime(prop: Property): number;
         get_int(prop: Property): number;

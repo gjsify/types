@@ -33,19 +33,19 @@ export namespace GtkSpell {
     class Error extends GLib.Error {
         static $gtype: GObject.GType<Error>;
 
-        // Static fields of GtkSpell.Error
+        // Static fields
 
         /**
          * Error code for backend errors
          */
         static BACKEND: number;
 
-        // Constructors of GtkSpell.Error
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of GtkSpell.Error
+        // Static methods
 
         static quark(): GLib.Quark;
     }
@@ -72,14 +72,14 @@ export namespace GtkSpell {
     class Checker extends GObject.InitiallyUnowned {
         static $gtype: GObject.GType<Checker>;
 
-        // Own properties of GtkSpell.Checker
+        // Properties
 
         get decode_language_codes(): boolean;
         set decode_language_codes(val: boolean);
         get decodeLanguageCodes(): boolean;
         set decodeLanguageCodes(val: boolean);
 
-        // Constructors of GtkSpell.Checker
+        // Constructors
 
         constructor(properties?: Partial<Checker.ConstructorProps>, ...args: any[]);
 
@@ -87,7 +87,7 @@ export namespace GtkSpell {
 
         static ['new'](): Checker;
 
-        // Own signals of GtkSpell.Checker
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -96,7 +96,7 @@ export namespace GtkSpell {
         connect_after(signal: 'language-changed', callback: (_source: this, lang: string) => void): number;
         emit(signal: 'language-changed', lang: string): void;
 
-        // Own static methods of GtkSpell.Checker
+        // Static methods
 
         /**
          * Translates the language code to a human readable format
@@ -116,11 +116,11 @@ export namespace GtkSpell {
          */
         static get_language_list(): string[];
 
-        // Own virtual methods of GtkSpell.Checker
+        // Virtual methods
 
         vfunc_language_changed(new_lang: string): void;
 
-        // Own methods of GtkSpell.Checker
+        // Methods
 
         /**
          * Add the specified word to the user dictionary.
@@ -193,7 +193,7 @@ export namespace GtkSpell {
     abstract class CheckerPrivate {
         static $gtype: GObject.GType<CheckerPrivate>;
 
-        // Constructors of GtkSpell.CheckerPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }

@@ -93,11 +93,11 @@ export namespace CoglPango {
     class Renderer extends Pango.Renderer {
         static $gtype: GObject.GType<Renderer>;
 
-        // Own properties of CoglPango.Renderer
+        // Properties
 
         set context(val: any);
 
-        // Constructors of CoglPango.Renderer
+        // Constructors
 
         constructor(properties?: Partial<Renderer.ConstructorProps>, ...args: any[]);
 

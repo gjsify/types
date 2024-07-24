@@ -78,12 +78,12 @@ export namespace GUPnPIgd {
     class SimpleIgd extends GObject.Object {
         static $gtype: GObject.GType<SimpleIgd>;
 
-        // Own properties of GUPnPIgd.SimpleIgd
+        // Properties
 
         get main_context(): any;
         get mainContext(): any;
 
-        // Constructors of GUPnPIgd.SimpleIgd
+        // Constructors
 
         constructor(properties?: Partial<SimpleIgd.ConstructorProps>, ...args: any[]);
 
@@ -91,7 +91,7 @@ export namespace GUPnPIgd {
 
         static ['new'](): SimpleIgd;
 
-        // Own signals of GUPnPIgd.SimpleIgd
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -172,11 +172,11 @@ export namespace GUPnPIgd {
             description: string,
         ): void;
 
-        // Own static methods of GUPnPIgd.SimpleIgd
+        // Static methods
 
         static error_quark(): GLib.Quark;
 
-        // Own methods of GUPnPIgd.SimpleIgd
+        // Methods
 
         /**
          * This adds a port to the router's forwarding table. The mapping will
@@ -242,7 +242,7 @@ export namespace GUPnPIgd {
     class SimpleIgdThread extends SimpleIgd {
         static $gtype: GObject.GType<SimpleIgdThread>;
 
-        // Constructors of GUPnPIgd.SimpleIgdThread
+        // Constructors
 
         constructor(properties?: Partial<SimpleIgdThread.ConstructorProps>, ...args: any[]);
 
@@ -255,7 +255,7 @@ export namespace GUPnPIgd {
     abstract class SimpleIgdPrivate {
         static $gtype: GObject.GType<SimpleIgdPrivate>;
 
-        // Constructors of GUPnPIgd.SimpleIgdPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -264,7 +264,7 @@ export namespace GUPnPIgd {
     abstract class SimpleIgdThreadPrivate {
         static $gtype: GObject.GType<SimpleIgdThreadPrivate>;
 
-        // Constructors of GUPnPIgd.SimpleIgdThreadPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }

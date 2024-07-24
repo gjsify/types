@@ -366,7 +366,7 @@ export namespace Gdl {
     class Dock extends DockObject implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<Dock>;
 
-        // Own properties of Gdl.Dock
+        // Properties
 
         get default_title(): string;
         set default_title(val: string);
@@ -398,11 +398,11 @@ export namespace Gdl {
         get width(): number;
         set width(val: number);
 
-        // Own fields of Gdl.Dock
+        // Fields
 
         object: DockObject;
 
-        // Constructors of Gdl.Dock
+        // Constructors
 
         constructor(properties?: Partial<Dock.ConstructorProps>, ...args: any[]);
 
@@ -410,7 +410,7 @@ export namespace Gdl {
 
         static ['new'](): Dock;
 
-        // Own signals of Gdl.Dock
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -419,11 +419,11 @@ export namespace Gdl {
         connect_after(signal: 'layout-changed', callback: (_source: this) => void): number;
         emit(signal: 'layout-changed'): void;
 
-        // Own virtual methods of Gdl.Dock
+        // Virtual methods
 
         vfunc_layout_changed(): void;
 
-        // Own methods of Gdl.Dock
+        // Methods
 
         /**
          * Dock an item as a floating item. It creates a new window containing a new
@@ -919,7 +919,7 @@ export namespace Gdl {
     class DockBar extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<DockBar>;
 
-        // Own properties of Gdl.DockBar
+        // Properties
 
         get dockbar_style(): DockBarStyle;
         set dockbar_style(val: DockBarStyle);
@@ -931,7 +931,7 @@ export namespace Gdl {
         get master(): GObject.Object;
         set master(val: GObject.Object);
 
-        // Constructors of Gdl.DockBar
+        // Constructors
 
         constructor(properties?: Partial<DockBar.ConstructorProps>, ...args: any[]);
 
@@ -942,7 +942,7 @@ export namespace Gdl {
 
         static ['new'](...args: never[]): any;
 
-        // Own methods of Gdl.DockBar
+        // Methods
 
         /**
          * Retrieves the orientation of the `dockbar`.
@@ -1428,7 +1428,7 @@ export namespace Gdl {
     class DockItem extends DockObject implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<DockItem>;
 
-        // Own properties of Gdl.DockItem
+        // Properties
 
         get behavior(): DockItemBehavior;
         set behavior(val: DockItemBehavior);
@@ -1466,11 +1466,11 @@ export namespace Gdl {
         get resize(): boolean;
         set resize(val: boolean);
 
-        // Own fields of Gdl.DockItem
+        // Fields
 
         object: DockObject;
 
-        // Constructors of Gdl.DockItem
+        // Constructors
 
         constructor(properties?: Partial<DockItem.ConstructorProps>, ...args: any[]);
 
@@ -1487,7 +1487,7 @@ export namespace Gdl {
 
         static new_with_stock(name: string, long_name: string, stock_id: string, behavior: DockItemBehavior): DockItem;
 
-        // Own signals of Gdl.DockItem
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -1517,11 +1517,11 @@ export namespace Gdl {
         connect_after(signal: 'selected', callback: (_source: this) => void): number;
         emit(signal: 'selected'): void;
 
-        // Own static methods of Gdl.DockItem
+        // Static methods
 
         static set_has_grip(has_grip: boolean): void;
 
-        // Own virtual methods of Gdl.DockItem
+        // Virtual methods
 
         vfunc_dock_drag_begin(): void;
         vfunc_dock_drag_end(cancelled: boolean): void;
@@ -1533,7 +1533,7 @@ export namespace Gdl {
          */
         vfunc_set_orientation(orientation: Gtk.Orientation): void;
 
-        // Own methods of Gdl.DockItem
+        // Methods
 
         /**
          * Binds this dock item to a new dock master.
@@ -2118,11 +2118,11 @@ export namespace Gdl {
     class DockItemButtonImage extends Gtk.Widget implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<DockItemButtonImage>;
 
-        // Own fields of Gdl.DockItemButtonImage
+        // Fields
 
         image_type: DockItemButtonImageType;
 
-        // Constructors of Gdl.DockItemButtonImage
+        // Constructors
 
         constructor(properties?: Partial<DockItemButtonImage.ConstructorProps>, ...args: any[]);
 
@@ -2723,11 +2723,11 @@ export namespace Gdl {
     class DockItemGrip extends Gtk.Container implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<DockItemGrip>;
 
-        // Own properties of Gdl.DockItemGrip
+        // Properties
 
         set item(val: DockItem);
 
-        // Constructors of Gdl.DockItemGrip
+        // Constructors
 
         constructor(properties?: Partial<DockItemGrip.ConstructorProps>, ...args: any[]);
 
@@ -2735,7 +2735,7 @@ export namespace Gdl {
 
         static ['new'](item: DockItem): DockItemGrip;
 
-        // Own methods of Gdl.DockItemGrip
+        // Methods
 
         /**
          * Return %TRUE if the grip window has reveived the event.
@@ -3181,17 +3181,17 @@ export namespace Gdl {
     class DockLayout extends GObject.Object {
         static $gtype: GObject.GType<DockLayout>;
 
-        // Own properties of Gdl.DockLayout
+        // Properties
 
         get dirty(): boolean;
         get master(): GObject.Object;
         set master(val: GObject.Object);
 
-        // Own fields of Gdl.DockLayout
+        // Fields
 
         g_object: GObject.Object;
 
-        // Constructors of Gdl.DockLayout
+        // Constructors
 
         constructor(properties?: Partial<DockLayout.ConstructorProps>, ...args: any[]);
 
@@ -3199,7 +3199,7 @@ export namespace Gdl {
 
         static ['new'](master: GObject.Object): DockLayout;
 
-        // Own methods of Gdl.DockLayout
+        // Methods
 
         /**
          * Attach the `layout` to the `master` and delete the reference to
@@ -3298,7 +3298,7 @@ export namespace Gdl {
     class DockMaster extends GObject.Object {
         static $gtype: GObject.GType<DockMaster>;
 
-        // Own properties of Gdl.DockMaster
+        // Properties
 
         get default_title(): string;
         set default_title(val: string);
@@ -3319,17 +3319,17 @@ export namespace Gdl {
         get tabReorderable(): boolean;
         set tabReorderable(val: boolean);
 
-        // Own fields of Gdl.DockMaster
+        // Fields
 
         object: GObject.Object;
 
-        // Constructors of Gdl.DockMaster
+        // Constructors
 
         constructor(properties?: Partial<DockMaster.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of Gdl.DockMaster
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -3338,11 +3338,11 @@ export namespace Gdl {
         connect_after(signal: 'layout-changed', callback: (_source: this) => void): number;
         emit(signal: 'layout-changed'): void;
 
-        // Own virtual methods of Gdl.DockMaster
+        // Virtual methods
 
         vfunc_layout_changed(): void;
 
-        // Own methods of Gdl.DockMaster
+        // Methods
 
         /**
          * Add a new dock widget to the master.
@@ -3403,16 +3403,16 @@ export namespace Gdl {
     class DockNotebook extends DockItem implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<DockNotebook>;
 
-        // Own properties of Gdl.DockNotebook
+        // Properties
 
         get page(): number;
         set page(val: number);
 
-        // Own fields of Gdl.DockNotebook
+        // Fields
 
         item: DockItem;
 
-        // Constructors of Gdl.DockNotebook
+        // Constructors
 
         constructor(properties?: Partial<DockNotebook.ConstructorProps>, ...args: any[]);
 
@@ -3854,7 +3854,7 @@ export namespace Gdl {
     class DockObject extends Gtk.Container implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<DockObject>;
 
-        // Own properties of Gdl.DockObject
+        // Properties
 
         /**
          * A long descriptive name.
@@ -3897,19 +3897,19 @@ export namespace Gdl {
         get stockId(): string;
         set stockId(val: string);
 
-        // Own fields of Gdl.DockObject
+        // Fields
 
         container: Gtk.Container;
         deprecated_flags: DockObjectFlags;
         deprecated_master: GObject.Object;
 
-        // Constructors of Gdl.DockObject
+        // Constructors
 
         constructor(properties?: Partial<DockObject.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of Gdl.DockObject
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -3937,7 +3937,7 @@ export namespace Gdl {
         ): number;
         emit(signal: 'dock', requestor: DockObject, position: DockPlacement, other_data?: GObject.Value | null): void;
 
-        // Own static methods of Gdl.DockObject
+        // Static methods
 
         /**
          * Finds the nickname for a given type
@@ -3958,7 +3958,7 @@ export namespace Gdl {
         static type_from_nick(nick: string): GObject.GType;
         static set_is_compound(is_compound: boolean): void;
 
-        // Own virtual methods of Gdl.DockObject
+        // Virtual methods
 
         /**
          * This function returns information about placement of a child dock
@@ -4014,7 +4014,7 @@ export namespace Gdl {
          */
         vfunc_reorder(child: DockObject, new_position: DockPlacement, other_data?: GObject.Value | null): boolean;
 
-        // Own methods of Gdl.DockObject
+        // Methods
 
         /**
          * Add a link between a #GdlDockObject and a master. It is normally not used
@@ -4615,16 +4615,16 @@ export namespace Gdl {
     class DockPaned extends DockItem implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<DockPaned>;
 
-        // Own properties of Gdl.DockPaned
+        // Properties
 
         get position(): number;
         set position(val: number);
 
-        // Own fields of Gdl.DockPaned
+        // Fields
 
         dock_item: DockItem;
 
-        // Constructors of Gdl.DockPaned
+        // Constructors
 
         constructor(properties?: Partial<DockPaned.ConstructorProps>, ...args: any[]);
 
@@ -5041,7 +5041,7 @@ export namespace Gdl {
     class DockParam {
         static $gtype: GObject.GType<DockParam>;
 
-        // Constructors of Gdl.DockParam
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5068,7 +5068,7 @@ export namespace Gdl {
     class DockPlaceholder extends DockObject implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<DockPlaceholder>;
 
-        // Own properties of Gdl.DockPlaceholder
+        // Properties
 
         get floating(): boolean;
         get floatx(): number;
@@ -5085,11 +5085,11 @@ export namespace Gdl {
         get width(): number;
         set width(val: number);
 
-        // Own fields of Gdl.DockPlaceholder
+        // Fields
 
         object: DockObject;
 
-        // Constructors of Gdl.DockPlaceholder
+        // Constructors
 
         constructor(properties?: Partial<DockPlaceholder.ConstructorProps>, ...args: any[]);
 
@@ -5097,7 +5097,7 @@ export namespace Gdl {
 
         static ['new'](name: string, object: DockObject, position: DockPlacement, sticky: boolean): DockPlaceholder;
 
-        // Own methods of Gdl.DockPlaceholder
+        // Methods
 
         /**
          * Move the placeholder to the position of `object`.
@@ -5528,19 +5528,19 @@ export namespace Gdl {
     class DockTablabel extends Gtk.Bin implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<DockTablabel>;
 
-        // Own properties of Gdl.DockTablabel
+        // Properties
 
         get item(): DockItem;
         set item(val: DockItem);
 
-        // Own fields of Gdl.DockTablabel
+        // Fields
 
         drag_handle_size: number;
         event_window: Gdk.Window;
         active: boolean;
         pre_drag: boolean;
 
-        // Constructors of Gdl.DockTablabel
+        // Constructors
 
         constructor(properties?: Partial<DockTablabel.ConstructorProps>, ...args: any[]);
 
@@ -5548,7 +5548,7 @@ export namespace Gdl {
 
         static ['new'](item: DockItem): DockTablabel;
 
-        // Own signals of Gdl.DockTablabel
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -5557,11 +5557,11 @@ export namespace Gdl {
         connect_after(signal: 'button-pressed-handle', callback: (_source: this, event: Gdk.Event) => void): number;
         emit(signal: 'button-pressed-handle', event: Gdk.Event): void;
 
-        // Own virtual methods of Gdl.DockTablabel
+        // Virtual methods
 
         vfunc_button_pressed_handle(event: Gdk.EventButton): void;
 
-        // Own methods of Gdl.DockTablabel
+        // Methods
 
         /**
          * Set the widget in "activated" state.
@@ -5993,7 +5993,7 @@ export namespace Gdl {
     class PreviewWindow extends Gtk.Window implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<PreviewWindow>;
 
-        // Constructors of Gdl.PreviewWindow
+        // Constructors
 
         constructor(properties?: Partial<PreviewWindow.ConstructorProps>, ...args: any[]);
 
@@ -6001,7 +6001,7 @@ export namespace Gdl {
 
         static ['new'](): PreviewWindow;
 
-        // Own methods of Gdl.PreviewWindow
+        // Methods
 
         /**
          * Update the size and position of the preview window. This function is
@@ -6433,7 +6433,7 @@ export namespace Gdl {
     class Switcher extends Gtk.Notebook implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<Switcher>;
 
-        // Own properties of Gdl.Switcher
+        // Properties
 
         get switcher_style(): SwitcherStyle;
         set switcher_style(val: SwitcherStyle);
@@ -6448,7 +6448,7 @@ export namespace Gdl {
         get tabReorderable(): boolean;
         set tabReorderable(val: boolean);
 
-        // Constructors of Gdl.Switcher
+        // Constructors
 
         constructor(properties?: Partial<Switcher.ConstructorProps>, ...args: any[]);
 
@@ -6456,7 +6456,7 @@ export namespace Gdl {
 
         static ['new'](): Switcher;
 
-        // Own methods of Gdl.Switcher
+        // Methods
 
         /**
          * Adds a page to a #GdlSwitcher.  A button is created in the switcher, with its
@@ -6893,7 +6893,7 @@ export namespace Gdl {
     abstract class DockBarPrivate {
         static $gtype: GObject.GType<DockBarPrivate>;
 
-        // Constructors of Gdl.DockBarPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -6904,7 +6904,7 @@ export namespace Gdl {
     abstract class DockItemClassPrivate {
         static $gtype: GObject.GType<DockItemClassPrivate>;
 
-        // Constructors of Gdl.DockItemClassPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -6913,7 +6913,7 @@ export namespace Gdl {
     abstract class DockItemGripPrivate {
         static $gtype: GObject.GType<DockItemGripPrivate>;
 
-        // Constructors of Gdl.DockItemGripPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -6921,7 +6921,7 @@ export namespace Gdl {
     abstract class DockItemPrivate {
         static $gtype: GObject.GType<DockItemPrivate>;
 
-        // Constructors of Gdl.DockItemPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -6930,7 +6930,7 @@ export namespace Gdl {
     abstract class DockLayoutPrivate {
         static $gtype: GObject.GType<DockLayoutPrivate>;
 
-        // Constructors of Gdl.DockLayoutPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -6939,7 +6939,7 @@ export namespace Gdl {
     abstract class DockMasterPrivate {
         static $gtype: GObject.GType<DockMasterPrivate>;
 
-        // Constructors of Gdl.DockMasterPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -6948,7 +6948,7 @@ export namespace Gdl {
     abstract class DockNotebookClassPrivate {
         static $gtype: GObject.GType<DockNotebookClassPrivate>;
 
-        // Constructors of Gdl.DockNotebookClassPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -6956,7 +6956,7 @@ export namespace Gdl {
     abstract class DockNotebookPrivate {
         static $gtype: GObject.GType<DockNotebookPrivate>;
 
-        // Constructors of Gdl.DockNotebookPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -6965,7 +6965,7 @@ export namespace Gdl {
     abstract class DockObjectClassPrivate {
         static $gtype: GObject.GType<DockObjectClassPrivate>;
 
-        // Constructors of Gdl.DockObjectClassPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -6973,7 +6973,7 @@ export namespace Gdl {
     abstract class DockObjectPrivate {
         static $gtype: GObject.GType<DockObjectPrivate>;
 
-        // Constructors of Gdl.DockObjectPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -6982,7 +6982,7 @@ export namespace Gdl {
     abstract class DockPanedPrivate {
         static $gtype: GObject.GType<DockPanedPrivate>;
 
-        // Constructors of Gdl.DockPanedPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -6991,7 +6991,7 @@ export namespace Gdl {
     abstract class DockPlaceholderPrivate {
         static $gtype: GObject.GType<DockPlaceholderPrivate>;
 
-        // Constructors of Gdl.DockPlaceholderPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -6999,7 +6999,7 @@ export namespace Gdl {
     abstract class DockPrivate {
         static $gtype: GObject.GType<DockPrivate>;
 
-        // Constructors of Gdl.DockPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -7010,14 +7010,14 @@ export namespace Gdl {
     class DockRequest {
         static $gtype: GObject.GType<DockRequest>;
 
-        // Own fields of Gdl.DockRequest
+        // Fields
 
         applicant: DockObject;
         target: DockObject;
         position: DockPlacement;
         rect: cairo.RectangleInt;
 
-        // Constructors of Gdl.DockRequest
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -7028,7 +7028,7 @@ export namespace Gdl {
     abstract class SwitcherClassPrivate {
         static $gtype: GObject.GType<SwitcherClassPrivate>;
 
-        // Constructors of Gdl.SwitcherClassPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -7036,7 +7036,7 @@ export namespace Gdl {
     abstract class SwitcherPrivate {
         static $gtype: GObject.GType<SwitcherPrivate>;
 
-        // Constructors of Gdl.SwitcherPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }

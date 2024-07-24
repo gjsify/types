@@ -65,7 +65,7 @@ export namespace GMenu {
     class Tree extends GObject.Object {
         static $gtype: GObject.GType<Tree>;
 
-        // Own properties of GMenu.Tree
+        // Properties
 
         /**
          * Flags controlling the content of the menu.
@@ -94,7 +94,7 @@ export namespace GMenu {
          */
         get menuPath(): string;
 
-        // Constructors of GMenu.Tree
+        // Constructors
 
         constructor(properties?: Partial<Tree.ConstructorProps>, ...args: any[]);
 
@@ -104,7 +104,7 @@ export namespace GMenu {
 
         static new_for_path(menu_path: string, flags: TreeFlags): Tree;
 
-        // Own signals of GMenu.Tree
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -113,12 +113,12 @@ export namespace GMenu {
         connect_after(signal: 'changed', callback: (_source: this) => void): number;
         emit(signal: 'changed'): void;
 
-        // Own static methods of GMenu.Tree
+        // Static methods
 
         static item_ref(item?: any | null): any | null;
         static item_unref(item?: any | null): void;
 
-        // Own methods of GMenu.Tree
+        // Methods
 
         /**
          * This function is only available if the tree has been loaded via
@@ -151,11 +151,11 @@ export namespace GMenu {
     abstract class TreeAlias {
         static $gtype: GObject.GType<TreeAlias>;
 
-        // Constructors of GMenu.TreeAlias
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of GMenu.TreeAlias
+        // Methods
 
         get_aliased_directory(): TreeDirectory;
         get_aliased_entry(): TreeEntry;
@@ -173,11 +173,11 @@ export namespace GMenu {
     abstract class TreeDirectory {
         static $gtype: GObject.GType<TreeDirectory>;
 
-        // Constructors of GMenu.TreeDirectory
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of GMenu.TreeDirectory
+        // Methods
 
         get_comment(): string;
         get_desktop_file_path(): string;
@@ -203,11 +203,11 @@ export namespace GMenu {
     abstract class TreeEntry {
         static $gtype: GObject.GType<TreeEntry>;
 
-        // Constructors of GMenu.TreeEntry
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of GMenu.TreeEntry
+        // Methods
 
         get_app_info(): Gio.DesktopAppInfo;
         get_desktop_file_id(): string;
@@ -226,11 +226,11 @@ export namespace GMenu {
     abstract class TreeHeader {
         static $gtype: GObject.GType<TreeHeader>;
 
-        // Constructors of GMenu.TreeHeader
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of GMenu.TreeHeader
+        // Methods
 
         get_directory(): TreeDirectory;
         get_parent(): TreeDirectory;
@@ -244,11 +244,11 @@ export namespace GMenu {
     abstract class TreeIter {
         static $gtype: GObject.GType<TreeIter>;
 
-        // Constructors of GMenu.TreeIter
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of GMenu.TreeIter
+        // Methods
 
         /**
          * This method may only be called if gmenu_tree_iter_next()
@@ -291,11 +291,11 @@ export namespace GMenu {
     abstract class TreeSeparator {
         static $gtype: GObject.GType<TreeSeparator>;
 
-        // Constructors of GMenu.TreeSeparator
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of GMenu.TreeSeparator
+        // Methods
 
         get_parent(): TreeDirectory;
         /**

@@ -54,7 +54,7 @@ export namespace GarconGtk {
     class Menu extends Gtk.Menu implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<Menu>;
 
-        // Own properties of GarconGtk.Menu
+        // Properties
 
         get menu(): Garcon.Menu;
         set menu(val: Garcon.Menu);
@@ -79,7 +79,7 @@ export namespace GarconGtk {
         get showTooltips(): boolean;
         set showTooltips(val: boolean);
 
-        // Constructors of GarconGtk.Menu
+        // Constructors
 
         constructor(properties?: Partial<Menu.ConstructorProps>, ...args: any[]);
 
@@ -90,7 +90,7 @@ export namespace GarconGtk {
 
         static ['new'](...args: never[]): any;
 
-        // Own static methods of GarconGtk.Menu
+        // Static methods
 
         /**
          * Application icons are never shown on the action menu items.
@@ -98,7 +98,7 @@ export namespace GarconGtk {
          */
         static get_desktop_actions_menu(item: Garcon.MenuItem): Gtk.Menu;
 
-        // Own methods of GarconGtk.Menu
+        // Methods
 
         /**
          * The #GarconMenu used to create the #GtkMenu.
@@ -527,7 +527,7 @@ export namespace GarconGtk {
     abstract class MenuPrivate {
         static $gtype: GObject.GType<MenuPrivate>;
 
-        // Constructors of GarconGtk.MenuPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }

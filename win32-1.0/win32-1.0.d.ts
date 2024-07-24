@@ -18,7 +18,7 @@ export namespace win32 {
     class MSG {
         static $gtype: GObject.GType<MSG>;
 
-        // Constructors of win32.MSG
+        // Constructors
 
         _init(...args: any[]): void;
     }

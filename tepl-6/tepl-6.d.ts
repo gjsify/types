@@ -532,13 +532,13 @@ export namespace Tepl {
     class AbstractFactory extends GObject.Object {
         static $gtype: GObject.GType<AbstractFactory>;
 
-        // Constructors of Tepl.AbstractFactory
+        // Constructors
 
         constructor(properties?: Partial<AbstractFactory.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of Tepl.AbstractFactory
+        // Static methods
 
         /**
          * Gets the #TeplAbstractFactory singleton instance.
@@ -548,7 +548,7 @@ export namespace Tepl {
          */
         static get_singleton(): AbstractFactory;
 
-        // Own virtual methods of Tepl.AbstractFactory
+        // Virtual methods
 
         vfunc_create_file(): File;
         /**
@@ -571,7 +571,7 @@ export namespace Tepl {
          */
         vfunc_create_tab_label(tab: Tab): Gtk.Widget | null;
 
-        // Own methods of Tepl.AbstractFactory
+        // Methods
 
         create_file(): File;
         /**
@@ -619,20 +619,20 @@ export namespace Tepl {
     class Application extends GObject.Object {
         static $gtype: GObject.GType<Application>;
 
-        // Own properties of Tepl.Application
+        // Properties
 
         /**
          * The #GtkApplication.
          */
         get application(): Gtk.Application;
 
-        // Constructors of Tepl.Application
+        // Constructors
 
         constructor(properties?: Partial<Application.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of Tepl.Application
+        // Static methods
 
         /**
          * Convenience function that calls g_application_get_default() followed by
@@ -647,7 +647,7 @@ export namespace Tepl {
          */
         static get_from_gtk_application(gtk_app: Gtk.Application): Application;
 
-        // Own methods of Tepl.Application
+        // Methods
 
         /**
          * Like gtk_application_get_active_window(), but returns the main window in the
@@ -722,7 +722,7 @@ export namespace Tepl {
     class ApplicationWindow extends GObject.Object implements TabGroup {
         static $gtype: GObject.GType<ApplicationWindow>;
 
-        // Own properties of Tepl.ApplicationWindow
+        // Properties
 
         /**
          * The #GtkApplicationWindow.
@@ -765,13 +765,13 @@ export namespace Tepl {
         get handleTitle(): boolean;
         set handleTitle(val: boolean);
 
-        // Constructors of Tepl.ApplicationWindow
+        // Constructors
 
         constructor(properties?: Partial<ApplicationWindow.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of Tepl.ApplicationWindow
+        // Static methods
 
         /**
          * Returns the #TeplApplicationWindow of `gtk_window`. The returned object is
@@ -789,7 +789,7 @@ export namespace Tepl {
          */
         static is_main_window(gtk_window: Gtk.ApplicationWindow): boolean;
 
-        // Own methods of Tepl.ApplicationWindow
+        // Methods
 
         get_application_window(): Gtk.ApplicationWindow;
         get_handle_title(): boolean;
@@ -1340,7 +1340,7 @@ export namespace Tepl {
     class Buffer extends GtkSource.Buffer {
         static $gtype: GObject.GType<Buffer>;
 
-        // Own properties of Tepl.Buffer
+        // Properties
 
         /**
          * The full title. See tepl_buffer_get_full_title().
@@ -1377,7 +1377,7 @@ export namespace Tepl {
         get teplStyleSchemeId(): string;
         set teplStyleSchemeId(val: string);
 
-        // Constructors of Tepl.Buffer
+        // Constructors
 
         constructor(properties?: Partial<Buffer.ConstructorProps>, ...args: any[]);
 
@@ -1385,7 +1385,7 @@ export namespace Tepl {
 
         static ['new'](): Buffer;
 
-        // Own signals of Tepl.Buffer
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -1394,11 +1394,11 @@ export namespace Tepl {
         connect_after(signal: 'tepl-cursor-moved', callback: (_source: this) => void): number;
         emit(signal: 'tepl-cursor-moved'): void;
 
-        // Own virtual methods of Tepl.Buffer
+        // Virtual methods
 
         vfunc_tepl_cursor_moved(): void;
 
-        // Own methods of Tepl.Buffer
+        // Methods
 
         /**
          * Returns the #TeplFile of `buffer`. The returned object is guaranteed to be the
@@ -1479,7 +1479,7 @@ export namespace Tepl {
     class File extends GObject.Object {
         static $gtype: GObject.GType<File>;
 
-        // Own properties of Tepl.File
+        // Properties
 
         /**
          * The location.
@@ -1537,7 +1537,7 @@ export namespace Tepl {
          */
         get shortName(): string;
 
-        // Constructors of Tepl.File
+        // Constructors
 
         constructor(properties?: Partial<File.ConstructorProps>, ...args: any[]);
 
@@ -1545,7 +1545,7 @@ export namespace Tepl {
 
         static ['new'](): File;
 
-        // Own static methods of Tepl.File
+        // Static methods
 
         /**
          * Calls either gtk_native_dialog_set_modal() or gtk_window_set_modal()
@@ -1568,7 +1568,7 @@ export namespace Tepl {
          */
         static chooser_show(chooser: Gtk.FileChooser): void;
 
-        // Own methods of Tepl.File
+        // Methods
 
         /**
          * If the #TeplFile:location isn't %NULL, adds its URI to the default
@@ -1598,7 +1598,7 @@ export namespace Tepl {
     class FileLoader extends GObject.Object {
         static $gtype: GObject.GType<FileLoader>;
 
-        // Own properties of Tepl.FileLoader
+        // Properties
 
         /**
          * The #TeplBuffer to load the content into. The #TeplFileLoader object
@@ -1616,7 +1616,7 @@ export namespace Tepl {
          */
         get location(): Gio.File;
 
-        // Constructors of Tepl.FileLoader
+        // Constructors
 
         constructor(properties?: Partial<FileLoader.ConstructorProps>, ...args: any[]);
 
@@ -1624,7 +1624,7 @@ export namespace Tepl {
 
         static ['new'](buffer: Buffer, file: File): FileLoader;
 
-        // Own methods of Tepl.FileLoader
+        // Methods
 
         get_buffer(): Buffer | null;
         get_file(): File | null;
@@ -1666,7 +1666,7 @@ export namespace Tepl {
     class FileSaver extends GObject.Object {
         static $gtype: GObject.GType<FileSaver>;
 
-        // Own properties of Tepl.FileSaver
+        // Properties
 
         /**
          * The #TeplBuffer to save. The #TeplFileSaver object has a weak
@@ -1699,11 +1699,11 @@ export namespace Tepl {
         get newlineType(): NewlineType;
         set newlineType(val: NewlineType);
 
-        // Own fields of Tepl.FileSaver
+        // Fields
 
         object: GObject.Object;
 
-        // Constructors of Tepl.FileSaver
+        // Constructors
 
         constructor(properties?: Partial<FileSaver.ConstructorProps>, ...args: any[]);
 
@@ -1713,7 +1713,7 @@ export namespace Tepl {
 
         static new_with_target(buffer: Buffer, file: File, target_location: Gio.File): FileSaver;
 
-        // Own methods of Tepl.FileSaver
+        // Methods
 
         get_buffer(): Buffer;
         get_file(): File;
@@ -1765,7 +1765,7 @@ export namespace Tepl {
     class FoldRegion extends GObject.Object {
         static $gtype: GObject.GType<FoldRegion>;
 
-        // Own properties of Tepl.FoldRegion
+        // Properties
 
         /**
          * The #GtkTextBuffer where the fold region is applied. The
@@ -1778,7 +1778,7 @@ export namespace Tepl {
         get folded(): boolean;
         set folded(val: boolean);
 
-        // Constructors of Tepl.FoldRegion
+        // Constructors
 
         constructor(properties?: Partial<FoldRegion.ConstructorProps>, ...args: any[]);
 
@@ -1786,7 +1786,7 @@ export namespace Tepl {
 
         static ['new'](buffer: Gtk.TextBuffer, start: Gtk.TextIter, end: Gtk.TextIter): FoldRegion;
 
-        // Own methods of Tepl.FoldRegion
+        // Methods
 
         /**
          * Obtains iterators pointing to the start and end of the #TeplFoldRegion.
@@ -1821,7 +1821,7 @@ export namespace Tepl {
     class GotoLineBar extends Gtk.Grid implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<GotoLineBar>;
 
-        // Constructors of Tepl.GotoLineBar
+        // Constructors
 
         constructor(properties?: Partial<GotoLineBar.ConstructorProps>, ...args: any[]);
 
@@ -1829,7 +1829,7 @@ export namespace Tepl {
 
         static ['new'](): GotoLineBar;
 
-        // Own methods of Tepl.GotoLineBar
+        // Methods
 
         /**
          * Calls gtk_widget_grab_focus() to the #GtkSearchEntry of `bar`.
@@ -2273,7 +2273,7 @@ export namespace Tepl {
     class GutterRendererFolds extends GtkSource.GutterRenderer {
         static $gtype: GObject.GType<GutterRendererFolds>;
 
-        // Constructors of Tepl.GutterRendererFolds
+        // Constructors
 
         constructor(properties?: Partial<GutterRendererFolds.ConstructorProps>, ...args: any[]);
 
@@ -2281,7 +2281,7 @@ export namespace Tepl {
 
         static ['new'](): GutterRendererFolds;
 
-        // Own methods of Tepl.GutterRendererFolds
+        // Methods
 
         /**
          * Sets the folding state of the next cell to be drawn.
@@ -2313,7 +2313,7 @@ export namespace Tepl {
     class InfoBar extends Gtk.InfoBar implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<InfoBar>;
 
-        // Own properties of Tepl.InfoBar
+        // Properties
 
         /**
          * If this property is %TRUE, then the #TeplInfoBar is destroyed with
@@ -2374,7 +2374,7 @@ export namespace Tepl {
         get iconName(): string;
         set iconName(val: string);
 
-        // Constructors of Tepl.InfoBar
+        // Constructors
 
         constructor(properties?: Partial<InfoBar.ConstructorProps>, ...args: any[]);
 
@@ -2384,7 +2384,7 @@ export namespace Tepl {
 
         static new_simple(msg_type: Gtk.MessageType, primary_msg: string, secondary_msg?: string | null): InfoBar;
 
-        // Own static methods of Tepl.InfoBar
+        // Static methods
 
         /**
          * Utility function to create a #GtkLabel suitable for a #GtkInfoBar. The
@@ -2408,7 +2408,7 @@ export namespace Tepl {
          */
         static set_buttons_orientation(info_bar: Gtk.InfoBar, buttons_orientation: Gtk.Orientation): void;
 
-        // Own methods of Tepl.InfoBar
+        // Methods
 
         /**
          * Adds `widget` to `info_bar` at `location`.
@@ -2873,7 +2873,7 @@ export namespace Tepl {
     class LanguageChooserDialog extends Gtk.Dialog implements Atk.ImplementorIface, Gtk.Buildable, LanguageChooser {
         static $gtype: GObject.GType<LanguageChooserDialog>;
 
-        // Constructors of Tepl.LanguageChooserDialog
+        // Constructors
 
         constructor(properties?: Partial<LanguageChooserDialog.ConstructorProps>, ...args: any[]);
 
@@ -3315,7 +3315,7 @@ export namespace Tepl {
     {
         static $gtype: GObject.GType<LanguageChooserWidget>;
 
-        // Constructors of Tepl.LanguageChooserWidget
+        // Constructors
 
         constructor(properties?: Partial<LanguageChooserWidget.ConstructorProps>, ...args: any[]);
 
@@ -3763,7 +3763,7 @@ export namespace Tepl {
     class Metadata extends GObject.Object {
         static $gtype: GObject.GType<Metadata>;
 
-        // Constructors of Tepl.Metadata
+        // Constructors
 
         constructor(properties?: Partial<Metadata.ConstructorProps>, ...args: any[]);
 
@@ -3771,7 +3771,7 @@ export namespace Tepl {
 
         static ['new'](): Metadata;
 
-        // Own methods of Tepl.Metadata
+        // Methods
 
         /**
          * Gets the value of a metadata stored in the `metadata` object memory.
@@ -3805,17 +3805,17 @@ export namespace Tepl {
     class MetadataManager extends GObject.Object {
         static $gtype: GObject.GType<MetadataManager>;
 
-        // Constructors of Tepl.MetadataManager
+        // Constructors
 
         constructor(properties?: Partial<MetadataManager.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of Tepl.MetadataManager
+        // Static methods
 
         static get_singleton(): MetadataManager;
 
-        // Own methods of Tepl.MetadataManager
+        // Methods
 
         /**
          * Copies the metadata stored in `from_manager` for `for_location` into
@@ -3892,7 +3892,7 @@ export namespace Tepl {
     class Notebook extends Gtk.Notebook implements Atk.ImplementorIface, Gtk.Buildable, TabGroup {
         static $gtype: GObject.GType<Notebook>;
 
-        // Constructors of Tepl.Notebook
+        // Constructors
 
         constructor(properties?: Partial<Notebook.ConstructorProps>, ...args: any[]);
 
@@ -4402,7 +4402,7 @@ export namespace Tepl {
     class Panel extends Gtk.Grid implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<Panel>;
 
-        // Constructors of Tepl.Panel
+        // Constructors
 
         constructor(properties?: Partial<Panel.ConstructorProps>, ...args: any[]);
 
@@ -4412,7 +4412,7 @@ export namespace Tepl {
 
         static new_for_left_side_panel(): Panel;
 
-        // Own methods of Tepl.Panel
+        // Methods
 
         /**
          * The equivalent of gtk_stack_add_titled(), with an optional `icon_name` to set
@@ -4887,7 +4887,7 @@ export namespace Tepl {
     class ProgressInfoBar extends InfoBar implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<ProgressInfoBar>;
 
-        // Own properties of Tepl.ProgressInfoBar
+        // Properties
 
         /**
          * Whether to add a Cancel button in the action area of the #GtkInfoBar,
@@ -4900,7 +4900,7 @@ export namespace Tepl {
          */
         get hasCancelButton(): boolean;
 
-        // Constructors of Tepl.ProgressInfoBar
+        // Constructors
 
         constructor(properties?: Partial<ProgressInfoBar.ConstructorProps>, ...args: any[]);
 
@@ -4911,7 +4911,7 @@ export namespace Tepl {
 
         static ['new'](...args: never[]): any;
 
-        // Own methods of Tepl.ProgressInfoBar
+        // Methods
 
         /**
          * Calls gtk_progress_bar_pulse() on the #GtkProgressBar contained within the
@@ -5351,7 +5351,7 @@ export namespace Tepl {
     class SpaceDrawerPrefs extends Gtk.Grid implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<SpaceDrawerPrefs>;
 
-        // Constructors of Tepl.SpaceDrawerPrefs
+        // Constructors
 
         constructor(properties?: Partial<SpaceDrawerPrefs.ConstructorProps>, ...args: any[]);
 
@@ -5359,7 +5359,7 @@ export namespace Tepl {
 
         static ['new'](): SpaceDrawerPrefs;
 
-        // Own methods of Tepl.SpaceDrawerPrefs
+        // Methods
 
         /**
          * Gets the #GtkSourceSpaceDrawer associated with `prefs`. The returned object is
@@ -5802,7 +5802,7 @@ export namespace Tepl {
     class Statusbar extends Gtk.Statusbar implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<Statusbar>;
 
-        // Constructors of Tepl.Statusbar
+        // Constructors
 
         constructor(properties?: Partial<Statusbar.ConstructorProps>, ...args: any[]);
 
@@ -5810,7 +5810,7 @@ export namespace Tepl {
 
         static ['new'](): Statusbar;
 
-        // Own methods of Tepl.Statusbar
+        // Methods
 
         /**
          * The reverse action of tepl_statusbar_show_cursor_position(). This function
@@ -6263,7 +6263,7 @@ export namespace Tepl {
     {
         static $gtype: GObject.GType<StyleSchemeChooserWidget>;
 
-        // Own properties of Tepl.StyleSchemeChooserWidget
+        // Properties
 
         /**
          * The #GtkSourceStyleSchemeChooser:style-scheme ID, as a string. This
@@ -6284,7 +6284,7 @@ export namespace Tepl {
         get teplStyleSchemeId(): string;
         set teplStyleSchemeId(val: string);
 
-        // Constructors of Tepl.StyleSchemeChooserWidget
+        // Constructors
 
         constructor(properties?: Partial<StyleSchemeChooserWidget.ConstructorProps>, ...args: any[]);
 
@@ -6292,7 +6292,7 @@ export namespace Tepl {
 
         static ['new'](): StyleSchemeChooserWidget;
 
-        // Own methods of Tepl.StyleSchemeChooserWidget
+        // Methods
 
         get_style_scheme_id(): string;
         /**
@@ -6765,7 +6765,7 @@ export namespace Tepl {
     class Tab extends Gtk.Grid implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable, TabGroup {
         static $gtype: GObject.GType<Tab>;
 
-        // Own properties of Tepl.Tab
+        // Properties
 
         /**
          * The #TeplView contained in the tab. When this property is set, the
@@ -6773,7 +6773,7 @@ export namespace Tepl {
          */
         get view(): View;
 
-        // Constructors of Tepl.Tab
+        // Constructors
 
         constructor(properties?: Partial<Tab.ConstructorProps>, ...args: any[]);
 
@@ -6783,7 +6783,7 @@ export namespace Tepl {
 
         static new_with_view(view: View): Tab;
 
-        // Own signals of Tepl.Tab
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -6792,14 +6792,14 @@ export namespace Tepl {
         connect_after(signal: 'close-request', callback: (_source: this) => void): number;
         emit(signal: 'close-request'): void;
 
-        // Own virtual methods of Tepl.Tab
+        // Virtual methods
 
         vfunc_close_request(): void;
         vfunc_pack_goto_line_bar(goto_line_bar: GotoLineBar): void;
         vfunc_pack_info_bar(info_bar: Gtk.InfoBar): void;
         vfunc_pack_view(view: View): void;
 
-        // Own methods of Tepl.Tab
+        // Methods
 
         /**
          * Attaches `info_bar` to `tab`.
@@ -7395,7 +7395,7 @@ export namespace Tepl {
     class TabLabel extends Gtk.Grid implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<TabLabel>;
 
-        // Own properties of Tepl.TabLabel
+        // Properties
 
         /**
          * The associated #TeplTab. #TeplTabLabel has a weak reference to the
@@ -7403,7 +7403,7 @@ export namespace Tepl {
          */
         get tab(): Tab;
 
-        // Constructors of Tepl.TabLabel
+        // Constructors
 
         constructor(properties?: Partial<TabLabel.ConstructorProps>, ...args: any[]);
 
@@ -7414,11 +7414,11 @@ export namespace Tepl {
 
         static ['new'](...args: never[]): any;
 
-        // Own virtual methods of Tepl.TabLabel
+        // Virtual methods
 
         vfunc_get_tooltip_markup(): string;
 
-        // Own methods of Tepl.TabLabel
+        // Methods
 
         get_tab(): Tab | null;
         /**
@@ -7861,7 +7861,7 @@ export namespace Tepl {
     class View extends GtkSource.View implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable {
         static $gtype: GObject.GType<View>;
 
-        // Constructors of Tepl.View
+        // Constructors
 
         constructor(properties?: Partial<View.ConstructorProps>, ...args: any[]);
 
@@ -7871,7 +7871,7 @@ export namespace Tepl {
 
         static new_with_buffer(buffer: GtkSource.Buffer): View;
 
-        // Own methods of Tepl.View
+        // Methods
 
         /**
          * Copies the clipboard.
@@ -8332,7 +8332,7 @@ export namespace Tepl {
     abstract class ApplicationPrivate {
         static $gtype: GObject.GType<ApplicationPrivate>;
 
-        // Constructors of Tepl.ApplicationPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -8341,7 +8341,7 @@ export namespace Tepl {
     abstract class ApplicationWindowPrivate {
         static $gtype: GObject.GType<ApplicationWindowPrivate>;
 
-        // Constructors of Tepl.ApplicationWindowPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -8352,7 +8352,7 @@ export namespace Tepl {
     abstract class FileLoaderPrivate {
         static $gtype: GObject.GType<FileLoaderPrivate>;
 
-        // Constructors of Tepl.FileLoaderPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -8360,7 +8360,7 @@ export namespace Tepl {
     abstract class FilePrivate {
         static $gtype: GObject.GType<FilePrivate>;
 
-        // Constructors of Tepl.FilePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -8369,7 +8369,7 @@ export namespace Tepl {
     abstract class FileSaverPrivate {
         static $gtype: GObject.GType<FileSaverPrivate>;
 
-        // Constructors of Tepl.FileSaverPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -8379,7 +8379,7 @@ export namespace Tepl {
     abstract class GotoLineBarPrivate {
         static $gtype: GObject.GType<GotoLineBarPrivate>;
 
-        // Constructors of Tepl.GotoLineBarPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -8389,7 +8389,7 @@ export namespace Tepl {
     abstract class InfoBarPrivate {
         static $gtype: GObject.GType<InfoBarPrivate>;
 
-        // Constructors of Tepl.InfoBarPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -8398,7 +8398,7 @@ export namespace Tepl {
     abstract class LanguageChooserDialogPrivate {
         static $gtype: GObject.GType<LanguageChooserDialogPrivate>;
 
-        // Constructors of Tepl.LanguageChooserDialogPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -8408,7 +8408,7 @@ export namespace Tepl {
     abstract class LanguageChooserWidgetPrivate {
         static $gtype: GObject.GType<LanguageChooserWidgetPrivate>;
 
-        // Constructors of Tepl.LanguageChooserWidgetPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -8418,7 +8418,7 @@ export namespace Tepl {
     abstract class MetadataManagerPrivate {
         static $gtype: GObject.GType<MetadataManagerPrivate>;
 
-        // Constructors of Tepl.MetadataManagerPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -8426,7 +8426,7 @@ export namespace Tepl {
     abstract class MetadataPrivate {
         static $gtype: GObject.GType<MetadataPrivate>;
 
-        // Constructors of Tepl.MetadataPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -8435,7 +8435,7 @@ export namespace Tepl {
     abstract class NotebookPrivate {
         static $gtype: GObject.GType<NotebookPrivate>;
 
-        // Constructors of Tepl.NotebookPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -8444,7 +8444,7 @@ export namespace Tepl {
     abstract class PanelPrivate {
         static $gtype: GObject.GType<PanelPrivate>;
 
-        // Constructors of Tepl.PanelPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -8453,7 +8453,7 @@ export namespace Tepl {
     abstract class ProgressInfoBarPrivate {
         static $gtype: GObject.GType<ProgressInfoBarPrivate>;
 
-        // Constructors of Tepl.ProgressInfoBarPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -8461,7 +8461,7 @@ export namespace Tepl {
     abstract class SignalGroup {
         static $gtype: GObject.GType<SignalGroup>;
 
-        // Constructors of Tepl.SignalGroup
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -8470,7 +8470,7 @@ export namespace Tepl {
     abstract class SpaceDrawerPrefsPrivate {
         static $gtype: GObject.GType<SpaceDrawerPrefsPrivate>;
 
-        // Constructors of Tepl.SpaceDrawerPrefsPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -8479,7 +8479,7 @@ export namespace Tepl {
     abstract class StatusbarPrivate {
         static $gtype: GObject.GType<StatusbarPrivate>;
 
-        // Constructors of Tepl.StatusbarPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -8488,7 +8488,7 @@ export namespace Tepl {
     abstract class StyleSchemeChooserWidgetPrivate {
         static $gtype: GObject.GType<StyleSchemeChooserWidgetPrivate>;
 
-        // Constructors of Tepl.StyleSchemeChooserWidgetPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -8499,7 +8499,7 @@ export namespace Tepl {
     abstract class TabLabelPrivate {
         static $gtype: GObject.GType<TabLabelPrivate>;
 
-        // Constructors of Tepl.TabLabelPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -8507,7 +8507,7 @@ export namespace Tepl {
     abstract class TabPrivate {
         static $gtype: GObject.GType<TabPrivate>;
 
-        // Constructors of Tepl.TabPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -8524,7 +8524,7 @@ export namespace Tepl {
         prototype: LanguageChooser;
     }
     interface LanguageChooser extends GObject.Object {
-        // Own methods of Tepl.LanguageChooser
+        // Methods
 
         /**
          * Selects `language` in the list.
@@ -8532,7 +8532,7 @@ export namespace Tepl {
          */
         select_language(language?: GtkSource.Language | null): void;
 
-        // Own virtual methods of Tepl.LanguageChooser
+        // Virtual methods
 
         vfunc_language_activated(language: GtkSource.Language): void;
         /**
@@ -8562,7 +8562,7 @@ export namespace Tepl {
         prototype: TabGroup;
     }
     interface TabGroup extends GObject.Object {
-        // Own properties of Tepl.TabGroup
+        // Properties
 
         /**
          * The #TeplBuffer of the active tab.
@@ -8591,7 +8591,7 @@ export namespace Tepl {
          */
         get activeView(): View;
 
-        // Own methods of Tepl.TabGroup
+        // Methods
 
         /**
          * Appends `tab` to `tab_group`.
@@ -8636,7 +8636,7 @@ export namespace Tepl {
          */
         set_active_tab(tab: Tab): void;
 
-        // Own virtual methods of Tepl.TabGroup
+        // Virtual methods
 
         vfunc_append_tab_vfunc(tab: Tab): void;
         vfunc_get_active_tab(): Tab | null;

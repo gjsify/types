@@ -3764,17 +3764,17 @@ export namespace Vips {
     abstract class Foreign extends Operation {
         static $gtype: GObject.GType<Foreign>;
 
-        // Own fields of Vips.Foreign
+        // Fields
 
         parent_object: Operation;
 
-        // Constructors of Vips.Foreign
+        // Constructors
 
         constructor(properties?: Partial<Foreign.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of Vips.Foreign
+        // Static methods
 
         /**
          * Searches for an operation you could use to load `filename`. Any trailing
@@ -3897,7 +3897,7 @@ export namespace Vips {
     abstract class ForeignLoad extends Foreign {
         static $gtype: GObject.GType<ForeignLoad>;
 
-        // Own properties of Vips.ForeignLoad
+        // Properties
 
         get access(): Access;
         set access(val: Access);
@@ -3920,20 +3920,20 @@ export namespace Vips {
         get sequential(): boolean;
         set sequential(val: boolean);
 
-        // Own fields of Vips.ForeignLoad
+        // Fields
 
         parent_object: Foreign;
         real: Image;
         nocache: boolean;
         error: boolean;
 
-        // Constructors of Vips.ForeignLoad
+        // Constructors
 
         constructor(properties?: Partial<ForeignLoad.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of Vips.ForeignLoad
+        // Virtual methods
 
         vfunc_get_flags(): ForeignFlags;
         // Conflicted with Vips.Operation.vfunc_get_flags
@@ -3959,7 +3959,7 @@ export namespace Vips {
     abstract class ForeignSave extends Foreign {
         static $gtype: GObject.GType<ForeignSave>;
 
-        // Own properties of Vips.ForeignSave
+        // Properties
 
         get background(): ArrayDouble;
         set background(val: ArrayDouble);
@@ -3976,12 +3976,12 @@ export namespace Vips {
         get strip(): boolean;
         set strip(val: boolean);
 
-        // Own fields of Vips.ForeignSave
+        // Fields
 
         parent_object: Foreign;
         ready: Image;
 
-        // Constructors of Vips.ForeignSave
+        // Constructors
 
         constructor(properties?: Partial<ForeignSave.ConstructorProps>, ...args: any[]);
 
@@ -4047,7 +4047,7 @@ export namespace Vips {
     class Image extends Object {
         static $gtype: GObject.GType<Image>;
 
-        // Own properties of Vips.Image
+        // Properties
 
         get bands(): number;
         set bands(val: number);
@@ -4086,7 +4086,7 @@ export namespace Vips {
         get yres(): number;
         set yres(val: number);
 
-        // Constructors of Vips.Image
+        // Constructors
 
         constructor(properties?: Partial<Image.ConstructorProps>, ...args: any[]);
 
@@ -4126,7 +4126,7 @@ export namespace Vips {
 
         static new_temp_file(format: string): Image;
 
-        // Own signals of Vips.Image
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -4150,11 +4150,11 @@ export namespace Vips {
         connect_after(signal: 'written', callback: (_source: this, result: number) => void): number;
         emit(signal: 'written', result: number): void;
 
-        // Own static methods of Vips.Image
+        // Static methods
 
         static get_format_max(format: BandFormat): number;
 
-        // Own virtual methods of Vips.Image
+        // Virtual methods
 
         vfunc_eval(progress: Progress, data?: any | null): void;
         vfunc_invalidate(data?: any | null): void;
@@ -4163,7 +4163,7 @@ export namespace Vips {
         vfunc_preeval(progress: Progress, data?: any | null): void;
         vfunc_written(result: number, data?: any | null): void;
 
-        // Own methods of Vips.Image
+        // Methods
 
         /**
          * Remove the orientation tag on `image`. Also remove any exif orientation tags.
@@ -4917,11 +4917,11 @@ export namespace Vips {
     abstract class Interpolate extends Object {
         static $gtype: GObject.GType<Interpolate>;
 
-        // Own fields of Vips.Interpolate
+        // Fields
 
         parent_object: Object;
 
-        // Constructors of Vips.Interpolate
+        // Constructors
 
         constructor(properties?: Partial<Interpolate.ConstructorProps>, ...args: any[]);
 
@@ -4929,7 +4929,7 @@ export namespace Vips {
 
         static ['new'](nickname: string): Interpolate;
 
-        // Own static methods of Vips.Interpolate
+        // Static methods
 
         /**
          * A convenience function that returns a bilinear interpolator you
@@ -4942,7 +4942,7 @@ export namespace Vips {
          */
         static nearest_static(): Interpolate;
 
-        // Own virtual methods of Vips.Interpolate
+        // Virtual methods
 
         /**
          * Look up an interpolators desired window offset.
@@ -4954,7 +4954,7 @@ export namespace Vips {
         vfunc_get_window_size(): number;
         vfunc_interpolate(out: any | null, _in: Region, x: number, y: number): void;
 
-        // Own methods of Vips.Interpolate
+        // Methods
 
         /**
          * Look up an interpolators desired window offset.
@@ -4998,14 +4998,14 @@ export namespace Vips {
     abstract class Object extends GObject.Object {
         static $gtype: GObject.GType<Object>;
 
-        // Own properties of Vips.Object
+        // Properties
 
         get description(): string;
         set description(val: string);
         get nickname(): string;
         set nickname(val: string);
 
-        // Own fields of Vips.Object
+        // Fields
 
         constructed: boolean;
         static_object: boolean;
@@ -5014,7 +5014,7 @@ export namespace Vips {
         postclose: boolean;
         local_memory: number;
 
-        // Constructors of Vips.Object
+        // Constructors
 
         constructor(properties?: Partial<Object.ConstructorProps>, ...args: any[]);
 
@@ -5022,7 +5022,7 @@ export namespace Vips {
 
         static new_from_string(object_class: typeof Object, p: string): Object;
 
-        // Own signals of Vips.Object
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -5040,7 +5040,7 @@ export namespace Vips {
         connect_after(signal: 'preclose', callback: (_source: this) => void): number;
         emit(signal: 'preclose'): void;
 
-        // Own static methods of Vips.Object
+        // Static methods
 
         static get_property(
             gobject: GObject.Object,
@@ -5059,7 +5059,7 @@ export namespace Vips {
         ): void;
         static install_argument(pspec: GObject.ParamSpec, flags: ArgumentFlags, priority: number, offset: number): void;
 
-        // Own virtual methods of Vips.Object
+        // Virtual methods
 
         vfunc_build(): number;
         vfunc_close(): void;
@@ -5076,7 +5076,7 @@ export namespace Vips {
          */
         vfunc_to_string(buf: Buf): void;
 
-        // Own methods of Vips.Object
+        // Methods
 
         /**
          * Convenience: has an argument been assigned. Useful for bindings.
@@ -5165,13 +5165,13 @@ export namespace Vips {
     abstract class Operation extends Object {
         static $gtype: GObject.GType<Operation>;
 
-        // Own fields of Vips.Operation
+        // Fields
 
         hash: number;
         found_hash: boolean;
         pixels: number;
 
-        // Constructors of Vips.Operation
+        // Constructors
 
         constructor(properties?: Partial<Operation.ConstructorProps>, ...args: any[]);
 
@@ -5179,7 +5179,7 @@ export namespace Vips {
 
         static ['new'](name: string): Operation;
 
-        // Own signals of Vips.Operation
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -5188,7 +5188,7 @@ export namespace Vips {
         connect_after(signal: 'invalidate', callback: (_source: this) => void): number;
         emit(signal: 'invalidate'): void;
 
-        // Own static methods of Vips.Operation
+        // Static methods
 
         /**
          * Set the block state on all operations in the libvips class hierarchy at
@@ -5215,7 +5215,7 @@ export namespace Vips {
          */
         static block_set(name: string, state: boolean): void;
 
-        // Own virtual methods of Vips.Operation
+        // Virtual methods
 
         /**
          * Returns the set of flags for this operation.
@@ -5223,7 +5223,7 @@ export namespace Vips {
         vfunc_get_flags(): OperationFlags;
         vfunc_invalidate(): void;
 
-        // Own methods of Vips.Operation
+        // Methods
 
         /**
          * Returns the set of flags for this operation.
@@ -5248,13 +5248,13 @@ export namespace Vips {
     class Region extends Object {
         static $gtype: GObject.GType<Region>;
 
-        // Own fields of Vips.Region
+        // Fields
 
         parent_object: Object;
         im: Image;
         valid: Rect;
 
-        // Constructors of Vips.Region
+        // Constructors
 
         constructor(properties?: Partial<Region.ConstructorProps>, ...args: any[]);
 
@@ -5262,7 +5262,7 @@ export namespace Vips {
 
         static ['new'](image: Image): Region;
 
-        // Own methods of Vips.Region
+        // Methods
 
         /**
          * Paints 0 into the valid part of `reg`.
@@ -5452,13 +5452,13 @@ export namespace Vips {
     class Area {
         static $gtype: GObject.GType<Area>;
 
-        // Own fields of Vips.Area
+        // Fields
 
         data: any;
         length: number;
         n: number;
 
-        // Constructors of Vips.Area
+        // Constructors
 
         constructor(free_fn?: CallbackFn | null);
         _init(...args: any[]): void;
@@ -5469,11 +5469,11 @@ export namespace Vips {
 
         static new_array_object(n: number): Area;
 
-        // Own static methods of Vips.Area
+        // Static methods
 
         static free_cb(mem: any | null, area: Area): number;
 
-        // Own methods of Vips.Area
+        // Methods
 
         copy(): Area;
         /**
@@ -5489,11 +5489,11 @@ export namespace Vips {
     class Argument {
         static $gtype: GObject.GType<Argument>;
 
-        // Own fields of Vips.Argument
+        // Fields
 
         pspec: GObject.ParamSpec;
 
-        // Constructors of Vips.Argument
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5501,17 +5501,17 @@ export namespace Vips {
     class ArgumentClass {
         static $gtype: GObject.GType<ArgumentClass>;
 
-        // Own fields of Vips.ArgumentClass
+        // Fields
 
         flags: ArgumentFlags;
         priority: number;
         offset: number;
 
-        // Constructors of Vips.ArgumentClass
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of Vips.ArgumentClass
+        // Methods
 
         needsstring(): boolean;
     }
@@ -5519,14 +5519,14 @@ export namespace Vips {
     class ArgumentInstance {
         static $gtype: GObject.GType<ArgumentInstance>;
 
-        // Own fields of Vips.ArgumentInstance
+        // Fields
 
         object: Object;
         assigned: boolean;
         close_id: number;
         invalidate_id: number;
 
-        // Constructors of Vips.ArgumentInstance
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5534,14 +5534,14 @@ export namespace Vips {
     class ArrayDouble {
         static $gtype: GObject.GType<ArrayDouble>;
 
-        // Constructors of Vips.ArrayDouble
+        // Constructors
 
         constructor(array: number[]);
         _init(...args: any[]): void;
 
         static ['new'](array: number[]): ArrayDouble;
 
-        // Own methods of Vips.ArrayDouble
+        // Methods
 
         /**
          * Fetch a double array from a #VipsArrayDouble. Useful for language bindings.
@@ -5553,7 +5553,7 @@ export namespace Vips {
     class ArrayImage {
         static $gtype: GObject.GType<ArrayImage>;
 
-        // Constructors of Vips.ArrayImage
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -5568,7 +5568,7 @@ export namespace Vips {
 
         static new_from_string(string: string, flags: Access): ArrayImage;
 
-        // Own methods of Vips.ArrayImage
+        // Methods
 
         /**
          * Make a new #VipsArrayImage, one larger than `array,` with `image` appended
@@ -5591,14 +5591,14 @@ export namespace Vips {
     class ArrayInt {
         static $gtype: GObject.GType<ArrayInt>;
 
-        // Constructors of Vips.ArrayInt
+        // Constructors
 
         constructor(array: number[]);
         _init(...args: any[]): void;
 
         static ['new'](array: number[]): ArrayInt;
 
-        // Own methods of Vips.ArrayInt
+        // Methods
 
         /**
          * Fetch an int array from a #VipsArrayInt. Useful for language bindings.
@@ -5610,14 +5610,14 @@ export namespace Vips {
     class Blob {
         static $gtype: GObject.GType<Blob>;
 
-        // Constructors of Vips.Blob
+        // Constructors
 
         constructor(free_fn: CallbackFn | null, data: Uint8Array | string);
         _init(...args: any[]): void;
 
         static ['new'](free_fn: CallbackFn | null, data: Uint8Array | string): Blob;
 
-        // Own static methods of Vips.Blob
+        // Static methods
 
         /**
          * Like vips_blob_new(), but take a copy of the data. Useful for bindings
@@ -5628,7 +5628,7 @@ export namespace Vips {
          */
         static copy(data: Uint8Array | string): Blob;
 
-        // Own methods of Vips.Blob
+        // Methods
 
         /**
          * Get the data from a #VipsBlob.
@@ -5653,7 +5653,7 @@ export namespace Vips {
     abstract class Buf {
         static $gtype: GObject.GType<Buf>;
 
-        // Constructors of Vips.Buf
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5672,7 +5672,7 @@ export namespace Vips {
     class Progress {
         static $gtype: GObject.GType<Progress>;
 
-        // Own fields of Vips.Progress
+        // Fields
 
         run: number;
         eta: number;
@@ -5680,11 +5680,11 @@ export namespace Vips {
         npels: number;
         percent: number;
 
-        // Constructors of Vips.Progress
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own static methods of Vips.Progress
+        // Static methods
 
         /**
          * If set, vips will print messages about the progress of computation to
@@ -5702,14 +5702,14 @@ export namespace Vips {
     class Rect {
         static $gtype: GObject.GType<Rect>;
 
-        // Own fields of Vips.Rect
+        // Fields
 
         left: number;
         top: number;
         width: number;
         height: number;
 
-        // Constructors of Vips.Rect
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -5721,7 +5721,7 @@ export namespace Vips {
         );
         _init(...args: any[]): void;
 
-        // Own methods of Vips.Rect
+        // Methods
 
         /**
          * Is `r1` equal to `r2`?
@@ -5778,14 +5778,14 @@ export namespace Vips {
     class RefString {
         static $gtype: GObject.GType<RefString>;
 
-        // Constructors of Vips.RefString
+        // Constructors
 
         constructor(str: string);
         _init(...args: any[]): void;
 
         static ['new'](str: string): RefString;
 
-        // Own methods of Vips.RefString
+        // Methods
 
         /**
          * Get a pointer to the private string inside a refstr. Handy for language
@@ -5801,11 +5801,11 @@ export namespace Vips {
     class SaveString {
         static $gtype: GObject.GType<SaveString>;
 
-        // Own fields of Vips.SaveString
+        // Fields
 
         s: string;
 
-        // Constructors of Vips.SaveString
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -5818,7 +5818,7 @@ export namespace Vips {
     abstract class Source {
         static $gtype: GObject.GType<Source>;
 
-        // Constructors of Vips.Source
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5826,7 +5826,7 @@ export namespace Vips {
     abstract class Target {
         static $gtype: GObject.GType<Target>;
 
-        // Constructors of Vips.Target
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5834,11 +5834,11 @@ export namespace Vips {
     class Thing {
         static $gtype: GObject.GType<Thing>;
 
-        // Own fields of Vips.Thing
+        // Fields
 
         i: number;
 
-        // Constructors of Vips.Thing
+        // Constructors
 
         constructor(
             properties?: Partial<{

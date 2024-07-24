@@ -25,7 +25,7 @@ export namespace Accounts {
     class AccountsError extends GLib.Error {
         static $gtype: GObject.GType<AccountsError>;
 
-        // Static fields of Accounts.AccountsError
+        // Static fields
 
         /**
          * there was an error accessing the accounts database
@@ -58,7 +58,7 @@ export namespace Accounts {
          */
         static READONLY: number;
 
-        // Constructors of Accounts.AccountsError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
@@ -161,7 +161,7 @@ export namespace Accounts {
     class Account extends GObject.Object implements Gio.Initable {
         static $gtype: GObject.GType<Account>;
 
-        // Own properties of Accounts.Account
+        // Properties
 
         /**
          * The display name of the account.
@@ -189,13 +189,13 @@ export namespace Accounts {
          */
         get provider(): string;
 
-        // Constructors of Accounts.Account
+        // Constructors
 
         constructor(properties?: Partial<Account.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of Accounts.Account
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -210,7 +210,7 @@ export namespace Accounts {
         connect_after(signal: 'enabled', callback: (_source: this, service: string, enabled: boolean) => void): number;
         emit(signal: 'enabled', service: string, enabled: boolean): void;
 
-        // Own methods of Accounts.Account
+        // Methods
 
         /**
          * Deletes the account. Call ag_account_store() in order to record the change
@@ -914,7 +914,7 @@ export namespace Accounts {
     class AccountService extends GObject.Object {
         static $gtype: GObject.GType<AccountService>;
 
-        // Own properties of Accounts.AccountService
+        // Properties
 
         /**
          * The #AgAccount used by the account service.
@@ -933,7 +933,7 @@ export namespace Accounts {
          */
         get service(): Service;
 
-        // Constructors of Accounts.AccountService
+        // Constructors
 
         constructor(properties?: Partial<AccountService.ConstructorProps>, ...args: any[]);
 
@@ -941,7 +941,7 @@ export namespace Accounts {
 
         static ['new'](account: Account, service?: Service | null): AccountService;
 
-        // Own signals of Accounts.AccountService
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -953,7 +953,7 @@ export namespace Accounts {
         connect_after(signal: 'enabled', callback: (_source: this, enabled: boolean) => void): number;
         emit(signal: 'enabled', enabled: boolean): void;
 
-        // Own static methods of Accounts.AccountService
+        // Static methods
 
         /**
          * Iterates over the account keys. `iter` must be an iterator previously
@@ -962,7 +962,7 @@ export namespace Accounts {
          */
         static settings_iter_next(iter: AccountSettingIter): [boolean, string, unknown];
 
-        // Own methods of Accounts.AccountService
+        // Methods
 
         /**
          * Get the #AgAccount associated with `self`.
@@ -1085,7 +1085,7 @@ export namespace Accounts {
     class Manager extends GObject.Object implements Gio.Initable {
         static $gtype: GObject.GType<Manager>;
 
-        // Own properties of Accounts.Manager
+        // Properties
 
         /**
          * Whether to abort the application when a database timeout occurs.
@@ -1136,7 +1136,7 @@ export namespace Accounts {
          */
         get useDbus(): boolean;
 
-        // Constructors of Accounts.Manager
+        // Constructors
 
         constructor(properties?: Partial<Manager.ConstructorProps>, ...args: any[]);
 
@@ -1146,7 +1146,7 @@ export namespace Accounts {
 
         static new_for_service_type(service_type: string): Manager;
 
-        // Own signals of Accounts.Manager
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -1164,7 +1164,7 @@ export namespace Accounts {
         connect_after(signal: 'enabled-event', callback: (_source: this, account_id: number) => void): number;
         emit(signal: 'enabled-event', account_id: number): void;
 
-        // Own static methods of Accounts.Manager
+        // Static methods
 
         /**
          * Frees the memory taken by a #GList of #AgAccountId allocated by #AgManager,
@@ -1174,11 +1174,11 @@ export namespace Accounts {
          */
         static list_free(list: AccountId[]): void;
 
-        // Own virtual methods of Accounts.Manager
+        // Virtual methods
 
         vfunc_account_deleted(id: AccountId): void;
 
-        // Own methods of Accounts.Manager
+        // Methods
 
         /**
          * Create a new account. The account is not stored in the database until
@@ -1835,7 +1835,7 @@ export namespace Accounts {
     abstract class AccountPrivate {
         static $gtype: GObject.GType<AccountPrivate>;
 
-        // Constructors of Accounts.AccountPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1844,7 +1844,7 @@ export namespace Accounts {
     abstract class AccountServicePrivate {
         static $gtype: GObject.GType<AccountServicePrivate>;
 
-        // Constructors of Accounts.AccountServicePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1855,15 +1855,15 @@ export namespace Accounts {
     class AccountSettingIter {
         static $gtype: GObject.GType<AccountSettingIter>;
 
-        // Own fields of Accounts.AccountSettingIter
+        // Fields
 
         account: Account;
 
-        // Constructors of Accounts.AccountSettingIter
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of Accounts.AccountSettingIter
+        // Methods
 
         /**
          * Frees the memory associated with an #AgAccountSettingIter.
@@ -1890,7 +1890,7 @@ export namespace Accounts {
     abstract class AccountWatch {
         static $gtype: GObject.GType<AccountWatch>;
 
-        // Constructors of Accounts.AccountWatch
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1901,11 +1901,11 @@ export namespace Accounts {
     class Application {
         static $gtype: GObject.GType<Application>;
 
-        // Constructors of Accounts.Application
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of Accounts.Application
+        // Methods
 
         /**
          * Get the description of the #AgApplication.
@@ -1952,11 +1952,11 @@ export namespace Accounts {
     class AuthData {
         static $gtype: GObject.GType<AuthData>;
 
-        // Constructors of Accounts.AuthData
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of Accounts.AuthData
+        // Methods
 
         /**
          * Gets the ID of the credentials associated with this account.
@@ -2007,7 +2007,7 @@ export namespace Accounts {
     abstract class ManagerPrivate {
         static $gtype: GObject.GType<ManagerPrivate>;
 
-        // Constructors of Accounts.ManagerPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2018,11 +2018,11 @@ export namespace Accounts {
     class Provider {
         static $gtype: GObject.GType<Provider>;
 
-        // Constructors of Accounts.Provider
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own static methods of Accounts.Provider
+        // Static methods
 
         /**
          * Frees the list `list`.
@@ -2030,7 +2030,7 @@ export namespace Accounts {
          */
         static list_free(list: Provider[]): void;
 
-        // Own methods of Accounts.Provider
+        // Methods
 
         /**
          * Get the description of the #AgProvider.
@@ -2113,11 +2113,11 @@ export namespace Accounts {
     class Service {
         static $gtype: GObject.GType<Service>;
 
-        // Constructors of Accounts.Service
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own static methods of Accounts.Service
+        // Static methods
 
         /**
          * Frees the list `list`.
@@ -2125,7 +2125,7 @@ export namespace Accounts {
          */
         static list_free(list: Service[]): void;
 
-        // Own methods of Accounts.Service
+        // Methods
 
         /**
          * Gets the description of the #AgService.
@@ -2201,11 +2201,11 @@ export namespace Accounts {
     class ServiceType {
         static $gtype: GObject.GType<ServiceType>;
 
-        // Constructors of Accounts.ServiceType
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own static methods of Accounts.ServiceType
+        // Static methods
 
         /**
          * Frees the list `list`.
@@ -2213,7 +2213,7 @@ export namespace Accounts {
          */
         static list_free(list: ServiceType[]): void;
 
-        // Own methods of Accounts.ServiceType
+        // Methods
 
         /**
          * Get the description of the #AgServiceType.

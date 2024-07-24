@@ -212,7 +212,7 @@ export namespace GstVa {
     class VaAllocator extends Gst.Allocator {
         static $gtype: GObject.GType<VaAllocator>;
 
-        // Constructors of GstVa.VaAllocator
+        // Constructors
 
         constructor(properties?: Partial<VaAllocator.ConstructorProps>, ...args: any[]);
 
@@ -220,7 +220,7 @@ export namespace GstVa {
 
         static ['new'](display: VaDisplay, surface_formats: number[]): VaAllocator;
 
-        // Own static methods of GstVa.VaAllocator
+        // Static methods
 
         /**
          * Allocate a new VASurfaceID backed #GstMemory.
@@ -296,19 +296,19 @@ export namespace GstVa {
     class VaDisplay extends Gst.Object {
         static $gtype: GObject.GType<VaDisplay>;
 
-        // Own properties of GstVa.VaDisplay
+        // Properties
 
         get description(): string;
         get va_display(): any;
         get vaDisplay(): any;
 
-        // Constructors of GstVa.VaDisplay
+        // Constructors
 
         constructor(properties?: Partial<VaDisplay.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of GstVa.VaDisplay
+        // Virtual methods
 
         /**
          * This is called when the subclass has to create the internal
@@ -316,7 +316,7 @@ export namespace GstVa {
          */
         vfunc_create_va_display(): any | null;
 
-        // Own methods of GstVa.VaDisplay
+        // Methods
 
         check_version(major: number, minor: number): boolean;
         /**
@@ -357,11 +357,11 @@ export namespace GstVa {
     class VaDisplayDrm extends VaDisplay {
         static $gtype: GObject.GType<VaDisplayDrm>;
 
-        // Own properties of GstVa.VaDisplayDrm
+        // Properties
 
         get path(): string;
 
-        // Constructors of GstVa.VaDisplayDrm
+        // Constructors
 
         constructor(properties?: Partial<VaDisplayDrm.ConstructorProps>, ...args: any[]);
 
@@ -383,7 +383,7 @@ export namespace GstVa {
     class VaDisplayWrapped extends VaDisplay {
         static $gtype: GObject.GType<VaDisplayWrapped>;
 
-        // Constructors of GstVa.VaDisplayWrapped
+        // Constructors
 
         constructor(properties?: Partial<VaDisplayWrapped.ConstructorProps>, ...args: any[]);
 
@@ -406,7 +406,7 @@ export namespace GstVa {
     class VaDmabufAllocator extends Gst.Allocator {
         static $gtype: GObject.GType<VaDmabufAllocator>;
 
-        // Constructors of GstVa.VaDmabufAllocator
+        // Constructors
 
         constructor(properties?: Partial<VaDmabufAllocator.ConstructorProps>, ...args: any[]);
 
@@ -414,7 +414,7 @@ export namespace GstVa {
 
         static ['new'](display: VaDisplay): VaDmabufAllocator;
 
-        // Own static methods of GstVa.VaDmabufAllocator
+        // Static methods
 
         /**
          * Removes all the memories in `allocator'`s pool.
@@ -466,7 +466,7 @@ export namespace GstVa {
     class VaPool extends Gst.BufferPool {
         static $gtype: GObject.GType<VaPool>;
 
-        // Constructors of GstVa.VaPool
+        // Constructors
 
         constructor(properties?: Partial<VaPool.ConstructorProps>, ...args: any[]);
 
@@ -484,7 +484,7 @@ export namespace GstVa {
             alloc_params: Gst.AllocationParams,
         ): VaPool;
 
-        // Own static methods of GstVa.VaPool
+        // Static methods
 
         /**
          * Helper function to retrieve the VA surface size provided by `pool`.

@@ -547,14 +547,14 @@ export namespace Wp {
     class AsyncEventHook extends InterestEventHook {
         static $gtype: GObject.GType<AsyncEventHook>;
 
-        // Own properties of Wp.AsyncEventHook
+        // Properties
 
         set execute_step(val: GObject.Closure);
         set executeStep(val: GObject.Closure);
         set get_next_step(val: GObject.Closure);
         set getNextStep(val: GObject.Closure);
 
-        // Constructors of Wp.AsyncEventHook
+        // Constructors
 
         constructor(properties?: Partial<AsyncEventHook.ConstructorProps>, ...args: any[]);
 
@@ -581,13 +581,13 @@ export namespace Wp {
     class Client extends GlobalProxy implements PipewireObject {
         static $gtype: GObject.GType<Client>;
 
-        // Constructors of Wp.Client
+        // Constructors
 
         constructor(properties?: Partial<Client.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Wp.Client
+        // Methods
 
         /**
          * Send an error to the client.
@@ -822,12 +822,12 @@ export namespace Wp {
     class Conf extends GObject.Object {
         static $gtype: GObject.GType<Conf>;
 
-        // Own properties of Wp.Conf
+        // Properties
 
         get name(): string;
         get properties(): Properties;
 
-        // Constructors of Wp.Conf
+        // Constructors
 
         constructor(properties?: Partial<Conf.ConstructorProps>, ...args: any[]);
 
@@ -837,7 +837,7 @@ export namespace Wp {
 
         static new_open(name: string, properties?: Properties | null): Conf;
 
-        // Own methods of Wp.Conf
+        // Methods
 
         /**
          * Closes the configuration file and its fragments.
@@ -920,7 +920,7 @@ export namespace Wp {
     class Core extends Object {
         static $gtype: GObject.GType<Core>;
 
-        // Own properties of Wp.Core
+        // Properties
 
         get conf(): Conf;
         get g_main_context(): GLib.MainContext;
@@ -931,7 +931,7 @@ export namespace Wp {
         get pw_core(): any;
         get pwCore(): any;
 
-        // Constructors of Wp.Core
+        // Constructors
 
         constructor(properties?: Partial<Core.ConstructorProps>, ...args: any[]);
 
@@ -939,7 +939,7 @@ export namespace Wp {
 
         static ['new'](context?: GLib.MainContext | null, conf?: Conf | null, properties?: Properties | null): Core;
 
-        // Own signals of Wp.Core
+        // Signals
 
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -948,7 +948,7 @@ export namespace Wp {
         connect_after(signal: 'disconnected', callback: (_source: this) => void): number;
         emit(signal: 'disconnected'): void;
 
-        // Own methods of Wp.Core
+        // Methods
 
         /**
          * Clones a core with the same context as `self`.
@@ -1202,7 +1202,7 @@ export namespace Wp {
     class Device extends GlobalProxy implements PipewireObject {
         static $gtype: GObject.GType<Device>;
 
-        // Constructors of Wp.Device
+        // Constructors
 
         constructor(properties?: Partial<Device.ConstructorProps>, ...args: any[]);
 
@@ -1424,13 +1424,13 @@ export namespace Wp {
     class EventDispatcher extends GObject.Object {
         static $gtype: GObject.GType<EventDispatcher>;
 
-        // Constructors of Wp.EventDispatcher
+        // Constructors
 
         constructor(properties?: Partial<EventDispatcher.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of Wp.EventDispatcher
+        // Static methods
 
         /**
          * Returns the event dispatcher instance that is associated with the given core.
@@ -1441,7 +1441,7 @@ export namespace Wp {
          */
         static get_instance(core: Core): EventDispatcher;
 
-        // Own methods of Wp.EventDispatcher
+        // Methods
 
         /**
          * Returns an iterator to iterate over all the registered hooks.
@@ -1484,7 +1484,7 @@ export namespace Wp {
     abstract class EventHook extends GObject.Object {
         static $gtype: GObject.GType<EventHook>;
 
-        // Own properties of Wp.EventHook
+        // Properties
 
         get dispatcher(): EventDispatcher;
         get name(): string;
@@ -1493,13 +1493,13 @@ export namespace Wp {
         get runs_before_hooks(): string[];
         get runsBeforeHooks(): string[];
 
-        // Constructors of Wp.EventHook
+        // Constructors
 
         constructor(properties?: Partial<EventHook.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of Wp.EventHook
+        // Virtual methods
 
         /**
          * Finishes the async operation that was started by wp_event_hook_run()
@@ -1523,7 +1523,7 @@ export namespace Wp {
          */
         vfunc_runs_for_event(event: Event): boolean;
 
-        // Own methods of Wp.EventHook
+        // Methods
 
         /**
          * Finishes the async operation that was started by wp_event_hook_run()
@@ -1574,7 +1574,7 @@ export namespace Wp {
     class Factory extends GlobalProxy implements PipewireObject {
         static $gtype: GObject.GType<Factory>;
 
-        // Constructors of Wp.Factory
+        // Constructors
 
         constructor(properties?: Partial<Factory.ConstructorProps>, ...args: any[]);
 
@@ -1794,13 +1794,13 @@ export namespace Wp {
     class FeatureActivationTransition extends Transition implements Gio.AsyncResult {
         static $gtype: GObject.GType<FeatureActivationTransition>;
 
-        // Constructors of Wp.FeatureActivationTransition
+        // Constructors
 
         constructor(properties?: Partial<FeatureActivationTransition.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Wp.FeatureActivationTransition
+        // Methods
 
         /**
          * Gets the features requested to be activated in this transition.
@@ -2278,7 +2278,7 @@ export namespace Wp {
     class GlobalProxy extends Proxy {
         static $gtype: GObject.GType<GlobalProxy>;
 
-        // Own properties of Wp.GlobalProxy
+        // Properties
 
         set factory_name(val: string);
         set factoryName(val: string);
@@ -2286,13 +2286,13 @@ export namespace Wp {
         get globalProperties(): Properties;
         get permissions(): number;
 
-        // Constructors of Wp.GlobalProxy
+        // Constructors
 
         constructor(properties?: Partial<GlobalProxy.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Wp.GlobalProxy
+        // Methods
 
         /**
          * Binds to the global and creates the underlying pw_proxy.
@@ -2339,12 +2339,12 @@ export namespace Wp {
     class ImplMetadata extends Metadata {
         static $gtype: GObject.GType<ImplMetadata>;
 
-        // Own properties of Wp.ImplMetadata
+        // Properties
 
         get name(): string;
         get properties(): Properties;
 
-        // Constructors of Wp.ImplMetadata
+        // Constructors
 
         constructor(properties?: Partial<ImplMetadata.ConstructorProps>, ...args: any[]);
 
@@ -2374,7 +2374,7 @@ export namespace Wp {
     class ImplModule extends GObject.Object {
         static $gtype: GObject.GType<ImplModule>;
 
-        // Own properties of Wp.ImplModule
+        // Properties
 
         get arguments(): string;
         get core(): any;
@@ -2384,13 +2384,13 @@ export namespace Wp {
         get pw_impl_module(): any;
         get pwImplModule(): any;
 
-        // Constructors of Wp.ImplModule
+        // Constructors
 
         constructor(properties?: Partial<ImplModule.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of Wp.ImplModule
+        // Static methods
 
         /**
          * Loads a PipeWire module into the WirePlumber process.
@@ -2422,12 +2422,12 @@ export namespace Wp {
     class ImplNode extends Proxy implements PipewireObject {
         static $gtype: GObject.GType<ImplNode>;
 
-        // Own properties of Wp.ImplNode
+        // Properties
 
         get pw_impl_node(): any;
         get pwImplNode(): any;
 
-        // Constructors of Wp.ImplNode
+        // Constructors
 
         constructor(properties?: Partial<ImplNode.ConstructorProps>, ...args: any[]);
 
@@ -2651,13 +2651,13 @@ export namespace Wp {
     abstract class InterestEventHook extends EventHook {
         static $gtype: GObject.GType<InterestEventHook>;
 
-        // Constructors of Wp.InterestEventHook
+        // Constructors
 
         constructor(properties?: Partial<InterestEventHook.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Wp.InterestEventHook
+        // Methods
 
         add_interest_full(interest: ObjectInterest): void;
     }
@@ -2683,11 +2683,11 @@ export namespace Wp {
     class Link extends GlobalProxy implements PipewireObject {
         static $gtype: GObject.GType<Link>;
 
-        // Own properties of Wp.Link
+        // Properties
 
         get state(): LinkState;
 
-        // Constructors of Wp.Link
+        // Constructors
 
         constructor(properties?: Partial<Link.ConstructorProps>, ...args: any[]);
 
@@ -2695,7 +2695,7 @@ export namespace Wp {
 
         static new_from_factory(core: Core, factory_name: string, properties?: Properties | null): Link;
 
-        // Own signals of Wp.Link
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -2707,7 +2707,7 @@ export namespace Wp {
         ): number;
         emit(signal: 'state-changed', object: LinkState, p0: LinkState): void;
 
-        // Own methods of Wp.Link
+        // Methods
 
         /**
          * Retrieves the ids of the objects that are linked by this link.
@@ -2943,13 +2943,13 @@ export namespace Wp {
     class Metadata extends GlobalProxy {
         static $gtype: GObject.GType<Metadata>;
 
-        // Constructors of Wp.Metadata
+        // Constructors
 
         constructor(properties?: Partial<Metadata.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of Wp.Metadata
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -2964,7 +2964,7 @@ export namespace Wp {
         ): number;
         emit(signal: 'changed', object: number, p0: string, p1: string, p2: string): void;
 
-        // Own methods of Wp.Metadata
+        // Methods
 
         /**
          * Clears permanently all stored metadata.
@@ -3032,7 +3032,7 @@ export namespace Wp {
     class Node extends GlobalProxy implements PipewireObject {
         static $gtype: GObject.GType<Node>;
 
-        // Own properties of Wp.Node
+        // Properties
 
         get max_input_ports(): number;
         get maxInputPorts(): number;
@@ -3044,7 +3044,7 @@ export namespace Wp {
         get nOutputPorts(): number;
         get state(): NodeState;
 
-        // Constructors of Wp.Node
+        // Constructors
 
         constructor(properties?: Partial<Node.ConstructorProps>, ...args: any[]);
 
@@ -3052,7 +3052,7 @@ export namespace Wp {
 
         static new_from_factory(core: Core, factory_name: string, properties?: Properties | null): Node;
 
-        // Own signals of Wp.Node
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -3067,7 +3067,7 @@ export namespace Wp {
         ): number;
         emit(signal: 'state-changed', object: NodeState, p0: NodeState): void;
 
-        // Own methods of Wp.Node
+        // Methods
 
         /**
          * Gets the number of input ports of this node.
@@ -3355,7 +3355,7 @@ export namespace Wp {
     abstract class Object extends GObject.Object {
         static $gtype: GObject.GType<Object>;
 
-        // Own properties of Wp.Object
+        // Properties
 
         get active_features(): number;
         get activeFeatures(): number;
@@ -3364,13 +3364,13 @@ export namespace Wp {
         get supported_features(): number;
         get supportedFeatures(): number;
 
-        // Constructors of Wp.Object
+        // Constructors
 
         constructor(properties?: Partial<Object.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of Wp.Object
+        // Virtual methods
 
         vfunc_activate_execute_step(
             transition: FeatureActivationTransition,
@@ -3395,7 +3395,7 @@ export namespace Wp {
          */
         vfunc_get_supported_features(): ObjectFeatures;
 
-        // Own methods of Wp.Object
+        // Methods
 
         /**
          * Aborts the current object activation by returning a transition error if any transitions are pending.
@@ -3524,11 +3524,11 @@ export namespace Wp {
     class ObjectManager extends GObject.Object {
         static $gtype: GObject.GType<ObjectManager>;
 
-        // Own properties of Wp.ObjectManager
+        // Properties
 
         get core(): Core;
 
-        // Constructors of Wp.ObjectManager
+        // Constructors
 
         constructor(properties?: Partial<ObjectManager.ConstructorProps>, ...args: any[]);
 
@@ -3536,7 +3536,7 @@ export namespace Wp {
 
         static ['new'](): ObjectManager;
 
-        // Own signals of Wp.ObjectManager
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -3554,7 +3554,7 @@ export namespace Wp {
         connect_after(signal: 'objects-changed', callback: (_source: this) => void): number;
         emit(signal: 'objects-changed'): void;
 
-        // Own methods of Wp.ObjectManager
+        // Methods
 
         /**
          * Declares interest in a certain kind of object.
@@ -3621,17 +3621,17 @@ export namespace Wp {
     abstract class Plugin extends Object {
         static $gtype: GObject.GType<Plugin>;
 
-        // Own properties of Wp.Plugin
+        // Properties
 
         get name(): string;
 
-        // Constructors of Wp.Plugin
+        // Constructors
 
         constructor(properties?: Partial<Plugin.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of Wp.Plugin
+        // Static methods
 
         /**
          * Looks up a plugin.
@@ -3640,12 +3640,12 @@ export namespace Wp {
          */
         static find(core: Core, plugin_name: string): Plugin | null;
 
-        // Own virtual methods of Wp.Plugin
+        // Virtual methods
 
         vfunc_disable(): void;
         vfunc_enable(transition: Transition): void;
 
-        // Own methods of Wp.Plugin
+        // Methods
 
         /**
          * Retreives the name of a plugin.
@@ -3667,13 +3667,13 @@ export namespace Wp {
     class Port extends GlobalProxy implements PipewireObject {
         static $gtype: GObject.GType<Port>;
 
-        // Constructors of Wp.Port
+        // Constructors
 
         constructor(properties?: Partial<Port.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Wp.Port
+        // Methods
 
         /**
          * Gets the current direction of the port.
@@ -3922,20 +3922,20 @@ export namespace Wp {
     abstract class Proxy extends Object {
         static $gtype: GObject.GType<Proxy>;
 
-        // Own properties of Wp.Proxy
+        // Properties
 
         get bound_id(): number;
         get boundId(): number;
         get pw_proxy(): any;
         get pwProxy(): any;
 
-        // Constructors of Wp.Proxy
+        // Constructors
 
         constructor(properties?: Partial<Proxy.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of Wp.Proxy
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -3956,14 +3956,14 @@ export namespace Wp {
         connect_after(signal: 'pw-proxy-destroyed', callback: (_source: this) => void): number;
         emit(signal: 'pw-proxy-destroyed'): void;
 
-        // Own virtual methods of Wp.Proxy
+        // Virtual methods
 
         vfunc_bound(id: number): void;
         vfunc_error(seq: number, res: number, message: string): void;
         vfunc_pw_proxy_created(proxy?: any | null): void;
         vfunc_pw_proxy_destroyed(): void;
 
-        // Own methods of Wp.Proxy
+        // Methods
 
         /**
          * Returns the proxy bound id.
@@ -4009,17 +4009,17 @@ export namespace Wp {
     abstract class SessionItem extends Object {
         static $gtype: GObject.GType<SessionItem>;
 
-        // Own properties of Wp.SessionItem
+        // Properties
 
         get properties(): Properties;
 
-        // Constructors of Wp.SessionItem
+        // Constructors
 
         constructor(properties?: Partial<SessionItem.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of Wp.SessionItem
+        // Static methods
 
         /**
          * Helper callback for sub-classes that deffers and unexports the session item.
@@ -4037,7 +4037,7 @@ export namespace Wp {
          */
         static make(core: Core, factory_name: string): SessionItem | null;
 
-        // Own virtual methods of Wp.SessionItem
+        // Virtual methods
 
         /**
          * Configures the session item with a set of properties.
@@ -4057,7 +4057,7 @@ export namespace Wp {
          */
         vfunc_reset(): void;
 
-        // Own methods of Wp.SessionItem
+        // Methods
 
         /**
          * Configures the session item with a set of properties.
@@ -4136,12 +4136,12 @@ export namespace Wp {
     class Settings extends Object {
         static $gtype: GObject.GType<Settings>;
 
-        // Own properties of Wp.Settings
+        // Properties
 
         get metadata_name(): string;
         get metadataName(): string;
 
-        // Constructors of Wp.Settings
+        // Constructors
 
         constructor(properties?: Partial<Settings.ConstructorProps>, ...args: any[]);
 
@@ -4149,7 +4149,7 @@ export namespace Wp {
 
         static ['new'](core: Core, metadata_name?: string | null): Settings;
 
-        // Own static methods of Wp.Settings
+        // Static methods
 
         /**
          * Finds a registered WpSettings object by its metadata name.
@@ -4158,7 +4158,7 @@ export namespace Wp {
          */
         static find(core: Core, metadata_name?: string | null): Settings | null;
 
-        // Own methods of Wp.Settings
+        // Methods
 
         /**
          * Deletes a saved setting to not make it persistent after reboot.
@@ -4271,11 +4271,11 @@ export namespace Wp {
     abstract class SiFactory extends GObject.Object {
         static $gtype: GObject.GType<SiFactory>;
 
-        // Own properties of Wp.SiFactory
+        // Properties
 
         get name(): string;
 
-        // Constructors of Wp.SiFactory
+        // Constructors
 
         constructor(properties?: Partial<SiFactory.ConstructorProps>, ...args: any[]);
 
@@ -4283,7 +4283,7 @@ export namespace Wp {
 
         static new_simple(factory_name: string, si_type: GObject.GType): SiFactory;
 
-        // Own static methods of Wp.SiFactory
+        // Static methods
 
         /**
          * Looks up a factory matching a name.
@@ -4292,7 +4292,7 @@ export namespace Wp {
          */
         static find(core: Core, factory_name: string): SiFactory | null;
 
-        // Own virtual methods of Wp.SiFactory
+        // Virtual methods
 
         /**
          * Creates a new instance of the session item that is constructed by this factory.
@@ -4300,7 +4300,7 @@ export namespace Wp {
          */
         vfunc_construct(core: Core): SessionItem;
 
-        // Own methods of Wp.SiFactory
+        // Methods
 
         /**
          * Creates a new instance of the session item that is constructed by this factory.
@@ -4329,11 +4329,11 @@ export namespace Wp {
     class SimpleEventHook extends InterestEventHook {
         static $gtype: GObject.GType<SimpleEventHook>;
 
-        // Own properties of Wp.SimpleEventHook
+        // Properties
 
         set closure(val: GObject.Closure);
 
-        // Constructors of Wp.SimpleEventHook
+        // Constructors
 
         constructor(properties?: Partial<SimpleEventHook.ConstructorProps>, ...args: any[]);
 
@@ -4370,13 +4370,13 @@ export namespace Wp {
     class SpaDevice extends Proxy {
         static $gtype: GObject.GType<SpaDevice>;
 
-        // Own properties of Wp.SpaDevice
+        // Properties
 
         get properties(): Properties;
         get spa_device_handle(): any;
         get spaDeviceHandle(): any;
 
-        // Constructors of Wp.SpaDevice
+        // Constructors
 
         constructor(properties?: Partial<SpaDevice.ConstructorProps>, ...args: any[]);
 
@@ -4386,7 +4386,7 @@ export namespace Wp {
 
         static new_wrap(core: Core, spa_device_handle?: any | null, properties?: Properties | null): SpaDevice;
 
-        // Own signals of Wp.SpaDevice
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -4404,7 +4404,7 @@ export namespace Wp {
         connect_after(signal: 'object-removed', callback: (_source: this, object: number) => void): number;
         emit(signal: 'object-removed', object: number): void;
 
-        // Own methods of Wp.SpaDevice
+        // Methods
 
         /**
          * Gets one of the objects managed by this device.
@@ -4433,11 +4433,11 @@ export namespace Wp {
     class SpaType {
         static $gtype: GObject.GType<SpaType>;
 
-        // Constructors of Wp.SpaType
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own static methods of Wp.SpaType
+        // Static methods
 
         /**
          * Looks up the type id from a given type name.
@@ -4445,7 +4445,7 @@ export namespace Wp {
          */
         static from_name(name: string): SpaType;
 
-        // Own methods of Wp.SpaType
+        // Methods
 
         /**
          * Gets the table with the values that can be stored in the special "id" field of an object of the given `type`.
@@ -4502,13 +4502,13 @@ export namespace Wp {
     class State extends GObject.Object {
         static $gtype: GObject.GType<State>;
 
-        // Own properties of Wp.State
+        // Properties
 
         get name(): string;
         get timeout(): number;
         set timeout(val: number);
 
-        // Constructors of Wp.State
+        // Constructors
 
         constructor(properties?: Partial<State.ConstructorProps>, ...args: any[]);
 
@@ -4516,7 +4516,7 @@ export namespace Wp {
 
         static ['new'](name: string): State;
 
-        // Own methods of Wp.State
+        // Methods
 
         /**
          * Clears the state removing its file.
@@ -4574,11 +4574,11 @@ export namespace Wp {
     abstract class Transition extends GObject.Object implements Gio.AsyncResult {
         static $gtype: GObject.GType<Transition>;
 
-        // Own properties of Wp.Transition
+        // Properties
 
         get completed(): boolean;
 
-        // Constructors of Wp.Transition
+        // Constructors
 
         constructor(properties?: Partial<Transition.ConstructorProps>, ...args: any[]);
 
@@ -4598,7 +4598,7 @@ export namespace Wp {
             closure?: GObject.Closure | null,
         ): Transition;
 
-        // Own static methods of Wp.Transition
+        // Static methods
 
         /**
          * Returns the final return status of the transition and its error, if there was one.
@@ -4609,12 +4609,12 @@ export namespace Wp {
          */
         static finish(res: Gio.AsyncResult): boolean;
 
-        // Own virtual methods of Wp.Transition
+        // Virtual methods
 
         vfunc_execute_step(step: number): void;
         vfunc_get_next_step(step: number): number;
 
-        // Own methods of Wp.Transition
+        // Methods
 
         /**
          * Advances the transition to the next step.
@@ -5120,7 +5120,7 @@ export namespace Wp {
     class Event {
         static $gtype: GObject.GType<Event>;
 
-        // Constructors of Wp.Event
+        // Constructors
 
         constructor(
             type: string,
@@ -5139,7 +5139,7 @@ export namespace Wp {
             subject?: GObject.Object | null,
         ): Event;
 
-        // Own methods of Wp.Event
+        // Methods
 
         /**
          * Collects all the hooks registered in the `dispatcher` that run for this `event`.
@@ -5212,7 +5212,7 @@ export namespace Wp {
     abstract class Global {
         static $gtype: GObject.GType<Global>;
 
-        // Constructors of Wp.Global
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5228,14 +5228,14 @@ export namespace Wp {
     class Iterator {
         static $gtype: GObject.GType<Iterator>;
 
-        // Constructors of Wp.Iterator
+        // Constructors
 
         constructor(methods: IteratorMethods, user_size: number);
         _init(...args: any[]): void;
 
         static ['new'](methods: IteratorMethods, user_size: number): Iterator;
 
-        // Own methods of Wp.Iterator
+        // Methods
 
         /**
          * Fold a function over the items of the iterator.
@@ -5281,11 +5281,11 @@ export namespace Wp {
     class IteratorMethods {
         static $gtype: GObject.GType<IteratorMethods>;
 
-        // Own fields of Wp.IteratorMethods
+        // Fields
 
         version: number;
 
-        // Constructors of Wp.IteratorMethods
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -5302,16 +5302,16 @@ export namespace Wp {
     class LogTopic {
         static $gtype: GObject.GType<LogTopic>;
 
-        // Own fields of Wp.LogTopic
+        // Fields
 
         topic_name: string;
         flags: LogTopicFlags;
 
-        // Constructors of Wp.LogTopic
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of Wp.LogTopic
+        // Methods
 
         /**
          * Initializes a log topic. Internal function, don't use it directly.
@@ -5341,11 +5341,11 @@ export namespace Wp {
     abstract class MetadataItem {
         static $gtype: GObject.GType<MetadataItem>;
 
-        // Constructors of Wp.MetadataItem
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of Wp.MetadataItem
+        // Methods
 
         /**
          * Gets the key from a metadata item.
@@ -5387,14 +5387,14 @@ export namespace Wp {
     class ObjectInterest {
         static $gtype: GObject.GType<ObjectInterest>;
 
-        // Constructors of Wp.ObjectInterest
+        // Constructors
 
         constructor(gtype: GObject.GType, ___: any[]);
         _init(...args: any[]): void;
 
         static new_type(gtype: GObject.GType): ObjectInterest;
 
-        // Own methods of Wp.ObjectInterest
+        // Methods
 
         /**
          * Adds a constraint to this interest. Constraints consist of a `type,` a `subject,` a `verb` and, depending on the `verb,` a `value`.
@@ -5491,7 +5491,7 @@ export namespace Wp {
     class Properties {
         static $gtype: GObject.GType<Properties>;
 
-        // Constructors of Wp.Properties
+        // Constructors
 
         constructor(properties?: Partial<{}>);
         _init(...args: any[]): void;
@@ -5512,7 +5512,7 @@ export namespace Wp {
 
         static new_wrap_dict(dict?: any | null): Properties;
 
-        // Own methods of Wp.Properties
+        // Methods
 
         /**
          * Adds new properties in `self,` using the given `props` as a source.
@@ -5658,11 +5658,11 @@ export namespace Wp {
     abstract class PropertiesItem {
         static $gtype: GObject.GType<PropertiesItem>;
 
-        // Constructors of Wp.PropertiesItem
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of Wp.PropertiesItem
+        // Methods
 
         /**
          * Gets the key from a properties item.
@@ -5694,11 +5694,11 @@ export namespace Wp {
     abstract class SettingsItem {
         static $gtype: GObject.GType<SettingsItem>;
 
-        // Constructors of Wp.SettingsItem
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of Wp.SettingsItem
+        // Methods
 
         /**
          * Gets the key from a settings item.
@@ -5727,11 +5727,11 @@ export namespace Wp {
     abstract class SettingsSpec {
         static $gtype: GObject.GType<SettingsSpec>;
 
-        // Constructors of Wp.SettingsSpec
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of Wp.SettingsSpec
+        // Methods
 
         /**
          * Checks whether a value is compatible with the spec or not.
@@ -5785,7 +5785,7 @@ export namespace Wp {
     class SpaJson {
         static $gtype: GObject.GType<SpaJson>;
 
-        // Constructors of Wp.SpaJson
+        // Constructors
 
         constructor(properties?: Partial<{}>);
         _init(...args: any[]): void;
@@ -5810,7 +5810,7 @@ export namespace Wp {
 
         static new_wrap_stringn(json_str: string, len: number): SpaJson;
 
-        // Own methods of Wp.SpaJson
+        // Methods
 
         /**
          * Copies a spa json object.
@@ -5926,7 +5926,7 @@ export namespace Wp {
     class SpaJsonBuilder {
         static $gtype: GObject.GType<SpaJsonBuilder>;
 
-        // Constructors of Wp.SpaJsonBuilder
+        // Constructors
 
         constructor(properties?: Partial<{}>);
         _init(...args: any[]): void;
@@ -5935,7 +5935,7 @@ export namespace Wp {
 
         static new_object(): SpaJsonBuilder;
 
-        // Own methods of Wp.SpaJsonBuilder
+        // Methods
 
         /**
          * Adds a boolean value into the builder.
@@ -6001,7 +6001,7 @@ export namespace Wp {
     class SpaJsonParser {
         static $gtype: GObject.GType<SpaJsonParser>;
 
-        // Constructors of Wp.SpaJsonParser
+        // Constructors
 
         constructor(json: SpaJson);
         _init(...args: any[]): void;
@@ -6012,7 +6012,7 @@ export namespace Wp {
 
         static new_undefined(json: SpaJson): SpaJsonParser;
 
-        // Own methods of Wp.SpaJsonParser
+        // Methods
 
         end(): void;
         /**
@@ -6062,7 +6062,7 @@ export namespace Wp {
     class SpaPod {
         static $gtype: GObject.GType<SpaPod>;
 
-        // Constructors of Wp.SpaPod
+        // Constructors
 
         constructor(properties?: Partial<{}>);
         _init(...args: any[]): void;
@@ -6097,7 +6097,7 @@ export namespace Wp {
 
         static new_wrap_const(pod?: any | null): SpaPod;
 
-        // Own methods of Wp.SpaPod
+        // Methods
 
         /**
          * Copies a spa pod object.
@@ -6412,7 +6412,7 @@ export namespace Wp {
     class SpaPodBuilder {
         static $gtype: GObject.GType<SpaPodBuilder>;
 
-        // Constructors of Wp.SpaPodBuilder
+        // Constructors
 
         constructor(properties?: Partial<{}>);
         _init(...args: any[]): void;
@@ -6427,7 +6427,7 @@ export namespace Wp {
 
         static new_struct(): SpaPodBuilder;
 
-        // Own methods of Wp.SpaPodBuilder
+        // Methods
 
         /**
          * Adds a boolean value into the builder.
@@ -6537,7 +6537,7 @@ export namespace Wp {
     class SpaPodParser {
         static $gtype: GObject.GType<SpaPodParser>;
 
-        // Constructors of Wp.SpaPodParser
+        // Constructors
 
         constructor(pod: SpaPod, id_name: string);
         _init(...args: any[]): void;
@@ -6546,7 +6546,7 @@ export namespace Wp {
 
         static new_struct(pod: SpaPod): SpaPodParser;
 
-        // Own methods of Wp.SpaPodParser
+        // Methods
 
         /**
          * Ends the parser process.
@@ -6641,7 +6641,7 @@ export namespace Wp {
         prototype: ComponentLoader;
     }
     interface ComponentLoader extends GObject.Object {
-        // Own virtual methods of Wp.ComponentLoader
+        // Virtual methods
 
         vfunc_load(
             core: Core,
@@ -6673,7 +6673,7 @@ export namespace Wp {
         prototype: PipewireObject;
     }
     interface PipewireObject extends Proxy {
-        // Own properties of Wp.PipewireObject
+        // Properties
 
         get native_info(): any;
         get nativeInfo(): any;
@@ -6681,7 +6681,7 @@ export namespace Wp {
         get paramInfo(): GLib.Variant;
         get properties(): Properties;
 
-        // Own methods of Wp.PipewireObject
+        // Methods
 
         /**
          * Enumerate object parameters.
@@ -6776,7 +6776,7 @@ export namespace Wp {
          */
         set_param(id: string, flags: number, param: SpaPod): boolean;
 
-        // Own virtual methods of Wp.PipewireObject
+        // Virtual methods
 
         /**
          * Enumerate object parameters.
@@ -6858,7 +6858,7 @@ export namespace Wp {
         prototype: SiAcquisition;
     }
     interface SiAcquisition extends SessionItem {
-        // Own methods of Wp.SiAcquisition
+        // Methods
 
         /**
          * Acquires the `item` for linking by `acquisitor`.
@@ -6884,7 +6884,7 @@ export namespace Wp {
          */
         release(acquisitor: SiLink, item: SiLinkable): void;
 
-        // Own virtual methods of Wp.SiAcquisition
+        // Virtual methods
 
         /**
          * Acquires the `item` for linking by `acquisitor`.
@@ -6923,7 +6923,7 @@ export namespace Wp {
         prototype: SiAdapter;
     }
     interface SiAdapter extends SessionItem {
-        // Own methods of Wp.SiAdapter
+        // Methods
 
         /**
          * Gets the format used to configure the adapter session item's ports.
@@ -6956,7 +6956,7 @@ export namespace Wp {
          */
         set_ports_format_finish(res: Gio.AsyncResult): boolean;
 
-        // Own virtual methods of Wp.SiAdapter
+        // Virtual methods
 
         /**
          * Gets the format used to configure the adapter session item's ports.
@@ -7000,7 +7000,7 @@ export namespace Wp {
         prototype: SiLink;
     }
     interface SiLink extends SessionItem {
-        // Own methods of Wp.SiLink
+        // Methods
 
         /**
          * Gets the input item linked by the link.
@@ -7025,7 +7025,7 @@ export namespace Wp {
          */
         get_registration_info(): GLib.Variant;
 
-        // Own virtual methods of Wp.SiLink
+        // Virtual methods
 
         /**
          * Gets the input item linked by the link.
@@ -7058,7 +7058,7 @@ export namespace Wp {
         prototype: SiLinkable;
     }
     interface SiLinkable extends SessionItem {
-        // Own methods of Wp.SiLinkable
+        // Methods
 
         /**
          * Gets the acquisition interface associated with the item.
@@ -7087,7 +7087,7 @@ export namespace Wp {
          */
         get_ports(context?: string | null): GLib.Variant;
 
-        // Own virtual methods of Wp.SiLinkable
+        // Virtual methods
 
         /**
          * Gets the acquisition interface associated with the item.

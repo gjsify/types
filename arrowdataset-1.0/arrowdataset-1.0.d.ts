@@ -49,7 +49,7 @@ export namespace ArrowDataset {
     class CSVFileFormat extends FileFormat {
         static $gtype: GObject.GType<CSVFileFormat>;
 
-        // Constructors of ArrowDataset.CSVFileFormat
+        // Constructors
 
         constructor(properties?: Partial<CSVFileFormat.ConstructorProps>, ...args: any[]);
 
@@ -69,17 +69,17 @@ export namespace ArrowDataset {
     abstract class Dataset extends GObject.Object {
         static $gtype: GObject.GType<Dataset>;
 
-        // Own properties of ArrowDataset.Dataset
+        // Properties
 
         set dataset(val: any);
 
-        // Constructors of ArrowDataset.Dataset
+        // Constructors
 
         constructor(properties?: Partial<Dataset.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of ArrowDataset.Dataset
+        // Methods
 
         begin_scan(): ScannerBuilder | null;
         get_type_name(): string;
@@ -98,18 +98,18 @@ export namespace ArrowDataset {
     abstract class DatasetFactory extends GObject.Object {
         static $gtype: GObject.GType<DatasetFactory>;
 
-        // Own properties of ArrowDataset.DatasetFactory
+        // Properties
 
         set dataset_factory(val: any);
         set datasetFactory(val: any);
 
-        // Constructors of ArrowDataset.DatasetFactory
+        // Constructors
 
         constructor(properties?: Partial<DatasetFactory.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of ArrowDataset.DatasetFactory
+        // Methods
 
         finish(): Dataset | null;
     }
@@ -123,7 +123,7 @@ export namespace ArrowDataset {
     class DirectoryPartitioning extends KeyValuePartitioning {
         static $gtype: GObject.GType<DirectoryPartitioning>;
 
-        // Constructors of ArrowDataset.DirectoryPartitioning
+        // Constructors
 
         constructor(properties?: Partial<DirectoryPartitioning.ConstructorProps>, ...args: any[]);
 
@@ -150,17 +150,17 @@ export namespace ArrowDataset {
     class FileFormat extends GObject.Object {
         static $gtype: GObject.GType<FileFormat>;
 
-        // Own properties of ArrowDataset.FileFormat
+        // Properties
 
         set format(val: any);
 
-        // Constructors of ArrowDataset.FileFormat
+        // Constructors
 
         constructor(properties?: Partial<FileFormat.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of ArrowDataset.FileFormat
+        // Methods
 
         equal(other_format: FileFormat): boolean;
         get_default_write_options(): FileWriteOptions;
@@ -188,7 +188,7 @@ export namespace ArrowDataset {
     class FileSystemDataset extends Dataset {
         static $gtype: GObject.GType<FileSystemDataset>;
 
-        // Own properties of ArrowDataset.FileSystemDataset
+        // Properties
 
         /**
          * File system of the dataset.
@@ -207,13 +207,13 @@ export namespace ArrowDataset {
          */
         get partitioning(): Partitioning;
 
-        // Constructors of ArrowDataset.FileSystemDataset
+        // Constructors
 
         constructor(properties?: Partial<FileSystemDataset.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of ArrowDataset.FileSystemDataset
+        // Static methods
 
         static write_scanner(scanner: Scanner, options: FileSystemDatasetWriteOptions): boolean;
     }
@@ -234,7 +234,7 @@ export namespace ArrowDataset {
     class FileSystemDatasetFactory extends DatasetFactory {
         static $gtype: GObject.GType<FileSystemDatasetFactory>;
 
-        // Own properties of ArrowDataset.FileSystemDatasetFactory
+        // Properties
 
         /**
          * File system passed to #GADatasetFileSystemDataset.
@@ -264,7 +264,7 @@ export namespace ArrowDataset {
         get partitioning(): Partitioning;
         set partitioning(val: Partitioning);
 
-        // Constructors of ArrowDataset.FileSystemDatasetFactory
+        // Constructors
 
         constructor(properties?: Partial<FileSystemDatasetFactory.ConstructorProps>, ...args: any[]);
 
@@ -272,7 +272,7 @@ export namespace ArrowDataset {
 
         static ['new'](file_format: FileFormat): FileSystemDatasetFactory;
 
-        // Own methods of ArrowDataset.FileSystemDatasetFactory
+        // Methods
 
         add_path(path: string): boolean;
         finish(): FileSystemDataset | null;
@@ -301,7 +301,7 @@ export namespace ArrowDataset {
     class FileSystemDatasetWriteOptions extends GObject.Object {
         static $gtype: GObject.GType<FileSystemDatasetWriteOptions>;
 
-        // Own properties of ArrowDataset.FileSystemDatasetWriteOptions
+        // Properties
 
         get base_dir(): string;
         set base_dir(val: string);
@@ -343,7 +343,7 @@ export namespace ArrowDataset {
         get partitioning(): Partitioning;
         set partitioning(val: Partitioning);
 
-        // Constructors of ArrowDataset.FileSystemDatasetWriteOptions
+        // Constructors
 
         constructor(properties?: Partial<FileSystemDatasetWriteOptions.ConstructorProps>, ...args: any[]);
 
@@ -363,11 +363,11 @@ export namespace ArrowDataset {
     class FileWriteOptions extends GObject.Object {
         static $gtype: GObject.GType<FileWriteOptions>;
 
-        // Own properties of ArrowDataset.FileWriteOptions
+        // Properties
 
         set options(val: any);
 
-        // Constructors of ArrowDataset.FileWriteOptions
+        // Constructors
 
         constructor(properties?: Partial<FileWriteOptions.ConstructorProps>, ...args: any[]);
 
@@ -385,17 +385,17 @@ export namespace ArrowDataset {
     class FileWriter extends GObject.Object {
         static $gtype: GObject.GType<FileWriter>;
 
-        // Own properties of ArrowDataset.FileWriter
+        // Properties
 
         set writer(val: any);
 
-        // Constructors of ArrowDataset.FileWriter
+        // Constructors
 
         constructor(properties?: Partial<FileWriter.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of ArrowDataset.FileWriter
+        // Methods
 
         finish(): boolean;
         write_record_batch(record_batch: Arrow.RecordBatch): boolean;
@@ -413,11 +413,11 @@ export namespace ArrowDataset {
     abstract class Fragment extends GObject.Object {
         static $gtype: GObject.GType<Fragment>;
 
-        // Own properties of ArrowDataset.Fragment
+        // Properties
 
         set fragment(val: any);
 
-        // Constructors of ArrowDataset.Fragment
+        // Constructors
 
         constructor(properties?: Partial<Fragment.ConstructorProps>, ...args: any[]);
 
@@ -433,7 +433,7 @@ export namespace ArrowDataset {
     class IPCFileFormat extends FileFormat {
         static $gtype: GObject.GType<IPCFileFormat>;
 
-        // Constructors of ArrowDataset.IPCFileFormat
+        // Constructors
 
         constructor(properties?: Partial<IPCFileFormat.ConstructorProps>, ...args: any[]);
 
@@ -451,7 +451,7 @@ export namespace ArrowDataset {
     class InMemoryFragment extends Fragment {
         static $gtype: GObject.GType<InMemoryFragment>;
 
-        // Constructors of ArrowDataset.InMemoryFragment
+        // Constructors
 
         constructor(properties?: Partial<InMemoryFragment.ConstructorProps>, ...args: any[]);
 
@@ -469,7 +469,7 @@ export namespace ArrowDataset {
     class KeyValuePartitioning extends Partitioning {
         static $gtype: GObject.GType<KeyValuePartitioning>;
 
-        // Constructors of ArrowDataset.KeyValuePartitioning
+        // Constructors
 
         constructor(properties?: Partial<KeyValuePartitioning.ConstructorProps>, ...args: any[]);
 
@@ -485,7 +485,7 @@ export namespace ArrowDataset {
     class ParquetFileFormat extends FileFormat {
         static $gtype: GObject.GType<ParquetFileFormat>;
 
-        // Constructors of ArrowDataset.ParquetFileFormat
+        // Constructors
 
         constructor(properties?: Partial<ParquetFileFormat.ConstructorProps>, ...args: any[]);
 
@@ -505,11 +505,11 @@ export namespace ArrowDataset {
     class Partitioning extends GObject.Object {
         static $gtype: GObject.GType<Partitioning>;
 
-        // Own properties of ArrowDataset.Partitioning
+        // Properties
 
         set partitioning(val: any);
 
-        // Constructors of ArrowDataset.Partitioning
+        // Constructors
 
         constructor(properties?: Partial<Partitioning.ConstructorProps>, ...args: any[]);
 
@@ -517,7 +517,7 @@ export namespace ArrowDataset {
 
         static ['new'](): Partitioning;
 
-        // Own methods of ArrowDataset.Partitioning
+        // Methods
 
         get_type_name(): string;
     }
@@ -537,7 +537,7 @@ export namespace ArrowDataset {
     class PartitioningOptions extends GObject.Object {
         static $gtype: GObject.GType<PartitioningOptions>;
 
-        // Own properties of ArrowDataset.PartitioningOptions
+        // Properties
 
         /**
          * When inferring a schema for partition fields, yield dictionary
@@ -577,7 +577,7 @@ export namespace ArrowDataset {
         get segmentEncoding(): SegmentEncoding;
         set segmentEncoding(val: SegmentEncoding);
 
-        // Constructors of ArrowDataset.PartitioningOptions
+        // Constructors
 
         constructor(properties?: Partial<PartitioningOptions.ConstructorProps>, ...args: any[]);
 
@@ -597,17 +597,17 @@ export namespace ArrowDataset {
     class Scanner extends GObject.Object {
         static $gtype: GObject.GType<Scanner>;
 
-        // Own properties of ArrowDataset.Scanner
+        // Properties
 
         set scanner(val: any);
 
-        // Constructors of ArrowDataset.Scanner
+        // Constructors
 
         constructor(properties?: Partial<Scanner.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of ArrowDataset.Scanner
+        // Methods
 
         to_table(): Arrow.Table | null;
     }
@@ -624,12 +624,12 @@ export namespace ArrowDataset {
     class ScannerBuilder extends GObject.Object {
         static $gtype: GObject.GType<ScannerBuilder>;
 
-        // Own properties of ArrowDataset.ScannerBuilder
+        // Properties
 
         set scanner_builder(val: any);
         set scannerBuilder(val: any);
 
-        // Constructors of ArrowDataset.ScannerBuilder
+        // Constructors
 
         constructor(properties?: Partial<ScannerBuilder.ConstructorProps>, ...args: any[]);
 
@@ -639,7 +639,7 @@ export namespace ArrowDataset {
 
         static new_record_batch_reader(reader: Arrow.RecordBatchReader): ScannerBuilder;
 
-        // Own methods of ArrowDataset.ScannerBuilder
+        // Methods
 
         finish(): Scanner | null;
         set_filter(expression: Arrow.Expression): boolean;

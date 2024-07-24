@@ -47,7 +47,7 @@ export namespace TimezoneMap {
     class TimezoneCompletion extends Gtk.EntryCompletion implements Gtk.Buildable, Gtk.CellLayout {
         static $gtype: GObject.GType<TimezoneCompletion>;
 
-        // Constructors of TimezoneMap.TimezoneCompletion
+        // Constructors
 
         constructor(properties?: Partial<TimezoneCompletion.ConstructorProps>, ...args: any[]);
 
@@ -55,7 +55,7 @@ export namespace TimezoneMap {
 
         static ['new'](): TimezoneCompletion;
 
-        // Own methods of TimezoneMap.TimezoneCompletion
+        // Methods
 
         watch_entry(entry: Gtk.Entry): void;
 
@@ -804,7 +804,7 @@ export namespace TimezoneMap {
     class TimezoneLocation extends GObject.Object {
         static $gtype: GObject.GType<TimezoneLocation>;
 
-        // Own properties of TimezoneMap.TimezoneLocation
+        // Properties
 
         get Comment(): string;
         set Comment(val: string);
@@ -819,7 +819,7 @@ export namespace TimezoneMap {
         get zone(): string;
         set zone(val: string);
 
-        // Constructors of TimezoneMap.TimezoneLocation
+        // Constructors
 
         constructor(properties?: Partial<TimezoneLocation.ConstructorProps>, ...args: any[]);
 
@@ -846,7 +846,7 @@ export namespace TimezoneMap {
     class TimezoneMap extends Gtk.Widget implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<TimezoneMap>;
 
-        // Constructors of TimezoneMap.TimezoneMap
+        // Constructors
 
         constructor(properties?: Partial<TimezoneMap.ConstructorProps>, ...args: any[]);
 
@@ -854,7 +854,7 @@ export namespace TimezoneMap {
 
         static ['new'](): TimezoneMap;
 
-        // Own signals of TimezoneMap.TimezoneMap
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -863,7 +863,7 @@ export namespace TimezoneMap {
         connect_after(signal: 'location-changed', callback: (_source: this, object: TimezoneLocation) => void): number;
         emit(signal: 'location-changed', object: TimezoneLocation): void;
 
-        // Own methods of TimezoneMap.TimezoneMap
+        // Methods
 
         get_timezone_at_coords(lon: number, lat: number): string;
         set_coords(lon: number, lat: number): void;
@@ -1453,7 +1453,7 @@ export namespace TimezoneMap {
     abstract class TimezoneCompletionPrivate {
         static $gtype: GObject.GType<TimezoneCompletionPrivate>;
 
-        // Constructors of TimezoneMap.TimezoneCompletionPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1462,7 +1462,7 @@ export namespace TimezoneMap {
     abstract class TimezoneLocationPrivate {
         static $gtype: GObject.GType<TimezoneLocationPrivate>;
 
-        // Constructors of TimezoneMap.TimezoneLocationPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1471,7 +1471,7 @@ export namespace TimezoneMap {
     abstract class TimezoneMapPrivate {
         static $gtype: GObject.GType<TimezoneMapPrivate>;
 
-        // Constructors of TimezoneMap.TimezoneMapPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }

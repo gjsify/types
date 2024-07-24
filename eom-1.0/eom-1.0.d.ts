@@ -30,7 +30,7 @@ export namespace Eom {
     class ImageError extends GLib.Error {
         static $gtype: GObject.GType<ImageError>;
 
-        // Static fields of Eom.ImageError
+        // Static fields
 
         static SAVE_NOT_LOCAL: number;
         static NOT_LOADED: number;
@@ -40,12 +40,12 @@ export namespace Eom {
         static GENERIC: number;
         static UNKNOWN: number;
 
-        // Constructors of Eom.ImageError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of Eom.ImageError
+        // Static methods
 
         static quark(): GLib.Quark;
     }
@@ -291,17 +291,17 @@ export namespace Eom {
     class Application extends Gtk.Application implements Gio.ActionGroup, Gio.ActionMap {
         static $gtype: GObject.GType<Application>;
 
-        // Own fields of Eom.Application
+        // Fields
 
         base_instance: Gtk.Application;
 
-        // Constructors of Eom.Application
+        // Constructors
 
         constructor(properties?: Partial<Application.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of Eom.Application
+        // Static methods
 
         /**
          * Returns a singleton instance of #EomApplication currently running.
@@ -309,7 +309,7 @@ export namespace Eom {
          */
         static get_instance(): Application;
 
-        // Own methods of Eom.Application
+        // Methods
 
         /**
          * Opens a list of files in a #EomWindow. If an #EomWindow displaying the first
@@ -764,12 +764,12 @@ export namespace Eom {
     class ClipboardHandler extends GObject.InitiallyUnowned {
         static $gtype: GObject.GType<ClipboardHandler>;
 
-        // Own properties of Eom.ClipboardHandler
+        // Properties
 
         get pixbuf(): GdkPixbuf.Pixbuf;
         get uri(): string;
 
-        // Constructors of Eom.ClipboardHandler
+        // Constructors
 
         constructor(properties?: Partial<ClipboardHandler.ConstructorProps>, ...args: any[]);
 
@@ -777,7 +777,7 @@ export namespace Eom {
 
         static ['new'](img: Image): ClipboardHandler;
 
-        // Own methods of Eom.ClipboardHandler
+        // Methods
 
         copy_to_clipboard(clipboard: Gtk.Clipboard): void;
     }
@@ -795,7 +795,7 @@ export namespace Eom {
     class FileChooser extends Gtk.FileChooserDialog implements Atk.ImplementorIface, Gtk.Buildable, Gtk.FileChooser {
         static $gtype: GObject.GType<FileChooser>;
 
-        // Constructors of Eom.FileChooser
+        // Constructors
 
         constructor(properties?: Partial<FileChooser.ConstructorProps>, ...args: any[]);
 
@@ -806,7 +806,7 @@ export namespace Eom {
 
         static ['new'](...args: never[]): any;
 
-        // Own methods of Eom.FileChooser
+        // Methods
 
         get_format(): GdkPixbuf.PixbufFormat;
 
@@ -1910,7 +1910,7 @@ export namespace Eom {
     class Image extends GObject.Object {
         static $gtype: GObject.GType<Image>;
 
-        // Constructors of Eom.Image
+        // Constructors
 
         constructor(properties?: Partial<Image.ConstructorProps>, ...args: any[]);
 
@@ -1920,7 +1920,7 @@ export namespace Eom {
 
         static new_file(file: Gio.File, caption: string): Image;
 
-        // Own signals of Eom.Image
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -1944,7 +1944,7 @@ export namespace Eom {
         connect_after(signal: 'thumbnail-changed', callback: (_source: this) => void): number;
         emit(signal: 'thumbnail-changed'): void;
 
-        // Own static methods of Eom.Image
+        // Static methods
 
         /**
          * Gets the list of supported mimetypes
@@ -1952,7 +1952,7 @@ export namespace Eom {
         static get_supported_mime_types(): string[];
         static is_supported_mime_type(mime_type: string): boolean;
 
-        // Own virtual methods of Eom.Image
+        // Virtual methods
 
         vfunc_changed(): void;
         /**
@@ -1965,7 +1965,7 @@ export namespace Eom {
         vfunc_size_prepared(width: number, height: number): void;
         vfunc_thumbnail_changed(): void;
 
-        // Own methods of Eom.Image
+        // Methods
 
         autorotate(): void;
         cancel_load(): void;
@@ -2051,7 +2051,7 @@ export namespace Eom {
     class ImageSaveInfo extends GObject.Object {
         static $gtype: GObject.GType<ImageSaveInfo>;
 
-        // Own fields of Eom.ImageSaveInfo
+        // Fields
 
         file: Gio.File;
         format: string;
@@ -2062,7 +2062,7 @@ export namespace Eom {
         overwrite: boolean;
         jpeg_quality: number;
 
-        // Constructors of Eom.ImageSaveInfo
+        // Constructors
 
         constructor(properties?: Partial<ImageSaveInfo.ConstructorProps>, ...args: any[]);
 
@@ -2094,18 +2094,18 @@ export namespace Eom {
     class Job extends GObject.Object {
         static $gtype: GObject.GType<Job>;
 
-        // Own fields of Eom.Job
+        // Fields
 
         error: GLib.Error;
         progress: number;
 
-        // Constructors of Eom.Job
+        // Constructors
 
         constructor(properties?: Partial<Job.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of Eom.Job
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -2117,11 +2117,11 @@ export namespace Eom {
         connect_after(signal: 'progress', callback: (_source: this, object: number) => void): number;
         emit(signal: 'progress', object: number): void;
 
-        // Own static methods of Eom.Job
+        // Static methods
 
         static queue_init(): void;
 
-        // Own virtual methods of Eom.Job
+        // Virtual methods
 
         vfunc_finished(): void;
         vfunc_progress(progress: number): void;
@@ -2131,7 +2131,7 @@ export namespace Eom {
          */
         vfunc_run(): void;
 
-        // Own methods of Eom.Job
+        // Methods
 
         finished(): void;
         queue_add_job(): void;
@@ -2153,13 +2153,13 @@ export namespace Eom {
     class JobCopy extends Job {
         static $gtype: GObject.GType<JobCopy>;
 
-        // Own fields of Eom.JobCopy
+        // Fields
 
         images: any[];
         current_pos: number;
         dest: string;
 
-        // Constructors of Eom.JobCopy
+        // Constructors
 
         constructor(properties?: Partial<JobCopy.ConstructorProps>, ...args: any[]);
 
@@ -2177,12 +2177,12 @@ export namespace Eom {
     class JobLoad extends Job {
         static $gtype: GObject.GType<JobLoad>;
 
-        // Own fields of Eom.JobLoad
+        // Fields
 
         image: Image;
         data: ImageData;
 
-        // Constructors of Eom.JobLoad
+        // Constructors
 
         constructor(properties?: Partial<JobLoad.ConstructorProps>, ...args: any[]);
 
@@ -2200,12 +2200,12 @@ export namespace Eom {
     class JobModel extends Job {
         static $gtype: GObject.GType<JobModel>;
 
-        // Own fields of Eom.JobModel
+        // Fields
 
         store: ListStore;
         file_list: any[];
 
-        // Constructors of Eom.JobModel
+        // Constructors
 
         constructor(properties?: Partial<JobModel.ConstructorProps>, ...args: any[]);
 
@@ -2223,13 +2223,13 @@ export namespace Eom {
     class JobSave extends Job {
         static $gtype: GObject.GType<JobSave>;
 
-        // Own fields of Eom.JobSave
+        // Fields
 
         images: any[];
         current_pos: number;
         current_image: Image;
 
-        // Constructors of Eom.JobSave
+        // Constructors
 
         constructor(properties?: Partial<JobSave.ConstructorProps>, ...args: any[]);
 
@@ -2247,11 +2247,11 @@ export namespace Eom {
     class JobSaveAs extends JobSave {
         static $gtype: GObject.GType<JobSaveAs>;
 
-        // Own fields of Eom.JobSaveAs
+        // Fields
 
         file: Gio.File;
 
-        // Constructors of Eom.JobSaveAs
+        // Constructors
 
         constructor(properties?: Partial<JobSaveAs.ConstructorProps>, ...args: any[]);
 
@@ -2272,12 +2272,12 @@ export namespace Eom {
     class JobThumbnail extends Job {
         static $gtype: GObject.GType<JobThumbnail>;
 
-        // Own fields of Eom.JobThumbnail
+        // Fields
 
         image: Image;
         thumbnail: GdkPixbuf.Pixbuf;
 
-        // Constructors of Eom.JobThumbnail
+        // Constructors
 
         constructor(properties?: Partial<JobThumbnail.ConstructorProps>, ...args: any[]);
 
@@ -2295,12 +2295,12 @@ export namespace Eom {
     class JobTransform extends Job {
         static $gtype: GObject.GType<JobTransform>;
 
-        // Own fields of Eom.JobTransform
+        // Fields
 
         images: any[];
         trans: Transform;
 
-        // Constructors of Eom.JobTransform
+        // Constructors
 
         constructor(properties?: Partial<JobTransform.ConstructorProps>, ...args: any[]);
 
@@ -2327,7 +2327,7 @@ export namespace Eom {
     {
         static $gtype: GObject.GType<ListStore>;
 
-        // Constructors of Eom.ListStore
+        // Constructors
 
         constructor(properties?: Partial<ListStore.ConstructorProps>, ...args: any[]);
 
@@ -2337,7 +2337,7 @@ export namespace Eom {
 
         static new_from_glist(list: Image[]): ListStore;
 
-        // Own methods of Eom.ListStore
+        // Methods
 
         /**
          * Adds a list of #GFile's to `store`. The given list
@@ -3623,7 +3623,7 @@ export namespace Eom {
     class PropertiesDialog extends Gtk.Dialog implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<PropertiesDialog>;
 
-        // Own properties of Eom.PropertiesDialog
+        // Properties
 
         get netbook_mode(): boolean;
         set netbook_mode(val: boolean);
@@ -3631,11 +3631,11 @@ export namespace Eom {
         set netbookMode(val: boolean);
         get thumbview(): ThumbView;
 
-        // Own fields of Eom.PropertiesDialog
+        // Fields
 
         dialog: Gtk.Dialog;
 
-        // Constructors of Eom.PropertiesDialog
+        // Constructors
 
         constructor(properties?: Partial<PropertiesDialog.ConstructorProps>, ...args: any[]);
 
@@ -3651,7 +3651,7 @@ export namespace Eom {
 
         static ['new'](...args: never[]): any;
 
-        // Own methods of Eom.PropertiesDialog
+        // Methods
 
         set_netbook_mode(enable: boolean): void;
         set_page(page: PropertiesDialogPage): void;
@@ -4097,7 +4097,7 @@ export namespace Eom {
     class ScrollView extends Gtk.Grid implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<ScrollView>;
 
-        // Own properties of Eom.ScrollView
+        // Properties
 
         get antialiasing_in(): boolean;
         set antialiasing_in(val: boolean);
@@ -4175,11 +4175,11 @@ export namespace Eom {
         get zoomMultiplier(): number;
         set zoomMultiplier(val: number);
 
-        // Own fields of Eom.ScrollView
+        // Fields
 
         base_instance: Gtk.Grid;
 
-        // Constructors of Eom.ScrollView
+        // Constructors
 
         constructor(properties?: Partial<ScrollView.ConstructorProps>, ...args: any[]);
 
@@ -4187,7 +4187,7 @@ export namespace Eom {
 
         static ['new'](): ScrollView;
 
-        // Own signals of Eom.ScrollView
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -4196,11 +4196,11 @@ export namespace Eom {
         connect_after(signal: 'zoom-changed', callback: (_source: this, object: number) => void): number;
         emit(signal: 'zoom-changed', object: number): void;
 
-        // Own virtual methods of Eom.ScrollView
+        // Virtual methods
 
         vfunc_zoom_changed(zoom: number): void;
 
-        // Own methods of Eom.ScrollView
+        // Methods
 
         /**
          * Gets the the currently displayed #EomImage.
@@ -4676,18 +4676,18 @@ export namespace Eom {
     class Sidebar extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<Sidebar>;
 
-        // Own properties of Eom.Sidebar
+        // Properties
 
         get current_page(): Gtk.Widget;
         set current_page(val: Gtk.Widget);
         get currentPage(): Gtk.Widget;
         set currentPage(val: Gtk.Widget);
 
-        // Own fields of Eom.Sidebar
+        // Fields
 
         base_instance: Gtk.Box;
 
-        // Constructors of Eom.Sidebar
+        // Constructors
 
         constructor(properties?: Partial<Sidebar.ConstructorProps>, ...args: any[]);
 
@@ -4695,7 +4695,7 @@ export namespace Eom {
 
         static ['new'](): Sidebar;
 
-        // Own signals of Eom.Sidebar
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -4707,12 +4707,12 @@ export namespace Eom {
         connect_after(signal: 'page-removed', callback: (_source: this, object: Gtk.Widget) => void): number;
         emit(signal: 'page-removed', object: Gtk.Widget): void;
 
-        // Own virtual methods of Eom.Sidebar
+        // Virtual methods
 
         vfunc_page_added(main_widget: Gtk.Widget): void;
         vfunc_page_removed(main_widget: Gtk.Widget): void;
 
-        // Own methods of Eom.Sidebar
+        // Methods
 
         add_page(title: string, main_widget: Gtk.Widget): void;
         get_n_pages(): number;
@@ -5153,7 +5153,7 @@ export namespace Eom {
     class Statusbar extends Gtk.Statusbar implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<Statusbar>;
 
-        // Constructors of Eom.Statusbar
+        // Constructors
 
         constructor(properties?: Partial<Statusbar.ConstructorProps>, ...args: any[]);
 
@@ -5161,7 +5161,7 @@ export namespace Eom {
 
         static ['new'](): Statusbar;
 
-        // Own methods of Eom.Statusbar
+        // Methods
 
         set_image_number(num: number, tot: number): void;
         set_progress(progress: number): void;
@@ -5587,7 +5587,7 @@ export namespace Eom {
     class ThumbNav extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<ThumbNav>;
 
-        // Own properties of Eom.ThumbNav
+        // Properties
 
         get mode(): number;
         set mode(val: number);
@@ -5597,11 +5597,11 @@ export namespace Eom {
         set showButtons(val: boolean);
         get thumbview(): ThumbView;
 
-        // Own fields of Eom.ThumbNav
+        // Fields
 
         base_instance: Gtk.Box;
 
-        // Constructors of Eom.ThumbNav
+        // Constructors
 
         constructor(properties?: Partial<ThumbNav.ConstructorProps>, ...args: any[]);
 
@@ -5612,7 +5612,7 @@ export namespace Eom {
 
         static ['new'](...args: never[]): any;
 
-        // Own methods of Eom.ThumbNav
+        // Methods
 
         /**
          * Gets the navigation mode in `nav`.
@@ -6074,11 +6074,11 @@ export namespace Eom {
     {
         static $gtype: GObject.GType<ThumbView>;
 
-        // Own fields of Eom.ThumbView
+        // Fields
 
         icon_view: Gtk.IconView;
 
-        // Constructors of Eom.ThumbView
+        // Constructors
 
         constructor(properties?: Partial<ThumbView.ConstructorProps>, ...args: any[]);
 
@@ -6086,7 +6086,7 @@ export namespace Eom {
 
         static ['new'](): ThumbView;
 
-        // Own methods of Eom.ThumbView
+        // Methods
 
         /**
          * Returns the first selected image. Note that the returned #EomImage
@@ -6820,7 +6820,7 @@ export namespace Eom {
     class Transform extends GObject.Object {
         static $gtype: GObject.GType<Transform>;
 
-        // Constructors of Eom.Transform
+        // Constructors
 
         constructor(properties?: Partial<Transform.ConstructorProps>, ...args: any[]);
 
@@ -6834,7 +6834,7 @@ export namespace Eom {
 
         static rotate_new(degree: number): Transform;
 
-        // Own methods of Eom.Transform
+        // Methods
 
         /**
          * Applies the transformation in `trans` to `pixbuf,` setting its progress in `job`.
@@ -6884,7 +6884,7 @@ export namespace Eom {
     {
         static $gtype: GObject.GType<Window>;
 
-        // Own properties of Eom.Window
+        // Properties
 
         /**
          * Determines the position of the image collection in the window
@@ -6921,11 +6921,11 @@ export namespace Eom {
          */
         get startupFlags(): StartupFlags;
 
-        // Own fields of Eom.Window
+        // Fields
 
         win: Gtk.ApplicationWindow;
 
-        // Constructors of Eom.Window
+        // Constructors
 
         constructor(properties?: Partial<Window.ConstructorProps>, ...args: any[]);
 
@@ -6936,7 +6936,7 @@ export namespace Eom {
 
         static ['new'](...args: never[]): any;
 
-        // Own signals of Eom.Window
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -6945,11 +6945,11 @@ export namespace Eom {
         connect_after(signal: 'prepared', callback: (_source: this) => void): number;
         emit(signal: 'prepared'): void;
 
-        // Own virtual methods of Eom.Window
+        // Virtual methods
 
         vfunc_prepared(): void;
 
-        // Own methods of Eom.Window
+        // Methods
 
         /**
          * Gets the image currently displayed in `window` or %NULL if
@@ -7994,7 +7994,7 @@ export namespace Eom {
     abstract class ApplicationPrivate {
         static $gtype: GObject.GType<ApplicationPrivate>;
 
-        // Constructors of Eom.ApplicationPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -8003,7 +8003,7 @@ export namespace Eom {
     abstract class ClipboardHandlerPrivate {
         static $gtype: GObject.GType<ClipboardHandlerPrivate>;
 
-        // Constructors of Eom.ClipboardHandlerPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -8012,7 +8012,7 @@ export namespace Eom {
     abstract class FileChooserPrivate {
         static $gtype: GObject.GType<FileChooserPrivate>;
 
-        // Constructors of Eom.FileChooserPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -8021,7 +8021,7 @@ export namespace Eom {
     abstract class ImagePrivate {
         static $gtype: GObject.GType<ImagePrivate>;
 
-        // Constructors of Eom.ImagePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -8039,7 +8039,7 @@ export namespace Eom {
     abstract class ListStorePrivate {
         static $gtype: GObject.GType<ListStorePrivate>;
 
-        // Constructors of Eom.ListStorePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -8048,7 +8048,7 @@ export namespace Eom {
     abstract class PropertiesDialogPrivate {
         static $gtype: GObject.GType<PropertiesDialogPrivate>;
 
-        // Constructors of Eom.PropertiesDialogPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -8057,7 +8057,7 @@ export namespace Eom {
     abstract class ScrollViewPrivate {
         static $gtype: GObject.GType<ScrollViewPrivate>;
 
-        // Constructors of Eom.ScrollViewPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -8066,7 +8066,7 @@ export namespace Eom {
     abstract class SidebarPrivate {
         static $gtype: GObject.GType<SidebarPrivate>;
 
-        // Constructors of Eom.SidebarPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -8075,7 +8075,7 @@ export namespace Eom {
     abstract class StatusbarPrivate {
         static $gtype: GObject.GType<StatusbarPrivate>;
 
-        // Constructors of Eom.StatusbarPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -8084,7 +8084,7 @@ export namespace Eom {
     abstract class ThumbNavPrivate {
         static $gtype: GObject.GType<ThumbNavPrivate>;
 
-        // Constructors of Eom.ThumbNavPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -8093,7 +8093,7 @@ export namespace Eom {
     abstract class ThumbViewPrivate {
         static $gtype: GObject.GType<ThumbViewPrivate>;
 
-        // Constructors of Eom.ThumbViewPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -8102,7 +8102,7 @@ export namespace Eom {
     abstract class TransformPrivate {
         static $gtype: GObject.GType<TransformPrivate>;
 
-        // Constructors of Eom.TransformPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -8110,7 +8110,7 @@ export namespace Eom {
     abstract class URIConverter {
         static $gtype: GObject.GType<URIConverter>;
 
-        // Constructors of Eom.URIConverter
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -8120,7 +8120,7 @@ export namespace Eom {
     abstract class WindowPrivate {
         static $gtype: GObject.GType<WindowPrivate>;
 
-        // Constructors of Eom.WindowPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -8138,7 +8138,7 @@ export namespace Eom {
         prototype: ApplicationActivatable;
     }
     interface ApplicationActivatable extends GObject.Object {
-        // Own properties of Eom.ApplicationActivatable
+        // Properties
 
         /**
          * This is the #EomApplication this #EomApplicationActivatable instance
@@ -8146,12 +8146,12 @@ export namespace Eom {
          */
         get app(): Application;
 
-        // Own methods of Eom.ApplicationActivatable
+        // Methods
 
         activate(): void;
         deactivate(): void;
 
-        // Own virtual methods of Eom.ApplicationActivatable
+        // Virtual methods
 
         vfunc_activate(): void;
         vfunc_deactivate(): void;
@@ -8172,7 +8172,7 @@ export namespace Eom {
         prototype: WindowActivatable;
     }
     interface WindowActivatable extends GObject.Object {
-        // Own properties of Eom.WindowActivatable
+        // Properties
 
         /**
          * This is the #EomWindow this #EomWindowActivatable instance
@@ -8180,12 +8180,12 @@ export namespace Eom {
          */
         get window(): Window;
 
-        // Own methods of Eom.WindowActivatable
+        // Methods
 
         activate(): void;
         deactivate(): void;
 
-        // Own virtual methods of Eom.WindowActivatable
+        // Virtual methods
 
         vfunc_activate(): void;
         vfunc_deactivate(): void;

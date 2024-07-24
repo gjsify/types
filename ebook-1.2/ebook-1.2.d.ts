@@ -102,14 +102,14 @@ export namespace EBook {
     class BookClient extends EDataServer.Client implements Gio.AsyncInitable<BookClient>, Gio.Initable {
         static $gtype: GObject.GType<BookClient>;
 
-        // Own properties of EBook.BookClient
+        // Properties
 
         /**
          * The currently active locale for this addressbook.
          */
         get locale(): string;
 
-        // Constructors of EBook.BookClient
+        // Constructors
 
         constructor(properties?: Partial<BookClient.ConstructorProps>, ...args: any[]);
 
@@ -117,7 +117,7 @@ export namespace EBook {
 
         static ['new'](source: EDataServer.Source): BookClient;
 
-        // Own static methods of EBook.BookClient
+        // Static methods
 
         /**
          * Asynchronously creates a new #EBookClient for `source`.
@@ -241,7 +241,7 @@ export namespace EBook {
          */
         static is_self(contact: EBookContacts.Contact): boolean;
 
-        // Own methods of EBook.BookClient
+        // Methods
 
         /**
          * Adds `contact` to `client`.
@@ -1367,7 +1367,7 @@ export namespace EBook {
     class BookClientCursor extends GObject.Object implements Gio.Initable {
         static $gtype: GObject.GType<BookClientCursor>;
 
-        // Own properties of EBook.BookClientCursor
+        // Properties
 
         /**
          * The currently <link linkend="cursor-alphabet">active alphabet</link>.
@@ -1468,13 +1468,13 @@ export namespace EBook {
          */
         get total(): number;
 
-        // Constructors of EBook.BookClientCursor
+        // Constructors
 
         constructor(properties?: Partial<BookClientCursor.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of EBook.BookClientCursor
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -1483,14 +1483,14 @@ export namespace EBook {
         connect_after(signal: 'refresh', callback: (_source: this) => void): number;
         emit(signal: 'refresh'): void;
 
-        // Own virtual methods of EBook.BookClientCursor
+        // Virtual methods
 
         /**
          * The class handler for the #EBookClientCursor::refresh signal
          */
         vfunc_refresh(): void;
 
-        // Own methods of EBook.BookClientCursor
+        // Methods
 
         /**
          * Fetches the array of displayable labels for the <link linkend="cursor-alphabet">active alphabet</link>.
@@ -2262,7 +2262,7 @@ export namespace EBook {
     class BookClientView extends GObject.Object implements Gio.Initable {
         static $gtype: GObject.GType<BookClientView>;
 
-        // Own properties of EBook.BookClientView
+        // Properties
 
         get client(): BookClient;
         get connection(): Gio.DBusConnection;
@@ -2290,13 +2290,13 @@ export namespace EBook {
         get object_path(): string;
         get objectPath(): string;
 
-        // Constructors of EBook.BookClientView
+        // Constructors
 
         constructor(properties?: Partial<BookClientView.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of EBook.BookClientView
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -2329,7 +2329,7 @@ export namespace EBook {
         connect_after(signal: 'progress', callback: (_source: this, object: number, p0: string) => void): number;
         emit(signal: 'progress', object: number, p0: string): void;
 
-        // Own virtual methods of EBook.BookClientView
+        // Virtual methods
 
         /**
          * Notification that loading a view has completed, after calling e_book_client_view_start()
@@ -2343,7 +2343,7 @@ export namespace EBook {
          */
         vfunc_progress(percent: number, message: string): void;
 
-        // Own methods of EBook.BookClientView
+        // Methods
 
         /**
          * Asynchronously reads `range_length` contacts from index `range_start`.
@@ -2973,11 +2973,11 @@ export namespace EBook {
     class Destination extends GObject.Object {
         static $gtype: GObject.GType<Destination>;
 
-        // Own fields of EBook.Destination
+        // Fields
 
         object: GObject.Object;
 
-        // Constructors of EBook.Destination
+        // Constructors
 
         constructor(properties?: Partial<Destination.ConstructorProps>, ...args: any[]);
 
@@ -2985,7 +2985,7 @@ export namespace EBook {
 
         static ['new'](): Destination;
 
-        // Own signals of EBook.Destination
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -2994,7 +2994,7 @@ export namespace EBook {
         connect_after(signal: 'changed', callback: (_source: this) => void): number;
         emit(signal: 'changed'): void;
 
-        // Own static methods of EBook.Destination
+        // Static methods
 
         /**
          * Exports multiple #EDestination elements to a single XML document.
@@ -3024,11 +3024,11 @@ export namespace EBook {
          */
         static importv(str: string): Destination[];
 
-        // Own virtual methods of EBook.Destination
+        // Virtual methods
 
         vfunc_changed(): void;
 
-        // Own methods of EBook.Destination
+        // Methods
 
         /**
          * Creates a new #EDestination identical to `dest`.
@@ -3208,7 +3208,7 @@ export namespace EBook {
     abstract class BookClientCursorPrivate {
         static $gtype: GObject.GType<BookClientCursorPrivate>;
 
-        // Constructors of EBook.BookClientCursorPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3216,7 +3216,7 @@ export namespace EBook {
     abstract class BookClientPrivate {
         static $gtype: GObject.GType<BookClientPrivate>;
 
-        // Constructors of EBook.BookClientPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3225,7 +3225,7 @@ export namespace EBook {
     abstract class BookClientViewPrivate {
         static $gtype: GObject.GType<BookClientViewPrivate>;
 
-        // Constructors of EBook.BookClientViewPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3234,7 +3234,7 @@ export namespace EBook {
     abstract class DestinationPrivate {
         static $gtype: GObject.GType<DestinationPrivate>;
 
-        // Constructors of EBook.DestinationPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }

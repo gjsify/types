@@ -768,7 +768,7 @@ export namespace Clutter {
     class ImageError extends GLib.Error {
         static $gtype: GObject.GType<ImageError>;
 
-        // Static fields of Clutter.ImageError
+        // Static fields
 
         /**
          * Invalid data passed to the
@@ -776,12 +776,12 @@ export namespace Clutter {
          */
         static DATA: number;
 
-        // Constructors of Clutter.ImageError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of Clutter.ImageError
+        // Static methods
 
         static quark(): GLib.Quark;
     }
@@ -792,7 +792,7 @@ export namespace Clutter {
     class InitError extends GLib.Error {
         static $gtype: GObject.GType<InitError>;
 
-        // Static fields of Clutter.InitError
+        // Static fields
 
         /**
          * Initialisation successful
@@ -815,12 +815,12 @@ export namespace Clutter {
          */
         static ERROR_INTERNAL: number;
 
-        // Constructors of Clutter.InitError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of Clutter.InitError
+        // Static methods
 
         static quark(): GLib.Quark;
     }
@@ -1244,7 +1244,7 @@ export namespace Clutter {
     class ScriptError extends GLib.Error {
         static $gtype: GObject.GType<ScriptError>;
 
-        // Static fields of Clutter.ScriptError
+        // Static fields
 
         /**
          * Type function not found
@@ -1260,12 +1260,12 @@ export namespace Clutter {
          */
         static VALUE: number;
 
-        // Constructors of Clutter.ScriptError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of Clutter.ScriptError
+        // Static methods
 
         static quark(): GLib.Quark;
     }
@@ -1350,7 +1350,7 @@ export namespace Clutter {
     class ShaderError extends GLib.Error {
         static $gtype: GObject.GType<ShaderError>;
 
-        // Static fields of Clutter.ShaderError
+        // Static fields
 
         /**
          * No ASM shaders support
@@ -1365,12 +1365,12 @@ export namespace Clutter {
          */
         static COMPILE: number;
 
-        // Constructors of Clutter.ShaderError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of Clutter.ShaderError
+        // Static methods
 
         static quark(): GLib.Quark;
     }
@@ -1707,7 +1707,7 @@ export namespace Clutter {
     class TextureError extends GLib.Error {
         static $gtype: GObject.GType<TextureError>;
 
-        // Static fields of Clutter.TextureError
+        // Static fields
 
         /**
          * OOM condition
@@ -1725,12 +1725,12 @@ export namespace Clutter {
          */
         static BAD_FORMAT: number;
 
-        // Constructors of Clutter.TextureError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of Clutter.TextureError
+        // Static methods
 
         static quark(): GLib.Quark;
     }
@@ -8216,7 +8216,7 @@ export namespace Clutter {
     abstract class Action extends ActorMeta {
         static $gtype: GObject.GType<Action>;
 
-        // Constructors of Clutter.Action
+        // Constructors
 
         constructor(properties?: Partial<Action.ConstructorProps>, ...args: any[]);
 
@@ -8491,7 +8491,7 @@ export namespace Clutter {
     class Actor extends GObject.InitiallyUnowned implements Atk.ImplementorIface, Animatable, Container, Scriptable {
         static $gtype: GObject.GType<Actor>;
 
-        // Own properties of Clutter.Actor
+        // Properties
 
         /**
          * Adds a #ClutterAction to the actor
@@ -9691,11 +9691,11 @@ export namespace Clutter {
         get zPosition(): number;
         set zPosition(val: number);
 
-        // Own fields of Clutter.Actor
+        // Fields
 
         flags: number;
 
-        // Constructors of Clutter.Actor
+        // Constructors
 
         constructor(properties?: Partial<Actor.ConstructorProps>, ...args: any[]);
 
@@ -9703,7 +9703,7 @@ export namespace Clutter {
 
         static ['new'](): Actor;
 
-        // Own signals of Clutter.Actor
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -9799,7 +9799,7 @@ export namespace Clutter {
         connect_after(signal: 'unrealize', callback: (_source: this) => void): number;
         emit(signal: 'unrealize'): void;
 
-        // Own virtual methods of Clutter.Actor
+        // Virtual methods
 
         /**
          * Assigns the size of a #ClutterActor from the given `box`.
@@ -10041,7 +10041,7 @@ export namespace Clutter {
          */
         vfunc_unrealize(): void;
 
-        // Own methods of Clutter.Actor
+        // Methods
 
         /**
          * Adds `action` to the list of actions applied to `self`
@@ -13386,7 +13386,7 @@ export namespace Clutter {
     abstract class ActorMeta extends GObject.InitiallyUnowned {
         static $gtype: GObject.GType<ActorMeta>;
 
-        // Own properties of Clutter.ActorMeta
+        // Properties
 
         /**
          * The #ClutterActor attached to the #ClutterActorMeta instance
@@ -13403,13 +13403,13 @@ export namespace Clutter {
         get name(): string;
         set name(val: string);
 
-        // Constructors of Clutter.ActorMeta
+        // Constructors
 
         constructor(properties?: Partial<ActorMeta.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of Clutter.ActorMeta
+        // Virtual methods
 
         /**
          * Virtual function, called when `meta` is attached or detached
@@ -13418,7 +13418,7 @@ export namespace Clutter {
          */
         vfunc_set_actor(actor?: Actor | null): void;
 
-        // Own methods of Clutter.ActorMeta
+        // Methods
 
         /**
          * Retrieves a pointer to the #ClutterActor that owns `meta`
@@ -13467,7 +13467,7 @@ export namespace Clutter {
     class AlignConstraint extends Constraint {
         static $gtype: GObject.GType<AlignConstraint>;
 
-        // Own properties of Clutter.AlignConstraint
+        // Properties
 
         /**
          * The axis to be used to compute the alignment
@@ -13498,7 +13498,7 @@ export namespace Clutter {
         get source(): Actor;
         set source(val: Actor);
 
-        // Constructors of Clutter.AlignConstraint
+        // Constructors
 
         constructor(properties?: Partial<AlignConstraint.ConstructorProps>, ...args: any[]);
 
@@ -13506,7 +13506,7 @@ export namespace Clutter {
 
         static ['new'](source: Actor | null, axis: AlignAxis, factor: number): AlignConstraint;
 
-        // Own methods of Clutter.AlignConstraint
+        // Methods
 
         /**
          * Retrieves the value set using clutter_align_constraint_set_align_axis()
@@ -13568,7 +13568,7 @@ export namespace Clutter {
     class Alpha extends GObject.InitiallyUnowned implements Scriptable {
         static $gtype: GObject.GType<Alpha>;
 
-        // Own properties of Clutter.Alpha
+        // Properties
 
         /**
          * The alpha value as computed by the alpha function. The linear
@@ -13593,7 +13593,7 @@ export namespace Clutter {
         get timeline(): Timeline;
         set timeline(val: Timeline);
 
-        // Constructors of Clutter.Alpha
+        // Constructors
 
         constructor(properties?: Partial<Alpha.ConstructorProps>, ...args: any[]);
 
@@ -13605,7 +13605,7 @@ export namespace Clutter {
 
         static new_with_func(timeline: Timeline, func: AlphaFunc): Alpha;
 
-        // Own static methods of Clutter.Alpha
+        // Static methods
 
         /**
          * #GClosure variant of clutter_alpha_register_func().
@@ -13618,7 +13618,7 @@ export namespace Clutter {
          */
         static register_func(closure: GObject.Closure): number;
 
-        // Own methods of Clutter.Alpha
+        // Methods
 
         /**
          * Query the current alpha value.
@@ -14160,7 +14160,7 @@ export namespace Clutter {
     class Animation extends GObject.Object implements Scriptable {
         static $gtype: GObject.GType<Animation>;
 
-        // Own properties of Clutter.Animation
+        // Properties
 
         /**
          * The #ClutterAlpha used by the animation.
@@ -14195,7 +14195,7 @@ export namespace Clutter {
         get timeline(): Timeline;
         set timeline(val: Timeline);
 
-        // Constructors of Clutter.Animation
+        // Constructors
 
         constructor(properties?: Partial<Animation.ConstructorProps>, ...args: any[]);
 
@@ -14203,7 +14203,7 @@ export namespace Clutter {
 
         static ['new'](): Animation;
 
-        // Own signals of Clutter.Animation
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -14215,7 +14215,7 @@ export namespace Clutter {
         connect_after(signal: 'started', callback: (_source: this) => void): number;
         emit(signal: 'started'): void;
 
-        // Own virtual methods of Clutter.Animation
+        // Virtual methods
 
         /**
          * Emits the ::completed signal on `animation`
@@ -14230,7 +14230,7 @@ export namespace Clutter {
         vfunc_completed(): void;
         vfunc_started(): void;
 
-        // Own methods of Clutter.Animation
+        // Methods
 
         /**
          * Adds a single property with name `property_name` to the
@@ -14864,7 +14864,7 @@ export namespace Clutter {
     class Animator extends GObject.Object implements Scriptable {
         static $gtype: GObject.GType<Animator>;
 
-        // Own properties of Clutter.Animator
+        // Properties
 
         /**
          * The duration of the #ClutterTimeline used by the #ClutterAnimator
@@ -14879,7 +14879,7 @@ export namespace Clutter {
         get timeline(): Timeline;
         set timeline(val: Timeline);
 
-        // Constructors of Clutter.Animator
+        // Constructors
 
         constructor(properties?: Partial<Animator.ConstructorProps>, ...args: any[]);
 
@@ -14887,7 +14887,7 @@ export namespace Clutter {
 
         static ['new'](): Animator;
 
-        // Own methods of Clutter.Animator
+        // Methods
 
         /**
          * Compute the value for a managed property at a given progress.
@@ -15495,13 +15495,13 @@ export namespace Clutter {
     abstract class Backend extends GObject.Object {
         static $gtype: GObject.GType<Backend>;
 
-        // Constructors of Clutter.Backend
+        // Constructors
 
         constructor(properties?: Partial<Backend.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of Clutter.Backend
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -15516,7 +15516,7 @@ export namespace Clutter {
         connect_after(signal: 'settings-changed', callback: (_source: this) => void): number;
         emit(signal: 'settings-changed'): void;
 
-        // Own methods of Clutter.Backend
+        // Methods
 
         /**
          * Retrieves the distance used to verify a double click event
@@ -15623,7 +15623,7 @@ export namespace Clutter {
     abstract class Behaviour extends GObject.Object implements Scriptable {
         static $gtype: GObject.GType<Behaviour>;
 
-        // Own properties of Clutter.Behaviour
+        // Properties
 
         /**
          * The #ClutterAlpha object used to drive this behaviour. A #ClutterAlpha
@@ -15634,13 +15634,13 @@ export namespace Clutter {
         get alpha(): Alpha;
         set alpha(val: Alpha);
 
-        // Constructors of Clutter.Behaviour
+        // Constructors
 
         constructor(properties?: Partial<Behaviour.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of Clutter.Behaviour
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -15652,13 +15652,13 @@ export namespace Clutter {
         connect_after(signal: 'removed', callback: (_source: this, actor: Actor) => void): number;
         emit(signal: 'removed', actor: Actor): void;
 
-        // Own virtual methods of Clutter.Behaviour
+        // Virtual methods
 
         vfunc_alpha_notify(alpha_value: number): void;
         vfunc_applied(actor: Actor): void;
         vfunc_removed(actor: Actor): void;
 
-        // Own methods of Clutter.Behaviour
+        // Methods
 
         /**
          * Calls `func` for every actor driven by `behave`.
@@ -16209,7 +16209,7 @@ export namespace Clutter {
     class BehaviourDepth extends Behaviour implements Scriptable {
         static $gtype: GObject.GType<BehaviourDepth>;
 
-        // Own properties of Clutter.BehaviourDepth
+        // Properties
 
         /**
          * End depth level to apply to the actors.
@@ -16232,7 +16232,7 @@ export namespace Clutter {
         get depthStart(): number;
         set depthStart(val: number);
 
-        // Constructors of Clutter.BehaviourDepth
+        // Constructors
 
         constructor(properties?: Partial<BehaviourDepth.ConstructorProps>, ...args: any[]);
 
@@ -16240,7 +16240,7 @@ export namespace Clutter {
 
         static ['new'](alpha: Alpha | null, depth_start: number, depth_end: number): BehaviourDepth;
 
-        // Own methods of Clutter.BehaviourDepth
+        // Methods
 
         /**
          * Gets the boundaries of the `behaviour`
@@ -16748,7 +16748,7 @@ export namespace Clutter {
     class BehaviourEllipse extends Behaviour implements Scriptable {
         static $gtype: GObject.GType<BehaviourEllipse>;
 
-        // Own properties of Clutter.BehaviourEllipse
+        // Properties
 
         /**
          * The final angle to where the rotation should end.
@@ -16821,7 +16821,7 @@ export namespace Clutter {
         get width(): number;
         set width(val: number);
 
-        // Constructors of Clutter.BehaviourEllipse
+        // Constructors
 
         constructor(properties?: Partial<BehaviourEllipse.ConstructorProps>, ...args: any[]);
 
@@ -16838,7 +16838,7 @@ export namespace Clutter {
             end: number,
         ): BehaviourEllipse;
 
-        // Own methods of Clutter.BehaviourEllipse
+        // Methods
 
         /**
          * Gets the at which movements ends.
@@ -17411,7 +17411,7 @@ export namespace Clutter {
     class BehaviourOpacity extends Behaviour implements Scriptable {
         static $gtype: GObject.GType<BehaviourOpacity>;
 
-        // Own properties of Clutter.BehaviourOpacity
+        // Properties
 
         /**
          * Final opacity level of the behaviour.
@@ -17434,7 +17434,7 @@ export namespace Clutter {
         get opacityStart(): number;
         set opacityStart(val: number);
 
-        // Constructors of Clutter.BehaviourOpacity
+        // Constructors
 
         constructor(properties?: Partial<BehaviourOpacity.ConstructorProps>, ...args: any[]);
 
@@ -17442,7 +17442,7 @@ export namespace Clutter {
 
         static ['new'](alpha: Alpha | null, opacity_start: number, opacity_end: number): BehaviourOpacity;
 
-        // Own methods of Clutter.BehaviourOpacity
+        // Methods
 
         /**
          * Gets the initial and final levels of the opacity applied by `behaviour`
@@ -17945,12 +17945,12 @@ export namespace Clutter {
     class BehaviourPath extends Behaviour implements Scriptable {
         static $gtype: GObject.GType<BehaviourPath>;
 
-        // Own properties of Clutter.BehaviourPath
+        // Properties
 
         get path(): Path;
         set path(val: Path);
 
-        // Constructors of Clutter.BehaviourPath
+        // Constructors
 
         constructor(properties?: Partial<BehaviourPath.ConstructorProps>, ...args: any[]);
 
@@ -17962,7 +17962,7 @@ export namespace Clutter {
 
         static new_with_knots(alpha: Alpha | null, knots: Knot[]): BehaviourPath;
 
-        // Own signals of Clutter.BehaviourPath
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -17971,11 +17971,11 @@ export namespace Clutter {
         connect_after(signal: 'knot-reached', callback: (_source: this, knot_num: number) => void): number;
         emit(signal: 'knot-reached', knot_num: number): void;
 
-        // Own virtual methods of Clutter.BehaviourPath
+        // Virtual methods
 
         vfunc_knot_reached(knot_num: number): void;
 
-        // Own methods of Clutter.BehaviourPath
+        // Methods
 
         /**
          * Get the current path of the behaviour
@@ -18483,7 +18483,7 @@ export namespace Clutter {
     class BehaviourRotate extends Behaviour implements Scriptable {
         static $gtype: GObject.GType<BehaviourRotate>;
 
-        // Own properties of Clutter.BehaviourRotate
+        // Properties
 
         /**
          * The final angle to where the rotation should end.
@@ -18546,7 +18546,7 @@ export namespace Clutter {
         get direction(): RotateDirection;
         set direction(val: RotateDirection);
 
-        // Constructors of Clutter.BehaviourRotate
+        // Constructors
 
         constructor(properties?: Partial<BehaviourRotate.ConstructorProps>, ...args: any[]);
 
@@ -18560,7 +18560,7 @@ export namespace Clutter {
             angle_end: number,
         ): BehaviourRotate;
 
-        // Own methods of Clutter.BehaviourRotate
+        // Methods
 
         /**
          * Retrieves the #ClutterRotateAxis used by the rotate behaviour.
@@ -19096,7 +19096,7 @@ export namespace Clutter {
     class BehaviourScale extends Behaviour implements Scriptable {
         static $gtype: GObject.GType<BehaviourScale>;
 
-        // Own properties of Clutter.BehaviourScale
+        // Properties
 
         /**
          * The final scaling factor on the X axis for the actors.
@@ -19139,7 +19139,7 @@ export namespace Clutter {
         get yScaleStart(): number;
         set yScaleStart(val: number);
 
-        // Constructors of Clutter.BehaviourScale
+        // Constructors
 
         constructor(properties?: Partial<BehaviourScale.ConstructorProps>, ...args: any[]);
 
@@ -19153,7 +19153,7 @@ export namespace Clutter {
             y_scale_end: number,
         ): BehaviourScale;
 
-        // Own methods of Clutter.BehaviourScale
+        // Methods
 
         /**
          * Retrieves the bounds used by scale behaviour.
@@ -19653,7 +19653,7 @@ export namespace Clutter {
     class BinLayout extends LayoutManager {
         static $gtype: GObject.GType<BinLayout>;
 
-        // Own properties of Clutter.BinLayout
+        // Properties
 
         /**
          * The default horizontal alignment policy for actors managed
@@ -19680,7 +19680,7 @@ export namespace Clutter {
         get yAlign(): BinAlignment;
         set yAlign(val: BinAlignment);
 
-        // Constructors of Clutter.BinLayout
+        // Constructors
 
         constructor(properties?: Partial<BinLayout.ConstructorProps>, ...args: any[]);
 
@@ -19688,7 +19688,7 @@ export namespace Clutter {
 
         static ['new'](x_align: BinAlignment, y_align: BinAlignment): BinLayout;
 
-        // Own methods of Clutter.BinLayout
+        // Methods
 
         /**
          * Adds a #ClutterActor to the container using `self` and
@@ -19742,7 +19742,7 @@ export namespace Clutter {
     class BindConstraint extends Constraint {
         static $gtype: GObject.GType<BindConstraint>;
 
-        // Own properties of Clutter.BindConstraint
+        // Properties
 
         /**
          * The coordinate to be bound
@@ -19763,7 +19763,7 @@ export namespace Clutter {
         get source(): Actor;
         set source(val: Actor);
 
-        // Constructors of Clutter.BindConstraint
+        // Constructors
 
         constructor(properties?: Partial<BindConstraint.ConstructorProps>, ...args: any[]);
 
@@ -19771,7 +19771,7 @@ export namespace Clutter {
 
         static ['new'](source: Actor | null, coordinate: BindCoordinate, offset: number): BindConstraint;
 
-        // Own methods of Clutter.BindConstraint
+        // Methods
 
         /**
          * Retrieves the bound coordinate of the constraint
@@ -19820,14 +19820,14 @@ export namespace Clutter {
     class BindingPool extends GObject.Object {
         static $gtype: GObject.GType<BindingPool>;
 
-        // Own properties of Clutter.BindingPool
+        // Properties
 
         /**
          * The unique name of the #ClutterBindingPool.
          */
         get name(): string;
 
-        // Constructors of Clutter.BindingPool
+        // Constructors
 
         constructor(properties?: Partial<BindingPool.ConstructorProps>, ...args: any[]);
 
@@ -19835,7 +19835,7 @@ export namespace Clutter {
 
         static ['new'](name: string): BindingPool;
 
-        // Own static methods of Clutter.BindingPool
+        // Static methods
 
         /**
          * Finds the #ClutterBindingPool with `name`.
@@ -19863,7 +19863,7 @@ export namespace Clutter {
          */
         static get_for_class(klass?: any | null): BindingPool;
 
-        // Own methods of Clutter.BindingPool
+        // Methods
 
         /**
          * Activates the callback associated to the action that is
@@ -20011,7 +20011,7 @@ export namespace Clutter {
     class BlurEffect extends OffscreenEffect {
         static $gtype: GObject.GType<BlurEffect>;
 
-        // Constructors of Clutter.BlurEffect
+        // Constructors
 
         constructor(properties?: Partial<BlurEffect.ConstructorProps>, ...args: any[]);
 
@@ -20042,7 +20042,7 @@ export namespace Clutter {
     class Box extends Actor implements Atk.ImplementorIface, Animatable, Container, Scriptable {
         static $gtype: GObject.GType<Box>;
 
-        // Own properties of Clutter.Box
+        // Properties
 
         /**
          * The color to be used to paint the background of the
@@ -20071,7 +20071,7 @@ export namespace Clutter {
         get colorSet(): boolean;
         set colorSet(val: boolean);
 
-        // Constructors of Clutter.Box
+        // Constructors
 
         constructor(properties?: Partial<Box.ConstructorProps>, ...args: any[]);
 
@@ -20082,7 +20082,7 @@ export namespace Clutter {
 
         static ['new'](...args: never[]): any;
 
-        // Own methods of Clutter.Box
+        // Methods
 
         /**
          * Retrieves the background color of `box`
@@ -20981,7 +20981,7 @@ export namespace Clutter {
     class BoxLayout extends LayoutManager {
         static $gtype: GObject.GType<BoxLayout>;
 
-        // Own properties of Clutter.BoxLayout
+        // Properties
 
         /**
          * The duration of the animations, in case #ClutterBoxLayout:use-animations
@@ -21073,7 +21073,7 @@ export namespace Clutter {
         get vertical(): boolean;
         set vertical(val: boolean);
 
-        // Constructors of Clutter.BoxLayout
+        // Constructors
 
         constructor(properties?: Partial<BoxLayout.ConstructorProps>, ...args: any[]);
 
@@ -21081,7 +21081,7 @@ export namespace Clutter {
 
         static ['new'](): BoxLayout;
 
-        // Own methods of Clutter.BoxLayout
+        // Methods
 
         /**
          * Retrieves the horizontal and vertical alignment policies for `actor`
@@ -21253,7 +21253,7 @@ export namespace Clutter {
     class BrightnessContrastEffect extends OffscreenEffect {
         static $gtype: GObject.GType<BrightnessContrastEffect>;
 
-        // Own properties of Clutter.BrightnessContrastEffect
+        // Properties
 
         /**
          * The brightness change to apply to the effect.
@@ -21278,7 +21278,7 @@ export namespace Clutter {
         get contrast(): Color;
         set contrast(val: Color);
 
-        // Constructors of Clutter.BrightnessContrastEffect
+        // Constructors
 
         constructor(properties?: Partial<BrightnessContrastEffect.ConstructorProps>, ...args: any[]);
 
@@ -21286,7 +21286,7 @@ export namespace Clutter {
 
         static ['new'](): BrightnessContrastEffect;
 
-        // Own methods of Clutter.BrightnessContrastEffect
+        // Methods
 
         /**
          * Retrieves the change in brightness used by `effect`.
@@ -21364,7 +21364,7 @@ export namespace Clutter {
     class CairoTexture extends Texture implements Atk.ImplementorIface, Animatable, Container, Scriptable {
         static $gtype: GObject.GType<CairoTexture>;
 
-        // Own properties of Clutter.CairoTexture
+        // Properties
 
         /**
          * Controls whether the #ClutterCairoTexture should automatically
@@ -21407,7 +21407,7 @@ export namespace Clutter {
         get surfaceWidth(): number;
         set surfaceWidth(val: number);
 
-        // Constructors of Clutter.CairoTexture
+        // Constructors
 
         constructor(properties?: Partial<CairoTexture.ConstructorProps>, ...args: any[]);
 
@@ -21418,7 +21418,7 @@ export namespace Clutter {
 
         static ['new'](...args: never[]): any;
 
-        // Own signals of Clutter.CairoTexture
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -21436,12 +21436,12 @@ export namespace Clutter {
         connect_after(signal: 'draw', callback: (_source: this, cr: cairo.Context) => boolean): number;
         emit(signal: 'draw', cr: cairo.Context): void;
 
-        // Own virtual methods of Clutter.CairoTexture
+        // Virtual methods
 
         vfunc_create_surface(width: number, height: number): cairo.Surface;
         vfunc_draw(cr: cairo.Context): boolean;
 
-        // Own methods of Clutter.CairoTexture
+        // Methods
 
         /**
          * Clears `self'`s internal drawing surface, so that the next upload
@@ -21956,7 +21956,7 @@ export namespace Clutter {
     class Canvas extends GObject.Object implements Content {
         static $gtype: GObject.GType<Canvas>;
 
-        // Own properties of Clutter.Canvas
+        // Properties
 
         /**
          * The height of the canvas.
@@ -22011,13 +22011,13 @@ export namespace Clutter {
         get width(): number;
         set width(val: number);
 
-        // Constructors of Clutter.Canvas
+        // Constructors
 
         constructor(properties?: Partial<Canvas.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of Clutter.Canvas
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -22032,7 +22032,7 @@ export namespace Clutter {
         ): number;
         emit(signal: 'draw', cr: cairo.Context, width: number, height: number): void;
 
-        // Own static methods of Clutter.Canvas
+        // Static methods
 
         /**
          * Creates a new instance of #ClutterCanvas.
@@ -22044,11 +22044,11 @@ export namespace Clutter {
          */
         static ['new'](): Content;
 
-        // Own virtual methods of Clutter.Canvas
+        // Virtual methods
 
         vfunc_draw(cr: cairo.Context, width: number, height: number): boolean;
 
-        // Own methods of Clutter.Canvas
+        // Methods
 
         /**
          * Retrieves the scaling factor of `canvas,` as set using
@@ -22579,7 +22579,7 @@ export namespace Clutter {
     abstract class ChildMeta extends GObject.Object {
         static $gtype: GObject.GType<ChildMeta>;
 
-        // Own properties of Clutter.ChildMeta
+        // Properties
 
         /**
          * The #ClutterActor being wrapped by this #ClutterChildMeta
@@ -22590,13 +22590,13 @@ export namespace Clutter {
          */
         get container(): Container;
 
-        // Constructors of Clutter.ChildMeta
+        // Constructors
 
         constructor(properties?: Partial<ChildMeta.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Clutter.ChildMeta
+        // Methods
 
         /**
          * Retrieves the actor wrapped by `data`
@@ -22640,7 +22640,7 @@ export namespace Clutter {
     class ClickAction extends Action {
         static $gtype: GObject.GType<ClickAction>;
 
-        // Own properties of Clutter.ClickAction
+        // Properties
 
         /**
          * Whether the clickable actor has the pointer grabbed
@@ -22687,7 +22687,7 @@ export namespace Clutter {
          */
         get pressed(): boolean;
 
-        // Constructors of Clutter.ClickAction
+        // Constructors
 
         constructor(properties?: Partial<ClickAction.ConstructorProps>, ...args: any[]);
 
@@ -22695,7 +22695,7 @@ export namespace Clutter {
 
         static ['new'](): ClickAction;
 
-        // Own signals of Clutter.ClickAction
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -22713,12 +22713,12 @@ export namespace Clutter {
         ): number;
         emit(signal: 'long-press', actor: Actor, state: LongPressState): void;
 
-        // Own virtual methods of Clutter.ClickAction
+        // Virtual methods
 
         vfunc_clicked(actor: Actor): void;
         vfunc_long_press(actor: Actor, state: LongPressState): boolean;
 
-        // Own methods of Clutter.ClickAction
+        // Methods
 
         /**
          * Retrieves the button that was pressed.
@@ -22754,7 +22754,7 @@ export namespace Clutter {
     class ClipNode extends PaintNode {
         static $gtype: GObject.GType<ClipNode>;
 
-        // Constructors of Clutter.ClipNode
+        // Constructors
 
         _init(...args: any[]): void;
 
@@ -22781,7 +22781,7 @@ export namespace Clutter {
     class Clone extends Actor implements Atk.ImplementorIface, Animatable, Container, Scriptable {
         static $gtype: GObject.GType<Clone>;
 
-        // Own properties of Clutter.Clone
+        // Properties
 
         /**
          * This property specifies the source actor being cloned.
@@ -22789,7 +22789,7 @@ export namespace Clutter {
         get source(): Actor;
         set source(val: Actor);
 
-        // Constructors of Clutter.Clone
+        // Constructors
 
         constructor(properties?: Partial<Clone.ConstructorProps>, ...args: any[]);
 
@@ -22800,7 +22800,7 @@ export namespace Clutter {
 
         static ['new'](...args: never[]): any;
 
-        // Own methods of Clutter.Clone
+        // Methods
 
         /**
          * Retrieves the source #ClutterActor being cloned by `self`.
@@ -23655,7 +23655,7 @@ export namespace Clutter {
     class ColorNode extends PipelineNode {
         static $gtype: GObject.GType<ColorNode>;
 
-        // Constructors of Clutter.ColorNode
+        // Constructors
 
         _init(...args: any[]): void;
 
@@ -23677,7 +23677,7 @@ export namespace Clutter {
     class ColorizeEffect extends OffscreenEffect {
         static $gtype: GObject.GType<ColorizeEffect>;
 
-        // Own properties of Clutter.ColorizeEffect
+        // Properties
 
         /**
          * The tint to apply to the actor
@@ -23685,7 +23685,7 @@ export namespace Clutter {
         get tint(): Color;
         set tint(val: Color);
 
-        // Constructors of Clutter.ColorizeEffect
+        // Constructors
 
         constructor(properties?: Partial<ColorizeEffect.ConstructorProps>, ...args: any[]);
 
@@ -23693,7 +23693,7 @@ export namespace Clutter {
 
         static ['new'](tint: Color): ColorizeEffect;
 
-        // Own methods of Clutter.ColorizeEffect
+        // Methods
 
         /**
          * Retrieves the tint used by `effect`
@@ -23719,13 +23719,13 @@ export namespace Clutter {
     abstract class Constraint extends ActorMeta {
         static $gtype: GObject.GType<Constraint>;
 
-        // Constructors of Clutter.Constraint
+        // Constructors
 
         constructor(properties?: Partial<Constraint.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of Clutter.Constraint
+        // Virtual methods
 
         vfunc_update_allocation(actor: Actor, allocation: ActorBox): void;
         vfunc_update_preferred_size(
@@ -23755,7 +23755,7 @@ export namespace Clutter {
     abstract class DeformEffect extends OffscreenEffect {
         static $gtype: GObject.GType<DeformEffect>;
 
-        // Own properties of Clutter.DeformEffect
+        // Properties
 
         /**
          * The number of horizontal tiles. The bigger the number, the
@@ -23782,17 +23782,17 @@ export namespace Clutter {
         get yTiles(): number;
         set yTiles(val: number);
 
-        // Constructors of Clutter.DeformEffect
+        // Constructors
 
         constructor(properties?: Partial<DeformEffect.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of Clutter.DeformEffect
+        // Virtual methods
 
         vfunc_deform_vertex(width: number, height: number, vertex: Cogl.TextureVertex): void;
 
-        // Own methods of Clutter.DeformEffect
+        // Methods
 
         /**
          * Retrieves the handle to the back face material used by `effect`
@@ -23845,7 +23845,7 @@ export namespace Clutter {
     class DesaturateEffect extends OffscreenEffect {
         static $gtype: GObject.GType<DesaturateEffect>;
 
-        // Own properties of Clutter.DesaturateEffect
+        // Properties
 
         /**
          * The desaturation factor, between 0.0 (no desaturation) and 1.0 (full
@@ -23854,7 +23854,7 @@ export namespace Clutter {
         get factor(): number;
         set factor(val: number);
 
-        // Constructors of Clutter.DesaturateEffect
+        // Constructors
 
         constructor(properties?: Partial<DesaturateEffect.ConstructorProps>, ...args: any[]);
 
@@ -23862,7 +23862,7 @@ export namespace Clutter {
 
         static ['new'](factor: number): DesaturateEffect;
 
-        // Own methods of Clutter.DesaturateEffect
+        // Methods
 
         /**
          * Retrieves the desaturation factor of `effect`
@@ -23901,17 +23901,17 @@ export namespace Clutter {
     abstract class DeviceManager extends GObject.Object {
         static $gtype: GObject.GType<DeviceManager>;
 
-        // Own properties of Clutter.DeviceManager
+        // Properties
 
         get backend(): Backend;
 
-        // Constructors of Clutter.DeviceManager
+        // Constructors
 
         constructor(properties?: Partial<DeviceManager.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of Clutter.DeviceManager
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -23923,14 +23923,14 @@ export namespace Clutter {
         connect_after(signal: 'device-removed', callback: (_source: this, device: InputDevice) => void): number;
         emit(signal: 'device-removed', device: InputDevice): void;
 
-        // Own static methods of Clutter.DeviceManager
+        // Static methods
 
         /**
          * Retrieves the device manager singleton
          */
         static get_default(): DeviceManager;
 
-        // Own virtual methods of Clutter.DeviceManager
+        // Virtual methods
 
         vfunc_add_device(device: InputDevice): void;
         /**
@@ -23949,7 +23949,7 @@ export namespace Clutter {
         vfunc_remove_device(device: InputDevice): void;
         vfunc_select_stage_events(stage: Stage): void;
 
-        // Own methods of Clutter.DeviceManager
+        // Methods
 
         /**
          * Retrieves the core #ClutterInputDevice of type `device_type`
@@ -24022,7 +24022,7 @@ export namespace Clutter {
     class DragAction extends Action {
         static $gtype: GObject.GType<DragAction>;
 
-        // Own properties of Clutter.DragAction
+        // Properties
 
         /**
          * Constains the dragging action (or in particular, the resulting
@@ -24153,7 +24153,7 @@ export namespace Clutter {
         get yDragThreshold(): number;
         set yDragThreshold(val: number);
 
-        // Constructors of Clutter.DragAction
+        // Constructors
 
         constructor(properties?: Partial<DragAction.ConstructorProps>, ...args: any[]);
 
@@ -24161,7 +24161,7 @@ export namespace Clutter {
 
         static ['new'](): DragAction;
 
-        // Own signals of Clutter.DragAction
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -24203,14 +24203,14 @@ export namespace Clutter {
         ): number;
         emit(signal: 'drag-progress', actor: Actor, delta_x: number, delta_y: number): void;
 
-        // Own virtual methods of Clutter.DragAction
+        // Virtual methods
 
         vfunc_drag_begin(actor: Actor, event_x: number, event_y: number, modifiers: ModifierType): void;
         vfunc_drag_end(actor: Actor, event_x: number, event_y: number, modifiers: ModifierType): void;
         vfunc_drag_motion(actor: Actor, delta_x: number, delta_y: number): void;
         vfunc_drag_progress(actor: Actor, delta_x: number, delta_y: number): boolean;
 
-        // Own methods of Clutter.DragAction
+        // Methods
 
         /**
          * Retrieves the "drag area" associated with `action,` that
@@ -24314,7 +24314,7 @@ export namespace Clutter {
     class DropAction extends Action {
         static $gtype: GObject.GType<DropAction>;
 
-        // Constructors of Clutter.DropAction
+        // Constructors
 
         constructor(properties?: Partial<DropAction.ConstructorProps>, ...args: any[]);
 
@@ -24322,7 +24322,7 @@ export namespace Clutter {
 
         static ['new'](): DropAction;
 
-        // Own signals of Clutter.DropAction
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -24361,7 +24361,7 @@ export namespace Clutter {
         connect_after(signal: 'over-out', callback: (_source: this, actor: Actor) => void): number;
         emit(signal: 'over-out', actor: Actor): void;
 
-        // Own virtual methods of Clutter.DropAction
+        // Virtual methods
 
         vfunc_can_drop(actor: Actor, event_x: number, event_y: number): boolean;
         vfunc_drop(actor: Actor, event_x: number, event_y: number): void;
@@ -24382,13 +24382,13 @@ export namespace Clutter {
     abstract class Effect extends ActorMeta {
         static $gtype: GObject.GType<Effect>;
 
-        // Constructors of Clutter.Effect
+        // Constructors
 
         constructor(properties?: Partial<Effect.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of Clutter.Effect
+        // Virtual methods
 
         vfunc_get_paint_volume(volume: PaintVolume): boolean;
         vfunc_paint(flags: EffectPaintFlags): void;
@@ -24396,7 +24396,7 @@ export namespace Clutter {
         vfunc_post_paint(): void;
         vfunc_pre_paint(): boolean;
 
-        // Own methods of Clutter.Effect
+        // Methods
 
         /**
          * Queues a repaint of the effect. The effect can detect when the ‘paint’
@@ -24451,7 +24451,7 @@ export namespace Clutter {
     class FixedLayout extends LayoutManager {
         static $gtype: GObject.GType<FixedLayout>;
 
-        // Constructors of Clutter.FixedLayout
+        // Constructors
 
         constructor(properties?: Partial<FixedLayout.ConstructorProps>, ...args: any[]);
 
@@ -24490,7 +24490,7 @@ export namespace Clutter {
     class FlowLayout extends LayoutManager {
         static $gtype: GObject.GType<FlowLayout>;
 
-        // Own properties of Clutter.FlowLayout
+        // Properties
 
         /**
          * The spacing between columns, in pixels; the value of this
@@ -24591,7 +24591,7 @@ export namespace Clutter {
         get snapToGrid(): boolean;
         set snapToGrid(val: boolean);
 
-        // Constructors of Clutter.FlowLayout
+        // Constructors
 
         constructor(properties?: Partial<FlowLayout.ConstructorProps>, ...args: any[]);
 
@@ -24599,7 +24599,7 @@ export namespace Clutter {
 
         static ['new'](orientation: FlowOrientation): FlowLayout;
 
-        // Own methods of Clutter.FlowLayout
+        // Methods
 
         /**
          * Retrieves the spacing between columns
@@ -24718,7 +24718,7 @@ export namespace Clutter {
     class GestureAction extends Action {
         static $gtype: GObject.GType<GestureAction>;
 
-        // Own properties of Clutter.GestureAction
+        // Properties
 
         /**
          * Number of touch points to trigger a gesture action.
@@ -24775,7 +24775,7 @@ export namespace Clutter {
          */
         get thresholdTriggerEdge(): GestureTriggerEdge;
 
-        // Constructors of Clutter.GestureAction
+        // Constructors
 
         constructor(properties?: Partial<GestureAction.ConstructorProps>, ...args: any[]);
 
@@ -24783,7 +24783,7 @@ export namespace Clutter {
 
         static ['new'](): GestureAction;
 
-        // Own signals of Clutter.GestureAction
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -24801,7 +24801,7 @@ export namespace Clutter {
         connect_after(signal: 'gesture-progress', callback: (_source: this, actor: Actor) => boolean): number;
         emit(signal: 'gesture-progress', actor: Actor): void;
 
-        // Own virtual methods of Clutter.GestureAction
+        // Virtual methods
 
         vfunc_gesture_begin(actor: Actor): boolean;
         vfunc_gesture_cancel(actor: Actor): void;
@@ -24809,7 +24809,7 @@ export namespace Clutter {
         vfunc_gesture_prepare(actor: Actor): boolean;
         vfunc_gesture_progress(actor: Actor): boolean;
 
-        // Own methods of Clutter.GestureAction
+        // Methods
 
         /**
          * Cancel a #ClutterGestureAction before it begins
@@ -24939,7 +24939,7 @@ export namespace Clutter {
     class GridLayout extends LayoutManager {
         static $gtype: GObject.GType<GridLayout>;
 
-        // Own properties of Clutter.GridLayout
+        // Properties
 
         /**
          * Whether all columns of the layout should have the same width
@@ -24987,7 +24987,7 @@ export namespace Clutter {
         get rowSpacing(): number;
         set rowSpacing(val: number);
 
-        // Constructors of Clutter.GridLayout
+        // Constructors
 
         constructor(properties?: Partial<GridLayout.ConstructorProps>, ...args: any[]);
 
@@ -24995,7 +24995,7 @@ export namespace Clutter {
 
         static ['new'](): GridLayout;
 
-        // Own methods of Clutter.GridLayout
+        // Methods
 
         /**
          * Adds a widget to the grid.
@@ -25140,7 +25140,7 @@ export namespace Clutter {
     class Group extends Actor implements Atk.ImplementorIface, Animatable, Container, Scriptable {
         static $gtype: GObject.GType<Group>;
 
-        // Constructors of Clutter.Group
+        // Constructors
 
         constructor(properties?: Partial<Group.ConstructorProps>, ...args: any[]);
 
@@ -25148,7 +25148,7 @@ export namespace Clutter {
 
         static ['new'](): Group;
 
-        // Own methods of Clutter.Group
+        // Methods
 
         /**
          * Gets the number of actors held in the group.
@@ -26015,20 +26015,20 @@ export namespace Clutter {
     class Image extends GObject.Object implements Content {
         static $gtype: GObject.GType<Image>;
 
-        // Constructors of Clutter.Image
+        // Constructors
 
         constructor(properties?: Partial<Image.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of Clutter.Image
+        // Static methods
 
         /**
          * Creates a new #ClutterImage instance.
          */
         static ['new'](): Content;
 
-        // Own methods of Clutter.Image
+        // Methods
 
         /**
          * Sets the image data to be display by `image,` using `rect` to indicate
@@ -26587,7 +26587,7 @@ export namespace Clutter {
     class InputDevice extends GObject.Object {
         static $gtype: GObject.GType<InputDevice>;
 
-        // Own properties of Clutter.InputDevice
+        // Properties
 
         /**
          * The #ClutterBackend that created the device.
@@ -26662,13 +26662,13 @@ export namespace Clutter {
          */
         get vendorId(): string;
 
-        // Constructors of Clutter.InputDevice
+        // Constructors
 
         constructor(properties?: Partial<InputDevice.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Clutter.InputDevice
+        // Methods
 
         /**
          * Retrieves a pointer to the #ClutterInputDevice that has been
@@ -26960,7 +26960,7 @@ export namespace Clutter {
     class Interval extends GObject.InitiallyUnowned implements Scriptable {
         static $gtype: GObject.GType<Interval>;
 
-        // Own properties of Clutter.Interval
+        // Properties
 
         /**
          * The final value of the interval.
@@ -26981,7 +26981,7 @@ export namespace Clutter {
          */
         get valueType(): GObject.GType;
 
-        // Constructors of Clutter.Interval
+        // Constructors
 
         constructor(properties?: Partial<Interval.ConstructorProps>, ...args: any[]);
 
@@ -26993,7 +26993,7 @@ export namespace Clutter {
             _final?: GObject.Value | null,
         ): Interval;
 
-        // Own virtual methods of Clutter.Interval
+        // Virtual methods
 
         /**
          * Computes the value between the `interval` boundaries given the
@@ -27008,7 +27008,7 @@ export namespace Clutter {
          */
         vfunc_validate(pspec: GObject.ParamSpec): boolean;
 
-        // Own methods of Clutter.Interval
+        // Methods
 
         /**
          * Creates a copy of `interval`.
@@ -27572,7 +27572,7 @@ export namespace Clutter {
     class KeyframeTransition extends PropertyTransition implements Scriptable {
         static $gtype: GObject.GType<KeyframeTransition>;
 
-        // Constructors of Clutter.KeyframeTransition
+        // Constructors
 
         constructor(properties?: Partial<KeyframeTransition.ConstructorProps>, ...args: any[]);
 
@@ -27583,7 +27583,7 @@ export namespace Clutter {
 
         static ['new'](...args: never[]): any;
 
-        // Own methods of Clutter.KeyframeTransition
+        // Methods
 
         /**
          * Removes all key frames from `transition`.
@@ -28063,13 +28063,13 @@ export namespace Clutter {
     abstract class LayoutManager extends GObject.InitiallyUnowned {
         static $gtype: GObject.GType<LayoutManager>;
 
-        // Constructors of Clutter.LayoutManager
+        // Constructors
 
         constructor(properties?: Partial<LayoutManager.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of Clutter.LayoutManager
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -28078,7 +28078,7 @@ export namespace Clutter {
         connect_after(signal: 'layout-changed', callback: (_source: this) => void): number;
         emit(signal: 'layout-changed'): void;
 
-        // Own virtual methods of Clutter.LayoutManager
+        // Virtual methods
 
         /**
          * Allocates the children of `container` given an area
@@ -28152,7 +28152,7 @@ export namespace Clutter {
          */
         vfunc_set_container(container?: Container | null): void;
 
-        // Own methods of Clutter.LayoutManager
+        // Methods
 
         /**
          * Allocates the children of `container` given an area
@@ -28290,20 +28290,20 @@ export namespace Clutter {
     abstract class LayoutMeta extends ChildMeta {
         static $gtype: GObject.GType<LayoutMeta>;
 
-        // Own properties of Clutter.LayoutMeta
+        // Properties
 
         /**
          * The #ClutterLayoutManager that created this #ClutterLayoutMeta.
          */
         get manager(): LayoutManager;
 
-        // Constructors of Clutter.LayoutMeta
+        // Constructors
 
         constructor(properties?: Partial<LayoutMeta.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Clutter.LayoutMeta
+        // Methods
 
         /**
          * Retrieves the actor wrapped by `data`
@@ -28324,7 +28324,7 @@ export namespace Clutter {
     class ListModel extends Model implements Scriptable {
         static $gtype: GObject.GType<ListModel>;
 
-        // Constructors of Clutter.ListModel
+        // Constructors
 
         constructor(properties?: Partial<ListModel.ConstructorProps>, ...args: any[]);
 
@@ -28841,7 +28841,7 @@ export namespace Clutter {
     abstract class Model extends GObject.Object implements Scriptable {
         static $gtype: GObject.GType<Model>;
 
-        // Own properties of Clutter.Model
+        // Properties
 
         /**
          * Whether the #ClutterModel has a filter set
@@ -28858,13 +28858,13 @@ export namespace Clutter {
          */
         get filterSet(): boolean;
 
-        // Constructors of Clutter.Model
+        // Constructors
 
         constructor(properties?: Partial<Model.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of Clutter.Model
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -28885,7 +28885,7 @@ export namespace Clutter {
         connect_after(signal: 'sort-changed', callback: (_source: this) => void): number;
         emit(signal: 'sort-changed'): void;
 
-        // Own virtual methods of Clutter.Model
+        // Virtual methods
 
         vfunc_filter_changed(): void;
         /**
@@ -28922,7 +28922,7 @@ export namespace Clutter {
         vfunc_row_removed(iter: ModelIter): void;
         vfunc_sort_changed(): void;
 
-        // Own methods of Clutter.Model
+        // Methods
 
         /**
          * Creates and appends a new row to the #ClutterModel, setting the row
@@ -29564,7 +29564,7 @@ export namespace Clutter {
     abstract class ModelIter extends GObject.Object {
         static $gtype: GObject.GType<ModelIter>;
 
-        // Own properties of Clutter.ModelIter
+        // Properties
 
         /**
          * A reference to the #ClutterModel that this iter belongs to.
@@ -29577,13 +29577,13 @@ export namespace Clutter {
         get row(): number;
         set row(val: number);
 
-        // Constructors of Clutter.ModelIter
+        // Constructors
 
         constructor(properties?: Partial<ModelIter.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of Clutter.ModelIter
+        // Virtual methods
 
         /**
          * Copies the passed iterator.
@@ -29633,7 +29633,7 @@ export namespace Clutter {
          */
         vfunc_set_value(column: number, value: GObject.Value | any): void;
 
-        // Own methods of Clutter.ModelIter
+        // Methods
 
         /**
          * Copies the passed iterator.
@@ -29704,13 +29704,13 @@ export namespace Clutter {
     abstract class OffscreenEffect extends Effect {
         static $gtype: GObject.GType<OffscreenEffect>;
 
-        // Constructors of Clutter.OffscreenEffect
+        // Constructors
 
         constructor(properties?: Partial<OffscreenEffect.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of Clutter.OffscreenEffect
+        // Virtual methods
 
         /**
          * Calls the create_texture() virtual function of the `effect`
@@ -29723,7 +29723,7 @@ export namespace Clutter {
          */
         vfunc_paint_target(): void;
 
-        // Own methods of Clutter.OffscreenEffect
+        // Methods
 
         /**
          * Calls the create_texture() virtual function of the `effect`
@@ -29797,7 +29797,7 @@ export namespace Clutter {
     class PageTurnEffect extends DeformEffect {
         static $gtype: GObject.GType<PageTurnEffect>;
 
-        // Own properties of Clutter.PageTurnEffect
+        // Properties
 
         /**
          * The angle of the page rotation, in degrees, between 0.0 and 360.0
@@ -29816,7 +29816,7 @@ export namespace Clutter {
         get radius(): number;
         set radius(val: number);
 
-        // Constructors of Clutter.PageTurnEffect
+        // Constructors
 
         constructor(properties?: Partial<PageTurnEffect.ConstructorProps>, ...args: any[]);
 
@@ -29824,7 +29824,7 @@ export namespace Clutter {
 
         static ['new'](period: number, angle: number, radius: number): PageTurnEffect;
 
-        // Own methods of Clutter.PageTurnEffect
+        // Methods
 
         /**
          * Retrieves the value set using clutter_page_turn_effect_get_angle()
@@ -29866,11 +29866,11 @@ export namespace Clutter {
     abstract class PaintNode {
         static $gtype: GObject.GType<PaintNode>;
 
-        // Constructors of Clutter.PaintNode
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of Clutter.PaintNode
+        // Methods
 
         /**
          * Adds `child` to the list of children of `node`.
@@ -29944,7 +29944,7 @@ export namespace Clutter {
     class PanAction extends GestureAction {
         static $gtype: GObject.GType<PanAction>;
 
-        // Own properties of Clutter.PanAction
+        // Properties
 
         /**
          * The initial acceleration factor
@@ -29988,7 +29988,7 @@ export namespace Clutter {
         get panAxis(): PanAxis;
         set panAxis(val: PanAxis);
 
-        // Constructors of Clutter.PanAction
+        // Constructors
 
         constructor(properties?: Partial<PanAction.ConstructorProps>, ...args: any[]);
 
@@ -29996,7 +29996,7 @@ export namespace Clutter {
 
         static ['new'](): PanAction;
 
-        // Own signals of Clutter.PanAction
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -30011,12 +30011,12 @@ export namespace Clutter {
         connect_after(signal: 'pan-stopped', callback: (_source: this, actor: Actor) => void): number;
         emit(signal: 'pan-stopped', actor: Actor): void;
 
-        // Own virtual methods of Clutter.PanAction
+        // Virtual methods
 
         vfunc_pan(actor: Actor, is_interpolated: boolean): boolean;
         vfunc_pan_stopped(actor: Actor): void;
 
-        // Own methods of Clutter.PanAction
+        // Methods
 
         /**
          * Retrieves the initial acceleration factor for interpolated ::pan events.
@@ -30125,13 +30125,13 @@ export namespace Clutter {
     class Path extends GObject.InitiallyUnowned {
         static $gtype: GObject.GType<Path>;
 
-        // Own properties of Clutter.Path
+        // Properties
 
         get description(): string;
         set description(val: string);
         get length(): number;
 
-        // Constructors of Clutter.Path
+        // Constructors
 
         constructor(properties?: Partial<Path.ConstructorProps>, ...args: any[]);
 
@@ -30141,7 +30141,7 @@ export namespace Clutter {
 
         static new_with_description(desc: string): Path;
 
-        // Own methods of Clutter.Path
+        // Methods
 
         /**
          * Add the nodes of the Cairo path to the end of `path`.
@@ -30345,7 +30345,7 @@ export namespace Clutter {
     class PathConstraint extends Constraint {
         static $gtype: GObject.GType<PathConstraint>;
 
-        // Own properties of Clutter.PathConstraint
+        // Properties
 
         /**
          * The offset along the #ClutterPathConstraint:path, between -1.0 and 2.0.
@@ -30358,7 +30358,7 @@ export namespace Clutter {
         get path(): Path;
         set path(val: Path);
 
-        // Constructors of Clutter.PathConstraint
+        // Constructors
 
         constructor(properties?: Partial<PathConstraint.ConstructorProps>, ...args: any[]);
 
@@ -30366,7 +30366,7 @@ export namespace Clutter {
 
         static ['new'](path: Path | null, offset: number): PathConstraint;
 
-        // Own signals of Clutter.PathConstraint
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -30375,7 +30375,7 @@ export namespace Clutter {
         connect_after(signal: 'node-reached', callback: (_source: this, actor: Actor, index: number) => void): number;
         emit(signal: 'node-reached', actor: Actor, index: number): void;
 
-        // Own methods of Clutter.PathConstraint
+        // Methods
 
         /**
          * Retrieves the offset along the #ClutterPath used by `constraint`.
@@ -30409,7 +30409,7 @@ export namespace Clutter {
     class PipelineNode extends PaintNode {
         static $gtype: GObject.GType<PipelineNode>;
 
-        // Constructors of Clutter.PipelineNode
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -30430,7 +30430,7 @@ export namespace Clutter {
     class PropertyTransition extends Transition implements Scriptable {
         static $gtype: GObject.GType<PropertyTransition>;
 
-        // Own properties of Clutter.PropertyTransition
+        // Properties
 
         /**
          * The name of the property of a #ClutterAnimatable to animate.
@@ -30443,7 +30443,7 @@ export namespace Clutter {
         get propertyName(): string;
         set propertyName(val: string);
 
-        // Constructors of Clutter.PropertyTransition
+        // Constructors
 
         constructor(properties?: Partial<PropertyTransition.ConstructorProps>, ...args: any[]);
 
@@ -30454,7 +30454,7 @@ export namespace Clutter {
 
         static ['new'](...args: never[]): any;
 
-        // Own methods of Clutter.PropertyTransition
+        // Methods
 
         /**
          * Retrieves the value of the #ClutterPropertyTransition:property-name
@@ -30897,7 +30897,7 @@ export namespace Clutter {
     class Rectangle extends Actor implements Atk.ImplementorIface, Animatable, Container, Scriptable {
         static $gtype: GObject.GType<Rectangle>;
 
-        // Own properties of Clutter.Rectangle
+        // Properties
 
         /**
          * The color of the border of the rectangle.
@@ -30935,7 +30935,7 @@ export namespace Clutter {
         get hasBorder(): boolean;
         set hasBorder(val: boolean);
 
-        // Constructors of Clutter.Rectangle
+        // Constructors
 
         constructor(properties?: Partial<Rectangle.ConstructorProps>, ...args: any[]);
 
@@ -30945,7 +30945,7 @@ export namespace Clutter {
 
         static new_with_color(color: Color): Rectangle;
 
-        // Own methods of Clutter.Rectangle
+        // Methods
 
         /**
          * Gets the color of the border used by `rectangle` and places
@@ -31832,7 +31832,7 @@ export namespace Clutter {
     class RotateAction extends GestureAction {
         static $gtype: GObject.GType<RotateAction>;
 
-        // Constructors of Clutter.RotateAction
+        // Constructors
 
         constructor(properties?: Partial<RotateAction.ConstructorProps>, ...args: any[]);
 
@@ -31840,7 +31840,7 @@ export namespace Clutter {
 
         static ['new'](): RotateAction;
 
-        // Own signals of Clutter.RotateAction
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -31849,7 +31849,7 @@ export namespace Clutter {
         connect_after(signal: 'rotate', callback: (_source: this, actor: Actor, angle: number) => boolean): number;
         emit(signal: 'rotate', actor: Actor, angle: number): void;
 
-        // Own virtual methods of Clutter.RotateAction
+        // Virtual methods
 
         vfunc_rotate(actor: Actor, angle: number): boolean;
     }
@@ -31891,7 +31891,7 @@ export namespace Clutter {
     class Score extends GObject.Object {
         static $gtype: GObject.GType<Score>;
 
-        // Own properties of Clutter.Score
+        // Properties
 
         /**
          * Whether the #ClutterScore should restart once finished.
@@ -31899,7 +31899,7 @@ export namespace Clutter {
         get loop(): boolean;
         set loop(val: boolean);
 
-        // Constructors of Clutter.Score
+        // Constructors
 
         constructor(properties?: Partial<Score.ConstructorProps>, ...args: any[]);
 
@@ -31907,7 +31907,7 @@ export namespace Clutter {
 
         static ['new'](): Score;
 
-        // Own signals of Clutter.Score
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -31928,7 +31928,7 @@ export namespace Clutter {
         connect_after(signal: 'timeline-started', callback: (_source: this, timeline: Timeline) => void): number;
         emit(signal: 'timeline-started', timeline: Timeline): void;
 
-        // Own virtual methods of Clutter.Score
+        // Virtual methods
 
         vfunc_completed(): void;
         vfunc_paused(): void;
@@ -31936,7 +31936,7 @@ export namespace Clutter {
         vfunc_timeline_completed(timeline: Timeline): void;
         vfunc_timeline_started(timeline: Timeline): void;
 
-        // Own methods of Clutter.Score
+        // Methods
 
         /**
          * Appends a timeline to another one existing in the score; the newly
@@ -32040,7 +32040,7 @@ export namespace Clutter {
     class Script extends GObject.Object {
         static $gtype: GObject.GType<Script>;
 
-        // Own properties of Clutter.Script
+        // Properties
 
         /**
          * The path of the currently parsed file. If #ClutterScript:filename-set
@@ -32078,7 +32078,7 @@ export namespace Clutter {
         get translationDomain(): string;
         set translationDomain(val: string);
 
-        // Constructors of Clutter.Script
+        // Constructors
 
         constructor(properties?: Partial<Script.ConstructorProps>, ...args: any[]);
 
@@ -32086,7 +32086,7 @@ export namespace Clutter {
 
         static ['new'](): Script;
 
-        // Own virtual methods of Clutter.Script
+        // Virtual methods
 
         /**
          * Looks up a type by name, using the virtual function that
@@ -32096,7 +32096,7 @@ export namespace Clutter {
          */
         vfunc_get_type_from_name(type_name: string): GObject.GType;
 
-        // Own methods of Clutter.Script
+        // Methods
 
         /**
          * Adds `paths` to the list of search paths held by `script`.
@@ -32252,7 +32252,7 @@ export namespace Clutter {
     class ScrollActor extends Actor implements Atk.ImplementorIface, Animatable, Container, Scriptable {
         static $gtype: GObject.GType<ScrollActor>;
 
-        // Own properties of Clutter.ScrollActor
+        // Properties
 
         /**
          * The scrollin direction.
@@ -32265,7 +32265,7 @@ export namespace Clutter {
         get scrollMode(): ScrollMode;
         set scrollMode(val: ScrollMode);
 
-        // Constructors of Clutter.ScrollActor
+        // Constructors
 
         constructor(properties?: Partial<ScrollActor.ConstructorProps>, ...args: any[]);
 
@@ -32273,7 +32273,7 @@ export namespace Clutter {
 
         static ['new'](): ScrollActor;
 
-        // Own methods of Clutter.ScrollActor
+        // Methods
 
         /**
          * Retrieves the #ClutterScrollActor:scroll-mode property
@@ -33180,7 +33180,7 @@ export namespace Clutter {
     class Settings extends GObject.Object {
         static $gtype: GObject.GType<Settings>;
 
-        // Own properties of Clutter.Settings
+        // Properties
 
         /**
          * A back pointer to the #ClutterBackend
@@ -33351,13 +33351,13 @@ export namespace Clutter {
         get windowScalingFactor(): number;
         set windowScalingFactor(val: number);
 
-        // Constructors of Clutter.Settings
+        // Constructors
 
         constructor(properties?: Partial<Settings.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of Clutter.Settings
+        // Static methods
 
         /**
          * Retrieves the singleton instance of #ClutterSettings
@@ -33385,7 +33385,7 @@ export namespace Clutter {
     class Shader extends GObject.Object {
         static $gtype: GObject.GType<Shader>;
 
-        // Own properties of Clutter.Shader
+        // Properties
 
         /**
          * Whether the shader is compiled and linked, ready for use
@@ -33420,7 +33420,7 @@ export namespace Clutter {
         get vertexSource(): string;
         set vertexSource(val: string);
 
-        // Constructors of Clutter.Shader
+        // Constructors
 
         constructor(properties?: Partial<Shader.ConstructorProps>, ...args: any[]);
 
@@ -33428,7 +33428,7 @@ export namespace Clutter {
 
         static ['new'](): Shader;
 
-        // Own methods of Clutter.Shader
+        // Methods
 
         /**
          * Compiles and links GLSL sources set for vertex and fragment shaders for
@@ -33525,7 +33525,7 @@ export namespace Clutter {
     class ShaderEffect extends OffscreenEffect {
         static $gtype: GObject.GType<ShaderEffect>;
 
-        // Own properties of Clutter.ShaderEffect
+        // Properties
 
         /**
          * The type of shader that is used by the effect. This property
@@ -33540,7 +33540,7 @@ export namespace Clutter {
          */
         set shaderType(val: ShaderType);
 
-        // Constructors of Clutter.ShaderEffect
+        // Constructors
 
         constructor(properties?: Partial<ShaderEffect.ConstructorProps>, ...args: any[]);
 
@@ -33548,11 +33548,11 @@ export namespace Clutter {
 
         static ['new'](shader_type: ShaderType): ShaderEffect;
 
-        // Own virtual methods of Clutter.ShaderEffect
+        // Virtual methods
 
         vfunc_get_static_shader_source(): string;
 
-        // Own methods of Clutter.ShaderEffect
+        // Methods
 
         /**
          * Retrieves a pointer to the program's handle
@@ -33596,7 +33596,7 @@ export namespace Clutter {
     class ShaderFloat {
         static $gtype: GObject.GType<ShaderFloat>;
 
-        // Constructors of Clutter.ShaderFloat
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -33604,7 +33604,7 @@ export namespace Clutter {
     class ShaderInt {
         static $gtype: GObject.GType<ShaderInt>;
 
-        // Constructors of Clutter.ShaderInt
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -33612,7 +33612,7 @@ export namespace Clutter {
     class ShaderMatrix {
         static $gtype: GObject.GType<ShaderMatrix>;
 
-        // Constructors of Clutter.ShaderMatrix
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -33637,7 +33637,7 @@ export namespace Clutter {
     class SnapConstraint extends Constraint {
         static $gtype: GObject.GType<SnapConstraint>;
 
-        // Own properties of Clutter.SnapConstraint
+        // Properties
 
         /**
          * The edge of the #ClutterActor that should be snapped
@@ -33671,7 +33671,7 @@ export namespace Clutter {
         get toEdge(): SnapEdge;
         set toEdge(val: SnapEdge);
 
-        // Constructors of Clutter.SnapConstraint
+        // Constructors
 
         constructor(properties?: Partial<SnapConstraint.ConstructorProps>, ...args: any[]);
 
@@ -33679,7 +33679,7 @@ export namespace Clutter {
 
         static ['new'](source: Actor | null, from_edge: SnapEdge, to_edge: SnapEdge, offset: number): SnapConstraint;
 
-        // Own methods of Clutter.SnapConstraint
+        // Methods
 
         /**
          * Retrieves the edges used by the `constraint`
@@ -33783,7 +33783,7 @@ export namespace Clutter {
     class Stage extends Group implements Atk.ImplementorIface, Animatable, Container, Scriptable {
         static $gtype: GObject.GType<Stage>;
 
-        // Own properties of Clutter.Stage
+        // Properties
 
         /**
          * Whether the #ClutterStage should accept key focus when shown.
@@ -33907,7 +33907,7 @@ export namespace Clutter {
         get userResizable(): boolean;
         set userResizable(val: boolean);
 
-        // Constructors of Clutter.Stage
+        // Constructors
 
         constructor(properties?: Partial<Stage.ConstructorProps>, ...args: any[]);
 
@@ -33915,7 +33915,7 @@ export namespace Clutter {
 
         static ['new'](): Stage;
 
-        // Own signals of Clutter.Stage
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -33939,7 +33939,7 @@ export namespace Clutter {
         connect_after(signal: 'unfullscreen', callback: (_source: this) => void): number;
         emit(signal: 'unfullscreen'): void;
 
-        // Own static methods of Clutter.Stage
+        // Static methods
 
         /**
          * Retrieves a #ClutterStage singleton.
@@ -33962,7 +33962,7 @@ export namespace Clutter {
          */
         static get_default(): Stage;
 
-        // Own virtual methods of Clutter.Stage
+        // Virtual methods
 
         vfunc_activate(): void;
         vfunc_deactivate(): void;
@@ -33970,7 +33970,7 @@ export namespace Clutter {
         vfunc_fullscreen(): void;
         vfunc_unfullscreen(): void;
 
-        // Own methods of Clutter.Stage
+        // Methods
 
         /**
          * This function essentially makes sure the right GL context is
@@ -34760,7 +34760,7 @@ export namespace Clutter {
     class StageManager extends GObject.Object {
         static $gtype: GObject.GType<StageManager>;
 
-        // Own properties of Clutter.StageManager
+        // Properties
 
         /**
          * The default stage used by Clutter.
@@ -34771,13 +34771,13 @@ export namespace Clutter {
          */
         get defaultStage(): Stage;
 
-        // Constructors of Clutter.StageManager
+        // Constructors
 
         constructor(properties?: Partial<StageManager.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of Clutter.StageManager
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -34789,19 +34789,19 @@ export namespace Clutter {
         connect_after(signal: 'stage-removed', callback: (_source: this, stage: Stage) => void): number;
         emit(signal: 'stage-removed', stage: Stage): void;
 
-        // Own static methods of Clutter.StageManager
+        // Static methods
 
         /**
          * Returns the default #ClutterStageManager.
          */
         static get_default(): StageManager;
 
-        // Own virtual methods of Clutter.StageManager
+        // Virtual methods
 
         vfunc_stage_added(stage: Stage): void;
         vfunc_stage_removed(stage: Stage): void;
 
-        // Own methods of Clutter.StageManager
+        // Methods
 
         /**
          * Returns the default #ClutterStage.
@@ -34847,7 +34847,7 @@ export namespace Clutter {
     class State extends GObject.Object implements Scriptable {
         static $gtype: GObject.GType<State>;
 
-        // Own properties of Clutter.State
+        // Properties
 
         /**
          * Default duration used if an duration has not been specified for a specific
@@ -34864,7 +34864,7 @@ export namespace Clutter {
         get state(): string;
         set state(val: string);
 
-        // Constructors of Clutter.State
+        // Constructors
 
         constructor(properties?: Partial<State.ConstructorProps>, ...args: any[]);
 
@@ -34872,7 +34872,7 @@ export namespace Clutter {
 
         static ['new'](): State;
 
-        // Own signals of Clutter.State
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -34881,11 +34881,11 @@ export namespace Clutter {
         connect_after(signal: 'completed', callback: (_source: this) => void): number;
         emit(signal: 'completed'): void;
 
-        // Own virtual methods of Clutter.State
+        // Virtual methods
 
         vfunc_completed(): void;
 
-        // Own methods of Clutter.State
+        // Methods
 
         /**
          * Retrieves the #ClutterAnimator that is being used for transitioning
@@ -35519,7 +35519,7 @@ export namespace Clutter {
     class SwipeAction extends GestureAction {
         static $gtype: GObject.GType<SwipeAction>;
 
-        // Constructors of Clutter.SwipeAction
+        // Constructors
 
         constructor(properties?: Partial<SwipeAction.ConstructorProps>, ...args: any[]);
 
@@ -35527,7 +35527,7 @@ export namespace Clutter {
 
         static ['new'](): SwipeAction;
 
-        // Own signals of Clutter.SwipeAction
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -35545,7 +35545,7 @@ export namespace Clutter {
         ): number;
         emit(signal: 'swipe', actor: Actor, direction: SwipeDirection): void;
 
-        // Own virtual methods of Clutter.SwipeAction
+        // Virtual methods
 
         vfunc_swept(actor: Actor, direction: SwipeDirection): void;
         vfunc_swipe(actor: Actor, direction: SwipeDirection): boolean;
@@ -35575,7 +35575,7 @@ export namespace Clutter {
     class TableLayout extends LayoutManager {
         static $gtype: GObject.GType<TableLayout>;
 
-        // Own properties of Clutter.TableLayout
+        // Properties
 
         /**
          * The spacing between columns of the #ClutterTableLayout, in pixels
@@ -35664,7 +35664,7 @@ export namespace Clutter {
         get useAnimations(): boolean;
         set useAnimations(val: boolean);
 
-        // Constructors of Clutter.TableLayout
+        // Constructors
 
         constructor(properties?: Partial<TableLayout.ConstructorProps>, ...args: any[]);
 
@@ -35672,7 +35672,7 @@ export namespace Clutter {
 
         static ['new'](): TableLayout;
 
-        // Own methods of Clutter.TableLayout
+        // Methods
 
         /**
          * Retrieves the horizontal and vertical alignment policies for `actor`
@@ -35834,7 +35834,7 @@ export namespace Clutter {
     class TapAction extends GestureAction {
         static $gtype: GObject.GType<TapAction>;
 
-        // Constructors of Clutter.TapAction
+        // Constructors
 
         constructor(properties?: Partial<TapAction.ConstructorProps>, ...args: any[]);
 
@@ -35842,7 +35842,7 @@ export namespace Clutter {
 
         static ['new'](): TapAction;
 
-        // Own signals of Clutter.TapAction
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -35851,7 +35851,7 @@ export namespace Clutter {
         connect_after(signal: 'tap', callback: (_source: this, actor: Actor) => void): number;
         emit(signal: 'tap', actor: Actor): void;
 
-        // Own virtual methods of Clutter.TapAction
+        // Virtual methods
 
         vfunc_tap(actor: Actor): boolean;
     }
@@ -35948,7 +35948,7 @@ export namespace Clutter {
     class Text extends Actor implements Atk.ImplementorIface, Animatable, Container, Scriptable {
         static $gtype: GObject.GType<Text>;
 
-        // Own properties of Clutter.Text
+        // Properties
 
         /**
          * Toggles whether return invokes the activate signal or not.
@@ -36261,7 +36261,7 @@ export namespace Clutter {
         get useMarkup(): boolean;
         set useMarkup(val: boolean);
 
-        // Constructors of Clutter.Text
+        // Constructors
 
         constructor(properties?: Partial<Text.ConstructorProps>, ...args: any[]);
 
@@ -36275,7 +36275,7 @@ export namespace Clutter {
 
         static new_with_text(font_name: string | null, text: string): Text;
 
-        // Own signals of Clutter.Text
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -36308,14 +36308,14 @@ export namespace Clutter {
         connect_after(signal: 'text-changed', callback: (_source: this) => void): number;
         emit(signal: 'text-changed'): void;
 
-        // Own virtual methods of Clutter.Text
+        // Virtual methods
 
         vfunc_activate(): void;
         vfunc_cursor_changed(): void;
         vfunc_cursor_event(geometry: Geometry): void;
         vfunc_text_changed(): void;
 
-        // Own methods of Clutter.Text
+        // Methods
 
         /**
          * Emits the #ClutterText::activate signal, if `self` has been set
@@ -37705,7 +37705,7 @@ export namespace Clutter {
     class TextBuffer extends GObject.Object {
         static $gtype: GObject.GType<TextBuffer>;
 
-        // Own properties of Clutter.TextBuffer
+        // Properties
 
         /**
          * The length (in characters) of the text in buffer.
@@ -37726,7 +37726,7 @@ export namespace Clutter {
          */
         get text(): string;
 
-        // Constructors of Clutter.TextBuffer
+        // Constructors
 
         constructor(properties?: Partial<TextBuffer.ConstructorProps>, ...args: any[]);
 
@@ -37736,7 +37736,7 @@ export namespace Clutter {
 
         static new_with_text(text: string | null, text_len: number): TextBuffer;
 
-        // Own signals of Clutter.TextBuffer
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -37757,7 +37757,7 @@ export namespace Clutter {
         ): number;
         emit(signal: 'inserted-text', position: number, chars: string, n_chars: number): void;
 
-        // Own virtual methods of Clutter.TextBuffer
+        // Virtual methods
 
         /**
          * Deletes a sequence of characters from the buffer. `n_chars` characters are
@@ -37795,7 +37795,7 @@ export namespace Clutter {
         vfunc_insert_text(position: number, chars: string, n_chars: number): number;
         vfunc_inserted_text(position: number, chars: string, n_chars: number): void;
 
-        // Own methods of Clutter.TextBuffer
+        // Methods
 
         /**
          * Deletes a sequence of characters from the buffer. `n_chars` characters are
@@ -37896,7 +37896,7 @@ export namespace Clutter {
     class TextNode extends PaintNode {
         static $gtype: GObject.GType<TextNode>;
 
-        // Constructors of Clutter.TextNode
+        // Constructors
 
         _init(...args: any[]): void;
 
@@ -37959,7 +37959,7 @@ export namespace Clutter {
     class Texture extends Actor implements Atk.ImplementorIface, Animatable, Container, Scriptable {
         static $gtype: GObject.GType<Texture>;
 
-        // Own properties of Clutter.Texture
+        // Properties
 
         get disable_slicing(): boolean;
         get disableSlicing(): boolean;
@@ -38043,7 +38043,7 @@ export namespace Clutter {
         get tile_waste(): number;
         get tileWaste(): number;
 
-        // Constructors of Clutter.Texture
+        // Constructors
 
         constructor(properties?: Partial<Texture.ConstructorProps>, ...args: any[]);
 
@@ -38055,7 +38055,7 @@ export namespace Clutter {
 
         static new_from_file(filename: string): Texture;
 
-        // Own signals of Clutter.Texture
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -38070,13 +38070,13 @@ export namespace Clutter {
         connect_after(signal: 'size-change', callback: (_source: this, width: number, height: number) => void): number;
         emit(signal: 'size-change', width: number, height: number): void;
 
-        // Own virtual methods of Clutter.Texture
+        // Virtual methods
 
         vfunc_load_finished(error: GLib.Error): void;
         vfunc_pixbuf_change(): void;
         vfunc_size_change(width: number, height: number): void;
 
-        // Own methods of Clutter.Texture
+        // Methods
 
         /**
          * Gets the size in pixels of the untransformed underlying image
@@ -39160,7 +39160,7 @@ export namespace Clutter {
     class TextureNode extends PipelineNode {
         static $gtype: GObject.GType<TextureNode>;
 
-        // Constructors of Clutter.TextureNode
+        // Constructors
 
         _init(...args: any[]): void;
 
@@ -39222,7 +39222,7 @@ export namespace Clutter {
     class Timeline extends GObject.Object implements Scriptable {
         static $gtype: GObject.GType<Timeline>;
 
-        // Own properties of Clutter.Timeline
+        // Properties
 
         /**
          * If the direction of the timeline should be automatically reversed
@@ -39295,7 +39295,7 @@ export namespace Clutter {
         get repeatCount(): number;
         set repeatCount(val: number);
 
-        // Constructors of Clutter.Timeline
+        // Constructors
 
         constructor(properties?: Partial<Timeline.ConstructorProps>, ...args: any[]);
 
@@ -39303,7 +39303,7 @@ export namespace Clutter {
 
         static ['new'](msecs: number): Timeline;
 
-        // Own signals of Clutter.Timeline
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -39333,7 +39333,7 @@ export namespace Clutter {
         connect_after(signal: 'stopped', callback: (_source: this, is_finished: boolean) => void): number;
         emit(signal: 'stopped', is_finished: boolean): void;
 
-        // Own virtual methods of Clutter.Timeline
+        // Virtual methods
 
         vfunc_completed(): void;
         vfunc_marker_reached(marker_name: string, msecs: number): void;
@@ -39342,7 +39342,7 @@ export namespace Clutter {
         vfunc_started(): void;
         vfunc_stopped(is_finished: boolean): void;
 
-        // Own methods of Clutter.Timeline
+        // Methods
 
         /**
          * Adds a named marker that will be hit when the timeline has reached
@@ -40158,7 +40158,7 @@ export namespace Clutter {
     abstract class Transition extends Timeline implements Scriptable {
         static $gtype: GObject.GType<Transition>;
 
-        // Own properties of Clutter.Transition
+        // Properties
 
         /**
          * The #ClutterAnimatable instance currently being animated.
@@ -40196,19 +40196,19 @@ export namespace Clutter {
         get removeOnComplete(): boolean;
         set removeOnComplete(val: boolean);
 
-        // Constructors of Clutter.Transition
+        // Constructors
 
         constructor(properties?: Partial<Transition.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of Clutter.Transition
+        // Virtual methods
 
         vfunc_attached(animatable: Animatable): void;
         vfunc_compute_value(animatable: Animatable, interval: Interval, progress: number): void;
         vfunc_detached(animatable: Animatable): void;
 
-        // Own methods of Clutter.Transition
+        // Methods
 
         /**
          * Retrieves the #ClutterAnimatable set using clutter_transition_set_animatable().
@@ -40769,7 +40769,7 @@ export namespace Clutter {
     class TransitionGroup extends Transition implements Scriptable {
         static $gtype: GObject.GType<TransitionGroup>;
 
-        // Constructors of Clutter.TransitionGroup
+        // Constructors
 
         constructor(properties?: Partial<TransitionGroup.ConstructorProps>, ...args: any[]);
 
@@ -40777,7 +40777,7 @@ export namespace Clutter {
 
         static ['new'](): TransitionGroup;
 
-        // Own methods of Clutter.TransitionGroup
+        // Methods
 
         /**
          * Adds `transition` to `group`.
@@ -41228,7 +41228,7 @@ export namespace Clutter {
     class ZoomAction extends GestureAction {
         static $gtype: GObject.GType<ZoomAction>;
 
-        // Own properties of Clutter.ZoomAction
+        // Properties
 
         /**
          * Constraints the zooming action to the specified axis
@@ -41241,7 +41241,7 @@ export namespace Clutter {
         get zoomAxis(): ZoomAxis;
         set zoomAxis(val: ZoomAxis);
 
-        // Constructors of Clutter.ZoomAction
+        // Constructors
 
         constructor(properties?: Partial<ZoomAction.ConstructorProps>, ...args: any[]);
 
@@ -41249,7 +41249,7 @@ export namespace Clutter {
 
         static ['new'](): ZoomAction;
 
-        // Own signals of Clutter.ZoomAction
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -41264,11 +41264,11 @@ export namespace Clutter {
         ): number;
         emit(signal: 'zoom', actor: Actor, focal_point: Point, factor: number): void;
 
-        // Own virtual methods of Clutter.ZoomAction
+        // Virtual methods
 
         vfunc_zoom(actor: Actor, focal_point: Point, factor: number): boolean;
 
-        // Own methods of Clutter.ZoomAction
+        // Methods
 
         /**
          * Retrieves the focal point of the current zoom
@@ -41300,14 +41300,14 @@ export namespace Clutter {
     class ActorBox {
         static $gtype: GObject.GType<ActorBox>;
 
-        // Own fields of Clutter.ActorBox
+        // Fields
 
         x1: number;
         y1: number;
         x2: number;
         y2: number;
 
-        // Constructors of Clutter.ActorBox
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -41321,14 +41321,14 @@ export namespace Clutter {
 
         static ['new'](x_1: number, y_1: number, x_2: number, y_2: number): ActorBox;
 
-        // Own static methods of Clutter.ActorBox
+        // Static methods
 
         /**
          * Allocates a new #ClutterActorBox.
          */
         static alloc(): ActorBox;
 
-        // Own methods of Clutter.ActorBox
+        // Methods
 
         /**
          * Clamps the components of `box` to the nearest integer
@@ -41451,12 +41451,12 @@ export namespace Clutter {
     class ActorIter {
         static $gtype: GObject.GType<ActorIter>;
 
-        // Constructors of Clutter.ActorIter
+        // Constructors
 
         constructor(properties?: Partial<{}>);
         _init(...args: any[]): void;
 
-        // Own methods of Clutter.ActorIter
+        // Methods
 
         /**
          * Safely destroys the #ClutterActor currently pointer to by the iterator
@@ -41542,7 +41542,7 @@ export namespace Clutter {
     abstract class ActorMetaPrivate {
         static $gtype: GObject.GType<ActorMetaPrivate>;
 
-        // Constructors of Clutter.ActorMetaPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -41550,7 +41550,7 @@ export namespace Clutter {
     abstract class ActorPrivate {
         static $gtype: GObject.GType<ActorPrivate>;
 
-        // Constructors of Clutter.ActorPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -41560,7 +41560,7 @@ export namespace Clutter {
     abstract class AlphaPrivate {
         static $gtype: GObject.GType<AlphaPrivate>;
 
-        // Constructors of Clutter.AlphaPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -41570,7 +41570,7 @@ export namespace Clutter {
     abstract class AnimationPrivate {
         static $gtype: GObject.GType<AnimationPrivate>;
 
-        // Constructors of Clutter.AnimationPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -41582,11 +41582,11 @@ export namespace Clutter {
     abstract class AnimatorKey {
         static $gtype: GObject.GType<AnimatorKey>;
 
-        // Constructors of Clutter.AnimatorKey
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of Clutter.AnimatorKey
+        // Methods
 
         /**
          * Retrieves the mode of a #ClutterAnimator key, for the first key of a
@@ -41636,7 +41636,7 @@ export namespace Clutter {
     abstract class AnimatorPrivate {
         static $gtype: GObject.GType<AnimatorPrivate>;
 
-        // Constructors of Clutter.AnimatorPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -41647,7 +41647,7 @@ export namespace Clutter {
     class AnyEvent {
         static $gtype: GObject.GType<AnyEvent>;
 
-        // Own fields of Clutter.AnyEvent
+        // Fields
 
         type: EventType;
         time: number;
@@ -41655,7 +41655,7 @@ export namespace Clutter {
         stage: Stage;
         source: Actor;
 
-        // Constructors of Clutter.AnyEvent
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -41666,7 +41666,7 @@ export namespace Clutter {
     abstract class BehaviourDepthPrivate {
         static $gtype: GObject.GType<BehaviourDepthPrivate>;
 
-        // Constructors of Clutter.BehaviourDepthPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -41675,7 +41675,7 @@ export namespace Clutter {
     abstract class BehaviourEllipsePrivate {
         static $gtype: GObject.GType<BehaviourEllipsePrivate>;
 
-        // Constructors of Clutter.BehaviourEllipsePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -41684,7 +41684,7 @@ export namespace Clutter {
     abstract class BehaviourOpacityPrivate {
         static $gtype: GObject.GType<BehaviourOpacityPrivate>;
 
-        // Constructors of Clutter.BehaviourOpacityPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -41693,7 +41693,7 @@ export namespace Clutter {
     abstract class BehaviourPathPrivate {
         static $gtype: GObject.GType<BehaviourPathPrivate>;
 
-        // Constructors of Clutter.BehaviourPathPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -41701,7 +41701,7 @@ export namespace Clutter {
     abstract class BehaviourPrivate {
         static $gtype: GObject.GType<BehaviourPrivate>;
 
-        // Constructors of Clutter.BehaviourPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -41710,7 +41710,7 @@ export namespace Clutter {
     abstract class BehaviourRotatePrivate {
         static $gtype: GObject.GType<BehaviourRotatePrivate>;
 
-        // Constructors of Clutter.BehaviourRotatePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -41719,7 +41719,7 @@ export namespace Clutter {
     abstract class BehaviourScalePrivate {
         static $gtype: GObject.GType<BehaviourScalePrivate>;
 
-        // Constructors of Clutter.BehaviourScalePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -41728,7 +41728,7 @@ export namespace Clutter {
     abstract class BinLayoutPrivate {
         static $gtype: GObject.GType<BinLayoutPrivate>;
 
-        // Constructors of Clutter.BinLayoutPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -41741,7 +41741,7 @@ export namespace Clutter {
     abstract class BoxLayoutPrivate {
         static $gtype: GObject.GType<BoxLayoutPrivate>;
 
-        // Constructors of Clutter.BoxLayoutPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -41749,7 +41749,7 @@ export namespace Clutter {
     abstract class BoxPrivate {
         static $gtype: GObject.GType<BoxPrivate>;
 
-        // Constructors of Clutter.BoxPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -41765,7 +41765,7 @@ export namespace Clutter {
     class ButtonEvent {
         static $gtype: GObject.GType<ButtonEvent>;
 
-        // Own fields of Clutter.ButtonEvent
+        // Fields
 
         type: EventType;
         time: number;
@@ -41780,7 +41780,7 @@ export namespace Clutter {
         axes: number;
         device: InputDevice;
 
-        // Constructors of Clutter.ButtonEvent
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -41789,7 +41789,7 @@ export namespace Clutter {
     abstract class CairoTexturePrivate {
         static $gtype: GObject.GType<CairoTexturePrivate>;
 
-        // Constructors of Clutter.CairoTexturePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -41798,7 +41798,7 @@ export namespace Clutter {
     abstract class CanvasPrivate {
         static $gtype: GObject.GType<CanvasPrivate>;
 
-        // Constructors of Clutter.CanvasPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -41808,7 +41808,7 @@ export namespace Clutter {
     abstract class ClickActionPrivate {
         static $gtype: GObject.GType<ClickActionPrivate>;
 
-        // Constructors of Clutter.ClickActionPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -41818,7 +41818,7 @@ export namespace Clutter {
     abstract class ClonePrivate {
         static $gtype: GObject.GType<ClonePrivate>;
 
-        // Constructors of Clutter.ClonePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -41829,14 +41829,14 @@ export namespace Clutter {
     class Color {
         static $gtype: GObject.GType<Color>;
 
-        // Own fields of Clutter.Color
+        // Fields
 
         red: number;
         green: number;
         blue: number;
         alpha: number;
 
-        // Constructors of Clutter.Color
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -41852,7 +41852,7 @@ export namespace Clutter {
 
         static ['new'](red: number, green: number, blue: number, alpha: number): Color;
 
-        // Own static methods of Clutter.Color
+        // Static methods
 
         /**
          * Converts a color expressed in HLS (hue, luminance and saturation)
@@ -41915,7 +41915,7 @@ export namespace Clutter {
          */
         static get_static(color: StaticColor): Color;
 
-        // Own methods of Clutter.Color
+        // Methods
 
         /**
          * Adds `a` to `b` and saves the resulting color inside `result`.
@@ -42029,7 +42029,7 @@ export namespace Clutter {
     class CrossingEvent {
         static $gtype: GObject.GType<CrossingEvent>;
 
-        // Own fields of Clutter.CrossingEvent
+        // Fields
 
         type: EventType;
         time: number;
@@ -42041,7 +42041,7 @@ export namespace Clutter {
         device: InputDevice;
         related: Actor;
 
-        // Constructors of Clutter.CrossingEvent
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -42050,7 +42050,7 @@ export namespace Clutter {
     abstract class DeformEffectPrivate {
         static $gtype: GObject.GType<DeformEffectPrivate>;
 
-        // Constructors of Clutter.DeformEffectPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -42060,7 +42060,7 @@ export namespace Clutter {
     abstract class DeviceManagerPrivate {
         static $gtype: GObject.GType<DeviceManagerPrivate>;
 
-        // Constructors of Clutter.DeviceManagerPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -42069,7 +42069,7 @@ export namespace Clutter {
     abstract class DragActionPrivate {
         static $gtype: GObject.GType<DragActionPrivate>;
 
-        // Constructors of Clutter.DragActionPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -42078,7 +42078,7 @@ export namespace Clutter {
     abstract class DropActionPrivate {
         static $gtype: GObject.GType<DropActionPrivate>;
 
-        // Constructors of Clutter.DropActionPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -42091,7 +42091,7 @@ export namespace Clutter {
     abstract class EventSequence {
         static $gtype: GObject.GType<EventSequence>;
 
-        // Constructors of Clutter.EventSequence
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -42101,7 +42101,7 @@ export namespace Clutter {
     abstract class FlowLayoutPrivate {
         static $gtype: GObject.GType<FlowLayoutPrivate>;
 
-        // Constructors of Clutter.FlowLayoutPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -42112,12 +42112,12 @@ export namespace Clutter {
     class Fog {
         static $gtype: GObject.GType<Fog>;
 
-        // Own fields of Clutter.Fog
+        // Fields
 
         z_near: number;
         z_far: number;
 
-        // Constructors of Clutter.Fog
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -42138,14 +42138,14 @@ export namespace Clutter {
     class Geometry {
         static $gtype: GObject.GType<Geometry>;
 
-        // Own fields of Clutter.Geometry
+        // Fields
 
         x: number;
         y: number;
         width: number;
         height: number;
 
-        // Constructors of Clutter.Geometry
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -42157,7 +42157,7 @@ export namespace Clutter {
         );
         _init(...args: any[]): void;
 
-        // Own methods of Clutter.Geometry
+        // Methods
 
         /**
          * Determines if `geometry0` and geometry1 intersect returning %TRUE if
@@ -42177,7 +42177,7 @@ export namespace Clutter {
     abstract class GestureActionPrivate {
         static $gtype: GObject.GType<GestureActionPrivate>;
 
-        // Constructors of Clutter.GestureActionPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -42186,7 +42186,7 @@ export namespace Clutter {
     abstract class GridLayoutPrivate {
         static $gtype: GObject.GType<GridLayoutPrivate>;
 
-        // Constructors of Clutter.GridLayoutPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -42195,7 +42195,7 @@ export namespace Clutter {
     abstract class GroupPrivate {
         static $gtype: GObject.GType<GroupPrivate>;
 
-        // Constructors of Clutter.GroupPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -42204,7 +42204,7 @@ export namespace Clutter {
     abstract class ImagePrivate {
         static $gtype: GObject.GType<ImagePrivate>;
 
-        // Constructors of Clutter.ImagePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -42214,7 +42214,7 @@ export namespace Clutter {
     abstract class IntervalPrivate {
         static $gtype: GObject.GType<IntervalPrivate>;
 
-        // Constructors of Clutter.IntervalPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -42225,7 +42225,7 @@ export namespace Clutter {
     class KeyEvent {
         static $gtype: GObject.GType<KeyEvent>;
 
-        // Own fields of Clutter.KeyEvent
+        // Fields
 
         type: EventType;
         time: number;
@@ -42238,7 +42238,7 @@ export namespace Clutter {
         unicode_value: number;
         device: InputDevice;
 
-        // Constructors of Clutter.KeyEvent
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -42247,7 +42247,7 @@ export namespace Clutter {
     abstract class KeyframeTransitionPrivate {
         static $gtype: GObject.GType<KeyframeTransitionPrivate>;
 
-        // Constructors of Clutter.KeyframeTransitionPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -42258,12 +42258,12 @@ export namespace Clutter {
     class Knot {
         static $gtype: GObject.GType<Knot>;
 
-        // Own fields of Clutter.Knot
+        // Fields
 
         x: number;
         y: number;
 
-        // Constructors of Clutter.Knot
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -42273,7 +42273,7 @@ export namespace Clutter {
         );
         _init(...args: any[]): void;
 
-        // Own methods of Clutter.Knot
+        // Methods
 
         /**
          * Makes an allocated copy of a knot.
@@ -42298,7 +42298,7 @@ export namespace Clutter {
     abstract class ListModelPrivate {
         static $gtype: GObject.GType<ListModelPrivate>;
 
-        // Constructors of Clutter.ListModelPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -42309,14 +42309,14 @@ export namespace Clutter {
     class Margin {
         static $gtype: GObject.GType<Margin>;
 
-        // Own fields of Clutter.Margin
+        // Fields
 
         left: number;
         right: number;
         top: number;
         bottom: number;
 
-        // Constructors of Clutter.Margin
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -42330,7 +42330,7 @@ export namespace Clutter {
 
         static ['new'](): Margin;
 
-        // Own methods of Clutter.Margin
+        // Methods
 
         /**
          * Creates a new #ClutterMargin and copies the contents of `margin_` into
@@ -42353,18 +42353,18 @@ export namespace Clutter {
     abstract class Matrix {
         static $gtype: GObject.GType<Matrix>;
 
-        // Constructors of Clutter.Matrix
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own static methods of Clutter.Matrix
+        // Static methods
 
         /**
          * Allocates enough memory to hold a #ClutterMatrix.
          */
         static alloc(): Matrix;
 
-        // Own methods of Clutter.Matrix
+        // Methods
 
         /**
          * Frees the memory allocated by clutter_matrix_alloc().
@@ -42406,7 +42406,7 @@ export namespace Clutter {
     abstract class ModelIterPrivate {
         static $gtype: GObject.GType<ModelIterPrivate>;
 
-        // Constructors of Clutter.ModelIterPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -42414,7 +42414,7 @@ export namespace Clutter {
     abstract class ModelPrivate {
         static $gtype: GObject.GType<ModelPrivate>;
 
-        // Constructors of Clutter.ModelPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -42425,7 +42425,7 @@ export namespace Clutter {
     class MotionEvent {
         static $gtype: GObject.GType<MotionEvent>;
 
-        // Own fields of Clutter.MotionEvent
+        // Fields
 
         type: EventType;
         time: number;
@@ -42438,7 +42438,7 @@ export namespace Clutter {
         axes: number;
         device: InputDevice;
 
-        // Constructors of Clutter.MotionEvent
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -42447,7 +42447,7 @@ export namespace Clutter {
     abstract class OffscreenEffectPrivate {
         static $gtype: GObject.GType<OffscreenEffectPrivate>;
 
-        // Constructors of Clutter.OffscreenEffectPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -42457,7 +42457,7 @@ export namespace Clutter {
     abstract class PaintNodePrivate {
         static $gtype: GObject.GType<PaintNodePrivate>;
 
-        // Constructors of Clutter.PaintNodePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -42479,11 +42479,11 @@ export namespace Clutter {
     abstract class PaintVolume {
         static $gtype: GObject.GType<PaintVolume>;
 
-        // Constructors of Clutter.PaintVolume
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of Clutter.PaintVolume
+        // Methods
 
         /**
          * Copies `pv` into a new #ClutterPaintVolume
@@ -42649,7 +42649,7 @@ export namespace Clutter {
     abstract class PanActionPrivate {
         static $gtype: GObject.GType<PanActionPrivate>;
 
-        // Constructors of Clutter.PanActionPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -42667,16 +42667,16 @@ export namespace Clutter {
     class PathNode {
         static $gtype: GObject.GType<PathNode>;
 
-        // Own fields of Clutter.PathNode
+        // Fields
 
         type: PathNodeType;
         points: Knot[];
 
-        // Constructors of Clutter.PathNode
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of Clutter.PathNode
+        // Methods
 
         /**
          * Makes an allocated copy of a node.
@@ -42699,7 +42699,7 @@ export namespace Clutter {
     abstract class PathPrivate {
         static $gtype: GObject.GType<PathPrivate>;
 
-        // Constructors of Clutter.PathPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -42711,14 +42711,14 @@ export namespace Clutter {
     class Perspective {
         static $gtype: GObject.GType<Perspective>;
 
-        // Own fields of Clutter.Perspective
+        // Fields
 
         fovy: number;
         aspect: number;
         z_near: number;
         z_far: number;
 
-        // Constructors of Clutter.Perspective
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -42738,12 +42738,12 @@ export namespace Clutter {
     class Point {
         static $gtype: GObject.GType<Point>;
 
-        // Own fields of Clutter.Point
+        // Fields
 
         x: number;
         y: number;
 
-        // Constructors of Clutter.Point
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -42755,7 +42755,7 @@ export namespace Clutter {
 
         static alloc(): Point;
 
-        // Own static methods of Clutter.Point
+        // Static methods
 
         /**
          * A point centered at (0, 0).
@@ -42764,7 +42764,7 @@ export namespace Clutter {
          */
         static zero(): Point;
 
-        // Own methods of Clutter.Point
+        // Methods
 
         /**
          * Creates a new #ClutterPoint with the same coordinates of `point`.
@@ -42800,7 +42800,7 @@ export namespace Clutter {
     abstract class PropertyTransitionPrivate {
         static $gtype: GObject.GType<PropertyTransitionPrivate>;
 
-        // Constructors of Clutter.PropertyTransitionPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -42823,12 +42823,12 @@ export namespace Clutter {
     class Rect {
         static $gtype: GObject.GType<Rect>;
 
-        // Own fields of Clutter.Rect
+        // Fields
 
         origin: Point;
         size: Size;
 
-        // Constructors of Clutter.Rect
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -42840,7 +42840,7 @@ export namespace Clutter {
 
         static alloc(): Rect;
 
-        // Own static methods of Clutter.Rect
+        // Static methods
 
         /**
          * A #ClutterRect with #ClutterRect.origin set at (0, 0) and a size
@@ -42850,7 +42850,7 @@ export namespace Clutter {
          */
         static zero(): Rect;
 
-        // Own methods of Clutter.Rect
+        // Methods
 
         /**
          * Rounds the origin of `rect` downwards to the nearest integer, and rounds
@@ -42987,7 +42987,7 @@ export namespace Clutter {
     abstract class RectanglePrivate {
         static $gtype: GObject.GType<RectanglePrivate>;
 
-        // Constructors of Clutter.RectanglePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -42996,7 +42996,7 @@ export namespace Clutter {
     abstract class RotateActionPrivate {
         static $gtype: GObject.GType<RotateActionPrivate>;
 
-        // Constructors of Clutter.RotateActionPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -43005,7 +43005,7 @@ export namespace Clutter {
     abstract class ScorePrivate {
         static $gtype: GObject.GType<ScorePrivate>;
 
-        // Constructors of Clutter.ScorePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -43014,7 +43014,7 @@ export namespace Clutter {
     abstract class ScriptPrivate {
         static $gtype: GObject.GType<ScriptPrivate>;
 
-        // Constructors of Clutter.ScriptPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -43024,7 +43024,7 @@ export namespace Clutter {
     abstract class ScrollActorPrivate {
         static $gtype: GObject.GType<ScrollActorPrivate>;
 
-        // Constructors of Clutter.ScrollActorPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -43035,7 +43035,7 @@ export namespace Clutter {
     class ScrollEvent {
         static $gtype: GObject.GType<ScrollEvent>;
 
-        // Own fields of Clutter.ScrollEvent
+        // Fields
 
         type: EventType;
         time: number;
@@ -43051,7 +43051,7 @@ export namespace Clutter {
         scroll_source: ScrollSource;
         finish_flags: ScrollFinishFlags;
 
-        // Constructors of Clutter.ScrollEvent
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -43062,7 +43062,7 @@ export namespace Clutter {
     abstract class ShaderEffectPrivate {
         static $gtype: GObject.GType<ShaderEffectPrivate>;
 
-        // Constructors of Clutter.ShaderEffectPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -43070,7 +43070,7 @@ export namespace Clutter {
     abstract class ShaderPrivate {
         static $gtype: GObject.GType<ShaderPrivate>;
 
-        // Constructors of Clutter.ShaderPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -43081,12 +43081,12 @@ export namespace Clutter {
     class Size {
         static $gtype: GObject.GType<Size>;
 
-        // Own fields of Clutter.Size
+        // Fields
 
         width: number;
         height: number;
 
-        // Constructors of Clutter.Size
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -43098,7 +43098,7 @@ export namespace Clutter {
 
         static alloc(): Size;
 
-        // Own methods of Clutter.Size
+        // Methods
 
         /**
          * Creates a new #ClutterSize and duplicates `size`.
@@ -43130,7 +43130,7 @@ export namespace Clutter {
     abstract class StagePrivate {
         static $gtype: GObject.GType<StagePrivate>;
 
-        // Constructors of Clutter.StagePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -43141,7 +43141,7 @@ export namespace Clutter {
     class StageStateEvent {
         static $gtype: GObject.GType<StageStateEvent>;
 
-        // Own fields of Clutter.StageStateEvent
+        // Fields
 
         type: EventType;
         time: number;
@@ -43151,7 +43151,7 @@ export namespace Clutter {
         changed_mask: StageState;
         new_state: StageState;
 
-        // Constructors of Clutter.StageStateEvent
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -43164,11 +43164,11 @@ export namespace Clutter {
     abstract class StateKey {
         static $gtype: GObject.GType<StateKey>;
 
-        // Constructors of Clutter.StateKey
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of Clutter.StateKey
+        // Methods
 
         /**
          * Retrieves the easing mode used for `state_key`.
@@ -43234,7 +43234,7 @@ export namespace Clutter {
     abstract class StatePrivate {
         static $gtype: GObject.GType<StatePrivate>;
 
-        // Constructors of Clutter.StatePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -43243,7 +43243,7 @@ export namespace Clutter {
     abstract class SwipeActionPrivate {
         static $gtype: GObject.GType<SwipeActionPrivate>;
 
-        // Constructors of Clutter.SwipeActionPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -43252,7 +43252,7 @@ export namespace Clutter {
     abstract class TableLayoutPrivate {
         static $gtype: GObject.GType<TableLayoutPrivate>;
 
-        // Constructors of Clutter.TableLayoutPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -43261,7 +43261,7 @@ export namespace Clutter {
     abstract class TapActionPrivate {
         static $gtype: GObject.GType<TapActionPrivate>;
 
-        // Constructors of Clutter.TapActionPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -43270,7 +43270,7 @@ export namespace Clutter {
     abstract class TextBufferPrivate {
         static $gtype: GObject.GType<TextBufferPrivate>;
 
-        // Constructors of Clutter.TextBufferPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -43280,7 +43280,7 @@ export namespace Clutter {
     abstract class TextPrivate {
         static $gtype: GObject.GType<TextPrivate>;
 
-        // Constructors of Clutter.TextPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -43290,7 +43290,7 @@ export namespace Clutter {
     abstract class TexturePrivate {
         static $gtype: GObject.GType<TexturePrivate>;
 
-        // Constructors of Clutter.TexturePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -43299,7 +43299,7 @@ export namespace Clutter {
     abstract class TimelinePrivate {
         static $gtype: GObject.GType<TimelinePrivate>;
 
-        // Constructors of Clutter.TimelinePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -43321,7 +43321,7 @@ export namespace Clutter {
     class TouchEvent {
         static $gtype: GObject.GType<TouchEvent>;
 
-        // Own fields of Clutter.TouchEvent
+        // Fields
 
         type: EventType;
         time: number;
@@ -43334,7 +43334,7 @@ export namespace Clutter {
         axes: number;
         device: InputDevice;
 
-        // Constructors of Clutter.TouchEvent
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -43351,7 +43351,7 @@ export namespace Clutter {
     class TouchpadPinchEvent {
         static $gtype: GObject.GType<TouchpadPinchEvent>;
 
-        // Own fields of Clutter.TouchpadPinchEvent
+        // Fields
 
         type: EventType;
         time: number;
@@ -43366,7 +43366,7 @@ export namespace Clutter {
         angle_delta: number;
         scale: number;
 
-        // Constructors of Clutter.TouchpadPinchEvent
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -43378,7 +43378,7 @@ export namespace Clutter {
     class TouchpadSwipeEvent {
         static $gtype: GObject.GType<TouchpadSwipeEvent>;
 
-        // Own fields of Clutter.TouchpadSwipeEvent
+        // Fields
 
         type: EventType;
         time: number;
@@ -43392,7 +43392,7 @@ export namespace Clutter {
         dx: number;
         dy: number;
 
-        // Constructors of Clutter.TouchpadSwipeEvent
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -43402,7 +43402,7 @@ export namespace Clutter {
     abstract class TransitionGroupPrivate {
         static $gtype: GObject.GType<TransitionGroupPrivate>;
 
-        // Constructors of Clutter.TransitionGroupPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -43410,7 +43410,7 @@ export namespace Clutter {
     abstract class TransitionPrivate {
         static $gtype: GObject.GType<TransitionPrivate>;
 
-        // Constructors of Clutter.TransitionPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -43422,11 +43422,11 @@ export namespace Clutter {
     class Units {
         static $gtype: GObject.GType<Units>;
 
-        // Constructors of Clutter.Units
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own static methods of Clutter.Units
+        // Static methods
 
         /**
          * Stores a value in centimeters inside `units`
@@ -43504,7 +43504,7 @@ export namespace Clutter {
          */
         static from_string(str: string): [boolean, Units];
 
-        // Own methods of Clutter.Units
+        // Methods
 
         /**
          * Copies `units`
@@ -43553,13 +43553,13 @@ export namespace Clutter {
     class Vertex {
         static $gtype: GObject.GType<Vertex>;
 
-        // Own fields of Clutter.Vertex
+        // Fields
 
         x: number;
         y: number;
         z: number;
 
-        // Constructors of Clutter.Vertex
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -43574,7 +43574,7 @@ export namespace Clutter {
 
         static ['new'](x: number, y: number, z: number): Vertex;
 
-        // Own methods of Clutter.Vertex
+        // Methods
 
         /**
          * Copies `vertex`
@@ -43606,7 +43606,7 @@ export namespace Clutter {
     abstract class ZoomActionPrivate {
         static $gtype: GObject.GType<ZoomActionPrivate>;
 
-        // Constructors of Clutter.ZoomActionPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -43617,14 +43617,14 @@ export namespace Clutter {
     class Event {
         static $gtype: GObject.GType<Event>;
 
-        // Constructors of Clutter.Event
+        // Constructors
 
         constructor(type: EventType);
         _init(...args: any[]): void;
 
         static ['new'](type: EventType): Event;
 
-        // Own static methods of Clutter.Event
+        // Static methods
 
         /**
          * Adds a function which will be called for all events that Clutter
@@ -43651,7 +43651,7 @@ export namespace Clutter {
          */
         static remove_filter(id: number): void;
 
-        // Own methods of Clutter.Event
+        // Methods
 
         /**
          * Copies `event`.
@@ -43971,7 +43971,7 @@ export namespace Clutter {
         prototype: Animatable;
     }
     interface Animatable extends GObject.Object {
-        // Own methods of Clutter.Animatable
+        // Methods
 
         /**
          * Calls the animate_property() virtual function for `animatable`.
@@ -44033,7 +44033,7 @@ export namespace Clutter {
          */
         set_final_state(property_name: string, value: GObject.Value | any): void;
 
-        // Own virtual methods of Clutter.Animatable
+        // Virtual methods
 
         /**
          * Calls the animate_property() virtual function for `animatable`.
@@ -44118,7 +44118,7 @@ export namespace Clutter {
         class_list_child_properties(klass: typeof GObject.Object): GObject.ParamSpec[];
     }
     interface Container extends GObject.Object {
-        // Own methods of Clutter.Container
+        // Methods
 
         /**
          * Adds a #ClutterActor to `container`. This function will emit the
@@ -44263,7 +44263,7 @@ export namespace Clutter {
          */
         sort_depth_order(): void;
 
-        // Own virtual methods of Clutter.Container
+        // Virtual methods
 
         vfunc_actor_added(actor: Actor): void;
         vfunc_actor_removed(actor: Actor): void;
@@ -44391,7 +44391,7 @@ export namespace Clutter {
         prototype: Content;
     }
     interface Content extends GObject.Object {
-        // Own methods of Clutter.Content
+        // Methods
 
         /**
          * Retrieves the natural size of the `content,` if any.
@@ -44411,7 +44411,7 @@ export namespace Clutter {
          */
         invalidate(): void;
 
-        // Own virtual methods of Clutter.Content
+        // Virtual methods
 
         vfunc_attached(actor: Actor): void;
         vfunc_detached(actor: Actor): void;
@@ -44462,7 +44462,7 @@ export namespace Clutter {
         prototype: Media;
     }
     interface Media extends GObject.Object {
-        // Own properties of Clutter.Media
+        // Properties
 
         /**
          * The volume of the audio, as a normalized value between
@@ -44539,7 +44539,7 @@ export namespace Clutter {
         get uri(): string;
         set uri(val: string);
 
-        // Own methods of Clutter.Media
+        // Methods
 
         /**
          * Retrieves the playback volume of `media`.
@@ -44638,7 +44638,7 @@ export namespace Clutter {
          */
         set_uri(uri: string): void;
 
-        // Own virtual methods of Clutter.Media
+        // Virtual methods
 
         vfunc_eos(): void;
         vfunc_error(error: GLib.Error): void;
@@ -44657,7 +44657,7 @@ export namespace Clutter {
         prototype: Scriptable;
     }
     interface Scriptable extends GObject.Object {
-        // Own methods of Clutter.Scriptable
+        // Methods
 
         /**
          * Retrieves the id of `scriptable` set using clutter_scriptable_set_id().
@@ -44693,7 +44693,7 @@ export namespace Clutter {
          */
         set_id(id_: string): void;
 
-        // Own virtual methods of Clutter.Scriptable
+        // Virtual methods
 
         /**
          * Retrieves the id of `scriptable` set using clutter_scriptable_set_id().

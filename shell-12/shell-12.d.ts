@@ -371,7 +371,7 @@ export namespace Shell {
     class App extends GObject.Object {
         static $gtype: GObject.GType<App>;
 
-        // Own properties of Shell.App
+        // Properties
 
         /**
          * The #GDBusActionGroup associated with this ShellApp, if any. See the
@@ -410,13 +410,13 @@ export namespace Shell {
          */
         get state(): AppState;
 
-        // Constructors of Shell.App
+        // Constructors
 
         constructor(properties?: Partial<App.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of Shell.App
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -425,7 +425,7 @@ export namespace Shell {
         connect_after(signal: 'windows-changed', callback: (_source: this) => void): number;
         emit(signal: 'windows-changed'): void;
 
-        // Own methods of Shell.App
+        // Methods
 
         /**
          * Like shell_app_activate_full(), but using the default workspace and
@@ -550,13 +550,13 @@ export namespace Shell {
     class AppSystem extends GObject.Object {
         static $gtype: GObject.GType<AppSystem>;
 
-        // Constructors of Shell.AppSystem
+        // Constructors
 
         constructor(properties?: Partial<AppSystem.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of Shell.AppSystem
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -568,7 +568,7 @@ export namespace Shell {
         connect_after(signal: 'installed-changed', callback: (_source: this) => void): number;
         emit(signal: 'installed-changed'): void;
 
-        // Own static methods of Shell.AppSystem
+        // Static methods
 
         static get_default(): AppSystem;
         /**
@@ -578,7 +578,7 @@ export namespace Shell {
          */
         static search(search_string: string): string[][];
 
-        // Own methods of Shell.AppSystem
+        // Methods
 
         /**
          * Returns all installed apps, as a list of #GAppInfo
@@ -630,17 +630,17 @@ export namespace Shell {
     class AppUsage extends GObject.Object {
         static $gtype: GObject.GType<AppUsage>;
 
-        // Constructors of Shell.AppUsage
+        // Constructors
 
         constructor(properties?: Partial<AppUsage.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of Shell.AppUsage
+        // Static methods
 
         static get_default(): AppUsage;
 
-        // Own methods of Shell.AppUsage
+        // Methods
 
         /**
          * Compare `id_a` and `id_b` based on frequency of use.
@@ -665,7 +665,7 @@ export namespace Shell {
     class BlurEffect extends Clutter.Effect {
         static $gtype: GObject.GType<BlurEffect>;
 
-        // Own properties of Shell.BlurEffect
+        // Properties
 
         get brightness(): number;
         set brightness(val: number);
@@ -674,7 +674,7 @@ export namespace Shell {
         get sigma(): number;
         set sigma(val: number);
 
-        // Constructors of Shell.BlurEffect
+        // Constructors
 
         constructor(properties?: Partial<BlurEffect.ConstructorProps>, ...args: any[]);
 
@@ -682,7 +682,7 @@ export namespace Shell {
 
         static ['new'](): BlurEffect;
 
-        // Own methods of Shell.BlurEffect
+        // Methods
 
         get_brightness(): number;
         get_mode(): BlurMode;
@@ -701,17 +701,17 @@ export namespace Shell {
     class GLSLEffect extends Clutter.OffscreenEffect {
         static $gtype: GObject.GType<GLSLEffect>;
 
-        // Constructors of Shell.GLSLEffect
+        // Constructors
 
         constructor(properties?: Partial<GLSLEffect.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of Shell.GLSLEffect
+        // Virtual methods
 
         vfunc_build_pipeline(): void;
 
-        // Own methods of Shell.GLSLEffect
+        // Methods
 
         /**
          * Adds a GLSL snippet to the pipeline used for drawing the effect texture.
@@ -787,7 +787,7 @@ export namespace Shell {
     class Global extends GObject.Object {
         static $gtype: GObject.GType<Global>;
 
-        // Own properties of Shell.Global
+        // Properties
 
         get backend(): Meta.Backend;
         get compositor(): Meta.Compositor;
@@ -829,13 +829,13 @@ export namespace Shell {
         get workspace_manager(): Meta.WorkspaceManager;
         get workspaceManager(): Meta.WorkspaceManager;
 
-        // Constructors of Shell.Global
+        // Constructors
 
         constructor(properties?: Partial<Global.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of Shell.Global
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -850,14 +850,14 @@ export namespace Shell {
         connect_after(signal: 'shutdown', callback: (_source: this) => void): number;
         emit(signal: 'shutdown'): void;
 
-        // Own static methods of Shell.Global
+        // Static methods
 
         /**
          * Gets the singleton global object that represents the desktop.
          */
         static get(): Global;
 
-        // Own methods of Shell.Global
+        // Methods
 
         /**
          * Marks that we are currently doing work. This is used to to track
@@ -996,7 +996,7 @@ export namespace Shell {
     class InvertLightnessEffect extends Clutter.OffscreenEffect {
         static $gtype: GObject.GType<InvertLightnessEffect>;
 
-        // Constructors of Shell.InvertLightnessEffect
+        // Constructors
 
         constructor(properties?: Partial<InvertLightnessEffect.ConstructorProps>, ...args: any[]);
 
@@ -1037,7 +1037,7 @@ export namespace Shell {
     class KeyringPrompt extends GObject.Object implements Gcr.Prompt {
         static $gtype: GObject.GType<KeyringPrompt>;
 
-        // Own properties of Shell.KeyringPrompt
+        // Properties
 
         /**
          * Whether the choice check box is visible or not.
@@ -1092,7 +1092,7 @@ export namespace Shell {
          */
         get warningVisible(): boolean;
 
-        // Constructors of Shell.KeyringPrompt
+        // Constructors
 
         constructor(properties?: Partial<KeyringPrompt.ConstructorProps>, ...args: any[]);
 
@@ -1100,7 +1100,7 @@ export namespace Shell {
 
         static ['new'](): KeyringPrompt;
 
-        // Own signals of Shell.KeyringPrompt
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -1112,7 +1112,7 @@ export namespace Shell {
         connect_after(signal: 'show-password', callback: (_source: this) => void): number;
         emit(signal: 'show-password'): void;
 
-        // Own methods of Shell.KeyringPrompt
+        // Methods
 
         /**
          * Called by implementation when the prompt is cancelled.
@@ -2065,7 +2065,7 @@ export namespace Shell {
     class MountOperation extends Gio.MountOperation {
         static $gtype: GObject.GType<MountOperation>;
 
-        // Constructors of Shell.MountOperation
+        // Constructors
 
         constructor(properties?: Partial<MountOperation.ConstructorProps>, ...args: any[]);
 
@@ -2073,7 +2073,7 @@ export namespace Shell {
 
         static ['new'](): MountOperation;
 
-        // Own signals of Shell.MountOperation
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -2082,7 +2082,7 @@ export namespace Shell {
         connect_after(signal: 'show-processes-2', callback: (_source: this) => void): number;
         emit(signal: 'show-processes-2'): void;
 
-        // Own methods of Shell.MountOperation
+        // Methods
 
         get_show_processes_choices(): string[];
         get_show_processes_message(): string;
@@ -2111,13 +2111,13 @@ export namespace Shell {
     class NetworkAgent extends NM.SecretAgentOld implements Gio.AsyncInitable<NetworkAgent>, Gio.Initable {
         static $gtype: GObject.GType<NetworkAgent>;
 
-        // Constructors of Shell.NetworkAgent
+        // Constructors
 
         constructor(properties?: Partial<NetworkAgent.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of Shell.NetworkAgent
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -2135,7 +2135,7 @@ export namespace Shell {
         ): number;
         emit(signal: 'new-request', object: string, p0: NM.Connection, p1: string, p2: string[], p3: number): void;
 
-        // Own methods of Shell.NetworkAgent
+        // Methods
 
         add_vpn_secret(request_id: string, setting_key: string, setting_value: string): void;
         respond(request_id: string, response: NetworkAgentResponse): void;
@@ -2752,13 +2752,13 @@ export namespace Shell {
     class PerfLog extends GObject.Object {
         static $gtype: GObject.GType<PerfLog>;
 
-        // Constructors of Shell.PerfLog
+        // Constructors
 
         constructor(properties?: Partial<PerfLog.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of Shell.PerfLog
+        // Static methods
 
         /**
          * Gets the global singleton performance log. This is initially disabled
@@ -2766,7 +2766,7 @@ export namespace Shell {
          */
         static get_default(): PerfLog;
 
-        // Own methods of Shell.PerfLog
+        // Methods
 
         /**
          * Adds a function that will be called before statistics are recorded.
@@ -2895,7 +2895,7 @@ export namespace Shell {
     class PolkitAuthenticationAgent extends PolkitAgent.Listener {
         static $gtype: GObject.GType<PolkitAuthenticationAgent>;
 
-        // Constructors of Shell.PolkitAuthenticationAgent
+        // Constructors
 
         constructor(properties?: Partial<PolkitAuthenticationAgent.ConstructorProps>, ...args: any[]);
 
@@ -2903,7 +2903,7 @@ export namespace Shell {
 
         static ['new'](): PolkitAuthenticationAgent;
 
-        // Own signals of Shell.PolkitAuthenticationAgent
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -2921,7 +2921,7 @@ export namespace Shell {
         ): number;
         emit(signal: 'initiate', object: string, p0: string, p1: string, p2: string, p3: string[]): void;
 
-        // Own methods of Shell.PolkitAuthenticationAgent
+        // Methods
 
         complete(dismissed: boolean): void;
         register(): void;
@@ -2945,7 +2945,7 @@ export namespace Shell {
     class Screenshot extends GObject.Object {
         static $gtype: GObject.GType<Screenshot>;
 
-        // Constructors of Shell.Screenshot
+        // Constructors
 
         constructor(properties?: Partial<Screenshot.ConstructorProps>, ...args: any[]);
 
@@ -2953,7 +2953,7 @@ export namespace Shell {
 
         static ['new'](): Screenshot;
 
-        // Own signals of Shell.Screenshot
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -2962,7 +2962,7 @@ export namespace Shell {
         connect_after(signal: 'screenshot-taken', callback: (_source: this, object: Meta.Rectangle) => void): number;
         emit(signal: 'screenshot-taken', object: Meta.Rectangle): void;
 
-        // Own static methods of Shell.Screenshot
+        // Static methods
 
         /**
          * Composite a rectangle defined by x, y, width, height from the texture to a
@@ -3001,7 +3001,7 @@ export namespace Shell {
          */
         static composite_to_stream_finish(result: Gio.AsyncResult): GdkPixbuf.Pixbuf | null;
 
-        // Own methods of Shell.Screenshot
+        // Methods
 
         /**
          * Picks the pixel at `x,` `y` and returns its color as #ClutterColor.
@@ -3107,7 +3107,7 @@ export namespace Shell {
     class SecureTextBuffer extends Clutter.TextBuffer {
         static $gtype: GObject.GType<SecureTextBuffer>;
 
-        // Constructors of Shell.SecureTextBuffer
+        // Constructors
 
         constructor(properties?: Partial<SecureTextBuffer.ConstructorProps>, ...args: any[]);
 
@@ -3133,7 +3133,7 @@ export namespace Shell {
     {
         static $gtype: GObject.GType<SquareBin>;
 
-        // Constructors of Shell.SquareBin
+        // Constructors
 
         constructor(properties?: Partial<SquareBin.ConstructorProps>, ...args: any[]);
 
@@ -3715,7 +3715,7 @@ export namespace Shell {
     {
         static $gtype: GObject.GType<Stack>;
 
-        // Constructors of Shell.Stack
+        // Constructors
 
         constructor(properties?: Partial<Stack.ConstructorProps>, ...args: any[]);
 
@@ -4302,20 +4302,20 @@ export namespace Shell {
     {
         static $gtype: GObject.GType<TrayIcon>;
 
-        // Own properties of Shell.TrayIcon
+        // Properties
 
         get pid(): number;
         get title(): string;
         get wm_class(): string;
         get wmClass(): string;
 
-        // Constructors of Shell.TrayIcon
+        // Constructors
 
         constructor(properties?: Partial<TrayIcon.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Shell.TrayIcon
+        // Methods
 
         /**
          * Fakes a press and release on `icon`. `event` must be a
@@ -4908,12 +4908,12 @@ export namespace Shell {
     class TrayManager extends GObject.Object {
         static $gtype: GObject.GType<TrayManager>;
 
-        // Own properties of Shell.TrayManager
+        // Properties
 
         get bg_color(): Clutter.Color;
         get bgColor(): Clutter.Color;
 
-        // Constructors of Shell.TrayManager
+        // Constructors
 
         constructor(properties?: Partial<TrayManager.ConstructorProps>, ...args: any[]);
 
@@ -4921,7 +4921,7 @@ export namespace Shell {
 
         static ['new'](): TrayManager;
 
-        // Own signals of Shell.TrayManager
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -4933,7 +4933,7 @@ export namespace Shell {
         connect_after(signal: 'tray-icon-removed', callback: (_source: this, object: Clutter.Actor) => void): number;
         emit(signal: 'tray-icon-removed', object: Clutter.Actor): void;
 
-        // Own methods of Shell.TrayManager
+        // Methods
 
         manage_screen(theme_widget: St.Widget): void;
         unmanage_screen(): void;
@@ -5014,7 +5014,7 @@ export namespace Shell {
     class WM extends GObject.Object {
         static $gtype: GObject.GType<WM>;
 
-        // Constructors of Shell.WM
+        // Constructors
 
         constructor(properties?: Partial<WM.ConstructorProps>, ...args: any[]);
 
@@ -5022,7 +5022,7 @@ export namespace Shell {
 
         static ['new'](plugin: Meta.Plugin): WM;
 
-        // Own signals of Shell.WM
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -5136,7 +5136,7 @@ export namespace Shell {
         connect_after(signal: 'unminimize', callback: (_source: this, object: Meta.WindowActor) => void): number;
         emit(signal: 'unminimize', object: Meta.WindowActor): void;
 
-        // Own methods of Shell.WM
+        // Methods
 
         /**
          * The plugin must call this after the user responded to the confirmation dialog.
@@ -5191,14 +5191,14 @@ export namespace Shell {
     {
         static $gtype: GObject.GType<WindowPreview>;
 
-        // Own properties of Shell.WindowPreview
+        // Properties
 
         get window_container(): Clutter.Actor;
         set window_container(val: Clutter.Actor);
         get windowContainer(): Clutter.Actor;
         set windowContainer(val: Clutter.Actor);
 
-        // Constructors of Shell.WindowPreview
+        // Constructors
 
         constructor(properties?: Partial<WindowPreview.ConstructorProps>, ...args: any[]);
 
@@ -5775,18 +5775,18 @@ export namespace Shell {
     class WindowPreviewLayout extends Clutter.LayoutManager {
         static $gtype: GObject.GType<WindowPreviewLayout>;
 
-        // Own properties of Shell.WindowPreviewLayout
+        // Properties
 
         get bounding_box(): Clutter.ActorBox;
         get boundingBox(): Clutter.ActorBox;
 
-        // Constructors of Shell.WindowPreviewLayout
+        // Constructors
 
         constructor(properties?: Partial<WindowPreviewLayout.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Shell.WindowPreviewLayout
+        // Methods
 
         /**
          * Creates a ClutterActor drawing the texture of `window` and adds it
@@ -5834,18 +5834,18 @@ export namespace Shell {
     class WindowTracker extends GObject.Object {
         static $gtype: GObject.GType<WindowTracker>;
 
-        // Own properties of Shell.WindowTracker
+        // Properties
 
         get focus_app(): App;
         get focusApp(): App;
 
-        // Constructors of Shell.WindowTracker
+        // Constructors
 
         constructor(properties?: Partial<WindowTracker.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of Shell.WindowTracker
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -5863,11 +5863,11 @@ export namespace Shell {
         connect_after(signal: 'tracked-windows-changed', callback: (_source: this) => void): number;
         emit(signal: 'tracked-windows-changed'): void;
 
-        // Own static methods of Shell.WindowTracker
+        // Static methods
 
         static get_default(): WindowTracker;
 
-        // Own methods of Shell.WindowTracker
+        // Methods
 
         /**
          * Look up the application corresponding to a process.
@@ -5901,7 +5901,7 @@ export namespace Shell {
     {
         static $gtype: GObject.GType<WorkspaceBackground>;
 
-        // Own properties of Shell.WorkspaceBackground
+        // Properties
 
         get monitor_index(): number;
         get monitorIndex(): number;
@@ -5910,7 +5910,7 @@ export namespace Shell {
         get stateAdjustmentValue(): number;
         set stateAdjustmentValue(val: number);
 
-        // Constructors of Shell.WorkspaceBackground
+        // Constructors
 
         constructor(properties?: Partial<WorkspaceBackground.ConstructorProps>, ...args: any[]);
 
@@ -6486,7 +6486,7 @@ export namespace Shell {
     class MemoryInfo {
         static $gtype: GObject.GType<MemoryInfo>;
 
-        // Own fields of Shell.MemoryInfo
+        // Fields
 
         glibc_uordblks: number;
         js_bytes: number;
@@ -6496,7 +6496,7 @@ export namespace Shell {
         gjs_closure: number;
         last_gc_seconds_ago: number;
 
-        // Constructors of Shell.MemoryInfo
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -6517,7 +6517,7 @@ export namespace Shell {
     abstract class NetworkAgentPrivate {
         static $gtype: GObject.GType<NetworkAgentPrivate>;
 
-        // Constructors of Shell.NetworkAgentPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -6536,7 +6536,7 @@ export namespace Shell {
     abstract class WindowPreviewLayoutPrivate {
         static $gtype: GObject.GType<WindowPreviewLayoutPrivate>;
 
-        // Constructors of Shell.WindowPreviewLayoutPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }

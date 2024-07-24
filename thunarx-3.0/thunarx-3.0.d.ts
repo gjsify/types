@@ -87,7 +87,7 @@ export namespace Thunarx {
     class Menu extends GObject.Object {
         static $gtype: GObject.GType<Menu>;
 
-        // Constructors of Thunarx.Menu
+        // Constructors
 
         constructor(properties?: Partial<Menu.ConstructorProps>, ...args: any[]);
 
@@ -95,7 +95,7 @@ export namespace Thunarx {
 
         static ['new'](): Menu;
 
-        // Own methods of Thunarx.Menu
+        // Methods
 
         append_item(item: MenuItem): void;
         get_items(): MenuItem[];
@@ -125,7 +125,7 @@ export namespace Thunarx {
     class MenuItem extends GObject.Object {
         static $gtype: GObject.GType<MenuItem>;
 
-        // Own properties of Thunarx.MenuItem
+        // Properties
 
         get icon(): string;
         set icon(val: string);
@@ -141,7 +141,7 @@ export namespace Thunarx {
         get tooltip(): string;
         set tooltip(val: string);
 
-        // Constructors of Thunarx.MenuItem
+        // Constructors
 
         constructor(properties?: Partial<MenuItem.ConstructorProps>, ...args: any[]);
 
@@ -149,7 +149,7 @@ export namespace Thunarx {
 
         static ['new'](name: string, label: string, tooltip: string, icon: string): MenuItem;
 
-        // Own signals of Thunarx.MenuItem
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -158,15 +158,15 @@ export namespace Thunarx {
         connect_after(signal: 'activate', callback: (_source: this) => void): number;
         emit(signal: 'activate'): void;
 
-        // Own static methods of Thunarx.MenuItem
+        // Static methods
 
         static list_free(items: MenuItem[]): void;
 
-        // Own virtual methods of Thunarx.MenuItem
+        // Virtual methods
 
         vfunc_activate(): void;
 
-        // Own methods of Thunarx.MenuItem
+        // Methods
 
         /**
          * Emits the activate signal.
@@ -204,7 +204,7 @@ export namespace Thunarx {
     class PropertyPage extends Gtk.Bin implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<PropertyPage>;
 
-        // Own properties of Thunarx.PropertyPage
+        // Properties
 
         get label(): string;
         set label(val: string);
@@ -213,7 +213,7 @@ export namespace Thunarx {
         get labelWidget(): Gtk.Widget;
         set labelWidget(val: Gtk.Widget);
 
-        // Constructors of Thunarx.PropertyPage
+        // Constructors
 
         constructor(properties?: Partial<PropertyPage.ConstructorProps>, ...args: any[]);
 
@@ -223,7 +223,7 @@ export namespace Thunarx {
 
         static new_with_label_widget(label_widget: Gtk.Widget): PropertyPage;
 
-        // Own methods of Thunarx.PropertyPage
+        // Methods
 
         /**
          * If the `property_page'`s label widget is a #GtkLabel, returns the text
@@ -663,13 +663,13 @@ export namespace Thunarx {
     class ProviderFactory extends GObject.Object {
         static $gtype: GObject.GType<ProviderFactory>;
 
-        // Constructors of Thunarx.ProviderFactory
+        // Constructors
 
         constructor(properties?: Partial<ProviderFactory.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of Thunarx.ProviderFactory
+        // Static methods
 
         /**
          * Returns a reference to the default #ThunarxProviderFactory
@@ -680,7 +680,7 @@ export namespace Thunarx {
          */
         static get_default(): ProviderFactory;
 
-        // Own methods of Thunarx.ProviderFactory
+        // Methods
 
         /**
          * Returns all providers of the given `type`.
@@ -708,7 +708,7 @@ export namespace Thunarx {
     class ProviderModule extends GObject.TypeModule implements GObject.TypePlugin, ProviderPlugin {
         static $gtype: GObject.GType<ProviderModule>;
 
-        // Constructors of Thunarx.ProviderModule
+        // Constructors
 
         constructor(properties?: Partial<ProviderModule.ConstructorProps>, ...args: any[]);
 
@@ -716,7 +716,7 @@ export namespace Thunarx {
 
         static ['new'](filename: string): ProviderModule;
 
-        // Own methods of Thunarx.ProviderModule
+        // Methods
 
         /**
          * Determines the #GType<!---->s provided by `module` and returns
@@ -1345,7 +1345,7 @@ export namespace Thunarx {
     abstract class Renamer extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<Renamer>;
 
-        // Own properties of Thunarx.Renamer
+        // Properties
 
         /**
          * The URL to the documentation of this #ThunarxRenamer.
@@ -1380,13 +1380,13 @@ export namespace Thunarx {
          */
         get name(): string;
 
-        // Constructors of Thunarx.Renamer
+        // Constructors
 
         constructor(properties?: Partial<Renamer.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of Thunarx.Renamer
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -1395,7 +1395,7 @@ export namespace Thunarx {
         connect_after(signal: 'changed', callback: (_source: this) => void): number;
         emit(signal: 'changed'): void;
 
-        // Own virtual methods of Thunarx.Renamer
+        // Virtual methods
 
         /**
          * This method should be used by derived classes
@@ -1531,7 +1531,7 @@ export namespace Thunarx {
          */
         vfunc_save(settings: { [key: string]: any } | GLib.HashTable<any, any>): void;
 
-        // Own methods of Thunarx.Renamer
+        // Methods
 
         /**
          * This method should be used by derived classes
@@ -2129,7 +2129,7 @@ export namespace Thunarx {
     abstract class MenuItemPrivate {
         static $gtype: GObject.GType<MenuItemPrivate>;
 
-        // Constructors of Thunarx.MenuItemPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2137,7 +2137,7 @@ export namespace Thunarx {
     abstract class MenuPrivate {
         static $gtype: GObject.GType<MenuPrivate>;
 
-        // Constructors of Thunarx.MenuPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2148,7 +2148,7 @@ export namespace Thunarx {
     abstract class PropertyPagePrivate {
         static $gtype: GObject.GType<PropertyPagePrivate>;
 
-        // Constructors of Thunarx.PropertyPagePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2161,7 +2161,7 @@ export namespace Thunarx {
     abstract class RenamerPrivate {
         static $gtype: GObject.GType<RenamerPrivate>;
 
-        // Constructors of Thunarx.RenamerPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2178,7 +2178,7 @@ export namespace Thunarx {
         prototype: FileInfo;
     }
     interface FileInfo extends GObject.Object {
-        // Own methods of Thunarx.FileInfo
+        // Methods
 
         /**
          * Emits the ::changed signal on `file_info`. This method should not
@@ -2309,7 +2309,7 @@ export namespace Thunarx {
          */
         renamed(): void;
 
-        // Own virtual methods of Thunarx.FileInfo
+        // Virtual methods
 
         /**
          * Emits the ::changed signal on `file_info`. This method should not
@@ -2488,7 +2488,7 @@ export namespace Thunarx {
         prototype: ProviderPlugin;
     }
     interface ProviderPlugin extends GObject.Object {
-        // Own properties of Thunarx.ProviderPlugin
+        // Properties
 
         /**
          * Tells whether a plugin must reside in memory once loaded for
@@ -2498,7 +2498,7 @@ export namespace Thunarx {
         get resident(): boolean;
         set resident(val: boolean);
 
-        // Own methods of Thunarx.ProviderPlugin
+        // Methods
 
         /**
          * Registers an additional interface for a type, whose interface lives in the given type `plugin`.
@@ -2577,7 +2577,7 @@ export namespace Thunarx {
          */
         set_resident(resident: boolean): void;
 
-        // Own virtual methods of Thunarx.ProviderPlugin
+        // Virtual methods
 
         /**
          * Registers an additional interface for a type, whose interface lives in the given type `plugin`.

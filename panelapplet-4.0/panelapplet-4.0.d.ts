@@ -114,7 +114,7 @@ export namespace PanelApplet {
     class Applet extends Gtk.EventBox implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<Applet>;
 
-        // Own properties of PanelApplet.Applet
+        // Properties
 
         /**
          * The #PanelAppletFlags of the applet.
@@ -188,17 +188,17 @@ export namespace PanelApplet {
         get sizeHints(): any;
         set sizeHints(val: any);
 
-        // Own fields of PanelApplet.Applet
+        // Fields
 
         event_box: Gtk.EventBox;
 
-        // Constructors of PanelApplet.Applet
+        // Constructors
 
         constructor(properties?: Partial<Applet.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of PanelApplet.Applet
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -222,7 +222,7 @@ export namespace PanelApplet {
         ): number;
         emit(signal: 'move-focus-out-of-applet', direction: Gtk.DirectionType): void;
 
-        // Own static methods of PanelApplet.Applet
+        // Static methods
 
         /**
          * Creates the applet factory for `factory_id,` so that the factory can create
@@ -247,14 +247,14 @@ export namespace PanelApplet {
          */
         static factory_main(factory_id: string, applet_type: GObject.GType, callback: AppletFactoryCallback): number;
 
-        // Own virtual methods of PanelApplet.Applet
+        // Virtual methods
 
         vfunc_change_background(pattern: cairo.Pattern): void;
         vfunc_change_orient(orient: AppletOrient): void;
         vfunc_change_size(size: number): void;
         vfunc_move_focus_out_of_applet(direction: Gtk.DirectionType): void;
 
-        // Own methods of PanelApplet.Applet
+        // Methods
 
         /**
          * Associates the per-instance GConf directory of `applet` to the schemas
@@ -855,7 +855,7 @@ export namespace PanelApplet {
     abstract class AppletPrivate {
         static $gtype: GObject.GType<AppletPrivate>;
 
-        // Constructors of PanelApplet.AppletPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }

@@ -25,7 +25,7 @@ export namespace UDisks {
     class Error extends GLib.Error {
         static $gtype: GObject.GType<Error>;
 
-        // Static fields of UDisks.Error
+        // Static fields
 
         /**
          * The operation failed.
@@ -100,12 +100,12 @@ export namespace UDisks {
         static ISCSI_TRANSPORT_FAILED: number;
         static ISCSI_UNKNOWN_DISCOVERY_TYPE: number;
 
-        // Constructors of UDisks.Error
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of UDisks.Error
+        // Static methods
 
         static quark(): GLib.Quark;
     }
@@ -548,7 +548,7 @@ export namespace UDisks {
     {
         static $gtype: GObject.GType<BlockLVM2Proxy>;
 
-        // Constructors of UDisks.BlockLVM2Proxy
+        // Constructors
 
         constructor(properties?: Partial<BlockLVM2Proxy.ConstructorProps>, ...args: any[]);
 
@@ -583,7 +583,7 @@ export namespace UDisks {
 
         static new_sync(...args: never[]): any;
 
-        // Own static methods of UDisks.BlockLVM2Proxy
+        // Static methods
 
         /**
          * Asynchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-UDisks2-Block-LVM2.top_of_page">org.freedesktop.UDisks2.Block.LVM2</link>. See g_dbus_proxy_new() for more details.
@@ -1301,7 +1301,7 @@ export namespace UDisks {
     class BlockLVM2Skeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, BlockLVM2 {
         static $gtype: GObject.GType<BlockLVM2Skeleton>;
 
-        // Constructors of UDisks.BlockLVM2Skeleton
+        // Constructors
 
         constructor(properties?: Partial<BlockLVM2Skeleton.ConstructorProps>, ...args: any[]);
 
@@ -1782,7 +1782,7 @@ export namespace UDisks {
     {
         static $gtype: GObject.GType<BlockProxy>;
 
-        // Constructors of UDisks.BlockProxy
+        // Constructors
 
         constructor(properties?: Partial<BlockProxy.ConstructorProps>, ...args: any[]);
 
@@ -1817,7 +1817,7 @@ export namespace UDisks {
 
         static new_sync(...args: never[]): any;
 
-        // Own static methods of UDisks.BlockProxy
+        // Static methods
 
         /**
          * Asynchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-UDisks2-Block.top_of_page">org.freedesktop.UDisks2.Block</link>. See g_dbus_proxy_new() for more details.
@@ -3320,7 +3320,7 @@ export namespace UDisks {
     class BlockSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, Block {
         static $gtype: GObject.GType<BlockSkeleton>;
 
-        // Constructors of UDisks.BlockSkeleton
+        // Constructors
 
         constructor(properties?: Partial<BlockSkeleton.ConstructorProps>, ...args: any[]);
 
@@ -4594,7 +4594,7 @@ export namespace UDisks {
     class Client extends GObject.Object implements Gio.AsyncInitable<Client>, Gio.Initable {
         static $gtype: GObject.GType<Client>;
 
-        // Own properties of UDisks.Client
+        // Properties
 
         /**
          * The #GDBusConnection used to create the #UDisksClient:object-manager, or
@@ -4622,7 +4622,7 @@ export namespace UDisks {
          */
         get objectManager(): Gio.DBusObjectManager;
 
-        // Constructors of UDisks.Client
+        // Constructors
 
         constructor(properties?: Partial<Client.ConstructorProps>, ...args: any[]);
 
@@ -4637,7 +4637,7 @@ export namespace UDisks {
 
         static new_sync(cancellable?: Gio.Cancellable | null): Client;
 
-        // Own signals of UDisks.Client
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -4646,7 +4646,7 @@ export namespace UDisks {
         connect_after(signal: 'changed', callback: (_source: this) => void): number;
         emit(signal: 'changed'): void;
 
-        // Own static methods of UDisks.Client
+        // Static methods
 
         /**
          * Gets a human-readable and localized text string describing a
@@ -4682,7 +4682,7 @@ export namespace UDisks {
             callback?: Gio.AsyncReadyCallback<Client> | null,
         ): void;
 
-        // Own methods of UDisks.Client
+        // Methods
 
         /**
          * Gets all RAID devices (e.g. <filename>/dev/md0</filename> and <filename>/dev/md1</filename>) for `raid`.
@@ -5578,7 +5578,7 @@ export namespace UDisks {
     {
         static $gtype: GObject.GType<DriveAtaProxy>;
 
-        // Constructors of UDisks.DriveAtaProxy
+        // Constructors
 
         constructor(properties?: Partial<DriveAtaProxy.ConstructorProps>, ...args: any[]);
 
@@ -5613,7 +5613,7 @@ export namespace UDisks {
 
         static new_sync(...args: never[]): any;
 
-        // Own static methods of UDisks.DriveAtaProxy
+        // Static methods
 
         /**
          * Asynchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-UDisks2-Drive-Ata.top_of_page">org.freedesktop.UDisks2.Drive.Ata</link>. See g_dbus_proxy_new() for more details.
@@ -7036,7 +7036,7 @@ export namespace UDisks {
     class DriveAtaSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, DriveAta {
         static $gtype: GObject.GType<DriveAtaSkeleton>;
 
-        // Constructors of UDisks.DriveAtaSkeleton
+        // Constructors
 
         constructor(properties?: Partial<DriveAtaSkeleton.ConstructorProps>, ...args: any[]);
 
@@ -8222,7 +8222,7 @@ export namespace UDisks {
     {
         static $gtype: GObject.GType<DriveLSMProxy>;
 
-        // Constructors of UDisks.DriveLSMProxy
+        // Constructors
 
         constructor(properties?: Partial<DriveLSMProxy.ConstructorProps>, ...args: any[]);
 
@@ -8257,7 +8257,7 @@ export namespace UDisks {
 
         static new_sync(...args: never[]): any;
 
-        // Own static methods of UDisks.DriveLSMProxy
+        // Static methods
 
         /**
          * Asynchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-UDisks2-Drive-LSM.top_of_page">org.freedesktop.UDisks2.Drive.LSM</link>. See g_dbus_proxy_new() for more details.
@@ -9101,7 +9101,7 @@ export namespace UDisks {
     class DriveLSMSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, DriveLSM {
         static $gtype: GObject.GType<DriveLSMSkeleton>;
 
-        // Constructors of UDisks.DriveLSMSkeleton
+        // Constructors
 
         constructor(properties?: Partial<DriveLSMSkeleton.ConstructorProps>, ...args: any[]);
 
@@ -9708,7 +9708,7 @@ export namespace UDisks {
     {
         static $gtype: GObject.GType<DriveLsmLocalProxy>;
 
-        // Constructors of UDisks.DriveLsmLocalProxy
+        // Constructors
 
         constructor(properties?: Partial<DriveLsmLocalProxy.ConstructorProps>, ...args: any[]);
 
@@ -9743,7 +9743,7 @@ export namespace UDisks {
 
         static new_sync(...args: never[]): any;
 
-        // Own static methods of UDisks.DriveLsmLocalProxy
+        // Static methods
 
         /**
          * Asynchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-UDisks2-Drive-LsmLocal.top_of_page">org.freedesktop.UDisks2.Drive.LsmLocal</link>. See g_dbus_proxy_new() for more details.
@@ -10597,7 +10597,7 @@ export namespace UDisks {
     class DriveLsmLocalSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, DriveLsmLocal {
         static $gtype: GObject.GType<DriveLsmLocalSkeleton>;
 
-        // Constructors of UDisks.DriveLsmLocalSkeleton
+        // Constructors
 
         constructor(properties?: Partial<DriveLsmLocalSkeleton.ConstructorProps>, ...args: any[]);
 
@@ -11214,7 +11214,7 @@ export namespace UDisks {
     {
         static $gtype: GObject.GType<DriveProxy>;
 
-        // Constructors of UDisks.DriveProxy
+        // Constructors
 
         constructor(properties?: Partial<DriveProxy.ConstructorProps>, ...args: any[]);
 
@@ -11249,7 +11249,7 @@ export namespace UDisks {
 
         static new_sync(...args: never[]): any;
 
-        // Own static methods of UDisks.DriveProxy
+        // Static methods
 
         /**
          * Asynchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-UDisks2-Drive.top_of_page">org.freedesktop.UDisks2.Drive</link>. See g_dbus_proxy_new() for more details.
@@ -12393,7 +12393,7 @@ export namespace UDisks {
     class DriveSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, Drive {
         static $gtype: GObject.GType<DriveSkeleton>;
 
-        // Constructors of UDisks.DriveSkeleton
+        // Constructors
 
         constructor(properties?: Partial<DriveSkeleton.ConstructorProps>, ...args: any[]);
 
@@ -13300,7 +13300,7 @@ export namespace UDisks {
     {
         static $gtype: GObject.GType<EncryptedProxy>;
 
-        // Constructors of UDisks.EncryptedProxy
+        // Constructors
 
         constructor(properties?: Partial<EncryptedProxy.ConstructorProps>, ...args: any[]);
 
@@ -13335,7 +13335,7 @@ export namespace UDisks {
 
         static new_sync(...args: never[]): any;
 
-        // Own static methods of UDisks.EncryptedProxy
+        // Static methods
 
         /**
          * Asynchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-UDisks2-Encrypted.top_of_page">org.freedesktop.UDisks2.Encrypted</link>. See g_dbus_proxy_new() for more details.
@@ -14278,7 +14278,7 @@ export namespace UDisks {
     class EncryptedSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, Encrypted {
         static $gtype: GObject.GType<EncryptedSkeleton>;
 
-        // Constructors of UDisks.EncryptedSkeleton
+        // Constructors
 
         constructor(properties?: Partial<EncryptedSkeleton.ConstructorProps>, ...args: any[]);
 
@@ -14984,7 +14984,7 @@ export namespace UDisks {
     {
         static $gtype: GObject.GType<FilesystemBTRFSProxy>;
 
-        // Constructors of UDisks.FilesystemBTRFSProxy
+        // Constructors
 
         constructor(properties?: Partial<FilesystemBTRFSProxy.ConstructorProps>, ...args: any[]);
 
@@ -15019,7 +15019,7 @@ export namespace UDisks {
 
         static new_sync(...args: never[]): any;
 
-        // Own static methods of UDisks.FilesystemBTRFSProxy
+        // Static methods
 
         /**
          * Asynchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-UDisks2-Filesystem-BTRFS.top_of_page">org.freedesktop.UDisks2.Filesystem.BTRFS</link>. See g_dbus_proxy_new() for more details.
@@ -16196,7 +16196,7 @@ export namespace UDisks {
     class FilesystemBTRFSSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, FilesystemBTRFS {
         static $gtype: GObject.GType<FilesystemBTRFSSkeleton>;
 
-        // Constructors of UDisks.FilesystemBTRFSSkeleton
+        // Constructors
 
         constructor(properties?: Partial<FilesystemBTRFSSkeleton.ConstructorProps>, ...args: any[]);
 
@@ -17136,7 +17136,7 @@ export namespace UDisks {
     {
         static $gtype: GObject.GType<FilesystemProxy>;
 
-        // Constructors of UDisks.FilesystemProxy
+        // Constructors
 
         constructor(properties?: Partial<FilesystemProxy.ConstructorProps>, ...args: any[]);
 
@@ -17171,7 +17171,7 @@ export namespace UDisks {
 
         static new_sync(...args: never[]): any;
 
-        // Own static methods of UDisks.FilesystemProxy
+        // Static methods
 
         /**
          * Asynchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-UDisks2-Filesystem.top_of_page">org.freedesktop.UDisks2.Filesystem</link>. See g_dbus_proxy_new() for more details.
@@ -18224,7 +18224,7 @@ export namespace UDisks {
     class FilesystemSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, Filesystem {
         static $gtype: GObject.GType<FilesystemSkeleton>;
 
-        // Constructors of UDisks.FilesystemSkeleton
+        // Constructors
 
         constructor(properties?: Partial<FilesystemSkeleton.ConstructorProps>, ...args: any[]);
 
@@ -19040,7 +19040,7 @@ export namespace UDisks {
     {
         static $gtype: GObject.GType<ISCSISessionProxy>;
 
-        // Constructors of UDisks.ISCSISessionProxy
+        // Constructors
 
         constructor(properties?: Partial<ISCSISessionProxy.ConstructorProps>, ...args: any[]);
 
@@ -19075,7 +19075,7 @@ export namespace UDisks {
 
         static new_sync(...args: never[]): any;
 
-        // Own static methods of UDisks.ISCSISessionProxy
+        // Static methods
 
         /**
          * Asynchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-UDisks2-ISCSI-Session.top_of_page">org.freedesktop.UDisks2.ISCSI.Session</link>. See g_dbus_proxy_new() for more details.
@@ -19985,7 +19985,7 @@ export namespace UDisks {
     class ISCSISessionSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, ISCSISession {
         static $gtype: GObject.GType<ISCSISessionSkeleton>;
 
-        // Constructors of UDisks.ISCSISessionSkeleton
+        // Constructors
 
         constructor(properties?: Partial<ISCSISessionSkeleton.ConstructorProps>, ...args: any[]);
 
@@ -20655,7 +20655,7 @@ export namespace UDisks {
     class JobProxy extends Gio.DBusProxy implements Gio.AsyncInitable<JobProxy>, Gio.DBusInterface, Gio.Initable, Job {
         static $gtype: GObject.GType<JobProxy>;
 
-        // Constructors of UDisks.JobProxy
+        // Constructors
 
         constructor(properties?: Partial<JobProxy.ConstructorProps>, ...args: any[]);
 
@@ -20690,7 +20690,7 @@ export namespace UDisks {
 
         static new_sync(...args: never[]): any;
 
-        // Own static methods of UDisks.JobProxy
+        // Static methods
 
         /**
          * Asynchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-UDisks2-Job.top_of_page">org.freedesktop.UDisks2.Job</link>. See g_dbus_proxy_new() for more details.
@@ -21537,7 +21537,7 @@ export namespace UDisks {
     class JobSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, Job {
         static $gtype: GObject.GType<JobSkeleton>;
 
-        // Constructors of UDisks.JobSkeleton
+        // Constructors
 
         constructor(properties?: Partial<JobSkeleton.ConstructorProps>, ...args: any[]);
 
@@ -22147,7 +22147,7 @@ export namespace UDisks {
     {
         static $gtype: GObject.GType<LogicalVolumeProxy>;
 
-        // Constructors of UDisks.LogicalVolumeProxy
+        // Constructors
 
         constructor(properties?: Partial<LogicalVolumeProxy.ConstructorProps>, ...args: any[]);
 
@@ -22182,7 +22182,7 @@ export namespace UDisks {
 
         static new_sync(...args: never[]): any;
 
-        // Own static methods of UDisks.LogicalVolumeProxy
+        // Static methods
 
         /**
          * Asynchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-UDisks2-LogicalVolume.top_of_page">org.freedesktop.UDisks2.LogicalVolume</link>. See g_dbus_proxy_new() for more details.
@@ -23475,7 +23475,7 @@ export namespace UDisks {
     class LogicalVolumeSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, LogicalVolume {
         static $gtype: GObject.GType<LogicalVolumeSkeleton>;
 
-        // Constructors of UDisks.LogicalVolumeSkeleton
+        // Constructors
 
         constructor(properties?: Partial<LogicalVolumeSkeleton.ConstructorProps>, ...args: any[]);
 
@@ -24531,7 +24531,7 @@ export namespace UDisks {
     {
         static $gtype: GObject.GType<LoopProxy>;
 
-        // Constructors of UDisks.LoopProxy
+        // Constructors
 
         constructor(properties?: Partial<LoopProxy.ConstructorProps>, ...args: any[]);
 
@@ -24566,7 +24566,7 @@ export namespace UDisks {
 
         static new_sync(...args: never[]): any;
 
-        // Own static methods of UDisks.LoopProxy
+        // Static methods
 
         /**
          * Asynchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-UDisks2-Loop.top_of_page">org.freedesktop.UDisks2.Loop</link>. See g_dbus_proxy_new() for more details.
@@ -25392,7 +25392,7 @@ export namespace UDisks {
     class LoopSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, Loop {
         static $gtype: GObject.GType<LoopSkeleton>;
 
-        // Constructors of UDisks.LoopSkeleton
+        // Constructors
 
         constructor(properties?: Partial<LoopSkeleton.ConstructorProps>, ...args: any[]);
 
@@ -25981,7 +25981,7 @@ export namespace UDisks {
     {
         static $gtype: GObject.GType<MDRaidProxy>;
 
-        // Constructors of UDisks.MDRaidProxy
+        // Constructors
 
         constructor(properties?: Partial<MDRaidProxy.ConstructorProps>, ...args: any[]);
 
@@ -26016,7 +26016,7 @@ export namespace UDisks {
 
         static new_sync(...args: never[]): any;
 
-        // Own static methods of UDisks.MDRaidProxy
+        // Static methods
 
         /**
          * Asynchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-UDisks2-MDRaid.top_of_page">org.freedesktop.UDisks2.MDRaid</link>. See g_dbus_proxy_new() for more details.
@@ -27198,7 +27198,7 @@ export namespace UDisks {
     class MDRaidSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, MDRaid {
         static $gtype: GObject.GType<MDRaidSkeleton>;
 
-        // Constructors of UDisks.MDRaidSkeleton
+        // Constructors
 
         constructor(properties?: Partial<MDRaidSkeleton.ConstructorProps>, ...args: any[]);
 
@@ -28143,7 +28143,7 @@ export namespace UDisks {
     {
         static $gtype: GObject.GType<ManagerBTRFSProxy>;
 
-        // Constructors of UDisks.ManagerBTRFSProxy
+        // Constructors
 
         constructor(properties?: Partial<ManagerBTRFSProxy.ConstructorProps>, ...args: any[]);
 
@@ -28178,7 +28178,7 @@ export namespace UDisks {
 
         static new_sync(...args: never[]): any;
 
-        // Own static methods of UDisks.ManagerBTRFSProxy
+        // Static methods
 
         /**
          * Asynchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-UDisks2-Manager-BTRFS.top_of_page">org.freedesktop.UDisks2.Manager.BTRFS</link>. See g_dbus_proxy_new() for more details.
@@ -28944,7 +28944,7 @@ export namespace UDisks {
     class ManagerBTRFSSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, ManagerBTRFS {
         static $gtype: GObject.GType<ManagerBTRFSSkeleton>;
 
-        // Constructors of UDisks.ManagerBTRFSSkeleton
+        // Constructors
 
         constructor(properties?: Partial<ManagerBTRFSSkeleton.ConstructorProps>, ...args: any[]);
 
@@ -29477,7 +29477,7 @@ export namespace UDisks {
     {
         static $gtype: GObject.GType<ManagerISCSIInitiatorProxy>;
 
-        // Constructors of UDisks.ManagerISCSIInitiatorProxy
+        // Constructors
 
         constructor(properties?: Partial<ManagerISCSIInitiatorProxy.ConstructorProps>, ...args: any[]);
 
@@ -29512,7 +29512,7 @@ export namespace UDisks {
 
         static new_sync(...args: never[]): any;
 
-        // Own static methods of UDisks.ManagerISCSIInitiatorProxy
+        // Static methods
 
         /**
          * Asynchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-UDisks2-Manager-ISCSI-Initiator.top_of_page">org.freedesktop.UDisks2.Manager.ISCSI.Initiator</link>. See g_dbus_proxy_new() for more details.
@@ -30631,7 +30631,7 @@ export namespace UDisks {
     {
         static $gtype: GObject.GType<ManagerISCSIInitiatorSkeleton>;
 
-        // Constructors of UDisks.ManagerISCSIInitiatorSkeleton
+        // Constructors
 
         constructor(properties?: Partial<ManagerISCSIInitiatorSkeleton.ConstructorProps>, ...args: any[]);
 
@@ -31510,7 +31510,7 @@ export namespace UDisks {
     {
         static $gtype: GObject.GType<ManagerLVM2Proxy>;
 
-        // Constructors of UDisks.ManagerLVM2Proxy
+        // Constructors
 
         constructor(properties?: Partial<ManagerLVM2Proxy.ConstructorProps>, ...args: any[]);
 
@@ -31545,7 +31545,7 @@ export namespace UDisks {
 
         static new_sync(...args: never[]): any;
 
-        // Own static methods of UDisks.ManagerLVM2Proxy
+        // Static methods
 
         /**
          * Asynchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-UDisks2-Manager-LVM2.top_of_page">org.freedesktop.UDisks2.Manager.LVM2</link>. See g_dbus_proxy_new() for more details.
@@ -32302,7 +32302,7 @@ export namespace UDisks {
     class ManagerLVM2Skeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, ManagerLVM2 {
         static $gtype: GObject.GType<ManagerLVM2Skeleton>;
 
-        // Constructors of UDisks.ManagerLVM2Skeleton
+        // Constructors
 
         constructor(properties?: Partial<ManagerLVM2Skeleton.ConstructorProps>, ...args: any[]);
 
@@ -32822,7 +32822,7 @@ export namespace UDisks {
     {
         static $gtype: GObject.GType<ManagerNVMeProxy>;
 
-        // Constructors of UDisks.ManagerNVMeProxy
+        // Constructors
 
         constructor(properties?: Partial<ManagerNVMeProxy.ConstructorProps>, ...args: any[]);
 
@@ -32857,7 +32857,7 @@ export namespace UDisks {
 
         static new_sync(...args: never[]): any;
 
-        // Own static methods of UDisks.ManagerNVMeProxy
+        // Static methods
 
         /**
          * Asynchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-UDisks2-Manager-NVMe.top_of_page">org.freedesktop.UDisks2.Manager.NVMe</link>. See g_dbus_proxy_new() for more details.
@@ -33747,7 +33747,7 @@ export namespace UDisks {
     class ManagerNVMeSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, ManagerNVMe {
         static $gtype: GObject.GType<ManagerNVMeSkeleton>;
 
-        // Constructors of UDisks.ManagerNVMeSkeleton
+        // Constructors
 
         constructor(properties?: Partial<ManagerNVMeSkeleton.ConstructorProps>, ...args: any[]);
 
@@ -34400,7 +34400,7 @@ export namespace UDisks {
     {
         static $gtype: GObject.GType<ManagerProxy>;
 
-        // Constructors of UDisks.ManagerProxy
+        // Constructors
 
         constructor(properties?: Partial<ManagerProxy.ConstructorProps>, ...args: any[]);
 
@@ -34435,7 +34435,7 @@ export namespace UDisks {
 
         static new_sync(...args: never[]): any;
 
-        // Own static methods of UDisks.ManagerProxy
+        // Static methods
 
         /**
          * Asynchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-UDisks2-Manager.top_of_page">org.freedesktop.UDisks2.Manager</link>. See g_dbus_proxy_new() for more details.
@@ -35644,7 +35644,7 @@ export namespace UDisks {
     class ManagerSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, Manager {
         static $gtype: GObject.GType<ManagerSkeleton>;
 
-        // Constructors of UDisks.ManagerSkeleton
+        // Constructors
 
         constructor(properties?: Partial<ManagerSkeleton.ConstructorProps>, ...args: any[]);
 
@@ -36616,7 +36616,7 @@ export namespace UDisks {
     {
         static $gtype: GObject.GType<NVMeControllerProxy>;
 
-        // Constructors of UDisks.NVMeControllerProxy
+        // Constructors
 
         constructor(properties?: Partial<NVMeControllerProxy.ConstructorProps>, ...args: any[]);
 
@@ -36651,7 +36651,7 @@ export namespace UDisks {
 
         static new_sync(...args: never[]): any;
 
-        // Own static methods of UDisks.NVMeControllerProxy
+        // Static methods
 
         /**
          * Asynchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-UDisks2-NVMe-Controller.top_of_page">org.freedesktop.UDisks2.NVMe.Controller</link>. See g_dbus_proxy_new() for more details.
@@ -37753,7 +37753,7 @@ export namespace UDisks {
     class NVMeControllerSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, NVMeController {
         static $gtype: GObject.GType<NVMeControllerSkeleton>;
 
-        // Constructors of UDisks.NVMeControllerSkeleton
+        // Constructors
 
         constructor(properties?: Partial<NVMeControllerSkeleton.ConstructorProps>, ...args: any[]);
 
@@ -38618,7 +38618,7 @@ export namespace UDisks {
     {
         static $gtype: GObject.GType<NVMeFabricsProxy>;
 
-        // Constructors of UDisks.NVMeFabricsProxy
+        // Constructors
 
         constructor(properties?: Partial<NVMeFabricsProxy.ConstructorProps>, ...args: any[]);
 
@@ -38653,7 +38653,7 @@ export namespace UDisks {
 
         static new_sync(...args: never[]): any;
 
-        // Own static methods of UDisks.NVMeFabricsProxy
+        // Static methods
 
         /**
          * Asynchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-UDisks2-NVMe-Fabrics.top_of_page">org.freedesktop.UDisks2.NVMe.Fabrics</link>. See g_dbus_proxy_new() for more details.
@@ -39444,7 +39444,7 @@ export namespace UDisks {
     class NVMeFabricsSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, NVMeFabrics {
         static $gtype: GObject.GType<NVMeFabricsSkeleton>;
 
-        // Constructors of UDisks.NVMeFabricsSkeleton
+        // Constructors
 
         constructor(properties?: Partial<NVMeFabricsSkeleton.ConstructorProps>, ...args: any[]);
 
@@ -39998,7 +39998,7 @@ export namespace UDisks {
     {
         static $gtype: GObject.GType<NVMeNamespaceProxy>;
 
-        // Constructors of UDisks.NVMeNamespaceProxy
+        // Constructors
 
         constructor(properties?: Partial<NVMeNamespaceProxy.ConstructorProps>, ...args: any[]);
 
@@ -40033,7 +40033,7 @@ export namespace UDisks {
 
         static new_sync(...args: never[]): any;
 
-        // Own static methods of UDisks.NVMeNamespaceProxy
+        // Static methods
 
         /**
          * Asynchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-UDisks2-NVMe-Namespace.top_of_page">org.freedesktop.UDisks2.NVMe.Namespace</link>. See g_dbus_proxy_new() for more details.
@@ -40887,7 +40887,7 @@ export namespace UDisks {
     class NVMeNamespaceSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, NVMeNamespace {
         static $gtype: GObject.GType<NVMeNamespaceSkeleton>;
 
-        // Constructors of UDisks.NVMeNamespaceSkeleton
+        // Constructors
 
         constructor(properties?: Partial<NVMeNamespaceSkeleton.ConstructorProps>, ...args: any[]);
 
@@ -41515,13 +41515,13 @@ export namespace UDisks {
     class ObjectInfo extends GObject.Object {
         static $gtype: GObject.GType<ObjectInfo>;
 
-        // Constructors of UDisks.ObjectInfo
+        // Constructors
 
         constructor(properties?: Partial<ObjectInfo.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of UDisks.ObjectInfo
+        // Methods
 
         /**
          * Gets the description.
@@ -41595,7 +41595,7 @@ export namespace UDisks {
     {
         static $gtype: GObject.GType<ObjectManagerClient>;
 
-        // Constructors of UDisks.ObjectManagerClient
+        // Constructors
 
         constructor(properties?: Partial<ObjectManagerClient.ConstructorProps>, ...args: any[]);
 
@@ -41630,7 +41630,7 @@ export namespace UDisks {
 
         static new_sync(...args: never[]): any;
 
-        // Own static methods of UDisks.ObjectManagerClient
+        // Static methods
 
         /**
          * A #GDBusProxyTypeFunc that maps `interface_name` to the generated #GDBusObjectProxy derived and #GDBusProxy derived types.
@@ -42377,7 +42377,7 @@ export namespace UDisks {
     class ObjectProxy extends Gio.DBusObjectProxy implements Gio.DBusObject, Object {
         static $gtype: GObject.GType<ObjectProxy>;
 
-        // Constructors of UDisks.ObjectProxy
+        // Constructors
 
         constructor(properties?: Partial<ObjectProxy.ConstructorProps>, ...args: any[]);
 
@@ -43308,7 +43308,7 @@ export namespace UDisks {
     class ObjectSkeleton extends Gio.DBusObjectSkeleton implements Gio.DBusObject, Object {
         static $gtype: GObject.GType<ObjectSkeleton>;
 
-        // Constructors of UDisks.ObjectSkeleton
+        // Constructors
 
         constructor(properties?: Partial<ObjectSkeleton.ConstructorProps>, ...args: any[]);
 
@@ -43316,7 +43316,7 @@ export namespace UDisks {
 
         static ['new'](object_path: string): ObjectSkeleton;
 
-        // Own methods of UDisks.ObjectSkeleton
+        // Methods
 
         /**
          * Sets the #UDisksBlock instance for the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-UDisks2-Block.top_of_page">org.freedesktop.UDisks2.Block</link> on `object`.
@@ -44387,7 +44387,7 @@ export namespace UDisks {
     {
         static $gtype: GObject.GType<PartitionProxy>;
 
-        // Constructors of UDisks.PartitionProxy
+        // Constructors
 
         constructor(properties?: Partial<PartitionProxy.ConstructorProps>, ...args: any[]);
 
@@ -44422,7 +44422,7 @@ export namespace UDisks {
 
         static new_sync(...args: never[]): any;
 
-        // Own static methods of UDisks.PartitionProxy
+        // Static methods
 
         /**
          * Asynchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-UDisks2-Partition.top_of_page">org.freedesktop.UDisks2.Partition</link>. See g_dbus_proxy_new() for more details.
@@ -45473,7 +45473,7 @@ export namespace UDisks {
     class PartitionSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, Partition {
         static $gtype: GObject.GType<PartitionSkeleton>;
 
-        // Constructors of UDisks.PartitionSkeleton
+        // Constructors
 
         constructor(properties?: Partial<PartitionSkeleton.ConstructorProps>, ...args: any[]);
 
@@ -46287,7 +46287,7 @@ export namespace UDisks {
     {
         static $gtype: GObject.GType<PartitionTableProxy>;
 
-        // Constructors of UDisks.PartitionTableProxy
+        // Constructors
 
         constructor(properties?: Partial<PartitionTableProxy.ConstructorProps>, ...args: any[]);
 
@@ -46322,7 +46322,7 @@ export namespace UDisks {
 
         static new_sync(...args: never[]): any;
 
-        // Own static methods of UDisks.PartitionTableProxy
+        // Static methods
 
         /**
          * Asynchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-UDisks2-PartitionTable.top_of_page">org.freedesktop.UDisks2.PartitionTable</link>. See g_dbus_proxy_new() for more details.
@@ -47180,7 +47180,7 @@ export namespace UDisks {
     class PartitionTableSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, PartitionTable {
         static $gtype: GObject.GType<PartitionTableSkeleton>;
 
-        // Constructors of UDisks.PartitionTableSkeleton
+        // Constructors
 
         constructor(properties?: Partial<PartitionTableSkeleton.ConstructorProps>, ...args: any[]);
 
@@ -47801,7 +47801,7 @@ export namespace UDisks {
     {
         static $gtype: GObject.GType<PhysicalVolumeProxy>;
 
-        // Constructors of UDisks.PhysicalVolumeProxy
+        // Constructors
 
         constructor(properties?: Partial<PhysicalVolumeProxy.ConstructorProps>, ...args: any[]);
 
@@ -47836,7 +47836,7 @@ export namespace UDisks {
 
         static new_sync(...args: never[]): any;
 
-        // Own static methods of UDisks.PhysicalVolumeProxy
+        // Static methods
 
         /**
          * Asynchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-UDisks2-PhysicalVolume.top_of_page">org.freedesktop.UDisks2.PhysicalVolume</link>. See g_dbus_proxy_new() for more details.
@@ -48575,7 +48575,7 @@ export namespace UDisks {
     class PhysicalVolumeSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, PhysicalVolume {
         static $gtype: GObject.GType<PhysicalVolumeSkeleton>;
 
-        // Constructors of UDisks.PhysicalVolumeSkeleton
+        // Constructors
 
         constructor(properties?: Partial<PhysicalVolumeSkeleton.ConstructorProps>, ...args: any[]);
 
@@ -49077,7 +49077,7 @@ export namespace UDisks {
     {
         static $gtype: GObject.GType<SwapspaceProxy>;
 
-        // Constructors of UDisks.SwapspaceProxy
+        // Constructors
 
         constructor(properties?: Partial<SwapspaceProxy.ConstructorProps>, ...args: any[]);
 
@@ -49112,7 +49112,7 @@ export namespace UDisks {
 
         static new_sync(...args: never[]): any;
 
-        // Own static methods of UDisks.SwapspaceProxy
+        // Static methods
 
         /**
          * Asynchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-UDisks2-Swapspace.top_of_page">org.freedesktop.UDisks2.Swapspace</link>. See g_dbus_proxy_new() for more details.
@@ -49993,7 +49993,7 @@ export namespace UDisks {
     class SwapspaceSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, Swapspace {
         static $gtype: GObject.GType<SwapspaceSkeleton>;
 
-        // Constructors of UDisks.SwapspaceSkeleton
+        // Constructors
 
         constructor(properties?: Partial<SwapspaceSkeleton.ConstructorProps>, ...args: any[]);
 
@@ -50637,7 +50637,7 @@ export namespace UDisks {
     {
         static $gtype: GObject.GType<VDOVolumeProxy>;
 
-        // Constructors of UDisks.VDOVolumeProxy
+        // Constructors
 
         constructor(properties?: Partial<VDOVolumeProxy.ConstructorProps>, ...args: any[]);
 
@@ -50672,7 +50672,7 @@ export namespace UDisks {
 
         static new_sync(...args: never[]): any;
 
-        // Own static methods of UDisks.VDOVolumeProxy
+        // Static methods
 
         /**
          * Asynchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-UDisks2-VDOVolume.top_of_page">org.freedesktop.UDisks2.VDOVolume</link>. See g_dbus_proxy_new() for more details.
@@ -51698,7 +51698,7 @@ export namespace UDisks {
     class VDOVolumeSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, VDOVolume {
         static $gtype: GObject.GType<VDOVolumeSkeleton>;
 
-        // Constructors of UDisks.VDOVolumeSkeleton
+        // Constructors
 
         constructor(properties?: Partial<VDOVolumeSkeleton.ConstructorProps>, ...args: any[]);
 
@@ -52487,7 +52487,7 @@ export namespace UDisks {
     {
         static $gtype: GObject.GType<VolumeGroupProxy>;
 
-        // Constructors of UDisks.VolumeGroupProxy
+        // Constructors
 
         constructor(properties?: Partial<VolumeGroupProxy.ConstructorProps>, ...args: any[]);
 
@@ -52522,7 +52522,7 @@ export namespace UDisks {
 
         static new_sync(...args: never[]): any;
 
-        // Own static methods of UDisks.VolumeGroupProxy
+        // Static methods
 
         /**
          * Asynchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-UDisks2-VolumeGroup.top_of_page">org.freedesktop.UDisks2.VolumeGroup</link>. See g_dbus_proxy_new() for more details.
@@ -53946,7 +53946,7 @@ export namespace UDisks {
     class VolumeGroupSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, VolumeGroup {
         static $gtype: GObject.GType<VolumeGroupSkeleton>;
 
-        // Constructors of UDisks.VolumeGroupSkeleton
+        // Constructors
 
         constructor(properties?: Partial<VolumeGroupSkeleton.ConstructorProps>, ...args: any[]);
 
@@ -55119,7 +55119,7 @@ export namespace UDisks {
     abstract class BlockLVM2ProxyPrivate {
         static $gtype: GObject.GType<BlockLVM2ProxyPrivate>;
 
-        // Constructors of UDisks.BlockLVM2ProxyPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -55128,7 +55128,7 @@ export namespace UDisks {
     abstract class BlockLVM2SkeletonPrivate {
         static $gtype: GObject.GType<BlockLVM2SkeletonPrivate>;
 
-        // Constructors of UDisks.BlockLVM2SkeletonPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -55137,7 +55137,7 @@ export namespace UDisks {
     abstract class BlockProxyPrivate {
         static $gtype: GObject.GType<BlockProxyPrivate>;
 
-        // Constructors of UDisks.BlockProxyPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -55146,7 +55146,7 @@ export namespace UDisks {
     abstract class BlockSkeletonPrivate {
         static $gtype: GObject.GType<BlockSkeletonPrivate>;
 
-        // Constructors of UDisks.BlockSkeletonPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -55156,7 +55156,7 @@ export namespace UDisks {
     abstract class DriveAtaProxyPrivate {
         static $gtype: GObject.GType<DriveAtaProxyPrivate>;
 
-        // Constructors of UDisks.DriveAtaProxyPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -55165,7 +55165,7 @@ export namespace UDisks {
     abstract class DriveAtaSkeletonPrivate {
         static $gtype: GObject.GType<DriveAtaSkeletonPrivate>;
 
-        // Constructors of UDisks.DriveAtaSkeletonPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -55176,7 +55176,7 @@ export namespace UDisks {
     abstract class DriveLSMProxyPrivate {
         static $gtype: GObject.GType<DriveLSMProxyPrivate>;
 
-        // Constructors of UDisks.DriveLSMProxyPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -55185,7 +55185,7 @@ export namespace UDisks {
     abstract class DriveLSMSkeletonPrivate {
         static $gtype: GObject.GType<DriveLSMSkeletonPrivate>;
 
-        // Constructors of UDisks.DriveLSMSkeletonPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -55195,7 +55195,7 @@ export namespace UDisks {
     abstract class DriveLsmLocalProxyPrivate {
         static $gtype: GObject.GType<DriveLsmLocalProxyPrivate>;
 
-        // Constructors of UDisks.DriveLsmLocalProxyPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -55204,7 +55204,7 @@ export namespace UDisks {
     abstract class DriveLsmLocalSkeletonPrivate {
         static $gtype: GObject.GType<DriveLsmLocalSkeletonPrivate>;
 
-        // Constructors of UDisks.DriveLsmLocalSkeletonPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -55213,7 +55213,7 @@ export namespace UDisks {
     abstract class DriveProxyPrivate {
         static $gtype: GObject.GType<DriveProxyPrivate>;
 
-        // Constructors of UDisks.DriveProxyPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -55222,7 +55222,7 @@ export namespace UDisks {
     abstract class DriveSkeletonPrivate {
         static $gtype: GObject.GType<DriveSkeletonPrivate>;
 
-        // Constructors of UDisks.DriveSkeletonPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -55232,7 +55232,7 @@ export namespace UDisks {
     abstract class EncryptedProxyPrivate {
         static $gtype: GObject.GType<EncryptedProxyPrivate>;
 
-        // Constructors of UDisks.EncryptedProxyPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -55241,7 +55241,7 @@ export namespace UDisks {
     abstract class EncryptedSkeletonPrivate {
         static $gtype: GObject.GType<EncryptedSkeletonPrivate>;
 
-        // Constructors of UDisks.EncryptedSkeletonPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -55251,7 +55251,7 @@ export namespace UDisks {
     abstract class FilesystemBTRFSProxyPrivate {
         static $gtype: GObject.GType<FilesystemBTRFSProxyPrivate>;
 
-        // Constructors of UDisks.FilesystemBTRFSProxyPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -55260,7 +55260,7 @@ export namespace UDisks {
     abstract class FilesystemBTRFSSkeletonPrivate {
         static $gtype: GObject.GType<FilesystemBTRFSSkeletonPrivate>;
 
-        // Constructors of UDisks.FilesystemBTRFSSkeletonPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -55270,7 +55270,7 @@ export namespace UDisks {
     abstract class FilesystemProxyPrivate {
         static $gtype: GObject.GType<FilesystemProxyPrivate>;
 
-        // Constructors of UDisks.FilesystemProxyPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -55279,7 +55279,7 @@ export namespace UDisks {
     abstract class FilesystemSkeletonPrivate {
         static $gtype: GObject.GType<FilesystemSkeletonPrivate>;
 
-        // Constructors of UDisks.FilesystemSkeletonPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -55289,7 +55289,7 @@ export namespace UDisks {
     abstract class ISCSISessionProxyPrivate {
         static $gtype: GObject.GType<ISCSISessionProxyPrivate>;
 
-        // Constructors of UDisks.ISCSISessionProxyPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -55298,7 +55298,7 @@ export namespace UDisks {
     abstract class ISCSISessionSkeletonPrivate {
         static $gtype: GObject.GType<ISCSISessionSkeletonPrivate>;
 
-        // Constructors of UDisks.ISCSISessionSkeletonPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -55308,7 +55308,7 @@ export namespace UDisks {
     abstract class JobProxyPrivate {
         static $gtype: GObject.GType<JobProxyPrivate>;
 
-        // Constructors of UDisks.JobProxyPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -55317,7 +55317,7 @@ export namespace UDisks {
     abstract class JobSkeletonPrivate {
         static $gtype: GObject.GType<JobSkeletonPrivate>;
 
-        // Constructors of UDisks.JobSkeletonPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -55327,7 +55327,7 @@ export namespace UDisks {
     abstract class LogicalVolumeProxyPrivate {
         static $gtype: GObject.GType<LogicalVolumeProxyPrivate>;
 
-        // Constructors of UDisks.LogicalVolumeProxyPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -55336,7 +55336,7 @@ export namespace UDisks {
     abstract class LogicalVolumeSkeletonPrivate {
         static $gtype: GObject.GType<LogicalVolumeSkeletonPrivate>;
 
-        // Constructors of UDisks.LogicalVolumeSkeletonPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -55346,7 +55346,7 @@ export namespace UDisks {
     abstract class LoopProxyPrivate {
         static $gtype: GObject.GType<LoopProxyPrivate>;
 
-        // Constructors of UDisks.LoopProxyPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -55355,7 +55355,7 @@ export namespace UDisks {
     abstract class LoopSkeletonPrivate {
         static $gtype: GObject.GType<LoopSkeletonPrivate>;
 
-        // Constructors of UDisks.LoopSkeletonPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -55365,7 +55365,7 @@ export namespace UDisks {
     abstract class MDRaidProxyPrivate {
         static $gtype: GObject.GType<MDRaidProxyPrivate>;
 
-        // Constructors of UDisks.MDRaidProxyPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -55374,7 +55374,7 @@ export namespace UDisks {
     abstract class MDRaidSkeletonPrivate {
         static $gtype: GObject.GType<MDRaidSkeletonPrivate>;
 
-        // Constructors of UDisks.MDRaidSkeletonPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -55384,7 +55384,7 @@ export namespace UDisks {
     abstract class ManagerBTRFSProxyPrivate {
         static $gtype: GObject.GType<ManagerBTRFSProxyPrivate>;
 
-        // Constructors of UDisks.ManagerBTRFSProxyPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -55393,7 +55393,7 @@ export namespace UDisks {
     abstract class ManagerBTRFSSkeletonPrivate {
         static $gtype: GObject.GType<ManagerBTRFSSkeletonPrivate>;
 
-        // Constructors of UDisks.ManagerBTRFSSkeletonPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -55403,7 +55403,7 @@ export namespace UDisks {
     abstract class ManagerISCSIInitiatorProxyPrivate {
         static $gtype: GObject.GType<ManagerISCSIInitiatorProxyPrivate>;
 
-        // Constructors of UDisks.ManagerISCSIInitiatorProxyPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -55412,7 +55412,7 @@ export namespace UDisks {
     abstract class ManagerISCSIInitiatorSkeletonPrivate {
         static $gtype: GObject.GType<ManagerISCSIInitiatorSkeletonPrivate>;
 
-        // Constructors of UDisks.ManagerISCSIInitiatorSkeletonPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -55423,7 +55423,7 @@ export namespace UDisks {
     abstract class ManagerLVM2ProxyPrivate {
         static $gtype: GObject.GType<ManagerLVM2ProxyPrivate>;
 
-        // Constructors of UDisks.ManagerLVM2ProxyPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -55432,7 +55432,7 @@ export namespace UDisks {
     abstract class ManagerLVM2SkeletonPrivate {
         static $gtype: GObject.GType<ManagerLVM2SkeletonPrivate>;
 
-        // Constructors of UDisks.ManagerLVM2SkeletonPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -55442,7 +55442,7 @@ export namespace UDisks {
     abstract class ManagerNVMeProxyPrivate {
         static $gtype: GObject.GType<ManagerNVMeProxyPrivate>;
 
-        // Constructors of UDisks.ManagerNVMeProxyPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -55451,7 +55451,7 @@ export namespace UDisks {
     abstract class ManagerNVMeSkeletonPrivate {
         static $gtype: GObject.GType<ManagerNVMeSkeletonPrivate>;
 
-        // Constructors of UDisks.ManagerNVMeSkeletonPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -55460,7 +55460,7 @@ export namespace UDisks {
     abstract class ManagerProxyPrivate {
         static $gtype: GObject.GType<ManagerProxyPrivate>;
 
-        // Constructors of UDisks.ManagerProxyPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -55469,7 +55469,7 @@ export namespace UDisks {
     abstract class ManagerSkeletonPrivate {
         static $gtype: GObject.GType<ManagerSkeletonPrivate>;
 
-        // Constructors of UDisks.ManagerSkeletonPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -55479,7 +55479,7 @@ export namespace UDisks {
     abstract class NVMeControllerProxyPrivate {
         static $gtype: GObject.GType<NVMeControllerProxyPrivate>;
 
-        // Constructors of UDisks.NVMeControllerProxyPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -55488,7 +55488,7 @@ export namespace UDisks {
     abstract class NVMeControllerSkeletonPrivate {
         static $gtype: GObject.GType<NVMeControllerSkeletonPrivate>;
 
-        // Constructors of UDisks.NVMeControllerSkeletonPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -55498,7 +55498,7 @@ export namespace UDisks {
     abstract class NVMeFabricsProxyPrivate {
         static $gtype: GObject.GType<NVMeFabricsProxyPrivate>;
 
-        // Constructors of UDisks.NVMeFabricsProxyPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -55507,7 +55507,7 @@ export namespace UDisks {
     abstract class NVMeFabricsSkeletonPrivate {
         static $gtype: GObject.GType<NVMeFabricsSkeletonPrivate>;
 
-        // Constructors of UDisks.NVMeFabricsSkeletonPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -55517,7 +55517,7 @@ export namespace UDisks {
     abstract class NVMeNamespaceProxyPrivate {
         static $gtype: GObject.GType<NVMeNamespaceProxyPrivate>;
 
-        // Constructors of UDisks.NVMeNamespaceProxyPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -55526,7 +55526,7 @@ export namespace UDisks {
     abstract class NVMeNamespaceSkeletonPrivate {
         static $gtype: GObject.GType<NVMeNamespaceSkeletonPrivate>;
 
-        // Constructors of UDisks.NVMeNamespaceSkeletonPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -55536,7 +55536,7 @@ export namespace UDisks {
     abstract class ObjectManagerClientPrivate {
         static $gtype: GObject.GType<ObjectManagerClientPrivate>;
 
-        // Constructors of UDisks.ObjectManagerClientPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -55545,7 +55545,7 @@ export namespace UDisks {
     abstract class ObjectProxyPrivate {
         static $gtype: GObject.GType<ObjectProxyPrivate>;
 
-        // Constructors of UDisks.ObjectProxyPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -55554,7 +55554,7 @@ export namespace UDisks {
     abstract class ObjectSkeletonPrivate {
         static $gtype: GObject.GType<ObjectSkeletonPrivate>;
 
-        // Constructors of UDisks.ObjectSkeletonPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -55564,7 +55564,7 @@ export namespace UDisks {
     abstract class PartitionProxyPrivate {
         static $gtype: GObject.GType<PartitionProxyPrivate>;
 
-        // Constructors of UDisks.PartitionProxyPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -55573,7 +55573,7 @@ export namespace UDisks {
     abstract class PartitionSkeletonPrivate {
         static $gtype: GObject.GType<PartitionSkeletonPrivate>;
 
-        // Constructors of UDisks.PartitionSkeletonPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -55583,7 +55583,7 @@ export namespace UDisks {
     abstract class PartitionTableProxyPrivate {
         static $gtype: GObject.GType<PartitionTableProxyPrivate>;
 
-        // Constructors of UDisks.PartitionTableProxyPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -55592,7 +55592,7 @@ export namespace UDisks {
     abstract class PartitionTableSkeletonPrivate {
         static $gtype: GObject.GType<PartitionTableSkeletonPrivate>;
 
-        // Constructors of UDisks.PartitionTableSkeletonPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -55610,18 +55610,18 @@ export namespace UDisks {
     class PartitionTypeInfo {
         static $gtype: GObject.GType<PartitionTypeInfo>;
 
-        // Own fields of UDisks.PartitionTypeInfo
+        // Fields
 
         table_type: string;
         table_subtype: string;
         type: string;
         flags: PartitionTypeInfoFlags;
 
-        // Constructors of UDisks.PartitionTypeInfo
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of UDisks.PartitionTypeInfo
+        // Methods
 
         /**
          * Frees `info`.
@@ -55634,7 +55634,7 @@ export namespace UDisks {
     abstract class PhysicalVolumeProxyPrivate {
         static $gtype: GObject.GType<PhysicalVolumeProxyPrivate>;
 
-        // Constructors of UDisks.PhysicalVolumeProxyPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -55643,7 +55643,7 @@ export namespace UDisks {
     abstract class PhysicalVolumeSkeletonPrivate {
         static $gtype: GObject.GType<PhysicalVolumeSkeletonPrivate>;
 
-        // Constructors of UDisks.PhysicalVolumeSkeletonPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -55653,7 +55653,7 @@ export namespace UDisks {
     abstract class SwapspaceProxyPrivate {
         static $gtype: GObject.GType<SwapspaceProxyPrivate>;
 
-        // Constructors of UDisks.SwapspaceProxyPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -55662,7 +55662,7 @@ export namespace UDisks {
     abstract class SwapspaceSkeletonPrivate {
         static $gtype: GObject.GType<SwapspaceSkeletonPrivate>;
 
-        // Constructors of UDisks.SwapspaceSkeletonPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -55672,7 +55672,7 @@ export namespace UDisks {
     abstract class VDOVolumeProxyPrivate {
         static $gtype: GObject.GType<VDOVolumeProxyPrivate>;
 
-        // Constructors of UDisks.VDOVolumeProxyPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -55681,7 +55681,7 @@ export namespace UDisks {
     abstract class VDOVolumeSkeletonPrivate {
         static $gtype: GObject.GType<VDOVolumeSkeletonPrivate>;
 
-        // Constructors of UDisks.VDOVolumeSkeletonPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -55691,7 +55691,7 @@ export namespace UDisks {
     abstract class VolumeGroupProxyPrivate {
         static $gtype: GObject.GType<VolumeGroupProxyPrivate>;
 
-        // Constructors of UDisks.VolumeGroupProxyPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -55700,7 +55700,7 @@ export namespace UDisks {
     abstract class VolumeGroupSkeletonPrivate {
         static $gtype: GObject.GType<VolumeGroupSkeletonPrivate>;
 
-        // Constructors of UDisks.VolumeGroupSkeletonPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -55772,7 +55772,7 @@ export namespace UDisks {
         override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
     }
     interface Block extends GObject.Object {
-        // Own properties of UDisks.Block
+        // Properties
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UDisks2-Block.Configuration">"Configuration"</link>.
@@ -56076,7 +56076,7 @@ export namespace UDisks {
         get userspaceMountOptions(): string[];
         set userspaceMountOptions(val: string[]);
 
-        // Own methods of UDisks.Block
+        // Methods
 
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Block.AddConfigurationItem">AddConfigurationItem()</link> D-Bus method on `proxy`.
@@ -56537,7 +56537,7 @@ export namespace UDisks {
          */
         complete_update_configuration_item(invocation: Gio.DBusMethodInvocation): void;
 
-        // Own virtual methods of UDisks.Block
+        // Virtual methods
 
         vfunc_handle_add_configuration_item(
             invocation: Gio.DBusMethodInvocation,
@@ -56609,7 +56609,7 @@ export namespace UDisks {
         override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
     }
     interface BlockLVM2 extends GObject.Object {
-        // Own properties of UDisks.BlockLVM2
+        // Properties
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UDisks2-Block-LVM2.LogicalVolume">"LogicalVolume"</link>.
@@ -56698,7 +56698,7 @@ export namespace UDisks {
         override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
     }
     interface Drive extends GObject.Object {
-        // Own properties of UDisks.Drive
+        // Properties
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UDisks2-Drive.CanPowerOff">"CanPowerOff"</link>.
@@ -57016,7 +57016,7 @@ export namespace UDisks {
         get wwn(): string;
         set wwn(val: string);
 
-        // Own methods of UDisks.Drive
+        // Methods
 
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Drive.Eject">Eject()</link> D-Bus method on `proxy`.
@@ -57137,7 +57137,7 @@ export namespace UDisks {
          */
         complete_set_configuration(invocation: Gio.DBusMethodInvocation): void;
 
-        // Own virtual methods of UDisks.Drive
+        // Virtual methods
 
         vfunc_handle_eject(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
         vfunc_handle_power_off(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
@@ -57224,7 +57224,7 @@ export namespace UDisks {
         override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
     }
     interface DriveAta extends GObject.Object {
-        // Own properties of UDisks.DriveAta
+        // Properties
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UDisks2-Drive-Ata.AamEnabled">"AamEnabled"</link>.
@@ -57577,7 +57577,7 @@ export namespace UDisks {
         get writeCacheSupported(): boolean;
         set writeCacheSupported(val: boolean);
 
-        // Own methods of UDisks.DriveAta
+        // Methods
 
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Drive-Ata.PmGetState">PmGetState()</link> D-Bus method on `proxy`.
@@ -57932,7 +57932,7 @@ export namespace UDisks {
          */
         complete_smart_update(invocation: Gio.DBusMethodInvocation): void;
 
-        // Own virtual methods of UDisks.DriveAta
+        // Virtual methods
 
         vfunc_handle_pm_get_state(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
         vfunc_handle_pm_standby(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
@@ -57999,7 +57999,7 @@ export namespace UDisks {
         override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
     }
     interface DriveLSM extends GObject.Object {
-        // Own properties of UDisks.DriveLSM
+        // Properties
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UDisks2-Drive-LSM.IsOK">"IsOK"</link>.
@@ -58168,7 +58168,7 @@ export namespace UDisks {
         override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
     }
     interface DriveLsmLocal extends GObject.Object {
-        // Own methods of UDisks.DriveLsmLocal
+        // Methods
 
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Drive-LsmLocal.TurnFaultLEDOff">TurnFaultLEDOff()</link> D-Bus method on `proxy`.
@@ -58319,7 +58319,7 @@ export namespace UDisks {
          */
         complete_turn_ident_ledon(invocation: Gio.DBusMethodInvocation): void;
 
-        // Own virtual methods of UDisks.DriveLsmLocal
+        // Virtual methods
 
         vfunc_handle_turn_fault_ledoff(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
         vfunc_handle_turn_fault_ledon(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
@@ -58361,7 +58361,7 @@ export namespace UDisks {
         override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
     }
     interface Encrypted extends GObject.Object {
-        // Own properties of UDisks.Encrypted
+        // Properties
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UDisks2-Encrypted.ChildConfiguration">"ChildConfiguration"</link>.
@@ -58420,7 +58420,7 @@ export namespace UDisks {
         get metadataSize(): number;
         set metadataSize(val: number);
 
-        // Own methods of UDisks.Encrypted
+        // Methods
 
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Encrypted.ChangePassphrase">ChangePassphrase()</link> D-Bus method on `proxy`.
@@ -58593,7 +58593,7 @@ export namespace UDisks {
          */
         complete_unlock(invocation: Gio.DBusMethodInvocation, cleartext_device: string): void;
 
-        // Own virtual methods of UDisks.Encrypted
+        // Virtual methods
 
         vfunc_handle_change_passphrase(
             invocation: Gio.DBusMethodInvocation,
@@ -58639,7 +58639,7 @@ export namespace UDisks {
         override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
     }
     interface Filesystem extends GObject.Object {
-        // Own properties of UDisks.Filesystem
+        // Properties
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UDisks2-Filesystem.MountPoints">"MountPoints"</link>.
@@ -58663,7 +58663,7 @@ export namespace UDisks {
         get size(): number;
         set size(val: number);
 
-        // Own methods of UDisks.Filesystem
+        // Methods
 
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Filesystem.Check">Check()</link> D-Bus method on `proxy`.
@@ -58978,7 +58978,7 @@ export namespace UDisks {
          */
         complete_unmount(invocation: Gio.DBusMethodInvocation): void;
 
-        // Own virtual methods of UDisks.Filesystem
+        // Virtual methods
 
         vfunc_handle_check(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
         vfunc_handle_mount(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
@@ -59029,7 +59029,7 @@ export namespace UDisks {
         override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
     }
     interface FilesystemBTRFS extends GObject.Object {
-        // Own properties of UDisks.FilesystemBTRFS
+        // Properties
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UDisks2-Filesystem-BTRFS.label">"label"</link>.
@@ -59067,7 +59067,7 @@ export namespace UDisks {
         get uuid(): string;
         set uuid(val: string);
 
-        // Own methods of UDisks.FilesystemBTRFS
+        // Methods
 
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Filesystem-BTRFS.AddDevice">AddDevice()</link> D-Bus method on `proxy`.
@@ -59469,7 +59469,7 @@ export namespace UDisks {
          */
         complete_set_label(invocation: Gio.DBusMethodInvocation): void;
 
-        // Own virtual methods of UDisks.FilesystemBTRFS
+        // Virtual methods
 
         vfunc_handle_add_device(
             invocation: Gio.DBusMethodInvocation,
@@ -59555,7 +59555,7 @@ export namespace UDisks {
         override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
     }
     interface ISCSISession extends GObject.Object {
-        // Own properties of UDisks.ISCSISession
+        // Properties
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UDisks2-ISCSI-Session.abort_timeout">"abort_timeout"</link>.
@@ -59677,7 +59677,7 @@ export namespace UDisks {
         get tpgt(): number;
         set tpgt(val: number);
 
-        // Own methods of UDisks.ISCSISession
+        // Methods
 
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-ISCSI-Session.Logout">Logout()</link> D-Bus method on `proxy`.
@@ -59761,7 +59761,7 @@ export namespace UDisks {
          */
         complete_logout_interface(invocation: Gio.DBusMethodInvocation): void;
 
-        // Own virtual methods of UDisks.ISCSISession
+        // Virtual methods
 
         vfunc_handle_logout(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
         vfunc_handle_logout_interface(
@@ -59811,7 +59811,7 @@ export namespace UDisks {
         override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
     }
     interface Job extends GObject.Object {
-        // Own properties of UDisks.Job
+        // Properties
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UDisks2-Job.Bytes">"Bytes"</link>.
@@ -59912,7 +59912,7 @@ export namespace UDisks {
         get startedByUid(): number;
         set startedByUid(val: number);
 
-        // Own methods of UDisks.Job
+        // Methods
 
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Job.Cancel">Cancel()</link> D-Bus method on `proxy`.
@@ -59958,7 +59958,7 @@ export namespace UDisks {
          */
         emit_completed(arg_success: boolean, arg_message: string): void;
 
-        // Own virtual methods of UDisks.Job
+        // Virtual methods
 
         vfunc_completed(arg_success: boolean, arg_message: string): void;
         vfunc_handle_cancel(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
@@ -60012,7 +60012,7 @@ export namespace UDisks {
         override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
     }
     interface LogicalVolume extends GObject.Object {
-        // Own properties of UDisks.LogicalVolume
+        // Properties
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UDisks2-LogicalVolume.Active">"Active"</link>.
@@ -60169,7 +60169,7 @@ export namespace UDisks {
         get volumeGroup(): string;
         set volumeGroup(val: string);
 
-        // Own methods of UDisks.LogicalVolume
+        // Methods
 
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-LogicalVolume.Activate">Activate()</link> D-Bus method on `proxy`.
@@ -60580,7 +60580,7 @@ export namespace UDisks {
          */
         complete_resize(invocation: Gio.DBusMethodInvocation): void;
 
-        // Own virtual methods of UDisks.LogicalVolume
+        // Virtual methods
 
         vfunc_handle_activate(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
         vfunc_handle_cache_attach(
@@ -60642,7 +60642,7 @@ export namespace UDisks {
         override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
     }
     interface Loop extends GObject.Object {
-        // Own properties of UDisks.Loop
+        // Properties
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UDisks2-Loop.Autoclear">"Autoclear"</link>.
@@ -60680,7 +60680,7 @@ export namespace UDisks {
         get setupByUid(): number;
         set setupByUid(val: number);
 
-        // Own methods of UDisks.Loop
+        // Methods
 
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Loop.Delete">Delete()</link> D-Bus method on `proxy`.
@@ -60764,7 +60764,7 @@ export namespace UDisks {
          */
         complete_set_autoclear(invocation: Gio.DBusMethodInvocation): void;
 
-        // Own virtual methods of UDisks.Loop
+        // Virtual methods
 
         vfunc_handle_delete(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
         vfunc_handle_set_autoclear(
@@ -60824,7 +60824,7 @@ export namespace UDisks {
         override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
     }
     interface MDRaid extends GObject.Object {
-        // Own properties of UDisks.MDRaid
+        // Properties
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UDisks2-MDRaid.ActiveDevices">"ActiveDevices"</link>.
@@ -60995,7 +60995,7 @@ export namespace UDisks {
         get uuid(): string;
         set uuid(val: string);
 
-        // Own methods of UDisks.MDRaid
+        // Methods
 
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-MDRaid.AddDevice">AddDevice()</link> D-Bus method on `proxy`.
@@ -61285,7 +61285,7 @@ export namespace UDisks {
          */
         complete_stop(invocation: Gio.DBusMethodInvocation): void;
 
-        // Own virtual methods of UDisks.MDRaid
+        // Virtual methods
 
         vfunc_handle_add_device(
             invocation: Gio.DBusMethodInvocation,
@@ -61345,7 +61345,7 @@ export namespace UDisks {
         override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
     }
     interface Manager extends GObject.Object {
-        // Own properties of UDisks.Manager
+        // Properties
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UDisks2-Manager.DefaultEncryptionType">"DefaultEncryptionType"</link>.
@@ -61397,7 +61397,7 @@ export namespace UDisks {
         get version(): string;
         set version(val: string);
 
-        // Own methods of UDisks.Manager
+        // Methods
 
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Manager.CanCheck">CanCheck()</link> D-Bus method on `proxy`.
@@ -61826,7 +61826,7 @@ export namespace UDisks {
          */
         complete_resolve_device(invocation: Gio.DBusMethodInvocation, devices: string): void;
 
-        // Own virtual methods of UDisks.Manager
+        // Virtual methods
 
         vfunc_handle_can_check(invocation: Gio.DBusMethodInvocation, arg_type: string): boolean;
         vfunc_handle_can_format(invocation: Gio.DBusMethodInvocation, arg_type: string): boolean;
@@ -61885,7 +61885,7 @@ export namespace UDisks {
         override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
     }
     interface ManagerBTRFS extends GObject.Object {
-        // Own methods of UDisks.ManagerBTRFS
+        // Methods
 
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Manager-BTRFS.CreateVolume">CreateVolume()</link> D-Bus method on `proxy`.
@@ -61944,7 +61944,7 @@ export namespace UDisks {
          */
         complete_create_volume(invocation: Gio.DBusMethodInvocation): void;
 
-        // Own virtual methods of UDisks.ManagerBTRFS
+        // Virtual methods
 
         vfunc_handle_create_volume(
             invocation: Gio.DBusMethodInvocation,
@@ -61984,7 +61984,7 @@ export namespace UDisks {
         override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
     }
     interface ManagerISCSIInitiator extends GObject.Object {
-        // Own properties of UDisks.ManagerISCSIInitiator
+        // Properties
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UDisks2-Manager-ISCSI-Initiator.SessionsSupported">"SessionsSupported"</link>.
@@ -62001,7 +62001,7 @@ export namespace UDisks {
         get sessionsSupported(): boolean;
         set sessionsSupported(val: boolean);
 
-        // Own methods of UDisks.ManagerISCSIInitiator
+        // Methods
 
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Manager-ISCSI-Initiator.DiscoverFirmware">DiscoverFirmware()</link> D-Bus method on `proxy`.
@@ -62369,7 +62369,7 @@ export namespace UDisks {
          */
         complete_set_initiator_name(invocation: Gio.DBusMethodInvocation): void;
 
-        // Own virtual methods of UDisks.ManagerISCSIInitiator
+        // Virtual methods
 
         vfunc_handle_discover_firmware(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
         vfunc_handle_discover_send_targets(
@@ -62431,7 +62431,7 @@ export namespace UDisks {
         override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
     }
     interface ManagerLVM2 extends GObject.Object {
-        // Own methods of UDisks.ManagerLVM2
+        // Methods
 
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Manager-LVM2.VolumeGroupCreate">VolumeGroupCreate()</link> D-Bus method on `proxy`.
@@ -62483,7 +62483,7 @@ export namespace UDisks {
          */
         complete_volume_group_create(invocation: Gio.DBusMethodInvocation, result: string): void;
 
-        // Own virtual methods of UDisks.ManagerLVM2
+        // Virtual methods
 
         vfunc_handle_volume_group_create(
             invocation: Gio.DBusMethodInvocation,
@@ -62523,7 +62523,7 @@ export namespace UDisks {
         override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
     }
     interface ManagerNVMe extends GObject.Object {
-        // Own properties of UDisks.ManagerNVMe
+        // Properties
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UDisks2-Manager-NVMe.HostID">"HostID"</link>.
@@ -62554,7 +62554,7 @@ export namespace UDisks {
         get hostNqn(): string;
         set hostNqn(val: string);
 
-        // Own methods of UDisks.ManagerNVMe
+        // Methods
 
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Manager-NVMe.Connect">Connect()</link> D-Bus method on `proxy`.
@@ -62698,7 +62698,7 @@ export namespace UDisks {
          */
         complete_set_host_nqn(invocation: Gio.DBusMethodInvocation): void;
 
-        // Own virtual methods of UDisks.ManagerNVMe
+        // Virtual methods
 
         vfunc_handle_connect(
             invocation: Gio.DBusMethodInvocation,
@@ -62771,7 +62771,7 @@ export namespace UDisks {
         override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
     }
     interface NVMeController extends GObject.Object {
-        // Own properties of UDisks.NVMeController
+        // Properties
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UDisks2-NVMe-Controller.ControllerID">"ControllerID"</link>.
@@ -62956,7 +62956,7 @@ export namespace UDisks {
         get unallocatedCapacity(): number;
         set unallocatedCapacity(val: number);
 
-        // Own methods of UDisks.NVMeController
+        // Methods
 
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-NVMe-Controller.SanitizeStart">SanitizeStart()</link> D-Bus method on `proxy`.
@@ -63162,7 +63162,7 @@ export namespace UDisks {
          */
         complete_smart_update(invocation: Gio.DBusMethodInvocation): void;
 
-        // Own virtual methods of UDisks.NVMeController
+        // Virtual methods
 
         vfunc_handle_sanitize_start(
             invocation: Gio.DBusMethodInvocation,
@@ -63212,7 +63212,7 @@ export namespace UDisks {
         override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
     }
     interface NVMeFabrics extends GObject.Object {
-        // Own properties of UDisks.NVMeFabrics
+        // Properties
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UDisks2-NVMe-Fabrics.HostID">"HostID"</link>.
@@ -63264,7 +63264,7 @@ export namespace UDisks {
         get transportAddress(): string;
         set transportAddress(val: string);
 
-        // Own methods of UDisks.NVMeFabrics
+        // Methods
 
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-NVMe-Fabrics.Disconnect">Disconnect()</link> D-Bus method on `proxy`.
@@ -63304,7 +63304,7 @@ export namespace UDisks {
          */
         complete_disconnect(invocation: Gio.DBusMethodInvocation): void;
 
-        // Own virtual methods of UDisks.NVMeFabrics
+        // Virtual methods
 
         vfunc_handle_disconnect(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
     }
@@ -63351,7 +63351,7 @@ export namespace UDisks {
         override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
     }
     interface NVMeNamespace extends GObject.Object {
-        // Own properties of UDisks.NVMeNamespace
+        // Properties
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UDisks2-NVMe-Namespace.EUI64">"EUI64"</link>.
@@ -63466,7 +63466,7 @@ export namespace UDisks {
         get wwn(): string;
         set wwn(val: string);
 
-        // Own methods of UDisks.NVMeNamespace
+        // Methods
 
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-NVMe-Namespace.FormatNamespace">FormatNamespace()</link> D-Bus method on `proxy`.
@@ -63506,7 +63506,7 @@ export namespace UDisks {
          */
         complete_format_namespace(invocation: Gio.DBusMethodInvocation): void;
 
-        // Own virtual methods of UDisks.NVMeNamespace
+        // Virtual methods
 
         vfunc_handle_format_namespace(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
     }
@@ -63571,7 +63571,7 @@ export namespace UDisks {
         prototype: Object;
     }
     interface Object extends Gio.DBusObject {
-        // Own properties of UDisks.Object
+        // Properties
 
         /**
          * The #UDisksBlock instance corresponding to the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-UDisks2-Block.top_of_page">org.freedesktop.UDisks2.Block</link>, if any.
@@ -63896,7 +63896,7 @@ export namespace UDisks {
         get volumeGroup(): VolumeGroup;
         set volumeGroup(val: VolumeGroup);
 
-        // Own methods of UDisks.Object
+        // Methods
 
         /**
          * Gets the #UDisksBlock instance for the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-UDisks2-Block.top_of_page">org.freedesktop.UDisks2.Block</link> on `object,` if any.
@@ -64078,7 +64078,7 @@ export namespace UDisks {
         override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
     }
     interface Partition extends GObject.Object {
-        // Own properties of UDisks.Partition
+        // Properties
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UDisks2-Partition.Flags">"Flags"</link>.
@@ -64165,7 +64165,7 @@ export namespace UDisks {
         get uuid(): string;
         set uuid(val: string);
 
-        // Own methods of UDisks.Partition
+        // Methods
 
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Partition.Delete">Delete()</link> D-Bus method on `proxy`.
@@ -64409,7 +64409,7 @@ export namespace UDisks {
          */
         complete_set_uuid(invocation: Gio.DBusMethodInvocation): void;
 
-        // Own virtual methods of UDisks.Partition
+        // Virtual methods
 
         vfunc_handle_delete(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
         vfunc_handle_resize(invocation: Gio.DBusMethodInvocation, arg_size: number, arg_options: GLib.Variant): boolean;
@@ -64463,7 +64463,7 @@ export namespace UDisks {
         override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
     }
     interface PartitionTable extends GObject.Object {
-        // Own properties of UDisks.PartitionTable
+        // Properties
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UDisks2-PartitionTable.Partitions">"Partitions"</link>.
@@ -64480,7 +64480,7 @@ export namespace UDisks {
         get type(): string;
         set type(val: string);
 
-        // Own methods of UDisks.PartitionTable
+        // Methods
 
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-PartitionTable.CreatePartition">CreatePartition()</link> D-Bus method on `proxy`.
@@ -64605,7 +64605,7 @@ export namespace UDisks {
          */
         complete_create_partition_and_format(invocation: Gio.DBusMethodInvocation, created_partition: string): void;
 
-        // Own virtual methods of UDisks.PartitionTable
+        // Virtual methods
 
         vfunc_handle_create_partition(
             invocation: Gio.DBusMethodInvocation,
@@ -64658,7 +64658,7 @@ export namespace UDisks {
         override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
     }
     interface PhysicalVolume extends GObject.Object {
-        // Own properties of UDisks.PhysicalVolume
+        // Properties
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UDisks2-PhysicalVolume.FreeSize">"FreeSize"</link>.
@@ -64724,7 +64724,7 @@ export namespace UDisks {
         override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
     }
     interface Swapspace extends GObject.Object {
-        // Own properties of UDisks.Swapspace
+        // Properties
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UDisks2-Swapspace.Active">"Active"</link>.
@@ -64734,7 +64734,7 @@ export namespace UDisks {
         get active(): boolean;
         set active(val: boolean);
 
-        // Own methods of UDisks.Swapspace
+        // Methods
 
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Swapspace.SetLabel">SetLabel()</link> D-Bus method on `proxy`.
@@ -64895,7 +64895,7 @@ export namespace UDisks {
          */
         complete_stop(invocation: Gio.DBusMethodInvocation): void;
 
-        // Own virtual methods of UDisks.Swapspace
+        // Virtual methods
 
         vfunc_handle_set_label(
             invocation: Gio.DBusMethodInvocation,
@@ -64949,7 +64949,7 @@ export namespace UDisks {
         override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
     }
     interface VDOVolume extends GObject.Object {
-        // Own properties of UDisks.VDOVolume
+        // Properties
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UDisks2-VDOVolume.Compression">"Compression"</link>.
@@ -65036,7 +65036,7 @@ export namespace UDisks {
         get vdoPool(): string;
         set vdoPool(val: string);
 
-        // Own methods of UDisks.VDOVolume
+        // Methods
 
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-VDOVolume.EnableCompression">EnableCompression()</link> D-Bus method on `proxy`.
@@ -65256,7 +65256,7 @@ export namespace UDisks {
          */
         complete_resize_physical(invocation: Gio.DBusMethodInvocation): void;
 
-        // Own virtual methods of UDisks.VDOVolume
+        // Virtual methods
 
         vfunc_handle_enable_compression(
             invocation: Gio.DBusMethodInvocation,
@@ -65318,7 +65318,7 @@ export namespace UDisks {
         override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
     }
     interface VolumeGroup extends GObject.Object {
-        // Own properties of UDisks.VolumeGroup
+        // Properties
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UDisks2-VolumeGroup.ExtentSize">"ExtentSize"</link>.
@@ -65398,7 +65398,7 @@ export namespace UDisks {
         get uuid(): string;
         set uuid(val: string);
 
-        // Own methods of UDisks.VolumeGroup
+        // Methods
 
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-VolumeGroup.AddDevice">AddDevice()</link> D-Bus method on `proxy`.
@@ -65974,7 +65974,7 @@ export namespace UDisks {
          */
         complete_rename(invocation: Gio.DBusMethodInvocation, result: string): void;
 
-        // Own virtual methods of UDisks.VolumeGroup
+        // Virtual methods
 
         vfunc_handle_add_device(
             invocation: Gio.DBusMethodInvocation,

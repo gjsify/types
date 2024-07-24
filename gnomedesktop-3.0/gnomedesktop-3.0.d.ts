@@ -65,7 +65,7 @@ export namespace GnomeDesktop {
     class RRError extends GLib.Error {
         static $gtype: GObject.GType<RRError>;
 
-        // Static fields of GnomeDesktop.RRError
+        // Static fields
 
         static UNKNOWN: number;
         static NO_RANDR_EXTENSION: number;
@@ -75,7 +75,7 @@ export namespace GnomeDesktop {
         static NO_MATCHING_CONFIG: number;
         static NO_DPMS_EXTENSION: number;
 
-        // Constructors of GnomeDesktop.RRError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
@@ -337,7 +337,7 @@ export namespace GnomeDesktop {
     class BG extends GObject.Object {
         static $gtype: GObject.GType<BG>;
 
-        // Constructors of GnomeDesktop.BG
+        // Constructors
 
         constructor(properties?: Partial<BG.ConstructorProps>, ...args: any[]);
 
@@ -345,7 +345,7 @@ export namespace GnomeDesktop {
 
         static ['new'](): BG;
 
-        // Own signals of GnomeDesktop.BG
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -357,7 +357,7 @@ export namespace GnomeDesktop {
         connect_after(signal: 'transitioned', callback: (_source: this) => void): number;
         emit(signal: 'transitioned'): void;
 
-        // Own methods of GnomeDesktop.BG
+        // Methods
 
         changes_with_time(): boolean;
         /**
@@ -430,7 +430,7 @@ export namespace GnomeDesktop {
     class BGCrossfade extends GObject.Object {
         static $gtype: GObject.GType<BGCrossfade>;
 
-        // Own properties of GnomeDesktop.BGCrossfade
+        // Properties
 
         /**
          * When a crossfade is running, this is height of the fading
@@ -443,11 +443,11 @@ export namespace GnomeDesktop {
          */
         get width(): number;
 
-        // Own fields of GnomeDesktop.BGCrossfade
+        // Fields
 
         parent_object: GObject.Object;
 
-        // Constructors of GnomeDesktop.BGCrossfade
+        // Constructors
 
         constructor(properties?: Partial<BGCrossfade.ConstructorProps>, ...args: any[]);
 
@@ -455,7 +455,7 @@ export namespace GnomeDesktop {
 
         static ['new'](width: number, height: number): BGCrossfade;
 
-        // Own signals of GnomeDesktop.BGCrossfade
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -464,11 +464,11 @@ export namespace GnomeDesktop {
         connect_after(signal: 'finished', callback: (_source: this, window: GObject.Object) => void): number;
         emit(signal: 'finished', window: GObject.Object): void;
 
-        // Own virtual methods of GnomeDesktop.BGCrossfade
+        // Virtual methods
 
         vfunc_finished(window: Gdk.Window): void;
 
-        // Own methods of GnomeDesktop.BGCrossfade
+        // Methods
 
         /**
          * This function reveals whether or not `fade` is currently
@@ -527,7 +527,7 @@ export namespace GnomeDesktop {
     class BGSlideShow extends GObject.Object {
         static $gtype: GObject.GType<BGSlideShow>;
 
-        // Own properties of GnomeDesktop.BGSlideShow
+        // Properties
 
         get file(): Gio.File;
         get has_multiple_sizes(): boolean;
@@ -537,11 +537,11 @@ export namespace GnomeDesktop {
         get total_duration(): number;
         get totalDuration(): number;
 
-        // Own fields of GnomeDesktop.BGSlideShow
+        // Fields
 
         parent_object: GObject.Object;
 
-        // Constructors of GnomeDesktop.BGSlideShow
+        // Constructors
 
         constructor(properties?: Partial<BGSlideShow.ConstructorProps>, ...args: any[]);
 
@@ -549,7 +549,7 @@ export namespace GnomeDesktop {
 
         static ['new'](filename: string): BGSlideShow;
 
-        // Own methods of GnomeDesktop.BGSlideShow
+        // Methods
 
         /**
          * Returns the current slides progress.
@@ -610,7 +610,7 @@ export namespace GnomeDesktop {
     class DesktopThumbnailFactory extends GObject.Object {
         static $gtype: GObject.GType<DesktopThumbnailFactory>;
 
-        // Constructors of GnomeDesktop.DesktopThumbnailFactory
+        // Constructors
 
         constructor(properties?: Partial<DesktopThumbnailFactory.ConstructorProps>, ...args: any[]);
 
@@ -618,7 +618,7 @@ export namespace GnomeDesktop {
 
         static ['new'](size: DesktopThumbnailSize): DesktopThumbnailFactory;
 
-        // Own methods of GnomeDesktop.DesktopThumbnailFactory
+        // Methods
 
         /**
          * Returns TRUE if this GnomeDesktopThumbnailFactory can (at least try) to thumbnail
@@ -751,7 +751,7 @@ export namespace GnomeDesktop {
     class IdleMonitor extends GObject.Object implements Gio.Initable {
         static $gtype: GObject.GType<IdleMonitor>;
 
-        // Constructors of GnomeDesktop.IdleMonitor
+        // Constructors
 
         constructor(properties?: Partial<IdleMonitor.ConstructorProps>, ...args: any[]);
 
@@ -759,7 +759,7 @@ export namespace GnomeDesktop {
 
         static ['new'](): IdleMonitor;
 
-        // Own methods of GnomeDesktop.IdleMonitor
+        // Methods
 
         add_idle_watch(interval_msec: number, callback?: IdleMonitorWatchFunc | null): number;
         add_user_active_watch(callback?: IdleMonitorWatchFunc | null): number;
@@ -1269,7 +1269,7 @@ export namespace GnomeDesktop {
     class PnpIds extends GObject.Object {
         static $gtype: GObject.GType<PnpIds>;
 
-        // Constructors of GnomeDesktop.PnpIds
+        // Constructors
 
         constructor(properties?: Partial<PnpIds.ConstructorProps>, ...args: any[]);
 
@@ -1277,7 +1277,7 @@ export namespace GnomeDesktop {
 
         static ['new'](): PnpIds;
 
-        // Own methods of GnomeDesktop.PnpIds
+        // Methods
 
         /**
          * Find the full manufacturer name for the given PNP ID.
@@ -1298,11 +1298,11 @@ export namespace GnomeDesktop {
     class RRConfig extends GObject.Object {
         static $gtype: GObject.GType<RRConfig>;
 
-        // Own properties of GnomeDesktop.RRConfig
+        // Properties
 
         set screen(val: RRScreen);
 
-        // Constructors of GnomeDesktop.RRConfig
+        // Constructors
 
         constructor(properties?: Partial<RRConfig.ConstructorProps>, ...args: any[]);
 
@@ -1310,7 +1310,7 @@ export namespace GnomeDesktop {
 
         static new_current(screen: RRScreen): RRConfig;
 
-        // Own methods of GnomeDesktop.RRConfig
+        // Methods
 
         applicable(screen: RRScreen): boolean;
         apply(screen: RRScreen): boolean;
@@ -1334,13 +1334,13 @@ export namespace GnomeDesktop {
     class RROutputInfo extends GObject.Object {
         static $gtype: GObject.GType<RROutputInfo>;
 
-        // Constructors of GnomeDesktop.RROutputInfo
+        // Constructors
 
         constructor(properties?: Partial<RROutputInfo.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of GnomeDesktop.RROutputInfo
+        // Methods
 
         get_aspect_ratio(): number;
         get_display_name(): string;
@@ -1410,7 +1410,7 @@ export namespace GnomeDesktop {
     class RRScreen extends GObject.Object implements Gio.AsyncInitable<RRScreen>, Gio.Initable {
         static $gtype: GObject.GType<RRScreen>;
 
-        // Own properties of GnomeDesktop.RRScreen
+        // Properties
 
         get dpms_mode(): RRDpmsModeType;
         set dpms_mode(val: RRDpmsModeType);
@@ -1419,7 +1419,7 @@ export namespace GnomeDesktop {
         get gdk_screen(): Gdk.Screen;
         get gdkScreen(): Gdk.Screen;
 
-        // Constructors of GnomeDesktop.RRScreen
+        // Constructors
 
         constructor(properties?: Partial<RRScreen.ConstructorProps>, ...args: any[]);
 
@@ -1432,7 +1432,7 @@ export namespace GnomeDesktop {
 
         static new_finish(...args: never[]): any;
 
-        // Own signals of GnomeDesktop.RRScreen
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -1447,17 +1447,17 @@ export namespace GnomeDesktop {
         connect_after(signal: 'output-disconnected', callback: (_source: this, output: any | null) => void): number;
         emit(signal: 'output-disconnected', output?: any | null): void;
 
-        // Own static methods of GnomeDesktop.RRScreen
+        // Static methods
 
         static new_async(screen: Gdk.Screen, callback?: Gio.AsyncReadyCallback<RRScreen> | null): void;
 
-        // Own virtual methods of GnomeDesktop.RRScreen
+        // Virtual methods
 
         vfunc_changed(): void;
         vfunc_output_connected(output: RROutput): void;
         vfunc_output_disconnected(output: RROutput): void;
 
-        // Own methods of GnomeDesktop.RRScreen
+        // Methods
 
         get_crtc_by_id(id: number): RRCrtc;
         get_dpms_mode(): [boolean, RRDpmsMode];
@@ -2111,7 +2111,7 @@ export namespace GnomeDesktop {
     class WallClock extends GObject.Object {
         static $gtype: GObject.GType<WallClock>;
 
-        // Own properties of GnomeDesktop.WallClock
+        // Properties
 
         /**
          * A formatted string representing the current clock display.
@@ -2148,11 +2148,11 @@ export namespace GnomeDesktop {
          */
         get timezone(): GLib.TimeZone;
 
-        // Own fields of GnomeDesktop.WallClock
+        // Fields
 
         parent_object: GObject.Object;
 
-        // Constructors of GnomeDesktop.WallClock
+        // Constructors
 
         constructor(properties?: Partial<WallClock.ConstructorProps>, ...args: any[]);
 
@@ -2160,7 +2160,7 @@ export namespace GnomeDesktop {
 
         static ['new'](): WallClock;
 
-        // Own methods of GnomeDesktop.WallClock
+        // Methods
 
         /**
          * Returns the string representing the current time of this clock
@@ -2197,11 +2197,11 @@ export namespace GnomeDesktop {
     class XkbInfo extends GObject.Object {
         static $gtype: GObject.GType<XkbInfo>;
 
-        // Own fields of GnomeDesktop.XkbInfo
+        // Fields
 
         parent_object: GObject.Object;
 
-        // Constructors of GnomeDesktop.XkbInfo
+        // Constructors
 
         constructor(properties?: Partial<XkbInfo.ConstructorProps>, ...args: any[]);
 
@@ -2209,7 +2209,7 @@ export namespace GnomeDesktop {
 
         static ['new'](): XkbInfo;
 
-        // Own signals of GnomeDesktop.XkbInfo
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -2218,7 +2218,7 @@ export namespace GnomeDesktop {
         connect_after(signal: 'layouts-changed', callback: (_source: this) => void): number;
         emit(signal: 'layouts-changed'): void;
 
-        // Own methods of GnomeDesktop.XkbInfo
+        // Methods
 
         description_for_group(group_id: string): string;
         description_for_option(group_id: string, id: string): string;
@@ -2282,7 +2282,7 @@ export namespace GnomeDesktop {
     abstract class BGCrossfadePrivate {
         static $gtype: GObject.GType<BGCrossfadePrivate>;
 
-        // Constructors of GnomeDesktop.BGCrossfadePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2291,7 +2291,7 @@ export namespace GnomeDesktop {
     abstract class BGSlideShowPrivate {
         static $gtype: GObject.GType<BGSlideShowPrivate>;
 
-        // Constructors of GnomeDesktop.BGSlideShowPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2300,7 +2300,7 @@ export namespace GnomeDesktop {
     abstract class DesktopThumbnailFactoryPrivate {
         static $gtype: GObject.GType<DesktopThumbnailFactoryPrivate>;
 
-        // Constructors of GnomeDesktop.DesktopThumbnailFactoryPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2309,7 +2309,7 @@ export namespace GnomeDesktop {
     abstract class IdleMonitorPrivate {
         static $gtype: GObject.GType<IdleMonitorPrivate>;
 
-        // Constructors of GnomeDesktop.IdleMonitorPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2318,7 +2318,7 @@ export namespace GnomeDesktop {
     abstract class PnpIdsPrivate {
         static $gtype: GObject.GType<PnpIdsPrivate>;
 
-        // Constructors of GnomeDesktop.PnpIdsPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2326,11 +2326,11 @@ export namespace GnomeDesktop {
     class RRCTM {
         static $gtype: GObject.GType<RRCTM>;
 
-        // Own fields of GnomeDesktop.RRCTM
+        // Fields
 
         matrix: number[];
 
-        // Constructors of GnomeDesktop.RRCTM
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -2344,7 +2344,7 @@ export namespace GnomeDesktop {
     abstract class RRConfigPrivate {
         static $gtype: GObject.GType<RRConfigPrivate>;
 
-        // Constructors of GnomeDesktop.RRConfigPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2352,11 +2352,11 @@ export namespace GnomeDesktop {
     abstract class RRCrtc {
         static $gtype: GObject.GType<RRCrtc>;
 
-        // Constructors of GnomeDesktop.RRCrtc
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of GnomeDesktop.RRCrtc
+        // Methods
 
         can_drive_output(output: RROutput): boolean;
         get_current_mode(): RRMode;
@@ -2372,11 +2372,11 @@ export namespace GnomeDesktop {
     abstract class RRMode {
         static $gtype: GObject.GType<RRMode>;
 
-        // Constructors of GnomeDesktop.RRMode
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of GnomeDesktop.RRMode
+        // Methods
 
         get_freq(): number;
         get_freq_f(): number;
@@ -2394,11 +2394,11 @@ export namespace GnomeDesktop {
     abstract class RROutput {
         static $gtype: GObject.GType<RROutput>;
 
-        // Constructors of GnomeDesktop.RROutput
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of GnomeDesktop.RROutput
+        // Methods
 
         can_clone(clone: RROutput): boolean;
         get_backlight(): number;
@@ -2429,7 +2429,7 @@ export namespace GnomeDesktop {
     abstract class RROutputInfoPrivate {
         static $gtype: GObject.GType<RROutputInfoPrivate>;
 
-        // Constructors of GnomeDesktop.RROutputInfoPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2438,7 +2438,7 @@ export namespace GnomeDesktop {
     abstract class RRScreenPrivate {
         static $gtype: GObject.GType<RRScreenPrivate>;
 
-        // Constructors of GnomeDesktop.RRScreenPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2447,7 +2447,7 @@ export namespace GnomeDesktop {
     abstract class WallClockPrivate {
         static $gtype: GObject.GType<WallClockPrivate>;
 
-        // Constructors of GnomeDesktop.WallClockPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2456,7 +2456,7 @@ export namespace GnomeDesktop {
     abstract class XkbInfoPrivate {
         static $gtype: GObject.GType<XkbInfoPrivate>;
 
-        // Constructors of GnomeDesktop.XkbInfoPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }

@@ -119,7 +119,7 @@ export namespace ModemManager {
     class CdmaActivationError extends GLib.Error {
         static $gtype: GObject.GType<CdmaActivationError>;
 
-        // Static fields of ModemManager.CdmaActivationError
+        // Static fields
 
         static NONE: number;
         static UNKNOWN: number;
@@ -132,12 +132,12 @@ export namespace ModemManager {
         static TIMEDOUT: number;
         static STARTFAILED: number;
 
-        // Constructors of ModemManager.CdmaActivationError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of ModemManager.CdmaActivationError
+        // Static methods
 
         static quark(): GLib.Quark;
     }
@@ -158,7 +158,7 @@ export namespace ModemManager {
     class ConnectionError extends GLib.Error {
         static $gtype: GObject.GType<ConnectionError>;
 
-        // Static fields of ModemManager.ConnectionError
+        // Static fields
 
         static UNKNOWN: number;
         static NOCARRIER: number;
@@ -166,12 +166,12 @@ export namespace ModemManager {
         static BUSY: number;
         static NOANSWER: number;
 
-        // Constructors of ModemManager.ConnectionError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of ModemManager.ConnectionError
+        // Static methods
 
         static quark(): GLib.Quark;
     }
@@ -179,7 +179,7 @@ export namespace ModemManager {
     class CoreError extends GLib.Error {
         static $gtype: GObject.GType<CoreError>;
 
-        // Static fields of ModemManager.CoreError
+        // Static fields
 
         static FAILED: number;
         static CANCELLED: number;
@@ -198,12 +198,12 @@ export namespace ModemManager {
         static WRONGSIMSTATE: number;
         static RESETRETRY: number;
 
-        // Constructors of ModemManager.CoreError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of ModemManager.CoreError
+        // Static methods
 
         static quark(): GLib.Quark;
     }
@@ -220,7 +220,7 @@ export namespace ModemManager {
     class MessageError extends GLib.Error {
         static $gtype: GObject.GType<MessageError>;
 
-        // Static fields of ModemManager.MessageError
+        // Static fields
 
         static MEFAILURE: number;
         static SMSSERVICERESERVED: number;
@@ -246,12 +246,12 @@ export namespace ModemManager {
         static NOCNMAACKEXPECTED: number;
         static UNKNOWN: number;
 
-        // Constructors of ModemManager.MessageError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of ModemManager.MessageError
+        // Static methods
 
         static quark(): GLib.Quark;
     }
@@ -259,7 +259,7 @@ export namespace ModemManager {
     class MobileEquipmentError extends GLib.Error {
         static $gtype: GObject.GType<MobileEquipmentError>;
 
-        // Static fields of ModemManager.MobileEquipmentError
+        // Static fields
 
         static PHONEFAILURE: number;
         static NOCONNECTION: number;
@@ -425,12 +425,12 @@ export namespace ModemManager {
         static NONETWORKSLICESAVAILABLE: number;
         static WIRELINEACCESSAREANOTALLOWED: number;
 
-        // Constructors of ModemManager.MobileEquipmentError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of ModemManager.MobileEquipmentError
+        // Static methods
 
         static quark(): GLib.Quark;
     }
@@ -438,7 +438,7 @@ export namespace ModemManager {
     class Modem3gppDrxCycle {
         static $gtype: GObject.GType<Modem3gppDrxCycle>;
 
-        // Static fields of ModemManager.Modem3gppDrxCycle
+        // Static fields
 
         static UNKNOWN: number;
         static UNSUPPORTED: number;
@@ -447,7 +447,7 @@ export namespace ModemManager {
         static '128': number;
         static '256': number;
 
-        // Constructors of ModemManager.Modem3gppDrxCycle
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -911,7 +911,7 @@ export namespace ModemManager {
     class SerialError extends GLib.Error {
         static $gtype: GObject.GType<SerialError>;
 
-        // Static fields of ModemManager.SerialError
+        // Static fields
 
         static UNKNOWN: number;
         static OPENFAILED: number;
@@ -923,12 +923,12 @@ export namespace ModemManager {
         static PARSEFAILED: number;
         static FRAMENOTFOUND: number;
 
-        // Constructors of ModemManager.SerialError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of ModemManager.SerialError
+        // Static methods
 
         static quark(): GLib.Quark;
     }
@@ -2308,7 +2308,7 @@ export namespace ModemManager {
     class __3gppProfile extends GObject.Object {
         static $gtype: GObject.GType<__3gppProfile>;
 
-        // Constructors of ModemManager.__3gppProfile
+        // Constructors
 
         constructor(properties?: Partial<__3gppProfile.ConstructorProps>, ...args: any[]);
 
@@ -2316,7 +2316,7 @@ export namespace ModemManager {
 
         static ['new'](): __3gppProfile;
 
-        // Own methods of ModemManager.__3gppProfile
+        // Methods
 
         consume_string(key: string, value: string): boolean;
         consume_variant(key: string, value: GLib.Variant): boolean;
@@ -2465,13 +2465,13 @@ export namespace ModemManager {
     {
         static $gtype: GObject.GType<Bearer>;
 
-        // Constructors of ModemManager.Bearer
+        // Constructors
 
         constructor(properties?: Partial<Bearer.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of ModemManager.Bearer
+        // Methods
 
         /**
          * Asynchronously requests activation of a packet data connection with the
@@ -3452,13 +3452,13 @@ export namespace ModemManager {
     class BearerIpConfig extends GObject.Object {
         static $gtype: GObject.GType<BearerIpConfig>;
 
-        // Constructors of ModemManager.BearerIpConfig
+        // Constructors
 
         constructor(properties?: Partial<BearerIpConfig.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of ModemManager.BearerIpConfig
+        // Methods
 
         /**
          * Gets the IP address to be used with this bearer.
@@ -3505,7 +3505,7 @@ export namespace ModemManager {
     class BearerProperties extends GObject.Object {
         static $gtype: GObject.GType<BearerProperties>;
 
-        // Constructors of ModemManager.BearerProperties
+        // Constructors
 
         constructor(properties?: Partial<BearerProperties.ConstructorProps>, ...args: any[]);
 
@@ -3513,7 +3513,7 @@ export namespace ModemManager {
 
         static ['new'](): BearerProperties;
 
-        // Own methods of ModemManager.BearerProperties
+        // Methods
 
         /**
          * Gets the 5G network access type preference.
@@ -3671,13 +3671,13 @@ export namespace ModemManager {
     class BearerStats extends GObject.Object {
         static $gtype: GObject.GType<BearerStats>;
 
-        // Constructors of ModemManager.BearerStats
+        // Constructors
 
         constructor(properties?: Partial<BearerStats.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of ModemManager.BearerStats
+        // Methods
 
         /**
          * Gets the number of connection attempts done with this bearer.
@@ -3757,13 +3757,13 @@ export namespace ModemManager {
     class Call extends GdbusCallProxy implements Gio.AsyncInitable<Call>, Gio.DBusInterface, Gio.Initable, GdbusCall {
         static $gtype: GObject.GType<Call>;
 
-        // Constructors of ModemManager.Call
+        // Constructors
 
         constructor(properties?: Partial<Call.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of ModemManager.Call
+        // Methods
 
         /**
          * Asynchronously requests to accept the incoming call.
@@ -4938,13 +4938,13 @@ export namespace ModemManager {
     class CallAudioFormat extends GObject.Object {
         static $gtype: GObject.GType<CallAudioFormat>;
 
-        // Constructors of ModemManager.CallAudioFormat
+        // Constructors
 
         constructor(properties?: Partial<CallAudioFormat.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of ModemManager.CallAudioFormat
+        // Methods
 
         /**
          * Gets the encoding of the audio format.  For example, "pcm" for PCM-encoded
@@ -4979,7 +4979,7 @@ export namespace ModemManager {
     class CallProperties extends GObject.Object {
         static $gtype: GObject.GType<CallProperties>;
 
-        // Constructors of ModemManager.CallProperties
+        // Constructors
 
         constructor(properties?: Partial<CallProperties.ConstructorProps>, ...args: any[]);
 
@@ -4991,7 +4991,7 @@ export namespace ModemManager {
 
         static new_from_string(str: string): CallProperties;
 
-        // Own methods of ModemManager.CallProperties
+        // Methods
 
         get_dictionary(): GLib.Variant;
         /**
@@ -5049,7 +5049,7 @@ export namespace ModemManager {
     class CdmaManualActivationProperties extends GObject.Object {
         static $gtype: GObject.GType<CdmaManualActivationProperties>;
 
-        // Constructors of ModemManager.CdmaManualActivationProperties
+        // Constructors
 
         constructor(properties?: Partial<CdmaManualActivationProperties.ConstructorProps>, ...args: any[]);
 
@@ -5057,7 +5057,7 @@ export namespace ModemManager {
 
         static ['new'](): CdmaManualActivationProperties;
 
-        // Own methods of ModemManager.CdmaManualActivationProperties
+        // Methods
 
         /**
          * Gets the Mobile Directory Number.
@@ -5167,18 +5167,18 @@ export namespace ModemManager {
     class CellInfo extends GObject.Object {
         static $gtype: GObject.GType<CellInfo>;
 
-        // Constructors of ModemManager.CellInfo
+        // Constructors
 
         constructor(properties?: Partial<CellInfo.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of ModemManager.CellInfo
+        // Virtual methods
 
         vfunc_build_string(): GLib.String;
         vfunc_get_dictionary(): GLib.VariantDict;
 
-        // Own methods of ModemManager.CellInfo
+        // Methods
 
         /**
          * Get the type of cell.
@@ -5205,13 +5205,13 @@ export namespace ModemManager {
     class CellInfoCdma extends CellInfo {
         static $gtype: GObject.GType<CellInfoCdma>;
 
-        // Constructors of ModemManager.CellInfoCdma
+        // Constructors
 
         constructor(properties?: Partial<CellInfoCdma.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of ModemManager.CellInfoCdma
+        // Methods
 
         /**
          * Get the CDMA base station id.
@@ -5263,13 +5263,13 @@ export namespace ModemManager {
     class CellInfoGsm extends CellInfo {
         static $gtype: GObject.GType<CellInfoGsm>;
 
-        // Constructors of ModemManager.CellInfoGsm
+        // Constructors
 
         constructor(properties?: Partial<CellInfoGsm.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of ModemManager.CellInfoGsm
+        // Methods
 
         /**
          * Get the absolute RF channel number.
@@ -5330,13 +5330,13 @@ export namespace ModemManager {
     class CellInfoLte extends CellInfo {
         static $gtype: GObject.GType<CellInfoLte>;
 
-        // Constructors of ModemManager.CellInfoLte
+        // Constructors
 
         constructor(properties?: Partial<CellInfoLte.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of ModemManager.CellInfoLte
+        // Methods
 
         /**
          * Get the bandwidth of the particular carrier in downlink.
@@ -5412,13 +5412,13 @@ export namespace ModemManager {
     class CellInfoNr5g extends CellInfo {
         static $gtype: GObject.GType<CellInfoNr5g>;
 
-        // Constructors of ModemManager.CellInfoNr5g
+        // Constructors
 
         constructor(properties?: Partial<CellInfoNr5g.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of ModemManager.CellInfoNr5g
+        // Methods
 
         /**
          * Get the bandwidth of the particular carrier in downlink.
@@ -5499,13 +5499,13 @@ export namespace ModemManager {
     class CellInfoTdscdma extends CellInfo {
         static $gtype: GObject.GType<CellInfoTdscdma>;
 
-        // Constructors of ModemManager.CellInfoTdscdma
+        // Constructors
 
         constructor(properties?: Partial<CellInfoTdscdma.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of ModemManager.CellInfoTdscdma
+        // Methods
 
         /**
          * Get the cell parameter id.
@@ -5570,13 +5570,13 @@ export namespace ModemManager {
     class CellInfoUmts extends CellInfo {
         static $gtype: GObject.GType<CellInfoUmts>;
 
-        // Constructors of ModemManager.CellInfoUmts
+        // Constructors
 
         constructor(properties?: Partial<CellInfoUmts.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of ModemManager.CellInfoUmts
+        // Methods
 
         /**
          * Get the two- or four-byte Cell Identifier.
@@ -5655,7 +5655,7 @@ export namespace ModemManager {
     class FirmwareProperties extends GObject.Object {
         static $gtype: GObject.GType<FirmwareProperties>;
 
-        // Constructors of ModemManager.FirmwareProperties
+        // Constructors
 
         constructor(properties?: Partial<FirmwareProperties.ConstructorProps>, ...args: any[]);
 
@@ -5665,7 +5665,7 @@ export namespace ModemManager {
 
         static new_from_dictionary(dictionary: GLib.Variant): FirmwareProperties;
 
-        // Own methods of ModemManager.FirmwareProperties
+        // Methods
 
         get_dictionary(): GLib.Variant;
         /**
@@ -5726,13 +5726,13 @@ export namespace ModemManager {
     class FirmwareUpdateSettings extends GObject.Object {
         static $gtype: GObject.GType<FirmwareUpdateSettings>;
 
-        // Constructors of ModemManager.FirmwareUpdateSettings
+        // Constructors
 
         constructor(properties?: Partial<FirmwareUpdateSettings.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of ModemManager.FirmwareUpdateSettings
+        // Methods
 
         /**
          * Gets the list of device ids used to identify the device during a firmware
@@ -5781,7 +5781,7 @@ export namespace ModemManager {
     {
         static $gtype: GObject.GType<GdbusBearerProxy>;
 
-        // Constructors of ModemManager.GdbusBearerProxy
+        // Constructors
 
         constructor(properties?: Partial<GdbusBearerProxy.ConstructorProps>, ...args: any[]);
 
@@ -5816,7 +5816,7 @@ export namespace ModemManager {
 
         static new_sync(...args: never[]): any;
 
-        // Own static methods of ModemManager.GdbusBearerProxy
+        // Static methods
 
         /**
          * Asynchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-ModemManager1-Bearer.top_of_page">org.freedesktop.ModemManager1.Bearer</link>. See g_dbus_proxy_new() for more details.
@@ -6724,7 +6724,7 @@ export namespace ModemManager {
     class GdbusBearerSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, GdbusBearer {
         static $gtype: GObject.GType<GdbusBearerSkeleton>;
 
-        // Constructors of ModemManager.GdbusBearerSkeleton
+        // Constructors
 
         constructor(properties?: Partial<GdbusBearerSkeleton.ConstructorProps>, ...args: any[]);
 
@@ -7395,7 +7395,7 @@ export namespace ModemManager {
     {
         static $gtype: GObject.GType<GdbusCallProxy>;
 
-        // Constructors of ModemManager.GdbusCallProxy
+        // Constructors
 
         constructor(properties?: Partial<GdbusCallProxy.ConstructorProps>, ...args: any[]);
 
@@ -7430,7 +7430,7 @@ export namespace ModemManager {
 
         static new_sync(...args: never[]): any;
 
-        // Own static methods of ModemManager.GdbusCallProxy
+        // Static methods
 
         /**
          * Asynchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-ModemManager1-Call.top_of_page">org.freedesktop.ModemManager1.Call</link>. See g_dbus_proxy_new() for more details.
@@ -8460,7 +8460,7 @@ export namespace ModemManager {
     class GdbusCallSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, GdbusCall {
         static $gtype: GObject.GType<GdbusCallSkeleton>;
 
-        // Constructors of ModemManager.GdbusCallSkeleton
+        // Constructors
 
         constructor(properties?: Partial<GdbusCallSkeleton.ConstructorProps>, ...args: any[]);
 
@@ -9257,7 +9257,7 @@ export namespace ModemManager {
     {
         static $gtype: GObject.GType<GdbusModem3gppProfileManagerProxy>;
 
-        // Constructors of ModemManager.GdbusModem3gppProfileManagerProxy
+        // Constructors
 
         constructor(properties?: Partial<GdbusModem3gppProfileManagerProxy.ConstructorProps>, ...args: any[]);
 
@@ -9292,7 +9292,7 @@ export namespace ModemManager {
 
         static new_sync(...args: never[]): any;
 
-        // Own static methods of ModemManager.GdbusModem3gppProfileManagerProxy
+        // Static methods
 
         /**
          * Asynchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-ModemManager1-Modem-Modem3gpp-ProfileManager.top_of_page">org.freedesktop.ModemManager1.Modem.Modem3gpp.ProfileManager</link>. See g_dbus_proxy_new() for more details.
@@ -10131,7 +10131,7 @@ export namespace ModemManager {
     {
         static $gtype: GObject.GType<GdbusModem3gppProfileManagerSkeleton>;
 
-        // Constructors of ModemManager.GdbusModem3gppProfileManagerSkeleton
+        // Constructors
 
         constructor(properties?: Partial<GdbusModem3gppProfileManagerSkeleton.ConstructorProps>, ...args: any[]);
 
@@ -10730,7 +10730,7 @@ export namespace ModemManager {
     {
         static $gtype: GObject.GType<GdbusModem3gppProxy>;
 
-        // Constructors of ModemManager.GdbusModem3gppProxy
+        // Constructors
 
         constructor(properties?: Partial<GdbusModem3gppProxy.ConstructorProps>, ...args: any[]);
 
@@ -10765,7 +10765,7 @@ export namespace ModemManager {
 
         static new_sync(...args: never[]): any;
 
-        // Own static methods of ModemManager.GdbusModem3gppProxy
+        // Static methods
 
         /**
          * Asynchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-ModemManager1-Modem-Modem3gpp.top_of_page">org.freedesktop.ModemManager1.Modem.Modem3gpp</link>. See g_dbus_proxy_new() for more details.
@@ -11934,7 +11934,7 @@ export namespace ModemManager {
     class GdbusModem3gppSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, GdbusModem3gpp {
         static $gtype: GObject.GType<GdbusModem3gppSkeleton>;
 
-        // Constructors of ModemManager.GdbusModem3gppSkeleton
+        // Constructors
 
         constructor(properties?: Partial<GdbusModem3gppSkeleton.ConstructorProps>, ...args: any[]);
 
@@ -12866,7 +12866,7 @@ export namespace ModemManager {
     {
         static $gtype: GObject.GType<GdbusModem3gppUssdProxy>;
 
-        // Constructors of ModemManager.GdbusModem3gppUssdProxy
+        // Constructors
 
         constructor(properties?: Partial<GdbusModem3gppUssdProxy.ConstructorProps>, ...args: any[]);
 
@@ -12901,7 +12901,7 @@ export namespace ModemManager {
 
         static new_sync(...args: never[]): any;
 
-        // Own static methods of ModemManager.GdbusModem3gppUssdProxy
+        // Static methods
 
         /**
          * Asynchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-ModemManager1-Modem-Modem3gpp-Ussd.top_of_page">org.freedesktop.ModemManager1.Modem.Modem3gpp.Ussd</link>. See g_dbus_proxy_new() for more details.
@@ -13753,7 +13753,7 @@ export namespace ModemManager {
     {
         static $gtype: GObject.GType<GdbusModem3gppUssdSkeleton>;
 
-        // Constructors of ModemManager.GdbusModem3gppUssdSkeleton
+        // Constructors
 
         constructor(properties?: Partial<GdbusModem3gppUssdSkeleton.ConstructorProps>, ...args: any[]);
 
@@ -14365,7 +14365,7 @@ export namespace ModemManager {
     {
         static $gtype: GObject.GType<GdbusModemCdmaProxy>;
 
-        // Constructors of ModemManager.GdbusModemCdmaProxy
+        // Constructors
 
         constructor(properties?: Partial<GdbusModemCdmaProxy.ConstructorProps>, ...args: any[]);
 
@@ -14400,7 +14400,7 @@ export namespace ModemManager {
 
         static new_sync(...args: never[]): any;
 
-        // Own static methods of ModemManager.GdbusModemCdmaProxy
+        // Static methods
 
         /**
          * Asynchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-ModemManager1-Modem-ModemCdma.top_of_page">org.freedesktop.ModemManager1.Modem.ModemCdma</link>. See g_dbus_proxy_new() for more details.
@@ -15266,7 +15266,7 @@ export namespace ModemManager {
     class GdbusModemCdmaSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, GdbusModemCdma {
         static $gtype: GObject.GType<GdbusModemCdmaSkeleton>;
 
-        // Constructors of ModemManager.GdbusModemCdmaSkeleton
+        // Constructors
 
         constructor(properties?: Partial<GdbusModemCdmaSkeleton.ConstructorProps>, ...args: any[]);
 
@@ -15895,7 +15895,7 @@ export namespace ModemManager {
     {
         static $gtype: GObject.GType<GdbusModemFirmwareProxy>;
 
-        // Constructors of ModemManager.GdbusModemFirmwareProxy
+        // Constructors
 
         constructor(properties?: Partial<GdbusModemFirmwareProxy.ConstructorProps>, ...args: any[]);
 
@@ -15930,7 +15930,7 @@ export namespace ModemManager {
 
         static new_sync(...args: never[]): any;
 
-        // Own static methods of ModemManager.GdbusModemFirmwareProxy
+        // Static methods
 
         /**
          * Asynchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-ModemManager1-Modem-Firmware.top_of_page">org.freedesktop.ModemManager1.Modem.Firmware</link>. See g_dbus_proxy_new() for more details.
@@ -16723,7 +16723,7 @@ export namespace ModemManager {
     {
         static $gtype: GObject.GType<GdbusModemFirmwareSkeleton>;
 
-        // Constructors of ModemManager.GdbusModemFirmwareSkeleton
+        // Constructors
 
         constructor(properties?: Partial<GdbusModemFirmwareSkeleton.ConstructorProps>, ...args: any[]);
 
@@ -17276,7 +17276,7 @@ export namespace ModemManager {
     {
         static $gtype: GObject.GType<GdbusModemLocationProxy>;
 
-        // Constructors of ModemManager.GdbusModemLocationProxy
+        // Constructors
 
         constructor(properties?: Partial<GdbusModemLocationProxy.ConstructorProps>, ...args: any[]);
 
@@ -17311,7 +17311,7 @@ export namespace ModemManager {
 
         static new_sync(...args: never[]): any;
 
-        // Own static methods of ModemManager.GdbusModemLocationProxy
+        // Static methods
 
         /**
          * Asynchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-ModemManager1-Modem-Location.top_of_page">org.freedesktop.ModemManager1.Modem.Location</link>. See g_dbus_proxy_new() for more details.
@@ -18305,7 +18305,7 @@ export namespace ModemManager {
     {
         static $gtype: GObject.GType<GdbusModemLocationSkeleton>;
 
-        // Constructors of ModemManager.GdbusModemLocationSkeleton
+        // Constructors
 
         constructor(properties?: Partial<GdbusModemLocationSkeleton.ConstructorProps>, ...args: any[]);
 
@@ -19059,7 +19059,7 @@ export namespace ModemManager {
     {
         static $gtype: GObject.GType<GdbusModemMessagingProxy>;
 
-        // Constructors of ModemManager.GdbusModemMessagingProxy
+        // Constructors
 
         constructor(properties?: Partial<GdbusModemMessagingProxy.ConstructorProps>, ...args: any[]);
 
@@ -19094,7 +19094,7 @@ export namespace ModemManager {
 
         static new_sync(...args: never[]): any;
 
-        // Own static methods of ModemManager.GdbusModemMessagingProxy
+        // Static methods
 
         /**
          * Asynchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-ModemManager1-Modem-Messaging.top_of_page">org.freedesktop.ModemManager1.Modem.Messaging</link>. See g_dbus_proxy_new() for more details.
@@ -19959,7 +19959,7 @@ export namespace ModemManager {
     {
         static $gtype: GObject.GType<GdbusModemMessagingSkeleton>;
 
-        // Constructors of ModemManager.GdbusModemMessagingSkeleton
+        // Constructors
 
         constructor(properties?: Partial<GdbusModemMessagingSkeleton.ConstructorProps>, ...args: any[]);
 
@@ -20584,7 +20584,7 @@ export namespace ModemManager {
     {
         static $gtype: GObject.GType<GdbusModemOmaProxy>;
 
-        // Constructors of ModemManager.GdbusModemOmaProxy
+        // Constructors
 
         constructor(properties?: Partial<GdbusModemOmaProxy.ConstructorProps>, ...args: any[]);
 
@@ -20619,7 +20619,7 @@ export namespace ModemManager {
 
         static new_sync(...args: never[]): any;
 
-        // Own static methods of ModemManager.GdbusModemOmaProxy
+        // Static methods
 
         /**
          * Asynchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-ModemManager1-Modem-Oma.top_of_page">org.freedesktop.ModemManager1.Modem.Oma</link>. See g_dbus_proxy_new() for more details.
@@ -21551,7 +21551,7 @@ export namespace ModemManager {
     class GdbusModemOmaSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, GdbusModemOma {
         static $gtype: GObject.GType<GdbusModemOmaSkeleton>;
 
-        // Constructors of ModemManager.GdbusModemOmaSkeleton
+        // Constructors
 
         constructor(properties?: Partial<GdbusModemOmaSkeleton.ConstructorProps>, ...args: any[]);
 
@@ -22246,7 +22246,7 @@ export namespace ModemManager {
     {
         static $gtype: GObject.GType<GdbusModemProxy>;
 
-        // Constructors of ModemManager.GdbusModemProxy
+        // Constructors
 
         constructor(properties?: Partial<GdbusModemProxy.ConstructorProps>, ...args: any[]);
 
@@ -22281,7 +22281,7 @@ export namespace ModemManager {
 
         static new_sync(...args: never[]): any;
 
-        // Own static methods of ModemManager.GdbusModemProxy
+        // Static methods
 
         /**
          * Asynchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-ModemManager1-Modem.top_of_page">org.freedesktop.ModemManager1.Modem</link>. See g_dbus_proxy_new() for more details.
@@ -23912,7 +23912,7 @@ export namespace ModemManager {
     {
         static $gtype: GObject.GType<GdbusModemSarProxy>;
 
-        // Constructors of ModemManager.GdbusModemSarProxy
+        // Constructors
 
         constructor(properties?: Partial<GdbusModemSarProxy.ConstructorProps>, ...args: any[]);
 
@@ -23947,7 +23947,7 @@ export namespace ModemManager {
 
         static new_sync(...args: never[]): any;
 
-        // Own static methods of ModemManager.GdbusModemSarProxy
+        // Static methods
 
         /**
          * Asynchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-ModemManager1-Modem-Sar.top_of_page">org.freedesktop.ModemManager1.Modem.Sar</link>. See g_dbus_proxy_new() for more details.
@@ -24748,7 +24748,7 @@ export namespace ModemManager {
     class GdbusModemSarSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, GdbusModemSar {
         static $gtype: GObject.GType<GdbusModemSarSkeleton>;
 
-        // Constructors of ModemManager.GdbusModemSarSkeleton
+        // Constructors
 
         constructor(properties?: Partial<GdbusModemSarSkeleton.ConstructorProps>, ...args: any[]);
 
@@ -25312,7 +25312,7 @@ export namespace ModemManager {
     {
         static $gtype: GObject.GType<GdbusModemSignalProxy>;
 
-        // Constructors of ModemManager.GdbusModemSignalProxy
+        // Constructors
 
         constructor(properties?: Partial<GdbusModemSignalProxy.ConstructorProps>, ...args: any[]);
 
@@ -25347,7 +25347,7 @@ export namespace ModemManager {
 
         static new_sync(...args: never[]): any;
 
-        // Own static methods of ModemManager.GdbusModemSignalProxy
+        // Static methods
 
         /**
          * Asynchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-ModemManager1-Modem-Signal.top_of_page">org.freedesktop.ModemManager1.Modem.Signal</link>. See g_dbus_proxy_new() for more details.
@@ -26204,7 +26204,7 @@ export namespace ModemManager {
     class GdbusModemSignalSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, GdbusModemSignal {
         static $gtype: GObject.GType<GdbusModemSignalSkeleton>;
 
-        // Constructors of ModemManager.GdbusModemSignalSkeleton
+        // Constructors
 
         constructor(properties?: Partial<GdbusModemSignalSkeleton.ConstructorProps>, ...args: any[]);
 
@@ -26824,7 +26824,7 @@ export namespace ModemManager {
     {
         static $gtype: GObject.GType<GdbusModemSimpleProxy>;
 
-        // Constructors of ModemManager.GdbusModemSimpleProxy
+        // Constructors
 
         constructor(properties?: Partial<GdbusModemSimpleProxy.ConstructorProps>, ...args: any[]);
 
@@ -26859,7 +26859,7 @@ export namespace ModemManager {
 
         static new_sync(...args: never[]): any;
 
-        // Own static methods of ModemManager.GdbusModemSimpleProxy
+        // Static methods
 
         /**
          * Asynchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-ModemManager1-Modem-Simple.top_of_page">org.freedesktop.ModemManager1.Modem.Simple</link>. See g_dbus_proxy_new() for more details.
@@ -27671,7 +27671,7 @@ export namespace ModemManager {
     class GdbusModemSimpleSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, GdbusModemSimple {
         static $gtype: GObject.GType<GdbusModemSimpleSkeleton>;
 
-        // Constructors of ModemManager.GdbusModemSimpleSkeleton
+        // Constructors
 
         constructor(properties?: Partial<GdbusModemSimpleSkeleton.ConstructorProps>, ...args: any[]);
 
@@ -28241,7 +28241,7 @@ export namespace ModemManager {
     class GdbusModemSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, GdbusModem {
         static $gtype: GObject.GType<GdbusModemSkeleton>;
 
-        // Constructors of ModemManager.GdbusModemSkeleton
+        // Constructors
 
         constructor(properties?: Partial<GdbusModemSkeleton.ConstructorProps>, ...args: any[]);
 
@@ -29630,7 +29630,7 @@ export namespace ModemManager {
     {
         static $gtype: GObject.GType<GdbusModemTimeProxy>;
 
-        // Constructors of ModemManager.GdbusModemTimeProxy
+        // Constructors
 
         constructor(properties?: Partial<GdbusModemTimeProxy.ConstructorProps>, ...args: any[]);
 
@@ -29665,7 +29665,7 @@ export namespace ModemManager {
 
         static new_sync(...args: never[]): any;
 
-        // Own static methods of ModemManager.GdbusModemTimeProxy
+        // Static methods
 
         /**
          * Asynchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-ModemManager1-Modem-Time.top_of_page">org.freedesktop.ModemManager1.Modem.Time</link>. See g_dbus_proxy_new() for more details.
@@ -30425,7 +30425,7 @@ export namespace ModemManager {
     class GdbusModemTimeSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, GdbusModemTime {
         static $gtype: GObject.GType<GdbusModemTimeSkeleton>;
 
-        // Constructors of ModemManager.GdbusModemTimeSkeleton
+        // Constructors
 
         constructor(properties?: Partial<GdbusModemTimeSkeleton.ConstructorProps>, ...args: any[]);
 
@@ -30948,7 +30948,7 @@ export namespace ModemManager {
     {
         static $gtype: GObject.GType<GdbusModemVoiceProxy>;
 
-        // Constructors of ModemManager.GdbusModemVoiceProxy
+        // Constructors
 
         constructor(properties?: Partial<GdbusModemVoiceProxy.ConstructorProps>, ...args: any[]);
 
@@ -30983,7 +30983,7 @@ export namespace ModemManager {
 
         static new_sync(...args: never[]): any;
 
-        // Own static methods of ModemManager.GdbusModemVoiceProxy
+        // Static methods
 
         /**
          * Asynchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-ModemManager1-Modem-Voice.top_of_page">org.freedesktop.ModemManager1.Modem.Voice</link>. See g_dbus_proxy_new() for more details.
@@ -32038,7 +32038,7 @@ export namespace ModemManager {
     class GdbusModemVoiceSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, GdbusModemVoice {
         static $gtype: GObject.GType<GdbusModemVoiceSkeleton>;
 
-        // Constructors of ModemManager.GdbusModemVoiceSkeleton
+        // Constructors
 
         constructor(properties?: Partial<GdbusModemVoiceSkeleton.ConstructorProps>, ...args: any[]);
 
@@ -32855,7 +32855,7 @@ export namespace ModemManager {
     {
         static $gtype: GObject.GType<GdbusObjectManagerClient>;
 
-        // Constructors of ModemManager.GdbusObjectManagerClient
+        // Constructors
 
         constructor(properties?: Partial<GdbusObjectManagerClient.ConstructorProps>, ...args: any[]);
 
@@ -32890,7 +32890,7 @@ export namespace ModemManager {
 
         static new_sync(...args: never[]): any;
 
-        // Own static methods of ModemManager.GdbusObjectManagerClient
+        // Static methods
 
         /**
          * A #GDBusProxyTypeFunc that maps `interface_name` to the generated #GDBusObjectProxy derived and #GDBusProxy derived types.
@@ -33637,7 +33637,7 @@ export namespace ModemManager {
     class GdbusObjectProxy extends Gio.DBusObjectProxy implements Gio.DBusObject, GdbusObject {
         static $gtype: GObject.GType<GdbusObjectProxy>;
 
-        // Constructors of ModemManager.GdbusObjectProxy
+        // Constructors
 
         constructor(properties?: Partial<GdbusObjectProxy.ConstructorProps>, ...args: any[]);
 
@@ -34358,7 +34358,7 @@ export namespace ModemManager {
     class GdbusObjectSkeleton extends Gio.DBusObjectSkeleton implements Gio.DBusObject, GdbusObject {
         static $gtype: GObject.GType<GdbusObjectSkeleton>;
 
-        // Constructors of ModemManager.GdbusObjectSkeleton
+        // Constructors
 
         constructor(properties?: Partial<GdbusObjectSkeleton.ConstructorProps>, ...args: any[]);
 
@@ -34366,7 +34366,7 @@ export namespace ModemManager {
 
         static ['new'](object_path: string): GdbusObjectSkeleton;
 
-        // Own methods of ModemManager.GdbusObjectSkeleton
+        // Methods
 
         /**
          * Sets the #MmGdbusModem instance for the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-ModemManager1-Modem.top_of_page">org.freedesktop.ModemManager1.Modem</link> on `object`.
@@ -35161,7 +35161,7 @@ export namespace ModemManager {
     {
         static $gtype: GObject.GType<GdbusOrgFreedesktopModemManager1Proxy>;
 
-        // Constructors of ModemManager.GdbusOrgFreedesktopModemManager1Proxy
+        // Constructors
 
         constructor(properties?: Partial<GdbusOrgFreedesktopModemManager1Proxy.ConstructorProps>, ...args: any[]);
 
@@ -35196,7 +35196,7 @@ export namespace ModemManager {
 
         static new_sync(...args: never[]): any;
 
-        // Own static methods of ModemManager.GdbusOrgFreedesktopModemManager1Proxy
+        // Static methods
 
         /**
          * Asynchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-ModemManager1.top_of_page">org.freedesktop.ModemManager1</link>. See g_dbus_proxy_new() for more details.
@@ -36063,7 +36063,7 @@ export namespace ModemManager {
     {
         static $gtype: GObject.GType<GdbusOrgFreedesktopModemManager1Skeleton>;
 
-        // Constructors of ModemManager.GdbusOrgFreedesktopModemManager1Skeleton
+        // Constructors
 
         constructor(properties?: Partial<GdbusOrgFreedesktopModemManager1Skeleton.ConstructorProps>, ...args: any[]);
 
@@ -36690,7 +36690,7 @@ export namespace ModemManager {
     {
         static $gtype: GObject.GType<GdbusSimProxy>;
 
-        // Constructors of ModemManager.GdbusSimProxy
+        // Constructors
 
         constructor(properties?: Partial<GdbusSimProxy.ConstructorProps>, ...args: any[]);
 
@@ -36725,7 +36725,7 @@ export namespace ModemManager {
 
         static new_sync(...args: never[]): any;
 
-        // Own static methods of ModemManager.GdbusSimProxy
+        // Static methods
 
         /**
          * Asynchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-ModemManager1-Sim.top_of_page">org.freedesktop.ModemManager1.Sim</link>. See g_dbus_proxy_new() for more details.
@@ -37778,7 +37778,7 @@ export namespace ModemManager {
     class GdbusSimSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, GdbusSim {
         static $gtype: GObject.GType<GdbusSimSkeleton>;
 
-        // Constructors of ModemManager.GdbusSimSkeleton
+        // Constructors
 
         constructor(properties?: Partial<GdbusSimSkeleton.ConstructorProps>, ...args: any[]);
 
@@ -38594,7 +38594,7 @@ export namespace ModemManager {
     {
         static $gtype: GObject.GType<GdbusSmsProxy>;
 
-        // Constructors of ModemManager.GdbusSmsProxy
+        // Constructors
 
         constructor(properties?: Partial<GdbusSmsProxy.ConstructorProps>, ...args: any[]);
 
@@ -38629,7 +38629,7 @@ export namespace ModemManager {
 
         static new_sync(...args: never[]): any;
 
-        // Own static methods of ModemManager.GdbusSmsProxy
+        // Static methods
 
         /**
          * Asynchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-ModemManager1-Sms.top_of_page">org.freedesktop.ModemManager1.Sms</link>. See g_dbus_proxy_new() for more details.
@@ -39564,7 +39564,7 @@ export namespace ModemManager {
     class GdbusSmsSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, GdbusSms {
         static $gtype: GObject.GType<GdbusSmsSkeleton>;
 
-        // Constructors of ModemManager.GdbusSmsSkeleton
+        // Constructors
 
         constructor(properties?: Partial<GdbusSmsSkeleton.ConstructorProps>, ...args: any[]);
 
@@ -40255,7 +40255,7 @@ export namespace ModemManager {
     class KernelEventProperties extends GObject.Object {
         static $gtype: GObject.GType<KernelEventProperties>;
 
-        // Constructors of ModemManager.KernelEventProperties
+        // Constructors
 
         constructor(properties?: Partial<KernelEventProperties.ConstructorProps>, ...args: any[]);
 
@@ -40263,7 +40263,7 @@ export namespace ModemManager {
 
         static ['new'](): KernelEventProperties;
 
-        // Own methods of ModemManager.KernelEventProperties
+        // Methods
 
         /**
          * Gets the action.
@@ -40320,13 +40320,13 @@ export namespace ModemManager {
     class Location3gpp extends GObject.Object {
         static $gtype: GObject.GType<Location3gpp>;
 
-        // Constructors of ModemManager.Location3gpp
+        // Constructors
 
         constructor(properties?: Partial<Location3gpp.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of ModemManager.Location3gpp
+        // Methods
 
         /**
          * Gets the cell ID of the 3GPP network.
@@ -40382,13 +40382,13 @@ export namespace ModemManager {
     class LocationCdmaBs extends GObject.Object {
         static $gtype: GObject.GType<LocationCdmaBs>;
 
-        // Constructors of ModemManager.LocationCdmaBs
+        // Constructors
 
         constructor(properties?: Partial<LocationCdmaBs.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of ModemManager.LocationCdmaBs
+        // Methods
 
         /**
          * Gets the latitude, in the [-90,90] range.
@@ -40415,13 +40415,13 @@ export namespace ModemManager {
     class LocationGpsNmea extends GObject.Object {
         static $gtype: GObject.GType<LocationGpsNmea>;
 
-        // Constructors of ModemManager.LocationGpsNmea
+        // Constructors
 
         constructor(properties?: Partial<LocationGpsNmea.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of ModemManager.LocationGpsNmea
+        // Methods
 
         /**
          * Gets a compilation of all cached traces, in a single string.
@@ -40455,13 +40455,13 @@ export namespace ModemManager {
     class LocationGpsRaw extends GObject.Object {
         static $gtype: GObject.GType<LocationGpsRaw>;
 
-        // Constructors of ModemManager.LocationGpsRaw
+        // Constructors
 
         constructor(properties?: Partial<LocationGpsRaw.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of ModemManager.LocationGpsRaw
+        // Methods
 
         /**
          * Gets the altitude, in the [-90,90] range.
@@ -40505,7 +40505,7 @@ export namespace ModemManager {
     {
         static $gtype: GObject.GType<Manager>;
 
-        // Constructors of ModemManager.Manager
+        // Constructors
 
         constructor(properties?: Partial<Manager.ConstructorProps>, ...args: any[]);
 
@@ -40525,7 +40525,7 @@ export namespace ModemManager {
 
         static new_sync(...args: never[]): any;
 
-        // Own static methods of ModemManager.Manager
+        // Static methods
 
         /**
          * Asynchronously creates a #MMManager.
@@ -40552,7 +40552,7 @@ export namespace ModemManager {
         // Conflicted with ModemManager.GdbusObjectManagerClient.new
         static ['new'](...args: never[]): any;
 
-        // Own methods of ModemManager.Manager
+        // Methods
 
         /**
          * Gets the #GDBusProxy interface of the `manager`.
@@ -41313,13 +41313,13 @@ export namespace ModemManager {
     {
         static $gtype: GObject.GType<Modem>;
 
-        // Constructors of ModemManager.Modem
+        // Constructors
 
         constructor(properties?: Partial<Modem.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of ModemManager.Modem
+        // Static methods
 
         /**
          * Gets the list of pending network-initiated OMA sessions.
@@ -41332,7 +41332,7 @@ export namespace ModemManager {
          */
         static peek_pending_network_initiated_sessions(self: ModemOma): [boolean, OmaPendingNetworkInitiatedSession[]];
 
-        // Own methods of ModemManager.Modem
+        // Methods
 
         /**
          * Asynchronously runs an AT command in the modem.
@@ -43808,13 +43808,13 @@ export namespace ModemManager {
     {
         static $gtype: GObject.GType<Modem3gpp>;
 
-        // Constructors of ModemManager.Modem3gpp
+        // Constructors
 
         constructor(properties?: Partial<Modem3gpp.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of ModemManager.Modem3gpp
+        // Methods
 
         /**
          * Asynchronously disables the modem personalization lock.
@@ -45319,13 +45319,13 @@ export namespace ModemManager {
     {
         static $gtype: GObject.GType<Modem3gppProfileManager>;
 
-        // Constructors of ModemManager.Modem3gppProfileManager
+        // Constructors
 
         constructor(properties?: Partial<Modem3gppProfileManager.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of ModemManager.Modem3gppProfileManager
+        // Methods
 
         /**
          * Asynchronously deletes the connection profile.
@@ -46143,13 +46143,13 @@ export namespace ModemManager {
     {
         static $gtype: GObject.GType<Modem3gppUssd>;
 
-        // Constructors of ModemManager.Modem3gppUssd
+        // Constructors
 
         constructor(properties?: Partial<Modem3gppUssd.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of ModemManager.Modem3gppUssd
+        // Methods
 
         /**
          * Asynchronously cancels an ongoing USSD session, either mobile or network
@@ -46999,13 +46999,13 @@ export namespace ModemManager {
     {
         static $gtype: GObject.GType<ModemCdma>;
 
-        // Constructors of ModemManager.ModemCdma
+        // Constructors
 
         constructor(properties?: Partial<ModemCdma.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of ModemManager.ModemCdma
+        // Methods
 
         /**
          * Asynchronously requests to provision the modem for use with a given carrier
@@ -47865,13 +47865,13 @@ export namespace ModemManager {
     {
         static $gtype: GObject.GType<ModemFirmware>;
 
-        // Constructors of ModemManager.ModemFirmware
+        // Constructors
 
         constructor(properties?: Partial<ModemFirmware.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of ModemManager.ModemFirmware
+        // Methods
 
         /**
          * Gets a copy of the DBus path of the #MMObject object which implements this
@@ -48605,13 +48605,13 @@ export namespace ModemManager {
     {
         static $gtype: GObject.GType<ModemLocation>;
 
-        // Constructors of ModemManager.ModemLocation
+        // Constructors
 
         constructor(properties?: Partial<ModemLocation.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of ModemManager.ModemLocation
+        // Methods
 
         /**
          * Gets the list of assistance data servers.
@@ -49945,13 +49945,13 @@ export namespace ModemManager {
     {
         static $gtype: GObject.GType<ModemMessaging>;
 
-        // Constructors of ModemManager.ModemMessaging
+        // Constructors
 
         constructor(properties?: Partial<ModemMessaging.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of ModemManager.ModemMessaging
+        // Methods
 
         /**
          * Asynchronously creates a new #MMSms in the modem.
@@ -50777,13 +50777,13 @@ export namespace ModemManager {
     {
         static $gtype: GObject.GType<ModemOma>;
 
-        // Constructors of ModemManager.ModemOma
+        // Constructors
 
         constructor(properties?: Partial<ModemOma.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of ModemManager.ModemOma
+        // Methods
 
         /**
          * Asynchronously accepts a nework-initiated OMA device management session.
@@ -51740,13 +51740,13 @@ export namespace ModemManager {
     {
         static $gtype: GObject.GType<ModemSar>;
 
-        // Constructors of ModemManager.ModemSar
+        // Constructors
 
         constructor(properties?: Partial<ModemSar.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of ModemManager.ModemSar
+        // Methods
 
         /**
          * Gets a copy of the DBus path of the #MMObject object which implements this
@@ -52472,13 +52472,13 @@ export namespace ModemManager {
     {
         static $gtype: GObject.GType<ModemSignal>;
 
-        // Constructors of ModemManager.ModemSignal
+        // Constructors
 
         constructor(properties?: Partial<ModemSignal.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of ModemManager.ModemSignal
+        // Methods
 
         /**
          * Gets a copy of the DBus path of the #MMObject object which implements this
@@ -53386,13 +53386,13 @@ export namespace ModemManager {
     {
         static $gtype: GObject.GType<ModemSimple>;
 
-        // Constructors of ModemManager.ModemSimple
+        // Constructors
 
         constructor(properties?: Partial<ModemSimple.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of ModemManager.ModemSimple
+        // Methods
 
         /**
          * Asynchronously requests to connect the modem using the given `properties`.
@@ -54155,13 +54155,13 @@ export namespace ModemManager {
     {
         static $gtype: GObject.GType<ModemTime>;
 
-        // Constructors of ModemManager.ModemTime
+        // Constructors
 
         constructor(properties?: Partial<ModemTime.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of ModemManager.ModemTime
+        // Methods
 
         /**
          * Gets a copy of the DBus path of the #MMObject object which implements this
@@ -54819,13 +54819,13 @@ export namespace ModemManager {
     {
         static $gtype: GObject.GType<ModemVoice>;
 
-        // Constructors of ModemManager.ModemVoice
+        // Constructors
 
         constructor(properties?: Partial<ModemVoice.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of ModemManager.ModemVoice
+        // Methods
 
         /**
          * Asynchronously queries the status of the call waiting network service.
@@ -56016,13 +56016,13 @@ export namespace ModemManager {
     class NetworkTimezone extends GObject.Object {
         static $gtype: GObject.GType<NetworkTimezone>;
 
-        // Constructors of ModemManager.NetworkTimezone
+        // Constructors
 
         constructor(properties?: Partial<NetworkTimezone.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of ModemManager.NetworkTimezone
+        // Methods
 
         /**
          * Gets the timezone offset due to daylight saving time (in minutes) reported by
@@ -56055,7 +56055,7 @@ export namespace ModemManager {
     class Nr5gRegistrationSettings extends GObject.Object {
         static $gtype: GObject.GType<Nr5gRegistrationSettings>;
 
-        // Constructors of ModemManager.Nr5gRegistrationSettings
+        // Constructors
 
         constructor(properties?: Partial<Nr5gRegistrationSettings.ConstructorProps>, ...args: any[]);
 
@@ -56063,7 +56063,7 @@ export namespace ModemManager {
 
         static ['new'](): Nr5gRegistrationSettings;
 
-        // Own methods of ModemManager.Nr5gRegistrationSettings
+        // Methods
 
         /**
          * Gets the MICO mode configuration.
@@ -56103,13 +56103,13 @@ export namespace ModemManager {
     class Object extends GdbusObjectProxy implements Gio.DBusObject, GdbusObject {
         static $gtype: GObject.GType<Object>;
 
-        // Constructors of ModemManager.Object
+        // Constructors
 
         constructor(properties?: Partial<Object.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of ModemManager.Object
+        // Methods
 
         /**
          * Gets a copy of the DBus path of the #MMObject object.
@@ -56838,13 +56838,13 @@ export namespace ModemManager {
     class Pco extends GObject.Object {
         static $gtype: GObject.GType<Pco>;
 
-        // Constructors of ModemManager.Pco
+        // Constructors
 
         constructor(properties?: Partial<Pco.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of ModemManager.Pco
+        // Static methods
 
         /**
          * Frees all of the memory used by a #GList of #MMPco.
@@ -56852,7 +56852,7 @@ export namespace ModemManager {
          */
         static list_free(pco_list: Pco[]): void;
 
-        // Own methods of ModemManager.Pco
+        // Methods
 
         /**
          * Gets the PCO data in raw bytes.
@@ -56887,13 +56887,13 @@ export namespace ModemManager {
     class Signal extends GObject.Object {
         static $gtype: GObject.GType<Signal>;
 
-        // Constructors of ModemManager.Signal
+        // Constructors
 
         constructor(properties?: Partial<Signal.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of ModemManager.Signal
+        // Methods
 
         /**
          * Gets the Ec/Io, in dB.
@@ -56970,7 +56970,7 @@ export namespace ModemManager {
     class SignalThresholdProperties extends GObject.Object {
         static $gtype: GObject.GType<SignalThresholdProperties>;
 
-        // Constructors of ModemManager.SignalThresholdProperties
+        // Constructors
 
         constructor(properties?: Partial<SignalThresholdProperties.ConstructorProps>, ...args: any[]);
 
@@ -56978,7 +56978,7 @@ export namespace ModemManager {
 
         static ['new'](): SignalThresholdProperties;
 
-        // Own methods of ModemManager.SignalThresholdProperties
+        // Methods
 
         /**
          * Gets whether the error rate threshold is enabled or disabled.
@@ -57020,13 +57020,13 @@ export namespace ModemManager {
     class Sim extends GdbusSimProxy implements Gio.AsyncInitable<Sim>, Gio.DBusInterface, Gio.Initable, GdbusSim {
         static $gtype: GObject.GType<Sim>;
 
-        // Constructors of ModemManager.Sim
+        // Constructors
 
         constructor(properties?: Partial<Sim.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of ModemManager.Sim
+        // Methods
 
         /**
          * Asynchronously changes the PIN code in the SIM card.
@@ -58277,7 +58277,7 @@ export namespace ModemManager {
     class SimpleConnectProperties extends GObject.Object {
         static $gtype: GObject.GType<SimpleConnectProperties>;
 
-        // Constructors of ModemManager.SimpleConnectProperties
+        // Constructors
 
         constructor(properties?: Partial<SimpleConnectProperties.ConstructorProps>, ...args: any[]);
 
@@ -58285,7 +58285,7 @@ export namespace ModemManager {
 
         static ['new'](): SimpleConnectProperties;
 
-        // Own methods of ModemManager.SimpleConnectProperties
+        // Methods
 
         /**
          * Checks whether roaming is allowed in the connection.
@@ -58457,7 +58457,7 @@ export namespace ModemManager {
     class SimpleStatus extends GObject.Object {
         static $gtype: GObject.GType<SimpleStatus>;
 
-        // Own properties of ModemManager.SimpleStatus
+        // Properties
 
         get access_technologies(): ModemAccessTechnology;
         set access_technologies(val: ModemAccessTechnology);
@@ -58506,13 +58506,13 @@ export namespace ModemManager {
         get state(): ModemState;
         set state(val: ModemState);
 
-        // Constructors of ModemManager.SimpleStatus
+        // Constructors
 
         constructor(properties?: Partial<SimpleStatus.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of ModemManager.SimpleStatus
+        // Methods
 
         /**
          * Gets the MCC/MNC of the operator of the 3GPP network where the modem is
@@ -58595,13 +58595,13 @@ export namespace ModemManager {
     class Sms extends GdbusSmsProxy implements Gio.AsyncInitable<Sms>, Gio.DBusInterface, Gio.Initable, GdbusSms {
         static $gtype: GObject.GType<Sms>;
 
-        // Constructors of ModemManager.Sms
+        // Constructors
 
         constructor(properties?: Partial<Sms.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of ModemManager.Sms
+        // Methods
 
         /**
          * Gets the message data.
@@ -59607,7 +59607,7 @@ export namespace ModemManager {
     class SmsProperties extends GObject.Object {
         static $gtype: GObject.GType<SmsProperties>;
 
-        // Constructors of ModemManager.SmsProperties
+        // Constructors
 
         constructor(properties?: Partial<SmsProperties.ConstructorProps>, ...args: any[]);
 
@@ -59615,7 +59615,7 @@ export namespace ModemManager {
 
         static ['new'](): SmsProperties;
 
-        // Own methods of ModemManager.SmsProperties
+        // Methods
 
         /**
          * Gets the 3GPP message class of the SMS.
@@ -59747,13 +59747,13 @@ export namespace ModemManager {
     class UnlockRetries extends GObject.Object {
         static $gtype: GObject.GType<UnlockRetries>;
 
-        // Constructors of ModemManager.UnlockRetries
+        // Constructors
 
         constructor(properties?: Partial<UnlockRetries.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of ModemManager.UnlockRetries
+        // Methods
 
         /**
          * Executes `callback` for each lock information found in `self`.
@@ -59772,7 +59772,7 @@ export namespace ModemManager {
     abstract class __3gppProfilePrivate {
         static $gtype: GObject.GType<__3gppProfilePrivate>;
 
-        // Constructors of ModemManager.__3gppProfilePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -59782,7 +59782,7 @@ export namespace ModemManager {
     abstract class BearerIpConfigPrivate {
         static $gtype: GObject.GType<BearerIpConfigPrivate>;
 
-        // Constructors of ModemManager.BearerIpConfigPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -59790,7 +59790,7 @@ export namespace ModemManager {
     abstract class BearerPrivate {
         static $gtype: GObject.GType<BearerPrivate>;
 
-        // Constructors of ModemManager.BearerPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -59799,7 +59799,7 @@ export namespace ModemManager {
     abstract class BearerPropertiesPrivate {
         static $gtype: GObject.GType<BearerPropertiesPrivate>;
 
-        // Constructors of ModemManager.BearerPropertiesPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -59808,7 +59808,7 @@ export namespace ModemManager {
     abstract class BearerStatsPrivate {
         static $gtype: GObject.GType<BearerStatsPrivate>;
 
-        // Constructors of ModemManager.BearerStatsPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -59817,7 +59817,7 @@ export namespace ModemManager {
     abstract class CallAudioFormatPrivate {
         static $gtype: GObject.GType<CallAudioFormatPrivate>;
 
-        // Constructors of ModemManager.CallAudioFormatPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -59826,7 +59826,7 @@ export namespace ModemManager {
     abstract class CallPrivate {
         static $gtype: GObject.GType<CallPrivate>;
 
-        // Constructors of ModemManager.CallPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -59835,7 +59835,7 @@ export namespace ModemManager {
     abstract class CallPropertiesPrivate {
         static $gtype: GObject.GType<CallPropertiesPrivate>;
 
-        // Constructors of ModemManager.CallPropertiesPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -59844,7 +59844,7 @@ export namespace ModemManager {
     abstract class CdmaManualActivationPropertiesPrivate {
         static $gtype: GObject.GType<CdmaManualActivationPropertiesPrivate>;
 
-        // Constructors of ModemManager.CdmaManualActivationPropertiesPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -59853,7 +59853,7 @@ export namespace ModemManager {
     abstract class CellInfoCdmaPrivate {
         static $gtype: GObject.GType<CellInfoCdmaPrivate>;
 
-        // Constructors of ModemManager.CellInfoCdmaPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -59863,7 +59863,7 @@ export namespace ModemManager {
     abstract class CellInfoGsmPrivate {
         static $gtype: GObject.GType<CellInfoGsmPrivate>;
 
-        // Constructors of ModemManager.CellInfoGsmPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -59872,7 +59872,7 @@ export namespace ModemManager {
     abstract class CellInfoLtePrivate {
         static $gtype: GObject.GType<CellInfoLtePrivate>;
 
-        // Constructors of ModemManager.CellInfoLtePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -59881,7 +59881,7 @@ export namespace ModemManager {
     abstract class CellInfoNr5gPrivate {
         static $gtype: GObject.GType<CellInfoNr5gPrivate>;
 
-        // Constructors of ModemManager.CellInfoNr5gPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -59889,7 +59889,7 @@ export namespace ModemManager {
     abstract class CellInfoPrivate {
         static $gtype: GObject.GType<CellInfoPrivate>;
 
-        // Constructors of ModemManager.CellInfoPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -59898,7 +59898,7 @@ export namespace ModemManager {
     abstract class CellInfoTdscdmaPrivate {
         static $gtype: GObject.GType<CellInfoTdscdmaPrivate>;
 
-        // Constructors of ModemManager.CellInfoTdscdmaPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -59907,7 +59907,7 @@ export namespace ModemManager {
     abstract class CellInfoUmtsPrivate {
         static $gtype: GObject.GType<CellInfoUmtsPrivate>;
 
-        // Constructors of ModemManager.CellInfoUmtsPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -59916,7 +59916,7 @@ export namespace ModemManager {
     abstract class FirmwarePropertiesPrivate {
         static $gtype: GObject.GType<FirmwarePropertiesPrivate>;
 
-        // Constructors of ModemManager.FirmwarePropertiesPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -59925,7 +59925,7 @@ export namespace ModemManager {
     abstract class FirmwareUpdateSettingsPrivate {
         static $gtype: GObject.GType<FirmwareUpdateSettingsPrivate>;
 
-        // Constructors of ModemManager.FirmwareUpdateSettingsPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -59935,7 +59935,7 @@ export namespace ModemManager {
     abstract class GdbusBearerProxyPrivate {
         static $gtype: GObject.GType<GdbusBearerProxyPrivate>;
 
-        // Constructors of ModemManager.GdbusBearerProxyPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -59944,7 +59944,7 @@ export namespace ModemManager {
     abstract class GdbusBearerSkeletonPrivate {
         static $gtype: GObject.GType<GdbusBearerSkeletonPrivate>;
 
-        // Constructors of ModemManager.GdbusBearerSkeletonPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -59954,7 +59954,7 @@ export namespace ModemManager {
     abstract class GdbusCallProxyPrivate {
         static $gtype: GObject.GType<GdbusCallProxyPrivate>;
 
-        // Constructors of ModemManager.GdbusCallProxyPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -59963,7 +59963,7 @@ export namespace ModemManager {
     abstract class GdbusCallSkeletonPrivate {
         static $gtype: GObject.GType<GdbusCallSkeletonPrivate>;
 
-        // Constructors of ModemManager.GdbusCallSkeletonPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -59974,7 +59974,7 @@ export namespace ModemManager {
     abstract class GdbusModem3gppProfileManagerProxyPrivate {
         static $gtype: GObject.GType<GdbusModem3gppProfileManagerProxyPrivate>;
 
-        // Constructors of ModemManager.GdbusModem3gppProfileManagerProxyPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -59983,7 +59983,7 @@ export namespace ModemManager {
     abstract class GdbusModem3gppProfileManagerSkeletonPrivate {
         static $gtype: GObject.GType<GdbusModem3gppProfileManagerSkeletonPrivate>;
 
-        // Constructors of ModemManager.GdbusModem3gppProfileManagerSkeletonPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -59992,7 +59992,7 @@ export namespace ModemManager {
     abstract class GdbusModem3gppProxyPrivate {
         static $gtype: GObject.GType<GdbusModem3gppProxyPrivate>;
 
-        // Constructors of ModemManager.GdbusModem3gppProxyPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -60001,7 +60001,7 @@ export namespace ModemManager {
     abstract class GdbusModem3gppSkeletonPrivate {
         static $gtype: GObject.GType<GdbusModem3gppSkeletonPrivate>;
 
-        // Constructors of ModemManager.GdbusModem3gppSkeletonPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -60011,7 +60011,7 @@ export namespace ModemManager {
     abstract class GdbusModem3gppUssdProxyPrivate {
         static $gtype: GObject.GType<GdbusModem3gppUssdProxyPrivate>;
 
-        // Constructors of ModemManager.GdbusModem3gppUssdProxyPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -60020,7 +60020,7 @@ export namespace ModemManager {
     abstract class GdbusModem3gppUssdSkeletonPrivate {
         static $gtype: GObject.GType<GdbusModem3gppUssdSkeletonPrivate>;
 
-        // Constructors of ModemManager.GdbusModem3gppUssdSkeletonPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -60030,7 +60030,7 @@ export namespace ModemManager {
     abstract class GdbusModemCdmaProxyPrivate {
         static $gtype: GObject.GType<GdbusModemCdmaProxyPrivate>;
 
-        // Constructors of ModemManager.GdbusModemCdmaProxyPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -60039,7 +60039,7 @@ export namespace ModemManager {
     abstract class GdbusModemCdmaSkeletonPrivate {
         static $gtype: GObject.GType<GdbusModemCdmaSkeletonPrivate>;
 
-        // Constructors of ModemManager.GdbusModemCdmaSkeletonPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -60049,7 +60049,7 @@ export namespace ModemManager {
     abstract class GdbusModemFirmwareProxyPrivate {
         static $gtype: GObject.GType<GdbusModemFirmwareProxyPrivate>;
 
-        // Constructors of ModemManager.GdbusModemFirmwareProxyPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -60058,7 +60058,7 @@ export namespace ModemManager {
     abstract class GdbusModemFirmwareSkeletonPrivate {
         static $gtype: GObject.GType<GdbusModemFirmwareSkeletonPrivate>;
 
-        // Constructors of ModemManager.GdbusModemFirmwareSkeletonPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -60069,7 +60069,7 @@ export namespace ModemManager {
     abstract class GdbusModemLocationProxyPrivate {
         static $gtype: GObject.GType<GdbusModemLocationProxyPrivate>;
 
-        // Constructors of ModemManager.GdbusModemLocationProxyPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -60078,7 +60078,7 @@ export namespace ModemManager {
     abstract class GdbusModemLocationSkeletonPrivate {
         static $gtype: GObject.GType<GdbusModemLocationSkeletonPrivate>;
 
-        // Constructors of ModemManager.GdbusModemLocationSkeletonPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -60088,7 +60088,7 @@ export namespace ModemManager {
     abstract class GdbusModemMessagingProxyPrivate {
         static $gtype: GObject.GType<GdbusModemMessagingProxyPrivate>;
 
-        // Constructors of ModemManager.GdbusModemMessagingProxyPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -60097,7 +60097,7 @@ export namespace ModemManager {
     abstract class GdbusModemMessagingSkeletonPrivate {
         static $gtype: GObject.GType<GdbusModemMessagingSkeletonPrivate>;
 
-        // Constructors of ModemManager.GdbusModemMessagingSkeletonPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -60107,7 +60107,7 @@ export namespace ModemManager {
     abstract class GdbusModemOmaProxyPrivate {
         static $gtype: GObject.GType<GdbusModemOmaProxyPrivate>;
 
-        // Constructors of ModemManager.GdbusModemOmaProxyPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -60116,7 +60116,7 @@ export namespace ModemManager {
     abstract class GdbusModemOmaSkeletonPrivate {
         static $gtype: GObject.GType<GdbusModemOmaSkeletonPrivate>;
 
-        // Constructors of ModemManager.GdbusModemOmaSkeletonPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -60125,7 +60125,7 @@ export namespace ModemManager {
     abstract class GdbusModemProxyPrivate {
         static $gtype: GObject.GType<GdbusModemProxyPrivate>;
 
-        // Constructors of ModemManager.GdbusModemProxyPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -60135,7 +60135,7 @@ export namespace ModemManager {
     abstract class GdbusModemSarProxyPrivate {
         static $gtype: GObject.GType<GdbusModemSarProxyPrivate>;
 
-        // Constructors of ModemManager.GdbusModemSarProxyPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -60144,7 +60144,7 @@ export namespace ModemManager {
     abstract class GdbusModemSarSkeletonPrivate {
         static $gtype: GObject.GType<GdbusModemSarSkeletonPrivate>;
 
-        // Constructors of ModemManager.GdbusModemSarSkeletonPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -60154,7 +60154,7 @@ export namespace ModemManager {
     abstract class GdbusModemSignalProxyPrivate {
         static $gtype: GObject.GType<GdbusModemSignalProxyPrivate>;
 
-        // Constructors of ModemManager.GdbusModemSignalProxyPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -60163,7 +60163,7 @@ export namespace ModemManager {
     abstract class GdbusModemSignalSkeletonPrivate {
         static $gtype: GObject.GType<GdbusModemSignalSkeletonPrivate>;
 
-        // Constructors of ModemManager.GdbusModemSignalSkeletonPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -60173,7 +60173,7 @@ export namespace ModemManager {
     abstract class GdbusModemSimpleProxyPrivate {
         static $gtype: GObject.GType<GdbusModemSimpleProxyPrivate>;
 
-        // Constructors of ModemManager.GdbusModemSimpleProxyPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -60182,7 +60182,7 @@ export namespace ModemManager {
     abstract class GdbusModemSimpleSkeletonPrivate {
         static $gtype: GObject.GType<GdbusModemSimpleSkeletonPrivate>;
 
-        // Constructors of ModemManager.GdbusModemSimpleSkeletonPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -60191,7 +60191,7 @@ export namespace ModemManager {
     abstract class GdbusModemSkeletonPrivate {
         static $gtype: GObject.GType<GdbusModemSkeletonPrivate>;
 
-        // Constructors of ModemManager.GdbusModemSkeletonPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -60201,7 +60201,7 @@ export namespace ModemManager {
     abstract class GdbusModemTimeProxyPrivate {
         static $gtype: GObject.GType<GdbusModemTimeProxyPrivate>;
 
-        // Constructors of ModemManager.GdbusModemTimeProxyPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -60210,7 +60210,7 @@ export namespace ModemManager {
     abstract class GdbusModemTimeSkeletonPrivate {
         static $gtype: GObject.GType<GdbusModemTimeSkeletonPrivate>;
 
-        // Constructors of ModemManager.GdbusModemTimeSkeletonPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -60220,7 +60220,7 @@ export namespace ModemManager {
     abstract class GdbusModemVoiceProxyPrivate {
         static $gtype: GObject.GType<GdbusModemVoiceProxyPrivate>;
 
-        // Constructors of ModemManager.GdbusModemVoiceProxyPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -60229,7 +60229,7 @@ export namespace ModemManager {
     abstract class GdbusModemVoiceSkeletonPrivate {
         static $gtype: GObject.GType<GdbusModemVoiceSkeletonPrivate>;
 
-        // Constructors of ModemManager.GdbusModemVoiceSkeletonPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -60239,7 +60239,7 @@ export namespace ModemManager {
     abstract class GdbusObjectManagerClientPrivate {
         static $gtype: GObject.GType<GdbusObjectManagerClientPrivate>;
 
-        // Constructors of ModemManager.GdbusObjectManagerClientPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -60248,7 +60248,7 @@ export namespace ModemManager {
     abstract class GdbusObjectProxyPrivate {
         static $gtype: GObject.GType<GdbusObjectProxyPrivate>;
 
-        // Constructors of ModemManager.GdbusObjectProxyPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -60257,7 +60257,7 @@ export namespace ModemManager {
     abstract class GdbusObjectSkeletonPrivate {
         static $gtype: GObject.GType<GdbusObjectSkeletonPrivate>;
 
-        // Constructors of ModemManager.GdbusObjectSkeletonPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -60267,7 +60267,7 @@ export namespace ModemManager {
     abstract class GdbusOrgFreedesktopModemManager1ProxyPrivate {
         static $gtype: GObject.GType<GdbusOrgFreedesktopModemManager1ProxyPrivate>;
 
-        // Constructors of ModemManager.GdbusOrgFreedesktopModemManager1ProxyPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -60276,7 +60276,7 @@ export namespace ModemManager {
     abstract class GdbusOrgFreedesktopModemManager1SkeletonPrivate {
         static $gtype: GObject.GType<GdbusOrgFreedesktopModemManager1SkeletonPrivate>;
 
-        // Constructors of ModemManager.GdbusOrgFreedesktopModemManager1SkeletonPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -60286,7 +60286,7 @@ export namespace ModemManager {
     abstract class GdbusSimProxyPrivate {
         static $gtype: GObject.GType<GdbusSimProxyPrivate>;
 
-        // Constructors of ModemManager.GdbusSimProxyPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -60295,7 +60295,7 @@ export namespace ModemManager {
     abstract class GdbusSimSkeletonPrivate {
         static $gtype: GObject.GType<GdbusSimSkeletonPrivate>;
 
-        // Constructors of ModemManager.GdbusSimSkeletonPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -60305,7 +60305,7 @@ export namespace ModemManager {
     abstract class GdbusSmsProxyPrivate {
         static $gtype: GObject.GType<GdbusSmsProxyPrivate>;
 
-        // Constructors of ModemManager.GdbusSmsProxyPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -60314,7 +60314,7 @@ export namespace ModemManager {
     abstract class GdbusSmsSkeletonPrivate {
         static $gtype: GObject.GType<GdbusSmsSkeletonPrivate>;
 
-        // Constructors of ModemManager.GdbusSmsSkeletonPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -60323,7 +60323,7 @@ export namespace ModemManager {
     abstract class KernelEventPropertiesPrivate {
         static $gtype: GObject.GType<KernelEventPropertiesPrivate>;
 
-        // Constructors of ModemManager.KernelEventPropertiesPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -60332,7 +60332,7 @@ export namespace ModemManager {
     abstract class Location3gppPrivate {
         static $gtype: GObject.GType<Location3gppPrivate>;
 
-        // Constructors of ModemManager.Location3gppPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -60341,7 +60341,7 @@ export namespace ModemManager {
     abstract class LocationCdmaBsPrivate {
         static $gtype: GObject.GType<LocationCdmaBsPrivate>;
 
-        // Constructors of ModemManager.LocationCdmaBsPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -60350,7 +60350,7 @@ export namespace ModemManager {
     abstract class LocationGpsNmeaPrivate {
         static $gtype: GObject.GType<LocationGpsNmeaPrivate>;
 
-        // Constructors of ModemManager.LocationGpsNmeaPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -60359,7 +60359,7 @@ export namespace ModemManager {
     abstract class LocationGpsRawPrivate {
         static $gtype: GObject.GType<LocationGpsRawPrivate>;
 
-        // Constructors of ModemManager.LocationGpsRawPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -60368,7 +60368,7 @@ export namespace ModemManager {
     abstract class ManagerPrivate {
         static $gtype: GObject.GType<ManagerPrivate>;
 
-        // Constructors of ModemManager.ManagerPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -60381,11 +60381,11 @@ export namespace ModemManager {
     abstract class Modem3gppNetwork {
         static $gtype: GObject.GType<Modem3gppNetwork>;
 
-        // Constructors of ModemManager.Modem3gppNetwork
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of ModemManager.Modem3gppNetwork
+        // Methods
 
         /**
          * Frees a #MMModem3gppNetwork.
@@ -60421,7 +60421,7 @@ export namespace ModemManager {
     abstract class Modem3gppPrivate {
         static $gtype: GObject.GType<Modem3gppPrivate>;
 
-        // Constructors of ModemManager.Modem3gppPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -60434,7 +60434,7 @@ export namespace ModemManager {
     abstract class ModemFirmwarePrivate {
         static $gtype: GObject.GType<ModemFirmwarePrivate>;
 
-        // Constructors of ModemManager.ModemFirmwarePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -60443,7 +60443,7 @@ export namespace ModemManager {
     abstract class ModemLocationPrivate {
         static $gtype: GObject.GType<ModemLocationPrivate>;
 
-        // Constructors of ModemManager.ModemLocationPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -60452,7 +60452,7 @@ export namespace ModemManager {
     abstract class ModemMessagingPrivate {
         static $gtype: GObject.GType<ModemMessagingPrivate>;
 
-        // Constructors of ModemManager.ModemMessagingPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -60464,12 +60464,12 @@ export namespace ModemManager {
     class ModemModeCombination {
         static $gtype: GObject.GType<ModemModeCombination>;
 
-        // Own fields of ModemManager.ModemModeCombination
+        // Fields
 
         allowed: ModemMode;
         preferred: ModemMode;
 
-        // Constructors of ModemManager.ModemModeCombination
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -60478,7 +60478,7 @@ export namespace ModemManager {
     abstract class ModemOmaPrivate {
         static $gtype: GObject.GType<ModemOmaPrivate>;
 
-        // Constructors of ModemManager.ModemOmaPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -60489,16 +60489,16 @@ export namespace ModemManager {
     class ModemPortInfo {
         static $gtype: GObject.GType<ModemPortInfo>;
 
-        // Own fields of ModemManager.ModemPortInfo
+        // Fields
 
         name: string;
         type: ModemPortType;
 
-        // Constructors of ModemManager.ModemPortInfo
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of ModemManager.ModemPortInfo
+        // Methods
 
         /**
          * Frees an array of #MMModemPortInfo values.
@@ -60510,7 +60510,7 @@ export namespace ModemManager {
     abstract class ModemPrivate {
         static $gtype: GObject.GType<ModemPrivate>;
 
-        // Constructors of ModemManager.ModemPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -60520,7 +60520,7 @@ export namespace ModemManager {
     abstract class ModemSignalPrivate {
         static $gtype: GObject.GType<ModemSignalPrivate>;
 
-        // Constructors of ModemManager.ModemSignalPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -60530,7 +60530,7 @@ export namespace ModemManager {
     abstract class ModemTimePrivate {
         static $gtype: GObject.GType<ModemTimePrivate>;
 
-        // Constructors of ModemManager.ModemTimePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -60539,7 +60539,7 @@ export namespace ModemManager {
     abstract class ModemVoicePrivate {
         static $gtype: GObject.GType<ModemVoicePrivate>;
 
-        // Constructors of ModemManager.ModemVoicePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -60548,7 +60548,7 @@ export namespace ModemManager {
     abstract class NetworkTimezonePrivate {
         static $gtype: GObject.GType<NetworkTimezonePrivate>;
 
-        // Constructors of ModemManager.NetworkTimezonePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -60557,7 +60557,7 @@ export namespace ModemManager {
     abstract class Nr5gRegistrationSettingsPrivate {
         static $gtype: GObject.GType<Nr5gRegistrationSettingsPrivate>;
 
-        // Constructors of ModemManager.Nr5gRegistrationSettingsPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -60570,12 +60570,12 @@ export namespace ModemManager {
     class OmaPendingNetworkInitiatedSession {
         static $gtype: GObject.GType<OmaPendingNetworkInitiatedSession>;
 
-        // Own fields of ModemManager.OmaPendingNetworkInitiatedSession
+        // Fields
 
         session_type: OmaSessionType;
         session_id: number;
 
-        // Constructors of ModemManager.OmaPendingNetworkInitiatedSession
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -60584,7 +60584,7 @@ export namespace ModemManager {
     abstract class PcoPrivate {
         static $gtype: GObject.GType<PcoPrivate>;
 
-        // Constructors of ModemManager.PcoPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -60593,7 +60593,7 @@ export namespace ModemManager {
     abstract class SignalPrivate {
         static $gtype: GObject.GType<SignalPrivate>;
 
-        // Constructors of ModemManager.SignalPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -60602,7 +60602,7 @@ export namespace ModemManager {
     abstract class SignalThresholdPropertiesPrivate {
         static $gtype: GObject.GType<SignalThresholdPropertiesPrivate>;
 
-        // Constructors of ModemManager.SignalThresholdPropertiesPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -60615,14 +60615,14 @@ export namespace ModemManager {
     class SimPreferredNetwork {
         static $gtype: GObject.GType<SimPreferredNetwork>;
 
-        // Constructors of ModemManager.SimPreferredNetwork
+        // Constructors
 
         constructor(properties?: Partial<{}>);
         _init(...args: any[]): void;
 
         static ['new'](): SimPreferredNetwork;
 
-        // Own methods of ModemManager.SimPreferredNetwork
+        // Methods
 
         /**
          * Frees a #MMSimPreferredNetwork.
@@ -60654,7 +60654,7 @@ export namespace ModemManager {
     abstract class SimpleConnectPropertiesPrivate {
         static $gtype: GObject.GType<SimpleConnectPropertiesPrivate>;
 
-        // Constructors of ModemManager.SimpleConnectPropertiesPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -60663,7 +60663,7 @@ export namespace ModemManager {
     abstract class SimpleStatusPrivate {
         static $gtype: GObject.GType<SimpleStatusPrivate>;
 
-        // Constructors of ModemManager.SimpleStatusPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -60673,7 +60673,7 @@ export namespace ModemManager {
     abstract class SmsPropertiesPrivate {
         static $gtype: GObject.GType<SmsPropertiesPrivate>;
 
-        // Constructors of ModemManager.SmsPropertiesPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -60682,7 +60682,7 @@ export namespace ModemManager {
     abstract class UnlockRetriesPrivate {
         static $gtype: GObject.GType<UnlockRetriesPrivate>;
 
-        // Constructors of ModemManager.UnlockRetriesPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -60731,7 +60731,7 @@ export namespace ModemManager {
         override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
     }
     interface GdbusBearer extends GObject.Object {
-        // Own properties of ModemManager.GdbusBearer
+        // Properties
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-ModemManager1-Bearer.BearerType">"BearerType"</link>.
@@ -60874,7 +60874,7 @@ export namespace ModemManager {
         get suspended(): boolean;
         set suspended(val: boolean);
 
-        // Own methods of ModemManager.GdbusBearer
+        // Methods
 
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Bearer.Connect">Connect()</link> D-Bus method on `proxy`.
@@ -60939,7 +60939,7 @@ export namespace ModemManager {
          */
         complete_disconnect(invocation: Gio.DBusMethodInvocation): void;
 
-        // Own virtual methods of ModemManager.GdbusBearer
+        // Virtual methods
 
         vfunc_handle_connect(invocation: Gio.DBusMethodInvocation): boolean;
         vfunc_handle_disconnect(invocation: Gio.DBusMethodInvocation): boolean;
@@ -60981,7 +60981,7 @@ export namespace ModemManager {
         override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
     }
     interface GdbusCall extends GObject.Object {
-        // Own properties of ModemManager.GdbusCall
+        // Properties
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-ModemManager1-Call.AudioFormat">"AudioFormat"</link>.
@@ -61054,7 +61054,7 @@ export namespace ModemManager {
         get stateReason(): number;
         set stateReason(val: number);
 
-        // Own methods of ModemManager.GdbusCall
+        // Methods
 
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Call.Accept">Accept()</link> D-Bus method on `proxy`.
@@ -61304,7 +61304,7 @@ export namespace ModemManager {
          */
         emit_state_changed(arg_old: number, arg_new: number, arg_reason: number): void;
 
-        // Own virtual methods of ModemManager.GdbusCall
+        // Virtual methods
 
         vfunc_dtmf_received(arg_dtmf: string): void;
         vfunc_handle_accept(invocation: Gio.DBusMethodInvocation): boolean;
@@ -61404,7 +61404,7 @@ export namespace ModemManager {
         override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
     }
     interface GdbusModem extends GObject.Object {
-        // Own properties of ModemManager.GdbusModem
+        // Properties
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-ModemManager1-Modem.AccessTechnologies">"AccessTechnologies"</link>.
@@ -61834,7 +61834,7 @@ export namespace ModemManager {
         get unlockRetries(): GLib.Variant;
         set unlockRetries(val: GLib.Variant);
 
-        // Own methods of ModemManager.GdbusModem
+        // Methods
 
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem.Command">Command()</link> D-Bus method on `proxy`.
@@ -62318,7 +62318,7 @@ export namespace ModemManager {
          */
         emit_state_changed(arg_old: number, arg_new: number, arg_reason: number): void;
 
-        // Own virtual methods of ModemManager.GdbusModem
+        // Virtual methods
 
         vfunc_handle_command(invocation: Gio.DBusMethodInvocation, arg_cmd: string, arg_timeout: number): boolean;
         vfunc_handle_create_bearer(invocation: Gio.DBusMethodInvocation, arg_properties: GLib.Variant): boolean;
@@ -62384,7 +62384,7 @@ export namespace ModemManager {
         override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
     }
     interface GdbusModem3gpp extends GObject.Object {
-        // Own properties of ModemManager.GdbusModem3gpp
+        // Properties
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-ModemManager1-Modem-Modem3gpp.EnabledFacilityLocks">"EnabledFacilityLocks"</link>.
@@ -62541,7 +62541,7 @@ export namespace ModemManager {
         get subscriptionState(): number;
         set subscriptionState(val: number);
 
-        // Own methods of ModemManager.GdbusModem3gpp
+        // Methods
 
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Modem3gpp.DisableFacilityLock">DisableFacilityLock()</link> D-Bus method on `proxy`.
@@ -62841,7 +62841,7 @@ export namespace ModemManager {
          */
         complete_set_packet_service_state(invocation: Gio.DBusMethodInvocation): void;
 
-        // Own virtual methods of ModemManager.GdbusModem3gpp
+        // Virtual methods
 
         vfunc_handle_disable_facility_lock(invocation: Gio.DBusMethodInvocation, arg_properties: GLib.Variant): boolean;
         vfunc_handle_register(invocation: Gio.DBusMethodInvocation, arg_operator_id: string): boolean;
@@ -62887,7 +62887,7 @@ export namespace ModemManager {
         override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
     }
     interface GdbusModem3gppProfileManager extends GObject.Object {
-        // Own properties of ModemManager.GdbusModem3gppProfileManager
+        // Properties
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-ModemManager1-Modem-Modem3gpp-ProfileManager.IndexField">"IndexField"</link>.
@@ -62904,7 +62904,7 @@ export namespace ModemManager {
         get indexField(): string;
         set indexField(val: string);
 
-        // Own methods of ModemManager.GdbusModem3gppProfileManager
+        // Methods
 
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Modem3gpp-ProfileManager.Delete">Delete()</link> D-Bus method on `proxy`.
@@ -63021,7 +63021,7 @@ export namespace ModemManager {
          */
         emit_updated(): void;
 
-        // Own virtual methods of ModemManager.GdbusModem3gppProfileManager
+        // Virtual methods
 
         vfunc_handle_delete(invocation: Gio.DBusMethodInvocation, arg_properties: GLib.Variant): boolean;
         vfunc_handle_list(invocation: Gio.DBusMethodInvocation): boolean;
@@ -63060,7 +63060,7 @@ export namespace ModemManager {
         override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
     }
     interface GdbusModem3gppUssd extends GObject.Object {
-        // Own properties of ModemManager.GdbusModem3gppUssd
+        // Properties
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-ModemManager1-Modem-Modem3gpp-Ussd.NetworkNotification">"NetworkNotification"</link>.
@@ -63098,7 +63098,7 @@ export namespace ModemManager {
         get state(): number;
         set state(val: number);
 
-        // Own methods of ModemManager.GdbusModem3gppUssd
+        // Methods
 
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Modem3gpp-Ussd.Cancel">Cancel()</link> D-Bus method on `proxy`.
@@ -63208,7 +63208,7 @@ export namespace ModemManager {
          */
         complete_respond(invocation: Gio.DBusMethodInvocation, reply: string): void;
 
-        // Own virtual methods of ModemManager.GdbusModem3gppUssd
+        // Virtual methods
 
         vfunc_handle_cancel(invocation: Gio.DBusMethodInvocation): boolean;
         vfunc_handle_initiate(invocation: Gio.DBusMethodInvocation, arg_command: string): boolean;
@@ -63251,7 +63251,7 @@ export namespace ModemManager {
         override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
     }
     interface GdbusModemCdma extends GObject.Object {
-        // Own properties of ModemManager.GdbusModemCdma
+        // Properties
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-ModemManager1-Modem-ModemCdma.ActivationState">"ActivationState"</link>.
@@ -63324,7 +63324,7 @@ export namespace ModemManager {
         get sid(): number;
         set sid(val: number);
 
-        // Own methods of ModemManager.GdbusModemCdma
+        // Methods
 
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-ModemCdma.Activate">Activate()</link> D-Bus method on `proxy`.
@@ -63412,7 +63412,7 @@ export namespace ModemManager {
             arg_status_changes: GLib.Variant,
         ): void;
 
-        // Own virtual methods of ModemManager.GdbusModemCdma
+        // Virtual methods
 
         vfunc_activation_state_changed(
             arg_activation_state: number,
@@ -63451,7 +63451,7 @@ export namespace ModemManager {
         override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
     }
     interface GdbusModemFirmware extends GObject.Object {
-        // Own properties of ModemManager.GdbusModemFirmware
+        // Properties
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-ModemManager1-Modem-Firmware.UpdateSettings">"UpdateSettings"</link>.
@@ -63468,7 +63468,7 @@ export namespace ModemManager {
         get updateSettings(): GLib.Variant;
         set updateSettings(val: GLib.Variant);
 
-        // Own methods of ModemManager.GdbusModemFirmware
+        // Methods
 
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Firmware.List">List()</link> D-Bus method on `proxy`.
@@ -63541,7 +63541,7 @@ export namespace ModemManager {
          */
         complete_select(invocation: Gio.DBusMethodInvocation): void;
 
-        // Own virtual methods of ModemManager.GdbusModemFirmware
+        // Virtual methods
 
         vfunc_handle_list(invocation: Gio.DBusMethodInvocation): boolean;
         vfunc_handle_select(invocation: Gio.DBusMethodInvocation, arg_uniqueid: string): boolean;
@@ -63586,7 +63586,7 @@ export namespace ModemManager {
         override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
     }
     interface GdbusModemLocation extends GObject.Object {
-        // Own properties of ModemManager.GdbusModemLocation
+        // Properties
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-ModemManager1-Modem-Location.AssistanceDataServers">"AssistanceDataServers"</link>.
@@ -63680,7 +63680,7 @@ export namespace ModemManager {
         get supportedAssistanceData(): number;
         set supportedAssistanceData(val: number);
 
-        // Own methods of ModemManager.GdbusModemLocation
+        // Methods
 
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Location.GetLocation">GetLocation()</link> D-Bus method on `proxy`.
@@ -63870,7 +63870,7 @@ export namespace ModemManager {
          */
         complete_setup(invocation: Gio.DBusMethodInvocation): void;
 
-        // Own virtual methods of ModemManager.GdbusModemLocation
+        // Virtual methods
 
         vfunc_handle_get_location(invocation: Gio.DBusMethodInvocation): boolean;
         vfunc_handle_inject_assistance_data(invocation: Gio.DBusMethodInvocation, arg_data: GLib.Variant): boolean;
@@ -63914,7 +63914,7 @@ export namespace ModemManager {
         override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
     }
     interface GdbusModemMessaging extends GObject.Object {
-        // Own properties of ModemManager.GdbusModemMessaging
+        // Properties
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-ModemManager1-Modem-Messaging.DefaultStorage">"DefaultStorage"</link>.
@@ -63952,7 +63952,7 @@ export namespace ModemManager {
         get supportedStorages(): GLib.Variant;
         set supportedStorages(val: GLib.Variant);
 
-        // Own methods of ModemManager.GdbusModemMessaging
+        // Methods
 
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Messaging.Create">Create()</link> D-Bus method on `proxy`.
@@ -64073,7 +64073,7 @@ export namespace ModemManager {
          */
         emit_deleted(arg_path: string): void;
 
-        // Own virtual methods of ModemManager.GdbusModemMessaging
+        // Virtual methods
 
         vfunc_added(arg_path: string, arg_received: boolean): void;
         vfunc_deleted(arg_path: string): void;
@@ -64115,7 +64115,7 @@ export namespace ModemManager {
         override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
     }
     interface GdbusModemOma extends GObject.Object {
-        // Own properties of ModemManager.GdbusModemOma
+        // Properties
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-ModemManager1-Modem-Oma.Features">"Features"</link>.
@@ -64167,7 +64167,7 @@ export namespace ModemManager {
         get sessionType(): number;
         set sessionType(val: number);
 
-        // Own methods of ModemManager.GdbusModemOma
+        // Methods
 
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Oma.AcceptNetworkInitiatedSession">AcceptNetworkInitiatedSession()</link> D-Bus method on `proxy`.
@@ -64333,7 +64333,7 @@ export namespace ModemManager {
             arg_session_state_failed_reason: number,
         ): void;
 
-        // Own virtual methods of ModemManager.GdbusModemOma
+        // Virtual methods
 
         vfunc_handle_accept_network_initiated_session(
             invocation: Gio.DBusMethodInvocation,
@@ -64382,7 +64382,7 @@ export namespace ModemManager {
         override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
     }
     interface GdbusModemSar extends GObject.Object {
-        // Own properties of ModemManager.GdbusModemSar
+        // Properties
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-ModemManager1-Modem-Sar.PowerLevel">"PowerLevel"</link>.
@@ -64406,7 +64406,7 @@ export namespace ModemManager {
         get state(): boolean;
         set state(val: boolean);
 
-        // Own methods of ModemManager.GdbusModemSar
+        // Methods
 
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Sar.Enable">Enable()</link> D-Bus method on `proxy`.
@@ -64483,7 +64483,7 @@ export namespace ModemManager {
          */
         complete_set_power_level(invocation: Gio.DBusMethodInvocation): void;
 
-        // Own virtual methods of ModemManager.GdbusModemSar
+        // Virtual methods
 
         vfunc_handle_enable(invocation: Gio.DBusMethodInvocation, arg_enable: boolean): boolean;
         vfunc_handle_set_power_level(invocation: Gio.DBusMethodInvocation, arg_level: number): boolean;
@@ -64526,7 +64526,7 @@ export namespace ModemManager {
         override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
     }
     interface GdbusModemSignal extends GObject.Object {
-        // Own properties of ModemManager.GdbusModemSignal
+        // Properties
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-ModemManager1-Modem-Signal.Cdma">"Cdma"</link>.
@@ -64606,7 +64606,7 @@ export namespace ModemManager {
         get umts(): GLib.Variant;
         set umts(val: GLib.Variant);
 
-        // Own methods of ModemManager.GdbusModemSignal
+        // Methods
 
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Signal.Setup">Setup()</link> D-Bus method on `proxy`.
@@ -64683,7 +64683,7 @@ export namespace ModemManager {
          */
         complete_setup_thresholds(invocation: Gio.DBusMethodInvocation): void;
 
-        // Own virtual methods of ModemManager.GdbusModemSignal
+        // Virtual methods
 
         vfunc_handle_setup(invocation: Gio.DBusMethodInvocation, arg_rate: number): boolean;
         vfunc_handle_setup_thresholds(invocation: Gio.DBusMethodInvocation, arg_settings: GLib.Variant): boolean;
@@ -64714,7 +64714,7 @@ export namespace ModemManager {
         override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
     }
     interface GdbusModemSimple extends GObject.Object {
-        // Own methods of ModemManager.GdbusModemSimple
+        // Methods
 
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Simple.Connect">Connect()</link> D-Bus method on `proxy`.
@@ -64824,7 +64824,7 @@ export namespace ModemManager {
          */
         complete_get_status(invocation: Gio.DBusMethodInvocation, properties: GLib.Variant): void;
 
-        // Own virtual methods of ModemManager.GdbusModemSimple
+        // Virtual methods
 
         vfunc_handle_connect(invocation: Gio.DBusMethodInvocation, arg_properties: GLib.Variant): boolean;
         vfunc_handle_disconnect(invocation: Gio.DBusMethodInvocation, arg_bearer: string): boolean;
@@ -64859,7 +64859,7 @@ export namespace ModemManager {
         override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
     }
     interface GdbusModemTime extends GObject.Object {
-        // Own properties of ModemManager.GdbusModemTime
+        // Properties
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-ModemManager1-Modem-Time.NetworkTimezone">"NetworkTimezone"</link>.
@@ -64876,7 +64876,7 @@ export namespace ModemManager {
         get networkTimezone(): GLib.Variant;
         set networkTimezone(val: GLib.Variant);
 
-        // Own methods of ModemManager.GdbusModemTime
+        // Methods
 
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Time.GetNetworkTime">GetNetworkTime()</link> D-Bus method on `proxy`.
@@ -64919,7 +64919,7 @@ export namespace ModemManager {
          */
         emit_network_time_changed(arg_time: string): void;
 
-        // Own virtual methods of ModemManager.GdbusModemTime
+        // Virtual methods
 
         vfunc_handle_get_network_time(invocation: Gio.DBusMethodInvocation): boolean;
         vfunc_network_time_changed(arg_time: string): void;
@@ -64954,7 +64954,7 @@ export namespace ModemManager {
         override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
     }
     interface GdbusModemVoice extends GObject.Object {
-        // Own properties of ModemManager.GdbusModemVoice
+        // Properties
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-ModemManager1-Modem-Voice.Calls">"Calls"</link>.
@@ -64978,7 +64978,7 @@ export namespace ModemManager {
         get emergencyOnly(): boolean;
         set emergencyOnly(val: boolean);
 
-        // Own methods of ModemManager.GdbusModemVoice
+        // Methods
 
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Voice.CallWaitingQuery">CallWaitingQuery()</link> D-Bus method on `proxy`.
@@ -65300,7 +65300,7 @@ export namespace ModemManager {
          */
         emit_call_deleted(arg_path: string): void;
 
-        // Own virtual methods of ModemManager.GdbusModemVoice
+        // Virtual methods
 
         vfunc_call_added(arg_path: string): void;
         vfunc_call_deleted(arg_path: string): void;
@@ -65355,7 +65355,7 @@ export namespace ModemManager {
         prototype: GdbusObject;
     }
     interface GdbusObject extends Gio.DBusObject {
-        // Own properties of ModemManager.GdbusObject
+        // Properties
 
         /**
          * The #MmGdbusModem instance corresponding to the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-ModemManager1-Modem.top_of_page">org.freedesktop.ModemManager1.Modem</link>, if any.
@@ -65540,7 +65540,7 @@ export namespace ModemManager {
         get modem3gppUssd(): GdbusModem3gppUssd;
         set modem3gppUssd(val: GdbusModem3gppUssd);
 
-        // Own methods of ModemManager.GdbusObject
+        // Methods
 
         /**
          * Gets the #MmGdbusModem instance for the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-ModemManager1-Modem.top_of_page">org.freedesktop.ModemManager1.Modem</link> on `object,` if any.
@@ -65641,7 +65641,7 @@ export namespace ModemManager {
         override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
     }
     interface GdbusOrgFreedesktopModemManager1 extends GObject.Object {
-        // Own properties of ModemManager.GdbusOrgFreedesktopModemManager1
+        // Properties
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-ModemManager1.Version">"Version"</link>.
@@ -65651,7 +65651,7 @@ export namespace ModemManager {
         get version(): string;
         set version(val: string);
 
-        // Own methods of ModemManager.GdbusOrgFreedesktopModemManager1
+        // Methods
 
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1.InhibitDevice">InhibitDevice()</link> D-Bus method on `proxy`.
@@ -65799,7 +65799,7 @@ export namespace ModemManager {
          */
         complete_set_logging(invocation: Gio.DBusMethodInvocation): void;
 
-        // Own virtual methods of ModemManager.GdbusOrgFreedesktopModemManager1
+        // Virtual methods
 
         vfunc_handle_inhibit_device(
             invocation: Gio.DBusMethodInvocation,
@@ -65857,7 +65857,7 @@ export namespace ModemManager {
         override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
     }
     interface GdbusSim extends GObject.Object {
-        // Own properties of ModemManager.GdbusSim
+        // Properties
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-ModemManager1-Sim.Active">"Active"</link>.
@@ -66000,7 +66000,7 @@ export namespace ModemManager {
         get simType(): number;
         set simType(val: number);
 
-        // Own methods of ModemManager.GdbusSim
+        // Methods
 
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Sim.ChangePin">ChangePin()</link> D-Bus method on `proxy`.
@@ -66200,7 +66200,7 @@ export namespace ModemManager {
          */
         complete_set_preferred_networks(invocation: Gio.DBusMethodInvocation): void;
 
-        // Own virtual methods of ModemManager.GdbusSim
+        // Virtual methods
 
         vfunc_handle_change_pin(
             invocation: Gio.DBusMethodInvocation,
@@ -66265,7 +66265,7 @@ export namespace ModemManager {
         override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
     }
     interface GdbusSms extends GObject.Object {
-        // Own properties of ModemManager.GdbusSms
+        // Properties
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-ModemManager1-Sms.Class">"Class"</link>.
@@ -66429,7 +66429,7 @@ export namespace ModemManager {
         get validity(): GLib.Variant;
         set validity(val: GLib.Variant);
 
-        // Own methods of ModemManager.GdbusSms
+        // Methods
 
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Sms.Send">Send()</link> D-Bus method on `proxy`.
@@ -66500,7 +66500,7 @@ export namespace ModemManager {
          */
         complete_store(invocation: Gio.DBusMethodInvocation): void;
 
-        // Own virtual methods of ModemManager.GdbusSms
+        // Virtual methods
 
         vfunc_handle_send(invocation: Gio.DBusMethodInvocation): boolean;
         vfunc_handle_store(invocation: Gio.DBusMethodInvocation, arg_storage: number): boolean;

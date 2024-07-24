@@ -25,7 +25,7 @@ export namespace MediaArt {
     class Error extends GLib.Error {
         static $gtype: GObject.GType<Error>;
 
-        // Static fields of MediaArt.Error
+        // Static fields
 
         /**
          * Storage information is unknown, we
@@ -47,7 +47,7 @@ export namespace MediaArt {
          */
         static RENAME_FAILED: number;
 
-        // Constructors of MediaArt.Error
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
@@ -225,7 +225,7 @@ export namespace MediaArt {
     class Process extends GObject.Object implements Gio.Initable {
         static $gtype: GObject.GType<Process>;
 
-        // Constructors of MediaArt.Process
+        // Constructors
 
         constructor(properties?: Partial<Process.ConstructorProps>, ...args: any[]);
 
@@ -233,7 +233,7 @@ export namespace MediaArt {
 
         static ['new'](): Process;
 
-        // Own methods of MediaArt.Process
+        // Methods
 
         /**
          * Processes a memory buffer represented by `buffer` and `len`. If you

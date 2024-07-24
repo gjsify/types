@@ -255,7 +255,7 @@ export namespace GnomeDesktop {
     class DesktopThumbnailFactory extends GObject.Object {
         static $gtype: GObject.GType<DesktopThumbnailFactory>;
 
-        // Constructors of GnomeDesktop.DesktopThumbnailFactory
+        // Constructors
 
         constructor(properties?: Partial<DesktopThumbnailFactory.ConstructorProps>, ...args: any[]);
 
@@ -263,7 +263,7 @@ export namespace GnomeDesktop {
 
         static ['new'](size: DesktopThumbnailSize): DesktopThumbnailFactory;
 
-        // Own methods of GnomeDesktop.DesktopThumbnailFactory
+        // Methods
 
         /**
          * Returns TRUE if this GnomeDesktopThumbnailFactory can (at least try) to thumbnail
@@ -396,7 +396,7 @@ export namespace GnomeDesktop {
     class IdleMonitor extends GObject.Object implements Gio.Initable {
         static $gtype: GObject.GType<IdleMonitor>;
 
-        // Constructors of GnomeDesktop.IdleMonitor
+        // Constructors
 
         constructor(properties?: Partial<IdleMonitor.ConstructorProps>, ...args: any[]);
 
@@ -404,7 +404,7 @@ export namespace GnomeDesktop {
 
         static ['new'](): IdleMonitor;
 
-        // Own methods of GnomeDesktop.IdleMonitor
+        // Methods
 
         add_idle_watch(interval_msec: number, callback?: IdleMonitorWatchFunc | null): number;
         add_user_active_watch(callback?: IdleMonitorWatchFunc | null): number;
@@ -914,7 +914,7 @@ export namespace GnomeDesktop {
     class PnpIds extends GObject.Object {
         static $gtype: GObject.GType<PnpIds>;
 
-        // Constructors of GnomeDesktop.PnpIds
+        // Constructors
 
         constructor(properties?: Partial<PnpIds.ConstructorProps>, ...args: any[]);
 
@@ -922,7 +922,7 @@ export namespace GnomeDesktop {
 
         static ['new'](): PnpIds;
 
-        // Own methods of GnomeDesktop.PnpIds
+        // Methods
 
         /**
          * Find the full manufacturer name for the given PNP ID.
@@ -948,7 +948,7 @@ export namespace GnomeDesktop {
     class WallClock extends GObject.Object {
         static $gtype: GObject.GType<WallClock>;
 
-        // Own properties of GnomeDesktop.WallClock
+        // Properties
 
         /**
          * A formatted string representing the current clock display.
@@ -985,11 +985,11 @@ export namespace GnomeDesktop {
          */
         get timezone(): GLib.TimeZone;
 
-        // Own fields of GnomeDesktop.WallClock
+        // Fields
 
         parent_object: GObject.Object;
 
-        // Constructors of GnomeDesktop.WallClock
+        // Constructors
 
         constructor(properties?: Partial<WallClock.ConstructorProps>, ...args: any[]);
 
@@ -997,7 +997,7 @@ export namespace GnomeDesktop {
 
         static ['new'](): WallClock;
 
-        // Own methods of GnomeDesktop.WallClock
+        // Methods
 
         /**
          * Returns the string representing the current time of this clock
@@ -1034,11 +1034,11 @@ export namespace GnomeDesktop {
     class XkbInfo extends GObject.Object {
         static $gtype: GObject.GType<XkbInfo>;
 
-        // Own fields of GnomeDesktop.XkbInfo
+        // Fields
 
         parent_object: GObject.Object;
 
-        // Constructors of GnomeDesktop.XkbInfo
+        // Constructors
 
         constructor(properties?: Partial<XkbInfo.ConstructorProps>, ...args: any[]);
 
@@ -1046,7 +1046,7 @@ export namespace GnomeDesktop {
 
         static ['new'](): XkbInfo;
 
-        // Own signals of GnomeDesktop.XkbInfo
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -1055,7 +1055,7 @@ export namespace GnomeDesktop {
         connect_after(signal: 'layouts-changed', callback: (_source: this) => void): number;
         emit(signal: 'layouts-changed'): void;
 
-        // Own methods of GnomeDesktop.XkbInfo
+        // Methods
 
         description_for_group(group_id: string): string;
         description_for_option(group_id: string, id: string): string;
@@ -1118,7 +1118,7 @@ export namespace GnomeDesktop {
     abstract class DesktopThumbnailFactoryPrivate {
         static $gtype: GObject.GType<DesktopThumbnailFactoryPrivate>;
 
-        // Constructors of GnomeDesktop.DesktopThumbnailFactoryPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1127,7 +1127,7 @@ export namespace GnomeDesktop {
     abstract class IdleMonitorPrivate {
         static $gtype: GObject.GType<IdleMonitorPrivate>;
 
-        // Constructors of GnomeDesktop.IdleMonitorPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1136,7 +1136,7 @@ export namespace GnomeDesktop {
     abstract class PnpIdsPrivate {
         static $gtype: GObject.GType<PnpIdsPrivate>;
 
-        // Constructors of GnomeDesktop.PnpIdsPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1145,7 +1145,7 @@ export namespace GnomeDesktop {
     abstract class WallClockPrivate {
         static $gtype: GObject.GType<WallClockPrivate>;
 
-        // Constructors of GnomeDesktop.WallClockPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1154,7 +1154,7 @@ export namespace GnomeDesktop {
     abstract class XkbInfoPrivate {
         static $gtype: GObject.GType<XkbInfoPrivate>;
 
-        // Constructors of GnomeDesktop.XkbInfoPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }

@@ -297,7 +297,7 @@ export namespace GtkSource {
     class Buffer extends Gtk.TextBuffer {
         static $gtype: GObject.GType<Buffer>;
 
-        // Own properties of GtkSource.Buffer
+        // Properties
 
         get can_redo(): boolean;
         get canRedo(): boolean;
@@ -356,7 +356,7 @@ export namespace GtkSource {
         get undoManager(): UndoManager;
         set undoManager(val: UndoManager);
 
-        // Constructors of GtkSource.Buffer
+        // Constructors
 
         constructor(properties?: Partial<Buffer.ConstructorProps>, ...args: any[]);
 
@@ -366,7 +366,7 @@ export namespace GtkSource {
 
         static new_with_language(language: Language): Buffer;
 
-        // Own signals of GtkSource.Buffer
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -399,7 +399,7 @@ export namespace GtkSource {
         connect_after(signal: 'undo', callback: (_source: this) => void): number;
         emit(signal: 'undo'): void;
 
-        // Own virtual methods of GtkSource.Buffer
+        // Virtual methods
 
         vfunc_bracket_matched(iter: Gtk.TextIter, state: BracketMatchType): void;
         /**
@@ -419,7 +419,7 @@ export namespace GtkSource {
          */
         vfunc_undo(): void;
 
-        // Own methods of GtkSource.Buffer
+        // Methods
 
         /**
          * Moves `iter` to the position of the previous #GtkSourceMark of the given
@@ -694,7 +694,7 @@ export namespace GtkSource {
     class Completion extends Gtk.Object {
         static $gtype: GObject.GType<Completion>;
 
-        // Own properties of GtkSource.Completion
+        // Properties
 
         /**
          * Number of accelerators to show for the first proposals.
@@ -788,13 +788,13 @@ export namespace GtkSource {
          */
         get view(): View;
 
-        // Constructors of GtkSource.Completion
+        // Constructors
 
         constructor(properties?: Partial<Completion.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of GtkSource.Completion
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -827,11 +827,11 @@ export namespace GtkSource {
         connect_after(signal: 'show', callback: (_source: this) => void): number;
         emit(signal: 'show'): void;
 
-        // Own static methods of GtkSource.Completion
+        // Static methods
 
         static error_quark(): GLib.Quark;
 
-        // Own virtual methods of GtkSource.Completion
+        // Virtual methods
 
         vfunc_activate_proposal(): void;
         /**
@@ -844,7 +844,7 @@ export namespace GtkSource {
         vfunc_proposal_activated(provider: CompletionProvider, proposal: CompletionProposal): boolean;
         vfunc_show(): void;
 
-        // Own methods of GtkSource.Completion
+        // Methods
 
         /**
          * Add a new #GtkSourceCompletionProvider to the completion object. This will
@@ -913,7 +913,7 @@ export namespace GtkSource {
     class CompletionContext extends GObject.InitiallyUnowned {
         static $gtype: GObject.GType<CompletionContext>;
 
-        // Own properties of GtkSource.CompletionContext
+        // Properties
 
         /**
          * The #GtkSourceCompletion associated with the context.
@@ -925,13 +925,13 @@ export namespace GtkSource {
         get iter(): Gtk.TextIter;
         set iter(val: Gtk.TextIter);
 
-        // Constructors of GtkSource.CompletionContext
+        // Constructors
 
         constructor(properties?: Partial<CompletionContext.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of GtkSource.CompletionContext
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -940,11 +940,11 @@ export namespace GtkSource {
         connect_after(signal: 'cancelled', callback: (_source: this) => void): number;
         emit(signal: 'cancelled'): void;
 
-        // Own virtual methods of GtkSource.CompletionContext
+        // Virtual methods
 
         vfunc_cancelled(): void;
 
-        // Own methods of GtkSource.CompletionContext
+        // Methods
 
         /**
          * Get the context activation.
@@ -986,7 +986,7 @@ export namespace GtkSource {
     class CompletionInfo extends Gtk.Window implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<CompletionInfo>;
 
-        // Own properties of GtkSource.CompletionInfo
+        // Properties
 
         get max_height(): number;
         set max_height(val: number);
@@ -1005,7 +1005,7 @@ export namespace GtkSource {
         get shrinkWidth(): boolean;
         set shrinkWidth(val: boolean);
 
-        // Constructors of GtkSource.CompletionInfo
+        // Constructors
 
         constructor(properties?: Partial<CompletionInfo.ConstructorProps>, ...args: any[]);
 
@@ -1013,7 +1013,7 @@ export namespace GtkSource {
 
         static ['new'](): CompletionInfo;
 
-        // Own signals of GtkSource.CompletionInfo
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -1022,11 +1022,11 @@ export namespace GtkSource {
         connect_after(signal: 'before-show', callback: (_source: this) => void): number;
         emit(signal: 'before-show'): void;
 
-        // Own virtual methods of GtkSource.CompletionInfo
+        // Virtual methods
 
         vfunc_before_show(): void;
 
-        // Own methods of GtkSource.CompletionInfo
+        // Methods
 
         /**
          * Get the current content widget.
@@ -1481,7 +1481,7 @@ export namespace GtkSource {
     class CompletionItem extends GObject.Object implements CompletionProposal {
         static $gtype: GObject.GType<CompletionItem>;
 
-        // Own properties of GtkSource.CompletionItem
+        // Properties
 
         /**
          * Icon to be shown for this proposal.
@@ -1509,7 +1509,7 @@ export namespace GtkSource {
         get text(): string;
         set text(val: string);
 
-        // Constructors of GtkSource.CompletionItem
+        // Constructors
 
         constructor(properties?: Partial<CompletionItem.ConstructorProps>, ...args: any[]);
 
@@ -2055,7 +2055,7 @@ export namespace GtkSource {
     class Gutter extends GObject.Object {
         static $gtype: GObject.GType<Gutter>;
 
-        // Own properties of GtkSource.Gutter
+        // Properties
 
         /**
          * The #GtkSourceView of the gutter
@@ -2070,13 +2070,13 @@ export namespace GtkSource {
          */
         get windowType(): Gtk.TextWindowType;
 
-        // Constructors of GtkSource.Gutter
+        // Constructors
 
         constructor(properties?: Partial<Gutter.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of GtkSource.Gutter
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -2100,12 +2100,12 @@ export namespace GtkSource {
         ): number;
         emit(signal: 'query-tooltip', renderer: Gtk.CellRenderer, iter: Gtk.TextIter, tooltip: Gtk.Tooltip): void;
 
-        // Own virtual methods of GtkSource.Gutter
+        // Virtual methods
 
         vfunc_cell_activated(renderer: Gtk.CellRenderer, iter: Gtk.TextIter, event: Gdk.Event): void;
         vfunc_query_tooltip(renderer: Gtk.CellRenderer, iter: Gtk.TextIter, tooltip: Gtk.Tooltip): boolean;
 
-        // Own methods of GtkSource.Gutter
+        // Methods
 
         /**
          * Inserts `renderer` into `gutter` at `position`.
@@ -2170,20 +2170,20 @@ export namespace GtkSource {
     class Language extends GObject.Object {
         static $gtype: GObject.GType<Language>;
 
-        // Own properties of GtkSource.Language
+        // Properties
 
         get hidden(): boolean;
         get id(): string;
         get name(): string;
         get section(): string;
 
-        // Constructors of GtkSource.Language
+        // Constructors
 
         constructor(properties?: Partial<Language.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of GtkSource.Language
+        // Methods
 
         /**
          * Returns whether the language should be hidden from the user.
@@ -2236,7 +2236,7 @@ export namespace GtkSource {
     class LanguageManager extends GObject.Object {
         static $gtype: GObject.GType<LanguageManager>;
 
-        // Own properties of GtkSource.LanguageManager
+        // Properties
 
         get language_ids(): string[];
         get languageIds(): string[];
@@ -2245,7 +2245,7 @@ export namespace GtkSource {
         get searchPath(): string[];
         set searchPath(val: string[]);
 
-        // Constructors of GtkSource.LanguageManager
+        // Constructors
 
         constructor(properties?: Partial<LanguageManager.ConstructorProps>, ...args: any[]);
 
@@ -2253,7 +2253,7 @@ export namespace GtkSource {
 
         static ['new'](): LanguageManager;
 
-        // Own methods of GtkSource.LanguageManager
+        // Methods
 
         /**
          * Gets the #GtkSourceLanguage identified by the given `id` in the language
@@ -2339,7 +2339,7 @@ export namespace GtkSource {
     class Mark extends Gtk.TextMark {
         static $gtype: GObject.GType<Mark>;
 
-        // Own properties of GtkSource.Mark
+        // Properties
 
         /**
          * The category of the #GtkSourceMark, classifies the mark and controls
@@ -2347,7 +2347,7 @@ export namespace GtkSource {
          */
         get category(): string;
 
-        // Constructors of GtkSource.Mark
+        // Constructors
 
         constructor(properties?: Partial<Mark.ConstructorProps>, ...args: any[]);
 
@@ -2358,7 +2358,7 @@ export namespace GtkSource {
 
         static ['new'](...args: never[]): any;
 
-        // Own methods of GtkSource.Mark
+        // Methods
 
         /**
          * Returns the mark category.
@@ -2400,7 +2400,7 @@ export namespace GtkSource {
     class PrintCompositor extends GObject.Object {
         static $gtype: GObject.GType<PrintCompositor>;
 
-        // Own properties of GtkSource.PrintCompositor
+        // Properties
 
         /**
          * Name of the font used for the text body.
@@ -2635,7 +2635,7 @@ export namespace GtkSource {
         get wrapMode(): Gtk.WrapMode;
         set wrapMode(val: Gtk.WrapMode);
 
-        // Constructors of GtkSource.PrintCompositor
+        // Constructors
 
         constructor(properties?: Partial<PrintCompositor.ConstructorProps>, ...args: any[]);
 
@@ -2645,7 +2645,7 @@ export namespace GtkSource {
 
         static new_from_view(view: View): PrintCompositor;
 
-        // Own methods of GtkSource.PrintCompositor
+        // Methods
 
         /**
          * Draw page `page_nr` for printing on the the Cairo context encapsuled in `context`.
@@ -3087,7 +3087,7 @@ export namespace GtkSource {
     class Style extends GObject.Object {
         static $gtype: GObject.GType<Style>;
 
-        // Own properties of GtkSource.Style
+        // Properties
 
         get background(): string;
         get background_set(): boolean;
@@ -3112,7 +3112,7 @@ export namespace GtkSource {
         get underline_set(): boolean;
         get underlineSet(): boolean;
 
-        // Constructors of GtkSource.Style
+        // Constructors
 
         constructor(properties?: Partial<Style.ConstructorProps>, ...args: any[]);
 
@@ -3133,7 +3133,7 @@ export namespace GtkSource {
     class StyleScheme extends GObject.Object {
         static $gtype: GObject.GType<StyleScheme>;
 
-        // Own properties of GtkSource.StyleScheme
+        // Properties
 
         get description(): string;
         /**
@@ -3150,17 +3150,17 @@ export namespace GtkSource {
          */
         get name(): string;
 
-        // Own fields of GtkSource.StyleScheme
+        // Fields
 
         base: GObject.Object;
 
-        // Constructors of GtkSource.StyleScheme
+        // Constructors
 
         constructor(properties?: Partial<StyleScheme.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of GtkSource.StyleScheme
+        // Methods
 
         get_authors(): string[];
         get_description(): string;
@@ -3183,7 +3183,7 @@ export namespace GtkSource {
     class StyleSchemeManager extends GObject.Object {
         static $gtype: GObject.GType<StyleSchemeManager>;
 
-        // Own properties of GtkSource.StyleSchemeManager
+        // Properties
 
         get scheme_ids(): string[];
         get schemeIds(): string[];
@@ -3192,7 +3192,7 @@ export namespace GtkSource {
         get searchPath(): string[];
         set searchPath(val: string[]);
 
-        // Constructors of GtkSource.StyleSchemeManager
+        // Constructors
 
         constructor(properties?: Partial<StyleSchemeManager.ConstructorProps>, ...args: any[]);
 
@@ -3200,7 +3200,7 @@ export namespace GtkSource {
 
         static ['new'](): StyleSchemeManager;
 
-        // Own methods of GtkSource.StyleSchemeManager
+        // Methods
 
         /**
          * Appends `path` to the list of directories where the `manager` looks for
@@ -3312,7 +3312,7 @@ export namespace GtkSource {
     class View extends Gtk.TextView implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<View>;
 
-        // Own properties of GtkSource.View
+        // Properties
 
         get auto_indent(): boolean;
         set auto_indent(val: boolean);
@@ -3392,7 +3392,7 @@ export namespace GtkSource {
         get tabWidth(): number;
         set tabWidth(val: number);
 
-        // Constructors of GtkSource.View
+        // Constructors
 
         constructor(properties?: Partial<View.ConstructorProps>, ...args: any[]);
 
@@ -3402,7 +3402,7 @@ export namespace GtkSource {
 
         static new_with_buffer(buffer: Buffer): View;
 
-        // Own signals of GtkSource.View
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -3438,7 +3438,7 @@ export namespace GtkSource {
         connect_after(signal: 'undo', callback: (_source: this) => void): number;
         emit(signal: 'undo'): void;
 
-        // Own virtual methods of GtkSource.View
+        // Virtual methods
 
         vfunc_line_mark_activated(iter: Gtk.TextIter, event: Gdk.Event): void;
         vfunc_move_lines(copy: boolean, step: number): void;
@@ -3447,7 +3447,7 @@ export namespace GtkSource {
         vfunc_show_completion(): void;
         vfunc_undo(): void;
 
-        // Own methods of GtkSource.View
+        // Methods
 
         /**
          * Returns whether auto indentation of text is enabled.
@@ -4109,7 +4109,7 @@ export namespace GtkSource {
     abstract class BufferPrivate {
         static $gtype: GObject.GType<BufferPrivate>;
 
-        // Constructors of GtkSource.BufferPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4119,7 +4119,7 @@ export namespace GtkSource {
     abstract class CompletionContextPrivate {
         static $gtype: GObject.GType<CompletionContextPrivate>;
 
-        // Constructors of GtkSource.CompletionContextPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4128,7 +4128,7 @@ export namespace GtkSource {
     abstract class CompletionInfoPrivate {
         static $gtype: GObject.GType<CompletionInfoPrivate>;
 
-        // Constructors of GtkSource.CompletionInfoPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4137,7 +4137,7 @@ export namespace GtkSource {
     abstract class CompletionItemPrivate {
         static $gtype: GObject.GType<CompletionItemPrivate>;
 
-        // Constructors of GtkSource.CompletionItemPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4145,7 +4145,7 @@ export namespace GtkSource {
     abstract class CompletionPrivate {
         static $gtype: GObject.GType<CompletionPrivate>;
 
-        // Constructors of GtkSource.CompletionPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4156,7 +4156,7 @@ export namespace GtkSource {
     abstract class GutterPrivate {
         static $gtype: GObject.GType<GutterPrivate>;
 
-        // Constructors of GtkSource.GutterPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4166,7 +4166,7 @@ export namespace GtkSource {
     abstract class LanguageManagerPrivate {
         static $gtype: GObject.GType<LanguageManagerPrivate>;
 
-        // Constructors of GtkSource.LanguageManagerPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4174,7 +4174,7 @@ export namespace GtkSource {
     abstract class LanguagePrivate {
         static $gtype: GObject.GType<LanguagePrivate>;
 
-        // Constructors of GtkSource.LanguagePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4183,7 +4183,7 @@ export namespace GtkSource {
     abstract class MarkPrivate {
         static $gtype: GObject.GType<MarkPrivate>;
 
-        // Constructors of GtkSource.MarkPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4192,7 +4192,7 @@ export namespace GtkSource {
     abstract class PrintCompositorPrivate {
         static $gtype: GObject.GType<PrintCompositorPrivate>;
 
-        // Constructors of GtkSource.PrintCompositorPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4202,7 +4202,7 @@ export namespace GtkSource {
     abstract class StyleSchemeManagerPrivate {
         static $gtype: GObject.GType<StyleSchemeManagerPrivate>;
 
-        // Constructors of GtkSource.StyleSchemeManagerPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4210,7 +4210,7 @@ export namespace GtkSource {
     abstract class StyleSchemePrivate {
         static $gtype: GObject.GType<StyleSchemePrivate>;
 
-        // Constructors of GtkSource.StyleSchemePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4220,7 +4220,7 @@ export namespace GtkSource {
     abstract class ViewPrivate {
         static $gtype: GObject.GType<ViewPrivate>;
 
-        // Constructors of GtkSource.ViewPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4236,7 +4236,7 @@ export namespace GtkSource {
         prototype: CompletionProposal;
     }
     interface CompletionProposal extends GObject.Object {
-        // Own methods of GtkSource.CompletionProposal
+        // Methods
 
         /**
          * Emits the "changed" signal on `proposal`. This should be called by
@@ -4291,7 +4291,7 @@ export namespace GtkSource {
          */
         hash(): number;
 
-        // Own virtual methods of GtkSource.CompletionProposal
+        // Virtual methods
 
         /**
          * Emits the "changed" signal on `proposal`. This should be called by
@@ -4354,7 +4354,7 @@ export namespace GtkSource {
         prototype: CompletionProvider;
     }
     interface CompletionProvider extends GObject.Object {
-        // Own methods of GtkSource.CompletionProvider
+        // Methods
 
         /**
          * Activate `proposal` at `iter`. When this functions returns %FALSE, the default
@@ -4424,7 +4424,7 @@ export namespace GtkSource {
          */
         update_info(proposal: CompletionProposal, info: CompletionInfo): void;
 
-        // Own virtual methods of GtkSource.CompletionProvider
+        // Virtual methods
 
         /**
          * Activate `proposal` at `iter`. When this functions returns %FALSE, the default
@@ -4501,7 +4501,7 @@ export namespace GtkSource {
         prototype: UndoManager;
     }
     interface UndoManager extends GObject.Object {
-        // Own methods of GtkSource.UndoManager
+        // Methods
 
         /**
          * Begin a not undoable action on the buffer. All changes between this call
@@ -4544,7 +4544,7 @@ export namespace GtkSource {
          */
         undo(): void;
 
-        // Own virtual methods of GtkSource.UndoManager
+        // Virtual methods
 
         /**
          * Begin a not undoable action on the buffer. All changes between this call

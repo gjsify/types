@@ -123,7 +123,7 @@ export namespace MPID {
     class Device extends GObject.Object {
         static $gtype: GObject.GType<Device>;
 
-        // Own properties of MPID.Device
+        // Properties
 
         /**
          * Names of access protocols that can be used to access the device contents
@@ -246,7 +246,7 @@ export namespace MPID {
          */
         get vendor(): string;
 
-        // Constructors of MPID.Device
+        // Constructors
 
         constructor(properties?: Partial<Device.ConstructorProps>, ...args: any[]);
 

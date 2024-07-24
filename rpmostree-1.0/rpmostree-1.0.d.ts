@@ -108,13 +108,13 @@ export namespace RpmOstree {
     class Package extends GObject.Object {
         static $gtype: GObject.GType<Package>;
 
-        // Constructors of RpmOstree.Package
+        // Constructors
 
         constructor(properties?: Partial<Package.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of RpmOstree.Package
+        // Methods
 
         /**
          * Compares two packages by name, epoch:version-release and architecture.

@@ -142,7 +142,7 @@ export namespace Entangle {
     class Application extends Gtk.Application implements Gio.ActionGroup, Gio.ActionMap {
         static $gtype: GObject.GType<Application>;
 
-        // Own properties of Entangle.Application
+        // Properties
 
         get active_cameras(): CameraList;
         get activeCameras(): CameraList;
@@ -150,7 +150,7 @@ export namespace Entangle {
         get supported_cameras(): CameraList;
         get supportedCameras(): CameraList;
 
-        // Constructors of Entangle.Application
+        // Constructors
 
         constructor(properties?: Partial<Application.ConstructorProps>, ...args: any[]);
 
@@ -158,7 +158,7 @@ export namespace Entangle {
 
         static ['new'](): Application;
 
-        // Own methods of Entangle.Application
+        // Methods
 
         /**
          * Retrieve the active camera list
@@ -643,7 +643,7 @@ export namespace Entangle {
     class Camera extends GObject.Object {
         static $gtype: GObject.GType<Camera>;
 
-        // Own properties of Entangle.Camera
+        // Properties
 
         get driver(): string;
         get has_capture(): boolean;
@@ -662,7 +662,7 @@ export namespace Entangle {
         get serial(): string;
         get summary(): string;
 
-        // Constructors of Entangle.Camera
+        // Constructors
 
         constructor(properties?: Partial<Camera.ConstructorProps>, ...args: any[]);
 
@@ -677,7 +677,7 @@ export namespace Entangle {
             hasSettings: boolean,
         ): Camera;
 
-        // Own signals of Entangle.Camera
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -707,7 +707,7 @@ export namespace Entangle {
         connect_after(signal: 'camera-opened', callback: (_source: this) => void): number;
         emit(signal: 'camera-opened'): void;
 
-        // Own methods of Entangle.Camera
+        // Methods
 
         /**
          * Trigger the autofocus mechanism on the camera, waiting
@@ -1291,7 +1291,7 @@ export namespace Entangle {
     class CameraAutomata extends GObject.Object {
         static $gtype: GObject.GType<CameraAutomata>;
 
-        // Own properties of Entangle.CameraAutomata
+        // Properties
 
         get camera(): Camera;
         set camera(val: Camera);
@@ -1302,7 +1302,7 @@ export namespace Entangle {
         get session(): Session;
         set session(val: Session);
 
-        // Constructors of Entangle.CameraAutomata
+        // Constructors
 
         constructor(properties?: Partial<CameraAutomata.ConstructorProps>, ...args: any[]);
 
@@ -1310,7 +1310,7 @@ export namespace Entangle {
 
         static ['new'](): CameraAutomata;
 
-        // Own signals of Entangle.CameraAutomata
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -1322,7 +1322,7 @@ export namespace Entangle {
         connect_after(signal: 'camera-capture-end', callback: (_source: this) => void): number;
         emit(signal: 'camera-capture-end'): void;
 
-        // Own methods of Entangle.CameraAutomata
+        // Methods
 
         capture_async(cancel?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): void;
         capture_finish(res: Gio.AsyncResult): boolean;
@@ -1362,7 +1362,7 @@ export namespace Entangle {
     class CameraFile extends GObject.Object {
         static $gtype: GObject.GType<CameraFile>;
 
-        // Own properties of Entangle.CameraFile
+        // Properties
 
         get data(): Uint8Array;
         set data(val: Uint8Array);
@@ -1371,7 +1371,7 @@ export namespace Entangle {
         set mimetype(val: string);
         get name(): string;
 
-        // Constructors of Entangle.CameraFile
+        // Constructors
 
         constructor(properties?: Partial<CameraFile.ConstructorProps>, ...args: any[]);
 
@@ -1379,7 +1379,7 @@ export namespace Entangle {
 
         static ['new'](folder: string, name: string): CameraFile;
 
-        // Own methods of Entangle.CameraFile
+        // Methods
 
         /**
          * Get the raw data associated with the camera file
@@ -1461,13 +1461,13 @@ export namespace Entangle {
     class CameraList extends GObject.Object {
         static $gtype: GObject.GType<CameraList>;
 
-        // Own properties of Entangle.CameraList
+        // Properties
 
         get active(): boolean;
         get device_manager(): DeviceManager;
         get deviceManager(): DeviceManager;
 
-        // Constructors of Entangle.CameraList
+        // Constructors
 
         constructor(properties?: Partial<CameraList.ConstructorProps>, ...args: any[]);
 
@@ -1477,7 +1477,7 @@ export namespace Entangle {
 
         static new_supported(): CameraList;
 
-        // Own signals of Entangle.CameraList
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -1489,7 +1489,7 @@ export namespace Entangle {
         connect_after(signal: 'camera-removed', callback: (_source: this, object: Camera) => void): number;
         emit(signal: 'camera-removed', object: Camera): void;
 
-        // Own methods of Entangle.CameraList
+        // Methods
 
         /**
          * Adds the camera `cam` to the list `list`
@@ -1556,12 +1556,12 @@ export namespace Entangle {
     {
         static $gtype: GObject.GType<CameraManager>;
 
-        // Own properties of Entangle.CameraManager
+        // Properties
 
         get camera(): Camera;
         set camera(val: Camera);
 
-        // Constructors of Entangle.CameraManager
+        // Constructors
 
         constructor(properties?: Partial<CameraManager.ConstructorProps>, ...args: any[]);
 
@@ -1572,7 +1572,7 @@ export namespace Entangle {
 
         static ['new'](...args: never[]): any;
 
-        // Own signals of Entangle.CameraManager
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -1581,7 +1581,7 @@ export namespace Entangle {
         connect_after(signal: 'closed', callback: (_source: this) => void): number;
         emit(signal: 'closed'): void;
 
-        // Own methods of Entangle.CameraManager
+        // Methods
 
         add_script(script: Script): void;
         capture(): void;
@@ -2593,12 +2593,12 @@ export namespace Entangle {
     class CameraPicker extends Gtk.Dialog implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<CameraPicker>;
 
-        // Own properties of Entangle.CameraPicker
+        // Properties
 
         get cameras(): CameraList;
         set cameras(val: CameraList);
 
-        // Constructors of Entangle.CameraPicker
+        // Constructors
 
         constructor(properties?: Partial<CameraPicker.ConstructorProps>, ...args: any[]);
 
@@ -2606,7 +2606,7 @@ export namespace Entangle {
 
         static ['new'](): CameraPicker;
 
-        // Own signals of Entangle.CameraPicker
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -2618,7 +2618,7 @@ export namespace Entangle {
         connect_after(signal: 'picker-refresh', callback: (_source: this) => void): number;
         emit(signal: 'picker-refresh'): void;
 
-        // Own methods of Entangle.CameraPicker
+        // Methods
 
         set_camera_list(cameras: CameraList): void;
 
@@ -3036,12 +3036,12 @@ export namespace Entangle {
     class CameraPreferences extends GObject.Object {
         static $gtype: GObject.GType<CameraPreferences>;
 
-        // Own properties of Entangle.CameraPreferences
+        // Properties
 
         get camera(): Camera;
         set camera(val: Camera);
 
-        // Constructors of Entangle.CameraPreferences
+        // Constructors
 
         constructor(properties?: Partial<CameraPreferences.ConstructorProps>, ...args: any[]);
 
@@ -3049,7 +3049,7 @@ export namespace Entangle {
 
         static ['new'](): CameraPreferences;
 
-        // Own methods of Entangle.CameraPreferences
+        // Methods
 
         /**
          * Get the camera whose cameras are displayed
@@ -3080,14 +3080,14 @@ export namespace Entangle {
     class CameraSupport extends Gtk.Dialog implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<CameraSupport>;
 
-        // Own properties of Entangle.CameraSupport
+        // Properties
 
         get camera_list(): CameraList;
         set camera_list(val: CameraList);
         get cameraList(): CameraList;
         set cameraList(val: CameraList);
 
-        // Constructors of Entangle.CameraSupport
+        // Constructors
 
         constructor(properties?: Partial<CameraSupport.ConstructorProps>, ...args: any[]);
 
@@ -3095,7 +3095,7 @@ export namespace Entangle {
 
         static ['new'](): CameraSupport;
 
-        // Own methods of Entangle.CameraSupport
+        // Methods
 
         /**
          * Get the camera list
@@ -3523,12 +3523,12 @@ export namespace Entangle {
     class ColourProfile extends GObject.Object {
         static $gtype: GObject.GType<ColourProfile>;
 
-        // Own properties of Entangle.ColourProfile
+        // Properties
 
         get data(): Uint8Array;
         get filename(): string;
 
-        // Constructors of Entangle.ColourProfile
+        // Constructors
 
         constructor(properties?: Partial<ColourProfile.ConstructorProps>, ...args: any[]);
 
@@ -3538,7 +3538,7 @@ export namespace Entangle {
 
         static new_file(filename: string): ColourProfile;
 
-        // Own methods of Entangle.ColourProfile
+        // Methods
 
         /**
          * Get the copyright of the profile
@@ -3576,14 +3576,14 @@ export namespace Entangle {
     class ColourProfileTransform extends GObject.Object {
         static $gtype: GObject.GType<ColourProfileTransform>;
 
-        // Own properties of Entangle.ColourProfileTransform
+        // Properties
 
         get dst_profile(): ColourProfile;
         get dstProfile(): ColourProfile;
         get src_profile(): ColourProfile;
         get srcProfile(): ColourProfile;
 
-        // Constructors of Entangle.ColourProfileTransform
+        // Constructors
 
         constructor(properties?: Partial<ColourProfileTransform.ConstructorProps>, ...args: any[]);
 
@@ -3591,7 +3591,7 @@ export namespace Entangle {
 
         static ['new'](src: ColourProfile, dst: ColourProfile, intent: ColourProfileIntent): ColourProfileTransform;
 
-        // Own methods of Entangle.ColourProfileTransform
+        // Methods
 
         /**
          * Apply the colour profile transformation `trans` to the pixbuf
@@ -3620,7 +3620,7 @@ export namespace Entangle {
     abstract class Control extends GObject.Object {
         static $gtype: GObject.GType<Control>;
 
-        // Own properties of Entangle.Control
+        // Properties
 
         get dirty(): boolean;
         get id(): number;
@@ -3629,7 +3629,7 @@ export namespace Entangle {
         get path(): string;
         get readonly(): boolean;
 
-        // Constructors of Entangle.Control
+        // Constructors
 
         constructor(properties?: Partial<Control.ConstructorProps>, ...args: any[]);
 
@@ -3637,7 +3637,7 @@ export namespace Entangle {
 
         static ['new'](path: string, id: number, label: string, info: string, readonly: boolean): Control;
 
-        // Own methods of Entangle.Control
+        // Methods
 
         get_dirty(): boolean;
         get_id(): number;
@@ -3658,7 +3658,7 @@ export namespace Entangle {
     class ControlButton extends Control {
         static $gtype: GObject.GType<ControlButton>;
 
-        // Constructors of Entangle.ControlButton
+        // Constructors
 
         constructor(properties?: Partial<ControlButton.ConstructorProps>, ...args: any[]);
 
@@ -3678,12 +3678,12 @@ export namespace Entangle {
     class ControlChoice extends Control {
         static $gtype: GObject.GType<ControlChoice>;
 
-        // Own properties of Entangle.ControlChoice
+        // Properties
 
         get value(): string;
         set value(val: string);
 
-        // Constructors of Entangle.ControlChoice
+        // Constructors
 
         constructor(properties?: Partial<ControlChoice.ConstructorProps>, ...args: any[]);
 
@@ -3691,7 +3691,7 @@ export namespace Entangle {
 
         static ['new'](path: string, id: number, label: string, info: string, readonly: boolean): ControlChoice;
 
-        // Own methods of Entangle.ControlChoice
+        // Methods
 
         add_entry(entry: string): void;
         clear_entries(): void;
@@ -3710,12 +3710,12 @@ export namespace Entangle {
     class ControlDate extends Control {
         static $gtype: GObject.GType<ControlDate>;
 
-        // Own properties of Entangle.ControlDate
+        // Properties
 
         get value(): number;
         set value(val: number);
 
-        // Constructors of Entangle.ControlDate
+        // Constructors
 
         constructor(properties?: Partial<ControlDate.ConstructorProps>, ...args: any[]);
 
@@ -3733,7 +3733,7 @@ export namespace Entangle {
     class ControlGroup extends Control {
         static $gtype: GObject.GType<ControlGroup>;
 
-        // Constructors of Entangle.ControlGroup
+        // Constructors
 
         constructor(properties?: Partial<ControlGroup.ConstructorProps>, ...args: any[]);
 
@@ -3741,7 +3741,7 @@ export namespace Entangle {
 
         static ['new'](path: string, id: number, label: string, info: string, readonly: boolean): ControlGroup;
 
-        // Own methods of Entangle.ControlGroup
+        // Methods
 
         /**
          * Adds the `control` to `group`
@@ -3781,7 +3781,7 @@ export namespace Entangle {
     class ControlPanel extends Gtk.Expander implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<ControlPanel>;
 
-        // Own properties of Entangle.ControlPanel
+        // Properties
 
         get camera(): Camera;
         get camera_prefs(): CameraPreferences;
@@ -3789,7 +3789,7 @@ export namespace Entangle {
         get has_controls(): boolean;
         get hasControls(): boolean;
 
-        // Constructors of Entangle.ControlPanel
+        // Constructors
 
         constructor(properties?: Partial<ControlPanel.ConstructorProps>, ...args: any[]);
 
@@ -3800,7 +3800,7 @@ export namespace Entangle {
 
         static ['new'](...args: never[]): any;
 
-        // Own methods of Entangle.ControlPanel
+        // Methods
 
         /**
          * Get the camera preferences whose controls are displayed
@@ -4229,7 +4229,7 @@ export namespace Entangle {
     class ControlRange extends Control {
         static $gtype: GObject.GType<ControlRange>;
 
-        // Own properties of Entangle.ControlRange
+        // Properties
 
         get range_max(): number;
         get rangeMax(): number;
@@ -4240,7 +4240,7 @@ export namespace Entangle {
         get value(): number;
         set value(val: number);
 
-        // Constructors of Entangle.ControlRange
+        // Constructors
 
         constructor(properties?: Partial<ControlRange.ConstructorProps>, ...args: any[]);
 
@@ -4260,7 +4260,7 @@ export namespace Entangle {
 
         static ['new'](...args: never[]): any;
 
-        // Own methods of Entangle.ControlRange
+        // Methods
 
         get_max(): number;
         get_min(): number;
@@ -4278,12 +4278,12 @@ export namespace Entangle {
     class ControlText extends Control {
         static $gtype: GObject.GType<ControlText>;
 
-        // Own properties of Entangle.ControlText
+        // Properties
 
         get value(): string;
         set value(val: string);
 
-        // Constructors of Entangle.ControlText
+        // Constructors
 
         constructor(properties?: Partial<ControlText.ConstructorProps>, ...args: any[]);
 
@@ -4303,12 +4303,12 @@ export namespace Entangle {
     class ControlToggle extends Control {
         static $gtype: GObject.GType<ControlToggle>;
 
-        // Own properties of Entangle.ControlToggle
+        // Properties
 
         get value(): boolean;
         set value(val: boolean);
 
-        // Constructors of Entangle.ControlToggle
+        // Constructors
 
         constructor(properties?: Partial<ControlToggle.ConstructorProps>, ...args: any[]);
 
@@ -4336,7 +4336,7 @@ export namespace Entangle {
     class DeviceManager extends GObject.Object {
         static $gtype: GObject.GType<DeviceManager>;
 
-        // Constructors of Entangle.DeviceManager
+        // Constructors
 
         constructor(properties?: Partial<DeviceManager.ConstructorProps>, ...args: any[]);
 
@@ -4344,7 +4344,7 @@ export namespace Entangle {
 
         static ['new'](): DeviceManager;
 
-        // Own signals of Entangle.DeviceManager
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -4356,7 +4356,7 @@ export namespace Entangle {
         connect_after(signal: 'device-removed', callback: (_source: this, object: string) => void): number;
         emit(signal: 'device-removed', object: string): void;
 
-        // Own methods of Entangle.DeviceManager
+        // Methods
 
         serial_id(devpath: string): string;
     }
@@ -4373,7 +4373,7 @@ export namespace Entangle {
     class HelpAbout extends Gtk.AboutDialog implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<HelpAbout>;
 
-        // Constructors of Entangle.HelpAbout
+        // Constructors
 
         constructor(properties?: Partial<HelpAbout.ConstructorProps>, ...args: any[]);
 
@@ -4795,12 +4795,12 @@ export namespace Entangle {
     class Image extends Media {
         static $gtype: GObject.GType<Image>;
 
-        // Own properties of Entangle.Image
+        // Properties
 
         get pixbuf(): GdkPixbuf.Pixbuf;
         set pixbuf(val: GdkPixbuf.Pixbuf);
 
-        // Constructors of Entangle.Image
+        // Constructors
 
         constructor(properties?: Partial<Image.ConstructorProps>, ...args: any[]);
 
@@ -4810,7 +4810,7 @@ export namespace Entangle {
 
         static new_pixbuf(pixbuf: GdkPixbuf.Pixbuf): Image;
 
-        // Own methods of Entangle.Image
+        // Methods
 
         /**
          * Get the pixbuf associated with the image, if it is available
@@ -4854,7 +4854,7 @@ export namespace Entangle {
     class ImageDisplay extends Gtk.DrawingArea implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<ImageDisplay>;
 
-        // Own properties of Entangle.ImageDisplay
+        // Properties
 
         get aspect_ratio(): number;
         set aspect_ratio(val: number);
@@ -4891,7 +4891,7 @@ export namespace Entangle {
         get scale(): number;
         set scale(val: number);
 
-        // Constructors of Entangle.ImageDisplay
+        // Constructors
 
         constructor(properties?: Partial<ImageDisplay.ConstructorProps>, ...args: any[]);
 
@@ -4899,7 +4899,7 @@ export namespace Entangle {
 
         static ['new'](): ImageDisplay;
 
-        // Own methods of Entangle.ImageDisplay
+        // Methods
 
         get_aspect_ratio(): number;
         get_autoscale(): boolean;
@@ -5371,12 +5371,12 @@ export namespace Entangle {
     class ImageHistogram extends Gtk.DrawingArea implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<ImageHistogram>;
 
-        // Own properties of Entangle.ImageHistogram
+        // Properties
 
         get image(): Image;
         set image(val: Image);
 
-        // Constructors of Entangle.ImageHistogram
+        // Constructors
 
         constructor(properties?: Partial<ImageHistogram.ConstructorProps>, ...args: any[]);
 
@@ -5384,7 +5384,7 @@ export namespace Entangle {
 
         static ['new'](): ImageHistogram;
 
-        // Own methods of Entangle.ImageHistogram
+        // Methods
 
         get_histogram_linear(): boolean;
         /**
@@ -5814,12 +5814,12 @@ export namespace Entangle {
     class ImageLoader extends PixbufLoader {
         static $gtype: GObject.GType<ImageLoader>;
 
-        // Own properties of Entangle.ImageLoader
+        // Properties
 
         get embedded_preview(): boolean;
         get embeddedPreview(): boolean;
 
-        // Constructors of Entangle.ImageLoader
+        // Constructors
 
         constructor(properties?: Partial<ImageLoader.ConstructorProps>, ...args: any[]);
 
@@ -5827,7 +5827,7 @@ export namespace Entangle {
 
         static ['new'](): ImageLoader;
 
-        // Own methods of Entangle.ImageLoader
+        // Methods
 
         add(image: Image): void;
         get_embedded_preview(): boolean;
@@ -5847,19 +5847,19 @@ export namespace Entangle {
     class Media extends GObject.Object {
         static $gtype: GObject.GType<Media>;
 
-        // Own properties of Entangle.Media
+        // Properties
 
         get filename(): string;
         get metadata(): GExiv2.Metadata;
         set metadata(val: GExiv2.Metadata);
 
-        // Constructors of Entangle.Media
+        // Constructors
 
         constructor(properties?: Partial<Media.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Entangle.Media
+        // Methods
 
         ['delete'](): boolean;
         /**
@@ -5911,12 +5911,12 @@ export namespace Entangle {
     class MediaPopup extends Gtk.Window implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<MediaPopup>;
 
-        // Own properties of Entangle.MediaPopup
+        // Properties
 
         get media(): Media;
         set media(val: Media);
 
-        // Constructors of Entangle.MediaPopup
+        // Constructors
 
         constructor(properties?: Partial<MediaPopup.ConstructorProps>, ...args: any[]);
 
@@ -5924,7 +5924,7 @@ export namespace Entangle {
 
         static ['new'](): MediaPopup;
 
-        // Own signals of Entangle.MediaPopup
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -5933,7 +5933,7 @@ export namespace Entangle {
         connect_after(signal: 'popup-close', callback: (_source: this) => void): number;
         emit(signal: 'popup-close'): void;
 
-        // Own methods of Entangle.MediaPopup
+        // Methods
 
         get_background(): string;
         /**
@@ -6371,12 +6371,12 @@ export namespace Entangle {
     class MediaStatusbar extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<MediaStatusbar>;
 
-        // Own properties of Entangle.MediaStatusbar
+        // Properties
 
         get media(): Media;
         set media(val: Media);
 
-        // Constructors of Entangle.MediaStatusbar
+        // Constructors
 
         constructor(properties?: Partial<MediaStatusbar.ConstructorProps>, ...args: any[]);
 
@@ -6384,7 +6384,7 @@ export namespace Entangle {
 
         static ['new'](): MediaStatusbar;
 
-        // Own methods of Entangle.MediaStatusbar
+        // Methods
 
         /**
          * Retrieve the media that status is currently displayed for
@@ -6850,7 +6850,7 @@ export namespace Entangle {
     abstract class PixbufLoader extends GObject.Object {
         static $gtype: GObject.GType<PixbufLoader>;
 
-        // Own properties of Entangle.PixbufLoader
+        // Properties
 
         get colour_transform(): ColourProfileTransform;
         set colour_transform(val: ColourProfileTransform);
@@ -6860,13 +6860,13 @@ export namespace Entangle {
         get withMetadata(): boolean;
         get workers(): number;
 
-        // Constructors of Entangle.PixbufLoader
+        // Constructors
 
         constructor(properties?: Partial<PixbufLoader.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of Entangle.PixbufLoader
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -6884,7 +6884,7 @@ export namespace Entangle {
         connect_after(signal: 'pixbuf-unloaded', callback: (_source: this, object: Image) => void): number;
         emit(signal: 'pixbuf-unloaded', object: Image): void;
 
-        // Own methods of Entangle.PixbufLoader
+        // Methods
 
         /**
          * Get the colour transform that will be applied when loading
@@ -7022,7 +7022,7 @@ export namespace Entangle {
     class Preferences extends GObject.Object {
         static $gtype: GObject.GType<Preferences>;
 
-        // Own properties of Entangle.Preferences
+        // Properties
 
         get capture_continuous_preview(): boolean;
         set capture_continuous_preview(val: boolean);
@@ -7129,7 +7129,7 @@ export namespace Entangle {
         get interfaceScreenBlank(): boolean;
         set interfaceScreenBlank(val: boolean);
 
-        // Constructors of Entangle.Preferences
+        // Constructors
 
         constructor(properties?: Partial<Preferences.ConstructorProps>, ...args: any[]);
 
@@ -7137,12 +7137,12 @@ export namespace Entangle {
 
         static ['new'](): Preferences;
 
-        // Own static methods of Entangle.Preferences
+        // Static methods
 
         static ensure_girepository_dir(): void;
         static ensure_gsettings_dir(): void;
 
-        // Own methods of Entangle.Preferences
+        // Methods
 
         /**
          * Determine if the preview mode will continue to operate after each
@@ -7479,7 +7479,7 @@ export namespace Entangle {
     class PreferencesDisplay extends Gtk.Dialog implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<PreferencesDisplay>;
 
-        // Constructors of Entangle.PreferencesDisplay
+        // Constructors
 
         constructor(properties?: Partial<PreferencesDisplay.ConstructorProps>, ...args: any[]);
 
@@ -7901,18 +7901,18 @@ export namespace Entangle {
     abstract class Script extends GObject.Object {
         static $gtype: GObject.GType<Script>;
 
-        // Own properties of Entangle.Script
+        // Properties
 
         get title(): string;
         set title(val: string);
 
-        // Constructors of Entangle.Script
+        // Constructors
 
         constructor(properties?: Partial<Script.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of Entangle.Script
+        // Virtual methods
 
         vfunc_execute_async(
             automata: CameraAutomata,
@@ -7925,7 +7925,7 @@ export namespace Entangle {
          */
         vfunc_get_config_widget(): Gtk.Widget;
 
-        // Own methods of Entangle.Script
+        // Methods
 
         execute_async(
             automata: CameraAutomata,
@@ -7958,7 +7958,7 @@ export namespace Entangle {
     class ScriptConfig extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<ScriptConfig>;
 
-        // Constructors of Entangle.ScriptConfig
+        // Constructors
 
         constructor(properties?: Partial<ScriptConfig.ConstructorProps>, ...args: any[]);
 
@@ -7966,7 +7966,7 @@ export namespace Entangle {
 
         static ['new'](): ScriptConfig;
 
-        // Own methods of Entangle.ScriptConfig
+        // Methods
 
         add_script(script: Script): void;
         /**
@@ -8406,18 +8406,18 @@ export namespace Entangle {
     class ScriptSimple extends Script {
         static $gtype: GObject.GType<ScriptSimple>;
 
-        // Constructors of Entangle.ScriptSimple
+        // Constructors
 
         constructor(properties?: Partial<ScriptSimple.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of Entangle.ScriptSimple
+        // Virtual methods
 
         vfunc_execute(automata: CameraAutomata, cancel: Gio.Cancellable | null, result: Gio.Task): void;
         vfunc_init_task_data<T = GObject.Object>(): T;
 
-        // Own methods of Entangle.ScriptSimple
+        // Methods
 
         get_task_data<T = GObject.Object>(result: Gio.Task): T;
         init_task_data<T = GObject.Object>(): T;
@@ -8447,13 +8447,13 @@ export namespace Entangle {
     class Session extends GObject.Object {
         static $gtype: GObject.GType<Session>;
 
-        // Own properties of Entangle.Session
+        // Properties
 
         get directory(): string;
         get filename_pattern(): string;
         get filenamePattern(): string;
 
-        // Constructors of Entangle.Session
+        // Constructors
 
         constructor(properties?: Partial<Session.ConstructorProps>, ...args: any[]);
 
@@ -8461,7 +8461,7 @@ export namespace Entangle {
 
         static ['new'](directory: string, filenamePattern: string): Session;
 
-        // Own signals of Entangle.Session
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -8473,7 +8473,7 @@ export namespace Entangle {
         connect_after(signal: 'session-media-removed', callback: (_source: this, object: Media) => void): number;
         emit(signal: 'session-media-removed', object: Media): void;
 
-        // Own methods of Entangle.Session
+        // Methods
 
         /**
          * Add `media` to the `session`
@@ -8535,7 +8535,7 @@ export namespace Entangle {
     class SessionBrowser extends Gtk.DrawingArea implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable {
         static $gtype: GObject.GType<SessionBrowser>;
 
-        // Own properties of Entangle.SessionBrowser
+        // Properties
 
         get session(): Session;
         set session(val: Session);
@@ -8544,7 +8544,7 @@ export namespace Entangle {
         get thumbnailLoader(): ThumbnailLoader;
         set thumbnailLoader(val: ThumbnailLoader);
 
-        // Constructors of Entangle.SessionBrowser
+        // Constructors
 
         constructor(properties?: Partial<SessionBrowser.ConstructorProps>, ...args: any[]);
 
@@ -8552,7 +8552,7 @@ export namespace Entangle {
 
         static ['new'](): SessionBrowser;
 
-        // Own signals of Entangle.SessionBrowser
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -8561,7 +8561,7 @@ export namespace Entangle {
         connect_after(signal: 'selection-changed', callback: (_source: this) => void): number;
         emit(signal: 'selection-changed'): void;
 
-        // Own methods of Entangle.SessionBrowser
+        // Methods
 
         get_background(): string;
         /**
@@ -9120,12 +9120,12 @@ export namespace Entangle {
     class ThumbnailLoader extends PixbufLoader {
         static $gtype: GObject.GType<ThumbnailLoader>;
 
-        // Own properties of Entangle.ThumbnailLoader
+        // Properties
 
         get height(): number;
         get width(): number;
 
-        // Constructors of Entangle.ThumbnailLoader
+        // Constructors
 
         constructor(properties?: Partial<ThumbnailLoader.ConstructorProps>, ...args: any[]);
 
@@ -9145,12 +9145,12 @@ export namespace Entangle {
     class Video extends Media {
         static $gtype: GObject.GType<Video>;
 
-        // Own properties of Entangle.Video
+        // Properties
 
         get source(): GstBase.BaseSrc;
         set source(val: GstBase.BaseSrc);
 
-        // Constructors of Entangle.Video
+        // Constructors
 
         constructor(properties?: Partial<Video.ConstructorProps>, ...args: any[]);
 
@@ -9160,7 +9160,7 @@ export namespace Entangle {
 
         static new_source(source: GstBase.BaseSrc): Video;
 
-        // Own methods of Entangle.Video
+        // Methods
 
         /**
          * Get the live video source element
@@ -9225,13 +9225,13 @@ export namespace Entangle {
         prototype: Progress;
     }
     interface Progress extends GObject.Object {
-        // Own methods of Entangle.Progress
+        // Methods
 
         start(target: number, msg: string): void;
         stop(): void;
         update(current: number): void;
 
-        // Own virtual methods of Entangle.Progress
+        // Virtual methods
 
         vfunc_start(target: number, msg: string): void;
         vfunc_stop(): void;

@@ -29,14 +29,14 @@ export namespace Libproxy {
     class ProxyFactory {
         static $gtype: GObject.GType<ProxyFactory>;
 
-        // Constructors of Libproxy.ProxyFactory
+        // Constructors
 
         constructor(properties?: Partial<{}>);
         _init(...args: any[]): void;
 
         static ['new'](): ProxyFactory;
 
-        // Own static methods of Libproxy.ProxyFactory
+        // Static methods
 
         /**
          * Frees the proxy array returned by `px_proxy_factory_get_proxies` when no
@@ -47,7 +47,7 @@ export namespace Libproxy {
          */
         static free_proxies(proxies: string[]): void;
 
-        // Own methods of Libproxy.ProxyFactory
+        // Methods
 
         /**
          * Frees the `pxProxyFactory`.

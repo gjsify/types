@@ -24,7 +24,7 @@ export namespace gSignon {
     class Error extends GLib.Error {
         static $gtype: GObject.GType<Error>;
 
-        // Static fields of gSignon.Error
+        // Static fields
 
         /**
          * Catch-all for errors not distinguished by another code.
@@ -178,12 +178,12 @@ export namespace gSignon {
          */
         static USER_ERROR: number;
 
-        // Constructors of gSignon.Error
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of gSignon.Error
+        // Static methods
 
         /**
          * Creates and returns a domain for gSSO errors.
@@ -365,7 +365,7 @@ export namespace gSignon {
     class AuthService extends GObject.Object {
         static $gtype: GObject.GType<AuthService>;
 
-        // Constructors of gSignon.AuthService
+        // Constructors
 
         constructor(properties?: Partial<AuthService.ConstructorProps>, ...args: any[]);
 
@@ -373,7 +373,7 @@ export namespace gSignon {
 
         static ['new'](): AuthService;
 
-        // Own methods of gSignon.AuthService
+        // Methods
 
         /**
          * Clears / wipes out all stored data.
@@ -443,11 +443,11 @@ export namespace gSignon {
     class AuthSession extends GObject.Object {
         static $gtype: GObject.GType<AuthSession>;
 
-        // Own properties of gSignon.AuthSession
+        // Properties
 
         get identity(): Identity;
 
-        // Constructors of gSignon.AuthSession
+        // Constructors
 
         constructor(properties?: Partial<AuthSession.ConstructorProps>, ...args: any[]);
 
@@ -457,7 +457,7 @@ export namespace gSignon {
 
         static new_for_identity(identity: Identity, method_name: string): AuthSession;
 
-        // Own signals of gSignon.AuthSession
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -469,7 +469,7 @@ export namespace gSignon {
         ): number;
         emit(signal: 'state-changed', state: number, message: string): void;
 
-        // Own methods of gSignon.AuthSession
+        // Methods
 
         /**
          * Cancel the authentication session.
@@ -561,7 +561,7 @@ export namespace gSignon {
     class Identity extends GObject.Object {
         static $gtype: GObject.GType<Identity>;
 
-        // Own properties of gSignon.Identity
+        // Properties
 
         get app_ctx(): string;
         set app_ctx(val: string);
@@ -570,7 +570,7 @@ export namespace gSignon {
         get id(): number;
         set id(val: number);
 
-        // Constructors of gSignon.Identity
+        // Constructors
 
         constructor(properties?: Partial<Identity.ConstructorProps>, ...args: any[]);
 
@@ -584,7 +584,7 @@ export namespace gSignon {
 
         static new_with_context_from_db(id: number, application_context: string): Identity;
 
-        // Own signals of gSignon.Identity
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -596,7 +596,7 @@ export namespace gSignon {
         connect_after(signal: 'signout', callback: (_source: this) => void): number;
         emit(signal: 'signout'): void;
 
-        // Own methods of gSignon.Identity
+        // Methods
 
         /**
          * Adds named reference to identity. Not currently supported by gSSO.
@@ -702,7 +702,7 @@ export namespace gSignon {
     abstract class AuthServicePrivate {
         static $gtype: GObject.GType<AuthServicePrivate>;
 
-        // Constructors of gSignon.AuthServicePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -711,7 +711,7 @@ export namespace gSignon {
     abstract class AuthSessionPrivate {
         static $gtype: GObject.GType<AuthSessionPrivate>;
 
-        // Constructors of gSignon.AuthSessionPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -723,14 +723,14 @@ export namespace gSignon {
     class IdentityInfo {
         static $gtype: GObject.GType<IdentityInfo>;
 
-        // Constructors of gSignon.IdentityInfo
+        // Constructors
 
         constructor(properties?: Partial<{}>);
         _init(...args: any[]): void;
 
         static ['new'](): IdentityInfo;
 
-        // Own methods of gSignon.IdentityInfo
+        // Methods
 
         /**
          * Appends a new #SignonSecurityContext item to the access control list.
@@ -864,7 +864,7 @@ export namespace gSignon {
     abstract class IdentityPrivate {
         static $gtype: GObject.GType<IdentityPrivate>;
 
-        // Constructors of gSignon.IdentityPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -875,12 +875,12 @@ export namespace gSignon {
     class SecurityContext {
         static $gtype: GObject.GType<SecurityContext>;
 
-        // Own fields of gSignon.SecurityContext
+        // Fields
 
         sys_ctx: string;
         app_ctx: string;
 
-        // Constructors of gSignon.SecurityContext
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -894,7 +894,7 @@ export namespace gSignon {
 
         static new_from_values(system_context: string, application_context: string): SecurityContext;
 
-        // Own static methods of gSignon.SecurityContext
+        // Static methods
 
         /**
          * Builds a #SignonSecurityContext item from a GVariant of type "(ss)".
@@ -914,7 +914,7 @@ export namespace gSignon {
          */
         static list_deconstruct_variant(variant: GLib.Variant): SecurityContext[];
 
-        // Own methods of gSignon.SecurityContext
+        // Methods
 
         /**
          * Build a GVariant of type "(ss)" from a #SignonSecurityContext item.
@@ -959,7 +959,7 @@ export namespace gSignon {
     abstract class _AuthSession {
         static $gtype: GObject.GType<_AuthSession>;
 
-        // Constructors of gSignon._AuthSession
+        // Constructors
 
         _init(...args: any[]): void;
     }

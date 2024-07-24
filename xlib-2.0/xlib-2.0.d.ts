@@ -19,7 +19,7 @@ export namespace xlib {
     class Display {
         static $gtype: GObject.GType<Display>;
 
-        // Constructors of xlib.Display
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -27,7 +27,7 @@ export namespace xlib {
     class Screen {
         static $gtype: GObject.GType<Screen>;
 
-        // Constructors of xlib.Screen
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -35,7 +35,7 @@ export namespace xlib {
     class Visual {
         static $gtype: GObject.GType<Visual>;
 
-        // Constructors of xlib.Visual
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -43,7 +43,7 @@ export namespace xlib {
     class XConfigureEvent {
         static $gtype: GObject.GType<XConfigureEvent>;
 
-        // Constructors of xlib.XConfigureEvent
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -51,7 +51,7 @@ export namespace xlib {
     class XImage {
         static $gtype: GObject.GType<XImage>;
 
-        // Constructors of xlib.XImage
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -59,7 +59,7 @@ export namespace xlib {
     class XFontStruct {
         static $gtype: GObject.GType<XFontStruct>;
 
-        // Constructors of xlib.XFontStruct
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -67,7 +67,7 @@ export namespace xlib {
     class XTrapezoid {
         static $gtype: GObject.GType<XTrapezoid>;
 
-        // Constructors of xlib.XTrapezoid
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -75,7 +75,7 @@ export namespace xlib {
     class XVisualInfo {
         static $gtype: GObject.GType<XVisualInfo>;
 
-        // Constructors of xlib.XVisualInfo
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -83,7 +83,7 @@ export namespace xlib {
     class XWindowAttributes {
         static $gtype: GObject.GType<XWindowAttributes>;
 
-        // Constructors of xlib.XWindowAttributes
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -91,7 +91,7 @@ export namespace xlib {
     class XEvent {
         static $gtype: GObject.GType<XEvent>;
 
-        // Constructors of xlib.XEvent
+        // Constructors
 
         _init(...args: any[]): void;
     }

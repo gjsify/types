@@ -177,7 +177,7 @@ export namespace SecretUnstable {
     class Collection extends Gio.DBusProxy implements Gio.AsyncInitable<Collection>, Gio.DBusInterface, Gio.Initable {
         static $gtype: GObject.GType<Collection>;
 
-        // Own properties of SecretUnstable.Collection
+        // Properties
 
         /**
          * The date and time (in seconds since the UNIX epoch) that this
@@ -213,7 +213,7 @@ export namespace SecretUnstable {
          */
         get service(): Service;
 
-        // Constructors of SecretUnstable.Collection
+        // Constructors
 
         constructor(properties?: Partial<Collection.ConstructorProps>, ...args: any[]);
 
@@ -228,7 +228,7 @@ export namespace SecretUnstable {
             cancellable: Gio.Cancellable,
         ): Collection;
 
-        // Own static methods of SecretUnstable.Collection
+        // Static methods
 
         /**
          * Create a new collection in the secret service.
@@ -360,7 +360,7 @@ export namespace SecretUnstable {
             callback: Gio.AsyncReadyCallback<Collection>,
         ): void;
 
-        // Own methods of SecretUnstable.Collection
+        // Methods
 
         /**
          * Delete this collection.
@@ -1278,7 +1278,7 @@ export namespace SecretUnstable {
     class Item extends Gio.DBusProxy implements Gio.AsyncInitable<Item>, Gio.DBusInterface, Gio.Initable {
         static $gtype: GObject.GType<Item>;
 
-        // Own properties of SecretUnstable.Item
+        // Properties
 
         /**
          * The attributes set on this item. Attributes are used to locate an
@@ -1321,7 +1321,7 @@ export namespace SecretUnstable {
          */
         get service(): Service;
 
-        // Constructors of SecretUnstable.Item
+        // Constructors
 
         constructor(properties?: Partial<Item.ConstructorProps>, ...args: any[]);
 
@@ -1336,7 +1336,7 @@ export namespace SecretUnstable {
             cancellable: Gio.Cancellable,
         ): Item;
 
-        // Own static methods of SecretUnstable.Item
+        // Static methods
 
         /**
          * Create a new item in the secret service.
@@ -1452,7 +1452,7 @@ export namespace SecretUnstable {
             callback: Gio.AsyncReadyCallback<Item>,
         ): void;
 
-        // Own methods of SecretUnstable.Item
+        // Methods
 
         /**
          * Delete this item.
@@ -2343,13 +2343,13 @@ export namespace SecretUnstable {
     class Prompt extends Gio.DBusProxy implements Gio.AsyncInitable<Prompt>, Gio.DBusInterface, Gio.Initable {
         static $gtype: GObject.GType<Prompt>;
 
-        // Constructors of SecretUnstable.Prompt
+        // Constructors
 
         constructor(properties?: Partial<Prompt.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of SecretUnstable.Prompt
+        // Methods
 
         /**
          * Runs a prompt and performs the prompting. Returns %TRUE if the prompt
@@ -3075,13 +3075,13 @@ export namespace SecretUnstable {
     class Service extends Gio.DBusProxy implements Gio.AsyncInitable<Service>, Gio.DBusInterface, Gio.Initable {
         static $gtype: GObject.GType<Service>;
 
-        // Constructors of SecretUnstable.Service
+        // Constructors
 
         constructor(properties?: Partial<Service.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of SecretUnstable.Service
+        // Static methods
 
         /**
          * Disconnect the default #SecretService proxy returned by secret_service_get()
@@ -3187,7 +3187,7 @@ export namespace SecretUnstable {
             cancellable: Gio.Cancellable,
         ): Service;
 
-        // Own virtual methods of SecretUnstable.Service
+        // Virtual methods
 
         /**
          * Get the GObject type for collections instantiated by this service.
@@ -3234,7 +3234,7 @@ export namespace SecretUnstable {
          */
         vfunc_prompt_sync(prompt: Prompt, cancellable: Gio.Cancellable, return_type: GLib.VariantType): GLib.Variant;
 
-        // Own methods of SecretUnstable.Service
+        // Methods
 
         /**
          * Remove unlocked items which match the attributes from the secret service.
@@ -4945,7 +4945,7 @@ export namespace SecretUnstable {
     abstract class CollectionPrivate {
         static $gtype: GObject.GType<CollectionPrivate>;
 
-        // Constructors of SecretUnstable.CollectionPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4954,7 +4954,7 @@ export namespace SecretUnstable {
     abstract class ItemPrivate {
         static $gtype: GObject.GType<ItemPrivate>;
 
-        // Constructors of SecretUnstable.ItemPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4963,7 +4963,7 @@ export namespace SecretUnstable {
     abstract class PromptPrivate {
         static $gtype: GObject.GType<PromptPrivate>;
 
-        // Constructors of SecretUnstable.PromptPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4972,7 +4972,7 @@ export namespace SecretUnstable {
     abstract class ServicePrivate {
         static $gtype: GObject.GType<ServicePrivate>;
 
-        // Constructors of SecretUnstable.ServicePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4983,7 +4983,7 @@ export namespace SecretUnstable {
     class Value {
         static $gtype: GObject.GType<Value>;
 
-        // Constructors of SecretUnstable.Value
+        // Constructors
 
         constructor(secret: string, length: number, content_type: string);
         _init(...args: any[]): void;
@@ -4992,7 +4992,7 @@ export namespace SecretUnstable {
 
         static new_full(secret: string, length: number, content_type: string): Value;
 
-        // Own methods of SecretUnstable.Value
+        // Methods
 
         /**
          * Get the secret data in the #SecretValue. The value is not necessarily

@@ -254,7 +254,7 @@ export namespace GnomeBluetooth {
     class Client extends GObject.Object {
         static $gtype: GObject.GType<Client>;
 
-        // Own properties of GnomeBluetooth.Client
+        // Properties
 
         /**
          * The D-Bus path of the default Bluetooth adapter or %NULL.
@@ -319,7 +319,7 @@ export namespace GnomeBluetooth {
          */
         get numAdapters(): number;
 
-        // Constructors of GnomeBluetooth.Client
+        // Constructors
 
         constructor(properties?: Partial<Client.ConstructorProps>, ...args: any[]);
 
@@ -327,7 +327,7 @@ export namespace GnomeBluetooth {
 
         static ['new'](): Client;
 
-        // Own signals of GnomeBluetooth.Client
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -339,7 +339,7 @@ export namespace GnomeBluetooth {
         connect_after(signal: 'device-removed', callback: (_source: this, device: string) => void): number;
         emit(signal: 'device-removed', device: string): void;
 
-        // Own methods of GnomeBluetooth.Client
+        // Methods
 
         /**
          * This will start the process of connecting to one of the known-connectable
@@ -414,7 +414,7 @@ export namespace GnomeBluetooth {
     class Device extends GObject.Object {
         static $gtype: GObject.GType<Device>;
 
-        // Own properties of GnomeBluetooth.Device
+        // Properties
 
         get address(): string;
         set address(val: string);
@@ -454,13 +454,13 @@ export namespace GnomeBluetooth {
         get uuids(): string[];
         set uuids(val: string[]);
 
-        // Constructors of GnomeBluetooth.Device
+        // Constructors
 
         constructor(properties?: Partial<Device.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of GnomeBluetooth.Device
+        // Methods
 
         dump(): void;
         get_object_path(): string;

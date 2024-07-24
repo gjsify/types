@@ -56,7 +56,7 @@ export namespace GstMse {
     class MediaSourceError extends GLib.Error {
         static $gtype: GObject.GType<MediaSourceError>;
 
-        // Static fields of GstMse.MediaSourceError
+        // Static fields
 
         static INVALID_STATE: number;
         static TYPE: number;
@@ -64,12 +64,12 @@ export namespace GstMse {
         static NOT_FOUND: number;
         static QUOTA_EXCEEDED: number;
 
-        // Constructors of GstMse.MediaSourceError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of GstMse.MediaSourceError
+        // Static methods
 
         /**
          * Any error type that can be reported by the Media Source API.
@@ -220,7 +220,7 @@ export namespace GstMse {
     class MediaSource extends Gst.Object {
         static $gtype: GObject.GType<MediaSource>;
 
-        // Own properties of GstMse.MediaSource
+        // Properties
 
         /**
          * A #GstSourceBufferList of every #GstSourceBuffer in this Media Source that
@@ -273,7 +273,7 @@ export namespace GstMse {
          */
         get sourceBuffers(): SourceBufferList;
 
-        // Constructors of GstMse.MediaSource
+        // Constructors
 
         constructor(properties?: Partial<MediaSource.ConstructorProps>, ...args: any[]);
 
@@ -281,7 +281,7 @@ export namespace GstMse {
 
         static ['new'](): MediaSource;
 
-        // Own signals of GstMse.MediaSource
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -296,7 +296,7 @@ export namespace GstMse {
         connect_after(signal: 'on-source-open', callback: (_source: this) => void): number;
         emit(signal: 'on-source-open'): void;
 
-        // Own static methods of GstMse.MediaSource
+        // Static methods
 
         /**
          * Determines whether the current Media Source configuration can process media
@@ -305,7 +305,7 @@ export namespace GstMse {
          */
         static is_type_supported(type: string): boolean;
 
-        // Own methods of GstMse.MediaSource
+        // Methods
 
         /**
          * Add a #GstSourceBuffer to this #GstMediaSource of the specified media type.
@@ -462,7 +462,7 @@ export namespace GstMse {
     class MseSrc extends Gst.Element implements Gst.URIHandler {
         static $gtype: GObject.GType<MseSrc>;
 
-        // Own properties of GstMse.MseSrc
+        // Properties
 
         /**
          * The duration of the stream as a #GstClockTime
@@ -520,13 +520,13 @@ export namespace GstMse {
          */
         get readyState(): MseSrcReadyState;
 
-        // Constructors of GstMse.MseSrc
+        // Constructors
 
         constructor(properties?: Partial<MseSrc.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of GstMse.MseSrc
+        // Methods
 
         /**
          * Gets the duration of `self`.
@@ -1001,7 +1001,7 @@ export namespace GstMse {
     class MseSrcPad extends Gst.Pad {
         static $gtype: GObject.GType<MseSrcPad>;
 
-        // Constructors of GstMse.MseSrcPad
+        // Constructors
 
         constructor(properties?: Partial<MseSrcPad.ConstructorProps>, ...args: any[]);
 
@@ -1078,7 +1078,7 @@ export namespace GstMse {
     class SourceBuffer extends Gst.Object {
         static $gtype: GObject.GType<SourceBuffer>;
 
-        // Own properties of GstMse.SourceBuffer
+        // Properties
 
         /**
          * Affects how timestamps of processed media segments are interpreted.
@@ -1175,13 +1175,13 @@ export namespace GstMse {
          */
         get updating(): boolean;
 
-        // Constructors of GstMse.SourceBuffer
+        // Constructors
 
         constructor(properties?: Partial<SourceBuffer.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of GstMse.SourceBuffer
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -1202,7 +1202,7 @@ export namespace GstMse {
         connect_after(signal: 'on-update-start', callback: (_source: this) => void): number;
         emit(signal: 'on-update-start'): void;
 
-        // Own methods of GstMse.SourceBuffer
+        // Methods
 
         /**
          * Attempts to end any processing of the currently pending data and reset the
@@ -1357,7 +1357,7 @@ export namespace GstMse {
     class SourceBufferList extends Gst.Object {
         static $gtype: GObject.GType<SourceBufferList>;
 
-        // Own properties of GstMse.SourceBufferList
+        // Properties
 
         /**
          * The number of #GstSourceBuffer<!-- -->s contained by this structure
@@ -1366,13 +1366,13 @@ export namespace GstMse {
          */
         get length(): number;
 
-        // Constructors of GstMse.SourceBufferList
+        // Constructors
 
         constructor(properties?: Partial<SourceBufferList.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of GstMse.SourceBufferList
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -1384,7 +1384,7 @@ export namespace GstMse {
         connect_after(signal: 'on-sourcebuffer-removed', callback: (_source: this) => void): number;
         emit(signal: 'on-sourcebuffer-removed'): void;
 
-        // Own methods of GstMse.SourceBufferList
+        // Methods
 
         /**
          * [Specification](https://www.w3.org/TR/media-source-2/#dom-sourcebufferlist-length)
@@ -1412,12 +1412,12 @@ export namespace GstMse {
     class MediaSourceRange {
         static $gtype: GObject.GType<MediaSourceRange>;
 
-        // Own fields of GstMse.MediaSourceRange
+        // Fields
 
         start: Gst.ClockTime;
         end: Gst.ClockTime;
 
-        // Constructors of GstMse.MediaSourceRange
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -1434,12 +1434,12 @@ export namespace GstMse {
     class SourceBufferInterval {
         static $gtype: GObject.GType<SourceBufferInterval>;
 
-        // Own fields of GstMse.SourceBufferInterval
+        // Fields
 
         start: Gst.ClockTime;
         end: Gst.ClockTime;
 
-        // Constructors of GstMse.SourceBufferInterval
+        // Constructors
 
         constructor(
             properties?: Partial<{

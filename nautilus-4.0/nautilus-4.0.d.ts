@@ -89,7 +89,7 @@ export namespace Nautilus {
     class Column extends GObject.Object {
         static $gtype: GObject.GType<Column>;
 
-        // Own properties of Nautilus.Column
+        // Properties
 
         /**
          * The file attribute to be displayed in the column.
@@ -137,7 +137,7 @@ export namespace Nautilus {
         get xalign(): number;
         set xalign(val: number);
 
-        // Constructors of Nautilus.Column
+        // Constructors
 
         constructor(properties?: Partial<Column.ConstructorProps>, ...args: any[]);
 
@@ -155,7 +155,7 @@ export namespace Nautilus {
     class Menu extends GObject.Object {
         static $gtype: GObject.GType<Menu>;
 
-        // Constructors of Nautilus.Menu
+        // Constructors
 
         constructor(properties?: Partial<Menu.ConstructorProps>, ...args: any[]);
 
@@ -163,7 +163,7 @@ export namespace Nautilus {
 
         static ['new'](): Menu;
 
-        // Own methods of Nautilus.Menu
+        // Methods
 
         append_item(item: MenuItem): void;
         get_items(): MenuItem[] | null;
@@ -192,7 +192,7 @@ export namespace Nautilus {
     class MenuItem extends GObject.Object {
         static $gtype: GObject.GType<MenuItem>;
 
-        // Own properties of Nautilus.MenuItem
+        // Properties
 
         get icon(): string;
         set icon(val: string);
@@ -208,7 +208,7 @@ export namespace Nautilus {
         get tip(): string;
         set tip(val: string);
 
-        // Constructors of Nautilus.MenuItem
+        // Constructors
 
         constructor(properties?: Partial<MenuItem.ConstructorProps>, ...args: any[]);
 
@@ -216,7 +216,7 @@ export namespace Nautilus {
 
         static ['new'](name: string, label: string, tip?: string | null, icon?: string | null): MenuItem;
 
-        // Own signals of Nautilus.MenuItem
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -225,18 +225,18 @@ export namespace Nautilus {
         connect_after(signal: 'activate', callback: (_source: this) => void): number;
         emit(signal: 'activate'): void;
 
-        // Own static methods of Nautilus.MenuItem
+        // Static methods
 
         static list_free(item_list: MenuItem[]): void;
 
-        // Own virtual methods of Nautilus.MenuItem
+        // Virtual methods
 
         /**
          * Emits #NautilusMenuItem::activate.
          */
         vfunc_activate(): void;
 
-        // Own methods of Nautilus.MenuItem
+        // Methods
 
         /**
          * Emits #NautilusMenuItem::activate.
@@ -261,12 +261,12 @@ export namespace Nautilus {
     class PropertiesItem extends GObject.Object {
         static $gtype: GObject.GType<PropertiesItem>;
 
-        // Own properties of Nautilus.PropertiesItem
+        // Properties
 
         get name(): string;
         get value(): string;
 
-        // Constructors of Nautilus.PropertiesItem
+        // Constructors
 
         constructor(properties?: Partial<PropertiesItem.ConstructorProps>, ...args: any[]);
 
@@ -274,7 +274,7 @@ export namespace Nautilus {
 
         static ['new'](name: string, value: string): PropertiesItem;
 
-        // Own methods of Nautilus.PropertiesItem
+        // Methods
 
         get_name(): string;
         get_value(): string;
@@ -292,13 +292,13 @@ export namespace Nautilus {
     class PropertiesModel extends GObject.Object {
         static $gtype: GObject.GType<PropertiesModel>;
 
-        // Own properties of Nautilus.PropertiesModel
+        // Properties
 
         get model(): Gio.ListModel;
         get title(): string;
         set title(val: string);
 
-        // Constructors of Nautilus.PropertiesModel
+        // Constructors
 
         constructor(properties?: Partial<PropertiesModel.ConstructorProps>, ...args: any[]);
 
@@ -306,7 +306,7 @@ export namespace Nautilus {
 
         static ['new'](title: string, model: Gio.ListModel): PropertiesModel;
 
-        // Own methods of Nautilus.PropertiesModel
+        // Methods
 
         get_model(): Gio.ListModel;
         get_title(): string;
@@ -328,7 +328,7 @@ export namespace Nautilus {
     abstract class OperationHandle {
         static $gtype: GObject.GType<OperationHandle>;
 
-        // Constructors of Nautilus.OperationHandle
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -347,11 +347,11 @@ export namespace Nautilus {
         prototype: ColumnProvider;
     }
     interface ColumnProvider extends GObject.Object {
-        // Own methods of Nautilus.ColumnProvider
+        // Methods
 
         get_columns(): Column[] | null;
 
-        // Own virtual methods of Nautilus.ColumnProvider
+        // Virtual methods
 
         /**
          * Returns a #GList of #NautilusColumn.
@@ -380,7 +380,7 @@ export namespace Nautilus {
         lookup_for_uri(uri: string): FileInfo | null;
     }
     interface FileInfo extends GObject.Object {
-        // Own methods of Nautilus.FileInfo
+        // Methods
 
         add_emblem(emblem_name: string): void;
         add_string_attribute(attribute_name: string, value: string): void;
@@ -407,7 +407,7 @@ export namespace Nautilus {
         is_gone(): boolean;
         is_mime_type(mime_type: string): boolean;
 
-        // Own virtual methods of Nautilus.FileInfo
+        // Virtual methods
 
         /**
          * Adds an emblem to this file.
@@ -531,12 +531,12 @@ export namespace Nautilus {
         ): void;
     }
     interface InfoProvider extends GObject.Object {
-        // Own methods of Nautilus.InfoProvider
+        // Methods
 
         cancel_update(handle: OperationHandle): void;
         update_file_info(file: FileInfo, update_complete: GObject.Closure): [OperationResult, OperationHandle | null];
 
-        // Own virtual methods of Nautilus.InfoProvider
+        // Virtual methods
 
         /**
          * Cancels a previous call to nautilus_info_provider_update_file_info().
@@ -569,7 +569,7 @@ export namespace Nautilus {
         prototype: MenuProvider;
     }
     interface MenuProvider extends GObject.Object {
-        // Own methods of Nautilus.MenuProvider
+        // Methods
 
         /**
          * Emits #NautilusMenuProvider::items-updated.
@@ -578,7 +578,7 @@ export namespace Nautilus {
         get_background_items(current_folder: FileInfo): MenuItem[] | null;
         get_file_items(files: FileInfo[]): MenuItem[] | null;
 
-        // Own virtual methods of Nautilus.MenuProvider
+        // Virtual methods
 
         /**
          * Returns a #GList of #NautilusMenuItem.
@@ -607,7 +607,7 @@ export namespace Nautilus {
         prototype: PropertiesModelProvider;
     }
     interface PropertiesModelProvider extends GObject.Object {
-        // Own methods of Nautilus.PropertiesModelProvider
+        // Methods
 
         /**
          * This function is called by the application when it wants properties models
@@ -621,7 +621,7 @@ export namespace Nautilus {
          */
         get_models(files: FileInfo[]): PropertiesModel[] | null;
 
-        // Own virtual methods of Nautilus.PropertiesModelProvider
+        // Virtual methods
 
         /**
          * This function is called by the application when it wants properties models

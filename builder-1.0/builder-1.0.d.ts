@@ -78,13 +78,13 @@ export namespace Builder {
     class Application extends Gtk.Application implements Gio.ActionGroup, Gio.ActionMap {
         static $gtype: GObject.GType<Application>;
 
-        // Constructors of Builder.Application
+        // Constructors
 
         constructor(properties?: Partial<Application.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Builder.Application
+        // Methods
 
         get_argv0(): string;
         get_keybindings_mode(): string;
@@ -545,13 +545,13 @@ export namespace Builder {
     class EditorView extends View implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<EditorView>;
 
-        // Constructors of Builder.EditorView
+        // Constructors
 
         constructor(properties?: Partial<EditorView.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of Builder.EditorView
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -974,11 +974,11 @@ export namespace Builder {
     class MenuExtension extends GObject.Object {
         static $gtype: GObject.GType<MenuExtension>;
 
-        // Own properties of Builder.MenuExtension
+        // Properties
 
         get menu(): Gio.Menu;
 
-        // Constructors of Builder.MenuExtension
+        // Constructors
 
         constructor(properties?: Partial<MenuExtension.ConstructorProps>, ...args: any[]);
 
@@ -988,7 +988,7 @@ export namespace Builder {
 
         static new_for_section(menu: Gio.Menu, section: string): MenuExtension;
 
-        // Own methods of Builder.MenuExtension
+        // Methods
 
         append_menu_item(item: Gio.MenuItem): void;
         prepend_menu_item(item: Gio.MenuItem): void;
@@ -1023,7 +1023,7 @@ export namespace Builder {
     class Tree extends Gtk.TreeView implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable {
         static $gtype: GObject.GType<Tree>;
 
-        // Own properties of Builder.Tree
+        // Properties
 
         get root(): TreeNode;
         set root(val: TreeNode);
@@ -1034,13 +1034,13 @@ export namespace Builder {
         get showIcons(): boolean;
         set showIcons(val: boolean);
 
-        // Constructors of Builder.Tree
+        // Constructors
 
         constructor(properties?: Partial<Tree.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of Builder.Tree
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -1055,12 +1055,12 @@ export namespace Builder {
         connect_after(signal: 'populate-popup', callback: (_source: this, object: Gtk.Widget) => void): number;
         emit(signal: 'populate-popup', object: Gtk.Widget): void;
 
-        // Own virtual methods of Builder.Tree
+        // Virtual methods
 
         vfunc_action(action_group: string, action_name: string, param: string): void;
         vfunc_populate_popup(widget: Gtk.Widget): void;
 
-        // Own methods of Builder.Tree
+        // Methods
 
         /**
          * Removes a builder from the tree.
@@ -1669,17 +1669,17 @@ export namespace Builder {
     class TreeBuilder extends GObject.InitiallyUnowned {
         static $gtype: GObject.GType<TreeBuilder>;
 
-        // Own properties of Builder.TreeBuilder
+        // Properties
 
         get tree(): Tree;
 
-        // Constructors of Builder.TreeBuilder
+        // Constructors
 
         constructor(properties?: Partial<TreeBuilder.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of Builder.TreeBuilder
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -1706,7 +1706,7 @@ export namespace Builder {
         connect_after(signal: 'removed', callback: (_source: this, object: Tree) => void): number;
         emit(signal: 'removed', object: Tree): void;
 
-        // Own virtual methods of Builder.TreeBuilder
+        // Virtual methods
 
         vfunc_added(tree: Gtk.Widget): void;
         vfunc_build_node(node: TreeNode): void;
@@ -1716,7 +1716,7 @@ export namespace Builder {
         vfunc_node_unselected(node: TreeNode): void;
         vfunc_removed(tree: Gtk.Widget): void;
 
-        // Own methods of Builder.TreeBuilder
+        // Methods
 
         /**
          * Gets the tree that owns the builder.
@@ -1747,7 +1747,7 @@ export namespace Builder {
     class TreeNode extends GObject.InitiallyUnowned {
         static $gtype: GObject.GType<TreeNode>;
 
-        // Own properties of Builder.TreeNode
+        // Properties
 
         /**
          * This property allows for more lazy loading of nodes.
@@ -1819,7 +1819,7 @@ export namespace Builder {
         get useMarkup(): boolean;
         set useMarkup(val: boolean);
 
-        // Constructors of Builder.TreeNode
+        // Constructors
 
         constructor(properties?: Partial<TreeNode.ConstructorProps>, ...args: any[]);
 
@@ -1827,7 +1827,7 @@ export namespace Builder {
 
         static ['new'](): TreeNode;
 
-        // Own methods of Builder.TreeNode
+        // Methods
 
         /**
          * Appends `child` to the list of children owned by `node`.
@@ -1936,7 +1936,7 @@ export namespace Builder {
     class View extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<View>;
 
-        // Own properties of Builder.View
+        // Properties
 
         get can_split(): boolean;
         get canSplit(): boolean;
@@ -1946,13 +1946,13 @@ export namespace Builder {
         get specialTitle(): string;
         get title(): string;
 
-        // Constructors of Builder.View
+        // Constructors
 
         constructor(properties?: Partial<View.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of Builder.View
+        // Virtual methods
 
         /**
          * Creates a new view similar to `self` that can be displayed in a split.
@@ -1982,7 +1982,7 @@ export namespace Builder {
          */
         vfunc_set_split_view(split_view: boolean): void;
 
-        // Own methods of Builder.View
+        // Methods
 
         /**
          * Creates a new view similar to `self` that can be displayed in a split.
@@ -2454,7 +2454,7 @@ export namespace Builder {
     class ViewGrid extends Gtk.Bin implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<ViewGrid>;
 
-        // Constructors of Builder.ViewGrid
+        // Constructors
 
         constructor(properties?: Partial<ViewGrid.ConstructorProps>, ...args: any[]);
 
@@ -2462,7 +2462,7 @@ export namespace Builder {
 
         static ['new'](): ViewGrid;
 
-        // Own methods of Builder.ViewGrid
+        // Methods
 
         add_stack_after(stack: ViewStack): ViewStack;
         add_stack_before(stack: ViewStack): ViewStack;
@@ -2911,14 +2911,14 @@ export namespace Builder {
     class ViewStack extends Gtk.Bin implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<ViewStack>;
 
-        // Own properties of Builder.ViewStack
+        // Properties
 
         get active_view(): View;
         set active_view(val: View);
         get activeView(): View;
         set activeView(val: View);
 
-        // Constructors of Builder.ViewStack
+        // Constructors
 
         constructor(properties?: Partial<ViewStack.ConstructorProps>, ...args: any[]);
 
@@ -2926,7 +2926,7 @@ export namespace Builder {
 
         static ['new'](): ViewStack;
 
-        // Own signals of Builder.ViewStack
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -2938,7 +2938,7 @@ export namespace Builder {
         connect_after(signal: 'split', callback: (_source: this, view: View, split_type: number) => void): number;
         emit(signal: 'split', view: View, split_type: number): void;
 
-        // Own methods of Builder.ViewStack
+        // Methods
 
         find_document_typed(document_type: GObject.GType): Document | null;
         find_with_document(document: Document): Gtk.Widget | null;
@@ -3385,7 +3385,7 @@ export namespace Builder {
     {
         static $gtype: GObject.GType<Workbench>;
 
-        // Own properties of Builder.Workbench
+        // Properties
 
         get active_view(): View;
         get activeView(): View;
@@ -3398,13 +3398,13 @@ export namespace Builder {
          */
         get context(): Ide.Context;
 
-        // Constructors of Builder.Workbench
+        // Constructors
 
         constructor(properties?: Partial<Workbench.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of Builder.Workbench
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -3413,7 +3413,7 @@ export namespace Builder {
         connect_after(signal: 'unload', callback: (_source: this, object: Ide.Context) => void): number;
         emit(signal: 'unload', object: Ide.Context): void;
 
-        // Own methods of Builder.Workbench
+        // Methods
 
         add_temporary_buffer(): void;
         build_async(
@@ -4437,12 +4437,12 @@ export namespace Builder {
         prototype: ApplicationAddin;
     }
     interface ApplicationAddin extends GObject.Object {
-        // Own methods of Builder.ApplicationAddin
+        // Methods
 
         load(application: Application): void;
         unload(application: Application): void;
 
-        // Own virtual methods of Builder.ApplicationAddin
+        // Virtual methods
 
         vfunc_load(application: Application): void;
         vfunc_unload(application: Application): void;
@@ -4466,14 +4466,14 @@ export namespace Builder {
         prototype: Document;
     }
     interface Document extends GObject.Object {
-        // Own properties of Builder.Document
+        // Properties
 
         get modified(): boolean;
         get read_only(): boolean;
         get readOnly(): boolean;
         get title(): string;
 
-        // Own methods of Builder.Document
+        // Methods
 
         create_view(): Gtk.Widget;
         get_modified(): boolean;
@@ -4494,7 +4494,7 @@ export namespace Builder {
         ): void;
         save_finish(result: Gio.AsyncResult): boolean;
 
-        // Own virtual methods of Builder.Document
+        // Virtual methods
 
         vfunc_create_view(): Gtk.Widget;
         vfunc_get_modified(): boolean;
@@ -4529,7 +4529,7 @@ export namespace Builder {
         prototype: EditorViewAddin;
     }
     interface EditorViewAddin extends GObject.Object {
-        // Own virtual methods of Builder.EditorViewAddin
+        // Virtual methods
 
         vfunc_language_changed(language_id: string): void;
         vfunc_load(view: EditorView): void;

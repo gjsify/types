@@ -2112,7 +2112,7 @@ export namespace Gst {
     class Adapter extends GObject.Object {
         static $gtype: GObject.GType<Adapter>;
 
-        // Own fields of Gst.Adapter
+        // Fields
 
         object: GObject.Object;
         buflist: any[];
@@ -2123,7 +2123,7 @@ export namespace Gst {
         assembled_len: number;
         buflist_end: any[];
 
-        // Constructors of Gst.Adapter
+        // Constructors
 
         constructor(properties?: Partial<Adapter.ConstructorProps>, ...args: any[]);
 
@@ -2131,7 +2131,7 @@ export namespace Gst {
 
         static ['new'](): Adapter;
 
-        // Own methods of Gst.Adapter
+        // Methods
 
         clear(): void;
         push(buf: Buffer): void;
@@ -2176,7 +2176,7 @@ export namespace Gst {
     abstract class BaseSink extends Element {
         static $gtype: GObject.GType<BaseSink>;
 
-        // Own properties of Gst.BaseSink
+        // Properties
 
         get async(): boolean;
         set async(val: boolean);
@@ -2209,7 +2209,7 @@ export namespace Gst {
         get tsOffset(): number;
         set tsOffset(val: number);
 
-        // Own fields of Gst.BaseSink
+        // Fields
 
         element: Element;
         sinkpad: Pad;
@@ -2232,13 +2232,13 @@ export namespace Gst {
         end_time: ClockTime;
         flushing: boolean;
 
-        // Constructors of Gst.BaseSink
+        // Constructors
 
         constructor(properties?: Partial<BaseSink.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of Gst.BaseSink
+        // Virtual methods
 
         vfunc_get_caps(): Caps;
         vfunc_set_caps(caps: Caps): boolean;
@@ -2256,7 +2256,7 @@ export namespace Gst {
         vfunc_unlock_stop(): boolean;
         vfunc_render_list(buffer_list: BufferList): FlowReturn;
 
-        // Own methods of Gst.BaseSink
+        // Methods
 
         do_preroll(obj: MiniObject): FlowReturn;
         wait_preroll(): FlowReturn;
@@ -2302,7 +2302,7 @@ export namespace Gst {
     abstract class BaseSrc extends Element {
         static $gtype: GObject.GType<BaseSrc>;
 
-        // Own properties of Gst.BaseSrc
+        // Properties
 
         get blocksize(): never;
         set blocksize(val: never);
@@ -2317,7 +2317,7 @@ export namespace Gst {
         get typefind(): boolean;
         set typefind(val: boolean);
 
-        // Own fields of Gst.BaseSrc
+        // Fields
 
         element: Element;
         srcpad: Pad;
@@ -2333,13 +2333,13 @@ export namespace Gst {
         size: number;
         num_buffers_left: number;
 
-        // Constructors of Gst.BaseSrc
+        // Constructors
 
         constructor(properties?: Partial<BaseSrc.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of Gst.BaseSrc
+        // Virtual methods
 
         vfunc_get_caps(): Caps;
         vfunc_set_caps(caps: Caps): boolean;
@@ -2360,7 +2360,7 @@ export namespace Gst {
         vfunc_unlock_stop(): boolean;
         vfunc_prepare_seek_segment(seek: Event, segment: Segment): boolean;
 
-        // Own methods of Gst.BaseSrc
+        // Methods
 
         wait_playing(): FlowReturn;
         set_live(live: boolean): void;
@@ -2388,12 +2388,12 @@ export namespace Gst {
     abstract class BaseTransform extends Element {
         static $gtype: GObject.GType<BaseTransform>;
 
-        // Own properties of Gst.BaseTransform
+        // Properties
 
         get qos(): boolean;
         set qos(val: boolean);
 
-        // Own fields of Gst.BaseTransform
+        // Fields
 
         element: Element;
         sinkpad: Pad;
@@ -2408,13 +2408,13 @@ export namespace Gst {
         negotiated: boolean;
         have_newsegment: boolean;
 
-        // Constructors of Gst.BaseTransform
+        // Constructors
 
         constructor(properties?: Partial<BaseTransform.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of Gst.BaseTransform
+        // Virtual methods
 
         vfunc_transform_caps(direction: PadDirection, caps: Caps): Caps;
         vfunc_fixate_caps(direction: PadDirection, caps: Caps, othercaps: Caps): void;
@@ -2431,7 +2431,7 @@ export namespace Gst {
         vfunc_before_transform(buffer: Buffer): void;
         vfunc_accept_caps(direction: PadDirection, caps: Caps): boolean;
 
-        // Own methods of Gst.BaseTransform
+        // Methods
 
         set_passthrough(passthrough: boolean): void;
         is_passthrough(): boolean;
@@ -2475,14 +2475,14 @@ export namespace Gst {
     class Bin extends Element implements ChildProxy {
         static $gtype: GObject.GType<Bin>;
 
-        // Own properties of Gst.Bin
+        // Properties
 
         get async_handling(): boolean;
         set async_handling(val: boolean);
         get asyncHandling(): boolean;
         set asyncHandling(val: boolean);
 
-        // Own fields of Gst.Bin
+        // Fields
 
         element: Element;
         numchildren: number;
@@ -2496,7 +2496,7 @@ export namespace Gst {
         provided_clock: Clock;
         clock_provider: Element;
 
-        // Constructors of Gst.Bin
+        // Constructors
 
         constructor(properties?: Partial<Bin.ConstructorProps>, ...args: any[]);
 
@@ -2504,7 +2504,7 @@ export namespace Gst {
 
         static ['new'](name: string): Bin;
 
-        // Own signals of Gst.Bin
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -2519,13 +2519,13 @@ export namespace Gst {
         connect_after(signal: 'element-removed', callback: (_source: this, object: Element) => void): number;
         emit(signal: 'element-removed', object: Element): void;
 
-        // Own virtual methods of Gst.Bin
+        // Virtual methods
 
         vfunc_add_element(element: Element): boolean;
         vfunc_remove_element(element: Element): boolean;
         vfunc_handle_message(message: Message): void;
 
-        // Own methods of Gst.Bin
+        // Methods
 
         add(element: Element): boolean;
         remove(element: Element): boolean;
@@ -2576,7 +2576,7 @@ export namespace Gst {
     class Buffer extends MiniObject {
         static $gtype: GObject.GType<Buffer>;
 
-        // Own fields of Gst.Buffer
+        // Fields
 
         mini_object: MiniObject;
         data: any;
@@ -2588,7 +2588,7 @@ export namespace Gst {
         malloc_data: any;
         free_func: GLib.FreeFunc;
 
-        // Constructors of Gst.Buffer
+        // Constructors
 
         _init(...args: any[]): void;
 
@@ -2596,11 +2596,11 @@ export namespace Gst {
 
         static new_and_alloc(size: number): Buffer;
 
-        // Own static methods of Gst.Buffer
+        // Static methods
 
         static try_new_and_alloc(size: number): Buffer;
 
-        // Own methods of Gst.Buffer
+        // Methods
 
         copy_metadata(src: Buffer, flags: BufferCopyFlags): void;
         is_metadata_writable(): boolean;
@@ -2618,13 +2618,13 @@ export namespace Gst {
     class BufferList extends MiniObject {
         static $gtype: GObject.GType<BufferList>;
 
-        // Constructors of Gst.BufferList
+        // Constructors
 
         _init(...args: any[]): void;
 
         static ['new'](): BufferList;
 
-        // Own methods of Gst.BufferList
+        // Methods
 
         n_groups(): number;
         foreach(func: BufferListFunc, user_data: any): void;
@@ -2654,7 +2654,7 @@ export namespace Gst {
     class Bus extends Object {
         static $gtype: GObject.GType<Bus>;
 
-        // Own fields of Gst.Bus
+        // Fields
 
         object: Object;
         queue: GLib.Queue;
@@ -2663,7 +2663,7 @@ export namespace Gst {
         signal_watch_id: number;
         num_signal_watchers: number;
 
-        // Constructors of Gst.Bus
+        // Constructors
 
         constructor(properties?: Partial<Bus.ConstructorProps>, ...args: any[]);
 
@@ -2671,7 +2671,7 @@ export namespace Gst {
 
         static ['new'](): Bus;
 
-        // Own signals of Gst.Bus
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -2683,7 +2683,7 @@ export namespace Gst {
         connect_after(signal: 'sync-message', callback: (_source: this, object: Message) => void): number;
         emit(signal: 'sync-message', object: Message): void;
 
-        // Own methods of Gst.Bus
+        // Methods
 
         post(message: Message): boolean;
         have_pending(): boolean;
@@ -2727,7 +2727,7 @@ export namespace Gst {
     class Clock extends Object {
         static $gtype: GObject.GType<Clock>;
 
-        // Own properties of Gst.Clock
+        // Properties
 
         get stats(): boolean;
         set stats(val: boolean);
@@ -2742,7 +2742,7 @@ export namespace Gst {
         get windowThreshold(): number;
         set windowThreshold(val: number);
 
-        // Own fields of Gst.Clock
+        // Fields
 
         object: Object;
         internal_calibration: ClockTime;
@@ -2758,13 +2758,13 @@ export namespace Gst {
         times: ClockTime;
         clockid: ClockID;
 
-        // Constructors of Gst.Clock
+        // Constructors
 
         constructor(properties?: Partial<Clock.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of Gst.Clock
+        // Static methods
 
         static id_ref(id: ClockID): ClockID;
         static id_unref(id: ClockID): void;
@@ -2775,7 +2775,7 @@ export namespace Gst {
         static id_wait_async_full(id: ClockID, func: ClockCallback): ClockReturn;
         static id_unschedule(id: ClockID): void;
 
-        // Own virtual methods of Gst.Clock
+        // Virtual methods
 
         vfunc_change_resolution(old_resolution: ClockTime, new_resolution: ClockTime): ClockTime;
         vfunc_get_resolution(): ClockTime;
@@ -2785,7 +2785,7 @@ export namespace Gst {
         vfunc_unschedule(entry: ClockEntry): void;
         vfunc_wait_jitter(entry: ClockEntry, jitter: ClockTimeDiff): ClockReturn;
 
-        // Own methods of Gst.Clock
+        // Methods
 
         set_resolution(resolution: ClockTime): ClockTime;
         get_resolution(): ClockTime;
@@ -2816,7 +2816,7 @@ export namespace Gst {
     class CollectPads extends Object {
         static $gtype: GObject.GType<CollectPads>;
 
-        // Own fields of Gst.CollectPads
+        // Fields
 
         object: Object;
         data: any[];
@@ -2828,7 +2828,7 @@ export namespace Gst {
         eospads: number;
         started: boolean;
 
-        // Constructors of Gst.CollectPads
+        // Constructors
 
         constructor(properties?: Partial<CollectPads.ConstructorProps>, ...args: any[]);
 
@@ -2836,7 +2836,7 @@ export namespace Gst {
 
         static ['new'](): CollectPads;
 
-        // Own methods of Gst.CollectPads
+        // Methods
 
         set_function(func: CollectPadsFunction, user_data: any): void;
         set_clip_function(clipfunc: CollectPadsClipFunction, user_data: any): void;
@@ -2887,7 +2887,7 @@ export namespace Gst {
     class DataQueue extends GObject.Object {
         static $gtype: GObject.GType<DataQueue>;
 
-        // Own properties of Gst.DataQueue
+        // Properties
 
         get current_level_bytes(): number;
         get currentLevelBytes(): number;
@@ -2896,7 +2896,7 @@ export namespace Gst {
         get current_level_visible(): number;
         get currentLevelVisible(): number;
 
-        // Own fields of Gst.DataQueue
+        // Fields
 
         object: GObject.Object;
         queue: GLib.Queue;
@@ -2907,7 +2907,7 @@ export namespace Gst {
         fullcallback: DataQueueFullCallback;
         emptycallback: DataQueueEmptyCallback;
 
-        // Constructors of Gst.DataQueue
+        // Constructors
 
         constructor(properties?: Partial<DataQueue.ConstructorProps>, ...args: any[]);
 
@@ -2921,7 +2921,7 @@ export namespace Gst {
             emptycallback: DataQueueEmptyCallback,
         ): DataQueue;
 
-        // Own signals of Gst.DataQueue
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -2933,7 +2933,7 @@ export namespace Gst {
         connect_after(signal: 'full', callback: (_source: this) => void): number;
         emit(signal: 'full'): void;
 
-        // Own methods of Gst.DataQueue
+        // Methods
 
         push(item: DataQueueItem): boolean;
         pop(item: DataQueueItem): boolean;
@@ -2972,7 +2972,7 @@ export namespace Gst {
     abstract class Element extends Object {
         static $gtype: GObject.GType<Element>;
 
-        // Own fields of Gst.Element
+        // Fields
 
         object: Object;
         state_lock: never;
@@ -2992,13 +2992,13 @@ export namespace Gst {
         sinkpads: any[];
         pads_cookie: number;
 
-        // Constructors of Gst.Element
+        // Constructors
 
         constructor(properties?: Partial<Element.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of Gst.Element
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -3013,7 +3013,7 @@ export namespace Gst {
         connect_after(signal: 'pad-removed', callback: (_source: this, object: Pad) => void): number;
         emit(signal: 'pad-removed', object: Pad): void;
 
-        // Own static methods of Gst.Element
+        // Static methods
 
         static register(plugin: Plugin, name: string, rank: number, type: GObject.GType): boolean;
         static make_from_uri(type: URIType, uri: string, elementname: string): Element;
@@ -3024,7 +3024,7 @@ export namespace Gst {
         static set_details(details: ElementDetails): void;
         static set_details_simple(longname: string, classification: string, description: string, author: string): void;
 
-        // Own virtual methods of Gst.Element
+        // Virtual methods
 
         vfunc_request_new_pad(templ: PadTemplate, name: string): Pad;
         vfunc_release_pad(pad: Pad): void;
@@ -3040,7 +3040,7 @@ export namespace Gst {
         vfunc_get_query_types(): QueryType;
         vfunc_query(query: Query): boolean;
 
-        // Own methods of Gst.Element
+        // Methods
 
         requires_clock(): boolean;
         provides_clock(): boolean;
@@ -3131,7 +3131,7 @@ export namespace Gst {
     class ElementFactory extends PluginFeature {
         static $gtype: GObject.GType<ElementFactory>;
 
-        // Own fields of Gst.ElementFactory
+        // Fields
 
         type: GObject.GType;
         details: ElementDetails;
@@ -3141,18 +3141,18 @@ export namespace Gst {
         uri_protocols: string;
         interfaces: any[];
 
-        // Constructors of Gst.ElementFactory
+        // Constructors
 
         constructor(properties?: Partial<ElementFactory.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of Gst.ElementFactory
+        // Static methods
 
         static find(name: string): ElementFactory;
         static make(factoryname: string, name: string): Element;
 
-        // Own methods of Gst.ElementFactory
+        // Methods
 
         get_element_type(): GObject.GType;
         get_longname(): string;
@@ -3174,14 +3174,14 @@ export namespace Gst {
     class Event extends MiniObject {
         static $gtype: GObject.GType<Event>;
 
-        // Own fields of Gst.Event
+        // Fields
 
         mini_object: MiniObject;
         type: EventType;
         timestamp: number;
         src: Object;
 
-        // Constructors of Gst.Event
+        // Constructors
 
         _init(...args: any[]): void;
 
@@ -3236,13 +3236,13 @@ export namespace Gst {
 
         static new_sink_message(msg: Message): Event;
 
-        // Own static methods of Gst.Event
+        // Static methods
 
         static type_get_name(type: EventType): string;
         static type_to_quark(type: EventType): GLib.Quark;
         static type_get_flags(type: EventType): EventTypeFlags;
 
-        // Own methods of Gst.Event
+        // Methods
 
         get_structure(): Structure;
         has_name(name: string): boolean;
@@ -3273,7 +3273,7 @@ export namespace Gst {
     class GParamSpecMiniObject extends GObject.Object {
         static $gtype: GObject.GType<GParamSpecMiniObject>;
 
-        // Constructors of Gst.GParamSpecMiniObject
+        // Constructors
 
         constructor(properties?: Partial<GParamSpecMiniObject.ConstructorProps>, ...args: any[]);
 
@@ -3292,11 +3292,11 @@ export namespace Gst {
     class GhostPad extends ProxyPad {
         static $gtype: GObject.GType<GhostPad>;
 
-        // Own fields of Gst.GhostPad
+        // Fields
 
         pad: ProxyPad;
 
-        // Constructors of Gst.GhostPad
+        // Constructors
 
         constructor(properties?: Partial<GhostPad.ConstructorProps>, ...args: any[]);
 
@@ -3316,7 +3316,7 @@ export namespace Gst {
 
         static new_no_target_from_template(name: string, templ: PadTemplate): GhostPad;
 
-        // Own methods of Gst.GhostPad
+        // Methods
 
         get_target(): Pad;
         set_target(newtarget: Pad): boolean;
@@ -3343,12 +3343,12 @@ export namespace Gst {
     class Index extends Object {
         static $gtype: GObject.GType<Index>;
 
-        // Own properties of Gst.Index
+        // Properties
 
         get resolver(): IndexResolver;
         set resolver(val: IndexResolver);
 
-        // Own fields of Gst.Index
+        // Fields
 
         object: Object;
         groups: any[];
@@ -3361,7 +3361,7 @@ export namespace Gst {
         last_id: number;
         resolver_user_data_destroy: GLib.DestroyNotify;
 
-        // Constructors of Gst.Index
+        // Constructors
 
         constructor(properties?: Partial<Index.ConstructorProps>, ...args: any[]);
 
@@ -3369,7 +3369,7 @@ export namespace Gst {
 
         static ['new'](): Index;
 
-        // Own signals of Gst.Index
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -3378,7 +3378,7 @@ export namespace Gst {
         connect_after(signal: 'entry-added', callback: (_source: this, object: IndexEntry) => void): number;
         emit(signal: 'entry-added', object: IndexEntry): void;
 
-        // Own virtual methods of Gst.Index
+        // Virtual methods
 
         vfunc_get_writer_id(writer_string: string): [boolean, number];
         vfunc_commit(id: number): void;
@@ -3393,7 +3393,7 @@ export namespace Gst {
             user_data: any,
         ): IndexEntry;
 
-        // Own methods of Gst.Index
+        // Methods
 
         commit(id: number): void;
         get_group(): number;
@@ -3440,13 +3440,13 @@ export namespace Gst {
     class IndexFactory extends PluginFeature {
         static $gtype: GObject.GType<IndexFactory>;
 
-        // Own fields of Gst.IndexFactory
+        // Fields
 
         feature: PluginFeature;
         longdesc: string;
         type: GObject.GType;
 
-        // Constructors of Gst.IndexFactory
+        // Constructors
 
         constructor(properties?: Partial<IndexFactory.ConstructorProps>, ...args: any[]);
 
@@ -3454,12 +3454,12 @@ export namespace Gst {
 
         static ['new'](name: string, longdesc: string, type: GObject.GType): IndexFactory;
 
-        // Own static methods of Gst.IndexFactory
+        // Static methods
 
         static find(name: string): IndexFactory;
         static make(name: string): Index;
 
-        // Own methods of Gst.IndexFactory
+        // Methods
 
         destroy(): void;
         create(): Index;
@@ -3471,14 +3471,14 @@ export namespace Gst {
     class Message extends MiniObject {
         static $gtype: GObject.GType<Message>;
 
-        // Own fields of Gst.Message
+        // Fields
 
         mini_object: MiniObject;
         type: MessageType;
         timestamp: number;
         src: Object;
 
-        // Constructors of Gst.Message
+        // Constructors
 
         _init(...args: any[]): void;
 
@@ -3560,12 +3560,12 @@ export namespace Gst {
 
         static new_custom(type: MessageType, src: Object, structure: Structure): Message;
 
-        // Own static methods of Gst.Message
+        // Static methods
 
         static type_get_name(type: MessageType): string;
         static type_to_quark(type: MessageType): GLib.Quark;
 
-        // Own methods of Gst.Message
+        // Methods
 
         get_seqnum(): number;
         set_seqnum(seqnum: number): void;
@@ -3606,18 +3606,18 @@ export namespace Gst {
     abstract class MiniObject {
         static $gtype: GObject.GType<MiniObject>;
 
-        // Own fields of Gst.MiniObject
+        // Fields
 
         refcount: number;
         flags: number;
 
-        // Constructors of Gst.MiniObject
+        // Constructors
 
         _init(...args: any[]): void;
 
         static ['new'](type: GObject.GType): MiniObject;
 
-        // Own methods of Gst.MiniObject
+        // Methods
 
         copy(): MiniObject;
         is_writable(): boolean;
@@ -3659,25 +3659,25 @@ export namespace Gst {
     abstract class Object extends GObject.Object {
         static $gtype: GObject.GType<Object>;
 
-        // Own properties of Gst.Object
+        // Properties
 
         get name(): string;
         set name(val: string);
 
-        // Own fields of Gst.Object
+        // Fields
 
         object: GObject.Object;
         refcount: number;
         name_prefix: string;
         flags: number;
 
-        // Constructors of Gst.Object
+        // Constructors
 
         constructor(properties?: Partial<Object.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of Gst.Object
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -3701,7 +3701,7 @@ export namespace Gst {
         connect_after(signal: 'parent-unset', callback: (_source: this, object: Object) => void): number;
         emit(signal: 'parent-unset', object: Object): void;
 
-        // Own static methods of Gst.Object
+        // Static methods
 
         static default_deep_notify(
             object: GObject.Object,
@@ -3714,12 +3714,12 @@ export namespace Gst {
         static ref_sink(object: any): void;
         static sink(object: any): void;
 
-        // Own virtual methods of Gst.Object
+        // Virtual methods
 
         vfunc_save_thyself(parent: libxml2.NodePtr): libxml2.NodePtr;
         vfunc_restore_thyself(self: libxml2.NodePtr): void;
 
-        // Own methods of Gst.Object
+        // Methods
 
         set_name(name: string): boolean;
         get_name(): string;
@@ -3770,14 +3770,14 @@ export namespace Gst {
     class Pad extends Object {
         static $gtype: GObject.GType<Pad>;
 
-        // Own properties of Gst.Pad
+        // Properties
 
         get caps(): Caps;
         get direction(): PadDirection;
         get template(): PadTemplate;
         set template(val: PadTemplate);
 
-        // Own fields of Gst.Pad
+        // Fields
 
         object: Object;
         element_private: any;
@@ -3811,7 +3811,7 @@ export namespace Gst {
         iterintlinkfunc: PadIterIntLinkFunction;
         block_destroy_data: GLib.DestroyNotify;
 
-        // Constructors of Gst.Pad
+        // Constructors
 
         constructor(properties?: Partial<Pad.ConstructorProps>, ...args: any[]);
 
@@ -3823,7 +3823,7 @@ export namespace Gst {
 
         static new_from_static_template(templ: StaticPadTemplate, name: string): Pad;
 
-        // Own signals of Gst.Pad
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -3841,11 +3841,11 @@ export namespace Gst {
         connect_after(signal: 'unlinked', callback: (_source: this, object: Pad) => void): number;
         emit(signal: 'unlinked', object: Pad): void;
 
-        // Own static methods of Gst.Pad
+        // Static methods
 
         static load_and_link(self: libxml2.NodePtr, parent: Object): void;
 
-        // Own methods of Gst.Pad
+        // Methods
 
         get_direction(): PadDirection;
         set_active(active: boolean): boolean;
@@ -3965,7 +3965,7 @@ export namespace Gst {
     class PadTemplate extends Object {
         static $gtype: GObject.GType<PadTemplate>;
 
-        // Own properties of Gst.PadTemplate
+        // Properties
 
         get caps(): Caps;
         get direction(): PadDirection;
@@ -3973,11 +3973,11 @@ export namespace Gst {
         get nameTemplate(): string;
         get presence(): PadPresence;
 
-        // Own fields of Gst.PadTemplate
+        // Fields
 
         object: Object;
 
-        // Constructors of Gst.PadTemplate
+        // Constructors
 
         constructor(properties?: Partial<PadTemplate.ConstructorProps>, ...args: any[]);
 
@@ -3985,7 +3985,7 @@ export namespace Gst {
 
         static ['new'](name_template: string, direction: PadDirection, presence: PadPresence, caps: Caps): PadTemplate;
 
-        // Own signals of Gst.PadTemplate
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -3994,7 +3994,7 @@ export namespace Gst {
         connect_after(signal: 'pad-created', callback: (_source: this, object: Pad) => void): number;
         emit(signal: 'pad-created', object: Pad): void;
 
-        // Own methods of Gst.PadTemplate
+        // Methods
 
         get_caps(): Caps;
         pad_created(pad: Pad): void;
@@ -4009,7 +4009,7 @@ export namespace Gst {
     class ParamFraction extends GObject.Object {
         static $gtype: GObject.GType<ParamFraction>;
 
-        // Constructors of Gst.ParamFraction
+        // Constructors
 
         constructor(properties?: Partial<ParamFraction.ConstructorProps>, ...args: any[]);
 
@@ -4032,7 +4032,7 @@ export namespace Gst {
     class Pipeline extends Bin implements ChildProxy {
         static $gtype: GObject.GType<Pipeline>;
 
-        // Own properties of Gst.Pipeline
+        // Properties
 
         get auto_flush_bus(): boolean;
         set auto_flush_bus(val: boolean);
@@ -4041,13 +4041,13 @@ export namespace Gst {
         get delay(): number;
         set delay(val: number);
 
-        // Own fields of Gst.Pipeline
+        // Fields
 
         bin: Bin;
         fixed_clock: Clock;
         stream_time: ClockTime;
 
-        // Constructors of Gst.Pipeline
+        // Constructors
 
         constructor(properties?: Partial<Pipeline.ConstructorProps>, ...args: any[]);
 
@@ -4055,7 +4055,7 @@ export namespace Gst {
 
         static ['new'](name: string): Pipeline;
 
-        // Own methods of Gst.Pipeline
+        // Methods
 
         get_bus(): Bus;
         set_new_stream_time(time: ClockTime): void;
@@ -4108,7 +4108,7 @@ export namespace Gst {
     class Plugin extends Object {
         static $gtype: GObject.GType<Plugin>;
 
-        // Own fields of Gst.Plugin
+        // Fields
 
         object: Object;
         flags: number;
@@ -4118,13 +4118,13 @@ export namespace Gst {
         file_mtime: number;
         registered: boolean;
 
-        // Constructors of Gst.Plugin
+        // Constructors
 
         constructor(properties?: Partial<Plugin.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of Gst.Plugin
+        // Static methods
 
         static register_static(
             major_version: number,
@@ -4154,7 +4154,7 @@ export namespace Gst {
         static load_file(filename: string): Plugin;
         static load_by_name(name: string): Plugin;
 
-        // Own methods of Gst.Plugin
+        // Methods
 
         get_name(): string;
         get_description(): string;
@@ -4186,7 +4186,7 @@ export namespace Gst {
     abstract class PluginFeature extends Object {
         static $gtype: GObject.GType<PluginFeature>;
 
-        // Own fields of Gst.PluginFeature
+        // Fields
 
         object: Object;
         loaded: boolean;
@@ -4196,13 +4196,13 @@ export namespace Gst {
         rank: number;
         plugin_name: string;
 
-        // Constructors of Gst.PluginFeature
+        // Constructors
 
         constructor(properties?: Partial<PluginFeature.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Gst.PluginFeature
+        // Methods
 
         load(): PluginFeature;
         type_name_filter(data: TypeNameData): boolean;
@@ -4224,11 +4224,11 @@ export namespace Gst {
     class ProxyPad extends Pad {
         static $gtype: GObject.GType<ProxyPad>;
 
-        // Own fields of Gst.ProxyPad
+        // Fields
 
         pad: Pad;
 
-        // Constructors of Gst.ProxyPad
+        // Constructors
 
         constructor(properties?: Partial<ProxyPad.ConstructorProps>, ...args: any[]);
 
@@ -4247,13 +4247,13 @@ export namespace Gst {
     class PushSrc extends BaseSrc {
         static $gtype: GObject.GType<PushSrc>;
 
-        // Constructors of Gst.PushSrc
+        // Constructors
 
         constructor(properties?: Partial<PushSrc.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of Gst.PushSrc
+        // Virtual methods
 
         vfunc_create(buf: Buffer): FlowReturn;
         // Conflicted with Gst.BaseSrc.vfunc_create
@@ -4266,12 +4266,12 @@ export namespace Gst {
     class Query extends MiniObject {
         static $gtype: GObject.GType<Query>;
 
-        // Own fields of Gst.Query
+        // Fields
 
         mini_object: MiniObject;
         type: QueryType;
 
-        // Constructors of Gst.Query
+        // Constructors
 
         _init(...args: any[]): void;
 
@@ -4295,7 +4295,7 @@ export namespace Gst {
 
         static new_uri(): Query;
 
-        // Own static methods of Gst.Query
+        // Static methods
 
         static type_get_name(query: QueryType): string;
         static type_to_quark(query: QueryType): GLib.Quark;
@@ -4305,7 +4305,7 @@ export namespace Gst {
         static type_get_details(type: QueryType): QueryTypeDefinition;
         static type_iterate_definitions(): Iterator;
 
-        // Own methods of Gst.Query
+        // Methods
 
         set_position(format: Format, cur: number): void;
         parse_position(format: Format): number;
@@ -4355,7 +4355,7 @@ export namespace Gst {
     class Registry extends Object {
         static $gtype: GObject.GType<Registry>;
 
-        // Own fields of Gst.Registry
+        // Fields
 
         object: Object;
         plugins: any[];
@@ -4363,13 +4363,13 @@ export namespace Gst {
         paths: any[];
         cache_file: number;
 
-        // Constructors of Gst.Registry
+        // Constructors
 
         constructor(properties?: Partial<Registry.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of Gst.Registry
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -4381,13 +4381,13 @@ export namespace Gst {
         connect_after(signal: 'plugin-added', callback: (_source: this, object: any) => void): number;
         emit(signal: 'plugin-added', object: any): void;
 
-        // Own static methods of Gst.Registry
+        // Static methods
 
         static get_default(): Registry;
         static fork_is_enabled(): boolean;
         static fork_set_enabled(enabled: boolean): void;
 
-        // Own methods of Gst.Registry
+        // Methods
 
         scan_path(path: string): boolean;
         add_path(path: string): void;
@@ -4419,25 +4419,25 @@ export namespace Gst {
     class SystemClock extends Clock {
         static $gtype: GObject.GType<SystemClock>;
 
-        // Own properties of Gst.SystemClock
+        // Properties
 
         get clock_type(): ClockType;
         set clock_type(val: ClockType);
         get clockType(): ClockType;
         set clockType(val: ClockType);
 
-        // Own fields of Gst.SystemClock
+        // Fields
 
         clock: Clock;
         stopping: boolean;
 
-        // Constructors of Gst.SystemClock
+        // Constructors
 
         constructor(properties?: Partial<SystemClock.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of Gst.SystemClock
+        // Static methods
 
         static obtain(): Clock;
     }
@@ -4454,7 +4454,7 @@ export namespace Gst {
     class Task extends Object {
         static $gtype: GObject.GType<Task>;
 
-        // Own fields of Gst.Task
+        // Fields
 
         object: Object;
         state: TaskState;
@@ -4463,18 +4463,18 @@ export namespace Gst {
         data: any;
         running: boolean;
 
-        // Constructors of Gst.Task
+        // Constructors
 
         constructor(properties?: Partial<Task.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of Gst.Task
+        // Static methods
 
         static cleanup_all(): void;
         static create(func: TaskFunction): Task;
 
-        // Own methods of Gst.Task
+        // Methods
 
         set_lock(mutex: never): void;
         set_priority(priority: GLib.ThreadPriority): void;
@@ -4501,11 +4501,11 @@ export namespace Gst {
     class TaskPool extends Object {
         static $gtype: GObject.GType<TaskPool>;
 
-        // Own fields of Gst.TaskPool
+        // Fields
 
         object: Object;
 
-        // Constructors of Gst.TaskPool
+        // Constructors
 
         constructor(properties?: Partial<TaskPool.ConstructorProps>, ...args: any[]);
 
@@ -4513,14 +4513,14 @@ export namespace Gst {
 
         static ['new'](): TaskPool;
 
-        // Own virtual methods of Gst.TaskPool
+        // Virtual methods
 
         vfunc_prepare(): void;
         vfunc_cleanup(): void;
         vfunc_push(func: TaskPoolFunction, user_data: any): any;
         vfunc_join(id: any): void;
 
-        // Own methods of Gst.TaskPool
+        // Methods
 
         prepare(): void;
         push(func: TaskPoolFunction, user_data: any): any;
@@ -4540,7 +4540,7 @@ export namespace Gst {
     class TypeFindFactory extends PluginFeature {
         static $gtype: GObject.GType<TypeFindFactory>;
 
-        // Own fields of Gst.TypeFindFactory
+        // Fields
 
         feature: PluginFeature;
         'function': TypeFindFunction;
@@ -4548,13 +4548,13 @@ export namespace Gst {
         user_data: any;
         user_data_notify: GLib.DestroyNotify;
 
-        // Constructors of Gst.TypeFindFactory
+        // Constructors
 
         constructor(properties?: Partial<TypeFindFactory.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Gst.TypeFindFactory
+        // Methods
 
         get_extensions(): string[];
         get_caps(): Caps;
@@ -4579,12 +4579,12 @@ export namespace Gst {
     class XML extends Object {
         static $gtype: GObject.GType<XML>;
 
-        // Own fields of Gst.XML
+        // Fields
 
         object: Object;
         topelements: any[];
 
-        // Constructors of Gst.XML
+        // Constructors
 
         constructor(properties?: Partial<XML.ConstructorProps>, ...args: any[]);
 
@@ -4592,7 +4592,7 @@ export namespace Gst {
 
         static ['new'](): XML;
 
-        // Own signals of Gst.XML
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -4601,16 +4601,16 @@ export namespace Gst {
         connect_after(signal: 'object-loaded', callback: (_source: this, object: Object, p0: any) => void): number;
         emit(signal: 'object-loaded', object: Object, p0: any): void;
 
-        // Own static methods of Gst.XML
+        // Static methods
 
         static write(element: Element): libxml2.DocPtr;
         static make_element(cur: libxml2.NodePtr, parent: Object): Element;
 
-        // Own virtual methods of Gst.XML
+        // Virtual methods
 
         vfunc_object_saved(object: Object, self: libxml2.NodePtr): void;
 
-        // Own methods of Gst.XML
+        // Methods
 
         parse_doc(doc: libxml2.DocPtr, root: number[]): boolean;
         parse_file(fname: number[], root: number[]): boolean;
@@ -4622,7 +4622,7 @@ export namespace Gst {
     class AdapterPrivate {
         static $gtype: GObject.GType<AdapterPrivate>;
 
-        // Constructors of Gst.AdapterPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4633,14 +4633,14 @@ export namespace Gst {
     class AllocTrace {
         static $gtype: GObject.GType<AllocTrace>;
 
-        // Own fields of Gst.AllocTrace
+        // Fields
 
         name: string;
         flags: number;
         live: number;
         mem_live: any[];
 
-        // Constructors of Gst.AllocTrace
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -4651,7 +4651,7 @@ export namespace Gst {
         );
         _init(...args: any[]): void;
 
-        // Own methods of Gst.AllocTrace
+        // Methods
 
         print(): void;
         set_flags(flags: AllocTraceFlags): void;
@@ -4661,7 +4661,7 @@ export namespace Gst {
     class BaseSinkPrivate {
         static $gtype: GObject.GType<BaseSinkPrivate>;
 
-        // Constructors of Gst.BaseSinkPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4670,7 +4670,7 @@ export namespace Gst {
     class BaseSrcPrivate {
         static $gtype: GObject.GType<BaseSrcPrivate>;
 
-        // Constructors of Gst.BaseSrcPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4679,7 +4679,7 @@ export namespace Gst {
     class BaseTransformPrivate {
         static $gtype: GObject.GType<BaseTransformPrivate>;
 
-        // Constructors of Gst.BaseTransformPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4688,7 +4688,7 @@ export namespace Gst {
     class BinPrivate {
         static $gtype: GObject.GType<BinPrivate>;
 
-        // Constructors of Gst.BinPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4699,14 +4699,14 @@ export namespace Gst {
     class BitReader {
         static $gtype: GObject.GType<BitReader>;
 
-        // Own fields of Gst.BitReader
+        // Fields
 
         data: any;
         size: number;
         'byte': number;
         bit: number;
 
-        // Constructors of Gst.BitReader
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -4722,7 +4722,7 @@ export namespace Gst {
 
         static new_from_buffer(buffer: Buffer): BitReader;
 
-        // Own methods of Gst.BitReader
+        // Methods
 
         free(): void;
         init(data: number[], size: number): void;
@@ -4748,11 +4748,11 @@ export namespace Gst {
     class BufferListIterator {
         static $gtype: GObject.GType<BufferListIterator>;
 
-        // Constructors of Gst.BufferListIterator
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of Gst.BufferListIterator
+        // Methods
 
         free(): void;
         n_buffers(): number;
@@ -4771,7 +4771,7 @@ export namespace Gst {
     class BusPrivate {
         static $gtype: GObject.GType<BusPrivate>;
 
-        // Constructors of Gst.BusPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4782,13 +4782,13 @@ export namespace Gst {
     class ByteReader {
         static $gtype: GObject.GType<ByteReader>;
 
-        // Own fields of Gst.ByteReader
+        // Fields
 
         data: any;
         size: number;
         'byte': number;
 
-        // Constructors of Gst.ByteReader
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -4803,7 +4803,7 @@ export namespace Gst {
 
         static new_from_buffer(buffer: Buffer): ByteReader;
 
-        // Own methods of Gst.ByteReader
+        // Methods
 
         free(): void;
         init(data: number[], size: number): void;
@@ -4877,13 +4877,13 @@ export namespace Gst {
     class ByteWriter {
         static $gtype: GObject.GType<ByteWriter>;
 
-        // Own fields of Gst.ByteWriter
+        // Fields
 
         alloc_size: number;
         fixed: boolean;
         owned: boolean;
 
-        // Constructors of Gst.ByteWriter
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -4903,7 +4903,7 @@ export namespace Gst {
 
         static new_with_buffer(buffer: Buffer, initialized: boolean): ByteWriter;
 
-        // Own methods of Gst.ByteWriter
+        // Methods
 
         init(): void;
         init_with_size(size: number, fixed: boolean): void;
@@ -4952,14 +4952,14 @@ export namespace Gst {
     class Caps {
         static $gtype: GObject.GType<Caps>;
 
-        // Own fields of Gst.Caps
+        // Fields
 
         type: GObject.GType;
         refcount: number;
         flags: CapsFlags;
         structs: GLib.PtrArray;
 
-        // Constructors of Gst.Caps
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -4975,7 +4975,7 @@ export namespace Gst {
 
         static new_any(): Caps;
 
-        // Own methods of Gst.Caps
+        // Methods
 
         ref(): Caps;
         copy(): Caps;
@@ -5021,7 +5021,7 @@ export namespace Gst {
     class ClockEntry {
         static $gtype: GObject.GType<ClockEntry>;
 
-        // Own fields of Gst.ClockEntry
+        // Fields
 
         refcount: number;
         clock: Clock;
@@ -5033,7 +5033,7 @@ export namespace Gst {
         user_data: any;
         destroy_data: GLib.DestroyNotify;
 
-        // Constructors of Gst.ClockEntry
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5041,7 +5041,7 @@ export namespace Gst {
     class ClockPrivate {
         static $gtype: GObject.GType<ClockPrivate>;
 
-        // Constructors of Gst.ClockPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5052,14 +5052,14 @@ export namespace Gst {
     class CollectData {
         static $gtype: GObject.GType<CollectData>;
 
-        // Own fields of Gst.CollectData
+        // Fields
 
         collect: CollectPads;
         pad: Pad;
         buffer: Buffer;
         pos: number;
 
-        // Constructors of Gst.CollectData
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5068,7 +5068,7 @@ export namespace Gst {
     class CollectPadsPrivate {
         static $gtype: GObject.GType<CollectPadsPrivate>;
 
-        // Constructors of Gst.CollectPadsPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5081,7 +5081,7 @@ export namespace Gst {
     class DataQueueItem {
         static $gtype: GObject.GType<DataQueueItem>;
 
-        // Own fields of Gst.DataQueueItem
+        // Fields
 
         object: MiniObject;
         size: number;
@@ -5089,7 +5089,7 @@ export namespace Gst {
         visible: boolean;
         destroy: GLib.DestroyNotify;
 
-        // Constructors of Gst.DataQueueItem
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5100,13 +5100,13 @@ export namespace Gst {
     class DataQueueSize {
         static $gtype: GObject.GType<DataQueueSize>;
 
-        // Own fields of Gst.DataQueueSize
+        // Fields
 
         visible: number;
         bytes: number;
         time: number;
 
-        // Constructors of Gst.DataQueueSize
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -5125,14 +5125,14 @@ export namespace Gst {
     class DebugCategory {
         static $gtype: GObject.GType<DebugCategory>;
 
-        // Own fields of Gst.DebugCategory
+        // Fields
 
         threshold: number;
         color: number;
         name: string;
         description: string;
 
-        // Constructors of Gst.DebugCategory
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -5144,7 +5144,7 @@ export namespace Gst {
         );
         _init(...args: any[]): void;
 
-        // Own methods of Gst.DebugCategory
+        // Methods
 
         free(): void;
         set_threshold(level: DebugLevel): void;
@@ -5158,11 +5158,11 @@ export namespace Gst {
     class DebugMessage {
         static $gtype: GObject.GType<DebugMessage>;
 
-        // Constructors of Gst.DebugMessage
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of Gst.DebugMessage
+        // Methods
 
         get(): string;
     }
@@ -5177,14 +5177,14 @@ export namespace Gst {
     class ElementDetails {
         static $gtype: GObject.GType<ElementDetails>;
 
-        // Own fields of Gst.ElementDetails
+        // Fields
 
         longname: string;
         klass: string;
         description: string;
         author: string;
 
-        // Constructors of Gst.ElementDetails
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -5206,14 +5206,14 @@ export namespace Gst {
     class FormatDefinition {
         static $gtype: GObject.GType<FormatDefinition>;
 
-        // Own fields of Gst.FormatDefinition
+        // Fields
 
         value: Format;
         nick: string;
         description: string;
         quark: GLib.Quark;
 
-        // Constructors of Gst.FormatDefinition
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5222,7 +5222,7 @@ export namespace Gst {
     class GhostPadPrivate {
         static $gtype: GObject.GType<GhostPadPrivate>;
 
-        // Constructors of Gst.GhostPadPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5234,12 +5234,12 @@ export namespace Gst {
     class IndexAssociation {
         static $gtype: GObject.GType<IndexAssociation>;
 
-        // Own fields of Gst.IndexAssociation
+        // Fields
 
         format: Format;
         value: number;
 
-        // Constructors of Gst.IndexAssociation
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5251,16 +5251,16 @@ export namespace Gst {
     class IndexEntry {
         static $gtype: GObject.GType<IndexEntry>;
 
-        // Own fields of Gst.IndexEntry
+        // Fields
 
         type: IndexEntryType;
         id: number;
 
-        // Constructors of Gst.IndexEntry
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of Gst.IndexEntry
+        // Methods
 
         copy(): IndexEntry;
         free(): void;
@@ -5274,14 +5274,14 @@ export namespace Gst {
     class IndexGroup {
         static $gtype: GObject.GType<IndexGroup>;
 
-        // Own fields of Gst.IndexGroup
+        // Fields
 
         groupnum: number;
         entries: any[];
         certainty: IndexCertainty;
         peergroup: number;
 
-        // Constructors of Gst.IndexGroup
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5293,14 +5293,14 @@ export namespace Gst {
     class Iterator {
         static $gtype: GObject.GType<Iterator>;
 
-        // Own fields of Gst.Iterator
+        // Fields
 
         item: IteratorItemFunction;
         type: GObject.GType;
         cookie: number;
         master_cookie: any;
 
-        // Constructors of Gst.Iterator
+        // Constructors
 
         constructor(
             size: number,
@@ -5325,7 +5325,7 @@ export namespace Gst {
 
         static new_single(type: GObject.GType, object: any, copy: CopyFunction, free: GLib.FreeFunc): Iterator;
 
-        // Own methods of Gst.Iterator
+        // Methods
 
         next(elem: any): IteratorResult;
         resync(): void;
@@ -5344,7 +5344,7 @@ export namespace Gst {
     class PadPrivate {
         static $gtype: GObject.GType<PadPrivate>;
 
-        // Constructors of Gst.PadPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5357,7 +5357,7 @@ export namespace Gst {
     class ParamSpecFraction {
         static $gtype: GObject.GType<ParamSpecFraction>;
 
-        // Own fields of Gst.ParamSpecFraction
+        // Fields
 
         min_num: number;
         min_den: number;
@@ -5366,7 +5366,7 @@ export namespace Gst {
         def_num: number;
         def_den: number;
 
-        // Constructors of Gst.ParamSpecFraction
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5378,7 +5378,7 @@ export namespace Gst {
     class ParamSpecMiniObject {
         static $gtype: GObject.GType<ParamSpecMiniObject>;
 
-        // Constructors of Gst.ParamSpecMiniObject
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5389,14 +5389,14 @@ export namespace Gst {
     class ParseContext {
         static $gtype: GObject.GType<ParseContext>;
 
-        // Constructors of Gst.ParseContext
+        // Constructors
 
         constructor(properties?: Partial<{}>);
         _init(...args: any[]): void;
 
         static ['new'](): ParseContext;
 
-        // Own methods of Gst.ParseContext
+        // Methods
 
         get_missing_elements(): string[];
         free(): void;
@@ -5406,7 +5406,7 @@ export namespace Gst {
     class PipelinePrivate {
         static $gtype: GObject.GType<PipelinePrivate>;
 
-        // Constructors of Gst.PipelinePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5420,7 +5420,7 @@ export namespace Gst {
     class PluginDesc {
         static $gtype: GObject.GType<PluginDesc>;
 
-        // Own fields of Gst.PluginDesc
+        // Fields
 
         major_version: number;
         minor_version: number;
@@ -5433,7 +5433,7 @@ export namespace Gst {
         'package': string;
         origin: string;
 
-        // Constructors of Gst.PluginDesc
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5442,7 +5442,7 @@ export namespace Gst {
     class PluginPrivate {
         static $gtype: GObject.GType<PluginPrivate>;
 
-        // Constructors of Gst.PluginPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5453,7 +5453,7 @@ export namespace Gst {
     class Poll {
         static $gtype: GObject.GType<Poll>;
 
-        // Constructors of Gst.Poll
+        // Constructors
 
         constructor(properties?: Partial<{}>);
         _init(...args: any[]): void;
@@ -5462,7 +5462,7 @@ export namespace Gst {
 
         static new_timer(): Poll;
 
-        // Own methods of Gst.Poll
+        // Methods
 
         free(): void;
         add_fd(fd: PollFD): boolean;
@@ -5488,12 +5488,12 @@ export namespace Gst {
     class PollFD {
         static $gtype: GObject.GType<PollFD>;
 
-        // Own fields of Gst.PollFD
+        // Fields
 
         fd: number;
         idx: number;
 
-        // Constructors of Gst.PollFD
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -5503,7 +5503,7 @@ export namespace Gst {
         );
         _init(...args: any[]): void;
 
-        // Own methods of Gst.PollFD
+        // Methods
 
         init(): void;
     }
@@ -5512,7 +5512,7 @@ export namespace Gst {
     class ProxyPadPrivate {
         static $gtype: GObject.GType<ProxyPadPrivate>;
 
-        // Constructors of Gst.ProxyPadPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5525,14 +5525,14 @@ export namespace Gst {
     class QueryTypeDefinition {
         static $gtype: GObject.GType<QueryTypeDefinition>;
 
-        // Own fields of Gst.QueryTypeDefinition
+        // Fields
 
         value: QueryType;
         nick: string;
         description: string;
         quark: GLib.Quark;
 
-        // Constructors of Gst.QueryTypeDefinition
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5541,7 +5541,7 @@ export namespace Gst {
     class RegistryPrivate {
         static $gtype: GObject.GType<RegistryPrivate>;
 
-        // Constructors of Gst.RegistryPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5553,7 +5553,7 @@ export namespace Gst {
     class Segment {
         static $gtype: GObject.GType<Segment>;
 
-        // Own fields of Gst.Segment
+        // Fields
 
         rate: number;
         abs_rate: number;
@@ -5567,7 +5567,7 @@ export namespace Gst {
         duration: number;
         applied_rate: number;
 
-        // Constructors of Gst.Segment
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -5589,7 +5589,7 @@ export namespace Gst {
 
         static ['new'](): Segment;
 
-        // Own methods of Gst.Segment
+        // Methods
 
         copy(): Segment;
         free(): void;
@@ -5630,15 +5630,15 @@ export namespace Gst {
     class StaticCaps {
         static $gtype: GObject.GType<StaticCaps>;
 
-        // Own fields of Gst.StaticCaps
+        // Fields
 
         string: string;
 
-        // Constructors of Gst.StaticCaps
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of Gst.StaticCaps
+        // Methods
 
         get(): Caps;
     }
@@ -5646,17 +5646,17 @@ export namespace Gst {
     class StaticPadTemplate {
         static $gtype: GObject.GType<StaticPadTemplate>;
 
-        // Own fields of Gst.StaticPadTemplate
+        // Fields
 
         name_template: string;
         direction: PadDirection;
         presence: PadPresence;
 
-        // Constructors of Gst.StaticPadTemplate
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of Gst.StaticPadTemplate
+        // Methods
 
         get(): PadTemplate;
         get_caps(): Caps;
@@ -5668,19 +5668,19 @@ export namespace Gst {
     class Structure {
         static $gtype: GObject.GType<Structure>;
 
-        // Own fields of Gst.Structure
+        // Fields
 
         type: GObject.GType;
         name: GLib.Quark;
         parent_refcount: any;
         fields: GLib.Array;
 
-        // Constructors of Gst.Structure
+        // Constructors
 
         constructor(name: string, firstfield: string);
         _init(...args: any[]): void;
 
-        // Own methods of Gst.Structure
+        // Methods
 
         copy(): Structure;
         set_parent_refcount(): number;
@@ -5730,7 +5730,7 @@ export namespace Gst {
     class SystemClockPrivate {
         static $gtype: GObject.GType<SystemClockPrivate>;
 
-        // Constructors of Gst.SystemClockPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5741,7 +5741,7 @@ export namespace Gst {
     class TagSetterIFace {
         static $gtype: GObject.GType<TagSetterIFace>;
 
-        // Constructors of Gst.TagSetterIFace
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5751,7 +5751,7 @@ export namespace Gst {
     class TaskPrivate {
         static $gtype: GObject.GType<TaskPrivate>;
 
-        // Constructors of Gst.TaskPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5762,12 +5762,12 @@ export namespace Gst {
     class TaskThreadCallbacks {
         static $gtype: GObject.GType<TaskThreadCallbacks>;
 
-        // Own fields of Gst.TaskThreadCallbacks
+        // Fields
 
         enter_thread: any;
         leave_thread: any;
 
-        // Constructors of Gst.TaskThreadCallbacks
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -5785,7 +5785,7 @@ export namespace Gst {
     class Trace {
         static $gtype: GObject.GType<Trace>;
 
-        // Own fields of Gst.Trace
+        // Fields
 
         filename: string;
         fd: number;
@@ -5793,7 +5793,7 @@ export namespace Gst {
         bufsize: number;
         bufoffset: number;
 
-        // Constructors of Gst.Trace
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -5807,7 +5807,7 @@ export namespace Gst {
 
         static ['new'](filename: string, size: number): Trace;
 
-        // Own methods of Gst.Trace
+        // Methods
 
         destroy(): void;
         flush(): void;
@@ -5818,14 +5818,14 @@ export namespace Gst {
     class TraceEntry {
         static $gtype: GObject.GType<TraceEntry>;
 
-        // Own fields of Gst.TraceEntry
+        // Fields
 
         timestamp: number;
         sequence: number;
         data: number;
         message: number[];
 
-        // Constructors of Gst.TraceEntry
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -5844,11 +5844,11 @@ export namespace Gst {
     class TypeFind {
         static $gtype: GObject.GType<TypeFind>;
 
-        // Own fields of Gst.TypeFind
+        // Fields
 
         data: any;
 
-        // Constructors of Gst.TypeFind
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -5861,7 +5861,7 @@ export namespace Gst {
         );
         _init(...args: any[]): void;
 
-        // Own methods of Gst.TypeFind
+        // Methods
 
         peek(offset: number, size: number): number[];
         suggest(probability: number, caps: Caps): void;
@@ -5875,12 +5875,12 @@ export namespace Gst {
     class TypeNameData {
         static $gtype: GObject.GType<TypeNameData>;
 
-        // Own fields of Gst.TypeNameData
+        // Fields
 
         name: string;
         type: GObject.GType;
 
-        // Constructors of Gst.TypeNameData
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5892,14 +5892,14 @@ export namespace Gst {
     class ValueTable {
         static $gtype: GObject.GType<ValueTable>;
 
-        // Own fields of Gst.ValueTable
+        // Fields
 
         type: GObject.GType;
         compare: ValueCompareFunc;
         serialize: ValueSerializeFunc;
         deserialize: ValueDeserializeFunc;
 
-        // Constructors of Gst.ValueTable
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5916,13 +5916,13 @@ export namespace Gst {
         prototype: ChildProxy;
     }
     interface ChildProxy extends Object {
-        // Own methods of Gst.ChildProxy
+        // Methods
 
         get_child_by_name(name: string): Object;
         get_child_by_index(index: number): Object;
         get_children_count(): number;
 
-        // Own virtual methods of Gst.ChildProxy
+        // Virtual methods
 
         vfunc_get_child_by_index(index: number): Object;
         vfunc_get_children_count(): number;
@@ -5941,7 +5941,7 @@ export namespace Gst {
         prototype: ImplementsInterface;
     }
     interface ImplementsInterface extends Element {
-        // Own virtual methods of Gst.ImplementsInterface
+        // Virtual methods
 
         vfunc_supported(iface_type: GObject.GType): boolean;
     }
@@ -5959,7 +5959,7 @@ export namespace Gst {
         prototype: TagSetter;
     }
     interface TagSetter extends Element {
-        // Own methods of Gst.TagSetter
+        // Methods
 
         reset_tags(): void;
         merge_tags(list: TagList, mode: TagMergeMode): void;
@@ -5982,7 +5982,7 @@ export namespace Gst {
         prototype: URIHandler;
     }
     interface URIHandler extends GObject.Object {
-        // Own methods of Gst.URIHandler
+        // Methods
 
         get_uri_type(): number;
         get_protocols(): string[];
@@ -5990,7 +5990,7 @@ export namespace Gst {
         set_uri(uri: string): boolean;
         new_uri(uri: string): void;
 
-        // Own virtual methods of Gst.URIHandler
+        // Virtual methods
 
         vfunc_get_uri(): string;
         vfunc_set_uri(uri: string): boolean;

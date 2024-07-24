@@ -89,7 +89,7 @@ export namespace GstInsertBin {
     class InsertBin extends Gst.Bin implements Gst.ChildProxy {
         static $gtype: GObject.GType<InsertBin>;
 
-        // Constructors of GstInsertBin.InsertBin
+        // Constructors
 
         constructor(properties?: Partial<InsertBin.ConstructorProps>, ...args: any[]);
 
@@ -97,7 +97,7 @@ export namespace GstInsertBin {
 
         static ['new'](name?: string | null): InsertBin;
 
-        // Own signals of GstInsertBin.InsertBin
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -184,7 +184,7 @@ export namespace GstInsertBin {
         ): number;
         emit(signal: 'remove', callback: Gst.Element, user_data?: any | null, user_data2?: any | null): void;
 
-        // Own methods of GstInsertBin.InsertBin
+        // Methods
 
         /**
          * This action signal adds the filter like element after any other element
@@ -740,7 +740,7 @@ export namespace GstInsertBin {
     abstract class InsertBinPrivate {
         static $gtype: GObject.GType<InsertBinPrivate>;
 
-        // Constructors of GstInsertBin.InsertBinPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }

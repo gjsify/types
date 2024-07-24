@@ -154,7 +154,7 @@ export namespace PangoFT2 {
     class FontMap<A extends GObject.Object = GObject.Object> extends PangoFc.FontMap<A> implements Gio.ListModel<A> {
         static $gtype: GObject.GType<FontMap>;
 
-        // Constructors of PangoFT2.FontMap
+        // Constructors
 
         constructor(properties?: Partial<FontMap.ConstructorProps>, ...args: any[]);
 
@@ -162,7 +162,7 @@ export namespace PangoFT2 {
 
         static ['new'](): FontMap;
 
-        // Own methods of PangoFT2.FontMap
+        // Methods
 
         /**
          * Sets a function that will be called to do final configuration

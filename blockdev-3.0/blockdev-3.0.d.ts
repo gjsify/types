@@ -21,13 +21,13 @@ export namespace BlockDev {
     class BtrfsError extends GLib.Error {
         static $gtype: GObject.GType<BtrfsError>;
 
-        // Static fields of BlockDev.BtrfsError
+        // Static fields
 
         static TECH_UNAVAIL: number;
         static DEVICE: number;
         static PARSE: number;
 
-        // Constructors of BlockDev.BtrfsError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
@@ -46,7 +46,7 @@ export namespace BlockDev {
     class CryptoError extends GLib.Error {
         static $gtype: GObject.GType<CryptoError>;
 
-        // Static fields of BlockDev.CryptoError
+        // Static fields
 
         static TECH_UNAVAIL: number;
         static DEVICE: number;
@@ -67,7 +67,7 @@ export namespace BlockDev {
         static KEYFILE_FAILED: number;
         static INVALID_CONTEXT: number;
 
-        // Constructors of BlockDev.CryptoError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
@@ -110,7 +110,7 @@ export namespace BlockDev {
     class DMError extends GLib.Error {
         static $gtype: GObject.GType<DMError>;
 
-        // Static fields of BlockDev.DMError
+        // Static fields
 
         static TECH_UNAVAIL: number;
         static SYS: number;
@@ -120,7 +120,7 @@ export namespace BlockDev {
         static RAID_NO_DEVS: number;
         static RAID_NO_EXIST: number;
 
-        // Constructors of BlockDev.DMError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
@@ -136,7 +136,7 @@ export namespace BlockDev {
     class FSError extends GLib.Error {
         static $gtype: GObject.GType<FSError>;
 
-        // Static fields of BlockDev.FSError
+        // Static fields
 
         static TECH_UNAVAIL: number;
         static INVAL: number;
@@ -152,7 +152,7 @@ export namespace BlockDev {
         static UUID_INVALID: number;
         static UNKNOWN_FS: number;
 
-        // Constructors of BlockDev.FSError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
@@ -180,13 +180,13 @@ export namespace BlockDev {
     class InitError extends GLib.Error {
         static $gtype: GObject.GType<InitError>;
 
-        // Static fields of BlockDev.InitError
+        // Static fields
 
         static FAILED: number;
         static PLUGINS_FAILED: number;
         static NOT_IMPLEMENTED: number;
 
-        // Constructors of BlockDev.InitError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
@@ -204,7 +204,7 @@ export namespace BlockDev {
     class LVMError extends GLib.Error {
         static $gtype: GObject.GType<LVMError>;
 
-        // Static fields of BlockDev.LVMError
+        // Static fields
 
         static TECH_UNAVAIL: number;
         static FAIL: number;
@@ -218,7 +218,7 @@ export namespace BlockDev {
         static VDO_POLICY_INVAL: number;
         static DEVICES_DISABLED: number;
 
-        // Constructors of BlockDev.LVMError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
@@ -291,13 +291,13 @@ export namespace BlockDev {
     class LoopError extends GLib.Error {
         static $gtype: GObject.GType<LoopError>;
 
-        // Static fields of BlockDev.LoopError
+        // Static fields
 
         static TECH_UNAVAIL: number;
         static FAIL: number;
         static DEVICE: number;
 
-        // Constructors of BlockDev.LoopError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
@@ -313,7 +313,7 @@ export namespace BlockDev {
     class MDError extends GLib.Error {
         static $gtype: GObject.GType<MDError>;
 
-        // Static fields of BlockDev.MDError
+        // Static fields
 
         static TECH_UNAVAIL: number;
         static FAIL: number;
@@ -322,7 +322,7 @@ export namespace BlockDev {
         static NO_MATCH: number;
         static INVAL: number;
 
-        // Constructors of BlockDev.MDError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
@@ -338,7 +338,7 @@ export namespace BlockDev {
     class MpathError extends GLib.Error {
         static $gtype: GObject.GType<MpathError>;
 
-        // Static fields of BlockDev.MpathError
+        // Static fields
 
         static TECH_UNAVAIL: number;
         static INVAL: number;
@@ -346,7 +346,7 @@ export namespace BlockDev {
         static NOT_ROOT: number;
         static DM_ERROR: number;
 
-        // Constructors of BlockDev.MpathError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
@@ -363,7 +363,7 @@ export namespace BlockDev {
     class NVDIMMError extends GLib.Error {
         static $gtype: GObject.GType<NVDIMMError>;
 
-        // Static fields of BlockDev.NVDIMMError
+        // Static fields
 
         static TECH_UNAVAIL: number;
         static NAMESPACE_FAIL: number;
@@ -371,7 +371,7 @@ export namespace BlockDev {
         static NAMESPACE_NOEXIST: number;
         static NAMESPACE_MODE_INVAL: number;
 
-        // Constructors of BlockDev.NVDIMMError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
@@ -412,7 +412,7 @@ export namespace BlockDev {
     class NVMEError extends GLib.Error {
         static $gtype: GObject.GType<NVMEError>;
 
-        // Static fields of BlockDev.NVMEError
+        // Static fields
 
         static TECH_UNAVAIL: number;
         static FAILED: number;
@@ -433,7 +433,7 @@ export namespace BlockDev {
         static CONNECT_OPNOTSUPP: number;
         static CONNECT_REFUSED: number;
 
-        // Constructors of BlockDev.NVMEError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
@@ -546,14 +546,14 @@ export namespace BlockDev {
     class PartError extends GLib.Error {
         static $gtype: GObject.GType<PartError>;
 
-        // Static fields of BlockDev.PartError
+        // Static fields
 
         static TECH_UNAVAIL: number;
         static FAIL: number;
         static INVAL: number;
         static EXISTS: number;
 
-        // Constructors of BlockDev.PartError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
@@ -625,7 +625,7 @@ export namespace BlockDev {
     class SwapError extends GLib.Error {
         static $gtype: GObject.GType<SwapError>;
 
-        // Static fields of BlockDev.SwapError
+        // Static fields
 
         static TECH_UNAVAIL: number;
         static UNKNOWN_STATE: number;
@@ -637,7 +637,7 @@ export namespace BlockDev {
         static LABEL_INVALID: number;
         static UUID_INVALID: number;
 
-        // Constructors of BlockDev.SwapError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
@@ -653,12 +653,12 @@ export namespace BlockDev {
     class UtilsDBusError extends GLib.Error {
         static $gtype: GObject.GType<UtilsDBusError>;
 
-        // Static fields of BlockDev.UtilsDBusError
+        // Static fields
 
         static FAIL: number;
         static NOEXIST: number;
 
-        // Constructors of BlockDev.UtilsDBusError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
@@ -667,11 +667,11 @@ export namespace BlockDev {
     class UtilsDevUtilsError extends GLib.Error {
         static $gtype: GObject.GType<UtilsDevUtilsError>;
 
-        // Static fields of BlockDev.UtilsDevUtilsError
+        // Static fields
 
         static UTILS_DEV_UTILS_ERROR_FAILED: number;
 
-        // Constructors of BlockDev.UtilsDevUtilsError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
@@ -680,7 +680,7 @@ export namespace BlockDev {
     class UtilsExecError extends GLib.Error {
         static $gtype: GObject.GType<UtilsExecError>;
 
-        // Static fields of BlockDev.UtilsExecError
+        // Static fields
 
         static FAILED: number;
         static NOOUT: number;
@@ -692,7 +692,7 @@ export namespace BlockDev {
         static UTIL_FEATURE_CHECK_ERROR: number;
         static UTIL_FEATURE_UNAVAILABLE: number;
 
-        // Constructors of BlockDev.UtilsExecError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
@@ -701,7 +701,7 @@ export namespace BlockDev {
     class UtilsModuleError extends GLib.Error {
         static $gtype: GObject.GType<UtilsModuleError>;
 
-        // Static fields of BlockDev.UtilsModuleError
+        // Static fields
 
         static KMOD_INIT_FAIL: number;
         static FAIL: number;
@@ -709,7 +709,7 @@ export namespace BlockDev {
         static MODULE_CHECK_ERROR: number;
         static INVALID_PLATFORM: number;
 
-        // Constructors of BlockDev.UtilsModuleError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
@@ -2486,14 +2486,14 @@ export namespace BlockDev {
     class BtrfsDeviceInfo {
         static $gtype: GObject.GType<BtrfsDeviceInfo>;
 
-        // Own fields of BlockDev.BtrfsDeviceInfo
+        // Fields
 
         id: number;
         path: string;
         size: number;
         used: number;
 
-        // Constructors of BlockDev.BtrfsDeviceInfo
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -2509,14 +2509,14 @@ export namespace BlockDev {
     class BtrfsFilesystemInfo {
         static $gtype: GObject.GType<BtrfsFilesystemInfo>;
 
-        // Own fields of BlockDev.BtrfsFilesystemInfo
+        // Fields
 
         label: string;
         uuid: string;
         num_devices: number;
         used: number;
 
-        // Constructors of BlockDev.BtrfsFilesystemInfo
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -2532,13 +2532,13 @@ export namespace BlockDev {
     class BtrfsSubvolumeInfo {
         static $gtype: GObject.GType<BtrfsSubvolumeInfo>;
 
-        // Own fields of BlockDev.BtrfsSubvolumeInfo
+        // Fields
 
         id: number;
         parent_id: number;
         path: string;
 
-        // Constructors of BlockDev.BtrfsSubvolumeInfo
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -2553,7 +2553,7 @@ export namespace BlockDev {
     class CryptoBITLKInfo {
         static $gtype: GObject.GType<CryptoBITLKInfo>;
 
-        // Own fields of BlockDev.CryptoBITLKInfo
+        // Fields
 
         cipher: string;
         mode: string;
@@ -2561,7 +2561,7 @@ export namespace BlockDev {
         backing_device: string;
         sector_size: number;
 
-        // Constructors of BlockDev.CryptoBITLKInfo
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -2578,7 +2578,7 @@ export namespace BlockDev {
     class CryptoIntegrityExtra {
         static $gtype: GObject.GType<CryptoIntegrityExtra>;
 
-        // Own fields of BlockDev.CryptoIntegrityExtra
+        // Fields
 
         sector_size: number;
         journal_size: number;
@@ -2588,7 +2588,7 @@ export namespace BlockDev {
         tag_size: number;
         buffer_sectors: number;
 
-        // Constructors of BlockDev.CryptoIntegrityExtra
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -2617,7 +2617,7 @@ export namespace BlockDev {
     class CryptoIntegrityInfo {
         static $gtype: GObject.GType<CryptoIntegrityInfo>;
 
-        // Own fields of BlockDev.CryptoIntegrityInfo
+        // Fields
 
         algorithm: string;
         key_size: number;
@@ -2628,7 +2628,7 @@ export namespace BlockDev {
         journal_crypt: string;
         journal_integrity: string;
 
-        // Constructors of BlockDev.CryptoIntegrityInfo
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -2648,11 +2648,11 @@ export namespace BlockDev {
     class CryptoKeyslotContext {
         static $gtype: GObject.GType<CryptoKeyslotContext>;
 
-        // Own fields of BlockDev.CryptoKeyslotContext
+        // Fields
 
         type: CryptoKeyslotContextType;
 
-        // Constructors of BlockDev.CryptoKeyslotContext
+        // Constructors
 
         constructor(keyfile: string, keyfile_offset: number, key_size: number);
         _init(...args: any[]): void;
@@ -2669,7 +2669,7 @@ export namespace BlockDev {
     class CryptoLUKSExtra {
         static $gtype: GObject.GType<CryptoLUKSExtra>;
 
-        // Own fields of BlockDev.CryptoLUKSExtra
+        // Fields
 
         data_alignment: number;
         data_device: string;
@@ -2679,7 +2679,7 @@ export namespace BlockDev {
         subsystem: string;
         pbkdf: CryptoLUKSPBKDF;
 
-        // Constructors of BlockDev.CryptoLUKSExtra
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -2707,7 +2707,7 @@ export namespace BlockDev {
     class CryptoLUKSInfo {
         static $gtype: GObject.GType<CryptoLUKSInfo>;
 
-        // Own fields of BlockDev.CryptoLUKSInfo
+        // Fields
 
         version: CryptoLUKSVersion;
         cipher: string;
@@ -2719,7 +2719,7 @@ export namespace BlockDev {
         label: string;
         subsystem: string;
 
-        // Constructors of BlockDev.CryptoLUKSInfo
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2727,7 +2727,7 @@ export namespace BlockDev {
     class CryptoLUKSPBKDF {
         static $gtype: GObject.GType<CryptoLUKSPBKDF>;
 
-        // Own fields of BlockDev.CryptoLUKSPBKDF
+        // Fields
 
         type: string;
         hash: string;
@@ -2736,7 +2736,7 @@ export namespace BlockDev {
         time_ms: number;
         parallel_threads: number;
 
-        // Constructors of BlockDev.CryptoLUKSPBKDF
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -2763,13 +2763,13 @@ export namespace BlockDev {
     class CryptoLUKSTokenInfo {
         static $gtype: GObject.GType<CryptoLUKSTokenInfo>;
 
-        // Own fields of BlockDev.CryptoLUKSTokenInfo
+        // Fields
 
         id: number;
         type: string;
         keyslot: number;
 
-        // Constructors of BlockDev.CryptoLUKSTokenInfo
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -2787,12 +2787,12 @@ export namespace BlockDev {
     class ExtraArg {
         static $gtype: GObject.GType<ExtraArg>;
 
-        // Own fields of BlockDev.ExtraArg
+        // Fields
 
         opt: string;
         val: string;
 
-        // Constructors of BlockDev.ExtraArg
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -2804,7 +2804,7 @@ export namespace BlockDev {
 
         static ['new'](opt: string, val: string): ExtraArg;
 
-        // Own static methods of BlockDev.ExtraArg
+        // Static methods
 
         /**
          * Frees `args` and all its elements.
@@ -2812,7 +2812,7 @@ export namespace BlockDev {
          */
         static list_free(args?: ExtraArg[] | null): void;
 
-        // Own methods of BlockDev.ExtraArg
+        // Methods
 
         /**
          * Creates a new copy of `arg`.
@@ -2827,14 +2827,14 @@ export namespace BlockDev {
     class FSBtrfsInfo {
         static $gtype: GObject.GType<FSBtrfsInfo>;
 
-        // Own fields of BlockDev.FSBtrfsInfo
+        // Fields
 
         label: string;
         uuid: string;
         size: number;
         free_space: number;
 
-        // Constructors of BlockDev.FSBtrfsInfo
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -2850,7 +2850,7 @@ export namespace BlockDev {
     class FSExfatInfo {
         static $gtype: GObject.GType<FSExfatInfo>;
 
-        // Own fields of BlockDev.FSExfatInfo
+        // Fields
 
         label: string;
         uuid: string;
@@ -2858,7 +2858,7 @@ export namespace BlockDev {
         sector_count: number;
         cluster_count: number;
 
-        // Constructors of BlockDev.FSExfatInfo
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -2875,7 +2875,7 @@ export namespace BlockDev {
     class FSExt2Info {
         static $gtype: GObject.GType<FSExt2Info>;
 
-        // Own fields of BlockDev.FSExt2Info
+        // Fields
 
         label: string;
         uuid: string;
@@ -2884,7 +2884,7 @@ export namespace BlockDev {
         block_count: number;
         free_blocks: number;
 
-        // Constructors of BlockDev.FSExt2Info
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -2902,7 +2902,7 @@ export namespace BlockDev {
     class FSExt3Info {
         static $gtype: GObject.GType<FSExt3Info>;
 
-        // Own fields of BlockDev.FSExt3Info
+        // Fields
 
         label: string;
         uuid: string;
@@ -2911,7 +2911,7 @@ export namespace BlockDev {
         block_count: number;
         free_blocks: number;
 
-        // Constructors of BlockDev.FSExt3Info
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -2929,7 +2929,7 @@ export namespace BlockDev {
     class FSExt4Info {
         static $gtype: GObject.GType<FSExt4Info>;
 
-        // Own fields of BlockDev.FSExt4Info
+        // Fields
 
         label: string;
         uuid: string;
@@ -2938,7 +2938,7 @@ export namespace BlockDev {
         block_count: number;
         free_blocks: number;
 
-        // Constructors of BlockDev.FSExt4Info
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -2956,7 +2956,7 @@ export namespace BlockDev {
     class FSExtInfo {
         static $gtype: GObject.GType<FSExtInfo>;
 
-        // Own fields of BlockDev.FSExtInfo
+        // Fields
 
         label: string;
         uuid: string;
@@ -2965,7 +2965,7 @@ export namespace BlockDev {
         block_count: number;
         free_blocks: number;
 
-        // Constructors of BlockDev.FSExtInfo
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -2983,7 +2983,7 @@ export namespace BlockDev {
     class FSF2FSInfo {
         static $gtype: GObject.GType<FSF2FSInfo>;
 
-        // Own fields of BlockDev.FSF2FSInfo
+        // Fields
 
         label: string;
         uuid: string;
@@ -2991,7 +2991,7 @@ export namespace BlockDev {
         sector_count: number;
         features: number;
 
-        // Constructors of BlockDev.FSF2FSInfo
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -3008,7 +3008,7 @@ export namespace BlockDev {
     class FSFeatures {
         static $gtype: GObject.GType<FSFeatures>;
 
-        // Own fields of BlockDev.FSFeatures
+        // Fields
 
         resize: FSResizeFlags;
         mkfs: FSMkfsOptionsFlags;
@@ -3018,7 +3018,7 @@ export namespace BlockDev {
         partition_id: string;
         partition_type: string;
 
-        // Constructors of BlockDev.FSFeatures
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3026,7 +3026,7 @@ export namespace BlockDev {
     class FSMkfsOptions {
         static $gtype: GObject.GType<FSMkfsOptions>;
 
-        // Own fields of BlockDev.FSMkfsOptions
+        // Fields
 
         label: string;
         uuid: string;
@@ -3036,7 +3036,7 @@ export namespace BlockDev {
         no_pt: boolean;
         reserve: Uint8Array;
 
-        // Constructors of BlockDev.FSMkfsOptions
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -3055,7 +3055,7 @@ export namespace BlockDev {
     class FSNILFS2Info {
         static $gtype: GObject.GType<FSNILFS2Info>;
 
-        // Own fields of BlockDev.FSNILFS2Info
+        // Fields
 
         label: string;
         uuid: string;
@@ -3063,7 +3063,7 @@ export namespace BlockDev {
         block_size: number;
         free_blocks: number;
 
-        // Constructors of BlockDev.FSNILFS2Info
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -3080,14 +3080,14 @@ export namespace BlockDev {
     class FSNtfsInfo {
         static $gtype: GObject.GType<FSNtfsInfo>;
 
-        // Own fields of BlockDev.FSNtfsInfo
+        // Fields
 
         label: string;
         uuid: string;
         size: number;
         free_space: number;
 
-        // Constructors of BlockDev.FSNtfsInfo
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -3103,7 +3103,7 @@ export namespace BlockDev {
     class FSUdfInfo {
         static $gtype: GObject.GType<FSUdfInfo>;
 
-        // Own fields of BlockDev.FSUdfInfo
+        // Fields
 
         label: string;
         uuid: string;
@@ -3114,7 +3114,7 @@ export namespace BlockDev {
         block_count: number;
         free_blocks: number;
 
-        // Constructors of BlockDev.FSUdfInfo
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -3134,7 +3134,7 @@ export namespace BlockDev {
     class FSVfatInfo {
         static $gtype: GObject.GType<FSVfatInfo>;
 
-        // Own fields of BlockDev.FSVfatInfo
+        // Fields
 
         label: string;
         uuid: string;
@@ -3142,7 +3142,7 @@ export namespace BlockDev {
         cluster_count: number;
         free_cluster_count: number;
 
-        // Constructors of BlockDev.FSVfatInfo
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -3159,14 +3159,14 @@ export namespace BlockDev {
     class FSXfsInfo {
         static $gtype: GObject.GType<FSXfsInfo>;
 
-        // Own fields of BlockDev.FSXfsInfo
+        // Fields
 
         label: string;
         uuid: string;
         block_size: number;
         block_count: number;
 
-        // Constructors of BlockDev.FSXfsInfo
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -3182,7 +3182,7 @@ export namespace BlockDev {
     class LVMCacheStats {
         static $gtype: GObject.GType<LVMCacheStats>;
 
-        // Own fields of BlockDev.LVMCacheStats
+        // Fields
 
         block_size: number;
         cache_size: number;
@@ -3196,7 +3196,7 @@ export namespace BlockDev {
         write_misses: number;
         mode: LVMCacheMode;
 
-        // Constructors of BlockDev.LVMCacheStats
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3225,7 +3225,7 @@ export namespace BlockDev {
     class LVMLVdata {
         static $gtype: GObject.GType<LVMLVdata>;
 
-        // Own fields of BlockDev.LVMLVdata
+        // Fields
 
         lv_name: string;
         vg_name: string;
@@ -3247,7 +3247,7 @@ export namespace BlockDev {
         metadata_lvs: string[];
         segs: LVMSEGdata[];
 
-        // Constructors of BlockDev.LVMLVdata
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -3278,7 +3278,7 @@ export namespace BlockDev {
     class LVMPVdata {
         static $gtype: GObject.GType<LVMPVdata>;
 
-        // Own fields of BlockDev.LVMPVdata
+        // Fields
 
         pv_name: string;
         pv_uuid: string;
@@ -3296,7 +3296,7 @@ export namespace BlockDev {
         pv_tags: string[];
         missing: boolean;
 
-        // Constructors of BlockDev.LVMPVdata
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -3323,13 +3323,13 @@ export namespace BlockDev {
     class LVMSEGdata {
         static $gtype: GObject.GType<LVMSEGdata>;
 
-        // Own fields of BlockDev.LVMSEGdata
+        // Fields
 
         size_pe: number;
         pv_start_pe: number;
         pvdev: string;
 
-        // Constructors of BlockDev.LVMSEGdata
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -3344,7 +3344,7 @@ export namespace BlockDev {
     class LVMVDOPooldata {
         static $gtype: GObject.GType<LVMVDOPooldata>;
 
-        // Own fields of BlockDev.LVMVDOPooldata
+        // Fields
 
         operating_mode: LVMVDOOperatingMode;
         compression_state: LVMVDOCompressionState;
@@ -3356,7 +3356,7 @@ export namespace BlockDev {
         deduplication: boolean;
         compression: boolean;
 
-        // Constructors of BlockDev.LVMVDOPooldata
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3364,7 +3364,7 @@ export namespace BlockDev {
     class LVMVDOStats {
         static $gtype: GObject.GType<LVMVDOStats>;
 
-        // Own fields of BlockDev.LVMVDOStats
+        // Fields
 
         block_size: number;
         logical_block_size: number;
@@ -3376,7 +3376,7 @@ export namespace BlockDev {
         saving_percent: number;
         write_amplification_ratio: number;
 
-        // Constructors of BlockDev.LVMVDOStats
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -3397,7 +3397,7 @@ export namespace BlockDev {
     class LVMVGdata {
         static $gtype: GObject.GType<LVMVGdata>;
 
-        // Own fields of BlockDev.LVMVGdata
+        // Fields
 
         name: string;
         uuid: string;
@@ -3409,7 +3409,7 @@ export namespace BlockDev {
         exported: boolean;
         vg_tags: string[];
 
-        // Constructors of BlockDev.LVMVGdata
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -3431,7 +3431,7 @@ export namespace BlockDev {
     class LoopInfo {
         static $gtype: GObject.GType<LoopInfo>;
 
-        // Own fields of BlockDev.LoopInfo
+        // Fields
 
         backing_file: string;
         offset: number;
@@ -3440,7 +3440,7 @@ export namespace BlockDev {
         part_scan: boolean;
         read_only: boolean;
 
-        // Constructors of BlockDev.LoopInfo
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -3458,7 +3458,7 @@ export namespace BlockDev {
     class MDDetailData {
         static $gtype: GObject.GType<MDDetailData>;
 
-        // Own fields of BlockDev.MDDetailData
+        // Fields
 
         device: string;
         metadata: string;
@@ -3477,7 +3477,7 @@ export namespace BlockDev {
         uuid: string;
         container: string;
 
-        // Constructors of BlockDev.MDDetailData
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -3505,7 +3505,7 @@ export namespace BlockDev {
     class MDExamineData {
         static $gtype: GObject.GType<MDExamineData>;
 
-        // Own fields of BlockDev.MDExamineData
+        // Fields
 
         device: string;
         level: string;
@@ -3519,7 +3519,7 @@ export namespace BlockDev {
         metadata: string;
         chunk_size: number;
 
-        // Constructors of BlockDev.MDExamineData
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -3542,7 +3542,7 @@ export namespace BlockDev {
     class NVDIMMNamespaceInfo {
         static $gtype: GObject.GType<NVDIMMNamespaceInfo>;
 
-        // Own fields of BlockDev.NVDIMMNamespaceInfo
+        // Fields
 
         dev: string;
         mode: number;
@@ -3552,7 +3552,7 @@ export namespace BlockDev {
         blockdev: string;
         enabled: boolean;
 
-        // Constructors of BlockDev.NVDIMMNamespaceInfo
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -3571,7 +3571,7 @@ export namespace BlockDev {
     class NVMEControllerInfo {
         static $gtype: GObject.GType<NVMEControllerInfo>;
 
-        // Own fields of BlockDev.NVMEControllerInfo
+        // Fields
 
         pci_vendor_id: number;
         pci_subsys_vendor_id: number;
@@ -3591,7 +3591,7 @@ export namespace BlockDev {
         num_namespaces: number;
         subsysnqn: string;
 
-        // Constructors of BlockDev.NVMEControllerInfo
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3599,7 +3599,7 @@ export namespace BlockDev {
     class NVMEErrorLogEntry {
         static $gtype: GObject.GType<NVMEErrorLogEntry>;
 
-        // Own fields of BlockDev.NVMEErrorLogEntry
+        // Fields
 
         error_count: number;
         command_id: number;
@@ -3610,7 +3610,7 @@ export namespace BlockDev {
         nsid: number;
         transport_type: NVMETransportType;
 
-        // Constructors of BlockDev.NVMEErrorLogEntry
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3621,13 +3621,13 @@ export namespace BlockDev {
     class NVMELBAFormat {
         static $gtype: GObject.GType<NVMELBAFormat>;
 
-        // Own fields of BlockDev.NVMELBAFormat
+        // Fields
 
         data_size: number;
         metadata_size: number;
         relative_performance: NVMELBAFormatRelativePerformance;
 
-        // Constructors of BlockDev.NVMELBAFormat
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3635,7 +3635,7 @@ export namespace BlockDev {
     class NVMENamespaceInfo {
         static $gtype: GObject.GType<NVMENamespaceInfo>;
 
-        // Own fields of BlockDev.NVMENamespaceInfo
+        // Fields
 
         nsid: number;
         eui64: string;
@@ -3648,7 +3648,7 @@ export namespace BlockDev {
         format_progress_remaining: number;
         write_protected: boolean;
 
-        // Constructors of BlockDev.NVMENamespaceInfo
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3656,7 +3656,7 @@ export namespace BlockDev {
     class NVMESanitizeLog {
         static $gtype: GObject.GType<NVMESanitizeLog>;
 
-        // Own fields of BlockDev.NVMESanitizeLog
+        // Fields
 
         sanitize_progress: number;
         sanitize_status: NVMESanitizeStatus;
@@ -3669,7 +3669,7 @@ export namespace BlockDev {
         time_for_block_erase_nd: number;
         time_for_crypto_erase_nd: number;
 
-        // Constructors of BlockDev.NVMESanitizeLog
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3677,12 +3677,12 @@ export namespace BlockDev {
     class NVMESelfTestLog {
         static $gtype: GObject.GType<NVMESelfTestLog>;
 
-        // Own fields of BlockDev.NVMESelfTestLog
+        // Fields
 
         current_operation: NVMESelfTestAction;
         current_operation_completion: number;
 
-        // Constructors of BlockDev.NVMESelfTestLog
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3690,7 +3690,7 @@ export namespace BlockDev {
     class NVMESelfTestLogEntry {
         static $gtype: GObject.GType<NVMESelfTestLogEntry>;
 
-        // Own fields of BlockDev.NVMESelfTestLogEntry
+        // Fields
 
         result: NVMESelfTestResult;
         action: NVMESelfTestAction;
@@ -3700,7 +3700,7 @@ export namespace BlockDev {
         failing_lba: number;
         status_code_error: GLib.Error;
 
-        // Constructors of BlockDev.NVMESelfTestLogEntry
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3708,7 +3708,7 @@ export namespace BlockDev {
     class NVMESmartLog {
         static $gtype: GObject.GType<NVMESmartLog>;
 
-        // Own fields of BlockDev.NVMESmartLog
+        // Fields
 
         critical_warning: number;
         avail_spare: number;
@@ -3729,7 +3729,7 @@ export namespace BlockDev {
         warning_temp_time: number;
         critical_temp_time: number;
 
-        // Constructors of BlockDev.NVMESmartLog
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -3759,18 +3759,18 @@ export namespace BlockDev {
     class PartDiskSpec {
         static $gtype: GObject.GType<PartDiskSpec>;
 
-        // Own fields of BlockDev.PartDiskSpec
+        // Fields
 
         path: string;
         table_type: PartTableType;
         size: number;
         sector_size: number;
 
-        // Constructors of BlockDev.PartDiskSpec
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of BlockDev.PartDiskSpec
+        // Methods
 
         copy(): PartDiskSpec;
         free(): void;
@@ -3779,7 +3779,7 @@ export namespace BlockDev {
     class PartSpec {
         static $gtype: GObject.GType<PartSpec>;
 
-        // Own fields of BlockDev.PartSpec
+        // Fields
 
         path: string;
         name: string;
@@ -3792,7 +3792,7 @@ export namespace BlockDev {
         bootable: boolean;
         attrs: number;
 
-        // Constructors of BlockDev.PartSpec
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -3810,7 +3810,7 @@ export namespace BlockDev {
         );
         _init(...args: any[]): void;
 
-        // Own methods of BlockDev.PartSpec
+        // Methods
 
         copy(): PartSpec;
         free(): void;
@@ -3819,12 +3819,12 @@ export namespace BlockDev {
     class PluginSpec {
         static $gtype: GObject.GType<PluginSpec>;
 
-        // Own fields of BlockDev.PluginSpec
+        // Fields
 
         name: Plugin;
         so_name: string;
 
-        // Constructors of BlockDev.PluginSpec
+        // Constructors
 
         constructor(name: Plugin, so_name?: string | null);
         _init(...args: any[]): void;
@@ -3835,13 +3835,13 @@ export namespace BlockDev {
     class UtilsLinuxVersion {
         static $gtype: GObject.GType<UtilsLinuxVersion>;
 
-        // Own fields of BlockDev.UtilsLinuxVersion
+        // Fields
 
         major: number;
         minor: number;
         micro: number;
 
-        // Constructors of BlockDev.UtilsLinuxVersion
+        // Constructors
 
         constructor(
             properties?: Partial<{

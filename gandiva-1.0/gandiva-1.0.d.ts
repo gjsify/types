@@ -72,7 +72,7 @@ export namespace Gandiva {
     class AndNode extends BooleanNode {
         static $gtype: GObject.GType<AndNode>;
 
-        // Constructors of Gandiva.AndNode
+        // Constructors
 
         constructor(properties?: Partial<AndNode.ConstructorProps>, ...args: any[]);
 
@@ -90,7 +90,7 @@ export namespace Gandiva {
     class BinaryLiteralNode extends LiteralNode {
         static $gtype: GObject.GType<BinaryLiteralNode>;
 
-        // Constructors of Gandiva.BinaryLiteralNode
+        // Constructors
 
         constructor(properties?: Partial<BinaryLiteralNode.ConstructorProps>, ...args: any[]);
 
@@ -100,7 +100,7 @@ export namespace Gandiva {
 
         static new_bytes(value: GLib.Bytes | Uint8Array): BinaryLiteralNode;
 
-        // Own methods of Gandiva.BinaryLiteralNode
+        // Methods
 
         get_value(): GLib.Bytes;
     }
@@ -114,7 +114,7 @@ export namespace Gandiva {
     class BooleanLiteralNode extends LiteralNode {
         static $gtype: GObject.GType<BooleanLiteralNode>;
 
-        // Constructors of Gandiva.BooleanLiteralNode
+        // Constructors
 
         constructor(properties?: Partial<BooleanLiteralNode.ConstructorProps>, ...args: any[]);
 
@@ -122,7 +122,7 @@ export namespace Gandiva {
 
         static ['new'](value: boolean): BooleanLiteralNode;
 
-        // Own methods of Gandiva.BooleanLiteralNode
+        // Methods
 
         get_value(): boolean;
     }
@@ -136,13 +136,13 @@ export namespace Gandiva {
     class BooleanNode extends Node {
         static $gtype: GObject.GType<BooleanNode>;
 
-        // Constructors of Gandiva.BooleanNode
+        // Constructors
 
         constructor(properties?: Partial<BooleanNode.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Gandiva.BooleanNode
+        // Methods
 
         get_children(): Node[];
     }
@@ -156,7 +156,7 @@ export namespace Gandiva {
     class DoubleLiteralNode extends LiteralNode {
         static $gtype: GObject.GType<DoubleLiteralNode>;
 
-        // Constructors of Gandiva.DoubleLiteralNode
+        // Constructors
 
         constructor(properties?: Partial<DoubleLiteralNode.ConstructorProps>, ...args: any[]);
 
@@ -164,7 +164,7 @@ export namespace Gandiva {
 
         static ['new'](value: number): DoubleLiteralNode;
 
-        // Own methods of Gandiva.DoubleLiteralNode
+        // Methods
 
         get_value(): number;
     }
@@ -184,7 +184,7 @@ export namespace Gandiva {
     class Expression extends GObject.Object {
         static $gtype: GObject.GType<Expression>;
 
-        // Own properties of Gandiva.Expression
+        // Properties
 
         set expression(val: any);
         get result_field(): Arrow.Field;
@@ -192,7 +192,7 @@ export namespace Gandiva {
         get root_node(): Node;
         get rootNode(): Node;
 
-        // Constructors of Gandiva.Expression
+        // Constructors
 
         constructor(properties?: Partial<Expression.ConstructorProps>, ...args: any[]);
 
@@ -200,7 +200,7 @@ export namespace Gandiva {
 
         static ['new'](root_node: Node, result_field: Arrow.Field): Expression;
 
-        // Own methods of Gandiva.Expression
+        // Methods
 
         to_string(): string;
     }
@@ -216,11 +216,11 @@ export namespace Gandiva {
     class FieldNode extends Node {
         static $gtype: GObject.GType<FieldNode>;
 
-        // Own properties of Gandiva.FieldNode
+        // Properties
 
         get field(): Arrow.Field;
 
-        // Constructors of Gandiva.FieldNode
+        // Constructors
 
         constructor(properties?: Partial<FieldNode.ConstructorProps>, ...args: any[]);
 
@@ -238,7 +238,7 @@ export namespace Gandiva {
     class FloatLiteralNode extends LiteralNode {
         static $gtype: GObject.GType<FloatLiteralNode>;
 
-        // Constructors of Gandiva.FloatLiteralNode
+        // Constructors
 
         constructor(properties?: Partial<FloatLiteralNode.ConstructorProps>, ...args: any[]);
 
@@ -246,7 +246,7 @@ export namespace Gandiva {
 
         static ['new'](value: number): FloatLiteralNode;
 
-        // Own methods of Gandiva.FloatLiteralNode
+        // Methods
 
         get_value(): number;
     }
@@ -262,11 +262,11 @@ export namespace Gandiva {
     class FunctionNode extends Node {
         static $gtype: GObject.GType<FunctionNode>;
 
-        // Own properties of Gandiva.FunctionNode
+        // Properties
 
         get name(): string;
 
-        // Constructors of Gandiva.FunctionNode
+        // Constructors
 
         constructor(properties?: Partial<FunctionNode.ConstructorProps>, ...args: any[]);
 
@@ -274,7 +274,7 @@ export namespace Gandiva {
 
         static ['new'](name: string, parameters: Node[], return_type: Arrow.DataType): FunctionNode;
 
-        // Own methods of Gandiva.FunctionNode
+        // Methods
 
         get_parameters(): Node[];
     }
@@ -288,7 +288,7 @@ export namespace Gandiva {
     class FunctionRegistry extends GObject.Object {
         static $gtype: GObject.GType<FunctionRegistry>;
 
-        // Constructors of Gandiva.FunctionRegistry
+        // Constructors
 
         constructor(properties?: Partial<FunctionRegistry.ConstructorProps>, ...args: any[]);
 
@@ -296,7 +296,7 @@ export namespace Gandiva {
 
         static ['new'](): FunctionRegistry;
 
-        // Own methods of Gandiva.FunctionRegistry
+        // Methods
 
         get_native_functions(): NativeFunction[];
         lookup(function_signature: FunctionSignature): NativeFunction | null;
@@ -314,12 +314,12 @@ export namespace Gandiva {
     class FunctionSignature extends GObject.Object {
         static $gtype: GObject.GType<FunctionSignature>;
 
-        // Own properties of Gandiva.FunctionSignature
+        // Properties
 
         set function_signature(val: any);
         set functionSignature(val: any);
 
-        // Constructors of Gandiva.FunctionSignature
+        // Constructors
 
         constructor(properties?: Partial<FunctionSignature.ConstructorProps>, ...args: any[]);
 
@@ -331,7 +331,7 @@ export namespace Gandiva {
             return_type: Arrow.DataType,
         ): FunctionSignature;
 
-        // Own methods of Gandiva.FunctionSignature
+        // Methods
 
         equal(other_function_signature: FunctionSignature): boolean;
         get_base_name(): string;
@@ -356,7 +356,7 @@ export namespace Gandiva {
     class IfNode extends Node {
         static $gtype: GObject.GType<IfNode>;
 
-        // Own properties of Gandiva.IfNode
+        // Properties
 
         get condition_node(): Node;
         get conditionNode(): Node;
@@ -365,7 +365,7 @@ export namespace Gandiva {
         get then_node(): Node;
         get thenNode(): Node;
 
-        // Constructors of Gandiva.IfNode
+        // Constructors
 
         constructor(properties?: Partial<IfNode.ConstructorProps>, ...args: any[]);
 
@@ -383,7 +383,7 @@ export namespace Gandiva {
     class Int16LiteralNode extends LiteralNode {
         static $gtype: GObject.GType<Int16LiteralNode>;
 
-        // Constructors of Gandiva.Int16LiteralNode
+        // Constructors
 
         constructor(properties?: Partial<Int16LiteralNode.ConstructorProps>, ...args: any[]);
 
@@ -391,7 +391,7 @@ export namespace Gandiva {
 
         static ['new'](value: number): Int16LiteralNode;
 
-        // Own methods of Gandiva.Int16LiteralNode
+        // Methods
 
         get_value(): number;
     }
@@ -405,7 +405,7 @@ export namespace Gandiva {
     class Int32LiteralNode extends LiteralNode {
         static $gtype: GObject.GType<Int32LiteralNode>;
 
-        // Constructors of Gandiva.Int32LiteralNode
+        // Constructors
 
         constructor(properties?: Partial<Int32LiteralNode.ConstructorProps>, ...args: any[]);
 
@@ -413,7 +413,7 @@ export namespace Gandiva {
 
         static ['new'](value: number): Int32LiteralNode;
 
-        // Own methods of Gandiva.Int32LiteralNode
+        // Methods
 
         get_value(): number;
     }
@@ -427,7 +427,7 @@ export namespace Gandiva {
     class Int64LiteralNode extends LiteralNode {
         static $gtype: GObject.GType<Int64LiteralNode>;
 
-        // Constructors of Gandiva.Int64LiteralNode
+        // Constructors
 
         constructor(properties?: Partial<Int64LiteralNode.ConstructorProps>, ...args: any[]);
 
@@ -435,7 +435,7 @@ export namespace Gandiva {
 
         static ['new'](value: number): Int64LiteralNode;
 
-        // Own methods of Gandiva.Int64LiteralNode
+        // Methods
 
         get_value(): number;
     }
@@ -449,7 +449,7 @@ export namespace Gandiva {
     class Int8LiteralNode extends LiteralNode {
         static $gtype: GObject.GType<Int8LiteralNode>;
 
-        // Constructors of Gandiva.Int8LiteralNode
+        // Constructors
 
         constructor(properties?: Partial<Int8LiteralNode.ConstructorProps>, ...args: any[]);
 
@@ -457,7 +457,7 @@ export namespace Gandiva {
 
         static ['new'](value: number): Int8LiteralNode;
 
-        // Own methods of Gandiva.Int8LiteralNode
+        // Methods
 
         get_value(): number;
     }
@@ -471,7 +471,7 @@ export namespace Gandiva {
     class LiteralNode extends Node {
         static $gtype: GObject.GType<LiteralNode>;
 
-        // Constructors of Gandiva.LiteralNode
+        // Constructors
 
         constructor(properties?: Partial<LiteralNode.ConstructorProps>, ...args: any[]);
 
@@ -490,18 +490,18 @@ export namespace Gandiva {
     class NativeFunction extends GObject.Object {
         static $gtype: GObject.GType<NativeFunction>;
 
-        // Own properties of Gandiva.NativeFunction
+        // Properties
 
         set native_function(val: any);
         set nativeFunction(val: any);
 
-        // Constructors of Gandiva.NativeFunction
+        // Constructors
 
         constructor(properties?: Partial<NativeFunction.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Gandiva.NativeFunction
+        // Methods
 
         can_return_errors(): boolean;
         equal(other_native_function: NativeFunction): boolean;
@@ -525,19 +525,19 @@ export namespace Gandiva {
     class Node extends GObject.Object {
         static $gtype: GObject.GType<Node>;
 
-        // Own properties of Gandiva.Node
+        // Properties
 
         set node(val: any);
         get return_type(): Arrow.DataType;
         get returnType(): Arrow.DataType;
 
-        // Constructors of Gandiva.Node
+        // Constructors
 
         constructor(properties?: Partial<Node.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Gandiva.Node
+        // Methods
 
         to_string(): string;
     }
@@ -551,7 +551,7 @@ export namespace Gandiva {
     class NullLiteralNode extends LiteralNode {
         static $gtype: GObject.GType<NullLiteralNode>;
 
-        // Constructors of Gandiva.NullLiteralNode
+        // Constructors
 
         constructor(properties?: Partial<NullLiteralNode.ConstructorProps>, ...args: any[]);
 
@@ -569,7 +569,7 @@ export namespace Gandiva {
     class OrNode extends BooleanNode {
         static $gtype: GObject.GType<OrNode>;
 
-        // Constructors of Gandiva.OrNode
+        // Constructors
 
         constructor(properties?: Partial<OrNode.ConstructorProps>, ...args: any[]);
 
@@ -589,11 +589,11 @@ export namespace Gandiva {
     class Projector extends GObject.Object {
         static $gtype: GObject.GType<Projector>;
 
-        // Own properties of Gandiva.Projector
+        // Properties
 
         set projector(val: any);
 
-        // Constructors of Gandiva.Projector
+        // Constructors
 
         constructor(properties?: Partial<Projector.ConstructorProps>, ...args: any[]);
 
@@ -601,7 +601,7 @@ export namespace Gandiva {
 
         static ['new'](schema: Arrow.Schema, expressions: Expression[]): Projector;
 
-        // Own methods of Gandiva.Projector
+        // Methods
 
         evaluate(record_batch: Arrow.RecordBatch): Arrow.Array[] | null;
     }
@@ -615,7 +615,7 @@ export namespace Gandiva {
     class StringLiteralNode extends LiteralNode {
         static $gtype: GObject.GType<StringLiteralNode>;
 
-        // Constructors of Gandiva.StringLiteralNode
+        // Constructors
 
         constructor(properties?: Partial<StringLiteralNode.ConstructorProps>, ...args: any[]);
 
@@ -623,7 +623,7 @@ export namespace Gandiva {
 
         static ['new'](value: string): StringLiteralNode;
 
-        // Own methods of Gandiva.StringLiteralNode
+        // Methods
 
         get_value(): string;
     }
@@ -637,7 +637,7 @@ export namespace Gandiva {
     class UInt16LiteralNode extends LiteralNode {
         static $gtype: GObject.GType<UInt16LiteralNode>;
 
-        // Constructors of Gandiva.UInt16LiteralNode
+        // Constructors
 
         constructor(properties?: Partial<UInt16LiteralNode.ConstructorProps>, ...args: any[]);
 
@@ -645,7 +645,7 @@ export namespace Gandiva {
 
         static ['new'](value: number): UInt16LiteralNode;
 
-        // Own methods of Gandiva.UInt16LiteralNode
+        // Methods
 
         get_value(): number;
     }
@@ -659,7 +659,7 @@ export namespace Gandiva {
     class UInt32LiteralNode extends LiteralNode {
         static $gtype: GObject.GType<UInt32LiteralNode>;
 
-        // Constructors of Gandiva.UInt32LiteralNode
+        // Constructors
 
         constructor(properties?: Partial<UInt32LiteralNode.ConstructorProps>, ...args: any[]);
 
@@ -667,7 +667,7 @@ export namespace Gandiva {
 
         static ['new'](value: number): UInt32LiteralNode;
 
-        // Own methods of Gandiva.UInt32LiteralNode
+        // Methods
 
         get_value(): number;
     }
@@ -681,7 +681,7 @@ export namespace Gandiva {
     class UInt64LiteralNode extends LiteralNode {
         static $gtype: GObject.GType<UInt64LiteralNode>;
 
-        // Constructors of Gandiva.UInt64LiteralNode
+        // Constructors
 
         constructor(properties?: Partial<UInt64LiteralNode.ConstructorProps>, ...args: any[]);
 
@@ -689,7 +689,7 @@ export namespace Gandiva {
 
         static ['new'](value: number): UInt64LiteralNode;
 
-        // Own methods of Gandiva.UInt64LiteralNode
+        // Methods
 
         get_value(): number;
     }
@@ -703,7 +703,7 @@ export namespace Gandiva {
     class UInt8LiteralNode extends LiteralNode {
         static $gtype: GObject.GType<UInt8LiteralNode>;
 
-        // Constructors of Gandiva.UInt8LiteralNode
+        // Constructors
 
         constructor(properties?: Partial<UInt8LiteralNode.ConstructorProps>, ...args: any[]);
 
@@ -711,7 +711,7 @@ export namespace Gandiva {
 
         static ['new'](value: number): UInt8LiteralNode;
 
-        // Own methods of Gandiva.UInt8LiteralNode
+        // Methods
 
         get_value(): number;
     }

@@ -42,7 +42,7 @@ export namespace CambalachePrivate {
     class BuilderScope extends Gtk.BuilderCScope implements Gtk.BuilderScope {
         static $gtype: GObject.GType<BuilderScope>;
 
-        // Constructors of CambalachePrivate.BuilderScope
+        // Constructors
 
         constructor(properties?: Partial<BuilderScope.ConstructorProps>, ...args: any[]);
 

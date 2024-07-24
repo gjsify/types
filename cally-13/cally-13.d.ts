@@ -66,7 +66,7 @@ export namespace Cally {
     class Actor extends Atk.GObjectAccessible implements Atk.Action, Atk.Component {
         static $gtype: GObject.GType<Actor>;
 
-        // Constructors of Cally.Actor
+        // Constructors
 
         constructor(properties?: Partial<Actor.ConstructorProps>, ...args: any[]);
 
@@ -74,7 +74,7 @@ export namespace Cally {
 
         static ['new'](actor: Clutter.Actor): Actor;
 
-        // Own methods of Cally.Actor
+        // Methods
 
         /**
          * Adds a new action to be accessed with the #AtkAction interface.
@@ -922,7 +922,7 @@ export namespace Cally {
     class Clone extends Actor implements Atk.Action, Atk.Component {
         static $gtype: GObject.GType<Clone>;
 
-        // Constructors of Cally.Clone
+        // Constructors
 
         constructor(properties?: Partial<Clone.ConstructorProps>, ...args: any[]);
 
@@ -1749,7 +1749,7 @@ export namespace Cally {
     class Root extends Atk.GObjectAccessible {
         static $gtype: GObject.GType<Root>;
 
-        // Constructors of Cally.Root
+        // Constructors
 
         constructor(properties?: Partial<Root.ConstructorProps>, ...args: any[]);
 
@@ -1782,7 +1782,7 @@ export namespace Cally {
     class Stage extends Actor implements Atk.Action, Atk.Component, Atk.Window {
         static $gtype: GObject.GType<Stage>;
 
-        // Constructors of Cally.Stage
+        // Constructors
 
         constructor(properties?: Partial<Stage.ConstructorProps>, ...args: any[]);
 
@@ -2946,7 +2946,7 @@ export namespace Cally {
     class Text extends Actor implements Atk.Action, Atk.Component, Atk.EditableText, Atk.Text {
         static $gtype: GObject.GType<Text>;
 
-        // Constructors of Cally.Text
+        // Constructors
 
         constructor(properties?: Partial<Text.ConstructorProps>, ...args: any[]);
 
@@ -4350,7 +4350,7 @@ export namespace Cally {
     class Util extends Atk.Util {
         static $gtype: GObject.GType<Util>;
 
-        // Constructors of Cally.Util
+        // Constructors
 
         constructor(properties?: Partial<Util.ConstructorProps>, ...args: any[]);
 
@@ -4361,7 +4361,7 @@ export namespace Cally {
     abstract class ActorPrivate {
         static $gtype: GObject.GType<ActorPrivate>;
 
-        // Constructors of Cally.ActorPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4370,7 +4370,7 @@ export namespace Cally {
     abstract class ClonePrivate {
         static $gtype: GObject.GType<ClonePrivate>;
 
-        // Constructors of Cally.ClonePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4379,7 +4379,7 @@ export namespace Cally {
     abstract class RootPrivate {
         static $gtype: GObject.GType<RootPrivate>;
 
-        // Constructors of Cally.RootPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4388,7 +4388,7 @@ export namespace Cally {
     abstract class StagePrivate {
         static $gtype: GObject.GType<StagePrivate>;
 
-        // Constructors of Cally.StagePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4397,7 +4397,7 @@ export namespace Cally {
     abstract class TextPrivate {
         static $gtype: GObject.GType<TextPrivate>;
 
-        // Constructors of Cally.TextPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4406,7 +4406,7 @@ export namespace Cally {
     abstract class UtilPrivate {
         static $gtype: GObject.GType<UtilPrivate>;
 
-        // Constructors of Cally.UtilPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }

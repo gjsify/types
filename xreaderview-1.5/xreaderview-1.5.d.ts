@@ -134,7 +134,7 @@ export namespace XreaderView {
     class DocumentModel extends GObject.Object {
         static $gtype: GObject.GType<DocumentModel>;
 
-        // Own properties of XreaderView.DocumentModel
+        // Properties
 
         get continuous(): boolean;
         set continuous(val: boolean);
@@ -167,7 +167,7 @@ export namespace XreaderView {
         get sizingMode(): SizingMode;
         set sizingMode(val: SizingMode);
 
-        // Constructors of XreaderView.DocumentModel
+        // Constructors
 
         constructor(properties?: Partial<DocumentModel.ConstructorProps>, ...args: any[]);
 
@@ -177,7 +177,7 @@ export namespace XreaderView {
 
         static new_with_document(document: XreaderDocument.Document): DocumentModel;
 
-        // Own signals of XreaderView.DocumentModel
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -186,7 +186,7 @@ export namespace XreaderView {
         connect_after(signal: 'page-changed', callback: (_source: this, object: number, p0: number) => void): number;
         emit(signal: 'page-changed', object: number, p0: number): void;
 
-        // Own methods of XreaderView.DocumentModel
+        // Methods
 
         get_continuous(): boolean;
         /**
@@ -240,7 +240,7 @@ export namespace XreaderView {
     abstract class Job extends GObject.Object {
         static $gtype: GObject.GType<Job>;
 
-        // Own fields of XreaderView.Job
+        // Fields
 
         document: XreaderDocument.Document;
         run_mode: JobRunMode;
@@ -251,13 +251,13 @@ export namespace XreaderView {
         idle_finished_id: number;
         idle_cancelled_id: number;
 
-        // Constructors of XreaderView.Job
+        // Constructors
 
         constructor(properties?: Partial<Job.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of XreaderView.Job
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -269,13 +269,13 @@ export namespace XreaderView {
         connect_after(signal: 'finished', callback: (_source: this) => void): number;
         emit(signal: 'finished'): void;
 
-        // Own virtual methods of XreaderView.Job
+        // Virtual methods
 
         vfunc_cancelled(): void;
         vfunc_finished(): void;
         vfunc_run(): boolean;
 
-        // Own methods of XreaderView.Job
+        // Methods
 
         cancel(): void;
         failed_from_error(error: GLib.Error): void;
@@ -298,11 +298,11 @@ export namespace XreaderView {
     class JobAnnots extends Job {
         static $gtype: GObject.GType<JobAnnots>;
 
-        // Own fields of XreaderView.JobAnnots
+        // Fields
 
         annots: any[];
 
-        // Constructors of XreaderView.JobAnnots
+        // Constructors
 
         constructor(properties?: Partial<JobAnnots.ConstructorProps>, ...args: any[]);
 
@@ -320,11 +320,11 @@ export namespace XreaderView {
     class JobAttachments extends Job {
         static $gtype: GObject.GType<JobAttachments>;
 
-        // Own fields of XreaderView.JobAttachments
+        // Fields
 
         attachments: any[];
 
-        // Constructors of XreaderView.JobAttachments
+        // Constructors
 
         constructor(properties?: Partial<JobAttachments.ConstructorProps>, ...args: any[]);
 
@@ -342,12 +342,12 @@ export namespace XreaderView {
     class JobExport extends Job {
         static $gtype: GObject.GType<JobExport>;
 
-        // Own fields of XreaderView.JobExport
+        // Fields
 
         page: number;
         rc: XreaderDocument.RenderContext;
 
-        // Constructors of XreaderView.JobExport
+        // Constructors
 
         constructor(properties?: Partial<JobExport.ConstructorProps>, ...args: any[]);
 
@@ -355,7 +355,7 @@ export namespace XreaderView {
 
         static ['new'](document: XreaderDocument.Document): JobExport;
 
-        // Own methods of XreaderView.JobExport
+        // Methods
 
         set_page(page: number): void;
     }
@@ -375,7 +375,7 @@ export namespace XreaderView {
     class JobFind extends Job {
         static $gtype: GObject.GType<JobFind>;
 
-        // Own fields of XreaderView.JobFind
+        // Fields
 
         start_page: number;
         current_page: number;
@@ -386,7 +386,7 @@ export namespace XreaderView {
         text: string;
         case_sensitive: boolean;
 
-        // Constructors of XreaderView.JobFind
+        // Constructors
 
         constructor(properties?: Partial<JobFind.ConstructorProps>, ...args: any[]);
 
@@ -400,7 +400,7 @@ export namespace XreaderView {
             case_sensitive: boolean,
         ): JobFind;
 
-        // Own signals of XreaderView.JobFind
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -409,11 +409,11 @@ export namespace XreaderView {
         connect_after(signal: 'updated', callback: (_source: this, object: number) => void): number;
         emit(signal: 'updated', object: number): void;
 
-        // Own virtual methods of XreaderView.JobFind
+        // Virtual methods
 
         vfunc_updated(page: number): void;
 
-        // Own methods of XreaderView.JobFind
+        // Methods
 
         get_n_results(pages: number): number;
         get_progress(): number;
@@ -436,11 +436,11 @@ export namespace XreaderView {
     class JobFonts extends Job {
         static $gtype: GObject.GType<JobFonts>;
 
-        // Own fields of XreaderView.JobFonts
+        // Fields
 
         scan_completed: boolean;
 
-        // Constructors of XreaderView.JobFonts
+        // Constructors
 
         constructor(properties?: Partial<JobFonts.ConstructorProps>, ...args: any[]);
 
@@ -448,7 +448,7 @@ export namespace XreaderView {
 
         static ['new'](document: XreaderDocument.Document): JobFonts;
 
-        // Own signals of XreaderView.JobFonts
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -457,7 +457,7 @@ export namespace XreaderView {
         connect_after(signal: 'updated', callback: (_source: this, object: number) => void): number;
         emit(signal: 'updated', object: number): void;
 
-        // Own virtual methods of XreaderView.JobFonts
+        // Virtual methods
 
         vfunc_updated(progress: number): void;
     }
@@ -471,11 +471,11 @@ export namespace XreaderView {
     class JobLayers extends Job {
         static $gtype: GObject.GType<JobLayers>;
 
-        // Own fields of XreaderView.JobLayers
+        // Fields
 
         model: Gtk.TreeModel;
 
-        // Constructors of XreaderView.JobLayers
+        // Constructors
 
         constructor(properties?: Partial<JobLayers.ConstructorProps>, ...args: any[]);
 
@@ -493,11 +493,11 @@ export namespace XreaderView {
     class JobLinks extends Job {
         static $gtype: GObject.GType<JobLinks>;
 
-        // Own fields of XreaderView.JobLinks
+        // Fields
 
         model: Gtk.TreeModel;
 
-        // Constructors of XreaderView.JobLinks
+        // Constructors
 
         constructor(properties?: Partial<JobLinks.ConstructorProps>, ...args: any[]);
 
@@ -515,12 +515,12 @@ export namespace XreaderView {
     class JobLoad extends Job {
         static $gtype: GObject.GType<JobLoad>;
 
-        // Own fields of XreaderView.JobLoad
+        // Fields
 
         uri: string;
         password: string;
 
-        // Constructors of XreaderView.JobLoad
+        // Constructors
 
         constructor(properties?: Partial<JobLoad.ConstructorProps>, ...args: any[]);
 
@@ -528,7 +528,7 @@ export namespace XreaderView {
 
         static ['new'](uri: string): JobLoad;
 
-        // Own methods of XreaderView.JobLoad
+        // Methods
 
         set_password(password: string): void;
         set_uri(uri: string): void;
@@ -543,7 +543,7 @@ export namespace XreaderView {
     class JobPageData extends Job {
         static $gtype: GObject.GType<JobPageData>;
 
-        // Own fields of XreaderView.JobPageData
+        // Fields
 
         page: number;
         flags: JobPageDataFlags;
@@ -551,7 +551,7 @@ export namespace XreaderView {
         text_layout: XreaderDocument.Rectangle;
         text_layout_length: number;
 
-        // Constructors of XreaderView.JobPageData
+        // Constructors
 
         constructor(properties?: Partial<JobPageData.ConstructorProps>, ...args: any[]);
 
@@ -569,11 +569,11 @@ export namespace XreaderView {
     class JobPrint extends Job {
         static $gtype: GObject.GType<JobPrint>;
 
-        // Own fields of XreaderView.JobPrint
+        // Fields
 
         page: number;
 
-        // Constructors of XreaderView.JobPrint
+        // Constructors
 
         constructor(properties?: Partial<JobPrint.ConstructorProps>, ...args: any[]);
 
@@ -581,7 +581,7 @@ export namespace XreaderView {
 
         static ['new'](document: XreaderDocument.Document): JobPrint;
 
-        // Own methods of XreaderView.JobPrint
+        // Methods
 
         set_cairo(cr: cairo.Context): void;
         set_page(page: number): void;
@@ -596,7 +596,7 @@ export namespace XreaderView {
     class JobRender extends Job {
         static $gtype: GObject.GType<JobRender>;
 
-        // Own fields of XreaderView.JobRender
+        // Fields
 
         page: number;
         rotation: number;
@@ -610,7 +610,7 @@ export namespace XreaderView {
         base: Gdk.Color;
         text: Gdk.Color;
 
-        // Constructors of XreaderView.JobRender
+        // Constructors
 
         constructor(properties?: Partial<JobRender.ConstructorProps>, ...args: any[]);
 
@@ -625,7 +625,7 @@ export namespace XreaderView {
             height: number,
         ): JobRender;
 
-        // Own methods of XreaderView.JobRender
+        // Methods
 
         set_selection_info(
             selection_points: XreaderDocument.Rectangle,
@@ -644,12 +644,12 @@ export namespace XreaderView {
     class JobSave extends Job {
         static $gtype: GObject.GType<JobSave>;
 
-        // Own fields of XreaderView.JobSave
+        // Fields
 
         uri: string;
         document_uri: string;
 
-        // Constructors of XreaderView.JobSave
+        // Constructors
 
         constructor(properties?: Partial<JobSave.ConstructorProps>, ...args: any[]);
 
@@ -667,14 +667,14 @@ export namespace XreaderView {
     class JobThumbnail extends Job {
         static $gtype: GObject.GType<JobThumbnail>;
 
-        // Own fields of XreaderView.JobThumbnail
+        // Fields
 
         page: number;
         rotation: number;
         scale: number;
         thumbnail: GdkPixbuf.Pixbuf;
 
-        // Constructors of XreaderView.JobThumbnail
+        // Constructors
 
         constructor(properties?: Partial<JobThumbnail.ConstructorProps>, ...args: any[]);
 
@@ -708,11 +708,11 @@ export namespace XreaderView {
     abstract class PrintOperation extends GObject.Object {
         static $gtype: GObject.GType<PrintOperation>;
 
-        // Own properties of XreaderView.PrintOperation
+        // Properties
 
         set document(val: XreaderDocument.Document);
 
-        // Constructors of XreaderView.PrintOperation
+        // Constructors
 
         constructor(properties?: Partial<PrintOperation.ConstructorProps>, ...args: any[]);
 
@@ -720,7 +720,7 @@ export namespace XreaderView {
 
         static ['new'](document: XreaderDocument.Document): PrintOperation;
 
-        // Own signals of XreaderView.PrintOperation
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -735,11 +735,11 @@ export namespace XreaderView {
         connect_after(signal: 'status-changed', callback: (_source: this) => void): number;
         emit(signal: 'status-changed'): void;
 
-        // Own static methods of XreaderView.PrintOperation
+        // Static methods
 
         static exists_for_document(document: XreaderDocument.Document): boolean;
 
-        // Own methods of XreaderView.PrintOperation
+        // Methods
 
         cancel(): void;
         get_embed_page_setup(): boolean;
@@ -810,7 +810,7 @@ export namespace XreaderView {
     class View extends Gtk.Container implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable {
         static $gtype: GObject.GType<View>;
 
-        // Constructors of XreaderView.View
+        // Constructors
 
         constructor(properties?: Partial<View.ConstructorProps>, ...args: any[]);
 
@@ -818,7 +818,7 @@ export namespace XreaderView {
 
         static ['new'](): View;
 
-        // Own signals of XreaderView.View
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -866,7 +866,7 @@ export namespace XreaderView {
         connect_after(signal: 'sync-source', callback: (_source: this, object: any | null) => void): number;
         emit(signal: 'sync-source', object?: any | null): void;
 
-        // Own methods of XreaderView.View
+        // Methods
 
         autoscroll_start(): void;
         autoscroll_stop(): void;
@@ -1449,7 +1449,7 @@ export namespace XreaderView {
     class ViewPresentation extends Gtk.Widget implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<ViewPresentation>;
 
-        // Own properties of XreaderView.ViewPresentation
+        // Properties
 
         set current_page(val: number);
         set currentPage(val: number);
@@ -1459,7 +1459,7 @@ export namespace XreaderView {
         get rotation(): number;
         set rotation(val: number);
 
-        // Constructors of XreaderView.ViewPresentation
+        // Constructors
 
         constructor(properties?: Partial<ViewPresentation.ConstructorProps>, ...args: any[]);
 
@@ -1472,7 +1472,7 @@ export namespace XreaderView {
             inverted_colors: boolean,
         ): ViewPresentation;
 
-        // Own signals of XreaderView.ViewPresentation
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -1487,7 +1487,7 @@ export namespace XreaderView {
         connect_after(signal: 'finished', callback: (_source: this) => void): number;
         emit(signal: 'finished'): void;
 
-        // Own methods of XreaderView.ViewPresentation
+        // Methods
 
         get_current_page(): number;
         get_rotation(): number;
@@ -2087,7 +2087,7 @@ export namespace XreaderView {
     class WebView extends Gtk.Container implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<WebView>;
 
-        // Constructors of XreaderView.WebView
+        // Constructors
 
         constructor(properties?: Partial<WebView.ConstructorProps>, ...args: any[]);
 
@@ -2095,7 +2095,7 @@ export namespace XreaderView {
 
         static ['new'](): WebView;
 
-        // Own methods of XreaderView.WebView
+        // Methods
 
         copy(): void;
         /**
@@ -2543,7 +2543,7 @@ export namespace XreaderView {
     abstract class JobWebThumbnail {
         static $gtype: GObject.GType<JobWebThumbnail>;
 
-        // Constructors of XreaderView.JobWebThumbnail
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2551,7 +2551,7 @@ export namespace XreaderView {
     abstract class JobWebThumbnailClass {
         static $gtype: GObject.GType<JobWebThumbnailClass>;
 
-        // Constructors of XreaderView.JobWebThumbnailClass
+        // Constructors
 
         _init(...args: any[]): void;
     }

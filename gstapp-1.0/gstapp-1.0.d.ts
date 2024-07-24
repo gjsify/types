@@ -175,7 +175,7 @@ export namespace GstApp {
     class AppSink extends GstBase.BaseSink implements Gst.URIHandler {
         static $gtype: GObject.GType<AppSink>;
 
-        // Own properties of GstApp.AppSink
+        // Properties
 
         get buffer_list(): boolean;
         set buffer_list(val: boolean);
@@ -200,17 +200,17 @@ export namespace GstApp {
         get waitOnEos(): boolean;
         set waitOnEos(val: boolean);
 
-        // Own fields of GstApp.AppSink
+        // Fields
 
         basesink: GstBase.BaseSink;
 
-        // Constructors of GstApp.AppSink
+        // Constructors
 
         constructor(properties?: Partial<AppSink.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of GstApp.AppSink
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -255,7 +255,7 @@ export namespace GstApp {
         ): number;
         emit(signal: 'try-pull-sample', timeout: number): void;
 
-        // Own virtual methods of GstApp.AppSink
+        // Virtual methods
 
         vfunc_eos(): void;
         vfunc_new_preroll(): Gst.FlowReturn;
@@ -335,7 +335,7 @@ export namespace GstApp {
          */
         vfunc_try_pull_sample(timeout: Gst.ClockTime): Gst.Sample | null;
 
-        // Own methods of GstApp.AppSink
+        // Methods
 
         /**
          * Check if `appsink` supports buffer lists.
@@ -1074,7 +1074,7 @@ export namespace GstApp {
     class AppSrc extends GstBase.BaseSrc implements Gst.URIHandler {
         static $gtype: GObject.GType<AppSrc>;
 
-        // Own properties of GstApp.AppSrc
+        // Properties
 
         /**
          * When max-bytes are queued and after the enough-data signal has been emitted,
@@ -1280,17 +1280,17 @@ export namespace GstApp {
         get streamType(): AppStreamType;
         set streamType(val: AppStreamType);
 
-        // Own fields of GstApp.AppSrc
+        // Fields
 
         basesrc: GstBase.BaseSrc;
 
-        // Constructors of GstApp.AppSrc
+        // Constructors
 
         constructor(properties?: Partial<AppSrc.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of GstApp.AppSrc
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -1323,7 +1323,7 @@ export namespace GstApp {
         connect_after(signal: 'seek-data', callback: (_source: this, offset: number) => boolean): number;
         emit(signal: 'seek-data', offset: number): void;
 
-        // Own virtual methods of GstApp.AppSrc
+        // Virtual methods
 
         /**
          * Indicates to the appsrc element that the last buffer queued in the
@@ -1367,7 +1367,7 @@ export namespace GstApp {
         vfunc_push_sample(sample: Gst.Sample): Gst.FlowReturn;
         vfunc_seek_data(offset: number): boolean;
 
-        // Own methods of GstApp.AppSrc
+        // Methods
 
         /**
          * Indicates to the appsrc element that the last buffer queued in the
@@ -1993,7 +1993,7 @@ export namespace GstApp {
     abstract class AppSinkPrivate {
         static $gtype: GObject.GType<AppSinkPrivate>;
 
-        // Constructors of GstApp.AppSinkPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2002,7 +2002,7 @@ export namespace GstApp {
     abstract class AppSrcPrivate {
         static $gtype: GObject.GType<AppSrcPrivate>;
 
-        // Constructors of GstApp.AppSrcPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }

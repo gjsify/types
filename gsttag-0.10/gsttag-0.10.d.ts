@@ -142,18 +142,18 @@ export namespace GstTag {
     abstract class Demux extends Gst.Element {
         static $gtype: GObject.GType<Demux>;
 
-        // Own fields of GstTag.Demux
+        // Fields
 
         element: Gst.Element;
         reserved: any[];
 
-        // Constructors of GstTag.Demux
+        // Constructors
 
         constructor(properties?: Partial<Demux.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of GstTag.Demux
+        // Virtual methods
 
         vfunc_identify_tag(buffer: Gst.Buffer, start_tag: boolean): [boolean, number];
         vfunc_parse_tag(buffer: Gst.Buffer, start_tag: boolean, tags: Gst.TagList): [DemuxResult, number];
@@ -164,7 +164,7 @@ export namespace GstTag {
     class DemuxPrivate {
         static $gtype: GObject.GType<DemuxPrivate>;
 
-        // Constructors of GstTag.DemuxPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }

@@ -45,12 +45,12 @@ export namespace GcrGtk4 {
     class CertificateWidget extends Gtk.Widget implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
         static $gtype: GObject.GType<CertificateWidget>;
 
-        // Own properties of GcrGtk4.CertificateWidget
+        // Properties
 
         get certificate(): Gcr.Certificate;
         set certificate(val: Gcr.Certificate);
 
-        // Constructors of GcrGtk4.CertificateWidget
+        // Constructors
 
         constructor(properties?: Partial<CertificateWidget.ConstructorProps>, ...args: any[]);
 
@@ -58,7 +58,7 @@ export namespace GcrGtk4 {
 
         static ['new'](certificate?: Gcr.Certificate | null): CertificateWidget;
 
-        // Own methods of GcrGtk4.CertificateWidget
+        // Methods
 
         /**
          * Get the certificate displayed in the widget.

@@ -166,12 +166,12 @@ export namespace NMA4 {
     class BarCode extends GObject.Object {
         static $gtype: GObject.GType<BarCode>;
 
-        // Own properties of NMA4.BarCode
+        // Properties
 
         get size(): number;
         set text(val: string);
 
-        // Constructors of NMA4.BarCode
+        // Constructors
 
         constructor(properties?: Partial<BarCode.ConstructorProps>, ...args: any[]);
 
@@ -179,7 +179,7 @@ export namespace NMA4 {
 
         static ['new'](text: string): BarCode;
 
-        // Own methods of NMA4.BarCode
+        // Methods
 
         /**
          * Draws the QR code onto the given context.
@@ -210,12 +210,12 @@ export namespace NMA4 {
     class BarCodeWidget extends Gtk.Box implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget, Gtk.Orientable {
         static $gtype: GObject.GType<BarCodeWidget>;
 
-        // Own properties of NMA4.BarCodeWidget
+        // Properties
 
         get connection(): NM.Connection;
         set connection(val: NM.Connection);
 
-        // Constructors of NMA4.BarCodeWidget
+        // Constructors
 
         constructor(properties?: Partial<BarCodeWidget.ConstructorProps>, ...args: any[]);
 
@@ -680,12 +680,12 @@ export namespace NMA4 {
     class CertChooser extends Gtk.Grid implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget, Gtk.Orientable {
         static $gtype: GObject.GType<CertChooser>;
 
-        // Own properties of NMA4.CertChooser
+        // Properties
 
         set flags(val: number);
         set title(val: string);
 
-        // Constructors of NMA4.CertChooser
+        // Constructors
 
         constructor(properties?: Partial<CertChooser.ConstructorProps>, ...args: any[]);
 
@@ -696,7 +696,7 @@ export namespace NMA4 {
 
         static ['new'](...args: never[]): any;
 
-        // Own signals of NMA4.CertChooser
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -717,7 +717,7 @@ export namespace NMA4 {
         connect_after(signal: 'key-validate', callback: (_source: this) => GLib.Error): number;
         emit(signal: 'key-validate'): void;
 
-        // Own methods of NMA4.CertChooser
+        // Methods
 
         /**
          * Adds the labels to the specified size group so that they are aligned
@@ -1310,14 +1310,14 @@ export namespace NMA4 {
     {
         static $gtype: GObject.GType<MobileProvidersDatabase>;
 
-        // Own properties of NMA4.MobileProvidersDatabase
+        // Properties
 
         get country_codes(): string;
         get countryCodes(): string;
         get service_providers(): string;
         get serviceProviders(): string;
 
-        // Constructors of NMA4.MobileProvidersDatabase
+        // Constructors
 
         constructor(properties?: Partial<MobileProvidersDatabase.ConstructorProps>, ...args: any[]);
 
@@ -1334,7 +1334,7 @@ export namespace NMA4 {
             cancellable?: Gio.Cancellable | null,
         ): MobileProvidersDatabase;
 
-        // Own static methods of NMA4.MobileProvidersDatabase
+        // Static methods
 
         static ['new'](
             country_codes?: string | null,
@@ -1343,7 +1343,7 @@ export namespace NMA4 {
             callback?: Gio.AsyncReadyCallback<MobileProvidersDatabase> | null,
         ): void;
 
-        // Own methods of NMA4.MobileProvidersDatabase
+        // Methods
 
         dump(): void;
         get_countries(): GLib.HashTable<string, CountryInfo>;
@@ -1960,13 +1960,13 @@ export namespace NMA4 {
     class MobileWizard extends GObject.Object {
         static $gtype: GObject.GType<MobileWizard>;
 
-        // Constructors of NMA4.MobileWizard
+        // Constructors
 
         constructor(properties?: Partial<MobileWizard.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of NMA4.MobileWizard
+        // Methods
 
         destroy(): void;
         present(): void;
@@ -1991,7 +1991,7 @@ export namespace NMA4 {
     {
         static $gtype: GObject.GType<VpnPasswordDialog>;
 
-        // Constructors of NMA4.VpnPasswordDialog
+        // Constructors
 
         constructor(properties?: Partial<VpnPasswordDialog.ConstructorProps>, ...args: any[]);
 
@@ -2002,7 +2002,7 @@ export namespace NMA4 {
 
         static ['new'](...args: never[]): any;
 
-        // Own methods of NMA4.VpnPasswordDialog
+        // Methods
 
         focus_password(): void;
         focus_password_secondary(): void;
@@ -4856,7 +4856,7 @@ export namespace NMA4 {
     {
         static $gtype: GObject.GType<WifiDialog>;
 
-        // Constructors of NMA4.WifiDialog
+        // Constructors
 
         constructor(properties?: Partial<WifiDialog.ConstructorProps>, ...args: any[]);
 
@@ -4886,7 +4886,7 @@ export namespace NMA4 {
             secrets_hints: string,
         ): WifiDialog;
 
-        // Own methods of NMA4.WifiDialog
+        // Methods
 
         get_connection(): [NM.Connection, NM.Device, NM.AccessPoint];
         get_nag_ignored(): boolean;
@@ -7715,11 +7715,11 @@ export namespace NMA4 {
     abstract class CountryInfo {
         static $gtype: GObject.GType<CountryInfo>;
 
-        // Constructors of NMA4.CountryInfo
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of NMA4.CountryInfo
+        // Methods
 
         get_country_code(): string;
         get_country_name(): string;
@@ -7731,11 +7731,11 @@ export namespace NMA4 {
     abstract class MobileAccessMethod {
         static $gtype: GObject.GType<MobileAccessMethod>;
 
-        // Constructors of NMA4.MobileAccessMethod
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of NMA4.MobileAccessMethod
+        // Methods
 
         get_3gpp_apn(): string;
         get_dns(): string[];
@@ -7751,11 +7751,11 @@ export namespace NMA4 {
     abstract class MobileProvider {
         static $gtype: GObject.GType<MobileProvider>;
 
-        // Constructors of NMA4.MobileProvider
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of NMA4.MobileProvider
+        // Methods
 
         get_3gpp_mcc_mnc(): string[];
         get_cdma_sid(): number[];
@@ -7769,7 +7769,7 @@ export namespace NMA4 {
     abstract class MobileProvidersDatabasePrivate {
         static $gtype: GObject.GType<MobileProvidersDatabasePrivate>;
 
-        // Constructors of NMA4.MobileProvidersDatabasePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -7780,7 +7780,7 @@ export namespace NMA4 {
     class MobileWizardAccessMethod {
         static $gtype: GObject.GType<MobileWizardAccessMethod>;
 
-        // Own fields of NMA4.MobileWizardAccessMethod
+        // Fields
 
         provider_name: string;
         plan_name: string;
@@ -7789,7 +7789,7 @@ export namespace NMA4 {
         password: string;
         gsm_apn: string;
 
-        // Constructors of NMA4.MobileWizardAccessMethod
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -7800,11 +7800,11 @@ export namespace NMA4 {
     abstract class Ws {
         static $gtype: GObject.GType<Ws>;
 
-        // Constructors of NMA4.Ws
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of NMA4.Ws
+        // Methods
 
         adhoc_compatible(): boolean;
         hotspot_compatible(): boolean;
@@ -7814,7 +7814,7 @@ export namespace NMA4 {
     abstract class Ws8021x {
         static $gtype: GObject.GType<Ws8021x>;
 
-        // Constructors of NMA4.Ws8021x
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -7822,7 +7822,7 @@ export namespace NMA4 {
     abstract class Ws8021xClass {
         static $gtype: GObject.GType<Ws8021xClass>;
 
-        // Constructors of NMA4.Ws8021xClass
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -7830,7 +7830,7 @@ export namespace NMA4 {
     abstract class WsDynamicWep {
         static $gtype: GObject.GType<WsDynamicWep>;
 
-        // Constructors of NMA4.WsDynamicWep
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -7838,7 +7838,7 @@ export namespace NMA4 {
     abstract class WsDynamicWepClass {
         static $gtype: GObject.GType<WsDynamicWepClass>;
 
-        // Constructors of NMA4.WsDynamicWepClass
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -7846,7 +7846,7 @@ export namespace NMA4 {
     abstract class WsInterface {
         static $gtype: GObject.GType<WsInterface>;
 
-        // Constructors of NMA4.WsInterface
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -7854,7 +7854,7 @@ export namespace NMA4 {
     abstract class WsLeap {
         static $gtype: GObject.GType<WsLeap>;
 
-        // Constructors of NMA4.WsLeap
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -7862,7 +7862,7 @@ export namespace NMA4 {
     abstract class WsLeapClass {
         static $gtype: GObject.GType<WsLeapClass>;
 
-        // Constructors of NMA4.WsLeapClass
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -7870,7 +7870,7 @@ export namespace NMA4 {
     abstract class WsOwe {
         static $gtype: GObject.GType<WsOwe>;
 
-        // Constructors of NMA4.WsOwe
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -7878,7 +7878,7 @@ export namespace NMA4 {
     abstract class WsOweClass {
         static $gtype: GObject.GType<WsOweClass>;
 
-        // Constructors of NMA4.WsOweClass
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -7886,7 +7886,7 @@ export namespace NMA4 {
     abstract class WsSae {
         static $gtype: GObject.GType<WsSae>;
 
-        // Constructors of NMA4.WsSae
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -7894,7 +7894,7 @@ export namespace NMA4 {
     abstract class WsSaeClass {
         static $gtype: GObject.GType<WsSaeClass>;
 
-        // Constructors of NMA4.WsSaeClass
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -7902,7 +7902,7 @@ export namespace NMA4 {
     abstract class WsWepKey {
         static $gtype: GObject.GType<WsWepKey>;
 
-        // Constructors of NMA4.WsWepKey
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -7910,7 +7910,7 @@ export namespace NMA4 {
     abstract class WsWepKeyClass {
         static $gtype: GObject.GType<WsWepKeyClass>;
 
-        // Constructors of NMA4.WsWepKeyClass
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -7918,7 +7918,7 @@ export namespace NMA4 {
     abstract class WsWpaEap {
         static $gtype: GObject.GType<WsWpaEap>;
 
-        // Constructors of NMA4.WsWpaEap
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -7926,7 +7926,7 @@ export namespace NMA4 {
     abstract class WsWpaEapClass {
         static $gtype: GObject.GType<WsWpaEapClass>;
 
-        // Constructors of NMA4.WsWpaEapClass
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -7934,7 +7934,7 @@ export namespace NMA4 {
     abstract class WsWpaPsk {
         static $gtype: GObject.GType<WsWpaPsk>;
 
-        // Constructors of NMA4.WsWpaPsk
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -7942,7 +7942,7 @@ export namespace NMA4 {
     abstract class WsWpaPskClass {
         static $gtype: GObject.GType<WsWpaPskClass>;
 
-        // Constructors of NMA4.WsWpaPskClass
+        // Constructors
 
         _init(...args: any[]): void;
     }

@@ -153,7 +153,7 @@ export namespace Devhelp {
     class AssistantView extends WebKit2.WebView implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<AssistantView>;
 
-        // Constructors of Devhelp.AssistantView
+        // Constructors
 
         constructor(properties?: Partial<AssistantView.ConstructorProps>, ...args: any[]);
 
@@ -161,7 +161,7 @@ export namespace Devhelp {
 
         static ['new'](): AssistantView;
 
-        // Own signals of Devhelp.AssistantView
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -170,7 +170,7 @@ export namespace Devhelp {
         connect_after(signal: 'open-uri', callback: (_source: this, uri: string) => void): number;
         emit(signal: 'open-uri', uri: string): void;
 
-        // Own methods of Devhelp.AssistantView
+        // Methods
 
         /**
          * Search for `str` in the current assistant view.
@@ -607,7 +607,7 @@ export namespace Devhelp {
     class Book extends GObject.Object {
         static $gtype: GObject.GType<Book>;
 
-        // Constructors of Devhelp.Book
+        // Constructors
 
         constructor(properties?: Partial<Book.ConstructorProps>, ...args: any[]);
 
@@ -615,7 +615,7 @@ export namespace Devhelp {
 
         static ['new'](index_file: Gio.File): Book;
 
-        // Own signals of Devhelp.Book
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -627,7 +627,7 @@ export namespace Devhelp {
         connect_after(signal: 'updated', callback: (_source: this) => void): number;
         emit(signal: 'updated'): void;
 
-        // Own methods of Devhelp.Book
+        // Methods
 
         /**
          * Compares the #DhBook's by their IDs, with g_ascii_strcasecmp().
@@ -683,7 +683,7 @@ export namespace Devhelp {
     class BookList extends GObject.Object {
         static $gtype: GObject.GType<BookList>;
 
-        // Constructors of Devhelp.BookList
+        // Constructors
 
         constructor(properties?: Partial<BookList.ConstructorProps>, ...args: any[]);
 
@@ -691,7 +691,7 @@ export namespace Devhelp {
 
         static ['new'](): BookList;
 
-        // Own signals of Devhelp.BookList
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -703,7 +703,7 @@ export namespace Devhelp {
         connect_after(signal: 'remove-book', callback: (_source: this, book: Book) => void): number;
         emit(signal: 'remove-book', book: Book): void;
 
-        // Own static methods of Devhelp.BookList
+        // Static methods
 
         /**
          * Gets the default #DhBookList object. It is created with #DhBookListBuilder,
@@ -713,7 +713,7 @@ export namespace Devhelp {
          */
         static get_default(): BookList;
 
-        // Own virtual methods of Devhelp.BookList
+        // Virtual methods
 
         /**
          * Emits the #DhBookList::add-book signal.
@@ -737,7 +737,7 @@ export namespace Devhelp {
          */
         vfunc_remove_book(book: Book): void;
 
-        // Own methods of Devhelp.BookList
+        // Methods
 
         /**
          * Emits the #DhBookList::add-book signal.
@@ -772,7 +772,7 @@ export namespace Devhelp {
     class BookListBuilder extends GObject.Object {
         static $gtype: GObject.GType<BookListBuilder>;
 
-        // Constructors of Devhelp.BookListBuilder
+        // Constructors
 
         constructor(properties?: Partial<BookListBuilder.ConstructorProps>, ...args: any[]);
 
@@ -780,7 +780,7 @@ export namespace Devhelp {
 
         static ['new'](): BookListBuilder;
 
-        // Own methods of Devhelp.BookListBuilder
+        // Methods
 
         /**
          * Creates the default #DhBookListDirectory's and adds them to `builder` with
@@ -854,14 +854,14 @@ export namespace Devhelp {
     class BookListDirectory extends BookList {
         static $gtype: GObject.GType<BookListDirectory>;
 
-        // Own properties of Devhelp.BookListDirectory
+        // Properties
 
         /**
          * The directory, as a #GFile, containing a set of Devhelp books.
          */
         get directory(): Gio.File;
 
-        // Constructors of Devhelp.BookListDirectory
+        // Constructors
 
         constructor(properties?: Partial<BookListDirectory.ConstructorProps>, ...args: any[]);
 
@@ -872,7 +872,7 @@ export namespace Devhelp {
 
         static ['new'](...args: never[]): any;
 
-        // Own methods of Devhelp.BookListDirectory
+        // Methods
 
         get_directory(): Gio.File;
     }
@@ -886,7 +886,7 @@ export namespace Devhelp {
     class BookManager extends GObject.Object {
         static $gtype: GObject.GType<BookManager>;
 
-        // Constructors of Devhelp.BookManager
+        // Constructors
 
         constructor(properties?: Partial<BookManager.ConstructorProps>, ...args: any[]);
 
@@ -894,7 +894,7 @@ export namespace Devhelp {
 
         static ['new'](): BookManager;
 
-        // Own methods of Devhelp.BookManager
+        // Methods
 
         populate(): void;
     }
@@ -920,7 +920,7 @@ export namespace Devhelp {
     class BookTree extends Gtk.TreeView implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable {
         static $gtype: GObject.GType<BookTree>;
 
-        // Own properties of Devhelp.BookTree
+        // Properties
 
         /**
          * The #DhProfile. If set to %NULL, the default profile as returned by
@@ -928,7 +928,7 @@ export namespace Devhelp {
          */
         get profile(): Profile;
 
-        // Constructors of Devhelp.BookTree
+        // Constructors
 
         constructor(properties?: Partial<BookTree.ConstructorProps>, ...args: any[]);
 
@@ -939,7 +939,7 @@ export namespace Devhelp {
 
         static ['new'](...args: never[]): any;
 
-        // Own signals of Devhelp.BookTree
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -948,7 +948,7 @@ export namespace Devhelp {
         connect_after(signal: 'link-selected', callback: (_source: this, link: Link) => void): number;
         emit(signal: 'link-selected', link: Link): void;
 
-        // Own methods of Devhelp.BookTree
+        // Methods
 
         get_profile(): Profile;
         get_selected_link(): Link | null;
@@ -1471,7 +1471,7 @@ export namespace Devhelp {
     class Completion extends GObject.Object {
         static $gtype: GObject.GType<Completion>;
 
-        // Constructors of Devhelp.Completion
+        // Constructors
 
         constructor(properties?: Partial<Completion.ConstructorProps>, ...args: any[]);
 
@@ -1479,7 +1479,7 @@ export namespace Devhelp {
 
         static ['new'](): Completion;
 
-        // Own static methods of Devhelp.Completion
+        // Static methods
 
         /**
          * The same as dh_completion_complete(), but aggregated for several
@@ -1489,7 +1489,7 @@ export namespace Devhelp {
          */
         static aggregate_complete(completion_objects: Completion[] | null, prefix: string): string | null;
 
-        // Own methods of Devhelp.Completion
+        // Methods
 
         /**
          * Adds a string to the `completion` object.
@@ -1528,7 +1528,7 @@ export namespace Devhelp {
     class KeywordModel extends GObject.Object implements Gtk.TreeModel {
         static $gtype: GObject.GType<KeywordModel>;
 
-        // Constructors of Devhelp.KeywordModel
+        // Constructors
 
         constructor(properties?: Partial<KeywordModel.ConstructorProps>, ...args: any[]);
 
@@ -1536,7 +1536,7 @@ export namespace Devhelp {
 
         static ['new'](): KeywordModel;
 
-        // Own methods of Devhelp.KeywordModel
+        // Methods
 
         /**
          * Searches in the #DhBookList of `profile` the list of #DhLink's that correspond
@@ -2379,7 +2379,7 @@ export namespace Devhelp {
     class Notebook extends Gtk.Notebook implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<Notebook>;
 
-        // Own properties of Devhelp.Notebook
+        // Properties
 
         /**
          * The #DhProfile. If set to %NULL, the default profile as returned by
@@ -2387,7 +2387,7 @@ export namespace Devhelp {
          */
         get profile(): Profile;
 
-        // Constructors of Devhelp.Notebook
+        // Constructors
 
         constructor(properties?: Partial<Notebook.ConstructorProps>, ...args: any[]);
 
@@ -2398,7 +2398,7 @@ export namespace Devhelp {
 
         static ['new'](...args: never[]): any;
 
-        // Own methods of Devhelp.Notebook
+        // Methods
 
         get_active_tab(): Tab | null;
         get_active_web_view(): WebView | null;
@@ -2825,13 +2825,13 @@ export namespace Devhelp {
     class Profile extends GObject.Object {
         static $gtype: GObject.GType<Profile>;
 
-        // Constructors of Devhelp.Profile
+        // Constructors
 
         constructor(properties?: Partial<Profile.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of Devhelp.Profile
+        // Static methods
 
         /**
          * Gets the default #DhProfile object. It has the default #DhSettings object as
@@ -2840,7 +2840,7 @@ export namespace Devhelp {
          */
         static get_default(): Profile;
 
-        // Own methods of Devhelp.Profile
+        // Methods
 
         /**
          * Gets the #DhBookList object of `profile`. The returned object is guaranteed to
@@ -2865,7 +2865,7 @@ export namespace Devhelp {
     class ProfileBuilder extends GObject.Object {
         static $gtype: GObject.GType<ProfileBuilder>;
 
-        // Constructors of Devhelp.ProfileBuilder
+        // Constructors
 
         constructor(properties?: Partial<ProfileBuilder.ConstructorProps>, ...args: any[]);
 
@@ -2873,7 +2873,7 @@ export namespace Devhelp {
 
         static ['new'](): ProfileBuilder;
 
-        // Own methods of Devhelp.ProfileBuilder
+        // Methods
 
         create_object(): Profile;
         /**
@@ -2908,7 +2908,7 @@ export namespace Devhelp {
     class SearchBar extends Gtk.SearchBar implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<SearchBar>;
 
-        // Own properties of Devhelp.SearchBar
+        // Properties
 
         /**
          * The associated #DhNotebook. #DhSearchBar has a strong reference to
@@ -2916,7 +2916,7 @@ export namespace Devhelp {
          */
         get notebook(): Notebook;
 
-        // Constructors of Devhelp.SearchBar
+        // Constructors
 
         constructor(properties?: Partial<SearchBar.ConstructorProps>, ...args: any[]);
 
@@ -2927,7 +2927,7 @@ export namespace Devhelp {
 
         static ['new'](...args: never[]): any;
 
-        // Own methods of Devhelp.SearchBar
+        // Methods
 
         get_notebook(): Notebook;
         /**
@@ -3366,7 +3366,7 @@ export namespace Devhelp {
     class Settings extends GObject.Object {
         static $gtype: GObject.GType<Settings>;
 
-        // Own properties of Devhelp.Settings
+        // Properties
 
         /**
          * Font for text with fixed width, such as code examples.
@@ -3417,13 +3417,13 @@ export namespace Devhelp {
         get variableFont(): string;
         set variableFont(val: string);
 
-        // Constructors of Devhelp.Settings
+        // Constructors
 
         constructor(properties?: Partial<Settings.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of Devhelp.Settings
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -3435,7 +3435,7 @@ export namespace Devhelp {
         connect_after(signal: 'fonts-changed', callback: (_source: this) => void): number;
         emit(signal: 'fonts-changed'): void;
 
-        // Own static methods of Devhelp.Settings
+        // Static methods
 
         /**
          * Gets the default #DhSettings object. It has the default #GSettings paths (see
@@ -3443,12 +3443,12 @@ export namespace Devhelp {
          */
         static get_default(): Settings;
 
-        // Own virtual methods of Devhelp.Settings
+        // Virtual methods
 
         vfunc_books_disabled_changed(): void;
         vfunc_fonts_changed(): void;
 
-        // Own methods of Devhelp.Settings
+        // Methods
 
         /**
          * Binds all the #DhSettings properties to their corresponding #GSettings keys.
@@ -3549,7 +3549,7 @@ export namespace Devhelp {
     class SettingsBuilder extends GObject.Object {
         static $gtype: GObject.GType<SettingsBuilder>;
 
-        // Constructors of Devhelp.SettingsBuilder
+        // Constructors
 
         constructor(properties?: Partial<SettingsBuilder.ConstructorProps>, ...args: any[]);
 
@@ -3557,7 +3557,7 @@ export namespace Devhelp {
 
         static ['new'](): SettingsBuilder;
 
-        // Own methods of Devhelp.SettingsBuilder
+        // Methods
 
         create_object(): Settings;
         /**
@@ -3599,7 +3599,7 @@ export namespace Devhelp {
     class Sidebar extends Gtk.Grid implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<Sidebar>;
 
-        // Own properties of Devhelp.Sidebar
+        // Properties
 
         /**
          * The #DhProfile. If set to %NULL, the default profile as returned by
@@ -3607,7 +3607,7 @@ export namespace Devhelp {
          */
         get profile(): Profile;
 
-        // Constructors of Devhelp.Sidebar
+        // Constructors
 
         constructor(properties?: Partial<Sidebar.ConstructorProps>, ...args: any[]);
 
@@ -3618,7 +3618,7 @@ export namespace Devhelp {
 
         static ['new'](...args: never[]): any;
 
-        // Own signals of Devhelp.Sidebar
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -3627,15 +3627,15 @@ export namespace Devhelp {
         connect_after(signal: 'link-selected', callback: (_source: this, link: Link) => void): number;
         emit(signal: 'link-selected', link: Link): void;
 
-        // Own static methods of Devhelp.Sidebar
+        // Static methods
 
         static new2(profile?: Profile | null): Sidebar;
 
-        // Own virtual methods of Devhelp.Sidebar
+        // Virtual methods
 
         vfunc_link_selected(link: Link): void;
 
-        // Own methods of Devhelp.Sidebar
+        // Methods
 
         get_profile(): Profile;
         /**
@@ -4092,7 +4092,7 @@ export namespace Devhelp {
     class Tab extends Gtk.Grid implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<Tab>;
 
-        // Own properties of Devhelp.Tab
+        // Properties
 
         /**
          * The #DhWebView of the tab. If set to %NULL a #DhWebView is created
@@ -4105,7 +4105,7 @@ export namespace Devhelp {
          */
         get webView(): WebView;
 
-        // Constructors of Devhelp.Tab
+        // Constructors
 
         constructor(properties?: Partial<Tab.ConstructorProps>, ...args: any[]);
 
@@ -4116,7 +4116,7 @@ export namespace Devhelp {
 
         static ['new'](...args: never[]): any;
 
-        // Own methods of Devhelp.Tab
+        // Methods
 
         get_web_view(): WebView;
 
@@ -4555,7 +4555,7 @@ export namespace Devhelp {
     class TabLabel extends Gtk.Grid implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<TabLabel>;
 
-        // Own properties of Devhelp.TabLabel
+        // Properties
 
         /**
          * The associated #DhTab. #DhTabLabel has a weak reference to the
@@ -4563,7 +4563,7 @@ export namespace Devhelp {
          */
         get tab(): Tab;
 
-        // Constructors of Devhelp.TabLabel
+        // Constructors
 
         constructor(properties?: Partial<TabLabel.ConstructorProps>, ...args: any[]);
 
@@ -4574,7 +4574,7 @@ export namespace Devhelp {
 
         static ['new'](...args: never[]): any;
 
-        // Own methods of Devhelp.TabLabel
+        // Methods
 
         get_tab(): Tab | null;
 
@@ -5018,7 +5018,7 @@ export namespace Devhelp {
     class WebView extends WebKit2.WebView implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<WebView>;
 
-        // Own properties of Devhelp.WebView
+        // Properties
 
         /**
          * The #DhProfile. If set to %NULL, the default profile as returned by
@@ -5026,7 +5026,7 @@ export namespace Devhelp {
          */
         get profile(): Profile;
 
-        // Constructors of Devhelp.WebView
+        // Constructors
 
         constructor(properties?: Partial<WebView.ConstructorProps>, ...args: any[]);
 
@@ -5037,7 +5037,7 @@ export namespace Devhelp {
 
         static ['new'](...args: never[]): any;
 
-        // Own signals of Devhelp.WebView
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -5046,11 +5046,11 @@ export namespace Devhelp {
         connect_after(signal: 'open-new-tab', callback: (_source: this, uri: string) => void): number;
         emit(signal: 'open-new-tab', uri: string): void;
 
-        // Own virtual methods of Devhelp.WebView
+        // Virtual methods
 
         vfunc_open_new_tab(uri: string): void;
 
-        // Own methods of Devhelp.WebView
+        // Methods
 
         can_reset_zoom(): boolean;
         can_zoom_in(): boolean;
@@ -5503,7 +5503,7 @@ export namespace Devhelp {
     abstract class BookListBuilderPrivate {
         static $gtype: GObject.GType<BookListBuilderPrivate>;
 
-        // Constructors of Devhelp.BookListBuilderPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5513,7 +5513,7 @@ export namespace Devhelp {
     abstract class BookListDirectoryPrivate {
         static $gtype: GObject.GType<BookListDirectoryPrivate>;
 
-        // Constructors of Devhelp.BookListDirectoryPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5521,7 +5521,7 @@ export namespace Devhelp {
     abstract class BookListPrivate {
         static $gtype: GObject.GType<BookListPrivate>;
 
-        // Constructors of Devhelp.BookListPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5532,7 +5532,7 @@ export namespace Devhelp {
     abstract class CompletionPrivate {
         static $gtype: GObject.GType<CompletionPrivate>;
 
-        // Constructors of Devhelp.CompletionPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5541,7 +5541,7 @@ export namespace Devhelp {
     class Link {
         static $gtype: GObject.GType<Link>;
 
-        // Constructors of Devhelp.Link
+        // Constructors
 
         constructor(type: LinkType, book_link: Link, name: string, relative_url: string);
         _init(...args: any[]): void;
@@ -5550,7 +5550,7 @@ export namespace Devhelp {
 
         static new_book(base_path: string, book_id: string, book_title: string, relative_url: string): Link;
 
-        // Own methods of Devhelp.Link
+        // Methods
 
         /**
          * This function permits to know if `link` belongs to a certain page.
@@ -5608,7 +5608,7 @@ export namespace Devhelp {
     abstract class NotebookPrivate {
         static $gtype: GObject.GType<NotebookPrivate>;
 
-        // Constructors of Devhelp.NotebookPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5617,7 +5617,7 @@ export namespace Devhelp {
     abstract class ProfileBuilderPrivate {
         static $gtype: GObject.GType<ProfileBuilderPrivate>;
 
-        // Constructors of Devhelp.ProfileBuilderPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5626,7 +5626,7 @@ export namespace Devhelp {
     abstract class ProfilePrivate {
         static $gtype: GObject.GType<ProfilePrivate>;
 
-        // Constructors of Devhelp.ProfilePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5635,7 +5635,7 @@ export namespace Devhelp {
     abstract class SearchBarPrivate {
         static $gtype: GObject.GType<SearchBarPrivate>;
 
-        // Constructors of Devhelp.SearchBarPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5644,7 +5644,7 @@ export namespace Devhelp {
     abstract class SettingsBuilderPrivate {
         static $gtype: GObject.GType<SettingsBuilderPrivate>;
 
-        // Constructors of Devhelp.SettingsBuilderPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5653,7 +5653,7 @@ export namespace Devhelp {
     abstract class SettingsPrivate {
         static $gtype: GObject.GType<SettingsPrivate>;
 
-        // Constructors of Devhelp.SettingsPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5664,7 +5664,7 @@ export namespace Devhelp {
     abstract class TabLabelPrivate {
         static $gtype: GObject.GType<TabLabelPrivate>;
 
-        // Constructors of Devhelp.TabLabelPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5672,7 +5672,7 @@ export namespace Devhelp {
     abstract class TabPrivate {
         static $gtype: GObject.GType<TabPrivate>;
 
-        // Constructors of Devhelp.TabPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5681,7 +5681,7 @@ export namespace Devhelp {
     abstract class WebViewPrivate {
         static $gtype: GObject.GType<WebViewPrivate>;
 
-        // Constructors of Devhelp.WebViewPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }

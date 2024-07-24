@@ -28,7 +28,7 @@ export namespace ArrowCUDA {
     class Buffer extends Arrow.Buffer {
         static $gtype: GObject.GType<Buffer>;
 
-        // Constructors of ArrowCUDA.Buffer
+        // Constructors
 
         constructor(properties?: Partial<Buffer.ConstructorProps>, ...args: any[]);
 
@@ -43,7 +43,7 @@ export namespace ArrowCUDA {
 
         static new_record_batch(context: Context, record_batch: Arrow.RecordBatch): Buffer;
 
-        // Own methods of ArrowCUDA.Buffer
+        // Methods
 
         copy_from_host(data: Uint8Array | string): boolean;
         copy_to_host(position: number, size: number): GLib.Bytes;
@@ -64,7 +64,7 @@ export namespace ArrowCUDA {
     class BufferInputStream extends Arrow.BufferInputStream implements Arrow.File, Arrow.Readable {
         static $gtype: GObject.GType<BufferInputStream>;
 
-        // Constructors of ArrowCUDA.BufferInputStream
+        // Constructors
 
         constructor(properties?: Partial<BufferInputStream.ConstructorProps>, ...args: any[]);
 
@@ -487,7 +487,7 @@ export namespace ArrowCUDA {
     class BufferOutputStream extends Arrow.OutputStream implements Arrow.File, Arrow.Writable {
         static $gtype: GObject.GType<BufferOutputStream>;
 
-        // Constructors of ArrowCUDA.BufferOutputStream
+        // Constructors
 
         constructor(properties?: Partial<BufferOutputStream.ConstructorProps>, ...args: any[]);
 
@@ -495,7 +495,7 @@ export namespace ArrowCUDA {
 
         static ['new'](buffer: Buffer): BufferOutputStream;
 
-        // Own methods of ArrowCUDA.BufferOutputStream
+        // Methods
 
         get_buffer_size(): number;
         get_buffered_size(): number;
@@ -925,17 +925,17 @@ export namespace ArrowCUDA {
     class Context extends GObject.Object {
         static $gtype: GObject.GType<Context>;
 
-        // Own properties of ArrowCUDA.Context
+        // Properties
 
         set context(val: any);
 
-        // Constructors of ArrowCUDA.Context
+        // Constructors
 
         constructor(properties?: Partial<Context.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of ArrowCUDA.Context
+        // Methods
 
         get_allocated_size(): number;
     }
@@ -949,7 +949,7 @@ export namespace ArrowCUDA {
     class DeviceManager extends GObject.Object {
         static $gtype: GObject.GType<DeviceManager>;
 
-        // Constructors of ArrowCUDA.DeviceManager
+        // Constructors
 
         constructor(properties?: Partial<DeviceManager.ConstructorProps>, ...args: any[]);
 
@@ -957,7 +957,7 @@ export namespace ArrowCUDA {
 
         static ['new'](): DeviceManager;
 
-        // Own methods of ArrowCUDA.DeviceManager
+        // Methods
 
         get_context(gpu_number: number): Context;
         get_n_devices(): number;
@@ -972,7 +972,7 @@ export namespace ArrowCUDA {
     class HostBuffer extends Arrow.MutableBuffer {
         static $gtype: GObject.GType<HostBuffer>;
 
-        // Constructors of ArrowCUDA.HostBuffer
+        // Constructors
 
         constructor(properties?: Partial<HostBuffer.ConstructorProps>, ...args: any[]);
 
@@ -996,12 +996,12 @@ export namespace ArrowCUDA {
     class IPCMemoryHandle extends GObject.Object {
         static $gtype: GObject.GType<IPCMemoryHandle>;
 
-        // Own properties of ArrowCUDA.IPCMemoryHandle
+        // Properties
 
         set ipc_memory_handle(val: any);
         set ipcMemoryHandle(val: any);
 
-        // Constructors of ArrowCUDA.IPCMemoryHandle
+        // Constructors
 
         constructor(properties?: Partial<IPCMemoryHandle.ConstructorProps>, ...args: any[]);
 
@@ -1009,7 +1009,7 @@ export namespace ArrowCUDA {
 
         static ['new'](data: Uint8Array | string): IPCMemoryHandle;
 
-        // Own methods of ArrowCUDA.IPCMemoryHandle
+        // Methods
 
         serialize(): Arrow.Buffer;
     }

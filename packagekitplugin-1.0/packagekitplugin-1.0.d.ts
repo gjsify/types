@@ -173,7 +173,7 @@ export namespace PackageKitPlugin {
     class Backend extends GObject.Object {
         static $gtype: GObject.GType<Backend>;
 
-        // Constructors of PackageKitPlugin.Backend
+        // Constructors
 
         constructor(properties?: Partial<Backend.ConstructorProps>, ...args: any[]);
 
@@ -181,12 +181,12 @@ export namespace PackageKitPlugin {
 
         static ['new'](conf: GLib.KeyFile): Backend;
 
-        // Own static methods of PackageKitPlugin.Backend
+        // Static methods
 
         static bool_to_string(value: boolean): string;
         static initialize(conf: GLib.KeyFile, backend: Backend): void;
 
-        // Own methods of PackageKitPlugin.Backend
+        // Methods
 
         accept_eula(eula_id: string): void;
         cancel(job: BackendJob): void;
@@ -319,7 +319,7 @@ export namespace PackageKitPlugin {
     class BackendJob extends GObject.Object {
         static $gtype: GObject.GType<BackendJob>;
 
-        // Constructors of PackageKitPlugin.BackendJob
+        // Constructors
 
         constructor(properties?: Partial<BackendJob.ConstructorProps>, ...args: any[]);
 
@@ -327,7 +327,7 @@ export namespace PackageKitPlugin {
 
         static ['new'](conf: GLib.KeyFile): BackendJob;
 
-        // Own methods of PackageKitPlugin.BackendJob
+        // Methods
 
         category(parent_id: string, cat_id: string, name: string, summary: string, icon: string): void;
         details(
@@ -472,7 +472,7 @@ export namespace PackageKitPlugin {
     class Transaction extends GObject.Object {
         static $gtype: GObject.GType<Transaction>;
 
-        // Constructors of PackageKitPlugin.Transaction
+        // Constructors
 
         constructor(properties?: Partial<Transaction.ConstructorProps>, ...args: any[]);
 
@@ -480,7 +480,7 @@ export namespace PackageKitPlugin {
 
         static ['new'](conf: GLib.KeyFile, introspection: Gio.DBusNodeInfo): Transaction;
 
-        // Own signals of PackageKitPlugin.Transaction
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -489,12 +489,12 @@ export namespace PackageKitPlugin {
         connect_after(signal: 'finished', callback: (_source: this) => void): number;
         emit(signal: 'finished'): void;
 
-        // Own static methods of PackageKitPlugin.Transaction
+        // Static methods
 
         static error_quark(): GLib.Quark;
         static state_to_string(state: TransactionState): string;
 
-        // Own methods of PackageKitPlugin.Transaction
+        // Methods
 
         /**
          * Designed to be used by plugins.
@@ -556,7 +556,7 @@ export namespace PackageKitPlugin {
     abstract class BackendJobPrivate {
         static $gtype: GObject.GType<BackendJobPrivate>;
 
-        // Constructors of PackageKitPlugin.BackendJobPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -564,7 +564,7 @@ export namespace PackageKitPlugin {
     abstract class BackendPrivate {
         static $gtype: GObject.GType<BackendPrivate>;
 
-        // Constructors of PackageKitPlugin.BackendPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -572,20 +572,20 @@ export namespace PackageKitPlugin {
     class Plugin {
         static $gtype: GObject.GType<Plugin>;
 
-        // Own fields of PackageKitPlugin.Plugin
+        // Fields
 
         backend: Backend;
         job: BackendJob;
 
-        // Constructors of PackageKitPlugin.Plugin
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own static methods of PackageKitPlugin.Plugin
+        // Static methods
 
         static get_description(): string;
 
-        // Own methods of PackageKitPlugin.Plugin
+        // Methods
 
         destroy(): void;
         initialize(): void;
@@ -601,7 +601,7 @@ export namespace PackageKitPlugin {
     abstract class PluginPrivate {
         static $gtype: GObject.GType<PluginPrivate>;
 
-        // Constructors of PackageKitPlugin.PluginPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -610,7 +610,7 @@ export namespace PackageKitPlugin {
     abstract class TransactionPrivate {
         static $gtype: GObject.GType<TransactionPrivate>;
 
-        // Constructors of PackageKitPlugin.TransactionPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }

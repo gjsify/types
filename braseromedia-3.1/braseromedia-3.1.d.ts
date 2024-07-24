@@ -198,20 +198,20 @@ export namespace BraseroMedia {
     class Drive extends GObject.Object {
         static $gtype: GObject.GType<Drive>;
 
-        // Own properties of BraseroMedia.Drive
+        // Properties
 
         get device(): string;
         get gdrive(): Gio.Drive;
         set gdrive(val: Gio.Drive);
         get udi(): string;
 
-        // Constructors of BraseroMedia.Drive
+        // Constructors
 
         constructor(properties?: Partial<Drive.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of BraseroMedia.Drive
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -223,12 +223,12 @@ export namespace BraseroMedia {
         connect_after(signal: 'medium-removed', callback: (_source: this, medium: Medium) => void): number;
         emit(signal: 'medium-removed', medium: Medium): void;
 
-        // Own virtual methods of BraseroMedia.Drive
+        // Virtual methods
 
         vfunc_medium_added(medium: Medium): void;
         vfunc_medium_removed(medium: Medium): void;
 
-        // Own methods of BraseroMedia.Drive
+        // Methods
 
         /**
          * Returns whether the drive can eject media.
@@ -383,7 +383,7 @@ export namespace BraseroMedia {
     {
         static $gtype: GObject.GType<DriveSelection>;
 
-        // Own properties of BraseroMedia.DriveSelection
+        // Properties
 
         get Drive(): Drive;
         set Drive(val: Drive);
@@ -392,7 +392,7 @@ export namespace BraseroMedia {
         get driveType(): number;
         set driveType(val: number);
 
-        // Constructors of BraseroMedia.DriveSelection
+        // Constructors
 
         constructor(properties?: Partial<DriveSelection.ConstructorProps>, ...args: any[]);
 
@@ -400,7 +400,7 @@ export namespace BraseroMedia {
 
         static ['new'](): DriveSelection;
 
-        // Own signals of BraseroMedia.DriveSelection
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -409,11 +409,11 @@ export namespace BraseroMedia {
         connect_after(signal: 'drive-changed', callback: (_source: this, drive: Drive) => void): number;
         emit(signal: 'drive-changed', drive: Drive): void;
 
-        // Own virtual methods of BraseroMedia.DriveSelection
+        // Virtual methods
 
         vfunc_drive_changed(drive: Drive): void;
 
-        // Own methods of BraseroMedia.DriveSelection
+        // Methods
 
         /**
          * Sets the active drive. Emits the ::drive-changed signal.
@@ -4583,17 +4583,17 @@ export namespace BraseroMedia {
     class Medium extends GObject.Object {
         static $gtype: GObject.GType<Medium>;
 
-        // Own properties of BraseroMedia.Medium
+        // Properties
 
         get drive(): Drive;
 
-        // Constructors of BraseroMedia.Medium
+        // Constructors
 
         constructor(properties?: Partial<Medium.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of BraseroMedia.Medium
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -4602,7 +4602,7 @@ export namespace BraseroMedia {
         connect_after(signal: 'probed', callback: (_source: this) => void): number;
         emit(signal: 'probed'): void;
 
-        // Own methods of BraseroMedia.Medium
+        // Methods
 
         /**
          * Gets whether the medium can be rewritten. Note: it also checks that the drive
@@ -4780,13 +4780,13 @@ export namespace BraseroMedia {
     class MediumMonitor extends GObject.Object {
         static $gtype: GObject.GType<MediumMonitor>;
 
-        // Constructors of BraseroMedia.MediumMonitor
+        // Constructors
 
         constructor(properties?: Partial<MediumMonitor.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of BraseroMedia.MediumMonitor
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -4804,14 +4804,14 @@ export namespace BraseroMedia {
         connect_after(signal: 'medium-removed', callback: (_source: this, medium: Medium) => void): number;
         emit(signal: 'medium-removed', medium: Medium): void;
 
-        // Own virtual methods of BraseroMedia.MediumMonitor
+        // Virtual methods
 
         vfunc_drive_added(drive: Drive): void;
         vfunc_drive_removed(drive: Drive): void;
         vfunc_medium_added(medium: Medium): void;
         vfunc_medium_removed(medium: Medium): void;
 
-        // Own methods of BraseroMedia.MediumMonitor
+        // Methods
 
         /**
          * Gets the list of available drives that are of the given type.
@@ -4859,7 +4859,7 @@ export namespace BraseroMedia {
     {
         static $gtype: GObject.GType<MediumSelection>;
 
-        // Own properties of BraseroMedia.MediumSelection
+        // Properties
 
         get media_type(): number;
         set media_type(val: number);
@@ -4868,7 +4868,7 @@ export namespace BraseroMedia {
         get medium(): Medium;
         set medium(val: Medium);
 
-        // Constructors of BraseroMedia.MediumSelection
+        // Constructors
 
         constructor(properties?: Partial<MediumSelection.ConstructorProps>, ...args: any[]);
 
@@ -4876,7 +4876,7 @@ export namespace BraseroMedia {
 
         static ['new'](): MediumSelection;
 
-        // Own signals of BraseroMedia.MediumSelection
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -4885,12 +4885,12 @@ export namespace BraseroMedia {
         connect_after(signal: 'medium-changed', callback: (_source: this, medium: Medium) => void): number;
         emit(signal: 'medium-changed', medium: Medium): void;
 
-        // Own virtual methods of BraseroMedia.MediumSelection
+        // Virtual methods
 
         vfunc_format_medium_string(medium: Medium): string;
         vfunc_medium_changed(medium: Medium): void;
 
-        // Own methods of BraseroMedia.MediumSelection
+        // Methods
 
         /**
          * Sets the active medium. Emits the ::medium-changed signal.
@@ -9049,13 +9049,13 @@ export namespace BraseroMedia {
     class Volume extends Medium {
         static $gtype: GObject.GType<Volume>;
 
-        // Constructors of BraseroMedia.Volume
+        // Constructors
 
         constructor(properties?: Partial<Volume.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of BraseroMedia.Volume
+        // Methods
 
         /**
          * Cancels all operations currently running for `volume`

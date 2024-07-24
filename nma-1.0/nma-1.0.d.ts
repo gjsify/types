@@ -165,12 +165,12 @@ export namespace NMA {
     class BarCode extends GObject.Object {
         static $gtype: GObject.GType<BarCode>;
 
-        // Own properties of NMA.BarCode
+        // Properties
 
         get size(): number;
         set text(val: string);
 
-        // Constructors of NMA.BarCode
+        // Constructors
 
         constructor(properties?: Partial<BarCode.ConstructorProps>, ...args: any[]);
 
@@ -178,7 +178,7 @@ export namespace NMA {
 
         static ['new'](text: string): BarCode;
 
-        // Own methods of NMA.BarCode
+        // Methods
 
         /**
          * Draws the QR code onto the given context.
@@ -208,12 +208,12 @@ export namespace NMA {
     class BarCodeWidget extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<BarCodeWidget>;
 
-        // Own properties of NMA.BarCodeWidget
+        // Properties
 
         get connection(): NM.Connection;
         set connection(val: NM.Connection);
 
-        // Constructors of NMA.BarCodeWidget
+        // Constructors
 
         constructor(properties?: Partial<BarCodeWidget.ConstructorProps>, ...args: any[]);
 
@@ -677,12 +677,12 @@ export namespace NMA {
     class CertChooser extends Gtk.Grid implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<CertChooser>;
 
-        // Own properties of NMA.CertChooser
+        // Properties
 
         set flags(val: number);
         set title(val: string);
 
-        // Constructors of NMA.CertChooser
+        // Constructors
 
         constructor(properties?: Partial<CertChooser.ConstructorProps>, ...args: any[]);
 
@@ -693,7 +693,7 @@ export namespace NMA {
 
         static ['new'](...args: never[]): any;
 
-        // Own signals of NMA.CertChooser
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -714,7 +714,7 @@ export namespace NMA {
         connect_after(signal: 'key-validate', callback: (_source: this) => GLib.Error): number;
         emit(signal: 'key-validate'): void;
 
-        // Own methods of NMA.CertChooser
+        // Methods
 
         /**
          * Adds the labels to the specified size group so that they are aligned
@@ -1307,14 +1307,14 @@ export namespace NMA {
     {
         static $gtype: GObject.GType<MobileProvidersDatabase>;
 
-        // Own properties of NMA.MobileProvidersDatabase
+        // Properties
 
         get country_codes(): string;
         get countryCodes(): string;
         get service_providers(): string;
         get serviceProviders(): string;
 
-        // Constructors of NMA.MobileProvidersDatabase
+        // Constructors
 
         constructor(properties?: Partial<MobileProvidersDatabase.ConstructorProps>, ...args: any[]);
 
@@ -1331,7 +1331,7 @@ export namespace NMA {
             cancellable?: Gio.Cancellable | null,
         ): MobileProvidersDatabase;
 
-        // Own static methods of NMA.MobileProvidersDatabase
+        // Static methods
 
         static ['new'](
             country_codes?: string | null,
@@ -1340,7 +1340,7 @@ export namespace NMA {
             callback?: Gio.AsyncReadyCallback<MobileProvidersDatabase> | null,
         ): void;
 
-        // Own methods of NMA.MobileProvidersDatabase
+        // Methods
 
         dump(): void;
         get_countries(): GLib.HashTable<string, CountryInfo>;
@@ -1957,13 +1957,13 @@ export namespace NMA {
     class MobileWizard extends GObject.Object {
         static $gtype: GObject.GType<MobileWizard>;
 
-        // Constructors of NMA.MobileWizard
+        // Constructors
 
         constructor(properties?: Partial<MobileWizard.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of NMA.MobileWizard
+        // Methods
 
         destroy(): void;
         present(): void;
@@ -1981,7 +1981,7 @@ export namespace NMA {
     class VpnPasswordDialog extends Gtk.Dialog implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<VpnPasswordDialog>;
 
-        // Constructors of NMA.VpnPasswordDialog
+        // Constructors
 
         constructor(properties?: Partial<VpnPasswordDialog.ConstructorProps>, ...args: any[]);
 
@@ -1992,7 +1992,7 @@ export namespace NMA {
 
         static ['new'](...args: never[]): any;
 
-        // Own methods of NMA.VpnPasswordDialog
+        // Methods
 
         focus_password(): void;
         focus_password_secondary(): void;
@@ -2426,7 +2426,7 @@ export namespace NMA {
     class WifiDialog extends Gtk.Dialog implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<WifiDialog>;
 
-        // Constructors of NMA.WifiDialog
+        // Constructors
 
         constructor(properties?: Partial<WifiDialog.ConstructorProps>, ...args: any[]);
 
@@ -2456,7 +2456,7 @@ export namespace NMA {
             secrets_hints: string,
         ): WifiDialog;
 
-        // Own methods of NMA.WifiDialog
+        // Methods
 
         get_connection(): [NM.Connection, NM.Device, NM.AccessPoint];
         get_nag_ignored(): boolean;
@@ -2872,11 +2872,11 @@ export namespace NMA {
     abstract class CountryInfo {
         static $gtype: GObject.GType<CountryInfo>;
 
-        // Constructors of NMA.CountryInfo
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of NMA.CountryInfo
+        // Methods
 
         get_country_code(): string;
         get_country_name(): string;
@@ -2888,11 +2888,11 @@ export namespace NMA {
     abstract class MobileAccessMethod {
         static $gtype: GObject.GType<MobileAccessMethod>;
 
-        // Constructors of NMA.MobileAccessMethod
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of NMA.MobileAccessMethod
+        // Methods
 
         get_3gpp_apn(): string;
         get_dns(): string[];
@@ -2908,11 +2908,11 @@ export namespace NMA {
     abstract class MobileProvider {
         static $gtype: GObject.GType<MobileProvider>;
 
-        // Constructors of NMA.MobileProvider
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of NMA.MobileProvider
+        // Methods
 
         get_3gpp_mcc_mnc(): string[];
         get_cdma_sid(): number[];
@@ -2926,7 +2926,7 @@ export namespace NMA {
     abstract class MobileProvidersDatabasePrivate {
         static $gtype: GObject.GType<MobileProvidersDatabasePrivate>;
 
-        // Constructors of NMA.MobileProvidersDatabasePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2937,7 +2937,7 @@ export namespace NMA {
     class MobileWizardAccessMethod {
         static $gtype: GObject.GType<MobileWizardAccessMethod>;
 
-        // Own fields of NMA.MobileWizardAccessMethod
+        // Fields
 
         provider_name: string;
         plan_name: string;
@@ -2946,7 +2946,7 @@ export namespace NMA {
         password: string;
         gsm_apn: string;
 
-        // Constructors of NMA.MobileWizardAccessMethod
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2957,11 +2957,11 @@ export namespace NMA {
     abstract class Ws {
         static $gtype: GObject.GType<Ws>;
 
-        // Constructors of NMA.Ws
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of NMA.Ws
+        // Methods
 
         adhoc_compatible(): boolean;
         hotspot_compatible(): boolean;
@@ -2971,7 +2971,7 @@ export namespace NMA {
     abstract class Ws8021x {
         static $gtype: GObject.GType<Ws8021x>;
 
-        // Constructors of NMA.Ws8021x
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2979,7 +2979,7 @@ export namespace NMA {
     abstract class Ws8021xClass {
         static $gtype: GObject.GType<Ws8021xClass>;
 
-        // Constructors of NMA.Ws8021xClass
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2987,7 +2987,7 @@ export namespace NMA {
     abstract class WsDynamicWep {
         static $gtype: GObject.GType<WsDynamicWep>;
 
-        // Constructors of NMA.WsDynamicWep
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2995,7 +2995,7 @@ export namespace NMA {
     abstract class WsDynamicWepClass {
         static $gtype: GObject.GType<WsDynamicWepClass>;
 
-        // Constructors of NMA.WsDynamicWepClass
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3003,7 +3003,7 @@ export namespace NMA {
     abstract class WsInterface {
         static $gtype: GObject.GType<WsInterface>;
 
-        // Constructors of NMA.WsInterface
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3011,7 +3011,7 @@ export namespace NMA {
     abstract class WsLeap {
         static $gtype: GObject.GType<WsLeap>;
 
-        // Constructors of NMA.WsLeap
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3019,7 +3019,7 @@ export namespace NMA {
     abstract class WsLeapClass {
         static $gtype: GObject.GType<WsLeapClass>;
 
-        // Constructors of NMA.WsLeapClass
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3027,7 +3027,7 @@ export namespace NMA {
     abstract class WsOwe {
         static $gtype: GObject.GType<WsOwe>;
 
-        // Constructors of NMA.WsOwe
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3035,7 +3035,7 @@ export namespace NMA {
     abstract class WsOweClass {
         static $gtype: GObject.GType<WsOweClass>;
 
-        // Constructors of NMA.WsOweClass
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3043,7 +3043,7 @@ export namespace NMA {
     abstract class WsSae {
         static $gtype: GObject.GType<WsSae>;
 
-        // Constructors of NMA.WsSae
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3051,7 +3051,7 @@ export namespace NMA {
     abstract class WsSaeClass {
         static $gtype: GObject.GType<WsSaeClass>;
 
-        // Constructors of NMA.WsSaeClass
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3059,7 +3059,7 @@ export namespace NMA {
     abstract class WsWepKey {
         static $gtype: GObject.GType<WsWepKey>;
 
-        // Constructors of NMA.WsWepKey
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3067,7 +3067,7 @@ export namespace NMA {
     abstract class WsWepKeyClass {
         static $gtype: GObject.GType<WsWepKeyClass>;
 
-        // Constructors of NMA.WsWepKeyClass
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3075,7 +3075,7 @@ export namespace NMA {
     abstract class WsWpaEap {
         static $gtype: GObject.GType<WsWpaEap>;
 
-        // Constructors of NMA.WsWpaEap
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3083,7 +3083,7 @@ export namespace NMA {
     abstract class WsWpaEapClass {
         static $gtype: GObject.GType<WsWpaEapClass>;
 
-        // Constructors of NMA.WsWpaEapClass
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3091,7 +3091,7 @@ export namespace NMA {
     abstract class WsWpaPsk {
         static $gtype: GObject.GType<WsWpaPsk>;
 
-        // Constructors of NMA.WsWpaPsk
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3099,7 +3099,7 @@ export namespace NMA {
     abstract class WsWpaPskClass {
         static $gtype: GObject.GType<WsWpaPskClass>;
 
-        // Constructors of NMA.WsWpaPskClass
+        // Constructors
 
         _init(...args: any[]): void;
     }

@@ -551,7 +551,7 @@ export namespace WebKit2WebExtension {
     class ContextMenu extends GObject.Object {
         static $gtype: GObject.GType<ContextMenu>;
 
-        // Constructors of WebKit2WebExtension.ContextMenu
+        // Constructors
 
         constructor(properties?: Partial<ContextMenu.ConstructorProps>, ...args: any[]);
 
@@ -561,7 +561,7 @@ export namespace WebKit2WebExtension {
 
         static new_with_items(items: ContextMenuItem[]): ContextMenu;
 
-        // Own methods of WebKit2WebExtension.ContextMenu
+        // Methods
 
         /**
          * Adds `item` at the end of the `menu`.
@@ -688,7 +688,7 @@ export namespace WebKit2WebExtension {
     class ContextMenuItem extends GObject.InitiallyUnowned {
         static $gtype: GObject.GType<ContextMenuItem>;
 
-        // Constructors of WebKit2WebExtension.ContextMenuItem
+        // Constructors
 
         constructor(properties?: Partial<ContextMenuItem.ConstructorProps>, ...args: any[]);
 
@@ -706,7 +706,7 @@ export namespace WebKit2WebExtension {
 
         static new_with_submenu(label: string, submenu: ContextMenu): ContextMenuItem;
 
-        // Own methods of WebKit2WebExtension.ContextMenuItem
+        // Methods
 
         /**
          * Gets the action associated to `item` as a #GtkAction.
@@ -768,7 +768,7 @@ export namespace WebKit2WebExtension {
     class DOMAttr extends DOMNode implements DOMEventTarget {
         static $gtype: GObject.GType<DOMAttr>;
 
-        // Own properties of WebKit2WebExtension.DOMAttr
+        // Properties
 
         get local_name(): string;
         get localName(): string;
@@ -782,13 +782,13 @@ export namespace WebKit2WebExtension {
         get value(): string;
         set value(val: string);
 
-        // Constructors of WebKit2WebExtension.DOMAttr
+        // Constructors
 
         constructor(properties?: Partial<DOMAttr.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of WebKit2WebExtension.DOMAttr
+        // Methods
 
         get_local_name(): string;
         get_name(): string;
@@ -1223,17 +1223,17 @@ export namespace WebKit2WebExtension {
     class DOMBlob extends DOMObject {
         static $gtype: GObject.GType<DOMBlob>;
 
-        // Own properties of WebKit2WebExtension.DOMBlob
+        // Properties
 
         get size(): number;
 
-        // Constructors of WebKit2WebExtension.DOMBlob
+        // Constructors
 
         constructor(properties?: Partial<DOMBlob.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of WebKit2WebExtension.DOMBlob
+        // Methods
 
         get_size(): number;
     }
@@ -1247,7 +1247,7 @@ export namespace WebKit2WebExtension {
     class DOMCDATASection extends DOMText implements DOMEventTarget {
         static $gtype: GObject.GType<DOMCDATASection>;
 
-        // Constructors of WebKit2WebExtension.DOMCDATASection
+        // Constructors
 
         constructor(properties?: Partial<DOMCDATASection.ConstructorProps>, ...args: any[]);
 
@@ -1677,7 +1677,7 @@ export namespace WebKit2WebExtension {
     class DOMCSSRule extends DOMObject {
         static $gtype: GObject.GType<DOMCSSRule>;
 
-        // Own properties of WebKit2WebExtension.DOMCSSRule
+        // Properties
 
         get css_text(): string;
         set css_text(val: string);
@@ -1689,13 +1689,13 @@ export namespace WebKit2WebExtension {
         get parentStyleSheet(): DOMCSSStyleSheet;
         get type(): number;
 
-        // Constructors of WebKit2WebExtension.DOMCSSRule
+        // Constructors
 
         constructor(properties?: Partial<DOMCSSRule.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of WebKit2WebExtension.DOMCSSRule
+        // Methods
 
         get_css_text(): string;
         get_parent_rule(): DOMCSSRule;
@@ -1715,17 +1715,17 @@ export namespace WebKit2WebExtension {
     class DOMCSSRuleList extends DOMObject {
         static $gtype: GObject.GType<DOMCSSRuleList>;
 
-        // Own properties of WebKit2WebExtension.DOMCSSRuleList
+        // Properties
 
         get length(): number;
 
-        // Constructors of WebKit2WebExtension.DOMCSSRuleList
+        // Constructors
 
         constructor(properties?: Partial<DOMCSSRuleList.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of WebKit2WebExtension.DOMCSSRuleList
+        // Methods
 
         get_length(): number;
         item(index: number): DOMCSSRule;
@@ -1746,7 +1746,7 @@ export namespace WebKit2WebExtension {
     class DOMCSSStyleDeclaration extends DOMObject {
         static $gtype: GObject.GType<DOMCSSStyleDeclaration>;
 
-        // Own properties of WebKit2WebExtension.DOMCSSStyleDeclaration
+        // Properties
 
         get css_text(): string;
         set css_text(val: string);
@@ -1756,13 +1756,13 @@ export namespace WebKit2WebExtension {
         get parent_rule(): DOMCSSRule;
         get parentRule(): DOMCSSRule;
 
-        // Constructors of WebKit2WebExtension.DOMCSSStyleDeclaration
+        // Constructors
 
         constructor(properties?: Partial<DOMCSSStyleDeclaration.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of WebKit2WebExtension.DOMCSSStyleDeclaration
+        // Methods
 
         get_css_text(): string;
         get_length(): number;
@@ -1794,7 +1794,7 @@ export namespace WebKit2WebExtension {
     class DOMCSSStyleSheet extends DOMStyleSheet {
         static $gtype: GObject.GType<DOMCSSStyleSheet>;
 
-        // Own properties of WebKit2WebExtension.DOMCSSStyleSheet
+        // Properties
 
         get css_rules(): DOMCSSRuleList;
         get cssRules(): DOMCSSRuleList;
@@ -1802,13 +1802,13 @@ export namespace WebKit2WebExtension {
         get ownerRule(): DOMCSSRule;
         get rules(): DOMCSSRuleList;
 
-        // Constructors of WebKit2WebExtension.DOMCSSStyleSheet
+        // Constructors
 
         constructor(properties?: Partial<DOMCSSStyleSheet.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of WebKit2WebExtension.DOMCSSStyleSheet
+        // Methods
 
         add_rule(selector: string, style: string, index: number): number;
         delete_rule(index: number): void;
@@ -1833,7 +1833,7 @@ export namespace WebKit2WebExtension {
     class DOMCSSValue extends DOMObject {
         static $gtype: GObject.GType<DOMCSSValue>;
 
-        // Own properties of WebKit2WebExtension.DOMCSSValue
+        // Properties
 
         get css_text(): string;
         set css_text(val: string);
@@ -1842,13 +1842,13 @@ export namespace WebKit2WebExtension {
         get css_value_type(): number;
         get cssValueType(): number;
 
-        // Constructors of WebKit2WebExtension.DOMCSSValue
+        // Constructors
 
         constructor(properties?: Partial<DOMCSSValue.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of WebKit2WebExtension.DOMCSSValue
+        // Methods
 
         get_css_text(): string;
         get_css_value_type(): number;
@@ -1867,19 +1867,19 @@ export namespace WebKit2WebExtension {
     class DOMCharacterData extends DOMNode implements DOMEventTarget {
         static $gtype: GObject.GType<DOMCharacterData>;
 
-        // Own properties of WebKit2WebExtension.DOMCharacterData
+        // Properties
 
         get data(): string;
         set data(val: string);
         get length(): number;
 
-        // Constructors of WebKit2WebExtension.DOMCharacterData
+        // Constructors
 
         constructor(properties?: Partial<DOMCharacterData.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of WebKit2WebExtension.DOMCharacterData
+        // Methods
 
         append_data(data: string): void;
         delete_data(offset: number, length: number): void;
@@ -2300,7 +2300,7 @@ export namespace WebKit2WebExtension {
     class DOMClientRect extends DOMObject {
         static $gtype: GObject.GType<DOMClientRect>;
 
-        // Own properties of WebKit2WebExtension.DOMClientRect
+        // Properties
 
         get bottom(): number;
         get height(): number;
@@ -2309,13 +2309,13 @@ export namespace WebKit2WebExtension {
         get top(): number;
         get width(): number;
 
-        // Constructors of WebKit2WebExtension.DOMClientRect
+        // Constructors
 
         constructor(properties?: Partial<DOMClientRect.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of WebKit2WebExtension.DOMClientRect
+        // Methods
 
         /**
          * Returns the bottom coordinate of `self,` relative to the viewport.
@@ -2360,17 +2360,17 @@ export namespace WebKit2WebExtension {
     class DOMClientRectList extends DOMObject {
         static $gtype: GObject.GType<DOMClientRectList>;
 
-        // Own properties of WebKit2WebExtension.DOMClientRectList
+        // Properties
 
         get length(): number;
 
-        // Constructors of WebKit2WebExtension.DOMClientRectList
+        // Constructors
 
         constructor(properties?: Partial<DOMClientRectList.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of WebKit2WebExtension.DOMClientRectList
+        // Methods
 
         /**
          * Returns the number of #WebKitDOMClientRect objects that `self` contains.
@@ -2394,7 +2394,7 @@ export namespace WebKit2WebExtension {
     class DOMComment extends DOMCharacterData implements DOMEventTarget {
         static $gtype: GObject.GType<DOMComment>;
 
-        // Constructors of WebKit2WebExtension.DOMComment
+        // Constructors
 
         constructor(properties?: Partial<DOMComment.ConstructorProps>, ...args: any[]);
 
@@ -2816,13 +2816,13 @@ export namespace WebKit2WebExtension {
     class DOMDOMImplementation extends DOMObject {
         static $gtype: GObject.GType<DOMDOMImplementation>;
 
-        // Constructors of WebKit2WebExtension.DOMDOMImplementation
+        // Constructors
 
         constructor(properties?: Partial<DOMDOMImplementation.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of WebKit2WebExtension.DOMDOMImplementation
+        // Methods
 
         create_css_style_sheet(title: string, media: string): DOMCSSStyleSheet;
         create_document(
@@ -2866,7 +2866,7 @@ export namespace WebKit2WebExtension {
     class DOMDOMSelection extends DOMObject {
         static $gtype: GObject.GType<DOMDOMSelection>;
 
-        // Own properties of WebKit2WebExtension.DOMDOMSelection
+        // Properties
 
         get anchor_node(): DOMNode;
         get anchorNode(): DOMNode;
@@ -2890,13 +2890,13 @@ export namespace WebKit2WebExtension {
         get rangeCount(): number;
         get type(): string;
 
-        // Constructors of WebKit2WebExtension.DOMDOMSelection
+        // Constructors
 
         constructor(properties?: Partial<DOMDOMSelection.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of WebKit2WebExtension.DOMDOMSelection
+        // Methods
 
         add_range(range: DOMRange): void;
         collapse(node: DOMNode, offset: number): void;
@@ -2937,19 +2937,19 @@ export namespace WebKit2WebExtension {
     class DOMDOMTokenList extends DOMObject {
         static $gtype: GObject.GType<DOMDOMTokenList>;
 
-        // Own properties of WebKit2WebExtension.DOMDOMTokenList
+        // Properties
 
         get length(): number;
         get value(): string;
         set value(val: string);
 
-        // Constructors of WebKit2WebExtension.DOMDOMTokenList
+        // Constructors
 
         constructor(properties?: Partial<DOMDOMTokenList.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of WebKit2WebExtension.DOMDOMTokenList
+        // Methods
 
         contains(token: string): boolean;
         get_length(): number;
@@ -3014,7 +3014,7 @@ export namespace WebKit2WebExtension {
     class DOMDOMWindow extends DOMObject implements DOMEventTarget {
         static $gtype: GObject.GType<DOMDOMWindow>;
 
-        // Own properties of WebKit2WebExtension.DOMDOMWindow
+        // Properties
 
         get closed(): boolean;
         get default_status(): string;
@@ -3065,13 +3065,13 @@ export namespace WebKit2WebExtension {
         get top(): DOMDOMWindow;
         get window(): DOMDOMWindow;
 
-        // Constructors of WebKit2WebExtension.DOMDOMWindow
+        // Constructors
 
         constructor(properties?: Partial<DOMDOMWindow.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of WebKit2WebExtension.DOMDOMWindow
+        // Methods
 
         alert(message: string): void;
         blur(): void;
@@ -3636,7 +3636,7 @@ export namespace WebKit2WebExtension {
     class DOMDocument extends DOMNode implements DOMEventTarget {
         static $gtype: GObject.GType<DOMDocument>;
 
-        // Own properties of WebKit2WebExtension.DOMDocument
+        // Properties
 
         get active_element(): DOMElement;
         get activeElement(): DOMElement;
@@ -3733,13 +3733,13 @@ export namespace WebKit2WebExtension {
         get xmlVersion(): string;
         set xmlVersion(val: string);
 
-        // Constructors of WebKit2WebExtension.DOMDocument
+        // Constructors
 
         constructor(properties?: Partial<DOMDocument.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of WebKit2WebExtension.DOMDocument
+        // Methods
 
         adopt_node(source: DOMNode): DOMNode;
         caret_range_from_point(x: number, y: number): DOMRange;
@@ -4310,7 +4310,7 @@ export namespace WebKit2WebExtension {
     class DOMDocumentFragment extends DOMNode implements DOMEventTarget {
         static $gtype: GObject.GType<DOMDocumentFragment>;
 
-        // Own properties of WebKit2WebExtension.DOMDocumentFragment
+        // Properties
 
         get child_element_count(): number;
         get childElementCount(): number;
@@ -4320,13 +4320,13 @@ export namespace WebKit2WebExtension {
         get last_element_child(): DOMElement;
         get lastElementChild(): DOMElement;
 
-        // Constructors of WebKit2WebExtension.DOMDocumentFragment
+        // Constructors
 
         constructor(properties?: Partial<DOMDocumentFragment.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of WebKit2WebExtension.DOMDocumentFragment
+        // Methods
 
         get_child_element_count(): number;
         get_children(): DOMHTMLCollection;
@@ -4768,7 +4768,7 @@ export namespace WebKit2WebExtension {
     class DOMDocumentType extends DOMNode implements DOMEventTarget {
         static $gtype: GObject.GType<DOMDocumentType>;
 
-        // Own properties of WebKit2WebExtension.DOMDocumentType
+        // Properties
 
         get entities(): DOMNamedNodeMap;
         get internal_subset(): string;
@@ -4780,13 +4780,13 @@ export namespace WebKit2WebExtension {
         get system_id(): string;
         get systemId(): string;
 
-        // Constructors of WebKit2WebExtension.DOMDocumentType
+        // Constructors
 
         constructor(properties?: Partial<DOMDocumentType.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of WebKit2WebExtension.DOMDocumentType
+        // Methods
 
         get_entities(): DOMNamedNodeMap;
         get_internal_subset(): string;
@@ -5275,7 +5275,7 @@ export namespace WebKit2WebExtension {
     class DOMElement extends DOMNode implements DOMEventTarget {
         static $gtype: GObject.GType<DOMElement>;
 
-        // Own properties of WebKit2WebExtension.DOMElement
+        // Properties
 
         get attributes(): DOMNamedNodeMap;
         get child_element_count(): number;
@@ -5346,13 +5346,13 @@ export namespace WebKit2WebExtension {
         get webkit_region_overset(): string;
         get webkitRegionOverset(): string;
 
-        // Constructors of WebKit2WebExtension.DOMElement
+        // Constructors
 
         constructor(properties?: Partial<DOMElement.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of WebKit2WebExtension.DOMElement
+        // Methods
 
         blur(): void;
         closest(selectors: string): DOMElement;
@@ -5890,7 +5890,7 @@ export namespace WebKit2WebExtension {
     class DOMEntityReference extends DOMNode implements DOMEventTarget {
         static $gtype: GObject.GType<DOMEntityReference>;
 
-        // Constructors of WebKit2WebExtension.DOMEntityReference
+        // Constructors
 
         constructor(properties?: Partial<DOMEntityReference.ConstructorProps>, ...args: any[]);
 
@@ -6335,7 +6335,7 @@ export namespace WebKit2WebExtension {
     class DOMEvent extends DOMObject {
         static $gtype: GObject.GType<DOMEvent>;
 
-        // Own properties of WebKit2WebExtension.DOMEvent
+        // Properties
 
         get bubbles(): boolean;
         get cancel_bubble(): boolean;
@@ -6358,13 +6358,13 @@ export namespace WebKit2WebExtension {
         get timeStamp(): number;
         get type(): string;
 
-        // Constructors of WebKit2WebExtension.DOMEvent
+        // Constructors
 
         constructor(properties?: Partial<DOMEvent.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of WebKit2WebExtension.DOMEvent
+        // Methods
 
         get_bubbles(): boolean;
         get_cancel_bubble(): boolean;
@@ -6394,17 +6394,17 @@ export namespace WebKit2WebExtension {
     class DOMFile extends DOMBlob {
         static $gtype: GObject.GType<DOMFile>;
 
-        // Own properties of WebKit2WebExtension.DOMFile
+        // Properties
 
         get name(): string;
 
-        // Constructors of WebKit2WebExtension.DOMFile
+        // Constructors
 
         constructor(properties?: Partial<DOMFile.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of WebKit2WebExtension.DOMFile
+        // Methods
 
         get_name(): string;
     }
@@ -6420,17 +6420,17 @@ export namespace WebKit2WebExtension {
     class DOMFileList extends DOMObject {
         static $gtype: GObject.GType<DOMFileList>;
 
-        // Own properties of WebKit2WebExtension.DOMFileList
+        // Properties
 
         get length(): number;
 
-        // Constructors of WebKit2WebExtension.DOMFileList
+        // Constructors
 
         constructor(properties?: Partial<DOMFileList.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of WebKit2WebExtension.DOMFileList
+        // Methods
 
         get_length(): number;
         item(index: number): DOMFile;
@@ -6464,7 +6464,7 @@ export namespace WebKit2WebExtension {
     class DOMHTMLAnchorElement extends DOMHTMLElement implements DOMEventTarget {
         static $gtype: GObject.GType<DOMHTMLAnchorElement>;
 
-        // Own properties of WebKit2WebExtension.DOMHTMLAnchorElement
+        // Properties
 
         get charset(): string;
         set charset(val: string);
@@ -6503,13 +6503,13 @@ export namespace WebKit2WebExtension {
         get type(): string;
         set type(val: string);
 
-        // Constructors of WebKit2WebExtension.DOMHTMLAnchorElement
+        // Constructors
 
         constructor(properties?: Partial<DOMHTMLAnchorElement.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of WebKit2WebExtension.DOMHTMLAnchorElement
+        // Methods
 
         get_charset(): string;
         get_coords(): string;
@@ -6973,7 +6973,7 @@ export namespace WebKit2WebExtension {
     class DOMHTMLAppletElement extends DOMHTMLElement implements DOMEventTarget {
         static $gtype: GObject.GType<DOMHTMLAppletElement>;
 
-        // Own properties of WebKit2WebExtension.DOMHTMLAppletElement
+        // Properties
 
         get align(): string;
         set align(val: string);
@@ -7000,13 +7000,13 @@ export namespace WebKit2WebExtension {
         get width(): string;
         set width(val: string);
 
-        // Constructors of WebKit2WebExtension.DOMHTMLAppletElement
+        // Constructors
 
         constructor(properties?: Partial<DOMHTMLAppletElement.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of WebKit2WebExtension.DOMHTMLAppletElement
+        // Methods
 
         get_align(): string;
         get_alt(): string;
@@ -7458,7 +7458,7 @@ export namespace WebKit2WebExtension {
     class DOMHTMLAreaElement extends DOMHTMLElement implements DOMEventTarget {
         static $gtype: GObject.GType<DOMHTMLAreaElement>;
 
-        // Own properties of WebKit2WebExtension.DOMHTMLAreaElement
+        // Properties
 
         get alt(): string;
         set alt(val: string);
@@ -7489,13 +7489,13 @@ export namespace WebKit2WebExtension {
         get target(): string;
         set target(val: string);
 
-        // Constructors of WebKit2WebExtension.DOMHTMLAreaElement
+        // Constructors
 
         constructor(properties?: Partial<DOMHTMLAreaElement.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of WebKit2WebExtension.DOMHTMLAreaElement
+        // Methods
 
         get_alt(): string;
         get_coords(): string;
@@ -7938,18 +7938,18 @@ export namespace WebKit2WebExtension {
     class DOMHTMLBRElement extends DOMHTMLElement implements DOMEventTarget {
         static $gtype: GObject.GType<DOMHTMLBRElement>;
 
-        // Own properties of WebKit2WebExtension.DOMHTMLBRElement
+        // Properties
 
         get clear(): string;
         set clear(val: string);
 
-        // Constructors of WebKit2WebExtension.DOMHTMLBRElement
+        // Constructors
 
         constructor(properties?: Partial<DOMHTMLBRElement.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of WebKit2WebExtension.DOMHTMLBRElement
+        // Methods
 
         get_clear(): string;
         set_clear(value: string): void;
@@ -8369,20 +8369,20 @@ export namespace WebKit2WebExtension {
     class DOMHTMLBaseElement extends DOMHTMLElement implements DOMEventTarget {
         static $gtype: GObject.GType<DOMHTMLBaseElement>;
 
-        // Own properties of WebKit2WebExtension.DOMHTMLBaseElement
+        // Properties
 
         get href(): string;
         set href(val: string);
         get target(): string;
         set target(val: string);
 
-        // Constructors of WebKit2WebExtension.DOMHTMLBaseElement
+        // Constructors
 
         constructor(properties?: Partial<DOMHTMLBaseElement.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of WebKit2WebExtension.DOMHTMLBaseElement
+        // Methods
 
         get_href(): string;
         get_target(): string;
@@ -8801,13 +8801,13 @@ export namespace WebKit2WebExtension {
     class DOMHTMLBaseFontElement extends DOMHTMLElement implements DOMEventTarget {
         static $gtype: GObject.GType<DOMHTMLBaseFontElement>;
 
-        // Constructors of WebKit2WebExtension.DOMHTMLBaseFontElement
+        // Constructors
 
         constructor(properties?: Partial<DOMHTMLBaseFontElement.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of WebKit2WebExtension.DOMHTMLBaseFontElement
+        // Methods
 
         /**
          * This function has been removed from the DOM spec and it just returns %NULL.
@@ -9262,7 +9262,7 @@ export namespace WebKit2WebExtension {
     class DOMHTMLBodyElement extends DOMHTMLElement implements DOMEventTarget {
         static $gtype: GObject.GType<DOMHTMLBodyElement>;
 
-        // Own properties of WebKit2WebExtension.DOMHTMLBodyElement
+        // Properties
 
         get a_link(): string;
         set a_link(val: string);
@@ -9283,13 +9283,13 @@ export namespace WebKit2WebExtension {
         get vLink(): string;
         set vLink(val: string);
 
-        // Constructors of WebKit2WebExtension.DOMHTMLBodyElement
+        // Constructors
 
         constructor(properties?: Partial<DOMHTMLBodyElement.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of WebKit2WebExtension.DOMHTMLBodyElement
+        // Methods
 
         get_a_link(): string;
         get_background(): string;
@@ -9725,7 +9725,7 @@ export namespace WebKit2WebExtension {
     class DOMHTMLButtonElement extends DOMHTMLElement implements DOMEventTarget {
         static $gtype: GObject.GType<DOMHTMLButtonElement>;
 
-        // Own properties of WebKit2WebExtension.DOMHTMLButtonElement
+        // Properties
 
         get autofocus(): boolean;
         set autofocus(val: boolean);
@@ -9741,13 +9741,13 @@ export namespace WebKit2WebExtension {
         get will_validate(): boolean;
         get willValidate(): boolean;
 
-        // Constructors of WebKit2WebExtension.DOMHTMLButtonElement
+        // Constructors
 
         constructor(properties?: Partial<DOMHTMLButtonElement.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of WebKit2WebExtension.DOMHTMLButtonElement
+        // Methods
 
         get_autofocus(): boolean;
         get_button_type(): string;
@@ -10177,20 +10177,20 @@ export namespace WebKit2WebExtension {
     class DOMHTMLCanvasElement extends DOMHTMLElement implements DOMEventTarget {
         static $gtype: GObject.GType<DOMHTMLCanvasElement>;
 
-        // Own properties of WebKit2WebExtension.DOMHTMLCanvasElement
+        // Properties
 
         get height(): number;
         set height(val: number);
         get width(): number;
         set width(val: number);
 
-        // Constructors of WebKit2WebExtension.DOMHTMLCanvasElement
+        // Constructors
 
         constructor(properties?: Partial<DOMHTMLCanvasElement.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of WebKit2WebExtension.DOMHTMLCanvasElement
+        // Methods
 
         get_height(): number;
         get_width(): number;
@@ -10611,17 +10611,17 @@ export namespace WebKit2WebExtension {
     class DOMHTMLCollection extends DOMObject {
         static $gtype: GObject.GType<DOMHTMLCollection>;
 
-        // Own properties of WebKit2WebExtension.DOMHTMLCollection
+        // Properties
 
         get length(): number;
 
-        // Constructors of WebKit2WebExtension.DOMHTMLCollection
+        // Constructors
 
         constructor(properties?: Partial<DOMHTMLCollection.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of WebKit2WebExtension.DOMHTMLCollection
+        // Methods
 
         get_length(): number;
         item(index: number): DOMNode;
@@ -10639,18 +10639,18 @@ export namespace WebKit2WebExtension {
     class DOMHTMLDListElement extends DOMHTMLElement implements DOMEventTarget {
         static $gtype: GObject.GType<DOMHTMLDListElement>;
 
-        // Own properties of WebKit2WebExtension.DOMHTMLDListElement
+        // Properties
 
         get compact(): boolean;
         set compact(val: boolean);
 
-        // Constructors of WebKit2WebExtension.DOMHTMLDListElement
+        // Constructors
 
         constructor(properties?: Partial<DOMHTMLDListElement.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of WebKit2WebExtension.DOMHTMLDListElement
+        // Methods
 
         get_compact(): boolean;
         set_compact(value: boolean): void;
@@ -11069,18 +11069,18 @@ export namespace WebKit2WebExtension {
     class DOMHTMLDirectoryElement extends DOMHTMLElement implements DOMEventTarget {
         static $gtype: GObject.GType<DOMHTMLDirectoryElement>;
 
-        // Own properties of WebKit2WebExtension.DOMHTMLDirectoryElement
+        // Properties
 
         get compact(): boolean;
         set compact(val: boolean);
 
-        // Constructors of WebKit2WebExtension.DOMHTMLDirectoryElement
+        // Constructors
 
         constructor(properties?: Partial<DOMHTMLDirectoryElement.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of WebKit2WebExtension.DOMHTMLDirectoryElement
+        // Methods
 
         get_compact(): boolean;
         set_compact(value: boolean): void;
@@ -11499,18 +11499,18 @@ export namespace WebKit2WebExtension {
     class DOMHTMLDivElement extends DOMHTMLElement implements DOMEventTarget {
         static $gtype: GObject.GType<DOMHTMLDivElement>;
 
-        // Own properties of WebKit2WebExtension.DOMHTMLDivElement
+        // Properties
 
         get align(): string;
         set align(val: string);
 
-        // Constructors of WebKit2WebExtension.DOMHTMLDivElement
+        // Constructors
 
         constructor(properties?: Partial<DOMHTMLDivElement.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of WebKit2WebExtension.DOMHTMLDivElement
+        // Methods
 
         get_align(): string;
         set_align(value: string): void;
@@ -11941,7 +11941,7 @@ export namespace WebKit2WebExtension {
     class DOMHTMLDocument extends DOMDocument implements DOMEventTarget {
         static $gtype: GObject.GType<DOMHTMLDocument>;
 
-        // Own properties of WebKit2WebExtension.DOMHTMLDocument
+        // Properties
 
         get alink_color(): string;
         set alink_color(val: string);
@@ -11968,13 +11968,13 @@ export namespace WebKit2WebExtension {
         set vlinkColor(val: string);
         get width(): number;
 
-        // Constructors of WebKit2WebExtension.DOMHTMLDocument
+        // Constructors
 
         constructor(properties?: Partial<DOMHTMLDocument.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of WebKit2WebExtension.DOMHTMLDocument
+        // Methods
 
         capture_events(): void;
         clear(): void;
@@ -12434,7 +12434,7 @@ export namespace WebKit2WebExtension {
     class DOMHTMLElement extends DOMElement implements DOMEventTarget {
         static $gtype: GObject.GType<DOMHTMLElement>;
 
-        // Own properties of WebKit2WebExtension.DOMHTMLElement
+        // Properties
 
         get access_key(): string;
         set access_key(val: string);
@@ -12475,13 +12475,13 @@ export namespace WebKit2WebExtension {
         get webkitdropzone(): string;
         set webkitdropzone(val: string);
 
-        // Constructors of WebKit2WebExtension.DOMHTMLElement
+        // Constructors
 
         constructor(properties?: Partial<DOMHTMLElement.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of WebKit2WebExtension.DOMHTMLElement
+        // Methods
 
         click(): void;
         get_access_key(): string;
@@ -12936,7 +12936,7 @@ export namespace WebKit2WebExtension {
     class DOMHTMLEmbedElement extends DOMHTMLElement implements DOMEventTarget {
         static $gtype: GObject.GType<DOMHTMLEmbedElement>;
 
-        // Own properties of WebKit2WebExtension.DOMHTMLEmbedElement
+        // Properties
 
         get align(): string;
         set align(val: string);
@@ -12951,13 +12951,13 @@ export namespace WebKit2WebExtension {
         get width(): number;
         set width(val: number);
 
-        // Constructors of WebKit2WebExtension.DOMHTMLEmbedElement
+        // Constructors
 
         constructor(properties?: Partial<DOMHTMLEmbedElement.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of WebKit2WebExtension.DOMHTMLEmbedElement
+        // Methods
 
         get_align(): string;
         get_height(): number;
@@ -13386,17 +13386,17 @@ export namespace WebKit2WebExtension {
     class DOMHTMLFieldSetElement extends DOMHTMLElement implements DOMEventTarget {
         static $gtype: GObject.GType<DOMHTMLFieldSetElement>;
 
-        // Own properties of WebKit2WebExtension.DOMHTMLFieldSetElement
+        // Properties
 
         get form(): DOMHTMLFormElement;
 
-        // Constructors of WebKit2WebExtension.DOMHTMLFieldSetElement
+        // Constructors
 
         constructor(properties?: Partial<DOMHTMLFieldSetElement.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of WebKit2WebExtension.DOMHTMLFieldSetElement
+        // Methods
 
         get_form(): DOMHTMLFormElement;
 
@@ -13816,7 +13816,7 @@ export namespace WebKit2WebExtension {
     class DOMHTMLFontElement extends DOMHTMLElement implements DOMEventTarget {
         static $gtype: GObject.GType<DOMHTMLFontElement>;
 
-        // Own properties of WebKit2WebExtension.DOMHTMLFontElement
+        // Properties
 
         get color(): string;
         set color(val: string);
@@ -13825,13 +13825,13 @@ export namespace WebKit2WebExtension {
         get size(): string;
         set size(val: string);
 
-        // Constructors of WebKit2WebExtension.DOMHTMLFontElement
+        // Constructors
 
         constructor(properties?: Partial<DOMHTMLFontElement.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of WebKit2WebExtension.DOMHTMLFontElement
+        // Methods
 
         get_color(): string;
         get_face(): string;
@@ -14263,7 +14263,7 @@ export namespace WebKit2WebExtension {
     class DOMHTMLFormElement extends DOMHTMLElement implements DOMEventTarget {
         static $gtype: GObject.GType<DOMHTMLFormElement>;
 
-        // Own properties of WebKit2WebExtension.DOMHTMLFormElement
+        // Properties
 
         get accept_charset(): string;
         set accept_charset(val: string);
@@ -14284,13 +14284,13 @@ export namespace WebKit2WebExtension {
         get target(): string;
         set target(val: string);
 
-        // Constructors of WebKit2WebExtension.DOMHTMLFormElement
+        // Constructors
 
         constructor(properties?: Partial<DOMHTMLFormElement.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of WebKit2WebExtension.DOMHTMLFormElement
+        // Methods
 
         get_accept_charset(): string;
         get_action(): string;
@@ -14743,7 +14743,7 @@ export namespace WebKit2WebExtension {
     class DOMHTMLFrameElement extends DOMHTMLElement implements DOMEventTarget {
         static $gtype: GObject.GType<DOMHTMLFrameElement>;
 
-        // Own properties of WebKit2WebExtension.DOMHTMLFrameElement
+        // Properties
 
         get content_document(): DOMDocument;
         get contentDocument(): DOMDocument;
@@ -14778,13 +14778,13 @@ export namespace WebKit2WebExtension {
         set src(val: string);
         get width(): number;
 
-        // Constructors of WebKit2WebExtension.DOMHTMLFrameElement
+        // Constructors
 
         constructor(properties?: Partial<DOMHTMLFrameElement.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of WebKit2WebExtension.DOMHTMLFrameElement
+        // Methods
 
         get_content_document(): DOMDocument;
         get_content_window(): DOMDOMWindow;
@@ -15222,20 +15222,20 @@ export namespace WebKit2WebExtension {
     class DOMHTMLFrameSetElement extends DOMHTMLElement implements DOMEventTarget {
         static $gtype: GObject.GType<DOMHTMLFrameSetElement>;
 
-        // Own properties of WebKit2WebExtension.DOMHTMLFrameSetElement
+        // Properties
 
         get cols(): string;
         set cols(val: string);
         get rows(): string;
         set rows(val: string);
 
-        // Constructors of WebKit2WebExtension.DOMHTMLFrameSetElement
+        // Constructors
 
         constructor(properties?: Partial<DOMHTMLFrameSetElement.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of WebKit2WebExtension.DOMHTMLFrameSetElement
+        // Methods
 
         get_cols(): string;
         get_rows(): string;
@@ -15660,7 +15660,7 @@ export namespace WebKit2WebExtension {
     class DOMHTMLHRElement extends DOMHTMLElement implements DOMEventTarget {
         static $gtype: GObject.GType<DOMHTMLHRElement>;
 
-        // Own properties of WebKit2WebExtension.DOMHTMLHRElement
+        // Properties
 
         get align(): string;
         set align(val: string);
@@ -15673,13 +15673,13 @@ export namespace WebKit2WebExtension {
         get width(): string;
         set width(val: string);
 
-        // Constructors of WebKit2WebExtension.DOMHTMLHRElement
+        // Constructors
 
         constructor(properties?: Partial<DOMHTMLHRElement.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of WebKit2WebExtension.DOMHTMLHRElement
+        // Methods
 
         get_align(): string;
         get_no_shade(): boolean;
@@ -16104,18 +16104,18 @@ export namespace WebKit2WebExtension {
     class DOMHTMLHeadElement extends DOMHTMLElement implements DOMEventTarget {
         static $gtype: GObject.GType<DOMHTMLHeadElement>;
 
-        // Own properties of WebKit2WebExtension.DOMHTMLHeadElement
+        // Properties
 
         get profile(): string;
         set profile(val: string);
 
-        // Constructors of WebKit2WebExtension.DOMHTMLHeadElement
+        // Constructors
 
         constructor(properties?: Partial<DOMHTMLHeadElement.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of WebKit2WebExtension.DOMHTMLHeadElement
+        // Methods
 
         get_profile(): string;
         set_profile(value: string): void;
@@ -16534,18 +16534,18 @@ export namespace WebKit2WebExtension {
     class DOMHTMLHeadingElement extends DOMHTMLElement implements DOMEventTarget {
         static $gtype: GObject.GType<DOMHTMLHeadingElement>;
 
-        // Own properties of WebKit2WebExtension.DOMHTMLHeadingElement
+        // Properties
 
         get align(): string;
         set align(val: string);
 
-        // Constructors of WebKit2WebExtension.DOMHTMLHeadingElement
+        // Constructors
 
         constructor(properties?: Partial<DOMHTMLHeadingElement.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of WebKit2WebExtension.DOMHTMLHeadingElement
+        // Methods
 
         get_align(): string;
         set_align(value: string): void;
@@ -16964,18 +16964,18 @@ export namespace WebKit2WebExtension {
     class DOMHTMLHtmlElement extends DOMHTMLElement implements DOMEventTarget {
         static $gtype: GObject.GType<DOMHTMLHtmlElement>;
 
-        // Own properties of WebKit2WebExtension.DOMHTMLHtmlElement
+        // Properties
 
         get version(): string;
         set version(val: string);
 
-        // Constructors of WebKit2WebExtension.DOMHTMLHtmlElement
+        // Constructors
 
         constructor(properties?: Partial<DOMHTMLHtmlElement.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of WebKit2WebExtension.DOMHTMLHtmlElement
+        // Methods
 
         get_version(): string;
         set_version(value: string): void;
@@ -17411,7 +17411,7 @@ export namespace WebKit2WebExtension {
     class DOMHTMLIFrameElement extends DOMHTMLElement implements DOMEventTarget {
         static $gtype: GObject.GType<DOMHTMLIFrameElement>;
 
-        // Own properties of WebKit2WebExtension.DOMHTMLIFrameElement
+        // Properties
 
         get align(): string;
         set align(val: string);
@@ -17446,13 +17446,13 @@ export namespace WebKit2WebExtension {
         get width(): string;
         set width(val: string);
 
-        // Constructors of WebKit2WebExtension.DOMHTMLIFrameElement
+        // Constructors
 
         constructor(properties?: Partial<DOMHTMLIFrameElement.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of WebKit2WebExtension.DOMHTMLIFrameElement
+        // Methods
 
         get_align(): string;
         get_content_document(): DOMDocument;
@@ -17913,7 +17913,7 @@ export namespace WebKit2WebExtension {
     class DOMHTMLImageElement extends DOMHTMLElement implements DOMEventTarget {
         static $gtype: GObject.GType<DOMHTMLImageElement>;
 
-        // Own properties of WebKit2WebExtension.DOMHTMLImageElement
+        // Properties
 
         get align(): string;
         set align(val: string);
@@ -17955,13 +17955,13 @@ export namespace WebKit2WebExtension {
         get x(): number;
         get y(): number;
 
-        // Constructors of WebKit2WebExtension.DOMHTMLImageElement
+        // Constructors
 
         constructor(properties?: Partial<DOMHTMLImageElement.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of WebKit2WebExtension.DOMHTMLImageElement
+        // Methods
 
         get_align(): string;
         get_alt(): string;
@@ -18438,7 +18438,7 @@ export namespace WebKit2WebExtension {
     class DOMHTMLInputElement extends DOMHTMLElement implements DOMEventTarget {
         static $gtype: GObject.GType<DOMHTMLInputElement>;
 
-        // Own properties of WebKit2WebExtension.DOMHTMLInputElement
+        // Properties
 
         get accept(): string;
         set accept(val: string);
@@ -18497,13 +18497,13 @@ export namespace WebKit2WebExtension {
         get will_validate(): boolean;
         get willValidate(): boolean;
 
-        // Constructors of WebKit2WebExtension.DOMHTMLInputElement
+        // Constructors
 
         constructor(properties?: Partial<DOMHTMLInputElement.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of WebKit2WebExtension.DOMHTMLInputElement
+        // Methods
 
         get_accept(): string;
         get_align(): string;
@@ -18973,20 +18973,20 @@ export namespace WebKit2WebExtension {
     class DOMHTMLLIElement extends DOMHTMLElement implements DOMEventTarget {
         static $gtype: GObject.GType<DOMHTMLLIElement>;
 
-        // Own properties of WebKit2WebExtension.DOMHTMLLIElement
+        // Properties
 
         get type(): string;
         set type(val: string);
         get value(): number;
         set value(val: number);
 
-        // Constructors of WebKit2WebExtension.DOMHTMLLIElement
+        // Constructors
 
         constructor(properties?: Partial<DOMHTMLLIElement.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of WebKit2WebExtension.DOMHTMLLIElement
+        // Methods
 
         get_type_attr(): string;
         get_value(): number;
@@ -19409,7 +19409,7 @@ export namespace WebKit2WebExtension {
     class DOMHTMLLabelElement extends DOMHTMLElement implements DOMEventTarget {
         static $gtype: GObject.GType<DOMHTMLLabelElement>;
 
-        // Own properties of WebKit2WebExtension.DOMHTMLLabelElement
+        // Properties
 
         get form(): DOMHTMLFormElement;
         get html_for(): string;
@@ -19417,13 +19417,13 @@ export namespace WebKit2WebExtension {
         get htmlFor(): string;
         set htmlFor(val: string);
 
-        // Constructors of WebKit2WebExtension.DOMHTMLLabelElement
+        // Constructors
 
         constructor(properties?: Partial<DOMHTMLLabelElement.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of WebKit2WebExtension.DOMHTMLLabelElement
+        // Methods
 
         get_form(): DOMHTMLFormElement;
         get_html_for(): string;
@@ -19844,19 +19844,19 @@ export namespace WebKit2WebExtension {
     class DOMHTMLLegendElement extends DOMHTMLElement implements DOMEventTarget {
         static $gtype: GObject.GType<DOMHTMLLegendElement>;
 
-        // Own properties of WebKit2WebExtension.DOMHTMLLegendElement
+        // Properties
 
         get align(): string;
         set align(val: string);
         get form(): DOMHTMLFormElement;
 
-        // Constructors of WebKit2WebExtension.DOMHTMLLegendElement
+        // Constructors
 
         constructor(properties?: Partial<DOMHTMLLegendElement.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of WebKit2WebExtension.DOMHTMLLegendElement
+        // Methods
 
         get_align(): string;
         get_form(): DOMHTMLFormElement;
@@ -20286,7 +20286,7 @@ export namespace WebKit2WebExtension {
     class DOMHTMLLinkElement extends DOMHTMLElement implements DOMEventTarget {
         static $gtype: GObject.GType<DOMHTMLLinkElement>;
 
-        // Own properties of WebKit2WebExtension.DOMHTMLLinkElement
+        // Properties
 
         get charset(): string;
         set charset(val: string);
@@ -20309,13 +20309,13 @@ export namespace WebKit2WebExtension {
         get type(): string;
         set type(val: string);
 
-        // Constructors of WebKit2WebExtension.DOMHTMLLinkElement
+        // Constructors
 
         constructor(properties?: Partial<DOMHTMLLinkElement.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of WebKit2WebExtension.DOMHTMLLinkElement
+        // Methods
 
         get_charset(): string;
         get_disabled(): boolean;
@@ -20754,19 +20754,19 @@ export namespace WebKit2WebExtension {
     class DOMHTMLMapElement extends DOMHTMLElement implements DOMEventTarget {
         static $gtype: GObject.GType<DOMHTMLMapElement>;
 
-        // Own properties of WebKit2WebExtension.DOMHTMLMapElement
+        // Properties
 
         get areas(): DOMHTMLCollection;
         get name(): string;
         set name(val: string);
 
-        // Constructors of WebKit2WebExtension.DOMHTMLMapElement
+        // Constructors
 
         constructor(properties?: Partial<DOMHTMLMapElement.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of WebKit2WebExtension.DOMHTMLMapElement
+        // Methods
 
         get_areas(): DOMHTMLCollection;
         get_name(): string;
@@ -21184,13 +21184,13 @@ export namespace WebKit2WebExtension {
     class DOMHTMLMarqueeElement extends DOMHTMLElement implements DOMEventTarget {
         static $gtype: GObject.GType<DOMHTMLMarqueeElement>;
 
-        // Constructors of WebKit2WebExtension.DOMHTMLMarqueeElement
+        // Constructors
 
         constructor(properties?: Partial<DOMHTMLMarqueeElement.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of WebKit2WebExtension.DOMHTMLMarqueeElement
+        // Methods
 
         start(): void;
         stop(): void;
@@ -21609,18 +21609,18 @@ export namespace WebKit2WebExtension {
     class DOMHTMLMenuElement extends DOMHTMLElement implements DOMEventTarget {
         static $gtype: GObject.GType<DOMHTMLMenuElement>;
 
-        // Own properties of WebKit2WebExtension.DOMHTMLMenuElement
+        // Properties
 
         get compact(): boolean;
         set compact(val: boolean);
 
-        // Constructors of WebKit2WebExtension.DOMHTMLMenuElement
+        // Constructors
 
         constructor(properties?: Partial<DOMHTMLMenuElement.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of WebKit2WebExtension.DOMHTMLMenuElement
+        // Methods
 
         get_compact(): boolean;
         set_compact(value: boolean): void;
@@ -22043,7 +22043,7 @@ export namespace WebKit2WebExtension {
     class DOMHTMLMetaElement extends DOMHTMLElement implements DOMEventTarget {
         static $gtype: GObject.GType<DOMHTMLMetaElement>;
 
-        // Own properties of WebKit2WebExtension.DOMHTMLMetaElement
+        // Properties
 
         get content(): string;
         set content(val: string);
@@ -22056,13 +22056,13 @@ export namespace WebKit2WebExtension {
         get scheme(): string;
         set scheme(val: string);
 
-        // Constructors of WebKit2WebExtension.DOMHTMLMetaElement
+        // Constructors
 
         constructor(properties?: Partial<DOMHTMLMetaElement.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of WebKit2WebExtension.DOMHTMLMetaElement
+        // Methods
 
         get_content(): string;
         get_http_equiv(): string;
@@ -22489,7 +22489,7 @@ export namespace WebKit2WebExtension {
     class DOMHTMLModElement extends DOMHTMLElement implements DOMEventTarget {
         static $gtype: GObject.GType<DOMHTMLModElement>;
 
-        // Own properties of WebKit2WebExtension.DOMHTMLModElement
+        // Properties
 
         get cite(): string;
         set cite(val: string);
@@ -22498,13 +22498,13 @@ export namespace WebKit2WebExtension {
         get dateTime(): string;
         set dateTime(val: string);
 
-        // Constructors of WebKit2WebExtension.DOMHTMLModElement
+        // Constructors
 
         constructor(properties?: Partial<DOMHTMLModElement.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of WebKit2WebExtension.DOMHTMLModElement
+        // Methods
 
         get_cite(): string;
         get_date_time(): string;
@@ -22927,7 +22927,7 @@ export namespace WebKit2WebExtension {
     class DOMHTMLOListElement extends DOMHTMLElement implements DOMEventTarget {
         static $gtype: GObject.GType<DOMHTMLOListElement>;
 
-        // Own properties of WebKit2WebExtension.DOMHTMLOListElement
+        // Properties
 
         get compact(): boolean;
         set compact(val: boolean);
@@ -22936,13 +22936,13 @@ export namespace WebKit2WebExtension {
         get type(): string;
         set type(val: string);
 
-        // Constructors of WebKit2WebExtension.DOMHTMLOListElement
+        // Constructors
 
         constructor(properties?: Partial<DOMHTMLOListElement.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of WebKit2WebExtension.DOMHTMLOListElement
+        // Methods
 
         get_compact(): boolean;
         get_start(): number;
@@ -23386,7 +23386,7 @@ export namespace WebKit2WebExtension {
     class DOMHTMLObjectElement extends DOMHTMLElement implements DOMEventTarget {
         static $gtype: GObject.GType<DOMHTMLObjectElement>;
 
-        // Own properties of WebKit2WebExtension.DOMHTMLObjectElement
+        // Properties
 
         get align(): string;
         set align(val: string);
@@ -23430,13 +23430,13 @@ export namespace WebKit2WebExtension {
         get width(): string;
         set width(val: string);
 
-        // Constructors of WebKit2WebExtension.DOMHTMLObjectElement
+        // Constructors
 
         constructor(properties?: Partial<DOMHTMLObjectElement.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of WebKit2WebExtension.DOMHTMLObjectElement
+        // Methods
 
         get_align(): string;
         get_archive(): string;
@@ -23869,20 +23869,20 @@ export namespace WebKit2WebExtension {
     class DOMHTMLOptGroupElement extends DOMHTMLElement implements DOMEventTarget {
         static $gtype: GObject.GType<DOMHTMLOptGroupElement>;
 
-        // Own properties of WebKit2WebExtension.DOMHTMLOptGroupElement
+        // Properties
 
         get disabled(): boolean;
         set disabled(val: boolean);
         get label(): string;
         set label(val: string);
 
-        // Constructors of WebKit2WebExtension.DOMHTMLOptGroupElement
+        // Constructors
 
         constructor(properties?: Partial<DOMHTMLOptGroupElement.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of WebKit2WebExtension.DOMHTMLOptGroupElement
+        // Methods
 
         get_disabled(): boolean;
         get_label(): string;
@@ -24311,7 +24311,7 @@ export namespace WebKit2WebExtension {
     class DOMHTMLOptionElement extends DOMHTMLElement implements DOMEventTarget {
         static $gtype: GObject.GType<DOMHTMLOptionElement>;
 
-        // Own properties of WebKit2WebExtension.DOMHTMLOptionElement
+        // Properties
 
         get default_selected(): boolean;
         set default_selected(val: boolean);
@@ -24329,13 +24329,13 @@ export namespace WebKit2WebExtension {
         get value(): string;
         set value(val: string);
 
-        // Constructors of WebKit2WebExtension.DOMHTMLOptionElement
+        // Constructors
 
         constructor(properties?: Partial<DOMHTMLOptionElement.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of WebKit2WebExtension.DOMHTMLOptionElement
+        // Methods
 
         get_default_selected(): boolean;
         get_disabled(): boolean;
@@ -24767,7 +24767,7 @@ export namespace WebKit2WebExtension {
     class DOMHTMLOptionsCollection extends DOMHTMLCollection {
         static $gtype: GObject.GType<DOMHTMLOptionsCollection>;
 
-        // Own properties of WebKit2WebExtension.DOMHTMLOptionsCollection
+        // Properties
 
         get length(): number;
         get selected_index(): number;
@@ -24775,13 +24775,13 @@ export namespace WebKit2WebExtension {
         get selectedIndex(): number;
         set selectedIndex(val: number);
 
-        // Constructors of WebKit2WebExtension.DOMHTMLOptionsCollection
+        // Constructors
 
         constructor(properties?: Partial<DOMHTMLOptionsCollection.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of WebKit2WebExtension.DOMHTMLOptionsCollection
+        // Methods
 
         get_length(): number;
         get_selected_index(): number;
@@ -24800,18 +24800,18 @@ export namespace WebKit2WebExtension {
     class DOMHTMLParagraphElement extends DOMHTMLElement implements DOMEventTarget {
         static $gtype: GObject.GType<DOMHTMLParagraphElement>;
 
-        // Own properties of WebKit2WebExtension.DOMHTMLParagraphElement
+        // Properties
 
         get align(): string;
         set align(val: string);
 
-        // Constructors of WebKit2WebExtension.DOMHTMLParagraphElement
+        // Constructors
 
         constructor(properties?: Partial<DOMHTMLParagraphElement.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of WebKit2WebExtension.DOMHTMLParagraphElement
+        // Methods
 
         get_align(): string;
         set_align(value: string): void;
@@ -25234,7 +25234,7 @@ export namespace WebKit2WebExtension {
     class DOMHTMLParamElement extends DOMHTMLElement implements DOMEventTarget {
         static $gtype: GObject.GType<DOMHTMLParamElement>;
 
-        // Own properties of WebKit2WebExtension.DOMHTMLParamElement
+        // Properties
 
         get name(): string;
         set name(val: string);
@@ -25247,13 +25247,13 @@ export namespace WebKit2WebExtension {
         get valueType(): string;
         set valueType(val: string);
 
-        // Constructors of WebKit2WebExtension.DOMHTMLParamElement
+        // Constructors
 
         constructor(properties?: Partial<DOMHTMLParamElement.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of WebKit2WebExtension.DOMHTMLParamElement
+        // Methods
 
         get_name(): string;
         get_type_attr(): string;
@@ -25679,20 +25679,20 @@ export namespace WebKit2WebExtension {
     class DOMHTMLPreElement extends DOMHTMLElement implements DOMEventTarget {
         static $gtype: GObject.GType<DOMHTMLPreElement>;
 
-        // Own properties of WebKit2WebExtension.DOMHTMLPreElement
+        // Properties
 
         get width(): number;
         set width(val: number);
         get wrap(): boolean;
         set wrap(val: boolean);
 
-        // Constructors of WebKit2WebExtension.DOMHTMLPreElement
+        // Constructors
 
         constructor(properties?: Partial<DOMHTMLPreElement.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of WebKit2WebExtension.DOMHTMLPreElement
+        // Methods
 
         get_width(): number;
         get_wrap(): boolean;
@@ -26113,18 +26113,18 @@ export namespace WebKit2WebExtension {
     class DOMHTMLQuoteElement extends DOMHTMLElement implements DOMEventTarget {
         static $gtype: GObject.GType<DOMHTMLQuoteElement>;
 
-        // Own properties of WebKit2WebExtension.DOMHTMLQuoteElement
+        // Properties
 
         get cite(): string;
         set cite(val: string);
 
-        // Constructors of WebKit2WebExtension.DOMHTMLQuoteElement
+        // Constructors
 
         constructor(properties?: Partial<DOMHTMLQuoteElement.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of WebKit2WebExtension.DOMHTMLQuoteElement
+        // Methods
 
         get_cite(): string;
         set_cite(value: string): void;
@@ -26550,7 +26550,7 @@ export namespace WebKit2WebExtension {
     class DOMHTMLScriptElement extends DOMHTMLElement implements DOMEventTarget {
         static $gtype: GObject.GType<DOMHTMLScriptElement>;
 
-        // Own properties of WebKit2WebExtension.DOMHTMLScriptElement
+        // Properties
 
         get charset(): string;
         set charset(val: string);
@@ -26569,13 +26569,13 @@ export namespace WebKit2WebExtension {
         get type(): string;
         set type(val: string);
 
-        // Constructors of WebKit2WebExtension.DOMHTMLScriptElement
+        // Constructors
 
         constructor(properties?: Partial<DOMHTMLScriptElement.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of WebKit2WebExtension.DOMHTMLScriptElement
+        // Methods
 
         get_charset(): string;
         get_defer(): boolean;
@@ -27019,7 +27019,7 @@ export namespace WebKit2WebExtension {
     class DOMHTMLSelectElement extends DOMHTMLElement implements DOMEventTarget {
         static $gtype: GObject.GType<DOMHTMLSelectElement>;
 
-        // Own properties of WebKit2WebExtension.DOMHTMLSelectElement
+        // Properties
 
         get autofocus(): boolean;
         set autofocus(val: boolean);
@@ -27045,13 +27045,13 @@ export namespace WebKit2WebExtension {
         get will_validate(): boolean;
         get willValidate(): boolean;
 
-        // Constructors of WebKit2WebExtension.DOMHTMLSelectElement
+        // Constructors
 
         constructor(properties?: Partial<DOMHTMLSelectElement.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of WebKit2WebExtension.DOMHTMLSelectElement
+        // Methods
 
         add(element: DOMHTMLElement, before: DOMHTMLElement): void;
         get_autofocus(): boolean;
@@ -27497,7 +27497,7 @@ export namespace WebKit2WebExtension {
     class DOMHTMLStyleElement extends DOMHTMLElement implements DOMEventTarget {
         static $gtype: GObject.GType<DOMHTMLStyleElement>;
 
-        // Own properties of WebKit2WebExtension.DOMHTMLStyleElement
+        // Properties
 
         get disabled(): boolean;
         set disabled(val: boolean);
@@ -27507,13 +27507,13 @@ export namespace WebKit2WebExtension {
         get type(): string;
         set type(val: string);
 
-        // Constructors of WebKit2WebExtension.DOMHTMLStyleElement
+        // Constructors
 
         constructor(properties?: Partial<DOMHTMLStyleElement.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of WebKit2WebExtension.DOMHTMLStyleElement
+        // Methods
 
         get_disabled(): boolean;
         get_media(): string;
@@ -27937,18 +27937,18 @@ export namespace WebKit2WebExtension {
     class DOMHTMLTableCaptionElement extends DOMHTMLElement implements DOMEventTarget {
         static $gtype: GObject.GType<DOMHTMLTableCaptionElement>;
 
-        // Own properties of WebKit2WebExtension.DOMHTMLTableCaptionElement
+        // Properties
 
         get align(): string;
         set align(val: string);
 
-        // Constructors of WebKit2WebExtension.DOMHTMLTableCaptionElement
+        // Constructors
 
         constructor(properties?: Partial<DOMHTMLTableCaptionElement.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of WebKit2WebExtension.DOMHTMLTableCaptionElement
+        // Methods
 
         get_align(): string;
         set_align(value: string): void;
@@ -28388,7 +28388,7 @@ export namespace WebKit2WebExtension {
     class DOMHTMLTableCellElement extends DOMHTMLElement implements DOMEventTarget {
         static $gtype: GObject.GType<DOMHTMLTableCellElement>;
 
-        // Own properties of WebKit2WebExtension.DOMHTMLTableCellElement
+        // Properties
 
         get abbr(): string;
         set abbr(val: string);
@@ -28433,13 +28433,13 @@ export namespace WebKit2WebExtension {
         get width(): string;
         set width(val: string);
 
-        // Constructors of WebKit2WebExtension.DOMHTMLTableCellElement
+        // Constructors
 
         constructor(properties?: Partial<DOMHTMLTableCellElement.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of WebKit2WebExtension.DOMHTMLTableCellElement
+        // Methods
 
         get_abbr(): string;
         get_align(): string;
@@ -28892,7 +28892,7 @@ export namespace WebKit2WebExtension {
     class DOMHTMLTableColElement extends DOMHTMLElement implements DOMEventTarget {
         static $gtype: GObject.GType<DOMHTMLTableColElement>;
 
-        // Own properties of WebKit2WebExtension.DOMHTMLTableColElement
+        // Properties
 
         get align(): string;
         set align(val: string);
@@ -28911,13 +28911,13 @@ export namespace WebKit2WebExtension {
         get width(): string;
         set width(val: string);
 
-        // Constructors of WebKit2WebExtension.DOMHTMLTableColElement
+        // Constructors
 
         constructor(properties?: Partial<DOMHTMLTableColElement.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of WebKit2WebExtension.DOMHTMLTableColElement
+        // Methods
 
         get_align(): string;
         get_ch(): string;
@@ -29364,7 +29364,7 @@ export namespace WebKit2WebExtension {
     class DOMHTMLTableElement extends DOMHTMLElement implements DOMEventTarget {
         static $gtype: GObject.GType<DOMHTMLTableElement>;
 
-        // Own properties of WebKit2WebExtension.DOMHTMLTableElement
+        // Properties
 
         get align(): string;
         set align(val: string);
@@ -29397,13 +29397,13 @@ export namespace WebKit2WebExtension {
         get width(): string;
         set width(val: string);
 
-        // Constructors of WebKit2WebExtension.DOMHTMLTableElement
+        // Constructors
 
         constructor(properties?: Partial<DOMHTMLTableElement.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of WebKit2WebExtension.DOMHTMLTableElement
+        // Methods
 
         create_caption(): DOMHTMLElement;
         create_t_foot(): DOMHTMLElement;
@@ -29864,7 +29864,7 @@ export namespace WebKit2WebExtension {
     class DOMHTMLTableRowElement extends DOMHTMLElement implements DOMEventTarget {
         static $gtype: GObject.GType<DOMHTMLTableRowElement>;
 
-        // Own properties of WebKit2WebExtension.DOMHTMLTableRowElement
+        // Properties
 
         get align(): string;
         set align(val: string);
@@ -29888,13 +29888,13 @@ export namespace WebKit2WebExtension {
         get vAlign(): string;
         set vAlign(val: string);
 
-        // Constructors of WebKit2WebExtension.DOMHTMLTableRowElement
+        // Constructors
 
         constructor(properties?: Partial<DOMHTMLTableRowElement.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of WebKit2WebExtension.DOMHTMLTableRowElement
+        // Methods
 
         delete_cell(index: number): void;
         get_align(): string;
@@ -30332,7 +30332,7 @@ export namespace WebKit2WebExtension {
     class DOMHTMLTableSectionElement extends DOMHTMLElement implements DOMEventTarget {
         static $gtype: GObject.GType<DOMHTMLTableSectionElement>;
 
-        // Own properties of WebKit2WebExtension.DOMHTMLTableSectionElement
+        // Properties
 
         get align(): string;
         set align(val: string);
@@ -30348,13 +30348,13 @@ export namespace WebKit2WebExtension {
         get vAlign(): string;
         set vAlign(val: string);
 
-        // Constructors of WebKit2WebExtension.DOMHTMLTableSectionElement
+        // Constructors
 
         constructor(properties?: Partial<DOMHTMLTableSectionElement.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of WebKit2WebExtension.DOMHTMLTableSectionElement
+        // Methods
 
         delete_row(index: number): void;
         get_align(): string;
@@ -30799,7 +30799,7 @@ export namespace WebKit2WebExtension {
     class DOMHTMLTextAreaElement extends DOMHTMLElement implements DOMEventTarget {
         static $gtype: GObject.GType<DOMHTMLTextAreaElement>;
 
-        // Own properties of WebKit2WebExtension.DOMHTMLTextAreaElement
+        // Properties
 
         get autofocus(): boolean;
         set autofocus(val: boolean);
@@ -30834,13 +30834,13 @@ export namespace WebKit2WebExtension {
         get will_validate(): boolean;
         get willValidate(): boolean;
 
-        // Constructors of WebKit2WebExtension.DOMHTMLTextAreaElement
+        // Constructors
 
         constructor(properties?: Partial<DOMHTMLTextAreaElement.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of WebKit2WebExtension.DOMHTMLTextAreaElement
+        // Methods
 
         get_area_type(): string;
         get_autofocus(): boolean;
@@ -31283,18 +31283,18 @@ export namespace WebKit2WebExtension {
     class DOMHTMLTitleElement extends DOMHTMLElement implements DOMEventTarget {
         static $gtype: GObject.GType<DOMHTMLTitleElement>;
 
-        // Own properties of WebKit2WebExtension.DOMHTMLTitleElement
+        // Properties
 
         get text(): string;
         set text(val: string);
 
-        // Constructors of WebKit2WebExtension.DOMHTMLTitleElement
+        // Constructors
 
         constructor(properties?: Partial<DOMHTMLTitleElement.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of WebKit2WebExtension.DOMHTMLTitleElement
+        // Methods
 
         get_text(): string;
         set_text(value: string): void;
@@ -31714,20 +31714,20 @@ export namespace WebKit2WebExtension {
     class DOMHTMLUListElement extends DOMHTMLElement implements DOMEventTarget {
         static $gtype: GObject.GType<DOMHTMLUListElement>;
 
-        // Own properties of WebKit2WebExtension.DOMHTMLUListElement
+        // Properties
 
         get compact(): boolean;
         set compact(val: boolean);
         get type(): string;
         set type(val: string);
 
-        // Constructors of WebKit2WebExtension.DOMHTMLUListElement
+        // Constructors
 
         constructor(properties?: Partial<DOMHTMLUListElement.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of WebKit2WebExtension.DOMHTMLUListElement
+        // Methods
 
         get_compact(): boolean;
         get_type_attr(): string;
@@ -32161,7 +32161,7 @@ export namespace WebKit2WebExtension {
     class DOMKeyboardEvent extends DOMUIEvent {
         static $gtype: GObject.GType<DOMKeyboardEvent>;
 
-        // Own properties of WebKit2WebExtension.DOMKeyboardEvent
+        // Properties
 
         get alt_graph_key(): boolean;
         get altGraphKey(): boolean;
@@ -32178,13 +32178,13 @@ export namespace WebKit2WebExtension {
         get shift_key(): boolean;
         get shiftKey(): boolean;
 
-        // Constructors of WebKit2WebExtension.DOMKeyboardEvent
+        // Constructors
 
         constructor(properties?: Partial<DOMKeyboardEvent.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of WebKit2WebExtension.DOMKeyboardEvent
+        // Methods
 
         get_alt_graph_key(): boolean;
         get_alt_key(): boolean;
@@ -32222,7 +32222,7 @@ export namespace WebKit2WebExtension {
     class DOMMediaList extends DOMObject {
         static $gtype: GObject.GType<DOMMediaList>;
 
-        // Own properties of WebKit2WebExtension.DOMMediaList
+        // Properties
 
         get length(): number;
         get media_text(): string;
@@ -32230,13 +32230,13 @@ export namespace WebKit2WebExtension {
         get mediaText(): string;
         set mediaText(val: string);
 
-        // Constructors of WebKit2WebExtension.DOMMediaList
+        // Constructors
 
         constructor(properties?: Partial<DOMMediaList.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of WebKit2WebExtension.DOMMediaList
+        // Methods
 
         append_medium(newMedium: string): void;
         delete_medium(oldMedium: string): void;
@@ -32285,7 +32285,7 @@ export namespace WebKit2WebExtension {
     class DOMMouseEvent extends DOMUIEvent {
         static $gtype: GObject.GType<DOMMouseEvent>;
 
-        // Own properties of WebKit2WebExtension.DOMMouseEvent
+        // Properties
 
         get alt_key(): boolean;
         get altKey(): boolean;
@@ -32317,13 +32317,13 @@ export namespace WebKit2WebExtension {
         get x(): number;
         get y(): number;
 
-        // Constructors of WebKit2WebExtension.DOMMouseEvent
+        // Constructors
 
         constructor(properties?: Partial<DOMMouseEvent.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of WebKit2WebExtension.DOMMouseEvent
+        // Methods
 
         get_alt_key(): boolean;
         get_button(): number;
@@ -32371,17 +32371,17 @@ export namespace WebKit2WebExtension {
     class DOMNamedNodeMap extends DOMObject {
         static $gtype: GObject.GType<DOMNamedNodeMap>;
 
-        // Own properties of WebKit2WebExtension.DOMNamedNodeMap
+        // Properties
 
         get length(): number;
 
-        // Constructors of WebKit2WebExtension.DOMNamedNodeMap
+        // Constructors
 
         constructor(properties?: Partial<DOMNamedNodeMap.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of WebKit2WebExtension.DOMNamedNodeMap
+        // Methods
 
         get_length(): number;
         get_named_item(name: string): DOMNode;
@@ -32429,7 +32429,7 @@ export namespace WebKit2WebExtension {
     class DOMNode extends DOMObject implements DOMEventTarget {
         static $gtype: GObject.GType<DOMNode>;
 
-        // Own properties of WebKit2WebExtension.DOMNode
+        // Properties
 
         get base_uri(): string;
         get baseUri(): string;
@@ -32462,13 +32462,13 @@ export namespace WebKit2WebExtension {
         get textContent(): string;
         set textContent(val: string);
 
-        // Constructors of WebKit2WebExtension.DOMNode
+        // Constructors
 
         constructor(properties?: Partial<DOMNode.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of WebKit2WebExtension.DOMNode
+        // Static methods
 
         /**
          * Get the #WebKitDOMNode for the DOM node referenced by `value`.
@@ -32476,7 +32476,7 @@ export namespace WebKit2WebExtension {
          */
         static for_js_value(value: JavaScriptCore.Value): DOMNode;
 
-        // Own methods of WebKit2WebExtension.DOMNode
+        // Methods
 
         append_child(newChild: DOMNode): DOMNode;
         clone_node(deep: boolean): DOMNode;
@@ -32945,7 +32945,7 @@ export namespace WebKit2WebExtension {
     class DOMNodeIterator extends DOMObject {
         static $gtype: GObject.GType<DOMNodeIterator>;
 
-        // Own properties of WebKit2WebExtension.DOMNodeIterator
+        // Properties
 
         get filter(): DOMNodeFilter;
         get pointer_before_reference_node(): boolean;
@@ -32956,13 +32956,13 @@ export namespace WebKit2WebExtension {
         get what_to_show(): number;
         get whatToShow(): number;
 
-        // Constructors of WebKit2WebExtension.DOMNodeIterator
+        // Constructors
 
         constructor(properties?: Partial<DOMNodeIterator.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of WebKit2WebExtension.DOMNodeIterator
+        // Methods
 
         detach(): void;
         /**
@@ -32990,17 +32990,17 @@ export namespace WebKit2WebExtension {
     class DOMNodeList extends DOMObject {
         static $gtype: GObject.GType<DOMNodeList>;
 
-        // Own properties of WebKit2WebExtension.DOMNodeList
+        // Properties
 
         get length(): number;
 
-        // Constructors of WebKit2WebExtension.DOMNodeList
+        // Constructors
 
         constructor(properties?: Partial<DOMNodeList.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of WebKit2WebExtension.DOMNodeList
+        // Methods
 
         get_length(): number;
         item(index: number): DOMNode;
@@ -33018,16 +33018,16 @@ export namespace WebKit2WebExtension {
     class DOMObject extends GObject.Object {
         static $gtype: GObject.GType<DOMObject>;
 
-        // Own properties of WebKit2WebExtension.DOMObject
+        // Properties
 
         set core_object(val: any);
         set coreObject(val: any);
 
-        // Own fields of WebKit2WebExtension.DOMObject
+        // Fields
 
         parentInstance: GObject.Object;
 
-        // Constructors of WebKit2WebExtension.DOMObject
+        // Constructors
 
         constructor(properties?: Partial<DOMObject.ConstructorProps>, ...args: any[]);
 
@@ -33046,18 +33046,18 @@ export namespace WebKit2WebExtension {
     class DOMProcessingInstruction extends DOMCharacterData implements DOMEventTarget {
         static $gtype: GObject.GType<DOMProcessingInstruction>;
 
-        // Own properties of WebKit2WebExtension.DOMProcessingInstruction
+        // Properties
 
         get sheet(): DOMStyleSheet;
         get target(): string;
 
-        // Constructors of WebKit2WebExtension.DOMProcessingInstruction
+        // Constructors
 
         constructor(properties?: Partial<DOMProcessingInstruction.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of WebKit2WebExtension.DOMProcessingInstruction
+        // Methods
 
         get_sheet(): DOMStyleSheet;
         get_target(): string;
@@ -33491,7 +33491,7 @@ export namespace WebKit2WebExtension {
     class DOMRange extends DOMObject {
         static $gtype: GObject.GType<DOMRange>;
 
-        // Own properties of WebKit2WebExtension.DOMRange
+        // Properties
 
         get collapsed(): boolean;
         get common_ancestor_container(): DOMNode;
@@ -33506,13 +33506,13 @@ export namespace WebKit2WebExtension {
         get startOffset(): number;
         get text(): string;
 
-        // Constructors of WebKit2WebExtension.DOMRange
+        // Constructors
 
         constructor(properties?: Partial<DOMRange.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of WebKit2WebExtension.DOMRange
+        // Methods
 
         clone_contents(): DOMDocumentFragment;
         clone_range(): DOMRange;
@@ -33566,7 +33566,7 @@ export namespace WebKit2WebExtension {
     class DOMStyleSheet extends DOMObject {
         static $gtype: GObject.GType<DOMStyleSheet>;
 
-        // Own properties of WebKit2WebExtension.DOMStyleSheet
+        // Properties
 
         get disabled(): boolean;
         set disabled(val: boolean);
@@ -33579,13 +33579,13 @@ export namespace WebKit2WebExtension {
         get title(): string;
         get type(): string;
 
-        // Constructors of WebKit2WebExtension.DOMStyleSheet
+        // Constructors
 
         constructor(properties?: Partial<DOMStyleSheet.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of WebKit2WebExtension.DOMStyleSheet
+        // Methods
 
         get_content_type(): string;
         get_disabled(): boolean;
@@ -33608,17 +33608,17 @@ export namespace WebKit2WebExtension {
     class DOMStyleSheetList extends DOMObject {
         static $gtype: GObject.GType<DOMStyleSheetList>;
 
-        // Own properties of WebKit2WebExtension.DOMStyleSheetList
+        // Properties
 
         get length(): number;
 
-        // Constructors of WebKit2WebExtension.DOMStyleSheetList
+        // Constructors
 
         constructor(properties?: Partial<DOMStyleSheetList.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of WebKit2WebExtension.DOMStyleSheetList
+        // Methods
 
         get_length(): number;
         item(index: number): DOMStyleSheet;
@@ -33636,18 +33636,18 @@ export namespace WebKit2WebExtension {
     class DOMText extends DOMCharacterData implements DOMEventTarget {
         static $gtype: GObject.GType<DOMText>;
 
-        // Own properties of WebKit2WebExtension.DOMText
+        // Properties
 
         get whole_text(): string;
         get wholeText(): string;
 
-        // Constructors of WebKit2WebExtension.DOMText
+        // Constructors
 
         constructor(properties?: Partial<DOMText.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of WebKit2WebExtension.DOMText
+        // Methods
 
         get_whole_text(): string;
         replace_whole_text(content: string): DOMText;
@@ -34076,7 +34076,7 @@ export namespace WebKit2WebExtension {
     class DOMTreeWalker extends DOMObject {
         static $gtype: GObject.GType<DOMTreeWalker>;
 
-        // Own properties of WebKit2WebExtension.DOMTreeWalker
+        // Properties
 
         get current_node(): DOMNode;
         get currentNode(): DOMNode;
@@ -34085,13 +34085,13 @@ export namespace WebKit2WebExtension {
         get what_to_show(): number;
         get whatToShow(): number;
 
-        // Constructors of WebKit2WebExtension.DOMTreeWalker
+        // Constructors
 
         constructor(properties?: Partial<DOMTreeWalker.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of WebKit2WebExtension.DOMTreeWalker
+        // Methods
 
         first_child(): DOMNode;
         get_current_node(): DOMNode;
@@ -34136,7 +34136,7 @@ export namespace WebKit2WebExtension {
     class DOMUIEvent extends DOMEvent {
         static $gtype: GObject.GType<DOMUIEvent>;
 
-        // Own properties of WebKit2WebExtension.DOMUIEvent
+        // Properties
 
         get char_code(): number;
         get charCode(): number;
@@ -34153,13 +34153,13 @@ export namespace WebKit2WebExtension {
         get pageY(): number;
         get view(): DOMDOMWindow;
 
-        // Constructors of WebKit2WebExtension.DOMUIEvent
+        // Constructors
 
         constructor(properties?: Partial<DOMUIEvent.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of WebKit2WebExtension.DOMUIEvent
+        // Methods
 
         get_char_code(): number;
         get_detail(): number;
@@ -34188,7 +34188,7 @@ export namespace WebKit2WebExtension {
     class DOMWheelEvent extends DOMMouseEvent {
         static $gtype: GObject.GType<DOMWheelEvent>;
 
-        // Own properties of WebKit2WebExtension.DOMWheelEvent
+        // Properties
 
         get wheel_delta(): number;
         get wheelDelta(): number;
@@ -34197,13 +34197,13 @@ export namespace WebKit2WebExtension {
         get wheel_delta_y(): number;
         get wheelDeltaY(): number;
 
-        // Constructors of WebKit2WebExtension.DOMWheelEvent
+        // Constructors
 
         constructor(properties?: Partial<DOMWheelEvent.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of WebKit2WebExtension.DOMWheelEvent
+        // Methods
 
         get_wheel_delta(): number;
         get_wheel_delta_x(): number;
@@ -34232,13 +34232,13 @@ export namespace WebKit2WebExtension {
     class DOMXPathExpression extends DOMObject {
         static $gtype: GObject.GType<DOMXPathExpression>;
 
-        // Constructors of WebKit2WebExtension.DOMXPathExpression
+        // Constructors
 
         constructor(properties?: Partial<DOMXPathExpression.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of WebKit2WebExtension.DOMXPathExpression
+        // Methods
 
         evaluate(contextNode: DOMNode, type: number, inResult: DOMXPathResult): DOMXPathResult;
     }
@@ -34267,7 +34267,7 @@ export namespace WebKit2WebExtension {
     class DOMXPathResult extends DOMObject {
         static $gtype: GObject.GType<DOMXPathResult>;
 
-        // Own properties of WebKit2WebExtension.DOMXPathResult
+        // Properties
 
         get boolean_value(): boolean;
         get booleanValue(): boolean;
@@ -34284,13 +34284,13 @@ export namespace WebKit2WebExtension {
         get string_value(): string;
         get stringValue(): string;
 
-        // Constructors of WebKit2WebExtension.DOMXPathResult
+        // Constructors
 
         constructor(properties?: Partial<DOMXPathResult.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of WebKit2WebExtension.DOMXPathResult
+        // Methods
 
         get_boolean_value(): boolean;
         get_invalid_iterator_state(): boolean;
@@ -34318,13 +34318,13 @@ export namespace WebKit2WebExtension {
     class Frame extends GObject.Object {
         static $gtype: GObject.GType<Frame>;
 
-        // Constructors of WebKit2WebExtension.Frame
+        // Constructors
 
         constructor(properties?: Partial<Frame.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of WebKit2WebExtension.Frame
+        // Methods
 
         /**
          * Gets the process-unique identifier of this #WebKitFrame. No other
@@ -34415,7 +34415,7 @@ export namespace WebKit2WebExtension {
     class HitTestResult extends GObject.Object {
         static $gtype: GObject.GType<HitTestResult>;
 
-        // Own properties of WebKit2WebExtension.HitTestResult
+        // Properties
 
         /**
          * Bitmask of #WebKitHitTestResultContext flags representing
@@ -34473,13 +34473,13 @@ export namespace WebKit2WebExtension {
          */
         get mediaUri(): string;
 
-        // Constructors of WebKit2WebExtension.HitTestResult
+        // Constructors
 
         constructor(properties?: Partial<HitTestResult.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of WebKit2WebExtension.HitTestResult
+        // Methods
 
         /**
          * Gets whether %WEBKIT_HIT_TEST_RESULT_CONTEXT_EDITABLE flag is present in
@@ -34564,7 +34564,7 @@ export namespace WebKit2WebExtension {
     class ScriptWorld extends GObject.Object {
         static $gtype: GObject.GType<ScriptWorld>;
 
-        // Constructors of WebKit2WebExtension.ScriptWorld
+        // Constructors
 
         constructor(properties?: Partial<ScriptWorld.ConstructorProps>, ...args: any[]);
 
@@ -34574,7 +34574,7 @@ export namespace WebKit2WebExtension {
 
         static new_with_name(name: string): ScriptWorld;
 
-        // Own signals of WebKit2WebExtension.ScriptWorld
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -34589,7 +34589,7 @@ export namespace WebKit2WebExtension {
         ): number;
         emit(signal: 'window-object-cleared', page: WebPage, frame: Frame): void;
 
-        // Own static methods of WebKit2WebExtension.ScriptWorld
+        // Static methods
 
         /**
          * Get the default #WebKitScriptWorld. This is the normal script world
@@ -34599,7 +34599,7 @@ export namespace WebKit2WebExtension {
          */
         static get_default(): ScriptWorld;
 
-        // Own methods of WebKit2WebExtension.ScriptWorld
+        // Methods
 
         /**
          * Get the name of a #WebKitScriptWorld.
@@ -34626,7 +34626,7 @@ export namespace WebKit2WebExtension {
     class URIRequest extends GObject.Object {
         static $gtype: GObject.GType<URIRequest>;
 
-        // Own properties of WebKit2WebExtension.URIRequest
+        // Properties
 
         /**
          * The URI to which the request will be made.
@@ -34634,7 +34634,7 @@ export namespace WebKit2WebExtension {
         get uri(): string;
         set uri(val: string);
 
-        // Constructors of WebKit2WebExtension.URIRequest
+        // Constructors
 
         constructor(properties?: Partial<URIRequest.ConstructorProps>, ...args: any[]);
 
@@ -34642,7 +34642,7 @@ export namespace WebKit2WebExtension {
 
         static ['new'](uri: string): URIRequest;
 
-        // Own methods of WebKit2WebExtension.URIRequest
+        // Methods
 
         /**
          * Get the HTTP headers of a #WebKitURIRequest as a #SoupMessageHeaders.
@@ -34694,7 +34694,7 @@ export namespace WebKit2WebExtension {
     class URIResponse extends GObject.Object {
         static $gtype: GObject.GType<URIResponse>;
 
-        // Own properties of WebKit2WebExtension.URIResponse
+        // Properties
 
         /**
          * The expected content length of the response.
@@ -34741,13 +34741,13 @@ export namespace WebKit2WebExtension {
          */
         get uri(): string;
 
-        // Constructors of WebKit2WebExtension.URIResponse
+        // Constructors
 
         constructor(properties?: Partial<URIResponse.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of WebKit2WebExtension.URIResponse
+        // Methods
 
         /**
          * Get the expected content length of the #WebKitURIResponse.
@@ -34816,7 +34816,7 @@ export namespace WebKit2WebExtension {
     class UserMessage extends GObject.InitiallyUnowned {
         static $gtype: GObject.GType<UserMessage>;
 
-        // Own properties of WebKit2WebExtension.UserMessage
+        // Properties
 
         /**
          * The UNIX file descriptors of the user message.
@@ -34837,7 +34837,7 @@ export namespace WebKit2WebExtension {
          */
         get parameters(): GLib.Variant;
 
-        // Constructors of WebKit2WebExtension.UserMessage
+        // Constructors
 
         constructor(properties?: Partial<UserMessage.ConstructorProps>, ...args: any[]);
 
@@ -34851,14 +34851,14 @@ export namespace WebKit2WebExtension {
             fd_list?: Gio.UnixFDList | null,
         ): UserMessage;
 
-        // Own static methods of WebKit2WebExtension.UserMessage
+        // Static methods
 
         /**
          * Gets the quark for the domain of user message errors.
          */
         static error_quark(): GLib.Quark;
 
-        // Own methods of WebKit2WebExtension.UserMessage
+        // Methods
 
         /**
          * Get the `message` list of file descritpor.
@@ -34908,13 +34908,13 @@ export namespace WebKit2WebExtension {
     class WebEditor extends GObject.Object {
         static $gtype: GObject.GType<WebEditor>;
 
-        // Constructors of WebKit2WebExtension.WebEditor
+        // Constructors
 
         constructor(properties?: Partial<WebEditor.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of WebKit2WebExtension.WebEditor
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -34923,7 +34923,7 @@ export namespace WebKit2WebExtension {
         connect_after(signal: 'selection-changed', callback: (_source: this) => void): number;
         emit(signal: 'selection-changed'): void;
 
-        // Own methods of WebKit2WebExtension.WebEditor
+        // Methods
 
         /**
          * Gets the #WebKitWebPage that is associated with the #WebKitWebEditor.
@@ -35024,13 +35024,13 @@ export namespace WebKit2WebExtension {
     class WebExtension extends GObject.Object {
         static $gtype: GObject.GType<WebExtension>;
 
-        // Constructors of WebKit2WebExtension.WebExtension
+        // Constructors
 
         constructor(properties?: Partial<WebExtension.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of WebKit2WebExtension.WebExtension
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -35042,7 +35042,7 @@ export namespace WebKit2WebExtension {
         connect_after(signal: 'user-message-received', callback: (_source: this, message: UserMessage) => void): number;
         emit(signal: 'user-message-received', message: UserMessage): void;
 
-        // Own methods of WebKit2WebExtension.WebExtension
+        // Methods
 
         /**
          * Get the web page of the given `page_id`.
@@ -35099,13 +35099,13 @@ export namespace WebKit2WebExtension {
     class WebFormManager extends GObject.Object {
         static $gtype: GObject.GType<WebFormManager>;
 
-        // Constructors of WebKit2WebExtension.WebFormManager
+        // Constructors
 
         constructor(properties?: Partial<WebFormManager.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of WebKit2WebExtension.WebFormManager
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -35143,7 +35143,7 @@ export namespace WebKit2WebExtension {
         ): number;
         emit(signal: 'will-submit-form', form: JavaScriptCore.Value, source_frame: Frame, target_frame: Frame): void;
 
-        // Own static methods of WebKit2WebExtension.WebFormManager
+        // Static methods
 
         /**
          * Set the value of an HTML input element as if it had been edited by
@@ -35182,20 +35182,20 @@ export namespace WebKit2WebExtension {
     class WebHitTestResult extends HitTestResult {
         static $gtype: GObject.GType<WebHitTestResult>;
 
-        // Own properties of WebKit2WebExtension.WebHitTestResult
+        // Properties
 
         /**
          * The #WebKitDOMNode
          */
         get node(): DOMNode;
 
-        // Constructors of WebKit2WebExtension.WebHitTestResult
+        // Constructors
 
         constructor(properties?: Partial<WebHitTestResult.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of WebKit2WebExtension.WebHitTestResult
+        // Methods
 
         /**
          * Get the #JSCValue for the DOM node in `world` at the coordinates of the Hit Test.
@@ -35265,20 +35265,20 @@ export namespace WebKit2WebExtension {
     class WebPage extends GObject.Object {
         static $gtype: GObject.GType<WebPage>;
 
-        // Own properties of WebKit2WebExtension.WebPage
+        // Properties
 
         /**
          * The current active URI of the #WebKitWebPage.
          */
         get uri(): string;
 
-        // Constructors of WebKit2WebExtension.WebPage
+        // Constructors
 
         constructor(properties?: Partial<WebPage.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of WebKit2WebExtension.WebPage
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -35368,7 +35368,7 @@ export namespace WebKit2WebExtension {
             text_field_values: string[],
         ): void;
 
-        // Own methods of WebKit2WebExtension.WebPage
+        // Methods
 
         /**
          * Get the #WebKitDOMDocument currently loaded in `web_page`
@@ -35430,11 +35430,11 @@ export namespace WebKit2WebExtension {
     abstract class ConsoleMessage {
         static $gtype: GObject.GType<ConsoleMessage>;
 
-        // Constructors of WebKit2WebExtension.ConsoleMessage
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of WebKit2WebExtension.ConsoleMessage
+        // Methods
 
         /**
          * Make a copy of `console_message`.
@@ -35477,7 +35477,7 @@ export namespace WebKit2WebExtension {
     abstract class ContextMenuItemPrivate {
         static $gtype: GObject.GType<ContextMenuItemPrivate>;
 
-        // Constructors of WebKit2WebExtension.ContextMenuItemPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -35485,7 +35485,7 @@ export namespace WebKit2WebExtension {
     abstract class ContextMenuPrivate {
         static $gtype: GObject.GType<ContextMenuPrivate>;
 
-        // Constructors of WebKit2WebExtension.ContextMenuPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -35597,7 +35597,7 @@ export namespace WebKit2WebExtension {
     abstract class FramePrivate {
         static $gtype: GObject.GType<FramePrivate>;
 
-        // Constructors of WebKit2WebExtension.FramePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -35606,7 +35606,7 @@ export namespace WebKit2WebExtension {
     abstract class HitTestResultPrivate {
         static $gtype: GObject.GType<HitTestResultPrivate>;
 
-        // Constructors of WebKit2WebExtension.HitTestResultPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -35615,7 +35615,7 @@ export namespace WebKit2WebExtension {
     abstract class ScriptWorldPrivate {
         static $gtype: GObject.GType<ScriptWorldPrivate>;
 
-        // Constructors of WebKit2WebExtension.ScriptWorldPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -35624,7 +35624,7 @@ export namespace WebKit2WebExtension {
     abstract class URIRequestPrivate {
         static $gtype: GObject.GType<URIRequestPrivate>;
 
-        // Constructors of WebKit2WebExtension.URIRequestPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -35633,7 +35633,7 @@ export namespace WebKit2WebExtension {
     abstract class URIResponsePrivate {
         static $gtype: GObject.GType<URIResponsePrivate>;
 
-        // Constructors of WebKit2WebExtension.URIResponsePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -35642,7 +35642,7 @@ export namespace WebKit2WebExtension {
     abstract class UserMessagePrivate {
         static $gtype: GObject.GType<UserMessagePrivate>;
 
-        // Constructors of WebKit2WebExtension.UserMessagePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -35651,7 +35651,7 @@ export namespace WebKit2WebExtension {
     abstract class WebEditorPrivate {
         static $gtype: GObject.GType<WebEditorPrivate>;
 
-        // Constructors of WebKit2WebExtension.WebEditorPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -35660,7 +35660,7 @@ export namespace WebKit2WebExtension {
     abstract class WebExtensionPrivate {
         static $gtype: GObject.GType<WebExtensionPrivate>;
 
-        // Constructors of WebKit2WebExtension.WebExtensionPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -35670,7 +35670,7 @@ export namespace WebKit2WebExtension {
     abstract class WebHitTestResultPrivate {
         static $gtype: GObject.GType<WebHitTestResultPrivate>;
 
-        // Constructors of WebKit2WebExtension.WebHitTestResultPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -35679,7 +35679,7 @@ export namespace WebKit2WebExtension {
     abstract class WebPagePrivate {
         static $gtype: GObject.GType<WebPagePrivate>;
 
-        // Constructors of WebKit2WebExtension.WebPagePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -35695,7 +35695,7 @@ export namespace WebKit2WebExtension {
         prototype: DOMEventTarget;
     }
     interface DOMEventTarget extends GObject.Object {
-        // Own methods of WebKit2WebExtension.DOMEventTarget
+        // Methods
 
         add_event_listener(event_name: string, handler: GObject.Callback, use_capture: boolean): boolean;
         /**
@@ -35719,7 +35719,7 @@ export namespace WebKit2WebExtension {
          */
         remove_event_listener(event_name: string, handler: GObject.Closure, use_capture: boolean): boolean;
 
-        // Own virtual methods of WebKit2WebExtension.DOMEventTarget
+        // Virtual methods
 
         vfunc_add_event_listener(event_name: string, handler: GObject.Closure, use_capture: boolean): boolean;
         vfunc_dispatch_event(event: DOMEvent): boolean;
@@ -35739,11 +35739,11 @@ export namespace WebKit2WebExtension {
         prototype: DOMNodeFilter;
     }
     interface DOMNodeFilter extends GObject.Object {
-        // Own methods of WebKit2WebExtension.DOMNodeFilter
+        // Methods
 
         accept_node(node: DOMNode): number;
 
-        // Own virtual methods of WebKit2WebExtension.DOMNodeFilter
+        // Virtual methods
 
         vfunc_accept_node(node: DOMNode): number;
     }
@@ -35761,11 +35761,11 @@ export namespace WebKit2WebExtension {
         prototype: DOMXPathNSResolver;
     }
     interface DOMXPathNSResolver extends GObject.Object {
-        // Own methods of WebKit2WebExtension.DOMXPathNSResolver
+        // Methods
 
         lookup_namespace_uri(prefix: string): string;
 
-        // Own virtual methods of WebKit2WebExtension.DOMXPathNSResolver
+        // Virtual methods
 
         vfunc_lookup_namespace_uri(prefix: string): string;
     }

@@ -239,7 +239,7 @@ export namespace GVnc {
     class BaseAudio extends GObject.Object implements Audio {
         static $gtype: GObject.GType<BaseAudio>;
 
-        // Constructors of GVnc.BaseAudio
+        // Constructors
 
         constructor(properties?: Partial<BaseAudio.ConstructorProps>, ...args: any[]);
 
@@ -247,7 +247,7 @@ export namespace GVnc {
 
         static ['new'](): BaseAudio;
 
-        // Own signals of GVnc.BaseAudio
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -268,7 +268,7 @@ export namespace GVnc {
         connect_after(signal: 'vnc-audio-playback-stop', callback: (_source: this) => void): number;
         emit(signal: 'vnc-audio-playback-stop'): void;
 
-        // Own virtual methods of GVnc.BaseAudio
+        // Virtual methods
 
         vfunc_playback_data(sample: AudioSample): boolean;
         vfunc_playback_start(format: AudioFormat): boolean;
@@ -713,7 +713,7 @@ export namespace GVnc {
     class BaseFramebuffer extends GObject.Object implements Framebuffer {
         static $gtype: GObject.GType<BaseFramebuffer>;
 
-        // Own properties of GVnc.BaseFramebuffer
+        // Properties
 
         get buffer(): any;
         get color_map(): ColorMap;
@@ -728,7 +728,7 @@ export namespace GVnc {
         get rowstride(): number;
         get width(): number;
 
-        // Constructors of GVnc.BaseFramebuffer
+        // Constructors
 
         constructor(properties?: Partial<BaseFramebuffer.ConstructorProps>, ...args: any[]);
 
@@ -1410,12 +1410,12 @@ export namespace GVnc {
     class Connection extends GObject.Object {
         static $gtype: GObject.GType<Connection>;
 
-        // Own properties of GVnc.Connection
+        // Properties
 
         get framebuffer(): Framebuffer;
         set framebuffer(val: Framebuffer);
 
-        // Constructors of GVnc.Connection
+        // Constructors
 
         constructor(properties?: Partial<Connection.ConstructorProps>, ...args: any[]);
 
@@ -1423,7 +1423,7 @@ export namespace GVnc {
 
         static ['new'](): Connection;
 
-        // Own signals of GVnc.Connection
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -1513,7 +1513,7 @@ export namespace GVnc {
         connect_after(signal: 'vnc-server-cut-text', callback: (_source: this, object: string) => void): number;
         emit(signal: 'vnc-server-cut-text', object: string): void;
 
-        // Own virtual methods of GVnc.Connection
+        // Virtual methods
 
         vfunc_vnc_auth_choose_subtype(type: number, subtypes: GObject.ValueArray): void;
         vfunc_vnc_auth_choose_type(types: GObject.ValueArray): void;
@@ -1536,7 +1536,7 @@ export namespace GVnc {
         vfunc_vnc_power_control_initialized(): void;
         vfunc_vnc_server_cut_text(text: GLib.String): void;
 
-        // Own methods of GVnc.Connection
+        // Methods
 
         /**
          * Tell the server that it is no longer permitted to send
@@ -1832,7 +1832,7 @@ export namespace GVnc {
     class Cursor extends GObject.Object {
         static $gtype: GObject.GType<Cursor>;
 
-        // Own properties of GVnc.Cursor
+        // Properties
 
         get data(): any;
         set data(val: any);
@@ -1845,7 +1845,7 @@ export namespace GVnc {
         get width(): number;
         set width(val: number);
 
-        // Constructors of GVnc.Cursor
+        // Constructors
 
         constructor(properties?: Partial<Cursor.ConstructorProps>, ...args: any[]);
 
@@ -1853,7 +1853,7 @@ export namespace GVnc {
 
         static ['new'](data: Uint8Array | string, hotx: number, hoty: number, width: number, height: number): Cursor;
 
-        // Own methods of GVnc.Cursor
+        // Methods
 
         /**
          * Get the bitmap data representing the cursor
@@ -1887,13 +1887,13 @@ export namespace GVnc {
     class AudioFormat {
         static $gtype: GObject.GType<AudioFormat>;
 
-        // Own fields of GVnc.AudioFormat
+        // Fields
 
         format: number;
         nchannels: number;
         frequency: number;
 
-        // Constructors of GVnc.AudioFormat
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -1906,7 +1906,7 @@ export namespace GVnc {
 
         static ['new'](): AudioFormat;
 
-        // Own methods of GVnc.AudioFormat
+        // Methods
 
         /**
          * Allocate a new VNC audio format struct whose
@@ -1926,13 +1926,13 @@ export namespace GVnc {
     class AudioSample {
         static $gtype: GObject.GType<AudioSample>;
 
-        // Own fields of GVnc.AudioSample
+        // Fields
 
         data: number;
         length: number;
         capacity: number;
 
-        // Constructors of GVnc.AudioSample
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -1945,7 +1945,7 @@ export namespace GVnc {
 
         static ['new'](capacity: number): AudioSample;
 
-        // Own methods of GVnc.AudioSample
+        // Methods
 
         /**
          * Allocate a new audio sample, initializing it with a copy
@@ -1967,7 +1967,7 @@ export namespace GVnc {
     abstract class BaseAudioPrivate {
         static $gtype: GObject.GType<BaseAudioPrivate>;
 
-        // Constructors of GVnc.BaseAudioPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1976,7 +1976,7 @@ export namespace GVnc {
     abstract class BaseFramebufferPrivate {
         static $gtype: GObject.GType<BaseFramebufferPrivate>;
 
-        // Constructors of GVnc.BaseFramebufferPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1984,13 +1984,13 @@ export namespace GVnc {
     class ColorMap {
         static $gtype: GObject.GType<ColorMap>;
 
-        // Own fields of GVnc.ColorMap
+        // Fields
 
         offset: number;
         size: number;
         colors: ColorMapEntry;
 
-        // Constructors of GVnc.ColorMap
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -2002,7 +2002,7 @@ export namespace GVnc {
 
         static ['new'](offset: number, size: number): ColorMap;
 
-        // Own methods of GVnc.ColorMap
+        // Methods
 
         /**
          * Allocate a new color map initializing it with a
@@ -2037,13 +2037,13 @@ export namespace GVnc {
     class ColorMapEntry {
         static $gtype: GObject.GType<ColorMapEntry>;
 
-        // Own fields of GVnc.ColorMapEntry
+        // Fields
 
         red: number;
         green: number;
         blue: number;
 
-        // Constructors of GVnc.ColorMapEntry
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -2059,7 +2059,7 @@ export namespace GVnc {
     abstract class ConnectionPrivate {
         static $gtype: GObject.GType<ConnectionPrivate>;
 
-        // Constructors of GVnc.ConnectionPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2068,7 +2068,7 @@ export namespace GVnc {
     abstract class CursorPrivate {
         static $gtype: GObject.GType<CursorPrivate>;
 
-        // Constructors of GVnc.CursorPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2077,7 +2077,7 @@ export namespace GVnc {
     class PixelFormat {
         static $gtype: GObject.GType<PixelFormat>;
 
-        // Own fields of GVnc.PixelFormat
+        // Fields
 
         bits_per_pixel: number;
         depth: number;
@@ -2090,7 +2090,7 @@ export namespace GVnc {
         green_shift: number;
         blue_shift: number;
 
-        // Constructors of GVnc.PixelFormat
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -2110,7 +2110,7 @@ export namespace GVnc {
 
         static ['new'](): PixelFormat;
 
-        // Own methods of GVnc.PixelFormat
+        // Methods
 
         /**
          * Allocate a new VNC pixel format struct whose
@@ -2138,7 +2138,7 @@ export namespace GVnc {
         prototype: Audio;
     }
     interface Audio extends GObject.Object {
-        // Own methods of GVnc.Audio
+        // Methods
 
         /**
          * Request playback of a single audio sample in `sample`
@@ -2157,7 +2157,7 @@ export namespace GVnc {
          */
         playback_stop(): void;
 
-        // Own virtual methods of GVnc.Audio
+        // Virtual methods
 
         vfunc_playback_data(sample: AudioSample): boolean;
         vfunc_playback_start(format: AudioFormat): boolean;
@@ -2177,7 +2177,7 @@ export namespace GVnc {
         prototype: Framebuffer;
     }
     interface Framebuffer extends GObject.Object {
-        // Own methods of GVnc.Framebuffer
+        // Methods
 
         blt(src: number, rowstride: number, x: number, y: number, width: number, height: number): void;
         /**
@@ -2270,7 +2270,7 @@ export namespace GVnc {
          */
         set_pixel_at(src: Uint8Array | string, x: number, y: number): void;
 
-        // Own virtual methods of GVnc.Framebuffer
+        // Virtual methods
 
         vfunc_blt(src: number, rowstride: number, x: number, y: number, width: number, height: number): void;
         /**

@@ -145,7 +145,7 @@ export namespace InputPad {
     class GtkApplication extends Gtk.Application implements Gio.ActionGroup, Gio.ActionMap {
         static $gtype: GObject.GType<GtkApplication>;
 
-        // Constructors of InputPad.GtkApplication
+        // Constructors
 
         constructor(properties?: Partial<GtkApplication.ConstructorProps>, ...args: any[]);
 
@@ -153,7 +153,7 @@ export namespace InputPad {
 
         static ['new'](): GtkApplication;
 
-        // Own signals of InputPad.GtkApplication
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -162,7 +162,7 @@ export namespace InputPad {
         connect_after(signal: 'activated', callback: (_source: this) => void): number;
         emit(signal: 'activated'): void;
 
-        // Own methods of InputPad.GtkApplication
+        // Methods
 
         get_window(): GtkWindow;
 
@@ -589,7 +589,7 @@ export namespace InputPad {
     class GtkButton extends Gtk.Button implements Atk.ImplementorIface, Gtk.Actionable, Gtk.Activatable, Gtk.Buildable {
         static $gtype: GObject.GType<GtkButton>;
 
-        // Constructors of InputPad.GtkButton
+        // Constructors
 
         constructor(properties?: Partial<GtkButton.ConstructorProps>, ...args: any[]);
 
@@ -601,7 +601,7 @@ export namespace InputPad {
 
         static new_with_unicode(code: number): GtkButton;
 
-        // Own signals of InputPad.GtkButton
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -610,11 +610,11 @@ export namespace InputPad {
         connect_after(signal: 'pressed-repeat', callback: (_source: this) => void): number;
         emit(signal: 'pressed-repeat'): void;
 
-        // Own virtual methods of InputPad.GtkButton
+        // Virtual methods
 
         vfunc_pressed_repeat(): void;
 
-        // Own methods of InputPad.GtkButton
+        // Methods
 
         get_all_keysyms(): number;
         get_keycode(): number;
@@ -4813,7 +4813,7 @@ export namespace InputPad {
     {
         static $gtype: GObject.GType<GtkComboBox>;
 
-        // Constructors of InputPad.GtkComboBox
+        // Constructors
 
         constructor(properties?: Partial<GtkComboBox.ConstructorProps>, ...args: any[]);
 
@@ -4821,7 +4821,7 @@ export namespace InputPad {
 
         static ['new'](): GtkComboBox;
 
-        // Own methods of InputPad.GtkComboBox
+        // Methods
 
         get_base(): number;
         set_base(base: number): void;
@@ -8979,13 +8979,13 @@ export namespace InputPad {
     abstract class GtkKbdui extends GObject.Object {
         static $gtype: GObject.GType<GtkKbdui>;
 
-        // Constructors of InputPad.GtkKbdui
+        // Constructors
 
         constructor(properties?: Partial<GtkKbdui.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of InputPad.GtkKbdui
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -9009,7 +9009,7 @@ export namespace InputPad {
         ): number;
         emit(signal: 'destroy-keyboard-layout', object: Gtk.Widget, p0: GtkWindow): void;
 
-        // Own virtual methods of InputPad.GtkKbdui
+        // Virtual methods
 
         vfunc_create_keyboard_layout(vbox: Gtk.Widget, window: GtkWindow): void;
         vfunc_destroy_keyboard_layout(vbox: Gtk.Widget, window: GtkWindow): void;
@@ -9028,11 +9028,11 @@ export namespace InputPad {
     class GtkViewport extends Gtk.Bin implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable {
         static $gtype: GObject.GType<GtkViewport>;
 
-        // Own fields of InputPad.GtkViewport
+        // Fields
 
         bin: Gtk.Bin;
 
-        // Constructors of InputPad.GtkViewport
+        // Constructors
 
         constructor(properties?: Partial<GtkViewport.ConstructorProps>, ...args: any[]);
 
@@ -9040,7 +9040,7 @@ export namespace InputPad {
 
         static ['new'](): GtkViewport;
 
-        // Own methods of InputPad.GtkViewport
+        // Methods
 
         table_configure(table: Gtk.Widget, min: number, max: number): void;
 
@@ -9589,12 +9589,12 @@ export namespace InputPad {
     {
         static $gtype: GObject.GType<GtkWindow>;
 
-        // Own fields of InputPad.GtkWindow
+        // Fields
 
         // @ts-expect-error This property conflicts with an accessor in a parent class or interface.
         child: number;
 
-        // Constructors of InputPad.GtkWindow
+        // Constructors
 
         constructor(properties?: Partial<GtkWindow.ConstructorProps>, ...args: any[]);
 
@@ -9607,7 +9607,7 @@ export namespace InputPad {
 
         static new_with_child(app: GtkApplication, type: Gtk.WindowType, child: number): GtkWindow;
 
-        // Own signals of InputPad.GtkWindow
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -9637,14 +9637,14 @@ export namespace InputPad {
         connect_after(signal: 'reorder-button-pressed', callback: (_source: this) => void): number;
         emit(signal: 'reorder-button-pressed'): void;
 
-        // Own static methods of InputPad.GtkWindow
+        // Static methods
 
         static get_kbdui_name_get_description_with_index(index: number): string;
         static get_kbdui_name_get_name_with_index(index: number): string;
         static get_kbdui_name_get_type_with_index(index: number): WindowType;
         static get_kbdui_name_list_length(): number;
 
-        // Own virtual methods of InputPad.GtkWindow
+        // Virtual methods
 
         vfunc_button_pressed(str: string, type: number, keysym: number, keycode: number, state: number): boolean;
         vfunc_char_button_sensitive(sensitive: boolean): void;
@@ -9653,7 +9653,7 @@ export namespace InputPad {
         vfunc_keyboard_changed(group: number): void;
         vfunc_reorder_button_pressed(): void;
 
-        // Own methods of InputPad.GtkWindow
+        // Methods
 
         append_padfile(padfile: string, domain: string): void;
         get_keyboard_state(): number;
@@ -10635,16 +10635,16 @@ export namespace InputPad {
     class Group {
         static $gtype: GObject.GType<Group>;
 
-        // Own fields of InputPad.Group
+        // Fields
 
         name: string;
         priv: GroupPrivate;
 
-        // Constructors of InputPad.Group
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of InputPad.Group
+        // Methods
 
         destroy(): void;
     }
@@ -10652,11 +10652,11 @@ export namespace InputPad {
     class GroupPrivate {
         static $gtype: GObject.GType<GroupPrivate>;
 
-        // Own fields of InputPad.GroupPrivate
+        // Fields
 
         signal_window: any;
 
-        // Constructors of InputPad.GroupPrivate
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -10671,7 +10671,7 @@ export namespace InputPad {
     abstract class GtkButtonPrivate {
         static $gtype: GObject.GType<GtkButtonPrivate>;
 
-        // Constructors of InputPad.GtkButtonPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -10680,7 +10680,7 @@ export namespace InputPad {
     abstract class GtkComboBoxPrivate {
         static $gtype: GObject.GType<GtkComboBoxPrivate>;
 
-        // Constructors of InputPad.GtkComboBoxPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -10689,15 +10689,15 @@ export namespace InputPad {
     class GtkKbduiContext {
         static $gtype: GObject.GType<GtkKbduiContext>;
 
-        // Own fields of InputPad.GtkKbduiContext
+        // Fields
 
         kbdui: GtkKbdui;
 
-        // Constructors of InputPad.GtkKbduiContext
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of InputPad.GtkKbduiContext
+        // Methods
 
         destroy(): void;
         get_kbdui_name(): string;
@@ -10707,7 +10707,7 @@ export namespace InputPad {
     abstract class GtkKbduiContextPrivate {
         static $gtype: GObject.GType<GtkKbduiContextPrivate>;
 
-        // Constructors of InputPad.GtkKbduiContextPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -10715,7 +10715,7 @@ export namespace InputPad {
     abstract class GtkKbduiPrivate {
         static $gtype: GObject.GType<GtkKbduiPrivate>;
 
-        // Constructors of InputPad.GtkKbduiPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -10724,7 +10724,7 @@ export namespace InputPad {
     abstract class GtkViewportPrivate {
         static $gtype: GObject.GType<GtkViewportPrivate>;
 
-        // Constructors of InputPad.GtkViewportPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -10733,7 +10733,7 @@ export namespace InputPad {
     abstract class GtkWindowPrivate {
         static $gtype: GObject.GType<GtkWindowPrivate>;
 
-        // Constructors of InputPad.GtkWindowPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -10741,7 +10741,7 @@ export namespace InputPad {
     class Table {
         static $gtype: GObject.GType<Table>;
 
-        // Own fields of InputPad.Table
+        // Fields
 
         name: string;
         column: number;
@@ -10749,7 +10749,7 @@ export namespace InputPad {
         data: any;
         priv: TablePrivate;
 
-        // Constructors of InputPad.Table
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -10757,12 +10757,12 @@ export namespace InputPad {
     class TableCmd {
         static $gtype: GObject.GType<TableCmd>;
 
-        // Own fields of InputPad.TableCmd
+        // Fields
 
         label: string;
         execl: string;
 
-        // Constructors of InputPad.TableCmd
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -10776,12 +10776,12 @@ export namespace InputPad {
     class TablePrivate {
         static $gtype: GObject.GType<TablePrivate>;
 
-        // Own fields of InputPad.TablePrivate
+        // Fields
 
         inited: number;
         signal_window: any;
 
-        // Constructors of InputPad.TablePrivate
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -10795,13 +10795,13 @@ export namespace InputPad {
     class TableStr {
         static $gtype: GObject.GType<TableStr>;
 
-        // Own fields of InputPad.TableStr
+        // Fields
 
         label: string;
         comment: string;
         rawtext: string;
 
-        // Constructors of InputPad.TableStr
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -10816,7 +10816,7 @@ export namespace InputPad {
     class TableXXX {
         static $gtype: GObject.GType<TableXXX>;
 
-        // Own fields of InputPad.TableXXX
+        // Fields
 
         reserved1: any;
         reserved2: any;
@@ -10824,7 +10824,7 @@ export namespace InputPad {
         reserved4: any;
         reserved5: any;
 
-        // Constructors of InputPad.TableXXX
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -10841,13 +10841,13 @@ export namespace InputPad {
     class UnicodeBlockTable {
         static $gtype: GObject.GType<UnicodeBlockTable>;
 
-        // Own fields of InputPad.UnicodeBlockTable
+        // Fields
 
         start: number;
         end: number;
         label: string;
 
-        // Constructors of InputPad.UnicodeBlockTable
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -10862,13 +10862,13 @@ export namespace InputPad {
     class WindowKbduiName {
         static $gtype: GObject.GType<WindowKbduiName>;
 
-        // Own fields of InputPad.WindowKbduiName
+        // Fields
 
         name: string;
         description: string;
         type: WindowType;
 
-        // Constructors of InputPad.WindowKbduiName
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -10876,7 +10876,7 @@ export namespace InputPad {
     class XKBConfigReg {
         static $gtype: GObject.GType<XKBConfigReg>;
 
-        // Constructors of InputPad.XKBConfigReg
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -10884,7 +10884,7 @@ export namespace InputPad {
     abstract class XKBConfigRegPrivate {
         static $gtype: GObject.GType<XKBConfigRegPrivate>;
 
-        // Constructors of InputPad.XKBConfigRegPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -10892,7 +10892,7 @@ export namespace InputPad {
     class XKBKeyList {
         static $gtype: GObject.GType<XKBKeyList>;
 
-        // Constructors of InputPad.XKBKeyList
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -10900,7 +10900,7 @@ export namespace InputPad {
     abstract class XKBKeyListPrivate {
         static $gtype: GObject.GType<XKBKeyListPrivate>;
 
-        // Constructors of InputPad.XKBKeyListPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -10908,13 +10908,13 @@ export namespace InputPad {
     class XKBKeyRow {
         static $gtype: GObject.GType<XKBKeyRow>;
 
-        // Own fields of InputPad.XKBKeyRow
+        // Fields
 
         keycode: xlib.KeyCode;
         name: string;
         keysym: number;
 
-        // Constructors of InputPad.XKBKeyRow
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -10922,7 +10922,7 @@ export namespace InputPad {
     abstract class XKBKeyRowPrivate {
         static $gtype: GObject.GType<XKBKeyRowPrivate>;
 
-        // Constructors of InputPad.XKBKeyRowPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -10930,12 +10930,12 @@ export namespace InputPad {
     class XKBLayoutList {
         static $gtype: GObject.GType<XKBLayoutList>;
 
-        // Own fields of InputPad.XKBLayoutList
+        // Fields
 
         layout: string;
         desc: string;
 
-        // Constructors of InputPad.XKBLayoutList
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -10943,7 +10943,7 @@ export namespace InputPad {
     abstract class XKBLayoutListPrivate {
         static $gtype: GObject.GType<XKBLayoutListPrivate>;
 
-        // Constructors of InputPad.XKBLayoutListPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -10951,12 +10951,12 @@ export namespace InputPad {
     class XKBOptionGroupList {
         static $gtype: GObject.GType<XKBOptionGroupList>;
 
-        // Own fields of InputPad.XKBOptionGroupList
+        // Fields
 
         option_group: string;
         desc: string;
 
-        // Constructors of InputPad.XKBOptionGroupList
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -10964,7 +10964,7 @@ export namespace InputPad {
     abstract class XKBOptionGroupListPrivate {
         static $gtype: GObject.GType<XKBOptionGroupListPrivate>;
 
-        // Constructors of InputPad.XKBOptionGroupListPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -10972,12 +10972,12 @@ export namespace InputPad {
     class XKBOptionList {
         static $gtype: GObject.GType<XKBOptionList>;
 
-        // Own fields of InputPad.XKBOptionList
+        // Fields
 
         option: string;
         desc: string;
 
-        // Constructors of InputPad.XKBOptionList
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -10985,7 +10985,7 @@ export namespace InputPad {
     abstract class XKBOptionListPrivate {
         static $gtype: GObject.GType<XKBOptionListPrivate>;
 
-        // Constructors of InputPad.XKBOptionListPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -10993,12 +10993,12 @@ export namespace InputPad {
     class XKBVariantList {
         static $gtype: GObject.GType<XKBVariantList>;
 
-        // Own fields of InputPad.XKBVariantList
+        // Fields
 
         variant: string;
         desc: string;
 
-        // Constructors of InputPad.XKBVariantList
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -11006,7 +11006,7 @@ export namespace InputPad {
     abstract class XKBVariantListPrivate {
         static $gtype: GObject.GType<XKBVariantListPrivate>;
 
-        // Constructors of InputPad.XKBVariantListPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }

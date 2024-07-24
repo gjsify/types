@@ -1292,7 +1292,7 @@ export namespace Mbim {
     class CoreError extends GLib.Error {
         static $gtype: GObject.GType<CoreError>;
 
-        // Static fields of Mbim.CoreError
+        // Static fields
 
         /**
          * Operation failed.
@@ -1331,12 +1331,12 @@ export namespace Mbim {
          */
         static INCOMPLETEMESSAGE: number;
 
-        // Constructors of Mbim.CoreError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of Mbim.CoreError
+        // Static methods
 
         /**
          * Gets the nickname string for the #MbimCoreError specified at `val`.
@@ -1405,7 +1405,7 @@ export namespace Mbim {
     class DrxCycle {
         static $gtype: GObject.GType<DrxCycle>;
 
-        // Static fields of Mbim.DrxCycle
+        // Static fields
 
         /**
          * DRX cycle not specified.
@@ -1432,7 +1432,7 @@ export namespace Mbim {
          */
         static '256': number;
 
-        // Constructors of Mbim.DrxCycle
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2414,7 +2414,7 @@ export namespace Mbim {
     class ProtocolError extends GLib.Error {
         static $gtype: GObject.GType<ProtocolError>;
 
-        // Static fields of Mbim.ProtocolError
+        // Static fields
 
         /**
          * Invalid MBIM error.
@@ -2453,12 +2453,12 @@ export namespace Mbim {
          */
         static MAXTRANSFER: number;
 
-        // Constructors of Mbim.ProtocolError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of Mbim.ProtocolError
+        // Static methods
 
         /**
          * Gets the nickname string for the #MbimProtocolError specified at `val`.
@@ -3126,7 +3126,7 @@ export namespace Mbim {
     class StatusError extends GLib.Error {
         static $gtype: GObject.GType<StatusError>;
 
-        // Static fields of Mbim.StatusError
+        // Static fields
 
         /**
          * Success, no error.
@@ -3329,12 +3329,12 @@ export namespace Mbim {
          */
         static DECODEORPARSINGERROR: number;
 
-        // Constructors of Mbim.StatusError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of Mbim.StatusError
+        // Static methods
 
         /**
          * Gets the nickname string for the #MbimStatusError specified at `val`.
@@ -5498,7 +5498,7 @@ export namespace Mbim {
     class FrequencyRange {
         static $gtype: GObject.GType<FrequencyRange>;
 
-        // Static fields of Mbim.FrequencyRange
+        // Static fields
 
         /**
          * Unknown.
@@ -5513,7 +5513,7 @@ export namespace Mbim {
          */
         static '2': number;
 
-        // Constructors of Mbim.FrequencyRange
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5786,7 +5786,7 @@ export namespace Mbim {
     class Device extends GObject.Object implements Gio.AsyncInitable<Device> {
         static $gtype: GObject.GType<Device>;
 
-        // Own properties of Mbim.Device
+        // Properties
 
         get device_consecutive_timeouts(): number;
         get deviceConsecutiveTimeouts(): number;
@@ -5801,7 +5801,7 @@ export namespace Mbim {
         get deviceTransactionId(): number;
         set deviceTransactionId(val: number);
 
-        // Constructors of Mbim.Device
+        // Constructors
 
         constructor(properties?: Partial<Device.ConstructorProps>, ...args: any[]);
 
@@ -5812,7 +5812,7 @@ export namespace Mbim {
 
         static new_finish(...args: never[]): any;
 
-        // Own signals of Mbim.Device
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -5827,7 +5827,7 @@ export namespace Mbim {
         connect_after(signal: 'device-removed', callback: (_source: this) => void): number;
         emit(signal: 'device-removed'): void;
 
-        // Own static methods of Mbim.Device
+        // Static methods
 
         /**
          * Asynchronously creates a #MbimDevice object to manage `file`.
@@ -5843,7 +5843,7 @@ export namespace Mbim {
             callback?: Gio.AsyncReadyCallback<Device> | null,
         ): void;
 
-        // Own methods of Mbim.Device
+        // Methods
 
         /**
          * Asynchronously creates a new virtual network device node on top of
@@ -6643,14 +6643,14 @@ export namespace Mbim {
     class Proxy extends GObject.Object {
         static $gtype: GObject.GType<Proxy>;
 
-        // Own properties of Mbim.Proxy
+        // Properties
 
         get mbim_proxy_n_clients(): number;
         get mbimProxyNClients(): number;
         get mbim_proxy_n_devices(): number;
         get mbimProxyNDevices(): number;
 
-        // Constructors of Mbim.Proxy
+        // Constructors
 
         constructor(properties?: Partial<Proxy.ConstructorProps>, ...args: any[]);
 
@@ -6665,7 +6665,7 @@ export namespace Mbim {
     class AtdsProvider {
         static $gtype: GObject.GType<AtdsProvider>;
 
-        // Own fields of Mbim.AtdsProvider
+        // Fields
 
         provider_id: string;
         provider_state: number;
@@ -6674,7 +6674,7 @@ export namespace Mbim {
         rssi: number;
         error_rate: number;
 
-        // Constructors of Mbim.AtdsProvider
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -6688,7 +6688,7 @@ export namespace Mbim {
         );
         _init(...args: any[]): void;
 
-        // Own static methods of Mbim.AtdsProvider
+        // Static methods
 
         /**
          * Frees the memory allocated for the array of #MbimAtdsProvider structs.
@@ -6703,7 +6703,7 @@ export namespace Mbim {
     class CellInfoCdma {
         static $gtype: GObject.GType<CellInfoCdma>;
 
-        // Own fields of Mbim.CellInfoCdma
+        // Fields
 
         serving_cell_flag: number;
         nid: number;
@@ -6715,7 +6715,7 @@ export namespace Mbim {
         gps_seconds: number;
         pilot_strength: number;
 
-        // Constructors of Mbim.CellInfoCdma
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -6732,7 +6732,7 @@ export namespace Mbim {
         );
         _init(...args: any[]): void;
 
-        // Own static methods of Mbim.CellInfoCdma
+        // Static methods
 
         /**
          * Frees the memory allocated for the array of #MbimCellInfoCdma structs.
@@ -6747,7 +6747,7 @@ export namespace Mbim {
     class CellInfoNeighboringGsm {
         static $gtype: GObject.GType<CellInfoNeighboringGsm>;
 
-        // Own fields of Mbim.CellInfoNeighboringGsm
+        // Fields
 
         provider_id: string;
         location_area_code: number;
@@ -6756,7 +6756,7 @@ export namespace Mbim {
         base_station_id: number;
         rx_level: number;
 
-        // Constructors of Mbim.CellInfoNeighboringGsm
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -6770,7 +6770,7 @@ export namespace Mbim {
         );
         _init(...args: any[]): void;
 
-        // Own static methods of Mbim.CellInfoNeighboringGsm
+        // Static methods
 
         /**
          * Frees the memory allocated for the array of #MbimCellInfoNeighboringGsm structs.
@@ -6785,7 +6785,7 @@ export namespace Mbim {
     class CellInfoNeighboringLte {
         static $gtype: GObject.GType<CellInfoNeighboringLte>;
 
-        // Own fields of Mbim.CellInfoNeighboringLte
+        // Fields
 
         provider_id: string;
         cell_id: number;
@@ -6795,7 +6795,7 @@ export namespace Mbim {
         rsrp: number;
         rsrq: number;
 
-        // Constructors of Mbim.CellInfoNeighboringLte
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -6810,7 +6810,7 @@ export namespace Mbim {
         );
         _init(...args: any[]): void;
 
-        // Own static methods of Mbim.CellInfoNeighboringLte
+        // Static methods
 
         /**
          * Frees the memory allocated for the array of #MbimCellInfoNeighboringLte structs.
@@ -6825,7 +6825,7 @@ export namespace Mbim {
     class CellInfoNeighboringNr {
         static $gtype: GObject.GType<CellInfoNeighboringNr>;
 
-        // Own fields of Mbim.CellInfoNeighboringNr
+        // Fields
 
         system_sub_type: number;
         provider_id: string;
@@ -6836,7 +6836,7 @@ export namespace Mbim {
         rsrq: number;
         sinr: number;
 
-        // Constructors of Mbim.CellInfoNeighboringNr
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -6852,7 +6852,7 @@ export namespace Mbim {
         );
         _init(...args: any[]): void;
 
-        // Own static methods of Mbim.CellInfoNeighboringNr
+        // Static methods
 
         /**
          * Frees the memory allocated for the array of #MbimCellInfoNeighboringNr structs.
@@ -6867,7 +6867,7 @@ export namespace Mbim {
     class CellInfoNeighboringTdscdma {
         static $gtype: GObject.GType<CellInfoNeighboringTdscdma>;
 
-        // Own fields of Mbim.CellInfoNeighboringTdscdma
+        // Fields
 
         provider_id: string;
         location_area_code: number;
@@ -6878,7 +6878,7 @@ export namespace Mbim {
         rscp: number;
         path_loss: number;
 
-        // Constructors of Mbim.CellInfoNeighboringTdscdma
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -6894,7 +6894,7 @@ export namespace Mbim {
         );
         _init(...args: any[]): void;
 
-        // Own static methods of Mbim.CellInfoNeighboringTdscdma
+        // Static methods
 
         /**
          * Frees the memory allocated for the array of #MbimCellInfoNeighboringTdscdma structs.
@@ -6909,7 +6909,7 @@ export namespace Mbim {
     class CellInfoNeighboringUmts {
         static $gtype: GObject.GType<CellInfoNeighboringUmts>;
 
-        // Own fields of Mbim.CellInfoNeighboringUmts
+        // Fields
 
         provider_id: string;
         location_area_code: number;
@@ -6920,7 +6920,7 @@ export namespace Mbim {
         ecno: number;
         path_loss: number;
 
-        // Constructors of Mbim.CellInfoNeighboringUmts
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -6936,7 +6936,7 @@ export namespace Mbim {
         );
         _init(...args: any[]): void;
 
-        // Own static methods of Mbim.CellInfoNeighboringUmts
+        // Static methods
 
         /**
          * Frees the memory allocated for the array of #MbimCellInfoNeighboringUmts structs.
@@ -6951,7 +6951,7 @@ export namespace Mbim {
     class CellInfoServingGsm {
         static $gtype: GObject.GType<CellInfoServingGsm>;
 
-        // Own fields of Mbim.CellInfoServingGsm
+        // Fields
 
         provider_id: string;
         location_area_code: number;
@@ -6961,7 +6961,7 @@ export namespace Mbim {
         base_station_id: number;
         rx_level: number;
 
-        // Constructors of Mbim.CellInfoServingGsm
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -6976,7 +6976,7 @@ export namespace Mbim {
         );
         _init(...args: any[]): void;
 
-        // Own methods of Mbim.CellInfoServingGsm
+        // Methods
 
         /**
          * Frees the memory allocated for the #MbimCellInfoServingGsm.
@@ -6990,7 +6990,7 @@ export namespace Mbim {
     class CellInfoServingLte {
         static $gtype: GObject.GType<CellInfoServingLte>;
 
-        // Own fields of Mbim.CellInfoServingLte
+        // Fields
 
         provider_id: string;
         cell_id: number;
@@ -7001,7 +7001,7 @@ export namespace Mbim {
         rsrq: number;
         timing_advance: number;
 
-        // Constructors of Mbim.CellInfoServingLte
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -7017,7 +7017,7 @@ export namespace Mbim {
         );
         _init(...args: any[]): void;
 
-        // Own methods of Mbim.CellInfoServingLte
+        // Methods
 
         /**
          * Frees the memory allocated for the #MbimCellInfoServingLte.
@@ -7031,7 +7031,7 @@ export namespace Mbim {
     class CellInfoServingNr {
         static $gtype: GObject.GType<CellInfoServingNr>;
 
-        // Own fields of Mbim.CellInfoServingNr
+        // Fields
 
         provider_id: string;
         nci: number;
@@ -7043,7 +7043,7 @@ export namespace Mbim {
         sinr: number;
         timing_advance: number;
 
-        // Constructors of Mbim.CellInfoServingNr
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -7060,7 +7060,7 @@ export namespace Mbim {
         );
         _init(...args: any[]): void;
 
-        // Own static methods of Mbim.CellInfoServingNr
+        // Static methods
 
         /**
          * Frees the memory allocated for the array of #MbimCellInfoServingNr structs.
@@ -7075,7 +7075,7 @@ export namespace Mbim {
     class CellInfoServingTdscdma {
         static $gtype: GObject.GType<CellInfoServingTdscdma>;
 
-        // Own fields of Mbim.CellInfoServingTdscdma
+        // Fields
 
         provider_id: string;
         location_area_code: number;
@@ -7086,7 +7086,7 @@ export namespace Mbim {
         rscp: number;
         path_loss: number;
 
-        // Constructors of Mbim.CellInfoServingTdscdma
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -7102,7 +7102,7 @@ export namespace Mbim {
         );
         _init(...args: any[]): void;
 
-        // Own methods of Mbim.CellInfoServingTdscdma
+        // Methods
 
         /**
          * Frees the memory allocated for the #MbimCellInfoServingTdscdma.
@@ -7116,7 +7116,7 @@ export namespace Mbim {
     class CellInfoServingUmts {
         static $gtype: GObject.GType<CellInfoServingUmts>;
 
-        // Own fields of Mbim.CellInfoServingUmts
+        // Fields
 
         provider_id: string;
         location_area_code: number;
@@ -7130,7 +7130,7 @@ export namespace Mbim {
         ecno: number;
         path_loss: number;
 
-        // Constructors of Mbim.CellInfoServingUmts
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -7149,7 +7149,7 @@ export namespace Mbim {
         );
         _init(...args: any[]): void;
 
-        // Own methods of Mbim.CellInfoServingUmts
+        // Methods
 
         /**
          * Frees the memory allocated for the #MbimCellInfoServingUmts.
@@ -7160,7 +7160,7 @@ export namespace Mbim {
     class DeprecatedLteAttachStatus {
         static $gtype: GObject.GType<DeprecatedLteAttachStatus>;
 
-        // Own fields of Mbim.DeprecatedLteAttachStatus
+        // Fields
 
         lte_attach_state: number;
         ip_type: number;
@@ -7170,7 +7170,7 @@ export namespace Mbim {
         compression: number;
         auth_protocol: number;
 
-        // Constructors of Mbim.DeprecatedLteAttachStatus
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -7190,7 +7190,7 @@ export namespace Mbim {
     abstract class DevicePrivate {
         static $gtype: GObject.GType<DevicePrivate>;
 
-        // Constructors of Mbim.DevicePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -7201,7 +7201,7 @@ export namespace Mbim {
     class DeviceServiceElement {
         static $gtype: GObject.GType<DeviceServiceElement>;
 
-        // Own fields of Mbim.DeviceServiceElement
+        // Fields
 
         device_service_id: Uuid;
         dss_payload: number;
@@ -7209,7 +7209,7 @@ export namespace Mbim {
         cids_count: number;
         cids: number;
 
-        // Constructors of Mbim.DeviceServiceElement
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -7222,7 +7222,7 @@ export namespace Mbim {
         );
         _init(...args: any[]): void;
 
-        // Own static methods of Mbim.DeviceServiceElement
+        // Static methods
 
         /**
          * Frees the memory allocated for the array of #MbimDeviceServiceElement structs.
@@ -7237,13 +7237,13 @@ export namespace Mbim {
     class EventEntry {
         static $gtype: GObject.GType<EventEntry>;
 
-        // Own fields of Mbim.EventEntry
+        // Fields
 
         device_service_id: Uuid;
         cids_count: number;
         cids: number;
 
-        // Constructors of Mbim.EventEntry
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -7254,7 +7254,7 @@ export namespace Mbim {
         );
         _init(...args: any[]): void;
 
-        // Own static methods of Mbim.EventEntry
+        // Static methods
 
         /**
          * Frees the memory allocated for the array of #MbimEventEntry structs.
@@ -7269,11 +7269,11 @@ export namespace Mbim {
     class IPv4 {
         static $gtype: GObject.GType<IPv4>;
 
-        // Own fields of Mbim.IPv4
+        // Fields
 
         addr: Uint8Array;
 
-        // Constructors of Mbim.IPv4
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -7289,12 +7289,12 @@ export namespace Mbim {
     class IPv4Element {
         static $gtype: GObject.GType<IPv4Element>;
 
-        // Own fields of Mbim.IPv4Element
+        // Fields
 
         on_link_prefix_length: number;
         ipv4_address: IPv4;
 
-        // Constructors of Mbim.IPv4Element
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -7304,7 +7304,7 @@ export namespace Mbim {
         );
         _init(...args: any[]): void;
 
-        // Own static methods of Mbim.IPv4Element
+        // Static methods
 
         /**
          * Frees the memory allocated for the array of #MbimIPv4Element structs.
@@ -7319,11 +7319,11 @@ export namespace Mbim {
     class IPv6 {
         static $gtype: GObject.GType<IPv6>;
 
-        // Own fields of Mbim.IPv6
+        // Fields
 
         addr: Uint8Array;
 
-        // Constructors of Mbim.IPv6
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -7339,12 +7339,12 @@ export namespace Mbim {
     class IPv6Element {
         static $gtype: GObject.GType<IPv6Element>;
 
-        // Own fields of Mbim.IPv6Element
+        // Fields
 
         on_link_prefix_length: number;
         ipv6_address: IPv6;
 
-        // Constructors of Mbim.IPv6Element
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -7354,7 +7354,7 @@ export namespace Mbim {
         );
         _init(...args: any[]): void;
 
-        // Own static methods of Mbim.IPv6Element
+        // Static methods
 
         /**
          * Frees the memory allocated for the array of #MbimIPv6Element structs.
@@ -7369,7 +7369,7 @@ export namespace Mbim {
     class IntelRfimFrequencyValue {
         static $gtype: GObject.GType<IntelRfimFrequencyValue>;
 
-        // Own fields of Mbim.IntelRfimFrequencyValue
+        // Fields
 
         serving_cell_info: number;
         center_frequency: number;
@@ -7380,7 +7380,7 @@ export namespace Mbim {
         rssi: number;
         connection_status: number;
 
-        // Constructors of Mbim.IntelRfimFrequencyValue
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -7396,7 +7396,7 @@ export namespace Mbim {
         );
         _init(...args: any[]): void;
 
-        // Own static methods of Mbim.IntelRfimFrequencyValue
+        // Static methods
 
         /**
          * Frees the memory allocated for the array of #MbimIntelRfimFrequencyValue structs.
@@ -7411,7 +7411,7 @@ export namespace Mbim {
     class LteAttachConfiguration {
         static $gtype: GObject.GType<LteAttachConfiguration>;
 
-        // Own fields of Mbim.LteAttachConfiguration
+        // Fields
 
         ip_type: number;
         roaming: number;
@@ -7422,7 +7422,7 @@ export namespace Mbim {
         compression: number;
         auth_protocol: number;
 
-        // Constructors of Mbim.LteAttachConfiguration
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -7438,7 +7438,7 @@ export namespace Mbim {
         );
         _init(...args: any[]): void;
 
-        // Own static methods of Mbim.LteAttachConfiguration
+        // Static methods
 
         /**
          * Frees the memory allocated for the array of #MbimLteAttachConfiguration structs.
@@ -7453,7 +7453,7 @@ export namespace Mbim {
     class Message {
         static $gtype: GObject.GType<Message>;
 
-        // Constructors of Mbim.Message
+        // Constructors
 
         constructor(properties?: Partial<{}>);
         _init(...args: any[]): void;
@@ -7908,7 +7908,7 @@ export namespace Mbim {
 
         static visible_providers_query_new(action: VisibleProvidersAction): Message;
 
-        // Own methods of Mbim.Message
+        // Methods
 
         /**
          * Parses and returns parameters of the 'Location' response command in the 'ATDS' service.
@@ -9316,13 +9316,13 @@ export namespace Mbim {
     class PacketFilter {
         static $gtype: GObject.GType<PacketFilter>;
 
-        // Own fields of Mbim.PacketFilter
+        // Fields
 
         filter_size: number;
         packet_filter: number;
         packet_mask: number;
 
-        // Constructors of Mbim.PacketFilter
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -9333,7 +9333,7 @@ export namespace Mbim {
         );
         _init(...args: any[]): void;
 
-        // Own static methods of Mbim.PacketFilter
+        // Static methods
 
         /**
          * Frees the memory allocated for the array of #MbimPacketFilter structs.
@@ -9348,14 +9348,14 @@ export namespace Mbim {
     class PacketFilterV3 {
         static $gtype: GObject.GType<PacketFilterV3>;
 
-        // Own fields of Mbim.PacketFilterV3
+        // Fields
 
         filter_size: number;
         packet_filter: number;
         packet_mask: number;
         filter_id: number;
 
-        // Constructors of Mbim.PacketFilterV3
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -9367,7 +9367,7 @@ export namespace Mbim {
         );
         _init(...args: any[]): void;
 
-        // Own static methods of Mbim.PacketFilterV3
+        // Static methods
 
         /**
          * Frees the memory allocated for the array of #MbimPacketFilterV3 structs.
@@ -9382,14 +9382,14 @@ export namespace Mbim {
     class PcoValue {
         static $gtype: GObject.GType<PcoValue>;
 
-        // Own fields of Mbim.PcoValue
+        // Fields
 
         session_id: number;
         pco_data_size: number;
         pco_data_type: number;
         pco_data_buffer: number;
 
-        // Constructors of Mbim.PcoValue
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -9401,7 +9401,7 @@ export namespace Mbim {
         );
         _init(...args: any[]): void;
 
-        // Own methods of Mbim.PcoValue
+        // Methods
 
         /**
          * Frees the memory allocated for the #MbimPcoValue.
@@ -9415,13 +9415,13 @@ export namespace Mbim {
     class PhonebookEntry {
         static $gtype: GObject.GType<PhonebookEntry>;
 
-        // Own fields of Mbim.PhonebookEntry
+        // Fields
 
         entry_index: number;
         number: string;
         name: string;
 
-        // Constructors of Mbim.PhonebookEntry
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -9432,7 +9432,7 @@ export namespace Mbim {
         );
         _init(...args: any[]): void;
 
-        // Own static methods of Mbim.PhonebookEntry
+        // Static methods
 
         /**
          * Frees the memory allocated for the array of #MbimPhonebookEntry structs.
@@ -9447,14 +9447,14 @@ export namespace Mbim {
     class PinDesc {
         static $gtype: GObject.GType<PinDesc>;
 
-        // Own fields of Mbim.PinDesc
+        // Fields
 
         pin_mode: number;
         pin_format: number;
         pin_length_min: number;
         pin_length_max: number;
 
-        // Constructors of Mbim.PinDesc
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -9466,7 +9466,7 @@ export namespace Mbim {
         );
         _init(...args: any[]): void;
 
-        // Own methods of Mbim.PinDesc
+        // Methods
 
         /**
          * Frees the memory allocated for the #MbimPinDesc.
@@ -9480,7 +9480,7 @@ export namespace Mbim {
     class Provider {
         static $gtype: GObject.GType<Provider>;
 
-        // Own fields of Mbim.Provider
+        // Fields
 
         provider_id: string;
         provider_state: number;
@@ -9489,7 +9489,7 @@ export namespace Mbim {
         rssi: number;
         error_rate: number;
 
-        // Constructors of Mbim.Provider
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -9503,7 +9503,7 @@ export namespace Mbim {
         );
         _init(...args: any[]): void;
 
-        // Own static methods of Mbim.Provider
+        // Static methods
 
         /**
          * Frees the memory allocated for the array of #MbimProvider structs.
@@ -9511,7 +9511,7 @@ export namespace Mbim {
          */
         static array_free(array: ProviderArray): void;
 
-        // Own methods of Mbim.Provider
+        // Methods
 
         /**
          * Frees the memory allocated for the #MbimProvider.
@@ -9525,7 +9525,7 @@ export namespace Mbim {
     class ProvisionedContextElement {
         static $gtype: GObject.GType<ProvisionedContextElement>;
 
-        // Own fields of Mbim.ProvisionedContextElement
+        // Fields
 
         context_id: number;
         context_type: Uuid;
@@ -9535,7 +9535,7 @@ export namespace Mbim {
         compression: number;
         auth_protocol: number;
 
-        // Constructors of Mbim.ProvisionedContextElement
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -9550,7 +9550,7 @@ export namespace Mbim {
         );
         _init(...args: any[]): void;
 
-        // Own static methods of Mbim.ProvisionedContextElement
+        // Static methods
 
         /**
          * Frees the memory allocated for the array of #MbimProvisionedContextElement structs.
@@ -9565,7 +9565,7 @@ export namespace Mbim {
     class ProvisionedContextElementV2 {
         static $gtype: GObject.GType<ProvisionedContextElementV2>;
 
-        // Own fields of Mbim.ProvisionedContextElementV2
+        // Fields
 
         context_id: number;
         context_type: Uuid;
@@ -9580,7 +9580,7 @@ export namespace Mbim {
         compression: number;
         auth_protocol: number;
 
-        // Constructors of Mbim.ProvisionedContextElementV2
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -9600,7 +9600,7 @@ export namespace Mbim {
         );
         _init(...args: any[]): void;
 
-        // Own static methods of Mbim.ProvisionedContextElementV2
+        // Static methods
 
         /**
          * Frees the memory allocated for the array of #MbimProvisionedContextElementV2 structs.
@@ -9613,7 +9613,7 @@ export namespace Mbim {
     abstract class ProxyPrivate {
         static $gtype: GObject.GType<ProxyPrivate>;
 
-        // Constructors of Mbim.ProxyPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -9624,7 +9624,7 @@ export namespace Mbim {
     class RsrpSnrInfo {
         static $gtype: GObject.GType<RsrpSnrInfo>;
 
-        // Own fields of Mbim.RsrpSnrInfo
+        // Fields
 
         rsrp: number;
         snr: number;
@@ -9632,7 +9632,7 @@ export namespace Mbim {
         snr_threshold: number;
         system_type: number;
 
-        // Constructors of Mbim.RsrpSnrInfo
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -9645,7 +9645,7 @@ export namespace Mbim {
         );
         _init(...args: any[]): void;
 
-        // Own static methods of Mbim.RsrpSnrInfo
+        // Static methods
 
         /**
          * Frees the memory allocated for the array of #MbimRsrpSnrInfo structs.
@@ -9660,12 +9660,12 @@ export namespace Mbim {
     class SarConfigState {
         static $gtype: GObject.GType<SarConfigState>;
 
-        // Own fields of Mbim.SarConfigState
+        // Fields
 
         antenna_index: number;
         backoff_index: number;
 
-        // Constructors of Mbim.SarConfigState
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -9675,7 +9675,7 @@ export namespace Mbim {
         );
         _init(...args: any[]): void;
 
-        // Own static methods of Mbim.SarConfigState
+        // Static methods
 
         /**
          * Frees the memory allocated for the array of #MbimSarConfigState structs.
@@ -9690,11 +9690,11 @@ export namespace Mbim {
     class Slot {
         static $gtype: GObject.GType<Slot>;
 
-        // Own fields of Mbim.Slot
+        // Fields
 
         slot: number;
 
-        // Constructors of Mbim.Slot
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -9703,7 +9703,7 @@ export namespace Mbim {
         );
         _init(...args: any[]): void;
 
-        // Own static methods of Mbim.Slot
+        // Static methods
 
         /**
          * Frees the memory allocated for the array of #MbimSlot structs.
@@ -9718,7 +9718,7 @@ export namespace Mbim {
     class SmsCdmaReadRecord {
         static $gtype: GObject.GType<SmsCdmaReadRecord>;
 
-        // Own fields of Mbim.SmsCdmaReadRecord
+        // Fields
 
         message_index: number;
         message_status: number;
@@ -9730,7 +9730,7 @@ export namespace Mbim {
         encoded_message: number;
         encoded_message_size_in_characters: number;
 
-        // Constructors of Mbim.SmsCdmaReadRecord
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -9747,7 +9747,7 @@ export namespace Mbim {
         );
         _init(...args: any[]): void;
 
-        // Own static methods of Mbim.SmsCdmaReadRecord
+        // Static methods
 
         /**
          * Frees the memory allocated for the array of #MbimSmsCdmaReadRecord structs.
@@ -9762,7 +9762,7 @@ export namespace Mbim {
     class SmsCdmaSendRecord {
         static $gtype: GObject.GType<SmsCdmaSendRecord>;
 
-        // Own fields of Mbim.SmsCdmaSendRecord
+        // Fields
 
         encoding: number;
         language: number;
@@ -9771,7 +9771,7 @@ export namespace Mbim {
         encoded_message: number;
         encoded_message_size_in_characters: number;
 
-        // Constructors of Mbim.SmsCdmaSendRecord
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -9785,7 +9785,7 @@ export namespace Mbim {
         );
         _init(...args: any[]): void;
 
-        // Own methods of Mbim.SmsCdmaSendRecord
+        // Methods
 
         /**
          * Frees the memory allocated for the #MbimSmsCdmaSendRecord.
@@ -9799,14 +9799,14 @@ export namespace Mbim {
     class SmsPduReadRecord {
         static $gtype: GObject.GType<SmsPduReadRecord>;
 
-        // Own fields of Mbim.SmsPduReadRecord
+        // Fields
 
         message_index: number;
         message_status: number;
         pdu_data_size: number;
         pdu_data: number;
 
-        // Constructors of Mbim.SmsPduReadRecord
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -9818,7 +9818,7 @@ export namespace Mbim {
         );
         _init(...args: any[]): void;
 
-        // Own static methods of Mbim.SmsPduReadRecord
+        // Static methods
 
         /**
          * Frees the memory allocated for the array of #MbimSmsPduReadRecord structs.
@@ -9833,12 +9833,12 @@ export namespace Mbim {
     class SmsPduSendRecord {
         static $gtype: GObject.GType<SmsPduSendRecord>;
 
-        // Own fields of Mbim.SmsPduSendRecord
+        // Fields
 
         pdu_data_size: number;
         pdu_data: number;
 
-        // Constructors of Mbim.SmsPduSendRecord
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -9848,7 +9848,7 @@ export namespace Mbim {
         );
         _init(...args: any[]): void;
 
-        // Own methods of Mbim.SmsPduSendRecord
+        // Methods
 
         /**
          * Frees the memory allocated for the #MbimSmsPduSendRecord.
@@ -9862,13 +9862,13 @@ export namespace Mbim {
     class Tai {
         static $gtype: GObject.GType<Tai>;
 
-        // Own fields of Mbim.Tai
+        // Fields
 
         plmn_mcc: number;
         plmn_mnc: number;
         tac: number;
 
-        // Constructors of Mbim.Tai
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -9879,7 +9879,7 @@ export namespace Mbim {
         );
         _init(...args: any[]): void;
 
-        // Own methods of Mbim.Tai
+        // Methods
 
         /**
          * Frees the memory allocated for the #MbimTai.
@@ -9893,12 +9893,12 @@ export namespace Mbim {
     class TerminalCapabilityInfo {
         static $gtype: GObject.GType<TerminalCapabilityInfo>;
 
-        // Own fields of Mbim.TerminalCapabilityInfo
+        // Fields
 
         terminal_capability_data_size: number;
         terminal_capability_data: number;
 
-        // Constructors of Mbim.TerminalCapabilityInfo
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -9908,7 +9908,7 @@ export namespace Mbim {
         );
         _init(...args: any[]): void;
 
-        // Own static methods of Mbim.TerminalCapabilityInfo
+        // Static methods
 
         /**
          * Frees the memory allocated for the array of #MbimTerminalCapabilityInfo structs.
@@ -9923,7 +9923,7 @@ export namespace Mbim {
     class Tlv {
         static $gtype: GObject.GType<Tlv>;
 
-        // Constructors of Mbim.Tlv
+        // Constructors
 
         constructor(type: TlvType, data: number, data_length: number);
         _init(...args: any[]): void;
@@ -9932,7 +9932,7 @@ export namespace Mbim {
 
         static string_new(str: string): Tlv;
 
-        // Own methods of Mbim.Tlv
+        // Methods
 
         /**
          * Create a #MbimTlv with the same contents as `self`.
@@ -9998,7 +9998,7 @@ export namespace Mbim {
     class UiccApplication {
         static $gtype: GObject.GType<UiccApplication>;
 
-        // Own fields of Mbim.UiccApplication
+        // Fields
 
         application_type: number;
         application_id_size: number;
@@ -10008,7 +10008,7 @@ export namespace Mbim {
         pin_key_references_size: number;
         pin_key_references: number;
 
-        // Constructors of Mbim.UiccApplication
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -10023,7 +10023,7 @@ export namespace Mbim {
         );
         _init(...args: any[]): void;
 
-        // Own static methods of Mbim.UiccApplication
+        // Static methods
 
         /**
          * Frees the memory allocated for the array of #MbimUiccApplication structs.
@@ -10038,7 +10038,7 @@ export namespace Mbim {
     class Uuid {
         static $gtype: GObject.GType<Uuid>;
 
-        // Own fields of Mbim.Uuid
+        // Fields
 
         a: Uint8Array;
         b: Uint8Array;
@@ -10046,7 +10046,7 @@ export namespace Mbim {
         d: Uint8Array;
         e: Uint8Array;
 
-        // Constructors of Mbim.Uuid
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -10059,7 +10059,7 @@ export namespace Mbim {
         );
         _init(...args: any[]): void;
 
-        // Own static methods of Mbim.Uuid
+        // Static methods
 
         /**
          * Get the UUID corresponding to `context_type`.
@@ -10084,7 +10084,7 @@ export namespace Mbim {
          */
         static from_service(service: Service): Uuid;
 
-        // Own methods of Mbim.Uuid
+        // Methods
 
         /**
          * Compare two %MbimUuid values.

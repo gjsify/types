@@ -171,7 +171,7 @@ export namespace GdkPixdata {
     class Pixdata {
         static $gtype: GObject.GType<Pixdata>;
 
-        // Own fields of GdkPixdata.Pixdata
+        // Fields
 
         magic: number;
         length: number;
@@ -181,7 +181,7 @@ export namespace GdkPixdata {
         height: number;
         pixel_data: Uint8Array;
 
-        // Constructors of GdkPixdata.Pixdata
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -196,7 +196,7 @@ export namespace GdkPixdata {
         );
         _init(...args: any[]): void;
 
-        // Own methods of GdkPixdata.Pixdata
+        // Methods
 
         /**
          * Deserializes (reconstruct) a #GdkPixdata structure from a byte stream.

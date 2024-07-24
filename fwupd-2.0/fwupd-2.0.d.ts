@@ -24,7 +24,7 @@ export namespace Fwupd {
     class Error extends GLib.Error {
         static $gtype: GObject.GType<Error>;
 
-        // Static fields of Fwupd.Error
+        // Static fields
 
         /**
          * Internal error
@@ -95,7 +95,7 @@ export namespace Fwupd {
          */
         static NEEDS_USER_ACTION: number;
 
-        // Constructors of Fwupd.Error
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
@@ -1122,7 +1122,7 @@ export namespace Fwupd {
     class Client extends GObject.Object {
         static $gtype: GObject.GType<Client>;
 
-        // Own properties of Fwupd.Client
+        // Properties
 
         /**
          * The daemon version number.
@@ -1183,7 +1183,7 @@ export namespace Fwupd {
          */
         get tainted(): boolean;
 
-        // Constructors of Fwupd.Client
+        // Constructors
 
         constructor(properties?: Partial<Client.ConstructorProps>, ...args: any[]);
 
@@ -1191,7 +1191,7 @@ export namespace Fwupd {
 
         static ['new'](): Client;
 
-        // Own signals of Fwupd.Client
+        // Signals
 
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -1206,7 +1206,7 @@ export namespace Fwupd {
         connect_after(signal: 'status-changed', callback: (_source: this, object: number) => void): number;
         emit(signal: 'status-changed', object: number): void;
 
-        // Own virtual methods of Fwupd.Client
+        // Virtual methods
 
         vfunc_changed(): void;
         vfunc_device_added(result: Device): void;
@@ -1214,7 +1214,7 @@ export namespace Fwupd {
         vfunc_device_removed(result: Device): void;
         vfunc_status_changed(status: Status): void;
 
-        // Own methods of Fwupd.Client
+        // Methods
 
         /**
          * Activates up a device, which normally means the device switches to a new
@@ -2419,7 +2419,7 @@ export namespace Fwupd {
     class Device extends GObject.Object {
         static $gtype: GObject.GType<Device>;
 
-        // Own properties of Fwupd.Device
+        // Properties
 
         get flags(): number;
         set flags(val: number);
@@ -2438,7 +2438,7 @@ export namespace Fwupd {
         get versionFormat(): number;
         set versionFormat(val: number);
 
-        // Constructors of Fwupd.Device
+        // Constructors
 
         constructor(properties?: Partial<Device.ConstructorProps>, ...args: any[]);
 
@@ -2446,7 +2446,7 @@ export namespace Fwupd {
 
         static ['new'](): Device;
 
-        // Own static methods of Fwupd.Device
+        // Static methods
 
         /**
          * Sets the parent object on all devices in the array using the parent-id.
@@ -2481,7 +2481,7 @@ export namespace Fwupd {
          */
         static id_is_valid(device_id: string): boolean;
 
-        // Own methods of Fwupd.Device
+        // Methods
 
         /**
          * Sets the device checksum.
@@ -2936,14 +2936,14 @@ export namespace Fwupd {
     class Plugin extends GObject.Object {
         static $gtype: GObject.GType<Plugin>;
 
-        // Own properties of Fwupd.Plugin
+        // Properties
 
         get flags(): number;
         set flags(val: number);
         get name(): string;
         set name(val: string);
 
-        // Constructors of Fwupd.Plugin
+        // Constructors
 
         constructor(properties?: Partial<Plugin.ConstructorProps>, ...args: any[]);
 
@@ -2951,7 +2951,7 @@ export namespace Fwupd {
 
         static ['new'](): Plugin;
 
-        // Own static methods of Fwupd.Plugin
+        // Static methods
 
         /**
          * Creates an array of new plugins using packed data.
@@ -2974,7 +2974,7 @@ export namespace Fwupd {
          */
         static from_variant(value: GLib.Variant): Plugin;
 
-        // Own methods of Fwupd.Plugin
+        // Methods
 
         /**
          * Adds a specific plugin flag to the plugin.
@@ -3033,7 +3033,7 @@ export namespace Fwupd {
     class Release extends GObject.Object {
         static $gtype: GObject.GType<Release>;
 
-        // Constructors of Fwupd.Release
+        // Constructors
 
         constructor(properties?: Partial<Release.ConstructorProps>, ...args: any[]);
 
@@ -3041,7 +3041,7 @@ export namespace Fwupd {
 
         static ['new'](): Release;
 
-        // Own static methods of Fwupd.Release
+        // Static methods
 
         /**
          * Creates an array of new releases using packed data.
@@ -3074,7 +3074,7 @@ export namespace Fwupd {
          */
         static urgency_to_string(release_urgency: ReleaseUrgency): string;
 
-        // Own methods of Fwupd.Release
+        // Methods
 
         /**
          * Adds the update category.
@@ -3459,7 +3459,7 @@ export namespace Fwupd {
     class Remote extends GObject.Object {
         static $gtype: GObject.GType<Remote>;
 
-        // Own properties of Fwupd.Remote
+        // Properties
 
         /**
          * If firmware from the remote should be checked against the system
@@ -3504,7 +3504,7 @@ export namespace Fwupd {
         get id(): string;
         set id(val: string);
 
-        // Constructors of Fwupd.Remote
+        // Constructors
 
         constructor(properties?: Partial<Remote.ConstructorProps>, ...args: any[]);
 
@@ -3512,7 +3512,7 @@ export namespace Fwupd {
 
         static ['new'](): Remote;
 
-        // Own static methods of Fwupd.Remote
+        // Static methods
 
         /**
          * Creates an array of new devices using packed data.
@@ -3535,7 +3535,7 @@ export namespace Fwupd {
          */
         static kind_to_string(kind: RemoteKind): string;
 
-        // Own methods of Fwupd.Remote
+        // Methods
 
         /**
          * Builds a URI for the URL using the username and password set for the remote,
@@ -3735,7 +3735,7 @@ export namespace Fwupd {
     class SecurityAttr extends GObject.Object {
         static $gtype: GObject.GType<SecurityAttr>;
 
-        // Constructors of Fwupd.SecurityAttr
+        // Constructors
 
         constructor(properties?: Partial<SecurityAttr.ConstructorProps>, ...args: any[]);
 
@@ -3743,7 +3743,7 @@ export namespace Fwupd {
 
         static ['new'](appstream_id?: string | null): SecurityAttr;
 
-        // Own static methods of Fwupd.SecurityAttr
+        // Static methods
 
         /**
          * Creates an array of new security_attrs using packed data.
@@ -3771,7 +3771,7 @@ export namespace Fwupd {
          */
         static result_to_string(result: SecurityAttrResult): string;
 
-        // Own methods of Fwupd.SecurityAttr
+        // Methods
 
         /**
          * Adds a specific self flag to the self.

@@ -79,18 +79,18 @@ export namespace XreaderDocument {
     class DocumentError extends GLib.Error {
         static $gtype: GObject.GType<DocumentError>;
 
-        // Static fields of XreaderDocument.DocumentError
+        // Static fields
 
         static INVALID: number;
         static UNSUPPORTED_CONTENT: number;
         static ENCRYPTED: number;
 
-        // Constructors of XreaderDocument.DocumentError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of XreaderDocument.DocumentError
+        // Static methods
 
         static quark(): GLib.Quark;
     }
@@ -435,7 +435,7 @@ export namespace XreaderDocument {
     abstract class Annotation extends GObject.Object {
         static $gtype: GObject.GType<Annotation>;
 
-        // Own properties of XreaderDocument.Annotation
+        // Properties
 
         /**
          * The area of the page where the annotation is placed.
@@ -462,13 +462,13 @@ export namespace XreaderDocument {
         get rgba(): Gdk.RGBA;
         set rgba(val: Gdk.RGBA);
 
-        // Constructors of XreaderDocument.Annotation
+        // Constructors
 
         constructor(properties?: Partial<Annotation.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of XreaderDocument.Annotation
+        // Methods
 
         /**
          * Compare `annot` and `other`.
@@ -584,12 +584,12 @@ export namespace XreaderDocument {
     class AnnotationAttachment extends Annotation implements AnnotationMarkup {
         static $gtype: GObject.GType<AnnotationAttachment>;
 
-        // Own properties of XreaderDocument.AnnotationAttachment
+        // Properties
 
         get attachment(): Attachment;
         set attachment(val: Attachment);
 
-        // Constructors of XreaderDocument.AnnotationAttachment
+        // Constructors
 
         constructor(properties?: Partial<AnnotationAttachment.ConstructorProps>, ...args: any[]);
 
@@ -597,7 +597,7 @@ export namespace XreaderDocument {
 
         static ['new'](page: Page, attachment: Attachment): AnnotationAttachment;
 
-        // Own methods of XreaderDocument.AnnotationAttachment
+        // Methods
 
         get_attachment(): Attachment;
         set_attachment(attachment: Attachment): boolean;
@@ -772,7 +772,7 @@ export namespace XreaderDocument {
     class AnnotationText extends Annotation implements AnnotationMarkup {
         static $gtype: GObject.GType<AnnotationText>;
 
-        // Own properties of XreaderDocument.AnnotationText
+        // Properties
 
         get icon(): AnnotationTextIcon;
         set icon(val: AnnotationTextIcon);
@@ -781,7 +781,7 @@ export namespace XreaderDocument {
         get isOpen(): boolean;
         set isOpen(val: boolean);
 
-        // Constructors of XreaderDocument.AnnotationText
+        // Constructors
 
         constructor(properties?: Partial<AnnotationText.ConstructorProps>, ...args: any[]);
 
@@ -789,7 +789,7 @@ export namespace XreaderDocument {
 
         static ['new'](page: Page): AnnotationText;
 
-        // Own methods of XreaderDocument.AnnotationText
+        // Methods
 
         get_icon(): AnnotationTextIcon;
         get_is_open(): boolean;
@@ -964,12 +964,12 @@ export namespace XreaderDocument {
     class AnnotationTextMarkup extends Annotation implements AnnotationMarkup {
         static $gtype: GObject.GType<AnnotationTextMarkup>;
 
-        // Own properties of XreaderDocument.AnnotationTextMarkup
+        // Properties
 
         get type(): AnnotationTextMarkupType;
         set type(val: AnnotationTextMarkupType);
 
-        // Constructors of XreaderDocument.AnnotationTextMarkup
+        // Constructors
 
         constructor(properties?: Partial<AnnotationTextMarkup.ConstructorProps>, ...args: any[]);
 
@@ -983,7 +983,7 @@ export namespace XreaderDocument {
 
         static underline_new(page: Page): AnnotationTextMarkup;
 
-        // Own methods of XreaderDocument.AnnotationTextMarkup
+        // Methods
 
         get_markup_type(): AnnotationTextMarkupType;
         set_markup_type(markup_type: AnnotationTextMarkupType): boolean;
@@ -1161,7 +1161,7 @@ export namespace XreaderDocument {
     class Attachment extends GObject.Object {
         static $gtype: GObject.GType<Attachment>;
 
-        // Own properties of XreaderDocument.Attachment
+        // Properties
 
         set ctime(val: GObject.GType);
         set data(val: any);
@@ -1170,11 +1170,11 @@ export namespace XreaderDocument {
         set name(val: string);
         set size(val: number);
 
-        // Own fields of XreaderDocument.Attachment
+        // Fields
 
         base_instance: GObject.Object;
 
-        // Constructors of XreaderDocument.Attachment
+        // Constructors
 
         constructor(properties?: Partial<Attachment.ConstructorProps>, ...args: any[]);
 
@@ -1189,11 +1189,11 @@ export namespace XreaderDocument {
             data?: any | null,
         ): Attachment;
 
-        // Own static methods of XreaderDocument.Attachment
+        // Static methods
 
         static error_quark(): GLib.Quark;
 
-        // Own methods of XreaderDocument.Attachment
+        // Methods
 
         get_creation_date(): GLib.DateTime;
         get_description(): string;
@@ -1213,18 +1213,18 @@ export namespace XreaderDocument {
     abstract class Document extends GObject.Object {
         static $gtype: GObject.GType<Document>;
 
-        // Own fields of XreaderDocument.Document
+        // Fields
 
         base: GObject.Object;
         iswebdocument: boolean;
 
-        // Constructors of XreaderDocument.Document
+        // Constructors
 
         constructor(properties?: Partial<Document.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of XreaderDocument.Document
+        // Static methods
 
         static doc_mutex_lock(): void;
         static doc_mutex_trylock(): boolean;
@@ -1276,7 +1276,7 @@ export namespace XreaderDocument {
             dest_rotation: number,
         ): cairo.Surface;
 
-        // Own virtual methods of XreaderDocument.Document
+        // Virtual methods
 
         vfunc_check_add_night_sheet(): void;
         vfunc_get_backend_info(info: DocumentBackendInfo): boolean;
@@ -1305,7 +1305,7 @@ export namespace XreaderDocument {
         vfunc_support_synctex(): boolean;
         vfunc_toggle_night_mode(night: boolean): void;
 
-        // Own methods of XreaderDocument.Document
+        // Methods
 
         check_add_night_sheet(): void;
         check_dimensions(): boolean;
@@ -1367,7 +1367,7 @@ export namespace XreaderDocument {
     abstract class FormField extends GObject.Object {
         static $gtype: GObject.GType<FormField>;
 
-        // Own fields of XreaderDocument.FormField
+        // Fields
 
         id: number;
         is_read_only: boolean;
@@ -1375,7 +1375,7 @@ export namespace XreaderDocument {
         page: Page;
         changed: boolean;
 
-        // Constructors of XreaderDocument.FormField
+        // Constructors
 
         constructor(properties?: Partial<FormField.ConstructorProps>, ...args: any[]);
 
@@ -1391,13 +1391,13 @@ export namespace XreaderDocument {
     class FormFieldButton extends FormField {
         static $gtype: GObject.GType<FormFieldButton>;
 
-        // Own fields of XreaderDocument.FormFieldButton
+        // Fields
 
         partent: FormField;
         type: FormFieldButtonType;
         state: boolean;
 
-        // Constructors of XreaderDocument.FormFieldButton
+        // Constructors
 
         constructor(properties?: Partial<FormFieldButton.ConstructorProps>, ...args: any[]);
 
@@ -1415,7 +1415,7 @@ export namespace XreaderDocument {
     class FormFieldChoice extends FormField {
         static $gtype: GObject.GType<FormFieldChoice>;
 
-        // Own fields of XreaderDocument.FormFieldChoice
+        // Fields
 
         partent: FormField;
         type: FormFieldChoiceType;
@@ -1426,7 +1426,7 @@ export namespace XreaderDocument {
         selected_items: any[];
         text: string;
 
-        // Constructors of XreaderDocument.FormFieldChoice
+        // Constructors
 
         constructor(properties?: Partial<FormFieldChoice.ConstructorProps>, ...args: any[]);
 
@@ -1444,11 +1444,11 @@ export namespace XreaderDocument {
     class FormFieldSignature extends FormField {
         static $gtype: GObject.GType<FormFieldSignature>;
 
-        // Own fields of XreaderDocument.FormFieldSignature
+        // Fields
 
         partent: FormField;
 
-        // Constructors of XreaderDocument.FormFieldSignature
+        // Constructors
 
         constructor(properties?: Partial<FormFieldSignature.ConstructorProps>, ...args: any[]);
 
@@ -1466,7 +1466,7 @@ export namespace XreaderDocument {
     class FormFieldText extends FormField {
         static $gtype: GObject.GType<FormFieldText>;
 
-        // Own fields of XreaderDocument.FormFieldText
+        // Fields
 
         partent: FormField;
         type: FormFieldTextType;
@@ -1478,7 +1478,7 @@ export namespace XreaderDocument {
         max_len: number;
         text: string;
 
-        // Constructors of XreaderDocument.FormFieldText
+        // Constructors
 
         constructor(properties?: Partial<FormFieldText.ConstructorProps>, ...args: any[]);
 
@@ -1496,11 +1496,11 @@ export namespace XreaderDocument {
     class Image extends GObject.Object {
         static $gtype: GObject.GType<Image>;
 
-        // Own fields of XreaderDocument.Image
+        // Fields
 
         base_instance: GObject.Object;
 
-        // Constructors of XreaderDocument.Image
+        // Constructors
 
         constructor(properties?: Partial<Image.ConstructorProps>, ...args: any[]);
 
@@ -1510,7 +1510,7 @@ export namespace XreaderDocument {
 
         static new_from_pixbuf(pixbuf: GdkPixbuf.Pixbuf): Image;
 
-        // Own methods of XreaderDocument.Image
+        // Methods
 
         get_id(): number;
         get_page(): number;
@@ -1527,11 +1527,11 @@ export namespace XreaderDocument {
     class Layer extends GObject.Object {
         static $gtype: GObject.GType<Layer>;
 
-        // Own fields of XreaderDocument.Layer
+        // Fields
 
         base_instance: GObject.Object;
 
-        // Constructors of XreaderDocument.Layer
+        // Constructors
 
         constructor(properties?: Partial<Layer.ConstructorProps>, ...args: any[]);
 
@@ -1539,7 +1539,7 @@ export namespace XreaderDocument {
 
         static ['new'](is_parent: boolean, rb_group: number): Layer;
 
-        // Own methods of XreaderDocument.Layer
+        // Methods
 
         get_rb_group(): number;
         is_parent(): boolean;
@@ -1557,12 +1557,12 @@ export namespace XreaderDocument {
     class Link extends GObject.Object {
         static $gtype: GObject.GType<Link>;
 
-        // Own properties of XreaderDocument.Link
+        // Properties
 
         get action(): LinkAction;
         get title(): string;
 
-        // Constructors of XreaderDocument.Link
+        // Constructors
 
         constructor(properties?: Partial<Link.ConstructorProps>, ...args: any[]);
 
@@ -1570,7 +1570,7 @@ export namespace XreaderDocument {
 
         static ['new'](title: string, action: LinkAction): Link;
 
-        // Own methods of XreaderDocument.Link
+        // Methods
 
         get_title(): string;
     }
@@ -1597,7 +1597,7 @@ export namespace XreaderDocument {
     class LinkAction extends GObject.Object {
         static $gtype: GObject.GType<LinkAction>;
 
-        // Own properties of XreaderDocument.LinkAction
+        // Properties
 
         get dest(): LinkDest;
         get filename(): string;
@@ -1612,7 +1612,7 @@ export namespace XreaderDocument {
         get type(): LinkActionType;
         get uri(): string;
 
-        // Constructors of XreaderDocument.LinkAction
+        // Constructors
 
         constructor(properties?: Partial<LinkAction.ConstructorProps>, ...args: any[]);
 
@@ -1628,7 +1628,7 @@ export namespace XreaderDocument {
 
         static new_remote(dest: LinkDest, filename: string): LinkAction;
 
-        // Own methods of XreaderDocument.LinkAction
+        // Methods
 
         equal(b: LinkAction): boolean;
         get_action_type(): LinkActionType;
@@ -1659,7 +1659,7 @@ export namespace XreaderDocument {
     class LinkDest extends GObject.Object {
         static $gtype: GObject.GType<LinkDest>;
 
-        // Own properties of XreaderDocument.LinkDest
+        // Properties
 
         get bottom(): number;
         get change(): number;
@@ -1673,7 +1673,7 @@ export namespace XreaderDocument {
         get type(): LinkDestType;
         get zoom(): number;
 
-        // Constructors of XreaderDocument.LinkDest
+        // Constructors
 
         constructor(properties?: Partial<LinkDest.ConstructorProps>, ...args: any[]);
 
@@ -1705,7 +1705,7 @@ export namespace XreaderDocument {
             change_zoom: boolean,
         ): LinkDest;
 
-        // Own methods of XreaderDocument.LinkDest
+        // Methods
 
         equal(b: LinkDest): boolean;
         get_bottom(): number;
@@ -1728,14 +1728,14 @@ export namespace XreaderDocument {
     class Page extends GObject.Object {
         static $gtype: GObject.GType<Page>;
 
-        // Own fields of XreaderDocument.Page
+        // Fields
 
         base_instance: GObject.Object;
         index: number;
         backend_page: BackendPage;
         backend_destroy_func: BackendPageDestroyFunc;
 
-        // Constructors of XreaderDocument.Page
+        // Constructors
 
         constructor(properties?: Partial<Page.ConstructorProps>, ...args: any[]);
 
@@ -1753,13 +1753,13 @@ export namespace XreaderDocument {
     class RenderContext extends GObject.Object {
         static $gtype: GObject.GType<RenderContext>;
 
-        // Own fields of XreaderDocument.RenderContext
+        // Fields
 
         page: Page;
         rotation: number;
         scale: number;
 
-        // Constructors of XreaderDocument.RenderContext
+        // Constructors
 
         constructor(properties?: Partial<RenderContext.ConstructorProps>, ...args: any[]);
 
@@ -1767,7 +1767,7 @@ export namespace XreaderDocument {
 
         static ['new'](page: Page, rotation: number, scale: number): RenderContext;
 
-        // Own methods of XreaderDocument.RenderContext
+        // Methods
 
         set_page(page: Page): void;
         set_rotation(rotation: number): void;
@@ -1791,7 +1791,7 @@ export namespace XreaderDocument {
     class TransitionEffect extends GObject.Object {
         static $gtype: GObject.GType<TransitionEffect>;
 
-        // Own properties of XreaderDocument.TransitionEffect
+        // Properties
 
         get alignment(): TransitionEffectAlignment;
         set alignment(val: TransitionEffectAlignment);
@@ -1808,7 +1808,7 @@ export namespace XreaderDocument {
         get type(): TransitionEffectType;
         set type(val: TransitionEffectType);
 
-        // Constructors of XreaderDocument.TransitionEffect
+        // Constructors
 
         constructor(properties?: Partial<TransitionEffect.ConstructorProps>, ...args: any[]);
 
@@ -1825,7 +1825,7 @@ export namespace XreaderDocument {
     abstract class AttachmentPrivate {
         static $gtype: GObject.GType<AttachmentPrivate>;
 
-        // Constructors of XreaderDocument.AttachmentPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1835,12 +1835,12 @@ export namespace XreaderDocument {
     class DocumentBackendInfo {
         static $gtype: GObject.GType<DocumentBackendInfo>;
 
-        // Own fields of XreaderDocument.DocumentBackendInfo
+        // Fields
 
         name: string;
         version: string;
 
-        // Constructors of XreaderDocument.DocumentBackendInfo
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -1859,7 +1859,7 @@ export namespace XreaderDocument {
     class DocumentInfo {
         static $gtype: GObject.GType<DocumentInfo>;
 
-        // Own fields of XreaderDocument.DocumentInfo
+        // Fields
 
         title: string;
         format: string;
@@ -1880,11 +1880,11 @@ export namespace XreaderDocument {
         license: DocumentLicense;
         fields_mask: number;
 
-        // Constructors of XreaderDocument.DocumentInfo
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of XreaderDocument.DocumentInfo
+        // Methods
 
         copy(): DocumentInfo;
         free(): void;
@@ -1894,13 +1894,13 @@ export namespace XreaderDocument {
     class DocumentLicense {
         static $gtype: GObject.GType<DocumentLicense>;
 
-        // Own fields of XreaderDocument.DocumentLicense
+        // Fields
 
         text: string;
         uri: string;
         web_statement: string;
 
-        // Constructors of XreaderDocument.DocumentLicense
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -1913,7 +1913,7 @@ export namespace XreaderDocument {
 
         static ['new'](): DocumentLicense;
 
-        // Own methods of XreaderDocument.DocumentLicense
+        // Methods
 
         copy(): DocumentLicense;
         free(): void;
@@ -1927,7 +1927,7 @@ export namespace XreaderDocument {
     abstract class DocumentPrivate {
         static $gtype: GObject.GType<DocumentPrivate>;
 
-        // Constructors of XreaderDocument.DocumentPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1939,7 +1939,7 @@ export namespace XreaderDocument {
     class FileExporterContext {
         static $gtype: GObject.GType<FileExporterContext>;
 
-        // Own fields of XreaderDocument.FileExporterContext
+        // Fields
 
         format: FileExporterFormat;
         filename: string;
@@ -1950,7 +1950,7 @@ export namespace XreaderDocument {
         duplex: boolean;
         pages_per_sheet: number;
 
-        // Constructors of XreaderDocument.FileExporterContext
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1965,7 +1965,7 @@ export namespace XreaderDocument {
     abstract class ImagePrivate {
         static $gtype: GObject.GType<ImagePrivate>;
 
-        // Constructors of XreaderDocument.ImagePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1974,7 +1974,7 @@ export namespace XreaderDocument {
     abstract class LayerPrivate {
         static $gtype: GObject.GType<LayerPrivate>;
 
-        // Constructors of XreaderDocument.LayerPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1983,7 +1983,7 @@ export namespace XreaderDocument {
     abstract class LinkActionPrivate {
         static $gtype: GObject.GType<LinkActionPrivate>;
 
-        // Constructors of XreaderDocument.LinkActionPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1993,7 +1993,7 @@ export namespace XreaderDocument {
     abstract class LinkDestPrivate {
         static $gtype: GObject.GType<LinkDestPrivate>;
 
-        // Constructors of XreaderDocument.LinkDestPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2001,7 +2001,7 @@ export namespace XreaderDocument {
     abstract class LinkPrivate {
         static $gtype: GObject.GType<LinkPrivate>;
 
-        // Constructors of XreaderDocument.LinkPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2009,12 +2009,12 @@ export namespace XreaderDocument {
     class Mapping {
         static $gtype: GObject.GType<Mapping>;
 
-        // Own fields of XreaderDocument.Mapping
+        // Fields
 
         area: Rectangle;
         data: any;
 
-        // Constructors of XreaderDocument.Mapping
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -2028,11 +2028,11 @@ export namespace XreaderDocument {
     abstract class MappingList {
         static $gtype: GObject.GType<MappingList>;
 
-        // Constructors of XreaderDocument.MappingList
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of XreaderDocument.MappingList
+        // Methods
 
         get_data(x: number, y: number): any | null;
         get_page(): number;
@@ -2045,12 +2045,12 @@ export namespace XreaderDocument {
     class Point {
         static $gtype: GObject.GType<Point>;
 
-        // Own fields of XreaderDocument.Point
+        // Fields
 
         x: number;
         y: number;
 
-        // Constructors of XreaderDocument.Point
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -2064,14 +2064,14 @@ export namespace XreaderDocument {
     class Rectangle {
         static $gtype: GObject.GType<Rectangle>;
 
-        // Own fields of XreaderDocument.Rectangle
+        // Fields
 
         x1: number;
         y1: number;
         x2: number;
         y2: number;
 
-        // Constructors of XreaderDocument.Rectangle
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -2085,7 +2085,7 @@ export namespace XreaderDocument {
 
         static ['new'](): Rectangle;
 
-        // Own methods of XreaderDocument.Rectangle
+        // Methods
 
         copy(): Rectangle;
         free(): void;
@@ -2096,13 +2096,13 @@ export namespace XreaderDocument {
     class SourceLink {
         static $gtype: GObject.GType<SourceLink>;
 
-        // Own fields of XreaderDocument.SourceLink
+        // Fields
 
         filename: string;
         line: number;
         col: number;
 
-        // Constructors of XreaderDocument.SourceLink
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -2115,7 +2115,7 @@ export namespace XreaderDocument {
 
         static ['new'](filename: string, line: number, col: number): SourceLink;
 
-        // Own methods of XreaderDocument.SourceLink
+        // Methods
 
         copy(): SourceLink;
         free(): void;
@@ -2125,12 +2125,12 @@ export namespace XreaderDocument {
     class TypeInfo {
         static $gtype: GObject.GType<TypeInfo>;
 
-        // Own fields of XreaderDocument.TypeInfo
+        // Fields
 
         desc: string;
         mime_types: string;
 
-        // Constructors of XreaderDocument.TypeInfo
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -2162,7 +2162,7 @@ export namespace XreaderDocument {
         prototype: AnnotationMarkup;
     }
     interface AnnotationMarkup extends Annotation {
-        // Own properties of XreaderDocument.AnnotationMarkup
+        // Properties
 
         get can_have_popup(): boolean;
         set can_have_popup(val: boolean);
@@ -2183,7 +2183,7 @@ export namespace XreaderDocument {
         get rectangle(): Rectangle;
         set rectangle(val: Rectangle);
 
-        // Own methods of XreaderDocument.AnnotationMarkup
+        // Methods
 
         get_label(): string;
         get_opacity(): number;
@@ -2209,11 +2209,11 @@ export namespace XreaderDocument {
         prototype: AsyncRenderer;
     }
     interface AsyncRenderer extends GObject.Object {
-        // Own methods of XreaderDocument.AsyncRenderer
+        // Methods
 
         render_pixbuf(page: number, scale: number, rotation: number): void;
 
-        // Own virtual methods of XreaderDocument.AsyncRenderer
+        // Virtual methods
 
         vfunc_render_finished(pixbuf: GdkPixbuf.Pixbuf): void;
         vfunc_render_pixbuf(page: number, scale: number, rotation: number): void;
@@ -2232,7 +2232,7 @@ export namespace XreaderDocument {
         prototype: DocumentAnnotations;
     }
     interface DocumentAnnotations extends GObject.Object {
-        // Own methods of XreaderDocument.DocumentAnnotations
+        // Methods
 
         add_annotation(annot: Annotation, rect: Rectangle): void;
         can_add_annotation(): boolean;
@@ -2241,7 +2241,7 @@ export namespace XreaderDocument {
         remove_annotation(annot: Annotation): void;
         save_annotation(annot: Annotation, mask: AnnotationsSaveMask): void;
 
-        // Own virtual methods of XreaderDocument.DocumentAnnotations
+        // Virtual methods
 
         vfunc_add_annotation(annot: Annotation, rect: Rectangle): void;
         vfunc_document_is_modified(): boolean;
@@ -2262,11 +2262,11 @@ export namespace XreaderDocument {
         prototype: DocumentAttachments;
     }
     interface DocumentAttachments extends GObject.Object {
-        // Own methods of XreaderDocument.DocumentAttachments
+        // Methods
 
         has_attachments(): boolean;
 
-        // Own virtual methods of XreaderDocument.DocumentAttachments
+        // Virtual methods
 
         vfunc_has_attachments(): boolean;
     }
@@ -2284,11 +2284,11 @@ export namespace XreaderDocument {
         prototype: DocumentFind;
     }
     interface DocumentFind extends GObject.Object {
-        // Own methods of XreaderDocument.DocumentFind
+        // Methods
 
         check_for_hits(page: Page, text: string, case_sensitive: boolean): number;
 
-        // Own virtual methods of XreaderDocument.DocumentFind
+        // Virtual methods
 
         vfunc_check_for_hits(page: Page, text: string, case_sensitive: boolean): number;
     }
@@ -2306,13 +2306,13 @@ export namespace XreaderDocument {
         prototype: DocumentFonts;
     }
     interface DocumentFonts extends GObject.Object {
-        // Own methods of XreaderDocument.DocumentFonts
+        // Methods
 
         fill_model(model: Gtk.TreeModel): void;
         get_progress(): number;
         scan(n_pages: number): boolean;
 
-        // Own virtual methods of XreaderDocument.DocumentFonts
+        // Virtual methods
 
         vfunc_fill_model(model: Gtk.TreeModel): void;
         vfunc_get_progress(): number;
@@ -2332,7 +2332,7 @@ export namespace XreaderDocument {
         prototype: DocumentForms;
     }
     interface DocumentForms extends GObject.Object {
-        // Own methods of XreaderDocument.DocumentForms
+        // Methods
 
         document_is_modified(): boolean;
         form_field_button_get_state(field: FormField): boolean;
@@ -2348,7 +2348,7 @@ export namespace XreaderDocument {
         form_field_text_get_text(field: FormField): string;
         form_field_text_set_text(field: FormField, text: string): void;
 
-        // Own virtual methods of XreaderDocument.DocumentForms
+        // Virtual methods
 
         vfunc_document_is_modified(): boolean;
         vfunc_form_field_button_get_state(field: FormField): boolean;
@@ -2392,14 +2392,14 @@ export namespace XreaderDocument {
         prototype: DocumentLayers;
     }
     interface DocumentLayers extends GObject.Object {
-        // Own methods of XreaderDocument.DocumentLayers
+        // Methods
 
         has_layers(): boolean;
         hide_layer(layer: Layer): void;
         layer_is_visible(layer: Layer): boolean;
         show_layer(layer: Layer): void;
 
-        // Own virtual methods of XreaderDocument.DocumentLayers
+        // Virtual methods
 
         vfunc_has_layers(): boolean;
         vfunc_hide_layer(layer: Layer): void;
@@ -2420,7 +2420,7 @@ export namespace XreaderDocument {
         prototype: DocumentLinks;
     }
     interface DocumentLinks extends GObject.Object {
-        // Own methods of XreaderDocument.DocumentLinks
+        // Methods
 
         find_link_page(link_name: string): number;
         get_dest_page(dest: LinkDest): number;
@@ -2429,7 +2429,7 @@ export namespace XreaderDocument {
         get_link_page_label(link: Link): string;
         has_document_links(): boolean;
 
-        // Own virtual methods of XreaderDocument.DocumentLinks
+        // Virtual methods
 
         vfunc_find_link_page(link_name: string): number;
         vfunc_has_document_links(): boolean;
@@ -2448,11 +2448,11 @@ export namespace XreaderDocument {
         prototype: DocumentPrint;
     }
     interface DocumentPrint extends GObject.Object {
-        // Own methods of XreaderDocument.DocumentPrint
+        // Methods
 
         print_page(page: Page, cr: cairo.Context): void;
 
-        // Own virtual methods of XreaderDocument.DocumentPrint
+        // Virtual methods
 
         vfunc_print_page(page: Page, cr: cairo.Context): void;
     }
@@ -2470,12 +2470,12 @@ export namespace XreaderDocument {
         prototype: DocumentSecurity;
     }
     interface DocumentSecurity extends GObject.Object {
-        // Own methods of XreaderDocument.DocumentSecurity
+        // Methods
 
         has_document_security(): boolean;
         set_password(password: string): void;
 
-        // Own virtual methods of XreaderDocument.DocumentSecurity
+        // Virtual methods
 
         vfunc_has_document_security(): boolean;
         vfunc_set_password(password: string): void;
@@ -2494,13 +2494,13 @@ export namespace XreaderDocument {
         prototype: DocumentText;
     }
     interface DocumentText extends GObject.Object {
-        // Own methods of XreaderDocument.DocumentText
+        // Methods
 
         get_text(page: Page): string;
         get_text_layout(page: Page, areas: Rectangle, n_areas: number): boolean;
         get_text_mapping(page: Page): cairo.Region;
 
-        // Own virtual methods of XreaderDocument.DocumentText
+        // Virtual methods
 
         vfunc_get_text(page: Page): string;
         vfunc_get_text_layout(page: Page, areas: Rectangle, n_areas: number): boolean;
@@ -2520,11 +2520,11 @@ export namespace XreaderDocument {
         prototype: DocumentThumbnails;
     }
     interface DocumentThumbnails extends GObject.Object {
-        // Own methods of XreaderDocument.DocumentThumbnails
+        // Methods
 
         get_dimensions(rc: RenderContext, width: number, height: number): void;
 
-        // Own virtual methods of XreaderDocument.DocumentThumbnails
+        // Virtual methods
 
         vfunc_get_dimensions(rc: RenderContext, width: number, height: number): void;
     }
@@ -2542,11 +2542,11 @@ export namespace XreaderDocument {
         prototype: DocumentTransition;
     }
     interface DocumentTransition extends GObject.Object {
-        // Own methods of XreaderDocument.DocumentTransition
+        // Methods
 
         get_page_duration(page: number): number;
 
-        // Own virtual methods of XreaderDocument.DocumentTransition
+        // Virtual methods
 
         vfunc_get_page_duration(page: number): number;
     }
@@ -2564,7 +2564,7 @@ export namespace XreaderDocument {
         prototype: FileExporter;
     }
     interface FileExporter extends GObject.Object {
-        // Own methods of XreaderDocument.FileExporter
+        // Methods
 
         begin(fc: FileExporterContext): void;
         begin_page(): void;
@@ -2573,7 +2573,7 @@ export namespace XreaderDocument {
         end_page(): void;
         get_capabilities(): FileExporterCapabilities;
 
-        // Own virtual methods of XreaderDocument.FileExporter
+        // Virtual methods
 
         vfunc_begin(fc: FileExporterContext): void;
         vfunc_begin_page(): void;
@@ -2596,7 +2596,7 @@ export namespace XreaderDocument {
         prototype: Selection;
     }
     interface Selection extends GObject.Object {
-        // Own methods of XreaderDocument.Selection
+        // Methods
 
         get_selected_text(page: Page, style: SelectionStyle, points: Rectangle): string;
         get_selection_region(rc: RenderContext, style: SelectionStyle, points: Rectangle): cairo.Region;
@@ -2610,7 +2610,7 @@ export namespace XreaderDocument {
             base: Gdk.Color,
         ): void;
 
-        // Own virtual methods of XreaderDocument.Selection
+        // Virtual methods
 
         vfunc_get_selected_text(page: Page, style: SelectionStyle, points: Rectangle): string;
         vfunc_get_selection_region(rc: RenderContext, style: SelectionStyle, points: Rectangle): cairo.Region;

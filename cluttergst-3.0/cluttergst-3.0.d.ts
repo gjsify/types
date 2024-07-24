@@ -157,7 +157,7 @@ export namespace ClutterGst {
     class Aspectratio extends Content implements Clutter.Content {
         static $gtype: GObject.GType<Aspectratio>;
 
-        // Own properties of ClutterGst.Aspectratio
+        // Properties
 
         /**
          * Whether the content should fill its allocation with video rather
@@ -182,13 +182,13 @@ export namespace ClutterGst {
         get paintBorders(): boolean;
         set paintBorders(val: boolean);
 
-        // Constructors of ClutterGst.Aspectratio
+        // Constructors
 
         constructor(properties?: Partial<Aspectratio.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of ClutterGst.Aspectratio
+        // Static methods
 
         static ['new'](): Clutter.Content;
 
@@ -667,12 +667,12 @@ export namespace ClutterGst {
     class Camera extends GObject.Object implements Player {
         static $gtype: GObject.GType<Camera>;
 
-        // Own properties of ClutterGst.Camera
+        // Properties
 
         get device(): CameraDevice;
         set device(val: CameraDevice);
 
-        // Constructors of ClutterGst.Camera
+        // Constructors
 
         constructor(properties?: Partial<Camera.ConstructorProps>, ...args: any[]);
 
@@ -680,7 +680,7 @@ export namespace ClutterGst {
 
         static ['new'](): Camera;
 
-        // Own signals of ClutterGst.Camera
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -698,14 +698,14 @@ export namespace ClutterGst {
         connect_after(signal: 'video-saved', callback: (_source: this) => void): number;
         emit(signal: 'video-saved'): void;
 
-        // Own virtual methods of ClutterGst.Camera
+        // Virtual methods
 
         vfunc_photo_saved(): void;
         vfunc_photo_taken(pixbuf: GdkPixbuf.Pixbuf): void;
         vfunc_ready_for_capture(ready: boolean): void;
         vfunc_video_saved(): void;
 
-        // Own methods of ClutterGst.Camera
+        // Methods
 
         get_brightness(cur_value: number): boolean;
         get_brightness_range(min_value: number, max_value: number, default_value: number): boolean;
@@ -1430,7 +1430,7 @@ export namespace ClutterGst {
     class CameraDevice extends GObject.Object {
         static $gtype: GObject.GType<CameraDevice>;
 
-        // Own properties of ClutterGst.CameraDevice
+        // Properties
 
         /**
          * The GstElementFactory for this device.
@@ -1449,13 +1449,13 @@ export namespace ClutterGst {
          */
         get node(): string;
 
-        // Constructors of ClutterGst.CameraDevice
+        // Constructors
 
         constructor(properties?: Partial<CameraDevice.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of ClutterGst.CameraDevice
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -1470,11 +1470,11 @@ export namespace ClutterGst {
         ): number;
         emit(signal: 'capture-resolution-changed', width: number, height: number): void;
 
-        // Own virtual methods of ClutterGst.CameraDevice
+        // Virtual methods
 
         vfunc_capture_resolution_changed(width: number, height: number): void;
 
-        // Own methods of ClutterGst.CameraDevice
+        // Methods
 
         /**
          * Retrieve the current capture resolution being used by `device`.
@@ -1528,13 +1528,13 @@ export namespace ClutterGst {
     class CameraManager extends GObject.Object {
         static $gtype: GObject.GType<CameraManager>;
 
-        // Constructors of ClutterGst.CameraManager
+        // Constructors
 
         constructor(properties?: Partial<CameraManager.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of ClutterGst.CameraManager
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -1546,7 +1546,7 @@ export namespace ClutterGst {
         connect_after(signal: 'camera-removed', callback: (_source: this, camera_device: CameraDevice) => void): number;
         emit(signal: 'camera-removed', camera_device: CameraDevice): void;
 
-        // Own static methods of ClutterGst.CameraManager
+        // Static methods
 
         /**
          * Get the camera manager.
@@ -1556,7 +1556,7 @@ export namespace ClutterGst {
          */
         static get_default(): CameraManager;
 
-        // Own methods of ClutterGst.CameraManager
+        // Methods
 
         /**
          * Retrieve an array of supported camera devices.
@@ -1592,7 +1592,7 @@ export namespace ClutterGst {
     class Content extends GObject.Object implements Clutter.Content {
         static $gtype: GObject.GType<Content>;
 
-        // Own properties of ClutterGst.Content
+        // Properties
 
         get frame(): Frame;
         set frame(val: Frame);
@@ -1609,13 +1609,13 @@ export namespace ClutterGst {
         get sink(): VideoSink;
         set sink(val: VideoSink);
 
-        // Constructors of ClutterGst.Content
+        // Constructors
 
         constructor(properties?: Partial<Content.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of ClutterGst.Content
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -1624,16 +1624,16 @@ export namespace ClutterGst {
         connect_after(signal: 'size-change', callback: (_source: this, width: number, height: number) => void): number;
         emit(signal: 'size-change', width: number, height: number): void;
 
-        // Own static methods of ClutterGst.Content
+        // Static methods
 
         static ['new'](): Clutter.Content;
         static new_with_sink(sink: VideoSink): Clutter.Content;
 
-        // Own virtual methods of ClutterGst.Content
+        // Virtual methods
 
         vfunc_has_painting_content(): boolean;
 
-        // Own methods of ClutterGst.Content
+        // Methods
 
         get_frame(): Frame;
         get_overlays(): Overlays;
@@ -2111,7 +2111,7 @@ export namespace ClutterGst {
     class Crop extends Content implements Clutter.Content {
         static $gtype: GObject.GType<Crop>;
 
-        // Own properties of ClutterGst.Crop
+        // Properties
 
         /**
          * Whether to cull the backface of the actor
@@ -2154,7 +2154,7 @@ export namespace ClutterGst {
         get paintBorders(): boolean;
         set paintBorders(val: boolean);
 
-        // Constructors of ClutterGst.Crop
+        // Constructors
 
         constructor(properties?: Partial<Crop.ConstructorProps>, ...args: any[]);
 
@@ -2652,7 +2652,7 @@ export namespace ClutterGst {
     class Playback extends GObject.Object implements Player {
         static $gtype: GObject.GType<Playback>;
 
-        // Own properties of ClutterGst.Playback
+        // Properties
 
         /**
          * Index of the current audio stream.
@@ -2776,7 +2776,7 @@ export namespace ClutterGst {
         get userAgent(): string;
         set userAgent(val: string);
 
-        // Constructors of ClutterGst.Playback
+        // Constructors
 
         constructor(properties?: Partial<Playback.ConstructorProps>, ...args: any[]);
 
@@ -2784,7 +2784,7 @@ export namespace ClutterGst {
 
         static ['new'](): Playback;
 
-        // Own signals of ClutterGst.Playback
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -2793,11 +2793,11 @@ export namespace ClutterGst {
         connect_after(signal: 'should-buffer', callback: (_source: this, query: Gst.Query) => boolean): number;
         emit(signal: 'should-buffer', query: Gst.Query): void;
 
-        // Own virtual methods of ClutterGst.Playback
+        // Virtual methods
 
         vfunc_should_buffer(query: Gst.Query): boolean;
 
-        // Own methods of ClutterGst.Playback
+        // Methods
 
         /**
          * Get the current audio stream. The number returned in the index of the
@@ -3517,14 +3517,14 @@ export namespace ClutterGst {
     class VideoSink extends GstVideo.VideoSink implements GstVideo.ColorBalance, GstVideo.Navigation {
         static $gtype: GObject.GType<VideoSink>;
 
-        // Own properties of ClutterGst.VideoSink
+        // Properties
 
         get update_priority(): number;
         set update_priority(val: number);
         get updatePriority(): number;
         set updatePriority(val: number);
 
-        // Constructors of ClutterGst.VideoSink
+        // Constructors
 
         constructor(properties?: Partial<VideoSink.ConstructorProps>, ...args: any[]);
 
@@ -3532,7 +3532,7 @@ export namespace ClutterGst {
 
         static ['new'](): VideoSink;
 
-        // Own signals of ClutterGst.VideoSink
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -3547,13 +3547,13 @@ export namespace ClutterGst {
         connect_after(signal: 'pipeline-ready', callback: (_source: this) => void): number;
         emit(signal: 'pipeline-ready'): void;
 
-        // Own virtual methods of ClutterGst.VideoSink
+        // Virtual methods
 
         vfunc_new_frame(): void;
         vfunc_new_overlays(): void;
         vfunc_pipeline_ready(): void;
 
-        // Own methods of ClutterGst.VideoSink
+        // Methods
 
         /**
          * Returns a #ClutterGstFrame object suitable to render the current
@@ -4115,7 +4115,7 @@ export namespace ClutterGst {
     abstract class AspectratioPrivate {
         static $gtype: GObject.GType<AspectratioPrivate>;
 
-        // Constructors of ClutterGst.AspectratioPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4127,14 +4127,14 @@ export namespace ClutterGst {
     class Box {
         static $gtype: GObject.GType<Box>;
 
-        // Own fields of ClutterGst.Box
+        // Fields
 
         x1: number;
         y1: number;
         x2: number;
         y2: number;
 
-        // Constructors of ClutterGst.Box
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -4146,7 +4146,7 @@ export namespace ClutterGst {
         );
         _init(...args: any[]): void;
 
-        // Own methods of ClutterGst.Box
+        // Methods
 
         /**
          * Retrieves the height of the `box`
@@ -4165,7 +4165,7 @@ export namespace ClutterGst {
     abstract class CameraDevicePrivate {
         static $gtype: GObject.GType<CameraDevicePrivate>;
 
-        // Constructors of ClutterGst.CameraDevicePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4174,7 +4174,7 @@ export namespace ClutterGst {
     abstract class CameraManagerPrivate {
         static $gtype: GObject.GType<CameraManagerPrivate>;
 
-        // Constructors of ClutterGst.CameraManagerPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4182,7 +4182,7 @@ export namespace ClutterGst {
     abstract class CameraPrivate {
         static $gtype: GObject.GType<CameraPrivate>;
 
-        // Constructors of ClutterGst.CameraPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4191,7 +4191,7 @@ export namespace ClutterGst {
     abstract class ContentPrivate {
         static $gtype: GObject.GType<ContentPrivate>;
 
-        // Constructors of ClutterGst.ContentPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4200,7 +4200,7 @@ export namespace ClutterGst {
     abstract class CropPrivate {
         static $gtype: GObject.GType<CropPrivate>;
 
-        // Constructors of ClutterGst.CropPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4211,11 +4211,11 @@ export namespace ClutterGst {
     class Frame {
         static $gtype: GObject.GType<Frame>;
 
-        // Own fields of ClutterGst.Frame
+        // Fields
 
         resolution: VideoResolution;
 
-        // Constructors of ClutterGst.Frame
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -4232,11 +4232,11 @@ export namespace ClutterGst {
     class Overlay {
         static $gtype: GObject.GType<Overlay>;
 
-        // Own fields of ClutterGst.Overlay
+        // Fields
 
         position: Box;
 
-        // Constructors of ClutterGst.Overlay
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -4250,11 +4250,11 @@ export namespace ClutterGst {
     class Overlays {
         static $gtype: GObject.GType<Overlays>;
 
-        // Own fields of ClutterGst.Overlays
+        // Fields
 
         overlays: any[];
 
-        // Constructors of ClutterGst.Overlays
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -4268,7 +4268,7 @@ export namespace ClutterGst {
     abstract class PlaybackPrivate {
         static $gtype: GObject.GType<PlaybackPrivate>;
 
-        // Constructors of ClutterGst.PlaybackPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4277,7 +4277,7 @@ export namespace ClutterGst {
     abstract class PlayerIfacePrivate {
         static $gtype: GObject.GType<PlayerIfacePrivate>;
 
-        // Constructors of ClutterGst.PlayerIfacePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4288,14 +4288,14 @@ export namespace ClutterGst {
     class VideoResolution {
         static $gtype: GObject.GType<VideoResolution>;
 
-        // Own fields of ClutterGst.VideoResolution
+        // Fields
 
         width: number;
         height: number;
         par_n: number;
         par_d: number;
 
-        // Constructors of ClutterGst.VideoResolution
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -4312,7 +4312,7 @@ export namespace ClutterGst {
     abstract class VideoSinkPrivate {
         static $gtype: GObject.GType<VideoSinkPrivate>;
 
-        // Constructors of ClutterGst.VideoSinkPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4333,7 +4333,7 @@ export namespace ClutterGst {
         prototype: Player;
     }
     interface Player extends GObject.Object {
-        // Own properties of ClutterGst.Player
+        // Properties
 
         /**
          * The volume of the audio, as a normalized value between
@@ -4357,7 +4357,7 @@ export namespace ClutterGst {
         get playing(): boolean;
         set playing(val: boolean);
 
-        // Own methods of ClutterGst.Player
+        // Methods
 
         /**
          * Retrieves the playback volume of `self`.
@@ -4407,7 +4407,7 @@ export namespace ClutterGst {
          */
         set_playing(playing: boolean): void;
 
-        // Own virtual methods of ClutterGst.Player
+        // Virtual methods
 
         vfunc_eos(): void;
         vfunc_error(error: GLib.Error): void;

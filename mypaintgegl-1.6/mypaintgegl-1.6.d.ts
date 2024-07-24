@@ -22,14 +22,14 @@ export namespace MyPaintGegl {
     class TiledSurface {
         static $gtype: GObject.GType<TiledSurface>;
 
-        // Constructors of MyPaintGegl.TiledSurface
+        // Constructors
 
         constructor(properties?: Partial<{}>);
         _init(...args: any[]): void;
 
         static ['new'](): TiledSurface;
 
-        // Own methods of MyPaintGegl.TiledSurface
+        // Methods
 
         get_buffer(): Gegl.Buffer;
         ['interface'](): MyPaint.Surface;

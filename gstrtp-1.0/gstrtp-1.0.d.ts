@@ -295,7 +295,7 @@ export namespace GstRtp {
     class RTPPayload {
         static $gtype: GObject.GType<RTPPayload>;
 
-        // Static fields of GstRtp.RTPPayload
+        // Static fields
 
         /**
          * ITU-T G.711. mu-law audio (RFC 3551)
@@ -402,7 +402,7 @@ export namespace GstRtp {
          */
         static H263: number;
 
-        // Constructors of GstRtp.RTPPayload
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -995,14 +995,14 @@ export namespace GstRtp {
     class RTPBaseAudioPayload extends RTPBasePayload {
         static $gtype: GObject.GType<RTPBaseAudioPayload>;
 
-        // Own properties of GstRtp.RTPBaseAudioPayload
+        // Properties
 
         get buffer_list(): boolean;
         set buffer_list(val: boolean);
         get bufferList(): boolean;
         set bufferList(val: boolean);
 
-        // Own fields of GstRtp.RTPBaseAudioPayload
+        // Fields
 
         payload: RTPBasePayload;
         base_ts: Gst.ClockTime;
@@ -1010,13 +1010,13 @@ export namespace GstRtp {
         frame_duration: number;
         sample_size: number;
 
-        // Constructors of GstRtp.RTPBaseAudioPayload
+        // Constructors
 
         constructor(properties?: Partial<RTPBaseAudioPayload.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of GstRtp.RTPBaseAudioPayload
+        // Methods
 
         /**
          * Create an RTP buffer and store `payload_len` bytes of the adapter as the
@@ -1141,7 +1141,7 @@ export namespace GstRtp {
     abstract class RTPBaseDepayload extends Gst.Element {
         static $gtype: GObject.GType<RTPBaseDepayload>;
 
-        // Own properties of GstRtp.RTPBaseDepayload
+        // Properties
 
         /**
          * If enabled, the depayloader will automatically try to enable all the
@@ -1218,20 +1218,20 @@ export namespace GstRtp {
          */
         get stats(): Gst.Structure;
 
-        // Own fields of GstRtp.RTPBaseDepayload
+        // Fields
 
         sinkpad: Gst.Pad;
         srcpad: Gst.Pad;
         clock_rate: number;
         need_newsegment: boolean;
 
-        // Constructors of GstRtp.RTPBaseDepayload
+        // Constructors
 
         constructor(properties?: Partial<RTPBaseDepayload.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of GstRtp.RTPBaseDepayload
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -1252,7 +1252,7 @@ export namespace GstRtp {
         ): number;
         emit(signal: 'request-extension', ext_id: number, ext_uri?: string | null): void;
 
-        // Own virtual methods of GstRtp.RTPBaseDepayload
+        // Virtual methods
 
         /**
          * custom event handling
@@ -1291,7 +1291,7 @@ export namespace GstRtp {
          */
         vfunc_set_caps(caps: Gst.Caps): boolean;
 
-        // Own methods of GstRtp.RTPBaseDepayload
+        // Methods
 
         /**
          * Called from `GstRTPBaseDepayload`.process or
@@ -1436,7 +1436,7 @@ export namespace GstRtp {
     abstract class RTPBasePayload extends Gst.Element {
         static $gtype: GObject.GType<RTPBasePayload>;
 
-        // Own properties of GstRtp.RTPBasePayload
+        // Properties
 
         /**
          * If enabled, the payloader will automatically try to enable all the
@@ -1611,17 +1611,17 @@ export namespace GstRtp {
         get timestampOffset(): number;
         set timestampOffset(val: number);
 
-        // Own fields of GstRtp.RTPBasePayload
+        // Fields
 
         element: Gst.Element;
 
-        // Constructors of GstRtp.RTPBasePayload
+        // Constructors
 
         constructor(properties?: Partial<RTPBasePayload.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of GstRtp.RTPBasePayload
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -1642,7 +1642,7 @@ export namespace GstRtp {
         ): number;
         emit(signal: 'request-extension', ext_id: number, ext_uri: string): void;
 
-        // Own virtual methods of GstRtp.RTPBasePayload
+        // Virtual methods
 
         /**
          * get desired caps
@@ -1679,7 +1679,7 @@ export namespace GstRtp {
          */
         vfunc_src_event(event: Gst.Event): boolean;
 
-        // Own methods of GstRtp.RTPBasePayload
+        // Methods
 
         /**
          * Allocate a new #GstBuffer with enough data to hold an RTP packet with
@@ -1768,18 +1768,18 @@ export namespace GstRtp {
     abstract class RTPHeaderExtension extends Gst.Element {
         static $gtype: GObject.GType<RTPHeaderExtension>;
 
-        // Constructors of GstRtp.RTPHeaderExtension
+        // Constructors
 
         constructor(properties?: Partial<RTPHeaderExtension.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of GstRtp.RTPHeaderExtension
+        // Static methods
 
         static create_from_uri(uri: string): RTPHeaderExtension | null;
         static set_uri(uri: string): void;
 
-        // Own virtual methods of GstRtp.RTPHeaderExtension
+        // Virtual methods
 
         /**
          * This is used to know how much data a certain header extension will need for
@@ -1846,7 +1846,7 @@ export namespace GstRtp {
             data: Uint8Array | string,
         ): number;
 
-        // Own methods of GstRtp.RTPHeaderExtension
+        // Methods
 
         /**
          * Retrieve the direction
@@ -1985,11 +1985,11 @@ export namespace GstRtp {
     class RTCPBuffer {
         static $gtype: GObject.GType<RTCPBuffer>;
 
-        // Constructors of GstRtp.RTCPBuffer
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own static methods of GstRtp.RTCPBuffer
+        // Static methods
 
         /**
          * Open `buffer` for reading or writing, depending on `flags`. The resulting RTCP
@@ -2051,7 +2051,7 @@ export namespace GstRtp {
          */
         static validate_reduced(buffer: Gst.Buffer): boolean;
 
-        // Own methods of GstRtp.RTCPBuffer
+        // Methods
 
         /**
          * Add a new packet of `type` to `rtcp`. `packet` will point to the newly created
@@ -2090,15 +2090,15 @@ export namespace GstRtp {
     class RTCPPacket {
         static $gtype: GObject.GType<RTCPPacket>;
 
-        // Own fields of GstRtp.RTCPPacket
+        // Fields
 
         offset: number;
 
-        // Constructors of GstRtp.RTCPPacket
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of GstRtp.RTCPPacket
+        // Methods
 
         /**
          * Add profile-specific extension `data` to `packet`. If `packet` already
@@ -2559,7 +2559,7 @@ export namespace GstRtp {
     abstract class RTPBaseAudioPayloadPrivate {
         static $gtype: GObject.GType<RTPBaseAudioPayloadPrivate>;
 
-        // Constructors of GstRtp.RTPBaseAudioPayloadPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2568,7 +2568,7 @@ export namespace GstRtp {
     abstract class RTPBaseDepayloadPrivate {
         static $gtype: GObject.GType<RTPBaseDepayloadPrivate>;
 
-        // Constructors of GstRtp.RTPBaseDepayloadPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2577,7 +2577,7 @@ export namespace GstRtp {
     abstract class RTPBasePayloadPrivate {
         static $gtype: GObject.GType<RTPBasePayloadPrivate>;
 
-        // Constructors of GstRtp.RTPBasePayloadPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2590,17 +2590,17 @@ export namespace GstRtp {
     class RTPBuffer {
         static $gtype: GObject.GType<RTPBuffer>;
 
-        // Own fields of GstRtp.RTPBuffer
+        // Fields
 
         state: number;
         data: any[];
         size: number[];
 
-        // Constructors of GstRtp.RTPBuffer
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own static methods of GstRtp.RTPBuffer
+        // Static methods
 
         /**
          * Allocate enough data in `buffer` to hold an RTP packet with `csrc_count` CSRCs,
@@ -2717,7 +2717,7 @@ export namespace GstRtp {
          */
         static new_take_data(data: Uint8Array | string): Gst.Buffer;
 
-        // Own methods of GstRtp.RTPBuffer
+        // Methods
 
         /**
          * Adds a RFC 5285 header extension with a one byte header to the end of the
@@ -2957,7 +2957,7 @@ export namespace GstRtp {
     class RTPPayloadInfo {
         static $gtype: GObject.GType<RTPPayloadInfo>;
 
-        // Own fields of GstRtp.RTPPayloadInfo
+        // Fields
 
         payload_type: number;
         media: string;
@@ -2966,7 +2966,7 @@ export namespace GstRtp {
         encoding_parameters: string;
         bitrate: number;
 
-        // Constructors of GstRtp.RTPPayloadInfo
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -2980,7 +2980,7 @@ export namespace GstRtp {
         );
         _init(...args: any[]): void;
 
-        // Own static methods of GstRtp.RTPPayloadInfo
+        // Static methods
 
         /**
          * Get the #GstRTPPayloadInfo for `media` and `encoding_name`. This function is
@@ -3007,22 +3007,22 @@ export namespace GstRtp {
     class RTPSourceMeta {
         static $gtype: GObject.GType<RTPSourceMeta>;
 
-        // Own fields of GstRtp.RTPSourceMeta
+        // Fields
 
         ssrc: number;
         ssrc_valid: boolean;
         csrc: number[];
         csrc_count: number;
 
-        // Constructors of GstRtp.RTPSourceMeta
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own static methods of GstRtp.RTPSourceMeta
+        // Static methods
 
         static get_info(): Gst.MetaInfo;
 
-        // Own methods of GstRtp.RTPSourceMeta
+        // Methods
 
         /**
          * Appends `csrc` to the list of contributing sources in `meta`.

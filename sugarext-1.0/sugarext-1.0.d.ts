@@ -167,13 +167,13 @@ export namespace SugarExt {
     class Client extends GObject.Object {
         static $gtype: GObject.GType<Client>;
 
-        // Constructors of SugarExt.Client
+        // Constructors
 
         constructor(properties?: Partial<Client.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of SugarExt.Client
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -191,11 +191,11 @@ export namespace SugarExt {
         connect_after(signal: 'save-state', callback: (_source: this, object: any | null) => void): number;
         emit(signal: 'save-state', object?: any | null): void;
 
-        // Own static methods of SugarExt.Client
+        // Static methods
 
         static end_session(style: ClientEndStyle, request_confirmation: boolean): boolean;
 
-        // Own virtual methods of SugarExt.Client
+        // Virtual methods
 
         vfunc_end_session(style: ClientEndStyle, request_confirmation: boolean): boolean;
         vfunc_quit(): void;
@@ -231,7 +231,7 @@ export namespace SugarExt {
          */
         vfunc_will_quit(will_quit: boolean): void;
 
-        // Own methods of SugarExt.Client
+        // Methods
 
         /**
          * If the application was resumed by the session manager, this will
@@ -294,7 +294,7 @@ export namespace SugarExt {
     class ClientXSMP extends Client {
         static $gtype: GObject.GType<ClientXSMP>;
 
-        // Own fields of SugarExt.ClientXSMP
+        // Fields
 
         client_id: string;
         state: ClientXSMPState;
@@ -313,7 +313,7 @@ export namespace SugarExt {
         waiting_to_emit_quit_cancelled: number;
         waiting_to_save_myself: number;
 
-        // Constructors of SugarExt.ClientXSMP
+        // Constructors
 
         constructor(properties?: Partial<ClientXSMP.ConstructorProps>, ...args: any[]);
 
@@ -329,7 +329,7 @@ export namespace SugarExt {
     class CursorTracker extends GObject.Object {
         static $gtype: GObject.GType<CursorTracker>;
 
-        // Constructors of SugarExt.CursorTracker
+        // Constructors
 
         constructor(properties?: Partial<CursorTracker.ConstructorProps>, ...args: any[]);
 
@@ -347,7 +347,7 @@ export namespace SugarExt {
     class GestureGrabber extends GObject.Object {
         static $gtype: GObject.GType<GestureGrabber>;
 
-        // Constructors of SugarExt.GestureGrabber
+        // Constructors
 
         constructor(properties?: Partial<GestureGrabber.ConstructorProps>, ...args: any[]);
 
@@ -355,7 +355,7 @@ export namespace SugarExt {
 
         static ['new'](): GestureGrabber;
 
-        // Own methods of SugarExt.GestureGrabber
+        // Methods
 
         add(controller: SugarGestures.EventController, rect: Gdk.Rectangle): void;
         remove(controller: SugarGestures.EventController): void;
@@ -370,20 +370,20 @@ export namespace SugarExt {
     class Grid extends GObject.Object {
         static $gtype: GObject.GType<Grid>;
 
-        // Own fields of SugarExt.Grid
+        // Fields
 
         base_instance: GObject.Object;
         width: number;
         height: number;
         weights: number;
 
-        // Constructors of SugarExt.Grid
+        // Constructors
 
         constructor(properties?: Partial<Grid.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of SugarExt.Grid
+        // Methods
 
         add_weight(rect: Gdk.Rectangle): void;
         compute_weight(rect: Gdk.Rectangle): number;
@@ -410,19 +410,19 @@ export namespace SugarExt {
     class KeyGrabber extends GObject.Object {
         static $gtype: GObject.GType<KeyGrabber>;
 
-        // Own fields of SugarExt.KeyGrabber
+        // Fields
 
         base_instance: GObject.Object;
         root: Gdk.Window;
         keys: any[];
 
-        // Constructors of SugarExt.KeyGrabber
+        // Constructors
 
         constructor(properties?: Partial<KeyGrabber.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of SugarExt.KeyGrabber
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -446,12 +446,12 @@ export namespace SugarExt {
         ): number;
         emit(signal: 'key-released', object: number, p0: number, p1: number): void;
 
-        // Own virtual methods of SugarExt.KeyGrabber
+        // Virtual methods
 
         vfunc_key_pressed(keycode: number, state: number): boolean;
         vfunc_key_released(keycode: number, state: number): boolean;
 
-        // Own methods of SugarExt.KeyGrabber
+        // Methods
 
         get_key(keycode: number, state: number): string;
         /**
@@ -477,13 +477,13 @@ export namespace SugarExt {
     class Session extends GObject.Object {
         static $gtype: GObject.GType<Session>;
 
-        // Constructors of SugarExt.Session
+        // Constructors
 
         constructor(properties?: Partial<Session.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of SugarExt.Session
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -492,14 +492,14 @@ export namespace SugarExt {
         connect_after(signal: 'shutdown-completed', callback: (_source: this) => void): number;
         emit(signal: 'shutdown-completed'): void;
 
-        // Own static methods of SugarExt.Session
+        // Static methods
 
         /**
          * Creates a new GSM_SESSION
          */
         static create_global(): Session;
 
-        // Own methods of SugarExt.Session
+        // Methods
 
         cancel_shutdown(): void;
         get_phase(): SessionPhase;
@@ -522,7 +522,7 @@ export namespace SugarExt {
     class Volume extends GObject.Object {
         static $gtype: GObject.GType<Volume>;
 
-        // Constructors of SugarExt.Volume
+        // Constructors
 
         constructor(properties?: Partial<Volume.ConstructorProps>, ...args: any[]);
 
@@ -530,7 +530,7 @@ export namespace SugarExt {
 
         static ['new'](): Volume;
 
-        // Own virtual methods of SugarExt.Volume
+        // Virtual methods
 
         vfunc_get_mute(): number;
         vfunc_get_threshold(): number;
@@ -538,7 +538,7 @@ export namespace SugarExt {
         vfunc_set_mute(val: boolean): void;
         vfunc_set_volume(val: number): void;
 
-        // Own methods of SugarExt.Volume
+        // Methods
 
         get_mute(): boolean;
         get_threshold(): number;
@@ -557,7 +557,7 @@ export namespace SugarExt {
     class VolumeAlsa extends Volume {
         static $gtype: GObject.GType<VolumeAlsa>;
 
-        // Constructors of SugarExt.VolumeAlsa
+        // Constructors
 
         constructor(properties?: Partial<VolumeAlsa.ConstructorProps>, ...args: any[]);
 
@@ -573,7 +573,7 @@ export namespace SugarExt {
     abstract class ClientPrivate {
         static $gtype: GObject.GType<ClientPrivate>;
 
-        // Constructors of SugarExt.ClientPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -583,12 +583,12 @@ export namespace SugarExt {
     class CursorTrackerPrivate {
         static $gtype: GObject.GType<CursorTrackerPrivate>;
 
-        // Own fields of SugarExt.CursorTrackerPrivate
+        // Fields
 
         root_window: Gdk.Window;
         cursor_shown: boolean;
 
-        // Constructors of SugarExt.CursorTrackerPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -597,14 +597,14 @@ export namespace SugarExt {
     class GestureGrabberPrivate {
         static $gtype: GObject.GType<GestureGrabberPrivate>;
 
-        // Own fields of SugarExt.GestureGrabberPrivate
+        // Fields
 
         root_window: Gdk.Window;
         controllers: any[];
         touches: any[];
         cancel_timeout_id: number;
 
-        // Constructors of SugarExt.GestureGrabberPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -614,7 +614,7 @@ export namespace SugarExt {
     abstract class KeyGrabberPrivate {
         static $gtype: GObject.GType<KeyGrabberPrivate>;
 
-        // Constructors of SugarExt.KeyGrabberPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -624,7 +624,7 @@ export namespace SugarExt {
     abstract class VolumeAlsaPrivate {
         static $gtype: GObject.GType<VolumeAlsaPrivate>;
 
-        // Constructors of SugarExt.VolumeAlsaPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }

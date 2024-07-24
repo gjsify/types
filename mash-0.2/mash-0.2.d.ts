@@ -113,7 +113,7 @@ export namespace Mash {
     class Data extends GObject.Object {
         static $gtype: GObject.GType<Data>;
 
-        // Constructors of Mash.Data
+        // Constructors
 
         constructor(properties?: Partial<Data.ConstructorProps>, ...args: any[]);
 
@@ -121,11 +121,11 @@ export namespace Mash {
 
         static ['new'](): Data;
 
-        // Own static methods of Mash.Data
+        // Static methods
 
         static error_quark(): GLib.Quark;
 
-        // Own methods of Mash.Data
+        // Methods
 
         /**
          * Gets the bounding cuboid of the vertices in `self`. The cuboid is
@@ -171,13 +171,13 @@ export namespace Mash {
     abstract class DataLoader extends GObject.Object {
         static $gtype: GObject.GType<DataLoader>;
 
-        // Constructors of Mash.DataLoader
+        // Constructors
 
         constructor(properties?: Partial<DataLoader.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of Mash.DataLoader
+        // Virtual methods
 
         vfunc_get_data(loader_data: DataLoaderData): void;
         /**
@@ -188,7 +188,7 @@ export namespace Mash {
          */
         vfunc_load(flags: DataFlags, filename: string): boolean;
 
-        // Own methods of Mash.DataLoader
+        // Methods
 
         get_data(loader_data: DataLoaderData): void;
         // Conflicted with GObject.Object.get_data
@@ -222,7 +222,7 @@ export namespace Mash {
     {
         static $gtype: GObject.GType<DirectionalLight>;
 
-        // Constructors of Mash.DirectionalLight
+        // Constructors
 
         constructor(properties?: Partial<DirectionalLight.ConstructorProps>, ...args: any[]);
 
@@ -657,7 +657,7 @@ export namespace Mash {
     {
         static $gtype: GObject.GType<Light>;
 
-        // Own properties of Mash.Light
+        // Properties
 
         get ambient(): Clutter.Color;
         set ambient(val: Clutter.Color);
@@ -666,13 +666,13 @@ export namespace Mash {
         get specular(): Clutter.Color;
         set specular(val: Clutter.Color);
 
-        // Constructors of Mash.Light
+        // Constructors
 
         constructor(properties?: Partial<Light.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of Mash.Light
+        // Virtual methods
 
         /**
          * This function is used to generate the shader code required to
@@ -773,7 +773,7 @@ export namespace Mash {
          */
         vfunc_update_uniforms(program: Cogl.Handle): void;
 
-        // Own methods of Mash.Light
+        // Methods
 
         /**
          * This is a convenience intended to be used within
@@ -1842,7 +1842,7 @@ export namespace Mash {
     class LightSet extends GObject.Object {
         static $gtype: GObject.GType<LightSet>;
 
-        // Constructors of Mash.LightSet
+        // Constructors
 
         constructor(properties?: Partial<LightSet.ConstructorProps>, ...args: any[]);
 
@@ -1850,7 +1850,7 @@ export namespace Mash {
 
         static ['new'](): LightSet;
 
-        // Own methods of Mash.LightSet
+        // Methods
 
         /**
          * This adds a light to the set. Lights need to be added to the light
@@ -1892,7 +1892,7 @@ export namespace Mash {
     {
         static $gtype: GObject.GType<Model>;
 
-        // Own properties of Mash.Model
+        // Properties
 
         get data(): Data;
         set data(val: Data);
@@ -1905,7 +1905,7 @@ export namespace Mash {
         get lightSet(): LightSet;
         set lightSet(val: LightSet);
 
-        // Constructors of Mash.Model
+        // Constructors
 
         constructor(properties?: Partial<Model.ConstructorProps>, ...args: any[]);
 
@@ -1915,7 +1915,7 @@ export namespace Mash {
 
         static new_from_file(flags: DataFlags, filename: string): Model;
 
-        // Own methods of Mash.Model
+        // Methods
 
         get_fit_to_allocation(): boolean;
         /**
@@ -2820,7 +2820,7 @@ export namespace Mash {
     class PlyLoader extends Data {
         static $gtype: GObject.GType<PlyLoader>;
 
-        // Constructors of Mash.PlyLoader
+        // Constructors
 
         constructor(properties?: Partial<PlyLoader.ConstructorProps>, ...args: any[]);
 
@@ -2854,7 +2854,7 @@ export namespace Mash {
     {
         static $gtype: GObject.GType<PointLight>;
 
-        // Own properties of Mash.PointLight
+        // Properties
 
         get constant_attenuation(): number;
         set constant_attenuation(val: number);
@@ -2869,7 +2869,7 @@ export namespace Mash {
         get quadraticAttenuation(): number;
         set quadraticAttenuation(val: number);
 
-        // Constructors of Mash.PointLight
+        // Constructors
 
         constructor(properties?: Partial<PointLight.ConstructorProps>, ...args: any[]);
 
@@ -2877,7 +2877,7 @@ export namespace Mash {
 
         static ['new'](): PointLight;
 
-        // Own methods of Mash.PointLight
+        // Methods
 
         get_constant_attenuation(): number;
         get_linear_attenuation(): number;
@@ -3334,7 +3334,7 @@ export namespace Mash {
     {
         static $gtype: GObject.GType<SpotLight>;
 
-        // Own properties of Mash.SpotLight
+        // Properties
 
         get spot_cutoff(): number;
         set spot_cutoff(val: number);
@@ -3345,7 +3345,7 @@ export namespace Mash {
         get spotExponent(): number;
         set spotExponent(val: number);
 
-        // Constructors of Mash.SpotLight
+        // Constructors
 
         constructor(properties?: Partial<SpotLight.ConstructorProps>, ...args: any[]);
 
@@ -3353,7 +3353,7 @@ export namespace Mash {
 
         static ['new'](): SpotLight;
 
-        // Own methods of Mash.SpotLight
+        // Methods
 
         get_spot_cutoff(): number;
         get_spot_exponent(): number;
@@ -3784,7 +3784,7 @@ export namespace Mash {
     class DataLoaderData {
         static $gtype: GObject.GType<DataLoaderData>;
 
-        // Own fields of Mash.DataLoaderData
+        // Fields
 
         vertices_vbo: Cogl.Handle;
         indices: Cogl.Handle;
@@ -3794,7 +3794,7 @@ export namespace Mash {
         min_vertex: Clutter.Vertex;
         max_vertex: Clutter.Vertex;
 
-        // Constructors of Mash.DataLoaderData
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -3813,7 +3813,7 @@ export namespace Mash {
     abstract class DataLoaderPrivate {
         static $gtype: GObject.GType<DataLoaderPrivate>;
 
-        // Constructors of Mash.DataLoaderPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3821,7 +3821,7 @@ export namespace Mash {
     abstract class DataPrivate {
         static $gtype: GObject.GType<DataPrivate>;
 
-        // Constructors of Mash.DataPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3830,7 +3830,7 @@ export namespace Mash {
     abstract class DirectionalLightPrivate {
         static $gtype: GObject.GType<DirectionalLightPrivate>;
 
-        // Constructors of Mash.DirectionalLightPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3839,7 +3839,7 @@ export namespace Mash {
     abstract class LightPrivate {
         static $gtype: GObject.GType<LightPrivate>;
 
-        // Constructors of Mash.LightPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3848,7 +3848,7 @@ export namespace Mash {
     abstract class LightSetPrivate {
         static $gtype: GObject.GType<LightSetPrivate>;
 
-        // Constructors of Mash.LightSetPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3857,7 +3857,7 @@ export namespace Mash {
     abstract class ModelPrivate {
         static $gtype: GObject.GType<ModelPrivate>;
 
-        // Constructors of Mash.ModelPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3866,7 +3866,7 @@ export namespace Mash {
     abstract class PlyLoaderPrivate {
         static $gtype: GObject.GType<PlyLoaderPrivate>;
 
-        // Constructors of Mash.PlyLoaderPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3875,7 +3875,7 @@ export namespace Mash {
     abstract class PointLightPrivate {
         static $gtype: GObject.GType<PointLightPrivate>;
 
-        // Constructors of Mash.PointLightPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3884,7 +3884,7 @@ export namespace Mash {
     abstract class SpotLightPrivate {
         static $gtype: GObject.GType<SpotLightPrivate>;
 
-        // Constructors of Mash.SpotLightPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }

@@ -154,12 +154,12 @@ export namespace GstVideo {
     abstract class Filter extends GstBase.Transform {
         static $gtype: GObject.GType<Filter>;
 
-        // Own fields of GstVideo.Filter
+        // Fields
 
         element: GstBase.Transform;
         inited: boolean;
 
-        // Constructors of GstVideo.Filter
+        // Constructors
 
         constructor(properties?: Partial<Filter.ConstructorProps>, ...args: any[]);
 
@@ -181,30 +181,30 @@ export namespace GstVideo {
     class Sink extends GstBase.Sink {
         static $gtype: GObject.GType<Sink>;
 
-        // Own properties of GstVideo.Sink
+        // Properties
 
         get show_preroll_frame(): boolean;
         set show_preroll_frame(val: boolean);
         get showPrerollFrame(): boolean;
         set showPrerollFrame(val: boolean);
 
-        // Own fields of GstVideo.Sink
+        // Fields
 
         element: GstBase.Sink;
         width: number;
         height: number;
 
-        // Constructors of GstVideo.Sink
+        // Constructors
 
         constructor(properties?: Partial<Sink.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of GstVideo.Sink
+        // Static methods
 
         static center_rect(src: Rectangle, dst: Rectangle, result: Rectangle, scaling: boolean): void;
 
-        // Own virtual methods of GstVideo.Sink
+        // Virtual methods
 
         vfunc_show_frame(buf: Gst.Buffer): Gst.FlowReturn;
     }
@@ -216,14 +216,14 @@ export namespace GstVideo {
     class Rectangle {
         static $gtype: GObject.GType<Rectangle>;
 
-        // Own fields of GstVideo.Rectangle
+        // Fields
 
         x: number;
         y: number;
         w: number;
         h: number;
 
-        // Constructors of GstVideo.Rectangle
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -240,7 +240,7 @@ export namespace GstVideo {
     class SinkPrivate {
         static $gtype: GObject.GType<SinkPrivate>;
 
-        // Constructors of GstVideo.SinkPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }

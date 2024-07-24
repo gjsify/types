@@ -194,7 +194,7 @@ export namespace NM {
     class AgentManagerError extends GLib.Error {
         static $gtype: GObject.GType<AgentManagerError>;
 
-        // Static fields of NM.AgentManagerError
+        // Static fields
 
         /**
          * unknown or unspecified error
@@ -226,12 +226,12 @@ export namespace NM {
          */
         static USERCANCELED: number;
 
-        // Constructors of NM.AgentManagerError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of NM.AgentManagerError
+        // Static methods
 
         static quark(): GLib.Quark;
     }
@@ -280,7 +280,7 @@ export namespace NM {
     class ClientError extends GLib.Error {
         static $gtype: GObject.GType<ClientError>;
 
-        // Static fields of NM.ClientError
+        // Static fields
 
         /**
          * unknown or unclassified error
@@ -299,12 +299,12 @@ export namespace NM {
          */
         static OBJECT_CREATION_FAILED: number;
 
-        // Constructors of NM.ClientError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of NM.ClientError
+        // Static methods
 
         /**
          * Registers an error quark for #NMClient if necessary.
@@ -462,7 +462,7 @@ export namespace NM {
     class ConnectionError extends GLib.Error {
         static $gtype: GObject.GType<ConnectionError>;
 
-        // Static fields of NM.ConnectionError
+        // Static fields
 
         /**
          * unknown or unclassified error
@@ -514,12 +514,12 @@ export namespace NM {
          */
         static INVALIDPROPERTY: number;
 
-        // Constructors of NM.ConnectionError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of NM.ConnectionError
+        // Static methods
 
         static quark(): GLib.Quark;
     }
@@ -602,7 +602,7 @@ export namespace NM {
     class CryptoError extends GLib.Error {
         static $gtype: GObject.GType<CryptoError>;
 
-        // Static fields of NM.CryptoError
+        // Static fields
 
         /**
          * generic failure
@@ -630,12 +630,12 @@ export namespace NM {
          */
         static ENCRYPTION_FAILED: number;
 
-        // Constructors of NM.CryptoError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of NM.CryptoError
+        // Static methods
 
         static quark(): GLib.Quark;
     }
@@ -650,7 +650,7 @@ export namespace NM {
     class DeviceError extends GLib.Error {
         static $gtype: GObject.GType<DeviceError>;
 
-        // Static fields of NM.DeviceError
+        // Static fields
 
         /**
          * unknown or unclassified error
@@ -703,12 +703,12 @@ export namespace NM {
          */
         static INVALIDARGUMENT: number;
 
-        // Constructors of NM.DeviceError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of NM.DeviceError
+        // Static methods
 
         static quark(): GLib.Quark;
     }
@@ -1358,7 +1358,7 @@ export namespace NM {
     class ManagerError extends GLib.Error {
         static $gtype: GObject.GType<ManagerError>;
 
-        // Static fields of NM.ManagerError
+        // Static fields
 
         /**
          * unknown or unclassified error
@@ -1424,12 +1424,12 @@ export namespace NM {
          */
         static MISSINGPLUGIN: number;
 
-        // Constructors of NM.ManagerError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of NM.ManagerError
+        // Static methods
 
         static quark(): GLib.Quark;
     }
@@ -1559,7 +1559,7 @@ export namespace NM {
     class SecretAgentError extends GLib.Error {
         static $gtype: GObject.GType<SecretAgentError>;
 
-        // Static fields of NM.SecretAgentError
+        // Static fields
 
         /**
          * unknown or unclassified error
@@ -1590,12 +1590,12 @@ export namespace NM {
          */
         static NOSECRETS: number;
 
-        // Constructors of NM.SecretAgentError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of NM.SecretAgentError
+        // Static methods
 
         static quark(): GLib.Quark;
     }
@@ -2324,7 +2324,7 @@ export namespace NM {
     class SettingsError extends GLib.Error {
         static $gtype: GObject.GType<SettingsError>;
 
-        // Static fields of NM.SettingsError
+        // Static fields
 
         /**
          * unknown or unclassified error
@@ -2372,12 +2372,12 @@ export namespace NM {
          */
         static NOTSUPPORTEDBYPLUGIN: number;
 
-        // Constructors of NM.SettingsError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of NM.SettingsError
+        // Static methods
 
         static quark(): GLib.Quark;
     }
@@ -2794,7 +2794,7 @@ export namespace NM {
     class VpnPluginError extends GLib.Error {
         static $gtype: GObject.GType<VpnPluginError>;
 
-        // Static fields of NM.VpnPluginError
+        // Static fields
 
         /**
          * unknown or unclassified error
@@ -2849,12 +2849,12 @@ export namespace NM {
          */
         static INTERACTIVENOTSUPPORTED: number;
 
-        // Constructors of NM.VpnPluginError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of NM.VpnPluginError
+        // Static methods
 
         static quark(): GLib.Quark;
     }
@@ -6650,7 +6650,7 @@ export namespace NM {
     class AccessPoint extends Object {
         static $gtype: GObject.GType<AccessPoint>;
 
-        // Own properties of NM.AccessPoint
+        // Properties
 
         /**
          * The channel bandwidth announced by the AP in MHz.
@@ -6727,13 +6727,13 @@ export namespace NM {
          */
         get wpaFlags(): __80211ApSecurityFlags;
 
-        // Constructors of NM.AccessPoint
+        // Constructors
 
         constructor(properties?: Partial<AccessPoint.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of NM.AccessPoint
+        // Methods
 
         /**
          * Validates a given connection against a given Wi-Fi access point to ensure that
@@ -6857,7 +6857,7 @@ export namespace NM {
     class ActiveConnection extends Object {
         static $gtype: GObject.GType<ActiveConnection>;
 
-        // Own properties of NM.ActiveConnection
+        // Properties
 
         /**
          * The connection that this is an active instance of.
@@ -6955,13 +6955,13 @@ export namespace NM {
          */
         get vpn(): boolean;
 
-        // Constructors of NM.ActiveConnection
+        // Constructors
 
         constructor(properties?: Partial<ActiveConnection.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of NM.ActiveConnection
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -6973,7 +6973,7 @@ export namespace NM {
         ): number;
         emit(signal: 'state-changed', state: number, reason: number): void;
 
-        // Own methods of NM.ActiveConnection
+        // Methods
 
         /**
          * Gets the #NMRemoteConnection associated with `connection`.
@@ -7092,7 +7092,7 @@ export namespace NM {
     class Checkpoint extends Object {
         static $gtype: GObject.GType<Checkpoint>;
 
-        // Own properties of NM.Checkpoint
+        // Properties
 
         /**
          * The timestamp (in CLOCK_BOOTTIME milliseconds) of checkpoint creation.
@@ -7111,13 +7111,13 @@ export namespace NM {
          */
         get rollbackTimeout(): number;
 
-        // Constructors of NM.Checkpoint
+        // Constructors
 
         constructor(properties?: Partial<Checkpoint.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of NM.Checkpoint
+        // Methods
 
         /**
          * Gets the timestamp (in CLOCK_BOOTTIME milliseconds) of checkpoint creation.
@@ -7257,7 +7257,7 @@ export namespace NM {
     class Client extends GObject.Object implements Gio.AsyncInitable<Client>, Gio.Initable {
         static $gtype: GObject.GType<Client>;
 
-        // Own properties of NM.Client
+        // Properties
 
         /**
          * The #NMActiveConnection of the activating connection that is
@@ -7582,7 +7582,7 @@ export namespace NM {
          */
         get wwanHardwareEnabled(): boolean;
 
-        // Constructors of NM.Client
+        // Constructors
 
         constructor(properties?: Partial<Client.ConstructorProps>, ...args: any[]);
 
@@ -7595,7 +7595,7 @@ export namespace NM {
 
         static new_finish(...args: never[]): any;
 
-        // Own signals of NM.Client
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -7652,7 +7652,7 @@ export namespace NM {
         ): number;
         emit(signal: 'permission-changed', permission: number, result: number): void;
 
-        // Own static methods of NM.Client
+        // Static methods
 
         /**
          * Creates a new #NMClient asynchronously.
@@ -7682,7 +7682,7 @@ export namespace NM {
         static new_async(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<Client> | null): void;
         static wait_shutdown_finish(result: Gio.AsyncResult): boolean;
 
-        // Own methods of NM.Client
+        // Methods
 
         /**
          * Asynchronously starts a connection to a particular network using the
@@ -9148,7 +9148,7 @@ export namespace NM {
     abstract class Device extends Object {
         static $gtype: GObject.GType<Device>;
 
-        // Own properties of NM.Device
+        // Properties
 
         /**
          * The #NMActiveConnection object that "owns" this device during activation.
@@ -9382,13 +9382,13 @@ export namespace NM {
          */
         get vendor(): string;
 
-        // Constructors of NM.Device
+        // Constructors
 
         constructor(properties?: Partial<Device.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of NM.Device
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -9403,7 +9403,7 @@ export namespace NM {
         ): number;
         emit(signal: 'state-changed', new_state: number, old_state: number, reason: number): void;
 
-        // Own static methods of NM.Device
+        // Static methods
 
         /**
          * Generates a list of short-ish unique presentation names for the
@@ -9412,7 +9412,7 @@ export namespace NM {
          */
         static disambiguate_names(devices: Device[]): string[];
 
-        // Own methods of NM.Device
+        // Methods
 
         /**
          * Validates a given connection for a given #NMDevice object and returns
@@ -9781,20 +9781,20 @@ export namespace NM {
     class Device6Lowpan extends Device {
         static $gtype: GObject.GType<Device6Lowpan>;
 
-        // Own properties of NM.Device6Lowpan
+        // Properties
 
         /**
          * The devices's parent device.
          */
         get parent(): Device;
 
-        // Constructors of NM.Device6Lowpan
+        // Constructors
 
         constructor(properties?: Partial<Device6Lowpan.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of NM.Device6Lowpan
+        // Methods
 
         get_parent(): Device;
     }
@@ -9810,20 +9810,20 @@ export namespace NM {
     class DeviceAdsl extends Device {
         static $gtype: GObject.GType<DeviceAdsl>;
 
-        // Own properties of NM.DeviceAdsl
+        // Properties
 
         /**
          * Whether the device has carrier.
          */
         get carrier(): boolean;
 
-        // Constructors of NM.DeviceAdsl
+        // Constructors
 
         constructor(properties?: Partial<DeviceAdsl.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of NM.DeviceAdsl
+        // Methods
 
         /**
          * Whether the device has carrier.
@@ -9844,7 +9844,7 @@ export namespace NM {
     class DeviceBond extends Device {
         static $gtype: GObject.GType<DeviceBond>;
 
-        // Own properties of NM.DeviceBond
+        // Properties
 
         /**
          * Whether the device has carrier.
@@ -9855,13 +9855,13 @@ export namespace NM {
          */
         get slaves(): Device[];
 
-        // Constructors of NM.DeviceBond
+        // Constructors
 
         constructor(properties?: Partial<DeviceBond.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of NM.DeviceBond
+        // Methods
 
         /**
          * Whether the device has carrier.
@@ -9887,7 +9887,7 @@ export namespace NM {
     class DeviceBridge extends Device {
         static $gtype: GObject.GType<DeviceBridge>;
 
-        // Own properties of NM.DeviceBridge
+        // Properties
 
         /**
          * Whether the device has carrier.
@@ -9898,13 +9898,13 @@ export namespace NM {
          */
         get slaves(): Device[];
 
-        // Constructors of NM.DeviceBridge
+        // Constructors
 
         constructor(properties?: Partial<DeviceBridge.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of NM.DeviceBridge
+        // Methods
 
         /**
          * Whether the device has carrier.
@@ -9931,7 +9931,7 @@ export namespace NM {
     class DeviceBt extends Device {
         static $gtype: GObject.GType<DeviceBt>;
 
-        // Own properties of NM.DeviceBt
+        // Properties
 
         /**
          * The device's bluetooth capabilities, a combination of #NMBluetoothCapabilities.
@@ -9946,13 +9946,13 @@ export namespace NM {
          */
         get name(): string;
 
-        // Constructors of NM.DeviceBt
+        // Constructors
 
         constructor(properties?: Partial<DeviceBt.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of NM.DeviceBt
+        // Methods
 
         /**
          * Returns the Bluetooth device's usable capabilities.
@@ -9977,7 +9977,7 @@ export namespace NM {
     class DeviceDummy extends Device {
         static $gtype: GObject.GType<DeviceDummy>;
 
-        // Constructors of NM.DeviceDummy
+        // Constructors
 
         constructor(properties?: Partial<DeviceDummy.ConstructorProps>, ...args: any[]);
 
@@ -10000,7 +10000,7 @@ export namespace NM {
     class DeviceEthernet extends Device {
         static $gtype: GObject.GType<DeviceEthernet>;
 
-        // Own properties of NM.DeviceEthernet
+        // Properties
 
         /**
          * Whether the device has carrier.
@@ -10029,13 +10029,13 @@ export namespace NM {
          */
         get speed(): number;
 
-        // Constructors of NM.DeviceEthernet
+        // Constructors
 
         constructor(properties?: Partial<DeviceEthernet.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of NM.DeviceEthernet
+        // Methods
 
         /**
          * Whether the device has carrier.
@@ -10071,7 +10071,7 @@ export namespace NM {
     class DeviceGeneric extends Device {
         static $gtype: GObject.GType<DeviceGeneric>;
 
-        // Own properties of NM.DeviceGeneric
+        // Properties
 
         /**
          * A description of the specific type of device this is, or %NULL
@@ -10084,7 +10084,7 @@ export namespace NM {
          */
         get typeDescription(): string;
 
-        // Constructors of NM.DeviceGeneric
+        // Constructors
 
         constructor(properties?: Partial<DeviceGeneric.ConstructorProps>, ...args: any[]);
 
@@ -10108,7 +10108,7 @@ export namespace NM {
     class DeviceHsr extends Device {
         static $gtype: GObject.GType<DeviceHsr>;
 
-        // Own properties of NM.DeviceHsr
+        // Properties
 
         /**
          * The device last byte of the supervision address.
@@ -10139,13 +10139,13 @@ export namespace NM {
          */
         get supervisionAddress(): string;
 
-        // Constructors of NM.DeviceHsr
+        // Constructors
 
         constructor(properties?: Partial<DeviceHsr.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of NM.DeviceHsr
+        // Methods
 
         get_multicast_spec(): number;
         get_port1(): Device;
@@ -10182,7 +10182,7 @@ export namespace NM {
     class DeviceIPTunnel extends Device {
         static $gtype: GObject.GType<DeviceIPTunnel>;
 
-        // Own properties of NM.DeviceIPTunnel
+        // Properties
 
         /**
          * How many additional levels of encapsulation are permitted to
@@ -10266,13 +10266,13 @@ export namespace NM {
          */
         get ttl(): number;
 
-        // Constructors of NM.DeviceIPTunnel
+        // Constructors
 
         constructor(properties?: Partial<DeviceIPTunnel.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of NM.DeviceIPTunnel
+        // Methods
 
         get_encapsulation_limit(): number;
         get_flags(): IPTunnelFlags;
@@ -10300,20 +10300,20 @@ export namespace NM {
     class DeviceInfiniband extends Device {
         static $gtype: GObject.GType<DeviceInfiniband>;
 
-        // Own properties of NM.DeviceInfiniband
+        // Properties
 
         /**
          * Whether the device has carrier.
          */
         get carrier(): boolean;
 
-        // Constructors of NM.DeviceInfiniband
+        // Constructors
 
         constructor(properties?: Partial<DeviceInfiniband.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of NM.DeviceInfiniband
+        // Methods
 
         /**
          * Whether the device has carrier.
@@ -10331,7 +10331,7 @@ export namespace NM {
     class DeviceLoopback extends Device {
         static $gtype: GObject.GType<DeviceLoopback>;
 
-        // Constructors of NM.DeviceLoopback
+        // Constructors
 
         constructor(properties?: Partial<DeviceLoopback.ConstructorProps>, ...args: any[]);
 
@@ -10366,7 +10366,7 @@ export namespace NM {
     class DeviceMacsec extends Device {
         static $gtype: GObject.GType<DeviceMacsec>;
 
-        // Own properties of NM.DeviceMacsec
+        // Properties
 
         /**
          * The set of cryptographic algorithms in use.
@@ -10448,13 +10448,13 @@ export namespace NM {
          */
         get window(): number;
 
-        // Constructors of NM.DeviceMacsec
+        // Constructors
 
         constructor(properties?: Partial<DeviceMacsec.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of NM.DeviceMacsec
+        // Methods
 
         /**
          * Gets the set of cryptographic algorithms in use
@@ -10539,7 +10539,7 @@ export namespace NM {
     class DeviceMacvlan extends Device {
         static $gtype: GObject.GType<DeviceMacvlan>;
 
-        // Own properties of NM.DeviceMacvlan
+        // Properties
 
         /**
          * The MACVLAN mode.
@@ -10562,13 +10562,13 @@ export namespace NM {
          */
         get tap(): boolean;
 
-        // Constructors of NM.DeviceMacvlan
+        // Constructors
 
         constructor(properties?: Partial<DeviceMacvlan.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of NM.DeviceMacvlan
+        // Methods
 
         /**
          * Gets the MACVLAN mode of the device.
@@ -10607,7 +10607,7 @@ export namespace NM {
     class DeviceModem extends Device {
         static $gtype: GObject.GType<DeviceModem>;
 
-        // Own properties of NM.DeviceModem
+        // Properties
 
         get apn(): string;
         /**
@@ -10639,13 +10639,13 @@ export namespace NM {
         get operator_code(): string;
         get operatorCode(): string;
 
-        // Constructors of NM.DeviceModem
+        // Constructors
 
         constructor(properties?: Partial<DeviceModem.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of NM.DeviceModem
+        // Methods
 
         /**
          * The access point name the modem is connected to.
@@ -10693,7 +10693,7 @@ export namespace NM {
     class DeviceOlpcMesh extends Device {
         static $gtype: GObject.GType<DeviceOlpcMesh>;
 
-        // Own properties of NM.DeviceOlpcMesh
+        // Properties
 
         /**
          * The device's active channel.
@@ -10708,13 +10708,13 @@ export namespace NM {
          */
         get companion(): DeviceWifi;
 
-        // Constructors of NM.DeviceOlpcMesh
+        // Constructors
 
         constructor(properties?: Partial<DeviceOlpcMesh.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of NM.DeviceOlpcMesh
+        // Methods
 
         /**
          * Returns the active channel of the #NMDeviceOlpcMesh device.
@@ -10739,20 +10739,20 @@ export namespace NM {
     class DeviceOvsBridge extends Device {
         static $gtype: GObject.GType<DeviceOvsBridge>;
 
-        // Own properties of NM.DeviceOvsBridge
+        // Properties
 
         /**
          * Gets the ports currently enslaved to the device.
          */
         get slaves(): Device[];
 
-        // Constructors of NM.DeviceOvsBridge
+        // Constructors
 
         constructor(properties?: Partial<DeviceOvsBridge.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of NM.DeviceOvsBridge
+        // Methods
 
         /**
          * Gets the ports currently enslaved to `device`.
@@ -10770,7 +10770,7 @@ export namespace NM {
     class DeviceOvsInterface extends Device {
         static $gtype: GObject.GType<DeviceOvsInterface>;
 
-        // Constructors of NM.DeviceOvsInterface
+        // Constructors
 
         constructor(properties?: Partial<DeviceOvsInterface.ConstructorProps>, ...args: any[]);
 
@@ -10788,20 +10788,20 @@ export namespace NM {
     class DeviceOvsPort extends Device {
         static $gtype: GObject.GType<DeviceOvsPort>;
 
-        // Own properties of NM.DeviceOvsPort
+        // Properties
 
         /**
          * Gets the interfaces currently enslaved to the device.
          */
         get slaves(): Device[];
 
-        // Constructors of NM.DeviceOvsPort
+        // Constructors
 
         constructor(properties?: Partial<DeviceOvsPort.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of NM.DeviceOvsPort
+        // Methods
 
         /**
          * Gets the interfaces currently enslaved to `device`.
@@ -10819,7 +10819,7 @@ export namespace NM {
     class DevicePpp extends Device {
         static $gtype: GObject.GType<DevicePpp>;
 
-        // Constructors of NM.DevicePpp
+        // Constructors
 
         constructor(properties?: Partial<DevicePpp.ConstructorProps>, ...args: any[]);
 
@@ -10839,7 +10839,7 @@ export namespace NM {
     class DeviceTeam extends Device {
         static $gtype: GObject.GType<DeviceTeam>;
 
-        // Own properties of NM.DeviceTeam
+        // Properties
 
         /**
          * Whether the device has carrier.
@@ -10854,13 +10854,13 @@ export namespace NM {
          */
         get slaves(): Device[];
 
-        // Constructors of NM.DeviceTeam
+        // Constructors
 
         constructor(properties?: Partial<DeviceTeam.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of NM.DeviceTeam
+        // Methods
 
         /**
          * Whether the device has carrier.
@@ -10898,7 +10898,7 @@ export namespace NM {
     class DeviceTun extends Device {
         static $gtype: GObject.GType<DeviceTun>;
 
-        // Own properties of NM.DeviceTun
+        // Properties
 
         /**
          * The gid of the tunnel group, or -1 if it has no owner.
@@ -10945,13 +10945,13 @@ export namespace NM {
          */
         get vnetHdr(): boolean;
 
-        // Constructors of NM.DeviceTun
+        // Constructors
 
         constructor(properties?: Partial<DeviceTun.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of NM.DeviceTun
+        // Methods
 
         /**
          * Gets the tunnel group.
@@ -10996,20 +10996,20 @@ export namespace NM {
     class DeviceVeth extends DeviceEthernet {
         static $gtype: GObject.GType<DeviceVeth>;
 
-        // Own properties of NM.DeviceVeth
+        // Properties
 
         /**
          * The device's peer device.
          */
         get peer(): Device;
 
-        // Constructors of NM.DeviceVeth
+        // Constructors
 
         constructor(properties?: Partial<DeviceVeth.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of NM.DeviceVeth
+        // Methods
 
         get_peer(): Device;
     }
@@ -11028,7 +11028,7 @@ export namespace NM {
     class DeviceVlan extends Device {
         static $gtype: GObject.GType<DeviceVlan>;
 
-        // Own properties of NM.DeviceVlan
+        // Properties
 
         /**
          * Whether the device has carrier.
@@ -11047,13 +11047,13 @@ export namespace NM {
          */
         get vlanId(): number;
 
-        // Constructors of NM.DeviceVlan
+        // Constructors
 
         constructor(properties?: Partial<DeviceVlan.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of NM.DeviceVlan
+        // Methods
 
         /**
          * Whether the device has carrier.
@@ -11075,20 +11075,20 @@ export namespace NM {
     class DeviceVrf extends Device {
         static $gtype: GObject.GType<DeviceVrf>;
 
-        // Own properties of NM.DeviceVrf
+        // Properties
 
         /**
          * The device's VRF table.
          */
         get table(): number;
 
-        // Constructors of NM.DeviceVrf
+        // Constructors
 
         constructor(properties?: Partial<DeviceVrf.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of NM.DeviceVrf
+        // Methods
 
         get_table(): number;
     }
@@ -11123,7 +11123,7 @@ export namespace NM {
     class DeviceVxlan extends Device {
         static $gtype: GObject.GType<DeviceVxlan>;
 
-        // Own properties of NM.DeviceVxlan
+        // Properties
 
         /**
          * The lifetime in seconds of FDB entries learnt by the kernel.
@@ -11217,13 +11217,13 @@ export namespace NM {
          */
         get ttl(): number;
 
-        // Constructors of NM.DeviceVxlan
+        // Constructors
 
         constructor(properties?: Partial<DeviceVxlan.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of NM.DeviceVxlan
+        // Methods
 
         get_ageing(): number;
         /**
@@ -11280,7 +11280,7 @@ export namespace NM {
     class DeviceWifi extends Device {
         static $gtype: GObject.GType<DeviceWifi>;
 
-        // Own properties of NM.DeviceWifi
+        // Properties
 
         /**
          * List of all Wi-Fi access points the device can see.
@@ -11335,13 +11335,13 @@ export namespace NM {
          */
         get wirelessCapabilities(): DeviceWifiCapabilities;
 
-        // Constructors of NM.DeviceWifi
+        // Constructors
 
         constructor(properties?: Partial<DeviceWifi.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of NM.DeviceWifi
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -11353,7 +11353,7 @@ export namespace NM {
         connect_after(signal: 'access-point-removed', callback: (_source: this, ap: GObject.Object) => void): number;
         emit(signal: 'access-point-removed', ap: GObject.Object): void;
 
-        // Own methods of NM.DeviceWifi
+        // Methods
 
         /**
          * Gets a #NMAccessPoint by path.
@@ -11480,20 +11480,20 @@ export namespace NM {
     class DeviceWifiP2P extends Device {
         static $gtype: GObject.GType<DeviceWifiP2P>;
 
-        // Own properties of NM.DeviceWifiP2P
+        // Properties
 
         /**
          * List of all Wi-Fi P2P peers the device can see.
          */
         get peers(): WifiP2PPeer[];
 
-        // Constructors of NM.DeviceWifiP2P
+        // Constructors
 
         constructor(properties?: Partial<DeviceWifiP2P.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of NM.DeviceWifiP2P
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -11505,7 +11505,7 @@ export namespace NM {
         connect_after(signal: 'peer-removed', callback: (_source: this, peer: GObject.Object) => void): number;
         emit(signal: 'peer-removed', peer: GObject.Object): void;
 
-        // Own methods of NM.DeviceWifiP2P
+        // Methods
 
         /**
          * Gets a #NMWifiP2PPeer by path.
@@ -11586,7 +11586,7 @@ export namespace NM {
     class DeviceWimax extends Device {
         static $gtype: GObject.GType<DeviceWimax>;
 
-        // Own properties of NM.DeviceWimax
+        // Properties
 
         /**
          * The active #NMWimaxNsp of the device.
@@ -11651,13 +11651,13 @@ export namespace NM {
          */
         get txPower(): number;
 
-        // Constructors of NM.DeviceWimax
+        // Constructors
 
         constructor(properties?: Partial<DeviceWimax.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of NM.DeviceWimax
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -11669,7 +11669,7 @@ export namespace NM {
         connect_after(signal: 'nsp-removed', callback: (_source: this, nsp: GObject.Object) => void): number;
         emit(signal: 'nsp-removed', nsp: GObject.Object): void;
 
-        // Own methods of NM.DeviceWimax
+        // Methods
 
         /**
          * Gets the active #NMWimaxNsp.
@@ -11743,7 +11743,7 @@ export namespace NM {
     class DeviceWireGuard extends Device {
         static $gtype: GObject.GType<DeviceWireGuard>;
 
-        // Own properties of NM.DeviceWireGuard
+        // Properties
 
         /**
          * Optional firewall mark - see ip-rule(8).
@@ -11770,13 +11770,13 @@ export namespace NM {
          */
         get publicKey(): GLib.Bytes;
 
-        // Constructors of NM.DeviceWireGuard
+        // Constructors
 
         constructor(properties?: Partial<DeviceWireGuard.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of NM.DeviceWireGuard
+        // Methods
 
         /**
          * Gets the fwmark (firewall mark) for this interface.
@@ -11806,7 +11806,7 @@ export namespace NM {
     class DeviceWpan extends Device {
         static $gtype: GObject.GType<DeviceWpan>;
 
-        // Constructors of NM.DeviceWpan
+        // Constructors
 
         constructor(properties?: Partial<DeviceWpan.ConstructorProps>, ...args: any[]);
 
@@ -11825,7 +11825,7 @@ export namespace NM {
     abstract class DhcpConfig extends Object {
         static $gtype: GObject.GType<DhcpConfig>;
 
-        // Own properties of NM.DhcpConfig
+        // Properties
 
         /**
          * The IP address family of the configuration; either
@@ -11837,13 +11837,13 @@ export namespace NM {
          */
         get options(): GLib.HashTable<string, string>;
 
-        // Constructors of NM.DhcpConfig
+        // Constructors
 
         constructor(properties?: Partial<DhcpConfig.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of NM.DhcpConfig
+        // Methods
 
         /**
          * Gets the IP address family of the configuration
@@ -11882,7 +11882,7 @@ export namespace NM {
     abstract class IPConfig extends Object {
         static $gtype: GObject.GType<IPConfig>;
 
-        // Own properties of NM.IPConfig
+        // Properties
 
         /**
          * A #GPtrArray containing the addresses (#NMIPAddress) of the configuration.
@@ -11924,13 +11924,13 @@ export namespace NM {
          */
         get winsServers(): string[];
 
-        // Constructors of NM.IPConfig
+        // Constructors
 
         constructor(properties?: Partial<IPConfig.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of NM.IPConfig
+        // Methods
 
         /**
          * Gets the IP addresses (containing the address, prefix, and gateway).
@@ -11986,7 +11986,7 @@ export namespace NM {
     abstract class Object extends GObject.Object {
         static $gtype: GObject.GType<Object>;
 
-        // Own properties of NM.Object
+        // Properties
 
         /**
          * The NMClient instance as returned by nm_object_get_client().
@@ -12006,13 +12006,13 @@ export namespace NM {
          */
         get path(): string;
 
-        // Constructors of NM.Object
+        // Constructors
 
         constructor(properties?: Partial<Object.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of NM.Object
+        // Methods
 
         /**
          * Returns the #NMClient instance in which object is cached.
@@ -12045,7 +12045,7 @@ export namespace NM {
     class RemoteConnection extends Object implements Connection {
         static $gtype: GObject.GType<RemoteConnection>;
 
-        // Own properties of NM.RemoteConnection
+        // Properties
 
         /**
          * File that stores the connection in case the connection is
@@ -12083,13 +12083,13 @@ export namespace NM {
          */
         get visible(): boolean;
 
-        // Constructors of NM.RemoteConnection
+        // Constructors
 
         constructor(properties?: Partial<RemoteConnection.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of NM.RemoteConnection
+        // Methods
 
         /**
          * Send any local changes to the settings and properties of `connection` to
@@ -13048,7 +13048,7 @@ export namespace NM {
     abstract class SecretAgentOld extends GObject.Object implements Gio.AsyncInitable<SecretAgentOld>, Gio.Initable {
         static $gtype: GObject.GType<SecretAgentOld>;
 
-        // Own properties of NM.SecretAgentOld
+        // Properties
 
         /**
          * If %TRUE (the default), the agent will always be registered when
@@ -13127,13 +13127,13 @@ export namespace NM {
          */
         get registered(): boolean;
 
-        // Constructors of NM.SecretAgentOld
+        // Constructors
 
         constructor(properties?: Partial<SecretAgentOld.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of NM.SecretAgentOld
+        // Virtual methods
 
         vfunc_cancel_get_secrets(connection_path: string, setting_name: string): void;
         /**
@@ -13182,7 +13182,7 @@ export namespace NM {
             callback: SecretAgentOldSaveSecretsFunc,
         ): void;
 
-        // Own methods of NM.SecretAgentOld
+        // Methods
 
         /**
          * Asynchronously asks the agent to delete all saved secrets belonging to
@@ -13939,7 +13939,7 @@ export namespace NM {
     abstract class Setting extends GObject.Object {
         static $gtype: GObject.GType<Setting>;
 
-        // Own properties of NM.Setting
+        // Properties
 
         /**
          * The setting's name, which uniquely identifies the setting within the
@@ -13948,13 +13948,13 @@ export namespace NM {
          */
         get name(): string;
 
-        // Constructors of NM.Setting
+        // Constructors
 
         constructor(properties?: Partial<Setting.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of NM.Setting
+        // Static methods
 
         /**
          * Get the type of the enum that defines the values that the property accepts. It is only
@@ -13975,7 +13975,7 @@ export namespace NM {
          */
         static lookup_type(name: string): GObject.GType;
 
-        // Own methods of NM.Setting
+        // Methods
 
         /**
          * Compares two #NMSetting objects for similarity, with comparison behavior
@@ -14119,7 +14119,7 @@ export namespace NM {
     class Setting6Lowpan extends Setting {
         static $gtype: GObject.GType<Setting6Lowpan>;
 
-        // Own properties of NM.Setting6Lowpan
+        // Properties
 
         /**
          * If given, specifies the parent interface name or parent connection UUID
@@ -14128,7 +14128,7 @@ export namespace NM {
         get parent(): string;
         set parent(val: string);
 
-        // Constructors of NM.Setting6Lowpan
+        // Constructors
 
         constructor(properties?: Partial<Setting6Lowpan.ConstructorProps>, ...args: any[]);
 
@@ -14136,7 +14136,7 @@ export namespace NM {
 
         static ['new'](): Setting6Lowpan;
 
-        // Own methods of NM.Setting6Lowpan
+        // Methods
 
         get_parent(): string;
     }
@@ -14243,7 +14243,7 @@ export namespace NM {
     class Setting8021x extends Setting {
         static $gtype: GObject.GType<Setting8021x>;
 
-        // Own properties of NM.Setting8021x
+        // Properties
 
         /**
          * List of strings to be matched against the altSubjectName of the
@@ -15140,7 +15140,7 @@ export namespace NM {
         get systemCaCerts(): boolean;
         set systemCaCerts(val: boolean);
 
-        // Constructors of NM.Setting8021x
+        // Constructors
 
         constructor(properties?: Partial<Setting8021x.ConstructorProps>, ...args: any[]);
 
@@ -15148,7 +15148,7 @@ export namespace NM {
 
         static ['new'](): Setting8021x;
 
-        // Own static methods of NM.Setting8021x
+        // Static methods
 
         /**
          * Determines and verifies the blob type.
@@ -15159,7 +15159,7 @@ export namespace NM {
          */
         static check_cert_scheme(pdata: any | null, length: number): Setting8021xCKScheme;
 
-        // Own methods of NM.Setting8021x
+        // Methods
 
         /**
          * Adds an allowed alternate subject name match.  Until at least one
@@ -15729,7 +15729,7 @@ export namespace NM {
     class SettingAdsl extends Setting {
         static $gtype: GObject.GType<SettingAdsl>;
 
-        // Own properties of NM.SettingAdsl
+        // Properties
 
         /**
          * Encapsulation of ADSL connection.  Can be "vcmux" or "llc".
@@ -15772,7 +15772,7 @@ export namespace NM {
         get vpi(): number;
         set vpi(val: number);
 
-        // Constructors of NM.SettingAdsl
+        // Constructors
 
         constructor(properties?: Partial<SettingAdsl.ConstructorProps>, ...args: any[]);
 
@@ -15780,7 +15780,7 @@ export namespace NM {
 
         static ['new'](): SettingAdsl;
 
-        // Own methods of NM.SettingAdsl
+        // Methods
 
         get_encapsulation(): string;
         get_password(): string;
@@ -15806,7 +15806,7 @@ export namespace NM {
     class SettingBluetooth extends Setting {
         static $gtype: GObject.GType<SettingBluetooth>;
 
-        // Own properties of NM.SettingBluetooth
+        // Properties
 
         /**
          * The Bluetooth address of the device.
@@ -15820,7 +15820,7 @@ export namespace NM {
         get type(): string;
         set type(val: string);
 
-        // Constructors of NM.SettingBluetooth
+        // Constructors
 
         constructor(properties?: Partial<SettingBluetooth.ConstructorProps>, ...args: any[]);
 
@@ -15828,7 +15828,7 @@ export namespace NM {
 
         static ['new'](): SettingBluetooth;
 
-        // Own methods of NM.SettingBluetooth
+        // Methods
 
         /**
          * Gets the Bluetooth address of the remote device which this setting
@@ -15858,7 +15858,7 @@ export namespace NM {
     class SettingBond extends Setting {
         static $gtype: GObject.GType<SettingBond>;
 
-        // Own properties of NM.SettingBond
+        // Properties
 
         /**
          * Dictionary of key/value pairs of bonding options.  Both keys and values
@@ -15868,7 +15868,7 @@ export namespace NM {
         get options(): GLib.HashTable<string, string>;
         set options(val: GLib.HashTable<string, string>);
 
-        // Constructors of NM.SettingBond
+        // Constructors
 
         constructor(properties?: Partial<SettingBond.ConstructorProps>, ...args: any[]);
 
@@ -15876,7 +15876,7 @@ export namespace NM {
 
         static ['new'](): SettingBond;
 
-        // Own static methods of NM.SettingBond
+        // Static methods
 
         /**
          * Checks whether `name` is a valid bond option and `value` is a valid value for
@@ -15886,7 +15886,7 @@ export namespace NM {
          */
         static validate_option(name: string, value?: string | null): boolean;
 
-        // Own methods of NM.SettingBond
+        // Methods
 
         /**
          * Add an option to the table. Adding a new name replaces any existing name/value pair
@@ -15954,7 +15954,7 @@ export namespace NM {
     class SettingBondPort extends Setting {
         static $gtype: GObject.GType<SettingBondPort>;
 
-        // Own properties of NM.SettingBondPort
+        // Properties
 
         /**
          * The port priority for bond active port re-selection during failover. A
@@ -15977,7 +15977,7 @@ export namespace NM {
         get queueId(): number;
         set queueId(val: number);
 
-        // Constructors of NM.SettingBondPort
+        // Constructors
 
         constructor(properties?: Partial<SettingBondPort.ConstructorProps>, ...args: any[]);
 
@@ -15985,7 +15985,7 @@ export namespace NM {
 
         static ['new'](): SettingBondPort;
 
-        // Own methods of NM.SettingBondPort
+        // Methods
 
         get_prio(): number;
         get_queue_id(): number;
@@ -16055,7 +16055,7 @@ export namespace NM {
     class SettingBridge extends Setting {
         static $gtype: GObject.GType<SettingBridge>;
 
-        // Own properties of NM.SettingBridge
+        // Properties
 
         /**
          * The Ethernet MAC address aging time, in seconds.
@@ -16403,7 +16403,7 @@ export namespace NM {
         get vlans(): BridgeVlan[];
         set vlans(val: BridgeVlan[]);
 
-        // Constructors of NM.SettingBridge
+        // Constructors
 
         constructor(properties?: Partial<SettingBridge.ConstructorProps>, ...args: any[]);
 
@@ -16411,7 +16411,7 @@ export namespace NM {
 
         static ['new'](): SettingBridge;
 
-        // Own methods of NM.SettingBridge
+        // Methods
 
         /**
          * Appends a new vlan and associated information to the setting.  The
@@ -16486,7 +16486,7 @@ export namespace NM {
     class SettingBridgePort extends Setting {
         static $gtype: GObject.GType<SettingBridgePort>;
 
-        // Own properties of NM.SettingBridgePort
+        // Properties
 
         /**
          * Enables or disables "hairpin mode" for the port, which allows frames to
@@ -16534,7 +16534,7 @@ export namespace NM {
         get vlans(): BridgeVlan[];
         set vlans(val: BridgeVlan[]);
 
-        // Constructors of NM.SettingBridgePort
+        // Constructors
 
         constructor(properties?: Partial<SettingBridgePort.ConstructorProps>, ...args: any[]);
 
@@ -16542,7 +16542,7 @@ export namespace NM {
 
         static ['new'](): SettingBridgePort;
 
-        // Own methods of NM.SettingBridgePort
+        // Methods
 
         /**
          * Appends a new vlan and associated information to the setting.  The
@@ -16594,7 +16594,7 @@ export namespace NM {
     class SettingCdma extends Setting {
         static $gtype: GObject.GType<SettingCdma>;
 
-        // Own properties of NM.SettingCdma
+        // Properties
 
         /**
          * If non-zero, only transmit packets of the specified size or smaller,
@@ -16634,7 +16634,7 @@ export namespace NM {
         get username(): string;
         set username(val: string);
 
-        // Constructors of NM.SettingCdma
+        // Constructors
 
         constructor(properties?: Partial<SettingCdma.ConstructorProps>, ...args: any[]);
 
@@ -16642,7 +16642,7 @@ export namespace NM {
 
         static ['new'](): SettingCdma;
 
-        // Own methods of NM.SettingCdma
+        // Methods
 
         get_mtu(): number;
         get_number(): string;
@@ -16712,7 +16712,7 @@ export namespace NM {
     class SettingConnection extends Setting {
         static $gtype: GObject.GType<SettingConnection>;
 
-        // Own properties of NM.SettingConnection
+        // Properties
 
         /**
          * The number of retries for the authentication. Zero means to try indefinitely; -1 means
@@ -17357,7 +17357,7 @@ export namespace NM {
         get zone(): string;
         set zone(val: string);
 
-        // Constructors of NM.SettingConnection
+        // Constructors
 
         constructor(properties?: Partial<SettingConnection.ConstructorProps>, ...args: any[]);
 
@@ -17365,7 +17365,7 @@ export namespace NM {
 
         static ['new'](): SettingConnection;
 
-        // Own methods of NM.SettingConnection
+        // Methods
 
         /**
          * Adds a permission to the connection's permission list.  At this time, only
@@ -17590,7 +17590,7 @@ export namespace NM {
     class SettingDcb extends Setting {
         static $gtype: GObject.GType<SettingDcb>;
 
-        // Own properties of NM.SettingDcb
+        // Properties
 
         /**
          * Specifies the #NMSettingDcbFlags for the DCB FCoE application.  Flags may
@@ -17813,7 +17813,7 @@ export namespace NM {
         get priorityTrafficClass(): number[];
         set priorityTrafficClass(val: number[]);
 
-        // Constructors of NM.SettingDcb
+        // Constructors
 
         constructor(properties?: Partial<SettingDcb.ConstructorProps>, ...args: any[]);
 
@@ -17821,7 +17821,7 @@ export namespace NM {
 
         static ['new'](): SettingDcb;
 
-        // Own methods of NM.SettingDcb
+        // Methods
 
         get_app_fcoe_flags(): SettingDcbFlags;
         get_app_fcoe_mode(): string;
@@ -17888,7 +17888,7 @@ export namespace NM {
     class SettingDummy extends Setting {
         static $gtype: GObject.GType<SettingDummy>;
 
-        // Constructors of NM.SettingDummy
+        // Constructors
 
         constructor(properties?: Partial<SettingDummy.ConstructorProps>, ...args: any[]);
 
@@ -17909,7 +17909,7 @@ export namespace NM {
     class SettingEthtool extends Setting {
         static $gtype: GObject.GType<SettingEthtool>;
 
-        // Constructors of NM.SettingEthtool
+        // Constructors
 
         constructor(properties?: Partial<SettingEthtool.ConstructorProps>, ...args: any[]);
 
@@ -17917,7 +17917,7 @@ export namespace NM {
 
         static ['new'](): SettingEthtool;
 
-        // Own methods of NM.SettingEthtool
+        // Methods
 
         /**
          * Clears all offload features settings
@@ -17966,7 +17966,7 @@ export namespace NM {
     class SettingGeneric extends Setting {
         static $gtype: GObject.GType<SettingGeneric>;
 
-        // Own properties of NM.SettingGeneric
+        // Properties
 
         /**
          * Name of the device handler that will be invoked to add and delete
@@ -17999,7 +17999,7 @@ export namespace NM {
         get deviceHandler(): string;
         set deviceHandler(val: string);
 
-        // Constructors of NM.SettingGeneric
+        // Constructors
 
         constructor(properties?: Partial<SettingGeneric.ConstructorProps>, ...args: any[]);
 
@@ -18007,7 +18007,7 @@ export namespace NM {
 
         static ['new'](): SettingGeneric;
 
-        // Own methods of NM.SettingGeneric
+        // Methods
 
         /**
          * Returns the #NMSettingGeneric:device-handler property of the connection.
@@ -18055,7 +18055,7 @@ export namespace NM {
     class SettingGsm extends Setting {
         static $gtype: GObject.GType<SettingGsm>;
 
-        // Own properties of NM.SettingGsm
+        // Properties
 
         /**
          * The GPRS Access Point Name specifying the APN used when establishing a
@@ -18246,7 +18246,7 @@ export namespace NM {
         get username(): string;
         set username(val: string);
 
-        // Constructors of NM.SettingGsm
+        // Constructors
 
         constructor(properties?: Partial<SettingGsm.ConstructorProps>, ...args: any[]);
 
@@ -18254,7 +18254,7 @@ export namespace NM {
 
         static ['new'](): SettingGsm;
 
-        // Own methods of NM.SettingGsm
+        // Methods
 
         get_apn(): string;
         get_auto_config(): boolean;
@@ -18294,7 +18294,7 @@ export namespace NM {
     class SettingHostname extends Setting {
         static $gtype: GObject.GType<SettingHostname>;
 
-        // Own properties of NM.SettingHostname
+        // Properties
 
         /**
          * Whether the system hostname can be determined from DHCP on
@@ -18386,7 +18386,7 @@ export namespace NM {
         get priority(): number;
         set priority(val: number);
 
-        // Constructors of NM.SettingHostname
+        // Constructors
 
         constructor(properties?: Partial<SettingHostname.ConstructorProps>, ...args: any[]);
 
@@ -18394,7 +18394,7 @@ export namespace NM {
 
         static ['new'](): SettingHostname;
 
-        // Own methods of NM.SettingHostname
+        // Methods
 
         /**
          * Returns the value contained in the #NMSettingHostname:from-dhcp
@@ -18440,7 +18440,7 @@ export namespace NM {
     class SettingHsr extends Setting {
         static $gtype: GObject.GType<SettingHsr>;
 
-        // Own properties of NM.SettingHsr
+        // Properties
 
         /**
          * The last byte of supervision address.
@@ -18468,7 +18468,7 @@ export namespace NM {
         get prp(): boolean;
         set prp(val: boolean);
 
-        // Constructors of NM.SettingHsr
+        // Constructors
 
         constructor(properties?: Partial<SettingHsr.ConstructorProps>, ...args: any[]);
 
@@ -18476,7 +18476,7 @@ export namespace NM {
 
         static ['new'](): SettingHsr;
 
-        // Own methods of NM.SettingHsr
+        // Methods
 
         get_multicast_spec(): number;
         get_port1(): string;
@@ -18505,7 +18505,7 @@ export namespace NM {
     class SettingIP4Config extends SettingIPConfig {
         static $gtype: GObject.GType<SettingIP4Config>;
 
-        // Own properties of NM.SettingIP4Config
+        // Properties
 
         /**
          * A string sent to the DHCP server to identify the local machine which the
@@ -18648,7 +18648,7 @@ export namespace NM {
         get linkLocal(): number;
         set linkLocal(val: number);
 
-        // Constructors of NM.SettingIP4Config
+        // Constructors
 
         constructor(properties?: Partial<SettingIP4Config.ConstructorProps>, ...args: any[]);
 
@@ -18656,7 +18656,7 @@ export namespace NM {
 
         static ['new'](): SettingIP4Config;
 
-        // Own methods of NM.SettingIP4Config
+        // Methods
 
         /**
          * Returns the value contained in the #NMSettingIP4Config:dhcp-client-id
@@ -18709,7 +18709,7 @@ export namespace NM {
     class SettingIP6Config extends SettingIPConfig {
         static $gtype: GObject.GType<SettingIP6Config>;
 
-        // Own properties of NM.SettingIP6Config
+        // Properties
 
         /**
          * Configure the method for creating the IPv6 interface identifier of
@@ -18962,7 +18962,7 @@ export namespace NM {
         get token(): string;
         set token(val: string);
 
-        // Constructors of NM.SettingIP6Config
+        // Constructors
 
         constructor(properties?: Partial<SettingIP6Config.ConstructorProps>, ...args: any[]);
 
@@ -18970,7 +18970,7 @@ export namespace NM {
 
         static ['new'](): SettingIP6Config;
 
-        // Own methods of NM.SettingIP6Config
+        // Methods
 
         /**
          * Returns the value contained in the #NMSettingIP6Config:addr-gen-mode
@@ -19061,7 +19061,7 @@ export namespace NM {
     abstract class SettingIPConfig extends Setting {
         static $gtype: GObject.GType<SettingIPConfig>;
 
-        // Own properties of NM.SettingIPConfig
+        // Properties
 
         /**
          * Array of IP addresses.
@@ -19747,13 +19747,13 @@ export namespace NM {
         get routes(): IPRoute[];
         set routes(val: IPRoute[]);
 
-        // Constructors of NM.SettingIPConfig
+        // Constructors
 
         constructor(properties?: Partial<SettingIPConfig.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of NM.SettingIPConfig
+        // Methods
 
         /**
          * Adds a new IP address and associated information to the setting.  The
@@ -20052,7 +20052,7 @@ export namespace NM {
     class SettingIPTunnel extends Setting {
         static $gtype: GObject.GType<SettingIPTunnel>;
 
-        // Own properties of NM.SettingIPTunnel
+        // Properties
 
         /**
          * How many additional levels of encapsulation are permitted to be prepended
@@ -20176,7 +20176,7 @@ export namespace NM {
         get ttl(): number;
         set ttl(val: number);
 
-        // Constructors of NM.SettingIPTunnel
+        // Constructors
 
         constructor(properties?: Partial<SettingIPTunnel.ConstructorProps>, ...args: any[]);
 
@@ -20184,7 +20184,7 @@ export namespace NM {
 
         static ['new'](): SettingIPTunnel;
 
-        // Own methods of NM.SettingIPTunnel
+        // Methods
 
         /**
          * Returns the #NMSettingIPTunnel:encapsulation-limit property of the setting.
@@ -20279,7 +20279,7 @@ export namespace NM {
     class SettingInfiniband extends Setting {
         static $gtype: GObject.GType<SettingInfiniband>;
 
-        // Own properties of NM.SettingInfiniband
+        // Properties
 
         /**
          * If specified, this connection will only apply to the IPoIB device whose
@@ -20352,7 +20352,7 @@ export namespace NM {
         get transportMode(): string;
         set transportMode(val: string);
 
-        // Constructors of NM.SettingInfiniband
+        // Constructors
 
         constructor(properties?: Partial<SettingInfiniband.ConstructorProps>, ...args: any[]);
 
@@ -20360,7 +20360,7 @@ export namespace NM {
 
         static ['new'](): SettingInfiniband;
 
-        // Own methods of NM.SettingInfiniband
+        // Methods
 
         get_mac_address(): string;
         get_mtu(): number;
@@ -20412,7 +20412,7 @@ export namespace NM {
     class SettingLink extends Setting {
         static $gtype: GObject.GType<SettingLink>;
 
-        // Own properties of NM.SettingLink
+        // Properties
 
         /**
          * The maximum size of a packet built by the Generic Receive Offload stack for
@@ -20469,7 +20469,7 @@ export namespace NM {
         get txQueueLength(): number;
         set txQueueLength(val: number);
 
-        // Constructors of NM.SettingLink
+        // Constructors
 
         constructor(properties?: Partial<SettingLink.ConstructorProps>, ...args: any[]);
 
@@ -20477,7 +20477,7 @@ export namespace NM {
 
         static ['new'](): SettingLink;
 
-        // Own methods of NM.SettingLink
+        // Methods
 
         /**
          * Returns the value contained in the #NMSettingLink:gro-max-size
@@ -20519,7 +20519,7 @@ export namespace NM {
     class SettingLoopback extends Setting {
         static $gtype: GObject.GType<SettingLoopback>;
 
-        // Own properties of NM.SettingLoopback
+        // Properties
 
         /**
          * If non-zero, only transmit packets of the specified size or smaller,
@@ -20528,7 +20528,7 @@ export namespace NM {
         get mtu(): number;
         set mtu(val: number);
 
-        // Constructors of NM.SettingLoopback
+        // Constructors
 
         constructor(properties?: Partial<SettingLoopback.ConstructorProps>, ...args: any[]);
 
@@ -20536,7 +20536,7 @@ export namespace NM {
 
         static ['new'](): SettingLoopback;
 
-        // Own methods of NM.SettingLoopback
+        // Methods
 
         get_mtu(): number;
     }
@@ -20568,7 +20568,7 @@ export namespace NM {
     class SettingMacsec extends Setting {
         static $gtype: GObject.GType<SettingMacsec>;
 
-        // Own properties of NM.SettingMacsec
+        // Properties
 
         /**
          * Whether the transmitted traffic must be encrypted.
@@ -20665,7 +20665,7 @@ export namespace NM {
         get validation(): number;
         set validation(val: number);
 
-        // Constructors of NM.SettingMacsec
+        // Constructors
 
         constructor(properties?: Partial<SettingMacsec.ConstructorProps>, ...args: any[]);
 
@@ -20673,7 +20673,7 @@ export namespace NM {
 
         static ['new'](): SettingMacsec;
 
-        // Own methods of NM.SettingMacsec
+        // Methods
 
         get_encrypt(): boolean;
         get_mka_cak(): string;
@@ -20704,7 +20704,7 @@ export namespace NM {
     class SettingMacvlan extends Setting {
         static $gtype: GObject.GType<SettingMacvlan>;
 
-        // Own properties of NM.SettingMacvlan
+        // Properties
 
         /**
          * The macvlan mode, which specifies the communication mechanism between multiple
@@ -20731,7 +20731,7 @@ export namespace NM {
         get tap(): boolean;
         set tap(val: boolean);
 
-        // Constructors of NM.SettingMacvlan
+        // Constructors
 
         constructor(properties?: Partial<SettingMacvlan.ConstructorProps>, ...args: any[]);
 
@@ -20739,7 +20739,7 @@ export namespace NM {
 
         static ['new'](): SettingMacvlan;
 
-        // Own methods of NM.SettingMacvlan
+        // Methods
 
         get_mode(): SettingMacvlanMode;
         get_parent(): string;
@@ -20766,7 +20766,7 @@ export namespace NM {
     class SettingMatch extends Setting {
         static $gtype: GObject.GType<SettingMatch>;
 
-        // Own properties of NM.SettingMatch
+        // Properties
 
         /**
          * A list of driver names to match. Each element is a shell wildcard pattern.
@@ -20867,7 +20867,7 @@ export namespace NM {
         get path(): string[];
         set path(val: string[]);
 
-        // Constructors of NM.SettingMatch
+        // Constructors
 
         constructor(properties?: Partial<SettingMatch.ConstructorProps>, ...args: any[]);
 
@@ -20875,7 +20875,7 @@ export namespace NM {
 
         static ['new'](): SettingMatch;
 
-        // Own methods of NM.SettingMatch
+        // Methods
 
         /**
          * Adds a new driver to the setting.
@@ -21024,7 +21024,7 @@ export namespace NM {
     class SettingOlpcMesh extends Setting {
         static $gtype: GObject.GType<SettingOlpcMesh>;
 
-        // Own properties of NM.SettingOlpcMesh
+        // Properties
 
         /**
          * Channel on which the mesh network to join is located.
@@ -21055,7 +21055,7 @@ export namespace NM {
         get ssid(): GLib.Bytes;
         set ssid(val: GLib.Bytes);
 
-        // Constructors of NM.SettingOlpcMesh
+        // Constructors
 
         constructor(properties?: Partial<SettingOlpcMesh.ConstructorProps>, ...args: any[]);
 
@@ -21063,7 +21063,7 @@ export namespace NM {
 
         static ['new'](): SettingOlpcMesh;
 
-        // Own methods of NM.SettingOlpcMesh
+        // Methods
 
         get_channel(): number;
         get_dhcp_anycast_address(): string;
@@ -21093,7 +21093,7 @@ export namespace NM {
     class SettingOvsBridge extends Setting {
         static $gtype: GObject.GType<SettingOvsBridge>;
 
-        // Own properties of NM.SettingOvsBridge
+        // Properties
 
         /**
          * The data path type. One of "system", "netdev" or empty.
@@ -21146,7 +21146,7 @@ export namespace NM {
         get stpEnable(): boolean;
         set stpEnable(val: boolean);
 
-        // Constructors of NM.SettingOvsBridge
+        // Constructors
 
         constructor(properties?: Partial<SettingOvsBridge.ConstructorProps>, ...args: any[]);
 
@@ -21154,7 +21154,7 @@ export namespace NM {
 
         static ['new'](): SettingOvsBridge;
 
-        // Own methods of NM.SettingOvsBridge
+        // Methods
 
         get_datapath_type(): string;
         get_fail_mode(): string;
@@ -21183,7 +21183,7 @@ export namespace NM {
     class SettingOvsDpdk extends Setting {
         static $gtype: GObject.GType<SettingOvsDpdk>;
 
-        // Own properties of NM.SettingOvsDpdk
+        // Properties
 
         /**
          * Open vSwitch DPDK device arguments.
@@ -21241,7 +21241,7 @@ export namespace NM {
         get nTxqDesc(): number;
         set nTxqDesc(val: number);
 
-        // Constructors of NM.SettingOvsDpdk
+        // Constructors
 
         constructor(properties?: Partial<SettingOvsDpdk.ConstructorProps>, ...args: any[]);
 
@@ -21249,7 +21249,7 @@ export namespace NM {
 
         static ['new'](): SettingOvsDpdk;
 
-        // Own methods of NM.SettingOvsDpdk
+        // Methods
 
         get_devargs(): string;
         get_n_rxq(): number;
@@ -21271,7 +21271,7 @@ export namespace NM {
     class SettingOvsExternalIDs extends Setting {
         static $gtype: GObject.GType<SettingOvsExternalIDs>;
 
-        // Own properties of NM.SettingOvsExternalIDs
+        // Properties
 
         /**
          * A dictionary of key/value pairs with external-ids for OVS.
@@ -21279,7 +21279,7 @@ export namespace NM {
         get data(): GLib.HashTable<string, string>;
         set data(val: GLib.HashTable<string, string>);
 
-        // Constructors of NM.SettingOvsExternalIDs
+        // Constructors
 
         constructor(properties?: Partial<SettingOvsExternalIDs.ConstructorProps>, ...args: any[]);
 
@@ -21287,7 +21287,7 @@ export namespace NM {
 
         static ['new'](): SettingOvsExternalIDs;
 
-        // Own static methods of NM.SettingOvsExternalIDs
+        // Static methods
 
         /**
          * Checks whether `key` is a valid key for OVS' external-ids.
@@ -21304,7 +21304,7 @@ export namespace NM {
          */
         static check_val(val?: string | null): boolean;
 
-        // Own methods of NM.SettingOvsExternalIDs
+        // Methods
 
         get_data(key: string): string;
         // Conflicted with GObject.Object.get_data
@@ -21331,7 +21331,7 @@ export namespace NM {
     class SettingOvsInterface extends Setting {
         static $gtype: GObject.GType<SettingOvsInterface>;
 
-        // Own properties of NM.SettingOvsInterface
+        // Properties
 
         /**
          * Open vSwitch openflow port number.
@@ -21357,7 +21357,7 @@ export namespace NM {
         get type(): string;
         set type(val: string);
 
-        // Constructors of NM.SettingOvsInterface
+        // Constructors
 
         constructor(properties?: Partial<SettingOvsInterface.ConstructorProps>, ...args: any[]);
 
@@ -21365,7 +21365,7 @@ export namespace NM {
 
         static ['new'](): SettingOvsInterface;
 
-        // Own methods of NM.SettingOvsInterface
+        // Methods
 
         get_interface_type(): string;
         get_ofport_request(): number;
@@ -21385,7 +21385,7 @@ export namespace NM {
     class SettingOvsOtherConfig extends Setting {
         static $gtype: GObject.GType<SettingOvsOtherConfig>;
 
-        // Own properties of NM.SettingOvsOtherConfig
+        // Properties
 
         /**
          * A dictionary of key/value pairs with other_config settings for OVS.
@@ -21395,7 +21395,7 @@ export namespace NM {
         get data(): GLib.HashTable<string, string>;
         set data(val: GLib.HashTable<string, string>);
 
-        // Constructors of NM.SettingOvsOtherConfig
+        // Constructors
 
         constructor(properties?: Partial<SettingOvsOtherConfig.ConstructorProps>, ...args: any[]);
 
@@ -21403,7 +21403,7 @@ export namespace NM {
 
         static ['new'](): SettingOvsOtherConfig;
 
-        // Own methods of NM.SettingOvsOtherConfig
+        // Methods
 
         get_data(key: string): string;
         // Conflicted with GObject.Object.get_data
@@ -21428,7 +21428,7 @@ export namespace NM {
     class SettingOvsPatch extends Setting {
         static $gtype: GObject.GType<SettingOvsPatch>;
 
-        // Own properties of NM.SettingOvsPatch
+        // Properties
 
         /**
          * Specifies the name of the interface for the other side of the patch.
@@ -21437,7 +21437,7 @@ export namespace NM {
         get peer(): string;
         set peer(val: string);
 
-        // Constructors of NM.SettingOvsPatch
+        // Constructors
 
         constructor(properties?: Partial<SettingOvsPatch.ConstructorProps>, ...args: any[]);
 
@@ -21445,7 +21445,7 @@ export namespace NM {
 
         static ['new'](): SettingOvsPatch;
 
-        // Own methods of NM.SettingOvsPatch
+        // Methods
 
         get_peer(): string;
     }
@@ -21474,7 +21474,7 @@ export namespace NM {
     class SettingOvsPort extends Setting {
         static $gtype: GObject.GType<SettingOvsPort>;
 
-        // Own properties of NM.SettingOvsPort
+        // Properties
 
         /**
          * The time port must be inactive in order to be considered down.
@@ -21538,7 +21538,7 @@ export namespace NM {
         get vlanMode(): string;
         set vlanMode(val: string);
 
-        // Constructors of NM.SettingOvsPort
+        // Constructors
 
         constructor(properties?: Partial<SettingOvsPort.ConstructorProps>, ...args: any[]);
 
@@ -21546,7 +21546,7 @@ export namespace NM {
 
         static ['new'](): SettingOvsPort;
 
-        // Own methods of NM.SettingOvsPort
+        // Methods
 
         /**
          * Appends a new trunk range to the setting.
@@ -21622,7 +21622,7 @@ export namespace NM {
     class SettingPpp extends Setting {
         static $gtype: GObject.GType<SettingPpp>;
 
-        // Own properties of NM.SettingPpp
+        // Properties
 
         /**
          * If non-zero, instruct pppd to set the serial port to the specified
@@ -21803,7 +21803,7 @@ export namespace NM {
         get requireMppe128(): boolean;
         set requireMppe128(val: boolean);
 
-        // Constructors of NM.SettingPpp
+        // Constructors
 
         constructor(properties?: Partial<SettingPpp.ConstructorProps>, ...args: any[]);
 
@@ -21811,7 +21811,7 @@ export namespace NM {
 
         static ['new'](): SettingPpp;
 
-        // Own methods of NM.SettingPpp
+        // Methods
 
         get_baud(): number;
         get_crtscts(): boolean;
@@ -21852,7 +21852,7 @@ export namespace NM {
     class SettingPppoe extends Setting {
         static $gtype: GObject.GType<SettingPppoe>;
 
-        // Own properties of NM.SettingPppoe
+        // Properties
 
         /**
          * If given, specifies the parent interface name on which this PPPoE
@@ -21891,7 +21891,7 @@ export namespace NM {
         get username(): string;
         set username(val: string);
 
-        // Constructors of NM.SettingPppoe
+        // Constructors
 
         constructor(properties?: Partial<SettingPppoe.ConstructorProps>, ...args: any[]);
 
@@ -21899,7 +21899,7 @@ export namespace NM {
 
         static ['new'](): SettingPppoe;
 
-        // Own methods of NM.SettingPppoe
+        // Methods
 
         get_parent(): string;
         get_password(): string;
@@ -21928,7 +21928,7 @@ export namespace NM {
     class SettingProxy extends Setting {
         static $gtype: GObject.GType<SettingProxy>;
 
-        // Own properties of NM.SettingProxy
+        // Properties
 
         /**
          * Whether the proxy configuration is for browser only.
@@ -21968,7 +21968,7 @@ export namespace NM {
         get pacUrl(): string;
         set pacUrl(val: string);
 
-        // Constructors of NM.SettingProxy
+        // Constructors
 
         constructor(properties?: Partial<SettingProxy.ConstructorProps>, ...args: any[]);
 
@@ -21976,7 +21976,7 @@ export namespace NM {
 
         static ['new'](): SettingProxy;
 
-        // Own methods of NM.SettingProxy
+        // Methods
 
         get_browser_only(): boolean;
         /**
@@ -22009,7 +22009,7 @@ export namespace NM {
     class SettingSerial extends Setting {
         static $gtype: GObject.GType<SettingSerial>;
 
-        // Own properties of NM.SettingSerial
+        // Properties
 
         /**
          * Speed to use for communication over the serial port.  Note that this
@@ -22045,7 +22045,7 @@ export namespace NM {
         get stopbits(): number;
         set stopbits(val: number);
 
-        // Constructors of NM.SettingSerial
+        // Constructors
 
         constructor(properties?: Partial<SettingSerial.ConstructorProps>, ...args: any[]);
 
@@ -22053,7 +22053,7 @@ export namespace NM {
 
         static ['new'](): SettingSerial;
 
-        // Own methods of NM.SettingSerial
+        // Methods
 
         get_baud(): number;
         get_bits(): number;
@@ -22086,7 +22086,7 @@ export namespace NM {
     class SettingSriov extends Setting {
         static $gtype: GObject.GType<SettingSriov>;
 
-        // Own properties of NM.SettingSriov
+        // Properties
 
         /**
          * Whether to autoprobe virtual functions by a compatible driver.
@@ -22240,7 +22240,7 @@ export namespace NM {
         get vfs(): SriovVF[];
         set vfs(val: SriovVF[]);
 
-        // Constructors of NM.SettingSriov
+        // Constructors
 
         constructor(properties?: Partial<SettingSriov.ConstructorProps>, ...args: any[]);
 
@@ -22248,7 +22248,7 @@ export namespace NM {
 
         static ['new'](): SettingSriov;
 
-        // Own methods of NM.SettingSriov
+        // Methods
 
         /**
          * Appends a new VF and associated information to the setting.  The
@@ -22305,7 +22305,7 @@ export namespace NM {
     class SettingTCConfig extends Setting {
         static $gtype: GObject.GType<SettingTCConfig>;
 
-        // Own properties of NM.SettingTCConfig
+        // Properties
 
         /**
          * Array of TC queueing disciplines.
@@ -22334,7 +22334,7 @@ export namespace NM {
         get tfilters(): TCTfilter[];
         set tfilters(val: TCTfilter[]);
 
-        // Constructors of NM.SettingTCConfig
+        // Constructors
 
         constructor(properties?: Partial<SettingTCConfig.ConstructorProps>, ...args: any[]);
 
@@ -22342,7 +22342,7 @@ export namespace NM {
 
         static ['new'](): SettingTCConfig;
 
-        // Own methods of NM.SettingTCConfig
+        // Methods
 
         /**
          * Appends a new qdisc and associated information to the setting.  The
@@ -22441,7 +22441,7 @@ export namespace NM {
     class SettingTeam extends Setting {
         static $gtype: GObject.GType<SettingTeam>;
 
-        // Own properties of NM.SettingTeam
+        // Properties
 
         /**
          * The JSON configuration for the team network interface.  The property
@@ -22613,7 +22613,7 @@ export namespace NM {
         get runnerTxHash(): string[];
         set runnerTxHash(val: string[]);
 
-        // Constructors of NM.SettingTeam
+        // Constructors
 
         constructor(properties?: Partial<SettingTeam.ConstructorProps>, ...args: any[]);
 
@@ -22621,7 +22621,7 @@ export namespace NM {
 
         static ['new'](): SettingTeam;
 
-        // Own methods of NM.SettingTeam
+        // Methods
 
         /**
          * Appends a new link watcher to the setting.
@@ -22705,7 +22705,7 @@ export namespace NM {
     class SettingTeamPort extends Setting {
         static $gtype: GObject.GType<SettingTeamPort>;
 
-        // Own properties of NM.SettingTeamPort
+        // Properties
 
         /**
          * The JSON configuration for the team port. The property should contain raw
@@ -22782,7 +22782,7 @@ export namespace NM {
         get sticky(): boolean;
         set sticky(val: boolean);
 
-        // Constructors of NM.SettingTeamPort
+        // Constructors
 
         constructor(properties?: Partial<SettingTeamPort.ConstructorProps>, ...args: any[]);
 
@@ -22790,7 +22790,7 @@ export namespace NM {
 
         static ['new'](): SettingTeamPort;
 
-        // Own methods of NM.SettingTeamPort
+        // Methods
 
         /**
          * Appends a new link watcher to the setting.
@@ -22844,7 +22844,7 @@ export namespace NM {
     class SettingTun extends Setting {
         static $gtype: GObject.GType<SettingTun>;
 
-        // Own properties of NM.SettingTun
+        // Properties
 
         /**
          * The group ID which will own the device. If set to %NULL everyone
@@ -22901,7 +22901,7 @@ export namespace NM {
         get vnetHdr(): boolean;
         set vnetHdr(val: boolean);
 
-        // Constructors of NM.SettingTun
+        // Constructors
 
         constructor(properties?: Partial<SettingTun.ConstructorProps>, ...args: any[]);
 
@@ -22909,7 +22909,7 @@ export namespace NM {
 
         static ['new'](): SettingTun;
 
-        // Own methods of NM.SettingTun
+        // Methods
 
         get_group(): string;
         get_mode(): SettingTunMode;
@@ -22933,7 +22933,7 @@ export namespace NM {
     class SettingUser extends Setting {
         static $gtype: GObject.GType<SettingUser>;
 
-        // Own properties of NM.SettingUser
+        // Properties
 
         /**
          * A dictionary of key/value pairs with user data. This data is ignored by NetworkManager
@@ -22943,7 +22943,7 @@ export namespace NM {
         get data(): GLib.HashTable<string, string>;
         set data(val: GLib.HashTable<string, string>);
 
-        // Constructors of NM.SettingUser
+        // Constructors
 
         constructor(properties?: Partial<SettingUser.ConstructorProps>, ...args: any[]);
 
@@ -22951,7 +22951,7 @@ export namespace NM {
 
         static ['new'](): SettingUser;
 
-        // Own static methods of NM.SettingUser
+        // Static methods
 
         /**
          * Checks whether `key` is a valid user data key. This means,
@@ -22969,7 +22969,7 @@ export namespace NM {
          */
         static check_val(val: string): boolean;
 
-        // Own methods of NM.SettingUser
+        // Methods
 
         get_data(key: string): string;
         // Conflicted with GObject.Object.get_data
@@ -22994,7 +22994,7 @@ export namespace NM {
     class SettingVeth extends Setting {
         static $gtype: GObject.GType<SettingVeth>;
 
-        // Own properties of NM.SettingVeth
+        // Properties
 
         /**
          * This property specifies the peer interface name of the veth. This
@@ -23003,7 +23003,7 @@ export namespace NM {
         get peer(): string;
         set peer(val: string);
 
-        // Constructors of NM.SettingVeth
+        // Constructors
 
         constructor(properties?: Partial<SettingVeth.ConstructorProps>, ...args: any[]);
 
@@ -23011,7 +23011,7 @@ export namespace NM {
 
         static ['new'](): SettingVeth;
 
-        // Own methods of NM.SettingVeth
+        // Methods
 
         get_peer(): string;
     }
@@ -23037,7 +23037,7 @@ export namespace NM {
     class SettingVlan extends Setting {
         static $gtype: GObject.GType<SettingVlan>;
 
-        // Own properties of NM.SettingVlan
+        // Properties
 
         /**
          * For outgoing packets, a list of mappings from Linux SKB priorities to
@@ -23105,7 +23105,7 @@ export namespace NM {
         get protocol(): string;
         set protocol(val: string);
 
-        // Constructors of NM.SettingVlan
+        // Constructors
 
         constructor(properties?: Partial<SettingVlan.ConstructorProps>, ...args: any[]);
 
@@ -23113,7 +23113,7 @@ export namespace NM {
 
         static ['new'](): SettingVlan;
 
-        // Own methods of NM.SettingVlan
+        // Methods
 
         /**
          * Adds a priority mapping to the #NMSettingVlan:ingress_priority_map or
@@ -23217,7 +23217,7 @@ export namespace NM {
     class SettingVpn extends Setting {
         static $gtype: GObject.GType<SettingVpn>;
 
-        // Own properties of NM.SettingVpn
+        // Properties
 
         /**
          * Dictionary of key/value pairs of VPN plugin specific data.  Both keys and
@@ -23282,7 +23282,7 @@ export namespace NM {
         get userName(): string;
         set userName(val: string);
 
-        // Constructors of NM.SettingVpn
+        // Constructors
 
         constructor(properties?: Partial<SettingVpn.ConstructorProps>, ...args: any[]);
 
@@ -23290,7 +23290,7 @@ export namespace NM {
 
         static ['new'](): SettingVpn;
 
-        // Own methods of NM.SettingVpn
+        // Methods
 
         /**
          * Establishes a relationship between `key` and `item` internally in the
@@ -23402,7 +23402,7 @@ export namespace NM {
     class SettingVrf extends Setting {
         static $gtype: GObject.GType<SettingVrf>;
 
-        // Own properties of NM.SettingVrf
+        // Properties
 
         /**
          * The routing table for this VRF.
@@ -23410,7 +23410,7 @@ export namespace NM {
         get table(): number;
         set table(val: number);
 
-        // Constructors of NM.SettingVrf
+        // Constructors
 
         constructor(properties?: Partial<SettingVrf.ConstructorProps>, ...args: any[]);
 
@@ -23418,7 +23418,7 @@ export namespace NM {
 
         static ['new'](): SettingVrf;
 
-        // Own methods of NM.SettingVrf
+        // Methods
 
         get_table(): number;
     }
@@ -23457,7 +23457,7 @@ export namespace NM {
     class SettingVxlan extends Setting {
         static $gtype: GObject.GType<SettingVxlan>;
 
-        // Own properties of NM.SettingVxlan
+        // Properties
 
         /**
          * Specifies the lifetime in seconds of FDB entries learnt by the kernel.
@@ -23576,7 +23576,7 @@ export namespace NM {
         get ttl(): number;
         set ttl(val: number);
 
-        // Constructors of NM.SettingVxlan
+        // Constructors
 
         constructor(properties?: Partial<SettingVxlan.ConstructorProps>, ...args: any[]);
 
@@ -23584,7 +23584,7 @@ export namespace NM {
 
         static ['new'](): SettingVxlan;
 
-        // Own methods of NM.SettingVxlan
+        // Methods
 
         get_ageing(): number;
         get_destination_port(): number;
@@ -23622,7 +23622,7 @@ export namespace NM {
     class SettingWifiP2P extends Setting {
         static $gtype: GObject.GType<SettingWifiP2P>;
 
-        // Own properties of NM.SettingWifiP2P
+        // Properties
 
         /**
          * The P2P device that should be connected to. Currently, this is the only
@@ -23667,7 +23667,7 @@ export namespace NM {
         get wpsMethod(): number;
         set wpsMethod(val: number);
 
-        // Constructors of NM.SettingWifiP2P
+        // Constructors
 
         constructor(properties?: Partial<SettingWifiP2P.ConstructorProps>, ...args: any[]);
 
@@ -23675,7 +23675,7 @@ export namespace NM {
 
         static ['new'](): SettingWifiP2P;
 
-        // Own methods of NM.SettingWifiP2P
+        // Methods
 
         get_peer(): string;
         get_wfd_ies(): GLib.Bytes;
@@ -23699,7 +23699,7 @@ export namespace NM {
     class SettingWimax extends Setting {
         static $gtype: GObject.GType<SettingWimax>;
 
-        // Own properties of NM.SettingWimax
+        // Properties
 
         /**
          * If specified, this connection will only apply to the WiMAX device whose
@@ -23728,7 +23728,7 @@ export namespace NM {
         get networkName(): string;
         set networkName(val: string);
 
-        // Constructors of NM.SettingWimax
+        // Constructors
 
         constructor(properties?: Partial<SettingWimax.ConstructorProps>, ...args: any[]);
 
@@ -23736,7 +23736,7 @@ export namespace NM {
 
         static ['new'](): SettingWimax;
 
-        // Own methods of NM.SettingWimax
+        // Methods
 
         /**
          * Returns the MAC address of a WiMAX device which this connection is locked
@@ -23779,7 +23779,7 @@ export namespace NM {
     class SettingWireGuard extends Setting {
         static $gtype: GObject.GType<SettingWireGuard>;
 
-        // Own properties of NM.SettingWireGuard
+        // Properties
 
         /**
          * The use of fwmark is optional and is by default off. Setting it to 0
@@ -23917,7 +23917,7 @@ export namespace NM {
         get privateKeyFlags(): SettingSecretFlags;
         set privateKeyFlags(val: SettingSecretFlags);
 
-        // Constructors of NM.SettingWireGuard
+        // Constructors
 
         constructor(properties?: Partial<SettingWireGuard.ConstructorProps>, ...args: any[]);
 
@@ -23925,7 +23925,7 @@ export namespace NM {
 
         static ['new'](): SettingWireGuard;
 
-        // Own methods of NM.SettingWireGuard
+        // Methods
 
         /**
          * If a peer with the same public-key already exists, that
@@ -24004,7 +24004,7 @@ export namespace NM {
     class SettingWired extends Setting {
         static $gtype: GObject.GType<SettingWired>;
 
-        // Own properties of NM.SettingWired
+        // Properties
 
         /**
          * When %TRUE, setup the interface to accept packets for all MAC addresses.
@@ -24328,7 +24328,7 @@ export namespace NM {
         get wakeOnLanPassword(): string;
         set wakeOnLanPassword(val: string);
 
-        // Constructors of NM.SettingWired
+        // Constructors
 
         constructor(properties?: Partial<SettingWired.ConstructorProps>, ...args: any[]);
 
@@ -24336,7 +24336,7 @@ export namespace NM {
 
         static ['new'](): SettingWired;
 
-        // Own methods of NM.SettingWired
+        // Methods
 
         /**
          * Adds a new MAC address to the #NMSettingWired:mac-address-blacklist property.
@@ -24491,7 +24491,7 @@ export namespace NM {
     class SettingWireless extends Setting {
         static $gtype: GObject.GType<SettingWireless>;
 
-        // Own properties of NM.SettingWireless
+        // Properties
 
         /**
          * Configures AP isolation, which prevents communication between
@@ -24838,7 +24838,7 @@ export namespace NM {
         get wakeOnWlan(): number;
         set wakeOnWlan(val: number);
 
-        // Constructors of NM.SettingWireless
+        // Constructors
 
         constructor(properties?: Partial<SettingWireless.ConstructorProps>, ...args: any[]);
 
@@ -24846,7 +24846,7 @@ export namespace NM {
 
         static ['new'](): SettingWireless;
 
-        // Own methods of NM.SettingWireless
+        // Methods
 
         /**
          * Adds a new MAC address to the #NMSettingWireless:mac-address-blacklist property.
@@ -24978,7 +24978,7 @@ export namespace NM {
     class SettingWirelessSecurity extends Setting {
         static $gtype: GObject.GType<SettingWirelessSecurity>;
 
-        // Own properties of NM.SettingWirelessSecurity
+        // Properties
 
         /**
          * When WEP is used (ie, key-mgmt = "none" or "ieee8021x") indicate the
@@ -25245,7 +25245,7 @@ export namespace NM {
         get wpsMethod(): number;
         set wpsMethod(val: number);
 
-        // Constructors of NM.SettingWirelessSecurity
+        // Constructors
 
         constructor(properties?: Partial<SettingWirelessSecurity.ConstructorProps>, ...args: any[]);
 
@@ -25253,7 +25253,7 @@ export namespace NM {
 
         static ['new'](): SettingWirelessSecurity;
 
-        // Own methods of NM.SettingWirelessSecurity
+        // Methods
 
         /**
          * Adds an encryption algorithm to the list of allowed groupwise encryption
@@ -25397,7 +25397,7 @@ export namespace NM {
     class SettingWpan extends Setting {
         static $gtype: GObject.GType<SettingWpan>;
 
-        // Own properties of NM.SettingWpan
+        // Properties
 
         /**
          * IEEE 802.15.4 channel. A positive integer or -1, meaning "do not
@@ -25444,7 +25444,7 @@ export namespace NM {
         get shortAddress(): number;
         set shortAddress(val: number);
 
-        // Constructors of NM.SettingWpan
+        // Constructors
 
         constructor(properties?: Partial<SettingWpan.ConstructorProps>, ...args: any[]);
 
@@ -25452,7 +25452,7 @@ export namespace NM {
 
         static ['new'](): SettingWpan;
 
-        // Own methods of NM.SettingWpan
+        // Methods
 
         get_channel(): number;
         get_mac_address(): string;
@@ -25470,13 +25470,13 @@ export namespace NM {
     class SimpleConnection extends GObject.Object implements Connection {
         static $gtype: GObject.GType<SimpleConnection>;
 
-        // Constructors of NM.SimpleConnection
+        // Constructors
 
         constructor(properties?: Partial<SimpleConnection.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of NM.SimpleConnection
+        // Static methods
 
         /**
          * Creates a new #NMSimpleConnection object with no #NMSetting objects.
@@ -26321,7 +26321,7 @@ export namespace NM {
     class VpnConnection extends ActiveConnection {
         static $gtype: GObject.GType<VpnConnection>;
 
-        // Own properties of NM.VpnConnection
+        // Properties
 
         /**
          * The VPN login banner of the active VPN connection.
@@ -26336,13 +26336,13 @@ export namespace NM {
          */
         get vpnState(): VpnConnectionState;
 
-        // Constructors of NM.VpnConnection
+        // Constructors
 
         constructor(properties?: Partial<VpnConnection.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of NM.VpnConnection
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -26354,7 +26354,7 @@ export namespace NM {
         ): number;
         emit(signal: 'vpn-state-changed', object: number, p0: number): void;
 
-        // Own methods of NM.VpnConnection
+        // Methods
 
         /**
          * Gets the VPN login banner of the active #NMVpnConnection.
@@ -26381,7 +26381,7 @@ export namespace NM {
     class VpnPluginInfo extends GObject.Object implements Gio.Initable {
         static $gtype: GObject.GType<VpnPluginInfo>;
 
-        // Own properties of NM.VpnPluginInfo
+        // Properties
 
         /**
          * The filename from which the info was loaded.
@@ -26401,7 +26401,7 @@ export namespace NM {
          */
         get name(): string;
 
-        // Constructors of NM.VpnPluginInfo
+        // Constructors
 
         constructor(properties?: Partial<VpnPluginInfo.ConstructorProps>, ...args: any[]);
 
@@ -26413,7 +26413,7 @@ export namespace NM {
 
         static new_with_data(filename: string, keyfile: GLib.KeyFile): VpnPluginInfo;
 
-        // Own static methods of NM.VpnPluginInfo
+        // Static methods
 
         static list_add(list: VpnPluginInfo[], plugin_info: VpnPluginInfo): boolean;
         static list_find_by_filename(list: VpnPluginInfo[], filename: string): VpnPluginInfo;
@@ -26455,7 +26455,7 @@ export namespace NM {
          */
         static validate_filename(filename: string): boolean;
 
-        // Own methods of NM.VpnPluginInfo
+        // Methods
 
         get_aliases(): string[];
         get_auth_dialog(): string;
@@ -27010,7 +27010,7 @@ export namespace NM {
     abstract class VpnPluginOld extends GObject.Object implements Gio.Initable {
         static $gtype: GObject.GType<VpnPluginOld>;
 
-        // Own properties of NM.VpnPluginOld
+        // Properties
 
         /**
          * The D-Bus service name of this plugin.
@@ -27026,13 +27026,13 @@ export namespace NM {
         get state(): VpnServiceState;
         set state(val: VpnServiceState);
 
-        // Constructors of NM.VpnPluginOld
+        // Constructors
 
         constructor(properties?: Partial<VpnPluginOld.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of NM.VpnPluginOld
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -27065,7 +27065,7 @@ export namespace NM {
         connect_after(signal: 'state-changed', callback: (_source: this, object: number) => void): number;
         emit(signal: 'state-changed', object: number): void;
 
-        // Own static methods of NM.VpnPluginOld
+        // Static methods
 
         /**
          * Given a VPN secret key name, attempts to find the corresponding flags data
@@ -27085,7 +27085,7 @@ export namespace NM {
          */
         static read_vpn_details(fd: number): [boolean, GLib.HashTable<any, any>, GLib.HashTable<any, any>];
 
-        // Own virtual methods of NM.VpnPluginOld
+        // Virtual methods
 
         vfunc_config(config: GLib.Variant): void;
         vfunc_connect(connection: Connection): boolean;
@@ -27100,7 +27100,7 @@ export namespace NM {
         vfunc_quit(): void;
         vfunc_state_changed(state: VpnServiceState): void;
 
-        // Own methods of NM.VpnPluginOld
+        // Methods
 
         disconnect(): boolean;
         // Conflicted with GObject.Object.disconnect
@@ -27658,7 +27658,7 @@ export namespace NM {
     abstract class VpnServicePlugin extends GObject.Object implements Gio.Initable {
         static $gtype: GObject.GType<VpnServicePlugin>;
 
-        // Own properties of NM.VpnServicePlugin
+        // Properties
 
         /**
          * The D-Bus service name of this plugin.
@@ -27682,13 +27682,13 @@ export namespace NM {
          */
         get watchPeer(): boolean;
 
-        // Constructors of NM.VpnServicePlugin
+        // Constructors
 
         constructor(properties?: Partial<VpnServicePlugin.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of NM.VpnServicePlugin
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -27721,7 +27721,7 @@ export namespace NM {
         connect_after(signal: 'state-changed', callback: (_source: this, object: number) => void): number;
         emit(signal: 'state-changed', object: number): void;
 
-        // Own static methods of NM.VpnServicePlugin
+        // Static methods
 
         /**
          * Given a VPN secret key name, attempts to find the corresponding flags data
@@ -27741,7 +27741,7 @@ export namespace NM {
          */
         static read_vpn_details(fd: number): [boolean, GLib.HashTable<any, any>, GLib.HashTable<any, any>];
 
-        // Own virtual methods of NM.VpnServicePlugin
+        // Virtual methods
 
         vfunc_config(config: GLib.Variant): void;
         vfunc_connect(connection: Connection): boolean;
@@ -27756,7 +27756,7 @@ export namespace NM {
         vfunc_quit(): void;
         vfunc_state_changed(state: VpnServiceState): void;
 
-        // Own methods of NM.VpnServicePlugin
+        // Methods
 
         disconnect(): boolean;
         // Conflicted with GObject.Object.disconnect
@@ -28298,7 +28298,7 @@ export namespace NM {
     class WifiP2PPeer extends Object {
         static $gtype: GObject.GType<WifiP2PPeer>;
 
-        // Own properties of NM.WifiP2PPeer
+        // Properties
 
         /**
          * The flags of the P2P peer.
@@ -28359,13 +28359,13 @@ export namespace NM {
          */
         get wfdIes(): GLib.Bytes;
 
-        // Constructors of NM.WifiP2PPeer
+        // Constructors
 
         constructor(properties?: Partial<WifiP2PPeer.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of NM.WifiP2PPeer
+        // Methods
 
         /**
          * Validates a given connection against a given Wi-Fi P2P peer to ensure that
@@ -28457,7 +28457,7 @@ export namespace NM {
     class WimaxNsp extends Object {
         static $gtype: GObject.GType<WimaxNsp>;
 
-        // Own properties of NM.WimaxNsp
+        // Properties
 
         /**
          * The name of the WiMAX NSP.
@@ -28480,13 +28480,13 @@ export namespace NM {
          */
         get signalQuality(): number;
 
-        // Constructors of NM.WimaxNsp
+        // Constructors
 
         constructor(properties?: Partial<WimaxNsp.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of NM.WimaxNsp
+        // Methods
 
         /**
          * Validates a given connection against a given WiMAX NSP to ensure that the
@@ -28526,14 +28526,14 @@ export namespace NM {
     class BridgeVlan {
         static $gtype: GObject.GType<BridgeVlan>;
 
-        // Constructors of NM.BridgeVlan
+        // Constructors
 
         constructor(vid_start: number, vid_end: number);
         _init(...args: any[]): void;
 
         static ['new'](vid_start: number, vid_end: number): BridgeVlan;
 
-        // Own static methods of NM.BridgeVlan
+        // Static methods
 
         /**
          * Parses the string representation of the queueing
@@ -28542,7 +28542,7 @@ export namespace NM {
          */
         static from_str(str: string): BridgeVlan;
 
-        // Own methods of NM.BridgeVlan
+        // Methods
 
         /**
          * Compare two bridge VLAN objects.
@@ -28644,11 +28644,11 @@ export namespace NM {
     abstract class DnsEntry {
         static $gtype: GObject.GType<DnsEntry>;
 
-        // Constructors of NM.DnsEntry
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of NM.DnsEntry
+        // Methods
 
         /**
          * Gets the list of DNS domains.
@@ -28685,7 +28685,7 @@ export namespace NM {
     class IPAddress {
         static $gtype: GObject.GType<IPAddress>;
 
-        // Constructors of NM.IPAddress
+        // Constructors
 
         constructor(family: number, addr: string, prefix: number);
         _init(...args: any[]): void;
@@ -28694,7 +28694,7 @@ export namespace NM {
 
         static new_binary(family: number, addr: any | null, prefix: number): IPAddress;
 
-        // Own methods of NM.IPAddress
+        // Methods
 
         /**
          * Note that with `cmp_flags` #NM_IP_ADDRESS_CMP_FLAGS_WITH_ATTRS, there
@@ -28780,7 +28780,7 @@ export namespace NM {
     class IPRoute {
         static $gtype: GObject.GType<IPRoute>;
 
-        // Constructors of NM.IPRoute
+        // Constructors
 
         constructor(family: number, dest: string, prefix: number, next_hop: string | null, metric: number);
         _init(...args: any[]): void;
@@ -28795,7 +28795,7 @@ export namespace NM {
             metric: number,
         ): IPRoute;
 
-        // Own static methods of NM.IPRoute
+        // Static methods
 
         /**
          * Validates a route attribute, i.e. checks that the attribute is a known one
@@ -28807,7 +28807,7 @@ export namespace NM {
         static attribute_validate(name: string, value: GLib.Variant, family: number): [boolean, boolean];
         static get_variant_attribute_spec(): VariantAttributeSpec;
 
-        // Own methods of NM.IPRoute
+        // Methods
 
         /**
          * Creates a copy of `route`
@@ -28916,14 +28916,14 @@ export namespace NM {
     class IPRoutingRule {
         static $gtype: GObject.GType<IPRoutingRule>;
 
-        // Constructors of NM.IPRoutingRule
+        // Constructors
 
         constructor(addr_family: number);
         _init(...args: any[]): void;
 
         static ['new'](addr_family: number): IPRoutingRule;
 
-        // Own static methods of NM.IPRoutingRule
+        // Static methods
 
         static from_string(
             str: string,
@@ -28931,7 +28931,7 @@ export namespace NM {
             extra_args?: GLib.HashTable<any, any> | null,
         ): IPRoutingRule;
 
-        // Own methods of NM.IPRoutingRule
+        // Methods
 
         cmp(other?: IPRoutingRule | null): number;
         get_action(): number;
@@ -29051,11 +29051,11 @@ export namespace NM {
     abstract class KeyfileHandlerData {
         static $gtype: GObject.GType<KeyfileHandlerData>;
 
-        // Constructors of NM.KeyfileHandlerData
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of NM.KeyfileHandlerData
+        // Methods
 
         /**
          * Set the error for the handler. This lets the operation fail
@@ -29138,14 +29138,14 @@ export namespace NM {
     class LldpNeighbor {
         static $gtype: GObject.GType<LldpNeighbor>;
 
-        // Constructors of NM.LldpNeighbor
+        // Constructors
 
         constructor(properties?: Partial<{}>);
         _init(...args: any[]): void;
 
         static ['new'](): LldpNeighbor;
 
-        // Own methods of NM.LldpNeighbor
+        // Methods
 
         /**
          * Gets an array of attribute names available for `neighbor`.
@@ -29195,14 +29195,14 @@ export namespace NM {
     class Range {
         static $gtype: GObject.GType<Range>;
 
-        // Constructors of NM.Range
+        // Constructors
 
         constructor(start: number, end: number);
         _init(...args: any[]): void;
 
         static ['new'](start: number, end: number): Range;
 
-        // Own static methods of NM.Range
+        // Static methods
 
         /**
          * Parses the string representation of the range to create a %NMRange
@@ -29211,7 +29211,7 @@ export namespace NM {
          */
         static from_str(str: string): Range;
 
-        // Own methods of NM.Range
+        // Methods
 
         /**
          * Compare two ranges.
@@ -29307,14 +29307,14 @@ export namespace NM {
     class SriovVF {
         static $gtype: GObject.GType<SriovVF>;
 
-        // Constructors of NM.SriovVF
+        // Constructors
 
         constructor(index: number);
         _init(...args: any[]): void;
 
         static ['new'](index: number): SriovVF;
 
-        // Own static methods of NM.SriovVF
+        // Static methods
 
         /**
          * Validates a VF attribute, i.e. checks that the attribute is a known one,
@@ -29324,7 +29324,7 @@ export namespace NM {
          */
         static attribute_validate(name: string, value: GLib.Variant): [boolean, boolean];
 
-        // Own methods of NM.SriovVF
+        // Methods
 
         /**
          * Adds a VLAN to the VF. Currently kernel only supports one VLAN per VF.
@@ -29416,14 +29416,14 @@ export namespace NM {
     class TCAction {
         static $gtype: GObject.GType<TCAction>;
 
-        // Constructors of NM.TCAction
+        // Constructors
 
         constructor(kind: string);
         _init(...args: any[]): void;
 
         static ['new'](kind: string): TCAction;
 
-        // Own methods of NM.TCAction
+        // Methods
 
         /**
          * Creates a copy of `action`
@@ -29469,14 +29469,14 @@ export namespace NM {
     class TCQdisc {
         static $gtype: GObject.GType<TCQdisc>;
 
-        // Constructors of NM.TCQdisc
+        // Constructors
 
         constructor(kind: string, parent: number);
         _init(...args: any[]): void;
 
         static ['new'](kind: string, parent: number): TCQdisc;
 
-        // Own methods of NM.TCQdisc
+        // Methods
 
         /**
          * Creates a copy of `qdisc`
@@ -29529,14 +29529,14 @@ export namespace NM {
     class TCTfilter {
         static $gtype: GObject.GType<TCTfilter>;
 
-        // Constructors of NM.TCTfilter
+        // Constructors
 
         constructor(kind: string, parent: number);
         _init(...args: any[]): void;
 
         static ['new'](kind: string, parent: number): TCTfilter;
 
-        // Own methods of NM.TCTfilter
+        // Methods
 
         /**
          * Creates a copy of `tfilter`
@@ -29578,7 +29578,7 @@ export namespace NM {
     class TeamLinkWatcher {
         static $gtype: GObject.GType<TeamLinkWatcher>;
 
-        // Constructors of NM.TeamLinkWatcher
+        // Constructors
 
         constructor(
             init_wait: number,
@@ -29618,7 +29618,7 @@ export namespace NM {
             target_host: string,
         ): TeamLinkWatcher;
 
-        // Own methods of NM.TeamLinkWatcher
+        // Methods
 
         /**
          * Creates a copy of `watcher`
@@ -29695,7 +29695,7 @@ export namespace NM {
     abstract class VariantAttributeSpec {
         static $gtype: GObject.GType<VariantAttributeSpec>;
 
-        // Constructors of NM.VariantAttributeSpec
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -29706,7 +29706,7 @@ export namespace NM {
     abstract class VpnEditorPluginVT {
         static $gtype: GObject.GType<VpnEditorPluginVT>;
 
-        // Constructors of NM.VpnEditorPluginVT
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -29722,14 +29722,14 @@ export namespace NM {
     class WireGuardPeer {
         static $gtype: GObject.GType<WireGuardPeer>;
 
-        // Constructors of NM.WireGuardPeer
+        // Constructors
 
         constructor(properties?: Partial<{}>);
         _init(...args: any[]): void;
 
         static ['new'](): WireGuardPeer;
 
-        // Own methods of NM.WireGuardPeer
+        // Methods
 
         /**
          * Appends `allowed_ip` setting to the list. This does not check
@@ -29843,7 +29843,7 @@ export namespace NM {
         prototype: Connection;
     }
     interface Connection extends GObject.Object {
-        // Own methods of NM.Connection
+        // Methods
 
         /**
          * Adds a #NMSetting to the connection, replacing any previous #NMSetting of the
@@ -30247,7 +30247,7 @@ export namespace NM {
          */
         verify_secrets(): boolean;
 
-        // Own virtual methods of NM.Connection
+        // Virtual methods
 
         vfunc_changed(): void;
         vfunc_secrets_cleared(): void;
@@ -30267,12 +30267,12 @@ export namespace NM {
         prototype: VpnEditor;
     }
     interface VpnEditor extends GObject.Object {
-        // Own methods of NM.VpnEditor
+        // Methods
 
         get_widget<T = GObject.Object>(): T;
         update_connection(connection: Connection): boolean;
 
-        // Own virtual methods of NM.VpnEditor
+        // Virtual methods
 
         vfunc_changed(): void;
         vfunc_get_widget<T = GObject.Object>(): T;
@@ -30331,7 +30331,7 @@ export namespace NM {
         ): VpnEditorPlugin;
     }
     interface VpnEditorPlugin extends GObject.Object {
-        // Own properties of NM.VpnEditorPlugin
+        // Properties
 
         /**
          * Longer description of the VPN plugin.
@@ -30346,7 +30346,7 @@ export namespace NM {
          */
         get service(): string;
 
-        // Own methods of NM.VpnEditorPlugin
+        // Methods
 
         ['export'](path: string, connection: Connection): boolean;
         get_capabilities(): VpnEditorPluginCapability;
@@ -30372,7 +30372,7 @@ export namespace NM {
          */
         set_plugin_info(plugin_info?: VpnPluginInfo | null): void;
 
-        // Own virtual methods of NM.VpnEditorPlugin
+        // Virtual methods
 
         vfunc_export_to_file(path: string, connection: Connection): boolean;
         vfunc_get_capabilities(): VpnEditorPluginCapability;

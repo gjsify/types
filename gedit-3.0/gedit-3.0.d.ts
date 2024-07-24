@@ -301,20 +301,20 @@ export namespace Gedit {
     class App extends Gtk.Application implements Gio.ActionGroup, Gio.ActionMap {
         static $gtype: GObject.GType<App>;
 
-        // Constructors of Gedit.App
+        // Constructors
 
         constructor(properties?: Partial<App.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of Gedit.App
+        // Virtual methods
 
         vfunc_help_link_id(name: string, link_id: string): string;
         vfunc_process_window_event(window: Window, event: Gdk.Event): boolean;
         vfunc_set_window_title(window: Window, title: string): void;
         vfunc_show_help(parent: Gtk.Window, name: string, link_id: string): boolean;
 
-        // Own methods of Gedit.App
+        // Methods
 
         /**
          * Create a new #GeditWindow part of `app`.
@@ -780,7 +780,7 @@ export namespace Gedit {
     class Document extends GtkSource.Buffer {
         static $gtype: GObject.GType<Document>;
 
-        // Own properties of Gedit.Document
+        // Properties
 
         /**
          * The document's content type.
@@ -815,7 +815,7 @@ export namespace Gedit {
          */
         get mimeType(): string;
 
-        // Constructors of Gedit.Document
+        // Constructors
 
         constructor(properties?: Partial<Document.ConstructorProps>, ...args: any[]);
 
@@ -823,7 +823,7 @@ export namespace Gedit {
 
         static ['new'](): Document;
 
-        // Own signals of Gedit.Document
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -841,14 +841,14 @@ export namespace Gedit {
         connect_after(signal: 'saved', callback: (_source: this) => void): number;
         emit(signal: 'saved'): void;
 
-        // Own virtual methods of Gedit.Document
+        // Virtual methods
 
         vfunc_load(): void;
         vfunc_loaded(): void;
         vfunc_save(): void;
         vfunc_saved(): void;
 
-        // Own methods of Gedit.Document
+        // Methods
 
         get_content_type(): string;
         /**
@@ -926,7 +926,7 @@ export namespace Gedit {
     {
         static $gtype: GObject.GType<EncodingsComboBox>;
 
-        // Own properties of Gedit.EncodingsComboBox
+        // Properties
 
         /**
          * Whether the combo box should be used for saving a content. If
@@ -943,7 +943,7 @@ export namespace Gedit {
         get saveMode(): boolean;
         set saveMode(val: boolean);
 
-        // Constructors of Gedit.EncodingsComboBox
+        // Constructors
 
         constructor(properties?: Partial<EncodingsComboBox.ConstructorProps>, ...args: any[]);
 
@@ -954,7 +954,7 @@ export namespace Gedit {
 
         static ['new'](...args: never[]): any;
 
-        // Own methods of Gedit.EncodingsComboBox
+        // Methods
 
         get_selected_encoding(): GtkSource.Encoding;
         /**
@@ -5108,11 +5108,11 @@ export namespace Gedit {
     class MenuExtension extends GObject.Object {
         static $gtype: GObject.GType<MenuExtension>;
 
-        // Own properties of Gedit.MenuExtension
+        // Properties
 
         get menu(): Gio.Menu;
 
-        // Constructors of Gedit.MenuExtension
+        // Constructors
 
         constructor(properties?: Partial<MenuExtension.ConstructorProps>, ...args: any[]);
 
@@ -5120,7 +5120,7 @@ export namespace Gedit {
 
         static ['new'](menu: Gio.Menu): MenuExtension;
 
-        // Own methods of Gedit.MenuExtension
+        // Methods
 
         append_menu_item(item: Gio.MenuItem): void;
         prepend_menu_item(item: Gio.MenuItem): void;
@@ -5140,7 +5140,7 @@ export namespace Gedit {
     class Message extends GObject.Object {
         static $gtype: GObject.GType<Message>;
 
-        // Own properties of Gedit.Message
+        // Properties
 
         /**
          * The messages method.
@@ -5152,13 +5152,13 @@ export namespace Gedit {
         get objectPath(): string;
         set objectPath(val: string);
 
-        // Constructors of Gedit.Message
+        // Constructors
 
         constructor(properties?: Partial<Message.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of Gedit.Message
+        // Static methods
 
         /**
          * Returns whether `object_path` is a valid object path
@@ -5174,7 +5174,7 @@ export namespace Gedit {
          */
         static type_identifier(object_path?: string | null, method?: string | null): string;
 
-        // Own methods of Gedit.Message
+        // Methods
 
         /**
          * Get the message method.
@@ -5217,7 +5217,7 @@ export namespace Gedit {
     class MessageBus extends GObject.Object {
         static $gtype: GObject.GType<MessageBus>;
 
-        // Constructors of Gedit.MessageBus
+        // Constructors
 
         constructor(properties?: Partial<MessageBus.ConstructorProps>, ...args: any[]);
 
@@ -5225,7 +5225,7 @@ export namespace Gedit {
 
         static ['new'](): MessageBus;
 
-        // Own signals of Gedit.MessageBus
+        // Signals
 
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -5242,20 +5242,20 @@ export namespace Gedit {
         ): number;
         emit(signal: 'unregistered', object_path: string, method: string): void;
 
-        // Own static methods of Gedit.MessageBus
+        // Static methods
 
         /**
          * Get the default application #GeditMessageBus.
          */
         static get_default(): MessageBus;
 
-        // Own virtual methods of Gedit.MessageBus
+        // Virtual methods
 
         vfunc_dispatch(message: Message): void;
         vfunc_registered(object_path: string, method: string): void;
         vfunc_unregistered(object_path: string, method: string): void;
 
-        // Own methods of Gedit.MessageBus
+        // Methods
 
         /**
          * Blocks evoking the callback specified by `id`. Unblock the callback by
@@ -5394,7 +5394,7 @@ export namespace Gedit {
     class Statusbar extends Gtk.Statusbar implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<Statusbar>;
 
-        // Constructors of Gedit.Statusbar
+        // Constructors
 
         constructor(properties?: Partial<Statusbar.ConstructorProps>, ...args: any[]);
 
@@ -5402,7 +5402,7 @@ export namespace Gedit {
 
         static ['new'](): Statusbar;
 
-        // Own methods of Gedit.Statusbar
+        // Methods
 
         clear_overwrite(): void;
         /**
@@ -5842,7 +5842,7 @@ export namespace Gedit {
     class Tab extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<Tab>;
 
-        // Own properties of Gedit.Tab
+        // Properties
 
         get autosave(): boolean;
         set autosave(val: boolean);
@@ -5855,13 +5855,13 @@ export namespace Gedit {
         get name(): string;
         get state(): TabState;
 
-        // Constructors of Gedit.Tab
+        // Constructors
 
         constructor(properties?: Partial<Tab.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of Gedit.Tab
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -5870,7 +5870,7 @@ export namespace Gedit {
         connect_after(signal: 'drop-uris', callback: (_source: this, object: string[]) => void): number;
         emit(signal: 'drop-uris', object: string[]): void;
 
-        // Own static methods of Gedit.Tab
+        // Static methods
 
         /**
          * Gets the #GeditTab associated with `doc`.
@@ -5878,7 +5878,7 @@ export namespace Gedit {
          */
         static get_from_document(doc: Document): Tab;
 
-        // Own methods of Gedit.Tab
+        // Methods
 
         /**
          * Gets the current state for the autosave feature
@@ -6359,7 +6359,7 @@ export namespace Gedit {
     class View extends GtkSource.View implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable {
         static $gtype: GObject.GType<View>;
 
-        // Constructors of Gedit.View
+        // Constructors
 
         constructor(properties?: Partial<View.ConstructorProps>, ...args: any[]);
 
@@ -6370,7 +6370,7 @@ export namespace Gedit {
 
         static ['new'](...args: never[]): any;
 
-        // Own signals of Gedit.View
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -6379,7 +6379,7 @@ export namespace Gedit {
         connect_after(signal: 'drop-uris', callback: (_source: this, uri_list: string[]) => void): number;
         emit(signal: 'drop-uris', uri_list: string[]): void;
 
-        // Own virtual methods of Gedit.View
+        // Virtual methods
 
         vfunc_drop_uris(uri_list: string): void;
 
@@ -6827,22 +6827,22 @@ export namespace Gedit {
     {
         static $gtype: GObject.GType<Window>;
 
-        // Own properties of Gedit.Window
+        // Properties
 
         get state(): WindowState;
 
-        // Own fields of Gedit.Window
+        // Fields
 
         // @ts-expect-error This property conflicts with an accessor in a parent class or interface.
         window: Gtk.ApplicationWindow;
 
-        // Constructors of Gedit.Window
+        // Constructors
 
         constructor(properties?: Partial<Window.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of Gedit.Window
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -6863,7 +6863,7 @@ export namespace Gedit {
         connect_after(signal: 'tabs-reordered', callback: (_source: this) => void): number;
         emit(signal: 'tabs-reordered'): void;
 
-        // Own virtual methods of Gedit.Window
+        // Virtual methods
 
         vfunc_active_tab_changed(tab: Tab): void;
         vfunc_active_tab_state_changed(): void;
@@ -6871,7 +6871,7 @@ export namespace Gedit {
         vfunc_tab_removed(tab: Tab): void;
         vfunc_tabs_reordered(): void;
 
-        // Own methods of Gedit.Window
+        // Methods
 
         /**
          * Closes all opened tabs.
@@ -7973,7 +7973,7 @@ export namespace Gedit {
     abstract class MessageBusPrivate {
         static $gtype: GObject.GType<MessageBusPrivate>;
 
-        // Constructors of Gedit.MessageBusPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -7982,7 +7982,7 @@ export namespace Gedit {
     abstract class MessagePrivate {
         static $gtype: GObject.GType<MessagePrivate>;
 
-        // Constructors of Gedit.MessagePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -7994,7 +7994,7 @@ export namespace Gedit {
     abstract class ViewPrivate {
         static $gtype: GObject.GType<ViewPrivate>;
 
-        // Constructors of Gedit.ViewPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -8004,7 +8004,7 @@ export namespace Gedit {
     abstract class WindowPrivate {
         static $gtype: GObject.GType<WindowPrivate>;
 
-        // Constructors of Gedit.WindowPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -8022,7 +8022,7 @@ export namespace Gedit {
         prototype: AppActivatable;
     }
     interface AppActivatable extends GObject.Object {
-        // Own properties of Gedit.AppActivatable
+        // Properties
 
         /**
          * The app property contains the gedit app for this
@@ -8030,7 +8030,7 @@ export namespace Gedit {
          */
         get app(): App;
 
-        // Own methods of Gedit.AppActivatable
+        // Methods
 
         /**
          * Activates the extension on the application.
@@ -8049,7 +8049,7 @@ export namespace Gedit {
          */
         extend_menu(extension_point: string): MenuExtension;
 
-        // Own virtual methods of Gedit.AppActivatable
+        // Virtual methods
 
         /**
          * Activates the extension on the application.
@@ -8076,7 +8076,7 @@ export namespace Gedit {
         prototype: ViewActivatable;
     }
     interface ViewActivatable extends GObject.Object {
-        // Own properties of Gedit.ViewActivatable
+        // Properties
 
         /**
          * The window property contains the gedit window for this
@@ -8084,7 +8084,7 @@ export namespace Gedit {
          */
         get view(): View;
 
-        // Own methods of Gedit.ViewActivatable
+        // Methods
 
         /**
          * Activates the extension on the window property.
@@ -8095,7 +8095,7 @@ export namespace Gedit {
          */
         deactivate(): void;
 
-        // Own virtual methods of Gedit.ViewActivatable
+        // Virtual methods
 
         /**
          * Activates the extension on the window property.
@@ -8122,7 +8122,7 @@ export namespace Gedit {
         prototype: WindowActivatable;
     }
     interface WindowActivatable extends GObject.Object {
-        // Own properties of Gedit.WindowActivatable
+        // Properties
 
         /**
          * The window property contains the gedit window for this
@@ -8130,7 +8130,7 @@ export namespace Gedit {
          */
         get window(): Window;
 
-        // Own methods of Gedit.WindowActivatable
+        // Methods
 
         /**
          * Activates the extension on the window property.
@@ -8146,7 +8146,7 @@ export namespace Gedit {
          */
         update_state(): void;
 
-        // Own virtual methods of Gedit.WindowActivatable
+        // Virtual methods
 
         /**
          * Activates the extension on the window property.

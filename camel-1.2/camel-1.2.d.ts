@@ -317,14 +317,14 @@ export namespace Camel {
     class Error extends GLib.Error {
         static $gtype: GObject.GType<Error>;
 
-        // Static fields of Camel.Error
+        // Static fields
 
         /**
          * a generic (fallback) error code
          */
         static ERROR_GENERIC: number;
 
-        // Constructors of Camel.Error
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
@@ -373,7 +373,7 @@ export namespace Camel {
     class FolderError extends GLib.Error {
         static $gtype: GObject.GType<FolderError>;
 
-        // Static fields of Camel.FolderError
+        // Static fields
 
         /**
          * a generic error about invalid operation with the folder
@@ -408,12 +408,12 @@ export namespace Camel {
          */
         static SUMMARY_INVALID: number;
 
-        // Constructors of Camel.FolderError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of Camel.FolderError
+        // Static methods
 
         static quark(): GLib.Quark;
     }
@@ -802,7 +802,7 @@ export namespace Camel {
     class ServiceError extends GLib.Error {
         static $gtype: GObject.GType<ServiceError>;
 
-        // Static fields of Camel.ServiceError
+        // Static fields
 
         /**
          * a generic service error code
@@ -825,12 +825,12 @@ export namespace Camel {
          */
         static NOT_CONNECTED: number;
 
-        // Constructors of Camel.ServiceError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of Camel.ServiceError
+        // Static methods
 
         static quark(): GLib.Quark;
     }
@@ -868,7 +868,7 @@ export namespace Camel {
     class StoreError extends GLib.Error {
         static $gtype: GObject.GType<StoreError>;
 
-        // Static fields of Camel.StoreError
+        // Static fields
 
         /**
          * an invalid store operation had been requested
@@ -879,12 +879,12 @@ export namespace Camel {
          */
         static NO_FOLDER: number;
 
-        // Constructors of Camel.StoreError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of Camel.StoreError
+        // Static methods
 
         static quark(): GLib.Quark;
     }
@@ -3029,7 +3029,7 @@ export namespace Camel {
     class Address extends GObject.Object {
         static $gtype: GObject.GType<Address>;
 
-        // Constructors of Camel.Address
+        // Constructors
 
         constructor(properties?: Partial<Address.ConstructorProps>, ...args: any[]);
 
@@ -3037,7 +3037,7 @@ export namespace Camel {
 
         static ['new'](): Address;
 
-        // Own virtual methods of Camel.Address
+        // Virtual methods
 
         /**
          * Concatenate one address onto another. The addresses must
@@ -3074,7 +3074,7 @@ export namespace Camel {
          */
         vfunc_unformat(raw: string): number;
 
-        // Own methods of Camel.Address
+        // Methods
 
         /**
          * Concatenate one address onto another. The addresses must
@@ -3138,7 +3138,7 @@ export namespace Camel {
     class BlockFile extends GObject.Object {
         static $gtype: GObject.GType<BlockFile>;
 
-        // Constructors of Camel.BlockFile
+        // Constructors
 
         constructor(properties?: Partial<BlockFile.ConstructorProps>, ...args: any[]);
 
@@ -3146,12 +3146,12 @@ export namespace Camel {
 
         static ['new'](path: string, flags: number, version: string, block_size: number): BlockFile;
 
-        // Own virtual methods of Camel.BlockFile
+        // Virtual methods
 
         vfunc_init_root(): number;
         vfunc_validate_root(): number;
 
-        // Own methods of Camel.BlockFile
+        // Methods
 
         /**
          * Reattach a block that has been detached.
@@ -3224,7 +3224,7 @@ export namespace Camel {
     class CertDB extends GObject.Object {
         static $gtype: GObject.GType<CertDB>;
 
-        // Constructors of Camel.CertDB
+        // Constructors
 
         constructor(properties?: Partial<CertDB.ConstructorProps>, ...args: any[]);
 
@@ -3232,21 +3232,21 @@ export namespace Camel {
 
         static ['new'](): CertDB;
 
-        // Own static methods of Camel.CertDB
+        // Static methods
 
         /**
          * FIXME Document me!
          */
         static get_default(): CertDB;
 
-        // Own virtual methods of Camel.CertDB
+        // Virtual methods
 
         vfunc_cert_load(istream?: any | null): Cert;
         vfunc_cert_save(cert: Cert, ostream?: any | null): number;
         vfunc_header_load(istream?: any | null): number;
         vfunc_header_save(ostream?: any | null): number;
 
-        // Own methods of Camel.CertDB
+        // Methods
 
         clear(): void;
         get_host(hostname: string, fingerprint: string): Cert | null;
@@ -3288,11 +3288,11 @@ export namespace Camel {
     class CipherContext extends GObject.Object {
         static $gtype: GObject.GType<CipherContext>;
 
-        // Own properties of Camel.CipherContext
+        // Properties
 
         get session(): Session;
 
-        // Constructors of Camel.CipherContext
+        // Constructors
 
         constructor(properties?: Partial<CipherContext.ConstructorProps>, ...args: any[]);
 
@@ -3300,11 +3300,11 @@ export namespace Camel {
 
         static ['new'](session?: Session | null): CipherContext;
 
-        // Own static methods of Camel.CipherContext
+        // Static methods
 
         static error_quark(): GLib.Quark;
 
-        // Own virtual methods of Camel.CipherContext
+        // Virtual methods
 
         /**
          * Decrypts `ipart` into `opart`.
@@ -3356,7 +3356,7 @@ export namespace Camel {
          */
         vfunc_verify_sync(ipart: MimePart, cancellable?: Gio.Cancellable | null): CipherValidity;
 
-        // Own methods of Camel.CipherContext
+        // Methods
 
         /**
          * Asynchronously decrypts `ipart` into `opart`.
@@ -3533,7 +3533,7 @@ export namespace Camel {
     class DB extends GObject.Object {
         static $gtype: GObject.GType<DB>;
 
-        // Constructors of Camel.DB
+        // Constructors
 
         constructor(properties?: Partial<DB.ConstructorProps>, ...args: any[]);
 
@@ -3541,7 +3541,7 @@ export namespace Camel {
 
         static ['new'](filename: string): DB;
 
-        // Own static methods of Camel.DB
+        // Static methods
 
         /**
          * Frees the `record` and all of its associated data.
@@ -3582,7 +3582,7 @@ export namespace Camel {
          */
         static sqlize_string(string: string): string;
 
-        // Own methods of Camel.DB
+        // Methods
 
         /**
          * Ends an ongoing transaction by ignoring the changes.
@@ -3817,7 +3817,7 @@ export namespace Camel {
     class DataCache extends GObject.Object {
         static $gtype: GObject.GType<DataCache>;
 
-        // Own properties of Camel.DataCache
+        // Properties
 
         get expire_enabled(): boolean;
         set expire_enabled(val: boolean);
@@ -3826,7 +3826,7 @@ export namespace Camel {
         get path(): string;
         set path(val: string);
 
-        // Constructors of Camel.DataCache
+        // Constructors
 
         constructor(properties?: Partial<DataCache.ConstructorProps>, ...args: any[]);
 
@@ -3834,7 +3834,7 @@ export namespace Camel {
 
         static ['new'](path: string): DataCache;
 
-        // Own methods of Camel.DataCache
+        // Methods
 
         /**
          * Add a new item to the cache, returning a #GIOStream to the new item.
@@ -3956,7 +3956,7 @@ export namespace Camel {
     class DataWrapper extends GObject.Object {
         static $gtype: GObject.GType<DataWrapper>;
 
-        // Constructors of Camel.DataWrapper
+        // Constructors
 
         constructor(properties?: Partial<DataWrapper.ConstructorProps>, ...args: any[]);
 
@@ -3964,7 +3964,7 @@ export namespace Camel {
 
         static ['new'](): DataWrapper;
 
-        // Own virtual methods of Camel.DataWrapper
+        // Virtual methods
 
         /**
          * Constructs the content of `data_wrapper` from `input_stream`.
@@ -4070,7 +4070,7 @@ export namespace Camel {
          */
         vfunc_write_to_stream_sync(stream: Stream, cancellable?: Gio.Cancellable | null): number;
 
-        // Own methods of Camel.DataWrapper
+        // Methods
 
         /**
          * Calculates decoded size of the `data_wrapper` by saving it to a null-stream
@@ -4383,7 +4383,7 @@ export namespace Camel {
     class FilterDriver extends GObject.Object {
         static $gtype: GObject.GType<FilterDriver>;
 
-        // Constructors of Camel.FilterDriver
+        // Constructors
 
         constructor(properties?: Partial<FilterDriver.ConstructorProps>, ...args: any[]);
 
@@ -4391,7 +4391,7 @@ export namespace Camel {
 
         static ['new'](session: Session): FilterDriver;
 
-        // Own methods of Camel.FilterDriver
+        // Methods
 
         /**
          * Adds a new rule to set of rules to process by the filter driver.
@@ -4506,11 +4506,11 @@ export namespace Camel {
     class FilterInputStream extends Gio.FilterInputStream {
         static $gtype: GObject.GType<FilterInputStream>;
 
-        // Own properties of Camel.FilterInputStream
+        // Properties
 
         get filter(): MimeFilter;
 
-        // Constructors of Camel.FilterInputStream
+        // Constructors
 
         constructor(properties?: Partial<FilterInputStream.ConstructorProps>, ...args: any[]);
 
@@ -4518,7 +4518,7 @@ export namespace Camel {
 
         static ['new'](base_stream: Gio.InputStream, filter: MimeFilter): FilterInputStream;
 
-        // Own methods of Camel.FilterInputStream
+        // Methods
 
         /**
          * Gets the #CamelMimeFilter that is used by `filter_stream`.
@@ -4538,11 +4538,11 @@ export namespace Camel {
     class FilterOutputStream extends Gio.FilterOutputStream {
         static $gtype: GObject.GType<FilterOutputStream>;
 
-        // Own properties of Camel.FilterOutputStream
+        // Properties
 
         get filter(): MimeFilter;
 
-        // Constructors of Camel.FilterOutputStream
+        // Constructors
 
         constructor(properties?: Partial<FilterOutputStream.ConstructorProps>, ...args: any[]);
 
@@ -4550,7 +4550,7 @@ export namespace Camel {
 
         static ['new'](base_stream: Gio.OutputStream, filter: MimeFilter): FilterOutputStream;
 
-        // Own methods of Camel.FilterOutputStream
+        // Methods
 
         /**
          * Gets the #CamelMimeFilter that is used by `filter_stream`.
@@ -4594,7 +4594,7 @@ export namespace Camel {
     abstract class Folder extends Object {
         static $gtype: GObject.GType<Folder>;
 
-        // Own properties of Camel.Folder
+        // Properties
 
         /**
          * The folder's description.
@@ -4654,13 +4654,13 @@ export namespace Camel {
          */
         get parentStore(): Store;
 
-        // Constructors of Camel.Folder
+        // Constructors
 
         constructor(properties?: Partial<Folder.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of Camel.Folder
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -4675,11 +4675,11 @@ export namespace Camel {
         connect_after(signal: 'renamed', callback: (_source: this, old_name: string) => void): number;
         emit(signal: 'renamed', old_name: string): void;
 
-        // Own static methods of Camel.Folder
+        // Static methods
 
         static threaded_messages_dump(c: FolderThreadNode): number;
 
-        // Own virtual methods of Camel.Folder
+        // Virtual methods
 
         /**
          * Appends `message` to `folder`.  Only the flag and tag data from `info`
@@ -4912,7 +4912,7 @@ export namespace Camel {
             cancellable?: Gio.Cancellable | null,
         ): [boolean, string[] | null];
 
-        // Own methods of Camel.Folder
+        // Methods
 
         /**
          * Appends `message` to `folder` asynchronously.  Only the flag and tag data
@@ -5514,7 +5514,7 @@ export namespace Camel {
     class FolderSearch extends GObject.Object {
         static $gtype: GObject.GType<FolderSearch>;
 
-        // Constructors of Camel.FolderSearch
+        // Constructors
 
         constructor(properties?: Partial<FolderSearch.ConstructorProps>, ...args: any[]);
 
@@ -5522,7 +5522,7 @@ export namespace Camel {
 
         static ['new'](): FolderSearch;
 
-        // Own static methods of Camel.FolderSearch
+        // Static methods
 
         /**
          * Increases time `t` by the given number of months (or decreases, if
@@ -5552,7 +5552,7 @@ export namespace Camel {
          */
         static util_make_time(argc: number, argv: SExpResult): never;
 
-        // Own methods of Camel.FolderSearch
+        // Methods
 
         /**
          * Run a search.  Search must have had Folder already set on it, and
@@ -5655,7 +5655,7 @@ export namespace Camel {
     class FolderSummary extends GObject.Object {
         static $gtype: GObject.GType<FolderSummary>;
 
-        // Own properties of Camel.FolderSummary
+        // Properties
 
         /**
          * How many deleted infos is saved in a summary.
@@ -5710,7 +5710,7 @@ export namespace Camel {
          */
         get visibleCount(): number;
 
-        // Constructors of Camel.FolderSummary
+        // Constructors
 
         constructor(properties?: Partial<FolderSummary.ConstructorProps>, ...args: any[]);
 
@@ -5718,7 +5718,7 @@ export namespace Camel {
 
         static ['new'](folder: Folder): FolderSummary;
 
-        // Own signals of Camel.FolderSummary
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -5727,7 +5727,7 @@ export namespace Camel {
         connect_after(signal: 'changed', callback: (_source: this) => void): number;
         emit(signal: 'changed'): void;
 
-        // Own static methods of Camel.FolderSummary
+        // Static methods
 
         /**
          * Free's array and its elements returned from camel_folder_summary_get_array().
@@ -5735,7 +5735,7 @@ export namespace Camel {
          */
         static free_array(array: string[]): void;
 
-        // Own virtual methods of Camel.FolderSummary
+        // Virtual methods
 
         /**
          * Retrieve a summary item by uid.
@@ -5779,7 +5779,7 @@ export namespace Camel {
         vfunc_summary_header_load(fir?: any | null): boolean;
         vfunc_summary_header_save(): any | null;
 
-        // Own methods of Camel.FolderSummary
+        // Methods
 
         /**
          * Adds a new `info` record to the summary. If the `force_keep_uid` is %FALSE,
@@ -6019,7 +6019,7 @@ export namespace Camel {
     class GpgContext extends CipherContext {
         static $gtype: GObject.GType<GpgContext>;
 
-        // Own properties of Camel.GpgContext
+        // Properties
 
         get always_trust(): boolean;
         set always_trust(val: boolean);
@@ -6034,7 +6034,7 @@ export namespace Camel {
         get preferInline(): boolean;
         set preferInline(val: boolean);
 
-        // Constructors of Camel.GpgContext
+        // Constructors
 
         constructor(properties?: Partial<GpgContext.ConstructorProps>, ...args: any[]);
 
@@ -6042,7 +6042,7 @@ export namespace Camel {
 
         static ['new'](session?: Session | null): GpgContext;
 
-        // Own methods of Camel.GpgContext
+        // Methods
 
         get_always_trust(): boolean;
         /**
@@ -6167,7 +6167,7 @@ export namespace Camel {
     class HTMLParser extends GObject.Object {
         static $gtype: GObject.GType<HTMLParser>;
 
-        // Constructors of Camel.HTMLParser
+        // Constructors
 
         constructor(properties?: Partial<HTMLParser.ConstructorProps>, ...args: any[]);
 
@@ -6175,7 +6175,7 @@ export namespace Camel {
 
         static ['new'](): HTMLParser;
 
-        // Own methods of Camel.HTMLParser
+        // Methods
 
         attr(name: string): string;
         /**
@@ -6202,7 +6202,7 @@ export namespace Camel {
     class Index extends GObject.Object {
         static $gtype: GObject.GType<Index>;
 
-        // Own fields of Camel.Index
+        // Fields
 
         path: string;
         version: number;
@@ -6211,13 +6211,13 @@ export namespace Camel {
         normalize: IndexNorm;
         normalize_data: any;
 
-        // Constructors of Camel.Index
+        // Constructors
 
         constructor(properties?: Partial<Index.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of Camel.Index
+        // Virtual methods
 
         vfunc_add_name(name: string): IndexName | null;
         vfunc_compress(): number;
@@ -6235,7 +6235,7 @@ export namespace Camel {
         vfunc_words(): IndexCursor | null;
         vfunc_write_name(idn: IndexName): number;
 
-        // Own methods of Camel.Index
+        // Methods
 
         add_name(name: string): IndexName | null;
         compress(): number;
@@ -6265,21 +6265,21 @@ export namespace Camel {
     class IndexCursor extends GObject.Object {
         static $gtype: GObject.GType<IndexCursor>;
 
-        // Own fields of Camel.IndexCursor
+        // Fields
 
         index: Index;
 
-        // Constructors of Camel.IndexCursor
+        // Constructors
 
         constructor(properties?: Partial<IndexCursor.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of Camel.IndexCursor
+        // Virtual methods
 
         vfunc_next(): string;
 
-        // Own methods of Camel.IndexCursor
+        // Methods
 
         next(): string;
     }
@@ -6293,24 +6293,24 @@ export namespace Camel {
     class IndexName extends GObject.Object {
         static $gtype: GObject.GType<IndexName>;
 
-        // Own fields of Camel.IndexName
+        // Fields
 
         index: Index;
         name: string;
         buffer: Uint8Array;
 
-        // Constructors of Camel.IndexName
+        // Constructors
 
         constructor(properties?: Partial<IndexName.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of Camel.IndexName
+        // Virtual methods
 
         vfunc_add_buffer(buffer: string, len: number): number;
         vfunc_add_word(word: string): void;
 
-        // Own methods of Camel.IndexName
+        // Methods
 
         add_buffer(buffer: string, len: number): number;
         add_word(word: string): void;
@@ -6325,7 +6325,7 @@ export namespace Camel {
     class InternetAddress extends Address {
         static $gtype: GObject.GType<InternetAddress>;
 
-        // Constructors of Camel.InternetAddress
+        // Constructors
 
         constructor(properties?: Partial<InternetAddress.ConstructorProps>, ...args: any[]);
 
@@ -6333,7 +6333,7 @@ export namespace Camel {
 
         static ['new'](): InternetAddress;
 
-        // Own static methods of Camel.InternetAddress
+        // Static methods
 
         /**
          * Encode a single address ready for internet usage.  Header folding
@@ -6353,7 +6353,7 @@ export namespace Camel {
          */
         static format_address(name: string, addr: string): string;
 
-        // Own methods of Camel.InternetAddress
+        // Methods
 
         /**
          * Add a new internet address to `addr`.
@@ -6405,7 +6405,7 @@ export namespace Camel {
     class KeyFile extends GObject.Object {
         static $gtype: GObject.GType<KeyFile>;
 
-        // Constructors of Camel.KeyFile
+        // Constructors
 
         constructor(properties?: Partial<KeyFile.ConstructorProps>, ...args: any[]);
 
@@ -6413,7 +6413,7 @@ export namespace Camel {
 
         static ['new'](path: string, flags: number, version: string): KeyFile;
 
-        // Own methods of Camel.KeyFile
+        // Methods
 
         ['delete'](): number;
         /**
@@ -6443,7 +6443,7 @@ export namespace Camel {
     class KeyTable extends GObject.Object {
         static $gtype: GObject.GType<KeyTable>;
 
-        // Constructors of Camel.KeyTable
+        // Constructors
 
         constructor(properties?: Partial<KeyTable.ConstructorProps>, ...args: any[]);
 
@@ -6451,7 +6451,7 @@ export namespace Camel {
 
         static ['new'](bs: BlockFile, root: _block_t): KeyTable;
 
-        // Own methods of Camel.KeyTable
+        // Methods
 
         add(key: string, data: _block_t, flags: number): _key_t;
         lookup(keyid: _key_t, key: string, flags: number): _block_t;
@@ -6484,7 +6484,7 @@ export namespace Camel {
     class LocalSettings extends StoreSettings {
         static $gtype: GObject.GType<LocalSettings>;
 
-        // Own properties of Camel.LocalSettings
+        // Properties
 
         get filter_all(): boolean;
         set filter_all(val: boolean);
@@ -6501,13 +6501,13 @@ export namespace Camel {
         get path(): string;
         set path(val: string);
 
-        // Constructors of Camel.LocalSettings
+        // Constructors
 
         constructor(properties?: Partial<LocalSettings.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Camel.LocalSettings
+        // Methods
 
         /**
          * Thread-safe variation of camel_local_settings_get_path().
@@ -6581,18 +6581,18 @@ export namespace Camel {
     abstract class Medium extends DataWrapper {
         static $gtype: GObject.GType<Medium>;
 
-        // Own properties of Camel.Medium
+        // Properties
 
         get content(): DataWrapper;
         set content(val: DataWrapper);
 
-        // Constructors of Camel.Medium
+        // Constructors
 
         constructor(properties?: Partial<Medium.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of Camel.Medium
+        // Virtual methods
 
         /**
          * Adds a header to a #CamelMedium.
@@ -6647,7 +6647,7 @@ export namespace Camel {
          */
         vfunc_set_header(name: string, value?: string | null): void;
 
-        // Own methods of Camel.Medium
+        // Methods
 
         /**
          * Adds a header to a #CamelMedium.
@@ -6748,7 +6748,7 @@ export namespace Camel {
     abstract class MessageInfo extends GObject.Object {
         static $gtype: GObject.GType<MessageInfo>;
 
-        // Own properties of Camel.MessageInfo
+        // Properties
 
         /**
          * Flag, whether the info is currently aborting notifications. It is used to avoid
@@ -6935,7 +6935,7 @@ export namespace Camel {
         get userTags(): NameValueArray;
         set userTags(val: NameValueArray);
 
-        // Constructors of Camel.MessageInfo
+        // Constructors
 
         constructor(properties?: Partial<MessageInfo.ConstructorProps>, ...args: any[]);
 
@@ -6947,7 +6947,7 @@ export namespace Camel {
 
         static new_from_message(summary: FolderSummary | null, message: MimeMessage): MessageInfo;
 
-        // Own virtual methods of Camel.MessageInfo
+        // Virtual methods
 
         /**
          * Clones the `mi` as a new #CamelMessageInfo and eventually assigns
@@ -7251,7 +7251,7 @@ export namespace Camel {
          */
         vfunc_take_user_tags(user_tags?: NameValueArray | null): boolean;
 
-        // Own methods of Camel.MessageInfo
+        // Methods
 
         /**
          * Clones the `mi` as a new #CamelMessageInfo and eventually assigns
@@ -7705,7 +7705,7 @@ export namespace Camel {
     class MessageInfoBase extends MessageInfo {
         static $gtype: GObject.GType<MessageInfoBase>;
 
-        // Constructors of Camel.MessageInfoBase
+        // Constructors
 
         constructor(properties?: Partial<MessageInfoBase.ConstructorProps>, ...args: any[]);
 
@@ -7721,7 +7721,7 @@ export namespace Camel {
     abstract class MimeFilter extends GObject.Object {
         static $gtype: GObject.GType<MimeFilter>;
 
-        // Own fields of Camel.MimeFilter
+        // Fields
 
         outreal: string;
         outbuf: string;
@@ -7732,7 +7732,7 @@ export namespace Camel {
         backsize: number;
         backlen: number;
 
-        // Constructors of Camel.MimeFilter
+        // Constructors
 
         constructor(properties?: Partial<MimeFilter.ConstructorProps>, ...args: any[]);
 
@@ -7740,7 +7740,7 @@ export namespace Camel {
 
         static ['new'](): MimeFilter;
 
-        // Own virtual methods of Camel.MimeFilter
+        // Virtual methods
 
         /**
          * Passes the input buffer, `in,` through `filter` and generates an
@@ -7764,7 +7764,7 @@ export namespace Camel {
          */
         vfunc_reset(): void;
 
-        // Own methods of Camel.MimeFilter
+        // Methods
 
         /**
          * Saves `data` to be used as prespace input data to the next call to
@@ -7825,7 +7825,7 @@ export namespace Camel {
     class MimeFilterBasic extends MimeFilter {
         static $gtype: GObject.GType<MimeFilterBasic>;
 
-        // Constructors of Camel.MimeFilterBasic
+        // Constructors
 
         constructor(properties?: Partial<MimeFilterBasic.ConstructorProps>, ...args: any[]);
 
@@ -7846,7 +7846,7 @@ export namespace Camel {
     class MimeFilterBestenc extends MimeFilter {
         static $gtype: GObject.GType<MimeFilterBestenc>;
 
-        // Constructors of Camel.MimeFilterBestenc
+        // Constructors
 
         constructor(properties?: Partial<MimeFilterBestenc.ConstructorProps>, ...args: any[]);
 
@@ -7857,7 +7857,7 @@ export namespace Camel {
 
         static ['new'](...args: never[]): any;
 
-        // Own methods of Camel.MimeFilterBestenc
+        // Methods
 
         /**
          * Gets the best charset that can be used to contain this content.
@@ -7887,7 +7887,7 @@ export namespace Camel {
     class MimeFilterCRLF extends MimeFilter {
         static $gtype: GObject.GType<MimeFilterCRLF>;
 
-        // Constructors of Camel.MimeFilterCRLF
+        // Constructors
 
         constructor(properties?: Partial<MimeFilterCRLF.ConstructorProps>, ...args: any[]);
 
@@ -7898,7 +7898,7 @@ export namespace Camel {
 
         static ['new'](...args: never[]): any;
 
-        // Own methods of Camel.MimeFilterCRLF
+        // Methods
 
         get_ensure_crlf_end(): boolean;
         /**
@@ -7919,7 +7919,7 @@ export namespace Camel {
     class MimeFilterCanon extends MimeFilter {
         static $gtype: GObject.GType<MimeFilterCanon>;
 
-        // Constructors of Camel.MimeFilterCanon
+        // Constructors
 
         constructor(properties?: Partial<MimeFilterCanon.ConstructorProps>, ...args: any[]);
 
@@ -7940,7 +7940,7 @@ export namespace Camel {
     class MimeFilterCharset extends MimeFilter {
         static $gtype: GObject.GType<MimeFilterCharset>;
 
-        // Constructors of Camel.MimeFilterCharset
+        // Constructors
 
         constructor(properties?: Partial<MimeFilterCharset.ConstructorProps>, ...args: any[]);
 
@@ -7961,7 +7961,7 @@ export namespace Camel {
     class MimeFilterEnriched extends MimeFilter {
         static $gtype: GObject.GType<MimeFilterEnriched>;
 
-        // Constructors of Camel.MimeFilterEnriched
+        // Constructors
 
         constructor(properties?: Partial<MimeFilterEnriched.ConstructorProps>, ...args: any[]);
 
@@ -7982,7 +7982,7 @@ export namespace Camel {
     class MimeFilterFrom extends MimeFilter {
         static $gtype: GObject.GType<MimeFilterFrom>;
 
-        // Constructors of Camel.MimeFilterFrom
+        // Constructors
 
         constructor(properties?: Partial<MimeFilterFrom.ConstructorProps>, ...args: any[]);
 
@@ -8000,7 +8000,7 @@ export namespace Camel {
     class MimeFilterGZip extends MimeFilter {
         static $gtype: GObject.GType<MimeFilterGZip>;
 
-        // Constructors of Camel.MimeFilterGZip
+        // Constructors
 
         constructor(properties?: Partial<MimeFilterGZip.ConstructorProps>, ...args: any[]);
 
@@ -8021,7 +8021,7 @@ export namespace Camel {
     class MimeFilterHTML extends MimeFilter {
         static $gtype: GObject.GType<MimeFilterHTML>;
 
-        // Constructors of Camel.MimeFilterHTML
+        // Constructors
 
         constructor(properties?: Partial<MimeFilterHTML.ConstructorProps>, ...args: any[]);
 
@@ -8039,7 +8039,7 @@ export namespace Camel {
     class MimeFilterIndex extends MimeFilter {
         static $gtype: GObject.GType<MimeFilterIndex>;
 
-        // Constructors of Camel.MimeFilterIndex
+        // Constructors
 
         constructor(properties?: Partial<MimeFilterIndex.ConstructorProps>, ...args: any[]);
 
@@ -8050,7 +8050,7 @@ export namespace Camel {
 
         static ['new'](...args: never[]): any;
 
-        // Own methods of Camel.MimeFilterIndex
+        // Methods
 
         /**
          * Set `index` on `filter`.
@@ -8073,7 +8073,7 @@ export namespace Camel {
     class MimeFilterLinewrap extends MimeFilter {
         static $gtype: GObject.GType<MimeFilterLinewrap>;
 
-        // Constructors of Camel.MimeFilterLinewrap
+        // Constructors
 
         constructor(properties?: Partial<MimeFilterLinewrap.ConstructorProps>, ...args: any[]);
 
@@ -8094,7 +8094,7 @@ export namespace Camel {
     class MimeFilterPgp extends MimeFilter {
         static $gtype: GObject.GType<MimeFilterPgp>;
 
-        // Constructors of Camel.MimeFilterPgp
+        // Constructors
 
         constructor(properties?: Partial<MimeFilterPgp.ConstructorProps>, ...args: any[]);
 
@@ -8112,7 +8112,7 @@ export namespace Camel {
     class MimeFilterPreview extends MimeFilter {
         static $gtype: GObject.GType<MimeFilterPreview>;
 
-        // Constructors of Camel.MimeFilterPreview
+        // Constructors
 
         constructor(properties?: Partial<MimeFilterPreview.ConstructorProps>, ...args: any[]);
 
@@ -8123,7 +8123,7 @@ export namespace Camel {
 
         static ['new'](...args: never[]): any;
 
-        // Own methods of Camel.MimeFilterPreview
+        // Methods
 
         /**
          * Returns set limit for the text length, in characters.
@@ -8153,7 +8153,7 @@ export namespace Camel {
     class MimeFilterProgress extends MimeFilter {
         static $gtype: GObject.GType<MimeFilterProgress>;
 
-        // Constructors of Camel.MimeFilterProgress
+        // Constructors
 
         constructor(properties?: Partial<MimeFilterProgress.ConstructorProps>, ...args: any[]);
 
@@ -8174,7 +8174,7 @@ export namespace Camel {
     class MimeFilterToHTML extends MimeFilter {
         static $gtype: GObject.GType<MimeFilterToHTML>;
 
-        // Constructors of Camel.MimeFilterToHTML
+        // Constructors
 
         constructor(properties?: Partial<MimeFilterToHTML.ConstructorProps>, ...args: any[]);
 
@@ -8195,7 +8195,7 @@ export namespace Camel {
     class MimeFilterWindows extends MimeFilter {
         static $gtype: GObject.GType<MimeFilterWindows>;
 
-        // Constructors of Camel.MimeFilterWindows
+        // Constructors
 
         constructor(properties?: Partial<MimeFilterWindows.ConstructorProps>, ...args: any[]);
 
@@ -8206,7 +8206,7 @@ export namespace Camel {
 
         static ['new'](...args: never[]): any;
 
-        // Own methods of Camel.MimeFilterWindows
+        // Methods
 
         /**
          * Get whether or not the textual content filtered by `filter` is
@@ -8234,7 +8234,7 @@ export namespace Camel {
     class MimeFilterYenc extends MimeFilter {
         static $gtype: GObject.GType<MimeFilterYenc>;
 
-        // Constructors of Camel.MimeFilterYenc
+        // Constructors
 
         constructor(properties?: Partial<MimeFilterYenc.ConstructorProps>, ...args: any[]);
 
@@ -8245,7 +8245,7 @@ export namespace Camel {
 
         static ['new'](...args: never[]): any;
 
-        // Own methods of Camel.MimeFilterYenc
+        // Methods
 
         /**
          * Get the computed crc or (#guint32) -1 on fail.
@@ -8278,7 +8278,7 @@ export namespace Camel {
     class MimeMessage extends MimePart {
         static $gtype: GObject.GType<MimeMessage>;
 
-        // Constructors of Camel.MimeMessage
+        // Constructors
 
         constructor(properties?: Partial<MimeMessage.ConstructorProps>, ...args: any[]);
 
@@ -8286,7 +8286,7 @@ export namespace Camel {
 
         static ['new'](): MimeMessage;
 
-        // Own methods of Camel.MimeMessage
+        // Methods
 
         /**
          * Build an MBox from-line from `message`.
@@ -8435,7 +8435,7 @@ export namespace Camel {
     class MimeParser extends GObject.Object {
         static $gtype: GObject.GType<MimeParser>;
 
-        // Constructors of Camel.MimeParser
+        // Constructors
 
         constructor(properties?: Partial<MimeParser.ConstructorProps>, ...args: any[]);
 
@@ -8443,13 +8443,13 @@ export namespace Camel {
 
         static ['new'](): MimeParser;
 
-        // Own virtual methods of Camel.MimeParser
+        // Virtual methods
 
         vfunc_content(): void;
         vfunc_message(headers?: any | null): void;
         vfunc_part(): void;
 
-        // Own methods of Camel.MimeParser
+        // Methods
 
         /**
          * Get the content type defined in the current part.
@@ -8703,7 +8703,7 @@ export namespace Camel {
     class MimePart extends Medium {
         static $gtype: GObject.GType<MimePart>;
 
-        // Own properties of Camel.MimePart
+        // Properties
 
         get content_id(): string;
         set content_id(val: string);
@@ -8718,7 +8718,7 @@ export namespace Camel {
         get disposition(): string;
         set disposition(val: string);
 
-        // Constructors of Camel.MimePart
+        // Constructors
 
         constructor(properties?: Partial<MimePart.ConstructorProps>, ...args: any[]);
 
@@ -8726,7 +8726,7 @@ export namespace Camel {
 
         static ['new'](): MimePart;
 
-        // Own virtual methods of Camel.MimePart
+        // Virtual methods
 
         /**
          * Constructs a MIME part from a parser.
@@ -8743,7 +8743,7 @@ export namespace Camel {
          */
         vfunc_generate_preview(): string | null;
 
-        // Own methods of Camel.MimePart
+        // Methods
 
         /**
          * Constructs the contnet of `mime_part` from the given mime parser.
@@ -8909,7 +8909,7 @@ export namespace Camel {
     class Multipart extends DataWrapper {
         static $gtype: GObject.GType<Multipart>;
 
-        // Constructors of Camel.Multipart
+        // Constructors
 
         constructor(properties?: Partial<Multipart.ConstructorProps>, ...args: any[]);
 
@@ -8917,7 +8917,7 @@ export namespace Camel {
 
         static ['new'](): Multipart;
 
-        // Own virtual methods of Camel.Multipart
+        // Virtual methods
 
         /**
          * Appends the part to the multipart object.
@@ -8949,7 +8949,7 @@ export namespace Camel {
          */
         vfunc_set_boundary(boundary?: string | null): void;
 
-        // Own methods of Camel.Multipart
+        // Methods
 
         /**
          * Appends the part to the multipart object.
@@ -9019,7 +9019,7 @@ export namespace Camel {
     class MultipartEncrypted extends Multipart {
         static $gtype: GObject.GType<MultipartEncrypted>;
 
-        // Constructors of Camel.MultipartEncrypted
+        // Constructors
 
         constructor(properties?: Partial<MultipartEncrypted.ConstructorProps>, ...args: any[]);
 
@@ -9037,7 +9037,7 @@ export namespace Camel {
     class MultipartSigned extends Multipart {
         static $gtype: GObject.GType<MultipartSigned>;
 
-        // Constructors of Camel.MultipartSigned
+        // Constructors
 
         constructor(properties?: Partial<MultipartSigned.ConstructorProps>, ...args: any[]);
 
@@ -9045,7 +9045,7 @@ export namespace Camel {
 
         static ['new'](): MultipartSigned;
 
-        // Own methods of Camel.MultipartSigned
+        // Methods
 
         /**
          * Get the raw signed content stream of the multipart/signed MIME part
@@ -9075,7 +9075,7 @@ export namespace Camel {
     class NNTPAddress extends Address {
         static $gtype: GObject.GType<NNTPAddress>;
 
-        // Constructors of Camel.NNTPAddress
+        // Constructors
 
         constructor(properties?: Partial<NNTPAddress.ConstructorProps>, ...args: any[]);
 
@@ -9083,7 +9083,7 @@ export namespace Camel {
 
         static ['new'](): NNTPAddress;
 
-        // Own methods of Camel.NNTPAddress
+        // Methods
 
         /**
          * Add a new nntp address to the address object.  Duplicates are not added twice.
@@ -9109,7 +9109,7 @@ export namespace Camel {
     class NullOutputStream extends Gio.OutputStream {
         static $gtype: GObject.GType<NullOutputStream>;
 
-        // Constructors of Camel.NullOutputStream
+        // Constructors
 
         constructor(properties?: Partial<NullOutputStream.ConstructorProps>, ...args: any[]);
 
@@ -9117,7 +9117,7 @@ export namespace Camel {
 
         static ['new'](): NullOutputStream;
 
-        // Own methods of Camel.NullOutputStream
+        // Methods
 
         /**
          * Gets the total number of bytes written to `null_stream`.
@@ -9139,7 +9139,7 @@ export namespace Camel {
     abstract class Object extends GObject.Object {
         static $gtype: GObject.GType<Object>;
 
-        // Own properties of Camel.Object
+        // Properties
 
         /**
          * The file in which to store persistent property values for this
@@ -9154,18 +9154,18 @@ export namespace Camel {
         get stateFilename(): string;
         set stateFilename(val: string);
 
-        // Constructors of Camel.Object
+        // Constructors
 
         constructor(properties?: Partial<Object.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of Camel.Object
+        // Virtual methods
 
         vfunc_state_read(fp?: any | null): number;
         vfunc_state_write(fp?: any | null): number;
 
-        // Own methods of Camel.Object
+        // Methods
 
         /**
          * Returns the name of the file in which persistent property values for
@@ -9205,20 +9205,20 @@ export namespace Camel {
     class OfflineFolder extends Folder {
         static $gtype: GObject.GType<OfflineFolder>;
 
-        // Own properties of Camel.OfflineFolder
+        // Properties
 
         get offline_sync(): ThreeState;
         set offline_sync(val: ThreeState);
         get offlineSync(): ThreeState;
         set offlineSync(val: ThreeState);
 
-        // Constructors of Camel.OfflineFolder
+        // Constructors
 
         constructor(properties?: Partial<OfflineFolder.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of Camel.OfflineFolder
+        // Virtual methods
 
         /**
          * Synchronizes messages in `folder` described by the search `expression` to
@@ -9228,7 +9228,7 @@ export namespace Camel {
          */
         vfunc_downsync_sync(expression?: string | null, cancellable?: Gio.Cancellable | null): boolean;
 
-        // Own methods of Camel.OfflineFolder
+        // Methods
 
         /**
          * Checks whether the `folder` can run downsync according to its
@@ -9299,7 +9299,7 @@ export namespace Camel {
     class OfflineSettings extends StoreSettings {
         static $gtype: GObject.GType<OfflineSettings>;
 
-        // Own properties of Camel.OfflineSettings
+        // Properties
 
         get limit_by_age(): boolean;
         set limit_by_age(val: boolean);
@@ -9318,13 +9318,13 @@ export namespace Camel {
         get staySynchronized(): boolean;
         set staySynchronized(val: boolean);
 
-        // Constructors of Camel.OfflineSettings
+        // Constructors
 
         constructor(properties?: Partial<OfflineSettings.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Camel.OfflineSettings
+        // Methods
 
         get_limit_by_age(): boolean;
         get_limit_unit(): TimeUnit;
@@ -9387,17 +9387,17 @@ export namespace Camel {
     class OfflineStore extends Store implements Gio.Initable {
         static $gtype: GObject.GType<OfflineStore>;
 
-        // Own properties of Camel.OfflineStore
+        // Properties
 
         get online(): boolean;
 
-        // Constructors of Camel.OfflineStore
+        // Constructors
 
         constructor(properties?: Partial<OfflineStore.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of Camel.OfflineStore
+        // Virtual methods
 
         /**
          * Returns a #GPtrArray of #CamelFolder objects which should be checked
@@ -9413,7 +9413,7 @@ export namespace Camel {
          */
         vfunc_dup_downsync_folders(): Folder[];
 
-        // Own methods of Camel.OfflineStore
+        // Methods
 
         /**
          * Returns a #GPtrArray of #CamelFolder objects which should be checked
@@ -9908,7 +9908,7 @@ export namespace Camel {
     class Operation extends Gio.Cancellable {
         static $gtype: GObject.GType<Operation>;
 
-        // Constructors of Camel.Operation
+        // Constructors
 
         constructor(properties?: Partial<Operation.ConstructorProps>, ...args: any[]);
 
@@ -9918,7 +9918,7 @@ export namespace Camel {
 
         static new_proxy(cancellable?: Gio.Cancellable | null): Operation;
 
-        // Own signals of Camel.Operation
+        // Signals
 
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -9931,7 +9931,7 @@ export namespace Camel {
         connect_after(signal: 'status', callback: (_source: this, object: string, p0: number) => void): number;
         emit(signal: 'status', object: string, p0: number): void;
 
-        // Own static methods of Camel.Operation
+        // Static methods
 
         /**
          * Cancel all outstanding operations.
@@ -9970,7 +9970,7 @@ export namespace Camel {
          */
         static progress(cancellable: Gio.Cancellable | null, percent: number): void;
 
-        // Own virtual methods of Camel.Operation
+        // Virtual methods
 
         vfunc_status(what: string, pc: number): void;
     }
@@ -9984,7 +9984,7 @@ export namespace Camel {
     class PartitionTable extends GObject.Object {
         static $gtype: GObject.GType<PartitionTable>;
 
-        // Constructors of Camel.PartitionTable
+        // Constructors
 
         constructor(properties?: Partial<PartitionTable.ConstructorProps>, ...args: any[]);
 
@@ -9992,7 +9992,7 @@ export namespace Camel {
 
         static ['new'](bs: BlockFile, root: _block_t): PartitionTable;
 
-        // Own methods of Camel.PartitionTable
+        // Methods
 
         add(key: string, keyid: _key_t): number;
         lookup(key: string): _key_t;
@@ -10009,7 +10009,7 @@ export namespace Camel {
     class SExp extends GObject.Object {
         static $gtype: GObject.GType<SExp>;
 
-        // Constructors of Camel.SExp
+        // Constructors
 
         constructor(properties?: Partial<SExp.ConstructorProps>, ...args: any[]);
 
@@ -10017,7 +10017,7 @@ export namespace Camel {
 
         static ['new'](): SExp;
 
-        // Own static methods of Camel.SExp
+        // Static methods
 
         /**
          * Encode a bool into an s-expression `string`.  Bools are
@@ -10041,7 +10041,7 @@ export namespace Camel {
          */
         static to_sql_sexp(sexp: string): string | null;
 
-        // Own methods of Camel.SExp
+        // Methods
 
         /**
          * Adds a variable named `name` to the given `scope,` set to the given `value`.
@@ -10098,7 +10098,7 @@ export namespace Camel {
     class SMIMEContext extends CipherContext {
         static $gtype: GObject.GType<SMIMEContext>;
 
-        // Constructors of Camel.SMIMEContext
+        // Constructors
 
         constructor(properties?: Partial<SMIMEContext.ConstructorProps>, ...args: any[]);
 
@@ -10109,7 +10109,7 @@ export namespace Camel {
 
         static ['new'](...args: never[]): any;
 
-        // Own static methods of Camel.SMIMEContext
+        // Static methods
 
         /**
          * Utility function to get a localized text description for an error code
@@ -10121,7 +10121,7 @@ export namespace Camel {
          */
         static util_nss_error_to_string(nss_error_code: number): string | null;
 
-        // Own methods of Camel.SMIMEContext
+        // Methods
 
         describe_part(part?: any | null): number;
         set_encrypt_key(use: boolean, key: string): void;
@@ -10143,7 +10143,7 @@ export namespace Camel {
     abstract class Sasl extends GObject.Object {
         static $gtype: GObject.GType<Sasl>;
 
-        // Own properties of Camel.Sasl
+        // Properties
 
         get authenticated(): boolean;
         set authenticated(val: boolean);
@@ -10152,7 +10152,7 @@ export namespace Camel {
         get service_name(): string;
         get serviceName(): string;
 
-        // Constructors of Camel.Sasl
+        // Constructors
 
         constructor(properties?: Partial<Sasl.ConstructorProps>, ...args: any[]);
 
@@ -10160,7 +10160,7 @@ export namespace Camel {
 
         static ['new'](service_name: string, mechanism: string, service: Service): Sasl;
 
-        // Own static methods of Camel.Sasl
+        // Static methods
 
         static authtype(mechanism: string): ServiceAuthType | null;
         static authtype_list(include_plain: boolean): ServiceAuthType[];
@@ -10172,7 +10172,7 @@ export namespace Camel {
          */
         static is_xoauth2_alias(mechanism?: string | null): boolean;
 
-        // Own virtual methods of Camel.Sasl
+        // Virtual methods
 
         /**
          * If `token` is %NULL, generate the initial SASL message to send to
@@ -10187,7 +10187,7 @@ export namespace Camel {
         vfunc_challenge_sync(token?: Uint8Array | null, cancellable?: Gio.Cancellable | null): Uint8Array | null;
         vfunc_try_empty_password_sync(cancellable?: Gio.Cancellable | null): boolean;
 
-        // Own methods of Camel.Sasl
+        // Methods
 
         /**
          * If `token` is %NULL, asynchronously generate the initial SASL message
@@ -10298,7 +10298,7 @@ export namespace Camel {
     class SaslAnonymous extends Sasl {
         static $gtype: GObject.GType<SaslAnonymous>;
 
-        // Constructors of Camel.SaslAnonymous
+        // Constructors
 
         constructor(properties?: Partial<SaslAnonymous.ConstructorProps>, ...args: any[]);
 
@@ -10319,7 +10319,7 @@ export namespace Camel {
     class SaslCramMd5 extends Sasl {
         static $gtype: GObject.GType<SaslCramMd5>;
 
-        // Constructors of Camel.SaslCramMd5
+        // Constructors
 
         constructor(properties?: Partial<SaslCramMd5.ConstructorProps>, ...args: any[]);
 
@@ -10335,7 +10335,7 @@ export namespace Camel {
     class SaslDigestMd5 extends Sasl {
         static $gtype: GObject.GType<SaslDigestMd5>;
 
-        // Constructors of Camel.SaslDigestMd5
+        // Constructors
 
         constructor(properties?: Partial<SaslDigestMd5.ConstructorProps>, ...args: any[]);
 
@@ -10351,17 +10351,17 @@ export namespace Camel {
     class SaslGssapi extends Sasl {
         static $gtype: GObject.GType<SaslGssapi>;
 
-        // Constructors of Camel.SaslGssapi
+        // Constructors
 
         constructor(properties?: Partial<SaslGssapi.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of Camel.SaslGssapi
+        // Static methods
 
         static is_available(): boolean;
 
-        // Own methods of Camel.SaslGssapi
+        // Methods
 
         /**
          * Set host and user to use, instead of those in CamelService's settings.
@@ -10382,7 +10382,7 @@ export namespace Camel {
     class SaslLogin extends Sasl {
         static $gtype: GObject.GType<SaslLogin>;
 
-        // Constructors of Camel.SaslLogin
+        // Constructors
 
         constructor(properties?: Partial<SaslLogin.ConstructorProps>, ...args: any[]);
 
@@ -10398,7 +10398,7 @@ export namespace Camel {
     class SaslNTLM extends Sasl {
         static $gtype: GObject.GType<SaslNTLM>;
 
-        // Constructors of Camel.SaslNTLM
+        // Constructors
 
         constructor(properties?: Partial<SaslNTLM.ConstructorProps>, ...args: any[]);
 
@@ -10414,7 +10414,7 @@ export namespace Camel {
     class SaslPOPB4SMTP extends Sasl {
         static $gtype: GObject.GType<SaslPOPB4SMTP>;
 
-        // Constructors of Camel.SaslPOPB4SMTP
+        // Constructors
 
         constructor(properties?: Partial<SaslPOPB4SMTP.ConstructorProps>, ...args: any[]);
 
@@ -10430,7 +10430,7 @@ export namespace Camel {
     class SaslPlain extends Sasl {
         static $gtype: GObject.GType<SaslPlain>;
 
-        // Constructors of Camel.SaslPlain
+        // Constructors
 
         constructor(properties?: Partial<SaslPlain.ConstructorProps>, ...args: any[]);
 
@@ -10446,7 +10446,7 @@ export namespace Camel {
     class SaslXOAuth2 extends Sasl {
         static $gtype: GObject.GType<SaslXOAuth2>;
 
-        // Constructors of Camel.SaslXOAuth2
+        // Constructors
 
         constructor(properties?: Partial<SaslXOAuth2.ConstructorProps>, ...args: any[]);
 
@@ -10462,7 +10462,7 @@ export namespace Camel {
     class SaslXOAuth2Google extends SaslXOAuth2 {
         static $gtype: GObject.GType<SaslXOAuth2Google>;
 
-        // Constructors of Camel.SaslXOAuth2Google
+        // Constructors
 
         constructor(properties?: Partial<SaslXOAuth2Google.ConstructorProps>, ...args: any[]);
 
@@ -10478,7 +10478,7 @@ export namespace Camel {
     class SaslXOAuth2Outlook extends SaslXOAuth2 {
         static $gtype: GObject.GType<SaslXOAuth2Outlook>;
 
-        // Constructors of Camel.SaslXOAuth2Outlook
+        // Constructors
 
         constructor(properties?: Partial<SaslXOAuth2Outlook.ConstructorProps>, ...args: any[]);
 
@@ -10494,7 +10494,7 @@ export namespace Camel {
     class SaslXOAuth2Yahoo extends SaslXOAuth2 {
         static $gtype: GObject.GType<SaslXOAuth2Yahoo>;
 
-        // Constructors of Camel.SaslXOAuth2Yahoo
+        // Constructors
 
         constructor(properties?: Partial<SaslXOAuth2Yahoo.ConstructorProps>, ...args: any[]);
 
@@ -10522,7 +10522,7 @@ export namespace Camel {
     abstract class Service extends Object implements Gio.Initable {
         static $gtype: GObject.GType<Service>;
 
-        // Own properties of Camel.Service
+        // Properties
 
         get connection_status(): ServiceConnectionStatus;
         get connectionStatus(): ServiceConnectionStatus;
@@ -10542,13 +10542,13 @@ export namespace Camel {
         set settings(val: Settings);
         get uid(): string;
 
-        // Constructors of Camel.Service
+        // Constructors
 
         constructor(properties?: Partial<Service.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of Camel.Service
+        // Virtual methods
 
         /**
          * Attempts to authenticate `service` using `mechanism` and, if necessary,
@@ -10608,7 +10608,7 @@ export namespace Camel {
          */
         vfunc_query_auth_types_sync(cancellable?: Gio.Cancellable | null): ServiceAuthType[];
 
-        // Own methods of Camel.Service
+        // Methods
 
         /**
          * Asynchronously attempts to authenticate `service` using `mechanism` and,
@@ -11461,7 +11461,7 @@ export namespace Camel {
     class Session extends GObject.Object {
         static $gtype: GObject.GType<Session>;
 
-        // Own properties of Camel.Session
+        // Properties
 
         get junk_filter(): JunkFilter;
         set junk_filter(val: JunkFilter);
@@ -11484,13 +11484,13 @@ export namespace Camel {
         get userDataDir(): string;
         set userDataDir(val: string);
 
-        // Constructors of Camel.Session
+        // Constructors
 
         constructor(properties?: Partial<Session.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of Camel.Session
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -11517,7 +11517,7 @@ export namespace Camel {
         ): number;
         emit(signal: 'user-alert', service: Service, type: SessionAlertType, message: string): void;
 
-        // Own virtual methods of Camel.Session
+        // Virtual methods
 
         /**
          * Instantiates a new #CamelService for `session`.  The `uid` identifies the
@@ -11718,7 +11718,7 @@ export namespace Camel {
          */
         vfunc_user_alert(service: Service, type: SessionAlertType, message: string): void;
 
-        // Own methods of Camel.Session
+        // Methods
 
         /**
          * Instantiates a new #CamelService for `session`.  The `uid` identifies the
@@ -12142,17 +12142,17 @@ export namespace Camel {
     class Settings extends GObject.Object {
         static $gtype: GObject.GType<Settings>;
 
-        // Constructors of Camel.Settings
+        // Constructors
 
         constructor(properties?: Partial<Settings.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of Camel.Settings
+        // Static methods
 
         static list_settings(n_settings: number): GObject.ParamSpec;
 
-        // Own virtual methods of Camel.Settings
+        // Virtual methods
 
         /**
          * Creates a copy of `settings,` such that passing `settings` and the
@@ -12173,7 +12173,7 @@ export namespace Camel {
          */
         vfunc_equal(settings_b: Settings): boolean;
 
-        // Own methods of Camel.Settings
+        // Methods
 
         /**
          * Creates a copy of `settings,` such that passing `settings` and the
@@ -12228,13 +12228,13 @@ export namespace Camel {
     abstract class Store extends Service implements Gio.Initable {
         static $gtype: GObject.GType<Store>;
 
-        // Constructors of Camel.Store
+        // Constructors
 
         constructor(properties?: Partial<Store.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of Camel.Store
+        // Signals
 
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -12252,7 +12252,7 @@ export namespace Camel {
         ): number;
         emit(signal: 'folder-renamed', object: string, p0: FolderInfo): void;
 
-        // Own virtual methods of Camel.Store
+        // Virtual methods
 
         /**
          * Returns if this folder (param info) should be checked for new mail or not.
@@ -12420,7 +12420,7 @@ export namespace Camel {
          */
         vfunc_synchronize_sync(expunge: boolean, cancellable?: Gio.Cancellable | null): boolean;
 
-        // Own methods of Camel.Store
+        // Methods
 
         /**
          * Returns if this folder (param info) should be checked for new mail or not.
@@ -13391,7 +13391,7 @@ export namespace Camel {
     class StoreSettings extends Settings {
         static $gtype: GObject.GType<StoreSettings>;
 
-        // Own properties of Camel.StoreSettings
+        // Properties
 
         get filter_inbox(): boolean;
         set filter_inbox(val: boolean);
@@ -13402,13 +13402,13 @@ export namespace Camel {
         get storeChangesInterval(): number;
         set storeChangesInterval(val: number);
 
-        // Constructors of Camel.StoreSettings
+        // Constructors
 
         constructor(properties?: Partial<StoreSettings.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Camel.StoreSettings
+        // Methods
 
         /**
          * Returns whether to automatically apply filters to newly arrived messages
@@ -13447,7 +13447,7 @@ export namespace Camel {
     class StoreSummary extends GObject.Object {
         static $gtype: GObject.GType<StoreSummary>;
 
-        // Constructors of Camel.StoreSummary
+        // Constructors
 
         constructor(properties?: Partial<StoreSummary.ConstructorProps>, ...args: any[]);
 
@@ -13455,7 +13455,7 @@ export namespace Camel {
 
         static ['new'](): StoreSummary;
 
-        // Own virtual methods of Camel.StoreSummary
+        // Virtual methods
 
         vfunc_store_info_free(info: StoreInfo): void;
         vfunc_store_info_load(file?: any | null): StoreInfo;
@@ -13465,7 +13465,7 @@ export namespace Camel {
         vfunc_summary_header_load(file?: any | null): number;
         vfunc_summary_header_save(file?: any | null): number;
 
-        // Own methods of Camel.StoreSummary
+        // Methods
 
         /**
          * The `info` record should have been generated by calling one of the
@@ -13577,14 +13577,14 @@ export namespace Camel {
     class Stream extends GObject.Object implements Gio.Seekable {
         static $gtype: GObject.GType<Stream>;
 
-        // Own properties of Camel.Stream
+        // Properties
 
         get base_stream(): Gio.IOStream;
         set base_stream(val: Gio.IOStream);
         get baseStream(): Gio.IOStream;
         set baseStream(val: Gio.IOStream);
 
-        // Constructors of Camel.Stream
+        // Constructors
 
         constructor(properties?: Partial<Stream.ConstructorProps>, ...args: any[]);
 
@@ -13592,7 +13592,7 @@ export namespace Camel {
 
         static ['new'](base_stream: Gio.IOStream): Stream;
 
-        // Own virtual methods of Camel.Stream
+        // Virtual methods
 
         /**
          * Closes the stream.
@@ -13622,7 +13622,7 @@ export namespace Camel {
          */
         vfunc_write(buffer: number[], cancellable?: Gio.Cancellable | null): number;
 
-        // Own methods of Camel.Stream
+        // Methods
 
         /**
          * Closes the stream.
@@ -14200,7 +14200,7 @@ export namespace Camel {
     class StreamBuffer extends Stream implements Gio.Seekable {
         static $gtype: GObject.GType<StreamBuffer>;
 
-        // Constructors of Camel.StreamBuffer
+        // Constructors
 
         constructor(properties?: Partial<StreamBuffer.ConstructorProps>, ...args: any[]);
 
@@ -14211,12 +14211,12 @@ export namespace Camel {
 
         static ['new'](...args: never[]): any;
 
-        // Own virtual methods of Camel.StreamBuffer
+        // Virtual methods
 
         vfunc_init(stream: Stream, mode: StreamBufferMode): void;
         vfunc_init_vbuf(stream: Stream, mode: StreamBufferMode, buf: string, size: number): void;
 
-        // Own methods of Camel.StreamBuffer
+        // Methods
 
         /**
          * Discards any cached data in the `sbf`. The next read reads
@@ -14754,7 +14754,7 @@ export namespace Camel {
     class StreamFilter extends Stream implements Gio.Seekable {
         static $gtype: GObject.GType<StreamFilter>;
 
-        // Constructors of Camel.StreamFilter
+        // Constructors
 
         constructor(properties?: Partial<StreamFilter.ConstructorProps>, ...args: any[]);
 
@@ -14765,7 +14765,7 @@ export namespace Camel {
 
         static ['new'](...args: never[]): any;
 
-        // Own methods of Camel.StreamFilter
+        // Methods
 
         /**
          * Add a new #CamelMimeFilter to execute during the processing of this
@@ -15295,7 +15295,7 @@ export namespace Camel {
     class StreamFs extends Stream implements Gio.Seekable {
         static $gtype: GObject.GType<StreamFs>;
 
-        // Constructors of Camel.StreamFs
+        // Constructors
 
         constructor(properties?: Partial<StreamFs.ConstructorProps>, ...args: any[]);
 
@@ -15305,7 +15305,7 @@ export namespace Camel {
 
         static new_with_name(name: string, flags: number, mode: number): StreamFs;
 
-        // Own methods of Camel.StreamFs
+        // Methods
 
         get_fd(): number;
 
@@ -15820,7 +15820,7 @@ export namespace Camel {
     class StreamMem extends Stream implements Gio.Seekable {
         static $gtype: GObject.GType<StreamMem>;
 
-        // Constructors of Camel.StreamMem
+        // Constructors
 
         constructor(properties?: Partial<StreamMem.ConstructorProps>, ...args: any[]);
 
@@ -15832,7 +15832,7 @@ export namespace Camel {
 
         static new_with_byte_array(buffer: Uint8Array | string): StreamMem;
 
-        // Own methods of Camel.StreamMem
+        // Methods
 
         get_byte_array(): Uint8Array;
         /**
@@ -16369,7 +16369,7 @@ export namespace Camel {
     class StreamNull extends Stream implements Gio.Seekable {
         static $gtype: GObject.GType<StreamNull>;
 
-        // Constructors of Camel.StreamNull
+        // Constructors
 
         constructor(properties?: Partial<StreamNull.ConstructorProps>, ...args: any[]);
 
@@ -16377,7 +16377,7 @@ export namespace Camel {
 
         static ['new'](): StreamNull;
 
-        // Own methods of Camel.StreamNull
+        // Methods
 
         get_bytes_written(): number;
         get_ends_with_crlf(): boolean;
@@ -16893,7 +16893,7 @@ export namespace Camel {
     class StreamProcess extends Stream implements Gio.Seekable {
         static $gtype: GObject.GType<StreamProcess>;
 
-        // Constructors of Camel.StreamProcess
+        // Constructors
 
         constructor(properties?: Partial<StreamProcess.ConstructorProps>, ...args: any[]);
 
@@ -16901,7 +16901,7 @@ export namespace Camel {
 
         static ['new'](): StreamProcess;
 
-        // Own methods of Camel.StreamProcess
+        // Methods
 
         connect(command: string, env: string): number;
         connect(...args: never[]): any;
@@ -17417,7 +17417,7 @@ export namespace Camel {
     class TextIndex extends Index {
         static $gtype: GObject.GType<TextIndex>;
 
-        // Constructors of Camel.TextIndex
+        // Constructors
 
         constructor(properties?: Partial<TextIndex.ConstructorProps>, ...args: any[]);
 
@@ -17425,13 +17425,13 @@ export namespace Camel {
 
         static ['new'](path: string, flags: number): TextIndex;
 
-        // Own static methods of Camel.TextIndex
+        // Static methods
 
         static check(path: string): number;
         static remove(old: string): number;
         static rename(old: string, new_: string): number;
 
-        // Own methods of Camel.TextIndex
+        // Methods
 
         dump(): void;
         info(): void;
@@ -17447,7 +17447,7 @@ export namespace Camel {
     class TextIndexCursor extends IndexCursor {
         static $gtype: GObject.GType<TextIndexCursor>;
 
-        // Constructors of Camel.TextIndexCursor
+        // Constructors
 
         constructor(properties?: Partial<TextIndexCursor.ConstructorProps>, ...args: any[]);
 
@@ -17463,7 +17463,7 @@ export namespace Camel {
     class TextIndexKeyCursor extends IndexCursor {
         static $gtype: GObject.GType<TextIndexKeyCursor>;
 
-        // Constructors of Camel.TextIndexKeyCursor
+        // Constructors
 
         constructor(properties?: Partial<TextIndexKeyCursor.ConstructorProps>, ...args: any[]);
 
@@ -17479,7 +17479,7 @@ export namespace Camel {
     class TextIndexName extends IndexName {
         static $gtype: GObject.GType<TextIndexName>;
 
-        // Constructors of Camel.TextIndexName
+        // Constructors
 
         constructor(properties?: Partial<TextIndexName.ConstructorProps>, ...args: any[]);
 
@@ -17495,13 +17495,13 @@ export namespace Camel {
     abstract class Transport extends Service implements Gio.Initable {
         static $gtype: GObject.GType<Transport>;
 
-        // Constructors of Camel.Transport
+        // Constructors
 
         constructor(properties?: Partial<Transport.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of Camel.Transport
+        // Virtual methods
 
         /**
          * Sends the message to the given recipients, regardless of the contents
@@ -17519,7 +17519,7 @@ export namespace Camel {
             cancellable?: Gio.Cancellable | null,
         ): [boolean, boolean];
 
-        // Own methods of Camel.Transport
+        // Methods
 
         /**
          * Returns whether should request Delivery Status Notification
@@ -18077,7 +18077,7 @@ export namespace Camel {
     class VTrashFolder extends VeeFolder {
         static $gtype: GObject.GType<VTrashFolder>;
 
-        // Constructors of Camel.VTrashFolder
+        // Constructors
 
         constructor(properties?: Partial<VTrashFolder.ConstructorProps>, ...args: any[]);
 
@@ -18088,7 +18088,7 @@ export namespace Camel {
 
         static ['new'](...args: never[]): any;
 
-        // Own methods of Camel.VTrashFolder
+        // Methods
 
         get_folder_type(): VTrashFolderType;
     }
@@ -18106,7 +18106,7 @@ export namespace Camel {
     class VeeDataCache extends GObject.Object {
         static $gtype: GObject.GType<VeeDataCache>;
 
-        // Constructors of Camel.VeeDataCache
+        // Constructors
 
         constructor(properties?: Partial<VeeDataCache.ConstructorProps>, ...args: any[]);
 
@@ -18114,7 +18114,7 @@ export namespace Camel {
 
         static ['new'](): VeeDataCache;
 
-        // Own methods of Camel.VeeDataCache
+        // Methods
 
         /**
          * Adds the `subfolder` to the `data_cache` to be tracked by it. The `subfolder`
@@ -18183,14 +18183,14 @@ export namespace Camel {
     class VeeFolder extends Folder {
         static $gtype: GObject.GType<VeeFolder>;
 
-        // Own properties of Camel.VeeFolder
+        // Properties
 
         get auto_update(): boolean;
         set auto_update(val: boolean);
         get autoUpdate(): boolean;
         set autoUpdate(val: boolean);
 
-        // Constructors of Camel.VeeFolder
+        // Constructors
 
         constructor(properties?: Partial<VeeFolder.ConstructorProps>, ...args: any[]);
 
@@ -18198,7 +18198,7 @@ export namespace Camel {
 
         static ['new'](parent_store: Store, full: string, flags: number): VeeFolder;
 
-        // Own virtual methods of Camel.VeeFolder
+        // Virtual methods
 
         /**
          * Adds `subfolder` as a source folder to `vfolder`.
@@ -18225,7 +18225,7 @@ export namespace Camel {
          */
         vfunc_set_expression(expression: string): void;
 
-        // Own methods of Camel.VeeFolder
+        // Methods
 
         /**
          * Adds `subfolder` as a source folder to `vfolder`.
@@ -18343,7 +18343,7 @@ export namespace Camel {
     class VeeMessageInfo extends MessageInfo {
         static $gtype: GObject.GType<VeeMessageInfo>;
 
-        // Constructors of Camel.VeeMessageInfo
+        // Constructors
 
         constructor(properties?: Partial<VeeMessageInfo.ConstructorProps>, ...args: any[]);
 
@@ -18354,7 +18354,7 @@ export namespace Camel {
 
         static ['new'](...args: never[]): any;
 
-        // Own methods of Camel.VeeMessageInfo
+        // Methods
 
         get_original_folder(): Folder;
         get_original_summary(): FolderSummary;
@@ -18373,7 +18373,7 @@ export namespace Camel {
     class VeeMessageInfoData extends GObject.Object {
         static $gtype: GObject.GType<VeeMessageInfoData>;
 
-        // Constructors of Camel.VeeMessageInfoData
+        // Constructors
 
         constructor(properties?: Partial<VeeMessageInfoData.ConstructorProps>, ...args: any[]);
 
@@ -18381,7 +18381,7 @@ export namespace Camel {
 
         static ['new'](subfolder_data: VeeSubfolderData, orig_message_uid: string): VeeMessageInfoData;
 
-        // Own methods of Camel.VeeMessageInfoData
+        // Methods
 
         get_orig_message_uid(): string;
         get_subfolder_data(): VeeSubfolderData;
@@ -18400,14 +18400,14 @@ export namespace Camel {
     class VeeStore extends Store implements Gio.Initable {
         static $gtype: GObject.GType<VeeStore>;
 
-        // Own properties of Camel.VeeStore
+        // Properties
 
         get unmatched_enabled(): boolean;
         set unmatched_enabled(val: boolean);
         get unmatchedEnabled(): boolean;
         set unmatchedEnabled(val: boolean);
 
-        // Constructors of Camel.VeeStore
+        // Constructors
 
         constructor(properties?: Partial<VeeStore.ConstructorProps>, ...args: any[]);
 
@@ -18415,7 +18415,7 @@ export namespace Camel {
 
         static ['new'](): VeeStore;
 
-        // Own methods of Camel.VeeStore
+        // Methods
 
         get_unmatched_enabled(): boolean;
         get_unmatched_folder(): any | null;
@@ -18882,7 +18882,7 @@ export namespace Camel {
     class VeeSubfolderData extends GObject.Object {
         static $gtype: GObject.GType<VeeSubfolderData>;
 
-        // Constructors of Camel.VeeSubfolderData
+        // Constructors
 
         constructor(properties?: Partial<VeeSubfolderData.ConstructorProps>, ...args: any[]);
 
@@ -18890,7 +18890,7 @@ export namespace Camel {
 
         static ['new'](folder: Folder): VeeSubfolderData;
 
-        // Own methods of Camel.VeeSubfolderData
+        // Methods
 
         get_folder(): Folder;
         get_folder_id(): string;
@@ -18905,7 +18905,7 @@ export namespace Camel {
     class VeeSummary extends FolderSummary {
         static $gtype: GObject.GType<VeeSummary>;
 
-        // Constructors of Camel.VeeSummary
+        // Constructors
 
         constructor(properties?: Partial<VeeSummary.ConstructorProps>, ...args: any[]);
 
@@ -18913,7 +18913,7 @@ export namespace Camel {
 
         static ['new'](parent: Folder): VeeSummary;
 
-        // Own methods of Camel.VeeSummary
+        // Methods
 
         /**
          * Unref returned pointer with g_object_unref()
@@ -18954,7 +18954,7 @@ export namespace Camel {
     abstract class AddressPrivate {
         static $gtype: GObject.GType<AddressPrivate>;
 
-        // Constructors of Camel.AddressPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -18966,7 +18966,7 @@ export namespace Camel {
     abstract class AsyncClosure {
         static $gtype: GObject.GType<AsyncClosure>;
 
-        // Constructors of Camel.AsyncClosure
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -18974,7 +18974,7 @@ export namespace Camel {
     class Block {
         static $gtype: GObject.GType<Block>;
 
-        // Own fields of Camel.Block
+        // Fields
 
         id: _block_t;
         flags: BlockFlags;
@@ -18982,7 +18982,7 @@ export namespace Camel {
         align00: number;
         data: Uint8Array;
 
-        // Constructors of Camel.Block
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -18991,7 +18991,7 @@ export namespace Camel {
     abstract class BlockFilePrivate {
         static $gtype: GObject.GType<BlockFilePrivate>;
 
-        // Constructors of Camel.BlockFilePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -18999,7 +18999,7 @@ export namespace Camel {
     class BlockRoot {
         static $gtype: GObject.GType<BlockRoot>;
 
-        // Own fields of Camel.BlockRoot
+        // Fields
 
         version: number[];
         flags: number;
@@ -19007,7 +19007,7 @@ export namespace Camel {
         free: _block_t;
         last: _block_t;
 
-        // Constructors of Camel.BlockRoot
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -19024,7 +19024,7 @@ export namespace Camel {
     class Cert {
         static $gtype: GObject.GType<Cert>;
 
-        // Own fields of Camel.Cert
+        // Fields
 
         refcount: number;
         issuer: string;
@@ -19033,7 +19033,7 @@ export namespace Camel {
         fingerprint: string;
         trust: CertTrust;
 
-        // Constructors of Camel.Cert
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -19049,7 +19049,7 @@ export namespace Camel {
 
         static ['new'](): Cert;
 
-        // Own methods of Camel.Cert
+        // Methods
 
         load_cert_file(): boolean;
         ref(): Cert;
@@ -19061,7 +19061,7 @@ export namespace Camel {
     abstract class CertDBPrivate {
         static $gtype: GObject.GType<CertDBPrivate>;
 
-        // Constructors of Camel.CertDBPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -19069,12 +19069,12 @@ export namespace Camel {
     class Charset {
         static $gtype: GObject.GType<Charset>;
 
-        // Own fields of Camel.Charset
+        // Fields
 
         mask: number;
         level: number;
 
-        // Constructors of Camel.Charset
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -19084,7 +19084,7 @@ export namespace Camel {
         );
         _init(...args: any[]): void;
 
-        // Own static methods of Camel.Charset
+        // Static methods
 
         /**
          * Finds the minimum charset for this string NULL means US-ASCII.
@@ -19093,7 +19093,7 @@ export namespace Camel {
         static best(_in: number[]): string | null;
         static iso_to_windows(isocharset: string): string;
 
-        // Own methods of Camel.Charset
+        // Methods
 
         best_name(): string;
         init(): void;
@@ -19107,7 +19107,7 @@ export namespace Camel {
     class CipherCertInfo {
         static $gtype: GObject.GType<CipherCertInfo>;
 
-        // Own fields of Camel.CipherCertInfo
+        // Fields
 
         name: string;
         email: string;
@@ -19116,7 +19116,7 @@ export namespace Camel {
         cert_data_clone: CipherCloneFunc;
         properties: any[];
 
-        // Constructors of Camel.CipherCertInfo
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -19124,14 +19124,14 @@ export namespace Camel {
     class CipherCertInfoProperty {
         static $gtype: GObject.GType<CipherCertInfoProperty>;
 
-        // Own fields of Camel.CipherCertInfoProperty
+        // Fields
 
         name: string;
         value: any;
         value_free: GLib.DestroyNotify;
         value_clone: CipherCloneFunc;
 
-        // Constructors of Camel.CipherCertInfoProperty
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -19140,7 +19140,7 @@ export namespace Camel {
     abstract class CipherContextPrivate {
         static $gtype: GObject.GType<CipherContextPrivate>;
 
-        // Constructors of Camel.CipherContextPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -19148,13 +19148,13 @@ export namespace Camel {
     class CipherValidity {
         static $gtype: GObject.GType<CipherValidity>;
 
-        // Own fields of Camel.CipherValidity
+        // Fields
 
         children: GLib.Queue;
         sign: any;
         encrypt: any;
 
-        // Constructors of Camel.CipherValidity
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -19167,7 +19167,7 @@ export namespace Camel {
 
         static ['new'](): CipherValidity;
 
-        // Own methods of Camel.CipherValidity
+        // Methods
 
         /**
          * Add a cert info to the signer or encrypter info.
@@ -19242,13 +19242,13 @@ export namespace Camel {
     class ContentDisposition {
         static $gtype: GObject.GType<ContentDisposition>;
 
-        // Own fields of Camel.ContentDisposition
+        // Fields
 
         disposition: string;
         params: any;
         refcount: number;
 
-        // Constructors of Camel.ContentDisposition
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -19261,11 +19261,11 @@ export namespace Camel {
 
         static ['new'](): ContentDisposition;
 
-        // Own static methods of Camel.ContentDisposition
+        // Static methods
 
         static decode(_in: string): ContentDisposition;
 
-        // Own methods of Camel.ContentDisposition
+        // Methods
 
         format(): string;
         is_attachment(content_type: ContentType): boolean;
@@ -19277,14 +19277,14 @@ export namespace Camel {
     class ContentType {
         static $gtype: GObject.GType<ContentType>;
 
-        // Own fields of Camel.ContentType
+        // Fields
 
         type: string;
         subtype: string;
         params: any;
         refcount: number;
 
-        // Constructors of Camel.ContentType
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -19298,11 +19298,11 @@ export namespace Camel {
 
         static ['new'](type: string, subtype: string): ContentType;
 
-        // Own static methods of Camel.ContentType
+        // Static methods
 
         static decode(_in: string): ContentType;
 
-        // Own methods of Camel.ContentType
+        // Methods
 
         dump(): void;
         format(): string;
@@ -19342,7 +19342,7 @@ export namespace Camel {
     abstract class DBPrivate {
         static $gtype: GObject.GType<DBPrivate>;
 
-        // Constructors of Camel.DBPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -19351,7 +19351,7 @@ export namespace Camel {
     abstract class DataCachePrivate {
         static $gtype: GObject.GType<DataCachePrivate>;
 
-        // Constructors of Camel.DataCachePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -19360,7 +19360,7 @@ export namespace Camel {
     abstract class DataWrapperPrivate {
         static $gtype: GObject.GType<DataWrapperPrivate>;
 
-        // Constructors of Camel.DataWrapperPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -19371,7 +19371,7 @@ export namespace Camel {
     class FIRecord {
         static $gtype: GObject.GType<FIRecord>;
 
-        // Own fields of Camel.FIRecord
+        // Fields
 
         folder_name: string;
         version: number;
@@ -19386,7 +19386,7 @@ export namespace Camel {
         jnd_count: number;
         bdata: string;
 
-        // Constructors of Camel.FIRecord
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -19411,7 +19411,7 @@ export namespace Camel {
     abstract class FilterDriverPrivate {
         static $gtype: GObject.GType<FilterDriverPrivate>;
 
-        // Constructors of Camel.FilterDriverPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -19420,7 +19420,7 @@ export namespace Camel {
     abstract class FilterInputStreamPrivate {
         static $gtype: GObject.GType<FilterInputStreamPrivate>;
 
-        // Constructors of Camel.FilterInputStreamPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -19429,7 +19429,7 @@ export namespace Camel {
     abstract class FilterOutputStreamPrivate {
         static $gtype: GObject.GType<FilterOutputStreamPrivate>;
 
-        // Constructors of Camel.FilterOutputStreamPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -19437,14 +19437,14 @@ export namespace Camel {
     class FolderChangeInfo {
         static $gtype: GObject.GType<FolderChangeInfo>;
 
-        // Own fields of Camel.FolderChangeInfo
+        // Fields
 
         uid_added: any[];
         uid_removed: any[];
         uid_changed: any[];
         uid_recent: any[];
 
-        // Constructors of Camel.FolderChangeInfo
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -19458,7 +19458,7 @@ export namespace Camel {
 
         static ['new'](): FolderChangeInfo;
 
-        // Own methods of Camel.FolderChangeInfo
+        // Methods
 
         /**
          * Add a source uid for generating a changeset.
@@ -19561,7 +19561,7 @@ export namespace Camel {
     abstract class FolderChangeInfoPrivate {
         static $gtype: GObject.GType<FolderChangeInfoPrivate>;
 
-        // Constructors of Camel.FolderChangeInfoPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -19570,7 +19570,7 @@ export namespace Camel {
     class FolderInfo {
         static $gtype: GObject.GType<FolderInfo>;
 
-        // Own fields of Camel.FolderInfo
+        // Fields
 
         next: any;
         child: any;
@@ -19580,7 +19580,7 @@ export namespace Camel {
         unread: number;
         total: number;
 
-        // Constructors of Camel.FolderInfo
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -19598,7 +19598,7 @@ export namespace Camel {
 
         static ['new'](): FolderInfo;
 
-        // Own static methods of Camel.FolderInfo
+        // Static methods
 
         /**
          * This takes an array of folders and attaches them together according
@@ -19615,7 +19615,7 @@ export namespace Camel {
          */
         static build(folders: FolderInfo[], namespace_: string, separator: number, short_names: boolean): FolderInfo;
 
-        // Own methods of Camel.FolderInfo
+        // Methods
 
         /**
          * Clones `fi` recursively.
@@ -19631,7 +19631,7 @@ export namespace Camel {
     abstract class FolderPrivate {
         static $gtype: GObject.GType<FolderPrivate>;
 
-        // Constructors of Camel.FolderPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -19639,14 +19639,14 @@ export namespace Camel {
     class FolderQuotaInfo {
         static $gtype: GObject.GType<FolderQuotaInfo>;
 
-        // Own fields of Camel.FolderQuotaInfo
+        // Fields
 
         name: string;
         used: number;
         total: number;
         next: any;
 
-        // Constructors of Camel.FolderQuotaInfo
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -19660,7 +19660,7 @@ export namespace Camel {
 
         static ['new'](name: string, used: number, total: number): FolderQuotaInfo;
 
-        // Own methods of Camel.FolderQuotaInfo
+        // Methods
 
         /**
          * Makes a copy of the given info and all next-s.
@@ -19676,7 +19676,7 @@ export namespace Camel {
     abstract class FolderSearchPrivate {
         static $gtype: GObject.GType<FolderSearchPrivate>;
 
-        // Constructors of Camel.FolderSearchPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -19685,7 +19685,7 @@ export namespace Camel {
     abstract class FolderSummaryPrivate {
         static $gtype: GObject.GType<FolderSummaryPrivate>;
 
-        // Constructors of Camel.FolderSummaryPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -19693,7 +19693,7 @@ export namespace Camel {
     class FolderThread {
         static $gtype: GObject.GType<FolderThread>;
 
-        // Own fields of Camel.FolderThread
+        // Fields
 
         refcount: number;
         subject: number;
@@ -19701,14 +19701,14 @@ export namespace Camel {
         folder: Folder;
         summary: any[];
 
-        // Constructors of Camel.FolderThread
+        // Constructors
 
         constructor(folder: Folder, uids: string[], thread_subject: boolean);
         _init(...args: any[]): void;
 
         static ['new'](folder: Folder, uids: string[], thread_subject: boolean): FolderThread;
 
-        // Own methods of Camel.FolderThread
+        // Methods
 
         /**
          * Adds new `uids` into the threaded tree.
@@ -19729,7 +19729,7 @@ export namespace Camel {
     class FolderThreadNode {
         static $gtype: GObject.GType<FolderThreadNode>;
 
-        // Own fields of Camel.FolderThreadNode
+        // Fields
 
         next: any;
         child: any;
@@ -19738,7 +19738,7 @@ export namespace Camel {
         order: number;
         re: number;
 
-        // Constructors of Camel.FolderThreadNode
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -19747,7 +19747,7 @@ export namespace Camel {
     abstract class GpgContextPrivate {
         static $gtype: GObject.GType<GpgContextPrivate>;
 
-        // Constructors of Camel.GpgContextPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -19758,11 +19758,11 @@ export namespace Camel {
     abstract class GpgKeyInfo {
         static $gtype: GObject.GType<GpgKeyInfo>;
 
-        // Constructors of Camel.GpgKeyInfo
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of Camel.GpgKeyInfo
+        // Methods
 
         /**
          * Copies the `src` to a new #CamelGpgKeyInfo structure.
@@ -19805,7 +19805,7 @@ export namespace Camel {
     abstract class HTMLParserPrivate {
         static $gtype: GObject.GType<HTMLParserPrivate>;
 
-        // Constructors of Camel.HTMLParserPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -19813,14 +19813,14 @@ export namespace Camel {
     class HeaderAddress {
         static $gtype: GObject.GType<HeaderAddress>;
 
-        // Own fields of Camel.HeaderAddress
+        // Fields
 
         next: any;
         type: HeaderAddressType;
         name: string;
         refcount: number;
 
-        // Constructors of Camel.HeaderAddress
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -19838,7 +19838,7 @@ export namespace Camel {
 
         static new_name(name: string, addr: string): HeaderAddress;
 
-        // Own static methods of Camel.HeaderAddress
+        // Static methods
 
         static decode(_in: string, charset: string): HeaderAddress;
         static fold(_in: string, headerlen: number): string;
@@ -19870,7 +19870,7 @@ export namespace Camel {
          */
         static list_format(addrlist: HeaderAddress[]): string;
 
-        // Own methods of Camel.HeaderAddress
+        // Methods
 
         add_member(member: HeaderAddress): void;
         ref(): HeaderAddress;
@@ -19887,13 +19887,13 @@ export namespace Camel {
     class HeaderParam {
         static $gtype: GObject.GType<HeaderParam>;
 
-        // Own fields of Camel.HeaderParam
+        // Fields
 
         next: any;
         name: string;
         value: string;
 
-        // Constructors of Camel.HeaderParam
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -19904,7 +19904,7 @@ export namespace Camel {
         );
         _init(...args: any[]): void;
 
-        // Own static methods of Camel.HeaderParam
+        // Static methods
 
         static list_decode(_in?: string | null): any | null;
         static list_format(params?: any | null): string;
@@ -19921,7 +19921,7 @@ export namespace Camel {
     abstract class IndexCursorPrivate {
         static $gtype: GObject.GType<IndexCursorPrivate>;
 
-        // Constructors of Camel.IndexCursorPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -19930,7 +19930,7 @@ export namespace Camel {
     abstract class IndexNamePrivate {
         static $gtype: GObject.GType<IndexNamePrivate>;
 
-        // Constructors of Camel.IndexNamePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -19938,7 +19938,7 @@ export namespace Camel {
     abstract class IndexPrivate {
         static $gtype: GObject.GType<IndexPrivate>;
 
-        // Constructors of Camel.IndexPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -19947,7 +19947,7 @@ export namespace Camel {
     abstract class InternetAddressPrivate {
         static $gtype: GObject.GType<InternetAddressPrivate>;
 
-        // Constructors of Camel.InternetAddressPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -19956,12 +19956,12 @@ export namespace Camel {
     class KeyBlock {
         static $gtype: GObject.GType<KeyBlock>;
 
-        // Own fields of Camel.KeyBlock
+        // Fields
 
         next: _block_t;
         used: number;
 
-        // Constructors of Camel.KeyBlock
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -19976,7 +19976,7 @@ export namespace Camel {
     abstract class KeyFilePrivate {
         static $gtype: GObject.GType<KeyFilePrivate>;
 
-        // Constructors of Camel.KeyFilePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -19984,13 +19984,13 @@ export namespace Camel {
     class KeyRootBlock {
         static $gtype: GObject.GType<KeyRootBlock>;
 
-        // Own fields of Camel.KeyRootBlock
+        // Fields
 
         first: _block_t;
         last: _block_t;
         free: _key_t;
 
-        // Constructors of Camel.KeyRootBlock
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -20006,7 +20006,7 @@ export namespace Camel {
     abstract class KeyTablePrivate {
         static $gtype: GObject.GType<KeyTablePrivate>;
 
-        // Constructors of Camel.KeyTablePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -20015,7 +20015,7 @@ export namespace Camel {
     abstract class LocalSettingsPrivate {
         static $gtype: GObject.GType<LocalSettingsPrivate>;
 
-        // Constructors of Camel.LocalSettingsPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -20026,7 +20026,7 @@ export namespace Camel {
     class MIRecord {
         static $gtype: GObject.GType<MIRecord>;
 
-        // Own fields of Camel.MIRecord
+        // Fields
 
         uid: string;
         flags: number;
@@ -20057,7 +20057,7 @@ export namespace Camel {
         userheaders: string;
         preview: string;
 
-        // Constructors of Camel.MIRecord
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -20098,7 +20098,7 @@ export namespace Camel {
     abstract class MediumPrivate {
         static $gtype: GObject.GType<MediumPrivate>;
 
-        // Constructors of Camel.MediumPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -20106,7 +20106,7 @@ export namespace Camel {
     abstract class MemChunk {
         static $gtype: GObject.GType<MemChunk>;
 
-        // Constructors of Camel.MemChunk
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -20114,7 +20114,7 @@ export namespace Camel {
     abstract class MemPool {
         static $gtype: GObject.GType<MemPool>;
 
-        // Constructors of Camel.MemPool
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -20122,7 +20122,7 @@ export namespace Camel {
     class MessageContentInfo {
         static $gtype: GObject.GType<MessageContentInfo>;
 
-        // Own fields of Camel.MessageContentInfo
+        // Fields
 
         type: ContentType;
         disposition: ContentDisposition;
@@ -20131,7 +20131,7 @@ export namespace Camel {
         encoding: string;
         size: number;
 
-        // Constructors of Camel.MessageContentInfo
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -20151,7 +20151,7 @@ export namespace Camel {
 
         static new_from_parser(parser: MimeParser): MessageContentInfo;
 
-        // Own methods of Camel.MessageContentInfo
+        // Methods
 
         copy(): MessageContentInfo | null;
         dump(depth: number): void;
@@ -20172,7 +20172,7 @@ export namespace Camel {
     abstract class MessageInfoBasePrivate {
         static $gtype: GObject.GType<MessageInfoBasePrivate>;
 
-        // Constructors of Camel.MessageInfoBasePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -20181,7 +20181,7 @@ export namespace Camel {
     abstract class MessageInfoPrivate {
         static $gtype: GObject.GType<MessageInfoPrivate>;
 
-        // Constructors of Camel.MessageInfoPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -20190,7 +20190,7 @@ export namespace Camel {
     abstract class MimeFilterBasicPrivate {
         static $gtype: GObject.GType<MimeFilterBasicPrivate>;
 
-        // Constructors of Camel.MimeFilterBasicPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -20199,7 +20199,7 @@ export namespace Camel {
     abstract class MimeFilterBestencPrivate {
         static $gtype: GObject.GType<MimeFilterBestencPrivate>;
 
-        // Constructors of Camel.MimeFilterBestencPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -20208,7 +20208,7 @@ export namespace Camel {
     abstract class MimeFilterCRLFPrivate {
         static $gtype: GObject.GType<MimeFilterCRLFPrivate>;
 
-        // Constructors of Camel.MimeFilterCRLFPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -20217,7 +20217,7 @@ export namespace Camel {
     abstract class MimeFilterCanonPrivate {
         static $gtype: GObject.GType<MimeFilterCanonPrivate>;
 
-        // Constructors of Camel.MimeFilterCanonPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -20226,7 +20226,7 @@ export namespace Camel {
     abstract class MimeFilterCharsetPrivate {
         static $gtype: GObject.GType<MimeFilterCharsetPrivate>;
 
-        // Constructors of Camel.MimeFilterCharsetPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -20236,7 +20236,7 @@ export namespace Camel {
     abstract class MimeFilterEnrichedPrivate {
         static $gtype: GObject.GType<MimeFilterEnrichedPrivate>;
 
-        // Constructors of Camel.MimeFilterEnrichedPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -20245,7 +20245,7 @@ export namespace Camel {
     abstract class MimeFilterFromPrivate {
         static $gtype: GObject.GType<MimeFilterFromPrivate>;
 
-        // Constructors of Camel.MimeFilterFromPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -20254,7 +20254,7 @@ export namespace Camel {
     abstract class MimeFilterGZipPrivate {
         static $gtype: GObject.GType<MimeFilterGZipPrivate>;
 
-        // Constructors of Camel.MimeFilterGZipPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -20263,7 +20263,7 @@ export namespace Camel {
     abstract class MimeFilterHTMLPrivate {
         static $gtype: GObject.GType<MimeFilterHTMLPrivate>;
 
-        // Constructors of Camel.MimeFilterHTMLPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -20272,7 +20272,7 @@ export namespace Camel {
     abstract class MimeFilterIndexPrivate {
         static $gtype: GObject.GType<MimeFilterIndexPrivate>;
 
-        // Constructors of Camel.MimeFilterIndexPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -20281,7 +20281,7 @@ export namespace Camel {
     abstract class MimeFilterLinewrapPrivate {
         static $gtype: GObject.GType<MimeFilterLinewrapPrivate>;
 
-        // Constructors of Camel.MimeFilterLinewrapPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -20290,7 +20290,7 @@ export namespace Camel {
     abstract class MimeFilterPgpPrivate {
         static $gtype: GObject.GType<MimeFilterPgpPrivate>;
 
-        // Constructors of Camel.MimeFilterPgpPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -20299,7 +20299,7 @@ export namespace Camel {
     abstract class MimeFilterPreviewPrivate {
         static $gtype: GObject.GType<MimeFilterPreviewPrivate>;
 
-        // Constructors of Camel.MimeFilterPreviewPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -20307,7 +20307,7 @@ export namespace Camel {
     abstract class MimeFilterPrivate {
         static $gtype: GObject.GType<MimeFilterPrivate>;
 
-        // Constructors of Camel.MimeFilterPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -20316,7 +20316,7 @@ export namespace Camel {
     abstract class MimeFilterProgressPrivate {
         static $gtype: GObject.GType<MimeFilterProgressPrivate>;
 
-        // Constructors of Camel.MimeFilterProgressPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -20325,7 +20325,7 @@ export namespace Camel {
     abstract class MimeFilterToHTMLPrivate {
         static $gtype: GObject.GType<MimeFilterToHTMLPrivate>;
 
-        // Constructors of Camel.MimeFilterToHTMLPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -20334,7 +20334,7 @@ export namespace Camel {
     abstract class MimeFilterWindowsPrivate {
         static $gtype: GObject.GType<MimeFilterWindowsPrivate>;
 
-        // Constructors of Camel.MimeFilterWindowsPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -20343,7 +20343,7 @@ export namespace Camel {
     abstract class MimeFilterYencPrivate {
         static $gtype: GObject.GType<MimeFilterYencPrivate>;
 
-        // Constructors of Camel.MimeFilterYencPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -20352,7 +20352,7 @@ export namespace Camel {
     abstract class MimeMessagePrivate {
         static $gtype: GObject.GType<MimeMessagePrivate>;
 
-        // Constructors of Camel.MimeMessagePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -20361,7 +20361,7 @@ export namespace Camel {
     abstract class MimeParserPrivate {
         static $gtype: GObject.GType<MimeParserPrivate>;
 
-        // Constructors of Camel.MimeParserPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -20370,7 +20370,7 @@ export namespace Camel {
     abstract class MimePartPrivate {
         static $gtype: GObject.GType<MimePartPrivate>;
 
-        // Constructors of Camel.MimePartPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -20378,7 +20378,7 @@ export namespace Camel {
     class Msg {
         static $gtype: GObject.GType<Msg>;
 
-        // Constructors of Camel.Msg
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -20386,7 +20386,7 @@ export namespace Camel {
     abstract class MsgPort {
         static $gtype: GObject.GType<MsgPort>;
 
-        // Constructors of Camel.MsgPort
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -20396,7 +20396,7 @@ export namespace Camel {
     abstract class MultipartEncryptedPrivate {
         static $gtype: GObject.GType<MultipartEncryptedPrivate>;
 
-        // Constructors of Camel.MultipartEncryptedPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -20404,7 +20404,7 @@ export namespace Camel {
     abstract class MultipartPrivate {
         static $gtype: GObject.GType<MultipartPrivate>;
 
-        // Constructors of Camel.MultipartPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -20413,7 +20413,7 @@ export namespace Camel {
     abstract class MultipartSignedPrivate {
         static $gtype: GObject.GType<MultipartSignedPrivate>;
 
-        // Constructors of Camel.MultipartSignedPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -20422,7 +20422,7 @@ export namespace Camel {
     abstract class NNTPAddressPrivate {
         static $gtype: GObject.GType<NNTPAddressPrivate>;
 
-        // Constructors of Camel.NNTPAddressPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -20430,7 +20430,7 @@ export namespace Camel {
     class NameValueArray {
         static $gtype: GObject.GType<NameValueArray>;
 
-        // Constructors of Camel.NameValueArray
+        // Constructors
 
         constructor(properties?: Partial<{}>);
         _init(...args: any[]): void;
@@ -20439,7 +20439,7 @@ export namespace Camel {
 
         static new_sized(reserve_size: number): NameValueArray;
 
-        // Own methods of Camel.NameValueArray
+        // Methods
 
         /**
          * Appends a new element of the name `name` and the value `value`
@@ -20559,7 +20559,7 @@ export namespace Camel {
     class NamedFlags {
         static $gtype: GObject.GType<NamedFlags>;
 
-        // Constructors of Camel.NamedFlags
+        // Constructors
 
         constructor(properties?: Partial<{}>);
         _init(...args: any[]): void;
@@ -20568,7 +20568,7 @@ export namespace Camel {
 
         static new_sized(reserve_size: number): NamedFlags;
 
-        // Own methods of Camel.NamedFlags
+        // Methods
 
         /**
          * Removes all the elements of the array.
@@ -20615,7 +20615,7 @@ export namespace Camel {
     abstract class NullOutputStreamPrivate {
         static $gtype: GObject.GType<NullOutputStreamPrivate>;
 
-        // Constructors of Camel.NullOutputStreamPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -20623,11 +20623,11 @@ export namespace Camel {
     abstract class ObjectBag {
         static $gtype: GObject.GType<ObjectBag>;
 
-        // Constructors of Camel.ObjectBag
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of Camel.ObjectBag
+        // Methods
 
         /**
          * Aborts a key reservation.
@@ -20711,7 +20711,7 @@ export namespace Camel {
     abstract class ObjectPrivate {
         static $gtype: GObject.GType<ObjectPrivate>;
 
-        // Constructors of Camel.ObjectPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -20720,7 +20720,7 @@ export namespace Camel {
     abstract class OfflineFolderPrivate {
         static $gtype: GObject.GType<OfflineFolderPrivate>;
 
-        // Constructors of Camel.OfflineFolderPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -20729,7 +20729,7 @@ export namespace Camel {
     abstract class OfflineSettingsPrivate {
         static $gtype: GObject.GType<OfflineSettingsPrivate>;
 
-        // Constructors of Camel.OfflineSettingsPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -20738,7 +20738,7 @@ export namespace Camel {
     abstract class OfflineStorePrivate {
         static $gtype: GObject.GType<OfflineStorePrivate>;
 
-        // Constructors of Camel.OfflineStorePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -20747,7 +20747,7 @@ export namespace Camel {
     abstract class OperationPrivate {
         static $gtype: GObject.GType<OperationPrivate>;
 
-        // Constructors of Camel.OperationPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -20755,12 +20755,12 @@ export namespace Camel {
     class PartitionKey {
         static $gtype: GObject.GType<PartitionKey>;
 
-        // Own fields of Camel.PartitionKey
+        // Fields
 
         hashid: _hash_t;
         keyid: _key_t;
 
-        // Constructors of Camel.PartitionKey
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -20774,12 +20774,12 @@ export namespace Camel {
     class PartitionKeyBlock {
         static $gtype: GObject.GType<PartitionKeyBlock>;
 
-        // Own fields of Camel.PartitionKeyBlock
+        // Fields
 
         used: number;
         keys: any[];
 
-        // Constructors of Camel.PartitionKeyBlock
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -20793,12 +20793,12 @@ export namespace Camel {
     class PartitionMap {
         static $gtype: GObject.GType<PartitionMap>;
 
-        // Own fields of Camel.PartitionMap
+        // Fields
 
         hashid: _hash_t;
         blockid: _block_t;
 
-        // Constructors of Camel.PartitionMap
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -20812,13 +20812,13 @@ export namespace Camel {
     class PartitionMapBlock {
         static $gtype: GObject.GType<PartitionMapBlock>;
 
-        // Own fields of Camel.PartitionMapBlock
+        // Fields
 
         next: _block_t;
         used: number;
         partition: any[];
 
-        // Constructors of Camel.PartitionMapBlock
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -20834,7 +20834,7 @@ export namespace Camel {
     abstract class PartitionTablePrivate {
         static $gtype: GObject.GType<PartitionTablePrivate>;
 
-        // Constructors of Camel.PartitionTablePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -20842,7 +20842,7 @@ export namespace Camel {
     class Provider {
         static $gtype: GObject.GType<Provider>;
 
-        // Own fields of Camel.Provider
+        // Fields
 
         protocol: string;
         name: string;
@@ -20858,11 +20858,11 @@ export namespace Camel {
         translation_domain: string;
         priv: any;
 
-        // Constructors of Camel.Provider
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own static methods of Camel.Provider
+        // Static methods
 
         /**
          * Returns the registered #CamelProvider for `protocol,` loading it
@@ -20905,7 +20905,7 @@ export namespace Camel {
          */
         static load(path: string): boolean;
 
-        // Own methods of Camel.Provider
+        // Methods
 
         /**
          * After filling in the standard Username/Hostname/Port/Path settings
@@ -20932,7 +20932,7 @@ export namespace Camel {
     class ProviderConfEntry {
         static $gtype: GObject.GType<ProviderConfEntry>;
 
-        // Own fields of Camel.ProviderConfEntry
+        // Fields
 
         type: ProviderConfType;
         name: string;
@@ -20940,7 +20940,7 @@ export namespace Camel {
         text: string;
         value: string;
 
-        // Constructors of Camel.ProviderConfEntry
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -20948,13 +20948,13 @@ export namespace Camel {
     class ProviderModule {
         static $gtype: GObject.GType<ProviderModule>;
 
-        // Own fields of Camel.ProviderModule
+        // Fields
 
         path: string;
         types: any[];
         loaded: number;
 
-        // Constructors of Camel.ProviderModule
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -20964,7 +20964,7 @@ export namespace Camel {
         );
         _init(...args: any[]): void;
 
-        // Own static methods of Camel.ProviderModule
+        // Static methods
 
         static init(): void;
     }
@@ -20972,13 +20972,13 @@ export namespace Camel {
     class ProviderPortEntry {
         static $gtype: GObject.GType<ProviderPortEntry>;
 
-        // Own fields of Camel.ProviderPortEntry
+        // Fields
 
         port: number;
         desc: string;
         is_ssl: boolean;
 
-        // Constructors of Camel.ProviderPortEntry
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -20994,7 +20994,7 @@ export namespace Camel {
     abstract class SExpPrivate {
         static $gtype: GObject.GType<SExpPrivate>;
 
-        // Constructors of Camel.SExpPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -21002,14 +21002,14 @@ export namespace Camel {
     class SExpResult {
         static $gtype: GObject.GType<SExpResult>;
 
-        // Own fields of Camel.SExpResult
+        // Fields
 
         type: SExpResultType;
         time_generator: boolean;
         occuring_start: never;
         occuring_end: never;
 
-        // Constructors of Camel.SExpResult
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -21020,13 +21020,13 @@ export namespace Camel {
     class SExpSymbol {
         static $gtype: GObject.GType<SExpSymbol>;
 
-        // Own fields of Camel.SExpSymbol
+        // Fields
 
         type: number;
         name: string;
         data: any;
 
-        // Constructors of Camel.SExpSymbol
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -21041,11 +21041,11 @@ export namespace Camel {
     class SExpTerm {
         static $gtype: GObject.GType<SExpTerm>;
 
-        // Own fields of Camel.SExpTerm
+        // Fields
 
         type: SExpTermType;
 
-        // Constructors of Camel.SExpTerm
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -21054,7 +21054,7 @@ export namespace Camel {
     abstract class SMIMEContextPrivate {
         static $gtype: GObject.GType<SMIMEContextPrivate>;
 
-        // Constructors of Camel.SMIMEContextPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -21063,7 +21063,7 @@ export namespace Camel {
     abstract class SaslAnonymousPrivate {
         static $gtype: GObject.GType<SaslAnonymousPrivate>;
 
-        // Constructors of Camel.SaslAnonymousPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -21073,7 +21073,7 @@ export namespace Camel {
     abstract class SaslCramMd5Private {
         static $gtype: GObject.GType<SaslCramMd5Private>;
 
-        // Constructors of Camel.SaslCramMd5Private
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -21082,7 +21082,7 @@ export namespace Camel {
     abstract class SaslDigestMd5Private {
         static $gtype: GObject.GType<SaslDigestMd5Private>;
 
-        // Constructors of Camel.SaslDigestMd5Private
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -21091,7 +21091,7 @@ export namespace Camel {
     abstract class SaslGssapiPrivate {
         static $gtype: GObject.GType<SaslGssapiPrivate>;
 
-        // Constructors of Camel.SaslGssapiPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -21100,7 +21100,7 @@ export namespace Camel {
     abstract class SaslLoginPrivate {
         static $gtype: GObject.GType<SaslLoginPrivate>;
 
-        // Constructors of Camel.SaslLoginPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -21109,7 +21109,7 @@ export namespace Camel {
     abstract class SaslNTLMPrivate {
         static $gtype: GObject.GType<SaslNTLMPrivate>;
 
-        // Constructors of Camel.SaslNTLMPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -21118,7 +21118,7 @@ export namespace Camel {
     abstract class SaslPOPB4SMTPPrivate {
         static $gtype: GObject.GType<SaslPOPB4SMTPPrivate>;
 
-        // Constructors of Camel.SaslPOPB4SMTPPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -21127,7 +21127,7 @@ export namespace Camel {
     abstract class SaslPlainPrivate {
         static $gtype: GObject.GType<SaslPlainPrivate>;
 
-        // Constructors of Camel.SaslPlainPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -21135,7 +21135,7 @@ export namespace Camel {
     abstract class SaslPrivate {
         static $gtype: GObject.GType<SaslPrivate>;
 
-        // Constructors of Camel.SaslPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -21145,7 +21145,7 @@ export namespace Camel {
     abstract class SaslXOAuth2GooglePrivate {
         static $gtype: GObject.GType<SaslXOAuth2GooglePrivate>;
 
-        // Constructors of Camel.SaslXOAuth2GooglePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -21154,7 +21154,7 @@ export namespace Camel {
     abstract class SaslXOAuth2OutlookPrivate {
         static $gtype: GObject.GType<SaslXOAuth2OutlookPrivate>;
 
-        // Constructors of Camel.SaslXOAuth2OutlookPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -21162,7 +21162,7 @@ export namespace Camel {
     abstract class SaslXOAuth2Private {
         static $gtype: GObject.GType<SaslXOAuth2Private>;
 
-        // Constructors of Camel.SaslXOAuth2Private
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -21171,7 +21171,7 @@ export namespace Camel {
     abstract class SaslXOAuth2YahooPrivate {
         static $gtype: GObject.GType<SaslXOAuth2YahooPrivate>;
 
-        // Constructors of Camel.SaslXOAuth2YahooPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -21179,14 +21179,14 @@ export namespace Camel {
     class ServiceAuthType {
         static $gtype: GObject.GType<ServiceAuthType>;
 
-        // Own fields of Camel.ServiceAuthType
+        // Fields
 
         name: string;
         description: string;
         authproto: string;
         need_password: boolean;
 
-        // Constructors of Camel.ServiceAuthType
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -21198,7 +21198,7 @@ export namespace Camel {
         );
         _init(...args: any[]): void;
 
-        // Own methods of Camel.ServiceAuthType
+        // Methods
 
         /**
          * Copies the `service_auth_type` struct.
@@ -21217,7 +21217,7 @@ export namespace Camel {
     abstract class ServicePrivate {
         static $gtype: GObject.GType<ServicePrivate>;
 
-        // Constructors of Camel.ServicePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -21226,7 +21226,7 @@ export namespace Camel {
     abstract class SessionPrivate {
         static $gtype: GObject.GType<SessionPrivate>;
 
-        // Constructors of Camel.SessionPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -21235,7 +21235,7 @@ export namespace Camel {
     abstract class SettingsPrivate {
         static $gtype: GObject.GType<SettingsPrivate>;
 
-        // Constructors of Camel.SettingsPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -21244,7 +21244,7 @@ export namespace Camel {
     class StoreInfo {
         static $gtype: GObject.GType<StoreInfo>;
 
-        // Own fields of Camel.StoreInfo
+        // Fields
 
         refcount: number;
         summary: StoreSummary;
@@ -21253,11 +21253,11 @@ export namespace Camel {
         unread: number;
         total: number;
 
-        // Constructors of Camel.StoreInfo
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own static methods of Camel.StoreInfo
+        // Static methods
 
         /**
          * Returns the last segment of the path string from `info`.
@@ -21274,7 +21274,7 @@ export namespace Camel {
          */
         static set_string(summary: StoreSummary, info: StoreInfo, type: number, value: string): void;
 
-        // Own methods of Camel.StoreInfo
+        // Methods
 
         /**
          * Returns the last segment of the path string from `info`.
@@ -21306,7 +21306,7 @@ export namespace Camel {
     abstract class StorePrivate {
         static $gtype: GObject.GType<StorePrivate>;
 
-        // Constructors of Camel.StorePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -21315,7 +21315,7 @@ export namespace Camel {
     abstract class StoreSettingsPrivate {
         static $gtype: GObject.GType<StoreSettingsPrivate>;
 
-        // Constructors of Camel.StoreSettingsPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -21324,7 +21324,7 @@ export namespace Camel {
     abstract class StoreSummaryPrivate {
         static $gtype: GObject.GType<StoreSummaryPrivate>;
 
-        // Constructors of Camel.StoreSummaryPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -21333,7 +21333,7 @@ export namespace Camel {
     abstract class StreamBufferPrivate {
         static $gtype: GObject.GType<StreamBufferPrivate>;
 
-        // Constructors of Camel.StreamBufferPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -21343,7 +21343,7 @@ export namespace Camel {
     abstract class StreamFilterPrivate {
         static $gtype: GObject.GType<StreamFilterPrivate>;
 
-        // Constructors of Camel.StreamFilterPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -21352,7 +21352,7 @@ export namespace Camel {
     abstract class StreamFsPrivate {
         static $gtype: GObject.GType<StreamFsPrivate>;
 
-        // Constructors of Camel.StreamFsPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -21361,7 +21361,7 @@ export namespace Camel {
     abstract class StreamMemPrivate {
         static $gtype: GObject.GType<StreamMemPrivate>;
 
-        // Constructors of Camel.StreamMemPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -21370,7 +21370,7 @@ export namespace Camel {
     abstract class StreamNullPrivate {
         static $gtype: GObject.GType<StreamNullPrivate>;
 
-        // Constructors of Camel.StreamNullPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -21378,7 +21378,7 @@ export namespace Camel {
     abstract class StreamPrivate {
         static $gtype: GObject.GType<StreamPrivate>;
 
-        // Constructors of Camel.StreamPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -21387,7 +21387,7 @@ export namespace Camel {
     abstract class StreamProcessPrivate {
         static $gtype: GObject.GType<StreamProcessPrivate>;
 
-        // Constructors of Camel.StreamProcessPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -21396,7 +21396,7 @@ export namespace Camel {
     class SummaryMessageID {
         static $gtype: GObject.GType<SummaryMessageID>;
 
-        // Constructors of Camel.SummaryMessageID
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -21406,7 +21406,7 @@ export namespace Camel {
     abstract class TextIndexCursorPrivate {
         static $gtype: GObject.GType<TextIndexCursorPrivate>;
 
-        // Constructors of Camel.TextIndexCursorPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -21415,7 +21415,7 @@ export namespace Camel {
     abstract class TextIndexKeyCursorPrivate {
         static $gtype: GObject.GType<TextIndexKeyCursorPrivate>;
 
-        // Constructors of Camel.TextIndexKeyCursorPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -21424,7 +21424,7 @@ export namespace Camel {
     abstract class TextIndexNamePrivate {
         static $gtype: GObject.GType<TextIndexNamePrivate>;
 
-        // Constructors of Camel.TextIndexNamePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -21432,7 +21432,7 @@ export namespace Camel {
     abstract class TextIndexPrivate {
         static $gtype: GObject.GType<TextIndexPrivate>;
 
-        // Constructors of Camel.TextIndexPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -21441,7 +21441,7 @@ export namespace Camel {
     abstract class TransportPrivate {
         static $gtype: GObject.GType<TransportPrivate>;
 
-        // Constructors of Camel.TransportPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -21452,7 +21452,7 @@ export namespace Camel {
     abstract class Trie {
         static $gtype: GObject.GType<Trie>;
 
-        // Constructors of Camel.Trie
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -21460,7 +21460,7 @@ export namespace Camel {
     class UIDCache {
         static $gtype: GObject.GType<UIDCache>;
 
-        // Own fields of Camel.UIDCache
+        // Fields
 
         filename: string;
         level: number;
@@ -21468,11 +21468,11 @@ export namespace Camel {
         size: number;
         fd: number;
 
-        // Constructors of Camel.UIDCache
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own static methods of Camel.UIDCache
+        // Static methods
 
         /**
          * Frees the array of UIDs.
@@ -21480,7 +21480,7 @@ export namespace Camel {
          */
         static free_uids(uids: string[]): void;
 
-        // Own methods of Camel.UIDCache
+        // Methods
 
         /**
          * Destroys `cache` and frees its data.
@@ -21508,7 +21508,7 @@ export namespace Camel {
     class URL {
         static $gtype: GObject.GType<URL>;
 
-        // Own fields of Camel.URL
+        // Fields
 
         protocol: string;
         user: string;
@@ -21519,14 +21519,14 @@ export namespace Camel {
         query: string;
         fragment: string;
 
-        // Constructors of Camel.URL
+        // Constructors
 
         constructor(url_string: string);
         _init(...args: any[]): void;
 
         static ['new'](url_string: string): URL;
 
-        // Own static methods of Camel.URL
+        // Static methods
 
         static addrspec_end(_in: string, pos: string, inend: string, match: UrlMatch): boolean;
         static addrspec_start(_in: string, pos: string, inend: string, match: UrlMatch): boolean;
@@ -21550,7 +21550,7 @@ export namespace Camel {
         static web_end(_in: string, pos: string, inend: string, match: UrlMatch): boolean;
         static web_start(_in: string, pos: string, inend: string, match: UrlMatch): boolean;
 
-        // Own methods of Camel.URL
+        // Methods
 
         /**
          * Copy a #CamelURL.
@@ -21632,14 +21632,14 @@ export namespace Camel {
     class UrlMatch {
         static $gtype: GObject.GType<UrlMatch>;
 
-        // Own fields of Camel.UrlMatch
+        // Fields
 
         pattern: string;
         prefix: string;
         um_so: number;
         um_eo: number;
 
-        // Constructors of Camel.UrlMatch
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -21655,14 +21655,14 @@ export namespace Camel {
     class UrlPattern {
         static $gtype: GObject.GType<UrlPattern>;
 
-        // Own fields of Camel.UrlPattern
+        // Fields
 
         pattern: string;
         prefix: string;
         start: UrlScanFunc;
         end: UrlScanFunc;
 
-        // Constructors of Camel.UrlPattern
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -21670,7 +21670,7 @@ export namespace Camel {
     abstract class UrlScanner {
         static $gtype: GObject.GType<UrlScanner>;
 
-        // Constructors of Camel.UrlScanner
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -21679,7 +21679,7 @@ export namespace Camel {
     abstract class VTrashFolderPrivate {
         static $gtype: GObject.GType<VTrashFolderPrivate>;
 
-        // Constructors of Camel.VTrashFolderPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -21688,7 +21688,7 @@ export namespace Camel {
     abstract class VeeDataCachePrivate {
         static $gtype: GObject.GType<VeeDataCachePrivate>;
 
-        // Constructors of Camel.VeeDataCachePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -21697,7 +21697,7 @@ export namespace Camel {
     abstract class VeeFolderPrivate {
         static $gtype: GObject.GType<VeeFolderPrivate>;
 
-        // Constructors of Camel.VeeFolderPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -21707,7 +21707,7 @@ export namespace Camel {
     abstract class VeeMessageInfoDataPrivate {
         static $gtype: GObject.GType<VeeMessageInfoDataPrivate>;
 
-        // Constructors of Camel.VeeMessageInfoDataPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -21715,7 +21715,7 @@ export namespace Camel {
     abstract class VeeMessageInfoPrivate {
         static $gtype: GObject.GType<VeeMessageInfoPrivate>;
 
-        // Constructors of Camel.VeeMessageInfoPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -21724,7 +21724,7 @@ export namespace Camel {
     abstract class VeeStorePrivate {
         static $gtype: GObject.GType<VeeStorePrivate>;
 
-        // Constructors of Camel.VeeStorePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -21733,7 +21733,7 @@ export namespace Camel {
     abstract class VeeSubfolderDataPrivate {
         static $gtype: GObject.GType<VeeSubfolderDataPrivate>;
 
-        // Constructors of Camel.VeeSubfolderDataPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -21742,7 +21742,7 @@ export namespace Camel {
     abstract class VeeSummaryPrivate {
         static $gtype: GObject.GType<VeeSummaryPrivate>;
 
-        // Constructors of Camel.VeeSummaryPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -21750,14 +21750,14 @@ export namespace Camel {
     class WeakRefGroup {
         static $gtype: GObject.GType<WeakRefGroup>;
 
-        // Constructors of Camel.WeakRefGroup
+        // Constructors
 
         constructor(properties?: Partial<{}>);
         _init(...args: any[]): void;
 
         static ['new'](): WeakRefGroup;
 
-        // Own methods of Camel.WeakRefGroup
+        // Methods
 
         get(): any | null;
         /**
@@ -21781,13 +21781,13 @@ export namespace Camel {
     class _KeyKey {
         static $gtype: GObject.GType<_KeyKey>;
 
-        // Own fields of Camel._KeyKey
+        // Fields
 
         data: _block_t;
         offset: number;
         flags: number;
 
-        // Constructors of Camel._KeyKey
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -21802,14 +21802,14 @@ export namespace Camel {
     class _LockHelperMsg {
         static $gtype: GObject.GType<_LockHelperMsg>;
 
-        // Own fields of Camel._LockHelperMsg
+        // Fields
 
         magic: number;
         seq: number;
         id: number;
         data: number;
 
-        // Constructors of Camel._LockHelperMsg
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -21825,12 +21825,12 @@ export namespace Camel {
     abstract class __search_word {
         static $gtype: GObject.GType<__search_word>;
 
-        // Own fields of Camel.__search_word
+        // Fields
 
         type: _search_word_t;
         word: string;
 
-        // Constructors of Camel.__search_word
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -21838,13 +21838,13 @@ export namespace Camel {
     abstract class __search_words {
         static $gtype: GObject.GType<__search_words>;
 
-        // Own fields of Camel.__search_words
+        // Fields
 
         len: number;
         type: _search_word_t;
         words: any;
 
-        // Constructors of Camel.__search_words
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -21852,13 +21852,13 @@ export namespace Camel {
     abstract class _encrypt {
         static $gtype: GObject.GType<_encrypt>;
 
-        // Own fields of Camel._encrypt
+        // Fields
 
         status: CipherValidityEncrypt;
         description: string;
         encrypters: GLib.Queue;
 
-        // Constructors of Camel._encrypt
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -21866,13 +21866,13 @@ export namespace Camel {
     abstract class _sign {
         static $gtype: GObject.GType<_sign>;
 
-        // Own fields of Camel._sign
+        // Fields
 
         status: CipherValiditySign;
         description: string;
         signers: GLib.Queue;
 
-        // Constructors of Camel._sign
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -21888,7 +21888,7 @@ export namespace Camel {
         prototype: JunkFilter;
     }
     interface JunkFilter extends GObject.Object {
-        // Own methods of Camel.JunkFilter
+        // Methods
 
         /**
          * Classifies `message` as junk, not junk or inconclusive.
@@ -21933,7 +21933,7 @@ export namespace Camel {
          */
         synchronize(cancellable?: Gio.Cancellable | null): boolean;
 
-        // Own virtual methods of Camel.JunkFilter
+        // Virtual methods
 
         /**
          * Classifies `message` as junk, not junk or inconclusive.
@@ -21992,14 +21992,14 @@ export namespace Camel {
         prototype: NetworkService;
     }
     interface NetworkService extends Service {
-        // Own properties of Camel.NetworkService
+        // Properties
 
         get connectable(): Gio.SocketConnectable;
         set connectable(val: Gio.SocketConnectable);
         get host_reachable(): boolean;
         get hostReachable(): boolean;
 
-        // Own methods of Camel.NetworkService
+        // Methods
 
         /**
          * Asynchronously attempts to determine whether or not the host described by
@@ -22101,7 +22101,7 @@ export namespace Camel {
          */
         starttls(base_stream: Gio.IOStream): Gio.IOStream | null;
 
-        // Own virtual methods of Camel.NetworkService
+        // Virtual methods
 
         /**
          * Attempts to establish a network connection to the server described by
@@ -22153,7 +22153,7 @@ export namespace Camel {
         prototype: NetworkSettings;
     }
     interface NetworkSettings extends Settings {
-        // Own properties of Camel.NetworkSettings
+        // Properties
 
         get auth_mechanism(): string;
         set auth_mechanism(val: string);
@@ -22170,7 +22170,7 @@ export namespace Camel {
         get user(): string;
         set user(val: string);
 
-        // Own methods of Camel.NetworkSettings
+        // Methods
 
         /**
          * Thread-safe variation of camel_network_settings_get_auth_mechanism().
@@ -22279,7 +22279,7 @@ export namespace Camel {
         prototype: Subscribable;
     }
     interface Subscribable extends Store {
-        // Own methods of Camel.Subscribable
+        // Methods
 
         /**
          * Find out if a folder has been subscribed to.
@@ -22364,7 +22364,7 @@ export namespace Camel {
          */
         unsubscribe_folder_sync(folder_name: string, cancellable?: Gio.Cancellable | null): boolean;
 
-        // Own virtual methods of Camel.Subscribable
+        // Virtual methods
 
         /**
          * Find out if a folder has been subscribed to.

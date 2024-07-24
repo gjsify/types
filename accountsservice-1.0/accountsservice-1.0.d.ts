@@ -45,7 +45,7 @@ export namespace AccountsService {
     class UserManagerError extends GLib.Error {
         static $gtype: GObject.GType<UserManagerError>;
 
-        // Static fields of AccountsService.UserManagerError
+        // Static fields
 
         /**
          * Generic failure
@@ -68,12 +68,12 @@ export namespace AccountsService {
          */
         static NOT_SUPPORTED: number;
 
-        // Constructors of AccountsService.UserManagerError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of AccountsService.UserManagerError
+        // Static methods
 
         static quark(): GLib.Quark;
     }
@@ -164,7 +164,7 @@ export namespace AccountsService {
     class User extends GObject.Object {
         static $gtype: GObject.GType<User>;
 
-        // Own properties of AccountsService.User
+        // Properties
 
         get account_type(): number;
         get accountType(): number;
@@ -217,13 +217,13 @@ export namespace AccountsService {
         get x_session(): string;
         get xSession(): string;
 
-        // Constructors of AccountsService.User
+        // Constructors
 
         constructor(properties?: Partial<User.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of AccountsService.User
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -235,7 +235,7 @@ export namespace AccountsService {
         connect_after(signal: 'sessions-changed', callback: (_source: this) => void): number;
         emit(signal: 'sessions-changed'): void;
 
-        // Own methods of AccountsService.User
+        // Methods
 
         /**
          * Organize the user by login frequency and names.
@@ -597,7 +597,7 @@ export namespace AccountsService {
     class UserManager extends GObject.Object {
         static $gtype: GObject.GType<UserManager>;
 
-        // Own properties of AccountsService.UserManager
+        // Properties
 
         get exclude_usernames_list(): any;
         set exclude_usernames_list(val: any);
@@ -614,13 +614,13 @@ export namespace AccountsService {
         get is_loaded(): boolean;
         get isLoaded(): boolean;
 
-        // Constructors of AccountsService.UserManager
+        // Constructors
 
         constructor(properties?: Partial<UserManager.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of AccountsService.UserManager
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -638,7 +638,7 @@ export namespace AccountsService {
         connect_after(signal: 'user-removed', callback: (_source: this, user: User) => void): number;
         emit(signal: 'user-removed', user: User): void;
 
-        // Own static methods of AccountsService.UserManager
+        // Static methods
 
         /**
          * Returns the user manager singleton instance.  Calling this function will
@@ -648,14 +648,14 @@ export namespace AccountsService {
          */
         static get_default(): UserManager;
 
-        // Own virtual methods of AccountsService.UserManager
+        // Virtual methods
 
         vfunc_user_added(user: User): void;
         vfunc_user_changed(user: User): void;
         vfunc_user_is_logged_in_changed(user: User): void;
         vfunc_user_removed(user: User): void;
 
-        // Own methods of AccountsService.UserManager
+        // Methods
 
         /**
          * Activate the session for a given user.

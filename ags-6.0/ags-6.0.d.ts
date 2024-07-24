@@ -61,7 +61,7 @@ export namespace Ags {
     class RegexUtilError extends GLib.Error {
         static $gtype: GObject.GType<RegexUtilError>;
 
-        // Static fields of Ags.RegexUtilError
+        // Static fields
 
         static BAD_BACK_REFERENCE: number;
         static BAD_PATTERN: number;
@@ -79,7 +79,7 @@ export namespace Ags {
         static INVALID_BACK_REFERENCE: number;
         static UNSPECIFIED: number;
 
-        // Constructors of Ags.RegexUtilError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
@@ -2276,7 +2276,7 @@ export namespace Ags {
     class ApplicationContext extends GObject.Object implements Connectable {
         static $gtype: GObject.GType<ApplicationContext>;
 
-        // Own properties of Ags.ApplicationContext
+        // Properties
 
         /**
          * The assigned config.
@@ -2309,7 +2309,7 @@ export namespace Ags {
         get taskLauncher(): GObject.Object;
         set taskLauncher(val: GObject.Object);
 
-        // Own fields of Ags.ApplicationContext
+        // Fields
 
         gobject: GObject.Object;
         flags: number;
@@ -2326,7 +2326,7 @@ export namespace Ags {
         domain: string;
         history: GObject.Object;
 
-        // Constructors of Ags.ApplicationContext
+        // Constructors
 
         constructor(properties?: Partial<ApplicationContext.ConstructorProps>, ...args: any[]);
 
@@ -2334,7 +2334,7 @@ export namespace Ags {
 
         static ['new'](main_loop?: GObject.Object | null, config?: Config | null): ApplicationContext;
 
-        // Own signals of Ags.ApplicationContext
+        // Signals
 
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -2349,14 +2349,14 @@ export namespace Ags {
         connect_after(signal: 'setup', callback: (_source: this) => void): number;
         emit(signal: 'setup'): void;
 
-        // Own static methods of Ags.ApplicationContext
+        // Static methods
 
         /**
          * Get your application context instance.
          */
         static get_instance(): ApplicationContext;
 
-        // Own virtual methods of Ags.ApplicationContext
+        // Virtual methods
 
         /**
          * Signal to load and parse configuration.
@@ -2379,7 +2379,7 @@ export namespace Ags {
          */
         vfunc_setup(): void;
 
-        // Own methods of Ags.ApplicationContext
+        // Methods
 
         /**
          * Signal to load and parse configuration.
@@ -2941,11 +2941,11 @@ export namespace Ags {
     class AuthSecurityContext extends SecurityContext {
         static $gtype: GObject.GType<AuthSecurityContext>;
 
-        // Own fields of Ags.AuthSecurityContext
+        // Fields
 
         security_context: SecurityContext;
 
-        // Constructors of Ags.AuthSecurityContext
+        // Constructors
 
         constructor(properties?: Partial<AuthSecurityContext.ConstructorProps>, ...args: any[]);
 
@@ -2953,7 +2953,7 @@ export namespace Ags {
 
         static ['new'](): AuthSecurityContext;
 
-        // Own static methods of Ags.AuthSecurityContext
+        // Static methods
 
         /**
          * Get instance.
@@ -2970,13 +2970,13 @@ export namespace Ags {
     class AuthenticationManager extends GObject.Object {
         static $gtype: GObject.GType<AuthenticationManager>;
 
-        // Own fields of Ags.AuthenticationManager
+        // Fields
 
         gobject: GObject.Object;
         authentication: any[];
         session_timeout: number;
 
-        // Constructors of Ags.AuthenticationManager
+        // Constructors
 
         constructor(properties?: Partial<AuthenticationManager.ConstructorProps>, ...args: any[]);
 
@@ -2984,14 +2984,14 @@ export namespace Ags {
 
         static ['new'](): AuthenticationManager;
 
-        // Own static methods of Ags.AuthenticationManager
+        // Static methods
 
         /**
          * Get instance.
          */
         static get_instance(): AuthenticationManager;
 
-        // Own methods of Ags.AuthenticationManager
+        // Methods
 
         /**
          * Add `authentication` to `authentication_manager`.
@@ -3074,12 +3074,12 @@ export namespace Ags {
     class BusinessGroupManager extends GObject.Object {
         static $gtype: GObject.GType<BusinessGroupManager>;
 
-        // Own fields of Ags.BusinessGroupManager
+        // Fields
 
         gobject: GObject.Object;
         business_group: any[];
 
-        // Constructors of Ags.BusinessGroupManager
+        // Constructors
 
         constructor(properties?: Partial<BusinessGroupManager.ConstructorProps>, ...args: any[]);
 
@@ -3087,14 +3087,14 @@ export namespace Ags {
 
         static ['new'](): BusinessGroupManager;
 
-        // Own static methods of Ags.BusinessGroupManager
+        // Static methods
 
         /**
          * Get instance.
          */
         static get_instance(): BusinessGroupManager;
 
-        // Own methods of Ags.BusinessGroupManager
+        // Methods
 
         /**
          * Add `business_group` to `business_group_manager`.
@@ -3122,12 +3122,12 @@ export namespace Ags {
     class CertificateManager extends GObject.Object {
         static $gtype: GObject.GType<CertificateManager>;
 
-        // Own fields of Ags.CertificateManager
+        // Fields
 
         gobject: GObject.Object;
         certificate: any[];
 
-        // Constructors of Ags.CertificateManager
+        // Constructors
 
         constructor(properties?: Partial<CertificateManager.ConstructorProps>, ...args: any[]);
 
@@ -3135,14 +3135,14 @@ export namespace Ags {
 
         static ['new'](): CertificateManager;
 
-        // Own static methods of Ags.CertificateManager
+        // Static methods
 
         /**
          * Get instance.
          */
         static get_instance(): CertificateManager;
 
-        // Own methods of Ags.CertificateManager
+        // Methods
 
         /**
          * Add `certificate` to `certificate_manager`.
@@ -3199,14 +3199,14 @@ export namespace Ags {
     class Config extends GObject.Object {
         static $gtype: GObject.GType<Config>;
 
-        // Own fields of Ags.Config
+        // Fields
 
         gobject: GObject.Object;
         flags: number;
         version: string;
         build_id: string;
 
-        // Constructors of Ags.Config
+        // Constructors
 
         constructor(properties?: Partial<Config.ConstructorProps>, ...args: any[]);
 
@@ -3214,7 +3214,7 @@ export namespace Ags {
 
         static ['new'](): Config;
 
-        // Own signals of Ags.Config
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -3235,14 +3235,14 @@ export namespace Ags {
         ): number;
         emit(signal: 'set-value', group: string, key: string, value: string): void;
 
-        // Own static methods of Ags.Config
+        // Static methods
 
         /**
          * Get config instance.
          */
         static get_instance(): Config;
 
-        // Own virtual methods of Ags.Config
+        // Virtual methods
 
         /**
          * Retrieve config by `group` and `key`.
@@ -3262,7 +3262,7 @@ export namespace Ags {
          */
         vfunc_set_value(group: string, key: string, value: string): void;
 
-        // Own methods of Ags.Config
+        // Methods
 
         /**
          * Clears configuration.
@@ -3322,7 +3322,7 @@ export namespace Ags {
     class Controller extends GObject.Object {
         static $gtype: GObject.GType<Controller>;
 
-        // Own properties of Ags.Controller
+        // Properties
 
         /**
          * The context path provided.
@@ -3340,11 +3340,11 @@ export namespace Ags {
         get server(): Server;
         set server(val: Server);
 
-        // Own fields of Ags.Controller
+        // Fields
 
         gobject: GObject.Object;
 
-        // Constructors of Ags.Controller
+        // Constructors
 
         constructor(properties?: Partial<Controller.ConstructorProps>, ...args: any[]);
 
@@ -3352,7 +3352,7 @@ export namespace Ags {
 
         static ['new'](): Controller;
 
-        // Own virtual methods of Ags.Controller
+        // Virtual methods
 
         /**
          * Query `security_context` for `login`.
@@ -3361,7 +3361,7 @@ export namespace Ags {
          */
         vfunc_query_security_context(security_context: GObject.Object, login: string): boolean;
 
-        // Own methods of Ags.Controller
+        // Methods
 
         /**
          * Add `controller_resource` with key `resource_name` to hash table.
@@ -3407,7 +3407,7 @@ export namespace Ags {
     class Conversion extends GObject.Object {
         static $gtype: GObject.GType<Conversion>;
 
-        // Own properties of Ags.Conversion
+        // Properties
 
         /**
          * The description of the conversion.
@@ -3420,11 +3420,11 @@ export namespace Ags {
         get name(): string;
         set name(val: string);
 
-        // Own fields of Ags.Conversion
+        // Fields
 
         gobject: GObject.Object;
 
-        // Constructors of Ags.Conversion
+        // Constructors
 
         constructor(properties?: Partial<Conversion.ConstructorProps>, ...args: any[]);
 
@@ -3432,7 +3432,7 @@ export namespace Ags {
 
         static ['new'](): Conversion;
 
-        // Own signals of Ags.Conversion
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -3441,7 +3441,7 @@ export namespace Ags {
         connect_after(signal: 'convert', callback: (_source: this, x: number, reverse: boolean) => number): number;
         emit(signal: 'convert', x: number, reverse: boolean): void;
 
-        // Own virtual methods of Ags.Conversion
+        // Virtual methods
 
         /**
          * Convert a value if `reverse` is %FALSE then use the target format
@@ -3451,7 +3451,7 @@ export namespace Ags {
          */
         vfunc_convert(x: number, reverse: boolean): number;
 
-        // Own methods of Ags.Conversion
+        // Methods
 
         /**
          * Convert a value if `reverse` is %FALSE then use the target format
@@ -3472,13 +3472,13 @@ export namespace Ags {
     class DestroyWorker extends WorkerThread implements Connectable {
         static $gtype: GObject.GType<DestroyWorker>;
 
-        // Own fields of Ags.DestroyWorker
+        // Fields
 
         worker_thread: WorkerThread;
         destroy_interval: any;
         destroy_list: any[];
 
-        // Constructors of Ags.DestroyWorker
+        // Constructors
 
         constructor(properties?: Partial<DestroyWorker.ConstructorProps>, ...args: any[]);
 
@@ -3486,7 +3486,7 @@ export namespace Ags {
 
         static ['new'](): DestroyWorker;
 
-        // Own static methods of Ags.DestroyWorker
+        // Static methods
 
         /**
          * Add `ptr` for destruction using `destroy_func`.
@@ -3961,7 +3961,7 @@ export namespace Ags {
     class File extends GObject.Object {
         static $gtype: GObject.GType<File>;
 
-        // Own properties of Ags.File
+        // Properties
 
         /**
          * The encoding to use for embedding audio data.
@@ -4004,7 +4004,7 @@ export namespace Ags {
         get xmlDoc(): any;
         set xmlDoc(val: any);
 
-        // Own fields of Ags.File
+        // Fields
 
         gobject: GObject.Object;
         flags: number;
@@ -4026,7 +4026,7 @@ export namespace Ags {
         embedded_audio: any[];
         file_link: any[];
 
-        // Constructors of Ags.File
+        // Constructors
 
         constructor(properties?: Partial<File.ConstructorProps>, ...args: any[]);
 
@@ -4034,7 +4034,7 @@ export namespace Ags {
 
         static ['new'](): File;
 
-        // Own signals of Ags.File
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -4073,7 +4073,7 @@ export namespace Ags {
         connect_after(signal: 'write-resolve', callback: (_source: this) => void): number;
         emit(signal: 'write-resolve'): void;
 
-        // Own static methods of Ags.File
+        // Static methods
 
         /**
          * Compute MD5 sums of a buffer.
@@ -4082,7 +4082,7 @@ export namespace Ags {
          */
         static str2md5(content: string, content_length: number): string;
 
-        // Own virtual methods of Ags.File
+        // Virtual methods
 
         /**
          * Opens the file specified by :filename property.
@@ -4118,7 +4118,7 @@ export namespace Ags {
          */
         vfunc_write_resolve(): void;
 
-        // Own methods of Ags.File
+        // Methods
 
         /**
          * Adds `id_ref` to `file`.
@@ -4322,7 +4322,7 @@ export namespace Ags {
     class FileIdRef extends GObject.Object {
         static $gtype: GObject.GType<FileIdRef>;
 
-        // Own properties of Ags.FileIdRef
+        // Properties
 
         /**
          * The #AgsFile this #AgsFileIdRef belongs to.
@@ -4345,14 +4345,14 @@ export namespace Ags {
         get xpath(): string;
         set xpath(val: string);
 
-        // Own fields of Ags.FileIdRef
+        // Fields
 
         gobject: GObject.Object;
 
         // This field conflicts with a function in a parent class or interface.
         ref: any | any;
 
-        // Constructors of Ags.FileIdRef
+        // Constructors
 
         constructor(properties?: Partial<FileIdRef.ConstructorProps>, ...args: any[]);
 
@@ -4360,7 +4360,7 @@ export namespace Ags {
 
         static ['new'](): FileIdRef;
 
-        // Own signals of Ags.FileIdRef
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -4369,14 +4369,14 @@ export namespace Ags {
         connect_after(signal: 'resolved', callback: (_source: this) => void): number;
         emit(signal: 'resolved'): void;
 
-        // Own virtual methods of Ags.FileIdRef
+        // Virtual methods
 
         /**
          * Notify about resolved reference.
          */
         vfunc_resolved(): void;
 
-        // Own methods of Ags.FileIdRef
+        // Methods
 
         /**
          * Notify about resolved reference.
@@ -4403,7 +4403,7 @@ export namespace Ags {
     class FileLaunch extends GObject.Object {
         static $gtype: GObject.GType<FileLaunch>;
 
-        // Own properties of Ags.FileLaunch
+        // Properties
 
         /**
          * The #AgsFile this #AgsFileLaunch belongs to.
@@ -4421,11 +4421,11 @@ export namespace Ags {
         get reference(): any;
         set reference(val: any);
 
-        // Own fields of Ags.FileLaunch
+        // Fields
 
         gobject: GObject.Object;
 
-        // Constructors of Ags.FileLaunch
+        // Constructors
 
         constructor(properties?: Partial<FileLaunch.ConstructorProps>, ...args: any[]);
 
@@ -4433,7 +4433,7 @@ export namespace Ags {
 
         static ['new'](): FileLaunch;
 
-        // Own signals of Ags.FileLaunch
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -4442,14 +4442,14 @@ export namespace Ags {
         connect_after(signal: 'start', callback: (_source: this) => void): number;
         emit(signal: 'start'): void;
 
-        // Own virtual methods of Ags.FileLaunch
+        // Virtual methods
 
         /**
          * Start #AgsFileLaunch to fulfill a task.
          */
         vfunc_start(): void;
 
-        // Own methods of Ags.FileLaunch
+        // Methods
 
         /**
          * Start #AgsFileLaunch to fulfill a task.
@@ -4469,7 +4469,7 @@ export namespace Ags {
     class FileLink extends GObject.Object implements Plugin {
         static $gtype: GObject.GType<FileLink>;
 
-        // Own properties of Ags.FileLink
+        // Properties
 
         /**
          * The data this #AgsFileLink contains.
@@ -4482,7 +4482,7 @@ export namespace Ags {
         get filename(): string;
         set filename(val: string);
 
-        // Own fields of Ags.FileLink
+        // Fields
 
         gobject: GObject.Object;
         version: string;
@@ -4490,7 +4490,7 @@ export namespace Ags {
         name: string;
         xml_type: string;
 
-        // Constructors of Ags.FileLink
+        // Constructors
 
         constructor(properties?: Partial<FileLink.ConstructorProps>, ...args: any[]);
 
@@ -4498,7 +4498,7 @@ export namespace Ags {
 
         static ['new'](): FileLink;
 
-        // Own methods of Ags.FileLink
+        // Methods
 
         /**
          * Get data of `file_link`.
@@ -5019,7 +5019,7 @@ export namespace Ags {
     class FileLookup extends GObject.Object {
         static $gtype: GObject.GType<FileLookup>;
 
-        // Own properties of Ags.FileLookup
+        // Properties
 
         get file(): GObject.Object;
         set file(val: GObject.Object);
@@ -5028,14 +5028,14 @@ export namespace Ags {
         get reference(): any;
         set reference(val: any);
 
-        // Own fields of Ags.FileLookup
+        // Fields
 
         gobject: GObject.Object;
 
         // This field conflicts with a function in a parent class or interface.
         ref: any | any;
 
-        // Constructors of Ags.FileLookup
+        // Constructors
 
         constructor(properties?: Partial<FileLookup.ConstructorProps>, ...args: any[]);
 
@@ -5043,7 +5043,7 @@ export namespace Ags {
 
         static ['new'](): FileLookup;
 
-        // Own signals of Ags.FileLookup
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -5052,7 +5052,7 @@ export namespace Ags {
         connect_after(signal: 'resolve', callback: (_source: this) => void): number;
         emit(signal: 'resolve'): void;
 
-        // Own static methods of Ags.FileLookup
+        // Static methods
 
         /**
          * Find #AgsFileLookup by #xmlNode
@@ -5067,14 +5067,14 @@ export namespace Ags {
          */
         static find_by_reference(file_lookup: FileLookup[], ref?: any | null): FileLookup[];
 
-        // Own virtual methods of Ags.FileLookup
+        // Virtual methods
 
         /**
          * The ::resolve signal.
          */
         vfunc_resolve(): void;
 
-        // Own methods of Ags.FileLookup
+        // Methods
 
         /**
          * The ::resolve signal.
@@ -5104,11 +5104,11 @@ export namespace Ags {
     class FrontController extends Controller {
         static $gtype: GObject.GType<FrontController>;
 
-        // Own fields of Ags.FrontController
+        // Fields
 
         controller: Controller;
 
-        // Constructors of Ags.FrontController
+        // Constructors
 
         constructor(properties?: Partial<FrontController.ConstructorProps>, ...args: any[]);
 
@@ -5116,7 +5116,7 @@ export namespace Ags {
 
         static ['new'](): FrontController;
 
-        // Own signals of Ags.FrontController
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -5155,7 +5155,7 @@ export namespace Ags {
             security_token: string,
         ): void;
 
-        // Own virtual methods of Ags.FrontController
+        // Virtual methods
 
         /**
          * Do a XML-RPC request for the given `path` with `query`.
@@ -5175,7 +5175,7 @@ export namespace Ags {
             security_token: string,
         ): any | null;
 
-        // Own methods of Ags.FrontController
+        // Methods
 
         /**
          * Do a XML-RPC request for the given `path` with `query`.
@@ -5213,7 +5213,7 @@ export namespace Ags {
     class Function extends GObject.Object {
         static $gtype: GObject.GType<Function>;
 
-        // Own properties of Ags.Function
+        // Properties
 
         /**
          * The normalized function.
@@ -5246,7 +5246,7 @@ export namespace Ags {
         get sourceFunction(): string;
         set sourceFunction(val: string);
 
-        // Own fields of Ags.Function
+        // Fields
 
         gobject: GObject.Object;
         flags: number;
@@ -5261,7 +5261,7 @@ export namespace Ags {
         solver_level: number;
         solver_vector: Complex;
 
-        // Constructors of Ags.Function
+        // Constructors
 
         constructor(properties?: Partial<Function.ConstructorProps>, ...args: any[]);
 
@@ -5269,7 +5269,7 @@ export namespace Ags {
 
         static ['new'](source_function: string): Function;
 
-        // Own methods of Ags.Function
+        // Methods
 
         /**
          * Add `solver_matrix` to `function`.
@@ -5295,7 +5295,7 @@ export namespace Ags {
     class GenericMainLoop extends Thread implements Connectable, MainLoop {
         static $gtype: GObject.GType<GenericMainLoop>;
 
-        // Own fields of Ags.GenericMainLoop
+        // Fields
 
         thread: Thread;
 
@@ -5306,7 +5306,7 @@ export namespace Ags {
         is_critical_region: boolean | any;
         critical_region_ref: number;
 
-        // Constructors of Ags.GenericMainLoop
+        // Constructors
 
         constructor(properties?: Partial<GenericMainLoop.ConstructorProps>, ...args: any[]);
 
@@ -5914,13 +5914,13 @@ export namespace Ags {
     class Log extends GObject.Object {
         static $gtype: GObject.GType<Log>;
 
-        // Own fields of Ags.Log
+        // Fields
 
         gobject: GObject.Object;
         flags: number;
         messages: any[];
 
-        // Constructors of Ags.Log
+        // Constructors
 
         constructor(properties?: Partial<Log.ConstructorProps>, ...args: any[]);
 
@@ -5928,14 +5928,14 @@ export namespace Ags {
 
         static ['new'](): Log;
 
-        // Own static methods of Ags.Log
+        // Static methods
 
         /**
          * Get your logging instance.
          */
         static get_instance(): Log;
 
-        // Own methods of Ags.Log
+        // Methods
 
         /**
          * Add a message to `log`.
@@ -5958,12 +5958,12 @@ export namespace Ags {
     class MessageDelivery extends GObject.Object {
         static $gtype: GObject.GType<MessageDelivery>;
 
-        // Own fields of Ags.MessageDelivery
+        // Fields
 
         gobject: GObject.Object;
         message_queue: any[];
 
-        // Constructors of Ags.MessageDelivery
+        // Constructors
 
         constructor(properties?: Partial<MessageDelivery.ConstructorProps>, ...args: any[]);
 
@@ -5971,14 +5971,14 @@ export namespace Ags {
 
         static ['new'](): MessageDelivery;
 
-        // Own static methods of Ags.MessageDelivery
+        // Static methods
 
         /**
          * Get the #AgsMessageDelivery instance.
          */
         static get_instance(): MessageDelivery;
 
-        // Own methods of Ags.MessageDelivery
+        // Methods
 
         /**
          * Add `message` to an #AgsMessageQueue specified by `sender_namespace`.
@@ -6064,7 +6064,7 @@ export namespace Ags {
     class MessageEnvelope extends GObject.Object {
         static $gtype: GObject.GType<MessageEnvelope>;
 
-        // Own properties of Ags.MessageEnvelope
+        // Properties
 
         /**
          * The assigned recipient.
@@ -6087,14 +6087,14 @@ export namespace Ags {
         get xmlDoc(): any;
         set xmlDoc(val: any);
 
-        // Own fields of Ags.MessageEnvelope
+        // Fields
 
         gobject: GObject.Object;
         n_params: number;
         parameter_name: string;
         free_func: GLib.DestroyNotify;
 
-        // Constructors of Ags.MessageEnvelope
+        // Constructors
 
         constructor(properties?: Partial<MessageEnvelope.ConstructorProps>, ...args: any[]);
 
@@ -6111,7 +6111,7 @@ export namespace Ags {
             value: GObject.Value | any,
         ): MessageEnvelope;
 
-        // Own methods of Ags.MessageEnvelope
+        // Methods
 
         /**
          * Get xmlDoc.
@@ -6151,7 +6151,7 @@ export namespace Ags {
     class MessageQueue extends GObject.Object {
         static $gtype: GObject.GType<MessageQueue>;
 
-        // Own properties of Ags.MessageQueue
+        // Properties
 
         /**
          * The assigned namespace of recipient.
@@ -6174,12 +6174,12 @@ export namespace Ags {
         get senderNamespace(): string;
         set senderNamespace(val: string);
 
-        // Own fields of Ags.MessageQueue
+        // Fields
 
         gobject: GObject.Object;
         message_envelope: any[];
 
-        // Constructors of Ags.MessageQueue
+        // Constructors
 
         constructor(properties?: Partial<MessageQueue.ConstructorProps>, ...args: any[]);
 
@@ -6187,7 +6187,7 @@ export namespace Ags {
 
         static ['new'](sender_namespace: string): MessageQueue;
 
-        // Own methods of Ags.MessageQueue
+        // Methods
 
         /**
          * Add `message` to `message_queue`.
@@ -6258,13 +6258,13 @@ export namespace Ags {
     class PasswordStoreManager extends GObject.Object {
         static $gtype: GObject.GType<PasswordStoreManager>;
 
-        // Own fields of Ags.PasswordStoreManager
+        // Fields
 
         gobject: GObject.Object;
         salt: string;
         password_store: any[];
 
-        // Constructors of Ags.PasswordStoreManager
+        // Constructors
 
         constructor(properties?: Partial<PasswordStoreManager.ConstructorProps>, ...args: any[]);
 
@@ -6272,14 +6272,14 @@ export namespace Ags {
 
         static ['new'](): PasswordStoreManager;
 
-        // Own static methods of Ags.PasswordStoreManager
+        // Static methods
 
         /**
          * Get instance.
          */
         static get_instance(): PasswordStoreManager;
 
-        // Own methods of Ags.PasswordStoreManager
+        // Methods
 
         /**
          * Add `password_store` to `password_store_manager`.
@@ -6328,14 +6328,14 @@ export namespace Ags {
     class Priority extends GObject.Object {
         static $gtype: GObject.GType<Priority>;
 
-        // Own fields of Ags.Priority
+        // Fields
 
         gobject: GObject.Object;
         flags: number;
         version: string;
         build_id: string;
 
-        // Constructors of Ags.Priority
+        // Constructors
 
         constructor(properties?: Partial<Priority.ConstructorProps>, ...args: any[]);
 
@@ -6343,7 +6343,7 @@ export namespace Ags {
 
         static ['new'](): Priority;
 
-        // Own signals of Ags.Priority
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -6364,14 +6364,14 @@ export namespace Ags {
         ): number;
         emit(signal: 'set-value', group: string, key: string, value: string): void;
 
-        // Own static methods of Ags.Priority
+        // Static methods
 
         /**
          * Get priority instance.
          */
         static get_instance(): Priority;
 
-        // Own virtual methods of Ags.Priority
+        // Virtual methods
 
         /**
          * Retrieve priority by `group` and `key`.
@@ -6391,7 +6391,7 @@ export namespace Ags {
          */
         vfunc_set_value(group: string, key: string, value: string): void;
 
-        // Own methods of Ags.Priority
+        // Methods
 
         /**
          * Retrieve priority by `group` and `key`.
@@ -6429,7 +6429,7 @@ export namespace Ags {
     class Registry extends GObject.Object {
         static $gtype: GObject.GType<Registry>;
 
-        // Own properties of Ags.Registry
+        // Properties
 
         /**
          * The assigned #AgsServer
@@ -6437,14 +6437,14 @@ export namespace Ags {
         get server(): Server;
         set server(val: Server);
 
-        // Own fields of Ags.Registry
+        // Fields
 
         gobject: GObject.Object;
         flags: number;
         counter: number;
         entry: any[];
 
-        // Constructors of Ags.Registry
+        // Constructors
 
         constructor(properties?: Partial<Registry.ConstructorProps>, ...args: any[]);
 
@@ -6452,7 +6452,7 @@ export namespace Ags {
 
         static ['new'](): Registry;
 
-        // Own methods of Ags.Registry
+        // Methods
 
         /**
          * Add `registry_entry` to `registry`.
@@ -6479,7 +6479,7 @@ export namespace Ags {
     class ReturnableThread extends Thread implements Connectable {
         static $gtype: GObject.GType<ReturnableThread>;
 
-        // Own properties of Ags.ReturnableThread
+        // Properties
 
         /**
          * The assigned #AgsThreadPool providing default settings.
@@ -6492,14 +6492,14 @@ export namespace Ags {
         get threadPool(): GObject.Object;
         set threadPool(val: GObject.Object);
 
-        // Own fields of Ags.ReturnableThread
+        // Fields
 
         thread: Thread;
         flags: number;
         safe_data: any;
         handler: number;
 
-        // Constructors of Ags.ReturnableThread
+        // Constructors
 
         constructor(properties?: Partial<ReturnableThread.ConstructorProps>, ...args: any[]);
 
@@ -6510,18 +6510,18 @@ export namespace Ags {
 
         static ['new'](...args: never[]): any;
 
-        // Own signals of Ags.ReturnableThread
+        // Signals
 
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
         connect_after(signal: 'safe-run', callback: (_source: this) => void): number;
         emit(signal: 'safe-run'): void;
 
-        // Own virtual methods of Ags.ReturnableThread
+        // Virtual methods
 
         vfunc_safe_run(): void;
 
-        // Own methods of Ags.ReturnableThread
+        // Methods
 
         /**
          * Connects `callback` to `thread`.
@@ -7086,7 +7086,7 @@ export namespace Ags {
     class SecurityContext extends GObject.Object {
         static $gtype: GObject.GType<SecurityContext>;
 
-        // Own properties of Ags.SecurityContext
+        // Properties
 
         /**
          * The assigned certificates as string.
@@ -7094,14 +7094,14 @@ export namespace Ags {
         get certs(): string;
         set certs(val: string);
 
-        // Own fields of Ags.SecurityContext
+        // Fields
 
         gobject: GObject.Object;
         server_context_umask: number;
         business_group: string;
         server_context: string;
 
-        // Constructors of Ags.SecurityContext
+        // Constructors
 
         constructor(properties?: Partial<SecurityContext.ConstructorProps>, ...args: any[]);
 
@@ -7109,7 +7109,7 @@ export namespace Ags {
 
         static ['new'](): SecurityContext;
 
-        // Own methods of Ags.SecurityContext
+        // Methods
 
         /**
          * Add `server_context` to `security_context`.
@@ -7174,7 +7174,7 @@ export namespace Ags {
     class Server extends GObject.Object {
         static $gtype: GObject.GType<Server>;
 
-        // Own properties of Ags.Server
+        // Properties
 
         /**
          * The assigned #AgsController providing default settings.
@@ -7227,7 +7227,7 @@ export namespace Ags {
         get serverPort(): number;
         set serverPort(val: number);
 
-        // Own fields of Ags.Server
+        // Fields
 
         gobject: GObject.Object;
         flags: number;
@@ -7243,7 +7243,7 @@ export namespace Ags {
         auth_module: string;
         auth_domain: Soup.AuthDomain;
 
-        // Constructors of Ags.Server
+        // Constructors
 
         constructor(properties?: Partial<Server.ConstructorProps>, ...args: any[]);
 
@@ -7251,7 +7251,7 @@ export namespace Ags {
 
         static ['new'](): Server;
 
-        // Own signals of Ags.Server
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -7266,7 +7266,7 @@ export namespace Ags {
         connect_after(signal: 'stop', callback: (_source: this) => void): number;
         emit(signal: 'stop'): void;
 
-        // Own virtual methods of Ags.Server
+        // Virtual methods
 
         /**
          * Listen as  server.
@@ -7281,7 +7281,7 @@ export namespace Ags {
          */
         vfunc_stop(): void;
 
-        // Own methods of Ags.Server
+        // Methods
 
         /**
          * Add `controller` to `server`.
@@ -7340,7 +7340,7 @@ export namespace Ags {
     {
         static $gtype: GObject.GType<ServerApplicationContext>;
 
-        // Own fields of Ags.ServerApplicationContext
+        // Fields
 
         application_context: ApplicationContext;
         flags: number;
@@ -7353,7 +7353,7 @@ export namespace Ags {
         registry: Registry;
         server: any[];
 
-        // Constructors of Ags.ServerApplicationContext
+        // Constructors
 
         constructor(properties?: Partial<ServerApplicationContext.ConstructorProps>, ...args: any[]);
 
@@ -7993,7 +7993,7 @@ export namespace Ags {
     class ServerStatus extends GObject.Object implements Connectable {
         static $gtype: GObject.GType<ServerStatus>;
 
-        // Own fields of Ags.ServerStatus
+        // Fields
 
         gobject: GObject.Object;
         flags: number;
@@ -8001,7 +8001,7 @@ export namespace Ags {
         maximum_connections: number;
         connection_count: number;
 
-        // Constructors of Ags.ServerStatus
+        // Constructors
 
         constructor(properties?: Partial<ServerStatus.ConstructorProps>, ...args: any[]);
 
@@ -8546,7 +8546,7 @@ export namespace Ags {
     class SolverMatrix extends GObject.Object {
         static $gtype: GObject.GType<SolverMatrix>;
 
-        // Own properties of Ags.SolverMatrix
+        // Properties
 
         /**
          * The column count of the term table.
@@ -8585,14 +8585,14 @@ export namespace Ags {
         get sourceFunction(): string;
         set sourceFunction(val: string);
 
-        // Own fields of Ags.SolverMatrix
+        // Fields
 
         gobject: GObject.Object;
         flags: number;
         function_history: string;
         term_table: SolverVector;
 
-        // Constructors of Ags.SolverMatrix
+        // Constructors
 
         constructor(properties?: Partial<SolverMatrix.ConstructorProps>, ...args: any[]);
 
@@ -8600,7 +8600,7 @@ export namespace Ags {
 
         static ['new'](): SolverMatrix;
 
-        // Own methods of Ags.SolverMatrix
+        // Methods
 
         /**
          * Eliminate one column of `solver_matrix`.
@@ -8670,7 +8670,7 @@ export namespace Ags {
     class SolverPolynomial extends GObject.Object {
         static $gtype: GObject.GType<SolverPolynomial>;
 
-        // Own properties of Ags.SolverPolynomial
+        // Properties
 
         /**
          * The assigned coefficient.
@@ -8710,12 +8710,12 @@ export namespace Ags {
         get symbol(): any;
         set symbol(val: any);
 
-        // Own fields of Ags.SolverPolynomial
+        // Fields
 
         gobject: GObject.Object;
         flags: number;
 
-        // Constructors of Ags.SolverPolynomial
+        // Constructors
 
         constructor(properties?: Partial<SolverPolynomial.ConstructorProps>, ...args: any[]);
 
@@ -8723,11 +8723,11 @@ export namespace Ags {
 
         static ['new'](): SolverPolynomial;
 
-        // Own static methods of Ags.SolverPolynomial
+        // Static methods
 
         static error_quark(): GLib.Quark;
 
-        // Own methods of Ags.SolverPolynomial
+        // Methods
 
         /**
          * Perform addition of `polynomial_a` and `polynomial_b`. Both summands need to have the very same
@@ -8832,7 +8832,7 @@ export namespace Ags {
     class SolverVector extends GObject.Object {
         static $gtype: GObject.GType<SolverVector>;
 
-        // Own properties of Ags.SolverVector
+        // Properties
 
         /**
          * The polynomial count of the term table.
@@ -8853,14 +8853,14 @@ export namespace Ags {
         get sourcePolynomial(): string;
         set sourcePolynomial(val: string);
 
-        // Own fields of Ags.SolverVector
+        // Fields
 
         gobject: GObject.Object;
         flags: number;
         polynomial_history: string;
         polynomial_column: SolverPolynomial;
 
-        // Constructors of Ags.SolverVector
+        // Constructors
 
         constructor(properties?: Partial<SolverVector.ConstructorProps>, ...args: any[]);
 
@@ -8868,7 +8868,7 @@ export namespace Ags {
 
         static ['new'](): SolverVector;
 
-        // Own methods of Ags.SolverVector
+        // Methods
 
         /**
          * Get polynomial count of `solver_vector`.
@@ -8920,7 +8920,7 @@ export namespace Ags {
     class Task extends GObject.Object {
         static $gtype: GObject.GType<Task>;
 
-        // Own properties of Ags.Task
+        // Properties
 
         /**
          * The assigned #AgsTaskLauncher
@@ -8933,13 +8933,13 @@ export namespace Ags {
         get taskLauncher(): TaskLauncher;
         set taskLauncher(val: TaskLauncher);
 
-        // Own fields of Ags.Task
+        // Fields
 
         gobject: GObject.Object;
         flags: number;
         task_name: string;
 
-        // Constructors of Ags.Task
+        // Constructors
 
         constructor(properties?: Partial<Task.ConstructorProps>, ...args: any[]);
 
@@ -8947,7 +8947,7 @@ export namespace Ags {
 
         static ['new'](): Task;
 
-        // Own signals of Ags.Task
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -8959,7 +8959,7 @@ export namespace Ags {
         connect_after(signal: 'launch', callback: (_source: this) => void): number;
         emit(signal: 'launch'): void;
 
-        // Own virtual methods of Ags.Task
+        // Virtual methods
 
         /**
          * Signals failure of task.
@@ -8971,7 +8971,7 @@ export namespace Ags {
          */
         vfunc_launch(): void;
 
-        // Own methods of Ags.Task
+        // Methods
 
         /**
          * Signals failure of task.
@@ -9017,7 +9017,7 @@ export namespace Ags {
     class TaskCompletion extends GObject.Object implements Connectable {
         static $gtype: GObject.GType<TaskCompletion>;
 
-        // Own properties of Ags.TaskCompletion
+        // Properties
 
         /**
          * The assigned task.
@@ -9025,7 +9025,7 @@ export namespace Ags {
         get task(): GObject.Object;
         set task(val: GObject.Object);
 
-        // Own fields of Ags.TaskCompletion
+        // Fields
 
         gobject: GObject.Object;
         flags: number;
@@ -9033,7 +9033,7 @@ export namespace Ags {
         uuid: UUID;
         data: any;
 
-        // Constructors of Ags.TaskCompletion
+        // Constructors
 
         constructor(properties?: Partial<TaskCompletion.ConstructorProps>, ...args: any[]);
 
@@ -9041,21 +9041,21 @@ export namespace Ags {
 
         static ['new'](task: GObject.Object, data?: any | null): TaskCompletion;
 
-        // Own signals of Ags.TaskCompletion
+        // Signals
 
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
         connect_after(signal: 'complete', callback: (_source: this) => void): number;
         emit(signal: 'complete'): void;
 
-        // Own virtual methods of Ags.TaskCompletion
+        // Virtual methods
 
         /**
          * Emit ::complete signal
          */
         vfunc_complete(): void;
 
-        // Own methods of Ags.TaskCompletion
+        // Methods
 
         /**
          * Emit ::complete signal
@@ -9612,7 +9612,7 @@ export namespace Ags {
     class TaskLauncher extends GObject.Object implements Connectable {
         static $gtype: GObject.GType<TaskLauncher>;
 
-        // Own fields of Ags.TaskLauncher
+        // Fields
 
         gobject: GObject.Object;
         flags: number;
@@ -9621,7 +9621,7 @@ export namespace Ags {
         is_running: boolean;
         wait_count: number;
 
-        // Constructors of Ags.TaskLauncher
+        // Constructors
 
         constructor(properties?: Partial<TaskLauncher.ConstructorProps>, ...args: any[]);
 
@@ -9629,21 +9629,21 @@ export namespace Ags {
 
         static ['new'](): TaskLauncher;
 
-        // Own signals of Ags.TaskLauncher
+        // Signals
 
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
         connect_after(signal: 'run', callback: (_source: this) => void): number;
         emit(signal: 'run'): void;
 
-        // Own virtual methods of Ags.TaskLauncher
+        // Virtual methods
 
         /**
          * Run tasks.
          */
         vfunc_run(): void;
 
-        // Own methods of Ags.TaskLauncher
+        // Methods
 
         /**
          * Add `cyclic_task` to `task_launcher`.
@@ -10230,7 +10230,7 @@ export namespace Ags {
     class Thread extends GObject.Object implements Connectable {
         static $gtype: GObject.GType<Thread>;
 
-        // Own properties of Ags.Thread
+        // Properties
 
         /**
          * The delay until next tic.
@@ -10253,7 +10253,7 @@ export namespace Ags {
         get maxPrecision(): number;
         set maxPrecision(val: number);
 
-        // Own fields of Ags.Thread
+        // Fields
 
         gobject: GObject.Object;
         my_flags: number;
@@ -10267,7 +10267,7 @@ export namespace Ags {
         last_run_end: number;
         start_queue: any[];
 
-        // Constructors of Ags.Thread
+        // Constructors
 
         constructor(properties?: Partial<Thread.ConstructorProps>, ...args: any[]);
 
@@ -10275,7 +10275,7 @@ export namespace Ags {
 
         static ['new'](): Thread;
 
-        // Own signals of Ags.Thread
+        // Signals
 
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -10288,7 +10288,7 @@ export namespace Ags {
         connect_after(signal: 'stop', callback: (_source: this) => void): number;
         emit(signal: 'stop'): void;
 
-        // Own static methods of Ags.Thread
+        // Static methods
 
         /**
          * Get global config value use sync counter.
@@ -10299,7 +10299,7 @@ export namespace Ags {
          */
         static self(): Thread;
 
-        // Own virtual methods of Ags.Thread
+        // Virtual methods
 
         /**
          * Clock the thread.
@@ -10319,7 +10319,7 @@ export namespace Ags {
          */
         vfunc_stop(): void;
 
-        // Own methods of Ags.Thread
+        // Methods
 
         /**
          * Add child to thread.
@@ -11060,7 +11060,7 @@ export namespace Ags {
     class ThreadApplicationContext extends ApplicationContext implements ConcurrencyProvider, Connectable {
         static $gtype: GObject.GType<ThreadApplicationContext>;
 
-        // Own properties of Ags.ThreadApplicationContext
+        // Properties
 
         /**
          * The assigned thread pool.
@@ -11073,7 +11073,7 @@ export namespace Ags {
         get threadPool(): ThreadPool;
         set threadPool(val: ThreadPool);
 
-        // Own fields of Ags.ThreadApplicationContext
+        // Fields
 
         application_context: ApplicationContext;
         flags: number;
@@ -11081,7 +11081,7 @@ export namespace Ags {
         build_id: string;
         worker: any[];
 
-        // Constructors of Ags.ThreadApplicationContext
+        // Constructors
 
         constructor(properties?: Partial<ThreadApplicationContext.ConstructorProps>, ...args: any[]);
 
@@ -11089,7 +11089,7 @@ export namespace Ags {
 
         static ['new'](): ThreadApplicationContext;
 
-        // Own static methods of Ags.ThreadApplicationContext
+        // Static methods
 
         static register_types(application_context: ApplicationContext): void;
 
@@ -11703,7 +11703,7 @@ export namespace Ags {
     class ThreadPool extends GObject.Object {
         static $gtype: GObject.GType<ThreadPool>;
 
-        // Own properties of Ags.ThreadPool
+        // Properties
 
         /**
          * The maximum amount of threads available.
@@ -11726,7 +11726,7 @@ export namespace Ags {
         get maxUnusedThreads(): number;
         set maxUnusedThreads(val: number);
 
-        // Own fields of Ags.ThreadPool
+        // Fields
 
         gobject: GObject.Object;
         flags: number;
@@ -11735,7 +11735,7 @@ export namespace Ags {
         idle: boolean;
         returnable_thread: any[];
 
-        // Constructors of Ags.ThreadPool
+        // Constructors
 
         constructor(properties?: Partial<ThreadPool.ConstructorProps>, ...args: any[]);
 
@@ -11743,7 +11743,7 @@ export namespace Ags {
 
         static ['new'](parent: Thread): ThreadPool;
 
-        // Own signals of Ags.ThreadPool
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -11752,14 +11752,14 @@ export namespace Ags {
         connect_after(signal: 'start', callback: (_source: this) => void): number;
         emit(signal: 'start'): void;
 
-        // Own virtual methods of Ags.ThreadPool
+        // Virtual methods
 
         /**
          * Start the thread pool.
          */
         vfunc_start(): void;
 
-        // Own methods of Ags.ThreadPool
+        // Methods
 
         /**
          * Pull a previously instantiated #AgsReturnableThread. Note this
@@ -11782,14 +11782,14 @@ export namespace Ags {
     class Timestamp extends GObject.Object {
         static $gtype: GObject.GType<Timestamp>;
 
-        // Own fields of Ags.Timestamp
+        // Fields
 
         gobject: GObject.Object;
         flags: number;
         delay: number;
         attack: number;
 
-        // Constructors of Ags.Timestamp
+        // Constructors
 
         constructor(properties?: Partial<Timestamp.ConstructorProps>, ...args: any[]);
 
@@ -11797,7 +11797,7 @@ export namespace Ags {
 
         static ['new'](): Timestamp;
 
-        // Own methods of Ags.Timestamp
+        // Methods
 
         /**
          * Get AGS offset.
@@ -11850,7 +11850,7 @@ export namespace Ags {
     class Turtle extends GObject.Object {
         static $gtype: GObject.GType<Turtle>;
 
-        // Own properties of Ags.Turtle
+        // Properties
 
         /**
          * The assigned filename.
@@ -11868,12 +11868,12 @@ export namespace Ags {
         get xmlDoc(): any;
         set xmlDoc(val: any);
 
-        // Own fields of Ags.Turtle
+        // Fields
 
         gobject: GObject.Object;
         flags: number;
 
-        // Constructors of Ags.Turtle
+        // Constructors
 
         constructor(properties?: Partial<Turtle.ConstructorProps>, ...args: any[]);
 
@@ -11881,7 +11881,7 @@ export namespace Ags {
 
         static ['new'](filename?: string | null): Turtle;
 
-        // Own static methods of Ags.Turtle
+        // Static methods
 
         /**
          * Match anon.
@@ -12215,7 +12215,7 @@ export namespace Ags {
          */
         static read_ws(offset: string, end_ptr: string): string;
 
-        // Own methods of Ags.Turtle
+        // Methods
 
         /**
          * Lookup XPath expression withing `turtle`.
@@ -12247,12 +12247,12 @@ export namespace Ags {
     class TurtleManager extends GObject.Object {
         static $gtype: GObject.GType<TurtleManager>;
 
-        // Own fields of Ags.TurtleManager
+        // Fields
 
         gobject: GObject.Object;
         turtle: any[];
 
-        // Constructors of Ags.TurtleManager
+        // Constructors
 
         constructor(properties?: Partial<TurtleManager.ConstructorProps>, ...args: any[]);
 
@@ -12260,14 +12260,14 @@ export namespace Ags {
 
         static ['new'](): TurtleManager;
 
-        // Own static methods of Ags.TurtleManager
+        // Static methods
 
         /**
          * Get instance of #AgsTurtleManager.
          */
         static get_instance(): TurtleManager;
 
-        // Own methods of Ags.TurtleManager
+        // Methods
 
         /**
          * Adds `turtle` to `turtle_manager`.
@@ -12297,12 +12297,12 @@ export namespace Ags {
     class WorkerThread extends Thread implements Connectable {
         static $gtype: GObject.GType<WorkerThread>;
 
-        // Own fields of Ags.WorkerThread
+        // Fields
 
         thread: Thread;
         status_flags: number;
 
-        // Constructors of Ags.WorkerThread
+        // Constructors
 
         constructor(properties?: Partial<WorkerThread.ConstructorProps>, ...args: any[]);
 
@@ -12310,21 +12310,21 @@ export namespace Ags {
 
         static ['new'](): WorkerThread;
 
-        // Own signals of Ags.WorkerThread
+        // Signals
 
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
         connect_after(signal: 'do-poll', callback: (_source: this) => void): number;
         emit(signal: 'do-poll'): void;
 
-        // Own virtual methods of Ags.WorkerThread
+        // Virtual methods
 
         /**
          * Do poll your work. It is called of the worker thread.
          */
         vfunc_do_poll(): void;
 
-        // Own methods of Ags.WorkerThread
+        // Methods
 
         /**
          * Do poll your work. It is called of the worker thread.
@@ -12881,14 +12881,14 @@ export namespace Ags {
     class XmlAuthentication extends GObject.Object implements Authentication {
         static $gtype: GObject.GType<XmlAuthentication>;
 
-        // Own fields of Ags.XmlAuthentication
+        // Fields
 
         gobject: GObject.Object;
         filename: string;
         encoding: string;
         dtd: string;
 
-        // Constructors of Ags.XmlAuthentication
+        // Constructors
 
         constructor(properties?: Partial<XmlAuthentication.ConstructorProps>, ...args: any[]);
 
@@ -12896,7 +12896,7 @@ export namespace Ags {
 
         static ['new'](): XmlAuthentication;
 
-        // Own methods of Ags.XmlAuthentication
+        // Methods
 
         /**
          * Find ags-srv-auth xmlNode containing `user_uuid`.
@@ -13398,14 +13398,14 @@ export namespace Ags {
     class XmlBusinessGroup extends GObject.Object implements BusinessGroup {
         static $gtype: GObject.GType<XmlBusinessGroup>;
 
-        // Own fields of Ags.XmlBusinessGroup
+        // Fields
 
         gobject: GObject.Object;
         filename: string;
         encoding: string;
         dtd: string;
 
-        // Constructors of Ags.XmlBusinessGroup
+        // Constructors
 
         constructor(properties?: Partial<XmlBusinessGroup.ConstructorProps>, ...args: any[]);
 
@@ -13413,7 +13413,7 @@ export namespace Ags {
 
         static ['new'](): XmlBusinessGroup;
 
-        // Own methods of Ags.XmlBusinessGroup
+        // Methods
 
         /**
          * Open `filename`.
@@ -13962,14 +13962,14 @@ export namespace Ags {
     class XmlCertificate extends GObject.Object implements Certificate {
         static $gtype: GObject.GType<XmlCertificate>;
 
-        // Own fields of Ags.XmlCertificate
+        // Fields
 
         gobject: GObject.Object;
         filename: string;
         encoding: string;
         dtd: string;
 
-        // Constructors of Ags.XmlCertificate
+        // Constructors
 
         constructor(properties?: Partial<XmlCertificate.ConstructorProps>, ...args: any[]);
 
@@ -13977,7 +13977,7 @@ export namespace Ags {
 
         static ['new'](): XmlCertificate;
 
-        // Own methods of Ags.XmlCertificate
+        // Methods
 
         /**
          * Open `filename`.
@@ -14640,14 +14640,14 @@ export namespace Ags {
     class XmlPasswordStore extends GObject.Object implements PasswordStore {
         static $gtype: GObject.GType<XmlPasswordStore>;
 
-        // Own fields of Ags.XmlPasswordStore
+        // Fields
 
         gobject: GObject.Object;
         filename: string;
         encoding: string;
         dtd: string;
 
-        // Constructors of Ags.XmlPasswordStore
+        // Constructors
 
         constructor(properties?: Partial<XmlPasswordStore.ConstructorProps>, ...args: any[]);
 
@@ -14655,7 +14655,7 @@ export namespace Ags {
 
         static ['new'](): XmlPasswordStore;
 
-        // Own methods of Ags.XmlPasswordStore
+        // Methods
 
         /**
          * Find ags-srv-user xmlNode containing `login`.
@@ -15175,11 +15175,11 @@ export namespace Ags {
     abstract class BufferUtil {
         static $gtype: GObject.GType<BufferUtil>;
 
-        // Constructors of Ags.BufferUtil
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own static methods of Ags.BufferUtil
+        // Static methods
 
         /**
          * Read a #AgsComplex quantity of `cbuffer`.
@@ -15397,12 +15397,12 @@ export namespace Ags {
     class Complex {
         static $gtype: GObject.GType<Complex>;
 
-        // Own fields of Ags.Complex
+        // Fields
 
         real: number;
         imag: number;
 
-        // Constructors of Ags.Complex
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -15412,14 +15412,14 @@ export namespace Ags {
         );
         _init(...args: any[]): void;
 
-        // Own static methods of Ags.Complex
+        // Static methods
 
         /**
          * Allocate #AgsComplex-struct
          */
         static alloc(): Complex;
 
-        // Own methods of Ags.Complex
+        // Methods
 
         /**
          * Create a copy of `ptr`.
@@ -15452,14 +15452,14 @@ export namespace Ags {
     class ControllerResource {
         static $gtype: GObject.GType<ControllerResource>;
 
-        // Own fields of Ags.ControllerResource
+        // Fields
 
         ref_count: number;
         group_id: string;
         user_id: string;
         access_mode: number;
 
-        // Constructors of Ags.ControllerResource
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -15471,7 +15471,7 @@ export namespace Ags {
         );
         _init(...args: any[]): void;
 
-        // Own static methods of Ags.ControllerResource
+        // Static methods
 
         /**
          * Allocated #AgsControllerResource-struct.
@@ -15506,11 +15506,11 @@ export namespace Ags {
     class DestroyEntry {
         static $gtype: GObject.GType<DestroyEntry>;
 
-        // Own fields of Ags.DestroyEntry
+        // Fields
 
         ptr: any;
 
-        // Constructors of Ags.DestroyEntry
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -15519,7 +15519,7 @@ export namespace Ags {
         );
         _init(...args: any[]): void;
 
-        // Own static methods of Ags.DestroyEntry
+        // Static methods
 
         /**
          * Allocated a destroy entry.
@@ -15532,11 +15532,11 @@ export namespace Ags {
     abstract class DestroyUtil {
         static $gtype: GObject.GType<DestroyUtil>;
 
-        // Constructors of Ags.DestroyUtil
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own static methods of Ags.DestroyUtil
+        // Static methods
 
         /**
          * Run dispose and unref `gobject`.
@@ -15554,17 +15554,17 @@ export namespace Ags {
     class FileUtil {
         static $gtype: GObject.GType<FileUtil>;
 
-        // Own fields of Ags.FileUtil
+        // Fields
 
         file_version: string;
         app_encoding: string;
         encoding: string;
 
-        // Constructors of Ags.FileUtil
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own static methods of Ags.FileUtil
+        // Static methods
 
         /**
          * Allocate #AgsFileUtil-struct
@@ -15573,7 +15573,7 @@ export namespace Ags {
          */
         static alloc(app_encoding: string, encoding: string): FileUtil;
 
-        // Own methods of Ags.FileUtil
+        // Methods
 
         /**
          * Create a copy of `ptr`.
@@ -15705,11 +15705,11 @@ export namespace Ags {
     abstract class ListUtil {
         static $gtype: GObject.GType<ListUtil>;
 
-        // Constructors of Ags.ListUtil
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own static methods of Ags.ListUtil
+        // Static methods
 
         /**
          * Find `gtype` within `list`.
@@ -15723,18 +15723,18 @@ export namespace Ags {
     class LoginInfo {
         static $gtype: GObject.GType<LoginInfo>;
 
-        // Own fields of Ags.LoginInfo
+        // Fields
 
         ref_count: number;
         active_session_count: number;
         user_uuid: string;
         security_context: SecurityContext;
 
-        // Constructors of Ags.LoginInfo
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own static methods of Ags.LoginInfo
+        // Static methods
 
         /**
          * Alloc #AgsLoginInfo-struct.
@@ -15761,11 +15761,11 @@ export namespace Ags {
     abstract class MathUtil {
         static $gtype: GObject.GType<MathUtil>;
 
-        // Constructors of Ags.MathUtil
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own static methods of Ags.MathUtil
+        // Static methods
 
         /**
          * Compute `value` from `coefficient`.
@@ -15869,7 +15869,7 @@ export namespace Ags {
     class RegexMatch {
         static $gtype: GObject.GType<RegexMatch>;
 
-        // Constructors of Ags.RegexMatch
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -15883,7 +15883,7 @@ export namespace Ags {
     class RegexUtil {
         static $gtype: GObject.GType<RegexUtil>;
 
-        // Own fields of Ags.RegexUtil
+        // Fields
 
         app_encoding: string;
         encoding: string;
@@ -15892,11 +15892,11 @@ export namespace Ags {
         regex_str: string;
         compile_flags: number;
 
-        // Constructors of Ags.RegexUtil
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own static methods of Ags.RegexUtil
+        // Static methods
 
         /**
          * Allocate #AgsRegexUtil-struct
@@ -15908,7 +15908,7 @@ export namespace Ags {
         static alloc(app_encoding: string, encoding: string, is_unichar: boolean, is_unichar2: boolean): RegexUtil;
         static error_quark(): GLib.Quark;
 
-        // Own methods of Ags.RegexUtil
+        // Methods
 
         /**
          * Compile `regex_str` by respecting `compile_flags`.
@@ -15983,15 +15983,15 @@ export namespace Ags {
     class RegistryEntry {
         static $gtype: GObject.GType<RegistryEntry>;
 
-        // Own fields of Ags.RegistryEntry
+        // Fields
 
         id: UUID;
 
-        // Constructors of Ags.RegistryEntry
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of Ags.RegistryEntry
+        // Methods
 
         /**
          * Free `registry_entry`
@@ -16011,12 +16011,12 @@ export namespace Ags {
     class ServerInfo {
         static $gtype: GObject.GType<ServerInfo>;
 
-        // Own fields of Ags.ServerInfo
+        // Fields
 
         uuid: string;
         server_name: string;
 
-        // Constructors of Ags.ServerInfo
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -16033,13 +16033,13 @@ export namespace Ags {
     class SolverPath {
         static $gtype: GObject.GType<SolverPath>;
 
-        // Own fields of Ags.SolverPath
+        // Fields
 
         nth_column: number;
         nth_row_a: number;
         nth_row_b: number;
 
-        // Constructors of Ags.SolverPath
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -16050,7 +16050,7 @@ export namespace Ags {
         );
         _init(...args: any[]): void;
 
-        // Own static methods of Ags.SolverPath
+        // Static methods
 
         /**
          * Allocate #AgsSolverPath-struct
@@ -16060,7 +16060,7 @@ export namespace Ags {
          */
         static alloc(nth_column: number, nth_row_a: number, nth_row_b: number): SolverPath;
 
-        // Own methods of Ags.SolverPath
+        // Methods
 
         /**
          * Create a copy of `ptr`.
@@ -16110,11 +16110,11 @@ export namespace Ags {
     abstract class StringUtil {
         static $gtype: GObject.GType<StringUtil>;
 
-        // Constructors of Ags.StringUtil
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own static methods of Ags.StringUtil
+        // Static methods
 
         /**
          * Escape all occurence of single quotes.
@@ -16146,11 +16146,11 @@ export namespace Ags {
     class UUID {
         static $gtype: GObject.GType<UUID>;
 
-        // Own fields of Ags.UUID
+        // Fields
 
         data: Uint8Array;
 
-        // Constructors of Ags.UUID
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -16159,7 +16159,7 @@ export namespace Ags {
         );
         _init(...args: any[]): void;
 
-        // Own static methods of Ags.UUID
+        // Static methods
 
         /**
          * Allocate #AgsUUID.
@@ -16171,7 +16171,7 @@ export namespace Ags {
          */
         static from_string(str: string): UUID;
 
-        // Own methods of Ags.UUID
+        // Methods
 
         /**
          * Compare `a` with `b`.
@@ -16215,7 +16215,7 @@ export namespace Ags {
         prototype: Applicable;
     }
     interface Applicable extends GObject.Object {
-        // Own methods of Ags.Applicable
+        // Methods
 
         /**
          * Apply all changes done so far.
@@ -16231,7 +16231,7 @@ export namespace Ags {
          */
         set_update(update: boolean): void;
 
-        // Own virtual methods of Ags.Applicable
+        // Virtual methods
 
         /**
          * Apply all changes done so far.
@@ -16261,7 +16261,7 @@ export namespace Ags {
         prototype: Authentication;
     }
     interface Authentication extends GObject.Object {
-        // Own methods of Ags.Authentication
+        // Methods
 
         /**
          * Generate token.
@@ -16305,7 +16305,7 @@ export namespace Ags {
          */
         logout(security_context: GObject.Object, login: string, security_token: string): boolean;
 
-        // Own virtual methods of Ags.Authentication
+        // Virtual methods
 
         /**
          * Generate token.
@@ -16357,7 +16357,7 @@ export namespace Ags {
         prototype: BusinessGroup;
     }
     interface BusinessGroup extends GObject.Object {
-        // Own methods of Ags.BusinessGroup
+        // Methods
 
         /**
          * Get business group name.
@@ -16426,7 +16426,7 @@ export namespace Ags {
             user: string[],
         ): void;
 
-        // Own virtual methods of Ags.BusinessGroup
+        // Virtual methods
 
         /**
          * Get business group name.
@@ -16506,7 +16506,7 @@ export namespace Ags {
         prototype: Certificate;
     }
     interface Certificate extends GObject.Object {
-        // Own methods of Ags.Certificate
+        // Methods
 
         /**
          * Get cert UUID as string vector.
@@ -16633,7 +16633,7 @@ export namespace Ags {
             public_key_file: string,
         ): void;
 
-        // Own virtual methods of Ags.Certificate
+        // Virtual methods
 
         /**
          * Get cert UUID as string vector.
@@ -16769,7 +16769,7 @@ export namespace Ags {
         prototype: ConcurrencyProvider;
     }
     interface ConcurrencyProvider extends GObject.Object {
-        // Own methods of Ags.ConcurrencyProvider
+        // Methods
 
         /**
          * Get main loop of application context.
@@ -16812,7 +16812,7 @@ export namespace Ags {
          */
         set_worker(worker: WorkerThread[]): void;
 
-        // Own virtual methods of Ags.ConcurrencyProvider
+        // Virtual methods
 
         /**
          * Get main loop of application context.
@@ -16865,7 +16865,7 @@ export namespace Ags {
         prototype: Connectable;
     }
     interface Connectable extends GObject.Object {
-        // Own methods of Ags.Connectable
+        // Methods
 
         /**
          * Add connectable to registry.
@@ -16930,7 +16930,7 @@ export namespace Ags {
          */
         xml_parse(node: libxml2.Node): void;
 
-        // Own virtual methods of Ags.Connectable
+        // Virtual methods
 
         /**
          * Add connectable to registry.
@@ -17002,7 +17002,7 @@ export namespace Ags {
         prototype: Countable;
     }
     interface Countable extends GObject.Object {
-        // Own methods of Ags.Countable
+        // Methods
 
         /**
          * Retrieve current position of MIDI.
@@ -17025,7 +17025,7 @@ export namespace Ags {
          */
         get_wave_counter(): number;
 
-        // Own virtual methods of Ags.Countable
+        // Virtual methods
 
         /**
          * Retrieve current position of MIDI.
@@ -17058,7 +17058,7 @@ export namespace Ags {
         prototype: Cursor;
     }
     interface Cursor extends GObject.Object {
-        // Own methods of Ags.Cursor
+        // Methods
 
         /**
          * Get BPM.
@@ -17120,7 +17120,7 @@ export namespace Ags {
          */
         get_tact(): number;
 
-        // Own virtual methods of Ags.Cursor
+        // Virtual methods
 
         /**
          * Get BPM.
@@ -17185,7 +17185,7 @@ export namespace Ags {
         prototype: MainLoop;
     }
     interface MainLoop extends GObject.Object {
-        // Own methods of Ags.MainLoop
+        // Methods
 
         /**
          * Change frequency.
@@ -17231,7 +17231,7 @@ export namespace Ags {
          */
         test_queued_critical_region(): number;
 
-        // Own virtual methods of Ags.MainLoop
+        // Virtual methods
 
         /**
          * Change frequency.
@@ -17287,7 +17287,7 @@ export namespace Ags {
         prototype: Mutable;
     }
     interface Mutable extends GObject.Object {
-        // Own methods of Ags.Mutable
+        // Methods
 
         /**
          * Mute a class instance.
@@ -17295,7 +17295,7 @@ export namespace Ags {
          */
         set_muted(muted: boolean): void;
 
-        // Own virtual methods of Ags.Mutable
+        // Virtual methods
 
         /**
          * Mute a class instance.
@@ -17317,7 +17317,7 @@ export namespace Ags {
         prototype: PasswordStore;
     }
     interface PasswordStore extends GObject.Object {
-        // Own methods of Ags.PasswordStore
+        // Methods
 
         /**
          * Encrypt password.
@@ -17369,7 +17369,7 @@ export namespace Ags {
             password: string,
         ): void;
 
-        // Own virtual methods of Ags.PasswordStore
+        // Virtual methods
 
         /**
          * Encrypt password.
@@ -17447,7 +17447,7 @@ export namespace Ags {
         write(file: GObject.Object, parent: libxml2.Node, plugin: Plugin): libxml2.Node;
     }
     interface Plugin extends GObject.Object {
-        // Own methods of Ags.Plugin
+        // Methods
 
         /**
          * Retrieve the build id of the plugin.
@@ -17500,7 +17500,7 @@ export namespace Ags {
          */
         set_xml_type(xml_type: string): void;
 
-        // Own virtual methods of Ags.Plugin
+        // Virtual methods
 
         /**
          * Retrieve the build id of the plugin.
@@ -17562,7 +17562,7 @@ export namespace Ags {
         prototype: PluginController;
     }
     interface PluginController extends GObject.Object {
-        // Own methods of Ags.PluginController
+        // Methods
 
         /**
          * Do request.
@@ -17583,7 +17583,7 @@ export namespace Ags {
             security_token: string,
         ): any | null;
 
-        // Own virtual methods of Ags.PluginController
+        // Virtual methods
 
         /**
          * Do request.
@@ -17617,7 +17617,7 @@ export namespace Ags {
         prototype: Portlet;
     }
     interface Portlet extends GObject.Object {
-        // Own methods of Ags.Portlet
+        // Methods
 
         /**
          * Get port.
@@ -17647,7 +17647,7 @@ export namespace Ags {
          */
         set_port(port: GObject.Object): void;
 
-        // Own virtual methods of Ags.Portlet
+        // Virtual methods
 
         /**
          * Get port.
@@ -17689,7 +17689,7 @@ export namespace Ags {
         prototype: Seekable;
     }
     interface Seekable extends GObject.Object {
-        // Own methods of Ags.Seekable
+        // Methods
 
         /**
          * Seek.
@@ -17698,7 +17698,7 @@ export namespace Ags {
          */
         seek(offset: number, whence: number): void;
 
-        // Own virtual methods of Ags.Seekable
+        // Virtual methods
 
         /**
          * Seek.
@@ -17721,7 +17721,7 @@ export namespace Ags {
         prototype: Sequencer;
     }
     interface Sequencer extends GObject.Object {
-        // Own methods of Ags.Sequencer
+        // Methods
 
         /**
          * Get current playback bpm.
@@ -17844,7 +17844,7 @@ export namespace Ags {
          */
         unlock_buffer(buffer?: any | null): void;
 
-        // Own virtual methods of Ags.Sequencer
+        // Virtual methods
 
         /**
          * Get current playback bpm.
@@ -17971,7 +17971,7 @@ export namespace Ags {
         prototype: ServiceProvider;
     }
     interface ServiceProvider extends GObject.Object {
-        // Own methods of Ags.ServiceProvider
+        // Methods
 
         /**
          * Get server.
@@ -17994,7 +17994,7 @@ export namespace Ags {
          */
         set_server(server: Server[]): void;
 
-        // Own virtual methods of Ags.ServiceProvider
+        // Virtual methods
 
         /**
          * Get server.
@@ -18029,7 +18029,7 @@ export namespace Ags {
         prototype: SoundServer;
     }
     interface SoundServer extends GObject.Object {
-        // Own methods of Ags.SoundServer
+        // Methods
 
         /**
          * Gets the ports of `sound_server`.
@@ -18095,7 +18095,7 @@ export namespace Ags {
          */
         unregister_soundcard(soundcard: GObject.Object): void;
 
-        // Own virtual methods of Ags.SoundServer
+        // Virtual methods
 
         /**
          * Gets the ports of `sound_server`.
@@ -18205,7 +18205,7 @@ export namespace Ags {
         helper_config_get_use_cache(config: Config): boolean;
     }
     interface Soundcard extends GObject.Object {
-        // Own methods of Ags.Soundcard
+        // Methods
 
         /**
          * Get current playback delay.
@@ -18463,7 +18463,7 @@ export namespace Ags {
          */
         unlock_sub_block(buffer: any | null, sub_block: number): void;
 
-        // Own virtual methods of Ags.Soundcard
+        // Virtual methods
 
         /**
          * Get current playback delay.
@@ -18711,7 +18711,7 @@ export namespace Ags {
         prototype: Tactable;
     }
     interface Tactable extends GObject.Object {
-        // Own methods of Ags.Tactable
+        // Methods
 
         /**
          * Change bpm.
@@ -18776,7 +18776,7 @@ export namespace Ags {
          */
         get_wave_duration(): number;
 
-        // Own virtual methods of Ags.Tactable
+        // Virtual methods
 
         /**
          * Change bpm.

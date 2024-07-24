@@ -67,12 +67,12 @@ export namespace Kkc {
     class MetadataFormatError extends GLib.Error {
         static $gtype: GObject.GType<MetadataFormatError>;
 
-        // Static fields of Kkc.MetadataFormatError
+        // Static fields
 
         static MISSING_FIELD: number;
         static INVALID_FIELD: number;
 
-        // Constructors of Kkc.MetadataFormatError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
@@ -81,11 +81,11 @@ export namespace Kkc {
     class LanguageModelError extends GLib.Error {
         static $gtype: GObject.GType<LanguageModelError>;
 
-        // Static fields of Kkc.LanguageModelError
+        // Static fields
 
         static NOT_FOUND: number;
 
-        // Constructors of Kkc.LanguageModelError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
@@ -94,12 +94,12 @@ export namespace Kkc {
     class KeyEventFormatError extends GLib.Error {
         static $gtype: GObject.GType<KeyEventFormatError>;
 
-        // Static fields of Kkc.KeyEventFormatError
+        // Static fields
 
         static PARSE_FAILED: number;
         static KEYSYM_NOT_FOUND: number;
 
-        // Constructors of Kkc.KeyEventFormatError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
@@ -108,11 +108,11 @@ export namespace Kkc {
     class RuleParseError extends GLib.Error {
         static $gtype: GObject.GType<RuleParseError>;
 
-        // Static fields of Kkc.RuleParseError
+        // Static fields
 
         static FAILED: number;
 
-        // Constructors of Kkc.RuleParseError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
@@ -121,12 +121,12 @@ export namespace Kkc {
     class DictionaryError extends GLib.Error {
         static $gtype: GObject.GType<DictionaryError>;
 
-        // Static fields of Kkc.DictionaryError
+        // Static fields
 
         static NOT_READABLE: number;
         static MALFORMED_INPUT: number;
 
-        // Constructors of Kkc.DictionaryError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
@@ -2257,7 +2257,7 @@ export namespace Kkc {
     abstract class MetadataFile extends GObject.Object implements Gio.Initable {
         static $gtype: GObject.GType<MetadataFile>;
 
-        // Own properties of Kkc.MetadataFile
+        // Properties
 
         get name(): string;
         set name(val: string);
@@ -2268,17 +2268,17 @@ export namespace Kkc {
         get filename(): string;
         set filename(val: string);
 
-        // Constructors of Kkc.MetadataFile
+        // Constructors
 
         constructor(properties?: Partial<MetadataFile.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of Kkc.MetadataFile
+        // Virtual methods
 
         vfunc_parse(object: Json.Object): boolean;
 
-        // Own methods of Kkc.MetadataFile
+        // Methods
 
         parse(object: Json.Object): boolean;
         get_name(): string;
@@ -2781,17 +2781,17 @@ export namespace Kkc {
     abstract class TrellisNode {
         static $gtype: GObject.GType<TrellisNode>;
 
-        // Own fields of Kkc.TrellisNode
+        // Fields
 
         ref_count: number;
         previous: TrellisNode | null;
         cumulative_cost: number;
 
-        // Constructors of Kkc.TrellisNode
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of Kkc.TrellisNode
+        // Virtual methods
 
         vfunc_to_string(): string;
         vfunc_get_endpos(): number;
@@ -2800,7 +2800,7 @@ export namespace Kkc {
         vfunc_get_output(): string;
         vfunc_get_entries(): LanguageModelEntry[];
 
-        // Own methods of Kkc.TrellisNode
+        // Methods
 
         to_string(): string;
         get_endpos(): number;
@@ -2813,13 +2813,13 @@ export namespace Kkc {
     class UnigramTrellisNode extends TrellisNode {
         static $gtype: GObject.GType<UnigramTrellisNode>;
 
-        // Constructors of Kkc.UnigramTrellisNode
+        // Constructors
 
         _init(...args: any[]): void;
 
         static ['new'](entry: LanguageModelEntry, endpos: number): UnigramTrellisNode;
 
-        // Own methods of Kkc.UnigramTrellisNode
+        // Methods
 
         get_entry(): LanguageModelEntry;
     }
@@ -2827,7 +2827,7 @@ export namespace Kkc {
     class BigramTrellisNode extends TrellisNode {
         static $gtype: GObject.GType<BigramTrellisNode>;
 
-        // Constructors of Kkc.BigramTrellisNode
+        // Constructors
 
         _init(...args: any[]): void;
 
@@ -2837,7 +2837,7 @@ export namespace Kkc {
             endpos: number,
         ): BigramTrellisNode;
 
-        // Own methods of Kkc.BigramTrellisNode
+        // Methods
 
         get_left_node(): UnigramTrellisNode;
         get_right_node(): UnigramTrellisNode;
@@ -2855,14 +2855,14 @@ export namespace Kkc {
     class LanguageModelMetadata extends MetadataFile {
         static $gtype: GObject.GType<LanguageModelMetadata>;
 
-        // Own properties of Kkc.LanguageModelMetadata
+        // Properties
 
         get model_type(): GObject.GType;
         set model_type(val: GObject.GType);
         get modelType(): GObject.GType;
         set modelType(val: GObject.GType);
 
-        // Constructors of Kkc.LanguageModelMetadata
+        // Constructors
 
         constructor(properties?: Partial<LanguageModelMetadata.ConstructorProps>, ...args: any[]);
 
@@ -2870,11 +2870,11 @@ export namespace Kkc {
 
         static ['new'](name: string, filename: string): LanguageModelMetadata;
 
-        // Own static methods of Kkc.LanguageModelMetadata
+        // Static methods
 
         static find(name: string): LanguageModelMetadata | null;
 
-        // Own methods of Kkc.LanguageModelMetadata
+        // Methods
 
         create_language_model(): LanguageModel | null;
         get_model_type(): GObject.GType;
@@ -2894,24 +2894,24 @@ export namespace Kkc {
     abstract class LanguageModel extends GObject.Object implements Gio.Initable {
         static $gtype: GObject.GType<LanguageModel>;
 
-        // Own properties of Kkc.LanguageModel
+        // Properties
 
         get metadata(): LanguageModelMetadata;
         set metadata(val: LanguageModelMetadata);
         get bos(): LanguageModelEntry;
         get eos(): LanguageModelEntry;
 
-        // Constructors of Kkc.LanguageModel
+        // Constructors
 
         constructor(properties?: Partial<LanguageModel.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of Kkc.LanguageModel
+        // Static methods
 
         static load(name: string): LanguageModel | null;
 
-        // Own virtual methods of Kkc.LanguageModel
+        // Virtual methods
 
         vfunc_unigram_entries(input: string): Gee.Collection;
         vfunc_entries(input: string): Gee.Collection;
@@ -2920,7 +2920,7 @@ export namespace Kkc {
         vfunc_get_bos(): LanguageModelEntry;
         vfunc_get_eos(): LanguageModelEntry;
 
-        // Own methods of Kkc.LanguageModel
+        // Methods
 
         unigram_entries(input: string): Gee.Collection;
         entries(input: string): Gee.Collection;
@@ -3431,14 +3431,14 @@ export namespace Kkc {
     class TextBigramLanguageModel extends LanguageModel implements UnigramLanguageModel, BigramLanguageModel {
         static $gtype: GObject.GType<TextBigramLanguageModel>;
 
-        // Own fields of Kkc.TextBigramLanguageModel
+        // Fields
 
         input_map: Gee.Map;
         cost_map: Gee.Map;
         backoff_map: Gee.Map;
         id_map: Gee.Map;
 
-        // Constructors of Kkc.TextBigramLanguageModel
+        // Constructors
 
         constructor(properties?: Partial<TextBigramLanguageModel.ConstructorProps>, ...args: any[]);
 
@@ -3446,7 +3446,7 @@ export namespace Kkc {
 
         static ['new'](metadata: LanguageModelMetadata): TextBigramLanguageModel;
 
-        // Own methods of Kkc.TextBigramLanguageModel
+        // Methods
 
         get_key(ids: number[]): string;
         parse_lm(input: string): void;
@@ -3496,7 +3496,7 @@ export namespace Kkc {
     class TextTrigramLanguageModel extends TextBigramLanguageModel implements TrigramLanguageModel {
         static $gtype: GObject.GType<TextTrigramLanguageModel>;
 
-        // Constructors of Kkc.TextTrigramLanguageModel
+        // Constructors
 
         constructor(properties?: Partial<TextTrigramLanguageModel.ConstructorProps>, ...args: any[]);
 
@@ -3542,12 +3542,12 @@ export namespace Kkc {
     class SortedBigramLanguageModel extends LanguageModel implements UnigramLanguageModel, BigramLanguageModel {
         static $gtype: GObject.GType<SortedBigramLanguageModel>;
 
-        // Own properties of Kkc.SortedBigramLanguageModel
+        // Properties
 
         get min_cost(): number;
         get minCost(): number;
 
-        // Constructors of Kkc.SortedBigramLanguageModel
+        // Constructors
 
         constructor(properties?: Partial<SortedBigramLanguageModel.ConstructorProps>, ...args: any[]);
 
@@ -3555,7 +3555,7 @@ export namespace Kkc {
 
         static ['new'](metadata: LanguageModelMetadata): SortedBigramLanguageModel;
 
-        // Own methods of Kkc.SortedBigramLanguageModel
+        // Methods
 
         bigram_offset(pentry: LanguageModelEntry, entry: LanguageModelEntry): number;
         get_min_cost(): number;
@@ -3605,7 +3605,7 @@ export namespace Kkc {
     class SortedTrigramLanguageModel extends SortedBigramLanguageModel implements TrigramLanguageModel {
         static $gtype: GObject.GType<SortedTrigramLanguageModel>;
 
-        // Constructors of Kkc.SortedTrigramLanguageModel
+        // Constructors
 
         constructor(properties?: Partial<SortedTrigramLanguageModel.ConstructorProps>, ...args: any[]);
 
@@ -3645,17 +3645,17 @@ export namespace Kkc {
     abstract class Decoder extends GObject.Object {
         static $gtype: GObject.GType<Decoder>;
 
-        // Constructors of Kkc.Decoder
+        // Constructors
 
         constructor(properties?: Partial<Decoder.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of Kkc.Decoder
+        // Static methods
 
         static create(model: LanguageModel): Decoder | null;
 
-        // Own virtual methods of Kkc.Decoder
+        // Virtual methods
 
         vfunc_decode(input: string, nbest: number, constraint: number[]): Segment[];
         vfunc_decode_with_costs(
@@ -3666,7 +3666,7 @@ export namespace Kkc {
             min_path_cost: number,
         ): Segment[];
 
-        // Own methods of Kkc.Decoder
+        // Methods
 
         decode(input: string, nbest: number, constraint: number[]): Segment[];
         decode_with_costs(
@@ -3689,11 +3689,11 @@ export namespace Kkc {
     class BigramDecoder extends Decoder {
         static $gtype: GObject.GType<BigramDecoder>;
 
-        // Own properties of Kkc.BigramDecoder
+        // Properties
 
         get model(): BigramLanguageModel;
 
-        // Constructors of Kkc.BigramDecoder
+        // Constructors
 
         constructor(properties?: Partial<BigramDecoder.ConstructorProps>, ...args: any[]);
 
@@ -3701,11 +3701,11 @@ export namespace Kkc {
 
         static ['new'](model: BigramLanguageModel): BigramDecoder;
 
-        // Own virtual methods of Kkc.BigramDecoder
+        // Virtual methods
 
         vfunc_path_cost(pnode: TrellisNode, node: TrellisNode, endpos: number): number;
 
-        // Own methods of Kkc.BigramDecoder
+        // Methods
 
         add_unknown_nodes(trellis: Gee.ArrayList[], input: string, constraint: number[]): void;
         build_trellis(input: string, constraint: number[]): Gee.ArrayList[];
@@ -3729,7 +3729,7 @@ export namespace Kkc {
     class TrigramDecoder extends BigramDecoder {
         static $gtype: GObject.GType<TrigramDecoder>;
 
-        // Constructors of Kkc.TrigramDecoder
+        // Constructors
 
         constructor(properties?: Partial<TrigramDecoder.ConstructorProps>, ...args: any[]);
 
@@ -3751,7 +3751,7 @@ export namespace Kkc {
     class SegmentList extends GObject.Object {
         static $gtype: GObject.GType<SegmentList>;
 
-        // Own properties of Kkc.SegmentList
+        // Properties
 
         get cursor_pos(): number;
         set cursor_pos(val: number);
@@ -3759,7 +3759,7 @@ export namespace Kkc {
         set cursorPos(val: number);
         get size(): number;
 
-        // Constructors of Kkc.SegmentList
+        // Constructors
 
         constructor(properties?: Partial<SegmentList.ConstructorProps>, ...args: any[]);
 
@@ -3767,7 +3767,7 @@ export namespace Kkc {
 
         static ['new'](): SegmentList;
 
-        // Own methods of Kkc.SegmentList
+        // Methods
 
         clear(): void;
         add(segment: Segment): void;
@@ -3798,18 +3798,18 @@ export namespace Kkc {
     class Segment extends GObject.Object {
         static $gtype: GObject.GType<Segment>;
 
-        // Own properties of Kkc.Segment
+        // Properties
 
         get input(): string;
         set input(val: string);
         get output(): string;
         set output(val: string);
 
-        // Own fields of Kkc.Segment
+        // Fields
 
         next: Segment | null;
 
-        // Constructors of Kkc.Segment
+        // Constructors
 
         constructor(properties?: Partial<Segment.ConstructorProps>, ...args: any[]);
 
@@ -3817,7 +3817,7 @@ export namespace Kkc {
 
         static ['new'](input: string, output: string): Segment;
 
-        // Own methods of Kkc.Segment
+        // Methods
 
         get_input(): string;
         set_input(value: string): void;
@@ -3855,7 +3855,7 @@ export namespace Kkc {
     class CandidateList extends GObject.Object {
         static $gtype: GObject.GType<CandidateList>;
 
-        // Own properties of Kkc.CandidateList
+        // Properties
 
         get cursor_pos(): number;
         set cursor_pos(val: number);
@@ -3875,7 +3875,7 @@ export namespace Kkc {
         get page_visible(): boolean;
         get pageVisible(): boolean;
 
-        // Constructors of Kkc.CandidateList
+        // Constructors
 
         constructor(properties?: Partial<CandidateList.ConstructorProps>, ...args: any[]);
 
@@ -3883,7 +3883,7 @@ export namespace Kkc {
 
         static ['new'](page_start: number, page_size: number, round: boolean): CandidateList;
 
-        // Own signals of Kkc.CandidateList
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -3895,12 +3895,12 @@ export namespace Kkc {
         connect_after(signal: 'selected', callback: (_source: this, candidate: Candidate) => void): number;
         emit(signal: 'selected', candidate: Candidate): void;
 
-        // Own virtual methods of Kkc.CandidateList
+        // Virtual methods
 
         vfunc_next(): boolean;
         vfunc_previous(): boolean;
 
-        // Own methods of Kkc.CandidateList
+        // Methods
 
         get(index: number): Candidate;
         select_at(index_in_page: number): boolean;
@@ -3939,7 +3939,7 @@ export namespace Kkc {
     class Candidate extends GObject.Object {
         static $gtype: GObject.GType<Candidate>;
 
-        // Own properties of Kkc.Candidate
+        // Properties
 
         get midasi(): string;
         set midasi(val: string);
@@ -3952,7 +3952,7 @@ export namespace Kkc {
         get output(): string;
         set output(val: string);
 
-        // Constructors of Kkc.Candidate
+        // Constructors
 
         constructor(properties?: Partial<Candidate.ConstructorProps>, ...args: any[]);
 
@@ -3966,7 +3966,7 @@ export namespace Kkc {
             output?: string | null,
         ): Candidate;
 
-        // Own methods of Kkc.Candidate
+        // Methods
 
         to_string(): string;
         get_midasi(): string;
@@ -3996,13 +3996,13 @@ export namespace Kkc {
     abstract class KeyEventFilter extends GObject.Object {
         static $gtype: GObject.GType<KeyEventFilter>;
 
-        // Constructors of Kkc.KeyEventFilter
+        // Constructors
 
         constructor(properties?: Partial<KeyEventFilter.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of Kkc.KeyEventFilter
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -4011,12 +4011,12 @@ export namespace Kkc {
         connect_after(signal: 'forwarded', callback: (_source: this, key: KeyEvent) => void): number;
         emit(signal: 'forwarded', key: KeyEvent): void;
 
-        // Own virtual methods of Kkc.KeyEventFilter
+        // Virtual methods
 
         vfunc_filter_key_event(key: KeyEvent): KeyEvent | null;
         vfunc_reset(): void;
 
-        // Own methods of Kkc.KeyEventFilter
+        // Methods
 
         filter_key_event(key: KeyEvent): KeyEvent | null;
         reset(): void;
@@ -4037,7 +4037,7 @@ export namespace Kkc {
     class KeyEvent extends GObject.Object {
         static $gtype: GObject.GType<KeyEvent>;
 
-        // Own properties of Kkc.KeyEvent
+        // Properties
 
         get name(): string;
         set name(val: string);
@@ -4050,7 +4050,7 @@ export namespace Kkc {
         get modifiers(): ModifierType;
         set modifiers(val: ModifierType);
 
-        // Constructors of Kkc.KeyEvent
+        // Constructors
 
         constructor(properties?: Partial<KeyEvent.ConstructorProps>, ...args: any[]);
 
@@ -4062,7 +4062,7 @@ export namespace Kkc {
 
         static ['new'](keyval: number, keycode: number, modifiers: ModifierType): KeyEvent;
 
-        // Own methods of Kkc.KeyEvent
+        // Methods
 
         to_string(): string;
         get_name(): string;
@@ -4088,12 +4088,12 @@ export namespace Kkc {
     class Keymap extends GObject.Object {
         static $gtype: GObject.GType<Keymap>;
 
-        // Own properties of Kkc.Keymap
+        // Properties
 
         get parent(): Keymap;
         set parent(val: Keymap);
 
-        // Constructors of Kkc.Keymap
+        // Constructors
 
         constructor(properties?: Partial<Keymap.ConstructorProps>, ...args: any[]);
 
@@ -4101,12 +4101,12 @@ export namespace Kkc {
 
         static ['new'](): Keymap;
 
-        // Own static methods of Kkc.Keymap
+        // Static methods
 
         static commands(): string[];
         static get_command_label(command: string): string;
 
-        // Own methods of Kkc.Keymap
+        // Methods
 
         entries(): KeymapEntry[];
         local_entries(): KeymapEntry[];
@@ -4128,7 +4128,7 @@ export namespace Kkc {
     class NicolaKeyEventFilter extends KeyEventFilter {
         static $gtype: GObject.GType<NicolaKeyEventFilter>;
 
-        // Own fields of Kkc.NicolaKeyEventFilter
+        // Fields
 
         get_time_func: GetTime;
         get_time_func_target: any;
@@ -4137,7 +4137,7 @@ export namespace Kkc {
         overlap: number;
         maxwait: number;
 
-        // Constructors of Kkc.NicolaKeyEventFilter
+        // Constructors
 
         constructor(properties?: Partial<NicolaKeyEventFilter.ConstructorProps>, ...args: any[]);
 
@@ -4157,11 +4157,11 @@ export namespace Kkc {
     class RomKanaCharacterList extends GObject.Object {
         static $gtype: GObject.GType<RomKanaCharacterList>;
 
-        // Own properties of Kkc.RomKanaCharacterList
+        // Properties
 
         get size(): number;
 
-        // Constructors of Kkc.RomKanaCharacterList
+        // Constructors
 
         constructor(properties?: Partial<RomKanaCharacterList.ConstructorProps>, ...args: any[]);
 
@@ -4169,7 +4169,7 @@ export namespace Kkc {
 
         static ['new'](): RomKanaCharacterList;
 
-        // Own methods of Kkc.RomKanaCharacterList
+        // Methods
 
         add(character: RomKanaCharacter): void;
         add_all(other: RomKanaCharacterList): void;
@@ -4205,7 +4205,7 @@ export namespace Kkc {
     class RomKanaConverter extends GObject.Object {
         static $gtype: GObject.GType<RomKanaConverter>;
 
-        // Own properties of Kkc.RomKanaConverter
+        // Properties
 
         get kana_mode(): KanaMode;
         set kana_mode(val: KanaMode);
@@ -4225,7 +4225,7 @@ export namespace Kkc {
         get pendingInput(): string;
         get produced(): RomKanaCharacterList;
 
-        // Constructors of Kkc.RomKanaConverter
+        // Constructors
 
         constructor(properties?: Partial<RomKanaConverter.ConstructorProps>, ...args: any[]);
 
@@ -4233,7 +4233,7 @@ export namespace Kkc {
 
         static ['new'](): RomKanaConverter;
 
-        // Own methods of Kkc.RomKanaConverter
+        // Methods
 
         get_produced_output(): string;
         is_valid(uc: number): boolean;
@@ -4266,14 +4266,14 @@ export namespace Kkc {
     class RuleMetadata extends MetadataFile {
         static $gtype: GObject.GType<RuleMetadata>;
 
-        // Own properties of Kkc.RuleMetadata
+        // Properties
 
         get filter(): string;
         set filter(val: string);
         get priority(): number;
         set priority(val: number);
 
-        // Constructors of Kkc.RuleMetadata
+        // Constructors
 
         constructor(properties?: Partial<RuleMetadata.ConstructorProps>, ...args: any[]);
 
@@ -4281,11 +4281,11 @@ export namespace Kkc {
 
         static ['new'](name: string, filename: string): RuleMetadata;
 
-        // Own static methods of Kkc.RuleMetadata
+        // Static methods
 
         static find(name: string): RuleMetadata | null;
 
-        // Own methods of Kkc.RuleMetadata
+        // Methods
 
         create_key_event_filter(): KeyEventFilter;
         locate_map_file(type: string, name: string): string | null;
@@ -4307,18 +4307,18 @@ export namespace Kkc {
     class Rule extends GObject.Object implements Gio.Initable {
         static $gtype: GObject.GType<Rule>;
 
-        // Own properties of Kkc.Rule
+        // Properties
 
         get metadata(): RuleMetadata;
         set metadata(val: RuleMetadata);
         get filter(): KeyEventFilter;
         set filter(val: KeyEventFilter);
 
-        // Own fields of Kkc.Rule
+        // Fields
 
         rom_kana: never;
 
-        // Constructors of Kkc.Rule
+        // Constructors
 
         constructor(properties?: Partial<Rule.ConstructorProps>, ...args: any[]);
 
@@ -4326,11 +4326,11 @@ export namespace Kkc {
 
         static ['new'](metadata: RuleMetadata): Rule;
 
-        // Own static methods of Kkc.Rule
+        // Static methods
 
         static list(): RuleMetadata[];
 
-        // Own methods of Kkc.Rule
+        // Methods
 
         get_keymap(mode: InputMode): Keymap;
         get_metadata(): RuleMetadata;
@@ -4835,7 +4835,7 @@ export namespace Kkc {
     class UserRule extends Rule {
         static $gtype: GObject.GType<UserRule>;
 
-        // Constructors of Kkc.UserRule
+        // Constructors
 
         constructor(properties?: Partial<UserRule.ConstructorProps>, ...args: any[]);
 
@@ -4846,7 +4846,7 @@ export namespace Kkc {
 
         static ['new'](...args: never[]): any;
 
-        // Own methods of Kkc.UserRule
+        // Methods
 
         write(input_mode: InputMode): void;
     }
@@ -4885,7 +4885,7 @@ export namespace Kkc {
     class Context extends GObject.Object {
         static $gtype: GObject.GType<Context>;
 
-        // Own properties of Kkc.Context
+        // Properties
 
         get dictionaries(): DictionaryList;
         set dictionaries(val: DictionaryList);
@@ -4915,7 +4915,7 @@ export namespace Kkc {
         get key_event_filter(): KeyEventFilter;
         get keyEventFilter(): KeyEventFilter;
 
-        // Constructors of Kkc.Context
+        // Constructors
 
         constructor(properties?: Partial<Context.ConstructorProps>, ...args: any[]);
 
@@ -4923,7 +4923,7 @@ export namespace Kkc {
 
         static ['new'](model: LanguageModel): Context;
 
-        // Own signals of Kkc.Context
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -4932,7 +4932,7 @@ export namespace Kkc {
         connect_after(signal: 'request-selection-text', callback: (_source: this) => void): number;
         emit(signal: 'request-selection-text'): void;
 
-        // Own methods of Kkc.Context
+        // Methods
 
         set_selection_text(text?: string | null): void;
         process_key_events(keyseq: string): boolean;
@@ -4972,7 +4972,7 @@ export namespace Kkc {
     class EmptySegmentDictionary extends GObject.Object implements Dictionary, SegmentDictionary {
         static $gtype: GObject.GType<EmptySegmentDictionary>;
 
-        // Constructors of Kkc.EmptySegmentDictionary
+        // Constructors
 
         constructor(properties?: Partial<EmptySegmentDictionary.ConstructorProps>, ...args: any[]);
 
@@ -5407,7 +5407,7 @@ export namespace Kkc {
     class SystemSegmentDictionary extends GObject.Object implements Dictionary, SegmentDictionary {
         static $gtype: GObject.GType<SystemSegmentDictionary>;
 
-        // Constructors of Kkc.SystemSegmentDictionary
+        // Constructors
 
         constructor(properties?: Partial<SystemSegmentDictionary.ConstructorProps>, ...args: any[]);
 
@@ -5842,7 +5842,7 @@ export namespace Kkc {
     class UserSegmentDictionary extends GObject.Object implements Dictionary, SegmentDictionary {
         static $gtype: GObject.GType<UserSegmentDictionary>;
 
-        // Constructors of Kkc.UserSegmentDictionary
+        // Constructors
 
         constructor(properties?: Partial<UserSegmentDictionary.ConstructorProps>, ...args: any[]);
 
@@ -6277,7 +6277,7 @@ export namespace Kkc {
     class UserSentenceDictionary extends GObject.Object implements Dictionary, SentenceDictionary {
         static $gtype: GObject.GType<UserSentenceDictionary>;
 
-        // Constructors of Kkc.UserSentenceDictionary
+        // Constructors
 
         constructor(properties?: Partial<UserSentenceDictionary.ConstructorProps>, ...args: any[]);
 
@@ -6711,7 +6711,7 @@ export namespace Kkc {
     class UserDictionary extends GObject.Object implements Dictionary, SegmentDictionary, SentenceDictionary {
         static $gtype: GObject.GType<UserDictionary>;
 
-        // Constructors of Kkc.UserDictionary
+        // Constructors
 
         constructor(properties?: Partial<UserDictionary.ConstructorProps>, ...args: any[]);
 
@@ -7155,11 +7155,11 @@ export namespace Kkc {
     class DictionaryList extends GObject.Object {
         static $gtype: GObject.GType<DictionaryList>;
 
-        // Own properties of Kkc.DictionaryList
+        // Properties
 
         get size(): number;
 
-        // Constructors of Kkc.DictionaryList
+        // Constructors
 
         constructor(properties?: Partial<DictionaryList.ConstructorProps>, ...args: any[]);
 
@@ -7167,7 +7167,7 @@ export namespace Kkc {
 
         static ['new'](): DictionaryList;
 
-        // Own methods of Kkc.DictionaryList
+        // Methods
 
         add(dictionary: Dictionary): void;
         remove(dictionary: Dictionary): void;
@@ -7207,7 +7207,7 @@ export namespace Kkc {
     class DBusCandidateList extends GObject.Object {
         static $gtype: GObject.GType<DBusCandidateList>;
 
-        // Own properties of Kkc.DBusCandidateList
+        // Properties
 
         get cursor_pos(): number;
         get cursorPos(): number;
@@ -7220,7 +7220,7 @@ export namespace Kkc {
         get page_visible(): boolean;
         get pageVisible(): boolean;
 
-        // Constructors of Kkc.DBusCandidateList
+        // Constructors
 
         constructor(properties?: Partial<DBusCandidateList.ConstructorProps>, ...args: any[]);
 
@@ -7232,7 +7232,7 @@ export namespace Kkc {
             candidates: CandidateList,
         ): DBusCandidateList;
 
-        // Own signals of Kkc.DBusCandidateList
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -7250,7 +7250,7 @@ export namespace Kkc {
         ): number;
         emit(signal: 'selected', midasi: string, okuri: boolean, text: string, annotation: string): void;
 
-        // Own methods of Kkc.DBusCandidateList
+        // Methods
 
         select_at(index_in_page: number): boolean;
         select(): void;
@@ -7283,13 +7283,13 @@ export namespace Kkc {
     class DBusSegmentList extends GObject.Object {
         static $gtype: GObject.GType<DBusSegmentList>;
 
-        // Own properties of Kkc.DBusSegmentList
+        // Properties
 
         get cursor_pos(): number;
         get cursorPos(): number;
         get size(): number;
 
-        // Constructors of Kkc.DBusSegmentList
+        // Constructors
 
         constructor(properties?: Partial<DBusSegmentList.ConstructorProps>, ...args: any[]);
 
@@ -7297,7 +7297,7 @@ export namespace Kkc {
 
         static ['new'](connection: Gio.DBusConnection, object_path: string, segments: SegmentList): DBusSegmentList;
 
-        // Own methods of Kkc.DBusSegmentList
+        // Methods
 
         get(index: number): [string, string];
         first_segment(): boolean;
@@ -7329,7 +7329,7 @@ export namespace Kkc {
     class DBusContext extends GObject.Object {
         static $gtype: GObject.GType<DBusContext>;
 
-        // Own properties of Kkc.DBusContext
+        // Properties
 
         get input(): string;
         get input_cursor_pos(): number;
@@ -7347,7 +7347,7 @@ export namespace Kkc {
         get autoCorrect(): boolean;
         set autoCorrect(val: boolean);
 
-        // Constructors of Kkc.DBusContext
+        // Constructors
 
         constructor(properties?: Partial<DBusContext.ConstructorProps>, ...args: any[]);
 
@@ -7355,7 +7355,7 @@ export namespace Kkc {
 
         static ['new'](connection: Gio.DBusConnection, object_path: string, context: Context): DBusContext;
 
-        // Own methods of Kkc.DBusContext
+        // Methods
 
         process_key_event(keyval: number, keycode: number, modifiers: number): boolean;
         process_command_event(command: string): boolean;
@@ -7383,7 +7383,7 @@ export namespace Kkc {
     class DBusServer extends GObject.Object {
         static $gtype: GObject.GType<DBusServer>;
 
-        // Constructors of Kkc.DBusServer
+        // Constructors
 
         constructor(properties?: Partial<DBusServer.ConstructorProps>, ...args: any[]);
 
@@ -7396,7 +7396,7 @@ export namespace Kkc {
             typing_rule?: Rule | null,
         ): DBusServer;
 
-        // Own methods of Kkc.DBusServer
+        // Methods
 
         create_context(sender: never): string;
         destroy_context(object_path: string): void;
@@ -7406,7 +7406,7 @@ export namespace Kkc {
     abstract class MetadataFilePrivate {
         static $gtype: GObject.GType<MetadataFilePrivate>;
 
-        // Constructors of Kkc.MetadataFilePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -7415,7 +7415,7 @@ export namespace Kkc {
     abstract class TrellisNodePrivate {
         static $gtype: GObject.GType<TrellisNodePrivate>;
 
-        // Constructors of Kkc.TrellisNodePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -7424,7 +7424,7 @@ export namespace Kkc {
     abstract class UnigramTrellisNodePrivate {
         static $gtype: GObject.GType<UnigramTrellisNodePrivate>;
 
-        // Constructors of Kkc.UnigramTrellisNodePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -7433,7 +7433,7 @@ export namespace Kkc {
     abstract class BigramTrellisNodePrivate {
         static $gtype: GObject.GType<BigramTrellisNodePrivate>;
 
-        // Constructors of Kkc.BigramTrellisNodePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -7442,7 +7442,7 @@ export namespace Kkc {
     abstract class LanguageModelMetadataPrivate {
         static $gtype: GObject.GType<LanguageModelMetadataPrivate>;
 
-        // Constructors of Kkc.LanguageModelMetadataPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -7451,7 +7451,7 @@ export namespace Kkc {
     abstract class LanguageModelPrivate {
         static $gtype: GObject.GType<LanguageModelPrivate>;
 
-        // Constructors of Kkc.LanguageModelPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -7460,7 +7460,7 @@ export namespace Kkc {
     abstract class TextBigramLanguageModelPrivate {
         static $gtype: GObject.GType<TextBigramLanguageModelPrivate>;
 
-        // Constructors of Kkc.TextBigramLanguageModelPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -7469,7 +7469,7 @@ export namespace Kkc {
     abstract class TextTrigramLanguageModelPrivate {
         static $gtype: GObject.GType<TextTrigramLanguageModelPrivate>;
 
-        // Constructors of Kkc.TextTrigramLanguageModelPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -7478,7 +7478,7 @@ export namespace Kkc {
     abstract class SortedBigramLanguageModelPrivate {
         static $gtype: GObject.GType<SortedBigramLanguageModelPrivate>;
 
-        // Constructors of Kkc.SortedBigramLanguageModelPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -7487,7 +7487,7 @@ export namespace Kkc {
     abstract class SortedTrigramLanguageModelPrivate {
         static $gtype: GObject.GType<SortedTrigramLanguageModelPrivate>;
 
-        // Constructors of Kkc.SortedTrigramLanguageModelPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -7496,7 +7496,7 @@ export namespace Kkc {
     abstract class DecoderPrivate {
         static $gtype: GObject.GType<DecoderPrivate>;
 
-        // Constructors of Kkc.DecoderPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -7505,7 +7505,7 @@ export namespace Kkc {
     abstract class BigramDecoderPrivate {
         static $gtype: GObject.GType<BigramDecoderPrivate>;
 
-        // Constructors of Kkc.BigramDecoderPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -7514,7 +7514,7 @@ export namespace Kkc {
     abstract class TrigramDecoderPrivate {
         static $gtype: GObject.GType<TrigramDecoderPrivate>;
 
-        // Constructors of Kkc.TrigramDecoderPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -7523,7 +7523,7 @@ export namespace Kkc {
     abstract class SegmentListPrivate {
         static $gtype: GObject.GType<SegmentListPrivate>;
 
-        // Constructors of Kkc.SegmentListPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -7532,7 +7532,7 @@ export namespace Kkc {
     abstract class SegmentPrivate {
         static $gtype: GObject.GType<SegmentPrivate>;
 
-        // Constructors of Kkc.SegmentPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -7541,7 +7541,7 @@ export namespace Kkc {
     abstract class CandidateListPrivate {
         static $gtype: GObject.GType<CandidateListPrivate>;
 
-        // Constructors of Kkc.CandidateListPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -7550,7 +7550,7 @@ export namespace Kkc {
     abstract class CandidatePrivate {
         static $gtype: GObject.GType<CandidatePrivate>;
 
-        // Constructors of Kkc.CandidatePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -7559,7 +7559,7 @@ export namespace Kkc {
     abstract class KeyEventFilterPrivate {
         static $gtype: GObject.GType<KeyEventFilterPrivate>;
 
-        // Constructors of Kkc.KeyEventFilterPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -7568,7 +7568,7 @@ export namespace Kkc {
     abstract class KeyEventPrivate {
         static $gtype: GObject.GType<KeyEventPrivate>;
 
-        // Constructors of Kkc.KeyEventPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -7577,7 +7577,7 @@ export namespace Kkc {
     abstract class KeymapPrivate {
         static $gtype: GObject.GType<KeymapPrivate>;
 
-        // Constructors of Kkc.KeymapPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -7586,7 +7586,7 @@ export namespace Kkc {
     abstract class NicolaKeyEventFilterPrivate {
         static $gtype: GObject.GType<NicolaKeyEventFilterPrivate>;
 
-        // Constructors of Kkc.NicolaKeyEventFilterPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -7595,7 +7595,7 @@ export namespace Kkc {
     abstract class RomKanaCharacterListPrivate {
         static $gtype: GObject.GType<RomKanaCharacterListPrivate>;
 
-        // Constructors of Kkc.RomKanaCharacterListPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -7604,7 +7604,7 @@ export namespace Kkc {
     abstract class RomKanaConverterPrivate {
         static $gtype: GObject.GType<RomKanaConverterPrivate>;
 
-        // Constructors of Kkc.RomKanaConverterPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -7613,7 +7613,7 @@ export namespace Kkc {
     abstract class RuleMetadataPrivate {
         static $gtype: GObject.GType<RuleMetadataPrivate>;
 
-        // Constructors of Kkc.RuleMetadataPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -7622,7 +7622,7 @@ export namespace Kkc {
     abstract class RulePrivate {
         static $gtype: GObject.GType<RulePrivate>;
 
-        // Constructors of Kkc.RulePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -7631,7 +7631,7 @@ export namespace Kkc {
     abstract class UserRulePrivate {
         static $gtype: GObject.GType<UserRulePrivate>;
 
-        // Constructors of Kkc.UserRulePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -7640,7 +7640,7 @@ export namespace Kkc {
     abstract class ContextPrivate {
         static $gtype: GObject.GType<ContextPrivate>;
 
-        // Constructors of Kkc.ContextPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -7649,7 +7649,7 @@ export namespace Kkc {
     abstract class EmptySegmentDictionaryPrivate {
         static $gtype: GObject.GType<EmptySegmentDictionaryPrivate>;
 
-        // Constructors of Kkc.EmptySegmentDictionaryPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -7658,7 +7658,7 @@ export namespace Kkc {
     abstract class SystemSegmentDictionaryPrivate {
         static $gtype: GObject.GType<SystemSegmentDictionaryPrivate>;
 
-        // Constructors of Kkc.SystemSegmentDictionaryPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -7667,7 +7667,7 @@ export namespace Kkc {
     abstract class UserSegmentDictionaryPrivate {
         static $gtype: GObject.GType<UserSegmentDictionaryPrivate>;
 
-        // Constructors of Kkc.UserSegmentDictionaryPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -7676,7 +7676,7 @@ export namespace Kkc {
     abstract class UserSentenceDictionaryPrivate {
         static $gtype: GObject.GType<UserSentenceDictionaryPrivate>;
 
-        // Constructors of Kkc.UserSentenceDictionaryPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -7685,7 +7685,7 @@ export namespace Kkc {
     abstract class UserDictionaryPrivate {
         static $gtype: GObject.GType<UserDictionaryPrivate>;
 
-        // Constructors of Kkc.UserDictionaryPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -7694,7 +7694,7 @@ export namespace Kkc {
     abstract class DictionaryListPrivate {
         static $gtype: GObject.GType<DictionaryListPrivate>;
 
-        // Constructors of Kkc.DictionaryListPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -7703,7 +7703,7 @@ export namespace Kkc {
     abstract class DBusCandidateListPrivate {
         static $gtype: GObject.GType<DBusCandidateListPrivate>;
 
-        // Constructors of Kkc.DBusCandidateListPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -7712,7 +7712,7 @@ export namespace Kkc {
     abstract class DBusSegmentListPrivate {
         static $gtype: GObject.GType<DBusSegmentListPrivate>;
 
-        // Constructors of Kkc.DBusSegmentListPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -7721,7 +7721,7 @@ export namespace Kkc {
     abstract class DBusContextPrivate {
         static $gtype: GObject.GType<DBusContextPrivate>;
 
-        // Constructors of Kkc.DBusContextPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -7730,7 +7730,7 @@ export namespace Kkc {
     abstract class DBusServerPrivate {
         static $gtype: GObject.GType<DBusServerPrivate>;
 
-        // Constructors of Kkc.DBusServerPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -7744,13 +7744,13 @@ export namespace Kkc {
     class LanguageModelEntry {
         static $gtype: GObject.GType<LanguageModelEntry>;
 
-        // Own fields of Kkc.LanguageModelEntry
+        // Fields
 
         input: string;
         output: string;
         id: number;
 
-        // Constructors of Kkc.LanguageModelEntry
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -7765,12 +7765,12 @@ export namespace Kkc {
     class KeymapEntry {
         static $gtype: GObject.GType<KeymapEntry>;
 
-        // Own fields of Kkc.KeymapEntry
+        // Fields
 
         key: KeyEvent;
         command: string | null;
 
-        // Constructors of Kkc.KeymapEntry
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -7778,12 +7778,12 @@ export namespace Kkc {
     class RomKanaCharacter {
         static $gtype: GObject.GType<RomKanaCharacter>;
 
-        // Own fields of Kkc.RomKanaCharacter
+        // Fields
 
         output: string;
         input: string;
 
-        // Constructors of Kkc.RomKanaCharacter
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -7805,12 +7805,12 @@ export namespace Kkc {
         prototype: UnigramLanguageModel;
     }
     interface UnigramLanguageModel extends LanguageModel {
-        // Own methods of Kkc.UnigramLanguageModel
+        // Methods
 
         unigram_cost(entry: LanguageModelEntry): number;
         unigram_backoff(entry: LanguageModelEntry): number;
 
-        // Own virtual methods of Kkc.UnigramLanguageModel
+        // Virtual methods
 
         vfunc_unigram_cost(entry: LanguageModelEntry): number;
         vfunc_unigram_backoff(entry: LanguageModelEntry): number;
@@ -7829,14 +7829,14 @@ export namespace Kkc {
         prototype: BigramLanguageModel;
     }
     interface BigramLanguageModel extends UnigramLanguageModel {
-        // Own methods of Kkc.BigramLanguageModel
+        // Methods
 
         has_bigram(pentry: LanguageModelEntry, entry: LanguageModelEntry): boolean;
         bigram_cost(pentry: LanguageModelEntry, entry: LanguageModelEntry): number;
         bigram_backoff(pentry: LanguageModelEntry, entry: LanguageModelEntry): number;
         bigram_backoff_cost(pentry: LanguageModelEntry, entry: LanguageModelEntry): number;
 
-        // Own virtual methods of Kkc.BigramLanguageModel
+        // Virtual methods
 
         vfunc_has_bigram(pentry: LanguageModelEntry, entry: LanguageModelEntry): boolean;
         vfunc_bigram_cost(pentry: LanguageModelEntry, entry: LanguageModelEntry): number;
@@ -7856,7 +7856,7 @@ export namespace Kkc {
         prototype: TrigramLanguageModel;
     }
     interface TrigramLanguageModel extends BigramLanguageModel {
-        // Own methods of Kkc.TrigramLanguageModel
+        // Methods
 
         has_trigram(ppentry: LanguageModelEntry, pentry: LanguageModelEntry, entry: LanguageModelEntry): boolean;
         trigram_cost(ppentry: LanguageModelEntry, pentry: LanguageModelEntry, entry: LanguageModelEntry): number;
@@ -7866,7 +7866,7 @@ export namespace Kkc {
             entry: LanguageModelEntry,
         ): number;
 
-        // Own virtual methods of Kkc.TrigramLanguageModel
+        // Virtual methods
 
         vfunc_has_trigram(ppentry: LanguageModelEntry, pentry: LanguageModelEntry, entry: LanguageModelEntry): boolean;
         vfunc_trigram_cost(ppentry: LanguageModelEntry, pentry: LanguageModelEntry, entry: LanguageModelEntry): number;
@@ -7885,12 +7885,12 @@ export namespace Kkc {
         prototype: Dictionary;
     }
     interface Dictionary extends GObject.Object {
-        // Own methods of Kkc.Dictionary
+        // Methods
 
         reload(): void;
         save(): void;
 
-        // Own virtual methods of Kkc.Dictionary
+        // Virtual methods
 
         vfunc_reload(): void;
         vfunc_save(): void;
@@ -7909,14 +7909,14 @@ export namespace Kkc {
         prototype: SegmentDictionary;
     }
     interface SegmentDictionary extends GObject.Object {
-        // Own methods of Kkc.SegmentDictionary
+        // Methods
 
         lookup_candidates(midasi: string, okuri: boolean): [boolean, Candidate[]];
         complete(midasi: string): string[];
         select_candidate(candidate: Candidate): boolean;
         purge_candidate(candidate: Candidate): boolean;
 
-        // Own virtual methods of Kkc.SegmentDictionary
+        // Virtual methods
 
         vfunc_lookup_candidates(midasi: string, okuri: boolean): [boolean, Candidate[]];
         vfunc_complete(midasi: string): string[];
@@ -7937,13 +7937,13 @@ export namespace Kkc {
         prototype: SentenceDictionary;
     }
     interface SentenceDictionary extends GObject.Object {
-        // Own methods of Kkc.SentenceDictionary
+        // Methods
 
         lookup_constraint(input: string): [boolean, number[]];
         lookup_phrase(input: string[]): [boolean, string[]];
         select_segments(input: Segment[]): boolean;
 
-        // Own virtual methods of Kkc.SentenceDictionary
+        // Virtual methods
 
         vfunc_lookup_constraint(input: string): [boolean, number[]];
         vfunc_lookup_phrase(input: string[]): [boolean, string[]];

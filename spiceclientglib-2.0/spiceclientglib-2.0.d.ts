@@ -75,7 +75,7 @@ export namespace SpiceClientGLib {
     class ClientError extends GLib.Error {
         static $gtype: GObject.GType<ClientError>;
 
-        // Static fields of SpiceClientGLib.ClientError
+        // Static fields
 
         /**
          * generic error code
@@ -106,7 +106,7 @@ export namespace SpiceClientGLib {
          */
         static USB_SERVICE: number;
 
-        // Constructors of SpiceClientGLib.ClientError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
@@ -676,7 +676,7 @@ export namespace SpiceClientGLib {
     abstract class Audio extends GObject.Object {
         static $gtype: GObject.GType<Audio>;
 
-        // Own properties of SpiceClientGLib.Audio
+        // Properties
 
         get main_context(): GLib.MainContext;
         get mainContext(): GLib.MainContext;
@@ -685,7 +685,7 @@ export namespace SpiceClientGLib {
          */
         get session(): Session;
 
-        // Constructors of SpiceClientGLib.Audio
+        // Constructors
 
         constructor(properties?: Partial<Audio.ConstructorProps>, ...args: any[]);
 
@@ -693,7 +693,7 @@ export namespace SpiceClientGLib {
 
         static ['new'](session: Session, context?: GLib.MainContext | null, name?: string | null): Audio;
 
-        // Own static methods of SpiceClientGLib.Audio
+        // Static methods
 
         /**
          * Gets the #SpiceAudio associated with the passed in #SpiceSession.
@@ -707,7 +707,7 @@ export namespace SpiceClientGLib {
          */
         static get(session: Session, context?: GLib.MainContext | null): Audio;
 
-        // Own virtual methods of SpiceClientGLib.Audio
+        // Virtual methods
 
         vfunc_connect_channel(channel: Channel): boolean;
         vfunc_get_playback_volume_info_async(
@@ -766,7 +766,7 @@ export namespace SpiceClientGLib {
     class Channel extends GObject.Object {
         static $gtype: GObject.GType<Channel>;
 
-        // Own properties of SpiceClientGLib.Channel
+        // Properties
 
         get channel_id(): number;
         get channelId(): number;
@@ -784,7 +784,7 @@ export namespace SpiceClientGLib {
         get total_read_bytes(): number;
         get totalReadBytes(): number;
 
-        // Constructors of SpiceClientGLib.Channel
+        // Constructors
 
         constructor(properties?: Partial<Channel.ConstructorProps>, ...args: any[]);
 
@@ -792,7 +792,7 @@ export namespace SpiceClientGLib {
 
         static ['new'](s: Session, type: number, id: number): Channel;
 
-        // Own signals of SpiceClientGLib.Channel
+        // Signals
 
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -801,7 +801,7 @@ export namespace SpiceClientGLib {
         connect_after(signal: 'open-fd', callback: (_source: this, with_tls: number) => void): number;
         emit(signal: 'open-fd', with_tls: number): void;
 
-        // Own static methods of SpiceClientGLib.Channel
+        // Static methods
 
         /**
          * Convert a channel-type property value to a string.
@@ -814,7 +814,7 @@ export namespace SpiceClientGLib {
          */
         static type_to_string(type: number): string;
 
-        // Own virtual methods of SpiceClientGLib.Channel
+        // Virtual methods
 
         vfunc_channel_event(event: ChannelEvent): void;
         vfunc_channel_reset(migrating: boolean): void;
@@ -825,7 +825,7 @@ export namespace SpiceClientGLib {
         vfunc_iterate_write(): void;
         vfunc_open_fd(with_tls: number): void;
 
-        // Own methods of SpiceClientGLib.Channel
+        // Methods
 
         /**
          * Connect the channel, using #SpiceSession connection informations
@@ -929,20 +929,20 @@ export namespace SpiceClientGLib {
     class CursorChannel extends Channel {
         static $gtype: GObject.GType<CursorChannel>;
 
-        // Own properties of SpiceClientGLib.CursorChannel
+        // Properties
 
         /**
          * The last #SpiceCursorShape received.
          */
         get cursor(): CursorShape;
 
-        // Constructors of SpiceClientGLib.CursorChannel
+        // Constructors
 
         constructor(properties?: Partial<CursorChannel.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of SpiceClientGLib.CursorChannel
+        // Signals
 
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -972,7 +972,7 @@ export namespace SpiceClientGLib {
             rgba?: any | null,
         ): void;
 
-        // Own virtual methods of SpiceClientGLib.CursorChannel
+        // Virtual methods
 
         vfunc_cursor_hide(): void;
         vfunc_cursor_move(x: number, y: number): void;
@@ -1030,7 +1030,7 @@ export namespace SpiceClientGLib {
     class DisplayChannel extends Channel {
         static $gtype: GObject.GType<DisplayChannel>;
 
-        // Own properties of SpiceClientGLib.DisplayChannel
+        // Properties
 
         /**
          * The last #SpiceGlScanout received.
@@ -1059,13 +1059,13 @@ export namespace SpiceClientGLib {
         get monitorsMax(): number;
         get width(): number;
 
-        // Constructors of SpiceClientGLib.DisplayChannel
+        // Constructors
 
         constructor(properties?: Partial<DisplayChannel.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of SpiceClientGLib.DisplayChannel
+        // Signals
 
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -1115,7 +1115,7 @@ export namespace SpiceClientGLib {
         ): number;
         emit(signal: 'streaming-mode', streaming_mode: boolean): void;
 
-        // Own static methods of SpiceClientGLib.DisplayChannel
+        // Static methods
 
         /**
          * Tells the spice server to change the preferred image compression
@@ -1140,7 +1140,7 @@ export namespace SpiceClientGLib {
          */
         static get_primary(channel: Channel, surface_id: number, primary: DisplayPrimary): boolean;
 
-        // Own methods of SpiceClientGLib.DisplayChannel
+        // Methods
 
         /**
          * Retrieves the GL scanout if available
@@ -1181,7 +1181,7 @@ export namespace SpiceClientGLib {
     class FileTransferTask extends GObject.Object {
         static $gtype: GObject.GType<FileTransferTask>;
 
-        // Own properties of SpiceClientGLib.FileTransferTask
+        // Properties
 
         get cancellable(): Gio.Cancellable;
         get channel(): MainChannel;
@@ -1193,13 +1193,13 @@ export namespace SpiceClientGLib {
         get transferred_bytes(): number;
         get transferredBytes(): number;
 
-        // Constructors of SpiceClientGLib.FileTransferTask
+        // Constructors
 
         constructor(properties?: Partial<FileTransferTask.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of SpiceClientGLib.FileTransferTask
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -1208,7 +1208,7 @@ export namespace SpiceClientGLib {
         connect_after(signal: 'finished', callback: (_source: this, object: GLib.Error) => void): number;
         emit(signal: 'finished', object: GLib.Error): void;
 
-        // Own methods of SpiceClientGLib.FileTransferTask
+        // Methods
 
         cancel(): void;
         get_filename(): string;
@@ -1238,25 +1238,25 @@ export namespace SpiceClientGLib {
     class InputsChannel extends Channel {
         static $gtype: GObject.GType<InputsChannel>;
 
-        // Own properties of SpiceClientGLib.InputsChannel
+        // Properties
 
         get key_modifiers(): number;
         get keyModifiers(): number;
 
-        // Constructors of SpiceClientGLib.InputsChannel
+        // Constructors
 
         constructor(properties?: Partial<InputsChannel.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of SpiceClientGLib.InputsChannel
+        // Signals
 
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
         connect_after(signal: 'inputs-modifiers', callback: (_source: this) => void): number;
         emit(signal: 'inputs-modifiers'): void;
 
-        // Own methods of SpiceClientGLib.InputsChannel
+        // Methods
 
         /**
          * Press a mouse button.
@@ -1390,7 +1390,7 @@ export namespace SpiceClientGLib {
     class MainChannel extends Channel {
         static $gtype: GObject.GType<MainChannel>;
 
-        // Own properties of SpiceClientGLib.MainChannel
+        // Properties
 
         get agent_caps_0(): number;
         get agentCaps0(): number;
@@ -1459,13 +1459,13 @@ export namespace SpiceClientGLib {
          */
         get mouseMode(): number;
 
-        // Constructors of SpiceClientGLib.MainChannel
+        // Constructors
 
         constructor(properties?: Partial<MainChannel.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of SpiceClientGLib.MainChannel
+        // Signals
 
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -1512,7 +1512,7 @@ export namespace SpiceClientGLib {
         connect_after(signal: 'new-file-transfer', callback: (_source: this, task: GObject.Object) => void): number;
         emit(signal: 'new-file-transfer', task: GObject.Object): void;
 
-        // Own methods of SpiceClientGLib.MainChannel
+        // Methods
 
         /**
          * Test capability of a remote agent.
@@ -1672,7 +1672,7 @@ export namespace SpiceClientGLib {
     class PlaybackChannel extends Channel {
         static $gtype: GObject.GType<PlaybackChannel>;
 
-        // Own properties of SpiceClientGLib.PlaybackChannel
+        // Properties
 
         get min_latency(): number;
         set min_latency(val: number);
@@ -1685,13 +1685,13 @@ export namespace SpiceClientGLib {
         get volume(): any;
         set volume(val: any);
 
-        // Constructors of SpiceClientGLib.PlaybackChannel
+        // Constructors
 
         constructor(properties?: Partial<PlaybackChannel.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of SpiceClientGLib.PlaybackChannel
+        // Signals
 
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -1710,13 +1710,13 @@ export namespace SpiceClientGLib {
         connect_after(signal: 'playback-stop', callback: (_source: this) => void): number;
         emit(signal: 'playback-stop'): void;
 
-        // Own virtual methods of SpiceClientGLib.PlaybackChannel
+        // Virtual methods
 
         vfunc_playback_data(data: any | null, size: number): void;
         vfunc_playback_start(format: number, channels: number, freq: number): void;
         vfunc_playback_stop(): void;
 
-        // Own methods of SpiceClientGLib.PlaybackChannel
+        // Methods
 
         /**
          * Adjust the multimedia time according to the delay.
@@ -1752,20 +1752,20 @@ export namespace SpiceClientGLib {
     class PortChannel extends Channel {
         static $gtype: GObject.GType<PortChannel>;
 
-        // Own properties of SpiceClientGLib.PortChannel
+        // Properties
 
         get port_name(): string;
         get portName(): string;
         get port_opened(): boolean;
         get portOpened(): boolean;
 
-        // Constructors of SpiceClientGLib.PortChannel
+        // Constructors
 
         constructor(properties?: Partial<PortChannel.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of SpiceClientGLib.PortChannel
+        // Signals
 
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -1774,7 +1774,7 @@ export namespace SpiceClientGLib {
         connect_after(signal: 'port-event', callback: (_source: this, event: number) => void): number;
         emit(signal: 'port-event', event: number): void;
 
-        // Own methods of SpiceClientGLib.PortChannel
+        // Methods
 
         /**
          * Send an event to the port.
@@ -1828,18 +1828,18 @@ export namespace SpiceClientGLib {
     class QmpPort extends GObject.Object {
         static $gtype: GObject.GType<QmpPort>;
 
-        // Own properties of SpiceClientGLib.QmpPort
+        // Properties
 
         get channel(): PortChannel;
         get ready(): boolean;
 
-        // Constructors of SpiceClientGLib.QmpPort
+        // Constructors
 
         constructor(properties?: Partial<QmpPort.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of SpiceClientGLib.QmpPort
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -1848,7 +1848,7 @@ export namespace SpiceClientGLib {
         connect_after(signal: 'event', callback: (_source: this, name: string, node: any | null) => void): number;
         emit(signal: 'event', name: string, node?: any | null): void;
 
-        // Own static methods of SpiceClientGLib.QmpPort
+        // Static methods
 
         /**
          * Associate a QMP port helper to the given port channel.  If there is
@@ -1857,7 +1857,7 @@ export namespace SpiceClientGLib {
          */
         static get(channel: PortChannel): QmpPort;
 
-        // Own methods of SpiceClientGLib.QmpPort
+        // Methods
 
         /**
          * Query the run status of all VCPUs.
@@ -1915,7 +1915,7 @@ export namespace SpiceClientGLib {
     class RecordChannel extends Channel {
         static $gtype: GObject.GType<RecordChannel>;
 
-        // Own properties of SpiceClientGLib.RecordChannel
+        // Properties
 
         get mute(): boolean;
         set mute(val: boolean);
@@ -1924,13 +1924,13 @@ export namespace SpiceClientGLib {
         get volume(): any;
         set volume(val: any);
 
-        // Constructors of SpiceClientGLib.RecordChannel
+        // Constructors
 
         constructor(properties?: Partial<RecordChannel.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of SpiceClientGLib.RecordChannel
+        // Signals
 
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -1942,13 +1942,13 @@ export namespace SpiceClientGLib {
         connect_after(signal: 'record-stop', callback: (_source: this) => void): number;
         emit(signal: 'record-stop'): void;
 
-        // Own virtual methods of SpiceClientGLib.RecordChannel
+        // Virtual methods
 
         vfunc_record_data(data: any | null, size: number): void;
         vfunc_record_start(format: number, channels: number, freq: number): void;
         vfunc_record_stop(): void;
 
-        // Own methods of SpiceClientGLib.RecordChannel
+        // Methods
 
         /**
          * Send recorded PCM data to the guest.
@@ -2045,7 +2045,7 @@ export namespace SpiceClientGLib {
     class Session extends GObject.Object {
         static $gtype: GObject.GType<Session>;
 
-        // Own properties of SpiceClientGLib.Session
+        // Properties
 
         /**
          * CA certificates in PEM format. The text data can contain
@@ -2333,7 +2333,7 @@ export namespace SpiceClientGLib {
         get verify(): SessionVerify;
         set verify(val: SessionVerify);
 
-        // Constructors of SpiceClientGLib.Session
+        // Constructors
 
         constructor(properties?: Partial<Session.ConstructorProps>, ...args: any[]);
 
@@ -2341,7 +2341,7 @@ export namespace SpiceClientGLib {
 
         static ['new'](): Session;
 
-        // Own signals of SpiceClientGLib.Session
+        // Signals
 
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -2354,12 +2354,12 @@ export namespace SpiceClientGLib {
         connect_after(signal: 'mm-time-reset', callback: (_source: this) => void): number;
         emit(signal: 'mm-time-reset'): void;
 
-        // Own virtual methods of SpiceClientGLib.Session
+        // Virtual methods
 
         vfunc_channel_destroy(channel: Channel): void;
         vfunc_channel_new(channel: Channel): void;
 
-        // Own methods of SpiceClientGLib.Session
+        // Methods
 
         /**
          * Open the session using the #SpiceSession:host and
@@ -2435,7 +2435,7 @@ export namespace SpiceClientGLib {
     class SmartcardChannel extends Channel {
         static $gtype: GObject.GType<SmartcardChannel>;
 
-        // Constructors of SpiceClientGLib.SmartcardChannel
+        // Constructors
 
         constructor(properties?: Partial<SmartcardChannel.ConstructorProps>, ...args: any[]);
 
@@ -2472,13 +2472,13 @@ export namespace SpiceClientGLib {
     class SmartcardManager extends GObject.Object {
         static $gtype: GObject.GType<SmartcardManager>;
 
-        // Constructors of SpiceClientGLib.SmartcardManager
+        // Constructors
 
         constructor(properties?: Partial<SmartcardManager.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of SpiceClientGLib.SmartcardManager
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -2496,7 +2496,7 @@ export namespace SpiceClientGLib {
         connect_after(signal: 'reader-removed', callback: (_source: this, vreader: VReader) => void): number;
         emit(signal: 'reader-removed', vreader: VReader): void;
 
-        // Own static methods of SpiceClientGLib.SmartcardManager
+        // Static methods
 
         /**
          * #SpiceSmartcardManager is a singleton, use this function to get a pointer
@@ -2505,14 +2505,14 @@ export namespace SpiceClientGLib {
          */
         static get(): SmartcardManager;
 
-        // Own virtual methods of SpiceClientGLib.SmartcardManager
+        // Virtual methods
 
         vfunc_card_inserted(reader: SmartcardReader): void;
         vfunc_card_removed(reader: SmartcardReader): void;
         vfunc_reader_added(reader: SmartcardReader): void;
         vfunc_reader_removed(reader: SmartcardReader): void;
 
-        // Own methods of SpiceClientGLib.SmartcardManager
+        // Methods
 
         /**
          * Gets the list of smartcard readers that are currently available, they
@@ -2556,7 +2556,7 @@ export namespace SpiceClientGLib {
     class URI extends GObject.Object {
         static $gtype: GObject.GType<URI>;
 
-        // Own properties of SpiceClientGLib.URI
+        // Properties
 
         get hostname(): string;
         set hostname(val: string);
@@ -2569,13 +2569,13 @@ export namespace SpiceClientGLib {
         get user(): string;
         set user(val: string);
 
-        // Constructors of SpiceClientGLib.URI
+        // Constructors
 
         constructor(properties?: Partial<URI.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of SpiceClientGLib.URI
+        // Methods
 
         get_hostname(): string;
         get_password(): string;
@@ -2630,7 +2630,7 @@ export namespace SpiceClientGLib {
     class UsbDeviceManager extends GObject.Object implements Gio.Initable {
         static $gtype: GObject.GType<UsbDeviceManager>;
 
-        // Own properties of SpiceClientGLib.UsbDeviceManager
+        // Properties
 
         /**
          * Set this to TRUE to automatically redirect newly plugged in device.
@@ -2725,13 +2725,13 @@ export namespace SpiceClientGLib {
          */
         get session(): Session;
 
-        // Constructors of SpiceClientGLib.UsbDeviceManager
+        // Constructors
 
         constructor(properties?: Partial<UsbDeviceManager.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of SpiceClientGLib.UsbDeviceManager
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -2761,7 +2761,7 @@ export namespace SpiceClientGLib {
         connect_after(signal: 'device-removed', callback: (_source: this, device: UsbDevice) => void): number;
         emit(signal: 'device-removed', device: UsbDevice): void;
 
-        // Own static methods of SpiceClientGLib.UsbDeviceManager
+        // Static methods
 
         /**
          * Gets the #SpiceUsbDeviceManager associated with the passed in #SpiceSession.
@@ -2774,14 +2774,14 @@ export namespace SpiceClientGLib {
          */
         static get(session: Session): UsbDeviceManager;
 
-        // Own virtual methods of SpiceClientGLib.UsbDeviceManager
+        // Virtual methods
 
         vfunc_auto_connect_failed(device: UsbDevice, error: GLib.Error): void;
         vfunc_device_added(device: UsbDevice): void;
         vfunc_device_error(device: UsbDevice, error: GLib.Error): void;
         vfunc_device_removed(device: UsbDevice): void;
 
-        // Own methods of SpiceClientGLib.UsbDeviceManager
+        // Methods
 
         /**
          * Checks whether it is possible to redirect the `device`.
@@ -3355,7 +3355,7 @@ export namespace SpiceClientGLib {
     class UsbredirChannel extends Channel {
         static $gtype: GObject.GType<UsbredirChannel>;
 
-        // Constructors of SpiceClientGLib.UsbredirChannel
+        // Constructors
 
         constructor(properties?: Partial<UsbredirChannel.ConstructorProps>, ...args: any[]);
 
@@ -3374,7 +3374,7 @@ export namespace SpiceClientGLib {
     class WebdavChannel extends PortChannel {
         static $gtype: GObject.GType<WebdavChannel>;
 
-        // Constructors of SpiceClientGLib.WebdavChannel
+        // Constructors
 
         constructor(properties?: Partial<WebdavChannel.ConstructorProps>, ...args: any[]);
 
@@ -3385,7 +3385,7 @@ export namespace SpiceClientGLib {
     abstract class AudioPrivate {
         static $gtype: GObject.GType<AudioPrivate>;
 
-        // Constructors of SpiceClientGLib.AudioPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3394,7 +3394,7 @@ export namespace SpiceClientGLib {
     abstract class ChannelClassPrivate {
         static $gtype: GObject.GType<ChannelClassPrivate>;
 
-        // Constructors of SpiceClientGLib.ChannelClassPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3402,7 +3402,7 @@ export namespace SpiceClientGLib {
     abstract class ChannelPrivate {
         static $gtype: GObject.GType<ChannelPrivate>;
 
-        // Constructors of SpiceClientGLib.ChannelPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3411,7 +3411,7 @@ export namespace SpiceClientGLib {
     abstract class CursorChannelPrivate {
         static $gtype: GObject.GType<CursorChannelPrivate>;
 
-        // Constructors of SpiceClientGLib.CursorChannelPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3422,7 +3422,7 @@ export namespace SpiceClientGLib {
     class CursorShape {
         static $gtype: GObject.GType<CursorShape>;
 
-        // Own fields of SpiceClientGLib.CursorShape
+        // Fields
 
         width: number;
         height: number;
@@ -3430,7 +3430,7 @@ export namespace SpiceClientGLib {
         hot_spot_y: number;
         data: any;
 
-        // Constructors of SpiceClientGLib.CursorShape
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -3449,7 +3449,7 @@ export namespace SpiceClientGLib {
     abstract class DisplayChannelPrivate {
         static $gtype: GObject.GType<DisplayChannelPrivate>;
 
-        // Constructors of SpiceClientGLib.DisplayChannelPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3460,7 +3460,7 @@ export namespace SpiceClientGLib {
     class DisplayMonitorConfig {
         static $gtype: GObject.GType<DisplayMonitorConfig>;
 
-        // Own fields of SpiceClientGLib.DisplayMonitorConfig
+        // Fields
 
         id: number;
         surface_id: number;
@@ -3469,7 +3469,7 @@ export namespace SpiceClientGLib {
         width: number;
         height: number;
 
-        // Constructors of SpiceClientGLib.DisplayMonitorConfig
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -3490,7 +3490,7 @@ export namespace SpiceClientGLib {
     class DisplayPrimary {
         static $gtype: GObject.GType<DisplayPrimary>;
 
-        // Own fields of SpiceClientGLib.DisplayPrimary
+        // Fields
 
         format: any;
         width: number;
@@ -3500,7 +3500,7 @@ export namespace SpiceClientGLib {
         data: number;
         marked: boolean;
 
-        // Constructors of SpiceClientGLib.DisplayPrimary
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -3523,7 +3523,7 @@ export namespace SpiceClientGLib {
     class GlScanout {
         static $gtype: GObject.GType<GlScanout>;
 
-        // Own fields of SpiceClientGLib.GlScanout
+        // Fields
 
         fd: number;
         width: number;
@@ -3532,7 +3532,7 @@ export namespace SpiceClientGLib {
         format: number;
         y0top: boolean;
 
-        // Constructors of SpiceClientGLib.GlScanout
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -3546,7 +3546,7 @@ export namespace SpiceClientGLib {
         );
         _init(...args: any[]): void;
 
-        // Own methods of SpiceClientGLib.GlScanout
+        // Methods
 
         /**
          * Frees the `scanout`.
@@ -3558,7 +3558,7 @@ export namespace SpiceClientGLib {
     abstract class InputsChannelPrivate {
         static $gtype: GObject.GType<InputsChannelPrivate>;
 
-        // Constructors of SpiceClientGLib.InputsChannelPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3567,7 +3567,7 @@ export namespace SpiceClientGLib {
     abstract class MainChannelPrivate {
         static $gtype: GObject.GType<MainChannelPrivate>;
 
-        // Constructors of SpiceClientGLib.MainChannelPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3575,7 +3575,7 @@ export namespace SpiceClientGLib {
     abstract class MsgIn {
         static $gtype: GObject.GType<MsgIn>;
 
-        // Constructors of SpiceClientGLib.MsgIn
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3583,7 +3583,7 @@ export namespace SpiceClientGLib {
     abstract class MsgOut {
         static $gtype: GObject.GType<MsgOut>;
 
-        // Constructors of SpiceClientGLib.MsgOut
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3592,7 +3592,7 @@ export namespace SpiceClientGLib {
     abstract class PlaybackChannelPrivate {
         static $gtype: GObject.GType<PlaybackChannelPrivate>;
 
-        // Constructors of SpiceClientGLib.PlaybackChannelPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3601,7 +3601,7 @@ export namespace SpiceClientGLib {
     abstract class PortChannelPrivate {
         static $gtype: GObject.GType<PortChannelPrivate>;
 
-        // Constructors of SpiceClientGLib.PortChannelPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3613,14 +3613,14 @@ export namespace SpiceClientGLib {
     class QmpStatus {
         static $gtype: GObject.GType<QmpStatus>;
 
-        // Own fields of SpiceClientGLib.QmpStatus
+        // Fields
 
         version: number;
         running: boolean;
         singlestep: boolean;
         status: string;
 
-        // Constructors of SpiceClientGLib.QmpStatus
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -3632,7 +3632,7 @@ export namespace SpiceClientGLib {
         );
         _init(...args: any[]): void;
 
-        // Own methods of SpiceClientGLib.QmpStatus
+        // Methods
 
         /**
          * References a `status`.
@@ -3649,7 +3649,7 @@ export namespace SpiceClientGLib {
     abstract class RecordChannelPrivate {
         static $gtype: GObject.GType<RecordChannelPrivate>;
 
-        // Constructors of SpiceClientGLib.RecordChannelPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3658,7 +3658,7 @@ export namespace SpiceClientGLib {
     abstract class SessionPrivate {
         static $gtype: GObject.GType<SessionPrivate>;
 
-        // Constructors of SpiceClientGLib.SessionPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3667,7 +3667,7 @@ export namespace SpiceClientGLib {
     abstract class SmartcardChannelPrivate {
         static $gtype: GObject.GType<SmartcardChannelPrivate>;
 
-        // Constructors of SpiceClientGLib.SmartcardChannelPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3676,7 +3676,7 @@ export namespace SpiceClientGLib {
     abstract class SmartcardManagerPrivate {
         static $gtype: GObject.GType<SmartcardManagerPrivate>;
 
-        // Constructors of SpiceClientGLib.SmartcardManagerPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3687,11 +3687,11 @@ export namespace SpiceClientGLib {
     abstract class SmartcardReader {
         static $gtype: GObject.GType<SmartcardReader>;
 
-        // Constructors of SpiceClientGLib.SmartcardReader
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of SpiceClientGLib.SmartcardReader
+        // Methods
 
         /**
          * Simulates insertion of a smartcard in the software smartcard reader
@@ -3718,7 +3718,7 @@ export namespace SpiceClientGLib {
     abstract class URIPrivate {
         static $gtype: GObject.GType<URIPrivate>;
 
-        // Constructors of SpiceClientGLib.URIPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3729,11 +3729,11 @@ export namespace SpiceClientGLib {
     class UsbDevice {
         static $gtype: GObject.GType<UsbDevice>;
 
-        // Constructors of SpiceClientGLib.UsbDevice
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of SpiceClientGLib.UsbDevice
+        // Methods
 
         /**
          * Get a string describing the device which is suitable as a description of
@@ -3763,7 +3763,7 @@ export namespace SpiceClientGLib {
     abstract class UsbDeviceManagerPrivate {
         static $gtype: GObject.GType<UsbDeviceManagerPrivate>;
 
-        // Constructors of SpiceClientGLib.UsbDeviceManagerPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3772,7 +3772,7 @@ export namespace SpiceClientGLib {
     abstract class UsbredirChannelPrivate {
         static $gtype: GObject.GType<UsbredirChannelPrivate>;
 
-        // Constructors of SpiceClientGLib.UsbredirChannelPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3781,7 +3781,7 @@ export namespace SpiceClientGLib {
     abstract class WebdavChannelPrivate {
         static $gtype: GObject.GType<WebdavChannelPrivate>;
 
-        // Constructors of SpiceClientGLib.WebdavChannelPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }

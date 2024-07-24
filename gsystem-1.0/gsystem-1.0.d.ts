@@ -493,13 +493,13 @@ export namespace GSystem {
     class Console extends GObject.Object {
         static $gtype: GObject.GType<Console>;
 
-        // Constructors of GSystem.Console
+        // Constructors
 
         constructor(properties?: Partial<Console.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of GSystem.Console
+        // Static methods
 
         /**
          * If the current process has an interactive console, return the
@@ -512,7 +512,7 @@ export namespace GSystem {
         static get_stdin(): Gio.InputStream;
         static get_stdout(): Gio.OutputStream;
 
-        // Own methods of GSystem.Console
+        // Methods
 
         /**
          * The primary use case for this function is to output periodic
@@ -572,11 +572,11 @@ export namespace GSystem {
     class Subprocess extends GObject.Object implements Gio.Initable {
         static $gtype: GObject.GType<Subprocess>;
 
-        // Own properties of GSystem.Subprocess
+        // Properties
 
         get context(): SubprocessContext;
 
-        // Constructors of GSystem.Subprocess
+        // Constructors
 
         constructor(properties?: Partial<Subprocess.ConstructorProps>, ...args: any[]);
 
@@ -591,7 +591,7 @@ export namespace GSystem {
             cancellable?: Gio.Cancellable | null,
         ): Subprocess;
 
-        // Own methods of GSystem.Subprocess
+        // Methods
 
         /**
          * Use an operating-system specific method to attempt an immediate,
@@ -1186,7 +1186,7 @@ export namespace GSystem {
     class SubprocessContext extends GObject.Object {
         static $gtype: GObject.GType<SubprocessContext>;
 
-        // Own properties of GSystem.SubprocessContext
+        // Properties
 
         /**
          * Array of arguments passed to child process; must have at least
@@ -1203,7 +1203,7 @@ export namespace GSystem {
         get argv(): string[];
         set argv(val: string[]);
 
-        // Constructors of GSystem.SubprocessContext
+        // Constructors
 
         constructor(properties?: Partial<SubprocessContext.ConstructorProps>, ...args: any[]);
 
@@ -1213,7 +1213,7 @@ export namespace GSystem {
 
         static new_argv0(argv0: string, argv: string): SubprocessContext;
 
-        // Own methods of GSystem.SubprocessContext
+        // Methods
 
         /**
          * Append an argument to the child's argument vector.
@@ -1264,13 +1264,13 @@ export namespace GSystem {
     class DirFdIterator {
         static $gtype: GObject.GType<DirFdIterator>;
 
-        // Own fields of GSystem.DirFdIterator
+        // Fields
 
         initialized: boolean;
         fd: number;
         padding_data: any[];
 
-        // Constructors of GSystem.DirFdIterator
+        // Constructors
 
         constructor(
             properties?: Partial<{

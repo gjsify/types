@@ -50,7 +50,7 @@ export namespace GUPnPDLNA {
     abstract class AudioInformation extends GObject.Object {
         static $gtype: GObject.GType<AudioInformation>;
 
-        // Constructors of GUPnPDLNA.AudioInformation
+        // Constructors
 
         constructor(properties?: Partial<AudioInformation.ConstructorProps>, ...args: any[]);
 
@@ -66,7 +66,7 @@ export namespace GUPnPDLNA {
     abstract class ContainerInformation extends GObject.Object {
         static $gtype: GObject.GType<ContainerInformation>;
 
-        // Constructors of GUPnPDLNA.ContainerInformation
+        // Constructors
 
         constructor(properties?: Partial<ContainerInformation.ConstructorProps>, ...args: any[]);
 
@@ -82,7 +82,7 @@ export namespace GUPnPDLNA {
     abstract class ImageInformation extends GObject.Object {
         static $gtype: GObject.GType<ImageInformation>;
 
-        // Constructors of GUPnPDLNA.ImageInformation
+        // Constructors
 
         constructor(properties?: Partial<ImageInformation.ConstructorProps>, ...args: any[]);
 
@@ -108,7 +108,7 @@ export namespace GUPnPDLNA {
     abstract class Information extends GObject.Object {
         static $gtype: GObject.GType<Information>;
 
-        // Own properties of GUPnPDLNA.Information
+        // Properties
 
         /**
          * Audio information of a file.
@@ -147,13 +147,13 @@ export namespace GUPnPDLNA {
          */
         get videoInformation(): VideoInformation;
 
-        // Constructors of GUPnPDLNA.Information
+        // Constructors
 
         constructor(properties?: Partial<Information.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of GUPnPDLNA.Information
+        // Virtual methods
 
         /**
          * Get an audio information of media file if applicable (e.g. for
@@ -177,7 +177,7 @@ export namespace GUPnPDLNA {
          */
         vfunc_get_video_information(): VideoInformation;
 
-        // Own methods of GUPnPDLNA.Information
+        // Methods
 
         /**
          * Get an audio information of media file if applicable (e.g. for
@@ -222,13 +222,13 @@ export namespace GUPnPDLNA {
     abstract class MetadataExtractor extends GObject.Object {
         static $gtype: GObject.GType<MetadataExtractor>;
 
-        // Constructors of GUPnPDLNA.MetadataExtractor
+        // Constructors
 
         constructor(properties?: Partial<MetadataExtractor.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of GUPnPDLNA.MetadataExtractor
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -240,7 +240,7 @@ export namespace GUPnPDLNA {
         ): number;
         emit(signal: 'done', info: Information, error?: GLib.Error | null): void;
 
-        // Own virtual methods of GUPnPDLNA.MetadataExtractor
+        // Virtual methods
 
         /**
          * Queues `uri` for metadata discovery. When discovery is completed,
@@ -256,7 +256,7 @@ export namespace GUPnPDLNA {
          */
         vfunc_extract_sync(uri: string, timeout_in_ms: number): Information;
 
-        // Own methods of GUPnPDLNA.MetadataExtractor
+        // Methods
 
         /**
          * Emits ::done signal. This function is intended to be used by
@@ -310,7 +310,7 @@ export namespace GUPnPDLNA {
     class Profile extends GObject.Object {
         static $gtype: GObject.GType<Profile>;
 
-        // Own properties of GUPnPDLNA.Profile
+        // Properties
 
         get audio_restrictions(): any;
         get audioRestrictions(): any;
@@ -333,13 +333,13 @@ export namespace GUPnPDLNA {
         get video_restrictions(): any;
         get videoRestrictions(): any;
 
-        // Constructors of GUPnPDLNA.Profile
+        // Constructors
 
         constructor(properties?: Partial<Profile.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of GUPnPDLNA.Profile
+        // Methods
 
         /**
          * Gets a list of audio restrictions.
@@ -386,7 +386,7 @@ export namespace GUPnPDLNA {
     class ProfileGuesser extends GObject.Object {
         static $gtype: GObject.GType<ProfileGuesser>;
 
-        // Own properties of GUPnPDLNA.ProfileGuesser
+        // Properties
 
         /**
          * Whether profile matching should be done also against DLNA
@@ -409,7 +409,7 @@ export namespace GUPnPDLNA {
          */
         get relaxedMode(): boolean;
 
-        // Constructors of GUPnPDLNA.ProfileGuesser
+        // Constructors
 
         constructor(properties?: Partial<ProfileGuesser.ConstructorProps>, ...args: any[]);
 
@@ -417,7 +417,7 @@ export namespace GUPnPDLNA {
 
         static ['new'](relaxed_mode: boolean, extended_mode: boolean): ProfileGuesser;
 
-        // Own signals of GUPnPDLNA.ProfileGuesser
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -432,7 +432,7 @@ export namespace GUPnPDLNA {
         ): number;
         emit(signal: 'done', info: Information, dlna?: Profile | null, error?: GLib.Error | null): void;
 
-        // Own static methods of GUPnPDLNA.ProfileGuesser
+        // Static methods
 
         /**
          * Cleans up the DLNA profiles. Provided to remove Valgrind noise. Not
@@ -442,7 +442,7 @@ export namespace GUPnPDLNA {
          */
         static cleanup(): void;
 
-        // Own methods of GUPnPDLNA.ProfileGuesser
+        // Methods
 
         get_extended_mode(): boolean;
         /**
@@ -489,7 +489,7 @@ export namespace GUPnPDLNA {
     abstract class VideoInformation extends GObject.Object {
         static $gtype: GObject.GType<VideoInformation>;
 
-        // Constructors of GUPnPDLNA.VideoInformation
+        // Constructors
 
         constructor(properties?: Partial<VideoInformation.ConstructorProps>, ...args: any[]);
 
@@ -503,12 +503,12 @@ export namespace GUPnPDLNA {
     class BoolValue {
         static $gtype: GObject.GType<BoolValue>;
 
-        // Own fields of GUPnPDLNA.BoolValue
+        // Fields
 
         value: boolean;
         state: ValueState;
 
-        // Constructors of GUPnPDLNA.BoolValue
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -517,11 +517,11 @@ export namespace GUPnPDLNA {
     abstract class Fraction {
         static $gtype: GObject.GType<Fraction>;
 
-        // Constructors of GUPnPDLNA.Fraction
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of GUPnPDLNA.Fraction
+        // Methods
 
         copy(): Fraction;
         /**
@@ -535,11 +535,11 @@ export namespace GUPnPDLNA {
     abstract class FractionRange {
         static $gtype: GObject.GType<FractionRange>;
 
-        // Constructors of GUPnPDLNA.FractionRange
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of GUPnPDLNA.FractionRange
+        // Methods
 
         copy(): FractionRange;
         /**
@@ -556,13 +556,13 @@ export namespace GUPnPDLNA {
     class FractionValue {
         static $gtype: GObject.GType<FractionValue>;
 
-        // Own fields of GUPnPDLNA.FractionValue
+        // Fields
 
         numerator: number;
         denominator: number;
         state: ValueState;
 
-        // Constructors of GUPnPDLNA.FractionValue
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -572,11 +572,11 @@ export namespace GUPnPDLNA {
     abstract class IntRange {
         static $gtype: GObject.GType<IntRange>;
 
-        // Constructors of GUPnPDLNA.IntRange
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of GUPnPDLNA.IntRange
+        // Methods
 
         copy(): IntRange;
         /**
@@ -593,12 +593,12 @@ export namespace GUPnPDLNA {
     class IntValue {
         static $gtype: GObject.GType<IntValue>;
 
-        // Own fields of GUPnPDLNA.IntValue
+        // Fields
 
         value: number;
         state: ValueState;
 
-        // Constructors of GUPnPDLNA.IntValue
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -609,11 +609,11 @@ export namespace GUPnPDLNA {
     abstract class Restriction {
         static $gtype: GObject.GType<Restriction>;
 
-        // Constructors of GUPnPDLNA.Restriction
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of GUPnPDLNA.Restriction
+        // Methods
 
         copy(): Restriction;
         /**
@@ -646,12 +646,12 @@ export namespace GUPnPDLNA {
     class StringValue {
         static $gtype: GObject.GType<StringValue>;
 
-        // Own fields of GUPnPDLNA.StringValue
+        // Fields
 
         value: string;
         state: ValueState;
 
-        // Constructors of GUPnPDLNA.StringValue
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -659,11 +659,11 @@ export namespace GUPnPDLNA {
     abstract class ValueList {
         static $gtype: GObject.GType<ValueList>;
 
-        // Constructors of GUPnPDLNA.ValueList
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of GUPnPDLNA.ValueList
+        // Methods
 
         copy(): ValueList;
         /**

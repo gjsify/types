@@ -47,14 +47,14 @@ export namespace CoglGst {
     class VideoSink extends GstBase.BaseSink {
         static $gtype: GObject.GType<VideoSink>;
 
-        // Own properties of CoglGst.VideoSink
+        // Properties
 
         get update_priority(): number;
         set update_priority(val: number);
         get updatePriority(): number;
         set updatePriority(val: number);
 
-        // Constructors of CoglGst.VideoSink
+        // Constructors
 
         constructor(properties?: Partial<VideoSink.ConstructorProps>, ...args: any[]);
 
@@ -62,7 +62,7 @@ export namespace CoglGst {
 
         static ['new'](ctx: Cogl.Context): VideoSink;
 
-        // Own signals of CoglGst.VideoSink
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -74,12 +74,12 @@ export namespace CoglGst {
         connect_after(signal: 'pipeline-ready', callback: (_source: this) => void): number;
         emit(signal: 'pipeline-ready'): void;
 
-        // Own virtual methods of CoglGst.VideoSink
+        // Virtual methods
 
         vfunc_new_frame(): void;
         vfunc_pipeline_ready(): void;
 
-        // Own methods of CoglGst.VideoSink
+        // Methods
 
         /**
          * Updates the given pipeline with the textures for the current frame.
@@ -265,14 +265,14 @@ export namespace CoglGst {
     class Rectangle {
         static $gtype: GObject.GType<Rectangle>;
 
-        // Own fields of CoglGst.Rectangle
+        // Fields
 
         x: number;
         y: number;
         width: number;
         height: number;
 
-        // Constructors of CoglGst.Rectangle
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -289,7 +289,7 @@ export namespace CoglGst {
     abstract class VideoSinkPrivate {
         static $gtype: GObject.GType<VideoSinkPrivate>;
 
-        // Constructors of CoglGst.VideoSinkPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }

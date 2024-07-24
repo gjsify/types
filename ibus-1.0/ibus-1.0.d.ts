@@ -216,7 +216,7 @@ export namespace IBus {
     class Error extends GLib.Error {
         static $gtype: GObject.GType<Error>;
 
-        // Static fields of IBus.Error
+        // Static fields
 
         /**
          * There is no engine associated with input context.
@@ -231,12 +231,12 @@ export namespace IBus {
          */
         static FAILED: number;
 
-        // Constructors of IBus.Error
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of IBus.Error
+        // Static methods
 
         static quark(): GLib.Quark;
     }
@@ -5447,11 +5447,11 @@ export namespace IBus {
     class AttrList extends Serializable {
         static $gtype: GObject.GType<AttrList>;
 
-        // Own fields of IBus.AttrList
+        // Fields
 
         attributes: any[];
 
-        // Constructors of IBus.AttrList
+        // Constructors
 
         constructor(properties?: Partial<AttrList.ConstructorProps>, ...args: any[]);
 
@@ -5459,7 +5459,7 @@ export namespace IBus {
 
         static ['new'](): AttrList;
 
-        // Own methods of IBus.AttrList
+        // Methods
 
         /**
          * Append an IBusAttribute to IBusAttrList, and increase reference.
@@ -5488,14 +5488,14 @@ export namespace IBus {
     class Attribute extends Serializable {
         static $gtype: GObject.GType<Attribute>;
 
-        // Own fields of IBus.Attribute
+        // Fields
 
         type: number;
         value: number;
         start_index: number;
         end_index: number;
 
-        // Constructors of IBus.Attribute
+        // Constructors
 
         constructor(properties?: Partial<Attribute.ConstructorProps>, ...args: any[]);
 
@@ -5506,7 +5506,7 @@ export namespace IBus {
 
         static ['new'](...args: never[]): any;
 
-        // Own methods of IBus.Attribute
+        // Methods
 
         /**
          * Gets an enum of #IBusAttrType.
@@ -5572,7 +5572,7 @@ export namespace IBus {
     class Bus extends Object {
         static $gtype: GObject.GType<Bus>;
 
-        // Own properties of IBus.Bus
+        // Properties
 
         /**
          * Whether the #IBusBus object is for client use only.
@@ -5591,7 +5591,7 @@ export namespace IBus {
          */
         get connectAsync(): boolean;
 
-        // Constructors of IBus.Bus
+        // Constructors
 
         constructor(properties?: Partial<Bus.ConstructorProps>, ...args: any[]);
 
@@ -5603,7 +5603,7 @@ export namespace IBus {
 
         static new_async_client(): Bus;
 
-        // Own signals of IBus.Bus
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -5636,7 +5636,7 @@ export namespace IBus {
         ): number;
         emit(signal: 'name-owner-changed', name: string, old_owner: string, new_owner: string): void;
 
-        // Own methods of IBus.Bus
+        // Methods
 
         /**
          * Add a match rule to an #IBusBus synchronously.
@@ -6242,7 +6242,7 @@ export namespace IBus {
     class Component extends Serializable {
         static $gtype: GObject.GType<Component>;
 
-        // Own properties of IBus.Component
+        // Properties
 
         /**
          * The author of component
@@ -6281,7 +6281,7 @@ export namespace IBus {
          */
         get version(): string;
 
-        // Constructors of IBus.Component
+        // Constructors
 
         constructor(properties?: Partial<Component.ConstructorProps>, ...args: any[]);
 
@@ -6305,7 +6305,7 @@ export namespace IBus {
 
         static new_from_xml_node(node: XML): Component;
 
-        // Own methods of IBus.Component
+        // Methods
 
         /**
          * Add an engine to #IBusComponent according to the description in `engine`.
@@ -6414,7 +6414,7 @@ export namespace IBus {
     class Config extends Proxy implements Gio.AsyncInitable<Config>, Gio.DBusInterface, Gio.Initable {
         static $gtype: GObject.GType<Config>;
 
-        // Constructors of IBus.Config
+        // Constructors
 
         constructor(properties?: Partial<Config.ConstructorProps>, ...args: any[]);
 
@@ -6427,7 +6427,7 @@ export namespace IBus {
 
         static new_async_finish(res: Gio.AsyncResult): Config;
 
-        // Own signals of IBus.Config
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -6442,7 +6442,7 @@ export namespace IBus {
         ): number;
         emit(signal: 'value-changed', section: string, name: string, value: GLib.Variant): void;
 
-        // Own static methods of IBus.Config
+        // Static methods
 
         /**
          * New an #IBusConfig asynchronously.
@@ -6456,7 +6456,7 @@ export namespace IBus {
             callback?: Gio.AsyncReadyCallback<Config> | null,
         ): void;
 
-        // Own methods of IBus.Config
+        // Methods
 
         /**
          * Get the value of a configuration option synchronously.
@@ -7213,7 +7213,7 @@ export namespace IBus {
     class ConfigService extends Service {
         static $gtype: GObject.GType<ConfigService>;
 
-        // Constructors of IBus.ConfigService
+        // Constructors
 
         constructor(properties?: Partial<ConfigService.ConstructorProps>, ...args: any[]);
 
@@ -7224,14 +7224,14 @@ export namespace IBus {
 
         static ['new'](...args: never[]): any;
 
-        // Own virtual methods of IBus.ConfigService
+        // Virtual methods
 
         vfunc_get_value(section: string, name: string): GLib.Variant;
         vfunc_get_values(section: string): GLib.Variant;
         vfunc_set_value(section: string, name: string, value: GLib.Variant): boolean;
         vfunc_unset_value(section: string, name: string): boolean;
 
-        // Own methods of IBus.ConfigService
+        // Methods
 
         /**
          * Change a value of a configuration option
@@ -7261,7 +7261,7 @@ export namespace IBus {
     class EmojiData extends Serializable {
         static $gtype: GObject.GType<EmojiData>;
 
-        // Own properties of IBus.EmojiData
+        // Properties
 
         /**
          * The emoji annotations
@@ -7282,13 +7282,13 @@ export namespace IBus {
          */
         get emoji(): string;
 
-        // Constructors of IBus.EmojiData
+        // Constructors
 
         constructor(properties?: Partial<EmojiData.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of IBus.EmojiData
+        // Static methods
 
         static load(path: string): EmojiData[];
         /**
@@ -7298,7 +7298,7 @@ export namespace IBus {
          */
         static save(path: string, list: EmojiData[]): void;
 
-        // Own methods of IBus.EmojiData
+        // Methods
 
         /**
          * Gets the annotation list in #IBusEmojiData. It should not be freed.
@@ -7444,7 +7444,7 @@ export namespace IBus {
     class Engine extends Service {
         static $gtype: GObject.GType<Engine>;
 
-        // Own properties of IBus.Engine
+        // Properties
 
         /**
          * When this property is set to %TRUE, "RequireSurroundingText" D-Bus
@@ -7487,14 +7487,14 @@ export namespace IBus {
          */
         get hasFocusId(): boolean;
 
-        // Own fields of IBus.Engine
+        // Fields
 
         enabled: boolean;
         has_focus: boolean;
         cursor_area: Rectangle;
         client_capabilities: number;
 
-        // Constructors of IBus.Engine
+        // Constructors
 
         constructor(properties?: Partial<Engine.ConstructorProps>, ...args: any[]);
 
@@ -7512,7 +7512,7 @@ export namespace IBus {
             connection: Gio.DBusConnection,
         ): Engine;
 
-        // Own signals of IBus.Engine
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -7623,7 +7623,7 @@ export namespace IBus {
         ): number;
         emit(signal: 'set-surrounding-text', text: GObject.Object, cursor_pos: number, anchor_pos: number): void;
 
-        // Own virtual methods of IBus.Engine
+        // Virtual methods
 
         vfunc_cancel_hand_writing(n_strokes: number): void;
         vfunc_candidate_clicked(index: number, button: number, state: number): void;
@@ -7648,7 +7648,7 @@ export namespace IBus {
         vfunc_set_cursor_location(x: number, y: number, w: number, h: number): void;
         vfunc_set_surrounding_text(text: Text, cursor_index: number, anchor_pos: number): void;
 
-        // Own methods of IBus.Engine
+        // Methods
 
         /**
          * Commit output of input method to IBus client.
@@ -7844,7 +7844,7 @@ export namespace IBus {
     class EngineDesc extends Serializable {
         static $gtype: GObject.GType<EngineDesc>;
 
-        // Own properties of IBus.EngineDesc
+        // Properties
 
         /**
          * The author of engine description
@@ -7927,7 +7927,7 @@ export namespace IBus {
          */
         get version(): string;
 
-        // Constructors of IBus.EngineDesc
+        // Constructors
 
         constructor(properties?: Partial<EngineDesc.ConstructorProps>, ...args: any[]);
 
@@ -7949,7 +7949,7 @@ export namespace IBus {
 
         static new_from_xml_node(node: XML): EngineDesc;
 
-        // Own methods of IBus.EngineDesc
+        // Methods
 
         /**
          * Gets the author property in IBusEngineDesc. It should not be freed.
@@ -8060,13 +8060,13 @@ export namespace IBus {
     class EngineSimple extends Engine {
         static $gtype: GObject.GType<EngineSimple>;
 
-        // Constructors of IBus.EngineSimple
+        // Constructors
 
         constructor(properties?: Partial<EngineSimple.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of IBus.EngineSimple
+        // Methods
 
         /**
          * Call ibus_engine_simple_add_table() internally by locale.
@@ -8115,7 +8115,7 @@ export namespace IBus {
     class ExtensionEvent extends Serializable {
         static $gtype: GObject.GType<ExtensionEvent>;
 
-        // Own properties of IBus.ExtensionEvent
+        // Properties
 
         /**
          * %TRUE if the extension is enabled in the #IBusExtensionEvent.
@@ -8154,13 +8154,13 @@ export namespace IBus {
          */
         get version(): number;
 
-        // Constructors of IBus.ExtensionEvent
+        // Constructors
 
         constructor(properties?: Partial<ExtensionEvent.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of IBus.ExtensionEvent
+        // Methods
 
         get_name(): string;
         get_params(): string;
@@ -8189,7 +8189,7 @@ export namespace IBus {
     class Factory extends Service {
         static $gtype: GObject.GType<Factory>;
 
-        // Constructors of IBus.Factory
+        // Constructors
 
         constructor(properties?: Partial<Factory.ConstructorProps>, ...args: any[]);
 
@@ -8200,7 +8200,7 @@ export namespace IBus {
 
         static ['new'](...args: never[]): any;
 
-        // Own signals of IBus.Factory
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -8209,7 +8209,7 @@ export namespace IBus {
         connect_after(signal: 'create-engine', callback: (_source: this, engine_name: string) => Engine | null): number;
         emit(signal: 'create-engine', engine_name: string): void;
 
-        // Own virtual methods of IBus.Factory
+        // Virtual methods
 
         /**
          * Creates an #IBusEngine with `engine_name`.
@@ -8217,7 +8217,7 @@ export namespace IBus {
          */
         vfunc_create_engine(engine_name: string): Engine;
 
-        // Own methods of IBus.Factory
+        // Methods
 
         /**
          * Add an engine to the factory.
@@ -8251,7 +8251,7 @@ export namespace IBus {
     class HotkeyProfile extends Serializable {
         static $gtype: GObject.GType<HotkeyProfile>;
 
-        // Constructors of IBus.HotkeyProfile
+        // Constructors
 
         constructor(properties?: Partial<HotkeyProfile.ConstructorProps>, ...args: any[]);
 
@@ -8259,7 +8259,7 @@ export namespace IBus {
 
         static ['new'](): HotkeyProfile;
 
-        // Own signals of IBus.HotkeyProfile
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -8271,11 +8271,11 @@ export namespace IBus {
         ): number;
         emit(signal: 'trigger', event: number, user_data?: any | null): void;
 
-        // Own virtual methods of IBus.HotkeyProfile
+        // Virtual methods
 
         vfunc_trigger(event: GLib.Quark): void;
 
-        // Own methods of IBus.HotkeyProfile
+        // Methods
 
         /**
          * Adds a hotkey and its associated event to an #IBusHotkeyProfile.
@@ -8437,7 +8437,7 @@ export namespace IBus {
     class InputContext extends Proxy implements Gio.AsyncInitable<InputContext>, Gio.DBusInterface, Gio.Initable {
         static $gtype: GObject.GType<InputContext>;
 
-        // Constructors of IBus.InputContext
+        // Constructors
 
         constructor(properties?: Partial<InputContext.ConstructorProps>, ...args: any[]);
 
@@ -8454,7 +8454,7 @@ export namespace IBus {
 
         static new_async_finish(res: Gio.AsyncResult): InputContext;
 
-        // Own signals of IBus.InputContext
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -8568,7 +8568,7 @@ export namespace IBus {
         connect_after(signal: 'update-property', callback: (_source: this, prop: Property) => void): number;
         emit(signal: 'update-property', prop: Property): void;
 
-        // Own static methods of IBus.InputContext
+        // Static methods
 
         /**
          * Gets an existing IBusInputContext.
@@ -8609,7 +8609,7 @@ export namespace IBus {
             callback?: Gio.AsyncReadyCallback<InputContext> | null,
         ): void;
 
-        // Own methods of IBus.InputContext
+        // Methods
 
         /**
          * Clear handwriting stroke(s) in the current input method engine.
@@ -9350,12 +9350,12 @@ export namespace IBus {
     class Keymap extends Object {
         static $gtype: GObject.GType<Keymap>;
 
-        // Own fields of IBus.Keymap
+        // Fields
 
         name: string;
         keymap: number[];
 
-        // Constructors of IBus.Keymap
+        // Constructors
 
         constructor(properties?: Partial<Keymap.ConstructorProps>, ...args: any[]);
 
@@ -9366,7 +9366,7 @@ export namespace IBus {
 
         static ['new'](...args: never[]): any;
 
-        // Own static methods of IBus.Keymap
+        // Static methods
 
         /**
          * Get an IBusKeymap associated with the giving name.
@@ -9377,7 +9377,7 @@ export namespace IBus {
          */
         static get(name: string): Keymap;
 
-        // Own methods of IBus.Keymap
+        // Methods
 
         /**
          * Converts the scancode to keysym, given the keymap.
@@ -9407,7 +9407,7 @@ export namespace IBus {
     class LookupTable extends Serializable {
         static $gtype: GObject.GType<LookupTable>;
 
-        // Own fields of IBus.LookupTable
+        // Fields
 
         page_size: number;
         cursor_pos: number;
@@ -9417,7 +9417,7 @@ export namespace IBus {
         candidates: any[];
         labels: any[];
 
-        // Constructors of IBus.LookupTable
+        // Constructors
 
         constructor(properties?: Partial<LookupTable.ConstructorProps>, ...args: any[]);
 
@@ -9428,7 +9428,7 @@ export namespace IBus {
 
         static ['new'](...args: never[]): any;
 
-        // Own methods of IBus.LookupTable
+        // Methods
 
         /**
          * Append a candidate word/phrase to IBusLookupTable, and increase reference.
@@ -9582,11 +9582,11 @@ export namespace IBus {
     class Object extends GObject.InitiallyUnowned {
         static $gtype: GObject.GType<Object>;
 
-        // Own fields of IBus.Object
+        // Fields
 
         flags: number;
 
-        // Constructors of IBus.Object
+        // Constructors
 
         constructor(properties?: Partial<Object.ConstructorProps>, ...args: any[]);
 
@@ -9594,7 +9594,7 @@ export namespace IBus {
 
         static ['new'](): Object;
 
-        // Own signals of IBus.Object
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -9603,7 +9603,7 @@ export namespace IBus {
         connect_after(signal: 'destroy', callback: (_source: this) => void): number;
         emit(signal: 'destroy'): void;
 
-        // Own virtual methods of IBus.Object
+        // Virtual methods
 
         /**
          * Emit the "destroy" signal notifying all reference holders that they should
@@ -9615,7 +9615,7 @@ export namespace IBus {
          */
         vfunc_destroy(): void;
 
-        // Own methods of IBus.Object
+        // Methods
 
         /**
          * Emit the "destroy" signal notifying all reference holders that they should
@@ -9641,14 +9641,14 @@ export namespace IBus {
     class ObservedPath extends Serializable {
         static $gtype: GObject.GType<ObservedPath>;
 
-        // Own fields of IBus.ObservedPath
+        // Fields
 
         path: string;
         mtime: number;
         is_dir: boolean;
         is_exist: boolean;
 
-        // Constructors of IBus.ObservedPath
+        // Constructors
 
         constructor(properties?: Partial<ObservedPath.ConstructorProps>, ...args: any[]);
 
@@ -9661,7 +9661,7 @@ export namespace IBus {
 
         static new_from_xml_node(node: XML, fill_stat: boolean): ObservedPath;
 
-        // Own methods of IBus.ObservedPath
+        // Methods
 
         /**
          * Checks whether the path is modified by comparing the mtime in object and
@@ -9821,7 +9821,7 @@ export namespace IBus {
     class PanelService extends Service {
         static $gtype: GObject.GType<PanelService>;
 
-        // Constructors of IBus.PanelService
+        // Constructors
 
         constructor(properties?: Partial<PanelService.ConstructorProps>, ...args: any[]);
 
@@ -9832,7 +9832,7 @@ export namespace IBus {
 
         static ['new'](...args: never[]): any;
 
-        // Own signals of IBus.PanelService
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -9976,7 +9976,7 @@ export namespace IBus {
         connect_after(signal: 'update-property', callback: (_source: this, prop: Property) => void): number;
         emit(signal: 'update-property', prop: Property): void;
 
-        // Own virtual methods of IBus.PanelService
+        // Virtual methods
 
         vfunc_candidate_clicked_lookup_table(index: number, button: number, state: number): void;
         vfunc_commit_text_received(text: Text): void;
@@ -10009,7 +10009,7 @@ export namespace IBus {
         vfunc_update_preedit_text(text: Text, cursor_pos: number, visible: boolean): void;
         vfunc_update_property(prop: Property): void;
 
-        // Own methods of IBus.PanelService
+        // Methods
 
         /**
          * Notify that a candidate is clicked
@@ -10124,11 +10124,11 @@ export namespace IBus {
     class PropList extends Serializable {
         static $gtype: GObject.GType<PropList>;
 
-        // Own fields of IBus.PropList
+        // Fields
 
         properties: any[];
 
-        // Constructors of IBus.PropList
+        // Constructors
 
         constructor(properties?: Partial<PropList.ConstructorProps>, ...args: any[]);
 
@@ -10136,7 +10136,7 @@ export namespace IBus {
 
         static ['new'](): PropList;
 
-        // Own methods of IBus.PropList
+        // Methods
 
         /**
          * Append an IBusProperty to an IBusPropList, and increase reference.
@@ -10189,7 +10189,7 @@ export namespace IBus {
     class Property extends Serializable {
         static $gtype: GObject.GType<Property>;
 
-        // Own properties of IBus.Property
+        // Properties
 
         get icon(): string;
         set icon(val: string);
@@ -10213,7 +10213,7 @@ export namespace IBus {
         get visible(): boolean;
         set visible(val: boolean);
 
-        // Constructors of IBus.Property
+        // Constructors
 
         constructor(properties?: Partial<Property.ConstructorProps>, ...args: any[]);
 
@@ -10234,7 +10234,7 @@ export namespace IBus {
 
         static ['new'](...args: never[]): any;
 
-        // Own methods of IBus.Property
+        // Methods
 
         /**
          * Get the icon of #IBusProperty.
@@ -10362,18 +10362,18 @@ export namespace IBus {
     class Proxy extends Gio.DBusProxy implements Gio.AsyncInitable<Proxy>, Gio.DBusInterface, Gio.Initable {
         static $gtype: GObject.GType<Proxy>;
 
-        // Own fields of IBus.Proxy
+        // Fields
 
         flags: number;
         own: boolean;
 
-        // Constructors of IBus.Proxy
+        // Constructors
 
         constructor(properties?: Partial<Proxy.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of IBus.Proxy
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -10382,7 +10382,7 @@ export namespace IBus {
         connect_after(signal: 'destroy', callback: (_source: this) => void): number;
         emit(signal: 'destroy'): void;
 
-        // Own virtual methods of IBus.Proxy
+        // Virtual methods
 
         /**
          * Dispose the proxy object. If the dbus connection is alive and the own
@@ -10395,7 +10395,7 @@ export namespace IBus {
          */
         vfunc_destroy(): void;
 
-        // Own methods of IBus.Proxy
+        // Methods
 
         /**
          * Dispose the proxy object. If the dbus connection is alive and the own
@@ -11064,7 +11064,7 @@ export namespace IBus {
     class Registry extends Serializable {
         static $gtype: GObject.GType<Registry>;
 
-        // Constructors of IBus.Registry
+        // Constructors
 
         constructor(properties?: Partial<Registry.ConstructorProps>, ...args: any[]);
 
@@ -11072,7 +11072,7 @@ export namespace IBus {
 
         static ['new'](): Registry;
 
-        // Own signals of IBus.Registry
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -11081,7 +11081,7 @@ export namespace IBus {
         connect_after(signal: 'changed', callback: (_source: this) => void): number;
         emit(signal: 'changed'): void;
 
-        // Own methods of IBus.Registry
+        // Methods
 
         /**
          * Check if the registry is updated.
@@ -11179,7 +11179,7 @@ export namespace IBus {
     class Serializable extends Object {
         static $gtype: GObject.GType<Serializable>;
 
-        // Constructors of IBus.Serializable
+        // Constructors
 
         constructor(properties?: Partial<Serializable.ConstructorProps>, ...args: any[]);
 
@@ -11187,7 +11187,7 @@ export namespace IBus {
 
         static ['new'](): Serializable;
 
-        // Own static methods of IBus.Serializable
+        // Static methods
 
         /**
          * Deserialize a #GVariant to an #IBusSerializable/
@@ -11196,13 +11196,13 @@ export namespace IBus {
          */
         static deserialize_object(variant: GLib.Variant): Serializable;
 
-        // Own virtual methods of IBus.Serializable
+        // Virtual methods
 
         vfunc_copy(src: Serializable): boolean;
         vfunc_deserialize(variant: GLib.Variant): number;
         vfunc_serialize(builder: GLib.VariantBuilder): boolean;
 
-        // Own methods of IBus.Serializable
+        // Methods
 
         /**
          * Clone an #IBusSerializable.
@@ -11255,7 +11255,7 @@ export namespace IBus {
     class Service extends Object {
         static $gtype: GObject.GType<Service>;
 
-        // Own properties of IBus.Service
+        // Properties
 
         /**
          * The connection of service object.
@@ -11271,7 +11271,7 @@ export namespace IBus {
          */
         get objectPath(): string;
 
-        // Constructors of IBus.Service
+        // Constructors
 
         constructor(properties?: Partial<Service.ConstructorProps>, ...args: any[]);
 
@@ -11282,12 +11282,12 @@ export namespace IBus {
 
         static ['new'](...args: never[]): any;
 
-        // Own static methods of IBus.Service
+        // Static methods
 
         static add_interfaces(xml_data: string): boolean;
         static free_interfaces(depth: number): number;
 
-        // Own virtual methods of IBus.Service
+        // Virtual methods
 
         /**
          * The ::service_get_property class method is to connect
@@ -11344,7 +11344,7 @@ export namespace IBus {
             value: GLib.Variant,
         ): boolean;
 
-        // Own methods of IBus.Service
+        // Methods
 
         emit_signal(
             dest_bus_name: string,
@@ -11392,13 +11392,13 @@ export namespace IBus {
     class Text extends Serializable {
         static $gtype: GObject.GType<Text>;
 
-        // Own fields of IBus.Text
+        // Fields
 
         is_static: boolean;
         text: string;
         attrs: AttrList;
 
-        // Constructors of IBus.Text
+        // Constructors
 
         constructor(properties?: Partial<Text.ConstructorProps>, ...args: any[]);
 
@@ -11410,7 +11410,7 @@ export namespace IBus {
 
         static new_from_unichar(c: number): Text;
 
-        // Own methods of IBus.Text
+        // Methods
 
         /**
          * Append an IBusAttribute for IBusText.
@@ -11453,7 +11453,7 @@ export namespace IBus {
     class UnicodeBlock extends Serializable {
         static $gtype: GObject.GType<UnicodeBlock>;
 
-        // Own properties of IBus.UnicodeBlock
+        // Properties
 
         /**
          * The Uniode end code point
@@ -11469,13 +11469,13 @@ export namespace IBus {
          */
         get start(): number;
 
-        // Constructors of IBus.UnicodeBlock
+        // Constructors
 
         constructor(properties?: Partial<UnicodeBlock.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of IBus.UnicodeBlock
+        // Static methods
 
         static load(path: string): UnicodeBlock[];
         /**
@@ -11485,7 +11485,7 @@ export namespace IBus {
          */
         static save(path: string, list: UnicodeBlock[]): void;
 
-        // Own methods of IBus.UnicodeBlock
+        // Methods
 
         /**
          * Gets the end code point in #IBusUnicodeBlock.
@@ -11523,7 +11523,7 @@ export namespace IBus {
     class UnicodeData extends Serializable {
         static $gtype: GObject.GType<UnicodeData>;
 
-        // Own properties of IBus.UnicodeData
+        // Properties
 
         /**
          * The Uniode alias name
@@ -11550,13 +11550,13 @@ export namespace IBus {
         get name(): string;
         set name(val: string);
 
-        // Constructors of IBus.UnicodeData
+        // Constructors
 
         constructor(properties?: Partial<UnicodeData.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of IBus.UnicodeData
+        // Static methods
 
         static load(path: string, object?: GObject.Object | null): UnicodeData[];
         /**
@@ -11579,7 +11579,7 @@ export namespace IBus {
          */
         static save(path: string, list: UnicodeData[]): void;
 
-        // Own methods of IBus.UnicodeData
+        // Methods
 
         /**
          * Gets the alias in #IBusUnicodeData. It should not be freed.
@@ -11651,7 +11651,7 @@ export namespace IBus {
     class XEvent extends Serializable {
         static $gtype: GObject.GType<XEvent>;
 
-        // Own properties of IBus.XEvent
+        // Properties
 
         /**
          * IBusXEventType of this IBusXEvent.
@@ -11766,13 +11766,13 @@ export namespace IBus {
          */
         get yRoot(): number;
 
-        // Constructors of IBus.XEvent
+        // Constructors
 
         constructor(properties?: Partial<XEvent.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of IBus.XEvent
+        // Methods
 
         get_event_type(): XEventType;
         get_group(): number;
@@ -11803,7 +11803,7 @@ export namespace IBus {
     abstract class BusPrivate {
         static $gtype: GObject.GType<BusPrivate>;
 
-        // Constructors of IBus.BusPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -11812,7 +11812,7 @@ export namespace IBus {
     abstract class ComponentPrivate {
         static $gtype: GObject.GType<ComponentPrivate>;
 
-        // Constructors of IBus.ComponentPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -11821,7 +11821,7 @@ export namespace IBus {
     abstract class ConfigPrivate {
         static $gtype: GObject.GType<ConfigPrivate>;
 
-        // Constructors of IBus.ConfigPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -11831,7 +11831,7 @@ export namespace IBus {
     abstract class EmojiDataPrivate {
         static $gtype: GObject.GType<EmojiDataPrivate>;
 
-        // Constructors of IBus.EmojiDataPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -11841,7 +11841,7 @@ export namespace IBus {
     abstract class EngineDescPrivate {
         static $gtype: GObject.GType<EngineDescPrivate>;
 
-        // Constructors of IBus.EngineDescPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -11849,7 +11849,7 @@ export namespace IBus {
     abstract class EnginePrivate {
         static $gtype: GObject.GType<EnginePrivate>;
 
-        // Constructors of IBus.EnginePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -11858,7 +11858,7 @@ export namespace IBus {
     abstract class EngineSimplePrivate {
         static $gtype: GObject.GType<EngineSimplePrivate>;
 
-        // Constructors of IBus.EngineSimplePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -11867,7 +11867,7 @@ export namespace IBus {
     abstract class ExtensionEventPrivate {
         static $gtype: GObject.GType<ExtensionEventPrivate>;
 
-        // Constructors of IBus.ExtensionEventPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -11876,7 +11876,7 @@ export namespace IBus {
     abstract class FactoryPrivate {
         static $gtype: GObject.GType<FactoryPrivate>;
 
-        // Constructors of IBus.FactoryPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -11889,7 +11889,7 @@ export namespace IBus {
     abstract class ObjectPrivate {
         static $gtype: GObject.GType<ObjectPrivate>;
 
-        // Constructors of IBus.ObjectPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -11902,13 +11902,13 @@ export namespace IBus {
     class ProcessKeyEventData {
         static $gtype: GObject.GType<ProcessKeyEventData>;
 
-        // Own fields of IBus.ProcessKeyEventData
+        // Fields
 
         keyval: number;
         keycode: number;
         state: number;
 
-        // Constructors of IBus.ProcessKeyEventData
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -11925,7 +11925,7 @@ export namespace IBus {
     abstract class PropertyPrivate {
         static $gtype: GObject.GType<PropertyPrivate>;
 
-        // Constructors of IBus.PropertyPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -11937,14 +11937,14 @@ export namespace IBus {
     class Rectangle {
         static $gtype: GObject.GType<Rectangle>;
 
-        // Own fields of IBus.Rectangle
+        // Fields
 
         x: number;
         y: number;
         width: number;
         height: number;
 
-        // Constructors of IBus.Rectangle
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -11961,7 +11961,7 @@ export namespace IBus {
     abstract class RegistryPrivate {
         static $gtype: GObject.GType<RegistryPrivate>;
 
-        // Constructors of IBus.RegistryPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -11970,7 +11970,7 @@ export namespace IBus {
     abstract class SerializablePrivate {
         static $gtype: GObject.GType<SerializablePrivate>;
 
-        // Constructors of IBus.SerializablePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -11979,7 +11979,7 @@ export namespace IBus {
     abstract class ServicePrivate {
         static $gtype: GObject.GType<ServicePrivate>;
 
-        // Constructors of IBus.ServicePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -11989,7 +11989,7 @@ export namespace IBus {
     abstract class UnicodeBlockPrivate {
         static $gtype: GObject.GType<UnicodeBlockPrivate>;
 
-        // Constructors of IBus.UnicodeBlockPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -11998,7 +11998,7 @@ export namespace IBus {
     abstract class UnicodeDataPrivate {
         static $gtype: GObject.GType<UnicodeDataPrivate>;
 
-        // Constructors of IBus.UnicodeDataPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -12007,7 +12007,7 @@ export namespace IBus {
     abstract class XEventPrivate {
         static $gtype: GObject.GType<XEventPrivate>;
 
-        // Constructors of IBus.XEventPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -12018,14 +12018,14 @@ export namespace IBus {
     class XML {
         static $gtype: GObject.GType<XML>;
 
-        // Own fields of IBus.XML
+        // Fields
 
         name: string;
         text: string;
         attributes: string;
         sub_nodes: any[];
 
-        // Constructors of IBus.XML
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -12036,7 +12036,7 @@ export namespace IBus {
         );
         _init(...args: any[]): void;
 
-        // Own static methods of IBus.XML
+        // Static methods
 
         /**
          * Parse a string buffer which contains an XML-formatted string,
@@ -12050,7 +12050,7 @@ export namespace IBus {
          */
         static parse_file(name: string): XML;
 
-        // Own methods of IBus.XML
+        // Methods
 
         /**
          * Creates a copy of `node,` which should be freed with

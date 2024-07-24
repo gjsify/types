@@ -27,11 +27,11 @@ export namespace Vsqlite {
     class ConnectionError extends GLib.Error {
         static $gtype: GObject.GType<ConnectionError>;
 
-        // Static fields of Vsqlite.ConnectionError
+        // Static fields
 
         static INVALID_FILE_ERROR: number;
 
-        // Constructors of Vsqlite.ConnectionError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
@@ -46,7 +46,7 @@ export namespace Vsqlite {
     class Connection extends GObject.Object implements Vda.Connection {
         static $gtype: GObject.GType<Connection>;
 
-        // Constructors of Vsqlite.Connection
+        // Constructors
 
         constructor(properties?: Partial<Connection.ConstructorProps>, ...args: any[]);
 
@@ -54,7 +54,7 @@ export namespace Vsqlite {
 
         static ['new'](): Connection;
 
-        // Own methods of Vsqlite.Connection
+        // Methods
 
         type_to_gtype(t: number): GObject.GType;
 
@@ -508,7 +508,7 @@ export namespace Vsqlite {
     abstract class ConnectionPrivate {
         static $gtype: GObject.GType<ConnectionPrivate>;
 
-        // Constructors of Vsqlite.ConnectionPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }

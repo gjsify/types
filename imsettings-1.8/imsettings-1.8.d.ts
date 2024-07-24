@@ -129,14 +129,14 @@ export namespace IMSettings {
     class Client extends GObject.Object {
         static $gtype: GObject.GType<Client>;
 
-        // Own properties of IMSettings.Client
+        // Properties
 
         get desktop(): string;
         set desktop(val: string);
         get locale(): string;
         set locale(val: string);
 
-        // Constructors of IMSettings.Client
+        // Constructors
 
         constructor(properties?: Partial<Client.ConstructorProps>, ...args: any[]);
 
@@ -144,7 +144,7 @@ export namespace IMSettings {
 
         static ['new'](locale: string): Client;
 
-        // Own methods of IMSettings.Client
+        // Methods
 
         /**
          * Check if X Display can be open or not.
@@ -649,7 +649,7 @@ export namespace IMSettings {
     class Info extends GObject.Object {
         static $gtype: GObject.GType<Info>;
 
-        // Constructors of IMSettings.Info
+        // Constructors
 
         constructor(properties?: Partial<Info.ConstructorProps>, ...args: any[]);
 
@@ -657,7 +657,7 @@ export namespace IMSettings {
 
         static ['new'](parameters: GLib.Variant): Info;
 
-        // Own static methods of IMSettings.Info
+        // Static methods
 
         /**
          * Generates a #GVariant from the content of `filename`.
@@ -677,7 +677,7 @@ export namespace IMSettings {
          */
         static variant_new_with_desktop(filename: string, language: string, desktop: string): GLib.Variant;
 
-        // Own methods of IMSettings.Info
+        // Methods
 
         /**
          * Compares two #IMSettingsInfo instance.
@@ -872,7 +872,7 @@ export namespace IMSettings {
     abstract class ClientPrivate {
         static $gtype: GObject.GType<ClientPrivate>;
 
-        // Constructors of IMSettings.ClientPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -881,7 +881,7 @@ export namespace IMSettings {
     abstract class InfoPrivate {
         static $gtype: GObject.GType<InfoPrivate>;
 
-        // Constructors of IMSettings.InfoPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }

@@ -54,7 +54,7 @@ export namespace EBookContacts {
     class BookClientError extends GLib.Error {
         static $gtype: GObject.GType<BookClientError>;
 
-        // Static fields of EBookContacts.BookClientError
+        // Static fields
 
         /**
          * Requested book did not exist
@@ -77,7 +77,7 @@ export namespace EBookContacts {
          */
         static NO_SPACE: number;
 
-        // Constructors of EBookContacts.BookClientError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
@@ -475,7 +475,7 @@ export namespace EBookContacts {
     class PhoneNumberError extends GLib.Error {
         static $gtype: GObject.GType<PhoneNumberError>;
 
-        // Static fields of EBookContacts.PhoneNumberError
+        // Static fields
 
         /**
          * the library was built without phone
@@ -510,7 +510,7 @@ export namespace EBookContacts {
          */
         static TOO_LONG: number;
 
-        // Constructors of EBookContacts.PhoneNumberError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
@@ -699,12 +699,12 @@ export namespace EBookContacts {
     class VCardFormat {
         static $gtype: GObject.GType<VCardFormat>;
 
-        // Static fields of EBookContacts.VCardFormat
+        // Static fields
 
         static '21': number;
         static '30': number;
 
-        // Constructors of EBookContacts.VCardFormat
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1167,13 +1167,13 @@ export namespace EBookContacts {
     abstract class BookIndicesUpdater extends GObject.Object {
         static $gtype: GObject.GType<BookIndicesUpdater>;
 
-        // Constructors of EBookContacts.BookIndicesUpdater
+        // Constructors
 
         constructor(properties?: Partial<BookIndicesUpdater.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of EBookContacts.BookIndicesUpdater
+        // Methods
 
         /**
          * Notifies the `self` that a new contact with UID `uid` had been added
@@ -1478,7 +1478,7 @@ export namespace EBookContacts {
     class Contact extends VCard {
         static $gtype: GObject.GType<Contact>;
 
-        // Own properties of EBookContacts.Contact
+        // Properties
 
         get Rev(): string;
         set Rev(val: string);
@@ -1983,7 +1983,7 @@ export namespace EBookContacts {
         get x509Cert(): ContactCert;
         set x509Cert(val: ContactCert);
 
-        // Constructors of EBookContacts.Contact
+        // Constructors
 
         constructor(properties?: Partial<Contact.ConstructorProps>, ...args: any[]);
 
@@ -1995,7 +1995,7 @@ export namespace EBookContacts {
 
         static new_from_vcard_with_uid(vcard: string, uid: string): Contact;
 
-        // Own static methods of EBookContacts.Contact
+        // Static methods
 
         /**
          * Gets the #EContactField corresponding to the `field_name`.
@@ -2036,7 +2036,7 @@ export namespace EBookContacts {
          */
         static vcard_attribute(field_id: ContactField): string;
 
-        // Own methods of EBookContacts.Contact
+        // Methods
 
         /**
          * Creates a copy of `contact`.
@@ -2113,7 +2113,7 @@ export namespace EBookContacts {
     class SourceBackendSummarySetup extends EDataServer.SourceExtension {
         static $gtype: GObject.GType<SourceBackendSummarySetup>;
 
-        // Own properties of EBookContacts.SourceBackendSummarySetup
+        // Properties
 
         get indexed_fields(): string;
         set indexed_fields(val: string);
@@ -2124,13 +2124,13 @@ export namespace EBookContacts {
         get summaryFields(): string;
         set summaryFields(val: string);
 
-        // Constructors of EBookContacts.SourceBackendSummarySetup
+        // Constructors
 
         constructor(properties?: Partial<SourceBackendSummarySetup.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of EBookContacts.SourceBackendSummarySetup
+        // Methods
 
         /**
          * Fetches the #EContactFields configured to be indexed, with thier respective #EBookIndexTypes.
@@ -2187,7 +2187,7 @@ export namespace EBookContacts {
     class VCard extends GObject.Object {
         static $gtype: GObject.GType<VCard>;
 
-        // Constructors of EBookContacts.VCard
+        // Constructors
 
         constructor(properties?: Partial<VCard.ConstructorProps>, ...args: any[]);
 
@@ -2197,7 +2197,7 @@ export namespace EBookContacts {
 
         static new_from_string(str: string): VCard;
 
-        // Own static methods of EBookContacts.VCard
+        // Static methods
 
         /**
          * Escapes a string according to RFC2426, section 5.
@@ -2210,7 +2210,7 @@ export namespace EBookContacts {
          */
         static unescape_string(s: string): string;
 
-        // Own methods of EBookContacts.VCard
+        // Methods
 
         /**
          * Prepends `attr` to `evc`. This takes ownership of `attr`.
@@ -2347,7 +2347,7 @@ export namespace EBookContacts {
     class AddressWestern {
         static $gtype: GObject.GType<AddressWestern>;
 
-        // Own fields of EBookContacts.AddressWestern
+        // Fields
 
         po_box: string;
         extended: string;
@@ -2357,7 +2357,7 @@ export namespace EBookContacts {
         postal_code: string;
         country: string;
 
-        // Constructors of EBookContacts.AddressWestern
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -2372,7 +2372,7 @@ export namespace EBookContacts {
         );
         _init(...args: any[]): void;
 
-        // Own static methods of EBookContacts.AddressWestern
+        // Static methods
 
         /**
          * Parses a string representing a mailing address into a
@@ -2381,7 +2381,7 @@ export namespace EBookContacts {
          */
         static parse(in_address?: string | null): AddressWestern | null;
 
-        // Own methods of EBookContacts.AddressWestern
+        // Methods
 
         /**
          * Creates a copy of `eaw`.
@@ -2400,12 +2400,12 @@ export namespace EBookContacts {
     class BookChange {
         static $gtype: GObject.GType<BookChange>;
 
-        // Own fields of EBookContacts.BookChange
+        // Fields
 
         change_type: BookChangeType;
         contact: Contact;
 
-        // Constructors of EBookContacts.BookChange
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2417,12 +2417,12 @@ export namespace EBookContacts {
     class BookClientViewSortFields {
         static $gtype: GObject.GType<BookClientViewSortFields>;
 
-        // Own fields of EBookContacts.BookClientViewSortFields
+        // Fields
 
         field: ContactField;
         sort_type: BookCursorSortType;
 
-        // Constructors of EBookContacts.BookClientViewSortFields
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2434,12 +2434,12 @@ export namespace EBookContacts {
     class BookIndices {
         static $gtype: GObject.GType<BookIndices>;
 
-        // Own fields of EBookContacts.BookIndices
+        // Fields
 
         chr: string;
         index: number;
 
-        // Constructors of EBookContacts.BookIndices
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -2449,7 +2449,7 @@ export namespace EBookContacts {
         );
         _init(...args: any[]): void;
 
-        // Own static methods of EBookContacts.BookIndices
+        // Static methods
 
         /**
          * Returns whether the `self` considers contacts stored in the ascending order.
@@ -2470,7 +2470,7 @@ export namespace EBookContacts {
     abstract class BookIndicesUpdaterPrivate {
         static $gtype: GObject.GType<BookIndicesUpdaterPrivate>;
 
-        // Constructors of EBookContacts.BookIndicesUpdaterPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2478,11 +2478,11 @@ export namespace EBookContacts {
     abstract class BookQuery {
         static $gtype: GObject.GType<BookQuery>;
 
-        // Constructors of EBookContacts.BookQuery
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own static methods of EBookContacts.BookQuery
+        // Static methods
 
         /**
          * Create a new #EBookQuery which is the logical AND of the queries in #qs.
@@ -2534,7 +2534,7 @@ export namespace EBookContacts {
          */
         static vcard_field_test(field: string, test: BookQueryTest, value: string): BookQuery;
 
-        // Own methods of EBookContacts.BookQuery
+        // Methods
 
         /**
          * Creates a copy of `q`.
@@ -2567,7 +2567,7 @@ export namespace EBookContacts {
     class ContactAddress {
         static $gtype: GObject.GType<ContactAddress>;
 
-        // Own fields of EBookContacts.ContactAddress
+        // Fields
 
         address_format: string;
         po: string;
@@ -2578,7 +2578,7 @@ export namespace EBookContacts {
         code: string;
         country: string;
 
-        // Constructors of EBookContacts.ContactAddress
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -2596,7 +2596,7 @@ export namespace EBookContacts {
 
         static ['new'](): ContactAddress;
 
-        // Own methods of EBookContacts.ContactAddress
+        // Methods
 
         /**
          * Frees the `address` struct and its contents.
@@ -2607,12 +2607,12 @@ export namespace EBookContacts {
     class ContactCert {
         static $gtype: GObject.GType<ContactCert>;
 
-        // Own fields of EBookContacts.ContactCert
+        // Fields
 
         length: number;
         data: string;
 
-        // Constructors of EBookContacts.ContactCert
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -2624,7 +2624,7 @@ export namespace EBookContacts {
 
         static ['new'](): ContactCert;
 
-        // Own methods of EBookContacts.ContactCert
+        // Methods
 
         /**
          * Frees the `cert` struct and its contents.
@@ -2636,13 +2636,13 @@ export namespace EBookContacts {
     class ContactDate {
         static $gtype: GObject.GType<ContactDate>;
 
-        // Own fields of EBookContacts.ContactDate
+        // Fields
 
         year: number;
         month: number;
         day: number;
 
-        // Constructors of EBookContacts.ContactDate
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -2655,7 +2655,7 @@ export namespace EBookContacts {
 
         static ['new'](): ContactDate;
 
-        // Own static methods of EBookContacts.ContactDate
+        // Static methods
 
         /**
          * Creates a new #EContactDate based on `str`.
@@ -2663,7 +2663,7 @@ export namespace EBookContacts {
          */
         static from_string(str: string): ContactDate;
 
-        // Own methods of EBookContacts.ContactDate
+        // Methods
 
         /**
          * Checks if `dt1` and `dt2` are the same date.
@@ -2686,12 +2686,12 @@ export namespace EBookContacts {
     class ContactGeo {
         static $gtype: GObject.GType<ContactGeo>;
 
-        // Own fields of EBookContacts.ContactGeo
+        // Fields
 
         latitude: number;
         longitude: number;
 
-        // Constructors of EBookContacts.ContactGeo
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -2703,7 +2703,7 @@ export namespace EBookContacts {
 
         static ['new'](): ContactGeo;
 
-        // Own methods of EBookContacts.ContactGeo
+        // Methods
 
         /**
          * Frees the `geo` struct and its contents.
@@ -2714,7 +2714,7 @@ export namespace EBookContacts {
     class ContactName {
         static $gtype: GObject.GType<ContactName>;
 
-        // Own fields of EBookContacts.ContactName
+        // Fields
 
         family: string;
         given: string;
@@ -2722,7 +2722,7 @@ export namespace EBookContacts {
         prefixes: string;
         suffixes: string;
 
-        // Constructors of EBookContacts.ContactName
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -2737,7 +2737,7 @@ export namespace EBookContacts {
 
         static ['new'](): ContactName;
 
-        // Own static methods of EBookContacts.ContactName
+        // Static methods
 
         /**
          * Creates a new #EContactName based on the parsed `name_str`.
@@ -2745,7 +2745,7 @@ export namespace EBookContacts {
          */
         static from_string(name_str: string): ContactName;
 
-        // Own methods of EBookContacts.ContactName
+        // Methods
 
         /**
          * Creates a copy of `n`.
@@ -2766,11 +2766,11 @@ export namespace EBookContacts {
     class ContactPhoto {
         static $gtype: GObject.GType<ContactPhoto>;
 
-        // Own fields of EBookContacts.ContactPhoto
+        // Fields
 
         type: ContactPhotoType;
 
-        // Constructors of EBookContacts.ContactPhoto
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -2781,7 +2781,7 @@ export namespace EBookContacts {
 
         static ['new'](): ContactPhoto;
 
-        // Own methods of EBookContacts.ContactPhoto
+        // Methods
 
         /**
          * Creates a copy of `photo`.
@@ -2827,7 +2827,7 @@ export namespace EBookContacts {
     abstract class ContactPrivate {
         static $gtype: GObject.GType<ContactPrivate>;
 
-        // Constructors of EBookContacts.ContactPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2835,7 +2835,7 @@ export namespace EBookContacts {
     class NameWestern {
         static $gtype: GObject.GType<NameWestern>;
 
-        // Own fields of EBookContacts.NameWestern
+        // Fields
 
         prefix: string;
         first: string;
@@ -2845,7 +2845,7 @@ export namespace EBookContacts {
         suffix: string;
         full: string;
 
-        // Constructors of EBookContacts.NameWestern
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -2860,7 +2860,7 @@ export namespace EBookContacts {
         );
         _init(...args: any[]): void;
 
-        // Own static methods of EBookContacts.NameWestern
+        // Static methods
 
         /**
          * Parses `full_name` and returns an #ENameWestern struct filled with
@@ -2869,7 +2869,7 @@ export namespace EBookContacts {
          */
         static parse(full_name: string): NameWestern;
 
-        // Own methods of EBookContacts.NameWestern
+        // Methods
 
         /**
          * Creates a copy of `w`.
@@ -2889,11 +2889,11 @@ export namespace EBookContacts {
     abstract class PhoneNumber {
         static $gtype: GObject.GType<PhoneNumber>;
 
-        // Constructors of EBookContacts.PhoneNumber
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own static methods of EBookContacts.PhoneNumber
+        // Static methods
 
         /**
          * Compares two phone numbers.
@@ -2957,7 +2957,7 @@ export namespace EBookContacts {
          */
         static is_supported(): boolean;
 
-        // Own methods of EBookContacts.PhoneNumber
+        // Methods
 
         /**
          * Compares two phone numbers.
@@ -3001,7 +3001,7 @@ export namespace EBookContacts {
     abstract class SourceBackendSummarySetupPrivate {
         static $gtype: GObject.GType<SourceBackendSummarySetupPrivate>;
 
-        // Constructors of EBookContacts.SourceBackendSummarySetupPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3009,14 +3009,14 @@ export namespace EBookContacts {
     class VCardAttribute {
         static $gtype: GObject.GType<VCardAttribute>;
 
-        // Constructors of EBookContacts.VCardAttribute
+        // Constructors
 
         constructor(attr_group: string | null, attr_name: string);
         _init(...args: any[]): void;
 
         static ['new'](attr_group: string | null, attr_name: string): VCardAttribute;
 
-        // Own methods of EBookContacts.VCardAttribute
+        // Methods
 
         /**
          * Prepends `param` to `attr'`s list of parameters. This takes ownership of
@@ -3199,14 +3199,14 @@ export namespace EBookContacts {
     class VCardAttributeParam {
         static $gtype: GObject.GType<VCardAttributeParam>;
 
-        // Constructors of EBookContacts.VCardAttributeParam
+        // Constructors
 
         constructor(name: string);
         _init(...args: any[]): void;
 
         static ['new'](name: string): VCardAttributeParam;
 
-        // Own methods of EBookContacts.VCardAttributeParam
+        // Methods
 
         /**
          * Appends `value` to `param'`s list of values.
@@ -3260,7 +3260,7 @@ export namespace EBookContacts {
     abstract class VCardPrivate {
         static $gtype: GObject.GType<VCardPrivate>;
 
-        // Constructors of EBookContacts.VCardPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }

@@ -336,7 +336,7 @@ export namespace Handy {
     class ActionRow extends PreferencesRow implements Atk.ImplementorIface, Gtk.Actionable, Gtk.Buildable {
         static $gtype: GObject.GType<ActionRow>;
 
-        // Own properties of Handy.ActionRow
+        // Properties
 
         /**
          * The activatable widget for this row.
@@ -381,7 +381,7 @@ export namespace Handy {
         get useUnderline(): boolean;
         set useUnderline(val: boolean);
 
-        // Constructors of Handy.ActionRow
+        // Constructors
 
         constructor(properties?: Partial<ActionRow.ConstructorProps>, ...args: any[]);
 
@@ -389,11 +389,11 @@ export namespace Handy {
 
         static ['new'](): ActionRow;
 
-        // Own virtual methods of Handy.ActionRow
+        // Virtual methods
 
         vfunc_activate(): void;
 
-        // Own methods of Handy.ActionRow
+        // Methods
 
         activate(): void;
         // Conflicted with Gtk.Widget.activate
@@ -4408,7 +4408,7 @@ export namespace Handy {
     class Arrows extends Gtk.DrawingArea implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<Arrows>;
 
-        // Own properties of Handy.Arrows
+        // Properties
 
         get count(): number;
         set count(val: number);
@@ -4417,7 +4417,7 @@ export namespace Handy {
         get duration(): number;
         set duration(val: number);
 
-        // Constructors of Handy.Arrows
+        // Constructors
 
         constructor(properties?: Partial<Arrows.ConstructorProps>, ...args: any[]);
 
@@ -4425,7 +4425,7 @@ export namespace Handy {
 
         static ['new'](): Arrows;
 
-        // Own methods of Handy.Arrows
+        // Methods
 
         /**
          * Render the arrows animation.
@@ -4886,7 +4886,7 @@ export namespace Handy {
     class Column extends Gtk.Bin implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<Column>;
 
-        // Own properties of Handy.Column
+        // Properties
 
         get linear_growth_width(): number;
         set linear_growth_width(val: number);
@@ -4897,7 +4897,7 @@ export namespace Handy {
         get maximumWidth(): number;
         set maximumWidth(val: number);
 
-        // Constructors of Handy.Column
+        // Constructors
 
         constructor(properties?: Partial<Column.ConstructorProps>, ...args: any[]);
 
@@ -4905,7 +4905,7 @@ export namespace Handy {
 
         static ['new'](): Column;
 
-        // Own methods of Handy.Column
+        // Methods
 
         /**
          * Gets the width up to which the child will be allocated all the available
@@ -5353,7 +5353,7 @@ export namespace Handy {
     class ComboRow extends ActionRow implements Atk.ImplementorIface, Gtk.Actionable, Gtk.Buildable {
         static $gtype: GObject.GType<ComboRow>;
 
-        // Own properties of Handy.ComboRow
+        // Properties
 
         /**
          * The index of the selected item in its #GListModel.
@@ -5386,7 +5386,7 @@ export namespace Handy {
         get useSubtitle(): boolean;
         set useSubtitle(val: boolean);
 
-        // Constructors of Handy.ComboRow
+        // Constructors
 
         constructor(properties?: Partial<ComboRow.ConstructorProps>, ...args: any[]);
 
@@ -5394,7 +5394,7 @@ export namespace Handy {
 
         static ['new'](): ComboRow;
 
-        // Own methods of Handy.ComboRow
+        // Methods
 
         /**
          * Binds `model` to `self`.
@@ -9446,7 +9446,7 @@ export namespace Handy {
     class Dialer extends Gtk.Bin implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<Dialer>;
 
-        // Own properties of Handy.Dialer
+        // Properties
 
         get column_spacing(): number;
         set column_spacing(val: number);
@@ -9468,7 +9468,7 @@ export namespace Handy {
         get showActionButtons(): boolean;
         set showActionButtons(val: boolean);
 
-        // Constructors of Handy.Dialer
+        // Constructors
 
         constructor(properties?: Partial<Dialer.ConstructorProps>, ...args: any[]);
 
@@ -9476,7 +9476,7 @@ export namespace Handy {
 
         static ['new'](): Dialer;
 
-        // Own signals of Handy.Dialer
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -9491,11 +9491,11 @@ export namespace Handy {
         connect_after(signal: 'symbol-clicked', callback: (_source: this, button: number) => void): number;
         emit(signal: 'symbol-clicked', button: number): void;
 
-        // Own virtual methods of Handy.Dialer
+        // Virtual methods
 
         vfunc_submitted(number: string): void;
 
-        // Own methods of Handy.Dialer
+        // Methods
 
         /**
          * Set the current number to the empty string. When the number is already
@@ -9960,13 +9960,13 @@ export namespace Handy {
     {
         static $gtype: GObject.GType<DialerButton>;
 
-        // Own properties of Handy.DialerButton
+        // Properties
 
         get digit(): number;
         get symbols(): string;
         set symbols(val: string);
 
-        // Constructors of Handy.DialerButton
+        // Constructors
 
         constructor(properties?: Partial<DialerButton.ConstructorProps>, ...args: any[]);
 
@@ -9977,7 +9977,7 @@ export namespace Handy {
 
         static ['new'](...args: never[]): any;
 
-        // Own methods of Handy.DialerButton
+        // Methods
 
         /**
          * Get the #HdyDialerButton's digit.
@@ -14188,14 +14188,14 @@ export namespace Handy {
     {
         static $gtype: GObject.GType<DialerCycleButton>;
 
-        // Own properties of Handy.DialerCycleButton
+        // Properties
 
         get cycle_timeout(): number;
         set cycle_timeout(val: number);
         get cycleTimeout(): number;
         set cycleTimeout(val: number);
 
-        // Constructors of Handy.DialerCycleButton
+        // Constructors
 
         constructor(properties?: Partial<DialerCycleButton.ConstructorProps>, ...args: any[]);
 
@@ -14206,7 +14206,7 @@ export namespace Handy {
 
         static ['new'](...args: never[]): any;
 
-        // Own signals of Handy.DialerCycleButton
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -14218,12 +14218,12 @@ export namespace Handy {
         connect_after(signal: 'cycle-start', callback: (_source: this) => void): number;
         emit(signal: 'cycle-start'): void;
 
-        // Own virtual methods of Handy.DialerCycleButton
+        // Virtual methods
 
         vfunc_cycle_end(): void;
         vfunc_cycle_start(): void;
 
-        // Own methods of Handy.DialerCycleButton
+        // Methods
 
         /**
          * Get the symbol the dialer should display
@@ -18193,14 +18193,14 @@ export namespace Handy {
     class Dialog extends Gtk.Dialog implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<Dialog>;
 
-        // Own properties of Handy.Dialog
+        // Properties
 
         /**
          * %TRUE if the dialog is narrow.
          */
         get narrow(): boolean;
 
-        // Constructors of Handy.Dialog
+        // Constructors
 
         constructor(properties?: Partial<Dialog.ConstructorProps>, ...args: any[]);
 
@@ -18211,7 +18211,7 @@ export namespace Handy {
 
         static ['new'](...args: never[]): any;
 
-        // Own methods of Handy.Dialog
+        // Methods
 
         /**
          * Gets whether `self` is narrow.
@@ -18631,7 +18631,7 @@ export namespace Handy {
     class EnumValueObject extends GObject.Object {
         static $gtype: GObject.GType<EnumValueObject>;
 
-        // Constructors of Handy.EnumValueObject
+        // Constructors
 
         constructor(properties?: Partial<EnumValueObject.ConstructorProps>, ...args: any[]);
 
@@ -18639,7 +18639,7 @@ export namespace Handy {
 
         static ['new'](enum_value: GObject.EnumValue): EnumValueObject;
 
-        // Own methods of Handy.EnumValueObject
+        // Methods
 
         get_name(): string;
         get_nick(): string;
@@ -18665,7 +18665,7 @@ export namespace Handy {
     class ExpanderRow extends ActionRow implements Atk.ImplementorIface, Gtk.Actionable, Gtk.Buildable {
         static $gtype: GObject.GType<ExpanderRow>;
 
-        // Own properties of Handy.ExpanderRow
+        // Properties
 
         /**
          * %TRUE if the expansion is enabled.
@@ -18693,7 +18693,7 @@ export namespace Handy {
         get showEnableSwitch(): boolean;
         set showEnableSwitch(val: boolean);
 
-        // Constructors of Handy.ExpanderRow
+        // Constructors
 
         constructor(properties?: Partial<ExpanderRow.ConstructorProps>, ...args: any[]);
 
@@ -18701,7 +18701,7 @@ export namespace Handy {
 
         static ['new'](): ExpanderRow;
 
-        // Own methods of Handy.ExpanderRow
+        // Methods
 
         /**
          * Gets whether the expansion of `self` is enabled.
@@ -22692,7 +22692,7 @@ export namespace Handy {
     class HeaderBar extends Gtk.Container implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<HeaderBar>;
 
-        // Own properties of Handy.HeaderBar
+        // Properties
 
         get centering_policy(): CenteringPolicy;
         set centering_policy(val: CenteringPolicy);
@@ -22781,7 +22781,7 @@ export namespace Handy {
         get transition_running(): boolean;
         get transitionRunning(): boolean;
 
-        // Constructors of Handy.HeaderBar
+        // Constructors
 
         constructor(properties?: Partial<HeaderBar.ConstructorProps>, ...args: any[]);
 
@@ -22789,7 +22789,7 @@ export namespace Handy {
 
         static ['new'](): HeaderBar;
 
-        // Own methods of Handy.HeaderBar
+        // Methods
 
         /**
          * Gets the policy `self` follows to horizontally align its center widget.
@@ -23360,7 +23360,7 @@ export namespace Handy {
     class HeaderGroup extends GObject.Object implements Gtk.Buildable {
         static $gtype: GObject.GType<HeaderGroup>;
 
-        // Own properties of Handy.HeaderGroup
+        // Properties
 
         /**
          * The the currently focused header bar. If %NULL, the decoration will be
@@ -23370,7 +23370,7 @@ export namespace Handy {
         get focus(): Gtk.HeaderBar;
         set focus(val: Gtk.HeaderBar);
 
-        // Constructors of Handy.HeaderGroup
+        // Constructors
 
         constructor(properties?: Partial<HeaderGroup.ConstructorProps>, ...args: any[]);
 
@@ -23378,7 +23378,7 @@ export namespace Handy {
 
         static ['new'](): HeaderGroup;
 
-        // Own methods of Handy.HeaderGroup
+        // Methods
 
         /**
          * Adds a header bar to a #HdyHeaderGroup. The decoration layout of the
@@ -24014,7 +24014,7 @@ export namespace Handy {
     class Keypad extends Gtk.Grid implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<Keypad>;
 
-        // Own properties of Handy.Keypad
+        // Properties
 
         get entry(): Gtk.Widget;
         set entry(val: Gtk.Widget);
@@ -24031,7 +24031,7 @@ export namespace Handy {
         get showSymbols(): boolean;
         set showSymbols(val: boolean);
 
-        // Constructors of Handy.Keypad
+        // Constructors
 
         constructor(properties?: Partial<Keypad.ConstructorProps>, ...args: any[]);
 
@@ -24042,7 +24042,7 @@ export namespace Handy {
 
         static ['new'](...args: never[]): any;
 
-        // Own methods of Handy.Keypad
+        // Methods
 
         /**
          * Get the connected entry. See hdy_keypad_set_entry () for details
@@ -24533,7 +24533,7 @@ export namespace Handy {
     class Leaflet extends Gtk.Container implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable, Swipeable {
         static $gtype: GObject.GType<Leaflet>;
 
-        // Own properties of Handy.Leaflet
+        // Properties
 
         /**
          * Whether or not `self` allows switching to the previous child that has
@@ -24656,7 +24656,7 @@ export namespace Handy {
         get visibleChildName(): string;
         set visibleChildName(val: string);
 
-        // Constructors of Handy.Leaflet
+        // Constructors
 
         constructor(properties?: Partial<Leaflet.ConstructorProps>, ...args: any[]);
 
@@ -24664,11 +24664,11 @@ export namespace Handy {
 
         static ['new'](): Leaflet;
 
-        // Own virtual methods of Handy.Leaflet
+        // Virtual methods
 
         vfunc_todo(): void;
 
-        // Own methods of Handy.Leaflet
+        // Methods
 
         /**
          * Returns whether the #HdyLeaflet allows swiping to the previous child.
@@ -28803,7 +28803,7 @@ export namespace Handy {
     class Paginator extends Gtk.EventBox implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable, Swipeable {
         static $gtype: GObject.GType<Paginator>;
 
-        // Own properties of Handy.Paginator
+        // Properties
 
         /**
          * Sets whether the #HdyPaginator can be dragged with mouse pointer. If the
@@ -28898,7 +28898,7 @@ export namespace Handy {
         get spacing(): number;
         set spacing(val: number);
 
-        // Constructors of Handy.Paginator
+        // Constructors
 
         constructor(properties?: Partial<Paginator.ConstructorProps>, ...args: any[]);
 
@@ -28906,7 +28906,7 @@ export namespace Handy {
 
         static ['new'](): Paginator;
 
-        // Own signals of Handy.Paginator
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -28915,7 +28915,7 @@ export namespace Handy {
         connect_after(signal: 'page-changed', callback: (_source: this, index: number) => void): number;
         emit(signal: 'page-changed', index: number): void;
 
-        // Own methods of Handy.Paginator
+        // Methods
 
         /**
          * Sets whether `self` can be dragged with mouse pointer
@@ -33009,7 +33009,7 @@ export namespace Handy {
     class PreferencesGroup extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<PreferencesGroup>;
 
-        // Own properties of Handy.PreferencesGroup
+        // Properties
 
         /**
          * The description for this group of preferences.
@@ -33022,7 +33022,7 @@ export namespace Handy {
         get title(): string;
         set title(val: string);
 
-        // Constructors of Handy.PreferencesGroup
+        // Constructors
 
         constructor(properties?: Partial<PreferencesGroup.ConstructorProps>, ...args: any[]);
 
@@ -33030,7 +33030,7 @@ export namespace Handy {
 
         static ['new'](): PreferencesGroup;
 
-        // Own methods of Handy.PreferencesGroup
+        // Methods
 
         get_description(): string;
         /**
@@ -33485,7 +33485,7 @@ export namespace Handy {
     class PreferencesPage extends Gtk.ScrolledWindow implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<PreferencesPage>;
 
-        // Own properties of Handy.PreferencesPage
+        // Properties
 
         /**
          * The icon name for this page of preferences.
@@ -33503,7 +33503,7 @@ export namespace Handy {
         get title(): string;
         set title(val: string);
 
-        // Constructors of Handy.PreferencesPage
+        // Constructors
 
         constructor(properties?: Partial<PreferencesPage.ConstructorProps>, ...args: any[]);
 
@@ -33511,7 +33511,7 @@ export namespace Handy {
 
         static ['new'](): PreferencesPage;
 
-        // Own methods of Handy.PreferencesPage
+        // Methods
 
         /**
          * Gets the icon name for `self,` or %NULL.
@@ -33954,7 +33954,7 @@ export namespace Handy {
     class PreferencesRow extends Gtk.ListBoxRow implements Atk.ImplementorIface, Gtk.Actionable, Gtk.Buildable {
         static $gtype: GObject.GType<PreferencesRow>;
 
-        // Own properties of Handy.PreferencesRow
+        // Properties
 
         /**
          * The title of the preference represented by this row.
@@ -33974,7 +33974,7 @@ export namespace Handy {
         get useUnderline(): boolean;
         set useUnderline(val: boolean);
 
-        // Constructors of Handy.PreferencesRow
+        // Constructors
 
         constructor(properties?: Partial<PreferencesRow.ConstructorProps>, ...args: any[]);
 
@@ -33982,7 +33982,7 @@ export namespace Handy {
 
         static ['new'](): PreferencesRow;
 
-        // Own methods of Handy.PreferencesRow
+        // Methods
 
         /**
          * Gets the title of the preference represented by `self`.
@@ -38074,7 +38074,7 @@ export namespace Handy {
     class PreferencesWindow extends Gtk.Window implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<PreferencesWindow>;
 
-        // Constructors of Handy.PreferencesWindow
+        // Constructors
 
         constructor(properties?: Partial<PreferencesWindow.ConstructorProps>, ...args: any[]);
 
@@ -38502,7 +38502,7 @@ export namespace Handy {
     class SearchBar extends Gtk.Bin implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<SearchBar>;
 
-        // Own properties of Handy.SearchBar
+        // Properties
 
         /**
          * Whether the search mode is on and the search bar shown.
@@ -38529,7 +38529,7 @@ export namespace Handy {
         get showCloseButton(): boolean;
         set showCloseButton(val: boolean);
 
-        // Constructors of Handy.SearchBar
+        // Constructors
 
         constructor(properties?: Partial<SearchBar.ConstructorProps>, ...args: any[]);
 
@@ -38537,7 +38537,7 @@ export namespace Handy {
 
         static ['new'](): SearchBar;
 
-        // Own methods of Handy.SearchBar
+        // Methods
 
         /**
          * Connects the #GtkEntry widget passed as the one to be used in
@@ -39044,7 +39044,7 @@ export namespace Handy {
     class Squeezer extends Gtk.Container implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<Squeezer>;
 
-        // Own properties of Handy.Squeezer
+        // Properties
 
         get homogeneous(): boolean;
         set homogeneous(val: boolean);
@@ -39065,7 +39065,7 @@ export namespace Handy {
         get visible_child(): Gtk.Widget;
         get visibleChild(): Gtk.Widget;
 
-        // Constructors of Handy.Squeezer
+        // Constructors
 
         constructor(properties?: Partial<Squeezer.ConstructorProps>, ...args: any[]);
 
@@ -39073,7 +39073,7 @@ export namespace Handy {
 
         static ['new'](): Squeezer;
 
-        // Own methods of Handy.Squeezer
+        // Methods
 
         /**
          * Gets whether `child` is enabled.
@@ -39595,7 +39595,7 @@ export namespace Handy {
     class SwipeGroup extends GObject.Object implements Gtk.Buildable {
         static $gtype: GObject.GType<SwipeGroup>;
 
-        // Constructors of Handy.SwipeGroup
+        // Constructors
 
         constructor(properties?: Partial<SwipeGroup.ConstructorProps>, ...args: any[]);
 
@@ -39603,7 +39603,7 @@ export namespace Handy {
 
         static ['new'](): SwipeGroup;
 
-        // Own methods of Handy.SwipeGroup
+        // Methods
 
         /**
          * When the widget is destroyed or no longer referenced elsewhere, it will
@@ -40216,14 +40216,14 @@ export namespace Handy {
     class TitleBar extends Gtk.Bin implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<TitleBar>;
 
-        // Own properties of Handy.TitleBar
+        // Properties
 
         get selection_mode(): boolean;
         set selection_mode(val: boolean);
         get selectionMode(): boolean;
         set selectionMode(val: boolean);
 
-        // Constructors of Handy.TitleBar
+        // Constructors
 
         constructor(properties?: Partial<TitleBar.ConstructorProps>, ...args: any[]);
 
@@ -40231,7 +40231,7 @@ export namespace Handy {
 
         static ['new'](): TitleBar;
 
-        // Own methods of Handy.TitleBar
+        // Methods
 
         /**
          * Returns wether whether `self` is in selection mode.
@@ -40658,11 +40658,11 @@ export namespace Handy {
     class ValueObject extends GObject.Object {
         static $gtype: GObject.GType<ValueObject>;
 
-        // Own properties of Handy.ValueObject
+        // Properties
 
         get value(): GObject.Value;
 
-        // Constructors of Handy.ValueObject
+        // Constructors
 
         constructor(properties?: Partial<ValueObject.ConstructorProps>, ...args: any[]);
 
@@ -40670,7 +40670,7 @@ export namespace Handy {
 
         static ['new'](value: GObject.Value | any): ValueObject;
 
-        // Own methods of Handy.ValueObject
+        // Methods
 
         /**
          * Copy data from the contained #GValue into `dest`.
@@ -40715,7 +40715,7 @@ export namespace Handy {
     class ViewSwitcher extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<ViewSwitcher>;
 
-        // Own properties of Handy.ViewSwitcher
+        // Properties
 
         /**
          * Use the "icon-size" property to hint the icons to use, you almost certainly
@@ -40763,7 +40763,7 @@ export namespace Handy {
         get stack(): Gtk.Stack;
         set stack(val: Gtk.Stack);
 
-        // Constructors of Handy.ViewSwitcher
+        // Constructors
 
         constructor(properties?: Partial<ViewSwitcher.ConstructorProps>, ...args: any[]);
 
@@ -40771,7 +40771,7 @@ export namespace Handy {
 
         static ['new'](): ViewSwitcher;
 
-        // Own methods of Handy.ViewSwitcher
+        // Methods
 
         /**
          * Get the icon size of the images used in the #HdyViewSwitcher.
@@ -41258,7 +41258,7 @@ export namespace Handy {
     class ViewSwitcherBar extends Gtk.Bin implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<ViewSwitcherBar>;
 
-        // Own properties of Handy.ViewSwitcherBar
+        // Properties
 
         /**
          * Use the "icon-size" property to hint the icons to use, you almost certainly
@@ -41289,7 +41289,7 @@ export namespace Handy {
         get stack(): Gtk.Stack;
         set stack(val: Gtk.Stack);
 
-        // Constructors of Handy.ViewSwitcherBar
+        // Constructors
 
         constructor(properties?: Partial<ViewSwitcherBar.ConstructorProps>, ...args: any[]);
 
@@ -41297,7 +41297,7 @@ export namespace Handy {
 
         static ['new'](): ViewSwitcherBar;
 
-        // Own methods of Handy.ViewSwitcherBar
+        // Methods
 
         /**
          * Get the icon size of the images used in the #HdyViewSwitcher.
@@ -41781,7 +41781,7 @@ export namespace Handy {
         prototype: Swipeable;
     }
     interface Swipeable extends Gtk.Widget {
-        // Own virtual methods of Handy.Swipeable
+        // Virtual methods
 
         vfunc_begin_swipe(direction: number, direct: boolean): void;
         vfunc_end_swipe(duration: number, to: number): void;

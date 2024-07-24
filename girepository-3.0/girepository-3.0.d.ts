@@ -79,7 +79,7 @@ export namespace GIRepository {
     class InvokeError extends GLib.Error {
         static $gtype: GObject.GType<InvokeError>;
 
-        // Static fields of GIRepository.InvokeError
+        // Static fields
 
         /**
          * invocation failed, unknown error.
@@ -96,7 +96,7 @@ export namespace GIRepository {
          */
         static ARGUMENT_MISMATCH: number;
 
-        // Constructors of GIRepository.InvokeError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
@@ -506,11 +506,11 @@ export namespace GIRepository {
     class ArgInfo extends BaseInfo {
         static $gtype: GObject.GType<ArgInfo>;
 
-        // Constructors of GIRepository.ArgInfo
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of GIRepository.ArgInfo
+        // Methods
 
         /**
          * Obtain the index of the user data argument. This is only valid
@@ -636,11 +636,11 @@ export namespace GIRepository {
     abstract class BaseInfo {
         static $gtype: GObject.GType<BaseInfo>;
 
-        // Constructors of GIRepository.BaseInfo
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of GIRepository.BaseInfo
+        // Methods
 
         /**
          * Clears memory allocated internally by a stack-allocated
@@ -763,11 +763,11 @@ export namespace GIRepository {
     abstract class CallableInfo extends BaseInfo {
         static $gtype: GObject.GType<CallableInfo>;
 
-        // Constructors of GIRepository.CallableInfo
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of GIRepository.CallableInfo
+        // Methods
 
         /**
          * Whether the callable can throw a [type`GLib`.Error]
@@ -895,7 +895,7 @@ export namespace GIRepository {
     class CallbackInfo extends CallableInfo {
         static $gtype: GObject.GType<CallbackInfo>;
 
-        // Constructors of GIRepository.CallbackInfo
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -910,11 +910,11 @@ export namespace GIRepository {
     class ConstantInfo extends BaseInfo {
         static $gtype: GObject.GType<ConstantInfo>;
 
-        // Constructors of GIRepository.ConstantInfo
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of GIRepository.ConstantInfo
+        // Methods
 
         /**
          * Obtain the type of the constant as a [class`GIRepository`.TypeInfo].
@@ -935,11 +935,11 @@ export namespace GIRepository {
     class EnumInfo extends RegisteredTypeInfo {
         static $gtype: GObject.GType<EnumInfo>;
 
-        // Constructors of GIRepository.EnumInfo
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of GIRepository.EnumInfo
+        // Methods
 
         /**
          * Obtain the string form of the quark for the error domain associated with
@@ -998,11 +998,11 @@ export namespace GIRepository {
     class FieldInfo extends BaseInfo {
         static $gtype: GObject.GType<FieldInfo>;
 
-        // Constructors of GIRepository.FieldInfo
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of GIRepository.FieldInfo
+        // Methods
 
         /**
          * Obtain the flags for this `GIFieldInfo`. See
@@ -1042,7 +1042,7 @@ export namespace GIRepository {
     class FlagsInfo extends EnumInfo {
         static $gtype: GObject.GType<FlagsInfo>;
 
-        // Constructors of GIRepository.FlagsInfo
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1059,11 +1059,11 @@ export namespace GIRepository {
     class FunctionInfo extends CallableInfo {
         static $gtype: GObject.GType<FunctionInfo>;
 
-        // Constructors of GIRepository.FunctionInfo
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of GIRepository.FunctionInfo
+        // Methods
 
         /**
          * Obtain the [type`GIRepository`.FunctionInfoFlags] for the `info`.
@@ -1106,11 +1106,11 @@ export namespace GIRepository {
     class InterfaceInfo extends RegisteredTypeInfo {
         static $gtype: GObject.GType<InterfaceInfo>;
 
-        // Constructors of GIRepository.InterfaceInfo
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of GIRepository.InterfaceInfo
+        // Methods
 
         /**
          * Obtain a method of the interface type given a `name`.
@@ -1228,11 +1228,11 @@ export namespace GIRepository {
     class ObjectInfo extends RegisteredTypeInfo {
         static $gtype: GObject.GType<ObjectInfo>;
 
-        // Constructors of GIRepository.ObjectInfo
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of GIRepository.ObjectInfo
+        // Methods
 
         /**
          * Obtain a method of the object type given a `name`.
@@ -1468,11 +1468,11 @@ export namespace GIRepository {
     class PropertyInfo extends BaseInfo {
         static $gtype: GObject.GType<PropertyInfo>;
 
-        // Constructors of GIRepository.PropertyInfo
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of GIRepository.PropertyInfo
+        // Methods
 
         /**
          * Obtain the flags for this property info.
@@ -1535,11 +1535,11 @@ export namespace GIRepository {
     abstract class RegisteredTypeInfo extends BaseInfo {
         static $gtype: GObject.GType<RegisteredTypeInfo>;
 
-        // Constructors of GIRepository.RegisteredTypeInfo
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of GIRepository.RegisteredTypeInfo
+        // Methods
 
         /**
          * Obtain the [type`GObject`.Type] for this registered type.
@@ -1642,7 +1642,7 @@ export namespace GIRepository {
     class Repository extends GObject.Object {
         static $gtype: GObject.GType<Repository>;
 
-        // Constructors of GIRepository.Repository
+        // Constructors
 
         constructor(properties?: Partial<Repository.ConstructorProps>, ...args: any[]);
 
@@ -1650,7 +1650,7 @@ export namespace GIRepository {
 
         static ['new'](): Repository;
 
-        // Own static methods of GIRepository.Repository
+        // Static methods
 
         /**
          * Dump the introspection data from the types specified in `input_filename` to
@@ -1676,7 +1676,7 @@ export namespace GIRepository {
          */
         static get_option_group(): GLib.OptionGroup;
 
-        // Own methods of GIRepository.Repository
+        // Methods
 
         /**
          * Obtain an unordered list of versions (either currently loaded or
@@ -1975,11 +1975,11 @@ export namespace GIRepository {
     class SignalInfo extends CallableInfo {
         static $gtype: GObject.GType<SignalInfo>;
 
-        // Constructors of GIRepository.SignalInfo
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of GIRepository.SignalInfo
+        // Methods
 
         /**
          * Obtain the class closure for this signal if one is set.
@@ -2013,11 +2013,11 @@ export namespace GIRepository {
     class StructInfo extends RegisteredTypeInfo {
         static $gtype: GObject.GType<StructInfo>;
 
-        // Constructors of GIRepository.StructInfo
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of GIRepository.StructInfo
+        // Methods
 
         /**
          * Obtain the type information for field named `name`.
@@ -2110,11 +2110,11 @@ export namespace GIRepository {
     class TypeInfo extends BaseInfo {
         static $gtype: GObject.GType<TypeInfo>;
 
-        // Constructors of GIRepository.TypeInfo
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of GIRepository.TypeInfo
+        // Methods
 
         /**
          * Convert a data pointer from a GLib data structure to a
@@ -2244,11 +2244,11 @@ export namespace GIRepository {
     class UnionInfo extends RegisteredTypeInfo {
         static $gtype: GObject.GType<UnionInfo>;
 
-        // Constructors of GIRepository.UnionInfo
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of GIRepository.UnionInfo
+        // Methods
 
         /**
          * Obtain the type information for the method named `name`.
@@ -2333,7 +2333,7 @@ export namespace GIRepository {
     class UnresolvedInfo extends BaseInfo {
         static $gtype: GObject.GType<UnresolvedInfo>;
 
-        // Constructors of GIRepository.UnresolvedInfo
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2347,11 +2347,11 @@ export namespace GIRepository {
     class VFuncInfo extends CallableInfo {
         static $gtype: GObject.GType<VFuncInfo>;
 
-        // Constructors of GIRepository.VFuncInfo
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of GIRepository.VFuncInfo
+        // Methods
 
         /**
          * Looks up where the implementation for `info` is inside the type struct of
@@ -2402,11 +2402,11 @@ export namespace GIRepository {
     class ValueInfo extends BaseInfo {
         static $gtype: GObject.GType<ValueInfo>;
 
-        // Constructors of GIRepository.ValueInfo
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of GIRepository.ValueInfo
+        // Methods
 
         /**
          * Obtain the enumeration value of the `GIValueInfo`.
@@ -2422,7 +2422,7 @@ export namespace GIRepository {
     class AttributeIter {
         static $gtype: GObject.GType<AttributeIter>;
 
-        // Constructors of GIRepository.AttributeIter
+        // Constructors
 
         constructor(properties?: Partial<{}>);
         _init(...args: any[]): void;
@@ -2432,7 +2432,7 @@ export namespace GIRepository {
     class BaseInfoStack {
         static $gtype: GObject.GType<BaseInfoStack>;
 
-        // Constructors of GIRepository.BaseInfoStack
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2445,14 +2445,14 @@ export namespace GIRepository {
     class Typelib {
         static $gtype: GObject.GType<Typelib>;
 
-        // Constructors of GIRepository.Typelib
+        // Constructors
 
         constructor(bytes: GLib.Bytes | Uint8Array);
         _init(...args: any[]): void;
 
         static new_from_bytes(bytes: GLib.Bytes | Uint8Array): Typelib;
 
-        // Own methods of GIRepository.Typelib
+        // Methods
 
         /**
          * Get the name of the namespace represented by `typelib`.
@@ -2484,7 +2484,7 @@ export namespace GIRepository {
     class Argument {
         static $gtype: GObject.GType<Argument>;
 
-        // Own fields of GIRepository.Argument
+        // Fields
 
         v_boolean: boolean;
         v_int8: number;
@@ -2508,7 +2508,7 @@ export namespace GIRepository {
         v_string: string;
         v_pointer: any;
 
-        // Constructors of GIRepository.Argument
+        // Constructors
 
         constructor(
             properties?: Partial<{

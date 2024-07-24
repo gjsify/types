@@ -240,7 +240,7 @@ export namespace Jcat {
     class Blob extends GObject.Object {
         static $gtype: GObject.GType<Blob>;
 
-        // Constructors of Jcat.Blob
+        // Constructors
 
         constructor(properties?: Partial<Blob.ConstructorProps>, ...args: any[]);
 
@@ -252,7 +252,7 @@ export namespace Jcat {
 
         static new_utf8(kind: BlobKind, data: string): Blob;
 
-        // Own static methods of Jcat.Blob
+        // Static methods
 
         /**
          * Converts the string to an enumerated kind.
@@ -270,7 +270,7 @@ export namespace Jcat {
          */
         static kind_to_string(kind: BlobKind): string;
 
-        // Own methods of Jcat.Blob
+        // Methods
 
         /**
          * Gets the optional AppStream ID for the blob.
@@ -335,7 +335,7 @@ export namespace Jcat {
     class BtCheckpoint extends GObject.Object {
         static $gtype: GObject.GType<BtCheckpoint>;
 
-        // Constructors of Jcat.BtCheckpoint
+        // Constructors
 
         constructor(properties?: Partial<BtCheckpoint.ConstructorProps>, ...args: any[]);
 
@@ -343,7 +343,7 @@ export namespace Jcat {
 
         static ['new'](blob: GLib.Bytes | Uint8Array): BtCheckpoint;
 
-        // Own methods of Jcat.BtCheckpoint
+        // Methods
 
         /**
          * Gets the first 4 bytes of the SHA256 hash of the associated public key to act as a hint in
@@ -397,7 +397,7 @@ export namespace Jcat {
     class BtVerifier extends GObject.Object {
         static $gtype: GObject.GType<BtVerifier>;
 
-        // Constructors of Jcat.BtVerifier
+        // Constructors
 
         constructor(properties?: Partial<BtVerifier.ConstructorProps>, ...args: any[]);
 
@@ -405,7 +405,7 @@ export namespace Jcat {
 
         static ['new'](blob: GLib.Bytes | Uint8Array): BtVerifier;
 
-        // Own methods of Jcat.BtVerifier
+        // Methods
 
         /**
          * Gets the algorithm ID.
@@ -443,7 +443,7 @@ export namespace Jcat {
     class Context extends GObject.Object {
         static $gtype: GObject.GType<Context>;
 
-        // Constructors of Jcat.Context
+        // Constructors
 
         constructor(properties?: Partial<Context.ConstructorProps>, ...args: any[]);
 
@@ -451,7 +451,7 @@ export namespace Jcat {
 
         static ['new'](): Context;
 
-        // Own methods of Jcat.Context
+        // Methods
 
         /**
          * Adds a single public key.
@@ -538,7 +538,7 @@ export namespace Jcat {
     class Engine extends GObject.Object {
         static $gtype: GObject.GType<Engine>;
 
-        // Own properties of Jcat.Engine
+        // Properties
 
         get context(): Context;
         get kind(): number;
@@ -546,13 +546,13 @@ export namespace Jcat {
         get verify_kind(): number;
         get verifyKind(): number;
 
-        // Constructors of Jcat.Engine
+        // Constructors
 
         constructor(properties?: Partial<Engine.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of Jcat.Engine
+        // Virtual methods
 
         vfunc_add_public_key(filename: string): boolean;
         /**
@@ -603,7 +603,7 @@ export namespace Jcat {
         ): Result;
         vfunc_setup(): boolean;
 
-        // Own methods of Jcat.Engine
+        // Methods
 
         /**
          * Adds a public key manually.
@@ -673,7 +673,7 @@ export namespace Jcat {
     class File extends GObject.Object {
         static $gtype: GObject.GType<File>;
 
-        // Constructors of Jcat.File
+        // Constructors
 
         constructor(properties?: Partial<File.ConstructorProps>, ...args: any[]);
 
@@ -681,7 +681,7 @@ export namespace Jcat {
 
         static ['new'](): File;
 
-        // Own methods of Jcat.File
+        // Methods
 
         /**
          * Adds an item to a file.
@@ -776,7 +776,7 @@ export namespace Jcat {
     class Item extends GObject.Object {
         static $gtype: GObject.GType<Item>;
 
-        // Constructors of Jcat.Item
+        // Constructors
 
         constructor(properties?: Partial<Item.ConstructorProps>, ...args: any[]);
 
@@ -784,7 +784,7 @@ export namespace Jcat {
 
         static ['new'](id: string): Item;
 
-        // Own methods of Jcat.Item
+        // Methods
 
         /**
          * Adds an item alias ID. Alias IDs are matched when using functions such as
@@ -856,7 +856,7 @@ export namespace Jcat {
     class Result extends GObject.Object {
         static $gtype: GObject.GType<Result>;
 
-        // Own properties of Jcat.Result
+        // Properties
 
         get authority(): string;
         set authority(val: string);
@@ -864,13 +864,13 @@ export namespace Jcat {
         get timestamp(): number;
         set timestamp(val: number);
 
-        // Constructors of Jcat.Result
+        // Constructors
 
         constructor(properties?: Partial<Result.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Jcat.Result
+        // Methods
 
         /**
          * Gets the signing authority, if set.

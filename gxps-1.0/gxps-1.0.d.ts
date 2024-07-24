@@ -25,7 +25,7 @@ export namespace Gxps {
     class Error extends GLib.Error {
         static $gtype: GObject.GType<Error>;
 
-        // Static fields of Gxps.Error
+        // Static fields
 
         /**
          * Internal source file not found in XPS file
@@ -40,7 +40,7 @@ export namespace Gxps {
          */
         static IMAGE: number;
 
-        // Constructors of Gxps.Error
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
@@ -123,17 +123,17 @@ export namespace Gxps {
     class CoreProperties extends GObject.Object implements Gio.Initable {
         static $gtype: GObject.GType<CoreProperties>;
 
-        // Own properties of Gxps.CoreProperties
+        // Properties
 
         set source(val: string);
 
-        // Constructors of Gxps.CoreProperties
+        // Constructors
 
         constructor(properties?: Partial<CoreProperties.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Gxps.CoreProperties
+        // Methods
 
         /**
          * Get the category.
@@ -720,17 +720,17 @@ export namespace Gxps {
     class Document extends GObject.Object implements Gio.Initable {
         static $gtype: GObject.GType<Document>;
 
-        // Own properties of Gxps.Document
+        // Properties
 
         set source(val: string);
 
-        // Constructors of Gxps.Document
+        // Constructors
 
         constructor(properties?: Partial<Document.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Gxps.Document
+        // Methods
 
         /**
          * Gets the number of pages in `doc`.
@@ -1274,17 +1274,17 @@ export namespace Gxps {
     class DocumentStructure extends GObject.Object {
         static $gtype: GObject.GType<DocumentStructure>;
 
-        // Own properties of Gxps.DocumentStructure
+        // Properties
 
         set source(val: string);
 
-        // Constructors of Gxps.DocumentStructure
+        // Constructors
 
         constructor(properties?: Partial<DocumentStructure.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of Gxps.DocumentStructure
+        // Static methods
 
         /**
          * Initializes `iter` to the root item of the outline contained by `structure`
@@ -1318,7 +1318,7 @@ export namespace Gxps {
          */
         static outline_iter_init(iter: OutlineIter, structure: DocumentStructure): boolean;
 
-        // Own methods of Gxps.DocumentStructure
+        // Methods
 
         /**
          * Whether `structure` has an outline or not.
@@ -1342,11 +1342,11 @@ export namespace Gxps {
     class File extends GObject.Object implements Gio.Initable {
         static $gtype: GObject.GType<File>;
 
-        // Own properties of Gxps.File
+        // Properties
 
         set file(val: Gio.File);
 
-        // Constructors of Gxps.File
+        // Constructors
 
         constructor(properties?: Partial<File.ConstructorProps>, ...args: any[]);
 
@@ -1354,11 +1354,11 @@ export namespace Gxps {
 
         static ['new'](filename: Gio.File): File;
 
-        // Own static methods of Gxps.File
+        // Static methods
 
         static error_quark(): GLib.Quark;
 
-        // Own methods of Gxps.File
+        // Methods
 
         /**
          * Create a #GXPSCoreProperties object containing the metadata
@@ -1895,21 +1895,21 @@ export namespace Gxps {
     class Page extends GObject.Object implements Gio.Initable {
         static $gtype: GObject.GType<Page>;
 
-        // Own properties of Gxps.Page
+        // Properties
 
         set source(val: string);
 
-        // Constructors of Gxps.Page
+        // Constructors
 
         constructor(properties?: Partial<Page.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of Gxps.Page
+        // Static methods
 
         static error_quark(): GLib.Quark;
 
-        // Own methods of Gxps.Page
+        // Methods
 
         /**
          * Gets a list of #GXPSLink items that map from a location
@@ -2424,7 +2424,7 @@ export namespace Gxps {
     abstract class CorePropertiesPrivate {
         static $gtype: GObject.GType<CorePropertiesPrivate>;
 
-        // Constructors of Gxps.CorePropertiesPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2433,7 +2433,7 @@ export namespace Gxps {
     abstract class DocumentPrivate {
         static $gtype: GObject.GType<DocumentPrivate>;
 
-        // Constructors of Gxps.DocumentPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2442,7 +2442,7 @@ export namespace Gxps {
     abstract class DocumentStructurePrivate {
         static $gtype: GObject.GType<DocumentStructurePrivate>;
 
-        // Constructors of Gxps.DocumentStructurePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2451,7 +2451,7 @@ export namespace Gxps {
     abstract class FilePrivate {
         static $gtype: GObject.GType<FilePrivate>;
 
-        // Constructors of Gxps.FilePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2462,11 +2462,11 @@ export namespace Gxps {
     class Link {
         static $gtype: GObject.GType<Link>;
 
-        // Constructors of Gxps.Link
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of Gxps.Link
+        // Methods
 
         /**
          * Creates a copy of a #GXPSLink.
@@ -2490,11 +2490,11 @@ export namespace Gxps {
     class LinkTarget {
         static $gtype: GObject.GType<LinkTarget>;
 
-        // Constructors of Gxps.LinkTarget
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of Gxps.LinkTarget
+        // Methods
 
         /**
          * Creates a copy of a #GXPSLinkTarget
@@ -2533,12 +2533,12 @@ export namespace Gxps {
     class OutlineIter {
         static $gtype: GObject.GType<OutlineIter>;
 
-        // Constructors of Gxps.OutlineIter
+        // Constructors
 
         constructor(properties?: Partial<{}>);
         _init(...args: any[]): void;
 
-        // Own methods of Gxps.OutlineIter
+        // Methods
 
         /**
          * Initializes `iter` to the first child item of `parent`.
@@ -2575,7 +2575,7 @@ export namespace Gxps {
     abstract class PagePrivate {
         static $gtype: GObject.GType<PagePrivate>;
 
-        // Constructors of Gxps.PagePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }

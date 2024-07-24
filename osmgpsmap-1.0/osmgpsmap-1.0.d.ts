@@ -133,7 +133,7 @@ export namespace OsmGpsMap {
     class Map extends Gtk.DrawingArea implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<Map>;
 
-        // Own properties of OsmGpsMap.Map
+        // Properties
 
         get auto_center(): boolean;
         set auto_center(val: boolean);
@@ -427,7 +427,7 @@ export namespace OsmGpsMap {
          */
         get zoom(): number;
 
-        // Constructors of OsmGpsMap.Map
+        // Constructors
 
         constructor(properties?: Partial<Map.ConstructorProps>, ...args: any[]);
 
@@ -435,7 +435,7 @@ export namespace OsmGpsMap {
 
         static ['new'](): Map;
 
-        // Own signals of OsmGpsMap.Map
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -444,7 +444,7 @@ export namespace OsmGpsMap {
         connect_after(signal: 'changed', callback: (_source: this) => void): number;
         emit(signal: 'changed'): void;
 
-        // Own static methods of OsmGpsMap.Map
+        // Static methods
 
         static get_default_cache_directory(): string;
         static source_get_friendly_name(source: MapSource_t): string;
@@ -454,11 +454,11 @@ export namespace OsmGpsMap {
         static source_get_repo_uri(source: MapSource_t): string;
         static source_is_valid(source: MapSource_t): boolean;
 
-        // Own virtual methods of OsmGpsMap.Map
+        // Virtual methods
 
         vfunc_draw_gps_point(cr: cairo.Context): void;
 
-        // Own methods of OsmGpsMap.Map
+        // Methods
 
         /**
          * Convert the given location on the globe to the corresponding
@@ -985,7 +985,7 @@ export namespace OsmGpsMap {
     class MapImage extends GObject.Object {
         static $gtype: GObject.GType<MapImage>;
 
-        // Own properties of OsmGpsMap.MapImage
+        // Properties
 
         get pixbuf(): GdkPixbuf.Pixbuf;
         set pixbuf(val: GdkPixbuf.Pixbuf);
@@ -1006,7 +1006,7 @@ export namespace OsmGpsMap {
         get zOrder(): number;
         set zOrder(val: number);
 
-        // Constructors of OsmGpsMap.MapImage
+        // Constructors
 
         constructor(properties?: Partial<MapImage.ConstructorProps>, ...args: any[]);
 
@@ -1014,7 +1014,7 @@ export namespace OsmGpsMap {
 
         static ['new'](): MapImage;
 
-        // Own methods of OsmGpsMap.MapImage
+        // Methods
 
         draw(cr: cairo.Context, rect: Gdk.Rectangle): void;
         get_point(): MapPoint;
@@ -1053,7 +1053,7 @@ export namespace OsmGpsMap {
     class MapOsd extends GObject.Object implements MapLayer {
         static $gtype: GObject.GType<MapOsd>;
 
-        // Own properties of OsmGpsMap.MapOsd
+        // Properties
 
         /**
          * The dpad radius property.
@@ -1156,7 +1156,7 @@ export namespace OsmGpsMap {
         get showZoom(): boolean;
         set showZoom(val: boolean);
 
-        // Constructors of OsmGpsMap.MapOsd
+        // Constructors
 
         constructor(properties?: Partial<MapOsd.ConstructorProps>, ...args: any[]);
 
@@ -1589,7 +1589,7 @@ export namespace OsmGpsMap {
     class MapPolygon extends GObject.Object {
         static $gtype: GObject.GType<MapPolygon>;
 
-        // Own properties of OsmGpsMap.MapPolygon
+        // Properties
 
         get editable(): boolean;
         set editable(val: boolean);
@@ -1600,7 +1600,7 @@ export namespace OsmGpsMap {
         get visible(): boolean;
         set visible(val: boolean);
 
-        // Constructors of OsmGpsMap.MapPolygon
+        // Constructors
 
         constructor(properties?: Partial<MapPolygon.ConstructorProps>, ...args: any[]);
 
@@ -1644,7 +1644,7 @@ export namespace OsmGpsMap {
     class MapTrack extends GObject.Object {
         static $gtype: GObject.GType<MapTrack>;
 
-        // Own properties of OsmGpsMap.MapTrack
+        // Properties
 
         get alpha(): number;
         set alpha(val: number);
@@ -1660,7 +1660,7 @@ export namespace OsmGpsMap {
         get visible(): boolean;
         set visible(val: boolean);
 
-        // Constructors of OsmGpsMap.MapTrack
+        // Constructors
 
         constructor(properties?: Partial<MapTrack.ConstructorProps>, ...args: any[]);
 
@@ -1668,7 +1668,7 @@ export namespace OsmGpsMap {
 
         static ['new'](): MapTrack;
 
-        // Own signals of OsmGpsMap.MapTrack
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -1686,7 +1686,7 @@ export namespace OsmGpsMap {
         connect_after(signal: 'point-removed', callback: (_source: this, object: number) => void): number;
         emit(signal: 'point-removed', object: number): void;
 
-        // Own methods of OsmGpsMap.MapTrack
+        // Methods
 
         /**
          * track (in,out): a #OsmGpsMapTrack
@@ -1721,7 +1721,7 @@ export namespace OsmGpsMap {
     abstract class MapImagePrivate {
         static $gtype: GObject.GType<MapImagePrivate>;
 
-        // Constructors of OsmGpsMap.MapImagePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1731,7 +1731,7 @@ export namespace OsmGpsMap {
     abstract class MapOsdPrivate {
         static $gtype: GObject.GType<MapOsdPrivate>;
 
-        // Constructors of OsmGpsMap.MapOsdPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1739,12 +1739,12 @@ export namespace OsmGpsMap {
     class MapPoint {
         static $gtype: GObject.GType<MapPoint>;
 
-        // Own fields of OsmGpsMap.MapPoint
+        // Fields
 
         rlat: number;
         rlon: number;
 
-        // Constructors of OsmGpsMap.MapPoint
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -1758,7 +1758,7 @@ export namespace OsmGpsMap {
 
         static new_radians(rlat: number, rlon: number): MapPoint;
 
-        // Own methods of OsmGpsMap.MapPoint
+        // Methods
 
         copy(): MapPoint;
         free(): void;
@@ -1776,7 +1776,7 @@ export namespace OsmGpsMap {
     abstract class MapPolygonPrivate {
         static $gtype: GObject.GType<MapPolygonPrivate>;
 
-        // Constructors of OsmGpsMap.MapPolygonPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1784,7 +1784,7 @@ export namespace OsmGpsMap {
     abstract class MapPrivate {
         static $gtype: GObject.GType<MapPrivate>;
 
-        // Constructors of OsmGpsMap.MapPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1793,7 +1793,7 @@ export namespace OsmGpsMap {
     abstract class MapTrackPrivate {
         static $gtype: GObject.GType<MapTrackPrivate>;
 
-        // Constructors of OsmGpsMap.MapTrackPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1809,14 +1809,14 @@ export namespace OsmGpsMap {
         prototype: MapLayer;
     }
     interface MapLayer extends GObject.Object {
-        // Own methods of OsmGpsMap.MapLayer
+        // Methods
 
         busy(): boolean;
         button_press(map: Map, event: Gdk.EventButton): boolean;
         draw(map: Map, cr: cairo.Context): void;
         render(map: Map): void;
 
-        // Own virtual methods of OsmGpsMap.MapLayer
+        // Virtual methods
 
         vfunc_busy(): boolean;
         vfunc_button_press(map: Map, event: Gdk.EventButton): boolean;

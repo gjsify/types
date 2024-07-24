@@ -215,7 +215,7 @@ export namespace CudaGst {
     class DA_MEMCPY2D {
         static $gtype: GObject.GType<DA_MEMCPY2D>;
 
-        // Own fields of CudaGst.DA_MEMCPY2D
+        // Fields
 
         srcXInBytes: number;
         srcY: number;
@@ -234,7 +234,7 @@ export namespace CudaGst {
         WidthInBytes: number;
         Height: number;
 
-        // Constructors of CudaGst.DA_MEMCPY2D
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -242,12 +242,12 @@ export namespace CudaGst {
     class DA_RESOURCE_DESC {
         static $gtype: GObject.GType<DA_RESOURCE_DESC>;
 
-        // Own fields of CudaGst.DA_RESOURCE_DESC
+        // Fields
 
         resType: resourcetype;
         flags: number;
 
-        // Constructors of CudaGst.DA_RESOURCE_DESC
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -255,7 +255,7 @@ export namespace CudaGst {
     class DA_RESOURCE_VIEW_DESC {
         static $gtype: GObject.GType<DA_RESOURCE_VIEW_DESC>;
 
-        // Own fields of CudaGst.DA_RESOURCE_VIEW_DESC
+        // Fields
 
         format: resourceViewFormat;
         width: number;
@@ -267,7 +267,7 @@ export namespace CudaGst {
         lastLayer: number;
         reserved: number[];
 
-        // Constructors of CudaGst.DA_RESOURCE_VIEW_DESC
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -275,7 +275,7 @@ export namespace CudaGst {
     class DA_TEXTURE_DESC {
         static $gtype: GObject.GType<DA_TEXTURE_DESC>;
 
-        // Own fields of CudaGst.DA_TEXTURE_DESC
+        // Fields
 
         addressMode: address_mode[];
         filterMode: filter_mode;
@@ -288,7 +288,7 @@ export namespace CudaGst {
         borderColor: number[];
         reserved: number[];
 
-        // Constructors of CudaGst.DA_TEXTURE_DESC
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -296,11 +296,11 @@ export namespace CudaGst {
     class ipcEventHandle {
         static $gtype: GObject.GType<ipcEventHandle>;
 
-        // Own fields of CudaGst.ipcEventHandle
+        // Fields
 
         reserved: number[];
 
-        // Constructors of CudaGst.ipcEventHandle
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -313,11 +313,11 @@ export namespace CudaGst {
     class ipcMemHandle {
         static $gtype: GObject.GType<ipcMemHandle>;
 
-        // Own fields of CudaGst.ipcMemHandle
+        // Fields
 
         reserved: number[];
 
-        // Constructors of CudaGst.ipcMemHandle
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -330,11 +330,11 @@ export namespace CudaGst {
     class memAccessDesc {
         static $gtype: GObject.GType<memAccessDesc>;
 
-        // Own fields of CudaGst.memAccessDesc
+        // Fields
 
         flags: memAccess_flags;
 
-        // Constructors of CudaGst.memAccessDesc
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -342,14 +342,14 @@ export namespace CudaGst {
     class memAllocationProp {
         static $gtype: GObject.GType<memAllocationProp>;
 
-        // Own fields of CudaGst.memAllocationProp
+        // Fields
 
         type: memAllocationType;
         requestedHandleTypes: memAllocationHandleType;
         win32HandleMetaData: any;
         allocFlags: memAllocationPropAllocFlags;
 
-        // Constructors of CudaGst.memAllocationProp
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -357,14 +357,14 @@ export namespace CudaGst {
     class memAllocationPropAllocFlags {
         static $gtype: GObject.GType<memAllocationPropAllocFlags>;
 
-        // Own fields of CudaGst.memAllocationPropAllocFlags
+        // Fields
 
         compressionType: number;
         gpuDirectRDMACapable: number;
         usage: number;
         reserved: Uint8Array;
 
-        // Constructors of CudaGst.memAllocationPropAllocFlags
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -380,12 +380,12 @@ export namespace CudaGst {
     class memLocation {
         static $gtype: GObject.GType<memLocation>;
 
-        // Own fields of CudaGst.memLocation
+        // Fields
 
         type: memLocationType;
         id: number;
 
-        // Constructors of CudaGst.memLocation
+        // Constructors
 
         _init(...args: any[]): void;
     }

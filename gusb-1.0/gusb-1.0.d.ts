@@ -187,11 +187,11 @@ export namespace GUsb {
     class SourceError extends GLib.Error {
         static $gtype: GObject.GType<SourceError>;
 
-        // Static fields of GUsb.SourceError
+        // Static fields
 
         static SOURCE_ERROR_INTERNAL: number;
 
-        // Constructors of GUsb.SourceError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
@@ -265,13 +265,13 @@ export namespace GUsb {
     class BosDescriptor extends GObject.Object {
         static $gtype: GObject.GType<BosDescriptor>;
 
-        // Constructors of GUsb.BosDescriptor
+        // Constructors
 
         constructor(properties?: Partial<BosDescriptor.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of GUsb.BosDescriptor
+        // Methods
 
         /**
          * Gets the BOS descriptor capability.
@@ -313,7 +313,7 @@ export namespace GUsb {
     class Context extends GObject.Object implements Gio.Initable {
         static $gtype: GObject.GType<Context>;
 
-        // Own properties of GUsb.Context
+        // Properties
 
         get debug_level(): number;
         set debug_level(val: number);
@@ -322,7 +322,7 @@ export namespace GUsb {
         get libusb_context(): any;
         get libusbContext(): any;
 
-        // Constructors of GUsb.Context
+        // Constructors
 
         constructor(properties?: Partial<Context.ConstructorProps>, ...args: any[]);
 
@@ -330,7 +330,7 @@ export namespace GUsb {
 
         static ['new'](): Context;
 
-        // Own signals of GUsb.Context
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -345,17 +345,17 @@ export namespace GUsb {
         connect_after(signal: 'device-removed', callback: (_source: this, device: Device) => void): number;
         emit(signal: 'device-removed', device: Device): void;
 
-        // Own static methods of GUsb.Context
+        // Static methods
 
         static error_quark(): GLib.Quark;
 
-        // Own virtual methods of GUsb.Context
+        // Virtual methods
 
         vfunc_device_added(device: Device): void;
         vfunc_device_changed(device: Device): void;
         vfunc_device_removed(device: Device): void;
 
-        // Own methods of GUsb.Context
+        // Methods
 
         /**
          * Enumerates all the USB devices and adds them to the context.
@@ -974,7 +974,7 @@ export namespace GUsb {
     class Device extends GObject.Object implements Gio.Initable {
         static $gtype: GObject.GType<Device>;
 
-        // Own properties of GUsb.Device
+        // Properties
 
         set context(val: Context);
         get libusb_device(): any;
@@ -982,17 +982,17 @@ export namespace GUsb {
         set platform_id(val: string);
         set platformId(val: string);
 
-        // Constructors of GUsb.Device
+        // Constructors
 
         constructor(properties?: Partial<Device.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of GUsb.Device
+        // Static methods
 
         static error_quark(): GLib.Quark;
 
-        // Own methods of GUsb.Device
+        // Methods
 
         /**
          * Adds a tag, which is included in the JSON log to identify the specific device.
@@ -1924,13 +1924,13 @@ export namespace GUsb {
     class DeviceEvent extends GObject.Object {
         static $gtype: GObject.GType<DeviceEvent>;
 
-        // Constructors of GUsb.DeviceEvent
+        // Constructors
 
         constructor(properties?: Partial<DeviceEvent.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of GUsb.DeviceEvent
+        // Methods
 
         /**
          * Gets any bytes data from the event.
@@ -1980,11 +1980,11 @@ export namespace GUsb {
     class DeviceList extends GObject.Object {
         static $gtype: GObject.GType<DeviceList>;
 
-        // Own properties of GUsb.DeviceList
+        // Properties
 
         get context(): Context;
 
-        // Constructors of GUsb.DeviceList
+        // Constructors
 
         constructor(properties?: Partial<DeviceList.ConstructorProps>, ...args: any[]);
 
@@ -1992,7 +1992,7 @@ export namespace GUsb {
 
         static ['new'](context: Context): DeviceList;
 
-        // Own signals of GUsb.DeviceList
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -2004,12 +2004,12 @@ export namespace GUsb {
         connect_after(signal: 'device-removed', callback: (_source: this, device: Device) => void): number;
         emit(signal: 'device-removed', device: Device): void;
 
-        // Own virtual methods of GUsb.DeviceList
+        // Virtual methods
 
         vfunc_device_added(device: Device): void;
         vfunc_device_removed(device: Device): void;
 
-        // Own methods of GUsb.DeviceList
+        // Methods
 
         /**
          * This function does nothing.
@@ -2041,13 +2041,13 @@ export namespace GUsb {
     class Endpoint extends GObject.Object {
         static $gtype: GObject.GType<Endpoint>;
 
-        // Constructors of GUsb.Endpoint
+        // Constructors
 
         constructor(properties?: Partial<Endpoint.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of GUsb.Endpoint
+        // Methods
 
         /**
          * Gets the address of the endpoint.
@@ -2105,13 +2105,13 @@ export namespace GUsb {
     class Interface extends GObject.Object {
         static $gtype: GObject.GType<Interface>;
 
-        // Constructors of GUsb.Interface
+        // Constructors
 
         constructor(properties?: Partial<Interface.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of GUsb.Interface
+        // Methods
 
         /**
          * Gets the alternate setting for the interface.
@@ -2177,15 +2177,15 @@ export namespace GUsb {
     abstract class Source {
         static $gtype: GObject.GType<Source>;
 
-        // Constructors of GUsb.Source
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own static methods of GUsb.Source
+        // Static methods
 
         static error_quark(): GLib.Quark;
 
-        // Own methods of GUsb.Source
+        // Methods
 
         /**
          * This function does nothing.

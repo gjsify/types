@@ -530,17 +530,17 @@ export namespace GstValidate {
     class BinMonitor extends ElementMonitor implements Reporter {
         static $gtype: GObject.GType<BinMonitor>;
 
-        // Own properties of GstValidate.BinMonitor
+        // Properties
 
         get handles_states(): boolean;
         get handlesStates(): boolean;
 
-        // Own fields of GstValidate.BinMonitor
+        // Fields
 
         element_monitors: any[];
         scenario: Scenario;
 
-        // Constructors of GstValidate.BinMonitor
+        // Constructors
 
         constructor(properties?: Partial<BinMonitor.ConstructorProps>, ...args: any[]);
 
@@ -548,7 +548,7 @@ export namespace GstValidate {
 
         static ['new'](bin: Gst.Bin, runner: Runner, parent?: Monitor | null): BinMonitor;
 
-        // Own methods of GstValidate.BinMonitor
+        // Methods
 
         get_scenario(): Scenario | null;
 
@@ -971,7 +971,7 @@ export namespace GstValidate {
     class ElementMonitor extends Monitor implements Reporter {
         static $gtype: GObject.GType<ElementMonitor>;
 
-        // Constructors of GstValidate.ElementMonitor
+        // Constructors
 
         constructor(properties?: Partial<ElementMonitor.ConstructorProps>, ...args: any[]);
 
@@ -1447,18 +1447,18 @@ export namespace GstValidate {
     abstract class MediaDescriptor extends Gst.Object implements Reporter {
         static $gtype: GObject.GType<MediaDescriptor>;
 
-        // Own properties of GstValidate.MediaDescriptor
+        // Properties
 
         get validate_runner(): Runner;
         get validateRunner(): Runner;
 
-        // Constructors of GstValidate.MediaDescriptor
+        // Constructors
 
         constructor(properties?: Partial<MediaDescriptor.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of GstValidate.MediaDescriptor
+        // Methods
 
         _compare(compared: MediaDescriptor): boolean;
         detects_frames(): boolean;
@@ -1927,7 +1927,7 @@ export namespace GstValidate {
     class MediaDescriptorParser extends MediaDescriptor implements Reporter {
         static $gtype: GObject.GType<MediaDescriptorParser>;
 
-        // Constructors of GstValidate.MediaDescriptorParser
+        // Constructors
 
         constructor(properties?: Partial<MediaDescriptorParser.ConstructorProps>, ...args: any[]);
 
@@ -1937,7 +1937,7 @@ export namespace GstValidate {
 
         static new_from_xml(runner: Runner, xml: string): MediaDescriptorParser;
 
-        // Own methods of GstValidate.MediaDescriptorParser
+        // Methods
 
         add_stream(pad: Gst.Pad): boolean;
         add_taglist(taglist: Gst.TagList): boolean;
@@ -2410,7 +2410,7 @@ export namespace GstValidate {
     class MediaDescriptorWriter extends MediaDescriptor implements Reporter {
         static $gtype: GObject.GType<MediaDescriptorWriter>;
 
-        // Constructors of GstValidate.MediaDescriptorWriter
+        // Constructors
 
         constructor(properties?: Partial<MediaDescriptorWriter.ConstructorProps>, ...args: any[]);
 
@@ -2425,7 +2425,7 @@ export namespace GstValidate {
 
         static new_discover(runner: Runner, uri: string, flags: MediaDescriptorWriterFlags): MediaDescriptorWriter;
 
-        // Own methods of GstValidate.MediaDescriptorWriter
+        // Methods
 
         add_frame(pad: Gst.Pad, buf: Gst.Buffer): boolean;
         add_pad(pad: Gst.Pad): boolean;
@@ -2916,7 +2916,7 @@ export namespace GstValidate {
     abstract class Monitor extends Gst.Object implements Reporter {
         static $gtype: GObject.GType<Monitor>;
 
-        // Own properties of GstValidate.Monitor
+        // Properties
 
         // This accessor conflicts with a property or field in a parent class or interface.
         object: GObject.Object | any;
@@ -2929,20 +2929,20 @@ export namespace GstValidate {
         get verbosity(): VerbosityFlags;
         set verbosity(val: VerbosityFlags);
 
-        // Own fields of GstValidate.Monitor
+        // Fields
 
         target_name: string;
         overrides: GLib.Queue;
         media_descriptor: MediaDescriptor;
         level: ReportingDetails;
 
-        // Constructors of GstValidate.Monitor
+        // Constructors
 
         constructor(properties?: Partial<Monitor.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of GstValidate.Monitor
+        // Static methods
 
         /**
          * Create a new monitor for `target` and starts monitoring it.
@@ -2952,13 +2952,13 @@ export namespace GstValidate {
          */
         static factory_create(target: Gst.Object, runner: Runner, parent?: Monitor | null): Monitor;
 
-        // Own virtual methods of GstValidate.Monitor
+        // Virtual methods
 
         vfunc_get_element(): Gst.Element | null;
         vfunc_set_media_descriptor(media_descriptor: MediaDescriptor): void;
         vfunc_setup(): boolean;
 
-        // Own methods of GstValidate.Monitor
+        // Methods
 
         attach_override(override: Override): void;
         get_element(): Gst.Element | null;
@@ -3430,12 +3430,12 @@ export namespace GstValidate {
     class Override extends Gst.Object implements Reporter {
         static $gtype: GObject.GType<Override>;
 
-        // Own properties of GstValidate.Override
+        // Properties
 
         get validate_runner(): Runner;
         get validateRunner(): Runner;
 
-        // Constructors of GstValidate.Override
+        // Constructors
 
         constructor(properties?: Partial<Override.ConstructorProps>, ...args: any[]);
 
@@ -3443,17 +3443,17 @@ export namespace GstValidate {
 
         static ['new'](): Override;
 
-        // Own static methods of GstValidate.Override
+        // Static methods
 
         static register_by_klass(klass: string, override: Override): void;
         static register_by_name(name: string, override: Override): void;
         static register_by_type(gtype: GObject.GType, override: Override): void;
 
-        // Own virtual methods of GstValidate.Override
+        // Virtual methods
 
         vfunc_attached(): void;
 
-        // Own methods of GstValidate.Override
+        // Methods
 
         attached(): void;
         change_severity(issue_id: IssueId, new_level: ReportLevel): void;
@@ -3926,7 +3926,7 @@ export namespace GstValidate {
     class PadMonitor extends Monitor implements Reporter {
         static $gtype: GObject.GType<PadMonitor>;
 
-        // Own fields of GstValidate.PadMonitor
+        // Fields
 
         setup: boolean;
         chain_func: Gst.PadChainFunction;
@@ -3937,7 +3937,7 @@ export namespace GstValidate {
         get_range_func: Gst.PadGetRangeFunction;
         pad_probe_id: number;
 
-        // Constructors of GstValidate.PadMonitor
+        // Constructors
 
         constructor(properties?: Partial<PadMonitor.ConstructorProps>, ...args: any[]);
 
@@ -4415,7 +4415,7 @@ export namespace GstValidate {
     class PipelineMonitor extends BinMonitor implements Reporter {
         static $gtype: GObject.GType<PipelineMonitor>;
 
-        // Constructors of GstValidate.PipelineMonitor
+        // Constructors
 
         constructor(properties?: Partial<PipelineMonitor.ConstructorProps>, ...args: any[]);
 
@@ -4854,16 +4854,16 @@ export namespace GstValidate {
     class Runner extends Gst.Tracer {
         static $gtype: GObject.GType<Runner>;
 
-        // Own properties of GstValidate.Runner
+        // Properties
 
         get params(): string;
         set params(val: string);
 
-        // Own fields of GstValidate.Runner
+        // Fields
 
         object: Gst.Tracer;
 
-        // Constructors of GstValidate.Runner
+        // Constructors
 
         constructor(properties?: Partial<Runner.ConstructorProps>, ...args: any[]);
 
@@ -4871,7 +4871,7 @@ export namespace GstValidate {
 
         static ['new'](): Runner;
 
-        // Own signals of GstValidate.Runner
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -4883,7 +4883,7 @@ export namespace GstValidate {
         connect_after(signal: 'stopping', callback: (_source: this) => void): number;
         emit(signal: 'stopping'): void;
 
-        // Own methods of GstValidate.Runner
+        // Methods
 
         add_report(report: Report): void;
         exit(print_result: boolean): number;
@@ -4929,7 +4929,7 @@ export namespace GstValidate {
     class Scenario extends Gst.Object implements Reporter {
         static $gtype: GObject.GType<Scenario>;
 
-        // Own properties of GstValidate.Scenario
+        // Properties
 
         get execute_on_idle(): boolean;
         set execute_on_idle(val: boolean);
@@ -4940,13 +4940,13 @@ export namespace GstValidate {
         get validate_runner(): Runner;
         get validateRunner(): Runner;
 
-        // Constructors of GstValidate.Scenario
+        // Constructors
 
         constructor(properties?: Partial<Scenario.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of GstValidate.Scenario
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -4958,12 +4958,12 @@ export namespace GstValidate {
         connect_after(signal: 'done', callback: (_source: this) => void): number;
         emit(signal: 'done'): void;
 
-        // Own static methods of GstValidate.Scenario
+        // Static methods
 
         static deinit(): void;
         static factory_create(runner: Runner, pipeline: Gst.Element, scenario_name: string): Scenario | null;
 
-        // Own methods of GstValidate.Scenario
+        // Methods
 
         /**
          * Executes a seek event on the scenario's pipeline. You should always use
@@ -5464,12 +5464,12 @@ export namespace GstValidate {
     class Action {
         static $gtype: GObject.GType<Action>;
 
-        // Own fields of GstValidate.Action
+        // Fields
 
         type: string;
         name: string;
 
-        // Constructors of GstValidate.Action
+        // Constructors
 
         constructor(
             scenario: Scenario | null,
@@ -5486,7 +5486,7 @@ export namespace GstValidate {
             add_to_lists: boolean,
         ): Action;
 
-        // Own static methods of GstValidate.Action
+        // Static methods
 
         /**
          * Get a time value for the `name` parameter of an action. This
@@ -5501,7 +5501,7 @@ export namespace GstValidate {
          */
         static get_clocktime(scenario: Scenario, action: Action, name: string): [boolean, Gst.ClockTime];
 
-        // Own methods of GstValidate.Action
+        // Methods
 
         /**
          * Retrieve the scenario from which `action` is executed.
@@ -5516,7 +5516,7 @@ export namespace GstValidate {
     class ActionParameter {
         static $gtype: GObject.GType<ActionParameter>;
 
-        // Own fields of GstValidate.ActionParameter
+        // Fields
 
         name: string;
         description: string;
@@ -5526,7 +5526,7 @@ export namespace GstValidate {
         def: string;
         free: GLib.DestroyNotify;
 
-        // Constructors of GstValidate.ActionParameter
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5534,7 +5534,7 @@ export namespace GstValidate {
     abstract class ActionPrivate {
         static $gtype: GObject.GType<ActionPrivate>;
 
-        // Constructors of GstValidate.ActionPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5542,7 +5542,7 @@ export namespace GstValidate {
     class ActionType {
         static $gtype: GObject.GType<ActionType>;
 
-        // Own fields of GstValidate.ActionType
+        // Fields
 
         name: string;
         implementer_namespace: string;
@@ -5552,7 +5552,7 @@ export namespace GstValidate {
         flags: ActionTypeFlags;
         rank: Gst.Rank;
 
-        // Constructors of GstValidate.ActionType
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5560,7 +5560,7 @@ export namespace GstValidate {
     abstract class ActionTypePrivate {
         static $gtype: GObject.GType<ActionTypePrivate>;
 
-        // Constructors of GstValidate.ActionTypePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5570,7 +5570,7 @@ export namespace GstValidate {
     class Issue {
         static $gtype: GObject.GType<Issue>;
 
-        // Own fields of GstValidate.Issue
+        // Fields
 
         issue_id: IssueId;
         summary: string;
@@ -5581,7 +5581,7 @@ export namespace GstValidate {
         refcount: number;
         flags: IssueFlags;
 
-        // Constructors of GstValidate.Issue
+        // Constructors
 
         constructor(issue_id: IssueId, summary: string, description: string, default_level: ReportLevel);
         _init(...args: any[]): void;
@@ -5596,11 +5596,11 @@ export namespace GstValidate {
             flags: IssueFlags,
         ): Issue;
 
-        // Own static methods of GstValidate.Issue
+        // Static methods
 
         static from_id(issue_id: IssueId): Issue | null;
 
-        // Own methods of GstValidate.Issue
+        // Methods
 
         get_id(): number;
         /**
@@ -5615,7 +5615,7 @@ export namespace GstValidate {
     abstract class MediaDescriptorParserPrivate {
         static $gtype: GObject.GType<MediaDescriptorParserPrivate>;
 
-        // Constructors of GstValidate.MediaDescriptorParserPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5623,7 +5623,7 @@ export namespace GstValidate {
     abstract class MediaDescriptorPrivate {
         static $gtype: GObject.GType<MediaDescriptorPrivate>;
 
-        // Constructors of GstValidate.MediaDescriptorPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5632,7 +5632,7 @@ export namespace GstValidate {
     abstract class MediaDescriptorWriterPrivate {
         static $gtype: GObject.GType<MediaDescriptorWriterPrivate>;
 
-        // Constructors of GstValidate.MediaDescriptorWriterPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5645,7 +5645,7 @@ export namespace GstValidate {
     class MediaInfo {
         static $gtype: GObject.GType<MediaInfo>;
 
-        // Own fields of GstValidate.MediaInfo
+        // Fields
 
         duration: Gst.ClockTime;
         is_image: boolean;
@@ -5657,11 +5657,11 @@ export namespace GstValidate {
         uri: string;
         discover_only: boolean;
 
-        // Constructors of GstValidate.MediaInfo
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of GstValidate.MediaInfo
+        // Methods
 
         clear(): void;
         compare(extracted: MediaInfo): boolean;
@@ -5677,7 +5677,7 @@ export namespace GstValidate {
     abstract class OverridePrivate {
         static $gtype: GObject.GType<OverridePrivate>;
 
-        // Constructors of GstValidate.OverridePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5685,22 +5685,22 @@ export namespace GstValidate {
     class OverrideRegistry {
         static $gtype: GObject.GType<OverrideRegistry>;
 
-        // Own fields of GstValidate.OverrideRegistry
+        // Fields
 
         name_overrides: GLib.Queue;
         gtype_overrides: GLib.Queue;
         klass_overrides: GLib.Queue;
 
-        // Constructors of GstValidate.OverrideRegistry
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own static methods of GstValidate.OverrideRegistry
+        // Static methods
 
         static attach_overrides(monitor: Monitor): void;
         static preload(): number;
 
-        // Own methods of GstValidate.OverrideRegistry
+        // Methods
 
         get_override_list(): Override[];
     }
@@ -5709,7 +5709,7 @@ export namespace GstValidate {
     abstract class PadSeekData {
         static $gtype: GObject.GType<PadSeekData>;
 
-        // Constructors of GstValidate.PadSeekData
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5718,7 +5718,7 @@ export namespace GstValidate {
     class Report {
         static $gtype: GObject.GType<Report>;
 
-        // Own fields of GstValidate.Report
+        // Fields
 
         level: ReportLevel;
         reporter: Reporter;
@@ -5731,18 +5731,18 @@ export namespace GstValidate {
         trace: string;
         dotfile_name: string;
 
-        // Constructors of GstValidate.Report
+        // Constructors
 
         constructor(issue: Issue, reporter: Reporter, message: string);
         _init(...args: any[]): void;
 
         static ['new'](issue: Issue, reporter: Reporter, message: string): Report;
 
-        // Own static methods of GstValidate.Report
+        // Static methods
 
         static init(): void;
 
-        // Own methods of GstValidate.Report
+        // Methods
 
         add_message(message: string): void;
         add_repeated_report(repeated_report: Report): void;
@@ -5774,7 +5774,7 @@ export namespace GstValidate {
     abstract class RunnerPrivate {
         static $gtype: GObject.GType<RunnerPrivate>;
 
-        // Constructors of GstValidate.RunnerPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5783,7 +5783,7 @@ export namespace GstValidate {
     abstract class ScenarioPrivate {
         static $gtype: GObject.GType<ScenarioPrivate>;
 
-        // Constructors of GstValidate.ScenarioPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5791,7 +5791,7 @@ export namespace GstValidate {
     abstract class StreamInfo {
         static $gtype: GObject.GType<StreamInfo>;
 
-        // Constructors of GstValidate.StreamInfo
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5810,12 +5810,12 @@ export namespace GstValidate {
         prototype: Reporter;
     }
     interface Reporter extends GObject.Object {
-        // Own properties of GstValidate.Reporter
+        // Properties
 
         get validate_runner(): Runner;
         get validateRunner(): Runner;
 
-        // Own methods of GstValidate.Reporter
+        // Methods
 
         /**
          * Gets `name` of `reporter`
@@ -5860,7 +5860,7 @@ export namespace GstValidate {
         set_name(name?: string | null): void;
         set_runner(runner: Runner): void;
 
-        // Own virtual methods of GstValidate.Reporter
+        // Virtual methods
 
         vfunc_get_pipeline(): Gst.Pipeline | null;
         vfunc_get_reporting_level(): ReportingDetails;

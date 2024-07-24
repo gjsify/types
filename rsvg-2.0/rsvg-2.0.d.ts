@@ -26,19 +26,19 @@ export namespace Rsvg {
     class Error extends GLib.Error {
         static $gtype: GObject.GType<Error>;
 
-        // Static fields of Rsvg.Error
+        // Static fields
 
         /**
          * the request failed
          */
         static FAILED: number;
 
-        // Constructors of Rsvg.Error
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of Rsvg.Error
+        // Static methods
 
         /**
          * The error domain for RSVG
@@ -499,7 +499,7 @@ export namespace Rsvg {
     class Handle extends GObject.Object {
         static $gtype: GObject.GType<Handle>;
 
-        // Own properties of Rsvg.Handle
+        // Properties
 
         /**
          * Base URI, to be used to resolve relative references for resources.  See the section
@@ -570,7 +570,7 @@ export namespace Rsvg {
          */
         get width(): number;
 
-        // Constructors of Rsvg.Handle
+        // Constructors
 
         constructor(properties?: Partial<Handle.ConstructorProps>, ...args: any[]);
 
@@ -593,7 +593,7 @@ export namespace Rsvg {
 
         static new_with_flags(flags: HandleFlags): Handle;
 
-        // Own methods of Rsvg.Handle
+        // Methods
 
         /**
          * This is used after calling [method`Rsvg`.Handle.write] to indicate that there is no more data
@@ -1138,14 +1138,14 @@ export namespace Rsvg {
     class DimensionData {
         static $gtype: GObject.GType<DimensionData>;
 
-        // Own fields of Rsvg.DimensionData
+        // Fields
 
         width: number;
         height: number;
         em: number;
         ex: number;
 
-        // Constructors of Rsvg.DimensionData
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -1175,12 +1175,12 @@ export namespace Rsvg {
     class Length {
         static $gtype: GObject.GType<Length>;
 
-        // Own fields of Rsvg.Length
+        // Fields
 
         length: number;
         unit: Unit;
 
-        // Constructors of Rsvg.Length
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1192,12 +1192,12 @@ export namespace Rsvg {
     class PositionData {
         static $gtype: GObject.GType<PositionData>;
 
-        // Own fields of Rsvg.PositionData
+        // Fields
 
         x: number;
         y: number;
 
-        // Constructors of Rsvg.PositionData
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -1214,14 +1214,14 @@ export namespace Rsvg {
     class Rectangle {
         static $gtype: GObject.GType<Rectangle>;
 
-        // Own fields of Rsvg.Rectangle
+        // Fields
 
         x: number;
         y: number;
         width: number;
         height: number;
 
-        // Constructors of Rsvg.Rectangle
+        // Constructors
 
         constructor(
             properties?: Partial<{

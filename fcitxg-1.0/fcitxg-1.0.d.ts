@@ -76,11 +76,11 @@ export namespace FcitxG {
     class Client extends GObject.Object {
         static $gtype: GObject.GType<Client>;
 
-        // Own properties of FcitxG.Client
+        // Properties
 
         set watcher(val: Watcher);
 
-        // Constructors of FcitxG.Client
+        // Constructors
 
         constructor(properties?: Partial<Client.ConstructorProps>, ...args: any[]);
 
@@ -90,7 +90,7 @@ export namespace FcitxG {
 
         static new_with_watcher(watcher: Watcher): Client;
 
-        // Own signals of FcitxG.Client
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -183,7 +183,7 @@ export namespace FcitxG {
         ): number;
         emit(signal: 'update-formatted-preedit', preedit: PreeditItem[], cursor: number): void;
 
-        // Own methods of FcitxG.Client
+        // Methods
 
         /**
          * tell fcitx current client has focus
@@ -305,7 +305,7 @@ export namespace FcitxG {
     class Watcher extends GObject.Object {
         static $gtype: GObject.GType<Watcher>;
 
-        // Constructors of FcitxG.Watcher
+        // Constructors
 
         constructor(properties?: Partial<Watcher.ConstructorProps>, ...args: any[]);
 
@@ -313,7 +313,7 @@ export namespace FcitxG {
 
         static ['new'](): Watcher;
 
-        // Own signals of FcitxG.Watcher
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -322,7 +322,7 @@ export namespace FcitxG {
         connect_after(signal: 'availability-changed', callback: (_source: this, available: boolean) => void): number;
         emit(signal: 'availability-changed', available: boolean): void;
 
-        // Own methods of FcitxG.Watcher
+        // Methods
 
         /**
          * self: A #FcitxGWatcher
@@ -352,12 +352,12 @@ export namespace FcitxG {
     class CandidateItem {
         static $gtype: GObject.GType<CandidateItem>;
 
-        // Own fields of FcitxG.CandidateItem
+        // Fields
 
         label: string;
         candidate: string;
 
-        // Constructors of FcitxG.CandidateItem
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -372,7 +372,7 @@ export namespace FcitxG {
     abstract class ClientPrivate {
         static $gtype: GObject.GType<ClientPrivate>;
 
-        // Constructors of FcitxG.ClientPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -380,12 +380,12 @@ export namespace FcitxG {
     class PreeditItem {
         static $gtype: GObject.GType<PreeditItem>;
 
-        // Own fields of FcitxG.PreeditItem
+        // Fields
 
         string: string;
         type: number;
 
-        // Constructors of FcitxG.PreeditItem
+        // Constructors
 
         constructor(
             properties?: Partial<{

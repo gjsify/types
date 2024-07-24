@@ -43,7 +43,7 @@ export namespace UnityExtras {
     class PreviewPlayer extends GObject.Object {
         static $gtype: GObject.GType<PreviewPlayer>;
 
-        // Constructors of UnityExtras.PreviewPlayer
+        // Constructors
 
         constructor(properties?: Partial<PreviewPlayer.ConstructorProps>, ...args: any[]);
 
@@ -51,7 +51,7 @@ export namespace UnityExtras {
 
         static ['new'](): PreviewPlayer;
 
-        // Own signals of UnityExtras.PreviewPlayer
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -66,7 +66,7 @@ export namespace UnityExtras {
         ): number;
         emit(signal: 'progress', uri: string, state: Unity.MusicPreviewTrackState, progress: number): void;
 
-        // Own methods of UnityExtras.PreviewPlayer
+        // Methods
 
         play(uri: string, _callback_: Gio.AsyncReadyCallback<this>): void;
         play_finish(_res_: Gio.AsyncResult): void;
@@ -88,7 +88,7 @@ export namespace UnityExtras {
     abstract class PreviewPlayerPrivate {
         static $gtype: GObject.GType<PreviewPlayerPrivate>;
 
-        // Constructors of UnityExtras.PreviewPlayerPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }

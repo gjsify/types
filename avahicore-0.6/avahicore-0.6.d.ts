@@ -44,7 +44,7 @@ export namespace AvahiCore {
     class StringList {
         static $gtype: GObject.GType<StringList>;
 
-        // Constructors of AvahiCore.StringList
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -52,7 +52,7 @@ export namespace AvahiCore {
     class Address {
         static $gtype: GObject.GType<Address>;
 
-        // Constructors of AvahiCore.Address
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -60,7 +60,7 @@ export namespace AvahiCore {
     class Client {
         static $gtype: GObject.GType<Client>;
 
-        // Constructors of AvahiCore.Client
+        // Constructors
 
         _init(...args: any[]): void;
     }

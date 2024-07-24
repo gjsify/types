@@ -1719,13 +1719,13 @@ export namespace GIRepository {
     class Repository extends GObject.Object {
         static $gtype: GObject.GType<Repository>;
 
-        // Constructors of GIRepository.Repository
+        // Constructors
 
         constructor(properties?: Partial<Repository.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of GIRepository.Repository
+        // Static methods
 
         static dump(arg: string): boolean;
         static error_quark(): GLib.Quark;
@@ -1763,7 +1763,7 @@ export namespace GIRepository {
          */
         static prepend_search_path(directory: string): void;
 
-        // Own methods of GIRepository.Repository
+        // Methods
 
         /**
          * Obtain an unordered list of versions (either currently loaded or
@@ -1968,7 +1968,7 @@ export namespace GIRepository {
     class AttributeIter {
         static $gtype: GObject.GType<AttributeIter>;
 
-        // Constructors of GIRepository.AttributeIter
+        // Constructors
 
         constructor(properties?: Partial<{}>);
         _init(...args: any[]): void;
@@ -2024,12 +2024,12 @@ export namespace GIRepository {
     class BaseInfo {
         static $gtype: GObject.GType<BaseInfo>;
 
-        // Constructors of GIRepository.BaseInfo
+        // Constructors
 
         constructor(properties?: Partial<{}>);
         _init(...args: any[]): void;
 
-        // Own methods of GIRepository.BaseInfo
+        // Methods
 
         /**
          * Compare two #GIBaseInfo.
@@ -2118,7 +2118,7 @@ export namespace GIRepository {
     abstract class RepositoryPrivate {
         static $gtype: GObject.GType<RepositoryPrivate>;
 
-        // Constructors of GIRepository.RepositoryPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2129,11 +2129,11 @@ export namespace GIRepository {
     abstract class Typelib {
         static $gtype: GObject.GType<Typelib>;
 
-        // Constructors of GIRepository.Typelib
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of GIRepository.Typelib
+        // Methods
 
         free(): void;
         get_namespace(): string;
@@ -2146,7 +2146,7 @@ export namespace GIRepository {
     abstract class UnresolvedInfo {
         static $gtype: GObject.GType<UnresolvedInfo>;
 
-        // Constructors of GIRepository.UnresolvedInfo
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2157,7 +2157,7 @@ export namespace GIRepository {
     class Argument {
         static $gtype: GObject.GType<Argument>;
 
-        // Own fields of GIRepository.Argument
+        // Fields
 
         v_boolean: boolean;
         v_int8: number;
@@ -2181,7 +2181,7 @@ export namespace GIRepository {
         v_string: string;
         v_pointer: any;
 
-        // Constructors of GIRepository.Argument
+        // Constructors
 
         constructor(
             properties?: Partial<{

@@ -347,7 +347,7 @@ export namespace cairo {
     class Context {
         static $gtype: GObject.GType<Context>;
 
-        // Constructors of cairo.Context
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -355,7 +355,7 @@ export namespace cairo {
     class Device {
         static $gtype: GObject.GType<Device>;
 
-        // Constructors of cairo.Device
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -363,7 +363,7 @@ export namespace cairo {
     class Surface {
         static $gtype: GObject.GType<Surface>;
 
-        // Constructors of cairo.Surface
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -371,7 +371,7 @@ export namespace cairo {
     class Matrix {
         static $gtype: GObject.GType<Matrix>;
 
-        // Constructors of cairo.Matrix
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -379,7 +379,7 @@ export namespace cairo {
     class Pattern {
         static $gtype: GObject.GType<Pattern>;
 
-        // Constructors of cairo.Pattern
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -387,7 +387,7 @@ export namespace cairo {
     class Region {
         static $gtype: GObject.GType<Region>;
 
-        // Constructors of cairo.Region
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -395,7 +395,7 @@ export namespace cairo {
     class FontOptions {
         static $gtype: GObject.GType<FontOptions>;
 
-        // Constructors of cairo.FontOptions
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -403,7 +403,7 @@ export namespace cairo {
     class FontFace {
         static $gtype: GObject.GType<FontFace>;
 
-        // Constructors of cairo.FontFace
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -411,7 +411,7 @@ export namespace cairo {
     class ScaledFont {
         static $gtype: GObject.GType<ScaledFont>;
 
-        // Constructors of cairo.ScaledFont
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -419,7 +419,7 @@ export namespace cairo {
     class Path {
         static $gtype: GObject.GType<Path>;
 
-        // Constructors of cairo.Path
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -427,14 +427,14 @@ export namespace cairo {
     class Rectangle {
         static $gtype: GObject.GType<Rectangle>;
 
-        // Own fields of cairo.Rectangle
+        // Fields
 
         x: number;
         y: number;
         width: number;
         height: number;
 
-        // Constructors of cairo.Rectangle
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -450,14 +450,14 @@ export namespace cairo {
     class RectangleInt {
         static $gtype: GObject.GType<RectangleInt>;
 
-        // Own fields of cairo.RectangleInt
+        // Fields
 
         x: number;
         y: number;
         width: number;
         height: number;
 
-        // Constructors of cairo.RectangleInt
+        // Constructors
 
         constructor(
             properties?: Partial<{

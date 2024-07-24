@@ -53,12 +53,12 @@ export namespace Skk {
     class KeyEventFormatError extends GLib.Error {
         static $gtype: GObject.GType<KeyEventFormatError>;
 
-        // Static fields of Skk.KeyEventFormatError
+        // Static fields
 
         static PARSE_FAILED: number;
         static KEYSYM_NOT_FOUND: number;
 
-        // Constructors of Skk.KeyEventFormatError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
@@ -67,11 +67,11 @@ export namespace Skk {
     class RuleParseError extends GLib.Error {
         static $gtype: GObject.GType<RuleParseError>;
 
-        // Static fields of Skk.RuleParseError
+        // Static fields
 
         static FAILED: number;
 
-        // Constructors of Skk.RuleParseError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
@@ -2205,7 +2205,7 @@ export namespace Skk {
     class RomKanaConverter extends GObject.Object {
         static $gtype: GObject.GType<RomKanaConverter>;
 
-        // Own properties of Skk.RomKanaConverter
+        // Properties
 
         get kana_mode(): KanaMode;
         set kana_mode(val: KanaMode);
@@ -2219,7 +2219,7 @@ export namespace Skk {
         set output(val: string);
         get preedit(): string;
 
-        // Constructors of Skk.RomKanaConverter
+        // Constructors
 
         constructor(properties?: Partial<RomKanaConverter.ConstructorProps>, ...args: any[]);
 
@@ -2227,7 +2227,7 @@ export namespace Skk {
 
         static ['new'](): RomKanaConverter;
 
-        // Own methods of Skk.RomKanaConverter
+        // Methods
 
         is_valid(uc: number): boolean;
         output_nn_if_any(): boolean;
@@ -2256,18 +2256,18 @@ export namespace Skk {
     abstract class Dict extends GObject.Object {
         static $gtype: GObject.GType<Dict>;
 
-        // Own properties of Skk.Dict
+        // Properties
 
         get read_only(): boolean;
         get readOnly(): boolean;
 
-        // Constructors of Skk.Dict
+        // Constructors
 
         constructor(properties?: Partial<Dict.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of Skk.Dict
+        // Virtual methods
 
         vfunc_reload(): void;
         vfunc_lookup(midasi: string, okuri: boolean): Candidate[];
@@ -2277,7 +2277,7 @@ export namespace Skk {
         vfunc_save(): void;
         vfunc_get_read_only(): boolean;
 
-        // Own methods of Skk.Dict
+        // Methods
 
         split_candidates(midasi: string, okuri: boolean, line: string): Candidate[];
         join_candidates(candidates: Candidate[]): string;
@@ -2299,7 +2299,7 @@ export namespace Skk {
     class EmptyDict extends Dict {
         static $gtype: GObject.GType<EmptyDict>;
 
-        // Constructors of Skk.EmptyDict
+        // Constructors
 
         constructor(properties?: Partial<EmptyDict.ConstructorProps>, ...args: any[]);
 
@@ -2317,7 +2317,7 @@ export namespace Skk {
     class FileDict extends Dict {
         static $gtype: GObject.GType<FileDict>;
 
-        // Constructors of Skk.FileDict
+        // Constructors
 
         constructor(properties?: Partial<FileDict.ConstructorProps>, ...args: any[]);
 
@@ -2335,7 +2335,7 @@ export namespace Skk {
     class CdbDict extends Dict {
         static $gtype: GObject.GType<CdbDict>;
 
-        // Constructors of Skk.CdbDict
+        // Constructors
 
         constructor(properties?: Partial<CdbDict.ConstructorProps>, ...args: any[]);
 
@@ -2353,7 +2353,7 @@ export namespace Skk {
     class UserDict extends Dict {
         static $gtype: GObject.GType<UserDict>;
 
-        // Constructors of Skk.UserDict
+        // Constructors
 
         constructor(properties?: Partial<UserDict.ConstructorProps>, ...args: any[]);
 
@@ -2371,7 +2371,7 @@ export namespace Skk {
     class SkkServ extends Dict {
         static $gtype: GObject.GType<SkkServ>;
 
-        // Constructors of Skk.SkkServ
+        // Constructors
 
         constructor(properties?: Partial<SkkServ.ConstructorProps>, ...args: any[]);
 
@@ -2393,7 +2393,7 @@ export namespace Skk {
     class KeyEvent extends GObject.Object {
         static $gtype: GObject.GType<KeyEvent>;
 
-        // Own properties of Skk.KeyEvent
+        // Properties
 
         get name(): string;
         set name(val: string);
@@ -2402,7 +2402,7 @@ export namespace Skk {
         get modifiers(): ModifierType;
         set modifiers(val: ModifierType);
 
-        // Constructors of Skk.KeyEvent
+        // Constructors
 
         constructor(properties?: Partial<KeyEvent.ConstructorProps>, ...args: any[]);
 
@@ -2414,7 +2414,7 @@ export namespace Skk {
 
         static from_x_keysym(keyval: number, modifiers: ModifierType): KeyEvent;
 
-        // Own methods of Skk.KeyEvent
+        // Methods
 
         copy(): KeyEvent;
         to_string(): string;
@@ -2440,13 +2440,13 @@ export namespace Skk {
     abstract class KeyEventFilter extends GObject.Object {
         static $gtype: GObject.GType<KeyEventFilter>;
 
-        // Constructors of Skk.KeyEventFilter
+        // Constructors
 
         constructor(properties?: Partial<KeyEventFilter.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of Skk.KeyEventFilter
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -2455,12 +2455,12 @@ export namespace Skk {
         connect_after(signal: 'forwarded', callback: (_source: this, key: KeyEvent) => void): number;
         emit(signal: 'forwarded', key: KeyEvent): void;
 
-        // Own virtual methods of Skk.KeyEventFilter
+        // Virtual methods
 
         vfunc_filter_key_event(key: KeyEvent): KeyEvent | null;
         vfunc_reset(): void;
 
-        // Own methods of Skk.KeyEventFilter
+        // Methods
 
         filter_key_event(key: KeyEvent): KeyEvent | null;
         reset(): void;
@@ -2477,18 +2477,18 @@ export namespace Skk {
     class Rule extends GObject.Object {
         static $gtype: GObject.GType<Rule>;
 
-        // Own properties of Skk.Rule
+        // Properties
 
         get metadata(): RuleMetadata;
         set metadata(val: RuleMetadata);
 
-        // Own fields of Skk.Rule
+        // Fields
 
         keymaps: never[];
         keymaps_length1: number;
         rom_kana: never;
 
-        // Constructors of Skk.Rule
+        // Constructors
 
         constructor(properties?: Partial<Rule.ConstructorProps>, ...args: any[]);
 
@@ -2496,12 +2496,12 @@ export namespace Skk {
 
         static ['new'](name: string): Rule;
 
-        // Own static methods of Skk.Rule
+        // Static methods
 
         static find_rule(name: string): RuleMetadata | null;
         static list(): RuleMetadata[];
 
-        // Own methods of Skk.Rule
+        // Methods
 
         get_metadata(): RuleMetadata;
     }
@@ -2540,7 +2540,7 @@ export namespace Skk {
     class Context extends GObject.Object {
         static $gtype: GObject.GType<Context>;
 
-        // Own properties of Skk.Context
+        // Properties
 
         get candidates(): CandidateList;
         get input_mode(): InputMode;
@@ -2568,7 +2568,7 @@ export namespace Skk {
         get preedit(): string;
         set preedit(val: string);
 
-        // Constructors of Skk.Context
+        // Constructors
 
         constructor(properties?: Partial<Context.ConstructorProps>, ...args: any[]);
 
@@ -2576,7 +2576,7 @@ export namespace Skk {
 
         static ['new'](dictionaries: Dict[]): Context;
 
-        // Own signals of Skk.Context
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -2600,7 +2600,7 @@ export namespace Skk {
         ): number;
         emit(signal: 'delete-surrounding-text', offset: number, nchars: number): void;
 
-        // Own methods of Skk.Context
+        // Methods
 
         add_dictionary(dict: Dict): void;
         remove_dictionary(dict: Dict): void;
@@ -2645,7 +2645,7 @@ export namespace Skk {
     class Candidate extends GObject.Object {
         static $gtype: GObject.GType<Candidate>;
 
-        // Own properties of Skk.Candidate
+        // Properties
 
         get midasi(): string;
         set midasi(val: string);
@@ -2658,7 +2658,7 @@ export namespace Skk {
         get output(): string;
         set output(val: string);
 
-        // Constructors of Skk.Candidate
+        // Constructors
 
         constructor(properties?: Partial<Candidate.ConstructorProps>, ...args: any[]);
 
@@ -2672,7 +2672,7 @@ export namespace Skk {
             output?: string | null,
         ): Candidate;
 
-        // Own methods of Skk.Candidate
+        // Methods
 
         to_string(): string;
         get_midasi(): string;
@@ -2714,7 +2714,7 @@ export namespace Skk {
     abstract class CandidateList extends GObject.Object {
         static $gtype: GObject.GType<CandidateList>;
 
-        // Own properties of Skk.CandidateList
+        // Properties
 
         get cursor_pos(): number;
         get cursorPos(): number;
@@ -2730,13 +2730,13 @@ export namespace Skk {
         get page_visible(): boolean;
         get pageVisible(): boolean;
 
-        // Constructors of Skk.CandidateList
+        // Constructors
 
         constructor(properties?: Partial<CandidateList.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of Skk.CandidateList
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -2748,7 +2748,7 @@ export namespace Skk {
         connect_after(signal: 'selected', callback: (_source: this, candidate: Candidate) => void): number;
         emit(signal: 'selected', candidate: Candidate): void;
 
-        // Own virtual methods of Skk.CandidateList
+        // Virtual methods
 
         vfunc_get(index: number): Candidate;
         vfunc_clear(): void;
@@ -2770,7 +2770,7 @@ export namespace Skk {
         vfunc_set_page_size(value: number): void;
         vfunc_get_page_visible(): boolean;
 
-        // Own methods of Skk.CandidateList
+        // Methods
 
         get(index: number): Candidate;
         clear(): void;
@@ -2803,7 +2803,7 @@ export namespace Skk {
     class NicolaKeyEventFilter extends KeyEventFilter {
         static $gtype: GObject.GType<NicolaKeyEventFilter>;
 
-        // Own fields of Skk.NicolaKeyEventFilter
+        // Fields
 
         get_time_func: GetTime;
         get_time_func_target: any;
@@ -2814,7 +2814,7 @@ export namespace Skk {
         special_doubles: string[];
         special_doubles_length1: number;
 
-        // Constructors of Skk.NicolaKeyEventFilter
+        // Constructors
 
         constructor(properties?: Partial<NicolaKeyEventFilter.ConstructorProps>, ...args: any[]);
 
@@ -2827,7 +2827,7 @@ export namespace Skk {
     abstract class RomKanaConverterPrivate {
         static $gtype: GObject.GType<RomKanaConverterPrivate>;
 
-        // Constructors of Skk.RomKanaConverterPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2836,7 +2836,7 @@ export namespace Skk {
     abstract class DictPrivate {
         static $gtype: GObject.GType<DictPrivate>;
 
-        // Constructors of Skk.DictPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2845,7 +2845,7 @@ export namespace Skk {
     abstract class EmptyDictPrivate {
         static $gtype: GObject.GType<EmptyDictPrivate>;
 
-        // Constructors of Skk.EmptyDictPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2854,7 +2854,7 @@ export namespace Skk {
     abstract class FileDictPrivate {
         static $gtype: GObject.GType<FileDictPrivate>;
 
-        // Constructors of Skk.FileDictPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2863,7 +2863,7 @@ export namespace Skk {
     abstract class CdbDictPrivate {
         static $gtype: GObject.GType<CdbDictPrivate>;
 
-        // Constructors of Skk.CdbDictPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2872,7 +2872,7 @@ export namespace Skk {
     abstract class UserDictPrivate {
         static $gtype: GObject.GType<UserDictPrivate>;
 
-        // Constructors of Skk.UserDictPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2881,7 +2881,7 @@ export namespace Skk {
     abstract class SkkServPrivate {
         static $gtype: GObject.GType<SkkServPrivate>;
 
-        // Constructors of Skk.SkkServPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2890,7 +2890,7 @@ export namespace Skk {
     abstract class KeyEventPrivate {
         static $gtype: GObject.GType<KeyEventPrivate>;
 
-        // Constructors of Skk.KeyEventPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2899,7 +2899,7 @@ export namespace Skk {
     abstract class KeyEventFilterPrivate {
         static $gtype: GObject.GType<KeyEventFilterPrivate>;
 
-        // Constructors of Skk.KeyEventFilterPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2908,7 +2908,7 @@ export namespace Skk {
     abstract class RulePrivate {
         static $gtype: GObject.GType<RulePrivate>;
 
-        // Constructors of Skk.RulePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2917,7 +2917,7 @@ export namespace Skk {
     abstract class ContextPrivate {
         static $gtype: GObject.GType<ContextPrivate>;
 
-        // Constructors of Skk.ContextPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2926,7 +2926,7 @@ export namespace Skk {
     abstract class CandidatePrivate {
         static $gtype: GObject.GType<CandidatePrivate>;
 
-        // Constructors of Skk.CandidatePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2935,7 +2935,7 @@ export namespace Skk {
     abstract class CandidateListPrivate {
         static $gtype: GObject.GType<CandidateListPrivate>;
 
-        // Constructors of Skk.CandidateListPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2944,7 +2944,7 @@ export namespace Skk {
     abstract class NicolaKeyEventFilterPrivate {
         static $gtype: GObject.GType<NicolaKeyEventFilterPrivate>;
 
-        // Constructors of Skk.NicolaKeyEventFilterPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2952,7 +2952,7 @@ export namespace Skk {
     class RuleMetadata {
         static $gtype: GObject.GType<RuleMetadata>;
 
-        // Own fields of Skk.RuleMetadata
+        // Fields
 
         base_dir: string;
         name: string;
@@ -2960,7 +2960,7 @@ export namespace Skk {
         description: string;
         filter: string;
 
-        // Constructors of Skk.RuleMetadata
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -2973,7 +2973,7 @@ export namespace Skk {
         );
         _init(...args: any[]): void;
 
-        // Own methods of Skk.RuleMetadata
+        // Methods
 
         locate_map_file(type: string, name: string): string | null;
     }

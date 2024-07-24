@@ -104,13 +104,13 @@ export namespace Bamf {
     class Application extends View {
         static $gtype: GObject.GType<Application>;
 
-        // Constructors of Bamf.Application
+        // Constructors
 
         constructor(properties?: Partial<Application.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of Bamf.Application
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -125,7 +125,7 @@ export namespace Bamf {
         connect_after(signal: 'window-removed', callback: (_source: this, object: Window) => void): number;
         emit(signal: 'window-removed', object: Window): void;
 
-        // Own methods of Bamf.Application
+        // Methods
 
         /**
          * Used to fetch the bus name and the object path of the remote application menu.
@@ -173,17 +173,17 @@ export namespace Bamf {
     class Control extends GObject.Object {
         static $gtype: GObject.GType<Control>;
 
-        // Constructors of Bamf.Control
+        // Constructors
 
         constructor(properties?: Partial<Control.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of Bamf.Control
+        // Static methods
 
         static get_default(): Control;
 
-        // Own methods of Bamf.Control
+        // Methods
 
         create_local_desktop_file(application: Application): void;
         insert_desktop_file(desktop_file: string): void;
@@ -222,13 +222,13 @@ export namespace Bamf {
     class Matcher extends GObject.Object {
         static $gtype: GObject.GType<Matcher>;
 
-        // Constructors of Bamf.Matcher
+        // Constructors
 
         constructor(properties?: Partial<Matcher.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of Bamf.Matcher
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -258,14 +258,14 @@ export namespace Bamf {
         connect_after(signal: 'view-opened', callback: (_source: this, object: View) => void): number;
         emit(signal: 'view-opened', object: View): void;
 
-        // Own static methods of Bamf.Matcher
+        // Static methods
 
         /**
          * Returns the default matcher. This matcher is owned by bamf and shared between other callers.
          */
         static get_default(): Matcher;
 
-        // Own methods of Bamf.Matcher
+        // Methods
 
         application_is_running(desktop_file: string): boolean;
         /**
@@ -358,7 +358,7 @@ export namespace Bamf {
     class Tab extends View {
         static $gtype: GObject.GType<Tab>;
 
-        // Own properties of Bamf.Tab
+        // Properties
 
         get desktop_id(): string;
         get desktopId(): string;
@@ -367,13 +367,13 @@ export namespace Bamf {
         get location(): string;
         get xid(): number;
 
-        // Constructors of Bamf.Tab
+        // Constructors
 
         constructor(properties?: Partial<Tab.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of Bamf.Tab
+        // Virtual methods
 
         /**
          * Returns the desktop file for the tab.
@@ -386,7 +386,7 @@ export namespace Bamf {
          */
         vfunc_get_xid(): number;
 
-        // Own methods of Bamf.Tab
+        // Methods
 
         /**
          * Closes the selected `self` tab.
@@ -476,7 +476,7 @@ export namespace Bamf {
     class View extends GObject.InitiallyUnowned {
         static $gtype: GObject.GType<View>;
 
-        // Own properties of Bamf.View
+        // Properties
 
         get active(): boolean;
         get path(): string;
@@ -486,13 +486,13 @@ export namespace Bamf {
         get user_visible(): boolean;
         get userVisible(): boolean;
 
-        // Constructors of Bamf.View
+        // Constructors
 
         constructor(properties?: Partial<View.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of Bamf.View
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -531,7 +531,7 @@ export namespace Bamf {
         connect_after(signal: 'user-visible-changed', callback: (_source: this, object: boolean) => void): number;
         emit(signal: 'user-visible-changed', object: boolean): void;
 
-        // Own virtual methods of Bamf.View
+        // Virtual methods
 
         vfunc_active_changed(active: boolean): void;
         vfunc_child_added(child: View): void;
@@ -582,7 +582,7 @@ export namespace Bamf {
          */
         vfunc_view_type(): string;
 
-        // Own methods of Bamf.View
+        // Methods
 
         /**
          * Note: Makes sever dbus calls the first time this is called on a view. Dbus messaging is reduced afterwards.
@@ -654,13 +654,13 @@ export namespace Bamf {
     class Window extends View {
         static $gtype: GObject.GType<Window>;
 
-        // Constructors of Bamf.Window
+        // Constructors
 
         constructor(properties?: Partial<Window.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of Bamf.Window
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -675,7 +675,7 @@ export namespace Bamf {
         connect_after(signal: 'monitor-changed', callback: (_source: this, object: number, p0: number) => void): number;
         emit(signal: 'monitor-changed', object: number, p0: number): void;
 
-        // Own virtual methods of Bamf.Window
+        // Virtual methods
 
         vfunc_get_monitor(): number;
         vfunc_get_pid(): number;
@@ -688,7 +688,7 @@ export namespace Bamf {
         vfunc_maximized_changed(old_value: number, new_value: number): void;
         vfunc_monitor_changed(old_value: number, new_value: number): void;
 
-        // Own methods of Bamf.Window
+        // Methods
 
         get_monitor(): number;
         get_pid(): number;
@@ -704,7 +704,7 @@ export namespace Bamf {
     abstract class ApplicationPrivate {
         static $gtype: GObject.GType<ApplicationPrivate>;
 
-        // Constructors of Bamf.ApplicationPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -713,7 +713,7 @@ export namespace Bamf {
     abstract class ControlPrivate {
         static $gtype: GObject.GType<ControlPrivate>;
 
-        // Constructors of Bamf.ControlPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -722,7 +722,7 @@ export namespace Bamf {
     abstract class MatcherPrivate {
         static $gtype: GObject.GType<MatcherPrivate>;
 
-        // Constructors of Bamf.MatcherPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -731,7 +731,7 @@ export namespace Bamf {
     abstract class TabPrivate {
         static $gtype: GObject.GType<TabPrivate>;
 
-        // Constructors of Bamf.TabPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -740,7 +740,7 @@ export namespace Bamf {
     abstract class ViewPrivate {
         static $gtype: GObject.GType<ViewPrivate>;
 
-        // Constructors of Bamf.ViewPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -749,7 +749,7 @@ export namespace Bamf {
     abstract class WindowPrivate {
         static $gtype: GObject.GType<WindowPrivate>;
 
-        // Constructors of Bamf.WindowPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }

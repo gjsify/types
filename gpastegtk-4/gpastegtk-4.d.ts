@@ -98,7 +98,7 @@ export namespace GPasteGtk {
     {
         static $gtype: GObject.GType<PreferencesBehaviourPage>;
 
-        // Constructors of GPasteGtk.PreferencesBehaviourPage
+        // Constructors
 
         constructor(properties?: Partial<PreferencesBehaviourPage.ConstructorProps>, ...args: any[]);
 
@@ -525,7 +525,7 @@ export namespace GPasteGtk {
     class PreferencesGroup extends Adw.PreferencesGroup implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
         static $gtype: GObject.GType<PreferencesGroup>;
 
-        // Constructors of GPasteGtk.PreferencesGroup
+        // Constructors
 
         constructor(properties?: Partial<PreferencesGroup.ConstructorProps>, ...args: any[]);
 
@@ -536,7 +536,7 @@ export namespace GPasteGtk {
 
         static ['new'](...args: never[]): any;
 
-        // Own methods of GPasteGtk.PreferencesGroup
+        // Methods
 
         /**
          * Add a new boolean settings to the current pane
@@ -1006,7 +1006,7 @@ export namespace GPasteGtk {
     {
         static $gtype: GObject.GType<PreferencesHistorySettingsPage>;
 
-        // Constructors of GPasteGtk.PreferencesHistorySettingsPage
+        // Constructors
 
         constructor(properties?: Partial<PreferencesHistorySettingsPage.ConstructorProps>, ...args: any[]);
 
@@ -1429,7 +1429,7 @@ export namespace GPasteGtk {
     class PreferencesManager extends GObject.Object {
         static $gtype: GObject.GType<PreferencesManager>;
 
-        // Constructors of GPasteGtk.PreferencesManager
+        // Constructors
 
         constructor(properties?: Partial<PreferencesManager.ConstructorProps>, ...args: any[]);
 
@@ -1437,7 +1437,7 @@ export namespace GPasteGtk {
 
         static ['new'](): PreferencesManager;
 
-        // Own methods of GPasteGtk.PreferencesManager
+        // Methods
 
         /**
          * Deregister the page from the manager
@@ -1469,13 +1469,13 @@ export namespace GPasteGtk {
     class PreferencesPage extends Adw.PreferencesPage implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
         static $gtype: GObject.GType<PreferencesPage>;
 
-        // Constructors of GPasteGtk.PreferencesPage
+        // Constructors
 
         constructor(properties?: Partial<PreferencesPage.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of GPasteGtk.PreferencesPage
+        // Virtual methods
 
         /**
          * Apply changes related to the update of one setting
@@ -1484,7 +1484,7 @@ export namespace GPasteGtk {
          */
         vfunc_setting_changed(settings: GPaste.Settings, key: string): void;
 
-        // Own methods of GPasteGtk.PreferencesPage
+        // Methods
 
         /**
          * Apply changes related to the update of one setting
@@ -1912,7 +1912,7 @@ export namespace GPasteGtk {
     {
         static $gtype: GObject.GType<PreferencesShortcutsPage>;
 
-        // Constructors of GPasteGtk.PreferencesShortcutsPage
+        // Constructors
 
         constructor(properties?: Partial<PreferencesShortcutsPage.ConstructorProps>, ...args: any[]);
 
@@ -2339,7 +2339,7 @@ export namespace GPasteGtk {
     class PreferencesWidget extends Adw.Bin implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
         static $gtype: GObject.GType<PreferencesWidget>;
 
-        // Constructors of GPasteGtk.PreferencesWidget
+        // Constructors
 
         constructor(properties?: Partial<PreferencesWidget.ConstructorProps>, ...args: any[]);
 
@@ -2769,7 +2769,7 @@ export namespace GPasteGtk {
     {
         static $gtype: GObject.GType<PreferencesWindow>;
 
-        // Constructors of GPasteGtk.PreferencesWindow
+        // Constructors
 
         constructor(properties?: Partial<PreferencesWindow.ConstructorProps>, ...args: any[]);
 

@@ -1178,13 +1178,13 @@ export namespace ICalGLib {
     class Array extends Object {
         static $gtype: GObject.GType<Array>;
 
-        // Constructors of ICalGLib.Array
+        // Constructors
 
         constructor(properties?: Partial<Array.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of ICalGLib.Array
+        // Methods
 
         /**
          * Creates a deep copy of #ICalArray with the same properties as the `array`.
@@ -1215,7 +1215,7 @@ export namespace ICalGLib {
     class Attach extends Object {
         static $gtype: GObject.GType<Attach>;
 
-        // Constructors of ICalGLib.Attach
+        // Constructors
 
         constructor(properties?: Partial<Attach.ConstructorProps>, ...args: any[]);
 
@@ -1227,7 +1227,7 @@ export namespace ICalGLib {
 
         static new_from_url(url: string): Attach;
 
-        // Own methods of ICalGLib.Attach
+        // Methods
 
         /**
          * Gets the data, if the #ICalAttach is built from the data.
@@ -1260,13 +1260,13 @@ export namespace ICalGLib {
     class CompIter extends Object {
         static $gtype: GObject.GType<CompIter>;
 
-        // Constructors of ICalGLib.CompIter
+        // Constructors
 
         constructor(properties?: Partial<CompIter.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of ICalGLib.CompIter
+        // Methods
 
         /**
          * Gets the current #ICalComponent pointed by #ICalCompIter.
@@ -1297,7 +1297,7 @@ export namespace ICalGLib {
     class Component extends Object {
         static $gtype: GObject.GType<Component>;
 
-        // Constructors of ICalGLib.Component
+        // Constructors
 
         constructor(properties?: Partial<Component.ConstructorProps>, ...args: any[]);
 
@@ -1341,7 +1341,7 @@ export namespace ICalGLib {
 
         static new_xvote(): Component;
 
-        // Own static methods of ICalGLib.Component
+        // Static methods
 
         /**
          * Converts a string to a #ICalComponentKind.
@@ -1359,7 +1359,7 @@ export namespace ICalGLib {
          */
         static kind_to_string(kind: ComponentKind): string;
 
-        // Own methods of ICalGLib.Component
+        // Methods
 
         /**
          * Adds a #ICalComponent into another #ICalComponent as a child component.
@@ -1696,7 +1696,7 @@ export namespace ICalGLib {
     class Datetimeperiod extends Object {
         static $gtype: GObject.GType<Datetimeperiod>;
 
-        // Constructors of ICalGLib.Datetimeperiod
+        // Constructors
 
         constructor(properties?: Partial<Datetimeperiod.ConstructorProps>, ...args: any[]);
 
@@ -1704,7 +1704,7 @@ export namespace ICalGLib {
 
         static ['new'](): Datetimeperiod;
 
-        // Own methods of ICalGLib.Datetimeperiod
+        // Methods
 
         /**
          * Gets the period attribute of #ICalDatetimeperiod.
@@ -1740,7 +1740,7 @@ export namespace ICalGLib {
     class Duration extends Object {
         static $gtype: GObject.GType<Duration>;
 
-        // Constructors of ICalGLib.Duration
+        // Constructors
 
         constructor(properties?: Partial<Duration.ConstructorProps>, ...args: any[]);
 
@@ -1754,7 +1754,7 @@ export namespace ICalGLib {
 
         static new_null_duration(): Duration;
 
-        // Own methods of ICalGLib.Duration
+        // Methods
 
         /**
          * Converts the #ICalDuration to the representation in string.
@@ -1850,7 +1850,7 @@ export namespace ICalGLib {
     class Geo extends Object {
         static $gtype: GObject.GType<Geo>;
 
-        // Constructors of ICalGLib.Geo
+        // Constructors
 
         constructor(properties?: Partial<Geo.ConstructorProps>, ...args: any[]);
 
@@ -1858,7 +1858,7 @@ export namespace ICalGLib {
 
         static ['new'](lat: number, lon: number): Geo;
 
-        // Own methods of ICalGLib.Geo
+        // Methods
 
         /**
          * Creates a new #ICalGeo, copy of `geo`.
@@ -1908,7 +1908,7 @@ export namespace ICalGLib {
     abstract class Object extends GObject.Object {
         static $gtype: GObject.GType<Object>;
 
-        // Own properties of ICalGLib.Object
+        // Properties
 
         /**
          * Whether free the native libical structure on #ICalObject's finalize even
@@ -1953,13 +1953,13 @@ export namespace ICalGLib {
         get owner(): GObject.Object;
         set owner(val: GObject.Object);
 
-        // Constructors of ICalGLib.Object
+        // Constructors
 
         constructor(properties?: Partial<Object.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of ICalGLib.Object
+        // Static methods
 
         /**
          * Frees all global objects. Any references to them are invalidated
@@ -1967,7 +1967,7 @@ export namespace ICalGLib {
          */
         static free_global_objects(): void;
 
-        // Own methods of ICalGLib.Object
+        // Methods
 
         /**
          * Adds a `depender` into the list of objects which should not be destroyed before
@@ -2042,7 +2042,7 @@ export namespace ICalGLib {
     class Parameter extends Object {
         static $gtype: GObject.GType<Parameter>;
 
-        // Constructors of ICalGLib.Parameter
+        // Constructors
 
         constructor(properties?: Partial<Parameter.ConstructorProps>, ...args: any[]);
 
@@ -2154,7 +2154,7 @@ export namespace ICalGLib {
 
         static new_xlicerrortype(v: ParameterXlicerrortype): Parameter;
 
-        // Own static methods of ICalGLib.Parameter
+        // Static methods
 
         /**
          * Converts a string to the #ICalParameterKind.
@@ -2177,7 +2177,7 @@ export namespace ICalGLib {
          */
         static value_to_value_kind(value: ParameterValue): ValueKind;
 
-        // Own methods of ICalGLib.Parameter
+        // Methods
 
         /**
          * Converts an #ICalParameter to the string representation.
@@ -2369,7 +2369,7 @@ export namespace ICalGLib {
     class Parser extends Object {
         static $gtype: GObject.GType<Parser>;
 
-        // Constructors of ICalGLib.Parser
+        // Constructors
 
         constructor(properties?: Partial<Parser.ConstructorProps>, ...args: any[]);
 
@@ -2377,7 +2377,7 @@ export namespace ICalGLib {
 
         static ['new'](): Parser;
 
-        // Own static methods of ICalGLib.Parser
+        // Static methods
 
         /**
          * Parses the string into a #ICalComponent.
@@ -2385,7 +2385,7 @@ export namespace ICalGLib {
          */
         static parse_string(str: string): Component;
 
-        // Own methods of ICalGLib.Parser
+        // Methods
 
         /**
          * Add a line at one time into the #ICalParser until the parsing is complete and #ICalComponent will be
@@ -2437,7 +2437,7 @@ export namespace ICalGLib {
     class Period extends Object {
         static $gtype: GObject.GType<Period>;
 
-        // Constructors of ICalGLib.Period
+        // Constructors
 
         constructor(properties?: Partial<Period.ConstructorProps>, ...args: any[]);
 
@@ -2447,7 +2447,7 @@ export namespace ICalGLib {
 
         static new_null_period(): Period;
 
-        // Own methods of ICalGLib.Period
+        // Methods
 
         /**
          * Translates #ICalPeriod to string.
@@ -2508,7 +2508,7 @@ export namespace ICalGLib {
     class Property extends Object {
         static $gtype: GObject.GType<Property>;
 
-        // Constructors of ICalGLib.Property
+        // Constructors
 
         constructor(properties?: Partial<Property.ConstructorProps>, ...args: any[]);
 
@@ -2746,7 +2746,7 @@ export namespace ICalGLib {
 
         static new_xlicmimeoptinfo(v: string): Property;
 
-        // Own static methods of ICalGLib.Property
+        // Static methods
 
         /**
          * Converts the enum to string.
@@ -2814,7 +2814,7 @@ export namespace ICalGLib {
          */
         static status_to_string(method: PropertyStatus): string;
 
-        // Own methods of ICalGLib.Property
+        // Methods
 
         /**
          * Adds a #ICalParameter into the #ICalProperty. It behaves like set the copy of the #ICalParameter. Upon
@@ -4108,7 +4108,7 @@ export namespace ICalGLib {
     class RecurIterator extends Object {
         static $gtype: GObject.GType<RecurIterator>;
 
-        // Constructors of ICalGLib.RecurIterator
+        // Constructors
 
         constructor(properties?: Partial<RecurIterator.ConstructorProps>, ...args: any[]);
 
@@ -4116,7 +4116,7 @@ export namespace ICalGLib {
 
         static ['new'](rule: Recurrence, dtstart: Time): RecurIterator;
 
-        // Own methods of ICalGLib.RecurIterator
+        // Methods
 
         /**
          * Gets the next occurrence from an iterator.
@@ -4145,7 +4145,7 @@ export namespace ICalGLib {
     class Recurrence extends Object {
         static $gtype: GObject.GType<Recurrence>;
 
-        // Constructors of ICalGLib.Recurrence
+        // Constructors
 
         constructor(properties?: Partial<Recurrence.ConstructorProps>, ...args: any[]);
 
@@ -4155,7 +4155,7 @@ export namespace ICalGLib {
 
         static new_from_string(str: string): Recurrence;
 
-        // Own static methods of ICalGLib.Recurrence
+        // Static methods
 
         /**
          * Decodes a day to a weekday in a week.
@@ -4212,7 +4212,7 @@ export namespace ICalGLib {
          */
         static weekday_to_string(kind: RecurrenceWeekday): string;
 
-        // Own methods of ICalGLib.Recurrence
+        // Methods
 
         /**
          * Resets an #ICalRecurrence.
@@ -4494,7 +4494,7 @@ export namespace ICalGLib {
     class Reqstat extends Object {
         static $gtype: GObject.GType<Reqstat>;
 
-        // Constructors of ICalGLib.Reqstat
+        // Constructors
 
         constructor(properties?: Partial<Reqstat.ConstructorProps>, ...args: any[]);
 
@@ -4502,7 +4502,7 @@ export namespace ICalGLib {
 
         static new_from_string(str: string): Reqstat;
 
-        // Own methods of ICalGLib.Reqstat
+        // Methods
 
         /**
          * Gets the code of #ICalReqstat.
@@ -4543,7 +4543,7 @@ export namespace ICalGLib {
     class Time extends Object {
         static $gtype: GObject.GType<Time>;
 
-        // Constructors of ICalGLib.Time
+        // Constructors
 
         constructor(properties?: Partial<Time.ConstructorProps>, ...args: any[]);
 
@@ -4565,7 +4565,7 @@ export namespace ICalGLib {
 
         static new_today(): Time;
 
-        // Own static methods of ICalGLib.Time
+        // Static methods
 
         /**
          * Gets the number of days in the target month in the target year.
@@ -4591,7 +4591,7 @@ export namespace ICalGLib {
          */
         static timezone_expand_vtimezone(comp: Component, end_year: number, changes: Array): void;
 
-        // Own methods of ICalGLib.Time
+        // Methods
 
         /**
          * Adds a time duration on the time.
@@ -4850,7 +4850,7 @@ export namespace ICalGLib {
     class TimeSpan extends Object {
         static $gtype: GObject.GType<TimeSpan>;
 
-        // Constructors of ICalGLib.TimeSpan
+        // Constructors
 
         constructor(properties?: Partial<TimeSpan.ConstructorProps>, ...args: any[]);
 
@@ -4860,7 +4860,7 @@ export namespace ICalGLib {
 
         static new_timet(start: number, end: number, is_busy: boolean): TimeSpan;
 
-        // Own methods of ICalGLib.TimeSpan
+        // Methods
 
         /**
          * Creates a new #ICalTimeSpan, clone of `src`. Free it with g_object_unref(), when no longer needed.
@@ -4923,7 +4923,7 @@ export namespace ICalGLib {
     class Timezone extends Object {
         static $gtype: GObject.GType<Timezone>;
 
-        // Constructors of ICalGLib.Timezone
+        // Constructors
 
         constructor(properties?: Partial<Timezone.ConstructorProps>, ...args: any[]);
 
@@ -4933,7 +4933,7 @@ export namespace ICalGLib {
 
         static ['new'](): Timezone;
 
-        // Own static methods of ICalGLib.Timezone
+        // Static methods
 
         /**
          * Populate the array of timezones with a component.
@@ -5022,7 +5022,7 @@ export namespace ICalGLib {
          */
         static set_zone_directory(path: string): void;
 
-        // Own methods of ICalGLib.Timezone
+        // Methods
 
         /**
          * The clone method for #ICalTimezone.
@@ -5111,7 +5111,7 @@ export namespace ICalGLib {
     class Trigger extends Object {
         static $gtype: GObject.GType<Trigger>;
 
-        // Constructors of ICalGLib.Trigger
+        // Constructors
 
         constructor(properties?: Partial<Trigger.ConstructorProps>, ...args: any[]);
 
@@ -5121,7 +5121,7 @@ export namespace ICalGLib {
 
         static new_from_string(str: string): Trigger;
 
-        // Own methods of ICalGLib.Trigger
+        // Methods
 
         /**
          * Gets the duration from #ICalTrigger.
@@ -5167,7 +5167,7 @@ export namespace ICalGLib {
     class Value extends Object {
         static $gtype: GObject.GType<Value>;
 
-        // Constructors of ICalGLib.Value
+        // Constructors
 
         constructor(properties?: Partial<Value.ConstructorProps>, ...args: any[]);
 
@@ -5247,7 +5247,7 @@ export namespace ICalGLib {
 
         static new_xlicclass(v: PropertyXlicclass): Value;
 
-        // Own static methods of ICalGLib.Value
+        // Static methods
 
         /**
          * Extracts the original character string encoded by the above function.
@@ -5280,7 +5280,7 @@ export namespace ICalGLib {
          */
         static kind_to_string(kind: ValueKind): string;
 
-        // Own methods of ICalGLib.Value
+        // Methods
 
         /**
          * Converts the #ICalValue to a string.
@@ -5690,7 +5690,7 @@ export namespace ICalGLib {
     abstract class ObjectPrivate {
         static $gtype: GObject.GType<ObjectPrivate>;
 
-        // Constructors of ICalGLib.ObjectPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5710,7 +5710,7 @@ export namespace ICalGLib {
     abstract class _Array {
         static $gtype: GObject.GType<_Array>;
 
-        // Constructors of ICalGLib._Array
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5718,7 +5718,7 @@ export namespace ICalGLib {
     abstract class _Attach {
         static $gtype: GObject.GType<_Attach>;
 
-        // Constructors of ICalGLib._Attach
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5726,7 +5726,7 @@ export namespace ICalGLib {
     abstract class _CompIter {
         static $gtype: GObject.GType<_CompIter>;
 
-        // Constructors of ICalGLib._CompIter
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5734,7 +5734,7 @@ export namespace ICalGLib {
     abstract class _Component {
         static $gtype: GObject.GType<_Component>;
 
-        // Constructors of ICalGLib._Component
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5742,7 +5742,7 @@ export namespace ICalGLib {
     abstract class _Datetimeperiod {
         static $gtype: GObject.GType<_Datetimeperiod>;
 
-        // Constructors of ICalGLib._Datetimeperiod
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5750,7 +5750,7 @@ export namespace ICalGLib {
     abstract class _Duration {
         static $gtype: GObject.GType<_Duration>;
 
-        // Constructors of ICalGLib._Duration
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5758,7 +5758,7 @@ export namespace ICalGLib {
     abstract class _Geo {
         static $gtype: GObject.GType<_Geo>;
 
-        // Constructors of ICalGLib._Geo
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5766,7 +5766,7 @@ export namespace ICalGLib {
     abstract class _Parameter {
         static $gtype: GObject.GType<_Parameter>;
 
-        // Constructors of ICalGLib._Parameter
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5774,7 +5774,7 @@ export namespace ICalGLib {
     abstract class _Parser {
         static $gtype: GObject.GType<_Parser>;
 
-        // Constructors of ICalGLib._Parser
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5782,7 +5782,7 @@ export namespace ICalGLib {
     abstract class _Period {
         static $gtype: GObject.GType<_Period>;
 
-        // Constructors of ICalGLib._Period
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5790,7 +5790,7 @@ export namespace ICalGLib {
     abstract class _Property {
         static $gtype: GObject.GType<_Property>;
 
-        // Constructors of ICalGLib._Property
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5798,7 +5798,7 @@ export namespace ICalGLib {
     abstract class _RecurIterator {
         static $gtype: GObject.GType<_RecurIterator>;
 
-        // Constructors of ICalGLib._RecurIterator
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5806,7 +5806,7 @@ export namespace ICalGLib {
     abstract class _Recurrence {
         static $gtype: GObject.GType<_Recurrence>;
 
-        // Constructors of ICalGLib._Recurrence
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5814,7 +5814,7 @@ export namespace ICalGLib {
     abstract class _Reqstat {
         static $gtype: GObject.GType<_Reqstat>;
 
-        // Constructors of ICalGLib._Reqstat
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5822,7 +5822,7 @@ export namespace ICalGLib {
     abstract class _Time {
         static $gtype: GObject.GType<_Time>;
 
-        // Constructors of ICalGLib._Time
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5830,7 +5830,7 @@ export namespace ICalGLib {
     abstract class _TimeSpan {
         static $gtype: GObject.GType<_TimeSpan>;
 
-        // Constructors of ICalGLib._TimeSpan
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5838,7 +5838,7 @@ export namespace ICalGLib {
     abstract class _Timezone {
         static $gtype: GObject.GType<_Timezone>;
 
-        // Constructors of ICalGLib._Timezone
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5846,7 +5846,7 @@ export namespace ICalGLib {
     abstract class _Trigger {
         static $gtype: GObject.GType<_Trigger>;
 
-        // Constructors of ICalGLib._Trigger
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5854,7 +5854,7 @@ export namespace ICalGLib {
     abstract class _Value {
         static $gtype: GObject.GType<_Value>;
 
-        // Constructors of ICalGLib._Value
+        // Constructors
 
         _init(...args: any[]): void;
     }

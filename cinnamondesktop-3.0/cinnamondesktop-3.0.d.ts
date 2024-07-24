@@ -52,7 +52,7 @@ export namespace CinnamonDesktop {
     class RRError extends GLib.Error {
         static $gtype: GObject.GType<RRError>;
 
-        // Static fields of CinnamonDesktop.RRError
+        // Static fields
 
         static UNKNOWN: number;
         static NO_RANDR_EXTENSION: number;
@@ -62,7 +62,7 @@ export namespace CinnamonDesktop {
         static NO_MATCHING_CONFIG: number;
         static NO_DPMS_EXTENSION: number;
 
-        // Constructors of CinnamonDesktop.RRError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
@@ -303,7 +303,7 @@ export namespace CinnamonDesktop {
     class BG extends GObject.Object {
         static $gtype: GObject.GType<BG>;
 
-        // Constructors of CinnamonDesktop.BG
+        // Constructors
 
         constructor(properties?: Partial<BG.ConstructorProps>, ...args: any[]);
 
@@ -311,7 +311,7 @@ export namespace CinnamonDesktop {
 
         static ['new'](): BG;
 
-        // Own signals of CinnamonDesktop.BG
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -323,7 +323,7 @@ export namespace CinnamonDesktop {
         connect_after(signal: 'transitioned', callback: (_source: this) => void): number;
         emit(signal: 'transitioned'): void;
 
-        // Own static methods of CinnamonDesktop.BG
+        // Static methods
 
         /**
          * This function queries the _XROOTPMAP_ID property from
@@ -356,7 +356,7 @@ export namespace CinnamonDesktop {
          */
         static set_surface_as_root_with_crossfade(screen: Gdk.Screen, surface: cairo.Surface): BGCrossfade;
 
-        // Own methods of CinnamonDesktop.BG
+        // Methods
 
         changes_with_time(): boolean;
         create_and_set_gtk_image(image: Gtk.Image, width: number, height: number): void;
@@ -435,7 +435,7 @@ export namespace CinnamonDesktop {
     class BGCrossfade extends GObject.Object {
         static $gtype: GObject.GType<BGCrossfade>;
 
-        // Own properties of CinnamonDesktop.BGCrossfade
+        // Properties
 
         /**
          * When a crossfade is running, this is height of the fading
@@ -448,11 +448,11 @@ export namespace CinnamonDesktop {
          */
         get width(): number;
 
-        // Own fields of CinnamonDesktop.BGCrossfade
+        // Fields
 
         parent_object: GObject.Object;
 
-        // Constructors of CinnamonDesktop.BGCrossfade
+        // Constructors
 
         constructor(properties?: Partial<BGCrossfade.ConstructorProps>, ...args: any[]);
 
@@ -460,7 +460,7 @@ export namespace CinnamonDesktop {
 
         static ['new'](width: number, height: number): BGCrossfade;
 
-        // Own signals of CinnamonDesktop.BGCrossfade
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -469,11 +469,11 @@ export namespace CinnamonDesktop {
         connect_after(signal: 'finished', callback: (_source: this, window: GObject.Object) => void): number;
         emit(signal: 'finished', window: GObject.Object): void;
 
-        // Own virtual methods of CinnamonDesktop.BGCrossfade
+        // Virtual methods
 
         vfunc_finished(window: Gdk.Window): void;
 
-        // Own methods of CinnamonDesktop.BGCrossfade
+        // Methods
 
         /**
          * This function reveals whether or not `fade` is currently
@@ -524,7 +524,7 @@ export namespace CinnamonDesktop {
     class DesktopThumbnailFactory extends GObject.Object {
         static $gtype: GObject.GType<DesktopThumbnailFactory>;
 
-        // Constructors of CinnamonDesktop.DesktopThumbnailFactory
+        // Constructors
 
         constructor(properties?: Partial<DesktopThumbnailFactory.ConstructorProps>, ...args: any[]);
 
@@ -532,7 +532,7 @@ export namespace CinnamonDesktop {
 
         static ['new'](size: DesktopThumbnailSize): DesktopThumbnailFactory;
 
-        // Own methods of CinnamonDesktop.DesktopThumbnailFactory
+        // Methods
 
         /**
          * Returns TRUE if this GnomeIconFactory can (at least try) to thumbnail
@@ -605,7 +605,7 @@ export namespace CinnamonDesktop {
     class IdleMonitor extends GObject.Object implements Gio.Initable {
         static $gtype: GObject.GType<IdleMonitor>;
 
-        // Constructors of CinnamonDesktop.IdleMonitor
+        // Constructors
 
         constructor(properties?: Partial<IdleMonitor.ConstructorProps>, ...args: any[]);
 
@@ -613,7 +613,7 @@ export namespace CinnamonDesktop {
 
         static ['new'](): IdleMonitor;
 
-        // Own methods of CinnamonDesktop.IdleMonitor
+        // Methods
 
         add_idle_watch(interval_msec: number, callback?: IdleMonitorWatchFunc | null): number;
         add_user_active_watch(callback?: IdleMonitorWatchFunc | null): number;
@@ -1123,7 +1123,7 @@ export namespace CinnamonDesktop {
     class PnpIds extends GObject.Object {
         static $gtype: GObject.GType<PnpIds>;
 
-        // Constructors of CinnamonDesktop.PnpIds
+        // Constructors
 
         constructor(properties?: Partial<PnpIds.ConstructorProps>, ...args: any[]);
 
@@ -1131,7 +1131,7 @@ export namespace CinnamonDesktop {
 
         static ['new'](): PnpIds;
 
-        // Own methods of CinnamonDesktop.PnpIds
+        // Methods
 
         /**
          * Find the full manufacturer name for the given PNP ID.
@@ -1152,11 +1152,11 @@ export namespace CinnamonDesktop {
     class RRConfig extends GObject.Object {
         static $gtype: GObject.GType<RRConfig>;
 
-        // Own properties of CinnamonDesktop.RRConfig
+        // Properties
 
         set screen(val: RRScreen);
 
-        // Constructors of CinnamonDesktop.RRConfig
+        // Constructors
 
         constructor(properties?: Partial<RRConfig.ConstructorProps>, ...args: any[]);
 
@@ -1166,14 +1166,14 @@ export namespace CinnamonDesktop {
 
         static new_stored(screen: RRScreen): RRConfig;
 
-        // Own static methods of CinnamonDesktop.RRConfig
+        // Static methods
 
         static apply_from_filename_with_time(screen: RRScreen, filename: string, timestamp: number): boolean;
         static get_backup_filename(): string;
         static get_intended_filename(): string;
         static get_legacy_filename(): string;
 
-        // Own methods of CinnamonDesktop.RRConfig
+        // Methods
 
         applicable(screen: RRScreen): boolean;
         apply_with_time(screen: RRScreen, timestamp: number): boolean;
@@ -1204,11 +1204,11 @@ export namespace CinnamonDesktop {
     class RRLabeler extends GObject.Object {
         static $gtype: GObject.GType<RRLabeler>;
 
-        // Own properties of CinnamonDesktop.RRLabeler
+        // Properties
 
         set config(val: RRConfig);
 
-        // Constructors of CinnamonDesktop.RRLabeler
+        // Constructors
 
         constructor(properties?: Partial<RRLabeler.ConstructorProps>, ...args: any[]);
 
@@ -1216,7 +1216,7 @@ export namespace CinnamonDesktop {
 
         static ['new'](config: RRConfig): RRLabeler;
 
-        // Own methods of CinnamonDesktop.RRLabeler
+        // Methods
 
         /**
          * Get the color used for the label on a given output (monitor).
@@ -1242,13 +1242,13 @@ export namespace CinnamonDesktop {
     class RROutputInfo extends GObject.Object {
         static $gtype: GObject.GType<RROutputInfo>;
 
-        // Constructors of CinnamonDesktop.RROutputInfo
+        // Constructors
 
         constructor(properties?: Partial<RROutputInfo.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of CinnamonDesktop.RROutputInfo
+        // Methods
 
         get_aspect_ratio(): number;
         get_display_name(): string;
@@ -1303,12 +1303,12 @@ export namespace CinnamonDesktop {
     class RRScreen extends GObject.Object implements Gio.Initable {
         static $gtype: GObject.GType<RRScreen>;
 
-        // Own properties of CinnamonDesktop.RRScreen
+        // Properties
 
         get gdk_screen(): Gdk.Screen;
         get gdkScreen(): Gdk.Screen;
 
-        // Constructors of CinnamonDesktop.RRScreen
+        // Constructors
 
         constructor(properties?: Partial<RRScreen.ConstructorProps>, ...args: any[]);
 
@@ -1316,7 +1316,7 @@ export namespace CinnamonDesktop {
 
         static ['new'](screen: Gdk.Screen): RRScreen;
 
-        // Own signals of CinnamonDesktop.RRScreen
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -1331,7 +1331,7 @@ export namespace CinnamonDesktop {
         connect_after(signal: 'output-disconnected', callback: (_source: this, output: any | null) => void): number;
         emit(signal: 'output-disconnected', output?: any | null): void;
 
-        // Own methods of CinnamonDesktop.RRScreen
+        // Methods
 
         calculate_best_global_scale(index: number): number;
         calculate_supported_scales(width: number, height: number, n_supported_scales: number): number;
@@ -1887,7 +1887,7 @@ export namespace CinnamonDesktop {
     class WallClock extends GObject.Object {
         static $gtype: GObject.GType<WallClock>;
 
-        // Own properties of CinnamonDesktop.WallClock
+        // Properties
 
         /**
          * A formatted string representing the current clock display.
@@ -1908,11 +1908,11 @@ export namespace CinnamonDesktop {
         get formatString(): string;
         set formatString(val: string);
 
-        // Own fields of CinnamonDesktop.WallClock
+        // Fields
 
         parent_object: GObject.Object;
 
-        // Constructors of CinnamonDesktop.WallClock
+        // Constructors
 
         constructor(properties?: Partial<WallClock.ConstructorProps>, ...args: any[]);
 
@@ -1920,7 +1920,7 @@ export namespace CinnamonDesktop {
 
         static ['new'](): WallClock;
 
-        // Own static methods of CinnamonDesktop.WallClock
+        // Static methods
 
         /**
          * Returns the translation of the format string according to
@@ -1930,7 +1930,7 @@ export namespace CinnamonDesktop {
          */
         static lctime_format(gettext_domain?: string | null, format_string?: string | null): string;
 
-        // Own methods of CinnamonDesktop.WallClock
+        // Methods
 
         /**
          * Returns a formatted date and time based on either default format
@@ -1981,11 +1981,11 @@ export namespace CinnamonDesktop {
     class XkbInfo extends GObject.Object {
         static $gtype: GObject.GType<XkbInfo>;
 
-        // Own fields of CinnamonDesktop.XkbInfo
+        // Fields
 
         parent_object: GObject.Object;
 
-        // Constructors of CinnamonDesktop.XkbInfo
+        // Constructors
 
         constructor(properties?: Partial<XkbInfo.ConstructorProps>, ...args: any[]);
 
@@ -1993,7 +1993,7 @@ export namespace CinnamonDesktop {
 
         static ['new'](): XkbInfo;
 
-        // Own methods of CinnamonDesktop.XkbInfo
+        // Methods
 
         description_for_option(group_id: string, id: string): string;
         /**
@@ -2045,7 +2045,7 @@ export namespace CinnamonDesktop {
     abstract class BGCrossfadePrivate {
         static $gtype: GObject.GType<BGCrossfadePrivate>;
 
-        // Constructors of CinnamonDesktop.BGCrossfadePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2054,7 +2054,7 @@ export namespace CinnamonDesktop {
     abstract class DesktopThumbnailFactoryPrivate {
         static $gtype: GObject.GType<DesktopThumbnailFactoryPrivate>;
 
-        // Constructors of CinnamonDesktop.DesktopThumbnailFactoryPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2063,7 +2063,7 @@ export namespace CinnamonDesktop {
     abstract class IdleMonitorPrivate {
         static $gtype: GObject.GType<IdleMonitorPrivate>;
 
-        // Constructors of CinnamonDesktop.IdleMonitorPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2072,7 +2072,7 @@ export namespace CinnamonDesktop {
     abstract class PnpIdsPrivate {
         static $gtype: GObject.GType<PnpIdsPrivate>;
 
-        // Constructors of CinnamonDesktop.PnpIdsPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2081,7 +2081,7 @@ export namespace CinnamonDesktop {
     abstract class RRConfigPrivate {
         static $gtype: GObject.GType<RRConfigPrivate>;
 
-        // Constructors of CinnamonDesktop.RRConfigPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2089,11 +2089,11 @@ export namespace CinnamonDesktop {
     abstract class RRCrtc {
         static $gtype: GObject.GType<RRCrtc>;
 
-        // Constructors of CinnamonDesktop.RRCrtc
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of CinnamonDesktop.RRCrtc
+        // Methods
 
         can_drive_output(output: RROutput): boolean;
         get_current_mode(): RRMode;
@@ -2122,7 +2122,7 @@ export namespace CinnamonDesktop {
     abstract class RRLabelerPrivate {
         static $gtype: GObject.GType<RRLabelerPrivate>;
 
-        // Constructors of CinnamonDesktop.RRLabelerPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2130,11 +2130,11 @@ export namespace CinnamonDesktop {
     abstract class RRMode {
         static $gtype: GObject.GType<RRMode>;
 
-        // Constructors of CinnamonDesktop.RRMode
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of CinnamonDesktop.RRMode
+        // Methods
 
         get_flags(doublescan: boolean, interlaced: boolean, vsync: boolean): void;
         get_freq(): number;
@@ -2147,11 +2147,11 @@ export namespace CinnamonDesktop {
     abstract class RROutput {
         static $gtype: GObject.GType<RROutput>;
 
-        // Constructors of CinnamonDesktop.RROutput
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of CinnamonDesktop.RROutput
+        // Methods
 
         can_clone(clone: RROutput): boolean;
         get_backlight(): number;
@@ -2182,7 +2182,7 @@ export namespace CinnamonDesktop {
     abstract class RROutputInfoPrivate {
         static $gtype: GObject.GType<RROutputInfoPrivate>;
 
-        // Constructors of CinnamonDesktop.RROutputInfoPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2191,7 +2191,7 @@ export namespace CinnamonDesktop {
     abstract class RRScreenPrivate {
         static $gtype: GObject.GType<RRScreenPrivate>;
 
-        // Constructors of CinnamonDesktop.RRScreenPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2200,7 +2200,7 @@ export namespace CinnamonDesktop {
     abstract class WallClockPrivate {
         static $gtype: GObject.GType<WallClockPrivate>;
 
-        // Constructors of CinnamonDesktop.WallClockPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2209,7 +2209,7 @@ export namespace CinnamonDesktop {
     abstract class XkbInfoPrivate {
         static $gtype: GObject.GType<XkbInfoPrivate>;
 
-        // Constructors of CinnamonDesktop.XkbInfoPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }

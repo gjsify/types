@@ -356,14 +356,14 @@ export namespace GioUnix {
     class DesktopAppInfo extends GObject.Object implements Gio.AppInfo {
         static $gtype: GObject.GType<DesktopAppInfo>;
 
-        // Own properties of GioUnix.DesktopAppInfo
+        // Properties
 
         /**
          * The origin filename of this #GDesktopAppInfo
          */
         get filename(): string;
 
-        // Constructors of GioUnix.DesktopAppInfo
+        // Constructors
 
         constructor(properties?: Partial<DesktopAppInfo.ConstructorProps>, ...args: any[]);
 
@@ -375,7 +375,7 @@ export namespace GioUnix {
 
         static new_from_keyfile(key_file: GLib.KeyFile): DesktopAppInfo;
 
-        // Own static methods of GioUnix.DesktopAppInfo
+        // Static methods
 
         /**
          * Gets the user-visible display name of the "additional application
@@ -1453,7 +1453,7 @@ export namespace GioUnix {
     class FDMessage extends Gio.SocketControlMessage {
         static $gtype: GObject.GType<FDMessage>;
 
-        // Own properties of GioUnix.FDMessage
+        // Properties
 
         /**
          * The [class`Gio`.UnixFDList] object to send with the message.
@@ -1464,7 +1464,7 @@ export namespace GioUnix {
          */
         get fdList(): Gio.UnixFDList;
 
-        // Constructors of GioUnix.FDMessage
+        // Constructors
 
         constructor(properties?: Partial<FDMessage.ConstructorProps>, ...args: any[]);
 
@@ -1474,7 +1474,7 @@ export namespace GioUnix {
 
         static new_with_fd_list(fd_list: Gio.UnixFDList): FDMessage;
 
-        // Own static methods of GioUnix.FDMessage
+        // Static methods
 
         /**
          * Adds a file descriptor to `message`.
@@ -1546,7 +1546,7 @@ export namespace GioUnix {
     class InputStream extends Gio.InputStream implements Gio.PollableInputStream, FileDescriptorBased {
         static $gtype: GObject.GType<InputStream>;
 
-        // Own properties of GioUnix.InputStream
+        // Properties
 
         /**
          * Whether to close the file descriptor when the stream is closed.
@@ -1563,7 +1563,7 @@ export namespace GioUnix {
          */
         get fd(): number;
 
-        // Constructors of GioUnix.InputStream
+        // Constructors
 
         constructor(properties?: Partial<InputStream.ConstructorProps>, ...args: any[]);
 
@@ -1571,7 +1571,7 @@ export namespace GioUnix {
 
         static ['new'](fd: number, close_fd: boolean): InputStream;
 
-        // Own static methods of GioUnix.InputStream
+        // Static methods
 
         /**
          * Returns whether the file descriptor of `stream` will be
@@ -2584,7 +2584,7 @@ export namespace GioUnix {
     class MountMonitor extends GObject.Object {
         static $gtype: GObject.GType<MountMonitor>;
 
-        // Constructors of GioUnix.MountMonitor
+        // Constructors
 
         constructor(properties?: Partial<MountMonitor.ConstructorProps>, ...args: any[]);
 
@@ -2592,7 +2592,7 @@ export namespace GioUnix {
 
         static ['new'](): MountMonitor;
 
-        // Own signals of GioUnix.MountMonitor
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -2604,7 +2604,7 @@ export namespace GioUnix {
         connect_after(signal: 'mounts-changed', callback: (_source: this) => void): number;
         emit(signal: 'mounts-changed'): void;
 
-        // Own static methods of GioUnix.MountMonitor
+        // Static methods
 
         /**
          * Gets the #GUnixMountMonitor for the current thread-default main
@@ -2659,7 +2659,7 @@ export namespace GioUnix {
     class OutputStream extends Gio.OutputStream implements Gio.PollableOutputStream, FileDescriptorBased {
         static $gtype: GObject.GType<OutputStream>;
 
-        // Own properties of GioUnix.OutputStream
+        // Properties
 
         /**
          * Whether to close the file descriptor when the stream is closed.
@@ -2676,7 +2676,7 @@ export namespace GioUnix {
          */
         get fd(): number;
 
-        // Constructors of GioUnix.OutputStream
+        // Constructors
 
         constructor(properties?: Partial<OutputStream.ConstructorProps>, ...args: any[]);
 
@@ -2684,7 +2684,7 @@ export namespace GioUnix {
 
         static ['new'](fd: number, close_fd: boolean): OutputStream;
 
-        // Own static methods of GioUnix.OutputStream
+        // Static methods
 
         /**
          * Returns whether the file descriptor of `stream` will be
@@ -4049,7 +4049,7 @@ export namespace GioUnix {
     abstract class FDMessagePrivate {
         static $gtype: GObject.GType<FDMessagePrivate>;
 
-        // Constructors of GioUnix.FDMessagePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4059,7 +4059,7 @@ export namespace GioUnix {
     abstract class InputStreamPrivate {
         static $gtype: GObject.GType<InputStreamPrivate>;
 
-        // Constructors of GioUnix.InputStreamPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4071,7 +4071,7 @@ export namespace GioUnix {
     abstract class MountEntry {
         static $gtype: GObject.GType<MountEntry>;
 
-        // Constructors of GioUnix.MountEntry
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4084,11 +4084,11 @@ export namespace GioUnix {
     abstract class MountPoint {
         static $gtype: GObject.GType<MountPoint>;
 
-        // Constructors of GioUnix.MountPoint
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own static methods of GioUnix.MountPoint
+        // Static methods
 
         /**
          * Gets a #GUnixMountPoint for a given mount path. If `time_read` is set, it
@@ -4178,7 +4178,7 @@ export namespace GioUnix {
     abstract class OutputStreamPrivate {
         static $gtype: GObject.GType<OutputStreamPrivate>;
 
-        // Constructors of GioUnix.OutputStreamPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }

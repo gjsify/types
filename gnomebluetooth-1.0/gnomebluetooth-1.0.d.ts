@@ -383,7 +383,7 @@ export namespace GnomeBluetooth {
     class Chooser extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<Chooser>;
 
-        // Own properties of GnomeBluetooth.Chooser
+        // Properties
 
         get device_selected(): string;
         set device_selected(val: string);
@@ -422,7 +422,7 @@ export namespace GnomeBluetooth {
         get showSearching(): boolean;
         set showSearching(val: boolean);
 
-        // Constructors of GnomeBluetooth.Chooser
+        // Constructors
 
         constructor(properties?: Partial<Chooser.ConstructorProps>, ...args: any[]);
 
@@ -430,7 +430,7 @@ export namespace GnomeBluetooth {
 
         static ['new'](): Chooser;
 
-        // Own signals of GnomeBluetooth.Chooser
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -442,12 +442,12 @@ export namespace GnomeBluetooth {
         connect_after(signal: 'selected-device-changed', callback: (_source: this, address: string) => void): number;
         emit(signal: 'selected-device-changed', address: string): void;
 
-        // Own virtual methods of GnomeBluetooth.Chooser
+        // Virtual methods
 
         vfunc_selected_device_activated(address: string): void;
         vfunc_selected_device_changed(address: string): void;
 
-        // Own methods of GnomeBluetooth.Chooser
+        // Methods
 
         /**
          * Prints all the known attributes for the currently selected device
@@ -958,7 +958,7 @@ export namespace GnomeBluetooth {
     {
         static $gtype: GObject.GType<ChooserButton>;
 
-        // Own properties of GnomeBluetooth.ChooserButton
+        // Properties
 
         /**
          * The Bluetooth address of the selected device or %NULL.
@@ -978,7 +978,7 @@ export namespace GnomeBluetooth {
          */
         get isAvailable(): boolean;
 
-        // Constructors of GnomeBluetooth.ChooserButton
+        // Constructors
 
         constructor(properties?: Partial<ChooserButton.ConstructorProps>, ...args: any[]);
 
@@ -986,7 +986,7 @@ export namespace GnomeBluetooth {
 
         static ['new'](): ChooserButton;
 
-        // Own signals of GnomeBluetooth.ChooserButton
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -995,11 +995,11 @@ export namespace GnomeBluetooth {
         connect_after(signal: 'chooser-created', callback: (_source: this, chooser: GObject.Object) => void): number;
         emit(signal: 'chooser-created', chooser: GObject.Object): void;
 
-        // Own virtual methods of GnomeBluetooth.ChooserButton
+        // Virtual methods
 
         vfunc_chooser_created(chooser: Gtk.Widget): void;
 
-        // Own methods of GnomeBluetooth.ChooserButton
+        // Methods
 
         /**
          * Returns whether there is a powered Bluetooth adapter.
@@ -5201,7 +5201,7 @@ export namespace GnomeBluetooth {
     class ChooserCombo extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<ChooserCombo>;
 
-        // Own properties of GnomeBluetooth.ChooserCombo
+        // Properties
 
         /**
          * The #BluetoothChooser used in the widget
@@ -5213,7 +5213,7 @@ export namespace GnomeBluetooth {
         get device(): string;
         set device(val: string);
 
-        // Constructors of GnomeBluetooth.ChooserCombo
+        // Constructors
 
         constructor(properties?: Partial<ChooserCombo.ConstructorProps>, ...args: any[]);
 
@@ -5221,7 +5221,7 @@ export namespace GnomeBluetooth {
 
         static ['new'](): ChooserCombo;
 
-        // Own signals of GnomeBluetooth.ChooserCombo
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -5230,7 +5230,7 @@ export namespace GnomeBluetooth {
         connect_after(signal: 'chooser-created', callback: (_source: this, chooser: GObject.Object) => void): number;
         emit(signal: 'chooser-created', chooser: GObject.Object): void;
 
-        // Own virtual methods of GnomeBluetooth.ChooserCombo
+        // Virtual methods
 
         vfunc_chooser_created(chooser: Gtk.Widget): void;
 
@@ -5684,7 +5684,7 @@ export namespace GnomeBluetooth {
     class Client extends GObject.Object {
         static $gtype: GObject.GType<Client>;
 
-        // Own properties of GnomeBluetooth.Client
+        // Properties
 
         /**
          * The D-Bus path of the default Bluetooth adapter or %NULL.
@@ -5731,7 +5731,7 @@ export namespace GnomeBluetooth {
          */
         get defaultAdapterPowered(): boolean;
 
-        // Constructors of GnomeBluetooth.Client
+        // Constructors
 
         constructor(properties?: Partial<Client.ConstructorProps>, ...args: any[]);
 
@@ -5739,7 +5739,7 @@ export namespace GnomeBluetooth {
 
         static ['new'](): Client;
 
-        // Own signals of GnomeBluetooth.Client
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -5748,7 +5748,7 @@ export namespace GnomeBluetooth {
         connect_after(signal: 'device-removed', callback: (_source: this, device: string) => void): number;
         emit(signal: 'device-removed', device: string): void;
 
-        // Own methods of GnomeBluetooth.Client
+        // Methods
 
         /**
          * When the connection operation is finished, `callback` will be called. You can
@@ -5819,7 +5819,7 @@ export namespace GnomeBluetooth {
     class FilterWidget extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<FilterWidget>;
 
-        // Own properties of GnomeBluetooth.FilterWidget
+        // Properties
 
         set device_service_filter(val: string);
         set deviceServiceFilter(val: string);
@@ -5836,7 +5836,7 @@ export namespace GnomeBluetooth {
         get showDeviceType(): boolean;
         set showDeviceType(val: boolean);
 
-        // Constructors of GnomeBluetooth.FilterWidget
+        // Constructors
 
         constructor(properties?: Partial<FilterWidget.ConstructorProps>, ...args: any[]);
 
@@ -5844,7 +5844,7 @@ export namespace GnomeBluetooth {
 
         static ['new'](): FilterWidget;
 
-        // Own methods of GnomeBluetooth.FilterWidget
+        // Methods
 
         /**
          * Binds a #BluetoothFilterWidget to a #BluetoothChooser such that changing the
@@ -6307,7 +6307,7 @@ export namespace GnomeBluetooth {
     class SettingsWidget extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<SettingsWidget>;
 
-        // Constructors of GnomeBluetooth.SettingsWidget
+        // Constructors
 
         constructor(properties?: Partial<SettingsWidget.ConstructorProps>, ...args: any[]);
 
@@ -6315,7 +6315,7 @@ export namespace GnomeBluetooth {
 
         static ['new'](): SettingsWidget;
 
-        // Own signals of GnomeBluetooth.SettingsWidget
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -6327,7 +6327,7 @@ export namespace GnomeBluetooth {
         connect_after(signal: 'panel-changed', callback: (_source: this, panel: string) => void): number;
         emit(signal: 'panel-changed', panel: string): void;
 
-        // Own methods of GnomeBluetooth.SettingsWidget
+        // Methods
 
         get_default_adapter_powered(): boolean;
 
@@ -6757,7 +6757,7 @@ export namespace GnomeBluetooth {
     abstract class ChooserComboPrivate {
         static $gtype: GObject.GType<ChooserComboPrivate>;
 
-        // Constructors of GnomeBluetooth.ChooserComboPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }

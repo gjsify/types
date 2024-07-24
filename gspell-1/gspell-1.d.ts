@@ -34,7 +34,7 @@ export namespace Gspell {
     class CheckerError extends GLib.Error {
         static $gtype: GObject.GType<CheckerError>;
 
-        // Static fields of Gspell.CheckerError
+        // Static fields
 
         /**
          * dictionary error.
@@ -45,12 +45,12 @@ export namespace Gspell {
          */
         static NO_LANGUAGE_SET: number;
 
-        // Constructors of Gspell.CheckerError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of Gspell.CheckerError
+        // Static methods
 
         static quark(): GLib.Quark;
     }
@@ -88,7 +88,7 @@ export namespace Gspell {
     class Checker extends GObject.Object {
         static $gtype: GObject.GType<Checker>;
 
-        // Own properties of Gspell.Checker
+        // Properties
 
         /**
          * The #GspellLanguage used.
@@ -96,7 +96,7 @@ export namespace Gspell {
         get language(): Language;
         set language(val: Language);
 
-        // Constructors of Gspell.Checker
+        // Constructors
 
         constructor(properties?: Partial<Checker.ConstructorProps>, ...args: any[]);
 
@@ -104,7 +104,7 @@ export namespace Gspell {
 
         static ['new'](language?: Language | null): Checker;
 
-        // Own signals of Gspell.Checker
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -119,13 +119,13 @@ export namespace Gspell {
         connect_after(signal: 'word-added-to-session', callback: (_source: this, word: string) => void): number;
         emit(signal: 'word-added-to-session', word: string): void;
 
-        // Own virtual methods of Gspell.Checker
+        // Virtual methods
 
         vfunc_session_cleared(): void;
         vfunc_word_added_to_personal(word: string): void;
         vfunc_word_added_to_session(word: string): void;
 
-        // Own methods of Gspell.Checker
+        // Methods
 
         /**
          * Adds a word to the personal dictionary. It is typically saved in the user's
@@ -197,7 +197,7 @@ export namespace Gspell {
     class CheckerDialog extends Gtk.Dialog implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<CheckerDialog>;
 
-        // Own properties of Gspell.CheckerDialog
+        // Properties
 
         /**
          * The #GspellNavigator to use.
@@ -208,7 +208,7 @@ export namespace Gspell {
          */
         get spellNavigator(): Navigator;
 
-        // Constructors of Gspell.CheckerDialog
+        // Constructors
 
         constructor(properties?: Partial<CheckerDialog.ConstructorProps>, ...args: any[]);
 
@@ -219,7 +219,7 @@ export namespace Gspell {
 
         static ['new'](...args: never[]): any;
 
-        // Own methods of Gspell.CheckerDialog
+        // Methods
 
         get_spell_navigator(): Navigator;
 
@@ -639,7 +639,7 @@ export namespace Gspell {
     class Entry extends GObject.Object {
         static $gtype: GObject.GType<Entry>;
 
-        // Own properties of Gspell.Entry
+        // Properties
 
         /**
          * The #GtkEntry.
@@ -664,13 +664,13 @@ export namespace Gspell {
         get inlineSpellChecking(): boolean;
         set inlineSpellChecking(val: boolean);
 
-        // Constructors of Gspell.Entry
+        // Constructors
 
         constructor(properties?: Partial<Entry.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of Gspell.Entry
+        // Static methods
 
         /**
          * Returns the #GspellEntry of `gtk_entry`. The returned object is guaranteed
@@ -679,7 +679,7 @@ export namespace Gspell {
          */
         static get_from_gtk_entry(gtk_entry: Gtk.Entry): Entry;
 
-        // Own methods of Gspell.Entry
+        // Methods
 
         /**
          * This function is a convenience function that does the following:
@@ -741,7 +741,7 @@ export namespace Gspell {
     class EntryBuffer extends GObject.Object {
         static $gtype: GObject.GType<EntryBuffer>;
 
-        // Own properties of Gspell.EntryBuffer
+        // Properties
 
         /**
          * The #GtkEntryBuffer.
@@ -758,13 +758,13 @@ export namespace Gspell {
         get spellChecker(): Checker;
         set spellChecker(val: Checker);
 
-        // Constructors of Gspell.EntryBuffer
+        // Constructors
 
         constructor(properties?: Partial<EntryBuffer.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of Gspell.EntryBuffer
+        // Static methods
 
         /**
          * Returns the #GspellEntryBuffer of `gtk_buffer`. The returned object is
@@ -773,7 +773,7 @@ export namespace Gspell {
          */
         static get_from_gtk_entry_buffer(gtk_buffer: Gtk.EntryBuffer): EntryBuffer;
 
-        // Own methods of Gspell.EntryBuffer
+        // Methods
 
         get_buffer(): Gtk.EntryBuffer;
         get_spell_checker(): Checker | null;
@@ -804,7 +804,7 @@ export namespace Gspell {
     {
         static $gtype: GObject.GType<LanguageChooserButton>;
 
-        // Constructors of Gspell.LanguageChooserButton
+        // Constructors
 
         constructor(properties?: Partial<LanguageChooserButton.ConstructorProps>, ...args: any[]);
 
@@ -5029,7 +5029,7 @@ export namespace Gspell {
     class LanguageChooserDialog extends Gtk.Dialog implements Atk.ImplementorIface, LanguageChooser, Gtk.Buildable {
         static $gtype: GObject.GType<LanguageChooserDialog>;
 
-        // Constructors of Gspell.LanguageChooserDialog
+        // Constructors
 
         constructor(properties?: Partial<LanguageChooserDialog.ConstructorProps>, ...args: any[]);
 
@@ -5493,7 +5493,7 @@ export namespace Gspell {
     class NavigatorTextView extends GObject.InitiallyUnowned implements Navigator {
         static $gtype: GObject.GType<NavigatorTextView>;
 
-        // Own properties of Gspell.NavigatorTextView
+        // Properties
 
         /**
          * The #GtkTextView. The buffer is not sufficient, the view is needed to
@@ -5501,17 +5501,17 @@ export namespace Gspell {
          */
         get view(): Gtk.TextView;
 
-        // Constructors of Gspell.NavigatorTextView
+        // Constructors
 
         constructor(properties?: Partial<NavigatorTextView.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of Gspell.NavigatorTextView
+        // Static methods
 
         static ['new'](view: Gtk.TextView): Navigator;
 
-        // Own methods of Gspell.NavigatorTextView
+        // Methods
 
         get_view(): Gtk.TextView;
 
@@ -5584,7 +5584,7 @@ export namespace Gspell {
     class TextBuffer extends GObject.Object {
         static $gtype: GObject.GType<TextBuffer>;
 
-        // Own properties of Gspell.TextBuffer
+        // Properties
 
         /**
          * The #GtkTextBuffer.
@@ -5601,13 +5601,13 @@ export namespace Gspell {
         get spellChecker(): Checker;
         set spellChecker(val: Checker);
 
-        // Constructors of Gspell.TextBuffer
+        // Constructors
 
         constructor(properties?: Partial<TextBuffer.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of Gspell.TextBuffer
+        // Static methods
 
         /**
          * Returns the #GspellTextBuffer of `gtk_buffer`. The returned object is
@@ -5616,7 +5616,7 @@ export namespace Gspell {
          */
         static get_from_gtk_text_buffer(gtk_buffer: Gtk.TextBuffer): TextBuffer;
 
-        // Own methods of Gspell.TextBuffer
+        // Methods
 
         get_buffer(): Gtk.TextBuffer;
         get_spell_checker(): Checker | null;
@@ -5644,7 +5644,7 @@ export namespace Gspell {
     class TextView extends GObject.Object {
         static $gtype: GObject.GType<TextView>;
 
-        // Own properties of Gspell.TextView
+        // Properties
 
         /**
          * When the context menu is shown, whether to add a sub-menu to select
@@ -5673,13 +5673,13 @@ export namespace Gspell {
          */
         get view(): Gtk.TextView;
 
-        // Constructors of Gspell.TextView
+        // Constructors
 
         constructor(properties?: Partial<TextView.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of Gspell.TextView
+        // Static methods
 
         /**
          * Returns the #GspellTextView of `gtk_view`. The returned object is guaranteed
@@ -5688,7 +5688,7 @@ export namespace Gspell {
          */
         static get_from_gtk_text_view(gtk_view: Gtk.TextView): TextView;
 
-        // Own methods of Gspell.TextView
+        // Methods
 
         /**
          * This function is a convenience function that does the following:
@@ -5756,11 +5756,11 @@ export namespace Gspell {
     abstract class Language {
         static $gtype: GObject.GType<Language>;
 
-        // Constructors of Gspell.Language
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own static methods of Gspell.Language
+        // Static methods
 
         static get_available(): Language[];
         /**
@@ -5769,7 +5769,7 @@ export namespace Gspell {
         static get_default(): Language | null;
         static lookup(language_code: string): Language | null;
 
-        // Own methods of Gspell.Language
+        // Methods
 
         /**
          * Compares alphabetically two languages by their name, as returned by
@@ -5819,7 +5819,7 @@ export namespace Gspell {
         prototype: LanguageChooser;
     }
     interface LanguageChooser extends GObject.Object {
-        // Own properties of Gspell.LanguageChooser
+        // Properties
 
         /**
          * The selected #GspellLanguage.
@@ -5841,7 +5841,7 @@ export namespace Gspell {
         get languageCode(): string;
         set languageCode(val: string);
 
-        // Own methods of Gspell.LanguageChooser
+        // Methods
 
         get_language(): Language | null;
         get_language_code(): string;
@@ -5852,7 +5852,7 @@ export namespace Gspell {
         set_language(language?: Language | null): void;
         set_language_code(language_code?: string | null): void;
 
-        // Own virtual methods of Gspell.LanguageChooser
+        // Virtual methods
 
         vfunc_get_language_full(default_language: boolean): Language;
         /**
@@ -5875,7 +5875,7 @@ export namespace Gspell {
         prototype: Navigator;
     }
     interface Navigator extends GObject.InitiallyUnowned {
-        // Own methods of Gspell.Navigator
+        // Methods
 
         /**
          * Changes the current `word` by `change_to` in the text. `word` must be the same
@@ -5905,7 +5905,7 @@ export namespace Gspell {
          */
         goto_next(): [boolean, string, Checker | null];
 
-        // Own virtual methods of Gspell.Navigator
+        // Virtual methods
 
         /**
          * Changes the current `word` by `change_to` in the text. `word` must be the same

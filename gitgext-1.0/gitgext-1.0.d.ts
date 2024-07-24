@@ -66,7 +66,7 @@ export namespace GitgExt {
     class CommandLines extends GObject.Object {
         static $gtype: GObject.GType<CommandLines>;
 
-        // Constructors of GitgExt.CommandLines
+        // Constructors
 
         constructor(properties?: Partial<CommandLines.ConstructorProps>, ...args: any[]);
 
@@ -74,7 +74,7 @@ export namespace GitgExt {
 
         static ['new'](command_lines: CommandLine[]): CommandLines;
 
-        // Own methods of GitgExt.CommandLines
+        // Methods
 
         get_for(t_type: GObject.GType, t_dup_func: GObject.BoxedCopyFunc): any | null;
         parse_finished(): void;
@@ -104,7 +104,7 @@ export namespace GitgExt {
     class MessageBus extends GObject.Object {
         static $gtype: GObject.GType<MessageBus>;
 
-        // Constructors of GitgExt.MessageBus
+        // Constructors
 
         constructor(properties?: Partial<MessageBus.ConstructorProps>, ...args: any[]);
 
@@ -112,7 +112,7 @@ export namespace GitgExt {
 
         static ['new'](): MessageBus;
 
-        // Own signals of GitgExt.MessageBus
+        // Signals
 
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -123,15 +123,15 @@ export namespace GitgExt {
         connect_after(signal: 'dispatch', callback: (_source: this, message: Message) => void): number;
         emit(signal: 'dispatch', message: Message): void;
 
-        // Own static methods of GitgExt.MessageBus
+        // Static methods
 
         static get_default(): MessageBus;
 
-        // Own virtual methods of GitgExt.MessageBus
+        // Virtual methods
 
         vfunc_dispatch(message: Message): void;
 
-        // Own methods of GitgExt.MessageBus
+        // Methods
 
         lookup(id: MessageId): GObject.GType;
         register(message_type: GObject.GType, id: MessageId): void;
@@ -160,7 +160,7 @@ export namespace GitgExt {
     class MessageId extends GObject.Object {
         static $gtype: GObject.GType<MessageId>;
 
-        // Own properties of GitgExt.MessageId
+        // Properties
 
         get object_path(): string;
         set object_path(val: string);
@@ -170,7 +170,7 @@ export namespace GitgExt {
         set method(val: string);
         get id(): string;
 
-        // Constructors of GitgExt.MessageId
+        // Constructors
 
         constructor(properties?: Partial<MessageId.ConstructorProps>, ...args: any[]);
 
@@ -178,11 +178,11 @@ export namespace GitgExt {
 
         static ['new'](object_path: string, method: string): MessageId;
 
-        // Own static methods of GitgExt.MessageId
+        // Static methods
 
         static valid_object_path(path: string): boolean;
 
-        // Own methods of GitgExt.MessageId
+        // Methods
 
         hash(): number;
         equal(other: MessageId): boolean;
@@ -205,23 +205,23 @@ export namespace GitgExt {
     abstract class Message extends GObject.Object {
         static $gtype: GObject.GType<Message>;
 
-        // Own properties of GitgExt.Message
+        // Properties
 
         get id(): MessageId;
         set id(val: MessageId);
 
-        // Constructors of GitgExt.Message
+        // Constructors
 
         constructor(properties?: Partial<Message.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of GitgExt.Message
+        // Static methods
 
         static type_has(type: GObject.GType, propname: string): boolean;
         static type_check(type: GObject.GType, propname: string, value_type: GObject.GType): boolean;
 
-        // Own methods of GitgExt.Message
+        // Methods
 
         has(propname: string): boolean;
         get_id(): MessageId;
@@ -231,11 +231,11 @@ export namespace GitgExt {
     class UI {
         static $gtype: GObject.GType<UI>;
 
-        // Own fields of GitgExt.UI
+        // Fields
 
         ref_count: number;
 
-        // Constructors of GitgExt.UI
+        // Constructors
 
         _init(...args: any[]): void;
 
@@ -251,12 +251,12 @@ export namespace GitgExt {
     class UserQueryResponse extends GObject.Object {
         static $gtype: GObject.GType<UserQueryResponse>;
 
-        // Own fields of GitgExt.UserQueryResponse
+        // Fields
 
         text: string;
         response_type: Gtk.ResponseType;
 
-        // Constructors of GitgExt.UserQueryResponse
+        // Constructors
 
         constructor(properties?: Partial<UserQueryResponse.ConstructorProps>, ...args: any[]);
 
@@ -295,7 +295,7 @@ export namespace GitgExt {
     class UserQuery extends GObject.Object {
         static $gtype: GObject.GType<UserQuery>;
 
-        // Own properties of GitgExt.UserQuery
+        // Properties
 
         get title(): string;
         set title(val: string);
@@ -318,7 +318,7 @@ export namespace GitgExt {
         get messageUseMarkup(): boolean;
         set messageUseMarkup(val: boolean);
 
-        // Constructors of GitgExt.UserQuery
+        // Constructors
 
         constructor(properties?: Partial<UserQuery.ConstructorProps>, ...args: any[]);
 
@@ -326,7 +326,7 @@ export namespace GitgExt {
 
         static ['new'](): UserQuery;
 
-        // Own signals of GitgExt.UserQuery
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -341,7 +341,7 @@ export namespace GitgExt {
         ): number;
         emit(signal: 'response', response_type: Gtk.ResponseType): void;
 
-        // Own methods of GitgExt.UserQuery
+        // Methods
 
         get_responses(): UserQueryResponse[];
         set_responses(value: UserQueryResponse[]): void;
@@ -363,7 +363,7 @@ export namespace GitgExt {
     abstract class CommandLinesPrivate {
         static $gtype: GObject.GType<CommandLinesPrivate>;
 
-        // Constructors of GitgExt.CommandLinesPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -372,7 +372,7 @@ export namespace GitgExt {
     abstract class MessageBusPrivate {
         static $gtype: GObject.GType<MessageBusPrivate>;
 
-        // Constructors of GitgExt.MessageBusPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -381,7 +381,7 @@ export namespace GitgExt {
     abstract class MessageIdPrivate {
         static $gtype: GObject.GType<MessageIdPrivate>;
 
-        // Constructors of GitgExt.MessageIdPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -390,7 +390,7 @@ export namespace GitgExt {
     abstract class MessagePrivate {
         static $gtype: GObject.GType<MessagePrivate>;
 
-        // Constructors of GitgExt.MessagePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -399,7 +399,7 @@ export namespace GitgExt {
     abstract class UIPrivate {
         static $gtype: GObject.GType<UIPrivate>;
 
-        // Constructors of GitgExt.UIPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -408,7 +408,7 @@ export namespace GitgExt {
     abstract class UserQueryResponsePrivate {
         static $gtype: GObject.GType<UserQueryResponsePrivate>;
 
-        // Constructors of GitgExt.UserQueryResponsePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -417,7 +417,7 @@ export namespace GitgExt {
     abstract class UserQueryPrivate {
         static $gtype: GObject.GType<UserQueryPrivate>;
 
-        // Constructors of GitgExt.UserQueryPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -449,13 +449,13 @@ export namespace GitgExt {
         prototype: Action;
     }
     interface Action extends UIElement {
-        // Own methods of GitgExt.Action
+        // Methods
 
         populate_menu(menu: Gtk.Menu): void;
         fetch(_callback_?: Gio.AsyncReadyCallback<this> | null): void;
         fetch_finish(_res_: Gio.AsyncResult): boolean;
 
-        // Own virtual methods of GitgExt.Action
+        // Virtual methods
 
         vfunc_populate_menu(menu: Gtk.Menu): void;
         vfunc_fetch(_callback_?: Gio.AsyncReadyCallback<this> | null): void;
@@ -475,12 +475,12 @@ export namespace GitgExt {
         prototype: Activity;
     }
     interface Activity extends GObject.Object {
-        // Own methods of GitgExt.Activity
+        // Methods
 
         is_default_for(action: string): boolean;
         on_key_pressed(event: Gdk.EventKey): boolean;
 
-        // Own virtual methods of GitgExt.Activity
+        // Virtual methods
 
         vfunc_is_default_for(action: string): boolean;
         vfunc_on_key_pressed(event: Gdk.EventKey): boolean;
@@ -510,7 +510,7 @@ export namespace GitgExt {
         prototype: Application;
     }
     interface Application extends GObject.Object {
-        // Own properties of GitgExt.Application
+        // Properties
 
         get repository(): Gitg.Repository;
         set repository(val: Gitg.Repository);
@@ -525,7 +525,7 @@ export namespace GitgExt {
         get remote_lookup(): RemoteLookup;
         get remoteLookup(): RemoteLookup;
 
-        // Own methods of GitgExt.Application
+        // Methods
 
         get_verified_committer(): Ggit.Signature | null;
         get_activity_by_id(id: string): Activity | null;
@@ -546,7 +546,7 @@ export namespace GitgExt {
         set_busy(value: boolean): void;
         get_remote_lookup(): RemoteLookup;
 
-        // Own virtual methods of GitgExt.Application
+        // Virtual methods
 
         vfunc_get_verified_committer(): Ggit.Signature | null;
         vfunc_get_activity_by_id(id: string): Activity | null;
@@ -581,13 +581,13 @@ export namespace GitgExt {
         prototype: CommandLine;
     }
     interface CommandLine extends GObject.Object {
-        // Own methods of GitgExt.CommandLine
+        // Methods
 
         get_option_group(): GLib.OptionGroup;
         parse_finished(): void;
         apply(application: Application): void;
 
-        // Own virtual methods of GitgExt.CommandLine
+        // Virtual methods
 
         vfunc_get_option_group(): GLib.OptionGroup;
         vfunc_parse_finished(): void;
@@ -611,7 +611,7 @@ export namespace GitgExt {
         prototype: CommitAction;
     }
     interface CommitAction extends Action {
-        // Own properties of GitgExt.CommitAction
+        // Properties
 
         get action_interface(): RefActionInterface;
         set action_interface(val: RefActionInterface);
@@ -620,14 +620,14 @@ export namespace GitgExt {
         get commit(): Gitg.Commit;
         set commit(val: Gitg.Commit);
 
-        // Own methods of GitgExt.CommitAction
+        // Methods
 
         get_action_interface(): RefActionInterface;
         set_action_interface(value: RefActionInterface): void;
         get_commit(): Gitg.Commit;
         set_commit(value: Gitg.Commit): void;
 
-        // Own virtual methods of GitgExt.CommitAction
+        // Virtual methods
 
         vfunc_get_action_interface(): RefActionInterface;
         vfunc_set_action_interface(value: RefActionInterface): void;
@@ -650,17 +650,17 @@ export namespace GitgExt {
         prototype: HistoryPanel;
     }
     interface HistoryPanel extends GObject.Object {
-        // Own properties of GitgExt.HistoryPanel
+        // Properties
 
         get history(): History;
         set history(val: History);
 
-        // Own methods of GitgExt.HistoryPanel
+        // Methods
 
         get_history(): History | null;
         set_history(value?: History | null): void;
 
-        // Own virtual methods of GitgExt.HistoryPanel
+        // Virtual methods
 
         vfunc_get_history(): History | null;
         vfunc_set_history(value?: History | null): void;
@@ -679,12 +679,12 @@ export namespace GitgExt {
         prototype: History;
     }
     interface History extends GObject.Object {
-        // Own methods of GitgExt.History
+        // Methods
 
         foreach_selected(func: ForeachCommitSelectionFunc): void;
         select(commit: Gitg.Commit): void;
 
-        // Own virtual methods of GitgExt.History
+        // Virtual methods
 
         vfunc_foreach_selected(func: ForeachCommitSelectionFunc): void;
         vfunc_select(commit: Gitg.Commit): void;
@@ -705,15 +705,15 @@ export namespace GitgExt {
         prototype: Notification;
     }
     interface Notification extends GObject.Object {
-        // Own properties of GitgExt.Notification
+        // Properties
 
         get widget(): Gtk.Widget;
 
-        // Own methods of GitgExt.Notification
+        // Methods
 
         get_widget(): Gtk.Widget | null;
 
-        // Own virtual methods of GitgExt.Notification
+        // Virtual methods
 
         vfunc_get_widget(): Gtk.Widget | null;
     }
@@ -731,12 +731,12 @@ export namespace GitgExt {
         prototype: Notifications;
     }
     interface Notifications extends GObject.Object {
-        // Own methods of GitgExt.Notifications
+        // Methods
 
         add(notification: Notification): void;
         remove(notification: Notification, delay: number): void;
 
-        // Own virtual methods of GitgExt.Notifications
+        // Virtual methods
 
         vfunc_add(notification: Notification): void;
         vfunc_remove(notification: Notification, delay: number): void;
@@ -760,20 +760,20 @@ export namespace GitgExt {
         prototype: Preferences;
     }
     interface Preferences extends GObject.Object {
-        // Own properties of GitgExt.Preferences
+        // Properties
 
         get id(): string;
         get display_name(): string;
         get displayName(): string;
         get widget(): Gtk.Widget;
 
-        // Own methods of GitgExt.Preferences
+        // Methods
 
         get_id(): string;
         get_display_name(): string;
         get_widget(): Gtk.Widget;
 
-        // Own virtual methods of GitgExt.Preferences
+        // Virtual methods
 
         vfunc_get_id(): string;
         vfunc_get_display_name(): string;
@@ -796,13 +796,13 @@ export namespace GitgExt {
         prototype: RefActionInterface;
     }
     interface RefActionInterface extends GObject.Object {
-        // Own properties of GitgExt.RefActionInterface
+        // Properties
 
         get application(): Application;
         set application(val: Application);
         get references(): Gee.List;
 
-        // Own methods of GitgExt.RefActionInterface
+        // Methods
 
         add_ref(reference: Gitg.Ref): void;
         remove_ref(reference: Gitg.Ref): void;
@@ -814,7 +814,7 @@ export namespace GitgExt {
         set_application(value: Application): void;
         get_references(): Gee.List;
 
-        // Own virtual methods of GitgExt.RefActionInterface
+        // Virtual methods
 
         vfunc_add_ref(reference: Gitg.Ref): void;
         vfunc_remove_ref(reference: Gitg.Ref): void;
@@ -844,7 +844,7 @@ export namespace GitgExt {
         prototype: RefAction;
     }
     interface RefAction extends Action {
-        // Own properties of GitgExt.RefAction
+        // Properties
 
         get action_interface(): RefActionInterface;
         set action_interface(val: RefActionInterface);
@@ -853,14 +853,14 @@ export namespace GitgExt {
         get reference(): Gitg.Ref;
         set reference(val: Gitg.Ref);
 
-        // Own methods of GitgExt.RefAction
+        // Methods
 
         get_action_interface(): RefActionInterface;
         set_action_interface(value: RefActionInterface): void;
         get_reference(): Gitg.Ref;
         set_reference(value: Gitg.Ref): void;
 
-        // Own virtual methods of GitgExt.RefAction
+        // Virtual methods
 
         vfunc_get_action_interface(): RefActionInterface;
         vfunc_set_action_interface(value: RefActionInterface): void;
@@ -881,11 +881,11 @@ export namespace GitgExt {
         prototype: RemoteLookup;
     }
     interface RemoteLookup extends GObject.Object {
-        // Own methods of GitgExt.RemoteLookup
+        // Methods
 
         lookup(name: string): Gitg.Remote | null;
 
-        // Own virtual methods of GitgExt.RemoteLookup
+        // Virtual methods
 
         vfunc_lookup(name: string): Gitg.Remote | null;
     }
@@ -912,7 +912,7 @@ export namespace GitgExt {
         prototype: Searchable;
     }
     interface Searchable extends GObject.Object {
-        // Own properties of GitgExt.Searchable
+        // Properties
 
         get search_text(): string;
         set search_text(val: string);
@@ -927,7 +927,7 @@ export namespace GitgExt {
         set search_entry(val: Gtk.Entry);
         set searchEntry(val: Gtk.Entry);
 
-        // Own methods of GitgExt.Searchable
+        // Methods
 
         get_search_text(): string;
         set_search_text(value: string): void;
@@ -936,7 +936,7 @@ export namespace GitgExt {
         get_search_available(): boolean;
         set_search_entry(value?: Gtk.Entry | null): void;
 
-        // Own virtual methods of GitgExt.Searchable
+        // Virtual methods
 
         vfunc_get_search_text(): string;
         vfunc_set_search_text(value: string): void;
@@ -968,7 +968,7 @@ export namespace GitgExt {
         prototype: Selectable;
     }
     interface Selectable extends GObject.Object {
-        // Own properties of GitgExt.Selectable
+        // Properties
 
         get selectable_mode(): SelectionMode;
         set selectable_mode(val: SelectionMode);
@@ -981,7 +981,7 @@ export namespace GitgExt {
         get action_widget(): Gtk.Widget;
         get actionWidget(): Gtk.Widget;
 
-        // Own methods of GitgExt.Selectable
+        // Methods
 
         get_selectable_mode(): SelectionMode;
         set_selectable_mode(value: SelectionMode): void;
@@ -989,7 +989,7 @@ export namespace GitgExt {
         get_selectable_mode_tooltip(): string;
         get_action_widget(): Gtk.Widget | null;
 
-        // Own virtual methods of GitgExt.Selectable
+        // Virtual methods
 
         vfunc_get_selectable_mode(): SelectionMode;
         vfunc_set_selectable_mode(value: SelectionMode): void;
@@ -1017,7 +1017,7 @@ export namespace GitgExt {
         prototype: UIElement;
     }
     interface UIElement extends GObject.Object {
-        // Own properties of GitgExt.UIElement
+        // Properties
 
         get application(): Application;
         set application(val: Application);
@@ -1026,7 +1026,7 @@ export namespace GitgExt {
         get displayName(): string;
         get description(): string;
 
-        // Own methods of GitgExt.UIElement
+        // Methods
 
         negotiate_order(other: UIElement): number;
         get_application(): Application | null;
@@ -1040,7 +1040,7 @@ export namespace GitgExt {
         get_available(): boolean;
         get_enabled(): boolean;
 
-        // Own virtual methods of GitgExt.UIElement
+        // Virtual methods
 
         vfunc_negotiate_order(other: UIElement): number;
         vfunc_get_application(): Application | null;

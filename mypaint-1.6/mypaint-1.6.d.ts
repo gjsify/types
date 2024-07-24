@@ -223,7 +223,7 @@ export namespace MyPaint {
     class Brush {
         static $gtype: GObject.GType<Brush>;
 
-        // Constructors of MyPaint.Brush
+        // Constructors
 
         constructor(properties?: Partial<{}>);
         _init(...args: any[]): void;
@@ -232,12 +232,12 @@ export namespace MyPaint {
 
         static new_with_buckets(num_smudge_buckets: number): Brush;
 
-        // Own static methods of MyPaint.Brush
+        // Static methods
 
         static input_from_cname(cname: string): BrushInput;
         static setting_from_cname(cname: string): BrushSetting;
 
-        // Own methods of MyPaint.Brush
+        // Methods
 
         from_defaults(): void;
         from_string(string: string): boolean;
@@ -349,7 +349,7 @@ export namespace MyPaint {
     class BrushInputInfo {
         static $gtype: GObject.GType<BrushInputInfo>;
 
-        // Own fields of MyPaint.BrushInputInfo
+        // Fields
 
         cname: string;
         hard_min: number;
@@ -360,7 +360,7 @@ export namespace MyPaint {
         name: string;
         tooltip: string;
 
-        // Constructors of MyPaint.BrushInputInfo
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -376,7 +376,7 @@ export namespace MyPaint {
         );
         _init(...args: any[]): void;
 
-        // Own methods of MyPaint.BrushInputInfo
+        // Methods
 
         get_name(): string;
         get_tooltip(): string;
@@ -385,7 +385,7 @@ export namespace MyPaint {
     class BrushSettingInfo {
         static $gtype: GObject.GType<BrushSettingInfo>;
 
-        // Own fields of MyPaint.BrushSettingInfo
+        // Fields
 
         cname: string;
         name: string;
@@ -395,7 +395,7 @@ export namespace MyPaint {
         max: number;
         tooltip: string;
 
-        // Constructors of MyPaint.BrushSettingInfo
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -410,7 +410,7 @@ export namespace MyPaint {
         );
         _init(...args: any[]): void;
 
-        // Own methods of MyPaint.BrushSettingInfo
+        // Methods
 
         get_name(): string;
         get_tooltip(): string;
@@ -424,14 +424,14 @@ export namespace MyPaint {
     class FixedTiledSurface {
         static $gtype: GObject.GType<FixedTiledSurface>;
 
-        // Constructors of MyPaint.FixedTiledSurface
+        // Constructors
 
         constructor(width: number, height: number);
         _init(...args: any[]): void;
 
         static ['new'](width: number, height: number): FixedTiledSurface;
 
-        // Own methods of MyPaint.FixedTiledSurface
+        // Methods
 
         get_height(): number;
         get_width(): number;
@@ -441,14 +441,14 @@ export namespace MyPaint {
     class Rectangle {
         static $gtype: GObject.GType<Rectangle>;
 
-        // Own fields of MyPaint.Rectangle
+        // Fields
 
         x: number;
         y: number;
         width: number;
         height: number;
 
-        // Constructors of MyPaint.Rectangle
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -460,7 +460,7 @@ export namespace MyPaint {
         );
         _init(...args: any[]): void;
 
-        // Own methods of MyPaint.Rectangle
+        // Methods
 
         copy(): Rectangle;
         expand_to_include_point(x: number, y: number): void;
@@ -470,12 +470,12 @@ export namespace MyPaint {
     class Rectangles {
         static $gtype: GObject.GType<Rectangles>;
 
-        // Own fields of MyPaint.Rectangles
+        // Fields
 
         num_rectangles: number;
         rectangles: Rectangle;
 
-        // Constructors of MyPaint.Rectangles
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -488,16 +488,16 @@ export namespace MyPaint {
     class Surface {
         static $gtype: GObject.GType<Surface>;
 
-        // Own fields of MyPaint.Surface
+        // Fields
 
         destroy: SurfaceDestroyFunction;
         refcount: number;
 
-        // Constructors of MyPaint.Surface
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of MyPaint.Surface
+        // Methods
 
         begin_atomic(): void;
         /**
@@ -548,7 +548,7 @@ export namespace MyPaint {
     class TileRequest {
         static $gtype: GObject.GType<TileRequest>;
 
-        // Own fields of MyPaint.TileRequest
+        // Fields
 
         tx: number;
         ty: number;
@@ -558,7 +558,7 @@ export namespace MyPaint {
         thread_id: number;
         mipmap_level: number;
 
-        // Constructors of MyPaint.TileRequest
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -573,7 +573,7 @@ export namespace MyPaint {
         );
         _init(...args: any[]): void;
 
-        // Own methods of MyPaint.TileRequest
+        // Methods
 
         /**
          * Initialize a request for use with mypaint_tiled_surface_tile_request_start()
@@ -592,7 +592,7 @@ export namespace MyPaint {
     class TiledSurface {
         static $gtype: GObject.GType<TiledSurface>;
 
-        // Own fields of MyPaint.TiledSurface
+        // Fields
 
         surface_do_symmetry: boolean;
         surface_center_x: number;
@@ -601,11 +601,11 @@ export namespace MyPaint {
         threadsafe_tile_requests: boolean;
         tile_size: number;
 
-        // Constructors of MyPaint.TiledSurface
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of MyPaint.TiledSurface
+        // Methods
 
         get_alpha(x: number, y: number, radius: number): number;
         /**

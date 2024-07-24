@@ -35,7 +35,7 @@ export namespace GstVulkanXCB {
     class VulkanDisplayXCB extends GstVulkan.VulkanDisplay {
         static $gtype: GObject.GType<VulkanDisplayXCB>;
 
-        // Constructors of GstVulkanXCB.VulkanDisplayXCB
+        // Constructors
 
         constructor(properties?: Partial<VulkanDisplayXCB.ConstructorProps>, ...args: any[]);
 

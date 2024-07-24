@@ -52,7 +52,7 @@ export namespace Gtd {
     class BinLayout extends Gtk.LayoutManager {
         static $gtype: GObject.GType<BinLayout>;
 
-        // Constructors of Gtd.BinLayout
+        // Constructors
 
         constructor(properties?: Partial<BinLayout.ConstructorProps>, ...args: any[]);
 
@@ -84,7 +84,7 @@ export namespace Gtd {
     class Clock extends Object {
         static $gtype: GObject.GType<Clock>;
 
-        // Constructors of Gtd.Clock
+        // Constructors
 
         constructor(properties?: Partial<Clock.ConstructorProps>, ...args: any[]);
 
@@ -92,7 +92,7 @@ export namespace Gtd {
 
         static ['new'](): Clock;
 
-        // Own signals of Gtd.Clock
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -125,12 +125,12 @@ export namespace Gtd {
     {
         static $gtype: GObject.GType<ListModelFilter>;
 
-        // Own properties of Gtd.ListModelFilter
+        // Properties
 
         get child_model(): Gio.ListModel;
         get childModel(): Gio.ListModel;
 
-        // Constructors of Gtd.ListModelFilter
+        // Constructors
 
         constructor(properties?: Partial<ListModelFilter.ConstructorProps>, ...args: any[]);
 
@@ -138,7 +138,7 @@ export namespace Gtd {
 
         static ['new'](child_model: Gio.ListModel): ListModelFilter;
 
-        // Own methods of Gtd.ListModelFilter
+        // Methods
 
         /**
          * Gets the child model that is being filtered.
@@ -666,7 +666,7 @@ export namespace Gtd {
     class ListStore<A extends GObject.Object = GObject.Object> extends GObject.Object implements Gio.ListModel<A> {
         static $gtype: GObject.GType<ListStore>;
 
-        // Own properties of Gtd.ListStore
+        // Properties
 
         /**
          * The type of items contained in this list store. Items must be
@@ -679,7 +679,7 @@ export namespace Gtd {
          */
         get itemType(): GObject.GType;
 
-        // Constructors of Gtd.ListStore
+        // Constructors
 
         constructor(properties?: Partial<ListStore.ConstructorProps>, ...args: any[]);
 
@@ -687,7 +687,7 @@ export namespace Gtd {
 
         static ['new'](item_type: GObject.GType): ListStore;
 
-        // Own methods of Gtd.ListStore
+        // Methods
 
         /**
          * Appends `item` to `store`. `item` must be of type #GtdListStore:item-type.
@@ -1319,7 +1319,7 @@ export namespace Gtd {
     class Manager extends Object {
         static $gtype: GObject.GType<Manager>;
 
-        // Own properties of Gtd.Manager
+        // Properties
 
         get clock(): Clock;
         get default_provider(): Provider;
@@ -1327,7 +1327,7 @@ export namespace Gtd {
         get defaultProvider(): Provider;
         set defaultProvider(val: Provider);
 
-        // Constructors of Gtd.Manager
+        // Constructors
 
         constructor(properties?: Partial<Manager.ConstructorProps>, ...args: any[]);
 
@@ -1335,7 +1335,7 @@ export namespace Gtd {
 
         static ['new'](): Manager;
 
-        // Own signals of Gtd.Manager
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -1389,7 +1389,7 @@ export namespace Gtd {
         ): number;
         emit(signal: 'show-notification', notification: Notification): void;
 
-        // Own static methods of Gtd.Manager
+        // Static methods
 
         /**
          * Retrieves the singleton #GtdManager instance. You should always
@@ -1397,7 +1397,7 @@ export namespace Gtd {
          */
         static get_default(): Manager;
 
-        // Own methods of Gtd.Manager
+        // Methods
 
         /**
          * Adds `provider` to the list of providers.
@@ -1517,7 +1517,7 @@ export namespace Gtd {
     class MaxSizeLayout extends Gtk.LayoutManager {
         static $gtype: GObject.GType<MaxSizeLayout>;
 
-        // Own properties of Gtd.MaxSizeLayout
+        // Properties
 
         /**
          * Sets the maximum height of the #GtkWidget.
@@ -1560,7 +1560,7 @@ export namespace Gtd {
         get widthChars(): number;
         set widthChars(val: number);
 
-        // Constructors of Gtd.MaxSizeLayout
+        // Constructors
 
         constructor(properties?: Partial<MaxSizeLayout.ConstructorProps>, ...args: any[]);
 
@@ -1568,7 +1568,7 @@ export namespace Gtd {
 
         static ['new'](): MaxSizeLayout;
 
-        // Own methods of Gtd.MaxSizeLayout
+        // Methods
 
         /**
          * Retrieves the maximum height of `self`.
@@ -1640,7 +1640,7 @@ export namespace Gtd {
     class MenuButton extends Gtk.Widget implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
         static $gtype: GObject.GType<MenuButton>;
 
-        // Own properties of Gtd.MenuButton
+        // Properties
 
         /**
          * The #GtkWidget to use to align the menu with.
@@ -1692,7 +1692,7 @@ export namespace Gtd {
         get useUnderline(): boolean;
         set useUnderline(val: boolean);
 
-        // Constructors of Gtd.MenuButton
+        // Constructors
 
         constructor(properties?: Partial<MenuButton.ConstructorProps>, ...args: any[]);
 
@@ -1700,7 +1700,7 @@ export namespace Gtd {
 
         static ['new'](): MenuButton;
 
-        // Own methods of Gtd.MenuButton
+        // Methods
 
         /**
          * Returns the parent #GtkWidget to use to line up with menu.
@@ -2540,7 +2540,7 @@ export namespace Gtd {
     class Notification extends Object {
         static $gtype: GObject.GType<Notification>;
 
-        // Own properties of Gtd.Notification
+        // Properties
 
         get has_primary_action(): boolean;
         get hasPrimaryAction(): boolean;
@@ -2555,7 +2555,7 @@ export namespace Gtd {
         get timeout(): number;
         set timeout(val: number);
 
-        // Constructors of Gtd.Notification
+        // Constructors
 
         constructor(properties?: Partial<Notification.ConstructorProps>, ...args: any[]);
 
@@ -2566,7 +2566,7 @@ export namespace Gtd {
 
         static ['new'](...args: never[]): any;
 
-        // Own signals of Gtd.Notification
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -2575,7 +2575,7 @@ export namespace Gtd {
         connect_after(signal: 'executed', callback: (_source: this) => void): number;
         emit(signal: 'executed'): void;
 
-        // Own methods of Gtd.Notification
+        // Methods
 
         /**
          * Executes the primary action of `notification` if set.
@@ -2643,13 +2643,13 @@ export namespace Gtd {
     class Object extends GObject.Object {
         static $gtype: GObject.GType<Object>;
 
-        // Own properties of Gtd.Object
+        // Properties
 
         get loading(): boolean;
         get uid(): string;
         set uid(val: string);
 
-        // Constructors of Gtd.Object
+        // Constructors
 
         constructor(properties?: Partial<Object.ConstructorProps>, ...args: any[]);
 
@@ -2657,7 +2657,7 @@ export namespace Gtd {
 
         static ['new'](uid: string): Object;
 
-        // Own virtual methods of Gtd.Object
+        // Virtual methods
 
         /**
          * Retrieves the internal unique identifier of `object`.
@@ -2670,7 +2670,7 @@ export namespace Gtd {
          */
         vfunc_set_uid(uid: string): void;
 
-        // Own methods of Gtd.Object
+        // Methods
 
         /**
          * Whether `object` is loading or not.
@@ -2716,13 +2716,13 @@ export namespace Gtd {
     class OmniArea extends Widget implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
         static $gtype: GObject.GType<OmniArea>;
 
-        // Constructors of Gtd.OmniArea
+        // Constructors
 
         constructor(properties?: Partial<OmniArea.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Gtd.OmniArea
+        // Methods
 
         /**
          * Pushes a new message to `self`.
@@ -3159,7 +3159,7 @@ export namespace Gtd {
     {
         static $gtype: GObject.GType<ProviderPopover>;
 
-        // Constructors of Gtd.ProviderPopover
+        // Constructors
 
         constructor(properties?: Partial<ProviderPopover.ConstructorProps>, ...args: any[]);
 
@@ -6012,7 +6012,7 @@ export namespace Gtd {
     class StarWidget extends Widget implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
         static $gtype: GObject.GType<StarWidget>;
 
-        // Own properties of Gtd.StarWidget
+        // Properties
 
         /**
          * Whether the star widget is active or not. When active, the
@@ -6021,7 +6021,7 @@ export namespace Gtd {
         get active(): boolean;
         set active(val: boolean);
 
-        // Constructors of Gtd.StarWidget
+        // Constructors
 
         constructor(properties?: Partial<StarWidget.ConstructorProps>, ...args: any[]);
 
@@ -6029,7 +6029,7 @@ export namespace Gtd {
 
         static ['new'](): StarWidget;
 
-        // Own methods of Gtd.StarWidget
+        // Methods
 
         get_active(): boolean;
         set_active(active: boolean): void;
@@ -6457,7 +6457,7 @@ export namespace Gtd {
     class Task extends Object {
         static $gtype: GObject.GType<Task>;
 
-        // Own properties of Gtd.Task
+        // Properties
 
         get complete(): boolean;
         set complete(val: boolean);
@@ -6480,7 +6480,7 @@ export namespace Gtd {
         get title(): string;
         set title(val: string);
 
-        // Constructors of Gtd.Task
+        // Constructors
 
         constructor(properties?: Partial<Task.ConstructorProps>, ...args: any[]);
 
@@ -6488,7 +6488,7 @@ export namespace Gtd {
 
         static ['new'](): Task;
 
-        // Own virtual methods of Gtd.Task
+        // Virtual methods
 
         /**
          * Retrieves whether the task is complete or not.
@@ -6569,7 +6569,7 @@ export namespace Gtd {
          */
         vfunc_set_title(title?: string | null): void;
 
-        // Own methods of Gtd.Task
+        // Methods
 
         /**
          * Compare `t1` and `t2`.
@@ -6723,7 +6723,7 @@ export namespace Gtd {
     class TaskList<A extends GObject.Object = GObject.Object> extends Object implements Gio.ListModel<A> {
         static $gtype: GObject.GType<TaskList>;
 
-        // Own properties of Gtd.TaskList
+        // Properties
 
         get archived(): boolean;
         set archived(val: boolean);
@@ -6738,7 +6738,7 @@ export namespace Gtd {
         get provider(): Provider;
         set provider(val: Provider);
 
-        // Constructors of Gtd.TaskList
+        // Constructors
 
         constructor(properties?: Partial<TaskList.ConstructorProps>, ...args: any[]);
 
@@ -6749,7 +6749,7 @@ export namespace Gtd {
 
         static ['new'](...args: never[]): any;
 
-        // Own signals of Gtd.TaskList
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -6764,7 +6764,7 @@ export namespace Gtd {
         connect_after(signal: 'task-updated', callback: (_source: this, task: Task) => void): number;
         emit(signal: 'task-updated', task: Task): void;
 
-        // Own virtual methods of Gtd.TaskList
+        // Virtual methods
 
         /**
          * Retrieves whether `self` is archived or not. Archived task lists
@@ -6780,7 +6780,7 @@ export namespace Gtd {
         vfunc_task_removed(task: Task): void;
         vfunc_task_updated(task: Task): void;
 
-        // Own methods of Gtd.TaskList
+        // Methods
 
         /**
          * Adds `task` to `list`.
@@ -7387,7 +7387,7 @@ export namespace Gtd {
     class TaskListView extends Gtk.Box implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget, Gtk.Orientable {
         static $gtype: GObject.GType<TaskListView>;
 
-        // Own properties of Gtd.TaskListView
+        // Properties
 
         get show_due_date(): boolean;
         set show_due_date(val: boolean);
@@ -7398,7 +7398,7 @@ export namespace Gtd {
         get showListName(): boolean;
         set showListName(val: boolean);
 
-        // Constructors of Gtd.TaskListView
+        // Constructors
 
         constructor(properties?: Partial<TaskListView.ConstructorProps>, ...args: any[]);
 
@@ -7406,7 +7406,7 @@ export namespace Gtd {
 
         static ['new'](): TaskListView;
 
-        // Own methods of Gtd.TaskListView
+        // Methods
 
         /**
          * Retrieves the current default date which new tasks are set to.
@@ -7923,7 +7923,7 @@ export namespace Gtd {
     class Widget extends Gtk.Widget implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
         static $gtype: GObject.GType<Widget>;
 
-        // Own properties of Gtd.Widget
+        // Properties
 
         get pivot_point(): Graphene.Point3D;
         set pivot_point(val: Graphene.Point3D);
@@ -7966,7 +7966,7 @@ export namespace Gtd {
         get translationZ(): number;
         set translationZ(val: number);
 
-        // Constructors of Gtd.Widget
+        // Constructors
 
         constructor(properties?: Partial<Widget.ConstructorProps>, ...args: any[]);
 
@@ -7974,7 +7974,7 @@ export namespace Gtd {
 
         static ['new'](): Widget;
 
-        // Own signals of Gtd.Widget
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -7992,7 +7992,7 @@ export namespace Gtd {
         connect_after(signal: 'transitions-completed', callback: (_source: this) => void): number;
         emit(signal: 'transitions-completed'): void;
 
-        // Own methods of Gtd.Widget
+        // Methods
 
         /**
          * Adds a `transition` to the #GtdWidget's list of animations.
@@ -8815,12 +8815,12 @@ export namespace Gtd {
     {
         static $gtype: GObject.GType<Window>;
 
-        // Own properties of Gtd.Window
+        // Properties
 
         get current_workspace(): Workspace;
         get currentWorkspace(): Workspace;
 
-        // Constructors of Gtd.Window
+        // Constructors
 
         constructor(properties?: Partial<Window.ConstructorProps>, ...args: any[]);
 
@@ -8831,7 +8831,7 @@ export namespace Gtd {
 
         static ['new'](...args: never[]): any;
 
-        // Own methods of Gtd.Window
+        // Methods
 
         /**
          * Cancels `notification`.
@@ -12207,7 +12207,7 @@ export namespace Gtd {
     abstract class Animatable {
         static $gtype: GObject.GType<Animatable>;
 
-        // Constructors of Gtd.Animatable
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -12215,7 +12215,7 @@ export namespace Gtd {
     abstract class Application {
         static $gtype: GObject.GType<Application>;
 
-        // Constructors of Gtd.Application
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -12225,7 +12225,7 @@ export namespace Gtd {
     abstract class DoneButton {
         static $gtype: GObject.GType<DoneButton>;
 
-        // Constructors of Gtd.DoneButton
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -12233,7 +12233,7 @@ export namespace Gtd {
     abstract class InitialSetupWindow {
         static $gtype: GObject.GType<InitialSetupWindow>;
 
-        // Constructors of Gtd.InitialSetupWindow
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -12241,7 +12241,7 @@ export namespace Gtd {
     abstract class Interval {
         static $gtype: GObject.GType<Interval>;
 
-        // Constructors of Gtd.Interval
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -12251,7 +12251,7 @@ export namespace Gtd {
     abstract class ListView {
         static $gtype: GObject.GType<ListView>;
 
-        // Constructors of Gtd.ListView
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -12260,7 +12260,7 @@ export namespace Gtd {
     abstract class MarkdownRenderer {
         static $gtype: GObject.GType<MarkdownRenderer>;
 
-        // Constructors of Gtd.MarkdownRenderer
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -12271,7 +12271,7 @@ export namespace Gtd {
     abstract class NotificationWidget {
         static $gtype: GObject.GType<NotificationWidget>;
 
-        // Constructors of Gtd.NotificationWidget
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -12283,7 +12283,7 @@ export namespace Gtd {
     abstract class PluginManager {
         static $gtype: GObject.GType<PluginManager>;
 
-        // Constructors of Gtd.PluginManager
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -12294,7 +12294,7 @@ export namespace Gtd {
     abstract class Storage {
         static $gtype: GObject.GType<Storage>;
 
-        // Constructors of Gtd.Storage
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -12302,7 +12302,7 @@ export namespace Gtd {
     abstract class StoragePopover {
         static $gtype: GObject.GType<StoragePopover>;
 
-        // Constructors of Gtd.StoragePopover
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -12310,7 +12310,7 @@ export namespace Gtd {
     abstract class StorageRow {
         static $gtype: GObject.GType<StorageRow>;
 
-        // Constructors of Gtd.StorageRow
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -12318,7 +12318,7 @@ export namespace Gtd {
     abstract class StorageSelector {
         static $gtype: GObject.GType<StorageSelector>;
 
-        // Constructors of Gtd.StorageSelector
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -12328,7 +12328,7 @@ export namespace Gtd {
     abstract class TaskListItem {
         static $gtype: GObject.GType<TaskListItem>;
 
-        // Constructors of Gtd.TaskListItem
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -12337,7 +12337,7 @@ export namespace Gtd {
     abstract class TaskRow {
         static $gtype: GObject.GType<TaskRow>;
 
-        // Constructors of Gtd.TaskRow
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -12345,7 +12345,7 @@ export namespace Gtd {
     abstract class Transition {
         static $gtype: GObject.GType<Transition>;
 
-        // Constructors of Gtd.Transition
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -12367,12 +12367,12 @@ export namespace Gtd {
         prototype: Activatable;
     }
     interface Activatable extends GObject.Object {
-        // Own properties of Gtd.Activatable
+        // Properties
 
         get preferences_panel(): Gtk.Widget;
         get preferencesPanel(): Gtk.Widget;
 
-        // Own methods of Gtd.Activatable
+        // Methods
 
         /**
          * Activates the extension. This is the starting point where
@@ -12400,7 +12400,7 @@ export namespace Gtd {
          */
         get_preferences_panel(): Gtk.Widget | null;
 
-        // Own virtual methods of Gtd.Activatable
+        // Virtual methods
 
         /**
          * Activates the extension. This is the starting point where
@@ -12441,7 +12441,7 @@ export namespace Gtd {
         prototype: OmniAreaAddin;
     }
     interface OmniAreaAddin extends GObject.Object {
-        // Own methods of Gtd.OmniAreaAddin
+        // Methods
 
         /**
          * Requests that the #GtdOmniAreaAddin initialize, possibly modifying
@@ -12457,7 +12457,7 @@ export namespace Gtd {
          */
         unload(omni_bar: OmniArea): void;
 
-        // Own virtual methods of Gtd.OmniAreaAddin
+        // Virtual methods
 
         /**
          * Requests that the #GtdOmniAreaAddin initialize, possibly modifying
@@ -12494,7 +12494,7 @@ export namespace Gtd {
         prototype: Panel;
     }
     interface Panel extends Gtk.Widget {
-        // Own properties of Gtd.Panel
+        // Properties
 
         get icon(): Gio.Icon;
         get menu(): Gio.Menu;
@@ -12503,7 +12503,7 @@ export namespace Gtd {
         get subtitle(): string;
         get title(): string;
 
-        // Own methods of Gtd.Panel
+        // Methods
 
         /**
          * Activates the panel with `parameters`. The passed parameters
@@ -12564,7 +12564,7 @@ export namespace Gtd {
          */
         get_subtitle(): string;
 
-        // Own virtual methods of Gtd.Panel
+        // Virtual methods
 
         /**
          * Activates the panel with `parameters`. The passed parameters
@@ -12637,7 +12637,7 @@ export namespace Gtd {
         prototype: Provider;
     }
     interface Provider extends Object {
-        // Own properties of Gtd.Provider
+        // Properties
 
         get description(): string;
         get enabled(): boolean;
@@ -12647,7 +12647,7 @@ export namespace Gtd {
         get provider_type(): string;
         get providerType(): string;
 
-        // Own methods of Gtd.Provider
+        // Methods
 
         /**
          * Compares `a` and `b`. The sorting criteria is internal and
@@ -12814,7 +12814,7 @@ export namespace Gtd {
         ): void;
         update_task_list_finish(result: Gio.AsyncResult): boolean;
 
-        // Own virtual methods of Gtd.Provider
+        // Virtual methods
 
         /**
          * Creates the given task in `provider`.
@@ -12978,12 +12978,12 @@ export namespace Gtd {
         prototype: Workspace;
     }
     interface Workspace extends Gtk.Widget {
-        // Own properties of Gtd.Workspace
+        // Properties
 
         get icon(): Gio.Icon;
         get title(): string;
 
-        // Own methods of Gtd.Workspace
+        // Methods
 
         /**
          * Activates `self`. This happens when the workspace
@@ -13017,7 +13017,7 @@ export namespace Gtd {
          */
         get_title(): string;
 
-        // Own virtual methods of Gtd.Workspace
+        // Virtual methods
 
         /**
          * Activates `self`. This happens when the workspace

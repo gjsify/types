@@ -141,7 +141,7 @@ export namespace GstGLEGL {
     class GLDisplayEGL extends GstGL.GLDisplay {
         static $gtype: GObject.GType<GLDisplayEGL>;
 
-        // Constructors of GstGLEGL.GLDisplayEGL
+        // Constructors
 
         constructor(properties?: Partial<GLDisplayEGL.ConstructorProps>, ...args: any[]);
 
@@ -153,7 +153,7 @@ export namespace GstGLEGL {
 
         static new_with_egl_display(display?: any | null): GLDisplayEGL;
 
-        // Own static methods of GstGLEGL.GLDisplayEGL
+        // Static methods
 
         /**
          * Creates a EGL display connection from a native Display.
@@ -186,11 +186,11 @@ export namespace GstGLEGL {
     class GLDisplayEGLDevice extends GstGL.GLDisplay {
         static $gtype: GObject.GType<GLDisplayEGLDevice>;
 
-        // Own fields of GstGLEGL.GLDisplayEGLDevice
+        // Fields
 
         device: any;
 
-        // Constructors of GstGLEGL.GLDisplayEGLDevice
+        // Constructors
 
         constructor(properties?: Partial<GLDisplayEGLDevice.ConstructorProps>, ...args: any[]);
 
@@ -216,7 +216,7 @@ export namespace GstGLEGL {
     class GLMemoryEGLAllocator extends GstGL.GLMemoryAllocator {
         static $gtype: GObject.GType<GLMemoryEGLAllocator>;
 
-        // Constructors of GstGLEGL.GLMemoryEGLAllocator
+        // Constructors
 
         constructor(properties?: Partial<GLMemoryEGLAllocator.ConstructorProps>, ...args: any[]);
 
@@ -233,7 +233,7 @@ export namespace GstGLEGL {
     class EGLImage {
         static $gtype: GObject.GType<EGLImage>;
 
-        // Constructors of GstGLEGL.EGLImage
+        // Constructors
 
         constructor(
             context: GstGL.GLContext,
@@ -252,7 +252,7 @@ export namespace GstGLEGL {
             user_data_destroy: EGLImageDestroyNotify,
         ): EGLImage;
 
-        // Own static methods of GstGLEGL.EGLImage
+        // Static methods
 
         /**
          * Creates an EGL image that imports the dmabuf FD. The dmabuf data
@@ -343,7 +343,7 @@ export namespace GstGLEGL {
         ): EGLImage | null;
         static from_texture(context: GstGL.GLContext, gl_mem: GstGL.GLMemory, attribs: never): EGLImage | null;
 
-        // Own methods of GstGLEGL.EGLImage
+        // Methods
 
         export_dmabuf(fd: number, stride: number, offset: number): boolean;
         get_image(): any | null;
@@ -358,11 +358,11 @@ export namespace GstGLEGL {
     class GLMemoryEGL {
         static $gtype: GObject.GType<GLMemoryEGL>;
 
-        // Constructors of GstGLEGL.GLMemoryEGL
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own static methods of GstGLEGL.GLMemoryEGL
+        // Static methods
 
         /**
          * Initializes the GL Memory allocator. It is safe to call this function
@@ -370,7 +370,7 @@ export namespace GstGLEGL {
          */
         static init_once(): void;
 
-        // Own methods of GstGLEGL.GLMemoryEGL
+        // Methods
 
         get_display(): any | null;
         get_image(): any | null;

@@ -100,13 +100,13 @@ export namespace Gkbd {
     class Configuration extends GObject.Object {
         static $gtype: GObject.GType<Configuration>;
 
-        // Constructors of Gkbd.Configuration
+        // Constructors
 
         constructor(properties?: Partial<Configuration.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of Gkbd.Configuration
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -121,7 +121,7 @@ export namespace Gkbd {
         connect_after(signal: 'indicators-changed', callback: (_source: this) => void): number;
         emit(signal: 'indicators-changed'): void;
 
-        // Own static methods of Gkbd.Configuration
+        // Static methods
 
         static create_label_title(
             group: number,
@@ -130,7 +130,7 @@ export namespace Gkbd {
         ): string;
         static get(): Configuration;
 
-        // Own methods of Gkbd.Configuration
+        // Methods
 
         append_object(obj: GObject.Object): void;
         extract_layout_name(group: number): string;
@@ -176,7 +176,7 @@ export namespace Gkbd {
     class Indicator extends Gtk.Notebook implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<Indicator>;
 
-        // Constructors of Gkbd.Indicator
+        // Constructors
 
         constructor(properties?: Partial<Indicator.ConstructorProps>, ...args: any[]);
 
@@ -184,7 +184,7 @@ export namespace Gkbd {
 
         static ['new'](): Indicator;
 
-        // Own signals of Gkbd.Indicator
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -193,18 +193,18 @@ export namespace Gkbd {
         connect_after(signal: 'reinit-ui', callback: (_source: this) => void): number;
         emit(signal: 'reinit-ui'): void;
 
-        // Own static methods of Gkbd.Indicator
+        // Static methods
 
         static get_group_names(): string[];
         static get_image_filename(group: number): string;
         static get_max_width_height_ratio(): number;
         static get_xkl_engine(): Xkl.Engine;
 
-        // Own virtual methods of Gkbd.Indicator
+        // Virtual methods
 
         vfunc_reinit_ui(): void;
 
-        // Own methods of Gkbd.Indicator
+        // Methods
 
         reinit_ui(): void;
         set_angle(angle: number): void;
@@ -631,7 +631,7 @@ export namespace Gkbd {
     class KeyboardDrawing extends Gtk.DrawingArea implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<KeyboardDrawing>;
 
-        // Constructors of Gkbd.KeyboardDrawing
+        // Constructors
 
         constructor(properties?: Partial<KeyboardDrawing.ConstructorProps>, ...args: any[]);
 
@@ -641,7 +641,7 @@ export namespace Gkbd {
 
         static ['new'](): KeyboardDrawing;
 
-        // Own signals of Gkbd.KeyboardDrawing
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -650,16 +650,16 @@ export namespace Gkbd {
         connect_after(signal: 'bad-keycode', callback: (_source: this, object: number) => void): number;
         emit(signal: 'bad-keycode', object: number): void;
 
-        // Own static methods of Gkbd.KeyboardDrawing
+        // Static methods
 
         static dialog_set_group(dialog: Gtk.Widget, registry: Xkl.ConfigRegistry, group: number): void;
         static dialog_set_layout(dialog: Gtk.Widget, registry: Xkl.ConfigRegistry, layout: string): void;
 
-        // Own virtual methods of Gkbd.KeyboardDrawing
+        // Virtual methods
 
         vfunc_bad_keycode(keycode: number): void;
 
-        // Own methods of Gkbd.KeyboardDrawing
+        // Methods
 
         get_compat(): string;
         get_geometry(): string;
@@ -1108,7 +1108,7 @@ export namespace Gkbd {
     class Status extends Gtk.StatusIcon {
         static $gtype: GObject.GType<Status>;
 
-        // Constructors of Gkbd.Status
+        // Constructors
 
         constructor(properties?: Partial<Status.ConstructorProps>, ...args: any[]);
 
@@ -1116,13 +1116,13 @@ export namespace Gkbd {
 
         static ['new'](): Status;
 
-        // Own static methods of Gkbd.Status
+        // Static methods
 
         static get_group_names(): string[];
         static get_image_filename(group: number): string;
         static get_xkl_engine(): Xkl.Engine;
 
-        // Own methods of Gkbd.Status
+        // Methods
 
         reinit_ui(): void;
     }
@@ -1131,7 +1131,7 @@ export namespace Gkbd {
     class DesktopConfig {
         static $gtype: GObject.GType<DesktopConfig>;
 
-        // Own fields of Gkbd.DesktopConfig
+        // Fields
 
         default_group: number;
         group_per_app: boolean;
@@ -1142,11 +1142,11 @@ export namespace Gkbd {
         config_listener_id: number;
         engine: Xkl.Engine;
 
-        // Constructors of Gkbd.DesktopConfig
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of Gkbd.DesktopConfig
+        // Methods
 
         activate(): boolean;
         init(engine: Xkl.Engine): void;
@@ -1171,7 +1171,7 @@ export namespace Gkbd {
     class IndicatorConfig {
         static $gtype: GObject.GType<IndicatorConfig>;
 
-        // Own fields of Gkbd.IndicatorConfig
+        // Fields
 
         secondary_groups_mask: number;
         show_flags: boolean;
@@ -1185,11 +1185,11 @@ export namespace Gkbd {
         config_listener_id: number;
         engine: Xkl.Engine;
 
-        // Constructors of Gkbd.IndicatorConfig
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of Gkbd.IndicatorConfig
+        // Methods
 
         activate(): void;
         free_image_filenames(): void;
@@ -1209,7 +1209,7 @@ export namespace Gkbd {
     class KeyboardConfig {
         static $gtype: GObject.GType<KeyboardConfig>;
 
-        // Own fields of Gkbd.KeyboardConfig
+        // Fields
 
         model: string;
         layouts_variants: string;
@@ -1218,11 +1218,11 @@ export namespace Gkbd {
         config_listener_id: number;
         engine: Xkl.Engine;
 
-        // Constructors of Gkbd.KeyboardConfig
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own static methods of Gkbd.KeyboardConfig
+        // Static methods
 
         static add_default_switch_option_if_necessary(
             layouts_list: string,
@@ -1241,7 +1241,7 @@ export namespace Gkbd {
         static merge_items(parent: string, child: string): string;
         static split_items(merged: string, parent: string, child: string): boolean;
 
-        // Own methods of Gkbd.KeyboardConfig
+        // Methods
 
         activate(): boolean;
         equals(kbd_config2: KeyboardConfig): boolean;
@@ -1260,7 +1260,7 @@ export namespace Gkbd {
     class KeyboardDrawingDoodad {
         static $gtype: GObject.GType<KeyboardDrawingDoodad>;
 
-        // Constructors of Gkbd.KeyboardDrawingDoodad
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1268,12 +1268,12 @@ export namespace Gkbd {
     class KeyboardDrawingGroupLevel {
         static $gtype: GObject.GType<KeyboardDrawingGroupLevel>;
 
-        // Own fields of Gkbd.KeyboardDrawingGroupLevel
+        // Fields
 
         group: number;
         level: number;
 
-        // Constructors of Gkbd.KeyboardDrawingGroupLevel
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -1287,7 +1287,7 @@ export namespace Gkbd {
     class KeyboardDrawingItem {
         static $gtype: GObject.GType<KeyboardDrawingItem>;
 
-        // Constructors of Gkbd.KeyboardDrawingItem
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1295,7 +1295,7 @@ export namespace Gkbd {
     class KeyboardDrawingKey {
         static $gtype: GObject.GType<KeyboardDrawingKey>;
 
-        // Constructors of Gkbd.KeyboardDrawingKey
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1303,7 +1303,7 @@ export namespace Gkbd {
     class KeyboardDrawingRenderContext {
         static $gtype: GObject.GType<KeyboardDrawingRenderContext>;
 
-        // Own fields of Gkbd.KeyboardDrawingRenderContext
+        // Fields
 
         angle: number;
         layout: Pango.Layout;
@@ -1311,7 +1311,7 @@ export namespace Gkbd {
         scale_denominator: number;
         dark_color: Gdk.RGBA;
 
-        // Constructors of Gkbd.KeyboardDrawingRenderContext
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1320,7 +1320,7 @@ export namespace Gkbd {
     abstract class StatusPrivate {
         static $gtype: GObject.GType<StatusPrivate>;
 
-        // Constructors of Gkbd.StatusPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }

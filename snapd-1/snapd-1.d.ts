@@ -156,7 +156,7 @@ export namespace Snapd {
     class Error extends GLib.Error {
         static $gtype: GObject.GType<Error>;
 
-        // Static fields of Snapd.Error
+        // Static fields
 
         /**
          * not able to connect to snapd.
@@ -297,12 +297,12 @@ export namespace Snapd {
          */
         static OPTION_NOT_FOUND: number;
 
-        // Constructors of Snapd.Error
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of Snapd.Error
+        // Static methods
 
         /**
          * Gets the Snapd Error Quark.
@@ -393,14 +393,14 @@ export namespace Snapd {
     class MarkdownVersion {
         static $gtype: GObject.GType<MarkdownVersion>;
 
-        // Static fields of Snapd.MarkdownVersion
+        // Static fields
 
         /**
          * the initial version of Snap markdown.
          */
         static '0': number;
 
-        // Constructors of Snapd.MarkdownVersion
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -848,7 +848,7 @@ export namespace Snapd {
     class Alias extends GObject.Object {
         static $gtype: GObject.GType<Alias>;
 
-        // Own properties of Snapd.Alias
+        // Properties
 
         get app_auto(): string;
         get appAuto(): string;
@@ -859,13 +859,13 @@ export namespace Snapd {
         get snap(): string;
         get status(): AliasStatus;
 
-        // Constructors of Snapd.Alias
+        // Constructors
 
         constructor(properties?: Partial<Alias.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Snapd.Alias
+        // Methods
 
         /**
          * Get the app this is an alias for.
@@ -932,7 +932,7 @@ export namespace Snapd {
     class App extends GObject.Object {
         static $gtype: GObject.GType<App>;
 
-        // Own properties of Snapd.App
+        // Properties
 
         get active(): boolean;
         get aliases(): string[];
@@ -946,13 +946,13 @@ export namespace Snapd {
         get name(): string;
         get snap(): string;
 
-        // Constructors of Snapd.App
+        // Constructors
 
         constructor(properties?: Partial<App.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Snapd.App
+        // Methods
 
         /**
          * Get if this service is active.
@@ -1013,11 +1013,11 @@ export namespace Snapd {
     class Assertion extends GObject.Object {
         static $gtype: GObject.GType<Assertion>;
 
-        // Own properties of Snapd.Assertion
+        // Properties
 
         get content(): string;
 
-        // Constructors of Snapd.Assertion
+        // Constructors
 
         constructor(properties?: Partial<Assertion.ConstructorProps>, ...args: any[]);
 
@@ -1025,7 +1025,7 @@ export namespace Snapd {
 
         static ['new'](content: string): Assertion;
 
-        // Own methods of Snapd.Assertion
+        // Methods
 
         /**
          * Get the body of the assertion.
@@ -1067,14 +1067,14 @@ export namespace Snapd {
     class AuthData extends GObject.Object {
         static $gtype: GObject.GType<AuthData>;
 
-        // Own properties of Snapd.AuthData
+        // Properties
 
         get discharges(): string[];
         set discharges(val: string[]);
         get macaroon(): string;
         set macaroon(val: string);
 
-        // Constructors of Snapd.AuthData
+        // Constructors
 
         constructor(properties?: Partial<AuthData.ConstructorProps>, ...args: any[]);
 
@@ -1082,7 +1082,7 @@ export namespace Snapd {
 
         static ['new'](macaroon: string, discharges: string[]): AuthData;
 
-        // Own methods of Snapd.AuthData
+        // Methods
 
         /**
          * Get the discharges that this authorization uses.
@@ -1120,7 +1120,7 @@ export namespace Snapd {
     class Change extends GObject.Object {
         static $gtype: GObject.GType<Change>;
 
-        // Own properties of Snapd.Change
+        // Properties
 
         get error(): string;
         get id(): string;
@@ -1134,13 +1134,13 @@ export namespace Snapd {
         get summary(): string;
         get tasks(): any[];
 
-        // Constructors of Snapd.Change
+        // Constructors
 
         constructor(properties?: Partial<Change.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Snapd.Change
+        // Methods
 
         /**
          * Gets the error string associated with this change.
@@ -1211,7 +1211,7 @@ export namespace Snapd {
     class Channel extends GObject.Object {
         static $gtype: GObject.GType<Channel>;
 
-        // Own properties of Snapd.Channel
+        // Properties
 
         get confinement(): Confinement;
         get epoch(): string;
@@ -1222,13 +1222,13 @@ export namespace Snapd {
         get size(): number;
         get version(): string;
 
-        // Constructors of Snapd.Channel
+        // Constructors
 
         constructor(properties?: Partial<Channel.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Snapd.Channel
+        // Methods
 
         /**
          * Get the branch this channel is tracking.
@@ -1308,7 +1308,7 @@ export namespace Snapd {
     class Client extends GObject.Object {
         static $gtype: GObject.GType<Client>;
 
-        // Constructors of Snapd.Client
+        // Constructors
 
         constructor(properties?: Partial<Client.ConstructorProps>, ...args: any[]);
 
@@ -1318,7 +1318,7 @@ export namespace Snapd {
 
         static new_from_socket(socket: Gio.Socket): Client;
 
-        // Own methods of Snapd.Client
+        // Methods
 
         /**
          * Asynchronously abort a change.
@@ -3091,7 +3091,7 @@ export namespace Snapd {
     class Connection extends GObject.Object {
         static $gtype: GObject.GType<Connection>;
 
-        // Own properties of Snapd.Connection
+        // Properties
 
         get gadget(): boolean;
         get interface(): string;
@@ -3105,13 +3105,13 @@ export namespace Snapd {
         get slotAttrs(): GLib.HashTable<any, any>;
         get snap(): string;
 
-        // Constructors of Snapd.Connection
+        // Constructors
 
         constructor(properties?: Partial<Connection.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Snapd.Connection
+        // Methods
 
         /**
          * Get if this connection was made by the gadget snap.
@@ -3200,19 +3200,19 @@ export namespace Snapd {
     class Icon extends GObject.Object {
         static $gtype: GObject.GType<Icon>;
 
-        // Own properties of Snapd.Icon
+        // Properties
 
         get data(): GLib.Bytes;
         get mime_type(): string;
         get mimeType(): string;
 
-        // Constructors of Snapd.Icon
+        // Constructors
 
         constructor(properties?: Partial<Icon.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Snapd.Icon
+        // Methods
 
         /**
          * Get the binary data for this icon.
@@ -3247,7 +3247,7 @@ export namespace Snapd {
     class Interface extends GObject.Object {
         static $gtype: GObject.GType<Interface>;
 
-        // Own properties of Snapd.Interface
+        // Properties
 
         get doc_url(): string;
         get docUrl(): string;
@@ -3256,13 +3256,13 @@ export namespace Snapd {
         get slots(): any[];
         get summary(): string;
 
-        // Constructors of Snapd.Interface
+        // Constructors
 
         constructor(properties?: Partial<Interface.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Snapd.Interface
+        // Methods
 
         /**
          * Get the documentation URL of this interface.
@@ -3311,18 +3311,18 @@ export namespace Snapd {
     class Maintenance extends GObject.Object {
         static $gtype: GObject.GType<Maintenance>;
 
-        // Own properties of Snapd.Maintenance
+        // Properties
 
         get kind(): MaintenanceKind;
         get message(): string;
 
-        // Constructors of Snapd.Maintenance
+        // Constructors
 
         constructor(properties?: Partial<Maintenance.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Snapd.Maintenance
+        // Methods
 
         /**
          * Get the kind of maintenance kind, e.g. %SNAPD_MAINTENANCE_KIND_DAEMON_RESTART.
@@ -3354,20 +3354,20 @@ export namespace Snapd {
     class MarkdownNode extends GObject.Object {
         static $gtype: GObject.GType<MarkdownNode>;
 
-        // Own properties of Snapd.MarkdownNode
+        // Properties
 
         get children(): any[];
         get node_type(): MarkdownNodeType;
         get nodeType(): MarkdownNodeType;
         get text(): string;
 
-        // Constructors of Snapd.MarkdownNode
+        // Constructors
 
         constructor(properties?: Partial<MarkdownNode.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Snapd.MarkdownNode
+        // Methods
 
         /**
          * Get the child nodes of this node.
@@ -3400,7 +3400,7 @@ export namespace Snapd {
     class MarkdownParser extends GObject.Object {
         static $gtype: GObject.GType<MarkdownParser>;
 
-        // Constructors of Snapd.MarkdownParser
+        // Constructors
 
         constructor(properties?: Partial<MarkdownParser.ConstructorProps>, ...args: any[]);
 
@@ -3408,7 +3408,7 @@ export namespace Snapd {
 
         static ['new'](version: MarkdownVersion): MarkdownParser;
 
-        // Own methods of Snapd.MarkdownParser
+        // Methods
 
         /**
          * Check if paragraph whitespace will be kept intact.
@@ -3448,20 +3448,20 @@ export namespace Snapd {
     class Media extends GObject.Object {
         static $gtype: GObject.GType<Media>;
 
-        // Own properties of Snapd.Media
+        // Properties
 
         get height(): number;
         get type(): string;
         get url(): string;
         get width(): number;
 
-        // Constructors of Snapd.Media
+        // Constructors
 
         constructor(properties?: Partial<Media.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Snapd.Media
+        // Methods
 
         /**
          * Get the height of the media in pixels or 0 if unknown.
@@ -3504,7 +3504,7 @@ export namespace Snapd {
     class Plug extends GObject.Object {
         static $gtype: GObject.GType<Plug>;
 
-        // Own properties of Snapd.Plug
+        // Properties
 
         get attributes(): GLib.HashTable<any, any>;
         get connections(): any[];
@@ -3513,13 +3513,13 @@ export namespace Snapd {
         get name(): string;
         get snap(): string;
 
-        // Constructors of Snapd.Plug
+        // Constructors
 
         constructor(properties?: Partial<Plug.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Snapd.Plug
+        // Methods
 
         /**
          * Get an attribute for this interface.
@@ -3585,18 +3585,18 @@ export namespace Snapd {
     class PlugRef extends GObject.Object {
         static $gtype: GObject.GType<PlugRef>;
 
-        // Own properties of Snapd.PlugRef
+        // Properties
 
         get plug(): string;
         get snap(): string;
 
-        // Constructors of Snapd.PlugRef
+        // Constructors
 
         constructor(properties?: Partial<PlugRef.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Snapd.PlugRef
+        // Methods
 
         /**
          * Get the name of the plug.
@@ -3625,18 +3625,18 @@ export namespace Snapd {
     class Price extends GObject.Object {
         static $gtype: GObject.GType<Price>;
 
-        // Own properties of Snapd.Price
+        // Properties
 
         get amount(): number;
         get currency(): string;
 
-        // Constructors of Snapd.Price
+        // Constructors
 
         constructor(properties?: Partial<Price.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Snapd.Price
+        // Methods
 
         /**
          * Get the currency amount for this price, e.g. 0.99.
@@ -3666,19 +3666,19 @@ export namespace Snapd {
     class Screenshot extends GObject.Object {
         static $gtype: GObject.GType<Screenshot>;
 
-        // Own properties of Snapd.Screenshot
+        // Properties
 
         get height(): number;
         get url(): string;
         get width(): number;
 
-        // Constructors of Snapd.Screenshot
+        // Constructors
 
         constructor(properties?: Partial<Screenshot.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Snapd.Screenshot
+        // Methods
 
         /**
          * Get the height of the screenshot in pixels or 0 if unknown.
@@ -3716,7 +3716,7 @@ export namespace Snapd {
     class Slot extends GObject.Object {
         static $gtype: GObject.GType<Slot>;
 
-        // Own properties of Snapd.Slot
+        // Properties
 
         get attributes(): GLib.HashTable<any, any>;
         get connections(): any[];
@@ -3725,13 +3725,13 @@ export namespace Snapd {
         get name(): string;
         get snap(): string;
 
-        // Constructors of Snapd.Slot
+        // Constructors
 
         constructor(properties?: Partial<Slot.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Snapd.Slot
+        // Methods
 
         /**
          * Get an attribute for this interface.
@@ -3797,18 +3797,18 @@ export namespace Snapd {
     class SlotRef extends GObject.Object {
         static $gtype: GObject.GType<SlotRef>;
 
-        // Own properties of Snapd.SlotRef
+        // Properties
 
         get slot(): string;
         get snap(): string;
 
-        // Constructors of Snapd.SlotRef
+        // Constructors
 
         constructor(properties?: Partial<SlotRef.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Snapd.SlotRef
+        // Methods
 
         /**
          * Get the name of the slot.
@@ -3884,7 +3884,7 @@ export namespace Snapd {
     class Snap extends GObject.Object {
         static $gtype: GObject.GType<Snap>;
 
-        // Own properties of Snapd.Snap
+        // Properties
 
         get apps(): any[];
         get base(): string;
@@ -3936,13 +3936,13 @@ export namespace Snapd {
         get version(): string;
         get website(): string;
 
-        // Constructors of Snapd.Snap
+        // Constructors
 
         constructor(properties?: Partial<Snap.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Snapd.Snap
+        // Methods
 
         /**
          * Get the apps this snap provides.
@@ -4194,7 +4194,7 @@ export namespace Snapd {
     class SystemInformation extends GObject.Object {
         static $gtype: GObject.GType<SystemInformation>;
 
-        // Own properties of Snapd.SystemInformation
+        // Properties
 
         get binaries_directory(): string;
         get binariesDirectory(): string;
@@ -4228,13 +4228,13 @@ export namespace Snapd {
         get store(): string;
         get version(): string;
 
-        // Constructors of Snapd.SystemInformation
+        // Constructors
 
         constructor(properties?: Partial<SystemInformation.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Snapd.SystemInformation
+        // Methods
 
         /**
          * Get the directory snap binaries are stored, e.g. "/snap/bin".
@@ -4358,7 +4358,7 @@ export namespace Snapd {
     class Task extends GObject.Object {
         static $gtype: GObject.GType<Task>;
 
-        // Own properties of Snapd.Task
+        // Properties
 
         get id(): string;
         get kind(): string;
@@ -4376,13 +4376,13 @@ export namespace Snapd {
         get status(): string;
         get summary(): string;
 
-        // Constructors of Snapd.Task
+        // Constructors
 
         constructor(properties?: Partial<Task.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Snapd.Task
+        // Methods
 
         /**
          * Get the unique ID for this task.
@@ -4457,7 +4457,7 @@ export namespace Snapd {
     class UserInformation extends GObject.Object {
         static $gtype: GObject.GType<UserInformation>;
 
-        // Own properties of Snapd.UserInformation
+        // Properties
 
         get auth_data(): AuthData;
         get authData(): AuthData;
@@ -4467,13 +4467,13 @@ export namespace Snapd {
         get sshKeys(): string[];
         get username(): string;
 
-        // Constructors of Snapd.UserInformation
+        // Constructors
 
         constructor(properties?: Partial<UserInformation.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Snapd.UserInformation
+        // Methods
 
         /**
          * Get the email address for this account.

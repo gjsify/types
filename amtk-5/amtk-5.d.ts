@@ -274,17 +274,17 @@ export namespace Amtk {
     class ActionInfoCentralStore extends GObject.Object {
         static $gtype: GObject.GType<ActionInfoCentralStore>;
 
-        // Constructors of Amtk.ActionInfoCentralStore
+        // Constructors
 
         constructor(properties?: Partial<ActionInfoCentralStore.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of Amtk.ActionInfoCentralStore
+        // Static methods
 
         static get_singleton(): ActionInfoCentralStore;
 
-        // Own methods of Amtk.ActionInfoCentralStore
+        // Methods
 
         lookup(action_name: string): ActionInfo;
     }
@@ -298,7 +298,7 @@ export namespace Amtk {
     class ActionInfoStore extends GObject.Object {
         static $gtype: GObject.GType<ActionInfoStore>;
 
-        // Constructors of Amtk.ActionInfoStore
+        // Constructors
 
         constructor(properties?: Partial<ActionInfoStore.ConstructorProps>, ...args: any[]);
 
@@ -306,7 +306,7 @@ export namespace Amtk {
 
         static ['new'](): ActionInfoStore;
 
-        // Own methods of Amtk.ActionInfoStore
+        // Methods
 
         /**
          * Inserts `info` into `store` and into the #AmtkActionInfoCentralStore. Both the
@@ -379,7 +379,7 @@ export namespace Amtk {
     class ApplicationWindow extends GObject.Object {
         static $gtype: GObject.GType<ApplicationWindow>;
 
-        // Own properties of Amtk.ApplicationWindow
+        // Properties
 
         /**
          * The #GtkApplicationWindow.
@@ -395,13 +395,13 @@ export namespace Amtk {
         get statusbar(): Gtk.Statusbar;
         set statusbar(val: Gtk.Statusbar);
 
-        // Constructors of Amtk.ApplicationWindow
+        // Constructors
 
         constructor(properties?: Partial<ApplicationWindow.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of Amtk.ApplicationWindow
+        // Static methods
 
         /**
          * Creates the base of a simple and generic #GtkRecentChooserMenu.
@@ -420,7 +420,7 @@ export namespace Amtk {
          */
         static get_from_gtk_application_window(gtk_window: Gtk.ApplicationWindow): ApplicationWindow;
 
-        // Own methods of Amtk.ApplicationWindow
+        // Methods
 
         /**
          * Connects to the #AmtkMenuShell::menu-item-selected and
@@ -486,7 +486,7 @@ export namespace Amtk {
     class Factory extends GObject.Object {
         static $gtype: GObject.GType<Factory>;
 
-        // Own properties of Amtk.Factory
+        // Properties
 
         /**
          * The associated #GtkApplication (it is optional, it can be %NULL).
@@ -504,7 +504,7 @@ export namespace Amtk {
         get defaultFlags(): FactoryFlags;
         set defaultFlags(val: FactoryFlags);
 
-        // Constructors of Amtk.Factory
+        // Constructors
 
         constructor(properties?: Partial<Factory.ConstructorProps>, ...args: any[]);
 
@@ -514,7 +514,7 @@ export namespace Amtk {
 
         static new_with_default_application(): Factory;
 
-        // Own methods of Amtk.Factory
+        // Methods
 
         /**
          * Creates a new #GtkCheckMenuItem for `action_name` with the
@@ -699,7 +699,7 @@ export namespace Amtk {
     class MenuShell extends GObject.Object {
         static $gtype: GObject.GType<MenuShell>;
 
-        // Own properties of Amtk.MenuShell
+        // Properties
 
         /**
          * The #GtkMenuShell.
@@ -710,13 +710,13 @@ export namespace Amtk {
          */
         get menuShell(): Gtk.MenuShell;
 
-        // Constructors of Amtk.MenuShell
+        // Constructors
 
         constructor(properties?: Partial<MenuShell.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of Amtk.MenuShell
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -731,7 +731,7 @@ export namespace Amtk {
         connect_after(signal: 'menu-item-selected', callback: (_source: this, menu_item: Gtk.MenuItem) => void): number;
         emit(signal: 'menu-item-selected', menu_item: Gtk.MenuItem): void;
 
-        // Own static methods of Amtk.MenuShell
+        // Static methods
 
         /**
          * Returns the #AmtkMenuShell of `gtk_menu_shell`. The returned object is
@@ -740,12 +740,12 @@ export namespace Amtk {
          */
         static get_from_gtk_menu_shell(gtk_menu_shell: Gtk.MenuShell): MenuShell;
 
-        // Own virtual methods of Amtk.MenuShell
+        // Virtual methods
 
         vfunc_menu_item_deselected(menu_item: Gtk.MenuItem): void;
         vfunc_menu_item_selected(menu_item: Gtk.MenuItem): void;
 
-        // Own methods of Amtk.MenuShell
+        // Methods
 
         get_menu_shell(): Gtk.MenuShell;
     }
@@ -753,7 +753,7 @@ export namespace Amtk {
     class ActionInfo {
         static $gtype: GObject.GType<ActionInfo>;
 
-        // Constructors of Amtk.ActionInfo
+        // Constructors
 
         constructor(properties?: Partial<{}>);
         _init(...args: any[]): void;
@@ -762,7 +762,7 @@ export namespace Amtk {
 
         static new_from_entry(info_entry: ActionInfoEntry, translation_domain?: string | null): ActionInfo;
 
-        // Own methods of Amtk.ActionInfo
+        // Methods
 
         copy(): ActionInfo;
         /**
@@ -830,7 +830,7 @@ export namespace Amtk {
     abstract class ActionInfoCentralStorePrivate {
         static $gtype: GObject.GType<ActionInfoCentralStorePrivate>;
 
-        // Constructors of Amtk.ActionInfoCentralStorePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -846,7 +846,7 @@ export namespace Amtk {
     class ActionInfoEntry {
         static $gtype: GObject.GType<ActionInfoEntry>;
 
-        // Own fields of Amtk.ActionInfoEntry
+        // Fields
 
         action_name: string;
         icon_name: string;
@@ -854,7 +854,7 @@ export namespace Amtk {
         accel: string;
         tooltip: string;
 
-        // Constructors of Amtk.ActionInfoEntry
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -872,7 +872,7 @@ export namespace Amtk {
     abstract class ActionInfoStorePrivate {
         static $gtype: GObject.GType<ActionInfoStorePrivate>;
 
-        // Constructors of Amtk.ActionInfoStorePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -881,7 +881,7 @@ export namespace Amtk {
     abstract class ApplicationWindowPrivate {
         static $gtype: GObject.GType<ApplicationWindowPrivate>;
 
-        // Constructors of Amtk.ApplicationWindowPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -890,7 +890,7 @@ export namespace Amtk {
     abstract class FactoryPrivate {
         static $gtype: GObject.GType<FactoryPrivate>;
 
-        // Constructors of Amtk.FactoryPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -899,7 +899,7 @@ export namespace Amtk {
     abstract class MenuShellPrivate {
         static $gtype: GObject.GType<MenuShellPrivate>;
 
-        // Constructors of Amtk.MenuShellPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }

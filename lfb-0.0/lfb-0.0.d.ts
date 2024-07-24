@@ -223,7 +223,7 @@ export namespace Lfb {
     class Event extends GObject.Object {
         static $gtype: GObject.GType<Event>;
 
-        // Own properties of Lfb.Event
+        // Properties
 
         /**
          * The application id to use for the event.
@@ -264,7 +264,7 @@ export namespace Lfb {
         get timeout(): number;
         set timeout(val: number);
 
-        // Constructors of Lfb.Event
+        // Constructors
 
         constructor(properties?: Partial<Event.ConstructorProps>, ...args: any[]);
 
@@ -272,7 +272,7 @@ export namespace Lfb {
 
         static ['new'](event: string): Event;
 
-        // Own signals of Lfb.Event
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -281,7 +281,7 @@ export namespace Lfb {
         connect_after(signal: 'feedback-ended', callback: (_source: this) => void): number;
         emit(signal: 'feedback-ended'): void;
 
-        // Own methods of Lfb.Event
+        // Methods
 
         /**
          * Tells the feedback server to end all feedback for the given event as
@@ -421,7 +421,7 @@ export namespace Lfb {
     {
         static $gtype: GObject.GType<GdbusFeedbackProxy>;
 
-        // Constructors of Lfb.GdbusFeedbackProxy
+        // Constructors
 
         constructor(properties?: Partial<GdbusFeedbackProxy.ConstructorProps>, ...args: any[]);
 
@@ -456,7 +456,7 @@ export namespace Lfb {
 
         static new_sync(...args: never[]): any;
 
-        // Own static methods of Lfb.GdbusFeedbackProxy
+        // Static methods
 
         /**
          * Asynchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-sigxcpu-Feedback.top_of_page">org.sigxcpu.Feedback</link>. See g_dbus_proxy_new() for more details.
@@ -1272,7 +1272,7 @@ export namespace Lfb {
     class GdbusFeedbackSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, GdbusFeedback {
         static $gtype: GObject.GType<GdbusFeedbackSkeleton>;
 
-        // Constructors of Lfb.GdbusFeedbackSkeleton
+        // Constructors
 
         constructor(properties?: Partial<GdbusFeedbackSkeleton.ConstructorProps>, ...args: any[]);
 
@@ -1837,7 +1837,7 @@ export namespace Lfb {
     abstract class GdbusFeedbackProxyPrivate {
         static $gtype: GObject.GType<GdbusFeedbackProxyPrivate>;
 
-        // Constructors of Lfb.GdbusFeedbackProxyPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1846,7 +1846,7 @@ export namespace Lfb {
     abstract class GdbusFeedbackSkeletonPrivate {
         static $gtype: GObject.GType<GdbusFeedbackSkeletonPrivate>;
 
-        // Constructors of Lfb.GdbusFeedbackSkeletonPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1876,7 +1876,7 @@ export namespace Lfb {
         override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
     }
     interface GdbusFeedback extends GObject.Object {
-        // Own properties of Lfb.GdbusFeedback
+        // Properties
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-sigxcpu-Feedback.Profile">"Profile"</link>.
@@ -1886,7 +1886,7 @@ export namespace Lfb {
         get profile(): string;
         set profile(val: string);
 
-        // Own methods of Lfb.GdbusFeedback
+        // Methods
 
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-sigxcpu-Feedback.EndFeedback">EndFeedback()</link> D-Bus method on `proxy`.
@@ -1985,7 +1985,7 @@ export namespace Lfb {
          */
         emit_feedback_ended(arg_id: number, arg_reason: number): void;
 
-        // Own virtual methods of Lfb.GdbusFeedback
+        // Virtual methods
 
         vfunc_feedback_ended(arg_id: number, arg_reason: number): void;
         vfunc_handle_end_feedback(invocation: Gio.DBusMethodInvocation, arg_id: number): boolean;

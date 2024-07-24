@@ -327,7 +327,7 @@ export namespace Gthree {
     class AmbientLight extends Light {
         static $gtype: GObject.GType<AmbientLight>;
 
-        // Constructors of Gthree.AmbientLight
+        // Constructors
 
         constructor(properties?: Partial<AmbientLight.ConstructorProps>, ...args: any[]);
 
@@ -348,7 +348,7 @@ export namespace Gthree {
     class AnimationAction extends GObject.Object {
         static $gtype: GObject.GType<AnimationAction>;
 
-        // Constructors of Gthree.AnimationAction
+        // Constructors
 
         constructor(properties?: Partial<AnimationAction.ConstructorProps>, ...args: any[]);
 
@@ -356,7 +356,7 @@ export namespace Gthree {
 
         static ['new'](mixer: AnimationMixer, clip: AnimationClip, local_root: Object): AnimationAction;
 
-        // Own methods of Gthree.AnimationAction
+        // Methods
 
         cross_fade_from(fade_out_action: AnimationAction, duration: number, warp: boolean): void;
         cross_fade_to(fade_in_action: AnimationAction, duration: number, warp: boolean): void;
@@ -398,7 +398,7 @@ export namespace Gthree {
     class AnimationClip extends GObject.Object {
         static $gtype: GObject.GType<AnimationClip>;
 
-        // Constructors of Gthree.AnimationClip
+        // Constructors
 
         constructor(properties?: Partial<AnimationClip.ConstructorProps>, ...args: any[]);
 
@@ -406,7 +406,7 @@ export namespace Gthree {
 
         static ['new'](name: string, duration: number): AnimationClip;
 
-        // Own methods of Gthree.AnimationClip
+        // Methods
 
         add_track(track: KeyframeTrack): void;
         get_duration(): number;
@@ -436,7 +436,7 @@ export namespace Gthree {
     class AnimationMixer extends GObject.Object {
         static $gtype: GObject.GType<AnimationMixer>;
 
-        // Constructors of Gthree.AnimationMixer
+        // Constructors
 
         constructor(properties?: Partial<AnimationMixer.ConstructorProps>, ...args: any[]);
 
@@ -444,7 +444,7 @@ export namespace Gthree {
 
         static ['new'](root: Object): AnimationMixer;
 
-        // Own signals of Gthree.AnimationMixer
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -459,7 +459,7 @@ export namespace Gthree {
         connect_after(signal: 'loop', callback: (_source: this, object: AnimationAction, p0: number) => void): number;
         emit(signal: 'loop', object: AnimationAction, p0: number): void;
 
-        // Own methods of Gthree.AnimationMixer
+        // Methods
 
         get_time(): number;
         get_time_scale(): number;
@@ -481,7 +481,7 @@ export namespace Gthree {
     class Attribute extends Resource {
         static $gtype: GObject.GType<Attribute>;
 
-        // Constructors of Gthree.Attribute
+        // Constructors
 
         constructor(properties?: Partial<Attribute.ConstructorProps>, ...args: any[]);
 
@@ -512,11 +512,11 @@ export namespace Gthree {
             count: number,
         ): Attribute;
 
-        // Own static methods of Gthree.Attribute
+        // Static methods
 
         static type_length(type: AttributeType): number;
 
-        // Own methods of Gthree.Attribute
+        // Methods
 
         copy_at(index: number, source: Attribute, source_index: number, n_items: number): void;
         get_attribute_type(): AttributeType;
@@ -586,7 +586,7 @@ export namespace Gthree {
     class BloomPass extends Pass {
         static $gtype: GObject.GType<BloomPass>;
 
-        // Constructors of Gthree.BloomPass
+        // Constructors
 
         constructor(properties?: Partial<BloomPass.ConstructorProps>, ...args: any[]);
 
@@ -604,7 +604,7 @@ export namespace Gthree {
     class Bone extends Object {
         static $gtype: GObject.GType<Bone>;
 
-        // Constructors of Gthree.Bone
+        // Constructors
 
         constructor(properties?: Partial<Bone.ConstructorProps>, ...args: any[]);
 
@@ -625,24 +625,24 @@ export namespace Gthree {
     class Camera extends Object {
         static $gtype: GObject.GType<Camera>;
 
-        // Own properties of Gthree.Camera
+        // Properties
 
         get far(): number;
         set far(val: number);
         get near(): number;
         set near(val: number);
 
-        // Constructors of Gthree.Camera
+        // Constructors
 
         constructor(properties?: Partial<Camera.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of Gthree.Camera
+        // Virtual methods
 
         vfunc_update(): void;
 
-        // Own methods of Gthree.Camera
+        // Methods
 
         get_far(): number;
         get_near(): number;
@@ -675,7 +675,7 @@ export namespace Gthree {
     class ClearPass extends Pass {
         static $gtype: GObject.GType<ClearPass>;
 
-        // Constructors of Gthree.ClearPass
+        // Constructors
 
         constructor(properties?: Partial<ClearPass.ConstructorProps>, ...args: any[]);
 
@@ -683,7 +683,7 @@ export namespace Gthree {
 
         static ['new'](color: Graphene.Vec3): ClearPass;
 
-        // Own methods of Gthree.ClearPass
+        // Methods
 
         set_clear_depth(clear_depth: boolean): void;
     }
@@ -697,7 +697,7 @@ export namespace Gthree {
     class ColorKeyframeTrack extends KeyframeTrack {
         static $gtype: GObject.GType<ColorKeyframeTrack>;
 
-        // Constructors of Gthree.ColorKeyframeTrack
+        // Constructors
 
         constructor(properties?: Partial<ColorKeyframeTrack.ConstructorProps>, ...args: any[]);
 
@@ -715,7 +715,7 @@ export namespace Gthree {
     class CubeTexture extends Texture {
         static $gtype: GObject.GType<CubeTexture>;
 
-        // Constructors of Gthree.CubeTexture
+        // Constructors
 
         constructor(properties?: Partial<CubeTexture.ConstructorProps>, ...args: any[]);
 
@@ -745,7 +745,7 @@ export namespace Gthree {
     class CubicInterpolant extends Interpolant {
         static $gtype: GObject.GType<CubicInterpolant>;
 
-        // Constructors of Gthree.CubicInterpolant
+        // Constructors
 
         constructor(properties?: Partial<CubicInterpolant.ConstructorProps>, ...args: any[]);
 
@@ -765,12 +765,12 @@ export namespace Gthree {
     class DirectionalLight extends Light {
         static $gtype: GObject.GType<DirectionalLight>;
 
-        // Own properties of Gthree.DirectionalLight
+        // Properties
 
         get target(): Object;
         set target(val: Object);
 
-        // Constructors of Gthree.DirectionalLight
+        // Constructors
 
         constructor(properties?: Partial<DirectionalLight.ConstructorProps>, ...args: any[]);
 
@@ -781,7 +781,7 @@ export namespace Gthree {
 
         static ['new'](...args: never[]): any;
 
-        // Own methods of Gthree.DirectionalLight
+        // Methods
 
         set_target(target: Object): void;
     }
@@ -795,7 +795,7 @@ export namespace Gthree {
     class DirectionalLightShadow extends LightShadow {
         static $gtype: GObject.GType<DirectionalLightShadow>;
 
-        // Constructors of Gthree.DirectionalLightShadow
+        // Constructors
 
         constructor(properties?: Partial<DirectionalLightShadow.ConstructorProps>, ...args: any[]);
 
@@ -811,7 +811,7 @@ export namespace Gthree {
     class DiscreteInterpolant extends Interpolant {
         static $gtype: GObject.GType<DiscreteInterpolant>;
 
-        // Constructors of Gthree.DiscreteInterpolant
+        // Constructors
 
         constructor(properties?: Partial<DiscreteInterpolant.ConstructorProps>, ...args: any[]);
 
@@ -829,7 +829,7 @@ export namespace Gthree {
     class EffectComposer extends GObject.Object {
         static $gtype: GObject.GType<EffectComposer>;
 
-        // Constructors of Gthree.EffectComposer
+        // Constructors
 
         constructor(properties?: Partial<EffectComposer.ConstructorProps>, ...args: any[]);
 
@@ -837,7 +837,7 @@ export namespace Gthree {
 
         static ['new'](): EffectComposer;
 
-        // Own methods of Gthree.EffectComposer
+        // Methods
 
         add_pass(pass: Pass): void;
         render(renderer: Renderer, delta_time: number): void;
@@ -854,7 +854,7 @@ export namespace Gthree {
     class Fog extends GObject.Object {
         static $gtype: GObject.GType<Fog>;
 
-        // Constructors of Gthree.Fog
+        // Constructors
 
         constructor(properties?: Partial<Fog.ConstructorProps>, ...args: any[]);
 
@@ -864,7 +864,7 @@ export namespace Gthree {
 
         static new_linear(color: Graphene.Vec3, near: number, far: number): Fog;
 
-        // Own methods of Gthree.Fog
+        // Methods
 
         get_color(): Graphene.Vec3;
         get_density(): number;
@@ -887,7 +887,7 @@ export namespace Gthree {
     class FullscreenQuadPass extends Pass {
         static $gtype: GObject.GType<FullscreenQuadPass>;
 
-        // Constructors of Gthree.FullscreenQuadPass
+        // Constructors
 
         constructor(properties?: Partial<FullscreenQuadPass.ConstructorProps>, ...args: any[]);
 
@@ -895,7 +895,7 @@ export namespace Gthree {
 
         static ['new'](material: Material): FullscreenQuadPass;
 
-        // Own methods of Gthree.FullscreenQuadPass
+        // Methods
 
         set_material(material: Material): void;
     }
@@ -909,11 +909,11 @@ export namespace Gthree {
     class Geometry extends GObject.Object {
         static $gtype: GObject.GType<Geometry>;
 
-        // Own fields of Gthree.Geometry
+        // Fields
 
         influences: any[];
 
-        // Constructors of Gthree.Geometry
+        // Constructors
 
         constructor(properties?: Partial<Geometry.ConstructorProps>, ...args: any[]);
 
@@ -995,7 +995,7 @@ export namespace Gthree {
             q: number,
         ): Geometry;
 
-        // Own methods of Gthree.Geometry
+        // Methods
 
         add_group(start: number, count: number, material_index: number): void;
         add_morph_attribute(name: string, attribute: Attribute): void;
@@ -1029,7 +1029,7 @@ export namespace Gthree {
     class Group extends Object {
         static $gtype: GObject.GType<Group>;
 
-        // Constructors of Gthree.Group
+        // Constructors
 
         constructor(properties?: Partial<Group.ConstructorProps>, ...args: any[]);
 
@@ -1050,14 +1050,14 @@ export namespace Gthree {
     class HemisphereLight extends Light {
         static $gtype: GObject.GType<HemisphereLight>;
 
-        // Own properties of Gthree.HemisphereLight
+        // Properties
 
         get ground_color(): Graphene.Vec3;
         set ground_color(val: Graphene.Vec3);
         get groundColor(): Graphene.Vec3;
         set groundColor(val: Graphene.Vec3);
 
-        // Constructors of Gthree.HemisphereLight
+        // Constructors
 
         constructor(properties?: Partial<HemisphereLight.ConstructorProps>, ...args: any[]);
 
@@ -1078,18 +1078,18 @@ export namespace Gthree {
     class Interpolant extends GObject.Object {
         static $gtype: GObject.GType<Interpolant>;
 
-        // Constructors of Gthree.Interpolant
+        // Constructors
 
         constructor(properties?: Partial<Interpolant.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of Gthree.Interpolant
+        // Virtual methods
 
         vfunc_interpolate(i1: number, t0: number, t: number, t1: number, dest: AttributeArray): void;
         vfunc_interval_changed(i1: number, t0: number, t1: number): void;
 
-        // Own methods of Gthree.Interpolant
+        // Methods
 
         get_end_ending_mode(): EndingMode;
         get_n_positions(): number;
@@ -1108,7 +1108,7 @@ export namespace Gthree {
     class InterpolantSettings extends GObject.Object {
         static $gtype: GObject.GType<InterpolantSettings>;
 
-        // Constructors of Gthree.InterpolantSettings
+        // Constructors
 
         constructor(properties?: Partial<InterpolantSettings.ConstructorProps>, ...args: any[]);
 
@@ -1116,7 +1116,7 @@ export namespace Gthree {
 
         static ['new'](): InterpolantSettings;
 
-        // Own methods of Gthree.InterpolantSettings
+        // Methods
 
         get_end_ending_mode(): EndingMode;
         get_start_ending_mode(): EndingMode;
@@ -1133,13 +1133,13 @@ export namespace Gthree {
     class KeyframeTrack extends GObject.Object {
         static $gtype: GObject.GType<KeyframeTrack>;
 
-        // Constructors of Gthree.KeyframeTrack
+        // Constructors
 
         constructor(properties?: Partial<KeyframeTrack.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Gthree.KeyframeTrack
+        // Methods
 
         get_end_time(): number;
         get_name(): string;
@@ -1163,14 +1163,14 @@ export namespace Gthree {
     class Light extends Object {
         static $gtype: GObject.GType<Light>;
 
-        // Own properties of Gthree.Light
+        // Properties
 
         get color(): Graphene.Vec3;
         set color(val: Graphene.Vec3);
         get intensity(): number;
         set intensity(val: number);
 
-        // Constructors of Gthree.Light
+        // Constructors
 
         constructor(properties?: Partial<Light.ConstructorProps>, ...args: any[]);
 
@@ -1178,11 +1178,11 @@ export namespace Gthree {
 
         static ['new'](): Light;
 
-        // Own virtual methods of Gthree.Light
+        // Virtual methods
 
         vfunc_setup(camera: Camera, light_setup: LightSetup): void;
 
-        // Own methods of Gthree.Light
+        // Methods
 
         get_color(): Graphene.Vec3;
         get_intensity(): number;
@@ -1199,13 +1199,13 @@ export namespace Gthree {
     class LightShadow extends GObject.Object {
         static $gtype: GObject.GType<LightShadow>;
 
-        // Constructors of Gthree.LightShadow
+        // Constructors
 
         constructor(properties?: Partial<LightShadow.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Gthree.LightShadow
+        // Methods
 
         get_bias(): number;
         get_map_height(): number;
@@ -1228,12 +1228,12 @@ export namespace Gthree {
     class Line extends Object {
         static $gtype: GObject.GType<Line>;
 
-        // Own properties of Gthree.Line
+        // Properties
 
         get geometry(): Geometry;
         get material(): Material;
 
-        // Constructors of Gthree.Line
+        // Constructors
 
         constructor(properties?: Partial<Line.ConstructorProps>, ...args: any[]);
 
@@ -1258,7 +1258,7 @@ export namespace Gthree {
     class LineBasicMaterial extends Material {
         static $gtype: GObject.GType<LineBasicMaterial>;
 
-        // Own properties of Gthree.LineBasicMaterial
+        // Properties
 
         get color(): Graphene.Vec3;
         set color(val: Graphene.Vec3);
@@ -1267,7 +1267,7 @@ export namespace Gthree {
         get lineWidth(): number;
         set lineWidth(val: number);
 
-        // Constructors of Gthree.LineBasicMaterial
+        // Constructors
 
         constructor(properties?: Partial<LineBasicMaterial.ConstructorProps>, ...args: any[]);
 
@@ -1275,7 +1275,7 @@ export namespace Gthree {
 
         static ['new'](): LineBasicMaterial;
 
-        // Own methods of Gthree.LineBasicMaterial
+        // Methods
 
         get_color(): Graphene.Vec3;
         get_line_width(): number;
@@ -1292,7 +1292,7 @@ export namespace Gthree {
     class LineSegments extends Line {
         static $gtype: GObject.GType<LineSegments>;
 
-        // Constructors of Gthree.LineSegments
+        // Constructors
 
         constructor(properties?: Partial<LineSegments.ConstructorProps>, ...args: any[]);
 
@@ -1313,7 +1313,7 @@ export namespace Gthree {
     class LinearInterpolant extends Interpolant {
         static $gtype: GObject.GType<LinearInterpolant>;
 
-        // Constructors of Gthree.LinearInterpolant
+        // Constructors
 
         constructor(properties?: Partial<LinearInterpolant.ConstructorProps>, ...args: any[]);
 
@@ -1331,17 +1331,17 @@ export namespace Gthree {
     class Loader extends GObject.Object {
         static $gtype: GObject.GType<Loader>;
 
-        // Constructors of Gthree.Loader
+        // Constructors
 
         constructor(properties?: Partial<Loader.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of Gthree.Loader
+        // Static methods
 
         static error_quark(): GLib.Quark;
 
-        // Own methods of Gthree.Loader
+        // Methods
 
         get_n_animations(): number;
         get_n_materials(): number;
@@ -1367,7 +1367,7 @@ export namespace Gthree {
     class Material extends GObject.Object {
         static $gtype: GObject.GType<Material>;
 
-        // Own properties of Gthree.Material
+        // Properties
 
         get alpha_test(): number;
         set alpha_test(val: number);
@@ -1388,13 +1388,13 @@ export namespace Gthree {
         get vertexColors(): boolean;
         set vertexColors(val: boolean);
 
-        // Constructors of Gthree.Material
+        // Constructors
 
         constructor(properties?: Partial<Material.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of Gthree.Material
+        // Virtual methods
 
         vfunc_load_default_attribute(attribute_location: number, attribute: GLib.Quark): void;
         vfunc_needs_camera_pos(): boolean;
@@ -1403,7 +1403,7 @@ export namespace Gthree {
         vfunc_set_params(params: ProgramParameters): void;
         vfunc_set_uniforms(uniforms: Uniforms, camera: Camera, renderer: Renderer): void;
 
-        // Own methods of Gthree.Material
+        // Methods
 
         get_alpha_test(): number;
         get_blend_mode(equation: number, src_factor: number, dst_factor: number): BlendMode;
@@ -1455,13 +1455,13 @@ export namespace Gthree {
     class Mesh extends Object {
         static $gtype: GObject.GType<Mesh>;
 
-        // Own properties of Gthree.Mesh
+        // Properties
 
         get geometry(): Geometry;
         get materials(): any[];
         set materials(val: any[]);
 
-        // Constructors of Gthree.Mesh
+        // Constructors
 
         constructor(properties?: Partial<Mesh.ConstructorProps>, ...args: any[]);
 
@@ -1472,7 +1472,7 @@ export namespace Gthree {
 
         static ['new'](...args: never[]): any;
 
-        // Own methods of Gthree.Mesh
+        // Methods
 
         add_material(material: Material): void;
         get_draw_mode(): DrawMode;
@@ -1500,7 +1500,7 @@ export namespace Gthree {
     class MeshBasicMaterial extends MeshMaterial {
         static $gtype: GObject.GType<MeshBasicMaterial>;
 
-        // Own properties of Gthree.MeshBasicMaterial
+        // Properties
 
         get color(): Graphene.Vec3;
         set color(val: Graphene.Vec3);
@@ -1517,7 +1517,7 @@ export namespace Gthree {
         get refractionRatio(): number;
         set refractionRatio(val: number);
 
-        // Constructors of Gthree.MeshBasicMaterial
+        // Constructors
 
         constructor(properties?: Partial<MeshBasicMaterial.ConstructorProps>, ...args: any[]);
 
@@ -1525,7 +1525,7 @@ export namespace Gthree {
 
         static ['new'](): MeshBasicMaterial;
 
-        // Own methods of Gthree.MeshBasicMaterial
+        // Methods
 
         get_color(): Graphene.Vec3;
         get_combine(): Operation;
@@ -1548,7 +1548,7 @@ export namespace Gthree {
     class MeshDepthMaterial extends MeshMaterial {
         static $gtype: GObject.GType<MeshDepthMaterial>;
 
-        // Constructors of Gthree.MeshDepthMaterial
+        // Constructors
 
         constructor(properties?: Partial<MeshDepthMaterial.ConstructorProps>, ...args: any[]);
 
@@ -1556,7 +1556,7 @@ export namespace Gthree {
 
         static ['new'](): MeshDepthMaterial;
 
-        // Own methods of Gthree.MeshDepthMaterial
+        // Methods
 
         get_depth_packing_format(): DepthPackingFormat;
         set_depth_packing_format(format: DepthPackingFormat): void;
@@ -1571,7 +1571,7 @@ export namespace Gthree {
     class MeshDistanceMaterial extends MeshMaterial {
         static $gtype: GObject.GType<MeshDistanceMaterial>;
 
-        // Constructors of Gthree.MeshDistanceMaterial
+        // Constructors
 
         constructor(properties?: Partial<MeshDistanceMaterial.ConstructorProps>, ...args: any[]);
 
@@ -1579,7 +1579,7 @@ export namespace Gthree {
 
         static ['new'](): MeshDistanceMaterial;
 
-        // Own methods of Gthree.MeshDistanceMaterial
+        // Methods
 
         get_far_distance(): number;
         get_near_distance(): number;
@@ -1608,7 +1608,7 @@ export namespace Gthree {
     class MeshLambertMaterial extends MeshMaterial {
         static $gtype: GObject.GType<MeshLambertMaterial>;
 
-        // Own properties of Gthree.MeshLambertMaterial
+        // Properties
 
         get color(): Graphene.Vec3;
         set color(val: Graphene.Vec3);
@@ -1629,7 +1629,7 @@ export namespace Gthree {
         get refractionRatio(): number;
         set refractionRatio(val: number);
 
-        // Constructors of Gthree.MeshLambertMaterial
+        // Constructors
 
         constructor(properties?: Partial<MeshLambertMaterial.ConstructorProps>, ...args: any[]);
 
@@ -1637,7 +1637,7 @@ export namespace Gthree {
 
         static ['new'](): MeshLambertMaterial;
 
-        // Own methods of Gthree.MeshLambertMaterial
+        // Methods
 
         get_color(): Graphene.Vec3;
         get_combine(): Operation;
@@ -1671,7 +1671,7 @@ export namespace Gthree {
     class MeshMaterial extends Material {
         static $gtype: GObject.GType<MeshMaterial>;
 
-        // Own properties of Gthree.MeshMaterial
+        // Properties
 
         get morph_normals(): boolean;
         set morph_normals(val: boolean);
@@ -1690,13 +1690,13 @@ export namespace Gthree {
         get wireframeLineWidth(): number;
         set wireframeLineWidth(val: number);
 
-        // Constructors of Gthree.MeshMaterial
+        // Constructors
 
         constructor(properties?: Partial<MeshMaterial.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Gthree.MeshMaterial
+        // Methods
 
         get_is_wireframe(): boolean;
         get_morph_normals(): boolean;
@@ -1719,7 +1719,7 @@ export namespace Gthree {
     class MeshNormalMaterial extends MeshMaterial {
         static $gtype: GObject.GType<MeshNormalMaterial>;
 
-        // Constructors of Gthree.MeshNormalMaterial
+        // Constructors
 
         constructor(properties?: Partial<MeshNormalMaterial.ConstructorProps>, ...args: any[]);
 
@@ -1727,7 +1727,7 @@ export namespace Gthree {
 
         static ['new'](): MeshNormalMaterial;
 
-        // Own methods of Gthree.MeshNormalMaterial
+        // Methods
 
         get_shading_type(): ShadingType;
         set_shading_type(shading_type: ShadingType): void;
@@ -1763,7 +1763,7 @@ export namespace Gthree {
     class MeshPhongMaterial extends MeshMaterial {
         static $gtype: GObject.GType<MeshPhongMaterial>;
 
-        // Own properties of Gthree.MeshPhongMaterial
+        // Properties
 
         get color(): Graphene.Vec3;
         set color(val: Graphene.Vec3);
@@ -1806,7 +1806,7 @@ export namespace Gthree {
         get specularMap(): Texture;
         set specularMap(val: Texture);
 
-        // Constructors of Gthree.MeshPhongMaterial
+        // Constructors
 
         constructor(properties?: Partial<MeshPhongMaterial.ConstructorProps>, ...args: any[]);
 
@@ -1814,7 +1814,7 @@ export namespace Gthree {
 
         static ['new'](): MeshPhongMaterial;
 
-        // Own methods of Gthree.MeshPhongMaterial
+        // Methods
 
         get_color(): Graphene.Vec3;
         get_combine(): Operation;
@@ -1897,7 +1897,7 @@ export namespace Gthree {
     class MeshSpecglosMaterial extends MeshMaterial {
         static $gtype: GObject.GType<MeshSpecglosMaterial>;
 
-        // Own properties of Gthree.MeshSpecglosMaterial
+        // Properties
 
         get alpha_map(): Texture;
         set alpha_map(val: Texture);
@@ -1990,7 +1990,7 @@ export namespace Gthree {
         get specularMap(): Texture;
         set specularMap(val: Texture);
 
-        // Constructors of Gthree.MeshSpecglosMaterial
+        // Constructors
 
         constructor(properties?: Partial<MeshSpecglosMaterial.ConstructorProps>, ...args: any[]);
 
@@ -1998,7 +1998,7 @@ export namespace Gthree {
 
         static ['new'](): MeshSpecglosMaterial;
 
-        // Own methods of Gthree.MeshSpecglosMaterial
+        // Methods
 
         get_ao_map_intensity(): number;
         get_bump_scale(): number;
@@ -2095,7 +2095,7 @@ export namespace Gthree {
     class MeshStandardMaterial extends MeshMaterial {
         static $gtype: GObject.GType<MeshStandardMaterial>;
 
-        // Own properties of Gthree.MeshStandardMaterial
+        // Properties
 
         get alpha_map(): Texture;
         set alpha_map(val: Texture);
@@ -2186,7 +2186,7 @@ export namespace Gthree {
         get roughnessMap(): Texture;
         set roughnessMap(val: Texture);
 
-        // Constructors of Gthree.MeshStandardMaterial
+        // Constructors
 
         constructor(properties?: Partial<MeshStandardMaterial.ConstructorProps>, ...args: any[]);
 
@@ -2194,7 +2194,7 @@ export namespace Gthree {
 
         static ['new'](): MeshStandardMaterial;
 
-        // Own methods of Gthree.MeshStandardMaterial
+        // Methods
 
         get_ao_map_intensity(): number;
         get_bump_scale(): number;
@@ -2281,7 +2281,7 @@ export namespace Gthree {
     class MeshToonMaterial extends MeshMaterial {
         static $gtype: GObject.GType<MeshToonMaterial>;
 
-        // Own properties of Gthree.MeshToonMaterial
+        // Properties
 
         get alpha_map(): Texture;
         set alpha_map(val: Texture);
@@ -2352,7 +2352,7 @@ export namespace Gthree {
         get normalScale(): Graphene.Vec2;
         set normalScale(val: Graphene.Vec2);
 
-        // Constructors of Gthree.MeshToonMaterial
+        // Constructors
 
         constructor(properties?: Partial<MeshToonMaterial.ConstructorProps>, ...args: any[]);
 
@@ -2360,7 +2360,7 @@ export namespace Gthree {
 
         static ['new'](): MeshToonMaterial;
 
-        // Own methods of Gthree.MeshToonMaterial
+        // Methods
 
         get_ao_map_intensity(): number;
         get_bump_scale(): number;
@@ -2402,7 +2402,7 @@ export namespace Gthree {
     class NumberKeyframeTrack extends KeyframeTrack {
         static $gtype: GObject.GType<NumberKeyframeTrack>;
 
-        // Constructors of Gthree.NumberKeyframeTrack
+        // Constructors
 
         constructor(properties?: Partial<NumberKeyframeTrack.ConstructorProps>, ...args: any[]);
 
@@ -2441,7 +2441,7 @@ export namespace Gthree {
     class Object extends GObject.Object {
         static $gtype: GObject.GType<Object>;
 
-        // Own properties of Gthree.Object
+        // Properties
 
         get first_child(): Object;
         get firstChild(): Object;
@@ -2455,7 +2455,7 @@ export namespace Gthree {
         get visible(): boolean;
         set visible(val: boolean);
 
-        // Constructors of Gthree.Object
+        // Constructors
 
         constructor(properties?: Partial<Object.ConstructorProps>, ...args: any[]);
 
@@ -2463,7 +2463,7 @@ export namespace Gthree {
 
         static ['new'](): Object;
 
-        // Own signals of Gthree.Object
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -2475,7 +2475,7 @@ export namespace Gthree {
         connect_after(signal: 'parent-set', callback: (_source: this, object: Object) => void): number;
         emit(signal: 'parent-set', object: Object): void;
 
-        // Own virtual methods of Gthree.Object
+        // Virtual methods
 
         vfunc_destroy(): void;
         vfunc_fill_render_list(list: RenderList): void;
@@ -2485,7 +2485,7 @@ export namespace Gthree {
         vfunc_update(renderer: Renderer): void;
         vfunc_update_matrix_world(force: boolean): boolean;
 
-        // Own methods of Gthree.Object
+        // Methods
 
         add_child(child: Object): void;
         apply_matrix(matrix: Graphene.Matrix): void;
@@ -2566,7 +2566,7 @@ export namespace Gthree {
     class OrthographicCamera extends Camera {
         static $gtype: GObject.GType<OrthographicCamera>;
 
-        // Own properties of Gthree.OrthographicCamera
+        // Properties
 
         get bottom(): number;
         set bottom(val: number);
@@ -2577,7 +2577,7 @@ export namespace Gthree {
         get top(): number;
         set top(val: number);
 
-        // Constructors of Gthree.OrthographicCamera
+        // Constructors
 
         constructor(properties?: Partial<OrthographicCamera.ConstructorProps>, ...args: any[]);
 
@@ -2595,7 +2595,7 @@ export namespace Gthree {
 
         static ['new'](...args: never[]): any;
 
-        // Own methods of Gthree.OrthographicCamera
+        // Methods
 
         get_bottom(): number;
         get_left(): number;
@@ -2616,7 +2616,7 @@ export namespace Gthree {
     class Pass extends GObject.Object {
         static $gtype: GObject.GType<Pass>;
 
-        // Own fields of Gthree.Pass
+        // Fields
 
         enabled: boolean;
         need_swap: boolean;
@@ -2625,13 +2625,13 @@ export namespace Gthree {
         can_render_to_screen: boolean;
         clear: boolean;
 
-        // Constructors of Gthree.Pass
+        // Constructors
 
         constructor(properties?: Partial<Pass.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of Gthree.Pass
+        // Virtual methods
 
         vfunc_render(
             renderer: Renderer,
@@ -2643,7 +2643,7 @@ export namespace Gthree {
         ): void;
         vfunc_set_size(width: number, height: number): void;
 
-        // Own methods of Gthree.Pass
+        // Methods
 
         render(
             renderer: Renderer,
@@ -2670,14 +2670,14 @@ export namespace Gthree {
     class PerspectiveCamera extends Camera {
         static $gtype: GObject.GType<PerspectiveCamera>;
 
-        // Own properties of Gthree.PerspectiveCamera
+        // Properties
 
         get aspect(): number;
         set aspect(val: number);
         get fov(): number;
         set fov(val: number);
 
-        // Constructors of Gthree.PerspectiveCamera
+        // Constructors
 
         constructor(properties?: Partial<PerspectiveCamera.ConstructorProps>, ...args: any[]);
 
@@ -2688,7 +2688,7 @@ export namespace Gthree {
 
         static ['new'](...args: never[]): any;
 
-        // Own methods of Gthree.PerspectiveCamera
+        // Methods
 
         get_aspect(): number;
         get_fov(): number;
@@ -2709,7 +2709,7 @@ export namespace Gthree {
     class PlaneHelper extends Object {
         static $gtype: GObject.GType<PlaneHelper>;
 
-        // Own properties of Gthree.PlaneHelper
+        // Properties
 
         get color(): Graphene.Vec3;
         set color(val: Graphene.Vec3);
@@ -2718,7 +2718,7 @@ export namespace Gthree {
         get size(): number;
         set size(val: number);
 
-        // Constructors of Gthree.PlaneHelper
+        // Constructors
 
         constructor(properties?: Partial<PlaneHelper.ConstructorProps>, ...args: any[]);
 
@@ -2729,7 +2729,7 @@ export namespace Gthree {
 
         static ['new'](...args: never[]): any;
 
-        // Own methods of Gthree.PlaneHelper
+        // Methods
 
         get_color(): Graphene.Vec3;
         get_plane(): Graphene.Plane;
@@ -2751,14 +2751,14 @@ export namespace Gthree {
     class PointLight extends Light {
         static $gtype: GObject.GType<PointLight>;
 
-        // Own properties of Gthree.PointLight
+        // Properties
 
         get decay(): number;
         set decay(val: number);
         get distance(): number;
         set distance(val: number);
 
-        // Constructors of Gthree.PointLight
+        // Constructors
 
         constructor(properties?: Partial<PointLight.ConstructorProps>, ...args: any[]);
 
@@ -2769,7 +2769,7 @@ export namespace Gthree {
 
         static ['new'](...args: never[]): any;
 
-        // Own methods of Gthree.PointLight
+        // Methods
 
         get_decay(): number;
         get_distance(): number;
@@ -2789,13 +2789,13 @@ export namespace Gthree {
     class Points extends Object {
         static $gtype: GObject.GType<Points>;
 
-        // Own properties of Gthree.Points
+        // Properties
 
         get geometry(): Geometry;
         get material(): Material;
         set material(val: Material);
 
-        // Constructors of Gthree.Points
+        // Constructors
 
         constructor(properties?: Partial<Points.ConstructorProps>, ...args: any[]);
 
@@ -2806,7 +2806,7 @@ export namespace Gthree {
 
         static ['new'](...args: never[]): any;
 
-        // Own methods of Gthree.Points
+        // Methods
 
         set_material(material: Material): void;
     }
@@ -2826,7 +2826,7 @@ export namespace Gthree {
     class PointsMaterial extends Material {
         static $gtype: GObject.GType<PointsMaterial>;
 
-        // Own properties of Gthree.PointsMaterial
+        // Properties
 
         get color(): Graphene.Vec3;
         set color(val: Graphene.Vec3);
@@ -2839,7 +2839,7 @@ export namespace Gthree {
         get sizeAttenuation(): boolean;
         set sizeAttenuation(val: boolean);
 
-        // Constructors of Gthree.PointsMaterial
+        // Constructors
 
         constructor(properties?: Partial<PointsMaterial.ConstructorProps>, ...args: any[]);
 
@@ -2847,7 +2847,7 @@ export namespace Gthree {
 
         static ['new'](): PointsMaterial;
 
-        // Own methods of Gthree.PointsMaterial
+        // Methods
 
         get_color(): Graphene.Vec3;
         get_size(): number;
@@ -2867,7 +2867,7 @@ export namespace Gthree {
     class Program extends GObject.Object {
         static $gtype: GObject.GType<Program>;
 
-        // Constructors of Gthree.Program
+        // Constructors
 
         constructor(properties?: Partial<Program.ConstructorProps>, ...args: any[]);
 
@@ -2875,7 +2875,7 @@ export namespace Gthree {
 
         static ['new'](shader: Shader, parameters: ProgramParameters, renderer: Renderer): Program;
 
-        // Own methods of Gthree.Program
+        // Methods
 
         lookup_attribute_location(attribute: GLib.Quark): number;
         lookup_attribute_location_from_string(attribute: string): number;
@@ -2893,7 +2893,7 @@ export namespace Gthree {
     class QuaternionInterpolant extends Interpolant {
         static $gtype: GObject.GType<QuaternionInterpolant>;
 
-        // Constructors of Gthree.QuaternionInterpolant
+        // Constructors
 
         constructor(properties?: Partial<QuaternionInterpolant.ConstructorProps>, ...args: any[]);
 
@@ -2911,7 +2911,7 @@ export namespace Gthree {
     class QuaternionKeyframeTrack extends KeyframeTrack {
         static $gtype: GObject.GType<QuaternionKeyframeTrack>;
 
-        // Constructors of Gthree.QuaternionKeyframeTrack
+        // Constructors
 
         constructor(properties?: Partial<QuaternionKeyframeTrack.ConstructorProps>, ...args: any[]);
 
@@ -2929,7 +2929,7 @@ export namespace Gthree {
     class Raycaster extends GObject.Object {
         static $gtype: GObject.GType<Raycaster>;
 
-        // Constructors of Gthree.Raycaster
+        // Constructors
 
         constructor(properties?: Partial<Raycaster.ConstructorProps>, ...args: any[]);
 
@@ -2937,7 +2937,7 @@ export namespace Gthree {
 
         static ['new'](): Raycaster;
 
-        // Own methods of Gthree.Raycaster
+        // Methods
 
         get_far(): number;
         get_near(): number;
@@ -2957,7 +2957,7 @@ export namespace Gthree {
     class RenderPass extends Pass {
         static $gtype: GObject.GType<RenderPass>;
 
-        // Constructors of Gthree.RenderPass
+        // Constructors
 
         constructor(properties?: Partial<RenderPass.ConstructorProps>, ...args: any[]);
 
@@ -2965,7 +2965,7 @@ export namespace Gthree {
 
         static ['new'](scene: Scene, camera: Camera, override_material: Material): RenderPass;
 
-        // Own methods of Gthree.RenderPass
+        // Methods
 
         set_clear_depth(clear_depth: boolean): void;
     }
@@ -2979,7 +2979,7 @@ export namespace Gthree {
     class RenderTarget extends Resource {
         static $gtype: GObject.GType<RenderTarget>;
 
-        // Constructors of Gthree.RenderTarget
+        // Constructors
 
         constructor(properties?: Partial<RenderTarget.ConstructorProps>, ...args: any[]);
 
@@ -2987,7 +2987,7 @@ export namespace Gthree {
 
         static ['new'](width: number, height: number): RenderTarget;
 
-        // Own methods of Gthree.RenderTarget
+        // Methods
 
         download(renderer: Renderer, data: number, stride: number): void;
         download_area(renderer: Renderer, area: cairo.RectangleInt, data: number, stride: number): void;
@@ -3011,7 +3011,7 @@ export namespace Gthree {
     class Renderer extends GObject.Object {
         static $gtype: GObject.GType<Renderer>;
 
-        // Constructors of Gthree.Renderer
+        // Constructors
 
         constructor(properties?: Partial<Renderer.ConstructorProps>, ...args: any[]);
 
@@ -3019,7 +3019,7 @@ export namespace Gthree {
 
         static ['new'](): Renderer;
 
-        // Own methods of Gthree.Renderer
+        // Methods
 
         clear(color: boolean, depth: boolean, stencil: boolean): void;
         clear_color(): void;
@@ -3072,18 +3072,18 @@ export namespace Gthree {
     class Resource extends GObject.Object {
         static $gtype: GObject.GType<Resource>;
 
-        // Constructors of Gthree.Resource
+        // Constructors
 
         constructor(properties?: Partial<Resource.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of Gthree.Resource
+        // Virtual methods
 
         vfunc_set_used(used: boolean): void;
         vfunc_unrealize(renderer: Renderer): void;
 
-        // Own methods of Gthree.Resource
+        // Methods
 
         get_data_for(renderer: Renderer): any | null;
         get_used(): boolean;
@@ -3102,7 +3102,7 @@ export namespace Gthree {
     class Scene extends Object {
         static $gtype: GObject.GType<Scene>;
 
-        // Constructors of Gthree.Scene
+        // Constructors
 
         constructor(properties?: Partial<Scene.ConstructorProps>, ...args: any[]);
 
@@ -3110,7 +3110,7 @@ export namespace Gthree {
 
         static ['new'](): Scene;
 
-        // Own methods of Gthree.Scene
+        // Methods
 
         get_background_alpha(): number;
         get_background_color(): Graphene.Vec3;
@@ -3130,13 +3130,13 @@ export namespace Gthree {
     class Shader extends GObject.Object {
         static $gtype: GObject.GType<Shader>;
 
-        // Constructors of Gthree.Shader
+        // Constructors
 
         constructor(properties?: Partial<Shader.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Gthree.Shader
+        // Methods
 
         equal(b: Shader): boolean;
         get_fragment_shader_text(): string;
@@ -3162,7 +3162,7 @@ export namespace Gthree {
     class ShaderMaterial extends MeshMaterial {
         static $gtype: GObject.GType<ShaderMaterial>;
 
-        // Own properties of Gthree.ShaderMaterial
+        // Properties
 
         get shader(): Shader;
         get use_lights(): boolean;
@@ -3174,7 +3174,7 @@ export namespace Gthree {
         get vertexColors(): boolean;
         set vertexColors(val: boolean);
 
-        // Constructors of Gthree.ShaderMaterial
+        // Constructors
 
         constructor(properties?: Partial<ShaderMaterial.ConstructorProps>, ...args: any[]);
 
@@ -3182,7 +3182,7 @@ export namespace Gthree {
 
         static ['new'](shader: Shader): ShaderMaterial;
 
-        // Own methods of Gthree.ShaderMaterial
+        // Methods
 
         get_shading_type(): ShadingType;
         get_use_lights(): boolean;
@@ -3201,7 +3201,7 @@ export namespace Gthree {
     class ShaderPass extends Pass {
         static $gtype: GObject.GType<ShaderPass>;
 
-        // Constructors of Gthree.ShaderPass
+        // Constructors
 
         constructor(properties?: Partial<ShaderPass.ConstructorProps>, ...args: any[]);
 
@@ -3219,7 +3219,7 @@ export namespace Gthree {
     class Skeleton extends GObject.Object {
         static $gtype: GObject.GType<Skeleton>;
 
-        // Constructors of Gthree.Skeleton
+        // Constructors
 
         constructor(properties?: Partial<Skeleton.ConstructorProps>, ...args: any[]);
 
@@ -3227,7 +3227,7 @@ export namespace Gthree {
 
         static ['new'](bones: Bone, n_bones: number, bone_inverses: Graphene.Matrix): Skeleton;
 
-        // Own methods of Gthree.Skeleton
+        // Methods
 
         calculate_inverses(): void;
         get_n_bones(): number;
@@ -3245,11 +3245,11 @@ export namespace Gthree {
     class SkeletonHelper extends LineSegments {
         static $gtype: GObject.GType<SkeletonHelper>;
 
-        // Own properties of Gthree.SkeletonHelper
+        // Properties
 
         get root(): Object;
 
-        // Constructors of Gthree.SkeletonHelper
+        // Constructors
 
         constructor(properties?: Partial<SkeletonHelper.ConstructorProps>, ...args: any[]);
 
@@ -3270,7 +3270,7 @@ export namespace Gthree {
     class SkinnedMesh extends Mesh {
         static $gtype: GObject.GType<SkinnedMesh>;
 
-        // Constructors of Gthree.SkinnedMesh
+        // Constructors
 
         constructor(properties?: Partial<SkinnedMesh.ConstructorProps>, ...args: any[]);
 
@@ -3281,7 +3281,7 @@ export namespace Gthree {
 
         static ['new'](...args: never[]): any;
 
-        // Own methods of Gthree.SkinnedMesh
+        // Methods
 
         bind(skeleton: Skeleton, bind_matrix: Graphene.Matrix): void;
         get_bind_matrix(): Graphene.Matrix;
@@ -3306,7 +3306,7 @@ export namespace Gthree {
     class SpotLight extends Light {
         static $gtype: GObject.GType<SpotLight>;
 
-        // Own properties of Gthree.SpotLight
+        // Properties
 
         get angle(): number;
         set angle(val: number);
@@ -3319,7 +3319,7 @@ export namespace Gthree {
         get target(): Object;
         set target(val: Object);
 
-        // Constructors of Gthree.SpotLight
+        // Constructors
 
         constructor(properties?: Partial<SpotLight.ConstructorProps>, ...args: any[]);
 
@@ -3336,7 +3336,7 @@ export namespace Gthree {
 
         static ['new'](...args: never[]): any;
 
-        // Own methods of Gthree.SpotLight
+        // Methods
 
         get_angle(): number;
         get_decay(): number;
@@ -3358,7 +3358,7 @@ export namespace Gthree {
     class SpotLightShadow extends LightShadow {
         static $gtype: GObject.GType<SpotLightShadow>;
 
-        // Constructors of Gthree.SpotLightShadow
+        // Constructors
 
         constructor(properties?: Partial<SpotLightShadow.ConstructorProps>, ...args: any[]);
 
@@ -3376,12 +3376,12 @@ export namespace Gthree {
     class Sprite extends Object {
         static $gtype: GObject.GType<Sprite>;
 
-        // Own properties of Gthree.Sprite
+        // Properties
 
         get material(): Material;
         set material(val: Material);
 
-        // Constructors of Gthree.Sprite
+        // Constructors
 
         constructor(properties?: Partial<Sprite.ConstructorProps>, ...args: any[]);
 
@@ -3392,7 +3392,7 @@ export namespace Gthree {
 
         static ['new'](...args: never[]): any;
 
-        // Own methods of Gthree.Sprite
+        // Methods
 
         get_center(): Graphene.Vec2;
         set_center(center: Graphene.Vec2): void;
@@ -3414,7 +3414,7 @@ export namespace Gthree {
     class SpriteMaterial extends Material {
         static $gtype: GObject.GType<SpriteMaterial>;
 
-        // Own properties of Gthree.SpriteMaterial
+        // Properties
 
         get color(): Graphene.Vec3;
         set color(val: Graphene.Vec3);
@@ -3427,7 +3427,7 @@ export namespace Gthree {
         get sizeAttenuation(): boolean;
         set sizeAttenuation(val: boolean);
 
-        // Constructors of Gthree.SpriteMaterial
+        // Constructors
 
         constructor(properties?: Partial<SpriteMaterial.ConstructorProps>, ...args: any[]);
 
@@ -3435,7 +3435,7 @@ export namespace Gthree {
 
         static ['new'](): SpriteMaterial;
 
-        // Own methods of Gthree.SpriteMaterial
+        // Methods
 
         get_color(): Graphene.Vec3;
         get_rotation(): number;
@@ -3458,12 +3458,12 @@ export namespace Gthree {
     class Texture extends Resource {
         static $gtype: GObject.GType<Texture>;
 
-        // Own properties of Gthree.Texture
+        // Properties
 
         get pixbuf(): GdkPixbuf.Pixbuf;
         get surface(): cairo.Surface;
 
-        // Constructors of Gthree.Texture
+        // Constructors
 
         constructor(properties?: Partial<Texture.ConstructorProps>, ...args: any[]);
 
@@ -3473,11 +3473,11 @@ export namespace Gthree {
 
         static new_from_surface(surface: cairo.Surface): Texture;
 
-        // Own virtual methods of Gthree.Texture
+        // Virtual methods
 
         vfunc_load(renderer: Renderer, slot: number): void;
 
-        // Own methods of Gthree.Texture
+        // Methods
 
         copy_settings(source: Texture): void;
         get_anisotropy(): number;
@@ -3524,7 +3524,7 @@ export namespace Gthree {
     class Uniforms extends GObject.Object {
         static $gtype: GObject.GType<Uniforms>;
 
-        // Constructors of Gthree.Uniforms
+        // Constructors
 
         constructor(properties?: Partial<Uniforms.ConstructorProps>, ...args: any[]);
 
@@ -3534,7 +3534,7 @@ export namespace Gthree {
 
         static new_from_definitions(element: UniformsDefinition, len: number): Uniforms;
 
-        // Own methods of Gthree.Uniforms
+        // Methods
 
         add(uniform: Uniform): void;
         copy_values(source: Uniforms): void;
@@ -3557,7 +3557,7 @@ export namespace Gthree {
     class VectorKeyframeTrack extends KeyframeTrack {
         static $gtype: GObject.GType<VectorKeyframeTrack>;
 
-        // Constructors of Gthree.VectorKeyframeTrack
+        // Constructors
 
         constructor(properties?: Partial<VectorKeyframeTrack.ConstructorProps>, ...args: any[]);
 
@@ -3573,11 +3573,11 @@ export namespace Gthree {
     abstract class AttributeArray {
         static $gtype: GObject.GType<AttributeArray>;
 
-        // Constructors of Gthree.AttributeArray
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of Gthree.AttributeArray
+        // Methods
 
         copy_at(
             index: number,
@@ -3680,13 +3680,13 @@ export namespace Gthree {
     class GeometryGroup {
         static $gtype: GObject.GType<GeometryGroup>;
 
-        // Own fields of Gthree.GeometryGroup
+        // Fields
 
         start: number;
         count: number;
         material_index: number;
 
-        // Constructors of Gthree.GeometryGroup
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -3706,7 +3706,7 @@ export namespace Gthree {
     abstract class LightSetup {
         static $gtype: GObject.GType<LightSetup>;
 
-        // Constructors of Gthree.LightSetup
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3721,7 +3721,7 @@ export namespace Gthree {
     abstract class MaterialProperties {
         static $gtype: GObject.GType<MaterialProperties>;
 
-        // Constructors of Gthree.MaterialProperties
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3742,12 +3742,12 @@ export namespace Gthree {
     class ObjectIter {
         static $gtype: GObject.GType<ObjectIter>;
 
-        // Constructors of Gthree.ObjectIter
+        // Constructors
 
         constructor(properties?: Partial<{}>);
         _init(...args: any[]): void;
 
-        // Own methods of Gthree.ObjectIter
+        // Methods
 
         destroy(): void;
         init(root: Object): void;
@@ -3767,11 +3767,11 @@ export namespace Gthree {
     abstract class ProgramCache {
         static $gtype: GObject.GType<ProgramCache>;
 
-        // Constructors of Gthree.ProgramCache
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of Gthree.ProgramCache
+        // Methods
 
         free(): void;
     }
@@ -3780,7 +3780,7 @@ export namespace Gthree {
     abstract class ProgramParameters {
         static $gtype: GObject.GType<ProgramParameters>;
 
-        // Constructors of Gthree.ProgramParameters
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3790,7 +3790,7 @@ export namespace Gthree {
     class RayIntersection {
         static $gtype: GObject.GType<RayIntersection>;
 
-        // Own fields of Gthree.RayIntersection
+        // Fields
 
         object: Object;
         distance: number;
@@ -3801,14 +3801,14 @@ export namespace Gthree {
         uv: Graphene.Vec2;
         uv2: Graphene.Vec2;
 
-        // Constructors of Gthree.RayIntersection
+        // Constructors
 
         constructor(object: Object);
         _init(...args: any[]): void;
 
         static ['new'](object: Object): RayIntersection;
 
-        // Own methods of Gthree.RayIntersection
+        // Methods
 
         copy(): RayIntersection;
         free(): void;
@@ -3818,7 +3818,7 @@ export namespace Gthree {
     abstract class RenderList {
         static $gtype: GObject.GType<RenderList>;
 
-        // Constructors of Gthree.RenderList
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3829,12 +3829,12 @@ export namespace Gthree {
     class ResourceRealizeData {
         static $gtype: GObject.GType<ResourceRealizeData>;
 
-        // Own fields of Gthree.ResourceRealizeData
+        // Fields
 
         realized_for: Renderer;
         dirty: boolean;
 
-        // Constructors of Gthree.ResourceRealizeData
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3853,11 +3853,11 @@ export namespace Gthree {
     abstract class Uniform {
         static $gtype: GObject.GType<Uniform>;
 
-        // Constructors of Gthree.Uniform
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of Gthree.Uniform
+        // Methods
 
         copy_value(source: Uniform): void;
         get_name(): string;
@@ -3878,13 +3878,13 @@ export namespace Gthree {
     class UniformsDefinition {
         static $gtype: GObject.GType<UniformsDefinition>;
 
-        // Own fields of Gthree.UniformsDefinition
+        // Fields
 
         name: string;
         type: UniformType;
         value: any;
 
-        // Constructors of Gthree.UniformsDefinition
+        // Constructors
 
         _init(...args: any[]): void;
     }

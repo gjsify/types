@@ -26,7 +26,7 @@ export namespace Peas {
     class PluginInfoError extends GLib.Error {
         static $gtype: GObject.GType<PluginInfoError>;
 
-        // Static fields of Peas.PluginInfoError
+        // Static fields
 
         /**
          * The plugin failed to load.
@@ -45,7 +45,7 @@ export namespace Peas {
          */
         static DEP_LOADING_FAILED: number;
 
-        // Constructors of Peas.PluginInfoError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
@@ -88,7 +88,7 @@ export namespace Peas {
     class Engine extends GObject.Object {
         static $gtype: GObject.GType<Engine>;
 
-        // Own properties of Peas.Engine
+        // Properties
 
         /**
          * The list of loaded plugins.
@@ -161,7 +161,7 @@ export namespace Peas {
          */
         get pluginList(): any;
 
-        // Constructors of Peas.Engine
+        // Constructors
 
         constructor(properties?: Partial<Engine.ConstructorProps>, ...args: any[]);
 
@@ -171,7 +171,7 @@ export namespace Peas {
 
         static new_with_nonglobal_loaders(): Engine;
 
-        // Own signals of Peas.Engine
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -183,7 +183,7 @@ export namespace Peas {
         connect_after(signal: 'unload-plugin', callback: (_source: this, info: PluginInfo) => void): number;
         emit(signal: 'unload-plugin', info: PluginInfo): void;
 
-        // Own static methods of Peas.Engine
+        // Static methods
 
         /**
          * Return the existing instance of #PeasEngine or a subclass of it.
@@ -196,12 +196,12 @@ export namespace Peas {
          */
         static get_default(): Engine;
 
-        // Own virtual methods of Peas.Engine
+        // Virtual methods
 
         vfunc_load_plugin(info: PluginInfo): void;
         vfunc_unload_plugin(info: PluginInfo): void;
 
-        // Own methods of Peas.Engine
+        // Methods
 
         /**
          * Appends a search path to the list of paths where to look for plugins.
@@ -372,7 +372,7 @@ export namespace Peas {
     abstract class ExtensionBase extends GObject.Object {
         static $gtype: GObject.GType<ExtensionBase>;
 
-        // Own properties of Peas.ExtensionBase
+        // Properties
 
         /**
          * The The full path of the directory where the plugin
@@ -399,13 +399,13 @@ export namespace Peas {
          */
         get pluginInfo(): PluginInfo;
 
-        // Constructors of Peas.ExtensionBase
+        // Constructors
 
         constructor(properties?: Partial<ExtensionBase.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Peas.ExtensionBase
+        // Methods
 
         /**
          * Get the path of the directory where the plugin should look for
@@ -451,7 +451,7 @@ export namespace Peas {
     class ExtensionSet<A extends GObject.Object = GObject.Object> extends GObject.Object implements Gio.ListModel<A> {
         static $gtype: GObject.GType<ExtensionSet>;
 
-        // Own properties of Peas.ExtensionSet
+        // Properties
 
         set construct_properties(val: any);
         set constructProperties(val: any);
@@ -459,7 +459,7 @@ export namespace Peas {
         get extension_type(): GObject.GType;
         get extensionType(): GObject.GType;
 
-        // Constructors of Peas.ExtensionSet
+        // Constructors
 
         constructor(properties?: Partial<ExtensionSet.ConstructorProps>, ...args: any[]);
 
@@ -472,7 +472,7 @@ export namespace Peas {
             prop_values: (GObject.Value | any)[],
         ): ExtensionSet;
 
-        // Own signals of Peas.ExtensionSet
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -496,13 +496,13 @@ export namespace Peas {
         ): number;
         emit(signal: 'extension-removed', info: PluginInfo, exten: GObject.Object): void;
 
-        // Own virtual methods of Peas.ExtensionSet
+        // Virtual methods
 
         vfunc_call(method_name: string, args: GIRepository.Argument): boolean;
         vfunc_extension_added(info: PluginInfo, exten: Extension): void;
         vfunc_extension_removed(info: PluginInfo, exten: Extension): void;
 
-        // Own methods of Peas.ExtensionSet
+        // Methods
 
         /**
          * Calls `func` for each [alias`Extension]`.
@@ -1036,7 +1036,7 @@ export namespace Peas {
     class ObjectModule extends GObject.TypeModule implements GObject.TypePlugin {
         static $gtype: GObject.GType<ObjectModule>;
 
-        // Own properties of Peas.ObjectModule
+        // Properties
 
         /**
          * Whether the module is loaded with local linkage, i.e. #G_MODULE_BIND_LOCAL.
@@ -1056,13 +1056,13 @@ export namespace Peas {
         get resident(): boolean;
         get symbol(): string;
 
-        // Constructors of Peas.ObjectModule
+        // Constructors
 
         constructor(properties?: Partial<ObjectModule.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Peas.ObjectModule
+        // Methods
 
         /**
          * Register an implementation for an extension type through a factory
@@ -1534,7 +1534,7 @@ export namespace Peas {
     abstract class EnginePrivate {
         static $gtype: GObject.GType<EnginePrivate>;
 
-        // Constructors of Peas.EnginePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1543,7 +1543,7 @@ export namespace Peas {
     abstract class ExtensionBasePrivate {
         static $gtype: GObject.GType<ExtensionBasePrivate>;
 
-        // Constructors of Peas.ExtensionBasePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1552,7 +1552,7 @@ export namespace Peas {
     abstract class ExtensionSetPrivate {
         static $gtype: GObject.GType<ExtensionSetPrivate>;
 
-        // Constructors of Peas.ExtensionSetPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1561,7 +1561,7 @@ export namespace Peas {
     abstract class ObjectModulePrivate {
         static $gtype: GObject.GType<ObjectModulePrivate>;
 
-        // Constructors of Peas.ObjectModulePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1573,15 +1573,15 @@ export namespace Peas {
     abstract class PluginInfo {
         static $gtype: GObject.GType<PluginInfo>;
 
-        // Constructors of Peas.PluginInfo
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own static methods of Peas.PluginInfo
+        // Static methods
 
         static error_quark(): GLib.Quark;
 
-        // Own methods of Peas.PluginInfo
+        // Methods
 
         /**
          * Gets a %NULL-terminated array of strings with the authors of the plugin.
@@ -1779,7 +1779,7 @@ export namespace Peas {
         prototype: Activatable;
     }
     interface Activatable extends GObject.Object {
-        // Own properties of Peas.Activatable
+        // Properties
 
         /**
          * The object property contains the targetted object for this #PeasActivatable
@@ -1790,7 +1790,7 @@ export namespace Peas {
          */
         get object(): GObject.Object;
 
-        // Own methods of Peas.Activatable
+        // Methods
 
         /**
          * Activates the extension on the targetted object.
@@ -1813,7 +1813,7 @@ export namespace Peas {
          */
         update_state(): void;
 
-        // Own virtual methods of Peas.Activatable
+        // Virtual methods
 
         /**
          * Activates the extension on the targetted object.

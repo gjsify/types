@@ -23,7 +23,7 @@ export namespace GstGL {
     class GLBaseMemoryError extends GLib.Error {
         static $gtype: GObject.GType<GLBaseMemoryError>;
 
-        // Static fields of GstGL.GLBaseMemoryError
+        // Static fields
 
         /**
          * generic failure
@@ -39,12 +39,12 @@ export namespace GstGL {
          */
         static RESOURCE_UNAVAILABLE: number;
 
-        // Constructors of GstGL.GLBaseMemoryError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of GstGL.GLBaseMemoryError
+        // Static methods
 
         static quark(): GLib.Quark;
     }
@@ -73,7 +73,7 @@ export namespace GstGL {
     class GLContextError extends GLib.Error {
         static $gtype: GObject.GType<GLContextError>;
 
-        // Static fields of GstGL.GLContextError
+        // Static fields
 
         /**
          * Failed for an unspecified reason
@@ -100,12 +100,12 @@ export namespace GstGL {
          */
         static RESOURCE_UNAVAILABLE: number;
 
-        // Constructors of GstGL.GLContextError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of GstGL.GLContextError
+        // Static methods
 
         static quark(): GLib.Quark;
     }
@@ -222,7 +222,7 @@ export namespace GstGL {
     class GLSLError extends GLib.Error {
         static $gtype: GObject.GType<GLSLError>;
 
-        // Static fields of GstGL.GLSLError
+        // Static fields
 
         /**
          * Compilation error occurred
@@ -237,12 +237,12 @@ export namespace GstGL {
          */
         static PROGRAM: number;
 
-        // Constructors of GstGL.GLSLError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of GstGL.GLSLError
+        // Static methods
 
         static quark(): GLib.Quark;
     }
@@ -256,7 +256,7 @@ export namespace GstGL {
     class GLSLVersion {
         static $gtype: GObject.GType<GLSLVersion>;
 
-        // Static fields of GstGL.GLSLVersion
+        // Static fields
 
         /**
          * no version
@@ -327,7 +327,7 @@ export namespace GstGL {
          */
         static '450': number;
 
-        // Constructors of GstGL.GLSLVersion
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -426,7 +426,7 @@ export namespace GstGL {
     class GLWindowError extends GLib.Error {
         static $gtype: GObject.GType<GLWindowError>;
 
-        // Static fields of GstGL.GLWindowError
+        // Static fields
 
         /**
          * failed for a unspecified reason
@@ -441,12 +441,12 @@ export namespace GstGL {
          */
         static RESOURCE_UNAVAILABLE: number;
 
-        // Constructors of GstGL.GLWindowError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of GstGL.GLWindowError
+        // Static methods
 
         static quark(): GLib.Quark;
     }
@@ -1053,27 +1053,27 @@ export namespace GstGL {
     class GLBaseFilter extends GstBase.BaseTransform {
         static $gtype: GObject.GType<GLBaseFilter>;
 
-        // Own properties of GstGL.GLBaseFilter
+        // Properties
 
         get context(): GLContext;
 
-        // Own fields of GstGL.GLBaseFilter
+        // Fields
 
         display: GLDisplay;
 
-        // Constructors of GstGL.GLBaseFilter
+        // Constructors
 
         constructor(properties?: Partial<GLBaseFilter.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of GstGL.GLBaseFilter
+        // Virtual methods
 
         vfunc_gl_set_caps(incaps: Gst.Caps, outcaps: Gst.Caps): boolean;
         vfunc_gl_start(): boolean;
         vfunc_gl_stop(): void;
 
-        // Own methods of GstGL.GLBaseFilter
+        // Methods
 
         find_gl_context(): boolean;
         get_gl_context(): GLContext | null;
@@ -1091,13 +1091,13 @@ export namespace GstGL {
     abstract class GLBaseMemoryAllocator extends Gst.Allocator {
         static $gtype: GObject.GType<GLBaseMemoryAllocator>;
 
-        // Constructors of GstGL.GLBaseMemoryAllocator
+        // Constructors
 
         constructor(properties?: Partial<GLBaseMemoryAllocator.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of GstGL.GLBaseMemoryAllocator
+        // Virtual methods
 
         vfunc_alloc(params: GLAllocationParams): GLBaseMemory | null;
         // Conflicted with Gst.Allocator.vfunc_alloc
@@ -1120,24 +1120,24 @@ export namespace GstGL {
     abstract class GLBaseMixer extends GstVideo.VideoAggregator {
         static $gtype: GObject.GType<GLBaseMixer>;
 
-        // Own properties of GstGL.GLBaseMixer
+        // Properties
 
         /**
          * The #GstGLContext in use by this #GstGLBaseMixer
          */
         get context(): GLContext;
 
-        // Own fields of GstGL.GLBaseMixer
+        // Fields
 
         display: GLDisplay;
 
-        // Constructors of GstGL.GLBaseMixer
+        // Constructors
 
         constructor(properties?: Partial<GLBaseMixer.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of GstGL.GLBaseMixer
+        // Virtual methods
 
         /**
          * called in the GL thread to setup the element GL state.
@@ -1148,7 +1148,7 @@ export namespace GstGL {
          */
         vfunc_gl_stop(): void;
 
-        // Own methods of GstGL.GLBaseMixer
+        // Methods
 
         get_gl_context(): GLContext | null;
     }
@@ -1162,7 +1162,7 @@ export namespace GstGL {
     class GLBaseMixerPad extends GstVideo.VideoAggregatorPad {
         static $gtype: GObject.GType<GLBaseMixerPad>;
 
-        // Constructors of GstGL.GLBaseMixerPad
+        // Constructors
 
         constructor(properties?: Partial<GLBaseMixerPad.ConstructorProps>, ...args: any[]);
 
@@ -1187,26 +1187,26 @@ export namespace GstGL {
     abstract class GLBaseSrc extends GstBase.PushSrc {
         static $gtype: GObject.GType<GLBaseSrc>;
 
-        // Own properties of GstGL.GLBaseSrc
+        // Properties
 
         get timestamp_offset(): number;
         set timestamp_offset(val: number);
         get timestampOffset(): number;
         set timestampOffset(val: number);
 
-        // Own fields of GstGL.GLBaseSrc
+        // Fields
 
         display: GLDisplay;
         context: GLContext;
         running_time: Gst.ClockTime;
 
-        // Constructors of GstGL.GLBaseSrc
+        // Constructors
 
         constructor(properties?: Partial<GLBaseSrc.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of GstGL.GLBaseSrc
+        // Virtual methods
 
         vfunc_fill_gl_memory(mem: GLMemory): boolean;
         vfunc_gl_start(): boolean;
@@ -1225,7 +1225,7 @@ export namespace GstGL {
     class GLBufferAllocator extends GLBaseMemoryAllocator {
         static $gtype: GObject.GType<GLBufferAllocator>;
 
-        // Constructors of GstGL.GLBufferAllocator
+        // Constructors
 
         constructor(properties?: Partial<GLBufferAllocator.ConstructorProps>, ...args: any[]);
 
@@ -1251,12 +1251,12 @@ export namespace GstGL {
     class GLBufferPool extends Gst.BufferPool {
         static $gtype: GObject.GType<GLBufferPool>;
 
-        // Own fields of GstGL.GLBufferPool
+        // Fields
 
         bufferpool: Gst.BufferPool;
         context: GLContext;
 
-        // Constructors of GstGL.GLBufferPool
+        // Constructors
 
         constructor(properties?: Partial<GLBufferPool.ConstructorProps>, ...args: any[]);
 
@@ -1267,7 +1267,7 @@ export namespace GstGL {
 
         static ['new'](...args: never[]): any;
 
-        // Own methods of GstGL.GLBufferPool
+        // Methods
 
         /**
          * The returned #GstGLAllocationParams will by %NULL before the first successful
@@ -1299,7 +1299,7 @@ export namespace GstGL {
     class GLColorConvert extends Gst.Object {
         static $gtype: GObject.GType<GLColorConvert>;
 
-        // Constructors of GstGL.GLColorConvert
+        // Constructors
 
         constructor(properties?: Partial<GLColorConvert.ConstructorProps>, ...args: any[]);
 
@@ -1307,7 +1307,7 @@ export namespace GstGL {
 
         static ['new'](context: GLContext): GLColorConvert;
 
-        // Own static methods of GstGL.GLColorConvert
+        // Static methods
 
         /**
          * Provides an implementation of #GstBaseTransformClass.fixate_caps()
@@ -1331,7 +1331,7 @@ export namespace GstGL {
             filter: Gst.Caps,
         ): Gst.Caps;
 
-        // Own methods of GstGL.GLColorConvert
+        // Methods
 
         /**
          * Provides an implementation of #GstBaseTransformClass.decide_allocation()
@@ -1384,7 +1384,7 @@ export namespace GstGL {
     abstract class GLContext extends Gst.Object {
         static $gtype: GObject.GType<GLContext>;
 
-        // Constructors of GstGL.GLContext
+        // Constructors
 
         constructor(properties?: Partial<GLContext.ConstructorProps>, ...args: any[]);
 
@@ -1399,7 +1399,7 @@ export namespace GstGL {
             available_apis: GLAPI,
         ): GLContext;
 
-        // Own static methods of GstGL.GLContext
+        // Static methods
 
         /**
          * A default implementation of the various GetProcAddress functions that looks
@@ -1432,7 +1432,7 @@ export namespace GstGL {
          */
         static get_proc_address_with_platform(context_type: GLPlatform, gl_api: GLAPI, name: string): any | null;
 
-        // Own virtual methods of GstGL.GLContext
+        // Virtual methods
 
         /**
          * (De)activate the OpenGL context represented by this `context`.
@@ -1504,7 +1504,7 @@ export namespace GstGL {
          */
         vfunc_swap_buffers(): void;
 
-        // Own methods of GstGL.GLContext
+        // Methods
 
         /**
          * (De)activate the OpenGL context represented by this `context`.
@@ -1737,7 +1737,7 @@ export namespace GstGL {
     class GLDisplay extends Gst.Object {
         static $gtype: GObject.GType<GLDisplay>;
 
-        // Constructors of GstGL.GLDisplay
+        // Constructors
 
         constructor(properties?: Partial<GLDisplay.ConstructorProps>, ...args: any[]);
 
@@ -1747,7 +1747,7 @@ export namespace GstGL {
 
         static new_with_type(type: GLDisplayType): GLDisplay;
 
-        // Own signals of GstGL.GLDisplay
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -1759,12 +1759,12 @@ export namespace GstGL {
         ): number;
         emit(signal: 'create-context', context: GLContext): void;
 
-        // Own virtual methods of GstGL.GLDisplay
+        // Virtual methods
 
         vfunc_create_window(): GLWindow | null;
         vfunc_get_handle(): never;
 
-        // Own methods of GstGL.GLDisplay
+        // Methods
 
         add_context(context: GLContext): boolean;
         /**
@@ -1838,23 +1838,23 @@ export namespace GstGL {
     class GLFilter extends GLBaseFilter {
         static $gtype: GObject.GType<GLFilter>;
 
-        // Own fields of GstGL.GLFilter
+        // Fields
 
         in_texture_target: GLTextureTarget;
         out_texture_target: GLTextureTarget;
         fbo: GLFramebuffer;
 
-        // Constructors of GstGL.GLFilter
+        // Constructors
 
         constructor(properties?: Partial<GLFilter.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of GstGL.GLFilter
+        // Static methods
 
         static add_rgba_pad_templates(klass: typeof GLFilter): void;
 
-        // Own virtual methods of GstGL.GLFilter
+        // Virtual methods
 
         vfunc_filter(inbuf: Gst.Buffer, outbuf: Gst.Buffer): boolean;
         /**
@@ -1867,7 +1867,7 @@ export namespace GstGL {
         vfunc_set_caps(incaps: Gst.Caps, outcaps: Gst.Caps): boolean;
         vfunc_transform_internal_caps(direction: Gst.PadDirection, caps: Gst.Caps, filter_caps: Gst.Caps): Gst.Caps;
 
-        // Own methods of GstGL.GLFilter
+        // Methods
 
         /**
          * Render a fullscreen quad using the current GL state.  The only GL state this
@@ -1923,7 +1923,7 @@ export namespace GstGL {
     class GLFramebuffer extends Gst.Object {
         static $gtype: GObject.GType<GLFramebuffer>;
 
-        // Constructors of GstGL.GLFramebuffer
+        // Constructors
 
         constructor(properties?: Partial<GLFramebuffer.ConstructorProps>, ...args: any[]);
 
@@ -1933,7 +1933,7 @@ export namespace GstGL {
 
         static new_with_default_depth(context: GLContext, width: number, height: number): GLFramebuffer;
 
-        // Own methods of GstGL.GLFramebuffer
+        // Methods
 
         /**
          * attach `mem` to `attachment_point`
@@ -1986,13 +1986,13 @@ export namespace GstGL {
     class GLMemoryAllocator extends GLBaseMemoryAllocator {
         static $gtype: GObject.GType<GLMemoryAllocator>;
 
-        // Constructors of GstGL.GLMemoryAllocator
+        // Constructors
 
         constructor(properties?: Partial<GLMemoryAllocator.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of GstGL.GLMemoryAllocator
+        // Static methods
 
         static get_default(context: GLContext): GLMemoryAllocator;
     }
@@ -2009,7 +2009,7 @@ export namespace GstGL {
     class GLMemoryPBOAllocator extends GLMemoryAllocator {
         static $gtype: GObject.GType<GLMemoryPBOAllocator>;
 
-        // Constructors of GstGL.GLMemoryPBOAllocator
+        // Constructors
 
         constructor(properties?: Partial<GLMemoryPBOAllocator.ConstructorProps>, ...args: any[]);
 
@@ -2028,17 +2028,17 @@ export namespace GstGL {
     abstract class GLMixer extends GLBaseMixer {
         static $gtype: GObject.GType<GLMixer>;
 
-        // Constructors of GstGL.GLMixer
+        // Constructors
 
         constructor(properties?: Partial<GLMixer.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of GstGL.GLMixer
+        // Static methods
 
         static add_rgba_pad_templates(): void;
 
-        // Own virtual methods of GstGL.GLMixer
+        // Virtual methods
 
         /**
          * Perform operations on the input buffers to produce an
@@ -2054,7 +2054,7 @@ export namespace GstGL {
          */
         vfunc_process_textures(out_tex: GLMemory): boolean;
 
-        // Own methods of GstGL.GLMixer
+        // Methods
 
         get_framebuffer(): GLFramebuffer;
         /**
@@ -2076,11 +2076,11 @@ export namespace GstGL {
     class GLMixerPad extends GLBaseMixerPad {
         static $gtype: GObject.GType<GLMixerPad>;
 
-        // Own fields of GstGL.GLMixerPad
+        // Fields
 
         current_texture: number;
 
-        // Constructors of GstGL.GLMixerPad
+        // Constructors
 
         constructor(properties?: Partial<GLMixerPad.ConstructorProps>, ...args: any[]);
 
@@ -2101,12 +2101,12 @@ export namespace GstGL {
     class GLOverlayCompositor extends Gst.Object {
         static $gtype: GObject.GType<GLOverlayCompositor>;
 
-        // Own properties of GstGL.GLOverlayCompositor
+        // Properties
 
         get yinvert(): boolean;
         set yinvert(val: boolean);
 
-        // Constructors of GstGL.GLOverlayCompositor
+        // Constructors
 
         constructor(properties?: Partial<GLOverlayCompositor.ConstructorProps>, ...args: any[]);
 
@@ -2114,11 +2114,11 @@ export namespace GstGL {
 
         static ['new'](context: GLContext): GLOverlayCompositor;
 
-        // Own static methods of GstGL.GLOverlayCompositor
+        // Static methods
 
         static add_caps(caps: Gst.Caps): Gst.Caps;
 
-        // Own methods of GstGL.GLOverlayCompositor
+        // Methods
 
         draw_overlays(): void;
         free_overlays(): void;
@@ -2137,7 +2137,7 @@ export namespace GstGL {
     class GLRenderbufferAllocator extends GLBaseMemoryAllocator {
         static $gtype: GObject.GType<GLRenderbufferAllocator>;
 
-        // Constructors of GstGL.GLRenderbufferAllocator
+        // Constructors
 
         constructor(properties?: Partial<GLRenderbufferAllocator.ConstructorProps>, ...args: any[]);
 
@@ -2156,7 +2156,7 @@ export namespace GstGL {
     class GLSLStage extends Gst.Object {
         static $gtype: GObject.GType<GLSLStage>;
 
-        // Constructors of GstGL.GLSLStage
+        // Constructors
 
         constructor(properties?: Partial<GLSLStage.ConstructorProps>, ...args: any[]);
 
@@ -2184,7 +2184,7 @@ export namespace GstGL {
             str: string[],
         ): GLSLStage;
 
-        // Own methods of GstGL.GLSLStage
+        // Methods
 
         compile(): boolean;
         get_handle(): number;
@@ -2211,15 +2211,15 @@ export namespace GstGL {
     class GLShader extends Gst.Object {
         static $gtype: GObject.GType<GLShader>;
 
-        // Own properties of GstGL.GLShader
+        // Properties
 
         get linked(): boolean;
 
-        // Own fields of GstGL.GLShader
+        // Fields
 
         context: GLContext;
 
-        // Constructors of GstGL.GLShader
+        // Constructors
 
         constructor(properties?: Partial<GLShader.ConstructorProps>, ...args: any[]);
 
@@ -2229,7 +2229,7 @@ export namespace GstGL {
 
         static new_default(context: GLContext): GLShader;
 
-        // Own static methods of GstGL.GLShader
+        // Static methods
 
         static string_fragment_external_oes_get_default(
             context: GLContext,
@@ -2251,7 +2251,7 @@ export namespace GstGL {
          */
         static string_get_highest_precision(context: GLContext, version: GLSLVersion, profile: GLSLProfile): string;
 
-        // Own methods of GstGL.GLShader
+        // Methods
 
         /**
          * Attaches `stage` to `shader`.  `stage` must have been successfully compiled
@@ -2537,11 +2537,11 @@ export namespace GstGL {
     class GLUpload extends Gst.Object {
         static $gtype: GObject.GType<GLUpload>;
 
-        // Own fields of GstGL.GLUpload
+        // Fields
 
         context: GLContext;
 
-        // Constructors of GstGL.GLUpload
+        // Constructors
 
         constructor(properties?: Partial<GLUpload.ConstructorProps>, ...args: any[]);
 
@@ -2549,11 +2549,11 @@ export namespace GstGL {
 
         static ['new'](context: GLContext): GLUpload;
 
-        // Own static methods of GstGL.GLUpload
+        // Static methods
 
         static get_input_template_caps(): Gst.Caps;
 
-        // Own methods of GstGL.GLUpload
+        // Methods
 
         get_caps(): [Gst.Caps | null, Gst.Caps | null];
         /**
@@ -2603,7 +2603,7 @@ export namespace GstGL {
     class GLViewConvert extends Gst.Object {
         static $gtype: GObject.GType<GLViewConvert>;
 
-        // Own properties of GstGL.GLViewConvert
+        // Properties
 
         get downmix_mode(): GLStereoDownmix;
         set downmix_mode(val: GLStereoDownmix);
@@ -2626,7 +2626,7 @@ export namespace GstGL {
         get outputModeOverride(): GstVideo.VideoMultiviewMode;
         set outputModeOverride(val: GstVideo.VideoMultiviewMode);
 
-        // Own fields of GstGL.GLViewConvert
+        // Fields
 
         object: Gst.Object;
         context: GLContext;
@@ -2638,7 +2638,7 @@ export namespace GstGL {
         reconfigure: boolean;
         fbo: GLFramebuffer;
 
-        // Constructors of GstGL.GLViewConvert
+        // Constructors
 
         constructor(properties?: Partial<GLViewConvert.ConstructorProps>, ...args: any[]);
 
@@ -2646,7 +2646,7 @@ export namespace GstGL {
 
         static ['new'](): GLViewConvert;
 
-        // Own methods of GstGL.GLViewConvert
+        // Methods
 
         /**
          * Provides an implementation of #GstBaseTransformClass.fixate_caps()
@@ -2732,7 +2732,7 @@ export namespace GstGL {
     abstract class GLWindow extends Gst.Object {
         static $gtype: GObject.GType<GLWindow>;
 
-        // Constructors of GstGL.GLWindow
+        // Constructors
 
         constructor(properties?: Partial<GLWindow.ConstructorProps>, ...args: any[]);
 
@@ -2740,7 +2740,7 @@ export namespace GstGL {
 
         static ['new'](display: GLDisplay): GLWindow;
 
-        // Own signals of GstGL.GLWindow
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -2770,7 +2770,7 @@ export namespace GstGL {
         connect_after(signal: 'window-handle-changed', callback: (_source: this) => void): number;
         emit(signal: 'window-handle-changed'): void;
 
-        // Own virtual methods of GstGL.GLWindow
+        // Virtual methods
 
         vfunc_close(): void;
         /**
@@ -2848,7 +2848,7 @@ export namespace GstGL {
          */
         vfunc_show(): void;
 
-        // Own methods of GstGL.GLWindow
+        // Methods
 
         /**
          * Checks if `window` controls the GL viewport.
@@ -2965,7 +2965,7 @@ export namespace GstGL {
     class GLAllocationParams {
         static $gtype: GObject.GType<GLAllocationParams>;
 
-        // Own fields of GstGL.GLAllocationParams
+        // Fields
 
         struct_size: number;
         alloc_flags: number;
@@ -2976,11 +2976,11 @@ export namespace GstGL {
         wrapped_data: any;
         gl_handle: any;
 
-        // Constructors of GstGL.GLAllocationParams
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of GstGL.GLAllocationParams
+        // Methods
 
         copy(): GLAllocationParams;
         /**
@@ -3007,11 +3007,11 @@ export namespace GstGL {
     class GLAsyncDebug {
         static $gtype: GObject.GType<GLAsyncDebug>;
 
-        // Constructors of GstGL.GLAsyncDebug
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of GstGL.GLAsyncDebug
+        // Methods
 
         /**
          * Frees `ad`
@@ -3048,7 +3048,7 @@ export namespace GstGL {
     abstract class GLBaseFilterPrivate {
         static $gtype: GObject.GType<GLBaseFilterPrivate>;
 
-        // Constructors of GstGL.GLBaseFilterPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3062,7 +3062,7 @@ export namespace GstGL {
     class GLBaseMemory {
         static $gtype: GObject.GType<GLBaseMemory>;
 
-        // Own fields of GstGL.GLBaseMemory
+        // Fields
 
         context: GLContext;
         map_flags: Gst.MapFlags;
@@ -3070,11 +3070,11 @@ export namespace GstGL {
         gl_map_count: number;
         data: any;
 
-        // Constructors of GstGL.GLBaseMemory
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own static methods of GstGL.GLBaseMemory
+        // Static methods
 
         static alloc(allocator: GLBaseMemoryAllocator, params: GLAllocationParams): GLBaseMemory | null;
         /**
@@ -3083,7 +3083,7 @@ export namespace GstGL {
          */
         static init_once(): void;
 
-        // Own methods of GstGL.GLBaseMemory
+        // Methods
 
         /**
          * Note: only intended for subclass usage to allocate the system memory buffer
@@ -3120,7 +3120,7 @@ export namespace GstGL {
     abstract class GLBaseMixerPrivate {
         static $gtype: GObject.GType<GLBaseMixerPrivate>;
 
-        // Constructors of GstGL.GLBaseMixerPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3129,7 +3129,7 @@ export namespace GstGL {
     abstract class GLBaseSrcPrivate {
         static $gtype: GObject.GType<GLBaseSrcPrivate>;
 
-        // Constructors of GstGL.GLBaseSrcPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3143,17 +3143,17 @@ export namespace GstGL {
     class GLBuffer {
         static $gtype: GObject.GType<GLBuffer>;
 
-        // Own fields of GstGL.GLBuffer
+        // Fields
 
         id: number;
         target: number;
         usage_hints: number;
 
-        // Constructors of GstGL.GLBuffer
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own static methods of GstGL.GLBuffer
+        // Static methods
 
         /**
          * Initializes the GL Buffer allocator. It is safe to call this function
@@ -3165,12 +3165,12 @@ export namespace GstGL {
     class GLBufferAllocationParams {
         static $gtype: GObject.GType<GLBufferAllocationParams>;
 
-        // Own fields of GstGL.GLBufferAllocationParams
+        // Fields
 
         gl_target: number;
         gl_usage: number;
 
-        // Constructors of GstGL.GLBufferAllocationParams
+        // Constructors
 
         constructor(
             context: GLContext,
@@ -3195,7 +3195,7 @@ export namespace GstGL {
     abstract class GLBufferPoolPrivate {
         static $gtype: GObject.GType<GLBufferPoolPrivate>;
 
-        // Constructors of GstGL.GLBufferPoolPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3204,7 +3204,7 @@ export namespace GstGL {
     abstract class GLColorConvertPrivate {
         static $gtype: GObject.GType<GLColorConvertPrivate>;
 
-        // Constructors of GstGL.GLColorConvertPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3213,7 +3213,7 @@ export namespace GstGL {
     abstract class GLContextPrivate {
         static $gtype: GObject.GType<GLContextPrivate>;
 
-        // Constructors of GstGL.GLContextPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3222,7 +3222,7 @@ export namespace GstGL {
     abstract class GLDisplayPrivate {
         static $gtype: GObject.GType<GLDisplayPrivate>;
 
-        // Constructors of GstGL.GLDisplayPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3232,7 +3232,7 @@ export namespace GstGL {
     abstract class GLFramebufferPrivate {
         static $gtype: GObject.GType<GLFramebufferPrivate>;
 
-        // Constructors of GstGL.GLFramebufferPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3246,7 +3246,7 @@ export namespace GstGL {
     abstract class GLFuncs {
         static $gtype: GObject.GType<GLFuncs>;
 
-        // Constructors of GstGL.GLFuncs
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3269,7 +3269,7 @@ export namespace GstGL {
     class GLMemory {
         static $gtype: GObject.GType<GLMemory>;
 
-        // Own fields of GstGL.GLMemory
+        // Fields
 
         tex_id: number;
         tex_target: GLTextureTarget;
@@ -3281,11 +3281,11 @@ export namespace GstGL {
         unpack_length: number;
         tex_width: number;
 
-        // Constructors of GstGL.GLMemory
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own static methods of GstGL.GLMemory
+        // Static methods
 
         /**
          * Initializes the GL Base Texture allocator. It is safe to call this function
@@ -3293,7 +3293,7 @@ export namespace GstGL {
          */
         static init_once(): void;
 
-        // Own methods of GstGL.GLMemory
+        // Methods
 
         /**
          * Copies `gl_mem` into the texture specified by `tex_id`.  The format of `tex_id`
@@ -3391,15 +3391,15 @@ export namespace GstGL {
     class GLMemoryPBO {
         static $gtype: GObject.GType<GLMemoryPBO>;
 
-        // Constructors of GstGL.GLMemoryPBO
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own static methods of GstGL.GLMemoryPBO
+        // Static methods
 
         static init_once(): void;
 
-        // Own methods of GstGL.GLMemoryPBO
+        // Methods
 
         /**
          * Copies `gl_mem` into the texture specified by `tex_id`.  The format of `tex_id`
@@ -3449,7 +3449,7 @@ export namespace GstGL {
     abstract class GLMixerPrivate {
         static $gtype: GObject.GType<GLMixerPrivate>;
 
-        // Constructors of GstGL.GLMixerPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3462,11 +3462,11 @@ export namespace GstGL {
     class GLQuery {
         static $gtype: GObject.GType<GLQuery>;
 
-        // Constructors of GstGL.GLQuery
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own static methods of GstGL.GLQuery
+        // Static methods
 
         /**
          * Performs a GST_QUERY_CONTEXT query of type "gst.gl.local_context" on all
@@ -3482,7 +3482,7 @@ export namespace GstGL {
             context_ptr: GLContext,
         ): [boolean, GLContext];
 
-        // Own methods of GstGL.GLQuery
+        // Methods
 
         /**
          * Record the result of a counter
@@ -3518,7 +3518,7 @@ export namespace GstGL {
     class GLRenderbuffer {
         static $gtype: GObject.GType<GLRenderbuffer>;
 
-        // Own fields of GstGL.GLRenderbuffer
+        // Fields
 
         renderbuffer_id: number;
         renderbuffer_format: GLFormat;
@@ -3526,11 +3526,11 @@ export namespace GstGL {
         height: number;
         renderbuffer_wrapped: boolean;
 
-        // Constructors of GstGL.GLRenderbuffer
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own static methods of GstGL.GLRenderbuffer
+        // Static methods
 
         /**
          * Initializes the GL Base Texture allocator. It is safe to call this function
@@ -3538,7 +3538,7 @@ export namespace GstGL {
          */
         static init_once(): void;
 
-        // Own methods of GstGL.GLRenderbuffer
+        // Methods
 
         get_format(): GLFormat;
         get_height(): number;
@@ -3552,13 +3552,13 @@ export namespace GstGL {
     class GLRenderbufferAllocationParams {
         static $gtype: GObject.GType<GLRenderbufferAllocationParams>;
 
-        // Own fields of GstGL.GLRenderbufferAllocationParams
+        // Fields
 
         renderbuffer_format: GLFormat;
         width: number;
         height: number;
 
-        // Constructors of GstGL.GLRenderbufferAllocationParams
+        // Constructors
 
         constructor(
             context: GLContext,
@@ -3594,7 +3594,7 @@ export namespace GstGL {
     abstract class GLSLStagePrivate {
         static $gtype: GObject.GType<GLSLStagePrivate>;
 
-        // Constructors of GstGL.GLSLStagePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3603,7 +3603,7 @@ export namespace GstGL {
     abstract class GLShaderPrivate {
         static $gtype: GObject.GType<GLShaderPrivate>;
 
-        // Constructors of GstGL.GLShaderPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3615,20 +3615,20 @@ export namespace GstGL {
     class GLSyncMeta {
         static $gtype: GObject.GType<GLSyncMeta>;
 
-        // Own fields of GstGL.GLSyncMeta
+        // Fields
 
         context: GLContext;
         data: any;
 
-        // Constructors of GstGL.GLSyncMeta
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own static methods of GstGL.GLSyncMeta
+        // Static methods
 
         static get_info(): Gst.MetaInfo;
 
-        // Own methods of GstGL.GLSyncMeta
+        // Methods
 
         /**
          * Set a sync point to possibly wait on at a later time.
@@ -3654,7 +3654,7 @@ export namespace GstGL {
     abstract class GLUploadPrivate {
         static $gtype: GObject.GType<GLUploadPrivate>;
 
-        // Constructors of GstGL.GLUploadPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3662,14 +3662,14 @@ export namespace GstGL {
     class GLVideoAllocationParams {
         static $gtype: GObject.GType<GLVideoAllocationParams>;
 
-        // Own fields of GstGL.GLVideoAllocationParams
+        // Fields
 
         plane: number;
         valign: GstVideo.VideoAlignment;
         target: GLTextureTarget;
         tex_format: GLFormat;
 
-        // Constructors of GstGL.GLVideoAllocationParams
+        // Constructors
 
         constructor(
             context: GLContext,
@@ -3731,7 +3731,7 @@ export namespace GstGL {
             notify?: GLib.DestroyNotify | null,
         ): GLVideoAllocationParams;
 
-        // Own methods of GstGL.GLVideoAllocationParams
+        // Methods
 
         /**
          * Copy and set any dynamically allocated resources in `dest_vid`.  Intended
@@ -3750,7 +3750,7 @@ export namespace GstGL {
     abstract class GLViewConvertPrivate {
         static $gtype: GObject.GType<GLViewConvertPrivate>;
 
-        // Constructors of GstGL.GLViewConvertPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3759,7 +3759,7 @@ export namespace GstGL {
     abstract class GLWindowPrivate {
         static $gtype: GObject.GType<GLWindowPrivate>;
 
-        // Constructors of GstGL.GLWindowPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }

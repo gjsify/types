@@ -1050,7 +1050,7 @@ export namespace Colord {
     class Client extends GObject.Object {
         static $gtype: GObject.GType<Client>;
 
-        // Own properties of Colord.Client
+        // Properties
 
         /**
          * The if the object path has been connected as is valid for use.
@@ -1081,7 +1081,7 @@ export namespace Colord {
          */
         get systemVendor(): string;
 
-        // Constructors of Colord.Client
+        // Constructors
 
         constructor(properties?: Partial<Client.ConstructorProps>, ...args: any[]);
 
@@ -1089,7 +1089,7 @@ export namespace Colord {
 
         static ['new'](): Client;
 
-        // Own signals of Colord.Client
+        // Signals
 
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -1114,7 +1114,7 @@ export namespace Colord {
         connect_after(signal: 'sensor-removed', callback: (_source: this, sensor: Sensor) => void): number;
         emit(signal: 'sensor-removed', sensor: Sensor): void;
 
-        // Own static methods of Colord.Client
+        // Static methods
 
         /**
          * Converts a string to a #CdClientError.
@@ -1128,7 +1128,7 @@ export namespace Colord {
          */
         static error_to_string(error_enum: ClientError): string;
 
-        // Own virtual methods of Colord.Client
+        // Virtual methods
 
         vfunc_changed(): void;
         vfunc_device_added(device: Device): void;
@@ -1141,7 +1141,7 @@ export namespace Colord {
         vfunc_sensor_changed(sensor: Sensor): void;
         vfunc_sensor_removed(sensor: Sensor): void;
 
-        // Own methods of Colord.Client
+        // Methods
 
         /**
          * Connects to the colord daemon.
@@ -1705,7 +1705,7 @@ export namespace Colord {
     class Device extends GObject.Object {
         static $gtype: GObject.GType<Device>;
 
-        // Own properties of Colord.Device
+        // Properties
 
         /**
          * The device colorspace, e.g. %CD_COLORSPACE_RGB.
@@ -1784,7 +1784,7 @@ export namespace Colord {
          */
         get vendor(): string;
 
-        // Constructors of Colord.Device
+        // Constructors
 
         constructor(properties?: Partial<Device.ConstructorProps>, ...args: any[]);
 
@@ -1794,14 +1794,14 @@ export namespace Colord {
 
         static new_with_object_path(object_path: string): Device;
 
-        // Own signals of Colord.Device
+        // Signals
 
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
         connect_after(signal: 'changed', callback: (_source: this) => void): number;
         emit(signal: 'changed'): void;
 
-        // Own static methods of Colord.Device
+        // Static methods
 
         /**
          * Converts a string to a #CdDeviceError.
@@ -1834,11 +1834,11 @@ export namespace Colord {
         static relation_from_string(device_relation: string): DeviceRelation;
         static relation_to_string(device_relation: DeviceRelation): string;
 
-        // Own virtual methods of Colord.Device
+        // Virtual methods
 
         vfunc_changed(): void;
 
-        // Own methods of Colord.Device
+        // Methods
 
         /**
          * Adds a profile to a device.
@@ -2305,7 +2305,7 @@ export namespace Colord {
     class Edid extends GObject.Object {
         static $gtype: GObject.GType<Edid>;
 
-        // Constructors of Colord.Edid
+        // Constructors
 
         constructor(properties?: Partial<Edid.ConstructorProps>, ...args: any[]);
 
@@ -2313,14 +2313,14 @@ export namespace Colord {
 
         static ['new'](): Edid;
 
-        // Own static methods of Colord.Edid
+        // Static methods
 
         /**
          * Gets the #CdEdid error quark.
          */
         static error_quark(): GLib.Quark;
 
-        // Own methods of Colord.Edid
+        // Methods
 
         /**
          * Gets the blue primary.
@@ -2422,7 +2422,7 @@ export namespace Colord {
     class Icc extends GObject.Object {
         static $gtype: GObject.GType<Icc>;
 
-        // Own properties of Colord.Icc
+        // Properties
 
         get blue(): ColorXYZ;
         get can_delete(): boolean;
@@ -2441,7 +2441,7 @@ export namespace Colord {
         set version(val: number);
         get white(): ColorXYZ;
 
-        // Constructors of Colord.Icc
+        // Constructors
 
         constructor(properties?: Partial<Icc.ConstructorProps>, ...args: any[]);
 
@@ -2449,11 +2449,11 @@ export namespace Colord {
 
         static ['new'](): Icc;
 
-        // Own static methods of Colord.Icc
+        // Static methods
 
         static error_quark(): GLib.Quark;
 
-        // Own methods of Colord.Icc
+        // Methods
 
         /**
          * Sets an item of data to the profile metadata, overwriting it if
@@ -2847,7 +2847,7 @@ export namespace Colord {
     class It8 extends GObject.Object {
         static $gtype: GObject.GType<It8>;
 
-        // Own properties of Colord.It8
+        // Properties
 
         /**
          * The instrument that created the results, e.g. "huey"
@@ -2879,7 +2879,7 @@ export namespace Colord {
          */
         get title(): string;
 
-        // Constructors of Colord.It8
+        // Constructors
 
         constructor(properties?: Partial<It8.ConstructorProps>, ...args: any[]);
 
@@ -2889,11 +2889,11 @@ export namespace Colord {
 
         static new_with_kind(kind: It8Kind): It8;
 
-        // Own static methods of Colord.It8
+        // Static methods
 
         static error_quark(): GLib.Quark;
 
-        // Own methods of Colord.It8
+        // Methods
 
         /**
          * Adds a reading to this object. If either of `rgb` or `xyz` is NULL then
@@ -3110,7 +3110,7 @@ export namespace Colord {
     class Profile extends GObject.Object {
         static $gtype: GObject.GType<Profile>;
 
-        // Own properties of Colord.Profile
+        // Properties
 
         /**
          * The profile colorspace.
@@ -3187,7 +3187,7 @@ export namespace Colord {
          */
         get warnings(): string[];
 
-        // Constructors of Colord.Profile
+        // Constructors
 
         constructor(properties?: Partial<Profile.ConstructorProps>, ...args: any[]);
 
@@ -3197,14 +3197,14 @@ export namespace Colord {
 
         static new_with_object_path(object_path: string): Profile;
 
-        // Own signals of Colord.Profile
+        // Signals
 
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
         connect_after(signal: 'changed', callback: (_source: this) => void): number;
         emit(signal: 'changed'): void;
 
-        // Own static methods of Colord.Profile
+        // Static methods
 
         /**
          * Converts a string to a #CdProfileError.
@@ -3240,11 +3240,11 @@ export namespace Colord {
          */
         static warning_to_string(kind_enum: ProfileWarning): string;
 
-        // Own virtual methods of Colord.Profile
+        // Virtual methods
 
         vfunc_changed(): void;
 
-        // Own methods of Colord.Profile
+        // Methods
 
         /**
          * Connects to the object and fills up initial properties.
@@ -3472,7 +3472,7 @@ export namespace Colord {
     class Sensor extends GObject.Object {
         static $gtype: GObject.GType<Sensor>;
 
-        // Own properties of Colord.Sensor
+        // Properties
 
         /**
          * The if the object path has been connected as is valid for use.
@@ -3529,7 +3529,7 @@ export namespace Colord {
          */
         get vendor(): string;
 
-        // Constructors of Colord.Sensor
+        // Constructors
 
         constructor(properties?: Partial<Sensor.ConstructorProps>, ...args: any[]);
 
@@ -3539,14 +3539,14 @@ export namespace Colord {
 
         static new_with_object_path(object_path: string): Sensor;
 
-        // Own signals of Colord.Sensor
+        // Signals
 
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
         connect_after(signal: 'button-pressed', callback: (_source: this) => void): number;
         emit(signal: 'button-pressed'): void;
 
-        // Own static methods of Colord.Sensor
+        // Static methods
 
         /**
          * Gets the sensor capability as a enumerated value.
@@ -3590,11 +3590,11 @@ export namespace Colord {
          */
         static state_to_string(sensor_state: SensorState): string;
 
-        // Own virtual methods of Colord.Sensor
+        // Virtual methods
 
         vfunc_button_pressed(): void;
 
-        // Own methods of Colord.Sensor
+        // Methods
 
         /**
          * Connects to the sensor.
@@ -3855,13 +3855,13 @@ export namespace Colord {
     class ColorLab {
         static $gtype: GObject.GType<ColorLab>;
 
-        // Own fields of Colord.ColorLab
+        // Fields
 
         L: number;
         a: number;
         b: number;
 
-        // Constructors of Colord.ColorLab
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -3874,7 +3874,7 @@ export namespace Colord {
 
         static ['new'](): ColorLab;
 
-        // Own methods of Colord.ColorLab
+        // Methods
 
         /**
          * Deep copies a color value.
@@ -3904,13 +3904,13 @@ export namespace Colord {
     class ColorRGB {
         static $gtype: GObject.GType<ColorRGB>;
 
-        // Own fields of Colord.ColorRGB
+        // Fields
 
         R: number;
         G: number;
         B: number;
 
-        // Constructors of Colord.ColorRGB
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -3923,7 +3923,7 @@ export namespace Colord {
 
         static ['new'](): ColorRGB;
 
-        // Own static methods of Colord.ColorRGB
+        // Static methods
 
         /**
          * Interpolate the RGB array to a different size.
@@ -3943,7 +3943,7 @@ export namespace Colord {
          */
         static array_new(): ColorRGB[];
 
-        // Own methods of Colord.ColorRGB
+        // Methods
 
         /**
          * Deep copies a color value.
@@ -3978,13 +3978,13 @@ export namespace Colord {
     class ColorRGB8 {
         static $gtype: GObject.GType<ColorRGB8>;
 
-        // Own fields of Colord.ColorRGB8
+        // Fields
 
         R: number;
         G: number;
         B: number;
 
-        // Constructors of Colord.ColorRGB8
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -3999,14 +3999,14 @@ export namespace Colord {
     class ColorSwatch {
         static $gtype: GObject.GType<ColorSwatch>;
 
-        // Constructors of Colord.ColorSwatch
+        // Constructors
 
         constructor(properties?: Partial<{}>);
         _init(...args: any[]): void;
 
         static ['new'](): ColorSwatch;
 
-        // Own methods of Colord.ColorSwatch
+        // Methods
 
         dup(): ColorSwatch;
         /**
@@ -4030,13 +4030,13 @@ export namespace Colord {
     class ColorUVW {
         static $gtype: GObject.GType<ColorUVW>;
 
-        // Own fields of Colord.ColorUVW
+        // Fields
 
         U: number;
         V: number;
         W: number;
 
-        // Constructors of Colord.ColorUVW
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -4049,7 +4049,7 @@ export namespace Colord {
 
         static ['new'](): ColorUVW;
 
-        // Own methods of Colord.ColorUVW
+        // Methods
 
         /**
          * Deep copies a color value.
@@ -4084,13 +4084,13 @@ export namespace Colord {
     class ColorXYZ {
         static $gtype: GObject.GType<ColorXYZ>;
 
-        // Own fields of Colord.ColorXYZ
+        // Fields
 
         X: number;
         Y: number;
         Z: number;
 
-        // Constructors of Colord.ColorXYZ
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -4103,7 +4103,7 @@ export namespace Colord {
 
         static ['new'](): ColorXYZ;
 
-        // Own methods of Colord.ColorXYZ
+        // Methods
 
         /**
          * Initialises a color value.
@@ -4152,13 +4152,13 @@ export namespace Colord {
     class ColorYxy {
         static $gtype: GObject.GType<ColorYxy>;
 
-        // Own fields of Colord.ColorYxy
+        // Fields
 
         Y: number;
         x: number;
         y: number;
 
-        // Constructors of Colord.ColorYxy
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -4171,7 +4171,7 @@ export namespace Colord {
 
         static ['new'](): ColorYxy;
 
-        // Own methods of Colord.ColorYxy
+        // Methods
 
         /**
          * Deep copies a color value.
@@ -4209,7 +4209,7 @@ export namespace Colord {
     class Mat3x3 {
         static $gtype: GObject.GType<Mat3x3>;
 
-        // Own fields of Colord.Mat3x3
+        // Fields
 
         m00: number;
         m01: number;
@@ -4221,7 +4221,7 @@ export namespace Colord {
         m21: number;
         m22: number;
 
-        // Constructors of Colord.Mat3x3
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -4244,7 +4244,7 @@ export namespace Colord {
     class Spectrum {
         static $gtype: GObject.GType<Spectrum>;
 
-        // Constructors of Colord.Spectrum
+        // Constructors
 
         constructor(properties?: Partial<{}>);
         _init(...args: any[]): void;
@@ -4257,7 +4257,7 @@ export namespace Colord {
 
         static sized_new(reserved_size: number): Spectrum;
 
-        // Own methods of Colord.Spectrum
+        // Methods
 
         /**
          * Adds a value in nm to the spectrum.
@@ -4463,13 +4463,13 @@ export namespace Colord {
     class Vec3 {
         static $gtype: GObject.GType<Vec3>;
 
-        // Own fields of Colord.Vec3
+        // Fields
 
         v0: number;
         v1: number;
         v2: number;
 
-        // Constructors of Colord.Vec3
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -4480,7 +4480,7 @@ export namespace Colord {
         );
         _init(...args: any[]): void;
 
-        // Own methods of Colord.Vec3
+        // Methods
 
         /**
          * Adds two vector quantaties

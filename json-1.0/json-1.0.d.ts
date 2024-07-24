@@ -55,7 +55,7 @@ export namespace Json {
     class ParserError extends GLib.Error {
         static $gtype: GObject.GType<ParserError>;
 
-        // Static fields of Json.ParserError
+        // Static fields
 
         /**
          * parse error
@@ -90,12 +90,12 @@ export namespace Json {
          */
         static UNKNOWN: number;
 
-        // Constructors of Json.ParserError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of Json.ParserError
+        // Static methods
 
         static quark(): GLib.Quark;
     }
@@ -108,19 +108,19 @@ export namespace Json {
     class PathError extends GLib.Error {
         static $gtype: GObject.GType<PathError>;
 
-        // Static fields of Json.PathError
+        // Static fields
 
         /**
          * Invalid query
          */
         static QUERY: number;
 
-        // Constructors of Json.PathError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of Json.PathError
+        // Static methods
 
         static quark(): GLib.Quark;
     }
@@ -133,7 +133,7 @@ export namespace Json {
     class ReaderError extends GLib.Error {
         static $gtype: GObject.GType<ReaderError>;
 
-        // Static fields of Json.ReaderError
+        // Static fields
 
         /**
          * No array found at the current position
@@ -166,12 +166,12 @@ export namespace Json {
          */
         static INVALID_TYPE: number;
 
-        // Constructors of Json.ReaderError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of Json.ReaderError
+        // Static methods
 
         static quark(): GLib.Quark;
     }
@@ -472,7 +472,7 @@ export namespace Json {
     class Builder extends GObject.Object {
         static $gtype: GObject.GType<Builder>;
 
-        // Own properties of Json.Builder
+        // Properties
 
         /**
          * Whether the tree should be immutable when created.
@@ -482,7 +482,7 @@ export namespace Json {
          */
         get immutable(): boolean;
 
-        // Constructors of Json.Builder
+        // Constructors
 
         constructor(properties?: Partial<Builder.ConstructorProps>, ...args: any[]);
 
@@ -492,7 +492,7 @@ export namespace Json {
 
         static new_immutable(): Builder;
 
-        // Own methods of Json.Builder
+        // Methods
 
         /**
          * Adds a boolean value to the currently open object member or array.
@@ -653,7 +653,7 @@ export namespace Json {
     class Generator extends GObject.Object {
         static $gtype: GObject.GType<Generator>;
 
-        // Own properties of Json.Generator
+        // Properties
 
         /**
          * Number of spaces to be used to indent when pretty printing.
@@ -686,7 +686,7 @@ export namespace Json {
         get root(): Node;
         set root(val: Node);
 
-        // Constructors of Json.Generator
+        // Constructors
 
         constructor(properties?: Partial<Generator.ConstructorProps>, ...args: any[]);
 
@@ -694,7 +694,7 @@ export namespace Json {
 
         static ['new'](): Generator;
 
-        // Own methods of Json.Generator
+        // Methods
 
         /**
          * Retrieves the value set using [method`Json`.Generator.set_indent].
@@ -863,7 +863,7 @@ export namespace Json {
     class Parser extends GObject.Object {
         static $gtype: GObject.GType<Parser>;
 
-        // Own properties of Json.Parser
+        // Properties
 
         /**
          * Whether the tree built by the parser should be immutable
@@ -874,7 +874,7 @@ export namespace Json {
          */
         get immutable(): boolean;
 
-        // Constructors of Json.Parser
+        // Constructors
 
         constructor(properties?: Partial<Parser.ConstructorProps>, ...args: any[]);
 
@@ -884,7 +884,7 @@ export namespace Json {
 
         static new_immutable(): Parser;
 
-        // Own signals of Json.Parser
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -923,7 +923,7 @@ export namespace Json {
         connect_after(signal: 'parse-start', callback: (_source: this) => void): number;
         emit(signal: 'parse-start'): void;
 
-        // Own virtual methods of Json.Parser
+        // Virtual methods
 
         /**
          * class handler for the JsonParser::array-element signal
@@ -969,7 +969,7 @@ export namespace Json {
          */
         vfunc_parse_start(): void;
 
-        // Own methods of Json.Parser
+        // Methods
 
         /**
          * Retrieves the line currently parsed, starting from 1.
@@ -1234,7 +1234,7 @@ export namespace Json {
     class Path extends GObject.Object {
         static $gtype: GObject.GType<Path>;
 
-        // Constructors of Json.Path
+        // Constructors
 
         constructor(properties?: Partial<Path.ConstructorProps>, ...args: any[]);
 
@@ -1242,7 +1242,7 @@ export namespace Json {
 
         static ['new'](): Path;
 
-        // Own static methods of Json.Path
+        // Static methods
 
         /**
          * Queries a JSON tree using a JSONPath expression.
@@ -1256,7 +1256,7 @@ export namespace Json {
          */
         static query(expression: string, root: Node): Node;
 
-        // Own methods of Json.Path
+        // Methods
 
         /**
          * Validates and decomposes the given expression.
@@ -1350,7 +1350,7 @@ export namespace Json {
     class Reader extends GObject.Object {
         static $gtype: GObject.GType<Reader>;
 
-        // Own properties of Json.Reader
+        // Properties
 
         /**
          * The root of the JSON tree that the reader should read.
@@ -1358,7 +1358,7 @@ export namespace Json {
         get root(): Node;
         set root(val: Node);
 
-        // Constructors of Json.Reader
+        // Constructors
 
         constructor(properties?: Partial<Reader.ConstructorProps>, ...args: any[]);
 
@@ -1366,7 +1366,7 @@ export namespace Json {
 
         static ['new'](node?: Node | null): Reader;
 
-        // Own methods of Json.Reader
+        // Methods
 
         /**
          * Counts the elements of the current position, if the reader is
@@ -1617,7 +1617,7 @@ export namespace Json {
     class Array {
         static $gtype: GObject.GType<Array>;
 
-        // Constructors of Json.Array
+        // Constructors
 
         constructor(properties?: Partial<{}>);
         _init(...args: any[]): void;
@@ -1626,7 +1626,7 @@ export namespace Json {
 
         static sized_new(n_elements: number): Array;
 
-        // Own methods of Json.Array
+        // Methods
 
         /**
          * Conveniently adds an array element into an array.
@@ -1838,7 +1838,7 @@ export namespace Json {
     abstract class BuilderPrivate {
         static $gtype: GObject.GType<BuilderPrivate>;
 
-        // Constructors of Json.BuilderPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1847,7 +1847,7 @@ export namespace Json {
     abstract class GeneratorPrivate {
         static $gtype: GObject.GType<GeneratorPrivate>;
 
-        // Constructors of Json.GeneratorPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1890,7 +1890,7 @@ export namespace Json {
     class Node {
         static $gtype: GObject.GType<Node>;
 
-        // Constructors of Json.Node
+        // Constructors
 
         constructor(properties?: Partial<{}>);
         _init(...args: any[]): void;
@@ -1899,7 +1899,7 @@ export namespace Json {
 
         static ['new'](type: NodeType): Node;
 
-        // Own methods of Json.Node
+        // Methods
 
         /**
          * Copies `node`.
@@ -2303,14 +2303,14 @@ export namespace Json {
     class Object {
         static $gtype: GObject.GType<Object>;
 
-        // Constructors of Json.Object
+        // Constructors
 
         constructor(properties?: Partial<{}>);
         _init(...args: any[]): void;
 
         static ['new'](): Object;
 
-        // Own methods of Json.Object
+        // Methods
 
         /**
          * Adds a new member for the given name and value into an object.
@@ -2623,12 +2623,12 @@ export namespace Json {
     class ObjectIter {
         static $gtype: GObject.GType<ObjectIter>;
 
-        // Constructors of Json.ObjectIter
+        // Constructors
 
         constructor(properties?: Partial<{}>);
         _init(...args: any[]): void;
 
-        // Own methods of Json.ObjectIter
+        // Methods
 
         /**
          * Initialises the `iter` and associate it with `object`.
@@ -2714,7 +2714,7 @@ export namespace Json {
     abstract class ParserPrivate {
         static $gtype: GObject.GType<ParserPrivate>;
 
-        // Constructors of Json.ParserPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2724,7 +2724,7 @@ export namespace Json {
     abstract class ReaderPrivate {
         static $gtype: GObject.GType<ReaderPrivate>;
 
-        // Constructors of Json.ReaderPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2741,7 +2741,7 @@ export namespace Json {
         prototype: Serializable;
     }
     interface Serializable extends GObject.Object {
-        // Own methods of Json.Serializable
+        // Methods
 
         /**
          * Calls the default implementation of the [vfunc`Json`.Serializable.deserialize_property]
@@ -2867,7 +2867,7 @@ export namespace Json {
         // Conflicted with GObject.Object.set_property
         set_property(...args: never[]): any;
 
-        // Own virtual methods of Json.Serializable
+        // Virtual methods
 
         /**
          * Asks a `JsonSerializable` implementation to deserialize the

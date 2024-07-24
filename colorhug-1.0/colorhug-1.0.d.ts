@@ -94,14 +94,14 @@ export namespace ColorHug {
     class FreqScale {
         static $gtype: GObject.GType<FreqScale>;
 
-        // Static fields of ColorHug.FreqScale
+        // Static fields
 
         static '0': number;
         static '20': number;
         static '2': number;
         static '100': number;
 
-        // Constructors of ColorHug.FreqScale
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1811,7 +1811,7 @@ export namespace ColorHug {
     class DeviceQueue extends GObject.Object {
         static $gtype: GObject.GType<DeviceQueue>;
 
-        // Constructors of ColorHug.DeviceQueue
+        // Constructors
 
         constructor(properties?: Partial<DeviceQueue.ConstructorProps>, ...args: any[]);
 
@@ -1819,7 +1819,7 @@ export namespace ColorHug {
 
         static ['new'](): DeviceQueue;
 
-        // Own signals of ColorHug.DeviceQueue
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -1834,12 +1834,12 @@ export namespace ColorHug {
         connect_after(signal: 'progress-changed', callback: (_source: this, object: number) => void): number;
         emit(signal: 'progress-changed', object: number): void;
 
-        // Own virtual methods of ColorHug.DeviceQueue
+        // Virtual methods
 
         vfunc_device_failed(device: GUsb.Device, error_message: string): void;
         vfunc_progress_changed(percentage: number): void;
 
-        // Own methods of ColorHug.DeviceQueue
+        // Methods
 
         /**
          * Adds a raw command to the device queue.
@@ -2402,11 +2402,11 @@ export namespace ColorHug {
     class Sha1 {
         static $gtype: GObject.GType<Sha1>;
 
-        // Own fields of ColorHug.Sha1
+        // Fields
 
         bytes: Uint8Array;
 
-        // Constructors of ColorHug.Sha1
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -2415,7 +2415,7 @@ export namespace ColorHug {
         );
         _init(...args: any[]): void;
 
-        // Own static methods of ColorHug.Sha1
+        // Static methods
 
         /**
          * Parses a SHA1 hash from a string value.
@@ -2424,7 +2424,7 @@ export namespace ColorHug {
          */
         static parse(value: string, sha1: Sha1): boolean;
 
-        // Own methods of ColorHug.Sha1
+        // Methods
 
         /**
          * Gets a string representation of the SHA1 hash.

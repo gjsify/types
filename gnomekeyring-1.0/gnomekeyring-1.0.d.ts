@@ -684,14 +684,14 @@ export namespace GnomeKeyring {
     class AccessControl {
         static $gtype: GObject.GType<AccessControl>;
 
-        // Constructors of GnomeKeyring.AccessControl
+        // Constructors
 
         constructor(application: ApplicationRef, types_allowed: AccessType);
         _init(...args: any[]): void;
 
         static ['new'](application: ApplicationRef, types_allowed: AccessType): AccessControl;
 
-        // Own methods of GnomeKeyring.AccessControl
+        // Methods
 
         /**
          * Copy an access control for an item.
@@ -707,14 +707,14 @@ export namespace GnomeKeyring {
     class ApplicationRef {
         static $gtype: GObject.GType<ApplicationRef>;
 
-        // Constructors of GnomeKeyring.ApplicationRef
+        // Constructors
 
         constructor(properties?: Partial<{}>);
         _init(...args: any[]): void;
 
         static ['new'](): ApplicationRef;
 
-        // Own methods of GnomeKeyring.ApplicationRef
+        // Methods
 
         /**
          * Copy an application reference.
@@ -735,16 +735,16 @@ export namespace GnomeKeyring {
     class Attribute {
         static $gtype: GObject.GType<Attribute>;
 
-        // Own fields of GnomeKeyring.Attribute
+        // Fields
 
         name: string;
         type: AttributeType;
 
-        // Constructors of GnomeKeyring.Attribute
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own static methods of GnomeKeyring.Attribute
+        // Static methods
 
         /**
          * Store a key-value-pair with a string value in `attributes`.
@@ -783,7 +783,7 @@ export namespace GnomeKeyring {
          */
         static list_to_glist(attributes: AttributeList): Attribute[];
 
-        // Own methods of GnomeKeyring.Attribute
+        // Methods
 
         /**
          * Return the string value. It is an error to call this method if
@@ -810,14 +810,14 @@ export namespace GnomeKeyring {
     class Found {
         static $gtype: GObject.GType<Found>;
 
-        // Own fields of GnomeKeyring.Found
+        // Fields
 
         keyring: string;
         item_id: number;
         attributes: AttributeList;
         secret: string;
 
-        // Constructors of GnomeKeyring.Found
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -828,7 +828,7 @@ export namespace GnomeKeyring {
         );
         _init(...args: any[]): void;
 
-        // Own static methods of GnomeKeyring.Found
+        // Static methods
 
         /**
          * Free the memory used by the #GnomeKeyringFound items in `found_list`.
@@ -836,7 +836,7 @@ export namespace GnomeKeyring {
          */
         static list_free(found_list: Found[]): void;
 
-        // Own methods of GnomeKeyring.Found
+        // Methods
 
         /**
          * Copy a #GnomeKeyringFound item.
@@ -855,11 +855,11 @@ export namespace GnomeKeyring {
     abstract class Info {
         static $gtype: GObject.GType<Info>;
 
-        // Constructors of GnomeKeyring.Info
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of GnomeKeyring.Info
+        // Methods
 
         /**
          * Copy a #GnomeKeyringInfo object.
@@ -919,14 +919,14 @@ export namespace GnomeKeyring {
     class ItemInfo {
         static $gtype: GObject.GType<ItemInfo>;
 
-        // Constructors of GnomeKeyring.ItemInfo
+        // Constructors
 
         constructor(properties?: Partial<{}>);
         _init(...args: any[]): void;
 
         static ['new'](): ItemInfo;
 
-        // Own methods of GnomeKeyring.ItemInfo
+        // Methods
 
         /**
          * Copy a #GnomeKeyringItemInfo object.
@@ -987,7 +987,7 @@ export namespace GnomeKeyring {
     class NetworkPasswordData {
         static $gtype: GObject.GType<NetworkPasswordData>;
 
-        // Own fields of GnomeKeyring.NetworkPasswordData
+        // Fields
 
         keyring: string;
         item_id: number;
@@ -1000,7 +1000,7 @@ export namespace GnomeKeyring {
         domain: string;
         password: string;
 
-        // Constructors of GnomeKeyring.NetworkPasswordData
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -1041,11 +1041,11 @@ export namespace GnomeKeyring {
     class PasswordSchema {
         static $gtype: GObject.GType<PasswordSchema>;
 
-        // Own fields of GnomeKeyring.PasswordSchema
+        // Fields
 
         item_type: ItemType;
 
-        // Constructors of GnomeKeyring.PasswordSchema
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1056,12 +1056,12 @@ export namespace GnomeKeyring {
     class PasswordSchemaAttribute {
         static $gtype: GObject.GType<PasswordSchemaAttribute>;
 
-        // Own fields of GnomeKeyring.PasswordSchemaAttribute
+        // Fields
 
         name: string;
         type: AttributeType;
 
-        // Constructors of GnomeKeyring.PasswordSchemaAttribute
+        // Constructors
 
         _init(...args: any[]): void;
     }

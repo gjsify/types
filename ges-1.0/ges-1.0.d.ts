@@ -1345,7 +1345,7 @@ export namespace GES {
     class Asset extends GObject.Object implements MetaContainer, Gio.AsyncInitable<Asset>, Gio.Initable {
         static $gtype: GObject.GType<Asset>;
 
-        // Own properties of GES.Asset
+        // Properties
 
         /**
          * The #GESExtractable object type that can be extracted from the asset.
@@ -1408,13 +1408,13 @@ export namespace GES {
          */
         get proxyTarget(): Asset;
 
-        // Constructors of GES.Asset
+        // Constructors
 
         constructor(properties?: Partial<Asset.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of GES.Asset
+        // Static methods
 
         /**
          * Indicate that an existing #GESAsset in the cache should be reloaded
@@ -1529,7 +1529,7 @@ export namespace GES {
          */
         static request_finish(res: Gio.AsyncResult): Asset;
 
-        // Own virtual methods of GES.Asset
+        // Virtual methods
 
         /**
          * Extracts a new #GESAsset:extractable-type object from the asset. The
@@ -1563,7 +1563,7 @@ export namespace GES {
          */
         vfunc_start_loading(): AssetLoadingReturn;
 
-        // Own methods of GES.Asset
+        // Methods
 
         /**
          * Extracts a new #GESAsset:extractable-type object from the asset. The
@@ -2629,7 +2629,7 @@ export namespace GES {
     abstract class AudioSource extends Source implements Extractable, MetaContainer {
         static $gtype: GObject.GType<AudioSource>;
 
-        // Constructors of GES.AudioSource
+        // Constructors
 
         constructor(properties?: Partial<AudioSource.ConstructorProps>, ...args: any[]);
 
@@ -3055,13 +3055,13 @@ export namespace GES {
     class AudioTestSource extends AudioSource implements Extractable, MetaContainer {
         static $gtype: GObject.GType<AudioTestSource>;
 
-        // Constructors of GES.AudioTestSource
+        // Constructors
 
         constructor(properties?: Partial<AudioTestSource.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of GES.AudioTestSource
+        // Methods
 
         /**
          * Get the current frequency of `self`.
@@ -3519,7 +3519,7 @@ export namespace GES {
     class AudioTrack extends Track implements MetaContainer, Gst.ChildProxy {
         static $gtype: GObject.GType<AudioTrack>;
 
-        // Constructors of GES.AudioTrack
+        // Constructors
 
         constructor(properties?: Partial<AudioTrack.ConstructorProps>, ...args: any[]);
 
@@ -4319,7 +4319,7 @@ export namespace GES {
     class AudioTransition extends Transition implements Extractable, MetaContainer {
         static $gtype: GObject.GType<AudioTransition>;
 
-        // Constructors of GES.AudioTransition
+        // Constructors
 
         constructor(properties?: Partial<AudioTransition.ConstructorProps>, ...args: any[]);
 
@@ -4749,14 +4749,14 @@ export namespace GES {
     class AudioUriSource extends AudioSource implements Extractable, MetaContainer {
         static $gtype: GObject.GType<AudioUriSource>;
 
-        // Own properties of GES.AudioUriSource
+        // Properties
 
         /**
          * The location of the file/resource to use.
          */
         get uri(): string;
 
-        // Constructors of GES.AudioUriSource
+        // Constructors
 
         constructor(properties?: Partial<AudioUriSource.ConstructorProps>, ...args: any[]);
 
@@ -5228,13 +5228,13 @@ export namespace GES {
     abstract class BaseEffect extends Operation implements Extractable, MetaContainer {
         static $gtype: GObject.GType<BaseEffect>;
 
-        // Constructors of GES.BaseEffect
+        // Constructors
 
         constructor(properties?: Partial<BaseEffect.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of GES.BaseEffect
+        // Methods
 
         /**
          * Get whether the effect is considered a time effect or not. An effect
@@ -5717,7 +5717,7 @@ export namespace GES {
     abstract class BaseEffectClip extends OperationClip implements Extractable, MetaContainer {
         static $gtype: GObject.GType<BaseEffectClip>;
 
-        // Constructors of GES.BaseEffectClip
+        // Constructors
 
         constructor(properties?: Partial<BaseEffectClip.ConstructorProps>, ...args: any[]);
 
@@ -6138,7 +6138,7 @@ export namespace GES {
     abstract class BaseTransitionClip extends OperationClip implements Extractable, MetaContainer {
         static $gtype: GObject.GType<BaseTransitionClip>;
 
-        // Constructors of GES.BaseTransitionClip
+        // Constructors
 
         constructor(properties?: Partial<BaseTransitionClip.ConstructorProps>, ...args: any[]);
 
@@ -6556,7 +6556,7 @@ export namespace GES {
     abstract class BaseXmlFormatter extends Formatter implements Extractable {
         static $gtype: GObject.GType<BaseXmlFormatter>;
 
-        // Constructors of GES.BaseXmlFormatter
+        // Constructors
 
         constructor(properties?: Partial<BaseXmlFormatter.ConstructorProps>, ...args: any[]);
 
@@ -6820,7 +6820,7 @@ export namespace GES {
     abstract class Clip extends Container implements Extractable, MetaContainer {
         static $gtype: GObject.GType<Clip>;
 
-        // Own properties of GES.Clip
+        // Properties
 
         /**
          * The maximum #GESTimelineElement:duration that can be *currently* set
@@ -6881,13 +6881,13 @@ export namespace GES {
         get supportedFormats(): TrackType;
         set supportedFormats(val: TrackType);
 
-        // Constructors of GES.Clip
+        // Constructors
 
         constructor(properties?: Partial<Clip.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of GES.Clip
+        // Virtual methods
 
         /**
          * Method to create the core #GESTrackElement of a clip
@@ -6908,7 +6908,7 @@ export namespace GES {
          */
         vfunc_create_track_elements(type: TrackType): TrackElement[];
 
-        // Own methods of GES.Clip
+        // Methods
 
         /**
          * Extracts a #GESTrackElement from an asset and adds it to the clip.
@@ -7658,7 +7658,7 @@ export namespace GES {
     class ClipAsset extends Asset implements MetaContainer, Gio.AsyncInitable<ClipAsset>, Gio.Initable {
         static $gtype: GObject.GType<ClipAsset>;
 
-        // Own properties of GES.ClipAsset
+        // Properties
 
         /**
          * The formats supported by the asset.
@@ -7671,20 +7671,20 @@ export namespace GES {
         get supportedFormats(): TrackType;
         set supportedFormats(val: TrackType);
 
-        // Constructors of GES.ClipAsset
+        // Constructors
 
         constructor(properties?: Partial<ClipAsset.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of GES.ClipAsset
+        // Virtual methods
 
         /**
          * Result: %TRUE if `self` has a natural framerate %FALSE otherwise
          */
         vfunc_get_natural_framerate(): [boolean, number, number];
 
-        // Own methods of GES.ClipAsset
+        // Methods
 
         /**
          * Converts the given frame number into a timestamp, using the "natural" frame
@@ -8691,13 +8691,13 @@ export namespace GES {
     class CommandLineFormatter extends Formatter implements Extractable {
         static $gtype: GObject.GType<CommandLineFormatter>;
 
-        // Constructors of GES.CommandLineFormatter
+        // Constructors
 
         constructor(properties?: Partial<CommandLineFormatter.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of GES.CommandLineFormatter
+        // Static methods
 
         /**
          * Creates a help string based on `commands`.
@@ -8803,7 +8803,7 @@ export namespace GES {
     abstract class Container extends TimelineElement implements Extractable, MetaContainer {
         static $gtype: GObject.GType<Container>;
 
-        // Own properties of GES.Container
+        // Properties
 
         /**
          * The span of the container's children's #GESTimelineElement:priority
@@ -8813,19 +8813,19 @@ export namespace GES {
          */
         get height(): number;
 
-        // Own fields of GES.Container
+        // Fields
 
         children: TimelineElement[];
         children_control_mode: ChildrenControlMode;
         initiated_move: TimelineElement;
 
-        // Constructors of GES.Container
+        // Constructors
 
         constructor(properties?: Partial<Container.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of GES.Container
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -8837,7 +8837,7 @@ export namespace GES {
         connect_after(signal: 'child-removed', callback: (_source: this, element: TimelineElement) => void): number;
         emit(signal: 'child-removed', element: TimelineElement): void;
 
-        // Own static methods of GES.Container
+        // Static methods
 
         /**
          * Groups the containers into a single container by merging them. The
@@ -8854,7 +8854,7 @@ export namespace GES {
          */
         static group(containers?: Container[] | null): Container | null;
 
-        // Own virtual methods of GES.Container
+        // Virtual methods
 
         /**
          * Virtual method to add a child
@@ -8907,7 +8907,7 @@ export namespace GES {
          */
         vfunc_ungroup(recursive: boolean): Container[];
 
-        // Own methods of GES.Container
+        // Methods
 
         /**
          * Adds a timeline element to the container. The element will now be a
@@ -9826,7 +9826,7 @@ export namespace GES {
     class DiscovererManager extends GObject.Object {
         static $gtype: GObject.GType<DiscovererManager>;
 
-        // Own properties of GES.DiscovererManager
+        // Properties
 
         /**
          * The timeout (in milliseconds) for the #GstDiscoverer operations
@@ -9838,13 +9838,13 @@ export namespace GES {
         get useCache(): boolean;
         set useCache(val: boolean);
 
-        // Constructors of GES.DiscovererManager
+        // Constructors
 
         constructor(properties?: Partial<DiscovererManager.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of GES.DiscovererManager
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -9871,11 +9871,11 @@ export namespace GES {
         connect_after(signal: 'source-setup', callback: (_source: this, source: Gst.Element) => void): number;
         emit(signal: 'source-setup', source: Gst.Element): void;
 
-        // Own static methods of GES.DiscovererManager
+        // Static methods
 
         static get_default(): DiscovererManager;
 
-        // Own methods of GES.DiscovererManager
+        // Methods
 
         get_timeout(): Gst.ClockTime;
         get_use_cache(): boolean;
@@ -9929,7 +9929,7 @@ export namespace GES {
     class Effect extends BaseEffect implements Extractable, MetaContainer {
         static $gtype: GObject.GType<Effect>;
 
-        // Own properties of GES.Effect
+        // Properties
 
         /**
          * The description of the effect bin with a gst-launch-style
@@ -9946,7 +9946,7 @@ export namespace GES {
          */
         get binDescription(): string;
 
-        // Constructors of GES.Effect
+        // Constructors
 
         constructor(properties?: Partial<Effect.ConstructorProps>, ...args: any[]);
 
@@ -9954,7 +9954,7 @@ export namespace GES {
 
         static ['new'](bin_description: string): Effect;
 
-        // Own static methods of GES.Effect
+        // Static methods
 
         static register_rate_property(element_name: string, property_name: string): boolean;
 
@@ -10378,7 +10378,7 @@ export namespace GES {
     class EffectAsset extends TrackElementAsset implements MetaContainer, Gio.AsyncInitable<EffectAsset>, Gio.Initable {
         static $gtype: GObject.GType<EffectAsset>;
 
-        // Constructors of GES.EffectAsset
+        // Constructors
 
         constructor(properties?: Partial<EffectAsset.ConstructorProps>, ...args: any[]);
 
@@ -10926,7 +10926,7 @@ export namespace GES {
     class EffectClip extends BaseEffectClip implements Extractable, MetaContainer {
         static $gtype: GObject.GType<EffectClip>;
 
-        // Own properties of GES.EffectClip
+        // Properties
 
         /**
          * The description of the audio track of the effect bin with a gst-launch-style
@@ -10957,7 +10957,7 @@ export namespace GES {
          */
         get videoBinDescription(): string;
 
-        // Constructors of GES.EffectClip
+        // Constructors
 
         constructor(properties?: Partial<EffectClip.ConstructorProps>, ...args: any[]);
 
@@ -11380,13 +11380,13 @@ export namespace GES {
     abstract class Formatter extends GObject.InitiallyUnowned implements Extractable {
         static $gtype: GObject.GType<Formatter>;
 
-        // Constructors of GES.Formatter
+        // Constructors
 
         constructor(properties?: Partial<Formatter.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of GES.Formatter
+        // Static methods
 
         /**
          * Checks if there is a #GESFormatter available which can load a #GESTimeline
@@ -11414,7 +11414,7 @@ export namespace GES {
             rank: Gst.Rank,
         ): void;
 
-        // Own virtual methods of GES.Formatter
+        // Virtual methods
 
         /**
          * Whether the URI can be loaded
@@ -11435,7 +11435,7 @@ export namespace GES {
          */
         vfunc_save_to_uri(timeline: Timeline, uri: string, overwrite: boolean): boolean;
 
-        // Own methods of GES.Formatter
+        // Methods
 
         /**
          * Load data from the given URI into timeline.
@@ -11570,7 +11570,7 @@ export namespace GES {
     class Group extends Container implements Extractable, MetaContainer {
         static $gtype: GObject.GType<Group>;
 
-        // Own properties of GES.Group
+        // Properties
 
         /**
          * An overwrite of the #GESTimelineElement:duration property. For a
@@ -11620,7 +11620,7 @@ export namespace GES {
         get start(): number;
         set start(val: number);
 
-        // Constructors of GES.Group
+        // Constructors
 
         constructor(properties?: Partial<Group.ConstructorProps>, ...args: any[]);
 
@@ -12050,14 +12050,14 @@ export namespace GES {
     class ImageSource extends VideoSource implements Extractable, MetaContainer {
         static $gtype: GObject.GType<ImageSource>;
 
-        // Own properties of GES.ImageSource
+        // Properties
 
         /**
          * The location of the file/resource to use.
          */
         get uri(): string;
 
-        // Constructors of GES.ImageSource
+        // Constructors
 
         constructor(properties?: Partial<ImageSource.ConstructorProps>, ...args: any[]);
 
@@ -12516,7 +12516,7 @@ export namespace GES {
     class Layer extends GObject.InitiallyUnowned implements Extractable, MetaContainer {
         static $gtype: GObject.GType<Layer>;
 
-        // Own properties of GES.Layer
+        // Properties
 
         /**
          * Whether to automatically create a #GESTransitionClip whenever two
@@ -12552,13 +12552,13 @@ export namespace GES {
         get priority(): number;
         set priority(val: number);
 
-        // Own fields of GES.Layer
+        // Fields
 
         timeline: Timeline;
         min_nle_priority: number;
         max_nle_priority: number;
 
-        // Constructors of GES.Layer
+        // Constructors
 
         constructor(properties?: Partial<Layer.ConstructorProps>, ...args: any[]);
 
@@ -12566,7 +12566,7 @@ export namespace GES {
 
         static ['new'](): Layer;
 
-        // Own signals of GES.Layer
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -12584,12 +12584,12 @@ export namespace GES {
         connect_after(signal: 'clip-removed', callback: (_source: this, clip: Clip) => void): number;
         emit(signal: 'clip-removed', clip: Clip): void;
 
-        // Own virtual methods of GES.Layer
+        // Virtual methods
 
         vfunc_object_added(object: Clip): void;
         vfunc_object_removed(object: Clip): void;
 
-        // Own methods of GES.Layer
+        // Methods
 
         /**
          * See ges_layer_add_asset_full(), which also gives an error.
@@ -13574,14 +13574,14 @@ export namespace GES {
     class Marker extends GObject.Object implements MetaContainer {
         static $gtype: GObject.GType<Marker>;
 
-        // Own properties of GES.Marker
+        // Properties
 
         /**
          * Current position (in nanoseconds) of the #GESMarker
          */
         get position(): number;
 
-        // Constructors of GES.Marker
+        // Constructors
 
         constructor(properties?: Partial<Marker.ConstructorProps>, ...args: any[]);
 
@@ -14389,7 +14389,7 @@ export namespace GES {
     class MarkerList extends GObject.Object {
         static $gtype: GObject.GType<MarkerList>;
 
-        // Own properties of GES.MarkerList
+        // Properties
 
         /**
          * Flags indicating how markers on the list should be treated.
@@ -14397,7 +14397,7 @@ export namespace GES {
         get flags(): MarkerFlags;
         set flags(val: MarkerFlags);
 
-        // Constructors of GES.MarkerList
+        // Constructors
 
         constructor(properties?: Partial<MarkerList.ConstructorProps>, ...args: any[]);
 
@@ -14405,7 +14405,7 @@ export namespace GES {
 
         static ['new'](): MarkerList;
 
-        // Own signals of GES.MarkerList
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -14429,7 +14429,7 @@ export namespace GES {
         connect_after(signal: 'marker-removed', callback: (_source: this, marker: Marker) => void): number;
         emit(signal: 'marker-removed', marker: Marker): void;
 
-        // Own methods of GES.MarkerList
+        // Methods
 
         add(position: Gst.ClockTime): Marker;
         get_markers(): Marker[];
@@ -14472,7 +14472,7 @@ export namespace GES {
     class MultiFileSource extends VideoSource implements Extractable, MetaContainer {
         static $gtype: GObject.GType<MultiFileSource>;
 
-        // Own properties of GES.MultiFileSource
+        // Properties
 
         /**
          * The uri of the file/resource to use. You can set a start index,
@@ -14488,7 +14488,7 @@ export namespace GES {
          */
         get uri(): string;
 
-        // Constructors of GES.MultiFileSource
+        // Constructors
 
         constructor(properties?: Partial<MultiFileSource.ConstructorProps>, ...args: any[]);
 
@@ -14914,7 +14914,7 @@ export namespace GES {
     abstract class Operation extends TrackElement implements Extractable, MetaContainer {
         static $gtype: GObject.GType<Operation>;
 
-        // Constructors of GES.Operation
+        // Constructors
 
         constructor(properties?: Partial<Operation.ConstructorProps>, ...args: any[]);
 
@@ -15338,7 +15338,7 @@ export namespace GES {
     abstract class OperationClip extends Clip implements Extractable, MetaContainer {
         static $gtype: GObject.GType<OperationClip>;
 
-        // Constructors of GES.OperationClip
+        // Constructors
 
         constructor(properties?: Partial<OperationClip.ConstructorProps>, ...args: any[]);
 
@@ -15767,7 +15767,7 @@ export namespace GES {
     abstract class OverlayClip extends OperationClip implements Extractable, MetaContainer {
         static $gtype: GObject.GType<OverlayClip>;
 
-        // Constructors of GES.OverlayClip
+        // Constructors
 
         constructor(properties?: Partial<OverlayClip.ConstructorProps>, ...args: any[]);
 
@@ -16212,7 +16212,7 @@ export namespace GES {
     class Pipeline extends Gst.Pipeline implements Gst.ChildProxy, GstVideo.VideoOverlay {
         static $gtype: GObject.GType<Pipeline>;
 
-        // Own properties of GES.Pipeline
+        // Properties
 
         /**
          * The audio filter(s) to apply during playback in preview mode,
@@ -16284,7 +16284,7 @@ export namespace GES {
         get videoSink(): Gst.Element;
         set videoSink(val: Gst.Element);
 
-        // Constructors of GES.Pipeline
+        // Constructors
 
         constructor(properties?: Partial<Pipeline.ConstructorProps>, ...args: any[]);
 
@@ -16292,7 +16292,7 @@ export namespace GES {
 
         static ['new'](): Pipeline;
 
-        // Own methods of GES.Pipeline
+        // Methods
 
         /**
          * Gets the #GESPipeline:mode of the pipeline.
@@ -16890,7 +16890,7 @@ export namespace GES {
     class PitiviFormatter extends Formatter implements Extractable {
         static $gtype: GObject.GType<PitiviFormatter>;
 
-        // Constructors of GES.PitiviFormatter
+        // Constructors
 
         constructor(properties?: Partial<PitiviFormatter.ConstructorProps>, ...args: any[]);
 
@@ -17049,11 +17049,11 @@ export namespace GES {
     class Project extends Asset implements MetaContainer, Gio.AsyncInitable<Project>, Gio.Initable {
         static $gtype: GObject.GType<Project>;
 
-        // Own properties of GES.Project
+        // Properties
 
         get uri(): string;
 
-        // Constructors of GES.Project
+        // Constructors
 
         constructor(properties?: Partial<Project.ConstructorProps>, ...args: any[]);
 
@@ -17061,7 +17061,7 @@ export namespace GES {
 
         static ['new'](uri?: string | null): Project;
 
-        // Own signals of GES.Project
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -17109,7 +17109,7 @@ export namespace GES {
         ): number;
         emit(signal: 'missing-uri', error: GLib.Error, wrong_asset: Asset): void;
 
-        // Own virtual methods of GES.Project
+        // Virtual methods
 
         vfunc_asset_added(asset: Asset): void;
         vfunc_asset_loading(asset: Asset): void;
@@ -17119,7 +17119,7 @@ export namespace GES {
         vfunc_loading_error(error: GLib.Error, id: string, extractable_type: GObject.GType): boolean;
         vfunc_missing_uri(error: GLib.Error, wrong_asset: Asset): string;
 
-        // Own methods of GES.Project
+        // Methods
 
         /**
          * Adds a #GESAsset to `project,` the project will keep a reference on
@@ -18194,13 +18194,13 @@ export namespace GES {
     class Source extends TrackElement implements Extractable, MetaContainer {
         static $gtype: GObject.GType<Source>;
 
-        // Constructors of GES.Source
+        // Constructors
 
         constructor(properties?: Partial<Source.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of GES.Source
+        // Virtual methods
 
         /**
          * Creates the GstElement to put in the source topbin. Other elements will be
@@ -18639,7 +18639,7 @@ export namespace GES {
     class SourceClip extends Clip implements Extractable, MetaContainer {
         static $gtype: GObject.GType<SourceClip>;
 
-        // Constructors of GES.SourceClip
+        // Constructors
 
         constructor(properties?: Partial<SourceClip.ConstructorProps>, ...args: any[]);
 
@@ -19066,7 +19066,7 @@ export namespace GES {
     class SourceClipAsset extends ClipAsset implements MetaContainer, Gio.AsyncInitable<SourceClipAsset>, Gio.Initable {
         static $gtype: GObject.GType<SourceClipAsset>;
 
-        // Constructors of GES.SourceClipAsset
+        // Constructors
 
         constructor(properties?: Partial<SourceClipAsset.ConstructorProps>, ...args: any[]);
 
@@ -19618,7 +19618,7 @@ export namespace GES {
     class TestClip extends SourceClip implements Extractable, MetaContainer {
         static $gtype: GObject.GType<TestClip>;
 
-        // Own properties of GES.TestClip
+        // Properties
 
         /**
          * The frequency to generate for audio track elements.
@@ -19641,7 +19641,7 @@ export namespace GES {
         get vpattern(): VideoTestPattern;
         set vpattern(val: VideoTestPattern);
 
-        // Constructors of GES.TestClip
+        // Constructors
 
         constructor(properties?: Partial<TestClip.ConstructorProps>, ...args: any[]);
 
@@ -19651,7 +19651,7 @@ export namespace GES {
 
         static new_for_nick(nick: string): TestClip;
 
-        // Own methods of GES.TestClip
+        // Methods
 
         /**
          * Get the frequency `self` generates.
@@ -20109,7 +20109,7 @@ export namespace GES {
     class TextOverlay extends Operation implements Extractable, MetaContainer {
         static $gtype: GObject.GType<TextOverlay>;
 
-        // Constructors of GES.TextOverlay
+        // Constructors
 
         constructor(properties?: Partial<TextOverlay.ConstructorProps>, ...args: any[]);
 
@@ -20117,7 +20117,7 @@ export namespace GES {
 
         static ['new'](): TextOverlay;
 
-        // Own methods of GES.TextOverlay
+        // Methods
 
         /**
          * Get the color used by `source`.
@@ -20618,7 +20618,7 @@ export namespace GES {
     class TextOverlayClip extends OverlayClip implements Extractable, MetaContainer {
         static $gtype: GObject.GType<TextOverlayClip>;
 
-        // Own properties of GES.TextOverlayClip
+        // Properties
 
         /**
          * The color of the text
@@ -20661,7 +20661,7 @@ export namespace GES {
         get ypos(): number;
         set ypos(val: number);
 
-        // Constructors of GES.TextOverlayClip
+        // Constructors
 
         constructor(properties?: Partial<TextOverlayClip.ConstructorProps>, ...args: any[]);
 
@@ -20669,7 +20669,7 @@ export namespace GES {
 
         static ['new'](): TextOverlayClip;
 
-        // Own methods of GES.TextOverlayClip
+        // Methods
 
         /**
          * Get the color used by `source`.
@@ -21317,7 +21317,7 @@ export namespace GES {
     class Timeline extends Gst.Bin implements Extractable, MetaContainer, Gst.ChildProxy {
         static $gtype: GObject.GType<Timeline>;
 
-        // Own properties of GES.Timeline
+        // Properties
 
         /**
          * Whether to automatically create a transition whenever two
@@ -21358,12 +21358,12 @@ export namespace GES {
         get snappingDistance(): number;
         set snappingDistance(val: number);
 
-        // Own fields of GES.Timeline
+        // Fields
 
         layers: Layer[];
         tracks: any[];
 
-        // Constructors of GES.Timeline
+        // Constructors
 
         constructor(properties?: Partial<Timeline.ConstructorProps>, ...args: any[]);
 
@@ -21375,7 +21375,7 @@ export namespace GES {
 
         static new_from_uri(uri: string): Timeline;
 
-        // Own signals of GES.Timeline
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -21444,7 +21444,7 @@ export namespace GES {
         connect_after(signal: 'track-removed', callback: (_source: this, track: Track) => void): number;
         emit(signal: 'track-removed', track: Track): void;
 
-        // Own virtual methods of GES.Timeline
+        // Virtual methods
 
         vfunc_group_added(group: Group): void;
         vfunc_layer_added(layer: Layer): void;
@@ -21452,7 +21452,7 @@ export namespace GES {
         vfunc_track_added(track: Track): void;
         vfunc_track_removed(track: Track): void;
 
-        // Own methods of GES.Timeline
+        // Methods
 
         /**
          * Add a layer to the timeline.
@@ -22763,7 +22763,7 @@ export namespace GES {
     abstract class TimelineElement extends GObject.InitiallyUnowned implements Extractable, MetaContainer {
         static $gtype: GObject.GType<TimelineElement>;
 
-        // Own properties of GES.TimelineElement
+        // Properties
 
         /**
          * The duration that the element is in effect for in the timeline (a
@@ -22881,19 +22881,19 @@ export namespace GES {
         get timeline(): Timeline;
         set timeline(val: Timeline);
 
-        // Own fields of GES.TimelineElement
+        // Fields
 
         asset: Asset;
         inpoint: Gst.ClockTime;
         maxduration: Gst.ClockTime;
 
-        // Constructors of GES.TimelineElement
+        // Constructors
 
         constructor(properties?: Partial<TimelineElement.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of GES.TimelineElement
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -22926,7 +22926,7 @@ export namespace GES {
         ): number;
         emit(signal: 'deep-notify', prop_object: GObject.Object, prop: GObject.ParamSpec): void;
 
-        // Own virtual methods of GES.TimelineElement
+        // Virtual methods
 
         /**
          * Prepare `copy` for pasting as a copy of `self`. At least by
@@ -23095,7 +23095,7 @@ export namespace GES {
          */
         vfunc_trim(start: number): boolean;
 
-        // Own methods of GES.TimelineElement
+        // Methods
 
         /**
          * Register a property of a child of the element to allow it to be
@@ -24374,7 +24374,7 @@ export namespace GES {
     class TitleClip extends SourceClip implements Extractable, MetaContainer {
         static $gtype: GObject.GType<TitleClip>;
 
-        // Own properties of GES.TitleClip
+        // Properties
 
         /**
          * The background of the text
@@ -24422,7 +24422,7 @@ export namespace GES {
         get ypos(): number;
         set ypos(val: number);
 
-        // Constructors of GES.TitleClip
+        // Constructors
 
         constructor(properties?: Partial<TitleClip.ConstructorProps>, ...args: any[]);
 
@@ -24430,7 +24430,7 @@ export namespace GES {
 
         static ['new'](): TitleClip;
 
-        // Own methods of GES.TitleClip
+        // Methods
 
         /**
          * Get the background used by `self`.
@@ -24932,13 +24932,13 @@ export namespace GES {
     class TitleSource extends VideoSource implements Extractable, MetaContainer {
         static $gtype: GObject.GType<TitleSource>;
 
-        // Constructors of GES.TitleSource
+        // Constructors
 
         constructor(properties?: Partial<TitleSource.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of GES.TitleSource
+        // Methods
 
         /**
          * Get the background used by `source`.
@@ -25481,7 +25481,7 @@ export namespace GES {
     class Track extends Gst.Bin implements MetaContainer, Gst.ChildProxy {
         static $gtype: GObject.GType<Track>;
 
-        // Own properties of GES.Track
+        // Properties
 
         /**
          * The capabilities used to choose the output of the #GESTrack's
@@ -25568,11 +25568,11 @@ export namespace GES {
          */
         get trackType(): TrackType;
 
-        // Own fields of GES.Track
+        // Fields
 
         type: TrackType;
 
-        // Constructors of GES.Track
+        // Constructors
 
         constructor(properties?: Partial<Track.ConstructorProps>, ...args: any[]);
 
@@ -25583,7 +25583,7 @@ export namespace GES {
 
         static ['new'](...args: never[]): any;
 
-        // Own signals of GES.Track
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -25598,7 +25598,7 @@ export namespace GES {
         connect_after(signal: 'track-element-removed', callback: (_source: this, effect: TrackElement) => void): number;
         emit(signal: 'track-element-removed', effect: TrackElement): void;
 
-        // Own methods of GES.Track
+        // Methods
 
         /**
          * See ges_track_add_element(), which also gives an error.
@@ -26650,7 +26650,7 @@ export namespace GES {
     abstract class TrackElement extends TimelineElement implements Extractable, MetaContainer {
         static $gtype: GObject.GType<TrackElement>;
 
-        // Own properties of GES.TrackElement
+        // Properties
 
         /**
          * Whether the effect of the element should be applied in its
@@ -26783,13 +26783,13 @@ export namespace GES {
         get trackType(): TrackType;
         set trackType(val: TrackType);
 
-        // Constructors of GES.TrackElement
+        // Constructors
 
         constructor(properties?: Partial<TrackElement.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of GES.TrackElement
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -26813,7 +26813,7 @@ export namespace GES {
         ): number;
         emit(signal: 'control-binding-removed', control_binding: Gst.ControlBinding): void;
 
-        // Own virtual methods of GES.TrackElement
+        // Virtual methods
 
         /**
          * Notify when the #GESTrackElement:active property changes
@@ -26831,7 +26831,7 @@ export namespace GES {
          */
         vfunc_lookup_child(prop_name: string): [boolean, Gst.Element | null, GObject.ParamSpec | null];
 
-        // Own methods of GES.TrackElement
+        // Methods
 
         /**
          * Adds all the properties of a #GstElement that match the criteria as
@@ -27870,27 +27870,27 @@ export namespace GES {
     class TrackElementAsset extends Asset implements MetaContainer, Gio.AsyncInitable<TrackElementAsset>, Gio.Initable {
         static $gtype: GObject.GType<TrackElementAsset>;
 
-        // Own properties of GES.TrackElementAsset
+        // Properties
 
         get track_type(): TrackType;
         set track_type(val: TrackType);
         get trackType(): TrackType;
         set trackType(val: TrackType);
 
-        // Constructors of GES.TrackElementAsset
+        // Constructors
 
         constructor(properties?: Partial<TrackElementAsset.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of GES.TrackElementAsset
+        // Virtual methods
 
         /**
          * Result: %TRUE if `self` has a natural framerate %FALSE otherwise
          */
         vfunc_get_natural_framerate(): [boolean, number, number];
 
-        // Own methods of GES.TrackElementAsset
+        // Methods
 
         /**
          * Result: %TRUE if `self` has a natural framerate %FALSE otherwise
@@ -28895,7 +28895,7 @@ export namespace GES {
     abstract class Transition extends Operation implements Extractable, MetaContainer {
         static $gtype: GObject.GType<Transition>;
 
-        // Constructors of GES.Transition
+        // Constructors
 
         constructor(properties?: Partial<Transition.ConstructorProps>, ...args: any[]);
 
@@ -29332,7 +29332,7 @@ export namespace GES {
     class TransitionClip extends BaseTransitionClip implements Extractable, MetaContainer {
         static $gtype: GObject.GType<TransitionClip>;
 
-        // Own properties of GES.TransitionClip
+        // Properties
 
         /**
          * a #GESVideoStandardTransitionType representing the wipe to use
@@ -29340,7 +29340,7 @@ export namespace GES {
         get vtype(): VideoStandardTransitionType;
         set vtype(val: VideoStandardTransitionType);
 
-        // Constructors of GES.TransitionClip
+        // Constructors
 
         constructor(properties?: Partial<TransitionClip.ConstructorProps>, ...args: any[]);
 
@@ -29776,7 +29776,7 @@ export namespace GES {
     class UriClip extends SourceClip implements Extractable, MetaContainer {
         static $gtype: GObject.GType<UriClip>;
 
-        // Own properties of GES.UriClip
+        // Properties
 
         /**
          * Whether this uri clip represents a still image or not. This must be set
@@ -29804,7 +29804,7 @@ export namespace GES {
          */
         get uri(): string;
 
-        // Constructors of GES.UriClip
+        // Constructors
 
         constructor(properties?: Partial<UriClip.ConstructorProps>, ...args: any[]);
 
@@ -29812,7 +29812,7 @@ export namespace GES {
 
         static ['new'](uri: string): UriClip;
 
-        // Own methods of GES.UriClip
+        // Methods
 
         /**
          * Get the location of the resource.
@@ -30255,7 +30255,7 @@ export namespace GES {
     class UriClipAsset extends SourceClipAsset implements MetaContainer, Gio.AsyncInitable<UriClipAsset>, Gio.Initable {
         static $gtype: GObject.GType<UriClipAsset>;
 
-        // Own properties of GES.UriClipAsset
+        // Properties
 
         /**
          * The duration (in nanoseconds) of the media file
@@ -30271,13 +30271,13 @@ export namespace GES {
          */
         get isNestedTimeline(): boolean;
 
-        // Constructors of GES.UriClipAsset
+        // Constructors
 
         constructor(properties?: Partial<UriClipAsset.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of GES.UriClipAsset
+        // Static methods
 
         /**
          * Finalize the request of an async #GESUriClipAsset
@@ -30332,7 +30332,7 @@ export namespace GES {
         static request_sync(uri: string): UriClipAsset;
         static set_timeout(timeout: Gst.ClockTime): void;
 
-        // Own methods of GES.UriClipAsset
+        // Methods
 
         /**
          * Gets duration of the file represented by `self`
@@ -30900,13 +30900,13 @@ export namespace GES {
     {
         static $gtype: GObject.GType<UriSourceAsset>;
 
-        // Constructors of GES.UriSourceAsset
+        // Constructors
 
         constructor(properties?: Partial<UriSourceAsset.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of GES.UriSourceAsset
+        // Methods
 
         /**
          * Get the #GESUriClipAsset `self` is contained in
@@ -31455,13 +31455,13 @@ export namespace GES {
     abstract class VideoSource extends Source implements Extractable, MetaContainer {
         static $gtype: GObject.GType<VideoSource>;
 
-        // Constructors of GES.VideoSource
+        // Constructors
 
         constructor(properties?: Partial<VideoSource.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of GES.VideoSource
+        // Methods
 
         /**
          * Retrieves the natural size of the video stream. The natural size, is
@@ -31895,13 +31895,13 @@ export namespace GES {
     class VideoTestSource extends VideoSource implements Extractable, MetaContainer {
         static $gtype: GObject.GType<VideoTestSource>;
 
-        // Constructors of GES.VideoTestSource
+        // Constructors
 
         constructor(properties?: Partial<VideoTestSource.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of GES.VideoTestSource
+        // Methods
 
         /**
          * Get the video pattern used by the `source`.
@@ -32348,7 +32348,7 @@ export namespace GES {
     class VideoTrack extends Track implements MetaContainer, Gst.ChildProxy {
         static $gtype: GObject.GType<VideoTrack>;
 
-        // Constructors of GES.VideoTrack
+        // Constructors
 
         constructor(properties?: Partial<VideoTrack.ConstructorProps>, ...args: any[]);
 
@@ -33153,7 +33153,7 @@ export namespace GES {
     class VideoTransition extends Transition implements Extractable, MetaContainer {
         static $gtype: GObject.GType<VideoTransition>;
 
-        // Own properties of GES.VideoTransition
+        // Properties
 
         /**
          * This value represents the border width of the transition.
@@ -33170,7 +33170,7 @@ export namespace GES {
         get transitionType(): VideoStandardTransitionType;
         set transitionType(val: VideoStandardTransitionType);
 
-        // Constructors of GES.VideoTransition
+        // Constructors
 
         constructor(properties?: Partial<VideoTransition.ConstructorProps>, ...args: any[]);
 
@@ -33178,7 +33178,7 @@ export namespace GES {
 
         static ['new'](): VideoTransition;
 
-        // Own methods of GES.VideoTransition
+        // Methods
 
         /**
          * Get the border property of `self,` this value represents
@@ -33642,14 +33642,14 @@ export namespace GES {
     class VideoUriSource extends VideoSource implements Extractable, MetaContainer {
         static $gtype: GObject.GType<VideoUriSource>;
 
-        // Own properties of GES.VideoUriSource
+        // Properties
 
         /**
          * The location of the file/resource to use.
          */
         get uri(): string;
 
-        // Constructors of GES.VideoUriSource
+        // Constructors
 
         constructor(properties?: Partial<VideoUriSource.ConstructorProps>, ...args: any[]);
 
@@ -34067,7 +34067,7 @@ export namespace GES {
     class XmlFormatter extends BaseXmlFormatter implements Extractable {
         static $gtype: GObject.GType<XmlFormatter>;
 
-        // Constructors of GES.XmlFormatter
+        // Constructors
 
         constructor(properties?: Partial<XmlFormatter.ConstructorProps>, ...args: any[]);
 
@@ -34078,7 +34078,7 @@ export namespace GES {
     abstract class AssetPrivate {
         static $gtype: GObject.GType<AssetPrivate>;
 
-        // Constructors of GES.AssetPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -34087,7 +34087,7 @@ export namespace GES {
     abstract class AudioSourcePrivate {
         static $gtype: GObject.GType<AudioSourcePrivate>;
 
-        // Constructors of GES.AudioSourcePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -34096,7 +34096,7 @@ export namespace GES {
     abstract class AudioTestSourcePrivate {
         static $gtype: GObject.GType<AudioTestSourcePrivate>;
 
-        // Constructors of GES.AudioTestSourcePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -34105,7 +34105,7 @@ export namespace GES {
     abstract class AudioTrackPrivate {
         static $gtype: GObject.GType<AudioTrackPrivate>;
 
-        // Constructors of GES.AudioTrackPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -34114,7 +34114,7 @@ export namespace GES {
     abstract class AudioTransitionPrivate {
         static $gtype: GObject.GType<AudioTransitionPrivate>;
 
-        // Constructors of GES.AudioTransitionPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -34123,7 +34123,7 @@ export namespace GES {
     abstract class AudioUriSourcePrivate {
         static $gtype: GObject.GType<AudioUriSourcePrivate>;
 
-        // Constructors of GES.AudioUriSourcePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -34133,7 +34133,7 @@ export namespace GES {
     abstract class BaseEffectClipPrivate {
         static $gtype: GObject.GType<BaseEffectClipPrivate>;
 
-        // Constructors of GES.BaseEffectClipPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -34141,7 +34141,7 @@ export namespace GES {
     abstract class BaseEffectPrivate {
         static $gtype: GObject.GType<BaseEffectPrivate>;
 
-        // Constructors of GES.BaseEffectPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -34150,7 +34150,7 @@ export namespace GES {
     abstract class BaseTransitionClipPrivate {
         static $gtype: GObject.GType<BaseTransitionClipPrivate>;
 
-        // Constructors of GES.BaseTransitionClipPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -34159,7 +34159,7 @@ export namespace GES {
     abstract class BaseXmlFormatterPrivate {
         static $gtype: GObject.GType<BaseXmlFormatterPrivate>;
 
-        // Constructors of GES.BaseXmlFormatterPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -34168,7 +34168,7 @@ export namespace GES {
     abstract class ClipAssetPrivate {
         static $gtype: GObject.GType<ClipAssetPrivate>;
 
-        // Constructors of GES.ClipAssetPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -34177,7 +34177,7 @@ export namespace GES {
     abstract class ClipPrivate {
         static $gtype: GObject.GType<ClipPrivate>;
 
-        // Constructors of GES.ClipPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -34186,7 +34186,7 @@ export namespace GES {
     abstract class CommandLineFormatterPrivate {
         static $gtype: GObject.GType<CommandLineFormatterPrivate>;
 
-        // Constructors of GES.CommandLineFormatterPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -34195,7 +34195,7 @@ export namespace GES {
     abstract class ContainerPrivate {
         static $gtype: GObject.GType<ContainerPrivate>;
 
-        // Constructors of GES.ContainerPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -34204,7 +34204,7 @@ export namespace GES {
     abstract class DiscovererManagerPrivate {
         static $gtype: GObject.GType<DiscovererManagerPrivate>;
 
-        // Constructors of GES.DiscovererManagerPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -34213,7 +34213,7 @@ export namespace GES {
     abstract class EffectAssetPrivate {
         static $gtype: GObject.GType<EffectAssetPrivate>;
 
-        // Constructors of GES.EffectAssetPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -34223,7 +34223,7 @@ export namespace GES {
     abstract class EffectClipPrivate {
         static $gtype: GObject.GType<EffectClipPrivate>;
 
-        // Constructors of GES.EffectClipPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -34231,7 +34231,7 @@ export namespace GES {
     abstract class EffectPrivate {
         static $gtype: GObject.GType<EffectPrivate>;
 
-        // Constructors of GES.EffectPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -34241,7 +34241,7 @@ export namespace GES {
     abstract class FormatterPrivate {
         static $gtype: GObject.GType<FormatterPrivate>;
 
-        // Constructors of GES.FormatterPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -34254,7 +34254,7 @@ export namespace GES {
     class FrameCompositionMeta {
         static $gtype: GObject.GType<FrameCompositionMeta>;
 
-        // Own fields of GES.FrameCompositionMeta
+        // Fields
 
         alpha: number;
         posx: number;
@@ -34264,7 +34264,7 @@ export namespace GES {
         zorder: number;
         operator: number;
 
-        // Constructors of GES.FrameCompositionMeta
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -34273,7 +34273,7 @@ export namespace GES {
     abstract class GroupPrivate {
         static $gtype: GObject.GType<GroupPrivate>;
 
-        // Constructors of GES.GroupPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -34282,7 +34282,7 @@ export namespace GES {
     abstract class ImageSourcePrivate {
         static $gtype: GObject.GType<ImageSourcePrivate>;
 
-        // Constructors of GES.ImageSourcePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -34291,7 +34291,7 @@ export namespace GES {
     abstract class LayerPrivate {
         static $gtype: GObject.GType<LayerPrivate>;
 
-        // Constructors of GES.LayerPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -34303,7 +34303,7 @@ export namespace GES {
     abstract class MultiFileSourcePrivate {
         static $gtype: GObject.GType<MultiFileSourcePrivate>;
 
-        // Constructors of GES.MultiFileSourcePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -34313,7 +34313,7 @@ export namespace GES {
     abstract class OperationClipPrivate {
         static $gtype: GObject.GType<OperationClipPrivate>;
 
-        // Constructors of GES.OperationClipPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -34321,7 +34321,7 @@ export namespace GES {
     abstract class OperationPrivate {
         static $gtype: GObject.GType<OperationPrivate>;
 
-        // Constructors of GES.OperationPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -34330,7 +34330,7 @@ export namespace GES {
     abstract class OverlayClipPrivate {
         static $gtype: GObject.GType<OverlayClipPrivate>;
 
-        // Constructors of GES.OverlayClipPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -34339,7 +34339,7 @@ export namespace GES {
     abstract class PipelinePrivate {
         static $gtype: GObject.GType<PipelinePrivate>;
 
-        // Constructors of GES.PipelinePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -34348,7 +34348,7 @@ export namespace GES {
     abstract class PitiviFormatterPrivate {
         static $gtype: GObject.GType<PitiviFormatterPrivate>;
 
-        // Constructors of GES.PitiviFormatterPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -34357,7 +34357,7 @@ export namespace GES {
     abstract class ProjectPrivate {
         static $gtype: GObject.GType<ProjectPrivate>;
 
-        // Constructors of GES.ProjectPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -34368,7 +34368,7 @@ export namespace GES {
     abstract class SourceClipPrivate {
         static $gtype: GObject.GType<SourceClipPrivate>;
 
-        // Constructors of GES.SourceClipPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -34376,7 +34376,7 @@ export namespace GES {
     abstract class SourcePrivate {
         static $gtype: GObject.GType<SourcePrivate>;
 
-        // Constructors of GES.SourcePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -34385,7 +34385,7 @@ export namespace GES {
     abstract class TestClipPrivate {
         static $gtype: GObject.GType<TestClipPrivate>;
 
-        // Constructors of GES.TestClipPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -34395,7 +34395,7 @@ export namespace GES {
     abstract class TextOverlayClipPrivate {
         static $gtype: GObject.GType<TextOverlayClipPrivate>;
 
-        // Constructors of GES.TextOverlayClipPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -34403,7 +34403,7 @@ export namespace GES {
     abstract class TextOverlayPrivate {
         static $gtype: GObject.GType<TextOverlayPrivate>;
 
-        // Constructors of GES.TextOverlayPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -34413,7 +34413,7 @@ export namespace GES {
     abstract class TimelineElementPrivate {
         static $gtype: GObject.GType<TimelineElementPrivate>;
 
-        // Constructors of GES.TimelineElementPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -34421,7 +34421,7 @@ export namespace GES {
     abstract class TimelinePrivate {
         static $gtype: GObject.GType<TimelinePrivate>;
 
-        // Constructors of GES.TimelinePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -34430,7 +34430,7 @@ export namespace GES {
     abstract class TitleClipPrivate {
         static $gtype: GObject.GType<TitleClipPrivate>;
 
-        // Constructors of GES.TitleClipPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -34439,7 +34439,7 @@ export namespace GES {
     abstract class TitleSourcePrivate {
         static $gtype: GObject.GType<TitleSourcePrivate>;
 
-        // Constructors of GES.TitleSourcePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -34449,7 +34449,7 @@ export namespace GES {
     abstract class TrackElementAssetPrivate {
         static $gtype: GObject.GType<TrackElementAssetPrivate>;
 
-        // Constructors of GES.TrackElementAssetPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -34458,7 +34458,7 @@ export namespace GES {
     abstract class TrackElementPrivate {
         static $gtype: GObject.GType<TrackElementPrivate>;
 
-        // Constructors of GES.TrackElementPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -34466,7 +34466,7 @@ export namespace GES {
     abstract class TrackPrivate {
         static $gtype: GObject.GType<TrackPrivate>;
 
-        // Constructors of GES.TrackPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -34476,7 +34476,7 @@ export namespace GES {
     abstract class TransitionClipPrivate {
         static $gtype: GObject.GType<TransitionClipPrivate>;
 
-        // Constructors of GES.TransitionClipPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -34484,7 +34484,7 @@ export namespace GES {
     abstract class TransitionPrivate {
         static $gtype: GObject.GType<TransitionPrivate>;
 
-        // Constructors of GES.TransitionPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -34493,7 +34493,7 @@ export namespace GES {
     abstract class UriClipAssetPrivate {
         static $gtype: GObject.GType<UriClipAssetPrivate>;
 
-        // Constructors of GES.UriClipAssetPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -34502,7 +34502,7 @@ export namespace GES {
     abstract class UriClipPrivate {
         static $gtype: GObject.GType<UriClipPrivate>;
 
-        // Constructors of GES.UriClipPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -34510,7 +34510,7 @@ export namespace GES {
     abstract class UriSource {
         static $gtype: GObject.GType<UriSource>;
 
-        // Constructors of GES.UriSource
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -34519,7 +34519,7 @@ export namespace GES {
     abstract class UriSourceAssetPrivate {
         static $gtype: GObject.GType<UriSourceAssetPrivate>;
 
-        // Constructors of GES.UriSourceAssetPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -34528,7 +34528,7 @@ export namespace GES {
     abstract class VideoSourcePrivate {
         static $gtype: GObject.GType<VideoSourcePrivate>;
 
-        // Constructors of GES.VideoSourcePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -34537,7 +34537,7 @@ export namespace GES {
     abstract class VideoTestSourcePrivate {
         static $gtype: GObject.GType<VideoTestSourcePrivate>;
 
-        // Constructors of GES.VideoTestSourcePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -34546,7 +34546,7 @@ export namespace GES {
     abstract class VideoTrackPrivate {
         static $gtype: GObject.GType<VideoTrackPrivate>;
 
-        // Constructors of GES.VideoTrackPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -34555,7 +34555,7 @@ export namespace GES {
     abstract class VideoTransitionPrivate {
         static $gtype: GObject.GType<VideoTransitionPrivate>;
 
-        // Constructors of GES.VideoTransitionPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -34564,7 +34564,7 @@ export namespace GES {
     abstract class VideoUriSourcePrivate {
         static $gtype: GObject.GType<VideoUriSourcePrivate>;
 
-        // Constructors of GES.VideoUriSourcePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -34573,7 +34573,7 @@ export namespace GES {
     abstract class XmlFormatterPrivate {
         static $gtype: GObject.GType<XmlFormatterPrivate>;
 
-        // Constructors of GES.XmlFormatterPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -34589,7 +34589,7 @@ export namespace GES {
         prototype: Extractable;
     }
     interface Extractable extends GObject.InitiallyUnowned {
-        // Own methods of GES.Extractable
+        // Methods
 
         /**
          * Get the asset that has been set on the extractable object.
@@ -34624,7 +34624,7 @@ export namespace GES {
          */
         set_asset(asset: Asset): boolean;
 
-        // Own virtual methods of GES.Extractable
+        // Virtual methods
 
         /**
          * Gets the #GESAsset:id of some associated asset. It may be the case
@@ -34667,7 +34667,7 @@ export namespace GES {
         prototype: MetaContainer;
     }
     interface MetaContainer extends GObject.Object {
-        // Own methods of GES.MetaContainer
+        // Methods
 
         /**
          * Deserializes the given string, and adds and sets the found fields and

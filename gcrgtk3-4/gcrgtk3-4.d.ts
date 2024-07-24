@@ -44,12 +44,12 @@ export namespace GcrGtk3 {
     class CertificateWidget extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<CertificateWidget>;
 
-        // Own properties of GcrGtk3.CertificateWidget
+        // Properties
 
         get certificate(): Gcr.Certificate;
         set certificate(val: Gcr.Certificate);
 
-        // Constructors of GcrGtk3.CertificateWidget
+        // Constructors
 
         constructor(properties?: Partial<CertificateWidget.ConstructorProps>, ...args: any[]);
 
@@ -60,7 +60,7 @@ export namespace GcrGtk3 {
 
         static ['new'](...args: never[]): any;
 
-        // Own methods of GcrGtk3.CertificateWidget
+        // Methods
 
         /**
          * Get the certificate displayed in the widget.
@@ -517,7 +517,7 @@ export namespace GcrGtk3 {
     class SecureEntryBuffer extends Gtk.EntryBuffer {
         static $gtype: GObject.GType<SecureEntryBuffer>;
 
-        // Constructors of GcrGtk3.SecureEntryBuffer
+        // Constructors
 
         constructor(properties?: Partial<SecureEntryBuffer.ConstructorProps>, ...args: any[]);
 
@@ -531,7 +531,7 @@ export namespace GcrGtk3 {
     abstract class SecureEntryBufferPrivate {
         static $gtype: GObject.GType<SecureEntryBufferPrivate>;
 
-        // Constructors of GcrGtk3.SecureEntryBufferPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }

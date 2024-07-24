@@ -263,14 +263,14 @@ export namespace Easyfc {
     class Alias {
         static $gtype: GObject.GType<Alias>;
 
-        // Constructors of Easyfc.Alias
+        // Constructors
 
         constructor(alias_name: string);
         _init(...args: any[]): void;
 
         static ['new'](alias_name: string): Alias;
 
-        // Own methods of Easyfc.Alias
+        // Methods
 
         /**
          * Set a flag whether checking the font existence when invoking
@@ -320,14 +320,14 @@ export namespace Easyfc {
     class Config {
         static $gtype: GObject.GType<Config>;
 
-        // Constructors of Easyfc.Config
+        // Constructors
 
         constructor(properties?: Partial<{}>);
         _init(...args: any[]): void;
 
         static ['new'](): Config;
 
-        // Own methods of Easyfc.Config
+        // Methods
 
         /**
          * Add a `alias` font for `language` language. if giving %NULL to `language,`
@@ -489,14 +489,14 @@ export namespace Easyfc {
     class Font {
         static $gtype: GObject.GType<Font>;
 
-        // Constructors of Easyfc.Font
+        // Constructors
 
         constructor(properties?: Partial<{}>);
         _init(...args: any[]): void;
 
         static ['new'](): Font;
 
-        // Own static methods of Easyfc.Font
+        // Static methods
 
         /**
          * Analize `pattern` and returns a alias name string according to the result.
@@ -526,7 +526,7 @@ export namespace Easyfc {
          */
         static is_alias_font(alias_name: string): boolean;
 
-        // Own methods of Easyfc.Font
+        // Methods
 
         /**
          * Add `font_name` as the font family name used for the font font.
@@ -709,11 +709,11 @@ export namespace Easyfc {
     abstract class FontConfig {
         static $gtype: GObject.GType<FontConfig>;
 
-        // Constructors of Easyfc.FontConfig
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own static methods of Easyfc.FontConfig
+        // Static methods
 
         /**
          * Obtains the list of the config directories where fontconfig can recognizes
@@ -738,7 +738,7 @@ export namespace Easyfc {
          */
         static get_list_from(config: fontconfig.Config): FontConfig[];
 
-        // Own methods of Easyfc.FontConfig
+        // Methods
 
         /**
          * Obtain the description for the configuration

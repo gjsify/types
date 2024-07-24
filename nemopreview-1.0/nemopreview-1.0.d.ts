@@ -66,11 +66,11 @@ export namespace NemoPreview {
     class CoverArtFetcher extends GObject.Object {
         static $gtype: GObject.GType<CoverArtFetcher>;
 
-        // Own properties of NemoPreview.CoverArtFetcher
+        // Properties
 
         get cover(): GdkPixbuf.Pixbuf;
 
-        // Constructors of NemoPreview.CoverArtFetcher
+        // Constructors
 
         constructor(properties?: Partial<CoverArtFetcher.ConstructorProps>, ...args: any[]);
 
@@ -98,7 +98,7 @@ export namespace NemoPreview {
     class FileLoader extends GObject.Object {
         static $gtype: GObject.GType<FileLoader>;
 
-        // Own properties of NemoPreview.FileLoader
+        // Properties
 
         get content_type(): string;
         get contentType(): string;
@@ -111,7 +111,7 @@ export namespace NemoPreview {
         get size(): string;
         get time(): string;
 
-        // Constructors of NemoPreview.FileLoader
+        // Constructors
 
         constructor(properties?: Partial<FileLoader.ConstructorProps>, ...args: any[]);
 
@@ -119,7 +119,7 @@ export namespace NemoPreview {
 
         static ['new'](file: Gio.File): FileLoader;
 
-        // Own methods of NemoPreview.FileLoader
+        // Methods
 
         get_content_type_string(): string;
         get_date_string(): string;
@@ -155,12 +155,12 @@ export namespace NemoPreview {
     class FontWidget extends Gtk.DrawingArea implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<FontWidget>;
 
-        // Own properties of NemoPreview.FontWidget
+        // Properties
 
         get uri(): string;
         set uri(val: string);
 
-        // Constructors of NemoPreview.FontWidget
+        // Constructors
 
         constructor(properties?: Partial<FontWidget.ConstructorProps>, ...args: any[]);
 
@@ -171,7 +171,7 @@ export namespace NemoPreview {
 
         static ['new'](...args: never[]): any;
 
-        // Own signals of NemoPreview.FontWidget
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -183,7 +183,7 @@ export namespace NemoPreview {
         connect_after(signal: 'loaded', callback: (_source: this) => void): number;
         emit(signal: 'loaded'): void;
 
-        // Own methods of NemoPreview.FontWidget
+        // Methods
 
         get_uri(): string;
 
@@ -602,13 +602,13 @@ export namespace NemoPreview {
     class PdfLoader extends GObject.Object {
         static $gtype: GObject.GType<PdfLoader>;
 
-        // Own properties of NemoPreview.PdfLoader
+        // Properties
 
         get document(): XreaderDocument.Document;
         get uri(): string;
         set uri(val: string);
 
-        // Constructors of NemoPreview.PdfLoader
+        // Constructors
 
         constructor(properties?: Partial<PdfLoader.ConstructorProps>, ...args: any[]);
 
@@ -616,7 +616,7 @@ export namespace NemoPreview {
 
         static ['new'](uri: string): PdfLoader;
 
-        // Own methods of NemoPreview.PdfLoader
+        // Methods
 
         cleanup_document(): void;
         get_max_page_size(): [number, number];
@@ -637,7 +637,7 @@ export namespace NemoPreview {
     class SoundPlayer extends GObject.Object {
         static $gtype: GObject.GType<SoundPlayer>;
 
-        // Own properties of NemoPreview.SoundPlayer
+        // Properties
 
         get duration(): number;
         get playing(): boolean;
@@ -648,7 +648,7 @@ export namespace NemoPreview {
         get uri(): string;
         set uri(val: string);
 
-        // Constructors of NemoPreview.SoundPlayer
+        // Constructors
 
         constructor(properties?: Partial<SoundPlayer.ConstructorProps>, ...args: any[]);
 
@@ -672,12 +672,12 @@ export namespace NemoPreview {
     class TextLoader extends GObject.Object {
         static $gtype: GObject.GType<TextLoader>;
 
-        // Own properties of NemoPreview.TextLoader
+        // Properties
 
         get uri(): string;
         set uri(val: string);
 
-        // Constructors of NemoPreview.TextLoader
+        // Constructors
 
         constructor(properties?: Partial<TextLoader.ConstructorProps>, ...args: any[]);
 
@@ -685,7 +685,7 @@ export namespace NemoPreview {
 
         static ['new'](uri: string): TextLoader;
 
-        // Own signals of NemoPreview.TextLoader
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -699,7 +699,7 @@ export namespace NemoPreview {
     abstract class CoverArtFetcherPrivate {
         static $gtype: GObject.GType<CoverArtFetcherPrivate>;
 
-        // Constructors of NemoPreview.CoverArtFetcherPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -708,7 +708,7 @@ export namespace NemoPreview {
     abstract class FileLoaderPrivate {
         static $gtype: GObject.GType<FileLoaderPrivate>;
 
-        // Constructors of NemoPreview.FileLoaderPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -717,7 +717,7 @@ export namespace NemoPreview {
     abstract class FontWidgetPrivate {
         static $gtype: GObject.GType<FontWidgetPrivate>;
 
-        // Constructors of NemoPreview.FontWidgetPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -726,7 +726,7 @@ export namespace NemoPreview {
     abstract class PdfLoaderPrivate {
         static $gtype: GObject.GType<PdfLoaderPrivate>;
 
-        // Constructors of NemoPreview.PdfLoaderPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -735,7 +735,7 @@ export namespace NemoPreview {
     abstract class SoundPlayerPrivate {
         static $gtype: GObject.GType<SoundPlayerPrivate>;
 
-        // Constructors of NemoPreview.SoundPlayerPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -744,7 +744,7 @@ export namespace NemoPreview {
     abstract class TextLoaderPrivate {
         static $gtype: GObject.GType<TextLoaderPrivate>;
 
-        // Constructors of NemoPreview.TextLoaderPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }

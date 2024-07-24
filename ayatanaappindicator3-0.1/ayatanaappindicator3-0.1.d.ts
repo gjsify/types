@@ -190,7 +190,7 @@ export namespace AyatanaAppIndicator3 {
     class Indicator extends GObject.Object {
         static $gtype: GObject.GType<Indicator>;
 
-        // Own properties of AyatanaAppIndicator3.Indicator
+        // Properties
 
         /**
          * If the indicator sets it's status to %APP_INDICATOR_STATUS_ATTENTION
@@ -342,7 +342,7 @@ export namespace AyatanaAppIndicator3 {
         get title(): string;
         set title(val: string);
 
-        // Constructors of AyatanaAppIndicator3.Indicator
+        // Constructors
 
         constructor(properties?: Partial<Indicator.ConstructorProps>, ...args: any[]);
 
@@ -357,7 +357,7 @@ export namespace AyatanaAppIndicator3 {
             icon_theme_path: string,
         ): Indicator;
 
-        // Own signals of AyatanaAppIndicator3.Indicator
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -390,7 +390,7 @@ export namespace AyatanaAppIndicator3 {
         ): number;
         emit(signal: 'scroll-event', arg1: number, arg2: Gdk.ScrollDirection): void;
 
-        // Own virtual methods of AyatanaAppIndicator3.Indicator
+        // Virtual methods
 
         /**
          * Slot for #AppIndicator::connection-changed.
@@ -434,7 +434,7 @@ export namespace AyatanaAppIndicator3 {
          */
         vfunc_unfallback(status_icon: Gtk.StatusIcon): void;
 
-        // Own methods of AyatanaAppIndicator3.Indicator
+        // Methods
 
         /**
          * This function allows for building the Application Indicator menu

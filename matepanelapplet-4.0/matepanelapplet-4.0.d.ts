@@ -109,7 +109,7 @@ export namespace MatePanelApplet {
     class Applet extends Gtk.EventBox implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<Applet>;
 
-        // Own properties of MatePanelApplet.Applet
+        // Properties
 
         get background(): string;
         set background(val: string);
@@ -139,7 +139,7 @@ export namespace MatePanelApplet {
         get sizeHints(): any;
         set sizeHints(val: any);
 
-        // Constructors of MatePanelApplet.Applet
+        // Constructors
 
         constructor(properties?: Partial<Applet.ConstructorProps>, ...args: any[]);
 
@@ -147,7 +147,7 @@ export namespace MatePanelApplet {
 
         static ['new'](): Applet;
 
-        // Own signals of MatePanelApplet.Applet
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -177,7 +177,7 @@ export namespace MatePanelApplet {
         ): number;
         emit(signal: 'move-focus-out-of-applet', object: Gtk.DirectionType): void;
 
-        // Own static methods of MatePanelApplet.Applet
+        // Static methods
 
         static factory_main(
             factory_id: string,
@@ -186,14 +186,14 @@ export namespace MatePanelApplet {
             callback: AppletFactoryCallback,
         ): number;
 
-        // Own virtual methods of MatePanelApplet.Applet
+        // Virtual methods
 
         vfunc_change_background(type: AppletBackgroundType, color: Gdk.RGBA, pattern: cairo.Pattern): void;
         vfunc_change_orient(orient: AppletOrient): void;
         vfunc_change_size(size: number): void;
         vfunc_move_focus_out_of_applet(direction: Gtk.DirectionType): void;
 
-        // Own methods of MatePanelApplet.Applet
+        // Methods
 
         get_background(color: Gdk.RGBA, pattern: cairo.Pattern): AppletBackgroundType;
         get_flags(): AppletFlags;

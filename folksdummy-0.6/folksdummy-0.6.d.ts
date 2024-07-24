@@ -29,7 +29,7 @@ export namespace FolksDummy {
     class Backend extends Folks.Backend {
         static $gtype: GObject.GType<Backend>;
 
-        // Constructors of FolksDummy.Backend
+        // Constructors
 
         constructor(properties?: Partial<Backend.ConstructorProps>, ...args: any[]);
 
@@ -37,7 +37,7 @@ export namespace FolksDummy {
 
         static ['new'](): Backend;
 
-        // Own methods of FolksDummy.Backend
+        // Methods
 
         register_persona_stores(stores: Gee.Set, enable_stores: boolean): void;
         unregister_persona_stores(stores: Gee.Set): void;
@@ -88,7 +88,7 @@ export namespace FolksDummy {
     {
         static $gtype: GObject.GType<FullPersona>;
 
-        // Constructors of FolksDummy.FullPersona
+        // Constructors
 
         constructor(properties?: Partial<FullPersona.ConstructorProps>, ...args: any[]);
 
@@ -101,7 +101,7 @@ export namespace FolksDummy {
             linkable_properties: string[],
         ): FullPersona;
 
-        // Own methods of FolksDummy.FullPersona
+        // Methods
 
         update_gender(gender: Folks.Gender): void;
         update_calendar_event_id(calendar_event_id: string): void;
@@ -807,14 +807,14 @@ export namespace FolksDummy {
     class PersonaStore extends Folks.PersonaStore {
         static $gtype: GObject.GType<PersonaStore>;
 
-        // Own properties of FolksDummy.PersonaStore
+        // Properties
 
         get persona_type(): GObject.GType;
         set persona_type(val: GObject.GType);
         get personaType(): GObject.GType;
         set personaType(val: GObject.GType);
 
-        // Constructors of FolksDummy.PersonaStore
+        // Constructors
 
         constructor(properties?: Partial<PersonaStore.ConstructorProps>, ...args: any[]);
 
@@ -822,7 +822,7 @@ export namespace FolksDummy {
 
         static ['new'](id: string, display_name: string, always_writeable_properties: string[]): PersonaStore;
 
-        // Own methods of FolksDummy.PersonaStore
+        // Methods
 
         update_capabilities(
             can_add_personas: Folks.MaybeBool,
@@ -859,14 +859,14 @@ export namespace FolksDummy {
     class Persona extends Folks.Persona {
         static $gtype: GObject.GType<Persona>;
 
-        // Own properties of FolksDummy.Persona
+        // Properties
 
         get property_change_delay(): number;
         set property_change_delay(val: number);
         get propertyChangeDelay(): number;
         set propertyChangeDelay(val: number);
 
-        // Constructors of FolksDummy.Persona
+        // Constructors
 
         constructor(properties?: Partial<Persona.ConstructorProps>, ...args: any[]);
 
@@ -879,7 +879,7 @@ export namespace FolksDummy {
             linkable_properties: string[],
         ): Persona;
 
-        // Own methods of FolksDummy.Persona
+        // Methods
 
         update_writeable_properties(writeable_properties: string[]): void;
         update_linkable_properties(linkable_properties: string[]): void;
@@ -897,7 +897,7 @@ export namespace FolksDummy {
     abstract class BackendPrivate {
         static $gtype: GObject.GType<BackendPrivate>;
 
-        // Constructors of FolksDummy.BackendPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -906,7 +906,7 @@ export namespace FolksDummy {
     abstract class FullPersonaPrivate {
         static $gtype: GObject.GType<FullPersonaPrivate>;
 
-        // Constructors of FolksDummy.FullPersonaPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -915,7 +915,7 @@ export namespace FolksDummy {
     abstract class PersonaStorePrivate {
         static $gtype: GObject.GType<PersonaStorePrivate>;
 
-        // Constructors of FolksDummy.PersonaStorePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -924,7 +924,7 @@ export namespace FolksDummy {
     abstract class PersonaPrivate {
         static $gtype: GObject.GType<PersonaPrivate>;
 
-        // Constructors of FolksDummy.PersonaPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }

@@ -39,11 +39,11 @@ export namespace Granite {
     class ServicesContractorError extends GLib.Error {
         static $gtype: GObject.GType<ServicesContractorError>;
 
-        // Static fields of Granite.ServicesContractorError
+        // Static fields
 
         static SERVICE_NOT_AVAILABLE: number;
 
-        // Constructors of Granite.ServicesContractorError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
@@ -185,13 +185,13 @@ export namespace Granite {
     class ServicesContractorProxy extends GObject.Object {
         static $gtype: GObject.GType<ServicesContractorProxy>;
 
-        // Constructors of Granite.ServicesContractorProxy
+        // Constructors
 
         constructor(properties?: Partial<ServicesContractorProxy.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of Granite.ServicesContractorProxy
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -200,7 +200,7 @@ export namespace Granite {
         connect_after(signal: 'contracts-changed', callback: (_source: this) => void): number;
         emit(signal: 'contracts-changed'): void;
 
-        // Own static methods of Granite.ServicesContractorProxy
+        // Static methods
 
         static get_instance(): ServicesContractorProxy;
         static get_all_contracts(): Gee.List;
@@ -219,7 +219,7 @@ export namespace Granite {
     class ServicesSystem extends GObject.Object {
         static $gtype: GObject.GType<ServicesSystem>;
 
-        // Constructors of Granite.ServicesSystem
+        // Constructors
 
         constructor(properties?: Partial<ServicesSystem.ConstructorProps>, ...args: any[]);
 
@@ -227,7 +227,7 @@ export namespace Granite {
 
         static ['new'](): ServicesSystem;
 
-        // Own static methods of Granite.ServicesSystem
+        // Static methods
 
         static history_is_enabled(): boolean;
     }
@@ -252,7 +252,7 @@ export namespace Granite {
     abstract class SettingsPage extends Gtk.Box {
         static $gtype: GObject.GType<SettingsPage>;
 
-        // Own properties of Granite.SettingsPage
+        // Properties
 
         get status_type(): SettingsPageStatusType;
         set status_type(val: SettingsPageStatusType);
@@ -272,13 +272,13 @@ export namespace Granite {
         get child(): Gtk.Widget;
         set child(val: Gtk.Widget);
 
-        // Constructors of Granite.SettingsPage
+        // Constructors
 
         constructor(properties?: Partial<SettingsPage.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Granite.SettingsPage
+        // Methods
 
         get_status_type(): SettingsPageStatusType;
         set_status_type(value: SettingsPageStatusType): void;
@@ -312,7 +312,7 @@ export namespace Granite {
     abstract class SimpleSettingsPage extends SettingsPage {
         static $gtype: GObject.GType<SimpleSettingsPage>;
 
-        // Own properties of Granite.SimpleSettingsPage
+        // Properties
 
         get action_area(): Gtk.Box;
         get actionArea(): Gtk.Box;
@@ -324,13 +324,13 @@ export namespace Granite {
         get description(): string;
         set description(val: string);
 
-        // Constructors of Granite.SimpleSettingsPage
+        // Constructors
 
         constructor(properties?: Partial<SimpleSettingsPage.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Granite.SimpleSettingsPage
+        // Methods
 
         get_action_area(): Gtk.Box;
         get_content_area(): Gtk.Grid;
@@ -355,7 +355,7 @@ export namespace Granite {
     class AccelLabel extends Gtk.Box {
         static $gtype: GObject.GType<AccelLabel>;
 
-        // Own properties of Granite.AccelLabel
+        // Properties
 
         get action_name(): string;
         set action_name(val: string);
@@ -368,7 +368,7 @@ export namespace Granite {
         get label(): string;
         set label(val: string);
 
-        // Constructors of Granite.AccelLabel
+        // Constructors
 
         constructor(properties?: Partial<AccelLabel.ConstructorProps>, ...args: any[]);
 
@@ -381,7 +381,7 @@ export namespace Granite {
 
         static from_action_name(label: string, action_name: string): AccelLabel;
 
-        // Own methods of Granite.AccelLabel
+        // Methods
 
         get_action_name(): string;
         set_action_name(value: string): void;
@@ -403,13 +403,13 @@ export namespace Granite {
     class DatePicker extends Gtk.Entry implements Gtk.Buildable {
         static $gtype: GObject.GType<DatePicker>;
 
-        // Own properties of Granite.DatePicker
+        // Properties
 
         get format(): string;
         get date(): GLib.DateTime;
         set date(val: GLib.DateTime);
 
-        // Constructors of Granite.DatePicker
+        // Constructors
 
         constructor(properties?: Partial<DatePicker.ConstructorProps>, ...args: any[]);
 
@@ -419,7 +419,7 @@ export namespace Granite {
 
         static ['new'](): DatePicker;
 
-        // Own methods of Granite.DatePicker
+        // Methods
 
         get_format(): string;
         get_date(): GLib.DateTime;
@@ -837,7 +837,7 @@ export namespace Granite {
     class Dialog extends Gtk.Dialog {
         static $gtype: GObject.GType<Dialog>;
 
-        // Constructors of Granite.Dialog
+        // Constructors
 
         constructor(properties?: Partial<Dialog.ConstructorProps>, ...args: any[]);
 
@@ -861,7 +861,7 @@ export namespace Granite {
     class HeaderLabel extends Gtk.Widget {
         static $gtype: GObject.GType<HeaderLabel>;
 
-        // Own properties of Granite.HeaderLabel
+        // Properties
 
         get label(): string;
         set label(val: string);
@@ -874,7 +874,7 @@ export namespace Granite {
         get secondaryText(): string;
         set secondaryText(val: string);
 
-        // Constructors of Granite.HeaderLabel
+        // Constructors
 
         constructor(properties?: Partial<HeaderLabel.ConstructorProps>, ...args: any[]);
 
@@ -882,7 +882,7 @@ export namespace Granite {
 
         static ['new'](label: string): HeaderLabel;
 
-        // Own methods of Granite.HeaderLabel
+        // Methods
 
         get_label(): string;
         set_label(value: string): void;
@@ -901,7 +901,7 @@ export namespace Granite {
     class HyperTextView extends Gtk.TextView {
         static $gtype: GObject.GType<HyperTextView>;
 
-        // Constructors of Granite.HyperTextView
+        // Constructors
 
         constructor(properties?: Partial<HyperTextView.ConstructorProps>, ...args: any[]);
 
@@ -935,7 +935,7 @@ export namespace Granite {
     class MessageDialog extends Dialog {
         static $gtype: GObject.GType<MessageDialog>;
 
-        // Own properties of Granite.MessageDialog
+        // Properties
 
         get primary_text(): string;
         set primary_text(val: string);
@@ -961,7 +961,7 @@ export namespace Granite {
         get custom_bin(): Gtk.Box;
         get customBin(): Gtk.Box;
 
-        // Constructors of Granite.MessageDialog
+        // Constructors
 
         constructor(properties?: Partial<MessageDialog.ConstructorProps>, ...args: any[]);
 
@@ -984,7 +984,7 @@ export namespace Granite {
             buttons: Gtk.ButtonsType,
         ): MessageDialog;
 
-        // Own methods of Granite.MessageDialog
+        // Methods
 
         get_primary_text(): string;
         set_primary_text(value: string): void;
@@ -1023,7 +1023,7 @@ export namespace Granite {
     class ModeSwitch extends Gtk.Box {
         static $gtype: GObject.GType<ModeSwitch>;
 
-        // Own properties of Granite.ModeSwitch
+        // Properties
 
         get active(): boolean;
         set active(val: boolean);
@@ -1052,7 +1052,7 @@ export namespace Granite {
         get secondaryIconTooltipText(): string;
         set secondaryIconTooltipText(val: string);
 
-        // Constructors of Granite.ModeSwitch
+        // Constructors
 
         constructor(properties?: Partial<ModeSwitch.ConstructorProps>, ...args: any[]);
 
@@ -1065,7 +1065,7 @@ export namespace Granite {
 
         static from_icon_name(primary_icon_name: string, secondary_icon_name: string): ModeSwitch;
 
-        // Own methods of Granite.ModeSwitch
+        // Methods
 
         get_active(): boolean;
         set_active(value: boolean): void;
@@ -1096,7 +1096,7 @@ export namespace Granite {
     class OverlayBar extends Gtk.Widget {
         static $gtype: GObject.GType<OverlayBar>;
 
-        // Own properties of Granite.OverlayBar
+        // Properties
 
         get overlay(): Gtk.Overlay;
         get label(): string;
@@ -1104,7 +1104,7 @@ export namespace Granite {
         get active(): boolean;
         set active(val: boolean);
 
-        // Constructors of Granite.OverlayBar
+        // Constructors
 
         constructor(properties?: Partial<OverlayBar.ConstructorProps>, ...args: any[]);
 
@@ -1112,7 +1112,7 @@ export namespace Granite {
 
         static ['new'](overlay?: Gtk.Overlay | null): OverlayBar;
 
-        // Own methods of Granite.OverlayBar
+        // Methods
 
         get_overlay(): Gtk.Overlay | null;
         get_label(): string;
@@ -1134,7 +1134,7 @@ export namespace Granite {
     class Placeholder extends Gtk.Widget {
         static $gtype: GObject.GType<Placeholder>;
 
-        // Own properties of Granite.Placeholder
+        // Properties
 
         get title(): string;
         set title(val: string);
@@ -1143,7 +1143,7 @@ export namespace Granite {
         get icon(): Gio.Icon;
         set icon(val: Gio.Icon);
 
-        // Constructors of Granite.Placeholder
+        // Constructors
 
         constructor(properties?: Partial<Placeholder.ConstructorProps>, ...args: any[]);
 
@@ -1151,7 +1151,7 @@ export namespace Granite {
 
         static ['new'](title: string): Placeholder;
 
-        // Own methods of Granite.Placeholder
+        // Methods
 
         get_title(): string;
         set_title(value: string): void;
@@ -1175,7 +1175,7 @@ export namespace Granite {
     class SettingsSidebar extends Gtk.Widget {
         static $gtype: GObject.GType<SettingsSidebar>;
 
-        // Own properties of Granite.SettingsSidebar
+        // Properties
 
         get stack(): Gtk.Stack;
         get visible_child_name(): string;
@@ -1183,7 +1183,7 @@ export namespace Granite {
         get visibleChildName(): string;
         set visibleChildName(val: string);
 
-        // Constructors of Granite.SettingsSidebar
+        // Constructors
 
         constructor(properties?: Partial<SettingsSidebar.ConstructorProps>, ...args: any[]);
 
@@ -1191,7 +1191,7 @@ export namespace Granite {
 
         static ['new'](stack: Gtk.Stack): SettingsSidebar;
 
-        // Own methods of Granite.SettingsSidebar
+        // Methods
 
         get_stack(): Gtk.Stack;
         get_visible_child_name(): string | null;
@@ -1210,24 +1210,24 @@ export namespace Granite {
     class Settings extends GObject.Object {
         static $gtype: GObject.GType<Settings>;
 
-        // Own properties of Granite.Settings
+        // Properties
 
         get prefers_color_scheme(): SettingsColorScheme;
         set prefers_color_scheme(val: SettingsColorScheme);
         get prefersColorScheme(): SettingsColorScheme;
         set prefersColorScheme(val: SettingsColorScheme);
 
-        // Constructors of Granite.Settings
+        // Constructors
 
         constructor(properties?: Partial<Settings.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of Granite.Settings
+        // Static methods
 
         static get_default(): Settings;
 
-        // Own methods of Granite.Settings
+        // Methods
 
         get_prefers_color_scheme(): SettingsColorScheme;
     }
@@ -1244,14 +1244,14 @@ export namespace Granite {
     class SwitchModelButton extends Gtk.ToggleButton {
         static $gtype: GObject.GType<SwitchModelButton>;
 
-        // Own properties of Granite.SwitchModelButton
+        // Properties
 
         get text(): string;
         set text(val: string);
         get description(): string;
         set description(val: string);
 
-        // Constructors of Granite.SwitchModelButton
+        // Constructors
 
         constructor(properties?: Partial<SwitchModelButton.ConstructorProps>, ...args: any[]);
 
@@ -1262,7 +1262,7 @@ export namespace Granite {
 
         static ['new'](...args: never[]): any;
 
-        // Own methods of Granite.SwitchModelButton
+        // Methods
 
         get_text(): string;
         set_text(value: string): void;
@@ -1291,7 +1291,7 @@ export namespace Granite {
     class TimePicker extends Gtk.Entry {
         static $gtype: GObject.GType<TimePicker>;
 
-        // Own properties of Granite.TimePicker
+        // Properties
 
         get format_12(): string;
         get format12(): string;
@@ -1300,7 +1300,7 @@ export namespace Granite {
         get time(): GLib.DateTime;
         set time(val: GLib.DateTime);
 
-        // Constructors of Granite.TimePicker
+        // Constructors
 
         constructor(properties?: Partial<TimePicker.ConstructorProps>, ...args: any[]);
 
@@ -1310,7 +1310,7 @@ export namespace Granite {
 
         static ['new'](): TimePicker;
 
-        // Own signals of Granite.TimePicker
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -1319,7 +1319,7 @@ export namespace Granite {
         connect_after(signal: 'time-changed', callback: (_source: this) => void): number;
         emit(signal: 'time-changed'): void;
 
-        // Own methods of Granite.TimePicker
+        // Methods
 
         get_format_12(): string;
         get_format_24(): string;
@@ -1348,12 +1348,12 @@ export namespace Granite {
     class Toast extends Gtk.Widget {
         static $gtype: GObject.GType<Toast>;
 
-        // Own properties of Granite.Toast
+        // Properties
 
         get title(): string;
         set title(val: string);
 
-        // Constructors of Granite.Toast
+        // Constructors
 
         constructor(properties?: Partial<Toast.ConstructorProps>, ...args: any[]);
 
@@ -1361,7 +1361,7 @@ export namespace Granite {
 
         static ['new'](title: string): Toast;
 
-        // Own signals of Granite.Toast
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -1373,7 +1373,7 @@ export namespace Granite {
         connect_after(signal: 'default-action', callback: (_source: this) => void): number;
         emit(signal: 'default-action'): void;
 
-        // Own methods of Granite.Toast
+        // Methods
 
         get_title(): string;
         set_title(value: string): void;
@@ -1397,7 +1397,7 @@ export namespace Granite {
     class ValidatedEntry extends Gtk.Entry {
         static $gtype: GObject.GType<ValidatedEntry>;
 
-        // Own properties of Granite.ValidatedEntry
+        // Properties
 
         get is_valid(): boolean;
         set is_valid(val: boolean);
@@ -1410,7 +1410,7 @@ export namespace Granite {
         get regex(): GLib.Regex;
         set regex(val: GLib.Regex);
 
-        // Constructors of Granite.ValidatedEntry
+        // Constructors
 
         constructor(properties?: Partial<ValidatedEntry.ConstructorProps>, ...args: any[]);
 
@@ -1420,7 +1420,7 @@ export namespace Granite {
 
         static ['new'](): ValidatedEntry;
 
-        // Own methods of Granite.ValidatedEntry
+        // Methods
 
         get_is_valid(): boolean;
         set_is_valid(value: boolean): void;
@@ -1434,7 +1434,7 @@ export namespace Granite {
     abstract class ServicesContractorProxyPrivate {
         static $gtype: GObject.GType<ServicesContractorProxyPrivate>;
 
-        // Constructors of Granite.ServicesContractorProxyPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1443,7 +1443,7 @@ export namespace Granite {
     abstract class ServicesSystemPrivate {
         static $gtype: GObject.GType<ServicesSystemPrivate>;
 
-        // Constructors of Granite.ServicesSystemPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1454,7 +1454,7 @@ export namespace Granite {
     abstract class SettingsPagePrivate {
         static $gtype: GObject.GType<SettingsPagePrivate>;
 
-        // Constructors of Granite.SettingsPagePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1463,7 +1463,7 @@ export namespace Granite {
     abstract class SimpleSettingsPagePrivate {
         static $gtype: GObject.GType<SimpleSettingsPagePrivate>;
 
-        // Constructors of Granite.SimpleSettingsPagePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1472,7 +1472,7 @@ export namespace Granite {
     abstract class AccelLabelPrivate {
         static $gtype: GObject.GType<AccelLabelPrivate>;
 
-        // Constructors of Granite.AccelLabelPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1481,7 +1481,7 @@ export namespace Granite {
     abstract class DatePickerPrivate {
         static $gtype: GObject.GType<DatePickerPrivate>;
 
-        // Constructors of Granite.DatePickerPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1490,7 +1490,7 @@ export namespace Granite {
     abstract class DialogPrivate {
         static $gtype: GObject.GType<DialogPrivate>;
 
-        // Constructors of Granite.DialogPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1499,7 +1499,7 @@ export namespace Granite {
     abstract class HeaderLabelPrivate {
         static $gtype: GObject.GType<HeaderLabelPrivate>;
 
-        // Constructors of Granite.HeaderLabelPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1508,7 +1508,7 @@ export namespace Granite {
     abstract class HyperTextViewPrivate {
         static $gtype: GObject.GType<HyperTextViewPrivate>;
 
-        // Constructors of Granite.HyperTextViewPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1517,7 +1517,7 @@ export namespace Granite {
     abstract class MessageDialogPrivate {
         static $gtype: GObject.GType<MessageDialogPrivate>;
 
-        // Constructors of Granite.MessageDialogPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1526,7 +1526,7 @@ export namespace Granite {
     abstract class ModeSwitchPrivate {
         static $gtype: GObject.GType<ModeSwitchPrivate>;
 
-        // Constructors of Granite.ModeSwitchPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1535,7 +1535,7 @@ export namespace Granite {
     abstract class OverlayBarPrivate {
         static $gtype: GObject.GType<OverlayBarPrivate>;
 
-        // Constructors of Granite.OverlayBarPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1544,7 +1544,7 @@ export namespace Granite {
     abstract class PlaceholderPrivate {
         static $gtype: GObject.GType<PlaceholderPrivate>;
 
-        // Constructors of Granite.PlaceholderPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1553,7 +1553,7 @@ export namespace Granite {
     abstract class SettingsSidebarPrivate {
         static $gtype: GObject.GType<SettingsSidebarPrivate>;
 
-        // Constructors of Granite.SettingsSidebarPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1562,7 +1562,7 @@ export namespace Granite {
     abstract class SettingsPrivate {
         static $gtype: GObject.GType<SettingsPrivate>;
 
-        // Constructors of Granite.SettingsPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1571,7 +1571,7 @@ export namespace Granite {
     abstract class SwitchModelButtonPrivate {
         static $gtype: GObject.GType<SwitchModelButtonPrivate>;
 
-        // Constructors of Granite.SwitchModelButtonPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1580,7 +1580,7 @@ export namespace Granite {
     abstract class TimePickerPrivate {
         static $gtype: GObject.GType<TimePickerPrivate>;
 
-        // Constructors of Granite.TimePickerPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1589,7 +1589,7 @@ export namespace Granite {
     abstract class ToastPrivate {
         static $gtype: GObject.GType<ToastPrivate>;
 
-        // Constructors of Granite.ToastPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1598,7 +1598,7 @@ export namespace Granite {
     abstract class ValidatedEntryPrivate {
         static $gtype: GObject.GType<ValidatedEntryPrivate>;
 
-        // Constructors of Granite.ValidatedEntryPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1614,7 +1614,7 @@ export namespace Granite {
         prototype: ServicesContract;
     }
     interface ServicesContract extends GObject.Object {
-        // Own methods of Granite.ServicesContract
+        // Methods
 
         get_display_name(): string;
         get_description(): string;
@@ -1622,7 +1622,7 @@ export namespace Granite {
         execute_with_file(file: Gio.File): void;
         execute_with_files(files: Gio.File[]): void;
 
-        // Own virtual methods of Granite.ServicesContract
+        // Virtual methods
 
         vfunc_get_display_name(): string;
         vfunc_get_description(): string;
@@ -1644,12 +1644,12 @@ export namespace Granite {
         prototype: ServicesSettingsSerializable;
     }
     interface ServicesSettingsSerializable extends GObject.Object {
-        // Own methods of Granite.ServicesSettingsSerializable
+        // Methods
 
         settings_serialize(): string;
         settings_deserialize(s: string): void;
 
-        // Own virtual methods of Granite.ServicesSettingsSerializable
+        // Virtual methods
 
         vfunc_settings_serialize(): string;
         vfunc_settings_deserialize(s: string): void;

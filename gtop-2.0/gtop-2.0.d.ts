@@ -454,7 +454,7 @@ export namespace GTop {
     class glibtop {
         static $gtype: GObject.GType<glibtop>;
 
-        // Own fields of GTop.glibtop
+        // Fields
 
         flags: number;
         method: number;
@@ -482,11 +482,11 @@ export namespace GTop {
         ndisk: number;
         real_ndisk: number;
 
-        // Constructors of GTop.glibtop
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own static methods of GTop.glibtop
+        // Static methods
 
         static close(): void;
         static get_cpu(buf: glibtop_cpu): void;
@@ -525,7 +525,7 @@ export namespace GTop {
         static internet_addr(host: string): number;
         static make_connection(hostarg: string, portarg: number, s: number): number;
 
-        // Own methods of GTop.glibtop
+        // Methods
 
         call_l(
             command: number,
@@ -611,14 +611,14 @@ export namespace GTop {
     class glibtop_command {
         static $gtype: GObject.GType<glibtop_command>;
 
-        // Own fields of GTop.glibtop_command
+        // Fields
 
         command: number;
         size: number;
         data_size: number;
         parameter: number[];
 
-        // Constructors of GTop.glibtop_command
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -634,7 +634,7 @@ export namespace GTop {
     class glibtop_cpu {
         static $gtype: GObject.GType<glibtop_cpu>;
 
-        // Own fields of GTop.glibtop_cpu
+        // Fields
 
         flags: number;
         total: number;
@@ -656,7 +656,7 @@ export namespace GTop {
         xcpu_softirq: number[];
         xcpu_flags: number;
 
-        // Constructors of GTop.glibtop_cpu
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -687,7 +687,7 @@ export namespace GTop {
     class glibtop_disk {
         static $gtype: GObject.GType<glibtop_disk>;
 
-        // Own fields of GTop.glibtop_disk
+        // Fields
 
         flags: number;
         xdisk_sectors_read: number[];
@@ -696,7 +696,7 @@ export namespace GTop {
         xdisk_time_write: number[];
         xdisk_flags: number;
 
-        // Constructors of GTop.glibtop_disk
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -714,11 +714,11 @@ export namespace GTop {
     class glibtop_entry {
         static $gtype: GObject.GType<glibtop_entry>;
 
-        // Own fields of GTop.glibtop_entry
+        // Fields
 
         labels: any[];
 
-        // Constructors of GTop.glibtop_entry
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -726,7 +726,7 @@ export namespace GTop {
     class glibtop_fsusage {
         static $gtype: GObject.GType<glibtop_fsusage>;
 
-        // Own fields of GTop.glibtop_fsusage
+        // Fields
 
         flags: number;
         blocks: number;
@@ -738,7 +738,7 @@ export namespace GTop {
         read: number;
         write: number;
 
-        // Constructors of GTop.glibtop_fsusage
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -759,7 +759,7 @@ export namespace GTop {
     class glibtop_loadavg {
         static $gtype: GObject.GType<glibtop_loadavg>;
 
-        // Own fields of GTop.glibtop_loadavg
+        // Fields
 
         flags: number;
         loadavg: number[];
@@ -767,7 +767,7 @@ export namespace GTop {
         nr_tasks: number;
         last_pid: number;
 
-        // Constructors of GTop.glibtop_loadavg
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -784,7 +784,7 @@ export namespace GTop {
     abstract class glibtop_machine {
         static $gtype: GObject.GType<glibtop_machine>;
 
-        // Constructors of GTop.glibtop_machine
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -792,7 +792,7 @@ export namespace GTop {
     class glibtop_map_entry {
         static $gtype: GObject.GType<glibtop_map_entry>;
 
-        // Own fields of GTop.glibtop_map_entry
+        // Fields
 
         flags: number;
         start: number;
@@ -811,7 +811,7 @@ export namespace GTop {
         swap: number;
         filename: number[];
 
-        // Constructors of GTop.glibtop_map_entry
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -839,7 +839,7 @@ export namespace GTop {
     class glibtop_mem {
         static $gtype: GObject.GType<glibtop_mem>;
 
-        // Own fields of GTop.glibtop_mem
+        // Fields
 
         flags: number;
         total: number;
@@ -851,7 +851,7 @@ export namespace GTop {
         user: number;
         locked: number;
 
-        // Constructors of GTop.glibtop_mem
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -872,14 +872,14 @@ export namespace GTop {
     class glibtop_mountentry {
         static $gtype: GObject.GType<glibtop_mountentry>;
 
-        // Own fields of GTop.glibtop_mountentry
+        // Fields
 
         dev: number;
         devname: number[];
         mountdir: number[];
         type: number[];
 
-        // Constructors of GTop.glibtop_mountentry
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -895,14 +895,14 @@ export namespace GTop {
     class glibtop_mountlist {
         static $gtype: GObject.GType<glibtop_mountlist>;
 
-        // Own fields of GTop.glibtop_mountlist
+        // Fields
 
         flags: number;
         number: number;
         total: number;
         size: number;
 
-        // Constructors of GTop.glibtop_mountlist
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -918,7 +918,7 @@ export namespace GTop {
     class glibtop_msg_limits {
         static $gtype: GObject.GType<glibtop_msg_limits>;
 
-        // Own fields of GTop.glibtop_msg_limits
+        // Fields
 
         flags: number;
         msgpool: number;
@@ -929,7 +929,7 @@ export namespace GTop {
         msgssz: number;
         msgtql: number;
 
-        // Constructors of GTop.glibtop_msg_limits
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -949,12 +949,12 @@ export namespace GTop {
     class glibtop_netlist {
         static $gtype: GObject.GType<glibtop_netlist>;
 
-        // Own fields of GTop.glibtop_netlist
+        // Fields
 
         flags: number;
         number: number;
 
-        // Constructors of GTop.glibtop_netlist
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -968,7 +968,7 @@ export namespace GTop {
     class glibtop_netload {
         static $gtype: GObject.GType<glibtop_netload>;
 
-        // Own fields of GTop.glibtop_netload
+        // Fields
 
         flags: number;
         if_flags: number;
@@ -990,7 +990,7 @@ export namespace GTop {
         scope6: number;
         hwaddress: Uint8Array;
 
-        // Constructors of GTop.glibtop_netload
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -1021,12 +1021,12 @@ export namespace GTop {
     class glibtop_open_files_entry {
         static $gtype: GObject.GType<glibtop_open_files_entry>;
 
-        // Own fields of GTop.glibtop_open_files_entry
+        // Fields
 
         fd: number;
         type: number;
 
-        // Constructors of GTop.glibtop_open_files_entry
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -1040,14 +1040,14 @@ export namespace GTop {
     class glibtop_ppp {
         static $gtype: GObject.GType<glibtop_ppp>;
 
-        // Own fields of GTop.glibtop_ppp
+        // Fields
 
         flags: number;
         state: number;
         bytes_in: number;
         bytes_out: number;
 
-        // Constructors of GTop.glibtop_ppp
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -1063,13 +1063,13 @@ export namespace GTop {
     class glibtop_proc_affinity {
         static $gtype: GObject.GType<glibtop_proc_affinity>;
 
-        // Own fields of GTop.glibtop_proc_affinity
+        // Fields
 
         flags: number;
         number: number;
         all: boolean;
 
-        // Constructors of GTop.glibtop_proc_affinity
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -1084,12 +1084,12 @@ export namespace GTop {
     class glibtop_proc_args {
         static $gtype: GObject.GType<glibtop_proc_args>;
 
-        // Own fields of GTop.glibtop_proc_args
+        // Fields
 
         flags: number;
         size: number;
 
-        // Constructors of GTop.glibtop_proc_args
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -1106,7 +1106,7 @@ export namespace GTop {
     class glibtop_proc_io {
         static $gtype: GObject.GType<glibtop_proc_io>;
 
-        // Own fields of GTop.glibtop_proc_io
+        // Fields
 
         flags: number;
         disk_rchar: number;
@@ -1115,7 +1115,7 @@ export namespace GTop {
         disk_wbytes: number;
         reserved: number[];
 
-        // Constructors of GTop.glibtop_proc_io
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -1133,7 +1133,7 @@ export namespace GTop {
     class glibtop_proc_kernel {
         static $gtype: GObject.GType<glibtop_proc_kernel>;
 
-        // Own fields of GTop.glibtop_proc_kernel
+        // Fields
 
         flags: number;
         k_flags: number;
@@ -1146,7 +1146,7 @@ export namespace GTop {
         nwchan: number;
         wchan: number[];
 
-        // Constructors of GTop.glibtop_proc_kernel
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -1168,14 +1168,14 @@ export namespace GTop {
     class glibtop_proc_map {
         static $gtype: GObject.GType<glibtop_proc_map>;
 
-        // Own fields of GTop.glibtop_proc_map
+        // Fields
 
         flags: number;
         number: number;
         total: number;
         size: number;
 
-        // Constructors of GTop.glibtop_proc_map
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -1191,7 +1191,7 @@ export namespace GTop {
     class glibtop_proc_mem {
         static $gtype: GObject.GType<glibtop_proc_mem>;
 
-        // Own fields of GTop.glibtop_proc_mem
+        // Fields
 
         flags: number;
         size: number;
@@ -1201,7 +1201,7 @@ export namespace GTop {
         rss: number;
         rss_rlim: number;
 
-        // Constructors of GTop.glibtop_proc_mem
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -1220,14 +1220,14 @@ export namespace GTop {
     class glibtop_proc_open_files {
         static $gtype: GObject.GType<glibtop_proc_open_files>;
 
-        // Own fields of GTop.glibtop_proc_open_files
+        // Fields
 
         flags: number;
         number: number;
         total: number;
         size: number;
 
-        // Constructors of GTop.glibtop_proc_open_files
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -1243,7 +1243,7 @@ export namespace GTop {
     class glibtop_proc_segment {
         static $gtype: GObject.GType<glibtop_proc_segment>;
 
-        // Own fields of GTop.glibtop_proc_segment
+        // Fields
 
         flags: number;
         text_rss: number;
@@ -1255,7 +1255,7 @@ export namespace GTop {
         end_code: number;
         start_stack: number;
 
-        // Constructors of GTop.glibtop_proc_segment
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -1276,7 +1276,7 @@ export namespace GTop {
     class glibtop_proc_signal {
         static $gtype: GObject.GType<glibtop_proc_signal>;
 
-        // Own fields of GTop.glibtop_proc_signal
+        // Fields
 
         flags: number;
         signal: number[];
@@ -1284,7 +1284,7 @@ export namespace GTop {
         sigignore: number[];
         sigcatch: number[];
 
-        // Constructors of GTop.glibtop_proc_signal
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -1301,7 +1301,7 @@ export namespace GTop {
     class glibtop_proc_state {
         static $gtype: GObject.GType<glibtop_proc_state>;
 
-        // Own fields of GTop.glibtop_proc_state
+        // Fields
 
         flags: number;
         cmd: number[];
@@ -1314,7 +1314,7 @@ export namespace GTop {
         processor: number;
         last_processor: number;
 
-        // Constructors of GTop.glibtop_proc_state
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -1350,7 +1350,7 @@ export namespace GTop {
     class glibtop_proc_time {
         static $gtype: GObject.GType<glibtop_proc_time>;
 
-        // Own fields of GTop.glibtop_proc_time
+        // Fields
 
         start_time: number;
         rtime: number;
@@ -1364,7 +1364,7 @@ export namespace GTop {
         xcpu_utime: number[];
         xcpu_stime: number[];
 
-        // Constructors of GTop.glibtop_proc_time
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -1387,7 +1387,7 @@ export namespace GTop {
     class glibtop_proc_uid {
         static $gtype: GObject.GType<glibtop_proc_uid>;
 
-        // Own fields of GTop.glibtop_proc_uid
+        // Fields
 
         flags: number;
         uid: number;
@@ -1409,7 +1409,7 @@ export namespace GTop {
         ngroups: number;
         groups: number[];
 
-        // Constructors of GTop.glibtop_proc_uid
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -1440,14 +1440,14 @@ export namespace GTop {
     class glibtop_proc_wd {
         static $gtype: GObject.GType<glibtop_proc_wd>;
 
-        // Own fields of GTop.glibtop_proc_wd
+        // Fields
 
         flags: number;
         number: number;
         root: number[];
         exe: number[];
 
-        // Constructors of GTop.glibtop_proc_wd
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -1463,14 +1463,14 @@ export namespace GTop {
     class glibtop_proclist {
         static $gtype: GObject.GType<glibtop_proclist>;
 
-        // Own fields of GTop.glibtop_proclist
+        // Fields
 
         flags: number;
         number: number;
         total: number;
         size: number;
 
-        // Constructors of GTop.glibtop_proclist
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -1486,14 +1486,14 @@ export namespace GTop {
     class glibtop_response {
         static $gtype: GObject.GType<glibtop_response>;
 
-        // Own fields of GTop.glibtop_response
+        // Fields
 
         offset: number;
         size: number;
         data_size: number;
         u: glibtop_response_union;
 
-        // Constructors of GTop.glibtop_response
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -1509,7 +1509,7 @@ export namespace GTop {
     class glibtop_sem_limits {
         static $gtype: GObject.GType<glibtop_sem_limits>;
 
-        // Own fields of GTop.glibtop_sem_limits
+        // Fields
 
         flags: number;
         semmap: number;
@@ -1523,7 +1523,7 @@ export namespace GTop {
         semvmx: number;
         semaem: number;
 
-        // Constructors of GTop.glibtop_sem_limits
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -1546,7 +1546,7 @@ export namespace GTop {
     class glibtop_shm_limits {
         static $gtype: GObject.GType<glibtop_shm_limits>;
 
-        // Own fields of GTop.glibtop_shm_limits
+        // Fields
 
         flags: number;
         shmmax: number;
@@ -1555,7 +1555,7 @@ export namespace GTop {
         shmseg: number;
         shmall: number;
 
-        // Constructors of GTop.glibtop_shm_limits
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -1573,13 +1573,13 @@ export namespace GTop {
     class glibtop_signame {
         static $gtype: GObject.GType<glibtop_signame>;
 
-        // Own fields of GTop.glibtop_signame
+        // Fields
 
         number: number;
         name: string;
         label: string;
 
-        // Constructors of GTop.glibtop_signame
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -1594,7 +1594,7 @@ export namespace GTop {
     class glibtop_swap {
         static $gtype: GObject.GType<glibtop_swap>;
 
-        // Own fields of GTop.glibtop_swap
+        // Fields
 
         flags: number;
         total: number;
@@ -1603,7 +1603,7 @@ export namespace GTop {
         pagein: number;
         pageout: number;
 
-        // Constructors of GTop.glibtop_swap
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -1621,7 +1621,7 @@ export namespace GTop {
     class glibtop_sysdeps {
         static $gtype: GObject.GType<glibtop_sysdeps>;
 
-        // Own fields of GTop.glibtop_sysdeps
+        // Fields
 
         flags: number;
         features: number;
@@ -1661,7 +1661,7 @@ export namespace GTop {
         reserved6: number;
         reserved7: number;
 
-        // Constructors of GTop.glibtop_sysdeps
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -1710,12 +1710,12 @@ export namespace GTop {
     class glibtop_sysinfo {
         static $gtype: GObject.GType<glibtop_sysinfo>;
 
-        // Own fields of GTop.glibtop_sysinfo
+        // Fields
 
         flags: number;
         ncpu: number;
 
-        // Constructors of GTop.glibtop_sysinfo
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1723,14 +1723,14 @@ export namespace GTop {
     class glibtop_uptime {
         static $gtype: GObject.GType<glibtop_uptime>;
 
-        // Own fields of GTop.glibtop_uptime
+        // Fields
 
         flags: number;
         uptime: number;
         idletime: number;
         boot_time: number;
 
-        // Constructors of GTop.glibtop_uptime
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -1746,14 +1746,14 @@ export namespace GTop {
     class partition_info {
         static $gtype: GObject.GType<partition_info>;
 
-        // Own fields of GTop.partition_info
+        // Fields
 
         name: number[];
         type: number[];
         raid_num: number[];
         max: number;
 
-        // Constructors of GTop.partition_info
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -1769,12 +1769,12 @@ export namespace GTop {
     class glibtop_response_union {
         static $gtype: GObject.GType<glibtop_response_union>;
 
-        // Own fields of GTop.glibtop_response_union
+        // Fields
 
         data: glibtop_union;
         sysdeps: glibtop_sysdeps;
 
-        // Constructors of GTop.glibtop_response_union
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -1788,7 +1788,7 @@ export namespace GTop {
     class glibtop_union {
         static $gtype: GObject.GType<glibtop_union>;
 
-        // Own fields of GTop.glibtop_union
+        // Fields
 
         cpu: glibtop_cpu;
         disk: glibtop_disk;
@@ -1819,7 +1819,7 @@ export namespace GTop {
         proc_affinity: glibtop_proc_affinity;
         proc_io: glibtop_proc_io;
 
-        // Constructors of GTop.glibtop_union
+        // Constructors
 
         constructor(
             properties?: Partial<{

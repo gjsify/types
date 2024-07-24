@@ -81,7 +81,7 @@ export namespace GUdev {
     class Client extends GObject.Object {
         static $gtype: GObject.GType<Client>;
 
-        // Own properties of GUdev.Client
+        // Properties
 
         /**
          * The subsystems to listen for uevents on.
@@ -97,7 +97,7 @@ export namespace GUdev {
          */
         get subsystems(): string[];
 
-        // Constructors of GUdev.Client
+        // Constructors
 
         constructor(properties?: Partial<Client.ConstructorProps>, ...args: any[]);
 
@@ -105,7 +105,7 @@ export namespace GUdev {
 
         static ['new'](subsystems?: string[] | null): Client;
 
-        // Own signals of GUdev.Client
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -114,11 +114,11 @@ export namespace GUdev {
         connect_after(signal: 'uevent', callback: (_source: this, action: string, device: Device) => void): number;
         emit(signal: 'uevent', action: string, device: Device): void;
 
-        // Own virtual methods of GUdev.Client
+        // Virtual methods
 
         vfunc_uevent(action: string, device: Device): void;
 
-        // Own methods of GUdev.Client
+        // Methods
 
         /**
          * Looks up a device for a device file.
@@ -211,13 +211,13 @@ export namespace GUdev {
     class Device extends GObject.Object {
         static $gtype: GObject.GType<Device>;
 
-        // Constructors of GUdev.Device
+        // Constructors
 
         constructor(properties?: Partial<Device.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of GUdev.Device
+        // Methods
 
         /**
          * Gets the most recent action (e.g. "add", "remove", "change", etc.) for `device`.
@@ -540,14 +540,14 @@ export namespace GUdev {
     class Enumerator extends GObject.Object {
         static $gtype: GObject.GType<Enumerator>;
 
-        // Own properties of GUdev.Enumerator
+        // Properties
 
         /**
          * The #GUdevClient to enumerate devices from.
          */
         get client(): Client;
 
-        // Constructors of GUdev.Enumerator
+        // Constructors
 
         constructor(properties?: Partial<Enumerator.ConstructorProps>, ...args: any[]);
 
@@ -555,7 +555,7 @@ export namespace GUdev {
 
         static ['new'](client: Client): Enumerator;
 
-        // Own methods of GUdev.Enumerator
+        // Methods
 
         /**
          * All returned devices will be initialized.
@@ -624,7 +624,7 @@ export namespace GUdev {
     abstract class ClientPrivate {
         static $gtype: GObject.GType<ClientPrivate>;
 
-        // Constructors of GUdev.ClientPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -633,7 +633,7 @@ export namespace GUdev {
     abstract class DevicePrivate {
         static $gtype: GObject.GType<DevicePrivate>;
 
-        // Constructors of GUdev.DevicePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -642,7 +642,7 @@ export namespace GUdev {
     abstract class EnumeratorPrivate {
         static $gtype: GObject.GType<EnumeratorPrivate>;
 
-        // Constructors of GUdev.EnumeratorPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }

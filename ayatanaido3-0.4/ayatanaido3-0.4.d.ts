@@ -96,7 +96,7 @@ export namespace AyatanaIdo3 {
     {
         static $gtype: GObject.GType<CalendarMenuItem>;
 
-        // Constructors of AyatanaIdo3.CalendarMenuItem
+        // Constructors
 
         constructor(properties?: Partial<CalendarMenuItem.ConstructorProps>, ...args: any[]);
 
@@ -106,7 +106,7 @@ export namespace AyatanaIdo3 {
 
         static new_from_model(menuitem: Gio.MenuItem, actions: Gio.ActionGroup): CalendarMenuItem;
 
-        // Own signals of AyatanaIdo3.CalendarMenuItem
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -121,7 +121,7 @@ export namespace AyatanaIdo3 {
         connect_after(signal: 'month-changed', callback: (_source: this) => void): number;
         emit(signal: 'month-changed'): void;
 
-        // Own methods of AyatanaIdo3.CalendarMenuItem
+        // Methods
 
         /**
          * Remove all visual markers.
@@ -4356,7 +4356,7 @@ export namespace AyatanaIdo3 {
     {
         static $gtype: GObject.GType<EntryMenuItem>;
 
-        // Constructors of AyatanaIdo3.EntryMenuItem
+        // Constructors
 
         constructor(properties?: Partial<EntryMenuItem.ConstructorProps>, ...args: any[]);
 
@@ -4364,7 +4364,7 @@ export namespace AyatanaIdo3 {
 
         static ['new'](): EntryMenuItem;
 
-        // Own methods of AyatanaIdo3.EntryMenuItem
+        // Methods
 
         /**
          * Get the #GtkEntry used in this menu item.
@@ -8557,7 +8557,7 @@ export namespace AyatanaIdo3 {
     class Range extends Gtk.Scale implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<Range>;
 
-        // Constructors of AyatanaIdo3.Range
+        // Constructors
 
         constructor(properties?: Partial<Range.ConstructorProps>, ...args: any[]);
 
@@ -9014,7 +9014,7 @@ export namespace AyatanaIdo3 {
     {
         static $gtype: GObject.GType<ScaleMenuItem>;
 
-        // Own properties of AyatanaIdo3.ScaleMenuItem
+        // Properties
 
         get adjustment(): Gtk.Adjustment;
         set adjustment(val: Gtk.Adjustment);
@@ -9023,7 +9023,7 @@ export namespace AyatanaIdo3 {
         get reverseScrollEvents(): boolean;
         set reverseScrollEvents(val: boolean);
 
-        // Constructors of AyatanaIdo3.ScaleMenuItem
+        // Constructors
 
         constructor(properties?: Partial<ScaleMenuItem.ConstructorProps>, ...args: any[]);
 
@@ -9045,7 +9045,7 @@ export namespace AyatanaIdo3 {
             step: number,
         ): ScaleMenuItem;
 
-        // Own signals of AyatanaIdo3.ScaleMenuItem
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -9066,7 +9066,7 @@ export namespace AyatanaIdo3 {
         connect_after(signal: 'value-changed', callback: (_source: this, value: number) => void): number;
         emit(signal: 'value-changed', value: number): void;
 
-        // Own virtual methods of AyatanaIdo3.ScaleMenuItem
+        // Virtual methods
 
         /**
          * Emits the "primary-clicked" signal.
@@ -9083,7 +9083,7 @@ export namespace AyatanaIdo3 {
          */
         vfunc_secondary_clicked(): void;
 
-        // Own methods of AyatanaIdo3.ScaleMenuItem
+        // Methods
 
         /**
          * Retrieves a pointer to the image widget used in the primary slot.
@@ -13341,7 +13341,7 @@ export namespace AyatanaIdo3 {
     {
         static $gtype: GObject.GType<SwitchMenuItem>;
 
-        // Constructors of AyatanaIdo3.SwitchMenuItem
+        // Constructors
 
         constructor(properties?: Partial<SwitchMenuItem.ConstructorProps>, ...args: any[]);
 
@@ -13351,7 +13351,7 @@ export namespace AyatanaIdo3 {
 
         static new_from_menu_model(menuitem: Gio.MenuItem, actions: Gio.ActionGroup): SwitchMenuItem;
 
-        // Own methods of AyatanaIdo3.SwitchMenuItem
+        // Methods
 
         /**
          * Get the #GtkContainer to add additional widgets into.
@@ -17337,7 +17337,7 @@ export namespace AyatanaIdo3 {
     class Timeline extends GObject.Object {
         static $gtype: GObject.GType<Timeline>;
 
-        // Own properties of AyatanaIdo3.Timeline
+        // Properties
 
         get duration(): number;
         set duration(val: number);
@@ -17348,7 +17348,7 @@ export namespace AyatanaIdo3 {
         get screen(): Gdk.Screen;
         set screen(val: Gdk.Screen);
 
-        // Constructors of AyatanaIdo3.Timeline
+        // Constructors
 
         constructor(properties?: Partial<Timeline.ConstructorProps>, ...args: any[]);
 
@@ -17358,7 +17358,7 @@ export namespace AyatanaIdo3 {
 
         static new_for_screen(duration: number, screen: Gdk.Screen): Timeline;
 
-        // Own signals of AyatanaIdo3.Timeline
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -17376,7 +17376,7 @@ export namespace AyatanaIdo3 {
         connect_after(signal: 'started', callback: (_source: this) => void): number;
         emit(signal: 'started'): void;
 
-        // Own static methods of AyatanaIdo3.Timeline
+        // Static methods
 
         /**
          * Transform a linear progress position using the given transform.
@@ -17385,14 +17385,14 @@ export namespace AyatanaIdo3 {
          */
         static calculate_progress(linear_progress: number, progress_type: TimelineProgressType): number;
 
-        // Own virtual methods of AyatanaIdo3.Timeline
+        // Virtual methods
 
         vfunc_finished(): void;
         vfunc_frame(progress: number): void;
         vfunc_paused(): void;
         vfunc_started(): void;
 
-        // Own methods of AyatanaIdo3.Timeline
+        // Methods
 
         /**
          * Returns the direction of the timeline.

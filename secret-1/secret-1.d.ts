@@ -967,7 +967,7 @@ export namespace Secret {
     class Collection extends Gio.DBusProxy implements Gio.AsyncInitable<Collection>, Gio.DBusInterface, Gio.Initable {
         static $gtype: GObject.GType<Collection>;
 
-        // Own properties of Secret.Collection
+        // Properties
 
         /**
          * The date and time (in seconds since the UNIX epoch) that this
@@ -1008,13 +1008,13 @@ export namespace Secret {
          */
         get service(): Service;
 
-        // Constructors of Secret.Collection
+        // Constructors
 
         constructor(properties?: Partial<Collection.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of Secret.Collection
+        // Static methods
 
         /**
          * Create a new collection in the secret service.
@@ -1126,7 +1126,7 @@ export namespace Secret {
             cancellable?: Gio.Cancellable | null,
         ): Collection | null;
 
-        // Own methods of Secret.Collection
+        // Methods
 
         /**
          * Delete this collection.
@@ -2017,7 +2017,7 @@ export namespace Secret {
     class Item extends Gio.DBusProxy implements Gio.AsyncInitable<Item>, Gio.DBusInterface, Gio.Initable, Retrievable {
         static $gtype: GObject.GType<Item>;
 
-        // Own properties of Secret.Item
+        // Properties
 
         /**
          * A set of flags describing which parts of the secret item have
@@ -2040,13 +2040,13 @@ export namespace Secret {
          */
         get service(): Service;
 
-        // Constructors of Secret.Item
+        // Constructors
 
         constructor(properties?: Partial<Item.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of Secret.Item
+        // Static methods
 
         /**
          * Create a new item in the secret service.
@@ -2146,7 +2146,7 @@ export namespace Secret {
          */
         static load_secrets_sync(items: Item[], cancellable?: Gio.Cancellable | null): boolean;
 
-        // Own methods of Secret.Item
+        // Methods
 
         /**
          * Delete this item.
@@ -3140,13 +3140,13 @@ export namespace Secret {
     class Prompt extends Gio.DBusProxy implements Gio.AsyncInitable<Prompt>, Gio.DBusInterface, Gio.Initable {
         static $gtype: GObject.GType<Prompt>;
 
-        // Constructors of Secret.Prompt
+        // Constructors
 
         constructor(properties?: Partial<Prompt.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Secret.Prompt
+        // Methods
 
         /**
          * Runs a prompt and performs the prompting.
@@ -3921,13 +3921,13 @@ export namespace Secret {
     {
         static $gtype: GObject.GType<Service>;
 
-        // Constructors of Secret.Service
+        // Constructors
 
         constructor(properties?: Partial<Service.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of Secret.Service
+        // Static methods
 
         /**
          * Disconnect the default #SecretService proxy returned by [func`Service`.get]
@@ -4041,7 +4041,7 @@ export namespace Secret {
             cancellable?: Gio.Cancellable | null,
         ): Service;
 
-        // Own virtual methods of Secret.Service
+        // Virtual methods
 
         /**
          * Get the GObject type for collections instantiated by this service.
@@ -4094,7 +4094,7 @@ export namespace Secret {
             return_type: GLib.VariantType,
         ): GLib.Variant;
 
-        // Own methods of Secret.Service
+        // Methods
 
         /**
          * Remove unlocked items which match the attributes from the secret service.
@@ -5399,7 +5399,7 @@ export namespace Secret {
     abstract class CollectionPrivate {
         static $gtype: GObject.GType<CollectionPrivate>;
 
-        // Constructors of Secret.CollectionPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5408,7 +5408,7 @@ export namespace Secret {
     abstract class ItemPrivate {
         static $gtype: GObject.GType<ItemPrivate>;
 
-        // Constructors of Secret.ItemPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5417,7 +5417,7 @@ export namespace Secret {
     abstract class PromptPrivate {
         static $gtype: GObject.GType<PromptPrivate>;
 
-        // Constructors of Secret.PromptPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5481,12 +5481,12 @@ export namespace Secret {
     class Schema {
         static $gtype: GObject.GType<Schema>;
 
-        // Own fields of Secret.Schema
+        // Fields
 
         name: string;
         flags: SchemaFlags;
 
-        // Constructors of Secret.Schema
+        // Constructors
 
         constructor(name: string, flags: SchemaFlags, ___: any[]);
         _init(...args: any[]): void;
@@ -5497,7 +5497,7 @@ export namespace Secret {
             attribute_names_and_types: { [key: string]: any } | GLib.HashTable<string, SchemaAttributeType>,
         ): Schema;
 
-        // Own methods of Secret.Schema
+        // Methods
 
         /**
          * Adds a reference to the #SecretSchema.
@@ -5526,12 +5526,12 @@ export namespace Secret {
     class SchemaAttribute {
         static $gtype: GObject.GType<SchemaAttribute>;
 
-        // Own fields of Secret.SchemaAttribute
+        // Fields
 
         name: string;
         type: SchemaAttributeType;
 
-        // Constructors of Secret.SchemaAttribute
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5540,7 +5540,7 @@ export namespace Secret {
     abstract class ServicePrivate {
         static $gtype: GObject.GType<ServicePrivate>;
 
-        // Constructors of Secret.ServicePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5563,7 +5563,7 @@ export namespace Secret {
     class Value {
         static $gtype: GObject.GType<Value>;
 
-        // Constructors of Secret.Value
+        // Constructors
 
         constructor(secret: string, length: number, content_type: string);
         _init(...args: any[]): void;
@@ -5572,7 +5572,7 @@ export namespace Secret {
 
         static new_full(secret: string, length: number, content_type: string): Value;
 
-        // Own methods of Secret.Value
+        // Methods
 
         /**
          * Get the secret data in the #SecretValue.
@@ -5657,7 +5657,7 @@ export namespace Secret {
         get_finish(result: Gio.AsyncResult): Backend;
     }
     interface Backend extends Gio.AsyncInitable {
-        // Own properties of Secret.Backend
+        // Properties
 
         /**
          * A set of flags describing which parts of the secret backend have
@@ -5665,7 +5665,7 @@ export namespace Secret {
          */
         get flags(): ServiceFlags;
 
-        // Own virtual methods of Secret.Backend
+        // Virtual methods
 
         vfunc_clear(
             schema: Schema,
@@ -5724,7 +5724,7 @@ export namespace Secret {
         prototype: Retrievable;
     }
     interface Retrievable extends GObject.Object {
-        // Own properties of Secret.Retrievable
+        // Properties
 
         /**
          * The attributes set on this item.
@@ -5752,7 +5752,7 @@ export namespace Secret {
         get modified(): number;
         set modified(val: number);
 
-        // Own methods of Secret.Retrievable
+        // Methods
 
         /**
          * Get the attributes of this object.
@@ -5816,7 +5816,7 @@ export namespace Secret {
          */
         retrieve_secret_sync(cancellable?: Gio.Cancellable | null): Value | null;
 
-        // Own virtual methods of Secret.Retrievable
+        // Virtual methods
 
         /**
          * Retrieve the secret value of this object.

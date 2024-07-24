@@ -32,7 +32,7 @@ export namespace GstBadAllocators {
         prototype: PhysMemoryAllocator;
     }
     interface PhysMemoryAllocator extends Gst.Allocator {
-        // Own virtual methods of GstBadAllocators.PhysMemoryAllocator
+        // Virtual methods
 
         vfunc_get_phys_addr(mem: Gst.Memory): never;
     }

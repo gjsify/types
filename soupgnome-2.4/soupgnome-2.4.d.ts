@@ -30,7 +30,7 @@ export namespace SoupGNOME {
     class CookieJarSqlite extends Soup.CookieJarDB implements Soup.SessionFeature {
         static $gtype: GObject.GType<CookieJarSqlite>;
 
-        // Constructors of SoupGNOME.CookieJarSqlite
+        // Constructors
 
         constructor(properties?: Partial<CookieJarSqlite.ConstructorProps>, ...args: any[]);
 
@@ -453,7 +453,7 @@ export namespace SoupGNOME {
     class PasswordManagerGNOME extends GObject.Object implements Soup.SessionFeature {
         static $gtype: GObject.GType<PasswordManagerGNOME>;
 
-        // Constructors of SoupGNOME.PasswordManagerGNOME
+        // Constructors
 
         constructor(properties?: Partial<PasswordManagerGNOME.ConstructorProps>, ...args: any[]);
 
@@ -924,7 +924,7 @@ export namespace SoupGNOME {
     class ProxyResolverGNOME extends Soup.ProxyResolverDefault implements Soup.ProxyURIResolver, Soup.SessionFeature {
         static $gtype: GObject.GType<ProxyResolverGNOME>;
 
-        // Constructors of SoupGNOME.ProxyResolverGNOME
+        // Constructors
 
         constructor(properties?: Partial<ProxyResolverGNOME.ConstructorProps>, ...args: any[]);
 

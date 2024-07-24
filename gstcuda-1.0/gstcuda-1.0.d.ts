@@ -198,13 +198,13 @@ export namespace GstCuda {
     class CudaAllocator extends Gst.Allocator {
         static $gtype: GObject.GType<CudaAllocator>;
 
-        // Constructors of GstCuda.CudaAllocator
+        // Constructors
 
         constructor(properties?: Partial<CudaAllocator.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of GstCuda.CudaAllocator
+        // Virtual methods
 
         /**
          * Controls the active state of `allocator`. Default #GstCudaAllocator is
@@ -217,7 +217,7 @@ export namespace GstCuda {
          */
         vfunc_set_active(active: boolean): boolean;
 
-        // Own methods of GstCuda.CudaAllocator
+        // Methods
 
         alloc(context: CudaContext, stream: CudaStream | null, info: GstVideo.VideoInfo): Gst.Memory | null;
         // Conflicted with Gst.Allocator.alloc
@@ -284,11 +284,11 @@ export namespace GstCuda {
     class CudaBufferPool extends Gst.BufferPool {
         static $gtype: GObject.GType<CudaBufferPool>;
 
-        // Own fields of GstCuda.CudaBufferPool
+        // Fields
 
         context: CudaContext;
 
-        // Constructors of GstCuda.CudaBufferPool
+        // Constructors
 
         constructor(properties?: Partial<CudaBufferPool.ConstructorProps>, ...args: any[]);
 
@@ -316,7 +316,7 @@ export namespace GstCuda {
     class CudaContext extends Gst.Object {
         static $gtype: GObject.GType<CudaContext>;
 
-        // Own properties of GstCuda.CudaContext
+        // Properties
 
         get cuda_device_id(): number;
         get cudaDeviceId(): number;
@@ -337,11 +337,11 @@ export namespace GstCuda {
          */
         get virtualMemory(): boolean;
 
-        // Own fields of GstCuda.CudaContext
+        // Fields
 
         object: Gst.Object;
 
-        // Constructors of GstCuda.CudaContext
+        // Constructors
 
         constructor(properties?: Partial<CudaContext.ConstructorProps>, ...args: any[]);
 
@@ -351,7 +351,7 @@ export namespace GstCuda {
 
         static new_wrapped(handler: CudaGst.context, device: CudaGst.device): CudaContext;
 
-        // Own static methods of GstCuda.CudaContext
+        // Static methods
 
         /**
          * Pops the current CUDA context from CPU thread
@@ -359,7 +359,7 @@ export namespace GstCuda {
          */
         static pop(cuda_ctx: CudaGst.context): boolean;
 
-        // Own methods of GstCuda.CudaContext
+        // Methods
 
         /**
          * Query whether `ctx` can access any memory which belongs to `peer` directly.
@@ -399,11 +399,11 @@ export namespace GstCuda {
     class CudaPoolAllocator extends CudaAllocator {
         static $gtype: GObject.GType<CudaPoolAllocator>;
 
-        // Own fields of GstCuda.CudaPoolAllocator
+        // Fields
 
         context: CudaContext;
 
-        // Constructors of GstCuda.CudaPoolAllocator
+        // Constructors
 
         constructor(properties?: Partial<CudaPoolAllocator.ConstructorProps>, ...args: any[]);
 
@@ -419,7 +419,7 @@ export namespace GstCuda {
             granularity_flags: CudaGst.memAllocationGranularity_flags,
         ): CudaPoolAllocator;
 
-        // Own methods of GstCuda.CudaPoolAllocator
+        // Methods
 
         /**
          * Acquires a #GstMemory from `allocator`. `memory` should point to a memory
@@ -433,7 +433,7 @@ export namespace GstCuda {
     abstract class CudaAllocatorPrivate {
         static $gtype: GObject.GType<CudaAllocatorPrivate>;
 
-        // Constructors of GstCuda.CudaAllocatorPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -442,7 +442,7 @@ export namespace GstCuda {
     abstract class CudaBufferPoolPrivate {
         static $gtype: GObject.GType<CudaBufferPoolPrivate>;
 
-        // Constructors of GstCuda.CudaBufferPoolPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -451,7 +451,7 @@ export namespace GstCuda {
     abstract class CudaContextPrivate {
         static $gtype: GObject.GType<CudaContextPrivate>;
 
-        // Constructors of GstCuda.CudaContextPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -459,7 +459,7 @@ export namespace GstCuda {
     class CudaGraphicsResource {
         static $gtype: GObject.GType<CudaGraphicsResource>;
 
-        // Own fields of GstCuda.CudaGraphicsResource
+        // Fields
 
         cuda_context: CudaContext;
         graphics_context: Gst.Object;
@@ -469,7 +469,7 @@ export namespace GstCuda {
         registered: boolean;
         mapped: boolean;
 
-        // Constructors of GstCuda.CudaGraphicsResource
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -477,22 +477,22 @@ export namespace GstCuda {
     class CudaMemory {
         static $gtype: GObject.GType<CudaMemory>;
 
-        // Own fields of GstCuda.CudaMemory
+        // Fields
 
         context: CudaContext;
 
-        // Constructors of GstCuda.CudaMemory
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own static methods of GstCuda.CudaMemory
+        // Static methods
 
         /**
          * Ensures that the #GstCudaAllocator is initialized and ready to be used.
          */
         static init_once(): void;
 
-        // Own methods of GstCuda.CudaMemory
+        // Methods
 
         /**
          * Exports virtual memory handle to OS specific handle.
@@ -547,7 +547,7 @@ export namespace GstCuda {
     abstract class CudaMemoryPrivate {
         static $gtype: GObject.GType<CudaMemoryPrivate>;
 
-        // Constructors of GstCuda.CudaMemoryPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -556,7 +556,7 @@ export namespace GstCuda {
     abstract class CudaPoolAllocatorPrivate {
         static $gtype: GObject.GType<CudaPoolAllocatorPrivate>;
 
-        // Constructors of GstCuda.CudaPoolAllocatorPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -564,18 +564,18 @@ export namespace GstCuda {
     class CudaStream {
         static $gtype: GObject.GType<CudaStream>;
 
-        // Own fields of GstCuda.CudaStream
+        // Fields
 
         context: CudaContext;
 
-        // Constructors of GstCuda.CudaStream
+        // Constructors
 
         constructor(context: CudaContext);
         _init(...args: any[]): void;
 
         static ['new'](context: CudaContext): CudaStream;
 
-        // Own methods of GstCuda.CudaStream
+        // Methods
 
         /**
          * Get CUDA stream handle
@@ -596,7 +596,7 @@ export namespace GstCuda {
     abstract class CudaStreamPrivate {
         static $gtype: GObject.GType<CudaStreamPrivate>;
 
-        // Constructors of GstCuda.CudaStreamPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }

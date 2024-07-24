@@ -24,7 +24,7 @@ export namespace Polkit {
     class Error extends GLib.Error {
         static $gtype: GObject.GType<Error>;
 
-        // Static fields of Polkit.Error
+        // Static fields
 
         /**
          * The operation failed.
@@ -43,12 +43,12 @@ export namespace Polkit {
          */
         static NOT_AUTHORIZED: number;
 
-        // Constructors of Polkit.Error
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of Polkit.Error
+        // Static methods
 
         static quark(): GLib.Quark;
     }
@@ -171,13 +171,13 @@ export namespace Polkit {
     class ActionDescription extends GObject.Object {
         static $gtype: GObject.GType<ActionDescription>;
 
-        // Constructors of Polkit.ActionDescription
+        // Constructors
 
         constructor(properties?: Partial<ActionDescription.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Polkit.ActionDescription
+        // Methods
 
         /**
          * Gets the action id for `action_description`.
@@ -278,7 +278,7 @@ export namespace Polkit {
     class Authority extends GObject.Object implements Gio.AsyncInitable<Authority>, Gio.Initable {
         static $gtype: GObject.GType<Authority>;
 
-        // Own properties of Polkit.Authority
+        // Properties
 
         /**
          * The features of the currently used Authority backend.
@@ -305,13 +305,13 @@ export namespace Polkit {
          */
         get owner(): string;
 
-        // Constructors of Polkit.Authority
+        // Constructors
 
         constructor(properties?: Partial<Authority.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of Polkit.Authority
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -320,7 +320,7 @@ export namespace Polkit {
         connect_after(signal: 'changed', callback: (_source: this) => void): number;
         emit(signal: 'changed'): void;
 
-        // Own static methods of Polkit.Authority
+        // Static methods
 
         /**
          * (deprecated)
@@ -357,7 +357,7 @@ export namespace Polkit {
          */
         static get_sync(cancellable?: Gio.Cancellable | null): Authority;
 
-        // Own methods of Polkit.Authority
+        // Methods
 
         /**
          * Asynchronously provide response that `identity` successfully authenticated
@@ -1414,7 +1414,7 @@ export namespace Polkit {
     class AuthorizationResult extends GObject.Object {
         static $gtype: GObject.GType<AuthorizationResult>;
 
-        // Constructors of Polkit.AuthorizationResult
+        // Constructors
 
         constructor(properties?: Partial<AuthorizationResult.ConstructorProps>, ...args: any[]);
 
@@ -1422,7 +1422,7 @@ export namespace Polkit {
 
         static ['new'](is_authorized: boolean, is_challenge: boolean, details?: Details | null): AuthorizationResult;
 
-        // Own methods of Polkit.AuthorizationResult
+        // Methods
 
         /**
          * Gets the details about the result.
@@ -1496,7 +1496,7 @@ export namespace Polkit {
     class Details extends GObject.Object {
         static $gtype: GObject.GType<Details>;
 
-        // Constructors of Polkit.Details
+        // Constructors
 
         constructor(properties?: Partial<Details.ConstructorProps>, ...args: any[]);
 
@@ -1504,7 +1504,7 @@ export namespace Polkit {
 
         static ['new'](): Details;
 
-        // Own methods of Polkit.Details
+        // Methods
 
         /**
          * Gets a list of all keys on `details`.
@@ -1548,7 +1548,7 @@ export namespace Polkit {
     class Permission extends Gio.Permission implements Gio.AsyncInitable<Permission>, Gio.Initable {
         static $gtype: GObject.GType<Permission>;
 
-        // Own properties of Polkit.Permission
+        // Properties
 
         /**
          * The action identifier to use for the permission.
@@ -1564,7 +1564,7 @@ export namespace Polkit {
          */
         get subject(): Subject;
 
-        // Constructors of Polkit.Permission
+        // Constructors
 
         constructor(properties?: Partial<Permission.ConstructorProps>, ...args: any[]);
 
@@ -1577,7 +1577,7 @@ export namespace Polkit {
 
         static new_sync(action_id: string, subject?: Subject | null, cancellable?: Gio.Cancellable | null): Permission;
 
-        // Own static methods of Polkit.Permission
+        // Static methods
 
         /**
          * Creates a #GPermission instance for the PolicyKit action
@@ -1601,7 +1601,7 @@ export namespace Polkit {
             callback?: Gio.AsyncReadyCallback<Permission> | null,
         ): void;
 
-        // Own methods of Polkit.Permission
+        // Methods
 
         /**
          * Gets the PolicyKit action identifier used for `permission`.
@@ -2228,7 +2228,7 @@ export namespace Polkit {
     class SystemBusName extends GObject.Object implements Subject {
         static $gtype: GObject.GType<SystemBusName>;
 
-        // Own properties of Polkit.SystemBusName
+        // Properties
 
         /**
          * The unique name on the system message bus.
@@ -2236,13 +2236,13 @@ export namespace Polkit {
         get name(): string;
         set name(val: string);
 
-        // Constructors of Polkit.SystemBusName
+        // Constructors
 
         constructor(properties?: Partial<SystemBusName.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of Polkit.SystemBusName
+        // Static methods
 
         /**
          * Creates a new #PolkitSystemBusName for `name`.
@@ -2250,7 +2250,7 @@ export namespace Polkit {
          */
         static ['new'](name: string): Subject;
 
-        // Own methods of Polkit.SystemBusName
+        // Methods
 
         /**
          * Gets the unique system bus name for `system_bus_name`.
@@ -2785,13 +2785,13 @@ export namespace Polkit {
     class TemporaryAuthorization extends GObject.Object {
         static $gtype: GObject.GType<TemporaryAuthorization>;
 
-        // Constructors of Polkit.TemporaryAuthorization
+        // Constructors
 
         constructor(properties?: Partial<TemporaryAuthorization.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Polkit.TemporaryAuthorization
+        // Methods
 
         /**
          * Gets the action that `authorization` is for.
@@ -2840,7 +2840,7 @@ export namespace Polkit {
     class UnixGroup extends GObject.Object implements Identity {
         static $gtype: GObject.GType<UnixGroup>;
 
-        // Own properties of Polkit.UnixGroup
+        // Properties
 
         /**
          * The UNIX group id.
@@ -2848,13 +2848,13 @@ export namespace Polkit {
         get gid(): number;
         set gid(val: number);
 
-        // Constructors of Polkit.UnixGroup
+        // Constructors
 
         constructor(properties?: Partial<UnixGroup.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of Polkit.UnixGroup
+        // Static methods
 
         /**
          * Creates a new #PolkitUnixGroup object for `gid`.
@@ -2868,7 +2868,7 @@ export namespace Polkit {
          */
         static new_for_name(name: string): Identity;
 
-        // Own methods of Polkit.UnixGroup
+        // Methods
 
         /**
          * Gets the UNIX group id for `group`.
@@ -3333,7 +3333,7 @@ export namespace Polkit {
     class UnixNetgroup extends GObject.Object implements Identity {
         static $gtype: GObject.GType<UnixNetgroup>;
 
-        // Own properties of Polkit.UnixNetgroup
+        // Properties
 
         /**
          * The NIS netgroup name.
@@ -3341,13 +3341,13 @@ export namespace Polkit {
         get name(): string;
         set name(val: string);
 
-        // Constructors of Polkit.UnixNetgroup
+        // Constructors
 
         constructor(properties?: Partial<UnixNetgroup.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of Polkit.UnixNetgroup
+        // Static methods
 
         /**
          * Creates a new #PolkitUnixNetgroup object for `name`.
@@ -3355,7 +3355,7 @@ export namespace Polkit {
          */
         static ['new'](name: string): Identity;
 
-        // Own methods of Polkit.UnixNetgroup
+        // Methods
 
         /**
          * Gets the netgroup name for `group`.
@@ -3838,7 +3838,7 @@ export namespace Polkit {
     class UnixProcess extends GObject.Object implements Subject {
         static $gtype: GObject.GType<UnixProcess>;
 
-        // Own properties of Polkit.UnixProcess
+        // Properties
 
         /**
          * The UNIX process id.
@@ -3863,13 +3863,13 @@ export namespace Polkit {
         get uid(): number;
         set uid(val: number);
 
-        // Constructors of Polkit.UnixProcess
+        // Constructors
 
         constructor(properties?: Partial<UnixProcess.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of Polkit.UnixProcess
+        // Static methods
 
         /**
          * Creates a new #PolkitUnixProcess for `pid`.
@@ -3898,7 +3898,7 @@ export namespace Polkit {
          */
         static new_full(pid: number, start_time: number): Subject;
 
-        // Own methods of Polkit.UnixProcess
+        // Methods
 
         /**
          * (deprecated)
@@ -4460,7 +4460,7 @@ export namespace Polkit {
     class UnixSession extends GObject.Object implements Gio.AsyncInitable<UnixSession>, Gio.Initable, Subject {
         static $gtype: GObject.GType<UnixSession>;
 
-        // Own properties of Polkit.UnixSession
+        // Properties
 
         /**
          * The UNIX process id to look up the session.
@@ -4477,13 +4477,13 @@ export namespace Polkit {
         get sessionId(): string;
         set sessionId(val: string);
 
-        // Constructors of Polkit.UnixSession
+        // Constructors
 
         constructor(properties?: Partial<UnixSession.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of Polkit.UnixSession
+        // Static methods
 
         /**
          * Creates a new #PolkitUnixSession for `session_id`.
@@ -4528,7 +4528,7 @@ export namespace Polkit {
          */
         static new_for_process_sync(pid: number, cancellable?: Gio.Cancellable | null): Subject | null;
 
-        // Own methods of Polkit.UnixSession
+        // Methods
 
         /**
          * Gets the session id for `session`.
@@ -5248,7 +5248,7 @@ export namespace Polkit {
     class UnixUser extends GObject.Object implements Identity {
         static $gtype: GObject.GType<UnixUser>;
 
-        // Own properties of Polkit.UnixUser
+        // Properties
 
         /**
          * The UNIX user id.
@@ -5256,13 +5256,13 @@ export namespace Polkit {
         get uid(): number;
         set uid(val: number);
 
-        // Constructors of Polkit.UnixUser
+        // Constructors
 
         constructor(properties?: Partial<UnixUser.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of Polkit.UnixUser
+        // Static methods
 
         /**
          * Creates a new #PolkitUnixUser object for `uid`.
@@ -5276,7 +5276,7 @@ export namespace Polkit {
          */
         static new_for_name(name: string): Identity | null;
 
-        // Own methods of Polkit.UnixUser
+        // Methods
 
         /**
          * Get the user's name.
@@ -5763,7 +5763,7 @@ export namespace Polkit {
         from_string(str: string): Identity | null;
     }
     interface Identity extends GObject.Object {
-        // Own methods of Polkit.Identity
+        // Methods
 
         /**
          * Checks if `a` and `b` are equal, ie. represent the same identity.
@@ -5785,7 +5785,7 @@ export namespace Polkit {
          */
         to_string(): string;
 
-        // Own virtual methods of Polkit.Identity
+        // Virtual methods
 
         /**
          * Checks if `a` and `b` are equal, ie. represent the same identity.
@@ -5825,7 +5825,7 @@ export namespace Polkit {
         from_string(str: string): Subject;
     }
     interface Subject extends GObject.Object {
-        // Own methods of Polkit.Subject
+        // Methods
 
         /**
          * Checks if `a` and `b` are equal, ie. represent the same subject.
@@ -5877,7 +5877,7 @@ export namespace Polkit {
          */
         to_string(): string;
 
-        // Own virtual methods of Polkit.Subject
+        // Virtual methods
 
         /**
          * Checks if `a` and `b` are equal, ie. represent the same subject.

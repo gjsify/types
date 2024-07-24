@@ -198,17 +198,17 @@ export namespace DMAP {
     class MdnsBrowserError extends GLib.Error {
         static $gtype: GObject.GType<MdnsBrowserError>;
 
-        // Static fields of DMAP.MdnsBrowserError
+        // Static fields
 
         static NOT_RUNNING: number;
         static FAILED: number;
 
-        // Constructors of DMAP.MdnsBrowserError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of DMAP.MdnsBrowserError
+        // Static methods
 
         static quark(): GLib.Quark;
     }
@@ -238,17 +238,17 @@ export namespace DMAP {
     class MdnsPublisherError extends GLib.Error {
         static $gtype: GObject.GType<MdnsPublisherError>;
 
-        // Static fields of DMAP.MdnsPublisherError
+        // Static fields
 
         static NOT_RUNNING: number;
         static FAILED: number;
 
-        // Constructors of DMAP.MdnsPublisherError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of DMAP.MdnsPublisherError
+        // Static methods
 
         static quark(): GLib.Quark;
     }
@@ -362,7 +362,7 @@ export namespace DMAP {
     class Connection extends GObject.Object {
         static $gtype: GObject.GType<Connection>;
 
-        // Own properties of DMAP.Connection
+        // Properties
 
         get base_uri(): any;
         set base_uri(val: any);
@@ -392,13 +392,13 @@ export namespace DMAP {
         set sessionId(val: number);
         get username(): string;
 
-        // Constructors of DMAP.Connection
+        // Constructors
 
         constructor(properties?: Partial<Connection.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of DMAP.Connection
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -446,7 +446,7 @@ export namespace DMAP {
         connect_after(signal: 'operation-done', callback: (_source: this) => void): number;
         emit(signal: 'operation-done'): void;
 
-        // Own virtual methods of DMAP.Connection
+        // Virtual methods
 
         vfunc_authenticate(name: string): string;
         vfunc_connected(): void;
@@ -456,7 +456,7 @@ export namespace DMAP {
         vfunc_get_query_metadata(): string;
         vfunc_operation_done(): void;
 
-        // Own methods of DMAP.Connection
+        // Methods
 
         /**
          * Attach an authentication credential to a request. This
@@ -484,7 +484,7 @@ export namespace DMAP {
     class GstInputStream extends Gio.InputStream implements Gio.Seekable {
         static $gtype: GObject.GType<GstInputStream>;
 
-        // Constructors of DMAP.GstInputStream
+        // Constructors
 
         constructor(properties?: Partial<GstInputStream.ConstructorProps>, ...args: any[]);
 
@@ -492,7 +492,7 @@ export namespace DMAP {
 
         static ['new'](transcode_mimetype: string, src_stream: Gio.InputStream): GstInputStream;
 
-        // Own virtual methods of DMAP.GstInputStream
+        // Virtual methods
 
         vfunc_kill_pipeline(): void;
 
@@ -1017,11 +1017,11 @@ export namespace DMAP {
     class MdnsBrowser extends GObject.Object {
         static $gtype: GObject.GType<MdnsBrowser>;
 
-        // Own fields of DMAP.MdnsBrowser
+        // Fields
 
         object: GObject.Object;
 
-        // Constructors of DMAP.MdnsBrowser
+        // Constructors
 
         constructor(properties?: Partial<MdnsBrowser.ConstructorProps>, ...args: any[]);
 
@@ -1029,7 +1029,7 @@ export namespace DMAP {
 
         static ['new'](type: MdnsBrowserServiceType): MdnsBrowser;
 
-        // Own signals of DMAP.MdnsBrowser
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -1041,12 +1041,12 @@ export namespace DMAP {
         connect_after(signal: 'service-removed', callback: (_source: this, object: string) => void): number;
         emit(signal: 'service-removed', object: string): void;
 
-        // Own virtual methods of DMAP.MdnsBrowser
+        // Virtual methods
 
         vfunc_service_added(service: MdnsBrowserService): void;
         vfunc_service_removed(service: MdnsBrowserService): void;
 
-        // Own methods of DMAP.MdnsBrowser
+        // Methods
 
         get_service_type(): MdnsBrowserServiceType;
         /**
@@ -1080,11 +1080,11 @@ export namespace DMAP {
     class MdnsPublisher extends GObject.Object {
         static $gtype: GObject.GType<MdnsPublisher>;
 
-        // Own fields of DMAP.MdnsPublisher
+        // Fields
 
         object: GObject.Object;
 
-        // Constructors of DMAP.MdnsPublisher
+        // Constructors
 
         constructor(properties?: Partial<MdnsPublisher.ConstructorProps>, ...args: any[]);
 
@@ -1092,7 +1092,7 @@ export namespace DMAP {
 
         static ['new'](): MdnsPublisher;
 
-        // Own signals of DMAP.MdnsPublisher
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -1104,12 +1104,12 @@ export namespace DMAP {
         connect_after(signal: 'published', callback: (_source: this, object: string) => void): number;
         emit(signal: 'published', object: string): void;
 
-        // Own virtual methods of DMAP.MdnsPublisher
+        // Virtual methods
 
         vfunc_name_collision(name: string): void;
         vfunc_published(name: string): void;
 
-        // Own methods of DMAP.MdnsPublisher
+        // Methods
 
         publish(
             name: string,
@@ -1146,7 +1146,7 @@ export namespace DMAP {
     abstract class Share extends GObject.Object {
         static $gtype: GObject.GType<Share>;
 
-        // Own properties of DMAP.Share
+        // Properties
 
         get auth_method(): number;
         set auth_method(val: number);
@@ -1171,13 +1171,13 @@ export namespace DMAP {
         get txtRecords(): string[];
         set txtRecords(val: string[]);
 
-        // Constructors of DMAP.Share
+        // Constructors
 
         constructor(properties?: Partial<Share.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of DMAP.Share
+        // Virtual methods
 
         vfunc_content_codes(
             server: Soup.Server,
@@ -1254,7 +1254,7 @@ export namespace DMAP {
     abstract class ConnectionPrivate {
         static $gtype: GObject.GType<ConnectionPrivate>;
 
-        // Constructors of DMAP.ConnectionPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1264,7 +1264,7 @@ export namespace DMAP {
     class ContentCodeDefinition {
         static $gtype: GObject.GType<ContentCodeDefinition>;
 
-        // Own fields of DMAP.ContentCodeDefinition
+        // Fields
 
         code: ContentCode;
         int_code: number;
@@ -1272,7 +1272,7 @@ export namespace DMAP {
         string: string;
         type: Type;
 
-        // Constructors of DMAP.ContentCodeDefinition
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1280,13 +1280,13 @@ export namespace DMAP {
     class DbFilterDefinition {
         static $gtype: GObject.GType<DbFilterDefinition>;
 
-        // Own fields of DMAP.DbFilterDefinition
+        // Fields
 
         key: string;
         value: string;
         negate: boolean;
 
-        // Constructors of DMAP.DbFilterDefinition
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -1303,7 +1303,7 @@ export namespace DMAP {
     abstract class GstInputStreamPrivate {
         static $gtype: GObject.GType<GstInputStreamPrivate>;
 
-        // Constructors of DMAP.GstInputStreamPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1311,14 +1311,14 @@ export namespace DMAP {
     class HashContext {
         static $gtype: GObject.GType<HashContext>;
 
-        // Own fields of DMAP.HashContext
+        // Fields
 
         buf: number[];
         bits: number[];
         'in': Uint8Array;
         version: number;
 
-        // Constructors of DMAP.HashContext
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -1335,7 +1335,7 @@ export namespace DMAP {
     abstract class MdnsBrowserPrivate {
         static $gtype: GObject.GType<MdnsBrowserPrivate>;
 
-        // Constructors of DMAP.MdnsBrowserPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1343,7 +1343,7 @@ export namespace DMAP {
     class MdnsBrowserService {
         static $gtype: GObject.GType<MdnsBrowserService>;
 
-        // Own fields of DMAP.MdnsBrowserService
+        // Fields
 
         service_name: string;
         name: string;
@@ -1353,7 +1353,7 @@ export namespace DMAP {
         pair: string;
         transport_protocol: MdnsBrowserTransportProtocol;
 
-        // Constructors of DMAP.MdnsBrowserService
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1362,7 +1362,7 @@ export namespace DMAP {
     abstract class MdnsPublisherPrivate {
         static $gtype: GObject.GType<MdnsPublisherPrivate>;
 
-        // Constructors of DMAP.MdnsPublisherPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1370,12 +1370,12 @@ export namespace DMAP {
     class MetaDataMap {
         static $gtype: GObject.GType<MetaDataMap>;
 
-        // Own fields of DMAP.MetaDataMap
+        // Fields
 
         tag: string;
         md: number;
 
-        // Constructors of DMAP.MetaDataMap
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -1389,13 +1389,13 @@ export namespace DMAP {
     class Playlist {
         static $gtype: GObject.GType<Playlist>;
 
-        // Own fields of DMAP.Playlist
+        // Fields
 
         name: string;
         id: number;
         uris: any[];
 
-        // Constructors of DMAP.Playlist
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -1412,7 +1412,7 @@ export namespace DMAP {
     abstract class SharePrivate {
         static $gtype: GObject.GType<SharePrivate>;
 
-        // Constructors of DMAP.SharePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1420,12 +1420,12 @@ export namespace DMAP {
     class StructureItem {
         static $gtype: GObject.GType<StructureItem>;
 
-        // Own fields of DMAP.StructureItem
+        // Fields
 
         content_code: ContentCode;
         size: number;
 
-        // Constructors of DMAP.StructureItem
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1441,7 +1441,7 @@ export namespace DMAP {
         prototype: ContainerDb;
     }
     interface ContainerDb extends GObject.Object {
-        // Own methods of DMAP.ContainerDb
+        // Methods
 
         /**
          * Add a record to the database.
@@ -1450,7 +1450,7 @@ export namespace DMAP {
         add(record: ContainerRecord): void;
         count(): number;
 
-        // Own virtual methods of DMAP.ContainerDb
+        // Virtual methods
 
         /**
          * Add a record to the database.
@@ -1475,12 +1475,12 @@ export namespace DMAP {
         prototype: ContainerRecord;
     }
     interface ContainerRecord extends GObject.Object {
-        // Own properties of DMAP.ContainerRecord
+        // Properties
 
         get name(): string;
         set name(val: string);
 
-        // Own methods of DMAP.ContainerRecord
+        // Methods
 
         /**
          * Add a record to the database. It is assumed that the record is placed
@@ -1492,7 +1492,7 @@ export namespace DMAP {
         get_entry_count(): number;
         get_id(): number;
 
-        // Own virtual methods of DMAP.ContainerRecord
+        // Virtual methods
 
         /**
          * Add a record to the database. It is assumed that the record is placed
@@ -1518,7 +1518,7 @@ export namespace DMAP {
         prototype: Db;
     }
     interface Db extends GObject.Object {
-        // Own methods of DMAP.Db
+        // Methods
 
         /**
          * Add a record to the database.
@@ -1542,7 +1542,7 @@ export namespace DMAP {
         count(): number;
         lookup_id_by_location(location: string): number;
 
-        // Own virtual methods of DMAP.Db
+        // Virtual methods
 
         /**
          * Add a record to the database.
@@ -1577,11 +1577,11 @@ export namespace DMAP {
         prototype: Record;
     }
     interface Record extends GObject.Object {
-        // Own methods of DMAP.Record
+        // Methods
 
         set_from_blob(blob: Uint8Array | string): boolean;
 
-        // Own virtual methods of DMAP.Record
+        // Virtual methods
 
         vfunc_set_from_blob(blob: Uint8Array | string): boolean;
     }

@@ -96,7 +96,7 @@ export namespace Unique {
     class App extends GObject.Object {
         static $gtype: GObject.GType<App>;
 
-        // Own properties of Unique.App
+        // Properties
 
         /**
          * Whether another instance of the application is running.
@@ -129,7 +129,7 @@ export namespace Unique {
          */
         get startupId(): string;
 
-        // Constructors of Unique.App
+        // Constructors
 
         constructor(properties?: Partial<App.ConstructorProps>, ...args: any[]);
 
@@ -137,7 +137,7 @@ export namespace Unique {
 
         static ['new'](name: string, startup_id: string): App;
 
-        // Own signals of Unique.App
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -152,11 +152,11 @@ export namespace Unique {
         ): number;
         emit(signal: 'message-received', command: number, message_data: MessageData, time_: number): void;
 
-        // Own virtual methods of Unique.App
+        // Virtual methods
 
         vfunc_message_received(command: number, message_data: MessageData, time_: number): Response;
 
-        // Own methods of Unique.App
+        // Methods
 
         /**
          * Adds `command_name` as a custom command that can be used by `app`. You
@@ -206,13 +206,13 @@ export namespace Unique {
     abstract class Backend extends GObject.Object {
         static $gtype: GObject.GType<Backend>;
 
-        // Constructors of Unique.Backend
+        // Constructors
 
         constructor(properties?: Partial<Backend.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of Unique.Backend
+        // Static methods
 
         /**
          * Creates a #UniqueBackend using the default backend defined at
@@ -222,7 +222,7 @@ export namespace Unique {
          */
         static create(): Backend;
 
-        // Own virtual methods of Unique.Backend
+        // Virtual methods
 
         /**
          * Requests the name set using unique_backend_set_name() using `backend`.
@@ -239,7 +239,7 @@ export namespace Unique {
          */
         vfunc_send_message(command_id: number, message_data: MessageData, time_: number): Response;
 
-        // Own methods of Unique.Backend
+        // Methods
 
         /**
          * FIXME
@@ -298,7 +298,7 @@ export namespace Unique {
     abstract class AppPrivate {
         static $gtype: GObject.GType<AppPrivate>;
 
-        // Constructors of Unique.AppPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -314,14 +314,14 @@ export namespace Unique {
     class MessageData {
         static $gtype: GObject.GType<MessageData>;
 
-        // Constructors of Unique.MessageData
+        // Constructors
 
         constructor(properties?: Partial<{}>);
         _init(...args: any[]): void;
 
         static ['new'](): MessageData;
 
-        // Own methods of Unique.MessageData
+        // Methods
 
         /**
          * Copies `message_data`.

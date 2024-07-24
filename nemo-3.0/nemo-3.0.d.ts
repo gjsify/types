@@ -89,7 +89,7 @@ export namespace Nemo {
     class Column extends GObject.Object {
         static $gtype: GObject.GType<Column>;
 
-        // Own properties of Nemo.Column
+        // Properties
 
         get attribute(): string;
         set attribute(val: string);
@@ -109,7 +109,7 @@ export namespace Nemo {
         get xalign(): number;
         set xalign(val: number);
 
-        // Constructors of Nemo.Column
+        // Constructors
 
         constructor(properties?: Partial<Column.ConstructorProps>, ...args: any[]);
 
@@ -117,7 +117,7 @@ export namespace Nemo {
 
         static ['new'](name: string, attribute: string, label: string, description: string): Column;
 
-        // Own static methods of Nemo.Column
+        // Static methods
 
         /**
          * Creates a new column
@@ -150,7 +150,7 @@ export namespace Nemo {
     class DesktopPreferences extends Gtk.Bin implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<DesktopPreferences>;
 
-        // Constructors of Nemo.DesktopPreferences
+        // Constructors
 
         constructor(properties?: Partial<DesktopPreferences.ConstructorProps>, ...args: any[]);
 
@@ -570,7 +570,7 @@ export namespace Nemo {
     class Menu extends GObject.Object {
         static $gtype: GObject.GType<Menu>;
 
-        // Constructors of Nemo.Menu
+        // Constructors
 
         constructor(properties?: Partial<Menu.ConstructorProps>, ...args: any[]);
 
@@ -578,7 +578,7 @@ export namespace Nemo {
 
         static ['new'](): Menu;
 
-        // Own methods of Nemo.Menu
+        // Methods
 
         append_item(item: MenuItem): void;
         get_items(): MenuItem[];
@@ -612,7 +612,7 @@ export namespace Nemo {
     class MenuItem extends GObject.Object {
         static $gtype: GObject.GType<MenuItem>;
 
-        // Own properties of Nemo.MenuItem
+        // Properties
 
         get icon(): string;
         set icon(val: string);
@@ -638,7 +638,7 @@ export namespace Nemo {
         get widgetB(): Gtk.Widget;
         set widgetB(val: Gtk.Widget);
 
-        // Constructors of Nemo.MenuItem
+        // Constructors
 
         constructor(properties?: Partial<MenuItem.ConstructorProps>, ...args: any[]);
 
@@ -650,7 +650,7 @@ export namespace Nemo {
 
         static new_widget(name: string, widget_a: Gtk.Widget, widget_b: Gtk.Widget): MenuItem;
 
-        // Own signals of Nemo.MenuItem
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -659,11 +659,11 @@ export namespace Nemo {
         connect_after(signal: 'activate', callback: (_source: this) => void): number;
         emit(signal: 'activate'): void;
 
-        // Own static methods of Nemo.MenuItem
+        // Static methods
 
         static list_free(item_list: MenuItem[]): void;
 
-        // Own methods of Nemo.MenuItem
+        // Methods
 
         /**
          * emits the activate signal.
@@ -699,7 +699,7 @@ export namespace Nemo {
     class PropertyPage extends GObject.Object {
         static $gtype: GObject.GType<PropertyPage>;
 
-        // Own properties of Nemo.PropertyPage
+        // Properties
 
         get label(): Gtk.Widget;
         set label(val: Gtk.Widget);
@@ -707,7 +707,7 @@ export namespace Nemo {
         get page(): Gtk.Widget;
         set page(val: Gtk.Widget);
 
-        // Constructors of Nemo.PropertyPage
+        // Constructors
 
         constructor(properties?: Partial<PropertyPage.ConstructorProps>, ...args: any[]);
 
@@ -733,7 +733,7 @@ export namespace Nemo {
     {
         static $gtype: GObject.GType<SimpleButton>;
 
-        // Constructors of Nemo.SimpleButton
+        // Constructors
 
         constructor(properties?: Partial<SimpleButton.ConstructorProps>, ...args: any[]);
 
@@ -4925,7 +4925,7 @@ export namespace Nemo {
     class ColumnProviderInterface {
         static $gtype: GObject.GType<ColumnProviderInterface>;
 
-        // Constructors of Nemo.ColumnProviderInterface
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4934,7 +4934,7 @@ export namespace Nemo {
     abstract class File {
         static $gtype: GObject.GType<File>;
 
-        // Constructors of Nemo.File
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4943,7 +4943,7 @@ export namespace Nemo {
     class InfoProviderInterface {
         static $gtype: GObject.GType<InfoProviderInterface>;
 
-        // Constructors of Nemo.InfoProviderInterface
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4951,7 +4951,7 @@ export namespace Nemo {
     class LocationWidgetProviderInterface {
         static $gtype: GObject.GType<LocationWidgetProviderInterface>;
 
-        // Constructors of Nemo.LocationWidgetProviderInterface
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4961,7 +4961,7 @@ export namespace Nemo {
     class MenuProviderInterface {
         static $gtype: GObject.GType<MenuProviderInterface>;
 
-        // Constructors of Nemo.MenuProviderInterface
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4969,7 +4969,7 @@ export namespace Nemo {
     class NameAndDescProviderInterface {
         static $gtype: GObject.GType<NameAndDescProviderInterface>;
 
-        // Constructors of Nemo.NameAndDescProviderInterface
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4987,7 +4987,7 @@ export namespace Nemo {
     abstract class OperationHandle {
         static $gtype: GObject.GType<OperationHandle>;
 
-        // Constructors of Nemo.OperationHandle
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4996,7 +4996,7 @@ export namespace Nemo {
     class PropertyPageProviderInterface {
         static $gtype: GObject.GType<PropertyPageProviderInterface>;
 
-        // Constructors of Nemo.PropertyPageProviderInterface
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5013,7 +5013,7 @@ export namespace Nemo {
         prototype: ColumnProvider;
     }
     interface ColumnProvider extends GObject.Object {
-        // Own methods of Nemo.ColumnProvider
+        // Methods
 
         get_columns(): Column[];
     }
@@ -5038,7 +5038,7 @@ export namespace Nemo {
         lookup_for_uri(uri: string): FileInfo;
     }
     interface FileInfo extends GObject.Object {
-        // Own methods of Nemo.FileInfo
+        // Methods
 
         add_emblem(emblem_name: string): void;
         add_string_attribute(attribute_name: string, value: string): void;
@@ -5073,7 +5073,7 @@ export namespace Nemo {
         is_gone(): boolean;
         is_mime_type(mime_type: string): boolean;
 
-        // Own virtual methods of Nemo.FileInfo
+        // Virtual methods
 
         vfunc_add_emblem(emblem_name: string): void;
         vfunc_add_string_attribute(attribute_name: string, value: string): void;
@@ -5129,7 +5129,7 @@ export namespace Nemo {
         ): void;
     }
     interface InfoProvider extends GObject.Object {
-        // Own methods of Nemo.InfoProvider
+        // Methods
 
         cancel_update(handle: OperationHandle): void;
         update_file_info(file: FileInfo, update_complete: GObject.Closure, handle: OperationHandle): OperationResult;
@@ -5148,7 +5148,7 @@ export namespace Nemo {
         prototype: LocationWidgetProvider;
     }
     interface LocationWidgetProvider extends GObject.Object {
-        // Own methods of Nemo.LocationWidgetProvider
+        // Methods
 
         get_widget(uri: string, window: Gtk.Widget): Gtk.Widget;
     }
@@ -5166,7 +5166,7 @@ export namespace Nemo {
         prototype: MenuProvider;
     }
     interface MenuProvider extends GObject.Object {
-        // Own methods of Nemo.MenuProvider
+        // Methods
 
         emit_items_updated_signal(): void;
         get_background_items(window: Gtk.Widget, current_folder: FileInfo): MenuItem[];
@@ -5186,7 +5186,7 @@ export namespace Nemo {
         prototype: NameAndDescProvider;
     }
     interface NameAndDescProvider extends GObject.Object {
-        // Own methods of Nemo.NameAndDescProvider
+        // Methods
 
         get_name_and_desc(): number[];
     }
@@ -5204,7 +5204,7 @@ export namespace Nemo {
         prototype: PropertyPageProvider;
     }
     interface PropertyPageProvider extends GObject.Object {
-        // Own methods of Nemo.PropertyPageProvider
+        // Methods
 
         /**
          * This function is called by Nemo when it wants property page

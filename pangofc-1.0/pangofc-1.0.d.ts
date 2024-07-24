@@ -109,13 +109,13 @@ export namespace PangoFc {
     abstract class Decoder extends GObject.Object {
         static $gtype: GObject.GType<Decoder>;
 
-        // Constructors of PangoFc.Decoder
+        // Constructors
 
         constructor(properties?: Partial<Decoder.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of PangoFc.Decoder
+        // Virtual methods
 
         /**
          * Generates an `FcCharSet` of supported characters for the `fcfont`
@@ -140,7 +140,7 @@ export namespace PangoFc {
          */
         vfunc_get_glyph(fcfont: Font, wc: number): Pango.Glyph;
 
-        // Own methods of PangoFc.Decoder
+        // Methods
 
         /**
          * Generates an `FcCharSet` of supported characters for the `fcfont`
@@ -189,7 +189,7 @@ export namespace PangoFc {
     abstract class Font extends Pango.Font {
         static $gtype: GObject.GType<Font>;
 
-        // Own properties of PangoFc.Font
+        // Properties
 
         /**
          * The PangoFc font map this font is associated with.
@@ -201,7 +201,7 @@ export namespace PangoFc {
          */
         get pattern(): any;
 
-        // Own fields of PangoFc.Font
+        // Fields
 
         priv: any;
         matrix: Pango.Matrix;
@@ -209,13 +209,13 @@ export namespace PangoFc {
         is_hinted: number;
         is_transformed: number;
 
-        // Constructors of PangoFc.Font
+        // Constructors
 
         constructor(properties?: Partial<Font.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of PangoFc.Font
+        // Static methods
 
         /**
          * Creates a `PangoFontDescription` that matches the specified
@@ -229,7 +229,7 @@ export namespace PangoFc {
          */
         static description_from_pattern(pattern: fontconfig.Pattern, include_size: boolean): Pango.FontDescription;
 
-        // Own methods of PangoFc.Font
+        // Methods
 
         /**
          * Gets the glyph index for a given Unicode character
@@ -304,13 +304,13 @@ export namespace PangoFc {
     {
         static $gtype: GObject.GType<FontMap>;
 
-        // Constructors of PangoFc.FontMap
+        // Constructors
 
         constructor(properties?: Partial<FontMap.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of PangoFc.FontMap
+        // Methods
 
         /**
          * Clear all cached information and fontsets for this font map.
@@ -884,7 +884,7 @@ export namespace PangoFc {
     abstract class FontMapPrivate {
         static $gtype: GObject.GType<FontMapPrivate>;
 
-        // Constructors of PangoFc.FontMapPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }

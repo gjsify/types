@@ -54,7 +54,7 @@ export namespace PackageKitGlib {
     class ClientError extends GLib.Error {
         static $gtype: GObject.GType<ClientError>;
 
-        // Static fields of PackageKitGlib.ClientError
+        // Static fields
 
         /**
          * the transaction failed for an unknown reason
@@ -102,12 +102,12 @@ export namespace PackageKitGlib {
         static DECLINED_INTERACTION: number;
         static LAST: number;
 
-        // Constructors of PackageKitGlib.ClientError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of PackageKitGlib.ClientError
+        // Static methods
 
         /**
          * An error quark for #PkClientError.
@@ -121,7 +121,7 @@ export namespace PackageKitGlib {
     class ControlError extends GLib.Error {
         static $gtype: GObject.GType<ControlError>;
 
-        // Static fields of PackageKitGlib.ControlError
+        // Static fields
 
         /**
          * the transaction failed for an unknown reason
@@ -132,12 +132,12 @@ export namespace PackageKitGlib {
          */
         static CANNOT_START_DAEMON: number;
 
-        // Constructors of PackageKitGlib.ControlError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of PackageKitGlib.ControlError
+        // Static methods
 
         /**
          * We are a GObject that sets errors
@@ -944,7 +944,7 @@ export namespace PackageKitGlib {
     class OfflineError extends GLib.Error {
         static $gtype: GObject.GType<OfflineError>;
 
-        // Static fields of PackageKitGlib.OfflineError
+        // Static fields
 
         /**
          * No specific reason
@@ -959,12 +959,12 @@ export namespace PackageKitGlib {
          */
         static NO_DATA: number;
 
-        // Constructors of PackageKitGlib.OfflineError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of PackageKitGlib.OfflineError
+        // Static methods
 
         /**
          * An error quark for #PkOfflineError.
@@ -2144,7 +2144,7 @@ export namespace PackageKitGlib {
     class Category extends Source {
         static $gtype: GObject.GType<Category>;
 
-        // Own properties of PackageKitGlib.Category
+        // Properties
 
         get cat_id(): string;
         set cat_id(val: string);
@@ -2161,7 +2161,7 @@ export namespace PackageKitGlib {
         get summary(): string;
         set summary(val: string);
 
-        // Constructors of PackageKitGlib.Category
+        // Constructors
 
         constructor(properties?: Partial<Category.ConstructorProps>, ...args: any[]);
 
@@ -2169,7 +2169,7 @@ export namespace PackageKitGlib {
 
         static ['new'](): Category;
 
-        // Own methods of PackageKitGlib.Category
+        // Methods
 
         /**
          * Gets the icon filename.
@@ -2241,7 +2241,7 @@ export namespace PackageKitGlib {
     class Client extends GObject.Object {
         static $gtype: GObject.GType<Client>;
 
-        // Own properties of PackageKitGlib.Client
+        // Properties
 
         get background(): boolean;
         set background(val: boolean);
@@ -2267,7 +2267,7 @@ export namespace PackageKitGlib {
         get locale(): string;
         set locale(val: string);
 
-        // Constructors of PackageKitGlib.Client
+        // Constructors
 
         constructor(properties?: Partial<Client.ConstructorProps>, ...args: any[]);
 
@@ -2275,15 +2275,15 @@ export namespace PackageKitGlib {
 
         static ['new'](): Client;
 
-        // Own static methods of PackageKitGlib.Client
+        // Static methods
 
         static create_helper_argv_envp(argv: string, envp_out: string): boolean;
 
-        // Own virtual methods of PackageKitGlib.Client
+        // Virtual methods
 
         vfunc_changed(): void;
 
-        // Own methods of PackageKitGlib.Client
+        // Methods
 
         /**
          * We may want to agree to a EULA dialog if one is presented.
@@ -3455,7 +3455,7 @@ export namespace PackageKitGlib {
     class ClientHelper extends GObject.Object {
         static $gtype: GObject.GType<ClientHelper>;
 
-        // Constructors of PackageKitGlib.ClientHelper
+        // Constructors
 
         constructor(properties?: Partial<ClientHelper.ConstructorProps>, ...args: any[]);
 
@@ -3463,7 +3463,7 @@ export namespace PackageKitGlib {
 
         static ['new'](): ClientHelper;
 
-        // Own methods of PackageKitGlib.ClientHelper
+        // Methods
 
         is_active(): boolean;
         /**
@@ -3544,7 +3544,7 @@ export namespace PackageKitGlib {
     class Control extends GObject.Object {
         static $gtype: GObject.GType<Control>;
 
-        // Own properties of PackageKitGlib.Control
+        // Properties
 
         get backend_author(): string;
         set backend_author(val: string);
@@ -3589,7 +3589,7 @@ export namespace PackageKitGlib {
         get version_minor(): number;
         get versionMinor(): number;
 
-        // Constructors of PackageKitGlib.Control
+        // Constructors
 
         constructor(properties?: Partial<Control.ConstructorProps>, ...args: any[]);
 
@@ -3597,7 +3597,7 @@ export namespace PackageKitGlib {
 
         static ['new'](): Control;
 
-        // Own signals of PackageKitGlib.Control
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -3621,7 +3621,7 @@ export namespace PackageKitGlib {
         connect_after(signal: 'updates-changed', callback: (_source: this) => void): number;
         emit(signal: 'updates-changed'): void;
 
-        // Own virtual methods of PackageKitGlib.Control
+        // Virtual methods
 
         vfunc_connection_changed(connected: boolean): void;
         vfunc_locked(is_locked: boolean): void;
@@ -3631,7 +3631,7 @@ export namespace PackageKitGlib {
         vfunc_transaction_list_changed(transaction_ids: string): void;
         vfunc_updates_changed(): void;
 
-        // Own methods of PackageKitGlib.Control
+        // Methods
 
         /**
          * We may want to know before we run a method if we are going to be denied,
@@ -3851,7 +3851,7 @@ export namespace PackageKitGlib {
     class Desktop extends GObject.Object {
         static $gtype: GObject.GType<Desktop>;
 
-        // Constructors of PackageKitGlib.Desktop
+        // Constructors
 
         constructor(properties?: Partial<Desktop.ConstructorProps>, ...args: any[]);
 
@@ -3859,7 +3859,7 @@ export namespace PackageKitGlib {
 
         static ['new'](): Desktop;
 
-        // Own methods of PackageKitGlib.Desktop
+        // Methods
 
         /**
          * Return all desktop files owned by a package, regardless if they are shown
@@ -3909,7 +3909,7 @@ export namespace PackageKitGlib {
     class Details extends Source {
         static $gtype: GObject.GType<Details>;
 
-        // Own properties of PackageKitGlib.Details
+        // Properties
 
         get description(): string;
         set description(val: string);
@@ -3932,7 +3932,7 @@ export namespace PackageKitGlib {
         get url(): string;
         set url(val: string);
 
-        // Constructors of PackageKitGlib.Details
+        // Constructors
 
         constructor(properties?: Partial<Details.ConstructorProps>, ...args: any[]);
 
@@ -3940,7 +3940,7 @@ export namespace PackageKitGlib {
 
         static ['new'](): Details;
 
-        // Own methods of PackageKitGlib.Details
+        // Methods
 
         /**
          * Gets the description for the details object.
@@ -3998,7 +3998,7 @@ export namespace PackageKitGlib {
     class DistroUpgrade extends Source {
         static $gtype: GObject.GType<DistroUpgrade>;
 
-        // Own properties of PackageKitGlib.DistroUpgrade
+        // Properties
 
         get name(): string;
         set name(val: string);
@@ -4007,7 +4007,7 @@ export namespace PackageKitGlib {
         get summary(): string;
         set summary(val: string);
 
-        // Constructors of PackageKitGlib.DistroUpgrade
+        // Constructors
 
         constructor(properties?: Partial<DistroUpgrade.ConstructorProps>, ...args: any[]);
 
@@ -4015,7 +4015,7 @@ export namespace PackageKitGlib {
 
         static ['new'](): DistroUpgrade;
 
-        // Own methods of PackageKitGlib.DistroUpgrade
+        // Methods
 
         /**
          * Gets the distribution identifier.
@@ -4047,14 +4047,14 @@ export namespace PackageKitGlib {
     class Error extends Source {
         static $gtype: GObject.GType<Error>;
 
-        // Own properties of PackageKitGlib.Error
+        // Properties
 
         get code(): ErrorEnum;
         set code(val: ErrorEnum);
         get details(): string;
         set details(val: string);
 
-        // Constructors of PackageKitGlib.Error
+        // Constructors
 
         constructor(properties?: Partial<Error.ConstructorProps>, ...args: any[]);
 
@@ -4062,7 +4062,7 @@ export namespace PackageKitGlib {
 
         static ['new'](): Error;
 
-        // Own methods of PackageKitGlib.Error
+        // Methods
 
         /**
          * Get the error code for this error.
@@ -4094,7 +4094,7 @@ export namespace PackageKitGlib {
     class EulaRequired extends Source {
         static $gtype: GObject.GType<EulaRequired>;
 
-        // Own properties of PackageKitGlib.EulaRequired
+        // Properties
 
         /**
          * ID for this EULA.
@@ -4137,7 +4137,7 @@ export namespace PackageKitGlib {
         get vendorName(): string;
         set vendorName(val: string);
 
-        // Constructors of PackageKitGlib.EulaRequired
+        // Constructors
 
         constructor(properties?: Partial<EulaRequired.ConstructorProps>, ...args: any[]);
 
@@ -4145,7 +4145,7 @@ export namespace PackageKitGlib {
 
         static ['new'](): EulaRequired;
 
-        // Own methods of PackageKitGlib.EulaRequired
+        // Methods
 
         /**
          * Get the ID for this EULA
@@ -4182,7 +4182,7 @@ export namespace PackageKitGlib {
     class Files extends Source {
         static $gtype: GObject.GType<Files>;
 
-        // Own properties of PackageKitGlib.Files
+        // Properties
 
         get files(): string[];
         set files(val: string[]);
@@ -4191,7 +4191,7 @@ export namespace PackageKitGlib {
         get packageId(): string;
         set packageId(val: string);
 
-        // Constructors of PackageKitGlib.Files
+        // Constructors
 
         constructor(properties?: Partial<Files.ConstructorProps>, ...args: any[]);
 
@@ -4199,7 +4199,7 @@ export namespace PackageKitGlib {
 
         static ['new'](): Files;
 
-        // Own methods of PackageKitGlib.Files
+        // Methods
 
         /**
          * Gets the file list
@@ -4227,7 +4227,7 @@ export namespace PackageKitGlib {
     class ItemProgress extends Source {
         static $gtype: GObject.GType<ItemProgress>;
 
-        // Own properties of PackageKitGlib.ItemProgress
+        // Properties
 
         get package_id(): string;
         set package_id(val: string);
@@ -4238,7 +4238,7 @@ export namespace PackageKitGlib {
         get status(): number;
         set status(val: number);
 
-        // Constructors of PackageKitGlib.ItemProgress
+        // Constructors
 
         constructor(properties?: Partial<ItemProgress.ConstructorProps>, ...args: any[]);
 
@@ -4246,7 +4246,7 @@ export namespace PackageKitGlib {
 
         static ['new'](): ItemProgress;
 
-        // Own methods of PackageKitGlib.ItemProgress
+        // Methods
 
         /**
          * Get the package ID this item is working on.
@@ -4281,7 +4281,7 @@ export namespace PackageKitGlib {
     class MediaChangeRequired extends Source {
         static $gtype: GObject.GType<MediaChangeRequired>;
 
-        // Own properties of PackageKitGlib.MediaChangeRequired
+        // Properties
 
         get media_id(): string;
         set media_id(val: string);
@@ -4296,7 +4296,7 @@ export namespace PackageKitGlib {
         get mediaType(): MediaTypeEnum;
         set mediaType(val: MediaTypeEnum);
 
-        // Constructors of PackageKitGlib.MediaChangeRequired
+        // Constructors
 
         constructor(properties?: Partial<MediaChangeRequired.ConstructorProps>, ...args: any[]);
 
@@ -4354,7 +4354,7 @@ export namespace PackageKitGlib {
     class Package extends Source {
         static $gtype: GObject.GType<Package>;
 
-        // Own properties of PackageKitGlib.Package
+        // Properties
 
         get description(): string;
         set description(val: string);
@@ -4429,7 +4429,7 @@ export namespace PackageKitGlib {
         get url(): string;
         set url(val: string);
 
-        // Constructors of PackageKitGlib.Package
+        // Constructors
 
         constructor(properties?: Partial<Package.ConstructorProps>, ...args: any[]);
 
@@ -4437,7 +4437,7 @@ export namespace PackageKitGlib {
 
         static ['new'](): Package;
 
-        // Own signals of PackageKitGlib.Package
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -4446,7 +4446,7 @@ export namespace PackageKitGlib {
         connect_after(signal: 'changed', callback: (_source: this) => void): number;
         emit(signal: 'changed'): void;
 
-        // Own static methods of PackageKitGlib.Package
+        // Static methods
 
         /**
          * Generate a PackageID.
@@ -4526,11 +4526,11 @@ export namespace PackageKitGlib {
          */
         static ids_to_string(package_ids: string): string;
 
-        // Own virtual methods of PackageKitGlib.Package
+        // Virtual methods
 
         vfunc_changed(): void;
 
-        // Own methods of PackageKitGlib.Package
+        // Methods
 
         /**
          * Do the #PkPackage's have the same ID.
@@ -4634,7 +4634,7 @@ export namespace PackageKitGlib {
     class PackageSack extends GObject.Object {
         static $gtype: GObject.GType<PackageSack>;
 
-        // Constructors of PackageKitGlib.PackageSack
+        // Constructors
 
         constructor(properties?: Partial<PackageSack.ConstructorProps>, ...args: any[]);
 
@@ -4642,11 +4642,11 @@ export namespace PackageKitGlib {
 
         static ['new'](): PackageSack;
 
-        // Own virtual methods of PackageKitGlib.PackageSack
+        // Virtual methods
 
         vfunc_changed(): void;
 
-        // Own methods of PackageKitGlib.PackageSack
+        // Methods
 
         /**
          * Adds a package to the sack.
@@ -4849,7 +4849,7 @@ export namespace PackageKitGlib {
     class Progress extends GObject.Object {
         static $gtype: GObject.GType<Progress>;
 
-        // Own properties of PackageKitGlib.Progress
+        // Properties
 
         /**
          * %TRUE if this transaction can be cancelled.
@@ -4977,7 +4977,7 @@ export namespace PackageKitGlib {
         get uid(): number;
         set uid(val: number);
 
-        // Constructors of PackageKitGlib.Progress
+        // Constructors
 
         constructor(properties?: Partial<Progress.ConstructorProps>, ...args: any[]);
 
@@ -4985,7 +4985,7 @@ export namespace PackageKitGlib {
 
         static ['new'](): Progress;
 
-        // Own methods of PackageKitGlib.Progress
+        // Methods
 
         /**
          * Get if this transaction can be cancelled.
@@ -5179,7 +5179,7 @@ export namespace PackageKitGlib {
     class RepoDetail extends Source {
         static $gtype: GObject.GType<RepoDetail>;
 
-        // Own properties of PackageKitGlib.RepoDetail
+        // Properties
 
         get description(): string;
         set description(val: string);
@@ -5190,7 +5190,7 @@ export namespace PackageKitGlib {
         get repoId(): string;
         set repoId(val: string);
 
-        // Constructors of PackageKitGlib.RepoDetail
+        // Constructors
 
         constructor(properties?: Partial<RepoDetail.ConstructorProps>, ...args: any[]);
 
@@ -5198,7 +5198,7 @@ export namespace PackageKitGlib {
 
         static ['new'](): RepoDetail;
 
-        // Own methods of PackageKitGlib.RepoDetail
+        // Methods
 
         /**
          * Gets the repository description.
@@ -5242,7 +5242,7 @@ export namespace PackageKitGlib {
     class RepoSignatureRequired extends Source {
         static $gtype: GObject.GType<RepoSignatureRequired>;
 
-        // Own properties of PackageKitGlib.RepoSignatureRequired
+        // Properties
 
         get key_fingerprint(): string;
         set key_fingerprint(val: string);
@@ -5275,7 +5275,7 @@ export namespace PackageKitGlib {
         get type(): SigTypeEnum;
         set type(val: SigTypeEnum);
 
-        // Constructors of PackageKitGlib.RepoSignatureRequired
+        // Constructors
 
         constructor(properties?: Partial<RepoSignatureRequired.ConstructorProps>, ...args: any[]);
 
@@ -5297,7 +5297,7 @@ export namespace PackageKitGlib {
     class RequireRestart extends Source {
         static $gtype: GObject.GType<RequireRestart>;
 
-        // Own properties of PackageKitGlib.RequireRestart
+        // Properties
 
         get package_id(): string;
         set package_id(val: string);
@@ -5306,7 +5306,7 @@ export namespace PackageKitGlib {
         get restart(): RestartEnum;
         set restart(val: RestartEnum);
 
-        // Constructors of PackageKitGlib.RequireRestart
+        // Constructors
 
         constructor(properties?: Partial<RequireRestart.ConstructorProps>, ...args: any[]);
 
@@ -5330,7 +5330,7 @@ export namespace PackageKitGlib {
     class Results extends GObject.Object {
         static $gtype: GObject.GType<Results>;
 
-        // Own properties of PackageKitGlib.Results
+        // Properties
 
         get inputs(): number;
         set inputs(val: number);
@@ -5352,7 +5352,7 @@ export namespace PackageKitGlib {
         get transactionFlags(): number;
         set transactionFlags(val: number);
 
-        // Constructors of PackageKitGlib.Results
+        // Constructors
 
         constructor(properties?: Partial<Results.ConstructorProps>, ...args: any[]);
 
@@ -5360,7 +5360,7 @@ export namespace PackageKitGlib {
 
         static ['new'](): Results;
 
-        // Own methods of PackageKitGlib.Results
+        // Methods
 
         /**
          * Adds a category item to the results set.
@@ -5564,7 +5564,7 @@ export namespace PackageKitGlib {
     class Source extends GObject.Object {
         static $gtype: GObject.GType<Source>;
 
-        // Own properties of PackageKitGlib.Source
+        // Properties
 
         get role(): RoleEnum;
         set role(val: RoleEnum);
@@ -5573,7 +5573,7 @@ export namespace PackageKitGlib {
         get transactionId(): string;
         set transactionId(val: string);
 
-        // Constructors of PackageKitGlib.Source
+        // Constructors
 
         constructor(properties?: Partial<Source.ConstructorProps>, ...args: any[]);
 
@@ -5601,7 +5601,7 @@ export namespace PackageKitGlib {
     class Task extends Client {
         static $gtype: GObject.GType<Task>;
 
-        // Own properties of PackageKitGlib.Task
+        // Properties
 
         /**
          * %TRUE if package downgrades are allowed.
@@ -5649,7 +5649,7 @@ export namespace PackageKitGlib {
         get simulate(): boolean;
         set simulate(val: boolean);
 
-        // Constructors of PackageKitGlib.Task
+        // Constructors
 
         constructor(properties?: Partial<Task.ConstructorProps>, ...args: any[]);
 
@@ -5657,7 +5657,7 @@ export namespace PackageKitGlib {
 
         static ['new'](): Task;
 
-        // Own virtual methods of PackageKitGlib.Task
+        // Virtual methods
 
         vfunc_eula_question(request: number, results: Results): void;
         vfunc_key_question(request: number, results: Results): void;
@@ -5666,7 +5666,7 @@ export namespace PackageKitGlib {
         vfunc_simulate_question(request: number, results: Results): void;
         vfunc_untrusted_question(request: number, results: Results): void;
 
-        // Own methods of PackageKitGlib.Task
+        // Methods
 
         /**
          * Get the list of dependant packages.
@@ -6447,7 +6447,7 @@ export namespace PackageKitGlib {
     class TransactionList extends GObject.Object {
         static $gtype: GObject.GType<TransactionList>;
 
-        // Constructors of PackageKitGlib.TransactionList
+        // Constructors
 
         constructor(properties?: Partial<TransactionList.ConstructorProps>, ...args: any[]);
 
@@ -6455,7 +6455,7 @@ export namespace PackageKitGlib {
 
         static ['new'](): TransactionList;
 
-        // Own signals of PackageKitGlib.TransactionList
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -6467,12 +6467,12 @@ export namespace PackageKitGlib {
         connect_after(signal: 'removed', callback: (_source: this, tid: string) => void): number;
         emit(signal: 'removed', tid: string): void;
 
-        // Own virtual methods of PackageKitGlib.TransactionList
+        // Virtual methods
 
         vfunc_added(tid: string): void;
         vfunc_removed(tid: string): void;
 
-        // Own methods of PackageKitGlib.TransactionList
+        // Methods
 
         /**
          * Gets the string lists of transaction IDs recognised as pending, running or finished by the daemon.
@@ -6499,7 +6499,7 @@ export namespace PackageKitGlib {
     class TransactionPast extends Source {
         static $gtype: GObject.GType<TransactionPast>;
 
-        // Own properties of PackageKitGlib.TransactionPast
+        // Properties
 
         get cmdline(): string;
         set cmdline(val: string);
@@ -6518,7 +6518,7 @@ export namespace PackageKitGlib {
         get uid(): number;
         set uid(val: number);
 
-        // Constructors of PackageKitGlib.TransactionPast
+        // Constructors
 
         constructor(properties?: Partial<TransactionPast.ConstructorProps>, ...args: any[]);
 
@@ -6526,7 +6526,7 @@ export namespace PackageKitGlib {
 
         static ['new'](): TransactionPast;
 
-        // Own methods of PackageKitGlib.TransactionPast
+        // Methods
 
         /**
          * Gets the past transaction cmdline value;
@@ -6609,7 +6609,7 @@ export namespace PackageKitGlib {
     class UpdateDetail extends Source {
         static $gtype: GObject.GType<UpdateDetail>;
 
-        // Own properties of PackageKitGlib.UpdateDetail
+        // Properties
 
         get bugzilla_urls(): string[];
         set bugzilla_urls(val: string[]);
@@ -6646,7 +6646,7 @@ export namespace PackageKitGlib {
         get vendorUrls(): string[];
         set vendorUrls(val: string[]);
 
-        // Constructors of PackageKitGlib.UpdateDetail
+        // Constructors
 
         constructor(properties?: Partial<UpdateDetail.ConstructorProps>, ...args: any[]);
 
@@ -6654,7 +6654,7 @@ export namespace PackageKitGlib {
 
         static ['new'](): UpdateDetail;
 
-        // Own methods of PackageKitGlib.UpdateDetail
+        // Methods
 
         /**
          * Gets the update detail bugzilla URLs.
@@ -6725,7 +6725,7 @@ export namespace PackageKitGlib {
     abstract class CategoryPrivate {
         static $gtype: GObject.GType<CategoryPrivate>;
 
-        // Constructors of PackageKitGlib.CategoryPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -6738,7 +6738,7 @@ export namespace PackageKitGlib {
     abstract class ClientHelperPrivate {
         static $gtype: GObject.GType<ClientHelperPrivate>;
 
-        // Constructors of PackageKitGlib.ClientHelperPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -6749,7 +6749,7 @@ export namespace PackageKitGlib {
     abstract class ClientPrivate {
         static $gtype: GObject.GType<ClientPrivate>;
 
-        // Constructors of PackageKitGlib.ClientPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -6761,7 +6761,7 @@ export namespace PackageKitGlib {
     abstract class ControlPrivate {
         static $gtype: GObject.GType<ControlPrivate>;
 
-        // Constructors of PackageKitGlib.ControlPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -6773,7 +6773,7 @@ export namespace PackageKitGlib {
     abstract class DesktopPrivate {
         static $gtype: GObject.GType<DesktopPrivate>;
 
-        // Constructors of PackageKitGlib.DesktopPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -6785,7 +6785,7 @@ export namespace PackageKitGlib {
     abstract class DetailsPrivate {
         static $gtype: GObject.GType<DetailsPrivate>;
 
-        // Constructors of PackageKitGlib.DetailsPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -6797,7 +6797,7 @@ export namespace PackageKitGlib {
     abstract class DistroUpgradePrivate {
         static $gtype: GObject.GType<DistroUpgradePrivate>;
 
-        // Constructors of PackageKitGlib.DistroUpgradePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -6808,12 +6808,12 @@ export namespace PackageKitGlib {
     class EnumMatch {
         static $gtype: GObject.GType<EnumMatch>;
 
-        // Own fields of PackageKitGlib.EnumMatch
+        // Fields
 
         value: number;
         string: string;
 
-        // Constructors of PackageKitGlib.EnumMatch
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -6831,7 +6831,7 @@ export namespace PackageKitGlib {
     abstract class ErrorPrivate {
         static $gtype: GObject.GType<ErrorPrivate>;
 
-        // Constructors of PackageKitGlib.ErrorPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -6843,7 +6843,7 @@ export namespace PackageKitGlib {
     abstract class EulaRequiredPrivate {
         static $gtype: GObject.GType<EulaRequiredPrivate>;
 
-        // Constructors of PackageKitGlib.EulaRequiredPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -6855,7 +6855,7 @@ export namespace PackageKitGlib {
     abstract class FilesPrivate {
         static $gtype: GObject.GType<FilesPrivate>;
 
-        // Constructors of PackageKitGlib.FilesPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -6867,7 +6867,7 @@ export namespace PackageKitGlib {
     abstract class ItemProgressPrivate {
         static $gtype: GObject.GType<ItemProgressPrivate>;
 
-        // Constructors of PackageKitGlib.ItemProgressPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -6879,7 +6879,7 @@ export namespace PackageKitGlib {
     abstract class MediaChangeRequiredPrivate {
         static $gtype: GObject.GType<MediaChangeRequiredPrivate>;
 
-        // Constructors of PackageKitGlib.MediaChangeRequiredPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -6891,7 +6891,7 @@ export namespace PackageKitGlib {
     abstract class PackagePrivate {
         static $gtype: GObject.GType<PackagePrivate>;
 
-        // Constructors of PackageKitGlib.PackagePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -6903,7 +6903,7 @@ export namespace PackageKitGlib {
     abstract class PackageSackPrivate {
         static $gtype: GObject.GType<PackageSackPrivate>;
 
-        // Constructors of PackageKitGlib.PackageSackPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -6911,7 +6911,7 @@ export namespace PackageKitGlib {
     abstract class PackageSackResults {
         static $gtype: GObject.GType<PackageSackResults>;
 
-        // Constructors of PackageKitGlib.PackageSackResults
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -6923,7 +6923,7 @@ export namespace PackageKitGlib {
     abstract class ProgressPrivate {
         static $gtype: GObject.GType<ProgressPrivate>;
 
-        // Constructors of PackageKitGlib.ProgressPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -6935,7 +6935,7 @@ export namespace PackageKitGlib {
     abstract class RepoDetailPrivate {
         static $gtype: GObject.GType<RepoDetailPrivate>;
 
-        // Constructors of PackageKitGlib.RepoDetailPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -6947,7 +6947,7 @@ export namespace PackageKitGlib {
     abstract class RepoSignatureRequiredPrivate {
         static $gtype: GObject.GType<RepoSignatureRequiredPrivate>;
 
-        // Constructors of PackageKitGlib.RepoSignatureRequiredPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -6959,7 +6959,7 @@ export namespace PackageKitGlib {
     abstract class RequireRestartPrivate {
         static $gtype: GObject.GType<RequireRestartPrivate>;
 
-        // Constructors of PackageKitGlib.RequireRestartPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -6971,7 +6971,7 @@ export namespace PackageKitGlib {
     abstract class ResultsPrivate {
         static $gtype: GObject.GType<ResultsPrivate>;
 
-        // Constructors of PackageKitGlib.ResultsPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -6983,7 +6983,7 @@ export namespace PackageKitGlib {
     abstract class SourcePrivate {
         static $gtype: GObject.GType<SourcePrivate>;
 
-        // Constructors of PackageKitGlib.SourcePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -6995,7 +6995,7 @@ export namespace PackageKitGlib {
     abstract class TaskPrivate {
         static $gtype: GObject.GType<TaskPrivate>;
 
-        // Constructors of PackageKitGlib.TaskPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -7007,7 +7007,7 @@ export namespace PackageKitGlib {
     abstract class TransactionListPrivate {
         static $gtype: GObject.GType<TransactionListPrivate>;
 
-        // Constructors of PackageKitGlib.TransactionListPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -7019,7 +7019,7 @@ export namespace PackageKitGlib {
     abstract class TransactionPastPrivate {
         static $gtype: GObject.GType<TransactionPastPrivate>;
 
-        // Constructors of PackageKitGlib.TransactionPastPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -7031,7 +7031,7 @@ export namespace PackageKitGlib {
     abstract class UpdateDetailPrivate {
         static $gtype: GObject.GType<UpdateDetailPrivate>;
 
-        // Constructors of PackageKitGlib.UpdateDetailPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }

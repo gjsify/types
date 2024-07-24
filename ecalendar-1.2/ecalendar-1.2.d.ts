@@ -408,11 +408,11 @@ export namespace ECalendar {
     class Cal extends GObject.Object {
         static $gtype: GObject.GType<Cal>;
 
-        // Own fields of ECalendar.Cal
+        // Fields
 
         object: GObject.Object;
 
-        // Constructors of ECalendar.Cal
+        // Constructors
 
         constructor(properties?: Partial<Cal.ConstructorProps>, ...args: any[]);
 
@@ -420,7 +420,7 @@ export namespace ECalendar {
 
         static ['new'](source: EDataServer.Source, type: CalSourceType): Cal;
 
-        // Own signals of ECalendar.Cal
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -447,7 +447,7 @@ export namespace ECalendar {
         ): number;
         emit(signal: 'cal-set-mode', object: CalSetModeStatusEnum, p0: unknown): void;
 
-        // Own static methods of ECalendar.Cal
+        // Static methods
 
         /**
          * Gets an error message for the given status code.
@@ -509,14 +509,14 @@ export namespace ECalendar {
          */
         static util_priority_to_string(priority: number): string;
 
-        // Own virtual methods of ECalendar.Cal
+        // Virtual methods
 
         vfunc_backend_died(): void;
         vfunc_backend_error(message: string): void;
         vfunc_cal_opened(status: CalendarStatus): void;
         vfunc_cal_opened_ex(error: GLib.Error): void;
 
-        // Own methods of ECalendar.Cal
+        // Methods
 
         /**
          * Tells the calendar backend to get rid of the alarm identified by the
@@ -696,7 +696,7 @@ export namespace ECalendar {
     class CalClient extends EDataServer.Client {
         static $gtype: GObject.GType<CalClient>;
 
-        // Constructors of ECalendar.CalClient
+        // Constructors
 
         constructor(properties?: Partial<CalClient.ConstructorProps>, ...args: any[]);
 
@@ -704,7 +704,7 @@ export namespace ECalendar {
 
         static ['new'](source: EDataServer.Source, source_type: CalClientSourceType): CalClient;
 
-        // Own signals of ECalendar.CalClient
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -713,7 +713,7 @@ export namespace ECalendar {
         connect_after(signal: 'free-busy-data', callback: (_source: this, object: any) => void): number;
         emit(signal: 'free-busy-data', object: any): void;
 
-        // Own static methods of ECalendar.CalClient
+        // Static methods
 
         static error_create(code: CalClientError, custom_msg: string): GLib.Error;
         // Conflicted with EDataServer.Client.error_create
@@ -733,7 +733,7 @@ export namespace ECalendar {
          */
         static free_ecalcomp_slist(ecalcomps: CalComponent[]): void;
 
-        // Own methods of ECalendar.CalClient
+        // Methods
 
         /**
          * Finishes previous call of e_cal_client_add_timezone().
@@ -1127,22 +1127,22 @@ export namespace ECalendar {
     class CalClientView extends GObject.Object {
         static $gtype: GObject.GType<CalClientView>;
 
-        // Own properties of ECalendar.CalClientView
+        // Properties
 
         get client(): CalClient;
         get view(): any;
 
-        // Own fields of ECalendar.CalClientView
+        // Fields
 
         object: GObject.Object;
 
-        // Constructors of ECalendar.CalClientView
+        // Constructors
 
         constructor(properties?: Partial<CalClientView.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of ECalendar.CalClientView
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -1163,12 +1163,12 @@ export namespace ECalendar {
         connect_after(signal: 'progress', callback: (_source: this, object: number, p0: string) => void): number;
         emit(signal: 'progress', object: number, p0: string): void;
 
-        // Own virtual methods of ECalendar.CalClientView
+        // Virtual methods
 
         vfunc_complete(error: GLib.Error): void;
         vfunc_progress(percent: number, message: string): void;
 
-        // Own methods of ECalendar.CalClientView
+        // Methods
 
         /**
          * Get the #ECalClient associated with this view.
@@ -1218,11 +1218,11 @@ export namespace ECalendar {
     class CalComponent extends GObject.Object {
         static $gtype: GObject.GType<CalComponent>;
 
-        // Own fields of ECalendar.CalComponent
+        // Fields
 
         object: GObject.Object;
 
-        // Constructors of ECalendar.CalComponent
+        // Constructors
 
         constructor(properties?: Partial<CalComponent.ConstructorProps>, ...args: any[]);
 
@@ -1232,7 +1232,7 @@ export namespace ECalendar {
 
         static new_from_string(calobj: string): CalComponent;
 
-        // Own static methods of ECalendar.CalComponent
+        // Static methods
 
         /**
          * Frees a list of #ECalComponentAttendee structures.
@@ -1311,7 +1311,7 @@ export namespace ECalendar {
          */
         static gen_uid(): string;
 
-        // Own methods of ECalendar.CalComponent
+        // Methods
 
         /**
          * Aborts the sequence change needed in the given calendar component, which
@@ -1831,22 +1831,22 @@ export namespace ECalendar {
     class CalView extends GObject.Object {
         static $gtype: GObject.GType<CalView>;
 
-        // Own properties of ECalendar.CalView
+        // Properties
 
         get client(): Cal;
         get view(): any;
 
-        // Own fields of ECalendar.CalView
+        // Fields
 
         object: GObject.Object;
 
-        // Constructors of ECalendar.CalView
+        // Constructors
 
         constructor(properties?: Partial<CalView.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of ECalendar.CalView
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -1870,13 +1870,13 @@ export namespace ECalendar {
         connect_after(signal: 'view-progress', callback: (_source: this, object: string, p0: number) => void): number;
         emit(signal: 'view-progress', object: string, p0: number): void;
 
-        // Own virtual methods of ECalendar.CalView
+        // Virtual methods
 
         vfunc_view_complete(status: CalendarStatus, error_msg: string): void;
         vfunc_view_done(status: CalendarStatus): void;
         vfunc_view_progress(message: string, percent: number): void;
 
-        // Own methods of ECalendar.CalView
+        // Methods
 
         /**
          * Starts a live query to the calendar/tasks backend.
@@ -1894,12 +1894,12 @@ export namespace ECalendar {
     class CalChange {
         static $gtype: GObject.GType<CalChange>;
 
-        // Own fields of ECalendar.CalChange
+        // Fields
 
         comp: CalComponent;
         type: CalChangeType;
 
-        // Constructors of ECalendar.CalChange
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1909,7 +1909,7 @@ export namespace ECalendar {
     abstract class CalClientPrivate {
         static $gtype: GObject.GType<CalClientPrivate>;
 
-        // Constructors of ECalendar.CalClientPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1918,7 +1918,7 @@ export namespace ECalendar {
     abstract class CalClientViewPrivate {
         static $gtype: GObject.GType<CalClientViewPrivate>;
 
-        // Constructors of ECalendar.CalClientViewPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1926,11 +1926,11 @@ export namespace ECalendar {
     abstract class CalComponentAlarm {
         static $gtype: GObject.GType<CalComponentAlarm>;
 
-        // Constructors of ECalendar.CalComponentAlarm
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of ECalendar.CalComponentAlarm
+        // Methods
 
         /**
          * Frees an alarm structure.
@@ -2000,14 +2000,14 @@ export namespace ECalendar {
     class CalComponentAlarmInstance {
         static $gtype: GObject.GType<CalComponentAlarmInstance>;
 
-        // Own fields of ECalendar.CalComponentAlarmInstance
+        // Fields
 
         auid: string;
         trigger: number;
         occur_start: number;
         occur_end: number;
 
-        // Constructors of ECalendar.CalComponentAlarmInstance
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -2023,12 +2023,12 @@ export namespace ECalendar {
     class CalComponentAlarmRepeat {
         static $gtype: GObject.GType<CalComponentAlarmRepeat>;
 
-        // Own fields of ECalendar.CalComponentAlarmRepeat
+        // Fields
 
         repetitions: number;
         duration: any;
 
-        // Constructors of ECalendar.CalComponentAlarmRepeat
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -2042,11 +2042,11 @@ export namespace ECalendar {
     class CalComponentAlarmTrigger {
         static $gtype: GObject.GType<CalComponentAlarmTrigger>;
 
-        // Own fields of ECalendar.CalComponentAlarmTrigger
+        // Fields
 
         type: CalComponentAlarmTriggerType;
 
-        // Constructors of ECalendar.CalComponentAlarmTrigger
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2054,16 +2054,16 @@ export namespace ECalendar {
     class CalComponentAlarms {
         static $gtype: GObject.GType<CalComponentAlarms>;
 
-        // Own fields of ECalendar.CalComponentAlarms
+        // Fields
 
         comp: CalComponent;
         alarms: any[];
 
-        // Constructors of ECalendar.CalComponentAlarms
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of ECalendar.CalComponentAlarms
+        // Methods
 
         /**
          * Frees a #ECalComponentAlarms structure.
@@ -2074,7 +2074,7 @@ export namespace ECalendar {
     class CalComponentAttendee {
         static $gtype: GObject.GType<CalComponentAttendee>;
 
-        // Own fields of ECalendar.CalComponentAttendee
+        // Fields
 
         value: string;
         member: string;
@@ -2085,7 +2085,7 @@ export namespace ECalendar {
         cn: string;
         language: string;
 
-        // Constructors of ECalendar.CalComponentAttendee
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -2109,12 +2109,12 @@ export namespace ECalendar {
     class CalComponentDateTime {
         static $gtype: GObject.GType<CalComponentDateTime>;
 
-        // Own fields of ECalendar.CalComponentDateTime
+        // Fields
 
         value: any;
         tzid: string;
 
-        // Constructors of ECalendar.CalComponentDateTime
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -2128,12 +2128,12 @@ export namespace ECalendar {
     class CalComponentId {
         static $gtype: GObject.GType<CalComponentId>;
 
-        // Own fields of ECalendar.CalComponentId
+        // Fields
 
         uid: string;
         rid: string;
 
-        // Constructors of ECalendar.CalComponentId
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -2147,14 +2147,14 @@ export namespace ECalendar {
     class CalComponentOrganizer {
         static $gtype: GObject.GType<CalComponentOrganizer>;
 
-        // Own fields of ECalendar.CalComponentOrganizer
+        // Fields
 
         value: string;
         sentby: string;
         cn: string;
         language: string;
 
-        // Constructors of ECalendar.CalComponentOrganizer
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -2170,12 +2170,12 @@ export namespace ECalendar {
     class CalComponentPeriod {
         static $gtype: GObject.GType<CalComponentPeriod>;
 
-        // Own fields of ECalendar.CalComponentPeriod
+        // Fields
 
         type: CalComponentPeriodType;
         start: any;
 
-        // Constructors of ECalendar.CalComponentPeriod
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2183,7 +2183,7 @@ export namespace ECalendar {
     abstract class CalComponentPrivate {
         static $gtype: GObject.GType<CalComponentPrivate>;
 
-        // Constructors of ECalendar.CalComponentPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2191,12 +2191,12 @@ export namespace ECalendar {
     class CalComponentRange {
         static $gtype: GObject.GType<CalComponentRange>;
 
-        // Own fields of ECalendar.CalComponentRange
+        // Fields
 
         type: CalComponentRangeType;
         datetime: CalComponentDateTime;
 
-        // Constructors of ECalendar.CalComponentRange
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2204,12 +2204,12 @@ export namespace ECalendar {
     class CalComponentText {
         static $gtype: GObject.GType<CalComponentText>;
 
-        // Own fields of ECalendar.CalComponentText
+        // Fields
 
         value: string;
         altrep: string;
 
-        // Constructors of ECalendar.CalComponentText
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -2223,7 +2223,7 @@ export namespace ECalendar {
     abstract class CalPrivate {
         static $gtype: GObject.GType<CalPrivate>;
 
-        // Constructors of ECalendar.CalPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2232,7 +2232,7 @@ export namespace ECalendar {
     abstract class CalViewPrivate {
         static $gtype: GObject.GType<CalViewPrivate>;
 
-        // Constructors of ECalendar.CalViewPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }

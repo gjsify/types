@@ -35,7 +35,7 @@ export namespace GstVulkanWayland {
     class VulkanDisplayWayland extends GstVulkan.VulkanDisplay {
         static $gtype: GObject.GType<VulkanDisplayWayland>;
 
-        // Own fields of GstVulkanWayland.VulkanDisplayWayland
+        // Fields
 
         display: any;
         registry: any;
@@ -43,7 +43,7 @@ export namespace GstVulkanWayland {
         subcompositor: any;
         shell: any;
 
-        // Constructors of GstVulkanWayland.VulkanDisplayWayland
+        // Constructors
 
         constructor(properties?: Partial<VulkanDisplayWayland.ConstructorProps>, ...args: any[]);
 

@@ -97,7 +97,7 @@ export namespace NetworkManager {
     class ConnectionError extends GLib.Error {
         static $gtype: GObject.GType<ConnectionError>;
 
-        // Static fields of NetworkManager.ConnectionError
+        // Static fields
 
         /**
          * unknown or unclassified error
@@ -127,12 +127,12 @@ export namespace NetworkManager {
          */
         static INVALIDSETTING: number;
 
-        // Constructors of NetworkManager.ConnectionError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of NetworkManager.ConnectionError
+        // Static methods
 
         /**
          * Registers an error quark for #NMConnection if necessary.
@@ -684,7 +684,7 @@ export namespace NetworkManager {
     class Setting8021xError extends GLib.Error {
         static $gtype: GObject.GType<Setting8021xError>;
 
-        // Static fields of NetworkManager.Setting8021xError
+        // Static fields
 
         /**
          * unknown or unclassified error
@@ -700,12 +700,12 @@ export namespace NetworkManager {
          */
         static MISSINGPROPERTY: number;
 
-        // Constructors of NetworkManager.Setting8021xError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of NetworkManager.Setting8021xError
+        // Static methods
 
         /**
          * Registers an error quark for #NMSetting8021x if necessary.
@@ -716,7 +716,7 @@ export namespace NetworkManager {
     class SettingAdslError extends GLib.Error {
         static $gtype: GObject.GType<SettingAdslError>;
 
-        // Static fields of NetworkManager.SettingAdslError
+        // Static fields
 
         /**
          * unknown or unclassified error
@@ -732,12 +732,12 @@ export namespace NetworkManager {
          */
         static MISSINGPROPERTY: number;
 
-        // Constructors of NetworkManager.SettingAdslError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of NetworkManager.SettingAdslError
+        // Static methods
 
         /**
          * Registers an error quark for #NMSettingAdsl if necessary.
@@ -748,7 +748,7 @@ export namespace NetworkManager {
     class SettingBluetoothError extends GLib.Error {
         static $gtype: GObject.GType<SettingBluetoothError>;
 
-        // Static fields of NetworkManager.SettingBluetoothError
+        // Static fields
 
         /**
          * unknown or unclassified error
@@ -770,12 +770,12 @@ export namespace NetworkManager {
          */
         static TYPESETTINGNOTFOUND: number;
 
-        // Constructors of NetworkManager.SettingBluetoothError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of NetworkManager.SettingBluetoothError
+        // Static methods
 
         /**
          * Registers an error quark for #NMSettingBluetooth if necessary.
@@ -786,7 +786,7 @@ export namespace NetworkManager {
     class SettingBondError extends GLib.Error {
         static $gtype: GObject.GType<SettingBondError>;
 
-        // Static fields of NetworkManager.SettingBondError
+        // Static fields
 
         /**
          * unknown or unclassified error
@@ -810,12 +810,12 @@ export namespace NetworkManager {
          */
         static MISSINGOPTION: number;
 
-        // Constructors of NetworkManager.SettingBondError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of NetworkManager.SettingBondError
+        // Static methods
 
         /**
          * Registers an error quark for #NMSettingBond if necessary.
@@ -826,7 +826,7 @@ export namespace NetworkManager {
     class SettingBridgeError extends GLib.Error {
         static $gtype: GObject.GType<SettingBridgeError>;
 
-        // Static fields of NetworkManager.SettingBridgeError
+        // Static fields
 
         /**
          * unknown or unclassified error
@@ -842,12 +842,12 @@ export namespace NetworkManager {
          */
         static MISSINGPROPERTY: number;
 
-        // Constructors of NetworkManager.SettingBridgeError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of NetworkManager.SettingBridgeError
+        // Static methods
 
         /**
          * Registers an error quark for #NMSettingBridge if necessary.
@@ -858,7 +858,7 @@ export namespace NetworkManager {
     class SettingBridgePortError extends GLib.Error {
         static $gtype: GObject.GType<SettingBridgePortError>;
 
-        // Static fields of NetworkManager.SettingBridgePortError
+        // Static fields
 
         /**
          * unknown or unclassified error
@@ -874,12 +874,12 @@ export namespace NetworkManager {
          */
         static MISSINGPROPERTY: number;
 
-        // Constructors of NetworkManager.SettingBridgePortError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of NetworkManager.SettingBridgePortError
+        // Static methods
 
         /**
          * Registers an error quark for #NMSettingBridgePort if necessary.
@@ -890,7 +890,7 @@ export namespace NetworkManager {
     class SettingCdmaError extends GLib.Error {
         static $gtype: GObject.GType<SettingCdmaError>;
 
-        // Static fields of NetworkManager.SettingCdmaError
+        // Static fields
 
         /**
          * unknown or unclassified error
@@ -911,12 +911,12 @@ export namespace NetworkManager {
          */
         static MISSINGSERIALSETTING: number;
 
-        // Constructors of NetworkManager.SettingCdmaError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of NetworkManager.SettingCdmaError
+        // Static methods
 
         /**
          * Registers an error quark for #NMSettingCdma if necessary.
@@ -996,7 +996,7 @@ export namespace NetworkManager {
     class SettingConnectionError extends GLib.Error {
         static $gtype: GObject.GType<SettingConnectionError>;
 
-        // Static fields of NetworkManager.SettingConnectionError
+        // Static fields
 
         /**
          * unknown or unclassified error
@@ -1024,12 +1024,12 @@ export namespace NetworkManager {
          */
         static IPCONFIGNOTALLOWED: number;
 
-        // Constructors of NetworkManager.SettingConnectionError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of NetworkManager.SettingConnectionError
+        // Static methods
 
         /**
          * Registers an error quark for #NMSettingConnection if necessary.
@@ -1040,7 +1040,7 @@ export namespace NetworkManager {
     class SettingDcbError extends GLib.Error {
         static $gtype: GObject.GType<SettingDcbError>;
 
-        // Static fields of NetworkManager.SettingDcbError
+        // Static fields
 
         /**
          * unknown or unclassified error
@@ -1056,12 +1056,12 @@ export namespace NetworkManager {
          */
         static MISSINGPROPERTY: number;
 
-        // Constructors of NetworkManager.SettingDcbError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of NetworkManager.SettingDcbError
+        // Static methods
 
         /**
          * Registers an error quark for #NMSettingDcb if necessary.
@@ -1140,7 +1140,7 @@ export namespace NetworkManager {
     class SettingError extends GLib.Error {
         static $gtype: GObject.GType<SettingError>;
 
-        // Static fields of NetworkManager.SettingError
+        // Static fields
 
         /**
          * unknown or unclassified error
@@ -1163,12 +1163,12 @@ export namespace NetworkManager {
          */
         static PROPERTYTYPEMISMATCH: number;
 
-        // Constructors of NetworkManager.SettingError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of NetworkManager.SettingError
+        // Static methods
 
         /**
          * Registers an error quark for #NMSetting if necessary.
@@ -1179,7 +1179,7 @@ export namespace NetworkManager {
     class SettingGenericError extends GLib.Error {
         static $gtype: GObject.GType<SettingGenericError>;
 
-        // Static fields of NetworkManager.SettingGenericError
+        // Static fields
 
         /**
          * unknown or unclassified error
@@ -1195,12 +1195,12 @@ export namespace NetworkManager {
          */
         static MISSINGPROPERTY: number;
 
-        // Constructors of NetworkManager.SettingGenericError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of NetworkManager.SettingGenericError
+        // Static methods
 
         /**
          * Registers an error quark for #NMSettingGeneric if necessary.
@@ -1211,7 +1211,7 @@ export namespace NetworkManager {
     class SettingGsmError extends GLib.Error {
         static $gtype: GObject.GType<SettingGsmError>;
 
-        // Static fields of NetworkManager.SettingGsmError
+        // Static fields
 
         /**
          * unknown or unclassified error
@@ -1232,12 +1232,12 @@ export namespace NetworkManager {
          */
         static MISSINGSERIALSETTING: number;
 
-        // Constructors of NetworkManager.SettingGsmError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of NetworkManager.SettingGsmError
+        // Static methods
 
         /**
          * Registers an error quark for #NMSettingGsm if necessary.
@@ -1399,7 +1399,7 @@ export namespace NetworkManager {
     class SettingIP4ConfigError extends GLib.Error {
         static $gtype: GObject.GType<SettingIP4ConfigError>;
 
-        // Static fields of NetworkManager.SettingIP4ConfigError
+        // Static fields
 
         /**
          * unknown or unclassified error
@@ -1420,12 +1420,12 @@ export namespace NetworkManager {
          */
         static NOTALLOWEDFORMETHOD: number;
 
-        // Constructors of NetworkManager.SettingIP4ConfigError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of NetworkManager.SettingIP4ConfigError
+        // Static methods
 
         /**
          * Registers an error quark for #NMSettingIP4Config if necessary.
@@ -1436,7 +1436,7 @@ export namespace NetworkManager {
     class SettingIP6ConfigError extends GLib.Error {
         static $gtype: GObject.GType<SettingIP6ConfigError>;
 
-        // Static fields of NetworkManager.SettingIP6ConfigError
+        // Static fields
 
         /**
          * unknown or unclassified error
@@ -1457,12 +1457,12 @@ export namespace NetworkManager {
          */
         static NOTALLOWEDFORMETHOD: number;
 
-        // Constructors of NetworkManager.SettingIP6ConfigError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of NetworkManager.SettingIP6ConfigError
+        // Static methods
 
         /**
          * Registers an error quark for #NMSettingIP6Config if necessary.
@@ -1506,7 +1506,7 @@ export namespace NetworkManager {
     class SettingInfinibandError extends GLib.Error {
         static $gtype: GObject.GType<SettingInfinibandError>;
 
-        // Static fields of NetworkManager.SettingInfinibandError
+        // Static fields
 
         /**
          * unknown or unclassified error
@@ -1522,12 +1522,12 @@ export namespace NetworkManager {
          */
         static MISSINGPROPERTY: number;
 
-        // Constructors of NetworkManager.SettingInfinibandError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of NetworkManager.SettingInfinibandError
+        // Static methods
 
         /**
          * Registers an error quark for #NMSettingInfiniband if necessary.
@@ -1538,7 +1538,7 @@ export namespace NetworkManager {
     class SettingOlpcMeshError extends GLib.Error {
         static $gtype: GObject.GType<SettingOlpcMeshError>;
 
-        // Static fields of NetworkManager.SettingOlpcMeshError
+        // Static fields
 
         /**
          * unknown or unclassified error
@@ -1554,12 +1554,12 @@ export namespace NetworkManager {
          */
         static MISSINGPROPERTY: number;
 
-        // Constructors of NetworkManager.SettingOlpcMeshError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of NetworkManager.SettingOlpcMeshError
+        // Static methods
 
         static quark(): GLib.Quark;
     }
@@ -1567,7 +1567,7 @@ export namespace NetworkManager {
     class SettingPPPError extends GLib.Error {
         static $gtype: GObject.GType<SettingPPPError>;
 
-        // Static fields of NetworkManager.SettingPPPError
+        // Static fields
 
         /**
          * unknown or unclassified error
@@ -1588,12 +1588,12 @@ export namespace NetworkManager {
          */
         static REQUIREMPPENOTALLOWED: number;
 
-        // Constructors of NetworkManager.SettingPPPError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of NetworkManager.SettingPPPError
+        // Static methods
 
         /**
          * Registers an error quark for #NMSettingPPP if necessary.
@@ -1604,7 +1604,7 @@ export namespace NetworkManager {
     class SettingPPPOEError extends GLib.Error {
         static $gtype: GObject.GType<SettingPPPOEError>;
 
-        // Static fields of NetworkManager.SettingPPPOEError
+        // Static fields
 
         /**
          * unknown or unclassified error
@@ -1625,12 +1625,12 @@ export namespace NetworkManager {
          */
         static MISSINGPPPSETTING: number;
 
-        // Constructors of NetworkManager.SettingPPPOEError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of NetworkManager.SettingPPPOEError
+        // Static methods
 
         /**
          * Registers an error quark for #NMSettingPPPOE if necessary.
@@ -1681,7 +1681,7 @@ export namespace NetworkManager {
     class SettingSerialError extends GLib.Error {
         static $gtype: GObject.GType<SettingSerialError>;
 
-        // Static fields of NetworkManager.SettingSerialError
+        // Static fields
 
         /**
          * unknown or unclassified error
@@ -1702,12 +1702,12 @@ export namespace NetworkManager {
          */
         static MISSINGPPPSETTING: number;
 
-        // Constructors of NetworkManager.SettingSerialError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of NetworkManager.SettingSerialError
+        // Static methods
 
         /**
          * Registers an error quark for #NMSettingSerial if necessary.
@@ -1718,7 +1718,7 @@ export namespace NetworkManager {
     class SettingTeamError extends GLib.Error {
         static $gtype: GObject.GType<SettingTeamError>;
 
-        // Static fields of NetworkManager.SettingTeamError
+        // Static fields
 
         /**
          * unknown or unclassified error
@@ -1734,12 +1734,12 @@ export namespace NetworkManager {
          */
         static MISSINGPROPERTY: number;
 
-        // Constructors of NetworkManager.SettingTeamError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of NetworkManager.SettingTeamError
+        // Static methods
 
         /**
          * Registers an error quark for #NMSettingTeam if necessary.
@@ -1750,7 +1750,7 @@ export namespace NetworkManager {
     class SettingTeamPortError extends GLib.Error {
         static $gtype: GObject.GType<SettingTeamPortError>;
 
-        // Static fields of NetworkManager.SettingTeamPortError
+        // Static fields
 
         /**
          * unknown or unclassified error
@@ -1766,12 +1766,12 @@ export namespace NetworkManager {
          */
         static MISSINGPROPERTY: number;
 
-        // Constructors of NetworkManager.SettingTeamPortError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of NetworkManager.SettingTeamPortError
+        // Static methods
 
         /**
          * Registers an error quark for #NMSettingTeamPort if necessary.
@@ -1782,7 +1782,7 @@ export namespace NetworkManager {
     class SettingVlanError extends GLib.Error {
         static $gtype: GObject.GType<SettingVlanError>;
 
-        // Static fields of NetworkManager.SettingVlanError
+        // Static fields
 
         /**
          * unknown or unclassified error
@@ -1803,12 +1803,12 @@ export namespace NetworkManager {
          */
         static INVALIDPARENT: number;
 
-        // Constructors of NetworkManager.SettingVlanError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of NetworkManager.SettingVlanError
+        // Static methods
 
         /**
          * Registers an error quark for #NMSettingVlan if necessary.
@@ -1819,7 +1819,7 @@ export namespace NetworkManager {
     class SettingVpnError extends GLib.Error {
         static $gtype: GObject.GType<SettingVpnError>;
 
-        // Static fields of NetworkManager.SettingVpnError
+        // Static fields
 
         /**
          * unknown or unclassified error
@@ -1835,12 +1835,12 @@ export namespace NetworkManager {
          */
         static MISSINGPROPERTY: number;
 
-        // Constructors of NetworkManager.SettingVpnError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of NetworkManager.SettingVpnError
+        // Static methods
 
         /**
          * Registers an error quark for #NMSettingVPN if necessary.
@@ -1851,7 +1851,7 @@ export namespace NetworkManager {
     class SettingWimaxError extends GLib.Error {
         static $gtype: GObject.GType<SettingWimaxError>;
 
-        // Static fields of NetworkManager.SettingWimaxError
+        // Static fields
 
         /**
          * unknown or unclassified error
@@ -1867,12 +1867,12 @@ export namespace NetworkManager {
          */
         static MISSINGPROPERTY: number;
 
-        // Constructors of NetworkManager.SettingWimaxError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of NetworkManager.SettingWimaxError
+        // Static methods
 
         /**
          * Registers an error quark for #NMSettingWimax if necessary.
@@ -1883,7 +1883,7 @@ export namespace NetworkManager {
     class SettingWiredError extends GLib.Error {
         static $gtype: GObject.GType<SettingWiredError>;
 
-        // Static fields of NetworkManager.SettingWiredError
+        // Static fields
 
         /**
          * unknown or unclassified error
@@ -1899,12 +1899,12 @@ export namespace NetworkManager {
          */
         static MISSINGPROPERTY: number;
 
-        // Constructors of NetworkManager.SettingWiredError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of NetworkManager.SettingWiredError
+        // Static methods
 
         /**
          * Registers an error quark for #NMSettingWired if necessary.
@@ -1915,7 +1915,7 @@ export namespace NetworkManager {
     class SettingWirelessError extends GLib.Error {
         static $gtype: GObject.GType<SettingWirelessError>;
 
-        // Static fields of NetworkManager.SettingWirelessError
+        // Static fields
 
         /**
          * unknown or unclassified error
@@ -1941,12 +1941,12 @@ export namespace NetworkManager {
          */
         static CHANNELREQUIRESBAND: number;
 
-        // Constructors of NetworkManager.SettingWirelessError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of NetworkManager.SettingWirelessError
+        // Static methods
 
         /**
          * Registers an error quark for #NMSettingWireless if necessary.
@@ -1957,7 +1957,7 @@ export namespace NetworkManager {
     class SettingWirelessSecurityError extends GLib.Error {
         static $gtype: GObject.GType<SettingWirelessSecurityError>;
 
-        // Static fields of NetworkManager.SettingWirelessSecurityError
+        // Static fields
 
         /**
          * unknown or unclassified error
@@ -1994,12 +1994,12 @@ export namespace NetworkManager {
          */
         static SHAREDKEYREQUIRESWEP: number;
 
-        // Constructors of NetworkManager.SettingWirelessSecurityError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of NetworkManager.SettingWirelessSecurityError
+        // Static methods
 
         /**
          * Registers an error quark for #NMSettingWired if necessary.
@@ -3708,7 +3708,7 @@ export namespace NetworkManager {
     class Connection extends GObject.Object {
         static $gtype: GObject.GType<Connection>;
 
-        // Own properties of NetworkManager.Connection
+        // Properties
 
         /**
          * The connection's D-Bus path, used only by the calling process as a record
@@ -3717,7 +3717,7 @@ export namespace NetworkManager {
         get path(): string;
         set path(val: string);
 
-        // Constructors of NetworkManager.Connection
+        // Constructors
 
         constructor(properties?: Partial<Connection.ConstructorProps>, ...args: any[]);
 
@@ -3727,7 +3727,7 @@ export namespace NetworkManager {
 
         static new_from_hash(hash: { [key: string]: any } | GLib.HashTable<string, GLib.HashTable>): Connection;
 
-        // Own signals of NetworkManager.Connection
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -3742,7 +3742,7 @@ export namespace NetworkManager {
         connect_after(signal: 'secrets-updated', callback: (_source: this, setting_name: string) => void): number;
         emit(signal: 'secrets-updated', setting_name: string): void;
 
-        // Own static methods of NetworkManager.Connection
+        // Static methods
 
         /**
          * Create a new #NMSetting object of the desired type, given a setting name.
@@ -3761,11 +3761,11 @@ export namespace NetworkManager {
          */
         static lookup_setting_type_by_quark(error_quark: GLib.Quark): GObject.GType;
 
-        // Own virtual methods of NetworkManager.Connection
+        // Virtual methods
 
         vfunc_secrets_updated(setting: string): void;
 
-        // Own methods of NetworkManager.Connection
+        // Methods
 
         /**
          * Adds a #NMSetting to the connection, replacing any previous #NMSetting of the
@@ -4123,7 +4123,7 @@ export namespace NetworkManager {
     abstract class Setting extends GObject.Object {
         static $gtype: GObject.GType<Setting>;
 
-        // Own properties of NetworkManager.Setting
+        // Properties
 
         /**
          * The setting's name, which uniquely identifies the setting within the
@@ -4133,7 +4133,7 @@ export namespace NetworkManager {
         get name(): string;
         set name(val: string);
 
-        // Constructors of NetworkManager.Setting
+        // Constructors
 
         constructor(properties?: Partial<Setting.ConstructorProps>, ...args: any[]);
 
@@ -4144,7 +4144,7 @@ export namespace NetworkManager {
             hash: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
         ): Setting;
 
-        // Own virtual methods of NetworkManager.Setting
+        // Virtual methods
 
         vfunc_compare_property(other: Setting, prop_spec: GObject.ParamSpec, flags: SettingCompareFlags): boolean;
         vfunc_get_secret_flags(secret_name: string, verify_secret: boolean, out_flags: SettingSecretFlags): boolean;
@@ -4163,7 +4163,7 @@ export namespace NetworkManager {
         vfunc_set_secret_flags(secret_name: string, verify_secret: boolean, flags: SettingSecretFlags): boolean;
         vfunc_update_one_secret(key: string, value: GObject.Value | any): number;
 
-        // Own methods of NetworkManager.Setting
+        // Methods
 
         /**
          * Resets and clears any secrets in the setting.  Secrets should be added to the
@@ -4333,7 +4333,7 @@ export namespace NetworkManager {
     class Setting8021x extends Setting {
         static $gtype: GObject.GType<Setting8021x>;
 
-        // Own properties of NetworkManager.Setting8021x
+        // Properties
 
         /**
          * Anonymous identity string for EAP authentication methods.  Used as the
@@ -4646,7 +4646,7 @@ export namespace NetworkManager {
         get systemCaCerts(): boolean;
         set systemCaCerts(val: boolean);
 
-        // Constructors of NetworkManager.Setting8021x
+        // Constructors
 
         constructor(properties?: Partial<Setting8021x.ConstructorProps>, ...args: any[]);
 
@@ -4654,7 +4654,7 @@ export namespace NetworkManager {
 
         static ['new'](): Setting8021x;
 
-        // Own methods of NetworkManager.Setting8021x
+        // Methods
 
         /**
          * Adds an allowed alternate subject name match.  Until at least one
@@ -5127,7 +5127,7 @@ export namespace NetworkManager {
     class SettingAdsl extends Setting {
         static $gtype: GObject.GType<SettingAdsl>;
 
-        // Own properties of NetworkManager.SettingAdsl
+        // Properties
 
         /**
          * Encapsulation of ADSL connection.  Can be "vcmux" or "llc".
@@ -5170,7 +5170,7 @@ export namespace NetworkManager {
         get vpi(): number;
         set vpi(val: number);
 
-        // Constructors of NetworkManager.SettingAdsl
+        // Constructors
 
         constructor(properties?: Partial<SettingAdsl.ConstructorProps>, ...args: any[]);
 
@@ -5178,7 +5178,7 @@ export namespace NetworkManager {
 
         static ['new'](): SettingAdsl;
 
-        // Own methods of NetworkManager.SettingAdsl
+        // Methods
 
         get_encapsulation(): string;
         get_password(): string;
@@ -5200,7 +5200,7 @@ export namespace NetworkManager {
     class SettingBluetooth extends Setting {
         static $gtype: GObject.GType<SettingBluetooth>;
 
-        // Own properties of NetworkManager.SettingBluetooth
+        // Properties
 
         /**
          * Either "dun" for Dial-Up Networking connections or "panu" for Personal
@@ -5209,7 +5209,7 @@ export namespace NetworkManager {
         get type(): string;
         set type(val: string);
 
-        // Constructors of NetworkManager.SettingBluetooth
+        // Constructors
 
         constructor(properties?: Partial<SettingBluetooth.ConstructorProps>, ...args: any[]);
 
@@ -5217,7 +5217,7 @@ export namespace NetworkManager {
 
         static ['new'](): SettingBluetooth;
 
-        // Own methods of NetworkManager.SettingBluetooth
+        // Methods
 
         /**
          * Gets the Bluetooth address of the remote device which this setting
@@ -5245,7 +5245,7 @@ export namespace NetworkManager {
     class SettingBond extends Setting {
         static $gtype: GObject.GType<SettingBond>;
 
-        // Own properties of NetworkManager.SettingBond
+        // Properties
 
         /**
          * The name of the virtual in-kernel bonding network interface
@@ -5258,7 +5258,7 @@ export namespace NetworkManager {
         get interfaceName(): string;
         set interfaceName(val: string);
 
-        // Constructors of NetworkManager.SettingBond
+        // Constructors
 
         constructor(properties?: Partial<SettingBond.ConstructorProps>, ...args: any[]);
 
@@ -5266,7 +5266,7 @@ export namespace NetworkManager {
 
         static ['new'](): SettingBond;
 
-        // Own static methods of NetworkManager.SettingBond
+        // Static methods
 
         /**
          * Checks whether `name` is a valid bond option and `value` is a valid value for
@@ -5276,7 +5276,7 @@ export namespace NetworkManager {
          */
         static validate_option(name: string, value: string): boolean;
 
-        // Own methods of NetworkManager.SettingBond
+        // Methods
 
         /**
          * Add an option to the table.  The option is compared to an internal list
@@ -5353,7 +5353,7 @@ export namespace NetworkManager {
     class SettingBridge extends Setting {
         static $gtype: GObject.GType<SettingBridge>;
 
-        // Own properties of NetworkManager.SettingBridge
+        // Properties
 
         /**
          * The Ethernet MAC address aging time, in seconds.
@@ -5418,7 +5418,7 @@ export namespace NetworkManager {
         get stp(): boolean;
         set stp(val: boolean);
 
-        // Constructors of NetworkManager.SettingBridge
+        // Constructors
 
         constructor(properties?: Partial<SettingBridge.ConstructorProps>, ...args: any[]);
 
@@ -5426,7 +5426,7 @@ export namespace NetworkManager {
 
         static ['new'](): SettingBridge;
 
-        // Own methods of NetworkManager.SettingBridge
+        // Methods
 
         get_ageing_time(): number;
         get_forward_delay(): number;
@@ -5453,7 +5453,7 @@ export namespace NetworkManager {
     class SettingBridgePort extends Setting {
         static $gtype: GObject.GType<SettingBridgePort>;
 
-        // Own properties of NetworkManager.SettingBridgePort
+        // Properties
 
         /**
          * Enables or disables "hairpin mode" for the port, which allows frames to
@@ -5485,7 +5485,7 @@ export namespace NetworkManager {
         get priority(): number;
         set priority(val: number);
 
-        // Constructors of NetworkManager.SettingBridgePort
+        // Constructors
 
         constructor(properties?: Partial<SettingBridgePort.ConstructorProps>, ...args: any[]);
 
@@ -5493,7 +5493,7 @@ export namespace NetworkManager {
 
         static ['new'](): SettingBridgePort;
 
-        // Own methods of NetworkManager.SettingBridgePort
+        // Methods
 
         get_hairpin_mode(): boolean;
         get_path_cost(): number;
@@ -5515,7 +5515,7 @@ export namespace NetworkManager {
     class SettingCdma extends Setting {
         static $gtype: GObject.GType<SettingCdma>;
 
-        // Own properties of NetworkManager.SettingCdma
+        // Properties
 
         /**
          * The number to dial to establish the connection to the CDMA-based mobile
@@ -5549,7 +5549,7 @@ export namespace NetworkManager {
         get username(): string;
         set username(val: string);
 
-        // Constructors of NetworkManager.SettingCdma
+        // Constructors
 
         constructor(properties?: Partial<SettingCdma.ConstructorProps>, ...args: any[]);
 
@@ -5557,7 +5557,7 @@ export namespace NetworkManager {
 
         static ['new'](): SettingCdma;
 
-        // Own methods of NetworkManager.SettingCdma
+        // Methods
 
         get_number(): string;
         get_password(): string;
@@ -5594,7 +5594,7 @@ export namespace NetworkManager {
     class SettingConnection extends Setting {
         static $gtype: GObject.GType<SettingConnection>;
 
-        // Own properties of NetworkManager.SettingConnection
+        // Properties
 
         /**
          * Whether or not the connection should be automatically connected by
@@ -5730,7 +5730,7 @@ export namespace NetworkManager {
         get zone(): string;
         set zone(val: string);
 
-        // Constructors of NetworkManager.SettingConnection
+        // Constructors
 
         constructor(properties?: Partial<SettingConnection.ConstructorProps>, ...args: any[]);
 
@@ -5738,7 +5738,7 @@ export namespace NetworkManager {
 
         static ['new'](): SettingConnection;
 
-        // Own methods of NetworkManager.SettingConnection
+        // Methods
 
         /**
          * Adds a permission to the connection's permission list.  At this time, only
@@ -5888,7 +5888,7 @@ export namespace NetworkManager {
     class SettingDcb extends Setting {
         static $gtype: GObject.GType<SettingDcb>;
 
-        // Own properties of NetworkManager.SettingDcb
+        // Properties
 
         /**
          * Specifies the #NMSettingDcbFlags for the DCB FCoE application.  Flags may
@@ -6015,7 +6015,7 @@ export namespace NetworkManager {
         get priorityGroupFlags(): number;
         set priorityGroupFlags(val: number);
 
-        // Constructors of NetworkManager.SettingDcb
+        // Constructors
 
         constructor(properties?: Partial<SettingDcb.ConstructorProps>, ...args: any[]);
 
@@ -6023,7 +6023,7 @@ export namespace NetworkManager {
 
         static ['new'](): SettingDcb;
 
-        // Own methods of NetworkManager.SettingDcb
+        // Methods
 
         get_app_fcoe_flags(): SettingDcbFlags;
         get_app_fcoe_mode(): string;
@@ -6087,7 +6087,7 @@ export namespace NetworkManager {
     class SettingGeneric extends Setting {
         static $gtype: GObject.GType<SettingGeneric>;
 
-        // Constructors of NetworkManager.SettingGeneric
+        // Constructors
 
         constructor(properties?: Partial<SettingGeneric.ConstructorProps>, ...args: any[]);
 
@@ -6123,7 +6123,7 @@ export namespace NetworkManager {
     class SettingGsm extends Setting {
         static $gtype: GObject.GType<SettingGsm>;
 
-        // Own properties of NetworkManager.SettingGsm
+        // Properties
 
         /**
          * Bitfield of allowed frequency bands.  Note that not all devices allow
@@ -6256,7 +6256,7 @@ export namespace NetworkManager {
         get username(): string;
         set username(val: string);
 
-        // Constructors of NetworkManager.SettingGsm
+        // Constructors
 
         constructor(properties?: Partial<SettingGsm.ConstructorProps>, ...args: any[]);
 
@@ -6264,7 +6264,7 @@ export namespace NetworkManager {
 
         static ['new'](): SettingGsm;
 
-        // Own methods of NetworkManager.SettingGsm
+        // Methods
 
         get_allowed_bands(): number;
         get_apn(): string;
@@ -6308,7 +6308,7 @@ export namespace NetworkManager {
     class SettingIP4Config extends Setting {
         static $gtype: GObject.GType<SettingIP4Config>;
 
-        // Own properties of NetworkManager.SettingIP4Config
+        // Properties
 
         /**
          * A string sent to the DHCP server to identify the local machine which the
@@ -6469,7 +6469,7 @@ export namespace NetworkManager {
         get routeMetric(): number;
         set routeMetric(val: number);
 
-        // Constructors of NetworkManager.SettingIP4Config
+        // Constructors
 
         constructor(properties?: Partial<SettingIP4Config.ConstructorProps>, ...args: any[]);
 
@@ -6477,7 +6477,7 @@ export namespace NetworkManager {
 
         static ['new'](): SettingIP4Config;
 
-        // Own methods of NetworkManager.SettingIP4Config
+        // Methods
 
         /**
          * Adds a new IPv4 address and associated information to the setting.  The
@@ -6655,7 +6655,7 @@ export namespace NetworkManager {
     class SettingIP6Config extends Setting {
         static $gtype: GObject.GType<SettingIP6Config>;
 
-        // Own properties of NetworkManager.SettingIP6Config
+        // Properties
 
         /**
          * The specified name will be sent to the DHCP server when acquiring a
@@ -6796,7 +6796,7 @@ export namespace NetworkManager {
         get routeMetric(): number;
         set routeMetric(val: number);
 
-        // Constructors of NetworkManager.SettingIP6Config
+        // Constructors
 
         constructor(properties?: Partial<SettingIP6Config.ConstructorProps>, ...args: any[]);
 
@@ -6804,7 +6804,7 @@ export namespace NetworkManager {
 
         static ['new'](): SettingIP6Config;
 
-        // Own methods of NetworkManager.SettingIP6Config
+        // Methods
 
         /**
          * Adds a new IPv6 address and associated information to the setting.  The
@@ -6961,7 +6961,7 @@ export namespace NetworkManager {
     class SettingInfiniband extends Setting {
         static $gtype: GObject.GType<SettingInfiniband>;
 
-        // Own properties of NetworkManager.SettingInfiniband
+        // Properties
 
         /**
          * If non-zero, only transmit packets of the specified size or smaller,
@@ -7006,7 +7006,7 @@ export namespace NetworkManager {
         get transportMode(): string;
         set transportMode(val: string);
 
-        // Constructors of NetworkManager.SettingInfiniband
+        // Constructors
 
         constructor(properties?: Partial<SettingInfiniband.ConstructorProps>, ...args: any[]);
 
@@ -7014,7 +7014,7 @@ export namespace NetworkManager {
 
         static ['new'](): SettingInfiniband;
 
-        // Own methods of NetworkManager.SettingInfiniband
+        // Methods
 
         get_mac_address(): Uint8Array;
         get_mtu(): number;
@@ -7049,7 +7049,7 @@ export namespace NetworkManager {
     class SettingOlpcMesh extends Setting {
         static $gtype: GObject.GType<SettingOlpcMesh>;
 
-        // Own properties of NetworkManager.SettingOlpcMesh
+        // Properties
 
         /**
          * Channel on which the mesh network to join is located.
@@ -7057,7 +7057,7 @@ export namespace NetworkManager {
         get channel(): number;
         set channel(val: number);
 
-        // Constructors of NetworkManager.SettingOlpcMesh
+        // Constructors
 
         constructor(properties?: Partial<SettingOlpcMesh.ConstructorProps>, ...args: any[]);
 
@@ -7065,7 +7065,7 @@ export namespace NetworkManager {
 
         static ['new'](): SettingOlpcMesh;
 
-        // Own methods of NetworkManager.SettingOlpcMesh
+        // Methods
 
         get_channel(): number;
         get_dhcp_anycast_address(): Uint8Array;
@@ -7111,7 +7111,7 @@ export namespace NetworkManager {
     class SettingPPP extends Setting {
         static $gtype: GObject.GType<SettingPPP>;
 
-        // Own properties of NetworkManager.SettingPPP
+        // Properties
 
         /**
          * If non-zero, instruct pppd to set the serial port to the specified
@@ -7292,7 +7292,7 @@ export namespace NetworkManager {
         get requireMppe128(): boolean;
         set requireMppe128(val: boolean);
 
-        // Constructors of NetworkManager.SettingPPP
+        // Constructors
 
         constructor(properties?: Partial<SettingPPP.ConstructorProps>, ...args: any[]);
 
@@ -7300,7 +7300,7 @@ export namespace NetworkManager {
 
         static ['new'](): SettingPPP;
 
-        // Own methods of NetworkManager.SettingPPP
+        // Methods
 
         get_baud(): number;
         get_crtscts(): boolean;
@@ -7337,7 +7337,7 @@ export namespace NetworkManager {
     class SettingPPPOE extends Setting {
         static $gtype: GObject.GType<SettingPPPOE>;
 
-        // Own properties of NetworkManager.SettingPPPOE
+        // Properties
 
         /**
          * Password used to authenticate with the PPPoE service.
@@ -7368,7 +7368,7 @@ export namespace NetworkManager {
         get username(): string;
         set username(val: string);
 
-        // Constructors of NetworkManager.SettingPPPOE
+        // Constructors
 
         constructor(properties?: Partial<SettingPPPOE.ConstructorProps>, ...args: any[]);
 
@@ -7376,7 +7376,7 @@ export namespace NetworkManager {
 
         static ['new'](): SettingPPPOE;
 
-        // Own methods of NetworkManager.SettingPPPOE
+        // Methods
 
         get_password(): string;
         get_password_flags(): SettingSecretFlags;
@@ -7400,7 +7400,7 @@ export namespace NetworkManager {
     class SettingSerial extends Setting {
         static $gtype: GObject.GType<SettingSerial>;
 
-        // Own properties of NetworkManager.SettingSerial
+        // Properties
 
         /**
          * Speed to use for communication over the serial port.  Note that this
@@ -7437,7 +7437,7 @@ export namespace NetworkManager {
         get stopbits(): number;
         set stopbits(val: number);
 
-        // Constructors of NetworkManager.SettingSerial
+        // Constructors
 
         constructor(properties?: Partial<SettingSerial.ConstructorProps>, ...args: any[]);
 
@@ -7445,7 +7445,7 @@ export namespace NetworkManager {
 
         static ['new'](): SettingSerial;
 
-        // Own methods of NetworkManager.SettingSerial
+        // Methods
 
         get_baud(): number;
         get_bits(): number;
@@ -7467,7 +7467,7 @@ export namespace NetworkManager {
     class SettingTeam extends Setting {
         static $gtype: GObject.GType<SettingTeam>;
 
-        // Own properties of NetworkManager.SettingTeam
+        // Properties
 
         /**
          * The JSON configuration for the team network interface.  The property
@@ -7488,7 +7488,7 @@ export namespace NetworkManager {
         get interfaceName(): string;
         set interfaceName(val: string);
 
-        // Constructors of NetworkManager.SettingTeam
+        // Constructors
 
         constructor(properties?: Partial<SettingTeam.ConstructorProps>, ...args: any[]);
 
@@ -7496,7 +7496,7 @@ export namespace NetworkManager {
 
         static ['new'](): SettingTeam;
 
-        // Own methods of NetworkManager.SettingTeam
+        // Methods
 
         get_config(): string;
         get_interface_name(): string;
@@ -7513,7 +7513,7 @@ export namespace NetworkManager {
     class SettingTeamPort extends Setting {
         static $gtype: GObject.GType<SettingTeamPort>;
 
-        // Own properties of NetworkManager.SettingTeamPort
+        // Properties
 
         /**
          * The JSON configuration for the team port. The property should contain raw
@@ -7524,7 +7524,7 @@ export namespace NetworkManager {
         get config(): string;
         set config(val: string);
 
-        // Constructors of NetworkManager.SettingTeamPort
+        // Constructors
 
         constructor(properties?: Partial<SettingTeamPort.ConstructorProps>, ...args: any[]);
 
@@ -7532,7 +7532,7 @@ export namespace NetworkManager {
 
         static ['new'](): SettingTeamPort;
 
-        // Own methods of NetworkManager.SettingTeamPort
+        // Methods
 
         get_config(): string;
     }
@@ -7552,7 +7552,7 @@ export namespace NetworkManager {
     class SettingVPN extends Setting {
         static $gtype: GObject.GType<SettingVPN>;
 
-        // Own properties of NetworkManager.SettingVPN
+        // Properties
 
         /**
          * If the VPN service supports persistence, and this property is %TRUE,
@@ -7596,7 +7596,7 @@ export namespace NetworkManager {
         get userName(): string;
         set userName(val: string);
 
-        // Constructors of NetworkManager.SettingVPN
+        // Constructors
 
         constructor(properties?: Partial<SettingVPN.ConstructorProps>, ...args: any[]);
 
@@ -7604,7 +7604,7 @@ export namespace NetworkManager {
 
         static ['new'](): SettingVPN;
 
-        // Own methods of NetworkManager.SettingVPN
+        // Methods
 
         /**
          * Establishes a relationship between `key` and `item` internally in the
@@ -7698,7 +7698,7 @@ export namespace NetworkManager {
     class SettingVlan extends Setting {
         static $gtype: GObject.GType<SettingVlan>;
 
-        // Own properties of NetworkManager.SettingVlan
+        // Properties
 
         /**
          * One or more flags which control the behavior and features of the VLAN
@@ -7743,7 +7743,7 @@ export namespace NetworkManager {
         get parent(): string;
         set parent(val: string);
 
-        // Constructors of NetworkManager.SettingVlan
+        // Constructors
 
         constructor(properties?: Partial<SettingVlan.ConstructorProps>, ...args: any[]);
 
@@ -7751,7 +7751,7 @@ export namespace NetworkManager {
 
         static ['new'](): SettingVlan;
 
-        // Own methods of NetworkManager.SettingVlan
+        // Methods
 
         /**
          * Adds a priority mapping to the #NMSettingVlan:ingress_priority_map or
@@ -7846,7 +7846,7 @@ export namespace NetworkManager {
     class SettingWimax extends Setting {
         static $gtype: GObject.GType<SettingWimax>;
 
-        // Own properties of NetworkManager.SettingWimax
+        // Properties
 
         /**
          * Network Service Provider (NSP) name of the WiMAX network this connection
@@ -7861,7 +7861,7 @@ export namespace NetworkManager {
         get networkName(): string;
         set networkName(val: string);
 
-        // Constructors of NetworkManager.SettingWimax
+        // Constructors
 
         constructor(properties?: Partial<SettingWimax.ConstructorProps>, ...args: any[]);
 
@@ -7869,7 +7869,7 @@ export namespace NetworkManager {
 
         static ['new'](): SettingWimax;
 
-        // Own methods of NetworkManager.SettingWimax
+        // Methods
 
         /**
          * Returns the MAC address of a WiMAX device which this connection is locked
@@ -7903,7 +7903,7 @@ export namespace NetworkManager {
     class SettingWired extends Setting {
         static $gtype: GObject.GType<SettingWired>;
 
-        // Own properties of NetworkManager.SettingWired
+        // Properties
 
         /**
          * If %TRUE, allow auto-negotiation of port speed and duplex mode.  If
@@ -7958,7 +7958,7 @@ export namespace NetworkManager {
         get speed(): number;
         set speed(val: number);
 
-        // Constructors of NetworkManager.SettingWired
+        // Constructors
 
         constructor(properties?: Partial<SettingWired.ConstructorProps>, ...args: any[]);
 
@@ -7966,7 +7966,7 @@ export namespace NetworkManager {
 
         static ['new'](): SettingWired;
 
-        // Own methods of NetworkManager.SettingWired
+        // Methods
 
         /**
          * Adds a new MAC address to the #NMSettingWired:mac-address-blacklist property.
@@ -8080,7 +8080,7 @@ export namespace NetworkManager {
     class SettingWireless extends Setting {
         static $gtype: GObject.GType<SettingWireless>;
 
-        // Own properties of NetworkManager.SettingWireless
+        // Properties
 
         /**
          * 802.11 frequency band of the network.  One of "a" for 5GHz 802.11a or
@@ -8160,7 +8160,7 @@ export namespace NetworkManager {
         get txPower(): number;
         set txPower(val: number);
 
-        // Constructors of NetworkManager.SettingWireless
+        // Constructors
 
         constructor(properties?: Partial<SettingWireless.ConstructorProps>, ...args: any[]);
 
@@ -8168,7 +8168,7 @@ export namespace NetworkManager {
 
         static ['new'](): SettingWireless;
 
-        // Own methods of NetworkManager.SettingWireless
+        // Methods
 
         /**
          * Adds a new MAC address to the #NMSettingWireless:mac-address-blacklist property.
@@ -8278,7 +8278,7 @@ export namespace NetworkManager {
     class SettingWirelessSecurity extends Setting {
         static $gtype: GObject.GType<SettingWirelessSecurity>;
 
-        // Own properties of NetworkManager.SettingWirelessSecurity
+        // Properties
 
         /**
          * When WEP is used (ie, key-mgmt = "none" or "ieee8021x") indicate the
@@ -8471,7 +8471,7 @@ export namespace NetworkManager {
         get wepTxKeyidx(): number;
         set wepTxKeyidx(val: number);
 
-        // Constructors of NetworkManager.SettingWirelessSecurity
+        // Constructors
 
         constructor(properties?: Partial<SettingWirelessSecurity.ConstructorProps>, ...args: any[]);
 
@@ -8479,7 +8479,7 @@ export namespace NetworkManager {
 
         static ['new'](): SettingWirelessSecurity;
 
-        // Own methods of NetworkManager.SettingWirelessSecurity
+        // Methods
 
         /**
          * Adds an encryption algorithm to the list of allowed groupwise encryption
@@ -8603,14 +8603,14 @@ export namespace NetworkManager {
     class IP4Address {
         static $gtype: GObject.GType<IP4Address>;
 
-        // Constructors of NetworkManager.IP4Address
+        // Constructors
 
         constructor(properties?: Partial<{}>);
         _init(...args: any[]): void;
 
         static ['new'](): IP4Address;
 
-        // Own methods of NetworkManager.IP4Address
+        // Methods
 
         /**
          * Determines if two #NMIP4Address objects contain the same values.
@@ -8668,14 +8668,14 @@ export namespace NetworkManager {
     class IP4Route {
         static $gtype: GObject.GType<IP4Route>;
 
-        // Constructors of NetworkManager.IP4Route
+        // Constructors
 
         constructor(properties?: Partial<{}>);
         _init(...args: any[]): void;
 
         static ['new'](): IP4Route;
 
-        // Own methods of NetworkManager.IP4Route
+        // Methods
 
         /**
          * Determines if two #NMIP4Route objects contain the same values.
@@ -8744,14 +8744,14 @@ export namespace NetworkManager {
     class IP6Address {
         static $gtype: GObject.GType<IP6Address>;
 
-        // Constructors of NetworkManager.IP6Address
+        // Constructors
 
         constructor(properties?: Partial<{}>);
         _init(...args: any[]): void;
 
         static ['new'](): IP6Address;
 
-        // Own methods of NetworkManager.IP6Address
+        // Methods
 
         /**
          * Determines if two #NMIP6Address objects contain the same values.
@@ -8808,14 +8808,14 @@ export namespace NetworkManager {
     class IP6Route {
         static $gtype: GObject.GType<IP6Route>;
 
-        // Constructors of NetworkManager.IP6Route
+        // Constructors
 
         constructor(properties?: Partial<{}>);
         _init(...args: any[]): void;
 
         static ['new'](): IP6Route;
 
-        // Own methods of NetworkManager.IP6Route
+        // Methods
 
         /**
          * Determines if two #NMIP6Route objects contain the same values.

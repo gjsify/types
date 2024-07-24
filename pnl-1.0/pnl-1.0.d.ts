@@ -102,7 +102,7 @@ export namespace Pnl {
     class Animation extends GObject.InitiallyUnowned {
         static $gtype: GObject.GType<Animation>;
 
-        // Own properties of Pnl.Animation
+        // Properties
 
         /**
          * The "duration" property is the total number of milliseconds that the
@@ -123,13 +123,13 @@ export namespace Pnl {
          */
         set target(val: GObject.Object);
 
-        // Constructors of Pnl.Animation
+        // Constructors
 
         constructor(properties?: Partial<Animation.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of Pnl.Animation
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -138,11 +138,11 @@ export namespace Pnl {
         connect_after(signal: 'tick', callback: (_source: this) => void): number;
         emit(signal: 'tick'): void;
 
-        // Own static methods of Pnl.Animation
+        // Static methods
 
         static calculate_duration(monitor: Gdk.Monitor, from_value: number, to_value: number): number;
 
-        // Own methods of Pnl.Animation
+        // Methods
 
         /**
          * Adds a new property to the set of properties to be animated during the
@@ -183,7 +183,7 @@ export namespace Pnl {
     class DockBin extends Gtk.Container implements Atk.ImplementorIface, Gtk.Buildable, Dock, DockItem {
         static $gtype: GObject.GType<DockBin>;
 
-        // Constructors of Pnl.DockBin
+        // Constructors
 
         constructor(properties?: Partial<DockBin.ConstructorProps>, ...args: any[]);
 
@@ -191,7 +191,7 @@ export namespace Pnl {
 
         static ['new'](): DockBin;
 
-        // Own methods of Pnl.DockBin
+        // Methods
 
         get_bottom_edge(): Gtk.Widget;
         /**
@@ -4503,18 +4503,18 @@ export namespace Pnl {
     class DockBinEdge extends DockRevealer implements Atk.ImplementorIface, Gtk.Buildable, DockItem {
         static $gtype: GObject.GType<DockBinEdge>;
 
-        // Own properties of Pnl.DockBinEdge
+        // Properties
 
         get edge(): Gtk.PositionType;
         set edge(val: Gtk.PositionType);
 
-        // Constructors of Pnl.DockBinEdge
+        // Constructors
 
         constructor(properties?: Partial<DockBinEdge.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of Pnl.DockBinEdge
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -4523,11 +4523,11 @@ export namespace Pnl {
         connect_after(signal: 'move-to-bin-child', callback: (_source: this) => void): number;
         emit(signal: 'move-to-bin-child'): void;
 
-        // Own virtual methods of Pnl.DockBinEdge
+        // Virtual methods
 
         vfunc_move_to_bin_child(): void;
 
-        // Own methods of Pnl.DockBinEdge
+        // Methods
 
         get_edge(): Gtk.PositionType;
         set_edge(bin_edge: Gtk.PositionType): void;
@@ -8489,7 +8489,7 @@ export namespace Pnl {
     class DockManager extends GObject.Object {
         static $gtype: GObject.GType<DockManager>;
 
-        // Constructors of Pnl.DockManager
+        // Constructors
 
         constructor(properties?: Partial<DockManager.ConstructorProps>, ...args: any[]);
 
@@ -8497,7 +8497,7 @@ export namespace Pnl {
 
         static ['new'](): DockManager;
 
-        // Own signals of Pnl.DockManager
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -8509,12 +8509,12 @@ export namespace Pnl {
         connect_after(signal: 'unregister-dock', callback: (_source: this, object: Dock) => void): number;
         emit(signal: 'unregister-dock', object: Dock): void;
 
-        // Own virtual methods of Pnl.DockManager
+        // Virtual methods
 
         vfunc_register_dock(dock: Dock): void;
         vfunc_unregister_dock(dock: Dock): void;
 
-        // Own methods of Pnl.DockManager
+        // Methods
 
         register_dock(dock: Dock): void;
         unregister_dock(dock: Dock): void;
@@ -8540,7 +8540,7 @@ export namespace Pnl {
     class DockOverlay extends Gtk.EventBox implements Atk.ImplementorIface, Gtk.Buildable, Dock, DockItem {
         static $gtype: GObject.GType<DockOverlay>;
 
-        // Constructors of Pnl.DockOverlay
+        // Constructors
 
         constructor(properties?: Partial<DockOverlay.ConstructorProps>, ...args: any[]);
 
@@ -8548,7 +8548,7 @@ export namespace Pnl {
 
         static ['new'](): DockOverlay;
 
-        // Own signals of Pnl.DockOverlay
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -8557,11 +8557,11 @@ export namespace Pnl {
         connect_after(signal: 'hide-edges', callback: (_source: this) => void): number;
         emit(signal: 'hide-edges'): void;
 
-        // Own virtual methods of Pnl.DockOverlay
+        // Virtual methods
 
         vfunc_hide_edges(): void;
 
-        // Own methods of Pnl.DockOverlay
+        // Methods
 
         get_edge(position: Gtk.PositionType): DockOverlayEdge;
         get_edge_adjustment(position: Gtk.PositionType): Gtk.Adjustment;
@@ -12861,20 +12861,20 @@ export namespace Pnl {
     class DockOverlayEdge extends Gtk.Bin implements Atk.ImplementorIface, Gtk.Buildable, DockItem {
         static $gtype: GObject.GType<DockOverlayEdge>;
 
-        // Own properties of Pnl.DockOverlayEdge
+        // Properties
 
         get edge(): Gtk.PositionType;
         set edge(val: Gtk.PositionType);
         get position(): number;
         set position(val: number);
 
-        // Constructors of Pnl.DockOverlayEdge
+        // Constructors
 
         constructor(properties?: Partial<DockOverlayEdge.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Pnl.DockOverlayEdge
+        // Methods
 
         get_edge(): Gtk.PositionType;
         get_position(): number;
@@ -16833,7 +16833,7 @@ export namespace Pnl {
     class DockPaned extends MultiPaned implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable, DockItem {
         static $gtype: GObject.GType<DockPaned>;
 
-        // Constructors of Pnl.DockPaned
+        // Constructors
 
         constructor(properties?: Partial<DockPaned.ConstructorProps>, ...args: any[]);
 
@@ -16841,7 +16841,7 @@ export namespace Pnl {
 
         static ['new'](): DockPaned;
 
-        // Own methods of Pnl.DockPaned
+        // Methods
 
         set_child_edge(child_edge: Gtk.PositionType): void;
 
@@ -20831,7 +20831,7 @@ export namespace Pnl {
     class DockRevealer extends Gtk.Bin implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<DockRevealer>;
 
-        // Own properties of Pnl.DockRevealer
+        // Properties
 
         get child_revealed(): boolean;
         get childRevealed(): boolean;
@@ -20854,7 +20854,7 @@ export namespace Pnl {
         get transitionType(): DockRevealerTransitionType;
         set transitionType(val: DockRevealerTransitionType);
 
-        // Constructors of Pnl.DockRevealer
+        // Constructors
 
         constructor(properties?: Partial<DockRevealer.ConstructorProps>, ...args: any[]);
 
@@ -20862,7 +20862,7 @@ export namespace Pnl {
 
         static ['new'](): DockRevealer;
 
-        // Own methods of Pnl.DockRevealer
+        // Methods
 
         animate_to_position(position: number, transition_duration: number): void;
         get_child_revealed(): boolean;
@@ -21296,12 +21296,12 @@ export namespace Pnl {
     class DockStack extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable, DockItem {
         static $gtype: GObject.GType<DockStack>;
 
-        // Own properties of Pnl.DockStack
+        // Properties
 
         get edge(): Gtk.PositionType;
         set edge(val: Gtk.PositionType);
 
-        // Constructors of Pnl.DockStack
+        // Constructors
 
         constructor(properties?: Partial<DockStack.ConstructorProps>, ...args: any[]);
 
@@ -21309,7 +21309,7 @@ export namespace Pnl {
 
         static ['new'](): DockStack;
 
-        // Own methods of Pnl.DockStack
+        // Methods
 
         get_edge(): Gtk.PositionType;
         set_edge(edge: Gtk.PositionType): void;
@@ -25280,7 +25280,7 @@ export namespace Pnl {
     class DockTabStrip extends TabStrip implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<DockTabStrip>;
 
-        // Constructors of Pnl.DockTabStrip
+        // Constructors
 
         constructor(properties?: Partial<DockTabStrip.ConstructorProps>, ...args: any[]);
 
@@ -25702,12 +25702,12 @@ export namespace Pnl {
     class DockTransientGrab extends GObject.Object {
         static $gtype: GObject.GType<DockTransientGrab>;
 
-        // Own properties of Pnl.DockTransientGrab
+        // Properties
 
         get timeout(): number;
         set timeout(val: number);
 
-        // Constructors of Pnl.DockTransientGrab
+        // Constructors
 
         constructor(properties?: Partial<DockTransientGrab.ConstructorProps>, ...args: any[]);
 
@@ -25715,7 +25715,7 @@ export namespace Pnl {
 
         static ['new'](): DockTransientGrab;
 
-        // Own methods of Pnl.DockTransientGrab
+        // Methods
 
         acquire(): void;
         add_item(item: DockItem): void;
@@ -25744,14 +25744,14 @@ export namespace Pnl {
     class DockWidget extends Gtk.Bin implements Atk.ImplementorIface, Gtk.Buildable, DockItem {
         static $gtype: GObject.GType<DockWidget>;
 
-        // Own properties of Pnl.DockWidget
+        // Properties
 
         get manager(): DockManager;
         set manager(val: DockManager);
         get title(): string;
         set title(val: string);
 
-        // Constructors of Pnl.DockWidget
+        // Constructors
 
         constructor(properties?: Partial<DockWidget.ConstructorProps>, ...args: any[]);
 
@@ -25759,7 +25759,7 @@ export namespace Pnl {
 
         static ['new'](): DockWidget;
 
-        // Own methods of Pnl.DockWidget
+        // Methods
 
         get_title(): string;
         set_title(title: string): void;
@@ -29716,7 +29716,7 @@ export namespace Pnl {
     class DockWindow extends Gtk.Window implements Atk.ImplementorIface, Gtk.Buildable, Dock, DockItem {
         static $gtype: GObject.GType<DockWindow>;
 
-        // Constructors of Pnl.DockWindow
+        // Constructors
 
         constructor(properties?: Partial<DockWindow.ConstructorProps>, ...args: any[]);
 
@@ -34035,12 +34035,12 @@ export namespace Pnl {
     class MultiPaned extends Gtk.Container implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<MultiPaned>;
 
-        // Own properties of Pnl.MultiPaned
+        // Properties
 
         get orientation(): Gtk.Orientation;
         set orientation(val: Gtk.Orientation);
 
-        // Constructors of Pnl.MultiPaned
+        // Constructors
 
         constructor(properties?: Partial<MultiPaned.ConstructorProps>, ...args: any[]);
 
@@ -34048,7 +34048,7 @@ export namespace Pnl {
 
         static ['new'](): MultiPaned;
 
-        // Own signals of Pnl.MultiPaned
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -34060,12 +34060,12 @@ export namespace Pnl {
         connect_after(signal: 'resize-drag-end', callback: (_source: this, object: Gtk.Widget) => void): number;
         emit(signal: 'resize-drag-end', object: Gtk.Widget): void;
 
-        // Own virtual methods of Pnl.MultiPaned
+        // Virtual methods
 
         vfunc_resize_drag_begin(child: Gtk.Widget): void;
         vfunc_resize_drag_end(child: Gtk.Widget): void;
 
-        // Own methods of Pnl.MultiPaned
+        // Methods
 
         get_n_children(): number;
 
@@ -34500,7 +34500,7 @@ export namespace Pnl {
     class Tab extends Gtk.ToggleButton implements Atk.ImplementorIface, Gtk.Actionable, Gtk.Activatable, Gtk.Buildable {
         static $gtype: GObject.GType<Tab>;
 
-        // Own properties of Pnl.Tab
+        // Properties
 
         get edge(): Gtk.PositionType;
         set edge(val: Gtk.PositionType);
@@ -34509,13 +34509,13 @@ export namespace Pnl {
         // This accessor conflicts with a property or field in a parent class or interface.
         widget: Gtk.Widget | any;
 
-        // Constructors of Pnl.Tab
+        // Constructors
 
         constructor(properties?: Partial<Tab.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Pnl.Tab
+        // Methods
 
         get_edge(): Gtk.PositionType;
         get_title(): string;
@@ -38470,14 +38470,14 @@ export namespace Pnl {
     class TabStrip extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<TabStrip>;
 
-        // Own properties of Pnl.TabStrip
+        // Properties
 
         get edge(): Gtk.PositionType;
         set edge(val: Gtk.PositionType);
         get stack(): Gtk.Stack;
         set stack(val: Gtk.Stack);
 
-        // Constructors of Pnl.TabStrip
+        // Constructors
 
         constructor(properties?: Partial<TabStrip.ConstructorProps>, ...args: any[]);
 
@@ -38485,7 +38485,7 @@ export namespace Pnl {
 
         static ['new'](): TabStrip;
 
-        // Own methods of Pnl.TabStrip
+        // Methods
 
         get_edge(): Gtk.PositionType;
         get_show_labels(): boolean;
@@ -38945,7 +38945,7 @@ export namespace Pnl {
         prototype: Dock;
     }
     interface Dock extends Gtk.Container {
-        // Own properties of Pnl.Dock
+        // Properties
 
         get manager(): DockManager;
         set manager(val: DockManager);
@@ -38964,7 +38964,7 @@ export namespace Pnl {
         prototype: DockItem;
     }
     interface DockItem extends Gtk.Widget {
-        // Own methods of Pnl.DockItem
+        // Methods
 
         adopt(child: DockItem): boolean;
         get_child_visible(child: DockItem): boolean;
@@ -38997,7 +38997,7 @@ export namespace Pnl {
         set_manager(manager?: DockManager | null): void;
         update_visibility(): void;
 
-        // Own virtual methods of Pnl.DockItem
+        // Virtual methods
 
         vfunc_get_child_visible(child: DockItem): boolean;
         /**

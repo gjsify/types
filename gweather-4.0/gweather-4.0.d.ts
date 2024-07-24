@@ -651,7 +651,7 @@ export namespace GWeather {
     class Info extends GObject.Object {
         static $gtype: GObject.GType<Info>;
 
-        // Own properties of GWeather.Info
+        // Properties
 
         /**
          * A unique identifier, typically in the form of reverse DNS notation,
@@ -699,7 +699,7 @@ export namespace GWeather {
         get location(): Location;
         set location(val: Location);
 
-        // Constructors of GWeather.Info
+        // Constructors
 
         constructor(properties?: Partial<Info.ConstructorProps>, ...args: any[]);
 
@@ -707,7 +707,7 @@ export namespace GWeather {
 
         static ['new'](location?: Location | null): Info;
 
-        // Own signals of GWeather.Info
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -716,7 +716,7 @@ export namespace GWeather {
         connect_after(signal: 'updated', callback: (_source: this) => void): number;
         emit(signal: 'updated'): void;
 
-        // Own static methods of GWeather.Info
+        // Static methods
 
         /**
          * Ensures that any data cached from the network is stored to disk.
@@ -728,7 +728,7 @@ export namespace GWeather {
          */
         static store_cache(): void;
 
-        // Own methods of GWeather.Info
+        // Methods
 
         abort(): void;
         get_apparent(): string;
@@ -876,7 +876,7 @@ export namespace GWeather {
     class Location extends GObject.Object {
         static $gtype: GObject.GType<Location>;
 
-        // Constructors of GWeather.Location
+        // Constructors
 
         constructor(properties?: Partial<Location.ConstructorProps>, ...args: any[]);
 
@@ -884,7 +884,7 @@ export namespace GWeather {
 
         static new_detached(name: string, icao: string | null, latitude: number, longitude: number): Location;
 
-        // Own static methods of GWeather.Location
+        // Static methods
 
         /**
          * Fetches the location from `result`.
@@ -898,7 +898,7 @@ export namespace GWeather {
          */
         static get_world(): Location | null;
 
-        // Own methods of GWeather.Location
+        // Methods
 
         /**
          * This call undoes the effect of gweather_location_serialize(), that
@@ -1169,17 +1169,17 @@ export namespace GWeather {
     class Conditions {
         static $gtype: GObject.GType<Conditions>;
 
-        // Own fields of GWeather.Conditions
+        // Fields
 
         significant: boolean;
         phenomenon: ConditionPhenomenon;
         qualifier: ConditionQualifier;
 
-        // Constructors of GWeather.Conditions
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of GWeather.Conditions
+        // Methods
 
         to_string(): string;
         to_string_full(options: FormatOptions): string;

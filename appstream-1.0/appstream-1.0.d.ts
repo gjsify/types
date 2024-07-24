@@ -851,7 +851,7 @@ export namespace AppStream {
     class MetadataError extends GLib.Error {
         static $gtype: GObject.GType<MetadataError>;
 
-        // Static fields of AppStream.MetadataError
+        // Static fields
 
         /**
          * Generic failure.
@@ -874,12 +874,12 @@ export namespace AppStream {
          */
         static VALUE_MISSING: number;
 
-        // Constructors of AppStream.MetadataError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of AppStream.MetadataError
+        // Static methods
 
         static quark(): GLib.Quark;
     }
@@ -919,7 +919,7 @@ export namespace AppStream {
     class PoolError extends GLib.Error {
         static $gtype: GObject.GType<PoolError>;
 
-        // Static fields of AppStream.PoolError
+        // Static fields
 
         /**
          * Generic failure
@@ -942,12 +942,12 @@ export namespace AppStream {
          */
         static OLD_CACHE: number;
 
-        // Constructors of AppStream.PoolError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of AppStream.PoolError
+        // Static methods
 
         static quark(): GLib.Quark;
     }
@@ -1064,7 +1064,7 @@ export namespace AppStream {
     class RelationError extends GLib.Error {
         static $gtype: GObject.GType<RelationError>;
 
-        // Static fields of AppStream.RelationError
+        // Static fields
 
         /**
          * Generic failure
@@ -1079,12 +1079,12 @@ export namespace AppStream {
          */
         static NOT_IMPLEMENTED: number;
 
-        // Constructors of AppStream.RelationError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of AppStream.RelationError
+        // Static methods
 
         static quark(): GLib.Quark;
     }
@@ -1347,7 +1347,7 @@ export namespace AppStream {
     class SystemInfoError extends GLib.Error {
         static $gtype: GObject.GType<SystemInfoError>;
 
-        // Static fields of AppStream.SystemInfoError
+        // Static fields
 
         /**
          * Generic failure
@@ -1358,12 +1358,12 @@ export namespace AppStream {
          */
         static NOT_FOUND: number;
 
-        // Constructors of AppStream.SystemInfoError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of AppStream.SystemInfoError
+        // Static methods
 
         static quark(): GLib.Quark;
     }
@@ -1485,19 +1485,19 @@ export namespace AppStream {
     class UtilsError extends GLib.Error {
         static $gtype: GObject.GType<UtilsError>;
 
-        // Static fields of AppStream.UtilsError
+        // Static fields
 
         /**
          * Generic failure
          */
         static FAILED: number;
 
-        // Constructors of AppStream.UtilsError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of AppStream.UtilsError
+        // Static methods
 
         static quark(): GLib.Quark;
     }
@@ -1508,7 +1508,7 @@ export namespace AppStream {
     class ValidatorError extends GLib.Error {
         static $gtype: GObject.GType<ValidatorError>;
 
-        // Static fields of AppStream.ValidatorError
+        // Static fields
 
         /**
          * Generic failure
@@ -1523,12 +1523,12 @@ export namespace AppStream {
          */
         static INVALID_FILENAME: number;
 
-        // Constructors of AppStream.ValidatorError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of AppStream.ValidatorError
+        // Static methods
 
         static quark(): GLib.Quark;
     }
@@ -2637,7 +2637,7 @@ export namespace AppStream {
     class Agreement extends GObject.Object {
         static $gtype: GObject.GType<Agreement>;
 
-        // Constructors of AppStream.Agreement
+        // Constructors
 
         constructor(properties?: Partial<Agreement.ConstructorProps>, ...args: any[]);
 
@@ -2645,7 +2645,7 @@ export namespace AppStream {
 
         static ['new'](): Agreement;
 
-        // Own methods of AppStream.Agreement
+        // Methods
 
         add_section(agreement_section: AgreementSection): void;
         /**
@@ -2689,7 +2689,7 @@ export namespace AppStream {
     class AgreementSection extends GObject.Object {
         static $gtype: GObject.GType<AgreementSection>;
 
-        // Constructors of AppStream.AgreementSection
+        // Constructors
 
         constructor(properties?: Partial<AgreementSection.ConstructorProps>, ...args: any[]);
 
@@ -2697,7 +2697,7 @@ export namespace AppStream {
 
         static ['new'](): AgreementSection;
 
-        // Own methods of AppStream.AgreementSection
+        // Methods
 
         /**
          * Get the current active locale, which
@@ -2753,7 +2753,7 @@ export namespace AppStream {
     class Artifact extends GObject.Object {
         static $gtype: GObject.GType<Artifact>;
 
-        // Constructors of AppStream.Artifact
+        // Constructors
 
         constructor(properties?: Partial<Artifact.ConstructorProps>, ...args: any[]);
 
@@ -2761,7 +2761,7 @@ export namespace AppStream {
 
         static ['new'](): Artifact;
 
-        // Own methods of AppStream.Artifact
+        // Methods
 
         /**
          * Add a checksum for the file associated with this artifact.
@@ -2853,7 +2853,7 @@ export namespace AppStream {
     class Branding extends GObject.Object {
         static $gtype: GObject.GType<Branding>;
 
-        // Constructors of AppStream.Branding
+        // Constructors
 
         constructor(properties?: Partial<Branding.ConstructorProps>, ...args: any[]);
 
@@ -2861,7 +2861,7 @@ export namespace AppStream {
 
         static ['new'](): Branding;
 
-        // Own methods of AppStream.Branding
+        // Methods
 
         /**
          * Retrieve a color of the given `kind` that matches `scheme_kind`.
@@ -2897,7 +2897,7 @@ export namespace AppStream {
     class Bundle extends GObject.Object {
         static $gtype: GObject.GType<Bundle>;
 
-        // Constructors of AppStream.Bundle
+        // Constructors
 
         constructor(properties?: Partial<Bundle.ConstructorProps>, ...args: any[]);
 
@@ -2905,7 +2905,7 @@ export namespace AppStream {
 
         static ['new'](): Bundle;
 
-        // Own methods of AppStream.Bundle
+        // Methods
 
         /**
          * Gets the ID for this bundle.
@@ -2944,7 +2944,7 @@ export namespace AppStream {
     class Category extends GObject.Object {
         static $gtype: GObject.GType<Category>;
 
-        // Own properties of AppStream.Category
+        // Properties
 
         get children(): any;
         get icon(): string;
@@ -2955,7 +2955,7 @@ export namespace AppStream {
         set name(val: string);
         get summary(): string;
 
-        // Constructors of AppStream.Category
+        // Constructors
 
         constructor(properties?: Partial<Category.ConstructorProps>, ...args: any[]);
 
@@ -2963,7 +2963,7 @@ export namespace AppStream {
 
         static ['new'](): Category;
 
-        // Own methods of AppStream.Category
+        // Methods
 
         /**
          * Add a subcategory to this category.
@@ -3051,7 +3051,7 @@ export namespace AppStream {
     class Checksum extends GObject.Object {
         static $gtype: GObject.GType<Checksum>;
 
-        // Constructors of AppStream.Checksum
+        // Constructors
 
         constructor(properties?: Partial<Checksum.ConstructorProps>, ...args: any[]);
 
@@ -3061,7 +3061,7 @@ export namespace AppStream {
 
         static new_for_kind_value(kind: ChecksumKind, value: string): Checksum;
 
-        // Own methods of AppStream.Checksum
+        // Methods
 
         /**
          * Gets the checksum type.
@@ -3112,7 +3112,7 @@ export namespace AppStream {
     class Component extends GObject.Object {
         static $gtype: GObject.GType<Component>;
 
-        // Own properties of AppStream.Component
+        // Properties
 
         /**
          * string array of categories
@@ -3196,7 +3196,7 @@ export namespace AppStream {
          */
         get urls(): GLib.HashTable<UrlKind, string>;
 
-        // Constructors of AppStream.Component
+        // Constructors
 
         constructor(properties?: Partial<Component.ConstructorProps>, ...args: any[]);
 
@@ -3204,7 +3204,7 @@ export namespace AppStream {
 
         static ['new'](): Component;
 
-        // Own methods of AppStream.Component
+        // Methods
 
         /**
          * Add a reference to the addon that is enhancing this component.
@@ -3957,7 +3957,7 @@ export namespace AppStream {
     class ContentRating extends GObject.Object {
         static $gtype: GObject.GType<ContentRating>;
 
-        // Constructors of AppStream.ContentRating
+        // Constructors
 
         constructor(properties?: Partial<ContentRating.ConstructorProps>, ...args: any[]);
 
@@ -3965,7 +3965,7 @@ export namespace AppStream {
 
         static ['new'](): ContentRating;
 
-        // Own static methods of AppStream.ContentRating
+        // Static methods
 
         /**
          * Gets the highest #AsContentRatingValue which is allowed to be seen by the
@@ -4003,7 +4003,7 @@ export namespace AppStream {
          */
         static get_all_rating_ids(): string[];
 
-        // Own methods of AppStream.ContentRating
+        // Methods
 
         /**
          * Adds an attribute value to the content rating.
@@ -4065,7 +4065,7 @@ export namespace AppStream {
     class Context extends GObject.Object {
         static $gtype: GObject.GType<Context>;
 
-        // Constructors of AppStream.Context
+        // Constructors
 
         constructor(properties?: Partial<Context.ConstructorProps>, ...args: any[]);
 
@@ -4073,7 +4073,7 @@ export namespace AppStream {
 
         static ['new'](): Context;
 
-        // Own methods of AppStream.Context
+        // Methods
 
         get_filename(): string;
         get_format_version(): FormatVersion;
@@ -4130,7 +4130,7 @@ export namespace AppStream {
     class Icon extends GObject.Object {
         static $gtype: GObject.GType<Icon>;
 
-        // Constructors of AppStream.Icon
+        // Constructors
 
         constructor(properties?: Partial<Icon.ConstructorProps>, ...args: any[]);
 
@@ -4138,7 +4138,7 @@ export namespace AppStream {
 
         static ['new'](): Icon;
 
-        // Own methods of AppStream.Icon
+        // Methods
 
         get_filename(): string;
         get_height(): number;
@@ -4202,7 +4202,7 @@ export namespace AppStream {
     class Image extends GObject.Object {
         static $gtype: GObject.GType<Image>;
 
-        // Constructors of AppStream.Image
+        // Constructors
 
         constructor(properties?: Partial<Image.ConstructorProps>, ...args: any[]);
 
@@ -4210,7 +4210,7 @@ export namespace AppStream {
 
         static ['new'](): Image;
 
-        // Own methods of AppStream.Image
+        // Methods
 
         /**
          * Gets the image height.
@@ -4273,7 +4273,7 @@ export namespace AppStream {
     class Issue extends GObject.Object {
         static $gtype: GObject.GType<Issue>;
 
-        // Constructors of AppStream.Issue
+        // Constructors
 
         constructor(properties?: Partial<Issue.ConstructorProps>, ...args: any[]);
 
@@ -4281,7 +4281,7 @@ export namespace AppStream {
 
         static ['new'](): Issue;
 
-        // Own methods of AppStream.Issue
+        // Methods
 
         /**
          * Gets the issue ID (usually a bug number or CVE ID)
@@ -4325,7 +4325,7 @@ export namespace AppStream {
     class Launchable extends GObject.Object {
         static $gtype: GObject.GType<Launchable>;
 
-        // Constructors of AppStream.Launchable
+        // Constructors
 
         constructor(properties?: Partial<Launchable.ConstructorProps>, ...args: any[]);
 
@@ -4333,7 +4333,7 @@ export namespace AppStream {
 
         static ['new'](): Launchable;
 
-        // Own methods of AppStream.Launchable
+        // Methods
 
         /**
          * Add a new launchable entry.
@@ -4368,7 +4368,7 @@ export namespace AppStream {
     class Metadata extends GObject.Object {
         static $gtype: GObject.GType<Metadata>;
 
-        // Constructors of AppStream.Metadata
+        // Constructors
 
         constructor(properties?: Partial<Metadata.ConstructorProps>, ...args: any[]);
 
@@ -4376,7 +4376,7 @@ export namespace AppStream {
 
         static ['new'](): Metadata;
 
-        // Own static methods of AppStream.Metadata
+        // Static methods
 
         /**
          * Guesses the AppStream metadata style (metainfo or catalog) based on
@@ -4385,7 +4385,7 @@ export namespace AppStream {
          */
         static file_guess_style(filename: string): FormatStyle;
 
-        // Own methods of AppStream.Metadata
+        // Methods
 
         /**
          * Add an #AsComponent to the list of components.
@@ -4594,7 +4594,7 @@ export namespace AppStream {
     class Pool extends GObject.Object {
         static $gtype: GObject.GType<Pool>;
 
-        // Constructors of AppStream.Pool
+        // Constructors
 
         constructor(properties?: Partial<Pool.ConstructorProps>, ...args: any[]);
 
@@ -4602,7 +4602,7 @@ export namespace AppStream {
 
         static ['new'](): Pool;
 
-        // Own signals of AppStream.Pool
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -4611,11 +4611,11 @@ export namespace AppStream {
         connect_after(signal: 'changed', callback: (_source: this) => void): number;
         emit(signal: 'changed'): void;
 
-        // Own virtual methods of AppStream.Pool
+        // Virtual methods
 
         vfunc_changed(): void;
 
-        // Own methods of AppStream.Pool
+        // Methods
 
         /**
          * Register a set of components with the pool temporarily.
@@ -4828,7 +4828,7 @@ export namespace AppStream {
     class Provided extends GObject.Object {
         static $gtype: GObject.GType<Provided>;
 
-        // Constructors of AppStream.Provided
+        // Constructors
 
         constructor(properties?: Partial<Provided.ConstructorProps>, ...args: any[]);
 
@@ -4836,7 +4836,7 @@ export namespace AppStream {
 
         static ['new'](): Provided;
 
-        // Own methods of AppStream.Provided
+        // Methods
 
         /**
          * Add a new provided item.
@@ -4876,7 +4876,7 @@ export namespace AppStream {
     class Relation extends GObject.Object {
         static $gtype: GObject.GType<Relation>;
 
-        // Constructors of AppStream.Relation
+        // Constructors
 
         constructor(properties?: Partial<Relation.ConstructorProps>, ...args: any[]);
 
@@ -4884,7 +4884,7 @@ export namespace AppStream {
 
         static ['new'](): Relation;
 
-        // Own methods of AppStream.Relation
+        // Methods
 
         /**
          * The version comparison type.
@@ -5035,7 +5035,7 @@ export namespace AppStream {
     class Release extends GObject.Object {
         static $gtype: GObject.GType<Release>;
 
-        // Constructors of AppStream.Release
+        // Constructors
 
         constructor(properties?: Partial<Release.ConstructorProps>, ...args: any[]);
 
@@ -5043,7 +5043,7 @@ export namespace AppStream {
 
         static ['new'](): Release;
 
-        // Own methods of AppStream.Release
+        // Methods
 
         /**
          * Add an artifact (binary / source download) for this release.
@@ -5209,7 +5209,7 @@ export namespace AppStream {
     class Review extends GObject.Object {
         static $gtype: GObject.GType<Review>;
 
-        // Own properties of AppStream.Review
+        // Properties
 
         get date(): Review;
         set date(val: Review);
@@ -5242,7 +5242,7 @@ export namespace AppStream {
         get version(): string;
         set version(val: string);
 
-        // Constructors of AppStream.Review
+        // Constructors
 
         constructor(properties?: Partial<Review.ConstructorProps>, ...args: any[]);
 
@@ -5250,7 +5250,7 @@ export namespace AppStream {
 
         static ['new'](): Review;
 
-        // Own methods of AppStream.Review
+        // Methods
 
         /**
          * Adds flags to an existing review without replacing the other flags.
@@ -5404,7 +5404,7 @@ export namespace AppStream {
     class Screenshot extends GObject.Object {
         static $gtype: GObject.GType<Screenshot>;
 
-        // Constructors of AppStream.Screenshot
+        // Constructors
 
         constructor(properties?: Partial<Screenshot.ConstructorProps>, ...args: any[]);
 
@@ -5412,7 +5412,7 @@ export namespace AppStream {
 
         static ['new'](): Screenshot;
 
-        // Own methods of AppStream.Screenshot
+        // Methods
 
         /**
          * Adds an image to the screenshot.
@@ -5519,7 +5519,7 @@ export namespace AppStream {
     class Suggested extends GObject.Object {
         static $gtype: GObject.GType<Suggested>;
 
-        // Constructors of AppStream.Suggested
+        // Constructors
 
         constructor(properties?: Partial<Suggested.ConstructorProps>, ...args: any[]);
 
@@ -5527,7 +5527,7 @@ export namespace AppStream {
 
         static ['new'](): Suggested;
 
-        // Own methods of AppStream.Suggested
+        // Methods
 
         /**
          * Add a component id to this suggested object.
@@ -5566,7 +5566,7 @@ export namespace AppStream {
     class SystemInfo extends GObject.Object {
         static $gtype: GObject.GType<SystemInfo>;
 
-        // Constructors of AppStream.SystemInfo
+        // Constructors
 
         constructor(properties?: Partial<SystemInfo.ConstructorProps>, ...args: any[]);
 
@@ -5574,7 +5574,7 @@ export namespace AppStream {
 
         static ['new'](): SystemInfo;
 
-        // Own methods of AppStream.SystemInfo
+        // Methods
 
         /**
          * Return a human readable device name for the given modalias.
@@ -5685,7 +5685,7 @@ export namespace AppStream {
     class Translation extends GObject.Object {
         static $gtype: GObject.GType<Translation>;
 
-        // Constructors of AppStream.Translation
+        // Constructors
 
         constructor(properties?: Partial<Translation.ConstructorProps>, ...args: any[]);
 
@@ -5693,7 +5693,7 @@ export namespace AppStream {
 
         static ['new'](): Translation;
 
-        // Own methods of AppStream.Translation
+        // Methods
 
         /**
          * The ID (e.g. Gettext translation domain) of this translation.
@@ -5738,7 +5738,7 @@ export namespace AppStream {
     class Validator extends GObject.Object {
         static $gtype: GObject.GType<Validator>;
 
-        // Constructors of AppStream.Validator
+        // Constructors
 
         constructor(properties?: Partial<Validator.ConstructorProps>, ...args: any[]);
 
@@ -5746,7 +5746,7 @@ export namespace AppStream {
 
         static ['new'](): Validator;
 
-        // Own methods of AppStream.Validator
+        // Methods
 
         /**
          * Override the severity of a selected tag. For most tags, the severity
@@ -5870,7 +5870,7 @@ export namespace AppStream {
     class ValidatorIssue extends GObject.Object {
         static $gtype: GObject.GType<ValidatorIssue>;
 
-        // Constructors of AppStream.ValidatorIssue
+        // Constructors
 
         constructor(properties?: Partial<ValidatorIssue.ConstructorProps>, ...args: any[]);
 
@@ -5878,7 +5878,7 @@ export namespace AppStream {
 
         static ['new'](): ValidatorIssue;
 
-        // Own methods of AppStream.ValidatorIssue
+        // Methods
 
         /**
          * The component-id this issue is about.
@@ -5968,7 +5968,7 @@ export namespace AppStream {
     class Video extends GObject.Object {
         static $gtype: GObject.GType<Video>;
 
-        // Constructors of AppStream.Video
+        // Constructors
 
         constructor(properties?: Partial<Video.ConstructorProps>, ...args: any[]);
 
@@ -5976,7 +5976,7 @@ export namespace AppStream {
 
         static ['new'](): Video;
 
-        // Own methods of AppStream.Video
+        // Methods
 
         /**
          * Gets the video codec, if known.
@@ -6053,12 +6053,12 @@ export namespace AppStream {
     class BrandingColorIter {
         static $gtype: GObject.GType<BrandingColorIter>;
 
-        // Constructors of AppStream.BrandingColorIter
+        // Constructors
 
         constructor(properties?: Partial<{}>);
         _init(...args: any[]): void;
 
-        // Own methods of AppStream.BrandingColorIter
+        // Methods
 
         /**
          * Initializes a color iterator for the accent color list and associates it

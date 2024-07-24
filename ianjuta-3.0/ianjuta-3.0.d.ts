@@ -97,7 +97,7 @@ export namespace IAnjuta {
     class BuilderError extends GLib.Error {
         static $gtype: GObject.GType<BuilderError>;
 
-        // Static fields of IAnjuta.BuilderError
+        // Static fields
 
         /**
          * Build succeeded
@@ -136,12 +136,12 @@ export namespace IAnjuta {
          */
         static OTHER_ERROR: number;
 
-        // Constructors of IAnjuta.BuilderError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of IAnjuta.BuilderError
+        // Static methods
 
         static quark(): GLib.Quark;
     }
@@ -253,7 +253,7 @@ export namespace IAnjuta {
     class DebuggerError extends GLib.Error {
         static $gtype: GObject.GType<DebuggerError>;
 
-        // Static fields of IAnjuta.DebuggerError
+        // Static fields
 
         /**
          * No error
@@ -336,12 +336,12 @@ export namespace IAnjuta {
          */
         static OTHER_ERROR: number;
 
-        // Constructors of IAnjuta.DebuggerError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of IAnjuta.DebuggerError
+        // Static methods
 
         static quark(): GLib.Quark;
     }
@@ -418,16 +418,16 @@ export namespace IAnjuta {
     class DocumentManagerError extends GLib.Error {
         static $gtype: GObject.GType<DocumentManagerError>;
 
-        // Static fields of IAnjuta.DocumentManagerError
+        // Static fields
 
         static DOESNT_EXIST: number;
 
-        // Constructors of IAnjuta.DocumentManagerError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of IAnjuta.DocumentManagerError
+        // Static methods
 
         static quark(): GLib.Quark;
     }
@@ -466,16 +466,16 @@ export namespace IAnjuta {
     class EditorError extends GLib.Error {
         static $gtype: GObject.GType<EditorError>;
 
-        // Static fields of IAnjuta.EditorError
+        // Static fields
 
         static DOESNT_EXIST: number;
 
-        // Constructors of IAnjuta.EditorError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of IAnjuta.EditorError
+        // Static methods
 
         static quark(): GLib.Quark;
     }
@@ -513,17 +513,17 @@ export namespace IAnjuta {
     class EnvironmentError extends GLib.Error {
         static $gtype: GObject.GType<EnvironmentError>;
 
-        // Static fields of IAnjuta.EnvironmentError
+        // Static fields
 
         static CONFIG: number;
         static OTHER_ERROR: number;
 
-        // Constructors of IAnjuta.EnvironmentError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of IAnjuta.EnvironmentError
+        // Static methods
 
         static quark(): GLib.Quark;
     }
@@ -560,16 +560,16 @@ export namespace IAnjuta {
     class MarkableError extends GLib.Error {
         static $gtype: GObject.GType<MarkableError>;
 
-        // Static fields of IAnjuta.MarkableError
+        // Static fields
 
         static INVALID_LOCATION: number;
 
-        // Constructors of IAnjuta.MarkableError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of IAnjuta.MarkableError
+        // Static methods
 
         static quark(): GLib.Quark;
     }
@@ -614,16 +614,16 @@ export namespace IAnjuta {
     class MessageManagerError extends GLib.Error {
         static $gtype: GObject.GType<MessageManagerError>;
 
-        // Static fields of IAnjuta.MessageManagerError
+        // Static fields
 
         static DOESNT_EXIST: number;
 
-        // Constructors of IAnjuta.MessageManagerError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of IAnjuta.MessageManagerError
+        // Static methods
 
         static quark(): GLib.Quark;
     }
@@ -663,7 +663,7 @@ export namespace IAnjuta {
     class PluginFactoryError extends GLib.Error {
         static $gtype: GObject.GType<PluginFactoryError>;
 
-        // Static fields of IAnjuta.PluginFactoryError
+        // Static fields
 
         static OK: number;
         /**
@@ -703,12 +703,12 @@ export namespace IAnjuta {
          */
         static UNKNOWN_ERROR: number;
 
-        // Constructors of IAnjuta.PluginFactoryError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of IAnjuta.PluginFactoryError
+        // Static methods
 
         static quark(): GLib.Quark;
     }
@@ -716,7 +716,7 @@ export namespace IAnjuta {
     class ProjectError extends GLib.Error {
         static $gtype: GObject.GType<ProjectError>;
 
-        // Static fields of IAnjuta.ProjectError
+        // Static fields
 
         static ERROR_SUCCESS: number;
         static ERROR_DOESNT_EXIST: number;
@@ -727,12 +727,12 @@ export namespace IAnjuta {
         static ERROR_NOT_SUPPORTED: number;
         static ERROR_GENERAL_FAILURE: number;
 
-        // Constructors of IAnjuta.ProjectError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of IAnjuta.ProjectError
+        // Static methods
 
         static quark(): GLib.Quark;
     }
@@ -1090,16 +1090,16 @@ export namespace IAnjuta {
     class VcsError extends GLib.Error {
         static $gtype: GObject.GType<VcsError>;
 
-        // Static fields of IAnjuta.VcsError
+        // Static fields
 
         static UNKOWN_ERROR: number;
 
-        // Constructors of IAnjuta.VcsError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of IAnjuta.VcsError
+        // Static methods
 
         static quark(): GLib.Quark;
     }
@@ -1283,7 +1283,7 @@ export namespace IAnjuta {
     class DebuggerBreakpointItem {
         static $gtype: GObject.GType<DebuggerBreakpointItem>;
 
-        // Own fields of IAnjuta.DebuggerBreakpointItem
+        // Fields
 
         type: number;
         id: number;
@@ -1298,7 +1298,7 @@ export namespace IAnjuta {
         temporary: boolean;
         pending: boolean;
 
-        // Constructors of IAnjuta.DebuggerBreakpointItem
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -1325,7 +1325,7 @@ export namespace IAnjuta {
     class DebuggerFrame {
         static $gtype: GObject.GType<DebuggerFrame>;
 
-        // Own fields of IAnjuta.DebuggerFrame
+        // Fields
 
         thread: number;
         level: number;
@@ -1336,7 +1336,7 @@ export namespace IAnjuta {
         library: string;
         address: number;
 
-        // Constructors of IAnjuta.DebuggerFrame
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -1360,13 +1360,13 @@ export namespace IAnjuta {
     class DebuggerInstructionALine {
         static $gtype: GObject.GType<DebuggerInstructionALine>;
 
-        // Own fields of IAnjuta.DebuggerInstructionALine
+        // Fields
 
         address: number;
         label: string;
         text: string;
 
-        // Constructors of IAnjuta.DebuggerInstructionALine
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -1384,12 +1384,12 @@ export namespace IAnjuta {
     class DebuggerInstructionDisassembly {
         static $gtype: GObject.GType<DebuggerInstructionDisassembly>;
 
-        // Own fields of IAnjuta.DebuggerInstructionDisassembly
+        // Fields
 
         size: number;
         data: DebuggerInstructionALine[];
 
-        // Constructors of IAnjuta.DebuggerInstructionDisassembly
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -1404,13 +1404,13 @@ export namespace IAnjuta {
     class DebuggerMemoryBlock {
         static $gtype: GObject.GType<DebuggerMemoryBlock>;
 
-        // Own fields of IAnjuta.DebuggerMemoryBlock
+        // Fields
 
         address: number;
         length: number;
         data: string;
 
-        // Constructors of IAnjuta.DebuggerMemoryBlock
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -1429,13 +1429,13 @@ export namespace IAnjuta {
     class DebuggerRegisterData {
         static $gtype: GObject.GType<DebuggerRegisterData>;
 
-        // Own fields of IAnjuta.DebuggerRegisterData
+        // Fields
 
         num: number;
         name: string;
         value: string;
 
-        // Constructors of IAnjuta.DebuggerRegisterData
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -1455,7 +1455,7 @@ export namespace IAnjuta {
     class DebuggerVariableObject {
         static $gtype: GObject.GType<DebuggerVariableObject>;
 
-        // Own fields of IAnjuta.DebuggerVariableObject
+        // Fields
 
         name: string;
         expression: string;
@@ -1467,7 +1467,7 @@ export namespace IAnjuta {
         children: number;
         has_more: boolean;
 
-        // Constructors of IAnjuta.DebuggerVariableObject
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -1491,7 +1491,7 @@ export namespace IAnjuta {
     class EditorAssistProposal {
         static $gtype: GObject.GType<EditorAssistProposal>;
 
-        // Own fields of IAnjuta.EditorAssistProposal
+        // Fields
 
         label: string;
         markup: string;
@@ -1500,7 +1500,7 @@ export namespace IAnjuta {
         icon: GdkPixbuf.Pixbuf;
         data: any;
 
-        // Constructors of IAnjuta.EditorAssistProposal
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1571,7 +1571,7 @@ export namespace IAnjuta {
         error_quark(): GLib.Quark;
     }
     interface Buildable extends GObject.Object {
-        // Own methods of IAnjuta.Buildable
+        // Methods
 
         /**
          * fixme
@@ -1620,7 +1620,7 @@ export namespace IAnjuta {
          */
         set_command(command_id: BuildableCommand, command: string): void;
 
-        // Own virtual methods of IAnjuta.Buildable
+        // Virtual methods
 
         /**
          * fixme
@@ -1682,7 +1682,7 @@ export namespace IAnjuta {
         prototype: Builder;
     }
     interface Builder extends GObject.Object {
-        // Own methods of IAnjuta.Builder
+        // Methods
 
         /**
          * Cancel specified command. The callback function will not
@@ -1705,7 +1705,7 @@ export namespace IAnjuta {
          */
         list_configuration(): string[];
 
-        // Own virtual methods of IAnjuta.Builder
+        // Virtual methods
 
         /**
          * Cancel specified command. The callback function will not
@@ -1742,7 +1742,7 @@ export namespace IAnjuta {
         error_quark(): GLib.Quark;
     }
     interface DebugManager extends GObject.Object {
-        // Own methods of IAnjuta.DebugManager
+        // Methods
 
         /**
          * Quit the debugger, can wait until the debugger is ready.
@@ -1763,7 +1763,7 @@ export namespace IAnjuta {
          */
         start_remote(server: string, uri: string): boolean;
 
-        // Own virtual methods of IAnjuta.DebugManager
+        // Virtual methods
 
         vfunc_breakpoint_changed(breakpoint: DebuggerBreakpointItem): void;
         vfunc_debugger_started(): void;
@@ -1809,7 +1809,7 @@ export namespace IAnjuta {
         prototype: Debugger;
     }
     interface Debugger extends GObject.Object {
-        // Own methods of IAnjuta.Debugger
+        // Methods
 
         /**
          * Quit the debugger as fast as possible.
@@ -1963,7 +1963,7 @@ export namespace IAnjuta {
          */
         unload(): boolean;
 
-        // Own virtual methods of IAnjuta.Debugger
+        // Virtual methods
 
         /**
          * Quit the debugger as fast as possible.
@@ -2121,7 +2121,7 @@ export namespace IAnjuta {
         error_quark(): GLib.Quark;
     }
     interface DebuggerBreakpoint extends Debugger {
-        // Own methods of IAnjuta.DebuggerBreakpoint
+        // Methods
 
         /**
          * Return all implemented methods.
@@ -2129,7 +2129,7 @@ export namespace IAnjuta {
          */
         implement_breakpoint(): number;
 
-        // Own virtual methods of IAnjuta.DebuggerBreakpoint
+        // Virtual methods
 
         /**
          * Return all implemented methods.
@@ -2152,7 +2152,7 @@ export namespace IAnjuta {
         error_quark(): GLib.Quark;
     }
     interface DebuggerInstruction extends Debugger {
-        // Own methods of IAnjuta.DebuggerInstruction
+        // Methods
 
         /**
          * Restart the program starting from address address
@@ -2178,7 +2178,7 @@ export namespace IAnjuta {
          */
         step_over_instruction(): boolean;
 
-        // Own virtual methods of IAnjuta.DebuggerInstruction
+        // Virtual methods
 
         /**
          * Restart the program starting from address address
@@ -2232,7 +2232,7 @@ export namespace IAnjuta {
         error_quark(): GLib.Quark;
     }
     interface DebuggerRegister extends Debugger {
-        // Own methods of IAnjuta.DebuggerRegister
+        // Methods
 
         /**
          * Change the value of one register. Only the num and value field are used.
@@ -2241,7 +2241,7 @@ export namespace IAnjuta {
          */
         write_register(value: DebuggerRegisterData): boolean;
 
-        // Own virtual methods of IAnjuta.DebuggerRegister
+        // Virtual methods
 
         /**
          * Change the value of one register. Only the num and value field are used.
@@ -2265,7 +2265,7 @@ export namespace IAnjuta {
         error_quark(): GLib.Quark;
     }
     interface DebuggerVariable extends Debugger {
-        // Own methods of IAnjuta.DebuggerVariable
+        // Methods
 
         /**
          * Set the value of one variable or child object.
@@ -2282,7 +2282,7 @@ export namespace IAnjuta {
          */
         destroy(name: string): boolean;
 
-        // Own virtual methods of IAnjuta.DebuggerVariable
+        // Virtual methods
 
         /**
          * Set the value of one variable or child object.
@@ -2313,7 +2313,7 @@ export namespace IAnjuta {
         error_quark(): GLib.Quark;
     }
     interface Document extends GObject.Object {
-        // Own methods of IAnjuta.Document
+        // Methods
 
         /**
          * Begins the mark of undoable action. Calls to this are stacked and
@@ -2368,7 +2368,7 @@ export namespace IAnjuta {
          */
         undo(): void;
 
-        // Own virtual methods of IAnjuta.Document
+        // Virtual methods
 
         /**
          * Begins the mark of undoable action. Calls to this are stacked and
@@ -2435,7 +2435,7 @@ export namespace IAnjuta {
         prototype: DocumentManager;
     }
     interface DocumentManager extends GObject.Object {
-        // Own methods of IAnjuta.DocumentManager
+        // Methods
 
         add_bookmark(file: Gio.File, line: number): void;
         /**
@@ -2510,7 +2510,7 @@ export namespace IAnjuta {
          */
         set_current_document(document: Document): void;
 
-        // Own virtual methods of IAnjuta.DocumentManager
+        // Virtual methods
 
         vfunc_add_bookmark(file: Gio.File, line: number): void;
         /**
@@ -2593,7 +2593,7 @@ export namespace IAnjuta {
         prototype: Editor;
     }
     interface Editor extends GObject.Object {
-        // Own methods of IAnjuta.Editor
+        // Methods
 
         /**
          * Appends `length` characters from `text` buffer at the end of editor
@@ -2752,7 +2752,7 @@ export namespace IAnjuta {
         set_tabsize(tabsize: number): void;
         set_use_spaces(use_spaces: boolean): void;
 
-        // Own virtual methods of IAnjuta.Editor
+        // Virtual methods
 
         /**
          * Appends `length` characters from `text` buffer at the end of editor
@@ -2929,7 +2929,7 @@ export namespace IAnjuta {
         error_quark(): GLib.Quark;
     }
     interface EditorAssist extends Editor {
-        // Own methods of IAnjuta.EditorAssist
+        // Methods
 
         add(provider: Provider): void;
         invoke(provider: Provider): void;
@@ -2946,7 +2946,7 @@ export namespace IAnjuta {
         proposals(provider: Provider, proposals: EditorAssistProposal[], pre_word: string, finished: boolean): void;
         remove(provider: Provider): void;
 
-        // Own virtual methods of IAnjuta.EditorAssist
+        // Virtual methods
 
         vfunc_add(provider: Provider): void;
         vfunc_cancelled(): void;
@@ -2985,7 +2985,7 @@ export namespace IAnjuta {
         error_quark(): GLib.Quark;
     }
     interface EditorCell extends GObject.Object {
-        // Own methods of IAnjuta.EditorCell
+        // Methods
 
         get_attribute(): EditorAttribute;
         /**
@@ -3015,7 +3015,7 @@ export namespace IAnjuta {
          */
         get_length(): number;
 
-        // Own virtual methods of IAnjuta.EditorCell
+        // Virtual methods
 
         vfunc_get_attribute(): EditorAttribute;
         /**
@@ -3058,13 +3058,13 @@ export namespace IAnjuta {
         error_quark(): GLib.Quark;
     }
     interface EditorCellStyle extends EditorCell {
-        // Own methods of IAnjuta.EditorCellStyle
+        // Methods
 
         get_background_color(): string;
         get_color(): string;
         get_font_description(): string;
 
-        // Own virtual methods of IAnjuta.EditorCellStyle
+        // Virtual methods
 
         vfunc_get_background_color(): string;
         vfunc_get_color(): string;
@@ -3086,7 +3086,7 @@ export namespace IAnjuta {
         error_quark(): GLib.Quark;
     }
     interface EditorComment extends Editor {
-        // Own methods of IAnjuta.EditorComment
+        // Methods
 
         /**
          * Comment/Uncomment out selected block
@@ -3101,7 +3101,7 @@ export namespace IAnjuta {
          */
         stream(): void;
 
-        // Own virtual methods of IAnjuta.EditorComment
+        // Virtual methods
 
         /**
          * Comment/Uncomment out selected block
@@ -3132,7 +3132,7 @@ export namespace IAnjuta {
         error_quark(): GLib.Quark;
     }
     interface EditorConvert extends Editor {
-        // Own methods of IAnjuta.EditorConvert
+        // Methods
 
         /**
          * change characters from start position to end position to lowercase
@@ -3147,7 +3147,7 @@ export namespace IAnjuta {
          */
         to_upper(start_position: Iterable, end_position: Iterable): void;
 
-        // Own virtual methods of IAnjuta.EditorConvert
+        // Virtual methods
 
         /**
          * change characters from start position to end position to lowercase
@@ -3194,13 +3194,13 @@ export namespace IAnjuta {
         error_quark(): GLib.Quark;
     }
     interface EditorFolds extends Editor {
-        // Own methods of IAnjuta.EditorFolds
+        // Methods
 
         close_all(): void;
         open_all(): void;
         toggle_current(): void;
 
-        // Own virtual methods of IAnjuta.EditorFolds
+        // Virtual methods
 
         vfunc_close_all(): void;
         vfunc_open_all(): void;
@@ -3222,7 +3222,7 @@ export namespace IAnjuta {
         error_quark(): GLib.Quark;
     }
     interface EditorGladeSignal extends Editor {
-        // Own virtual methods of IAnjuta.EditorGladeSignal
+        // Virtual methods
 
         vfunc_drop(iterator: Iterable, signal_data: string): void;
         vfunc_drop_possible(iterator: Iterable): boolean;
@@ -3243,7 +3243,7 @@ export namespace IAnjuta {
         error_quark(): GLib.Quark;
     }
     interface EditorGoto extends Editor {
-        // Own methods of IAnjuta.EditorGoto
+        // Methods
 
         /**
          * Moves cursor to the end of the current block
@@ -3258,7 +3258,7 @@ export namespace IAnjuta {
          */
         start_block(): void;
 
-        // Own virtual methods of IAnjuta.EditorGoto
+        // Virtual methods
 
         /**
          * Moves cursor to the end of the current block
@@ -3289,7 +3289,7 @@ export namespace IAnjuta {
         error_quark(): GLib.Quark;
     }
     interface EditorHover extends Editor {
-        // Own methods of IAnjuta.EditorHover
+        // Methods
 
         /**
          * Show `info` as tooltip
@@ -3298,7 +3298,7 @@ export namespace IAnjuta {
          */
         display(position: Iterable, info: string): void;
 
-        // Own virtual methods of IAnjuta.EditorHover
+        // Virtual methods
 
         /**
          * Show `info` as tooltip
@@ -3325,7 +3325,7 @@ export namespace IAnjuta {
         error_quark(): GLib.Quark;
     }
     interface EditorLanguage extends Editor {
-        // Own methods of IAnjuta.EditorLanguage
+        // Methods
 
         /**
          * Return the name of the currently used language
@@ -3344,7 +3344,7 @@ export namespace IAnjuta {
          */
         set_language(language: string): void;
 
-        // Own virtual methods of IAnjuta.EditorLanguage
+        // Virtual methods
 
         /**
          * Return the name of the currently used language
@@ -3380,7 +3380,7 @@ export namespace IAnjuta {
         error_quark(): GLib.Quark;
     }
     interface EditorLineMode extends Editor {
-        // Own methods of IAnjuta.EditorLineMode
+        // Methods
 
         /**
          * Set the line ending mode to the given `mode` and convert all line end
@@ -3408,7 +3408,7 @@ export namespace IAnjuta {
         // Conflicted with GObject.Object.set
         set(...args: never[]): any;
 
-        // Own virtual methods of IAnjuta.EditorLineMode
+        // Virtual methods
 
         /**
          * Set the line ending mode to the given `mode` and convert all line end
@@ -3450,7 +3450,7 @@ export namespace IAnjuta {
         error_quark(): GLib.Quark;
     }
     interface EditorSearch extends Editor {
-        // Own methods of IAnjuta.EditorSearch
+        // Methods
 
         /**
          * Search backward from end to start
@@ -3479,7 +3479,7 @@ export namespace IAnjuta {
             end: EditorCell,
         ): [boolean, EditorCell, EditorCell];
 
-        // Own virtual methods of IAnjuta.EditorSearch
+        // Virtual methods
 
         /**
          * Search backward from end to start
@@ -3524,7 +3524,7 @@ export namespace IAnjuta {
         error_quark(): GLib.Quark;
     }
     interface EditorSelection extends Editor {
-        // Own methods of IAnjuta.EditorSelection
+        // Methods
 
         /**
          * Gets curerntly selected text in editor.
@@ -3571,7 +3571,7 @@ export namespace IAnjuta {
         // Conflicted with GObject.Object.set
         set(...args: never[]): any;
 
-        // Own virtual methods of IAnjuta.EditorSelection
+        // Virtual methods
 
         /**
          * Gets curerntly selected text in editor.
@@ -3630,7 +3630,7 @@ export namespace IAnjuta {
         error_quark(): GLib.Quark;
     }
     interface EditorTip extends Editor {
-        // Own methods of IAnjuta.EditorTip
+        // Methods
 
         /**
          * Cancels the last shown tooltip
@@ -3649,7 +3649,7 @@ export namespace IAnjuta {
         show(tips: string[], position: Iterable): void;
         visible(): boolean;
 
-        // Own virtual methods of IAnjuta.EditorTip
+        // Virtual methods
 
         /**
          * Cancels the last shown tooltip
@@ -3684,7 +3684,7 @@ export namespace IAnjuta {
         error_quark(): GLib.Quark;
     }
     interface EditorView extends Editor {
-        // Own methods of IAnjuta.EditorView
+        // Methods
 
         /**
          * Creates a new view for the editor. The newly created view gets
@@ -3703,7 +3703,7 @@ export namespace IAnjuta {
          */
         remove_current(): void;
 
-        // Own virtual methods of IAnjuta.EditorView
+        // Virtual methods
 
         /**
          * Creates a new view for the editor. The newly created view gets
@@ -3738,7 +3738,7 @@ export namespace IAnjuta {
         error_quark(): GLib.Quark;
     }
     interface EditorZoom extends Editor {
-        // Own methods of IAnjuta.EditorZoom
+        // Methods
 
         /**
          * Zoom in
@@ -3749,7 +3749,7 @@ export namespace IAnjuta {
          */
         out(): void;
 
-        // Own virtual methods of IAnjuta.EditorZoom
+        // Virtual methods
 
         /**
          * Zoom in
@@ -3774,7 +3774,7 @@ export namespace IAnjuta {
         prototype: Environment;
     }
     interface Environment extends GObject.Object {
-        // Own methods of IAnjuta.Environment
+        // Methods
 
         /**
          * Convert a directory in the environment to a directory outside.
@@ -3794,7 +3794,7 @@ export namespace IAnjuta {
          */
         override(dirp: string, argvp: string, envp: string): boolean;
 
-        // Own virtual methods of IAnjuta.Environment
+        // Virtual methods
 
         /**
          * Convert a directory in the environment to a directory outside.
@@ -3828,7 +3828,7 @@ export namespace IAnjuta {
         error_quark(): GLib.Quark;
     }
     interface File extends GObject.Object {
-        // Own methods of IAnjuta.File
+        // Methods
 
         /**
          * Returns the file that was opened with ianjuta_file_open().
@@ -3841,7 +3841,7 @@ export namespace IAnjuta {
          */
         open(file: Gio.File): void;
 
-        // Own virtual methods of IAnjuta.File
+        // Virtual methods
 
         /**
          * Returns the file that was opened with ianjuta_file_open().
@@ -3870,11 +3870,11 @@ export namespace IAnjuta {
         error_quark(): GLib.Quark;
     }
     interface FileLoader extends Loader {
-        // Own methods of IAnjuta.FileLoader
+        // Methods
 
         peek_interface(file: Gio.File): string;
 
-        // Own virtual methods of IAnjuta.FileLoader
+        // Virtual methods
 
         vfunc_peek_interface(file: Gio.File): string;
     }
@@ -3894,7 +3894,7 @@ export namespace IAnjuta {
         error_quark(): GLib.Quark;
     }
     interface FileManager extends GObject.Object {
-        // Own methods of IAnjuta.FileManager
+        // Methods
 
         /**
          * fixme
@@ -3907,7 +3907,7 @@ export namespace IAnjuta {
          */
         set_selected(file: Gio.File): void;
 
-        // Own virtual methods of IAnjuta.FileManager
+        // Virtual methods
 
         vfunc_section_changed(file: Gio.File): void;
         /**
@@ -3937,7 +3937,7 @@ export namespace IAnjuta {
         error_quark(): GLib.Quark;
     }
     interface FileSavable extends File {
-        // Own methods of IAnjuta.FileSavable
+        // Methods
 
         /**
          * Return is the file is in conflict. It means the file
@@ -3975,7 +3975,7 @@ export namespace IAnjuta {
          */
         set_dirty(dirty: boolean): void;
 
-        // Own virtual methods of IAnjuta.FileSavable
+        // Virtual methods
 
         /**
          * Return is the file is in conflict. It means the file
@@ -4028,11 +4028,11 @@ export namespace IAnjuta {
         error_quark(): GLib.Quark;
     }
     interface Glade extends GObject.Object {
-        // Own methods of IAnjuta.Glade
+        // Methods
 
         add_association(master: string, slave: string): void;
 
-        // Own virtual methods of IAnjuta.Glade
+        // Virtual methods
 
         vfunc_add_association(master: string, slave: string): void;
     }
@@ -4052,7 +4052,7 @@ export namespace IAnjuta {
         error_quark(): GLib.Quark;
     }
     interface Help extends GObject.Object {
-        // Own methods of IAnjuta.Help
+        // Methods
 
         /**
          * Search for string `query` in the help and display the result
@@ -4060,7 +4060,7 @@ export namespace IAnjuta {
          */
         search(query: string): void;
 
-        // Own virtual methods of IAnjuta.Help
+        // Virtual methods
 
         /**
          * Search for string `query` in the help and display the result
@@ -4084,7 +4084,7 @@ export namespace IAnjuta {
         error_quark(): GLib.Quark;
     }
     interface Indenter extends GObject.Object {
-        // Own methods of IAnjuta.Indenter
+        // Methods
 
         /**
          * Indent the area between `start` and `end` according to the indentation rules
@@ -4097,7 +4097,7 @@ export namespace IAnjuta {
          */
         indent(start: Iterable, end: Iterable): void;
 
-        // Own virtual methods of IAnjuta.Indenter
+        // Virtual methods
 
         /**
          * Indent the area between `start` and `end` according to the indentation rules
@@ -4126,7 +4126,7 @@ export namespace IAnjuta {
         error_quark(): GLib.Quark;
     }
     interface Indicable extends GObject.Object {
-        // Own methods of IAnjuta.Indicable
+        // Methods
 
         /**
          * Clear all indicators
@@ -4142,7 +4142,7 @@ export namespace IAnjuta {
         // Conflicted with GObject.Object.set
         set(...args: never[]): any;
 
-        // Own virtual methods of IAnjuta.Indicable
+        // Virtual methods
 
         /**
          * Clear all indicators
@@ -4172,7 +4172,7 @@ export namespace IAnjuta {
         error_quark(): GLib.Quark;
     }
     interface Iterable extends GObject.Object {
-        // Own methods of IAnjuta.Iterable
+        // Methods
 
         /**
          * Assigns the iter position from `src_iter`.
@@ -4256,7 +4256,7 @@ export namespace IAnjuta {
          */
         set_position(position: number): boolean;
 
-        // Own virtual methods of IAnjuta.Iterable
+        // Virtual methods
 
         /**
          * Assigns the iter position from `src_iter`.
@@ -4346,7 +4346,7 @@ export namespace IAnjuta {
         error_quark(): GLib.Quark;
     }
     interface IterableTree extends Iterable {
-        // Own methods of IAnjuta.IterableTree
+        // Methods
 
         /**
          * Iter position set to first child of current iter. If there is no
@@ -4366,7 +4366,7 @@ export namespace IAnjuta {
          */
         parent(): boolean;
 
-        // Own virtual methods of IAnjuta.IterableTree
+        // Virtual methods
 
         /**
          * Iter position set to first child of current iter. If there is no
@@ -4399,7 +4399,7 @@ export namespace IAnjuta {
         error_quark(): GLib.Quark;
     }
     interface Language extends GObject.Object {
-        // Own methods of IAnjuta.Language
+        // Methods
 
         /**
          * Conviniece method to get the id directly from the editor
@@ -4419,7 +4419,7 @@ export namespace IAnjuta {
          */
         get_name_from_editor(editor: EditorLanguage): string;
 
-        // Own virtual methods of IAnjuta.Language
+        // Virtual methods
 
         /**
          * Conviniece method to get the id directly from the editor
@@ -4453,7 +4453,7 @@ export namespace IAnjuta {
         error_quark(): GLib.Quark;
     }
     interface LanguageProvider extends Provider {
-        // Own methods of IAnjuta.LanguageProvider
+        // Methods
 
         /**
          * Searches for a calltip in the cache
@@ -4484,7 +4484,7 @@ export namespace IAnjuta {
          */
         populate_completions(iter: Iterable): Iterable | null;
 
-        // Own virtual methods of IAnjuta.LanguageProvider
+        // Virtual methods
 
         /**
          * Searches for a calltip in the cache
@@ -4542,7 +4542,7 @@ export namespace IAnjuta {
         prototype: Markable;
     }
     interface Markable extends GObject.Object {
-        // Own methods of IAnjuta.Markable
+        // Methods
 
         /**
          * Delete the `marker` from all locations.
@@ -4582,7 +4582,7 @@ export namespace IAnjuta {
          */
         unmark(location: number, marker: MarkableMarker): void;
 
-        // Own virtual methods of IAnjuta.Markable
+        // Virtual methods
 
         /**
          * Delete the `marker` from all locations.
@@ -4634,7 +4634,7 @@ export namespace IAnjuta {
         prototype: MessageManager;
     }
     interface MessageManager extends GObject.Object {
-        // Own methods of IAnjuta.MessageManager
+        // Methods
 
         /**
          * Remove view from the message-manager. The view
@@ -4666,7 +4666,7 @@ export namespace IAnjuta {
          */
         set_view_title(view: MessageView, title: string): void;
 
-        // Own virtual methods of IAnjuta.MessageManager
+        // Virtual methods
 
         /**
          * Remove view from the message-manager. The view
@@ -4714,7 +4714,7 @@ export namespace IAnjuta {
         error_quark(): GLib.Quark;
     }
     interface MessageView extends GObject.Object {
-        // Own methods of IAnjuta.MessageView
+        // Methods
 
         /**
          * Append the message with summary displayed and details displayed as tooltip
@@ -4746,7 +4746,7 @@ export namespace IAnjuta {
          */
         select_previous(): void;
 
-        // Own virtual methods of IAnjuta.MessageView
+        // Virtual methods
 
         /**
          * Append the message with summary displayed and details displayed as tooltip
@@ -4810,7 +4810,7 @@ export namespace IAnjuta {
         error_quark(): GLib.Quark;
     }
     interface Preferences extends GObject.Object {
-        // Own methods of IAnjuta.Preferences
+        // Methods
 
         /**
          * When called, the plugin should install it's preferences
@@ -4823,7 +4823,7 @@ export namespace IAnjuta {
          */
         unmerge(prefs: Anjuta.Preferences): void;
 
-        // Own virtual methods of IAnjuta.Preferences
+        // Virtual methods
 
         /**
          * When called, the plugin should install it's preferences
@@ -4852,7 +4852,7 @@ export namespace IAnjuta {
         error_quark(): GLib.Quark;
     }
     interface Print extends GObject.Object {
-        // Own methods of IAnjuta.Print
+        // Methods
 
         /**
          * Print the plugin (the file in case of the editor). In most cases this will show
@@ -4864,7 +4864,7 @@ export namespace IAnjuta {
          */
         print_preview(): void;
 
-        // Own virtual methods of IAnjuta.Print
+        // Virtual methods
 
         /**
          * Print the plugin (the file in case of the editor). In most cases this will show
@@ -4890,7 +4890,7 @@ export namespace IAnjuta {
         prototype: Project;
     }
     interface Project extends GObject.Object {
-        // Own methods of IAnjuta.Project
+        // Methods
 
         /**
          * Create a new node and insert it after sibling
@@ -4982,7 +4982,7 @@ export namespace IAnjuta {
         // Conflicted with GObject.Object.set_property
         set_property(...args: never[]): any;
 
-        // Own virtual methods of IAnjuta.Project
+        // Virtual methods
 
         /**
          * Create a new node and insert it after sibling
@@ -5084,7 +5084,7 @@ export namespace IAnjuta {
         error_quark(): GLib.Quark;
     }
     interface ProjectBackend extends GObject.Object {
-        // Own methods of IAnjuta.ProjectBackend
+        // Methods
 
         /**
          * Create a new Anjuta project.
@@ -5100,7 +5100,7 @@ export namespace IAnjuta {
          */
         probe(directory: Gio.File): number;
 
-        // Own virtual methods of IAnjuta.ProjectBackend
+        // Virtual methods
 
         /**
          * Create a new Anjuta project.
@@ -5130,7 +5130,7 @@ export namespace IAnjuta {
         error_quark(): GLib.Quark;
     }
     interface ProjectChooser extends GObject.Object {
-        // Own methods of IAnjuta.ProjectChooser
+        // Methods
 
         /**
          * Gets the currently selected element in the project chooser.
@@ -5159,7 +5159,7 @@ export namespace IAnjuta {
          */
         set_project_model(manager: ProjectManager, child_type: Anjuta.ProjectNodeType): boolean;
 
-        // Own virtual methods of IAnjuta.ProjectChooser
+        // Virtual methods
 
         vfunc_changed(): void;
         /**
@@ -5203,7 +5203,7 @@ export namespace IAnjuta {
         error_quark(): GLib.Quark;
     }
     interface ProjectManager extends GObject.Object {
-        // Own methods of IAnjuta.ProjectManager
+        // Methods
 
         /**
          * Prompts the user to add a new group to the project. The user can select
@@ -5317,7 +5317,7 @@ export namespace IAnjuta {
          */
         remove_file(file: Gio.File): boolean;
 
-        // Own virtual methods of IAnjuta.ProjectManager
+        // Virtual methods
 
         /**
          * Prompts the user to add a new group to the project. The user can select
@@ -5437,7 +5437,7 @@ export namespace IAnjuta {
         error_quark(): GLib.Quark;
     }
     interface Provider extends GObject.Object {
-        // Own methods of IAnjuta.Provider
+        // Methods
 
         /**
          * Show completion for the context at position `iter`
@@ -5464,7 +5464,7 @@ export namespace IAnjuta {
          */
         populate(iter: Iterable): void;
 
-        // Own virtual methods of IAnjuta.Provider
+        // Virtual methods
 
         /**
          * Show completion for the context at position `iter`
@@ -5506,7 +5506,7 @@ export namespace IAnjuta {
         error_quark(): GLib.Quark;
     }
     interface SnippetsManager extends GObject.Object {
-        // Own methods of IAnjuta.SnippetsManager
+        // Methods
 
         /**
          * Insert snippet in the current editor.
@@ -5515,7 +5515,7 @@ export namespace IAnjuta {
          */
         insert(key: string, editing_session: boolean): boolean;
 
-        // Own virtual methods of IAnjuta.SnippetsManager
+        // Virtual methods
 
         /**
          * Insert snippet in the current editor.
@@ -5540,7 +5540,7 @@ export namespace IAnjuta {
         error_quark(): GLib.Quark;
     }
     interface Stream extends GObject.Object {
-        // Own methods of IAnjuta.Stream
+        // Methods
 
         /**
          * The implementor opens the given stream.
@@ -5548,7 +5548,7 @@ export namespace IAnjuta {
          */
         open(stream?: any | null): void;
 
-        // Own virtual methods of IAnjuta.Stream
+        // Virtual methods
 
         /**
          * The implementor opens the given stream.
@@ -5572,7 +5572,7 @@ export namespace IAnjuta {
         error_quark(): GLib.Quark;
     }
     interface StreamLoader extends Loader {
-        // Own methods of IAnjuta.StreamLoader
+        // Methods
 
         /**
          * Peeks the stream and determines the interface which can load
@@ -5582,7 +5582,7 @@ export namespace IAnjuta {
          */
         peek_interface(stream?: any | null): string;
 
-        // Own virtual methods of IAnjuta.StreamLoader
+        // Virtual methods
 
         /**
          * Peeks the stream and determines the interface which can load
@@ -5607,11 +5607,11 @@ export namespace IAnjuta {
         error_quark(): GLib.Quark;
     }
     interface StreamSavable extends Stream {
-        // Own methods of IAnjuta.StreamSavable
+        // Methods
 
         save(stream?: any | null): void;
 
-        // Own virtual methods of IAnjuta.StreamSavable
+        // Virtual methods
 
         vfunc_save(stream?: any | null): void;
     }
@@ -5631,7 +5631,7 @@ export namespace IAnjuta {
         error_quark(): GLib.Quark;
     }
     interface Symbol extends GObject.Object {
-        // Own methods of IAnjuta.Symbol
+        // Methods
 
         /**
          * Retreives the boolean value of a boolean `field`.
@@ -5665,7 +5665,7 @@ export namespace IAnjuta {
          */
         get_sym_type(): SymbolType;
 
-        // Own virtual methods of IAnjuta.Symbol
+        // Virtual methods
 
         /**
          * Retreives the boolean value of a boolean `field`.
@@ -5710,7 +5710,7 @@ export namespace IAnjuta {
         error_quark(): GLib.Quark;
     }
     interface SymbolManager extends GObject.Object {
-        // Own methods of IAnjuta.SymbolManager
+        // Methods
 
         /**
          * Activates the package for searches in the global symbol database.
@@ -5731,7 +5731,7 @@ export namespace IAnjuta {
          */
         deactivate_package(pkg_name: string, pkg_version: string): void;
 
-        // Own virtual methods of IAnjuta.SymbolManager
+        // Virtual methods
 
         /**
          * Activates the package for searches in the global symbol database.
@@ -5769,7 +5769,7 @@ export namespace IAnjuta {
         error_quark(): GLib.Quark;
     }
     interface SymbolQuery extends GObject.Object {
-        // Own methods of IAnjuta.SymbolQuery
+        // Methods
 
         cancel(): void;
         /**
@@ -5819,7 +5819,7 @@ export namespace IAnjuta {
          */
         set_order_by(field: SymbolField): void;
 
-        // Own virtual methods of IAnjuta.SymbolQuery
+        // Virtual methods
 
         vfunc_async_result(result: GObject.Object): void;
         vfunc_cancel(): void;
@@ -5886,7 +5886,7 @@ export namespace IAnjuta {
         error_quark(): GLib.Quark;
     }
     interface Terminal extends GObject.Object {
-        // Own methods of IAnjuta.Terminal
+        // Methods
 
         /**
          * Run the command in a terminal, setting the working directory
@@ -5898,7 +5898,7 @@ export namespace IAnjuta {
          */
         execute_command(directory: string, command: string, environment: string[]): number;
 
-        // Own virtual methods of IAnjuta.Terminal
+        // Virtual methods
 
         vfunc_child_exited(pid: number, status: number): void;
         /**
@@ -5926,11 +5926,11 @@ export namespace IAnjuta {
         error_quark(): GLib.Quark;
     }
     interface Todo extends GObject.Object {
-        // Own methods of IAnjuta.Todo
+        // Methods
 
         load(file: Gio.File): void;
 
-        // Own virtual methods of IAnjuta.Todo
+        // Virtual methods
 
         vfunc_load(file: Gio.File): void;
     }
@@ -5948,7 +5948,7 @@ export namespace IAnjuta {
         prototype: Vcs;
     }
     interface Vcs extends GObject.Object {
-        // Own methods of IAnjuta.Vcs
+        // Methods
 
         /**
          * Add files to the VCS repository.
@@ -5976,7 +5976,7 @@ export namespace IAnjuta {
          */
         remove(files: Gio.File[], notify: Anjuta.AsyncNotify): void;
 
-        // Own virtual methods of IAnjuta.Vcs
+        // Virtual methods
 
         /**
          * Add files to the VCS repository.
@@ -6021,14 +6021,14 @@ export namespace IAnjuta {
         error_quark(): GLib.Quark;
     }
     interface Wizard extends GObject.Object {
-        // Own methods of IAnjuta.Wizard
+        // Methods
 
         /**
          * Called when the wizard should start after some user action
          */
         activate(): void;
 
-        // Own virtual methods of IAnjuta.Wizard
+        // Virtual methods
 
         /**
          * Called when the wizard should start after some user action

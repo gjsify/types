@@ -197,20 +197,20 @@ export namespace Mks {
     class Device extends GObject.Object {
         static $gtype: GObject.GType<Device>;
 
-        // Own properties of Mks.Device
+        // Properties
 
         /**
          * The device name.
          */
         get name(): string;
 
-        // Constructors of Mks.Device
+        // Constructors
 
         constructor(properties?: Partial<Device.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Mks.Device
+        // Methods
 
         /**
          * Gets the device name.
@@ -237,7 +237,7 @@ export namespace Mks {
     class Display extends Gtk.Widget implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
         static $gtype: GObject.GType<Display>;
 
-        // Own properties of Mks.Display
+        // Properties
 
         get auto_resize(): boolean;
         set auto_resize(val: boolean);
@@ -250,7 +250,7 @@ export namespace Mks {
         get ungrabTrigger(): Gtk.ShortcutTrigger;
         set ungrabTrigger(val: Gtk.ShortcutTrigger);
 
-        // Constructors of Mks.Display
+        // Constructors
 
         constructor(properties?: Partial<Display.ConstructorProps>, ...args: any[]);
 
@@ -258,7 +258,7 @@ export namespace Mks {
 
         static ['new'](): Display;
 
-        // Own methods of Mks.Display
+        // Methods
 
         /**
          * Get whether the widget will reconfigure the VM whenever
@@ -988,20 +988,20 @@ export namespace Mks {
     class Keyboard extends Device {
         static $gtype: GObject.GType<Keyboard>;
 
-        // Own properties of Mks.Keyboard
+        // Properties
 
         /**
          * Active keyboard modifiers.
          */
         get modifiers(): KeyboardModifier;
 
-        // Constructors of Mks.Keyboard
+        // Constructors
 
         constructor(properties?: Partial<Keyboard.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of Mks.Keyboard
+        // Static methods
 
         /**
          * Translate a keycode to a QEMU compatible one.
@@ -1010,7 +1010,7 @@ export namespace Mks {
          */
         static translate(keyval: number, keycode: number): number;
 
-        // Own methods of Mks.Keyboard
+        // Methods
 
         /**
          * Get the active keyboard modifiers.
@@ -1081,7 +1081,7 @@ export namespace Mks {
     class Mouse extends Device {
         static $gtype: GObject.GType<Mouse>;
 
-        // Own properties of Mks.Mouse
+        // Properties
 
         /**
          * Whether the mouse is using absolute movements.
@@ -1092,13 +1092,13 @@ export namespace Mks {
          */
         get isAbsolute(): boolean;
 
-        // Constructors of Mks.Mouse
+        // Constructors
 
         constructor(properties?: Partial<Mouse.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Mks.Mouse
+        // Methods
 
         /**
          * Whether the mouse is using absolute movements.
@@ -1226,7 +1226,7 @@ export namespace Mks {
     class Screen extends Device {
         static $gtype: GObject.GType<Screen>;
 
-        // Own properties of Mks.Screen
+        // Properties
 
         get device_address(): string;
         get deviceAddress(): string;
@@ -1237,13 +1237,13 @@ export namespace Mks {
         get number(): number;
         get width(): number;
 
-        // Constructors of Mks.Screen
+        // Constructors
 
         constructor(properties?: Partial<Screen.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Mks.Screen
+        // Methods
 
         /**
          * Asynchronously creates a #GdkPaintable that is updated with the
@@ -1376,7 +1376,7 @@ export namespace Mks {
     class Session extends GObject.Object implements Gio.AsyncInitable<Session>, Gio.Initable {
         static $gtype: GObject.GType<Session>;
 
-        // Own properties of Mks.Session
+        // Properties
 
         /**
          * The [class`Gio`.DBusConnection] that is used to communicate with QEMU.
@@ -1396,7 +1396,7 @@ export namespace Mks {
          */
         get uuid(): string;
 
-        // Constructors of Mks.Session
+        // Constructors
 
         constructor(properties?: Partial<Session.ConstructorProps>, ...args: any[]);
 
@@ -1406,7 +1406,7 @@ export namespace Mks {
 
         static new_for_connection_sync(connection: Gio.DBusConnection, cancellable?: Gio.Cancellable | null): Session;
 
-        // Own static methods of Mks.Session
+        // Static methods
 
         /**
          * Creates a #MksSession which communicates using `connection`.
@@ -1433,7 +1433,7 @@ export namespace Mks {
             callback?: Gio.AsyncReadyCallback<Session> | null,
         ): void;
 
-        // Own methods of Mks.Session
+        // Methods
 
         /**
          * Gets the DBus connection used for this session.
@@ -2074,7 +2074,7 @@ export namespace Mks {
     class Touchable extends Device {
         static $gtype: GObject.GType<Touchable>;
 
-        // Own properties of Mks.Touchable
+        // Properties
 
         /**
          * The maximum number of slots.
@@ -2085,13 +2085,13 @@ export namespace Mks {
          */
         get maxSlots(): number;
 
-        // Constructors of Mks.Touchable
+        // Constructors
 
         constructor(properties?: Partial<Touchable.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Mks.Touchable
+        // Methods
 
         /**
          * Returns the maximum number of slots.
@@ -2151,14 +2151,14 @@ export namespace Mks {
     class ScreenAttributes {
         static $gtype: GObject.GType<ScreenAttributes>;
 
-        // Constructors of Mks.ScreenAttributes
+        // Constructors
 
         constructor(properties?: Partial<{}>);
         _init(...args: any[]): void;
 
         static ['new'](): ScreenAttributes;
 
-        // Own methods of Mks.ScreenAttributes
+        // Methods
 
         /**
          * Makes a deep copy of a #MksScreenAttributes.

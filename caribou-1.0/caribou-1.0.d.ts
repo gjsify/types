@@ -72,17 +72,17 @@ export namespace Caribou {
     abstract class DisplayAdapter extends GObject.Object {
         static $gtype: GObject.GType<DisplayAdapter>;
 
-        // Own properties of Caribou.DisplayAdapter
+        // Properties
 
         get display(): Gdk.Display;
 
-        // Constructors of Caribou.DisplayAdapter
+        // Constructors
 
         constructor(properties?: Partial<DisplayAdapter.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of Caribou.DisplayAdapter
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -103,12 +103,12 @@ export namespace Caribou {
         connect_after(signal: 'config-changed', callback: (_source: this) => void): number;
         emit(signal: 'config-changed'): void;
 
-        // Own static methods of Caribou.DisplayAdapter
+        // Static methods
 
         static set_default(adapter: DisplayAdapter): boolean;
         static get_default(): DisplayAdapter;
 
-        // Own virtual methods of Caribou.DisplayAdapter
+        // Virtual methods
 
         vfunc_keyval_press(keyval: number): void;
         vfunc_keyval_release(keyval: number): void;
@@ -121,7 +121,7 @@ export namespace Caribou {
         vfunc_register_key_func(keyval: number, func: KeyButtonCallback): void;
         vfunc_register_button_func(button: number, func: KeyButtonCallback): void;
 
-        // Own methods of Caribou.DisplayAdapter
+        // Methods
 
         keyval_press(keyval: number): void;
         keyval_release(keyval: number): void;
@@ -145,7 +145,7 @@ export namespace Caribou {
     class NullAdapter extends DisplayAdapter {
         static $gtype: GObject.GType<NullAdapter>;
 
-        // Constructors of Caribou.NullAdapter
+        // Constructors
 
         constructor(properties?: Partial<NullAdapter.ConstructorProps>, ...args: any[]);
 
@@ -163,7 +163,7 @@ export namespace Caribou {
     class XAdapter extends DisplayAdapter {
         static $gtype: GObject.GType<XAdapter>;
 
-        // Constructors of Caribou.XAdapter
+        // Constructors
 
         constructor(properties?: Partial<XAdapter.ConstructorProps>, ...args: any[]);
 
@@ -198,7 +198,7 @@ export namespace Caribou {
     class KeyboardModel extends GObject.Object implements IKeyboardObject {
         static $gtype: GObject.GType<KeyboardModel>;
 
-        // Own properties of Caribou.KeyboardModel
+        // Properties
 
         get active_group(): string;
         set active_group(val: string);
@@ -209,7 +209,7 @@ export namespace Caribou {
         get keyboard_file(): string;
         get keyboardFile(): string;
 
-        // Constructors of Caribou.KeyboardModel
+        // Constructors
 
         constructor(properties?: Partial<KeyboardModel.ConstructorProps>, ...args: any[]);
 
@@ -217,7 +217,7 @@ export namespace Caribou {
 
         static ['new'](): KeyboardModel;
 
-        // Own signals of Caribou.KeyboardModel
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -229,7 +229,7 @@ export namespace Caribou {
         connect_after(signal: 'group-removed', callback: (_source: this, name: string) => void): number;
         emit(signal: 'group-removed', name: string): void;
 
-        // Own methods of Caribou.KeyboardModel
+        // Methods
 
         get_groups(): string[];
         get_group(group_name: string): GroupModel;
@@ -653,13 +653,13 @@ export namespace Caribou {
     abstract class KeyboardService extends GObject.Object {
         static $gtype: GObject.GType<KeyboardService>;
 
-        // Constructors of Caribou.KeyboardService
+        // Constructors
 
         constructor(properties?: Partial<KeyboardService.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of Caribou.KeyboardService
+        // Virtual methods
 
         vfunc_set_cursor_location(x: number, y: number, w: number, h: number): void;
         vfunc_set_entry_location(x: number, y: number, w: number, h: number): void;
@@ -667,7 +667,7 @@ export namespace Caribou {
         vfunc_hide(timestamp: number): void;
         vfunc_name_lost(name: string): void;
 
-        // Own methods of Caribou.KeyboardService
+        // Methods
 
         set_cursor_location(x: number, y: number, w: number, h: number): void;
         set_entry_location(x: number, y: number, w: number, h: number): void;
@@ -689,19 +689,19 @@ export namespace Caribou {
     class GroupModel extends GObject.Object implements IKeyboardObject {
         static $gtype: GObject.GType<GroupModel>;
 
-        // Own properties of Caribou.GroupModel
+        // Properties
 
         get active_level(): string;
         set active_level(val: string);
         get activeLevel(): string;
         set activeLevel(val: string);
 
-        // Own fields of Caribou.GroupModel
+        // Fields
 
         group: string;
         variant: string;
 
-        // Constructors of Caribou.GroupModel
+        // Constructors
 
         constructor(properties?: Partial<GroupModel.ConstructorProps>, ...args: any[]);
 
@@ -709,11 +709,11 @@ export namespace Caribou {
 
         static ['new'](group: string, variant: string): GroupModel;
 
-        // Own static methods of Caribou.GroupModel
+        // Static methods
 
         static create_group_name(group: string, variant: string): string;
 
-        // Own methods of Caribou.GroupModel
+        // Methods
 
         get_levels(): string[];
         get_level(level_name: string): LevelModel;
@@ -1143,12 +1143,12 @@ export namespace Caribou {
     class LevelModel extends ScannableGroup implements IKeyboardObject {
         static $gtype: GObject.GType<LevelModel>;
 
-        // Own properties of Caribou.LevelModel
+        // Properties
 
         get mode(): string;
         set mode(val: string);
 
-        // Constructors of Caribou.LevelModel
+        // Constructors
 
         constructor(properties?: Partial<LevelModel.ConstructorProps>, ...args: any[]);
 
@@ -1156,7 +1156,7 @@ export namespace Caribou {
 
         static ['new'](mode: string): LevelModel;
 
-        // Own signals of Caribou.LevelModel
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -1165,7 +1165,7 @@ export namespace Caribou {
         connect_after(signal: 'level-toggled', callback: (_source: this, new_level: string) => void): number;
         emit(signal: 'level-toggled', new_level: string): void;
 
-        // Own methods of Caribou.LevelModel
+        // Methods
 
         get_rows(): RowModel[];
         get_mode(): string;
@@ -1589,7 +1589,7 @@ export namespace Caribou {
     class RowModel extends ScannableGroup implements IScannableItem, IKeyboardObject {
         static $gtype: GObject.GType<RowModel>;
 
-        // Constructors of Caribou.RowModel
+        // Constructors
 
         constructor(properties?: Partial<RowModel.ConstructorProps>, ...args: any[]);
 
@@ -1597,7 +1597,7 @@ export namespace Caribou {
 
         static ['new'](): RowModel;
 
-        // Own methods of Caribou.RowModel
+        // Methods
 
         get_columns(): ColumnModel[];
 
@@ -2061,7 +2061,7 @@ export namespace Caribou {
     class KeyModel extends GObject.Object implements IScannableItem, IKeyboardObject {
         static $gtype: GObject.GType<KeyModel>;
 
-        // Own properties of Caribou.KeyModel
+        // Properties
 
         get align(): string;
         set align(val: string);
@@ -2088,11 +2088,11 @@ export namespace Caribou {
         get label(): string;
         set label(val: string);
 
-        // Own fields of Caribou.KeyModel
+        // Fields
 
         modifier_state: ModifierState;
 
-        // Constructors of Caribou.KeyModel
+        // Constructors
 
         constructor(properties?: Partial<KeyModel.ConstructorProps>, ...args: any[]);
 
@@ -2100,7 +2100,7 @@ export namespace Caribou {
 
         static ['new'](name: string, text: string): KeyModel;
 
-        // Own signals of Caribou.KeyModel
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -2112,7 +2112,7 @@ export namespace Caribou {
         connect_after(signal: 'key-hold', callback: (_source: this) => void): number;
         emit(signal: 'key-hold'): void;
 
-        // Own methods of Caribou.KeyModel
+        // Methods
 
         press(): void;
         release(): void;
@@ -2572,7 +2572,7 @@ export namespace Caribou {
     class ColumnModel extends ScannableGroup implements IScannableItem, IKeyboardObject {
         static $gtype: GObject.GType<ColumnModel>;
 
-        // Constructors of Caribou.ColumnModel
+        // Constructors
 
         constructor(properties?: Partial<ColumnModel.ConstructorProps>, ...args: any[]);
 
@@ -2580,7 +2580,7 @@ export namespace Caribou {
 
         static ['new'](): ColumnModel;
 
-        // Own methods of Caribou.ColumnModel
+        // Methods
 
         get_key(index: number): KeyModel;
         first_key(): KeyModel;
@@ -3039,7 +3039,7 @@ export namespace Caribou {
     class Scanner extends GObject.Object {
         static $gtype: GObject.GType<Scanner>;
 
-        // Own properties of Caribou.Scanner
+        // Properties
 
         get bind_settings(): boolean;
         get bindSettings(): boolean;
@@ -3078,7 +3078,7 @@ export namespace Caribou {
         get inverseScanning(): boolean;
         set inverseScanning(val: boolean);
 
-        // Constructors of Caribou.Scanner
+        // Constructors
 
         constructor(properties?: Partial<Scanner.ConstructorProps>, ...args: any[]);
 
@@ -3086,7 +3086,7 @@ export namespace Caribou {
 
         static ['new'](): Scanner;
 
-        // Own methods of Caribou.Scanner
+        // Methods
 
         set_keyboard(keyboard: KeyboardModel): void;
         reset(): void;
@@ -3120,18 +3120,18 @@ export namespace Caribou {
     abstract class ScannableGroup extends GObject.Object implements IScannableGroup {
         static $gtype: GObject.GType<ScannableGroup>;
 
-        // Constructors of Caribou.ScannableGroup
+        // Constructors
 
         constructor(properties?: Partial<ScannableGroup.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of Caribou.ScannableGroup
+        // Virtual methods
 
         vfunc_get_scan_children(): IScannableItem[];
         vfunc_child_select(): IScannableItem;
 
-        // Own methods of Caribou.ScannableGroup
+        // Methods
 
         get_scan_children(): IScannableItem[];
         child_select(): IScannableItem;
@@ -3561,7 +3561,7 @@ export namespace Caribou {
     abstract class DisplayAdapterPrivate {
         static $gtype: GObject.GType<DisplayAdapterPrivate>;
 
-        // Constructors of Caribou.DisplayAdapterPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3570,7 +3570,7 @@ export namespace Caribou {
     abstract class NullAdapterPrivate {
         static $gtype: GObject.GType<NullAdapterPrivate>;
 
-        // Constructors of Caribou.NullAdapterPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3579,7 +3579,7 @@ export namespace Caribou {
     abstract class XAdapterPrivate {
         static $gtype: GObject.GType<XAdapterPrivate>;
 
-        // Constructors of Caribou.XAdapterPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3588,7 +3588,7 @@ export namespace Caribou {
     abstract class KeyboardModelPrivate {
         static $gtype: GObject.GType<KeyboardModelPrivate>;
 
-        // Constructors of Caribou.KeyboardModelPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3597,7 +3597,7 @@ export namespace Caribou {
     abstract class KeyboardServicePrivate {
         static $gtype: GObject.GType<KeyboardServicePrivate>;
 
-        // Constructors of Caribou.KeyboardServicePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3606,7 +3606,7 @@ export namespace Caribou {
     abstract class GroupModelPrivate {
         static $gtype: GObject.GType<GroupModelPrivate>;
 
-        // Constructors of Caribou.GroupModelPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3615,7 +3615,7 @@ export namespace Caribou {
     abstract class LevelModelPrivate {
         static $gtype: GObject.GType<LevelModelPrivate>;
 
-        // Constructors of Caribou.LevelModelPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3624,7 +3624,7 @@ export namespace Caribou {
     abstract class RowModelPrivate {
         static $gtype: GObject.GType<RowModelPrivate>;
 
-        // Constructors of Caribou.RowModelPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3633,7 +3633,7 @@ export namespace Caribou {
     abstract class KeyModelPrivate {
         static $gtype: GObject.GType<KeyModelPrivate>;
 
-        // Constructors of Caribou.KeyModelPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3642,7 +3642,7 @@ export namespace Caribou {
     abstract class ColumnModelPrivate {
         static $gtype: GObject.GType<ColumnModelPrivate>;
 
-        // Constructors of Caribou.ColumnModelPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3651,7 +3651,7 @@ export namespace Caribou {
     abstract class ScannerPrivate {
         static $gtype: GObject.GType<ScannerPrivate>;
 
-        // Constructors of Caribou.ScannerPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3660,7 +3660,7 @@ export namespace Caribou {
     abstract class ScannableGroupPrivate {
         static $gtype: GObject.GType<ScannableGroupPrivate>;
 
-        // Constructors of Caribou.ScannableGroupPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3684,7 +3684,7 @@ export namespace Caribou {
         prototype: IScannableItem;
     }
     interface IScannableItem extends GObject.Object {
-        // Own properties of Caribou.IScannableItem
+        // Properties
 
         get scan_stepping(): boolean;
         set scan_stepping(val: boolean);
@@ -3695,14 +3695,14 @@ export namespace Caribou {
         get scanSelected(): boolean;
         set scanSelected(val: boolean);
 
-        // Own methods of Caribou.IScannableItem
+        // Methods
 
         get_scan_stepping(): boolean;
         set_scan_stepping(value: boolean): void;
         get_scan_selected(): boolean;
         set_scan_selected(value: boolean): void;
 
-        // Own virtual methods of Caribou.IScannableItem
+        // Virtual methods
 
         vfunc_get_scan_stepping(): boolean;
         vfunc_set_scan_stepping(value: boolean): void;
@@ -3726,14 +3726,14 @@ export namespace Caribou {
         prototype: IScannableGroup;
     }
     interface IScannableGroup extends GObject.Object {
-        // Own properties of Caribou.IScannableGroup
+        // Properties
 
         get scan_grouping(): ScanGrouping;
         set scan_grouping(val: ScanGrouping);
         get scanGrouping(): ScanGrouping;
         set scanGrouping(val: ScanGrouping);
 
-        // Own methods of Caribou.IScannableGroup
+        // Methods
 
         child_select(): IScannableItem;
         scan_reset(): void;
@@ -3744,7 +3744,7 @@ export namespace Caribou {
         get_scan_grouping(): ScanGrouping;
         set_scan_grouping(value: ScanGrouping): void;
 
-        // Own virtual methods of Caribou.IScannableGroup
+        // Virtual methods
 
         vfunc_child_select(): IScannableItem;
         vfunc_scan_reset(): void;
@@ -3769,12 +3769,12 @@ export namespace Caribou {
         prototype: IKeyboardObject;
     }
     interface IKeyboardObject extends GObject.Object {
-        // Own methods of Caribou.IKeyboardObject
+        // Methods
 
         get_children(): IKeyboardObject[];
         get_keys(): KeyModel[];
 
-        // Own virtual methods of Caribou.IKeyboardObject
+        // Virtual methods
 
         vfunc_get_children(): IKeyboardObject[];
         vfunc_get_keys(): KeyModel[];

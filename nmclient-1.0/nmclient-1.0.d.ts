@@ -26,7 +26,7 @@ export namespace NMClient {
     class ClientError extends GLib.Error {
         static $gtype: GObject.GType<ClientError>;
 
-        // Static fields of NMClient.ClientError
+        // Static fields
 
         /**
          * unknown or unclassified error
@@ -38,12 +38,12 @@ export namespace NMClient {
          */
         static MANAGERNOTRUNNING: number;
 
-        // Constructors of NMClient.ClientError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of NMClient.ClientError
+        // Static methods
 
         /**
          * Registers an error quark for #NMClient if necessary.
@@ -184,7 +184,7 @@ export namespace NMClient {
     class DeviceAdslError extends GLib.Error {
         static $gtype: GObject.GType<DeviceAdslError>;
 
-        // Static fields of NMClient.DeviceAdslError
+        // Static fields
 
         /**
          * unknown or unclassified error
@@ -199,12 +199,12 @@ export namespace NMClient {
          */
         static INVALIDADSLCONNECTION: number;
 
-        // Constructors of NMClient.DeviceAdslError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of NMClient.DeviceAdslError
+        // Static methods
 
         /**
          * Registers an error quark for #NMDeviceAdsl if necessary.
@@ -215,7 +215,7 @@ export namespace NMClient {
     class DeviceBondError extends GLib.Error {
         static $gtype: GObject.GType<DeviceBondError>;
 
-        // Static fields of NMClient.DeviceBondError
+        // Static fields
 
         /**
          * unknown or unclassified error
@@ -234,12 +234,12 @@ export namespace NMClient {
          */
         static INTERFACEMISMATCH: number;
 
-        // Constructors of NMClient.DeviceBondError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of NMClient.DeviceBondError
+        // Static methods
 
         /**
          * Registers an error quark for #NMDeviceBond if necessary.
@@ -250,7 +250,7 @@ export namespace NMClient {
     class DeviceBridgeError extends GLib.Error {
         static $gtype: GObject.GType<DeviceBridgeError>;
 
-        // Static fields of NMClient.DeviceBridgeError
+        // Static fields
 
         /**
          * unknown or unclassified error
@@ -269,12 +269,12 @@ export namespace NMClient {
          */
         static INTERFACEMISMATCH: number;
 
-        // Constructors of NMClient.DeviceBridgeError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of NMClient.DeviceBridgeError
+        // Static methods
 
         /**
          * Registers an error quark for #NMDeviceBridge if necessary.
@@ -285,7 +285,7 @@ export namespace NMClient {
     class DeviceBtError extends GLib.Error {
         static $gtype: GObject.GType<DeviceBtError>;
 
-        // Static fields of NMClient.DeviceBtError
+        // Static fields
 
         /**
          * unknown or unclassified error
@@ -312,12 +312,12 @@ export namespace NMClient {
          */
         static MISSINGDEVICECAPS: number;
 
-        // Constructors of NMClient.DeviceBtError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of NMClient.DeviceBtError
+        // Static methods
 
         /**
          * Registers an error quark for #NMDeviceBt if necessary.
@@ -328,7 +328,7 @@ export namespace NMClient {
     class DeviceError extends GLib.Error {
         static $gtype: GObject.GType<DeviceError>;
 
-        // Static fields of NMClient.DeviceError
+        // Static fields
 
         /**
          * unknown or unclassified error
@@ -340,12 +340,12 @@ export namespace NMClient {
          */
         static INTERFACEMISMATCH: number;
 
-        // Constructors of NMClient.DeviceError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of NMClient.DeviceError
+        // Static methods
 
         /**
          * Registers an error quark for #NMDevice if necessary.
@@ -356,7 +356,7 @@ export namespace NMClient {
     class DeviceEthernetError extends GLib.Error {
         static $gtype: GObject.GType<DeviceEthernetError>;
 
-        // Static fields of NMClient.DeviceEthernetError
+        // Static fields
 
         /**
          * unknown or unclassified error
@@ -379,12 +379,12 @@ export namespace NMClient {
          */
         static MACMISMATCH: number;
 
-        // Constructors of NMClient.DeviceEthernetError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of NMClient.DeviceEthernetError
+        // Static methods
 
         /**
          * Registers an error quark for #NMDeviceEthernet if necessary.
@@ -395,7 +395,7 @@ export namespace NMClient {
     class DeviceGenericError extends GLib.Error {
         static $gtype: GObject.GType<DeviceGenericError>;
 
-        // Static fields of NMClient.DeviceGenericError
+        // Static fields
 
         /**
          * unknown or unclassified error
@@ -410,12 +410,12 @@ export namespace NMClient {
          */
         static MISSINGINTERFACENAME: number;
 
-        // Constructors of NMClient.DeviceGenericError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of NMClient.DeviceGenericError
+        // Static methods
 
         /**
          * Registers an error quark for #NMDeviceGeneric if necessary.
@@ -426,7 +426,7 @@ export namespace NMClient {
     class DeviceInfinibandError extends GLib.Error {
         static $gtype: GObject.GType<DeviceInfinibandError>;
 
-        // Static fields of NMClient.DeviceInfinibandError
+        // Static fields
 
         /**
          * unknown or unclassified error
@@ -449,12 +449,12 @@ export namespace NMClient {
          */
         static MACMISMATCH: number;
 
-        // Constructors of NMClient.DeviceInfinibandError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of NMClient.DeviceInfinibandError
+        // Static methods
 
         /**
          * Registers an error quark for #NMDeviceInfiniband if necessary.
@@ -465,7 +465,7 @@ export namespace NMClient {
     class DeviceModemError extends GLib.Error {
         static $gtype: GObject.GType<DeviceModemError>;
 
-        // Static fields of NMClient.DeviceModemError
+        // Static fields
 
         /**
          * unknown or unclassified error
@@ -484,12 +484,12 @@ export namespace NMClient {
          */
         static MISSINGDEVICECAPS: number;
 
-        // Constructors of NMClient.DeviceModemError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of NMClient.DeviceModemError
+        // Static methods
 
         /**
          * Registers an error quark for #NMDeviceModem if necessary.
@@ -500,7 +500,7 @@ export namespace NMClient {
     class DeviceOlpcMeshError extends GLib.Error {
         static $gtype: GObject.GType<DeviceOlpcMeshError>;
 
-        // Static fields of NMClient.DeviceOlpcMeshError
+        // Static fields
 
         /**
          * unknown or unclassified error
@@ -515,12 +515,12 @@ export namespace NMClient {
          */
         static INVALIDOLPCMESHCONNECTION: number;
 
-        // Constructors of NMClient.DeviceOlpcMeshError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of NMClient.DeviceOlpcMeshError
+        // Static methods
 
         /**
          * Registers an error quark for #NMDeviceOlpcMesh if necessary.
@@ -531,7 +531,7 @@ export namespace NMClient {
     class DeviceTeamError extends GLib.Error {
         static $gtype: GObject.GType<DeviceTeamError>;
 
-        // Static fields of NMClient.DeviceTeamError
+        // Static fields
 
         /**
          * unknown or unclassified error
@@ -550,12 +550,12 @@ export namespace NMClient {
          */
         static INTERFACEMISMATCH: number;
 
-        // Constructors of NMClient.DeviceTeamError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of NMClient.DeviceTeamError
+        // Static methods
 
         /**
          * Registers an error quark for #NMDeviceTeam if necessary.
@@ -566,7 +566,7 @@ export namespace NMClient {
     class DeviceVlanError extends GLib.Error {
         static $gtype: GObject.GType<DeviceVlanError>;
 
-        // Static fields of NMClient.DeviceVlanError
+        // Static fields
 
         /**
          * unknown or unclassified error
@@ -593,12 +593,12 @@ export namespace NMClient {
          */
         static MACMISMATCH: number;
 
-        // Constructors of NMClient.DeviceVlanError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of NMClient.DeviceVlanError
+        // Static methods
 
         /**
          * Registers an error quark for #NMDeviceVlan if necessary.
@@ -609,7 +609,7 @@ export namespace NMClient {
     class DeviceWifiError extends GLib.Error {
         static $gtype: GObject.GType<DeviceWifiError>;
 
-        // Static fields of NMClient.DeviceWifiError
+        // Static fields
 
         /**
          * unknown or unclassified error
@@ -642,12 +642,12 @@ export namespace NMClient {
          */
         static MISSINGDEVICERSNCAPS: number;
 
-        // Constructors of NMClient.DeviceWifiError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of NMClient.DeviceWifiError
+        // Static methods
 
         /**
          * Registers an error quark for #NMDeviceWifi if necessary.
@@ -658,7 +658,7 @@ export namespace NMClient {
     class DeviceWimaxError extends GLib.Error {
         static $gtype: GObject.GType<DeviceWimaxError>;
 
-        // Static fields of NMClient.DeviceWimaxError
+        // Static fields
 
         /**
          * unknown or unclassified error
@@ -681,12 +681,12 @@ export namespace NMClient {
          */
         static MACMISMATCH: number;
 
-        // Constructors of NMClient.DeviceWimaxError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of NMClient.DeviceWimaxError
+        // Static methods
 
         /**
          * Registers an error quark for #NMDeviceWimax if necessary.
@@ -700,7 +700,7 @@ export namespace NMClient {
     class ObjectError extends GLib.Error {
         static $gtype: GObject.GType<ObjectError>;
 
-        // Static fields of NMClient.ObjectError
+        // Static fields
 
         /**
          * unknown or unclassified error
@@ -711,12 +711,12 @@ export namespace NMClient {
          */
         static OBJECT_CREATION_FAILURE: number;
 
-        // Constructors of NMClient.ObjectError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of NMClient.ObjectError
+        // Static methods
 
         /**
          * Registers an error quark for #NMObject if necessary.
@@ -727,7 +727,7 @@ export namespace NMClient {
     class RemoteConnectionError extends GLib.Error {
         static $gtype: GObject.GType<RemoteConnectionError>;
 
-        // Static fields of NMClient.RemoteConnectionError
+        // Static fields
 
         /**
          * unknown or unclassified error
@@ -738,12 +738,12 @@ export namespace NMClient {
          */
         static DISCONNECTED: number;
 
-        // Constructors of NMClient.RemoteConnectionError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of NMClient.RemoteConnectionError
+        // Static methods
 
         /**
          * Registers an error quark for #NMRemoteConnection if necessary.
@@ -757,7 +757,7 @@ export namespace NMClient {
     class RemoteSettingsError extends GLib.Error {
         static $gtype: GObject.GType<RemoteSettingsError>;
 
-        // Static fields of NMClient.RemoteSettingsError
+        // Static fields
 
         /**
          * unknown or unclassified error
@@ -779,12 +779,12 @@ export namespace NMClient {
          */
         static SERVICEUNAVAILABLE: number;
 
-        // Constructors of NMClient.RemoteSettingsError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of NMClient.RemoteSettingsError
+        // Static methods
 
         /**
          * Registers an error quark for #NMRemoteSettings if necessary.
@@ -799,7 +799,7 @@ export namespace NMClient {
     class SecretAgentError extends GLib.Error {
         static $gtype: GObject.GType<SecretAgentError>;
 
-        // Static fields of NMClient.SecretAgentError
+        // Static fields
 
         /**
          * the caller (ie, NetworkManager) is not
@@ -831,12 +831,12 @@ export namespace NMClient {
          */
         static NOSECRETS: number;
 
-        // Constructors of NMClient.SecretAgentError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of NMClient.SecretAgentError
+        // Static methods
 
         static quark(): GLib.Quark;
     }
@@ -1259,7 +1259,7 @@ export namespace NMClient {
     class AccessPoint extends Object implements Gio.AsyncInitable<AccessPoint>, Gio.Initable {
         static $gtype: GObject.GType<AccessPoint>;
 
-        // Own properties of NMClient.AccessPoint
+        // Properties
 
         /**
          * The BSSID of the access point.
@@ -1332,7 +1332,7 @@ export namespace NMClient {
          */
         get wpaFlags(): number;
 
-        // Constructors of NMClient.AccessPoint
+        // Constructors
 
         constructor(properties?: Partial<AccessPoint.ConstructorProps>, ...args: any[]);
 
@@ -1340,7 +1340,7 @@ export namespace NMClient {
 
         static ['new'](connection: DBusGLib.Connection, path: string): AccessPoint;
 
-        // Own methods of NMClient.AccessPoint
+        // Methods
 
         /**
          * Validates a given connection against a given Wi-Fi access point to ensure that
@@ -2057,7 +2057,7 @@ export namespace NMClient {
     class ActiveConnection extends Object implements Gio.AsyncInitable<ActiveConnection>, Gio.Initable {
         static $gtype: GObject.GType<ActiveConnection>;
 
-        // Own properties of NMClient.ActiveConnection
+        // Properties
 
         /**
          * The connection's path of the active connection.
@@ -2137,7 +2137,7 @@ export namespace NMClient {
          */
         get vpn(): boolean;
 
-        // Constructors of NMClient.ActiveConnection
+        // Constructors
 
         constructor(properties?: Partial<ActiveConnection.ConstructorProps>, ...args: any[]);
 
@@ -2145,7 +2145,7 @@ export namespace NMClient {
 
         static ['new'](connection: DBusGLib.Connection, path: string): ActiveConnection;
 
-        // Own methods of NMClient.ActiveConnection
+        // Methods
 
         /**
          * Gets the #NMConnection's DBus object path.  This is often used with
@@ -2895,7 +2895,7 @@ export namespace NMClient {
     class Client extends Object implements Gio.AsyncInitable<Client>, Gio.Initable {
         static $gtype: GObject.GType<Client>;
 
-        // Own properties of NMClient.Client
+        // Properties
 
         /**
          * The #NMActiveConnection of the activating connection that is
@@ -3026,7 +3026,7 @@ export namespace NMClient {
          */
         get wwanHardwareEnabled(): boolean;
 
-        // Constructors of NMClient.Client
+        // Constructors
 
         constructor(properties?: Partial<Client.ConstructorProps>, ...args: any[]);
 
@@ -3039,7 +3039,7 @@ export namespace NMClient {
 
         static new_finish(...args: never[]): any;
 
-        // Own signals of NMClient.Client
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -3066,7 +3066,7 @@ export namespace NMClient {
         ): number;
         emit(signal: 'permission-changed', permission: number, result: number): void;
 
-        // Own static methods of NMClient.Client
+        // Static methods
 
         /**
          * Creates a new #NMClient and begins asynchronously initializing it.
@@ -3082,13 +3082,13 @@ export namespace NMClient {
          */
         static new_async(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<Client> | null): void;
 
-        // Own virtual methods of NMClient.Client
+        // Virtual methods
 
         vfunc_device_added(device: Device): void;
         vfunc_device_removed(device: Device): void;
         vfunc_permission_changed(permission: ClientPermission, result: ClientPermissionResult): void;
 
-        // Own methods of NMClient.Client
+        // Methods
 
         /**
          * Starts a connection to a particular network using the configuration settings
@@ -3960,14 +3960,14 @@ export namespace NMClient {
     class DHCP4Config extends Object implements Gio.AsyncInitable<DHCP4Config>, Gio.Initable {
         static $gtype: GObject.GType<DHCP4Config>;
 
-        // Own properties of NMClient.DHCP4Config
+        // Properties
 
         /**
          * The #GHashTable containing options of the configuration.
          */
         get options(): GLib.HashTable<string, GObject.Value>;
 
-        // Constructors of NMClient.DHCP4Config
+        // Constructors
 
         constructor(properties?: Partial<DHCP4Config.ConstructorProps>, ...args: any[]);
 
@@ -3975,7 +3975,7 @@ export namespace NMClient {
 
         static ['new'](connection: DBusGLib.Connection, object_path: string): DHCP4Config;
 
-        // Own methods of NMClient.DHCP4Config
+        // Methods
 
         /**
          * Gets one option by option name.
@@ -4603,14 +4603,14 @@ export namespace NMClient {
     class DHCP6Config extends Object implements Gio.AsyncInitable<DHCP6Config>, Gio.Initable {
         static $gtype: GObject.GType<DHCP6Config>;
 
-        // Own properties of NMClient.DHCP6Config
+        // Properties
 
         /**
          * The #GHashTable containing options of the configuration.
          */
         get options(): GLib.HashTable<string, GObject.Value>;
 
-        // Constructors of NMClient.DHCP6Config
+        // Constructors
 
         constructor(properties?: Partial<DHCP6Config.ConstructorProps>, ...args: any[]);
 
@@ -4618,7 +4618,7 @@ export namespace NMClient {
 
         static ['new'](connection: DBusGLib.Connection, object_path: string): DHCP6Config;
 
-        // Own methods of NMClient.DHCP6Config
+        // Methods
 
         /**
          * Gets one option by option name.
@@ -5286,7 +5286,7 @@ export namespace NMClient {
     class Device extends Object implements Gio.AsyncInitable<Device>, Gio.Initable {
         static $gtype: GObject.GType<Device>;
 
-        // Own properties of NMClient.Device
+        // Properties
 
         /**
          * The #NMActiveConnection object that "owns" this device during activation.
@@ -5443,7 +5443,7 @@ export namespace NMClient {
          */
         get vendor(): string;
 
-        // Constructors of NMClient.Device
+        // Constructors
 
         constructor(properties?: Partial<Device.ConstructorProps>, ...args: any[]);
 
@@ -5451,7 +5451,7 @@ export namespace NMClient {
 
         static ['new'](connection: DBusGLib.Connection, path: string): Device;
 
-        // Own signals of NMClient.Device
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -5466,7 +5466,7 @@ export namespace NMClient {
         ): number;
         emit(signal: 'state-changed', new_state: number, old_state: number, reason: number): void;
 
-        // Own static methods of NMClient.Device
+        // Static methods
 
         /**
          * Generates a list of short-ish unique presentation names for the
@@ -5475,7 +5475,7 @@ export namespace NMClient {
          */
         static disambiguate_names(devices: Device[]): string[];
 
-        // Own virtual methods of NMClient.Device
+        // Virtual methods
 
         /**
          * Validates a given connection for a given #NMDevice object and returns
@@ -5512,7 +5512,7 @@ export namespace NMClient {
             reason: NetworkManager.DeviceStateReason,
         ): void;
 
-        // Own methods of NMClient.Device
+        // Methods
 
         /**
          * Validates a given connection for a given #NMDevice object and returns
@@ -6359,14 +6359,14 @@ export namespace NMClient {
     class DeviceAdsl extends Device implements Gio.AsyncInitable<DeviceAdsl>, Gio.Initable {
         static $gtype: GObject.GType<DeviceAdsl>;
 
-        // Own properties of NMClient.DeviceAdsl
+        // Properties
 
         /**
          * Whether the device has carrier.
          */
         get carrier(): boolean;
 
-        // Constructors of NMClient.DeviceAdsl
+        // Constructors
 
         constructor(properties?: Partial<DeviceAdsl.ConstructorProps>, ...args: any[]);
 
@@ -6374,7 +6374,7 @@ export namespace NMClient {
 
         static ['new'](connection: DBusGLib.Connection, path: string): DeviceAdsl;
 
-        // Own methods of NMClient.DeviceAdsl
+        // Methods
 
         /**
          * Whether the device has carrier.
@@ -6916,7 +6916,7 @@ export namespace NMClient {
     class DeviceBond extends Device implements Gio.AsyncInitable<DeviceBond>, Gio.Initable {
         static $gtype: GObject.GType<DeviceBond>;
 
-        // Own properties of NMClient.DeviceBond
+        // Properties
 
         /**
          * Whether the device has carrier.
@@ -6935,7 +6935,7 @@ export namespace NMClient {
          */
         get slaves(): ObjectArray;
 
-        // Constructors of NMClient.DeviceBond
+        // Constructors
 
         constructor(properties?: Partial<DeviceBond.ConstructorProps>, ...args: any[]);
 
@@ -6943,7 +6943,7 @@ export namespace NMClient {
 
         static ['new'](connection: DBusGLib.Connection, path: string): DeviceBond;
 
-        // Own methods of NMClient.DeviceBond
+        // Methods
 
         /**
          * Whether the device has carrier.
@@ -7495,7 +7495,7 @@ export namespace NMClient {
     class DeviceBridge extends Device implements Gio.AsyncInitable<DeviceBridge>, Gio.Initable {
         static $gtype: GObject.GType<DeviceBridge>;
 
-        // Own properties of NMClient.DeviceBridge
+        // Properties
 
         /**
          * Whether the device has carrier.
@@ -7514,7 +7514,7 @@ export namespace NMClient {
          */
         get slaves(): ObjectArray;
 
-        // Constructors of NMClient.DeviceBridge
+        // Constructors
 
         constructor(properties?: Partial<DeviceBridge.ConstructorProps>, ...args: any[]);
 
@@ -7522,7 +7522,7 @@ export namespace NMClient {
 
         static ['new'](connection: DBusGLib.Connection, path: string): DeviceBridge;
 
-        // Own methods of NMClient.DeviceBridge
+        // Methods
 
         /**
          * Whether the device has carrier.
@@ -8075,7 +8075,7 @@ export namespace NMClient {
     class DeviceBt extends Device implements Gio.AsyncInitable<DeviceBt>, Gio.Initable {
         static $gtype: GObject.GType<DeviceBt>;
 
-        // Own properties of NMClient.DeviceBt
+        // Properties
 
         /**
          * The device's bluetooth capabilities, a combination of #NMBluetoothCapabilities.
@@ -8098,7 +8098,7 @@ export namespace NMClient {
          */
         get name(): string;
 
-        // Constructors of NMClient.DeviceBt
+        // Constructors
 
         constructor(properties?: Partial<DeviceBt.ConstructorProps>, ...args: any[]);
 
@@ -8106,7 +8106,7 @@ export namespace NMClient {
 
         static ['new'](connection: DBusGLib.Connection, path: string): DeviceBt;
 
-        // Own methods of NMClient.DeviceBt
+        // Methods
 
         /**
          * Returns the Bluetooth device's usable capabilities.
@@ -8662,7 +8662,7 @@ export namespace NMClient {
     class DeviceEthernet extends Device implements Gio.AsyncInitable<DeviceEthernet>, Gio.Initable {
         static $gtype: GObject.GType<DeviceEthernet>;
 
-        // Own properties of NMClient.DeviceEthernet
+        // Properties
 
         /**
          * Whether the device has carrier.
@@ -8689,7 +8689,7 @@ export namespace NMClient {
          */
         get speed(): number;
 
-        // Constructors of NMClient.DeviceEthernet
+        // Constructors
 
         constructor(properties?: Partial<DeviceEthernet.ConstructorProps>, ...args: any[]);
 
@@ -8697,7 +8697,7 @@ export namespace NMClient {
 
         static ['new'](connection: DBusGLib.Connection, path: string): DeviceEthernet;
 
-        // Own methods of NMClient.DeviceEthernet
+        // Methods
 
         /**
          * Whether the device has carrier.
@@ -9254,7 +9254,7 @@ export namespace NMClient {
     class DeviceGeneric extends Device implements Gio.AsyncInitable<DeviceGeneric>, Gio.Initable {
         static $gtype: GObject.GType<DeviceGeneric>;
 
-        // Own properties of NMClient.DeviceGeneric
+        // Properties
 
         /**
          * The hardware address of the device.
@@ -9275,7 +9275,7 @@ export namespace NMClient {
          */
         get typeDescription(): string;
 
-        // Constructors of NMClient.DeviceGeneric
+        // Constructors
 
         constructor(properties?: Partial<DeviceGeneric.ConstructorProps>, ...args: any[]);
 
@@ -9283,7 +9283,7 @@ export namespace NMClient {
 
         static ['new'](connection: DBusGLib.Connection, path: string): DeviceGeneric;
 
-        // Own methods of NMClient.DeviceGeneric
+        // Methods
 
         /**
          * Gets the hardware address of the #NMDeviceGeneric
@@ -9824,7 +9824,7 @@ export namespace NMClient {
     class DeviceInfiniband extends Device implements Gio.AsyncInitable<DeviceInfiniband>, Gio.Initable {
         static $gtype: GObject.GType<DeviceInfiniband>;
 
-        // Own properties of NMClient.DeviceInfiniband
+        // Properties
 
         /**
          * Whether the device has carrier.
@@ -9839,7 +9839,7 @@ export namespace NMClient {
          */
         get hwAddress(): string;
 
-        // Constructors of NMClient.DeviceInfiniband
+        // Constructors
 
         constructor(properties?: Partial<DeviceInfiniband.ConstructorProps>, ...args: any[]);
 
@@ -9847,7 +9847,7 @@ export namespace NMClient {
 
         static ['new'](connection: DBusGLib.Connection, path: string): DeviceInfiniband;
 
-        // Own methods of NMClient.DeviceInfiniband
+        // Methods
 
         /**
          * Whether the device has carrier.
@@ -10394,7 +10394,7 @@ export namespace NMClient {
     class DeviceModem extends Device implements Gio.AsyncInitable<DeviceModem>, Gio.Initable {
         static $gtype: GObject.GType<DeviceModem>;
 
-        // Own properties of NMClient.DeviceModem
+        // Properties
 
         /**
          * The generic family of access technologies the modem currently supports
@@ -10421,13 +10421,13 @@ export namespace NMClient {
          */
         get modemCapabilities(): number;
 
-        // Constructors of NMClient.DeviceModem
+        // Constructors
 
         constructor(properties?: Partial<DeviceModem.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of NMClient.DeviceModem
+        // Methods
 
         /**
          * Returns a bitfield of the generic access technology families the modem
@@ -10979,7 +10979,7 @@ export namespace NMClient {
     class DeviceOlpcMesh extends Device implements Gio.AsyncInitable<DeviceOlpcMesh>, Gio.Initable {
         static $gtype: GObject.GType<DeviceOlpcMesh>;
 
-        // Own properties of NMClient.DeviceOlpcMesh
+        // Properties
 
         /**
          * The device's active channel.
@@ -11002,7 +11002,7 @@ export namespace NMClient {
          */
         get hwAddress(): string;
 
-        // Constructors of NMClient.DeviceOlpcMesh
+        // Constructors
 
         constructor(properties?: Partial<DeviceOlpcMesh.ConstructorProps>, ...args: any[]);
 
@@ -11010,7 +11010,7 @@ export namespace NMClient {
 
         static ['new'](connection: DBusGLib.Connection, path: string): DeviceOlpcMesh;
 
-        // Own methods of NMClient.DeviceOlpcMesh
+        // Methods
 
         /**
          * Returns the active channel of the #NMDeviceOlpcMesh device.
@@ -11562,7 +11562,7 @@ export namespace NMClient {
     class DeviceTeam extends Device implements Gio.AsyncInitable<DeviceTeam>, Gio.Initable {
         static $gtype: GObject.GType<DeviceTeam>;
 
-        // Own properties of NMClient.DeviceTeam
+        // Properties
 
         /**
          * Whether the device has carrier.
@@ -11581,7 +11581,7 @@ export namespace NMClient {
          */
         get slaves(): ObjectArray;
 
-        // Constructors of NMClient.DeviceTeam
+        // Constructors
 
         constructor(properties?: Partial<DeviceTeam.ConstructorProps>, ...args: any[]);
 
@@ -11589,7 +11589,7 @@ export namespace NMClient {
 
         static ['new'](connection: DBusGLib.Connection, path: string): DeviceTeam;
 
-        // Own methods of NMClient.DeviceTeam
+        // Methods
 
         /**
          * Whether the device has carrier.
@@ -12143,7 +12143,7 @@ export namespace NMClient {
     class DeviceVlan extends Device implements Gio.AsyncInitable<DeviceVlan>, Gio.Initable {
         static $gtype: GObject.GType<DeviceVlan>;
 
-        // Own properties of NMClient.DeviceVlan
+        // Properties
 
         /**
          * Whether the device has carrier.
@@ -12170,7 +12170,7 @@ export namespace NMClient {
          */
         get vlanId(): number;
 
-        // Constructors of NMClient.DeviceVlan
+        // Constructors
 
         constructor(properties?: Partial<DeviceVlan.ConstructorProps>, ...args: any[]);
 
@@ -12178,7 +12178,7 @@ export namespace NMClient {
 
         static ['new'](connection: DBusGLib.Connection, path: string): DeviceVlan;
 
-        // Own methods of NMClient.DeviceVlan
+        // Methods
 
         /**
          * Whether the device has carrier.
@@ -12745,7 +12745,7 @@ export namespace NMClient {
     class DeviceWifi extends Device implements Gio.AsyncInitable<DeviceWifi>, Gio.Initable {
         static $gtype: GObject.GType<DeviceWifi>;
 
-        // Own properties of NMClient.DeviceWifi
+        // Properties
 
         /**
          * List of all Wi-Fi access points the device can see.
@@ -12796,7 +12796,7 @@ export namespace NMClient {
          */
         get wirelessCapabilities(): number;
 
-        // Constructors of NMClient.DeviceWifi
+        // Constructors
 
         constructor(properties?: Partial<DeviceWifi.ConstructorProps>, ...args: any[]);
 
@@ -12804,7 +12804,7 @@ export namespace NMClient {
 
         static ['new'](connection: DBusGLib.Connection, path: string): DeviceWifi;
 
-        // Own signals of NMClient.DeviceWifi
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -12816,12 +12816,12 @@ export namespace NMClient {
         connect_after(signal: 'access-point-removed', callback: (_source: this, ap: GObject.Object) => void): number;
         emit(signal: 'access-point-removed', ap: GObject.Object): void;
 
-        // Own virtual methods of NMClient.DeviceWifi
+        // Virtual methods
 
         vfunc_access_point_added(ap: AccessPoint): void;
         vfunc_access_point_removed(ap: AccessPoint): void;
 
-        // Own methods of NMClient.DeviceWifi
+        // Methods
 
         /**
          * Gets a #NMAccessPoint by path.
@@ -13426,7 +13426,7 @@ export namespace NMClient {
     class DeviceWimax extends Device implements Gio.AsyncInitable<DeviceWimax>, Gio.Initable {
         static $gtype: GObject.GType<DeviceWimax>;
 
-        // Own properties of NMClient.DeviceWimax
+        // Properties
 
         /**
          * The active #NMWimaxNsp of the device.
@@ -13491,7 +13491,7 @@ export namespace NMClient {
          */
         get txPower(): number;
 
-        // Constructors of NMClient.DeviceWimax
+        // Constructors
 
         constructor(properties?: Partial<DeviceWimax.ConstructorProps>, ...args: any[]);
 
@@ -13499,7 +13499,7 @@ export namespace NMClient {
 
         static ['new'](connection: DBusGLib.Connection, path: string): DeviceWimax;
 
-        // Own signals of NMClient.DeviceWimax
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -13511,12 +13511,12 @@ export namespace NMClient {
         connect_after(signal: 'nsp-removed', callback: (_source: this, nsp: GObject.Object) => void): number;
         emit(signal: 'nsp-removed', nsp: GObject.Object): void;
 
-        // Own virtual methods of NMClient.DeviceWimax
+        // Virtual methods
 
         vfunc_nsp_added(nsp: WimaxNsp): void;
         vfunc_nsp_removed(nsp: WimaxNsp): void;
 
-        // Own methods of NMClient.DeviceWimax
+        // Methods
 
         /**
          * Gets the active #NMWimaxNsp.
@@ -14112,7 +14112,7 @@ export namespace NMClient {
     class IP4Config extends Object implements Gio.AsyncInitable<IP4Config>, Gio.Initable {
         static $gtype: GObject.GType<IP4Config>;
 
-        // Own properties of NMClient.IP4Config
+        // Properties
 
         /**
          * The #GPtrArray containing #NMIP4Address<!-- -->es of the configuration.
@@ -14147,7 +14147,7 @@ export namespace NMClient {
          */
         get winsServers(): UintArray;
 
-        // Constructors of NMClient.IP4Config
+        // Constructors
 
         constructor(properties?: Partial<IP4Config.ConstructorProps>, ...args: any[]);
 
@@ -14155,7 +14155,7 @@ export namespace NMClient {
 
         static ['new'](connection: DBusGLib.Connection, object_path: string): IP4Config;
 
-        // Own methods of NMClient.IP4Config
+        // Methods
 
         /**
          * Gets the IP4 addresses (containing the address, prefix, and gateway).
@@ -14812,7 +14812,7 @@ export namespace NMClient {
     class IP6Config extends Object implements Gio.AsyncInitable<IP6Config>, Gio.Initable {
         static $gtype: GObject.GType<IP6Config>;
 
-        // Own properties of NMClient.IP6Config
+        // Properties
 
         /**
          * The #GPtrArray containing the IPv6 addresses;  use
@@ -14844,7 +14844,7 @@ export namespace NMClient {
          */
         get searches(): StringArray;
 
-        // Constructors of NMClient.IP6Config
+        // Constructors
 
         constructor(properties?: Partial<IP6Config.ConstructorProps>, ...args: any[]);
 
@@ -14852,7 +14852,7 @@ export namespace NMClient {
 
         static ['new'](connection: DBusGLib.Connection, object_path: string): IP6Config;
 
-        // Own methods of NMClient.IP6Config
+        // Methods
 
         /**
          * Gets the IP6 addresses (containing the address, prefix, and gateway).
@@ -15512,18 +15512,18 @@ export namespace NMClient {
     abstract class Object extends GObject.Object implements Gio.AsyncInitable<Object>, Gio.Initable {
         static $gtype: GObject.GType<Object>;
 
-        // Own properties of NMClient.Object
+        // Properties
 
         get dbus_path(): string;
         get dbusPath(): string;
 
-        // Constructors of NMClient.Object
+        // Constructors
 
         constructor(properties?: Partial<Object.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of NMClient.Object
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -15538,11 +15538,11 @@ export namespace NMClient {
         ): number;
         emit(signal: 'object-creation-failed', error?: any | null, failed_path?: any | null): void;
 
-        // Own virtual methods of NMClient.Object
+        // Virtual methods
 
         vfunc_object_creation_failed(error: GLib.Error, failed_path: string): void;
 
-        // Own methods of NMClient.Object
+        // Methods
 
         /**
          * Gets the #NMObject's DBusGConnection.
@@ -16188,7 +16188,7 @@ export namespace NMClient {
     {
         static $gtype: GObject.GType<RemoteConnection>;
 
-        // Own properties of NMClient.RemoteConnection
+        // Properties
 
         set dbus_path(val: string);
         set dbusPath(val: string);
@@ -16198,7 +16198,7 @@ export namespace NMClient {
          */
         get unsaved(): boolean;
 
-        // Constructors of NMClient.RemoteConnection
+        // Constructors
 
         constructor(properties?: Partial<RemoteConnection.ConstructorProps>, ...args: any[]);
 
@@ -16209,7 +16209,7 @@ export namespace NMClient {
 
         static ['new'](...args: never[]): any;
 
-        // Own signals of NMClient.RemoteConnection
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -16224,12 +16224,12 @@ export namespace NMClient {
         connect_after(signal: 'visible', callback: (_source: this, object: boolean) => void): number;
         emit(signal: 'visible', object: boolean): void;
 
-        // Own virtual methods of NMClient.RemoteConnection
+        // Virtual methods
 
         vfunc_removed(): void;
         vfunc_updated(new_settings: { [key: string]: any } | GLib.HashTable<any, any>): void;
 
-        // Own methods of NMClient.RemoteConnection
+        // Methods
 
         /**
          * Send any local changes to the settings and properties of this connection to
@@ -16892,7 +16892,7 @@ export namespace NMClient {
     class RemoteSettings extends GObject.Object implements Gio.AsyncInitable<RemoteSettings>, Gio.Initable {
         static $gtype: GObject.GType<RemoteSettings>;
 
-        // Own properties of NMClient.RemoteSettings
+        // Properties
 
         /**
          * If %TRUE, adding and modifying connections is supported.
@@ -16916,7 +16916,7 @@ export namespace NMClient {
          */
         get serviceRunning(): boolean;
 
-        // Constructors of NMClient.RemoteSettings
+        // Constructors
 
         constructor(properties?: Partial<RemoteSettings.ConstructorProps>, ...args: any[]);
 
@@ -16929,7 +16929,7 @@ export namespace NMClient {
 
         static new_finish(...args: never[]): any;
 
-        // Own signals of NMClient.RemoteSettings
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -16941,7 +16941,7 @@ export namespace NMClient {
         connect_after(signal: 'new-connection', callback: (_source: this, object: GObject.Object) => void): number;
         emit(signal: 'new-connection', object: GObject.Object): void;
 
-        // Own static methods of NMClient.RemoteSettings
+        // Static methods
 
         /**
          * Creates a new object representing the remote settings service and
@@ -16958,12 +16958,12 @@ export namespace NMClient {
             callback?: Gio.AsyncReadyCallback<RemoteSettings> | null,
         ): void;
 
-        // Own virtual methods of NMClient.RemoteSettings
+        // Virtual methods
 
         vfunc_connections_read(): void;
         vfunc_new_connection(connection: RemoteConnection): void;
 
-        // Own methods of NMClient.RemoteSettings
+        // Methods
 
         /**
          * Requests that the remote settings service add the given settings to a new
@@ -17665,7 +17665,7 @@ export namespace NMClient {
     abstract class SecretAgent extends GObject.Object {
         static $gtype: GObject.GType<SecretAgent>;
 
-        // Own properties of NMClient.SecretAgent
+        // Properties
 
         /**
          * If TRUE, the agent will attempt to automatically register itself after
@@ -17709,13 +17709,13 @@ export namespace NMClient {
          */
         get registered(): boolean;
 
-        // Constructors of NMClient.SecretAgent
+        // Constructors
 
         constructor(properties?: Partial<SecretAgent.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of NMClient.SecretAgent
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -17724,7 +17724,7 @@ export namespace NMClient {
         connect_after(signal: 'registration-result', callback: (_source: this, error: any | null) => void): number;
         emit(signal: 'registration-result', error?: any | null): void;
 
-        // Own virtual methods of NMClient.SecretAgent
+        // Virtual methods
 
         vfunc_cancel_get_secrets(connection_path: string, setting_name: string): void;
         /**
@@ -17774,7 +17774,7 @@ export namespace NMClient {
             callback: SecretAgentSaveSecretsFunc,
         ): void;
 
-        // Own methods of NMClient.SecretAgent
+        // Methods
 
         /**
          * Asynchronously ask the agent to delete all saved secrets belonging to
@@ -17850,7 +17850,7 @@ export namespace NMClient {
     class VPNConnection extends ActiveConnection implements Gio.AsyncInitable<VPNConnection>, Gio.Initable {
         static $gtype: GObject.GType<VPNConnection>;
 
-        // Own properties of NMClient.VPNConnection
+        // Properties
 
         /**
          * The VPN login banner of the active VPN connection.
@@ -17865,7 +17865,7 @@ export namespace NMClient {
          */
         get vpnState(): number;
 
-        // Constructors of NMClient.VPNConnection
+        // Constructors
 
         constructor(properties?: Partial<VPNConnection.ConstructorProps>, ...args: any[]);
 
@@ -17873,7 +17873,7 @@ export namespace NMClient {
 
         static ['new'](connection: DBusGLib.Connection, path: string): VPNConnection;
 
-        // Own signals of NMClient.VPNConnection
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -17885,14 +17885,14 @@ export namespace NMClient {
         ): number;
         emit(signal: 'vpn-state-changed', object: number, p0: number): void;
 
-        // Own virtual methods of NMClient.VPNConnection
+        // Virtual methods
 
         vfunc_vpn_state_changed(
             state: NetworkManager.VPNConnectionState,
             reason: NetworkManager.VPNConnectionStateReason,
         ): void;
 
-        // Own methods of NMClient.VPNConnection
+        // Methods
 
         /**
          * Gets the VPN login banner of the active #NMVPNConnection.
@@ -18438,7 +18438,7 @@ export namespace NMClient {
     class WimaxNsp extends Object implements Gio.AsyncInitable<WimaxNsp>, Gio.Initable {
         static $gtype: GObject.GType<WimaxNsp>;
 
-        // Own properties of NMClient.WimaxNsp
+        // Properties
 
         /**
          * The name of the WiMAX NSP.
@@ -18461,7 +18461,7 @@ export namespace NMClient {
          */
         get signalQuality(): number;
 
-        // Constructors of NMClient.WimaxNsp
+        // Constructors
 
         constructor(properties?: Partial<WimaxNsp.ConstructorProps>, ...args: any[]);
 
@@ -18469,7 +18469,7 @@ export namespace NMClient {
 
         static ['new'](connection: DBusGLib.Connection, path: string): WimaxNsp;
 
-        // Own methods of NMClient.WimaxNsp
+        // Methods
 
         /**
          * Validates a given connection against a given WiMAX NSP to ensure that the

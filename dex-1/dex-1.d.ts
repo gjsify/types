@@ -30,7 +30,7 @@ export namespace Dex {
     class Error extends GLib.Error {
         static $gtype: GObject.GType<Error>;
 
-        // Static fields of Dex.Error
+        // Static fields
 
         static UNKNOWN: number;
         static CHANNEL_CLOSED: number;
@@ -44,7 +44,7 @@ export namespace Dex {
         static TYPE_NOT_SUPPORTED: number;
         static FIBER_CANCELLED: number;
 
-        // Constructors of Dex.Error
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
@@ -272,13 +272,13 @@ export namespace Dex {
     class AsyncPair extends Future {
         static $gtype: GObject.GType<AsyncPair>;
 
-        // Constructors of Dex.AsyncPair
+        // Constructors
 
         _init(...args: any[]): void;
 
         static ['new'](instance: any | null, info: AsyncPairInfo): AsyncPair;
 
-        // Own methods of Dex.AsyncPair
+        // Methods
 
         /**
          * Gets the cancellable for the async pair.
@@ -339,7 +339,7 @@ export namespace Dex {
     class AsyncResult extends GObject.Object implements Gio.AsyncResult {
         static $gtype: GObject.GType<AsyncResult>;
 
-        // Constructors of Dex.AsyncResult
+        // Constructors
 
         constructor(properties?: Partial<AsyncResult.ConstructorProps>, ...args: any[]);
 
@@ -351,7 +351,7 @@ export namespace Dex {
             callback?: Gio.AsyncReadyCallback | null,
         ): AsyncResult;
 
-        // Own methods of Dex.AsyncResult
+        // Methods
 
         /**
          * Tracks the result of `future` and uses the value to complete `async_result,`
@@ -825,11 +825,11 @@ export namespace Dex {
     class Block extends Future {
         static $gtype: GObject.GType<Block>;
 
-        // Constructors of Dex.Block
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of Dex.Block
+        // Methods
 
         /**
          * Gets the kind of block.
@@ -850,7 +850,7 @@ export namespace Dex {
     class Cancellable extends Future {
         static $gtype: GObject.GType<Cancellable>;
 
-        // Constructors of Dex.Cancellable
+        // Constructors
 
         _init(...args: any[]): void;
 
@@ -858,7 +858,7 @@ export namespace Dex {
 
         static new_from_cancellable(cancellable?: Gio.Cancellable | null): Cancellable;
 
-        // Own methods of Dex.Cancellable
+        // Methods
 
         cancel(): void;
     }
@@ -866,13 +866,13 @@ export namespace Dex {
     class Channel extends Object {
         static $gtype: GObject.GType<Channel>;
 
-        // Constructors of Dex.Channel
+        // Constructors
 
         _init(...args: any[]): void;
 
         static ['new'](capacity: number): Channel;
 
-        // Own methods of Dex.Channel
+        // Methods
 
         can_receive(): boolean;
         can_send(): boolean;
@@ -921,13 +921,13 @@ export namespace Dex {
     class Delayed extends Future {
         static $gtype: GObject.GType<Delayed>;
 
-        // Constructors of Dex.Delayed
+        // Constructors
 
         _init(...args: any[]): void;
 
         static ['new'](future: Future): Delayed;
 
-        // Own methods of Dex.Delayed
+        // Methods
 
         /**
          * Retrieves the delayed future provided to dex_delayed_new().
@@ -944,7 +944,7 @@ export namespace Dex {
     class Fiber extends Future {
         static $gtype: GObject.GType<Fiber>;
 
-        // Constructors of Dex.Fiber
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -952,7 +952,7 @@ export namespace Dex {
     class Future extends Object {
         static $gtype: GObject.GType<Future>;
 
-        // Constructors of Dex.Future
+        // Constructors
 
         _init(...args: any[]): void;
 
@@ -1008,7 +1008,7 @@ export namespace Dex {
 
         static then_loop(future: Future, callback: FutureCallback): Future;
 
-        // Own methods of Dex.Future
+        // Methods
 
         /**
          * Suspends the current #DexFiber and resumes when `future` has completed.
@@ -1131,11 +1131,11 @@ export namespace Dex {
     class FutureSet extends Future {
         static $gtype: GObject.GType<FutureSet>;
 
-        // Constructors of Dex.FutureSet
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of Dex.FutureSet
+        // Methods
 
         /**
          * Gets a #DexFuture that was used to produce the result of `future_set`.
@@ -1164,7 +1164,7 @@ export namespace Dex {
     class MainScheduler extends Scheduler {
         static $gtype: GObject.GType<MainScheduler>;
 
-        // Constructors of Dex.MainScheduler
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1181,11 +1181,11 @@ export namespace Dex {
     abstract class Object {
         static $gtype: GObject.GType<Object>;
 
-        // Constructors of Dex.Object
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of Dex.Object
+        // Methods
 
         /**
          * Acquires a reference on the given object, and increases its reference count by one.
@@ -1203,7 +1203,7 @@ export namespace Dex {
     class Promise extends Future {
         static $gtype: GObject.GType<Promise>;
 
-        // Constructors of Dex.Promise
+        // Constructors
 
         _init(...args: any[]): void;
 
@@ -1211,7 +1211,7 @@ export namespace Dex {
 
         static new_cancellable(): Promise;
 
-        // Own methods of Dex.Promise
+        // Methods
 
         /**
          * Gets a #GCancellable that will cancel when the promise has
@@ -1250,11 +1250,11 @@ export namespace Dex {
     abstract class Scheduler extends Object {
         static $gtype: GObject.GType<Scheduler>;
 
-        // Constructors of Dex.Scheduler
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own static methods of Dex.Scheduler
+        // Static methods
 
         /**
          * Gets the default scheduler for the process.
@@ -1272,7 +1272,7 @@ export namespace Dex {
          */
         static ref_thread_default(): Scheduler | null;
 
-        // Own methods of Dex.Scheduler
+        // Methods
 
         /**
          * Gets the default main context for a scheduler.
@@ -1310,7 +1310,7 @@ export namespace Dex {
     class StaticFuture extends Future {
         static $gtype: GObject.GType<StaticFuture>;
 
-        // Constructors of Dex.StaticFuture
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1318,13 +1318,13 @@ export namespace Dex {
     class ThreadPoolScheduler extends Scheduler {
         static $gtype: GObject.GType<ThreadPoolScheduler>;
 
-        // Constructors of Dex.ThreadPoolScheduler
+        // Constructors
 
         _init(...args: any[]): void;
 
         static ['new'](): ThreadPoolScheduler;
 
-        // Own static methods of Dex.ThreadPoolScheduler
+        // Static methods
 
         /**
          * Gets the default thread pool scheduler for the instance.
@@ -1339,7 +1339,7 @@ export namespace Dex {
     class Timeout extends Future {
         static $gtype: GObject.GType<Timeout>;
 
-        // Constructors of Dex.Timeout
+        // Constructors
 
         _init(...args: any[]): void;
 
@@ -1351,7 +1351,7 @@ export namespace Dex {
 
         static new_usec(usec: number): Timeout;
 
-        // Own methods of Dex.Timeout
+        // Methods
 
         postpone_until(deadline: number): void;
     }
@@ -1359,13 +1359,13 @@ export namespace Dex {
     class UnixSignal extends Future {
         static $gtype: GObject.GType<UnixSignal>;
 
-        // Constructors of Dex.UnixSignal
+        // Constructors
 
         _init(...args: any[]): void;
 
         static ['new'](signum: number): UnixSignal;
 
-        // Own methods of Dex.UnixSignal
+        // Methods
 
         get_signum(): number;
     }
@@ -1373,7 +1373,7 @@ export namespace Dex {
     abstract class AioContext {
         static $gtype: GObject.GType<AioContext>;
 
-        // Constructors of Dex.AioContext
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1381,13 +1381,13 @@ export namespace Dex {
     class AsyncPairInfo {
         static $gtype: GObject.GType<AsyncPairInfo>;
 
-        // Own fields of Dex.AsyncPairInfo
+        // Fields
 
         async: any;
         finish: any;
         return_type: GObject.GType;
 
-        // Constructors of Dex.AsyncPairInfo
+        // Constructors
 
         _init(...args: any[]): void;
     }

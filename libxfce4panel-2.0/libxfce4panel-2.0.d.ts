@@ -346,7 +346,7 @@ export namespace Libxfce4panel {
     {
         static $gtype: GObject.GType<ArrowButton>;
 
-        // Own properties of Libxfce4panel.ArrowButton
+        // Properties
 
         /**
          * The arrow type of the button. This value also determines the direction
@@ -361,7 +361,7 @@ export namespace Libxfce4panel {
         get arrowType(): Gtk.ArrowType;
         set arrowType(val: Gtk.ArrowType);
 
-        // Constructors of Libxfce4panel.ArrowButton
+        // Constructors
 
         constructor(properties?: Partial<ArrowButton.ConstructorProps>, ...args: any[]);
 
@@ -372,7 +372,7 @@ export namespace Libxfce4panel {
 
         static ['new'](...args: never[]): any;
 
-        // Own signals of Libxfce4panel.ArrowButton
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -381,11 +381,11 @@ export namespace Libxfce4panel {
         connect_after(signal: 'arrow-type-changed', callback: (_source: this, type: Gtk.ArrowType) => void): number;
         emit(signal: 'arrow-type-changed', type: Gtk.ArrowType): void;
 
-        // Own virtual methods of Libxfce4panel.ArrowButton
+        // Virtual methods
 
         vfunc_arrow_type_changed(type: Gtk.ArrowType): void;
 
-        // Own methods of Libxfce4panel.ArrowButton
+        // Methods
 
         /**
          * Returns the value of the ::arrow-type property.
@@ -4359,7 +4359,7 @@ export namespace Libxfce4panel {
     class PanelImage extends Gtk.Widget implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<PanelImage>;
 
-        // Own properties of Libxfce4panel.PanelImage
+        // Properties
 
         get pixbuf(): GdkPixbuf.Pixbuf;
         set pixbuf(val: GdkPixbuf.Pixbuf);
@@ -4368,7 +4368,7 @@ export namespace Libxfce4panel {
         get source(): string;
         set source(val: string);
 
-        // Constructors of Libxfce4panel.PanelImage
+        // Constructors
 
         constructor(properties?: Partial<PanelImage.ConstructorProps>, ...args: any[]);
 
@@ -4380,7 +4380,7 @@ export namespace Libxfce4panel {
 
         static new_from_source(source?: string | null): PanelImage;
 
-        // Own methods of Libxfce4panel.PanelImage
+        // Methods
 
         /**
          * Resets the image to be empty.
@@ -5073,7 +5073,7 @@ export namespace Libxfce4panel {
     class PanelPlugin extends Gtk.EventBox implements Atk.ImplementorIface, Gtk.Buildable, PanelPluginProvider {
         static $gtype: GObject.GType<PanelPlugin>;
 
-        // Own properties of Libxfce4panel.PanelPlugin
+        // Properties
 
         /**
          * The arguments the plugin was started with. If the plugin was not
@@ -5186,13 +5186,13 @@ export namespace Libxfce4panel {
         get unique_id(): number;
         get uniqueId(): number;
 
-        // Constructors of Libxfce4panel.PanelPlugin
+        // Constructors
 
         constructor(properties?: Partial<PanelPlugin.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of Libxfce4panel.PanelPlugin
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -5243,7 +5243,7 @@ export namespace Libxfce4panel {
         connect_after(signal: 'size-changed', callback: (_source: this, size: number) => boolean): number;
         emit(signal: 'size-changed', size: number): void;
 
-        // Own static methods of Libxfce4panel.PanelPlugin
+        // Static methods
 
         /**
          * Function to be used as #GtkMenuPositionFunc in a call to gtk_menu_popup().
@@ -5278,7 +5278,7 @@ export namespace Libxfce4panel {
          */
         static position_menu(menu: Gtk.Menu, push_in: boolean, panel_plugin?: any | null): [number, number];
 
-        // Own virtual methods of Libxfce4panel.PanelPlugin
+        // Virtual methods
 
         vfunc_about(): void;
         vfunc_configure_plugin(): void;
@@ -5293,7 +5293,7 @@ export namespace Libxfce4panel {
         vfunc_screen_position_changed(position: ScreenPosition): void;
         vfunc_size_changed(size: number): boolean;
 
-        // Own methods of Libxfce4panel.PanelPlugin
+        // Methods
 
         /**
          * Attach the plugin menu to this widget. Plugin writers should call this
@@ -5996,7 +5996,7 @@ export namespace Libxfce4panel {
     abstract class ArrowButtonPrivate {
         static $gtype: GObject.GType<ArrowButtonPrivate>;
 
-        // Constructors of Libxfce4panel.ArrowButtonPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -6005,7 +6005,7 @@ export namespace Libxfce4panel {
     abstract class PanelImagePrivate {
         static $gtype: GObject.GType<PanelImagePrivate>;
 
-        // Constructors of Libxfce4panel.PanelImagePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -6014,7 +6014,7 @@ export namespace Libxfce4panel {
     abstract class PanelPluginPrivate {
         static $gtype: GObject.GType<PanelPluginPrivate>;
 
-        // Constructors of Libxfce4panel.PanelPluginPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -6031,7 +6031,7 @@ export namespace Libxfce4panel {
         prototype: PanelPluginProvider;
     }
     interface PanelPluginProvider extends GObject.Object {
-        // Own methods of Libxfce4panel.PanelPluginProvider
+        // Methods
 
         ask_remove(): void;
         emit_signal(provider_signal: PanelPluginProviderSignal): void;
@@ -6052,7 +6052,7 @@ export namespace Libxfce4panel {
         show_about(): void;
         show_configure(): void;
 
-        // Own virtual methods of Libxfce4panel.PanelPluginProvider
+        // Virtual methods
 
         vfunc_ask_remove(): void;
         vfunc_get_name(): string;

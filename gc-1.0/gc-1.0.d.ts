@@ -87,12 +87,12 @@ export namespace Gc {
     class SearchContext extends GObject.Object {
         static $gtype: GObject.GType<SearchContext>;
 
-        // Own properties of Gc.SearchContext
+        // Properties
 
         set criteria(val: SearchCriteria);
         set flags(val: SearchFlag);
 
-        // Constructors of Gc.SearchContext
+        // Constructors
 
         constructor(properties?: Partial<SearchContext.ConstructorProps>, ...args: any[]);
 
@@ -100,7 +100,7 @@ export namespace Gc {
 
         static ['new'](criteria: SearchCriteria, flags: SearchFlag): SearchContext;
 
-        // Own methods of Gc.SearchContext
+        // Methods
 
         is_finished(): boolean;
         search(
@@ -115,7 +115,7 @@ export namespace Gc {
     class SearchCriteria {
         static $gtype: GObject.GType<SearchCriteria>;
 
-        // Constructors of Gc.SearchCriteria
+        // Constructors
 
         constructor(category: Category);
         _init(...args: any[]): void;

@@ -57,7 +57,7 @@ export namespace GCab {
     class Error extends GLib.Error {
         static $gtype: GObject.GType<Error>;
 
-        // Static fields of GCab.Error
+        // Static fields
 
         /**
          * The given file is not of Cabinet format.
@@ -76,7 +76,7 @@ export namespace GCab {
          */
         static INVALID_DATA: number;
 
-        // Constructors of GCab.Error
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
@@ -138,14 +138,14 @@ export namespace GCab {
     class Cabinet extends GObject.Object {
         static $gtype: GObject.GType<Cabinet>;
 
-        // Own properties of GCab.Cabinet
+        // Properties
 
         get reserved(): Uint8Array;
         set reserved(val: Uint8Array);
         get signature(): Uint8Array;
         set signature(val: Uint8Array);
 
-        // Constructors of GCab.Cabinet
+        // Constructors
 
         constructor(properties?: Partial<Cabinet.ConstructorProps>, ...args: any[]);
 
@@ -153,7 +153,7 @@ export namespace GCab {
 
         static ['new'](): Cabinet;
 
-        // Own methods of GCab.Cabinet
+        // Methods
 
         /**
          * Adds a compression kind to the allow-list. By default, GCab will use all decompression support
@@ -266,7 +266,7 @@ export namespace GCab {
     class File extends GObject.Object {
         static $gtype: GObject.GType<File>;
 
-        // Own properties of GCab.File
+        // Properties
 
         get bytes(): GLib.Bytes;
         set bytes(val: GLib.Bytes);
@@ -275,7 +275,7 @@ export namespace GCab {
         get name(): string;
         set name(val: string);
 
-        // Constructors of GCab.File
+        // Constructors
 
         constructor(properties?: Partial<File.ConstructorProps>, ...args: any[]);
 
@@ -285,7 +285,7 @@ export namespace GCab {
 
         static new_with_file(name: string, file: Gio.File): File;
 
-        // Own methods of GCab.File
+        // Methods
 
         /**
          * Get the file attributes.
@@ -380,14 +380,14 @@ export namespace GCab {
     class Folder extends GObject.Object {
         static $gtype: GObject.GType<Folder>;
 
-        // Own properties of GCab.Folder
+        // Properties
 
         get compression(): Compression;
         get comptype(): number;
         get reserved(): Uint8Array;
         set reserved(val: Uint8Array);
 
-        // Constructors of GCab.Folder
+        // Constructors
 
         constructor(properties?: Partial<Folder.ConstructorProps>, ...args: any[]);
 
@@ -395,7 +395,7 @@ export namespace GCab {
 
         static ['new'](comptype: number): Folder;
 
-        // Own methods of GCab.Folder
+        // Methods
 
         /**
          * Add `file` to the #GCabFolder.

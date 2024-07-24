@@ -91,7 +91,7 @@ export namespace Libxfce4windowing {
     class Error extends GLib.Error {
         static $gtype: GObject.GType<Error>;
 
-        // Static fields of Libxfce4windowing.Error
+        // Static fields
 
         /**
          * the operation attempted is not supported.
@@ -102,7 +102,7 @@ export namespace Libxfce4windowing {
          */
         static INTERNAL: number;
 
-        // Constructors of Libxfce4windowing.Error
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
@@ -527,7 +527,7 @@ export namespace Libxfce4windowing {
     abstract class Application extends GObject.Object {
         static $gtype: GObject.GType<Application>;
 
-        // Own properties of Libxfce4windowing.Application
+        // Properties
 
         /**
          * The application class id.
@@ -554,13 +554,13 @@ export namespace Libxfce4windowing {
          */
         get windows(): any;
 
-        // Constructors of Libxfce4windowing.Application
+        // Constructors
 
         constructor(properties?: Partial<Application.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of Libxfce4windowing.Application
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -569,7 +569,7 @@ export namespace Libxfce4windowing {
         connect_after(signal: 'icon-changed', callback: (_source: this) => void): number;
         emit(signal: 'icon-changed'): void;
 
-        // Own methods of Libxfce4windowing.Application
+        // Methods
 
         /**
          * Fetches this application's class id. On X11 this should be the class name of
@@ -638,12 +638,12 @@ export namespace Libxfce4windowing {
     class ApplicationWayland extends Application {
         static $gtype: GObject.GType<ApplicationWayland>;
 
-        // Own properties of Libxfce4windowing.ApplicationWayland
+        // Properties
 
         get app_id(): string;
         get appId(): string;
 
-        // Constructors of Libxfce4windowing.ApplicationWayland
+        // Constructors
 
         constructor(properties?: Partial<ApplicationWayland.ConstructorProps>, ...args: any[]);
 
@@ -659,7 +659,7 @@ export namespace Libxfce4windowing {
     class ApplicationX11 extends Application {
         static $gtype: GObject.GType<ApplicationX11>;
 
-        // Constructors of Libxfce4windowing.ApplicationX11
+        // Constructors
 
         constructor(properties?: Partial<ApplicationX11.ConstructorProps>, ...args: any[]);
 
@@ -675,7 +675,7 @@ export namespace Libxfce4windowing {
     class ScreenWayland extends GObject.Object implements Screen {
         static $gtype: GObject.GType<ScreenWayland>;
 
-        // Constructors of Libxfce4windowing.ScreenWayland
+        // Constructors
 
         constructor(properties?: Partial<ScreenWayland.ConstructorProps>, ...args: any[]);
 
@@ -1165,7 +1165,7 @@ export namespace Libxfce4windowing {
     class ScreenX11 extends GObject.Object implements Screen {
         static $gtype: GObject.GType<ScreenX11>;
 
-        // Constructors of Libxfce4windowing.ScreenX11
+        // Constructors
 
         constructor(properties?: Partial<ScreenX11.ConstructorProps>, ...args: any[]);
 
@@ -1705,7 +1705,7 @@ export namespace Libxfce4windowing {
     abstract class Window extends GObject.Object {
         static $gtype: GObject.GType<Window>;
 
-        // Own properties of Libxfce4windowing.Window
+        // Properties
 
         /**
          * The #XfwApplication that owns this window.
@@ -1749,13 +1749,13 @@ export namespace Libxfce4windowing {
         get type(): WindowType;
         get workspace(): Workspace;
 
-        // Constructors of Libxfce4windowing.Window
+        // Constructors
 
         constructor(properties?: Partial<Window.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of Libxfce4windowing.Window
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -1800,7 +1800,7 @@ export namespace Libxfce4windowing {
         connect_after(signal: 'workspace-changed', callback: (_source: this) => void): number;
         emit(signal: 'workspace-changed'): void;
 
-        // Own methods of Libxfce4windowing.Window
+        // Methods
 
         activate(event_timestamp: number): boolean;
         close(event_timestamp: number): boolean;
@@ -1926,11 +1926,11 @@ export namespace Libxfce4windowing {
     class WindowWayland extends Window {
         static $gtype: GObject.GType<WindowWayland>;
 
-        // Own properties of Libxfce4windowing.WindowWayland
+        // Properties
 
         get handle(): any;
 
-        // Constructors of Libxfce4windowing.WindowWayland
+        // Constructors
 
         constructor(properties?: Partial<WindowWayland.ConstructorProps>, ...args: any[]);
 
@@ -1946,7 +1946,7 @@ export namespace Libxfce4windowing {
     class WindowX11 extends Window {
         static $gtype: GObject.GType<WindowX11>;
 
-        // Constructors of Libxfce4windowing.WindowX11
+        // Constructors
 
         constructor(properties?: Partial<WindowX11.ConstructorProps>, ...args: any[]);
 
@@ -1969,12 +1969,12 @@ export namespace Libxfce4windowing {
     class WnckIcon extends GObject.Object implements Gio.Icon, Gio.Initable, Gio.LoadableIcon {
         static $gtype: GObject.GType<WnckIcon>;
 
-        // Own properties of Libxfce4windowing.WnckIcon
+        // Properties
 
         get wnck_object(): GObject.Object;
         get wnckObject(): GObject.Object;
 
-        // Constructors of Libxfce4windowing.WnckIcon
+        // Constructors
 
         constructor(properties?: Partial<WnckIcon.ConstructorProps>, ...args: any[]);
 
@@ -2591,7 +2591,7 @@ export namespace Libxfce4windowing {
     class WorkspaceDummy extends GObject.Object implements Workspace {
         static $gtype: GObject.GType<WorkspaceDummy>;
 
-        // Constructors of Libxfce4windowing.WorkspaceDummy
+        // Constructors
 
         constructor(properties?: Partial<WorkspaceDummy.ConstructorProps>, ...args: any[]);
 
@@ -3157,7 +3157,7 @@ export namespace Libxfce4windowing {
     class WorkspaceGroupDummy extends GObject.Object implements WorkspaceGroup {
         static $gtype: GObject.GType<WorkspaceGroupDummy>;
 
-        // Own properties of Libxfce4windowing.WorkspaceGroupDummy
+        // Properties
 
         get create_workspace_func(): any;
         set create_workspace_func(val: any);
@@ -3172,7 +3172,7 @@ export namespace Libxfce4windowing {
         get setLayoutFunc(): any;
         set setLayoutFunc(val: any);
 
-        // Constructors of Libxfce4windowing.WorkspaceGroupDummy
+        // Constructors
 
         constructor(properties?: Partial<WorkspaceGroupDummy.ConstructorProps>, ...args: any[]);
 
@@ -3690,13 +3690,13 @@ export namespace Libxfce4windowing {
     class WorkspaceGroupWayland extends GObject.Object implements WorkspaceGroup {
         static $gtype: GObject.GType<WorkspaceGroupWayland>;
 
-        // Constructors of Libxfce4windowing.WorkspaceGroupWayland
+        // Constructors
 
         constructor(properties?: Partial<WorkspaceGroupWayland.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of Libxfce4windowing.WorkspaceGroupWayland
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -4211,7 +4211,7 @@ export namespace Libxfce4windowing {
     class WorkspaceManagerDummy extends GObject.Object implements WorkspaceManager {
         static $gtype: GObject.GType<WorkspaceManagerDummy>;
 
-        // Constructors of Libxfce4windowing.WorkspaceManagerDummy
+        // Constructors
 
         constructor(properties?: Partial<WorkspaceManagerDummy.ConstructorProps>, ...args: any[]);
 
@@ -4651,14 +4651,14 @@ export namespace Libxfce4windowing {
     class WorkspaceManagerWayland extends GObject.Object implements WorkspaceManager {
         static $gtype: GObject.GType<WorkspaceManagerWayland>;
 
-        // Own properties of Libxfce4windowing.WorkspaceManagerWayland
+        // Properties
 
         get wl_manager(): any;
         get wlManager(): any;
         get wl_registry(): any;
         get wlRegistry(): any;
 
-        // Constructors of Libxfce4windowing.WorkspaceManagerWayland
+        // Constructors
 
         constructor(properties?: Partial<WorkspaceManagerWayland.ConstructorProps>, ...args: any[]);
 
@@ -5093,7 +5093,7 @@ export namespace Libxfce4windowing {
     class WorkspaceManagerX11 extends GObject.Object implements WorkspaceManager {
         static $gtype: GObject.GType<WorkspaceManagerX11>;
 
-        // Constructors of Libxfce4windowing.WorkspaceManagerX11
+        // Constructors
 
         constructor(properties?: Partial<WorkspaceManagerX11.ConstructorProps>, ...args: any[]);
 
@@ -5536,17 +5536,17 @@ export namespace Libxfce4windowing {
     class WorkspaceWayland extends GObject.Object implements Workspace {
         static $gtype: GObject.GType<WorkspaceWayland>;
 
-        // Own properties of Libxfce4windowing.WorkspaceWayland
+        // Properties
 
         get handle(): any;
 
-        // Constructors of Libxfce4windowing.WorkspaceWayland
+        // Constructors
 
         constructor(properties?: Partial<WorkspaceWayland.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of Libxfce4windowing.WorkspaceWayland
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -6108,7 +6108,7 @@ export namespace Libxfce4windowing {
     class WorkspaceX11 extends GObject.Object implements Workspace {
         static $gtype: GObject.GType<WorkspaceX11>;
 
-        // Constructors of Libxfce4windowing.WorkspaceX11
+        // Constructors
 
         constructor(properties?: Partial<WorkspaceX11.ConstructorProps>, ...args: any[]);
 
@@ -6665,11 +6665,11 @@ export namespace Libxfce4windowing {
     abstract class ApplicationInstance {
         static $gtype: GObject.GType<ApplicationInstance>;
 
-        // Constructors of Libxfce4windowing.ApplicationInstance
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of Libxfce4windowing.ApplicationInstance
+        // Methods
 
         /**
          * Fetches `instance'`s name, which can often be the same as the application name.
@@ -6692,7 +6692,7 @@ export namespace Libxfce4windowing {
     abstract class ApplicationWaylandPrivate {
         static $gtype: GObject.GType<ApplicationWaylandPrivate>;
 
-        // Constructors of Libxfce4windowing.ApplicationWaylandPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -6701,7 +6701,7 @@ export namespace Libxfce4windowing {
     abstract class ApplicationX11Private {
         static $gtype: GObject.GType<ApplicationX11Private>;
 
-        // Constructors of Libxfce4windowing.ApplicationX11Private
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -6710,7 +6710,7 @@ export namespace Libxfce4windowing {
     abstract class ScreenInterface {
         static $gtype: GObject.GType<ScreenInterface>;
 
-        // Constructors of Libxfce4windowing.ScreenInterface
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -6719,7 +6719,7 @@ export namespace Libxfce4windowing {
     abstract class ScreenWaylandPrivate {
         static $gtype: GObject.GType<ScreenWaylandPrivate>;
 
-        // Constructors of Libxfce4windowing.ScreenWaylandPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -6728,7 +6728,7 @@ export namespace Libxfce4windowing {
     abstract class ScreenX11Private {
         static $gtype: GObject.GType<ScreenX11Private>;
 
-        // Constructors of Libxfce4windowing.ScreenX11Private
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -6738,7 +6738,7 @@ export namespace Libxfce4windowing {
     abstract class WindowWaylandPrivate {
         static $gtype: GObject.GType<WindowWaylandPrivate>;
 
-        // Constructors of Libxfce4windowing.WindowWaylandPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -6747,7 +6747,7 @@ export namespace Libxfce4windowing {
     abstract class WindowX11Private {
         static $gtype: GObject.GType<WindowX11Private>;
 
-        // Constructors of Libxfce4windowing.WindowX11Private
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -6757,7 +6757,7 @@ export namespace Libxfce4windowing {
     abstract class WorkspaceDummyPrivate {
         static $gtype: GObject.GType<WorkspaceDummyPrivate>;
 
-        // Constructors of Libxfce4windowing.WorkspaceDummyPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -6766,7 +6766,7 @@ export namespace Libxfce4windowing {
     abstract class WorkspaceGroupDummyPrivate {
         static $gtype: GObject.GType<WorkspaceGroupDummyPrivate>;
 
-        // Constructors of Libxfce4windowing.WorkspaceGroupDummyPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -6775,7 +6775,7 @@ export namespace Libxfce4windowing {
     abstract class WorkspaceGroupInterface {
         static $gtype: GObject.GType<WorkspaceGroupInterface>;
 
-        // Constructors of Libxfce4windowing.WorkspaceGroupInterface
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -6784,7 +6784,7 @@ export namespace Libxfce4windowing {
     abstract class WorkspaceGroupWaylandPrivate {
         static $gtype: GObject.GType<WorkspaceGroupWaylandPrivate>;
 
-        // Constructors of Libxfce4windowing.WorkspaceGroupWaylandPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -6793,7 +6793,7 @@ export namespace Libxfce4windowing {
     abstract class WorkspaceInterface {
         static $gtype: GObject.GType<WorkspaceInterface>;
 
-        // Constructors of Libxfce4windowing.WorkspaceInterface
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -6802,7 +6802,7 @@ export namespace Libxfce4windowing {
     abstract class WorkspaceManagerDummyPrivate {
         static $gtype: GObject.GType<WorkspaceManagerDummyPrivate>;
 
-        // Constructors of Libxfce4windowing.WorkspaceManagerDummyPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -6811,7 +6811,7 @@ export namespace Libxfce4windowing {
     abstract class WorkspaceManagerInterface {
         static $gtype: GObject.GType<WorkspaceManagerInterface>;
 
-        // Constructors of Libxfce4windowing.WorkspaceManagerInterface
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -6820,7 +6820,7 @@ export namespace Libxfce4windowing {
     abstract class WorkspaceManagerWaylandPrivate {
         static $gtype: GObject.GType<WorkspaceManagerWaylandPrivate>;
 
-        // Constructors of Libxfce4windowing.WorkspaceManagerWaylandPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -6829,7 +6829,7 @@ export namespace Libxfce4windowing {
     abstract class WorkspaceManagerX11Private {
         static $gtype: GObject.GType<WorkspaceManagerX11Private>;
 
-        // Constructors of Libxfce4windowing.WorkspaceManagerX11Private
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -6838,7 +6838,7 @@ export namespace Libxfce4windowing {
     abstract class WorkspaceWaylandPrivate {
         static $gtype: GObject.GType<WorkspaceWaylandPrivate>;
 
-        // Constructors of Libxfce4windowing.WorkspaceWaylandPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -6847,7 +6847,7 @@ export namespace Libxfce4windowing {
     abstract class WorkspaceX11Private {
         static $gtype: GObject.GType<WorkspaceX11Private>;
 
-        // Constructors of Libxfce4windowing.WorkspaceX11Private
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -6876,7 +6876,7 @@ export namespace Libxfce4windowing {
         get_default(): Screen;
     }
     interface Screen extends GObject.Object {
-        // Own properties of Libxfce4windowing.Screen
+        // Properties
 
         /**
          * The currently-active window.
@@ -6911,7 +6911,7 @@ export namespace Libxfce4windowing {
          */
         get workspaceManager(): WorkspaceManager;
 
-        // Own methods of Libxfce4windowing.Screen
+        // Methods
 
         /**
          * Retrieves the window on `screen` that is currently active.
@@ -6977,7 +6977,7 @@ export namespace Libxfce4windowing {
         prototype: Workspace;
     }
     interface Workspace extends GObject.Object {
-        // Own properties of Libxfce4windowing.Workspace
+        // Properties
 
         /**
          * The #XfwWorkspaceCapabilities bitfield for this workspace.
@@ -7023,7 +7023,7 @@ export namespace Libxfce4windowing {
         get state(): WorkspaceState;
         set state(val: WorkspaceState);
 
-        // Own methods of Libxfce4windowing.Workspace
+        // Methods
 
         /**
          * Attempts to set `workspace` as the active workspace in its group.
@@ -7144,7 +7144,7 @@ export namespace Libxfce4windowing {
         prototype: WorkspaceGroup;
     }
     interface WorkspaceGroup extends GObject.Object {
-        // Own properties of Libxfce4windowing.WorkspaceGroup
+        // Properties
 
         /**
          * The active #XfwWorkspace on this #XfwWorkspaceGroup, or %NULL.
@@ -7176,7 +7176,7 @@ export namespace Libxfce4windowing {
          */
         get workspaces(): any;
 
-        // Own methods of Libxfce4windowing.WorkspaceGroup
+        // Methods
 
         /**
          * Attempts to create a new workspace on `group`.  Typically, the new workspace
@@ -7258,7 +7258,7 @@ export namespace Libxfce4windowing {
         prototype: WorkspaceManager;
     }
     interface WorkspaceManager extends GObject.Object {
-        // Own properties of Libxfce4windowing.WorkspaceManager
+        // Properties
 
         /**
          * The #GdkScreen instance used to construct the #XfwScreen that owns this
@@ -7266,7 +7266,7 @@ export namespace Libxfce4windowing {
          */
         get screen(): Gdk.Screen;
 
-        // Own methods of Libxfce4windowing.WorkspaceManager
+        // Methods
 
         /**
          * Lists all workspace groups known to the workspace manager.

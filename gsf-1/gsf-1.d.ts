@@ -79,7 +79,7 @@ export namespace Gsf {
     class Error extends GLib.Error {
         static $gtype: GObject.GType<Error>;
 
-        // Static fields of Gsf.Error
+        // Static fields
 
         /**
          * Memory allocation failed
@@ -90,7 +90,7 @@ export namespace Gsf {
          */
         static INVALID_DATA: number;
 
-        // Constructors of Gsf.Error
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
@@ -722,11 +722,11 @@ export namespace Gsf {
     class Blob extends GObject.Object {
         static $gtype: GObject.GType<Blob>;
 
-        // Own fields of Gsf.Blob
+        // Fields
 
         object: GObject.Object;
 
-        // Constructors of Gsf.Blob
+        // Constructors
 
         constructor(properties?: Partial<Blob.ConstructorProps>, ...args: any[]);
 
@@ -734,7 +734,7 @@ export namespace Gsf {
 
         static ['new'](data_to_copy: Uint8Array | string): Blob;
 
-        // Own methods of Gsf.Blob
+        // Methods
 
         /**
          * Queries the size in bytes of the data stored in the blob.
@@ -760,11 +760,11 @@ export namespace Gsf {
     class ClipData extends GObject.Object {
         static $gtype: GObject.GType<ClipData>;
 
-        // Own fields of Gsf.ClipData
+        // Fields
 
         object: GObject.Object;
 
-        // Constructors of Gsf.ClipData
+        // Constructors
 
         constructor(properties?: Partial<ClipData.ConstructorProps>, ...args: any[]);
 
@@ -772,7 +772,7 @@ export namespace Gsf {
 
         static ['new'](format: ClipFormat, data_blob: Blob): ClipData;
 
-        // Own methods of Gsf.ClipData
+        // Methods
 
         /**
          * Queries the data blob that actually stores a #GsfClipData's binary data.
@@ -817,7 +817,7 @@ export namespace Gsf {
     class DocMetaData extends GObject.Object {
         static $gtype: GObject.GType<DocMetaData>;
 
-        // Constructors of Gsf.DocMetaData
+        // Constructors
 
         constructor(properties?: Partial<DocMetaData.ConstructorProps>, ...args: any[]);
 
@@ -825,7 +825,7 @@ export namespace Gsf {
 
         static ['new'](): DocMetaData;
 
-        // Own methods of Gsf.DocMetaData
+        // Methods
 
         /**
          * Iterate through each (key, value) pair in this collection
@@ -881,7 +881,7 @@ export namespace Gsf {
     class DocPropVector extends GObject.Object {
         static $gtype: GObject.GType<DocPropVector>;
 
-        // Constructors of Gsf.DocPropVector
+        // Constructors
 
         constructor(properties?: Partial<DocPropVector.ConstructorProps>, ...args: any[]);
 
@@ -889,7 +889,7 @@ export namespace Gsf {
 
         static ['new'](): DocPropVector;
 
-        // Own methods of Gsf.DocPropVector
+        // Methods
 
         /**
          * Insert a copy of `value` as the last element of `vector`.
@@ -917,18 +917,18 @@ export namespace Gsf {
     abstract class Infile extends Input {
         static $gtype: GObject.GType<Infile>;
 
-        // Constructors of Gsf.Infile
+        // Constructors
 
         constructor(properties?: Partial<Infile.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of Gsf.Infile
+        // Virtual methods
 
         vfunc_name_by_index(i: number): string | null;
         vfunc_num_children(): number;
 
-        // Own methods of Gsf.Infile
+        // Methods
 
         /**
          * This function finds a child that is several directory levels down
@@ -972,7 +972,7 @@ export namespace Gsf {
     class InfileMSOle extends Infile {
         static $gtype: GObject.GType<InfileMSOle>;
 
-        // Constructors of Gsf.InfileMSOle
+        // Constructors
 
         constructor(properties?: Partial<InfileMSOle.ConstructorProps>, ...args: any[]);
 
@@ -980,7 +980,7 @@ export namespace Gsf {
 
         static ['new'](source: Input): InfileMSOle;
 
-        // Own methods of Gsf.InfileMSOle
+        // Methods
 
         /**
          * Retrieves the 16 byte indentifier (often a GUID in MS Windows apps)
@@ -1000,7 +1000,7 @@ export namespace Gsf {
     class InfileMSVBA extends Infile {
         static $gtype: GObject.GType<InfileMSVBA>;
 
-        // Constructors of Gsf.InfileMSVBA
+        // Constructors
 
         constructor(properties?: Partial<InfileMSVBA.ConstructorProps>, ...args: any[]);
 
@@ -1008,7 +1008,7 @@ export namespace Gsf {
 
         static ['new'](source: Infile): InfileMSVBA;
 
-        // Own methods of Gsf.InfileMSVBA
+        // Methods
 
         /**
          * a collection of names and source code.
@@ -1031,7 +1031,7 @@ export namespace Gsf {
     class InfileStdio extends Infile {
         static $gtype: GObject.GType<InfileStdio>;
 
-        // Constructors of Gsf.InfileStdio
+        // Constructors
 
         constructor(properties?: Partial<InfileStdio.ConstructorProps>, ...args: any[]);
 
@@ -1051,11 +1051,11 @@ export namespace Gsf {
     class InfileTar extends Infile {
         static $gtype: GObject.GType<InfileTar>;
 
-        // Own properties of Gsf.InfileTar
+        // Properties
 
         get source(): Input;
 
-        // Constructors of Gsf.InfileTar
+        // Constructors
 
         constructor(properties?: Partial<InfileTar.ConstructorProps>, ...args: any[]);
 
@@ -1080,7 +1080,7 @@ export namespace Gsf {
     class InfileZip extends Infile {
         static $gtype: GObject.GType<InfileZip>;
 
-        // Own properties of Gsf.InfileZip
+        // Properties
 
         /**
          * Controls the level of compression used for new members.
@@ -1095,7 +1095,7 @@ export namespace Gsf {
         get source(): Input;
         get zip64(): boolean;
 
-        // Constructors of Gsf.InfileZip
+        // Constructors
 
         constructor(properties?: Partial<InfileZip.ConstructorProps>, ...args: any[]);
 
@@ -1124,7 +1124,7 @@ export namespace Gsf {
     abstract class Input extends GObject.Object {
         static $gtype: GObject.GType<Input>;
 
-        // Own properties of Gsf.Input
+        // Properties
 
         /**
          * The container, optionally %NULL, in which this input lives.
@@ -1154,12 +1154,12 @@ export namespace Gsf {
          */
         get size(): number;
 
-        // Own fields of Gsf.Input
+        // Fields
 
         g_object: GObject.Object;
         cur_offset: gsf_off_t;
 
-        // Constructors of Gsf.Input
+        // Constructors
 
         constructor(properties?: Partial<Input.ConstructorProps>, ...args: any[]);
 
@@ -1167,11 +1167,11 @@ export namespace Gsf {
 
         static mmap_new(filename: string): Input;
 
-        // Own static methods of Gsf.Input
+        // Static methods
 
         static error_id(): GLib.Quark;
 
-        // Own virtual methods of Gsf.Input
+        // Virtual methods
 
         /**
          * Duplicates `input` leaving the new one at the same offset.
@@ -1194,7 +1194,7 @@ export namespace Gsf {
          */
         vfunc_Seek(offset: gsf_off_t, whence: GLib.SeekType): boolean;
 
-        // Own methods of Gsf.Input
+        // Methods
 
         /**
          * Copy the contents from `input` to `output` from their respective
@@ -1296,14 +1296,14 @@ export namespace Gsf {
     class InputGZip extends Input {
         static $gtype: GObject.GType<InputGZip>;
 
-        // Own properties of Gsf.InputGZip
+        // Properties
 
         get raw(): boolean;
         get source(): Input;
         get uncompressed_size(): number;
         get uncompressedSize(): number;
 
-        // Constructors of Gsf.InputGZip
+        // Constructors
 
         constructor(properties?: Partial<InputGZip.ConstructorProps>, ...args: any[]);
 
@@ -1321,7 +1321,7 @@ export namespace Gsf {
     class InputGio extends Input {
         static $gtype: GObject.GType<InputGio>;
 
-        // Constructors of Gsf.InputGio
+        // Constructors
 
         constructor(properties?: Partial<InputGio.ConstructorProps>, ...args: any[]);
 
@@ -1347,13 +1347,13 @@ export namespace Gsf {
     class InputHTTP extends Input {
         static $gtype: GObject.GType<InputHTTP>;
 
-        // Own properties of Gsf.InputHTTP
+        // Properties
 
         get content_type(): string;
         get contentType(): string;
         get url(): string;
 
-        // Constructors of Gsf.InputHTTP
+        // Constructors
 
         constructor(properties?: Partial<InputHTTP.ConstructorProps>, ...args: any[]);
 
@@ -1361,7 +1361,7 @@ export namespace Gsf {
 
         static ['new'](url: string): InputHTTP;
 
-        // Own methods of Gsf.InputHTTP
+        // Methods
 
         get_content_type(): string;
         get_url(): string;
@@ -1376,7 +1376,7 @@ export namespace Gsf {
     class InputMemory extends Input {
         static $gtype: GObject.GType<InputMemory>;
 
-        // Constructors of Gsf.InputMemory
+        // Constructors
 
         constructor(properties?: Partial<InputMemory.ConstructorProps>, ...args: any[]);
 
@@ -1400,7 +1400,7 @@ export namespace Gsf {
     class InputProxy extends Input {
         static $gtype: GObject.GType<InputProxy>;
 
-        // Constructors of Gsf.InputProxy
+        // Constructors
 
         constructor(properties?: Partial<InputProxy.ConstructorProps>, ...args: any[]);
 
@@ -1420,7 +1420,7 @@ export namespace Gsf {
     class InputStdio extends Input {
         static $gtype: GObject.GType<InputStdio>;
 
-        // Constructors of Gsf.InputStdio
+        // Constructors
 
         constructor(properties?: Partial<InputStdio.ConstructorProps>, ...args: any[]);
 
@@ -1440,7 +1440,7 @@ export namespace Gsf {
     class InputTextline extends Input {
         static $gtype: GObject.GType<InputTextline>;
 
-        // Constructors of Gsf.InputTextline
+        // Constructors
 
         constructor(properties?: Partial<InputTextline.ConstructorProps>, ...args: any[]);
 
@@ -1448,7 +1448,7 @@ export namespace Gsf {
 
         static ['new'](source: Input): InputTextline;
 
-        // Own methods of Gsf.InputTextline
+        // Methods
 
         /**
          * A utility routine to read things line by line from the underlying source.
@@ -1478,23 +1478,23 @@ export namespace Gsf {
     class ODFOut extends XMLOut {
         static $gtype: GObject.GType<ODFOut>;
 
-        // Own properties of Gsf.ODFOut
+        // Properties
 
         get odf_version(): number;
         get odfVersion(): number;
 
-        // Own fields of Gsf.ODFOut
+        // Fields
 
         base: XMLOut;
         priv: any;
 
-        // Constructors of Gsf.ODFOut
+        // Constructors
 
         constructor(properties?: Partial<ODFOut.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Gsf.ODFOut
+        // Methods
 
         get_version(): number;
         get_version_string(): string;
@@ -1512,13 +1512,13 @@ export namespace Gsf {
     abstract class Outfile extends Output {
         static $gtype: GObject.GType<Outfile>;
 
-        // Constructors of Gsf.Outfile
+        // Constructors
 
         constructor(properties?: Partial<Outfile.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Gsf.Outfile
+        // Methods
 
         new_child(name: string, is_dir: boolean): Output;
         /**
@@ -1548,7 +1548,7 @@ export namespace Gsf {
     class OutfileMSOle extends Outfile {
         static $gtype: GObject.GType<OutfileMSOle>;
 
-        // Own properties of Gsf.OutfileMSOle
+        // Properties
 
         get big_block_size(): number;
         get bigBlockSize(): number;
@@ -1556,7 +1556,7 @@ export namespace Gsf {
         get small_block_size(): number;
         get smallBlockSize(): number;
 
-        // Constructors of Gsf.OutfileMSOle
+        // Constructors
 
         constructor(properties?: Partial<OutfileMSOle.ConstructorProps>, ...args: any[]);
 
@@ -1566,7 +1566,7 @@ export namespace Gsf {
 
         static new_full(sink: Output, bb_size: number, sb_size: number): OutfileMSOle;
 
-        // Own methods of Gsf.OutfileMSOle
+        // Methods
 
         /**
          * Write `clsid` to the directory associated with `ole`.
@@ -1591,7 +1591,7 @@ export namespace Gsf {
     class OutfileOpenPkg extends Outfile {
         static $gtype: GObject.GType<OutfileOpenPkg>;
 
-        // Own properties of Gsf.OutfileOpenPkg
+        // Properties
 
         get content_type(): string;
         get contentType(): string;
@@ -1599,7 +1599,7 @@ export namespace Gsf {
         get isDir(): boolean;
         get sink(): Outfile;
 
-        // Constructors of Gsf.OutfileOpenPkg
+        // Constructors
 
         constructor(properties?: Partial<OutfileOpenPkg.ConstructorProps>, ...args: any[]);
 
@@ -1607,7 +1607,7 @@ export namespace Gsf {
 
         static ['new'](sink: Outfile): OutfileOpenPkg;
 
-        // Own methods of Gsf.OutfileOpenPkg
+        // Methods
 
         /**
          * Add an external relation to `parent`.
@@ -1640,7 +1640,7 @@ export namespace Gsf {
     class OutfileStdio extends Outfile {
         static $gtype: GObject.GType<OutfileStdio>;
 
-        // Constructors of Gsf.OutfileStdio
+        // Constructors
 
         constructor(properties?: Partial<OutfileStdio.ConstructorProps>, ...args: any[]);
 
@@ -1667,7 +1667,7 @@ export namespace Gsf {
     class OutfileZip extends Outfile {
         static $gtype: GObject.GType<OutfileZip>;
 
-        // Own properties of Gsf.OutfileZip
+        // Properties
 
         get compression_level(): number;
         get compressionLevel(): number;
@@ -1678,7 +1678,7 @@ export namespace Gsf {
         get sink(): Output;
         get zip64(): number;
 
-        // Constructors of Gsf.OutfileZip
+        // Constructors
 
         constructor(properties?: Partial<OutfileZip.ConstructorProps>, ...args: any[]);
 
@@ -1686,7 +1686,7 @@ export namespace Gsf {
 
         static ['new'](sink: Output): OutfileZip;
 
-        // Own methods of Gsf.OutfileZip
+        // Methods
 
         set_compression_method(method: ZipCompressionMethod): boolean;
     }
@@ -1711,7 +1711,7 @@ export namespace Gsf {
     abstract class Output extends GObject.Object {
         static $gtype: GObject.GType<Output>;
 
-        // Own properties of Gsf.Output
+        // Properties
 
         /**
          * The container, optionally %NULL, in which this output lives.
@@ -1744,7 +1744,7 @@ export namespace Gsf {
          */
         get size(): number;
 
-        // Own fields of Gsf.Output
+        // Fields
 
         g_object: GObject.Object;
         cur_size: gsf_off_t;
@@ -1754,19 +1754,19 @@ export namespace Gsf {
         printf_buf: string;
         printf_buf_size: number;
 
-        // Constructors of Gsf.Output
+        // Constructors
 
         constructor(properties?: Partial<Output.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of Gsf.Output
+        // Static methods
 
         static error_id(): GLib.Quark;
         static unwrap(wrapper: GObject.Object, wrapee: Output): boolean;
         static wrap(wrapper: GObject.Object, wrapee: Output): boolean;
 
-        // Own virtual methods of Gsf.Output
+        // Virtual methods
 
         /**
          * Close a stream.
@@ -1789,7 +1789,7 @@ export namespace Gsf {
          */
         vfunc_Write(data: Uint8Array | string): boolean;
 
-        // Own methods of Gsf.Output
+        // Methods
 
         /**
          * Close a stream.
@@ -1862,7 +1862,7 @@ export namespace Gsf {
     class OutputBzip extends Output {
         static $gtype: GObject.GType<OutputBzip>;
 
-        // Constructors of Gsf.OutputBzip
+        // Constructors
 
         constructor(properties?: Partial<OutputBzip.ConstructorProps>, ...args: any[]);
 
@@ -1891,7 +1891,7 @@ export namespace Gsf {
     class OutputCsv extends Output {
         static $gtype: GObject.GType<OutputCsv>;
 
-        // Own properties of Gsf.OutputCsv
+        // Properties
 
         get eol(): string;
         set eol(val: string);
@@ -1914,7 +1914,7 @@ export namespace Gsf {
         get sink(): Output;
         set sink(val: Output);
 
-        // Own fields of Gsf.OutputCsv
+        // Fields
 
         output: Output;
         quote_len: number;
@@ -1923,13 +1923,13 @@ export namespace Gsf {
         fields_on_line: boolean;
         buf: GLib.String;
 
-        // Constructors of Gsf.OutputCsv
+        // Constructors
 
         constructor(properties?: Partial<OutputCsv.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Gsf.OutputCsv
+        // Methods
 
         write_eol(): boolean;
         write_field(field: string, len: number): boolean;
@@ -1949,7 +1949,7 @@ export namespace Gsf {
     class OutputGZip extends Output {
         static $gtype: GObject.GType<OutputGZip>;
 
-        // Own properties of Gsf.OutputGZip
+        // Properties
 
         get deflate_level(): number;
         set deflate_level(val: number);
@@ -1958,7 +1958,7 @@ export namespace Gsf {
         get raw(): boolean;
         get sink(): Output;
 
-        // Constructors of Gsf.OutputGZip
+        // Constructors
 
         constructor(properties?: Partial<OutputGZip.ConstructorProps>, ...args: any[]);
 
@@ -1976,7 +1976,7 @@ export namespace Gsf {
     class OutputGio extends Output {
         static $gtype: GObject.GType<OutputGio>;
 
-        // Constructors of Gsf.OutputGio
+        // Constructors
 
         constructor(properties?: Partial<OutputGio.ConstructorProps>, ...args: any[]);
 
@@ -1998,7 +1998,7 @@ export namespace Gsf {
     class OutputIOChannel extends Output {
         static $gtype: GObject.GType<OutputIOChannel>;
 
-        // Constructors of Gsf.OutputIOChannel
+        // Constructors
 
         constructor(properties?: Partial<OutputIOChannel.ConstructorProps>, ...args: any[]);
 
@@ -2023,7 +2023,7 @@ export namespace Gsf {
     class OutputIconv extends Output {
         static $gtype: GObject.GType<OutputIconv>;
 
-        // Own properties of Gsf.OutputIconv
+        // Properties
 
         /**
          * Either NULL or a UTF-8 string (representable in the target encoding)
@@ -2038,7 +2038,7 @@ export namespace Gsf {
         get outputCharset(): string;
         get sink(): Output;
 
-        // Constructors of Gsf.OutputIconv
+        // Constructors
 
         constructor(properties?: Partial<OutputIconv.ConstructorProps>, ...args: any[]);
 
@@ -2056,7 +2056,7 @@ export namespace Gsf {
     class OutputMemory extends Output {
         static $gtype: GObject.GType<OutputMemory>;
 
-        // Constructors of Gsf.OutputMemory
+        // Constructors
 
         constructor(properties?: Partial<OutputMemory.ConstructorProps>, ...args: any[]);
 
@@ -2064,7 +2064,7 @@ export namespace Gsf {
 
         static ['new'](): OutputMemory;
 
-        // Own methods of Gsf.OutputMemory
+        // Methods
 
         get_bytes(): Uint8Array | null;
         steal_bytes(): Uint8Array | null;
@@ -2079,7 +2079,7 @@ export namespace Gsf {
     class OutputStdio extends Output {
         static $gtype: GObject.GType<OutputStdio>;
 
-        // Constructors of Gsf.OutputStdio
+        // Constructors
 
         constructor(properties?: Partial<OutputStdio.ConstructorProps>, ...args: any[]);
 
@@ -2097,7 +2097,7 @@ export namespace Gsf {
     class SharedMemory extends GObject.Object {
         static $gtype: GObject.GType<SharedMemory>;
 
-        // Own fields of Gsf.SharedMemory
+        // Fields
 
         g_object: GObject.Object;
         buf: any;
@@ -2105,7 +2105,7 @@ export namespace Gsf {
         needs_free: boolean;
         needs_unmap: boolean;
 
-        // Constructors of Gsf.SharedMemory
+        // Constructors
 
         constructor(properties?: Partial<SharedMemory.ConstructorProps>, ...args: any[]);
 
@@ -2125,13 +2125,13 @@ export namespace Gsf {
     class StructuredBlob extends Infile {
         static $gtype: GObject.GType<StructuredBlob>;
 
-        // Constructors of Gsf.StructuredBlob
+        // Constructors
 
         constructor(properties?: Partial<StructuredBlob.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of Gsf.StructuredBlob
+        // Static methods
 
         /**
          * Create a tree of binary blobs with unknown content from a #GsfInput or
@@ -2140,7 +2140,7 @@ export namespace Gsf {
          */
         static read(input: Input): StructuredBlob;
 
-        // Own methods of Gsf.StructuredBlob
+        // Methods
 
         /**
          * Dumps structured blob `blob` onto the `container`.  Will fail if the output is
@@ -2164,7 +2164,7 @@ export namespace Gsf {
     class XMLOut extends GObject.Object {
         static $gtype: GObject.GType<XMLOut>;
 
-        // Own properties of Gsf.XMLOut
+        // Properties
 
         get pretty_print(): boolean;
         set pretty_print(val: boolean);
@@ -2172,13 +2172,13 @@ export namespace Gsf {
         set prettyPrint(val: boolean);
         get sink(): Output;
 
-        // Own fields of Gsf.XMLOut
+        // Fields
 
         base: GObject.Object;
         output: Output;
         priv: any;
 
-        // Constructors of Gsf.XMLOut
+        // Constructors
 
         constructor(properties?: Partial<XMLOut.ConstructorProps>, ...args: any[]);
 
@@ -2186,7 +2186,7 @@ export namespace Gsf {
 
         static ['new'](output: Output): XMLOut;
 
-        // Own methods of Gsf.XMLOut
+        // Methods
 
         /**
          * Dump `len` bytes in `data` into the content of node `id` using base64
@@ -2310,7 +2310,7 @@ export namespace Gsf {
     abstract class BlobPrivate {
         static $gtype: GObject.GType<BlobPrivate>;
 
-        // Constructors of Gsf.BlobPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2319,7 +2319,7 @@ export namespace Gsf {
     abstract class ClipDataPrivate {
         static $gtype: GObject.GType<ClipDataPrivate>;
 
-        // Constructors of Gsf.ClipDataPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2330,14 +2330,14 @@ export namespace Gsf {
     class DocProp {
         static $gtype: GObject.GType<DocProp>;
 
-        // Constructors of Gsf.DocProp
+        // Constructors
 
         constructor(name: string);
         _init(...args: any[]): void;
 
         static ['new'](name: string): DocProp;
 
-        // Own methods of Gsf.DocProp
+        // Methods
 
         /**
          * A debugging utility to dump `prop` as text via g_print
@@ -2369,14 +2369,14 @@ export namespace Gsf {
     class MSOleSortingKey {
         static $gtype: GObject.GType<MSOleSortingKey>;
 
-        // Constructors of Gsf.MSOleSortingKey
+        // Constructors
 
         constructor(name: string);
         _init(...args: any[]): void;
 
         static ['new'](name: string): MSOleSortingKey;
 
-        // Own methods of Gsf.MSOleSortingKey
+        // Methods
 
         cmp(b: MSOleSortingKey): number;
         free(): void;
@@ -2386,11 +2386,11 @@ export namespace Gsf {
     abstract class OpenPkgRel {
         static $gtype: GObject.GType<OpenPkgRel>;
 
-        // Constructors of Gsf.OpenPkgRel
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of Gsf.OpenPkgRel
+        // Methods
 
         get_target(): string;
         get_type(): string;
@@ -2400,7 +2400,7 @@ export namespace Gsf {
     abstract class OpenPkgRels {
         static $gtype: GObject.GType<OpenPkgRels>;
 
-        // Constructors of Gsf.OpenPkgRels
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2415,14 +2415,14 @@ export namespace Gsf {
     class Timestamp {
         static $gtype: GObject.GType<Timestamp>;
 
-        // Own fields of Gsf.Timestamp
+        // Fields
 
         date: GLib.Date;
         seconds: number;
         time_zone: GLib.String;
         timet: number;
 
-        // Constructors of Gsf.Timestamp
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -2436,7 +2436,7 @@ export namespace Gsf {
 
         static ['new'](): Timestamp;
 
-        // Own methods of Gsf.Timestamp
+        // Methods
 
         /**
          * Produce a string representation (ISO 8601 format) of `stamp`.
@@ -2476,7 +2476,7 @@ export namespace Gsf {
     abstract class XMLBlob {
         static $gtype: GObject.GType<XMLBlob>;
 
-        // Constructors of Gsf.XMLBlob
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2484,16 +2484,16 @@ export namespace Gsf {
     class XMLIn {
         static $gtype: GObject.GType<XMLIn>;
 
-        // Own fields of Gsf.XMLIn
+        // Fields
 
         user_state: any;
         content: GLib.String;
 
-        // Constructors of Gsf.XMLIn
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of Gsf.XMLIn
+        // Methods
 
         /**
          * According to `state` is `str` in the namespace `ns_id` ?
@@ -2537,14 +2537,14 @@ export namespace Gsf {
     class XMLInDoc {
         static $gtype: GObject.GType<XMLInDoc>;
 
-        // Constructors of Gsf.XMLInDoc
+        // Constructors
 
         constructor(nodes: XMLInNode[], ns: XMLInNS[]);
         _init(...args: any[]): void;
 
         static ['new'](nodes: XMLInNode[], ns: XMLInNS[]): XMLInDoc;
 
-        // Own methods of Gsf.XMLInDoc
+        // Methods
 
         /**
          * Adds additional nodes to the structure of `doc`
@@ -2573,12 +2573,12 @@ export namespace Gsf {
     class XMLInNS {
         static $gtype: GObject.GType<XMLInNS>;
 
-        // Own fields of Gsf.XMLInNS
+        // Fields
 
         uri: string;
         ns_id: number;
 
-        // Constructors of Gsf.XMLInNS
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -2592,7 +2592,7 @@ export namespace Gsf {
     class XMLInNode {
         static $gtype: GObject.GType<XMLInNode>;
 
-        // Own fields of Gsf.XMLInNode
+        // Fields
 
         id: string;
         ns_id: number;
@@ -2602,7 +2602,7 @@ export namespace Gsf {
         check_children_for_ns: number;
         share_children_with_parent: number;
 
-        // Constructors of Gsf.XMLInNode
+        // Constructors
 
         _init(...args: any[]): void;
     }

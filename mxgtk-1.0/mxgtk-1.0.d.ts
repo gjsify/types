@@ -42,7 +42,7 @@ export namespace MxGtk {
     class Frame extends Gtk.Frame implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<Frame>;
 
-        // Constructors of MxGtk.Frame
+        // Constructors
 
         constructor(properties?: Partial<Frame.ConstructorProps>, ...args: any[]);
 
@@ -477,12 +477,12 @@ export namespace MxGtk {
     class LightSwitch extends Gtk.DrawingArea implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<LightSwitch>;
 
-        // Own properties of MxGtk.LightSwitch
+        // Properties
 
         get active(): boolean;
         set active(val: boolean);
 
-        // Constructors of MxGtk.LightSwitch
+        // Constructors
 
         constructor(properties?: Partial<LightSwitch.ConstructorProps>, ...args: any[]);
 
@@ -490,7 +490,7 @@ export namespace MxGtk {
 
         static ['new'](): LightSwitch;
 
-        // Own signals of MxGtk.LightSwitch
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -499,11 +499,11 @@ export namespace MxGtk {
         connect_after(signal: 'switch-flipped', callback: (_source: this, object: boolean) => void): number;
         emit(signal: 'switch-flipped', object: boolean): void;
 
-        // Own virtual methods of MxGtk.LightSwitch
+        // Virtual methods
 
         vfunc_switch_flipped(state: boolean): void;
 
-        // Own methods of MxGtk.LightSwitch
+        // Methods
 
         /**
          * Get the value of the "active" property

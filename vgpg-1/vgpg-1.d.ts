@@ -34,7 +34,7 @@ export namespace Vgpg {
     class Connection extends Vgda.GProvider {
         static $gtype: GObject.GType<Connection>;
 
-        // Constructors of Vgpg.Connection
+        // Constructors
 
         constructor(properties?: Partial<Connection.ConstructorProps>, ...args: any[]);
 
@@ -42,7 +42,7 @@ export namespace Vgpg {
 
         static ['new'](): Connection;
 
-        // Own methods of Vgpg.Connection
+        // Methods
 
         current_user(): Vda.Role;
     }
@@ -51,7 +51,7 @@ export namespace Vgpg {
     abstract class ConnectionPrivate {
         static $gtype: GObject.GType<ConnectionPrivate>;
 
-        // Constructors of Vgpg.ConnectionPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }

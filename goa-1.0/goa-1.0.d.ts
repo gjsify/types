@@ -25,7 +25,7 @@ export namespace Goa {
     class Error extends GLib.Error {
         static $gtype: GObject.GType<Error>;
 
-        // Static fields of Goa.Error
+        // Static fields
 
         /**
          * The operation failed.
@@ -52,12 +52,12 @@ export namespace Goa {
          */
         static SSL: number;
 
-        // Constructors of Goa.Error
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of Goa.Error
+        // Static methods
 
         static quark(): GLib.Quark;
     }
@@ -389,7 +389,7 @@ export namespace Goa {
     {
         static $gtype: GObject.GType<AccountProxy>;
 
-        // Constructors of Goa.AccountProxy
+        // Constructors
 
         constructor(properties?: Partial<AccountProxy.ConstructorProps>, ...args: any[]);
 
@@ -424,7 +424,7 @@ export namespace Goa {
 
         static new_sync(...args: never[]): any;
 
-        // Own static methods of Goa.AccountProxy
+        // Static methods
 
         /**
          * Asynchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-Account.top_of_page">org.gnome.OnlineAccounts.Account</link>. See g_dbus_proxy_new() for more details.
@@ -1498,7 +1498,7 @@ export namespace Goa {
     class AccountSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, Account {
         static $gtype: GObject.GType<AccountSkeleton>;
 
-        // Constructors of Goa.AccountSkeleton
+        // Constructors
 
         constructor(properties?: Partial<AccountSkeleton.ConstructorProps>, ...args: any[]);
 
@@ -2335,7 +2335,7 @@ export namespace Goa {
     {
         static $gtype: GObject.GType<CalendarProxy>;
 
-        // Constructors of Goa.CalendarProxy
+        // Constructors
 
         constructor(properties?: Partial<CalendarProxy.ConstructorProps>, ...args: any[]);
 
@@ -2370,7 +2370,7 @@ export namespace Goa {
 
         static new_sync(...args: never[]): any;
 
-        // Own static methods of Goa.CalendarProxy
+        // Static methods
 
         /**
          * Asynchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-Calendar.top_of_page">org.gnome.OnlineAccounts.Calendar</link>. See g_dbus_proxy_new() for more details.
@@ -3095,7 +3095,7 @@ export namespace Goa {
     class CalendarSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, Calendar {
         static $gtype: GObject.GType<CalendarSkeleton>;
 
-        // Constructors of Goa.CalendarSkeleton
+        // Constructors
 
         constructor(properties?: Partial<CalendarSkeleton.ConstructorProps>, ...args: any[]);
 
@@ -3583,7 +3583,7 @@ export namespace Goa {
     {
         static $gtype: GObject.GType<ChatProxy>;
 
-        // Constructors of Goa.ChatProxy
+        // Constructors
 
         constructor(properties?: Partial<ChatProxy.ConstructorProps>, ...args: any[]);
 
@@ -3618,7 +3618,7 @@ export namespace Goa {
 
         static new_sync(...args: never[]): any;
 
-        // Own static methods of Goa.ChatProxy
+        // Static methods
 
         /**
          * Asynchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-Chat.top_of_page">org.gnome.OnlineAccounts.Chat</link>. See g_dbus_proxy_new() for more details.
@@ -4320,7 +4320,7 @@ export namespace Goa {
     class ChatSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, Chat {
         static $gtype: GObject.GType<ChatSkeleton>;
 
-        // Constructors of Goa.ChatSkeleton
+        // Constructors
 
         constructor(properties?: Partial<ChatSkeleton.ConstructorProps>, ...args: any[]);
 
@@ -4798,7 +4798,7 @@ export namespace Goa {
     class Client extends GObject.Object implements Gio.AsyncInitable<Client>, Gio.Initable {
         static $gtype: GObject.GType<Client>;
 
-        // Own properties of Goa.Client
+        // Properties
 
         /**
          * The #GDBusObjectManager used by the #GoaClient instance.
@@ -4809,7 +4809,7 @@ export namespace Goa {
          */
         get objectManager(): Gio.DBusObjectManager;
 
-        // Constructors of Goa.Client
+        // Constructors
 
         constructor(properties?: Partial<Client.ConstructorProps>, ...args: any[]);
 
@@ -4822,7 +4822,7 @@ export namespace Goa {
 
         static new_sync(cancellable?: Gio.Cancellable | null): Client;
 
-        // Own signals of Goa.Client
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -4837,7 +4837,7 @@ export namespace Goa {
         connect_after(signal: 'account-removed', callback: (_source: this, object: Object) => void): number;
         emit(signal: 'account-removed', object: Object): void;
 
-        // Own static methods of Goa.Client
+        // Static methods
 
         /**
          * Asynchronously gets a #GoaClient. When the operation is
@@ -4849,7 +4849,7 @@ export namespace Goa {
          */
         static ['new'](cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<Client> | null): void;
 
-        // Own methods of Goa.Client
+        // Methods
 
         /**
          * Gets all accounts that `self` knows about. The result is a list of
@@ -5500,7 +5500,7 @@ export namespace Goa {
     {
         static $gtype: GObject.GType<ContactsProxy>;
 
-        // Constructors of Goa.ContactsProxy
+        // Constructors
 
         constructor(properties?: Partial<ContactsProxy.ConstructorProps>, ...args: any[]);
 
@@ -5535,7 +5535,7 @@ export namespace Goa {
 
         static new_sync(...args: never[]): any;
 
-        // Own static methods of Goa.ContactsProxy
+        // Static methods
 
         /**
          * Asynchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-Contacts.top_of_page">org.gnome.OnlineAccounts.Contacts</link>. See g_dbus_proxy_new() for more details.
@@ -6260,7 +6260,7 @@ export namespace Goa {
     class ContactsSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, Contacts {
         static $gtype: GObject.GType<ContactsSkeleton>;
 
-        // Constructors of Goa.ContactsSkeleton
+        // Constructors
 
         constructor(properties?: Partial<ContactsSkeleton.ConstructorProps>, ...args: any[]);
 
@@ -6748,7 +6748,7 @@ export namespace Goa {
     {
         static $gtype: GObject.GType<DocumentsProxy>;
 
-        // Constructors of Goa.DocumentsProxy
+        // Constructors
 
         constructor(properties?: Partial<DocumentsProxy.ConstructorProps>, ...args: any[]);
 
@@ -6783,7 +6783,7 @@ export namespace Goa {
 
         static new_sync(...args: never[]): any;
 
-        // Own static methods of Goa.DocumentsProxy
+        // Static methods
 
         /**
          * Asynchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-Documents.top_of_page">org.gnome.OnlineAccounts.Documents</link>. See g_dbus_proxy_new() for more details.
@@ -7485,7 +7485,7 @@ export namespace Goa {
     class DocumentsSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, Documents {
         static $gtype: GObject.GType<DocumentsSkeleton>;
 
-        // Constructors of Goa.DocumentsSkeleton
+        // Constructors
 
         constructor(properties?: Partial<DocumentsSkeleton.ConstructorProps>, ...args: any[]);
 
@@ -7950,7 +7950,7 @@ export namespace Goa {
     {
         static $gtype: GObject.GType<ExchangeProxy>;
 
-        // Constructors of Goa.ExchangeProxy
+        // Constructors
 
         constructor(properties?: Partial<ExchangeProxy.ConstructorProps>, ...args: any[]);
 
@@ -7985,7 +7985,7 @@ export namespace Goa {
 
         static new_sync(...args: never[]): any;
 
-        // Own static methods of Goa.ExchangeProxy
+        // Static methods
 
         /**
          * Asynchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-Exchange.top_of_page">org.gnome.OnlineAccounts.Exchange</link>. See g_dbus_proxy_new() for more details.
@@ -8710,7 +8710,7 @@ export namespace Goa {
     class ExchangeSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, Exchange {
         static $gtype: GObject.GType<ExchangeSkeleton>;
 
-        // Constructors of Goa.ExchangeSkeleton
+        // Constructors
 
         constructor(properties?: Partial<ExchangeSkeleton.ConstructorProps>, ...args: any[]);
 
@@ -9198,7 +9198,7 @@ export namespace Goa {
     {
         static $gtype: GObject.GType<FilesProxy>;
 
-        // Constructors of Goa.FilesProxy
+        // Constructors
 
         constructor(properties?: Partial<FilesProxy.ConstructorProps>, ...args: any[]);
 
@@ -9233,7 +9233,7 @@ export namespace Goa {
 
         static new_sync(...args: never[]): any;
 
-        // Own static methods of Goa.FilesProxy
+        // Static methods
 
         /**
          * Asynchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-Files.top_of_page">org.gnome.OnlineAccounts.Files</link>. See g_dbus_proxy_new() for more details.
@@ -9958,7 +9958,7 @@ export namespace Goa {
     class FilesSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, Files {
         static $gtype: GObject.GType<FilesSkeleton>;
 
-        // Constructors of Goa.FilesSkeleton
+        // Constructors
 
         constructor(properties?: Partial<FilesSkeleton.ConstructorProps>, ...args: any[]);
 
@@ -10446,7 +10446,7 @@ export namespace Goa {
     {
         static $gtype: GObject.GType<MailProxy>;
 
-        // Constructors of Goa.MailProxy
+        // Constructors
 
         constructor(properties?: Partial<MailProxy.ConstructorProps>, ...args: any[]);
 
@@ -10481,7 +10481,7 @@ export namespace Goa {
 
         static new_sync(...args: never[]): any;
 
-        // Own static methods of Goa.MailProxy
+        // Static methods
 
         /**
          * Asynchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-Mail.top_of_page">org.gnome.OnlineAccounts.Mail</link>. See g_dbus_proxy_new() for more details.
@@ -11430,7 +11430,7 @@ export namespace Goa {
     class MailSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, Mail {
         static $gtype: GObject.GType<MailSkeleton>;
 
-        // Constructors of Goa.MailSkeleton
+        // Constructors
 
         constructor(properties?: Partial<MailSkeleton.ConstructorProps>, ...args: any[]);
 
@@ -12142,7 +12142,7 @@ export namespace Goa {
     {
         static $gtype: GObject.GType<ManagerProxy>;
 
-        // Constructors of Goa.ManagerProxy
+        // Constructors
 
         constructor(properties?: Partial<ManagerProxy.ConstructorProps>, ...args: any[]);
 
@@ -12177,7 +12177,7 @@ export namespace Goa {
 
         static new_sync(...args: never[]): any;
 
-        // Own static methods of Goa.ManagerProxy
+        // Static methods
 
         /**
          * Asynchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-Manager.top_of_page">org.gnome.OnlineAccounts.Manager</link>. See g_dbus_proxy_new() for more details.
@@ -13000,7 +13000,7 @@ export namespace Goa {
     class ManagerSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, Manager {
         static $gtype: GObject.GType<ManagerSkeleton>;
 
-        // Constructors of Goa.ManagerSkeleton
+        // Constructors
 
         constructor(properties?: Partial<ManagerSkeleton.ConstructorProps>, ...args: any[]);
 
@@ -13586,7 +13586,7 @@ export namespace Goa {
     {
         static $gtype: GObject.GType<MapsProxy>;
 
-        // Constructors of Goa.MapsProxy
+        // Constructors
 
         constructor(properties?: Partial<MapsProxy.ConstructorProps>, ...args: any[]);
 
@@ -13621,7 +13621,7 @@ export namespace Goa {
 
         static new_sync(...args: never[]): any;
 
-        // Own static methods of Goa.MapsProxy
+        // Static methods
 
         /**
          * Asynchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-Maps.top_of_page">org.gnome.OnlineAccounts.Maps</link>. See g_dbus_proxy_new() for more details.
@@ -14323,7 +14323,7 @@ export namespace Goa {
     class MapsSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, Maps {
         static $gtype: GObject.GType<MapsSkeleton>;
 
-        // Constructors of Goa.MapsSkeleton
+        // Constructors
 
         constructor(properties?: Partial<MapsSkeleton.ConstructorProps>, ...args: any[]);
 
@@ -14788,7 +14788,7 @@ export namespace Goa {
     {
         static $gtype: GObject.GType<MediaServerProxy>;
 
-        // Constructors of Goa.MediaServerProxy
+        // Constructors
 
         constructor(properties?: Partial<MediaServerProxy.ConstructorProps>, ...args: any[]);
 
@@ -14823,7 +14823,7 @@ export namespace Goa {
 
         static new_sync(...args: never[]): any;
 
-        // Own static methods of Goa.MediaServerProxy
+        // Static methods
 
         /**
          * Asynchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-MediaServer.top_of_page">org.gnome.OnlineAccounts.MediaServer</link>. See g_dbus_proxy_new() for more details.
@@ -15548,7 +15548,7 @@ export namespace Goa {
     class MediaServerSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, MediaServer {
         static $gtype: GObject.GType<MediaServerSkeleton>;
 
-        // Constructors of Goa.MediaServerSkeleton
+        // Constructors
 
         constructor(properties?: Partial<MediaServerSkeleton.ConstructorProps>, ...args: any[]);
 
@@ -16036,7 +16036,7 @@ export namespace Goa {
     {
         static $gtype: GObject.GType<MusicProxy>;
 
-        // Constructors of Goa.MusicProxy
+        // Constructors
 
         constructor(properties?: Partial<MusicProxy.ConstructorProps>, ...args: any[]);
 
@@ -16071,7 +16071,7 @@ export namespace Goa {
 
         static new_sync(...args: never[]): any;
 
-        // Own static methods of Goa.MusicProxy
+        // Static methods
 
         /**
          * Asynchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-Music.top_of_page">org.gnome.OnlineAccounts.Music</link>. See g_dbus_proxy_new() for more details.
@@ -16773,7 +16773,7 @@ export namespace Goa {
     class MusicSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, Music {
         static $gtype: GObject.GType<MusicSkeleton>;
 
-        // Constructors of Goa.MusicSkeleton
+        // Constructors
 
         constructor(properties?: Partial<MusicSkeleton.ConstructorProps>, ...args: any[]);
 
@@ -17238,7 +17238,7 @@ export namespace Goa {
     {
         static $gtype: GObject.GType<OAuth2BasedProxy>;
 
-        // Constructors of Goa.OAuth2BasedProxy
+        // Constructors
 
         constructor(properties?: Partial<OAuth2BasedProxy.ConstructorProps>, ...args: any[]);
 
@@ -17273,7 +17273,7 @@ export namespace Goa {
 
         static new_sync(...args: never[]): any;
 
-        // Own static methods of Goa.OAuth2BasedProxy
+        // Static methods
 
         /**
          * Asynchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-OAuth2Based.top_of_page">org.gnome.OnlineAccounts.OAuth2Based</link>. See g_dbus_proxy_new() for more details.
@@ -18046,7 +18046,7 @@ export namespace Goa {
     class OAuth2BasedSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, OAuth2Based {
         static $gtype: GObject.GType<OAuth2BasedSkeleton>;
 
-        // Constructors of Goa.OAuth2BasedSkeleton
+        // Constructors
 
         constructor(properties?: Partial<OAuth2BasedSkeleton.ConstructorProps>, ...args: any[]);
 
@@ -18582,7 +18582,7 @@ export namespace Goa {
     {
         static $gtype: GObject.GType<OAuthBasedProxy>;
 
-        // Constructors of Goa.OAuthBasedProxy
+        // Constructors
 
         constructor(properties?: Partial<OAuthBasedProxy.ConstructorProps>, ...args: any[]);
 
@@ -18617,7 +18617,7 @@ export namespace Goa {
 
         static new_sync(...args: never[]): any;
 
-        // Own static methods of Goa.OAuthBasedProxy
+        // Static methods
 
         /**
          * Asynchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-OAuthBased.top_of_page">org.gnome.OnlineAccounts.OAuthBased</link>. See g_dbus_proxy_new() for more details.
@@ -19396,7 +19396,7 @@ export namespace Goa {
     class OAuthBasedSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, OAuthBased {
         static $gtype: GObject.GType<OAuthBasedSkeleton>;
 
-        // Constructors of Goa.OAuthBasedSkeleton
+        // Constructors
 
         constructor(properties?: Partial<OAuthBasedSkeleton.ConstructorProps>, ...args: any[]);
 
@@ -19937,7 +19937,7 @@ export namespace Goa {
     {
         static $gtype: GObject.GType<ObjectManagerClient>;
 
-        // Constructors of Goa.ObjectManagerClient
+        // Constructors
 
         constructor(properties?: Partial<ObjectManagerClient.ConstructorProps>, ...args: any[]);
 
@@ -19972,7 +19972,7 @@ export namespace Goa {
 
         static new_sync(...args: never[]): any;
 
-        // Own static methods of Goa.ObjectManagerClient
+        // Static methods
 
         /**
          * A #GDBusProxyTypeFunc that maps `interface_name` to the generated #GDBusObjectProxy derived and #GDBusProxy derived types.
@@ -20719,7 +20719,7 @@ export namespace Goa {
     class ObjectProxy extends Gio.DBusObjectProxy implements Gio.DBusObject, Object {
         static $gtype: GObject.GType<ObjectProxy>;
 
-        // Constructors of Goa.ObjectProxy
+        // Constructors
 
         constructor(properties?: Partial<ObjectProxy.ConstructorProps>, ...args: any[]);
 
@@ -21463,7 +21463,7 @@ export namespace Goa {
     class ObjectSkeleton extends Gio.DBusObjectSkeleton implements Gio.DBusObject, Object {
         static $gtype: GObject.GType<ObjectSkeleton>;
 
-        // Constructors of Goa.ObjectSkeleton
+        // Constructors
 
         constructor(properties?: Partial<ObjectSkeleton.ConstructorProps>, ...args: any[]);
 
@@ -21471,7 +21471,7 @@ export namespace Goa {
 
         static ['new'](object_path: string): ObjectSkeleton;
 
-        // Own methods of Goa.ObjectSkeleton
+        // Methods
 
         /**
          * Sets the #GoaAccount instance for the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-Account.top_of_page">org.gnome.OnlineAccounts.Account</link> on `object`.
@@ -22315,7 +22315,7 @@ export namespace Goa {
     {
         static $gtype: GObject.GType<PasswordBasedProxy>;
 
-        // Constructors of Goa.PasswordBasedProxy
+        // Constructors
 
         constructor(properties?: Partial<PasswordBasedProxy.ConstructorProps>, ...args: any[]);
 
@@ -22350,7 +22350,7 @@ export namespace Goa {
 
         static new_sync(...args: never[]): any;
 
-        // Own static methods of Goa.PasswordBasedProxy
+        // Static methods
 
         /**
          * Asynchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-PasswordBased.top_of_page">org.gnome.OnlineAccounts.PasswordBased</link>. See g_dbus_proxy_new() for more details.
@@ -23096,7 +23096,7 @@ export namespace Goa {
     class PasswordBasedSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, PasswordBased {
         static $gtype: GObject.GType<PasswordBasedSkeleton>;
 
-        // Constructors of Goa.PasswordBasedSkeleton
+        // Constructors
 
         constructor(properties?: Partial<PasswordBasedSkeleton.ConstructorProps>, ...args: any[]);
 
@@ -23605,7 +23605,7 @@ export namespace Goa {
     {
         static $gtype: GObject.GType<PhotosProxy>;
 
-        // Constructors of Goa.PhotosProxy
+        // Constructors
 
         constructor(properties?: Partial<PhotosProxy.ConstructorProps>, ...args: any[]);
 
@@ -23640,7 +23640,7 @@ export namespace Goa {
 
         static new_sync(...args: never[]): any;
 
-        // Own static methods of Goa.PhotosProxy
+        // Static methods
 
         /**
          * Asynchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-Photos.top_of_page">org.gnome.OnlineAccounts.Photos</link>. See g_dbus_proxy_new() for more details.
@@ -24342,7 +24342,7 @@ export namespace Goa {
     class PhotosSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, Photos {
         static $gtype: GObject.GType<PhotosSkeleton>;
 
-        // Constructors of Goa.PhotosSkeleton
+        // Constructors
 
         constructor(properties?: Partial<PhotosSkeleton.ConstructorProps>, ...args: any[]);
 
@@ -24807,7 +24807,7 @@ export namespace Goa {
     {
         static $gtype: GObject.GType<PrintersProxy>;
 
-        // Constructors of Goa.PrintersProxy
+        // Constructors
 
         constructor(properties?: Partial<PrintersProxy.ConstructorProps>, ...args: any[]);
 
@@ -24842,7 +24842,7 @@ export namespace Goa {
 
         static new_sync(...args: never[]): any;
 
-        // Own static methods of Goa.PrintersProxy
+        // Static methods
 
         /**
          * Asynchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-Printers.top_of_page">org.gnome.OnlineAccounts.Printers</link>. See g_dbus_proxy_new() for more details.
@@ -25544,7 +25544,7 @@ export namespace Goa {
     class PrintersSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, Printers {
         static $gtype: GObject.GType<PrintersSkeleton>;
 
-        // Constructors of Goa.PrintersSkeleton
+        // Constructors
 
         constructor(properties?: Partial<PrintersSkeleton.ConstructorProps>, ...args: any[]);
 
@@ -26009,7 +26009,7 @@ export namespace Goa {
     {
         static $gtype: GObject.GType<ReadLaterProxy>;
 
-        // Constructors of Goa.ReadLaterProxy
+        // Constructors
 
         constructor(properties?: Partial<ReadLaterProxy.ConstructorProps>, ...args: any[]);
 
@@ -26044,7 +26044,7 @@ export namespace Goa {
 
         static new_sync(...args: never[]): any;
 
-        // Own static methods of Goa.ReadLaterProxy
+        // Static methods
 
         /**
          * Asynchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-ReadLater.top_of_page">org.gnome.OnlineAccounts.ReadLater</link>. See g_dbus_proxy_new() for more details.
@@ -26746,7 +26746,7 @@ export namespace Goa {
     class ReadLaterSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, ReadLater {
         static $gtype: GObject.GType<ReadLaterSkeleton>;
 
-        // Constructors of Goa.ReadLaterSkeleton
+        // Constructors
 
         constructor(properties?: Partial<ReadLaterSkeleton.ConstructorProps>, ...args: any[]);
 
@@ -27211,7 +27211,7 @@ export namespace Goa {
     {
         static $gtype: GObject.GType<TicketingProxy>;
 
-        // Constructors of Goa.TicketingProxy
+        // Constructors
 
         constructor(properties?: Partial<TicketingProxy.ConstructorProps>, ...args: any[]);
 
@@ -27246,7 +27246,7 @@ export namespace Goa {
 
         static new_sync(...args: never[]): any;
 
-        // Own static methods of Goa.TicketingProxy
+        // Static methods
 
         /**
          * Asynchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-Ticketing.top_of_page">org.gnome.OnlineAccounts.Ticketing</link>. See g_dbus_proxy_new() for more details.
@@ -27993,7 +27993,7 @@ export namespace Goa {
     class TicketingSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, Ticketing {
         static $gtype: GObject.GType<TicketingSkeleton>;
 
-        // Constructors of Goa.TicketingSkeleton
+        // Constructors
 
         constructor(properties?: Partial<TicketingSkeleton.ConstructorProps>, ...args: any[]);
 
@@ -28503,7 +28503,7 @@ export namespace Goa {
     {
         static $gtype: GObject.GType<TodoProxy>;
 
-        // Constructors of Goa.TodoProxy
+        // Constructors
 
         constructor(properties?: Partial<TodoProxy.ConstructorProps>, ...args: any[]);
 
@@ -28538,7 +28538,7 @@ export namespace Goa {
 
         static new_sync(...args: never[]): any;
 
-        // Own static methods of Goa.TodoProxy
+        // Static methods
 
         /**
          * Asynchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-Todo.top_of_page">org.gnome.OnlineAccounts.Todo</link>. See g_dbus_proxy_new() for more details.
@@ -29240,7 +29240,7 @@ export namespace Goa {
     class TodoSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, Todo {
         static $gtype: GObject.GType<TodoSkeleton>;
 
-        // Constructors of Goa.TodoSkeleton
+        // Constructors
 
         constructor(properties?: Partial<TodoSkeleton.ConstructorProps>, ...args: any[]);
 
@@ -29690,7 +29690,7 @@ export namespace Goa {
     abstract class AccountProxyPrivate {
         static $gtype: GObject.GType<AccountProxyPrivate>;
 
-        // Constructors of Goa.AccountProxyPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -29699,7 +29699,7 @@ export namespace Goa {
     abstract class AccountSkeletonPrivate {
         static $gtype: GObject.GType<AccountSkeletonPrivate>;
 
-        // Constructors of Goa.AccountSkeletonPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -29709,7 +29709,7 @@ export namespace Goa {
     abstract class CalendarProxyPrivate {
         static $gtype: GObject.GType<CalendarProxyPrivate>;
 
-        // Constructors of Goa.CalendarProxyPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -29718,7 +29718,7 @@ export namespace Goa {
     abstract class CalendarSkeletonPrivate {
         static $gtype: GObject.GType<CalendarSkeletonPrivate>;
 
-        // Constructors of Goa.CalendarSkeletonPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -29728,7 +29728,7 @@ export namespace Goa {
     abstract class ChatProxyPrivate {
         static $gtype: GObject.GType<ChatProxyPrivate>;
 
-        // Constructors of Goa.ChatProxyPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -29737,7 +29737,7 @@ export namespace Goa {
     abstract class ChatSkeletonPrivate {
         static $gtype: GObject.GType<ChatSkeletonPrivate>;
 
-        // Constructors of Goa.ChatSkeletonPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -29748,7 +29748,7 @@ export namespace Goa {
     abstract class ContactsProxyPrivate {
         static $gtype: GObject.GType<ContactsProxyPrivate>;
 
-        // Constructors of Goa.ContactsProxyPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -29757,7 +29757,7 @@ export namespace Goa {
     abstract class ContactsSkeletonPrivate {
         static $gtype: GObject.GType<ContactsSkeletonPrivate>;
 
-        // Constructors of Goa.ContactsSkeletonPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -29767,7 +29767,7 @@ export namespace Goa {
     abstract class DocumentsProxyPrivate {
         static $gtype: GObject.GType<DocumentsProxyPrivate>;
 
-        // Constructors of Goa.DocumentsProxyPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -29776,7 +29776,7 @@ export namespace Goa {
     abstract class DocumentsSkeletonPrivate {
         static $gtype: GObject.GType<DocumentsSkeletonPrivate>;
 
-        // Constructors of Goa.DocumentsSkeletonPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -29786,7 +29786,7 @@ export namespace Goa {
     abstract class ExchangeProxyPrivate {
         static $gtype: GObject.GType<ExchangeProxyPrivate>;
 
-        // Constructors of Goa.ExchangeProxyPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -29795,7 +29795,7 @@ export namespace Goa {
     abstract class ExchangeSkeletonPrivate {
         static $gtype: GObject.GType<ExchangeSkeletonPrivate>;
 
-        // Constructors of Goa.ExchangeSkeletonPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -29805,7 +29805,7 @@ export namespace Goa {
     abstract class FilesProxyPrivate {
         static $gtype: GObject.GType<FilesProxyPrivate>;
 
-        // Constructors of Goa.FilesProxyPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -29814,7 +29814,7 @@ export namespace Goa {
     abstract class FilesSkeletonPrivate {
         static $gtype: GObject.GType<FilesSkeletonPrivate>;
 
-        // Constructors of Goa.FilesSkeletonPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -29824,7 +29824,7 @@ export namespace Goa {
     abstract class MailProxyPrivate {
         static $gtype: GObject.GType<MailProxyPrivate>;
 
-        // Constructors of Goa.MailProxyPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -29833,7 +29833,7 @@ export namespace Goa {
     abstract class MailSkeletonPrivate {
         static $gtype: GObject.GType<MailSkeletonPrivate>;
 
-        // Constructors of Goa.MailSkeletonPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -29843,7 +29843,7 @@ export namespace Goa {
     abstract class ManagerProxyPrivate {
         static $gtype: GObject.GType<ManagerProxyPrivate>;
 
-        // Constructors of Goa.ManagerProxyPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -29852,7 +29852,7 @@ export namespace Goa {
     abstract class ManagerSkeletonPrivate {
         static $gtype: GObject.GType<ManagerSkeletonPrivate>;
 
-        // Constructors of Goa.ManagerSkeletonPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -29862,7 +29862,7 @@ export namespace Goa {
     abstract class MapsProxyPrivate {
         static $gtype: GObject.GType<MapsProxyPrivate>;
 
-        // Constructors of Goa.MapsProxyPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -29871,7 +29871,7 @@ export namespace Goa {
     abstract class MapsSkeletonPrivate {
         static $gtype: GObject.GType<MapsSkeletonPrivate>;
 
-        // Constructors of Goa.MapsSkeletonPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -29881,7 +29881,7 @@ export namespace Goa {
     abstract class MediaServerProxyPrivate {
         static $gtype: GObject.GType<MediaServerProxyPrivate>;
 
-        // Constructors of Goa.MediaServerProxyPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -29890,7 +29890,7 @@ export namespace Goa {
     abstract class MediaServerSkeletonPrivate {
         static $gtype: GObject.GType<MediaServerSkeletonPrivate>;
 
-        // Constructors of Goa.MediaServerSkeletonPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -29900,7 +29900,7 @@ export namespace Goa {
     abstract class MusicProxyPrivate {
         static $gtype: GObject.GType<MusicProxyPrivate>;
 
-        // Constructors of Goa.MusicProxyPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -29909,7 +29909,7 @@ export namespace Goa {
     abstract class MusicSkeletonPrivate {
         static $gtype: GObject.GType<MusicSkeletonPrivate>;
 
-        // Constructors of Goa.MusicSkeletonPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -29919,7 +29919,7 @@ export namespace Goa {
     abstract class OAuth2BasedProxyPrivate {
         static $gtype: GObject.GType<OAuth2BasedProxyPrivate>;
 
-        // Constructors of Goa.OAuth2BasedProxyPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -29928,7 +29928,7 @@ export namespace Goa {
     abstract class OAuth2BasedSkeletonPrivate {
         static $gtype: GObject.GType<OAuth2BasedSkeletonPrivate>;
 
-        // Constructors of Goa.OAuth2BasedSkeletonPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -29938,7 +29938,7 @@ export namespace Goa {
     abstract class OAuthBasedProxyPrivate {
         static $gtype: GObject.GType<OAuthBasedProxyPrivate>;
 
-        // Constructors of Goa.OAuthBasedProxyPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -29947,7 +29947,7 @@ export namespace Goa {
     abstract class OAuthBasedSkeletonPrivate {
         static $gtype: GObject.GType<OAuthBasedSkeletonPrivate>;
 
-        // Constructors of Goa.OAuthBasedSkeletonPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -29957,7 +29957,7 @@ export namespace Goa {
     abstract class ObjectManagerClientPrivate {
         static $gtype: GObject.GType<ObjectManagerClientPrivate>;
 
-        // Constructors of Goa.ObjectManagerClientPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -29966,7 +29966,7 @@ export namespace Goa {
     abstract class ObjectProxyPrivate {
         static $gtype: GObject.GType<ObjectProxyPrivate>;
 
-        // Constructors of Goa.ObjectProxyPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -29975,7 +29975,7 @@ export namespace Goa {
     abstract class ObjectSkeletonPrivate {
         static $gtype: GObject.GType<ObjectSkeletonPrivate>;
 
-        // Constructors of Goa.ObjectSkeletonPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -29985,7 +29985,7 @@ export namespace Goa {
     abstract class PasswordBasedProxyPrivate {
         static $gtype: GObject.GType<PasswordBasedProxyPrivate>;
 
-        // Constructors of Goa.PasswordBasedProxyPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -29994,7 +29994,7 @@ export namespace Goa {
     abstract class PasswordBasedSkeletonPrivate {
         static $gtype: GObject.GType<PasswordBasedSkeletonPrivate>;
 
-        // Constructors of Goa.PasswordBasedSkeletonPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -30004,7 +30004,7 @@ export namespace Goa {
     abstract class PhotosProxyPrivate {
         static $gtype: GObject.GType<PhotosProxyPrivate>;
 
-        // Constructors of Goa.PhotosProxyPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -30013,7 +30013,7 @@ export namespace Goa {
     abstract class PhotosSkeletonPrivate {
         static $gtype: GObject.GType<PhotosSkeletonPrivate>;
 
-        // Constructors of Goa.PhotosSkeletonPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -30023,7 +30023,7 @@ export namespace Goa {
     abstract class PrintersProxyPrivate {
         static $gtype: GObject.GType<PrintersProxyPrivate>;
 
-        // Constructors of Goa.PrintersProxyPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -30032,7 +30032,7 @@ export namespace Goa {
     abstract class PrintersSkeletonPrivate {
         static $gtype: GObject.GType<PrintersSkeletonPrivate>;
 
-        // Constructors of Goa.PrintersSkeletonPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -30042,7 +30042,7 @@ export namespace Goa {
     abstract class ReadLaterProxyPrivate {
         static $gtype: GObject.GType<ReadLaterProxyPrivate>;
 
-        // Constructors of Goa.ReadLaterProxyPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -30051,7 +30051,7 @@ export namespace Goa {
     abstract class ReadLaterSkeletonPrivate {
         static $gtype: GObject.GType<ReadLaterSkeletonPrivate>;
 
-        // Constructors of Goa.ReadLaterSkeletonPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -30061,7 +30061,7 @@ export namespace Goa {
     abstract class TicketingProxyPrivate {
         static $gtype: GObject.GType<TicketingProxyPrivate>;
 
-        // Constructors of Goa.TicketingProxyPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -30070,7 +30070,7 @@ export namespace Goa {
     abstract class TicketingSkeletonPrivate {
         static $gtype: GObject.GType<TicketingSkeletonPrivate>;
 
-        // Constructors of Goa.TicketingSkeletonPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -30080,7 +30080,7 @@ export namespace Goa {
     abstract class TodoProxyPrivate {
         static $gtype: GObject.GType<TodoProxyPrivate>;
 
-        // Constructors of Goa.TodoProxyPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -30089,7 +30089,7 @@ export namespace Goa {
     abstract class TodoSkeletonPrivate {
         static $gtype: GObject.GType<TodoSkeletonPrivate>;
 
-        // Constructors of Goa.TodoSkeletonPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -30160,7 +30160,7 @@ export namespace Goa {
         override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
     }
     interface Account extends GObject.Object {
-        // Own properties of Goa.Account
+        // Properties
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Account.AttentionNeeded">"AttentionNeeded"</link>.
@@ -30457,7 +30457,7 @@ export namespace Goa {
         get todoDisabled(): boolean;
         set todoDisabled(val: boolean);
 
-        // Own methods of Goa.Account
+        // Methods
 
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-OnlineAccounts-Account.EnsureCredentials">EnsureCredentials()</link> D-Bus method on `proxy`.
@@ -30526,7 +30526,7 @@ export namespace Goa {
          */
         complete_remove(invocation: Gio.DBusMethodInvocation): void;
 
-        // Own virtual methods of Goa.Account
+        // Virtual methods
 
         /**
          * Handler for the #GoaAccount::handle-ensure-credentials signal.
@@ -30569,7 +30569,7 @@ export namespace Goa {
         override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
     }
     interface Calendar extends GObject.Object {
-        // Own properties of Goa.Calendar
+        // Properties
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Calendar.AcceptSslErrors">"AcceptSslErrors"</link>.
@@ -30649,7 +30649,7 @@ export namespace Goa {
         override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
     }
     interface Contacts extends GObject.Object {
-        // Own properties of Goa.Contacts
+        // Properties
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Contacts.AcceptSslErrors">"AcceptSslErrors"</link>.
@@ -30729,7 +30729,7 @@ export namespace Goa {
         override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
     }
     interface Exchange extends GObject.Object {
-        // Own properties of Goa.Exchange
+        // Properties
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Exchange.AcceptSslErrors">"AcceptSslErrors"</link>.
@@ -30783,7 +30783,7 @@ export namespace Goa {
         override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
     }
     interface Files extends GObject.Object {
-        // Own properties of Goa.Files
+        // Properties
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Files.AcceptSslErrors">"AcceptSslErrors"</link>.
@@ -30869,7 +30869,7 @@ export namespace Goa {
         override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
     }
     interface Mail extends GObject.Object {
-        // Own properties of Goa.Mail
+        // Properties
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Mail.EmailAddress">"EmailAddress"</link>.
@@ -31143,7 +31143,7 @@ export namespace Goa {
         override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
     }
     interface Manager extends GObject.Object {
-        // Own methods of Goa.Manager
+        // Methods
 
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-OnlineAccounts-Manager.AddAccount">AddAccount()</link> D-Bus method on `proxy`.
@@ -31244,7 +31244,7 @@ export namespace Goa {
          */
         complete_is_supported_provider(invocation: Gio.DBusMethodInvocation, is_supported: boolean): void;
 
-        // Own virtual methods of Goa.Manager
+        // Virtual methods
 
         /**
          * Handler for the #GoaManager::handle-add-account signal.
@@ -31326,7 +31326,7 @@ export namespace Goa {
         override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
     }
     interface MediaServer extends GObject.Object {
-        // Own properties of Goa.MediaServer
+        // Properties
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-MediaServer.DlnaSupported">"DlnaSupported"</link>.
@@ -31407,7 +31407,7 @@ export namespace Goa {
         override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
     }
     interface OAuth2Based extends GObject.Object {
-        // Own properties of Goa.OAuth2Based
+        // Properties
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-OAuth2Based.ClientId">"ClientId"</link>.
@@ -31438,7 +31438,7 @@ export namespace Goa {
         get clientSecret(): string;
         set clientSecret(val: string);
 
-        // Own methods of Goa.OAuth2Based
+        // Methods
 
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-OnlineAccounts-OAuth2Based.GetAccessToken">GetAccessToken()</link> D-Bus method on `proxy`.
@@ -31477,7 +31477,7 @@ export namespace Goa {
          */
         complete_get_access_token(invocation: Gio.DBusMethodInvocation, access_token: string, expires_in: number): void;
 
-        // Own virtual methods of Goa.OAuth2Based
+        // Virtual methods
 
         /**
          * Handler for the #GoaOAuth2Based::handle-get-access-token signal.
@@ -31516,7 +31516,7 @@ export namespace Goa {
         override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
     }
     interface OAuthBased extends GObject.Object {
-        // Own properties of Goa.OAuthBased
+        // Properties
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-OAuthBased.ConsumerKey">"ConsumerKey"</link>.
@@ -31547,7 +31547,7 @@ export namespace Goa {
         get consumerSecret(): string;
         set consumerSecret(val: string);
 
-        // Own methods of Goa.OAuthBased
+        // Methods
 
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-OnlineAccounts-OAuthBased.GetAccessToken">GetAccessToken()</link> D-Bus method on `proxy`.
@@ -31592,7 +31592,7 @@ export namespace Goa {
             expires_in: number,
         ): void;
 
-        // Own virtual methods of Goa.OAuthBased
+        // Virtual methods
 
         /**
          * Handler for the #GoaOAuthBased::handle-get-access-token signal.
@@ -31640,7 +31640,7 @@ export namespace Goa {
         prototype: Object;
     }
     interface Object extends Gio.DBusObject {
-        // Own properties of Goa.Object
+        // Properties
 
         /**
          * The #GoaAccount instance corresponding to the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-Account.top_of_page">org.gnome.OnlineAccounts.Account</link>, if any.
@@ -31818,7 +31818,7 @@ export namespace Goa {
         get todo(): Todo;
         set todo(val: Todo);
 
-        // Own methods of Goa.Object
+        // Methods
 
         /**
          * Gets the #GoaAccount instance for the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-Account.top_of_page">org.gnome.OnlineAccounts.Account</link> on `object,` if any.
@@ -31947,7 +31947,7 @@ export namespace Goa {
         override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
     }
     interface PasswordBased extends GObject.Object {
-        // Own methods of Goa.PasswordBased
+        // Methods
 
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-OnlineAccounts-PasswordBased.GetPassword">GetPassword()</link> D-Bus method on `proxy`.
@@ -31988,7 +31988,7 @@ export namespace Goa {
          */
         complete_get_password(invocation: Gio.DBusMethodInvocation, password: string): void;
 
-        // Own virtual methods of Goa.PasswordBased
+        // Virtual methods
 
         /**
          * Handler for the #GoaPasswordBased::handle-get-password signal.
@@ -32103,7 +32103,7 @@ export namespace Goa {
         override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
     }
     interface Ticketing extends GObject.Object {
-        // Own properties of Goa.Ticketing
+        // Properties
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-gnome-OnlineAccounts-Ticketing.Details">"Details"</link>.
@@ -32113,7 +32113,7 @@ export namespace Goa {
         get details(): GLib.Variant;
         set details(val: GLib.Variant);
 
-        // Own methods of Goa.Ticketing
+        // Methods
 
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-OnlineAccounts-Ticketing.GetTicket">GetTicket()</link> D-Bus method on `proxy`.
@@ -32147,7 +32147,7 @@ export namespace Goa {
          */
         complete_get_ticket(invocation: Gio.DBusMethodInvocation): void;
 
-        // Own virtual methods of Goa.Ticketing
+        // Virtual methods
 
         /**
          * Handler for the #GoaTicketing::handle-get-ticket signal.

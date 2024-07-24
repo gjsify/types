@@ -61,7 +61,7 @@ export namespace TelepathyFarstream {
     class Channel extends GObject.Object implements Gio.AsyncInitable<Channel> {
         static $gtype: GObject.GType<Channel>;
 
-        // Own properties of TelepathyFarstream.Channel
+        // Properties
 
         get channel(): TelepathyGLib.Channel;
         get fs_conferences(): any[];
@@ -69,7 +69,7 @@ export namespace TelepathyFarstream {
         get object_path(): string;
         get objectPath(): string;
 
-        // Constructors of TelepathyFarstream.Channel
+        // Constructors
 
         constructor(properties?: Partial<Channel.ConstructorProps>, ...args: any[]);
 
@@ -80,7 +80,7 @@ export namespace TelepathyFarstream {
 
         static new_finish(...args: never[]): any;
 
-        // Own signals of TelepathyFarstream.Channel
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -107,7 +107,7 @@ export namespace TelepathyFarstream {
         ): number;
         emit(signal: 'fs-conference-removed', conf: Farstream.Conference): void;
 
-        // Own static methods of TelepathyFarstream.Channel
+        // Static methods
 
         /**
          * Creates a new #TfChannel from an existing channel proxy, the new
@@ -120,7 +120,7 @@ export namespace TelepathyFarstream {
          */
         static new_async(channel_proxy: TelepathyGLib.Channel, callback?: Gio.AsyncReadyCallback<Channel> | null): void;
 
-        // Own methods of TelepathyFarstream.Channel
+        // Methods
 
         /**
          * You must call this function on call messages received on the async bus.
@@ -696,7 +696,7 @@ export namespace TelepathyFarstream {
     abstract class Content extends GObject.Object {
         static $gtype: GObject.GType<Content>;
 
-        // Own properties of TelepathyFarstream.Content
+        // Properties
 
         get fs_conference(): Farstream.Conference;
         get fsConference(): Farstream.Conference;
@@ -711,13 +711,13 @@ export namespace TelepathyFarstream {
         get tf_channel(): Channel;
         get tfChannel(): Channel;
 
-        // Constructors of TelepathyFarstream.Content
+        // Constructors
 
         constructor(properties?: Partial<Content.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of TelepathyFarstream.Content
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -777,7 +777,7 @@ export namespace TelepathyFarstream {
         connect_after(signal: 'stop-sending', callback: (_source: this) => void): number;
         emit(signal: 'stop-sending'): void;
 
-        // Own methods of TelepathyFarstream.Content
+        // Methods
 
         /**
          * Send a fatal streaming error to the Content to the CM, the effect is most
@@ -817,7 +817,7 @@ export namespace TelepathyFarstream {
     abstract class ChannelPrivate {
         static $gtype: GObject.GType<ChannelPrivate>;
 
-        // Constructors of TelepathyFarstream.ChannelPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -826,7 +826,7 @@ export namespace TelepathyFarstream {
     abstract class ContentPrivate {
         static $gtype: GObject.GType<ContentPrivate>;
 
-        // Constructors of TelepathyFarstream.ContentPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }

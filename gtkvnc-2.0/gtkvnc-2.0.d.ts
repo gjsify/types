@@ -71,11 +71,11 @@ export namespace GtkVnc {
     class CairoFramebuffer extends GVnc.BaseFramebuffer implements GVnc.Framebuffer {
         static $gtype: GObject.GType<CairoFramebuffer>;
 
-        // Own properties of GtkVnc.CairoFramebuffer
+        // Properties
 
         get surface(): any;
 
-        // Constructors of GtkVnc.CairoFramebuffer
+        // Constructors
 
         constructor(properties?: Partial<CairoFramebuffer.ConstructorProps>, ...args: any[]);
 
@@ -86,7 +86,7 @@ export namespace GtkVnc {
 
         static ['new'](...args: never[]): any;
 
-        // Own methods of GtkVnc.CairoFramebuffer
+        // Methods
 
         /**
          * Get the cairo surface in which the remote desktop is
@@ -782,7 +782,7 @@ export namespace GtkVnc {
     class Display extends Gtk.DrawingArea implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<Display>;
 
-        // Own properties of GtkVnc.Display
+        // Properties
 
         get allow_resize(): boolean;
         set allow_resize(val: boolean);
@@ -841,7 +841,7 @@ export namespace GtkVnc {
         get zoomLevel(): number;
         set zoomLevel(val: number);
 
-        // Constructors of GtkVnc.Display
+        // Constructors
 
         constructor(properties?: Partial<Display.ConstructorProps>, ...args: any[]);
 
@@ -849,7 +849,7 @@ export namespace GtkVnc {
 
         static ['new'](): Display;
 
-        // Own signals of GtkVnc.Display
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -912,7 +912,7 @@ export namespace GtkVnc {
         connect_after(signal: 'vnc-server-cut-text', callback: (_source: this, object: string) => void): number;
         emit(signal: 'vnc-server-cut-text', object: string): void;
 
-        // Own static methods of GtkVnc.Display
+        // Static methods
 
         /**
          * Get the array of command line option entries containing
@@ -925,14 +925,14 @@ export namespace GtkVnc {
          */
         static get_option_group(): GLib.OptionGroup;
 
-        // Own virtual methods of GtkVnc.Display
+        // Virtual methods
 
         vfunc_vnc_auth_credential(credList: GObject.ValueArray): void;
         vfunc_vnc_connected(): void;
         vfunc_vnc_disconnected(): void;
         vfunc_vnc_initialized(): void;
 
-        // Own methods of GtkVnc.Display
+        // Methods
 
         client_cut_text(text: string): void;
         /**
@@ -1696,7 +1696,7 @@ export namespace GtkVnc {
     abstract class CairoFramebufferPrivate {
         static $gtype: GObject.GType<CairoFramebufferPrivate>;
 
-        // Constructors of GtkVnc.CairoFramebufferPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1705,7 +1705,7 @@ export namespace GtkVnc {
     abstract class DisplayPrivate {
         static $gtype: GObject.GType<DisplayPrivate>;
 
-        // Constructors of GtkVnc.DisplayPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1713,12 +1713,12 @@ export namespace GtkVnc {
     class GrabSequence {
         static $gtype: GObject.GType<GrabSequence>;
 
-        // Own fields of GtkVnc.GrabSequence
+        // Fields
 
         nkeysyms: number;
         keysyms: number;
 
-        // Constructors of GtkVnc.GrabSequence
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -1732,7 +1732,7 @@ export namespace GtkVnc {
 
         static new_from_string(str: string): GrabSequence;
 
-        // Own methods of GtkVnc.GrabSequence
+        // Methods
 
         /**
          * Convert the grab sequence to a string of keysym names

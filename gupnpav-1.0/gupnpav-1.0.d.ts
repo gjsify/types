@@ -111,7 +111,7 @@ export namespace GUPnPAV {
     class ProtocolError extends GLib.Error {
         static $gtype: GObject.GType<ProtocolError>;
 
-        // Static fields of GUPnPAV.ProtocolError
+        // Static fields
 
         /**
          * Invalid syntax.
@@ -122,7 +122,7 @@ export namespace GUPnPAV {
          */
         static OTHER: number;
 
-        // Constructors of GUPnPAV.ProtocolError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
@@ -396,7 +396,7 @@ export namespace GUPnPAV {
     class CDSLastChangeParser extends GObject.Object {
         static $gtype: GObject.GType<CDSLastChangeParser>;
 
-        // Constructors of GUPnPAV.CDSLastChangeParser
+        // Constructors
 
         constructor(properties?: Partial<CDSLastChangeParser.ConstructorProps>, ...args: any[]);
 
@@ -404,7 +404,7 @@ export namespace GUPnPAV {
 
         static ['new'](): CDSLastChangeParser;
 
-        // Own methods of GUPnPAV.CDSLastChangeParser
+        // Methods
 
         /**
          * Parse a LastChange XML document in the flavor defined by the
@@ -434,7 +434,7 @@ export namespace GUPnPAV {
     class DIDLLiteContainer extends DIDLLiteObject {
         static $gtype: GObject.GType<DIDLLiteContainer>;
 
-        // Own properties of GUPnPAV.DIDLLiteContainer
+        // Properties
 
         /**
          * The child count of this container.
@@ -482,13 +482,13 @@ export namespace GUPnPAV {
         get totalDeletedChildCount(): number;
         set totalDeletedChildCount(val: number);
 
-        // Constructors of GUPnPAV.DIDLLiteContainer
+        // Constructors
 
         constructor(properties?: Partial<DIDLLiteContainer.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of GUPnPAV.DIDLLiteContainer
+        // Methods
 
         /**
          * Add a new create class to the `container`. includeDerived defaults to "0".
@@ -613,7 +613,7 @@ export namespace GUPnPAV {
     class DIDLLiteContributor extends GObject.Object {
         static $gtype: GObject.GType<DIDLLiteContributor>;
 
-        // Own properties of GUPnPAV.DIDLLiteContributor
+        // Properties
 
         /**
          * The name of this contributor.
@@ -634,13 +634,13 @@ export namespace GUPnPAV {
          */
         get xmlNode(): any;
 
-        // Constructors of GUPnPAV.DIDLLiteContributor
+        // Constructors
 
         constructor(properties?: Partial<DIDLLiteContributor.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of GUPnPAV.DIDLLiteContributor
+        // Methods
 
         /**
          * Get the name of the `contributor`.
@@ -686,7 +686,7 @@ export namespace GUPnPAV {
     class DIDLLiteCreateClass extends GObject.Object {
         static $gtype: GObject.GType<DIDLLiteCreateClass>;
 
-        // Own properties of GUPnPAV.DIDLLiteCreateClass
+        // Properties
 
         /**
          * The content of this create Class.
@@ -722,13 +722,13 @@ export namespace GUPnPAV {
          */
         get xmlNode(): any;
 
-        // Constructors of GUPnPAV.DIDLLiteCreateClass
+        // Constructors
 
         constructor(properties?: Partial<DIDLLiteCreateClass.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of GUPnPAV.DIDLLiteCreateClass
+        // Methods
 
         /**
          * Get the content of the `create_class`.
@@ -785,7 +785,7 @@ export namespace GUPnPAV {
     class DIDLLiteDescriptor extends GObject.Object {
         static $gtype: GObject.GType<DIDLLiteDescriptor>;
 
-        // Own properties of GUPnPAV.DIDLLiteDescriptor
+        // Properties
 
         /**
          * The content of this descriptor.
@@ -826,7 +826,7 @@ export namespace GUPnPAV {
          */
         get xmlNode(): any;
 
-        // Constructors of GUPnPAV.DIDLLiteDescriptor
+        // Constructors
 
         constructor(properties?: Partial<DIDLLiteDescriptor.ConstructorProps>, ...args: any[]);
 
@@ -834,7 +834,7 @@ export namespace GUPnPAV {
 
         static ['new'](): DIDLLiteDescriptor;
 
-        // Own methods of GUPnPAV.DIDLLiteDescriptor
+        // Methods
 
         /**
          * Get the content of the `descriptor`.
@@ -896,7 +896,7 @@ export namespace GUPnPAV {
     class DIDLLiteItem extends DIDLLiteObject {
         static $gtype: GObject.GType<DIDLLiteItem>;
 
-        // Own properties of GUPnPAV.DIDLLiteItem
+        // Properties
 
         /**
          * The lifetime in seconds of this DIDLLite item in a media collection.
@@ -914,13 +914,13 @@ export namespace GUPnPAV {
         get refId(): string;
         set refId(val: string);
 
-        // Constructors of GUPnPAV.DIDLLiteItem
+        // Constructors
 
         constructor(properties?: Partial<DIDLLiteItem.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of GUPnPAV.DIDLLiteItem
+        // Methods
 
         get_lifetime(): number;
         /**
@@ -980,7 +980,7 @@ export namespace GUPnPAV {
     abstract class DIDLLiteObject extends GObject.Object {
         static $gtype: GObject.GType<DIDLLiteObject>;
 
-        // Own properties of GUPnPAV.DIDLLiteObject
+        // Properties
 
         /**
          * The album of this object.
@@ -1151,13 +1151,13 @@ export namespace GUPnPAV {
          */
         get xmlNode(): any;
 
-        // Constructors of GUPnPAV.DIDLLiteObject
+        // Constructors
 
         constructor(properties?: Partial<DIDLLiteObject.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of GUPnPAV.DIDLLiteObject
+        // Methods
 
         /**
          * Add a new Artist node to the `object` and return the associated
@@ -1525,7 +1525,7 @@ export namespace GUPnPAV {
     class DIDLLiteParser extends GObject.Object {
         static $gtype: GObject.GType<DIDLLiteParser>;
 
-        // Constructors of GUPnPAV.DIDLLiteParser
+        // Constructors
 
         constructor(properties?: Partial<DIDLLiteParser.ConstructorProps>, ...args: any[]);
 
@@ -1533,7 +1533,7 @@ export namespace GUPnPAV {
 
         static ['new'](): DIDLLiteParser;
 
-        // Own signals of GUPnPAV.DIDLLiteParser
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -1551,13 +1551,13 @@ export namespace GUPnPAV {
         connect_after(signal: 'object-available', callback: (_source: this, object: DIDLLiteObject) => void): number;
         emit(signal: 'object-available', object: DIDLLiteObject): void;
 
-        // Own virtual methods of GUPnPAV.DIDLLiteParser
+        // Virtual methods
 
         vfunc_container_available(container: DIDLLiteContainer): void;
         vfunc_item_available(item: DIDLLiteItem): void;
         vfunc_object_available(object: DIDLLiteObject): void;
 
-        // Own methods of GUPnPAV.DIDLLiteParser
+        // Methods
 
         /**
          * Parses DIDL-Lite XML string `didl,` emitting the ::object-available,
@@ -1615,7 +1615,7 @@ export namespace GUPnPAV {
     class DIDLLiteResource extends GObject.Object {
         static $gtype: GObject.GType<DIDLLiteResource>;
 
-        // Own properties of GUPnPAV.DIDLLiteResource
+        // Properties
 
         /**
          * The number of audio channels in this resource.
@@ -1784,13 +1784,13 @@ export namespace GUPnPAV {
          */
         get xmlNode(): any;
 
-        // Constructors of GUPnPAV.DIDLLiteResource
+        // Constructors
 
         constructor(properties?: Partial<DIDLLiteResource.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of GUPnPAV.DIDLLiteResource
+        // Methods
 
         /**
          * Get the number of audio channels in the `resource`.
@@ -2040,7 +2040,7 @@ export namespace GUPnPAV {
     class DIDLLiteWriter extends GObject.Object {
         static $gtype: GObject.GType<DIDLLiteWriter>;
 
-        // Own properties of GUPnPAV.DIDLLiteWriter
+        // Properties
 
         /**
          * The language the DIDL-Lite fragment is in.
@@ -2055,7 +2055,7 @@ export namespace GUPnPAV {
          */
         get xmlNode(): any;
 
-        // Constructors of GUPnPAV.DIDLLiteWriter
+        // Constructors
 
         constructor(properties?: Partial<DIDLLiteWriter.ConstructorProps>, ...args: any[]);
 
@@ -2063,7 +2063,7 @@ export namespace GUPnPAV {
 
         static ['new'](language?: string | null): DIDLLiteWriter;
 
-        // Own methods of GUPnPAV.DIDLLiteWriter
+        // Methods
 
         /**
          * Creates a new container, attaches it to `writer` and returns it.
@@ -2120,7 +2120,7 @@ export namespace GUPnPAV {
     class Feature extends GObject.Object {
         static $gtype: GObject.GType<Feature>;
 
-        // Own properties of GUPnPAV.Feature
+        // Properties
 
         /**
          * The name of this feature.
@@ -2139,13 +2139,13 @@ export namespace GUPnPAV {
          */
         get version(): string;
 
-        // Constructors of GUPnPAV.Feature
+        // Constructors
 
         constructor(properties?: Partial<Feature.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of GUPnPAV.Feature
+        // Methods
 
         /**
          * Get the name of the `feature`.
@@ -2173,7 +2173,7 @@ export namespace GUPnPAV {
     class FeatureListParser extends GObject.Object {
         static $gtype: GObject.GType<FeatureListParser>;
 
-        // Constructors of GUPnPAV.FeatureListParser
+        // Constructors
 
         constructor(properties?: Partial<FeatureListParser.ConstructorProps>, ...args: any[]);
 
@@ -2181,7 +2181,7 @@ export namespace GUPnPAV {
 
         static ['new'](): FeatureListParser;
 
-        // Own methods of GUPnPAV.FeatureListParser
+        // Methods
 
         /**
          * Parses `text` and returns the list of available features.
@@ -2201,7 +2201,7 @@ export namespace GUPnPAV {
     class LastChangeParser extends GObject.Object {
         static $gtype: GObject.GType<LastChangeParser>;
 
-        // Constructors of GUPnPAV.LastChangeParser
+        // Constructors
 
         constructor(properties?: Partial<LastChangeParser.ConstructorProps>, ...args: any[]);
 
@@ -2224,7 +2224,7 @@ export namespace GUPnPAV {
     class MediaCollection extends GObject.Object {
         static $gtype: GObject.GType<MediaCollection>;
 
-        // Own properties of GUPnPAV.MediaCollection
+        // Properties
 
         /**
          * The author of this media collection.
@@ -2247,7 +2247,7 @@ export namespace GUPnPAV {
         get title(): string;
         set title(val: string);
 
-        // Constructors of GUPnPAV.MediaCollection
+        // Constructors
 
         constructor(properties?: Partial<MediaCollection.ConstructorProps>, ...args: any[]);
 
@@ -2257,7 +2257,7 @@ export namespace GUPnPAV {
 
         static new_from_string(data: string): MediaCollection;
 
-        // Own methods of GUPnPAV.MediaCollection
+        // Methods
 
         add_item(): DIDLLiteItem;
         get_author(): string;
@@ -2301,7 +2301,7 @@ export namespace GUPnPAV {
     class ProtocolInfo extends GObject.Object {
         static $gtype: GObject.GType<ProtocolInfo>;
 
-        // Own properties of GUPnPAV.ProtocolInfo
+        // Properties
 
         /**
          * The DLNA conversion flags.
@@ -2376,7 +2376,7 @@ export namespace GUPnPAV {
         get protocol(): string;
         set protocol(val: string);
 
-        // Constructors of GUPnPAV.ProtocolInfo
+        // Constructors
 
         constructor(properties?: Partial<ProtocolInfo.ConstructorProps>, ...args: any[]);
 
@@ -2386,7 +2386,7 @@ export namespace GUPnPAV {
 
         static new_from_string(protocol_info: string): ProtocolInfo;
 
-        // Own methods of GUPnPAV.ProtocolInfo
+        // Methods
 
         /**
          * Get the DLNA conversion flags.
@@ -2512,7 +2512,7 @@ export namespace GUPnPAV {
     class SearchCriteriaParser extends GObject.Object {
         static $gtype: GObject.GType<SearchCriteriaParser>;
 
-        // Constructors of GUPnPAV.SearchCriteriaParser
+        // Constructors
 
         constructor(properties?: Partial<SearchCriteriaParser.ConstructorProps>, ...args: any[]);
 
@@ -2520,7 +2520,7 @@ export namespace GUPnPAV {
 
         static ['new'](): SearchCriteriaParser;
 
-        // Own signals of GUPnPAV.SearchCriteriaParser
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -2559,11 +2559,11 @@ export namespace GUPnPAV {
         ): number;
         emit(signal: 'expression', property: string, op: SearchCriteriaOp, value: string, error?: any | null): void;
 
-        // Own static methods of GUPnPAV.SearchCriteriaParser
+        // Static methods
 
         static error_quark(): GLib.Quark;
 
-        // Own virtual methods of GUPnPAV.SearchCriteriaParser
+        // Virtual methods
 
         vfunc_begin_parens(): void;
         vfunc_conjunction(): void;
@@ -2571,7 +2571,7 @@ export namespace GUPnPAV {
         vfunc_end_parens(): void;
         vfunc_expression(property: string, op: SearchCriteriaOp, value: string): boolean;
 
-        // Own methods of GUPnPAV.SearchCriteriaParser
+        // Methods
 
         /**
          * Parses `text,` emitting the various defined signals on the way. If an
@@ -2588,11 +2588,11 @@ export namespace GUPnPAV {
     abstract class CDSLastChangeEntry {
         static $gtype: GObject.GType<CDSLastChangeEntry>;
 
-        // Constructors of GUPnPAV.CDSLastChangeEntry
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of GUPnPAV.CDSLastChangeEntry
+        // Methods
 
         /**
          * Get the class of the object in this change entry. This is only
@@ -2651,7 +2651,7 @@ export namespace GUPnPAV {
     abstract class DIDLLiteObjectPrivate {
         static $gtype: GObject.GType<DIDLLiteObjectPrivate>;
 
-        // Constructors of GUPnPAV.DIDLLiteObjectPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }

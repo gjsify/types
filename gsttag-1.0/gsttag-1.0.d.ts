@@ -889,17 +889,17 @@ export namespace GstTag {
     abstract class TagDemux extends Gst.Element {
         static $gtype: GObject.GType<TagDemux>;
 
-        // Own fields of GstTag.TagDemux
+        // Fields
 
         element: Gst.Element;
 
-        // Constructors of GstTag.TagDemux
+        // Constructors
 
         constructor(properties?: Partial<TagDemux.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of GstTag.TagDemux
+        // Virtual methods
 
         vfunc_identify_tag(buffer: Gst.Buffer, start_tag: boolean, tag_size: number): boolean;
         vfunc_merge_tags(start_tags: Gst.TagList, end_tags: Gst.TagList): Gst.TagList;
@@ -931,17 +931,17 @@ export namespace GstTag {
     abstract class TagMux extends Gst.Element implements Gst.TagSetter {
         static $gtype: GObject.GType<TagMux>;
 
-        // Own fields of GstTag.TagMux
+        // Fields
 
         element: Gst.Element;
 
-        // Constructors of GstTag.TagMux
+        // Constructors
 
         constructor(properties?: Partial<TagMux.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of GstTag.TagMux
+        // Virtual methods
 
         vfunc_render_end_tag(tag_list: Gst.TagList): Gst.Buffer;
         vfunc_render_start_tag(tag_list: Gst.TagList): Gst.Buffer;
@@ -1893,7 +1893,7 @@ export namespace GstTag {
     abstract class TagDemuxPrivate {
         static $gtype: GObject.GType<TagDemuxPrivate>;
 
-        // Constructors of GstTag.TagDemuxPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1902,7 +1902,7 @@ export namespace GstTag {
     abstract class TagMuxPrivate {
         static $gtype: GObject.GType<TagMuxPrivate>;
 
-        // Constructors of GstTag.TagMuxPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1919,7 +1919,7 @@ export namespace GstTag {
         prototype: TagXmpWriter;
     }
     interface TagXmpWriter extends Gst.Element {
-        // Own methods of GstTag.TagXmpWriter
+        // Methods
 
         /**
          * Adds all available XMP schemas to the configuration. Meaning that

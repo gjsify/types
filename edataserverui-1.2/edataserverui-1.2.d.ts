@@ -233,12 +233,12 @@ export namespace EDataServerUI {
     class CellRendererColor extends Gtk.CellRenderer {
         static $gtype: GObject.GType<CellRendererColor>;
 
-        // Own properties of EDataServerUI.CellRendererColor
+        // Properties
 
         get rgba(): Gdk.RGBA;
         set rgba(val: Gdk.RGBA);
 
-        // Constructors of EDataServerUI.CellRendererColor
+        // Constructors
 
         constructor(properties?: Partial<CellRendererColor.ConstructorProps>, ...args: any[]);
 
@@ -259,7 +259,7 @@ export namespace EDataServerUI {
     class CertificateWidget extends Gtk.ScrolledWindow implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<CertificateWidget>;
 
-        // Constructors of EDataServerUI.CertificateWidget
+        // Constructors
 
         constructor(properties?: Partial<CertificateWidget.ConstructorProps>, ...args: any[]);
 
@@ -267,7 +267,7 @@ export namespace EDataServerUI {
 
         static ['new'](): CertificateWidget;
 
-        // Own methods of EDataServerUI.CertificateWidget
+        // Methods
 
         /**
          * Updates the content of the `self` with the certificate information
@@ -719,7 +719,7 @@ export namespace EDataServerUI {
     class CredentialsPrompter extends GObject.Object implements EDataServer.Extensible {
         static $gtype: GObject.GType<CredentialsPrompter>;
 
-        // Own properties of EDataServerUI.CredentialsPrompter
+        // Properties
 
         /**
          * Whether the #ECredentialsPrompter can response to credential
@@ -742,7 +742,7 @@ export namespace EDataServerUI {
          */
         get registry(): EDataServer.SourceRegistry;
 
-        // Constructors of EDataServerUI.CredentialsPrompter
+        // Constructors
 
         constructor(properties?: Partial<CredentialsPrompter.ConstructorProps>, ...args: any[]);
 
@@ -750,7 +750,7 @@ export namespace EDataServerUI {
 
         static ['new'](registry: EDataServer.SourceRegistry): CredentialsPrompter;
 
-        // Own signals of EDataServerUI.CredentialsPrompter
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -768,7 +768,7 @@ export namespace EDataServerUI {
         ): number;
         emit(signal: 'get-dialog-parent-full', auth_source?: EDataServer.Source | null): void;
 
-        // Own virtual methods of EDataServerUI.CredentialsPrompter
+        // Virtual methods
 
         /**
          * Returns a #GtkWindow, which should be used as a dialog parent. This is determined
@@ -778,7 +778,7 @@ export namespace EDataServerUI {
          */
         vfunc_get_dialog_parent(): Gtk.Window | null;
 
-        // Own methods of EDataServerUI.CredentialsPrompter
+        // Methods
 
         /**
          * Returns, whether can respond to credential prompts automatically.
@@ -1388,13 +1388,13 @@ export namespace EDataServerUI {
     abstract class CredentialsPrompterImpl extends EDataServer.Extension {
         static $gtype: GObject.GType<CredentialsPrompterImpl>;
 
-        // Constructors of EDataServerUI.CredentialsPrompterImpl
+        // Constructors
 
         constructor(properties?: Partial<CredentialsPrompterImpl.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of EDataServerUI.CredentialsPrompterImpl
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -1409,7 +1409,7 @@ export namespace EDataServerUI {
         ): number;
         emit(signal: 'prompt-finished', prompt_id?: any | null, credentials?: EDataServer.NamedParameters | null): void;
 
-        // Own virtual methods of EDataServerUI.CredentialsPrompterImpl
+        // Virtual methods
 
         /**
          * Asks the `prompt_impl` to cancel current prompt, which should have ID `prompt_id`.
@@ -1425,7 +1425,7 @@ export namespace EDataServerUI {
         ): void;
         vfunc_prompt_finished(prompt_id: any | null, credentials: EDataServer.NamedParameters): void;
 
-        // Own methods of EDataServerUI.CredentialsPrompterImpl
+        // Methods
 
         /**
          * Asks the `prompt_impl` to cancel current prompt, which should have ID `prompt_id`.
@@ -1489,7 +1489,7 @@ export namespace EDataServerUI {
     class CredentialsPrompterImplOAuth2 extends CredentialsPrompterImpl {
         static $gtype: GObject.GType<CredentialsPrompterImplOAuth2>;
 
-        // Constructors of EDataServerUI.CredentialsPrompterImplOAuth2
+        // Constructors
 
         constructor(properties?: Partial<CredentialsPrompterImplOAuth2.ConstructorProps>, ...args: any[]);
 
@@ -1511,7 +1511,7 @@ export namespace EDataServerUI {
     class CredentialsPrompterImplPassword extends CredentialsPrompterImpl {
         static $gtype: GObject.GType<CredentialsPrompterImplPassword>;
 
-        // Constructors of EDataServerUI.CredentialsPrompterImplPassword
+        // Constructors
 
         constructor(properties?: Partial<CredentialsPrompterImplPassword.ConstructorProps>, ...args: any[]);
 
@@ -1554,12 +1554,12 @@ export namespace EDataServerUI {
     {
         static $gtype: GObject.GType<RemindersWidget>;
 
-        // Own properties of EDataServerUI.RemindersWidget
+        // Properties
 
         get empty(): boolean;
         get watcher(): ECal.ReminderWatcher;
 
-        // Constructors of EDataServerUI.RemindersWidget
+        // Constructors
 
         constructor(properties?: Partial<RemindersWidget.ConstructorProps>, ...args: any[]);
 
@@ -1570,7 +1570,7 @@ export namespace EDataServerUI {
 
         static ['new'](...args: never[]): any;
 
-        // Own signals of EDataServerUI.RemindersWidget
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -1582,12 +1582,12 @@ export namespace EDataServerUI {
         connect_after(signal: 'changed', callback: (_source: this) => void): number;
         emit(signal: 'changed'): void;
 
-        // Own virtual methods of EDataServerUI.RemindersWidget
+        // Virtual methods
 
         vfunc_activated(rd: ECal.ReminderData): boolean;
         vfunc_changed(): void;
 
-        // Own methods of EDataServerUI.RemindersWidget
+        // Methods
 
         get_paned(): Gtk.Paned;
         get_settings(): Gio.Settings;
@@ -2062,7 +2062,7 @@ export namespace EDataServerUI {
     class WebDAVDiscoverContent extends Gtk.Grid implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<WebDAVDiscoverContent>;
 
-        // Constructors of EDataServerUI.WebDAVDiscoverContent
+        // Constructors
 
         constructor(properties?: Partial<WebDAVDiscoverContent.ConstructorProps>, ...args: any[]);
 
@@ -2078,7 +2078,7 @@ export namespace EDataServerUI {
 
         static ['new'](...args: never[]): any;
 
-        // Own methods of EDataServerUI.WebDAVDiscoverContent
+        // Methods
 
         /**
          * Returns currently set base URL for the `content`. This is used to overwrite the one
@@ -2592,7 +2592,7 @@ export namespace EDataServerUI {
     class WebDAVDiscoverDialog extends Gtk.Dialog implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<WebDAVDiscoverDialog>;
 
-        // Constructors of EDataServerUI.WebDAVDiscoverDialog
+        // Constructors
 
         constructor(properties?: Partial<WebDAVDiscoverDialog.ConstructorProps>, ...args: any[]);
 
@@ -2610,7 +2610,7 @@ export namespace EDataServerUI {
 
         static ['new'](...args: never[]): any;
 
-        // Own methods of EDataServerUI.WebDAVDiscoverDialog
+        // Methods
 
         /**
          * Returns inner WebDAV discovery content, which can be further manipulated.
@@ -3029,7 +3029,7 @@ export namespace EDataServerUI {
     abstract class CellRendererColorPrivate {
         static $gtype: GObject.GType<CellRendererColorPrivate>;
 
-        // Constructors of EDataServerUI.CellRendererColorPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3038,7 +3038,7 @@ export namespace EDataServerUI {
     abstract class CertificateWidgetPrivate {
         static $gtype: GObject.GType<CertificateWidgetPrivate>;
 
-        // Constructors of EDataServerUI.CertificateWidgetPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3049,7 +3049,7 @@ export namespace EDataServerUI {
     abstract class CredentialsPrompterImplOAuth2Private {
         static $gtype: GObject.GType<CredentialsPrompterImplOAuth2Private>;
 
-        // Constructors of EDataServerUI.CredentialsPrompterImplOAuth2Private
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3058,7 +3058,7 @@ export namespace EDataServerUI {
     abstract class CredentialsPrompterImplPasswordPrivate {
         static $gtype: GObject.GType<CredentialsPrompterImplPasswordPrivate>;
 
-        // Constructors of EDataServerUI.CredentialsPrompterImplPasswordPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3066,7 +3066,7 @@ export namespace EDataServerUI {
     abstract class CredentialsPrompterImplPrivate {
         static $gtype: GObject.GType<CredentialsPrompterImplPrivate>;
 
-        // Constructors of EDataServerUI.CredentialsPrompterImplPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3074,7 +3074,7 @@ export namespace EDataServerUI {
     abstract class CredentialsPrompterPrivate {
         static $gtype: GObject.GType<CredentialsPrompterPrivate>;
 
-        // Constructors of EDataServerUI.CredentialsPrompterPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3083,7 +3083,7 @@ export namespace EDataServerUI {
     abstract class RemindersWidgetPrivate {
         static $gtype: GObject.GType<RemindersWidgetPrivate>;
 
-        // Constructors of EDataServerUI.RemindersWidgetPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }

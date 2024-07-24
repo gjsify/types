@@ -1127,7 +1127,7 @@ export namespace TelepathyGLib {
     class Error extends GLib.Error {
         static $gtype: GObject.GType<Error>;
 
-        // Static fields of TelepathyGLib.Error
+        // Static fields
 
         /**
          * org.freedesktop.Telepathy.Error.NetworkError:
@@ -1474,7 +1474,7 @@ export namespace TelepathyGLib {
          */
         static CAPTCHA_NOT_SUPPORTED: number;
 
-        // Constructors of TelepathyGLib.Error
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
@@ -5009,7 +5009,7 @@ export namespace TelepathyGLib {
     class Account extends Proxy {
         static $gtype: GObject.GType<Account>;
 
-        // Own properties of TelepathyGLib.Account
+        // Properties
 
         /**
          * The account's automatic presence type (a #TpConnectionPresenceType).
@@ -5829,7 +5829,7 @@ export namespace TelepathyGLib {
          */
         get valid(): boolean;
 
-        // Constructors of TelepathyGLib.Account
+        // Constructors
 
         constructor(properties?: Partial<Account.ConstructorProps>, ...args: any[]);
 
@@ -5837,7 +5837,7 @@ export namespace TelepathyGLib {
 
         static ['new'](bus_daemon: DBusDaemon, object_path: string): Account;
 
-        // Own signals of TelepathyGLib.Account
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -5885,7 +5885,7 @@ export namespace TelepathyGLib {
             details: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
         ): void;
 
-        // Own static methods of TelepathyGLib.Account
+        // Static methods
 
         static get_feature_quark_addressing(): GLib.Quark;
         /**
@@ -5922,7 +5922,7 @@ export namespace TelepathyGLib {
          */
         static parse_object_path(object_path: string): [boolean, string, string, string];
 
-        // Own methods of TelepathyGLib.Account
+        // Methods
 
         /**
          * <!-- -->
@@ -6501,7 +6501,7 @@ export namespace TelepathyGLib {
     class AccountChannelRequest extends GObject.Object {
         static $gtype: GObject.GType<AccountChannelRequest>;
 
-        // Own properties of TelepathyGLib.AccountChannelRequest
+        // Properties
 
         /**
          * The #TpAccount used to request the channel.
@@ -6613,7 +6613,7 @@ export namespace TelepathyGLib {
          */
         get userActionTime(): number;
 
-        // Constructors of TelepathyGLib.AccountChannelRequest
+        // Constructors
 
         constructor(properties?: Partial<AccountChannelRequest.ConstructorProps>, ...args: any[]);
 
@@ -6645,7 +6645,7 @@ export namespace TelepathyGLib {
 
         static new_vardict(account: Account, request: GLib.Variant, user_action_time: number): AccountChannelRequest;
 
-        // Own signals of TelepathyGLib.AccountChannelRequest
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -6670,7 +6670,7 @@ export namespace TelepathyGLib {
         ): number;
         emit(signal: 're-handled', channel: Channel, user_action_time: number, context: HandleChannelsContext): void;
 
-        // Own methods of TelepathyGLib.AccountChannelRequest
+        // Methods
 
         /**
          * Asynchronously calls CreateChannel on the ChannelDispatcher to create a
@@ -7187,7 +7187,7 @@ export namespace TelepathyGLib {
     class AccountManager extends Proxy {
         static $gtype: GObject.GType<AccountManager>;
 
-        // Constructors of TelepathyGLib.AccountManager
+        // Constructors
 
         constructor(properties?: Partial<AccountManager.ConstructorProps>, ...args: any[]);
 
@@ -7197,7 +7197,7 @@ export namespace TelepathyGLib {
 
         static new_with_factory(factory: SimpleClientFactory): AccountManager;
 
-        // Own signals of TelepathyGLib.AccountManager
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -7230,7 +7230,7 @@ export namespace TelepathyGLib {
         ): number;
         emit(signal: 'most-available-presence-changed', presence: number, status: string, message: string): void;
 
-        // Own static methods of TelepathyGLib.AccountManager
+        // Static methods
 
         /**
          * Check if tp_account_manager_set_default() has already successfully been
@@ -7268,7 +7268,7 @@ export namespace TelepathyGLib {
          */
         static init_known_interfaces(): void;
 
-        // Own methods of TelepathyGLib.AccountManager
+        // Methods
 
         /**
          * Requests an asynchronous create of an account on the account manager
@@ -7487,7 +7487,7 @@ export namespace TelepathyGLib {
     class AccountRequest extends GObject.Object {
         static $gtype: GObject.GType<AccountRequest>;
 
-        // Own properties of TelepathyGLib.AccountRequest
+        // Properties
 
         /**
          * The #TpAccountManager to create the account on.
@@ -7681,7 +7681,7 @@ export namespace TelepathyGLib {
          */
         get supersedes(): string[];
 
-        // Constructors of TelepathyGLib.AccountRequest
+        // Constructors
 
         constructor(properties?: Partial<AccountRequest.ConstructorProps>, ...args: any[]);
 
@@ -7700,7 +7700,7 @@ export namespace TelepathyGLib {
             display_name: string,
         ): AccountRequest;
 
-        // Own methods of TelepathyGLib.AccountRequest
+        // Methods
 
         /**
          * Add an account object path to the list of superseded accounts which
@@ -7848,7 +7848,7 @@ export namespace TelepathyGLib {
     class AddDispatchOperationContext extends GObject.Object {
         static $gtype: GObject.GType<AddDispatchOperationContext>;
 
-        // Own properties of TelepathyGLib.AddDispatchOperationContext
+        // Properties
 
         /**
          * A #TpAccount object representing the Account of the DispatchOperation
@@ -7891,13 +7891,13 @@ export namespace TelepathyGLib {
          */
         get dispatchOperation(): ChannelDispatchOperation;
 
-        // Constructors of TelepathyGLib.AddDispatchOperationContext
+        // Constructors
 
         constructor(properties?: Partial<AddDispatchOperationContext.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of TelepathyGLib.AddDispatchOperationContext
+        // Methods
 
         /**
          * Called by #TpBaseClientClassAddDispatchOperationImpl when it's done so
@@ -7932,7 +7932,7 @@ export namespace TelepathyGLib {
     class AutomaticClientFactory extends SimpleClientFactory {
         static $gtype: GObject.GType<AutomaticClientFactory>;
 
-        // Constructors of TelepathyGLib.AutomaticClientFactory
+        // Constructors
 
         constructor(properties?: Partial<AutomaticClientFactory.ConstructorProps>, ...args: any[]);
 
@@ -7953,7 +7953,7 @@ export namespace TelepathyGLib {
     class AutomaticProxyFactory extends GObject.Object implements ClientChannelFactory {
         static $gtype: GObject.GType<AutomaticProxyFactory>;
 
-        // Constructors of TelepathyGLib.AutomaticProxyFactory
+        // Constructors
 
         constructor(properties?: Partial<AutomaticProxyFactory.ConstructorProps>, ...args: any[]);
 
@@ -7961,7 +7961,7 @@ export namespace TelepathyGLib {
 
         static ['new'](): AutomaticProxyFactory;
 
-        // Own static methods of TelepathyGLib.AutomaticProxyFactory
+        // Static methods
 
         /**
          * Returns a cached #TpAutomaticProxyFactory; the same
@@ -8434,7 +8434,7 @@ export namespace TelepathyGLib {
     abstract class BaseClient extends GObject.Object {
         static $gtype: GObject.GType<BaseClient>;
 
-        // Own properties of TelepathyGLib.BaseClient
+        // Properties
 
         /**
          * Account manager for this base client, used to look up or create
@@ -8555,13 +8555,13 @@ export namespace TelepathyGLib {
          */
         get uniquifyName(): boolean;
 
-        // Constructors of TelepathyGLib.BaseClient
+        // Constructors
 
         constructor(properties?: Partial<BaseClient.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of TelepathyGLib.BaseClient
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -8585,7 +8585,7 @@ export namespace TelepathyGLib {
         ): number;
         emit(signal: 'request-removed', request: ChannelRequest, error: string, message: string): void;
 
-        // Own virtual methods of TelepathyGLib.BaseClient
+        // Virtual methods
 
         vfunc_add_dispatch_operation(
             account: Account,
@@ -8611,7 +8611,7 @@ export namespace TelepathyGLib {
             context: ObserveChannelsContext,
         ): void;
 
-        // Own methods of TelepathyGLib.BaseClient
+        // Methods
 
         /**
          * Request that the given features are prepared on each #TpAccount (in
@@ -8991,7 +8991,7 @@ export namespace TelepathyGLib {
     abstract class BaseConnection extends GObject.Object {
         static $gtype: GObject.GType<BaseConnection>;
 
-        // Own properties of TelepathyGLib.BaseConnection
+        // Properties
 
         /**
          * The suffix of the account object path such as
@@ -9026,13 +9026,13 @@ export namespace TelepathyGLib {
          */
         get hasImmortalHandles(): boolean;
 
-        // Constructors of TelepathyGLib.BaseConnection
+        // Constructors
 
         constructor(properties?: Partial<BaseConnection.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of TelepathyGLib.BaseConnection
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -9047,7 +9047,7 @@ export namespace TelepathyGLib {
         connect_after(signal: 'shutdown-finished', callback: (_source: this) => void): number;
         emit(signal: 'shutdown-finished'): void;
 
-        // Own virtual methods of TelepathyGLib.BaseConnection
+        // Virtual methods
 
         vfunc_connected(): void;
         vfunc_connecting(): void;
@@ -9056,7 +9056,7 @@ export namespace TelepathyGLib {
         vfunc_shut_down(): void;
         vfunc_start_connecting(): boolean;
 
-        // Own methods of TelepathyGLib.BaseConnection
+        // Methods
 
         /**
          * Add a "client interest" for `token` on behalf of the given client.
@@ -9236,7 +9236,7 @@ export namespace TelepathyGLib {
     class BasicProxyFactory extends GObject.Object implements ClientChannelFactory {
         static $gtype: GObject.GType<BasicProxyFactory>;
 
-        // Constructors of TelepathyGLib.BasicProxyFactory
+        // Constructors
 
         constructor(properties?: Partial<BasicProxyFactory.ConstructorProps>, ...args: any[]);
 
@@ -9244,7 +9244,7 @@ export namespace TelepathyGLib {
 
         static ['new'](): BasicProxyFactory;
 
-        // Own static methods of TelepathyGLib.BasicProxyFactory
+        // Static methods
 
         /**
          * Returns a cached #TpBasicProxyFactory; the same #TpBasicProxyFactory object
@@ -9747,7 +9747,7 @@ export namespace TelepathyGLib {
     class CallChannel extends Channel {
         static $gtype: GObject.GType<CallChannel>;
 
-        // Own properties of TelepathyGLib.CallChannel
+        // Properties
 
         /**
          * #GPtrArray of #TpCallContent objects. The list of content objects that are
@@ -9852,13 +9852,13 @@ export namespace TelepathyGLib {
          */
         get stateReason(): CallStateReason;
 
-        // Constructors of TelepathyGLib.CallChannel
+        // Constructors
 
         constructor(properties?: Partial<CallChannel.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of TelepathyGLib.CallChannel
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -9927,11 +9927,11 @@ export namespace TelepathyGLib {
             details: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
         ): void;
 
-        // Own static methods of TelepathyGLib.CallChannel
+        // Static methods
 
         static get_feature_quark_core(): GLib.Quark;
 
-        // Own methods of TelepathyGLib.CallChannel
+        // Methods
 
         /**
          * For incoming calls with #TpCallChannel:state set to
@@ -10137,7 +10137,7 @@ export namespace TelepathyGLib {
     class CallContent extends Proxy {
         static $gtype: GObject.GType<CallContent>;
 
-        // Own properties of TelepathyGLib.CallContent
+        // Properties
 
         /**
          * The parent #TpCallChannel of the content.
@@ -10172,13 +10172,13 @@ export namespace TelepathyGLib {
          */
         get streams(): any[];
 
-        // Constructors of TelepathyGLib.CallContent
+        // Constructors
 
         constructor(properties?: Partial<CallContent.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of TelepathyGLib.CallContent
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -10199,7 +10199,7 @@ export namespace TelepathyGLib {
         ): number;
         emit(signal: 'streams-removed', streams: CallStream[], reason: CallStateReason): void;
 
-        // Own static methods of TelepathyGLib.CallContent
+        // Static methods
 
         static get_feature_quark_core(): GLib.Quark;
         /**
@@ -10212,7 +10212,7 @@ export namespace TelepathyGLib {
          */
         static init_known_interfaces(): void;
 
-        // Own methods of TelepathyGLib.CallContent
+        // Methods
 
         /**
          * <!-- -->
@@ -10300,7 +10300,7 @@ export namespace TelepathyGLib {
     class CallStream extends Proxy {
         static $gtype: GObject.GType<CallStream>;
 
-        // Own properties of TelepathyGLib.CallStream
+        // Properties
 
         /**
          * If %TRUE, the user can request that a remote contact starts sending on this
@@ -10329,13 +10329,13 @@ export namespace TelepathyGLib {
          */
         get localSendingState(): number;
 
-        // Constructors of TelepathyGLib.CallStream
+        // Constructors
 
         constructor(properties?: Partial<CallStream.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of TelepathyGLib.CallStream
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -10374,7 +10374,7 @@ export namespace TelepathyGLib {
             reason: CallStateReason,
         ): void;
 
-        // Own static methods of TelepathyGLib.CallStream
+        // Static methods
 
         static get_feature_quark_core(): GLib.Quark;
         /**
@@ -10387,7 +10387,7 @@ export namespace TelepathyGLib {
          */
         static init_known_interfaces(): void;
 
-        // Own methods of TelepathyGLib.CallStream
+        // Methods
 
         /**
          * <!-- -->
@@ -10460,7 +10460,7 @@ export namespace TelepathyGLib {
     class Capabilities extends GObject.Object {
         static $gtype: GObject.GType<Capabilities>;
 
-        // Own properties of TelepathyGLib.Capabilities
+        // Properties
 
         /**
          * The underlying data structure used by Telepathy to represent the
@@ -10503,13 +10503,13 @@ export namespace TelepathyGLib {
          */
         get contactSpecific(): boolean;
 
-        // Constructors of TelepathyGLib.Capabilities
+        // Constructors
 
         constructor(properties?: Partial<Capabilities.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of TelepathyGLib.Capabilities
+        // Methods
 
         /**
          * Return the #TpCapabilities:channel-classes-variant property
@@ -10784,7 +10784,7 @@ export namespace TelepathyGLib {
     class Channel extends Proxy {
         static $gtype: GObject.GType<Channel>;
 
-        // Own properties of TelepathyGLib.Channel
+        // Properties
 
         /**
          * Initially %FALSE; changes to %TRUE when tp_proxy_prepare_async() has
@@ -11067,7 +11067,7 @@ export namespace TelepathyGLib {
          */
         get targetContact(): Contact;
 
-        // Constructors of TelepathyGLib.Channel
+        // Constructors
 
         constructor(properties?: Partial<Channel.ConstructorProps>, ...args: any[]);
 
@@ -11087,7 +11087,7 @@ export namespace TelepathyGLib {
             immutable_properties: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
         ): Channel;
 
-        // Own signals of TelepathyGLib.Channel
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -11210,7 +11210,7 @@ export namespace TelepathyGLib {
             details: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
         ): void;
 
-        // Own static methods of TelepathyGLib.Channel
+        // Static methods
 
         static get_feature_quark_chat_states(): GLib.Quark;
         static get_feature_quark_contacts(): GLib.Quark;
@@ -11227,7 +11227,7 @@ export namespace TelepathyGLib {
          */
         static init_known_interfaces(): void;
 
-        // Own methods of TelepathyGLib.Channel
+        // Methods
 
         /**
          * Returns the connection for this channel. The returned pointer is only valid
@@ -11716,7 +11716,7 @@ export namespace TelepathyGLib {
     class ChannelDispatchOperation extends Proxy {
         static $gtype: GObject.GType<ChannelDispatchOperation>;
 
-        // Own properties of TelepathyGLib.ChannelDispatchOperation
+        // Properties
 
         /**
          * The #TpAccount with which the connection and channels are associated.
@@ -11768,7 +11768,7 @@ export namespace TelepathyGLib {
          */
         get possibleHandlers(): string[];
 
-        // Constructors of TelepathyGLib.ChannelDispatchOperation
+        // Constructors
 
         constructor(properties?: Partial<ChannelDispatchOperation.ConstructorProps>, ...args: any[]);
 
@@ -11780,7 +11780,7 @@ export namespace TelepathyGLib {
             immutable_properties: { [key: string]: any } | GLib.HashTable<any, any>,
         ): ChannelDispatchOperation;
 
-        // Own signals of TelepathyGLib.ChannelDispatchOperation
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -11795,7 +11795,7 @@ export namespace TelepathyGLib {
         ): number;
         emit(signal: 'channel-lost', channel: Channel, domain: number, code: number, message: string): void;
 
-        // Own static methods of TelepathyGLib.ChannelDispatchOperation
+        // Static methods
 
         static get_feature_quark_core(): GLib.Quark;
         /**
@@ -11808,7 +11808,7 @@ export namespace TelepathyGLib {
          */
         static init_known_interfaces(): void;
 
-        // Own methods of TelepathyGLib.ChannelDispatchOperation
+        // Methods
 
         /**
          * Called by an approver to claim channels for handling internally.
@@ -12037,7 +12037,7 @@ export namespace TelepathyGLib {
     class ChannelDispatcher extends Proxy {
         static $gtype: GObject.GType<ChannelDispatcher>;
 
-        // Constructors of TelepathyGLib.ChannelDispatcher
+        // Constructors
 
         constructor(properties?: Partial<ChannelDispatcher.ConstructorProps>, ...args: any[]);
 
@@ -12045,7 +12045,7 @@ export namespace TelepathyGLib {
 
         static ['new'](bus_daemon: DBusDaemon): ChannelDispatcher;
 
-        // Own static methods of TelepathyGLib.ChannelDispatcher
+        // Static methods
 
         /**
          * Ensure that the known interfaces for TpChannelDispatcher have been set up.
@@ -12057,7 +12057,7 @@ export namespace TelepathyGLib {
          */
         static init_known_interfaces(): void;
 
-        // Own methods of TelepathyGLib.ChannelDispatcher
+        // Methods
 
         /**
          * Asynchronously calls PresentChannel on the ChannelDispatcher to ask
@@ -12142,7 +12142,7 @@ export namespace TelepathyGLib {
     class ChannelRequest extends Proxy {
         static $gtype: GObject.GType<ChannelRequest>;
 
-        // Own properties of TelepathyGLib.ChannelRequest
+        // Properties
 
         /**
          * The #TpAccount on which this request was made, not guaranteed
@@ -12244,7 +12244,7 @@ export namespace TelepathyGLib {
          */
         get userActionTime(): number;
 
-        // Constructors of TelepathyGLib.ChannelRequest
+        // Constructors
 
         constructor(properties?: Partial<ChannelRequest.ConstructorProps>, ...args: any[]);
 
@@ -12256,7 +12256,7 @@ export namespace TelepathyGLib {
             immutable_properties: { [key: string]: any } | GLib.HashTable<any, any>,
         ): ChannelRequest;
 
-        // Own signals of TelepathyGLib.ChannelRequest
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -12274,7 +12274,7 @@ export namespace TelepathyGLib {
         ): number;
         emit(signal: 'succeeded-with-channel', connection: Connection, channel: Channel): void;
 
-        // Own static methods of TelepathyGLib.ChannelRequest
+        // Static methods
 
         /**
          * Ensure that the known interfaces for TpChannelRequest have been set up.
@@ -12286,7 +12286,7 @@ export namespace TelepathyGLib {
          */
         static init_known_interfaces(): void;
 
-        // Own methods of TelepathyGLib.ChannelRequest
+        // Methods
 
         /**
          * Return the #TpChannelRequest:hints-vardict property
@@ -12343,7 +12343,7 @@ export namespace TelepathyGLib {
     class ClientMessage extends Message {
         static $gtype: GObject.GType<ClientMessage>;
 
-        // Constructors of TelepathyGLib.ClientMessage
+        // Constructors
 
         constructor(properties?: Partial<ClientMessage.ConstructorProps>, ...args: any[]);
 
@@ -12438,7 +12438,7 @@ export namespace TelepathyGLib {
     class Connection extends Proxy {
         static $gtype: GObject.GType<Connection>;
 
-        // Own properties of TelepathyGLib.Connection
+        // Properties
 
         /**
          * The Amount field of the Balance.AccountBalance property.
@@ -12868,7 +12868,7 @@ export namespace TelepathyGLib {
          */
         get statusReason(): number;
 
-        // Constructors of TelepathyGLib.Connection
+        // Constructors
 
         constructor(properties?: Partial<Connection.ConstructorProps>, ...args: any[]);
 
@@ -12876,7 +12876,7 @@ export namespace TelepathyGLib {
 
         static ['new'](dbus: DBusDaemon, bus_name?: string | null, object_path?: string | null): Connection;
 
-        // Own signals of TelepathyGLib.Connection
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -12921,7 +12921,7 @@ export namespace TelepathyGLib {
         connect_after(signal: 'groups-removed', callback: (_source: this, added: string[]) => void): number;
         emit(signal: 'groups-removed', added: string[]): void;
 
-        // Own static methods of TelepathyGLib.Connection
+        // Static methods
 
         static get_feature_quark_aliasing(): GLib.Quark;
         static get_feature_quark_avatar_requirements(): GLib.Quark;
@@ -12954,7 +12954,7 @@ export namespace TelepathyGLib {
          */
         static presence_type_cmp_availability(p1: ConnectionPresenceType, p2: ConnectionPresenceType): number;
 
-        // Own methods of TelepathyGLib.Connection
+        // Methods
 
         /**
          * Subscribe to any opt-in change notifications for `interested_in`.
@@ -13762,7 +13762,7 @@ export namespace TelepathyGLib {
     class ConnectionManager extends Proxy {
         static $gtype: GObject.GType<ConnectionManager>;
 
-        // Own properties of TelepathyGLib.ConnectionManager
+        // Properties
 
         /**
          * If %TRUE, always introspect the connection manager as it comes online,
@@ -13833,7 +13833,7 @@ export namespace TelepathyGLib {
         get managerFile(): string;
         set managerFile(val: string);
 
-        // Constructors of TelepathyGLib.ConnectionManager
+        // Constructors
 
         constructor(properties?: Partial<ConnectionManager.ConstructorProps>, ...args: any[]);
 
@@ -13841,7 +13841,7 @@ export namespace TelepathyGLib {
 
         static ['new'](dbus: DBusDaemon, name: string, manager_filename?: string | null): ConnectionManager;
 
-        // Own signals of TelepathyGLib.ConnectionManager
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -13856,7 +13856,7 @@ export namespace TelepathyGLib {
         connect_after(signal: 'got-info', callback: (_source: this, source: number) => void): number;
         emit(signal: 'got-info', source: number): void;
 
-        // Own static methods of TelepathyGLib.ConnectionManager
+        // Static methods
 
         /**
          * Check that the given string is a valid connection manager name, i.e. that
@@ -13883,7 +13883,7 @@ export namespace TelepathyGLib {
          */
         static init_known_interfaces(): void;
 
-        // Own methods of TelepathyGLib.ConnectionManager
+        // Methods
 
         /**
          * Returns a list of protocol names supported by this connection manager.
@@ -14066,7 +14066,7 @@ export namespace TelepathyGLib {
     class Contact extends GObject.Object {
         static $gtype: GObject.GType<Contact>;
 
-        // Own properties of TelepathyGLib.Contact
+        // Properties
 
         /**
          * The contact's alias if available, falling back to their
@@ -14386,13 +14386,13 @@ export namespace TelepathyGLib {
          */
         get subscribeState(): number;
 
-        // Constructors of TelepathyGLib.Contact
+        // Constructors
 
         constructor(properties?: Partial<Contact.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of TelepathyGLib.Contact
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -14425,7 +14425,7 @@ export namespace TelepathyGLib {
         ): number;
         emit(signal: 'subscription-states-changed', subscribe: number, publish: number, publish_request: string): void;
 
-        // Own methods of TelepathyGLib.Contact
+        // Methods
 
         /**
          * Convenience wrapper for tp_connection_add_to_group_async()
@@ -14798,7 +14798,7 @@ export namespace TelepathyGLib {
     class ContactSearch extends GObject.Object implements Gio.AsyncInitable<ContactSearch> {
         static $gtype: GObject.GType<ContactSearch>;
 
-        // Own properties of TelepathyGLib.ContactSearch
+        // Properties
 
         /**
          * This search's account.
@@ -14829,7 +14829,7 @@ export namespace TelepathyGLib {
          */
         get state(): number;
 
-        // Constructors of TelepathyGLib.ContactSearch
+        // Constructors
 
         constructor(properties?: Partial<ContactSearch.ConstructorProps>, ...args: any[]);
 
@@ -14840,7 +14840,7 @@ export namespace TelepathyGLib {
 
         static new_finish(...args: never[]): any;
 
-        // Own signals of TelepathyGLib.ContactSearch
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -14855,7 +14855,7 @@ export namespace TelepathyGLib {
         ): number;
         emit(signal: 'search-results-received', results: ContactSearchResult[]): void;
 
-        // Own static methods of TelepathyGLib.ContactSearch
+        // Static methods
 
         /**
          * <!-- -->
@@ -14871,7 +14871,7 @@ export namespace TelepathyGLib {
             callback?: Gio.AsyncReadyCallback<ContactSearch> | null,
         ): void;
 
-        // Own methods of TelepathyGLib.ContactSearch
+        // Methods
 
         /**
          * <!-- -->
@@ -15457,17 +15457,17 @@ export namespace TelepathyGLib {
     class ContactSearchResult extends GObject.Object {
         static $gtype: GObject.GType<ContactSearchResult>;
 
-        // Own properties of TelepathyGLib.ContactSearchResult
+        // Properties
 
         get identifier(): string;
 
-        // Constructors of TelepathyGLib.ContactSearchResult
+        // Constructors
 
         constructor(properties?: Partial<ContactSearchResult.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of TelepathyGLib.ContactSearchResult
+        // Methods
 
         /**
          * <!-- -->
@@ -15505,13 +15505,13 @@ export namespace TelepathyGLib {
     class DBusDaemon extends Proxy {
         static $gtype: GObject.GType<DBusDaemon>;
 
-        // Constructors of TelepathyGLib.DBusDaemon
+        // Constructors
 
         constructor(properties?: Partial<DBusDaemon.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of TelepathyGLib.DBusDaemon
+        // Static methods
 
         /**
          * Returns a proxy for signals and method calls on the D-Bus daemon on which
@@ -15536,7 +15536,7 @@ export namespace TelepathyGLib {
          */
         static init_known_interfaces(): void;
 
-        // Own methods of TelepathyGLib.DBusDaemon
+        // Methods
 
         /**
          * <!-- Returns: is enough -->
@@ -15628,7 +15628,7 @@ export namespace TelepathyGLib {
     class DBusTubeChannel extends Channel {
         static $gtype: GObject.GType<DBusTubeChannel>;
 
-        // Own properties of TelepathyGLib.DBusTubeChannel
+        // Properties
 
         /**
          * A %G_VARIANT_TYPE_VARDICT representing the parameters of the tube.
@@ -15651,17 +15651,17 @@ export namespace TelepathyGLib {
          */
         get serviceName(): string;
 
-        // Constructors of TelepathyGLib.DBusTubeChannel
+        // Constructors
 
         constructor(properties?: Partial<DBusTubeChannel.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of TelepathyGLib.DBusTubeChannel
+        // Static methods
 
         static feature_quark_core(): GLib.Quark;
 
-        // Own methods of TelepathyGLib.DBusTubeChannel
+        // Methods
 
         /**
          * Accept an incoming D-Bus tube. When the tube has been accepted
@@ -15735,7 +15735,7 @@ export namespace TelepathyGLib {
     class DebugClient extends Proxy {
         static $gtype: GObject.GType<DebugClient>;
 
-        // Own properties of TelepathyGLib.DebugClient
+        // Properties
 
         /**
          * %TRUE if debug messages are published on the bus.
@@ -15745,7 +15745,7 @@ export namespace TelepathyGLib {
          */
         get enabled(): boolean;
 
-        // Constructors of TelepathyGLib.DebugClient
+        // Constructors
 
         constructor(properties?: Partial<DebugClient.ConstructorProps>, ...args: any[]);
 
@@ -15753,7 +15753,7 @@ export namespace TelepathyGLib {
 
         static ['new'](dbus: DBusDaemon, unique_name: string): DebugClient;
 
-        // Own signals of TelepathyGLib.DebugClient
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -15762,7 +15762,7 @@ export namespace TelepathyGLib {
         connect_after(signal: 'new-debug-message', callback: (_source: this, message: DebugMessage) => void): number;
         emit(signal: 'new-debug-message', message: DebugMessage): void;
 
-        // Own static methods of TelepathyGLib.DebugClient
+        // Static methods
 
         static get_feature_quark_core(): GLib.Quark;
         /**
@@ -15775,7 +15775,7 @@ export namespace TelepathyGLib {
          */
         static init_known_interfaces(): void;
 
-        // Own methods of TelepathyGLib.DebugClient
+        // Methods
 
         /**
          * Retrieve buffered messages from `self`. Once `callback` is called,
@@ -15828,7 +15828,7 @@ export namespace TelepathyGLib {
     class DebugMessage extends GObject.Object {
         static $gtype: GObject.GType<DebugMessage>;
 
-        // Own properties of TelepathyGLib.DebugMessage
+        // Properties
 
         /**
          * Category of the debug message, or %NULL if none was specified.
@@ -15851,13 +15851,13 @@ export namespace TelepathyGLib {
          */
         get time(): GLib.DateTime;
 
-        // Constructors of TelepathyGLib.DebugMessage
+        // Constructors
 
         constructor(properties?: Partial<DebugMessage.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of TelepathyGLib.DebugMessage
+        // Methods
 
         /**
          * Return the #TpDebugMessage:category property
@@ -15913,7 +15913,7 @@ export namespace TelepathyGLib {
     class FileTransferChannel extends Channel {
         static $gtype: GObject.GType<FileTransferChannel>;
 
-        // Own properties of TelepathyGLib.FileTransferChannel
+        // Properties
 
         /**
          * A #GDateTime representing the last modification time of the file to be
@@ -16065,7 +16065,7 @@ export namespace TelepathyGLib {
          */
         get transferredBytes(): number;
 
-        // Constructors of TelepathyGLib.FileTransferChannel
+        // Constructors
 
         constructor(properties?: Partial<FileTransferChannel.ConstructorProps>, ...args: any[]);
 
@@ -16080,11 +16080,11 @@ export namespace TelepathyGLib {
 
         static ['new'](...args: never[]): any;
 
-        // Own static methods of TelepathyGLib.FileTransferChannel
+        // Static methods
 
         static get_feature_quark_core(): GLib.Quark;
 
-        // Own methods of TelepathyGLib.FileTransferChannel
+        // Methods
 
         /**
          * Accept an incoming file transfer in the
@@ -16207,7 +16207,7 @@ export namespace TelepathyGLib {
     class HandleChannelsContext extends GObject.Object {
         static $gtype: GObject.GType<HandleChannelsContext>;
 
-        // Own properties of TelepathyGLib.HandleChannelsContext
+        // Properties
 
         /**
          * A #TpAccount object representing the Account of the DispatchOperation
@@ -16268,13 +16268,13 @@ export namespace TelepathyGLib {
          */
         get userActionTime(): number;
 
-        // Constructors of TelepathyGLib.HandleChannelsContext
+        // Constructors
 
         constructor(properties?: Partial<HandleChannelsContext.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of TelepathyGLib.HandleChannelsContext
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -16283,7 +16283,7 @@ export namespace TelepathyGLib {
         connect_after(signal: 'done', callback: (_source: this) => void): number;
         emit(signal: 'done'): void;
 
-        // Own methods of TelepathyGLib.HandleChannelsContext
+        // Methods
 
         /**
          * Called by #TpBaseClientClassAddDispatchOperationImpl when it's done so
@@ -16350,13 +16350,13 @@ export namespace TelepathyGLib {
     class Message extends GObject.Object {
         static $gtype: GObject.GType<Message>;
 
-        // Constructors of TelepathyGLib.Message
+        // Constructors
 
         constructor(properties?: Partial<Message.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of TelepathyGLib.Message
+        // Methods
 
         /**
          * Append a body part to the message.
@@ -16614,7 +16614,7 @@ export namespace TelepathyGLib {
     class ObserveChannelsContext extends GObject.Object {
         static $gtype: GObject.GType<ObserveChannelsContext>;
 
-        // Own properties of TelepathyGLib.ObserveChannelsContext
+        // Properties
 
         /**
          * A #TpAccount object representing the Account that has been passed to
@@ -16663,13 +16663,13 @@ export namespace TelepathyGLib {
          */
         get requests(): any[];
 
-        // Constructors of TelepathyGLib.ObserveChannelsContext
+        // Constructors
 
         constructor(properties?: Partial<ObserveChannelsContext.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of TelepathyGLib.ObserveChannelsContext
+        // Methods
 
         /**
          * Called by #TpBaseClientClassObserveChannelsImpl when it's done so the D-Bus
@@ -16742,7 +16742,7 @@ export namespace TelepathyGLib {
     class Protocol extends Proxy {
         static $gtype: GObject.GType<Protocol>;
 
-        // Own properties of TelepathyGLib.Protocol
+        // Properties
 
         /**
          * A non-%NULL #GStrv of URI schemes supported by this protocol.
@@ -16925,7 +16925,7 @@ export namespace TelepathyGLib {
          */
         get vcardField(): string;
 
-        // Constructors of TelepathyGLib.Protocol
+        // Constructors
 
         constructor(properties?: Partial<Protocol.ConstructorProps>, ...args: any[]);
 
@@ -16945,7 +16945,7 @@ export namespace TelepathyGLib {
             immutable_properties: GLib.Variant,
         ): Protocol;
 
-        // Own static methods of TelepathyGLib.Protocol
+        // Static methods
 
         static get_feature_quark_core(): GLib.Quark;
         static get_feature_quark_parameters(): GLib.Quark;
@@ -16959,7 +16959,7 @@ export namespace TelepathyGLib {
          */
         static init_known_interfaces(): void;
 
-        // Own methods of TelepathyGLib.Protocol
+        // Methods
 
         /**
          * Return whether a new account can be registered on this protocol, by setting
@@ -17182,7 +17182,7 @@ export namespace TelepathyGLib {
     class Proxy extends GObject.Object {
         static $gtype: GObject.GType<Proxy>;
 
-        // Own properties of TelepathyGLib.Proxy
+        // Properties
 
         /**
          * The D-Bus bus name for this object. Read-only except during construction.
@@ -17222,13 +17222,13 @@ export namespace TelepathyGLib {
          */
         get objectPath(): string;
 
-        // Constructors of TelepathyGLib.Proxy
+        // Constructors
 
         constructor(properties?: Partial<Proxy.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of TelepathyGLib.Proxy
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -17246,7 +17246,7 @@ export namespace TelepathyGLib {
         ): number;
         emit(signal: 'invalidated', domain: number, code: number, message: string): void;
 
-        // Own methods of TelepathyGLib.Proxy
+        // Methods
 
         /**
          * Convert a D-Bus error name into a GError as if it was returned by a method
@@ -17395,13 +17395,13 @@ export namespace TelepathyGLib {
     class RoomInfo extends GObject.Object {
         static $gtype: GObject.GType<RoomInfo>;
 
-        // Constructors of TelepathyGLib.RoomInfo
+        // Constructors
 
         constructor(properties?: Partial<RoomInfo.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of TelepathyGLib.RoomInfo
+        // Methods
 
         /**
          * <!-- -->
@@ -17489,7 +17489,7 @@ export namespace TelepathyGLib {
     class RoomList extends GObject.Object implements Gio.AsyncInitable<RoomList> {
         static $gtype: GObject.GType<RoomList>;
 
-        // Own properties of TelepathyGLib.RoomList
+        // Properties
 
         /**
          * The #TpAccount to use for the room listing.
@@ -17508,7 +17508,7 @@ export namespace TelepathyGLib {
          */
         get server(): string;
 
-        // Constructors of TelepathyGLib.RoomList
+        // Constructors
 
         constructor(properties?: Partial<RoomList.ConstructorProps>, ...args: any[]);
 
@@ -17519,7 +17519,7 @@ export namespace TelepathyGLib {
 
         static new_finish(...args: never[]): any;
 
-        // Own signals of TelepathyGLib.RoomList
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -17531,7 +17531,7 @@ export namespace TelepathyGLib {
         connect_after(signal: 'got-room', callback: (_source: this, room: RoomInfo) => void): number;
         emit(signal: 'got-room', room: RoomInfo): void;
 
-        // Own static methods of TelepathyGLib.RoomList
+        // Static methods
 
         /**
          * <!-- -->
@@ -17541,7 +17541,7 @@ export namespace TelepathyGLib {
          */
         static new_async(account: Account, server: string, callback?: Gio.AsyncReadyCallback<RoomList> | null): void;
 
-        // Own methods of TelepathyGLib.RoomList
+        // Methods
 
         /**
          * Return the #TpRoomList:account property
@@ -18095,7 +18095,7 @@ export namespace TelepathyGLib {
     class SignalledMessage extends Message {
         static $gtype: GObject.GType<SignalledMessage>;
 
-        // Own properties of TelepathyGLib.SignalledMessage
+        // Properties
 
         /**
          * A #TpContact representing the sender of the message, if known, or %NULL
@@ -18103,13 +18103,13 @@ export namespace TelepathyGLib {
          */
         get sender(): Contact;
 
-        // Constructors of TelepathyGLib.SignalledMessage
+        // Constructors
 
         constructor(properties?: Partial<SignalledMessage.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of TelepathyGLib.SignalledMessage
+        // Static methods
 
         /**
          * Returns a #TpContact representing the sender of `message` if known, %NULL
@@ -18136,7 +18136,7 @@ export namespace TelepathyGLib {
     class SimpleApprover extends BaseClient {
         static $gtype: GObject.GType<SimpleApprover>;
 
-        // Own properties of TelepathyGLib.SimpleApprover
+        // Properties
 
         /**
          * The #TpSimpleApproverAddDispatchOperationImpl callback implementing the
@@ -18159,7 +18159,7 @@ export namespace TelepathyGLib {
          */
         set userData(val: any);
 
-        // Constructors of TelepathyGLib.SimpleApprover
+        // Constructors
 
         constructor(properties?: Partial<SimpleApprover.ConstructorProps>, ...args: any[]);
 
@@ -18202,7 +18202,7 @@ export namespace TelepathyGLib {
     class SimpleClientFactory extends GObject.Object {
         static $gtype: GObject.GType<SimpleClientFactory>;
 
-        // Own properties of TelepathyGLib.SimpleClientFactory
+        // Properties
 
         /**
          * The D-Bus daemon for this object.
@@ -18213,7 +18213,7 @@ export namespace TelepathyGLib {
          */
         get dbusDaemon(): DBusDaemon;
 
-        // Constructors of TelepathyGLib.SimpleClientFactory
+        // Constructors
 
         constructor(properties?: Partial<SimpleClientFactory.ConstructorProps>, ...args: any[]);
 
@@ -18221,7 +18221,7 @@ export namespace TelepathyGLib {
 
         static ['new'](dbus?: DBusDaemon | null): SimpleClientFactory;
 
-        // Own virtual methods of TelepathyGLib.SimpleClientFactory
+        // Virtual methods
 
         /**
          * Return a zero-terminated #GArray containing the #TpAccount features that
@@ -18248,7 +18248,7 @@ export namespace TelepathyGLib {
          */
         vfunc_dup_contact_features(connection: Connection): ContactFeature[];
 
-        // Own methods of TelepathyGLib.SimpleClientFactory
+        // Methods
 
         /**
          * Add `features` to the desired features to be prepared on #TpAccount
@@ -18473,7 +18473,7 @@ export namespace TelepathyGLib {
     class SimpleHandler extends BaseClient {
         static $gtype: GObject.GType<SimpleHandler>;
 
-        // Own properties of TelepathyGLib.SimpleHandler
+        // Properties
 
         /**
          * The value of the Handler.BypassApproval D-Bus property.
@@ -18508,7 +18508,7 @@ export namespace TelepathyGLib {
          */
         set userData(val: any);
 
-        // Constructors of TelepathyGLib.SimpleHandler
+        // Constructors
 
         constructor(properties?: Partial<SimpleHandler.ConstructorProps>, ...args: any[]);
 
@@ -18560,7 +18560,7 @@ export namespace TelepathyGLib {
     class SimpleObserver extends BaseClient {
         static $gtype: GObject.GType<SimpleObserver>;
 
-        // Own properties of TelepathyGLib.SimpleObserver
+        // Properties
 
         /**
          * The TpSimpleObserverObserveChannelsImpl callback implementing the
@@ -18589,7 +18589,7 @@ export namespace TelepathyGLib {
          */
         set userData(val: any);
 
-        // Constructors of TelepathyGLib.SimpleObserver
+        // Constructors
 
         constructor(properties?: Partial<SimpleObserver.ConstructorProps>, ...args: any[]);
 
@@ -18642,7 +18642,7 @@ export namespace TelepathyGLib {
     class StreamTubeChannel extends Channel {
         static $gtype: GObject.GType<StreamTubeChannel>;
 
-        // Own properties of TelepathyGLib.StreamTubeChannel
+        // Properties
 
         /**
          * A %G_VARIANT_TYPE_VARDICT representing the parameters of the tube.
@@ -18661,7 +18661,7 @@ export namespace TelepathyGLib {
          */
         get service(): string;
 
-        // Constructors of TelepathyGLib.StreamTubeChannel
+        // Constructors
 
         constructor(properties?: Partial<StreamTubeChannel.ConstructorProps>, ...args: any[]);
 
@@ -18676,7 +18676,7 @@ export namespace TelepathyGLib {
 
         static ['new'](...args: never[]): any;
 
-        // Own signals of TelepathyGLib.StreamTubeChannel
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -18688,7 +18688,7 @@ export namespace TelepathyGLib {
         ): number;
         emit(signal: 'incoming', tube_connection: StreamTubeConnection): void;
 
-        // Own methods of TelepathyGLib.StreamTubeChannel
+        // Methods
 
         /**
          * Accept an incoming stream tube. When the tube has been accepted, `callback`
@@ -18766,7 +18766,7 @@ export namespace TelepathyGLib {
     class StreamTubeConnection extends GObject.Object {
         static $gtype: GObject.GType<StreamTubeConnection>;
 
-        // Own properties of TelepathyGLib.StreamTubeConnection
+        // Properties
 
         /**
          * The #TpStreamTubeChannel channel associated with this connection
@@ -18798,13 +18798,13 @@ export namespace TelepathyGLib {
          */
         get socketConnection(): Gio.SocketConnection;
 
-        // Constructors of TelepathyGLib.StreamTubeConnection
+        // Constructors
 
         constructor(properties?: Partial<StreamTubeConnection.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of TelepathyGLib.StreamTubeConnection
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -18813,7 +18813,7 @@ export namespace TelepathyGLib {
         connect_after(signal: 'closed', callback: (_source: this, error: GLib.Error) => void): number;
         emit(signal: 'closed', error: GLib.Error): void;
 
-        // Own methods of TelepathyGLib.StreamTubeConnection
+        // Methods
 
         /**
          * Return the #TpStreamTubeConnection:channel property
@@ -18852,7 +18852,7 @@ export namespace TelepathyGLib {
     class TLSCertificate extends Proxy {
         static $gtype: GObject.GType<TLSCertificate>;
 
-        // Own properties of TelepathyGLib.TLSCertificate
+        // Properties
 
         /**
          * The raw data of the certificate or certificate chain, represented
@@ -18904,7 +18904,7 @@ export namespace TelepathyGLib {
          */
         get state(): number;
 
-        // Constructors of TelepathyGLib.TLSCertificate
+        // Constructors
 
         constructor(properties?: Partial<TLSCertificate.ConstructorProps>, ...args: any[]);
 
@@ -18912,7 +18912,7 @@ export namespace TelepathyGLib {
 
         static ['new'](conn_or_chan: Proxy, object_path: string): TLSCertificate;
 
-        // Own static methods of TelepathyGLib.TLSCertificate
+        // Static methods
 
         static get_feature_quark_core(): GLib.Quark;
         /**
@@ -18925,7 +18925,7 @@ export namespace TelepathyGLib {
          */
         static init_known_interfaces(): void;
 
-        // Own methods of TelepathyGLib.TLSCertificate
+        // Methods
 
         /**
          * Accept this certificate, asynchronously. In or after `callback,`
@@ -19036,7 +19036,7 @@ export namespace TelepathyGLib {
     class TLSCertificateRejection extends GObject.Object {
         static $gtype: GObject.GType<TLSCertificateRejection>;
 
-        // Own properties of TelepathyGLib.TLSCertificateRejection
+        // Properties
 
         /**
          * The D-Bus error name of the rejection
@@ -19060,13 +19060,13 @@ export namespace TelepathyGLib {
          */
         get reason(): number;
 
-        // Constructors of TelepathyGLib.TLSCertificateRejection
+        // Constructors
 
         constructor(properties?: Partial<TLSCertificateRejection.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of TelepathyGLib.TLSCertificateRejection
+        // Methods
 
         /**
          * Return the #TpTLSCertificateRejection:dbus-error property
@@ -19137,7 +19137,7 @@ export namespace TelepathyGLib {
     class TextChannel extends Channel {
         static $gtype: GObject.GType<TextChannel>;
 
-        // Own properties of TelepathyGLib.TextChannel
+        // Properties
 
         /**
          * A #TpDeliveryReportingSupportFlags indicating features supported
@@ -19200,7 +19200,7 @@ export namespace TelepathyGLib {
          */
         get supportedContentTypes(): string[];
 
-        // Constructors of TelepathyGLib.TextChannel
+        // Constructors
 
         constructor(properties?: Partial<TextChannel.ConstructorProps>, ...args: any[]);
 
@@ -19215,7 +19215,7 @@ export namespace TelepathyGLib {
 
         static ['new'](...args: never[]): any;
 
-        // Own signals of TelepathyGLib.TextChannel
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -19251,13 +19251,13 @@ export namespace TelepathyGLib {
         ): number;
         emit(signal: 'pending-message-removed', message: SignalledMessage): void;
 
-        // Own static methods of TelepathyGLib.TextChannel
+        // Static methods
 
         static get_feature_quark_chat_states(): GLib.Quark;
         static get_feature_quark_incoming_messages(): GLib.Quark;
         static get_feature_quark_sms(): GLib.Quark;
 
-        // Own methods of TelepathyGLib.TextChannel
+        // Methods
 
         /**
          * Acknowledge all the pending messages. This is equivalent of calling
@@ -19449,7 +19449,7 @@ export namespace TelepathyGLib {
     abstract class AccountChannelRequestPrivate {
         static $gtype: GObject.GType<AccountChannelRequestPrivate>;
 
-        // Constructors of TelepathyGLib.AccountChannelRequestPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -19458,7 +19458,7 @@ export namespace TelepathyGLib {
     abstract class AccountClassPrivate {
         static $gtype: GObject.GType<AccountClassPrivate>;
 
-        // Constructors of TelepathyGLib.AccountClassPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -19467,7 +19467,7 @@ export namespace TelepathyGLib {
     abstract class AccountManagerClassPrivate {
         static $gtype: GObject.GType<AccountManagerClassPrivate>;
 
-        // Constructors of TelepathyGLib.AccountManagerClassPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -19475,7 +19475,7 @@ export namespace TelepathyGLib {
     abstract class AccountManagerPrivate {
         static $gtype: GObject.GType<AccountManagerPrivate>;
 
-        // Constructors of TelepathyGLib.AccountManagerPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -19483,7 +19483,7 @@ export namespace TelepathyGLib {
     abstract class AccountPrivate {
         static $gtype: GObject.GType<AccountPrivate>;
 
-        // Constructors of TelepathyGLib.AccountPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -19492,7 +19492,7 @@ export namespace TelepathyGLib {
     abstract class AccountRequestPrivate {
         static $gtype: GObject.GType<AccountRequestPrivate>;
 
-        // Constructors of TelepathyGLib.AccountRequestPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -19501,7 +19501,7 @@ export namespace TelepathyGLib {
     abstract class AddDispatchOperationContextPrivate {
         static $gtype: GObject.GType<AddDispatchOperationContextPrivate>;
 
-        // Constructors of TelepathyGLib.AddDispatchOperationContextPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -19514,7 +19514,7 @@ export namespace TelepathyGLib {
     class AvatarRequirements {
         static $gtype: GObject.GType<AvatarRequirements>;
 
-        // Own fields of TelepathyGLib.AvatarRequirements
+        // Fields
 
         supported_mime_types: string[];
         minimum_width: number;
@@ -19525,7 +19525,7 @@ export namespace TelepathyGLib {
         maximum_height: number;
         maximum_bytes: number;
 
-        // Constructors of TelepathyGLib.AvatarRequirements
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -19557,7 +19557,7 @@ export namespace TelepathyGLib {
     abstract class BaseClientClassPrivate {
         static $gtype: GObject.GType<BaseClientClassPrivate>;
 
-        // Constructors of TelepathyGLib.BaseClientClassPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -19565,7 +19565,7 @@ export namespace TelepathyGLib {
     abstract class BaseClientPrivate {
         static $gtype: GObject.GType<BaseClientPrivate>;
 
-        // Constructors of TelepathyGLib.BaseClientPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -19574,7 +19574,7 @@ export namespace TelepathyGLib {
     abstract class BaseConnectionPrivate {
         static $gtype: GObject.GType<BaseConnectionPrivate>;
 
-        // Constructors of TelepathyGLib.BaseConnectionPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -19584,7 +19584,7 @@ export namespace TelepathyGLib {
     abstract class CallChannelPrivate {
         static $gtype: GObject.GType<CallChannelPrivate>;
 
-        // Constructors of TelepathyGLib.CallChannelPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -19593,7 +19593,7 @@ export namespace TelepathyGLib {
     abstract class CallContentPrivate {
         static $gtype: GObject.GType<CallContentPrivate>;
 
-        // Constructors of TelepathyGLib.CallContentPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -19604,14 +19604,14 @@ export namespace TelepathyGLib {
     class CallStateReason {
         static $gtype: GObject.GType<CallStateReason>;
 
-        // Own fields of TelepathyGLib.CallStateReason
+        // Fields
 
         actor: Handle;
         reason: CallStateChangeReason;
         dbus_reason: string;
         message: string;
 
-        // Constructors of TelepathyGLib.CallStateReason
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -19620,7 +19620,7 @@ export namespace TelepathyGLib {
     abstract class CallStreamPrivate {
         static $gtype: GObject.GType<CallStreamPrivate>;
 
-        // Constructors of TelepathyGLib.CallStreamPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -19629,7 +19629,7 @@ export namespace TelepathyGLib {
     abstract class CapabilitiesPrivate {
         static $gtype: GObject.GType<CapabilitiesPrivate>;
 
-        // Constructors of TelepathyGLib.CapabilitiesPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -19639,7 +19639,7 @@ export namespace TelepathyGLib {
     abstract class ChannelDispatchOperationClassPrivate {
         static $gtype: GObject.GType<ChannelDispatchOperationClassPrivate>;
 
-        // Constructors of TelepathyGLib.ChannelDispatchOperationClassPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -19647,7 +19647,7 @@ export namespace TelepathyGLib {
     abstract class ChannelDispatchOperationPrivate {
         static $gtype: GObject.GType<ChannelDispatchOperationPrivate>;
 
-        // Constructors of TelepathyGLib.ChannelDispatchOperationPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -19656,7 +19656,7 @@ export namespace TelepathyGLib {
     abstract class ChannelDispatcherClassPrivate {
         static $gtype: GObject.GType<ChannelDispatcherClassPrivate>;
 
-        // Constructors of TelepathyGLib.ChannelDispatcherClassPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -19664,7 +19664,7 @@ export namespace TelepathyGLib {
     abstract class ChannelDispatcherPrivate {
         static $gtype: GObject.GType<ChannelDispatcherPrivate>;
 
-        // Constructors of TelepathyGLib.ChannelDispatcherPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -19672,7 +19672,7 @@ export namespace TelepathyGLib {
     abstract class ChannelPrivate {
         static $gtype: GObject.GType<ChannelPrivate>;
 
-        // Constructors of TelepathyGLib.ChannelPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -19681,7 +19681,7 @@ export namespace TelepathyGLib {
     abstract class ChannelRequestClassPrivate {
         static $gtype: GObject.GType<ChannelRequestClassPrivate>;
 
-        // Constructors of TelepathyGLib.ChannelRequestClassPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -19689,7 +19689,7 @@ export namespace TelepathyGLib {
     abstract class ChannelRequestPrivate {
         static $gtype: GObject.GType<ChannelRequestPrivate>;
 
-        // Constructors of TelepathyGLib.ChannelRequestPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -19715,11 +19715,11 @@ export namespace TelepathyGLib {
     class ConnectionManagerParam {
         static $gtype: GObject.GType<ConnectionManagerParam>;
 
-        // Constructors of TelepathyGLib.ConnectionManagerParam
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of TelepathyGLib.ConnectionManagerParam
+        // Methods
 
         /**
          * <!-- Returns: says it all -->
@@ -19786,7 +19786,7 @@ export namespace TelepathyGLib {
     abstract class ConnectionManagerPrivate {
         static $gtype: GObject.GType<ConnectionManagerPrivate>;
 
-        // Constructors of TelepathyGLib.ConnectionManagerPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -19799,15 +19799,15 @@ export namespace TelepathyGLib {
     class ConnectionManagerProtocol {
         static $gtype: GObject.GType<ConnectionManagerProtocol>;
 
-        // Own fields of TelepathyGLib.ConnectionManagerProtocol
+        // Fields
 
         name: string;
 
-        // Constructors of TelepathyGLib.ConnectionManagerProtocol
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of TelepathyGLib.ConnectionManagerProtocol
+        // Methods
 
         /**
          * Return whether a new account can be registered on this protocol, by setting
@@ -19849,7 +19849,7 @@ export namespace TelepathyGLib {
     abstract class ConnectionPrivate {
         static $gtype: GObject.GType<ConnectionPrivate>;
 
-        // Constructors of TelepathyGLib.ConnectionPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -19862,13 +19862,13 @@ export namespace TelepathyGLib {
     class ContactInfoField {
         static $gtype: GObject.GType<ContactInfoField>;
 
-        // Own fields of TelepathyGLib.ContactInfoField
+        // Fields
 
         field_name: string;
         parameters: string[];
         field_value: string[];
 
-        // Constructors of TelepathyGLib.ContactInfoField
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -19888,14 +19888,14 @@ export namespace TelepathyGLib {
     class ContactInfoFieldSpec {
         static $gtype: GObject.GType<ContactInfoFieldSpec>;
 
-        // Own fields of TelepathyGLib.ContactInfoFieldSpec
+        // Fields
 
         name: string;
         parameters: string[];
         flags: ContactInfoFieldFlags;
         max: number;
 
-        // Constructors of TelepathyGLib.ContactInfoFieldSpec
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -19903,7 +19903,7 @@ export namespace TelepathyGLib {
     abstract class ContactPrivate {
         static $gtype: GObject.GType<ContactPrivate>;
 
-        // Constructors of TelepathyGLib.ContactPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -19912,7 +19912,7 @@ export namespace TelepathyGLib {
     abstract class ContactSearchPrivate {
         static $gtype: GObject.GType<ContactSearchPrivate>;
 
-        // Constructors of TelepathyGLib.ContactSearchPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -19921,7 +19921,7 @@ export namespace TelepathyGLib {
     abstract class ContactSearchResultPrivate {
         static $gtype: GObject.GType<ContactSearchResultPrivate>;
 
-        // Constructors of TelepathyGLib.ContactSearchResultPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -19935,7 +19935,7 @@ export namespace TelepathyGLib {
     class ContactsMixin {
         static $gtype: GObject.GType<ContactsMixin>;
 
-        // Constructors of TelepathyGLib.ContactsMixin
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -19949,7 +19949,7 @@ export namespace TelepathyGLib {
     class ContactsMixinClass {
         static $gtype: GObject.GType<ContactsMixinClass>;
 
-        // Constructors of TelepathyGLib.ContactsMixinClass
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -19957,7 +19957,7 @@ export namespace TelepathyGLib {
     abstract class ContactsMixinClassPrivate {
         static $gtype: GObject.GType<ContactsMixinClassPrivate>;
 
-        // Constructors of TelepathyGLib.ContactsMixinClassPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -19965,7 +19965,7 @@ export namespace TelepathyGLib {
     abstract class ContactsMixinPrivate {
         static $gtype: GObject.GType<ContactsMixinPrivate>;
 
-        // Constructors of TelepathyGLib.ContactsMixinPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -19974,7 +19974,7 @@ export namespace TelepathyGLib {
     abstract class DBusDaemonPrivate {
         static $gtype: GObject.GType<DBusDaemonPrivate>;
 
-        // Constructors of TelepathyGLib.DBusDaemonPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -19989,11 +19989,11 @@ export namespace TelepathyGLib {
     class DBusPropertiesMixinClass {
         static $gtype: GObject.GType<DBusPropertiesMixinClass>;
 
-        // Constructors of TelepathyGLib.DBusPropertiesMixinClass
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own static methods of TelepathyGLib.DBusPropertiesMixinClass
+        // Static methods
 
         /**
          * Initialize the class `cls` to use the D-Bus Properties mixin.
@@ -20039,13 +20039,13 @@ export namespace TelepathyGLib {
     class DBusPropertiesMixinIfaceImpl {
         static $gtype: GObject.GType<DBusPropertiesMixinIfaceImpl>;
 
-        // Own fields of TelepathyGLib.DBusPropertiesMixinIfaceImpl
+        // Fields
 
         name: string;
         getter: DBusPropertiesMixinGetter;
         setter: DBusPropertiesMixinSetter;
 
-        // Constructors of TelepathyGLib.DBusPropertiesMixinIfaceImpl
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -20066,11 +20066,11 @@ export namespace TelepathyGLib {
     class DBusPropertiesMixinIfaceInfo {
         static $gtype: GObject.GType<DBusPropertiesMixinIfaceInfo>;
 
-        // Own fields of TelepathyGLib.DBusPropertiesMixinIfaceInfo
+        // Fields
 
         dbus_interface: GLib.Quark;
 
-        // Constructors of TelepathyGLib.DBusPropertiesMixinIfaceInfo
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -20087,13 +20087,13 @@ export namespace TelepathyGLib {
     class DBusPropertiesMixinPropImpl {
         static $gtype: GObject.GType<DBusPropertiesMixinPropImpl>;
 
-        // Own fields of TelepathyGLib.DBusPropertiesMixinPropImpl
+        // Fields
 
         name: string;
         getter_data: any;
         setter_data: any;
 
-        // Constructors of TelepathyGLib.DBusPropertiesMixinPropImpl
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -20109,14 +20109,14 @@ export namespace TelepathyGLib {
     class DBusPropertiesMixinPropInfo {
         static $gtype: GObject.GType<DBusPropertiesMixinPropInfo>;
 
-        // Own fields of TelepathyGLib.DBusPropertiesMixinPropInfo
+        // Fields
 
         name: GLib.Quark;
         flags: DBusPropertiesMixinFlags;
         dbus_signature: string;
         type: GObject.GType;
 
-        // Constructors of TelepathyGLib.DBusPropertiesMixinPropInfo
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -20125,7 +20125,7 @@ export namespace TelepathyGLib {
     abstract class DBusTubeChannelPrivate {
         static $gtype: GObject.GType<DBusTubeChannelPrivate>;
 
-        // Constructors of TelepathyGLib.DBusTubeChannelPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -20134,7 +20134,7 @@ export namespace TelepathyGLib {
     abstract class DebugClientPrivate {
         static $gtype: GObject.GType<DebugClientPrivate>;
 
-        // Constructors of TelepathyGLib.DebugClientPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -20143,7 +20143,7 @@ export namespace TelepathyGLib {
     abstract class DebugMessagePriv {
         static $gtype: GObject.GType<DebugMessagePriv>;
 
-        // Constructors of TelepathyGLib.DebugMessagePriv
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -20152,7 +20152,7 @@ export namespace TelepathyGLib {
     abstract class FileTransferChannelPrivate {
         static $gtype: GObject.GType<FileTransferChannelPrivate>;
 
-        // Constructors of TelepathyGLib.FileTransferChannelPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -20166,13 +20166,13 @@ export namespace TelepathyGLib {
     class GroupMixin {
         static $gtype: GObject.GType<GroupMixin>;
 
-        // Own fields of TelepathyGLib.GroupMixin
+        // Fields
 
         handle_repo: HandleRepoIface;
         self_handle: Handle;
         group_flags: ChannelGroupFlags;
 
-        // Constructors of TelepathyGLib.GroupMixin
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -20188,12 +20188,12 @@ export namespace TelepathyGLib {
     class GroupMixinClass {
         static $gtype: GObject.GType<GroupMixinClass>;
 
-        // Own fields of TelepathyGLib.GroupMixinClass
+        // Fields
 
         add_member: GroupMixinAddMemberFunc;
         remove_member: GroupMixinRemMemberFunc;
 
-        // Constructors of TelepathyGLib.GroupMixinClass
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -20201,7 +20201,7 @@ export namespace TelepathyGLib {
     abstract class GroupMixinClassPrivate {
         static $gtype: GObject.GType<GroupMixinClassPrivate>;
 
-        // Constructors of TelepathyGLib.GroupMixinClassPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -20209,7 +20209,7 @@ export namespace TelepathyGLib {
     abstract class GroupMixinPrivate {
         static $gtype: GObject.GType<GroupMixinPrivate>;
 
-        // Constructors of TelepathyGLib.GroupMixinPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -20218,7 +20218,7 @@ export namespace TelepathyGLib {
     abstract class HandleChannelsContextPrivate {
         static $gtype: GObject.GType<HandleChannelsContextPrivate>;
 
-        // Constructors of TelepathyGLib.HandleChannelsContextPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -20231,7 +20231,7 @@ export namespace TelepathyGLib {
     abstract class HandleRepoIfaceClass {
         static $gtype: GObject.GType<HandleRepoIfaceClass>;
 
-        // Constructors of TelepathyGLib.HandleRepoIfaceClass
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -20243,12 +20243,12 @@ export namespace TelepathyGLib {
     class HandleSet {
         static $gtype: GObject.GType<HandleSet>;
 
-        // Constructors of TelepathyGLib.HandleSet
+        // Constructors
 
         constructor(repo: HandleRepoIface);
         _init(...args: any[]): void;
 
-        // Own methods of TelepathyGLib.HandleSet
+        // Methods
 
         /**
          * Format a #TpHandleSet for debug output.
@@ -20274,7 +20274,7 @@ export namespace TelepathyGLib {
     class Intset {
         static $gtype: GObject.GType<Intset>;
 
-        // Constructors of TelepathyGLib.Intset
+        // Constructors
 
         constructor(properties?: Partial<{}>);
         _init(...args: any[]): void;
@@ -20285,7 +20285,7 @@ export namespace TelepathyGLib {
 
         static sized_new(size: number): Intset;
 
-        // Own static methods of TelepathyGLib.Intset
+        // Static methods
 
         /**
          * <!--Returns: says it all-->
@@ -20293,7 +20293,7 @@ export namespace TelepathyGLib {
          */
         static from_array(array: number[]): Intset;
 
-        // Own methods of TelepathyGLib.Intset
+        // Methods
 
         /**
          * Add an integer into a TpIntset.
@@ -20419,12 +20419,12 @@ export namespace TelepathyGLib {
     class IntsetFastIter {
         static $gtype: GObject.GType<IntsetFastIter>;
 
-        // Constructors of TelepathyGLib.IntsetFastIter
+        // Constructors
 
         constructor(properties?: Partial<{}>);
         _init(...args: any[]): void;
 
-        // Own methods of TelepathyGLib.IntsetFastIter
+        // Methods
 
         /**
          * Initialize `iter` to iterate over `set` in arbitrary order. `iter` will become
@@ -20454,15 +20454,15 @@ export namespace TelepathyGLib {
     class IntsetIter {
         static $gtype: GObject.GType<IntsetIter>;
 
-        // Own fields of TelepathyGLib.IntsetIter
+        // Fields
 
         element: number;
 
-        // Constructors of TelepathyGLib.IntsetIter
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of TelepathyGLib.IntsetIter
+        // Methods
 
         /**
          * Reset the iterator `iter` to the beginning and make it iterate over `set`.
@@ -20500,7 +20500,7 @@ export namespace TelepathyGLib {
     abstract class ObserveChannelsContextPrivate {
         static $gtype: GObject.GType<ObserveChannelsContextPrivate>;
 
-        // Constructors of TelepathyGLib.ObserveChannelsContextPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -20514,7 +20514,7 @@ export namespace TelepathyGLib {
     class PresenceMixin {
         static $gtype: GObject.GType<PresenceMixin>;
 
-        // Constructors of TelepathyGLib.PresenceMixin
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -20545,13 +20545,13 @@ export namespace TelepathyGLib {
     class PresenceMixinClass {
         static $gtype: GObject.GType<PresenceMixinClass>;
 
-        // Own fields of TelepathyGLib.PresenceMixinClass
+        // Fields
 
         status_available: PresenceMixinStatusAvailableFunc;
         set_own_status: PresenceMixinSetOwnStatusFunc;
         get_maximum_status_message_length: PresenceMixinGetMaximumStatusMessageLengthFunc;
 
-        // Constructors of TelepathyGLib.PresenceMixinClass
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -20559,7 +20559,7 @@ export namespace TelepathyGLib {
     abstract class PresenceMixinClassPrivate {
         static $gtype: GObject.GType<PresenceMixinClassPrivate>;
 
-        // Constructors of TelepathyGLib.PresenceMixinClassPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -20567,7 +20567,7 @@ export namespace TelepathyGLib {
     abstract class PresenceMixinPrivate {
         static $gtype: GObject.GType<PresenceMixinPrivate>;
 
-        // Constructors of TelepathyGLib.PresenceMixinPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -20587,11 +20587,11 @@ export namespace TelepathyGLib {
     class PresenceStatus {
         static $gtype: GObject.GType<PresenceStatus>;
 
-        // Own fields of TelepathyGLib.PresenceStatus
+        // Fields
 
         index: number;
 
-        // Constructors of TelepathyGLib.PresenceStatus
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -20606,12 +20606,12 @@ export namespace TelepathyGLib {
     class PresenceStatusOptionalArgumentSpec {
         static $gtype: GObject.GType<PresenceStatusOptionalArgumentSpec>;
 
-        // Own fields of TelepathyGLib.PresenceStatusOptionalArgumentSpec
+        // Fields
 
         name: string;
         dtype: string;
 
-        // Constructors of TelepathyGLib.PresenceStatusOptionalArgumentSpec
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -20632,14 +20632,14 @@ export namespace TelepathyGLib {
     class PresenceStatusSpec {
         static $gtype: GObject.GType<PresenceStatusSpec>;
 
-        // Own fields of TelepathyGLib.PresenceStatusSpec
+        // Fields
 
         name: string;
         presence_type: ConnectionPresenceType;
         self: boolean;
         optional_arguments: PresenceStatusOptionalArgumentSpec;
 
-        // Constructors of TelepathyGLib.PresenceStatusSpec
+        // Constructors
 
         constructor(name: string, type: ConnectionPresenceType, can_set_on_self: boolean, has_message: boolean);
         _init(...args: any[]): void;
@@ -20651,7 +20651,7 @@ export namespace TelepathyGLib {
             has_message: boolean,
         ): PresenceStatusSpec;
 
-        // Own methods of TelepathyGLib.PresenceStatusSpec
+        // Methods
 
         /**
          * <!-- -->
@@ -20694,7 +20694,7 @@ export namespace TelepathyGLib {
     abstract class PresenceStatusSpecPrivate {
         static $gtype: GObject.GType<PresenceStatusSpecPrivate>;
 
-        // Constructors of TelepathyGLib.PresenceStatusSpecPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -20703,7 +20703,7 @@ export namespace TelepathyGLib {
     abstract class ProtocolClassPrivate {
         static $gtype: GObject.GType<ProtocolClassPrivate>;
 
-        // Constructors of TelepathyGLib.ProtocolClassPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -20711,7 +20711,7 @@ export namespace TelepathyGLib {
     abstract class ProtocolPrivate {
         static $gtype: GObject.GType<ProtocolPrivate>;
 
-        // Constructors of TelepathyGLib.ProtocolPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -20723,7 +20723,7 @@ export namespace TelepathyGLib {
     class ProxyFeature {
         static $gtype: GObject.GType<ProxyFeature>;
 
-        // Own fields of TelepathyGLib.ProxyFeature
+        // Fields
 
         name: GLib.Quark;
         core: boolean;
@@ -20733,7 +20733,7 @@ export namespace TelepathyGLib {
         depends_on: GLib.Quark;
         can_retry: boolean;
 
-        // Constructors of TelepathyGLib.ProxyFeature
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -20741,7 +20741,7 @@ export namespace TelepathyGLib {
     abstract class ProxyFeaturePrivate {
         static $gtype: GObject.GType<ProxyFeaturePrivate>;
 
-        // Constructors of TelepathyGLib.ProxyFeaturePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -20749,11 +20749,11 @@ export namespace TelepathyGLib {
     abstract class ProxyPendingCall {
         static $gtype: GObject.GType<ProxyPendingCall>;
 
-        // Constructors of TelepathyGLib.ProxyPendingCall
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of TelepathyGLib.ProxyPendingCall
+        // Methods
 
         cancel(): void;
     }
@@ -20761,7 +20761,7 @@ export namespace TelepathyGLib {
     abstract class ProxyPrivate {
         static $gtype: GObject.GType<ProxyPrivate>;
 
-        // Constructors of TelepathyGLib.ProxyPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -20769,11 +20769,11 @@ export namespace TelepathyGLib {
     abstract class ProxySignalConnection {
         static $gtype: GObject.GType<ProxySignalConnection>;
 
-        // Constructors of TelepathyGLib.ProxySignalConnection
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of TelepathyGLib.ProxySignalConnection
+        // Methods
 
         disconnect(): void;
     }
@@ -20782,7 +20782,7 @@ export namespace TelepathyGLib {
     abstract class RoomInfoPriv {
         static $gtype: GObject.GType<RoomInfoPriv>;
 
-        // Constructors of TelepathyGLib.RoomInfoPriv
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -20791,7 +20791,7 @@ export namespace TelepathyGLib {
     abstract class RoomListPrivate {
         static $gtype: GObject.GType<RoomListPrivate>;
 
-        // Constructors of TelepathyGLib.RoomListPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -20801,7 +20801,7 @@ export namespace TelepathyGLib {
     abstract class SimpleApproverPrivate {
         static $gtype: GObject.GType<SimpleApproverPrivate>;
 
-        // Constructors of TelepathyGLib.SimpleApproverPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -20810,7 +20810,7 @@ export namespace TelepathyGLib {
     abstract class SimpleClientFactoryPrivate {
         static $gtype: GObject.GType<SimpleClientFactoryPrivate>;
 
-        // Constructors of TelepathyGLib.SimpleClientFactoryPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -20819,7 +20819,7 @@ export namespace TelepathyGLib {
     abstract class SimpleHandlerPrivate {
         static $gtype: GObject.GType<SimpleHandlerPrivate>;
 
-        // Constructors of TelepathyGLib.SimpleHandlerPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -20828,7 +20828,7 @@ export namespace TelepathyGLib {
     abstract class SimpleObserverPrivate {
         static $gtype: GObject.GType<SimpleObserverPrivate>;
 
-        // Constructors of TelepathyGLib.SimpleObserverPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -20837,7 +20837,7 @@ export namespace TelepathyGLib {
     abstract class StreamTubeChannelPrivate {
         static $gtype: GObject.GType<StreamTubeChannelPrivate>;
 
-        // Constructors of TelepathyGLib.StreamTubeChannelPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -20846,7 +20846,7 @@ export namespace TelepathyGLib {
     abstract class StreamTubeConnectionPrivate {
         static $gtype: GObject.GType<StreamTubeConnectionPrivate>;
 
-        // Constructors of TelepathyGLib.StreamTubeConnectionPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -20855,7 +20855,7 @@ export namespace TelepathyGLib {
     abstract class TLSCertificateClassPrivate {
         static $gtype: GObject.GType<TLSCertificateClassPrivate>;
 
-        // Constructors of TelepathyGLib.TLSCertificateClassPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -20863,7 +20863,7 @@ export namespace TelepathyGLib {
     abstract class TLSCertificatePrivate {
         static $gtype: GObject.GType<TLSCertificatePrivate>;
 
-        // Constructors of TelepathyGLib.TLSCertificatePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -20872,7 +20872,7 @@ export namespace TelepathyGLib {
     abstract class TLSCertificateRejectionPriv {
         static $gtype: GObject.GType<TLSCertificateRejectionPriv>;
 
-        // Constructors of TelepathyGLib.TLSCertificateRejectionPriv
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -20881,7 +20881,7 @@ export namespace TelepathyGLib {
     abstract class TextChannelPrivate {
         static $gtype: GObject.GType<TextChannelPrivate>;
 
-        // Constructors of TelepathyGLib.TextChannelPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -20902,7 +20902,7 @@ export namespace TelepathyGLib {
     abstract class WeakRef {
         static $gtype: GObject.GType<WeakRef>;
 
-        // Constructors of TelepathyGLib.WeakRef
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -20918,7 +20918,7 @@ export namespace TelepathyGLib {
         prototype: ClientChannelFactory;
     }
     interface ClientChannelFactory extends GObject.Object {
-        // Own methods of TelepathyGLib.ClientChannelFactory
+        // Methods
 
         /**
          * Function called when a channel need to be created.
@@ -20966,7 +20966,7 @@ export namespace TelepathyGLib {
         prototype: HandleRepoIface;
     }
     interface HandleRepoIface extends GObject.Object {
-        // Own properties of TelepathyGLib.HandleRepoIface
+        // Properties
 
         get handle_type(): number;
         get handleType(): number;

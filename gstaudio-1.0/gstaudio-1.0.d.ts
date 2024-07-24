@@ -1904,7 +1904,7 @@ export namespace GstAudio {
     abstract class AudioAggregator extends GstBase.Aggregator {
         static $gtype: GObject.GType<AudioAggregator>;
 
-        // Own properties of GstAudio.AudioAggregator
+        // Properties
 
         get alignment_threshold(): number;
         set alignment_threshold(val: number);
@@ -1967,13 +1967,13 @@ export namespace GstAudio {
         get outputBufferDurationFraction(): Gst.Fraction;
         set outputBufferDurationFraction(val: Gst.Fraction);
 
-        // Constructors of GstAudio.AudioAggregator
+        // Constructors
 
         constructor(properties?: Partial<AudioAggregator.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of GstAudio.AudioAggregator
+        // Virtual methods
 
         /**
          * Aggregates one input buffer to the output
@@ -2001,7 +2001,7 @@ export namespace GstAudio {
          */
         vfunc_create_output_buffer(num_frames: number): Gst.Buffer;
 
-        // Own methods of GstAudio.AudioAggregator
+        // Methods
 
         set_sink_caps(pad: AudioAggregatorPad, caps: Gst.Caps): void;
     }
@@ -2023,14 +2023,14 @@ export namespace GstAudio {
     class AudioAggregatorConvertPad extends AudioAggregatorPad {
         static $gtype: GObject.GType<AudioAggregatorConvertPad>;
 
-        // Own properties of GstAudio.AudioAggregatorConvertPad
+        // Properties
 
         get converter_config(): Gst.Structure;
         set converter_config(val: Gst.Structure);
         get converterConfig(): Gst.Structure;
         set converterConfig(val: Gst.Structure);
 
-        // Constructors of GstAudio.AudioAggregatorConvertPad
+        // Constructors
 
         constructor(properties?: Partial<AudioAggregatorConvertPad.ConstructorProps>, ...args: any[]);
 
@@ -2052,7 +2052,7 @@ export namespace GstAudio {
     class AudioAggregatorPad extends GstBase.AggregatorPad {
         static $gtype: GObject.GType<AudioAggregatorPad>;
 
-        // Own properties of GstAudio.AudioAggregatorPad
+        // Properties
 
         /**
          * Emit QoS messages when dropping buffers.
@@ -2065,13 +2065,13 @@ export namespace GstAudio {
         get qosMessages(): boolean;
         set qosMessages(val: boolean);
 
-        // Constructors of GstAudio.AudioAggregatorPad
+        // Constructors
 
         constructor(properties?: Partial<AudioAggregatorPad.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of GstAudio.AudioAggregatorPad
+        // Virtual methods
 
         /**
          * Convert a buffer from one format to another.
@@ -2118,7 +2118,7 @@ export namespace GstAudio {
     class AudioBaseSink extends GstBase.BaseSink {
         static $gtype: GObject.GType<AudioBaseSink>;
 
-        // Own properties of GstAudio.AudioBaseSink
+        // Properties
 
         get alignment_threshold(): number;
         set alignment_threshold(val: number);
@@ -2169,7 +2169,7 @@ export namespace GstAudio {
         get slaveMethod(): AudioBaseSinkSlaveMethod;
         set slaveMethod(val: AudioBaseSinkSlaveMethod);
 
-        // Own fields of GstAudio.AudioBaseSink
+        // Fields
 
         element: GstBase.BaseSink;
         ringbuffer: AudioRingBuffer;
@@ -2177,13 +2177,13 @@ export namespace GstAudio {
         provided_clock: Gst.Clock;
         eos_rendering: boolean;
 
-        // Constructors of GstAudio.AudioBaseSink
+        // Constructors
 
         constructor(properties?: Partial<AudioBaseSink.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of GstAudio.AudioBaseSink
+        // Virtual methods
 
         /**
          * Create and return the #GstAudioRingBuffer for `sink`. This function will
@@ -2200,7 +2200,7 @@ export namespace GstAudio {
          */
         vfunc_payload(buffer: Gst.Buffer): Gst.Buffer;
 
-        // Own methods of GstAudio.AudioBaseSink
+        // Methods
 
         /**
          * Create and return the #GstAudioRingBuffer for `sink`. This function will
@@ -2312,7 +2312,7 @@ export namespace GstAudio {
     class AudioBaseSrc extends GstBase.PushSrc {
         static $gtype: GObject.GType<AudioBaseSrc>;
 
-        // Own properties of GstAudio.AudioBaseSrc
+        // Properties
 
         /**
          * Actual configured size of audio buffer in microseconds.
@@ -2347,20 +2347,20 @@ export namespace GstAudio {
         get slaveMethod(): AudioBaseSrcSlaveMethod;
         set slaveMethod(val: AudioBaseSrcSlaveMethod);
 
-        // Own fields of GstAudio.AudioBaseSrc
+        // Fields
 
         element: GstBase.PushSrc;
         ringbuffer: AudioRingBuffer;
         next_sample: number;
         clock: Gst.Clock;
 
-        // Constructors of GstAudio.AudioBaseSrc
+        // Constructors
 
         constructor(properties?: Partial<AudioBaseSrc.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of GstAudio.AudioBaseSrc
+        // Virtual methods
 
         /**
          * Create and return the #GstAudioRingBuffer for `src`. This function will call
@@ -2369,7 +2369,7 @@ export namespace GstAudio {
          */
         vfunc_create_ringbuffer(): AudioRingBuffer | null;
 
-        // Own methods of GstAudio.AudioBaseSrc
+        // Methods
 
         /**
          * Create and return the #GstAudioRingBuffer for `src`. This function will call
@@ -2461,7 +2461,7 @@ export namespace GstAudio {
     class AudioCdSrc extends GstBase.PushSrc implements Gst.URIHandler {
         static $gtype: GObject.GType<AudioCdSrc>;
 
-        // Own properties of GstAudio.AudioCdSrc
+        // Properties
 
         get device(): string;
         set device(val: string);
@@ -2470,17 +2470,17 @@ export namespace GstAudio {
         get track(): number;
         set track(val: number);
 
-        // Own fields of GstAudio.AudioCdSrc
+        // Fields
 
         pushsrc: GstBase.PushSrc;
 
-        // Constructors of GstAudio.AudioCdSrc
+        // Constructors
 
         constructor(properties?: Partial<AudioCdSrc.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of GstAudio.AudioCdSrc
+        // Virtual methods
 
         /**
          * closing the device
@@ -2497,7 +2497,7 @@ export namespace GstAudio {
          */
         vfunc_read_sector(sector: number): Gst.Buffer;
 
-        // Own methods of GstAudio.AudioCdSrc
+        // Methods
 
         /**
          * CDDA sources use this function from their start vfunc to announce the
@@ -2960,14 +2960,14 @@ export namespace GstAudio {
     class AudioClock extends Gst.SystemClock {
         static $gtype: GObject.GType<AudioClock>;
 
-        // Own fields of GstAudio.AudioClock
+        // Fields
 
         clock: Gst.SystemClock;
         func: AudioClockGetTimeFunc;
         user_data: any;
         destroy_notify: GLib.DestroyNotify;
 
-        // Constructors of GstAudio.AudioClock
+        // Constructors
 
         constructor(properties?: Partial<AudioClock.ConstructorProps>, ...args: any[]);
 
@@ -2975,7 +2975,7 @@ export namespace GstAudio {
 
         static ['new'](name: string, func: AudioClockGetTimeFunc): AudioClock;
 
-        // Own methods of GstAudio.AudioClock
+        // Methods
 
         /**
          * Adjust `time` with the internal offset of the audio clock.
@@ -3115,7 +3115,7 @@ export namespace GstAudio {
     abstract class AudioDecoder extends Gst.Element {
         static $gtype: GObject.GType<AudioDecoder>;
 
-        // Own properties of GstAudio.AudioDecoder
+        // Properties
 
         /**
          * Maximum number of tolerated consecutive decode errors. See
@@ -3138,19 +3138,19 @@ export namespace GstAudio {
         get tolerance(): number;
         set tolerance(val: number);
 
-        // Own fields of GstAudio.AudioDecoder
+        // Fields
 
         element: Gst.Element;
         sinkpad: Gst.Pad;
         srcpad: Gst.Pad;
 
-        // Constructors of GstAudio.AudioDecoder
+        // Constructors
 
         constructor(properties?: Partial<AudioDecoder.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of GstAudio.AudioDecoder
+        // Virtual methods
 
         /**
          * Optional.
@@ -3285,7 +3285,7 @@ export namespace GstAudio {
          */
         vfunc_transform_meta(outbuf: Gst.Buffer, meta: Gst.Meta, inbuf: Gst.Buffer): boolean;
 
-        // Own methods of GstAudio.AudioDecoder
+        // Methods
 
         /**
          * Helper function that allocates a buffer to hold an audio frame
@@ -3617,7 +3617,7 @@ export namespace GstAudio {
     abstract class AudioEncoder extends Gst.Element implements Gst.Preset {
         static $gtype: GObject.GType<AudioEncoder>;
 
-        // Own properties of GstAudio.AudioEncoder
+        // Properties
 
         get hard_resync(): boolean;
         set hard_resync(val: boolean);
@@ -3632,19 +3632,19 @@ export namespace GstAudio {
         get tolerance(): number;
         set tolerance(val: number);
 
-        // Own fields of GstAudio.AudioEncoder
+        // Fields
 
         element: Gst.Element;
         sinkpad: Gst.Pad;
         srcpad: Gst.Pad;
 
-        // Constructors of GstAudio.AudioEncoder
+        // Constructors
 
         constructor(properties?: Partial<AudioEncoder.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of GstAudio.AudioEncoder
+        // Virtual methods
 
         /**
          * Optional.
@@ -3777,7 +3777,7 @@ export namespace GstAudio {
          */
         vfunc_transform_meta(outbuf: Gst.Buffer, meta: Gst.Meta, inbuf: Gst.Buffer): boolean;
 
-        // Own methods of GstAudio.AudioEncoder
+        // Methods
 
         /**
          * Helper function that allocates a buffer to hold an encoded audio frame
@@ -4521,21 +4521,21 @@ export namespace GstAudio {
     abstract class AudioFilter extends GstBase.BaseTransform {
         static $gtype: GObject.GType<AudioFilter>;
 
-        // Own fields of GstAudio.AudioFilter
+        // Fields
 
         basetransform: GstBase.BaseTransform;
 
-        // Constructors of GstAudio.AudioFilter
+        // Constructors
 
         constructor(properties?: Partial<AudioFilter.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of GstAudio.AudioFilter
+        // Static methods
 
         static add_pad_templates(allowed_caps: Gst.Caps): void;
 
-        // Own virtual methods of GstAudio.AudioFilter
+        // Virtual methods
 
         /**
          * virtual function called whenever the format changes
@@ -4563,7 +4563,7 @@ export namespace GstAudio {
     abstract class AudioRingBuffer extends Gst.Object {
         static $gtype: GObject.GType<AudioRingBuffer>;
 
-        // Own fields of GstAudio.AudioRingBuffer
+        // Fields
 
         object: Gst.Object;
         open: boolean;
@@ -4577,13 +4577,13 @@ export namespace GstAudio {
         segbase: number;
         waiting: number;
 
-        // Constructors of GstAudio.AudioRingBuffer
+        // Constructors
 
         constructor(properties?: Partial<AudioRingBuffer.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of GstAudio.AudioRingBuffer
+        // Static methods
 
         /**
          * Print debug info about the buffer sized in `spec` to the debug log.
@@ -4602,7 +4602,7 @@ export namespace GstAudio {
          */
         static parse_caps(spec: AudioRingBufferSpec, caps: Gst.Caps): boolean;
 
-        // Own virtual methods of GstAudio.AudioRingBuffer
+        // Virtual methods
 
         /**
          * Allocate the resources for the ringbuffer. This function fills
@@ -4700,7 +4700,7 @@ export namespace GstAudio {
          */
         vfunc_stop(): boolean;
 
-        // Own methods of GstAudio.AudioRingBuffer
+        // Methods
 
         /**
          * Allocate the resources for the ringbuffer. This function fills
@@ -4957,17 +4957,17 @@ export namespace GstAudio {
     class AudioSink extends AudioBaseSink {
         static $gtype: GObject.GType<AudioSink>;
 
-        // Own fields of GstAudio.AudioSink
+        // Fields
 
         element: AudioBaseSink;
 
-        // Constructors of GstAudio.AudioSink
+        // Constructors
 
         constructor(properties?: Partial<AudioSink.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of GstAudio.AudioSink
+        // Virtual methods
 
         /**
          * Close the device.
@@ -5051,17 +5051,17 @@ export namespace GstAudio {
     class AudioSrc extends AudioBaseSrc {
         static $gtype: GObject.GType<AudioSrc>;
 
-        // Own fields of GstAudio.AudioSrc
+        // Fields
 
         element: AudioBaseSrc;
 
-        // Constructors of GstAudio.AudioSrc
+        // Constructors
 
         constructor(properties?: Partial<AudioSrc.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of GstAudio.AudioSrc
+        // Virtual methods
 
         /**
          * close the device
@@ -5100,7 +5100,7 @@ export namespace GstAudio {
     abstract class AudioAggregatorConvertPadPrivate {
         static $gtype: GObject.GType<AudioAggregatorConvertPadPrivate>;
 
-        // Constructors of GstAudio.AudioAggregatorConvertPadPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5109,7 +5109,7 @@ export namespace GstAudio {
     abstract class AudioAggregatorPadPrivate {
         static $gtype: GObject.GType<AudioAggregatorPadPrivate>;
 
-        // Constructors of GstAudio.AudioAggregatorPadPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5117,7 +5117,7 @@ export namespace GstAudio {
     abstract class AudioAggregatorPrivate {
         static $gtype: GObject.GType<AudioAggregatorPrivate>;
 
-        // Constructors of GstAudio.AudioAggregatorPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5126,7 +5126,7 @@ export namespace GstAudio {
     abstract class AudioBaseSinkPrivate {
         static $gtype: GObject.GType<AudioBaseSinkPrivate>;
 
-        // Constructors of GstAudio.AudioBaseSinkPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5135,7 +5135,7 @@ export namespace GstAudio {
     abstract class AudioBaseSrcPrivate {
         static $gtype: GObject.GType<AudioBaseSrcPrivate>;
 
-        // Constructors of GstAudio.AudioBaseSrcPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5153,17 +5153,17 @@ export namespace GstAudio {
     class AudioBuffer {
         static $gtype: GObject.GType<AudioBuffer>;
 
-        // Own fields of GstAudio.AudioBuffer
+        // Fields
 
         n_samples: number;
         n_planes: number;
         planes: any;
 
-        // Constructors of GstAudio.AudioBuffer
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own static methods of GstAudio.AudioBuffer
+        // Static methods
 
         /**
          * Clip the buffer to the given %GstSegment.
@@ -5242,7 +5242,7 @@ export namespace GstAudio {
          */
         static truncate(buffer: Gst.Buffer, bpf: number, trim: number, samples: number): Gst.Buffer;
 
-        // Own methods of GstAudio.AudioBuffer
+        // Methods
 
         /**
          * Unmaps an audio buffer that was previously mapped with
@@ -5255,7 +5255,7 @@ export namespace GstAudio {
     abstract class AudioCdSrcPrivate {
         static $gtype: GObject.GType<AudioCdSrcPrivate>;
 
-        // Constructors of GstAudio.AudioCdSrcPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5272,14 +5272,14 @@ export namespace GstAudio {
     class AudioCdSrcTrack {
         static $gtype: GObject.GType<AudioCdSrcTrack>;
 
-        // Own fields of GstAudio.AudioCdSrcTrack
+        // Fields
 
         is_audio: boolean;
         num: number;
         start: number;
         end: number;
 
-        // Constructors of GstAudio.AudioCdSrcTrack
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5287,11 +5287,11 @@ export namespace GstAudio {
     abstract class AudioChannelMixer {
         static $gtype: GObject.GType<AudioChannelMixer>;
 
-        // Constructors of GstAudio.AudioChannelMixer
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of GstAudio.AudioChannelMixer
+        // Methods
 
         /**
          * Free memory allocated by `mix`.
@@ -5344,17 +5344,17 @@ export namespace GstAudio {
     class AudioClippingMeta {
         static $gtype: GObject.GType<AudioClippingMeta>;
 
-        // Own fields of GstAudio.AudioClippingMeta
+        // Fields
 
         format: Gst.Format;
         start: number;
         end: number;
 
-        // Constructors of GstAudio.AudioClippingMeta
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own static methods of GstAudio.AudioClippingMeta
+        // Static methods
 
         static get_info(): Gst.MetaInfo;
     }
@@ -5373,7 +5373,7 @@ export namespace GstAudio {
     class AudioConverter {
         static $gtype: GObject.GType<AudioConverter>;
 
-        // Constructors of GstAudio.AudioConverter
+        // Constructors
 
         constructor(flags: AudioConverterFlags, in_info: AudioInfo, out_info: AudioInfo, config?: Gst.Structure | null);
         _init(...args: any[]): void;
@@ -5385,7 +5385,7 @@ export namespace GstAudio {
             config?: Gst.Structure | null,
         ): AudioConverter;
 
-        // Own methods of GstAudio.AudioConverter
+        // Methods
 
         /**
          * Convenience wrapper around gst_audio_converter_samples(), which will
@@ -5500,7 +5500,7 @@ export namespace GstAudio {
     abstract class AudioDecoderPrivate {
         static $gtype: GObject.GType<AudioDecoderPrivate>;
 
-        // Constructors of GstAudio.AudioDecoderPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5518,7 +5518,7 @@ export namespace GstAudio {
     class AudioDownmixMeta {
         static $gtype: GObject.GType<AudioDownmixMeta>;
 
-        // Own fields of GstAudio.AudioDownmixMeta
+        // Fields
 
         from_position: AudioChannelPosition;
         to_position: AudioChannelPosition;
@@ -5526,11 +5526,11 @@ export namespace GstAudio {
         to_channels: number;
         matrix: number;
 
-        // Constructors of GstAudio.AudioDownmixMeta
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own static methods of GstAudio.AudioDownmixMeta
+        // Static methods
 
         static get_info(): Gst.MetaInfo;
     }
@@ -5539,7 +5539,7 @@ export namespace GstAudio {
     abstract class AudioEncoderPrivate {
         static $gtype: GObject.GType<AudioEncoderPrivate>;
 
-        // Constructors of GstAudio.AudioEncoderPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5551,7 +5551,7 @@ export namespace GstAudio {
     class AudioFormatInfo {
         static $gtype: GObject.GType<AudioFormatInfo>;
 
-        // Own fields of GstAudio.AudioFormatInfo
+        // Fields
 
         format: AudioFormat;
         name: string;
@@ -5565,11 +5565,11 @@ export namespace GstAudio {
         unpack_func: AudioFormatUnpack;
         pack_func: AudioFormatPack;
 
-        // Constructors of GstAudio.AudioFormatInfo
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of GstAudio.AudioFormatInfo
+        // Methods
 
         /**
          * Fill `length` bytes in `dest` with silence samples for `info`.
@@ -5587,7 +5587,7 @@ export namespace GstAudio {
     class AudioInfo {
         static $gtype: GObject.GType<AudioInfo>;
 
-        // Own fields of GstAudio.AudioInfo
+        // Fields
 
         flags: AudioFlags;
         layout: AudioLayout;
@@ -5596,7 +5596,7 @@ export namespace GstAudio {
         bpf: number;
         position: AudioChannelPosition[];
 
-        // Constructors of GstAudio.AudioInfo
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -5614,7 +5614,7 @@ export namespace GstAudio {
 
         static new_from_caps(caps: Gst.Caps): AudioInfo;
 
-        // Own static methods of GstAudio.AudioInfo
+        // Static methods
 
         /**
          * Parse `caps` and update `info`.
@@ -5626,7 +5626,7 @@ export namespace GstAudio {
          */
         static init(): AudioInfo;
 
-        // Own methods of GstAudio.AudioInfo
+        // Methods
 
         /**
          * Converts among various #GstFormat types.  This function handles
@@ -5678,16 +5678,16 @@ export namespace GstAudio {
     class AudioLevelMeta {
         static $gtype: GObject.GType<AudioLevelMeta>;
 
-        // Own fields of GstAudio.AudioLevelMeta
+        // Fields
 
         level: number;
         voice_activity: boolean;
 
-        // Constructors of GstAudio.AudioLevelMeta
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own static methods of GstAudio.AudioLevelMeta
+        // Static methods
 
         /**
          * Return the #GstMetaInfo associated with #GstAudioLevelMeta.
@@ -5703,16 +5703,16 @@ export namespace GstAudio {
     class AudioMeta {
         static $gtype: GObject.GType<AudioMeta>;
 
-        // Own fields of GstAudio.AudioMeta
+        // Fields
 
         samples: number;
         offsets: number;
 
-        // Constructors of GstAudio.AudioMeta
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own static methods of GstAudio.AudioMeta
+        // Static methods
 
         static get_info(): Gst.MetaInfo;
     }
@@ -5720,11 +5720,11 @@ export namespace GstAudio {
     abstract class AudioQuantize {
         static $gtype: GObject.GType<AudioQuantize>;
 
-        // Constructors of GstAudio.AudioQuantize
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of GstAudio.AudioQuantize
+        // Methods
 
         /**
          * Free a #GstAudioQuantize.
@@ -5760,11 +5760,11 @@ export namespace GstAudio {
     abstract class AudioResampler {
         static $gtype: GObject.GType<AudioResampler>;
 
-        // Constructors of GstAudio.AudioResampler
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own static methods of GstAudio.AudioResampler
+        // Static methods
 
         /**
          * Make a new resampler.
@@ -5802,7 +5802,7 @@ export namespace GstAudio {
             options: Gst.Structure,
         ): void;
 
-        // Own methods of GstAudio.AudioResampler
+        // Methods
 
         /**
          * Free a previously allocated #GstAudioResampler `resampler`.
@@ -5881,7 +5881,7 @@ export namespace GstAudio {
     class AudioRingBufferSpec {
         static $gtype: GObject.GType<AudioRingBufferSpec>;
 
-        // Own fields of GstAudio.AudioRingBufferSpec
+        // Fields
 
         type: AudioRingBufferFormatType;
         latency_time: number;
@@ -5890,7 +5890,7 @@ export namespace GstAudio {
         segtotal: number;
         seglatency: number;
 
-        // Constructors of GstAudio.AudioRingBufferSpec
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5899,7 +5899,7 @@ export namespace GstAudio {
     class AudioSinkClassExtension {
         static $gtype: GObject.GType<AudioSinkClassExtension>;
 
-        // Constructors of GstAudio.AudioSinkClassExtension
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5916,14 +5916,14 @@ export namespace GstAudio {
     class AudioStreamAlign {
         static $gtype: GObject.GType<AudioStreamAlign>;
 
-        // Constructors of GstAudio.AudioStreamAlign
+        // Constructors
 
         constructor(rate: number, alignment_threshold: Gst.ClockTime, discont_wait: Gst.ClockTime);
         _init(...args: any[]): void;
 
         static ['new'](rate: number, alignment_threshold: Gst.ClockTime, discont_wait: Gst.ClockTime): AudioStreamAlign;
 
-        // Own methods of GstAudio.AudioStreamAlign
+        // Methods
 
         /**
          * Copy a GstAudioStreamAlign structure.
@@ -6067,7 +6067,7 @@ export namespace GstAudio {
     class DsdInfo {
         static $gtype: GObject.GType<DsdInfo>;
 
-        // Own fields of GstAudio.DsdInfo
+        // Fields
 
         format: DsdFormat;
         rate: number;
@@ -6077,7 +6077,7 @@ export namespace GstAudio {
         positions: AudioChannelPosition[];
         flags: AudioFlags;
 
-        // Constructors of GstAudio.DsdInfo
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -6096,7 +6096,7 @@ export namespace GstAudio {
 
         static new_from_caps(caps: Gst.Caps): DsdInfo;
 
-        // Own static methods of GstAudio.DsdInfo
+        // Static methods
 
         /**
          * Parse `caps` and update `info`.
@@ -6108,7 +6108,7 @@ export namespace GstAudio {
          */
         static init(): DsdInfo;
 
-        // Own methods of GstAudio.DsdInfo
+        // Methods
 
         /**
          * Copy a GstDsdInfo structure.
@@ -6167,17 +6167,17 @@ export namespace GstAudio {
     class DsdPlaneOffsetMeta {
         static $gtype: GObject.GType<DsdPlaneOffsetMeta>;
 
-        // Own fields of GstAudio.DsdPlaneOffsetMeta
+        // Fields
 
         num_channels: number;
         num_bytes_per_channel: number;
         offsets: number;
 
-        // Constructors of GstAudio.DsdPlaneOffsetMeta
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own static methods of GstAudio.DsdPlaneOffsetMeta
+        // Static methods
 
         static get_info(): Gst.MetaInfo;
     }
@@ -6199,14 +6199,14 @@ export namespace GstAudio {
         convert_volume(from: StreamVolumeFormat, to: StreamVolumeFormat, val: number): number;
     }
     interface StreamVolume extends GObject.Object {
-        // Own properties of GstAudio.StreamVolume
+        // Properties
 
         get mute(): boolean;
         set mute(val: boolean);
         get volume(): number;
         set volume(val: number);
 
-        // Own methods of GstAudio.StreamVolume
+        // Methods
 
         get_mute(): boolean;
         get_volume(format: StreamVolumeFormat): number;

@@ -278,7 +278,7 @@ export namespace ClutterX11 {
     {
         static $gtype: GObject.GType<TexturePixmap>;
 
-        // Own properties of ClutterX11.TexturePixmap
+        // Properties
 
         get automatic_updates(): boolean;
         set automatic_updates(val: boolean);
@@ -308,7 +308,7 @@ export namespace ClutterX11 {
         get window_y(): number;
         get windowY(): number;
 
-        // Constructors of ClutterX11.TexturePixmap
+        // Constructors
 
         constructor(properties?: Partial<TexturePixmap.ConstructorProps>, ...args: any[]);
 
@@ -320,7 +320,7 @@ export namespace ClutterX11 {
 
         static new_with_window(window: xlib.Window): TexturePixmap;
 
-        // Own signals of ClutterX11.TexturePixmap
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -344,7 +344,7 @@ export namespace ClutterX11 {
         ): number;
         emit(signal: 'update-area', x: number, y: number, width: number, height: number): void;
 
-        // Own virtual methods of ClutterX11.TexturePixmap
+        // Virtual methods
 
         /**
          * Performs the actual binding of texture to the current content of
@@ -357,7 +357,7 @@ export namespace ClutterX11 {
          */
         vfunc_update_area(x: number, y: number, width: number, height: number): void;
 
-        // Own methods of ClutterX11.TexturePixmap
+        // Methods
 
         /**
          * Enables or disables the automatic updates ot `texture` in case the backing
@@ -806,7 +806,7 @@ export namespace ClutterX11 {
     abstract class TexturePixmapPrivate {
         static $gtype: GObject.GType<TexturePixmapPrivate>;
 
-        // Constructors of ClutterX11.TexturePixmapPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -814,7 +814,7 @@ export namespace ClutterX11 {
     abstract class XInputDevice {
         static $gtype: GObject.GType<XInputDevice>;
 
-        // Constructors of ClutterX11.XInputDevice
+        // Constructors
 
         _init(...args: any[]): void;
     }

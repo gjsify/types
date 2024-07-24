@@ -21,7 +21,7 @@ export namespace Gom {
     class Error extends GLib.Error {
         static $gtype: GObject.GType<Error>;
 
-        // Static fields of Gom.Error
+        // Static fields
 
         static ADAPTER_OPEN: number;
         static COMMAND_NO_SQL: number;
@@ -29,12 +29,12 @@ export namespace Gom {
         static REPOSITORY_EMPTY_RESULT: number;
         static RESOURCE_CURSOR: number;
 
-        // Constructors of Gom.Error
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of Gom.Error
+        // Static methods
 
         static quark(): GLib.Quark;
     }
@@ -89,7 +89,7 @@ export namespace Gom {
     class Adapter extends GObject.Object {
         static $gtype: GObject.GType<Adapter>;
 
-        // Constructors of Gom.Adapter
+        // Constructors
 
         constructor(properties?: Partial<Adapter.ConstructorProps>, ...args: any[]);
 
@@ -97,7 +97,7 @@ export namespace Gom {
 
         static ['new'](): Adapter;
 
-        // Own methods of Gom.Adapter
+        // Methods
 
         close_async(callback?: Gio.AsyncReadyCallback<this> | null): void;
         close_finish(result: Gio.AsyncResult): boolean;
@@ -153,18 +153,18 @@ export namespace Gom {
     class Command extends GObject.Object {
         static $gtype: GObject.GType<Command>;
 
-        // Own properties of Gom.Command
+        // Properties
 
         get adapter(): Adapter;
         set sql(val: string);
 
-        // Constructors of Gom.Command
+        // Constructors
 
         constructor(properties?: Partial<Command.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Gom.Command
+        // Methods
 
         execute(cursor: Cursor): boolean;
         get_param_index(param_name: string): number;
@@ -201,7 +201,7 @@ export namespace Gom {
     class CommandBuilder extends GObject.Object {
         static $gtype: GObject.GType<CommandBuilder>;
 
-        // Own properties of Gom.CommandBuilder
+        // Properties
 
         get adapter(): Adapter;
         get filter(): Filter;
@@ -221,13 +221,13 @@ export namespace Gom {
         get sorting(): Sorting;
         set sorting(val: Sorting);
 
-        // Constructors of Gom.CommandBuilder
+        // Constructors
 
         constructor(properties?: Partial<CommandBuilder.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Gom.CommandBuilder
+        // Methods
 
         /**
          * Builds a new command that will count the number of rows matching the
@@ -281,17 +281,17 @@ export namespace Gom {
     class Cursor extends GObject.Object {
         static $gtype: GObject.GType<Cursor>;
 
-        // Own properties of Gom.Cursor
+        // Properties
 
         get statement(): any;
 
-        // Constructors of Gom.Cursor
+        // Constructors
 
         constructor(properties?: Partial<Cursor.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Gom.Cursor
+        // Methods
 
         get_column(column: number, value: GObject.Value | any): void;
         get_column_boolean(column: number): boolean;
@@ -319,12 +319,12 @@ export namespace Gom {
     class Filter extends GObject.InitiallyUnowned {
         static $gtype: GObject.GType<Filter>;
 
-        // Own properties of Gom.Filter
+        // Properties
 
         get mode(): FilterMode;
         set sql(val: string);
 
-        // Constructors of Gom.Filter
+        // Constructors
 
         constructor(properties?: Partial<Filter.ConstructorProps>, ...args: any[]);
 
@@ -360,7 +360,7 @@ export namespace Gom {
 
         static new_sql(sql: string, values: (GObject.Value | any)[]): Filter;
 
-        // Own methods of Gom.Filter
+        // Methods
 
         get_sql(table_map: { [key: string]: any } | GLib.HashTable<any, any>): string;
         /**
@@ -382,11 +382,11 @@ export namespace Gom {
     class Repository extends GObject.Object {
         static $gtype: GObject.GType<Repository>;
 
-        // Own properties of Gom.Repository
+        // Properties
 
         get adapter(): Adapter;
 
-        // Constructors of Gom.Repository
+        // Constructors
 
         constructor(properties?: Partial<Repository.ConstructorProps>, ...args: any[]);
 
@@ -394,7 +394,7 @@ export namespace Gom {
 
         static ['new'](adapter: Adapter): Repository;
 
-        // Own methods of Gom.Repository
+        // Methods
 
         /**
          * Performs an automatic migration on the underlying database. See
@@ -515,18 +515,18 @@ export namespace Gom {
     abstract class Resource extends GObject.Object {
         static $gtype: GObject.GType<Resource>;
 
-        // Own properties of Gom.Resource
+        // Properties
 
         get repository(): Repository;
         set repository(val: Repository);
 
-        // Constructors of Gom.Resource
+        // Constructors
 
         constructor(properties?: Partial<Resource.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of Gom.Resource
+        // Static methods
 
         static from_bytes_func_quark(): GLib.Quark;
         static new_in_version_quark(): GLib.Quark;
@@ -546,7 +546,7 @@ export namespace Gom {
         static set_table(table: string): void;
         static set_unique(property_name: string): void;
 
-        // Own methods of Gom.Resource
+        // Methods
 
         delete_async(callback?: Gio.AsyncReadyCallback<this> | null): void;
         delete_finish(result: Gio.AsyncResult): boolean;
@@ -596,7 +596,7 @@ export namespace Gom {
     class ResourceGroup extends GObject.Object {
         static $gtype: GObject.GType<ResourceGroup>;
 
-        // Own properties of Gom.ResourceGroup
+        // Properties
 
         get count(): number;
         get filter(): Filter;
@@ -611,7 +611,7 @@ export namespace Gom {
         get resourceType(): GObject.GType;
         get sorting(): Sorting;
 
-        // Constructors of Gom.ResourceGroup
+        // Constructors
 
         constructor(properties?: Partial<ResourceGroup.ConstructorProps>, ...args: any[]);
 
@@ -619,7 +619,7 @@ export namespace Gom {
 
         static ['new'](repository: Repository): ResourceGroup;
 
-        // Own methods of Gom.ResourceGroup
+        // Methods
 
         append(resource: Resource): boolean;
         delete_async(callback?: Gio.AsyncReadyCallback<this> | null): void;
@@ -659,13 +659,13 @@ export namespace Gom {
     class Sorting extends GObject.InitiallyUnowned {
         static $gtype: GObject.GType<Sorting>;
 
-        // Constructors of Gom.Sorting
+        // Constructors
 
         constructor(properties?: Partial<Sorting.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Gom.Sorting
+        // Methods
 
         /**
          * Add a new ORDER BY clause to the sorting object.
@@ -702,7 +702,7 @@ export namespace Gom {
     abstract class AdapterPrivate {
         static $gtype: GObject.GType<AdapterPrivate>;
 
-        // Constructors of Gom.AdapterPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -711,7 +711,7 @@ export namespace Gom {
     abstract class CommandBuilderPrivate {
         static $gtype: GObject.GType<CommandBuilderPrivate>;
 
-        // Constructors of Gom.CommandBuilderPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -720,7 +720,7 @@ export namespace Gom {
     abstract class CommandPrivate {
         static $gtype: GObject.GType<CommandPrivate>;
 
-        // Constructors of Gom.CommandPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -729,7 +729,7 @@ export namespace Gom {
     abstract class CursorPrivate {
         static $gtype: GObject.GType<CursorPrivate>;
 
-        // Constructors of Gom.CursorPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -738,7 +738,7 @@ export namespace Gom {
     abstract class FilterPrivate {
         static $gtype: GObject.GType<FilterPrivate>;
 
-        // Constructors of Gom.FilterPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -747,7 +747,7 @@ export namespace Gom {
     abstract class RepositoryPrivate {
         static $gtype: GObject.GType<RepositoryPrivate>;
 
-        // Constructors of Gom.RepositoryPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -757,7 +757,7 @@ export namespace Gom {
     abstract class ResourceGroupPrivate {
         static $gtype: GObject.GType<ResourceGroupPrivate>;
 
-        // Constructors of Gom.ResourceGroupPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -765,7 +765,7 @@ export namespace Gom {
     abstract class ResourcePrivate {
         static $gtype: GObject.GType<ResourcePrivate>;
 
-        // Constructors of Gom.ResourcePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -774,7 +774,7 @@ export namespace Gom {
     abstract class SortingPrivate {
         static $gtype: GObject.GType<SortingPrivate>;
 
-        // Constructors of Gom.SortingPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }

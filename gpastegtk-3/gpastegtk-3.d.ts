@@ -84,7 +84,7 @@ export namespace GPasteGtk {
     class SettingsUiPanel extends Gtk.Grid implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<SettingsUiPanel>;
 
-        // Constructors of GPasteGtk.SettingsUiPanel
+        // Constructors
 
         constructor(properties?: Partial<SettingsUiPanel.ConstructorProps>, ...args: any[]);
 
@@ -92,7 +92,7 @@ export namespace GPasteGtk {
 
         static ['new'](): SettingsUiPanel;
 
-        // Own methods of GPasteGtk.SettingsUiPanel
+        // Methods
 
         /**
          * Add a new boolean settings to the current pane
@@ -579,7 +579,7 @@ export namespace GPasteGtk {
     class SettingsUiStack extends Gtk.Stack implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<SettingsUiStack>;
 
-        // Constructors of GPasteGtk.SettingsUiStack
+        // Constructors
 
         constructor(properties?: Partial<SettingsUiStack.ConstructorProps>, ...args: any[]);
 
@@ -587,7 +587,7 @@ export namespace GPasteGtk {
 
         static ['new'](): SettingsUiStack;
 
-        // Own methods of GPasteGtk.SettingsUiStack
+        // Methods
 
         /**
          * Add a new panel to the #GPasteGtkSettingsUiStack
@@ -1017,7 +1017,7 @@ export namespace GPasteGtk {
     class SettingsUiWidget extends Gtk.Grid implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<SettingsUiWidget>;
 
-        // Constructors of GPasteGtk.SettingsUiWidget
+        // Constructors
 
         constructor(properties?: Partial<SettingsUiWidget.ConstructorProps>, ...args: any[]);
 
@@ -1025,7 +1025,7 @@ export namespace GPasteGtk {
 
         static ['new'](): SettingsUiWidget;
 
-        // Own methods of GPasteGtk.SettingsUiWidget
+        // Methods
 
         /**
          * Get the inner GtkStack from the Widget

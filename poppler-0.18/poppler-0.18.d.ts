@@ -405,7 +405,7 @@ export namespace Poppler {
     class Error extends GLib.Error {
         static $gtype: GObject.GType<Error>;
 
-        // Static fields of Poppler.Error
+        // Static fields
 
         /**
          * Generic error when a document operation fails
@@ -429,12 +429,12 @@ export namespace Poppler {
         static DAMAGED: number;
         static SIGNING: number;
 
-        // Constructors of Poppler.Error
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of Poppler.Error
+        // Static methods
 
         static quark(): GLib.Quark;
     }
@@ -629,7 +629,7 @@ export namespace Poppler {
     class PDFPart {
         static $gtype: GObject.GType<PDFPart>;
 
-        // Static fields of Poppler.PDFPart
+        // Static fields
 
         /**
          * Null
@@ -672,7 +672,7 @@ export namespace Poppler {
          */
         static NONE: number;
 
-        // Constructors of Poppler.PDFPart
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1137,7 +1137,7 @@ export namespace Poppler {
     class StructureGlyphOrientation {
         static $gtype: GObject.GType<StructureGlyphOrientation>;
 
-        // Static fields of Poppler.StructureGlyphOrientation
+        // Static fields
 
         static AUTO: number;
         static '0': number;
@@ -1145,7 +1145,7 @@ export namespace Poppler {
         static '180': number;
         static '270': number;
 
-        // Constructors of Poppler.StructureGlyphOrientation
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1597,13 +1597,13 @@ export namespace Poppler {
     class Annot extends GObject.Object {
         static $gtype: GObject.GType<Annot>;
 
-        // Constructors of Poppler.Annot
+        // Constructors
 
         constructor(properties?: Partial<Annot.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Poppler.Annot
+        // Methods
 
         /**
          * Gets the type of `poppler_annot`
@@ -1682,7 +1682,7 @@ export namespace Poppler {
     class AnnotCircle extends AnnotMarkup {
         static $gtype: GObject.GType<AnnotCircle>;
 
-        // Constructors of Poppler.AnnotCircle
+        // Constructors
 
         constructor(properties?: Partial<AnnotCircle.ConstructorProps>, ...args: any[]);
 
@@ -1690,7 +1690,7 @@ export namespace Poppler {
 
         static ['new'](doc: Document, rect: Rectangle): AnnotCircle;
 
-        // Own methods of Poppler.AnnotCircle
+        // Methods
 
         /**
          * Retrieves the interior color of `poppler_annot`.
@@ -1713,13 +1713,13 @@ export namespace Poppler {
     class AnnotFileAttachment extends AnnotMarkup {
         static $gtype: GObject.GType<AnnotFileAttachment>;
 
-        // Constructors of Poppler.AnnotFileAttachment
+        // Constructors
 
         constructor(properties?: Partial<AnnotFileAttachment.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Poppler.AnnotFileAttachment
+        // Methods
 
         /**
          * Creates a #PopplerAttachment for the file of the file attachment annotation `annot`.
@@ -1743,13 +1743,13 @@ export namespace Poppler {
     class AnnotFreeText extends AnnotMarkup {
         static $gtype: GObject.GType<AnnotFreeText>;
 
-        // Constructors of Poppler.AnnotFreeText
+        // Constructors
 
         constructor(properties?: Partial<AnnotFreeText.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Poppler.AnnotFreeText
+        // Methods
 
         /**
          * Retrieves a #PopplerAnnotCalloutLine of four or six numbers specifying a callout
@@ -1773,7 +1773,7 @@ export namespace Poppler {
     class AnnotLine extends AnnotMarkup {
         static $gtype: GObject.GType<AnnotLine>;
 
-        // Constructors of Poppler.AnnotLine
+        // Constructors
 
         constructor(properties?: Partial<AnnotLine.ConstructorProps>, ...args: any[]);
 
@@ -1781,7 +1781,7 @@ export namespace Poppler {
 
         static ['new'](doc: Document, rect: Rectangle, start: Point, end: Point): AnnotLine;
 
-        // Own methods of Poppler.AnnotLine
+        // Methods
 
         /**
          * Set the coordinate points where the `poppler_annot` starts and ends.
@@ -1800,13 +1800,13 @@ export namespace Poppler {
     class AnnotMarkup extends Annot {
         static $gtype: GObject.GType<AnnotMarkup>;
 
-        // Constructors of Poppler.AnnotMarkup
+        // Constructors
 
         constructor(properties?: Partial<AnnotMarkup.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Poppler.AnnotMarkup
+        // Methods
 
         /**
          * Returns the date and time when the annotation was created
@@ -1895,13 +1895,13 @@ export namespace Poppler {
     class AnnotMovie extends Annot {
         static $gtype: GObject.GType<AnnotMovie>;
 
-        // Constructors of Poppler.AnnotMovie
+        // Constructors
 
         constructor(properties?: Partial<AnnotMovie.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Poppler.AnnotMovie
+        // Methods
 
         /**
          * Retrieves the movie object (PopplerMovie) stored in the `poppler_annot`.
@@ -1924,13 +1924,13 @@ export namespace Poppler {
     class AnnotScreen extends Annot {
         static $gtype: GObject.GType<AnnotScreen>;
 
-        // Constructors of Poppler.AnnotScreen
+        // Constructors
 
         constructor(properties?: Partial<AnnotScreen.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Poppler.AnnotScreen
+        // Methods
 
         /**
          * Retrieves the action (#PopplerAction) that shall be performed when `poppler_annot` is activated
@@ -1948,7 +1948,7 @@ export namespace Poppler {
     class AnnotSquare extends AnnotMarkup {
         static $gtype: GObject.GType<AnnotSquare>;
 
-        // Constructors of Poppler.AnnotSquare
+        // Constructors
 
         constructor(properties?: Partial<AnnotSquare.ConstructorProps>, ...args: any[]);
 
@@ -1956,7 +1956,7 @@ export namespace Poppler {
 
         static ['new'](doc: Document, rect: Rectangle): AnnotSquare;
 
-        // Own methods of Poppler.AnnotSquare
+        // Methods
 
         /**
          * Retrieves the interior color of `poppler_annot`.
@@ -1979,7 +1979,7 @@ export namespace Poppler {
     class AnnotStamp extends Annot {
         static $gtype: GObject.GType<AnnotStamp>;
 
-        // Constructors of Poppler.AnnotStamp
+        // Constructors
 
         constructor(properties?: Partial<AnnotStamp.ConstructorProps>, ...args: any[]);
 
@@ -1987,7 +1987,7 @@ export namespace Poppler {
 
         static ['new'](doc: Document, rect: Rectangle): AnnotStamp;
 
-        // Own methods of Poppler.AnnotStamp
+        // Methods
 
         get_icon(): AnnotStampIcon;
         /**
@@ -2012,7 +2012,7 @@ export namespace Poppler {
     class AnnotText extends AnnotMarkup {
         static $gtype: GObject.GType<AnnotText>;
 
-        // Constructors of Poppler.AnnotText
+        // Constructors
 
         constructor(properties?: Partial<AnnotText.ConstructorProps>, ...args: any[]);
 
@@ -2020,7 +2020,7 @@ export namespace Poppler {
 
         static ['new'](doc: Document, rect: Rectangle): AnnotText;
 
-        // Own methods of Poppler.AnnotText
+        // Methods
 
         /**
          * Gets name of the icon of `poppler_annot`.
@@ -2088,7 +2088,7 @@ export namespace Poppler {
     class AnnotTextMarkup extends AnnotMarkup {
         static $gtype: GObject.GType<AnnotTextMarkup>;
 
-        // Constructors of Poppler.AnnotTextMarkup
+        // Constructors
 
         constructor(properties?: Partial<AnnotTextMarkup.ConstructorProps>, ...args: any[]);
 
@@ -2102,7 +2102,7 @@ export namespace Poppler {
 
         static new_underline(doc: Document, rect: Rectangle, quadrilaterals: Quadrilateral[]): AnnotTextMarkup;
 
-        // Own methods of Poppler.AnnotTextMarkup
+        // Methods
 
         /**
          * Returns a #GArray of #PopplerQuadrilateral items that map from a
@@ -2127,7 +2127,7 @@ export namespace Poppler {
     class Attachment extends GObject.Object {
         static $gtype: GObject.GType<Attachment>;
 
-        // Own fields of Poppler.Attachment
+        // Fields
 
         name: string;
         description: string;
@@ -2136,13 +2136,13 @@ export namespace Poppler {
         ctime: GLib.Time;
         checksum: GLib.String;
 
-        // Constructors of Poppler.Attachment
+        // Constructors
 
         constructor(properties?: Partial<Attachment.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Poppler.Attachment
+        // Methods
 
         get_checksum(): GLib.String;
         get_ctime(): GLib.DateTime | null;
@@ -2231,7 +2231,7 @@ export namespace Poppler {
     class Document extends GObject.Object {
         static $gtype: GObject.GType<Document>;
 
-        // Own properties of Poppler.Document
+        // Properties
 
         /**
          * The author of the document
@@ -2394,7 +2394,7 @@ export namespace Poppler {
         get viewer_preferences(): ViewerPreferences;
         get viewerPreferences(): ViewerPreferences;
 
-        // Constructors of Poppler.Document
+        // Constructors
 
         constructor(properties?: Partial<Document.ConstructorProps>, ...args: any[]);
 
@@ -2417,7 +2417,7 @@ export namespace Poppler {
             cancellable?: Gio.Cancellable | null,
         ): Document;
 
-        // Own methods of Poppler.Document
+        // Methods
 
         /**
          * Creates a balanced binary tree of all named destinations in `document`
@@ -2791,7 +2791,7 @@ export namespace Poppler {
     class FontInfo extends GObject.Object {
         static $gtype: GObject.GType<FontInfo>;
 
-        // Constructors of Poppler.FontInfo
+        // Constructors
 
         constructor(properties?: Partial<FontInfo.ConstructorProps>, ...args: any[]);
 
@@ -2799,7 +2799,7 @@ export namespace Poppler {
 
         static ['new'](document: Document): FontInfo;
 
-        // Own methods of Poppler.FontInfo
+        // Methods
 
         free(): void;
         /**
@@ -2836,13 +2836,13 @@ export namespace Poppler {
     class FormField extends GObject.Object {
         static $gtype: GObject.GType<FormField>;
 
-        // Constructors of Poppler.FormField
+        // Constructors
 
         constructor(properties?: Partial<FormField.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Poppler.FormField
+        // Methods
 
         /**
          * Gets the button type of `field`
@@ -3055,13 +3055,13 @@ export namespace Poppler {
     class Layer extends GObject.Object {
         static $gtype: GObject.GType<Layer>;
 
-        // Constructors of Poppler.Layer
+        // Constructors
 
         constructor(properties?: Partial<Layer.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Poppler.Layer
+        // Methods
 
         /**
          * Returns the numeric ID the radio button group associated with `layer`.
@@ -3105,13 +3105,13 @@ export namespace Poppler {
     class Media extends GObject.Object {
         static $gtype: GObject.GType<Media>;
 
-        // Constructors of Poppler.Media
+        // Constructors
 
         constructor(properties?: Partial<Media.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Poppler.Media
+        // Methods
 
         /**
          * Returns the auto-play parameter.
@@ -3188,13 +3188,13 @@ export namespace Poppler {
     class Movie extends GObject.Object {
         static $gtype: GObject.GType<Movie>;
 
-        // Constructors of Poppler.Movie
+        // Constructors
 
         constructor(properties?: Partial<Movie.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Poppler.Movie
+        // Methods
 
         /**
          * Returns the dimensions of the movie's bounding box (in pixels).
@@ -3268,7 +3268,7 @@ export namespace Poppler {
     class PSFile extends GObject.Object {
         static $gtype: GObject.GType<PSFile>;
 
-        // Constructors of Poppler.PSFile
+        // Constructors
 
         constructor(properties?: Partial<PSFile.ConstructorProps>, ...args: any[]);
 
@@ -3278,7 +3278,7 @@ export namespace Poppler {
 
         static new_fd(document: Document, fd: number, first_page: number, n_pages: number): PSFile;
 
-        // Own methods of Poppler.PSFile
+        // Methods
 
         /**
          * Frees `ps_file`
@@ -3310,20 +3310,20 @@ export namespace Poppler {
     class Page extends GObject.Object {
         static $gtype: GObject.GType<Page>;
 
-        // Own properties of Poppler.Page
+        // Properties
 
         /**
          * The label of the page or %NULL. See also poppler_page_get_label()
          */
         get label(): string;
 
-        // Constructors of Poppler.Page
+        // Constructors
 
         constructor(properties?: Partial<Page.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of Poppler.Page
+        // Static methods
 
         /**
          * Frees a list of #PopplerAnnotMapping<!-- -->s allocated by
@@ -3365,7 +3365,7 @@ export namespace Poppler {
          */
         static selection_region_free(region: Rectangle[]): void;
 
-        // Own methods of Poppler.Page
+        // Methods
 
         /**
          * Adds annotation `annot` to `page`.
@@ -3664,13 +3664,13 @@ export namespace Poppler {
     class StructureElement extends GObject.Object {
         static $gtype: GObject.GType<StructureElement>;
 
-        // Constructors of Poppler.StructureElement
+        // Constructors
 
         constructor(properties?: Partial<StructureElement.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Poppler.StructureElement
+        // Methods
 
         /**
          * Acronyms and abbreviations contained in elements of type
@@ -4053,12 +4053,12 @@ export namespace Poppler {
     class ActionAny {
         static $gtype: GObject.GType<ActionAny>;
 
-        // Own fields of Poppler.ActionAny
+        // Fields
 
         type: ActionType;
         title: string;
 
-        // Constructors of Poppler.ActionAny
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4069,12 +4069,12 @@ export namespace Poppler {
     class ActionGotoDest {
         static $gtype: GObject.GType<ActionGotoDest>;
 
-        // Own fields of Poppler.ActionGotoDest
+        // Fields
 
         type: ActionType;
         title: string;
 
-        // Constructors of Poppler.ActionGotoDest
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4085,13 +4085,13 @@ export namespace Poppler {
     class ActionGotoRemote {
         static $gtype: GObject.GType<ActionGotoRemote>;
 
-        // Own fields of Poppler.ActionGotoRemote
+        // Fields
 
         type: ActionType;
         title: string;
         file_name: string;
 
-        // Constructors of Poppler.ActionGotoRemote
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4102,13 +4102,13 @@ export namespace Poppler {
     class ActionJavascript {
         static $gtype: GObject.GType<ActionJavascript>;
 
-        // Own fields of Poppler.ActionJavascript
+        // Fields
 
         type: ActionType;
         title: string;
         script: string;
 
-        // Constructors of Poppler.ActionJavascript
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4119,14 +4119,14 @@ export namespace Poppler {
     class ActionLaunch {
         static $gtype: GObject.GType<ActionLaunch>;
 
-        // Own fields of Poppler.ActionLaunch
+        // Fields
 
         type: ActionType;
         title: string;
         file_name: string;
         params: string;
 
-        // Constructors of Poppler.ActionLaunch
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4137,12 +4137,12 @@ export namespace Poppler {
     class ActionLayer {
         static $gtype: GObject.GType<ActionLayer>;
 
-        // Own fields of Poppler.ActionLayer
+        // Fields
 
         action: ActionLayerAction;
         layers: Layer[];
 
-        // Constructors of Poppler.ActionLayer
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4153,14 +4153,14 @@ export namespace Poppler {
     class ActionMovie {
         static $gtype: GObject.GType<ActionMovie>;
 
-        // Own fields of Poppler.ActionMovie
+        // Fields
 
         type: ActionType;
         title: string;
         operation: ActionMovieOperation;
         movie: Movie;
 
-        // Constructors of Poppler.ActionMovie
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4171,13 +4171,13 @@ export namespace Poppler {
     class ActionNamed {
         static $gtype: GObject.GType<ActionNamed>;
 
-        // Own fields of Poppler.ActionNamed
+        // Fields
 
         type: ActionType;
         title: string;
         named_dest: string;
 
-        // Constructors of Poppler.ActionNamed
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4188,12 +4188,12 @@ export namespace Poppler {
     class ActionOCGState {
         static $gtype: GObject.GType<ActionOCGState>;
 
-        // Own fields of Poppler.ActionOCGState
+        // Fields
 
         type: ActionType;
         title: string;
 
-        // Constructors of Poppler.ActionOCGState
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4204,14 +4204,14 @@ export namespace Poppler {
     class ActionRendition {
         static $gtype: GObject.GType<ActionRendition>;
 
-        // Own fields of Poppler.ActionRendition
+        // Fields
 
         type: ActionType;
         title: string;
         op: number;
         media: Media;
 
-        // Constructors of Poppler.ActionRendition
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4226,14 +4226,14 @@ export namespace Poppler {
     class ActionResetForm {
         static $gtype: GObject.GType<ActionResetForm>;
 
-        // Own fields of Poppler.ActionResetForm
+        // Fields
 
         type: ActionType;
         title: string;
         fields: string[];
         exclude: boolean;
 
-        // Constructors of Poppler.ActionResetForm
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4244,13 +4244,13 @@ export namespace Poppler {
     class ActionUri {
         static $gtype: GObject.GType<ActionUri>;
 
-        // Own fields of Poppler.ActionUri
+        // Fields
 
         type: ActionType;
         title: string;
         uri: string;
 
-        // Constructors of Poppler.ActionUri
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4258,7 +4258,7 @@ export namespace Poppler {
     class AnnotCalloutLine {
         static $gtype: GObject.GType<AnnotCalloutLine>;
 
-        // Own fields of Poppler.AnnotCalloutLine
+        // Fields
 
         multiline: boolean;
         x1: number;
@@ -4268,7 +4268,7 @@ export namespace Poppler {
         x3: number;
         y3: number;
 
-        // Constructors of Poppler.AnnotCalloutLine
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -4285,7 +4285,7 @@ export namespace Poppler {
 
         static ['new'](): AnnotCalloutLine;
 
-        // Own methods of Poppler.AnnotCalloutLine
+        // Methods
 
         /**
          * It does copy `callout` to a new #PopplerAnnotCalloutLine.
@@ -4305,12 +4305,12 @@ export namespace Poppler {
     class AnnotMapping {
         static $gtype: GObject.GType<AnnotMapping>;
 
-        // Own fields of Poppler.AnnotMapping
+        // Fields
 
         area: Rectangle;
         annot: Annot;
 
-        // Constructors of Poppler.AnnotMapping
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -4321,7 +4321,7 @@ export namespace Poppler {
 
         static ['new'](): AnnotMapping;
 
-        // Own methods of Poppler.AnnotMapping
+        // Methods
 
         /**
          * Creates a copy of `mapping`
@@ -4341,14 +4341,14 @@ export namespace Poppler {
     class CertificateInfo {
         static $gtype: GObject.GType<CertificateInfo>;
 
-        // Constructors of Poppler.CertificateInfo
+        // Constructors
 
         constructor(properties?: Partial<{}>);
         _init(...args: any[]): void;
 
         static ['new'](): CertificateInfo;
 
-        // Own methods of Poppler.CertificateInfo
+        // Methods
 
         /**
          * Copies `certificate_info,` creating an identical #PopplerCertificateInfo.
@@ -4413,13 +4413,13 @@ export namespace Poppler {
     class Color {
         static $gtype: GObject.GType<Color>;
 
-        // Own fields of Poppler.Color
+        // Fields
 
         red: number;
         green: number;
         blue: number;
 
-        // Constructors of Poppler.Color
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -4432,7 +4432,7 @@ export namespace Poppler {
 
         static ['new'](): Color;
 
-        // Own methods of Poppler.Color
+        // Methods
 
         /**
          * Creates a copy of `color`
@@ -4459,7 +4459,7 @@ export namespace Poppler {
     class Dest {
         static $gtype: GObject.GType<Dest>;
 
-        // Own fields of Poppler.Dest
+        // Fields
 
         type: DestType;
         page_num: number;
@@ -4473,11 +4473,11 @@ export namespace Poppler {
         change_top: number;
         change_zoom: number;
 
-        // Constructors of Poppler.Dest
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of Poppler.Dest
+        // Methods
 
         /**
          * Copies `dest,` creating an identical #PopplerDest.
@@ -4493,11 +4493,11 @@ export namespace Poppler {
     abstract class FontsIter {
         static $gtype: GObject.GType<FontsIter>;
 
-        // Constructors of Poppler.FontsIter
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of Poppler.FontsIter
+        // Methods
 
         /**
          * Creates a copy of `iter`
@@ -4564,12 +4564,12 @@ export namespace Poppler {
     class FormFieldMapping {
         static $gtype: GObject.GType<FormFieldMapping>;
 
-        // Own fields of Poppler.FormFieldMapping
+        // Fields
 
         area: Rectangle;
         field: FormField;
 
-        // Constructors of Poppler.FormFieldMapping
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -4580,7 +4580,7 @@ export namespace Poppler {
 
         static ['new'](): FormFieldMapping;
 
-        // Own methods of Poppler.FormFieldMapping
+        // Methods
 
         /**
          * Creates a copy of `mapping`
@@ -4600,12 +4600,12 @@ export namespace Poppler {
     class ImageMapping {
         static $gtype: GObject.GType<ImageMapping>;
 
-        // Own fields of Poppler.ImageMapping
+        // Fields
 
         area: Rectangle;
         image_id: number;
 
-        // Constructors of Poppler.ImageMapping
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -4617,7 +4617,7 @@ export namespace Poppler {
 
         static ['new'](): ImageMapping;
 
-        // Own methods of Poppler.ImageMapping
+        // Methods
 
         /**
          * Creates a copy of `mapping`
@@ -4633,14 +4633,14 @@ export namespace Poppler {
     class IndexIter {
         static $gtype: GObject.GType<IndexIter>;
 
-        // Constructors of Poppler.IndexIter
+        // Constructors
 
         constructor(document: Document);
         _init(...args: any[]): void;
 
         static ['new'](document: Document): IndexIter;
 
-        // Own methods of Poppler.IndexIter
+        // Methods
 
         /**
          * Creates a new #PopplerIndexIter as a copy of `iter`.  This must be freed with
@@ -4682,14 +4682,14 @@ export namespace Poppler {
     class LayersIter {
         static $gtype: GObject.GType<LayersIter>;
 
-        // Constructors of Poppler.LayersIter
+        // Constructors
 
         constructor(document: Document);
         _init(...args: any[]): void;
 
         static ['new'](document: Document): LayersIter;
 
-        // Own methods of Poppler.LayersIter
+        // Methods
 
         /**
          * Creates a new #PopplerLayersIter as a copy of `iter`.  This must be freed with
@@ -4733,11 +4733,11 @@ export namespace Poppler {
     class LinkMapping {
         static $gtype: GObject.GType<LinkMapping>;
 
-        // Own fields of Poppler.LinkMapping
+        // Fields
 
         area: Rectangle;
 
-        // Constructors of Poppler.LinkMapping
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -4748,7 +4748,7 @@ export namespace Poppler {
 
         static ['new'](): LinkMapping;
 
-        // Own methods of Poppler.LinkMapping
+        // Methods
 
         /**
          * Creates a copy of `mapping`
@@ -4767,12 +4767,12 @@ export namespace Poppler {
     class PageRange {
         static $gtype: GObject.GType<PageRange>;
 
-        // Own fields of Poppler.PageRange
+        // Fields
 
         start_page: number;
         end_page: number;
 
-        // Constructors of Poppler.PageRange
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -4790,7 +4790,7 @@ export namespace Poppler {
     class PageTransition {
         static $gtype: GObject.GType<PageTransition>;
 
-        // Own fields of Poppler.PageTransition
+        // Fields
 
         type: PageTransitionType;
         alignment: PageTransitionAlignment;
@@ -4801,7 +4801,7 @@ export namespace Poppler {
         rectangular: boolean;
         duration_real: number;
 
-        // Constructors of Poppler.PageTransition
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -4819,7 +4819,7 @@ export namespace Poppler {
 
         static ['new'](): PageTransition;
 
-        // Own methods of Poppler.PageTransition
+        // Methods
 
         /**
          * Creates a copy of `transition`
@@ -4838,12 +4838,12 @@ export namespace Poppler {
     class Point {
         static $gtype: GObject.GType<Point>;
 
-        // Own fields of Poppler.Point
+        // Fields
 
         x: number;
         y: number;
 
-        // Constructors of Poppler.Point
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -4855,7 +4855,7 @@ export namespace Poppler {
 
         static ['new'](): Point;
 
-        // Own methods of Poppler.Point
+        // Methods
 
         /**
          * Creates a copy of `point`. The copy must be freed with poppler_point_free()
@@ -4878,14 +4878,14 @@ export namespace Poppler {
     class Quadrilateral {
         static $gtype: GObject.GType<Quadrilateral>;
 
-        // Own fields of Poppler.Quadrilateral
+        // Fields
 
         p1: Point;
         p2: Point;
         p3: Point;
         p4: Point;
 
-        // Constructors of Poppler.Quadrilateral
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -4899,7 +4899,7 @@ export namespace Poppler {
 
         static ['new'](): Quadrilateral;
 
-        // Own methods of Poppler.Quadrilateral
+        // Methods
 
         /**
          * Creates a copy of `quad`. The copy must be freed with poppler_quadrilateral_free() after use.
@@ -4919,14 +4919,14 @@ export namespace Poppler {
     class Rectangle {
         static $gtype: GObject.GType<Rectangle>;
 
-        // Own fields of Poppler.Rectangle
+        // Fields
 
         x1: number;
         y1: number;
         x2: number;
         y2: number;
 
-        // Constructors of Poppler.Rectangle
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -4940,7 +4940,7 @@ export namespace Poppler {
 
         static ['new'](): Rectangle;
 
-        // Own methods of Poppler.Rectangle
+        // Methods
 
         /**
          * Creates a copy of `rectangle`.
@@ -4995,11 +4995,11 @@ export namespace Poppler {
     abstract class SignatureInfo {
         static $gtype: GObject.GType<SignatureInfo>;
 
-        // Constructors of Poppler.SignatureInfo
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of Poppler.SignatureInfo
+        // Methods
 
         /**
          * Copies `siginfo,` creating an identical #PopplerSignatureInfo.
@@ -5044,14 +5044,14 @@ export namespace Poppler {
     class SigningData {
         static $gtype: GObject.GType<SigningData>;
 
-        // Constructors of Poppler.SigningData
+        // Constructors
 
         constructor(properties?: Partial<{}>);
         _init(...args: any[]): void;
 
         static ['new'](): SigningData;
 
-        // Own methods of Poppler.SigningData
+        // Methods
 
         /**
          * Copies `signing_data,` creating an identical #PopplerSigningData.
@@ -5257,14 +5257,14 @@ export namespace Poppler {
     class StructureElementIter {
         static $gtype: GObject.GType<StructureElementIter>;
 
-        // Constructors of Poppler.StructureElementIter
+        // Constructors
 
         constructor(poppler_document: Document);
         _init(...args: any[]): void;
 
         static ['new'](poppler_document: Document): StructureElementIter;
 
-        // Own methods of Poppler.StructureElementIter
+        // Methods
 
         /**
          * Creates a new #PopplerStructureElementIter as a copy of `iter`. The
@@ -5303,7 +5303,7 @@ export namespace Poppler {
     class TextAttributes {
         static $gtype: GObject.GType<TextAttributes>;
 
-        // Own fields of Poppler.TextAttributes
+        // Fields
 
         font_name: string;
         font_size: number;
@@ -5312,7 +5312,7 @@ export namespace Poppler {
         start_index: number;
         end_index: number;
 
-        // Constructors of Poppler.TextAttributes
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -5328,7 +5328,7 @@ export namespace Poppler {
 
         static ['new'](): TextAttributes;
 
-        // Own methods of Poppler.TextAttributes
+        // Methods
 
         /**
          * Creates a copy of `text_attrs`
@@ -5344,11 +5344,11 @@ export namespace Poppler {
     abstract class TextSpan {
         static $gtype: GObject.GType<TextSpan>;
 
-        // Constructors of Poppler.TextSpan
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of Poppler.TextSpan
+        // Methods
 
         /**
          * Makes a copy of a text span.
@@ -5396,15 +5396,15 @@ export namespace Poppler {
     class Action {
         static $gtype: GObject.GType<Action>;
 
-        // Own fields of Poppler.Action
+        // Fields
 
         type: ActionType;
 
-        // Constructors of Poppler.Action
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of Poppler.Action
+        // Methods
 
         /**
          * Copies `action,` creating an identical #PopplerAction.

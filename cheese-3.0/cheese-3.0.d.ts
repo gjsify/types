@@ -131,7 +131,7 @@ export namespace Cheese {
     class Camera extends GObject.Object {
         static $gtype: GObject.GType<Camera>;
 
-        // Own properties of Cheese.Camera
+        // Properties
 
         /**
          * The device object to capture from.
@@ -162,7 +162,7 @@ export namespace Cheese {
         get videoTexture(): any;
         set videoTexture(val: any);
 
-        // Constructors of Cheese.Camera
+        // Constructors
 
         constructor(properties?: Partial<Camera.ConstructorProps>, ...args: any[]);
 
@@ -175,7 +175,7 @@ export namespace Cheese {
             y_resolution: number,
         ): Camera;
 
-        // Own signals of Cheese.Camera
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -193,14 +193,14 @@ export namespace Cheese {
         connect_after(signal: 'video-saved', callback: (_source: this) => void): number;
         emit(signal: 'video-saved'): void;
 
-        // Own virtual methods of Cheese.Camera
+        // Virtual methods
 
         vfunc_photo_saved(): void;
         vfunc_photo_taken(pixbuf: GdkPixbuf.Pixbuf): void;
         vfunc_state_flags_changed(new_state: Gst.State): void;
         vfunc_video_saved(): void;
 
-        // Own methods of Cheese.Camera
+        // Methods
 
         /**
          * Connect the supplied `texture` to the `camera,` using `effect`.
@@ -328,7 +328,7 @@ export namespace Cheese {
     class CameraDevice extends GObject.Object implements Gio.Initable {
         static $gtype: GObject.GType<CameraDevice>;
 
-        // Own properties of Cheese.CameraDevice
+        // Properties
 
         /**
          * GStreamer device object of the video capture device.
@@ -343,7 +343,7 @@ export namespace Cheese {
          */
         get path(): string;
 
-        // Constructors of Cheese.CameraDevice
+        // Constructors
 
         constructor(properties?: Partial<CameraDevice.ConstructorProps>, ...args: any[]);
 
@@ -351,14 +351,14 @@ export namespace Cheese {
 
         static ['new'](device: Gst.Device): CameraDevice;
 
-        // Own static methods of Cheese.CameraDevice
+        // Static methods
 
         /**
          * Get the #GstCaps that are supported for all #CheeseCameraDevice
          */
         static supported_format_caps(): Gst.Caps;
 
-        // Own methods of Cheese.CameraDevice
+        // Methods
 
         /**
          * Get the #CheeseVideoFormat with the highest resolution with a width greater
@@ -908,7 +908,7 @@ export namespace Cheese {
     class CameraDeviceMonitor extends GObject.Object implements Gio.AsyncInitable<CameraDeviceMonitor>, Gio.Initable {
         static $gtype: GObject.GType<CameraDeviceMonitor>;
 
-        // Constructors of Cheese.CameraDeviceMonitor
+        // Constructors
 
         constructor(properties?: Partial<CameraDeviceMonitor.ConstructorProps>, ...args: any[]);
 
@@ -921,7 +921,7 @@ export namespace Cheese {
 
         static new_finish(...args: never[]): any;
 
-        // Own signals of Cheese.CameraDeviceMonitor
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -933,7 +933,7 @@ export namespace Cheese {
         connect_after(signal: 'removed', callback: (_source: this, device: CameraDevice) => void): number;
         emit(signal: 'removed', device: CameraDevice): void;
 
-        // Own static methods of Cheese.CameraDeviceMonitor
+        // Static methods
 
         /**
          * Creates a new #CheeseCameraDeviceMonitor object asynchronously. Callback
@@ -949,12 +949,12 @@ export namespace Cheese {
             callback?: Gio.AsyncReadyCallback<CameraDeviceMonitor> | null,
         ): void;
 
-        // Own virtual methods of Cheese.CameraDeviceMonitor
+        // Virtual methods
 
         vfunc_added(device: CameraDevice): void;
         vfunc_removed(device: CameraDevice): void;
 
-        // Own methods of Cheese.CameraDeviceMonitor
+        // Methods
 
         /**
          * Enumerate plugged in cameras and emit ::added for those which already exist.
@@ -1581,7 +1581,7 @@ export namespace Cheese {
     class Effect extends GObject.Object {
         static $gtype: GObject.GType<Effect>;
 
-        // Own properties of Cheese.Effect
+        // Properties
 
         /**
          * If the control valve is active, then the effect is currently connected to
@@ -1608,7 +1608,7 @@ export namespace Cheese {
          */
         get pipelineDesc(): string;
 
-        // Constructors of Cheese.Effect
+        // Constructors
 
         constructor(properties?: Partial<Effect.ConstructorProps>, ...args: any[]);
 
@@ -1616,7 +1616,7 @@ export namespace Cheese {
 
         static ['new'](name: string, pipeline_desc: string): Effect;
 
-        // Own static methods of Cheese.Effect
+        // Static methods
 
         /**
          * Load effects from standard directories, including the user's data directory.
@@ -1628,7 +1628,7 @@ export namespace Cheese {
          */
         static load_from_file(filename: string): Effect;
 
-        // Own methods of Cheese.Effect
+        // Methods
 
         /**
          * Disable the preview of a #CheeseEffect.
@@ -1667,7 +1667,7 @@ export namespace Cheese {
     class FileUtil extends GObject.Object {
         static $gtype: GObject.GType<FileUtil>;
 
-        // Constructors of Cheese.FileUtil
+        // Constructors
 
         constructor(properties?: Partial<FileUtil.ConstructorProps>, ...args: any[]);
 
@@ -1675,7 +1675,7 @@ export namespace Cheese {
 
         static ['new'](): FileUtil;
 
-        // Own methods of Cheese.FileUtil
+        // Methods
 
         /**
          * Creates a filename for one of the three media types: photo, photo burst or
@@ -1710,7 +1710,7 @@ export namespace Cheese {
     abstract class CameraDeviceMonitorPrivate {
         static $gtype: GObject.GType<CameraDeviceMonitorPrivate>;
 
-        // Constructors of Cheese.CameraDeviceMonitorPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1718,7 +1718,7 @@ export namespace Cheese {
     abstract class CameraPrivate {
         static $gtype: GObject.GType<CameraPrivate>;
 
-        // Constructors of Cheese.CameraPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1732,12 +1732,12 @@ export namespace Cheese {
     class VideoFormat {
         static $gtype: GObject.GType<VideoFormat>;
 
-        // Own fields of Cheese.VideoFormat
+        // Fields
 
         width: number;
         height: number;
 
-        // Constructors of Cheese.VideoFormat
+        // Constructors
 
         constructor(
             properties?: Partial<{

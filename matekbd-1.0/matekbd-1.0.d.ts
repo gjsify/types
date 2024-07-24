@@ -91,7 +91,7 @@ export namespace Matekbd {
     class Indicator extends Gtk.Notebook implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<Indicator>;
 
-        // Constructors of Matekbd.Indicator
+        // Constructors
 
         constructor(properties?: Partial<Indicator.ConstructorProps>, ...args: any[]);
 
@@ -99,7 +99,7 @@ export namespace Matekbd {
 
         static ['new'](): Indicator;
 
-        // Own signals of Matekbd.Indicator
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -108,7 +108,7 @@ export namespace Matekbd {
         connect_after(signal: 'reinit-ui', callback: (_source: this) => void): number;
         emit(signal: 'reinit-ui'): void;
 
-        // Own static methods of Matekbd.Indicator
+        // Static methods
 
         static get_group_names(): string[];
         static get_image_filename(group: number): string;
@@ -116,11 +116,11 @@ export namespace Matekbd {
         static get_xkl_engine(): Xkl.Engine;
         static set_tooltips_format(str: string): void;
 
-        // Own virtual methods of Matekbd.Indicator
+        // Virtual methods
 
         vfunc_reinit_ui(): void;
 
-        // Own methods of Matekbd.Indicator
+        // Methods
 
         reinit_ui(): void;
         set_angle(angle: number): void;
@@ -547,7 +547,7 @@ export namespace Matekbd {
     class KeyboardDrawing extends Gtk.DrawingArea implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<KeyboardDrawing>;
 
-        // Constructors of Matekbd.KeyboardDrawing
+        // Constructors
 
         constructor(properties?: Partial<KeyboardDrawing.ConstructorProps>, ...args: any[]);
 
@@ -557,7 +557,7 @@ export namespace Matekbd {
 
         static new_dialog(group: number, group_name: string): KeyboardDrawing;
 
-        // Own signals of Matekbd.KeyboardDrawing
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -566,11 +566,11 @@ export namespace Matekbd {
         connect_after(signal: 'bad-keycode', callback: (_source: this, object: number) => void): number;
         emit(signal: 'bad-keycode', object: number): void;
 
-        // Own virtual methods of Matekbd.KeyboardDrawing
+        // Virtual methods
 
         vfunc_bad_keycode(keycode: number): void;
 
-        // Own methods of Matekbd.KeyboardDrawing
+        // Methods
 
         get_compat(): string;
         get_geometry(): string;
@@ -1018,7 +1018,7 @@ export namespace Matekbd {
     class Status extends Gtk.StatusIcon {
         static $gtype: GObject.GType<Status>;
 
-        // Constructors of Matekbd.Status
+        // Constructors
 
         constructor(properties?: Partial<Status.ConstructorProps>, ...args: any[]);
 
@@ -1026,14 +1026,14 @@ export namespace Matekbd {
 
         static ['new'](): Status;
 
-        // Own static methods of Matekbd.Status
+        // Static methods
 
         static get_group_names(): string[];
         static get_image_filename(group: number): string;
         static get_xkl_engine(): Xkl.Engine;
         static set_tooltips_format(str: string): void;
 
-        // Own methods of Matekbd.Status
+        // Methods
 
         reinit_ui(): void;
         set_angle(angle: number): void;
@@ -1042,7 +1042,7 @@ export namespace Matekbd {
     class DesktopConfig {
         static $gtype: GObject.GType<DesktopConfig>;
 
-        // Own fields of Matekbd.DesktopConfig
+        // Fields
 
         default_group: number;
         group_per_app: boolean;
@@ -1053,11 +1053,11 @@ export namespace Matekbd {
         config_listener_id: number;
         engine: Xkl.Engine;
 
-        // Constructors of Matekbd.DesktopConfig
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of Matekbd.DesktopConfig
+        // Methods
 
         activate(): boolean;
         init(engine: Xkl.Engine): void;
@@ -1082,7 +1082,7 @@ export namespace Matekbd {
     class IndicatorConfig {
         static $gtype: GObject.GType<IndicatorConfig>;
 
-        // Own fields of Matekbd.IndicatorConfig
+        // Fields
 
         secondary_groups_mask: number;
         show_flags: boolean;
@@ -1095,11 +1095,11 @@ export namespace Matekbd {
         config_listener_id: number;
         engine: Xkl.Engine;
 
-        // Constructors of Matekbd.IndicatorConfig
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of Matekbd.IndicatorConfig
+        // Methods
 
         activate(): void;
         free_image_filenames(): void;
@@ -1117,7 +1117,7 @@ export namespace Matekbd {
     abstract class IndicatorPrivate {
         static $gtype: GObject.GType<IndicatorPrivate>;
 
-        // Constructors of Matekbd.IndicatorPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1125,7 +1125,7 @@ export namespace Matekbd {
     class KeyboardConfig {
         static $gtype: GObject.GType<KeyboardConfig>;
 
-        // Own fields of Matekbd.KeyboardConfig
+        // Fields
 
         model: string;
         layouts_variants: string;
@@ -1134,11 +1134,11 @@ export namespace Matekbd {
         config_listener_id: number;
         engine: Xkl.Engine;
 
-        // Constructors of Matekbd.KeyboardConfig
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own static methods of Matekbd.KeyboardConfig
+        // Static methods
 
         static add_default_switch_option_if_necessary(
             layouts_list: string,
@@ -1157,7 +1157,7 @@ export namespace Matekbd {
         static merge_items(parent: string, child: string): string;
         static split_items(merged: string, parent: string, child: string): boolean;
 
-        // Own methods of Matekbd.KeyboardConfig
+        // Methods
 
         activate(): boolean;
         equals(kbd_config2: KeyboardConfig): boolean;
@@ -1176,7 +1176,7 @@ export namespace Matekbd {
     class KeyboardDrawingDoodad {
         static $gtype: GObject.GType<KeyboardDrawingDoodad>;
 
-        // Constructors of Matekbd.KeyboardDrawingDoodad
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1184,12 +1184,12 @@ export namespace Matekbd {
     class KeyboardDrawingGroupLevel {
         static $gtype: GObject.GType<KeyboardDrawingGroupLevel>;
 
-        // Own fields of Matekbd.KeyboardDrawingGroupLevel
+        // Fields
 
         group: number;
         level: number;
 
-        // Constructors of Matekbd.KeyboardDrawingGroupLevel
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -1203,7 +1203,7 @@ export namespace Matekbd {
     class KeyboardDrawingItem {
         static $gtype: GObject.GType<KeyboardDrawingItem>;
 
-        // Constructors of Matekbd.KeyboardDrawingItem
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1211,7 +1211,7 @@ export namespace Matekbd {
     class KeyboardDrawingKey {
         static $gtype: GObject.GType<KeyboardDrawingKey>;
 
-        // Constructors of Matekbd.KeyboardDrawingKey
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1219,7 +1219,7 @@ export namespace Matekbd {
     class KeyboardDrawingRenderContext {
         static $gtype: GObject.GType<KeyboardDrawingRenderContext>;
 
-        // Own fields of Matekbd.KeyboardDrawingRenderContext
+        // Fields
 
         angle: number;
         layout: Pango.Layout;
@@ -1227,7 +1227,7 @@ export namespace Matekbd {
         scale_denominator: number;
         dark_color: Gdk.RGBA;
 
-        // Constructors of Matekbd.KeyboardDrawingRenderContext
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1236,7 +1236,7 @@ export namespace Matekbd {
     abstract class StatusPrivate {
         static $gtype: GObject.GType<StatusPrivate>;
 
-        // Constructors of Matekbd.StatusPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }

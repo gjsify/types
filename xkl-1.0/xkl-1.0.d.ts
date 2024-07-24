@@ -146,13 +146,13 @@ export namespace Xkl {
     class ConfigItem extends GObject.Object {
         static $gtype: GObject.GType<ConfigItem>;
 
-        // Own fields of Xkl.ConfigItem
+        // Fields
 
         name: number[];
         short_description: number[];
         description: number[];
 
-        // Constructors of Xkl.ConfigItem
+        // Constructors
 
         constructor(properties?: Partial<ConfigItem.ConstructorProps>, ...args: any[]);
 
@@ -160,7 +160,7 @@ export namespace Xkl {
 
         static ['new'](): ConfigItem;
 
-        // Own methods of Xkl.ConfigItem
+        // Methods
 
         get_description(): string;
         get_name(): string;
@@ -194,14 +194,14 @@ export namespace Xkl {
     class ConfigRec extends GObject.Object {
         static $gtype: GObject.GType<ConfigRec>;
 
-        // Own fields of Xkl.ConfigRec
+        // Fields
 
         model: string;
         layouts: string[];
         variants: string[];
         options: string[];
 
-        // Constructors of Xkl.ConfigRec
+        // Constructors
 
         constructor(properties?: Partial<ConfigRec.ConstructorProps>, ...args: any[]);
 
@@ -209,7 +209,7 @@ export namespace Xkl {
 
         static ['new'](): ConfigRec;
 
-        // Own static methods of Xkl.ConfigRec
+        // Static methods
 
         /**
          * Writes some XKB configuration into XKM/XKB/... file
@@ -220,7 +220,7 @@ export namespace Xkl {
          */
         static write_to_file(engine: Engine, file_name: string, data: ConfigRec, binary: boolean): boolean;
 
-        // Own methods of Xkl.ConfigRec
+        // Methods
 
         /**
          * Activates some XKB configuration
@@ -312,17 +312,17 @@ export namespace Xkl {
     class ConfigRegistry extends GObject.Object {
         static $gtype: GObject.GType<ConfigRegistry>;
 
-        // Own properties of Xkl.ConfigRegistry
+        // Properties
 
         get engine(): Engine;
 
-        // Constructors of Xkl.ConfigRegistry
+        // Constructors
 
         constructor(properties?: Partial<ConfigRegistry.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of Xkl.ConfigRegistry
+        // Static methods
 
         /**
          * Create new XklConfig
@@ -330,7 +330,7 @@ export namespace Xkl {
          */
         static get_instance(engine: Engine): ConfigRegistry;
 
-        // Own methods of Xkl.ConfigRegistry
+        // Methods
 
         /**
          * Loads a keyboard layout information from the XML configuration registry.
@@ -480,7 +480,7 @@ export namespace Xkl {
     class Engine extends GObject.Object {
         static $gtype: GObject.GType<Engine>;
 
-        // Own properties of Xkl.Engine
+        // Properties
 
         get backendName(): string;
         get default_group(): number;
@@ -496,13 +496,13 @@ export namespace Xkl {
         get secondary_groups_mask(): number;
         get secondaryGroupsMask(): number;
 
-        // Constructors of Xkl.Engine
+        // Constructors
 
         constructor(properties?: Partial<Engine.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of Xkl.Engine
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -529,7 +529,7 @@ export namespace Xkl {
         ): number;
         emit(signal: 'new-toplevel-window', object: number, p0: number): void;
 
-        // Own static methods of Xkl.Engine
+        // Static methods
 
         static INT__LONG_LONG(
             closure: GObject.Closure,
@@ -553,14 +553,14 @@ export namespace Xkl {
          */
         static get_instance(display: xlib.Display): Engine;
 
-        // Own virtual methods of Xkl.Engine
+        // Virtual methods
 
         vfunc_config_notify(): void;
         vfunc_new_device_notify(): void;
         vfunc_new_window_notify(win: xlib.Window, parent: xlib.Window): number;
         vfunc_state_notify(change_type: EngineStateChange, group: number, restore: boolean): void;
 
-        // Own methods of Xkl.Engine
+        // Methods
 
         /**
          * Allows to switch (once) to the secondary group
@@ -722,7 +722,7 @@ export namespace Xkl {
     abstract class ConfigRegistryPrivate {
         static $gtype: GObject.GType<ConfigRegistryPrivate>;
 
-        // Constructors of Xkl.ConfigRegistryPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -731,7 +731,7 @@ export namespace Xkl {
     abstract class EnginePrivate {
         static $gtype: GObject.GType<EnginePrivate>;
 
-        // Constructors of Xkl.EnginePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -739,12 +739,12 @@ export namespace Xkl {
     class State {
         static $gtype: GObject.GType<State>;
 
-        // Own fields of Xkl.State
+        // Fields
 
         group: number;
         indicators: number;
 
-        // Constructors of Xkl.State
+        // Constructors
 
         constructor(
             properties?: Partial<{

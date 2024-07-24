@@ -86,13 +86,13 @@ export namespace MetaTest {
     class ContextTest extends Meta.Context {
         static $gtype: GObject.GType<ContextTest>;
 
-        // Constructors of MetaTest.ContextTest
+        // Constructors
 
         constructor(properties?: Partial<ContextTest.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of MetaTest.ContextTest
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -107,7 +107,7 @@ export namespace MetaTest {
         connect_after(signal: 'run-tests', callback: (_source: this) => number): number;
         emit(signal: 'run-tests'): void;
 
-        // Own methods of MetaTest.ContextTest
+        // Methods
 
         run_tests(flags: TestRunFlags): number;
         wait_for_x11_display(): void;
@@ -122,7 +122,7 @@ export namespace MetaTest {
     class TestMonitor extends GObject.Object {
         static $gtype: GObject.GType<TestMonitor>;
 
-        // Constructors of MetaTest.TestMonitor
+        // Constructors
 
         constructor(properties?: Partial<TestMonitor.ConstructorProps>, ...args: any[]);
 
@@ -130,7 +130,7 @@ export namespace MetaTest {
 
         static ['new'](context: Meta.Context, width: number, height: number, refresh_rate: number): TestMonitor;
 
-        // Own methods of MetaTest.TestMonitor
+        // Methods
 
         destroy(): void;
     }

@@ -106,7 +106,7 @@ export namespace SpiceClientGtk {
     class Display extends Gtk.EventBox implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<Display>;
 
-        // Own properties of SpiceClientGtk.Display
+        // Properties
 
         /**
          * channel-id for this #SpiceDisplay
@@ -207,7 +207,7 @@ export namespace SpiceClientGtk {
         get zoomLevel(): number;
         set zoomLevel(val: number);
 
-        // Constructors of SpiceClientGtk.Display
+        // Constructors
 
         constructor(properties?: Partial<Display.ConstructorProps>, ...args: any[]);
 
@@ -220,7 +220,7 @@ export namespace SpiceClientGtk {
 
         static new_with_monitor(session: SpiceClientGLib.Session, channel_id: number, monitor_id: number): Display;
 
-        // Own signals of SpiceClientGtk.Display
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -235,7 +235,7 @@ export namespace SpiceClientGtk {
         connect_after(signal: 'mouse-grab', callback: (_source: this, status: number) => void): number;
         emit(signal: 'mouse-grab', status: number): void;
 
-        // Own methods of SpiceClientGtk.Display
+        // Methods
 
         /**
          * Finds the current grab key combination for the `display`.
@@ -693,7 +693,7 @@ export namespace SpiceClientGtk {
     class GtkSession extends GObject.Object {
         static $gtype: GObject.GType<GtkSession>;
 
-        // Own properties of SpiceClientGtk.GtkSession
+        // Properties
 
         /**
          * When this is true the clipboard gets automatically shared between host
@@ -744,13 +744,13 @@ export namespace SpiceClientGtk {
         get syncModifiers(): boolean;
         set syncModifiers(val: boolean);
 
-        // Constructors of SpiceClientGtk.GtkSession
+        // Constructors
 
         constructor(properties?: Partial<GtkSession.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of SpiceClientGtk.GtkSession
+        // Static methods
 
         /**
          * Gets the #SpiceGtkSession associated with the passed in #SpiceSession.
@@ -763,7 +763,7 @@ export namespace SpiceClientGtk {
          */
         static get(session: SpiceClientGLib.Session): GtkSession;
 
-        // Own methods of SpiceClientGtk.GtkSession
+        // Methods
 
         /**
          * Copy client-side clipboard to guest clipboard.
@@ -805,7 +805,7 @@ export namespace SpiceClientGtk {
     class UsbDeviceWidget extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<UsbDeviceWidget>;
 
-        // Own properties of SpiceClientGtk.UsbDeviceWidget
+        // Properties
 
         /**
          * Format string to pass to spice_usb_device_get_description() for getting
@@ -822,7 +822,7 @@ export namespace SpiceClientGtk {
          */
         get session(): SpiceClientGLib.Session;
 
-        // Constructors of SpiceClientGtk.UsbDeviceWidget
+        // Constructors
 
         constructor(properties?: Partial<UsbDeviceWidget.ConstructorProps>, ...args: any[]);
 
@@ -833,7 +833,7 @@ export namespace SpiceClientGtk {
 
         static ['new'](...args: never[]): any;
 
-        // Own signals of SpiceClientGtk.UsbDeviceWidget
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -1275,7 +1275,7 @@ export namespace SpiceClientGtk {
     class GrabSequence {
         static $gtype: GObject.GType<GrabSequence>;
 
-        // Constructors of SpiceClientGtk.GrabSequence
+        // Constructors
 
         constructor(keysyms: number[]);
         _init(...args: any[]): void;
@@ -1284,7 +1284,7 @@ export namespace SpiceClientGtk {
 
         static new_from_string(str: string): GrabSequence;
 
-        // Own methods of SpiceClientGtk.GrabSequence
+        // Methods
 
         /**
          * Creates a string representing the `sequence`.
@@ -1307,7 +1307,7 @@ export namespace SpiceClientGtk {
     abstract class UsbDeviceWidgetPrivate {
         static $gtype: GObject.GType<UsbDeviceWidgetPrivate>;
 
-        // Constructors of SpiceClientGtk.UsbDeviceWidgetPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }

@@ -184,7 +184,7 @@ export namespace St {
     class IconThemeError extends GLib.Error {
         static $gtype: GObject.GType<IconThemeError>;
 
-        // Static fields of St.IconThemeError
+        // Static fields
 
         /**
          * The icon specified does not exist in the theme
@@ -195,12 +195,12 @@ export namespace St {
          */
         static FAILED: number;
 
-        // Constructors of St.IconThemeError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of St.IconThemeError
+        // Static methods
 
         static quark(): GLib.Quark;
     }
@@ -446,7 +446,7 @@ export namespace St {
     class Adjustment extends GObject.Object implements Clutter.Animatable {
         static $gtype: GObject.GType<Adjustment>;
 
-        // Own properties of St.Adjustment
+        // Properties
 
         /**
          * If the adjustment is used as #ClutterAnimatable for a
@@ -510,7 +510,7 @@ export namespace St {
         get value(): number;
         set value(val: number);
 
-        // Constructors of St.Adjustment
+        // Constructors
 
         constructor(properties?: Partial<Adjustment.ConstructorProps>, ...args: any[]);
 
@@ -526,7 +526,7 @@ export namespace St {
             page_size: number,
         ): Adjustment;
 
-        // Own signals of St.Adjustment
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -535,11 +535,11 @@ export namespace St {
         connect_after(signal: 'changed', callback: (_source: this) => void): number;
         emit(signal: 'changed'): void;
 
-        // Own virtual methods of St.Adjustment
+        // Virtual methods
 
         vfunc_changed(): void;
 
-        // Own methods of St.Adjustment
+        // Methods
 
         /**
          * Add a #ClutterTransition for the adjustment. If the transition stops, it will
@@ -1111,7 +1111,7 @@ export namespace St {
     {
         static $gtype: GObject.GType<Bin>;
 
-        // Own properties of St.Bin
+        // Properties
 
         /**
          * The child #ClutterActor of the #StBin container.
@@ -1119,7 +1119,7 @@ export namespace St {
         get child(): A;
         set child(val: A);
 
-        // Constructors of St.Bin
+        // Constructors
 
         constructor(properties?: Partial<Bin.ConstructorProps>, ...args: any[]);
 
@@ -1127,7 +1127,7 @@ export namespace St {
 
         static ['new'](): Bin;
 
-        // Own methods of St.Bin
+        // Methods
 
         /**
          * Gets the #ClutterActor child for `bin`.
@@ -1710,7 +1710,7 @@ export namespace St {
     class BorderImage extends GObject.Object {
         static $gtype: GObject.GType<BorderImage>;
 
-        // Constructors of St.BorderImage
+        // Constructors
 
         constructor(properties?: Partial<BorderImage.ConstructorProps>, ...args: any[]);
 
@@ -1725,7 +1725,7 @@ export namespace St {
             scale_factor: number,
         ): BorderImage;
 
-        // Own methods of St.BorderImage
+        // Methods
 
         /**
          * Check if two #StBorderImage objects are identical.
@@ -1767,7 +1767,7 @@ export namespace St {
     {
         static $gtype: GObject.GType<BoxLayout>;
 
-        // Own properties of St.BoxLayout
+        // Properties
 
         /**
          * A convenience property for the #ClutterBoxLayout:pack-start property of the
@@ -1788,7 +1788,7 @@ export namespace St {
         get vertical(): boolean;
         set vertical(val: boolean);
 
-        // Constructors of St.BoxLayout
+        // Constructors
 
         constructor(properties?: Partial<BoxLayout.ConstructorProps>, ...args: any[]);
 
@@ -1796,7 +1796,7 @@ export namespace St {
 
         static ['new'](): BoxLayout;
 
-        // Own methods of St.BoxLayout
+        // Methods
 
         get_pack_start(): boolean;
         /**
@@ -2474,7 +2474,7 @@ export namespace St {
     {
         static $gtype: GObject.GType<Button>;
 
-        // Own properties of St.Button
+        // Properties
 
         /**
          * Which buttons will trigger the #StButton::clicked signal.
@@ -2526,7 +2526,7 @@ export namespace St {
         get toggleMode(): boolean;
         set toggleMode(val: boolean);
 
-        // Constructors of St.Button
+        // Constructors
 
         constructor(properties?: Partial<Button.ConstructorProps>, ...args: any[]);
 
@@ -2536,7 +2536,7 @@ export namespace St {
 
         static new_with_label(text: string): Button;
 
-        // Own signals of St.Button
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -2545,12 +2545,12 @@ export namespace St {
         connect_after(signal: 'clicked', callback: (_source: this, clicked_button: number) => void): number;
         emit(signal: 'clicked', clicked_button: number): void;
 
-        // Own virtual methods of St.Button
+        // Virtual methods
 
         vfunc_clicked(clicked_button: number): void;
         vfunc_transition(): void;
 
-        // Own methods of St.Button
+        // Methods
 
         /**
          * If this widget is holding a pointer grab, this function will
@@ -3194,20 +3194,20 @@ export namespace St {
     class Clipboard extends GObject.Object {
         static $gtype: GObject.GType<Clipboard>;
 
-        // Constructors of St.Clipboard
+        // Constructors
 
         constructor(properties?: Partial<Clipboard.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of St.Clipboard
+        // Static methods
 
         /**
          * Get the global #StClipboard object that represents the clipboard.
          */
         static get_default(): Clipboard;
 
-        // Own methods of St.Clipboard
+        // Methods
 
         /**
          * Request the data from the clipboard in #GBytes form. `callback` is executed
@@ -3270,13 +3270,13 @@ export namespace St {
     {
         static $gtype: GObject.GType<DrawingArea>;
 
-        // Constructors of St.DrawingArea
+        // Constructors
 
         constructor(properties?: Partial<DrawingArea.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of St.DrawingArea
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -3285,11 +3285,11 @@ export namespace St {
         connect_after(signal: 'repaint', callback: (_source: this) => void): number;
         emit(signal: 'repaint'): void;
 
-        // Own virtual methods of St.DrawingArea
+        // Virtual methods
 
         vfunc_repaint(): void;
 
-        // Own methods of St.DrawingArea
+        // Methods
 
         /**
          * Gets the Cairo context to paint to. This function must only be called
@@ -3933,7 +3933,7 @@ export namespace St {
     {
         static $gtype: GObject.GType<Entry>;
 
-        // Own properties of St.Entry
+        // Properties
 
         /**
          * The internal #ClutterText actor supporting the #StEntry.
@@ -4019,7 +4019,7 @@ export namespace St {
         get text(): string;
         set text(val: string);
 
-        // Constructors of St.Entry
+        // Constructors
 
         constructor(properties?: Partial<Entry.ConstructorProps>, ...args: any[]);
 
@@ -4030,7 +4030,7 @@ export namespace St {
 
         static ['new'](...args: never[]): any;
 
-        // Own signals of St.Entry
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -4042,12 +4042,12 @@ export namespace St {
         connect_after(signal: 'secondary-icon-clicked', callback: (_source: this) => void): number;
         emit(signal: 'secondary-icon-clicked'): void;
 
-        // Own virtual methods of St.Entry
+        // Virtual methods
 
         vfunc_primary_icon_clicked(): void;
         vfunc_secondary_icon_clicked(): void;
 
-        // Own methods of St.Entry
+        // Methods
 
         /**
          * Retrieve the internal #ClutterText so that extra parameters can be set.
@@ -4707,13 +4707,13 @@ export namespace St {
     class FocusManager extends GObject.Object {
         static $gtype: GObject.GType<FocusManager>;
 
-        // Constructors of St.FocusManager
+        // Constructors
 
         constructor(properties?: Partial<FocusManager.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of St.FocusManager
+        // Static methods
 
         /**
          * Gets the #StFocusManager for `stage,` creating it if necessary.
@@ -4721,7 +4721,7 @@ export namespace St {
          */
         static get_for_stage(stage: Clutter.Stage): FocusManager;
 
-        // Own methods of St.FocusManager
+        // Methods
 
         /**
          * Adds a new focus group to `manager`. When the focus is in an actor
@@ -4788,7 +4788,7 @@ export namespace St {
     class GenericAccessible extends WidgetAccessible implements Atk.Action, Atk.Component, Atk.Value {
         static $gtype: GObject.GType<GenericAccessible>;
 
-        // Constructors of St.GenericAccessible
+        // Constructors
 
         constructor(properties?: Partial<GenericAccessible.ConstructorProps>, ...args: any[]);
 
@@ -4796,7 +4796,7 @@ export namespace St {
 
         static new_for_actor(actor: Clutter.Actor): GenericAccessible;
 
-        // Own signals of St.GenericAccessible
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -5381,7 +5381,7 @@ export namespace St {
     {
         static $gtype: GObject.GType<Icon>;
 
-        // Own properties of St.Icon
+        // Properties
 
         /**
          * The fallback #GIcon to display if #StIcon:gicon fails to load.
@@ -5433,7 +5433,7 @@ export namespace St {
         get iconSize(): number;
         set iconSize(val: number);
 
-        // Constructors of St.Icon
+        // Constructors
 
         constructor(properties?: Partial<Icon.ConstructorProps>, ...args: any[]);
 
@@ -5441,7 +5441,7 @@ export namespace St {
 
         static ['new'](): Icon;
 
-        // Own methods of St.Icon
+        // Methods
 
         /**
          * Gets the currently set fallback #GIcon.
@@ -6074,7 +6074,7 @@ export namespace St {
     class IconInfo extends GObject.Object {
         static $gtype: GObject.GType<IconInfo>;
 
-        // Constructors of St.IconInfo
+        // Constructors
 
         constructor(properties?: Partial<IconInfo.ConstructorProps>, ...args: any[]);
 
@@ -6082,7 +6082,7 @@ export namespace St {
 
         static new_for_pixbuf(icon_theme: IconTheme, pixbuf: GdkPixbuf.Pixbuf): IconInfo;
 
-        // Own methods of St.IconInfo
+        // Methods
 
         /**
          * Gets the base scale for the icon. The base scale is a scale
@@ -6226,7 +6226,7 @@ export namespace St {
     class IconTheme extends GObject.Object {
         static $gtype: GObject.GType<IconTheme>;
 
-        // Constructors of St.IconTheme
+        // Constructors
 
         constructor(properties?: Partial<IconTheme.ConstructorProps>, ...args: any[]);
 
@@ -6234,7 +6234,7 @@ export namespace St {
 
         static ['new'](): IconTheme;
 
-        // Own signals of St.IconTheme
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -6243,7 +6243,7 @@ export namespace St {
         connect_after(signal: 'changed', callback: (_source: this) => void): number;
         emit(signal: 'changed'): void;
 
-        // Own methods of St.IconTheme
+        // Methods
 
         /**
          * Adds a resource path that will be looked at when looking
@@ -6499,20 +6499,20 @@ export namespace St {
     class ImageContent extends Clutter.Image implements Clutter.Content, Gio.Icon, Gio.LoadableIcon {
         static $gtype: GObject.GType<ImageContent>;
 
-        // Own properties of St.ImageContent
+        // Properties
 
         get preferred_height(): number;
         get preferredHeight(): number;
         get preferred_width(): number;
         get preferredWidth(): number;
 
-        // Constructors of St.ImageContent
+        // Constructors
 
         constructor(properties?: Partial<ImageContent.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of St.ImageContent
+        // Static methods
 
         /**
          * Creates a new #StImageContent, a simple content for sized images.
@@ -7120,7 +7120,7 @@ export namespace St {
     {
         static $gtype: GObject.GType<Label>;
 
-        // Own properties of St.Label
+        // Properties
 
         /**
          * The internal #ClutterText actor supporting the label
@@ -7136,7 +7136,7 @@ export namespace St {
         get text(): string;
         set text(val: string);
 
-        // Constructors of St.Label
+        // Constructors
 
         constructor(properties?: Partial<Label.ConstructorProps>, ...args: any[]);
 
@@ -7147,7 +7147,7 @@ export namespace St {
 
         static ['new'](...args: never[]): any;
 
-        // Own methods of St.Label
+        // Methods
 
         /**
          * Retrieve the internal #ClutterText used by `label` so that extra parameters
@@ -7747,7 +7747,7 @@ export namespace St {
     {
         static $gtype: GObject.GType<PasswordEntry>;
 
-        // Own properties of St.PasswordEntry
+        // Properties
 
         /**
          * Whether the text in the entry is masked for privacy.
@@ -7772,7 +7772,7 @@ export namespace St {
         get showPeekIcon(): boolean;
         set showPeekIcon(val: boolean);
 
-        // Constructors of St.PasswordEntry
+        // Constructors
 
         constructor(properties?: Partial<PasswordEntry.ConstructorProps>, ...args: any[]);
 
@@ -7780,7 +7780,7 @@ export namespace St {
 
         static ['new'](): PasswordEntry;
 
-        // Own methods of St.PasswordEntry
+        // Methods
 
         /**
          * Gets whether the text is masked in the password entry.
@@ -8394,7 +8394,7 @@ export namespace St {
     {
         static $gtype: GObject.GType<ScrollBar>;
 
-        // Own properties of St.ScrollBar
+        // Properties
 
         /**
          * The #StAdjustment controlling the #StScrollBar.
@@ -8407,7 +8407,7 @@ export namespace St {
         get vertical(): boolean;
         set vertical(val: boolean);
 
-        // Constructors of St.ScrollBar
+        // Constructors
 
         constructor(properties?: Partial<ScrollBar.ConstructorProps>, ...args: any[]);
 
@@ -8418,7 +8418,7 @@ export namespace St {
 
         static ['new'](...args: never[]): any;
 
-        // Own signals of St.ScrollBar
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -8430,12 +8430,12 @@ export namespace St {
         connect_after(signal: 'scroll-stop', callback: (_source: this) => void): number;
         emit(signal: 'scroll-stop'): void;
 
-        // Own virtual methods of St.ScrollBar
+        // Virtual methods
 
         vfunc_scroll_start(): void;
         vfunc_scroll_stop(): void;
 
-        // Own methods of St.ScrollBar
+        // Methods
 
         /**
          * Gets the #StAdjustment that controls the current position of `bar`.
@@ -9039,7 +9039,7 @@ export namespace St {
     {
         static $gtype: GObject.GType<ScrollView>;
 
-        // Own properties of St.ScrollView
+        // Properties
 
         /**
          * Whether to enable automatic mouse wheel scrolling.
@@ -9106,7 +9106,7 @@ export namespace St {
          */
         get vscrollbarVisible(): boolean;
 
-        // Constructors of St.ScrollView
+        // Constructors
 
         constructor(properties?: Partial<ScrollView.ConstructorProps>, ...args: any[]);
 
@@ -9114,7 +9114,7 @@ export namespace St {
 
         static ['new'](): ScrollView;
 
-        // Own methods of St.ScrollView
+        // Methods
 
         /**
          * Get the step increment of the horizontal plane.
@@ -9754,7 +9754,7 @@ export namespace St {
     class ScrollViewFade extends Clutter.ShaderEffect {
         static $gtype: GObject.GType<ScrollViewFade>;
 
-        // Own properties of St.ScrollViewFade
+        // Properties
 
         /**
          * Whether faded edges should extend beyond the faded area of the #StScrollViewFade.
@@ -9787,7 +9787,7 @@ export namespace St {
         get fadeMargins(): Clutter.Margin;
         set fadeMargins(val: Clutter.Margin);
 
-        // Constructors of St.ScrollViewFade
+        // Constructors
 
         constructor(properties?: Partial<ScrollViewFade.ConstructorProps>, ...args: any[]);
 
@@ -9826,7 +9826,7 @@ export namespace St {
     class Settings extends GObject.Object {
         static $gtype: GObject.GType<Settings>;
 
-        // Own properties of St.Settings
+        // Properties
 
         /**
          * The preferred color-scheme
@@ -9913,20 +9913,20 @@ export namespace St {
         get slowDownFactor(): number;
         set slowDownFactor(val: number);
 
-        // Constructors of St.Settings
+        // Constructors
 
         constructor(properties?: Partial<Settings.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of St.Settings
+        // Static methods
 
         /**
          * Gets the global #StSettings object.
          */
         static get(): Settings;
 
-        // Own methods of St.Settings
+        // Methods
 
         inhibit_animations(): void;
         uninhibit_animations(): void;
@@ -9951,13 +9951,13 @@ export namespace St {
     class TextureCache extends GObject.Object {
         static $gtype: GObject.GType<TextureCache>;
 
-        // Constructors of St.TextureCache
+        // Constructors
 
         constructor(properties?: Partial<TextureCache.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of St.TextureCache
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -9969,11 +9969,11 @@ export namespace St {
         connect_after(signal: 'texture-file-changed', callback: (_source: this, file: Gio.File) => void): number;
         emit(signal: 'texture-file-changed', file: Gio.File): void;
 
-        // Own static methods of St.TextureCache
+        // Static methods
 
         static get_default(): TextureCache;
 
-        // Own methods of St.TextureCache
+        // Methods
 
         /**
          * Create a #GIcon which tracks the #cairo_surface_t value of a GObject property
@@ -10089,7 +10089,7 @@ export namespace St {
     class Theme extends GObject.Object {
         static $gtype: GObject.GType<Theme>;
 
-        // Own properties of St.Theme
+        // Properties
 
         /**
          * The highest priority stylesheet, representing application-specific
@@ -10122,7 +10122,7 @@ export namespace St {
          */
         get themeStylesheet(): Gio.File;
 
-        // Constructors of St.Theme
+        // Constructors
 
         constructor(properties?: Partial<Theme.ConstructorProps>, ...args: any[]);
 
@@ -10134,7 +10134,7 @@ export namespace St {
             default_stylesheet: Gio.File,
         ): Theme;
 
-        // Own signals of St.Theme
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -10143,7 +10143,7 @@ export namespace St {
         connect_after(signal: 'custom-stylesheets-changed', callback: (_source: this) => void): number;
         emit(signal: 'custom-stylesheets-changed'): void;
 
-        // Own methods of St.Theme
+        // Methods
 
         /**
          * Get a list of the stylesheet files loaded with st_theme_load_stylesheet().
@@ -10182,7 +10182,7 @@ export namespace St {
     class ThemeContext extends GObject.Object {
         static $gtype: GObject.GType<ThemeContext>;
 
-        // Own properties of St.ThemeContext
+        // Properties
 
         /**
          * The scaling factor used for HiDPI scaling.
@@ -10195,7 +10195,7 @@ export namespace St {
         get scaleFactor(): number;
         set scaleFactor(val: number);
 
-        // Constructors of St.ThemeContext
+        // Constructors
 
         constructor(properties?: Partial<ThemeContext.ConstructorProps>, ...args: any[]);
 
@@ -10203,7 +10203,7 @@ export namespace St {
 
         static ['new'](): ThemeContext;
 
-        // Own signals of St.ThemeContext
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -10212,7 +10212,7 @@ export namespace St {
         connect_after(signal: 'changed', callback: (_source: this) => void): number;
         emit(signal: 'changed'): void;
 
-        // Own static methods of St.ThemeContext
+        // Static methods
 
         /**
          * Gets a singleton theme context associated with the stage.
@@ -10220,7 +10220,7 @@ export namespace St {
          */
         static get_for_stage(stage: Clutter.Stage): ThemeContext;
 
-        // Own methods of St.ThemeContext
+        // Methods
 
         /**
          * Gets the default font for the theme context. See st_theme_context_set_font().
@@ -10278,7 +10278,7 @@ export namespace St {
     class ThemeNode extends GObject.Object {
         static $gtype: GObject.GType<ThemeNode>;
 
-        // Constructors of St.ThemeNode
+        // Constructors
 
         constructor(properties?: Partial<ThemeNode.ConstructorProps>, ...args: any[]);
 
@@ -10295,7 +10295,7 @@ export namespace St {
             inline_style: string,
         ): ThemeNode;
 
-        // Own methods of St.ThemeNode
+        // Methods
 
         /**
          * Adjusts a "for height" passed to clutter_actor_get_preferred_width() to
@@ -10751,14 +10751,14 @@ export namespace St {
     {
         static $gtype: GObject.GType<Viewport>;
 
-        // Own properties of St.Viewport
+        // Properties
 
         get clip_to_view(): boolean;
         set clip_to_view(val: boolean);
         get clipToView(): boolean;
         set clipToView(val: boolean);
 
-        // Constructors of St.Viewport
+        // Constructors
 
         constructor(properties?: Partial<Viewport.ConstructorProps>, ...args: any[]);
 
@@ -11479,7 +11479,7 @@ export namespace St {
     {
         static $gtype: GObject.GType<Widget>;
 
-        // Own properties of St.Widget
+        // Properties
 
         /**
          * Object instance's name for assistive technology access.
@@ -11575,13 +11575,13 @@ export namespace St {
         get trackHover(): boolean;
         set trackHover(val: boolean);
 
-        // Constructors of St.Widget
+        // Constructors
 
         constructor(properties?: Partial<Widget.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of St.Widget
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -11593,7 +11593,7 @@ export namespace St {
         connect_after(signal: 'style-changed', callback: (_source: this) => void): number;
         emit(signal: 'style-changed'): void;
 
-        // Own virtual methods of St.Widget
+        // Virtual methods
 
         /**
          * Gets a list of the focusable children of `widget,` in "Tab"
@@ -11608,7 +11608,7 @@ export namespace St {
         vfunc_popup_menu(): void;
         vfunc_style_changed(): void;
 
-        // Own methods of St.Widget
+        // Methods
 
         /**
          * This method adds `state` as one of the accessible states for
@@ -12666,7 +12666,7 @@ export namespace St {
     class WidgetAccessible extends Cally.Actor implements Atk.Action, Atk.Component {
         static $gtype: GObject.GType<WidgetAccessible>;
 
-        // Constructors of St.WidgetAccessible
+        // Constructors
 
         constructor(properties?: Partial<WidgetAccessible.ConstructorProps>, ...args: any[]);
 
@@ -13477,7 +13477,7 @@ export namespace St {
     abstract class BoxLayoutPrivate {
         static $gtype: GObject.GType<BoxLayoutPrivate>;
 
-        // Constructors of St.BoxLayoutPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -13490,7 +13490,7 @@ export namespace St {
     abstract class FocusManagerPrivate {
         static $gtype: GObject.GType<FocusManagerPrivate>;
 
-        // Constructors of St.FocusManagerPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -13499,7 +13499,7 @@ export namespace St {
     abstract class GenericAccessiblePrivate {
         static $gtype: GObject.GType<GenericAccessiblePrivate>;
 
-        // Constructors of St.GenericAccessiblePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -13512,14 +13512,14 @@ export namespace St {
     class IconColors {
         static $gtype: GObject.GType<IconColors>;
 
-        // Own fields of St.IconColors
+        // Fields
 
         foreground: Clutter.Color;
         warning: Clutter.Color;
         error: Clutter.Color;
         success: Clutter.Color;
 
-        // Constructors of St.IconColors
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -13533,7 +13533,7 @@ export namespace St {
 
         static ['new'](): IconColors;
 
-        // Own methods of St.IconColors
+        // Methods
 
         /**
          * Creates a new StIconColors structure that is a copy of the passed
@@ -13565,7 +13565,7 @@ export namespace St {
     abstract class IconPrivate {
         static $gtype: GObject.GType<IconPrivate>;
 
-        // Constructors of St.IconPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -13576,7 +13576,7 @@ export namespace St {
     abstract class LabelPrivate {
         static $gtype: GObject.GType<LabelPrivate>;
 
-        // Constructors of St.LabelPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -13588,7 +13588,7 @@ export namespace St {
     abstract class ScrollViewPrivate {
         static $gtype: GObject.GType<ScrollViewPrivate>;
 
-        // Constructors of St.ScrollViewPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -13601,7 +13601,7 @@ export namespace St {
     class Shadow {
         static $gtype: GObject.GType<Shadow>;
 
-        // Own fields of St.Shadow
+        // Fields
 
         color: Clutter.Color;
         xoffset: number;
@@ -13610,7 +13610,7 @@ export namespace St {
         spread: number;
         inset: boolean;
 
-        // Constructors of St.Shadow
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -13633,7 +13633,7 @@ export namespace St {
             inset: boolean,
         ): Shadow;
 
-        // Own methods of St.Shadow
+        // Methods
 
         /**
          * Check if two shadow objects are identical. Note that two shadows may
@@ -13666,14 +13666,14 @@ export namespace St {
     class ShadowHelper {
         static $gtype: GObject.GType<ShadowHelper>;
 
-        // Constructors of St.ShadowHelper
+        // Constructors
 
         constructor(shadow: Shadow);
         _init(...args: any[]): void;
 
         static ['new'](shadow: Shadow): ShadowHelper;
 
-        // Own methods of St.ShadowHelper
+        // Methods
 
         copy(): ShadowHelper;
         /**
@@ -13699,7 +13699,7 @@ export namespace St {
     abstract class TextureCachePrivate {
         static $gtype: GObject.GType<TextureCachePrivate>;
 
-        // Constructors of St.TextureCachePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -13710,7 +13710,7 @@ export namespace St {
     class ThemeNodePaintState {
         static $gtype: GObject.GType<ThemeNodePaintState>;
 
-        // Own fields of St.ThemeNodePaintState
+        // Fields
 
         node: ThemeNode;
         alloc_width: number;
@@ -13723,11 +13723,11 @@ export namespace St {
         prerendered_pipeline: Cogl.Pipeline;
         corner_material: Cogl.Pipeline[];
 
-        // Constructors of St.ThemeNodePaintState
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of St.ThemeNodePaintState
+        // Methods
 
         copy(other: ThemeNodePaintState): void;
         free(): void;
@@ -13742,7 +13742,7 @@ export namespace St {
     abstract class WidgetAccessiblePrivate {
         static $gtype: GObject.GType<WidgetAccessiblePrivate>;
 
-        // Constructors of St.WidgetAccessiblePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -13762,7 +13762,7 @@ export namespace St {
         prototype: Scrollable;
     }
     interface Scrollable extends GObject.Object {
-        // Own properties of St.Scrollable
+        // Properties
 
         /**
          * The horizontal #StAdjustment used by the #StScrollable.
@@ -13812,7 +13812,7 @@ export namespace St {
         get vadjustment(): Adjustment;
         set vadjustment(val: Adjustment);
 
-        // Own methods of St.Scrollable
+        // Methods
 
         get_adjustments(hadjustment: Adjustment, vadjustment: Adjustment): void;
         /**
@@ -13826,7 +13826,7 @@ export namespace St {
          */
         set_adjustments(hadjustment: Adjustment, vadjustment: Adjustment): void;
 
-        // Own virtual methods of St.Scrollable
+        // Virtual methods
 
         vfunc_get_adjustments(hadjustment: Adjustment, vadjustment: Adjustment): void;
         /**

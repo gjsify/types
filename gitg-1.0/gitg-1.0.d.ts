@@ -134,11 +134,11 @@ export namespace Gitg {
     class CredentialsError extends GLib.Error {
         static $gtype: GObject.GType<CredentialsError>;
 
-        // Static fields of Gitg.CredentialsError
+        // Static fields
 
         static CANCELLED: number;
 
-        // Constructors of Gitg.CredentialsError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
@@ -147,11 +147,11 @@ export namespace Gitg {
     class DateError extends GLib.Error {
         static $gtype: GObject.GType<DateError>;
 
-        // Static fields of Gitg.DateError
+        // Static fields
 
         static INVALID_FORMAT: number;
 
-        // Constructors of Gitg.DateError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
@@ -160,11 +160,11 @@ export namespace Gitg {
     class InitError extends GLib.Error {
         static $gtype: GObject.GType<InitError>;
 
-        // Static fields of Gitg.InitError
+        // Static fields
 
         static THREADS_UNSAFE: number;
 
-        // Constructors of Gitg.InitError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
@@ -173,14 +173,14 @@ export namespace Gitg {
     class RemoteError extends GLib.Error {
         static $gtype: GObject.GType<RemoteError>;
 
-        // Static fields of Gitg.RemoteError
+        // Static fields
 
         static ALREADY_CONNECTED: number;
         static ALREADY_CONNECTING: number;
         static ALREADY_DISCONNECTED: number;
         static STILL_CONNECTING: number;
 
-        // Constructors of Gitg.RemoteError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
@@ -189,7 +189,7 @@ export namespace Gitg {
     class StageError extends GLib.Error {
         static $gtype: GObject.GType<StageError>;
 
-        // Static fields of Gitg.StageError
+        // Static fields
 
         static PRE_COMMIT_HOOK_FAILED: number;
         static COMMIT_MSG_HOOK_FAILED: number;
@@ -199,7 +199,7 @@ export namespace Gitg {
         static SIGN_CONFIG_ERROR: number;
         static UPDATE_REF_ERROR: number;
 
-        // Constructors of Gitg.StageError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
@@ -250,17 +250,17 @@ export namespace Gitg {
     class Async {
         static $gtype: GObject.GType<Async>;
 
-        // Own fields of Gitg.Async
+        // Fields
 
         ref_count: number;
 
-        // Constructors of Gitg.Async
+        // Constructors
 
         _init(...args: any[]): void;
 
         static ['new'](): Async;
 
-        // Own static methods of Gitg.Async
+        // Static methods
 
         static thread(func: Async.ThreadFunc, _callback_?: Gio.AsyncReadyCallback<Async> | null): void;
         static thread_finish(_res_: Gio.AsyncResult): void;
@@ -282,14 +282,14 @@ export namespace Gitg {
     class AuthenticationDialog extends Gtk.Dialog {
         static $gtype: GObject.GType<AuthenticationDialog>;
 
-        // Own properties of Gitg.AuthenticationDialog
+        // Properties
 
         get username(): string;
         get password(): string;
         get life_time(): AuthenticationLifeTime;
         get lifeTime(): AuthenticationLifeTime;
 
-        // Constructors of Gitg.AuthenticationDialog
+        // Constructors
 
         constructor(properties?: Partial<AuthenticationDialog.ConstructorProps>, ...args: any[]);
 
@@ -300,7 +300,7 @@ export namespace Gitg {
 
         static ['new'](...args: never[]): any;
 
-        // Own methods of Gitg.AuthenticationDialog
+        // Methods
 
         get_username(): string;
         get_password(): string;
@@ -316,17 +316,17 @@ export namespace Gitg {
     class AvatarCache extends GObject.Object {
         static $gtype: GObject.GType<AvatarCache>;
 
-        // Constructors of Gitg.AvatarCache
+        // Constructors
 
         constructor(properties?: Partial<AvatarCache.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of Gitg.AvatarCache
+        // Static methods
 
         static ['default'](): AvatarCache;
 
-        // Own methods of Gitg.AvatarCache
+        // Methods
 
         load(
             email: string,
@@ -349,7 +349,7 @@ export namespace Gitg {
     class BranchBase extends Ggit.Branch implements Ref, Branch {
         static $gtype: GObject.GType<BranchBase>;
 
-        // Constructors of Gitg.BranchBase
+        // Constructors
 
         constructor(properties?: Partial<BranchBase.ConstructorProps>, ...args: any[]);
 
@@ -580,7 +580,7 @@ export namespace Gitg {
     class CellRendererLanes extends Gtk.CellRendererText {
         static $gtype: GObject.GType<CellRendererLanes>;
 
-        // Own properties of Gitg.CellRendererLanes
+        // Properties
 
         get commit(): Commit;
         set commit(val: Commit);
@@ -599,7 +599,7 @@ export namespace Gitg {
         get labels(): Ref[];
         set labels(val: Ref[]);
 
-        // Constructors of Gitg.CellRendererLanes
+        // Constructors
 
         constructor(properties?: Partial<CellRendererLanes.ConstructorProps>, ...args: any[]);
 
@@ -607,7 +607,7 @@ export namespace Gitg {
 
         static ['new'](): CellRendererLanes;
 
-        // Own methods of Gitg.CellRendererLanes
+        // Methods
 
         get_ref_at_pos(widget: Gtk.Widget, x: number, cell_w: number): [Ref | null, number];
         get_commit(): Commit | null;
@@ -635,17 +635,17 @@ export namespace Gitg {
     class Color extends GObject.Object {
         static $gtype: GObject.GType<Color>;
 
-        // Own properties of Gitg.Color
+        // Properties
 
         get r(): number;
         get g(): number;
         get b(): number;
 
-        // Own fields of Gitg.Color
+        // Fields
 
         idx: number;
 
-        // Constructors of Gitg.Color
+        // Constructors
 
         constructor(properties?: Partial<Color.ConstructorProps>, ...args: any[]);
 
@@ -653,12 +653,12 @@ export namespace Gitg {
 
         static ['new'](): Color;
 
-        // Own static methods of Gitg.Color
+        // Static methods
 
         static reset(): void;
         static next(): Color;
 
-        // Own methods of Gitg.Color
+        // Methods
 
         components(): [number, number, number];
         next_index(): Color;
@@ -677,7 +677,7 @@ export namespace Gitg {
     class CommitListView extends Gtk.TreeView implements Gtk.Buildable {
         static $gtype: GObject.GType<CommitListView>;
 
-        // Constructors of Gitg.CommitListView
+        // Constructors
 
         constructor(properties?: Partial<CommitListView.ConstructorProps>, ...args: any[]);
 
@@ -690,7 +690,7 @@ export namespace Gitg {
 
         static for_repository(repository: Repository): CommitListView;
 
-        // Own methods of Gitg.CommitListView
+        // Methods
 
         find_cell_at_pos(column: Gtk.TreeViewColumn, path: Gtk.TreePath, x: number): [Gtk.CellRenderer | null, number];
 
@@ -1133,7 +1133,7 @@ export namespace Gitg {
     class CommitModel extends GObject.Object implements Gtk.TreeModel {
         static $gtype: GObject.GType<CommitModel>;
 
-        // Own properties of Gitg.CommitModel
+        // Properties
 
         get limit(): number;
         set limit(val: number);
@@ -1144,7 +1144,7 @@ export namespace Gitg {
         get repository(): Repository;
         set repository(val: Repository);
 
-        // Constructors of Gitg.CommitModel
+        // Constructors
 
         constructor(properties?: Partial<CommitModel.ConstructorProps>, ...args: any[]);
 
@@ -1152,7 +1152,7 @@ export namespace Gitg {
 
         static ['new'](repository?: Repository | null): CommitModel;
 
-        // Own signals of Gitg.CommitModel
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -1173,7 +1173,7 @@ export namespace Gitg {
         connect_after(signal: 'end-clear', callback: (_source: this) => void): number;
         emit(signal: 'end-clear'): void;
 
-        // Own methods of Gitg.CommitModel
+        // Methods
 
         get_permanent_lanes(): Ggit.OId[];
         set_permanent_lanes(value: Ggit.OId[]): void;
@@ -2016,7 +2016,7 @@ export namespace Gitg {
     class Commit extends Ggit.Commit {
         static $gtype: GObject.GType<Commit>;
 
-        // Own properties of Gitg.Commit
+        // Properties
 
         get tag(): LaneTag;
         set tag(val: LaneTag);
@@ -2030,7 +2030,7 @@ export namespace Gitg {
         get author_date_for_display(): string;
         get authorDateForDisplay(): string;
 
-        // Constructors of Gitg.Commit
+        // Constructors
 
         constructor(properties?: Partial<Commit.ConstructorProps>, ...args: any[]);
 
@@ -2038,7 +2038,7 @@ export namespace Gitg {
 
         static ['new'](): Commit;
 
-        // Own methods of Gitg.Commit
+        // Methods
 
         get_lanes(): Lane[];
         insert_lane(lane: Lane, idx: number): Lane[];
@@ -2059,11 +2059,11 @@ export namespace Gitg {
     class CredentialsManager {
         static $gtype: GObject.GType<CredentialsManager>;
 
-        // Own fields of Gitg.CredentialsManager
+        // Fields
 
         ref_count: number;
 
-        // Constructors of Gitg.CredentialsManager
+        // Constructors
 
         _init(...args: any[]): void;
 
@@ -2073,7 +2073,7 @@ export namespace Gitg {
             save_user_in_config: boolean,
         ): CredentialsManager;
 
-        // Own methods of Gitg.CredentialsManager
+        // Methods
 
         credentials(url: string, username: string | null, allowed_types: Ggit.Credtype): Ggit.Cred | null;
     }
@@ -2091,7 +2091,7 @@ export namespace Gitg {
     class Date extends GObject.Object implements Gio.Initable {
         static $gtype: GObject.GType<Date>;
 
-        // Own properties of Gitg.Date
+        // Properties
 
         get date_string(): string;
         set date_string(val: string);
@@ -2099,7 +2099,7 @@ export namespace Gitg {
         set dateString(val: string);
         get date(): GLib.DateTime;
 
-        // Constructors of Gitg.Date
+        // Constructors
 
         constructor(properties?: Partial<Date.ConstructorProps>, ...args: any[]);
 
@@ -2109,11 +2109,11 @@ export namespace Gitg {
 
         static for_date_time(dt: GLib.DateTime): Date;
 
-        // Own static methods of Gitg.Date
+        // Static methods
 
         static parse(date: string): GLib.DateTime;
 
-        // Own methods of Gitg.Date
+        // Methods
 
         for_display(): string;
         get_date_string(): string;
@@ -2620,14 +2620,14 @@ export namespace Gitg {
     class DiffStat extends Gtk.DrawingArea {
         static $gtype: GObject.GType<DiffStat>;
 
-        // Own properties of Gitg.DiffStat
+        // Properties
 
         get added(): number;
         set added(val: number);
         get removed(): number;
         set removed(val: number);
 
-        // Constructors of Gitg.DiffStat
+        // Constructors
 
         constructor(properties?: Partial<DiffStat.ConstructorProps>, ...args: any[]);
 
@@ -2635,7 +2635,7 @@ export namespace Gitg {
 
         static ['new'](): DiffStat;
 
-        // Own methods of Gitg.DiffStat
+        // Methods
 
         get_added(): number;
         set_added(value: number): void;
@@ -2656,7 +2656,7 @@ export namespace Gitg {
     class DiffViewOptions extends Gtk.Toolbar {
         static $gtype: GObject.GType<DiffViewOptions>;
 
-        // Own properties of Gitg.DiffViewOptions
+        // Properties
 
         get context_lines(): number;
         set context_lines(val: number);
@@ -2665,7 +2665,7 @@ export namespace Gitg {
         get view(): DiffView;
         set view(val: DiffView);
 
-        // Constructors of Gitg.DiffViewOptions
+        // Constructors
 
         constructor(properties?: Partial<DiffViewOptions.ConstructorProps>, ...args: any[]);
 
@@ -2676,7 +2676,7 @@ export namespace Gitg {
 
         static ['new'](...args: never[]): any;
 
-        // Own methods of Gitg.DiffViewOptions
+        // Methods
 
         get_context_lines(): number;
         set_context_lines(value: number): void;
@@ -2729,7 +2729,7 @@ export namespace Gitg {
     class DiffView extends Gtk.Grid {
         static $gtype: GObject.GType<DiffView>;
 
-        // Own properties of Gitg.DiffView
+        // Properties
 
         get options(): Ggit.DiffOptions;
         get has_selection(): boolean;
@@ -2789,7 +2789,7 @@ export namespace Gitg {
         get contextLines(): number;
         set contextLines(val: number);
 
-        // Constructors of Gitg.DiffView
+        // Constructors
 
         constructor(properties?: Partial<DiffView.ConstructorProps>, ...args: any[]);
 
@@ -2797,7 +2797,7 @@ export namespace Gitg {
 
         static ['new'](): DiffView;
 
-        // Own signals of Gitg.DiffView
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -2806,11 +2806,11 @@ export namespace Gitg {
         connect_after(signal: 'options-changed', callback: (_source: this) => void): number;
         emit(signal: 'options-changed'): void;
 
-        // Own virtual methods of Gitg.DiffView
+        // Virtual methods
 
         vfunc_options_changed(): void;
 
-        // Own methods of Gitg.DiffView
+        // Methods
 
         apply_link_tags(
             buffer: Gtk.TextBuffer,
@@ -2868,7 +2868,7 @@ export namespace Gitg {
     class FontManager extends GObject.Object {
         static $gtype: GObject.GType<FontManager>;
 
-        // Constructors of Gitg.FontManager
+        // Constructors
 
         constructor(properties?: Partial<FontManager.ConstructorProps>, ...args: any[]);
 
@@ -2880,17 +2880,17 @@ export namespace Gitg {
     class GPGUtils {
         static $gtype: GObject.GType<GPGUtils>;
 
-        // Own fields of Gitg.GPGUtils
+        // Fields
 
         ref_count: number;
 
-        // Constructors of Gitg.GPGUtils
+        // Constructors
 
         _init(...args: any[]): void;
 
         static ['new'](): GPGUtils;
 
-        // Own static methods of Gitg.GPGUtils
+        // Static methods
 
         static sign_commit_object(commit_content: string, signing_key: string): string;
     }
@@ -2910,7 +2910,7 @@ export namespace Gitg {
     class Hook extends GObject.Object {
         static $gtype: GObject.GType<Hook>;
 
-        // Own properties of Gitg.Hook
+        // Properties
 
         get environment(): Gee.HashMap;
         set environment(val: Gee.HashMap);
@@ -2922,7 +2922,7 @@ export namespace Gitg {
         set workingDirectory(val: Gio.File);
         get output(): string[];
 
-        // Constructors of Gitg.Hook
+        // Constructors
 
         constructor(properties?: Partial<Hook.ConstructorProps>, ...args: any[]);
 
@@ -2930,7 +2930,7 @@ export namespace Gitg {
 
         static ['new'](name: string): Hook;
 
-        // Own methods of Gitg.Hook
+        // Methods
 
         add_argument(arg: string): void;
         exists_in(repository: Ggit.Repository): boolean;
@@ -2949,17 +2949,17 @@ export namespace Gitg {
     class LabelRenderer {
         static $gtype: GObject.GType<LabelRenderer>;
 
-        // Own fields of Gitg.LabelRenderer
+        // Fields
 
         ref_count: number;
 
-        // Constructors of Gitg.LabelRenderer
+        // Constructors
 
         _init(...args: any[]): void;
 
         static ['new'](): LabelRenderer;
 
-        // Own static methods of Gitg.LabelRenderer
+        // Static methods
 
         static width(widget: Gtk.Widget, font: any | null, labels: Ref[]): number;
         static draw(
@@ -3004,7 +3004,7 @@ export namespace Gitg {
     class Lanes extends GObject.Object {
         static $gtype: GObject.GType<Lanes>;
 
-        // Own properties of Gitg.Lanes
+        // Properties
 
         get inactive_max(): number;
         set inactive_max(val: number);
@@ -3027,7 +3027,7 @@ export namespace Gitg {
         get missCommits(): Gee.LinkedList;
         set missCommits(val: Gee.LinkedList);
 
-        // Constructors of Gitg.Lanes
+        // Constructors
 
         constructor(properties?: Partial<Lanes.ConstructorProps>, ...args: any[]);
 
@@ -3035,7 +3035,7 @@ export namespace Gitg {
 
         static ['new'](): Lanes;
 
-        // Own methods of Gitg.Lanes
+        // Methods
 
         reset(reserved?: Ggit.OId[] | null, roots?: Gee.HashSet | null): void;
         next(next: Commit, save_miss: boolean): [boolean, Lane[], number];
@@ -3060,13 +3060,13 @@ export namespace Gitg {
     class Lane extends GObject.Object {
         static $gtype: GObject.GType<Lane>;
 
-        // Own fields of Gitg.Lane
+        // Fields
 
         color: Color;
         from: number[];
         tag: LaneTag;
 
-        // Constructors of Gitg.Lane
+        // Constructors
 
         constructor(properties?: Partial<Lane.ConstructorProps>, ...args: any[]);
 
@@ -3076,7 +3076,7 @@ export namespace Gitg {
 
         static with_color(color?: Color | null): Lane;
 
-        // Own methods of Gitg.Lane
+        // Methods
 
         copy(): Lane;
         dup(): Lane;
@@ -3093,12 +3093,12 @@ export namespace Gitg {
     class ProgressBin extends Gtk.Bin {
         static $gtype: GObject.GType<ProgressBin>;
 
-        // Own properties of Gitg.ProgressBin
+        // Properties
 
         get fraction(): number;
         set fraction(val: number);
 
-        // Constructors of Gitg.ProgressBin
+        // Constructors
 
         constructor(properties?: Partial<ProgressBin.ConstructorProps>, ...args: any[]);
 
@@ -3106,7 +3106,7 @@ export namespace Gitg {
 
         static ['new'](): ProgressBin;
 
-        // Own methods of Gitg.ProgressBin
+        // Methods
 
         get_fraction(): number;
         set_fraction(value: number): void;
@@ -3121,7 +3121,7 @@ export namespace Gitg {
     class RefBase extends Ggit.Ref implements Ref {
         static $gtype: GObject.GType<RefBase>;
 
-        // Constructors of Gitg.RefBase
+        // Constructors
 
         constructor(properties?: Partial<RefBase.ConstructorProps>, ...args: any[]);
 
@@ -3331,7 +3331,7 @@ export namespace Gitg {
     class ParsedRefName extends GObject.Object {
         static $gtype: GObject.GType<ParsedRefName>;
 
-        // Own properties of Gitg.ParsedRefName
+        // Properties
 
         get rtype(): RefType;
         set rtype(val: RefType);
@@ -3343,7 +3343,7 @@ export namespace Gitg {
         get remoteBranch(): string;
         get prefix(): string;
 
-        // Constructors of Gitg.ParsedRefName
+        // Constructors
 
         constructor(properties?: Partial<ParsedRefName.ConstructorProps>, ...args: any[]);
 
@@ -3351,7 +3351,7 @@ export namespace Gitg {
 
         static ['new'](name: string): ParsedRefName;
 
-        // Own methods of Gitg.ParsedRefName
+        // Methods
 
         get_rtype(): RefType;
         get_name(): string;
@@ -3386,7 +3386,7 @@ export namespace Gitg {
     class Remote extends Ggit.Remote {
         static $gtype: GObject.GType<Remote>;
 
-        // Own properties of Gitg.Remote
+        // Properties
 
         get transfer_progress(): number;
         get transferProgress(): number;
@@ -3405,7 +3405,7 @@ export namespace Gitg {
         get credentialsProvider(): CredentialsProvider;
         set credentialsProvider(val: CredentialsProvider);
 
-        // Constructors of Gitg.Remote
+        // Constructors
 
         constructor(properties?: Partial<Remote.ConstructorProps>, ...args: any[]);
 
@@ -3413,7 +3413,7 @@ export namespace Gitg {
 
         static ['new'](): Remote;
 
-        // Own signals of Gitg.Remote
+        // Signals
 
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -3423,7 +3423,7 @@ export namespace Gitg {
         ): number;
         emit(signal: 'tip-updated', refname: string, a: Ggit.OId, b: Ggit.OId): void;
 
-        // Own methods of Gitg.Remote
+        // Methods
 
         connect(
             direction: Ggit.Direction,
@@ -3491,7 +3491,7 @@ export namespace Gitg {
     class RepositoryListBox extends Gtk.ListBox {
         static $gtype: GObject.GType<RepositoryListBox>;
 
-        // Own properties of Gitg.RepositoryListBox
+        // Properties
 
         get mode(): SelectionMode;
         set mode(val: SelectionMode);
@@ -3504,7 +3504,7 @@ export namespace Gitg {
         get has_selection(): boolean;
         get hasSelection(): boolean;
 
-        // Constructors of Gitg.RepositoryListBox
+        // Constructors
 
         constructor(properties?: Partial<RepositoryListBox.ConstructorProps>, ...args: any[]);
 
@@ -3512,7 +3512,7 @@ export namespace Gitg {
 
         static ['new'](): RepositoryListBox;
 
-        // Own signals of Gitg.RepositoryListBox
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -3533,7 +3533,7 @@ export namespace Gitg {
         ): number;
         emit(signal: 'show-error', primary_message: string, secondary_message: string): void;
 
-        // Own methods of Gitg.RepositoryListBox
+        // Methods
 
         populate_bookmarks(): void;
         end_cloning(row: RepositoryListBoxRow, repository?: Repository | null): void;
@@ -3583,7 +3583,7 @@ export namespace Gitg {
     class RepositoryListBoxRow extends Gtk.ListBoxRow {
         static $gtype: GObject.GType<RepositoryListBoxRow>;
 
-        // Own properties of Gitg.RepositoryListBoxRow
+        // Properties
 
         get mode(): SelectionMode;
         set mode(val: SelectionMode);
@@ -3611,7 +3611,7 @@ export namespace Gitg {
         get loading(): boolean;
         set loading(val: boolean);
 
-        // Constructors of Gitg.RepositoryListBoxRow
+        // Constructors
 
         constructor(properties?: Partial<RepositoryListBoxRow.ConstructorProps>, ...args: any[]);
 
@@ -3622,7 +3622,7 @@ export namespace Gitg {
 
         static ['new'](...args: never[]): any;
 
-        // Own signals of Gitg.RepositoryListBoxRow
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -3634,7 +3634,7 @@ export namespace Gitg {
         connect_after(signal: 'request-delete-source', callback: (_source: this) => void): number;
         emit(signal: 'request-delete-source'): void;
 
-        // Own methods of Gitg.RepositoryListBoxRow
+        // Methods
 
         get_mode(): SelectionMode;
         set_mode(value: SelectionMode): void;
@@ -3669,12 +3669,12 @@ export namespace Gitg {
     class Repository extends Ggit.Repository {
         static $gtype: GObject.GType<Repository>;
 
-        // Own properties of Gitg.Repository
+        // Properties
 
         get name(): string;
         get stage(): Stage;
 
-        // Constructors of Gitg.Repository
+        // Constructors
 
         constructor(properties?: Partial<Repository.ConstructorProps>, ...args: any[]);
 
@@ -3682,13 +3682,13 @@ export namespace Gitg {
 
         static ['new'](location: Gio.File, workdir?: Gio.File | null): Repository;
 
-        // Own static methods of Gitg.Repository
+        // Static methods
 
         static init_repository(location: Gio.File, is_bare: boolean): Repository;
         // Conflicted with Ggit.Repository.init_repository
         static init_repository(...args: never[]): any;
 
-        // Own methods of Gitg.Repository
+        // Methods
 
         clear_refs_cache(): void;
         refs_for_id(id: Ggit.OId): Ref[];
@@ -3721,17 +3721,17 @@ export namespace Gitg {
     class Resource {
         static $gtype: GObject.GType<Resource>;
 
-        // Own fields of Gitg.Resource
+        // Fields
 
         ref_count: number;
 
-        // Constructors of Gitg.Resource
+        // Constructors
 
         _init(...args: any[]): void;
 
         static ['new'](): Resource;
 
-        // Own static methods of Gitg.Resource
+        // Static methods
 
         static load_css(id: string): Gtk.CssProvider | null;
     }
@@ -3747,11 +3747,11 @@ export namespace Gitg {
     class SidebarStore extends Gtk.TreeStore {
         static $gtype: GObject.GType<SidebarStore>;
 
-        // Own properties of Gitg.SidebarStore
+        // Properties
 
         get clearing(): boolean;
 
-        // Constructors of Gitg.SidebarStore
+        // Constructors
 
         constructor(properties?: Partial<SidebarStore.ConstructorProps>, ...args: any[]);
 
@@ -3759,7 +3759,7 @@ export namespace Gitg {
 
         static ['new'](): SidebarStore;
 
-        // Own methods of Gitg.SidebarStore
+        // Methods
 
         append_dummy(text: string): SidebarStore;
         append(item: SidebarItem): SidebarStore;
@@ -3784,7 +3784,7 @@ export namespace Gitg {
     class SidebarStoreSidebarText extends GObject.Object implements SidebarItem {
         static $gtype: GObject.GType<SidebarStoreSidebarText>;
 
-        // Constructors of Gitg.SidebarStoreSidebarText
+        // Constructors
 
         constructor(properties?: Partial<SidebarStoreSidebarText.ConstructorProps>, ...args: any[]);
 
@@ -4217,11 +4217,11 @@ export namespace Gitg {
     class SidebarStoreSidebarHeader extends SidebarStoreSidebarText {
         static $gtype: GObject.GType<SidebarStoreSidebarHeader>;
 
-        // Own properties of Gitg.SidebarStoreSidebarHeader
+        // Properties
 
         get id(): number;
 
-        // Constructors of Gitg.SidebarStoreSidebarHeader
+        // Constructors
 
         constructor(properties?: Partial<SidebarStoreSidebarHeader.ConstructorProps>, ...args: any[]);
 
@@ -4232,7 +4232,7 @@ export namespace Gitg {
 
         static ['new'](...args: never[]): any;
 
-        // Own methods of Gitg.SidebarStoreSidebarHeader
+        // Methods
 
         get_id(): number;
     }
@@ -4258,12 +4258,12 @@ export namespace Gitg {
     class Sidebar extends Gtk.TreeView {
         static $gtype: GObject.GType<Sidebar>;
 
-        // Own properties of Gitg.Sidebar
+        // Properties
 
         get model(): SidebarStore;
         set model(val: SidebarStore);
 
-        // Constructors of Gitg.Sidebar
+        // Constructors
 
         constructor(properties?: Partial<Sidebar.ConstructorProps>, ...args: any[]);
 
@@ -4271,7 +4271,7 @@ export namespace Gitg {
 
         static ['new'](): Sidebar;
 
-        // Own signals of Gitg.Sidebar
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -4283,7 +4283,7 @@ export namespace Gitg {
         connect_after(signal: 'populate-popup', callback: (_source: this, menu: Gtk.Menu) => void): number;
         emit(signal: 'populate-popup', menu: Gtk.Menu): void;
 
-        // Own virtual methods of Gitg.Sidebar
+        // Virtual methods
 
         vfunc_select_function(
             sel: Gtk.TreeSelection,
@@ -4293,7 +4293,7 @@ export namespace Gitg {
         ): boolean;
         vfunc_selection_changed(sel: Gtk.TreeSelection): void;
 
-        // Own methods of Gitg.Sidebar
+        // Methods
 
         select_function(sel: Gtk.TreeSelection, model: Gtk.TreeModel, path: Gtk.TreePath, cursel: boolean): boolean;
         selection_changed(sel: Gtk.TreeSelection): void;
@@ -4317,11 +4317,11 @@ export namespace Gitg {
     class StageStatusFile extends GObject.Object implements StageStatusItem {
         static $gtype: GObject.GType<StageStatusFile>;
 
-        // Own properties of Gitg.StageStatusFile
+        // Properties
 
         get flags(): Ggit.StatusFlags;
 
-        // Constructors of Gitg.StageStatusFile
+        // Constructors
 
         constructor(properties?: Partial<StageStatusFile.ConstructorProps>, ...args: any[]);
 
@@ -4329,7 +4329,7 @@ export namespace Gitg {
 
         static ['new'](path: string, flags: Ggit.StatusFlags): StageStatusFile;
 
-        // Own methods of Gitg.StageStatusFile
+        // Methods
 
         get_flags(): Ggit.StatusFlags;
 
@@ -4771,14 +4771,14 @@ export namespace Gitg {
     class StageStatusSubmodule extends GObject.Object implements StageStatusItem {
         static $gtype: GObject.GType<StageStatusSubmodule>;
 
-        // Own properties of Gitg.StageStatusSubmodule
+        // Properties
 
         get submodule(): Ggit.Submodule;
         get is_dirty(): boolean;
         get isDirty(): boolean;
         get flags(): Ggit.SubmoduleStatus;
 
-        // Constructors of Gitg.StageStatusSubmodule
+        // Constructors
 
         constructor(properties?: Partial<StageStatusSubmodule.ConstructorProps>, ...args: any[]);
 
@@ -4786,7 +4786,7 @@ export namespace Gitg {
 
         static ['new'](submodule: Ggit.Submodule): StageStatusSubmodule;
 
-        // Own methods of Gitg.StageStatusSubmodule
+        // Methods
 
         get_submodule(): Ggit.Submodule;
         get_is_dirty(): boolean;
@@ -5225,13 +5225,13 @@ export namespace Gitg {
     class StageStatusEnumerator extends GObject.Object {
         static $gtype: GObject.GType<StageStatusEnumerator>;
 
-        // Constructors of Gitg.StageStatusEnumerator
+        // Constructors
 
         constructor(properties?: Partial<StageStatusEnumerator.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Gitg.StageStatusEnumerator
+        // Methods
 
         cancel(): void;
         next_items(num: number, _callback_?: Gio.AsyncReadyCallback<this> | null): void;
@@ -5241,19 +5241,19 @@ export namespace Gitg {
     class PatchSet {
         static $gtype: GObject.GType<PatchSet>;
 
-        // Own fields of Gitg.PatchSet
+        // Fields
 
         ref_count: number;
         filename: string;
         patches_length1: number;
 
-        // Constructors of Gitg.PatchSet
+        // Constructors
 
         _init(...args: any[]): void;
 
         static ['new'](): PatchSet;
 
-        // Own methods of Gitg.PatchSet
+        // Methods
 
         reversed(): PatchSet;
     }
@@ -5267,13 +5267,13 @@ export namespace Gitg {
     class Stage extends GObject.Object {
         static $gtype: GObject.GType<Stage>;
 
-        // Constructors of Gitg.Stage
+        // Constructors
 
         constructor(properties?: Partial<Stage.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Gitg.Stage
+        // Methods
 
         refresh(_callback_?: Gio.AsyncReadyCallback<this> | null): void;
         refresh_finish(_res_: Gio.AsyncResult): void;
@@ -5365,17 +5365,17 @@ export namespace Gitg {
     class TextConv {
         static $gtype: GObject.GType<TextConv>;
 
-        // Own fields of Gitg.TextConv
+        // Fields
 
         ref_count: number;
 
-        // Constructors of Gitg.TextConv
+        // Constructors
 
         _init(...args: any[]): void;
 
         static ['new'](): TextConv;
 
-        // Own static methods of Gitg.TextConv
+        // Static methods
 
         static has_textconv_command(repository: Repository, file: Ggit.DiffFile): boolean;
         static get_textconv_content(repository: Repository, file: Ggit.DiffFile): Uint8Array;
@@ -5395,7 +5395,7 @@ export namespace Gitg {
     class Theme extends Gtk.Widget {
         static $gtype: GObject.GType<Theme>;
 
-        // Constructors of Gitg.Theme
+        // Constructors
 
         constructor(properties?: Partial<Theme.ConstructorProps>, ...args: any[]);
 
@@ -5403,11 +5403,11 @@ export namespace Gitg {
 
         static ['new'](): Theme;
 
-        // Own static methods of Gitg.Theme
+        // Static methods
 
         static instance(): Theme;
 
-        // Own methods of Gitg.Theme
+        // Methods
 
         is_theme_dark(): boolean;
     }
@@ -5415,17 +5415,17 @@ export namespace Gitg {
     class Utils {
         static $gtype: GObject.GType<Utils>;
 
-        // Own fields of Gitg.Utils
+        // Fields
 
         ref_count: number;
 
-        // Constructors of Gitg.Utils
+        // Constructors
 
         _init(...args: any[]): void;
 
         static ['new'](): Utils;
 
-        // Own static methods of Gitg.Utils
+        // Static methods
 
         static replace_home_dir_with_tilde(file: Gio.File): string;
         static expand_home_dir(path: string): string;
@@ -5440,17 +5440,17 @@ export namespace Gitg {
     class WhenMapped {
         static $gtype: GObject.GType<WhenMapped>;
 
-        // Own fields of Gitg.WhenMapped
+        // Fields
 
         ref_count: number;
 
-        // Constructors of Gitg.WhenMapped
+        // Constructors
 
         _init(...args: any[]): void;
 
         static ['new'](widget: Gtk.Widget): WhenMapped;
 
-        // Own methods of Gitg.WhenMapped
+        // Methods
 
         update(mapped: WhenMapped.OnMapped, lifetime?: GObject.Object | null): void;
     }
@@ -5459,7 +5459,7 @@ export namespace Gitg {
     abstract class AsyncPrivate {
         static $gtype: GObject.GType<AsyncPrivate>;
 
-        // Constructors of Gitg.AsyncPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5468,7 +5468,7 @@ export namespace Gitg {
     abstract class AuthenticationDialogPrivate {
         static $gtype: GObject.GType<AuthenticationDialogPrivate>;
 
-        // Constructors of Gitg.AuthenticationDialogPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5477,7 +5477,7 @@ export namespace Gitg {
     abstract class AvatarCachePrivate {
         static $gtype: GObject.GType<AvatarCachePrivate>;
 
-        // Constructors of Gitg.AvatarCachePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5486,7 +5486,7 @@ export namespace Gitg {
     abstract class BranchBasePrivate {
         static $gtype: GObject.GType<BranchBasePrivate>;
 
-        // Constructors of Gitg.BranchBasePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5495,7 +5495,7 @@ export namespace Gitg {
     abstract class CellRendererLanesPrivate {
         static $gtype: GObject.GType<CellRendererLanesPrivate>;
 
-        // Constructors of Gitg.CellRendererLanesPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5504,7 +5504,7 @@ export namespace Gitg {
     abstract class ColorPrivate {
         static $gtype: GObject.GType<ColorPrivate>;
 
-        // Constructors of Gitg.ColorPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5513,7 +5513,7 @@ export namespace Gitg {
     abstract class CommitListViewPrivate {
         static $gtype: GObject.GType<CommitListViewPrivate>;
 
-        // Constructors of Gitg.CommitListViewPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5522,7 +5522,7 @@ export namespace Gitg {
     abstract class CommitModelPrivate {
         static $gtype: GObject.GType<CommitModelPrivate>;
 
-        // Constructors of Gitg.CommitModelPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5531,7 +5531,7 @@ export namespace Gitg {
     abstract class CommitPrivate {
         static $gtype: GObject.GType<CommitPrivate>;
 
-        // Constructors of Gitg.CommitPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5540,7 +5540,7 @@ export namespace Gitg {
     abstract class CredentialsManagerPrivate {
         static $gtype: GObject.GType<CredentialsManagerPrivate>;
 
-        // Constructors of Gitg.CredentialsManagerPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5549,7 +5549,7 @@ export namespace Gitg {
     abstract class DatePrivate {
         static $gtype: GObject.GType<DatePrivate>;
 
-        // Constructors of Gitg.DatePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5558,7 +5558,7 @@ export namespace Gitg {
     abstract class DiffStatPrivate {
         static $gtype: GObject.GType<DiffStatPrivate>;
 
-        // Constructors of Gitg.DiffStatPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5567,7 +5567,7 @@ export namespace Gitg {
     abstract class DiffViewOptionsPrivate {
         static $gtype: GObject.GType<DiffViewOptionsPrivate>;
 
-        // Constructors of Gitg.DiffViewOptionsPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5576,7 +5576,7 @@ export namespace Gitg {
     abstract class DiffViewPrivate {
         static $gtype: GObject.GType<DiffViewPrivate>;
 
-        // Constructors of Gitg.DiffViewPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5585,7 +5585,7 @@ export namespace Gitg {
     abstract class FontManagerPrivate {
         static $gtype: GObject.GType<FontManagerPrivate>;
 
-        // Constructors of Gitg.FontManagerPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5594,7 +5594,7 @@ export namespace Gitg {
     abstract class GPGUtilsPrivate {
         static $gtype: GObject.GType<GPGUtilsPrivate>;
 
-        // Constructors of Gitg.GPGUtilsPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5603,7 +5603,7 @@ export namespace Gitg {
     abstract class HookPrivate {
         static $gtype: GObject.GType<HookPrivate>;
 
-        // Constructors of Gitg.HookPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5612,7 +5612,7 @@ export namespace Gitg {
     abstract class LabelRendererPrivate {
         static $gtype: GObject.GType<LabelRendererPrivate>;
 
-        // Constructors of Gitg.LabelRendererPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5621,7 +5621,7 @@ export namespace Gitg {
     abstract class LanesPrivate {
         static $gtype: GObject.GType<LanesPrivate>;
 
-        // Constructors of Gitg.LanesPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5630,7 +5630,7 @@ export namespace Gitg {
     abstract class LanePrivate {
         static $gtype: GObject.GType<LanePrivate>;
 
-        // Constructors of Gitg.LanePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5639,7 +5639,7 @@ export namespace Gitg {
     abstract class ProgressBinPrivate {
         static $gtype: GObject.GType<ProgressBinPrivate>;
 
-        // Constructors of Gitg.ProgressBinPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5648,7 +5648,7 @@ export namespace Gitg {
     abstract class RefBasePrivate {
         static $gtype: GObject.GType<RefBasePrivate>;
 
-        // Constructors of Gitg.RefBasePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5657,7 +5657,7 @@ export namespace Gitg {
     abstract class ParsedRefNamePrivate {
         static $gtype: GObject.GType<ParsedRefNamePrivate>;
 
-        // Constructors of Gitg.ParsedRefNamePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5666,7 +5666,7 @@ export namespace Gitg {
     abstract class RemotePrivate {
         static $gtype: GObject.GType<RemotePrivate>;
 
-        // Constructors of Gitg.RemotePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5675,7 +5675,7 @@ export namespace Gitg {
     abstract class RepositoryListBoxPrivate {
         static $gtype: GObject.GType<RepositoryListBoxPrivate>;
 
-        // Constructors of Gitg.RepositoryListBoxPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5684,7 +5684,7 @@ export namespace Gitg {
     abstract class RepositoryListBoxRowPrivate {
         static $gtype: GObject.GType<RepositoryListBoxRowPrivate>;
 
-        // Constructors of Gitg.RepositoryListBoxRowPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5693,7 +5693,7 @@ export namespace Gitg {
     abstract class RepositoryPrivate {
         static $gtype: GObject.GType<RepositoryPrivate>;
 
-        // Constructors of Gitg.RepositoryPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5702,7 +5702,7 @@ export namespace Gitg {
     abstract class ResourcePrivate {
         static $gtype: GObject.GType<ResourcePrivate>;
 
-        // Constructors of Gitg.ResourcePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5711,7 +5711,7 @@ export namespace Gitg {
     abstract class SidebarStorePrivate {
         static $gtype: GObject.GType<SidebarStorePrivate>;
 
-        // Constructors of Gitg.SidebarStorePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5720,7 +5720,7 @@ export namespace Gitg {
     abstract class SidebarStoreSidebarTextPrivate {
         static $gtype: GObject.GType<SidebarStoreSidebarTextPrivate>;
 
-        // Constructors of Gitg.SidebarStoreSidebarTextPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5729,7 +5729,7 @@ export namespace Gitg {
     abstract class SidebarStoreSidebarHeaderPrivate {
         static $gtype: GObject.GType<SidebarStoreSidebarHeaderPrivate>;
 
-        // Constructors of Gitg.SidebarStoreSidebarHeaderPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5738,7 +5738,7 @@ export namespace Gitg {
     abstract class SidebarPrivate {
         static $gtype: GObject.GType<SidebarPrivate>;
 
-        // Constructors of Gitg.SidebarPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5747,7 +5747,7 @@ export namespace Gitg {
     abstract class StageStatusFilePrivate {
         static $gtype: GObject.GType<StageStatusFilePrivate>;
 
-        // Constructors of Gitg.StageStatusFilePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5756,7 +5756,7 @@ export namespace Gitg {
     abstract class StageStatusSubmodulePrivate {
         static $gtype: GObject.GType<StageStatusSubmodulePrivate>;
 
-        // Constructors of Gitg.StageStatusSubmodulePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5765,7 +5765,7 @@ export namespace Gitg {
     abstract class StageStatusEnumeratorPrivate {
         static $gtype: GObject.GType<StageStatusEnumeratorPrivate>;
 
-        // Constructors of Gitg.StageStatusEnumeratorPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5774,7 +5774,7 @@ export namespace Gitg {
     abstract class PatchSetPrivate {
         static $gtype: GObject.GType<PatchSetPrivate>;
 
-        // Constructors of Gitg.PatchSetPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5782,14 +5782,14 @@ export namespace Gitg {
     class PatchSetPatch {
         static $gtype: GObject.GType<PatchSetPatch>;
 
-        // Own fields of Gitg.PatchSetPatch
+        // Fields
 
         type: PatchSetType;
         old_offset: number;
         new_offset: number;
         length: number;
 
-        // Constructors of Gitg.PatchSetPatch
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5798,7 +5798,7 @@ export namespace Gitg {
     abstract class StagePrivate {
         static $gtype: GObject.GType<StagePrivate>;
 
-        // Constructors of Gitg.StagePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5807,7 +5807,7 @@ export namespace Gitg {
     abstract class TextConvPrivate {
         static $gtype: GObject.GType<TextConvPrivate>;
 
-        // Constructors of Gitg.TextConvPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5816,7 +5816,7 @@ export namespace Gitg {
     abstract class ThemePrivate {
         static $gtype: GObject.GType<ThemePrivate>;
 
-        // Constructors of Gitg.ThemePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5825,7 +5825,7 @@ export namespace Gitg {
     abstract class UtilsPrivate {
         static $gtype: GObject.GType<UtilsPrivate>;
 
-        // Constructors of Gitg.UtilsPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5834,7 +5834,7 @@ export namespace Gitg {
     abstract class WhenMappedPrivate {
         static $gtype: GObject.GType<WhenMappedPrivate>;
 
-        // Constructors of Gitg.WhenMappedPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5855,13 +5855,13 @@ export namespace Gitg {
         prototype: Branch;
     }
     interface Branch extends Ggit.Branch {
-        // Own methods of Gitg.Branch
+        // Methods
 
         get_upstream(): Ref;
         // Conflicted with Ggit.Branch.get_upstream
         get_upstream(...args: never[]): any;
 
-        // Own virtual methods of Gitg.Branch
+        // Virtual methods
 
         vfunc_get_upstream(): Ref;
     }
@@ -5886,7 +5886,7 @@ export namespace Gitg {
         prototype: Ref;
     }
     interface Ref extends Ggit.Ref {
-        // Own properties of Gitg.Ref
+        // Properties
 
         get d_parsed_name(): ParsedRefName;
         set d_parsed_name(val: ParsedRefName);
@@ -5901,7 +5901,7 @@ export namespace Gitg {
         get working(): boolean;
         set working(val: boolean);
 
-        // Own methods of Gitg.Ref
+        // Methods
 
         get_owner(): Repository;
         // Conflicted with Ggit.Ref.get_owner
@@ -5917,7 +5917,7 @@ export namespace Gitg {
         get_parsed_name(): ParsedRefName;
         get_pushes(): Ref[];
 
-        // Own virtual methods of Gitg.Ref
+        // Virtual methods
 
         vfunc_get_owner(): Repository;
         vfunc_get_d_parsed_name(): ParsedRefName;
@@ -5943,11 +5943,11 @@ export namespace Gitg {
         prototype: CredentialsProvider;
     }
     interface CredentialsProvider extends GObject.Object {
-        // Own methods of Gitg.CredentialsProvider
+        // Methods
 
         credentials(url: string, username_from_url: string | null, allowed_types: Ggit.Credtype): Ggit.Cred | null;
 
-        // Own virtual methods of Gitg.CredentialsProvider
+        // Virtual methods
 
         vfunc_credentials(
             url: string,
@@ -5973,19 +5973,19 @@ export namespace Gitg {
         prototype: SidebarItem;
     }
     interface SidebarItem extends GObject.Object {
-        // Own properties of Gitg.SidebarItem
+        // Properties
 
         get text(): string;
         get icon_name(): string;
         get iconName(): string;
 
-        // Own methods of Gitg.SidebarItem
+        // Methods
 
         activate(numclick: number): void;
         get_text(): string;
         get_icon_name(): string | null;
 
-        // Own virtual methods of Gitg.SidebarItem
+        // Virtual methods
 
         vfunc_activate(numclick: number): void;
         vfunc_get_text(): string;
@@ -6015,7 +6015,7 @@ export namespace Gitg {
         prototype: StageStatusItem;
     }
     interface StageStatusItem extends GObject.Object {
-        // Own properties of Gitg.StageStatusItem
+        // Properties
 
         get path(): string;
         get is_staged(): boolean;
@@ -6027,7 +6027,7 @@ export namespace Gitg {
         get icon_name(): string;
         get iconName(): string;
 
-        // Own methods of Gitg.StageStatusItem
+        // Methods
 
         get_path(): string;
         get_is_staged(): boolean;
@@ -6035,7 +6035,7 @@ export namespace Gitg {
         get_is_untracked(): boolean;
         get_icon_name(): string | null;
 
-        // Own virtual methods of Gitg.StageStatusItem
+        // Virtual methods
 
         vfunc_get_path(): string;
         vfunc_get_is_staged(): boolean;

@@ -29,7 +29,7 @@ export namespace Grss {
     class FeedAtomFormatter extends FeedFormatter {
         static $gtype: GObject.GType<FeedAtomFormatter>;
 
-        // Constructors of Grss.FeedAtomFormatter
+        // Constructors
 
         constructor(properties?: Partial<FeedAtomFormatter.ConstructorProps>, ...args: any[]);
 
@@ -47,7 +47,7 @@ export namespace Grss {
     class FeedChannel extends GObject.Object {
         static $gtype: GObject.GType<FeedChannel>;
 
-        // Constructors of Grss.FeedChannel
+        // Constructors
 
         constructor(properties?: Partial<FeedChannel.ConstructorProps>, ...args: any[]);
 
@@ -63,7 +63,7 @@ export namespace Grss {
 
         static new_with_source(source: string): FeedChannel;
 
-        // Own methods of Grss.FeedChannel
+        // Methods
 
         /**
          * To add a contributor to the `channel`.
@@ -347,7 +347,7 @@ export namespace Grss {
     class FeedEnclosure extends GObject.Object {
         static $gtype: GObject.GType<FeedEnclosure>;
 
-        // Constructors of Grss.FeedEnclosure
+        // Constructors
 
         constructor(properties?: Partial<FeedEnclosure.ConstructorProps>, ...args: any[]);
 
@@ -355,7 +355,7 @@ export namespace Grss {
 
         static ['new'](url: string): FeedEnclosure;
 
-        // Own methods of Grss.FeedEnclosure
+        // Methods
 
         /**
          * Utility to fetch a #GrssFeedEnclosure. Contents are stored in a temporary
@@ -412,13 +412,13 @@ export namespace Grss {
     abstract class FeedFormatter extends GObject.Object {
         static $gtype: GObject.GType<FeedFormatter>;
 
-        // Constructors of Grss.FeedFormatter
+        // Constructors
 
         constructor(properties?: Partial<FeedFormatter.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of Grss.FeedFormatter
+        // Virtual methods
 
         /**
          * Formats the assigned #GrssFeedChannel and #GrssFeedItems into a plain text
@@ -426,7 +426,7 @@ export namespace Grss {
          */
         vfunc_format(): string;
 
-        // Own methods of Grss.FeedFormatter
+        // Methods
 
         /**
          * Adds a single #GrssFeedItem in the `formatter`.
@@ -478,7 +478,7 @@ export namespace Grss {
     class FeedItem extends GObject.Object {
         static $gtype: GObject.GType<FeedItem>;
 
-        // Constructors of Grss.FeedItem
+        // Constructors
 
         constructor(properties?: Partial<FeedItem.ConstructorProps>, ...args: any[]);
 
@@ -486,7 +486,7 @@ export namespace Grss {
 
         static ['new'](parent: FeedChannel): FeedItem;
 
-        // Own methods of Grss.FeedItem
+        // Methods
 
         /**
          * Adds a category to the `item`. The complete list can be obtained with
@@ -663,7 +663,7 @@ export namespace Grss {
     class FeedParser extends GObject.Object {
         static $gtype: GObject.GType<FeedParser>;
 
-        // Constructors of Grss.FeedParser
+        // Constructors
 
         constructor(properties?: Partial<FeedParser.ConstructorProps>, ...args: any[]);
 
@@ -671,7 +671,7 @@ export namespace Grss {
 
         static ['new'](): FeedParser;
 
-        // Own methods of Grss.FeedParser
+        // Methods
 
         /**
          * Parses the given XML `doc,` belonging to the given `feed,` to obtain a list
@@ -701,7 +701,7 @@ export namespace Grss {
     class FeedRssFormatter extends FeedFormatter {
         static $gtype: GObject.GType<FeedRssFormatter>;
 
-        // Constructors of Grss.FeedRssFormatter
+        // Constructors
 
         constructor(properties?: Partial<FeedRssFormatter.ConstructorProps>, ...args: any[]);
 
@@ -719,7 +719,7 @@ export namespace Grss {
     class FeedsGroup extends GObject.Object {
         static $gtype: GObject.GType<FeedsGroup>;
 
-        // Constructors of Grss.FeedsGroup
+        // Constructors
 
         constructor(properties?: Partial<FeedsGroup.ConstructorProps>, ...args: any[]);
 
@@ -727,7 +727,7 @@ export namespace Grss {
 
         static ['new'](): FeedsGroup;
 
-        // Own methods of Grss.FeedsGroup
+        // Methods
 
         /**
          * Creates a new file with the list of `channels` represented in the required
@@ -774,7 +774,7 @@ export namespace Grss {
     class FeedsPool extends GObject.Object {
         static $gtype: GObject.GType<FeedsPool>;
 
-        // Constructors of Grss.FeedsPool
+        // Constructors
 
         constructor(properties?: Partial<FeedsPool.ConstructorProps>, ...args: any[]);
 
@@ -782,7 +782,7 @@ export namespace Grss {
 
         static ['new'](): FeedsPool;
 
-        // Own signals of Grss.FeedsPool
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -803,11 +803,11 @@ export namespace Grss {
         ): number;
         emit(signal: 'feed-ready', feed: GObject.Object, items: FeedItem[]): void;
 
-        // Own virtual methods of Grss.FeedsPool
+        // Virtual methods
 
         vfunc_feed_fetching(feed: FeedChannel): void;
 
-        // Own methods of Grss.FeedsPool
+        // Methods
 
         /**
          * Returns the list of feeds currently managed by the `pool`. Please consider
@@ -866,7 +866,7 @@ export namespace Grss {
     class FeedsPublisher extends GObject.Object {
         static $gtype: GObject.GType<FeedsPublisher>;
 
-        // Constructors of Grss.FeedsPublisher
+        // Constructors
 
         constructor(properties?: Partial<FeedsPublisher.ConstructorProps>, ...args: any[]);
 
@@ -874,7 +874,7 @@ export namespace Grss {
 
         static ['new'](): FeedsPublisher;
 
-        // Own signals of Grss.FeedsPublisher
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -895,12 +895,12 @@ export namespace Grss {
         ): number;
         emit(signal: 'new-subscription', object: FeedChannel, p0: string): void;
 
-        // Own virtual methods of Grss.FeedsPublisher
+        // Virtual methods
 
         vfunc_delete_subscription(topic: FeedChannel, callback: string): void;
         vfunc_new_subscription(topic: FeedChannel, callback: string): void;
 
-        // Own methods of Grss.FeedsPublisher
+        // Methods
 
         /**
          * Format a #GrssFeedChannel in Atom and returns the resulting string.
@@ -963,13 +963,13 @@ export namespace Grss {
     abstract class FeedsStore extends GObject.Object {
         static $gtype: GObject.GType<FeedsStore>;
 
-        // Constructors of Grss.FeedsStore
+        // Constructors
 
         constructor(properties?: Partial<FeedsStore.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of Grss.FeedsStore
+        // Virtual methods
 
         /**
          * To save a new #GrssFeedItem into the `store`. It performs a check to grant
@@ -995,7 +995,7 @@ export namespace Grss {
          */
         vfunc_has_item(channel: FeedChannel, id: string): boolean;
 
-        // Own methods of Grss.FeedsStore
+        // Methods
 
         /**
          * To save a new #GrssFeedItem into the `store`. It performs a check to grant
@@ -1047,7 +1047,7 @@ export namespace Grss {
     class FeedsSubscriber extends GObject.Object {
         static $gtype: GObject.GType<FeedsSubscriber>;
 
-        // Constructors of Grss.FeedsSubscriber
+        // Constructors
 
         constructor(properties?: Partial<FeedsSubscriber.ConstructorProps>, ...args: any[]);
 
@@ -1055,7 +1055,7 @@ export namespace Grss {
 
         static ['new'](): FeedsSubscriber;
 
-        // Own signals of Grss.FeedsSubscriber
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -1070,11 +1070,11 @@ export namespace Grss {
         ): number;
         emit(signal: 'notification-received', feed: GObject.Object, item: GObject.Object): void;
 
-        // Own virtual methods of Grss.FeedsSubscriber
+        // Virtual methods
 
         vfunc_notification_received(feed: FeedChannel, item: FeedItem): void;
 
-        // Own methods of Grss.FeedsSubscriber
+        // Methods
 
         /**
          * This function returns the Internet address where `sub` is listening for
@@ -1131,7 +1131,7 @@ export namespace Grss {
     abstract class FeedAtomFormatterPrivate {
         static $gtype: GObject.GType<FeedAtomFormatterPrivate>;
 
-        // Constructors of Grss.FeedAtomFormatterPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1140,7 +1140,7 @@ export namespace Grss {
     abstract class FeedChannelPrivate {
         static $gtype: GObject.GType<FeedChannelPrivate>;
 
-        // Constructors of Grss.FeedChannelPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1149,7 +1149,7 @@ export namespace Grss {
     abstract class FeedEnclosurePrivate {
         static $gtype: GObject.GType<FeedEnclosurePrivate>;
 
-        // Constructors of Grss.FeedEnclosurePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1158,7 +1158,7 @@ export namespace Grss {
     abstract class FeedFormatterPrivate {
         static $gtype: GObject.GType<FeedFormatterPrivate>;
 
-        // Constructors of Grss.FeedFormatterPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1167,7 +1167,7 @@ export namespace Grss {
     abstract class FeedItemPrivate {
         static $gtype: GObject.GType<FeedItemPrivate>;
 
-        // Constructors of Grss.FeedItemPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1176,7 +1176,7 @@ export namespace Grss {
     abstract class FeedParserPrivate {
         static $gtype: GObject.GType<FeedParserPrivate>;
 
-        // Constructors of Grss.FeedParserPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1185,7 +1185,7 @@ export namespace Grss {
     abstract class FeedRssFormatterPrivate {
         static $gtype: GObject.GType<FeedRssFormatterPrivate>;
 
-        // Constructors of Grss.FeedRssFormatterPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1194,7 +1194,7 @@ export namespace Grss {
     abstract class FeedsGroupPrivate {
         static $gtype: GObject.GType<FeedsGroupPrivate>;
 
-        // Constructors of Grss.FeedsGroupPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1203,7 +1203,7 @@ export namespace Grss {
     abstract class FeedsPoolPrivate {
         static $gtype: GObject.GType<FeedsPoolPrivate>;
 
-        // Constructors of Grss.FeedsPoolPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1212,7 +1212,7 @@ export namespace Grss {
     abstract class FeedsPublisherPrivate {
         static $gtype: GObject.GType<FeedsPublisherPrivate>;
 
-        // Constructors of Grss.FeedsPublisherPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1221,7 +1221,7 @@ export namespace Grss {
     abstract class FeedsStorePrivate {
         static $gtype: GObject.GType<FeedsStorePrivate>;
 
-        // Constructors of Grss.FeedsStorePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1230,7 +1230,7 @@ export namespace Grss {
     abstract class FeedsSubscriberPrivate {
         static $gtype: GObject.GType<FeedsSubscriberPrivate>;
 
-        // Constructors of Grss.FeedsSubscriberPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1242,14 +1242,14 @@ export namespace Grss {
     class Person {
         static $gtype: GObject.GType<Person>;
 
-        // Constructors of Grss.Person
+        // Constructors
 
         constructor(name: string, email?: string | null, uri?: string | null);
         _init(...args: any[]): void;
 
         static ['new'](name: string, email?: string | null, uri?: string | null): Person;
 
-        // Own methods of Grss.Person
+        // Methods
 
         get_email(): string;
         get_name(): string;

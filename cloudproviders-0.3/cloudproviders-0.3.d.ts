@@ -81,7 +81,7 @@ export namespace CloudProviders {
     class Account extends GObject.Object {
         static $gtype: GObject.GType<Account>;
 
-        // Own properties of CloudProviders.Account
+        // Properties
 
         get action_group(): Gio.ActionGroup;
         get actionGroup(): Gio.ActionGroup;
@@ -93,7 +93,7 @@ export namespace CloudProviders {
         get status_details(): string;
         get statusDetails(): string;
 
-        // Constructors of CloudProviders.Account
+        // Constructors
 
         constructor(properties?: Partial<Account.ConstructorProps>, ...args: any[]);
 
@@ -101,7 +101,7 @@ export namespace CloudProviders {
 
         static ['new'](proxy: Gio.DBusProxy): Account;
 
-        // Own methods of CloudProviders.Account
+        // Methods
 
         /**
          * Get the action group exported in addition to the #GMenuModel from
@@ -163,7 +163,7 @@ export namespace CloudProviders {
     class AccountExporter extends GObject.Object {
         static $gtype: GObject.GType<AccountExporter>;
 
-        // Own properties of CloudProviders.AccountExporter
+        // Properties
 
         get action_group(): Gio.ActionGroup;
         set action_group(val: Gio.ActionGroup);
@@ -187,7 +187,7 @@ export namespace CloudProviders {
         get statusDetails(): string;
         set statusDetails(val: string);
 
-        // Constructors of CloudProviders.AccountExporter
+        // Constructors
 
         constructor(properties?: Partial<AccountExporter.ConstructorProps>, ...args: any[]);
 
@@ -195,7 +195,7 @@ export namespace CloudProviders {
 
         static ['new'](provider: ProviderExporter, bus_name: string): AccountExporter;
 
-        // Own methods of CloudProviders.AccountExporter
+        // Methods
 
         /**
          * In order for a menu exported with cloud_providers_account_exporter_export_menu to receive events
@@ -239,13 +239,13 @@ export namespace CloudProviders {
     class Collector extends GObject.Object {
         static $gtype: GObject.GType<Collector>;
 
-        // Constructors of CloudProviders.Collector
+        // Constructors
 
         constructor(properties?: Partial<Collector.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of CloudProviders.Collector
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -254,14 +254,14 @@ export namespace CloudProviders {
         connect_after(signal: 'providers-changed', callback: (_source: this) => void): number;
         emit(signal: 'providers-changed'): void;
 
-        // Own static methods of CloudProviders.Collector
+        // Static methods
 
         /**
          * Main object to track changes in all providers.
          */
         static dup_singleton(): Collector;
 
-        // Own methods of CloudProviders.Collector
+        // Methods
 
         get_providers(): Provider[];
         update(): void;
@@ -287,7 +287,7 @@ export namespace CloudProviders {
     {
         static $gtype: GObject.GType<DbusAccountProxy>;
 
-        // Constructors of CloudProviders.DbusAccountProxy
+        // Constructors
 
         constructor(properties?: Partial<DbusAccountProxy.ConstructorProps>, ...args: any[]);
 
@@ -322,7 +322,7 @@ export namespace CloudProviders {
 
         static new_sync(...args: never[]): any;
 
-        // Own static methods of CloudProviders.DbusAccountProxy
+        // Static methods
 
         /**
          * Asynchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-CloudProviders-Account.top_of_page">org.freedesktop.CloudProviders.Account</link>. See g_dbus_proxy_new() for more details.
@@ -1068,7 +1068,7 @@ export namespace CloudProviders {
     class DbusAccountSkeleton extends Gio.DBusInterfaceSkeleton implements DbusAccount, Gio.DBusInterface {
         static $gtype: GObject.GType<DbusAccountSkeleton>;
 
-        // Constructors of CloudProviders.DbusAccountSkeleton
+        // Constructors
 
         constructor(properties?: Partial<DbusAccountSkeleton.ConstructorProps>, ...args: any[]);
 
@@ -1576,7 +1576,7 @@ export namespace CloudProviders {
     {
         static $gtype: GObject.GType<DbusObjectManagerClient>;
 
-        // Constructors of CloudProviders.DbusObjectManagerClient
+        // Constructors
 
         constructor(properties?: Partial<DbusObjectManagerClient.ConstructorProps>, ...args: any[]);
 
@@ -1611,7 +1611,7 @@ export namespace CloudProviders {
 
         static new_sync(...args: never[]): any;
 
-        // Own static methods of CloudProviders.DbusObjectManagerClient
+        // Static methods
 
         /**
          * A #GDBusProxyTypeFunc that maps `interface_name` to the generated #GDBusObjectProxy derived and #GDBusProxy derived types.
@@ -2358,7 +2358,7 @@ export namespace CloudProviders {
     class DbusObjectProxy extends Gio.DBusObjectProxy implements DbusObject, Gio.DBusObject {
         static $gtype: GObject.GType<DbusObjectProxy>;
 
-        // Constructors of CloudProviders.DbusObjectProxy
+        // Constructors
 
         constructor(properties?: Partial<DbusObjectProxy.ConstructorProps>, ...args: any[]);
 
@@ -2851,7 +2851,7 @@ export namespace CloudProviders {
     class DbusObjectSkeleton extends Gio.DBusObjectSkeleton implements DbusObject, Gio.DBusObject {
         static $gtype: GObject.GType<DbusObjectSkeleton>;
 
-        // Constructors of CloudProviders.DbusObjectSkeleton
+        // Constructors
 
         constructor(properties?: Partial<DbusObjectSkeleton.ConstructorProps>, ...args: any[]);
 
@@ -2859,7 +2859,7 @@ export namespace CloudProviders {
 
         static ['new'](object_path: string): DbusObjectSkeleton;
 
-        // Own methods of CloudProviders.DbusObjectSkeleton
+        // Methods
 
         /**
          * Sets the #CloudProvidersDbusAccount instance for the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-CloudProviders-Account.top_of_page">org.freedesktop.CloudProviders.Account</link> on `object`.
@@ -3362,7 +3362,7 @@ export namespace CloudProviders {
     {
         static $gtype: GObject.GType<DbusProviderProxy>;
 
-        // Constructors of CloudProviders.DbusProviderProxy
+        // Constructors
 
         constructor(properties?: Partial<DbusProviderProxy.ConstructorProps>, ...args: any[]);
 
@@ -3397,7 +3397,7 @@ export namespace CloudProviders {
 
         static new_sync(...args: never[]): any;
 
-        // Own static methods of CloudProviders.DbusProviderProxy
+        // Static methods
 
         /**
          * Asynchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-CloudProviders-Provider.top_of_page">org.freedesktop.CloudProviders.Provider</link>. See g_dbus_proxy_new() for more details.
@@ -4108,7 +4108,7 @@ export namespace CloudProviders {
     class DbusProviderSkeleton extends Gio.DBusInterfaceSkeleton implements DbusProvider, Gio.DBusInterface {
         static $gtype: GObject.GType<DbusProviderSkeleton>;
 
-        // Constructors of CloudProviders.DbusProviderSkeleton
+        // Constructors
 
         constructor(properties?: Partial<DbusProviderSkeleton.ConstructorProps>, ...args: any[]);
 
@@ -4588,11 +4588,11 @@ export namespace CloudProviders {
     class Provider extends GObject.Object {
         static $gtype: GObject.GType<Provider>;
 
-        // Own properties of CloudProviders.Provider
+        // Properties
 
         get name(): string;
 
-        // Constructors of CloudProviders.Provider
+        // Constructors
 
         constructor(properties?: Partial<Provider.ConstructorProps>, ...args: any[]);
 
@@ -4600,7 +4600,7 @@ export namespace CloudProviders {
 
         static ['new'](bus_name: string, object_path: string): Provider;
 
-        // Own signals of CloudProviders.Provider
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -4612,7 +4612,7 @@ export namespace CloudProviders {
         connect_after(signal: 'removed', callback: (_source: this) => void): number;
         emit(signal: 'removed'): void;
 
-        // Own methods of CloudProviders.Provider
+        // Methods
 
         get_accounts(): Account[];
         get_name(): string;
@@ -4639,7 +4639,7 @@ export namespace CloudProviders {
     class ProviderExporter extends GObject.Object {
         static $gtype: GObject.GType<ProviderExporter>;
 
-        // Own properties of CloudProviders.ProviderExporter
+        // Properties
 
         get bus(): Gio.DBusConnection;
         get bus_name(): string;
@@ -4649,7 +4649,7 @@ export namespace CloudProviders {
         get name(): string;
         set name(val: string);
 
-        // Constructors of CloudProviders.ProviderExporter
+        // Constructors
 
         constructor(properties?: Partial<ProviderExporter.ConstructorProps>, ...args: any[]);
 
@@ -4657,7 +4657,7 @@ export namespace CloudProviders {
 
         static ['new'](bus: Gio.DBusConnection, bus_name: string, bus_path: string): ProviderExporter;
 
-        // Own methods of CloudProviders.ProviderExporter
+        // Methods
 
         get_name(): string;
         /**
@@ -4677,7 +4677,7 @@ export namespace CloudProviders {
     abstract class DbusAccountProxyPrivate {
         static $gtype: GObject.GType<DbusAccountProxyPrivate>;
 
-        // Constructors of CloudProviders.DbusAccountProxyPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4686,7 +4686,7 @@ export namespace CloudProviders {
     abstract class DbusAccountSkeletonPrivate {
         static $gtype: GObject.GType<DbusAccountSkeletonPrivate>;
 
-        // Constructors of CloudProviders.DbusAccountSkeletonPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4696,7 +4696,7 @@ export namespace CloudProviders {
     abstract class DbusObjectManagerClientPrivate {
         static $gtype: GObject.GType<DbusObjectManagerClientPrivate>;
 
-        // Constructors of CloudProviders.DbusObjectManagerClientPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4705,7 +4705,7 @@ export namespace CloudProviders {
     abstract class DbusObjectProxyPrivate {
         static $gtype: GObject.GType<DbusObjectProxyPrivate>;
 
-        // Constructors of CloudProviders.DbusObjectProxyPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4714,7 +4714,7 @@ export namespace CloudProviders {
     abstract class DbusObjectSkeletonPrivate {
         static $gtype: GObject.GType<DbusObjectSkeletonPrivate>;
 
-        // Constructors of CloudProviders.DbusObjectSkeletonPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4724,7 +4724,7 @@ export namespace CloudProviders {
     abstract class DbusProviderProxyPrivate {
         static $gtype: GObject.GType<DbusProviderProxyPrivate>;
 
-        // Constructors of CloudProviders.DbusProviderProxyPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4733,7 +4733,7 @@ export namespace CloudProviders {
     abstract class DbusProviderSkeletonPrivate {
         static $gtype: GObject.GType<DbusProviderSkeletonPrivate>;
 
-        // Constructors of CloudProviders.DbusProviderSkeletonPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4743,7 +4743,7 @@ export namespace CloudProviders {
     abstract class _AccountClass {
         static $gtype: GObject.GType<_AccountClass>;
 
-        // Constructors of CloudProviders._AccountClass
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4751,7 +4751,7 @@ export namespace CloudProviders {
     abstract class _AccountExporterClass {
         static $gtype: GObject.GType<_AccountExporterClass>;
 
-        // Constructors of CloudProviders._AccountExporterClass
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4759,7 +4759,7 @@ export namespace CloudProviders {
     abstract class _CollectorClass {
         static $gtype: GObject.GType<_CollectorClass>;
 
-        // Constructors of CloudProviders._CollectorClass
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4767,7 +4767,7 @@ export namespace CloudProviders {
     abstract class _ProviderExporterClass {
         static $gtype: GObject.GType<_ProviderExporterClass>;
 
-        // Constructors of CloudProviders._ProviderExporterClass
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4802,7 +4802,7 @@ export namespace CloudProviders {
         override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
     }
     interface DbusAccount extends GObject.Object {
-        // Own properties of CloudProviders.DbusAccount
+        // Properties
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-CloudProviders-Account.Icon">"Icon"</link>.
@@ -4864,7 +4864,7 @@ export namespace CloudProviders {
         prototype: DbusObject;
     }
     interface DbusObject extends Gio.DBusObject {
-        // Own properties of CloudProviders.DbusObject
+        // Properties
 
         /**
          * The #CloudProvidersDbusAccount instance corresponding to the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-CloudProviders-Account.top_of_page">org.freedesktop.CloudProviders.Account</link>, if any.
@@ -4881,7 +4881,7 @@ export namespace CloudProviders {
         get provider(): DbusProvider;
         set provider(val: DbusProvider);
 
-        // Own methods of CloudProviders.DbusObject
+        // Methods
 
         /**
          * Gets the #CloudProvidersDbusAccount instance for the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-CloudProviders-Account.top_of_page">org.freedesktop.CloudProviders.Account</link> on `object,` if any.
@@ -4922,7 +4922,7 @@ export namespace CloudProviders {
         override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
     }
     interface DbusProvider extends GObject.Object {
-        // Own properties of CloudProviders.DbusProvider
+        // Properties
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-CloudProviders-Provider.Name">"Name"</link>.

@@ -30,11 +30,11 @@ export namespace RygelRendererGst {
     class PlaybinPlayerError extends GLib.Error {
         static $gtype: GObject.GType<PlaybinPlayerError>;
 
-        // Static fields of RygelRendererGst.PlaybinPlayerError
+        // Static fields
 
         static NO_ELEMENT: number;
 
-        // Constructors of RygelRendererGst.PlaybinPlayerError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
@@ -53,24 +53,24 @@ export namespace RygelRendererGst {
     class PlaybinPlayer extends GObject.Object implements RygelRenderer.MediaPlayer {
         static $gtype: GObject.GType<PlaybinPlayer>;
 
-        // Own properties of RygelRendererGst.PlaybinPlayer
+        // Properties
 
         get playbin(): Gst.Element;
         set playbin(val: Gst.Element);
         get supported_profiles(): RygelCore.DLNAProfile[];
         get supportedProfiles(): RygelCore.DLNAProfile[];
 
-        // Constructors of RygelRendererGst.PlaybinPlayer
+        // Constructors
 
         constructor(properties?: Partial<PlaybinPlayer.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of RygelRendererGst.PlaybinPlayer
+        // Static methods
 
         static instance(): PlaybinPlayer;
 
-        // Own methods of RygelRendererGst.PlaybinPlayer
+        // Methods
 
         get_playbin(): Gst.Element;
         get_supported_profiles(): RygelCore.DLNAProfile[];
@@ -584,7 +584,7 @@ export namespace RygelRendererGst {
     class PlaybinRenderer extends RygelRenderer.MediaRenderer {
         static $gtype: GObject.GType<PlaybinRenderer>;
 
-        // Constructors of RygelRendererGst.PlaybinRenderer
+        // Constructors
 
         constructor(properties?: Partial<PlaybinRenderer.ConstructorProps>, ...args: any[]);
 
@@ -592,7 +592,7 @@ export namespace RygelRendererGst {
 
         static ['new'](title: string): PlaybinRenderer;
 
-        // Own methods of RygelRendererGst.PlaybinRenderer
+        // Methods
 
         get_playbin(): Gst.Element | null;
     }
@@ -601,7 +601,7 @@ export namespace RygelRendererGst {
     abstract class PlaybinPlayerPrivate {
         static $gtype: GObject.GType<PlaybinPlayerPrivate>;
 
-        // Constructors of RygelRendererGst.PlaybinPlayerPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -610,7 +610,7 @@ export namespace RygelRendererGst {
     abstract class PlaybinRendererPrivate {
         static $gtype: GObject.GType<PlaybinRendererPrivate>;
 
-        // Constructors of RygelRendererGst.PlaybinRendererPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }

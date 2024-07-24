@@ -75,7 +75,7 @@ export namespace GnomeMaps {
     class Contact extends GObject.Object {
         static $gtype: GObject.GType<Contact>;
 
-        // Own properties of GnomeMaps.Contact
+        // Properties
 
         /**
          * The bounding box for the contact.
@@ -101,7 +101,7 @@ export namespace GnomeMaps {
         get name(): string;
         set name(val: string);
 
-        // Constructors of GnomeMaps.Contact
+        // Constructors
 
         constructor(properties?: Partial<Contact.ConstructorProps>, ...args: any[]);
 
@@ -109,7 +109,7 @@ export namespace GnomeMaps {
 
         static ['new'](): Contact;
 
-        // Own methods of GnomeMaps.Contact
+        // Methods
 
         add_place(place: GeocodeGlib.Place): void;
         geocode(callback: ContactGeocodeCallback): void;
@@ -127,14 +127,14 @@ export namespace GnomeMaps {
     class ContactStore extends GObject.Object {
         static $gtype: GObject.GType<ContactStore>;
 
-        // Own properties of GnomeMaps.ContactStore
+        // Properties
 
         /**
          * The type of the contact.
          */
         get state(): ContactStoreState;
 
-        // Constructors of GnomeMaps.ContactStore
+        // Constructors
 
         constructor(properties?: Partial<ContactStore.ConstructorProps>, ...args: any[]);
 
@@ -142,7 +142,7 @@ export namespace GnomeMaps {
 
         static ['new'](): ContactStore;
 
-        // Own methods of GnomeMaps.ContactStore
+        // Methods
 
         get_contacts(): Contact[];
         /**
@@ -172,7 +172,7 @@ export namespace GnomeMaps {
     class FileTileSource extends Champlain.TileSource {
         static $gtype: GObject.GType<FileTileSource>;
 
-        // Own properties of GnomeMaps.FileTileSource
+        // Properties
 
         /**
          * The maximum zoom level of the tile source.
@@ -202,13 +202,13 @@ export namespace GnomeMaps {
          */
         get world(): Champlain.BoundingBox;
 
-        // Constructors of GnomeMaps.FileTileSource
+        // Constructors
 
         constructor(properties?: Partial<FileTileSource.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of GnomeMaps.FileTileSource
+        // Methods
 
         prepare(): boolean;
     }
@@ -226,7 +226,7 @@ export namespace GnomeMaps {
     class OSMChangeset extends GObject.Object {
         static $gtype: GObject.GType<OSMChangeset>;
 
-        // Own properties of GnomeMaps.OSMChangeset
+        // Properties
 
         /**
          * The comment of the changes.
@@ -238,7 +238,7 @@ export namespace GnomeMaps {
         get createdBy(): string;
         set createdBy(val: string);
 
-        // Constructors of GnomeMaps.OSMChangeset
+        // Constructors
 
         constructor(properties?: Partial<OSMChangeset.ConstructorProps>, ...args: any[]);
 
@@ -246,7 +246,7 @@ export namespace GnomeMaps {
 
         static ['new'](comment?: string | null, created_by?: string | null): OSMChangeset;
 
-        // Own methods of GnomeMaps.OSMChangeset
+        // Methods
 
         serialize(): string;
     }
@@ -263,7 +263,7 @@ export namespace GnomeMaps {
     class OSMNode extends OSMObject {
         static $gtype: GObject.GType<OSMNode>;
 
-        // Own properties of GnomeMaps.OSMNode
+        // Properties
 
         /**
          * The latitude of the node.
@@ -276,7 +276,7 @@ export namespace GnomeMaps {
         get longitude(): number;
         set longitude(val: number);
 
-        // Constructors of GnomeMaps.OSMNode
+        // Constructors
 
         constructor(properties?: Partial<OSMNode.ConstructorProps>, ...args: any[]);
 
@@ -294,7 +294,7 @@ export namespace GnomeMaps {
     class OSMOAuthProxyCall extends Rest.OAuthProxyCall {
         static $gtype: GObject.GType<OSMOAuthProxyCall>;
 
-        // Constructors of GnomeMaps.OSMOAuthProxyCall
+        // Constructors
 
         constructor(properties?: Partial<OSMOAuthProxyCall.ConstructorProps>, ...args: any[]);
 
@@ -316,7 +316,7 @@ export namespace GnomeMaps {
     abstract class OSMObject extends GObject.Object {
         static $gtype: GObject.GType<OSMObject>;
 
-        // Own properties of GnomeMaps.OSMObject
+        // Properties
 
         /**
          * The OSM changeset for the current upload of the object.
@@ -334,13 +334,13 @@ export namespace GnomeMaps {
         get version(): number;
         set version(val: number);
 
-        // Constructors of GnomeMaps.OSMObject
+        // Constructors
 
         constructor(properties?: Partial<OSMObject.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of GnomeMaps.OSMObject
+        // Methods
 
         delete_tag(key: string): void;
         get_tag(key: string): string;
@@ -357,7 +357,7 @@ export namespace GnomeMaps {
     class OSMRelation extends OSMObject {
         static $gtype: GObject.GType<OSMRelation>;
 
-        // Constructors of GnomeMaps.OSMRelation
+        // Constructors
 
         constructor(properties?: Partial<OSMRelation.ConstructorProps>, ...args: any[]);
 
@@ -365,7 +365,7 @@ export namespace GnomeMaps {
 
         static ['new'](id: number, version: number, changeset: number): OSMRelation;
 
-        // Own methods of GnomeMaps.OSMRelation
+        // Methods
 
         add_member(role: string, type: number, ref: number): void;
     }
@@ -379,7 +379,7 @@ export namespace GnomeMaps {
     class OSMWay extends OSMObject {
         static $gtype: GObject.GType<OSMWay>;
 
-        // Constructors of GnomeMaps.OSMWay
+        // Constructors
 
         constructor(properties?: Partial<OSMWay.ConstructorProps>, ...args: any[]);
 
@@ -387,7 +387,7 @@ export namespace GnomeMaps {
 
         static ['new'](id: number, version: number, changeset: number): OSMWay;
 
-        // Own methods of GnomeMaps.OSMWay
+        // Methods
 
         add_node_id(id: number): void;
     }
@@ -396,7 +396,7 @@ export namespace GnomeMaps {
     abstract class ContactPrivate {
         static $gtype: GObject.GType<ContactPrivate>;
 
-        // Constructors of GnomeMaps.ContactPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -405,7 +405,7 @@ export namespace GnomeMaps {
     abstract class ContactStorePrivate {
         static $gtype: GObject.GType<ContactStorePrivate>;
 
-        // Constructors of GnomeMaps.ContactStorePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -414,7 +414,7 @@ export namespace GnomeMaps {
     abstract class FileTileSourcePrivate {
         static $gtype: GObject.GType<FileTileSourcePrivate>;
 
-        // Constructors of GnomeMaps.FileTileSourcePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -423,7 +423,7 @@ export namespace GnomeMaps {
     abstract class OSMChangesetPrivate {
         static $gtype: GObject.GType<OSMChangesetPrivate>;
 
-        // Constructors of GnomeMaps.OSMChangesetPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -432,7 +432,7 @@ export namespace GnomeMaps {
     abstract class OSMNodePrivate {
         static $gtype: GObject.GType<OSMNodePrivate>;
 
-        // Constructors of GnomeMaps.OSMNodePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -441,7 +441,7 @@ export namespace GnomeMaps {
     abstract class OSMOAuthProxyCallPrivate {
         static $gtype: GObject.GType<OSMOAuthProxyCallPrivate>;
 
-        // Constructors of GnomeMaps.OSMOAuthProxyCallPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -450,7 +450,7 @@ export namespace GnomeMaps {
     abstract class OSMObjectPrivate {
         static $gtype: GObject.GType<OSMObjectPrivate>;
 
-        // Constructors of GnomeMaps.OSMObjectPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -459,7 +459,7 @@ export namespace GnomeMaps {
     abstract class OSMRelationPrivate {
         static $gtype: GObject.GType<OSMRelationPrivate>;
 
-        // Constructors of GnomeMaps.OSMRelationPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -468,7 +468,7 @@ export namespace GnomeMaps {
     abstract class OSMWayPrivate {
         static $gtype: GObject.GType<OSMWayPrivate>;
 
-        // Constructors of GnomeMaps.OSMWayPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -476,7 +476,7 @@ export namespace GnomeMaps {
     abstract class _ContactClass {
         static $gtype: GObject.GType<_ContactClass>;
 
-        // Constructors of GnomeMaps._ContactClass
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -484,7 +484,7 @@ export namespace GnomeMaps {
     abstract class _ContactStoreClass {
         static $gtype: GObject.GType<_ContactStoreClass>;
 
-        // Constructors of GnomeMaps._ContactStoreClass
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -492,7 +492,7 @@ export namespace GnomeMaps {
     abstract class _OSMChangesetClass {
         static $gtype: GObject.GType<_OSMChangesetClass>;
 
-        // Constructors of GnomeMaps._OSMChangesetClass
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -500,7 +500,7 @@ export namespace GnomeMaps {
     abstract class _OSMNodeClass {
         static $gtype: GObject.GType<_OSMNodeClass>;
 
-        // Constructors of GnomeMaps._OSMNodeClass
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -508,7 +508,7 @@ export namespace GnomeMaps {
     abstract class _OSMRelationClass {
         static $gtype: GObject.GType<_OSMRelationClass>;
 
-        // Constructors of GnomeMaps._OSMRelationClass
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -516,7 +516,7 @@ export namespace GnomeMaps {
     abstract class _OSMWayClass {
         static $gtype: GObject.GType<_OSMWayClass>;
 
-        // Constructors of GnomeMaps._OSMWayClass
+        // Constructors
 
         _init(...args: any[]): void;
     }

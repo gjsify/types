@@ -202,20 +202,20 @@ export namespace GPlugin {
     class FileSource extends GObject.Object implements Source {
         static $gtype: GObject.GType<FileSource>;
 
-        // Own properties of GPlugin.FileSource
+        // Properties
 
         /**
          * The [class`GPlugin`.Manager] that this source is working for.
          */
         get manager(): Manager;
 
-        // Constructors of GPlugin.FileSource
+        // Constructors
 
         constructor(properties?: Partial<FileSource.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of GPlugin.FileSource
+        // Static methods
 
         /**
          * Creates a [iface`GPlugin`.Source] that will query plugins on disk using the
@@ -660,20 +660,20 @@ export namespace GPlugin {
     abstract class Loader extends GObject.Object {
         static $gtype: GObject.GType<Loader>;
 
-        // Own properties of GPlugin.Loader
+        // Properties
 
         /**
          * The identifier of the loader.
          */
         get id(): string;
 
-        // Constructors of GPlugin.Loader
+        // Constructors
 
         constructor(properties?: Partial<Loader.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of GPlugin.Loader
+        // Virtual methods
 
         /**
          * The load vfunc is called when the plugin manager wants to load a
@@ -689,7 +689,7 @@ export namespace GPlugin {
          */
         vfunc_unload(plugin: Plugin, shutdown: boolean): boolean;
 
-        // Own methods of GPlugin.Loader
+        // Methods
 
         /**
          * Gets the identifier of `loader`.
@@ -775,13 +775,13 @@ export namespace GPlugin {
     class Manager extends GObject.Object {
         static $gtype: GObject.GType<Manager>;
 
-        // Constructors of GPlugin.Manager
+        // Constructors
 
         constructor(properties?: Partial<Manager.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of GPlugin.Manager
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -835,14 +835,14 @@ export namespace GPlugin {
         ): number;
         emit(signal: 'unloading-plugin', plugin: GObject.Object, error?: any | null): void;
 
-        // Own static methods of GPlugin.Manager
+        // Static methods
 
         /**
          * Gets the default plugin manager in GPlugin.
          */
         static get_default(): Manager;
 
-        // Own methods of GPlugin.Manager
+        // Methods
 
         /**
          * Adds the application installation path for `appname`.
@@ -1038,7 +1038,7 @@ export namespace GPlugin {
     class PluginInfo extends GObject.Object {
         static $gtype: GObject.GType<PluginInfo>;
 
-        // Own properties of GPlugin.PluginInfo
+        // Properties
 
         /**
          * The GPlugin ABI version that the plugin was compiled against.
@@ -1272,13 +1272,13 @@ export namespace GPlugin {
          */
         get website(): string;
 
-        // Constructors of GPlugin.PluginInfo
+        // Constructors
 
         constructor(properties?: Partial<PluginInfo.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of GPlugin.PluginInfo
+        // Methods
 
         /**
          * Returns the ABI or Application Binary Interface version that the plugin
@@ -1437,7 +1437,7 @@ export namespace GPlugin {
         prototype: Plugin;
     }
     interface Plugin extends GObject.Object {
-        // Own properties of GPlugin.Plugin
+        // Properties
 
         /**
          * The desired state of the plugin. Typically this just mirrors the state
@@ -1480,7 +1480,7 @@ export namespace GPlugin {
         get state(): PluginState;
         set state(val: PluginState);
 
-        // Own methods of GPlugin.Plugin
+        // Methods
 
         /**
          * Gets the desired state of the plugin. Typically this will hold the same
@@ -1536,7 +1536,7 @@ export namespace GPlugin {
          */
         set_state(state: PluginState): void;
 
-        // Own virtual methods of GPlugin.Plugin
+        // Virtual methods
 
         /**
          * The class closure for the #GPluginPlugin::state-changed
@@ -1560,7 +1560,7 @@ export namespace GPlugin {
         prototype: Source;
     }
     interface Source extends GObject.Object {
-        // Own methods of GPlugin.Source
+        // Methods
 
         /**
          * This method is called when [method`GPlugin`.Manager.refresh] is running. The
@@ -1573,7 +1573,7 @@ export namespace GPlugin {
          */
         scan(): boolean;
 
-        // Own virtual methods of GPlugin.Source
+        // Virtual methods
 
         /**
          * This method is called when [method`GPlugin`.Manager.refresh] is running. The

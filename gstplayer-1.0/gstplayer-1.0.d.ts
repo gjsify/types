@@ -49,19 +49,19 @@ export namespace GstPlayer {
     class PlayerError extends GLib.Error {
         static $gtype: GObject.GType<PlayerError>;
 
-        // Static fields of GstPlayer.PlayerError
+        // Static fields
 
         /**
          * generic error.
          */
         static FAILED: number;
 
-        // Constructors of GstPlayer.PlayerError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of GstPlayer.PlayerError
+        // Static methods
 
         /**
          * Gets a string representing the given error.
@@ -224,7 +224,7 @@ export namespace GstPlayer {
     class Player extends Gst.Object {
         static $gtype: GObject.GType<Player>;
 
-        // Own properties of GstPlayer.Player
+        // Properties
 
         get audio_video_offset(): number;
         set audio_video_offset(val: number);
@@ -268,7 +268,7 @@ export namespace GstPlayer {
         get volume(): number;
         set volume(val: number);
 
-        // Constructors of GstPlayer.Player
+        // Constructors
 
         constructor(properties?: Partial<Player.ConstructorProps>, ...args: any[]);
 
@@ -279,7 +279,7 @@ export namespace GstPlayer {
             signal_dispatcher?: PlayerSignalDispatcher | null,
         ): Player;
 
-        // Own signals of GstPlayer.Player
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -330,7 +330,7 @@ export namespace GstPlayer {
         connect_after(signal: 'warning', callback: (_source: this, object: GLib.Error) => void): number;
         emit(signal: 'warning', object: GLib.Error): void;
 
-        // Own static methods of GstPlayer.Player
+        // Static methods
 
         static config_get_position_update_interval(config: Gst.Structure): number;
         static config_get_seek_accurate(config: Gst.Structure): boolean;
@@ -379,7 +379,7 @@ export namespace GstPlayer {
         static visualizations_free(viss: PlayerVisualization): void;
         static visualizations_get(): PlayerVisualization[];
 
-        // Own methods of GstPlayer.Player
+        // Methods
 
         /**
          * Retrieve the current value of audio-video-offset property
@@ -607,13 +607,13 @@ export namespace GstPlayer {
     class PlayerAudioInfo extends PlayerStreamInfo {
         static $gtype: GObject.GType<PlayerAudioInfo>;
 
-        // Constructors of GstPlayer.PlayerAudioInfo
+        // Constructors
 
         constructor(properties?: Partial<PlayerAudioInfo.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of GstPlayer.PlayerAudioInfo
+        // Methods
 
         get_bitrate(): number;
         get_channels(): number;
@@ -634,18 +634,18 @@ export namespace GstPlayer {
     class PlayerGMainContextSignalDispatcher extends GObject.Object implements PlayerSignalDispatcher {
         static $gtype: GObject.GType<PlayerGMainContextSignalDispatcher>;
 
-        // Own properties of GstPlayer.PlayerGMainContextSignalDispatcher
+        // Properties
 
         get application_context(): GLib.MainContext;
         get applicationContext(): GLib.MainContext;
 
-        // Constructors of GstPlayer.PlayerGMainContextSignalDispatcher
+        // Constructors
 
         constructor(properties?: Partial<PlayerGMainContextSignalDispatcher.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of GstPlayer.PlayerGMainContextSignalDispatcher
+        // Static methods
 
         /**
          * Creates a new GstPlayerSignalDispatcher that uses `application_context,`
@@ -1070,13 +1070,13 @@ export namespace GstPlayer {
     class PlayerMediaInfo extends GObject.Object {
         static $gtype: GObject.GType<PlayerMediaInfo>;
 
-        // Constructors of GstPlayer.PlayerMediaInfo
+        // Constructors
 
         constructor(properties?: Partial<PlayerMediaInfo.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of GstPlayer.PlayerMediaInfo
+        // Methods
 
         get_audio_streams(): PlayerAudioInfo[];
         get_container_format(): string | null;
@@ -1115,13 +1115,13 @@ export namespace GstPlayer {
     abstract class PlayerStreamInfo extends GObject.Object {
         static $gtype: GObject.GType<PlayerStreamInfo>;
 
-        // Constructors of GstPlayer.PlayerStreamInfo
+        // Constructors
 
         constructor(properties?: Partial<PlayerStreamInfo.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of GstPlayer.PlayerStreamInfo
+        // Methods
 
         get_caps(): Gst.Caps | null;
         /**
@@ -1156,13 +1156,13 @@ export namespace GstPlayer {
     class PlayerSubtitleInfo extends PlayerStreamInfo {
         static $gtype: GObject.GType<PlayerSubtitleInfo>;
 
-        // Constructors of GstPlayer.PlayerSubtitleInfo
+        // Constructors
 
         constructor(properties?: Partial<PlayerSubtitleInfo.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of GstPlayer.PlayerSubtitleInfo
+        // Methods
 
         get_language(): string | null;
     }
@@ -1179,13 +1179,13 @@ export namespace GstPlayer {
     class PlayerVideoInfo extends PlayerStreamInfo {
         static $gtype: GObject.GType<PlayerVideoInfo>;
 
-        // Constructors of GstPlayer.PlayerVideoInfo
+        // Constructors
 
         constructor(properties?: Partial<PlayerVideoInfo.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of GstPlayer.PlayerVideoInfo
+        // Methods
 
         get_bitrate(): number;
         get_framerate(): [number, number];
@@ -1212,7 +1212,7 @@ export namespace GstPlayer {
     class PlayerVideoOverlayVideoRenderer extends GObject.Object implements PlayerVideoRenderer {
         static $gtype: GObject.GType<PlayerVideoOverlayVideoRenderer>;
 
-        // Own properties of GstPlayer.PlayerVideoOverlayVideoRenderer
+        // Properties
 
         get video_sink(): Gst.Element;
         set video_sink(val: Gst.Element);
@@ -1223,18 +1223,18 @@ export namespace GstPlayer {
         get windowHandle(): any;
         set windowHandle(val: any);
 
-        // Constructors of GstPlayer.PlayerVideoOverlayVideoRenderer
+        // Constructors
 
         constructor(properties?: Partial<PlayerVideoOverlayVideoRenderer.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of GstPlayer.PlayerVideoOverlayVideoRenderer
+        // Static methods
 
         static ['new'](window_handle?: any | null): PlayerVideoRenderer;
         static new_with_sink(window_handle: any | null, video_sink: Gst.Element): PlayerVideoRenderer;
 
-        // Own methods of GstPlayer.PlayerVideoOverlayVideoRenderer
+        // Methods
 
         /**
          * Tell an overlay that it has been exposed. This will redraw the current frame
@@ -1690,12 +1690,12 @@ export namespace GstPlayer {
     class PlayerVisualization {
         static $gtype: GObject.GType<PlayerVisualization>;
 
-        // Own fields of GstPlayer.PlayerVisualization
+        // Fields
 
         name: string;
         description: string;
 
-        // Constructors of GstPlayer.PlayerVisualization
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -1705,7 +1705,7 @@ export namespace GstPlayer {
         );
         _init(...args: any[]): void;
 
-        // Own methods of GstPlayer.PlayerVisualization
+        // Methods
 
         /**
          * Makes a copy of the #GstPlayerVisualization. The result must be
@@ -1730,7 +1730,7 @@ export namespace GstPlayer {
         prototype: PlayerSignalDispatcher;
     }
     interface PlayerSignalDispatcher extends GObject.Object {
-        // Own virtual methods of GstPlayer.PlayerSignalDispatcher
+        // Virtual methods
 
         vfunc_dispatch(player: Player, emitter: PlayerSignalDispatcherFunc): void;
     }

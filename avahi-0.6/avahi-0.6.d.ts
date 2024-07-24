@@ -126,12 +126,12 @@ export namespace Avahi {
     class Client extends GObject.Object {
         static $gtype: GObject.GType<Client>;
 
-        // Own properties of Avahi.Client
+        // Properties
 
         get flags(): ClientFlags;
         get state(): ClientState;
 
-        // Constructors of Avahi.Client
+        // Constructors
 
         constructor(properties?: Partial<Client.ConstructorProps>, ...args: any[]);
 
@@ -139,7 +139,7 @@ export namespace Avahi {
 
         static ['new'](flags: ClientFlags): Client;
 
-        // Own signals of Avahi.Client
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -148,7 +148,7 @@ export namespace Avahi {
         connect_after(signal: 'state-changed', callback: (_source: this, object: ClientState) => void): number;
         emit(signal: 'state-changed', object: ClientState): void;
 
-        // Own methods of Avahi.Client
+        // Methods
 
         start(): boolean;
         start_in_context(context: GLib.MainContext): boolean;
@@ -171,11 +171,11 @@ export namespace Avahi {
     class EntryGroup extends GObject.Object {
         static $gtype: GObject.GType<EntryGroup>;
 
-        // Own properties of Avahi.EntryGroup
+        // Properties
 
         get state(): EntryGroupState;
 
-        // Constructors of Avahi.EntryGroup
+        // Constructors
 
         constructor(properties?: Partial<EntryGroup.ConstructorProps>, ...args: any[]);
 
@@ -183,7 +183,7 @@ export namespace Avahi {
 
         static ['new'](): EntryGroup;
 
-        // Own signals of Avahi.EntryGroup
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -192,7 +192,7 @@ export namespace Avahi {
         connect_after(signal: 'state-changed', callback: (_source: this, object: EntryGroupState) => void): number;
         emit(signal: 'state-changed', object: EntryGroupState): void;
 
-        // Own methods of Avahi.EntryGroup
+        // Methods
 
         add_record(
             flags: AvahiCore.PublishFlags,
@@ -274,7 +274,7 @@ export namespace Avahi {
     class RecordBrowser extends GObject.Object {
         static $gtype: GObject.GType<RecordBrowser>;
 
-        // Own properties of Avahi.RecordBrowser
+        // Properties
 
         get class(): number;
         set class(val: number);
@@ -289,7 +289,7 @@ export namespace Avahi {
         get type(): number;
         set type(val: number);
 
-        // Constructors of Avahi.RecordBrowser
+        // Constructors
 
         constructor(properties?: Partial<RecordBrowser.ConstructorProps>, ...args: any[]);
 
@@ -306,7 +306,7 @@ export namespace Avahi {
             flags: LookupFlags,
         ): RecordBrowser;
 
-        // Own signals of Avahi.RecordBrowser
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -399,7 +399,7 @@ export namespace Avahi {
             p6: LookupResultFlags,
         ): void;
 
-        // Own methods of Avahi.RecordBrowser
+        // Methods
 
         attach(client: Client): boolean;
     }
@@ -441,7 +441,7 @@ export namespace Avahi {
     class ServiceBrowser extends GObject.Object {
         static $gtype: GObject.GType<ServiceBrowser>;
 
-        // Own properties of Avahi.ServiceBrowser
+        // Properties
 
         get domain(): string;
         set domain(val: string);
@@ -454,7 +454,7 @@ export namespace Avahi {
         get type(): string;
         set type(val: string);
 
-        // Constructors of Avahi.ServiceBrowser
+        // Constructors
 
         constructor(properties?: Partial<ServiceBrowser.ConstructorProps>, ...args: any[]);
 
@@ -470,7 +470,7 @@ export namespace Avahi {
             flags: LookupFlags,
         ): ServiceBrowser;
 
-        // Own signals of Avahi.ServiceBrowser
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -551,7 +551,7 @@ export namespace Avahi {
             p4: LookupResultFlags,
         ): void;
 
-        // Own methods of Avahi.ServiceBrowser
+        // Methods
 
         attach(client: Client): boolean;
     }
@@ -594,7 +594,7 @@ export namespace Avahi {
     class ServiceResolver extends GObject.Object {
         static $gtype: GObject.GType<ServiceResolver>;
 
-        // Own properties of Avahi.ServiceResolver
+        // Properties
 
         get aprotocol(): Protocol;
         set aprotocol(val: Protocol);
@@ -611,7 +611,7 @@ export namespace Avahi {
         get type(): string;
         set type(val: string);
 
-        // Constructors of Avahi.ServiceResolver
+        // Constructors
 
         constructor(properties?: Partial<ServiceResolver.ConstructorProps>, ...args: any[]);
 
@@ -627,7 +627,7 @@ export namespace Avahi {
             flags: LookupFlags,
         ): ServiceResolver;
 
-        // Own signals of Avahi.ServiceResolver
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -681,7 +681,7 @@ export namespace Avahi {
             p8: LookupResultFlags,
         ): void;
 
-        // Own methods of Avahi.ServiceResolver
+        // Methods
 
         attach(client: Client): boolean;
         get_address(address: AvahiCore.Address, port: number): boolean;
@@ -692,7 +692,7 @@ export namespace Avahi {
     class EntryGroupService {
         static $gtype: GObject.GType<EntryGroupService>;
 
-        // Own fields of Avahi.EntryGroupService
+        // Fields
 
         'interface': AvahiCore.IfIndex;
         protocol: AvahiCore.Protocol;
@@ -703,11 +703,11 @@ export namespace Avahi {
         host: string;
         port: number;
 
-        // Constructors of Avahi.EntryGroupService
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of Avahi.EntryGroupService
+        // Methods
 
         freeze(): void;
         remove_key(key: string): boolean;

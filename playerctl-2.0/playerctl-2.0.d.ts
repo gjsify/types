@@ -175,7 +175,7 @@ export namespace Playerctl {
     class Player extends GObject.Object {
         static $gtype: GObject.GType<Player>;
 
-        // Own properties of Playerctl.Player
+        // Properties
 
         get can_control(): boolean;
         get canControl(): boolean;
@@ -208,7 +208,7 @@ export namespace Playerctl {
         get volume(): number;
         set volume(val: number);
 
-        // Constructors of Playerctl.Player
+        // Constructors
 
         constructor(properties?: Partial<Player.ConstructorProps>, ...args: any[]);
 
@@ -220,7 +220,7 @@ export namespace Playerctl {
 
         static new_from_name(player_name: PlayerName): Player;
 
-        // Own signals of Playerctl.Player
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -259,7 +259,7 @@ export namespace Playerctl {
         connect_after(signal: 'volume', callback: (_source: this, volume: number) => void): number;
         emit(signal: 'volume', volume: number): void;
 
-        // Own methods of Playerctl.Player
+        // Methods
 
         /**
          * Gets the album from the metadata of the current track, or NULL if
@@ -386,7 +386,7 @@ export namespace Playerctl {
     class PlayerManager extends GObject.Object {
         static $gtype: GObject.GType<PlayerManager>;
 
-        // Own properties of Playerctl.PlayerManager
+        // Properties
 
         /**
          * A list of fully qualified player names that are currently available to control.
@@ -401,7 +401,7 @@ export namespace Playerctl {
          */
         get players(): Player[];
 
-        // Constructors of Playerctl.PlayerManager
+        // Constructors
 
         constructor(properties?: Partial<PlayerManager.ConstructorProps>, ...args: any[]);
 
@@ -409,7 +409,7 @@ export namespace Playerctl {
 
         static ['new'](): PlayerManager;
 
-        // Own signals of Playerctl.PlayerManager
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -427,7 +427,7 @@ export namespace Playerctl {
         connect_after(signal: 'player-vanished', callback: (_source: this, player: Player) => void): number;
         emit(signal: 'player-vanished', player: Player): void;
 
-        // Own methods of Playerctl.PlayerManager
+        // Methods
 
         /**
          * Add the given player to the list of managed players. Takes a reference to
@@ -461,7 +461,7 @@ export namespace Playerctl {
     abstract class PlayerManagerPrivate {
         static $gtype: GObject.GType<PlayerManagerPrivate>;
 
-        // Constructors of Playerctl.PlayerManagerPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -473,17 +473,17 @@ export namespace Playerctl {
     class PlayerName {
         static $gtype: GObject.GType<PlayerName>;
 
-        // Own fields of Playerctl.PlayerName
+        // Fields
 
         name: string;
         instance: string;
         source: Source;
 
-        // Constructors of Playerctl.PlayerName
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of Playerctl.PlayerName
+        // Methods
 
         /**
          * Creates a dynamically allocated name name container as a copy of
@@ -500,7 +500,7 @@ export namespace Playerctl {
     abstract class PlayerPrivate {
         static $gtype: GObject.GType<PlayerPrivate>;
 
-        // Constructors of Playerctl.PlayerPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }

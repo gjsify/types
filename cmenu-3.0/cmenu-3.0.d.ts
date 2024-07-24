@@ -54,7 +54,7 @@ export namespace CMenu {
     class DesktopAppInfo extends GObject.Object implements Gio.AppInfo {
         static $gtype: GObject.GType<DesktopAppInfo>;
 
-        // Constructors of CMenu.DesktopAppInfo
+        // Constructors
 
         constructor(properties?: Partial<DesktopAppInfo.ConstructorProps>, ...args: any[]);
 
@@ -66,7 +66,7 @@ export namespace CMenu {
 
         static new_from_keyfile(key_file: GLib.KeyFile): DesktopAppInfo;
 
-        // Own methods of CMenu.DesktopAppInfo
+        // Methods
 
         /**
          * Gets the user-visible display name of the "additional application
@@ -1068,7 +1068,7 @@ export namespace CMenu {
     class Tree extends GObject.Object {
         static $gtype: GObject.GType<Tree>;
 
-        // Own properties of CMenu.Tree
+        // Properties
 
         /**
          * Flags controlling the content of the menu.
@@ -1097,7 +1097,7 @@ export namespace CMenu {
          */
         get menuPath(): string;
 
-        // Constructors of CMenu.Tree
+        // Constructors
 
         constructor(properties?: Partial<Tree.ConstructorProps>, ...args: any[]);
 
@@ -1107,7 +1107,7 @@ export namespace CMenu {
 
         static new_for_path(menu_path: string, flags: TreeFlags): Tree;
 
-        // Own signals of CMenu.Tree
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -1116,12 +1116,12 @@ export namespace CMenu {
         connect_after(signal: 'changed', callback: (_source: this) => void): number;
         emit(signal: 'changed'): void;
 
-        // Own static methods of CMenu.Tree
+        // Static methods
 
         static item_ref(item?: any | null): any | null;
         static item_unref(item?: any | null): void;
 
-        // Own methods of CMenu.Tree
+        // Methods
 
         /**
          * This function is only available if the tree has been loaded via
@@ -1155,11 +1155,11 @@ export namespace CMenu {
     abstract class TreeAlias {
         static $gtype: GObject.GType<TreeAlias>;
 
-        // Constructors of CMenu.TreeAlias
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of CMenu.TreeAlias
+        // Methods
 
         get_aliased_directory(): TreeDirectory;
         get_aliased_entry(): TreeEntry;
@@ -1177,11 +1177,11 @@ export namespace CMenu {
     abstract class TreeDirectory {
         static $gtype: GObject.GType<TreeDirectory>;
 
-        // Constructors of CMenu.TreeDirectory
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of CMenu.TreeDirectory
+        // Methods
 
         get_comment(): string;
         get_desktop_file_path(): string;
@@ -1207,11 +1207,11 @@ export namespace CMenu {
     abstract class TreeEntry {
         static $gtype: GObject.GType<TreeEntry>;
 
-        // Constructors of CMenu.TreeEntry
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of CMenu.TreeEntry
+        // Methods
 
         get_app_info(): DesktopAppInfo;
         get_desktop_file_id(): string;
@@ -1231,11 +1231,11 @@ export namespace CMenu {
     abstract class TreeHeader {
         static $gtype: GObject.GType<TreeHeader>;
 
-        // Constructors of CMenu.TreeHeader
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of CMenu.TreeHeader
+        // Methods
 
         get_directory(): TreeDirectory;
         get_parent(): TreeDirectory;
@@ -1249,11 +1249,11 @@ export namespace CMenu {
     abstract class TreeIter {
         static $gtype: GObject.GType<TreeIter>;
 
-        // Constructors of CMenu.TreeIter
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of CMenu.TreeIter
+        // Methods
 
         /**
          * This method may only be called if gmenu_tree_iter_next()
@@ -1296,11 +1296,11 @@ export namespace CMenu {
     abstract class TreeSeparator {
         static $gtype: GObject.GType<TreeSeparator>;
 
-        // Constructors of CMenu.TreeSeparator
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of CMenu.TreeSeparator
+        // Methods
 
         get_parent(): TreeDirectory;
         /**

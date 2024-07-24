@@ -45,13 +45,13 @@ export namespace GstDxva {
     abstract class DxvaAV1Decoder extends GstCodecs.AV1Decoder {
         static $gtype: GObject.GType<DxvaAV1Decoder>;
 
-        // Constructors of GstDxva.DxvaAV1Decoder
+        // Constructors
 
         constructor(properties?: Partial<DxvaAV1Decoder.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of GstDxva.DxvaAV1Decoder
+        // Virtual methods
 
         vfunc_configure(
             input_state: GstVideo.VideoCodecState,
@@ -92,13 +92,13 @@ export namespace GstDxva {
     abstract class DxvaH264Decoder extends GstCodecs.H264Decoder {
         static $gtype: GObject.GType<DxvaH264Decoder>;
 
-        // Constructors of GstDxva.DxvaH264Decoder
+        // Constructors
 
         constructor(properties?: Partial<DxvaH264Decoder.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of GstDxva.DxvaH264Decoder
+        // Virtual methods
 
         vfunc_configure(
             input_state: GstVideo.VideoCodecState,
@@ -137,13 +137,13 @@ export namespace GstDxva {
     abstract class DxvaH265Decoder extends GstCodecs.H265Decoder {
         static $gtype: GObject.GType<DxvaH265Decoder>;
 
-        // Constructors of GstDxva.DxvaH265Decoder
+        // Constructors
 
         constructor(properties?: Partial<DxvaH265Decoder.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of GstDxva.DxvaH265Decoder
+        // Virtual methods
 
         vfunc_configure(
             input_state: GstVideo.VideoCodecState,
@@ -181,13 +181,13 @@ export namespace GstDxva {
     abstract class DxvaMpeg2Decoder extends GstCodecs.Mpeg2Decoder {
         static $gtype: GObject.GType<DxvaMpeg2Decoder>;
 
-        // Constructors of GstDxva.DxvaMpeg2Decoder
+        // Constructors
 
         constructor(properties?: Partial<DxvaMpeg2Decoder.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of GstDxva.DxvaMpeg2Decoder
+        // Virtual methods
 
         vfunc_configure(
             input_state: GstVideo.VideoCodecState,
@@ -216,7 +216,7 @@ export namespace GstDxva {
         // Conflicted with GstCodecs.Mpeg2Decoder.vfunc_start_picture
         vfunc_start_picture(...args: never[]): any;
 
-        // Own methods of GstDxva.DxvaMpeg2Decoder
+        // Methods
 
         disable_postproc(): void;
     }
@@ -230,13 +230,13 @@ export namespace GstDxva {
     abstract class DxvaVp8Decoder extends GstCodecs.Vp8Decoder {
         static $gtype: GObject.GType<DxvaVp8Decoder>;
 
-        // Constructors of GstDxva.DxvaVp8Decoder
+        // Constructors
 
         constructor(properties?: Partial<DxvaVp8Decoder.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of GstDxva.DxvaVp8Decoder
+        // Virtual methods
 
         vfunc_configure(
             input_state: GstVideo.VideoCodecState,
@@ -274,13 +274,13 @@ export namespace GstDxva {
     abstract class DxvaVp9Decoder extends GstCodecs.Vp9Decoder {
         static $gtype: GObject.GType<DxvaVp9Decoder>;
 
-        // Constructors of GstDxva.DxvaVp9Decoder
+        // Constructors
 
         constructor(properties?: Partial<DxvaVp9Decoder.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of GstDxva.DxvaVp9Decoder
+        // Virtual methods
 
         vfunc_configure(
             input_state: GstVideo.VideoCodecState,
@@ -316,7 +316,7 @@ export namespace GstDxva {
     abstract class DxvaAV1DecoderPrivate {
         static $gtype: GObject.GType<DxvaAV1DecoderPrivate>;
 
-        // Constructors of GstDxva.DxvaAV1DecoderPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -324,7 +324,7 @@ export namespace GstDxva {
     class DxvaDecodingArgs {
         static $gtype: GObject.GType<DxvaDecodingArgs>;
 
-        // Own fields of GstDxva.DxvaDecodingArgs
+        // Fields
 
         picture_params: any;
         picture_params_size: number;
@@ -335,7 +335,7 @@ export namespace GstDxva {
         inverse_quantization_matrix: any;
         inverse_quantization_matrix_size: number;
 
-        // Constructors of GstDxva.DxvaDecodingArgs
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -356,7 +356,7 @@ export namespace GstDxva {
     abstract class DxvaH264DecoderPrivate {
         static $gtype: GObject.GType<DxvaH264DecoderPrivate>;
 
-        // Constructors of GstDxva.DxvaH264DecoderPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -365,7 +365,7 @@ export namespace GstDxva {
     abstract class DxvaH265DecoderPrivate {
         static $gtype: GObject.GType<DxvaH265DecoderPrivate>;
 
-        // Constructors of GstDxva.DxvaH265DecoderPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -374,7 +374,7 @@ export namespace GstDxva {
     abstract class DxvaMpeg2DecoderPrivate {
         static $gtype: GObject.GType<DxvaMpeg2DecoderPrivate>;
 
-        // Constructors of GstDxva.DxvaMpeg2DecoderPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -382,12 +382,12 @@ export namespace GstDxva {
     class DxvaResolution {
         static $gtype: GObject.GType<DxvaResolution>;
 
-        // Own fields of GstDxva.DxvaResolution
+        // Fields
 
         width: number;
         height: number;
 
-        // Constructors of GstDxva.DxvaResolution
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -402,7 +402,7 @@ export namespace GstDxva {
     abstract class DxvaVp8DecoderPrivate {
         static $gtype: GObject.GType<DxvaVp8DecoderPrivate>;
 
-        // Constructors of GstDxva.DxvaVp8DecoderPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -411,7 +411,7 @@ export namespace GstDxva {
     abstract class DxvaVp9DecoderPrivate {
         static $gtype: GObject.GType<DxvaVp9DecoderPrivate>;
 
-        // Constructors of GstDxva.DxvaVp9DecoderPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }

@@ -531,7 +531,7 @@ export namespace GstBase {
     class Adapter extends GObject.Object {
         static $gtype: GObject.GType<Adapter>;
 
-        // Constructors of GstBase.Adapter
+        // Constructors
 
         constructor(properties?: Partial<Adapter.ConstructorProps>, ...args: any[]);
 
@@ -539,7 +539,7 @@ export namespace GstBase {
 
         static ['new'](): Adapter;
 
-        // Own methods of GstBase.Adapter
+        // Methods
 
         /**
          * Gets the maximum amount of bytes available, that is it returns the maximum
@@ -956,7 +956,7 @@ export namespace GstBase {
     abstract class Aggregator extends Gst.Element {
         static $gtype: GObject.GType<Aggregator>;
 
-        // Own properties of GstBase.Aggregator
+        // Properties
 
         /**
          * Enables the emission of signals such as #GstAggregator::samples-selected
@@ -997,17 +997,17 @@ export namespace GstBase {
         get startTimeSelection(): AggregatorStartTimeSelection;
         set startTimeSelection(val: AggregatorStartTimeSelection);
 
-        // Own fields of GstBase.Aggregator
+        // Fields
 
         srcpad: Gst.Pad;
 
-        // Constructors of GstBase.Aggregator
+        // Constructors
 
         constructor(properties?: Partial<Aggregator.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of GstBase.Aggregator
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -1043,7 +1043,7 @@ export namespace GstBase {
             info?: Gst.Structure | null,
         ): void;
 
-        // Own virtual methods of GstBase.Aggregator
+        // Virtual methods
 
         /**
          * Mandatory.
@@ -1213,7 +1213,7 @@ export namespace GstBase {
         vfunc_stop(): boolean;
         vfunc_update_src_caps(caps: Gst.Caps): [Gst.FlowReturn, Gst.Caps | null];
 
-        // Own methods of GstBase.Aggregator
+        // Methods
 
         /**
          * This method will push the provided output buffer downstream. If needed,
@@ -1366,7 +1366,7 @@ export namespace GstBase {
     class AggregatorPad extends Gst.Pad {
         static $gtype: GObject.GType<AggregatorPad>;
 
-        // Own properties of GstBase.AggregatorPad
+        // Properties
 
         /**
          * Enables the emission of signals such as #GstAggregatorPad::buffer-consumed
@@ -1379,13 +1379,13 @@ export namespace GstBase {
         get emitSignals(): boolean;
         set emitSignals(val: boolean);
 
-        // Constructors of GstBase.AggregatorPad
+        // Constructors
 
         constructor(properties?: Partial<AggregatorPad.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of GstBase.AggregatorPad
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -1394,7 +1394,7 @@ export namespace GstBase {
         connect_after(signal: 'buffer-consumed', callback: (_source: this, object: Gst.Buffer) => void): number;
         emit(signal: 'buffer-consumed', object: Gst.Buffer): void;
 
-        // Own virtual methods of GstBase.AggregatorPad
+        // Virtual methods
 
         /**
          * Optional
@@ -1413,7 +1413,7 @@ export namespace GstBase {
          */
         vfunc_skip_buffer(aggregator: Aggregator, buffer: Gst.Buffer): boolean;
 
-        // Own methods of GstBase.AggregatorPad
+        // Methods
 
         /**
          * Drop the buffer currently queued in `pad`.
@@ -1590,7 +1590,7 @@ export namespace GstBase {
     abstract class BaseParse extends Gst.Element {
         static $gtype: GObject.GType<BaseParse>;
 
-        // Own properties of GstBase.BaseParse
+        // Properties
 
         /**
          * If set to %TRUE, baseparse will unconditionally force parsing of the
@@ -1613,20 +1613,20 @@ export namespace GstBase {
         get disablePassthrough(): boolean;
         set disablePassthrough(val: boolean);
 
-        // Own fields of GstBase.BaseParse
+        // Fields
 
         element: Gst.Element;
         sinkpad: Gst.Pad;
         srcpad: Gst.Pad;
         flags: number;
 
-        // Constructors of GstBase.BaseParse
+        // Constructors
 
         constructor(properties?: Partial<BaseParse.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of GstBase.BaseParse
+        // Virtual methods
 
         /**
          * Optional.
@@ -1724,7 +1724,7 @@ export namespace GstBase {
          */
         vfunc_stop(): boolean;
 
-        // Own methods of GstBase.BaseParse
+        // Methods
 
         /**
          * Adds an entry to the index associating `offset` to `ts`.  It is recommended
@@ -2048,7 +2048,7 @@ export namespace GstBase {
     abstract class BaseSink extends Gst.Element {
         static $gtype: GObject.GType<BaseSink>;
 
-        // Own properties of GstBase.BaseSink
+        // Properties
 
         /**
          * If set to %TRUE, the basesink will perform asynchronous state changes.
@@ -2179,7 +2179,7 @@ export namespace GstBase {
         get tsOffset(): number;
         set tsOffset(val: number);
 
-        // Own fields of GstBase.BaseSink
+        // Fields
 
         element: Gst.Element;
         sinkpad: Gst.Pad;
@@ -2193,13 +2193,13 @@ export namespace GstBase {
         playing_async: boolean;
         have_newsegment: boolean;
 
-        // Constructors of GstBase.BaseSink
+        // Constructors
 
         constructor(properties?: Partial<BaseSink.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of GstBase.BaseSink
+        // Virtual methods
 
         /**
          * Subclasses should override this when they can provide an
@@ -2304,7 +2304,7 @@ export namespace GstBase {
          */
         vfunc_wait_event(event: Gst.Event): Gst.FlowReturn;
 
-        // Own methods of GstBase.BaseSink
+        // Methods
 
         /**
          * If the `sink` spawns its own thread for pulling buffers from upstream it
@@ -2710,7 +2710,7 @@ export namespace GstBase {
     abstract class BaseSrc extends Gst.Element {
         static $gtype: GObject.GType<BaseSrc>;
 
-        // Own properties of GstBase.BaseSrc
+        // Properties
 
         /**
          * See gst_base_src_set_automatic_eos()
@@ -2735,7 +2735,7 @@ export namespace GstBase {
         get typefind(): boolean;
         set typefind(val: boolean);
 
-        // Own fields of GstBase.BaseSrc
+        // Fields
 
         element: Gst.Element;
         srcpad: Gst.Pad;
@@ -2747,13 +2747,13 @@ export namespace GstBase {
         num_buffers_left: number;
         running: boolean;
 
-        // Constructors of GstBase.BaseSrc
+        // Constructors
 
         constructor(properties?: Partial<BaseSrc.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of GstBase.BaseSrc
+        // Virtual methods
 
         /**
          * Ask the subclass to allocate an output buffer with `offset` and `size,` the default
@@ -2876,7 +2876,7 @@ export namespace GstBase {
          */
         vfunc_unlock_stop(): boolean;
 
-        // Own methods of GstBase.BaseSrc
+        // Methods
 
         /**
          * Lets #GstBaseSrc sub-classes to know the memory `allocator`
@@ -3208,25 +3208,25 @@ export namespace GstBase {
     abstract class BaseTransform extends Gst.Element {
         static $gtype: GObject.GType<BaseTransform>;
 
-        // Own properties of GstBase.BaseTransform
+        // Properties
 
         get qos(): boolean;
         set qos(val: boolean);
 
-        // Own fields of GstBase.BaseTransform
+        // Fields
 
         element: Gst.Element;
         sinkpad: Gst.Pad;
         srcpad: Gst.Pad;
         have_segment: boolean;
 
-        // Constructors of GstBase.BaseTransform
+        // Constructors
 
         constructor(properties?: Partial<BaseTransform.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of GstBase.BaseTransform
+        // Virtual methods
 
         /**
          * Optional.
@@ -3376,7 +3376,7 @@ export namespace GstBase {
             othercaps: Gst.Caps,
         ): [boolean, number];
 
-        // Own methods of GstBase.BaseTransform
+        // Methods
 
         /**
          * Lets #GstBaseTransform sub-classes know the memory `allocator`
@@ -3557,11 +3557,11 @@ export namespace GstBase {
     class CollectPads extends Gst.Object {
         static $gtype: GObject.GType<CollectPads>;
 
-        // Own fields of GstBase.CollectPads
+        // Fields
 
         object: Gst.Object;
 
-        // Constructors of GstBase.CollectPads
+        // Constructors
 
         constructor(properties?: Partial<CollectPads.ConstructorProps>, ...args: any[]);
 
@@ -3569,7 +3569,7 @@ export namespace GstBase {
 
         static ['new'](): CollectPads;
 
-        // Own methods of GstBase.CollectPads
+        // Methods
 
         /**
          * Add a pad to the collection of collect pads. The pad has to be
@@ -3871,7 +3871,7 @@ export namespace GstBase {
     class DataQueue extends GObject.Object {
         static $gtype: GObject.GType<DataQueue>;
 
-        // Own properties of GstBase.DataQueue
+        // Properties
 
         get current_level_bytes(): number;
         get currentLevelBytes(): number;
@@ -3880,17 +3880,17 @@ export namespace GstBase {
         get current_level_visible(): number;
         get currentLevelVisible(): number;
 
-        // Own fields of GstBase.DataQueue
+        // Fields
 
         object: GObject.Object;
 
-        // Constructors of GstBase.DataQueue
+        // Constructors
 
         constructor(properties?: Partial<DataQueue.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of GstBase.DataQueue
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -3902,7 +3902,7 @@ export namespace GstBase {
         connect_after(signal: 'full', callback: (_source: this) => void): number;
         emit(signal: 'full'): void;
 
-        // Own virtual methods of GstBase.DataQueue
+        // Virtual methods
 
         vfunc_empty(): void;
         vfunc_full(): void;
@@ -3938,13 +3938,13 @@ export namespace GstBase {
     class PushSrc extends BaseSrc {
         static $gtype: GObject.GType<PushSrc>;
 
-        // Constructors of GstBase.PushSrc
+        // Constructors
 
         constructor(properties?: Partial<PushSrc.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of GstBase.PushSrc
+        // Virtual methods
 
         /**
          * Allocate memory for a buffer.
@@ -3973,7 +3973,7 @@ export namespace GstBase {
     abstract class AggregatorPadPrivate {
         static $gtype: GObject.GType<AggregatorPadPrivate>;
 
-        // Constructors of GstBase.AggregatorPadPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3981,7 +3981,7 @@ export namespace GstBase {
     abstract class AggregatorPrivate {
         static $gtype: GObject.GType<AggregatorPrivate>;
 
-        // Constructors of GstBase.AggregatorPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3999,20 +3999,20 @@ export namespace GstBase {
     class BaseParseFrame {
         static $gtype: GObject.GType<BaseParseFrame>;
 
-        // Own fields of GstBase.BaseParseFrame
+        // Fields
 
         flags: number;
         offset: number;
         overhead: number;
 
-        // Constructors of GstBase.BaseParseFrame
+        // Constructors
 
         constructor(buffer: Gst.Buffer, flags: BaseParseFrameFlags, overhead: number);
         _init(...args: any[]): void;
 
         static ['new'](buffer: Gst.Buffer, flags: BaseParseFrameFlags, overhead: number): BaseParseFrame;
 
-        // Own methods of GstBase.BaseParseFrame
+        // Methods
 
         /**
          * Copies a #GstBaseParseFrame.
@@ -4036,7 +4036,7 @@ export namespace GstBase {
     abstract class BaseParsePrivate {
         static $gtype: GObject.GType<BaseParsePrivate>;
 
-        // Constructors of GstBase.BaseParsePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4045,7 +4045,7 @@ export namespace GstBase {
     abstract class BaseSinkPrivate {
         static $gtype: GObject.GType<BaseSinkPrivate>;
 
-        // Constructors of GstBase.BaseSinkPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4054,7 +4054,7 @@ export namespace GstBase {
     abstract class BaseSrcPrivate {
         static $gtype: GObject.GType<BaseSrcPrivate>;
 
-        // Constructors of GstBase.BaseSrcPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4063,7 +4063,7 @@ export namespace GstBase {
     abstract class BaseTransformPrivate {
         static $gtype: GObject.GType<BaseTransformPrivate>;
 
-        // Constructors of GstBase.BaseTransformPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4076,14 +4076,14 @@ export namespace GstBase {
     class BitReader {
         static $gtype: GObject.GType<BitReader>;
 
-        // Own fields of GstBase.BitReader
+        // Fields
 
         data: Uint8Array;
         size: number;
         'byte': number;
         bit: number;
 
-        // Constructors of GstBase.BitReader
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -4095,7 +4095,7 @@ export namespace GstBase {
         );
         _init(...args: any[]): void;
 
-        // Own methods of GstBase.BitReader
+        // Methods
 
         /**
          * Frees a #GstBitReader instance, which was previously allocated by
@@ -4198,12 +4198,12 @@ export namespace GstBase {
     class BitWriter {
         static $gtype: GObject.GType<BitWriter>;
 
-        // Own fields of GstBase.BitWriter
+        // Fields
 
         data: number;
         bit_size: number;
 
-        // Constructors of GstBase.BitWriter
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -4213,7 +4213,7 @@ export namespace GstBase {
         );
         _init(...args: any[]): void;
 
-        // Own methods of GstBase.BitWriter
+        // Methods
 
         /**
          * Write trailing bit to align last byte of `data`. `trailing_bit` can
@@ -4320,13 +4320,13 @@ export namespace GstBase {
     class ByteReader {
         static $gtype: GObject.GType<ByteReader>;
 
-        // Own fields of GstBase.ByteReader
+        // Fields
 
         data: Uint8Array;
         size: number;
         'byte': number;
 
-        // Constructors of GstBase.ByteReader
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -4337,7 +4337,7 @@ export namespace GstBase {
         );
         _init(...args: any[]): void;
 
-        // Own methods of GstBase.ByteReader
+        // Methods
 
         /**
          * Free-function: g_free
@@ -4813,13 +4813,13 @@ export namespace GstBase {
     class ByteWriter {
         static $gtype: GObject.GType<ByteWriter>;
 
-        // Own fields of GstBase.ByteWriter
+        // Fields
 
         alloc_size: number;
         fixed: boolean;
         owned: boolean;
 
-        // Constructors of GstBase.ByteWriter
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -4831,7 +4831,7 @@ export namespace GstBase {
         );
         _init(...args: any[]): void;
 
-        // Own methods of GstBase.ByteWriter
+        // Methods
 
         /**
          * Checks if enough free space from the current write cursor is
@@ -5082,13 +5082,13 @@ export namespace GstBase {
     class CollectData {
         static $gtype: GObject.GType<CollectData>;
 
-        // Own fields of GstBase.CollectData
+        // Fields
 
         collect: CollectPads;
         pad: Gst.Pad;
         pos: number;
 
-        // Constructors of GstBase.CollectData
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5096,7 +5096,7 @@ export namespace GstBase {
     abstract class CollectDataPrivate {
         static $gtype: GObject.GType<CollectDataPrivate>;
 
-        // Constructors of GstBase.CollectDataPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5105,7 +5105,7 @@ export namespace GstBase {
     abstract class CollectPadsPrivate {
         static $gtype: GObject.GType<CollectPadsPrivate>;
 
-        // Constructors of GstBase.CollectPadsPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5114,7 +5114,7 @@ export namespace GstBase {
     abstract class DataQueuePrivate {
         static $gtype: GObject.GType<DataQueuePrivate>;
 
-        // Constructors of GstBase.DataQueuePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5155,14 +5155,14 @@ export namespace GstBase {
     class FlowCombiner {
         static $gtype: GObject.GType<FlowCombiner>;
 
-        // Constructors of GstBase.FlowCombiner
+        // Constructors
 
         constructor(properties?: Partial<{}>);
         _init(...args: any[]): void;
 
         static ['new'](): FlowCombiner;
 
-        // Own methods of GstBase.FlowCombiner
+        // Methods
 
         /**
          * Adds a new #GstPad to the #GstFlowCombiner.
@@ -5228,7 +5228,7 @@ export namespace GstBase {
     abstract class TypeFindData {
         static $gtype: GObject.GType<TypeFindData>;
 
-        // Constructors of GstBase.TypeFindData
+        // Constructors
 
         _init(...args: any[]): void;
     }

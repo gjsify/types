@@ -84,7 +84,7 @@ export namespace GeglGtk3 {
     class View extends Gtk.DrawingArea implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<View>;
 
-        // Own properties of GeglGtk3.View
+        // Properties
 
         get autoscale_policy(): ViewAutoscale;
         set autoscale_policy(val: ViewAutoscale);
@@ -101,7 +101,7 @@ export namespace GeglGtk3 {
         get y(): number;
         set y(val: number);
 
-        // Constructors of GeglGtk3.View
+        // Constructors
 
         constructor(properties?: Partial<View.ConstructorProps>, ...args: any[]);
 
@@ -113,7 +113,7 @@ export namespace GeglGtk3 {
 
         static new_for_node(node: Gegl.Node): View;
 
-        // Own signals of GeglGtk3.View
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -137,7 +137,7 @@ export namespace GeglGtk3 {
         ): number;
         emit(signal: 'draw-overlay', cr: cairo.Context, rect: Gdk.Rectangle): void;
 
-        // Own methods of GeglGtk3.View
+        // Methods
 
         /**
          * Get the autoscaling policy
@@ -603,7 +603,7 @@ export namespace GeglGtk3 {
     abstract class ViewPrivate {
         static $gtype: GObject.GType<ViewPrivate>;
 
-        // Constructors of GeglGtk3.ViewPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }

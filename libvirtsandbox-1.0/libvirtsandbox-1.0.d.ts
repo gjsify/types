@@ -37,17 +37,17 @@ export namespace LibvirtSandbox {
     abstract class Builder extends GObject.Object {
         static $gtype: GObject.GType<Builder>;
 
-        // Own properties of LibvirtSandbox.Builder
+        // Properties
 
         get connection(): LibvirtGObject.Connection;
 
-        // Constructors of LibvirtSandbox.Builder
+        // Constructors
 
         constructor(properties?: Partial<Builder.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of LibvirtSandbox.Builder
+        // Static methods
 
         /**
          * Find and instantiate a suitable builder for sandboxes to be hosted
@@ -56,7 +56,7 @@ export namespace LibvirtSandbox {
          */
         static for_connection(connection: LibvirtGObject.Connection): Builder;
 
-        // Own virtual methods of LibvirtSandbox.Builder
+        // Virtual methods
 
         /**
          * Cleanup temporary files which are not required once the sandbox
@@ -80,7 +80,7 @@ export namespace LibvirtSandbox {
         vfunc_construct_security(config: Config, statedir: string, domain: LibvirtGConfig.Domain): boolean;
         vfunc_get_disk_prefix(config: Config, disk: ConfigDisk): string;
 
-        // Own methods of LibvirtSandbox.Builder
+        // Methods
 
         /**
          * Cleanup temporary files which are not required once the sandbox
@@ -122,7 +122,7 @@ export namespace LibvirtSandbox {
     class BuilderContainer extends Builder {
         static $gtype: GObject.GType<BuilderContainer>;
 
-        // Constructors of LibvirtSandbox.BuilderContainer
+        // Constructors
 
         constructor(properties?: Partial<BuilderContainer.ConstructorProps>, ...args: any[]);
 
@@ -140,7 +140,7 @@ export namespace LibvirtSandbox {
     class BuilderInitrd extends GObject.Object {
         static $gtype: GObject.GType<BuilderInitrd>;
 
-        // Constructors of LibvirtSandbox.BuilderInitrd
+        // Constructors
 
         constructor(properties?: Partial<BuilderInitrd.ConstructorProps>, ...args: any[]);
 
@@ -148,7 +148,7 @@ export namespace LibvirtSandbox {
 
         static ['new'](): BuilderInitrd;
 
-        // Own methods of LibvirtSandbox.BuilderInitrd
+        // Methods
 
         construct(config: ConfigInitrd, outputfile: string): boolean;
     }
@@ -162,7 +162,7 @@ export namespace LibvirtSandbox {
     class BuilderMachine extends Builder {
         static $gtype: GObject.GType<BuilderMachine>;
 
-        // Constructors of LibvirtSandbox.BuilderMachine
+        // Constructors
 
         constructor(properties?: Partial<BuilderMachine.ConstructorProps>, ...args: any[]);
 
@@ -197,7 +197,7 @@ export namespace LibvirtSandbox {
     abstract class Config extends GObject.Object {
         static $gtype: GObject.GType<Config>;
 
-        // Own properties of LibvirtSandbox.Config
+        // Properties
 
         get arch(): string;
         set arch(val: string);
@@ -230,18 +230,18 @@ export namespace LibvirtSandbox {
         set username(val: string);
         get uuid(): string;
 
-        // Constructors of LibvirtSandbox.Config
+        // Constructors
 
         constructor(properties?: Partial<Config.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of LibvirtSandbox.Config
+        // Static methods
 
         static load_from_data(data: string): Config;
         static load_from_path(path: string): Config;
 
-        // Own virtual methods of LibvirtSandbox.Config
+        // Virtual methods
 
         /**
          * Retrieve the sandbox command and arguments
@@ -250,7 +250,7 @@ export namespace LibvirtSandbox {
         vfunc_load_config(file: GLib.KeyFile): boolean;
         vfunc_save_config(file: GLib.KeyFile): void;
 
-        // Own methods of LibvirtSandbox.Config
+        // Methods
 
         /**
          * Adds a new custom disk to the sandbox
@@ -594,20 +594,20 @@ export namespace LibvirtSandbox {
     class ConfigDisk extends GObject.Object {
         static $gtype: GObject.GType<ConfigDisk>;
 
-        // Own properties of LibvirtSandbox.ConfigDisk
+        // Properties
 
         get format(): LibvirtGConfig.DomainDiskFormat;
         get source(): string;
         get tag(): string;
         get type(): LibvirtGConfig.DomainDiskType;
 
-        // Constructors of LibvirtSandbox.ConfigDisk
+        // Constructors
 
         constructor(properties?: Partial<ConfigDisk.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of LibvirtSandbox.ConfigDisk
+        // Methods
 
         /**
          * Retrieves the type property for the custom disk
@@ -644,7 +644,7 @@ export namespace LibvirtSandbox {
     class ConfigInitrd extends GObject.Object {
         static $gtype: GObject.GType<ConfigInitrd>;
 
-        // Own properties of LibvirtSandbox.ConfigInitrd
+        // Properties
 
         get init(): string;
         set init(val: string);
@@ -653,7 +653,7 @@ export namespace LibvirtSandbox {
         get kver(): string;
         set kver(val: string);
 
-        // Constructors of LibvirtSandbox.ConfigInitrd
+        // Constructors
 
         constructor(properties?: Partial<ConfigInitrd.ConstructorProps>, ...args: any[]);
 
@@ -661,7 +661,7 @@ export namespace LibvirtSandbox {
 
         static ['new'](): ConfigInitrd;
 
-        // Own methods of LibvirtSandbox.ConfigInitrd
+        // Methods
 
         /**
          * Request that the kernel module `modname` is included in the initrd,
@@ -719,12 +719,12 @@ export namespace LibvirtSandbox {
     class ConfigInteractive extends Config {
         static $gtype: GObject.GType<ConfigInteractive>;
 
-        // Own properties of LibvirtSandbox.ConfigInteractive
+        // Properties
 
         get tty(): string;
         set tty(val: string);
 
-        // Constructors of LibvirtSandbox.ConfigInteractive
+        // Constructors
 
         constructor(properties?: Partial<ConfigInteractive.ConstructorProps>, ...args: any[]);
 
@@ -732,7 +732,7 @@ export namespace LibvirtSandbox {
 
         static ['new'](name: string): ConfigInteractive;
 
-        // Own methods of LibvirtSandbox.ConfigInteractive
+        // Methods
 
         /**
          * Retrieves the sandbox tty flag
@@ -763,17 +763,17 @@ export namespace LibvirtSandbox {
     abstract class ConfigMount extends GObject.Object {
         static $gtype: GObject.GType<ConfigMount>;
 
-        // Own properties of LibvirtSandbox.ConfigMount
+        // Properties
 
         get target(): string;
 
-        // Constructors of LibvirtSandbox.ConfigMount
+        // Constructors
 
         constructor(properties?: Partial<ConfigMount.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of LibvirtSandbox.ConfigMount
+        // Methods
 
         /**
          * Request that the file `srcpath` from the host OS is to be copied
@@ -805,18 +805,18 @@ export namespace LibvirtSandbox {
     abstract class ConfigMountFile extends ConfigMount {
         static $gtype: GObject.GType<ConfigMountFile>;
 
-        // Own properties of LibvirtSandbox.ConfigMountFile
+        // Properties
 
         get source(): string;
         set source(val: string);
 
-        // Constructors of LibvirtSandbox.ConfigMountFile
+        // Constructors
 
         constructor(properties?: Partial<ConfigMountFile.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of LibvirtSandbox.ConfigMountFile
+        // Methods
 
         /**
          * Retrieves the directory mapped to the mount (if any)
@@ -841,7 +841,7 @@ export namespace LibvirtSandbox {
     class ConfigMountGuestBind extends ConfigMountFile {
         static $gtype: GObject.GType<ConfigMountGuestBind>;
 
-        // Constructors of LibvirtSandbox.ConfigMountGuestBind
+        // Constructors
 
         constructor(properties?: Partial<ConfigMountGuestBind.ConstructorProps>, ...args: any[]);
 
@@ -859,7 +859,7 @@ export namespace LibvirtSandbox {
     class ConfigMountHostBind extends ConfigMountFile {
         static $gtype: GObject.GType<ConfigMountHostBind>;
 
-        // Constructors of LibvirtSandbox.ConfigMountHostBind
+        // Constructors
 
         constructor(properties?: Partial<ConfigMountHostBind.ConstructorProps>, ...args: any[]);
 
@@ -879,11 +879,11 @@ export namespace LibvirtSandbox {
     class ConfigMountHostImage extends ConfigMountFile {
         static $gtype: GObject.GType<ConfigMountHostImage>;
 
-        // Own properties of LibvirtSandbox.ConfigMountHostImage
+        // Properties
 
         get format(): LibvirtGConfig.DomainDiskFormat;
 
-        // Constructors of LibvirtSandbox.ConfigMountHostImage
+        // Constructors
 
         constructor(properties?: Partial<ConfigMountHostImage.ConstructorProps>, ...args: any[]);
 
@@ -895,7 +895,7 @@ export namespace LibvirtSandbox {
             format: LibvirtGConfig.DomainDiskFormat,
         ): ConfigMountHostImage;
 
-        // Own methods of LibvirtSandbox.ConfigMountHostImage
+        // Methods
 
         /**
          * Retrieves the image format of the host-image filesystem.
@@ -915,11 +915,11 @@ export namespace LibvirtSandbox {
     class ConfigMountRam extends ConfigMount {
         static $gtype: GObject.GType<ConfigMountRam>;
 
-        // Own properties of LibvirtSandbox.ConfigMountRam
+        // Properties
 
         get usage(): number;
 
-        // Constructors of LibvirtSandbox.ConfigMountRam
+        // Constructors
 
         constructor(properties?: Partial<ConfigMountRam.ConstructorProps>, ...args: any[]);
 
@@ -927,7 +927,7 @@ export namespace LibvirtSandbox {
 
         static ['new'](targetdir: string, usage: number): ConfigMountRam;
 
-        // Own methods of LibvirtSandbox.ConfigMountRam
+        // Methods
 
         /**
          * Retrieves the memory usage limit for the RAM filesystem in Kibibytes
@@ -954,7 +954,7 @@ export namespace LibvirtSandbox {
     class ConfigNetwork extends GObject.Object {
         static $gtype: GObject.GType<ConfigNetwork>;
 
-        // Own properties of LibvirtSandbox.ConfigNetwork
+        // Properties
 
         get dhcp(): boolean;
         set dhcp(val: boolean);
@@ -963,7 +963,7 @@ export namespace LibvirtSandbox {
         get source(): string;
         set source(val: string);
 
-        // Constructors of LibvirtSandbox.ConfigNetwork
+        // Constructors
 
         constructor(properties?: Partial<ConfigNetwork.ConstructorProps>, ...args: any[]);
 
@@ -971,7 +971,7 @@ export namespace LibvirtSandbox {
 
         static ['new'](): ConfigNetwork;
 
-        // Own methods of LibvirtSandbox.ConfigNetwork
+        // Methods
 
         /**
          * Add a network interface address. This will be ignored unless
@@ -1026,13 +1026,13 @@ export namespace LibvirtSandbox {
     class ConfigNetworkAddress extends GObject.Object {
         static $gtype: GObject.GType<ConfigNetworkAddress>;
 
-        // Own properties of LibvirtSandbox.ConfigNetworkAddress
+        // Properties
 
         get broadcast(): Gio.InetAddress;
         get prefix(): number;
         get primary(): Gio.InetAddress;
 
-        // Constructors of LibvirtSandbox.ConfigNetworkAddress
+        // Constructors
 
         constructor(properties?: Partial<ConfigNetworkAddress.ConstructorProps>, ...args: any[]);
 
@@ -1040,7 +1040,7 @@ export namespace LibvirtSandbox {
 
         static ['new'](primary: Gio.InetAddress, prefix: number, broadcast: Gio.InetAddress): ConfigNetworkAddress;
 
-        // Own methods of LibvirtSandbox.ConfigNetworkAddress
+        // Methods
 
         /**
          * Retrieves the broadcast address
@@ -1085,12 +1085,12 @@ export namespace LibvirtSandbox {
     class ConfigNetworkFilterref extends GObject.Object {
         static $gtype: GObject.GType<ConfigNetworkFilterref>;
 
-        // Own properties of LibvirtSandbox.ConfigNetworkFilterref
+        // Properties
 
         get name(): string;
         set name(val: string);
 
-        // Constructors of LibvirtSandbox.ConfigNetworkFilterref
+        // Constructors
 
         constructor(properties?: Partial<ConfigNetworkFilterref.ConstructorProps>, ...args: any[]);
 
@@ -1098,7 +1098,7 @@ export namespace LibvirtSandbox {
 
         static ['new'](): ConfigNetworkFilterref;
 
-        // Own methods of LibvirtSandbox.ConfigNetworkFilterref
+        // Methods
 
         /**
          * Add a parameter to a network filter reference.
@@ -1130,14 +1130,14 @@ export namespace LibvirtSandbox {
     class ConfigNetworkFilterrefParameter extends GObject.Object {
         static $gtype: GObject.GType<ConfigNetworkFilterrefParameter>;
 
-        // Own properties of LibvirtSandbox.ConfigNetworkFilterrefParameter
+        // Properties
 
         get name(): string;
         set name(val: string);
         get value(): string;
         set value(val: string);
 
-        // Constructors of LibvirtSandbox.ConfigNetworkFilterrefParameter
+        // Constructors
 
         constructor(properties?: Partial<ConfigNetworkFilterrefParameter.ConstructorProps>, ...args: any[]);
 
@@ -1145,7 +1145,7 @@ export namespace LibvirtSandbox {
 
         static ['new'](): ConfigNetworkFilterrefParameter;
 
-        // Own methods of LibvirtSandbox.ConfigNetworkFilterrefParameter
+        // Methods
 
         get_name(): string;
         get_value(): string;
@@ -1166,13 +1166,13 @@ export namespace LibvirtSandbox {
     class ConfigNetworkRoute extends GObject.Object {
         static $gtype: GObject.GType<ConfigNetworkRoute>;
 
-        // Own properties of LibvirtSandbox.ConfigNetworkRoute
+        // Properties
 
         get gateway(): Gio.InetAddress;
         get prefix(): number;
         get target(): Gio.InetAddress;
 
-        // Constructors of LibvirtSandbox.ConfigNetworkRoute
+        // Constructors
 
         constructor(properties?: Partial<ConfigNetworkRoute.ConstructorProps>, ...args: any[]);
 
@@ -1180,7 +1180,7 @@ export namespace LibvirtSandbox {
 
         static ['new'](target: Gio.InetAddress, prefix: number, gateway: Gio.InetAddress): ConfigNetworkRoute;
 
-        // Own methods of LibvirtSandbox.ConfigNetworkRoute
+        // Methods
 
         /**
          * Retrieves the network gateway address
@@ -1223,7 +1223,7 @@ export namespace LibvirtSandbox {
     abstract class ConfigService extends Config {
         static $gtype: GObject.GType<ConfigService>;
 
-        // Constructors of LibvirtSandbox.ConfigService
+        // Constructors
 
         constructor(properties?: Partial<ConfigService.ConstructorProps>, ...args: any[]);
 
@@ -1239,7 +1239,7 @@ export namespace LibvirtSandbox {
     class ConfigServiceGeneric extends ConfigService {
         static $gtype: GObject.GType<ConfigServiceGeneric>;
 
-        // Constructors of LibvirtSandbox.ConfigServiceGeneric
+        // Constructors
 
         constructor(properties?: Partial<ConfigServiceGeneric.ConstructorProps>, ...args: any[]);
 
@@ -1247,7 +1247,7 @@ export namespace LibvirtSandbox {
 
         static ['new'](name: string): ConfigServiceGeneric;
 
-        // Own methods of LibvirtSandbox.ConfigServiceGeneric
+        // Methods
 
         /**
          * Set the path of the command to be run and its arguments. The `argv` should
@@ -1266,7 +1266,7 @@ export namespace LibvirtSandbox {
     class ConfigServiceSystemd extends ConfigService {
         static $gtype: GObject.GType<ConfigServiceSystemd>;
 
-        // Constructors of LibvirtSandbox.ConfigServiceSystemd
+        // Constructors
 
         constructor(properties?: Partial<ConfigServiceSystemd.ConstructorProps>, ...args: any[]);
 
@@ -1274,7 +1274,7 @@ export namespace LibvirtSandbox {
 
         static ['new'](name: string): ConfigServiceSystemd;
 
-        // Own methods of LibvirtSandbox.ConfigServiceSystemd
+        // Methods
 
         get_boot_target(): string;
         set_boot_target(target: string): void;
@@ -1301,7 +1301,7 @@ export namespace LibvirtSandbox {
     abstract class Console extends GObject.Object {
         static $gtype: GObject.GType<Console>;
 
-        // Own properties of LibvirtSandbox.Console
+        // Properties
 
         get connection(): LibvirtGObject.Connection;
         get devname(): string;
@@ -1309,13 +1309,13 @@ export namespace LibvirtSandbox {
         get domain(): LibvirtGObject.Domain;
         get escape(): number;
 
-        // Constructors of LibvirtSandbox.Console
+        // Constructors
 
         constructor(properties?: Partial<Console.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of LibvirtSandbox.Console
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -1324,7 +1324,7 @@ export namespace LibvirtSandbox {
         connect_after(signal: 'closed', callback: (_source: this, object: boolean) => void): number;
         emit(signal: 'closed', object: boolean): void;
 
-        // Own virtual methods of LibvirtSandbox.Console
+        // Virtual methods
 
         vfunc_attach(
             localStdin: Gio.UnixInputStream,
@@ -1334,7 +1334,7 @@ export namespace LibvirtSandbox {
         vfunc_closed(err: boolean): void;
         vfunc_detach(): boolean;
 
-        // Own methods of LibvirtSandbox.Console
+        // Methods
 
         attach(
             localStdin: Gio.UnixInputStream,
@@ -1360,7 +1360,7 @@ export namespace LibvirtSandbox {
     class ConsoleRaw extends Console {
         static $gtype: GObject.GType<ConsoleRaw>;
 
-        // Constructors of LibvirtSandbox.ConsoleRaw
+        // Constructors
 
         constructor(properties?: Partial<ConsoleRaw.ConstructorProps>, ...args: any[]);
 
@@ -1372,7 +1372,7 @@ export namespace LibvirtSandbox {
             devname: string,
         ): ConsoleRaw;
 
-        // Own virtual methods of LibvirtSandbox.ConsoleRaw
+        // Virtual methods
 
         vfunc_closed(err: boolean): void;
     }
@@ -1392,7 +1392,7 @@ export namespace LibvirtSandbox {
     class ConsoleRpc extends Console {
         static $gtype: GObject.GType<ConsoleRpc>;
 
-        // Constructors of LibvirtSandbox.ConsoleRpc
+        // Constructors
 
         constructor(properties?: Partial<ConsoleRpc.ConstructorProps>, ...args: any[]);
 
@@ -1404,7 +1404,7 @@ export namespace LibvirtSandbox {
             devname: string,
         ): ConsoleRpc;
 
-        // Own signals of LibvirtSandbox.ConsoleRpc
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -1413,7 +1413,7 @@ export namespace LibvirtSandbox {
         connect_after(signal: 'exited', callback: (_source: this, object: number) => void): number;
         emit(signal: 'exited', object: number): void;
 
-        // Own virtual methods of LibvirtSandbox.ConsoleRpc
+        // Virtual methods
 
         vfunc_closed(err: boolean): void;
         vfunc_exited(status: number): void;
@@ -1432,27 +1432,27 @@ export namespace LibvirtSandbox {
     abstract class Context extends GObject.Object {
         static $gtype: GObject.GType<Context>;
 
-        // Own properties of LibvirtSandbox.Context
+        // Properties
 
         get config(): Config;
         get connection(): LibvirtGObject.Connection;
         get domain(): LibvirtGObject.Domain;
         set domain(val: LibvirtGObject.Domain);
 
-        // Constructors of LibvirtSandbox.Context
+        // Constructors
 
         constructor(properties?: Partial<Context.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of LibvirtSandbox.Context
+        // Virtual methods
 
         vfunc_attach(): boolean;
         vfunc_detach(): boolean;
         vfunc_start(): boolean;
         vfunc_stop(): boolean;
 
-        // Own methods of LibvirtSandbox.Context
+        // Methods
 
         attach(): boolean;
         detach(): boolean;
@@ -1487,7 +1487,7 @@ export namespace LibvirtSandbox {
     class ContextInteractive extends Context {
         static $gtype: GObject.GType<ContextInteractive>;
 
-        // Constructors of LibvirtSandbox.ContextInteractive
+        // Constructors
 
         constructor(properties?: Partial<ContextInteractive.ConstructorProps>, ...args: any[]);
 
@@ -1495,7 +1495,7 @@ export namespace LibvirtSandbox {
 
         static ['new'](connection: LibvirtGObject.Connection, config: ConfigInteractive): ContextInteractive;
 
-        // Own methods of LibvirtSandbox.ContextInteractive
+        // Methods
 
         get_app_console(): Console | null;
     }
@@ -1509,7 +1509,7 @@ export namespace LibvirtSandbox {
     class ContextService extends Context {
         static $gtype: GObject.GType<ContextService>;
 
-        // Constructors of LibvirtSandbox.ContextService
+        // Constructors
 
         constructor(properties?: Partial<ContextService.ConstructorProps>, ...args: any[]);
 
@@ -1517,12 +1517,12 @@ export namespace LibvirtSandbox {
 
         static ['new'](connection: LibvirtGObject.Connection, config: ConfigService): ContextService;
 
-        // Own virtual methods of LibvirtSandbox.ContextService
+        // Virtual methods
 
         vfunc_define(): boolean;
         vfunc_undefine(): boolean;
 
-        // Own methods of LibvirtSandbox.ContextService
+        // Methods
 
         define(): boolean;
         undefine(): boolean;
@@ -1533,7 +1533,7 @@ export namespace LibvirtSandbox {
     abstract class BuilderContainerPrivate {
         static $gtype: GObject.GType<BuilderContainerPrivate>;
 
-        // Constructors of LibvirtSandbox.BuilderContainerPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1542,7 +1542,7 @@ export namespace LibvirtSandbox {
     abstract class BuilderInitrdPrivate {
         static $gtype: GObject.GType<BuilderInitrdPrivate>;
 
-        // Constructors of LibvirtSandbox.BuilderInitrdPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1551,7 +1551,7 @@ export namespace LibvirtSandbox {
     abstract class BuilderMachinePrivate {
         static $gtype: GObject.GType<BuilderMachinePrivate>;
 
-        // Constructors of LibvirtSandbox.BuilderMachinePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1559,7 +1559,7 @@ export namespace LibvirtSandbox {
     abstract class BuilderPrivate {
         static $gtype: GObject.GType<BuilderPrivate>;
 
-        // Constructors of LibvirtSandbox.BuilderPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1569,7 +1569,7 @@ export namespace LibvirtSandbox {
     abstract class ConfigDiskPrivate {
         static $gtype: GObject.GType<ConfigDiskPrivate>;
 
-        // Constructors of LibvirtSandbox.ConfigDiskPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1578,7 +1578,7 @@ export namespace LibvirtSandbox {
     abstract class ConfigInitrdPrivate {
         static $gtype: GObject.GType<ConfigInitrdPrivate>;
 
-        // Constructors of LibvirtSandbox.ConfigInitrdPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1587,7 +1587,7 @@ export namespace LibvirtSandbox {
     abstract class ConfigInteractivePrivate {
         static $gtype: GObject.GType<ConfigInteractivePrivate>;
 
-        // Constructors of LibvirtSandbox.ConfigInteractivePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1597,7 +1597,7 @@ export namespace LibvirtSandbox {
     abstract class ConfigMountFilePrivate {
         static $gtype: GObject.GType<ConfigMountFilePrivate>;
 
-        // Constructors of LibvirtSandbox.ConfigMountFilePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1606,7 +1606,7 @@ export namespace LibvirtSandbox {
     abstract class ConfigMountGuestBindPrivate {
         static $gtype: GObject.GType<ConfigMountGuestBindPrivate>;
 
-        // Constructors of LibvirtSandbox.ConfigMountGuestBindPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1615,7 +1615,7 @@ export namespace LibvirtSandbox {
     abstract class ConfigMountHostBindPrivate {
         static $gtype: GObject.GType<ConfigMountHostBindPrivate>;
 
-        // Constructors of LibvirtSandbox.ConfigMountHostBindPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1624,7 +1624,7 @@ export namespace LibvirtSandbox {
     abstract class ConfigMountHostImagePrivate {
         static $gtype: GObject.GType<ConfigMountHostImagePrivate>;
 
-        // Constructors of LibvirtSandbox.ConfigMountHostImagePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1632,7 +1632,7 @@ export namespace LibvirtSandbox {
     abstract class ConfigMountPrivate {
         static $gtype: GObject.GType<ConfigMountPrivate>;
 
-        // Constructors of LibvirtSandbox.ConfigMountPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1641,7 +1641,7 @@ export namespace LibvirtSandbox {
     abstract class ConfigMountRamPrivate {
         static $gtype: GObject.GType<ConfigMountRamPrivate>;
 
-        // Constructors of LibvirtSandbox.ConfigMountRamPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1650,7 +1650,7 @@ export namespace LibvirtSandbox {
     abstract class ConfigNetworkAddressPrivate {
         static $gtype: GObject.GType<ConfigNetworkAddressPrivate>;
 
-        // Constructors of LibvirtSandbox.ConfigNetworkAddressPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1661,7 +1661,7 @@ export namespace LibvirtSandbox {
     abstract class ConfigNetworkFilterrefParameterPrivate {
         static $gtype: GObject.GType<ConfigNetworkFilterrefParameterPrivate>;
 
-        // Constructors of LibvirtSandbox.ConfigNetworkFilterrefParameterPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1669,7 +1669,7 @@ export namespace LibvirtSandbox {
     abstract class ConfigNetworkFilterrefPrivate {
         static $gtype: GObject.GType<ConfigNetworkFilterrefPrivate>;
 
-        // Constructors of LibvirtSandbox.ConfigNetworkFilterrefPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1677,7 +1677,7 @@ export namespace LibvirtSandbox {
     abstract class ConfigNetworkPrivate {
         static $gtype: GObject.GType<ConfigNetworkPrivate>;
 
-        // Constructors of LibvirtSandbox.ConfigNetworkPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1686,7 +1686,7 @@ export namespace LibvirtSandbox {
     abstract class ConfigNetworkRoutePrivate {
         static $gtype: GObject.GType<ConfigNetworkRoutePrivate>;
 
-        // Constructors of LibvirtSandbox.ConfigNetworkRoutePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1694,7 +1694,7 @@ export namespace LibvirtSandbox {
     abstract class ConfigPrivate {
         static $gtype: GObject.GType<ConfigPrivate>;
 
-        // Constructors of LibvirtSandbox.ConfigPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1704,7 +1704,7 @@ export namespace LibvirtSandbox {
     abstract class ConfigServiceGenericPrivate {
         static $gtype: GObject.GType<ConfigServiceGenericPrivate>;
 
-        // Constructors of LibvirtSandbox.ConfigServiceGenericPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1712,7 +1712,7 @@ export namespace LibvirtSandbox {
     abstract class ConfigServicePrivate {
         static $gtype: GObject.GType<ConfigServicePrivate>;
 
-        // Constructors of LibvirtSandbox.ConfigServicePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1721,7 +1721,7 @@ export namespace LibvirtSandbox {
     abstract class ConfigServiceSystemdPrivate {
         static $gtype: GObject.GType<ConfigServiceSystemdPrivate>;
 
-        // Constructors of LibvirtSandbox.ConfigServiceSystemdPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1730,7 +1730,7 @@ export namespace LibvirtSandbox {
     abstract class ConsolePrivate {
         static $gtype: GObject.GType<ConsolePrivate>;
 
-        // Constructors of LibvirtSandbox.ConsolePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1739,7 +1739,7 @@ export namespace LibvirtSandbox {
     abstract class ConsoleRawPrivate {
         static $gtype: GObject.GType<ConsoleRawPrivate>;
 
-        // Constructors of LibvirtSandbox.ConsoleRawPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1748,7 +1748,7 @@ export namespace LibvirtSandbox {
     abstract class ConsoleRpcPrivate {
         static $gtype: GObject.GType<ConsoleRpcPrivate>;
 
-        // Constructors of LibvirtSandbox.ConsoleRpcPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1758,7 +1758,7 @@ export namespace LibvirtSandbox {
     abstract class ContextInteractivePrivate {
         static $gtype: GObject.GType<ContextInteractivePrivate>;
 
-        // Constructors of LibvirtSandbox.ContextInteractivePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1766,7 +1766,7 @@ export namespace LibvirtSandbox {
     abstract class ContextPrivate {
         static $gtype: GObject.GType<ContextPrivate>;
 
-        // Constructors of LibvirtSandbox.ContextPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1775,7 +1775,7 @@ export namespace LibvirtSandbox {
     abstract class ContextServicePrivate {
         static $gtype: GObject.GType<ContextServicePrivate>;
 
-        // Constructors of LibvirtSandbox.ContextServicePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }

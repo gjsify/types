@@ -117,7 +117,7 @@ export namespace GstController {
     class ARGBControlBinding extends Gst.ControlBinding {
         static $gtype: GObject.GType<ARGBControlBinding>;
 
-        // Own properties of GstController.ARGBControlBinding
+        // Properties
 
         get control_source_a(): Gst.ControlSource;
         set control_source_a(val: Gst.ControlSource);
@@ -136,7 +136,7 @@ export namespace GstController {
         get controlSourceR(): Gst.ControlSource;
         set controlSourceR(val: Gst.ControlSource);
 
-        // Constructors of GstController.ARGBControlBinding
+        // Constructors
 
         constructor(properties?: Partial<ARGBControlBinding.ConstructorProps>, ...args: any[]);
 
@@ -173,7 +173,7 @@ export namespace GstController {
     class DirectControlBinding extends Gst.ControlBinding {
         static $gtype: GObject.GType<DirectControlBinding>;
 
-        // Own properties of GstController.DirectControlBinding
+        // Properties
 
         get absolute(): boolean;
         get control_source(): Gst.ControlSource;
@@ -181,7 +181,7 @@ export namespace GstController {
         get controlSource(): Gst.ControlSource;
         set controlSource(val: Gst.ControlSource);
 
-        // Constructors of GstController.DirectControlBinding
+        // Constructors
 
         constructor(properties?: Partial<DirectControlBinding.ConstructorProps>, ...args: any[]);
 
@@ -213,12 +213,12 @@ export namespace GstController {
     class InterpolationControlSource extends TimedValueControlSource {
         static $gtype: GObject.GType<InterpolationControlSource>;
 
-        // Own properties of GstController.InterpolationControlSource
+        // Properties
 
         get mode(): InterpolationMode;
         set mode(val: InterpolationMode);
 
-        // Constructors of GstController.InterpolationControlSource
+        // Constructors
 
         constructor(properties?: Partial<InterpolationControlSource.ConstructorProps>, ...args: any[]);
 
@@ -252,7 +252,7 @@ export namespace GstController {
     class LFOControlSource extends Gst.ControlSource {
         static $gtype: GObject.GType<LFOControlSource>;
 
-        // Own properties of GstController.LFOControlSource
+        // Properties
 
         /**
          * Specifies the amplitude for the waveform of this #GstLFOControlSource.
@@ -286,7 +286,7 @@ export namespace GstController {
         get waveform(): LFOWaveform;
         set waveform(val: LFOWaveform);
 
-        // Constructors of GstController.LFOControlSource
+        // Constructors
 
         constructor(properties?: Partial<LFOControlSource.ConstructorProps>, ...args: any[]);
 
@@ -307,7 +307,7 @@ export namespace GstController {
     class ProxyControlBinding extends Gst.ControlBinding {
         static $gtype: GObject.GType<ProxyControlBinding>;
 
-        // Constructors of GstController.ProxyControlBinding
+        // Constructors
 
         constructor(properties?: Partial<ProxyControlBinding.ConstructorProps>, ...args: any[]);
 
@@ -352,18 +352,18 @@ export namespace GstController {
     abstract class TimedValueControlSource extends Gst.ControlSource {
         static $gtype: GObject.GType<TimedValueControlSource>;
 
-        // Own fields of GstController.TimedValueControlSource
+        // Fields
 
         nvalues: number;
         valid_cache: boolean;
 
-        // Constructors of GstController.TimedValueControlSource
+        // Constructors
 
         constructor(properties?: Partial<TimedValueControlSource.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of GstController.TimedValueControlSource
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -378,7 +378,7 @@ export namespace GstController {
         connect_after(signal: 'value-removed', callback: (_source: this, timed_value: ControlPoint) => void): number;
         emit(signal: 'value-removed', timed_value: ControlPoint): void;
 
-        // Own methods of GstController.TimedValueControlSource
+        // Methods
 
         /**
          * Find last value before given timestamp in control point list.
@@ -450,12 +450,12 @@ export namespace GstController {
     class TriggerControlSource extends TimedValueControlSource {
         static $gtype: GObject.GType<TriggerControlSource>;
 
-        // Own properties of GstController.TriggerControlSource
+        // Properties
 
         get tolerance(): number;
         set tolerance(val: number);
 
-        // Constructors of GstController.TriggerControlSource
+        // Constructors
 
         constructor(properties?: Partial<TriggerControlSource.ConstructorProps>, ...args: any[]);
 
@@ -473,12 +473,12 @@ export namespace GstController {
     class ControlPoint {
         static $gtype: GObject.GType<ControlPoint>;
 
-        // Own fields of GstController.ControlPoint
+        // Fields
 
         timestamp: Gst.ClockTime;
         value: number;
 
-        // Constructors of GstController.ControlPoint
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -488,7 +488,7 @@ export namespace GstController {
         );
         _init(...args: any[]): void;
 
-        // Own methods of GstController.ControlPoint
+        // Methods
 
         /**
          * Copies a #GstControlPoint
@@ -506,7 +506,7 @@ export namespace GstController {
     abstract class InterpolationControlSourcePrivate {
         static $gtype: GObject.GType<InterpolationControlSourcePrivate>;
 
-        // Constructors of GstController.InterpolationControlSourcePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -515,7 +515,7 @@ export namespace GstController {
     abstract class LFOControlSourcePrivate {
         static $gtype: GObject.GType<LFOControlSourcePrivate>;
 
-        // Constructors of GstController.LFOControlSourcePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -525,7 +525,7 @@ export namespace GstController {
     abstract class TimedValueControlSourcePrivate {
         static $gtype: GObject.GType<TimedValueControlSourcePrivate>;
 
-        // Constructors of GstController.TimedValueControlSourcePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -534,7 +534,7 @@ export namespace GstController {
     abstract class TriggerControlSourcePrivate {
         static $gtype: GObject.GType<TriggerControlSourcePrivate>;
 
-        // Constructors of GstController.TriggerControlSourcePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }

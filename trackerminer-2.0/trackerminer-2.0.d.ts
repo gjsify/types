@@ -333,7 +333,7 @@ export namespace TrackerMiner {
     abstract class Decorator extends Miner implements Gio.Initable {
         static $gtype: GObject.GType<Decorator>;
 
-        // Own properties of TrackerMiner.Decorator
+        // Properties
 
         get class_names(): string[];
         set class_names(val: string[]);
@@ -348,17 +348,17 @@ export namespace TrackerMiner {
         set priority_rdf_types(val: string[]);
         set priorityRdfTypes(val: string[]);
 
-        // Own fields of TrackerMiner.Decorator
+        // Fields
 
         priv: any;
 
-        // Constructors of TrackerMiner.Decorator
+        // Constructors
 
         constructor(properties?: Partial<Decorator.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of TrackerMiner.Decorator
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -370,7 +370,7 @@ export namespace TrackerMiner {
         connect_after(signal: 'items-available', callback: (_source: this) => void): number;
         emit(signal: 'items-available'): void;
 
-        // Own static methods of TrackerMiner.Decorator
+        // Static methods
 
         /**
          * Gives the caller the #GQuark used to identify #TrackerDecorator errors
@@ -378,12 +378,12 @@ export namespace TrackerMiner {
          */
         static error_quark(): GLib.Quark;
 
-        // Own virtual methods of TrackerMiner.Decorator
+        // Virtual methods
 
         vfunc_finished(): void;
         vfunc_items_available(): void;
 
-        // Own methods of TrackerMiner.Decorator
+        // Methods
 
         /**
          * Deletes resource needing extended metadata extraction from the
@@ -949,17 +949,17 @@ export namespace TrackerMiner {
     abstract class DecoratorFS extends Decorator implements Gio.Initable {
         static $gtype: GObject.GType<DecoratorFS>;
 
-        // Own fields of TrackerMiner.DecoratorFS
+        // Fields
 
         priv: any;
 
-        // Constructors of TrackerMiner.DecoratorFS
+        // Constructors
 
         constructor(properties?: Partial<DecoratorFS.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of TrackerMiner.DecoratorFS
+        // Methods
 
         /**
          * Prepends a file for processing.
@@ -1405,7 +1405,7 @@ export namespace TrackerMiner {
     class IndexingTree extends GObject.Object {
         static $gtype: GObject.GType<IndexingTree>;
 
-        // Own properties of TrackerMiner.IndexingTree
+        // Properties
 
         get filter_hidden(): boolean;
         set filter_hidden(val: boolean);
@@ -1413,11 +1413,11 @@ export namespace TrackerMiner {
         set filterHidden(val: boolean);
         get root(): Gio.File;
 
-        // Own fields of TrackerMiner.IndexingTree
+        // Fields
 
         priv: any;
 
-        // Constructors of TrackerMiner.IndexingTree
+        // Constructors
 
         constructor(properties?: Partial<IndexingTree.ConstructorProps>, ...args: any[]);
 
@@ -1427,7 +1427,7 @@ export namespace TrackerMiner {
 
         static new_with_root(root: Gio.File): IndexingTree;
 
-        // Own signals of TrackerMiner.IndexingTree
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -1448,14 +1448,14 @@ export namespace TrackerMiner {
         connect_after(signal: 'directory-updated', callback: (_source: this, directory: Gio.File) => void): number;
         emit(signal: 'directory-updated', directory: Gio.File): void;
 
-        // Own virtual methods of TrackerMiner.IndexingTree
+        // Virtual methods
 
         vfunc_child_updated(root: Gio.File, child: Gio.File): void;
         vfunc_directory_added(directory: Gio.File): void;
         vfunc_directory_removed(directory: Gio.File): void;
         vfunc_directory_updated(directory: Gio.File): void;
 
-        // Own methods of TrackerMiner.IndexingTree
+        // Methods
 
         /**
          * Adds a directory to the indexing tree with the
@@ -1650,7 +1650,7 @@ export namespace TrackerMiner {
     abstract class Miner extends GObject.Object implements Gio.Initable {
         static $gtype: GObject.GType<Miner>;
 
-        // Own properties of TrackerMiner.Miner
+        // Properties
 
         get progress(): number;
         set progress(val: number);
@@ -1661,13 +1661,13 @@ export namespace TrackerMiner {
         get status(): string;
         set status(val: string);
 
-        // Constructors of TrackerMiner.Miner
+        // Constructors
 
         constructor(properties?: Partial<Miner.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of TrackerMiner.Miner
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -1694,7 +1694,7 @@ export namespace TrackerMiner {
         connect_after(signal: 'stopped', callback: (_source: this) => void): number;
         emit(signal: 'stopped'): void;
 
-        // Own static methods of TrackerMiner.Miner
+        // Static methods
 
         /**
          * Gives the caller the #GQuark used to identify #TrackerMiner errors
@@ -1702,7 +1702,7 @@ export namespace TrackerMiner {
          */
         static error_quark(): GLib.Quark;
 
-        // Own virtual methods of TrackerMiner.Miner
+        // Virtual methods
 
         vfunc_paused(): void;
         vfunc_progress(status: string, progress: number, remaining_time: number): void;
@@ -1710,7 +1710,7 @@ export namespace TrackerMiner {
         vfunc_started(): void;
         vfunc_stopped(): void;
 
-        // Own methods of TrackerMiner.Miner
+        // Methods
 
         /**
          * Returns #TRUE if the miner is paused.
@@ -2291,7 +2291,7 @@ export namespace TrackerMiner {
     abstract class MinerFS extends Miner implements Gio.Initable {
         static $gtype: GObject.GType<MinerFS>;
 
-        // Own properties of TrackerMiner.MinerFS
+        // Properties
 
         get data_provider(): DataProvider;
         get dataProvider(): DataProvider;
@@ -2307,13 +2307,13 @@ export namespace TrackerMiner {
         get throttle(): number;
         set throttle(val: number);
 
-        // Constructors of TrackerMiner.MinerFS
+        // Constructors
 
         constructor(properties?: Partial<MinerFS.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of TrackerMiner.MinerFS
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -2385,7 +2385,7 @@ export namespace TrackerMiner {
         connect_after(signal: 'remove-file', callback: (_source: this, file: Gio.File) => string): number;
         emit(signal: 'remove-file', file: Gio.File): void;
 
-        // Own static methods of TrackerMiner.MinerFS
+        // Static methods
 
         /**
          * Gives the caller the #GQuark used to identify #TrackerMinerFS errors
@@ -2393,7 +2393,7 @@ export namespace TrackerMiner {
          */
         static error_quark(): GLib.Quark;
 
-        // Own virtual methods of TrackerMiner.MinerFS
+        // Virtual methods
 
         vfunc_filter_event(type: MinerFSEventType, file: Gio.File, source_file: Gio.File): boolean;
         vfunc_finished(
@@ -2416,7 +2416,7 @@ export namespace TrackerMiner {
         vfunc_remove_children(file: Gio.File): string;
         vfunc_remove_file(file: Gio.File): string;
 
-        // Own methods of TrackerMiner.MinerFS
+        // Methods
 
         /**
          * Tells the filesystem miner to check and index a file at
@@ -3006,13 +3006,13 @@ export namespace TrackerMiner {
     abstract class MinerOnline extends Miner implements Gio.Initable {
         static $gtype: GObject.GType<MinerOnline>;
 
-        // Constructors of TrackerMiner.MinerOnline
+        // Constructors
 
         constructor(properties?: Partial<MinerOnline.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of TrackerMiner.MinerOnline
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -3024,12 +3024,12 @@ export namespace TrackerMiner {
         connect_after(signal: 'disconnected', callback: (_source: this) => void): number;
         emit(signal: 'disconnected'): void;
 
-        // Own virtual methods of TrackerMiner.MinerOnline
+        // Virtual methods
 
         vfunc_connected(network: NetworkType): boolean;
         vfunc_disconnected(): void;
 
-        // Own methods of TrackerMiner.MinerOnline
+        // Methods
 
         /**
          * Get the type of network this data `miner` uses to index content.
@@ -3540,7 +3540,7 @@ export namespace TrackerMiner {
     class MinerProxy extends GObject.Object implements Gio.Initable {
         static $gtype: GObject.GType<MinerProxy>;
 
-        // Own properties of TrackerMiner.MinerProxy
+        // Properties
 
         get dbus_connection(): Gio.DBusConnection;
         get dbusConnection(): Gio.DBusConnection;
@@ -3548,7 +3548,7 @@ export namespace TrackerMiner {
         get dbusPath(): string;
         get miner(): Miner;
 
-        // Constructors of TrackerMiner.MinerProxy
+        // Constructors
 
         constructor(properties?: Partial<MinerProxy.ConstructorProps>, ...args: any[]);
 
@@ -4055,11 +4055,11 @@ export namespace TrackerMiner {
     abstract class DecoratorInfo {
         static $gtype: GObject.GType<DecoratorInfo>;
 
-        // Constructors of TrackerMiner.DecoratorInfo
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of TrackerMiner.DecoratorInfo
+        // Methods
 
         /**
          * Completes the task associated to this #TrackerDecoratorInfo.
@@ -4122,7 +4122,7 @@ export namespace TrackerMiner {
     abstract class MinerFSPrivate {
         static $gtype: GObject.GType<MinerFSPrivate>;
 
-        // Constructors of TrackerMiner.MinerFSPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4131,7 +4131,7 @@ export namespace TrackerMiner {
     abstract class MinerPrivate {
         static $gtype: GObject.GType<MinerPrivate>;
 
-        // Constructors of TrackerMiner.MinerPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -4148,7 +4148,7 @@ export namespace TrackerMiner {
         prototype: DataProvider;
     }
     interface DataProvider extends GObject.Object {
-        // Own methods of TrackerMiner.DataProvider
+        // Methods
 
         /**
          * Creates a #GFileEnumerator to enumerate children at the URI
@@ -4220,7 +4220,7 @@ export namespace TrackerMiner {
          */
         begin_finish(result: Gio.AsyncResult): Gio.FileEnumerator;
 
-        // Own virtual methods of TrackerMiner.DataProvider
+        // Virtual methods
 
         /**
          * Creates a #GFileEnumerator to enumerate children at the URI

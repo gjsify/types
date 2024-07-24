@@ -186,7 +186,7 @@ export namespace Garcon {
     class Menu extends GObject.Object implements MenuElement {
         static $gtype: GObject.GType<Menu>;
 
-        // Own properties of Garcon.Menu
+        // Properties
 
         /**
          * The directory entry associated with this menu.
@@ -198,7 +198,7 @@ export namespace Garcon {
          */
         get file(): Gio.File;
 
-        // Constructors of Garcon.Menu
+        // Constructors
 
         constructor(properties?: Partial<Menu.ConstructorProps>, ...args: any[]);
 
@@ -210,7 +210,7 @@ export namespace Garcon {
 
         static new_for_path(filename: string): Menu;
 
-        // Own signals of Garcon.Menu
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -228,7 +228,7 @@ export namespace Garcon {
         connect_after(signal: 'reload-required', callback: (_source: this) => void): number;
         emit(signal: 'reload-required'): void;
 
-        // Own methods of Garcon.Menu
+        // Methods
 
         /**
          * Adds `submenu` as a sub menu to `menu`.
@@ -745,7 +745,7 @@ export namespace Garcon {
     class MenuDirectory extends GObject.Object {
         static $gtype: GObject.GType<MenuDirectory>;
 
-        // Own properties of Garcon.MenuDirectory
+        // Properties
 
         /**
          * Directory description (comment).
@@ -779,7 +779,7 @@ export namespace Garcon {
         get noDisplay(): boolean;
         set noDisplay(val: boolean);
 
-        // Constructors of Garcon.MenuDirectory
+        // Constructors
 
         constructor(properties?: Partial<MenuDirectory.ConstructorProps>, ...args: any[]);
 
@@ -787,7 +787,7 @@ export namespace Garcon {
 
         static ['new'](file: Gio.File): MenuDirectory;
 
-        // Own methods of Garcon.MenuDirectory
+        // Methods
 
         /**
          * Checks if both directories point to the same file.
@@ -903,7 +903,7 @@ export namespace Garcon {
     class MenuItem extends GObject.Object implements MenuElement {
         static $gtype: GObject.GType<MenuItem>;
 
-        // Own properties of Garcon.MenuItem
+        // Properties
 
         /**
          * Command to be executed when the menu item is clicked.
@@ -1022,7 +1022,7 @@ export namespace Garcon {
         get tryExec(): string;
         set tryExec(val: string);
 
-        // Constructors of Garcon.MenuItem
+        // Constructors
 
         constructor(properties?: Partial<MenuItem.ConstructorProps>, ...args: any[]);
 
@@ -1034,7 +1034,7 @@ export namespace Garcon {
 
         static new_for_uri(uri: string): MenuItem;
 
-        // Own signals of Garcon.MenuItem
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -1043,11 +1043,11 @@ export namespace Garcon {
         connect_after(signal: 'changed', callback: (_source: this) => void): number;
         emit(signal: 'changed'): void;
 
-        // Own virtual methods of Garcon.MenuItem
+        // Virtual methods
 
         vfunc_changed(): void;
 
-        // Own methods of Garcon.MenuItem
+        // Methods
 
         decrement_allocated(): void;
         get_action(action_name: string): MenuItemAction | null;
@@ -1511,7 +1511,7 @@ export namespace Garcon {
     class MenuItemAction extends GObject.Object {
         static $gtype: GObject.GType<MenuItemAction>;
 
-        // Own properties of Garcon.MenuItemAction
+        // Properties
 
         /**
          * Command to be executed when the application action is clicked.
@@ -1534,7 +1534,7 @@ export namespace Garcon {
         get name(): string;
         set name(val: string);
 
-        // Constructors of Garcon.MenuItemAction
+        // Constructors
 
         constructor(properties?: Partial<MenuItemAction.ConstructorProps>, ...args: any[]);
 
@@ -1542,11 +1542,11 @@ export namespace Garcon {
 
         static ['new'](): MenuItemAction;
 
-        // Own virtual methods of Garcon.MenuItemAction
+        // Virtual methods
 
         vfunc_changed(): void;
 
-        // Own methods of Garcon.MenuItemAction
+        // Methods
 
         get_command(): string;
         get_icon_name(): string;
@@ -1569,7 +1569,7 @@ export namespace Garcon {
     class MenuItemCache extends GObject.Object {
         static $gtype: GObject.GType<MenuItemCache>;
 
-        // Constructors of Garcon.MenuItemCache
+        // Constructors
 
         constructor(properties?: Partial<MenuItemCache.ConstructorProps>, ...args: any[]);
 
@@ -1577,7 +1577,7 @@ export namespace Garcon {
 
         static get_default(): MenuItemCache;
 
-        // Own methods of Garcon.MenuItemCache
+        // Methods
 
         foreach(func: GLib.HFunc): void;
         invalidate(): void;
@@ -1594,7 +1594,7 @@ export namespace Garcon {
     class MenuItemPool extends GObject.Object {
         static $gtype: GObject.GType<MenuItemPool>;
 
-        // Constructors of Garcon.MenuItemPool
+        // Constructors
 
         constructor(properties?: Partial<MenuItemPool.ConstructorProps>, ...args: any[]);
 
@@ -1602,7 +1602,7 @@ export namespace Garcon {
 
         static ['new'](): MenuItemPool;
 
-        // Own methods of Garcon.MenuItemPool
+        // Methods
 
         apply_exclude_rule(node: GLib.Node): void;
         clear(): void;
@@ -1625,12 +1625,12 @@ export namespace Garcon {
     class MenuMerger extends GObject.Object implements MenuTreeProvider {
         static $gtype: GObject.GType<MenuMerger>;
 
-        // Own properties of Garcon.MenuMerger
+        // Properties
 
         get tree_provider(): MenuTreeProvider;
         get treeProvider(): MenuTreeProvider;
 
-        // Constructors of Garcon.MenuMerger
+        // Constructors
 
         constructor(properties?: Partial<MenuMerger.ConstructorProps>, ...args: any[]);
 
@@ -1638,7 +1638,7 @@ export namespace Garcon {
 
         static ['new'](provider: MenuTreeProvider): MenuMerger;
 
-        // Own methods of Garcon.MenuMerger
+        // Methods
 
         run(merge_files: string[], merge_dirs: string[], cancellable?: Gio.Cancellable | null): boolean;
 
@@ -2059,14 +2059,14 @@ export namespace Garcon {
     class MenuNode extends GObject.Object {
         static $gtype: GObject.GType<MenuNode>;
 
-        // Own properties of Garcon.MenuNode
+        // Properties
 
         get node_type(): MenuNodeType;
         set node_type(val: MenuNodeType);
         get nodeType(): MenuNodeType;
         set nodeType(val: MenuNodeType);
 
-        // Constructors of Garcon.MenuNode
+        // Constructors
 
         constructor(properties?: Partial<MenuNode.ConstructorProps>, ...args: any[]);
 
@@ -2074,7 +2074,7 @@ export namespace Garcon {
 
         static ['new'](node_type: MenuNodeType): MenuNode;
 
-        // Own static methods of Garcon.MenuNode
+        // Static methods
 
         static tree_compare(tree: GLib.Node, other_tree: GLib.Node): number;
         static tree_free(tree: GLib.Node): void;
@@ -2092,7 +2092,7 @@ export namespace Garcon {
         static tree_set_merge_file_filename(tree: GLib.Node, filename: string): void;
         static tree_set_string(tree: GLib.Node, value: string): void;
 
-        // Own methods of Garcon.MenuNode
+        // Methods
 
         copy(data?: any | null): MenuNode;
         get_merge_file_filename(): string;
@@ -2115,11 +2115,11 @@ export namespace Garcon {
     class MenuParser extends GObject.Object implements MenuTreeProvider {
         static $gtype: GObject.GType<MenuParser>;
 
-        // Own properties of Garcon.MenuParser
+        // Properties
 
         get file(): Gio.File;
 
-        // Constructors of Garcon.MenuParser
+        // Constructors
 
         constructor(properties?: Partial<MenuParser.ConstructorProps>, ...args: any[]);
 
@@ -2127,7 +2127,7 @@ export namespace Garcon {
 
         static ['new'](file: Gio.File): MenuParser;
 
-        // Own methods of Garcon.MenuParser
+        // Methods
 
         run(cancellable?: Gio.Cancellable | null): boolean;
 
@@ -2545,7 +2545,7 @@ export namespace Garcon {
     class MenuSeparator extends GObject.Object implements MenuElement {
         static $gtype: GObject.GType<MenuSeparator>;
 
-        // Constructors of Garcon.MenuSeparator
+        // Constructors
 
         constructor(properties?: Partial<MenuSeparator.ConstructorProps>, ...args: any[]);
 
@@ -2975,7 +2975,7 @@ export namespace Garcon {
     abstract class MenuDirectoryPrivate {
         static $gtype: GObject.GType<MenuDirectoryPrivate>;
 
-        // Constructors of Garcon.MenuDirectoryPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2985,7 +2985,7 @@ export namespace Garcon {
     abstract class MenuItemActionPrivate {
         static $gtype: GObject.GType<MenuItemActionPrivate>;
 
-        // Constructors of Garcon.MenuItemActionPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -2994,7 +2994,7 @@ export namespace Garcon {
     abstract class MenuItemCachePrivate {
         static $gtype: GObject.GType<MenuItemCachePrivate>;
 
-        // Constructors of Garcon.MenuItemCachePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3004,7 +3004,7 @@ export namespace Garcon {
     abstract class MenuItemPoolPrivate {
         static $gtype: GObject.GType<MenuItemPoolPrivate>;
 
-        // Constructors of Garcon.MenuItemPoolPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3012,7 +3012,7 @@ export namespace Garcon {
     abstract class MenuItemPrivate {
         static $gtype: GObject.GType<MenuItemPrivate>;
 
-        // Constructors of Garcon.MenuItemPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3021,7 +3021,7 @@ export namespace Garcon {
     abstract class MenuMergerPrivate {
         static $gtype: GObject.GType<MenuMergerPrivate>;
 
-        // Constructors of Garcon.MenuMergerPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3031,7 +3031,7 @@ export namespace Garcon {
     abstract class MenuParserPrivate {
         static $gtype: GObject.GType<MenuParserPrivate>;
 
-        // Constructors of Garcon.MenuParserPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3039,7 +3039,7 @@ export namespace Garcon {
     abstract class MenuPrivate {
         static $gtype: GObject.GType<MenuPrivate>;
 
-        // Constructors of Garcon.MenuPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3049,7 +3049,7 @@ export namespace Garcon {
     class MenuNodeData {
         static $gtype: GObject.GType<MenuNodeData>;
 
-        // Constructors of Garcon.MenuNodeData
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -3065,7 +3065,7 @@ export namespace Garcon {
         prototype: MenuElement;
     }
     interface MenuElement extends GObject.Object {
-        // Own methods of Garcon.MenuElement
+        // Methods
 
         equal(b: MenuElement): boolean;
         get_comment(): string;
@@ -3075,7 +3075,7 @@ export namespace Garcon {
         get_show_in_environment(): boolean;
         get_visible(): boolean;
 
-        // Own virtual methods of Garcon.MenuElement
+        // Virtual methods
 
         vfunc_equal(other: MenuElement): boolean;
         vfunc_get_comment(): string;
@@ -3099,11 +3099,11 @@ export namespace Garcon {
         prototype: MenuTreeProvider;
     }
     interface MenuTreeProvider extends GObject.Object {
-        // Own methods of Garcon.MenuTreeProvider
+        // Methods
 
         get_file(): Gio.File;
 
-        // Own virtual methods of Garcon.MenuTreeProvider
+        // Virtual methods
 
         vfunc_get_file(): Gio.File;
     }

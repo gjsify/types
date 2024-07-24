@@ -49,19 +49,19 @@ export namespace GstPlay {
     class PlayError extends GLib.Error {
         static $gtype: GObject.GType<PlayError>;
 
-        // Static fields of GstPlay.PlayError
+        // Static fields
 
         /**
          * generic error.
          */
         static FAILED: number;
 
-        // Constructors of GstPlay.PlayError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of GstPlay.PlayError
+        // Static methods
 
         /**
          * Gets a string representing the given error.
@@ -326,7 +326,7 @@ export namespace GstPlay {
     class Play extends Gst.Object {
         static $gtype: GObject.GType<Play>;
 
-        // Own properties of GstPlay.Play
+        // Properties
 
         get audio_video_offset(): number;
         set audio_video_offset(val: number);
@@ -370,7 +370,7 @@ export namespace GstPlay {
         get volume(): number;
         set volume(val: number);
 
-        // Constructors of GstPlay.Play
+        // Constructors
 
         constructor(properties?: Partial<Play.ConstructorProps>, ...args: any[]);
 
@@ -378,7 +378,7 @@ export namespace GstPlay {
 
         static ['new'](video_renderer?: PlayVideoRenderer | null): Play;
 
-        // Own static methods of GstPlay.Play
+        // Static methods
 
         static config_get_pipeline_dump_in_error_details(config: Gst.Structure): boolean;
         static config_get_position_update_interval(config: Gst.Structure): number;
@@ -439,7 +439,7 @@ export namespace GstPlay {
         static visualizations_free(viss: PlayVisualization): void;
         static visualizations_get(): PlayVisualization[];
 
-        // Own methods of GstPlay.Play
+        // Methods
 
         /**
          * Retrieve the current value of audio-video-offset property
@@ -679,13 +679,13 @@ export namespace GstPlay {
     class PlayAudioInfo extends PlayStreamInfo {
         static $gtype: GObject.GType<PlayAudioInfo>;
 
-        // Constructors of GstPlay.PlayAudioInfo
+        // Constructors
 
         constructor(properties?: Partial<PlayAudioInfo.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of GstPlay.PlayAudioInfo
+        // Methods
 
         get_bitrate(): number;
         get_channels(): number;
@@ -706,13 +706,13 @@ export namespace GstPlay {
     class PlayMediaInfo extends GObject.Object {
         static $gtype: GObject.GType<PlayMediaInfo>;
 
-        // Constructors of GstPlay.PlayMediaInfo
+        // Constructors
 
         constructor(properties?: Partial<PlayMediaInfo.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of GstPlay.PlayMediaInfo
+        // Methods
 
         get_audio_streams(): PlayAudioInfo[];
         get_container_format(): string | null;
@@ -802,11 +802,11 @@ export namespace GstPlay {
     class PlaySignalAdapter extends GObject.Object {
         static $gtype: GObject.GType<PlaySignalAdapter>;
 
-        // Own properties of GstPlay.PlaySignalAdapter
+        // Properties
 
         get play(): Play;
 
-        // Constructors of GstPlay.PlaySignalAdapter
+        // Constructors
 
         constructor(properties?: Partial<PlaySignalAdapter.ConstructorProps>, ...args: any[]);
 
@@ -818,7 +818,7 @@ export namespace GstPlay {
 
         static new_with_main_context(play: Play, context: GLib.MainContext): PlaySignalAdapter;
 
-        // Own signals of GstPlay.PlaySignalAdapter
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -881,7 +881,7 @@ export namespace GstPlay {
         ): number;
         emit(signal: 'warning', error: GLib.Error, details?: Gst.Structure | null): void;
 
-        // Own methods of GstPlay.PlaySignalAdapter
+        // Methods
 
         get_play(): Play;
     }
@@ -900,13 +900,13 @@ export namespace GstPlay {
     abstract class PlayStreamInfo extends GObject.Object {
         static $gtype: GObject.GType<PlayStreamInfo>;
 
-        // Constructors of GstPlay.PlayStreamInfo
+        // Constructors
 
         constructor(properties?: Partial<PlayStreamInfo.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of GstPlay.PlayStreamInfo
+        // Methods
 
         get_caps(): Gst.Caps | null;
         /**
@@ -941,13 +941,13 @@ export namespace GstPlay {
     class PlaySubtitleInfo extends PlayStreamInfo {
         static $gtype: GObject.GType<PlaySubtitleInfo>;
 
-        // Constructors of GstPlay.PlaySubtitleInfo
+        // Constructors
 
         constructor(properties?: Partial<PlaySubtitleInfo.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of GstPlay.PlaySubtitleInfo
+        // Methods
 
         get_language(): string | null;
     }
@@ -964,13 +964,13 @@ export namespace GstPlay {
     class PlayVideoInfo extends PlayStreamInfo {
         static $gtype: GObject.GType<PlayVideoInfo>;
 
-        // Constructors of GstPlay.PlayVideoInfo
+        // Constructors
 
         constructor(properties?: Partial<PlayVideoInfo.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of GstPlay.PlayVideoInfo
+        // Methods
 
         get_bitrate(): number;
         get_framerate(): [number, number];
@@ -997,7 +997,7 @@ export namespace GstPlay {
     class PlayVideoOverlayVideoRenderer extends GObject.Object implements PlayVideoRenderer {
         static $gtype: GObject.GType<PlayVideoOverlayVideoRenderer>;
 
-        // Own properties of GstPlay.PlayVideoOverlayVideoRenderer
+        // Properties
 
         get video_sink(): Gst.Element;
         set video_sink(val: Gst.Element);
@@ -1008,18 +1008,18 @@ export namespace GstPlay {
         get windowHandle(): any;
         set windowHandle(val: any);
 
-        // Constructors of GstPlay.PlayVideoOverlayVideoRenderer
+        // Constructors
 
         constructor(properties?: Partial<PlayVideoOverlayVideoRenderer.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of GstPlay.PlayVideoOverlayVideoRenderer
+        // Static methods
 
         static ['new'](window_handle?: any | null): PlayVideoRenderer;
         static new_with_sink(window_handle: any | null, video_sink: Gst.Element): PlayVideoRenderer;
 
-        // Own methods of GstPlay.PlayVideoOverlayVideoRenderer
+        // Methods
 
         /**
          * Tell an overlay that it has been exposed. This will redraw the current frame
@@ -1474,12 +1474,12 @@ export namespace GstPlay {
     class PlayVisualization {
         static $gtype: GObject.GType<PlayVisualization>;
 
-        // Own fields of GstPlay.PlayVisualization
+        // Fields
 
         name: string;
         description: string;
 
-        // Constructors of GstPlay.PlayVisualization
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -1489,7 +1489,7 @@ export namespace GstPlay {
         );
         _init(...args: any[]): void;
 
-        // Own methods of GstPlay.PlayVisualization
+        // Methods
 
         /**
          * Makes a copy of the #GstPlayVisualization. The result must be

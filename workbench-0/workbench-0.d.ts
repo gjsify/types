@@ -74,13 +74,13 @@ export namespace Workbench {
     class CompletionProvider extends GObject.Object implements GtkSource.CompletionProvider {
         static $gtype: GObject.GType<CompletionProvider>;
 
-        // Constructors of Workbench.CompletionProvider
+        // Constructors
 
         constructor(properties?: Partial<CompletionProvider.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of Workbench.CompletionProvider
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -92,7 +92,7 @@ export namespace Workbench {
         ): number;
         emit(signal: 'completion-request', request: CompletionRequest): void;
 
-        // Own virtual methods of Workbench.CompletionProvider
+        // Virtual methods
 
         /**
          * the class closure for #WorkbenchCompletionProvider::completion-request
@@ -797,7 +797,7 @@ export namespace Workbench {
     {
         static $gtype: GObject.GType<CompletionRequest>;
 
-        // Own properties of Workbench.CompletionRequest
+        // Properties
 
         get cancellable(): Gio.Cancellable;
         /**
@@ -835,13 +835,13 @@ export namespace Workbench {
          */
         get state(): RequestState;
 
-        // Constructors of Workbench.CompletionRequest
+        // Constructors
 
         constructor(properties?: Partial<CompletionRequest.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of Workbench.CompletionRequest
+        // Methods
 
         /**
          * Add a [class`GObject`.Object] to `request`.
@@ -1403,7 +1403,7 @@ export namespace Workbench {
     {
         static $gtype: GObject.GType<PreviewWindow>;
 
-        // Constructors of Workbench.PreviewWindow
+        // Constructors
 
         constructor(properties?: Partial<PreviewWindow.ConstructorProps>, ...args: any[]);
 
@@ -1411,7 +1411,7 @@ export namespace Workbench {
 
         static ['new'](): PreviewWindow;
 
-        // Own methods of Workbench.PreviewWindow
+        // Methods
 
         get_content(): Gtk.Widget;
         set_content(content: Gtk.Widget): void;

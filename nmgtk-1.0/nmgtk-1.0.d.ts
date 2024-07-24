@@ -161,14 +161,14 @@ export namespace NMGtk {
     {
         static $gtype: GObject.GType<MobileProvidersDatabase>;
 
-        // Own properties of NMGtk.MobileProvidersDatabase
+        // Properties
 
         get country_codes(): string;
         get countryCodes(): string;
         get service_providers(): string;
         get serviceProviders(): string;
 
-        // Constructors of NMGtk.MobileProvidersDatabase
+        // Constructors
 
         constructor(properties?: Partial<MobileProvidersDatabase.ConstructorProps>, ...args: any[]);
 
@@ -185,7 +185,7 @@ export namespace NMGtk {
             cancellable?: Gio.Cancellable | null,
         ): MobileProvidersDatabase;
 
-        // Own static methods of NMGtk.MobileProvidersDatabase
+        // Static methods
 
         static ['new'](
             country_codes?: string | null,
@@ -194,7 +194,7 @@ export namespace NMGtk {
             callback?: Gio.AsyncReadyCallback<MobileProvidersDatabase> | null,
         ): void;
 
-        // Own methods of NMGtk.MobileProvidersDatabase
+        // Methods
 
         dump(): void;
         get_countries(): GLib.HashTable<string, CountryInfo>;
@@ -814,7 +814,7 @@ export namespace NMGtk {
     class VpnPasswordDialog extends Gtk.Dialog implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<VpnPasswordDialog>;
 
-        // Constructors of NMGtk.VpnPasswordDialog
+        // Constructors
 
         constructor(properties?: Partial<VpnPasswordDialog.ConstructorProps>, ...args: any[]);
 
@@ -825,7 +825,7 @@ export namespace NMGtk {
 
         static ['new'](...args: never[]): any;
 
-        // Own methods of NMGtk.VpnPasswordDialog
+        // Methods
 
         focus_password(): void;
         focus_password_secondary(): void;
@@ -1259,7 +1259,7 @@ export namespace NMGtk {
     class WifiDialog extends Gtk.Dialog implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<WifiDialog>;
 
-        // Constructors of NMGtk.WifiDialog
+        // Constructors
 
         constructor(properties?: Partial<WifiDialog.ConstructorProps>, ...args: any[]);
 
@@ -1283,7 +1283,7 @@ export namespace NMGtk {
 
         static new_for_other(client: NMClient.Client, settings: NMClient.RemoteSettings): WifiDialog;
 
-        // Own methods of NMGtk.WifiDialog
+        // Methods
 
         get_connection(): [NetworkManager.Connection, NMClient.Device, NMClient.AccessPoint];
         get_nag_ignored(): boolean;
@@ -1696,11 +1696,11 @@ export namespace NMGtk {
     class CountryInfo {
         static $gtype: GObject.GType<CountryInfo>;
 
-        // Constructors of NMGtk.CountryInfo
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of NMGtk.CountryInfo
+        // Methods
 
         get_country_code(): string;
         get_country_name(): string;
@@ -1712,11 +1712,11 @@ export namespace NMGtk {
     class MobileAccessMethod {
         static $gtype: GObject.GType<MobileAccessMethod>;
 
-        // Constructors of NMGtk.MobileAccessMethod
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of NMGtk.MobileAccessMethod
+        // Methods
 
         get_3gpp_apn(): string;
         get_dns(): string[];
@@ -1732,11 +1732,11 @@ export namespace NMGtk {
     class MobileProvider {
         static $gtype: GObject.GType<MobileProvider>;
 
-        // Constructors of NMGtk.MobileProvider
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of NMGtk.MobileProvider
+        // Methods
 
         get_3gpp_mcc_mnc(): string[];
         get_cdma_sid(): number[];
@@ -1750,7 +1750,7 @@ export namespace NMGtk {
     abstract class MobileProvidersDatabasePrivate {
         static $gtype: GObject.GType<MobileProvidersDatabasePrivate>;
 
-        // Constructors of NMGtk.MobileProvidersDatabasePrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -1758,11 +1758,11 @@ export namespace NMGtk {
     abstract class MobileWizard {
         static $gtype: GObject.GType<MobileWizard>;
 
-        // Constructors of NMGtk.MobileWizard
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of NMGtk.MobileWizard
+        // Methods
 
         destroy(): void;
         present(): void;
@@ -1771,7 +1771,7 @@ export namespace NMGtk {
     class MobileWizardAccessMethod {
         static $gtype: GObject.GType<MobileWizardAccessMethod>;
 
-        // Own fields of NMGtk.MobileWizardAccessMethod
+        // Fields
 
         provider_name: string;
         plan_name: string;
@@ -1780,7 +1780,7 @@ export namespace NMGtk {
         password: string;
         gsm_apn: string;
 
-        // Constructors of NMGtk.MobileWizardAccessMethod
+        // Constructors
 
         _init(...args: any[]): void;
     }

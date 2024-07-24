@@ -2981,7 +2981,7 @@ export namespace GObject {
     class Binding extends Object {
         static $gtype: GType<Binding>;
 
-        // Own properties of GObject.Binding
+        // Properties
 
         /**
          * Flags to be used to control the #GBinding
@@ -3028,13 +3028,13 @@ export namespace GObject {
          */
         get targetProperty(): string;
 
-        // Constructors of GObject.Binding
+        // Constructors
 
         constructor(properties?: Partial<Binding.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of GObject.Binding
+        // Methods
 
         /**
          * Retrieves the #GObject instance used as the source of the binding.
@@ -3133,7 +3133,7 @@ export namespace GObject {
     class BindingGroup extends Object {
         static $gtype: GType<BindingGroup>;
 
-        // Own properties of GObject.BindingGroup
+        // Properties
 
         /**
          * The source object used for binding properties.
@@ -3141,7 +3141,7 @@ export namespace GObject {
         get source(): Object;
         set source(val: Object);
 
-        // Constructors of GObject.BindingGroup
+        // Constructors
 
         constructor(properties?: Partial<BindingGroup.ConstructorProps>, ...args: any[]);
 
@@ -3149,7 +3149,7 @@ export namespace GObject {
 
         static ['new'](): BindingGroup;
 
-        // Own methods of GObject.BindingGroup
+        // Methods
 
         /**
          * Creates a binding between `source_property` on the source object
@@ -3243,7 +3243,7 @@ export namespace GObject {
     class InitiallyUnowned extends Object {
         static $gtype: GType<InitiallyUnowned>;
 
-        // Constructors of GObject.InitiallyUnowned
+        // Constructors
 
         constructor(properties?: Partial<InitiallyUnowned.ConstructorProps>, ...args: any[]);
 
@@ -3289,13 +3289,13 @@ export namespace GObject {
     class Object {
         static $gtype: GType<Object>;
 
-        // Constructors of GObject.Object
+        // Constructors
 
         _init(...args: any[]): void;
 
         static newv(object_type: GType, parameters: Parameter[]): Object;
 
-        // Own signals of GObject.Object
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -3304,7 +3304,7 @@ export namespace GObject {
         connect_after(signal: 'notify', callback: (_source: this, pspec: ParamSpec) => void): number;
         emit(signal: 'notify', pspec: ParamSpec): void;
 
-        // Own static methods of GObject.Object
+        // Static methods
 
         static compat_control(what: number, data?: any | null): number;
         /**
@@ -3353,7 +3353,7 @@ export namespace GObject {
         static override_property(property_id: number, name: string): void;
         static _classInit(klass: any): any;
 
-        // Own virtual methods of GObject.Object
+        // Virtual methods
 
         /**
          * the `constructed` function is called by g_object_new() as the
@@ -3421,7 +3421,7 @@ export namespace GObject {
          */
         vfunc_set_property(property_id: number, value: Value | any, pspec: ParamSpec): void;
 
-        // Own methods of GObject.Object
+        // Methods
 
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
@@ -3794,18 +3794,18 @@ export namespace GObject {
     abstract class ParamSpec<A = unknown> {
         static $gtype: GType<ParamSpec>;
 
-        // Own fields of GObject.ParamSpec
+        // Fields
 
         name: string;
         flags: ParamFlags;
         value_type: GType;
         owner_type: GType;
 
-        // Constructors of GObject.ParamSpec
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own static methods of GObject.ParamSpec
+        // Static methods
 
         /**
          * Validate a property name for a #GParamSpec. This can be useful for
@@ -3946,7 +3946,7 @@ export namespace GObject {
         static param(name: string, nick: string, blurb: string, flags: ParamFlags | number, paramType: any): ParamSpec;
         static jsobject<T>(name: string, nick: string, blurb: string, flags: any): ParamSpec<T>;
 
-        // Own virtual methods of GObject.ParamSpec
+        // Virtual methods
 
         /**
          * The instance finalization function (optional), should chain
@@ -3982,7 +3982,7 @@ export namespace GObject {
          */
         vfunc_values_cmp(value1: Value | any, value2: Value | any): number;
 
-        // Own methods of GObject.ParamSpec
+        // Methods
 
         /**
          * Get the short description of a #GParamSpec.
@@ -4108,7 +4108,7 @@ export namespace GObject {
     class SignalGroup extends Object {
         static $gtype: GType<SignalGroup>;
 
-        // Own properties of GObject.SignalGroup
+        // Properties
 
         /**
          * The target instance used when connecting signals.
@@ -4124,7 +4124,7 @@ export namespace GObject {
          */
         get targetType(): GType;
 
-        // Constructors of GObject.SignalGroup
+        // Constructors
 
         constructor(properties?: Partial<SignalGroup.ConstructorProps>, ...args: any[]);
 
@@ -4132,7 +4132,7 @@ export namespace GObject {
 
         static ['new'](target_type: GType): SignalGroup;
 
-        // Own signals of GObject.SignalGroup
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -4144,7 +4144,7 @@ export namespace GObject {
         connect_after(signal: 'unbind', callback: (_source: this) => void): number;
         emit(signal: 'unbind'): void;
 
-        // Own methods of GObject.SignalGroup
+        // Methods
 
         /**
          * Blocks all signal handlers managed by `self` so they will not
@@ -4252,20 +4252,20 @@ export namespace GObject {
     abstract class TypeModule extends Object implements TypePlugin {
         static $gtype: GType<TypeModule>;
 
-        // Own fields of GObject.TypeModule
+        // Fields
 
         use_count: number;
         type_infos: any[];
         interface_infos: any[];
         name: string;
 
-        // Constructors of GObject.TypeModule
+        // Constructors
 
         constructor(properties?: Partial<TypeModule.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own virtual methods of GObject.TypeModule
+        // Virtual methods
 
         /**
          * loads the module and registers one or more types using
@@ -4277,7 +4277,7 @@ export namespace GObject {
          */
         vfunc_unload(): void;
 
-        // Own methods of GObject.TypeModule
+        // Methods
 
         /**
          * Registers an additional interface for a type, whose interface lives
@@ -4794,15 +4794,15 @@ export namespace GObject {
     class CClosure {
         static $gtype: GType<CClosure>;
 
-        // Own fields of GObject.CClosure
+        // Fields
 
         callback: any;
 
-        // Constructors of GObject.CClosure
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own static methods of GObject.CClosure
+        // Static methods
 
         /**
          * A #GClosureMarshal function for use with signals with handlers that
@@ -5234,12 +5234,12 @@ export namespace GObject {
     class ClosureNotifyData {
         static $gtype: GType<ClosureNotifyData>;
 
-        // Own fields of GObject.ClosureNotifyData
+        // Fields
 
         data: any;
         notify: ClosureNotify;
 
-        // Constructors of GObject.ClosureNotifyData
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5251,14 +5251,14 @@ export namespace GObject {
     class EnumClass {
         static $gtype: GType<EnumClass>;
 
-        // Own fields of GObject.EnumClass
+        // Fields
 
         minimum: number;
         maximum: number;
         n_values: number;
         values: EnumValue;
 
-        // Constructors of GObject.EnumClass
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5270,13 +5270,13 @@ export namespace GObject {
     class EnumValue {
         static $gtype: GType<EnumValue>;
 
-        // Own fields of GObject.EnumValue
+        // Fields
 
         value: number;
         value_name: string;
         value_nick: string;
 
-        // Constructors of GObject.EnumValue
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -5295,13 +5295,13 @@ export namespace GObject {
     class FlagsClass {
         static $gtype: GType<FlagsClass>;
 
-        // Own fields of GObject.FlagsClass
+        // Fields
 
         mask: number;
         n_values: number;
         values: FlagsValue;
 
-        // Constructors of GObject.FlagsClass
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5313,13 +5313,13 @@ export namespace GObject {
     class FlagsValue {
         static $gtype: GType<FlagsValue>;
 
-        // Own fields of GObject.FlagsValue
+        // Fields
 
         value: number;
         value_name: string;
         value_nick: string;
 
-        // Constructors of GObject.FlagsValue
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -5339,13 +5339,13 @@ export namespace GObject {
     class InterfaceInfo {
         static $gtype: GType<InterfaceInfo>;
 
-        // Own fields of GObject.InterfaceInfo
+        // Fields
 
         interface_init: InterfaceInitFunc;
         interface_finalize: InterfaceFinalizeFunc;
         interface_data: any;
 
-        // Constructors of GObject.InterfaceInfo
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5358,11 +5358,11 @@ export namespace GObject {
     class ObjectConstructParam {
         static $gtype: GType<ObjectConstructParam>;
 
-        // Own fields of GObject.ObjectConstructParam
+        // Fields
 
         pspec: ParamSpec;
 
-        // Constructors of GObject.ObjectConstructParam
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5378,11 +5378,11 @@ export namespace GObject {
     abstract class ParamSpecPool {
         static $gtype: GType<ParamSpecPool>;
 
-        // Constructors of GObject.ParamSpecPool
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of GObject.ParamSpecPool
+        // Methods
 
         /**
          * Frees the resources allocated by a #GParamSpecPool.
@@ -5436,13 +5436,13 @@ export namespace GObject {
     class ParamSpecTypeInfo {
         static $gtype: GType<ParamSpecTypeInfo>;
 
-        // Own fields of GObject.ParamSpecTypeInfo
+        // Fields
 
         instance_size: number;
         n_preallocs: number;
         value_type: GType;
 
-        // Constructors of GObject.ParamSpecTypeInfo
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5454,11 +5454,11 @@ export namespace GObject {
     class Parameter {
         static $gtype: GType<Parameter>;
 
-        // Own fields of GObject.Parameter
+        // Fields
 
         name: string;
 
-        // Constructors of GObject.Parameter
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5470,13 +5470,13 @@ export namespace GObject {
     class SignalInvocationHint {
         static $gtype: GType<SignalInvocationHint>;
 
-        // Own fields of GObject.SignalInvocationHint
+        // Fields
 
         signal_id: number;
         detail: GLib.Quark;
         run_type: SignalFlags;
 
-        // Constructors of GObject.SignalInvocationHint
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5489,7 +5489,7 @@ export namespace GObject {
     class SignalQuery {
         static $gtype: GType<SignalQuery>;
 
-        // Own fields of GObject.SignalQuery
+        // Fields
 
         signal_id: number;
         signal_name: string;
@@ -5499,7 +5499,7 @@ export namespace GObject {
         n_params: number;
         param_types: GType[];
 
-        // Constructors of GObject.SignalQuery
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5510,11 +5510,11 @@ export namespace GObject {
     class TypeClass {
         static $gtype: GType<TypeClass>;
 
-        // Constructors of GObject.TypeClass
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own static methods of GObject.TypeClass
+        // Static methods
 
         static adjust_private_offset(g_class: any | null, private_size_or_offset: number): void;
         /**
@@ -5540,7 +5540,7 @@ export namespace GObject {
          */
         static ref(type: GType): TypeClass;
 
-        // Own methods of GObject.TypeClass
+        // Methods
 
         /**
          * Registers a private structure for an instantiatable type.
@@ -5639,11 +5639,11 @@ export namespace GObject {
     class TypeFundamentalInfo {
         static $gtype: GType<TypeFundamentalInfo>;
 
-        // Own fields of GObject.TypeFundamentalInfo
+        // Fields
 
         type_flags: TypeFundamentalFlags;
 
-        // Constructors of GObject.TypeFundamentalInfo
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5662,7 +5662,7 @@ export namespace GObject {
     class TypeInfo {
         static $gtype: GType<TypeInfo>;
 
-        // Own fields of GObject.TypeInfo
+        // Fields
 
         class_size: number;
         base_init: BaseInitFunc;
@@ -5674,7 +5674,7 @@ export namespace GObject {
         n_preallocs: number;
         instance_init: InstanceInitFunc;
 
-        // Constructors of GObject.TypeInfo
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5685,11 +5685,11 @@ export namespace GObject {
     class TypeInstance {
         static $gtype: GType<TypeInstance>;
 
-        // Constructors of GObject.TypeInstance
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of GObject.TypeInstance
+        // Methods
 
         get_private(private_type: GType): any | null;
     }
@@ -5700,11 +5700,11 @@ export namespace GObject {
     class TypeInterface {
         static $gtype: GType<TypeInterface>;
 
-        // Constructors of GObject.TypeInterface
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own static methods of GObject.TypeInterface
+        // Static methods
 
         /**
          * Adds `prerequisite_type` to the list of prerequisites of `interface_type`.
@@ -5748,7 +5748,7 @@ export namespace GObject {
          */
         static prerequisites(interface_type: GType): GType[];
 
-        // Own methods of GObject.TypeInterface
+        // Methods
 
         /**
          * Returns the corresponding #GTypeInterface structure of the parent type
@@ -5768,14 +5768,14 @@ export namespace GObject {
     class TypePluginClass {
         static $gtype: GType<TypePluginClass>;
 
-        // Own fields of GObject.TypePluginClass
+        // Fields
 
         use_plugin: TypePluginUse;
         unuse_plugin: TypePluginUnuse;
         complete_type_info: TypePluginCompleteTypeInfo;
         complete_interface_info: TypePluginCompleteInterfaceInfo;
 
-        // Constructors of GObject.TypePluginClass
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5788,14 +5788,14 @@ export namespace GObject {
     class TypeQuery {
         static $gtype: GType<TypeQuery>;
 
-        // Own fields of GObject.TypeQuery
+        // Fields
 
         type: GType;
         type_name: string;
         class_size: number;
         instance_size: number;
 
-        // Constructors of GObject.TypeQuery
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5807,7 +5807,7 @@ export namespace GObject {
     class TypeValueTable {
         static $gtype: GType<TypeValueTable>;
 
-        // Own fields of GObject.TypeValueTable
+        // Fields
 
         value_init: TypeValueInitFunc;
         value_free: TypeValueFreeFunc;
@@ -5818,7 +5818,7 @@ export namespace GObject {
         lcopy_format: string;
         lcopy_value: TypeValueLCopyFunc;
 
-        // Constructors of GObject.TypeValueTable
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -5838,11 +5838,11 @@ export namespace GObject {
     class Value {
         static $gtype: GType<Value>;
 
-        // Constructors of GObject.Value
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own static methods of GObject.Value
+        // Static methods
 
         /**
          * Returns whether a #GValue of type `src_type` can be copied into
@@ -5861,7 +5861,7 @@ export namespace GObject {
          */
         static type_transformable(src_type: GType, dest_type: GType): boolean;
 
-        // Own methods of GObject.Value
+        // Methods
 
         /**
          * Copies the value of `src_value` into `dest_value`.
@@ -6277,18 +6277,18 @@ export namespace GObject {
     class ValueArray {
         static $gtype: GType<ValueArray>;
 
-        // Own fields of GObject.ValueArray
+        // Fields
 
         n_values: number;
 
-        // Constructors of GObject.ValueArray
+        // Constructors
 
         constructor(n_prealloced: number);
         _init(...args: any[]): void;
 
         static ['new'](n_prealloced: number): ValueArray;
 
-        // Own methods of GObject.ValueArray
+        // Methods
 
         /**
          * Insert a copy of `value` as last element of `value_array`. If `value` is
@@ -6381,7 +6381,7 @@ export namespace GObject {
     class WeakRef {
         static $gtype: GType<WeakRef>;
 
-        // Constructors of GObject.WeakRef
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -6392,7 +6392,7 @@ export namespace GObject {
     class TypeCValue {
         static $gtype: GType<TypeCValue>;
 
-        // Own fields of GObject.TypeCValue
+        // Fields
 
         v_int: number;
         v_long: number;
@@ -6400,7 +6400,7 @@ export namespace GObject {
         v_double: number;
         v_pointer: any;
 
-        // Constructors of GObject.TypeCValue
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -6417,7 +6417,7 @@ export namespace GObject {
     class _Value__data__union {
         static $gtype: GType<_Value__data__union>;
 
-        // Own fields of GObject._Value__data__union
+        // Fields
 
         v_int: number;
         v_uint: number;
@@ -6429,7 +6429,7 @@ export namespace GObject {
         v_double: number;
         v_pointer: any;
 
-        // Constructors of GObject._Value__data__union
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -6458,7 +6458,7 @@ export namespace GObject {
         prototype: TypePlugin;
     }
     interface TypePlugin extends Object {
-        // Own methods of GObject.TypePlugin
+        // Methods
 
         /**
          * Calls the `complete_interface_info` function from the
@@ -6498,7 +6498,7 @@ export namespace GObject {
     type SignalCVaMarshaller = unknown;
     type Type = number;
     interface SignalMatch {
-        // Own fields of GObject.SignalMatch
+        // Fields
 
         signalId: string;
         detail: string;

@@ -793,7 +793,7 @@ export namespace OSTree {
     class AsyncProgress extends GObject.Object {
         static $gtype: GObject.GType<AsyncProgress>;
 
-        // Constructors of OSTree.AsyncProgress
+        // Constructors
 
         constructor(properties?: Partial<AsyncProgress.ConstructorProps>, ...args: any[]);
 
@@ -803,7 +803,7 @@ export namespace OSTree {
 
         static new_and_connect(changed?: any | null, user_data?: any | null): AsyncProgress;
 
-        // Own signals of OSTree.AsyncProgress
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -812,11 +812,11 @@ export namespace OSTree {
         connect_after(signal: 'changed', callback: (_source: this) => void): number;
         emit(signal: 'changed'): void;
 
-        // Own virtual methods of OSTree.AsyncProgress
+        // Virtual methods
 
         vfunc_changed(): void;
 
-        // Own methods of OSTree.AsyncProgress
+        // Methods
 
         /**
          * Process any pending signals, ensuring the main context is cleared
@@ -841,7 +841,7 @@ export namespace OSTree {
     class BootconfigParser extends GObject.Object {
         static $gtype: GObject.GType<BootconfigParser>;
 
-        // Constructors of OSTree.BootconfigParser
+        // Constructors
 
         constructor(properties?: Partial<BootconfigParser.ConstructorProps>, ...args: any[]);
 
@@ -849,7 +849,7 @@ export namespace OSTree {
 
         static ['new'](): BootconfigParser;
 
-        // Own methods of OSTree.BootconfigParser
+        // Methods
 
         clone(): BootconfigParser;
         get(key: string): string;
@@ -879,11 +879,11 @@ export namespace OSTree {
     class ChecksumInputStream extends Gio.FilterInputStream {
         static $gtype: GObject.GType<ChecksumInputStream>;
 
-        // Own properties of OSTree.ChecksumInputStream
+        // Properties
 
         get checksum(): any;
 
-        // Constructors of OSTree.ChecksumInputStream
+        // Constructors
 
         constructor(properties?: Partial<ChecksumInputStream.ConstructorProps>, ...args: any[]);
 
@@ -901,7 +901,7 @@ export namespace OSTree {
     class Deployment extends GObject.Object {
         static $gtype: GObject.GType<Deployment>;
 
-        // Constructors of OSTree.Deployment
+        // Constructors
 
         constructor(properties?: Partial<Deployment.ConstructorProps>, ...args: any[]);
 
@@ -916,12 +916,12 @@ export namespace OSTree {
             bootserial: number,
         ): Deployment;
 
-        // Own static methods of OSTree.Deployment
+        // Static methods
 
         static hash(v?: any | null): number;
         static unlocked_state_to_string(state: DeploymentUnlockedState): string;
 
-        // Own methods of OSTree.Deployment
+        // Methods
 
         clone(): Deployment;
         equal(bp: Deployment): boolean;
@@ -956,13 +956,13 @@ export namespace OSTree {
     class GpgVerifyResult extends GObject.Object implements Gio.Initable {
         static $gtype: GObject.GType<GpgVerifyResult>;
 
-        // Constructors of OSTree.GpgVerifyResult
+        // Constructors
 
         constructor(properties?: Partial<GpgVerifyResult.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own static methods of OSTree.GpgVerifyResult
+        // Static methods
 
         /**
          * Similar to ostree_gpg_verify_result_describe() but takes a #GVariant of
@@ -983,7 +983,7 @@ export namespace OSTree {
             flags: GpgSignatureFormatFlags,
         ): void;
 
-        // Own methods of OSTree.GpgVerifyResult
+        // Methods
 
         /**
          * Counts all the signatures in `result`.
@@ -1578,7 +1578,7 @@ export namespace OSTree {
     class MutableTree extends GObject.Object {
         static $gtype: GObject.GType<MutableTree>;
 
-        // Constructors of OSTree.MutableTree
+        // Constructors
 
         constructor(properties?: Partial<MutableTree.ConstructorProps>, ...args: any[]);
 
@@ -1586,7 +1586,7 @@ export namespace OSTree {
 
         static ['new'](): MutableTree;
 
-        // Own methods of OSTree.MutableTree
+        // Methods
 
         ensure_dir(name: string, out_subdir: MutableTree): boolean;
         /**
@@ -1634,7 +1634,7 @@ export namespace OSTree {
     class Repo extends GObject.Object {
         static $gtype: GObject.GType<Repo>;
 
-        // Own properties of OSTree.Repo
+        // Properties
 
         get path(): Gio.File;
         get remotes_config_dir(): string;
@@ -1642,7 +1642,7 @@ export namespace OSTree {
         get sysroot_path(): Gio.File;
         get sysrootPath(): Gio.File;
 
-        // Constructors of OSTree.Repo
+        // Constructors
 
         constructor(properties?: Partial<Repo.ConstructorProps>, ...args: any[]);
 
@@ -1654,7 +1654,7 @@ export namespace OSTree {
 
         static new_for_sysroot_path(repo_path: Gio.File, sysroot_path: Gio.File): Repo;
 
-        // Own signals of OSTree.Repo
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -1669,7 +1669,7 @@ export namespace OSTree {
         ): number;
         emit(signal: 'gpg-verify-result', checksum: string, result: GpgVerifyResult): void;
 
-        // Own static methods of OSTree.Repo
+        // Static methods
 
         static mode_from_string(mode: string, out_mode: RepoMode): boolean;
         /**
@@ -1695,7 +1695,7 @@ export namespace OSTree {
          */
         static traverse_new_reachable(): GLib.HashTable<GLib.Variant, GLib.Variant>;
 
-        // Own methods of OSTree.Repo
+        // Methods
 
         abort_transaction(cancellable?: Gio.Cancellable | null): boolean;
         /**
@@ -2795,13 +2795,13 @@ export namespace OSTree {
     class RepoFile extends GObject.Object implements Gio.File {
         static $gtype: GObject.GType<RepoFile>;
 
-        // Constructors of OSTree.RepoFile
+        // Constructors
 
         constructor(properties?: Partial<RepoFile.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of OSTree.RepoFile
+        // Methods
 
         ensure_resolved(): boolean;
         get_checksum(): string;
@@ -6854,11 +6854,11 @@ export namespace OSTree {
     class SePolicy extends GObject.Object implements Gio.Initable {
         static $gtype: GObject.GType<SePolicy>;
 
-        // Own properties of OSTree.SePolicy
+        // Properties
 
         get path(): Gio.File;
 
-        // Constructors of OSTree.SePolicy
+        // Constructors
 
         constructor(properties?: Partial<SePolicy.ConstructorProps>, ...args: any[]);
 
@@ -6866,7 +6866,7 @@ export namespace OSTree {
 
         static ['new'](path: Gio.File, cancellable?: Gio.Cancellable | null): SePolicy;
 
-        // Own static methods of OSTree.SePolicy
+        // Static methods
 
         /**
          * Cleanup function for ostree_sepolicy_setfscreatecon().
@@ -6874,7 +6874,7 @@ export namespace OSTree {
          */
         static fscreatecon_cleanup(unused?: any | null): void;
 
-        // Own methods of OSTree.SePolicy
+        // Methods
 
         get_csum(): string;
         /**
@@ -7404,11 +7404,11 @@ export namespace OSTree {
     class Sysroot extends GObject.Object {
         static $gtype: GObject.GType<Sysroot>;
 
-        // Own properties of OSTree.Sysroot
+        // Properties
 
         get path(): Gio.File;
 
-        // Constructors of OSTree.Sysroot
+        // Constructors
 
         constructor(properties?: Partial<Sysroot.ConstructorProps>, ...args: any[]);
 
@@ -7418,11 +7418,11 @@ export namespace OSTree {
 
         static new_default(): Sysroot;
 
-        // Own static methods of OSTree.Sysroot
+        // Static methods
 
         static get_deployment_origin_path(deployment_path: Gio.File): Gio.File;
 
-        // Own methods of OSTree.Sysroot
+        // Methods
 
         /**
          * Delete any state that resulted from a partially completed
@@ -7655,13 +7655,13 @@ export namespace OSTree {
     class SysrootUpgrader extends GObject.Object implements Gio.Initable {
         static $gtype: GObject.GType<SysrootUpgrader>;
 
-        // Own properties of OSTree.SysrootUpgrader
+        // Properties
 
         get flags(): SysrootUpgraderFlags;
         get osname(): string;
         get sysroot(): Sysroot;
 
-        // Constructors of OSTree.SysrootUpgrader
+        // Constructors
 
         constructor(properties?: Partial<SysrootUpgrader.ConstructorProps>, ...args: any[]);
 
@@ -7682,7 +7682,7 @@ export namespace OSTree {
             cancellable?: Gio.Cancellable | null,
         ): SysrootUpgrader;
 
-        // Own static methods of OSTree.SysrootUpgrader
+        // Static methods
 
         /**
          * Check that the timestamp on `to_rev` is equal to or newer than
@@ -7694,7 +7694,7 @@ export namespace OSTree {
          */
         static check_timestamps(repo: Repo, from_rev: string, to_rev: string): boolean;
 
-        // Own methods of OSTree.SysrootUpgrader
+        // Methods
 
         /**
          * Write the new deployment to disk, perform a configuration merge
@@ -8241,7 +8241,7 @@ export namespace OSTree {
     abstract class Bootloader {
         static $gtype: GObject.GType<Bootloader>;
 
-        // Constructors of OSTree.Bootloader
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -8249,7 +8249,7 @@ export namespace OSTree {
     abstract class BootloaderGrub2 {
         static $gtype: GObject.GType<BootloaderGrub2>;
 
-        // Constructors of OSTree.BootloaderGrub2
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -8257,7 +8257,7 @@ export namespace OSTree {
     class BootloaderInterface {
         static $gtype: GObject.GType<BootloaderInterface>;
 
-        // Constructors of OSTree.BootloaderInterface
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -8265,7 +8265,7 @@ export namespace OSTree {
     abstract class BootloaderSyslinux {
         static $gtype: GObject.GType<BootloaderSyslinux>;
 
-        // Constructors of OSTree.BootloaderSyslinux
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -8273,7 +8273,7 @@ export namespace OSTree {
     abstract class BootloaderUboot {
         static $gtype: GObject.GType<BootloaderUboot>;
 
-        // Constructors of OSTree.BootloaderUboot
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -8282,7 +8282,7 @@ export namespace OSTree {
     abstract class ChecksumInputStreamPrivate {
         static $gtype: GObject.GType<ChecksumInputStreamPrivate>;
 
-        // Constructors of OSTree.ChecksumInputStreamPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -8290,7 +8290,7 @@ export namespace OSTree {
     class CmdPrivateVTable {
         static $gtype: GObject.GType<CmdPrivateVTable>;
 
-        // Constructors of OSTree.CmdPrivateVTable
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -8298,7 +8298,7 @@ export namespace OSTree {
     class DiffItem {
         static $gtype: GObject.GType<DiffItem>;
 
-        // Own fields of OSTree.DiffItem
+        // Fields
 
         refcount: number;
         src: Gio.File;
@@ -8308,11 +8308,11 @@ export namespace OSTree {
         src_checksum: string;
         target_checksum: string;
 
-        // Constructors of OSTree.DiffItem
+        // Constructors
 
         _init(...args: any[]): void;
 
-        // Own methods of OSTree.DiffItem
+        // Methods
 
         ref(): DiffItem;
         unref(): void;
@@ -8321,7 +8321,7 @@ export namespace OSTree {
     abstract class GpgVerifier {
         static $gtype: GObject.GType<GpgVerifier>;
 
-        // Constructors of OSTree.GpgVerifier
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -8329,7 +8329,7 @@ export namespace OSTree {
     class LibarchiveInputStream {
         static $gtype: GObject.GType<LibarchiveInputStream>;
 
-        // Constructors of OSTree.LibarchiveInputStream
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -8337,7 +8337,7 @@ export namespace OSTree {
     class LibarchiveInputStreamClass {
         static $gtype: GObject.GType<LibarchiveInputStreamClass>;
 
-        // Constructors of OSTree.LibarchiveInputStreamClass
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -8345,7 +8345,7 @@ export namespace OSTree {
     abstract class LibarchiveInputStreamPrivate {
         static $gtype: GObject.GType<LibarchiveInputStreamPrivate>;
 
-        // Constructors of OSTree.LibarchiveInputStreamPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -8356,7 +8356,7 @@ export namespace OSTree {
     abstract class LzmaCompressor {
         static $gtype: GObject.GType<LzmaCompressor>;
 
-        // Constructors of OSTree.LzmaCompressor
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -8364,7 +8364,7 @@ export namespace OSTree {
     class LzmaCompressorClass {
         static $gtype: GObject.GType<LzmaCompressorClass>;
 
-        // Constructors of OSTree.LzmaCompressorClass
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -8372,7 +8372,7 @@ export namespace OSTree {
     abstract class LzmaDecompressor {
         static $gtype: GObject.GType<LzmaDecompressor>;
 
-        // Constructors of OSTree.LzmaDecompressor
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -8380,7 +8380,7 @@ export namespace OSTree {
     class LzmaDecompressorClass {
         static $gtype: GObject.GType<LzmaDecompressorClass>;
 
-        // Constructors of OSTree.LzmaDecompressorClass
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -8389,11 +8389,11 @@ export namespace OSTree {
     class MutableTreeIter {
         static $gtype: GObject.GType<MutableTreeIter>;
 
-        // Own fields of OSTree.MutableTreeIter
+        // Fields
 
         in_files: boolean;
 
-        // Constructors of OSTree.MutableTreeIter
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -8408,7 +8408,7 @@ export namespace OSTree {
     class RepoCheckoutAtOptions {
         static $gtype: GObject.GType<RepoCheckoutAtOptions>;
 
-        // Own fields of OSTree.RepoCheckoutAtOptions
+        // Fields
 
         mode: RepoCheckoutMode;
         overwrite_mode: RepoCheckoutOverwriteMode;
@@ -8421,7 +8421,7 @@ export namespace OSTree {
         unused_ints: number[];
         unused_ptrs: any[];
 
-        // Constructors of OSTree.RepoCheckoutAtOptions
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -8432,14 +8432,14 @@ export namespace OSTree {
     class RepoCommitModifier {
         static $gtype: GObject.GType<RepoCommitModifier>;
 
-        // Constructors of OSTree.RepoCommitModifier
+        // Constructors
 
         constructor(flags: RepoCommitModifierFlags, commit_filter?: RepoCommitFilter | null);
         _init(...args: any[]): void;
 
         static ['new'](flags: RepoCommitModifierFlags, commit_filter?: RepoCommitFilter | null): RepoCommitModifier;
 
-        // Own methods of OSTree.RepoCommitModifier
+        // Methods
 
         ref(): RepoCommitModifier;
         /**
@@ -8482,13 +8482,13 @@ export namespace OSTree {
     class RepoCommitTraverseIter {
         static $gtype: GObject.GType<RepoCommitTraverseIter>;
 
-        // Own fields of OSTree.RepoCommitTraverseIter
+        // Fields
 
         initialized: boolean;
         dummy: any[];
         dummy_checksum_data: number[];
 
-        // Constructors of OSTree.RepoCommitTraverseIter
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -8499,11 +8499,11 @@ export namespace OSTree {
         );
         _init(...args: any[]): void;
 
-        // Own static methods of OSTree.RepoCommitTraverseIter
+        // Static methods
 
         static cleanup(p?: any | null): void;
 
-        // Own methods of OSTree.RepoCommitTraverseIter
+        // Methods
 
         clear(): void;
         /**
@@ -8553,14 +8553,14 @@ export namespace OSTree {
     class RepoDevInoCache {
         static $gtype: GObject.GType<RepoDevInoCache>;
 
-        // Constructors of OSTree.RepoDevInoCache
+        // Constructors
 
         constructor(properties?: Partial<{}>);
         _init(...args: any[]): void;
 
         static ['new'](): RepoDevInoCache;
 
-        // Own methods of OSTree.RepoDevInoCache
+        // Methods
 
         ref(): RepoDevInoCache;
         unref(): void;
@@ -8570,7 +8570,7 @@ export namespace OSTree {
     abstract class RepoFileEnumerator {
         static $gtype: GObject.GType<RepoFileEnumerator>;
 
-        // Constructors of OSTree.RepoFileEnumerator
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -8578,7 +8578,7 @@ export namespace OSTree {
     class RepoFileEnumeratorClass {
         static $gtype: GObject.GType<RepoFileEnumeratorClass>;
 
-        // Constructors of OSTree.RepoFileEnumeratorClass
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -8590,7 +8590,7 @@ export namespace OSTree {
     class RepoTransactionStats {
         static $gtype: GObject.GType<RepoTransactionStats>;
 
-        // Own fields of OSTree.RepoTransactionStats
+        // Fields
 
         metadata_objects_total: number;
         metadata_objects_written: number;
@@ -8602,7 +8602,7 @@ export namespace OSTree {
         padding3: number;
         padding4: number;
 
-        // Constructors of OSTree.RepoTransactionStats
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -8623,7 +8623,7 @@ export namespace OSTree {
     class RollsumMatches {
         static $gtype: GObject.GType<RollsumMatches>;
 
-        // Own fields of OSTree.RollsumMatches
+        // Fields
 
         crcmatches: number;
         bufmatches: number;
@@ -8631,7 +8631,7 @@ export namespace OSTree {
         match_size: number;
         matches: any[];
 
-        // Constructors of OSTree.RollsumMatches
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -8639,7 +8639,7 @@ export namespace OSTree {
     abstract class TlsCertInteraction {
         static $gtype: GObject.GType<TlsCertInteraction>;
 
-        // Constructors of OSTree.TlsCertInteraction
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -8647,7 +8647,7 @@ export namespace OSTree {
     abstract class TlsCertInteractionClass {
         static $gtype: GObject.GType<TlsCertInteractionClass>;
 
-        // Constructors of OSTree.TlsCertInteractionClass
+        // Constructors
 
         _init(...args: any[]): void;
     }

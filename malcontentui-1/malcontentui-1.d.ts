@@ -66,7 +66,7 @@ export namespace MalcontentUi {
     {
         static $gtype: GObject.GType<RestrictApplicationsDialog>;
 
-        // Own properties of MalcontentUi.RestrictApplicationsDialog
+        // Properties
 
         /**
          * The user’s current app filter, used to set up the dialog. As app filters
@@ -101,7 +101,7 @@ export namespace MalcontentUi {
         get userDisplayName(): string;
         set userDisplayName(val: string);
 
-        // Constructors of MalcontentUi.RestrictApplicationsDialog
+        // Constructors
 
         constructor(properties?: Partial<RestrictApplicationsDialog.ConstructorProps>, ...args: any[]);
 
@@ -112,7 +112,7 @@ export namespace MalcontentUi {
 
         static ['new'](...args: never[]): any;
 
-        // Own methods of MalcontentUi.RestrictApplicationsDialog
+        // Methods
 
         /**
          * Get the app filter settings currently configured in the dialog, by modifying
@@ -2996,7 +2996,7 @@ export namespace MalcontentUi {
     {
         static $gtype: GObject.GType<RestrictApplicationsSelector>;
 
-        // Own properties of MalcontentUi.RestrictApplicationsSelector
+        // Properties
 
         /**
          * The user’s current app filter, used to set up the selector. As app filters
@@ -3015,7 +3015,7 @@ export namespace MalcontentUi {
         get appFilter(): Malcontent.AppFilter;
         set appFilter(val: Malcontent.AppFilter);
 
-        // Constructors of MalcontentUi.RestrictApplicationsSelector
+        // Constructors
 
         constructor(properties?: Partial<RestrictApplicationsSelector.ConstructorProps>, ...args: any[]);
 
@@ -3026,7 +3026,7 @@ export namespace MalcontentUi {
 
         static ['new'](...args: never[]): any;
 
-        // Own signals of MalcontentUi.RestrictApplicationsSelector
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -3035,7 +3035,7 @@ export namespace MalcontentUi {
         connect_after(signal: 'changed', callback: (_source: this) => void): number;
         emit(signal: 'changed'): void;
 
-        // Own methods of MalcontentUi.RestrictApplicationsSelector
+        // Methods
 
         /**
          * Get the app filter settings currently configured in the selector, by modifying
@@ -3533,7 +3533,7 @@ export namespace MalcontentUi {
     class UserControls extends Adw.Bin implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
         static $gtype: GObject.GType<UserControls>;
 
-        // Own properties of MalcontentUi.UserControls
+        // Properties
 
         /**
          * The user’s current app filter, used to set up the user controls. As app
@@ -3634,13 +3634,13 @@ export namespace MalcontentUi {
         get userLocale(): string;
         set userLocale(val: string);
 
-        // Constructors of MalcontentUi.UserControls
+        // Constructors
 
         constructor(properties?: Partial<UserControls.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own methods of MalcontentUi.UserControls
+        // Methods
 
         /**
          * Get the app filter settings currently configured in the user controls, by

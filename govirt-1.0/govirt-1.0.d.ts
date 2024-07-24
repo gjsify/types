@@ -23,18 +23,18 @@ export namespace GoVirt {
     class ProxyError extends GLib.Error {
         static $gtype: GObject.GType<ProxyError>;
 
-        // Static fields of GoVirt.ProxyError
+        // Static fields
 
         static PARSING_FAILED: number;
         static ACTION_FAILED: number;
         static FAULT: number;
 
-        // Constructors of GoVirt.ProxyError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of GoVirt.ProxyError
+        // Static methods
 
         static quark(): GLib.Quark;
     }
@@ -42,16 +42,16 @@ export namespace GoVirt {
     class RestCallError extends GLib.Error {
         static $gtype: GObject.GType<RestCallError>;
 
-        // Static fields of GoVirt.RestCallError
+        // Static fields
 
         static XML: number;
 
-        // Constructors of GoVirt.RestCallError
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of GoVirt.RestCallError
+        // Static methods
 
         static quark(): GLib.Quark;
     }
@@ -89,7 +89,7 @@ export namespace GoVirt {
     class Proxy extends Rest.Proxy {
         static $gtype: GObject.GType<Proxy>;
 
-        // Own properties of GoVirt.Proxy
+        // Properties
 
         get admin(): boolean;
         set admin(val: boolean);
@@ -98,7 +98,7 @@ export namespace GoVirt {
         get caCert(): any[];
         set caCert(val: any[]);
 
-        // Constructors of GoVirt.Proxy
+        // Constructors
 
         constructor(properties?: Partial<Proxy.ConstructorProps>, ...args: any[]);
 
@@ -106,7 +106,7 @@ export namespace GoVirt {
 
         static ['new'](uri: string): Proxy;
 
-        // Own methods of GoVirt.Proxy
+        // Methods
 
         fetch_ca_certificate(): boolean;
         fetch_ca_certificate_async(cancellable: Gio.Cancellable, callback: Gio.AsyncReadyCallback<this>): void;
@@ -148,7 +148,7 @@ export namespace GoVirt {
     class Vm extends GObject.Object {
         static $gtype: GObject.GType<Vm>;
 
-        // Own properties of GoVirt.Vm
+        // Properties
 
         get display(): VmDisplay;
         set display(val: VmDisplay);
@@ -161,7 +161,7 @@ export namespace GoVirt {
         get uuid(): string;
         set uuid(val: string);
 
-        // Constructors of GoVirt.Vm
+        // Constructors
 
         constructor(properties?: Partial<Vm.ConstructorProps>, ...args: any[]);
 
@@ -169,7 +169,7 @@ export namespace GoVirt {
 
         static ['new'](): Vm;
 
-        // Own methods of GoVirt.Vm
+        // Methods
 
         get_ticket(proxy: Proxy): boolean;
         get_ticket_async(proxy: Proxy, cancellable: Gio.Cancellable, callback: Gio.AsyncReadyCallback<this>): void;
@@ -201,7 +201,7 @@ export namespace GoVirt {
     class VmDisplay extends GObject.Object {
         static $gtype: GObject.GType<VmDisplay>;
 
-        // Own properties of GoVirt.VmDisplay
+        // Properties
 
         get address(): string;
         set address(val: string);
@@ -222,7 +222,7 @@ export namespace GoVirt {
         get type(): VmDisplayType;
         set type(val: VmDisplayType);
 
-        // Constructors of GoVirt.VmDisplay
+        // Constructors
 
         constructor(properties?: Partial<VmDisplay.ConstructorProps>, ...args: any[]);
 
@@ -235,7 +235,7 @@ export namespace GoVirt {
     abstract class ProxyPrivate {
         static $gtype: GObject.GType<ProxyPrivate>;
 
-        // Constructors of GoVirt.ProxyPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -245,7 +245,7 @@ export namespace GoVirt {
     abstract class VmDisplayPrivate {
         static $gtype: GObject.GType<VmDisplayPrivate>;
 
-        // Constructors of GoVirt.VmDisplayPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -253,7 +253,7 @@ export namespace GoVirt {
     abstract class VmPrivate {
         static $gtype: GObject.GType<VmPrivate>;
 
-        // Constructors of GoVirt.VmPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }

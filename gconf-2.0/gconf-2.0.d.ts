@@ -38,7 +38,7 @@ export namespace GConf {
     class Error extends GLib.Error {
         static $gtype: GObject.GType<Error>;
 
-        // Static fields of GConf.Error
+        // Static fields
 
         static SUCCESS: number;
         static FAILED: number;
@@ -58,12 +58,12 @@ export namespace GConf {
         static NO_WRITABLE_DATABASE: number;
         static IN_SHUTDOWN: number;
 
-        // Constructors of GConf.Error
+        // Constructors
 
         constructor(options: { message: string; code: number });
         _init(...args: any[]): void;
 
-        // Own static methods of GConf.Error
+        // Static methods
 
         static quark(): GLib.Quark;
     }
@@ -164,17 +164,17 @@ export namespace GConf {
     class Client extends GObject.Object {
         static $gtype: GObject.GType<Client>;
 
-        // Own fields of GConf.Client
+        // Fields
 
         object: GObject.Object;
 
-        // Constructors of GConf.Client
+        // Constructors
 
         constructor(properties?: Partial<Client.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        // Own signals of GConf.Client
+        // Signals
 
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
@@ -192,7 +192,7 @@ export namespace GConf {
         ): number;
         emit(signal: 'value-changed', object: string, p0?: any | null): void;
 
-        // Own static methods of GConf.Client
+        // Static methods
 
         /**
          * Creates a new #GConfClient using the default #GConfEngine. Normally this is the
@@ -202,13 +202,13 @@ export namespace GConf {
          */
         static get_default(): Client;
 
-        // Own virtual methods of GConf.Client
+        // Virtual methods
 
         vfunc_error(error: GLib.Error): void;
         vfunc_unreturned_error(error: GLib.Error): void;
         vfunc_value_changed(key: string, value: Value): void;
 
-        // Own methods of GConf.Client
+        // Methods
 
         add_dir(dir: string, preload: ClientPreloadType): void;
         /**
@@ -285,14 +285,14 @@ export namespace GConf {
     class ChangeSet {
         static $gtype: GObject.GType<ChangeSet>;
 
-        // Constructors of GConf.ChangeSet
+        // Constructors
 
         constructor(properties?: Partial<{}>);
         _init(...args: any[]): void;
 
         static ['new'](): ChangeSet;
 
-        // Own methods of GConf.ChangeSet
+        // Methods
 
         check_value(key: string, value_retloc: Value): boolean;
         clear(): void;
@@ -329,11 +329,11 @@ export namespace GConf {
     class Entry {
         static $gtype: GObject.GType<Entry>;
 
-        // Own fields of GConf.Entry
+        // Fields
 
         key: string;
 
-        // Constructors of GConf.Entry
+        // Constructors
 
         constructor(key: string, val: Value);
         _init(...args: any[]): void;
@@ -342,7 +342,7 @@ export namespace GConf {
 
         static new_nocopy(key: string, val: Value): Entry;
 
-        // Own methods of GConf.Entry
+        // Methods
 
         copy(): Entry;
         equal(b: Entry): boolean;
@@ -365,12 +365,12 @@ export namespace GConf {
     class EnumStringPair {
         static $gtype: GObject.GType<EnumStringPair>;
 
-        // Own fields of GConf.EnumStringPair
+        // Fields
 
         enum_value: number;
         str: string;
 
-        // Constructors of GConf.EnumStringPair
+        // Constructors
 
         constructor(
             properties?: Partial<{
@@ -384,11 +384,11 @@ export namespace GConf {
     class Value {
         static $gtype: GObject.GType<Value>;
 
-        // Own fields of GConf.Value
+        // Fields
 
         type: ValueType;
 
-        // Constructors of GConf.Value
+        // Constructors
 
         constructor(type: ValueType);
         _init(...args: any[]): void;
@@ -397,11 +397,11 @@ export namespace GConf {
 
         static new_from_string(type: ValueType, str: string): Value;
 
-        // Own static methods of GConf.Value
+        // Static methods
 
         static decode(encoded: string): Value;
 
-        // Own methods of GConf.Value
+        // Methods
 
         compare(value_b: Value): number;
         copy(): Value;

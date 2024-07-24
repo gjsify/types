@@ -37,14 +37,14 @@ export namespace RygelRenderer {
     class MediaRendererPlugin extends RygelCore.Plugin {
         static $gtype: GObject.GType<MediaRendererPlugin>;
 
-        // Own properties of RygelRenderer.MediaRendererPlugin
+        // Properties
 
         get supported_profiles(): RygelCore.DLNAProfile[];
         set supported_profiles(val: RygelCore.DLNAProfile[]);
         get supportedProfiles(): RygelCore.DLNAProfile[];
         set supportedProfiles(val: RygelCore.DLNAProfile[]);
 
-        // Constructors of RygelRenderer.MediaRendererPlugin
+        // Constructors
 
         constructor(properties?: Partial<MediaRendererPlugin.ConstructorProps>, ...args: any[]);
 
@@ -60,12 +60,12 @@ export namespace RygelRenderer {
 
         static ['new'](...args: never[]): any;
 
-        // Own virtual methods of RygelRenderer.MediaRendererPlugin
+        // Virtual methods
 
         vfunc_get_player(): MediaPlayer | null;
         vfunc_get_controller(): PlayerController;
 
-        // Own methods of RygelRenderer.MediaRendererPlugin
+        // Methods
 
         get_player(): MediaPlayer | null;
         get_controller(): PlayerController;
@@ -85,11 +85,11 @@ export namespace RygelRenderer {
     class MediaRenderer extends RygelCore.MediaDevice {
         static $gtype: GObject.GType<MediaRenderer>;
 
-        // Own properties of RygelRenderer.MediaRenderer
+        // Properties
 
         get player(): MediaPlayer;
 
-        // Constructors of RygelRenderer.MediaRenderer
+        // Constructors
 
         constructor(properties?: Partial<MediaRenderer.ConstructorProps>, ...args: any[]);
 
@@ -102,7 +102,7 @@ export namespace RygelRenderer {
     abstract class MediaRendererPluginPrivate {
         static $gtype: GObject.GType<MediaRendererPluginPrivate>;
 
-        // Constructors of RygelRenderer.MediaRendererPluginPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -111,7 +111,7 @@ export namespace RygelRenderer {
     abstract class MediaRendererPrivate {
         static $gtype: GObject.GType<MediaRendererPrivate>;
 
-        // Constructors of RygelRenderer.MediaRendererPrivate
+        // Constructors
 
         _init(...args: any[]): void;
     }
@@ -154,7 +154,7 @@ export namespace RygelRenderer {
         prototype: MediaPlayer;
     }
     interface MediaPlayer extends GObject.Object {
-        // Own properties of RygelRenderer.MediaPlayer
+        // Properties
 
         get playback_state(): string;
         set playback_state(val: string);
@@ -194,7 +194,7 @@ export namespace RygelRenderer {
         get userAgent(): string;
         set userAgent(val: string);
 
-        // Own methods of RygelRenderer.MediaPlayer
+        // Methods
 
         seek(time: number): boolean;
         seek_bytes(bytes: number): boolean;
@@ -228,7 +228,7 @@ export namespace RygelRenderer {
         set_user_agent(value?: string | null): void;
         get_protocol_info(): string;
 
-        // Own virtual methods of RygelRenderer.MediaPlayer
+        // Virtual methods
 
         vfunc_seek(time: number): boolean;
         vfunc_seek_bytes(bytes: number): boolean;
@@ -294,7 +294,7 @@ export namespace RygelRenderer {
         prototype: PlayerController;
     }
     interface PlayerController extends GObject.Object {
-        // Own properties of RygelRenderer.PlayerController
+        // Properties
 
         get playback_state(): string;
         set playback_state(val: string);
@@ -335,7 +335,7 @@ export namespace RygelRenderer {
         get can_pause(): boolean;
         get canPause(): boolean;
 
-        // Own methods of RygelRenderer.PlayerController
+        // Methods
 
         next(): boolean;
         previous(): boolean;
@@ -368,7 +368,7 @@ export namespace RygelRenderer {
         set_play_mode(value: string): void;
         get_can_pause(): boolean;
 
-        // Own virtual methods of RygelRenderer.PlayerController
+        // Virtual methods
 
         vfunc_next(): boolean;
         vfunc_previous(): boolean;
