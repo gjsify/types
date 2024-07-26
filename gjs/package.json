@@ -1,6 +1,6 @@
 {
     "name": "@girs/gjs",
-    "version": "4.0.0-beta.12",
+    "version": "4.0.0-beta.13",
     "description": "GJS TypeScript type definitions for Gjs",
     "type": "module",
     "module": "gjs.js",
@@ -30,6 +30,11 @@
             "types": "./cairo.d.ts",
             "import": "./cairo.js",
             "default": "./cairo.js"
+        },
+        "./console": {
+            "types": "./console.d.ts",
+            "import": "./console.js",
+            "default": "./console.js"
         },
         "./gjs": {
             "types": "./gjs.d.ts",

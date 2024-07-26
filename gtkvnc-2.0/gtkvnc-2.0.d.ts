@@ -36,7 +36,6 @@ export namespace GtkVnc {
         PASSWORD,
         USERNAME,
         CLIENTNAME,
-        CA_CERT_DATA,
     }
 
     export namespace DisplayDepthColor {

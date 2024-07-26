@@ -1,6 +1,6 @@
 {
     "name": "@girs/panel-1",
-    "version": "1.6.0-4.0.0-beta.12",
+    "version": "1.6.0-4.0.0-beta.13",
     "description": "GJS TypeScript type definitions for Panel-1, generated from library version 1.6.0",
     "type": "module",
     "module": "panel-1.js",

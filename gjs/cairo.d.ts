@@ -10,7 +10,7 @@ declare namespace giCairo {
     // - https://gitlab.gnome.org/GNOME/gjs/-/blob/master/installed-tests/js/testCairo.js
     // - https://gitlab.gnome.org/GNOME/gjs/-/blob/master/modules/cairo-context.cpp
 
-    // Re-exported enums
+    // START Re-exported enums, copied from cairo-1.0.d.ts
     export namespace Status {
         export const $gtype: GObject.GType<Status>;
     }
@@ -338,6 +338,8 @@ declare namespace giCairo {
         OUT,
         PART,
     }
+
+    // END Re-exported enums, copied from cairo-1.0.d.ts
 
     export class Context extends Cairo.Context {
         constructor(surface: Surface);

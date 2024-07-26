@@ -615,9 +615,9 @@ export namespace Gdk {
      * `GdkMemoryFormat` describes formats that image data can have in memory.
      *
      * It describes formats by listing the contents of the memory passed to it.
-     * So GDK_MEMORY_A8R8G8B8 will be 1 byte (8 bits) of alpha, followed by a
+     * So `GDK_MEMORY_A8R8G8B8` will be 1 byte (8 bits) of alpha, followed by a
      * byte each of red, green and blue. It is not endian-dependent, so
-     * CAIRO_FORMAT_ARGB32 is represented by different `GdkMemoryFormats`
+     * `CAIRO_FORMAT_ARGB32` is represented by different `GdkMemoryFormats`
      * on architectures with different endiannesses.
      *
      * Its naming is modelled after
@@ -629,9 +629,9 @@ export namespace Gdk {
      * `GdkMemoryFormat` describes formats that image data can have in memory.
      *
      * It describes formats by listing the contents of the memory passed to it.
-     * So GDK_MEMORY_A8R8G8B8 will be 1 byte (8 bits) of alpha, followed by a
+     * So `GDK_MEMORY_A8R8G8B8` will be 1 byte (8 bits) of alpha, followed by a
      * byte each of red, green and blue. It is not endian-dependent, so
-     * CAIRO_FORMAT_ARGB32 is represented by different `GdkMemoryFormats`
+     * `CAIRO_FORMAT_ARGB32` is represented by different `GdkMemoryFormats`
      * on architectures with different endiannesses.
      *
      * Its naming is modelled after
@@ -683,107 +683,105 @@ export namespace Gdk {
          */
         B8G8R8,
         /**
-         * 3 guint16 values; for red, green, blue. Since: 4.6
+         * 3 guint16 values; for red, green, blue.
          */
         R16G16B16,
         /**
-         * 4 guint16 values; for red, green,
-         *   blue, alpha. The color values are premultiplied with the alpha value.
-         *  Since: 4.6
+         * 4 guint16 values; for red, green, blue, alpha. The color values are
+         * premultiplied with the alpha value.
          */
         R16G16B16A16_PREMULTIPLIED,
         /**
          * 4 guint16 values; for red, green, blue, alpha.
-         *  Since: 4.6
          */
         R16G16B16A16,
         /**
-         * 3 half-float values; for red, green, blue.
-         *   The data is opaque. Since: 4.6
+         * 3 half-float values; for red, green, blue. The data is opaque.
          */
         R16G16B16_FLOAT,
         /**
-         * 4 half-float values; for
-         *   red, green, blue and alpha. The color values are premultiplied with
-         *   the alpha value. Since: 4.6
+         * 4 half-float values; for red, green, blue and alpha. The color values are
+         * premultiplied with the alpha value.
          */
         R16G16B16A16_FLOAT_PREMULTIPLIED,
         /**
-         * 4 half-float values; for red, green,
-         *   blue and alpha. Since: 4.6
+         * 4 half-float values; for red, green, blue and alpha.
          */
         R16G16B16A16_FLOAT,
+        /**
+         * 3 float values; for red, green, blue.
+         */
         R32G32B32_FLOAT,
         /**
-         * 4 float values; for
-         *   red, green, blue and alpha. The color values are premultiplied with
-         *   the alpha value. Since: 4.6
+         * 4 float values; for red, green, blue and alpha. The color values are
+         * premultiplied with the alpha value.
          */
         R32G32B32A32_FLOAT_PREMULTIPLIED,
         /**
-         * 4 float values; for red, green, blue and
-         *   alpha. Since: 4.6
+         * 4 float values; for red, green, blue and alpha.
          */
         R32G32B32A32_FLOAT,
         /**
-         * 2 bytes; for grayscale, alpha. The color
-         *   values are premultiplied with the alpha value. Since: 4.12
+         * 2 bytes; for grayscale, alpha. The color values are premultiplied with the
+         * alpha value.
          */
         G8A8_PREMULTIPLIED,
         /**
-         * 2 bytes; for grayscale, alpha. Since: 4.12
+         * 2 bytes; for grayscale, alpha.
          */
         G8A8,
         /**
          * One byte; for grayscale. The data is opaque.
-         *   Since: 4.12
          */
         G8,
         /**
-         * 2 guint16 values; for grayscale, alpha.
-         *  The color values are premultiplied with the alpha value. Since: 4.12
+         * 2 guint16 values; for grayscale, alpha. The color values are premultiplied
+         * with the alpha value.
          */
         G16A16_PREMULTIPLIED,
         /**
-         * 2 guint16 values; for grayscale, alpha. Since: 4.12
+         * 2 guint16 values; for grayscale, alpha.
          */
         G16A16,
         /**
          * One guint16 value; for grayscale. The data is opaque.
-         *   Since: 4.12
          */
         G16,
         /**
          * One byte; for alpha.
-         *   Since: 4.12
          */
         A8,
         /**
          * One guint16 value; for alpha.
-         *   Since: 4.12
          */
         A16,
+        /**
+         * One half-float value; for alpha.
+         */
         A16_FLOAT,
+        /**
+         * One float value; for alpha.
+         */
         A32_FLOAT,
         /**
-         * 4 bytes; for alpha, blue, green, red,
-         *   The color values are premultiplied with the alpha value. Since 4.14
+         * 4 bytes; for alpha, blue, green, red, The color values are premultiplied with
+         * the alpha value.
          */
         A8B8G8R8_PREMULTIPLIED,
         /**
-         * 4 bytes; for blue, green, red, unused. Since 4.14
+         * 4 bytes; for blue, green, red, unused.
          */
         B8G8R8X8,
         /**
-         * 4 bytes; for unused, red, green, blue. Since 4.14
+         * 4 bytes; for unused, red, green, blue.
          */
         X8R8G8B8,
         /**
-         * 4 bytes; for red, green, blue, unused. Since 4.14
+         * 4 bytes; for red, green, blue, unused.
          */
         R8G8B8X8,
         /**
-         * 4 bytes; for unused, blue, green, red. Since 4.14
+         * 4 bytes; for unused, blue, green, red.
          */
         X8B8G8R8,
         /**

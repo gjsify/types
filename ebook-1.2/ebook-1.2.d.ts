@@ -358,7 +358,7 @@ export namespace EBook {
         contains_email_finish(result: Gio.AsyncResult): boolean;
         contains_email_sync(email_address: string, cancellable?: Gio.Cancellable | null): boolean;
         /**
-         * Receive #EContact from the `client` for the given `uid`.
+         * Receive #EContact from the `client` for the gived `uid`.
          * The call is finished by e_book_client_get_contact_finish()
          * from the `callback`.
          * @param uid a unique string ID specifying the contact
@@ -461,7 +461,7 @@ export namespace EBook {
         get_contacts_uids_sync(sexp: string, cancellable?: Gio.Cancellable | null): [boolean, string[]];
         /**
          * Create an #EBookClientCursor.
-         * The call is finished by e_book_client_get_cursor_finish()
+         * The call is finished by e_book_client_get_view_finish()
          * from the `callback`.
          *
          * Note: `sexp` can be obtained through #EBookQuery, by converting it
@@ -1485,9 +1485,6 @@ export namespace EBook {
 
         // Virtual methods
 
-        /**
-         * The class handler for the #EBookClientCursor::refresh signal
-         */
         vfunc_refresh(): void;
 
         // Methods
@@ -2331,16 +2328,7 @@ export namespace EBook {
 
         // Virtual methods
 
-        /**
-         * Notification that loading a view has completed, after calling e_book_client_view_start()
-         * @param error
-         */
         vfunc_complete(error: GLib.Error): void;
-        /**
-         * Signal emitted intermittently while loading a view after calling e_book_client_view_start()
-         * @param percent
-         * @param message
-         */
         vfunc_progress(percent: number, message: string): void;
 
         // Methods

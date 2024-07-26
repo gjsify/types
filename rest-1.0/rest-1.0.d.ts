@@ -39,20 +39,6 @@ export namespace Rest {
          */
         COPY,
     }
-    class OAuth2Error extends GLib.Error {
-        static $gtype: GObject.GType<OAuth2Error>;
-
-        // Static fields
-
-        static NO_REFRESH_TOKEN: number;
-        static ACCESS_TOKEN_EXPIRED: number;
-
-        // Constructors
-
-        constructor(options: { message: string; code: number });
-        _init(...args: any[]): void;
-    }
-
     /**
      * Error domain used when returning errors from #RestProxyCall.
      */
@@ -937,8 +923,8 @@ export namespace Rest {
         init(params: Params): void;
         /**
          * Advances `iter` and retrieves the name and/or parameter that are now pointed
-         * at as a result of this advancement.  If %FALSE is returned, `name` and `param`
-         * are set to %NULL and the iterator becomes invalid.
+         * at as a result of this advancement.  If FALSE is returned, `name` and `param`
+         * are not set and the iterator becomes invalid.
          * @returns %FALSE if the end of the #RestParams has been reached, %TRUE otherwise.
          */
         next(): [boolean, string, Param | null];

@@ -1,6 +1,6 @@
 {
     "name": "@girs/anthy-9000",
-    "version": "9000.0.0-4.0.0-beta.12",
+    "version": "9000.0.0-4.0.0-beta.13",
     "description": "GJS TypeScript type definitions for Anthy-9000, generated from library version 9000.0.0",
     "type": "module",
     "module": "anthy-9000.js",

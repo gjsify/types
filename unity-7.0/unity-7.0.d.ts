@@ -8,9 +8,9 @@
  */
 
 // Module dependencies
-import type GLib from '@girs/glib-2.0';
 import type Dbusmenu from '@girs/dbusmenu-0.4';
 import type GObject from '@girs/gobject-2.0';
+import type GLib from '@girs/glib-2.0';
 import type Dee from '@girs/dee-1.0';
 import type Gio from '@girs/gio-2.0';
 import type GModule from '@girs/gmodule-2.0';
@@ -243,18 +243,18 @@ export namespace Unity {
     function filter_renderer_from_string(renderer_name: string): FilterRenderer;
     function scope_module_get_version(): number;
     function scope_module_load_scopes(): AbstractScope[];
-    function object_unref(object: any): void;
+    function object_unref(object?: any | null): void;
     interface ScopeSearchBaseCallback {
         (instance: ScopeSearchBase): void;
     }
     interface AbstractPreviewCallback {
-        (previewer: ResultPreviewer, preview: AbstractPreview): void;
+        (previewer: ResultPreviewer, preview?: AbstractPreview | null): void;
     }
     module AppInfoManager {
         // Signal callback interfaces
 
         interface Changed {
-            (id: string, new_appinfo: Gio.AppInfo): void;
+            (id: string, new_appinfo?: Gio.AppInfo | null): void;
         }
 
         // Constructor properties interface
@@ -276,12 +276,15 @@ export namespace Unity {
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
-        connect(signal: 'changed', callback: (_source: this, id: string, new_appinfo: Gio.AppInfo) => void): number;
+        connect(
+            signal: 'changed',
+            callback: (_source: this, id: string, new_appinfo: Gio.AppInfo | null) => void,
+        ): number;
         connect_after(
             signal: 'changed',
-            callback: (_source: this, id: string, new_appinfo: Gio.AppInfo) => void,
+            callback: (_source: this, id: string, new_appinfo: Gio.AppInfo | null) => void,
         ): number;
-        emit(signal: 'changed', id: string, new_appinfo: Gio.AppInfo): void;
+        emit(signal: 'changed', id: string, new_appinfo?: Gio.AppInfo | null): void;
 
         // Static methods
 
@@ -290,12 +293,12 @@ export namespace Unity {
 
         // Methods
 
-        lookup(id: string): Gio.AppInfo;
-        get_categories(id: string): string[];
-        get_keywords(id: string): string[];
-        get_path(id: string): string;
-        lookup_async(id: string, _callback_: Gio.AsyncReadyCallback<this>): void;
-        lookup_finish(_res_: Gio.AsyncResult): Gio.AppInfo;
+        lookup(id: string): Gio.AppInfo | null;
+        get_categories(id: string): string[] | null;
+        get_keywords(id: string): string[] | null;
+        get_path(id: string): string | null;
+        lookup_async(id: string, _callback_?: Gio.AsyncReadyCallback<this> | null): void;
+        lookup_finish(_res_: Gio.AsyncResult): Gio.AppInfo | null;
         clear(): void;
     }
 
@@ -383,7 +386,7 @@ export namespace Unity {
         // Methods
 
         get_unity_running(): boolean;
-        get_unity_bus_name(): string;
+        get_unity_bus_name(): string | null;
     }
 
     module LauncherEntry {
@@ -455,8 +458,8 @@ export namespace Unity {
         set_progress_visible(value: boolean): void;
         get_urgent(): boolean;
         set_urgent(value: boolean): void;
-        get_quicklist(): Dbusmenu.Menuitem;
-        set_quicklist(value: Dbusmenu.Menuitem): void;
+        get_quicklist(): Dbusmenu.Menuitem | null;
+        set_quicklist(value?: Dbusmenu.Menuitem | null): void;
 
         // Inherited methods
         /**
@@ -926,7 +929,7 @@ export namespace Unity {
 
         has_app_info(appinfo: Gio.AppInfo): boolean;
         has_app_id(app_id: string): boolean;
-        lookup(app_id: string): Gio.AppInfo;
+        lookup(app_id: string): Gio.AppInfo | null;
         enumerate_ids(): string[];
         enumerate_app_infos(): Gio.AppInfo[];
     }
@@ -945,6 +948,14 @@ export namespace Unity {
         constructor(properties?: Partial<MetadataProvider.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Virtual methods
+
+        vfunc_update_hints(hints: { [key: string]: any } | GLib.HashTable<string, GLib.Variant>): void;
+
+        // Methods
+
+        update_hints(hints: { [key: string]: any } | GLib.HashTable<string, GLib.Variant>): void;
     }
 
     module ProgressSourceProvider {
@@ -1034,7 +1045,7 @@ export namespace Unity {
         add_metadata_provider(provider: MetadataProvider): void;
         get_id(): string;
         get_name(): string;
-        get_icon_hint(): Gio.Icon;
+        get_icon_hint(): Gio.Icon | null;
         get_default_renderer(): CategoryRenderer;
         get_content_type(): CategoryContentType;
         set_content_type(value: CategoryContentType): void;
@@ -1100,11 +1111,18 @@ export namespace Unity {
         connect_after(signal: 'changed', callback: (_source: this) => void): number;
         emit(signal: 'changed'): void;
 
+        // Virtual methods
+
+        vfunc_get_hints(): GLib.HashTable<string, GLib.Variant>;
+        vfunc_update(properties: GLib.Variant): void;
+
         // Methods
 
+        get_hints(): GLib.HashTable<string, GLib.Variant>;
+        update(properties: GLib.Variant): void;
         get_id(): string;
         get_display_name(): string;
-        get_icon_hint(): Gio.Icon;
+        get_icon_hint(): Gio.Icon | null;
         get_renderer(): FilterRenderer;
         get_visible(): boolean;
         set_visible(value: boolean): void;
@@ -1573,7 +1591,7 @@ export namespace Unity {
 
         _init(...args: any[]): void;
 
-        static ['new'](id: string, display_name: string, icon_hint: Gio.Icon, active: boolean): FilterOption;
+        static ['new'](id: string, display_name: string, icon_hint: Gio.Icon | null, active: boolean): FilterOption;
 
         // Methods
 
@@ -1623,8 +1641,8 @@ export namespace Unity {
 
         // Methods
 
-        add_option(id: string, display_name: string, icon_hint: Gio.Icon): FilterOption;
-        get_option(id: string): FilterOption;
+        add_option(id: string, display_name: string, icon_hint?: Gio.Icon | null): FilterOption;
+        get_option(id: string): FilterOption | null;
         remove_option(id: string): boolean;
         get_sort_type(): OptionsFilterSortType;
         set_sort_type(value: OptionsFilterSortType): void;
@@ -1647,14 +1665,19 @@ export namespace Unity {
 
         _init(...args: any[]): void;
 
-        static ['new'](id: string, display_name: string, icon_hint: Gio.Icon, collapsed: boolean): RadioOptionFilter;
+        static ['new'](
+            id: string,
+            display_name: string,
+            icon_hint: Gio.Icon | null,
+            collapsed: boolean,
+        ): RadioOptionFilter;
         // Conflicted with Unity.OptionsFilter.new
 
         static ['new'](...args: never[]): any;
 
         // Methods
 
-        get_active_option(): FilterOption;
+        get_active_option(): FilterOption | null;
     }
 
     module CheckOptionFilter {
@@ -1672,7 +1695,12 @@ export namespace Unity {
 
         _init(...args: any[]): void;
 
-        static ['new'](id: string, display_name: string, icon_hint: Gio.Icon, collapsed: boolean): CheckOptionFilter;
+        static ['new'](
+            id: string,
+            display_name: string,
+            icon_hint: Gio.Icon | null,
+            collapsed: boolean,
+        ): CheckOptionFilter;
         // Conflicted with Unity.OptionsFilter.new
 
         static ['new'](...args: never[]): any;
@@ -1696,7 +1724,7 @@ export namespace Unity {
         static ['new'](
             id: string,
             display_name: string,
-            icon_hint: Gio.Icon,
+            icon_hint: Gio.Icon | null,
             collapsed: boolean,
         ): CheckOptionFilterCompact;
         // Conflicted with Unity.OptionsFilter.new
@@ -1726,7 +1754,7 @@ export namespace Unity {
 
         _init(...args: any[]): void;
 
-        static ['new'](id: string, display_name: string, icon_hint: Gio.Icon, collapsed: boolean): RatingsFilter;
+        static ['new'](id: string, display_name: string, icon_hint: Gio.Icon | null, collapsed: boolean): RatingsFilter;
 
         // Methods
 
@@ -1748,15 +1776,20 @@ export namespace Unity {
 
         _init(...args: any[]): void;
 
-        static ['new'](id: string, display_name: string, icon_hint: Gio.Icon, collapsed: boolean): MultiRangeFilter;
+        static ['new'](
+            id: string,
+            display_name: string,
+            icon_hint: Gio.Icon | null,
+            collapsed: boolean,
+        ): MultiRangeFilter;
         // Conflicted with Unity.OptionsFilter.new
 
         static ['new'](...args: never[]): any;
 
         // Methods
 
-        get_first_active(): FilterOption;
-        get_last_active(): FilterOption;
+        get_first_active(): FilterOption | null;
+        get_last_active(): FilterOption | null;
     }
 
     module PreferencesManager {
@@ -1883,7 +1916,7 @@ export namespace Unity {
         // Methods
 
         set_reply_hint(key: string, variant: GLib.Variant): void;
-        get_filter(filter_id: string): Filter;
+        get_filter(filter_id: string): Filter | null;
         equals(other: DeprecatedScopeSearch): boolean;
         get_channel_id(): string;
         get_search_string(): string;
@@ -1952,15 +1985,15 @@ export namespace Unity {
             scope_id: string,
             search_string: string,
             search_type: SearchType,
-            hints: { [key: string]: any } | GLib.HashTable<string, GLib.Variant>,
-            _callback_: Gio.AsyncReadyCallback<this>,
+            hints?: GLib.HashTable<string, GLib.Variant> | null,
+            _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): void;
         search_scope_finish(_res_: Gio.AsyncResult): GLib.HashTable<string, GLib.Variant>;
         push_results(
             scope_id: string,
             results_model: Dee.SerializableModel,
             category_ids: string[],
-            _callback_: Gio.AsyncReadyCallback<this>,
+            _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): void;
         push_results_finish(_res_: Gio.AsyncResult): void;
         push_filter_settings(filters: FilterSet): void;
@@ -2006,8 +2039,13 @@ export namespace Unity {
 
         _init(...args: any[]): void;
 
+        // Virtual methods
+
+        vfunc_create_raw<T = GObject.Object>(): T;
+
         // Methods
 
+        create_raw<T = GObject.Object>(): T;
         add_action(action: PreviewAction): void;
         add_info(info_hint: InfoHint): void;
         get_title(): string;
@@ -2018,8 +2056,8 @@ export namespace Unity {
         set_description_markup(value: string): void;
         get_image_source_uri(): string;
         set_image_source_uri(value: string): void;
-        get_image(): Gio.Icon;
-        set_image(value: Gio.Icon): void;
+        get_image(): Gio.Icon | null;
+        set_image(value?: Gio.Icon | null): void;
 
         // Inherited methods
         /**
@@ -2498,16 +2536,16 @@ export namespace Unity {
 
         _init(...args: any[]): void;
 
-        static ['new'](id: string, display_name: string, icon_hint: Gio.Icon): PreviewAction;
+        static ['new'](id: string, display_name: string, icon_hint?: Gio.Icon | null): PreviewAction;
 
         static with_layout_hint(
             id: string,
             display_name: string,
-            icon_hint: Gio.Icon,
+            icon_hint: Gio.Icon | null,
             layout: LayoutHint,
         ): PreviewAction;
 
-        static with_uri(uri: string, display_name: string, icon_hint: Gio.Icon): PreviewAction;
+        static with_uri(uri: string, display_name: string, icon_hint?: Gio.Icon | null): PreviewAction;
 
         // Signals
 
@@ -2524,9 +2562,9 @@ export namespace Unity {
         get_display_name(): string;
         get_extra_text(): string;
         set_extra_text(value: string): void;
-        get_icon_hint(): Gio.Icon;
+        get_icon_hint(): Gio.Icon | null;
         get_layout_hint(): LayoutHint;
-        get_hints(): GLib.HashTable<string, GLib.Variant>;
+        get_hints(): GLib.HashTable<string, GLib.Variant> | null;
 
         // Inherited methods
         /**
@@ -2989,15 +3027,15 @@ export namespace Unity {
 
         _init(...args: any[]): void;
 
-        static ['new'](id: string, display_name: string, icon_hint: Gio.Icon, data: string): InfoHint;
+        static ['new'](id: string, display_name: string, icon_hint: Gio.Icon | null, data: string): InfoHint;
 
-        static with_variant(id: string, display_name: string, icon_hint: Gio.Icon, data: GLib.Variant): InfoHint;
+        static with_variant(id: string, display_name: string, icon_hint: Gio.Icon | null, data: GLib.Variant): InfoHint;
 
         // Methods
 
         get_id(): string;
         get_display_name(): string;
-        get_icon_hint(): Gio.Icon;
+        get_icon_hint(): Gio.Icon | null;
         get_data(): GLib.Variant;
         // Conflicted with GObject.Object.get_data
         get_data(...args: never[]): any;
@@ -3018,7 +3056,7 @@ export namespace Unity {
 
         _init(...args: any[]): void;
 
-        static ['new'](title: string, description: string, image: Gio.Icon): GenericPreview;
+        static ['new'](title: string, description: string, image?: Gio.Icon | null): GenericPreview;
     }
 
     module ApplicationPreview {
@@ -3062,8 +3100,8 @@ export namespace Unity {
             title: string,
             subtitle: string,
             description: string,
-            icon: Gio.Icon,
-            screenshot: Gio.Icon,
+            icon?: Gio.Icon | null,
+            screenshot?: Gio.Icon | null,
         ): ApplicationPreview;
 
         // Methods
@@ -3094,7 +3132,7 @@ export namespace Unity {
 
         _init(...args: any[]): void;
 
-        static ['new'](title: string, subtitle: string, image: Gio.Icon): MusicPreview;
+        static ['new'](title: string, subtitle: string, image?: Gio.Icon | null): MusicPreview;
 
         // Methods
 
@@ -3150,15 +3188,20 @@ export namespace Unity {
 
         _init(...args: any[]): void;
 
-        static ['new'](title: string, subtitle: string, image: Gio.Icon): PaymentPreview;
+        static ['new'](title: string, subtitle: string, image?: Gio.Icon | null): PaymentPreview;
 
-        static for_type(title: string, subtitle: string, image: Gio.Icon, type: PaymentPreviewType): PaymentPreview;
+        static for_type(
+            title: string,
+            subtitle: string,
+            image: Gio.Icon | null,
+            type: PaymentPreviewType,
+        ): PaymentPreview;
 
-        static for_application(title: string, subtitle: string, image: Gio.Icon): PaymentPreview;
+        static for_application(title: string, subtitle: string, image?: Gio.Icon | null): PaymentPreview;
 
-        static for_music(title: string, subtitle: string, image: Gio.Icon): PaymentPreview;
+        static for_music(title: string, subtitle: string, image?: Gio.Icon | null): PaymentPreview;
 
-        static for_error(title: string, subtitle: string, image: Gio.Icon): PaymentPreview;
+        static for_error(title: string, subtitle: string, image?: Gio.Icon | null): PaymentPreview;
 
         // Methods
 
@@ -3198,7 +3241,7 @@ export namespace Unity {
 
         _init(...args: any[]): void;
 
-        static ['new'](title: string, subtitle: string, description: string, image: Gio.Icon): MoviePreview;
+        static ['new'](title: string, subtitle: string, description: string, image?: Gio.Icon | null): MoviePreview;
 
         // Methods
 
@@ -3235,7 +3278,7 @@ export namespace Unity {
 
         _init(...args: any[]): void;
 
-        static ['new'](sender: string, subtitle: string, content: string, avatar: Gio.Icon): SocialPreview;
+        static ['new'](sender: string, subtitle: string, content: string, avatar?: Gio.Icon | null): SocialPreview;
 
         // Methods
 
@@ -3316,8 +3359,8 @@ export namespace Unity {
 
         static with_search(
             search_string: string,
-            filter_set: FilterSet,
-            search_metadata: SearchMetadata,
+            filter_set?: FilterSet | null,
+            search_metadata?: SearchMetadata | null,
         ): ActivationResponse;
 
         static with_preview(preview: Preview): ActivationResponse;
@@ -3379,7 +3422,7 @@ export namespace Unity {
             channel_id: string,
             scope_id: string,
             action_type: number,
-            result: ScopeResult,
+            _result_?: ScopeResult | null,
         ): AggregatorActivation;
 
         // Methods
@@ -3390,8 +3433,8 @@ export namespace Unity {
         set_scope_id(value: string): void;
         get_action_type(): number;
         set_action_type(value: number): void;
-        get_scope_result(): ScopeResult;
-        set_scope_result(value: ScopeResult): void;
+        get_scope_result(): ScopeResult | null;
+        set_scope_result(value?: ScopeResult | null): void;
         get_hints(): GLib.HashTable<string, GLib.Variant>;
     }
 
@@ -3415,13 +3458,13 @@ export namespace Unity {
         // Virtual methods
 
         vfunc_add(filter: Filter): void;
-        vfunc_get_filter_by_id(filter_id: string): Filter;
+        vfunc_get_filter_by_id(filter_id: string): Filter | null;
         vfunc_get_filters(): Filter[];
 
         // Methods
 
         add(filter: Filter): void;
-        get_filter_by_id(filter_id: string): Filter;
+        get_filter_by_id(filter_id: string): Filter | null;
         get_filters(): Filter[];
     }
 
@@ -3504,13 +3547,13 @@ export namespace Unity {
 
         vfunc_cancel(): void;
         vfunc_is_cancelled(): boolean;
-        vfunc_get_gcancellable(): Gio.Cancellable;
+        vfunc_get_gcancellable(): Gio.Cancellable | null;
 
         // Methods
 
         cancel(): void;
         is_cancelled(): boolean;
-        get_gcancellable(): Gio.Cancellable;
+        get_gcancellable(): Gio.Cancellable | null;
     }
 
     module ScopeSearchBase {
@@ -3562,13 +3605,13 @@ export namespace Unity {
 
         // Virtual methods
 
-        vfunc_add_result(result: ScopeResult): void;
+        vfunc_add_result(_result_: ScopeResult): void;
         vfunc_add_result_from_variant(variant: GLib.Variant): void;
         vfunc_flush(): void;
 
         // Methods
 
-        add_result(result: ScopeResult): void;
+        add_result(_result_: ScopeResult): void;
         add_result_from_variant(variant: GLib.Variant): void;
         flush(): void;
     }
@@ -3619,12 +3662,12 @@ export namespace Unity {
 
         // Virtual methods
 
-        vfunc_run(): AbstractPreview;
+        vfunc_run(): AbstractPreview | null;
         vfunc_run_async(async_callback: AbstractPreviewCallback): void;
 
         // Methods
 
-        run(): AbstractPreview;
+        run(): AbstractPreview | null;
         run_async(async_callback: AbstractPreviewCallback): void;
         set_scope_result(scope_result: ScopeResult): void;
         set_search_metadata(search_metadata: SearchMetadata): void;
@@ -3661,14 +3704,14 @@ export namespace Unity {
 
         // Static methods
 
-        static create(metadata: { [key: string]: any } | GLib.HashTable<string, GLib.Variant>): SearchMetadata;
+        static create(metadata?: GLib.HashTable<string, GLib.Variant> | null): SearchMetadata;
         static create_from_variant(metadata: GLib.Variant): SearchMetadata;
 
         // Methods
 
-        get_locale(): string;
-        get_form_factor(): string;
-        get_location(): GeoCoordinate;
+        get_locale(): string | null;
+        get_form_factor(): string | null;
+        get_location(): GeoCoordinate | null;
     }
 
     module GeoCoordinate {
@@ -3740,27 +3783,31 @@ export namespace Unity {
         // Virtual methods
 
         vfunc_create_search_for_query(search_context: SearchContext): ScopeSearchBase;
-        vfunc_create_previewer(result: ScopeResult, metadata: SearchMetadata): ResultPreviewer;
+        vfunc_create_previewer(_result_: ScopeResult, metadata: SearchMetadata): ResultPreviewer;
         vfunc_get_categories(): CategorySet;
         vfunc_get_filters(): FilterSet;
         vfunc_get_schema(): Schema;
         vfunc_get_search_hint(): string;
         vfunc_get_group_name(): string;
         vfunc_get_unique_name(): string;
-        vfunc_activate(result: ScopeResult, metadata: SearchMetadata, action_id: string): ActivationResponse;
+        vfunc_activate(
+            _result_: ScopeResult,
+            metadata: SearchMetadata,
+            action_id?: string | null,
+        ): ActivationResponse | null;
         vfunc_normalize_search_query(search_query: string): string;
 
         // Methods
 
         create_search_for_query(search_context: SearchContext): ScopeSearchBase;
-        create_previewer(result: ScopeResult, metadata: SearchMetadata): ResultPreviewer;
+        create_previewer(_result_: ScopeResult, metadata: SearchMetadata): ResultPreviewer;
         get_categories(): CategorySet;
         get_filters(): FilterSet;
         get_schema(): Schema;
         get_search_hint(): string;
         get_group_name(): string;
         get_unique_name(): string;
-        activate(result: ScopeResult, metadata: SearchMetadata, action_id: string): ActivationResponse;
+        activate(_result_: ScopeResult, metadata: SearchMetadata, action_id?: string | null): ActivationResponse | null;
         normalize_search_query(search_query: string): string;
         results_invalidated(search_type: SearchType): void;
     }
@@ -3874,8 +3921,13 @@ export namespace Unity {
         ): number;
         emit(signal: 'active-sources-changed', active_ids: string[]): void;
 
+        // Virtual methods
+
+        vfunc_create_impl<T = GObject.Object>(): T;
+
         // Methods
 
+        create_impl<T = GObject.Object>(): T;
         ['export'](): void;
         unexport(): void;
         get_id(): string;
@@ -3900,11 +3952,11 @@ export namespace Unity {
         // Signal callback interfaces
 
         interface ActivateUri {
-            (uri: string): ActivationResponse;
+            (uri: string): ActivationResponse | null;
         }
 
         interface PreviewUri {
-            (uri: string): Preview;
+            (uri: string): Preview | null;
         }
 
         interface GenerateSearchKey {
@@ -3936,11 +3988,14 @@ export namespace Unity {
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
-        connect(signal: 'activate-uri', callback: (_source: this, uri: string) => ActivationResponse): number;
-        connect_after(signal: 'activate-uri', callback: (_source: this, uri: string) => ActivationResponse): number;
+        connect(signal: 'activate-uri', callback: (_source: this, uri: string) => ActivationResponse | null): number;
+        connect_after(
+            signal: 'activate-uri',
+            callback: (_source: this, uri: string) => ActivationResponse | null,
+        ): number;
         emit(signal: 'activate-uri', uri: string): void;
-        connect(signal: 'preview-uri', callback: (_source: this, uri: string) => Preview): number;
-        connect_after(signal: 'preview-uri', callback: (_source: this, uri: string) => Preview): number;
+        connect(signal: 'preview-uri', callback: (_source: this, uri: string) => Preview | null): number;
+        connect_after(signal: 'preview-uri', callback: (_source: this, uri: string) => Preview | null): number;
         emit(signal: 'preview-uri', uri: string): void;
         connect(
             signal: 'generate-search-key',
@@ -3978,17 +4033,17 @@ export namespace Unity {
 
         // Virtual methods
 
-        vfunc_preview_result(result: ScopeResult, _callback_: Gio.AsyncReadyCallback<this>): void;
-        vfunc_preview_result_finish(_res_: Gio.AsyncResult): Preview;
-        vfunc_activate_result(result: ScopeResult, _callback_: Gio.AsyncReadyCallback<this>): void;
-        vfunc_activate_result_finish(_res_: Gio.AsyncResult): ActivationResponse;
+        vfunc_preview_result(_result_: ScopeResult, _callback_?: Gio.AsyncReadyCallback<this> | null): void;
+        vfunc_preview_result_finish(_res_: Gio.AsyncResult): Preview | null;
+        vfunc_activate_result(_result_: ScopeResult, _callback_?: Gio.AsyncReadyCallback<this> | null): void;
+        vfunc_activate_result_finish(_res_: Gio.AsyncResult): ActivationResponse | null;
 
         // Methods
 
-        preview_result(result: ScopeResult, _callback_: Gio.AsyncReadyCallback<this>): void;
-        preview_result_finish(_res_: Gio.AsyncResult): Preview;
-        activate_result(result: ScopeResult, _callback_: Gio.AsyncReadyCallback<this>): void;
-        activate_result_finish(_res_: Gio.AsyncResult): ActivationResponse;
+        preview_result(_result_: ScopeResult, _callback_?: Gio.AsyncReadyCallback<this> | null): void;
+        preview_result_finish(_res_: Gio.AsyncResult): Preview | null;
+        activate_result(_result_: ScopeResult, _callback_?: Gio.AsyncReadyCallback<this> | null): void;
+        activate_result_finish(_res_: Gio.AsyncResult): ActivationResponse | null;
         queue_search_changed(search_type: SearchType): void;
     }
 
@@ -4032,20 +4087,20 @@ export namespace Unity {
         // Virtual methods
 
         vfunc_category_index_for_scope_id(scope_id: string): number;
-        vfunc_search(scope_search: AggregatedScopeSearch, _callback_: Gio.AsyncReadyCallback<this>): void;
+        vfunc_search(scope_search: AggregatedScopeSearch, _callback_?: Gio.AsyncReadyCallback<this> | null): void;
         vfunc_search_finish(_res_: Gio.AsyncResult): void;
-        vfunc_activate(activation: AggregatorActivation, _callback_: Gio.AsyncReadyCallback<this>): void;
-        vfunc_activate_finish(_res_: Gio.AsyncResult): ActivationResponse;
+        vfunc_activate(activation: AggregatorActivation, _callback_?: Gio.AsyncReadyCallback<this> | null): void;
+        vfunc_activate_finish(_res_: Gio.AsyncResult): ActivationResponse | null;
 
         // Methods
 
         category_index_for_scope_id(scope_id: string): number;
         add_sorter(category_index: number, field: string, flags: AggregatorScopeSortFlags): void;
         add_constraint(category_index: number, field: string): void;
-        search(scope_search: AggregatedScopeSearch, _callback_: Gio.AsyncReadyCallback<this>): void;
+        search(scope_search: AggregatedScopeSearch, _callback_?: Gio.AsyncReadyCallback<this> | null): void;
         search_finish(_res_: Gio.AsyncResult): void;
-        activate(activation: AggregatorActivation, _callback_: Gio.AsyncReadyCallback<this>): void;
-        activate_finish(_res_: Gio.AsyncResult): ActivationResponse;
+        activate(activation: AggregatorActivation, _callback_?: Gio.AsyncReadyCallback<this> | null): void;
+        activate_finish(_res_: Gio.AsyncResult): ActivationResponse | null;
         get_merge_mode(): AggregatorScopeMergeMode;
         set_merge_mode(value: AggregatorScopeMergeMode): void;
         get_proxy_filter_hints(): boolean;
@@ -4095,13 +4150,13 @@ export namespace Unity {
             (search: ScopeSearchBase, cb: ScopeSearchBaseCallback): void;
         }
         interface PreviewRunFunc {
-            (previewer: ResultPreviewer): AbstractPreview;
+            (previewer: ResultPreviewer): AbstractPreview | null;
         }
         interface PreviewRunAsyncFunc {
             (previewer: ResultPreviewer, cb: AbstractPreviewCallback): void;
         }
         interface ActivateFunc {
-            (result: ScopeResult, metadata: SearchMetadata, action_id: string): ActivationResponse;
+            (_result_: ScopeResult, metadata: SearchMetadata, action_id?: string | null): ActivationResponse | null;
         }
 
         // Constructor properties interface
@@ -4160,10 +4215,10 @@ export namespace Unity {
         // Methods
 
         set_search_func(func: SimpleScope.SearchRunFunc): void;
-        set_search_async_func(func: SimpleScope.SearchRunAsyncFunc): void;
-        set_activate_func(func: SimpleScope.ActivateFunc): void;
+        set_search_async_func(func?: SimpleScope.SearchRunAsyncFunc | null): void;
+        set_activate_func(func?: SimpleScope.ActivateFunc | null): void;
         set_preview_func(func: SimpleScope.PreviewRunFunc): void;
-        set_preview_async_func(func: SimpleScope.PreviewRunAsyncFunc): void;
+        set_preview_async_func(func?: SimpleScope.PreviewRunAsyncFunc | null): void;
         get_filter_set(): FilterSet;
         set_filter_set(value: FilterSet): void;
         get_category_set(): CategorySet;
@@ -4197,16 +4252,16 @@ export namespace Unity {
 
         // Virtual methods
 
-        vfunc_get_scopes(module_name: string, module_type: string): AbstractScope[];
+        vfunc_get_scopes(module_name: string, module_type?: string | null): AbstractScope[];
         vfunc_export_scopes(scopes: AbstractScope[]): void;
 
         // Methods
 
-        get_scopes(module_name: string, module_type: string): AbstractScope[];
+        get_scopes(module_name: string, module_type?: string | null): AbstractScope[];
         export_scopes(scopes: AbstractScope[]): void;
         load_group(group_name: string): void;
         load_scope(scope_id: string): void;
-        load_module(module: string, module_type: string): void;
+        load_module(module: string, module_type?: string | null): void;
     }
 
     module TrackMetadata {
@@ -4517,10 +4572,10 @@ export namespace Unity {
         set_playback_state(value: PlaybackState): void;
         get_current_playlist(): Playlist;
         set_current_playlist(value: Playlist): void;
-        get_track_menu(): Dbusmenu.Menuitem;
-        set_track_menu(value: Dbusmenu.Menuitem): void;
-        get_player_menu(): Dbusmenu.Menuitem;
-        set_player_menu(value: Dbusmenu.Menuitem): void;
+        get_track_menu(): Dbusmenu.Menuitem | null;
+        set_track_menu(value?: Dbusmenu.Menuitem | null): void;
+        get_player_menu(): Dbusmenu.Menuitem | null;
+        set_player_menu(value?: Dbusmenu.Menuitem | null): void;
     }
 
     type AppInfoManagerClass = typeof AppInfoManager;
@@ -5027,7 +5082,7 @@ export namespace Unity {
 
         static create(
             uri: string,
-            icon_hint: string,
+            icon_hint: string | null,
             category: number,
             result_type: ResultType,
             mimetype: string,
@@ -5035,8 +5090,8 @@ export namespace Unity {
             comment: string,
             dnd_uri: string,
             metadata: { [key: string]: any } | GLib.HashTable<string, GLib.Variant>,
-        ): ScopeResult;
-        static create_from_variant(variant: GLib.Variant): ScopeResult;
+        ): ScopeResult | null;
+        static create_from_variant(variant: GLib.Variant): ScopeResult | null;
     }
 
     class SearchContext {
@@ -5060,11 +5115,11 @@ export namespace Unity {
         static create(
             search_query: string,
             search_type: SearchType,
-            filter_state: FilterSet,
-            metadata: { [key: string]: any } | GLib.HashTable<string, GLib.Variant>,
+            filter_state: FilterSet | null,
+            metadata: GLib.HashTable<string, GLib.Variant> | null,
             result_set: ResultSet,
-            cancellable: Cancellable,
-        ): SearchContext;
+            cancellable?: Cancellable | null,
+        ): SearchContext | null;
 
         // Methods
 

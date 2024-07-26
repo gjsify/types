@@ -1349,9 +1349,9 @@ export namespace RygelServer {
         // Fields
 
         ref_count: number;
-        op: any | null;
-        operand1: any | null;
-        operand2: any | null;
+        op: any;
+        operand1: any;
+        operand2: any;
 
         // Constructors
 

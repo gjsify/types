@@ -1506,14 +1506,11 @@ export namespace GObject {
      *
      * If `closure` is a floating reference (see g_closure_sink()), this function
      * takes ownership of `closure`.
-     *
-     * This function cannot fail. If the given signal doesn’t exist, a critical
-     * warning is emitted.
      * @param instance the instance to connect to.
      * @param detailed_signal a string of the form "signal-name::detail".
      * @param closure the closure to connect.
      * @param after whether the handler should be called before or after the  default handler of the signal.
-     * @returns the handler ID (always greater than 0)
+     * @returns the handler ID (always greater than 0 for successful connections)
      */
     function signal_connect_closure(
         instance: Object,
@@ -1526,15 +1523,12 @@ export namespace GObject {
      *
      * If `closure` is a floating reference (see g_closure_sink()), this function
      * takes ownership of `closure`.
-     *
-     * This function cannot fail. If the given signal doesn’t exist, a critical
-     * warning is emitted.
      * @param instance the instance to connect to.
      * @param signal_id the id of the signal.
      * @param detail the detail.
      * @param closure the closure to connect.
      * @param after whether the handler should be called before or after the  default handler of the signal.
-     * @returns the handler ID (always greater than 0)
+     * @returns the handler ID (always greater than 0 for successful connections)
      */
     function signal_connect_closure_by_id(
         instance: Object,

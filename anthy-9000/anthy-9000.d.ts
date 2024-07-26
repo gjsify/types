@@ -31,10 +31,10 @@ export namespace Anthy {
     function conf_override(arg0: string, arg1: string): void;
     function context_set_encoding(ac: anthy_context_t, encoding: number): number;
     function get_prediction(arg0: anthy_context_t, arg1: number, arg2: string, arg3: number): number;
-    function get_prediction_stat(arg0: anthy_context_t, arg1: any): number;
+    function get_prediction_stat(arg0: anthy_context_t, arg1?: any | null): number;
     function get_segment(arg0: anthy_context_t, arg1: number, arg2: number, arg3: string, arg4: number): number;
-    function get_segment_stat(arg0: anthy_context_t, arg1: number, arg2: any): number;
-    function get_stat(arg0: anthy_context_t, arg1: any): number;
+    function get_segment_stat(arg0: anthy_context_t, arg1: number, arg2?: any | null): number;
+    function get_stat(arg0: anthy_context_t, arg1?: any | null): number;
     function get_version_string(): string;
     function init(): number;
     function print_context(arg0: anthy_context_t): void;
@@ -68,6 +68,14 @@ export namespace Anthy {
         _init(...args: any[]): void;
 
         static ['new'](): GContext;
+
+        // Static methods
+
+        /**
+         * Set Anthy log level.
+         * @param level Log level
+         */
+        static set_logger(level: number): void;
 
         // Methods
 

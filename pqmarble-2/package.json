@@ -1,6 +1,6 @@
 {
     "name": "@girs/pqmarble-2",
-    "version": "2.0.0-4.0.0-beta.12",
+    "version": "2.0.0-4.0.0-beta.13",
     "description": "GJS TypeScript type definitions for PQMarble-2, generated from library version 2.0.0",
     "type": "module",
     "module": "pqmarble-2.js",

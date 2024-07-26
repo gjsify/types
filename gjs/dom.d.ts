@@ -10,6 +10,7 @@
  */
 
 import type GLib from '@girs/glib-2.0';
+import type GObject from '@girs/gobject-2.0';
 
 declare global {
     interface ImportMeta {
@@ -217,18 +218,6 @@ declare global {
          * @param _label unique identifier for this action
          */
         timeStamp(_label: string): void;
-
-        // GJS-specific extensions for integrating with GLib structured logging
-
-        /**
-         * @param logDomain the GLib log domain this Console should print
-         *   with. Defaults to 'Gjs-Console'.
-         */
-        setLogDomain(logDomain: string): void;
-
-        logDomain: string;
-
-        interact(): void;
     }
 
     interface TextDecodeOptions {
