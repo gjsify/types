@@ -1,6 +1,6 @@
 {
     "name": "@girs/gtksource-4",
-    "version": "4.0.0-4.0.0-beta.13",
+    "version": "4.0.0-4.0.0-beta.14",
     "description": "GJS TypeScript type definitions for GtkSource-4, generated from library version 4.0.0",
     "type": "module",
     "module": "gtksource-4.js",

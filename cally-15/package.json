@@ -1,6 +1,6 @@
 {
     "name": "@girs/cally-15",
-    "version": "15.0.0-4.0.0-beta.13",
+    "version": "15.0.0-4.0.0-beta.14",
     "description": "GJS TypeScript type definitions for Cally-15, generated from library version 15.0.0",
     "type": "module",
     "module": "cally-15.js",

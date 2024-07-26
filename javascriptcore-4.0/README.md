@@ -5,7 +5,7 @@
 ![downloads/week](https://img.shields.io/npm/dw/@girs/javascriptcore-4.0)
 
 
-GJS TypeScript type definitions for JavaScriptCore-4.0, generated from library version 2.44.2 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v4.0.0-beta.13.
+GJS TypeScript type definitions for JavaScriptCore-4.0, generated from library version 2.44.2 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v4.0.0-beta.14.
 
 
 ## Install

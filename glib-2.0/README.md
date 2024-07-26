@@ -5,7 +5,7 @@
 ![downloads/week](https://img.shields.io/npm/dw/@girs/glib-2.0)
 
 
-GJS TypeScript type definitions for GLib-2.0, generated from library version 2.80.3 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v4.0.0-beta.13.
+GJS TypeScript type definitions for GLib-2.0, generated from library version 2.80.3 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v4.0.0-beta.14.
 
 
 ## Install
