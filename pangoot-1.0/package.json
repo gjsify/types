@@ -1,6 +1,6 @@
 {
     "name": "@girs/pangoot-1.0",
-    "version": "1.0.0-4.0.0-beta.14",
+    "version": "1.0.0-4.0.0-beta.15",
     "description": "GJS TypeScript type definitions for PangoOT-1.0, generated from library version 1.0.0",
     "type": "module",
     "module": "pangoot-1.0.js",
