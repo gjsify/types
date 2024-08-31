@@ -18,8 +18,8 @@ import type Pango from '@girs/pango-1.0';
 import type HarfBuzz from '@girs/harfbuzz-0.0';
 import type freetype2 from '@girs/freetype2-2.0';
 import type Gio from '@girs/gio-2.0';
-import type GModule from '@girs/gmodule-2.0';
 import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
+import type GModule from '@girs/gmodule-2.0';
 import type Atk from '@girs/atk-1.0';
 
 export namespace XApp {
@@ -136,7 +136,7 @@ export namespace XApp {
      * between 0 and 100.
      *
      * Note: If a window will stick around after progress is complete, you will
-     * probaby need to set progress to 0 to remove any progress effects on taskbars
+     * probably need to set progress to 0 to remove any progress effects on taskbars
      * and window lists.
      *
      * Setting progress will also cancel the 'pulsing' flag on the window as
@@ -151,7 +151,7 @@ export namespace XApp {
      * ongoing progress in a task manager.
      *
      * Note: If a window will stick around after progress is complete, you will
-     * probaby need to set progress to 0 to remove any progress effects on taskbars
+     * probably need to set progress to 0 to remove any progress effects on taskbars
      * and window lists.  This will also remove the pulse state, if it is set.
      *
      * Setting an explicit progress value will unset this flag.
@@ -191,7 +191,7 @@ export namespace XApp {
      * well, if it has been set.
      *
      * Note: If a window will stick around after progress is complete, you will
-     * probaby need to set progress to 0 to remove any progress effects on taskbars
+     * probably need to set progress to 0 to remove any progress effects on taskbars
      * and window lists.
      *
      * This is a function, not a method, for applying the progress property for
@@ -206,7 +206,7 @@ export namespace XApp {
      * ongoing progress in a task manager.
      *
      * Note: If a window will stick around after progress is complete, you will
-     * probaby need to set progress to 0 to remove any progress effects on taskbars
+     * probably need to set progress to 0 to remove any progress effects on taskbars
      * and window lists.
      *
      * Setting an explicit progress value will unset this flag.
@@ -502,7 +502,7 @@ export namespace XApp {
          * between 0 and 100.
          *
          * Note: If a window will stick around after progress is complete, you will
-         * probaby need to set progress to 0 to remove any progress effects on taskbars
+         * probably need to set progress to 0 to remove any progress effects on taskbars
          * and window lists.
          *
          * Setting progress will also cancel the 'pulsing' flag on the window as
@@ -516,7 +516,7 @@ export namespace XApp {
          * ongoing progress in a task manager.
          *
          * Note: If a window will stick around after progress is complete, you will
-         * probaby need to set progress to 0 to remove any progress effects on taskbars
+         * probably need to set progress to 0 to remove any progress effects on taskbars
          * and window lists.  This will also remove the pulse state, if it is set.
          *
          * Setting an explicit progress value will unset this flag.
@@ -9854,6 +9854,15 @@ export namespace XApp {
          * @param invocation A #GDBusMethodInvocation.
          */
         complete_scroll(invocation: Gio.DBusMethodInvocation): void;
+        /**
+         * Handler for the #XAppStatusIconInterface::handle-button-press signal.
+         * @param invocation
+         * @param arg_x
+         * @param arg_y
+         * @param arg_button
+         * @param arg_time
+         * @param arg_panel_position
+         */
         vfunc_handle_button_press(
             invocation: Gio.DBusMethodInvocation,
             arg_x: number,
@@ -9862,6 +9871,15 @@ export namespace XApp {
             arg_time: number,
             arg_panel_position: number,
         ): boolean;
+        /**
+         * Handler for the #XAppStatusIconInterface::handle-button-release signal.
+         * @param invocation
+         * @param arg_x
+         * @param arg_y
+         * @param arg_button
+         * @param arg_time
+         * @param arg_panel_position
+         */
         vfunc_handle_button_release(
             invocation: Gio.DBusMethodInvocation,
             arg_x: number,
@@ -9870,6 +9888,13 @@ export namespace XApp {
             arg_time: number,
             arg_panel_position: number,
         ): boolean;
+        /**
+         * Handler for the #XAppStatusIconInterface::handle-scroll signal.
+         * @param invocation
+         * @param arg_delta
+         * @param arg_orientation
+         * @param arg_time
+         */
         vfunc_handle_scroll(
             invocation: Gio.DBusMethodInvocation,
             arg_delta: number,
@@ -10599,6 +10624,15 @@ export namespace XApp {
          * @param invocation A #GDBusMethodInvocation.
          */
         complete_scroll(invocation: Gio.DBusMethodInvocation): void;
+        /**
+         * Handler for the #XAppStatusIconInterface::handle-button-press signal.
+         * @param invocation
+         * @param arg_x
+         * @param arg_y
+         * @param arg_button
+         * @param arg_time
+         * @param arg_panel_position
+         */
         vfunc_handle_button_press(
             invocation: Gio.DBusMethodInvocation,
             arg_x: number,
@@ -10607,6 +10641,15 @@ export namespace XApp {
             arg_time: number,
             arg_panel_position: number,
         ): boolean;
+        /**
+         * Handler for the #XAppStatusIconInterface::handle-button-release signal.
+         * @param invocation
+         * @param arg_x
+         * @param arg_y
+         * @param arg_button
+         * @param arg_time
+         * @param arg_panel_position
+         */
         vfunc_handle_button_release(
             invocation: Gio.DBusMethodInvocation,
             arg_x: number,
@@ -10615,6 +10658,13 @@ export namespace XApp {
             arg_time: number,
             arg_panel_position: number,
         ): boolean;
+        /**
+         * Handler for the #XAppStatusIconInterface::handle-scroll signal.
+         * @param invocation
+         * @param arg_delta
+         * @param arg_orientation
+         * @param arg_time
+         */
         vfunc_handle_scroll(
             invocation: Gio.DBusMethodInvocation,
             arg_delta: number,
@@ -12596,6 +12646,12 @@ export namespace XApp {
          */
         add_widget(widget: Gtk.Widget): void;
         /**
+         * Destroys the #XAppVisibilityGroup.
+         *
+         * Since 2.2.15
+         */
+        free(): void;
+        /**
          * Get the sensitivity of the group.
          *
          * There is no guarantee that all widgets in the group actually are
@@ -12986,6 +13042,15 @@ export namespace XApp {
 
         // Virtual methods
 
+        /**
+         * Handler for the #XAppStatusIconInterface::handle-button-press signal.
+         * @param invocation
+         * @param arg_x
+         * @param arg_y
+         * @param arg_button
+         * @param arg_time
+         * @param arg_panel_position
+         */
         vfunc_handle_button_press(
             invocation: Gio.DBusMethodInvocation,
             arg_x: number,
@@ -12994,6 +13059,15 @@ export namespace XApp {
             arg_time: number,
             arg_panel_position: number,
         ): boolean;
+        /**
+         * Handler for the #XAppStatusIconInterface::handle-button-release signal.
+         * @param invocation
+         * @param arg_x
+         * @param arg_y
+         * @param arg_button
+         * @param arg_time
+         * @param arg_panel_position
+         */
         vfunc_handle_button_release(
             invocation: Gio.DBusMethodInvocation,
             arg_x: number,
@@ -13002,6 +13076,13 @@ export namespace XApp {
             arg_time: number,
             arg_panel_position: number,
         ): boolean;
+        /**
+         * Handler for the #XAppStatusIconInterface::handle-scroll signal.
+         * @param invocation
+         * @param arg_delta
+         * @param arg_orientation
+         * @param arg_time
+         */
         vfunc_handle_scroll(
             invocation: Gio.DBusMethodInvocation,
             arg_delta: number,

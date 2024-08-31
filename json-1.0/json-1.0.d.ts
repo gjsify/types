@@ -11,7 +11,6 @@
 import type Gio from '@girs/gio-2.0';
 import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
-import type GModule from '@girs/gmodule-2.0';
 
 export namespace Json {
     /**
@@ -925,48 +924,14 @@ export namespace Json {
 
         // Virtual methods
 
-        /**
-         * class handler for the JsonParser::array-element signal
-         * @param array
-         * @param index_
-         */
         vfunc_array_element(array: Array, index_: number): void;
-        /**
-         * class handler for the JsonParser::array-end signal
-         * @param array
-         */
         vfunc_array_end(array: Array): void;
-        /**
-         * class handler for the JsonParser::array-start signal
-         */
         vfunc_array_start(): void;
-        /**
-         * class handler for the JsonParser::error signal
-         * @param error
-         */
         vfunc_error(error: GLib.Error): void;
-        /**
-         * class handler for the JsonParser::object-end signal
-         * @param object
-         */
         vfunc_object_end(object: Object): void;
-        /**
-         * class handler for the JsonParser::object-member signal
-         * @param object
-         * @param member_name
-         */
         vfunc_object_member(object: Object, member_name: string): void;
-        /**
-         * class handler for the JsonParser::object-start signal
-         */
         vfunc_object_start(): void;
-        /**
-         * class handler for the JsonParser::parse-end signal
-         */
         vfunc_parse_end(): void;
-        /**
-         * class handler for the JsonParser::parse-start signal
-         */
         vfunc_parse_start(): void;
 
         // Methods

@@ -1621,6 +1621,23 @@ export namespace GIRepository {
      * modify the search paths by using the `GI_TYPELIB_PATH` environment variable.
      * The environment variable takes precedence over the default search path
      * and the [method`GIRepository`.Repository.prepend_search_path] calls.
+     *
+     * ### Namespace ordering
+     *
+     * In situations where namespaces may be searched in order, or returned in a
+     * list, the namespaces will be returned in alphabetical order, with all fully
+     * loaded namespaces being returned before any lazily loaded ones (those loaded
+     * with `GI_REPOSITORY_LOAD_FLAG_LAZY`). This allows for deterministic and
+     * reproducible results.
+     *
+     * Similarly, if a symbol (such as a `GType` or error domain) is being searched
+     * for in the set of loaded namespaces, the namespaces will be searched in that
+     * order. In particular, this means that a symbol which exists in two namespaces
+     * will always be returned from the alphabetically-higher namespace. This should
+     * only happen in the case of `Gio` and `GioUnix`/`GioWin32`, which all refer to
+     * the same `.so` file and expose overlapping sets of symbols. Symbols should
+     * always end up being resolved to `GioUnix` or `GioWin32` if they are platform
+     * dependent, rather than `Gio` itself.
      */
     class Repository extends GObject.Object {
         static $gtype: GObject.GType<Repository>;

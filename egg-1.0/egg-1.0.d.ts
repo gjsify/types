@@ -18,8 +18,8 @@ import type Pango from '@girs/pango-1.0';
 import type HarfBuzz from '@girs/harfbuzz-0.0';
 import type freetype2 from '@girs/freetype2-2.0';
 import type Gio from '@girs/gio-2.0';
-import type GModule from '@girs/gmodule-2.0';
 import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
+import type GModule from '@girs/gmodule-2.0';
 import type Atk from '@girs/atk-1.0';
 
 export namespace Egg {
@@ -10759,24 +10759,24 @@ export namespace Egg {
         /**
          * If `action` is currently enabled.
          *
-         * If the action is disabled then calls to [method`Gio`.Action.activate] and
-         * [method`Gio`.Action.change_state] have no effect.
+         * If the action is disabled then calls to g_action_activate() and
+         * g_action_change_state() have no effect.
          */
         get enabled(): boolean;
         /**
          * The name of the action.  This is mostly meaningful for identifying
-         * the action once it has been added to a [type`Gio`.ActionGroup]. It is immutable.
+         * the action once it has been added to a #GActionGroup. It is immutable.
          */
         get name(): string;
         /**
          * The type of the parameter that must be given when activating the
-         * action. This is immutable, and may be `NULL` if no parameter is needed when
+         * action. This is immutable, and may be %NULL if no parameter is needed when
          * activating the action.
          */
         get parameter_type(): GLib.VariantType;
         /**
          * The type of the parameter that must be given when activating the
-         * action. This is immutable, and may be `NULL` if no parameter is needed when
+         * action. This is immutable, and may be %NULL if no parameter is needed when
          * activating the action.
          */
         get parameterType(): GLib.VariantType;
@@ -10785,12 +10785,12 @@ export namespace Egg {
          */
         get state(): GLib.Variant;
         /**
-         * The [type`GLib`.VariantType] of the state that the action has, or `NULL` if the
+         * The #GVariantType of the state that the action has, or %NULL if the
          * action is stateless. This is immutable.
          */
         get state_type(): GLib.VariantType;
         /**
-         * The [type`GLib`.VariantType] of the state that the action has, or `NULL` if the
+         * The #GVariantType of the state that the action has, or %NULL if the
          * action is stateless. This is immutable.
          */
         get stateType(): GLib.VariantType;

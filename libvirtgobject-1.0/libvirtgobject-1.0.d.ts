@@ -14,7 +14,6 @@ import type LibvirtGConfig from '@girs/libvirtgconfig-1.0';
 import type libxml2 from '@girs/libxml2-2.0';
 import type GObject from '@girs/gobject-2.0';
 import type Gio from '@girs/gio-2.0';
-import type GModule from '@girs/gmodule-2.0';
 
 export namespace LibvirtGObject {
     /**

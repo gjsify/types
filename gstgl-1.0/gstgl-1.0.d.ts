@@ -588,12 +588,6 @@ export namespace GstGL {
     function buffer_add_gl_sync_meta_full(context: GLContext, buffer: Gst.Buffer, data?: any | null): GLSyncMeta;
     function buffer_pool_config_get_gl_allocation_params(config: Gst.Structure): GLAllocationParams | null;
     /**
-     * See gst_buffer_pool_config_set_gl_min_free_queue_size().
-     * @param config a buffer pool config
-     * @returns then number of buffers configured the free queue
-     */
-    function buffer_pool_config_get_gl_min_free_queue_size(config: Gst.Structure): number;
-    /**
      * Sets `params` on `config`
      * @param config a buffer pool config
      * @param params a #GstGLAllocationParams
@@ -602,22 +596,6 @@ export namespace GstGL {
         config: Gst.Structure,
         params?: GLAllocationParams | null,
     ): void;
-    /**
-     * Instructs the #GstGLBufferPool to keep `queue_size` amount of buffers around
-     * before allowing them for reuse.
-     *
-     * This is helpful to allow GPU processing to complete before the CPU
-     * operations on the same buffer could start.  Particularly useful when
-     * uploading or downloading data to/from the GPU.
-     *
-     * A value of 0 disabled this functionality.
-     *
-     * This value must be less than the configured maximum amount of buffers for
-     * this `config`.
-     * @param config a buffer pool config
-     * @param queue_size the number of buffers
-     */
-    function buffer_pool_config_set_gl_min_free_queue_size(config: Gst.Structure, queue_size: number): void;
     function context_get_gl_display(context: Gst.Context): [boolean, GLDisplay | null];
     /**
      * Sets `display` on `context`
@@ -673,7 +651,6 @@ export namespace GstGL {
     ): [boolean, GLDisplay, GLContext];
     function gl_format_from_video_info(context: GLContext, vinfo: GstVideo.VideoInfo, plane: number): GLFormat;
     function gl_format_is_supported(context: GLContext, format: GLFormat): boolean;
-    function gl_format_n_components(gl_format: GLFormat): number;
     /**
      * Get the unsized format and type from `format` for usage in glReadPixels,
      * glTex{Sub}Image*, glTexImage* and similar functions.
@@ -764,15 +741,6 @@ export namespace GstGL {
     ): void;
     function gl_sized_gl_format_from_gl_format_type(context: GLContext, format: number, type: number): number;
     function gl_stereo_downmix_mode_get_type(): GObject.GType;
-    /**
-     * Given `swizzle,` produce `inversion` such that:
-     *
-     * `swizzle[``inversion[`i]] == identity[i] where:
-     * - identity = {0, 1, 2,...}
-     * - unset fields are marked by -1
-     * @param swizzle input swizzle
-     */
-    function gl_swizzle_invert(swizzle: number[]): number[];
     function gl_sync_meta_api_get_type(): GObject.GType;
     function gl_sync_meta_get_info(): Gst.MetaInfo;
     function gl_texture_target_from_gl(target: number): GLTextureTarget;
@@ -796,21 +764,6 @@ export namespace GstGL {
      */
     function gl_value_set_texture_target_from_mask(value: GObject.Value | any, target_mask: GLTextureTarget): boolean;
     function gl_version_to_glsl_version(gl_api: GLAPI, maj: number, min: number): GLSLVersion;
-    /**
-     * Calculates the swizzle indices for `video_format` and `gl_format` in order to
-     * access a texture such that accessing a texel from a texture through the swizzle
-     * index produces values in the order (R, G, B, A) or (Y, U, V, A).
-     *
-     * For multi-planer formats, the swizzle index uses the same component order (RGBA/YUVA)
-     * and should be applied after combining multiple planes into a single rgba/yuva value.
-     * e.g. sampling from a NV12 format would have Y from one texture and UV from
-     * another texture into a (Y, U, V) value.  Add an Aplha component and then
-     * perform swizzling.  Sampling from NV21 would produce (Y, V, U) which is then
-     * swizzled to (Y, U, V).
-     * @param video_format the #GstVideoFormat in use
-     * @returns whether valid swizzle indices could be found
-     */
-    function gl_video_format_swizzle(video_format: GstVideo.VideoFormat): [boolean, number[]];
     function gl_window_error_quark(): GLib.Quark;
     function glsl_error_quark(): GLib.Quark;
     function glsl_profile_from_string(string: string): GLSLProfile;
@@ -1010,11 +963,6 @@ export namespace GstGL {
          */
         ANDROID,
         /**
-         * Mesa3D surfaceless display using the EGL_PLATFORM_SURFACELESS_MESA
-         * extension.
-         */
-        EGL_SURFACELESS,
-        /**
          * any display type
          */
         ANY,
@@ -1121,21 +1069,8 @@ export namespace GstGL {
 
         // Virtual methods
 
-        /**
-         * called in the GL thread when caps are set on `filter`.
-         *               Note: this will also be called when changing OpenGL contexts
-         *               where #GstBaseTransform::set_caps may not.
-         * @param incaps
-         * @param outcaps
-         */
         vfunc_gl_set_caps(incaps: Gst.Caps, outcaps: Gst.Caps): boolean;
-        /**
-         * called in the GL thread to setup the element GL state.
-         */
         vfunc_gl_start(): boolean;
-        /**
-         * called in the GL thread to setup the element GL state.
-         */
         vfunc_gl_stop(): void;
 
         // Methods
@@ -1164,10 +1099,6 @@ export namespace GstGL {
 
         // Virtual methods
 
-        /**
-         * a #GstGLBaseMemoryAllocatorAllocFunction
-         * @param params the #GstGLAllocationParams to allocate the memory with
-         */
         vfunc_alloc(params: GLAllocationParams): GLBaseMemory | null;
         // Conflicted with Gst.Allocator.vfunc_alloc
         vfunc_alloc(...args: never[]): any;
@@ -1277,18 +1208,8 @@ export namespace GstGL {
 
         // Virtual methods
 
-        /**
-         * called in the GL thread to fill the current video texture.
-         * @param mem
-         */
         vfunc_fill_gl_memory(mem: GLMemory): boolean;
-        /**
-         * called in the GL thread to setup the element GL state.
-         */
         vfunc_gl_start(): boolean;
-        /**
-         * called in the GL thread to setup the element GL state.
-         */
         vfunc_gl_stop(): void;
     }
 
@@ -1396,7 +1317,6 @@ export namespace GstGL {
          * @param other the #GstCaps to fixate
          */
         static fixate_caps(context: GLContext, direction: Gst.PadDirection, caps: Gst.Caps, other: Gst.Caps): Gst.Caps;
-        static swizzle_shader_string(context: GLContext): string;
         /**
          * Provides an implementation of #GstBaseTransformClass.transform_caps()
          * @param context a #GstGLContext to use for transforming @caps
@@ -1410,17 +1330,6 @@ export namespace GstGL {
             caps: Gst.Caps,
             filter: Gst.Caps,
         ): Gst.Caps;
-        /**
-         * The returned glsl function has declaration:
-         *
-         * `vec3 yuv_to_rgb (vec3 rgb, vec3 offset, vec3 ycoeff, vec3 ucoeff, vec3 vcoeff);`
-         *
-         * The Y component is placed in the 0th index of the returned value, The U component in the
-         * 1st, and the V component in the 2nd.  offset, ycoeff, ucoeff, and vcoeff are the
-         * specific coefficients and offset used for the conversion.
-         * @param context a #GstGLContext
-         */
-        static yuv_to_rgb_shader_string(context: GLContext): string;
 
         // Methods
 
@@ -1542,19 +1451,8 @@ export namespace GstGL {
          * @param feature a platform specific feature
          */
         vfunc_check_feature(feature: string): boolean;
-        /**
-         * choose a format for the framebuffer
-         */
         vfunc_choose_format(): boolean;
-        /**
-         * create the OpenGL context
-         * @param gl_api
-         * @param other_context
-         */
         vfunc_create_context(gl_api: GLAPI, other_context: GLContext): boolean;
-        /**
-         * destroy the OpenGL context
-         */
         vfunc_destroy_context(): void;
         /**
          * Retrieve the OpenGL configuration for this context.  The context must
@@ -1822,7 +1720,7 @@ export namespace GstGL {
      * There are a number of environment variables that influence the choice of
      * platform and window system specific functionality.
      * - GST_GL_WINDOW influences the window system to use.  Common values are
-     *   'x11', 'wayland', 'surfaceless', 'win32' or 'cocoa'.
+     *   'x11', 'wayland', 'win32' or 'cocoa'.
      * - GST_GL_PLATFORM influences the OpenGL platform to use.  Common values are
      *   'egl', 'glx', 'wgl' or 'cgl'.
      * - GST_GL_API influences the OpenGL API requested by the OpenGL platform.
@@ -1958,14 +1856,6 @@ export namespace GstGL {
 
         // Virtual methods
 
-        /**
-         * perform operations on the input and output buffers.  In general,
-         *          you should avoid using this method if at all possible. One valid
-         *          use-case for using this is keeping previous buffers for future calculations.
-         *          Note: If `filter` exists, then `filter_texture` is not run
-         * @param inbuf
-         * @param outbuf
-         */
         vfunc_filter(inbuf: Gst.Buffer, outbuf: Gst.Buffer): boolean;
         /**
          * Calls filter_texture vfunc with correctly mapped #GstGLMemorys
@@ -1973,23 +1863,8 @@ export namespace GstGL {
          * @param output an output buffer
          */
         vfunc_filter_texture(input: GLMemory, output: GLMemory): boolean;
-        /**
-         * perform initialization when the Framebuffer object is created
-         */
         vfunc_init_fbo(): boolean;
-        /**
-         * mirror from #GstBaseTransform
-         * @param incaps
-         * @param outcaps
-         */
         vfunc_set_caps(incaps: Gst.Caps, outcaps: Gst.Caps): boolean;
-        /**
-         * Perform sub-class specific modifications of the
-         *   caps to be processed between upload on input and before download for output.
-         * @param direction
-         * @param caps
-         * @param filter_caps
-         */
         vfunc_transform_internal_caps(direction: Gst.PadDirection, caps: Gst.Caps, filter_caps: Gst.Caps): Gst.Caps;
 
         // Methods
@@ -2680,14 +2555,6 @@ export namespace GstGL {
 
         // Methods
 
-        /**
-         * Fixate the `othercaps` based on the information of the `caps`.
-         * @param direction the pad #GstPadDirection
-         * @param caps a #GstCaps as the reference
-         * @param othercaps a #GstCaps to fixate
-         * @returns the fixated caps
-         */
-        fixate_caps(direction: Gst.PadDirection, caps: Gst.Caps, othercaps: Gst.Caps): Gst.Caps;
         get_caps(): [Gst.Caps | null, Gst.Caps | null];
         /**
          * Uploads `buffer` using the transformation specified by
@@ -2905,9 +2772,6 @@ export namespace GstGL {
 
         // Virtual methods
 
-        /**
-         * close the connection to the display
-         */
         vfunc_close(): void;
         /**
          * Checks if `window` controls the GL viewport.
@@ -2917,15 +2781,7 @@ export namespace GstGL {
          * Redraw the window contents.  Implementations should invoke the draw callback.
          */
         vfunc_draw(): void;
-        /**
-         * Gets the current windowing system display connection
-         */
         vfunc_get_display(): never;
-        /**
-         * Gets the current window handle that this #GstGLWindow is
-         *                     rendering into.  This may return a different value to
-         *                     what is passed into `set_window_handle`
-         */
         vfunc_get_window_handle(): never;
         /**
          * Tell a `window` that it should handle events from the window system. These
@@ -2940,9 +2796,6 @@ export namespace GstGL {
          * Query whether `window` has output surface or not
          */
         vfunc_has_output_surface(): boolean;
-        /**
-         * open the connection to the display
-         */
         vfunc_open(): boolean;
         /**
          * Queue resizing of `window`.

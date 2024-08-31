@@ -879,6 +879,16 @@ export namespace GPlugin {
          */
         find_plugin(id: string): Plugin;
         /**
+         * Finds a plugin with the given filename.
+         *
+         * This method should be used sparingly as you should typically be using plugin
+         * id's to identify them, however, sometimes it's necessary to find them by
+         * filename.
+         * @param filename The filename of the plugin.
+         * @returns The plugin if found, otherwise %NULL.
+         */
+        find_plugin_with_filename(filename: string): Plugin | null;
+        /**
          * Calls [method`GPlugin`.Manager.find_plugins] with `id,` and then returns the
          * plugins with the highest version number or %NULL if no plugins with `id` are
          * found.
@@ -1007,6 +1017,7 @@ export namespace GPlugin {
             category: string;
             dependencies: string[];
             description: string;
+            discriminator: string;
             icon_name: string;
             iconName: string;
             id: string;
@@ -1135,6 +1146,12 @@ export namespace GPlugin {
          * information" section in a user interface.
          */
         get description(): string;
+        /**
+         * A unique value that can be used to identify plugins with the same id.
+         *
+         * This is an opaque token and may change in the future.
+         */
+        get discriminator(): string;
         /**
          * A XDG icon name for the plugin.  The actual use of this is determined by
          * the application/library using GPlugin.
@@ -1320,6 +1337,11 @@ export namespace GPlugin {
          * @returns The description from @info.
          */
         get_description(): string;
+        /**
+         * Gets the discriminator from `info`.
+         * @returns The discriminator.
+         */
+        get_discriminator(): string;
         /**
          * Returns the name of the icon for the plugin as specified in `info`.
          * @returns The icon name from @info.

@@ -20,7 +20,6 @@ import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 import type HarfBuzz from '@girs/harfbuzz-0.0';
 import type Gio from '@girs/gio-2.0';
-import type GModule from '@girs/gmodule-2.0';
 import type PangoFT2 from '@girs/pangoft2-1.0';
 
 export namespace PangoXft {
@@ -753,7 +752,22 @@ export namespace PangoXft {
 
         // Virtual methods
 
+        /**
+         * draw the specified glyphs using
+         *   the current foreground color and other foreground
+         *   attributes
+         * @param xft_font
+         * @param glyphs
+         * @param n_glyphs
+         */
         vfunc_composite_glyphs(xft_font: xft.Font, glyphs: xft.GlyphSpec, n_glyphs: number): void;
+        /**
+         * draw the specified trapezoids using
+         *   the current color and other attributes for `part`
+         * @param part
+         * @param trapezoids
+         * @param n_trapezoids
+         */
         vfunc_composite_trapezoids(part: Pango.RenderPart, trapezoids: xlib.XTrapezoid, n_trapezoids: number): void;
 
         // Methods

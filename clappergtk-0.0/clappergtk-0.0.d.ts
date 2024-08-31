@@ -20,8 +20,8 @@ import type Pango from '@girs/pango-1.0';
 import type HarfBuzz from '@girs/harfbuzz-0.0';
 import type freetype2 from '@girs/freetype2-2.0';
 import type Gio from '@girs/gio-2.0';
-import type GModule from '@girs/gmodule-2.0';
 import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
+import type GModule from '@girs/gmodule-2.0';
 import type Gst from '@girs/gst-1.0';
 import type Clapper from '@girs/clapper-0.0';
 import type GstTag from '@girs/gsttag-1.0';
@@ -141,7 +141,6 @@ export namespace ClapperGtk {
          * side of `billboard`.
          *
          * Use this if you want to present current speed value to the user.
-         * Note that `billboard` also automatically announces speed changes.
          */
         announce_speed(): void;
         /**
@@ -149,7 +148,6 @@ export namespace ClapperGtk {
          * side of `billboard`.
          *
          * Use this if you want to present current volume level to the user.
-         * Note that `billboard` also automatically announces volume changes.
          */
         announce_volume(): void;
         /**
