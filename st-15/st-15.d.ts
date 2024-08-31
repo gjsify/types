@@ -29,7 +29,6 @@ import type Clutter from '@girs/clutter-15';
 import type Atk from '@girs/atk-1.0';
 import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 import type GModule from '@girs/gmodule-2.0';
-import type Cally from '@girs/cally-15';
 
 export namespace St {
     /**
@@ -9725,10 +9724,6 @@ export namespace St {
         > extends Clutter.Actor.ConstructorProps<A, B>,
                 Atk.ImplementorIface.ConstructorProps,
                 Clutter.Animatable.ConstructorProps {
-            accessible_name: string;
-            accessibleName: string;
-            accessible_role: Atk.Role;
-            accessibleRole: Atk.Role;
             can_focus: boolean;
             canFocus: boolean;
             hover: boolean;
@@ -9752,26 +9747,6 @@ export namespace St {
 
         // Properties
 
-        /**
-         * Object instance's name for assistive technology access.
-         */
-        get accessible_name(): string;
-        set accessible_name(val: string);
-        /**
-         * Object instance's name for assistive technology access.
-         */
-        get accessibleName(): string;
-        set accessibleName(val: string);
-        /**
-         * The accessible role of this object
-         */
-        get accessible_role(): Atk.Role;
-        set accessible_role(val: Atk.Role);
-        /**
-         * The accessible role of this object
-         */
-        get accessibleRole(): Atk.Role;
-        set accessibleRole(val: Atk.Role);
         /**
          * Whether or not the widget can be focused via keyboard navigation.
          */
@@ -9915,18 +9890,6 @@ export namespace St {
          */
         ensure_style(): void;
         /**
-         * Gets the accessible name for this widget. See
-         * st_widget_set_accessible_name() for more information.
-         * @returns a character string representing the accessible name of the widget.
-         */
-        get_accessible_name(): string;
-        /**
-         * Gets the #AtkRole for this widget. See
-         * st_widget_set_accessible_role() for more information.
-         * @returns accessible #AtkRole for this widget
-         */
-        get_accessible_role(): Atk.Role;
-        /**
          * Returns the current value of the can-focus property. See
          * st_widget_set_can_focus() for more information.
          * @returns current value of can-focus on @widget
@@ -10067,54 +10030,6 @@ export namespace St {
          * @param pseudo_class a pseudo class string
          */
         remove_style_pseudo_class(pseudo_class: string): void;
-        /**
-         * This method allows to set a customly created accessible object to
-         * this widget. For example if you define a new subclass of
-         * #StWidgetAccessible at the javascript code.
-         *
-         * NULL is a valid value for `accessible`. That contemplates the
-         * hypothetical case of not needing anymore a custom accessible object
-         * for the widget. Next call of st_widget_get_accessible() would
-         * create and return a default accessible.
-         *
-         * It assumes that the call to atk_object_initialize that bound the
-         * gobject with the custom accessible object was already called, so
-         * not a responsibility of this method.
-         * @param accessible an accessible (#AtkObject)
-         */
-        set_accessible(accessible: Atk.Object): void;
-        /**
-         * This method sets `name` as the accessible name for `widget`.
-         *
-         * Usually you will have no need to set the accessible name for an
-         * object, as usually there is a label for most of the interface
-         * elements. So in general it is better to just use
-         * `st_widget_set_label_actor`. This method is only required when you
-         * need to set an accessible name and there is no available label
-         * object.
-         * @param name a character string to be set as the accessible name
-         */
-        set_accessible_name(name?: string | null): void;
-        /**
-         * This method sets `role` as the accessible role for `widget`. This
-         * role describes what kind of user interface element `widget` is and
-         * is provided so that assistive technologies know how to present
-         * `widget` to the user.
-         *
-         * Usually you will have no need to set the accessible role for an
-         * object, as this information is extracted from the context of the
-         * object (ie: a #StButton has by default a push button role). This
-         * method is only required when you need to redefine the role
-         * currently associated with the widget, for instance if it is being
-         * used in an unusual way (ie: a #StButton used as a togglebutton), or
-         * if a generic object is used directly (ie: a container as a menu
-         * item).
-         *
-         * If `role` is #ATK_ROLE_INVALID, the role will not be changed
-         * and the accessible's default role will be used instead.
-         * @param role The role to use
-         */
-        set_accessible_role(role: Atk.Role): void;
         /**
          * Marks `widget` as being able to receive keyboard focus via
          * keyboard navigation.
@@ -10666,10 +10581,10 @@ export namespace St {
     module WidgetAccessible {
         // Constructor properties interface
 
-        interface ConstructorProps extends Cally.Actor.ConstructorProps, Atk.Component.ConstructorProps {}
+        interface ConstructorProps extends Clutter.ActorAccessible.ConstructorProps, Atk.Component.ConstructorProps {}
     }
 
-    class WidgetAccessible extends Cally.Actor implements Atk.Component {
+    class WidgetAccessible extends Clutter.ActorAccessible implements Atk.Component {
         static $gtype: GObject.GType<WidgetAccessible>;
 
         // Constructors

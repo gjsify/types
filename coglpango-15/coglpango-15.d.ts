@@ -65,13 +65,9 @@ export namespace CoglPango {
      * @param dpi The resolution in "dots per inch". (Physical inches aren't       actually involved; the terminology is conventional.)
      */
     function font_map_set_resolution(font_map: FontMap, dpi: number): void;
-    /**
-     * Sets whether the renderer for the passed font map should use
-     * mipmapping when rendering a [class`Pango`.Layout].
-     * @param font_map a #CoglPangoFontMap
-     * @param value %TRUE to enable the use of mipmapping
-     */
-    function font_map_set_use_mipmapping(font_map: FontMap, value: boolean): void;
+    interface PipelineSetup {
+        (pipeline: Cogl.Pipeline): void;
+    }
     module Renderer {
         // Constructor properties interface
 

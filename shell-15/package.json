@@ -33,7 +33,6 @@
     "dependencies": {
         "@girs/atk-1.0": "workspace:^",
         "@girs/cairo-1.0": "workspace:^",
-        "@girs/cally-15": "workspace:^",
         "@girs/clutter-15": "workspace:^",
         "@girs/cogl-15": "workspace:^",
         "@girs/coglpango-15": "workspace:^",

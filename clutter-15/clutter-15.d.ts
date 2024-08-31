@@ -465,6 +465,31 @@ export namespace Clutter {
          */
         RESIZE_ASPECT,
     }
+    /**
+     * The texture format required to store a specific encoding.
+     */
+
+    /**
+     * The texture format required to store a specific encoding.
+     */
+    export namespace EncodingRequiredFormat {
+        export const $gtype: GObject.GType<EncodingRequiredFormat>;
+    }
+
+    enum EncodingRequiredFormat {
+        /**
+         * 8bpc uint
+         */
+        UINT8,
+        /**
+         * 10bpc uint
+         */
+        UINT10,
+        /**
+         * 16bpc floating point
+         */
+        FP16,
+    }
 
     export namespace EventPhase {
         export const $gtype: GObject.GType<EventPhase>;
@@ -3820,13 +3845,6 @@ export namespace Clutter {
     function actor_box_alloc(): ActorBox;
     function debug_set_max_render_time_constant(max_render_time_constant_us: number): void;
     /**
-     * Disable loading the accessibility support. It has the same effect
-     * as setting the environment variable
-     * CLUTTER_DISABLE_ACCESSIBILITY. For the same reason, this method
-     * should be called before clutter_init().
-     */
-    function disable_accessibility(): void;
-    /**
      * Adds a function which will be called for all events that Clutter
      * processes. The function will be called before any signals are
      * emitted for the event and it will take precedence over any grabs.
@@ -3853,9 +3871,7 @@ export namespace Clutter {
      */
     function events_pending(): boolean;
     /**
-     * Returns whether Clutter has accessibility support enabled.  As
-     * least, a value of TRUE means that there are a proper AtkUtil
-     * implementation available
+     * Returns whether Clutter has accessibility support enabled.
      * @returns %TRUE if Clutter has accessibility support enabled
      */
     function get_accessibility_enabled(): boolean;
@@ -3891,13 +3907,6 @@ export namespace Clutter {
      * @returns the default text direction
      */
     function get_default_text_direction(): TextDirection;
-    /**
-     * Retrieves the #PangoFontMap instance used by Clutter.
-     * You can use the global font map object with the COGL
-     * Pango API.
-     * @returns the #PangoFontMap instance. The returned   value is owned by Clutter and it should never be unreferenced.
-     */
-    function get_font_map(): Pango.FontMap;
     function get_text_direction(): TextDirection;
     /**
      * Converts `keyval` from a Clutter key symbol to the corresponding
@@ -4173,44 +4182,6 @@ export namespace Clutter {
         (timeline: Timeline, elapsed: number, total: number): number;
     }
     /**
-     * Flags used to signal the state of an actor.
-     */
-
-    /**
-     * Flags used to signal the state of an actor.
-     */
-    export namespace ActorFlags {
-        export const $gtype: GObject.GType<ActorFlags>;
-    }
-
-    enum ActorFlags {
-        /**
-         * the actor will be painted (is visible, and inside
-         *   a toplevel, and all parents visible)
-         */
-        MAPPED,
-        /**
-         * the resources associated to the actor have been
-         *   allocated
-         */
-        REALIZED,
-        /**
-         * the actor 'reacts' to mouse events emitting event
-         *   signals
-         */
-        REACTIVE,
-        /**
-         * the actor has been shown by the application program
-         */
-        VISIBLE,
-        /**
-         * the actor provides an explicit layout management
-         *   policy for its children; this flag will prevent Clutter from automatic
-         *   queueing of relayout and will defer all layouting to the actor itself
-         */
-        NO_LAYOUT,
-    }
-    /**
      * Content repeat modes.
      */
 
@@ -4238,15 +4209,6 @@ export namespace Clutter {
          * Repeat the content on both axis
          */
         BOTH,
-    }
-
-    export namespace ContextFlags {
-        export const $gtype: GObject.GType<ContextFlags>;
-    }
-
-    enum ContextFlags {
-        NONE,
-        NO_A11Y,
     }
 
     export namespace DebugFlag {
@@ -4648,35 +4610,6 @@ export namespace Clutter {
         VERTICAL,
     }
     /**
-     * Scroll modes.
-     */
-
-    /**
-     * Scroll modes.
-     */
-    export namespace ScrollMode {
-        export const $gtype: GObject.GType<ScrollMode>;
-    }
-
-    enum ScrollMode {
-        /**
-         * Ignore scrolling
-         */
-        NONE,
-        /**
-         * Scroll only horizontally
-         */
-        HORIZONTALLY,
-        /**
-         * Scroll only vertically
-         */
-        VERTICALLY,
-        /**
-         * Scroll in both directions
-         */
-        BOTH,
-    }
-    /**
      * The main direction of the swipe gesture
      */
 
@@ -4881,6 +4814,10 @@ export namespace Clutter {
             extends GObject.InitiallyUnowned.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Animatable.ConstructorProps {
+            accessible_name: string;
+            accessibleName: string;
+            accessible_role: Atk.Role;
+            accessibleRole: Atk.Role;
             actions: Action;
             allocation: ActorBox;
             background_color: Cogl.Color;
@@ -5469,6 +5406,26 @@ export namespace Clutter {
 
         // Properties
 
+        /**
+         * Object instance's name for assistive technology access.
+         */
+        get accessible_name(): string;
+        set accessible_name(val: string);
+        /**
+         * Object instance's name for assistive technology access.
+         */
+        get accessibleName(): string;
+        set accessibleName(val: string);
+        /**
+         * The accessible role of this object
+         */
+        get accessible_role(): Atk.Role;
+        set accessible_role(val: Atk.Role);
+        /**
+         * The accessible role of this object
+         */
+        get accessibleRole(): Atk.Role;
+        set accessibleRole(val: Atk.Role);
         /**
          * Adds a #ClutterAction to the actor
          */
@@ -6740,7 +6697,6 @@ export namespace Clutter {
          * @param for_height available height when computing the preferred width,   or a negative value to indicate that no height is defined
          */
         vfunc_get_preferred_width(for_height: number): [number, number];
-        vfunc_has_accessible(): boolean;
         /**
          * Asks the actor's implementation whether it may contain overlapping
          * primitives.
@@ -7352,6 +7308,18 @@ export namespace Clutter {
          */
         get_accessible(): Atk.Object;
         /**
+         * Gets the accessible name for this widget. See
+         * clutter_actor_set_accessible_name() for more information.
+         * @returns a character string representing the accessible name of the widget.
+         */
+        get_accessible_name(): string;
+        /**
+         * Gets the #AtkRole for this widget. See
+         * clutter_actor_set_accessible_role() for more information.
+         * @returns accessible #AtkRole for this widget
+         */
+        get_accessible_role(): Atk.Role;
+        /**
          * Retrieves the #ClutterAction with the given name in the list
          * of actions applied to `self`
          * @param name the name of the action to retrieve
@@ -7515,11 +7483,6 @@ export namespace Clutter {
          * @returns %TRUE if the fixed position is set on the actor
          */
         get_fixed_position_set(): boolean;
-        /**
-         * Retrieves the flags set on `self`
-         * @returns a bitwise or of #ClutterActorFlags or 0
-         */
-        get_flags(): ActorFlags;
         /**
          * Retrieves the height of a #ClutterActor.
          *
@@ -8039,7 +8002,6 @@ export namespace Clutter {
          * to this #ClutterActor.
          */
         grab_key_focus(): void;
-        has_accessible(): boolean;
         /**
          * Returns whether the actor has any actions applied.
          * @returns %TRUE if the actor has any actions,   %FALSE otherwise
@@ -8201,6 +8163,15 @@ export namespace Clutter {
          * @returns %TRUE if the actor is mapped4
          */
         is_mapped(): boolean;
+        /**
+         * Checks whether `actor` is marked as no layout.
+         *
+         * That means the `actor` provides an explicit layout management
+         * policy for its children; this will prevent Clutter from automatic
+         * queueing of relayout and will defer all layouting to the actor itself
+         * @returns %TRUE if the actor is marked as no layout
+         */
+        is_no_layout(): boolean;
         /**
          * Checks whether a #ClutterActor is realized.
          * @returns %TRUE if the actor is realized4
@@ -8473,6 +8444,50 @@ export namespace Clutter {
          */
         save_easing_state(): void;
         /**
+         * This method allows to set a customly created accessible object to
+         * this widget
+         *
+         * NULL is a valid value for `accessible`. That contemplates the
+         * hypothetical case of not needing anymore a custom accessible object
+         * for the widget. Next call of [method`Clutter`.Actor.get_accessible] would
+         * create and return a default accessible.
+         *
+         * It assumes that the call to atk_object_initialize that bound the
+         * gobject with the custom accessible object was already called, so
+         * not a responsibility of this method.
+         * @param accessible an accessible
+         */
+        set_accessible(accessible: Atk.Object): void;
+        /**
+         * This method sets `name` as the accessible name for `self`.
+         *
+         * Usually you will have no need to set the accessible name for an
+         * object, as usually there is a label for most of the interface
+         * elements.
+         * @param name a character string to be set as the accessible name
+         */
+        set_accessible_name(name?: string | null): void;
+        /**
+         * This method sets `role` as the accessible role for `self`. This
+         * role describes what kind of user interface element `self` is and
+         * is provided so that assistive technologies know how to present
+         * `self` to the user.
+         *
+         * Usually you will have no need to set the accessible role for an
+         * object, as this information is extracted from the context of the
+         * object (ie: a #StButton has by default a push button role). This
+         * method is only required when you need to redefine the role
+         * currently associated with the widget, for instance if it is being
+         * used in an unusual way (ie: a #StButton used as a togglebutton), or
+         * if a generic object is used directly (ie: a container as a menu
+         * item).
+         *
+         * If `role` is #ATK_ROLE_INVALID, the role will not be changed
+         * and the accessible's default role will be used instead.
+         * @param role The role to use
+         */
+        set_accessible_role(role: Atk.Role): void;
+        /**
          * Stores the allocation of `self` as defined by `box`.
          *
          * This function can only be called from within the implementation of
@@ -8625,13 +8640,6 @@ export namespace Clutter {
          */
         set_fixed_position_set(is_set: boolean): void;
         /**
-         * Sets `flags` on `self`
-         *
-         * This function will emit notifications for the changed properties
-         * @param flags the flags to set
-         */
-        set_flags(flags: ActorFlags): void;
-        /**
          * Forces a height on an actor, causing the actor's preferred width
          * and height (if any) to be ignored.
          *
@@ -8691,6 +8699,7 @@ export namespace Clutter {
          * @param name Textual tag to apply to actor
          */
         set_name(name?: string | null): void;
+        set_no_layout(no_layout: boolean): void;
         /**
          * Defines the circumstances where the actor should be redirected into
          * an offscreen image. The offscreen image is used to flatten the
@@ -9063,13 +9072,6 @@ export namespace Clutter {
          * Set `self'`s color state to the default.
          */
         unset_color_state(): void;
-        /**
-         * Unsets `flags` on `self`
-         *
-         * This function will emit notifications for the changed properties
-         * @param flags the flags to unset
-         */
-        unset_flags(flags: ActorFlags): void;
 
         // Inherited methods
         /**
@@ -9143,6 +9145,664 @@ export namespace Clutter {
          * @param value the value of the animatable property to set
          */
         vfunc_set_final_state(property_name: string, value: GObject.Value | any): void;
+        /**
+         * Creates a binding between `source_property` on `source` and `target_property`
+         * on `target`.
+         *
+         * Whenever the `source_property` is changed the `target_property` is
+         * updated using the same value. For instance:
+         *
+         *
+         * ```c
+         *   g_object_bind_property (action, "active", widget, "sensitive", 0);
+         * ```
+         *
+         *
+         * Will result in the "sensitive" property of the widget #GObject instance to be
+         * updated with the same value of the "active" property of the action #GObject
+         * instance.
+         *
+         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * if `target_property` on `target` changes then the `source_property` on `source`
+         * will be updated as well.
+         *
+         * The binding will automatically be removed when either the `source` or the
+         * `target` instances are finalized. To remove the binding without affecting the
+         * `source` and the `target` you can just call g_object_unref() on the returned
+         * #GBinding instance.
+         *
+         * Removing the binding by calling g_object_unref() on it must only be done if
+         * the binding, `source` and `target` are only used from a single thread and it
+         * is clear that both `source` and `target` outlive the binding. Especially it
+         * is not safe to rely on this if the binding, `source` or `target` can be
+         * finalized from different threads. Keep another reference to the binding and
+         * use g_binding_unbind() instead to be on the safe side.
+         *
+         * A #GObject can have multiple bindings.
+         * @param source_property the property on @source to bind
+         * @param target the target #GObject
+         * @param target_property the property on @target to bind
+         * @param flags flags to pass to #GBinding
+         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         */
+        bind_property(
+            source_property: string,
+            target: GObject.Object,
+            target_property: string,
+            flags: GObject.BindingFlags,
+        ): GObject.Binding;
+        /**
+         * Complete version of g_object_bind_property().
+         *
+         * Creates a binding between `source_property` on `source` and `target_property`
+         * on `target,` allowing you to set the transformation functions to be used by
+         * the binding.
+         *
+         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * if `target_property` on `target` changes then the `source_property` on `source`
+         * will be updated as well. The `transform_from` function is only used in case
+         * of bidirectional bindings, otherwise it will be ignored
+         *
+         * The binding will automatically be removed when either the `source` or the
+         * `target` instances are finalized. This will release the reference that is
+         * being held on the #GBinding instance; if you want to hold on to the
+         * #GBinding instance, you will need to hold a reference to it.
+         *
+         * To remove the binding, call g_binding_unbind().
+         *
+         * A #GObject can have multiple bindings.
+         *
+         * The same `user_data` parameter will be used for both `transform_to`
+         * and `transform_from` transformation functions; the `notify` function will
+         * be called once, when the binding is removed. If you need different data
+         * for each transformation function, please use
+         * g_object_bind_property_with_closures() instead.
+         * @param source_property the property on @source to bind
+         * @param target the target #GObject
+         * @param target_property the property on @target to bind
+         * @param flags flags to pass to #GBinding
+         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
+         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
+         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         */
+        bind_property_full(
+            source_property: string,
+            target: GObject.Object,
+            target_property: string,
+            flags: GObject.BindingFlags,
+            transform_to?: GObject.BindingTransformFunc | null,
+            transform_from?: GObject.BindingTransformFunc | null,
+            notify?: GLib.DestroyNotify | null,
+        ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
+        bind_property_full(...args: never[]): any;
+        /**
+         * This function is intended for #GObject implementations to re-enforce
+         * a [floating][floating-ref] object reference. Doing this is seldom
+         * required: all #GInitiallyUnowneds are created with a floating reference
+         * which usually just needs to be sunken by calling g_object_ref_sink().
+         */
+        force_floating(): void;
+        /**
+         * Increases the freeze count on `object`. If the freeze count is
+         * non-zero, the emission of "notify" signals on `object` is
+         * stopped. The signals are queued until the freeze count is decreased
+         * to zero. Duplicate notifications are squashed so that at most one
+         * #GObject::notify signal is emitted for each property modified while the
+         * object is frozen.
+         *
+         * This is necessary for accessors that modify multiple properties to prevent
+         * premature notification while the object is still being modified.
+         */
+        freeze_notify(): void;
+        /**
+         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * @param key name of the key for that association
+         * @returns the data if found,          or %NULL if no such data exists.
+         */
+        get_data(key: string): any | null;
+        get_property(property_name: string): any;
+        /**
+         * This function gets back user data pointers stored via
+         * g_object_set_qdata().
+         * @param quark A #GQuark, naming the user data pointer
+         * @returns The user data pointer set, or %NULL
+         */
+        get_qdata(quark: GLib.Quark): any | null;
+        /**
+         * Gets `n_properties` properties for an `object`.
+         * Obtained properties will be set to `values`. All properties must be valid.
+         * Warnings will be emitted and undefined behaviour may result if invalid
+         * properties are passed in.
+         * @param names the names of each property to get
+         * @param values the values of each property to get
+         */
+        getv(names: string[], values: (GObject.Value | any)[]): void;
+        /**
+         * Checks whether `object` has a [floating][floating-ref] reference.
+         * @returns %TRUE if @object has a floating reference
+         */
+        is_floating(): boolean;
+        /**
+         * Emits a "notify" signal for the property `property_name` on `object`.
+         *
+         * When possible, eg. when signaling a property change from within the class
+         * that registered the property, you should use g_object_notify_by_pspec()
+         * instead.
+         *
+         * Note that emission of the notify signal may be blocked with
+         * g_object_freeze_notify(). In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * called.
+         * @param property_name the name of a property installed on the class of @object.
+         */
+        notify(property_name: string): void;
+        /**
+         * Emits a "notify" signal for the property specified by `pspec` on `object`.
+         *
+         * This function omits the property name lookup, hence it is faster than
+         * g_object_notify().
+         *
+         * One way to avoid using g_object_notify() from within the
+         * class that registered the properties, and using g_object_notify_by_pspec()
+         * instead, is to store the GParamSpec used with
+         * g_object_class_install_property() inside a static array, e.g.:
+         *
+         *
+         * ```c
+         *   typedef enum
+         *   {
+         *     PROP_FOO = 1,
+         *     PROP_LAST
+         *   } MyObjectProperty;
+         *
+         *   static GParamSpec *properties[PROP_LAST];
+         *
+         *   static void
+         *   my_object_class_init (MyObjectClass *klass)
+         *   {
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
+         *                                              0, 100,
+         *                                              50,
+         *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
+         *     g_object_class_install_property (gobject_class,
+         *                                      PROP_FOO,
+         *                                      properties[PROP_FOO]);
+         *   }
+         * ```
+         *
+         *
+         * and then notify a change on the "foo" property with:
+         *
+         *
+         * ```c
+         *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
+         * ```
+         *
+         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         */
+        notify_by_pspec(pspec: GObject.ParamSpec): void;
+        /**
+         * Increases the reference count of `object`.
+         *
+         * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
+         * of `object` will be propagated to the return type (using the GCC typeof()
+         * extension), so any casting the caller needs to do on the return type must be
+         * explicit.
+         * @returns the same @object
+         */
+        ref(): GObject.Object;
+        /**
+         * Increase the reference count of `object,` and possibly remove the
+         * [floating][floating-ref] reference, if `object` has a floating reference.
+         *
+         * In other words, if the object is floating, then this call "assumes
+         * ownership" of the floating reference, converting it to a normal
+         * reference by clearing the floating flag while leaving the reference
+         * count unchanged.  If the object is not floating, then this call
+         * adds a new normal reference increasing the reference count by one.
+         *
+         * Since GLib 2.56, the type of `object` will be propagated to the return type
+         * under the same conditions as for g_object_ref().
+         * @returns @object
+         */
+        ref_sink(): GObject.Object;
+        /**
+         * Releases all references to other objects. This can be used to break
+         * reference cycles.
+         *
+         * This function should only be called from object system implementations.
+         */
+        run_dispose(): void;
+        /**
+         * Each object carries around a table of associations from
+         * strings to pointers.  This function lets you set an association.
+         *
+         * If the object already had an association with that name,
+         * the old association will be destroyed.
+         *
+         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * This means a copy of `key` is kept permanently (even after `object` has been
+         * finalized) — so it is recommended to only use a small, bounded set of values
+         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * @param key name of the key
+         * @param data data to associate with that key
+         */
+        set_data(key: string, data?: any | null): void;
+        set_property(property_name: string, value: any): void;
+        /**
+         * Remove a specified datum from the object's data associations,
+         * without invoking the association's destroy handler.
+         * @param key name of the key
+         * @returns the data if found, or %NULL          if no such data exists.
+         */
+        steal_data(key: string): any | null;
+        /**
+         * This function gets back user data pointers stored via
+         * g_object_set_qdata() and removes the `data` from object
+         * without invoking its destroy() function (if any was
+         * set).
+         * Usually, calling this function is only required to update
+         * user data pointers with a destroy notifier, for example:
+         *
+         * ```c
+         * void
+         * object_add_to_user_list (GObject     *object,
+         *                          const gchar *new_string)
+         * {
+         *   // the quark, naming the object data
+         *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
+         *   // retrieve the old string list
+         *   GList *list = g_object_steal_qdata (object, quark_string_list);
+         *
+         *   // prepend new string
+         *   list = g_list_prepend (list, g_strdup (new_string));
+         *   // this changed 'list', so we need to set it again
+         *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
+         * }
+         * static void
+         * free_string_list (gpointer data)
+         * {
+         *   GList *node, *list = data;
+         *
+         *   for (node = list; node; node = node->next)
+         *     g_free (node->data);
+         *   g_list_free (list);
+         * }
+         * ```
+         *
+         * Using g_object_get_qdata() in the above example, instead of
+         * g_object_steal_qdata() would have left the destroy function set,
+         * and thus the partial string list would have been freed upon
+         * g_object_set_qdata_full().
+         * @param quark A #GQuark, naming the user data pointer
+         * @returns The user data pointer set, or %NULL
+         */
+        steal_qdata(quark: GLib.Quark): any | null;
+        /**
+         * Reverts the effect of a previous call to
+         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * and when it reaches zero, queued "notify" signals are emitted.
+         *
+         * Duplicate notifications for each property are squashed so that at most one
+         * #GObject::notify signal is emitted for each property, in the reverse order
+         * in which they have been queued.
+         *
+         * It is an error to call this function when the freeze count is zero.
+         */
+        thaw_notify(): void;
+        /**
+         * Decreases the reference count of `object`. When its reference count
+         * drops to 0, the object is finalized (i.e. its memory is freed).
+         *
+         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * an instance variable of another object), it is recommended to clear the
+         * pointer to %NULL rather than retain a dangling pointer to a potentially
+         * invalid #GObject instance. Use g_clear_object() for this.
+         */
+        unref(): void;
+        /**
+         * This function essentially limits the life time of the `closure` to
+         * the life time of the object. That is, when the object is finalized,
+         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * it, in order to prevent invocations of the closure with a finalized
+         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
+         * added as marshal guards to the `closure,` to ensure that an extra
+         * reference count is held on `object` during invocation of the
+         * `closure`.  Usually, this function will be called on closures that
+         * use this `object` as closure data.
+         * @param closure #GClosure to watch
+         */
+        watch_closure(closure: GObject.Closure): void;
+        /**
+         * the `constructed` function is called by g_object_new() as the
+         *  final step of the object creation process.  At the point of the call, all
+         *  construction properties have been set on the object.  The purpose of this
+         *  call is to allow for object initialisation steps that can only be performed
+         *  after construction properties have been set.  `constructed` implementors
+         *  should chain up to the `constructed` call of their parent class to allow it
+         *  to complete its initialisation.
+         */
+        vfunc_constructed(): void;
+        /**
+         * emits property change notification for a bunch
+         *  of properties. Overriding `dispatch_properties_changed` should be rarely
+         *  needed.
+         * @param n_pspecs
+         * @param pspecs
+         */
+        vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
+        /**
+         * the `dispose` function is supposed to drop all references to other
+         *  objects, but keep the instance otherwise intact, so that client method
+         *  invocations still work. It may be run multiple times (due to reference
+         *  loops). Before returning, `dispose` should chain up to the `dispose` method
+         *  of the parent class.
+         */
+        vfunc_dispose(): void;
+        /**
+         * instance finalization function, should finish the finalization of
+         *  the instance begun in `dispose` and chain up to the `finalize` method of the
+         *  parent class.
+         */
+        vfunc_finalize(): void;
+        /**
+         * the generic getter for all properties of this type. Should be
+         *  overridden for every type with properties.
+         * @param property_id
+         * @param value
+         * @param pspec
+         */
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Emits a "notify" signal for the property `property_name` on `object`.
+         *
+         * When possible, eg. when signaling a property change from within the class
+         * that registered the property, you should use g_object_notify_by_pspec()
+         * instead.
+         *
+         * Note that emission of the notify signal may be blocked with
+         * g_object_freeze_notify(). In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * called.
+         * @param pspec
+         */
+        vfunc_notify(pspec: GObject.ParamSpec): void;
+        /**
+         * the generic setter for all properties of this type. Should be
+         *  overridden for every type with properties. If implementations of
+         *  `set_property` don't emit property change notification explicitly, this will
+         *  be done implicitly by the type system. However, if the notify signal is
+         *  emitted explicitly, the type system will not emit it a second time.
+         * @param property_id
+         * @param value
+         * @param pspec
+         */
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        disconnect(id: number): void;
+        set(properties: { [key: string]: any }): void;
+        block_signal_handler(id: number): any;
+        unblock_signal_handler(id: number): any;
+        stop_emission_by_name(detailedName: string): any;
+    }
+
+    module ActorAccessible {
+        // Constructor properties interface
+
+        interface ConstructorProps extends Atk.GObjectAccessible.ConstructorProps, Atk.Component.ConstructorProps {}
+    }
+
+    /**
+     * Implementation of the ATK interfaces for [class`Clutter`.Actor]
+     *
+     * #ClutterActorAccessible implements the required ATK interfaces of [class`Clutter`.Actor]
+     * exposing the common elements on each actor (position, extents, etc).
+     */
+    class ActorAccessible extends Atk.GObjectAccessible implements Atk.Component {
+        static $gtype: GObject.GType<ActorAccessible>;
+
+        // Constructors
+
+        constructor(properties?: Partial<ActorAccessible.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        // Inherited methods
+        /**
+         * Checks whether the specified point is within the extent of the `component`.
+         *
+         * Toolkit implementor note: ATK provides a default implementation for
+         * this virtual method. In general there are little reason to
+         * re-implement it.
+         * @param x x coordinate
+         * @param y y coordinate
+         * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
+         * @returns %TRUE or %FALSE indicating whether the specified point is within the extent of the @component or not
+         */
+        contains(x: number, y: number, coord_type: Atk.CoordType): boolean;
+        /**
+         * Returns the alpha value (i.e. the opacity) for this
+         * `component,` on a scale from 0 (fully transparent) to 1.0
+         * (fully opaque).
+         * @returns An alpha value from 0 to 1.0, inclusive.
+         */
+        get_alpha(): number;
+        /**
+         * Gets the rectangle which gives the extent of the `component`.
+         *
+         * If the extent can not be obtained (e.g. a non-embedded plug or missing
+         * support), all of x, y, width, height are set to -1.
+         * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
+         */
+        get_extents(coord_type: Atk.CoordType): [number, number, number, number];
+        /**
+         * Gets the layer of the component.
+         * @returns an #AtkLayer which is the layer of the component
+         */
+        get_layer(): Atk.Layer;
+        /**
+         * Gets the zorder of the component. The value G_MININT will be returned
+         * if the layer of the component is not ATK_LAYER_MDI or ATK_LAYER_WINDOW.
+         * @returns a gint which is the zorder of the component, i.e. the depth at which the component is shown in relation to other components in the same container.
+         */
+        get_mdi_zorder(): number;
+        /**
+         * Gets the position of `component` in the form of
+         * a point specifying `component'`s top-left corner.
+         *
+         * If the position can not be obtained (e.g. a non-embedded plug or missing
+         * support), x and y are set to -1.
+         * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
+         */
+        get_position(coord_type: Atk.CoordType): [number, number];
+        /**
+         * Gets the size of the `component` in terms of width and height.
+         *
+         * If the size can not be obtained (e.g. a non-embedded plug or missing
+         * support), width and height are set to -1.
+         */
+        get_size(): [number, number];
+        /**
+         * Grabs focus for this `component`.
+         * @returns %TRUE if successful, %FALSE otherwise.
+         */
+        grab_focus(): boolean;
+        /**
+         * Gets a reference to the accessible child, if one exists, at the
+         * coordinate point specified by `x` and `y`.
+         * @param x x coordinate
+         * @param y y coordinate
+         * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
+         * @returns a reference to the accessible child, if one exists
+         */
+        ref_accessible_at_point(x: number, y: number, coord_type: Atk.CoordType): Atk.Object | null;
+        /**
+         * Remove the handler specified by `handler_id` from the list of
+         * functions to be executed when this object receives focus events
+         * (in or out).
+         * @param handler_id the handler id of the focus handler to be removed from @component
+         */
+        remove_focus_handler(handler_id: number): void;
+        /**
+         * Makes `component` visible on the screen by scrolling all necessary parents.
+         *
+         * Contrary to atk_component_set_position, this does not actually move
+         * `component` in its parent, this only makes the parents scroll so that the
+         * object shows up on the screen, given its current position within the parents.
+         * @param type specify where the object should be made visible.
+         * @returns whether scrolling was successful.
+         */
+        scroll_to(type: Atk.ScrollType): boolean;
+        /**
+         * Move the top-left of `component` to a given position of the screen by
+         * scrolling all necessary parents.
+         * @param coords specify whether coordinates are relative to the screen or to the parent object.
+         * @param x x-position where to scroll to
+         * @param y y-position where to scroll to
+         * @returns whether scrolling was successful.
+         */
+        scroll_to_point(coords: Atk.CoordType, x: number, y: number): boolean;
+        /**
+         * Sets the extents of `component`.
+         * @param x x coordinate
+         * @param y y coordinate
+         * @param width width to set for @component
+         * @param height height to set for @component
+         * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
+         * @returns %TRUE or %FALSE whether the extents were set or not
+         */
+        set_extents(x: number, y: number, width: number, height: number, coord_type: Atk.CoordType): boolean;
+        /**
+         * Sets the position of `component`.
+         *
+         * Contrary to atk_component_scroll_to, this does not trigger any scrolling,
+         * this just moves `component` in its parent.
+         * @param x x coordinate
+         * @param y y coordinate
+         * @param coord_type specifies whether the coordinates are relative to the screen or to the component's top level window
+         * @returns %TRUE or %FALSE whether or not the position was set or not
+         */
+        set_position(x: number, y: number, coord_type: Atk.CoordType): boolean;
+        /**
+         * Set the size of the `component` in terms of width and height.
+         * @param width width to set for @component
+         * @param height height to set for @component
+         * @returns %TRUE or %FALSE whether the size was set or not
+         */
+        set_size(width: number, height: number): boolean;
+        vfunc_bounds_changed(bounds: Atk.Rectangle): void;
+        /**
+         * Checks whether the specified point is within the extent of the `component`.
+         *
+         * Toolkit implementor note: ATK provides a default implementation for
+         * this virtual method. In general there are little reason to
+         * re-implement it.
+         * @param x x coordinate
+         * @param y y coordinate
+         * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
+         */
+        vfunc_contains(x: number, y: number, coord_type: Atk.CoordType): boolean;
+        /**
+         * Returns the alpha value (i.e. the opacity) for this
+         * `component,` on a scale from 0 (fully transparent) to 1.0
+         * (fully opaque).
+         */
+        vfunc_get_alpha(): number;
+        /**
+         * Gets the rectangle which gives the extent of the `component`.
+         *
+         * If the extent can not be obtained (e.g. a non-embedded plug or missing
+         * support), all of x, y, width, height are set to -1.
+         * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
+         */
+        vfunc_get_extents(coord_type: Atk.CoordType): [number, number, number, number];
+        /**
+         * Gets the layer of the component.
+         */
+        vfunc_get_layer(): Atk.Layer;
+        /**
+         * Gets the zorder of the component. The value G_MININT will be returned
+         * if the layer of the component is not ATK_LAYER_MDI or ATK_LAYER_WINDOW.
+         */
+        vfunc_get_mdi_zorder(): number;
+        /**
+         * Gets the position of `component` in the form of
+         * a point specifying `component'`s top-left corner.
+         *
+         * If the position can not be obtained (e.g. a non-embedded plug or missing
+         * support), x and y are set to -1.
+         * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
+         */
+        vfunc_get_position(coord_type: Atk.CoordType): [number, number];
+        /**
+         * Gets the size of the `component` in terms of width and height.
+         *
+         * If the size can not be obtained (e.g. a non-embedded plug or missing
+         * support), width and height are set to -1.
+         */
+        vfunc_get_size(): [number, number];
+        /**
+         * Grabs focus for this `component`.
+         */
+        vfunc_grab_focus(): boolean;
+        /**
+         * Gets a reference to the accessible child, if one exists, at the
+         * coordinate point specified by `x` and `y`.
+         * @param x x coordinate
+         * @param y y coordinate
+         * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
+         */
+        vfunc_ref_accessible_at_point(x: number, y: number, coord_type: Atk.CoordType): Atk.Object | null;
+        /**
+         * Remove the handler specified by `handler_id` from the list of
+         * functions to be executed when this object receives focus events
+         * (in or out).
+         * @param handler_id the handler id of the focus handler to be removed from @component
+         */
+        vfunc_remove_focus_handler(handler_id: number): void;
+        /**
+         * Makes `component` visible on the screen by scrolling all necessary parents.
+         *
+         * Contrary to atk_component_set_position, this does not actually move
+         * `component` in its parent, this only makes the parents scroll so that the
+         * object shows up on the screen, given its current position within the parents.
+         * @param type specify where the object should be made visible.
+         */
+        vfunc_scroll_to(type: Atk.ScrollType): boolean;
+        /**
+         * Move the top-left of `component` to a given position of the screen by
+         * scrolling all necessary parents.
+         * @param coords specify whether coordinates are relative to the screen or to the parent object.
+         * @param x x-position where to scroll to
+         * @param y y-position where to scroll to
+         */
+        vfunc_scroll_to_point(coords: Atk.CoordType, x: number, y: number): boolean;
+        /**
+         * Sets the extents of `component`.
+         * @param x x coordinate
+         * @param y y coordinate
+         * @param width width to set for @component
+         * @param height height to set for @component
+         * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
+         */
+        vfunc_set_extents(x: number, y: number, width: number, height: number, coord_type: Atk.CoordType): boolean;
+        /**
+         * Sets the position of `component`.
+         *
+         * Contrary to atk_component_scroll_to, this does not trigger any scrolling,
+         * this just moves `component` in its parent.
+         * @param x x coordinate
+         * @param y y coordinate
+         * @param coord_type specifies whether the coordinates are relative to the screen or to the component's top level window
+         */
+        vfunc_set_position(x: number, y: number, coord_type: Atk.CoordType): boolean;
+        /**
+         * Set the size of the `component` in terms of width and height.
+         * @param width width to set for @component
+         * @param height height to set for @component
+         */
+        vfunc_set_size(width: number, height: number): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -9821,7 +10481,9 @@ export namespace Clutter {
 
         // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+            context: Context;
+        }
     }
 
     /**
@@ -9836,6 +10498,10 @@ export namespace Clutter {
      */
     abstract class Backend extends GObject.Object {
         static $gtype: GObject.GType<Backend>;
+
+        // Properties
+
+        get context(): Context;
 
         // Constructors
 
@@ -11335,6 +12001,31 @@ export namespace Clutter {
         stop_emission_by_name(detailedName: string): any;
     }
 
+    module ColorManager {
+        // Constructor properties interface
+
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+            context: Context;
+        }
+    }
+
+    class ColorManager extends GObject.Object {
+        static $gtype: GObject.GType<ColorManager>;
+
+        // Properties
+
+        /**
+         * The associated ClutterContext.
+         */
+        get context(): Context;
+
+        // Constructors
+
+        constructor(properties?: Partial<ColorManager.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+    }
+
     class ColorNode extends PipelineNode {
         static $gtype: GObject.GType<ColorNode>;
 
@@ -11410,9 +12101,27 @@ export namespace Clutter {
 
         // Methods
 
+        add_pipeline_transform(target_color_state: ColorState, pipeline: Cogl.Pipeline): void;
         equals(other_color_state: ColorState): boolean;
+        /**
+         * Retrieves a variant of `color_state` that is suitable for blending. This
+         * usually is a variant with linear transfer characteristics. If `color_state`
+         * already is a #ClutterColorState suitable for blending, then `color_state` is
+         * returned.
+         *
+         * Currently sRGB content is blended with sRGB and not with linear transfer
+         * characteristics.
+         *
+         * If `force` is TRUE then linear transfer characteristics are used always.
+         * @param force if a linear variant should be forced
+         * @returns the #ClutterColorState suitable for blending
+         */
+        get_blending(force: boolean): ColorState;
         get_colorspace(): Colorspace;
+        get_id(): number;
         get_transfer_function(): TransferFunction;
+        required_format(): EncodingRequiredFormat;
+        to_string(): string;
     }
 
     module ColorizeEffect {
@@ -11609,6 +12318,8 @@ export namespace Clutter {
         // Methods
 
         get_backend(): Backend;
+        get_color_manager(): ColorManager;
+        get_settings(): Settings;
         get_text_direction(): TextDirection;
     }
 
@@ -11616,8 +12327,8 @@ export namespace Clutter {
         // Constructor properties interface
 
         interface ConstructorProps extends OffscreenEffect.ConstructorProps {
-            back_material: Cogl.Pipeline;
-            backMaterial: Cogl.Pipeline;
+            back_pipeline: Cogl.Pipeline;
+            backPipeline: Cogl.Pipeline;
             x_tiles: number;
             xTiles: number;
             y_tiles: number;
@@ -11651,21 +12362,21 @@ export namespace Clutter {
         // Properties
 
         /**
-         * A material to be used when painting the back of the actor
+         * A pipeline to be used when painting the back of the actor
          * to which this effect has been applied
          *
-         * By default, no material will be used
+         * By default, no pipeline will be used
          */
-        get back_material(): Cogl.Pipeline;
-        set back_material(val: Cogl.Pipeline);
+        get back_pipeline(): Cogl.Pipeline;
+        set back_pipeline(val: Cogl.Pipeline);
         /**
-         * A material to be used when painting the back of the actor
+         * A pipeline to be used when painting the back of the actor
          * to which this effect has been applied
          *
-         * By default, no material will be used
+         * By default, no pipeline will be used
          */
-        get backMaterial(): Cogl.Pipeline;
-        set backMaterial(val: Cogl.Pipeline);
+        get backPipeline(): Cogl.Pipeline;
+        set backPipeline(val: Cogl.Pipeline);
         /**
          * The number of horizontal tiles. The bigger the number, the
          * smaller the tiles
@@ -11706,15 +12417,15 @@ export namespace Clutter {
          * @param height
          * @param vertex
          */
-        vfunc_deform_vertex(width: number, height: number, vertex: Cogl.TextureVertex): void;
+        vfunc_deform_vertex(width: number, height: number, vertex: TextureVertex): void;
 
         // Methods
 
         /**
-         * Retrieves the handle to the back face material used by `effect`
-         * @returns a handle for the material, or %NULL.   The returned material is owned by the #ClutterDeformEffect and it   should not be freed directly
+         * Retrieves the back pipeline used by `effect`
+         * @returns A #CoglPipeline.
          */
-        get_back_material(): Cogl.Pipeline;
+        get_back_pipeline(): Cogl.Pipeline | null;
         /**
          * Retrieves the number of horizontal and vertical tiles used to sub-divide
          * the actor's geometry during the effect
@@ -11726,14 +12437,14 @@ export namespace Clutter {
          */
         invalidate(): void;
         /**
-         * Sets the material that should be used when drawing the back face
+         * Sets the pipeline that should be used when drawing the back face
          * of the actor during a deformation
          *
-         * The #ClutterDeformEffect will take a reference on the material's
+         * The #ClutterDeformEffect will take a reference on the pipeline's
          * handle
-         * @param material a handle to a Cogl material
+         * @param pipeline A #CoglPipeline
          */
-        set_back_material(material?: Cogl.Pipeline | null): void;
+        set_back_pipeline(pipeline?: Cogl.Pipeline | null): void;
         /**
          * Sets the number of horizontal and vertical tiles to be used
          * when applying the effect
@@ -11854,10 +12565,10 @@ export namespace Clutter {
      * The example below creates two rectangles: one will be painted "behind" the actor,
      * while another will be painted "on top" of the actor.
      *
-     * The #ClutterActorMetaClass.set_actor() implementation will create the two materials
+     * The #ClutterActorMetaClass.set_actor() implementation will create the two pipelines
      * used for the two different rectangles; the #ClutterEffectClass.paint() implementation
-     * will paint the first material using cogl_rectangle(), before continuing and then it
-     * will paint paint the second material after.
+     * will paint the first pipeline using cogl_rectangle(), before continuing and then it
+     * will paint paint the second pipeline after.
      *
      * ```c
      *  typedef struct {
@@ -11898,12 +12609,12 @@ export namespace Clutter {
      *    if (self->actor == NULL)
      *      return;
      *
-     *    // Create a red material
+     *    // Create a red pipeline
      *    self->rect_1 = cogl_pipeline_new ();
      *    cogl_color_init_from_4f (&color, 1.0, 1.0, 1.0, 1.0);
      *    cogl_pipeline_set_color (self->rect_1, &color);
      *
-     *    // Create a green material
+     *    // Create a green pipeline
      *    self->rect_2 = cogl_pipeline_new ();
      *    cogl_color_init_from_4f (&color, 0.0, 1.0, 0.0, 1.0);
      *    cogl_pipeline_set_color (self->rect_2, &color);
@@ -12327,6 +13038,7 @@ export namespace Clutter {
         remove_timeline(timeline: Timeline): void;
         schedule_update(): void;
         schedule_update_now(): void;
+        set_deadline_evasion(deadline_evasion_us: number): void;
         set_mode(mode: FrameClockMode): void;
         uninhibit(): void;
     }
@@ -14739,7 +15451,7 @@ export namespace Clutter {
      * function, which encapsulates the effective painting of the texture that
      * contains the result of the offscreen redirection.
      *
-     * The size of the target material is defined to be as big as the
+     * The size of the target pipeline is defined to be as big as the
      * transformed size of the [class`Actor]` using the offscreen effect.
      * Sub-classes of #ClutterOffscreenEffect can change the texture creation
      * code to provide bigger textures by overriding the
@@ -14832,7 +15544,7 @@ export namespace Clutter {
          * implementation should update any references to the texture after
          * chaining-up to the parent's pre_paint implementation. This can be
          * used instead of [method`OffscreenEffect`.get_texture] when the
-         * effect subclass wants to paint using its own material.
+         * effect subclass wants to paint using its own pipeline.
          * @returns a #CoglTexture or %NULL. The   returned texture is owned by Clutter and it should not be   modified or freed
          */
         get_texture(): Cogl.Texture;
@@ -15393,560 +16105,6 @@ export namespace Clutter {
         emit(signal: 'rotate', actor: Actor, angle: number): void;
     }
 
-    module ScrollActor {
-        // Constructor properties interface
-
-        interface ConstructorProps
-            extends Actor.ConstructorProps,
-                Atk.ImplementorIface.ConstructorProps,
-                Animatable.ConstructorProps {
-            scroll_mode: ScrollMode;
-            scrollMode: ScrollMode;
-        }
-    }
-
-    /**
-     * An actor for displaying a portion of its children
-     *
-     * #ClutterScrollActor is an actor that can be used to display a portion
-     * of the contents of its children.
-     *
-     * The extent of the area of a #ClutterScrollActor is defined by the size
-     * of its children; the visible region of the children of a #ClutterScrollActor
-     * is set by using [method`ScrollActor`.scroll_to_point] or by using
-     * [method`ScrollActor`.scroll_to_rect] to define a point or a rectangle
-     * acting as the origin, respectively.
-     *
-     * #ClutterScrollActor does not provide pointer or keyboard event handling,
-     * nor does it provide visible scroll handles.
-     */
-    class ScrollActor extends Actor implements Atk.ImplementorIface, Animatable {
-        static $gtype: GObject.GType<ScrollActor>;
-
-        // Properties
-
-        /**
-         * The scrolling direction.
-         */
-        get scroll_mode(): ScrollMode;
-        set scroll_mode(val: ScrollMode);
-        /**
-         * The scrolling direction.
-         */
-        get scrollMode(): ScrollMode;
-        set scrollMode(val: ScrollMode);
-
-        // Constructors
-
-        constructor(properties?: Partial<ScrollActor.ConstructorProps>, ...args: any[]);
-
-        _init(...args: any[]): void;
-
-        static ['new'](): ScrollActor;
-
-        // Methods
-
-        /**
-         * Retrieves the [property`ScrollActor:`scroll-mode] property
-         * @returns the scrolling mode
-         */
-        get_scroll_mode(): ScrollMode;
-        /**
-         * Scrolls the contents of `actor` so that `point` is the new origin
-         * of the visible area.
-         *
-         * The coordinates of `point` must be relative to the `actor`.
-         *
-         * This function will use the currently set easing state of the `actor`
-         * to transition from the current scroll origin to the new one.
-         * @param point a #graphene_point_t
-         */
-        scroll_to_point(point: Graphene.Point): void;
-        /**
-         * Scrolls `actor` so that `rect` is in the visible portion.
-         * @param rect a #ClutterRect
-         */
-        scroll_to_rect(rect: Graphene.Rect): void;
-        /**
-         * Sets the [property`ScrollActor:`scroll-mode] property.
-         * @param mode a #ClutterScrollMode
-         */
-        set_scroll_mode(mode: ScrollMode): void;
-
-        // Inherited methods
-        /**
-         * Finds the [class`GObject`.ParamSpec] for `property_name`
-         * @param property_name the name of the animatable property to find
-         * @returns The #GParamSpec for the given property   or %NULL
-         */
-        find_property(property_name: string): GObject.ParamSpec;
-        /**
-         * Get animated actor.
-         * @returns a #ClutterActor
-         */
-        get_actor(): Actor;
-        /**
-         * Retrieves the current state of `property_name` and sets `value` with it
-         * @param property_name the name of the animatable property to retrieve
-         * @param value a #GValue initialized to the type of the property to retrieve
-         */
-        get_initial_state(property_name: string, value: GObject.Value | any): void;
-        /**
-         * Asks a #ClutterAnimatable implementation to interpolate a
-         * a named property between the initial and final values of
-         * a #ClutterInterval, using `progress` as the interpolation
-         * value, and store the result inside `value`.
-         *
-         * This function should be used for every property animation
-         * involving `ClutterAnimatable`s.
-         * @param property_name the name of the property to interpolate
-         * @param interval a #ClutterInterval with the animation range
-         * @param progress the progress to use to interpolate between the   initial and final values of the @interval
-         * @returns %TRUE if the interpolation was successful,   and %FALSE otherwise
-         */
-        interpolate_value(property_name: string, interval: Interval, progress: number): [boolean, unknown];
-        /**
-         * Sets the current state of `property_name` to `value`
-         * @param property_name the name of the animatable property to set
-         * @param value the value of the animatable property to set
-         */
-        set_final_state(property_name: string, value: GObject.Value | any): void;
-        /**
-         * Finds the [class`GObject`.ParamSpec] for `property_name`
-         * @param property_name the name of the animatable property to find
-         */
-        vfunc_find_property(property_name: string): GObject.ParamSpec;
-        /**
-         * Get animated actor.
-         */
-        vfunc_get_actor(): Actor;
-        /**
-         * Retrieves the current state of `property_name` and sets `value` with it
-         * @param property_name the name of the animatable property to retrieve
-         * @param value a #GValue initialized to the type of the property to retrieve
-         */
-        vfunc_get_initial_state(property_name: string, value: GObject.Value | any): void;
-        /**
-         * Asks a #ClutterAnimatable implementation to interpolate a
-         * a named property between the initial and final values of
-         * a #ClutterInterval, using `progress` as the interpolation
-         * value, and store the result inside `value`.
-         *
-         * This function should be used for every property animation
-         * involving `ClutterAnimatable`s.
-         * @param property_name the name of the property to interpolate
-         * @param interval a #ClutterInterval with the animation range
-         * @param progress the progress to use to interpolate between the   initial and final values of the @interval
-         */
-        vfunc_interpolate_value(property_name: string, interval: Interval, progress: number): [boolean, unknown];
-        /**
-         * Sets the current state of `property_name` to `value`
-         * @param property_name the name of the animatable property to set
-         * @param value the value of the animatable property to set
-         */
-        vfunc_set_final_state(property_name: string, value: GObject.Value | any): void;
-        /**
-         * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target`.
-         *
-         * Whenever the `source_property` is changed the `target_property` is
-         * updated using the same value. For instance:
-         *
-         *
-         * ```c
-         *   g_object_bind_property (action, "active", widget, "sensitive", 0);
-         * ```
-         *
-         *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
-         * instance.
-         *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well.
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
-         *
-         * Removing the binding by calling g_object_unref() on it must only be done if
-         * the binding, `source` and `target` are only used from a single thread and it
-         * is clear that both `source` and `target` outlive the binding. Especially it
-         * is not safe to rely on this if the binding, `source` or `target` can be
-         * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
-         *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
-         */
-        bind_property(
-            source_property: string,
-            target: GObject.Object,
-            target_property: string,
-            flags: GObject.BindingFlags,
-        ): GObject.Binding;
-        /**
-         * Complete version of g_object_bind_property().
-         *
-         * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
-         * the binding.
-         *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call g_binding_unbind().
-         *
-         * A #GObject can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
-         */
-        bind_property_full(
-            source_property: string,
-            target: GObject.Object,
-            target_property: string,
-            flags: GObject.BindingFlags,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
-        ): GObject.Binding;
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
-        /**
-         * This function is intended for #GObject implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
-         */
-        force_floating(): void;
-        /**
-         * Increases the freeze count on `object`. If the freeze count is
-         * non-zero, the emission of "notify" signals on `object` is
-         * stopped. The signals are queued until the freeze count is decreased
-         * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
-         * object is frozen.
-         *
-         * This is necessary for accessors that modify multiple properties to prevent
-         * premature notification while the object is still being modified.
-         */
-        freeze_notify(): void;
-        /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
-         * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
-         */
-        get_data(key: string): any | null;
-        get_property(property_name: string): any;
-        /**
-         * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
-         */
-        get_qdata(quark: GLib.Quark): any | null;
-        /**
-         * Gets `n_properties` properties for an `object`.
-         * Obtained properties will be set to `values`. All properties must be valid.
-         * Warnings will be emitted and undefined behaviour may result if invalid
-         * properties are passed in.
-         * @param names the names of each property to get
-         * @param values the values of each property to get
-         */
-        getv(names: string[], values: (GObject.Value | any)[]): void;
-        /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
-         */
-        is_floating(): boolean;
-        /**
-         * Emits a "notify" signal for the property `property_name` on `object`.
-         *
-         * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
-         * instead.
-         *
-         * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
-         * called.
-         * @param property_name the name of a property installed on the class of @object.
-         */
-        notify(property_name: string): void;
-        /**
-         * Emits a "notify" signal for the property specified by `pspec` on `object`.
-         *
-         * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
-         *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
-         * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
-         *
-         *
-         * ```c
-         *   typedef enum
-         *   {
-         *     PROP_FOO = 1,
-         *     PROP_LAST
-         *   } MyObjectProperty;
-         *
-         *   static GParamSpec *properties[PROP_LAST];
-         *
-         *   static void
-         *   my_object_class_init (MyObjectClass *klass)
-         *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
-         *                                              0, 100,
-         *                                              50,
-         *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
-         *     g_object_class_install_property (gobject_class,
-         *                                      PROP_FOO,
-         *                                      properties[PROP_FOO]);
-         *   }
-         * ```
-         *
-         *
-         * and then notify a change on the "foo" property with:
-         *
-         *
-         * ```c
-         *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
-         * ```
-         *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
-         */
-        notify_by_pspec(pspec: GObject.ParamSpec): void;
-        /**
-         * Increases the reference count of `object`.
-         *
-         * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
-         * extension), so any casting the caller needs to do on the return type must be
-         * explicit.
-         * @returns the same @object
-         */
-        ref(): GObject.Object;
-        /**
-         * Increase the reference count of `object,` and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
-         *
-         * In other words, if the object is floating, then this call "assumes
-         * ownership" of the floating reference, converting it to a normal
-         * reference by clearing the floating flag while leaving the reference
-         * count unchanged.  If the object is not floating, then this call
-         * adds a new normal reference increasing the reference count by one.
-         *
-         * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
-         */
-        ref_sink(): GObject.Object;
-        /**
-         * Releases all references to other objects. This can be used to break
-         * reference cycles.
-         *
-         * This function should only be called from object system implementations.
-         */
-        run_dispose(): void;
-        /**
-         * Each object carries around a table of associations from
-         * strings to pointers.  This function lets you set an association.
-         *
-         * If the object already had an association with that name,
-         * the old association will be destroyed.
-         *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
-         * This means a copy of `key` is kept permanently (even after `object` has been
-         * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
-         * @param key name of the key
-         * @param data data to associate with that key
-         */
-        set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
-        /**
-         * Remove a specified datum from the object's data associations,
-         * without invoking the association's destroy handler.
-         * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
-         */
-        steal_data(key: string): any | null;
-        /**
-         * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
-         * set).
-         * Usually, calling this function is only required to update
-         * user data pointers with a destroy notifier, for example:
-         *
-         * ```c
-         * void
-         * object_add_to_user_list (GObject     *object,
-         *                          const gchar *new_string)
-         * {
-         *   // the quark, naming the object data
-         *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
-         *   // retrieve the old string list
-         *   GList *list = g_object_steal_qdata (object, quark_string_list);
-         *
-         *   // prepend new string
-         *   list = g_list_prepend (list, g_strdup (new_string));
-         *   // this changed 'list', so we need to set it again
-         *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
-         * }
-         * static void
-         * free_string_list (gpointer data)
-         * {
-         *   GList *node, *list = data;
-         *
-         *   for (node = list; node; node = node->next)
-         *     g_free (node->data);
-         *   g_list_free (list);
-         * }
-         * ```
-         *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
-         * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
-         */
-        steal_qdata(quark: GLib.Quark): any | null;
-        /**
-         * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
-         * and when it reaches zero, queued "notify" signals are emitted.
-         *
-         * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
-         * in which they have been queued.
-         *
-         * It is an error to call this function when the freeze count is zero.
-         */
-        thaw_notify(): void;
-        /**
-         * Decreases the reference count of `object`. When its reference count
-         * drops to 0, the object is finalized (i.e. its memory is freed).
-         *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
-         * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
-         */
-        unref(): void;
-        /**
-         * This function essentially limits the life time of the `closure` to
-         * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
-         * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
-         * reference count is held on `object` during invocation of the
-         * `closure`.  Usually, this function will be called on closures that
-         * use this `object` as closure data.
-         * @param closure #GClosure to watch
-         */
-        watch_closure(closure: GObject.Closure): void;
-        /**
-         * the `constructed` function is called by g_object_new() as the
-         *  final step of the object creation process.  At the point of the call, all
-         *  construction properties have been set on the object.  The purpose of this
-         *  call is to allow for object initialisation steps that can only be performed
-         *  after construction properties have been set.  `constructed` implementors
-         *  should chain up to the `constructed` call of their parent class to allow it
-         *  to complete its initialisation.
-         */
-        vfunc_constructed(): void;
-        /**
-         * emits property change notification for a bunch
-         *  of properties. Overriding `dispatch_properties_changed` should be rarely
-         *  needed.
-         * @param n_pspecs
-         * @param pspecs
-         */
-        vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
-        /**
-         * the `dispose` function is supposed to drop all references to other
-         *  objects, but keep the instance otherwise intact, so that client method
-         *  invocations still work. It may be run multiple times (due to reference
-         *  loops). Before returning, `dispose` should chain up to the `dispose` method
-         *  of the parent class.
-         */
-        vfunc_dispose(): void;
-        /**
-         * instance finalization function, should finish the finalization of
-         *  the instance begun in `dispose` and chain up to the `finalize` method of the
-         *  parent class.
-         */
-        vfunc_finalize(): void;
-        /**
-         * the generic getter for all properties of this type. Should be
-         *  overridden for every type with properties.
-         * @param property_id
-         * @param value
-         * @param pspec
-         */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
-        /**
-         * Emits a "notify" signal for the property `property_name` on `object`.
-         *
-         * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
-         * instead.
-         *
-         * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
-         * called.
-         * @param pspec
-         */
-        vfunc_notify(pspec: GObject.ParamSpec): void;
-        /**
-         * the generic setter for all properties of this type. Should be
-         *  overridden for every type with properties. If implementations of
-         *  `set_property` don't emit property change notification explicitly, this will
-         *  be done implicitly by the type system. However, if the notify signal is
-         *  emitted explicitly, the type system will not emit it a second time.
-         * @param property_id
-         * @param value
-         * @param pspec
-         */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
-        disconnect(id: number): void;
-        set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
-    }
-
     module Seat {
         // Signal callback interfaces
 
@@ -16234,8 +16392,6 @@ export namespace Clutter {
             fontName: string;
             font_subpixel_order: string;
             fontSubpixelOrder: string;
-            fontconfig_timestamp: number;
-            fontconfigTimestamp: number;
             long_press_duration: number;
             longPressDuration: number;
             password_hint_time: number;
@@ -16400,8 +16556,6 @@ export namespace Clutter {
          */
         get fontSubpixelOrder(): string;
         set fontSubpixelOrder(val: string);
-        set fontconfig_timestamp(val: number);
-        set fontconfigTimestamp(val: number);
         /**
          * Sets the minimum duration for a press to be recognized as a long press
          * gesture. The duration is expressed in milliseconds.
@@ -16742,10 +16896,6 @@ export namespace Clutter {
     module Stage {
         // Signal callback interfaces
 
-        interface Activate {
-            (): void;
-        }
-
         interface AfterPaint {
             (view: StageView, frame: Frame): void;
         }
@@ -16760,10 +16910,6 @@ export namespace Clutter {
 
         interface BeforeUpdate {
             (view: StageView, frame: Frame): void;
-        }
-
-        interface Deactivate {
-            (): void;
         }
 
         interface GlVideoMemoryPurged {
@@ -16859,9 +17005,6 @@ export namespace Clutter {
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
-        connect(signal: 'activate', callback: (_source: this) => void): number;
-        connect_after(signal: 'activate', callback: (_source: this) => void): number;
-        emit(signal: 'activate'): void;
         connect(signal: 'after-paint', callback: (_source: this, view: StageView, frame: Frame) => void): number;
         connect_after(signal: 'after-paint', callback: (_source: this, view: StageView, frame: Frame) => void): number;
         emit(signal: 'after-paint', view: StageView, frame: Frame): void;
@@ -16877,9 +17020,6 @@ export namespace Clutter {
             callback: (_source: this, view: StageView, frame: Frame) => void,
         ): number;
         emit(signal: 'before-update', view: StageView, frame: Frame): void;
-        connect(signal: 'deactivate', callback: (_source: this) => void): number;
-        connect_after(signal: 'deactivate', callback: (_source: this) => void): number;
-        emit(signal: 'deactivate'): void;
         connect(signal: 'gl-video-memory-purged', callback: (_source: this) => void): number;
         connect_after(signal: 'gl-video-memory-purged', callback: (_source: this) => void): number;
         emit(signal: 'gl-video-memory-purged'): void;
@@ -16910,15 +17050,7 @@ export namespace Clutter {
 
         // Virtual methods
 
-        /**
-         * handler for the #ClutterStage::activate signal
-         */
-        vfunc_activate(): void;
         vfunc_before_paint(view: StageView, frame: Frame): void;
-        /**
-         * handler for the #ClutterStage::deactivate signal
-         */
-        vfunc_deactivate(): void;
         vfunc_paint_view(view: StageView, redraw_clip: Mtk.Region, frame: Frame): void;
 
         // Methods
@@ -17026,6 +17158,7 @@ export namespace Clutter {
          * @param event a #ClutterEvent.
          */
         handle_event(event: Event): void;
+        is_active(): boolean;
         /**
          * Take a snapshot of the stage to a provided buffer.
          * @param rect a rectangle
@@ -17081,6 +17214,7 @@ export namespace Clutter {
          * Schedules a redraw of the #ClutterStage at the next optimal timestamp.
          */
         schedule_update(): void;
+        set_active(is_active: boolean): void;
         /**
          * Sets the key focus on `actor`. An actor with key focus will receive
          * all the key events. If `actor` is %NULL, the stage will receive
@@ -17579,99 +17713,6 @@ export namespace Clutter {
         stop_emission_by_name(detailedName: string): any;
     }
 
-    module StageManager {
-        // Signal callback interfaces
-
-        interface StageAdded {
-            (stage: Stage): void;
-        }
-
-        interface StageRemoved {
-            (stage: Stage): void;
-        }
-
-        // Constructor properties interface
-
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-            default_stage: Stage;
-            defaultStage: Stage;
-        }
-    }
-
-    /**
-     * Maintains the list of stages
-     *
-     * #ClutterStageManager is a singleton object, owned by Clutter, which
-     * maintains the list of currently active stages
-     *
-     * Every newly-created [class`Stage]` will cause the emission of the
-     * [signal`StageManager:`:stage-added] signal; once a [class`Stage]` has
-     * been destroyed, the [signal`StageManager:`:stage-removed] signal will
-     * be emitted
-     */
-    class StageManager extends GObject.Object {
-        static $gtype: GObject.GType<StageManager>;
-
-        // Properties
-
-        /**
-         * The default stage used by Clutter.
-         */
-        get default_stage(): Stage;
-        /**
-         * The default stage used by Clutter.
-         */
-        get defaultStage(): Stage;
-
-        // Constructors
-
-        constructor(properties?: Partial<StageManager.ConstructorProps>, ...args: any[]);
-
-        _init(...args: any[]): void;
-
-        // Signals
-
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'stage-added', callback: (_source: this, stage: Stage) => void): number;
-        connect_after(signal: 'stage-added', callback: (_source: this, stage: Stage) => void): number;
-        emit(signal: 'stage-added', stage: Stage): void;
-        connect(signal: 'stage-removed', callback: (_source: this, stage: Stage) => void): number;
-        connect_after(signal: 'stage-removed', callback: (_source: this, stage: Stage) => void): number;
-        emit(signal: 'stage-removed', stage: Stage): void;
-
-        // Static methods
-
-        /**
-         * Returns the default #ClutterStageManager.
-         */
-        static get_default(): StageManager;
-
-        // Virtual methods
-
-        vfunc_stage_added(stage: Stage): void;
-        vfunc_stage_removed(stage: Stage): void;
-
-        // Methods
-
-        /**
-         * Returns the default #ClutterStage.
-         * @returns the default stage. The returned object   is owned by Clutter and you should never reference or unreference it
-         */
-        get_default_stage(): Stage;
-        /**
-         * Lists all currently used stages.
-         * @returns a newly   allocated list of #ClutterStage objects. Use g_slist_free() to   deallocate it when done.
-         */
-        list_stages(): Stage[];
-        /**
-         * Lists all currently used stages.
-         * @returns a pointer   to the internal list of #ClutterStage objects. The returned list   is owned by the #ClutterStageManager and should never be modified   or freed
-         */
-        peek_stages(): Stage[];
-    }
-
     module StageView {
         // Signal callback interfaces
 
@@ -17687,13 +17728,13 @@ export namespace Clutter {
             framebuffer: Cogl.Framebuffer;
             layout: Mtk.Rectangle;
             name: string;
-            offscreen: Cogl.Offscreen;
             output_color_state: ColorState;
             outputColorState: ColorState;
             refresh_rate: number;
             refreshRate: number;
             scale: number;
             stage: Stage;
+            transform: number;
             use_shadowfb: boolean;
             useShadowfb: boolean;
             vblank_duration_us: number;
@@ -17715,7 +17756,6 @@ export namespace Clutter {
         get layout(): Mtk.Rectangle;
         set layout(val: Mtk.Rectangle);
         get name(): string;
-        get offscreen(): Cogl.Offscreen;
         get output_color_state(): ColorState;
         set output_color_state(val: ColorState);
         get outputColorState(): ColorState;
@@ -17727,6 +17767,7 @@ export namespace Clutter {
         get scale(): number;
         set scale(val: number);
         get stage(): Stage;
+        get transform(): number;
         get use_shadowfb(): boolean;
         get useShadowfb(): boolean;
         get vblank_duration_us(): number;
@@ -17750,15 +17791,8 @@ export namespace Clutter {
         // Virtual methods
 
         vfunc_get_default_paint_flags(): PaintFlag;
-        vfunc_get_offscreen_transformation_matrix(matrix: Graphene.Matrix): void;
         vfunc_new_frame(): Frame;
-        vfunc_setup_offscreen_transform(pipeline: Cogl.Pipeline): void;
-        vfunc_transform_rect_to_onscreen(
-            src_rect: Mtk.Rectangle,
-            dst_width: number,
-            dst_height: number,
-            dst_rect: Mtk.Rectangle,
-        ): void;
+        vfunc_schedule_update(): void;
 
         // Methods
 
@@ -17779,8 +17813,8 @@ export namespace Clutter {
         get_onscreen(): Cogl.Framebuffer;
         get_refresh_rate(): number;
         get_scale(): number;
+        get_transform(): Mtk.MonitorTransform;
         has_shadowfb(): boolean;
-        invalidate_offscreen_blit_pipeline(): void;
         schedule_update_now(): void;
     }
 
@@ -21069,6 +21103,15 @@ export namespace Clutter {
     }
 
     type ActionClass = typeof Action;
+    type ActorAccessibleClass = typeof ActorAccessible;
+    abstract class ActorAccessiblePrivate {
+        static $gtype: GObject.GType<ActorAccessiblePrivate>;
+
+        // Constructors
+
+        _init(...args: any[]): void;
+    }
+
     /**
      * Bounding box of an actor.
      *
@@ -21382,6 +21425,7 @@ export namespace Clutter {
 
     type ClipNodeClass = typeof ClipNode;
     type CloneClass = typeof Clone;
+    type ColorManagerClass = typeof ColorManager;
     type ColorNodeClass = typeof ColorNode;
     type ColorStateClass = typeof ColorState;
     type ColorizeEffectClass = typeof ColorizeEffect;
@@ -21890,7 +21934,14 @@ export namespace Clutter {
 
     type RootNodeClass = typeof RootNode;
     type RotateActionClass = typeof RotateAction;
-    type ScrollActorClass = typeof ScrollActor;
+    abstract class ScrollActor {
+        static $gtype: GObject.GType<ScrollActor>;
+
+        // Constructors
+
+        _init(...args: any[]): void;
+    }
+
     abstract class ScrollEvent {
         static $gtype: GObject.GType<ScrollEvent>;
 
@@ -21904,7 +21955,6 @@ export namespace Clutter {
     type ShaderEffectClass = typeof ShaderEffect;
     type SnapConstraintClass = typeof SnapConstraint;
     type StageClass = typeof Stage;
-    type StageManagerClass = typeof StageManager;
     type StageViewClass = typeof StageView;
     type SwipeActionClass = typeof SwipeAction;
     type TapActionClass = typeof TapAction;
@@ -21913,6 +21963,36 @@ export namespace Clutter {
     type TextNodeClass = typeof TextNode;
     type TextureContentClass = typeof TextureContent;
     type TextureNodeClass = typeof TextureNode;
+    /**
+     * Used to specify vertex information when calling cogl_polygon()
+     */
+    class TextureVertex {
+        static $gtype: GObject.GType<TextureVertex>;
+
+        // Fields
+
+        x: number;
+        y: number;
+        z: number;
+        tx: number;
+        ty: number;
+        color: Cogl.Color;
+
+        // Constructors
+
+        constructor(
+            properties?: Partial<{
+                x: number;
+                y: number;
+                z: number;
+                tx: number;
+                ty: number;
+                color: Cogl.Color;
+            }>,
+        );
+        _init(...args: any[]): void;
+    }
+
     type TimelineClass = typeof Timeline;
     abstract class TouchEvent {
         static $gtype: GObject.GType<TouchEvent>;

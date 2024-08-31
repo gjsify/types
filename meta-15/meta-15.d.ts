@@ -850,15 +850,6 @@ export namespace Meta {
         IDLE,
     }
 
-    export namespace LocaleDirection {
-        export const $gtype: GObject.GType<LocaleDirection>;
-    }
-
-    enum LocaleDirection {
-        LTR,
-        RTL,
-    }
-
     export namespace MonitorSwitchConfigType {
         export const $gtype: GObject.GType<MonitorSwitchConfigType>;
     }
@@ -956,6 +947,18 @@ export namespace Meta {
          * 3 planes: 1 Y-plane, 1 U-plane (2x2 subsampled), 1 V-plane (2x2 subsampled)
          */
         YUV420,
+    }
+
+    export namespace Orientation {
+        export const $gtype: GObject.GType<Orientation>;
+    }
+
+    enum Orientation {
+        UNDEFINED,
+        NORMAL,
+        BOTTOM_UP,
+        LEFT_UP,
+        RIGHT_UP,
     }
 
     export namespace PadDirection {
@@ -1136,16 +1139,6 @@ export namespace Meta {
         SELECTION_CLIPBOARD,
         SELECTION_DND,
         N_SELECTION_TYPES,
-    }
-
-    export namespace ShadowMode {
-        export const $gtype: GObject.GType<ShadowMode>;
-    }
-
-    enum ShadowMode {
-        AUTO,
-        FORCED_OFF,
-        FORCED_ON,
     }
 
     export namespace Side {
@@ -1371,6 +1364,7 @@ export namespace Meta {
         OVERRIDE_OTHER,
     }
     const CURRENT_TIME: number;
+    const N_ORIENTATIONS: number;
     const PRIORITY_BEFORE_REDRAW: number;
     const PRIORITY_PREFS_NOTIFY: number;
     const PRIORITY_REDRAW: number;
@@ -1429,7 +1423,6 @@ export namespace Meta {
         Clutter.PickDebugFlag | null,
     ];
     function get_debug_paint_flags(): DebugPaintFlag;
-    function get_locale_direction(): LocaleDirection;
     function get_stage_for_display(display: Display): Clutter.Actor;
     function get_top_window_group_for_display(display: Display): Clutter.Actor;
     function get_window_actors(display: Display): Clutter.Actor[];
@@ -1454,6 +1447,7 @@ export namespace Meta {
      * @returns %TRUE if the binding known as @name was found, %FALSE otherwise.
      */
     function keybindings_set_custom_handler(name: string, handler?: KeyHandlerFunc | null): boolean;
+    function orientation_to_transform(orientation: Orientation): Mtk.MonitorTransform;
     function pop_no_msg_prefix(): void;
     function preference_to_string(pref: Preference): string;
     function prefs_bell_is_audible(): boolean;
@@ -1601,6 +1595,15 @@ export namespace Meta {
          * paint opaque regions
          */
         OPAQUE_REGION,
+        /**
+         * make cursor updates await compositing
+         *   frames
+         */
+        SYNC_CURSOR_PRIMARY,
+        /**
+         * always composite frames
+         */
+        DISABLE_DIRECT_SCANOUT,
     }
 
     export namespace DebugTopic {
@@ -1966,6 +1969,7 @@ export namespace Meta {
          */
         get_dnd(): Dnd;
         get_monitor_manager(): MonitorManager;
+        get_orientation_manager(): OrientationManager;
         get_remote_access_controller(): RemoteAccessController;
         /**
          * Gets the global #ClutterStage that's managed by this backend.
@@ -4975,6 +4979,7 @@ export namespace Meta {
         destroy(): void;
         get_backend(): Backend;
         get_compositor_type(): CompositorType;
+        get_debug_control(): DebugControl;
         get_display(): Display;
         /**
          * Get the #MetaWaylandCompositor associated with the MetaContext. The might be
@@ -5087,6 +5092,473 @@ export namespace Meta {
          */
         get_sprite(): Cogl.Texture | null;
         set_pointer_visible(visible: boolean): void;
+    }
+
+    module DebugControl {
+        // Constructor properties interface
+
+        interface ConstructorProps
+            extends Gio.DBusInterfaceSkeleton.ConstructorProps,
+                Gio.DBusInterface.ConstructorProps {
+            context: Context;
+            exported: boolean;
+        }
+    }
+
+    class DebugControl extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface {
+        static $gtype: GObject.GType<DebugControl>;
+
+        // Properties
+
+        get context(): Context;
+        get exported(): boolean;
+        set exported(val: boolean);
+
+        // Constructors
+
+        constructor(properties?: Partial<DebugControl.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        // Methods
+
+        set_exported(exported: boolean): void;
+
+        // Inherited methods
+        /**
+         * Gets the #GDBusObject that `interface_` belongs to, if any.
+         * @returns A #GDBusObject or %NULL. The returned reference should be freed with g_object_unref().
+         */
+        get_object(): Gio.DBusObject | null;
+        /**
+         * Gets D-Bus introspection information for the D-Bus interface
+         * implemented by `interface_`.
+         * @returns A #GDBusInterfaceInfo. Do not free.
+         */
+        get_info(): Gio.DBusInterfaceInfo;
+        /**
+         * Sets the #GDBusObject for `interface_` to `object`.
+         *
+         * Note that `interface_` will hold a weak reference to `object`.
+         * @param object A #GDBusObject or %NULL.
+         */
+        set_object(object?: Gio.DBusObject | null): void;
+        /**
+         * Gets the #GDBusObject that `interface_` belongs to, if any.
+         */
+        vfunc_dup_object(): Gio.DBusObject | null;
+        /**
+         * Gets D-Bus introspection information for the D-Bus interface
+         * implemented by `interface_`.
+         */
+        vfunc_get_info(): Gio.DBusInterfaceInfo;
+        /**
+         * Sets the #GDBusObject for `interface_` to `object`.
+         *
+         * Note that `interface_` will hold a weak reference to `object`.
+         * @param object A #GDBusObject or %NULL.
+         */
+        vfunc_set_object(object?: Gio.DBusObject | null): void;
+        /**
+         * Creates a binding between `source_property` on `source` and `target_property`
+         * on `target`.
+         *
+         * Whenever the `source_property` is changed the `target_property` is
+         * updated using the same value. For instance:
+         *
+         *
+         * ```c
+         *   g_object_bind_property (action, "active", widget, "sensitive", 0);
+         * ```
+         *
+         *
+         * Will result in the "sensitive" property of the widget #GObject instance to be
+         * updated with the same value of the "active" property of the action #GObject
+         * instance.
+         *
+         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * if `target_property` on `target` changes then the `source_property` on `source`
+         * will be updated as well.
+         *
+         * The binding will automatically be removed when either the `source` or the
+         * `target` instances are finalized. To remove the binding without affecting the
+         * `source` and the `target` you can just call g_object_unref() on the returned
+         * #GBinding instance.
+         *
+         * Removing the binding by calling g_object_unref() on it must only be done if
+         * the binding, `source` and `target` are only used from a single thread and it
+         * is clear that both `source` and `target` outlive the binding. Especially it
+         * is not safe to rely on this if the binding, `source` or `target` can be
+         * finalized from different threads. Keep another reference to the binding and
+         * use g_binding_unbind() instead to be on the safe side.
+         *
+         * A #GObject can have multiple bindings.
+         * @param source_property the property on @source to bind
+         * @param target the target #GObject
+         * @param target_property the property on @target to bind
+         * @param flags flags to pass to #GBinding
+         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         */
+        bind_property(
+            source_property: string,
+            target: GObject.Object,
+            target_property: string,
+            flags: GObject.BindingFlags,
+        ): GObject.Binding;
+        /**
+         * Complete version of g_object_bind_property().
+         *
+         * Creates a binding between `source_property` on `source` and `target_property`
+         * on `target,` allowing you to set the transformation functions to be used by
+         * the binding.
+         *
+         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * if `target_property` on `target` changes then the `source_property` on `source`
+         * will be updated as well. The `transform_from` function is only used in case
+         * of bidirectional bindings, otherwise it will be ignored
+         *
+         * The binding will automatically be removed when either the `source` or the
+         * `target` instances are finalized. This will release the reference that is
+         * being held on the #GBinding instance; if you want to hold on to the
+         * #GBinding instance, you will need to hold a reference to it.
+         *
+         * To remove the binding, call g_binding_unbind().
+         *
+         * A #GObject can have multiple bindings.
+         *
+         * The same `user_data` parameter will be used for both `transform_to`
+         * and `transform_from` transformation functions; the `notify` function will
+         * be called once, when the binding is removed. If you need different data
+         * for each transformation function, please use
+         * g_object_bind_property_with_closures() instead.
+         * @param source_property the property on @source to bind
+         * @param target the target #GObject
+         * @param target_property the property on @target to bind
+         * @param flags flags to pass to #GBinding
+         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
+         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
+         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         */
+        bind_property_full(
+            source_property: string,
+            target: GObject.Object,
+            target_property: string,
+            flags: GObject.BindingFlags,
+            transform_to?: GObject.BindingTransformFunc | null,
+            transform_from?: GObject.BindingTransformFunc | null,
+            notify?: GLib.DestroyNotify | null,
+        ): GObject.Binding;
+        // Conflicted with GObject.Object.bind_property_full
+        bind_property_full(...args: never[]): any;
+        /**
+         * This function is intended for #GObject implementations to re-enforce
+         * a [floating][floating-ref] object reference. Doing this is seldom
+         * required: all #GInitiallyUnowneds are created with a floating reference
+         * which usually just needs to be sunken by calling g_object_ref_sink().
+         */
+        force_floating(): void;
+        /**
+         * Increases the freeze count on `object`. If the freeze count is
+         * non-zero, the emission of "notify" signals on `object` is
+         * stopped. The signals are queued until the freeze count is decreased
+         * to zero. Duplicate notifications are squashed so that at most one
+         * #GObject::notify signal is emitted for each property modified while the
+         * object is frozen.
+         *
+         * This is necessary for accessors that modify multiple properties to prevent
+         * premature notification while the object is still being modified.
+         */
+        freeze_notify(): void;
+        /**
+         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * @param key name of the key for that association
+         * @returns the data if found,          or %NULL if no such data exists.
+         */
+        get_data(key: string): any | null;
+        get_property(property_name: string): any;
+        /**
+         * This function gets back user data pointers stored via
+         * g_object_set_qdata().
+         * @param quark A #GQuark, naming the user data pointer
+         * @returns The user data pointer set, or %NULL
+         */
+        get_qdata(quark: GLib.Quark): any | null;
+        /**
+         * Gets `n_properties` properties for an `object`.
+         * Obtained properties will be set to `values`. All properties must be valid.
+         * Warnings will be emitted and undefined behaviour may result if invalid
+         * properties are passed in.
+         * @param names the names of each property to get
+         * @param values the values of each property to get
+         */
+        getv(names: string[], values: (GObject.Value | any)[]): void;
+        /**
+         * Checks whether `object` has a [floating][floating-ref] reference.
+         * @returns %TRUE if @object has a floating reference
+         */
+        is_floating(): boolean;
+        /**
+         * Emits a "notify" signal for the property `property_name` on `object`.
+         *
+         * When possible, eg. when signaling a property change from within the class
+         * that registered the property, you should use g_object_notify_by_pspec()
+         * instead.
+         *
+         * Note that emission of the notify signal may be blocked with
+         * g_object_freeze_notify(). In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * called.
+         * @param property_name the name of a property installed on the class of @object.
+         */
+        notify(property_name: string): void;
+        /**
+         * Emits a "notify" signal for the property specified by `pspec` on `object`.
+         *
+         * This function omits the property name lookup, hence it is faster than
+         * g_object_notify().
+         *
+         * One way to avoid using g_object_notify() from within the
+         * class that registered the properties, and using g_object_notify_by_pspec()
+         * instead, is to store the GParamSpec used with
+         * g_object_class_install_property() inside a static array, e.g.:
+         *
+         *
+         * ```c
+         *   typedef enum
+         *   {
+         *     PROP_FOO = 1,
+         *     PROP_LAST
+         *   } MyObjectProperty;
+         *
+         *   static GParamSpec *properties[PROP_LAST];
+         *
+         *   static void
+         *   my_object_class_init (MyObjectClass *klass)
+         *   {
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
+         *                                              0, 100,
+         *                                              50,
+         *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
+         *     g_object_class_install_property (gobject_class,
+         *                                      PROP_FOO,
+         *                                      properties[PROP_FOO]);
+         *   }
+         * ```
+         *
+         *
+         * and then notify a change on the "foo" property with:
+         *
+         *
+         * ```c
+         *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
+         * ```
+         *
+         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         */
+        notify_by_pspec(pspec: GObject.ParamSpec): void;
+        /**
+         * Increases the reference count of `object`.
+         *
+         * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
+         * of `object` will be propagated to the return type (using the GCC typeof()
+         * extension), so any casting the caller needs to do on the return type must be
+         * explicit.
+         * @returns the same @object
+         */
+        ref(): GObject.Object;
+        /**
+         * Increase the reference count of `object,` and possibly remove the
+         * [floating][floating-ref] reference, if `object` has a floating reference.
+         *
+         * In other words, if the object is floating, then this call "assumes
+         * ownership" of the floating reference, converting it to a normal
+         * reference by clearing the floating flag while leaving the reference
+         * count unchanged.  If the object is not floating, then this call
+         * adds a new normal reference increasing the reference count by one.
+         *
+         * Since GLib 2.56, the type of `object` will be propagated to the return type
+         * under the same conditions as for g_object_ref().
+         * @returns @object
+         */
+        ref_sink(): GObject.Object;
+        /**
+         * Releases all references to other objects. This can be used to break
+         * reference cycles.
+         *
+         * This function should only be called from object system implementations.
+         */
+        run_dispose(): void;
+        /**
+         * Each object carries around a table of associations from
+         * strings to pointers.  This function lets you set an association.
+         *
+         * If the object already had an association with that name,
+         * the old association will be destroyed.
+         *
+         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * This means a copy of `key` is kept permanently (even after `object` has been
+         * finalized) — so it is recommended to only use a small, bounded set of values
+         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * @param key name of the key
+         * @param data data to associate with that key
+         */
+        set_data(key: string, data?: any | null): void;
+        set_property(property_name: string, value: any): void;
+        /**
+         * Remove a specified datum from the object's data associations,
+         * without invoking the association's destroy handler.
+         * @param key name of the key
+         * @returns the data if found, or %NULL          if no such data exists.
+         */
+        steal_data(key: string): any | null;
+        /**
+         * This function gets back user data pointers stored via
+         * g_object_set_qdata() and removes the `data` from object
+         * without invoking its destroy() function (if any was
+         * set).
+         * Usually, calling this function is only required to update
+         * user data pointers with a destroy notifier, for example:
+         *
+         * ```c
+         * void
+         * object_add_to_user_list (GObject     *object,
+         *                          const gchar *new_string)
+         * {
+         *   // the quark, naming the object data
+         *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
+         *   // retrieve the old string list
+         *   GList *list = g_object_steal_qdata (object, quark_string_list);
+         *
+         *   // prepend new string
+         *   list = g_list_prepend (list, g_strdup (new_string));
+         *   // this changed 'list', so we need to set it again
+         *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
+         * }
+         * static void
+         * free_string_list (gpointer data)
+         * {
+         *   GList *node, *list = data;
+         *
+         *   for (node = list; node; node = node->next)
+         *     g_free (node->data);
+         *   g_list_free (list);
+         * }
+         * ```
+         *
+         * Using g_object_get_qdata() in the above example, instead of
+         * g_object_steal_qdata() would have left the destroy function set,
+         * and thus the partial string list would have been freed upon
+         * g_object_set_qdata_full().
+         * @param quark A #GQuark, naming the user data pointer
+         * @returns The user data pointer set, or %NULL
+         */
+        steal_qdata(quark: GLib.Quark): any | null;
+        /**
+         * Reverts the effect of a previous call to
+         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * and when it reaches zero, queued "notify" signals are emitted.
+         *
+         * Duplicate notifications for each property are squashed so that at most one
+         * #GObject::notify signal is emitted for each property, in the reverse order
+         * in which they have been queued.
+         *
+         * It is an error to call this function when the freeze count is zero.
+         */
+        thaw_notify(): void;
+        /**
+         * Decreases the reference count of `object`. When its reference count
+         * drops to 0, the object is finalized (i.e. its memory is freed).
+         *
+         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * an instance variable of another object), it is recommended to clear the
+         * pointer to %NULL rather than retain a dangling pointer to a potentially
+         * invalid #GObject instance. Use g_clear_object() for this.
+         */
+        unref(): void;
+        /**
+         * This function essentially limits the life time of the `closure` to
+         * the life time of the object. That is, when the object is finalized,
+         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * it, in order to prevent invocations of the closure with a finalized
+         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
+         * added as marshal guards to the `closure,` to ensure that an extra
+         * reference count is held on `object` during invocation of the
+         * `closure`.  Usually, this function will be called on closures that
+         * use this `object` as closure data.
+         * @param closure #GClosure to watch
+         */
+        watch_closure(closure: GObject.Closure): void;
+        /**
+         * the `constructed` function is called by g_object_new() as the
+         *  final step of the object creation process.  At the point of the call, all
+         *  construction properties have been set on the object.  The purpose of this
+         *  call is to allow for object initialisation steps that can only be performed
+         *  after construction properties have been set.  `constructed` implementors
+         *  should chain up to the `constructed` call of their parent class to allow it
+         *  to complete its initialisation.
+         */
+        vfunc_constructed(): void;
+        /**
+         * emits property change notification for a bunch
+         *  of properties. Overriding `dispatch_properties_changed` should be rarely
+         *  needed.
+         * @param n_pspecs
+         * @param pspecs
+         */
+        vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
+        /**
+         * the `dispose` function is supposed to drop all references to other
+         *  objects, but keep the instance otherwise intact, so that client method
+         *  invocations still work. It may be run multiple times (due to reference
+         *  loops). Before returning, `dispose` should chain up to the `dispose` method
+         *  of the parent class.
+         */
+        vfunc_dispose(): void;
+        /**
+         * instance finalization function, should finish the finalization of
+         *  the instance begun in `dispose` and chain up to the `finalize` method of the
+         *  parent class.
+         */
+        vfunc_finalize(): void;
+        /**
+         * the generic getter for all properties of this type. Should be
+         *  overridden for every type with properties.
+         * @param property_id
+         * @param value
+         * @param pspec
+         */
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Emits a "notify" signal for the property `property_name` on `object`.
+         *
+         * When possible, eg. when signaling a property change from within the class
+         * that registered the property, you should use g_object_notify_by_pspec()
+         * instead.
+         *
+         * Note that emission of the notify signal may be blocked with
+         * g_object_freeze_notify(). In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * called.
+         * @param pspec
+         */
+        vfunc_notify(pspec: GObject.ParamSpec): void;
+        /**
+         * the generic setter for all properties of this type. Should be
+         *  overridden for every type with properties. If implementations of
+         *  `set_property` don't emit property change notification explicitly, this will
+         *  be done implicitly by the type system. However, if the notify signal is
+         *  emitted explicitly, the type system will not emit it a second time.
+         * @param property_id
+         * @param value
+         * @param pspec
+         */
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        disconnect(id: number): void;
+        set(properties: { [key: string]: any }): void;
+        block_signal_handler(id: number): any;
+        unblock_signal_handler(id: number): any;
+        stop_emission_by_name(detailedName: string): any;
     }
 
     module Display {
@@ -5796,8 +6268,6 @@ export namespace Meta {
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             backend: Backend;
-            experimental_hdr: string;
-            experimentalHdr: string;
             has_builtin_panel: boolean;
             hasBuiltinPanel: boolean;
             night_light_supported: boolean;
@@ -5824,10 +6294,6 @@ export namespace Meta {
         // Properties
 
         get backend(): Backend;
-        get experimental_hdr(): string;
-        set experimental_hdr(val: string);
-        get experimentalHdr(): string;
-        set experimentalHdr(val: string);
         get has_builtin_panel(): boolean;
         get hasBuiltinPanel(): boolean;
         get night_light_supported(): boolean;
@@ -5973,6 +6439,56 @@ export namespace Meta {
          * @returns A string representation of @multi_texture. Use g_free() when done with it.
          */
         to_string(): string;
+    }
+
+    module OrientationManager {
+        // Signal callback interfaces
+
+        interface OrientationChanged {
+            (): void;
+        }
+
+        // Constructor properties interface
+
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+            has_accelerometer: boolean;
+            hasAccelerometer: boolean;
+        }
+    }
+
+    /**
+     * A screen orientation manager
+     *
+     * #MetaOrientationManager is a final class which contains methods to
+     * read the current screen orientation, as well as a signal that is
+     * triggered whenever a screen changes its orientation.
+     */
+    class OrientationManager extends GObject.Object {
+        static $gtype: GObject.GType<OrientationManager>;
+
+        // Properties
+
+        get has_accelerometer(): boolean;
+        get hasAccelerometer(): boolean;
+
+        // Constructors
+
+        constructor(properties?: Partial<OrientationManager.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        // Signals
+
+        connect(id: string, callback: (...args: any[]) => any): number;
+        connect_after(id: string, callback: (...args: any[]) => any): number;
+        emit(id: string, ...args: any[]): void;
+        connect(signal: 'orientation-changed', callback: (_source: this) => void): number;
+        connect_after(signal: 'orientation-changed', callback: (_source: this) => void): number;
+        emit(signal: 'orientation-changed'): void;
+
+        // Methods
+
+        get_orientation(): Orientation;
     }
 
     module Plugin {
@@ -6396,86 +6912,6 @@ export namespace Meta {
         static ['new'](mimetype: string, content: GLib.Bytes | Uint8Array): SelectionSourceMemory;
     }
 
-    module ShadowFactory {
-        // Signal callback interfaces
-
-        interface Changed {
-            (): void;
-        }
-
-        // Constructor properties interface
-
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
-    }
-
-    /**
-     * Create window shadows.
-     *
-     * It caches shadows internally so that multiple shadows created for
-     * the same shape with the same radius will share the same [struct`Meta`.Shadow].
-     */
-    class ShadowFactory extends GObject.Object {
-        static $gtype: GObject.GType<ShadowFactory>;
-
-        // Constructors
-
-        constructor(properties?: Partial<ShadowFactory.ConstructorProps>, ...args: any[]);
-
-        _init(...args: any[]): void;
-
-        static ['new'](): ShadowFactory;
-
-        // Signals
-
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'changed', callback: (_source: this) => void): number;
-        connect_after(signal: 'changed', callback: (_source: this) => void): number;
-        emit(signal: 'changed'): void;
-
-        // Static methods
-
-        static get_default(): ShadowFactory;
-
-        // Methods
-
-        /**
-         * Gets the shadow parameters for a particular class of shadows
-         * for either the focused or unfocused state. If the class name
-         * does not name an existing class, default values will be returned
-         * without printing an error.
-         * @param class_name name of the class of shadow to get the params for
-         * @param focused whether the shadow is for a focused window
-         */
-        get_params(class_name: string, focused: boolean): ShadowParams;
-        /**
-         * Gets the appropriate shadow object for drawing shadows for the
-         * specified window shape. The region that we are shadowing is specified
-         * as a combination of a size-invariant extracted shape and the size.
-         * In some cases, the same shadow object can be shared between sizes;
-         * in other cases a different shadow object is used for each size.
-         * @param shape the size-invariant shape of the window's region
-         * @param width the actual width of the window's region
-         * @param height the actual height of the window's region
-         * @param class_name name of the class of window shadows
-         * @param focused whether the shadow is for a focused window
-         * @returns a newly referenced #MetaShadow; unref with  meta_shadow_unref()
-         */
-        get_shadow(shape: WindowShape, width: number, height: number, class_name: string, focused: boolean): Shadow;
-        /**
-         * Updates the shadow parameters for a particular class of shadows
-         * for either the focused or unfocused state. If the class name
-         * does not name an existing class, a new class will be created
-         * (the other focus state for that class will have default values
-         * assigned to it.)
-         * @param class_name name of the class of shadow to set the params for.  the default shadow classes are the names of the different  theme frame types (normal, dialog, modal_dialog, utility,  border, menu, attached) and in addition, popup-menu  and dropdown-menu.
-         * @param focused whether the shadow is for a focused window
-         * @param params new parameter values
-         */
-        set_params(class_name: string, focused: boolean, params: ShadowParams): void;
-    }
-
     module ShapedTexture {
         // Signal callback interfaces
 
@@ -6498,7 +6934,7 @@ export namespace Meta {
      *
      * A MetaShapedTexture draws a #CoglTexture (often provided from a client
      * surface) in such a way that it matches any required transformations that
-     * give its final shape, such as a #MetaMonitorTransform, y-invertedness, or a
+     * give its final shape, such as a #MtkMonitorTransform, y-invertedness, or a
      * crop-and-scale operation.
      */
     class ShapedTexture extends GObject.Object implements Clutter.Content {
@@ -10270,6 +10706,7 @@ export namespace Meta {
     type CompositorClass = typeof Compositor;
     type ContextClass = typeof Context;
     type CursorTrackerClass = typeof CursorTracker;
+    type DebugControlClass = typeof DebugControl;
     type DisplayClass = typeof Display;
     type DndClass = typeof Dnd;
     class Edge {
@@ -10356,6 +10793,7 @@ export namespace Meta {
     type LaunchContextClass = typeof LaunchContext;
     type MonitorManagerClass = typeof MonitorManager;
     type MultiTextureClass = typeof MultiTexture;
+    type OrientationManagerClass = typeof OrientationManager;
     type PluginClass = typeof Plugin;
     class PluginInfo {
         static $gtype: GObject.GType<PluginInfo>;
@@ -10400,96 +10838,6 @@ export namespace Meta {
         get_ui_scaling_factor(): number;
     }
 
-    /**
-     * Holds a shadow texture along with information about how to
-     * apply that texture to draw a window texture.
-     *
-     * E.g., it knows how big the unscaled borders are on each
-     * side of the shadow texture.
-     */
-    abstract class Shadow {
-        static $gtype: GObject.GType<Shadow>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
-
-        // Methods
-
-        /**
-         * Computes the bounds of the pixels that will be affected by
-         * meta_shadow_paint()
-         * @param window_x x position of the region to paint a shadow for
-         * @param window_y y position of the region to paint a shadow for
-         * @param window_width actual width of the region to paint a shadow for
-         * @param window_height actual height of the region to paint a shadow for
-         * @param bounds
-         */
-        get_bounds(
-            window_x: number,
-            window_y: number,
-            window_width: number,
-            window_height: number,
-            bounds: Mtk.Rectangle,
-        ): void;
-        /**
-         * Paints the shadow at the given position, for the specified actual
-         * size of the region.
-         *
-         * Since a #MetaShadow can be shared between different sizes with
-         * the same extracted [struct`Meta`.WindowShape] the size needs to be passed in here.
-         * @param framebuffer
-         * @param window_x x position of the region to paint a shadow for
-         * @param window_y y position of the region to paint a shadow for
-         * @param window_width actual width of the region to paint a shadow for
-         * @param window_height actual height of the region to paint a shadow for
-         * @param opacity
-         * @param clip if non-%NULL specifies the visible portion   of the shadow.
-         * @param clip_strictly if %TRUE, drawing will be clipped strictly   to @clip, otherwise, it will be only used to optimize   drawing.
-         */
-        paint(
-            framebuffer: Cogl.Framebuffer,
-            window_x: number,
-            window_y: number,
-            window_width: number,
-            window_height: number,
-            opacity: number,
-            clip: Mtk.Region | null,
-            clip_strictly: boolean,
-        ): void;
-        ref(): Shadow;
-        unref(): void;
-    }
-
-    type ShadowFactoryClass = typeof ShadowFactory;
-    /**
-     * Information about how to draw a particular style of shadow.
-     */
-    class ShadowParams {
-        static $gtype: GObject.GType<ShadowParams>;
-
-        // Fields
-
-        radius: number;
-        top_fade: number;
-        x_offset: number;
-        y_offset: number;
-        opacity: number;
-
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                radius: number;
-                top_fade: number;
-                x_offset: number;
-                y_offset: number;
-                opacity: number;
-            }>,
-        );
-        _init(...args: any[]): void;
-    }
-
     type ShapedTextureClass = typeof ShapedTexture;
     type SoundPlayerClass = typeof SoundPlayer;
     type StageClass = typeof Stage;
@@ -10514,43 +10862,6 @@ export namespace Meta {
     type WindowActorClass = typeof WindowActor;
     type WindowClass = typeof Window;
     type WindowGroupClass = typeof WindowGroup;
-    /**
-     * Represents a 9-sliced region with borders on all sides that
-     * are unscaled, and a constant central region that is scaled.
-     *
-     * For example, the regions representing two windows that are rounded rectangles,
-     * with the same corner radius but different sizes, have the same MetaWindowShape.
-     *
-     * #MetaWindowShape is designed to be used as part of a hash table key, so has
-     * efficient hash and equal functions.
-     */
-    class WindowShape {
-        static $gtype: GObject.GType<WindowShape>;
-
-        // Constructors
-
-        constructor(region: Mtk.Region);
-        _init(...args: any[]): void;
-
-        static ['new'](region: Mtk.Region): WindowShape;
-
-        // Methods
-
-        equal(shape_b: WindowShape): boolean;
-        get_borders(border_top: number, border_right: number, border_bottom: number, border_left: number): void;
-        hash(): number;
-        ref(): WindowShape;
-        /**
-         * Converts the shape to to a MtkRegion using the given width
-         * and height for the central scaled region.
-         * @param center_width size of the central region horizontally
-         * @param center_height size of the central region vertically
-         * @returns a newly created region
-         */
-        to_region(center_width: number, center_height: number): Mtk.Region;
-        unref(): void;
-    }
-
     type WorkspaceClass = typeof Workspace;
     type WorkspaceManagerClass = typeof WorkspaceManager;
     type X11DisplayClass = typeof X11Display;

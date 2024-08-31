@@ -30,7 +30,6 @@ import type Clutter from '@girs/clutter-15';
 import type Atk from '@girs/atk-1.0';
 import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 import type GModule from '@girs/gmodule-2.0';
-import type Cally from '@girs/cally-15';
 import type PolkitAgent from '@girs/polkitagent-1.0';
 import type Polkit from '@girs/polkit-1.0';
 import type NM from '@girs/nm-1.0';

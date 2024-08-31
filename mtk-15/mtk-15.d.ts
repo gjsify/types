@@ -17,6 +17,25 @@ export namespace Mtk {
      * Mtk-15
      */
 
+    class MonitorTransform {
+        static $gtype: GObject.GType<MonitorTransform>;
+
+        // Static fields
+
+        static NORMAL: number;
+        static '90': number;
+        static '180': number;
+        static '270': number;
+        static FLIPPED: number;
+        static FLIPPED_90: number;
+        static FLIPPED_180: number;
+        static FLIPPED_270: number;
+
+        // Constructors
+
+        _init(...args: any[]): void;
+    }
+
     export namespace RegionOverlap {
         export const $gtype: GObject.GType<RegionOverlap>;
     }
@@ -36,8 +55,20 @@ export namespace Mtk {
         GROW,
         ROUND,
     }
+    const MONITOR_ALL_TRANSFORMS: number;
+    const MONITOR_N_TRANSFORMS: number;
     const RECTANGLE_MAX_STACK_RECTS: number;
     const REGION_BUILDER_MAX_LEVELS: number;
+    function monitor_transform_invert(transform: MonitorTransform): MonitorTransform;
+    function monitor_transform_transform(transform: MonitorTransform, other: MonitorTransform): MonitorTransform;
+    function monitor_transform_transform_matrix(transform: MonitorTransform, matrix: Graphene.Matrix): void;
+    function monitor_transform_transform_point(
+        transform: MonitorTransform,
+        area_width: number,
+        area_height: number,
+        point_x: number,
+        point_y: number,
+    ): void;
     function rectangle_from_graphene_rect(rect: Graphene.Rect, rounding_strategy: RoundingStrategy): Rectangle;
     function region_create(): Region;
     function region_create_rectangle(rect: Rectangle): Region;
@@ -111,6 +142,17 @@ export namespace Mtk {
         overlap(rect2: Rectangle): boolean;
         scale_double(scale: number, rounding_strategy: RoundingStrategy, dest: Rectangle): void;
         to_graphene_rect(): Graphene.Rect;
+        /**
+         * This function transforms the values in `rect` in order to compensate for
+         * `transform` applied to a #MetaMonitor, making them match the viewport. Note
+         * that compensating implies that for a clockwise rotation of the #MetaMonitor
+         * an anti-clockwise rotation has to be applied to `rect`.
+         * @param transform the #MtkMonitorTransform
+         * @param width the width of the target space
+         * @param height the height of the target space
+         * @param dest the transformed #MtkRectangle
+         */
+        transform(transform: MonitorTransform, width: number, height: number, dest: Rectangle): void;
         /**
          * Computes the union of the two rectangles
          * @param rect2 another #MtkRectangle

@@ -55,64 +55,6 @@ export namespace Cogl {
          */
         FLOAT,
     }
-    /**
-     * Error codes that can be thrown when performing bitmap
-     * operations.
-     */
-
-    /**
-     * Error codes that can be thrown when performing bitmap
-     * operations.
-     */
-    export namespace BitmapError {
-        export const $gtype: GObject.GType<BitmapError>;
-    }
-
-    enum BitmapError {
-        /**
-         * Generic failure code, something went
-         *   wrong.
-         */
-        FAILED,
-        /**
-         * Unknown image type.
-         */
-        UNKNOWN_TYPE,
-        /**
-         * An image file was broken somehow.
-         */
-        CORRUPT_IMAGE,
-    }
-    /**
-     * Error enumeration for the blend strings parser
-     */
-
-    /**
-     * Error enumeration for the blend strings parser
-     */
-    export namespace BlendStringError {
-        export const $gtype: GObject.GType<BlendStringError>;
-    }
-
-    enum BlendStringError {
-        /**
-         * Generic parse error
-         */
-        PARSE_ERROR,
-        /**
-         * Argument parse error
-         */
-        ARGUMENT_PARSE_ERROR,
-        /**
-         * Internal parser error
-         */
-        INVALID_ERROR,
-        /**
-         * Blend string not
-         *   supported by the GPU
-         */
-        GPU_UNSUPPORTED_ERROR,
-    }
 
     export namespace BufferBindTarget {
         export const $gtype: GObject.GType<BufferBindTarget>;
@@ -124,25 +66,6 @@ export namespace Cogl {
         ATTRIBUTE_BUFFER,
         INDEX_BUFFER,
         COUNT,
-    }
-    /**
-     * Error enumeration for #CoglBuffer
-     */
-
-    /**
-     * Error enumeration for #CoglBuffer
-     */
-    export namespace BufferError {
-        export const $gtype: GObject.GType<BufferError>;
-    }
-
-    enum BufferError {
-        /**
-         * A buffer could not be mapped either
-         *    because the feature isn't supported or because a system
-         *    limitation was hit.
-         */
-        MAP,
     }
     /**
      * The update hint on a buffer allows the user to give some detail on how often
@@ -269,13 +192,13 @@ export namespace Cogl {
     /**
      * All the capabilities that can vary between different GPUs supported
      * by Cogl. Applications that depend on any of these features should explicitly
-     * check for them using cogl_has_feature() or cogl_has_features().
+     * check for them using [method`Cogl`.Context.has_feature].
      */
 
     /**
      * All the capabilities that can vary between different GPUs supported
      * by Cogl. Applications that depend on any of these features should explicitly
-     * check for them using cogl_has_feature() or cogl_has_features().
+     * check for them using [method`Cogl`.Context.has_feature].
      */
     export namespace FeatureID {
         export const $gtype: GObject.GType<FeatureID>;
@@ -421,14 +344,14 @@ export namespace Cogl {
     }
     /**
      * All the error values that might be returned by
-     * cogl_get_graphics_reset_status(). Each value's meaning corresponds
+     * cogl_context_get_graphics_reset_status(). Each value's meaning corresponds
      * to the similarly named value defined in the ARB_robustness and
      * NV_robustness_video_memory_purge extensions.
      */
 
     /**
      * All the error values that might be returned by
-     * cogl_get_graphics_reset_status(). Each value's meaning corresponds
+     * cogl_context_get_graphics_reset_status(). Each value's meaning corresponds
      * to the similarly named value defined in the ARB_robustness and
      * NV_robustness_video_memory_purge extensions.
      */
@@ -930,50 +853,6 @@ export namespace Cogl {
         RGBA_16161616_PRE,
         DEPTH_16,
         DEPTH_24_STENCIL_8,
-    }
-    /**
-     * A bitmask of events that Cogl may need to wake on for a file
-     * descriptor. Note that these all have the same values as the
-     * corresponding defines for the poll function call on Unix so they
-     * may be directly passed to poll.
-     */
-
-    /**
-     * A bitmask of events that Cogl may need to wake on for a file
-     * descriptor. Note that these all have the same values as the
-     * corresponding defines for the poll function call on Unix so they
-     * may be directly passed to poll.
-     */
-    export namespace PollFDEvent {
-        export const $gtype: GObject.GType<PollFDEvent>;
-    }
-
-    enum PollFDEvent {
-        /**
-         * there is data to read
-         */
-        IN,
-        /**
-         * data can be written (without blocking)
-         */
-        PRI,
-        /**
-         * there is urgent data to read.
-         */
-        OUT,
-        /**
-         * error condition
-         */
-        ERR,
-        /**
-         * hung up (the connection has been broken, usually
-         *                          for pipes and sockets).
-         */
-        HUP,
-        /**
-         * invalid request. The file descriptor is not open.
-         */
-        NVAL,
     }
 
     export namespace RendererError {
@@ -1494,7 +1373,7 @@ export namespace Cogl {
      * variety of reasons. For example:
      *
      * - You've tried to use a feature that is not advertised by
-     *   [func`Cogl`.has_feature].
+     *   [method`Cogl`.Context.has_feature].
      * - The GPU can not handle the configuration you have requested.
      *   An example might be if you try to use too many texture
      *   layers in a single #CoglPipeline
@@ -1511,7 +1390,7 @@ export namespace Cogl {
      * variety of reasons. For example:
      *
      * - You've tried to use a feature that is not advertised by
-     *   [func`Cogl`.has_feature].
+     *   [method`Cogl`.Context.has_feature].
      * - The GPU can not handle the configuration you have requested.
      *   An example might be if you try to use too many texture
      *   layers in a single #CoglPipeline
@@ -1729,7 +1608,6 @@ export namespace Cogl {
     const PREMULT_BIT: number;
     const STENCIL_BIT: number;
     const TEXTURE_MAX_WASTE: number;
-    function blend_string_error_quark(): number;
     /**
      * `return` FALSE for an immediately detected error, TRUE otherwise.
      *
@@ -1790,16 +1668,6 @@ export namespace Cogl {
         height: number,
     ): boolean;
     /**
-     * Compares two `CoglColor`s and checks if they are the same.
-     *
-     * This function can be passed to g_hash_table_new() as the `key_equal_func`
-     * parameter, when using `CoglColor`s as keys in a #GHashTable.
-     * @param v1 a #CoglColor
-     * @param v2 a #CoglColor
-     * @returns %TRUE if the two colors are the same.
-     */
-    function color_equal(v1?: any | null, v2?: any | null): boolean;
-    /**
      * Parses a string definition of a color, filling the #CoglColor.red,
      * #CoglColor.green, #CoglColor.blue and #CoglColor.alpha fields
      * of `color`.
@@ -1845,69 +1713,15 @@ export namespace Cogl {
      * @param luminance luminance value, in the 0 .. 1 range
      */
     function color_init_from_hsl(hue: number, saturation: number, luminance: number): Color;
-    /**
-     * Create a new cogl program object that can be used to replace parts of the GL
-     * rendering pipeline with custom code.
-     * @returns a new cogl program.
-     */
-    function create_program(): Program;
-    /**
-     * Create a new shader handle, use cogl_shader_source() to set the
-     * source code to be used on it.
-     * @param shader_type COGL_SHADER_TYPE_VERTEX or COGL_SHADER_TYPE_FRAGMENT.
-     * @returns a new shader handle.
-     */
-    function create_shader(shader_type: ShaderType): Shader;
-    /**
-     * Returns the graphics reset status as reported by
-     * GetGraphicsResetStatusARB defined in the ARB_robustness extension.
-     *
-     * Note that Cogl doesn't normally enable the ARB_robustness
-     * extension in which case this will only ever return
-     * #COGL_GRAPHICS_RESET_STATUS_NO_ERROR.
-     *
-     * Applications must explicitly use a backend specific method to
-     * request that errors get reported such as X11's
-     * cogl_xlib_renderer_request_reset_on_video_memory_purge().
-     * @param context a #CoglContext pointer
-     * @returns a #CoglGraphicsResetStatus
-     */
-    function get_graphics_reset_status(context: Context): GraphicsResetStatus;
     function get_rectangle_indices(context: Context, n_rectangles: number): Indices;
     /**
      * Creates a #GSource which handles Cogl's internal system event
-     * processing. This can be used as a convenience instead of
-     * cogl_poll_renderer_get_info() and cogl_poll_renderer_dispatch() in
-     * applications that are already using the GLib main loop. After this
-     * is called the #GSource should be attached to the main loop using
-     * g_source_attach().
+     * processing.
      * @param renderer A #CoglRenderer
      * @param priority The priority of the #GSource
      * @returns a new #GSource
      */
-    function glib_renderer_source_new(renderer: Renderer, priority: number): GLib.Source;
-    /**
-     * Creates a #GSource which handles Cogl's internal system event
-     * processing. This can be used as a convenience instead of
-     * cogl_poll_renderer_get_info() and cogl_poll_renderer_dispatch() in
-     * applications that are already using the GLib main loop. After this
-     * is called the #GSource should be attached to the main loop using
-     * g_source_attach().
-     *
-     * Applications that manually connect to a #CoglRenderer before they
-     * create a #CoglContext should instead use
-     * cogl_glib_renderer_source_new() so that events may be dispatched
-     * before a context has been created. In that case you don't need to
-     * use this api in addition later, it is simply enough to use
-     * cogl_glib_renderer_source_new() instead.
-     *
-     * This api is actually just a thin convenience wrapper around
-     * cogl_glib_renderer_source_new()
-     * @param context A #CoglContext
-     * @param priority The priority of the #GSource
-     * @returns a new #GSource
-     */
-    function glib_source_new(context: Context, priority: number): GLib.Source;
+    function glib_source_new(renderer: Renderer, priority: number): GLib.Source;
     /**
      * Transforms a point whose position is given and returned as four float
      * components.
@@ -2028,18 +1842,6 @@ export namespace Cogl {
         n_points: number,
     ): void;
     /**
-     * Checks if a given `feature` is currently available
-     *
-     * Cogl does not aim to be a lowest common denominator API, it aims to
-     * expose all the interesting features of GPUs to application which
-     * means applications have some responsibility to explicitly check
-     * that certain features are available before depending on them.
-     * @param context A #CoglContext pointer
-     * @param feature A #CoglFeatureID
-     * @returns %TRUE if the @feature is currently supported or %FALSE if not.
-     */
-    function has_feature(context: Context, feature: FeatureID): boolean;
-    /**
      * Allows you to manually iterate the low-level textures that define a
      * given region of a high-level #CoglMetaTexture.
      *
@@ -2104,54 +1906,6 @@ export namespace Cogl {
      * @returns A string representation of @format.
      */
     function pixel_format_to_string(format: PixelFormat): string;
-    /**
-     * This should be called whenever an application is woken up from
-     * going idle in its main loop. The `poll_fds` array should contain a
-     * list of file descriptors matched with the events that occurred in
-     * revents. The events field is ignored. It is safe to pass in extra
-     * file descriptors that Cogl didn't request when calling
-     * cogl_poll_renderer_get_info() or a shorter array missing some file
-     * descriptors that Cogl requested.
-     * @param renderer A #CoglRenderer
-     * @param poll_fds An array of `CoglPollFD`s describing the events            that have occurred since the application went idle.
-     * @param n_poll_fds The length of the @poll_fds array.
-     */
-    function poll_renderer_dispatch(renderer: Renderer, poll_fds: PollFD, n_poll_fds: number): void;
-    /**
-     * Is used to integrate Cogl with an application mainloop that is based
-     * on the unix poll(2) api (or select() or something equivalent). This
-     * api should be called whenever an application is about to go idle so
-     * that Cogl has a chance to describe what file descriptor events it
-     * needs to be woken up for.
-     *
-     * If your application is using the Glib mainloop then you
-     * should jump to the cogl_glib_source_new() api as a more convenient
-     * way of integrating Cogl with the mainloop.
-     *
-     * After the function is called *`poll_fds` will contain a pointer to
-     * an array of #CoglPollFD structs describing the file descriptors
-     * that Cogl expects. The fd and events members will be updated
-     * accordingly. After the application has completed its idle it is
-     * expected to either update the revents members directly in this
-     * array or to create a copy of the array and update them
-     * there.
-     *
-     * When the application mainloop returns from calling poll(2) (or its
-     * equivalent) then it should call cogl_poll_renderer_dispatch()
-     * passing a pointer the array of `CoglPollFD`s with updated
-     * revent values.
-     *
-     * `timeout` will contain a maximum amount of time to wait in
-     * microseconds before the application should wake up or -1 if the
-     * application should wait indefinitely. This can also be 0 if
-     * Cogl needs to be woken up immediately.
-     * @param renderer A #CoglRenderer
-     * @param poll_fds A return location for a pointer to an array            of `CoglPollFD`s
-     * @param n_poll_fds A return location for the number of entries in *@poll_fds
-     * @param timeout A return location for the maximum length of time to wait           in microseconds, or -1 to wait indefinitely.
-     * @returns A "poll fd state age" that changes whenever the set               of poll_fds has changed. If this API is being used to               integrate with another system mainloop api then               knowing if the set of file descriptors and events has               really changed can help avoid redundant work               depending the api. The age isn't guaranteed to change               when the timeout changes.
-     */
-    function poll_renderer_get_info(renderer: Renderer, poll_fds: PollFD, n_poll_fds: number, timeout: number): number;
     function set_tracing_disabled_on_thread(data?: any | null): void;
     function set_tracing_enabled_on_thread(data: any | null, group: string): void;
     function start_tracing_with_fd(fd: number): boolean;
@@ -2159,6 +1913,9 @@ export namespace Cogl {
     function stop_tracing(): void;
     function value_get_color(value: GObject.Value | any): Color;
     function value_set_color(value: GObject.Value | any, color: Color): void;
+    interface AtlasUpdatePositionCallback {
+        (new_texture: Texture, rect: Mtk.Rectangle): void;
+    }
     interface FrameCallback {
         (onscreen: Onscreen, event: FrameEvent, info: FrameInfo): void;
     }
@@ -2168,11 +1925,14 @@ export namespace Cogl {
     interface PipelineLayerCallback {
         (pipeline: Pipeline, layer_index: number): boolean;
     }
-    interface PrimitiveAttributeCallback {
-        (primitive: Primitive, attribute: Attribute): boolean;
+
+    export namespace AtlasFlags {
+        export const $gtype: GObject.GType<AtlasFlags>;
     }
-    interface XlibFilterFunc {
-        (event: xlib.XEvent, data?: any | null): FilterReturn;
+
+    enum AtlasFlags {
+        CLEAR_TEXTURE,
+        DISABLE_MIGRATION,
     }
     /**
      * The access hints for [method`Cogl`.Buffer.set_update_hint]
@@ -2280,52 +2040,26 @@ export namespace Cogl {
          */
         READ_PIXELS_COLOR_BUFFER,
     }
-    /**
-     * These constraint flags are hard-coded features of the different renderer
-     * backends. Sometimes a platform may support multiple rendering options which
-     * Cogl will usually choose from automatically. Some of these features are
-     * important to higher level applications and frameworks though, such as
-     * whether a renderer is X11 based because an application might only support
-     * X11 based input handling. An application might also need to ensure EGL is
-     * used internally too if they depend on access to an EGLDisplay for some
-     * purpose.
-     *
-     * Applications should ideally minimize how many of these constraints
-     * they depend on to ensure maximum portability.
-     */
+    module Atlas {
+        // Constructor properties interface
 
-    /**
-     * These constraint flags are hard-coded features of the different renderer
-     * backends. Sometimes a platform may support multiple rendering options which
-     * Cogl will usually choose from automatically. Some of these features are
-     * important to higher level applications and frameworks though, such as
-     * whether a renderer is X11 based because an application might only support
-     * X11 based input handling. An application might also need to ensure EGL is
-     * used internally too if they depend on access to an EGLDisplay for some
-     * purpose.
-     *
-     * Applications should ideally minimize how many of these constraints
-     * they depend on to ensure maximum portability.
-     */
-    export namespace RendererConstraint {
-        export const $gtype: GObject.GType<RendererConstraint>;
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
-    enum RendererConstraint {
-        /**
-         * Require the renderer to be X11 based
-         */
-        X11,
-        /**
-         * Require the renderer to be X11
-         *                                      based and use Xlib
-         */
-        XLIB,
-        /**
-         * Require the renderer to be EGL based
-         */
-        EGL,
+    class Atlas extends GObject.Object {
+        static $gtype: GObject.GType<Atlas>;
+
+        // Constructors
+
+        constructor(properties?: Partial<Atlas.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        // Methods
+
+        reserve_space(width: number, height: number, user_data?: any | null): boolean;
     }
+
     module AtlasTexture {
         // Constructor properties interface
 
@@ -2473,10 +2207,6 @@ export namespace Cogl {
         ): Bitmap;
 
         static new_with_size(context: Context, width: number, height: number, format: PixelFormat): Bitmap;
-
-        // Static methods
-
-        static error_quark(): number;
 
         // Methods
 
@@ -2695,7 +2425,7 @@ export namespace Cogl {
          * primitives you are 100% on your own since you stand a good chance of
          * conflicting with Cogl internals. For example clutter-gst which currently
          * uses direct GL calls to bind ARBfp programs will very likely break when Cogl
-         * starts to use ARBfb programs itself for the material API.
+         * starts to use ARBfb programs itself for the pipeline API.
          */
         flush(): void;
         free_timestamp_query(query: TimestampQuery): void;
@@ -2715,6 +2445,16 @@ export namespace Cogl {
          */
         get_gpu_time_ns(): number;
         /**
+         * Returns the graphics reset status as reported by
+         * GetGraphicsResetStatusARB defined in the ARB_robustness extension.
+         *
+         * Note that Cogl doesn't normally enable the ARB_robustness
+         * extension in which case this will only ever return
+         * #COGL_GRAPHICS_RESET_STATUS_NO_ERROR.
+         * @returns a #CoglGraphicsResetStatus
+         */
+        get_graphics_reset_status(): GraphicsResetStatus;
+        /**
          * This function is used to get support for waiting on previous
          * GPU work through sync fds. It will return a sync fd which will
          * signal when the previous work has completed.
@@ -2732,6 +2472,17 @@ export namespace Cogl {
          * @returns The #CoglRenderer associated with the               given @context.
          */
         get_renderer(): Renderer;
+        /**
+         * Checks if a given `feature` is currently available
+         *
+         * Cogl does not aim to be a lowest common denominator API, it aims to
+         * expose all the interesting features of GPUs to application which
+         * means applications have some responsibility to explicitly check
+         * that certain features are available before depending on them.
+         * @param feature A #CoglFeatureID
+         * @returns %TRUE if the @feature is currently supported or %FALSE if not.
+         */
+        has_feature(feature: FeatureID): boolean;
         has_winsys_feature(feature: WinsysFeature): boolean;
         is_hardware_accelerated(): boolean;
         /**
@@ -2781,7 +2532,7 @@ export namespace Cogl {
 
         _init(...args: any[]): void;
 
-        static ['new'](renderer: Renderer, onscreen_template: OnscreenTemplate): Display;
+        static ['new'](renderer: Renderer): Display;
 
         // Methods
 
@@ -2790,17 +2541,6 @@ export namespace Cogl {
          * @returns The associated #CoglRenderer
          */
         get_renderer(): Renderer;
-        /**
-         * Specifies a template for creating #CoglOnscreen framebuffers.
-         *
-         * Depending on the system, the constraints for creating #CoglOnscreen
-         * framebuffers need to be known before setting up a #CoglDisplay because the
-         * final setup of the display may constrain how onscreen framebuffers may be
-         * allocated. If Cogl knows how an application wants to allocate onscreen
-         * framebuffers then it can try to make sure to setup the display accordingly.
-         * @param onscreen_template A template for creating #CoglOnscreen framebuffers
-         */
-        set_onscreen_template(onscreen_template: OnscreenTemplate): void;
         /**
          * Explicitly sets up the given `display` object. Use of this api is
          * optional since Cogl will internally setup the display if not done
@@ -3045,7 +2785,7 @@ export namespace Cogl {
          *
          * The first pair of coordinates are for the first layer (with the
          * smallest layer index) and if you supply less texture coordinates
-         * than there are layers in the current source material then default
+         * than there are layers in the current source pipeline then default
          * texture coordinates (0.0, 0.0, 1.0, 1.0) are generated.
          * @param pipeline A #CoglPipeline state object
          * @param x_1 x coordinate upper left on screen.
@@ -4132,48 +3872,6 @@ export namespace Cogl {
         swap_region(rectangles: number[], info: FrameInfo, user_data?: any | null): void;
     }
 
-    module OnscreenTemplate {
-        // Constructor properties interface
-
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
-    }
-
-    class OnscreenTemplate extends GObject.Object {
-        static $gtype: GObject.GType<OnscreenTemplate>;
-
-        // Constructors
-
-        constructor(properties?: Partial<OnscreenTemplate.ConstructorProps>, ...args: any[]);
-
-        _init(...args: any[]): void;
-
-        static ['new'](): OnscreenTemplate;
-
-        // Methods
-
-        /**
-         * Requires that any future CoglOnscreen framebuffers derived from
-         * this template must support making at least `n` samples per pixel
-         * which will all contribute to the final resolved color for that
-         * pixel.
-         *
-         * By default this value is usually set to 0 and that is referred to
-         * as "single-sample" rendering. A value of 1 or greater is referred
-         * to as "multisample" rendering.
-         * @param n The minimum number of samples per pixel
-         */
-        set_samples_per_pixel(n: number): void;
-        /**
-         * Sets whether future #CoglOnscreen framebuffers derived from this
-         * template are attempted to be created with both left and right
-         * buffers, for use with stereo display. If the display system
-         * does not support stereo, then creation of the framebuffer will
-         * fail.
-         * @param enabled Whether framebuffers are created with stereo buffers
-         */
-        set_stereo_enabled(enabled: boolean): void;
-    }
-
     module Pipeline {
         // Constructor properties interface
 
@@ -4728,13 +4426,13 @@ export namespace Cogl {
          * CoglProgram *program;
          * CoglPipeline *pipeline;
          *
-         * shader = cogl_create_shader (COGL_SHADER_TYPE_FRAGMENT);
+         * shader = cogl_shader_new (COGL_SHADER_TYPE_FRAGMENT);
          * cogl_shader_source (shader,
          *                     "!!ARBfp1.0\n"
          *                     "MOV result.color,fragment.color;\n"
          *                     "END\n");
          *
-         * program = cogl_create_program ();
+         * program = cogl_program_new ();
          * cogl_program_attach_shader (program, shader);
          * cogl_program_link (program);
          *
@@ -4798,27 +4496,14 @@ export namespace Cogl {
 
         static new_p2t2(context: Context, mode: VerticesMode, data: VertexP2T2[]): Primitive;
 
-        static new_p2t2c4(context: Context, mode: VerticesMode, data: VertexP2T2C4[]): Primitive;
-
         static new_p3(context: Context, mode: VerticesMode, data: VertexP3[]): Primitive;
 
-        static new_p3c4(context: Context, mode: VerticesMode, data: VertexP3C4[]): Primitive;
-
         static new_p3t2(context: Context, mode: VerticesMode, data: VertexP3T2[]): Primitive;
-
-        static new_p3t2c4(context: Context, mode: VerticesMode, data: VertexP3T2C4[]): Primitive;
 
         static new_with_attributes(mode: VerticesMode, n_vertices: number, attributes: Attribute[]): Primitive;
 
         // Methods
 
-        /**
-         * Makes a copy of an existing #CoglPrimitive. Note that the primitive
-         * is a shallow copy which means it will use the same attributes and
-         * attribute buffers as the original primitive.
-         * @returns the new primitive
-         */
-        copy(): Primitive;
         /**
          * Draws the given `primitive` geometry to the specified destination
          * `framebuffer` using the graphics processing state described by `pipeline`.
@@ -4832,30 +4517,6 @@ export namespace Cogl {
          * @param pipeline A #CoglPipeline state object
          */
         draw(framebuffer: Framebuffer, pipeline: Pipeline): void;
-        /**
-         * Iterates all the attributes of the given #CoglPrimitive.
-         * @param callback A #CoglPrimitiveAttributeCallback to be            called for each attribute
-         */
-        foreach_attribute(callback: PrimitiveAttributeCallback): void;
-        get_first_vertex(): number;
-        get_indices(): Indices[] | null;
-        get_mode(): VerticesMode;
-        /**
-         * Queries the number of vertices to read when drawing the given
-         * `primitive`. Usually this value is implicitly set when associating
-         * vertex data or indices with a #CoglPrimitive.
-         *
-         * If cogl_primitive_set_indices() has been used to associate a
-         * sequence of #CoglIndices with the given `primitive` then the
-         * number of vertices to read can also be phrased as the number
-         * of indices to read.
-         *
-         * To be clear; it doesn't refer to the number of vertices - in
-         * terms of data - associated with the primitive it's just the number
-         * of vertices to read and draw.
-         * @returns The number of vertices to read when drawing.
-         */
-        get_n_vertices(): number;
         set_first_vertex(first_vertex: number): void;
         /**
          * Associates a sequence of #CoglIndices with the given `primitive`.
@@ -4879,7 +4540,6 @@ export namespace Cogl {
          * @param indices A #CoglIndices array
          */
         set_indices(indices: Indices[]): void;
-        set_mode(mode: VerticesMode): void;
         /**
          * Specifies how many vertices should be read when drawing the given
          * `primitive`.
@@ -4909,6 +4569,8 @@ export namespace Cogl {
         constructor(properties?: Partial<Program.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        static ['new'](): Program;
 
         // Methods
 
@@ -5022,13 +4684,6 @@ export namespace Cogl {
         // Methods
 
         bind_api(): void;
-        /**
-         * Tests if a given `onscreen_template` can be supported with the given
-         * `renderer`.
-         * @param onscreen_template A #CoglOnscreenTemplate
-         * @returns %TRUE if the @onscreen_template can be supported,               else %FALSE.
-         */
-        check_onscreen_template(onscreen_template: OnscreenTemplate): boolean;
         /**
          * Connects the configured `renderer`. Renderer connection isn't a
          * very active process, it basically just means validating that
@@ -5219,6 +4874,8 @@ export namespace Cogl {
         constructor(properties?: Partial<Shader.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        static ['new'](shader_type: ShaderType): Shader;
 
         // Methods
 
@@ -5592,6 +5249,7 @@ export namespace Cogl {
          * the pixel format of the data.
          */
         get_components(): TextureComponents;
+        get_context(): Context;
         /**
          * Copies the pixel data from a cogl texture to system memory.
          *
@@ -5607,6 +5265,7 @@ export namespace Cogl {
         get_data(format: PixelFormat, rowstride: number, data?: Uint8Array | null): number;
         // Conflicted with GObject.Object.get_data
         get_data(...args: never[]): any;
+        get_format(): PixelFormat;
         /**
          * Queries the GL handles for a GPU side texture through its #CoglTexture.
          *
@@ -5893,6 +5552,7 @@ export namespace Cogl {
         static new_with_size(ctx: Context, width: number, height: number, max_waste: number): Texture2DSliced;
     }
 
+    type AtlasClass = typeof Atlas;
     type AtlasTextureClass = typeof AtlasTexture;
     type AttributeBufferClass = typeof AttributeBuffer;
     type AttributeClass = typeof Attribute;
@@ -5928,15 +5588,6 @@ export namespace Cogl {
 
         // Static methods
 
-        /**
-         * Compares two `CoglColor`s and checks if they are the same.
-         *
-         * This function can be passed to g_hash_table_new() as the `key_equal_func`
-         * parameter, when using `CoglColor`s as keys in a #GHashTable.
-         * @param v1 a #CoglColor
-         * @param v2 a #CoglColor
-         */
-        static equal(v1?: any | null, v2?: any | null): boolean;
         /**
          * Parses a string definition of a color, filling the #CoglColor.red,
          * #CoglColor.green, #CoglColor.blue and #CoglColor.alpha fields
@@ -5991,9 +5642,14 @@ export namespace Cogl {
          */
         copy(): Color;
         /**
-         * Frees the resources allocated by cogl_color_new() and cogl_color_copy()
+         * Compares two `CoglColor`s and checks if they are the same.
+         *
+         * This function can be passed to g_hash_table_new() as the `key_equal_func`
+         * parameter, when using `CoglColor`s as keys in a #GHashTable.
+         * @param v2 a #CoglColor
+         * @returns %TRUE if the two colors are the same.
          */
-        free(): void;
+        equal(v2: Color): boolean;
         /**
          * Retrieves the alpha channel of `color` as a fixed point
          * value between 0 and 1.0.
@@ -6208,14 +5864,6 @@ export namespace Cogl {
 
     type FrameInfoClass = typeof FrameInfo;
     type FramebufferClass = typeof Framebuffer;
-    abstract class FramebufferDriverConfig {
-        static $gtype: GObject.GType<FramebufferDriverConfig>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
-    }
-
     type IndexBufferClass = typeof IndexBuffer;
     type IndicesClass = typeof Indices;
     /**
@@ -6317,67 +5965,8 @@ export namespace Cogl {
     type MatrixStackClass = typeof MatrixStack;
     type OffscreenClass = typeof Offscreen;
     type OnscreenClass = typeof Onscreen;
-    /**
-     * A structure passed to callbacks registered using
-     * cogl_onscreen_add_dirty_callback(). The members describe a
-     * rectangle within the onscreen buffer that should be redrawn.
-     */
-    class OnscreenDirtyInfo {
-        static $gtype: GObject.GType<OnscreenDirtyInfo>;
-
-        // Fields
-
-        x: number;
-        y: number;
-        width: number;
-        height: number;
-
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                x: number;
-                y: number;
-                width: number;
-                height: number;
-            }>,
-        );
-        _init(...args: any[]): void;
-    }
-
-    type OnscreenTemplateClass = typeof OnscreenTemplate;
     type PipelineClass = typeof Pipeline;
     type PixelBufferClass = typeof PixelBuffer;
-    /**
-     * A struct for describing the state of a file descriptor that Cogl
-     * needs to block on. The `events` field contains a bitmask of
-     * `CoglPollFDEvent`s that should cause the application to wake
-     * up. After the application is woken up from idle it should pass back
-     * an array of `CoglPollFD`s to Cogl and update the `revents`
-     * mask to the actual events that occurred on the file descriptor.
-     *
-     * Note that CoglPollFD is deliberately exactly the same as struct
-     * pollfd on Unix so that it can simply be cast when calling poll.
-     */
-    class PollFD {
-        static $gtype: GObject.GType<PollFD>;
-
-        // Fields
-
-        fd: number;
-
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                fd: number;
-                events: unknown;
-                revents: unknown;
-            }>,
-        );
-        _init(...args: any[]): void;
-    }
-
     type PrimitiveClass = typeof Primitive;
     type ProgramClass = typeof Program;
     type RendererClass = typeof Renderer;
@@ -6389,36 +5978,6 @@ export namespace Cogl {
     type Texture2DClass = typeof Texture2D;
     type Texture2DSlicedClass = typeof Texture2DSliced;
     type TextureClass = typeof Texture;
-    /**
-     * Used to specify vertex information when calling cogl_polygon()
-     */
-    class TextureVertex {
-        static $gtype: GObject.GType<TextureVertex>;
-
-        // Fields
-
-        x: number;
-        y: number;
-        z: number;
-        tx: number;
-        ty: number;
-        color: Color;
-
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                x: number;
-                y: number;
-                z: number;
-                tx: number;
-                ty: number;
-                color: Color;
-            }>,
-        );
-        _init(...args: any[]): void;
-    }
-
     abstract class TimestampQuery {
         static $gtype: GObject.GType<TimestampQuery>;
 
@@ -6510,41 +6069,6 @@ export namespace Cogl {
 
     /**
      * A convenience vertex definition that can be used with
-     * cogl_primitive_new_p3t2c4().
-     */
-    class VertexP2T2C4 {
-        static $gtype: GObject.GType<VertexP2T2C4>;
-
-        // Fields
-
-        x: number;
-        y: number;
-        s: number;
-        t: number;
-        r: number;
-        g: number;
-        b: number;
-        a: number;
-
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                x: number;
-                y: number;
-                s: number;
-                t: number;
-                r: number;
-                g: number;
-                b: number;
-                a: number;
-            }>,
-        );
-        _init(...args: any[]): void;
-    }
-
-    /**
-     * A convenience vertex definition that can be used with
      * cogl_primitive_new_p3().
      */
     class VertexP3 {
@@ -6563,39 +6087,6 @@ export namespace Cogl {
                 x: number;
                 y: number;
                 z: number;
-            }>,
-        );
-        _init(...args: any[]): void;
-    }
-
-    /**
-     * A convenience vertex definition that can be used with
-     * cogl_primitive_new_p3c4().
-     */
-    class VertexP3C4 {
-        static $gtype: GObject.GType<VertexP3C4>;
-
-        // Fields
-
-        x: number;
-        y: number;
-        z: number;
-        r: number;
-        g: number;
-        b: number;
-        a: number;
-
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                x: number;
-                y: number;
-                z: number;
-                r: number;
-                g: number;
-                b: number;
-                a: number;
             }>,
         );
         _init(...args: any[]): void;
@@ -6625,43 +6116,6 @@ export namespace Cogl {
                 z: number;
                 s: number;
                 t: number;
-            }>,
-        );
-        _init(...args: any[]): void;
-    }
-
-    /**
-     * A convenience vertex definition that can be used with
-     * cogl_primitive_new_p3t2c4().
-     */
-    class VertexP3T2C4 {
-        static $gtype: GObject.GType<VertexP3T2C4>;
-
-        // Fields
-
-        x: number;
-        y: number;
-        z: number;
-        s: number;
-        t: number;
-        r: number;
-        g: number;
-        b: number;
-        a: number;
-
-        // Constructors
-
-        constructor(
-            properties?: Partial<{
-                x: number;
-                y: number;
-                z: number;
-                s: number;
-                t: number;
-                r: number;
-                g: number;
-                b: number;
-                a: number;
             }>,
         );
         _init(...args: any[]): void;
