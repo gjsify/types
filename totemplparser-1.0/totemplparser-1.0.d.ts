@@ -11,6 +11,7 @@
 import type Gio from '@girs/gio-2.0';
 import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
+import type GModule from '@girs/gmodule-2.0';
 
 export namespace TotemPlParser {
     /**
@@ -193,15 +194,9 @@ export namespace TotemPlParser {
      */
     const PARSER_FIELD_FILESIZE: string;
     /**
-     * Metadata field for an entry's primary genre. This is a string of
-     * the form 'Genre1' or 'Genre1/SubGenre1".
+     * Metadata field for an entry's genre.
      */
     const PARSER_FIELD_GENRE: string;
-    /**
-     * Metadata field for an entry's full genre. This is a concatenated
-     * string of the form 'Genre1/SubGenre1,Genre2/SubGenre2" etc.
-     */
-    const PARSER_FIELD_GENRES: string;
     /**
      * Metadata field for an entry's identifier. Its use is dependent on the format
      * of the playlist parsed, and its origin.
@@ -420,8 +415,25 @@ export namespace TotemPlParser {
 
         // Virtual methods
 
+        /**
+         * the generic signal handler for the #TotemPlParser::entry-parsed signal,
+         * which can be overridden by inheriting classes
+         * @param uri
+         * @param metadata
+         */
         vfunc_entry_parsed(uri: string, metadata: { [key: string]: any } | GLib.HashTable<any, any>): void;
+        /**
+         * the generic signal handler for the #TotemPlParser::playlist-ended signal,
+         * which can be overridden by inheriting classes
+         * @param uri
+         */
         vfunc_playlist_ended(uri: string): void;
+        /**
+         * the generic signal handler for the #TotemPlParser::playlist-started signal,
+         * which can be overridden by inheriting classes
+         * @param uri
+         * @param metadata
+         */
         vfunc_playlist_started(uri: string, metadata: { [key: string]: any } | GLib.HashTable<any, any>): void;
 
         // Methods

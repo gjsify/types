@@ -908,7 +908,7 @@ export namespace Graphene {
          * [CSS3 Transforms specification](http://dev.w3.org/csswg/css-transforms/);
          * specifically, the decomposition code is based on the equivalent code
          * published in "Graphics Gems II", edited by Jim Arvo, and
-         * [available online](http://web.archive.org/web/20150512160205/http://tog.acm.org/resources/GraphicsGems/gemsii/unmatrix.c).
+         * [available online](http://tog.acm.org/resources/GraphicsGems/gemsii/unmatrix.c).
          * @returns `true` if the matrix could be decomposed
          */
         decompose(): [boolean, Vec3, Vec3, Quaternion, Vec3, Vec4];
@@ -1594,12 +1594,6 @@ export namespace Graphene {
          * @returns the distance between the two points
          */
         distance(b: Point): [number, number, number];
-        /**
-         * Computes the squared distance between `a` and `b`.
-         * @param b a #graphene_point_t
-         * @returns the distance between the two points, squared
-         */
-        distance_squared(b: Point): number;
         /**
          * Checks if the two points `a` and `b` point to the same
          * coordinates.

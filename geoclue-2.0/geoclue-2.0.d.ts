@@ -11,6 +11,7 @@
 import type Gio from '@girs/gio-2.0';
 import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
+import type GModule from '@girs/gmodule-2.0';
 
 export namespace Geoclue {
     /**
@@ -413,8 +414,21 @@ export namespace Geoclue {
          * @param arg_new Argument to pass with the signal.
          */
         emit_location_updated(arg_old: string, arg_new: string): void;
+        /**
+         * Handler for the #GClueClient::handle-start signal.
+         * @param invocation
+         */
         vfunc_handle_start(invocation: Gio.DBusMethodInvocation): boolean;
+        /**
+         * Handler for the #GClueClient::handle-stop signal.
+         * @param invocation
+         */
         vfunc_handle_stop(invocation: Gio.DBusMethodInvocation): boolean;
+        /**
+         * Handler for the #GClueClient::location-updated signal.
+         * @param arg_old
+         * @param arg_new
+         */
         vfunc_location_updated(arg_old: string, arg_new: string): void;
         /**
          * Starts asynchronous initialization of the object implementing the
@@ -453,7 +467,7 @@ export namespace Geoclue {
          * in a thread, so if you want to support asynchronous initialization via
          * threads, just implement the #GAsyncInitable interface without overriding
          * any interface methods.
-         * @param io_priority the [I/O priority][io-priority] of the operation
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
@@ -515,7 +529,7 @@ export namespace Geoclue {
          * in a thread, so if you want to support asynchronous initialization via
          * threads, just implement the #GAsyncInitable interface without overriding
          * any interface methods.
-         * @param io_priority the [I/O priority][io-priority] of the operation
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
@@ -1215,8 +1229,21 @@ export namespace Geoclue {
          * @param arg_new Argument to pass with the signal.
          */
         emit_location_updated(arg_old: string, arg_new: string): void;
+        /**
+         * Handler for the #GClueClient::handle-start signal.
+         * @param invocation
+         */
         vfunc_handle_start(invocation: Gio.DBusMethodInvocation): boolean;
+        /**
+         * Handler for the #GClueClient::handle-stop signal.
+         * @param invocation
+         */
         vfunc_handle_stop(invocation: Gio.DBusMethodInvocation): boolean;
+        /**
+         * Handler for the #GClueClient::location-updated signal.
+         * @param arg_old
+         * @param arg_new
+         */
         vfunc_location_updated(arg_old: string, arg_new: string): void;
         /**
          * Gets the #GDBusObject that `interface_` belongs to, if any.
@@ -1856,7 +1883,7 @@ export namespace Geoclue {
          * in a thread, so if you want to support asynchronous initialization via
          * threads, just implement the #GAsyncInitable interface without overriding
          * any interface methods.
-         * @param io_priority the [I/O priority][io-priority] of the operation
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
@@ -1918,7 +1945,7 @@ export namespace Geoclue {
          * in a thread, so if you want to support asynchronous initialization via
          * threads, just implement the #GAsyncInitable interface without overriding
          * any interface methods.
-         * @param io_priority the [I/O priority][io-priority] of the operation
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
@@ -3247,9 +3274,27 @@ export namespace Geoclue {
          * @param client Parameter to return.
          */
         complete_get_client(invocation: Gio.DBusMethodInvocation, client: string): void;
+        /**
+         * Handler for the #GClueManager::handle-add-agent signal.
+         * @param invocation
+         * @param arg_id
+         */
         vfunc_handle_add_agent(invocation: Gio.DBusMethodInvocation, arg_id: string): boolean;
+        /**
+         * Handler for the #GClueManager::handle-create-client signal.
+         * @param invocation
+         */
         vfunc_handle_create_client(invocation: Gio.DBusMethodInvocation): boolean;
+        /**
+         * Handler for the #GClueManager::handle-delete-client signal.
+         * @param invocation
+         * @param arg_client
+         */
         vfunc_handle_delete_client(invocation: Gio.DBusMethodInvocation, arg_client: string): boolean;
+        /**
+         * Handler for the #GClueManager::handle-get-client signal.
+         * @param invocation
+         */
         vfunc_handle_get_client(invocation: Gio.DBusMethodInvocation): boolean;
         /**
          * Starts asynchronous initialization of the object implementing the
@@ -3288,7 +3333,7 @@ export namespace Geoclue {
          * in a thread, so if you want to support asynchronous initialization via
          * threads, just implement the #GAsyncInitable interface without overriding
          * any interface methods.
-         * @param io_priority the [I/O priority][io-priority] of the operation
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
@@ -3350,7 +3395,7 @@ export namespace Geoclue {
          * in a thread, so if you want to support asynchronous initialization via
          * threads, just implement the #GAsyncInitable interface without overriding
          * any interface methods.
-         * @param io_priority the [I/O priority][io-priority] of the operation
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
@@ -4078,9 +4123,27 @@ export namespace Geoclue {
          * @param client Parameter to return.
          */
         complete_get_client(invocation: Gio.DBusMethodInvocation, client: string): void;
+        /**
+         * Handler for the #GClueManager::handle-add-agent signal.
+         * @param invocation
+         * @param arg_id
+         */
         vfunc_handle_add_agent(invocation: Gio.DBusMethodInvocation, arg_id: string): boolean;
+        /**
+         * Handler for the #GClueManager::handle-create-client signal.
+         * @param invocation
+         */
         vfunc_handle_create_client(invocation: Gio.DBusMethodInvocation): boolean;
+        /**
+         * Handler for the #GClueManager::handle-delete-client signal.
+         * @param invocation
+         * @param arg_client
+         */
         vfunc_handle_delete_client(invocation: Gio.DBusMethodInvocation, arg_client: string): boolean;
+        /**
+         * Handler for the #GClueManager::handle-get-client signal.
+         * @param invocation
+         */
         vfunc_handle_get_client(invocation: Gio.DBusMethodInvocation): boolean;
         /**
          * Gets the #GDBusObject that `interface_` belongs to, if any.
@@ -4718,7 +4781,7 @@ export namespace Geoclue {
          * in a thread, so if you want to support asynchronous initialization via
          * threads, just implement the #GAsyncInitable interface without overriding
          * any interface methods.
-         * @param io_priority the [I/O priority][io-priority] of the operation
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
@@ -4778,7 +4841,7 @@ export namespace Geoclue {
          * in a thread, so if you want to support asynchronous initialization via
          * threads, just implement the #GAsyncInitable interface without overriding
          * any interface methods.
-         * @param io_priority the [I/O priority][io-priority] of the operation
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
@@ -5441,8 +5504,21 @@ export namespace Geoclue {
 
         // Virtual methods
 
+        /**
+         * Handler for the #GClueClient::handle-start signal.
+         * @param invocation
+         */
         vfunc_handle_start(invocation: Gio.DBusMethodInvocation): boolean;
+        /**
+         * Handler for the #GClueClient::handle-stop signal.
+         * @param invocation
+         */
         vfunc_handle_stop(invocation: Gio.DBusMethodInvocation): boolean;
+        /**
+         * Handler for the #GClueClient::location-updated signal.
+         * @param arg_old
+         * @param arg_new
+         */
         vfunc_location_updated(arg_old: string, arg_new: string): void;
     }
 
@@ -5744,9 +5820,27 @@ export namespace Geoclue {
 
         // Virtual methods
 
+        /**
+         * Handler for the #GClueManager::handle-add-agent signal.
+         * @param invocation
+         * @param arg_id
+         */
         vfunc_handle_add_agent(invocation: Gio.DBusMethodInvocation, arg_id: string): boolean;
+        /**
+         * Handler for the #GClueManager::handle-create-client signal.
+         * @param invocation
+         */
         vfunc_handle_create_client(invocation: Gio.DBusMethodInvocation): boolean;
+        /**
+         * Handler for the #GClueManager::handle-delete-client signal.
+         * @param invocation
+         * @param arg_client
+         */
         vfunc_handle_delete_client(invocation: Gio.DBusMethodInvocation, arg_client: string): boolean;
+        /**
+         * Handler for the #GClueManager::handle-get-client signal.
+         * @param invocation
+         */
         vfunc_handle_get_client(invocation: Gio.DBusMethodInvocation): boolean;
     }
 

@@ -19,8 +19,8 @@ import type Pango from '@girs/pango-1.0';
 import type HarfBuzz from '@girs/harfbuzz-0.0';
 import type freetype2 from '@girs/freetype2-2.0';
 import type Gio from '@girs/gio-2.0';
-import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 import type GModule from '@girs/gmodule-2.0';
+import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 import type Atk from '@girs/atk-1.0';
 
 export namespace Liferea {
@@ -54,18 +54,11 @@ export namespace Liferea {
     enum lifereaIcon {
         CON_UNREAD,
         CON_FLAG,
-        CON_AVAILABLE,
-        CON_AVAILABLE_OFFLINE,
         CON_UNAVAILABLE,
         CON_DEFAULT,
         CON_FOLDER,
         CON_VFOLDER,
         CON_NEWSBIN,
-        CON_EMPTY,
-        CON_EMPTY_OFFLINE,
-        CON_ONLINE,
-        CON_OFFLINE,
-        CON_ENCLOSURE,
         AX_ICONS,
     }
 
@@ -179,13 +172,6 @@ export namespace Liferea {
      * @returns GIcon
      */
     function icon_get(icon: lifereaIcon): Gio.Icon;
-    /**
-     * Triggers the creation of a suitable media player and loads a list of
-     * enclosures into it.
-     * @param parentWidget the parent widget for the media player
-     * @param enclosures a list of enclosure strings
-     */
-    function media_player_load(parentWidget: Gtk.Widget, enclosures: string[]): void;
     function node_foreach_child_full(ptr: nodePtr, func: any | null, params: number, user_data?: any | null): void;
     /**
      * Returns a new unused unique node id.
@@ -1307,7 +1293,6 @@ export namespace Liferea {
 
     type ItemListViewClass = typeof ItemListView;
     type ItemViewClass = typeof ItemView;
-    type MediaPlayerActivatableInterface = typeof MediaPlayerActivatable;
     type NetworkMonitorClass = typeof NetworkMonitor;
     abstract class NetworkMonitorPrivate {
         static $gtype: GObject.GType<NetworkMonitorPrivate>;
@@ -1462,7 +1447,6 @@ export namespace Liferea {
         expanded: boolean;
         sortColumn: nodeViewSortType;
         sortReversed: boolean;
-        loadItemLink: boolean;
         needsUpdate: boolean;
         needsRecount: boolean;
 
@@ -1650,44 +1634,6 @@ export namespace Liferea {
     }
 
     export const AuthActivatable: AuthActivatableNamespace;
-
-    module MediaPlayerActivatable {
-        // Constructor properties interface
-
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
-    }
-
-    export interface MediaPlayerActivatableNamespace {
-        $gtype: GObject.GType<MediaPlayerActivatable>;
-        prototype: MediaPlayerActivatable;
-    }
-    interface MediaPlayerActivatable extends GObject.Object {
-        // Methods
-
-        activate(): void;
-        deactivate(): void;
-        /**
-         * Triggers the creation of a suitable media player and loads a list of
-         * enclosures into it.
-         * @param parentWidget the parent widget for the media player
-         * @param enclosures a list of enclosures
-         */
-        load(parentWidget: Gtk.Widget, enclosures: string[]): void;
-
-        // Virtual methods
-
-        vfunc_activate(): void;
-        vfunc_deactivate(): void;
-        /**
-         * Triggers the creation of a suitable media player and loads a list of
-         * enclosures into it.
-         * @param parentWidget the parent widget for the media player
-         * @param enclosures a list of enclosures
-         */
-        vfunc_load(parentWidget: Gtk.Widget, enclosures: string[]): void;
-    }
-
-    export const MediaPlayerActivatable: MediaPlayerActivatableNamespace;
 
     module NodeSourceActivatable {
         // Constructor properties interface

@@ -1507,11 +1507,14 @@ export namespace GObject {
      *
      * If `closure` is a floating reference (see g_closure_sink()), this function
      * takes ownership of `closure`.
+     *
+     * This function cannot fail. If the given signal doesn’t exist, a critical
+     * warning is emitted.
      * @param instance the instance to connect to.
      * @param detailed_signal a string of the form "signal-name::detail".
      * @param closure the closure to connect.
      * @param after whether the handler should be called before or after the  default handler of the signal.
-     * @returns the handler ID (always greater than 0 for successful connections)
+     * @returns the handler ID (always greater than 0)
      */
     function signal_connect_closure(
         instance: Object,
@@ -1524,12 +1527,15 @@ export namespace GObject {
      *
      * If `closure` is a floating reference (see g_closure_sink()), this function
      * takes ownership of `closure`.
+     *
+     * This function cannot fail. If the given signal doesn’t exist, a critical
+     * warning is emitted.
      * @param instance the instance to connect to.
      * @param signal_id the id of the signal.
      * @param detail the detail.
      * @param closure the closure to connect.
      * @param after whether the handler should be called before or after the  default handler of the signal.
-     * @returns the handler ID (always greater than 0 for successful connections)
+     * @returns the handler ID (always greater than 0)
      */
     function signal_connect_closure_by_id(
         instance: Object,
@@ -1743,9 +1749,8 @@ export namespace GObject {
      * Validate a signal name. This can be useful for dynamically-generated signals
      * which need to be validated at run-time before actually trying to create them.
      *
-     * See [canonical parameter names][canonical-parameter-names] for details of
-     * the rules for valid names. The rules for signal names are the same as those
-     * for property names.
+     * See [func`GObject`.signal_new] for details of the rules for valid names.
+     * The rules for signal names are the same as those for property names.
      * @param name the canonical name of the signal
      * @returns %TRUE if @name is a valid signal name, %FALSE otherwise.
      */
@@ -3807,8 +3812,8 @@ export namespace GObject {
          * dynamically-generated properties which need to be validated at run-time
          * before actually trying to create them.
          *
-         * See [canonical parameter names][canonical-parameter-names] for details of
-         * the rules for valid names.
+         * See [canonical parameter names][class`GObject`.ParamSpec#parameter-names]
+         * for details of the rules for valid names.
          * @param name the canonical name of the property
          */
         static is_valid_name(name: string): boolean;
@@ -6299,7 +6304,7 @@ export namespace GObject {
          */
         copy(): ValueArray;
         /**
-         * Return a pointer to the value at `index_` containd in `value_array`.
+         * Return a pointer to the value at `index_` contained in `value_array`.
          * @param index_ index of the value of interest
          * @returns pointer to a value at @index_ in @value_array
          */

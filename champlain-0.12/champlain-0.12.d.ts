@@ -14,6 +14,7 @@ import type Clutter from '@girs/clutter-1.0';
 import type cairo from '@girs/cairo-1.0';
 import type Json from '@girs/json-1.0';
 import type Gio from '@girs/gio-2.0';
+import type GModule from '@girs/gmodule-2.0';
 import type GL from '@girs/gl-1.0';
 import type CoglPango from '@girs/coglpango-1.0';
 import type PangoCairo from '@girs/pangocairo-1.0';
@@ -259,6 +260,9 @@ export namespace Champlain {
 
         // Virtual methods
 
+        /**
+         * Class handler for the ::changed signal.
+         */
         vfunc_changed(): void;
 
         // Methods
@@ -1735,7 +1739,15 @@ export namespace Champlain {
          * be normally used by applications.
          */
         sort_depth_order(): void;
+        /**
+         * class handler for #ClutterContainer::actor-added
+         * @param actor
+         */
         vfunc_actor_added(actor: Clutter.Actor): void;
+        /**
+         * class handler for #ClutterContainer::actor-removed
+         * @param actor
+         */
         vfunc_actor_removed(actor: Clutter.Actor): void;
         /**
          * Adds a #ClutterActor to `container`. This function will emit the
@@ -3394,7 +3406,15 @@ export namespace Champlain {
          * be normally used by applications.
          */
         sort_depth_order(): void;
+        /**
+         * class handler for #ClutterContainer::actor-added
+         * @param actor
+         */
         vfunc_actor_added(actor: Clutter.Actor): void;
+        /**
+         * class handler for #ClutterContainer::actor-removed
+         * @param actor
+         */
         vfunc_actor_removed(actor: Clutter.Actor): void;
         /**
          * Adds a #ClutterActor to `container`. This function will emit the
@@ -4327,7 +4347,15 @@ export namespace Champlain {
          * be normally used by applications.
          */
         sort_depth_order(): void;
+        /**
+         * class handler for #ClutterContainer::actor-added
+         * @param actor
+         */
         vfunc_actor_added(actor: Clutter.Actor): void;
+        /**
+         * class handler for #ClutterContainer::actor-removed
+         * @param actor
+         */
         vfunc_actor_removed(actor: Clutter.Actor): void;
         /**
          * Adds a #ClutterActor to `container`. This function will emit the
@@ -5844,7 +5872,15 @@ export namespace Champlain {
          * be normally used by applications.
          */
         sort_depth_order(): void;
+        /**
+         * class handler for #ClutterContainer::actor-added
+         * @param actor
+         */
         vfunc_actor_added(actor: Clutter.Actor): void;
+        /**
+         * class handler for #ClutterContainer::actor-removed
+         * @param actor
+         */
         vfunc_actor_removed(actor: Clutter.Actor): void;
         /**
          * Adds a #ClutterActor to `container`. This function will emit the
@@ -8897,7 +8933,15 @@ export namespace Champlain {
          * be normally used by applications.
          */
         sort_depth_order(): void;
+        /**
+         * class handler for #ClutterContainer::actor-added
+         * @param actor
+         */
         vfunc_actor_added(actor: Clutter.Actor): void;
+        /**
+         * class handler for #ClutterContainer::actor-removed
+         * @param actor
+         */
         vfunc_actor_removed(actor: Clutter.Actor): void;
         /**
          * Adds a #ClutterActor to `container`. This function will emit the
@@ -9995,7 +10039,15 @@ export namespace Champlain {
          * be normally used by applications.
          */
         sort_depth_order(): void;
+        /**
+         * class handler for #ClutterContainer::actor-added
+         * @param actor
+         */
         vfunc_actor_added(actor: Clutter.Actor): void;
+        /**
+         * class handler for #ClutterContainer::actor-removed
+         * @param actor
+         */
         vfunc_actor_removed(actor: Clutter.Actor): void;
         /**
          * Adds a #ClutterActor to `container`. This function will emit the
@@ -11601,7 +11653,15 @@ export namespace Champlain {
          * be normally used by applications.
          */
         sort_depth_order(): void;
+        /**
+         * class handler for #ClutterContainer::actor-added
+         * @param actor
+         */
         vfunc_actor_added(actor: Clutter.Actor): void;
+        /**
+         * class handler for #ClutterContainer::actor-removed
+         * @param actor
+         */
         vfunc_actor_removed(actor: Clutter.Actor): void;
         /**
          * Adds a #ClutterActor to `container`. This function will emit the
@@ -12518,7 +12578,15 @@ export namespace Champlain {
          * be normally used by applications.
          */
         sort_depth_order(): void;
+        /**
+         * class handler for #ClutterContainer::actor-added
+         * @param actor
+         */
         vfunc_actor_added(actor: Clutter.Actor): void;
+        /**
+         * class handler for #ClutterContainer::actor-removed
+         * @param actor
+         */
         vfunc_actor_removed(actor: Clutter.Actor): void;
         /**
          * Adds a #ClutterActor to `container`. This function will emit the

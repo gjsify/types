@@ -12,6 +12,7 @@ import type Soup from '@girs/soup-3.0';
 import type Gio from '@girs/gio-2.0';
 import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
+import type GModule from '@girs/gmodule-2.0';
 import type Json from '@girs/json-1.0';
 
 export namespace GeocodeGlib {
@@ -1459,12 +1460,27 @@ export namespace GeocodeGlib {
 
         // Virtual methods
 
+        /**
+         * synchronous query function to override network `GET` requests.
+         * @param uri
+         * @param cancellable
+         */
         vfunc_query(uri: string, cancellable?: Gio.Cancellable | null): string;
+        /**
+         * asynchronous version of `query`.
+         * @param uri
+         * @param cancellable
+         * @param callback
+         */
         vfunc_query_async(
             uri: string,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): void;
+        /**
+         * asynchronous finish function for `query_async`.
+         * @param res
+         */
         vfunc_query_finish(res: Gio.AsyncResult): string;
 
         // Inherited methods

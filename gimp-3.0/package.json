@@ -1,0 +1,68 @@
+{
+    "name": "@girs/gimp-3.0",
+    "version": "2.99.19-4.0.0-beta.15",
+    "description": "GJS TypeScript type definitions for Gimp-3.0, generated from library version 2.99.19",
+    "type": "module",
+    "module": "gimp-3.0.js",
+    "main": "gimp-3.0.js",
+    "exports": {
+        "./ambient": {
+            "types": "./gimp-3.0-ambient.d.ts",
+            "import": "./gimp-3.0-ambient.js",
+            "default": "./gimp-3.0-ambient.js"
+        },
+        "./import": {
+            "types": "./gimp-3.0-import.d.ts",
+            "import": "./gimp-3.0-import.js",
+            "default": "./gimp-3.0-import.js"
+        },
+        "./gimp-3.0": {
+            "types": "./gimp-3.0.d.ts",
+            "import": "./gimp-3.0.js",
+            "default": "./gimp-3.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
+        }
+    },
+    "scripts": {
+        "test": "tsc --project tsconfig.json"
+    },
+    "dependencies": {
+        "@girs/babl-0.1": "workspace:^",
+        "@girs/cairo-1.0": "workspace:^",
+        "@girs/freetype2-2.0": "workspace:^",
+        "@girs/gdkpixbuf-2.0": "workspace:^",
+        "@girs/gegl-0.4": "workspace:^",
+        "@girs/gio-2.0": "workspace:^",
+        "@girs/gjs": "workspace:^",
+        "@girs/glib-2.0": "workspace:^",
+        "@girs/gmodule-2.0": "workspace:^",
+        "@girs/gobject-2.0": "workspace:^",
+        "@girs/harfbuzz-0.0": "workspace:^",
+        "@girs/pango-1.0": "workspace:^"
+    },
+    "devDependencies": {
+        "typescript": "*"
+    },
+    "keywords": [
+        "Gir",
+        "TypeScript",
+        "types",
+        "GObject-Introspection",
+        "GJS",
+        "Gimp-3.0"
+    ],
+    "author": "ts-for-gir",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/gjsify/ts-for-gir.git"
+    },
+    "bugs": {
+        "url": "https://github.com/gjsify/ts-for-gir/issues"
+    },
+    "homepage": "https://github.com/gjsify/types/tree/main/gimp-3.0#readme"
+}

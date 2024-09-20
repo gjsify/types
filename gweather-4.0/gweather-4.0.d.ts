@@ -11,6 +11,7 @@
 import type Gio from '@girs/gio-2.0';
 import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
+import type GModule from '@girs/gmodule-2.0';
 
 export namespace GWeather {
     /**
@@ -771,7 +772,7 @@ export namespace GWeather {
         get_temp_max(): string;
         get_temp_min(): string;
         get_temp_summary(): string;
-        get_upcoming_moonphases(phases: number): boolean;
+        get_upcoming_moonphases(phases: never): boolean;
         get_update(): string;
         get_value_apparent(unit: TemperatureUnit): [boolean, number];
         /**

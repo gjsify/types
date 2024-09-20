@@ -11,6 +11,7 @@
 import type Gio from '@girs/gio-2.0';
 import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
+import type GModule from '@girs/gmodule-2.0';
 
 export namespace Fep {
     /**
@@ -158,7 +159,17 @@ export namespace Fep {
         // Virtual methods
 
         vfunc_filter_event(event: GEvent): boolean;
+        /**
+         * class handler for #FepGClient::filter-key-event
+         * @param keyval
+         * @param modifiers
+         */
         vfunc_filter_key_event(keyval: number, modifiers: number): boolean;
+        /**
+         * class handler for #FepGClient::resized
+         * @param cols
+         * @param rows
+         */
         vfunc_resized(cols: number, rows: number): void;
 
         // Methods

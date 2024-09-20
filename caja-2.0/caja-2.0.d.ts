@@ -18,8 +18,8 @@ import type Pango from '@girs/pango-1.0';
 import type HarfBuzz from '@girs/harfbuzz-0.0';
 import type freetype2 from '@girs/freetype2-2.0';
 import type Gio from '@girs/gio-2.0';
-import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 import type GModule from '@girs/gmodule-2.0';
+import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 import type Atk from '@girs/atk-1.0';
 
 export namespace Caja {
@@ -321,6 +321,10 @@ export namespace Caja {
 
         // Virtual methods
 
+        /**
+         * Returns a #GList of #CajaColumn.
+         *   See caja_column_provider_get_columns() for details.
+         */
         vfunc_get_columns(): Column[];
     }
 
@@ -390,24 +394,105 @@ export namespace Caja {
 
         // Virtual methods
 
+        /**
+         * Adds an emblem to this file.
+         *   See caja_file_info_add_emblem() for details.
+         * @param emblem_name
+         */
         vfunc_add_emblem(emblem_name: string): void;
+        /**
+         * Sets the specified string file attribute value.
+         *   See caja_file_info_add_string_attribute() for details.
+         * @param attribute_name
+         * @param value
+         */
         vfunc_add_string_attribute(attribute_name: string, value: string): void;
+        /**
+         * Returns whether the file is writable.
+         *   See caja_file_info_can_write() for details.
+         */
         vfunc_can_write(): boolean;
+        /**
+         * Returns the file activation URI as a string.
+         *   See caja_file_info_get_activation_uri() for details.
+         */
         vfunc_get_activation_uri(): string;
+        /**
+         * Returns the file type.
+         *   See caja_file_info_get_file_type() for details.
+         */
         vfunc_get_file_type(): Gio.FileType;
+        /**
+         * Returns the file location as a #GFile.
+         *   See caja_file_info_get_location() for details.
+         */
         vfunc_get_location(): Gio.File;
+        /**
+         * Returns the file mime type as a string.
+         *   See caja_file_info_get_mime_type() for details.
+         */
         vfunc_get_mime_type(): string;
+        /**
+         * Returns the file mount as a #GMount.
+         *   See caja_file_info_get_mount() for details.
+         */
         vfunc_get_mount(): Gio.Mount | null;
+        /**
+         * Returns the file name as a string.
+         *   See caja_file_info_get_name() for details.
+         */
         vfunc_get_name(): string;
+        /**
+         * Returns the file parent #CajaFileInfo.
+         *   See caja_file_info_get_parent_info() for details.
+         */
         vfunc_get_parent_info(): FileInfo | null;
+        /**
+         * Returns the file parent location as a #GFile.
+         *   See caja_file_info_get_parent_location() for details.
+         */
         vfunc_get_parent_location(): Gio.File | null;
+        /**
+         * Returns the file parent URI as a string.
+         *   See caja_file_info_get_parent_uri() for details.
+         */
         vfunc_get_parent_uri(): string;
+        /**
+         * Returns the specified file attribute as a string.
+         *   See caja_file_info_get_string_attribute() for details.
+         * @param attribute_name
+         */
         vfunc_get_string_attribute(attribute_name: string): string;
+        /**
+         * Returns the file URI as a string.
+         *   See caja_file_info_get_uri() for details.
+         */
         vfunc_get_uri(): string;
+        /**
+         * Returns the file URI scheme as a string.
+         *   See caja_file_info_get_uri_scheme() for details.
+         */
         vfunc_get_uri_scheme(): string;
+        /**
+         * Invalidates information of the file provided by extensions.
+         *   See caja_file_info_invalidate_extension_info() for details.
+         */
         vfunc_invalidate_extension_info(): void;
+        /**
+         * Returns whether the file is a directory.
+         *   See caja_file_info_is_directory() for details.
+         */
         vfunc_is_directory(): boolean;
+        /**
+         * Returns whether the file info is gone.
+         *   See caja_file_info_is_gone() for details.
+         */
         vfunc_is_gone(): boolean;
+        /**
+         * Returns whether the file is the given mime type.
+         *   See caja_file_info_is_mime_type() for details.
+         * @param mime_Type
+         */
         vfunc_is_mime_type(mime_Type: string): boolean;
     }
 
@@ -438,7 +523,19 @@ export namespace Caja {
 
         // Virtual methods
 
+        /**
+         * Cancels a previous call to caja_info_provider_update_file_info().
+         *   See caja_info_provider_cancel_update() for details.
+         * @param handle
+         */
         vfunc_cancel_update(handle: OperationHandle): void;
+        /**
+         * Returns a #CajaOperationResult.
+         *   See caja_info_provider_update_file_info() for details.
+         * @param file
+         * @param update_complete
+         * @param handle
+         */
         vfunc_update_file_info(
             file: FileInfo,
             update_complete: GObject.Closure,
@@ -465,6 +562,12 @@ export namespace Caja {
 
         // Virtual methods
 
+        /**
+         * Returns a #GtkWidget.
+         *   See caja_location_widget_provider_get_widget() for details.
+         * @param uri the URI of the location
+         * @param window parent #GtkWindow
+         */
         vfunc_get_widget(uri: string, window: Gtk.Widget): Gtk.Widget;
     }
 
@@ -490,8 +593,26 @@ export namespace Caja {
 
         // Virtual methods
 
+        /**
+         * Returns a #GList of #CajaMenuItem.
+         *   See caja_menu_provider_get_background_items() for details.
+         * @param window the parent #GtkWidget window
+         * @param current_folder the folder for which background items are requested
+         */
         vfunc_get_background_items(window: Gtk.Widget, current_folder: FileInfo): MenuItem[];
+        /**
+         * Returns a #GList of #CajaMenuItem.
+         *   See caja_menu_provider_get_file_items() for details.
+         * @param window the parent #GtkWidget window
+         * @param files a list of #CajaFileInfo
+         */
         vfunc_get_file_items(window: Gtk.Widget, files: FileInfo[]): MenuItem[];
+        /**
+         * Returns a #GList of #CajaMenuItem.
+         *   See caja_menu_provider_get_toolbar_items() for details.
+         * @param window the parent #GtkWidget window
+         * @param current_folder the folder for which toolbar items are requested
+         */
         vfunc_get_toolbar_items(window: Gtk.Widget, current_folder: FileInfo): MenuItem[];
     }
 
@@ -602,6 +723,9 @@ export namespace Caja {
          * get the first visible file.
          */
         vfunc_get_first_visible_file(): string;
+        /**
+         * Return the item count of this widget view.
+         */
         vfunc_get_item_count(): number;
         /**
          * Set the location of this #CajaWidgetViewProvider.

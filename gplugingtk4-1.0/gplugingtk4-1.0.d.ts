@@ -20,8 +20,8 @@ import type Pango from '@girs/pango-1.0';
 import type HarfBuzz from '@girs/harfbuzz-0.0';
 import type freetype2 from '@girs/freetype2-2.0';
 import type Gio from '@girs/gio-2.0';
-import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 import type GModule from '@girs/gmodule-2.0';
+import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 import type GPlugin from '@girs/gplugin-1.0';
 
 export namespace GPluginGtk4 {
@@ -682,12 +682,24 @@ export namespace GPluginGtk4 {
         set_plugin(plugin?: GPlugin.Plugin | null): void;
 
         // Inherited properties
+        /**
+         * The name of the action with which this widget should be associated.
+         */
         get action_name(): string;
         set action_name(val: string);
+        /**
+         * The name of the action with which this widget should be associated.
+         */
         get actionName(): string;
         set actionName(val: string);
+        /**
+         * The target value of the actionable widget's action.
+         */
         get action_target(): GLib.Variant;
         set action_target(val: GLib.Variant);
+        /**
+         * The target value of the actionable widget's action.
+         */
         get actionTarget(): GLib.Variant;
         set actionTarget(val: GLib.Variant);
         /**
@@ -1696,7 +1708,7 @@ export namespace GPluginGtk4 {
          * This is a more convenient alternative to connecting directly to the
          * [signal`Gdk`.FrameClock::update] signal of `GdkFrameClock`, since you
          * don't have to worry about when a `GdkFrameClock` is assigned to a widget.
-         * @param callback function to call for updating animations
+         * @param callback function   to call for updating animations
          * @returns an id for the connection of this callback. Remove the callback   by passing the id returned from this function to   [method@Gtk.Widget.remove_tick_callback]
          */
         add_tick_callback(callback: Gtk.TickCallback): number;
@@ -2068,7 +2080,7 @@ export namespace GPluginGtk4 {
          * Returns the `cairo_font_options_t` of widget.
          *
          * Seee [method`Gtk`.Widget.set_font_options].
-         * @returns the `cairo_font_options_t`   of widget
+         * @returns the `cairo_font_options_t` of widget
          */
         get_font_options(): cairo.FontOptions | null;
         /**

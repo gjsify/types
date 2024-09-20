@@ -1,7 +1,7 @@
 {
     "name": "@girs/clutter-1.0",
-    "version": "1.26.5-4.0.0-beta.15",
-    "description": "GJS TypeScript type definitions for Clutter-1.0, generated from library version 1.26.5",
+    "version": "1.26.4-4.0.0-beta.15",
+    "description": "GJS TypeScript type definitions for Clutter-1.0, generated from library version 1.26.4",
     "type": "module",
     "module": "clutter-1.0.js",
     "main": "clutter-1.0.js",
@@ -40,6 +40,7 @@
         "@girs/gjs": "workspace:^",
         "@girs/gl-1.0": "workspace:^",
         "@girs/glib-2.0": "workspace:^",
+        "@girs/gmodule-2.0": "workspace:^",
         "@girs/gobject-2.0": "workspace:^",
         "@girs/harfbuzz-0.0": "workspace:^",
         "@girs/json-1.0": "workspace:^",

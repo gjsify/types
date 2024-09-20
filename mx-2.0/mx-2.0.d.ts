@@ -18,6 +18,7 @@ import type PangoFc from '@girs/pangofc-1.0';
 import type Pango from '@girs/pango-1.0';
 import type HarfBuzz from '@girs/harfbuzz-0.0';
 import type Gio from '@girs/gio-2.0';
+import type GModule from '@girs/gmodule-2.0';
 import type PangoCairo from '@girs/pangocairo-1.0';
 import type Json from '@girs/json-1.0';
 import type GL from '@girs/gl-1.0';
@@ -599,38 +600,38 @@ export namespace Mx {
         /**
          * If `action` is currently enabled.
          *
-         * If the action is disabled then calls to g_action_activate() and
-         * g_action_change_state() have no effect.
+         * If the action is disabled then calls to [method`Gio`.Action.activate] and
+         * [method`Gio`.Action.change_state] have no effect.
          */
         get enabled(): boolean;
         /**
          * The name of the action.  This is mostly meaningful for identifying
-         * the action once it has been added to a #GActionGroup. It is immutable.
+         * the action once it has been added to a [type`Gio`.ActionGroup]. It is immutable.
          */
         get name(): string;
         /**
          * The type of the parameter that must be given when activating the
-         * action. This is immutable, and may be %NULL if no parameter is needed when
+         * action. This is immutable, and may be `NULL` if no parameter is needed when
          * activating the action.
          */
         get parameter_type(): GLib.VariantType;
         /**
          * The type of the parameter that must be given when activating the
-         * action. This is immutable, and may be %NULL if no parameter is needed when
+         * action. This is immutable, and may be `NULL` if no parameter is needed when
          * activating the action.
          */
         get parameterType(): GLib.VariantType;
         /**
-         * The state of the action, or %NULL if the action is stateless.
+         * The state of the action, or `NULL` if the action is stateless.
          */
         get state(): GLib.Variant;
         /**
-         * The #GVariantType of the state that the action has, or %NULL if the
+         * The [type`GLib`.VariantType] of the state that the action has, or `NULL` if the
          * action is stateless. This is immutable.
          */
         get state_type(): GLib.VariantType;
         /**
-         * The #GVariantType of the state that the action has, or %NULL if the
+         * The [type`GLib`.VariantType] of the state that the action has, or `NULL` if the
          * action is stateless. This is immutable.
          */
         get stateType(): GLib.VariantType;
@@ -641,9 +642,9 @@ export namespace Mx {
          *
          * `parameter` must be the correct type of parameter for the action (ie:
          * the parameter type given at construction time).  If the parameter
-         * type was %NULL then `parameter` must also be %NULL.
+         * type was `NULL` then `parameter` must also be `NULL`.
          *
-         * If the `parameter` GVariant is floating, it is consumed.
+         * If the `parameter` [type`GLib`.Variant] is floating, it is consumed.
          * @param parameter the parameter to the activation
          */
         activate(parameter?: GLib.Variant | null): void;
@@ -651,13 +652,13 @@ export namespace Mx {
          * Request for the state of `action` to be changed to `value`.
          *
          * The action must be stateful and `value` must be of the correct type.
-         * See g_action_get_state_type().
+         * See [method`Gio`.Action.get_state_type].
          *
          * This call merely requests a change.  The action may refuse to change
          * its state or may change its state to something other than `value`.
-         * See g_action_get_state_hint().
+         * See [method`Gio`.Action.get_state_hint].
          *
-         * If the `value` GVariant is floating, it is consumed.
+         * If the `value` [type`GLib`.Variant] is floating, it is consumed.
          * @param value the new state
          */
         change_state(value: GLib.Variant): void;
@@ -673,23 +674,24 @@ export namespace Mx {
          * Queries the type of the parameter that must be given when activating
          * `action`.
          *
-         * When activating the action using g_action_activate(), the #GVariant
-         * given to that function must be of the type returned by this function.
+         * When activating the action using [method`Gio`.Action.activate], the
+         * [type`GLib`.Variant] given to that function must be of the type returned by
+         * this function.
          *
-         * In the case that this function returns %NULL, you must not give any
-         * #GVariant, but %NULL instead.
+         * In the case that this function returns `NULL`, you must not give any
+         * [type`GLib`.Variant], but `NULL` instead.
          * @returns the parameter type
          */
         get_parameter_type(): GLib.VariantType | null;
         /**
          * Queries the current state of `action`.
          *
-         * If the action is not stateful then %NULL will be returned.  If the
+         * If the action is not stateful then `NULL` will be returned.  If the
          * action is stateful then the type of the return value is the type
-         * given by g_action_get_state_type().
+         * given by [method`Gio`.Action.get_state_type].
          *
-         * The return value (if non-%NULL) should be freed with
-         * g_variant_unref() when it is no longer required.
+         * The return value (if non-`NULL`) should be freed with
+         * [method`GLib`.Variant.unref] when it is no longer required.
          * @returns the current state of the action
          */
         get_state(): GLib.Variant | null;
@@ -697,12 +699,12 @@ export namespace Mx {
          * Requests a hint about the valid range of values for the state of
          * `action`.
          *
-         * If %NULL is returned it either means that the action is not stateful
+         * If `NULL` is returned it either means that the action is not stateful
          * or that there is no hint about the valid range of values for the
          * state of the action.
          *
-         * If a #GVariant array is returned then each item in the array is a
-         * possible value for the state.  If a #GVariant pair (ie: two-tuple) is
+         * If a [type`GLib`.Variant] array is returned then each item in the array is a
+         * possible value for the state.  If a [type`GLib`.Variant] pair (ie: two-tuple) is
          * returned then the tuple specifies the inclusive lower and upper bound
          * of valid values for the state.
          *
@@ -710,8 +712,8 @@ export namespace Mx {
          * have a state value outside of the hinted range and setting a value
          * within the range may fail.
          *
-         * The return value (if non-%NULL) should be freed with
-         * g_variant_unref() when it is no longer required.
+         * The return value (if non-`NULL`) should be freed with
+         * [method`GLib`.Variant.unref] when it is no longer required.
          * @returns the state range hint
          */
         get_state_hint(): GLib.Variant | null;
@@ -719,15 +721,15 @@ export namespace Mx {
          * Queries the type of the state of `action`.
          *
          * If the action is stateful (e.g. created with
-         * g_simple_action_new_stateful()) then this function returns the
-         * #GVariantType of the state.  This is the type of the initial value
-         * given as the state. All calls to g_action_change_state() must give a
-         * #GVariant of this type and g_action_get_state() will return a
-         * #GVariant of the same type.
+         * [ctor`Gio`.SimpleAction.new_stateful]) then this function returns the
+         * [type`GLib`.VariantType] of the state.  This is the type of the initial value
+         * given as the state. All calls to [method`Gio`.Action.change_state] must give a
+         * [type`GLib`.Variant] of this type and [method`Gio`.Action.get_state] will return a
+         * [type`GLib`.Variant] of the same type.
          *
-         * If the action is not stateful (e.g. created with g_simple_action_new())
-         * then this function will return %NULL. In that case, g_action_get_state()
-         * will return %NULL and you must not call g_action_change_state().
+         * If the action is not stateful (e.g. created with [ctor`Gio`.SimpleAction.new])
+         * then this function will return `NULL`. In that case, [method`Gio`.Action.get_state]
+         * will return `NULL` and you must not call [method`Gio`.Action.change_state].
          * @returns the state type, if the action is stateful
          */
         get_state_type(): GLib.VariantType | null;
@@ -736,9 +738,9 @@ export namespace Mx {
          *
          * `parameter` must be the correct type of parameter for the action (ie:
          * the parameter type given at construction time).  If the parameter
-         * type was %NULL then `parameter` must also be %NULL.
+         * type was `NULL` then `parameter` must also be `NULL`.
          *
-         * If the `parameter` GVariant is floating, it is consumed.
+         * If the `parameter` [type`GLib`.Variant] is floating, it is consumed.
          * @param parameter the parameter to the activation
          */
         vfunc_activate(parameter?: GLib.Variant | null): void;
@@ -746,13 +748,13 @@ export namespace Mx {
          * Request for the state of `action` to be changed to `value`.
          *
          * The action must be stateful and `value` must be of the correct type.
-         * See g_action_get_state_type().
+         * See [method`Gio`.Action.get_state_type].
          *
          * This call merely requests a change.  The action may refuse to change
          * its state or may change its state to something other than `value`.
-         * See g_action_get_state_hint().
+         * See [method`Gio`.Action.get_state_hint].
          *
-         * If the `value` GVariant is floating, it is consumed.
+         * If the `value` [type`GLib`.Variant] is floating, it is consumed.
          * @param value the new state
          */
         vfunc_change_state(value: GLib.Variant): void;
@@ -771,34 +773,35 @@ export namespace Mx {
          * Queries the type of the parameter that must be given when activating
          * `action`.
          *
-         * When activating the action using g_action_activate(), the #GVariant
-         * given to that function must be of the type returned by this function.
+         * When activating the action using [method`Gio`.Action.activate], the
+         * [type`GLib`.Variant] given to that function must be of the type returned by
+         * this function.
          *
-         * In the case that this function returns %NULL, you must not give any
-         * #GVariant, but %NULL instead.
+         * In the case that this function returns `NULL`, you must not give any
+         * [type`GLib`.Variant], but `NULL` instead.
          */
         vfunc_get_parameter_type(): GLib.VariantType | null;
         /**
          * Queries the current state of `action`.
          *
-         * If the action is not stateful then %NULL will be returned.  If the
+         * If the action is not stateful then `NULL` will be returned.  If the
          * action is stateful then the type of the return value is the type
-         * given by g_action_get_state_type().
+         * given by [method`Gio`.Action.get_state_type].
          *
-         * The return value (if non-%NULL) should be freed with
-         * g_variant_unref() when it is no longer required.
+         * The return value (if non-`NULL`) should be freed with
+         * [method`GLib`.Variant.unref] when it is no longer required.
          */
         vfunc_get_state(): GLib.Variant | null;
         /**
          * Requests a hint about the valid range of values for the state of
          * `action`.
          *
-         * If %NULL is returned it either means that the action is not stateful
+         * If `NULL` is returned it either means that the action is not stateful
          * or that there is no hint about the valid range of values for the
          * state of the action.
          *
-         * If a #GVariant array is returned then each item in the array is a
-         * possible value for the state.  If a #GVariant pair (ie: two-tuple) is
+         * If a [type`GLib`.Variant] array is returned then each item in the array is a
+         * possible value for the state.  If a [type`GLib`.Variant] pair (ie: two-tuple) is
          * returned then the tuple specifies the inclusive lower and upper bound
          * of valid values for the state.
          *
@@ -806,23 +809,23 @@ export namespace Mx {
          * have a state value outside of the hinted range and setting a value
          * within the range may fail.
          *
-         * The return value (if non-%NULL) should be freed with
-         * g_variant_unref() when it is no longer required.
+         * The return value (if non-`NULL`) should be freed with
+         * [method`GLib`.Variant.unref] when it is no longer required.
          */
         vfunc_get_state_hint(): GLib.Variant | null;
         /**
          * Queries the type of the state of `action`.
          *
          * If the action is stateful (e.g. created with
-         * g_simple_action_new_stateful()) then this function returns the
-         * #GVariantType of the state.  This is the type of the initial value
-         * given as the state. All calls to g_action_change_state() must give a
-         * #GVariant of this type and g_action_get_state() will return a
-         * #GVariant of the same type.
+         * [ctor`Gio`.SimpleAction.new_stateful]) then this function returns the
+         * [type`GLib`.VariantType] of the state.  This is the type of the initial value
+         * given as the state. All calls to [method`Gio`.Action.change_state] must give a
+         * [type`GLib`.Variant] of this type and [method`Gio`.Action.get_state] will return a
+         * [type`GLib`.Variant] of the same type.
          *
-         * If the action is not stateful (e.g. created with g_simple_action_new())
-         * then this function will return %NULL. In that case, g_action_get_state()
-         * will return %NULL and you must not call g_action_change_state().
+         * If the action is not stateful (e.g. created with [ctor`Gio`.SimpleAction.new])
+         * then this function will return `NULL`. In that case, [method`Gio`.Action.get_state]
+         * will return `NULL` and you must not call [method`Gio`.Action.change_state].
          */
         vfunc_get_state_type(): GLib.VariantType | null;
         /**
@@ -1722,31 +1725,31 @@ export namespace Mx {
 
         // Inherited methods
         /**
-         * Emits the #GActionGroup::action-added signal on `action_group`.
+         * Emits the [signal`Gio`.ActionGroup::action-added] signal on `action_group`.
          *
-         * This function should only be called by #GActionGroup implementations.
+         * This function should only be called by [type`Gio`.ActionGroup] implementations.
          * @param action_name the name of an action in the group
          */
         action_added(action_name: string): void;
         /**
-         * Emits the #GActionGroup::action-enabled-changed signal on `action_group`.
+         * Emits the [signal`Gio`.ActionGroup::action-enabled-changed] signal on `action_group`.
          *
-         * This function should only be called by #GActionGroup implementations.
+         * This function should only be called by [type`Gio`.ActionGroup] implementations.
          * @param action_name the name of an action in the group
-         * @param enabled whether or not the action is now enabled
+         * @param enabled whether the action is now enabled
          */
         action_enabled_changed(action_name: string, enabled: boolean): void;
         /**
-         * Emits the #GActionGroup::action-removed signal on `action_group`.
+         * Emits the [signal`Gio`.ActionGroup::action-removed] signal on `action_group`.
          *
-         * This function should only be called by #GActionGroup implementations.
+         * This function should only be called by [type`Gio`.ActionGroup] implementations.
          * @param action_name the name of an action in the group
          */
         action_removed(action_name: string): void;
         /**
-         * Emits the #GActionGroup::action-state-changed signal on `action_group`.
+         * Emits the [signal`Gio`.ActionGroup::action-state-changed] signal on `action_group`.
          *
-         * This function should only be called by #GActionGroup implementations.
+         * This function should only be called by [type`Gio`.ActionGroup] implementations.
          * @param action_name the name of an action in the group
          * @param state the new state of the named action
          */
@@ -1756,37 +1759,35 @@ export namespace Mx {
          *
          * If the action is expecting a parameter, then the correct type of
          * parameter must be given as `parameter`.  If the action is expecting no
-         * parameters then `parameter` must be %NULL.  See
-         * g_action_group_get_action_parameter_type().
+         * parameters then `parameter` must be `NULL`.  See
+         * [method`Gio`.ActionGroup.get_action_parameter_type].
          *
-         * If the #GActionGroup implementation supports asynchronous remote
+         * If the [type`Gio`.ActionGroup] implementation supports asynchronous remote
          * activation over D-Bus, this call may return before the relevant
          * D-Bus traffic has been sent, or any replies have been received. In
          * order to block on such asynchronous activation calls,
-         * g_dbus_connection_flush() should be called prior to the code, which
+         * [method`Gio`.DBusConnection.flush] should be called prior to the code, which
          * depends on the result of the action activation. Without flushing
          * the D-Bus connection, there is no guarantee that the action would
          * have been activated.
          *
          * The following code which runs in a remote app instance, shows an
-         * example of a "quit" action being activated on the primary app
-         * instance over D-Bus. Here g_dbus_connection_flush() is called
-         * before `exit()`. Without g_dbus_connection_flush(), the "quit" action
+         * example of a ‘quit’ action being activated on the primary app
+         * instance over D-Bus. Here [method`Gio`.DBusConnection.flush] is called
+         * before `exit()`. Without `g_dbus_connection_flush()`, the ‘quit’ action
          * may fail to be activated on the primary instance.
          *
-         *
          * ```c
-         * // call "quit" action on primary instance
+         * // call ‘quit’ action on primary instance
          * g_action_group_activate_action (G_ACTION_GROUP (app), "quit", NULL);
          *
          * // make sure the action is activated now
-         * g_dbus_connection_flush (...);
+         * g_dbus_connection_flush (…);
          *
-         * g_debug ("application has been terminated. exiting.");
+         * g_debug ("Application has been terminated. Exiting.");
          *
          * exit (0);
          * ```
-         *
          * @param action_name the name of the action to activate
          * @param parameter parameters to the activation
          */
@@ -1796,11 +1797,11 @@ export namespace Mx {
          * changed to `value`.
          *
          * The action must be stateful and `value` must be of the correct type.
-         * See g_action_group_get_action_state_type().
+         * See [method`Gio`.ActionGroup.get_action_state_type].
          *
          * This call merely requests a change.  The action may refuse to change
          * its state or may change its state to something other than `value`.
-         * See g_action_group_get_action_state_hint().
+         * See [method`Gio`.ActionGroup.get_action_state_hint].
          *
          * If the `value` GVariant is floating, it is consumed.
          * @param action_name the name of the action to request the change on
@@ -1813,19 +1814,19 @@ export namespace Mx {
          * An action must be enabled in order to be activated or in order to
          * have its state changed from outside callers.
          * @param action_name the name of the action to query
-         * @returns whether or not the action is currently enabled
+         * @returns whether the action is currently enabled
          */
         get_action_enabled(action_name: string): boolean;
         /**
          * Queries the type of the parameter that must be given when activating
          * the named action within `action_group`.
          *
-         * When activating the action using g_action_group_activate_action(),
-         * the #GVariant given to that function must be of the type returned
+         * When activating the action using [method`Gio`.ActionGroup.activate_action],
+         * the [type`GLib`.Variant] given to that function must be of the type returned
          * by this function.
          *
-         * In the case that this function returns %NULL, you must not give any
-         * #GVariant, but %NULL instead.
+         * In the case that this function returns `NULL`, you must not give any
+         * [type`GLib`.Variant], but `NULL` instead.
          *
          * The parameter type of a particular action will never change but it is
          * possible for an action to be removed and for a new action to be added
@@ -1837,12 +1838,12 @@ export namespace Mx {
         /**
          * Queries the current state of the named action within `action_group`.
          *
-         * If the action is not stateful then %NULL will be returned.  If the
+         * If the action is not stateful then `NULL` will be returned.  If the
          * action is stateful then the type of the return value is the type
-         * given by g_action_group_get_action_state_type().
+         * given by [method`Gio`.ActionGroup.get_action_state_type].
          *
-         * The return value (if non-%NULL) should be freed with
-         * g_variant_unref() when it is no longer required.
+         * The return value (if non-`NULL`) should be freed with
+         * [method`GLib`.Variant.unref] when it is no longer required.
          * @param action_name the name of the action to query
          * @returns the current state of the action
          */
@@ -1851,12 +1852,12 @@ export namespace Mx {
          * Requests a hint about the valid range of values for the state of the
          * named action within `action_group`.
          *
-         * If %NULL is returned it either means that the action is not stateful
+         * If `NULL` is returned it either means that the action is not stateful
          * or that there is no hint about the valid range of values for the
          * state of the action.
          *
-         * If a #GVariant array is returned then each item in the array is a
-         * possible value for the state.  If a #GVariant pair (ie: two-tuple) is
+         * If a [type`GLib`.Variant] array is returned then each item in the array is a
+         * possible value for the state.  If a [type`GLib`.Variant] pair (ie: two-tuple) is
          * returned then the tuple specifies the inclusive lower and upper bound
          * of valid values for the state.
          *
@@ -1864,8 +1865,8 @@ export namespace Mx {
          * have a state value outside of the hinted range and setting a value
          * within the range may fail.
          *
-         * The return value (if non-%NULL) should be freed with
-         * g_variant_unref() when it is no longer required.
+         * The return value (if non-`NULL`) should be freed with
+         * [method`GLib`.Variant.unref] when it is no longer required.
          * @param action_name the name of the action to query
          * @returns the state range hint
          */
@@ -1875,14 +1876,14 @@ export namespace Mx {
          * `action_group`.
          *
          * If the action is stateful then this function returns the
-         * #GVariantType of the state.  All calls to
-         * g_action_group_change_action_state() must give a #GVariant of this
-         * type and g_action_group_get_action_state() will return a #GVariant
+         * [type`GLib`.VariantType] of the state.  All calls to
+         * [method`Gio`.ActionGroup.change_action_state] must give a [type`GLib`.Variant] of this
+         * type and [method`Gio`.ActionGroup.get_action_state] will return a [type`GLib`.Variant]
          * of the same type.
          *
-         * If the action is not stateful then this function will return %NULL.
-         * In that case, g_action_group_get_action_state() will return %NULL
-         * and you must not call g_action_group_change_action_state().
+         * If the action is not stateful then this function will return `NULL`.
+         * In that case, [method`Gio`.ActionGroup.get_action_state] will return `NULL`
+         * and you must not call [method`Gio`.ActionGroup.change_action_state].
          *
          * The state type of a particular action will never change but it is
          * possible for an action to be removed and for a new action to be added
@@ -1900,27 +1901,27 @@ export namespace Mx {
         /**
          * Lists the actions contained within `action_group`.
          *
-         * The caller is responsible for freeing the list with g_strfreev() when
+         * The caller is responsible for freeing the list with [func`GLib`.strfreev] when
          * it is no longer required.
-         * @returns a %NULL-terminated array of the names of the actions in the group
+         * @returns a `NULL`-terminated array   of the names of the actions in the group
          */
         list_actions(): string[];
         /**
          * Queries all aspects of the named action within an `action_group`.
          *
          * This function acquires the information available from
-         * g_action_group_has_action(), g_action_group_get_action_enabled(),
-         * g_action_group_get_action_parameter_type(),
-         * g_action_group_get_action_state_type(),
-         * g_action_group_get_action_state_hint() and
-         * g_action_group_get_action_state() with a single function call.
+         * [method`Gio`.ActionGroup.has_action], [method`Gio`.ActionGroup.get_action_enabled],
+         * [method`Gio`.ActionGroup.get_action_parameter_type],
+         * [method`Gio`.ActionGroup.get_action_state_type],
+         * [method`Gio`.ActionGroup.get_action_state_hint] and
+         * [method`Gio`.ActionGroup.get_action_state] with a single function call.
          *
          * This provides two main benefits.
          *
          * The first is the improvement in efficiency that comes with not having
          * to perform repeated lookups of the action in order to discover
          * different things about it.  The second is that implementing
-         * #GActionGroup can now be done by only overriding this one virtual
+         * [type`Gio`.ActionGroup] can now be done by only overriding this one virtual
          * function.
          *
          * The interface provides a default implementation of this function that
@@ -1929,12 +1930,12 @@ export namespace Mx {
          * those functions that call this function.  All implementations,
          * therefore, must override either this function or all of the others.
          *
-         * If the action exists, %TRUE is returned and any of the requested
-         * fields (as indicated by having a non-%NULL reference passed in) are
-         * filled.  If the action doesn't exist, %FALSE is returned and the
+         * If the action exists, `TRUE` is returned and any of the requested
+         * fields (as indicated by having a non-`NULL` reference passed in) are
+         * filled.  If the action doesn’t exist, `FALSE` is returned and the
          * fields may or may not have been modified.
          * @param action_name the name of an action in the group
-         * @returns %TRUE if the action exists, else %FALSE
+         * @returns `TRUE` if the action exists, else `FALSE`
          */
         query_action(
             action_name: string,
@@ -1947,31 +1948,31 @@ export namespace Mx {
             GLib.Variant | null,
         ];
         /**
-         * Emits the #GActionGroup::action-added signal on `action_group`.
+         * Emits the [signal`Gio`.ActionGroup::action-added] signal on `action_group`.
          *
-         * This function should only be called by #GActionGroup implementations.
+         * This function should only be called by [type`Gio`.ActionGroup] implementations.
          * @param action_name the name of an action in the group
          */
         vfunc_action_added(action_name: string): void;
         /**
-         * Emits the #GActionGroup::action-enabled-changed signal on `action_group`.
+         * Emits the [signal`Gio`.ActionGroup::action-enabled-changed] signal on `action_group`.
          *
-         * This function should only be called by #GActionGroup implementations.
+         * This function should only be called by [type`Gio`.ActionGroup] implementations.
          * @param action_name the name of an action in the group
-         * @param enabled whether or not the action is now enabled
+         * @param enabled whether the action is now enabled
          */
         vfunc_action_enabled_changed(action_name: string, enabled: boolean): void;
         /**
-         * Emits the #GActionGroup::action-removed signal on `action_group`.
+         * Emits the [signal`Gio`.ActionGroup::action-removed] signal on `action_group`.
          *
-         * This function should only be called by #GActionGroup implementations.
+         * This function should only be called by [type`Gio`.ActionGroup] implementations.
          * @param action_name the name of an action in the group
          */
         vfunc_action_removed(action_name: string): void;
         /**
-         * Emits the #GActionGroup::action-state-changed signal on `action_group`.
+         * Emits the [signal`Gio`.ActionGroup::action-state-changed] signal on `action_group`.
          *
-         * This function should only be called by #GActionGroup implementations.
+         * This function should only be called by [type`Gio`.ActionGroup] implementations.
          * @param action_name the name of an action in the group
          * @param state the new state of the named action
          */
@@ -1981,37 +1982,35 @@ export namespace Mx {
          *
          * If the action is expecting a parameter, then the correct type of
          * parameter must be given as `parameter`.  If the action is expecting no
-         * parameters then `parameter` must be %NULL.  See
-         * g_action_group_get_action_parameter_type().
+         * parameters then `parameter` must be `NULL`.  See
+         * [method`Gio`.ActionGroup.get_action_parameter_type].
          *
-         * If the #GActionGroup implementation supports asynchronous remote
+         * If the [type`Gio`.ActionGroup] implementation supports asynchronous remote
          * activation over D-Bus, this call may return before the relevant
          * D-Bus traffic has been sent, or any replies have been received. In
          * order to block on such asynchronous activation calls,
-         * g_dbus_connection_flush() should be called prior to the code, which
+         * [method`Gio`.DBusConnection.flush] should be called prior to the code, which
          * depends on the result of the action activation. Without flushing
          * the D-Bus connection, there is no guarantee that the action would
          * have been activated.
          *
          * The following code which runs in a remote app instance, shows an
-         * example of a "quit" action being activated on the primary app
-         * instance over D-Bus. Here g_dbus_connection_flush() is called
-         * before `exit()`. Without g_dbus_connection_flush(), the "quit" action
+         * example of a ‘quit’ action being activated on the primary app
+         * instance over D-Bus. Here [method`Gio`.DBusConnection.flush] is called
+         * before `exit()`. Without `g_dbus_connection_flush()`, the ‘quit’ action
          * may fail to be activated on the primary instance.
          *
-         *
          * ```c
-         * // call "quit" action on primary instance
+         * // call ‘quit’ action on primary instance
          * g_action_group_activate_action (G_ACTION_GROUP (app), "quit", NULL);
          *
          * // make sure the action is activated now
-         * g_dbus_connection_flush (...);
+         * g_dbus_connection_flush (…);
          *
-         * g_debug ("application has been terminated. exiting.");
+         * g_debug ("Application has been terminated. Exiting.");
          *
          * exit (0);
          * ```
-         *
          * @param action_name the name of the action to activate
          * @param parameter parameters to the activation
          */
@@ -2021,11 +2020,11 @@ export namespace Mx {
          * changed to `value`.
          *
          * The action must be stateful and `value` must be of the correct type.
-         * See g_action_group_get_action_state_type().
+         * See [method`Gio`.ActionGroup.get_action_state_type].
          *
          * This call merely requests a change.  The action may refuse to change
          * its state or may change its state to something other than `value`.
-         * See g_action_group_get_action_state_hint().
+         * See [method`Gio`.ActionGroup.get_action_state_hint].
          *
          * If the `value` GVariant is floating, it is consumed.
          * @param action_name the name of the action to request the change on
@@ -2044,12 +2043,12 @@ export namespace Mx {
          * Queries the type of the parameter that must be given when activating
          * the named action within `action_group`.
          *
-         * When activating the action using g_action_group_activate_action(),
-         * the #GVariant given to that function must be of the type returned
+         * When activating the action using [method`Gio`.ActionGroup.activate_action],
+         * the [type`GLib`.Variant] given to that function must be of the type returned
          * by this function.
          *
-         * In the case that this function returns %NULL, you must not give any
-         * #GVariant, but %NULL instead.
+         * In the case that this function returns `NULL`, you must not give any
+         * [type`GLib`.Variant], but `NULL` instead.
          *
          * The parameter type of a particular action will never change but it is
          * possible for an action to be removed and for a new action to be added
@@ -2060,12 +2059,12 @@ export namespace Mx {
         /**
          * Queries the current state of the named action within `action_group`.
          *
-         * If the action is not stateful then %NULL will be returned.  If the
+         * If the action is not stateful then `NULL` will be returned.  If the
          * action is stateful then the type of the return value is the type
-         * given by g_action_group_get_action_state_type().
+         * given by [method`Gio`.ActionGroup.get_action_state_type].
          *
-         * The return value (if non-%NULL) should be freed with
-         * g_variant_unref() when it is no longer required.
+         * The return value (if non-`NULL`) should be freed with
+         * [method`GLib`.Variant.unref] when it is no longer required.
          * @param action_name the name of the action to query
          */
         vfunc_get_action_state(action_name: string): GLib.Variant | null;
@@ -2073,12 +2072,12 @@ export namespace Mx {
          * Requests a hint about the valid range of values for the state of the
          * named action within `action_group`.
          *
-         * If %NULL is returned it either means that the action is not stateful
+         * If `NULL` is returned it either means that the action is not stateful
          * or that there is no hint about the valid range of values for the
          * state of the action.
          *
-         * If a #GVariant array is returned then each item in the array is a
-         * possible value for the state.  If a #GVariant pair (ie: two-tuple) is
+         * If a [type`GLib`.Variant] array is returned then each item in the array is a
+         * possible value for the state.  If a [type`GLib`.Variant] pair (ie: two-tuple) is
          * returned then the tuple specifies the inclusive lower and upper bound
          * of valid values for the state.
          *
@@ -2086,8 +2085,8 @@ export namespace Mx {
          * have a state value outside of the hinted range and setting a value
          * within the range may fail.
          *
-         * The return value (if non-%NULL) should be freed with
-         * g_variant_unref() when it is no longer required.
+         * The return value (if non-`NULL`) should be freed with
+         * [method`GLib`.Variant.unref] when it is no longer required.
          * @param action_name the name of the action to query
          */
         vfunc_get_action_state_hint(action_name: string): GLib.Variant | null;
@@ -2096,14 +2095,14 @@ export namespace Mx {
          * `action_group`.
          *
          * If the action is stateful then this function returns the
-         * #GVariantType of the state.  All calls to
-         * g_action_group_change_action_state() must give a #GVariant of this
-         * type and g_action_group_get_action_state() will return a #GVariant
+         * [type`GLib`.VariantType] of the state.  All calls to
+         * [method`Gio`.ActionGroup.change_action_state] must give a [type`GLib`.Variant] of this
+         * type and [method`Gio`.ActionGroup.get_action_state] will return a [type`GLib`.Variant]
          * of the same type.
          *
-         * If the action is not stateful then this function will return %NULL.
-         * In that case, g_action_group_get_action_state() will return %NULL
-         * and you must not call g_action_group_change_action_state().
+         * If the action is not stateful then this function will return `NULL`.
+         * In that case, [method`Gio`.ActionGroup.get_action_state] will return `NULL`
+         * and you must not call [method`Gio`.ActionGroup.change_action_state].
          *
          * The state type of a particular action will never change but it is
          * possible for an action to be removed and for a new action to be added
@@ -2119,7 +2118,7 @@ export namespace Mx {
         /**
          * Lists the actions contained within `action_group`.
          *
-         * The caller is responsible for freeing the list with g_strfreev() when
+         * The caller is responsible for freeing the list with [func`GLib`.strfreev] when
          * it is no longer required.
          */
         vfunc_list_actions(): string[];
@@ -2127,18 +2126,18 @@ export namespace Mx {
          * Queries all aspects of the named action within an `action_group`.
          *
          * This function acquires the information available from
-         * g_action_group_has_action(), g_action_group_get_action_enabled(),
-         * g_action_group_get_action_parameter_type(),
-         * g_action_group_get_action_state_type(),
-         * g_action_group_get_action_state_hint() and
-         * g_action_group_get_action_state() with a single function call.
+         * [method`Gio`.ActionGroup.has_action], [method`Gio`.ActionGroup.get_action_enabled],
+         * [method`Gio`.ActionGroup.get_action_parameter_type],
+         * [method`Gio`.ActionGroup.get_action_state_type],
+         * [method`Gio`.ActionGroup.get_action_state_hint] and
+         * [method`Gio`.ActionGroup.get_action_state] with a single function call.
          *
          * This provides two main benefits.
          *
          * The first is the improvement in efficiency that comes with not having
          * to perform repeated lookups of the action in order to discover
          * different things about it.  The second is that implementing
-         * #GActionGroup can now be done by only overriding this one virtual
+         * [type`Gio`.ActionGroup] can now be done by only overriding this one virtual
          * function.
          *
          * The interface provides a default implementation of this function that
@@ -2147,9 +2146,9 @@ export namespace Mx {
          * those functions that call this function.  All implementations,
          * therefore, must override either this function or all of the others.
          *
-         * If the action exists, %TRUE is returned and any of the requested
-         * fields (as indicated by having a non-%NULL reference passed in) are
-         * filled.  If the action doesn't exist, %FALSE is returned and the
+         * If the action exists, `TRUE` is returned and any of the requested
+         * fields (as indicated by having a non-`NULL` reference passed in) are
+         * filled.  If the action doesn’t exist, `FALSE` is returned and the
          * fields may or may not have been modified.
          * @param action_name the name of an action in the group
          */
@@ -2170,15 +2169,14 @@ export namespace Mx {
          * as `action` then the old action is dropped from the action map.
          *
          * The action map takes its own reference on `action`.
-         * @param action a #GAction
+         * @param action a [iface@Gio.Action]
          */
         add_action(action: Gio.Action): void;
         /**
-         * A convenience function for creating multiple #GSimpleAction instances
-         * and adding them to a #GActionMap.
+         * A convenience function for creating multiple [class`Gio`.SimpleAction]
+         * instances and adding them to a [iface`Gio`.ActionMap].
          *
-         * Each action is constructed as per one #GActionEntry.
-         *
+         * Each action is constructed as per one [struct`Gio`.ActionEntry].
          *
          * ```c
          * static void
@@ -2212,17 +2210,16 @@ export namespace Mx {
          *   return G_ACTION_GROUP (group);
          * }
          * ```
-         *
-         * @param entries a pointer to           the first item in an array of #GActionEntry structs
+         * @param entries a pointer to   the first item in an array of [struct@Gio.ActionEntry] structs
          * @param user_data the user data for signal connections
          */
         add_action_entries(entries: Gio.ActionEntry[], user_data?: any | null): void;
         /**
          * Looks up the action with the name `action_name` in `action_map`.
          *
-         * If no such action exists, returns %NULL.
+         * If no such action exists, returns `NULL`.
          * @param action_name the name of an action
-         * @returns a #GAction, or %NULL
+         * @returns a [iface@Gio.Action]
          */
         lookup_action(action_name: string): Gio.Action | null;
         /**
@@ -2233,9 +2230,8 @@ export namespace Mx {
          */
         remove_action(action_name: string): void;
         /**
-         * Remove actions from a #GActionMap. This is meant as the reverse of
-         * g_action_map_add_action_entries().
-         *
+         * Remove actions from a [iface`Gio`.ActionMap]. This is meant as the reverse of
+         * [method`Gio`.ActionMap.add_action_entries].
          *
          *
          * ```c
@@ -2256,8 +2252,7 @@ export namespace Mx {
          *   g_action_map_remove_action_entries (map, entries, G_N_ELEMENTS (entries));
          * }
          * ```
-         *
-         * @param entries a pointer to           the first item in an array of #GActionEntry structs
+         * @param entries a pointer to   the first item in an array of [struct@Gio.ActionEntry] structs
          */
         remove_action_entries(entries: Gio.ActionEntry[]): void;
         /**
@@ -2267,13 +2262,13 @@ export namespace Mx {
          * as `action` then the old action is dropped from the action map.
          *
          * The action map takes its own reference on `action`.
-         * @param action a #GAction
+         * @param action a [iface@Gio.Action]
          */
         vfunc_add_action(action: Gio.Action): void;
         /**
          * Looks up the action with the name `action_name` in `action_map`.
          *
-         * If no such action exists, returns %NULL.
+         * If no such action exists, returns `NULL`.
          * @param action_name the name of an action
          */
         vfunc_lookup_action(action_name: string): Gio.Action | null;
@@ -21898,7 +21893,15 @@ export namespace Mx {
          * be normally used by applications.
          */
         sort_depth_order(): void;
+        /**
+         * class handler for #ClutterContainer::actor-added
+         * @param actor
+         */
         vfunc_actor_added(actor: Clutter.Actor): void;
+        /**
+         * class handler for #ClutterContainer::actor-removed
+         * @param actor
+         */
         vfunc_actor_removed(actor: Clutter.Actor): void;
         /**
          * Adds a #ClutterActor to `container`. This function will emit the
@@ -25228,7 +25231,15 @@ export namespace Mx {
          * be normally used by applications.
          */
         sort_depth_order(): void;
+        /**
+         * class handler for #ClutterContainer::actor-added
+         * @param actor
+         */
         vfunc_actor_added(actor: Clutter.Actor): void;
+        /**
+         * class handler for #ClutterContainer::actor-removed
+         * @param actor
+         */
         vfunc_actor_removed(actor: Clutter.Actor): void;
         /**
          * Adds a #ClutterActor to `container`. This function will emit the

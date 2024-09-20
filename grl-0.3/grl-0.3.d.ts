@@ -2704,7 +2704,15 @@ export namespace Grl {
 
         // Virtual methods
 
+        /**
+         * browse through a list of media
+         * @param bs
+         */
         vfunc_browse(bs: SourceBrowseSpec): void;
+        /**
+         * cancel the current operation
+         * @param operation_id
+         */
         vfunc_cancel(operation_id: number): void;
         /**
          * Get the capabilities of `source` for `operation`.
@@ -2726,6 +2734,11 @@ export namespace Grl {
          * @param missing_keys an optional originally empty list
          */
         vfunc_may_resolve(media: Media, key_id: KeyID, missing_keys: KeyID[]): boolean;
+        /**
+         * Creates a #GrlMedia instance representing the media
+         * exposed by a certain URI.
+         * @param mfus
+         */
         vfunc_media_from_uri(mfus: SourceMediaFromUriSpec): void;
         /**
          * Starts emitting ::content-changed signals when `source` discovers changes in
@@ -2739,9 +2752,25 @@ export namespace Grl {
          * the content.
          */
         vfunc_notify_change_stop(): boolean;
+        /**
+         * query for a specific media
+         * @param qs
+         */
         vfunc_query(qs: SourceQuerySpec): void;
+        /**
+         * remove a media from a container
+         * @param rs
+         */
         vfunc_remove(rs: SourceRemoveSpec): void;
+        /**
+         * resolve the metadata of a given transfer object
+         * @param ms
+         */
         vfunc_resolve(ms: SourceResolveSpec): void;
+        /**
+         * search for media
+         * @param ss
+         */
         vfunc_search(ss: SourceSearchSpec): void;
         /**
          * Similar to grl_source_supported_keys(), but these keys
@@ -2749,13 +2778,25 @@ export namespace Grl {
          * to fetch them.
          */
         vfunc_slow_keys(): KeyID[];
+        /**
+         * store a media in a container
+         * @param ss
+         */
         vfunc_store(ss: SourceStoreSpec): void;
+        /**
+         * update metadata values for a given object in a
+         * permanent fashion
+         * @param sms
+         */
         vfunc_store_metadata(sms: SourceStoreMetadataSpec): void;
         /**
          * Get a list of #GrlKeyID, which describe a metadata types that this
          * source can fetch and store.
          */
         vfunc_supported_keys(): KeyID[];
+        /**
+         * the operations that can be called
+         */
         vfunc_supported_operations(): SupportedOps;
         /**
          * Tests whether `source` can instantiate a #GrlMedia object representing

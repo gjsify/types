@@ -2079,13 +2079,42 @@ export namespace Gegl {
 
         // Virtual methods
 
+        /**
+         * The _declare virtual method creates a metadata variable in the
+         * underlying data store. It implements gegl_metadata_store_declare(). A
+         * #GParamSpec is used to describe the variable.  If the metadata shadows an
+         * object property, shadow should be %TRUE, otherwise %FALSE.  It is acceptable
+         * for a subclass to provide additional variables which are implicitly
+         * declared, that is, they need not be declared using
+         * gegl_metadata_store_declare(), however the `pspec` method must still retrieve
+         * a #GParamSpec describing such variables.  This method MUST be provided by
+         * the subclass.
+         * @param pspec
+         * @param shadow
+         */
         vfunc__declare(pspec: GObject.ParamSpec, shadow: boolean): void;
+        /**
+         * Return a pointer to a #GValue with the value of the metadata
+         * variable or %NULL if not declared or the variable does not contain a valid
+         * value.  Implements gegl_metadata_store_get_value().  This method MUST be
+         * provided by the subclass.
+         * @param name
+         */
         vfunc__get_value(name: string): unknown;
         /**
          * Test whether the #GeglMetadataStore contains a value for the specified name.
          * @param name Metadata name
          */
         vfunc_has_value(name: string): boolean;
+        /**
+         * This method is called after a file loader or saver registers
+         * a #GeglMetadataMap and before any further processing takes place.  It is
+         * intended to allow an application to create further application-specific
+         * mappings using gegl_metadata_store_register().  #GeglMetadataStore provides
+         * a default method which emits the `::mapped` signal.
+         * @param file_module_name
+         * @param flags
+         */
         vfunc_register_hook(file_module_name: string, flags: number): void;
         /**
          * Set the specified metadata value. If `value` is %NULL the default value from

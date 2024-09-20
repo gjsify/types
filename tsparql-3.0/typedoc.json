@@ -1,0 +1,7 @@
+{
+    "entryPoints": ["./tsparql-3.0.d.ts"],
+    "readme": "./README.md",
+    "name": "Tsparql-3.0",
+    "tsconfig": "./tsconfig.json"
+}
+

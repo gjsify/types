@@ -12,6 +12,7 @@ import type Polkit from '@girs/polkit-1.0';
 import type Gio from '@girs/gio-2.0';
 import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
+import type GModule from '@girs/gmodule-2.0';
 
 export namespace PolkitAgent {
     /**
@@ -339,9 +340,21 @@ export namespace PolkitAgent {
     }
 
     module TextListener {
+        // Signal callback interfaces
+
+        interface TtyAttrsChanged {
+            (object: boolean): void;
+        }
+
         // Constructor properties interface
 
-        interface ConstructorProps extends Listener.ConstructorProps, Gio.Initable.ConstructorProps {}
+        interface ConstructorProps extends Listener.ConstructorProps, Gio.Initable.ConstructorProps {
+            delay: number;
+            use_alternate_buffer: boolean;
+            useAlternateBuffer: boolean;
+            use_color: boolean;
+            useColor: boolean;
+        }
     }
 
     /**
@@ -351,6 +364,14 @@ export namespace PolkitAgent {
     class TextListener extends Listener implements Gio.Initable {
         static $gtype: GObject.GType<TextListener>;
 
+        // Properties
+
+        get delay(): number;
+        get use_alternate_buffer(): boolean;
+        get useAlternateBuffer(): boolean;
+        get use_color(): boolean;
+        get useColor(): boolean;
+
         // Constructors
 
         constructor(properties?: Partial<TextListener.ConstructorProps>, ...args: any[]);
@@ -358,6 +379,15 @@ export namespace PolkitAgent {
         _init(...args: any[]): void;
 
         static ['new'](cancellable?: Gio.Cancellable | null): TextListener;
+
+        // Signals
+
+        connect(id: string, callback: (...args: any[]) => any): number;
+        connect_after(id: string, callback: (...args: any[]) => any): number;
+        emit(id: string, ...args: any[]): void;
+        connect(signal: 'tty-attrs-changed', callback: (_source: this, object: boolean) => void): number;
+        connect_after(signal: 'tty-attrs-changed', callback: (_source: this, object: boolean) => void): number;
+        emit(signal: 'tty-attrs-changed', object: boolean): void;
 
         // Inherited methods
         /**

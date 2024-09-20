@@ -248,6 +248,10 @@ export namespace SpiceClientGtk {
          */
         get_pixbuf(): GdkPixbuf.Pixbuf;
         /**
+         * Ungrab the keyboard.
+         */
+        keyboard_ungrab(): void;
+        /**
          * Ungrab the mouse.
          */
         mouse_ungrab(): void;

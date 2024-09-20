@@ -11,6 +11,7 @@
 import type Gio from '@girs/gio-2.0';
 import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
+import type GModule from '@girs/gmodule-2.0';
 
 export namespace Lfb {
     /**
@@ -92,7 +93,7 @@ export namespace Lfb {
      */
     function gdbus_feedback_override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
     /**
-     * Get the application id set via [func`Lfb`.set_app_id]().
+     * Get the application id set via [func`Lfb`.set_app_id].
      * @returns the application id.
      */
     function get_app_id(): string;
@@ -154,6 +155,7 @@ export namespace Lfb {
             event: string;
             feedback_profile: string;
             feedbackProfile: string;
+            important: boolean;
             state: EventState;
             timeout: number;
         }
@@ -171,9 +173,9 @@ export namespace Lfb {
      * One event can trigger multiple feedbacks at once (e.g. audio and
      * haptic feedback). This is determined by the feedback theme in
      * use (which is not under the appliction's control) and the active
-     * feedback profile (see [func`Lfb`.set_feedback_profile]().
+     * feedback profile (see [func`Lfb`.set_feedback_profile].
      *
-     * After initializing the library via [func`Lfb`.init]() feedback can be
+     * After initializing the library via [func`Lfb`.init] feedback can be
      * triggered like:
      *
      * ```c
@@ -186,7 +188,7 @@ export namespace Lfb {
      *
      * When all feedback for this event has ended the [signal`LfbEvent:`:feedback-ended]
      * signal is emitted. If you want to end the feedback ahead of time use
-     * [method`LfbEvent`.end_feedback]():
+     * [method`LfbEvent`.end_feedback]:
      *
      * ```c
      *   if (!lfb_event_end_feedback (event, &err))
@@ -194,7 +196,7 @@ export namespace Lfb {
      * ```
      *
      * Since these methods involve DBus calls there are asynchronous variants
-     * available, e.g. [method`LfbEvent`.trigger_feedback_async]():
+     * available, e.g. [method`LfbEvent`.trigger_feedback_async]:
      *
      * ```c
      *   static void
@@ -226,13 +228,13 @@ export namespace Lfb {
 
         /**
          * The application id to use for the event.
-         * [method`LfbEvent`.set_feedback_profile]() for details.
+         * [method`LfbEvent`.set_feedback_profile] for details.
          */
         get app_id(): string;
         set app_id(val: string);
         /**
          * The application id to use for the event.
-         * [method`LfbEvent`.set_feedback_profile]() for details.
+         * [method`LfbEvent`.set_feedback_profile] for details.
          */
         get appId(): string;
         set appId(val: string);
@@ -244,21 +246,27 @@ export namespace Lfb {
         get event(): string;
         /**
          * The name of the feedback profile to use for this event. See
-         * [method`LfbEvent`.set_feedback_profile]() for details.
+         * [method`LfbEvent`.set_feedback_profile] for details.
          */
         get feedback_profile(): string;
         set feedback_profile(val: string);
         /**
          * The name of the feedback profile to use for this event. See
-         * [method`LfbEvent`.set_feedback_profile]() for details.
+         * [method`LfbEvent`.set_feedback_profile] for details.
          */
         get feedbackProfile(): string;
         set feedbackProfile(val: string);
+        /**
+         * Whether to flag this event as important.
+         * [method`LfbEvent`.set_important] for details.
+         */
+        get important(): boolean;
+        set important(val: boolean);
         get state(): EventState;
         /**
          * How long feedback should be provided in seconds. The special value
          * %-1 uses the natural length of each feedback while %0 plays each feedback
-         * in a loop until ended explicitly via e.g. [method`LfbEvent`.end_feedback]().
+         * in a loop until ended explicitly via e.g. [method`LfbEvent`.end_feedback].
          */
         get timeout(): number;
         set timeout(val: number);
@@ -302,14 +310,14 @@ export namespace Lfb {
          *
          * This does not mean that the feedbacks finished right away. Connect to the
          * [`signal@`LfbEvent::feedback-ended] signal for this.
-         * @param res Result object passed to the callback of [method@LfbEvent.end_feedback_async]()
+         * @param res Result object passed to the callback of [method@LfbEvent.end_feedback_async]
          * @returns %TRUE if ending the feedbacks was successful
          */
         end_feedback_finish(res: Gio.AsyncResult): boolean;
         /**
          * Returns the app-id for this event. If no app-id has been explicitly
-         * set, %NULL is returned. The event uses the app-id returns by
-         * [func`lfb_get_app_id]` in this case.
+         * set, %NULL is returned. The event uses the app-id returned by
+         * [func`Lfb`.get_app_id] in this case.
          * @returns The set app-id for this event or %NULL.
          */
         get_app_id(): string;
@@ -329,6 +337,12 @@ export namespace Lfb {
          * @returns The set feedback profile to use for this event or %NULL.
          */
         get_feedback_profile(): string;
+        /**
+         * Gets the set feedback profile. If no profile was set it returns
+         * %NULL. The event uses the system wide profile in this case.
+         * @returns The set feedback profile to use for this event or %NULL.
+         */
+        get_important(): boolean;
         /**
          * Get the current event state (e.g. if triggered feeedback is
          * currently running.
@@ -363,13 +377,20 @@ export namespace Lfb {
          */
         set_feedback_profile(profile: string): void;
         /**
+         * Tells the feedback server that the sender deems this to be an
+         * important event. A feedback server might allow the sender to
+         * override the current feedback level when this is set.
+         * @param important Whether to flag this event as important
+         */
+        set_important(important: boolean): void;
+        /**
          * Tells the feedback server to end feedack after #timeout seconds.
          * The value -1 indicates to not set a timeout and let feedbacks stop
          * on their own while 0 indicates to loop all feedbacks endlessly.
-         * They must be stopped via [method`LfbEvent`.end_feedback]() in this case.
+         * They must be stopped via [method`LfbEvent`.end_feedback] in this case.
          *
          * It is an error to change the timeout after the feedback has been triggered
-         * via [method`LfbEvent`.trigger_feedback]().
+         * via [method`LfbEvent`.trigger_feedback].
          * @param timeout The timeout
          */
         set_timeout(timeout: number): void;
@@ -382,7 +403,7 @@ export namespace Lfb {
         /**
          * Tells the feedback server to provide proper feedback for the give
          * event to the user. This is the sync version of
-         * [method`LfbEvent`.trigger_feedback]().
+         * [method`LfbEvent`.trigger_feedback].
          * @param cancellable A #GCancellable to cancel the operation or %NULL.
          * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
          */
@@ -391,7 +412,7 @@ export namespace Lfb {
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
-         * Finish an async operation started by [method`LfbEvent`.trigger_feedback_async](). You
+         * Finish an async operation started by [method`LfbEvent`.trigger_feedback_async]. You
          * must call this function in the callback to free memory and receive any
          * errors which occurred.
          * @param res Result object passed to the callback of [method@LfbEvent.trigger_feedback_async]
@@ -553,7 +574,7 @@ export namespace Lfb {
          * in a thread, so if you want to support asynchronous initialization via
          * threads, just implement the #GAsyncInitable interface without overriding
          * any interface methods.
-         * @param io_priority the [I/O priority][io-priority] of the operation
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
@@ -615,7 +636,7 @@ export namespace Lfb {
          * in a thread, so if you want to support asynchronous initialization via
          * threads, just implement the #GAsyncInitable interface without overriding
          * any interface methods.
-         * @param io_priority the [I/O priority][io-priority] of the operation
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
@@ -845,8 +866,26 @@ export namespace Lfb {
          * @param arg_reason Argument to pass with the signal.
          */
         emit_feedback_ended(arg_id: number, arg_reason: number): void;
+        /**
+         * Handler for the #LfbGdbusFeedback::feedback-ended signal.
+         * @param arg_id
+         * @param arg_reason
+         */
         vfunc_feedback_ended(arg_id: number, arg_reason: number): void;
+        /**
+         * Handler for the #LfbGdbusFeedback::handle-end-feedback signal.
+         * @param invocation
+         * @param arg_id
+         */
         vfunc_handle_end_feedback(invocation: Gio.DBusMethodInvocation, arg_id: number): boolean;
+        /**
+         * Handler for the #LfbGdbusFeedback::handle-trigger-feedback signal.
+         * @param invocation
+         * @param arg_app_id
+         * @param arg_event
+         * @param arg_hints
+         * @param arg_timeout
+         */
         vfunc_handle_trigger_feedback(
             invocation: Gio.DBusMethodInvocation,
             arg_app_id: string,
@@ -1419,8 +1458,26 @@ export namespace Lfb {
          * @param arg_reason Argument to pass with the signal.
          */
         emit_feedback_ended(arg_id: number, arg_reason: number): void;
+        /**
+         * Handler for the #LfbGdbusFeedback::feedback-ended signal.
+         * @param arg_id
+         * @param arg_reason
+         */
         vfunc_feedback_ended(arg_id: number, arg_reason: number): void;
+        /**
+         * Handler for the #LfbGdbusFeedback::handle-end-feedback signal.
+         * @param invocation
+         * @param arg_id
+         */
         vfunc_handle_end_feedback(invocation: Gio.DBusMethodInvocation, arg_id: number): boolean;
+        /**
+         * Handler for the #LfbGdbusFeedback::handle-trigger-feedback signal.
+         * @param invocation
+         * @param arg_app_id
+         * @param arg_event
+         * @param arg_hints
+         * @param arg_timeout
+         */
         vfunc_handle_trigger_feedback(
             invocation: Gio.DBusMethodInvocation,
             arg_app_id: string,
@@ -1986,8 +2043,26 @@ export namespace Lfb {
 
         // Virtual methods
 
+        /**
+         * Handler for the #LfbGdbusFeedback::feedback-ended signal.
+         * @param arg_id
+         * @param arg_reason
+         */
         vfunc_feedback_ended(arg_id: number, arg_reason: number): void;
+        /**
+         * Handler for the #LfbGdbusFeedback::handle-end-feedback signal.
+         * @param invocation
+         * @param arg_id
+         */
         vfunc_handle_end_feedback(invocation: Gio.DBusMethodInvocation, arg_id: number): boolean;
+        /**
+         * Handler for the #LfbGdbusFeedback::handle-trigger-feedback signal.
+         * @param invocation
+         * @param arg_app_id
+         * @param arg_event
+         * @param arg_hints
+         * @param arg_timeout
+         */
         vfunc_handle_trigger_feedback(
             invocation: Gio.DBusMethodInvocation,
             arg_app_id: string,

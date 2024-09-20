@@ -15,6 +15,22 @@ export namespace GDesktopEnums {
      * GDesktopEnums-3.0
      */
 
+    export namespace AccentColor {
+        export const $gtype: GObject.GType<AccentColor>;
+    }
+
+    enum AccentColor {
+        BLUE,
+        TEAL,
+        GREEN,
+        YELLOW,
+        ORANGE,
+        RED,
+        PINK,
+        PURPLE,
+        SLATE,
+    }
+
     export namespace BackgroundShading {
         export const $gtype: GObject.GType<BackgroundShading>;
     }
@@ -106,6 +122,15 @@ export namespace GDesktopEnums {
         SLIGHT,
         MEDIUM,
         FULL,
+    }
+
+    export namespace FontRendering {
+        export const $gtype: GObject.GType<FontRendering>;
+    }
+
+    enum FontRendering {
+        AUTOMATIC,
+        MANUAL,
     }
 
     export namespace FontRgbaOrder {
@@ -259,6 +284,8 @@ export namespace GDesktopEnums {
         RIGHT,
         BACK,
         FORWARD,
+        SWITCH_MONITOR,
+        KEYBINDING,
     }
 
     export namespace TabletMapping {

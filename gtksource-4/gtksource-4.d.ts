@@ -18,8 +18,8 @@ import type Pango from '@girs/pango-1.0';
 import type HarfBuzz from '@girs/harfbuzz-0.0';
 import type freetype2 from '@girs/freetype2-2.0';
 import type Gio from '@girs/gio-2.0';
-import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 import type GModule from '@girs/gmodule-2.0';
+import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 import type Atk from '@girs/atk-1.0';
 
 export namespace GtkSource {
@@ -5481,7 +5481,7 @@ export namespace GtkSource {
          * @param category a string specifying the mark category, or %NULL.
          * @returns the previous #GtkSourceMark, or %NULL.
          */
-        prev(category?: string | null): Mark | null;
+        prev(category: string): Mark | null;
     }
 
     module MarkAttributes {

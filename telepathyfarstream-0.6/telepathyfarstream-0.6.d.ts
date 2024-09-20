@@ -12,8 +12,8 @@ import type TelepathyGLib from '@girs/telepathyglib-0.12';
 import type Gio from '@girs/gio-2.0';
 import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
-import type Gst from '@girs/gst-1.0';
 import type GModule from '@girs/gmodule-2.0';
+import type Gst from '@girs/gst-1.0';
 import type Farstream from '@girs/farstream-0.2';
 
 export namespace TelepathyFarstream {
@@ -168,7 +168,7 @@ export namespace TelepathyFarstream {
          * in a thread, so if you want to support asynchronous initialization via
          * threads, just implement the #GAsyncInitable interface without overriding
          * any interface methods.
-         * @param io_priority the [I/O priority][io-priority] of the operation
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
@@ -228,7 +228,7 @@ export namespace TelepathyFarstream {
          * in a thread, so if you want to support asynchronous initialization via
          * threads, just implement the #GAsyncInitable interface without overriding
          * any interface methods.
-         * @param io_priority the [I/O priority][io-priority] of the operation
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
@@ -657,7 +657,7 @@ export namespace TelepathyFarstream {
         }
 
         interface StartReceiving {
-            (handles: any, handle_count: number): boolean;
+            (handles: any | null, handle_count: number): boolean;
         }
 
         interface StartSending {
@@ -665,7 +665,7 @@ export namespace TelepathyFarstream {
         }
 
         interface StopReceiving {
-            (handles: any, handle_count: number): void;
+            (handles: any | null, handle_count: number): void;
         }
 
         interface StopSending {
@@ -754,25 +754,25 @@ export namespace TelepathyFarstream {
         ): void;
         connect(
             signal: 'start-receiving',
-            callback: (_source: this, handles: any, handle_count: number) => boolean,
+            callback: (_source: this, handles: any | null, handle_count: number) => boolean,
         ): number;
         connect_after(
             signal: 'start-receiving',
-            callback: (_source: this, handles: any, handle_count: number) => boolean,
+            callback: (_source: this, handles: any | null, handle_count: number) => boolean,
         ): number;
-        emit(signal: 'start-receiving', handles: any, handle_count: number): void;
+        emit(signal: 'start-receiving', handles: any | null, handle_count: number): void;
         connect(signal: 'start-sending', callback: (_source: this) => boolean): number;
         connect_after(signal: 'start-sending', callback: (_source: this) => boolean): number;
         emit(signal: 'start-sending'): void;
         connect(
             signal: 'stop-receiving',
-            callback: (_source: this, handles: any, handle_count: number) => void,
+            callback: (_source: this, handles: any | null, handle_count: number) => void,
         ): number;
         connect_after(
             signal: 'stop-receiving',
-            callback: (_source: this, handles: any, handle_count: number) => void,
+            callback: (_source: this, handles: any | null, handle_count: number) => void,
         ): number;
-        emit(signal: 'stop-receiving', handles: any, handle_count: number): void;
+        emit(signal: 'stop-receiving', handles: any | null, handle_count: number): void;
         connect(signal: 'stop-sending', callback: (_source: this) => void): number;
         connect_after(signal: 'stop-sending', callback: (_source: this) => void): number;
         emit(signal: 'stop-sending'): void;

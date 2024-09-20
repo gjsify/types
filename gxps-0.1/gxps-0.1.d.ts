@@ -12,6 +12,7 @@ import type cairo from '@girs/cairo-1.0';
 import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 import type Gio from '@girs/gio-2.0';
+import type GModule from '@girs/gmodule-2.0';
 
 export namespace GXPS {
     /**
@@ -154,7 +155,7 @@ export namespace GXPS {
          * Get the creating date.
          * @returns the creating date as a <type>time_t</type> or -1.
          */
-        get_created(): number;
+        get_created(): never;
         /**
          * Get the creator.
          * @returns a string containing the creator or %NULL
@@ -189,12 +190,12 @@ export namespace GXPS {
          * Get the date of the last printing.
          * @returns the date of the last printing as a <type>time_t</type> or -1.
          */
-        get_last_printed(): number;
+        get_last_printed(): never;
         /**
          * Get the last modification date.
          * @returns the modification date as a <type>time_t</type> or -1.
          */
-        get_modified(): number;
+        get_modified(): never;
         /**
          * Get the revision number.
          * @returns a string containing the revision number or %NULL

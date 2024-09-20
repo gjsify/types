@@ -266,11 +266,32 @@ export namespace GdkPixbuf {
     interface PixbufModuleFillVtableFunc {
         (module: PixbufModule): void;
     }
+    interface PixbufModuleIncrementLoadFunc {
+        (context: any | null, buf: Uint8Array | string): boolean;
+    }
+    interface PixbufModuleLoadAnimationFunc {
+        (f?: any | null): PixbufAnimation;
+    }
+    interface PixbufModuleLoadFunc {
+        (f?: any | null): Pixbuf;
+    }
+    interface PixbufModuleLoadXpmDataFunc {
+        (data: string[]): Pixbuf;
+    }
     interface PixbufModulePreparedFunc {
         (pixbuf: Pixbuf, anim: PixbufAnimation): void;
     }
+    interface PixbufModuleSaveFunc {
+        (f: any | null, pixbuf: Pixbuf, param_keys?: string[] | null, param_values?: string[] | null): boolean;
+    }
+    interface PixbufModuleSaveOptionSupportedFunc {
+        (option_key: string): boolean;
+    }
     interface PixbufModuleSizeFunc {
         (width: number, height: number): void;
+    }
+    interface PixbufModuleStopLoadFunc {
+        (context?: any | null): boolean;
     }
     interface PixbufModuleUpdatedFunc {
         (pixbuf: Pixbuf, x: number, y: number, width: number, height: number): void;
@@ -746,7 +767,7 @@ export namespace GdkPixbuf {
          * @param b Blue value to substitute.
          * @returns A newly-created pixbuf
          */
-        add_alpha(substitute_color: boolean, r: number, g: number, b: number): Pixbuf;
+        add_alpha(substitute_color: boolean, r: number, g: number, b: number): Pixbuf | null;
         /**
          * Takes an existing pixbuf and checks for the presence of an
          * associated "orientation" option.
@@ -1878,6 +1899,11 @@ export namespace GdkPixbuf {
          * @param start_time time when the animation starts playing
          */
         vfunc_get_iter(start_time?: GLib.TimeVal | null): PixbufAnimationIter;
+        /**
+         * fills `width` and `height` with the frame size of the animation.
+         * @param width
+         * @param height
+         */
         vfunc_get_size(width: number, height: number): void;
         /**
          * Retrieves a static image for the animation.
@@ -2475,7 +2501,7 @@ export namespace GdkPixbuf {
          * Creates a copy of `format`.
          * @returns the newly allocated copy of a `GdkPixbufFormat`. Use   gdk_pixbuf_format_free() to free the resources when done
          */
-        copy(): PixbufFormat;
+        copy(): PixbufFormat | null;
         /**
          * Frees the resources allocated when copying a `GdkPixbufFormat`
          * using gdk_pixbuf_format_copy()
@@ -2485,13 +2511,13 @@ export namespace GdkPixbuf {
          * Returns a description of the format.
          * @returns a description of the format.
          */
-        get_description(): string;
+        get_description(): string | null;
         /**
          * Returns the filename extensions typically used for files in the
          * given format.
          * @returns an array of   filename extensions
          */
-        get_extensions(): string[];
+        get_extensions(): string[] | null;
         /**
          * Returns information about the license of the image loader for the format.
          *
@@ -2499,17 +2525,17 @@ export namespace GdkPixbuf {
          * "LGPL", "GPL", "QPL", "GPL/QPL", or "other" to indicate some other license.
          * @returns a string describing the license of the pixbuf format
          */
-        get_license(): string;
+        get_license(): string | null;
         /**
          * Returns the mime types supported by the format.
          * @returns an array of mime types
          */
-        get_mime_types(): string[];
+        get_mime_types(): string[] | null;
         /**
          * Returns the name of the format.
          * @returns the name of the format.
          */
-        get_name(): string;
+        get_name(): string | null;
         /**
          * Returns whether this image format is disabled.
          *
@@ -2609,6 +2635,13 @@ export namespace GdkPixbuf {
         module_name: string;
         module_path: string;
         info: PixbufFormat;
+        load: PixbufModuleLoadFunc;
+        load_xpm_data: PixbufModuleLoadXpmDataFunc;
+        stop_load: PixbufModuleStopLoadFunc;
+        load_increment: PixbufModuleIncrementLoadFunc;
+        load_animation: PixbufModuleLoadAnimationFunc;
+        save: PixbufModuleSaveFunc;
+        is_save_option_supported: PixbufModuleSaveOptionSupportedFunc;
 
         // Constructors
 

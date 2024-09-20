@@ -12,6 +12,7 @@ import type TotemPlParser from '@girs/totemplparser-1.0';
 import type Gio from '@girs/gio-2.0';
 import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
+import type GModule from '@girs/gmodule-2.0';
 import type Gtk from '@girs/gtk-3.0';
 import type xlib from '@girs/xlib-2.0';
 import type Gdk from '@girs/gdk-3.0';
@@ -20,7 +21,6 @@ import type Pango from '@girs/pango-1.0';
 import type HarfBuzz from '@girs/harfbuzz-0.0';
 import type freetype2 from '@girs/freetype2-2.0';
 import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
-import type GModule from '@girs/gmodule-2.0';
 import type Atk from '@girs/atk-1.0';
 
 export namespace Totem {
@@ -179,6 +179,7 @@ export namespace Totem {
      * @returns a %NULL-terminated array of paths to plugin directories
      */
     function get_plugin_paths(): string[];
+    function get_resource(): Gio.Resource;
     /**
      * Put the given `icon_name` into `button,` and pack `button` into `header`
      * according to `pack_type`.
@@ -210,88 +211,6 @@ export namespace Totem {
      * @param parent the error dialogue's parent #GtkWindow
      */
     function interface_error_blocking(title: string, reason: string, parent: Gtk.Window): void;
-    /**
-     * Display a modal error dialogue like totem_interface_error(),
-     * but add a button which will open `uri` in a browser window.
-     * @param title the error title
-     * @param reason the error reason (secondary text)
-     * @param uri the URI to open
-     * @param label a label for the URI's button, or %NULL to use @uri as the label
-     * @param parent the error dialogue's parent #GtkWindow
-     */
-    function interface_error_with_link(
-        title: string,
-        reason: string,
-        uri: string,
-        label: string,
-        parent: Gtk.Window,
-    ): void;
-    function interface_get_full_path(name: string): string;
-    /**
-     * Load a #GtkBuilder UI file with the given name and return the #GtkBuilder instance for it. If loading the file fails, an error dialogue is shown.
-     * @param name the #GtkBuilder UI file to load
-     * @param fatal %TRUE if errors loading the file should be fatal, %FALSE otherwise
-     * @param parent the parent window to use when displaying error dialogues, or %NULL
-     * @param user_data the user data to pass to gtk_builder_connect_signals(), or %NULL
-     * @returns the loaded #GtkBuilder object, or %NULL
-     */
-    function interface_load(
-        name: string,
-        fatal: boolean,
-        parent?: Gtk.Window | null,
-        user_data?: any | null,
-    ): Gtk.Builder;
-    /**
-     * Load the image called `name` in the directory given by totem_interface_get_full_path() into a #GdkPixbuf.
-     * @param name the image file name
-     * @returns the loaded pixbuf, or %NULL
-     */
-    function interface_load_pixbuf(name: string): GdkPixbuf.Pixbuf;
-    /**
-     * Load a #GtkBuilder UI file from the given path and return the #GtkBuilder instance for it. If loading the file fails, an error dialogue is shown.
-     * @param filename the #GtkBuilder UI file path to load
-     * @param fatal %TRUE if errors loading the file should be fatal, %FALSE otherwise
-     * @param parent the parent window to use when displaying error dialogues, or %NULL
-     * @param user_data the user data to pass to gtk_builder_connect_signals(), or %NULL
-     * @returns the loaded #GtkBuilder object, or %NULL
-     */
-    function interface_load_with_full_path(
-        filename: string,
-        fatal: boolean,
-        parent?: Gtk.Window | null,
-        user_data?: any | null,
-    ): Gtk.Builder;
-    /**
-     * Finds the specified `file` by looking in the plugin paths
-     * listed by totem_get_plugin_paths() and then in the system
-     * Totem data directory.
-     *
-     * This should be used by plugins to find plugin-specific
-     * resource files.
-     * @param plugin_name the plugin name
-     * @param file the file to find
-     * @returns a newly-allocated absolute path for the file, or %NULL
-     */
-    function plugin_find_file(plugin_name: string, file: string): string;
-    /**
-     * Loads an interface file (GtkBuilder UI file) for a plugin, given its filename and
-     * assuming it's installed in the plugin's data directory.
-     *
-     * This should be used instead of attempting to load interfaces manually in plugins.
-     * @param plugin_name the plugin name
-     * @param name interface filename
-     * @param fatal %TRUE if it's a fatal error if the interface can't be loaded
-     * @param parent the interface's parent #GtkWindow
-     * @param user_data a pointer to be passed to each signal handler in the interface when they're called
-     * @returns the #GtkBuilder instance for the interface
-     */
-    function plugin_load_interface(
-        plugin_name: string,
-        name: string,
-        fatal: boolean,
-        parent?: Gtk.Window | null,
-        user_data?: any | null,
-    ): Gtk.Builder;
     function remote_command_quark(): GLib.Quark;
     function remote_setting_quark(): GLib.Quark;
     module Object {
@@ -461,15 +380,6 @@ export namespace Totem {
          */
         static get_supported_uri_schemes(): string[];
 
-        // Virtual methods
-
-        vfunc_file_closed(): void;
-        vfunc_file_has_played(mrl: string): void;
-        vfunc_file_opened(mrl: string): void;
-        vfunc_get_text_subtitle(mrl: string): string;
-        vfunc_get_user_agent(mrl: string): string;
-        vfunc_metadata_updated(artist: string, title: string, album: string, track_num: number): void;
-
         // Methods
 
         /**
@@ -478,7 +388,7 @@ export namespace Totem {
          * @param display_name the display name of the URI
          * @param play whether to play the added item
          */
-        add_to_playlist(uri: string, display_name: string, play: boolean): void;
+        add_to_playlist(uri: string, display_name: string | null, play: boolean): void;
         /**
          * Adds a local media file to the main view.
          * @param file a #GFile representing a media

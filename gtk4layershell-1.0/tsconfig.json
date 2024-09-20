@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    // General settings for code interpretation
+    "target": "ESNext",
+    "module": "NodeNext",
+    "lib": ["ESNext"],
+    "types": [],
+    "experimentalDecorators": true,
+    "moduleResolution": "NodeNext",
+    "noEmit": true,
+    "noEmitOnError": false,
+    "baseUrl": "./",
+    "rootDir": ".",
+    // General settings for code generation
+    "removeComments": false,
+    "inlineSourceMap": false,
+    "inlineSources": false,
+    "newLine": "LF"
+  },
+  "include": ["./gtk4layershell-1.0.d.ts"]
+}
+
+

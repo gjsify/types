@@ -11,6 +11,7 @@
 import type Gio from '@girs/gio-2.0';
 import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
+import type GModule from '@girs/gmodule-2.0';
 
 export namespace Arrow {
     /**
@@ -143,11 +144,13 @@ export namespace Arrow {
          */
         static CODE_GENERATION: number;
         /**
-         * Validation errors in expression given for code generation.
+         * Validation errors in expression given for code
+         * generation.
          */
         static EXPRESSION_VALIDATION: number;
         /**
-         * Execution error while evaluating the expression against a record batch.
+         * Execution error while evaluating the expression against a
+         * record batch.
          */
         static EXECUTION: number;
         /**
@@ -709,7 +712,8 @@ export namespace Arrow {
          */
         LARGE_STRING,
         /**
-         * 64bit offsets Variable-length bytes (no guarantee of UTF-8-ness).
+         * 64bit offsets Variable-length bytes (no guarantee of
+         * UTF-8-ness).
          */
         LARGE_BINARY,
         /**
@@ -1821,9 +1825,6 @@ export namespace Arrow {
                 Writable.ConstructorProps {}
     }
 
-    /**
-     * It wraps `arrow::io::BufferOutputStream`.
-     */
     class BufferOutputStream extends OutputStream implements File, Writable {
         static $gtype: GObject.GType<BufferOutputStream>;
 
@@ -2455,15 +2456,18 @@ export namespace Arrow {
          * @param schema The #GArrowSchema that specifies columns and their types.
          */
         add_schema(schema: Schema): void;
+        add_timestamp_parser(parser: TimestampParser): void;
         add_true_value(true_value: string): void;
         get_column_names(): string[] | null;
         get_column_types(): GLib.HashTable<string, DataType>;
         get_false_values(): string[] | null;
         get_null_values(): string[] | null;
+        get_timestamp_parsers(): TimestampParser[];
         get_true_values(): string[] | null;
         set_column_names(column_names: string[]): void;
         set_false_values(false_values: string[]): void;
         set_null_values(null_values: string[]): void;
+        set_timestamp_parsers(parsers: TimestampParser[]): void;
         set_true_values(true_values: string[]): void;
     }
 
@@ -4912,9 +4916,25 @@ export namespace Arrow {
 
         // Virtual methods
 
+        /**
+         * It must returns %TRUE only when the both data types equal, %FALSE
+         *   otherwise.
+         * @param other_data_type
+         */
         vfunc_equal(other_data_type: ExtensionDataType): boolean;
+        /**
+         * It must returns #GType for corresponding extension array
+         *   class.
+         */
         vfunc_get_array_gtype(): GObject.GType;
+        /**
+         * It must returns the name of this extension data type.
+         */
         vfunc_get_extension_name(): string;
+        /**
+         * It must returns a serialized data of this extension data type
+         *   to deserialize later.
+         */
         vfunc_serialize(): GLib.Bytes;
 
         // Methods
@@ -5635,9 +5655,6 @@ export namespace Arrow {
                 Writable.ConstructorProps {}
     }
 
-    /**
-     * It wraps `arrow::io::FileOutputStream`.
-     */
     class FileOutputStream extends OutputStream implements File, Writable {
         static $gtype: GObject.GType<FileOutputStream>;
 
@@ -6686,9 +6703,6 @@ export namespace Arrow {
         }
     }
 
-    /**
-     * It's an input stream for `GInputStream`.
-     */
     class GIOInputStream extends SeekableInputStream implements File, Readable {
         static $gtype: GObject.GType<GIOInputStream>;
 
@@ -7122,9 +7136,6 @@ export namespace Arrow {
         }
     }
 
-    /**
-     * It's an output stream for `GOutputStream`.
-     */
     class GIOOutputStream extends OutputStream implements File, Writable {
         static $gtype: GObject.GType<GIOOutputStream>;
 
@@ -7687,6 +7698,24 @@ export namespace Arrow {
 
         set_left_outputs(outputs: string[]): boolean;
         set_right_outputs(outputs: string[]): boolean;
+    }
+
+    module ISO8601TimestampParser {
+        // Constructor properties interface
+
+        interface ConstructorProps extends TimestampParser.ConstructorProps {}
+    }
+
+    class ISO8601TimestampParser extends TimestampParser {
+        static $gtype: GObject.GType<ISO8601TimestampParser>;
+
+        // Constructors
+
+        constructor(properties?: Partial<ISO8601TimestampParser.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        static ['new'](): ISO8601TimestampParser;
     }
 
     module IndexOptions {
@@ -11020,9 +11049,6 @@ export namespace Arrow {
         }
     }
 
-    /**
-     * It wraps `arrow::ipc::RecordBatchFileReader`.
-     */
     class RecordBatchFileReader extends GObject.Object {
         static $gtype: GObject.GType<RecordBatchFileReader>;
 
@@ -11054,9 +11080,6 @@ export namespace Arrow {
         interface ConstructorProps extends RecordBatchStreamWriter.ConstructorProps {}
     }
 
-    /**
-     * It wraps `arrow::ipc::RecordBatchFileWriter`.
-     */
     class RecordBatchFileWriter extends RecordBatchStreamWriter {
         static $gtype: GObject.GType<RecordBatchFileWriter>;
 
@@ -11147,9 +11170,6 @@ export namespace Arrow {
         interface ConstructorProps extends RecordBatchReader.ConstructorProps {}
     }
 
-    /**
-     * It wraps `arrow::ipc::RecordBatchStreamReader`.
-     */
     class RecordBatchStreamReader extends RecordBatchReader {
         static $gtype: GObject.GType<RecordBatchStreamReader>;
 
@@ -11171,9 +11191,6 @@ export namespace Arrow {
         interface ConstructorProps extends RecordBatchWriter.ConstructorProps {}
     }
 
-    /**
-     * It wraps `arrow::ipc::RecordBatchStreamWriter`.
-     */
     class RecordBatchStreamWriter extends RecordBatchWriter {
         static $gtype: GObject.GType<RecordBatchStreamWriter>;
 
@@ -11195,9 +11212,6 @@ export namespace Arrow {
         }
     }
 
-    /**
-     * It wraps `arrow::ipc::RecordBatchWriter`.
-     */
     class RecordBatchWriter extends GObject.Object {
         static $gtype: GObject.GType<RecordBatchWriter>;
 
@@ -12356,6 +12370,81 @@ export namespace Arrow {
         static ['new'](data_type: SparseUnionDataType, type_code: number, value: Scalar): SparseUnionScalar;
     }
 
+    module SplitPatternOptions {
+        // Constructor properties interface
+
+        interface ConstructorProps extends FunctionOptions.ConstructorProps {
+            max_splits: number;
+            maxSplits: number;
+            pattern: string;
+            reverse: boolean;
+        }
+    }
+
+    class SplitPatternOptions extends FunctionOptions {
+        static $gtype: GObject.GType<SplitPatternOptions>;
+
+        // Properties
+
+        get max_splits(): number;
+        set max_splits(val: number);
+        get maxSplits(): number;
+        set maxSplits(val: number);
+        /**
+         * The exact substring to split on.
+         */
+        get pattern(): string;
+        set pattern(val: string);
+        /**
+         * Start splitting from the end of the string (only relevant when
+         * max_splits != -1)
+         */
+        get reverse(): boolean;
+        set reverse(val: boolean);
+
+        // Constructors
+
+        constructor(properties?: Partial<SplitPatternOptions.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        static ['new'](): SplitPatternOptions;
+    }
+
+    module StrftimeOptions {
+        // Constructor properties interface
+
+        interface ConstructorProps extends FunctionOptions.ConstructorProps {
+            format: string;
+            locale: string;
+        }
+    }
+
+    class StrftimeOptions extends FunctionOptions {
+        static $gtype: GObject.GType<StrftimeOptions>;
+
+        // Properties
+
+        /**
+         * The desired format string.
+         */
+        get format(): string;
+        set format(val: string);
+        /**
+         * The desired output locale string.
+         */
+        get locale(): string;
+        set locale(val: string);
+
+        // Constructors
+
+        constructor(properties?: Partial<StrftimeOptions.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        static ['new'](): StrftimeOptions;
+    }
+
     module StringArray {
         // Constructor properties interface
 
@@ -12491,6 +12580,74 @@ export namespace Arrow {
         static ['new'](value: Buffer): StringScalar;
     }
 
+    module StrptimeOptions {
+        // Constructor properties interface
+
+        interface ConstructorProps extends FunctionOptions.ConstructorProps {
+            error_is_null: boolean;
+            errorIsNull: boolean;
+            format: string;
+            unit: TimeUnit;
+        }
+    }
+
+    class StrptimeOptions extends FunctionOptions {
+        static $gtype: GObject.GType<StrptimeOptions>;
+
+        // Properties
+
+        /**
+         * Return null on parsing errors if true or raise if false.
+         */
+        get error_is_null(): boolean;
+        set error_is_null(val: boolean);
+        /**
+         * Return null on parsing errors if true or raise if false.
+         */
+        get errorIsNull(): boolean;
+        set errorIsNull(val: boolean);
+        /**
+         * The desired format string.
+         */
+        get format(): string;
+        set format(val: string);
+        /**
+         * The desired time resolution.
+         */
+        get unit(): TimeUnit;
+        set unit(val: TimeUnit);
+
+        // Constructors
+
+        constructor(properties?: Partial<StrptimeOptions.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        static ['new'](): StrptimeOptions;
+    }
+
+    module StrptimeTimestampParser {
+        // Constructor properties interface
+
+        interface ConstructorProps extends TimestampParser.ConstructorProps {}
+    }
+
+    class StrptimeTimestampParser extends TimestampParser {
+        static $gtype: GObject.GType<StrptimeTimestampParser>;
+
+        // Constructors
+
+        constructor(properties?: Partial<StrptimeTimestampParser.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        static ['new'](format: string): StrptimeTimestampParser;
+
+        // Methods
+
+        get_format(): string;
+    }
+
     module StructArray {
         // Constructor properties interface
 
@@ -12570,6 +12727,36 @@ export namespace Arrow {
         get_field_index(name: string): number;
         get_fields(): Field[];
         get_n_fields(): number;
+    }
+
+    module StructFieldOptions {
+        // Constructor properties interface
+
+        interface ConstructorProps extends FunctionOptions.ConstructorProps {
+            field_ref: string;
+            fieldRef: string;
+        }
+    }
+
+    class StructFieldOptions extends FunctionOptions {
+        static $gtype: GObject.GType<StructFieldOptions>;
+
+        // Properties
+
+        get field_ref(): string;
+        get fieldRef(): string;
+
+        // Constructors
+
+        constructor(properties?: Partial<StructFieldOptions.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        static ['new'](): StructFieldOptions;
+
+        // Methods
+
+        set_field_ref(field_ref: string): void;
     }
 
     module StructScalar {
@@ -13165,11 +13352,25 @@ export namespace Arrow {
     module TimestampDataType {
         // Constructor properties interface
 
-        interface ConstructorProps extends TemporalDataType.ConstructorProps {}
+        interface ConstructorProps extends TemporalDataType.ConstructorProps {
+            time_zone: GLib.TimeZone;
+            timeZone: GLib.TimeZone;
+        }
     }
 
     class TimestampDataType extends TemporalDataType {
         static $gtype: GObject.GType<TimestampDataType>;
+
+        // Properties
+
+        /**
+         * The time zone of this data type.
+         */
+        get time_zone(): GLib.TimeZone;
+        /**
+         * The time zone of this data type.
+         */
+        get timeZone(): GLib.TimeZone;
 
         // Constructors
 
@@ -13177,11 +13378,37 @@ export namespace Arrow {
 
         _init(...args: any[]): void;
 
-        static ['new'](unit: TimeUnit): TimestampDataType;
+        static ['new'](unit: TimeUnit, time_zone?: GLib.TimeZone | null): TimestampDataType;
 
         // Methods
 
         get_unit(): TimeUnit;
+    }
+
+    module TimestampParser {
+        // Constructor properties interface
+
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+            parser: any;
+        }
+    }
+
+    abstract class TimestampParser extends GObject.Object {
+        static $gtype: GObject.GType<TimestampParser>;
+
+        // Properties
+
+        set parser(val: any);
+
+        // Constructors
+
+        constructor(properties?: Partial<TimestampParser.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        // Methods
+
+        get_kind(): string;
     }
 
     module TimestampScalar {
@@ -14016,6 +14243,7 @@ export namespace Arrow {
     type HalfFloatDataTypeClass = typeof HalfFloatDataType;
     type HalfFloatScalarClass = typeof HalfFloatScalar;
     type HashJoinNodeOptionsClass = typeof HashJoinNodeOptions;
+    type ISO8601TimestampParserClass = typeof ISO8601TimestampParser;
     type IndexOptionsClass = typeof IndexOptions;
     type InputStreamClass = typeof InputStream;
     type Int16ArrayBuilderClass = typeof Int16ArrayBuilder;
@@ -14123,14 +14351,19 @@ export namespace Arrow {
     type SparseUnionArrayClass = typeof SparseUnionArray;
     type SparseUnionDataTypeClass = typeof SparseUnionDataType;
     type SparseUnionScalarClass = typeof SparseUnionScalar;
+    type SplitPatternOptionsClass = typeof SplitPatternOptions;
+    type StrftimeOptionsClass = typeof StrftimeOptions;
     type StringArrayBuilderClass = typeof StringArrayBuilder;
     type StringArrayClass = typeof StringArray;
     type StringDataTypeClass = typeof StringDataType;
     type StringDictionaryArrayBuilderClass = typeof StringDictionaryArrayBuilder;
     type StringScalarClass = typeof StringScalar;
+    type StrptimeOptionsClass = typeof StrptimeOptions;
+    type StrptimeTimestampParserClass = typeof StrptimeTimestampParser;
     type StructArrayBuilderClass = typeof StructArrayBuilder;
     type StructArrayClass = typeof StructArray;
     type StructDataTypeClass = typeof StructDataType;
+    type StructFieldOptionsClass = typeof StructFieldOptions;
     type StructScalarClass = typeof StructScalar;
     type SubTreeFileSystemClass = typeof SubTreeFileSystem;
     type TableBatchReaderClass = typeof TableBatchReader;
@@ -14152,6 +14385,7 @@ export namespace Arrow {
     type TimestampArrayBuilderClass = typeof TimestampArrayBuilder;
     type TimestampArrayClass = typeof TimestampArray;
     type TimestampDataTypeClass = typeof TimestampDataType;
+    type TimestampParserClass = typeof TimestampParser;
     type TimestampScalarClass = typeof TimestampScalar;
     type UInt16ArrayBuilderClass = typeof UInt16ArrayBuilder;
     type UInt16ArrayClass = typeof UInt16Array;

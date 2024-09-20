@@ -17,8 +17,8 @@ import type Pango from '@girs/pango-1.0';
 import type HarfBuzz from '@girs/harfbuzz-0.0';
 import type freetype2 from '@girs/freetype2-2.0';
 import type Gio from '@girs/gio-2.0';
-import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 import type GModule from '@girs/gmodule-2.0';
+import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 
 export namespace GdkWayland {
     /**
@@ -297,7 +297,7 @@ export namespace GdkWayland {
         /**
          * Present `popup` after having processed the `GdkPopupLayout` rules.
          *
-         * If the popup was previously now showing, it will be showed,
+         * If the popup was previously not showing, it will be shown,
          * otherwise it will change position according to `layout`.
          *
          * After calling this function, the result should be handled in response
@@ -1043,6 +1043,11 @@ export namespace GdkWayland {
          * @returns %TRUE if the desktop environment supports tiled window states
          */
         supports_edge_constraints(): boolean;
+        /**
+         * Performs a title bar gesture.
+         * @param gesture a `GdkTitlebarGesture`
+         * @returns whether the gesture was performed
+         */
         titlebar_gesture(gesture: Gdk.TitlebarGesture): boolean;
         /**
          * Emits a short beep associated to `surface`.

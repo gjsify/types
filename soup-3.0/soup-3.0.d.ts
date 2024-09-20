@@ -11,6 +11,7 @@
 import type Gio from '@girs/gio-2.0';
 import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
+import type GModule from '@girs/gmodule-2.0';
 
 export namespace Soup {
     /**
@@ -2442,7 +2443,7 @@ export namespace Soup {
      *
      * (Although this type has only been publicly visible since libsoup 2.42, it has
      * always existed in the background, and you can use `g_type_from_name
-     * ("SoupAuthManager")` to get its [alias`GLib`.Type] in earlier releases.)
+     * ("SoupAuthManager")` to get its [alias`GObject`.Type] in earlier releases.)
      */
     class AuthManager extends GObject.Object implements SessionFeature {
         static $gtype: GObject.GType<AuthManager>;
@@ -8153,6 +8154,9 @@ export namespace Soup {
          * headers for the first part. A read of 0 bytes indicates the end of
          * the part; a new call to this function should be done at that point,
          * to obtain the next part.
+         *
+         * `error` will only be set if an error happens during a read, %NULL
+         * is a valid return value otherwise.
          * @param cancellable a #GCancellable
          * @returns a new #GInputStream, or   %NULL if there are no more parts
          */
@@ -8338,7 +8342,7 @@ export namespace Soup {
          * The asynchronous methods have a default fallback that uses threads to implement
          * asynchronicity, so they are optional for inheriting classes. However, if you
          * override one you must override all.
-         * @param io_priority the [I/O priority][io-priority] of the request
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
          * @param cancellable optional cancellable object
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -8424,7 +8428,7 @@ export namespace Soup {
          * Any outstanding I/O request with higher priority (lower numerical
          * value) will be executed before an outstanding request with lower
          * priority. Default priority is %G_PRIORITY_DEFAULT.
-         * @param io_priority the [I/O priority][io-priority] of the request
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -8471,7 +8475,7 @@ export namespace Soup {
          * The asynchronous methods have a default fallback that uses threads to implement
          * asynchronicity, so they are optional for inheriting classes. However, if you
          * override one you must override all.
-         * @param io_priority the [I/O priority][io-priority] of the request.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -8531,7 +8535,7 @@ export namespace Soup {
          * value) will be executed before an outstanding request with lower
          * priority. Default priority is %G_PRIORITY_DEFAULT.
          * @param count the number of bytes that will be read from the stream
-         * @param io_priority the [I/O priority][io-priority] of the request
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -8605,7 +8609,7 @@ export namespace Soup {
          * implement asynchronicity, so they are optional for inheriting classes.
          * However, if you override one, you must override all.
          * @param count the number of bytes that will be skipped from the stream
-         * @param io_priority the [I/O priority][io-priority] of the request
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -8632,7 +8636,7 @@ export namespace Soup {
          * The asynchronous methods have a default fallback that uses threads to implement
          * asynchronicity, so they are optional for inheriting classes. However, if you
          * override one you must override all.
-         * @param io_priority the [I/O priority][io-priority] of the request
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
          * @param cancellable optional cancellable object
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -8671,7 +8675,7 @@ export namespace Soup {
          * The asynchronous methods have a default fallback that uses threads to implement
          * asynchronicity, so they are optional for inheriting classes. However, if you
          * override one you must override all.
-         * @param io_priority the [I/O priority][io-priority] of the request.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -8730,7 +8734,7 @@ export namespace Soup {
          * implement asynchronicity, so they are optional for inheriting classes.
          * However, if you override one, you must override all.
          * @param count the number of bytes that will be skipped from the stream
-         * @param io_priority the [I/O priority][io-priority] of the request
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -10029,7 +10033,7 @@ export namespace Soup {
         abort(): void;
         /**
          * Adds `feature'`s functionality to `session`. You cannot add multiple
-         * features of the same [alias`GLib`.Type] to a session.
+         * features of the same [alias`GObject`.Type] to a session.
          *
          * See the main #SoupSession documentation for information on what
          * features are present in sessions by default.
@@ -10369,7 +10373,7 @@ export namespace Soup {
          */
         set_timeout(timeout: number): void;
         /**
-         * Set a [class`GIo`.TlsDatabase] to be used by `session` on new connections.
+         * Set a [class`Gio`.TlsDatabase] to be used by `session` on new connections.
          *
          * If `tls_database` is %NULL then certificate validation will always fail. See
          * [property`Session:`tls-database] for more information.
@@ -10475,6 +10479,8 @@ export namespace Soup {
             ioStream: Gio.IOStream;
             keepalive_interval: number;
             keepaliveInterval: number;
+            keepalive_pong_timeout: number;
+            keepalivePongTimeout: number;
             max_incoming_payload_size: number;
             maxIncomingPayloadSize: number;
             origin: string;
@@ -10554,6 +10560,26 @@ export namespace Soup {
          */
         get keepaliveInterval(): number;
         set keepaliveInterval(val: number);
+        /**
+         * Timeout in seconds for when the absence of a pong from a keepalive
+         * ping is assumed to be caused by a faulty connection. The WebSocket
+         * will be transitioned to a closed state when this happens.
+         *
+         * If set to 0 then the absence of pongs from keepalive pings is
+         * ignored.
+         */
+        get keepalive_pong_timeout(): number;
+        set keepalive_pong_timeout(val: number);
+        /**
+         * Timeout in seconds for when the absence of a pong from a keepalive
+         * ping is assumed to be caused by a faulty connection. The WebSocket
+         * will be transitioned to a closed state when this happens.
+         *
+         * If set to 0 then the absence of pongs from keepalive pings is
+         * ignored.
+         */
+        get keepalivePongTimeout(): number;
+        set keepalivePongTimeout(val: number);
         /**
          * The maximum payload size for incoming packets.
          *
@@ -10682,6 +10708,11 @@ export namespace Soup {
          */
         get_keepalive_interval(): number;
         /**
+         * Gets the keepalive pong timeout in seconds or 0 if disabled.
+         * @returns the keepalive pong timeout.
+         */
+        get_keepalive_pong_timeout(): number;
+        /**
          * Gets the maximum payload size allowed for incoming packets.
          * @returns the maximum payload size.
          */
@@ -10748,6 +10779,14 @@ export namespace Soup {
          * @param interval the interval to send a ping message or 0 to disable it
          */
         set_keepalive_interval(interval: number): void;
+        /**
+         * Set the timeout in seconds for when the absence of a pong from a keepalive
+         * ping is assumed to be caused by a faulty connection.
+         *
+         * If set to 0 then the absence of pongs from keepalive pings is ignored.
+         * @param pong_timeout the timeout in seconds
+         */
+        set_keepalive_pong_timeout(pong_timeout: number): void;
         /**
          * Sets the maximum payload size allowed for incoming packets.
          *

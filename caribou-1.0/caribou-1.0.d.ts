@@ -16,8 +16,8 @@ import type Pango from '@girs/pango-1.0';
 import type HarfBuzz from '@girs/harfbuzz-0.0';
 import type freetype2 from '@girs/freetype2-2.0';
 import type Gio from '@girs/gio-2.0';
-import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 import type GModule from '@girs/gmodule-2.0';
+import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 
 export namespace Caribou {
     /**
@@ -118,8 +118,8 @@ export namespace Caribou {
         vfunc_mod_unlatch(mask: number): void;
         vfunc_get_current_group(): [number, string, string];
         vfunc_get_groups(): [string[], string[]];
-        vfunc_register_key_func(keyval: number, func: KeyButtonCallback): void;
-        vfunc_register_button_func(button: number, func: KeyButtonCallback): void;
+        vfunc_register_key_func(keyval: number, func?: KeyButtonCallback | null): void;
+        vfunc_register_button_func(button: number, func?: KeyButtonCallback | null): void;
 
         // Methods
 
@@ -131,8 +131,8 @@ export namespace Caribou {
         mod_unlatch(mask: number): void;
         get_current_group(): [number, string, string];
         get_groups(): [string[], string[]];
-        register_key_func(keyval: number, func: KeyButtonCallback): void;
-        register_button_func(button: number, func: KeyButtonCallback): void;
+        register_key_func(keyval: number, func?: KeyButtonCallback | null): void;
+        register_button_func(button: number, func?: KeyButtonCallback | null): void;
         get_display(): Gdk.Display;
     }
 
@@ -2098,7 +2098,7 @@ export namespace Caribou {
 
         _init(...args: any[]): void;
 
-        static ['new'](name: string, text: string): KeyModel;
+        static ['new'](name: string, text?: string | null): KeyModel;
 
         // Signals
 
@@ -2131,7 +2131,7 @@ export namespace Caribou {
         get_show_subkeys(): boolean;
         get_name(): string;
         get_keyval(): number;
-        get_text(): string;
+        get_text(): string | null;
         get_label(): string;
         set_label(value: string): void;
 
@@ -3129,12 +3129,12 @@ export namespace Caribou {
         // Virtual methods
 
         vfunc_get_scan_children(): IScannableItem[];
-        vfunc_child_select(): IScannableItem;
+        vfunc_child_select(): IScannableItem | null;
 
         // Methods
 
         get_scan_children(): IScannableItem[];
-        child_select(): IScannableItem;
+        child_select(): IScannableItem | null;
 
         // Inherited properties
         get scan_grouping(): ScanGrouping;
@@ -3144,13 +3144,13 @@ export namespace Caribou {
 
         // Inherited methods
         scan_reset(): void;
-        child_step(cycles: number): IScannableItem;
+        child_step(cycles: number): IScannableItem | null;
         get_step_path(): IScannableItem[];
         get_selected_path(): IScannableItem[];
         get_scan_grouping(): ScanGrouping;
         set_scan_grouping(value: ScanGrouping): void;
         vfunc_scan_reset(): void;
-        vfunc_child_step(cycles: number): IScannableItem;
+        vfunc_child_step(cycles: number): IScannableItem | null;
         vfunc_get_step_path(): IScannableItem[];
         vfunc_get_selected_path(): IScannableItem[];
         vfunc_get_scan_grouping(): ScanGrouping;
@@ -3735,10 +3735,10 @@ export namespace Caribou {
 
         // Methods
 
-        child_select(): IScannableItem;
+        child_select(): IScannableItem | null;
         scan_reset(): void;
         get_scan_children(): IScannableItem[];
-        child_step(cycles: number): IScannableItem;
+        child_step(cycles: number): IScannableItem | null;
         get_step_path(): IScannableItem[];
         get_selected_path(): IScannableItem[];
         get_scan_grouping(): ScanGrouping;
@@ -3746,10 +3746,10 @@ export namespace Caribou {
 
         // Virtual methods
 
-        vfunc_child_select(): IScannableItem;
+        vfunc_child_select(): IScannableItem | null;
         vfunc_scan_reset(): void;
         vfunc_get_scan_children(): IScannableItem[];
-        vfunc_child_step(cycles: number): IScannableItem;
+        vfunc_child_step(cycles: number): IScannableItem | null;
         vfunc_get_step_path(): IScannableItem[];
         vfunc_get_selected_path(): IScannableItem[];
         vfunc_get_scan_grouping(): ScanGrouping;

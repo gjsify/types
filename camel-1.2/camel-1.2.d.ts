@@ -12,6 +12,7 @@ import type libxml2 from '@girs/libxml2-2.0';
 import type Gio from '@girs/gio-2.0';
 import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
+import type GModule from '@girs/gmodule-2.0';
 
 export namespace Camel {
     /**
@@ -1665,6 +1666,15 @@ export namespace Camel {
      * @returns Newly allocated string with only ASCII letters   describing the @host or %NULL, when the @host is %NULL. Free the returned   string with g_free() when no longer needed.
      */
     function host_idna_to_ascii(host?: string | null): string | null;
+    /**
+     * Check whether the hostname `host` is equal to or a subdomain of `domain`.
+     * Both `host` and `domain` are UTF-8 strings and can be IDNs (which will be
+     * punycode-encoded for comparison).
+     * @param host The hostname to check.
+     * @param domain The domain name.
+     * @returns %TRUE if @host is a subdomain of @domain (or the same domain).          %FALSE if not, or if either argument is null or in some way          invalid as a domain/hostname.
+     */
+    function hostname_utils_host_is_in_domain(host?: string | null, domain?: string | null): boolean;
     /**
      * Check whether the `hostname` requires conversion to ASCII. That can
      * be when a character in it can look like an ASCII character, even

@@ -11,6 +11,7 @@
 import type Gio from '@girs/gio-2.0';
 import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
+import type GModule from '@girs/gmodule-2.0';
 
 export namespace NM {
     /**
@@ -1081,6 +1082,51 @@ export namespace NM {
          *   error. Since: 1.46
          */
         DEVICE_HANDLER_FAILED,
+        /**
+         * The device is unmanaged because the device type
+         *   is unmanaged by default. Since: 1.48
+         */
+        UNMANAGED_BY_DEFAULT,
+        /**
+         * The device is unmanaged because it is an
+         *   external device and is unconfigured (down or without addresses). Since: 1.48
+         */
+        UNMANAGED_EXTERNAL_DOWN,
+        /**
+         * The device is unmanaged because the link is
+         *   not initialized by udev. Since: 1.48
+         */
+        UNMANAGED_LINK_NOT_INIT,
+        /**
+         * The device is unmanaged because NetworkManager is
+         *   quitting. Since: 1.48
+         */
+        UNMANAGED_QUITTING,
+        /**
+         * The device is unmanaged because networking is
+         *   disabled or the system is suspended. Since: 1.48
+         */
+        UNMANAGED_SLEEPING,
+        /**
+         * The device is unmanaged by user decision in
+         *   NetworkManager.conf ('unmanaged' in a [device*] section). Since: 1.48
+         */
+        UNMANAGED_USER_CONF,
+        /**
+         * The device is unmanaged by explicit user
+         *   decision (e.g. 'nmcli device set $DEV managed no'). Since: 1.48
+         */
+        UNMANAGED_USER_EXPLICIT,
+        /**
+         * The device is unmanaged by user decision
+         *   via settings plugin ('unmanaged-devices' for keyfile or 'NM_CONTROLLED=no' for ifcfg-rh).
+         *   Since: 1.48
+         */
+        UNMANAGED_USER_SETTINGS,
+        /**
+         * The device is unmanaged via udev rule. Since: 1.48
+         */
+        UNMANAGED_USER_UDEV,
     }
     /**
      * #NMDeviceType values indicate the type of hardware represented by a
@@ -1138,7 +1184,7 @@ export namespace NM {
          */
         INFINIBAND,
         /**
-         * a bond master interface
+         * a bond controller interface
          */
         BOND,
         /**
@@ -1150,7 +1196,7 @@ export namespace NM {
          */
         ADSL,
         /**
-         * a bridge master interface
+         * a bridge controller interface
          */
         BRIDGE,
         /**
@@ -1158,7 +1204,7 @@ export namespace NM {
          */
         GENERIC,
         /**
-         * a team master interface
+         * a team controller interface
          */
         TEAM,
         /**
@@ -1740,12 +1786,12 @@ export namespace NM {
     }
     /**
      * #NMSettingConnectionAutoconnectSlaves values indicate whether slave connections
-     * should be activated when master is activated.
+     * should be activated when controller is activated.
      */
 
     /**
      * #NMSettingConnectionAutoconnectSlaves values indicate whether slave connections
-     * should be activated when master is activated.
+     * should be activated when controller is activated.
      */
     export namespace SettingConnectionAutoconnectSlaves {
         export const $gtype: GObject.GType<SettingConnectionAutoconnectSlaves>;
@@ -1758,12 +1804,12 @@ export namespace NM {
         DEFAULT,
         /**
          * slaves are not brought up when
-         *   master is activated
+         *   controller is activated
          */
         NO,
         /**
          * slaves are brought up when
-         *   master is activated
+         *   controller is activated
          */
         YES,
     }
@@ -1793,6 +1839,33 @@ export namespace NM {
         OPPORTUNISTIC,
         /**
          * enable strict mode
+         */
+        YES,
+    }
+    /**
+     * #NMSettingConnectionDownOnPoweroff indicates whether the connection will be
+     * brought down before the system is powered off.
+     */
+
+    /**
+     * #NMSettingConnectionDownOnPoweroff indicates whether the connection will be
+     * brought down before the system is powered off.
+     */
+    export namespace SettingConnectionDownOnPoweroff {
+        export const $gtype: GObject.GType<SettingConnectionDownOnPoweroff>;
+    }
+
+    enum SettingConnectionDownOnPoweroff {
+        /**
+         * default value
+         */
+        DEFAULT,
+        /**
+         * disable down-on-poweroff
+         */
+        NO,
+        /**
+         * enable down-on-poweroff
          */
         YES,
     }
@@ -2224,6 +2297,35 @@ export namespace NM {
          * a TAP device
          */
         TAP,
+    }
+    /**
+     * Indicates the wireless channel width.
+     */
+
+    /**
+     * Indicates the wireless channel width.
+     */
+    export namespace SettingWirelessChannelWidth {
+        export const $gtype: GObject.GType<SettingWirelessChannelWidth>;
+    }
+
+    enum SettingWirelessChannelWidth {
+        /**
+         * automatically determine the width
+         */
+        AUTO,
+        /**
+         * use a 20MHz channel width
+         */
+        '20MHZ',
+        /**
+         * use a 40MHz channel width
+         */
+        '40MHZ',
+        /**
+         * use a 80MHz channel width
+         */
+        '80MHZ',
     }
     /**
      * These flags indicate whether wireless powersave must be enabled.
@@ -3479,6 +3581,7 @@ export namespace NM {
     const SETTING_802_1X_DOMAIN_SUFFIX_MATCH: string;
     const SETTING_802_1X_EAP: string;
     const SETTING_802_1X_IDENTITY: string;
+    const SETTING_802_1X_OPENSSL_CIPHERS: string;
     const SETTING_802_1X_OPTIONAL: string;
     const SETTING_802_1X_PAC_FILE: string;
     const SETTING_802_1X_PASSWORD: string;
@@ -3631,6 +3734,7 @@ export namespace NM {
     const SETTING_CONNECTION_AUTOCONNECT_SLAVES: string;
     const SETTING_CONNECTION_CONTROLLER: string;
     const SETTING_CONNECTION_DNS_OVER_TLS: string;
+    const SETTING_CONNECTION_DOWN_ON_POWEROFF: string;
     const SETTING_CONNECTION_GATEWAY_PING_TIMEOUT: string;
     const SETTING_CONNECTION_ID: string;
     const SETTING_CONNECTION_INTERFACE_NAME: string;
@@ -3817,6 +3921,8 @@ export namespace NM {
     const SETTING_IP6_CONFIG_MTU: string;
     const SETTING_IP6_CONFIG_RA_TIMEOUT: string;
     const SETTING_IP6_CONFIG_SETTING_NAME: string;
+    const SETTING_IP6_CONFIG_TEMP_PREFERRED_LIFETIME: string;
+    const SETTING_IP6_CONFIG_TEMP_VALID_LIFETIME: string;
     const SETTING_IP6_CONFIG_TOKEN: string;
     const SETTING_IP_CONFIG_ADDRESSES: string;
     const SETTING_IP_CONFIG_AUTO_ROUTE_EXT_GW: string;
@@ -3828,6 +3934,7 @@ export namespace NM {
     const SETTING_IP_CONFIG_DHCP_IAID: string;
     const SETTING_IP_CONFIG_DHCP_REJECT_SERVERS: string;
     const SETTING_IP_CONFIG_DHCP_SEND_HOSTNAME: string;
+    const SETTING_IP_CONFIG_DHCP_SEND_RELEASE: string;
     const SETTING_IP_CONFIG_DHCP_TIMEOUT: string;
     const SETTING_IP_CONFIG_DNS: string;
     const SETTING_IP_CONFIG_DNS_OPTIONS: string;
@@ -4078,6 +4185,7 @@ export namespace NM {
     const SETTING_WIRED_GENERATE_MAC_ADDRESS_MASK: string;
     const SETTING_WIRED_MAC_ADDRESS: string;
     const SETTING_WIRED_MAC_ADDRESS_BLACKLIST: string;
+    const SETTING_WIRED_MAC_ADDRESS_DENYLIST: string;
     const SETTING_WIRED_MTU: string;
     const SETTING_WIRED_PORT: string;
     const SETTING_WIRED_S390_NETTYPE: string;
@@ -4101,11 +4209,13 @@ export namespace NM {
     const SETTING_WIRELESS_BAND: string;
     const SETTING_WIRELESS_BSSID: string;
     const SETTING_WIRELESS_CHANNEL: string;
+    const SETTING_WIRELESS_CHANNEL_WIDTH: string;
     const SETTING_WIRELESS_CLONED_MAC_ADDRESS: string;
     const SETTING_WIRELESS_GENERATE_MAC_ADDRESS_MASK: string;
     const SETTING_WIRELESS_HIDDEN: string;
     const SETTING_WIRELESS_MAC_ADDRESS: string;
     const SETTING_WIRELESS_MAC_ADDRESS_BLACKLIST: string;
+    const SETTING_WIRELESS_MAC_ADDRESS_DENYLIST: string;
     const SETTING_WIRELESS_MAC_ADDRESS_RANDOMIZATION: string;
     const SETTING_WIRELESS_MODE: string;
     /**
@@ -4406,9 +4516,9 @@ export namespace NM {
      * If `virtual_type` is %NM_TYPE_SETTING_VLAN, then this checks if
      * `other_type` is a valid type for the parent of a VLAN.
      *
-     * If `virtual_type` is a "master" type (eg, %NM_TYPE_SETTING_BRIDGE),
-     * then this checks if `other_type` is a valid type for a slave of that
-     * master.
+     * If `virtual_type` is a "controller" type (eg, %NM_TYPE_SETTING_BRIDGE),
+     * then this checks if `other_type` is a valid type for a port of that
+     * controller.
      *
      * Note that even if this returns %TRUE it is not guaranteed that
      * <emphasis>every</emphasis> connection of type `other_type` is
@@ -5302,13 +5412,13 @@ export namespace NM {
          */
         NONE,
         /**
-         * the device is a master.
+         * the device is a controller.
          */
-        IS_MASTER,
+        IS_CONTROLLER,
         /**
-         * the device is a slave.
+         * the device is a port.
          */
-        IS_SLAVE,
+        IS_PORT,
         /**
          * layer2 is activated and ready.
          */
@@ -5322,10 +5432,10 @@ export namespace NM {
          */
         IP6_READY,
         /**
-         * The master has any slave devices attached.
-         *   This only makes sense if the device is a master.
+         * The controller has any port devices attached.
+         *   This only makes sense if the device is a controller.
          */
-        MASTER_HAS_SLAVES,
+        CONTROLLER_HAS_PORTS,
         /**
          * the lifetime
          *   of the activation is bound to the visibility of the connection profile,
@@ -5420,6 +5530,14 @@ export namespace NM {
          *   behavior. Since: 1.38.
          */
         NO_PRESERVE_EXTERNAL_PORTS,
+        /**
+         * during rollback,
+         *   by default changes to global DNS via D-BUS interface are preserved.
+         *   With this flag, the rollback reverts the global DNS changes made via D-Bus
+         *   interface. Global DNS defined in [global-dns] section of
+         *   NetworkManager.conf is not impacted by this flag. Since: 1.48.
+         */
+        TRACK_INTERNAL_GLOBAL_DNS,
     }
 
     export namespace ClientInstanceFlags {
@@ -6916,7 +7034,7 @@ export namespace NM {
          */
         get ip6Config(): IPConfig;
         /**
-         * The master device if one exists. Replaced by the "controller" property.
+         * The controller device if one exists. Replaced by the "controller" property.
          */
         get master(): Device;
         /**
@@ -7035,8 +7153,8 @@ export namespace NM {
          */
         get_ip6_config(): IPConfig;
         /**
-         * Gets the master #NMDevice of the connection.
-         * @returns the master #NMDevice of the #NMActiveConnection.
+         * Gets the controller #NMDevice of the connection.
+         * @returns the controller #NMDevice of the #NMActiveConnection.
          */
         get_master(): any | null;
         /**
@@ -8517,7 +8635,7 @@ export namespace NM {
          * in a thread, so if you want to support asynchronous initialization via
          * threads, just implement the #GAsyncInitable interface without overriding
          * any interface methods.
-         * @param io_priority the [I/O priority][io-priority] of the operation
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
@@ -8577,7 +8695,7 @@ export namespace NM {
          * in a thread, so if you want to support asynchronous initialization via
          * threads, just implement the #GAsyncInitable interface without overriding
          * any interface methods.
-         * @param io_priority the [I/O priority][io-priority] of the operation
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
@@ -9674,7 +9792,7 @@ export namespace NM {
         get_physical_port_id(): string;
         /**
          * Gets the devices currently set as port of `device`.
-         * @returns the #GPtrArray containing #NMDevices that are slaves of @device. This is the internal copy used by the device and must not be modified.
+         * @returns the #GPtrArray containing #NMDevices that are ports of @device. This is the internal copy used by the device and must not be modified.
          */
         get_ports(): Device[];
         /**
@@ -9850,7 +9968,7 @@ export namespace NM {
          */
         get carrier(): boolean;
         /**
-         * The devices enslaved to the bond device.
+         * The devices attached as port to the bond device.
          */
         get slaves(): Device[];
 
@@ -9868,7 +9986,7 @@ export namespace NM {
          */
         get_carrier(): boolean;
         /**
-         * Gets the devices currently enslaved to `device`.
+         * Gets the devices currently attached as port to `device`.
          * @returns the #GPtrArray containing #NMDevices that are slaves of @device. This is the internal copy used by the device, and must not be modified.
          */
         get_slaves(): Device[];
@@ -9893,7 +10011,7 @@ export namespace NM {
          */
         get carrier(): boolean;
         /**
-         * The devices enslaved to the bridge device.
+         * The devices attached as port to the bridge device.
          */
         get slaves(): Device[];
 
@@ -9911,8 +10029,8 @@ export namespace NM {
          */
         get_carrier(): boolean;
         /**
-         * Gets the devices currently enslaved to `device`.
-         * @returns the #GPtrArray containing #NMDevices that are slaves of @device. This is the internal copy used by the device, and must not be modified.
+         * Gets the devices currently attached as port to `device`.
+         * @returns the #GPtrArray containing #NMDevices that are ports of @device. This is the internal copy used by the device, and must not be modified.
          */
         get_slaves(): Device[];
     }
@@ -10741,7 +10859,7 @@ export namespace NM {
         // Properties
 
         /**
-         * Gets the ports currently enslaved to the device.
+         * Gets the ports currently attached as port to the device.
          */
         get slaves(): Device[];
 
@@ -10754,8 +10872,8 @@ export namespace NM {
         // Methods
 
         /**
-         * Gets the ports currently enslaved to `device`.
-         * @returns the #GPtrArray containing #NMDevices that are slaves of @device. This is the internal copy used by the device, and must not be modified.
+         * Gets the ports currently attached as port to `device`.
+         * @returns the #GPtrArray containing #NMDevices that are ports of @device. This is the internal copy used by the device, and must not be modified.
          */
         get_slaves(): Device[];
     }
@@ -10790,7 +10908,7 @@ export namespace NM {
         // Properties
 
         /**
-         * Gets the interfaces currently enslaved to the device.
+         * Gets the interfaces currently attached as port to the device.
          */
         get slaves(): Device[];
 
@@ -10803,8 +10921,8 @@ export namespace NM {
         // Methods
 
         /**
-         * Gets the interfaces currently enslaved to `device`.
-         * @returns the #GPtrArray containing #NMDevices that are slaves of @device. This is the internal copy used by the device, and must not be modified.
+         * Gets the interfaces currently attached as port to `device`.
+         * @returns the #GPtrArray containing #NMDevices that are ports of @device. This is the internal copy used by the device, and must not be modified.
          */
         get_slaves(): Device[];
     }
@@ -10849,7 +10967,7 @@ export namespace NM {
          */
         get config(): string;
         /**
-         * The devices enslaved to the team device.
+         * The devices attached as port to the team device.
          */
         get slaves(): Device[];
 
@@ -10872,8 +10990,8 @@ export namespace NM {
          */
         get_config(): string;
         /**
-         * Gets the devices currently enslaved to `device`.
-         * @returns the #GPtrArray containing #NMDevices that are slaves of @device. This is the internal copy used by the device, and must not be modified.
+         * Gets the devices currently attach as port to `device`.
+         * @returns the #GPtrArray containing #NMDevices that are ports of @device. This is the internal copy used by the device, and must not be modified.
          */
         get_slaves(): Device[];
     }
@@ -12622,8 +12740,18 @@ export namespace NM {
          * @returns %TRUE if the secrets are valid, %FALSE if they are not
          */
         verify_secrets(): boolean;
+        /**
+         * emitted when any change to the connection's settings occurs
+         */
         vfunc_changed(): void;
+        /**
+         * emitted when the connection's secrets are cleared
+         */
         vfunc_secrets_cleared(): void;
+        /**
+         * emitted when the connection's secrets are updated
+         * @param setting
+         */
         vfunc_secrets_updated(setting: string): void;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
@@ -13365,7 +13493,7 @@ export namespace NM {
          * in a thread, so if you want to support asynchronous initialization via
          * threads, just implement the #GAsyncInitable interface without overriding
          * any interface methods.
-         * @param io_priority the [I/O priority][io-priority] of the operation
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
@@ -13425,7 +13553,7 @@ export namespace NM {
          * in a thread, so if you want to support asynchronous initialization via
          * threads, just implement the #GAsyncInitable interface without overriding
          * any interface methods.
-         * @param io_priority the [I/O priority][io-priority] of the operation
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
@@ -14170,6 +14298,8 @@ export namespace NM {
             domainSuffixMatch: string;
             eap: string[];
             identity: string;
+            openssl_ciphers: string;
+            opensslCiphers: string;
             optional: boolean;
             pac_file: string;
             pacFile: string;
@@ -14483,6 +14613,22 @@ export namespace NM {
          */
         get identity(): string;
         set identity(val: string);
+        /**
+         * Define openssl_ciphers for wpa_supplicant. Openssl sometimes moves ciphers
+         * among SECLEVELs, thus compiled-in default value in wpa_supplicant
+         * (as modified by some linux distributions) sometimes prevents
+         * to connect to old servers that do not support new protocols.
+         */
+        get openssl_ciphers(): string;
+        set openssl_ciphers(val: string);
+        /**
+         * Define openssl_ciphers for wpa_supplicant. Openssl sometimes moves ciphers
+         * among SECLEVELs, thus compiled-in default value in wpa_supplicant
+         * (as modified by some linux distributions) sometimes prevents
+         * to connect to old servers that do not support new protocols.
+         */
+        get opensslCiphers(): string;
+        set opensslCiphers(val: string);
         /**
          * Whether the 802.1X authentication is optional. If %TRUE, the activation
          * will continue even after a timeout or an authentication failure. Setting
@@ -15335,6 +15481,11 @@ export namespace NM {
          * @returns the number of phase2-altsubject-matches entries.
          */
         get_num_phase2_altsubject_matches(): number;
+        /**
+         * Returns the openssl_ciphers configuration for wpa_supplicant.
+         * @returns cipher string for tls setup in wpa_supplicant.
+         */
+        get_openssl_ciphers(): string;
         /**
          * Returns the value contained in the #NMSetting8021x:optional property.
          * @returns %TRUE if the activation should proceed even when the 802.1X     authentication fails; %FALSE otherwise
@@ -16668,6 +16819,8 @@ export namespace NM {
             controller: string;
             dns_over_tls: number;
             dnsOverTls: number;
+            down_on_poweroff: number;
+            downOnPoweroff: number;
             gateway_ping_timeout: number;
             gatewayPingTimeout: number;
             id: string;
@@ -16821,28 +16974,32 @@ export namespace NM {
         get autoconnectRetries(): number;
         set autoconnectRetries(val: number);
         /**
-         * Whether or not slaves of this connection should be automatically brought up
+         * Whether or not ports of this connection should be automatically brought up
          * when NetworkManager activates this connection. This only has a real effect
-         * for master connections. The properties #NMSettingConnection:autoconnect,
+         * for controller connections. The properties #NMSettingConnection:autoconnect,
          * #NMSettingConnection:autoconnect-priority and #NMSettingConnection:autoconnect-retries
          * are unrelated to this setting.
-         * The permitted values are: 0: leave slave connections untouched,
-         * 1: activate all the slave connections with this connection, -1: default.
+         * The permitted values are: 0: leave port connections untouched,
+         * 1: activate all the port connections with this connection, -1: default.
          * If -1 (default) is set, global connection.autoconnect-slaves is read to
          * determine the real value. If it is default as well, this fallbacks to 0.
+         *
+         * Deprecated 1.46. Use #NMSettingConnection:autoconnect-ports instead, this is just an alias.
          */
         get autoconnect_slaves(): SettingConnectionAutoconnectSlaves;
         set autoconnect_slaves(val: SettingConnectionAutoconnectSlaves);
         /**
-         * Whether or not slaves of this connection should be automatically brought up
+         * Whether or not ports of this connection should be automatically brought up
          * when NetworkManager activates this connection. This only has a real effect
-         * for master connections. The properties #NMSettingConnection:autoconnect,
+         * for controller connections. The properties #NMSettingConnection:autoconnect,
          * #NMSettingConnection:autoconnect-priority and #NMSettingConnection:autoconnect-retries
          * are unrelated to this setting.
-         * The permitted values are: 0: leave slave connections untouched,
-         * 1: activate all the slave connections with this connection, -1: default.
+         * The permitted values are: 0: leave port connections untouched,
+         * 1: activate all the port connections with this connection, -1: default.
          * If -1 (default) is set, global connection.autoconnect-slaves is read to
          * determine the real value. If it is default as well, this fallbacks to 0.
+         *
+         * Deprecated 1.46. Use #NMSettingConnection:autoconnect-ports instead, this is just an alias.
          */
         get autoconnectSlaves(): SettingConnectionAutoconnectSlaves;
         set autoconnectSlaves(val: SettingConnectionAutoconnectSlaves);
@@ -16881,6 +17038,24 @@ export namespace NM {
          */
         get dnsOverTls(): number;
         set dnsOverTls(val: number);
+        /**
+         * Whether the connection will be brought down before the system is powered
+         * off.  The default value is %NM_SETTING_CONNECTION_DOWN_ON_POWEROFF_DEFAULT. When
+         * the default value is specified, then the global value from
+         * NetworkManager configuration is looked up, if not set, it is considered
+         * as %NM_SETTING_CONNECTION_DOWN_ON_POWEROFF_NO.
+         */
+        get down_on_poweroff(): number;
+        set down_on_poweroff(val: number);
+        /**
+         * Whether the connection will be brought down before the system is powered
+         * off.  The default value is %NM_SETTING_CONNECTION_DOWN_ON_POWEROFF_DEFAULT. When
+         * the default value is specified, then the global value from
+         * NetworkManager configuration is looked up, if not set, it is considered
+         * as %NM_SETTING_CONNECTION_DOWN_ON_POWEROFF_NO.
+         */
+        get downOnPoweroff(): number;
+        set downOnPoweroff(val: number);
         /**
          * If greater than zero, delay success of IP addressing until either the
          * timeout is reached, or an IP gateway replies to a ping.
@@ -16952,7 +17127,7 @@ export namespace NM {
         get llmnr(): number;
         set llmnr(val: number);
         /**
-         * Interface name of the master device or UUID of the master connection.
+         * Interface name of the controller device or UUID of the controller connection.
          *
          * Deprecated 1.46. Use #NMSettingConnection:controller instead, this is just an alias.
          */
@@ -16965,11 +17140,12 @@ export namespace NM {
          * for the connection, "no" (0) disable mDNS for the interface, "resolve"
          * (1) do not register hostname but allow resolving of mDNS host names
          * and "default" (-1) to allow lookup of a global default in NetworkManager.conf.
-         * If unspecified, "default" ultimately depends on the DNS plugin (which
-         * for systemd-resolved currently means "no").
+         * If unspecified, "default" ultimately depends on the DNS plugin.
          *
          * This feature requires a plugin which supports mDNS. Otherwise, the
-         * setting has no effect. One such plugin is dns-systemd-resolved.
+         * setting has no effect. Currently the only supported DNS plugin is
+         * systemd-resolved. For systemd-resolved, the default is configurable via
+         * MulticastDNS= setting in resolved.conf.
          */
         get mdns(): number;
         set mdns(val: number);
@@ -17163,18 +17339,18 @@ export namespace NM {
         get secondaries(): string[];
         set secondaries(val: string[]);
         /**
-         * Setting name of the device type of this slave's master connection (eg,
+         * Setting name of the device type of this port's controller connection (eg,
          * %NM_SETTING_BOND_SETTING_NAME), or %NULL if this connection is not a
-         * slave.
+         * port.
          *
          * Deprecated 1.46. Use #NMSettingConnection:port-type instead, this is just an alias.
          */
         get slave_type(): string;
         set slave_type(val: string);
         /**
-         * Setting name of the device type of this slave's master connection (eg,
+         * Setting name of the device type of this port's controller connection (eg,
          * %NM_SETTING_BOND_SETTING_NAME), or %NULL if this connection is not a
-         * slave.
+         * port.
          *
          * Deprecated 1.46. Use #NMSettingConnection:port-type instead, this is just an alias.
          */
@@ -17411,7 +17587,7 @@ export namespace NM {
         get_autoconnect_retries(): number;
         /**
          * Returns the #NMSettingConnection:autoconnect-slaves property of the connection.
-         * @returns whether slaves of the connection should be activated together          with the connection.
+         * @returns whether ports of the connection should be activated together          with the connection.
          */
         get_autoconnect_slaves(): SettingConnectionAutoconnectSlaves;
         /**
@@ -17425,6 +17601,11 @@ export namespace NM {
          */
         get_controller(): string;
         get_dns_over_tls(): SettingConnectionDnsOverTls;
+        /**
+         * Returns the %NM_SETTING_CONNECTION_DOWN_ON_POWEROFF property.
+         * @returns whether the connection will be brought down before the system is powered off.
+         */
+        get_down_on_poweroff(): SettingConnectionDownOnPoweroff;
         get_gateway_ping_timeout(): number;
         /**
          * Returns the #NMSettingConnection:id property of the connection.
@@ -17444,7 +17625,7 @@ export namespace NM {
         get_llmnr(): SettingConnectionLlmnr;
         /**
          * Returns the #NMSettingConnection:master property of the connection.
-         * @returns interface name of the master device or UUID of the master connection.
+         * @returns interface name of the controller device or UUID of the controller connection.
          */
         get_master(): string;
         get_mdns(): SettingConnectionMdns;
@@ -17486,7 +17667,7 @@ export namespace NM {
         get_secondary(idx: number): string;
         /**
          * Returns the #NMSettingConnection:slave-type property of the connection.
-         * @returns the type of slave this connection is, if any
+         * @returns the type of port this connection is, if any
          */
         get_slave_type(): string;
         /**
@@ -18698,6 +18879,10 @@ export namespace NM {
             mtu: number;
             ra_timeout: number;
             raTimeout: number;
+            temp_preferred_lifetime: number;
+            tempPreferredLifetime: number;
+            temp_valid_lifetime: number;
+            tempValidLifetime: number;
             token: string;
         }
     }
@@ -18891,11 +19076,9 @@ export namespace NM {
          * 0: disabled, 1: enabled (prefer public address), 2: enabled (prefer temporary
          * addresses).
          *
-         * Having a per-connection setting set to "-1" (unknown) means fallback to
-         * global configuration "ipv6.ip6-privacy".
-         *
-         * If also global configuration is unspecified or set to "-1", fallback to read
-         * "/proc/sys/net/ipv6/conf/default/use_tempaddr".
+         * Having a per-connection setting set to "-1" (default) means fallback to
+         * global configuration "ipv6.ip6-privacy". If it's also unspecified or set
+         * to "-1", fallback to read "/proc/sys/net/ipv6/conf/default/use_tempaddr".
          *
          * Note that this setting is distinct from the Stable Privacy addresses
          * that can be enabled with the "addr-gen-mode" property's "stable-privacy"
@@ -18912,11 +19095,9 @@ export namespace NM {
          * 0: disabled, 1: enabled (prefer public address), 2: enabled (prefer temporary
          * addresses).
          *
-         * Having a per-connection setting set to "-1" (unknown) means fallback to
-         * global configuration "ipv6.ip6-privacy".
-         *
-         * If also global configuration is unspecified or set to "-1", fallback to read
-         * "/proc/sys/net/ipv6/conf/default/use_tempaddr".
+         * Having a per-connection setting set to "-1" (default) means fallback to
+         * global configuration "ipv6.ip6-privacy". If it's also unspecified or set
+         * to "-1", fallback to read "/proc/sys/net/ipv6/conf/default/use_tempaddr".
          *
          * Note that this setting is distinct from the Stable Privacy addresses
          * that can be enabled with the "addr-gen-mode" property's "stable-privacy"
@@ -18950,6 +19131,46 @@ export namespace NM {
          */
         get raTimeout(): number;
         set raTimeout(val: number);
+        /**
+         * The preferred lifetime of autogenerated temporary addresses, in seconds.
+         *
+         * Having a per-connection setting set to "0" (default) means fallback to
+         * global configuration "ipv6.temp-preferred-lifetime" setting". If it's also
+         * unspecified or set to "0", fallback to read
+         * "/proc/sys/net/ipv6/conf/default/temp_prefered_lft".
+         */
+        get temp_preferred_lifetime(): number;
+        set temp_preferred_lifetime(val: number);
+        /**
+         * The preferred lifetime of autogenerated temporary addresses, in seconds.
+         *
+         * Having a per-connection setting set to "0" (default) means fallback to
+         * global configuration "ipv6.temp-preferred-lifetime" setting". If it's also
+         * unspecified or set to "0", fallback to read
+         * "/proc/sys/net/ipv6/conf/default/temp_prefered_lft".
+         */
+        get tempPreferredLifetime(): number;
+        set tempPreferredLifetime(val: number);
+        /**
+         * The valid lifetime of autogenerated temporary addresses, in seconds.
+         *
+         * Having a per-connection setting set to "0" (default) means fallback to
+         * global configuration "ipv6.temp-valid-lifetime" setting". If it's also
+         * unspecified or set to "0", fallback to read
+         * "/proc/sys/net/ipv6/conf/default/temp_valid_lft".
+         */
+        get temp_valid_lifetime(): number;
+        set temp_valid_lifetime(val: number);
+        /**
+         * The valid lifetime of autogenerated temporary addresses, in seconds.
+         *
+         * Having a per-connection setting set to "0" (default) means fallback to
+         * global configuration "ipv6.temp-valid-lifetime" setting". If it's also
+         * unspecified or set to "0", fallback to read
+         * "/proc/sys/net/ipv6/conf/default/temp_valid_lft".
+         */
+        get tempValidLifetime(): number;
+        set tempValidLifetime(val: number);
         /**
          * Configure the token for draft-chown-6man-tokenised-ipv6-identifiers-02
          * IPv6 tokenized interface identifiers. Useful with eui64 addr-gen-mode.
@@ -18998,6 +19219,18 @@ export namespace NM {
         get_mtu(): number;
         get_ra_timeout(): number;
         /**
+         * Returns the value contained in the #NMSettingIP6Config:temp-preferred-lifetime
+         * property.
+         * @returns The preferred lifetime of autogenerated temporary addresses.
+         */
+        get_temp_preferred_lifetime(): number;
+        /**
+         * Returns the value contained in the #NMSettingIP6Config:temp-valid-lifetime
+         * property.
+         * @returns The valid lifetime of autogenerated temporary addresses.
+         */
+        get_temp_valid_lifetime(): number;
+        /**
          * Returns the value contained in the #NMSettingIP6Config:token
          * property.
          * @returns A string.
@@ -19026,6 +19259,8 @@ export namespace NM {
             dhcpRejectServers: string[];
             dhcp_send_hostname: boolean;
             dhcpSendHostname: boolean;
+            dhcp_send_release: Ternary;
+            dhcpSendRelease: Ternary;
             dhcp_timeout: number;
             dhcpTimeout: number;
             dns: string[];
@@ -19287,6 +19522,22 @@ export namespace NM {
          */
         get dhcpSendHostname(): boolean;
         set dhcpSendHostname(val: boolean);
+        /**
+         * Whether the DHCP client will send RELEASE message when
+         * bringing the connection down. The default value is %NM_TERNARY_DEFAULT.
+         * When the default value is specified, then the global value from NetworkManager
+         * configuration is looked up, if not set, it is considered as %FALSE.
+         */
+        get dhcp_send_release(): Ternary;
+        set dhcp_send_release(val: Ternary);
+        /**
+         * Whether the DHCP client will send RELEASE message when
+         * bringing the connection down. The default value is %NM_TERNARY_DEFAULT.
+         * When the default value is specified, then the global value from NetworkManager
+         * configuration is looked up, if not set, it is considered as %FALSE.
+         */
+        get dhcpSendRelease(): Ternary;
+        set dhcpSendRelease(val: Ternary);
         /**
          * A timeout for a DHCP transaction in seconds. If zero (the default), a
          * globally configured default is used. If still unspecified, a device specific
@@ -19868,6 +20119,7 @@ export namespace NM {
          * @returns %TRUE if NetworkManager should send the machine hostname to the DHCP server when requesting addresses to allow the server to automatically update DNS information for this machine.
          */
         get_dhcp_send_hostname(): boolean;
+        get_dhcp_send_release(): Ternary;
         /**
          * Returns the value contained in the #NMSettingIPConfig:dhcp-timeout
          * property.
@@ -23057,7 +23309,7 @@ export namespace NM {
          * interface.  Flags include %NM_VLAN_FLAG_REORDER_HEADERS (reordering of
          * output packet headers), %NM_VLAN_FLAG_GVRP (use of the GVRP protocol),
          * and %NM_VLAN_FLAG_LOOSE_BINDING (loose binding of the interface to its
-         * master device's operating state). %NM_VLAN_FLAG_MVRP (use of the MVRP
+         * controller device's operating state). %NM_VLAN_FLAG_MVRP (use of the MVRP
          * protocol).
          *
          * The default value of this property is NM_VLAN_FLAG_REORDER_HEADERS,
@@ -23981,6 +24233,8 @@ export namespace NM {
             macAddress: string;
             mac_address_blacklist: string[];
             macAddressBlacklist: string[];
+            mac_address_denylist: string[];
+            macAddressDenylist: string[];
             mtu: number;
             port: string;
             s390_nettype: string;
@@ -24200,6 +24454,22 @@ export namespace NM {
         get macAddressBlacklist(): string[];
         set macAddressBlacklist(val: string[]);
         /**
+         * If specified, this connection will never apply to the Ethernet device
+         * whose permanent MAC address matches an address in the list.  Each MAC
+         * address is in the standard hex-digits-and-colons notation
+         * (00:11:22:33:44:55).
+         */
+        get mac_address_denylist(): string[];
+        set mac_address_denylist(val: string[]);
+        /**
+         * If specified, this connection will never apply to the Ethernet device
+         * whose permanent MAC address matches an address in the list.  Each MAC
+         * address is in the standard hex-digits-and-colons notation
+         * (00:11:22:33:44:55).
+         */
+        get macAddressDenylist(): string[];
+        set macAddressDenylist(val: string[]);
+        /**
          * If non-zero, only transmit packets of the specified size or smaller,
          * breaking larger packets up into multiple Ethernet frames.
          */
@@ -24344,6 +24614,12 @@ export namespace NM {
          */
         add_mac_blacklist_item(mac: string): boolean;
         /**
+         * Adds a new MAC address to the #NMSettingWired:mac-address-denylist property.
+         * @param mac the MAC address string (hex-digits-and-colons notation) to denylist
+         * @returns %TRUE if the MAC address was added; %FALSE if the MAC address is invalid or was already present
+         */
+        add_mac_denylist_item(mac: string): boolean;
+        /**
          * Add an option to the table. If the key already exists, the value gets
          * replaced.
          *
@@ -24358,6 +24634,10 @@ export namespace NM {
          * Removes all blacklisted MAC addresses.
          */
         clear_mac_blacklist_items(): void;
+        /**
+         * Removes all denylisted MAC addresses.
+         */
+        clear_mac_denylist_items(): void;
         get_accept_all_mac_addresses(): Ternary;
         get_auto_negotiate(): boolean;
         get_cloned_mac_address(): string;
@@ -24365,14 +24645,17 @@ export namespace NM {
         get_generate_mac_address_mask(): string;
         get_mac_address(): string;
         get_mac_address_blacklist(): string[];
+        get_mac_address_denylist(): string[];
         /**
-         * Since 1.46, access at index "len" is allowed and returns NULL.
+         * Since 1.48, access at index "len" is allowed and returns NULL.
          * @param idx the zero-based index of the MAC address entry
          * @returns the blacklisted MAC address string (hex-digits-and-colons notation) at index @idx
          */
         get_mac_blacklist_item(idx: number): string;
+        get_mac_denylist_item(idx: number): string;
         get_mtu(): number;
         get_num_mac_blacklist_items(): number;
+        get_num_mac_denylist_items(): number;
         /**
          * Returns the number of s390-specific options that should be set for this
          * device when it is activated.  This can be used to retrieve each s390
@@ -24442,6 +24725,17 @@ export namespace NM {
          */
         remove_mac_blacklist_item_by_value(mac: string): boolean;
         /**
+         * Removes the MAC address at index `idx` from the denylist.
+         * @param idx index number of the MAC address
+         */
+        remove_mac_denylist_item(idx: number): void;
+        /**
+         * Removes the MAC address `mac` from the denylist.
+         * @param mac the MAC address string (hex-digits-and-colons notation) to remove from the denylist
+         * @returns %TRUE if the MAC address was found and removed; %FALSE if it was not.
+         */
+        remove_mac_denylist_item_by_value(mac: string): boolean;
+        /**
          * Remove the s390-specific option referenced by `key` from the internal option
          * list.
          * @param key key name for the option to remove
@@ -24459,6 +24753,8 @@ export namespace NM {
             band: string;
             bssid: string;
             channel: number;
+            channel_width: number;
+            channelWidth: number;
             cloned_mac_address: string;
             clonedMacAddress: string;
             generate_mac_address_mask: string;
@@ -24468,6 +24764,8 @@ export namespace NM {
             macAddress: string;
             mac_address_blacklist: string[];
             macAddressBlacklist: string[];
+            mac_address_denylist: string[];
+            macAddressDenylist: string[];
             mac_address_randomization: number;
             macAddressRandomization: number;
             mode: string;
@@ -24562,6 +24860,40 @@ export namespace NM {
          */
         get channel(): number;
         set channel(val: number);
+        /**
+         * Specifies width of the wireless channel in Access Point (AP) mode.
+         *
+         * When set to %NM_SETTING_WIRELESS_CHANNEL_WIDTH_AUTO (the default), the
+         * channel width is automatically determined. At the moment, this means that
+         * the safest (smallest) width is chosen.
+         *
+         * If the value is not %NM_SETTING_WIRELESS_CHANNEL_WIDTH_AUTO, then the
+         * 'channel' property must also be set. When using the 2.4GHz band, the width
+         * can be at most 40MHz.
+         *
+         * This property can be set to a value different from
+         * %NM_SETTING_WIRELESS_CHANNEL_WIDTH_AUTO only when the interface is configured
+         * in AP mode.
+         */
+        get channel_width(): number;
+        set channel_width(val: number);
+        /**
+         * Specifies width of the wireless channel in Access Point (AP) mode.
+         *
+         * When set to %NM_SETTING_WIRELESS_CHANNEL_WIDTH_AUTO (the default), the
+         * channel width is automatically determined. At the moment, this means that
+         * the safest (smallest) width is chosen.
+         *
+         * If the value is not %NM_SETTING_WIRELESS_CHANNEL_WIDTH_AUTO, then the
+         * 'channel' property must also be set. When using the 2.4GHz band, the width
+         * can be at most 40MHz.
+         *
+         * This property can be set to a value different from
+         * %NM_SETTING_WIRELESS_CHANNEL_WIDTH_AUTO only when the interface is configured
+         * in AP mode.
+         */
+        get channelWidth(): number;
+        set channelWidth(val: number);
         /**
          * If specified, request that the device use this MAC address instead.
          * This is known as MAC cloning or spoofing.
@@ -24718,6 +25050,20 @@ export namespace NM {
         get macAddressBlacklist(): string[];
         set macAddressBlacklist(val: string[]);
         /**
+         * A list of permanent MAC addresses of Wi-Fi devices to which this
+         * connection should never apply.  Each MAC address should be given in the
+         * standard hex-digits-and-colons notation (eg "00:11:22:33:44:55").
+         */
+        get mac_address_denylist(): string[];
+        set mac_address_denylist(val: string[]);
+        /**
+         * A list of permanent MAC addresses of Wi-Fi devices to which this
+         * connection should never apply.  Each MAC address should be given in the
+         * standard hex-digits-and-colons notation (eg "00:11:22:33:44:55").
+         */
+        get macAddressDenylist(): string[];
+        set macAddressDenylist(val: string[]);
+        /**
          * One of %NM_SETTING_MAC_RANDOMIZATION_DEFAULT (never randomize unless
          * the user has set a global default to randomize and the supplicant
          * supports randomization),  %NM_SETTING_MAC_RANDOMIZATION_NEVER (never
@@ -24848,11 +25194,17 @@ export namespace NM {
         // Methods
 
         /**
-         * Adds a new MAC address to the #NMSettingWireless:mac-address-blacklist property.
-         * @param mac the MAC address string (hex-digits-and-colons notation) to blacklist
+         * Adds a new MAC address to the #NMSettingWireless:mac-address-denylist property.
+         * @param mac the MAC address string (hex-digits-and-colons notation) to denylist
          * @returns %TRUE if the MAC address was added; %FALSE if the MAC address is invalid or was already present
          */
         add_mac_blacklist_item(mac: string): boolean;
+        /**
+         * Adds a new MAC address to the #NMSettingWireless:mac-address-denylist property.
+         * @param mac the MAC address string (hex-digits-and-colons notation) to denylist
+         * @returns %TRUE if the MAC address was added; %FALSE if the MAC address is invalid or was already present
+         */
+        add_mac_denylist_item(mac: string): boolean;
         /**
          * Adds a new Wi-Fi AP's BSSID to the previously seen BSSID list of the setting.
          * NetworkManager now tracks previously seen BSSIDs internally so this function
@@ -24884,28 +25236,40 @@ export namespace NM {
             ap_mode: __80211Mode,
         ): boolean;
         /**
-         * Removes all blacklisted MAC addresses.
+         * Removes all denylisted MAC addresses.
          */
         clear_mac_blacklist_items(): void;
+        /**
+         * Removes all denylisted MAC addresses.
+         */
+        clear_mac_denylist_items(): void;
         get_ap_isolation(): Ternary;
         get_band(): string;
         get_bssid(): string;
         get_channel(): number;
+        /**
+         * Returns the #NMSettingWireless:channel-width property.
+         * @returns the channel width
+         */
+        get_channel_width(): SettingWirelessChannelWidth;
         get_cloned_mac_address(): string;
         get_generate_mac_address_mask(): string;
         get_hidden(): boolean;
         get_mac_address(): string;
         get_mac_address_blacklist(): string[];
+        get_mac_address_denylist(): string[];
         get_mac_address_randomization(): SettingMacRandomization;
         /**
          * Since 1.46, access at index "len" is allowed and returns NULL.
          * @param idx the zero-based index of the MAC address entry
-         * @returns the blacklisted MAC address string (hex-digits-and-colons notation) at index @idx
+         * @returns the denylisted MAC address string (hex-digits-and-colons notation) at index @idx
          */
         get_mac_blacklist_item(idx: number): string;
+        get_mac_denylist_item(idx: number): string;
         get_mode(): string;
         get_mtu(): number;
         get_num_mac_blacklist_items(): number;
+        get_num_mac_denylist_items(): number;
         get_num_seen_bssids(): number;
         get_powersave(): number;
         get_rate(): number;
@@ -24918,16 +25282,27 @@ export namespace NM {
          */
         get_wake_on_wlan(): SettingWirelessWakeOnWLan;
         /**
-         * Removes the MAC address at index `idx` from the blacklist.
+         * Removes the MAC address at index `idx` from the denylist.
          * @param idx index number of the MAC address
          */
         remove_mac_blacklist_item(idx: number): void;
         /**
-         * Removes the MAC address `mac` from the blacklist.
-         * @param mac the MAC address string (hex-digits-and-colons notation) to remove from the blacklist
+         * Removes the MAC address `mac` from the denylist.
+         * @param mac the MAC address string (hex-digits-and-colons notation) to remove from the denylist
          * @returns %TRUE if the MAC address was found and removed; %FALSE if it was not.
          */
         remove_mac_blacklist_item_by_value(mac: string): boolean;
+        /**
+         * Removes the MAC address at index `idx` from the denylist.
+         * @param idx index number of the MAC address
+         */
+        remove_mac_denylist_item(idx: number): void;
+        /**
+         * Removes the MAC address `mac` from the denylist.
+         * @param mac the MAC address string (hex-digits-and-colons notation) to remove from the denylist
+         * @returns %TRUE if the MAC address was found and removed; %FALSE if it was not.
+         */
+        remove_mac_denylist_item_by_value(mac: string): boolean;
     }
 
     module SettingWirelessSecurity {
@@ -25896,8 +26271,18 @@ export namespace NM {
          * @returns %TRUE if the secrets are valid, %FALSE if they are not
          */
         verify_secrets(): boolean;
+        /**
+         * emitted when any change to the connection's settings occurs
+         */
         vfunc_changed(): void;
+        /**
+         * emitted when the connection's secrets are cleared
+         */
         vfunc_secrets_cleared(): void;
+        /**
+         * emitted when the connection's secrets are updated
+         * @param setting
+         */
         vfunc_secrets_updated(setting: string): void;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
@@ -29646,12 +30031,12 @@ export namespace NM {
          */
         get_flags(): TeamLinkWatcherArpPingFlags;
         /**
-         * Gets the init_wait interval (in milliseconds) that the team slave should
+         * Gets the init_wait interval (in milliseconds) that the team port should
          * wait before sending the first packet to the target host.
          */
         get_init_wait(): number;
         /**
-         * Gets the interval (in milliseconds) that the team slave should wait between
+         * Gets the interval (in milliseconds) that the team port should wait between
          * sending two check packets to the target host.
          */
         get_interval(): number;
@@ -30248,8 +30633,18 @@ export namespace NM {
 
         // Virtual methods
 
+        /**
+         * emitted when any change to the connection's settings occurs
+         */
         vfunc_changed(): void;
+        /**
+         * emitted when the connection's secrets are cleared
+         */
         vfunc_secrets_cleared(): void;
+        /**
+         * emitted when the connection's secrets are updated
+         * @param setting
+         */
         vfunc_secrets_updated(setting: string): void;
     }
 
@@ -30273,8 +30668,24 @@ export namespace NM {
 
         // Virtual methods
 
+        /**
+         * emitted when the value of a UI widget changes.  May trigger a
+         *   validity check via `update_connection` to write values to the connection.
+         */
         vfunc_changed(): void;
+        /**
+         * return the #GtkWidget for the VPN editor's UI
+         */
         vfunc_get_widget<T = GObject.Object>(): T;
+        /**
+         * called to save the user-entered options to the connection
+         *   object.  Should return %FALSE and set `error` if the current options are
+         *   invalid.  `error` should contain enough information for the plugin to
+         *   determine which UI widget is invalid at a later point in time.  For
+         *   example, creating unique error codes for what error occurred and populating
+         *   the message field of `error` with the name of the invalid property.
+         * @param connection
+         */
         vfunc_update_connection(connection: Connection): boolean;
     }
 
@@ -30373,11 +30784,42 @@ export namespace NM {
 
         // Virtual methods
 
+        /**
+         * Export the given connection to the specified path.  Return
+         *   %TRUE on success.  On error, return %FALSE and set `error` with additional
+         *   error information.  Note that `error` can be %NULL, in which case no
+         *   additional error information should be provided.
+         * @param path
+         * @param connection
+         */
         vfunc_export_to_file(path: string, connection: Connection): boolean;
+        /**
+         * returns a bitmask of capabilities.
+         */
         vfunc_get_capabilities(): VpnEditorPluginCapability;
+        /**
+         * returns an #NMVpnEditor, pre-filled with values from `connection`
+         *   if non-%NULL.
+         * @param connection the #NMConnection to be edited
+         */
         vfunc_get_editor(connection: Connection): VpnEditor;
+        /**
+         * For a given connection, return a suggested file
+         *   name.  Returned value will be %NULL or a suggested file name to be freed by
+         *   the caller.
+         * @param connection
+         */
         vfunc_get_suggested_filename(connection: Connection): string;
+        /**
+         * return a virtual function table to implement further functions in
+         *   the plugin, without requiring to update libnm. Used by nm_vpn_editor_plugin_get_vt().
+         * @param out_vt_size
+         */
         vfunc_get_vt(out_vt_size: number): VpnEditorPluginVT;
+        /**
+         * A callback to be called when the plugin info is set.
+         * @param plugin_info
+         */
         vfunc_notify_plugin_info_set(plugin_info: VpnPluginInfo): void;
     }
 

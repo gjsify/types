@@ -12,6 +12,7 @@ import type Soup from '@girs/soup-3.0';
 import type Gio from '@girs/gio-2.0';
 import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
+import type GModule from '@girs/gmodule-2.0';
 import type JavaScriptCore from '@girs/javascriptcore-6.0';
 import type Gtk from '@girs/gtk-4.0';
 import type Gsk from '@girs/gsk-4.0';
@@ -23,7 +24,6 @@ import type Pango from '@girs/pango-1.0';
 import type HarfBuzz from '@girs/harfbuzz-0.0';
 import type freetype2 from '@girs/freetype2-2.0';
 import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
-import type GModule from '@girs/gmodule-2.0';
 
 export namespace WebKit {
     /**
@@ -634,13 +634,15 @@ export namespace WebKit {
         PASSWORD,
     }
     /**
-     * Enum values used to denote the different events which can trigger
-     * the detection of insecure content.
+     * Enum values previously used to denote the different events which can trigger
+     * the detection of insecure content. Since 2.46, WebKit generally no longer
+     * loads insecure content in secure contexts.
      */
 
     /**
-     * Enum values used to denote the different events which can trigger
-     * the detection of insecure content.
+     * Enum values previously used to denote the different events which can trigger
+     * the detection of insecure content. Since 2.46, WebKit generally no longer
+     * loads insecure content in secure contexts.
      */
     export namespace InsecureContentEvent {
         export const $gtype: GObject.GType<InsecureContentEvent>;
@@ -1999,6 +2001,10 @@ export namespace WebKit {
             (): WebView;
         }
 
+        interface WillClose {
+            (): void;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2040,6 +2046,9 @@ export namespace WebKit {
         connect(signal: 'create-web-view', callback: (_source: this) => WebView): number;
         connect_after(signal: 'create-web-view', callback: (_source: this) => WebView): number;
         emit(signal: 'create-web-view'): void;
+        connect(signal: 'will-close', callback: (_source: this) => void): number;
+        connect_after(signal: 'will-close', callback: (_source: this) => void): number;
+        emit(signal: 'will-close'): void;
 
         // Methods
 
@@ -7325,6 +7334,11 @@ export namespace WebKit {
          * The #WebKitPrintOperation::finished signal is emitted when the printing
          * operation finishes. If an error occurs while printing the signal
          * #WebKitPrintOperation::failed is emitted before #WebKitPrintOperation::finished.
+         *
+         * If the app is running in a sandbox, this function only works if printing to
+         * a file that is in a location accessible to the sandbox, usually acquired
+         * through the File Chooser portal. This function will not work for physical
+         * printers when running in a sandbox.
          */
         print(): void;
         /**
@@ -7590,6 +7604,8 @@ export namespace WebKit {
             disableWebSecurity: boolean;
             draw_compositing_indicators: boolean;
             drawCompositingIndicators: boolean;
+            enable_2d_canvas_acceleration: boolean;
+            enable2dCanvasAcceleration: boolean;
             enable_back_forward_navigation_gestures: boolean;
             enableBackForwardNavigationGestures: boolean;
             enable_caret_browsing: boolean;
@@ -7874,6 +7890,22 @@ export namespace WebKit {
          */
         get drawCompositingIndicators(): boolean;
         set drawCompositingIndicators(val: boolean);
+        /**
+         * Enable or disable 2D canvas acceleration.
+         * If this setting is enabled, the 2D canvas will be accelerated even if Skia CPU
+         * is used for rendering. However, the canvas can be unaccelerated even when this setting
+         * is enabled, for other reasons like its size or when willReadFrequently property is used.
+         */
+        get enable_2d_canvas_acceleration(): boolean;
+        set enable_2d_canvas_acceleration(val: boolean);
+        /**
+         * Enable or disable 2D canvas acceleration.
+         * If this setting is enabled, the 2D canvas will be accelerated even if Skia CPU
+         * is used for rendering. However, the canvas can be unaccelerated even when this setting
+         * is enabled, for other reasons like its size or when willReadFrequently property is used.
+         */
+        get enable2dCanvasAcceleration(): boolean;
+        set enable2dCanvasAcceleration(val: boolean);
         /**
          * Enable or disable horizontal swipe gesture for back-forward navigation.
          */
@@ -8560,6 +8592,20 @@ export namespace WebKit {
         // Methods
 
         /**
+         * Reads the contents of the given `group_name` from the given `key_file` and apply the value of
+         * each key/value to the corresponding property on the `settings`.
+         *
+         * Value types have to match with the corresponding setting property type and the group keys have to
+         * match existing setting property names. If those conditions are not met, the function will return
+         * %FALSE.
+         *
+         * Supported value types are strings (unquoted), booleans (0, 1, true, false) and unsigned integers.
+         * @param key_file a #GKeyFile
+         * @param group_name Name of the group to read from @key_file
+         * @returns %TRUE if the settings were correctly applied or %FALSE on error.
+         */
+        apply_from_key_file(key_file: GLib.KeyFile, group_name: string): boolean;
+        /**
          * Get the #WebKitSettings:allow-file-access-from-file-urls property.
          * @returns %TRUE If file access from file URLs is allowed or %FALSE otherwise.
          */
@@ -8619,6 +8665,11 @@ export namespace WebKit {
          * @returns %TRUE If compositing borders are drawn or %FALSE otherwise.
          */
         get_draw_compositing_indicators(): boolean;
+        /**
+         * Get the #WebKitSettings:enable-2d-canvas-acceleration property.
+         * @returns %TRUE if 2D canvas acceleration is enabled or %FALSE otherwise.
+         */
+        get_enable_2d_canvas_acceleration(): boolean;
         /**
          * Get the #WebKitSettings:enable-back-forward-navigation-gestures property.
          * @returns %TRUE if horizontal swipe gesture will trigger back-forward navigaiton or %FALSE otherwise.
@@ -8900,6 +8951,11 @@ export namespace WebKit {
          * @param enabled Value to be set
          */
         set_draw_compositing_indicators(enabled: boolean): void;
+        /**
+         * Set the #WebKitSettings:enable-2d-canvas-acceleration property.
+         * @param enabled Value to be set
+         */
+        set_enable_2d_canvas_acceleration(enabled: boolean): void;
         /**
          * Set the #WebKitSettings:enable-back-forward-navigation-gestures property.
          * @param enabled value to be set
@@ -9806,11 +9862,11 @@ export namespace WebKit {
          *
          * The registered handler can be unregistered by using
          * webkit_user_content_manager_unregister_script_message_handler().
-         * @param name Name of the script message channel @world_name (nullable): the name of a #WebKitScriptWorld
-         * @param world_name
+         * @param name Name of the script message channel
+         * @param world_name the name of a #WebKitScriptWorld
          * @returns %TRUE if message handler was registered successfully, or %FALSE otherwise.
          */
-        register_script_message_handler_with_reply(name: string, world_name: string): boolean;
+        register_script_message_handler_with_reply(name: string, world_name?: string | null): boolean;
         /**
          * Removes all content filters from the given #WebKitUserContentManager.
          */
@@ -12570,27 +12626,6 @@ export namespace WebKit {
          * the actual contents are rendered. Note that if the web page loaded in `web_view`
          * specifies a background color, it will take precedence over the `rgba` color.
          * By default the `web_view` background color is opaque white.
-         * Note that the parent window must have a RGBA visual and
-         * #GtkWidget:app-paintable property set to %TRUE for backgrounds colors to work.
-         *
-         * ```c
-         * static void browser_window_set_background_color (BrowserWindow *window,
-         *                                                  const GdkRGBA *rgba)
-         * {
-         *     WebKitWebView *web_view;
-         *     GdkScreen *screen = gtk_window_get_screen (GTK_WINDOW (window));
-         *     GdkVisual *rgba_visual = gdk_screen_get_rgba_visual (screen);
-         *
-         *     if (!rgba_visual)
-         *          return;
-         *
-         *     gtk_widget_set_visual (GTK_WIDGET (window), rgba_visual);
-         *     gtk_widget_set_app_paintable (GTK_WIDGET (window), TRUE);
-         *
-         *     web_view = browser_window_get_web_view (window);
-         *     webkit_web_view_set_background_color (web_view, rgba);
-         * }
-         * ```
          * @param rgba a #GdkRGBA
          */
         set_background_color(rgba: Gdk.RGBA): void;

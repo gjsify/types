@@ -14,6 +14,7 @@ import type GLib from '@girs/glib-2.0';
 import type Mtk from '@girs/mtk-15';
 import type Graphene from '@girs/graphene-1.0';
 import type Gio from '@girs/gio-2.0';
+import type GModule from '@girs/gmodule-2.0';
 import type GL from '@girs/gl-1.0';
 import type CoglPango from '@girs/coglpango-15';
 import type PangoCairo from '@girs/pangocairo-1.0';
@@ -4080,6 +4081,12 @@ export namespace Clutter {
      * @param handle_id an unsigned integer greater than zero
      */
     function threads_remove_repaint_func(handle_id: number): void;
+    function transfer_function_get_default_luminances(
+        transfer_function: TransferFunction,
+        min_lum_out: number,
+        max_lum_out: number,
+        ref_lum_out: number,
+    ): void;
     /**
      * Convert from a ISO10646 character to a key symbol.
      * @param wc a ISO10646 encoded character
@@ -12045,6 +12052,12 @@ export namespace Clutter {
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             colorspace: Colorspace;
             context: Context;
+            max_luminance: number;
+            maxLuminance: number;
+            min_luminance: number;
+            minLuminance: number;
+            ref_luminance: number;
+            refLuminance: number;
             transfer_function: TransferFunction;
             transferFunction: TransferFunction;
         }
@@ -12083,6 +12096,30 @@ export namespace Clutter {
          */
         get context(): Context;
         /**
+         * Maximum luminance.
+         */
+        get max_luminance(): number;
+        /**
+         * Maximum luminance.
+         */
+        get maxLuminance(): number;
+        /**
+         * Minimum luminance.
+         */
+        get min_luminance(): number;
+        /**
+         * Minimum luminance.
+         */
+        get minLuminance(): number;
+        /**
+         * Reference luminance.
+         */
+        get ref_luminance(): number;
+        /**
+         * Reference luminance.
+         */
+        get refLuminance(): number;
+        /**
          * Transfer function.
          */
         get transfer_function(): TransferFunction;
@@ -12098,6 +12135,15 @@ export namespace Clutter {
         _init(...args: any[]): void;
 
         static ['new'](context: Context, colorspace: Colorspace, transfer_function: TransferFunction): ColorState;
+
+        static new_full(
+            context: Context,
+            colorspace: Colorspace,
+            transfer_function: TransferFunction,
+            min_lum: number,
+            max_lum: number,
+            ref_lum: number,
+        ): ColorState;
 
         // Methods
 
@@ -12119,9 +12165,11 @@ export namespace Clutter {
         get_blending(force: boolean): ColorState;
         get_colorspace(): Colorspace;
         get_id(): number;
+        get_luminances(min_lum_out: number, max_lum_out: number, ref_lum_out: number): void;
         get_transfer_function(): TransferFunction;
         required_format(): EncodingRequiredFormat;
         to_string(): string;
+        update_uniforms(target_color_state: ColorState, pipeline: Cogl.Pipeline): void;
     }
 
     module ColorizeEffect {
@@ -15496,10 +15544,11 @@ export namespace Clutter {
 
         /**
          * Calls the [vfunc`OffscreenEffect`.create_texture] virtual function of the `effect`
+         * @param cogl_context
          * @param width the minimum width of the target texture
          * @param height the minimum height of the target texture
          */
-        vfunc_create_texture(width: number, height: number): Cogl.Texture;
+        vfunc_create_texture(cogl_context: Cogl.Context, width: number, height: number): Cogl.Texture;
         /**
          * Calls the [vfunc`OffscreenEffect`.paint_target] virtual function of the `effect`
          * @param node a #ClutterPaintNode
@@ -15511,11 +15560,12 @@ export namespace Clutter {
 
         /**
          * Calls the [vfunc`OffscreenEffect`.create_texture] virtual function of the `effect`
+         * @param context
          * @param width the minimum width of the target texture
          * @param height the minimum height of the target texture
          * @returns a handle to a Cogl texture, or   %NULL. The returned handle has its reference   count increased.
          */
-        create_texture(width: number, height: number): Cogl.Texture;
+        create_texture(context: Cogl.Context, width: number, height: number): Cogl.Texture;
         /**
          * Retrieves the pipeline used as a render target for the offscreen
          * buffer created by `effect`
@@ -16143,6 +16193,7 @@ export namespace Clutter {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
+            context: Context;
             name: string;
             touch_mode: boolean;
             touchMode: boolean;
@@ -16154,6 +16205,7 @@ export namespace Clutter {
 
         // Properties
 
+        get context(): Context;
         get name(): string;
         /**
          * The current touch-mode of the #ClutterSeat, it is set to %TRUE if the
@@ -16292,6 +16344,7 @@ export namespace Clutter {
          */
         create_virtual_device(device_type: InputDeviceType): VirtualInputDevice;
         ensure_a11y_state(): void;
+        get_context(): Context;
         /**
          * Returns the logical keyboard
          * @returns the logical keyboard
@@ -16939,7 +16992,6 @@ export namespace Clutter {
             key_focus: Actor;
             keyFocus: Actor;
             perspective: Perspective;
-            title: string;
         }
     }
 
@@ -16988,11 +17040,6 @@ export namespace Clutter {
          * coordinates to 2D
          */
         get perspective(): Perspective;
-        /**
-         * The stage's title - usually displayed in stage windows title decorations.
-         */
-        get title(): string;
-        set title(val: string);
 
         // Constructors
 
@@ -17129,11 +17176,6 @@ export namespace Clutter {
          */
         get_perspective(): Perspective | null;
         /**
-         * Gets the stage title.
-         * @returns pointer to the title string for the stage. The returned string is owned by the actor and should not be modified or freed.
-         */
-        get_title(): string;
-        /**
          * Grabs input onto a certain actor. Events will be propagated as
          * usual inside its hierarchy.
          * @param actor The actor grabbing input
@@ -17223,11 +17265,6 @@ export namespace Clutter {
          */
         set_key_focus(actor?: Actor | null): void;
         set_minimum_size(width: number, height: number): void;
-        /**
-         * Sets the stage title.
-         * @param title A utf8 string for the stage windows title.
-         */
-        set_title(title: string): void;
         update_device(
             device: InputDevice,
             sequence: EventSequence,

@@ -11,6 +11,7 @@
 import type Gio from '@girs/gio-2.0';
 import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
+import type GModule from '@girs/gmodule-2.0';
 
 export namespace BlockDev {
     /**
@@ -84,6 +85,31 @@ export namespace BlockDev {
         VOLUME_KEY,
     }
 
+    export namespace CryptoLUKSHWEncryptionType {
+        export const $gtype: GObject.GType<CryptoLUKSHWEncryptionType>;
+    }
+
+    enum CryptoLUKSHWEncryptionType {
+        /**
+         * used for unknown/unsupported hardware encryption or when
+         *                                        error was detected when getting the information
+         */
+        UNKNOWN,
+        /**
+         * hardware encryption is not configured on this device
+         */
+        SW_ONLY,
+        /**
+         * only OPAL hardware encryption is configured on this device
+         */
+        OPAL_HW_ONLY,
+        /**
+         * both OPAL hardware encryption and software encryption
+         *                                               (using LUKS/dm-crypt) is configured on this device
+         */
+        OPAL_HW_AND_SW,
+    }
+
     export namespace CryptoLUKSVersion {
         export const $gtype: GObject.GType<CryptoLUKSVersion>;
     }
@@ -105,6 +131,7 @@ export namespace BlockDev {
         BITLK,
         KEYRING,
         FVAULT2,
+        SED_OPAL,
     }
     class DMError extends GLib.Error {
         static $gtype: GObject.GType<DMError>;
@@ -619,7 +646,175 @@ export namespace BlockDev {
         FS,
         NVDIMM,
         NVME,
+        SMART,
         UNDEF,
+    }
+
+    export namespace SmartATAAttributeFlag {
+        export const $gtype: GObject.GType<SmartATAAttributeFlag>;
+    }
+
+    enum SmartATAAttributeFlag {
+        PREFAILURE,
+        ONLINE,
+        PERFORMANCE,
+        ERROR_RATE,
+        EVENT_COUNT,
+        SELF_PRESERVING,
+        OTHER,
+    }
+
+    export namespace SmartATAAttributeUnit {
+        export const $gtype: GObject.GType<SmartATAAttributeUnit>;
+    }
+
+    enum SmartATAAttributeUnit {
+        UNKNOWN,
+        NONE,
+        MSECONDS,
+        SECTORS,
+        MKELVIN,
+        SMALL_PERCENT,
+        PERCENT,
+        MB,
+    }
+
+    export namespace SmartATAOfflineDataCollectionCapabilities {
+        export const $gtype: GObject.GType<SmartATAOfflineDataCollectionCapabilities>;
+    }
+
+    enum SmartATAOfflineDataCollectionCapabilities {
+        NOT_SUPPORTED,
+        EXEC_OFFLINE_IMMEDIATE,
+        OFFLINE_ABORT,
+        OFFLINE_SURFACE_SCAN,
+        SELF_TEST,
+        CONVEYANCE_SELF_TEST,
+        SELECTIVE_SELF_TEST,
+    }
+
+    export namespace SmartATAOfflineDataCollectionStatus {
+        export const $gtype: GObject.GType<SmartATAOfflineDataCollectionStatus>;
+    }
+
+    enum SmartATAOfflineDataCollectionStatus {
+        NEVER_STARTED,
+        NO_ERROR,
+        IN_PROGRESS,
+        SUSPENDED_INTR,
+        ABORTED_INTR,
+        ABORTED_ERROR,
+        VENDOR_SPECIFIC,
+        RESERVED,
+    }
+
+    export namespace SmartATASelfTestStatus {
+        export const $gtype: GObject.GType<SmartATASelfTestStatus>;
+    }
+
+    enum SmartATASelfTestStatus {
+        COMPLETED_NO_ERROR,
+        ABORTED_HOST,
+        INTR_HOST_RESET,
+        ERROR_FATAL,
+        ERROR_UNKNOWN,
+        ERROR_ELECTRICAL,
+        ERROR_SERVO,
+        ERROR_READ,
+        ERROR_HANDLING,
+        IN_PROGRESS,
+    }
+    class SmartError extends GLib.Error {
+        static $gtype: GObject.GType<SmartError>;
+
+        // Static fields
+
+        static TECH_UNAVAIL: number;
+        static FAILED: number;
+        static INVALID_ARGUMENT: number;
+
+        // Constructors
+
+        constructor(options: { message: string; code: number });
+        _init(...args: any[]): void;
+    }
+
+    export namespace SmartSCSIBackgroundScanStatus {
+        export const $gtype: GObject.GType<SmartSCSIBackgroundScanStatus>;
+    }
+
+    enum SmartSCSIBackgroundScanStatus {
+        NO_SCANS_ACTIVE,
+        SCAN_ACTIVE,
+        PRESCAN_ACTIVE,
+        HALTED_ERROR_FATAL,
+        HALTED_PATTERN_VENDOR_SPECIFIC,
+        HALTED_ERROR_PLIST,
+        HALTED_VENDOR_SPECIFIC,
+        HALTED_TEMPERATURE,
+        BMS_TIMER,
+    }
+
+    export namespace SmartSCSIInformationalException {
+        export const $gtype: GObject.GType<SmartSCSIInformationalException>;
+    }
+
+    enum SmartSCSIInformationalException {
+        NONE,
+        ABORTED_COMMAND,
+        TEMPERATURE_EXCEEDED,
+        ENCLOSURE_DEGRADED,
+        BACKGROUND_SELFTEST_FAILED,
+        BACKGROUND_PRESCAN_MEDIUM_ERROR,
+        BACKGROUND_SCAN_MEDIUM_ERROR,
+        NV_CACHE_VOLATILE,
+        NV_CACHE_DEGRADED_POWER,
+        POWER_LOSS_EXPECTED,
+        STATISTICS_NOTIFICATION,
+        HIGH_CRITICAL_TEMP,
+        LOW_CRITICAL_TEMP,
+        HIGH_OPERATING_TEMP,
+        LOW_OPERATING_TEMP,
+        HIGH_CRITICAL_HUMIDITY,
+        LOW_CRITICAL_HUMIDITY,
+        HIGH_OPERATING_HUMIDITY,
+        LOW_OPERATING_HUMIDITY,
+        MICROCODE_SECURITY_RISK,
+        MICROCODE_SIGNATURE_VALIDATION_FAILURE,
+        PHYSICAL_ELEMENT_STATUS_CHANGE,
+        FAILURE_PREDICTION_THRESH,
+        MEDIA_FAILURE_PREDICTION_THRESH,
+        LOGICAL_UNIT_FAILURE_PREDICTION_THRESH,
+        SPARE_EXHAUSTION_PREDICTION_THRESH,
+        HARDWARE_IMPENDING_FAILURE,
+        CONTROLLER_IMPENDING_FAILURE,
+        DATA_CHANNEL_IMPENDING_FAILURE,
+        SERVO_IMPENDING_FAILURE,
+        SPINDLE_IMPENDING_FAILURE,
+        FIRMWARE_IMPENDING_FAILURE,
+        MEDIA_ENDURANCE_LIMIT,
+        UNSPECIFIED,
+    }
+
+    export namespace SmartSelfTestOp {
+        export const $gtype: GObject.GType<SmartSelfTestOp>;
+    }
+
+    enum SmartSelfTestOp {
+        ABORT,
+        OFFLINE,
+        SHORT,
+        LONG,
+        CONVEYANCE,
+    }
+
+    export namespace SmartTech {
+        export const $gtype: GObject.GType<SmartTech>;
+    }
+
+    enum SmartTech {
+        ATA,
+        SCSI,
     }
     class SwapError extends GLib.Error {
         static $gtype: GObject.GType<SwapError>;
@@ -893,6 +1088,7 @@ export namespace BlockDev {
         ncontext: CryptoKeyslotContext,
     ): boolean;
     function crypto_luks_close(luks_device: string): boolean;
+    function crypto_luks_convert(device: string, target_version: CryptoLUKSVersion): boolean;
     /**
      * Formats the given `device` as LUKS according to the other parameters given. If
      * `min_entropy` is specified (greater than 0), the function waits for enough
@@ -965,6 +1161,37 @@ export namespace BlockDev {
     function crypto_luks_status(luks_device: string): string;
     function crypto_luks_suspend(luks_device: string): boolean;
     function crypto_luks_token_info(device: string): CryptoLUKSTokenInfo[];
+    /**
+     * Formats the given `device` as LUKS HW-OPAL according to the other parameters given. If
+     * `min_entropy` is specified (greater than 0), the function waits for enough
+     * entropy to be available in the random data pool (WHICH MAY POTENTIALLY TAKE
+     * FOREVER).
+     *
+     * Supported `context` types for this function: passphrase, key file
+     * Supported `opal_context` types for this function: passphrase
+     * @param device a device to format as LUKS HW-OPAL
+     * @param cipher cipher specification (type-mode, e.g. "aes-xts-plain64") or %NULL to use the default
+     * @param key_size size of the volume key in bits or 0 to use the default
+     * @param context key slot context (passphrase/keyfile/token...) for this LUKS device
+     * @param min_entropy minimum random data entropy (in bits) required to format @device as LUKS
+     * @param hw_encryption type of hardware encryption (SW+HW or HW only)
+     * @param opal_context OPAL admin passphrase
+     * @param extra extra arguments for LUKS format creation
+     * @returns whether the given @device was successfully formatted as LUKS HW-OPAL or not (the @error contains the error in such cases) Tech category: %BD_CRYPTO_TECH_LUKS-%BD_CRYPTO_TECH_MODE_CREATE
+     */
+    function crypto_opal_format(
+        device: string,
+        cipher: string | null,
+        key_size: number,
+        context: CryptoKeyslotContext,
+        min_entropy: number,
+        hw_encryption: CryptoLUKSHWEncryptionType,
+        opal_context: CryptoKeyslotContext,
+        extra?: CryptoLUKSExtra | null,
+    ): boolean;
+    function crypto_opal_is_supported(device: string): boolean;
+    function crypto_opal_reset_device(device: string, context: CryptoKeyslotContext): boolean;
+    function crypto_opal_wipe_device(device: string, context: CryptoKeyslotContext): boolean;
     function crypto_tc_close(tc_device: string): boolean;
     /**
      * Supported `context` types for this function: passphrase
@@ -2059,6 +2286,44 @@ export namespace BlockDev {
     function part_set_part_type(disk: string, part: string, type_guid: string): boolean;
     function part_set_part_uuid(disk: string, part: string, uuid: string): boolean;
     function reinit(require_plugins: PluginSpec[] | null, reload: boolean, log_func?: UtilsLogFunc | null): boolean;
+    /**
+     * Retrieve SMART information from the drive.
+     * @param device device to check.
+     * @param extra extra options to pass through.
+     * @returns ATA SMART log or %NULL in case of an error (with @error set). Tech category: %BD_SMART_TECH_ATA-%BD_SMART_TECH_MODE_INFO
+     */
+    function smart_ata_get_info(device: string, extra?: ExtraArg[] | null): SmartATA;
+    /**
+     * Retrieve SMART information from the supplied data.
+     * @param data binary data to parse.
+     * @returns ATA SMART log or %NULL in case of an error (with @error set). Tech category: %BD_SMART_TECH_ATA-%BD_SMART_TECH_MODE_INFO
+     */
+    function smart_ata_get_info_from_data(data: Uint8Array | string): SmartATA;
+    /**
+     * Executes or aborts device self-test.
+     * @param device device to trigger the test on.
+     * @param operation #BDSmartSelfTestOp self-test operation.
+     * @param extra extra options to pass through.
+     * @returns %TRUE when the self-test was triggered successfully or %FALSE in case of an error (with @error set). Tech category: %BD_SMART_TECH_ATA-%BD_SMART_TECH_MODE_SELFTEST
+     */
+    function smart_device_self_test(device: string, operation: SmartSelfTestOp, extra?: ExtraArg[] | null): boolean;
+    function smart_error_quark(): GLib.Quark;
+    function smart_is_tech_avail(tech: SmartTechMode, mode: number): boolean;
+    /**
+     * Retrieve SMART information from SCSI or SAS-compliant drive.
+     * @param device device to check.
+     * @param extra extra options to pass through.
+     * @returns SCSI SMART log or %NULL in case of an error (with @error set). Tech category: %BD_SMART_TECH_SCSI-%BD_SMART_TECH_MODE_INFO
+     */
+    function smart_scsi_get_info(device: string, extra?: ExtraArg[] | null): SmartSCSI;
+    /**
+     * Enables or disables SMART functionality on device.
+     * @param device SMART-capable device.
+     * @param enabled whether to enable or disable the SMART functionality
+     * @param extra extra options to pass through.
+     * @returns %TRUE when the functionality was set successfully or %FALSE in case of an error (with @error set). Tech category: %BD_SMART_TECH_ATA-%BD_SMART_TECH_MODE_INFO
+     */
+    function smart_set_enabled(device: string, enabled: boolean, extra?: ExtraArg[] | null): boolean;
     function swap_check_label(label: string): boolean;
     function swap_check_uuid(uuid: string): boolean;
     function swap_error_quark(): GLib.Quark;
@@ -2092,6 +2357,16 @@ export namespace BlockDev {
      * @returns an integer less than, equal to, or greater than zero, if detected version is <, == or > than the specified @major.@minor.@micro version.
      */
     function utils_check_linux_version(major: number, minor: number, micro: number): number;
+    /**
+     * Note: Both supplied `version` and parsed result using `version_regexp` must be in format
+     *       `X[.Y[.Z[.Z2[.Z3...[-R]]]]]` where all components are natural numbers, see
+     *       %bd_utils_version_cmp for details.
+     * @param util name of the utility to check
+     * @param version minimum required version of the utility or %NULL           if no version is required
+     * @param version_arg argument to use with the @util to get version               info or %NULL to use "--version"
+     * @param version_regexp regexp to extract version from the version                  info or %NULL if only version is printed by "$ @util @version_arg"
+     * @returns whether the @util is available in a version >= @version or not          (@error is set in such case).
+     */
     function utils_check_util_version(
         util: string,
         version?: string | null,
@@ -2113,6 +2388,10 @@ export namespace BlockDev {
      * @returns whether the @argv was successfully executed capturing the output or not
      */
     function utils_exec_and_capture_output(argv: string[], extra: ExtraArg[] | null): [boolean, string];
+    function utils_exec_and_capture_output_no_progress(
+        argv: string[],
+        extra: ExtraArg[] | null,
+    ): [boolean, string, string, number];
     function utils_exec_and_report_error(argv: string[], extra?: ExtraArg[] | null): boolean;
     function utils_exec_and_report_error_no_progress(argv: string[], extra?: ExtraArg[] | null): boolean;
     /**
@@ -2471,6 +2750,26 @@ export namespace BlockDev {
         QUERY_PART,
     }
 
+    export namespace SmartATACapabilities {
+        export const $gtype: GObject.GType<SmartATACapabilities>;
+    }
+
+    enum SmartATACapabilities {
+        ATTRIBUTE_AUTOSAVE,
+        AUTOSAVE_TIMER,
+        ERROR_LOGGING,
+        GP_LOGGING,
+    }
+
+    export namespace SmartTechMode {
+        export const $gtype: GObject.GType<SmartTechMode>;
+    }
+
+    enum SmartTechMode {
+        INFO,
+        SELFTEST,
+    }
+
     export namespace SwapTechMode {
         export const $gtype: GObject.GType<SwapTechMode>;
     }
@@ -2717,6 +3016,7 @@ export namespace BlockDev {
         metadata_size: number;
         label: string;
         subsystem: string;
+        hw_encryption: CryptoLUKSHWEncryptionType;
 
         // Constructors
 
@@ -3790,6 +4090,7 @@ export namespace BlockDev {
         size: number;
         bootable: boolean;
         attrs: number;
+        type_name: string;
 
         // Constructors
 
@@ -3805,6 +4106,7 @@ export namespace BlockDev {
                 size: number;
                 bootable: boolean;
                 attrs: number;
+                type_name: string;
             }>,
         );
         _init(...args: any[]): void;
@@ -3829,6 +4131,123 @@ export namespace BlockDev {
         _init(...args: any[]): void;
 
         static ['new'](name: Plugin, so_name?: string | null): PluginSpec;
+    }
+
+    class SmartATA {
+        static $gtype: GObject.GType<SmartATA>;
+
+        // Fields
+
+        smart_supported: boolean;
+        smart_enabled: boolean;
+        overall_status_passed: boolean;
+        offline_data_collection_status: SmartATAOfflineDataCollectionStatus;
+        auto_offline_data_collection_enabled: boolean;
+        offline_data_collection_completion: number;
+        offline_data_collection_capabilities: number;
+        self_test_status: SmartATASelfTestStatus;
+        self_test_percent_remaining: number;
+        self_test_polling_short: number;
+        self_test_polling_extended: number;
+        self_test_polling_conveyance: number;
+        smart_capabilities: number;
+        power_on_time: number;
+        power_cycle_count: number;
+        temperature: number;
+
+        // Constructors
+
+        _init(...args: any[]): void;
+
+        // Static methods
+
+        /**
+         * Retrieve SMART information from the drive.
+         * @param device device to check.
+         * @param extra extra options to pass through.
+         */
+        static get_info(device: string, extra?: ExtraArg[] | null): SmartATA;
+        /**
+         * Retrieve SMART information from the supplied data.
+         * @param data binary data to parse.
+         */
+        static get_info_from_data(data: Uint8Array | string): SmartATA;
+    }
+
+    class SmartATAAttribute {
+        static $gtype: GObject.GType<SmartATAAttribute>;
+
+        // Fields
+
+        id: number;
+        name: string;
+        well_known_name: string;
+        value: number;
+        worst: number;
+        threshold: number;
+        failed_past: boolean;
+        failing_now: boolean;
+        value_raw: number;
+        flags: number;
+        pretty_value: number;
+        pretty_value_unit: SmartATAAttributeUnit;
+        pretty_value_string: string;
+
+        // Constructors
+
+        _init(...args: any[]): void;
+    }
+
+    class SmartSCSI {
+        static $gtype: GObject.GType<SmartSCSI>;
+
+        // Fields
+
+        smart_supported: boolean;
+        smart_enabled: boolean;
+        overall_status_passed: boolean;
+        scsi_ie: SmartSCSIInformationalException;
+        scsi_ie_asc: number;
+        scsi_ie_ascq: number;
+        scsi_ie_string: string;
+        background_scan_status: SmartSCSIBackgroundScanStatus;
+        background_scan_progress: number;
+        background_scan_runs: number;
+        background_medium_scan_runs: number;
+        read_errors_corrected_eccfast: number;
+        read_errors_corrected_eccdelayed: number;
+        read_errors_corrected_rereads: number;
+        read_errors_corrected_total: number;
+        read_errors_uncorrected: number;
+        read_processed_bytes: number;
+        write_errors_corrected_eccfast: number;
+        write_errors_corrected_eccdelayed: number;
+        write_errors_corrected_rewrites: number;
+        write_errors_corrected_total: number;
+        write_errors_uncorrected: number;
+        write_processed_bytes: number;
+        start_stop_cycle_count: number;
+        start_stop_cycle_lifetime: number;
+        load_unload_cycle_count: number;
+        load_unload_cycle_lifetime: number;
+        scsi_grown_defect_list: number;
+        power_on_time: number;
+        temperature_warning_enabled: boolean;
+        temperature: number;
+        temperature_drive_trip: number;
+
+        // Constructors
+
+        _init(...args: any[]): void;
+
+        // Static methods
+
+        /**
+         * Retrieve SMART information from SCSI or SAS-compliant drive.
+         * @param device device to check.
+         * @param extra extra options to pass through.
+         */
+        static get_info(device: string, extra?: ExtraArg[] | null): SmartSCSI;
     }
 
     class UtilsLinuxVersion {

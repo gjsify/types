@@ -11,6 +11,7 @@
 import type Gio from '@girs/gio-2.0';
 import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
+import type GModule from '@girs/gmodule-2.0';
 
 export namespace UDisks {
     /**
@@ -687,7 +688,7 @@ export namespace UDisks {
          * in a thread, so if you want to support asynchronous initialization via
          * threads, just implement the #GAsyncInitable interface without overriding
          * any interface methods.
-         * @param io_priority the [I/O priority][io-priority] of the operation
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
@@ -749,7 +750,7 @@ export namespace UDisks {
          * in a thread, so if you want to support asynchronous initialization via
          * threads, just implement the #GAsyncInitable interface without overriding
          * any interface methods.
-         * @param io_priority the [I/O priority][io-priority] of the operation
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
@@ -2208,7 +2209,7 @@ export namespace UDisks {
          * in a thread, so if you want to support asynchronous initialization via
          * threads, just implement the #GAsyncInitable interface without overriding
          * any interface methods.
-         * @param io_priority the [I/O priority][io-priority] of the operation
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
@@ -2270,7 +2271,7 @@ export namespace UDisks {
          * in a thread, so if you want to support asynchronous initialization via
          * threads, just implement the #GAsyncInitable interface without overriding
          * any interface methods.
-         * @param io_priority the [I/O priority][io-priority] of the operation
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
@@ -2862,40 +2863,100 @@ export namespace UDisks {
          * @param invocation A #GDBusMethodInvocation.
          */
         complete_update_configuration_item(invocation: Gio.DBusMethodInvocation): void;
+        /**
+         * Handler for the #UDisksBlock::handle-add-configuration-item signal.
+         * @param invocation
+         * @param arg_item
+         * @param arg_options
+         */
         vfunc_handle_add_configuration_item(
             invocation: Gio.DBusMethodInvocation,
             arg_item: GLib.Variant,
             arg_options: GLib.Variant,
         ): boolean;
+        /**
+         * Handler for the #UDisksBlock::handle-format signal.
+         * @param invocation
+         * @param arg_type
+         * @param arg_options
+         */
         vfunc_handle_format(invocation: Gio.DBusMethodInvocation, arg_type: string, arg_options: GLib.Variant): boolean;
+        /**
+         * Handler for the #UDisksBlock::handle-get-secret-configuration signal.
+         * @param invocation
+         * @param arg_options
+         */
         vfunc_handle_get_secret_configuration(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
+        /**
+         * Handler for the #UDisksBlock::handle-open-device signal.
+         * @param invocation
+         * @param fd_list
+         * @param arg_mode
+         * @param arg_options
+         */
         vfunc_handle_open_device(
             invocation: Gio.DBusMethodInvocation,
             fd_list: Gio.UnixFDList,
             arg_mode: string,
             arg_options: GLib.Variant,
         ): boolean;
+        /**
+         * Handler for the #UDisksBlock::handle-open-for-backup signal.
+         * @param invocation
+         * @param fd_list
+         * @param arg_options
+         */
         vfunc_handle_open_for_backup(
             invocation: Gio.DBusMethodInvocation,
             fd_list: Gio.UnixFDList,
             arg_options: GLib.Variant,
         ): boolean;
+        /**
+         * Handler for the #UDisksBlock::handle-open-for-benchmark signal.
+         * @param invocation
+         * @param fd_list
+         * @param arg_options
+         */
         vfunc_handle_open_for_benchmark(
             invocation: Gio.DBusMethodInvocation,
             fd_list: Gio.UnixFDList,
             arg_options: GLib.Variant,
         ): boolean;
+        /**
+         * Handler for the #UDisksBlock::handle-open-for-restore signal.
+         * @param invocation
+         * @param fd_list
+         * @param arg_options
+         */
         vfunc_handle_open_for_restore(
             invocation: Gio.DBusMethodInvocation,
             fd_list: Gio.UnixFDList,
             arg_options: GLib.Variant,
         ): boolean;
+        /**
+         * Handler for the #UDisksBlock::handle-remove-configuration-item signal.
+         * @param invocation
+         * @param arg_item
+         * @param arg_options
+         */
         vfunc_handle_remove_configuration_item(
             invocation: Gio.DBusMethodInvocation,
             arg_item: GLib.Variant,
             arg_options: GLib.Variant,
         ): boolean;
+        /**
+         * Handler for the #UDisksBlock::handle-rescan signal.
+         * @param invocation
+         * @param arg_options
+         */
         vfunc_handle_rescan(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
+        /**
+         * Handler for the #UDisksBlock::handle-update-configuration-item signal.
+         * @param invocation
+         * @param arg_old_item
+         * @param arg_new_item
+         * @param arg_options
+         */
         vfunc_handle_update_configuration_item(
             invocation: Gio.DBusMethodInvocation,
             arg_old_item: GLib.Variant,
@@ -4123,40 +4184,100 @@ export namespace UDisks {
          * @param invocation A #GDBusMethodInvocation.
          */
         complete_update_configuration_item(invocation: Gio.DBusMethodInvocation): void;
+        /**
+         * Handler for the #UDisksBlock::handle-add-configuration-item signal.
+         * @param invocation
+         * @param arg_item
+         * @param arg_options
+         */
         vfunc_handle_add_configuration_item(
             invocation: Gio.DBusMethodInvocation,
             arg_item: GLib.Variant,
             arg_options: GLib.Variant,
         ): boolean;
+        /**
+         * Handler for the #UDisksBlock::handle-format signal.
+         * @param invocation
+         * @param arg_type
+         * @param arg_options
+         */
         vfunc_handle_format(invocation: Gio.DBusMethodInvocation, arg_type: string, arg_options: GLib.Variant): boolean;
+        /**
+         * Handler for the #UDisksBlock::handle-get-secret-configuration signal.
+         * @param invocation
+         * @param arg_options
+         */
         vfunc_handle_get_secret_configuration(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
+        /**
+         * Handler for the #UDisksBlock::handle-open-device signal.
+         * @param invocation
+         * @param fd_list
+         * @param arg_mode
+         * @param arg_options
+         */
         vfunc_handle_open_device(
             invocation: Gio.DBusMethodInvocation,
             fd_list: Gio.UnixFDList,
             arg_mode: string,
             arg_options: GLib.Variant,
         ): boolean;
+        /**
+         * Handler for the #UDisksBlock::handle-open-for-backup signal.
+         * @param invocation
+         * @param fd_list
+         * @param arg_options
+         */
         vfunc_handle_open_for_backup(
             invocation: Gio.DBusMethodInvocation,
             fd_list: Gio.UnixFDList,
             arg_options: GLib.Variant,
         ): boolean;
+        /**
+         * Handler for the #UDisksBlock::handle-open-for-benchmark signal.
+         * @param invocation
+         * @param fd_list
+         * @param arg_options
+         */
         vfunc_handle_open_for_benchmark(
             invocation: Gio.DBusMethodInvocation,
             fd_list: Gio.UnixFDList,
             arg_options: GLib.Variant,
         ): boolean;
+        /**
+         * Handler for the #UDisksBlock::handle-open-for-restore signal.
+         * @param invocation
+         * @param fd_list
+         * @param arg_options
+         */
         vfunc_handle_open_for_restore(
             invocation: Gio.DBusMethodInvocation,
             fd_list: Gio.UnixFDList,
             arg_options: GLib.Variant,
         ): boolean;
+        /**
+         * Handler for the #UDisksBlock::handle-remove-configuration-item signal.
+         * @param invocation
+         * @param arg_item
+         * @param arg_options
+         */
         vfunc_handle_remove_configuration_item(
             invocation: Gio.DBusMethodInvocation,
             arg_item: GLib.Variant,
             arg_options: GLib.Variant,
         ): boolean;
+        /**
+         * Handler for the #UDisksBlock::handle-rescan signal.
+         * @param invocation
+         * @param arg_options
+         */
         vfunc_handle_rescan(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
+        /**
+         * Handler for the #UDisksBlock::handle-update-configuration-item signal.
+         * @param invocation
+         * @param arg_old_item
+         * @param arg_new_item
+         * @param arg_options
+         */
         vfunc_handle_update_configuration_item(
             invocation: Gio.DBusMethodInvocation,
             arg_old_item: GLib.Variant,
@@ -4995,7 +5116,7 @@ export namespace UDisks {
          * in a thread, so if you want to support asynchronous initialization via
          * threads, just implement the #GAsyncInitable interface without overriding
          * any interface methods.
-         * @param io_priority the [I/O priority][io-priority] of the operation
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
@@ -5055,7 +5176,7 @@ export namespace UDisks {
          * in a thread, so if you want to support asynchronous initialization via
          * threads, just implement the #GAsyncInitable interface without overriding
          * any interface methods.
-         * @param io_priority the [I/O priority][io-priority] of the operation
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
@@ -6053,7 +6174,7 @@ export namespace UDisks {
          * in a thread, so if you want to support asynchronous initialization via
          * threads, just implement the #GAsyncInitable interface without overriding
          * any interface methods.
-         * @param io_priority the [I/O priority][io-priority] of the operation
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
@@ -6115,7 +6236,7 @@ export namespace UDisks {
          * in a thread, so if you want to support asynchronous initialization via
          * threads, just implement the #GAsyncInitable interface without overriding
          * any interface methods.
-         * @param io_priority the [I/O priority][io-priority] of the operation
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
@@ -6601,22 +6722,69 @@ export namespace UDisks {
          * @param invocation A #GDBusMethodInvocation.
          */
         complete_smart_update(invocation: Gio.DBusMethodInvocation): void;
+        /**
+         * Handler for the #UDisksDriveAta::handle-pm-get-state signal.
+         * @param invocation
+         * @param arg_options
+         */
         vfunc_handle_pm_get_state(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
+        /**
+         * Handler for the #UDisksDriveAta::handle-pm-standby signal.
+         * @param invocation
+         * @param arg_options
+         */
         vfunc_handle_pm_standby(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
+        /**
+         * Handler for the #UDisksDriveAta::handle-pm-wakeup signal.
+         * @param invocation
+         * @param arg_options
+         */
         vfunc_handle_pm_wakeup(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
+        /**
+         * Handler for the #UDisksDriveAta::handle-security-erase-unit signal.
+         * @param invocation
+         * @param arg_options
+         */
         vfunc_handle_security_erase_unit(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
+        /**
+         * Handler for the #UDisksDriveAta::handle-smart-get-attributes signal.
+         * @param invocation
+         * @param arg_options
+         */
         vfunc_handle_smart_get_attributes(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
+        /**
+         * Handler for the #UDisksDriveAta::handle-smart-selftest-abort signal.
+         * @param invocation
+         * @param arg_options
+         */
         vfunc_handle_smart_selftest_abort(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
+        /**
+         * Handler for the #UDisksDriveAta::handle-smart-selftest-start signal.
+         * @param invocation
+         * @param arg_type
+         * @param arg_options
+         */
         vfunc_handle_smart_selftest_start(
             invocation: Gio.DBusMethodInvocation,
             arg_type: string,
             arg_options: GLib.Variant,
         ): boolean;
+        /**
+         * Handler for the #UDisksDriveAta::handle-smart-set-enabled signal.
+         * @param invocation
+         * @param arg_value
+         * @param arg_options
+         */
         vfunc_handle_smart_set_enabled(
             invocation: Gio.DBusMethodInvocation,
             arg_value: boolean,
             arg_options: GLib.Variant,
         ): boolean;
+        /**
+         * Handler for the #UDisksDriveAta::handle-smart-update signal.
+         * @param invocation
+         * @param arg_options
+         */
         vfunc_handle_smart_update(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
@@ -7782,22 +7950,69 @@ export namespace UDisks {
          * @param invocation A #GDBusMethodInvocation.
          */
         complete_smart_update(invocation: Gio.DBusMethodInvocation): void;
+        /**
+         * Handler for the #UDisksDriveAta::handle-pm-get-state signal.
+         * @param invocation
+         * @param arg_options
+         */
         vfunc_handle_pm_get_state(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
+        /**
+         * Handler for the #UDisksDriveAta::handle-pm-standby signal.
+         * @param invocation
+         * @param arg_options
+         */
         vfunc_handle_pm_standby(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
+        /**
+         * Handler for the #UDisksDriveAta::handle-pm-wakeup signal.
+         * @param invocation
+         * @param arg_options
+         */
         vfunc_handle_pm_wakeup(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
+        /**
+         * Handler for the #UDisksDriveAta::handle-security-erase-unit signal.
+         * @param invocation
+         * @param arg_options
+         */
         vfunc_handle_security_erase_unit(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
+        /**
+         * Handler for the #UDisksDriveAta::handle-smart-get-attributes signal.
+         * @param invocation
+         * @param arg_options
+         */
         vfunc_handle_smart_get_attributes(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
+        /**
+         * Handler for the #UDisksDriveAta::handle-smart-selftest-abort signal.
+         * @param invocation
+         * @param arg_options
+         */
         vfunc_handle_smart_selftest_abort(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
+        /**
+         * Handler for the #UDisksDriveAta::handle-smart-selftest-start signal.
+         * @param invocation
+         * @param arg_type
+         * @param arg_options
+         */
         vfunc_handle_smart_selftest_start(
             invocation: Gio.DBusMethodInvocation,
             arg_type: string,
             arg_options: GLib.Variant,
         ): boolean;
+        /**
+         * Handler for the #UDisksDriveAta::handle-smart-set-enabled signal.
+         * @param invocation
+         * @param arg_value
+         * @param arg_options
+         */
         vfunc_handle_smart_set_enabled(
             invocation: Gio.DBusMethodInvocation,
             arg_value: boolean,
             arg_options: GLib.Variant,
         ): boolean;
+        /**
+         * Handler for the #UDisksDriveAta::handle-smart-update signal.
+         * @param invocation
+         * @param arg_options
+         */
         vfunc_handle_smart_update(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
@@ -8487,7 +8702,7 @@ export namespace UDisks {
          * in a thread, so if you want to support asynchronous initialization via
          * threads, just implement the #GAsyncInitable interface without overriding
          * any interface methods.
-         * @param io_priority the [I/O priority][io-priority] of the operation
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
@@ -8549,7 +8764,7 @@ export namespace UDisks {
          * in a thread, so if you want to support asynchronous initialization via
          * threads, just implement the #GAsyncInitable interface without overriding
          * any interface methods.
-         * @param io_priority the [I/O priority][io-priority] of the operation
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
@@ -9831,7 +10046,7 @@ export namespace UDisks {
          * in a thread, so if you want to support asynchronous initialization via
          * threads, just implement the #GAsyncInitable interface without overriding
          * any interface methods.
-         * @param io_priority the [I/O priority][io-priority] of the operation
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
@@ -9893,7 +10108,7 @@ export namespace UDisks {
          * in a thread, so if you want to support asynchronous initialization via
          * threads, just implement the #GAsyncInitable interface without overriding
          * any interface methods.
-         * @param io_priority the [I/O priority][io-priority] of the operation
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
@@ -10175,9 +10390,29 @@ export namespace UDisks {
          * @param invocation A #GDBusMethodInvocation.
          */
         complete_turn_ident_ledon(invocation: Gio.DBusMethodInvocation): void;
+        /**
+         * Handler for the #UDisksDriveLsmLocal::handle-turn-fault-ledoff signal.
+         * @param invocation
+         * @param arg_options
+         */
         vfunc_handle_turn_fault_ledoff(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
+        /**
+         * Handler for the #UDisksDriveLsmLocal::handle-turn-fault-ledon signal.
+         * @param invocation
+         * @param arg_options
+         */
         vfunc_handle_turn_fault_ledon(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
+        /**
+         * Handler for the #UDisksDriveLsmLocal::handle-turn-ident-ledoff signal.
+         * @param invocation
+         * @param arg_options
+         */
         vfunc_handle_turn_ident_ledoff(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
+        /**
+         * Handler for the #UDisksDriveLsmLocal::handle-turn-ident-ledon signal.
+         * @param invocation
+         * @param arg_options
+         */
         vfunc_handle_turn_ident_ledon(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
@@ -10787,9 +11022,29 @@ export namespace UDisks {
          * @param invocation A #GDBusMethodInvocation.
          */
         complete_turn_ident_ledon(invocation: Gio.DBusMethodInvocation): void;
+        /**
+         * Handler for the #UDisksDriveLsmLocal::handle-turn-fault-ledoff signal.
+         * @param invocation
+         * @param arg_options
+         */
         vfunc_handle_turn_fault_ledoff(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
+        /**
+         * Handler for the #UDisksDriveLsmLocal::handle-turn-fault-ledon signal.
+         * @param invocation
+         * @param arg_options
+         */
         vfunc_handle_turn_fault_ledon(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
+        /**
+         * Handler for the #UDisksDriveLsmLocal::handle-turn-ident-ledoff signal.
+         * @param invocation
+         * @param arg_options
+         */
         vfunc_handle_turn_ident_ledoff(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
+        /**
+         * Handler for the #UDisksDriveLsmLocal::handle-turn-ident-ledon signal.
+         * @param invocation
+         * @param arg_options
+         */
         vfunc_handle_turn_ident_ledon(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
@@ -11654,7 +11909,7 @@ export namespace UDisks {
          * in a thread, so if you want to support asynchronous initialization via
          * threads, just implement the #GAsyncInitable interface without overriding
          * any interface methods.
-         * @param io_priority the [I/O priority][io-priority] of the operation
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
@@ -11716,7 +11971,7 @@ export namespace UDisks {
          * in a thread, so if you want to support asynchronous initialization via
          * threads, just implement the #GAsyncInitable interface without overriding
          * any interface methods.
-         * @param io_priority the [I/O priority][io-priority] of the operation
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
@@ -11968,8 +12223,24 @@ export namespace UDisks {
          * @param invocation A #GDBusMethodInvocation.
          */
         complete_set_configuration(invocation: Gio.DBusMethodInvocation): void;
+        /**
+         * Handler for the #UDisksDrive::handle-eject signal.
+         * @param invocation
+         * @param arg_options
+         */
         vfunc_handle_eject(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
+        /**
+         * Handler for the #UDisksDrive::handle-power-off signal.
+         * @param invocation
+         * @param arg_options
+         */
         vfunc_handle_power_off(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
+        /**
+         * Handler for the #UDisksDrive::handle-set-configuration signal.
+         * @param invocation
+         * @param arg_value
+         * @param arg_options
+         */
         vfunc_handle_set_configuration(
             invocation: Gio.DBusMethodInvocation,
             arg_value: GLib.Variant,
@@ -12870,8 +13141,24 @@ export namespace UDisks {
          * @param invocation A #GDBusMethodInvocation.
          */
         complete_set_configuration(invocation: Gio.DBusMethodInvocation): void;
+        /**
+         * Handler for the #UDisksDrive::handle-eject signal.
+         * @param invocation
+         * @param arg_options
+         */
         vfunc_handle_eject(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
+        /**
+         * Handler for the #UDisksDrive::handle-power-off signal.
+         * @param invocation
+         * @param arg_options
+         */
         vfunc_handle_power_off(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
+        /**
+         * Handler for the #UDisksDrive::handle-set-configuration signal.
+         * @param invocation
+         * @param arg_value
+         * @param arg_options
+         */
         vfunc_handle_set_configuration(
             invocation: Gio.DBusMethodInvocation,
             arg_value: GLib.Variant,
@@ -13481,7 +13768,7 @@ export namespace UDisks {
          * in a thread, so if you want to support asynchronous initialization via
          * threads, just implement the #GAsyncInitable interface without overriding
          * any interface methods.
-         * @param io_priority the [I/O priority][io-priority] of the operation
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
@@ -13543,7 +13830,7 @@ export namespace UDisks {
          * in a thread, so if you want to support asynchronous initialization via
          * threads, just implement the #GAsyncInitable interface without overriding
          * any interface methods.
-         * @param io_priority the [I/O priority][io-priority] of the operation
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
@@ -13847,14 +14134,38 @@ export namespace UDisks {
          * @param cleartext_device Parameter to return.
          */
         complete_unlock(invocation: Gio.DBusMethodInvocation, cleartext_device: string): void;
+        /**
+         * Handler for the #UDisksEncrypted::handle-change-passphrase signal.
+         * @param invocation
+         * @param arg_passphrase
+         * @param arg_new_passphrase
+         * @param arg_options
+         */
         vfunc_handle_change_passphrase(
             invocation: Gio.DBusMethodInvocation,
             arg_passphrase: string,
             arg_new_passphrase: string,
             arg_options: GLib.Variant,
         ): boolean;
+        /**
+         * Handler for the #UDisksEncrypted::handle-lock signal.
+         * @param invocation
+         * @param arg_options
+         */
         vfunc_handle_lock(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
+        /**
+         * Handler for the #UDisksEncrypted::handle-resize signal.
+         * @param invocation
+         * @param arg_size
+         * @param arg_options
+         */
         vfunc_handle_resize(invocation: Gio.DBusMethodInvocation, arg_size: number, arg_options: GLib.Variant): boolean;
+        /**
+         * Handler for the #UDisksEncrypted::handle-unlock signal.
+         * @param invocation
+         * @param arg_passphrase
+         * @param arg_options
+         */
         vfunc_handle_unlock(
             invocation: Gio.DBusMethodInvocation,
             arg_passphrase: string,
@@ -14548,14 +14859,38 @@ export namespace UDisks {
          * @param cleartext_device Parameter to return.
          */
         complete_unlock(invocation: Gio.DBusMethodInvocation, cleartext_device: string): void;
+        /**
+         * Handler for the #UDisksEncrypted::handle-change-passphrase signal.
+         * @param invocation
+         * @param arg_passphrase
+         * @param arg_new_passphrase
+         * @param arg_options
+         */
         vfunc_handle_change_passphrase(
             invocation: Gio.DBusMethodInvocation,
             arg_passphrase: string,
             arg_new_passphrase: string,
             arg_options: GLib.Variant,
         ): boolean;
+        /**
+         * Handler for the #UDisksEncrypted::handle-lock signal.
+         * @param invocation
+         * @param arg_options
+         */
         vfunc_handle_lock(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
+        /**
+         * Handler for the #UDisksEncrypted::handle-resize signal.
+         * @param invocation
+         * @param arg_size
+         * @param arg_options
+         */
         vfunc_handle_resize(invocation: Gio.DBusMethodInvocation, arg_size: number, arg_options: GLib.Variant): boolean;
+        /**
+         * Handler for the #UDisksEncrypted::handle-unlock signal.
+         * @param invocation
+         * @param arg_passphrase
+         * @param arg_options
+         */
         vfunc_handle_unlock(
             invocation: Gio.DBusMethodInvocation,
             arg_passphrase: string,
@@ -15144,7 +15479,7 @@ export namespace UDisks {
          * in a thread, so if you want to support asynchronous initialization via
          * threads, just implement the #GAsyncInitable interface without overriding
          * any interface methods.
-         * @param io_priority the [I/O priority][io-priority] of the operation
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
@@ -15206,7 +15541,7 @@ export namespace UDisks {
          * in a thread, so if you want to support asynchronous initialization via
          * threads, just implement the #GAsyncInitable interface without overriding
          * any interface methods.
-         * @param io_priority the [I/O priority][io-priority] of the operation
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
@@ -15739,11 +16074,25 @@ export namespace UDisks {
          * @param invocation A #GDBusMethodInvocation.
          */
         complete_set_label(invocation: Gio.DBusMethodInvocation): void;
+        /**
+         * Handler for the #UDisksFilesystemBTRFS::handle-add-device signal.
+         * @param invocation
+         * @param arg_device
+         * @param arg_options
+         */
         vfunc_handle_add_device(
             invocation: Gio.DBusMethodInvocation,
             arg_device: string,
             arg_options: GLib.Variant,
         ): boolean;
+        /**
+         * Handler for the #UDisksFilesystemBTRFS::handle-create-snapshot signal.
+         * @param invocation
+         * @param arg_source
+         * @param arg_dest
+         * @param arg_ro
+         * @param arg_options
+         */
         vfunc_handle_create_snapshot(
             invocation: Gio.DBusMethodInvocation,
             arg_source: string,
@@ -15751,28 +16100,69 @@ export namespace UDisks {
             arg_ro: boolean,
             arg_options: GLib.Variant,
         ): boolean;
+        /**
+         * Handler for the #UDisksFilesystemBTRFS::handle-create-subvolume signal.
+         * @param invocation
+         * @param arg_name
+         * @param arg_options
+         */
         vfunc_handle_create_subvolume(
             invocation: Gio.DBusMethodInvocation,
             arg_name: string,
             arg_options: GLib.Variant,
         ): boolean;
+        /**
+         * Handler for the #UDisksFilesystemBTRFS::handle-get-subvolumes signal.
+         * @param invocation
+         * @param arg_snapshots_only
+         * @param arg_options
+         */
         vfunc_handle_get_subvolumes(
             invocation: Gio.DBusMethodInvocation,
             arg_snapshots_only: boolean,
             arg_options: GLib.Variant,
         ): boolean;
+        /**
+         * Handler for the #UDisksFilesystemBTRFS::handle-remove-device signal.
+         * @param invocation
+         * @param arg_device
+         * @param arg_options
+         */
         vfunc_handle_remove_device(
             invocation: Gio.DBusMethodInvocation,
             arg_device: string,
             arg_options: GLib.Variant,
         ): boolean;
+        /**
+         * Handler for the #UDisksFilesystemBTRFS::handle-remove-subvolume signal.
+         * @param invocation
+         * @param arg_name
+         * @param arg_options
+         */
         vfunc_handle_remove_subvolume(
             invocation: Gio.DBusMethodInvocation,
             arg_name: string,
             arg_options: GLib.Variant,
         ): boolean;
+        /**
+         * Handler for the #UDisksFilesystemBTRFS::handle-repair signal.
+         * @param invocation
+         * @param arg_options
+         */
         vfunc_handle_repair(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
+        /**
+         * Handler for the #UDisksFilesystemBTRFS::handle-resize signal.
+         * @param invocation
+         * @param arg_size
+         * @param arg_options
+         */
         vfunc_handle_resize(invocation: Gio.DBusMethodInvocation, arg_size: number, arg_options: GLib.Variant): boolean;
+        /**
+         * Handler for the #UDisksFilesystemBTRFS::handle-set-label signal.
+         * @param invocation
+         * @param arg_label
+         * @param arg_options
+         */
         vfunc_handle_set_label(
             invocation: Gio.DBusMethodInvocation,
             arg_label: string,
@@ -16674,11 +17064,25 @@ export namespace UDisks {
          * @param invocation A #GDBusMethodInvocation.
          */
         complete_set_label(invocation: Gio.DBusMethodInvocation): void;
+        /**
+         * Handler for the #UDisksFilesystemBTRFS::handle-add-device signal.
+         * @param invocation
+         * @param arg_device
+         * @param arg_options
+         */
         vfunc_handle_add_device(
             invocation: Gio.DBusMethodInvocation,
             arg_device: string,
             arg_options: GLib.Variant,
         ): boolean;
+        /**
+         * Handler for the #UDisksFilesystemBTRFS::handle-create-snapshot signal.
+         * @param invocation
+         * @param arg_source
+         * @param arg_dest
+         * @param arg_ro
+         * @param arg_options
+         */
         vfunc_handle_create_snapshot(
             invocation: Gio.DBusMethodInvocation,
             arg_source: string,
@@ -16686,28 +17090,69 @@ export namespace UDisks {
             arg_ro: boolean,
             arg_options: GLib.Variant,
         ): boolean;
+        /**
+         * Handler for the #UDisksFilesystemBTRFS::handle-create-subvolume signal.
+         * @param invocation
+         * @param arg_name
+         * @param arg_options
+         */
         vfunc_handle_create_subvolume(
             invocation: Gio.DBusMethodInvocation,
             arg_name: string,
             arg_options: GLib.Variant,
         ): boolean;
+        /**
+         * Handler for the #UDisksFilesystemBTRFS::handle-get-subvolumes signal.
+         * @param invocation
+         * @param arg_snapshots_only
+         * @param arg_options
+         */
         vfunc_handle_get_subvolumes(
             invocation: Gio.DBusMethodInvocation,
             arg_snapshots_only: boolean,
             arg_options: GLib.Variant,
         ): boolean;
+        /**
+         * Handler for the #UDisksFilesystemBTRFS::handle-remove-device signal.
+         * @param invocation
+         * @param arg_device
+         * @param arg_options
+         */
         vfunc_handle_remove_device(
             invocation: Gio.DBusMethodInvocation,
             arg_device: string,
             arg_options: GLib.Variant,
         ): boolean;
+        /**
+         * Handler for the #UDisksFilesystemBTRFS::handle-remove-subvolume signal.
+         * @param invocation
+         * @param arg_name
+         * @param arg_options
+         */
         vfunc_handle_remove_subvolume(
             invocation: Gio.DBusMethodInvocation,
             arg_name: string,
             arg_options: GLib.Variant,
         ): boolean;
+        /**
+         * Handler for the #UDisksFilesystemBTRFS::handle-repair signal.
+         * @param invocation
+         * @param arg_options
+         */
         vfunc_handle_repair(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
+        /**
+         * Handler for the #UDisksFilesystemBTRFS::handle-resize signal.
+         * @param invocation
+         * @param arg_size
+         * @param arg_options
+         */
         vfunc_handle_resize(invocation: Gio.DBusMethodInvocation, arg_size: number, arg_options: GLib.Variant): boolean;
+        /**
+         * Handler for the #UDisksFilesystemBTRFS::handle-set-label signal.
+         * @param invocation
+         * @param arg_label
+         * @param arg_options
+         */
         vfunc_handle_set_label(
             invocation: Gio.DBusMethodInvocation,
             arg_label: string,
@@ -17282,7 +17727,7 @@ export namespace UDisks {
          * in a thread, so if you want to support asynchronous initialization via
          * threads, just implement the #GAsyncInitable interface without overriding
          * any interface methods.
-         * @param io_priority the [I/O priority][io-priority] of the operation
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
@@ -17344,7 +17789,7 @@ export namespace UDisks {
          * in a thread, so if you want to support asynchronous initialization via
          * threads, just implement the #GAsyncInitable interface without overriding
          * any interface methods.
-         * @param io_priority the [I/O priority][io-priority] of the operation
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
@@ -17790,21 +18235,64 @@ export namespace UDisks {
          * @param invocation A #GDBusMethodInvocation.
          */
         complete_unmount(invocation: Gio.DBusMethodInvocation): void;
+        /**
+         * Handler for the #UDisksFilesystem::handle-check signal.
+         * @param invocation
+         * @param arg_options
+         */
         vfunc_handle_check(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
+        /**
+         * Handler for the #UDisksFilesystem::handle-mount signal.
+         * @param invocation
+         * @param arg_options
+         */
         vfunc_handle_mount(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
+        /**
+         * Handler for the #UDisksFilesystem::handle-repair signal.
+         * @param invocation
+         * @param arg_options
+         */
         vfunc_handle_repair(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
+        /**
+         * Handler for the #UDisksFilesystem::handle-resize signal.
+         * @param invocation
+         * @param arg_size
+         * @param arg_options
+         */
         vfunc_handle_resize(invocation: Gio.DBusMethodInvocation, arg_size: number, arg_options: GLib.Variant): boolean;
+        /**
+         * Handler for the #UDisksFilesystem::handle-set-label signal.
+         * @param invocation
+         * @param arg_label
+         * @param arg_options
+         */
         vfunc_handle_set_label(
             invocation: Gio.DBusMethodInvocation,
             arg_label: string,
             arg_options: GLib.Variant,
         ): boolean;
+        /**
+         * Handler for the #UDisksFilesystem::handle-set-uuid signal.
+         * @param invocation
+         * @param arg_uuid
+         * @param arg_options
+         */
         vfunc_handle_set_uuid(
             invocation: Gio.DBusMethodInvocation,
             arg_uuid: string,
             arg_options: GLib.Variant,
         ): boolean;
+        /**
+         * Handler for the #UDisksFilesystem::handle-take-ownership signal.
+         * @param invocation
+         * @param arg_options
+         */
         vfunc_handle_take_ownership(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
+        /**
+         * Handler for the #UDisksFilesystem::handle-unmount signal.
+         * @param invocation
+         * @param arg_options
+         */
         vfunc_handle_unmount(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
@@ -18601,21 +19089,64 @@ export namespace UDisks {
          * @param invocation A #GDBusMethodInvocation.
          */
         complete_unmount(invocation: Gio.DBusMethodInvocation): void;
+        /**
+         * Handler for the #UDisksFilesystem::handle-check signal.
+         * @param invocation
+         * @param arg_options
+         */
         vfunc_handle_check(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
+        /**
+         * Handler for the #UDisksFilesystem::handle-mount signal.
+         * @param invocation
+         * @param arg_options
+         */
         vfunc_handle_mount(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
+        /**
+         * Handler for the #UDisksFilesystem::handle-repair signal.
+         * @param invocation
+         * @param arg_options
+         */
         vfunc_handle_repair(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
+        /**
+         * Handler for the #UDisksFilesystem::handle-resize signal.
+         * @param invocation
+         * @param arg_size
+         * @param arg_options
+         */
         vfunc_handle_resize(invocation: Gio.DBusMethodInvocation, arg_size: number, arg_options: GLib.Variant): boolean;
+        /**
+         * Handler for the #UDisksFilesystem::handle-set-label signal.
+         * @param invocation
+         * @param arg_label
+         * @param arg_options
+         */
         vfunc_handle_set_label(
             invocation: Gio.DBusMethodInvocation,
             arg_label: string,
             arg_options: GLib.Variant,
         ): boolean;
+        /**
+         * Handler for the #UDisksFilesystem::handle-set-uuid signal.
+         * @param invocation
+         * @param arg_uuid
+         * @param arg_options
+         */
         vfunc_handle_set_uuid(
             invocation: Gio.DBusMethodInvocation,
             arg_uuid: string,
             arg_options: GLib.Variant,
         ): boolean;
+        /**
+         * Handler for the #UDisksFilesystem::handle-take-ownership signal.
+         * @param invocation
+         * @param arg_options
+         */
         vfunc_handle_take_ownership(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
+        /**
+         * Handler for the #UDisksFilesystem::handle-unmount signal.
+         * @param invocation
+         * @param arg_options
+         */
         vfunc_handle_unmount(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
@@ -19284,7 +19815,7 @@ export namespace UDisks {
          * in a thread, so if you want to support asynchronous initialization via
          * threads, just implement the #GAsyncInitable interface without overriding
          * any interface methods.
-         * @param io_priority the [I/O priority][io-priority] of the operation
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
@@ -19346,7 +19877,7 @@ export namespace UDisks {
          * in a thread, so if you want to support asynchronous initialization via
          * threads, just implement the #GAsyncInitable interface without overriding
          * any interface methods.
-         * @param io_priority the [I/O priority][io-priority] of the operation
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
@@ -19561,7 +20092,18 @@ export namespace UDisks {
          * @param invocation A #GDBusMethodInvocation.
          */
         complete_logout_interface(invocation: Gio.DBusMethodInvocation): void;
+        /**
+         * Handler for the #UDisksISCSISession::handle-logout signal.
+         * @param invocation
+         * @param arg_options
+         */
         vfunc_handle_logout(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
+        /**
+         * Handler for the #UDisksISCSISession::handle-logout-interface signal.
+         * @param invocation
+         * @param arg_iface
+         * @param arg_options
+         */
         vfunc_handle_logout_interface(
             invocation: Gio.DBusMethodInvocation,
             arg_iface: string,
@@ -20229,7 +20771,18 @@ export namespace UDisks {
          * @param invocation A #GDBusMethodInvocation.
          */
         complete_logout_interface(invocation: Gio.DBusMethodInvocation): void;
+        /**
+         * Handler for the #UDisksISCSISession::handle-logout signal.
+         * @param invocation
+         * @param arg_options
+         */
         vfunc_handle_logout(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
+        /**
+         * Handler for the #UDisksISCSISession::handle-logout-interface signal.
+         * @param invocation
+         * @param arg_iface
+         * @param arg_options
+         */
         vfunc_handle_logout_interface(
             invocation: Gio.DBusMethodInvocation,
             arg_iface: string,
@@ -20878,7 +21431,7 @@ export namespace UDisks {
          * in a thread, so if you want to support asynchronous initialization via
          * threads, just implement the #GAsyncInitable interface without overriding
          * any interface methods.
-         * @param io_priority the [I/O priority][io-priority] of the operation
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
@@ -20940,7 +21493,7 @@ export namespace UDisks {
          * in a thread, so if you want to support asynchronous initialization via
          * threads, just implement the #GAsyncInitable interface without overriding
          * any interface methods.
-         * @param io_priority the [I/O priority][io-priority] of the operation
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
@@ -21117,7 +21670,17 @@ export namespace UDisks {
          * @param arg_message Argument to pass with the signal.
          */
         emit_completed(arg_success: boolean, arg_message: string): void;
+        /**
+         * Handler for the #UDisksJob::completed signal.
+         * @param arg_success
+         * @param arg_message
+         */
         vfunc_completed(arg_success: boolean, arg_message: string): void;
+        /**
+         * Handler for the #UDisksJob::handle-cancel signal.
+         * @param invocation
+         * @param arg_options
+         */
         vfunc_handle_cancel(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
@@ -21722,7 +22285,17 @@ export namespace UDisks {
          * @param arg_message Argument to pass with the signal.
          */
         emit_completed(arg_success: boolean, arg_message: string): void;
+        /**
+         * Handler for the #UDisksJob::completed signal.
+         * @param arg_success
+         * @param arg_message
+         */
         vfunc_completed(arg_success: boolean, arg_message: string): void;
+        /**
+         * Handler for the #UDisksJob::handle-cancel signal.
+         * @param invocation
+         * @param arg_options
+         */
         vfunc_handle_cancel(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
@@ -22426,7 +22999,7 @@ export namespace UDisks {
          * in a thread, so if you want to support asynchronous initialization via
          * threads, just implement the #GAsyncInitable interface without overriding
          * any interface methods.
-         * @param io_priority the [I/O priority][io-priority] of the operation
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
@@ -22488,7 +23061,7 @@ export namespace UDisks {
          * in a thread, so if you want to support asynchronous initialization via
          * threads, just implement the #GAsyncInitable interface without overriding
          * any interface methods.
-         * @param io_priority the [I/O priority][io-priority] of the operation
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
@@ -23030,28 +23603,84 @@ export namespace UDisks {
          * @param invocation A #GDBusMethodInvocation.
          */
         complete_resize(invocation: Gio.DBusMethodInvocation): void;
+        /**
+         * Handler for the #UDisksLogicalVolume::handle-activate signal.
+         * @param invocation
+         * @param arg_options
+         */
         vfunc_handle_activate(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
+        /**
+         * Handler for the #UDisksLogicalVolume::handle-cache-attach signal.
+         * @param invocation
+         * @param arg_cache_name
+         * @param arg_options
+         */
         vfunc_handle_cache_attach(
             invocation: Gio.DBusMethodInvocation,
             arg_cache_name: string,
             arg_options: GLib.Variant,
         ): boolean;
+        /**
+         * Handler for the #UDisksLogicalVolume::handle-cache-detach signal.
+         * @param invocation
+         * @param arg_options
+         */
         vfunc_handle_cache_detach(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
+        /**
+         * Handler for the #UDisksLogicalVolume::handle-cache-split signal.
+         * @param invocation
+         * @param arg_options
+         */
         vfunc_handle_cache_split(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
+        /**
+         * Handler for the #UDisksLogicalVolume::handle-create-snapshot signal.
+         * @param invocation
+         * @param arg_name
+         * @param arg_size
+         * @param arg_options
+         */
         vfunc_handle_create_snapshot(
             invocation: Gio.DBusMethodInvocation,
             arg_name: string,
             arg_size: number,
             arg_options: GLib.Variant,
         ): boolean;
+        /**
+         * Handler for the #UDisksLogicalVolume::handle-deactivate signal.
+         * @param invocation
+         * @param arg_options
+         */
         vfunc_handle_deactivate(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
+        /**
+         * Handler for the #UDisksLogicalVolume::handle-delete signal.
+         * @param invocation
+         * @param arg_options
+         */
         vfunc_handle_delete(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
+        /**
+         * Handler for the #UDisksLogicalVolume::handle-rename signal.
+         * @param invocation
+         * @param arg_new_name
+         * @param arg_options
+         */
         vfunc_handle_rename(
             invocation: Gio.DBusMethodInvocation,
             arg_new_name: string,
             arg_options: GLib.Variant,
         ): boolean;
+        /**
+         * Handler for the #UDisksLogicalVolume::handle-repair signal.
+         * @param invocation
+         * @param arg_pvs
+         * @param arg_options
+         */
         vfunc_handle_repair(invocation: Gio.DBusMethodInvocation, arg_pvs: string, arg_options: GLib.Variant): boolean;
+        /**
+         * Handler for the #UDisksLogicalVolume::handle-resize signal.
+         * @param invocation
+         * @param arg_new_size
+         * @param arg_options
+         */
         vfunc_handle_resize(
             invocation: Gio.DBusMethodInvocation,
             arg_new_size: number,
@@ -24081,28 +24710,84 @@ export namespace UDisks {
          * @param invocation A #GDBusMethodInvocation.
          */
         complete_resize(invocation: Gio.DBusMethodInvocation): void;
+        /**
+         * Handler for the #UDisksLogicalVolume::handle-activate signal.
+         * @param invocation
+         * @param arg_options
+         */
         vfunc_handle_activate(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
+        /**
+         * Handler for the #UDisksLogicalVolume::handle-cache-attach signal.
+         * @param invocation
+         * @param arg_cache_name
+         * @param arg_options
+         */
         vfunc_handle_cache_attach(
             invocation: Gio.DBusMethodInvocation,
             arg_cache_name: string,
             arg_options: GLib.Variant,
         ): boolean;
+        /**
+         * Handler for the #UDisksLogicalVolume::handle-cache-detach signal.
+         * @param invocation
+         * @param arg_options
+         */
         vfunc_handle_cache_detach(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
+        /**
+         * Handler for the #UDisksLogicalVolume::handle-cache-split signal.
+         * @param invocation
+         * @param arg_options
+         */
         vfunc_handle_cache_split(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
+        /**
+         * Handler for the #UDisksLogicalVolume::handle-create-snapshot signal.
+         * @param invocation
+         * @param arg_name
+         * @param arg_size
+         * @param arg_options
+         */
         vfunc_handle_create_snapshot(
             invocation: Gio.DBusMethodInvocation,
             arg_name: string,
             arg_size: number,
             arg_options: GLib.Variant,
         ): boolean;
+        /**
+         * Handler for the #UDisksLogicalVolume::handle-deactivate signal.
+         * @param invocation
+         * @param arg_options
+         */
         vfunc_handle_deactivate(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
+        /**
+         * Handler for the #UDisksLogicalVolume::handle-delete signal.
+         * @param invocation
+         * @param arg_options
+         */
         vfunc_handle_delete(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
+        /**
+         * Handler for the #UDisksLogicalVolume::handle-rename signal.
+         * @param invocation
+         * @param arg_new_name
+         * @param arg_options
+         */
         vfunc_handle_rename(
             invocation: Gio.DBusMethodInvocation,
             arg_new_name: string,
             arg_options: GLib.Variant,
         ): boolean;
+        /**
+         * Handler for the #UDisksLogicalVolume::handle-repair signal.
+         * @param invocation
+         * @param arg_pvs
+         * @param arg_options
+         */
         vfunc_handle_repair(invocation: Gio.DBusMethodInvocation, arg_pvs: string, arg_options: GLib.Variant): boolean;
+        /**
+         * Handler for the #UDisksLogicalVolume::handle-resize signal.
+         * @param invocation
+         * @param arg_new_size
+         * @param arg_options
+         */
         vfunc_handle_resize(
             invocation: Gio.DBusMethodInvocation,
             arg_new_size: number,
@@ -24691,7 +25376,7 @@ export namespace UDisks {
          * in a thread, so if you want to support asynchronous initialization via
          * threads, just implement the #GAsyncInitable interface without overriding
          * any interface methods.
-         * @param io_priority the [I/O priority][io-priority] of the operation
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
@@ -24753,7 +25438,7 @@ export namespace UDisks {
          * in a thread, so if you want to support asynchronous initialization via
          * threads, just implement the #GAsyncInitable interface without overriding
          * any interface methods.
-         * @param io_priority the [I/O priority][io-priority] of the operation
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
@@ -24968,7 +25653,18 @@ export namespace UDisks {
          * @param invocation A #GDBusMethodInvocation.
          */
         complete_set_autoclear(invocation: Gio.DBusMethodInvocation): void;
+        /**
+         * Handler for the #UDisksLoop::handle-delete signal.
+         * @param invocation
+         * @param arg_options
+         */
         vfunc_handle_delete(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
+        /**
+         * Handler for the #UDisksLoop::handle-set-autoclear signal.
+         * @param invocation
+         * @param arg_value
+         * @param arg_options
+         */
         vfunc_handle_set_autoclear(
             invocation: Gio.DBusMethodInvocation,
             arg_value: boolean,
@@ -25552,7 +26248,18 @@ export namespace UDisks {
          * @param invocation A #GDBusMethodInvocation.
          */
         complete_set_autoclear(invocation: Gio.DBusMethodInvocation): void;
+        /**
+         * Handler for the #UDisksLoop::handle-delete signal.
+         * @param invocation
+         * @param arg_options
+         */
         vfunc_handle_delete(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
+        /**
+         * Handler for the #UDisksLoop::handle-set-autoclear signal.
+         * @param invocation
+         * @param arg_value
+         * @param arg_options
+         */
         vfunc_handle_set_autoclear(
             invocation: Gio.DBusMethodInvocation,
             arg_value: boolean,
@@ -26274,7 +26981,7 @@ export namespace UDisks {
          * in a thread, so if you want to support asynchronous initialization via
          * threads, just implement the #GAsyncInitable interface without overriding
          * any interface methods.
-         * @param io_priority the [I/O priority][io-priority] of the operation
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
@@ -26336,7 +27043,7 @@ export namespace UDisks {
          * in a thread, so if you want to support asynchronous initialization via
          * threads, just implement the #GAsyncInitable interface without overriding
          * any interface methods.
-         * @param io_priority the [I/O priority][io-priority] of the operation
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
@@ -26757,28 +27464,67 @@ export namespace UDisks {
          * @param invocation A #GDBusMethodInvocation.
          */
         complete_stop(invocation: Gio.DBusMethodInvocation): void;
+        /**
+         * Handler for the #UDisksMDRaid::handle-add-device signal.
+         * @param invocation
+         * @param arg_device
+         * @param arg_options
+         */
         vfunc_handle_add_device(
             invocation: Gio.DBusMethodInvocation,
             arg_device: string,
             arg_options: GLib.Variant,
         ): boolean;
+        /**
+         * Handler for the #UDisksMDRaid::handle-delete signal.
+         * @param invocation
+         * @param arg_options
+         */
         vfunc_handle_delete(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
+        /**
+         * Handler for the #UDisksMDRaid::handle-remove-device signal.
+         * @param invocation
+         * @param arg_device
+         * @param arg_options
+         */
         vfunc_handle_remove_device(
             invocation: Gio.DBusMethodInvocation,
             arg_device: string,
             arg_options: GLib.Variant,
         ): boolean;
+        /**
+         * Handler for the #UDisksMDRaid::handle-request-sync-action signal.
+         * @param invocation
+         * @param arg_sync_action
+         * @param arg_options
+         */
         vfunc_handle_request_sync_action(
             invocation: Gio.DBusMethodInvocation,
             arg_sync_action: string,
             arg_options: GLib.Variant,
         ): boolean;
+        /**
+         * Handler for the #UDisksMDRaid::handle-set-bitmap-location signal.
+         * @param invocation
+         * @param arg_value
+         * @param arg_options
+         */
         vfunc_handle_set_bitmap_location(
             invocation: Gio.DBusMethodInvocation,
             arg_value: string,
             arg_options: GLib.Variant,
         ): boolean;
+        /**
+         * Handler for the #UDisksMDRaid::handle-start signal.
+         * @param invocation
+         * @param arg_options
+         */
         vfunc_handle_start(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
+        /**
+         * Handler for the #UDisksMDRaid::handle-stop signal.
+         * @param invocation
+         * @param arg_options
+         */
         vfunc_handle_stop(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
@@ -27697,28 +28443,67 @@ export namespace UDisks {
          * @param invocation A #GDBusMethodInvocation.
          */
         complete_stop(invocation: Gio.DBusMethodInvocation): void;
+        /**
+         * Handler for the #UDisksMDRaid::handle-add-device signal.
+         * @param invocation
+         * @param arg_device
+         * @param arg_options
+         */
         vfunc_handle_add_device(
             invocation: Gio.DBusMethodInvocation,
             arg_device: string,
             arg_options: GLib.Variant,
         ): boolean;
+        /**
+         * Handler for the #UDisksMDRaid::handle-delete signal.
+         * @param invocation
+         * @param arg_options
+         */
         vfunc_handle_delete(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
+        /**
+         * Handler for the #UDisksMDRaid::handle-remove-device signal.
+         * @param invocation
+         * @param arg_device
+         * @param arg_options
+         */
         vfunc_handle_remove_device(
             invocation: Gio.DBusMethodInvocation,
             arg_device: string,
             arg_options: GLib.Variant,
         ): boolean;
+        /**
+         * Handler for the #UDisksMDRaid::handle-request-sync-action signal.
+         * @param invocation
+         * @param arg_sync_action
+         * @param arg_options
+         */
         vfunc_handle_request_sync_action(
             invocation: Gio.DBusMethodInvocation,
             arg_sync_action: string,
             arg_options: GLib.Variant,
         ): boolean;
+        /**
+         * Handler for the #UDisksMDRaid::handle-set-bitmap-location signal.
+         * @param invocation
+         * @param arg_value
+         * @param arg_options
+         */
         vfunc_handle_set_bitmap_location(
             invocation: Gio.DBusMethodInvocation,
             arg_value: string,
             arg_options: GLib.Variant,
         ): boolean;
+        /**
+         * Handler for the #UDisksMDRaid::handle-start signal.
+         * @param invocation
+         * @param arg_options
+         */
         vfunc_handle_start(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
+        /**
+         * Handler for the #UDisksMDRaid::handle-stop signal.
+         * @param invocation
+         * @param arg_options
+         */
         vfunc_handle_stop(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
@@ -28266,7 +29051,7 @@ export namespace UDisks {
          * in a thread, so if you want to support asynchronous initialization via
          * threads, just implement the #GAsyncInitable interface without overriding
          * any interface methods.
-         * @param io_priority the [I/O priority][io-priority] of the operation
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
@@ -28328,7 +29113,7 @@ export namespace UDisks {
          * in a thread, so if you want to support asynchronous initialization via
          * threads, just implement the #GAsyncInitable interface without overriding
          * any interface methods.
-         * @param io_priority the [I/O priority][io-priority] of the operation
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
@@ -28518,6 +29303,15 @@ export namespace UDisks {
          * @param invocation A #GDBusMethodInvocation.
          */
         complete_create_volume(invocation: Gio.DBusMethodInvocation): void;
+        /**
+         * Handler for the #UDisksManagerBTRFS::handle-create-volume signal.
+         * @param invocation
+         * @param arg_devices
+         * @param arg_label
+         * @param arg_data_level
+         * @param arg_md_level
+         * @param arg_options
+         */
         vfunc_handle_create_volume(
             invocation: Gio.DBusMethodInvocation,
             arg_devices: string,
@@ -29042,6 +29836,15 @@ export namespace UDisks {
          * @param invocation A #GDBusMethodInvocation.
          */
         complete_create_volume(invocation: Gio.DBusMethodInvocation): void;
+        /**
+         * Handler for the #UDisksManagerBTRFS::handle-create-volume signal.
+         * @param invocation
+         * @param arg_devices
+         * @param arg_label
+         * @param arg_data_level
+         * @param arg_md_level
+         * @param arg_options
+         */
         vfunc_handle_create_volume(
             invocation: Gio.DBusMethodInvocation,
             arg_devices: string,
@@ -29616,7 +30419,7 @@ export namespace UDisks {
          * in a thread, so if you want to support asynchronous initialization via
          * threads, just implement the #GAsyncInitable interface without overriding
          * any interface methods.
-         * @param io_priority the [I/O priority][io-priority] of the operation
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
@@ -29678,7 +30481,7 @@ export namespace UDisks {
          * in a thread, so if you want to support asynchronous initialization via
          * threads, just implement the #GAsyncInitable interface without overriding
          * any interface methods.
-         * @param io_priority the [I/O priority][io-priority] of the operation
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
@@ -30177,16 +30980,50 @@ export namespace UDisks {
          * @param invocation A #GDBusMethodInvocation.
          */
         complete_set_initiator_name(invocation: Gio.DBusMethodInvocation): void;
+        /**
+         * Handler for the #UDisksManagerISCSIInitiator::handle-discover-firmware signal.
+         * @param invocation
+         * @param arg_options
+         */
         vfunc_handle_discover_firmware(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
+        /**
+         * Handler for the #UDisksManagerISCSIInitiator::handle-discover-send-targets signal.
+         * @param invocation
+         * @param arg_address
+         * @param arg_port
+         * @param arg_options
+         */
         vfunc_handle_discover_send_targets(
             invocation: Gio.DBusMethodInvocation,
             arg_address: string,
             arg_port: number,
             arg_options: GLib.Variant,
         ): boolean;
+        /**
+         * Handler for the #UDisksManagerISCSIInitiator::handle-get-firmware-initiator-name signal.
+         * @param invocation
+         */
         vfunc_handle_get_firmware_initiator_name(invocation: Gio.DBusMethodInvocation): boolean;
+        /**
+         * Handler for the #UDisksManagerISCSIInitiator::handle-get-initiator-name signal.
+         * @param invocation
+         */
         vfunc_handle_get_initiator_name(invocation: Gio.DBusMethodInvocation): boolean;
+        /**
+         * Handler for the #UDisksManagerISCSIInitiator::handle-get-initiator-name-raw signal.
+         * @param invocation
+         */
         vfunc_handle_get_initiator_name_raw(invocation: Gio.DBusMethodInvocation): boolean;
+        /**
+         * Handler for the #UDisksManagerISCSIInitiator::handle-login signal.
+         * @param invocation
+         * @param arg_name
+         * @param arg_tpgt
+         * @param arg_address
+         * @param arg_port
+         * @param arg_iface
+         * @param arg_options
+         */
         vfunc_handle_login(
             invocation: Gio.DBusMethodInvocation,
             arg_name: string,
@@ -30196,6 +31033,16 @@ export namespace UDisks {
             arg_iface: string,
             arg_options: GLib.Variant,
         ): boolean;
+        /**
+         * Handler for the #UDisksManagerISCSIInitiator::handle-logout signal.
+         * @param invocation
+         * @param arg_name
+         * @param arg_tpgt
+         * @param arg_address
+         * @param arg_port
+         * @param arg_iface
+         * @param arg_options
+         */
         vfunc_handle_logout(
             invocation: Gio.DBusMethodInvocation,
             arg_name: string,
@@ -30205,6 +31052,12 @@ export namespace UDisks {
             arg_iface: string,
             arg_options: GLib.Variant,
         ): boolean;
+        /**
+         * Handler for the #UDisksManagerISCSIInitiator::handle-set-initiator-name signal.
+         * @param invocation
+         * @param arg_name
+         * @param arg_options
+         */
         vfunc_handle_set_initiator_name(
             invocation: Gio.DBusMethodInvocation,
             arg_name: string,
@@ -31054,16 +31907,50 @@ export namespace UDisks {
          * @param invocation A #GDBusMethodInvocation.
          */
         complete_set_initiator_name(invocation: Gio.DBusMethodInvocation): void;
+        /**
+         * Handler for the #UDisksManagerISCSIInitiator::handle-discover-firmware signal.
+         * @param invocation
+         * @param arg_options
+         */
         vfunc_handle_discover_firmware(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
+        /**
+         * Handler for the #UDisksManagerISCSIInitiator::handle-discover-send-targets signal.
+         * @param invocation
+         * @param arg_address
+         * @param arg_port
+         * @param arg_options
+         */
         vfunc_handle_discover_send_targets(
             invocation: Gio.DBusMethodInvocation,
             arg_address: string,
             arg_port: number,
             arg_options: GLib.Variant,
         ): boolean;
+        /**
+         * Handler for the #UDisksManagerISCSIInitiator::handle-get-firmware-initiator-name signal.
+         * @param invocation
+         */
         vfunc_handle_get_firmware_initiator_name(invocation: Gio.DBusMethodInvocation): boolean;
+        /**
+         * Handler for the #UDisksManagerISCSIInitiator::handle-get-initiator-name signal.
+         * @param invocation
+         */
         vfunc_handle_get_initiator_name(invocation: Gio.DBusMethodInvocation): boolean;
+        /**
+         * Handler for the #UDisksManagerISCSIInitiator::handle-get-initiator-name-raw signal.
+         * @param invocation
+         */
         vfunc_handle_get_initiator_name_raw(invocation: Gio.DBusMethodInvocation): boolean;
+        /**
+         * Handler for the #UDisksManagerISCSIInitiator::handle-login signal.
+         * @param invocation
+         * @param arg_name
+         * @param arg_tpgt
+         * @param arg_address
+         * @param arg_port
+         * @param arg_iface
+         * @param arg_options
+         */
         vfunc_handle_login(
             invocation: Gio.DBusMethodInvocation,
             arg_name: string,
@@ -31073,6 +31960,16 @@ export namespace UDisks {
             arg_iface: string,
             arg_options: GLib.Variant,
         ): boolean;
+        /**
+         * Handler for the #UDisksManagerISCSIInitiator::handle-logout signal.
+         * @param invocation
+         * @param arg_name
+         * @param arg_tpgt
+         * @param arg_address
+         * @param arg_port
+         * @param arg_iface
+         * @param arg_options
+         */
         vfunc_handle_logout(
             invocation: Gio.DBusMethodInvocation,
             arg_name: string,
@@ -31082,6 +31979,12 @@ export namespace UDisks {
             arg_iface: string,
             arg_options: GLib.Variant,
         ): boolean;
+        /**
+         * Handler for the #UDisksManagerISCSIInitiator::handle-set-initiator-name signal.
+         * @param invocation
+         * @param arg_name
+         * @param arg_options
+         */
         vfunc_handle_set_initiator_name(
             invocation: Gio.DBusMethodInvocation,
             arg_name: string,
@@ -31633,7 +32536,7 @@ export namespace UDisks {
          * in a thread, so if you want to support asynchronous initialization via
          * threads, just implement the #GAsyncInitable interface without overriding
          * any interface methods.
-         * @param io_priority the [I/O priority][io-priority] of the operation
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
@@ -31695,7 +32598,7 @@ export namespace UDisks {
          * in a thread, so if you want to support asynchronous initialization via
          * threads, just implement the #GAsyncInitable interface without overriding
          * any interface methods.
-         * @param io_priority the [I/O priority][io-priority] of the operation
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
@@ -31878,6 +32781,13 @@ export namespace UDisks {
          * @param result Parameter to return.
          */
         complete_volume_group_create(invocation: Gio.DBusMethodInvocation, result: string): void;
+        /**
+         * Handler for the #UDisksManagerLVM2::handle-volume-group-create signal.
+         * @param invocation
+         * @param arg_name
+         * @param arg_blocks
+         * @param arg_options
+         */
         vfunc_handle_volume_group_create(
             invocation: Gio.DBusMethodInvocation,
             arg_name: string,
@@ -32393,6 +33303,13 @@ export namespace UDisks {
          * @param result Parameter to return.
          */
         complete_volume_group_create(invocation: Gio.DBusMethodInvocation, result: string): void;
+        /**
+         * Handler for the #UDisksManagerLVM2::handle-volume-group-create signal.
+         * @param invocation
+         * @param arg_name
+         * @param arg_blocks
+         * @param arg_options
+         */
         vfunc_handle_volume_group_create(
             invocation: Gio.DBusMethodInvocation,
             arg_name: string,
@@ -32975,7 +33892,7 @@ export namespace UDisks {
          * in a thread, so if you want to support asynchronous initialization via
          * threads, just implement the #GAsyncInitable interface without overriding
          * any interface methods.
-         * @param io_priority the [I/O priority][io-priority] of the operation
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
@@ -33037,7 +33954,7 @@ export namespace UDisks {
          * in a thread, so if you want to support asynchronous initialization via
          * threads, just implement the #GAsyncInitable interface without overriding
          * any interface methods.
-         * @param io_priority the [I/O priority][io-priority] of the operation
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
@@ -33312,6 +34229,14 @@ export namespace UDisks {
          * @param invocation A #GDBusMethodInvocation.
          */
         complete_set_host_nqn(invocation: Gio.DBusMethodInvocation): void;
+        /**
+         * Handler for the #UDisksManagerNVMe::handle-connect signal.
+         * @param invocation
+         * @param arg_subsysnqn
+         * @param arg_transport
+         * @param arg_transport_addr
+         * @param arg_options
+         */
         vfunc_handle_connect(
             invocation: Gio.DBusMethodInvocation,
             arg_subsysnqn: string,
@@ -33319,11 +34244,23 @@ export namespace UDisks {
             arg_transport_addr: string,
             arg_options: GLib.Variant,
         ): boolean;
+        /**
+         * Handler for the #UDisksManagerNVMe::handle-set-host-id signal.
+         * @param invocation
+         * @param arg_hostid
+         * @param arg_options
+         */
         vfunc_handle_set_host_id(
             invocation: Gio.DBusMethodInvocation,
             arg_hostid: string,
             arg_options: GLib.Variant,
         ): boolean;
+        /**
+         * Handler for the #UDisksManagerNVMe::handle-set-host-nqn signal.
+         * @param invocation
+         * @param arg_hostnqn
+         * @param arg_options
+         */
         vfunc_handle_set_host_nqn(
             invocation: Gio.DBusMethodInvocation,
             arg_hostnqn: string,
@@ -33960,6 +34897,14 @@ export namespace UDisks {
          * @param invocation A #GDBusMethodInvocation.
          */
         complete_set_host_nqn(invocation: Gio.DBusMethodInvocation): void;
+        /**
+         * Handler for the #UDisksManagerNVMe::handle-connect signal.
+         * @param invocation
+         * @param arg_subsysnqn
+         * @param arg_transport
+         * @param arg_transport_addr
+         * @param arg_options
+         */
         vfunc_handle_connect(
             invocation: Gio.DBusMethodInvocation,
             arg_subsysnqn: string,
@@ -33967,11 +34912,23 @@ export namespace UDisks {
             arg_transport_addr: string,
             arg_options: GLib.Variant,
         ): boolean;
+        /**
+         * Handler for the #UDisksManagerNVMe::handle-set-host-id signal.
+         * @param invocation
+         * @param arg_hostid
+         * @param arg_options
+         */
         vfunc_handle_set_host_id(
             invocation: Gio.DBusMethodInvocation,
             arg_hostid: string,
             arg_options: GLib.Variant,
         ): boolean;
+        /**
+         * Handler for the #UDisksManagerNVMe::handle-set-host-nqn signal.
+         * @param invocation
+         * @param arg_hostnqn
+         * @param arg_options
+         */
         vfunc_handle_set_host_nqn(
             invocation: Gio.DBusMethodInvocation,
             arg_hostnqn: string,
@@ -34574,7 +35531,7 @@ export namespace UDisks {
          * in a thread, so if you want to support asynchronous initialization via
          * threads, just implement the #GAsyncInitable interface without overriding
          * any interface methods.
-         * @param io_priority the [I/O priority][io-priority] of the operation
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
@@ -34636,7 +35593,7 @@ export namespace UDisks {
          * in a thread, so if you want to support asynchronous initialization via
          * threads, just implement the #GAsyncInitable interface without overriding
          * any interface methods.
-         * @param io_priority the [I/O priority][io-priority] of the operation
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
@@ -35196,23 +36153,75 @@ export namespace UDisks {
          * @param devices Parameter to return.
          */
         complete_resolve_device(invocation: Gio.DBusMethodInvocation, devices: string): void;
+        /**
+         * Handler for the #UDisksManager::handle-can-check signal.
+         * @param invocation
+         * @param arg_type
+         */
         vfunc_handle_can_check(invocation: Gio.DBusMethodInvocation, arg_type: string): boolean;
+        /**
+         * Handler for the #UDisksManager::handle-can-format signal.
+         * @param invocation
+         * @param arg_type
+         */
         vfunc_handle_can_format(invocation: Gio.DBusMethodInvocation, arg_type: string): boolean;
+        /**
+         * Handler for the #UDisksManager::handle-can-repair signal.
+         * @param invocation
+         * @param arg_type
+         */
         vfunc_handle_can_repair(invocation: Gio.DBusMethodInvocation, arg_type: string): boolean;
+        /**
+         * Handler for the #UDisksManager::handle-can-resize signal.
+         * @param invocation
+         * @param arg_type
+         */
         vfunc_handle_can_resize(invocation: Gio.DBusMethodInvocation, arg_type: string): boolean;
+        /**
+         * Handler for the #UDisksManager::handle-enable-module signal.
+         * @param invocation
+         * @param arg_name
+         * @param arg_enable
+         */
         vfunc_handle_enable_module(
             invocation: Gio.DBusMethodInvocation,
             arg_name: string,
             arg_enable: boolean,
         ): boolean;
+        /**
+         * Handler for the #UDisksManager::handle-enable-modules signal.
+         * @param invocation
+         * @param arg_enable
+         */
         vfunc_handle_enable_modules(invocation: Gio.DBusMethodInvocation, arg_enable: boolean): boolean;
+        /**
+         * Handler for the #UDisksManager::handle-get-block-devices signal.
+         * @param invocation
+         * @param arg_options
+         */
         vfunc_handle_get_block_devices(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
+        /**
+         * Handler for the #UDisksManager::handle-loop-setup signal.
+         * @param invocation
+         * @param fd_list
+         * @param arg_fd
+         * @param arg_options
+         */
         vfunc_handle_loop_setup(
             invocation: Gio.DBusMethodInvocation,
             fd_list: Gio.UnixFDList,
             arg_fd: GLib.Variant,
             arg_options: GLib.Variant,
         ): boolean;
+        /**
+         * Handler for the #UDisksManager::handle-mdraid-create signal.
+         * @param invocation
+         * @param arg_blocks
+         * @param arg_level
+         * @param arg_name
+         * @param arg_chunk
+         * @param arg_options
+         */
         vfunc_handle_mdraid_create(
             invocation: Gio.DBusMethodInvocation,
             arg_blocks: string,
@@ -35221,6 +36230,12 @@ export namespace UDisks {
             arg_chunk: number,
             arg_options: GLib.Variant,
         ): boolean;
+        /**
+         * Handler for the #UDisksManager::handle-resolve-device signal.
+         * @param invocation
+         * @param arg_devspec
+         * @param arg_options
+         */
         vfunc_handle_resolve_device(
             invocation: Gio.DBusMethodInvocation,
             arg_devspec: GLib.Variant,
@@ -36163,23 +37178,75 @@ export namespace UDisks {
          * @param devices Parameter to return.
          */
         complete_resolve_device(invocation: Gio.DBusMethodInvocation, devices: string): void;
+        /**
+         * Handler for the #UDisksManager::handle-can-check signal.
+         * @param invocation
+         * @param arg_type
+         */
         vfunc_handle_can_check(invocation: Gio.DBusMethodInvocation, arg_type: string): boolean;
+        /**
+         * Handler for the #UDisksManager::handle-can-format signal.
+         * @param invocation
+         * @param arg_type
+         */
         vfunc_handle_can_format(invocation: Gio.DBusMethodInvocation, arg_type: string): boolean;
+        /**
+         * Handler for the #UDisksManager::handle-can-repair signal.
+         * @param invocation
+         * @param arg_type
+         */
         vfunc_handle_can_repair(invocation: Gio.DBusMethodInvocation, arg_type: string): boolean;
+        /**
+         * Handler for the #UDisksManager::handle-can-resize signal.
+         * @param invocation
+         * @param arg_type
+         */
         vfunc_handle_can_resize(invocation: Gio.DBusMethodInvocation, arg_type: string): boolean;
+        /**
+         * Handler for the #UDisksManager::handle-enable-module signal.
+         * @param invocation
+         * @param arg_name
+         * @param arg_enable
+         */
         vfunc_handle_enable_module(
             invocation: Gio.DBusMethodInvocation,
             arg_name: string,
             arg_enable: boolean,
         ): boolean;
+        /**
+         * Handler for the #UDisksManager::handle-enable-modules signal.
+         * @param invocation
+         * @param arg_enable
+         */
         vfunc_handle_enable_modules(invocation: Gio.DBusMethodInvocation, arg_enable: boolean): boolean;
+        /**
+         * Handler for the #UDisksManager::handle-get-block-devices signal.
+         * @param invocation
+         * @param arg_options
+         */
         vfunc_handle_get_block_devices(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
+        /**
+         * Handler for the #UDisksManager::handle-loop-setup signal.
+         * @param invocation
+         * @param fd_list
+         * @param arg_fd
+         * @param arg_options
+         */
         vfunc_handle_loop_setup(
             invocation: Gio.DBusMethodInvocation,
             fd_list: Gio.UnixFDList,
             arg_fd: GLib.Variant,
             arg_options: GLib.Variant,
         ): boolean;
+        /**
+         * Handler for the #UDisksManager::handle-mdraid-create signal.
+         * @param invocation
+         * @param arg_blocks
+         * @param arg_level
+         * @param arg_name
+         * @param arg_chunk
+         * @param arg_options
+         */
         vfunc_handle_mdraid_create(
             invocation: Gio.DBusMethodInvocation,
             arg_blocks: string,
@@ -36188,6 +37255,12 @@ export namespace UDisks {
             arg_chunk: number,
             arg_options: GLib.Variant,
         ): boolean;
+        /**
+         * Handler for the #UDisksManager::handle-resolve-device signal.
+         * @param invocation
+         * @param arg_devspec
+         * @param arg_options
+         */
         vfunc_handle_resolve_device(
             invocation: Gio.DBusMethodInvocation,
             arg_devspec: GLib.Variant,
@@ -36923,7 +37996,7 @@ export namespace UDisks {
          * in a thread, so if you want to support asynchronous initialization via
          * threads, just implement the #GAsyncInitable interface without overriding
          * any interface methods.
-         * @param io_priority the [I/O priority][io-priority] of the operation
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
@@ -36985,7 +38058,7 @@ export namespace UDisks {
          * in a thread, so if you want to support asynchronous initialization via
          * threads, just implement the #GAsyncInitable interface without overriding
          * any interface methods.
-         * @param io_priority the [I/O priority][io-priority] of the operation
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
@@ -37322,18 +38395,45 @@ export namespace UDisks {
          * @param invocation A #GDBusMethodInvocation.
          */
         complete_smart_update(invocation: Gio.DBusMethodInvocation): void;
+        /**
+         * Handler for the #UDisksNVMeController::handle-sanitize-start signal.
+         * @param invocation
+         * @param arg_action
+         * @param arg_options
+         */
         vfunc_handle_sanitize_start(
             invocation: Gio.DBusMethodInvocation,
             arg_action: string,
             arg_options: GLib.Variant,
         ): boolean;
+        /**
+         * Handler for the #UDisksNVMeController::handle-smart-get-attributes signal.
+         * @param invocation
+         * @param arg_options
+         */
         vfunc_handle_smart_get_attributes(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
+        /**
+         * Handler for the #UDisksNVMeController::handle-smart-selftest-abort signal.
+         * @param invocation
+         * @param arg_options
+         */
         vfunc_handle_smart_selftest_abort(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
+        /**
+         * Handler for the #UDisksNVMeController::handle-smart-selftest-start signal.
+         * @param invocation
+         * @param arg_type
+         * @param arg_options
+         */
         vfunc_handle_smart_selftest_start(
             invocation: Gio.DBusMethodInvocation,
             arg_type: string,
             arg_options: GLib.Variant,
         ): boolean;
+        /**
+         * Handler for the #UDisksNVMeController::handle-smart-update signal.
+         * @param invocation
+         * @param arg_options
+         */
         vfunc_handle_smart_update(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
@@ -38182,18 +39282,45 @@ export namespace UDisks {
          * @param invocation A #GDBusMethodInvocation.
          */
         complete_smart_update(invocation: Gio.DBusMethodInvocation): void;
+        /**
+         * Handler for the #UDisksNVMeController::handle-sanitize-start signal.
+         * @param invocation
+         * @param arg_action
+         * @param arg_options
+         */
         vfunc_handle_sanitize_start(
             invocation: Gio.DBusMethodInvocation,
             arg_action: string,
             arg_options: GLib.Variant,
         ): boolean;
+        /**
+         * Handler for the #UDisksNVMeController::handle-smart-get-attributes signal.
+         * @param invocation
+         * @param arg_options
+         */
         vfunc_handle_smart_get_attributes(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
+        /**
+         * Handler for the #UDisksNVMeController::handle-smart-selftest-abort signal.
+         * @param invocation
+         * @param arg_options
+         */
         vfunc_handle_smart_selftest_abort(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
+        /**
+         * Handler for the #UDisksNVMeController::handle-smart-selftest-start signal.
+         * @param invocation
+         * @param arg_type
+         * @param arg_options
+         */
         vfunc_handle_smart_selftest_start(
             invocation: Gio.DBusMethodInvocation,
             arg_type: string,
             arg_options: GLib.Variant,
         ): boolean;
+        /**
+         * Handler for the #UDisksNVMeController::handle-smart-update signal.
+         * @param invocation
+         * @param arg_options
+         */
         vfunc_handle_smart_update(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
@@ -38792,7 +39919,7 @@ export namespace UDisks {
          * in a thread, so if you want to support asynchronous initialization via
          * threads, just implement the #GAsyncInitable interface without overriding
          * any interface methods.
-         * @param io_priority the [I/O priority][io-priority] of the operation
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
@@ -38854,7 +39981,7 @@ export namespace UDisks {
          * in a thread, so if you want to support asynchronous initialization via
          * threads, just implement the #GAsyncInitable interface without overriding
          * any interface methods.
-         * @param io_priority the [I/O priority][io-priority] of the operation
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
@@ -39025,6 +40152,11 @@ export namespace UDisks {
          * @param invocation A #GDBusMethodInvocation.
          */
         complete_disconnect(invocation: Gio.DBusMethodInvocation): void;
+        /**
+         * Handler for the #UDisksNVMeFabrics::handle-disconnect signal.
+         * @param invocation
+         * @param arg_options
+         */
         vfunc_handle_disconnect(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
@@ -39574,6 +40706,11 @@ export namespace UDisks {
          * @param invocation A #GDBusMethodInvocation.
          */
         complete_disconnect(invocation: Gio.DBusMethodInvocation): void;
+        /**
+         * Handler for the #UDisksNVMeFabrics::handle-disconnect signal.
+         * @param invocation
+         * @param arg_options
+         */
         vfunc_handle_disconnect(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
@@ -40235,7 +41372,7 @@ export namespace UDisks {
          * in a thread, so if you want to support asynchronous initialization via
          * threads, just implement the #GAsyncInitable interface without overriding
          * any interface methods.
-         * @param io_priority the [I/O priority][io-priority] of the operation
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
@@ -40297,7 +41434,7 @@ export namespace UDisks {
          * in a thread, so if you want to support asynchronous initialization via
          * threads, just implement the #GAsyncInitable interface without overriding
          * any interface methods.
-         * @param io_priority the [I/O priority][io-priority] of the operation
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
@@ -40468,6 +41605,11 @@ export namespace UDisks {
          * @param invocation A #GDBusMethodInvocation.
          */
         complete_format_namespace(invocation: Gio.DBusMethodInvocation): void;
+        /**
+         * Handler for the #UDisksNVMeNamespace::handle-format-namespace signal.
+         * @param invocation
+         * @param arg_options
+         */
         vfunc_handle_format_namespace(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
@@ -41080,6 +42222,11 @@ export namespace UDisks {
          * @param invocation A #GDBusMethodInvocation.
          */
         complete_format_namespace(invocation: Gio.DBusMethodInvocation): void;
+        /**
+         * Handler for the #UDisksNVMeNamespace::handle-format-namespace signal.
+         * @param invocation
+         * @param arg_options
+         */
         vfunc_handle_format_namespace(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
@@ -41731,7 +42878,7 @@ export namespace UDisks {
          * in a thread, so if you want to support asynchronous initialization via
          * threads, just implement the #GAsyncInitable interface without overriding
          * any interface methods.
-         * @param io_priority the [I/O priority][io-priority] of the operation
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
@@ -41793,7 +42940,7 @@ export namespace UDisks {
          * in a thread, so if you want to support asynchronous initialization via
          * threads, just implement the #GAsyncInitable interface without overriding
          * any interface methods.
-         * @param io_priority the [I/O priority][io-priority] of the operation
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
@@ -44596,7 +45743,7 @@ export namespace UDisks {
          * in a thread, so if you want to support asynchronous initialization via
          * threads, just implement the #GAsyncInitable interface without overriding
          * any interface methods.
-         * @param io_priority the [I/O priority][io-priority] of the operation
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
@@ -44658,7 +45805,7 @@ export namespace UDisks {
          * in a thread, so if you want to support asynchronous initialization via
          * threads, just implement the #GAsyncInitable interface without overriding
          * any interface methods.
-         * @param io_priority the [I/O priority][io-priority] of the operation
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
@@ -45033,23 +46180,58 @@ export namespace UDisks {
          * @param invocation A #GDBusMethodInvocation.
          */
         complete_set_uuid(invocation: Gio.DBusMethodInvocation): void;
+        /**
+         * Handler for the #UDisksPartition::handle-delete signal.
+         * @param invocation
+         * @param arg_options
+         */
         vfunc_handle_delete(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
+        /**
+         * Handler for the #UDisksPartition::handle-resize signal.
+         * @param invocation
+         * @param arg_size
+         * @param arg_options
+         */
         vfunc_handle_resize(invocation: Gio.DBusMethodInvocation, arg_size: number, arg_options: GLib.Variant): boolean;
+        /**
+         * Handler for the #UDisksPartition::handle-set-flags signal.
+         * @param invocation
+         * @param arg_flags
+         * @param arg_options
+         */
         vfunc_handle_set_flags(
             invocation: Gio.DBusMethodInvocation,
             arg_flags: number,
             arg_options: GLib.Variant,
         ): boolean;
+        /**
+         * Handler for the #UDisksPartition::handle-set-name signal.
+         * @param invocation
+         * @param arg_name
+         * @param arg_options
+         */
         vfunc_handle_set_name(
             invocation: Gio.DBusMethodInvocation,
             arg_name: string,
             arg_options: GLib.Variant,
         ): boolean;
+        /**
+         * Handler for the #UDisksPartition::handle-set-type signal.
+         * @param invocation
+         * @param arg_type
+         * @param arg_options
+         */
         vfunc_handle_set_type(
             invocation: Gio.DBusMethodInvocation,
             arg_type: string,
             arg_options: GLib.Variant,
         ): boolean;
+        /**
+         * Handler for the #UDisksPartition::handle-set-uuid signal.
+         * @param invocation
+         * @param arg_uuid
+         * @param arg_options
+         */
         vfunc_handle_set_uuid(
             invocation: Gio.DBusMethodInvocation,
             arg_uuid: string,
@@ -45842,23 +47024,58 @@ export namespace UDisks {
          * @param invocation A #GDBusMethodInvocation.
          */
         complete_set_uuid(invocation: Gio.DBusMethodInvocation): void;
+        /**
+         * Handler for the #UDisksPartition::handle-delete signal.
+         * @param invocation
+         * @param arg_options
+         */
         vfunc_handle_delete(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
+        /**
+         * Handler for the #UDisksPartition::handle-resize signal.
+         * @param invocation
+         * @param arg_size
+         * @param arg_options
+         */
         vfunc_handle_resize(invocation: Gio.DBusMethodInvocation, arg_size: number, arg_options: GLib.Variant): boolean;
+        /**
+         * Handler for the #UDisksPartition::handle-set-flags signal.
+         * @param invocation
+         * @param arg_flags
+         * @param arg_options
+         */
         vfunc_handle_set_flags(
             invocation: Gio.DBusMethodInvocation,
             arg_flags: number,
             arg_options: GLib.Variant,
         ): boolean;
+        /**
+         * Handler for the #UDisksPartition::handle-set-name signal.
+         * @param invocation
+         * @param arg_name
+         * @param arg_options
+         */
         vfunc_handle_set_name(
             invocation: Gio.DBusMethodInvocation,
             arg_name: string,
             arg_options: GLib.Variant,
         ): boolean;
+        /**
+         * Handler for the #UDisksPartition::handle-set-type signal.
+         * @param invocation
+         * @param arg_type
+         * @param arg_options
+         */
         vfunc_handle_set_type(
             invocation: Gio.DBusMethodInvocation,
             arg_type: string,
             arg_options: GLib.Variant,
         ): boolean;
+        /**
+         * Handler for the #UDisksPartition::handle-set-uuid signal.
+         * @param invocation
+         * @param arg_uuid
+         * @param arg_options
+         */
         vfunc_handle_set_uuid(
             invocation: Gio.DBusMethodInvocation,
             arg_uuid: string,
@@ -46426,7 +47643,7 @@ export namespace UDisks {
          * in a thread, so if you want to support asynchronous initialization via
          * threads, just implement the #GAsyncInitable interface without overriding
          * any interface methods.
-         * @param io_priority the [I/O priority][io-priority] of the operation
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
@@ -46488,7 +47705,7 @@ export namespace UDisks {
          * in a thread, so if you want to support asynchronous initialization via
          * threads, just implement the #GAsyncInitable interface without overriding
          * any interface methods.
-         * @param io_priority the [I/O priority][io-priority] of the operation
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
@@ -46744,6 +47961,15 @@ export namespace UDisks {
          * @param created_partition Parameter to return.
          */
         complete_create_partition_and_format(invocation: Gio.DBusMethodInvocation, created_partition: string): void;
+        /**
+         * Handler for the #UDisksPartitionTable::handle-create-partition signal.
+         * @param invocation
+         * @param arg_offset
+         * @param arg_size
+         * @param arg_type
+         * @param arg_name
+         * @param arg_options
+         */
         vfunc_handle_create_partition(
             invocation: Gio.DBusMethodInvocation,
             arg_offset: number,
@@ -46752,6 +47978,17 @@ export namespace UDisks {
             arg_name: string,
             arg_options: GLib.Variant,
         ): boolean;
+        /**
+         * Handler for the #UDisksPartitionTable::handle-create-partition-and-format signal.
+         * @param invocation
+         * @param arg_offset
+         * @param arg_size
+         * @param arg_type
+         * @param arg_name
+         * @param arg_options
+         * @param arg_format_type
+         * @param arg_format_options
+         */
         vfunc_handle_create_partition_and_format(
             invocation: Gio.DBusMethodInvocation,
             arg_offset: number,
@@ -47360,6 +48597,15 @@ export namespace UDisks {
          * @param created_partition Parameter to return.
          */
         complete_create_partition_and_format(invocation: Gio.DBusMethodInvocation, created_partition: string): void;
+        /**
+         * Handler for the #UDisksPartitionTable::handle-create-partition signal.
+         * @param invocation
+         * @param arg_offset
+         * @param arg_size
+         * @param arg_type
+         * @param arg_name
+         * @param arg_options
+         */
         vfunc_handle_create_partition(
             invocation: Gio.DBusMethodInvocation,
             arg_offset: number,
@@ -47368,6 +48614,17 @@ export namespace UDisks {
             arg_name: string,
             arg_options: GLib.Variant,
         ): boolean;
+        /**
+         * Handler for the #UDisksPartitionTable::handle-create-partition-and-format signal.
+         * @param invocation
+         * @param arg_offset
+         * @param arg_size
+         * @param arg_type
+         * @param arg_name
+         * @param arg_options
+         * @param arg_format_type
+         * @param arg_format_options
+         */
         vfunc_handle_create_partition_and_format(
             invocation: Gio.DBusMethodInvocation,
             arg_offset: number,
@@ -47961,7 +49218,7 @@ export namespace UDisks {
          * in a thread, so if you want to support asynchronous initialization via
          * threads, just implement the #GAsyncInitable interface without overriding
          * any interface methods.
-         * @param io_priority the [I/O priority][io-priority] of the operation
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
@@ -48023,7 +49280,7 @@ export namespace UDisks {
          * in a thread, so if you want to support asynchronous initialization via
          * threads, just implement the #GAsyncInitable interface without overriding
          * any interface methods.
-         * @param io_priority the [I/O priority][io-priority] of the operation
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
@@ -49209,7 +50466,7 @@ export namespace UDisks {
          * in a thread, so if you want to support asynchronous initialization via
          * threads, just implement the #GAsyncInitable interface without overriding
          * any interface methods.
-         * @param io_priority the [I/O priority][io-priority] of the operation
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
@@ -49271,7 +50528,7 @@ export namespace UDisks {
          * in a thread, so if you want to support asynchronous initialization via
          * threads, just implement the #GAsyncInitable interface without overriding
          * any interface methods.
-         * @param io_priority the [I/O priority][io-priority] of the operation
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
@@ -49563,17 +50820,39 @@ export namespace UDisks {
          * @param invocation A #GDBusMethodInvocation.
          */
         complete_stop(invocation: Gio.DBusMethodInvocation): void;
+        /**
+         * Handler for the #UDisksSwapspace::handle-set-label signal.
+         * @param invocation
+         * @param arg_label
+         * @param arg_options
+         */
         vfunc_handle_set_label(
             invocation: Gio.DBusMethodInvocation,
             arg_label: string,
             arg_options: GLib.Variant,
         ): boolean;
+        /**
+         * Handler for the #UDisksSwapspace::handle-set-uuid signal.
+         * @param invocation
+         * @param arg_uuid
+         * @param arg_options
+         */
         vfunc_handle_set_uuid(
             invocation: Gio.DBusMethodInvocation,
             arg_uuid: string,
             arg_options: GLib.Variant,
         ): boolean;
+        /**
+         * Handler for the #UDisksSwapspace::handle-start signal.
+         * @param invocation
+         * @param arg_options
+         */
         vfunc_handle_start(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
+        /**
+         * Handler for the #UDisksSwapspace::handle-stop signal.
+         * @param invocation
+         * @param arg_options
+         */
         vfunc_handle_stop(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
@@ -50202,17 +51481,39 @@ export namespace UDisks {
          * @param invocation A #GDBusMethodInvocation.
          */
         complete_stop(invocation: Gio.DBusMethodInvocation): void;
+        /**
+         * Handler for the #UDisksSwapspace::handle-set-label signal.
+         * @param invocation
+         * @param arg_label
+         * @param arg_options
+         */
         vfunc_handle_set_label(
             invocation: Gio.DBusMethodInvocation,
             arg_label: string,
             arg_options: GLib.Variant,
         ): boolean;
+        /**
+         * Handler for the #UDisksSwapspace::handle-set-uuid signal.
+         * @param invocation
+         * @param arg_uuid
+         * @param arg_options
+         */
         vfunc_handle_set_uuid(
             invocation: Gio.DBusMethodInvocation,
             arg_uuid: string,
             arg_options: GLib.Variant,
         ): boolean;
+        /**
+         * Handler for the #UDisksSwapspace::handle-start signal.
+         * @param invocation
+         * @param arg_options
+         */
         vfunc_handle_start(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
+        /**
+         * Handler for the #UDisksSwapspace::handle-stop signal.
+         * @param invocation
+         * @param arg_options
+         */
         vfunc_handle_stop(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
@@ -50846,7 +52147,7 @@ export namespace UDisks {
          * in a thread, so if you want to support asynchronous initialization via
          * threads, just implement the #GAsyncInitable interface without overriding
          * any interface methods.
-         * @param io_priority the [I/O priority][io-priority] of the operation
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
@@ -50908,7 +52209,7 @@ export namespace UDisks {
          * in a thread, so if you want to support asynchronous initialization via
          * threads, just implement the #GAsyncInitable interface without overriding
          * any interface methods.
-         * @param io_priority the [I/O priority][io-priority] of the operation
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
@@ -51259,22 +52560,51 @@ export namespace UDisks {
          * @param invocation A #GDBusMethodInvocation.
          */
         complete_resize_physical(invocation: Gio.DBusMethodInvocation): void;
+        /**
+         * Handler for the #UDisksVDOVolume::handle-enable-compression signal.
+         * @param invocation
+         * @param arg_enable
+         * @param arg_options
+         */
         vfunc_handle_enable_compression(
             invocation: Gio.DBusMethodInvocation,
             arg_enable: boolean,
             arg_options: GLib.Variant,
         ): boolean;
+        /**
+         * Handler for the #UDisksVDOVolume::handle-enable-deduplication signal.
+         * @param invocation
+         * @param arg_enable
+         * @param arg_options
+         */
         vfunc_handle_enable_deduplication(
             invocation: Gio.DBusMethodInvocation,
             arg_enable: boolean,
             arg_options: GLib.Variant,
         ): boolean;
+        /**
+         * Handler for the #UDisksVDOVolume::handle-get-statistics signal.
+         * @param invocation
+         * @param arg_options
+         */
         vfunc_handle_get_statistics(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
+        /**
+         * Handler for the #UDisksVDOVolume::handle-resize-logical signal.
+         * @param invocation
+         * @param arg_size
+         * @param arg_options
+         */
         vfunc_handle_resize_logical(
             invocation: Gio.DBusMethodInvocation,
             arg_size: number,
             arg_options: GLib.Variant,
         ): boolean;
+        /**
+         * Handler for the #UDisksVDOVolume::handle-resize-physical signal.
+         * @param invocation
+         * @param arg_size
+         * @param arg_options
+         */
         vfunc_handle_resize_physical(
             invocation: Gio.DBusMethodInvocation,
             arg_size: number,
@@ -52043,22 +53373,51 @@ export namespace UDisks {
          * @param invocation A #GDBusMethodInvocation.
          */
         complete_resize_physical(invocation: Gio.DBusMethodInvocation): void;
+        /**
+         * Handler for the #UDisksVDOVolume::handle-enable-compression signal.
+         * @param invocation
+         * @param arg_enable
+         * @param arg_options
+         */
         vfunc_handle_enable_compression(
             invocation: Gio.DBusMethodInvocation,
             arg_enable: boolean,
             arg_options: GLib.Variant,
         ): boolean;
+        /**
+         * Handler for the #UDisksVDOVolume::handle-enable-deduplication signal.
+         * @param invocation
+         * @param arg_enable
+         * @param arg_options
+         */
         vfunc_handle_enable_deduplication(
             invocation: Gio.DBusMethodInvocation,
             arg_enable: boolean,
             arg_options: GLib.Variant,
         ): boolean;
+        /**
+         * Handler for the #UDisksVDOVolume::handle-get-statistics signal.
+         * @param invocation
+         * @param arg_options
+         */
         vfunc_handle_get_statistics(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
+        /**
+         * Handler for the #UDisksVDOVolume::handle-resize-logical signal.
+         * @param invocation
+         * @param arg_size
+         * @param arg_options
+         */
         vfunc_handle_resize_logical(
             invocation: Gio.DBusMethodInvocation,
             arg_size: number,
             arg_options: GLib.Variant,
         ): boolean;
+        /**
+         * Handler for the #UDisksVDOVolume::handle-resize-physical signal.
+         * @param invocation
+         * @param arg_size
+         * @param arg_options
+         */
         vfunc_handle_resize_physical(
             invocation: Gio.DBusMethodInvocation,
             arg_size: number,
@@ -52689,7 +54048,7 @@ export namespace UDisks {
          * in a thread, so if you want to support asynchronous initialization via
          * threads, just implement the #GAsyncInitable interface without overriding
          * any interface methods.
-         * @param io_priority the [I/O priority][io-priority] of the operation
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
@@ -52751,7 +54110,7 @@ export namespace UDisks {
          * in a thread, so if you want to support asynchronous initialization via
          * threads, just implement the #GAsyncInitable interface without overriding
          * any interface methods.
-         * @param io_priority the [I/O priority][io-priority] of the operation
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
@@ -53458,17 +54817,39 @@ export namespace UDisks {
          * @param result Parameter to return.
          */
         complete_rename(invocation: Gio.DBusMethodInvocation, result: string): void;
+        /**
+         * Handler for the #UDisksVolumeGroup::handle-add-device signal.
+         * @param invocation
+         * @param arg_block
+         * @param arg_options
+         */
         vfunc_handle_add_device(
             invocation: Gio.DBusMethodInvocation,
             arg_block: string,
             arg_options: GLib.Variant,
         ): boolean;
+        /**
+         * Handler for the #UDisksVolumeGroup::handle-create-plain-volume signal.
+         * @param invocation
+         * @param arg_name
+         * @param arg_size
+         * @param arg_options
+         */
         vfunc_handle_create_plain_volume(
             invocation: Gio.DBusMethodInvocation,
             arg_name: string,
             arg_size: number,
             arg_options: GLib.Variant,
         ): boolean;
+        /**
+         * Handler for the #UDisksVolumeGroup::handle-create-plain-volume-with-layout signal.
+         * @param invocation
+         * @param arg_name
+         * @param arg_size
+         * @param arg_layout
+         * @param arg_pvs
+         * @param arg_options
+         */
         vfunc_handle_create_plain_volume_with_layout(
             invocation: Gio.DBusMethodInvocation,
             arg_name: string,
@@ -53477,12 +54858,27 @@ export namespace UDisks {
             arg_pvs: string,
             arg_options: GLib.Variant,
         ): boolean;
+        /**
+         * Handler for the #UDisksVolumeGroup::handle-create-thin-pool-volume signal.
+         * @param invocation
+         * @param arg_name
+         * @param arg_size
+         * @param arg_options
+         */
         vfunc_handle_create_thin_pool_volume(
             invocation: Gio.DBusMethodInvocation,
             arg_name: string,
             arg_size: number,
             arg_options: GLib.Variant,
         ): boolean;
+        /**
+         * Handler for the #UDisksVolumeGroup::handle-create-thin-volume signal.
+         * @param invocation
+         * @param arg_name
+         * @param arg_size
+         * @param arg_pool
+         * @param arg_options
+         */
         vfunc_handle_create_thin_volume(
             invocation: Gio.DBusMethodInvocation,
             arg_name: string,
@@ -53490,6 +54886,19 @@ export namespace UDisks {
             arg_pool: string,
             arg_options: GLib.Variant,
         ): boolean;
+        /**
+         * Handler for the #UDisksVolumeGroup::handle-create-vdo-volume signal.
+         * @param invocation
+         * @param arg_lv_name
+         * @param arg_pool_name
+         * @param arg_data_size
+         * @param arg_virtual_size
+         * @param arg_index_memory
+         * @param arg_compression
+         * @param arg_deduplication
+         * @param arg_write_policy
+         * @param arg_options
+         */
         vfunc_handle_create_vdo_volume(
             invocation: Gio.DBusMethodInvocation,
             arg_lv_name: string,
@@ -53502,27 +54911,61 @@ export namespace UDisks {
             arg_write_policy: string,
             arg_options: GLib.Variant,
         ): boolean;
+        /**
+         * Handler for the #UDisksVolumeGroup::handle-delete signal.
+         * @param invocation
+         * @param arg_wipe
+         * @param arg_options
+         */
         vfunc_handle_delete(
             invocation: Gio.DBusMethodInvocation,
             arg_wipe: boolean,
             arg_options: GLib.Variant,
         ): boolean;
+        /**
+         * Handler for the #UDisksVolumeGroup::handle-empty-device signal.
+         * @param invocation
+         * @param arg_block
+         * @param arg_options
+         */
         vfunc_handle_empty_device(
             invocation: Gio.DBusMethodInvocation,
             arg_block: string,
             arg_options: GLib.Variant,
         ): boolean;
+        /**
+         * Handler for the #UDisksVolumeGroup::handle-poll signal.
+         * @param invocation
+         */
         vfunc_handle_poll(invocation: Gio.DBusMethodInvocation): boolean;
+        /**
+         * Handler for the #UDisksVolumeGroup::handle-remove-device signal.
+         * @param invocation
+         * @param arg_block
+         * @param arg_wipe
+         * @param arg_options
+         */
         vfunc_handle_remove_device(
             invocation: Gio.DBusMethodInvocation,
             arg_block: string,
             arg_wipe: boolean,
             arg_options: GLib.Variant,
         ): boolean;
+        /**
+         * Handler for the #UDisksVolumeGroup::handle-remove-missing-physical-volumes signal.
+         * @param invocation
+         * @param arg_options
+         */
         vfunc_handle_remove_missing_physical_volumes(
             invocation: Gio.DBusMethodInvocation,
             arg_options: GLib.Variant,
         ): boolean;
+        /**
+         * Handler for the #UDisksVolumeGroup::handle-rename signal.
+         * @param invocation
+         * @param arg_new_name
+         * @param arg_options
+         */
         vfunc_handle_rename(
             invocation: Gio.DBusMethodInvocation,
             arg_new_name: string,
@@ -54640,17 +56083,39 @@ export namespace UDisks {
          * @param result Parameter to return.
          */
         complete_rename(invocation: Gio.DBusMethodInvocation, result: string): void;
+        /**
+         * Handler for the #UDisksVolumeGroup::handle-add-device signal.
+         * @param invocation
+         * @param arg_block
+         * @param arg_options
+         */
         vfunc_handle_add_device(
             invocation: Gio.DBusMethodInvocation,
             arg_block: string,
             arg_options: GLib.Variant,
         ): boolean;
+        /**
+         * Handler for the #UDisksVolumeGroup::handle-create-plain-volume signal.
+         * @param invocation
+         * @param arg_name
+         * @param arg_size
+         * @param arg_options
+         */
         vfunc_handle_create_plain_volume(
             invocation: Gio.DBusMethodInvocation,
             arg_name: string,
             arg_size: number,
             arg_options: GLib.Variant,
         ): boolean;
+        /**
+         * Handler for the #UDisksVolumeGroup::handle-create-plain-volume-with-layout signal.
+         * @param invocation
+         * @param arg_name
+         * @param arg_size
+         * @param arg_layout
+         * @param arg_pvs
+         * @param arg_options
+         */
         vfunc_handle_create_plain_volume_with_layout(
             invocation: Gio.DBusMethodInvocation,
             arg_name: string,
@@ -54659,12 +56124,27 @@ export namespace UDisks {
             arg_pvs: string,
             arg_options: GLib.Variant,
         ): boolean;
+        /**
+         * Handler for the #UDisksVolumeGroup::handle-create-thin-pool-volume signal.
+         * @param invocation
+         * @param arg_name
+         * @param arg_size
+         * @param arg_options
+         */
         vfunc_handle_create_thin_pool_volume(
             invocation: Gio.DBusMethodInvocation,
             arg_name: string,
             arg_size: number,
             arg_options: GLib.Variant,
         ): boolean;
+        /**
+         * Handler for the #UDisksVolumeGroup::handle-create-thin-volume signal.
+         * @param invocation
+         * @param arg_name
+         * @param arg_size
+         * @param arg_pool
+         * @param arg_options
+         */
         vfunc_handle_create_thin_volume(
             invocation: Gio.DBusMethodInvocation,
             arg_name: string,
@@ -54672,6 +56152,19 @@ export namespace UDisks {
             arg_pool: string,
             arg_options: GLib.Variant,
         ): boolean;
+        /**
+         * Handler for the #UDisksVolumeGroup::handle-create-vdo-volume signal.
+         * @param invocation
+         * @param arg_lv_name
+         * @param arg_pool_name
+         * @param arg_data_size
+         * @param arg_virtual_size
+         * @param arg_index_memory
+         * @param arg_compression
+         * @param arg_deduplication
+         * @param arg_write_policy
+         * @param arg_options
+         */
         vfunc_handle_create_vdo_volume(
             invocation: Gio.DBusMethodInvocation,
             arg_lv_name: string,
@@ -54684,27 +56177,61 @@ export namespace UDisks {
             arg_write_policy: string,
             arg_options: GLib.Variant,
         ): boolean;
+        /**
+         * Handler for the #UDisksVolumeGroup::handle-delete signal.
+         * @param invocation
+         * @param arg_wipe
+         * @param arg_options
+         */
         vfunc_handle_delete(
             invocation: Gio.DBusMethodInvocation,
             arg_wipe: boolean,
             arg_options: GLib.Variant,
         ): boolean;
+        /**
+         * Handler for the #UDisksVolumeGroup::handle-empty-device signal.
+         * @param invocation
+         * @param arg_block
+         * @param arg_options
+         */
         vfunc_handle_empty_device(
             invocation: Gio.DBusMethodInvocation,
             arg_block: string,
             arg_options: GLib.Variant,
         ): boolean;
+        /**
+         * Handler for the #UDisksVolumeGroup::handle-poll signal.
+         * @param invocation
+         */
         vfunc_handle_poll(invocation: Gio.DBusMethodInvocation): boolean;
+        /**
+         * Handler for the #UDisksVolumeGroup::handle-remove-device signal.
+         * @param invocation
+         * @param arg_block
+         * @param arg_wipe
+         * @param arg_options
+         */
         vfunc_handle_remove_device(
             invocation: Gio.DBusMethodInvocation,
             arg_block: string,
             arg_wipe: boolean,
             arg_options: GLib.Variant,
         ): boolean;
+        /**
+         * Handler for the #UDisksVolumeGroup::handle-remove-missing-physical-volumes signal.
+         * @param invocation
+         * @param arg_options
+         */
         vfunc_handle_remove_missing_physical_volumes(
             invocation: Gio.DBusMethodInvocation,
             arg_options: GLib.Variant,
         ): boolean;
+        /**
+         * Handler for the #UDisksVolumeGroup::handle-rename signal.
+         * @param invocation
+         * @param arg_new_name
+         * @param arg_options
+         */
         vfunc_handle_rename(
             invocation: Gio.DBusMethodInvocation,
             arg_new_name: string,
@@ -56538,40 +58065,100 @@ export namespace UDisks {
 
         // Virtual methods
 
+        /**
+         * Handler for the #UDisksBlock::handle-add-configuration-item signal.
+         * @param invocation
+         * @param arg_item
+         * @param arg_options
+         */
         vfunc_handle_add_configuration_item(
             invocation: Gio.DBusMethodInvocation,
             arg_item: GLib.Variant,
             arg_options: GLib.Variant,
         ): boolean;
+        /**
+         * Handler for the #UDisksBlock::handle-format signal.
+         * @param invocation
+         * @param arg_type
+         * @param arg_options
+         */
         vfunc_handle_format(invocation: Gio.DBusMethodInvocation, arg_type: string, arg_options: GLib.Variant): boolean;
+        /**
+         * Handler for the #UDisksBlock::handle-get-secret-configuration signal.
+         * @param invocation
+         * @param arg_options
+         */
         vfunc_handle_get_secret_configuration(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
+        /**
+         * Handler for the #UDisksBlock::handle-open-device signal.
+         * @param invocation
+         * @param fd_list
+         * @param arg_mode
+         * @param arg_options
+         */
         vfunc_handle_open_device(
             invocation: Gio.DBusMethodInvocation,
             fd_list: Gio.UnixFDList,
             arg_mode: string,
             arg_options: GLib.Variant,
         ): boolean;
+        /**
+         * Handler for the #UDisksBlock::handle-open-for-backup signal.
+         * @param invocation
+         * @param fd_list
+         * @param arg_options
+         */
         vfunc_handle_open_for_backup(
             invocation: Gio.DBusMethodInvocation,
             fd_list: Gio.UnixFDList,
             arg_options: GLib.Variant,
         ): boolean;
+        /**
+         * Handler for the #UDisksBlock::handle-open-for-benchmark signal.
+         * @param invocation
+         * @param fd_list
+         * @param arg_options
+         */
         vfunc_handle_open_for_benchmark(
             invocation: Gio.DBusMethodInvocation,
             fd_list: Gio.UnixFDList,
             arg_options: GLib.Variant,
         ): boolean;
+        /**
+         * Handler for the #UDisksBlock::handle-open-for-restore signal.
+         * @param invocation
+         * @param fd_list
+         * @param arg_options
+         */
         vfunc_handle_open_for_restore(
             invocation: Gio.DBusMethodInvocation,
             fd_list: Gio.UnixFDList,
             arg_options: GLib.Variant,
         ): boolean;
+        /**
+         * Handler for the #UDisksBlock::handle-remove-configuration-item signal.
+         * @param invocation
+         * @param arg_item
+         * @param arg_options
+         */
         vfunc_handle_remove_configuration_item(
             invocation: Gio.DBusMethodInvocation,
             arg_item: GLib.Variant,
             arg_options: GLib.Variant,
         ): boolean;
+        /**
+         * Handler for the #UDisksBlock::handle-rescan signal.
+         * @param invocation
+         * @param arg_options
+         */
         vfunc_handle_rescan(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
+        /**
+         * Handler for the #UDisksBlock::handle-update-configuration-item signal.
+         * @param invocation
+         * @param arg_old_item
+         * @param arg_new_item
+         * @param arg_options
+         */
         vfunc_handle_update_configuration_item(
             invocation: Gio.DBusMethodInvocation,
             arg_old_item: GLib.Variant,
@@ -57138,8 +58725,24 @@ export namespace UDisks {
 
         // Virtual methods
 
+        /**
+         * Handler for the #UDisksDrive::handle-eject signal.
+         * @param invocation
+         * @param arg_options
+         */
         vfunc_handle_eject(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
+        /**
+         * Handler for the #UDisksDrive::handle-power-off signal.
+         * @param invocation
+         * @param arg_options
+         */
         vfunc_handle_power_off(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
+        /**
+         * Handler for the #UDisksDrive::handle-set-configuration signal.
+         * @param invocation
+         * @param arg_value
+         * @param arg_options
+         */
         vfunc_handle_set_configuration(
             invocation: Gio.DBusMethodInvocation,
             arg_value: GLib.Variant,
@@ -57933,22 +59536,69 @@ export namespace UDisks {
 
         // Virtual methods
 
+        /**
+         * Handler for the #UDisksDriveAta::handle-pm-get-state signal.
+         * @param invocation
+         * @param arg_options
+         */
         vfunc_handle_pm_get_state(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
+        /**
+         * Handler for the #UDisksDriveAta::handle-pm-standby signal.
+         * @param invocation
+         * @param arg_options
+         */
         vfunc_handle_pm_standby(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
+        /**
+         * Handler for the #UDisksDriveAta::handle-pm-wakeup signal.
+         * @param invocation
+         * @param arg_options
+         */
         vfunc_handle_pm_wakeup(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
+        /**
+         * Handler for the #UDisksDriveAta::handle-security-erase-unit signal.
+         * @param invocation
+         * @param arg_options
+         */
         vfunc_handle_security_erase_unit(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
+        /**
+         * Handler for the #UDisksDriveAta::handle-smart-get-attributes signal.
+         * @param invocation
+         * @param arg_options
+         */
         vfunc_handle_smart_get_attributes(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
+        /**
+         * Handler for the #UDisksDriveAta::handle-smart-selftest-abort signal.
+         * @param invocation
+         * @param arg_options
+         */
         vfunc_handle_smart_selftest_abort(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
+        /**
+         * Handler for the #UDisksDriveAta::handle-smart-selftest-start signal.
+         * @param invocation
+         * @param arg_type
+         * @param arg_options
+         */
         vfunc_handle_smart_selftest_start(
             invocation: Gio.DBusMethodInvocation,
             arg_type: string,
             arg_options: GLib.Variant,
         ): boolean;
+        /**
+         * Handler for the #UDisksDriveAta::handle-smart-set-enabled signal.
+         * @param invocation
+         * @param arg_value
+         * @param arg_options
+         */
         vfunc_handle_smart_set_enabled(
             invocation: Gio.DBusMethodInvocation,
             arg_value: boolean,
             arg_options: GLib.Variant,
         ): boolean;
+        /**
+         * Handler for the #UDisksDriveAta::handle-smart-update signal.
+         * @param invocation
+         * @param arg_options
+         */
         vfunc_handle_smart_update(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
     }
 
@@ -58320,9 +59970,29 @@ export namespace UDisks {
 
         // Virtual methods
 
+        /**
+         * Handler for the #UDisksDriveLsmLocal::handle-turn-fault-ledoff signal.
+         * @param invocation
+         * @param arg_options
+         */
         vfunc_handle_turn_fault_ledoff(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
+        /**
+         * Handler for the #UDisksDriveLsmLocal::handle-turn-fault-ledon signal.
+         * @param invocation
+         * @param arg_options
+         */
         vfunc_handle_turn_fault_ledon(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
+        /**
+         * Handler for the #UDisksDriveLsmLocal::handle-turn-ident-ledoff signal.
+         * @param invocation
+         * @param arg_options
+         */
         vfunc_handle_turn_ident_ledoff(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
+        /**
+         * Handler for the #UDisksDriveLsmLocal::handle-turn-ident-ledon signal.
+         * @param invocation
+         * @param arg_options
+         */
         vfunc_handle_turn_ident_ledon(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
     }
 
@@ -58594,14 +60264,38 @@ export namespace UDisks {
 
         // Virtual methods
 
+        /**
+         * Handler for the #UDisksEncrypted::handle-change-passphrase signal.
+         * @param invocation
+         * @param arg_passphrase
+         * @param arg_new_passphrase
+         * @param arg_options
+         */
         vfunc_handle_change_passphrase(
             invocation: Gio.DBusMethodInvocation,
             arg_passphrase: string,
             arg_new_passphrase: string,
             arg_options: GLib.Variant,
         ): boolean;
+        /**
+         * Handler for the #UDisksEncrypted::handle-lock signal.
+         * @param invocation
+         * @param arg_options
+         */
         vfunc_handle_lock(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
+        /**
+         * Handler for the #UDisksEncrypted::handle-resize signal.
+         * @param invocation
+         * @param arg_size
+         * @param arg_options
+         */
         vfunc_handle_resize(invocation: Gio.DBusMethodInvocation, arg_size: number, arg_options: GLib.Variant): boolean;
+        /**
+         * Handler for the #UDisksEncrypted::handle-unlock signal.
+         * @param invocation
+         * @param arg_passphrase
+         * @param arg_options
+         */
         vfunc_handle_unlock(
             invocation: Gio.DBusMethodInvocation,
             arg_passphrase: string,
@@ -58979,21 +60673,64 @@ export namespace UDisks {
 
         // Virtual methods
 
+        /**
+         * Handler for the #UDisksFilesystem::handle-check signal.
+         * @param invocation
+         * @param arg_options
+         */
         vfunc_handle_check(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
+        /**
+         * Handler for the #UDisksFilesystem::handle-mount signal.
+         * @param invocation
+         * @param arg_options
+         */
         vfunc_handle_mount(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
+        /**
+         * Handler for the #UDisksFilesystem::handle-repair signal.
+         * @param invocation
+         * @param arg_options
+         */
         vfunc_handle_repair(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
+        /**
+         * Handler for the #UDisksFilesystem::handle-resize signal.
+         * @param invocation
+         * @param arg_size
+         * @param arg_options
+         */
         vfunc_handle_resize(invocation: Gio.DBusMethodInvocation, arg_size: number, arg_options: GLib.Variant): boolean;
+        /**
+         * Handler for the #UDisksFilesystem::handle-set-label signal.
+         * @param invocation
+         * @param arg_label
+         * @param arg_options
+         */
         vfunc_handle_set_label(
             invocation: Gio.DBusMethodInvocation,
             arg_label: string,
             arg_options: GLib.Variant,
         ): boolean;
+        /**
+         * Handler for the #UDisksFilesystem::handle-set-uuid signal.
+         * @param invocation
+         * @param arg_uuid
+         * @param arg_options
+         */
         vfunc_handle_set_uuid(
             invocation: Gio.DBusMethodInvocation,
             arg_uuid: string,
             arg_options: GLib.Variant,
         ): boolean;
+        /**
+         * Handler for the #UDisksFilesystem::handle-take-ownership signal.
+         * @param invocation
+         * @param arg_options
+         */
         vfunc_handle_take_ownership(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
+        /**
+         * Handler for the #UDisksFilesystem::handle-unmount signal.
+         * @param invocation
+         * @param arg_options
+         */
         vfunc_handle_unmount(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
     }
 
@@ -59470,11 +61207,25 @@ export namespace UDisks {
 
         // Virtual methods
 
+        /**
+         * Handler for the #UDisksFilesystemBTRFS::handle-add-device signal.
+         * @param invocation
+         * @param arg_device
+         * @param arg_options
+         */
         vfunc_handle_add_device(
             invocation: Gio.DBusMethodInvocation,
             arg_device: string,
             arg_options: GLib.Variant,
         ): boolean;
+        /**
+         * Handler for the #UDisksFilesystemBTRFS::handle-create-snapshot signal.
+         * @param invocation
+         * @param arg_source
+         * @param arg_dest
+         * @param arg_ro
+         * @param arg_options
+         */
         vfunc_handle_create_snapshot(
             invocation: Gio.DBusMethodInvocation,
             arg_source: string,
@@ -59482,28 +61233,69 @@ export namespace UDisks {
             arg_ro: boolean,
             arg_options: GLib.Variant,
         ): boolean;
+        /**
+         * Handler for the #UDisksFilesystemBTRFS::handle-create-subvolume signal.
+         * @param invocation
+         * @param arg_name
+         * @param arg_options
+         */
         vfunc_handle_create_subvolume(
             invocation: Gio.DBusMethodInvocation,
             arg_name: string,
             arg_options: GLib.Variant,
         ): boolean;
+        /**
+         * Handler for the #UDisksFilesystemBTRFS::handle-get-subvolumes signal.
+         * @param invocation
+         * @param arg_snapshots_only
+         * @param arg_options
+         */
         vfunc_handle_get_subvolumes(
             invocation: Gio.DBusMethodInvocation,
             arg_snapshots_only: boolean,
             arg_options: GLib.Variant,
         ): boolean;
+        /**
+         * Handler for the #UDisksFilesystemBTRFS::handle-remove-device signal.
+         * @param invocation
+         * @param arg_device
+         * @param arg_options
+         */
         vfunc_handle_remove_device(
             invocation: Gio.DBusMethodInvocation,
             arg_device: string,
             arg_options: GLib.Variant,
         ): boolean;
+        /**
+         * Handler for the #UDisksFilesystemBTRFS::handle-remove-subvolume signal.
+         * @param invocation
+         * @param arg_name
+         * @param arg_options
+         */
         vfunc_handle_remove_subvolume(
             invocation: Gio.DBusMethodInvocation,
             arg_name: string,
             arg_options: GLib.Variant,
         ): boolean;
+        /**
+         * Handler for the #UDisksFilesystemBTRFS::handle-repair signal.
+         * @param invocation
+         * @param arg_options
+         */
         vfunc_handle_repair(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
+        /**
+         * Handler for the #UDisksFilesystemBTRFS::handle-resize signal.
+         * @param invocation
+         * @param arg_size
+         * @param arg_options
+         */
         vfunc_handle_resize(invocation: Gio.DBusMethodInvocation, arg_size: number, arg_options: GLib.Variant): boolean;
+        /**
+         * Handler for the #UDisksFilesystemBTRFS::handle-set-label signal.
+         * @param invocation
+         * @param arg_label
+         * @param arg_options
+         */
         vfunc_handle_set_label(
             invocation: Gio.DBusMethodInvocation,
             arg_label: string,
@@ -59762,7 +61554,18 @@ export namespace UDisks {
 
         // Virtual methods
 
+        /**
+         * Handler for the #UDisksISCSISession::handle-logout signal.
+         * @param invocation
+         * @param arg_options
+         */
         vfunc_handle_logout(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
+        /**
+         * Handler for the #UDisksISCSISession::handle-logout-interface signal.
+         * @param invocation
+         * @param arg_iface
+         * @param arg_options
+         */
         vfunc_handle_logout_interface(
             invocation: Gio.DBusMethodInvocation,
             arg_iface: string,
@@ -59959,7 +61762,17 @@ export namespace UDisks {
 
         // Virtual methods
 
+        /**
+         * Handler for the #UDisksJob::completed signal.
+         * @param arg_success
+         * @param arg_message
+         */
         vfunc_completed(arg_success: boolean, arg_message: string): void;
+        /**
+         * Handler for the #UDisksJob::handle-cancel signal.
+         * @param invocation
+         * @param arg_options
+         */
         vfunc_handle_cancel(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
     }
 
@@ -60581,28 +62394,84 @@ export namespace UDisks {
 
         // Virtual methods
 
+        /**
+         * Handler for the #UDisksLogicalVolume::handle-activate signal.
+         * @param invocation
+         * @param arg_options
+         */
         vfunc_handle_activate(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
+        /**
+         * Handler for the #UDisksLogicalVolume::handle-cache-attach signal.
+         * @param invocation
+         * @param arg_cache_name
+         * @param arg_options
+         */
         vfunc_handle_cache_attach(
             invocation: Gio.DBusMethodInvocation,
             arg_cache_name: string,
             arg_options: GLib.Variant,
         ): boolean;
+        /**
+         * Handler for the #UDisksLogicalVolume::handle-cache-detach signal.
+         * @param invocation
+         * @param arg_options
+         */
         vfunc_handle_cache_detach(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
+        /**
+         * Handler for the #UDisksLogicalVolume::handle-cache-split signal.
+         * @param invocation
+         * @param arg_options
+         */
         vfunc_handle_cache_split(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
+        /**
+         * Handler for the #UDisksLogicalVolume::handle-create-snapshot signal.
+         * @param invocation
+         * @param arg_name
+         * @param arg_size
+         * @param arg_options
+         */
         vfunc_handle_create_snapshot(
             invocation: Gio.DBusMethodInvocation,
             arg_name: string,
             arg_size: number,
             arg_options: GLib.Variant,
         ): boolean;
+        /**
+         * Handler for the #UDisksLogicalVolume::handle-deactivate signal.
+         * @param invocation
+         * @param arg_options
+         */
         vfunc_handle_deactivate(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
+        /**
+         * Handler for the #UDisksLogicalVolume::handle-delete signal.
+         * @param invocation
+         * @param arg_options
+         */
         vfunc_handle_delete(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
+        /**
+         * Handler for the #UDisksLogicalVolume::handle-rename signal.
+         * @param invocation
+         * @param arg_new_name
+         * @param arg_options
+         */
         vfunc_handle_rename(
             invocation: Gio.DBusMethodInvocation,
             arg_new_name: string,
             arg_options: GLib.Variant,
         ): boolean;
+        /**
+         * Handler for the #UDisksLogicalVolume::handle-repair signal.
+         * @param invocation
+         * @param arg_pvs
+         * @param arg_options
+         */
         vfunc_handle_repair(invocation: Gio.DBusMethodInvocation, arg_pvs: string, arg_options: GLib.Variant): boolean;
+        /**
+         * Handler for the #UDisksLogicalVolume::handle-resize signal.
+         * @param invocation
+         * @param arg_new_size
+         * @param arg_options
+         */
         vfunc_handle_resize(
             invocation: Gio.DBusMethodInvocation,
             arg_new_size: number,
@@ -60765,7 +62634,18 @@ export namespace UDisks {
 
         // Virtual methods
 
+        /**
+         * Handler for the #UDisksLoop::handle-delete signal.
+         * @param invocation
+         * @param arg_options
+         */
         vfunc_handle_delete(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
+        /**
+         * Handler for the #UDisksLoop::handle-set-autoclear signal.
+         * @param invocation
+         * @param arg_value
+         * @param arg_options
+         */
         vfunc_handle_set_autoclear(
             invocation: Gio.DBusMethodInvocation,
             arg_value: boolean,
@@ -61286,28 +63166,67 @@ export namespace UDisks {
 
         // Virtual methods
 
+        /**
+         * Handler for the #UDisksMDRaid::handle-add-device signal.
+         * @param invocation
+         * @param arg_device
+         * @param arg_options
+         */
         vfunc_handle_add_device(
             invocation: Gio.DBusMethodInvocation,
             arg_device: string,
             arg_options: GLib.Variant,
         ): boolean;
+        /**
+         * Handler for the #UDisksMDRaid::handle-delete signal.
+         * @param invocation
+         * @param arg_options
+         */
         vfunc_handle_delete(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
+        /**
+         * Handler for the #UDisksMDRaid::handle-remove-device signal.
+         * @param invocation
+         * @param arg_device
+         * @param arg_options
+         */
         vfunc_handle_remove_device(
             invocation: Gio.DBusMethodInvocation,
             arg_device: string,
             arg_options: GLib.Variant,
         ): boolean;
+        /**
+         * Handler for the #UDisksMDRaid::handle-request-sync-action signal.
+         * @param invocation
+         * @param arg_sync_action
+         * @param arg_options
+         */
         vfunc_handle_request_sync_action(
             invocation: Gio.DBusMethodInvocation,
             arg_sync_action: string,
             arg_options: GLib.Variant,
         ): boolean;
+        /**
+         * Handler for the #UDisksMDRaid::handle-set-bitmap-location signal.
+         * @param invocation
+         * @param arg_value
+         * @param arg_options
+         */
         vfunc_handle_set_bitmap_location(
             invocation: Gio.DBusMethodInvocation,
             arg_value: string,
             arg_options: GLib.Variant,
         ): boolean;
+        /**
+         * Handler for the #UDisksMDRaid::handle-start signal.
+         * @param invocation
+         * @param arg_options
+         */
         vfunc_handle_start(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
+        /**
+         * Handler for the #UDisksMDRaid::handle-stop signal.
+         * @param invocation
+         * @param arg_options
+         */
         vfunc_handle_stop(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
     }
 
@@ -61827,23 +63746,75 @@ export namespace UDisks {
 
         // Virtual methods
 
+        /**
+         * Handler for the #UDisksManager::handle-can-check signal.
+         * @param invocation
+         * @param arg_type
+         */
         vfunc_handle_can_check(invocation: Gio.DBusMethodInvocation, arg_type: string): boolean;
+        /**
+         * Handler for the #UDisksManager::handle-can-format signal.
+         * @param invocation
+         * @param arg_type
+         */
         vfunc_handle_can_format(invocation: Gio.DBusMethodInvocation, arg_type: string): boolean;
+        /**
+         * Handler for the #UDisksManager::handle-can-repair signal.
+         * @param invocation
+         * @param arg_type
+         */
         vfunc_handle_can_repair(invocation: Gio.DBusMethodInvocation, arg_type: string): boolean;
+        /**
+         * Handler for the #UDisksManager::handle-can-resize signal.
+         * @param invocation
+         * @param arg_type
+         */
         vfunc_handle_can_resize(invocation: Gio.DBusMethodInvocation, arg_type: string): boolean;
+        /**
+         * Handler for the #UDisksManager::handle-enable-module signal.
+         * @param invocation
+         * @param arg_name
+         * @param arg_enable
+         */
         vfunc_handle_enable_module(
             invocation: Gio.DBusMethodInvocation,
             arg_name: string,
             arg_enable: boolean,
         ): boolean;
+        /**
+         * Handler for the #UDisksManager::handle-enable-modules signal.
+         * @param invocation
+         * @param arg_enable
+         */
         vfunc_handle_enable_modules(invocation: Gio.DBusMethodInvocation, arg_enable: boolean): boolean;
+        /**
+         * Handler for the #UDisksManager::handle-get-block-devices signal.
+         * @param invocation
+         * @param arg_options
+         */
         vfunc_handle_get_block_devices(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
+        /**
+         * Handler for the #UDisksManager::handle-loop-setup signal.
+         * @param invocation
+         * @param fd_list
+         * @param arg_fd
+         * @param arg_options
+         */
         vfunc_handle_loop_setup(
             invocation: Gio.DBusMethodInvocation,
             fd_list: Gio.UnixFDList,
             arg_fd: GLib.Variant,
             arg_options: GLib.Variant,
         ): boolean;
+        /**
+         * Handler for the #UDisksManager::handle-mdraid-create signal.
+         * @param invocation
+         * @param arg_blocks
+         * @param arg_level
+         * @param arg_name
+         * @param arg_chunk
+         * @param arg_options
+         */
         vfunc_handle_mdraid_create(
             invocation: Gio.DBusMethodInvocation,
             arg_blocks: string,
@@ -61852,6 +63823,12 @@ export namespace UDisks {
             arg_chunk: number,
             arg_options: GLib.Variant,
         ): boolean;
+        /**
+         * Handler for the #UDisksManager::handle-resolve-device signal.
+         * @param invocation
+         * @param arg_devspec
+         * @param arg_options
+         */
         vfunc_handle_resolve_device(
             invocation: Gio.DBusMethodInvocation,
             arg_devspec: GLib.Variant,
@@ -61945,6 +63922,15 @@ export namespace UDisks {
 
         // Virtual methods
 
+        /**
+         * Handler for the #UDisksManagerBTRFS::handle-create-volume signal.
+         * @param invocation
+         * @param arg_devices
+         * @param arg_label
+         * @param arg_data_level
+         * @param arg_md_level
+         * @param arg_options
+         */
         vfunc_handle_create_volume(
             invocation: Gio.DBusMethodInvocation,
             arg_devices: string,
@@ -62370,16 +64356,50 @@ export namespace UDisks {
 
         // Virtual methods
 
+        /**
+         * Handler for the #UDisksManagerISCSIInitiator::handle-discover-firmware signal.
+         * @param invocation
+         * @param arg_options
+         */
         vfunc_handle_discover_firmware(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
+        /**
+         * Handler for the #UDisksManagerISCSIInitiator::handle-discover-send-targets signal.
+         * @param invocation
+         * @param arg_address
+         * @param arg_port
+         * @param arg_options
+         */
         vfunc_handle_discover_send_targets(
             invocation: Gio.DBusMethodInvocation,
             arg_address: string,
             arg_port: number,
             arg_options: GLib.Variant,
         ): boolean;
+        /**
+         * Handler for the #UDisksManagerISCSIInitiator::handle-get-firmware-initiator-name signal.
+         * @param invocation
+         */
         vfunc_handle_get_firmware_initiator_name(invocation: Gio.DBusMethodInvocation): boolean;
+        /**
+         * Handler for the #UDisksManagerISCSIInitiator::handle-get-initiator-name signal.
+         * @param invocation
+         */
         vfunc_handle_get_initiator_name(invocation: Gio.DBusMethodInvocation): boolean;
+        /**
+         * Handler for the #UDisksManagerISCSIInitiator::handle-get-initiator-name-raw signal.
+         * @param invocation
+         */
         vfunc_handle_get_initiator_name_raw(invocation: Gio.DBusMethodInvocation): boolean;
+        /**
+         * Handler for the #UDisksManagerISCSIInitiator::handle-login signal.
+         * @param invocation
+         * @param arg_name
+         * @param arg_tpgt
+         * @param arg_address
+         * @param arg_port
+         * @param arg_iface
+         * @param arg_options
+         */
         vfunc_handle_login(
             invocation: Gio.DBusMethodInvocation,
             arg_name: string,
@@ -62389,6 +64409,16 @@ export namespace UDisks {
             arg_iface: string,
             arg_options: GLib.Variant,
         ): boolean;
+        /**
+         * Handler for the #UDisksManagerISCSIInitiator::handle-logout signal.
+         * @param invocation
+         * @param arg_name
+         * @param arg_tpgt
+         * @param arg_address
+         * @param arg_port
+         * @param arg_iface
+         * @param arg_options
+         */
         vfunc_handle_logout(
             invocation: Gio.DBusMethodInvocation,
             arg_name: string,
@@ -62398,6 +64428,12 @@ export namespace UDisks {
             arg_iface: string,
             arg_options: GLib.Variant,
         ): boolean;
+        /**
+         * Handler for the #UDisksManagerISCSIInitiator::handle-set-initiator-name signal.
+         * @param invocation
+         * @param arg_name
+         * @param arg_options
+         */
         vfunc_handle_set_initiator_name(
             invocation: Gio.DBusMethodInvocation,
             arg_name: string,
@@ -62484,6 +64520,13 @@ export namespace UDisks {
 
         // Virtual methods
 
+        /**
+         * Handler for the #UDisksManagerLVM2::handle-volume-group-create signal.
+         * @param invocation
+         * @param arg_name
+         * @param arg_blocks
+         * @param arg_options
+         */
         vfunc_handle_volume_group_create(
             invocation: Gio.DBusMethodInvocation,
             arg_name: string,
@@ -62699,6 +64742,14 @@ export namespace UDisks {
 
         // Virtual methods
 
+        /**
+         * Handler for the #UDisksManagerNVMe::handle-connect signal.
+         * @param invocation
+         * @param arg_subsysnqn
+         * @param arg_transport
+         * @param arg_transport_addr
+         * @param arg_options
+         */
         vfunc_handle_connect(
             invocation: Gio.DBusMethodInvocation,
             arg_subsysnqn: string,
@@ -62706,11 +64757,23 @@ export namespace UDisks {
             arg_transport_addr: string,
             arg_options: GLib.Variant,
         ): boolean;
+        /**
+         * Handler for the #UDisksManagerNVMe::handle-set-host-id signal.
+         * @param invocation
+         * @param arg_hostid
+         * @param arg_options
+         */
         vfunc_handle_set_host_id(
             invocation: Gio.DBusMethodInvocation,
             arg_hostid: string,
             arg_options: GLib.Variant,
         ): boolean;
+        /**
+         * Handler for the #UDisksManagerNVMe::handle-set-host-nqn signal.
+         * @param invocation
+         * @param arg_hostnqn
+         * @param arg_options
+         */
         vfunc_handle_set_host_nqn(
             invocation: Gio.DBusMethodInvocation,
             arg_hostnqn: string,
@@ -63163,18 +65226,45 @@ export namespace UDisks {
 
         // Virtual methods
 
+        /**
+         * Handler for the #UDisksNVMeController::handle-sanitize-start signal.
+         * @param invocation
+         * @param arg_action
+         * @param arg_options
+         */
         vfunc_handle_sanitize_start(
             invocation: Gio.DBusMethodInvocation,
             arg_action: string,
             arg_options: GLib.Variant,
         ): boolean;
+        /**
+         * Handler for the #UDisksNVMeController::handle-smart-get-attributes signal.
+         * @param invocation
+         * @param arg_options
+         */
         vfunc_handle_smart_get_attributes(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
+        /**
+         * Handler for the #UDisksNVMeController::handle-smart-selftest-abort signal.
+         * @param invocation
+         * @param arg_options
+         */
         vfunc_handle_smart_selftest_abort(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
+        /**
+         * Handler for the #UDisksNVMeController::handle-smart-selftest-start signal.
+         * @param invocation
+         * @param arg_type
+         * @param arg_options
+         */
         vfunc_handle_smart_selftest_start(
             invocation: Gio.DBusMethodInvocation,
             arg_type: string,
             arg_options: GLib.Variant,
         ): boolean;
+        /**
+         * Handler for the #UDisksNVMeController::handle-smart-update signal.
+         * @param invocation
+         * @param arg_options
+         */
         vfunc_handle_smart_update(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
     }
 
@@ -63305,6 +65395,11 @@ export namespace UDisks {
 
         // Virtual methods
 
+        /**
+         * Handler for the #UDisksNVMeFabrics::handle-disconnect signal.
+         * @param invocation
+         * @param arg_options
+         */
         vfunc_handle_disconnect(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
     }
 
@@ -63507,6 +65602,11 @@ export namespace UDisks {
 
         // Virtual methods
 
+        /**
+         * Handler for the #UDisksNVMeNamespace::handle-format-namespace signal.
+         * @param invocation
+         * @param arg_options
+         */
         vfunc_handle_format_namespace(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
     }
 
@@ -64410,23 +66510,58 @@ export namespace UDisks {
 
         // Virtual methods
 
+        /**
+         * Handler for the #UDisksPartition::handle-delete signal.
+         * @param invocation
+         * @param arg_options
+         */
         vfunc_handle_delete(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
+        /**
+         * Handler for the #UDisksPartition::handle-resize signal.
+         * @param invocation
+         * @param arg_size
+         * @param arg_options
+         */
         vfunc_handle_resize(invocation: Gio.DBusMethodInvocation, arg_size: number, arg_options: GLib.Variant): boolean;
+        /**
+         * Handler for the #UDisksPartition::handle-set-flags signal.
+         * @param invocation
+         * @param arg_flags
+         * @param arg_options
+         */
         vfunc_handle_set_flags(
             invocation: Gio.DBusMethodInvocation,
             arg_flags: number,
             arg_options: GLib.Variant,
         ): boolean;
+        /**
+         * Handler for the #UDisksPartition::handle-set-name signal.
+         * @param invocation
+         * @param arg_name
+         * @param arg_options
+         */
         vfunc_handle_set_name(
             invocation: Gio.DBusMethodInvocation,
             arg_name: string,
             arg_options: GLib.Variant,
         ): boolean;
+        /**
+         * Handler for the #UDisksPartition::handle-set-type signal.
+         * @param invocation
+         * @param arg_type
+         * @param arg_options
+         */
         vfunc_handle_set_type(
             invocation: Gio.DBusMethodInvocation,
             arg_type: string,
             arg_options: GLib.Variant,
         ): boolean;
+        /**
+         * Handler for the #UDisksPartition::handle-set-uuid signal.
+         * @param invocation
+         * @param arg_uuid
+         * @param arg_options
+         */
         vfunc_handle_set_uuid(
             invocation: Gio.DBusMethodInvocation,
             arg_uuid: string,
@@ -64606,6 +66741,15 @@ export namespace UDisks {
 
         // Virtual methods
 
+        /**
+         * Handler for the #UDisksPartitionTable::handle-create-partition signal.
+         * @param invocation
+         * @param arg_offset
+         * @param arg_size
+         * @param arg_type
+         * @param arg_name
+         * @param arg_options
+         */
         vfunc_handle_create_partition(
             invocation: Gio.DBusMethodInvocation,
             arg_offset: number,
@@ -64614,6 +66758,17 @@ export namespace UDisks {
             arg_name: string,
             arg_options: GLib.Variant,
         ): boolean;
+        /**
+         * Handler for the #UDisksPartitionTable::handle-create-partition-and-format signal.
+         * @param invocation
+         * @param arg_offset
+         * @param arg_size
+         * @param arg_type
+         * @param arg_name
+         * @param arg_options
+         * @param arg_format_type
+         * @param arg_format_options
+         */
         vfunc_handle_create_partition_and_format(
             invocation: Gio.DBusMethodInvocation,
             arg_offset: number,
@@ -64896,17 +67051,39 @@ export namespace UDisks {
 
         // Virtual methods
 
+        /**
+         * Handler for the #UDisksSwapspace::handle-set-label signal.
+         * @param invocation
+         * @param arg_label
+         * @param arg_options
+         */
         vfunc_handle_set_label(
             invocation: Gio.DBusMethodInvocation,
             arg_label: string,
             arg_options: GLib.Variant,
         ): boolean;
+        /**
+         * Handler for the #UDisksSwapspace::handle-set-uuid signal.
+         * @param invocation
+         * @param arg_uuid
+         * @param arg_options
+         */
         vfunc_handle_set_uuid(
             invocation: Gio.DBusMethodInvocation,
             arg_uuid: string,
             arg_options: GLib.Variant,
         ): boolean;
+        /**
+         * Handler for the #UDisksSwapspace::handle-start signal.
+         * @param invocation
+         * @param arg_options
+         */
         vfunc_handle_start(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
+        /**
+         * Handler for the #UDisksSwapspace::handle-stop signal.
+         * @param invocation
+         * @param arg_options
+         */
         vfunc_handle_stop(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
     }
 
@@ -65257,22 +67434,51 @@ export namespace UDisks {
 
         // Virtual methods
 
+        /**
+         * Handler for the #UDisksVDOVolume::handle-enable-compression signal.
+         * @param invocation
+         * @param arg_enable
+         * @param arg_options
+         */
         vfunc_handle_enable_compression(
             invocation: Gio.DBusMethodInvocation,
             arg_enable: boolean,
             arg_options: GLib.Variant,
         ): boolean;
+        /**
+         * Handler for the #UDisksVDOVolume::handle-enable-deduplication signal.
+         * @param invocation
+         * @param arg_enable
+         * @param arg_options
+         */
         vfunc_handle_enable_deduplication(
             invocation: Gio.DBusMethodInvocation,
             arg_enable: boolean,
             arg_options: GLib.Variant,
         ): boolean;
+        /**
+         * Handler for the #UDisksVDOVolume::handle-get-statistics signal.
+         * @param invocation
+         * @param arg_options
+         */
         vfunc_handle_get_statistics(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
+        /**
+         * Handler for the #UDisksVDOVolume::handle-resize-logical signal.
+         * @param invocation
+         * @param arg_size
+         * @param arg_options
+         */
         vfunc_handle_resize_logical(
             invocation: Gio.DBusMethodInvocation,
             arg_size: number,
             arg_options: GLib.Variant,
         ): boolean;
+        /**
+         * Handler for the #UDisksVDOVolume::handle-resize-physical signal.
+         * @param invocation
+         * @param arg_size
+         * @param arg_options
+         */
         vfunc_handle_resize_physical(
             invocation: Gio.DBusMethodInvocation,
             arg_size: number,
@@ -65975,17 +68181,39 @@ export namespace UDisks {
 
         // Virtual methods
 
+        /**
+         * Handler for the #UDisksVolumeGroup::handle-add-device signal.
+         * @param invocation
+         * @param arg_block
+         * @param arg_options
+         */
         vfunc_handle_add_device(
             invocation: Gio.DBusMethodInvocation,
             arg_block: string,
             arg_options: GLib.Variant,
         ): boolean;
+        /**
+         * Handler for the #UDisksVolumeGroup::handle-create-plain-volume signal.
+         * @param invocation
+         * @param arg_name
+         * @param arg_size
+         * @param arg_options
+         */
         vfunc_handle_create_plain_volume(
             invocation: Gio.DBusMethodInvocation,
             arg_name: string,
             arg_size: number,
             arg_options: GLib.Variant,
         ): boolean;
+        /**
+         * Handler for the #UDisksVolumeGroup::handle-create-plain-volume-with-layout signal.
+         * @param invocation
+         * @param arg_name
+         * @param arg_size
+         * @param arg_layout
+         * @param arg_pvs
+         * @param arg_options
+         */
         vfunc_handle_create_plain_volume_with_layout(
             invocation: Gio.DBusMethodInvocation,
             arg_name: string,
@@ -65994,12 +68222,27 @@ export namespace UDisks {
             arg_pvs: string,
             arg_options: GLib.Variant,
         ): boolean;
+        /**
+         * Handler for the #UDisksVolumeGroup::handle-create-thin-pool-volume signal.
+         * @param invocation
+         * @param arg_name
+         * @param arg_size
+         * @param arg_options
+         */
         vfunc_handle_create_thin_pool_volume(
             invocation: Gio.DBusMethodInvocation,
             arg_name: string,
             arg_size: number,
             arg_options: GLib.Variant,
         ): boolean;
+        /**
+         * Handler for the #UDisksVolumeGroup::handle-create-thin-volume signal.
+         * @param invocation
+         * @param arg_name
+         * @param arg_size
+         * @param arg_pool
+         * @param arg_options
+         */
         vfunc_handle_create_thin_volume(
             invocation: Gio.DBusMethodInvocation,
             arg_name: string,
@@ -66007,6 +68250,19 @@ export namespace UDisks {
             arg_pool: string,
             arg_options: GLib.Variant,
         ): boolean;
+        /**
+         * Handler for the #UDisksVolumeGroup::handle-create-vdo-volume signal.
+         * @param invocation
+         * @param arg_lv_name
+         * @param arg_pool_name
+         * @param arg_data_size
+         * @param arg_virtual_size
+         * @param arg_index_memory
+         * @param arg_compression
+         * @param arg_deduplication
+         * @param arg_write_policy
+         * @param arg_options
+         */
         vfunc_handle_create_vdo_volume(
             invocation: Gio.DBusMethodInvocation,
             arg_lv_name: string,
@@ -66019,27 +68275,61 @@ export namespace UDisks {
             arg_write_policy: string,
             arg_options: GLib.Variant,
         ): boolean;
+        /**
+         * Handler for the #UDisksVolumeGroup::handle-delete signal.
+         * @param invocation
+         * @param arg_wipe
+         * @param arg_options
+         */
         vfunc_handle_delete(
             invocation: Gio.DBusMethodInvocation,
             arg_wipe: boolean,
             arg_options: GLib.Variant,
         ): boolean;
+        /**
+         * Handler for the #UDisksVolumeGroup::handle-empty-device signal.
+         * @param invocation
+         * @param arg_block
+         * @param arg_options
+         */
         vfunc_handle_empty_device(
             invocation: Gio.DBusMethodInvocation,
             arg_block: string,
             arg_options: GLib.Variant,
         ): boolean;
+        /**
+         * Handler for the #UDisksVolumeGroup::handle-poll signal.
+         * @param invocation
+         */
         vfunc_handle_poll(invocation: Gio.DBusMethodInvocation): boolean;
+        /**
+         * Handler for the #UDisksVolumeGroup::handle-remove-device signal.
+         * @param invocation
+         * @param arg_block
+         * @param arg_wipe
+         * @param arg_options
+         */
         vfunc_handle_remove_device(
             invocation: Gio.DBusMethodInvocation,
             arg_block: string,
             arg_wipe: boolean,
             arg_options: GLib.Variant,
         ): boolean;
+        /**
+         * Handler for the #UDisksVolumeGroup::handle-remove-missing-physical-volumes signal.
+         * @param invocation
+         * @param arg_options
+         */
         vfunc_handle_remove_missing_physical_volumes(
             invocation: Gio.DBusMethodInvocation,
             arg_options: GLib.Variant,
         ): boolean;
+        /**
+         * Handler for the #UDisksVolumeGroup::handle-rename signal.
+         * @param invocation
+         * @param arg_new_name
+         * @param arg_options
+         */
         vfunc_handle_rename(
             invocation: Gio.DBusMethodInvocation,
             arg_new_name: string,

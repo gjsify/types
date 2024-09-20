@@ -12,6 +12,7 @@ import type Libxfce4util from '@girs/libxfce4util-1.0';
 import type Gio from '@girs/gio-2.0';
 import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
+import type GModule from '@girs/gmodule-2.0';
 import type Gtk from '@girs/gtk-3.0';
 import type xlib from '@girs/xlib-2.0';
 import type Gdk from '@girs/gdk-3.0';
@@ -20,7 +21,6 @@ import type Pango from '@girs/pango-1.0';
 import type HarfBuzz from '@girs/harfbuzz-0.0';
 import type freetype2 from '@girs/freetype2-2.0';
 import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
-import type GModule from '@girs/gmodule-2.0';
 import type Atk from '@girs/atk-1.0';
 
 export namespace Libxfce4panel {
@@ -5575,17 +5575,67 @@ export namespace Libxfce4panel {
 
         // Virtual methods
 
+        /**
+         * See #XfcePanelPlugin::about for more information.
+         */
         vfunc_about(): void;
+        /**
+         * See #XfcePanelPlugin::configure-plugin for more information.
+         */
         vfunc_configure_plugin(): void;
+        /**
+         * This function is for object orientated plugins and
+         *                            triggered after the init function of the object.
+         *                            When this function is triggered, the plugin
+         *                            information like name, display name, comment and unique
+         *                            id are available. This is also the place where you would
+         *                            call functions like xfce_panel_plugin_menu_show_configure().
+         *                            You can see this as the replacement of #XfcePanelPluginFunc
+         *                            for object based plugins. Since 4.8.
+         */
         vfunc_construct(): void;
+        /**
+         * See #XfcePanelPlugin::free-data for more information.
+         */
         vfunc_free_data(): void;
+        /**
+         * See #XfcePanelPlugin::mode-changed for more information.
+         * @param mode
+         */
         vfunc_mode_changed(mode: PanelPluginMode): void;
+        /**
+         * See #XfcePanelPlugin::nrows-changed for more information.
+         * @param rows
+         */
         vfunc_nrows_changed(rows: number): void;
+        /**
+         * See #XfcePanelPlugin::orientation-changed for more information.
+         * @param orientation
+         */
         vfunc_orientation_changed(orientation: Gtk.Orientation): void;
+        /**
+         * See #XfcePanelPlugin::remote-event for more information.
+         * @param name
+         * @param value
+         */
         vfunc_remote_event(name: string, value: GObject.Value | any): boolean;
+        /**
+         * See #XfcePanelPlugin::removed for more information.
+         */
         vfunc_removed(): void;
+        /**
+         * See #XfcePanelPlugin::save for more information.
+         */
         vfunc_save(): void;
+        /**
+         * See #XfcePanelPlugin::screen-position-changed for more information.
+         * @param position
+         */
         vfunc_screen_position_changed(position: ScreenPosition): void;
+        /**
+         * See #XfcePanelPlugin::size-changed for more information.
+         * @param size
+         */
         vfunc_size_changed(size: number): boolean;
 
         // Methods

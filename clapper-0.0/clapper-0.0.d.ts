@@ -220,7 +220,7 @@ export namespace Clapper {
     function init(argv?: string[] | null): string[] | null;
     /**
      * This function does the same thing as [func`Clapper`.init], but instead of
-     * terminating on failure it returns %FALSE with `error` set.
+     * terminating on failure it returns %FALSE.
      * @param argv pointer to application's argv
      * @returns %TRUE if Clapper could be initialized, %FALSE otherwise.
      */
@@ -812,18 +812,18 @@ export namespace Clapper {
          * DBus name to own on connection.
          *
          * Must be written as a reverse DNS format starting with "org.mpris.MediaPlayer2." prefix.
-         * Each #ClapperMpris instance running on the same system must have an unique.
+         * Each #ClapperMpris instance running on the same system must have an unique name.
          *
-         * Example: "org.mpris.MediaPlayer2.MyPlayer1"
+         * Example: "org.mpris.MediaPlayer2.MyPlayer.instance123"
          */
         get own_name(): string;
         /**
          * DBus name to own on connection.
          *
          * Must be written as a reverse DNS format starting with "org.mpris.MediaPlayer2." prefix.
-         * Each #ClapperMpris instance running on the same system must have an unique.
+         * Each #ClapperMpris instance running on the same system must have an unique name.
          *
-         * Example: "org.mpris.MediaPlayer2.MyPlayer1"
+         * Example: "org.mpris.MediaPlayer2.MyPlayer.instance123"
          */
         get ownName(): string;
         /**

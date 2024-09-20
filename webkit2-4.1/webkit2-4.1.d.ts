@@ -12,6 +12,7 @@ import type Soup from '@girs/soup-3.0';
 import type Gio from '@girs/gio-2.0';
 import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
+import type GModule from '@girs/gmodule-2.0';
 import type JavaScriptCore from '@girs/javascriptcore-4.1';
 import type Gtk from '@girs/gtk-3.0';
 import type xlib from '@girs/xlib-2.0';
@@ -21,7 +22,6 @@ import type Pango from '@girs/pango-1.0';
 import type HarfBuzz from '@girs/harfbuzz-0.0';
 import type freetype2 from '@girs/freetype2-2.0';
 import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
-import type GModule from '@girs/gmodule-2.0';
 import type Atk from '@girs/atk-1.0';
 
 export namespace WebKit2 {
@@ -637,13 +637,15 @@ export namespace WebKit2 {
         PASSWORD,
     }
     /**
-     * Enum values used to denote the different events which can trigger
-     * the detection of insecure content.
+     * Enum values previously used to denote the different events which can trigger
+     * the detection of insecure content. Since 2.46, WebKit generally no longer
+     * loads insecure content in secure contexts.
      */
 
     /**
-     * Enum values used to denote the different events which can trigger
-     * the detection of insecure content.
+     * Enum values previously used to denote the different events which can trigger
+     * the detection of insecure content. Since 2.46, WebKit generally no longer
+     * loads insecure content in secure contexts.
      */
     export namespace InsecureContentEvent {
         export const $gtype: GObject.GType<InsecureContentEvent>;
@@ -2059,6 +2061,10 @@ export namespace WebKit2 {
             (): WebView;
         }
 
+        interface WillClose {
+            (): void;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2100,6 +2106,9 @@ export namespace WebKit2 {
         connect(signal: 'create-web-view', callback: (_source: this) => WebView): number;
         connect_after(signal: 'create-web-view', callback: (_source: this) => WebView): number;
         emit(signal: 'create-web-view'): void;
+        connect(signal: 'will-close', callback: (_source: this) => void): number;
+        connect_after(signal: 'will-close', callback: (_source: this) => void): number;
+        emit(signal: 'will-close'): void;
 
         // Methods
 
@@ -7926,6 +7935,11 @@ export namespace WebKit2 {
          * The #WebKitPrintOperation::finished signal is emitted when the printing
          * operation finishes. If an error occurs while printing the signal
          * #WebKitPrintOperation::failed is emitted before #WebKitPrintOperation::finished.
+         *
+         * If the app is running in a sandbox, this function only works if printing to
+         * a file that is in a location accessible to the sandbox, usually acquired
+         * through the File Chooser portal. This function will not work for physical
+         * printers when running in a sandbox.
          */
         print(): void;
         /**
@@ -8191,6 +8205,8 @@ export namespace WebKit2 {
             disableWebSecurity: boolean;
             draw_compositing_indicators: boolean;
             drawCompositingIndicators: boolean;
+            enable_2d_canvas_acceleration: boolean;
+            enable2dCanvasAcceleration: boolean;
             enable_accelerated_2d_canvas: boolean;
             enableAccelerated2dCanvas: boolean;
             enable_back_forward_navigation_gestures: boolean;
@@ -8487,6 +8503,22 @@ export namespace WebKit2 {
          */
         get drawCompositingIndicators(): boolean;
         set drawCompositingIndicators(val: boolean);
+        /**
+         * Enable or disable 2D canvas acceleration.
+         * If this setting is enabled, the 2D canvas will be accelerated even if Skia CPU
+         * is used for rendering. However, the canvas can be unaccelerated even when this setting
+         * is enabled, for other reasons like its size or when willReadFrequently property is used.
+         */
+        get enable_2d_canvas_acceleration(): boolean;
+        set enable_2d_canvas_acceleration(val: boolean);
+        /**
+         * Enable or disable 2D canvas acceleration.
+         * If this setting is enabled, the 2D canvas will be accelerated even if Skia CPU
+         * is used for rendering. However, the canvas can be unaccelerated even when this setting
+         * is enabled, for other reasons like its size or when willReadFrequently property is used.
+         */
+        get enable2dCanvasAcceleration(): boolean;
+        set enable2dCanvasAcceleration(val: boolean);
         /**
          * Enable or disable accelerated 2D canvas. Accelerated 2D canvas is only available
          * if WebKit was compiled with a version of Cairo including the unstable CairoGL API.
@@ -9243,6 +9275,20 @@ export namespace WebKit2 {
         // Methods
 
         /**
+         * Reads the contents of the given `group_name` from the given `key_file` and apply the value of
+         * each key/value to the corresponding property on the `settings`.
+         *
+         * Value types have to match with the corresponding setting property type and the group keys have to
+         * match existing setting property names. If those conditions are not met, the function will return
+         * %FALSE.
+         *
+         * Supported value types are strings (unquoted), booleans (0, 1, true, false) and unsigned integers.
+         * @param key_file a #GKeyFile
+         * @param group_name Name of the group to read from @key_file
+         * @returns %TRUE if the settings were correctly applied or %FALSE on error.
+         */
+        apply_from_key_file(key_file: GLib.KeyFile, group_name: string): boolean;
+        /**
          * Get the #WebKitSettings:allow-file-access-from-file-urls property.
          * @returns %TRUE If file access from file URLs is allowed or %FALSE otherwise.
          */
@@ -9302,6 +9348,11 @@ export namespace WebKit2 {
          * @returns %TRUE If compositing borders are drawn or %FALSE otherwise.
          */
         get_draw_compositing_indicators(): boolean;
+        /**
+         * Get the #WebKitSettings:enable-2d-canvas-acceleration property.
+         * @returns %TRUE if 2D canvas acceleration is enabled or %FALSE otherwise.
+         */
+        get_enable_2d_canvas_acceleration(): boolean;
         /**
          * Get the #WebKitSettings:enable-accelerated-2d-canvas property.
          * @returns %TRUE if accelerated 2D canvas is enabled or %FALSE otherwise.
@@ -9613,6 +9664,11 @@ export namespace WebKit2 {
          * @param enabled Value to be set
          */
         set_draw_compositing_indicators(enabled: boolean): void;
+        /**
+         * Set the #WebKitSettings:enable-2d-canvas-acceleration property.
+         * @param enabled Value to be set
+         */
+        set_enable_2d_canvas_acceleration(enabled: boolean): void;
         /**
          * Set the #WebKitSettings:enable-accelerated-2d-canvas property.
          * @param enabled Value to be set
@@ -10555,11 +10611,11 @@ export namespace WebKit2 {
          *
          * The registered handler can be unregistered by using
          * webkit_user_content_manager_unregister_script_message_handler().
-         * @param name Name of the script message channel @world_name (nullable): the name of a #WebKitScriptWorld
-         * @param world_name
+         * @param name Name of the script message channel
+         * @param world_name the name of a #WebKitScriptWorld
          * @returns %TRUE if message handler was registered successfully, or %FALSE otherwise.
          */
-        register_script_message_handler_with_reply(name: string, world_name: string): boolean;
+        register_script_message_handler_with_reply(name: string, world_name?: string | null): boolean;
         /**
          * Removes all content filters from the given #WebKitUserContentManager.
          */
@@ -11793,6 +11849,8 @@ export namespace WebKit2 {
         set_tls_errors_policy(policy: TLSErrorsPolicy): void;
         /**
          * Set the #WebKitWebContext:use-system-appearance-for-scrollbars property.
+         *
+         * This is now deprecated and when WebKit is built with Skia this method does nothing.
          * @param enabled value to set
          */
         set_use_system_appearance_for_scrollbars(enabled: boolean): void;

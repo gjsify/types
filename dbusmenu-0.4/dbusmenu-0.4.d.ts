@@ -688,8 +688,20 @@ export namespace Dbusmenu {
 
         // Virtual methods
 
+        /**
+         * Slot for #DbusmenuMenuitem::child-added.
+         * @param position
+         */
         vfunc_child_added(position: number): void;
+        /**
+         * Slot for #DbusmenuMenuitem::child-moved.
+         * @param newpos
+         * @param oldpos
+         */
         vfunc_child_moved(newpos: number, oldpos: number): void;
+        /**
+         * Slot for #DbusmenuMenuitem::child-removed.
+         */
         vfunc_child_removed(): void;
         /**
          * This function is called to create an event.  It is likely
@@ -708,6 +720,11 @@ export namespace Dbusmenu {
          * @param timestamp The timestamp of when the event happened
          */
         vfunc_handle_event(name: string, variant: GLib.Variant, timestamp: number): void;
+        /**
+         * Slot for #DbusmenuMenuitem::show-to-user.
+         * @param timestamp
+         * @param cb_data
+         */
         vfunc_show_to_user(timestamp: number, cb_data?: any | null): void;
 
         // Methods

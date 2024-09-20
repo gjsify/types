@@ -12,6 +12,7 @@ import type ICalGLib from '@girs/icalglib-3.0';
 import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 import type Gio from '@girs/gio-2.0';
+import type GModule from '@girs/gmodule-2.0';
 import type EDataServer from '@girs/edataserver-1.2';
 import type libxml2 from '@girs/libxml2-2.0';
 import type Soup from '@girs/soup-3.0';
@@ -403,8 +404,7 @@ export namespace ECal {
     const STATIC_CAPABILITY_REQ_SEND_OPTIONS: string;
     /**
      * Set, when the backend supports retract. That's a way to ask for a meeting
-     * deletion with a comment, which is stored in a component as
-     * X-EVOLUTION-RETRACT-COMMENT property.
+     * deletion with a comment, which is stored in a component as the COMMENT property.
      */
     const STATIC_CAPABILITY_RETRACT_SUPPORTED: string;
     const STATIC_CAPABILITY_SAVE_SCHEDULES: string;
@@ -2766,7 +2766,7 @@ export namespace ECal {
          * in a thread, so if you want to support asynchronous initialization via
          * threads, just implement the #GAsyncInitable interface without overriding
          * any interface methods.
-         * @param io_priority the [I/O priority][io-priority] of the operation
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
@@ -2826,7 +2826,7 @@ export namespace ECal {
          * in a thread, so if you want to support asynchronous initialization via
          * threads, just implement the #GAsyncInitable interface without overriding
          * any interface methods.
-         * @param io_priority the [I/O priority][io-priority] of the operation
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */

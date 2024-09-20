@@ -1104,7 +1104,7 @@ export namespace ICalGLib {
      * @param count The number of elements to be filled up in the @array
      * @returns If successful, return the array. NULL if failed.
      */
-    function recur_expand_recurrence(rule: string, start: number, count: number): number[];
+    function recur_expand_recurrence(rule: string, start: never, count: number): number[];
     /**
      * Returns the code for a request status.
      * @param stat The #ICalRequestStatus to be queried
@@ -4557,7 +4557,7 @@ export namespace ICalGLib {
 
         static new_from_string(str: string): Time;
 
-        static new_from_timet_with_zone(v: number, is_date: number, zone?: Timezone | null): Time;
+        static new_from_timet_with_zone(v: never, is_date: number, zone?: Timezone | null): Time;
 
         static new_null_date(): Time;
 
@@ -4616,13 +4616,13 @@ export namespace ICalGLib {
          * Returns the time as seconds past the UNIX epoch.
          * @returns The time as seconds past the UNIX epoch
          */
-        as_timet(): number;
+        as_timet(): never;
         /**
          * Returns the time as seconds past the UNIX epoch, using timezones.
          * @param zone The timezone
          * @returns The time as seconds past the UNIX epoch
          */
-        as_timet_with_zone(zone?: Timezone | null): number;
+        as_timet_with_zone(zone?: Timezone | null): never;
         /**
          * Creates a new #ICalTime, copy of `timetype`.
          * @returns The newly created #ICalTime, copy of @timetype.
@@ -4858,7 +4858,7 @@ export namespace ICalGLib {
 
         static ['new'](dtstart: Time, dtend: Time, is_busy: number): TimeSpan;
 
-        static new_timet(start: number, end: number, is_busy: boolean): TimeSpan;
+        static new_timet(start: never, end: never, is_busy: boolean): TimeSpan;
 
         // Methods
 
@@ -4877,7 +4877,7 @@ export namespace ICalGLib {
          * Gets the end of #ICalTimeSpan.
          * @returns The end.
          */
-        get_end(): number;
+        get_end(): never;
         /**
          * Gets the is_busy of #ICalTimeSpan.
          * @returns The is_busy.
@@ -4887,7 +4887,7 @@ export namespace ICalGLib {
          * Gets the start of #ICalTimeSpan.
          * @returns The start.
          */
-        get_start(): number;
+        get_start(): never;
         /**
          * Checks whether two spans overlap.
          * @param s2 The second #ICalTimeSpan
@@ -4898,7 +4898,7 @@ export namespace ICalGLib {
          * Sets the end of #ICalTimeSpan.
          * @param end The end
          */
-        set_end(end: number): void;
+        set_end(end: never): void;
         /**
          * Sets the is_busy of #ICalTimeSpan.
          * @param is_busy The is_busy
@@ -4908,7 +4908,7 @@ export namespace ICalGLib {
          * Sets the start of #ICalTimeSpan.
          * @param start The start
          */
-        set_start(start: number): void;
+        set_start(start: never): void;
     }
 
     module Timezone {

@@ -11,6 +11,7 @@
 import type Gio from '@girs/gio-2.0';
 import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
+import type GModule from '@girs/gmodule-2.0';
 
 export namespace TelepathyGLib {
     /**
@@ -3660,13 +3661,6 @@ export namespace TelepathyGLib {
      * @returns the handle corresponding to the given string, or 0 if it is invalid.
      */
     function handle_ensure(self: HandleRepoIface, id: string, context?: any | null): Handle;
-    /**
-     * If the given handle type is valid, return %TRUE. If not, set `error`
-     * and return %FALSE.
-     * @param type A handle type, valid or not, to be checked
-     * @returns %TRUE if the handle type is valid.
-     */
-    function handle_type_is_valid(type: HandleType): boolean;
     /**
      * <!---->
      * @param type A handle type, which need not be valid
@@ -8586,6 +8580,16 @@ export namespace TelepathyGLib {
 
         // Virtual methods
 
+        /**
+         * the function called to request user approval of
+         *  unrequested (incoming) channels matching this client's approver filter
+         *  (since 0.11.13)
+         * @param account a #TpAccount with %TP_ACCOUNT_FEATURE_CORE, and any other  features added via tp_base_client_add_account_features() or  tp_simple_client_factory_add_account_features(), prepared if  possible
+         * @param connection a #TpConnection with %TP_CONNECTION_FEATURE_CORE,  and any other features added via tp_base_client_add_connection_features(),  or tp_simple_client_factory_add_connection_features(), prepared if possible
+         * @param channels a #GList of #TpChannel,  each with %TP_CHANNEL_FEATURE_CORE, and any other features added via  tp_base_client_add_channel_features() or  tp_simple_client_factory_add_channel_features(), prepared if possible
+         * @param dispatch_operation a #TpChannelDispatchOperation having %TP_CHANNEL_DISPATCH_OPERATION_FEATURE_CORE prepared if possible
+         * @param context a #TpObserveChannelsContext representing the context of this  D-Bus call
+         */
         vfunc_add_dispatch_operation(
             account: Account,
             connection: Connection,
@@ -8593,6 +8597,16 @@ export namespace TelepathyGLib {
             dispatch_operation: ChannelDispatchOperation,
             context: AddDispatchOperationContext,
         ): void;
+        /**
+         * the function called to handle channels matching this
+         *  client's handler filter (since 0.11.13)
+         * @param account a #TpAccount with %TP_ACCOUNT_FEATURE_CORE, and any other  features added via tp_base_client_add_account_features() or  tp_simple_client_factory_add_account_features(), prepared if  possible
+         * @param connection a #TpConnection with %TP_CONNECTION_FEATURE_CORE,  and any other features added via tp_base_client_add_connection_features(),  or tp_simple_client_factory_add_connection_features(), prepared if possible
+         * @param channels a #GList of #TpChannel,  each with %TP_CHANNEL_FEATURE_CORE, and any other features added via  tp_base_client_add_channel_features() or  tp_simple_client_factory_add_channel_features(), prepared if possible
+         * @param requests_satisfied a #GList of  #TpChannelRequest having their object-path defined but are not guaranteed  to be prepared.
+         * @param user_action_time the time at which user action occurred, or one of the  special values %TP_USER_ACTION_TIME_NOT_USER_ACTION or  %TP_USER_ACTION_TIME_CURRENT_TIME  (see #TpAccountChannelRequest:user-action-time for details)
+         * @param context a #TpHandleChannelsContext representing the context of this  D-Bus call
+         */
         vfunc_handle_channels(
             account: Account,
             connection: Connection,
@@ -8601,6 +8615,16 @@ export namespace TelepathyGLib {
             user_action_time: number,
             context: HandleChannelsContext,
         ): void;
+        /**
+         * the function called to observe newly-created channels
+         *  matching this client's observer filter (since 0.11.13)
+         * @param account a #TpAccount with %TP_ACCOUNT_FEATURE_CORE, and any other  features added via tp_base_client_add_account_features() or  tp_simple_client_factory_add_account_features(), prepared if  possible
+         * @param connection a #TpConnection with %TP_CONNECTION_FEATURE_CORE,  and any other features added via tp_base_client_add_connection_features(),  or tp_simple_client_factory_add_connection_features(), prepared if possible
+         * @param channels a #GList of #TpChannel,  each with %TP_CHANNEL_FEATURE_CORE, and any other features added via  tp_base_client_add_channel_features() or  tp_simple_client_factory_add_channel_features(), prepared if possible
+         * @param dispatch_operation a #TpChannelDispatchOperation or %NULL;  the dispatch_operation is not guaranteed to be prepared
+         * @param requests a #GList of  #TpChannelRequest having their object-path defined but are not guaranteed  to be prepared.
+         * @param context a #TpObserveChannelsContext representing the context of this  D-Bus call
+         */
         vfunc_observe_channels(
             account: Account,
             connection: Connection,
@@ -9048,11 +9072,42 @@ export namespace TelepathyGLib {
 
         // Virtual methods
 
+        /**
+         * If set by subclasses, will be called just after the state
+         *  changes to CONNECTED. May be %NULL if nothing special needs to happen.
+         */
         vfunc_connected(): void;
+        /**
+         * If set by subclasses, will be called just after the state
+         *  changes to CONNECTING. May be %NULL if nothing special needs to happen.
+         */
         vfunc_connecting(): void;
+        /**
+         * If set by subclasses, will be called just after the state
+         *  changes to DISCONNECTED. May be %NULL if nothing special needs to happen.
+         */
         vfunc_disconnected(): void;
+        /**
+         * Construct a unique name for this connection
+         *  (for example using the protocol's format for usernames). If %NULL (the
+         *  default), a unique name will be generated. Subclasses should usually
+         *  override this to get more obvious names, to aid debugging and prevent
+         *  multiple connections to the same account.
+         */
         vfunc_get_unique_connection_name(): string;
+        /**
+         * Called after disconnected() is called, to clean up the
+         *  connection. Must start the shutdown process for the underlying
+         *  network connection, and arrange for tp_base_connection_finish_shutdown()
+         *  to be called after the underlying connection has been closed. May not
+         *  be left as %NULL.
+         */
         vfunc_shut_down(): void;
+        /**
+         * Asynchronously start connecting - called to implement
+         *  the Connect D-Bus method. See #TpBaseConnectionStartConnectingImpl for
+         *  details. May not be left as %NULL.
+         */
         vfunc_start_connecting(): boolean;
 
         // Methods
@@ -14963,7 +15018,7 @@ export namespace TelepathyGLib {
          * in a thread, so if you want to support asynchronous initialization via
          * threads, just implement the #GAsyncInitable interface without overriding
          * any interface methods.
-         * @param io_priority the [I/O priority][io-priority] of the operation
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
@@ -15023,7 +15078,7 @@ export namespace TelepathyGLib {
          * in a thread, so if you want to support asynchronous initialization via
          * threads, just implement the #GAsyncInitable interface without overriding
          * any interface methods.
-         * @param io_priority the [I/O priority][io-priority] of the operation
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
@@ -17602,7 +17657,7 @@ export namespace TelepathyGLib {
          * in a thread, so if you want to support asynchronous initialization via
          * threads, just implement the #GAsyncInitable interface without overriding
          * any interface methods.
-         * @param io_priority the [I/O priority][io-priority] of the operation
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
@@ -17662,7 +17717,7 @@ export namespace TelepathyGLib {
          * in a thread, so if you want to support asynchronous initialization via
          * threads, just implement the #GAsyncInitable interface without overriding
          * any interface methods.
-         * @param io_priority the [I/O priority][io-priority] of the operation
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */

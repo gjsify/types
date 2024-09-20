@@ -8,9 +8,10 @@
  */
 
 // Module dependencies
-import type GObject from '@girs/gobject-2.0';
 import type Gio from '@girs/gio-2.0';
+import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
+import type GModule from '@girs/gmodule-2.0';
 
 export namespace GioUnix {
     /**
@@ -24,16 +25,17 @@ export namespace GioUnix {
     const DESKTOP_APP_INFO_LOOKUP_EXTENSION_POINT_NAME: string;
     /**
      * Gets the default application for launching applications
-     * using this URI scheme for a particular #GDesktopAppInfoLookup
+     * using this URI scheme for a particular [iface`Gio`.DesktopAppInfoLookup]
      * implementation.
      *
-     * The #GDesktopAppInfoLookup interface and this function is used
-     * to implement g_app_info_get_default_for_uri_scheme() backends
+     * The [iface`Gio`.DesktopAppInfoLookup] interface and this function is used
+     * to implement [func`Gio`.AppInfo.get_default_for_uri_scheme] backends
      * in a GIO module. There is no reason for applications to use it
-     * directly. Applications should use g_app_info_get_default_for_uri_scheme().
-     * @param lookup a #GDesktopAppInfoLookup
+     * directly. Applications should use
+     * [func`Gio`.AppInfo.get_default_for_uri_scheme].
+     * @param lookup a [iface@Gio.DesktopAppInfoLookup]
      * @param uri_scheme a string containing a URI scheme.
-     * @returns #GAppInfo for given @uri_scheme or    %NULL on error.
+     * @returns [iface@Gio.AppInfo] for given   @uri_scheme or `NULL` on error.
      */
     function desktop_app_info_lookup_get_default_for_uri_scheme(
         lookup: Gio.DesktopAppInfoLookup,
@@ -321,6 +323,21 @@ export namespace GioUnix {
      */
     function mount_points_get(): [Gio.UnixMountPoint[], number];
     /**
+     * Gets an array of [struct`Gio`.UnixMountPoint]s containing the Unix mount
+     * points listed in `table_path`.
+     *
+     * This is a generalized version of g_unix_mount_points_get(), mainly intended
+     * for internal testing use. Note that g_unix_mount_points_get() may parse
+     * multiple hierarchical table files, so this function is not a direct superset
+     * of its functionality.
+     *
+     * If there is an error reading or parsing the file, `NULL` will be returned
+     * and both out parameters will be set to `0`.
+     * @param table_path path to the mount points table file (for example `/etc/fstab`)
+     * @returns mount   points, or `NULL` if there was an error loading them
+     */
+    function mount_points_get_from_file(table_path: string): [Gio.UnixMountPoint[] | null, number];
+    /**
      * Checks if the unix mounts have changed since a given unix time.
      * @param time guint64 to contain a timestamp.
      * @returns %TRUE if the mounts have changed since @time.
@@ -334,6 +351,21 @@ export namespace GioUnix {
      * @returns a #GList of the UNIX mounts.
      */
     function mounts_get(): [Gio.UnixMountEntry[], number];
+    /**
+     * Gets an array of [struct`Gio`.UnixMountEntry]s containing the Unix mounts
+     * listed in `table_path`.
+     *
+     * This is a generalized version of g_unix_mounts_get(), mainly intended for
+     * internal testing use. Note that g_unix_mounts_get() may parse multiple
+     * hierarchical table files, so this function is not a direct superset of its
+     * functionality.
+     *
+     * If there is an error reading or parsing the file, `NULL` will be returned
+     * and both out parameters will be set to `0`.
+     * @param table_path path to the mounts table file (for example `/proc/self/mountinfo`)
+     * @returns mount   entries, or `NULL` if there was an error loading them
+     */
+    function mounts_get_from_file(table_path: string): [Gio.UnixMountEntry[] | null, number];
     interface DesktopAppLaunchCallback {
         (appinfo: Gio.DesktopAppInfo, pid: GLib.Pid): void;
     }
@@ -359,7 +391,7 @@ export namespace GioUnix {
         // Properties
 
         /**
-         * The origin filename of this #GDesktopAppInfo
+         * The origin filename of this [class`Gio`.DesktopAppInfo]
          */
         get filename(): string;
 
@@ -378,118 +410,123 @@ export namespace GioUnix {
         // Static methods
 
         /**
-         * Gets the user-visible display name of the "additional application
-         * action" specified by `action_name`.
+         * Gets the user-visible display name of the
+         * [‘additional application actions’](https://specifications.freedesktop.org/desktop-entry-spec/latest/ar01s11.html)
+         * specified by `action_name`.
          *
-         * This corresponds to the "Name" key within the keyfile group for the
+         * This corresponds to the `Name` key within the keyfile group for the
          * action.
-         * @param info a #GDesktopAppInfo
-         * @param action_name the name of the action as from   g_desktop_app_info_list_actions()
+         * @param info a [class@Gio.DesktopAppInfo]
+         * @param action_name the name of the action as from   [method@Gio.DesktopAppInfo.list_actions]
          */
         static get_action_name(info: Gio.DesktopAppInfo, action_name: string): string;
         /**
          * Looks up a boolean value in the keyfile backing `info`.
          *
-         * The `key` is looked up in the "Desktop Entry" group.
-         * @param info a #GDesktopAppInfo
+         * The `key` is looked up in the `Desktop Entry` group.
+         * @param info a [class@Gio.DesktopAppInfo]
          * @param key the key to look up
          */
         static get_boolean(info: Gio.DesktopAppInfo, key: string): boolean;
         /**
          * Gets the categories from the desktop file.
-         * @param info a #GDesktopAppInfo
+         * @param info a [class@Gio.DesktopAppInfo]
          */
         static get_categories(info: Gio.DesktopAppInfo): string | null;
         /**
          * When `info` was created from a known filename, return it.  In some
-         * situations such as the #GDesktopAppInfo returned from
-         * g_desktop_app_info_new_from_keyfile(), this function will return %NULL.
-         * @param info a #GDesktopAppInfo
+         * situations such as a [class`Gio`.DesktopAppInfo] returned from
+         * [ctor`Gio`.DesktopAppInfo.new_from_keyfile], this function will return `NULL`.
+         * @param info a [class@Gio.DesktopAppInfo]
          */
         static get_filename(info: Gio.DesktopAppInfo): string | null;
         /**
          * Gets the generic name from the desktop file.
-         * @param info a #GDesktopAppInfo
+         * @param info a [class@Gio.DesktopAppInfo]
          */
         static get_generic_name(info: Gio.DesktopAppInfo): string | null;
         /**
          * Gets all applications that implement `interface`.
          *
          * An application implements an interface if that interface is listed in
-         * the Implements= line of the desktop file of the application.
+         * the `Implements` line of the desktop file of the application.
          * @param _interface the name of the interface
          */
         static get_implementations(_interface: string): Gio.DesktopAppInfo[];
         /**
-         * A desktop file is hidden if the Hidden key in it is
-         * set to True.
-         * @param info a #GDesktopAppInfo.
+         * A desktop file is hidden if the
+         * [`Hidden` key](https://specifications.freedesktop.org/desktop-entry-spec/latest/ar01s06.html#key-hidden)
+         * in it is set to `True`.
+         * @param info a [class@Gio.DesktopAppInfo].
          */
         static get_is_hidden(info: Gio.DesktopAppInfo): boolean;
         /**
          * Gets the keywords from the desktop file.
-         * @param info a #GDesktopAppInfo
+         * @param info a [class@Gio.DesktopAppInfo]
          */
         static get_keywords(info: Gio.DesktopAppInfo): string[];
         /**
          * Looks up a localized string value in the keyfile backing `info`
          * translated to the current locale.
          *
-         * The `key` is looked up in the "Desktop Entry" group.
-         * @param info a #GDesktopAppInfo
+         * The `key` is looked up in the `Desktop Entry` group.
+         * @param info a [class@Gio.DesktopAppInfo]
          * @param key the key to look up
          */
         static get_locale_string(info: Gio.DesktopAppInfo, key: string): string | null;
         /**
-         * Gets the value of the NoDisplay key, which helps determine if the
-         * application info should be shown in menus. See
-         * %G_KEY_FILE_DESKTOP_KEY_NO_DISPLAY and g_app_info_should_show().
-         * @param info a #GDesktopAppInfo
+         * Gets the value of the
+         * [`NoDisplay` key](https://specifications.freedesktop.org/desktop-entry-spec/latest/ar01s06.html#key-nodisplay)
+         *  which helps determine if the application info should be shown in menus. See
+         * `G_KEY_FILE_DESKTOP_KEY_NO_DISPLAY` and [method`Gio`.AppInfo.should_show].
+         * @param info a [class@Gio.DesktopAppInfo]
          */
         static get_nodisplay(info: Gio.DesktopAppInfo): boolean;
         /**
          * Checks if the application info should be shown in menus that list available
          * applications for a specific name of the desktop, based on the
-         * `OnlyShowIn` and `NotShowIn` keys.
+         * [`OnlyShowIn`](https://specifications.freedesktop.org/desktop-entry-spec/latest/ar01s06.html#key-onlyshowin)
+         * and [`NotShowIn`](https://specifications.freedesktop.org/desktop-entry-spec/latest/ar01s06.html#key-notshowin)
+         * keys.
          *
-         * `desktop_env` should typically be given as %NULL, in which case the
+         * `desktop_env` should typically be given as `NULL`, in which case the
          * `XDG_CURRENT_DESKTOP` environment variable is consulted.  If you want
          * to override the default mechanism then you may specify `desktop_env,`
          * but this is not recommended.
          *
-         * Note that g_app_info_should_show() for `info` will include this check (with
-         * %NULL for `desktop_env)` as well as additional checks.
-         * @param info a #GDesktopAppInfo
+         * Note that [method`Gio`.AppInfo.should_show] for `info` will include this check
+         * (with `NULL` for `desktop_env)` as well as additional checks.
+         * @param info a [class@Gio.DesktopAppInfo]
          * @param desktop_env a string specifying a desktop name
          */
         static get_show_in(info: Gio.DesktopAppInfo, desktop_env?: string | null): boolean;
         /**
-         * Retrieves the StartupWMClass field from `info`. This represents the
-         * WM_CLASS property of the main window of the application, if launched
+         * Retrieves the `StartupWMClass` field from `info`. This represents the
+         * `WM_CLASS` property of the main window of the application, if launched
          * through `info`.
-         * @param info a #GDesktopAppInfo that supports startup notify
+         * @param info a [class@Gio.DesktopAppInfo] that supports startup notify
          */
         static get_startup_wm_class(info: Gio.DesktopAppInfo): string | null;
         /**
          * Looks up a string value in the keyfile backing `info`.
          *
-         * The `key` is looked up in the "Desktop Entry" group.
-         * @param info a #GDesktopAppInfo
+         * The `key` is looked up in the `Desktop Entry` group.
+         * @param info a [class@Gio.DesktopAppInfo]
          * @param key the key to look up
          */
         static get_string(info: Gio.DesktopAppInfo, key: string): string | null;
         /**
          * Looks up a string list value in the keyfile backing `info`.
          *
-         * The `key` is looked up in the "Desktop Entry" group.
-         * @param info a #GDesktopAppInfo
+         * The `key` is looked up in the `Desktop Entry` group.
+         * @param info a [class@Gio.DesktopAppInfo]
          * @param key the key to look up
          */
         static get_string_list(info: Gio.DesktopAppInfo, key: string): string[];
         /**
-         * Returns whether `key` exists in the "Desktop Entry" group
+         * Returns whether `key` exists in the `Desktop Entry` group
          * of the keyfile backing `info`.
-         * @param info a #GDesktopAppInfo
+         * @param info a [class@Gio.DesktopAppInfo]
          * @param key the key to look up
          */
         static has_key(info: Gio.DesktopAppInfo, key: string): boolean;
@@ -497,21 +534,22 @@ export namespace GioUnix {
          * Activates the named application action.
          *
          * You may only call this function on action names that were
-         * returned from g_desktop_app_info_list_actions().
+         * returned from [method`Gio`.DesktopAppInfo.list_actions].
          *
          * Note that if the main entry of the desktop file indicates that the
          * application supports startup notification, and `launch_context` is
-         * non-%NULL, then startup notification will be used when activating the
+         * non-`NULL`, then startup notification will be used when activating the
          * action (and as such, invocation of the action on the receiving side
          * must signal the end of startup notification when it is completed).
          * This is the expected behaviour of applications declaring additional
-         * actions, as per the desktop file specification.
+         * actions, as per the
+         * [desktop file specification](https://specifications.freedesktop.org/desktop-entry-spec/latest/ar01s11.html).
          *
-         * As with g_app_info_launch() there is no way to detect failures that
+         * As with [method`Gio`.AppInfo.launch] there is no way to detect failures that
          * occur while using this function.
-         * @param info a #GDesktopAppInfo
-         * @param action_name the name of the action as from   g_desktop_app_info_list_actions()
-         * @param launch_context a #GAppLaunchContext
+         * @param info a [class@Gio.DesktopAppInfo]
+         * @param action_name the name of the action as from   [method@Gio.DesktopAppInfo.list_actions]
+         * @param launch_context a [class@Gio.AppLaunchContext]
          */
         static launch_action(
             info: Gio.DesktopAppInfo,
@@ -519,25 +557,26 @@ export namespace GioUnix {
             launch_context?: Gio.AppLaunchContext | null,
         ): void;
         /**
-         * This function performs the equivalent of g_app_info_launch_uris(),
+         * This function performs the equivalent of [method`Gio`.AppInfo.launch_uris],
          * but is intended primarily for operating system components that
          * launch applications.  Ordinary applications should use
-         * g_app_info_launch_uris().
+         * [method`Gio`.AppInfo.launch_uris].
          *
          * If the application is launched via GSpawn, then `spawn_flags,` `user_setup`
-         * and `user_setup_data` are used for the call to g_spawn_async().
+         * and `user_setup_data` are used for the call to [func`GLib`.spawn_async].
          * Additionally, `pid_callback` (with `pid_callback_data)` will be called to
-         * inform about the PID of the created process. See g_spawn_async_with_pipes()
-         * for information on certain parameter conditions that can enable an
-         * optimized posix_spawn() codepath to be used.
+         * inform about the PID of the created process. See
+         * [func`GLib`.spawn_async_with_pipes] for information on certain parameter
+         * conditions that can enable an optimized [`posix_spawn()`](man:posix_spawn(3))
+         * code path to be used.
          *
-         * If application launching occurs via some other mechanism (eg: D-Bus
+         * If application launching occurs via some other mechanism (for example, D-Bus
          * activation) then `spawn_flags,` `user_setup,` `user_setup_data,`
          * `pid_callback` and `pid_callback_data` are ignored.
-         * @param appinfo a #GDesktopAppInfo
+         * @param appinfo a [class@Gio.DesktopAppInfo]
          * @param uris List of URIs
-         * @param launch_context a #GAppLaunchContext
-         * @param spawn_flags #GSpawnFlags, used for each process
+         * @param launch_context a [class@Gio.AppLaunchContext]
+         * @param spawn_flags [flags@GLib.SpawnFlags], used for each process
          */
         static launch_uris_as_manager(
             appinfo: Gio.DesktopAppInfo,
@@ -546,21 +585,21 @@ export namespace GioUnix {
             spawn_flags: GLib.SpawnFlags,
         ): boolean;
         /**
-         * Equivalent to g_desktop_app_info_launch_uris_as_manager() but allows
+         * Equivalent to [method`Gio`.DesktopAppInfo.launch_uris_as_manager] but allows
          * you to pass in file descriptors for the stdin, stdout and stderr streams
          * of the launched process.
          *
          * If application launching occurs via some non-spawn mechanism (e.g. D-Bus
          * activation) then `stdin_fd,` `stdout_fd` and `stderr_fd` are ignored.
-         * @param appinfo a #GDesktopAppInfo
+         * @param appinfo a [class@Gio.DesktopAppInfo]
          * @param uris List of URIs
-         * @param launch_context a #GAppLaunchContext
-         * @param spawn_flags #GSpawnFlags, used for each process
-         * @param user_setup a #GSpawnChildSetupFunc, used once     for each process.
+         * @param launch_context a [class@Gio.AppLaunchContext]
+         * @param spawn_flags [flags@GLib.SpawnFlags], used for each process
+         * @param user_setup a   [callback@GLib.SpawnChildSetupFunc], used once for each process.
          * @param pid_callback Callback for child processes
-         * @param stdin_fd file descriptor to use for child's stdin, or -1
-         * @param stdout_fd file descriptor to use for child's stdout, or -1
-         * @param stderr_fd file descriptor to use for child's stderr, or -1
+         * @param stdin_fd file descriptor to use for child’s stdin, or `-1`
+         * @param stdout_fd file descriptor to use for child’s stdout, or `-1`
+         * @param stderr_fd file descriptor to use for child’s stderr, or `-1`
          */
         static launch_uris_as_manager_with_fds(
             appinfo: Gio.DesktopAppInfo,
@@ -574,12 +613,13 @@ export namespace GioUnix {
             stderr_fd: number,
         ): boolean;
         /**
-         * Returns the list of "additional application actions" supported on the
-         * desktop file, as per the desktop file specification.
+         * Returns the list of
+         * [‘additional application actions’](https://specifications.freedesktop.org/desktop-entry-spec/latest/ar01s11.html)
+         * supported on the desktop file, as per the desktop file specification.
          *
          * As per the specification, this is the list of actions that are
-         * explicitly listed in the "Actions" key of the [Desktop Entry] group.
-         * @param info a #GDesktopAppInfo
+         * explicitly listed in the `Actions` key of the `Desktop Entry` group.
+         * @param info a [class@Gio.DesktopAppInfo]
          */
         static list_actions(info: Gio.DesktopAppInfo): string[];
         /**
@@ -593,20 +633,22 @@ export namespace GioUnix {
          * any time.
          *
          * None of the search results are subjected to the normal validation
-         * checks performed by g_desktop_app_info_new() (for example, checking that
+         * checks performed by [ctor`Gio`.DesktopAppInfo.new] (for example, checking that
          * the executable referenced by a result exists), and so it is possible for
-         * g_desktop_app_info_new() to return %NULL when passed an app ID returned by
-         * this function. It is expected that calling code will do this when
-         * subsequently creating a #GDesktopAppInfo for each result.
+         * [ctor`Gio`.DesktopAppInfo.new] to return `NULL` when passed an app ID returned
+         * by this function. It is expected that calling code will do this when
+         * subsequently creating a [class`Gio`.DesktopAppInfo] for each result.
          * @param search_string the search string to use
          */
         static search(search_string: string): string[][];
         /**
          * Sets the name of the desktop that the application is running in.
-         * This is used by g_app_info_should_show() and
-         * g_desktop_app_info_get_show_in() to evaluate the
-         * `OnlyShowIn` and `NotShowIn`
-         * desktop entry fields.
+         *
+         * This is used by [method`Gio`.AppInfo.should_show] and
+         * [method`Gio`.DesktopAppInfo.get_show_in] to evaluate the
+         * [`OnlyShowIn`](https://specifications.freedesktop.org/desktop-entry-spec/latest/ar01s06.html#key-onlyshowin)
+         * and [`NotShowIn`](https://specifications.freedesktop.org/desktop-entry-spec/latest/ar01s06.html#key-notshowin)
+         * keys.
          *
          * Should be called only once; subsequent calls are ignored.
          * @param desktop_env a string specifying what desktop this is
@@ -618,53 +660,53 @@ export namespace GioUnix {
          * Adds a content type to the application information to indicate the
          * application is capable of opening files with the given content type.
          * @param content_type a string.
-         * @returns %TRUE on success, %FALSE on error.
+         * @returns `TRUE` on success, `FALSE` on error.
          */
         add_supports_type(content_type: string): boolean;
         /**
-         * Obtains the information whether the #GAppInfo can be deleted.
-         * See g_app_info_delete().
-         * @returns %TRUE if @appinfo can be deleted
+         * Obtains the information whether the [iface`Gio`.AppInfo] can be deleted.
+         * See [method`Gio`.AppInfo.delete].
+         * @returns `TRUE` if @appinfo can be deleted
          */
         can_delete(): boolean;
         /**
          * Checks if a supported content type can be removed from an application.
-         * @returns %TRUE if it is possible to remove supported     content types from a given @appinfo, %FALSE if not.
+         * @returns `TRUE` if it is possible to remove supported content types from a   given @appinfo, `FALSE` if not.
          */
         can_remove_supports_type(): boolean;
         /**
-         * Tries to delete a #GAppInfo.
+         * Tries to delete a [iface`Gio`.AppInfo].
          *
          * On some platforms, there may be a difference between user-defined
-         * #GAppInfos which can be deleted, and system-wide ones which cannot.
-         * See g_app_info_can_delete().
-         * @returns %TRUE if @appinfo has been deleted
+         * [iface`Gio`.AppInfo]s which can be deleted, and system-wide ones which cannot.
+         * See [method`Gio`.AppInfo.can_delete].
+         * @returns `TRUE` if @appinfo has been deleted
          */
         ['delete'](): boolean;
         /**
-         * Creates a duplicate of a #GAppInfo.
+         * Creates a duplicate of a [iface`Gio`.AppInfo].
          * @returns a duplicate of @appinfo.
          */
         dup(): Gio.AppInfo;
         /**
-         * Checks if two #GAppInfos are equal.
+         * Checks if two [iface`Gio`.AppInfo]s are equal.
          *
-         * Note that the check *may not* compare each individual
-         * field, and only does an identity check. In case detecting changes in the
-         * contents is needed, program code must additionally compare relevant fields.
-         * @param appinfo2 the second #GAppInfo.
-         * @returns %TRUE if @appinfo1 is equal to @appinfo2. %FALSE otherwise.
+         * Note that the check *may not* compare each individual field, and only does
+         * an identity check. In case detecting changes in the contents is needed,
+         * program code must additionally compare relevant fields.
+         * @param appinfo2 the second [iface@Gio.AppInfo].
+         * @returns `TRUE` if @appinfo1 is equal to @appinfo2. `FALSE` otherwise.
          */
         equal(appinfo2: Gio.AppInfo): boolean;
         /**
          * Gets the commandline with which the application will be
          * started.
-         * @returns a string containing the @appinfo's commandline,     or %NULL if this information is not available
+         * @returns a string containing the @appinfo’s   commandline, or `NULL` if this information is not available
          */
         get_commandline(): string | null;
         /**
          * Gets a human-readable description of an installed application.
-         * @returns a string containing a description of the application @appinfo, or %NULL if none.
+         * @returns a string containing a description of the application @appinfo, or `NULL` if none.
          */
         get_description(): string | null;
         /**
@@ -674,28 +716,27 @@ export namespace GioUnix {
          */
         get_display_name(): string;
         /**
-         * Gets the executable's name for the installed application.
+         * Gets the executable’s name for the installed application.
          *
          * This is intended to be used for debugging or labelling what program is going
-         * to be run. To launch the executable, use g_app_info_launch() and related
+         * to be run. To launch the executable, use [method`Gio`.AppInfo.launch] and related
          * functions, rather than spawning the return value from this function.
-         * @returns a string containing the @appinfo's application binaries name
+         * @returns a string containing the @appinfo’s application binaries name
          */
         get_executable(): string;
         /**
          * Gets the icon for the application.
-         * @returns the default #GIcon for @appinfo or %NULL if there is no default icon.
+         * @returns the default [iface@Gio.Icon] for   @appinfo or `NULL` if there is no default icon.
          */
         get_icon(): Gio.Icon | null;
         /**
-         * Gets the ID of an application. An id is a string that
-         * identifies the application. The exact format of the id is
-         * platform dependent. For instance, on Unix this is the
-         * desktop file id from the xdg menu specification.
+         * Gets the ID of an application. An id is a string that identifies the
+         * application. The exact format of the id is platform dependent. For instance,
+         * on Unix this is the desktop file id from the xdg menu specification.
          *
-         * Note that the returned ID may be %NULL, depending on how
-         * the `appinfo` has been constructed.
-         * @returns a string containing the application's ID.
+         * Note that the returned ID may be `NULL`, depending on how the `appinfo` has
+         * been constructed.
+         * @returns a string containing the application’s ID.
          */
         get_id(): string | null;
         /**
@@ -706,9 +747,10 @@ export namespace GioUnix {
         /**
          * Retrieves the list of content types that `app_info` claims to support.
          * If this information is not provided by the environment, this function
-         * will return %NULL.
+         * will return `NULL`.
+         *
          * This function does not take in consideration associations added with
-         * g_app_info_add_supports_type(), but only those exported directly by
+         * [method`Gio`.AppInfo.add_supports_type], but only those exported directly by
          * the application.
          * @returns a list of content types.
          */
@@ -719,7 +761,7 @@ export namespace GioUnix {
          * about the details of the launcher (like what screen it is on).
          * On error, `error` will be set accordingly.
          *
-         * To launch the application without arguments pass a %NULL `files` list.
+         * To launch the application without arguments pass a `NULL` `files` list.
          *
          * Note that even if the launch is successful the application launched
          * can fail to start if it runs into problems during startup. There is
@@ -728,11 +770,11 @@ export namespace GioUnix {
          * Some URIs can be changed when passed through a GFile (for instance
          * unsupported URIs with strange formats like mailto:), so if you have
          * a textual URI you want to pass in as argument, consider using
-         * g_app_info_launch_uris() instead.
+         * [method`Gio`.AppInfo.launch_uris] instead.
          *
          * The launched application inherits the environment of the launching
-         * process, but it can be modified with g_app_launch_context_setenv()
-         * and g_app_launch_context_unsetenv().
+         * process, but it can be modified with [method`Gio`.AppLaunchContext.setenv]
+         * and [method`Gio`.AppLaunchContext.unsetenv].
          *
          * On UNIX, this function sets the `GIO_LAUNCHED_DESKTOP_FILE`
          * environment variable with the path of the launched desktop file and
@@ -741,9 +783,9 @@ export namespace GioUnix {
          * should it be inherited by further processes. The `DISPLAY`,
          * `XDG_ACTIVATION_TOKEN` and `DESKTOP_STARTUP_ID` environment
          * variables are also set, based on information provided in `context`.
-         * @param files a #GList of #GFile objects
-         * @param context a #GAppLaunchContext or %NULL
-         * @returns %TRUE on successful launch, %FALSE otherwise.
+         * @param files a list of [iface@Gio.File] objects
+         * @param context the launch context
+         * @returns `TRUE` on successful launch, `FALSE` otherwise.
          */
         launch(files?: Gio.File[] | null, context?: Gio.AppLaunchContext | null): boolean;
         /**
@@ -754,27 +796,27 @@ export namespace GioUnix {
          * one URI per invocation as part of their command-line, multiple instances
          * of the application will be spawned.
          *
-         * To launch the application without arguments pass a %NULL `uris` list.
+         * To launch the application without arguments pass a `NULL` `uris` list.
          *
          * Note that even if the launch is successful the application launched
          * can fail to start if it runs into problems during startup. There is
          * no way to detect this.
-         * @param uris a #GList containing URIs to launch.
-         * @param context a #GAppLaunchContext or %NULL
-         * @returns %TRUE on successful launch, %FALSE otherwise.
+         * @param uris a list of URIs to launch.
+         * @param context the launch context
+         * @returns `TRUE` on successful launch, `FALSE` otherwise.
          */
         launch_uris(uris?: string[] | null, context?: Gio.AppLaunchContext | null): boolean;
         /**
-         * Async version of g_app_info_launch_uris().
+         * Async version of [method`Gio`.AppInfo.launch_uris].
          *
          * The `callback` is invoked immediately after the application launch, but it
          * waits for activation in case of D-Bus–activated applications and also provides
          * extended error information for sandboxed applications, see notes for
-         * g_app_info_launch_default_for_uri_async().
-         * @param uris a #GList containing URIs to launch.
-         * @param context a #GAppLaunchContext or %NULL
-         * @param cancellable a #GCancellable
-         * @param callback a #GAsyncReadyCallback to call when the request is done
+         * [func`Gio`.AppInfo.launch_default_for_uri_async].
+         * @param uris a list of URIs to launch.
+         * @param context the launch context
+         * @param cancellable a [class@Gio.Cancellable]
+         * @param callback a [type@Gio.AsyncReadyCallback] to call   when the request is done
          */
         launch_uris_async(
             uris?: string[] | null,
@@ -783,52 +825,52 @@ export namespace GioUnix {
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
-         * Finishes a g_app_info_launch_uris_async() operation.
-         * @param result a #GAsyncResult
-         * @returns %TRUE on successful launch, %FALSE otherwise.
+         * Finishes a [method`Gio`.AppInfo.launch_uris_async] operation.
+         * @param result the async result
+         * @returns `TRUE` on successful launch, `FALSE` otherwise.
          */
         launch_uris_finish(result: Gio.AsyncResult): boolean;
         /**
          * Removes a supported type from an application, if possible.
          * @param content_type a string.
-         * @returns %TRUE on success, %FALSE on error.
+         * @returns `TRUE` on success, `FALSE` on error.
          */
         remove_supports_type(content_type: string): boolean;
         /**
          * Sets the application as the default handler for the given file extension.
-         * @param extension a string containing the file extension     (without the dot).
-         * @returns %TRUE on success, %FALSE on error.
+         * @param extension a string containing the file extension (without   the dot).
+         * @returns `TRUE` on success, `FALSE` on error.
          */
         set_as_default_for_extension(extension: string): boolean;
         /**
          * Sets the application as the default handler for a given type.
          * @param content_type the content type.
-         * @returns %TRUE on success, %FALSE on error.
+         * @returns `TRUE` on success, `FALSE` on error.
          */
         set_as_default_for_type(content_type: string): boolean;
         /**
-         * Sets the application as the last used application for a given type.
-         * This will make the application appear as first in the list returned
-         * by g_app_info_get_recommended_for_type(), regardless of the default
+         * Sets the application as the last used application for a given type. This
+         * will make the application appear as first in the list returned by
+         * [func`Gio`.AppInfo.get_recommended_for_type], regardless of the default
          * application for that content type.
          * @param content_type the content type.
-         * @returns %TRUE on success, %FALSE on error.
+         * @returns `TRUE` on success, `FALSE` on error.
          */
         set_as_last_used_for_type(content_type: string): boolean;
         /**
          * Checks if the application info should be shown in menus that
          * list available applications.
-         * @returns %TRUE if the @appinfo should be shown, %FALSE otherwise.
+         * @returns `TRUE` if the @appinfo should be shown, `FALSE` otherwise.
          */
         should_show(): boolean;
         /**
          * Checks if the application accepts files as arguments.
-         * @returns %TRUE if the @appinfo supports files.
+         * @returns `TRUE` if the @appinfo supports files.
          */
         supports_files(): boolean;
         /**
          * Checks if the application supports reading files and directories from URIs.
-         * @returns %TRUE if the @appinfo supports URIs.
+         * @returns `TRUE` if the @appinfo supports URIs.
          */
         supports_uris(): boolean;
         /**
@@ -838,8 +880,8 @@ export namespace GioUnix {
          */
         vfunc_add_supports_type(content_type: string): boolean;
         /**
-         * Obtains the information whether the #GAppInfo can be deleted.
-         * See g_app_info_delete().
+         * Obtains the information whether the [iface`Gio`.AppInfo] can be deleted.
+         * See [method`Gio`.AppInfo.delete].
          */
         vfunc_can_delete(): boolean;
         /**
@@ -847,24 +889,24 @@ export namespace GioUnix {
          */
         vfunc_can_remove_supports_type(): boolean;
         /**
-         * Tries to delete a #GAppInfo.
+         * Tries to delete a [iface`Gio`.AppInfo].
          *
          * On some platforms, there may be a difference between user-defined
-         * #GAppInfos which can be deleted, and system-wide ones which cannot.
-         * See g_app_info_can_delete().
+         * [iface`Gio`.AppInfo]s which can be deleted, and system-wide ones which cannot.
+         * See [method`Gio`.AppInfo.can_delete].
          */
         vfunc_do_delete(): boolean;
         /**
-         * Creates a duplicate of a #GAppInfo.
+         * Creates a duplicate of a [iface`Gio`.AppInfo].
          */
         vfunc_dup(): Gio.AppInfo;
         /**
-         * Checks if two #GAppInfos are equal.
+         * Checks if two [iface`Gio`.AppInfo]s are equal.
          *
-         * Note that the check *may not* compare each individual
-         * field, and only does an identity check. In case detecting changes in the
-         * contents is needed, program code must additionally compare relevant fields.
-         * @param appinfo2 the second #GAppInfo.
+         * Note that the check *may not* compare each individual field, and only does
+         * an identity check. In case detecting changes in the contents is needed,
+         * program code must additionally compare relevant fields.
+         * @param appinfo2 the second [iface@Gio.AppInfo].
          */
         vfunc_equal(appinfo2: Gio.AppInfo): boolean;
         /**
@@ -882,10 +924,10 @@ export namespace GioUnix {
          */
         vfunc_get_display_name(): string;
         /**
-         * Gets the executable's name for the installed application.
+         * Gets the executable’s name for the installed application.
          *
          * This is intended to be used for debugging or labelling what program is going
-         * to be run. To launch the executable, use g_app_info_launch() and related
+         * to be run. To launch the executable, use [method`Gio`.AppInfo.launch] and related
          * functions, rather than spawning the return value from this function.
          */
         vfunc_get_executable(): string;
@@ -894,13 +936,12 @@ export namespace GioUnix {
          */
         vfunc_get_icon(): Gio.Icon | null;
         /**
-         * Gets the ID of an application. An id is a string that
-         * identifies the application. The exact format of the id is
-         * platform dependent. For instance, on Unix this is the
-         * desktop file id from the xdg menu specification.
+         * Gets the ID of an application. An id is a string that identifies the
+         * application. The exact format of the id is platform dependent. For instance,
+         * on Unix this is the desktop file id from the xdg menu specification.
          *
-         * Note that the returned ID may be %NULL, depending on how
-         * the `appinfo` has been constructed.
+         * Note that the returned ID may be `NULL`, depending on how the `appinfo` has
+         * been constructed.
          */
         vfunc_get_id(): string | null;
         /**
@@ -910,9 +951,10 @@ export namespace GioUnix {
         /**
          * Retrieves the list of content types that `app_info` claims to support.
          * If this information is not provided by the environment, this function
-         * will return %NULL.
+         * will return `NULL`.
+         *
          * This function does not take in consideration associations added with
-         * g_app_info_add_supports_type(), but only those exported directly by
+         * [method`Gio`.AppInfo.add_supports_type], but only those exported directly by
          * the application.
          */
         vfunc_get_supported_types(): string[];
@@ -922,7 +964,7 @@ export namespace GioUnix {
          * about the details of the launcher (like what screen it is on).
          * On error, `error` will be set accordingly.
          *
-         * To launch the application without arguments pass a %NULL `files` list.
+         * To launch the application without arguments pass a `NULL` `files` list.
          *
          * Note that even if the launch is successful the application launched
          * can fail to start if it runs into problems during startup. There is
@@ -931,11 +973,11 @@ export namespace GioUnix {
          * Some URIs can be changed when passed through a GFile (for instance
          * unsupported URIs with strange formats like mailto:), so if you have
          * a textual URI you want to pass in as argument, consider using
-         * g_app_info_launch_uris() instead.
+         * [method`Gio`.AppInfo.launch_uris] instead.
          *
          * The launched application inherits the environment of the launching
-         * process, but it can be modified with g_app_launch_context_setenv()
-         * and g_app_launch_context_unsetenv().
+         * process, but it can be modified with [method`Gio`.AppLaunchContext.setenv]
+         * and [method`Gio`.AppLaunchContext.unsetenv].
          *
          * On UNIX, this function sets the `GIO_LAUNCHED_DESKTOP_FILE`
          * environment variable with the path of the launched desktop file and
@@ -944,8 +986,8 @@ export namespace GioUnix {
          * should it be inherited by further processes. The `DISPLAY`,
          * `XDG_ACTIVATION_TOKEN` and `DESKTOP_STARTUP_ID` environment
          * variables are also set, based on information provided in `context`.
-         * @param files a #GList of #GFile objects
-         * @param context a #GAppLaunchContext or %NULL
+         * @param files a list of [iface@Gio.File] objects
+         * @param context the launch context
          */
         vfunc_launch(files?: Gio.File[] | null, context?: Gio.AppLaunchContext | null): boolean;
         /**
@@ -956,26 +998,26 @@ export namespace GioUnix {
          * one URI per invocation as part of their command-line, multiple instances
          * of the application will be spawned.
          *
-         * To launch the application without arguments pass a %NULL `uris` list.
+         * To launch the application without arguments pass a `NULL` `uris` list.
          *
          * Note that even if the launch is successful the application launched
          * can fail to start if it runs into problems during startup. There is
          * no way to detect this.
-         * @param uris a #GList containing URIs to launch.
-         * @param context a #GAppLaunchContext or %NULL
+         * @param uris a list of URIs to launch.
+         * @param context the launch context
          */
         vfunc_launch_uris(uris?: string[] | null, context?: Gio.AppLaunchContext | null): boolean;
         /**
-         * Async version of g_app_info_launch_uris().
+         * Async version of [method`Gio`.AppInfo.launch_uris].
          *
          * The `callback` is invoked immediately after the application launch, but it
          * waits for activation in case of D-Bus–activated applications and also provides
          * extended error information for sandboxed applications, see notes for
-         * g_app_info_launch_default_for_uri_async().
-         * @param uris a #GList containing URIs to launch.
-         * @param context a #GAppLaunchContext or %NULL
-         * @param cancellable a #GCancellable
-         * @param callback a #GAsyncReadyCallback to call when the request is done
+         * [func`Gio`.AppInfo.launch_default_for_uri_async].
+         * @param uris a list of URIs to launch.
+         * @param context the launch context
+         * @param cancellable a [class@Gio.Cancellable]
+         * @param callback a [type@Gio.AsyncReadyCallback] to call   when the request is done
          */
         vfunc_launch_uris_async(
             uris?: string[] | null,
@@ -984,8 +1026,8 @@ export namespace GioUnix {
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
-         * Finishes a g_app_info_launch_uris_async() operation.
-         * @param result a #GAsyncResult
+         * Finishes a [method`Gio`.AppInfo.launch_uris_async] operation.
+         * @param result the async result
          */
         vfunc_launch_uris_finish(result: Gio.AsyncResult): boolean;
         /**
@@ -995,7 +1037,7 @@ export namespace GioUnix {
         vfunc_remove_supports_type(content_type: string): boolean;
         /**
          * Sets the application as the default handler for the given file extension.
-         * @param extension a string containing the file extension     (without the dot).
+         * @param extension a string containing the file extension (without   the dot).
          */
         vfunc_set_as_default_for_extension(extension: string): boolean;
         /**
@@ -1004,9 +1046,9 @@ export namespace GioUnix {
          */
         vfunc_set_as_default_for_type(content_type: string): boolean;
         /**
-         * Sets the application as the last used application for a given type.
-         * This will make the application appear as first in the list returned
-         * by g_app_info_get_recommended_for_type(), regardless of the default
+         * Sets the application as the last used application for a given type. This
+         * will make the application appear as first in the list returned by
+         * [func`Gio`.AppInfo.get_recommended_for_type], regardless of the default
          * application for that content type.
          * @param content_type the content type.
          */
@@ -1753,7 +1795,7 @@ export namespace GioUnix {
          * The asynchronous methods have a default fallback that uses threads to implement
          * asynchronicity, so they are optional for inheriting classes. However, if you
          * override one you must override all.
-         * @param io_priority the [I/O priority][io-priority] of the request
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
          * @param cancellable optional cancellable object
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -1839,7 +1881,7 @@ export namespace GioUnix {
          * Any outstanding I/O request with higher priority (lower numerical
          * value) will be executed before an outstanding request with lower
          * priority. Default priority is %G_PRIORITY_DEFAULT.
-         * @param io_priority the [I/O priority][io-priority] of the request
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -1886,7 +1928,7 @@ export namespace GioUnix {
          * The asynchronous methods have a default fallback that uses threads to implement
          * asynchronicity, so they are optional for inheriting classes. However, if you
          * override one you must override all.
-         * @param io_priority the [I/O priority][io-priority] of the request.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -1946,7 +1988,7 @@ export namespace GioUnix {
          * value) will be executed before an outstanding request with lower
          * priority. Default priority is %G_PRIORITY_DEFAULT.
          * @param count the number of bytes that will be read from the stream
-         * @param io_priority the [I/O priority][io-priority] of the request
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -2020,7 +2062,7 @@ export namespace GioUnix {
          * implement asynchronicity, so they are optional for inheriting classes.
          * However, if you override one, you must override all.
          * @param count the number of bytes that will be skipped from the stream
-         * @param io_priority the [I/O priority][io-priority] of the request
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -2047,7 +2089,7 @@ export namespace GioUnix {
          * The asynchronous methods have a default fallback that uses threads to implement
          * asynchronicity, so they are optional for inheriting classes. However, if you
          * override one you must override all.
-         * @param io_priority the [I/O priority][io-priority] of the request
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
          * @param cancellable optional cancellable object
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -2086,7 +2128,7 @@ export namespace GioUnix {
          * The asynchronous methods have a default fallback that uses threads to implement
          * asynchronicity, so they are optional for inheriting classes. However, if you
          * override one you must override all.
-         * @param io_priority the [I/O priority][io-priority] of the request.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -2145,7 +2187,7 @@ export namespace GioUnix {
          * implement asynchronicity, so they are optional for inheriting classes.
          * However, if you override one, you must override all.
          * @param count the number of bytes that will be skipped from the stream
-         * @param io_priority the [I/O priority][io-priority] of the request
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
          */
@@ -4065,7 +4107,7 @@ export namespace GioUnix {
     }
 
     /**
-     * Defines a Unix mount entry (e.g. <filename>/media/cdrom</filename>).
+     * Defines a Unix mount entry (e.g. `/media/cdrom`).
      * This corresponds roughly to a mtab entry.
      */
     abstract class MountEntry {
@@ -4078,7 +4120,7 @@ export namespace GioUnix {
 
     type MountMonitorClass = typeof MountMonitor;
     /**
-     * Defines a Unix mount point (e.g. <filename>/dev</filename>).
+     * Defines a Unix mount point (e.g. `/dev`).
      * This corresponds roughly to a fstab entry.
      */
     abstract class MountPoint {
@@ -4195,14 +4237,15 @@ export namespace GioUnix {
 
         /**
          * Gets the default application for launching applications
-         * using this URI scheme for a particular #GDesktopAppInfoLookup
+         * using this URI scheme for a particular [iface`Gio`.DesktopAppInfoLookup]
          * implementation.
          *
-         * The #GDesktopAppInfoLookup interface and this function is used
-         * to implement g_app_info_get_default_for_uri_scheme() backends
+         * The [iface`Gio`.DesktopAppInfoLookup] interface and this function is used
+         * to implement [func`Gio`.AppInfo.get_default_for_uri_scheme] backends
          * in a GIO module. There is no reason for applications to use it
-         * directly. Applications should use g_app_info_get_default_for_uri_scheme().
-         * @param lookup a #GDesktopAppInfoLookup
+         * directly. Applications should use
+         * [func`Gio`.AppInfo.get_default_for_uri_scheme].
+         * @param lookup a [iface@Gio.DesktopAppInfoLookup]
          * @param uri_scheme a string containing a URI scheme.
          */
         get_default_for_uri_scheme(lookup: Gio.DesktopAppInfoLookup, uri_scheme: string): Gio.AppInfo | null;

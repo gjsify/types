@@ -18,8 +18,8 @@ import type Pango from '@girs/pango-1.0';
 import type HarfBuzz from '@girs/harfbuzz-0.0';
 import type freetype2 from '@girs/freetype2-2.0';
 import type Gio from '@girs/gio-2.0';
-import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 import type GModule from '@girs/gmodule-2.0';
+import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 import type Atk from '@girs/atk-1.0';
 
 export namespace GtkLayerShell {
@@ -240,6 +240,14 @@ export namespace GtkLayerShell {
      * @param name_space The namespace of this layer surface.
      */
     function set_namespace(window: Gtk.Window, name_space: string): void;
+    /**
+     * Commits a surface state if there's no pending commit scheduled by the GTK.
+     * You almost never need to call this; the only known case is when the surface is in a state
+     * where it does not receive frame callbacks and the regular deferred commit mechanism
+     * is unavailable.
+     * @param window A layer surface.
+     */
+    function try_force_commit(window: Gtk.Window): void;
     /**
      * Name of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188

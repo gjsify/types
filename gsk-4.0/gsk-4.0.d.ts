@@ -18,8 +18,8 @@ import type Pango from '@girs/pango-1.0';
 import type HarfBuzz from '@girs/harfbuzz-0.0';
 import type freetype2 from '@girs/freetype2-2.0';
 import type Gio from '@girs/gio-2.0';
-import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 import type GModule from '@girs/gmodule-2.0';
+import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 
 export namespace Gsk {
     /**
@@ -688,6 +688,9 @@ export namespace Gsk {
 
         // Static methods
 
+        /**
+         * Registers an error quark for [class`Gsk`.RenderNode] errors.
+         */
         static quark(): GLib.Quark;
     }
 
@@ -787,6 +790,10 @@ export namespace Gsk {
      * @returns a new `GskPath`, or `NULL` if @string could not be parsed
      */
     function path_parse(string: string): Path | null;
+    /**
+     * Registers an error quark for [class`Gsk`.RenderNode] errors.
+     * @returns the error quark
+     */
     function serialization_error_quark(): GLib.Quark;
     /**
      * Checks if 2 strokes are identical.
@@ -978,6 +985,11 @@ export namespace Gsk {
         interface ConstructorProps extends Renderer.ConstructorProps {}
     }
 
+    /**
+     * A Broadway based renderer.
+     *
+     * See [class`Gsk`.Renderer].
+     */
     class BroadwayRenderer extends Renderer {
         static $gtype: GObject.GType<BroadwayRenderer>;
 
@@ -1117,6 +1129,9 @@ export namespace Gsk {
 
         /**
          * Retrieves the color of the given `node`.
+         *
+         * The value returned by this function will not be correct
+         * if the render node was created for a non-sRGB color.
          * @returns the color of the node
          */
         get_color(): Gdk.RGBA;
@@ -1297,6 +1312,11 @@ export namespace Gsk {
         interface ConstructorProps extends Renderer.ConstructorProps {}
     }
 
+    /**
+     * A GL based renderer.
+     *
+     * See [class`Gsk`.Renderer].
+     */
     class GLRenderer extends Renderer {
         static $gtype: GObject.GType<GLRenderer>;
 
@@ -1432,6 +1452,15 @@ export namespace Gsk {
      *   fragColor = position * source1 + (1.0 - position) * source2;
      * }
      * ```
+     *
+     * # Deprecation
+     *
+     * This feature was deprecated in GTK 4.16 after the new rendering infrastructure
+     * introduced in 4.14 did not support it.
+     * The lack of Vulkan integration would have made it a very hard feature to support.
+     *
+     * If you want to use OpenGL directly, you should look at [GtkGLArea](../gtk4/class.GLArea.html)
+     * which uses a different approach and is still well supported.
      */
     class GLShader extends GObject.Object {
         static $gtype: GObject.GType<GLShader>;
@@ -1445,6 +1474,9 @@ export namespace Gsk {
          * will be %NULL.
          */
         get resource(): string;
+        /**
+         * The source code for the shader, as a `GBytes`.
+         */
         get source(): GLib.Bytes;
 
         // Constructors
@@ -1666,6 +1698,9 @@ export namespace Gsk {
         get_blur_radius(): number;
         /**
          * Retrieves the color of the inset shadow.
+         *
+         * The value returned by this function will not be correct
+         * if the render node was created for a non-sRGB color.
          * @returns the color of the shadow
          */
         get_color(): Gdk.RGBA;
@@ -1769,6 +1804,11 @@ export namespace Gsk {
         interface ConstructorProps extends Renderer.ConstructorProps {}
     }
 
+    /**
+     * A GL based renderer.
+     *
+     * See [class`Gsk`.Renderer].
+     */
     class NglRenderer extends Renderer {
         static $gtype: GObject.GType<NglRenderer>;
 
@@ -1835,6 +1875,9 @@ export namespace Gsk {
         get_blur_radius(): number;
         /**
          * Retrieves the color of the outset shadow.
+         *
+         * The value returned by this function will not be correct
+         * if the render node was created for a non-sRGB color.
          * @returns a color
          */
         get_color(): Gdk.RGBA;
@@ -1948,8 +1991,9 @@ export namespace Gsk {
          *
          * For a discussion of the supported format, see that function.
          * @param bytes the bytes containing the data
+         * @param error_func Callback on parsing errors
          */
-        static deserialize(bytes: GLib.Bytes | Uint8Array): RenderNode | null;
+        static deserialize(bytes: GLib.Bytes | Uint8Array, error_func?: ParseErrorFunc | null): RenderNode | null;
 
         // Methods
 
@@ -1976,6 +2020,18 @@ export namespace Gsk {
          * @returns the type of the `GskRenderNode`
          */
         get_node_type(): RenderNodeType;
+        /**
+         * Gets an opaque rectangle inside the node that GTK can determine to
+         * be fully opaque.
+         *
+         * There is no guarantee that this is indeed the largest opaque rectangle or
+         * that regions outside the rectangle are not opaque. This function is a best
+         * effort with that goal.
+         *
+         * The rectangle will be fully contained in the bounds of the node.
+         * @returns %TRUE if part or all of the rendernode is opaque, %FALSE if no   opaque region could be found.
+         */
+        get_opaque_rect(): [boolean, Graphene.Rect];
         /**
          * Acquires a reference on the given `GskRenderNode`.
          * @returns the `GskRenderNode` with an additional reference
@@ -2326,6 +2382,9 @@ export namespace Gsk {
 
         /**
          * Retrieves the color used by the text `node`.
+         *
+         * The value returned by this function will not be correct
+         * if the render node was created for a non-sRGB color.
          * @returns the text color
          */
         get_color(): Gdk.RGBA;
@@ -2773,7 +2832,7 @@ export namespace Gsk {
          *
          * You can use cairo_copy_path() to access the path
          * from a Cairo context.
-         * @param path
+         * @param path a path
          */
         add_cairo_path(path: cairo.Path): void;
         /**
@@ -2834,10 +2893,10 @@ export namespace Gsk {
          */
         add_segment(path: Path, start: PathPoint, end: PathPoint): void;
         /**
-         * Adds an elliptical arc from the current point to `x3`, `y3`
+         * Adds an elliptical arc from the current point to `x2`, `y2`
          * with `x1`, `y1` determining the tangent directions.
          *
-         * After this, `x3`, `y3` will be the new current point.
+         * After this, `x2`, `y2` will be the new current point.
          *
          * Note: Two points and their tangents do not determine
          * a unique ellipse, so GSK just picks one. If you need more
@@ -2983,7 +3042,7 @@ export namespace Gsk {
          */
         ref(): PathBuilder;
         /**
-         * Adds an elliptical arc from the current point to `x3`, `y3`
+         * Adds an elliptical arc from the current point to `x2`, `y2`
          * with `x1`, `y1` determining the tangent directions.
          *
          * All coordinates are given relative to the current point.
@@ -3230,6 +3289,10 @@ export namespace Gsk {
          * @returns -1 if @point1 is before @point2,   1 if @point1 is after @point2,   0 if they are equal
          */
         compare(point2: PathPoint): number;
+        /**
+         * Copies a path point.
+         * @returns the copied point
+         */
         copy(): PathPoint;
         /**
          * Returns whether the two path points refer to the same
@@ -3244,6 +3307,9 @@ export namespace Gsk {
          * @returns `TRUE` if @point1 and @point2 are equal
          */
         equal(point2: PathPoint): boolean;
+        /**
+         * Frees a path point copied by [method`Gsk`.PathPoint.copy].
+         */
         free(): void;
         /**
          * Calculates the curvature of the path at the point.
@@ -3617,6 +3683,7 @@ export namespace Gsk {
         get_dash(): number[] | null;
         /**
          * Returns the dash_offset of a `GskStroke`.
+         * @returns the dash_offset
          */
         get_dash_offset(): number;
         /**
@@ -3640,6 +3707,7 @@ export namespace Gsk {
         get_line_width(): number;
         /**
          * Returns the miter limit of a `GskStroke`.
+         * @returns the miter limit
          */
         get_miter_limit(): number;
         /**
@@ -3777,11 +3845,17 @@ export namespace Gsk {
          * the correct inverse of %NULL. If you need to differentiate
          * between those cases, you should check `self` is not %NULL
          * before calling this function.
+         *
+         * This function consumes `self`. Use [method`Gsk`.Transform.ref] first
+         * if you want to keep it around.
          * @returns The inverted transform
          */
         invert(): Transform | null;
         /**
          * Multiplies `next` with the given `matrix`.
+         *
+         * This function consumes `next`. Use [method`Gsk`.Transform.ref] first
+         * if you want to keep it around.
          * @param matrix the matrix to multiply @next with
          * @returns The new transform
          */
@@ -3793,6 +3867,9 @@ export namespace Gsk {
          * scaling points with positive Z values away from the origin, and
          * those with negative Z values towards the origin. Points
          * on the z=0 plane are unchanged.
+         *
+         * This function consumes `next`. Use [method`Gsk`.Transform.ref] first
+         * if you want to keep it around.
          * @param depth distance of the z=0 plane. Lower values give a more   flattened pyramid and therefore a more pronounced   perspective effect.
          * @returns The new transform
          */
@@ -3814,6 +3891,9 @@ export namespace Gsk {
         /**
          * Rotates `next` `angle` degrees in 2D - or in 3D-speak, around the Z axis.
          * The rotation happens around the origin point of (0, 0).
+         *
+         * This function consumes `next`. Use [method`Gsk`.Transform.ref] first
+         * if you want to keep it around.
          * @param angle the rotation angle, in degrees (clockwise)
          * @returns The new transform
          */
@@ -3822,6 +3902,9 @@ export namespace Gsk {
          * Rotates `next` `angle` degrees around `axis`.
          *
          * For a rotation in 2D space, use [method`Gsk`.Transform.rotate]
+         *
+         * This function consumes `next`. Use [method`Gsk`.Transform.ref] first
+         * if you want to keep it around.
          * @param angle the rotation angle, in degrees (clockwise)
          * @param axis The rotation axis
          * @returns The new transform
@@ -3831,6 +3914,9 @@ export namespace Gsk {
          * Scales `next` in 2-dimensional space by the given factors.
          *
          * Use [method`Gsk`.Transform.scale_3d] to scale in all 3 dimensions.
+         *
+         * This function consumes `next`. Use [method`Gsk`.Transform.ref] first
+         * if you want to keep it around.
          * @param factor_x scaling factor on the X axis
          * @param factor_y scaling factor on the Y axis
          * @returns The new transform
@@ -3838,6 +3924,9 @@ export namespace Gsk {
         scale(factor_x: number, factor_y: number): Transform | null;
         /**
          * Scales `next` by the given factors.
+         *
+         * This function consumes `next`. Use [method`Gsk`.Transform.ref] first
+         * if you want to keep it around.
          * @param factor_x scaling factor on the X axis
          * @param factor_y scaling factor on the Y axis
          * @param factor_z scaling factor on the Z axis
@@ -3846,6 +3935,9 @@ export namespace Gsk {
         scale_3d(factor_x: number, factor_y: number, factor_z: number): Transform | null;
         /**
          * Applies a skew transform.
+         *
+         * This function consumes `next`. Use [method`Gsk`.Transform.ref] first
+         * if you want to keep it around.
          * @param skew_x skew factor, in degrees, on the X axis
          * @param skew_y skew factor, in degrees, on the Y axis
          * @returns The new transform
@@ -3938,6 +4030,9 @@ export namespace Gsk {
         to_translate(): [number, number];
         /**
          * Applies all the operations from `other` to `next`.
+         *
+         * This function consumes `next`. Use [method`Gsk`.Transform.ref] first
+         * if you want to keep it around.
          * @param other Transform to apply
          * @returns The new transform
          */
@@ -3956,12 +4051,18 @@ export namespace Gsk {
         transform_point(point: Graphene.Point): Graphene.Point;
         /**
          * Translates `next` in 2-dimensional space by `point`.
+         *
+         * This function consumes `next`. Use [method`Gsk`.Transform.ref] first
+         * if you want to keep it around.
          * @param point the point to translate the transform by
          * @returns The new transform
          */
         translate(point: Graphene.Point): Transform | null;
         /**
          * Translates `next` by `point`.
+         *
+         * This function consumes `next`. Use [method`Gsk`.Transform.ref] first
+         * if you want to keep it around.
          * @param point the point to translate the transform by
          * @returns The new transform
          */

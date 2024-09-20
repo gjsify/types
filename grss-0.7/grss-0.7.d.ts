@@ -13,6 +13,7 @@ import type Soup from '@girs/soup-2.4';
 import type Gio from '@girs/gio-2.0';
 import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
+import type GModule from '@girs/gmodule-2.0';
 
 export namespace Grss {
     /**
@@ -191,7 +192,7 @@ export namespace Grss {
          * Retrieves the publishing time of `channel`.
          * @returns time of feed's publish.
          */
-        get_publish_time(): number;
+        get_publish_time(): never;
         /**
          * Retrieves information about the PubSubHubbub hub of the channel.
          * @param hub location for the hub string, or %NULL.
@@ -227,7 +228,7 @@ export namespace Grss {
          * Retrieves the update time of `channel`.
          * @returns time of the feed's latest update. If this value was not set (with grss_feed_channel_set_update_time()) returns grss_feed_channel_get_publish_time().
          */
-        get_update_time(): number;
+        get_update_time(): never;
         /**
          * Retrieves reference to the webmaster of the feed.
          * @returns webmaster of @channel, or %NULL.
@@ -295,7 +296,7 @@ export namespace Grss {
          * To set the time of publishing for the feed.
          * @param publish timestamp of publishing.
          */
-        set_publish_time(publish: number): void;
+        set_publish_time(publish: never): void;
         /**
          * To set information about PubSubHubbub for the channel. To unset the hub,
          * pass %NULL as parameter.
@@ -329,7 +330,7 @@ export namespace Grss {
          * To set the latest update time of `channel`.
          * @param update update time of the feed.
          */
-        set_update_time(update: number): void;
+        set_update_time(update: never): void;
         /**
          * To assign a webmaster to the `channel`.
          * @param webmaster webmaster of the feed.
@@ -542,9 +543,11 @@ export namespace Grss {
         get_enclosures(): FeedEnclosure[];
         /**
          * Retrieves the geo reference of the `item`.
+         * @param latitude will be assigned to the latitude of the point, or %NULL.
+         * @param longitude will be assigned to the longitude of the point, or %NULL.
          * @returns %TRUE if @item has geographic coordinates assigned and @latitude and @longitude have been set, %FALSE if @item has not geo reference.
          */
-        get_geo_point(): [boolean, number, number];
+        get_geo_point(latitude: number, longitude: number): boolean;
         /**
          * Retrieves the ID assigned to the `item`. If no ID was set with
          * grss_feed_item_set_id() this returns the same of grss_feed_item_get_source().
@@ -564,7 +567,7 @@ export namespace Grss {
          * changed with grss_feed_item_set_publish_time().
          * @returns publish time of @item.
          */
-        get_publish_time(): number;
+        get_publish_time(): never;
         /**
          * Retrieves references to the real source of `item`.
          * @param realsource will be assigned to the URL of the real source, or %NULL.
@@ -626,7 +629,7 @@ export namespace Grss {
          * To set the publish time of the item.
          * @param publish publishing timestamp of the item.
          */
-        set_publish_time(publish: number): void;
+        set_publish_time(publish: never): void;
         /**
          * To set an alternative real source for `item`. This parameter is used by web
          * aggregators to explicit the origin of a content reproduced in them.
@@ -729,8 +732,8 @@ export namespace Grss {
         // Methods
 
         /**
-         * Creates a new file with the list of `channels` represented in the required
-         * `format`. If the file already exists at the `uri` location, it is overwritten.
+         * Creates a new file with the list of `channels` rappresented in the required
+         * `format`. It a file already exists at the `uri` location, it is overwritten.
          * @param channels list of #GrssFeedChannels.
          * @param format string rappresenting the desired export format, as returnes by          grss_feeds_group_get_formats().
          * @param uri URI of the file to write.

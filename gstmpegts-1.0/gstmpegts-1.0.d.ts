@@ -1565,6 +1565,12 @@ export namespace GstMpegts {
         C3780,
     }
     /**
+     * Creates and adds a #GstMpegtsPESMetadataMeta to a `buffer`.
+     * @param buffer a #GstBuffer
+     * @returns a newly created #GstMpegtsPESMetadataMeta
+     */
+    function buffer_add_mpegts_pes_metadata_meta(buffer: Gst.Buffer): PESMetadataMeta;
+    /**
      * Creates a #GstMpegtsDescriptor with custom `tag` and `data`
      * @param tag descriptor tag
      * @param data descriptor data (after tag and length field)

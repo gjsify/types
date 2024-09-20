@@ -11,6 +11,7 @@
 import type Gio from '@girs/gio-2.0';
 import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
+import type GModule from '@girs/gmodule-2.0';
 
 export namespace GMime {
     /**
@@ -1982,8 +1983,8 @@ export namespace GMime {
         issuer_serial: string;
         issuer_name: string;
         fingerprint: string;
-        created: number;
-        expires: number;
+        created: never;
+        expires: never;
         keyid: string;
         email: string;
         name: string;
@@ -2004,7 +2005,7 @@ export namespace GMime {
          * Get the creation date of the certificate's key.
          * @returns the creation date of the certificate's key or %-1 if unknown.
          */
-        get_created(): number;
+        get_created(): never;
         /**
          * Get the creation date of the certificate's key in seconds since the
          * UNIX epoch, represented as a 64-bit signed integer.
@@ -2030,7 +2031,7 @@ export namespace GMime {
          * Get the expiration date of the certificate's key. A value of %0 means the certificate never expires.
          * @returns the expiration date of the certificate's key or %-1 if unknown.
          */
-        get_expires(): number;
+        get_expires(): never;
         /**
          * Get the expiration date of the certificate's key in seconds since
          * the UNIX epoch, represented as a 64-bit signed integer. A value of
@@ -2099,7 +2100,7 @@ export namespace GMime {
          * Set the creation date of the certificate's key.
          * @param created creation date
          */
-        set_created(created: number): void;
+        set_created(created: never): void;
         /**
          * Set the digest algorithm used by the certificate.
          * @param algo a #GMimeDigestAlgo
@@ -2115,7 +2116,7 @@ export namespace GMime {
          * Set the expiration date of the certificate's key. A value of %0 means the certificate never expires.
          * @param expires expiration date
          */
-        set_expires(expires: number): void;
+        set_expires(expires: never): void;
         /**
          * Set the certificate's key fingerprint.
          * @param fingerprint fingerprint string
@@ -5480,8 +5481,8 @@ export namespace GMime {
         parent_object: GObject.Object;
         status: SignatureStatus;
         cert: Certificate;
-        created: number;
-        expires: number;
+        created: never;
+        expires: never;
 
         // Constructors
 
@@ -5502,7 +5503,7 @@ export namespace GMime {
          * Get the creation date of the signature.
          * @returns the creation date of the signature or %-1 if unknown.
          */
-        get_created(): number;
+        get_created(): never;
         /**
          * Get the creation date of the signature in seconds since the UNIX
          * epoch, represented as a 64-bit signed integer.
@@ -5513,7 +5514,7 @@ export namespace GMime {
          * Get the expiration date of the signature. A value of %0 means the signature never expires.
          * @returns the expiration date of the signature or %-1 if unknown.
          */
-        get_expires(): number;
+        get_expires(): never;
         /**
          * Get the expiration date of the signature in seconds since the UNIX
          * epoch, represented as a 64-bit signed integer. A value of %0 means
@@ -5535,12 +5536,12 @@ export namespace GMime {
          * Set the creation date of the signature.
          * @param created creation date
          */
-        set_created(created: number): void;
+        set_created(created: never): void;
         /**
          * Set the expiration date of the signature. A value of %0 means the signature never expires.
          * @param expires expiration date
          */
-        set_expires(expires: number): void;
+        set_expires(expires: never): void;
         /**
          * Set the status on the signature.
          * @param status a #GMimeSignatureStatus

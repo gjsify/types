@@ -11,6 +11,7 @@
 import type Gio from '@girs/gio-2.0';
 import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
+import type GModule from '@girs/gmodule-2.0';
 import type Gee from '@girs/gee-0.8';
 
 export namespace Bump {
@@ -87,6 +88,8 @@ export namespace Bump {
         poll_timed(wait: GLib.TimeSpan): any;
         peek_timed(wait: GLib.TimeSpan): any;
         offer(element: any): boolean;
+        // Conflicted with Gee.PriorityQueue.offer
+        offer(...args: never[]): any;
         get_waiting_threads(): number;
     }
 

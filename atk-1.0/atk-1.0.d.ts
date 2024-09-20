@@ -5131,7 +5131,9 @@ export namespace Atk {
         /**
          * Sets the help text associated with the accessible. This can be used to
          * expose context-sensitive information to help a user understand how to
-         * interact with the object.
+         * interact with the object. You can't set the help text to NULL.
+         * This is reserved for the initial value. If you want to set the name to
+         * an empty value, you can use "".
          * @param help_text a character string to be set as the accessible's help text
          */
         set_help_text(help_text: string): void;
@@ -5801,7 +5803,9 @@ export namespace Atk {
         /**
          * Sets the help text associated with the accessible. This can be used to
          * expose context-sensitive information to help a user understand how to
-         * interact with the object.
+         * interact with the object. You can't set the help text to NULL.
+         * This is reserved for the initial value. If you want to set the name to
+         * an empty value, you can use "".
          * @param help_text a character string to be set as the accessible's help text
          */
         set_help_text(help_text: string): void;

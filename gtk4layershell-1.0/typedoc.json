@@ -1,0 +1,7 @@
+{
+    "entryPoints": ["./gtk4layershell-1.0.d.ts"],
+    "readme": "./README.md",
+    "name": "Gtk4LayerShell-1.0",
+    "tsconfig": "./tsconfig.json"
+}
+

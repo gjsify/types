@@ -12,8 +12,8 @@ import type Soup from '@girs/soup-3.0';
 import type Gio from '@girs/gio-2.0';
 import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
-import type Gst from '@girs/gst-1.0';
 import type GModule from '@girs/gmodule-2.0';
+import type Gst from '@girs/gst-1.0';
 
 export namespace Dmap {
     /**

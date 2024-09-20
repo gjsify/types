@@ -18,8 +18,8 @@ import type Pango from '@girs/pango-1.0';
 import type HarfBuzz from '@girs/harfbuzz-0.0';
 import type freetype2 from '@girs/freetype2-2.0';
 import type Gio from '@girs/gio-2.0';
-import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 import type GModule from '@girs/gmodule-2.0';
+import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 import type Atk from '@girs/atk-1.0';
 import type Clutter from '@girs/clutter-1.0';
 import type Json from '@girs/json-1.0';
@@ -398,7 +398,15 @@ export namespace GtkClutter {
          * be normally used by applications.
          */
         sort_depth_order(): void;
+        /**
+         * class handler for #ClutterContainer::actor-added
+         * @param actor
+         */
         vfunc_actor_added(actor: Clutter.Actor): void;
+        /**
+         * class handler for #ClutterContainer::actor-removed
+         * @param actor
+         */
         vfunc_actor_removed(actor: Clutter.Actor): void;
         /**
          * Adds a #ClutterActor to `container`. This function will emit the
@@ -1004,14 +1012,12 @@ export namespace GtkClutter {
         // Properties
 
         /**
-         * Whether to use the reported size of the LayoutManager on the stage as the widget size.
-         * See gtk_clutter_embed_set_use_layout_size() for details.
+         * The #GtkWidget to be embedded into the #GtkClutterActor
          */
         get use_layout_size(): boolean;
         set use_layout_size(val: boolean);
         /**
-         * Whether to use the reported size of the LayoutManager on the stage as the widget size.
-         * See gtk_clutter_embed_set_use_layout_size() for details.
+         * The #GtkWidget to be embedded into the #GtkClutterActor
          */
         get useLayoutSize(): boolean;
         set useLayoutSize(val: boolean);

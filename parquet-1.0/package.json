@@ -1,7 +1,7 @@
 {
     "name": "@girs/parquet-1.0",
-    "version": "3.0.0-4.0.0-beta.15",
-    "description": "GJS TypeScript type definitions for Parquet-1.0, generated from library version 3.0.0",
+    "version": "1.0.0-4.0.0-beta.15",
+    "description": "GJS TypeScript type definitions for Parquet-1.0, generated from library version 1.0.0",
     "type": "module",
     "module": "parquet-1.0.js",
     "main": "parquet-1.0.js",
@@ -35,6 +35,7 @@
         "@girs/gio-2.0": "workspace:^",
         "@girs/gjs": "workspace:^",
         "@girs/glib-2.0": "workspace:^",
+        "@girs/gmodule-2.0": "workspace:^",
         "@girs/gobject-2.0": "workspace:^"
     },
     "devDependencies": {

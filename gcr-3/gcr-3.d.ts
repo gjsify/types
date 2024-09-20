@@ -11,6 +11,7 @@
 import type Gio from '@girs/gio-2.0';
 import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
+import type GModule from '@girs/gmodule-2.0';
 import type Gck from '@girs/gck-1';
 
 export namespace Gcr {
@@ -1975,7 +1976,14 @@ export namespace Gcr {
 
         // Virtual methods
 
+        /**
+         * The default handler for the authenticate signal.
+         * @param count
+         */
         vfunc_authenticate(count: number): boolean;
+        /**
+         * The default handler for the parsed signal.
+         */
         vfunc_parsed(): void;
 
         // Methods
@@ -4766,6 +4774,9 @@ export namespace Gcr {
          * @param warning the warning or %NULL
          */
         set_warning(warning?: string | null): void;
+        /**
+         * close a prompt
+         */
         vfunc_prompt_close(): void;
         /**
          * Prompts for confirmation asking a cancel/continue style question.
@@ -4850,7 +4861,7 @@ export namespace Gcr {
          * in a thread, so if you want to support asynchronous initialization via
          * threads, just implement the #GAsyncInitable interface without overriding
          * any interface methods.
-         * @param io_priority the [I/O priority][io-priority] of the operation
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
@@ -4910,7 +4921,7 @@ export namespace Gcr {
          * in a thread, so if you want to support asynchronous initialization via
          * threads, just implement the #GAsyncInitable interface without overriding
          * any interface methods.
-         * @param io_priority the [I/O priority][io-priority] of the operation
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
@@ -6791,6 +6802,10 @@ export namespace Gcr {
          * @param result an asynchronous result
          */
         vfunc_import_finish(result: Gio.AsyncResult): boolean;
+        /**
+         * optional implementation of [method`Importer`.import]
+         * @param cancellable
+         */
         vfunc_import_sync(cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Queues an additional item to be imported. The parsed item is represented
@@ -7293,6 +7308,9 @@ export namespace Gcr {
 
         // Virtual methods
 
+        /**
+         * close a prompt
+         */
         vfunc_prompt_close(): void;
         /**
          * Prompts for confirmation asking a cancel/continue style question.

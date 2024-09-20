@@ -198,7 +198,15 @@ export namespace Peas {
 
         // Virtual methods
 
+        /**
+         * Signal class handler for the #PeasEngine::load-plugin signal.
+         * @param info
+         */
         vfunc_load_plugin(info: PluginInfo): void;
+        /**
+         * Signal class handler for the #PeasEngine::unload-plugin signal.
+         * @param info
+         */
         vfunc_unload_plugin(info: PluginInfo): void;
 
         // Methods
@@ -498,8 +506,25 @@ export namespace Peas {
 
         // Virtual methods
 
+        /**
+         * The VFunc for peas_extension_set_call().
+         * @param method_name
+         * @param args
+         */
         vfunc_call(method_name: string, args: GIRepository.Argument): boolean;
+        /**
+         * Signal class handler for the
+         *                   #PeasExtensionSet::extension-added signal.
+         * @param info
+         * @param exten
+         */
         vfunc_extension_added(info: PluginInfo, exten: Extension): void;
+        /**
+         * Signal class handler for the
+         *                   #PeasExtensionSet::extension-removed signal.
+         * @param info
+         * @param exten
+         */
         vfunc_extension_removed(info: PluginInfo, exten: Extension): void;
 
         // Methods

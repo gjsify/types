@@ -1268,7 +1268,9 @@ export namespace ICal {
     function icalparameter_string_to_kind(string: string): parameter_kind;
     function icalparameter_value_to_value_kind(value: parameter_value): value_kind;
     function icalparser_free(parser: parser): void;
+    function icalparser_get_ctrl(): any | null;
     function icalparser_get_state(parser: parser): parser_state;
+    function icalparser_set_ctrl(ctrl?: any | null): void;
     function icalparser_set_gen_data(parser: parser, data?: any | null): void;
     function icalparser_string_line_generator(out: string, buf_size: number, d?: any | null): string;
     function icalperiodtype_as_ical_string(p?: any | null): string;
@@ -1565,7 +1567,7 @@ export namespace ICal {
     function icalproperty_string_to_method(str: string): property_method;
     function icalproperty_string_to_status(string: string): property_status;
     function icalproperty_value_kind_to_kind(kind: value_kind): property_kind;
-    function icalrecur_expand_recurrence(rule: string, start: number, count: number, array: number): number;
+    function icalrecur_expand_recurrence(rule: string, start: never, count: number, array: never): number;
     function icalrecur_freq_to_string(kind: recurrencetype_frequency): string;
     function icalrecur_iterator_free(arg0: recur_iterator): void;
     function icalrecur_iterator_next(arg0: recur_iterator): any | null;
@@ -1593,8 +1595,8 @@ export namespace ICal {
     function icaltime_adjust(tt: any | null, days: number, hours: number, minutes: number, seconds: number): void;
     function icaltime_as_ical_string(tt?: any | null): string;
     function icaltime_as_ical_string_r(tt?: any | null): string;
-    function icaltime_as_timet(arg0?: any | null): number;
-    function icaltime_as_timet_with_zone(tt: any | null, zone: timezone): number;
+    function icaltime_as_timet(arg0?: any | null): never;
+    function icaltime_as_timet_with_zone(tt: any | null, zone: timezone): never;
     function icaltime_compare(a?: any | null, b?: any | null): number;
     function icaltime_compare_date_only(a?: any | null, b?: any | null): number;
     function icaltime_compare_date_only_tz(a: any | null, b: any | null, tz: timezone): number;
@@ -1667,7 +1669,7 @@ export namespace ICal {
      * @param str
      */
     function icaltime_from_string(str: string): any | null;
-    function icaltime_from_timet_with_zone(tm: number, is_date: number, zone: timezone): any | null;
+    function icaltime_from_timet_with_zone(tm: never, is_date: number, zone: timezone): any | null;
     function icaltime_get_timezone(t?: any | null): timezone;
     function icaltime_get_tzid(t?: any | null): string;
     function icaltime_is_date(t?: any | null): number;
@@ -2183,19 +2185,12 @@ export namespace ICal {
 
         // Fields
 
-        start: number;
-        end: number;
+        start: never;
+        end: never;
         is_busy: number;
 
         // Constructors
 
-        constructor(
-            properties?: Partial<{
-                start: number;
-                end: number;
-                is_busy: number;
-            }>,
-        );
         _init(...args: any[]): void;
     }
 

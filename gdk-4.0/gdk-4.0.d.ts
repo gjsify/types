@@ -16,8 +16,8 @@ import type Pango from '@girs/pango-1.0';
 import type HarfBuzz from '@girs/harfbuzz-0.0';
 import type freetype2 from '@girs/freetype2-2.0';
 import type Gio from '@girs/gio-2.0';
-import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 import type GModule from '@girs/gmodule-2.0';
+import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 
 export namespace Gdk {
     /**
@@ -96,6 +96,37 @@ export namespace Gdk {
          * a constant equal to the numerically highest axis value.
          */
         LAST,
+    }
+    /**
+     * The values of this enumeration describe whether image data uses
+     * the full range of 8-bit values.
+     *
+     * In digital broadcasting, it is common to reserve the lowest and
+     * highest values. Typically the allowed values for the narrow range
+     * are 16-235 for Y and 16-240 for u,v (when dealing with YUV data).
+     */
+
+    /**
+     * The values of this enumeration describe whether image data uses
+     * the full range of 8-bit values.
+     *
+     * In digital broadcasting, it is common to reserve the lowest and
+     * highest values. Typically the allowed values for the narrow range
+     * are 16-235 for Y and 16-240 for u,v (when dealing with YUV data).
+     */
+    export namespace CicpRange {
+        export const $gtype: GObject.GType<CicpRange>;
+    }
+
+    enum CicpRange {
+        /**
+         * The values use the range of 16-235 (for Y) and 16-240 for u and v.
+         */
+        NARROW,
+        /**
+         * The values use the full range.
+         */
+        FULL,
     }
     /**
      * Specifies the crossing mode for enter and leave events.
@@ -253,6 +284,9 @@ export namespace Gdk {
 
         // Static methods
 
+        /**
+         * Registers an error quark for [class`Gdk`.DmabufTexture] errors.
+         */
         static quark(): GLib.Quark;
     }
 
@@ -479,6 +513,9 @@ export namespace Gdk {
 
         // Static methods
 
+        /**
+         * Registers an error quark for [class`Gdk`.GLContext] errors.
+         */
         static quark(): GLib.Quark;
     }
 
@@ -615,9 +652,9 @@ export namespace Gdk {
      * `GdkMemoryFormat` describes formats that image data can have in memory.
      *
      * It describes formats by listing the contents of the memory passed to it.
-     * So GDK_MEMORY_A8R8G8B8 will be 1 byte (8 bits) of alpha, followed by a
+     * So `GDK_MEMORY_A8R8G8B8` will be 1 byte (8 bits) of alpha, followed by a
      * byte each of red, green and blue. It is not endian-dependent, so
-     * CAIRO_FORMAT_ARGB32 is represented by different `GdkMemoryFormats`
+     * `CAIRO_FORMAT_ARGB32` is represented by different `GdkMemoryFormats`
      * on architectures with different endiannesses.
      *
      * Its naming is modelled after
@@ -629,9 +666,9 @@ export namespace Gdk {
      * `GdkMemoryFormat` describes formats that image data can have in memory.
      *
      * It describes formats by listing the contents of the memory passed to it.
-     * So GDK_MEMORY_A8R8G8B8 will be 1 byte (8 bits) of alpha, followed by a
+     * So `GDK_MEMORY_A8R8G8B8` will be 1 byte (8 bits) of alpha, followed by a
      * byte each of red, green and blue. It is not endian-dependent, so
-     * CAIRO_FORMAT_ARGB32 is represented by different `GdkMemoryFormats`
+     * `CAIRO_FORMAT_ARGB32` is represented by different `GdkMemoryFormats`
      * on architectures with different endiannesses.
      *
      * Its naming is modelled after
@@ -683,107 +720,105 @@ export namespace Gdk {
          */
         B8G8R8,
         /**
-         * 3 guint16 values; for red, green, blue. Since: 4.6
+         * 3 guint16 values; for red, green, blue.
          */
         R16G16B16,
         /**
-         * 4 guint16 values; for red, green,
-         *   blue, alpha. The color values are premultiplied with the alpha value.
-         *  Since: 4.6
+         * 4 guint16 values; for red, green, blue, alpha. The color values are
+         * premultiplied with the alpha value.
          */
         R16G16B16A16_PREMULTIPLIED,
         /**
          * 4 guint16 values; for red, green, blue, alpha.
-         *  Since: 4.6
          */
         R16G16B16A16,
         /**
-         * 3 half-float values; for red, green, blue.
-         *   The data is opaque. Since: 4.6
+         * 3 half-float values; for red, green, blue. The data is opaque.
          */
         R16G16B16_FLOAT,
         /**
-         * 4 half-float values; for
-         *   red, green, blue and alpha. The color values are premultiplied with
-         *   the alpha value. Since: 4.6
+         * 4 half-float values; for red, green, blue and alpha. The color values are
+         * premultiplied with the alpha value.
          */
         R16G16B16A16_FLOAT_PREMULTIPLIED,
         /**
-         * 4 half-float values; for red, green,
-         *   blue and alpha. Since: 4.6
+         * 4 half-float values; for red, green, blue and alpha.
          */
         R16G16B16A16_FLOAT,
+        /**
+         * 3 float values; for red, green, blue.
+         */
         R32G32B32_FLOAT,
         /**
-         * 4 float values; for
-         *   red, green, blue and alpha. The color values are premultiplied with
-         *   the alpha value. Since: 4.6
+         * 4 float values; for red, green, blue and alpha. The color values are
+         * premultiplied with the alpha value.
          */
         R32G32B32A32_FLOAT_PREMULTIPLIED,
         /**
-         * 4 float values; for red, green, blue and
-         *   alpha. Since: 4.6
+         * 4 float values; for red, green, blue and alpha.
          */
         R32G32B32A32_FLOAT,
         /**
-         * 2 bytes; for grayscale, alpha. The color
-         *   values are premultiplied with the alpha value. Since: 4.12
+         * 2 bytes; for grayscale, alpha. The color values are premultiplied with the
+         * alpha value.
          */
         G8A8_PREMULTIPLIED,
         /**
-         * 2 bytes; for grayscale, alpha. Since: 4.12
+         * 2 bytes; for grayscale, alpha.
          */
         G8A8,
         /**
          * One byte; for grayscale. The data is opaque.
-         *   Since: 4.12
          */
         G8,
         /**
-         * 2 guint16 values; for grayscale, alpha.
-         *  The color values are premultiplied with the alpha value. Since: 4.12
+         * 2 guint16 values; for grayscale, alpha. The color values are premultiplied
+         * with the alpha value.
          */
         G16A16_PREMULTIPLIED,
         /**
-         * 2 guint16 values; for grayscale, alpha. Since: 4.12
+         * 2 guint16 values; for grayscale, alpha.
          */
         G16A16,
         /**
          * One guint16 value; for grayscale. The data is opaque.
-         *   Since: 4.12
          */
         G16,
         /**
          * One byte; for alpha.
-         *   Since: 4.12
          */
         A8,
         /**
          * One guint16 value; for alpha.
-         *   Since: 4.12
          */
         A16,
+        /**
+         * One half-float value; for alpha.
+         */
         A16_FLOAT,
+        /**
+         * One float value; for alpha.
+         */
         A32_FLOAT,
         /**
-         * 4 bytes; for alpha, blue, green, red,
-         *   The color values are premultiplied with the alpha value. Since 4.14
+         * 4 bytes; for alpha, blue, green, red, The color values are premultiplied with
+         * the alpha value.
          */
         A8B8G8R8_PREMULTIPLIED,
         /**
-         * 4 bytes; for blue, green, red, unused. Since 4.14
+         * 4 bytes; for blue, green, red, unused.
          */
         B8G8R8X8,
         /**
-         * 4 bytes; for unused, red, green, blue. Since 4.14
+         * 4 bytes; for unused, red, green, blue.
          */
         X8R8G8B8,
         /**
-         * 4 bytes; for red, green, blue, unused. Since 4.14
+         * 4 bytes; for red, green, blue, unused.
          */
         R8G8B8X8,
         /**
-         * 4 bytes; for unused, blue, green, red. Since 4.14
+         * 4 bytes; for unused, blue, green, red.
          */
         X8B8G8R8,
         /**
@@ -1045,16 +1080,37 @@ export namespace Gdk {
 
         // Static methods
 
+        /**
+         * Registers an error quark for [class`Gdk`.Texture] errors.
+         */
         static quark(): GLib.Quark;
     }
 
+    /**
+     * The kind of title bar gesture to emit with
+     * [method`Gdk`.Toplevel.titlebar_gesture].
+     */
+
+    /**
+     * The kind of title bar gesture to emit with
+     * [method`Gdk`.Toplevel.titlebar_gesture].
+     */
     export namespace TitlebarGesture {
         export const $gtype: GObject.GType<TitlebarGesture>;
     }
 
     enum TitlebarGesture {
+        /**
+         * double click gesture
+         */
         DOUBLE_CLICK,
+        /**
+         * right click gesture
+         */
         RIGHT_CLICK,
+        /**
+         * middle click gesture
+         */
         MIDDLE_CLICK,
     }
     /**
@@ -1147,6 +1203,9 @@ export namespace Gdk {
 
         // Static methods
 
+        /**
+         * Registers an error quark for [class`Gdk`.VulkanContext] errors.
+         */
         static quark(): GLib.Quark;
     }
 
@@ -3557,13 +3616,61 @@ export namespace Gdk {
      */
     function cairo_set_source_rgba(cr: cairo.Context, rgba: RGBA): void;
     /**
+     * Returns the color state object representing the linear rec2100 color space.
+     *
+     * This color state uses the primaries defined by BT.2020-2 and BT.2100-0 and a linear
+     * transfer function.
+     *
+     * It is equivalent to the [Cicp](class.CicpParams.html) tuple 9/8/0/1.
+     *
+     * See e.g. [the CSS HDR Module](https://drafts.csswg.org/css-color-hdr/#valdef-color-rec2100-linear)
+     * for details about this colorstate.
+     * @returns the color state object for linearized rec2100
+     */
+    function color_state_get_rec2100_linear(): ColorState;
+    /**
+     * Returns the color state object representing the rec2100-pq color space.
+     *
+     * This color state uses the primaries defined by BT.2020-2 and BT.2100-0 and the transfer
+     * function defined by SMPTE ST 2084 and BT.2100-2.
+     *
+     * It is equivalent to the [Cicp](class.CicpParams.html) tuple 9/16/0/1.
+     *
+     * See e.g. [the CSS HDR Module](https://drafts.csswg.org/css-color-hdr/#valdef-color-rec2100-pq)
+     * for details about this colorstate.
+     * @returns the color state object for rec2100-pq
+     */
+    function color_state_get_rec2100_pq(): ColorState;
+    /**
+     * Returns the color state object representing the sRGB color space.
+     *
+     * This color state uses the primaries defined by BT.709-6 and the transfer function
+     * defined by IEC 61966-2-1.
+     *
+     * It is equivalent to the [Cicp](class.CicpParams.html) tuple 1/13/0/1.
+     *
+     * See e.g. [the CSS Color Module](https://www.w3.org/TR/css-color-4/#predefined-sRGB)
+     * for details about this colorstate.
+     * @returns the color state object for sRGB
+     */
+    function color_state_get_srgb(): ColorState;
+    /**
+     * Returns the color state object representing the linearized sRGB color space.
+     *
+     * This color state uses the primaries defined by BT.709-6 and a linear transfer function.
+     *
+     * It is equivalent to the [Cicp](class.CicpParams.html) tuple 1/8/0/1.
+     *
+     * See e.g. [the CSS Color Module](https://www.w3.org/TR/css-color-4/#predefined-sRGB-linear)
+     * for details about this colorstate.
+     * @returns the color state object for linearized sRGB
+     */
+    function color_state_get_srgb_linear(): ColorState;
+    /**
      * Read content from the given input stream and deserialize it, asynchronously.
      *
      * The default I/O priority is %G_PRIORITY_DEFAULT (i.e. 0), and lower numbers
      * indicate a higher priority.
-     *
-     * When the operation is finished, `callback` will be called. You must then
-     * call [func`Gdk`.content_deserialize_finish] to get the result of the operation.
      * @param stream a `GInputStream` to read the serialized content from
      * @param mime_type the mime type to deserialize from
      * @param type the GType to deserialize from
@@ -3582,9 +3689,6 @@ export namespace Gdk {
      *
      * The default I/O priority is %G_PRIORITY_DEFAULT (i.e. 0), and lower numbers
      * indicate a higher priority.
-     *
-     * When the operation is finished, `callback` will be called. You must then
-     * call [func`Gdk`.content_deserialize_finish] to get the result of the operation.
      * @param stream a `GInputStream` to read the serialized content from
      * @param mime_type the mime type to deserialize from
      * @param type the GType to deserialize from
@@ -3605,9 +3709,6 @@ export namespace Gdk {
      *
      * The default I/O priority is %G_PRIORITY_DEFAULT (i.e. 0), and lower numbers
      * indicate a higher priority.
-     *
-     * When the operation is finished, `callback` will be called. You must then
-     * call [func`Gdk`.content_deserialize_finish] to get the result of the operation.
      * @param stream a `GInputStream` to read the serialized content from
      * @param mime_type the mime type to deserialize from
      * @param type the GType to deserialize from
@@ -3665,9 +3766,6 @@ export namespace Gdk {
      *
      * The default I/O priority is %G_PRIORITY_DEFAULT (i.e. 0), and lower numbers
      * indicate a higher priority.
-     *
-     * When the operation is finished, `callback` will be called. You must then
-     * call [func`Gdk`.content_serialize_finish] to get the result of the operation.
      * @param stream a `GOutputStream` to write the serialized content to
      * @param mime_type the mime type to serialize to
      * @param value the content to serialize
@@ -3686,9 +3784,6 @@ export namespace Gdk {
      *
      * The default I/O priority is %G_PRIORITY_DEFAULT (i.e. 0), and lower numbers
      * indicate a higher priority.
-     *
-     * When the operation is finished, `callback` will be called. You must then
-     * call [func`Gdk`.content_serialize_finish] to get the result of the operation.
      * @param stream a `GOutputStream` to write the serialized content to
      * @param mime_type the mime type to serialize to
      * @param value the content to serialize
@@ -3709,9 +3804,6 @@ export namespace Gdk {
      *
      * The default I/O priority is %G_PRIORITY_DEFAULT (i.e. 0), and lower numbers
      * indicate a higher priority.
-     *
-     * When the operation is finished, `callback` will be called. You must then
-     * call [func`Gdk`.content_serialize_finish] to get the result of the operation.
      * @param stream a `GOutputStream` to write the serialized content to
      * @param mime_type the mime type to serialize to
      * @param value the content to serialize
@@ -3733,6 +3825,10 @@ export namespace Gdk {
      * @returns %TRUE if the operation was successful, %FALSE if an   error occurred. In this case, @error is set
      */
     function content_serialize_finish(result: Gio.AsyncResult): boolean;
+    /**
+     * Registers an error quark for [class`Gdk`.DmabufTexture] errors.
+     * @returns the error quark
+     */
     function dmabuf_error_quark(): GLib.Quark;
     /**
      * Checks if `action` represents a single action or includes
@@ -3779,6 +3875,10 @@ export namespace Gdk {
      * @returns %TRUE if the distance could be calculated.
      */
     function events_get_distance(event1: Event, event2: Event): [boolean, number];
+    /**
+     * Registers an error quark for [class`Gdk`.GLContext] errors.
+     * @returns the error quark
+     */
     function gl_error_quark(): GLib.Quark;
     /**
      * Canonicalizes the given mime type and interns the result.
@@ -3933,6 +4033,10 @@ export namespace Gdk {
      * @param backends a comma-separated list of backends
      */
     function set_allowed_backends(backends: string): void;
+    /**
+     * Registers an error quark for [class`Gdk`.Texture] errors.
+     * @returns the error quark
+     */
     function texture_error_quark(): GLib.Quark;
     function toplevel_size_get_type(): GObject.GType;
     /**
@@ -3941,12 +4045,19 @@ export namespace Gdk {
      * @returns the corresponding GDK key symbol, if one exists.   or, if there is no corresponding symbol, wc | 0x01000000
      */
     function unicode_to_keyval(wc: number): number;
+    /**
+     * Registers an error quark for [class`Gdk`.VulkanContext] errors.
+     * @returns the error quark
+     */
     function vulkan_error_quark(): GLib.Quark;
     interface ContentDeserializeFunc {
         (deserializer: ContentDeserializer): void;
     }
     interface ContentSerializeFunc {
         (serializer: ContentSerializer): void;
+    }
+    interface CursorGetTextureCallback {
+        (cursor: Cursor, cursor_size: number, scale: number, data?: any | null): Texture | null;
     }
     /**
      * Positioning hints for aligning a surface relative to a rectangle.
@@ -4258,15 +4369,15 @@ export namespace Gdk {
          */
         BUTTON5_MASK,
         /**
-         * the Super modifier
+         * the Super modifier.
          */
         SUPER_MASK,
         /**
-         * the Hyper modifier
+         * the Hyper modifier.
          */
         HYPER_MASK,
         /**
-         * the Meta modifier
+         * the Meta modifier. Maps to Command on macOS.
          */
         META_MASK,
     }
@@ -4605,6 +4716,196 @@ export namespace Gdk {
         cairo_create(): cairo.Context | null;
     }
 
+    module CicpParams {
+        // Constructor properties interface
+
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+            color_primaries: number;
+            colorPrimaries: number;
+            matrix_coefficients: number;
+            matrixCoefficients: number;
+            range: CicpRange;
+            transfer_function: number;
+            transferFunction: number;
+        }
+    }
+
+    /**
+     * The `GdkCicpParams` struct contains the parameters that define
+     * a colorstate according to the ITU-T H.273
+     * [specification](https://www.itu.int/rec/T-REC-H.273/en).
+     *
+     * See the documentation of individual properties for supported values.
+     *
+     * The 'unspecified' value (2) is not treated in any special way, and
+     * must be replaced by a different value before creating a color state.
+     *
+     * `GdkCicpParams` can be used as a builder object to construct a color
+     * state from Cicp data with [method`Gdk`.CicpParams.build_color_state].
+     * The function will return an error if the given parameters are not
+     * supported.
+     *
+     * You can obtain a `GdkCicpParams` object from a color state with
+     * [method`Gdk`.ColorState.create_cicp_params]. This can be used to
+     * create a variant of a color state, by changing just one of the cicp
+     * parameters, or just to obtain information about the color state.
+     */
+    class CicpParams extends GObject.Object {
+        static $gtype: GObject.GType<CicpParams>;
+
+        // Properties
+
+        /**
+         * The color primaries to use.
+         *
+         * Supported values:
+         *
+         * - 1: BT.709 / sRGB
+         * - 2: unspecified
+         * - 5: PAL
+         * - 6,7: BT.601 / NTSC
+         * - 9: BT.2020
+         * - 12: Display P3
+         */
+        get color_primaries(): number;
+        set color_primaries(val: number);
+        /**
+         * The color primaries to use.
+         *
+         * Supported values:
+         *
+         * - 1: BT.709 / sRGB
+         * - 2: unspecified
+         * - 5: PAL
+         * - 6,7: BT.601 / NTSC
+         * - 9: BT.2020
+         * - 12: Display P3
+         */
+        get colorPrimaries(): number;
+        set colorPrimaries(val: number);
+        /**
+         * The matrix coefficients (for YUV to RGB conversion).
+         *
+         * Supported values:
+         *
+         * - 0: RGB
+         * - 2: unspecified
+         */
+        get matrix_coefficients(): number;
+        set matrix_coefficients(val: number);
+        /**
+         * The matrix coefficients (for YUV to RGB conversion).
+         *
+         * Supported values:
+         *
+         * - 0: RGB
+         * - 2: unspecified
+         */
+        get matrixCoefficients(): number;
+        set matrixCoefficients(val: number);
+        /**
+         * Whether the data is using the full range of values.
+         *
+         * The range of the data.
+         */
+        get range(): CicpRange;
+        set range(val: CicpRange);
+        /**
+         * The transfer function to use.
+         *
+         * Supported values:
+         *
+         * - 1,6,14,15: BT.709, BT.601, BT.2020
+         * - 2: unspecified
+         * - 4: gamma 2.2
+         * - 5: gamma 2.8
+         * - 8: linear
+         * - 13: sRGB
+         * - 16: BT.2100 PQ
+         * - 18: BT.2100 HLG
+         */
+        get transfer_function(): number;
+        set transfer_function(val: number);
+        /**
+         * The transfer function to use.
+         *
+         * Supported values:
+         *
+         * - 1,6,14,15: BT.709, BT.601, BT.2020
+         * - 2: unspecified
+         * - 4: gamma 2.2
+         * - 5: gamma 2.8
+         * - 8: linear
+         * - 13: sRGB
+         * - 16: BT.2100 PQ
+         * - 18: BT.2100 HLG
+         */
+        get transferFunction(): number;
+        set transferFunction(val: number);
+
+        // Constructors
+
+        constructor(properties?: Partial<CicpParams.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        static ['new'](): CicpParams;
+
+        // Methods
+
+        /**
+         * Creates a new `GdkColorState` object for the cicp parameters in `self`.
+         *
+         * Note that this may fail if the cicp parameters in `self` are not
+         * supported by GTK. In that case, `NULL` is returned, and `error` is set
+         * with an error message that can be presented to the user.
+         * @returns A newly allocated `GdkColorState`
+         */
+        build_color_state(): ColorState | null;
+        /**
+         * Returns the value of the color-primaries property
+         * of `self`.
+         * @returns the color-primaries value
+         */
+        get_color_primaries(): number;
+        /**
+         * Gets the matrix-coefficients property of `self`.
+         * @returns the matrix-coefficients value
+         */
+        get_matrix_coefficients(): number;
+        /**
+         * Gets the range property of `self`.
+         * @returns the range value
+         */
+        get_range(): CicpRange;
+        /**
+         * Gets the transfer-function property of `self`.
+         * @returns the transfer-function value
+         */
+        get_transfer_function(): number;
+        /**
+         * Sets the color-primaries property of `self`.
+         * @param color_primaries the new color primaries value
+         */
+        set_color_primaries(color_primaries: number): void;
+        /**
+         * `self` a `GdkCicpParams`
+         * Sets the matrix-coefficients property of `self`.
+         * @param matrix_coefficients the new matrix-coefficients value
+         */
+        set_matrix_coefficients(matrix_coefficients: number): void;
+        /**
+         * Sets the range property of `self`
+         * @param range the range value
+         */
+        set_range(range: CicpRange): void;
+        /**
+         * Sets the transfer-function property of `self`.
+         * @param transfer_function the new transfer-function value
+         */
+        set_transfer_function(transfer_function: number): void;
+    }
+
     module Clipboard {
         // Signal callback interfaces
 
@@ -4714,9 +5015,6 @@ export namespace Gdk {
          * Asynchronously requests an input stream to read the `clipboard'`s
          * contents from.
          *
-         * When the operation is finished `callback` will be called. You must then
-         * call [method`Gdk`.Clipboard.read_finish] to get the result of the operation.
-         *
          * The clipboard will choose the most suitable mime type from the given list
          * to fulfill the request, preferring the ones listed first.
          * @param mime_types a %NULL-terminated array of mime types to choose from
@@ -4741,9 +5039,6 @@ export namespace Gdk {
         /**
          * Asynchronously request the `clipboard` contents converted to a string.
          *
-         * When the operation is finished `callback` will be called. You must then
-         * call [method`Gdk`.Clipboard.read_text_finish] to get the result.
-         *
          * This is a simple wrapper around [method`Gdk`.Clipboard.read_value_async].
          * Use that function or [method`Gdk`.Clipboard.read_async] directly if you
          * need more control over the operation.
@@ -4761,9 +5056,6 @@ export namespace Gdk {
         read_text_finish(result: Gio.AsyncResult): string | null;
         /**
          * Asynchronously request the `clipboard` contents converted to a `GdkPixbuf`.
-         *
-         * When the operation is finished `callback` will be called. You must then
-         * call [method`Gdk`.Clipboard.read_texture_finish] to get the result.
          *
          * This is a simple wrapper around [method`Gdk`.Clipboard.read_value_async].
          * Use that function or [method`Gdk`.Clipboard.read_async] directly if you
@@ -4783,9 +5075,6 @@ export namespace Gdk {
         /**
          * Asynchronously request the `clipboard` contents converted to the given
          * `type`.
-         *
-         * When the operation is finished `callback` will be called. You must then call
-         * [method`Gdk`.Clipboard.read_value_finish] to get the resulting `GValue`.
          *
          * For local clipboard contents that are available in the given `GType`,
          * the value will be copied directly. Otherwise, GDK will try to use
@@ -4837,8 +5126,6 @@ export namespace Gdk {
          * Asynchronously instructs the `clipboard` to store its contents remotely.
          *
          * If the clipboard is not local, this function does nothing but report success.
-         *
-         * The `callback` must call [method`Gdk`.Clipboard.store_finish].
          *
          * The purpose of this call is to preserve clipboard contents beyond the
          * lifetime of an application, so this function is typically called on
@@ -4964,37 +5251,37 @@ export namespace Gdk {
 
         // Inherited methods
         /**
-         * Gets the source object from a #GAsyncResult.
-         * @returns a new reference to the source    object for the @res, or %NULL if there is none.
+         * Gets the source object from a [iface`Gio`.AsyncResult].
+         * @returns a new reference to the source    object for the @res, or `NULL` if there is none.
          */
         get_source_object<T = GObject.Object>(): T;
         /**
          * Checks if `res` has the given `source_tag` (generally a function
          * pointer indicating the function `res` was created by).
          * @param source_tag an application-defined tag
-         * @returns %TRUE if @res has the indicated @source_tag, %FALSE if   not.
+         * @returns `TRUE` if @res has the indicated @source_tag, `FALSE` if   not.
          */
         is_tagged(source_tag?: any | null): boolean;
         /**
-         * If `res` is a #GSimpleAsyncResult, this is equivalent to
-         * g_simple_async_result_propagate_error(). Otherwise it returns
-         * %FALSE.
+         * If `res` is a [class`Gio`.SimpleAsyncResult], this is equivalent to
+         * [method`Gio`.SimpleAsyncResult.propagate_error]. Otherwise it returns
+         * `FALSE`.
          *
-         * This can be used for legacy error handling in async *_finish()
-         * wrapper functions that traditionally handled #GSimpleAsyncResult
+         * This can be used for legacy error handling in async `*_finish()`
+         * wrapper functions that traditionally handled [class`Gio`.SimpleAsyncResult]
          * error returns themselves rather than calling into the virtual method.
-         * This should not be used in new code; #GAsyncResult errors that are
+         * This should not be used in new code; [iface`Gio`.AsyncResult] errors that are
          * set by virtual methods should also be extracted by virtual methods,
          * to enable subclasses to chain up correctly.
-         * @returns %TRUE if @error is has been filled in with an error from   @res, %FALSE if not.
+         * @returns `TRUE` if @error is has been filled in with an error from   @res, `FALSE` if not.
          */
         legacy_propagate_error(): boolean;
         /**
-         * Gets the source object from a #GAsyncResult.
+         * Gets the source object from a [iface`Gio`.AsyncResult].
          */
         vfunc_get_source_object<T = GObject.Object>(): T;
         /**
-         * Gets the user data from a #GAsyncResult.
+         * Gets the user data from a [iface`Gio`.AsyncResult].
          */
         vfunc_get_user_data(): any | null;
         /**
@@ -5506,10 +5793,6 @@ export namespace Gdk {
          * Asynchronously writes the contents of `provider` to `stream` in the given
          * `mime_type`.
          *
-         * When the operation is finished `callback` will be called. You must then call
-         * [method`Gdk`.ContentProvider.write_mime_type_finish] to get the result
-         * of the operation.
-         *
          * The given mime type does not need to be listed in the formats returned by
          * [method`Gdk`.ContentProvider.ref_formats]. However, if the given `GType` is
          * not supported, `G_IO_ERROR_NOT_SUPPORTED` will be reported.
@@ -5571,10 +5854,6 @@ export namespace Gdk {
         /**
          * Asynchronously writes the contents of `provider` to `stream` in the given
          * `mime_type`.
-         *
-         * When the operation is finished `callback` will be called. You must then call
-         * [method`Gdk`.ContentProvider.write_mime_type_finish] to get the result
-         * of the operation.
          *
          * The given mime type does not need to be listed in the formats returned by
          * [method`Gdk`.ContentProvider.ref_formats]. However, if the given `GType` is
@@ -5702,37 +5981,37 @@ export namespace Gdk {
 
         // Inherited methods
         /**
-         * Gets the source object from a #GAsyncResult.
-         * @returns a new reference to the source    object for the @res, or %NULL if there is none.
+         * Gets the source object from a [iface`Gio`.AsyncResult].
+         * @returns a new reference to the source    object for the @res, or `NULL` if there is none.
          */
         get_source_object<T = GObject.Object>(): T;
         /**
          * Checks if `res` has the given `source_tag` (generally a function
          * pointer indicating the function `res` was created by).
          * @param source_tag an application-defined tag
-         * @returns %TRUE if @res has the indicated @source_tag, %FALSE if   not.
+         * @returns `TRUE` if @res has the indicated @source_tag, `FALSE` if   not.
          */
         is_tagged(source_tag?: any | null): boolean;
         /**
-         * If `res` is a #GSimpleAsyncResult, this is equivalent to
-         * g_simple_async_result_propagate_error(). Otherwise it returns
-         * %FALSE.
+         * If `res` is a [class`Gio`.SimpleAsyncResult], this is equivalent to
+         * [method`Gio`.SimpleAsyncResult.propagate_error]. Otherwise it returns
+         * `FALSE`.
          *
-         * This can be used for legacy error handling in async *_finish()
-         * wrapper functions that traditionally handled #GSimpleAsyncResult
+         * This can be used for legacy error handling in async `*_finish()`
+         * wrapper functions that traditionally handled [class`Gio`.SimpleAsyncResult]
          * error returns themselves rather than calling into the virtual method.
-         * This should not be used in new code; #GAsyncResult errors that are
+         * This should not be used in new code; [iface`Gio`.AsyncResult] errors that are
          * set by virtual methods should also be extracted by virtual methods,
          * to enable subclasses to chain up correctly.
-         * @returns %TRUE if @error is has been filled in with an error from   @res, %FALSE if not.
+         * @returns `TRUE` if @error is has been filled in with an error from   @res, `FALSE` if not.
          */
         legacy_propagate_error(): boolean;
         /**
-         * Gets the source object from a #GAsyncResult.
+         * Gets the source object from a [iface`Gio`.AsyncResult].
          */
         vfunc_get_source_object<T = GObject.Object>(): T;
         /**
-         * Gets the user data from a #GAsyncResult.
+         * Gets the user data from a [iface`Gio`.AsyncResult].
          */
         vfunc_get_user_data(): any | null;
         /**
@@ -6265,6 +6544,8 @@ export namespace Gdk {
         constructor(properties?: Partial<Cursor.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        static new_from_callback(callback: CursorGetTextureCallback, fallback?: Cursor | null): Cursor;
 
         static new_from_name(name: string, fallback?: Cursor | null): Cursor;
 
@@ -8104,6 +8385,8 @@ export namespace Gdk {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
+            color_state: ColorState;
+            colorState: ColorState;
             display: Display;
             fourcc: number;
             height: number;
@@ -8183,6 +8466,16 @@ export namespace Gdk {
 
         // Properties
 
+        /**
+         * The color state of the texture.
+         */
+        get color_state(): ColorState;
+        set color_state(val: ColorState);
+        /**
+         * The color state of the texture.
+         */
+        get colorState(): ColorState;
+        set colorState(val: ColorState);
         /**
          * The display that this texture will be used on.
          */
@@ -8265,27 +8558,30 @@ export namespace Gdk {
         /**
          * Builds a new `GdkTexture` with the values set up in the builder.
          *
-         * It is a programming error to call this function if any mandatory
-         * property has not been set.
+         * It is a programming error to call this function if any mandatory property has not been set.
          *
-         * If the dmabuf is not supported by GTK, %NULL will be returned and `error` will be set.
+         * Not all formats defined in the `drm_fourcc.h` header are supported. You can use
+         * [method`Gdk`.Display.get_dmabuf_formats] to get a list of supported formats. If the
+         * format is not supported by GTK, %NULL will be returned and `error` will be set.
          *
          * The `destroy` function gets called when the returned texture gets released.
-         *
-         * It is possible to call this function multiple times to create multiple textures,
-         * possibly with changing properties in between.
          *
          * It is the responsibility of the caller to keep the file descriptors for the planes
          * open until the created texture is no longer used, and close them afterwards (possibly
          * using the `destroy` notify).
          *
-         * Not all formats defined in the `drm_fourcc.h` header are supported. You can use
-         * [method`Gdk`.Display.get_dmabuf_formats] to get a list of supported formats.
+         * It is possible to call this function multiple times to create multiple textures,
+         * possibly with changing properties in between.
          * @param destroy destroy function to be called when the texture is   released
          * @param data user data to pass to the destroy function
          * @returns a newly built `GdkTexture` or `NULL`   if the format is not supported
          */
         build(destroy?: GLib.DestroyNotify | null, data?: any | null): Texture | null;
+        /**
+         * Gets the color state previously set via gdk_dmabuf_texture_builder_set_color_state().
+         * @returns the color state
+         */
+        get_color_state(): ColorState | null;
         /**
          * Returns the display that this texture builder is
          * associated with.
@@ -8357,6 +8653,15 @@ export namespace Gdk {
          * @returns The width
          */
         get_width(): number;
+        /**
+         * Sets the color state for the texture.
+         *
+         * By default, the colorstate is `NULL`. In that case, GTK will choose the
+         * correct colorstate based on the format.
+         * If you don't know what colorstates are, this is probably the right thing.
+         * @param color_state a `GdkColorState` or `NULL` to unset the colorstate.
+         */
+        set_color_state(color_state?: ColorState | null): void;
         /**
          * Sets the display that this texture builder is
          * associated with.
@@ -8926,10 +9231,6 @@ export namespace Gdk {
          * Asynchronously request the drag operation's contents converted
          * to the given `type`.
          *
-         * When the operation is finished `callback` will be called. You must
-         * then call [method`Gdk`.Drop.read_value_finish] to get the resulting
-         * `GValue`.
-         *
          * For local drag-and-drop operations that are available in the given
          * `GType`, the value will be copied directly. Otherwise, GDK will
          * try to use [func`Gdk`.content_deserialize_async] to convert the data.
@@ -9104,6 +9405,7 @@ export namespace Gdk {
          * Extract the event surface relative x/y coordinates from an event.
          *
          * This position is in [surface coordinates](coordinates.html).
+         * @returns whether the positions were set
          */
         get_position(): [boolean, number, number];
         /**
@@ -10428,6 +10730,8 @@ export namespace Gdk {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
+            color_state: ColorState;
+            colorState: ColorState;
             context: GLContext;
             format: MemoryFormat;
             has_mipmap: boolean;
@@ -10461,6 +10765,16 @@ export namespace Gdk {
 
         // Properties
 
+        /**
+         * The color state of the texture.
+         */
+        get color_state(): ColorState;
+        set color_state(val: ColorState);
+        /**
+         * The color state of the texture.
+         */
+        get colorState(): ColorState;
+        set colorState(val: ColorState);
         /**
          * The context owning the texture.
          */
@@ -10554,6 +10868,11 @@ export namespace Gdk {
          */
         build(destroy?: GLib.DestroyNotify | null, data?: any | null): Texture;
         /**
+         * Gets the color state previously set via gdk_gl_texture_builder_set_color_state().
+         * @returns the color state
+         */
+        get_color_state(): ColorState;
+        /**
          * Gets the context previously set via gdk_gl_texture_builder_set_context() or
          * %NULL if none was set.
          * @returns The context
@@ -10605,11 +10924,19 @@ export namespace Gdk {
          */
         get_width(): number;
         /**
+         * Sets the color state for the texture.
+         *
+         * By default, the sRGB colorstate is used. If you don't know what
+         * colorstates are, this is probably the right thing.
+         * @param color_state a `GdkColorState`
+         */
+        set_color_state(color_state: ColorState): void;
+        /**
          * Sets the context to be used for the texture. This is the context that owns
          * the texture.
          *
          * The context must be set before calling [method`Gdk`.GLTextureBuilder.build].
-         * @param context The context the texture beongs to or %NULL to unset
+         * @param context The context the texture belongs to or %NULL to unset
          */
         set_context(context?: GLContext | null): void;
         /**
@@ -11535,6 +11862,234 @@ export namespace Gdk {
         stop_emission_by_name(detailedName: string): any;
     }
 
+    module MemoryTextureBuilder {
+        // Constructor properties interface
+
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+            bytes: GLib.Bytes;
+            color_state: ColorState;
+            colorState: ColorState;
+            format: MemoryFormat;
+            height: number;
+            stride: number;
+            update_region: cairo.Region;
+            updateRegion: cairo.Region;
+            update_texture: Texture;
+            updateTexture: Texture;
+            width: number;
+        }
+    }
+
+    /**
+     * `GdkMemoryTextureBuilder` is a builder used to construct [class`Gdk`.Texture] objects
+     * from system memory provided via [struct`GLib`.Bytes].
+     *
+     * The operation is quite simple: Create a texture builder, set all the necessary
+     * properties - keep in mind that the properties [property`Gdk`.MemoryTextureBuilder:bytes],
+     * [property`Gdk`.MemoryTextureBuilder:stride], [property`Gdk`.MemoryTextureBuilder:width],
+     * and [property`Gdk`.MemoryTextureBuilder:height] are mandatory - and then call
+     * [method`Gdk`.MemoryTextureBuilder.build] to create the new texture.
+     *
+     * `GdkMemoryTextureBuilder` can be used for quick one-shot construction of
+     * textures as well as kept around and reused to construct multiple textures.
+     */
+    class MemoryTextureBuilder extends GObject.Object {
+        static $gtype: GObject.GType<MemoryTextureBuilder>;
+
+        // Properties
+
+        /**
+         * The bytes holding the data.
+         */
+        get bytes(): GLib.Bytes;
+        set bytes(val: GLib.Bytes);
+        /**
+         * The colorstate describing the data.
+         */
+        get color_state(): ColorState;
+        set color_state(val: ColorState);
+        /**
+         * The colorstate describing the data.
+         */
+        get colorState(): ColorState;
+        set colorState(val: ColorState);
+        /**
+         * The format of the data.
+         */
+        get format(): MemoryFormat;
+        set format(val: MemoryFormat);
+        /**
+         * The height of the texture.
+         */
+        get height(): number;
+        set height(val: number);
+        /**
+         * The rowstride of the texture.
+         *
+         * The rowstride is the number of bytes between the first pixel
+         * in a row of image data, and the first pixel in the next row.
+         */
+        get stride(): number;
+        set stride(val: number);
+        /**
+         * The update region for [property`Gdk`.MemoryTextureBuilder:update-texture].
+         */
+        get update_region(): cairo.Region;
+        set update_region(val: cairo.Region);
+        /**
+         * The update region for [property`Gdk`.MemoryTextureBuilder:update-texture].
+         */
+        get updateRegion(): cairo.Region;
+        set updateRegion(val: cairo.Region);
+        /**
+         * The texture [property`Gdk`.MemoryTextureBuilder:update-region] is an update for.
+         */
+        get update_texture(): Texture;
+        set update_texture(val: Texture);
+        /**
+         * The texture [property`Gdk`.MemoryTextureBuilder:update-region] is an update for.
+         */
+        get updateTexture(): Texture;
+        set updateTexture(val: Texture);
+        /**
+         * The width of the texture.
+         */
+        get width(): number;
+        set width(val: number);
+
+        // Constructors
+
+        constructor(properties?: Partial<MemoryTextureBuilder.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        static ['new'](): MemoryTextureBuilder;
+
+        // Methods
+
+        /**
+         * Builds a new `GdkTexture` with the values set up in the builder.
+         *
+         * Note that it is a programming error to call this function if any mandatory
+         * property has not been set.
+         *
+         * It is possible to call this function multiple times to create multiple textures,
+         * possibly with changing properties in between.
+         * @returns a newly built `GdkTexture`
+         */
+        build(): Texture;
+        /**
+         * Gets the bytes previously set via gdk_memory_texture_builder_set_bytes()
+         * or %NULL if none was set.
+         * @returns The bytes
+         */
+        get_bytes(): GLib.Bytes | null;
+        /**
+         * Gets the colorstate previously set via gdk_memory_texture_builder_set_color_state().
+         * @returns The colorstate
+         */
+        get_color_state(): ColorState;
+        /**
+         * Gets the format previously set via gdk_memory_texture_builder_set_format().
+         * @returns The format
+         */
+        get_format(): MemoryFormat;
+        /**
+         * Gets the height previously set via gdk_memory_texture_builder_set_height()
+         * or 0 if the height wasn't set.
+         * @returns The height
+         */
+        get_height(): number;
+        /**
+         * Gets the stride previously set via gdk_memory_texture_builder_set_stride().
+         * @returns the stride
+         */
+        get_stride(): number;
+        /**
+         * Gets the region previously set via gdk_memory_texture_builder_set_update_region()
+         * or %NULL if none was set.
+         * @returns The update region
+         */
+        get_update_region(): cairo.Region | null;
+        /**
+         * Gets the texture previously set via gdk_memory_texture_builder_set_update_texture()
+         * or %NULL if none was set.
+         * @returns The update texture
+         */
+        get_update_texture(): Texture | null;
+        /**
+         * Gets the width previously set via gdk_memory_texture_builder_set_width()
+         * or 0 if the width wasn't set.
+         * @returns The width
+         */
+        get_width(): number;
+        /**
+         * Sets the data to be shown but the texture.
+         *
+         * The bytes must be set before calling [method`Gdk`.MemoryTextureBuilder.build].
+         * @param bytes The bytes the texture shows or %NULL to unset
+         */
+        set_bytes(bytes?: GLib.Bytes | null): void;
+        /**
+         * Sets the colorstate describing the data.
+         *
+         * By default, the sRGB colorstate is used. If you don't know
+         * what colorstates are, this is probably the right thing.
+         * @param color_state The colorstate describing the data
+         */
+        set_color_state(color_state?: ColorState | null): void;
+        /**
+         * Sets the format of the bytes.
+         *
+         * The default is `GDK_MEMORY_R8G8B8A8_PREMULTIPLIED`.
+         * @param format The texture's format
+         */
+        set_format(format: MemoryFormat): void;
+        /**
+         * Sets the height of the texture.
+         *
+         * The height must be set before calling [method`Gdk`.MemoryTextureBuilder.build].
+         * @param height The texture's height or 0 to unset
+         */
+        set_height(height: number): void;
+        /**
+         * Sets the rowstride of the bytes used.
+         *
+         * The rowstride must be set before calling [method`Gdk`.MemoryTextureBuilder.build].
+         * @param stride the stride or 0 to unset
+         */
+        set_stride(stride: number): void;
+        /**
+         * Sets the region to be updated by this texture.
+         *
+         * Together with [property`Gdk`.MemoryTextureBuilder:update-texture],
+         * this describes an update of a previous texture.
+         *
+         * When rendering animations of large textures, it is possible that
+         * consecutive textures are only updating contents in parts of the texture.
+         * It is then possible to describe this update via these two properties,
+         * so that GTK can avoid rerendering parts that did not change.
+         *
+         * An example would be a screen recording where only the mouse pointer moves.
+         * @param region the region to update
+         */
+        set_update_region(region?: cairo.Region | null): void;
+        /**
+         * Sets the texture to be updated by this texture.
+         *
+         * See [method`Gdk`.MemoryTextureBuilder.set_update_region] for an explanation.
+         * @param texture the texture to update
+         */
+        set_update_texture(texture?: Texture | null): void;
+        /**
+         * Sets the width of the texture.
+         *
+         * The width must be set before calling [method`Gdk`.MemoryTextureBuilder.build].
+         * @param width The texture's width or 0 to unset
+         */
+        set_width(width: number): void;
+    }
+
     module Monitor {
         // Signal callback interfaces
 
@@ -12405,6 +12960,8 @@ export namespace Gdk {
                 Paintable.ConstructorProps,
                 Gio.Icon.ConstructorProps,
                 Gio.LoadableIcon.ConstructorProps {
+            color_state: ColorState;
+            colorState: ColorState;
             height: number;
             width: number;
         }
@@ -12432,6 +12989,14 @@ export namespace Gdk {
 
         // Properties
 
+        /**
+         * The color state of the texture.
+         */
+        get color_state(): ColorState;
+        /**
+         * The color state of the texture.
+         */
+        get colorState(): ColorState;
         /**
          * The height of the texture, in pixels.
          */
@@ -12486,6 +13051,11 @@ export namespace Gdk {
          * @param stride rowstride in bytes
          */
         download(data: Uint8Array | string, stride: number): void;
+        /**
+         * Returns the color state associated with the texture.
+         * @returns the color state of the `GdkTexture`
+         */
+        get_color_state(): ColorState;
         /**
          * Gets the memory format most closely associated with the data of
          * the texture.
@@ -13873,6 +14443,113 @@ export namespace Gdk {
         stop_emission_by_name(detailedName: string): any;
     }
 
+    type CicpParamsClass = typeof CicpParams;
+    /**
+     * A `GdkColorState` object provides the information to interpret
+     * colors and pixels in a variety of ways.
+     *
+     * They are also known as
+     * [*color spaces*](https://en.wikipedia.org/wiki/Color_space).
+     *
+     * Crucially, GTK knows how to convert colors from one color
+     * state to another.
+     *
+     * `GdkColorState` objects are immutable and therefore threadsafe.
+     *
+     * Since 4.16
+     */
+    abstract class ColorState {
+        static $gtype: GObject.GType<ColorState>;
+
+        // Constructors
+
+        _init(...args: any[]): void;
+
+        // Static methods
+
+        /**
+         * Returns the color state object representing the linear rec2100 color space.
+         *
+         * This color state uses the primaries defined by BT.2020-2 and BT.2100-0 and a linear
+         * transfer function.
+         *
+         * It is equivalent to the [Cicp](class.CicpParams.html) tuple 9/8/0/1.
+         *
+         * See e.g. [the CSS HDR Module](https://drafts.csswg.org/css-color-hdr/#valdef-color-rec2100-linear)
+         * for details about this colorstate.
+         */
+        static get_rec2100_linear(): ColorState;
+        /**
+         * Returns the color state object representing the rec2100-pq color space.
+         *
+         * This color state uses the primaries defined by BT.2020-2 and BT.2100-0 and the transfer
+         * function defined by SMPTE ST 2084 and BT.2100-2.
+         *
+         * It is equivalent to the [Cicp](class.CicpParams.html) tuple 9/16/0/1.
+         *
+         * See e.g. [the CSS HDR Module](https://drafts.csswg.org/css-color-hdr/#valdef-color-rec2100-pq)
+         * for details about this colorstate.
+         */
+        static get_rec2100_pq(): ColorState;
+        /**
+         * Returns the color state object representing the sRGB color space.
+         *
+         * This color state uses the primaries defined by BT.709-6 and the transfer function
+         * defined by IEC 61966-2-1.
+         *
+         * It is equivalent to the [Cicp](class.CicpParams.html) tuple 1/13/0/1.
+         *
+         * See e.g. [the CSS Color Module](https://www.w3.org/TR/css-color-4/#predefined-sRGB)
+         * for details about this colorstate.
+         */
+        static get_srgb(): ColorState;
+        /**
+         * Returns the color state object representing the linearized sRGB color space.
+         *
+         * This color state uses the primaries defined by BT.709-6 and a linear transfer function.
+         *
+         * It is equivalent to the [Cicp](class.CicpParams.html) tuple 1/8/0/1.
+         *
+         * See e.g. [the CSS Color Module](https://www.w3.org/TR/css-color-4/#predefined-sRGB-linear)
+         * for details about this colorstate.
+         */
+        static get_srgb_linear(): ColorState;
+
+        // Methods
+
+        /**
+         * Create a [class`Gdk`.CicpParams] representing the colorstate.
+         *
+         * It is not guaranteed that every `GdkColorState` can be
+         * represented with Cicp parameters. If that is the case,
+         * this function returns `NULL`.
+         * @returns A new [class@Gdk.CicpParams]
+         */
+        create_cicp_params(): CicpParams | null;
+        /**
+         * Compares two `GdkColorStates` for equality.
+         *
+         * Note that this function is not guaranteed to be perfect and two objects
+         * describing the same color state may compare not equal. However, different
+         * color states will never compare equal.
+         * @param other another `GdkColorStatee`
+         * @returns %TRUE if the two color states compare equal
+         */
+        equal(other: ColorState): boolean;
+        /**
+         * Increase the reference count of `self`.
+         * @returns the object that was passed in
+         */
+        ref(): ColorState;
+        /**
+         * Decrease the reference count of `self`.
+         *
+         * Unless `self` is static, it will be freed
+         * when the reference count reaches zero.
+         */
+        unref(): void;
+    }
+
     /**
      * The `GdkContentFormats` structure is used to advertise and negotiate the
      * format of content.
@@ -14376,6 +15053,7 @@ export namespace Gdk {
         _init(...args: any[]): void;
     }
 
+    type MemoryTextureBuilderClass = typeof MemoryTextureBuilder;
     type MemoryTextureClass = typeof MemoryTexture;
     type MonitorClass = typeof Monitor;
     type PaintableInterface = typeof Paintable;
@@ -14774,6 +15452,11 @@ export namespace Gdk {
          */
         free(): void;
         /**
+         * Gets the color state that the data will be downloaded in.
+         * @returns The color state of the download
+         */
+        get_color_state(): ColorState;
+        /**
          * Gets the format that the data will be downloaded in.
          * @returns The format of the download
          */
@@ -14783,6 +15466,14 @@ export namespace Gdk {
          * @returns The texture to download
          */
         get_texture(): Texture;
+        /**
+         * Sets the color state the downloader will convert the data to.
+         *
+         * By default, the sRGB colorstate returned by [func`ColorState`.get_srgb]
+         * is used.
+         * @param color_state the color state to use
+         */
+        set_color_state(color_state: ColorState): void;
         /**
          * Sets the format the downloader will download.
          *
@@ -15346,7 +16037,7 @@ export namespace Gdk {
         /**
          * Present `popup` after having processed the `GdkPopupLayout` rules.
          *
-         * If the popup was previously now showing, it will be showed,
+         * If the popup was previously not showing, it will be shown,
          * otherwise it will change position according to `layout`.
          *
          * After calling this function, the result should be handled in response
@@ -15675,6 +16366,11 @@ export namespace Gdk {
          * @returns %TRUE if the desktop environment supports tiled window states
          */
         supports_edge_constraints(): boolean;
+        /**
+         * Performs a title bar gesture.
+         * @param gesture a `GdkTitlebarGesture`
+         * @returns whether the gesture was performed
+         */
         titlebar_gesture(gesture: TitlebarGesture): boolean;
     }
 

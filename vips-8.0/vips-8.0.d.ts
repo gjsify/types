@@ -4952,6 +4952,13 @@ export namespace Vips {
          * Look up an interpolators desired window size.
          */
         vfunc_get_window_size(): number;
+        /**
+         * the interpolation method
+         * @param out write the interpolated pixel here
+         * @param _in read source pixels from here
+         * @param x interpolate value at this position
+         * @param y interpolate value at this position
+         */
         vfunc_interpolate(out: any | null, _in: Region, x: number, y: number): void;
 
         // Methods

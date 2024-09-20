@@ -1,0 +1,7 @@
+{
+    "entryPoints": ["./gimp-3.0.d.ts"],
+    "readme": "./README.md",
+    "name": "Gimp-3.0",
+    "tsconfig": "./tsconfig.json"
+}
+

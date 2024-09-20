@@ -12,6 +12,7 @@ import type cairo from '@girs/cairo-1.0';
 import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 import type Gio from '@girs/gio-2.0';
+import type GModule from '@girs/gmodule-2.0';
 
 export namespace Poppler {
     /**
@@ -1286,7 +1287,7 @@ export namespace Poppler {
      * @param timet an uninitialized #time_t
      * @returns #TRUE, if @timet was set
      */
-    function date_parse(date: string, timet: number): boolean;
+    function date_parse(date: string, timet: never): boolean;
     function error_quark(): GLib.Quark;
     /**
      * Get all available signing certificate information
@@ -2458,7 +2459,7 @@ export namespace Poppler {
          * Returns the date the document was created as seconds since the Epoch
          * @returns the date the document was created, or -1
          */
-        get_creation_date(): number;
+        get_creation_date(): never;
         /**
          * Returns the date the document was created as a #GDateTime
          * @returns the date the document was created, or %NULL
@@ -2504,7 +2505,7 @@ export namespace Poppler {
          * Returns the date the document was most recently modified as seconds since the Epoch
          * @returns the date the document was most recently modified, or -1
          */
-        get_modification_date(): number;
+        get_modification_date(): never;
         /**
          * Returns the date the document was most recently modified as a #GDateTime
          * @returns the date the document was modified, or %NULL
@@ -2713,7 +2714,7 @@ export namespace Poppler {
          * entry is removed from the document's Info dictionary.
          * @param creation_date A new creation date
          */
-        set_creation_date(creation_date: number): void;
+        set_creation_date(creation_date: never): void;
         /**
          * Sets the document's creation date. If `creation_datetime` is %NULL,
          * CreationDate entry is removed from the document's Info dictionary.
@@ -2737,7 +2738,7 @@ export namespace Poppler {
          * entry is removed from the document's Info dictionary.
          * @param modification_date A new modification date
          */
-        set_modification_date(modification_date: number): void;
+        set_modification_date(modification_date: never): void;
         /**
          * Sets the document's modification date. If `modification_datetime` is %NULL,
          * ModDate entry is removed from the document's Info dictionary.
@@ -2810,7 +2811,10 @@ export namespace Poppler {
          *
          * <informalexample><programlisting>
          * font_info = poppler_font_info_new (document);
-         * while (poppler_font_info_scan (font_info, 20, &fonts_iter)) {
+         * scanned_pages = 0;
+         * while (scanned_pages <= poppler_document_get_n_pages(document)) {
+         *         poppler_font_info_scan (font_info, 20, &fonts_iter);
+         *         scanned_pages += 20;
          *         if (!fonts_iter)
          *                 continue; /<!-- -->* No fonts found in these 20 pages *<!-- -->/
          *         do {
@@ -2821,7 +2825,7 @@ export namespace Poppler {
          * }
          * </programlisting></informalexample>
          * @param n_pages number of pages to scan
-         * @returns %TRUE, if there are more fonts left to scan
+         * @returns %TRUE, if fonts were found
          */
         scan(n_pages: number): [boolean, FontsIter];
     }

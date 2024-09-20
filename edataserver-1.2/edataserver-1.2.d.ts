@@ -13,6 +13,7 @@ import type Soup from '@girs/soup-3.0';
 import type Gio from '@girs/gio-2.0';
 import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
+import type GModule from '@girs/gmodule-2.0';
 import type Json from '@girs/json-1.0';
 import type Camel from '@girs/camel-1.2';
 
@@ -701,6 +702,8 @@ export namespace EDataServer {
         RESOURCE,
         SUBSCRIBED_ICALENDAR,
         WEBDAV_NOTES,
+        SCHEDULE_INBOX,
+        SCHEDULE_OUTBOX,
     }
 
     export namespace XmlHashStatus {
@@ -1601,13 +1604,13 @@ export namespace EDataServer {
      * @param tm The #tm to store the result in.
      * @param offset The #int to store the offset in.
      */
-    function localtime_with_offset(tt: number, tm: any | null, offset: number): void;
+    function localtime_with_offset(tt: never, tm: any | null, offset: number): void;
     /**
      * Like mktime(3), but assumes UTC instead of local timezone.
      * @param tm The #tm to convert to a calendar time representation.
      * @returns The calendar time representation of @tm.
      */
-    function mktime_utc(tm?: any | null): number;
+    function mktime_utc(tm?: any | null): never;
     /**
      * Processes the `compile_value` and returns the result, which is stored
      * into the `out_glob_buff`. The `out_glob_buff` should be large enough to hold
@@ -2081,6 +2084,26 @@ export namespace EDataServer {
      * @returns A 64-bit integer.
      */
     function util_gthread_id(thread: GLib.Thread): number;
+    /**
+     * Guesses whether the `source` is read only. This is done on some heuristic
+     * like the source backend, where some are known to be read only. That this
+     * function returns %FALSE does not necessarily mean the source is writable,
+     * it only means the source is not well-known read-only source. To know
+     * for sure open the corresponding #EClient, if the `source` references such,
+     * and use e_client_is_readonly().
+     * @param source an #ESource
+     * @returns %TRUE, when the @source is well-known read-only source, or %FALSE otherwise
+     */
+    function util_guess_source_is_readonly(source?: any | null): boolean;
+    /**
+     * Check whether the hostname `host` is equal to or a subdomain of `domain`.
+     * Both `host` and `domain` are UTF-8 strings and can be IDNs (which will be
+     * punycode-encoded for comparison).
+     * @param host The hostname to check.
+     * @param domain The domain name.
+     * @returns %TRUE if @host is a subdomain of @domain (or the same domain).          %FALSE if not, or if either argument is null or in some way          invalid as a domain/hostname.
+     */
+    function util_host_is_in_domain(host?: string | null, domain?: string | null): boolean;
     /**
      * Checks whether the `identity_source` can be used for sending, which means
      * whether it has configures send mail source.
@@ -4025,6 +4048,63 @@ export namespace EDataServer {
         stop_emission_by_name(detailedName: string): any;
     }
 
+    module MsOapxbc {
+        // Constructor properties interface
+
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+    }
+
+    class MsOapxbc extends GObject.Object {
+        static $gtype: GObject.GType<MsOapxbc>;
+
+        // Constructors
+
+        constructor(properties?: Partial<MsOapxbc.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        static new_sync(client_id: string, authority: string, cancellable?: Gio.Cancellable | null): MsOapxbc;
+
+        // Methods
+
+        /**
+         * Synchronously calls acquirePrtSsoCookie() D-Bus method on the Microsoft
+         * OAuth2 broker service and converts the result into a new #SoupCookie.
+         * The account object needs to be taken from the accounts list that is returned by
+         * e_ms_oapxbc_get_accounts_sync(). The SSO URL is the OAuth2 authentication endpoint.
+         * The scopes are the requested scopes for the OAuth2 service (usually only
+         * https://graph.microsoft.com/.default). The redirect URI is the OAuth2 service
+         * redirect URI.
+         * @param account an account returned from e_ms_oapxbc_get_accounts_sync()
+         * @param sso_url an SSO URL to acquire the PRT SSO cookie for.
+         * @param scopes array of scopes
+         * @param redirect_uri redirect URI
+         * @param cancellable a #GCancellable
+         * @returns an acquired cookie, or %NULL on error
+         */
+        acquire_prt_sso_cookie_sync(
+            account: Json.Object,
+            sso_url: string,
+            scopes: Json.Array,
+            redirect_uri: string,
+            cancellable?: Gio.Cancellable | null,
+        ): Soup.Cookie | null;
+        /**
+         * Synchronously calls getAccounts() D-Bus method on the Microsoft
+         * OAuth2 broker service and returns the result as a #JsonObject.
+         *
+         * The #JsonObject contains the accounts that are currently registered at the broker,
+         * whereby the "accounts" node provides a #JsonArray of account entries. Note, that
+         * the availability of the types and entries needs to be checked by the caller before
+         * accessing them. The accounts entries can be inspected e.g. for the "username" and
+         * "homeAccountId" fields. Then, one entry needs to be selected and passed as-is to
+         * e_ms_oapxbc_acquire_prt_sso_cookie_sync().
+         * @param cancellable a #GCancellable
+         * @returns the accounts, or %NULL on error
+         */
+        get_accounts_sync(cancellable?: Gio.Cancellable | null): Json.Object | null;
+    }
+
     module NetworkMonitor {
         // Constructor properties interface
 
@@ -4873,6 +4953,17 @@ export namespace EDataServer {
          */
         delete_token_sync(source: Source, cancellable?: Gio.Cancellable | null): boolean;
         /**
+         * Additional cookies to be used in the prompt dialog when asking for the user
+         * credentials. The default implementation does not provide any cookies.
+         * @param source an associated #ESource
+         * @param cancellable a #GCancellable
+         * @returns a #GSList of #SoupCookie-s to use, or %NULL
+         */
+        dup_credentials_prompter_cookies_sync(
+            source: Source,
+            cancellable?: Gio.Cancellable | null,
+        ): Soup.Cookie[] | null;
+        /**
          * Tries to extract an authorization code from a web page provided by the server.
          * The function can be called multiple times, whenever the page load is finished.
          * The default implementation uses e_oauth2_service_util_extract_from_uri() to get
@@ -5114,6 +5205,16 @@ export namespace EDataServer {
          * @param source an #ESource
          */
         vfunc_can_process(source: Source): boolean;
+        /**
+         * Additional cookies to be used in the prompt dialog when asking for the user
+         * credentials. The default implementation does not provide any cookies.
+         * @param source an associated #ESource
+         * @param cancellable a #GCancellable
+         */
+        vfunc_dup_credentials_prompter_cookies_sync(
+            source: Source,
+            cancellable?: Gio.Cancellable | null,
+        ): Soup.Cookie[] | null;
         /**
          * Tries to extract an authorization code from a web page provided by the server.
          * The function can be called multiple times, whenever the page load is finished.
@@ -5729,6 +5830,17 @@ export namespace EDataServer {
          */
         delete_token_sync(source: Source, cancellable?: Gio.Cancellable | null): boolean;
         /**
+         * Additional cookies to be used in the prompt dialog when asking for the user
+         * credentials. The default implementation does not provide any cookies.
+         * @param source an associated #ESource
+         * @param cancellable a #GCancellable
+         * @returns a #GSList of #SoupCookie-s to use, or %NULL
+         */
+        dup_credentials_prompter_cookies_sync(
+            source: Source,
+            cancellable?: Gio.Cancellable | null,
+        ): Soup.Cookie[] | null;
+        /**
          * Tries to extract an authorization code from a web page provided by the server.
          * The function can be called multiple times, whenever the page load is finished.
          * The default implementation uses e_oauth2_service_util_extract_from_uri() to get
@@ -5970,6 +6082,16 @@ export namespace EDataServer {
          * @param source an #ESource
          */
         vfunc_can_process(source: Source): boolean;
+        /**
+         * Additional cookies to be used in the prompt dialog when asking for the user
+         * credentials. The default implementation does not provide any cookies.
+         * @param source an associated #ESource
+         * @param cancellable a #GCancellable
+         */
+        vfunc_dup_credentials_prompter_cookies_sync(
+            source: Source,
+            cancellable?: Gio.Cancellable | null,
+        ): Soup.Cookie[] | null;
         /**
          * Tries to extract an authorization code from a web page provided by the server.
          * The function can be called multiple times, whenever the page load is finished.
@@ -6585,6 +6707,17 @@ export namespace EDataServer {
          */
         delete_token_sync(source: Source, cancellable?: Gio.Cancellable | null): boolean;
         /**
+         * Additional cookies to be used in the prompt dialog when asking for the user
+         * credentials. The default implementation does not provide any cookies.
+         * @param source an associated #ESource
+         * @param cancellable a #GCancellable
+         * @returns a #GSList of #SoupCookie-s to use, or %NULL
+         */
+        dup_credentials_prompter_cookies_sync(
+            source: Source,
+            cancellable?: Gio.Cancellable | null,
+        ): Soup.Cookie[] | null;
+        /**
          * Tries to extract an authorization code from a web page provided by the server.
          * The function can be called multiple times, whenever the page load is finished.
          * The default implementation uses e_oauth2_service_util_extract_from_uri() to get
@@ -6826,6 +6959,16 @@ export namespace EDataServer {
          * @param source an #ESource
          */
         vfunc_can_process(source: Source): boolean;
+        /**
+         * Additional cookies to be used in the prompt dialog when asking for the user
+         * credentials. The default implementation does not provide any cookies.
+         * @param source an associated #ESource
+         * @param cancellable a #GCancellable
+         */
+        vfunc_dup_credentials_prompter_cookies_sync(
+            source: Source,
+            cancellable?: Gio.Cancellable | null,
+        ): Soup.Cookie[] | null;
         /**
          * Tries to extract an authorization code from a web page provided by the server.
          * The function can be called multiple times, whenever the page load is finished.
@@ -7952,6 +8095,8 @@ export namespace EDataServer {
             credentials: NamedParameters;
             force_http1: boolean;
             forceHttp1: boolean;
+            handle_backoff_responses: boolean;
+            handleBackoffResponses: boolean;
             source: Source;
         }
     }
@@ -7988,6 +8133,24 @@ export namespace EDataServer {
          */
         get forceHttp1(): boolean;
         set forceHttp1(val: boolean);
+        /**
+         * Set to %TRUE, which is the default, to automatically handle backoff responses
+         * from the server, that is, when the server requests the client to retry later.
+         *
+         * Note: This handles only the synchronous functions to send the messages. Clients
+         * using the asynchronous API need to handle the backoff responses on their own.
+         */
+        get handle_backoff_responses(): boolean;
+        set handle_backoff_responses(val: boolean);
+        /**
+         * Set to %TRUE, which is the default, to automatically handle backoff responses
+         * from the server, that is, when the server requests the client to retry later.
+         *
+         * Note: This handles only the synchronous functions to send the messages. Clients
+         * using the asynchronous API need to handle the backoff responses on their own.
+         */
+        get handleBackoffResponses(): boolean;
+        set handleBackoffResponses(val: boolean);
         /**
          * The #ESource being used for this soup session.
          */
@@ -8106,6 +8269,13 @@ export namespace EDataServer {
          * @returns whether it's forced to use HTTP/1
          */
         get_force_http1(): boolean;
+        /**
+         * Returns whether the `session` can handle backoff responses from the server.
+         * See e_soup_session_set_handle_backoff_responses() for more information about
+         * the limitations.
+         * @returns whether the @session handles backoff responses
+         */
+        get_handle_backoff_responses(): boolean;
         get_log_level(): Soup.LoggerLogLevel;
         /**
          * Returns an #ESource associated with the `session,` if such was set in the creation time.
@@ -8253,6 +8423,15 @@ export namespace EDataServer {
          * @param force_http1 the value to set
          */
         set_force_http1(force_http1: boolean): void;
+        /**
+         * Sets whether to automatically handle backoff responses from the server,
+         * that is, when the server requests the client to retry later.
+         *
+         * Note: This handles only the synchronous functions to send the messages. Clients
+         * using the asynchronous API need to handle the backoff responses on their own.
+         * @param handle_backoff_responses the value to set
+         */
+        set_handle_backoff_responses(handle_backoff_responses: boolean): void;
         /**
          * Setups logging for the `session`. The `logging_level` can be one of:
          * "all" - log whole raw communication;
@@ -9585,7 +9764,7 @@ export namespace EDataServer {
          * Looks into the system proxy configuration to determine what proxy,
          * if any, to use to connect to `uri`. The returned proxy URIs are of
          * the form `<protocol>://[user[:password]`]`host[:port]` or
-         * `direct://`, where <protocol> could be http, rtsp, socks
+         * `direct://`, where `<protocol>` could be http, rtsp, socks
          * or other proxying protocol.
          *
          * If you don't know what network protocol is being used on the
@@ -9632,7 +9811,7 @@ export namespace EDataServer {
          * Looks into the system proxy configuration to determine what proxy,
          * if any, to use to connect to `uri`. The returned proxy URIs are of
          * the form `<protocol>://[user[:password]`]`host[:port]` or
-         * `direct://`, where <protocol> could be http, rtsp, socks
+         * `direct://`, where `<protocol>` could be http, rtsp, socks
          * or other proxying protocol.
          *
          * If you don't know what network protocol is being used on the
@@ -10109,6 +10288,8 @@ export namespace EDataServer {
         // Constructor properties interface
 
         interface ConstructorProps extends SourceExtension.ConstructorProps {
+            for_every_event: boolean;
+            forEveryEvent: boolean;
             include_me: boolean;
             includeMe: boolean;
             last_notified: string;
@@ -10125,6 +10306,10 @@ export namespace EDataServer {
 
         // Properties
 
+        get for_every_event(): boolean;
+        set for_every_event(val: boolean);
+        get forEveryEvent(): boolean;
+        set forEveryEvent(val: boolean);
         get include_me(): boolean;
         set include_me(val: boolean);
         get includeMe(): boolean;
@@ -10151,6 +10336,15 @@ export namespace EDataServer {
          */
         dup_last_notified(): string | null;
         /**
+         * Returns whether the user should be alerted about all upcoming appointments
+         * in the calendar described by the #ESource to which `extension` belongs.
+         *
+         * This is used in addition to the GSettings key defall-reminder-enabled
+         * in org.gnome.evolution-data-server.calendar.
+         * @returns whether to show alarms for every event
+         */
+        get_for_every_event(): boolean;
+        /**
          * Returns whether the user should be alerted about upcoming appointments
          * in the calendar described by the #ESource to which `extension` belongs.
          *
@@ -10167,6 +10361,15 @@ export namespace EDataServer {
          * @returns an ISO 8601 timestamp, or %NULL
          */
         get_last_notified(): string | null;
+        /**
+         * Sets whether the user should be alerted about every event in
+         * the calendar described by the #ESource to which `extension` belongs.
+         *
+         * This is used in addition to the GSettings key defall-reminder-enabled
+         * in org.gnome.evolution-data-server.calendar.
+         * @param for_every_event whether to show alarms for every event
+         */
+        set_for_every_event(for_every_event: boolean): void;
         /**
          * Sets whether the user should be alerted about upcoming appointments in
          * the calendar described by the #ESource to which `extension` belongs.
@@ -13064,6 +13267,8 @@ export namespace EDataServer {
         interface ConstructorProps extends SourceExtension.ConstructorProps {
             always_trust: boolean;
             alwaysTrust: boolean;
+            ask_send_public_key: boolean;
+            askSendPublicKey: boolean;
             encrypt_by_default: boolean;
             encryptByDefault: boolean;
             encrypt_to_self: boolean;
@@ -13098,6 +13303,10 @@ export namespace EDataServer {
         set always_trust(val: boolean);
         get alwaysTrust(): boolean;
         set alwaysTrust(val: boolean);
+        get ask_send_public_key(): boolean;
+        set ask_send_public_key(val: boolean);
+        get askSendPublicKey(): boolean;
+        set askSendPublicKey(val: boolean);
         get encrypt_by_default(): boolean;
         set encrypt_by_default(val: boolean);
         get encryptByDefault(): boolean;
@@ -13166,6 +13375,11 @@ export namespace EDataServer {
          */
         get_always_trust(): boolean;
         /**
+         * Returns, whether should ask before sending PGP public key in messages. The default is %TRUE.
+         * @returns whether should ask before sending PGP public key in messages
+         */
+        get_ask_send_public_key(): boolean;
+        /**
          * Returns whether to digitally encrypt outgoing messages by default using
          * OpenPGP-compliant software such as GNU Privacy Guard (GnuPG).
          * @returns whether to encrypt outgoing messages by default
@@ -13199,8 +13413,8 @@ export namespace EDataServer {
          */
         get_send_prefer_encrypt(): boolean;
         /**
-         * Returns, whether should send GPG public key in messages. The default is %TRUE.
-         * @returns whether should send GPG public key in messages
+         * Returns, whether should send PGP public key in messages. The default is %TRUE.
+         * @returns whether should send PGP public key in messages
          */
         get_send_public_key(): boolean;
         /**
@@ -13221,6 +13435,12 @@ export namespace EDataServer {
          * @param always_trust whether used keys are always fully trusted
          */
         set_always_trust(always_trust: boolean): void;
+        /**
+         * Sets the `ask_send_public_key` on the `extension,` which tells the client to
+         * ask before user sends public key in the messages in an Autocrypt header.
+         * @param ask_send_public_key value to set
+         */
+        set_ask_send_public_key(ask_send_public_key: boolean): void;
         /**
          * Sets whether to digitally encrypt outgoing messages by default using
          * OpenPGP-compliant software such as GNU Privacy Guard (GnuPG).
@@ -14471,7 +14691,7 @@ export namespace EDataServer {
          * in a thread, so if you want to support asynchronous initialization via
          * threads, just implement the #GAsyncInitable interface without overriding
          * any interface methods.
-         * @param io_priority the [I/O priority][io-priority] of the operation
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
@@ -14531,7 +14751,7 @@ export namespace EDataServer {
          * in a thread, so if you want to support asynchronous initialization via
          * threads, just implement the #GAsyncInitable interface without overriding
          * any interface methods.
-         * @param io_priority the [I/O priority][io-priority] of the operation
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
@@ -15725,6 +15945,7 @@ export namespace EDataServer {
             resourceQuery: string;
             ssl_trust: string;
             sslTrust: string;
+            timeout: number;
             uri: GLib.Uri;
         }
     }
@@ -15770,6 +15991,8 @@ export namespace EDataServer {
         set ssl_trust(val: string);
         get sslTrust(): string;
         set sslTrust(val: string);
+        get timeout(): number;
+        set timeout(val: number);
         get uri(): GLib.Uri;
         set uri(val: GLib.Uri);
 
@@ -15903,6 +16126,7 @@ export namespace EDataServer {
          */
         get_ssl_trust(): string | null;
         get_ssl_trust_response(): TrustPromptResponse;
+        get_timeout(): number;
         /**
          * This setting works around a
          * <ulink url="https://issues.apache.org/bugzilla/show_bug.cgi?id=38034">
@@ -15995,6 +16219,11 @@ export namespace EDataServer {
          * @param response an #ETrustPromptResponse to set
          */
         set_ssl_trust_response(response: TrustPromptResponse): void;
+        /**
+         * Set the connection timeout, in seconds.
+         * @param timeout a timeout, in seconds
+         */
+        set_timeout(timeout: number): void;
         /**
          * This is a convenience function which propagates the components of
          * `uri` to the #ESourceAuthentication extension, the #ESourceSecurity
@@ -16923,7 +17152,7 @@ export namespace EDataServer {
          * @param name name of the attribute
          * @param value time_t value of the attribute
          */
-        add_attribute_time(ns_href: string | null, name: string, value: number): void;
+        add_attribute_time(ns_href: string | null, name: string, value: never): void;
         /**
          * Adds a new attribute with a time_t value in iCalendar format to the current element.
          * The format is "YYYYMMDDTHHMMSSZ".
@@ -16934,7 +17163,7 @@ export namespace EDataServer {
          * @param name name of the attribute
          * @param value time_t value of the attribute
          */
-        add_attribute_time_ical(ns_href: string | null, name: string, value: number): void;
+        add_attribute_time_ical(ns_href: string | null, name: string, value: never): void;
         /**
          * Adds an empty element, which is an element with no attribute and no value.
          *
@@ -17014,7 +17243,7 @@ export namespace EDataServer {
          * The format is "YYYY-MM-DDTHH:MM:SSZ".
          * @param value value to write as the content
          */
-        write_time(value: number): void;
+        write_time(value: never): void;
     }
 
     /**
@@ -17379,6 +17608,7 @@ export namespace EDataServer {
         _init(...args: any[]): void;
     }
 
+    type MsOapxbcClass = typeof MsOapxbc;
     class NamedParameters {
         static $gtype: GObject.GType<NamedParameters>;
 
@@ -18320,6 +18550,17 @@ export namespace EDataServer {
          */
         delete_token_sync(source: Source, cancellable?: Gio.Cancellable | null): boolean;
         /**
+         * Additional cookies to be used in the prompt dialog when asking for the user
+         * credentials. The default implementation does not provide any cookies.
+         * @param source an associated #ESource
+         * @param cancellable a #GCancellable
+         * @returns a #GSList of #SoupCookie-s to use, or %NULL
+         */
+        dup_credentials_prompter_cookies_sync(
+            source: Source,
+            cancellable?: Gio.Cancellable | null,
+        ): Soup.Cookie[] | null;
+        /**
          * Tries to extract an authorization code from a web page provided by the server.
          * The function can be called multiple times, whenever the page load is finished.
          * The default implementation uses e_oauth2_service_util_extract_from_uri() to get
@@ -18564,6 +18805,16 @@ export namespace EDataServer {
          * @param source an #ESource
          */
         vfunc_can_process(source: Source): boolean;
+        /**
+         * Additional cookies to be used in the prompt dialog when asking for the user
+         * credentials. The default implementation does not provide any cookies.
+         * @param source an associated #ESource
+         * @param cancellable a #GCancellable
+         */
+        vfunc_dup_credentials_prompter_cookies_sync(
+            source: Source,
+            cancellable?: Gio.Cancellable | null,
+        ): Soup.Cookie[] | null;
         /**
          * Tries to extract an authorization code from a web page provided by the server.
          * The function can be called multiple times, whenever the page load is finished.

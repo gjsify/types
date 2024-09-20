@@ -195,9 +195,24 @@ export namespace Cheese {
 
         // Virtual methods
 
+        /**
+         * invoked when a photo was saved to disk
+         */
         vfunc_photo_saved(): void;
+        /**
+         * invoked when a photo was taken
+         * @param pixbuf
+         */
         vfunc_photo_taken(pixbuf: GdkPixbuf.Pixbuf): void;
+        /**
+         * invoked when the state of the camera #GstElement
+         * changed
+         * @param new_state
+         */
         vfunc_state_flags_changed(new_state: Gst.State): void;
+        /**
+         * invoked when a video was saved to disk
+         */
         vfunc_video_saved(): void;
 
         // Methods
@@ -951,7 +966,15 @@ export namespace Cheese {
 
         // Virtual methods
 
+        /**
+         * invoked when a new video capture device is connected
+         * @param device
+         */
         vfunc_added(device: CameraDevice): void;
+        /**
+         * invoked when a video capture device is removed
+         * @param device
+         */
         vfunc_removed(device: CameraDevice): void;
 
         // Methods
@@ -1001,7 +1024,7 @@ export namespace Cheese {
          * in a thread, so if you want to support asynchronous initialization via
          * threads, just implement the #GAsyncInitable interface without overriding
          * any interface methods.
-         * @param io_priority the [I/O priority][io-priority] of the operation
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */
@@ -1061,7 +1084,7 @@ export namespace Cheese {
          * in a thread, so if you want to support asynchronous initialization via
          * threads, just implement the #GAsyncInitable interface without overriding
          * any interface methods.
-         * @param io_priority the [I/O priority][io-priority] of the operation
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional #GCancellable object, %NULL to ignore.
          * @param callback a #GAsyncReadyCallback to call when the request is satisfied
          */

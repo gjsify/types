@@ -15,6 +15,7 @@ import type Graphene from '@girs/graphene-1.0';
 import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 import type Gio from '@girs/gio-2.0';
+import type GModule from '@girs/gmodule-2.0';
 import type GDesktopEnums from '@girs/gdesktopenums-3.0';
 import type CoglPango from '@girs/coglpango-15';
 import type PangoCairo from '@girs/pangocairo-1.0';
@@ -1729,6 +1730,10 @@ export namespace Meta {
          * KMS deadline timers
          */
         KMS_DEADLINE,
+        /**
+         * session management
+         */
+        SESSION_MANAGEMENT,
     }
 
     export namespace Direction {
@@ -4928,6 +4933,7 @@ export namespace Meta {
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             name: string;
+            nick: string;
             unsafe_mode: boolean;
             unsafeMode: boolean;
         }
@@ -4939,6 +4945,7 @@ export namespace Meta {
         // Properties
 
         get name(): string;
+        get nick(): string;
         get unsafe_mode(): boolean;
         set unsafe_mode(val: boolean);
         get unsafeMode(): boolean;
@@ -8589,7 +8596,7 @@ export namespace Meta {
          * by the client.
          * @returns the pid, or 0 if not known.
          */
-        get_pid(): never;
+        get_pid(): number;
         get_role(): string;
         /**
          * Gets an unique id for a sandboxed app (currently flatpaks and snaps are
@@ -8755,6 +8762,12 @@ export namespace Meta {
          * @param monitor desired monitor index
          */
         move_to_monitor(monitor: number): void;
+        /**
+         * Transform the coordinates from protocol coordinates to coordinates expected
+         * by the stage and internal window management logic.
+         * @param protocol_rect rectangle in protocol coordinate space
+         */
+        protocol_to_stage_rect(protocol_rect: Mtk.Rectangle): Mtk.Rectangle;
         raise(): void;
         /**
          * Raises a window and marks it as the most recently used window on the
@@ -8776,6 +8789,11 @@ export namespace Meta {
          */
         set_icon_geometry(rect?: Mtk.Rectangle | null): void;
         showing_on_its_workspace(): boolean;
+        /**
+         * Transform the coordinates from stage coordinates to protocol coordinates
+         * @param stage_rect x #MtkRectangle in stage coordinate space
+         */
+        stage_to_protocol_rect(stage_rect: Mtk.Rectangle): Mtk.Rectangle;
         stick(): void;
         unmake_above(): void;
         unmake_fullscreen(): void;
