@@ -21,6 +21,14 @@ import type Babl from '@girs/babl-0.1';
 import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 
 export namespace Gimp {
+    // WORKAROUND: As long as ParamObject is not generated
+    export class ParamObject extends GObject.ParamSpec {}
+
+    // WORKAROUND: As long as ParamObject is not generated
+    export class ParamItem extends GObject.ParamSpec {}
+
+    // WORKAROUND: As long as ParamObject is not generated
+    export class ParamArray extends GObject.ParamSpec {}
     /**
      * Gimp-3.0
      */
