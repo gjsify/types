@@ -5,7 +5,7 @@
 ![downloads/week](https://img.shields.io/npm/dw/@girs/fwupd-2.0)
 
 
-GJS TypeScript type definitions for Fwupd-2.0, generated from library version 1.9.23 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v4.0.0-beta.15.
+GJS TypeScript type definitions for Fwupd-2.0, generated from library version 1.9.23 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v4.0.0-beta.16.
 
 
 ## Install

@@ -1,6 +1,6 @@
 {
     "name": "@girs/libosinfo-1.0",
-    "version": "1.11.0-4.0.0-beta.15",
+    "version": "1.11.0-4.0.0-beta.16",
     "description": "GJS TypeScript type definitions for Libosinfo-1.0, generated from library version 1.11.0",
     "type": "module",
     "module": "libosinfo-1.0.js",

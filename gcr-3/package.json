@@ -1,6 +1,6 @@
 {
     "name": "@girs/gcr-3",
-    "version": "3.41.1-4.0.0-beta.15",
+    "version": "3.41.1-4.0.0-beta.16",
     "description": "GJS TypeScript type definitions for Gcr-3, generated from library version 3.41.1",
     "type": "module",
     "module": "gcr-3.js",

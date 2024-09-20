@@ -1,6 +1,6 @@
 {
     "name": "@girs/gkbd-3.0",
-    "version": "3.0.0-4.0.0-beta.15",
+    "version": "3.0.0-4.0.0-beta.16",
     "description": "GJS TypeScript type definitions for Gkbd-3.0, generated from library version 3.0.0",
     "type": "module",
     "module": "gkbd-3.0.js",

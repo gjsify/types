@@ -1,6 +1,6 @@
 {
     "name": "@girs/json-1.0",
-    "version": "1.9.2-4.0.0-beta.15",
+    "version": "1.9.2-4.0.0-beta.16",
     "description": "GJS TypeScript type definitions for Json-1.0, generated from library version 1.9.2",
     "type": "module",
     "module": "json-1.0.js",

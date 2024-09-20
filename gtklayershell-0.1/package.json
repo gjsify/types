@@ -1,6 +1,6 @@
 {
     "name": "@girs/gtklayershell-0.1",
-    "version": "0.1.0-4.0.0-beta.15",
+    "version": "0.1.0-4.0.0-beta.16",
     "description": "GJS TypeScript type definitions for GtkLayerShell-0.1, generated from library version 0.1.0",
     "type": "module",
     "module": "gtklayershell-0.1.js",
